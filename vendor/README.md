@@ -9,6 +9,10 @@ DMP-022 computes the same hash over the same folder, so the two gates agree on w
 |---|---|---|
 | `dmp/` | DMP, the Dark Matter Protocol: the sentences every theorem in `evidence/` is stated from | [StevenHrovat/dmp](https://github.com/StevenHrovat/dmp) |
 
+The copy carries `SETUP.md`, the one setup file of the four root repositories (every toolchain with version, source and hash, every host,
+the install steps), and `tools/check-setup.sh`, which `evidence/tools/check.sh` runs after the pin check: Gravity fails when it needs
+something the file does not list. Both are DMP's; a change to them is a change in DMP, re-pinned here.
+
 A vendored copy is never edited here. To move Gravity to a newer DMP: change DMP in its own repository, then `tools/pin.sh dmp
 https://github.com/StevenHrovat/dmp <local clone of dmp> <commit>` (it re-copies `git archive <commit>` without `.github` and writes the
 PIN), run `tools/check-pin.sh`, and say in the pull request which sentences changed and which theorems were re-read against them. Nothing
