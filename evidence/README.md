@@ -6,8 +6,9 @@ down to CM); the two never import or name each other's files.
 
 ## What is here
 
-`Dmp/` is the framework every section's evidence model builds on. It states DMP 0.9.0's bounds as Gravity's laws K0 to K4 do and
-proves what the gravitational wave test needs of every component:
+`Dmp/` is the framework every section's evidence model builds on. It states the bounds of the vendored DMP (`../vendor/dmp/`, the
+version in its `VERSION` and `PIN`; the axioms and the theorems named below have not changed in wording since DMP 0.9.0) as Gravity's
+laws K0 to K4 do and proves what the gravitational wave test needs of every component:
 
 | File | DMP | Theorems |
 |---|---|---|
@@ -30,7 +31,8 @@ Parameters are thousandths (`0.33` is `330`): "we only have to adjust very small
 
 ## Running it
 
-`tools/check.sh` (needs `lake` from elan; the toolchain is pinned in `lean-toolchain`): builds the package, refuses escape hatches, and
+`tools/check.sh` (needs `lake` from elan; the toolchain is pinned in `lean-toolchain`): checks that the vendored DMP matches its PIN
+(`../tools/check-pin.sh`; a chain stated from sentences nobody pinned proves nothing), builds the package, refuses escape hatches, and
 asks Lean's kernel which axioms every theorem rests on; anything beyond `propext`, `Quot.sound` and `Classical.choice` fails. On the
 runners: `.github/workflows/lean-evidence.yml` of this repository, which then re-checks the whole export with an independently written kernel (nanoda, in
 Rust) so that the root this chain shares with Gravity (BendTT's kernel is proven in Lean) is broken. Locally, any Lean 4 install with

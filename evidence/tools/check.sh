@@ -8,6 +8,8 @@
 # the list the independent kernel re-checks.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+# First act: the sentences this chain is stated from are the pinned DMP in ../vendor/dmp (the root chain), or the run proves nothing.
+../tools/check-pin.sh
 hatch='\bsorry\b|\badmit\b|^\s*(private\s+)?axiom\b|\bnative_decide\b|\bunsafe\b|implemented_by|@\[extern'
 if grep -rEn "$hatch" Dmp Dmp.lean; then echo "FAIL escape hatch above"; exit 1; fi
 lake build
