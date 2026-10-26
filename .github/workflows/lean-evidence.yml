@@ -24,7 +24,8 @@ concurrency:
 jobs:
   lean:
     name: lean (evidence chain)
-    runs-on: ubuntu-latest
+    # The laptop runners; a fork's pull request stays on GitHub's own machines, so outside code never runs on the laptop.
+    runs-on: ${{ fromJSON(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && '"ubuntu-latest"' || '["self-hosted","linux","wsl"]') }}
     timeout-minutes: 30
     permissions:
       contents: read
