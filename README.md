@@ -8,7 +8,7 @@ is what makes IM do that. Gravity checks the whole chain in both directions, the
 independent detectors must agree before a layer counts as proven.
 
 - **The DMP it proves:** [`vendor/dmp/`](vendor/README.md), DMP byte for byte at one pinned commit (DMP chapter 00, "The root chain":
-  Gravity holds the version of DMP it is based on). `tools/check-pin.sh` refuses a copy that no longer matches its PIN. The version is the
+  Gravity holds the version of DMP it is based on). `tools/check-pin.sh` refuses a copy that no longer matches its PIN. The copy carries `SETUP.md`, the setup file of all four root repositories: what to install, from where, with which hash, and the hosts a setup reaches; `evidence/tools/check.sh` runs its check. The version is the
   one in `vendor/dmp/VERSION`; every sentence a theorem is stated from is read there, never from the network.
 - **Down (intent chain):** Gravity's own models, from DMP's sentences down to CM. Not in this repository yet.
 - **Up (evidence chain):** [`evidence/`](evidence/README.md), proofs in Lean 4 (core only, no Mathlib) from the code up to DMP's
@@ -36,6 +36,7 @@ whatever enters the repository is Apache 2.0) are in [`docs/acknowledgements.md`
 
 ```sh
 tools/check-pin.sh                                   # the vendored DMP matches its PIN (needs only bash, find, sha256sum)
+vendor/dmp/tools/check-setup.sh . gravity            # Gravity needs nothing that DMP's one setup file (vendor/dmp/SETUP.md) does not list
 curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain "$(cat evidence/lean-toolchain)"
 evidence/tools/check.sh                              # runs the pin check first, then the Lean chain
 ```
