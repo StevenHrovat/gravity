@@ -17,6 +17,11 @@ independent detectors must agree before a layer counts as proven.
 
 The two chains never import or name each other's files. On a mismatch the stricter answer stands.
 
+**The unified theory** (`evidence/Dmp/Layer.lean`, `Recipe.lean`, `Theory.lean`, `Complete.lean`): every layout CMOS can take is a term of
+the recipe, a closed type; by induction over its lines every DMP axiom and theorem survives every composition step; and Gravity's verdict
+(proven, unproven, out of spec) is proven to say `proven` exactly for a DMP-complete configuration, the gate mint prep calls (G0).
+`evidence/Dmp/Layouts.lean` shows five configurations and their verdicts, computed by the kernel.
+
 What the proofs produce that DMP's text did not say (corner cases, emergent behaviour, candidates for the axiom system) is kept in
 [`docs/findings.md`](docs/findings.md), one entry per behaviour, for the owner to decide.
 
