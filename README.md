@@ -28,6 +28,10 @@ as line codes, the expected VIBE digest, the DMP and Gravity pins, the verdict, 
 What the proofs produce that DMP's text did not say (corner cases, emergent behaviour, candidates for the axiom system) is kept in
 [`docs/findings.md`](docs/findings.md), one entry per behaviour, for the owner to decide.
 
+The prior work this chain stands on (Malkhi and Reiter, Denning, the frame rule, Goguen and Meseguer, Dijkstra, Dolev, Israeli and Moran,
+Monderer and Shapley), the tools that run the check and their licences, and the two rules behind the list (use prior work and thank it;
+whatever enters the repository is Apache 2.0) are in [`docs/acknowledgements.md`](docs/acknowledgements.md).
+
 ## Run it
 
 ```sh
