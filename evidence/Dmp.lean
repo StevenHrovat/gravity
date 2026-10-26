@@ -16,3 +16,4 @@ import Dmp.R1Tier
 import Dmp.R2Stable
 import Dmp.Layer
 import Dmp.Recipe
+import Dmp.Theory
