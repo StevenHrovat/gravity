@@ -17,3 +17,5 @@ import Dmp.R2Stable
 import Dmp.Layer
 import Dmp.Recipe
 import Dmp.Theory
+import Dmp.Complete
+import Dmp.Layouts
