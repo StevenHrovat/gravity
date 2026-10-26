@@ -21,6 +21,9 @@ The two chains never import or name each other's files. On a mismatch the strict
 the recipe, a closed type; by induction over its lines every DMP axiom and theorem survives every composition step; and Gravity's verdict
 (proven, unproven, out of spec) is proven to say `proven` exactly for a DMP-complete configuration, the gate mint prep calls (G0).
 `evidence/Dmp/Layouts.lean` shows five configurations and their verdicts, computed by the kernel.
+`evidence/Dmp/Cmb.lean` is the Cosmic Microvibe Background: what one `.cmb` file carries so that it proves its own recipe (the recipe
+as line codes, the expected VIBE digest, the DMP and Gravity pins, the verdict, a seal by the galaxy's own Duality) and the cold start from it
+(redeploy when the live field reproduces the digest, the Big Bang from the same proven recipe when it does not).
 
 What the proofs produce that DMP's text did not say (corner cases, emergent behaviour, candidates for the axiom system) is kept in
 [`docs/findings.md`](docs/findings.md), one entry per behaviour, for the owner to decide.
