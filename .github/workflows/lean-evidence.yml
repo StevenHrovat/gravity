@@ -1,0 +1,77 @@
+# lean-evidence: the evidence chain (Lean, CM up to DMP) on GitHub's runners. Builds evidence with the pinned toolchain and
+# asks Lean's kernel which axioms every theorem rests on (evidence/tools/check.sh). No secret, read-only token, hosted runner.
+# The owner, 2026-10-26: "gravity as one proofing language to go from DMP down to CM, and then lean to go from CM up towards DMP".
+name: lean-evidence
+
+on:
+  pull_request:
+    paths:
+      - evidence/**
+      - .github/workflows/lean-evidence.yml
+  push:
+    branches: [main]
+    paths:
+      - evidence/**
+      - .github/workflows/lean-evidence.yml
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: lean-evidence-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lean:
+    name: lean (evidence chain)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Install the pinned Lean toolchain
+        run: |
+          toolchain="$(cat evidence/lean-toolchain)"
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --no-modify-path --default-toolchain "$toolchain"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build and report axioms
+        run: evidence/tools/check.sh
+      # The shared root: BendTT's kernel is proven in Lean, so the evidence chain is re-checked by a kernel written separately, in Rust
+      # (nanoda), from Lean's own export (lean4export). Both kernels must accept every declaration. The Nat and String
+      # extensions are on because Lean's own kernel has them (GMP literals, string literals); without them the export cannot be read.
+      # Only our theorems and what they depend on are exported (report/theorems.txt from check.sh): the whole environment also declares
+      # Lean.trustCompiler (the axiom behind native_decide), which none of our theorems uses but which nanoda would rightly refuse.
+      - name: Independent kernel (lean4export + nanoda)
+        working-directory: evidence
+        run: |
+          set -euo pipefail
+          tc="$(cat lean-toolchain)"; ver="${tc##*:}"
+          git clone -q https://github.com/leanprover/lean4export "$RUNNER_TEMP/lean4export"
+          ( cd "$RUNNER_TEMP/lean4export"
+            if git rev-parse -q --verify "refs/tags/$ver" >/dev/null; then git checkout -q "$ver"; else echo "::notice::lean4export has no tag $ver; using its default branch with our toolchain"; fi
+            echo "$tc" > lean-toolchain
+            lake build
+            echo "lean4export $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY" )
+          git clone -q https://github.com/ammkrn/nanoda_lib "$RUNNER_TEMP/nanoda"
+          ( cd "$RUNNER_TEMP/nanoda" && cargo build --release -q && echo "nanoda $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY" )
+          mkdir -p report
+          mapfile -t thms < <(sed 's/^/Dmp./' report/theorems.txt)
+          [ "${#thms[@]}" -gt 0 ] || { echo "no theorems listed in report/theorems.txt"; exit 1; }
+          lake env "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" Dmp -- "${thms[@]}" > report/Dmp.ndjson
+          jq -n --arg f "$PWD/report/Dmp.ndjson" '{export_file_path:$f, use_stdin:false, permitted_axioms:["propext","Classical.choice","Quot.sound"], unpermitted_axiom_hard_error:true, nat_extension:true, string_extension:true, print_success_message:true}' > report/nanoda.json
+          bin="$(find "$RUNNER_TEMP/nanoda/target/release" -maxdepth 1 -type f -perm -u+x | head -1)"
+          "$bin" report/nanoda.json 2>&1 | tee report/nanoda.txt
+          # nanoda's exit code is not the only proof: the line must say so. (Its "pretty printer errors" concern only printing.)
+          grep -qE '^Checked [0-9]+ declarations with no typechecker errors' report/nanoda.txt || { echo "nanoda did not report a clean check"; exit 1; }
+          echo "independent kernel: accepted ${#thms[@]} theorems and their dependencies" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: lean-evidence-report
+          path: evidence/report/
+          retention-days: 90
+          if-no-files-found: warn
