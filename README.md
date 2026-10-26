@@ -17,6 +17,9 @@ independent detectors must agree before a layer counts as proven.
 
 The two chains never import or name each other's files. On a mismatch the stricter answer stands.
 
+What the proofs produce that DMP's text did not say (corner cases, emergent behaviour, candidates for the axiom system) is kept in
+[`docs/findings.md`](docs/findings.md), one entry per behaviour, for the owner to decide.
+
 ## Run it
 
 ```sh
