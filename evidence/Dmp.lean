@@ -4,6 +4,7 @@ import Dmp.Gate
 import Dmp.Record
 import Dmp.Ground
 import Dmp.Standing
+import Dmp.Exclusion
 import Dmp.Floor
 import Dmp.Field
 import Dmp.R1Model
