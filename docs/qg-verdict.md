@@ -227,6 +227,47 @@ nearly all of quantum gravity, section 8 above). Naming that specification "quan
 name refers to. The paper can say that DMP derives a specification of gravity and that the specification is classical between parts,
 which a positive test of gravitationally mediated entanglement in our 3+1 world would refute.
 
+## 9. The owner's replies to the cold read, integrated where they can be
+
+Team Fable assessed the owner's replies to its thirteen conflicts and eight divergences (gravity#22 section 7) and integrated none.
+The owner, 14:30Z: "FYI, because fable simply refused to integrate them". Here each reply is read with the assembly of section 2 in
+hand, and integrated wherever it fits without breaking a measurement.
+
+| Id | The owner's reply, in short | Integrated? | How, or why not |
+|---|---|---|---|
+| Q1 | "Dependency chain originating from G0" | Yes | The tree of histories (section 8, Everett): siblings are alternatives, not events, so no spacelike pair is owed. A causal order inside one branch is still needed (X5). |
+| Q2 | Unless two are one, it collapses into its information, which returns to the fields it correlates with | Yes | The collapse is real and is check [4]'s fidelity 0.5 when both halves read the content. The halves need not read it: reading existence only (the syndrome) collapses nothing, so two independent witnesses stay. Section 3. |
+| Q3 | "One can never vote, so everything has to be at least two" | Half | Geometry acts on paths (routing as geodesics) and never on trust. Section 3. |
+| Q4 | The WKHs are pure information, they are because they have to be | Yes, abstracted | The owner's own abstraction (14:08Z): the same start always gives the same chain. No constant is asserted. The absence (no derived number) stays. |
+| Q5 | Friction between existence and anti-existence | Half | The pair picture of Hawking radiation, or a firewall (Almheiri, Marolf, Polchinski and Sully 2013); no temperature follows, so the absence stays. |
+| Q6 | "Axiom" | Open | Possible as an axiom once it names a metric and a speed; it costs T32's two clauses. |
+| Q7 | What it cannot contain leaves as the leak of its storage medium; bits rot | Yes | Dispersal at Landauer's price, destruction as inaccessibility (Harlow and Hayden 2013). Unitarity is kept. Section 3. |
+| Q8 | Vector field against stacked scalar fields, tick rates log/ln | No | A constant ratio of tick rates is periodic; Lorentz invariance needs random sprinkling (Bombelli et al. 1987). |
+| Q9 | Information goes where it is more optimal; superconductors | No as written | See D8 below for the reading that does fit. |
+| Q10 | The clock is the core duality's Planck time; every information quantum carries that energy | No | A bit costs kT ln 2 (Toyabe et al. 2010), about 10^-30 of the Planck energy at room temperature. |
+| Q11 | The stage votes only through its existence | Yes | The gate checks existence only (section 2), so the stage enters as membership, never as a vote. |
+| Q12 | "I can not refute that" | Stays | X5, no classical limit yet. |
+| Q13 | The facts led the model the right way; Hawking radiation is unexplained | Half | Hawking radiation is explained (Hawking 1975); the fate of the information is what is open. The model has no number yet; the candidate is the cosmological constant (Sorkin's 1/sqrt N, a separate piece of work). |
+| D1 | The boundary radiates its friction both ways, equilibrium kept | No | Three solar masses left GW150914 (Abbott et al. 2016). |
+| D2 | Decay pumped to a different reality relieves the pressure | No | The measured sign (spin lowers the area) is not produced. |
+| D3 | Information = force-carrying particles | Yes, by dropping E18 | Force carriers travel at c and cost energy; that is the measurement. |
+| D4 | A fact must be asserted to exist | No | The waveform gave the masses to every detector, unasked. |
+| D5 | 2.42 is plausible, expected 2.6 to 2.8 | Yes, with the source named | The assembly gives 2 sqrt 2 = 2.83 for ideal content (check [5]); 2.42 is that value lowered by experimental imperfection. The 2.6 to 2.8 expectation is the quantum range. The number comes from quantum mechanics carried as content, not from DMP, and the ceiling is Cirel'son's 2 sqrt 2, not 3. |
+| D6 | Effect = strength of assertion times frequency | No | Landauer's price does not depend on the carrier's frequency. |
+| D7 | Oscillon decay explains flatness | No | Oscillons form after inflation (Amin et al. 2012); accelerated expansion drives curvature to zero (Guth 1981). |
+| D8 | "What's wrong with superconductors again?" | Yes, reversed | Below. |
+
+**Superconductors, reversed.** The sentence fails in direction and speed: a superconductor appears when information sharing becomes
+total, not low (every Cooper pair shares one macroscopic phase), and nothing in it approaches c (the pairs drift at millimetres per
+second; a signal in a superconducting line moves like one in any line). Reversed, it fits DMP well: a Cooper pair is two electrons bound
+into one unit, a Duality, and the flux quantum h/2e measures that unit's charge as 2e; the energy gap of about 3.5 kT_c (Bardeen, Cooper
+and Schrieffer 1957) is a gate that refuses every scattering act cheaper than breaking a pair, so no act happens and no resistance
+appears. A superconductor is a condensate of Dualities whose gate refuses every act below the cost of breaking one.
+
+**Tally after integration.** Of thirteen conflicts: six integrated (Q1, Q2, Q4, Q7, Q11, and Q3 half), two halves (Q5, Q13), one open
+(Q6), three not integrated (Q8, Q9 as written, Q10), one conceded (Q12). Of eight divergences: three integrated (D3, D5, D8), five stand.
+None of this touches section 4: the wall is Observability, and the verdict stays CAN NOT for our universe.
+
 ## References
 
 Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the others are standard results cited in gravity#19 and #22.
