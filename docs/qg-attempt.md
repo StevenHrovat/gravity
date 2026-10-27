@@ -358,9 +358,34 @@ picture carries the quantum numbers without the amplitude. Sharpened by the owne
 information", a law rather than a habit, it meets a fourth fact, the first one quantum mechanics ever stated: the photon that gives an
 electron's position kicks its momentum (Heisenberg 1927), so information about the existence half is gained only together with an exchange
 in the other half, and the product of the two uncertainties is at least ħ/2. The two halves exchange inseparably; a rule that only one can is
-the negation of the uncertainty principle's mechanism. None of this touches the five requirements above: the carriers are quanta of fields on
-the existence field, the carrier of the existence exchange is the graviton, and the existence field's own quantum state is still not in the
-picture.
+the negation of the uncertainty principle's mechanism. Adapted by the owner once more, "only one side of the DoE, as collapsing into
+existence space also gives both time and space": the existence side is then the event, its time and place, which is never exchanged but
+collapses, and everything exchanged, momentum and charge alike, is the information side. Under that reading the law is true by definition,
+the side defined as not exchanged does not exchange, and what it says beyond the definition is that interactions happen at points, which is
+the locality of the vertex, true and not new. What it adds, that each interaction collapses the existence side to a definite time and place,
+is false: a photon diffracted by a crystal exchanges momentum with the lattice and no atom is the site, and the diffraction pattern exists only
+because the position did not collapse (Bragg and Bragg 1913); a recoil-free gamma ray shares its recoil with the whole crystal and localises
+in no nucleus (Moessbauer 1958). The amplitude sums over every place the exchange could have happened, and momentum conservation is the
+result of that sum, not of a collapse. The adaptation trades a false law for a tautology plus a different false statement. None of this
+touches the five requirements above: the carriers are quanta of fields on the existence field, the carrier of the existence exchange is the
+graviton, and the existence field's own quantum state is still not in the picture.
+
+The universal quantum (the owner, 2026-10-27): "Its lower bound is constrained by Planck's constant, G and c. This is the universal
+quantum." What holds: ħ, G and c define one length, one time and one energy, Planck's units (1899), a length of about 1.6 · 10⁻³⁵ m, a time
+of about 5.4 · 10⁻⁴⁴ s, an energy of about 1.2 · 10¹⁹ GeV. It is the scale at which a quantum's Compton wavelength equals its Schwarzschild
+radius, the one place where the warping of existence and the quantum of information are the same size, and everyone agrees that quantum
+gravity lives there. Naming the scale is correct. Three things it does not do. First, the lower bound is a conjecture, not a consequence:
+that nothing can be resolved below the Planck length is argued from general relativity and quantum mechanics together, a measurement that
+fine putting enough energy in a small enough region to make a horizon (Mead 1964), that is, from the two theories the axioms were to
+replace; and whether existence is granular at that scale is open, quantised in loop quantum gravity (areas in units of the Planck area,
+Rovelli and Smolin 1995), differently in string theory, not at all in asymptotic safety, with no granularity observed, and the sharpest test,
+the arrival times of a gamma-ray burst's photons, puts any linear energy dependence of the speed of light above the Planck energy itself
+(Abdo et al. 2009). Second, the universal quantum cannot be both of the owner's: the lowest energy that fits the horizon, about 10⁻³³ eV,
+and the Planck energy, about 10²⁸ eV, are 61 orders of magnitude apart, the two ends of the universe. They are one ratio, and the square of
+that ratio is the horizon's bit count, about 10¹²² (`NoGoAxioms.lean` section 3, `two_ends_count_the_horizon`); the Planck end comes from
+ħ, G and c, the horizon end from Λ, and neither comes from the axioms. Third, the scale is where the five requirements bite, not where they
+are met: at the Planck length the warping must be quantum, the infinities appear, and the states must be counted. The axioms give the scale,
+which dimensional analysis gives anyone holding ħ, G and c, and nothing at it.
 
 The verdict for this section: a consistent frame that physics satisfies, and for that reason not a theory of anything in particular. It is
 satisfied by worlds with gravity and without, with Einstein's law and with Newton's, so it derives no gravity; a quantum gravity would have to
@@ -392,5 +417,5 @@ owner has come: it reaches the classical horizon and stops where every emergent-
 
 Section 3 stands, and it is DMP's: a self-propagating duality under a field has a second law, a Lyapunov potential, an equilibrium, a horizon
 that leaks only counts and a boundary-set capacity. That is a theory of trusted infrastructure with the shape of black-hole thermodynamics,
-proven in 340 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
+proven in 341 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
 are the reason.

@@ -85,4 +85,16 @@ theorem strong_axioms_do_not_fix_the_constant :
   ⟨⟨⟨3, true, true, true, 1⟩, .tensor⟩, ⟨⟨3, true, true, true, 2⟩, .tensor⟩,
    ⟨⟨rfl, rfl, rfl, rfl⟩, Nat.zero_lt_one⟩, ⟨⟨rfl, rfl, rfl, rfl⟩, by decide⟩, rfl, by decide⟩
 
+/-! ## 3. The universal quantum
+
+The owner (2026-10-27): "Its lower bound is constrained by Planck's constant, G and c. This is the universal quantum." ħ, G and c define one
+length, Planck's (1899), about 1.6 · 10⁻³⁵ m, and the owner's earlier universal quantum, the lowest energy that fits the horizon, is set by
+the horizon's radius, about 1.37 · 10²⁶ m. The two are the two ends of the universe, one ratio of about 10⁶¹, and the square of that ratio
+is the horizon's bit count: the arithmetic below, on record so the two universal quanta are seen to be one ratio with the Planck end from
+ħ, G and c and the horizon end from Λ, neither from the axioms. -/
+
+/-- With the horizon radius 137 · 10²⁴ m and the Planck length 16 · 10⁻³⁶ m, the square of their ratio lies between 10¹²¹ and 10¹²²: the
+    count of the horizon's bits, which is where the two universal quanta meet. -/
+theorem two_ends_count_the_horizon : 10 ^ 121 ≤ (137 * 10 ^ 60 / 16) ^ 2 ∧ (137 * 10 ^ 60 / 16) ^ 2 < 10 ^ 122 := by decide
+
 end Dmp
