@@ -62,7 +62,12 @@ hidden-variable model in Bell's sense, and every such model satisfies the CHSH i
 2015, loophole-free). A theory whose outcomes are gate verdicts cannot reproduce quantum mechanics, and a theory of quantum gravity must. The
 obstruction is the second axiom itself: "existence decided by independent halves on evidence each verified" is local realism, and Bell's
 theorem is the proof that local realism is not quantum. There is also no constant anywhere in the objects: nothing is changed by ħ → 0, and a
-theory unchanged by ħ → 0 contains no quantum mechanics.
+theory unchanged by ħ → 0 contains no quantum mechanics. One narrowing, from the refutation of gravity#21 (row A5a, `docs/refutation.md`,
+`Refute.lean`): the bound is a property of the encoding. With each half reading its own setting only, as `gateModel` has it, the model is
+local and bounded by 2; with each half reading both settings, as Axiom 1's "full reach over the act" can be read, the model signals and
+reaches 4 (`rf_full_reach_reaches_four`). Neither is quantum: quantum correlations exceed 2 and never signal, and they do so by amplitudes.
+So the sentence "the gate obeys CHSH" holds of the local encoding only, and the stop rests on the paragraph's last clause, which holds of
+both encodings: outcomes that are deterministic verdicts, local or with full reach, have no amplitudes and nothing changed by ħ → 0.
 
 **4.3 The forward direction has one equation, and it fails.** Forward from a horizon and an entropy to the field equations is Jacobson's
 derivation (1995): at every local horizon, heat flux equals temperature times entropy change (Clausius), with the Unruh temperature and the
@@ -460,5 +465,5 @@ owner has come: it reaches the classical horizon and stops where every emergent-
 
 Section 3 stands, and it is DMP's: a self-propagating duality under a field has a second law, a Lyapunov potential, an equilibrium, a horizon
 that leaks only counts and a boundary-set capacity. That is a theory of trusted infrastructure with the shape of black-hole thermodynamics,
-proven in 341 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
+proven in the chain's theorems (352 at this head, with gravity#21's counter-models merged in). It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
 are the reason.
