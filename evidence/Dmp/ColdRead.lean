@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R35
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R36
 below are the labels of its table rows.
 -/
 
@@ -952,5 +952,24 @@ theorem cr_no_dimension_fits_both_floors : ∀ d : Nat, ¬ (d - 1 = 3 ∧ d - 1 
     no infinite density is possible in DMP, at G0 or anywhere. -/
 theorem cr_no_hash_in_the_chain (a b a' b' : CrPart) (h : CrPart.duality a b = CrPart.duality a' b') : a = a' ∧ b = b' :=
   cr_merge_is_one_to_one a b a' b' h
+
+
+/-! ## R36. The dimensionless ratio (the owner, 2026-10-27, sent during this pass)
+
+"This ratio is, at its core, dimensionless, because it describes the numerical way how dimensions interact with each other." In the
+chain's one relation between information and energy, Landauer's (R15), the bits a unit of energy buys are set by the inverse
+temperature: the ratio carries the temperature and is no number of its own. -/
+
+/-- Bits per unit of energy change with the inverse temperature: the ratio of information to energy is not a constant. -/
+theorem cr_bits_per_energy_is_set_by_the_temperature : cr_landauerBits 1000 1 ≠ cr_landauerBits 1000 2 := by decide
+
+
+/-- "One quantum of Existence per one quantum of Information, the balance always maintained": in the chain that is K3, one record
+    entry per act, a ratio of one by construction (`step_records_once`). It is dimensionless because it is a count over a count, and
+    it relates to no energy, so it is not the ratio of R15 and E25. -/
+theorem cr_one_quantum_per_quantum_is_k3 (j1 j2 : Evidence → Verdict) (s : State) (r : Request) :
+    (step j1 j2 s r).log.length - s.log.length = 1 := by
+  have := step_records_once j1 j2 s r
+  omega
 
 end Dmp
