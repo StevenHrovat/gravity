@@ -17,6 +17,7 @@ This folder supersedes the earlier drafts of gravity#20 (`docs/paper/`, "The Dua
 | `guid.tex` | the paper (LaTeX, `article` class, inline bibliography, about 12 pages) |
 | `preface.tex` | the owner's preface, verbatim as posted 17:23Z, LaTeX-escaped only; one change, his (the subtitle, 17:40Z) |
 | `README.md` | this spec: format, what backs each claim, the release gates |
+| `fault-verification-prompt.md` | the prompt for Team Fable's final fault verification (the owner pastes it; its findings come back as a draft PR) |
 
 ## Build
 
