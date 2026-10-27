@@ -17,7 +17,8 @@ patterns=(
 )
 if [ "${1:-}" != "" ] && [ -f "$1" ]; then mapfile -t extra < "$1"; patterns+=("${extra[@]}"); fi
 # Known technical names that share a pattern's shape (algorithm names, run ids); removed from the hits.
-allow='HMAC-SHA[0-9]+|SHA-[0-9]+|GRB-[0-9]{4}|"1\.3\.6\.1\.[0-9.]+"|generated once for CM'
+# The paper's contact address is the owner's own choice (2026-10-27 18:34Z), the only e-mail address allowed.
+allow='HMAC-SHA[0-9]+|SHA-[0-9]+|GRB-[0-9]{4}|"1\.3\.6\.1\.[0-9.]+"|generated once for CM|hrovat\.steven@googlemail\.com'
 fail=0
 for p in "${patterns[@]}"; do
   # A vendored root repository carries its own scrub-scan.sh whose pattern literals share the shapes scanned for here; the copy is checked by its own repository and by its PIN.
