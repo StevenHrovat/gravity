@@ -71,7 +71,7 @@ theorem Recipe.verdict_trichotomy (fcl : List FailureClass) (r : Recipe) (agree 
 
 /-! ## What a proven configuration keeps -/
 
-/-- In a configuration Gravity marks proven, whatever passes any line was passed by a minted Duality on its chain (T38, G0). -/
+/-- In a configuration Gravity marks proven, whatever passes any line was passed by a minted Duality on its chain (T5, G0). -/
 theorem Recipe.proven_pass_has_two_independent_witnesses (fcl : List FailureClass) (r : Recipe) (agree : Nat → Bool)
     (hp : r.verdict fcl agree = .proven) (v : Nat → Verdict) (i : Nat) (hi : i < r.n) (h : r.decide v i = .pass) :
     ∃ j ∈ r.chain i, (r.line j).dot.minted fcl ∧ v j = .pass :=
