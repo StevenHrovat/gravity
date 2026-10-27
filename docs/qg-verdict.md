@@ -204,6 +204,21 @@ derive. *All three WKH irrational*: refuted for ħ, G and c, whose numbers are s
 dimensionless constants, since no measurement of finite precision can show a number irrational; and irrational inputs do not prevent
 collisions, which are a property of the map, not of its inputs (the digest's own collision, finding F7). **Effect on the verdict: none.**
 
+**The owner, 14:00Z, verbatim:** "BUT: 2s1t is also theoretically possible still, right? So two whole numbers, in whatever number system
+they may be (probably in relation to the quantum they define), can never be provable to either Exist or not, but never in between. A
+binary Existance field with a spacetime obeying curvature, is just how our DMP turned out."
+
+Read as two space dimensions and one time. Assessed: yes, possible, and it is where DMP fits best. Gravity in 2+1 dimensions has no
+local degrees of freedom: no gravitational waves and no attraction between static masses, only conical deficits (Deser, Jackiw and
+'t Hooft 1984). It is an exactly soluble quantum theory, a Chern-Simons theory with two gauge factors whose two levels are the "two whole
+numbers" (Witten 1988; Witten 2007 argues they are integers, with central charge 24k), and it is holographic (Brown and Henneaux 1986).
+Theorem A costs almost nothing there: with no local gravitational field, there is no mediator for theorem B to forbid, and the BMV test
+has nothing to measure. What remains is that DMP forbids superpositions of different global geometries (two black hole masses), a
+superselection rule with no local test. So in 2+1 the verdict softens from "refuted by experiment" to "a no in principle that no local
+experiment can see". Two cautions: whether pure 3D quantum gravity exists as a consistent theory is still open (Maloney and Witten 2010),
+and our universe is not 2+1, since gravitational waves, the local degrees of freedom 2+1 lacks, are measured (Abbott et al. 2016).
+**Effect on the verdict for our universe: none. For a 2+1 universe: CAN, up to one superselection rule on the global geometry.**
+
 ## References
 
 Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the others are standard results cited in gravity#19 and #22.
@@ -230,6 +245,7 @@ Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the o
 - J. Myrheim, "Statistical Geometry", CERN preprint (1978)
 - J. J. Halliwell, "Decoherence in quantum cosmology", *Phys. Rev. D* 39, 2912 (1989); C. Kiefer, "Continuous measurement of mini-superspace variables by higher multipoles", *Class. Quantum Grav.* 4, 1369 (1987)
 - J. B. Hartle, S. W. Hawking, "Wave function of the Universe", *Phys. Rev. D* 28, 2960 (1983); M. J. Duff, L. B. Okun, G. Veneziano, "Trialogue on the number of fundamental constants", *JHEP* 03 (2002) 023
+- S. Deser, R. Jackiw, G. 't Hooft, *Ann. Phys.* 152, 220 (1984); E. Witten, "2+1 dimensional gravity as an exactly soluble system", *Nucl. Phys. B* 311, 46 (1988); E. Witten, "Three-dimensional gravity revisited", arXiv:0706.3359 (2007); A. Maloney, E. Witten, *JHEP* 02 (2010) 029; J. D. Brown, M. Henneaux, *Commun. Math. Phys.* 104, 207 (1986); B. P. Abbott et al., *Phys. Rev. Lett.* 116, 061102 (2016)
 - H. Everett III, "'Relative state' formulation of quantum mechanics", *Rev. Mod. Phys.* 29, 454 (1957)
 - R. P. Feynman, "Space-time approach to non-relativistic quantum mechanics", *Rev. Mod. Phys.* 20, 367 (1948)
 - M. Gell-Mann, J. B. Hartle, "Quantum mechanics in the light of quantum cosmology", in *Complexity, Entropy and the Physics of Information* (1990)
