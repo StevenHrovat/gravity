@@ -15,6 +15,7 @@ This folder supersedes the earlier drafts of gravity#20 (`docs/paper/`, "The Dua
 | File | What |
 |---|---|
 | `guid.tex` | the paper (LaTeX, `article` class, inline bibliography, 13 pages) |
+| `guid.pdf` | the paper as PDF, built from `guid.tex` at `d76e014` (reproducible, see Build); same content, DMP version stays 0.9.9 (the owner, 2026-10-27 19:05Z) |
 | `preface.tex` | the owner's preface, verbatim as posted 17:23Z, LaTeX-escaped only; his changes of 17:40Z (subtitle) and 18:14Z (approved, with two corrections) |
 | `README.md` | this spec: format, what backs each claim, the release gates |
 | `consolidation.md` | every finding of the two final verifications (#26 Opus, #27 Fable) and what was done with it |
@@ -24,6 +25,15 @@ This folder supersedes the earlier drafts of gravity#20 (`docs/paper/`, "The Dua
 
 ```sh
 cd docs/guid && pdflatex guid.tex && pdflatex guid.tex     # twice for cross-references; no BibTeX
+```
+
+`guid.pdf` is built reproducibly: with TeX Live 2023 (pdfTeX), `SOURCE_DATE_EPOCH` set to the commit time of the `guid.tex` it was
+built from and `FORCE_SOURCE_DATE=1`, two builds give the same bytes (sha256 `8d3c38ea187ee69365086c97903ee37046e7f56df18fcaa04c8f14f3897aed30`
+for `d76e014`). Rebuild it whenever `guid.tex` or `preface.tex` changes.
+
+```sh
+cd docs/guid && export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct -- guid.tex preface.tex) FORCE_SOURCE_DATE=1 \
+  && pdflatex guid.tex && pdflatex guid.tex && rm -f guid.aux guid.log guid.out
 ```
 
 Packages: `lmodern`, `geometry`, `amsmath`, `amssymb`, `amsthm`, `booktabs`, `tabularx`, `enumitem`, `hyperref`, `url`; all in TeX
@@ -83,5 +93,6 @@ Typos in the preface stay as written until the owner says otherwise ("subet", "a
 - **G3.** Every finding that can be closed is closed; the paper is corrected once, against all of them.
 - **G4.** The repositories hold at least everything needed to verify the paper (the owner, 17:40Z): the drafts this paper cites (#24's
   check [7] and `Blind.lean`, the review records) are merged or pinned by commit, and the repositories are public.
+  The owner made dmp, gravity, im and cm public on 2026-10-27 (about 19:00Z); the drafts are still open.
 - **G5.** The project's release gate (the owner, 2026-10-27 17:30Z): the owner and Sirius agree on the form; every repository is in a state
   we are proud to show; the commit author identity and a contributor's publish consent are settled.
