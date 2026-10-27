@@ -3,15 +3,15 @@ What the physics pass needed (docs/physics.md): two small theorems in DMP's own 
 
 1. **The capacity bound.** A Duality's witnesses verify standings live (Axiom 2) and serve acts across the boundary; both draw on one
    budget of checks per tick. A standing that is not verified within its validity lapses (Axiom 2: "a standing is evidence with a
-   validity"; T2: a lapse is not an act against it) and from then on passes nothing (`Gate.stale_never_passes`, `lapsed_never_ok` below),
-   so the item it admitted is contained where it lies (T37). The theorem is a pigeonhole: over a window of `W` ticks with a budget of
+   validity"; T7: a lapse is not an act against it) and from then on passes nothing (`Gate.stale_never_passes`, `lapsed_never_ok` below),
+   so the item it admitted is contained where it lies (T4). The theorem is a pigeonhole: over a window of `W` ticks with a budget of
    `r` checks per tick, the standings kept live plus the boundary acts served never exceed `r * W`; when the declared standings exceed
    what the budget leaves after the boundary work, one of them is never refreshed in the window. This is the owner's IT instance
    (2026-10-27 02:21Z: a cluster that serves more I/O "can actively maintain less clients with the same number of nodes") as a theorem,
    and the only place in DMP where the balance of Axiom 1 (trust ageing against live verification) has a number.
 
 2. **The content-free readout.** A record entry is its time and three verdicts and nothing else (Axiom 3: "counts always, content by a
-   grant"; T31: an outside reader learns of the inside only its size, its staleness and its rotation interval). `Entry.ext` says that two
+   grant"; T24: an outside reader learns of the inside only its size, its staleness and its rotation interval). `Entry.ext` says that two
    entries that agree on those four fields are the same entry: there is no field a content could hide in. This is the shape of the
    no-hair theorem (Israel 1967, Carter 1971, Robinson 1975: a stationary black hole shows the outside exactly mass, spin and charge)
    in DMP's objects, and it holds by the type, the way `Config.relayout_never_votes` holds by `rfl`.
@@ -121,7 +121,7 @@ theorem pigeonhole (n : Nat) (l : List Nat) (h : l.length < n) : ∃ i, i < n �
 
 /-- **The capacity bound.** With `n` standings declared and the budget of the window spent beyond what they need (`r * W` is less than the
     standings plus the boundary acts served), some standing is never refreshed in the window: it lapses, and the item it admitted is
-    contained (T37). Clients plus boundary I/O never exceed the budget. -/
+    contained (T4). Clients plus boundary I/O never exceed the budget. -/
 theorem Schedule.some_standing_lapses (s : Schedule r W) (n : Nat) (h : r * W < n + s.servedUpTo W) :
     ∃ i, i < n ∧ ∀ t, t < W → i ∉ refreshed (s.work t) := by
   have hb := s.budget_upTo W (Nat.le_refl W)
@@ -154,7 +154,7 @@ theorem lapsed_never_ok (e : Evidence) (t : Nat) (h : e.validUntil ≤ t) : e.ok
 /-! ## 2. The content-free readout -/
 
 /-- A record entry is its time and three verdicts and nothing else: two entries that agree on those are the same entry. There is no
-    field a content could hide in (Axiom 3, T31: counts, never content). -/
+    field a content could hide in (Axiom 3, T24: counts, never content). -/
 theorem Entry.ext (e e' : Entry) (ht : e.t = e'.t) (h1 : e.v1 = e'.v1) (h2 : e.v2 = e'.v2) (ho : e.outcome = e'.outcome) : e = e' := by
   cases e; cases e'; simp_all
 

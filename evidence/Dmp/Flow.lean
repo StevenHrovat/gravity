@@ -2,7 +2,7 @@
 C3 (a value reaches only parts trusted for its class), the missing theorem of its Coverage line, stated and proven in the smallest model
 that has a class: a value carries its class wherever it goes; at every border a part trusted for the class receives the value and any
 other part receives its count; so every holder along any path is trusted for the class, and widening the class (revealing to a further
-class) is a loosening that needs both witnesses (T24, `Standing.update`). Prior art: Denning's lattice (1976), in which a flow is allowed
+class) is a loosening that needs both witnesses (T16, `Standing.update`). Prior art: Denning's lattice (1976), in which a flow is allowed
 only where every class on the path allows it; here the lattice is the trust relation itself (which parts the admission names for the class).
 -/
 import Dmp.Standing
@@ -54,7 +54,7 @@ theorem no_delivery_outside_class (tf : Part → Class → Bool) (path : List Pa
   exact (value_reaches_only_trusted tf p v v this).1
 
 /-- The width of a class: how many parts its admission names. Widening (revealing to a further class) is a loosening: it needs both
-    witnesses (T24); narrowing is a tightening one witness may make. -/
+    witnesses (T16); narrowing is a tightening one witness may make. -/
 theorem class_never_widened_by_one (old new : Nat) (w : Bool) : update old new w false ≤ old ∧ update old new false w ≤ old :=
   one_witness_never_loosens old new w
 

@@ -15,7 +15,7 @@ This file says what a `.cmb` must carry so that it proves itself, and proves wha
    membership per declared failure class. Read back, the recipe agrees with the original on every declared class, and two recipes that
    agree there have the same well-formedness, chains, decisions, digest and verdict. Nothing Gravity reads is outside the file.
 2. **The digest is not the recipe.** Two well-formed recipes can carry the same VIBE digest and decide differently (a counterexample the
-   kernel checks). The field's digest proves that a live system spans the field of the file's recipe (T33), never which recipe was meant:
+   kernel checks). The field's digest proves that a live system spans the field of the file's recipe (T27), never which recipe was meant:
    the recipe itself is in the file and the digest beside it.
 3. **Two independent halves seal it.** A half signs only when its own build recomputes the file's verdict and digest from the file's recipe
    (`R1Mass.lean`'s pattern: each witness recomputes with its own build). The sealing Duality is the galaxy's own, line 0 of every
@@ -26,7 +26,7 @@ This file says what a `.cmb` must carry so that it proves itself, and proves wha
    never the proof. A file is evidence only in the environment whose DMP and Gravity pins it names (T-P: trust never crosses instances);
    elsewhere it is refused before either path.
 
-Name: in DMP, CMB is Black Hole's observability layer, "counts, never content" (chapter 06). The `.cmb` file is what T33 already asks each
+Name: in DMP, CMB is Black Hole's observability layer, "counts, never content" (chapter 06). The `.cmb` file is what T27 already asks each
 stable to publish (the canonical field, hashed, next to the proof-run hash), with the recipe, the pins and the seal added so that the
 published thing proves itself. Hashing is outside the model: the digest here is the canonical field itself (depth, mass per line), and a
 hash of it proves no more and no less than the digest does.
@@ -249,7 +249,7 @@ structure Pin where
   deriving DecidableEq, Repr
 
 /-- The Cosmic Microvibe Background: what one file carries so that it proves its own recipe. The DMP it was proven against and the
-    Gravity that proved it, both pinned; the declared failure classes; the recipe, line by line; the expected VIBE field (T33); and
+    Gravity that proved it, both pinned; the declared failure classes; the recipe, line by line; the expected VIBE field (T27); and
     Gravity's verdict. The seal (both halves' signatures) is over all of it and lives beside it. -/
 structure Cmb where
   dmp : Pin
@@ -308,7 +308,7 @@ theorem Cmb.one_recipe_one_seal (b : Build) (c c' : Cmb) (h : c.signs b = true) 
   exact ⟨(Prod.mk.injEq _ _ _ _).mp e' |>.1, (Prod.mk.injEq _ _ _ _).mp e' |>.2⟩
 
 /-- Line 0 of every well-formed recipe with a line is a galaxy with no parent and a minted Duality: no earlier line exists to be its
-    parent, so the recipe requires it to be a root, and a root nobody gates must be a Duality (T38, G0). -/
+    parent, so the recipe requires it to be a root, and a root nobody gates must be a Duality (T5, G0). -/
 theorem Recipe.line0_minted_galaxy (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (hn : 0 < r.n) :
     (r.line 0).parent = none ∧ (r.line 0).kind = .galaxy ∧ (r.line 0).dot.minted fcl := by
   have hok := hwf 0 hn
@@ -391,7 +391,7 @@ theorem Cmb.bigBang_iff (c : Cmb) (env : Environment) (m : List (Nat × Nat)) (h
   rw [if_pos hin]
   by_cases h : c.digest = m <;> simp [h]
 
-/-- On a sealed file the redeploy path means the live system spans the field of the file's recipe (T33): what is redeployed is the
+/-- On a sealed file the redeploy path means the live system spans the field of the file's recipe (T27): what is redeployed is the
     recipe the verdict is about, and the same environment verifies its own cold start by reproducing the same CMB. -/
 theorem Cmb.redeploy_is_recipe_field (a1 a2 : Nat → Bool) (c : Cmb) (h : c.sealed (refBuild a1) (refBuild a2) = true)
     (env : Environment) (m : List (Nat × Nat)) (hr : c.plan env m = some .redeploy) : m = (Recipe.decode c.recipe).digest := by

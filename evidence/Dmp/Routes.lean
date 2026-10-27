@@ -1,5 +1,5 @@
 /-
-T3b (no lockout), C18 (whatever spoke to CMOS keeps a route) and C25 (a deployment that would remove the last route is refused): the
+T8b (no lockout), C18 (whatever spoke to CMOS keeps a route) and C25 (a deployment that would remove the last route is refused): the
 missing theorem their Coverage lines name, in the smallest model that has a route. A half holds, per action, the routes by which it reaches that
 action's channel; an act that removes a route (a tightening, a retire, a deployment) is refused when it would remove the last one; so after
 any single act every half keeps at least one route to every action it had a route to. The ratchet of C25 (the list of known gaps only

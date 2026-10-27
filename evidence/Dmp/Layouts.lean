@@ -21,7 +21,7 @@ def w (p h k : Nat) : Witness := ⟨fun c => if c = person then p else if c = ho
 
 /-- A galaxy minted by two people on two hosts with two keys. -/
 def galaxyDot : DoT := ⟨w 1 10 100, w 2 20 200⟩
-/-- The knowledge layer's Duality: management (person 3) and the subject-matter expert (person 4), T38. -/
+/-- The knowledge layer's Duality: management (person 3) and the subject-matter expert (person 4), T5. -/
 def knowledgeDot : DoT := ⟨w 3 30 300, w 4 40 400⟩
 /-- A dwarf galaxy's Duality: two other people. -/
 def dwarfDot : DoT := ⟨w 5 50 500, w 6 60 600⟩
@@ -49,12 +49,12 @@ def layoutB : Recipe := { layoutA with line := fun i => if i = 0 then line .gala
 
 example : layoutB.verdict classes allAgree = .outOfSpec := rfl
 
-/-- C. The same as A, but the singularity has two nodes (T3a's floor is three). -/
+/-- C. The same as A, but the singularity has two nodes (T8a's floor is three). -/
 def layoutC : Recipe := { layoutA with line := fun i => if i = 2 then line .singularity knowledgeDot (some 1) 2 else layoutA.line i }
 
 example : layoutC.verdict classes allAgree = .outOfSpec := rfl
 
-/-- D. The knowledge layer's two halves are one part, laid over the minted galaxy: T38 allows it, the galaxy gates the layer. -/
+/-- D. The knowledge layer's two halves are one part, laid over the minted galaxy: T5 allows it, the galaxy gates the layer. -/
 def layoutD : Recipe := { layoutA with line := fun i => if i = 1 then line .information onePartDot (some 0) else layoutA.line i }
 
 example : layoutD.verdict classes allAgree = .proven := rfl
