@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R31
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R32
 below are the labels of its table rows.
 -/
 
@@ -849,5 +849,22 @@ theorem cr_full_mutual_trust_is_one_witness (j : Evidence → Verdict) (e : Evid
     gate (guard j e t) (guard j e t) = guard j e t := by
   generalize guard j e t = v
   cases v <;> decide
+
+
+/-! ## R32. The correspondence axiom for quantum gravity (the owner, 2026-10-27, sent during this pass)
+
+"What is observed and described as quantum gravity represents the DoE this axiom system models." A correspondence rule that names
+no dictionary is satisfiable by every model and every world: the constant representation exists whenever anything at all is
+observed, so the axiom excludes nothing; and over an empty observation set a representation exists only for an empty model, so
+until something is observed as quantum gravity the axiom models nothing. -/
+
+/-- "Represents" without a dictionary: for any observations and any model there is a representation, the constant one. -/
+theorem cr_representation_without_a_dictionary_excludes_nothing (Model Obs : Type) (o : Obs) :
+    ∃ rep : Model → Obs, ∀ m, rep m = o :=
+  ⟨fun _ => o, fun _ => rfl⟩
+
+/-- Over an empty observation set a representation exists only for an empty model. -/
+theorem cr_representing_the_unobserved_empties_the_model (Model : Type) (rep : Model → Empty) : Model → False :=
+  fun m => (rep m).elim
 
 end Dmp
