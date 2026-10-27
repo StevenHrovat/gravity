@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R20
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R22
 below are the labels of its table rows.
 -/
 
@@ -474,5 +474,48 @@ theorem cr_merge_constituents (a b : CrPart) : (CrPart.duality a b).constituents
 theorem cr_two_minimal_dualities_fall_short_of_five (i j k l : Nat) :
     (CrPart.duality (.duality (.constituent i) (.constituent j)) (.duality (.constituent k) (.constituent l))).constituents.length = 4 :=
   rfl
+
+/-! ## R22. The join that mints (the owner, 2026-10-27, sent during this pass)
+
+"A new system that joins the greater cluster must prove to enhance the total maximum of the optimized scalar field across the new
+vector field boundary, which automatically results in a mint, which breaks trust with every external system." In DMP's objects a system
+joins by a line laid over an existing line (`Recipe.extend`), the dwarf galaxy among the kinds: the root stays the same minted galaxy
+(no new mint), the joiner is gated by the galaxy above it (trust kept, not broken), and the stack's own scalar, the potential, is never
+lowered by a join: a new layer adds its shortfall. -/
+
+/-- A join keeps the root: line 0 of the extended recipe is line 0 of the recipe, the same galaxy, the same minting. -/
+theorem cr_join_keeps_the_root (r : Recipe) (l : Line) (h : 0 < r.n) : (r.extend l).line 0 = r.line 0 :=
+  r.extend_line l 0 h
+
+/-- The dwarf galaxy of layout A (line 3) has the main galaxy (line 0) on its chain: it is gated from above, trust kept. -/
+theorem cr_dwarf_has_the_galaxy_on_its_chain : 0 ∈ Layouts.layoutA.chain 3 := by decide
+
+/-- So the main galaxy's refusal is the dwarf's refusal: the joiner trusts the cluster it joined (the words, "Who maintains it"). -/
+theorem cr_dwarf_refused_when_the_galaxy_refuses :
+    Layouts.layoutA.decide (fun j => if j = 0 then .refuse else .pass) 3 = .refuse := by decide
+
+/-- A join never lowers the stack's potential: the new layer's shortfall is added, so DMP's own scalar is raised by a join, not
+    "enhanced" toward an optimum (the optimum of the potential is zero, K4). -/
+theorem cr_join_never_lowers_the_stack_potential (l : List Held) (ls : List (List Held)) : stackPhi ls ≤ stackPhi (l :: ls) := by
+  simp only [stackPhi]
+  omega
+
+/-- The owner's reasoning for the join ("it goes up the dependency chain, not down, which is not possible"): in a well-formed recipe
+    every parent is an earlier line, so a join goes down the chain, never up. DMP's rule, and this pass agrees with it. -/
+theorem cr_no_line_points_up (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (i j : Nat) (hi : i < r.n)
+    (hp : (r.line i).parent = some j) : j < i := by
+  have hok := (hwf i hi).1
+  rw [hp] at hok
+  exact hok.1
+
+/-- What the rule leaves: a new line is on no chain of any existing line (the frame rule). Laid below a line it is gated by that line's
+    chain; laid beside the root, as a second galaxy, it decides nothing for the cluster and is decided by nothing in it, which is a
+    separate instance (T-P) that never held trust to break, not a join. -/
+theorem cr_new_line_is_on_no_existing_chain (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (l : Line) (i : Nat)
+    (hi : i < r.n) : r.n ∉ (r.extend l).chain i := by
+  rw [r.extend_chain fcl hwf l i hi]
+  intro h
+  have := r.chain_le fcl hwf i hi r.n h
+  omega
 
 end Dmp
