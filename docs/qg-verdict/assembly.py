@@ -1,6 +1,6 @@
 """The constructive assembly: DMP parts arranged as a holographic code, run numerically.
 
-Read with docs/qg-verdict.md. Needs only numpy. Runs in about a minute. Every printed line is a check with its expected value.
+Read with docs/qg-verdict.md. Needs only numpy. Runs in a few minutes. Every printed line is a check with its expected value.
 
 The arrangement (section 2 of the verdict):
   - a part is one block of the five-qubit code [[5,1,3]] (Laflamme et al. 1996); the six-leg perfect tensor of that code
@@ -272,6 +272,113 @@ rho1 = CNOT_AM @ rho @ CNOT_AM.T
 rho1 = sum(p @ rho1 @ p for p in dephase)  # both halves hold the mediator: it is read
 rho1 = CNOT_AM @ CZ_MB @ rho1 @ CZ_MB.conj().T @ CNOT_AM.T
 results.append(check("A-B negativity, mediator held by both halves (classical geometry)", negativity_AB(rho1), 0.0))
+
+# ---------------------------------------------------------------------------------------------------------------------
+print("\n[7] The split assembly: background in the records, gravity's quantum part in content between parts (second pass)")
+# Three parts in a row, each a [[5,1,3]] block (15 physical qubits): mass A, the mediator M (one mode of the linearised
+# metric, content), mass B. Every act is a grant between two neighbouring parts (Axiom 3: content moves only by a grant),
+# gated by both witnesses of both parts, who read the syndrome only (from trust only existence). The record of each act
+# names the act, the two parts and the four syndromes (Axiom 3: written at the act, readable in full by every witness).
+# The layout input is the demand count per part (Axiom 3: any reader sees the counts always).
+E2 = np.kron(ENC, ENC)  # 1024 x 4: two logical qubits -> two blocks
+
+
+def two_block_gate(u4):
+    """A logical two-qubit unitary on two code blocks, extended unitarily off the code space."""
+    return E2 @ u4 @ E2.conj().T + (np.eye(1024) - E2 @ E2.conj().T)
+
+
+CNOT4 = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]], dtype=complex)
+CZ4 = np.diag([1, 1, 1, -1]).astype(complex)
+G_CNOT, G_CZ = two_block_gate(CNOT4), two_block_gate(CZ4)
+S_PLUS = [(np.eye(32) + s) / 2 for s in S_OPS]
+
+
+def apply_two(state, gate, i, j):
+    t = state.reshape(32, 32, 32)
+    t = np.moveaxis(t, (i, j), (0, 1)).reshape(1024, 32)
+    t = (gate @ t).reshape(32, 32, 32)
+    return np.moveaxis(t, (0, 1), (i, j)).reshape(-1)
+
+
+def witness_reads(state, block):
+    """One witness reads the four stabilizers of one block itself (projective, live)."""
+    bits = []
+    for proj_plus in S_PLUS:
+        t = np.moveaxis(state.reshape(32, 32, 32), block, 0).reshape(32, -1)
+        hit = proj_plus @ t
+        prob = np.vdot(hit, hit).real
+        bit = 0 if rng.random() < prob else 1
+        t = hit if bit == 0 else t - hit
+        t /= np.linalg.norm(t)
+        state = np.moveaxis(t.reshape(32, 32, 32), 0, block).reshape(-1)
+        bits.append(bit)
+    return tuple(bits), state
+
+
+ACTS = [("grant A->M", G_CNOT, 0, 1), ("grant M->B", G_CZ, 1, 2), ("grant A->M", G_CNOT, 0, 1)]
+
+
+def run_split(a, b):
+    state = np.kron(np.kron(ENC @ a, ENC @ np.array([1, 0], dtype=complex)), ENC @ b)
+    record = []
+    for name, gate, i, j in ACTS:
+        syn = []
+        for blk in (i, j):
+            s_trust, state = witness_reads(state, blk)  # the trust half
+            s_info, state = witness_reads(state, blk)  # the information half, on its own
+            syn.append((s_trust, s_info))
+        verdict = "pass" if all(x == (0, 0, 0, 0) for pair in syn for x in pair) else "refuse"
+        if verdict == "pass":
+            state = apply_two(state, gate, i, j)
+        record.append((name, i, j, tuple(syn), verdict))
+    counts = tuple(sum(1 for r in record if blk in (r[1], r[2])) for blk in range(3))
+    logical = np.einsum("ia,jb,kc,ijk->abc", ENC.conj(), ENC.conj(), ENC.conj(), state.reshape(32, 32, 32))
+    return record, counts, logical.reshape(-1)
+
+
+def negativity_pure_AB(psi8):
+    r = np.outer(psi8, psi8.conj()).reshape(2, 2, 2, 2, 2, 2)
+    return negativity_AB(r.reshape(8, 8))
+
+
+contents = [np.array([1, 0], dtype=complex), np.array([0, 1], dtype=complex), plus, random_qubit()]
+runs = [run_split(a, b) for a in contents for b in contents]
+same_record = all(r[0] == runs[0][0] for r in runs) and all(r[1] == runs[0][1] for r in runs)
+print(f"{'OK  ' if same_record else 'FAIL'} record and demand counts identical for all 16 pairs of mass contents"
+      f" (counts {runs[0][1]}): no record carries which branch")
+results.append(same_record)
+rec, cnt, psi_l = run_split(plus, plus)
+results.append(check("logical state stays normalised through six witness reads per act", np.linalg.norm(psi_l), 1.0))
+results.append(check("A-B negativity, gravity's quantum part as content, both halves gating every act",
+                     negativity_pure_AB(psi_l), 0.5))
+# The same run with existence read per mass position (the particle as "information is there", not a field register):
+# the count then says where A is, which is a reading of A in its position basis before the mediator couples.
+rho = np.outer(psi0, psi0.conj())
+deph_A = [np.diag([1 if (i >> 2) == a else 0 for i in range(8)]).astype(complex) for a in (0, 1)]
+rho = sum(p @ rho @ p for p in deph_A)
+rho = U @ rho @ U.conj().T
+results.append(check("A-B negativity, if a count said which part holds the mass (existence per position)",
+                     negativity_AB(rho), 0.0))
+
+# ---------------------------------------------------------------------------------------------------------------------
+print("\n[8] The open lead: a count N and Lambda ~ 1/sqrt(N) (Sorkin), against the measured value")
+t_planck = 5.391247e-44  # s, CODATA 2018
+H0 = 67.4 * 1000 / 3.0856775814913673e22  # s^-1, Planck 2018
+omega_L = 0.685
+lam_obs = 3 * omega_L * (H0 * t_planck) ** 2  # Lambda in Planck units (Lambda * l_P^2)
+N = (1 / (H0 * t_planck)) ** 4  # Planck 4-volumes in a Hubble 4-volume
+lam_sorkin = 1 / np.sqrt(N)
+print(f"     N = {N:.2e}, 1/sqrt(N) = {lam_sorkin:.2e}, measured Lambda = {lam_obs:.2e} (Planck units)")
+results.append(check("log10 of measured Lambda over 1/sqrt(N) (0 = exact; within 1 = same order)",
+                     float(np.log10(lam_obs / lam_sorkin)), 0.0, tol=1.0))
+# Sorkin's fluctuation needs a Poisson relation between the count and the 4-volume: Var(N | V) = V. A layout that is
+# the median of the demand (Axiom 3) places the count deterministically, so the variance it supplies is zero.
+sprinkled = rng.poisson(1e6, size=4000)
+median_placed = np.full(4000, 10 ** 6)
+results.append(check("relative spread of N at fixed volume, Poisson sprinkling (~1/sqrt(N) = 1e-3)",
+                     float(np.std(sprinkled) / 1e6), 1e-3, tol=1e-4))
+results.append(check("relative spread of N at fixed volume, median layout", float(np.std(median_placed)), 0.0))
 
 print(f"\n{sum(bool(r) for r in results)} of {len(results)} checks passed")
 raise SystemExit(0 if all(results) else 1)

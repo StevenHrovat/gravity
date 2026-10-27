@@ -21,3 +21,4 @@ import Dmp.Complete
 import Dmp.Layouts
 import Dmp.Cmb
 import Dmp.Refute
+import Dmp.Blind

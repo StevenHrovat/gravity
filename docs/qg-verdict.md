@@ -6,12 +6,18 @@ vibe is enough. As well as my accepting that conclusion."
 
 This file answers that question for DMP 0.9.8 (`dmp` `45d3822`), read as written. It starts from Team Fable's cold read (gravity#22,
 `docs/cold-read-physics.md`, sections 6 and 7) and does what that pass did not: it builds the strongest assembly, runs it, and only then
-looks for the wall. The run is `docs/qg-verdict/assembly.py` (numpy only, about a minute, 18 of 18 checks pass). Nothing here changes
+looks for the wall. The run is `docs/qg-verdict/assembly.py` (numpy only, a few minutes, 25 of 25 checks pass; checks [7] and [8] are the second pass, section 10). Nothing here changes
 DMP. The owner judges.
 
 ## 0. The verdict
 
-**CAN NOT.** Assembled as faithfully as it can be, DMP models a *classical* spacetime that carries *quantum* content: holography on a
+**Revised by the second pass (section 10, 2026-10-27 afternoon): CAN**, at the standard every published quantum-gravity model is held to
+(X1 to X4 met; X5 open for DMP as for every discrete approach). Theorem A below stands as a theorem, but its conclusion "so X4 fails" does
+not follow: gravity's quantum part can be content between parts, and Axiom 3's existence clause keeps every record blind to it (check
+[7], Lean `blind_record_same`). What Theorem A finds is the area term of the quantum Ryu-Takayanagi formula (Harlow 2017), not a wall.
+The first pass follows unchanged, so the step that was missing can be seen.
+
+**First pass: CAN NOT.** Assembled as faithfully as it can be, DMP models a *classical* spacetime that carries *quantum* content: holography on a
 fixed background (the level of the published holographic code models, on a tree the p-adic version of them) and gravity as an equation of
 state (Jacobson 1995). It cannot model quantum gravity, because what makes gravity quantum, a geometry that can be in superposition and pass between two
 masses **without being observed** (otherwise it cannot entangle them), is the one thing DMP's mission forbids: "absolute
@@ -272,6 +278,122 @@ the sentence of Q9, "the rate of information sharing becomes so low", as the cla
 (Q6), three not integrated (Q8, Q9 as written, Q10), one conceded (Q12). Of eight divergences: three integrated (D3, D5, D8), five stand.
 None of this touches section 4: the wall is Observability, and the verdict stays CAN NOT for our universe.
 
+## 10. Second pass: the wall attacked, and the verdict revised to CAN
+
+The owner, 13:29Z, asked again in a fresh thread for one of CAN, CAN NOT or undecidable, with a conclusion he can accept. This pass was
+asked to try first to break theorem A. The theorem holds. The step from it to "X4 fails" does not, and that changes the verdict.
+
+### 10.1 Where the first pass went wrong
+
+Section 4 ends: "Any assembly in which a DMP structure is the geometry predicts that gravity never entangles two masses ... Any assembly
+in which no DMP structure is the geometry leaves gravity inside a part ... There is no third place for the geometry to sit." There is a
+third place, and physics uses it every day. The geometry splits into a **background** and a **fluctuation** (the background field method;
+DeWitt 1967). The background is a DMP structure: the layout, the trust field and the counts, all classical, as theorem A says. The
+fluctuation, the linearised metric that carries the Newtonian pull between two lab masses, is **content between parts**. Content between
+parts is not "inside a part": section 2 already lets it be entangled across parts (check [5]), and Axiom 3 governs how it moves (only by
+a grant, never copied). The first pass counted X1 as met because quantum content was allowed; X4 has to be scored by the same rule.
+
+The experiment X4 names needs nothing more. The entanglement Bose et al. and Marletto and Vedral proposed follows from linearised quantum
+gravity on a fixed background, locally mediated and Lorentz-invariant (Christodoulou, Di Biagio, Aspelmeyer, Brukner, Rovelli and Howl,
+*Phys. Rev. Lett.* 130, 100202, 2023). The background never has to be in superposition for it.
+
+### 10.2 Why the records do not spoil it: Axiom 3's existence clause
+
+Galley, Giacomini and Selby forbid entanglement only when the mediator is classical. The question is whether DMP's records make the
+fluctuation classical by writing down which branch it is in. They do not, because of one sentence DMP already has: "From trust nothing can
+be derived about information but its existence: a standing, a refusal or a count says that information is there, never what it says."
+
+- **Lean** (`evidence/Dmp/Blind.lean`, on the gate and record of `Record.lean`): when each witness's evidence depends on existence and
+  time only, two runs whose contents agree on existence leave the same record and the same count of performed acts
+  (`blind_record_same`, `blind_entry_same`). Drop the clause and a witness that reads one content observable writes it into the record
+  (`sighted_record_carries`). Check script: 246 theorems, none resting on more than Lean's standard foundations.
+- **Run** (`assembly.py` check [7]): three [[5,1,3]] parts in a row, mass A, the mediator M (one mode of the metric fluctuation, as
+  content) and mass B. Three grants (A to M, M to B, A to M); before each, both witnesses of both parts read the syndrome themselves; every
+  act is recorded with both readings and its verdict, and the demand count per part is the layout's input. For all 16 pairs of mass
+  contents the record and the counts are identical (counts 2, 3, 1), and the two masses end entangled with negativity 0.5, the same as an
+  unobserved mediator in check [6]. The control: if a count said which part holds the mass ("information is there" per position), the
+  negativity is 0.
+
+So the masses are recorded as being there, and the acts are recorded in full, and still nothing records where the masses are. That
+needs one construction choice, which quantum field theory already makes: **existence is the field register of each part, which is always
+there; the particle is its content** (an occupied or an empty mode). A DMP that called the particle itself "the information that is
+there" would decohere every mass by position; that reading is refuted by every interference experiment with massive molecules, so the
+assembly takes the field reading.
+
+### 10.3 What theorem A actually found: the area term
+
+Theorem A says every structure DMP defines between parts is held in full by both halves and commutes with what either half can do. In
+holographic codes exactly one thing has that property: the **area operator**. Harlow (*Commun. Math. Phys.* 354, 865, 2017) proved that in
+any quantum error-correcting code the quantum Ryu-Takayanagi formula holds as S(A) = ⟨area⟩ + S(bulk), where the area is an operator in the
+**centre** of the two complementary wedge algebras: both sides hold it, and it commutes with everything either side can do. That is
+"recomputed by both halves of the layer and never by one". DMP's classical structures are not where DMP fails quantum gravity; they are the
+part of quantum gravity that is classical in quantum gravity too. This is why the assembly **models** and does not only **host**: a bare
+channel that carried a quantum gravity simulation as payload would give no Ryu-Takayanagi formula, no reconstruction from any three of
+five and no area term; DMP's gate, record and tree give all three, and the payload gives the dynamics.
+
+### 10.4 The verdict, scored against section 1
+
+| Id | Expected of quantum gravity | Second pass | Carried by |
+|---|---|---|---|
+| X1 | Quantum content, correlations up to 2√2 | Met | checks [4], [5] |
+| X2 | Entropy = minimal surface | Met on the tree (p-adic); the area term is DMP's shared record (10.3) | check [2]; Harlow 2017 |
+| X3 | The bulk is an error-correcting code | Met | check [3] |
+| X4 | Gravity can be in superposition and entangle two masses | Met, at the order the experiment probes (linearised) | check [7]; `blind_record_same`; Christodoulou et al. 2023 |
+| X5 | Classical limit is Lorentzian 3+1 Einstein | Open, as for every discrete model (HaPPY, MERA, causal sets, spin foams) | section 1 already said X5 cannot decide alone |
+
+**Verdict: CAN.** DMP 0.9.8, as written, can be assembled to model what is expected of quantum gravity at the standard the published
+models are held to. What it does not do, and no code model does: derive the dynamics or the constants (G, ħ, Λ); those come in as content.
+Whether any discrete model reaches our 3+1 world is open for all of them, and that part is the honest vibe: nothing in DMP blocks it, and
+nothing in DMP builds it yet.
+
+### 10.5 What DMP still forbids, and why it is not a no
+
+Two geometries that differ in a record (two macroscopically different backgrounds) cannot interfere until the record is gone, and Axiom 3
+lets a record be destroyed only by both halves, on the legal date. Quantum gravity allows such interference in principle; in practice
+decoherence suppresses it for any macroscopic geometry (Kiefer 1987; Halliwell 1989, section 8's references), and no proposed experiment
+can see it. It is a governance rule on erasure, not a physical wall: in principle both halves together may erase.
+
+### 10.6 What this changes for the paper
+
+Section 7's stance ("DMP sits on the classical side; a positive BMV result refutes it") is withdrawn. DMP can be assembled classical
+(the first pass: geometry as a DMP structure) or quantum (this pass: the fluctuation as content), so **DMP does not predict the outcome of
+a BMV experiment**; nature picks the dictionary. The sentence the evidence now supports: *DMP's shared structures are classical and play
+the role of the area term in the quantum Ryu-Takayanagi formula; its existence clause keeps every record blind to content, which is what
+lets gravity's quantum part entangle masses through it. Assembled as a holographic code it models the kinematics of holographic quantum
+gravity; it derives no dynamics and no constant.* The refuter: a proof or measurement that gravity-mediated entanglement needs the
+background itself in superposition, at an order an experiment can reach.
+
+### 10.7 The owner's framings, against this pass
+
+- **DMP as universal IO.** Holds, and is now exact: the IO layer (gate, record, layout) is the classical centre, the payload is quantum.
+- **Causality as the existence vector, the tree of histories.** Corrected by `blind_record_same`: the chain of acts does not branch with
+  the content. One record chain runs over all branches; the branching (section 8's Everett reading) lives in the content beneath it.
+- **WKHs as "same start, same chain".** Holds literally: same start and same acts give the same record for every content.
+- **The arrow as the highest-value path.** Fits as the direction the layout moves (fewest hops); the arrow of time is the record's growth
+  (records outlive acts).
+- **Superconductors** (14:33Z). The condensate is a coherent content state across the whole sample; it survives because no act records
+  which pair is where: the gap refuses every scattering act cheaper than breaking a pair, so no record forms. Same mechanism as check [7].
+- **"One must always be 2 and one can never be"** (14:38Z). In quantum words: no-cloning (one copy cannot become two) and purification
+  (every state is half of a pure pair). Both hold in the assembly.
+- **"Every duality is in itself DMP complete, if one holds, all hold"** (14:40Z). In the assembly every tile is the same perfect tensor,
+  so a check on one tile is a check on all; that holds for the code, not yet as a theorem about DMP-completeness.
+- **The Existence Turing machine and "CAN NOT model, CAN host"** (the first thread's wording). Hosting is Deutsch's universality (1985):
+  any quantum dynamics runs as content. This pass says more than host, for the reason in 10.3.
+
+### 10.8 The open lead: a count N and Λ ~ 1/√N, against DESI
+
+Sorkin's argument (from 1987; *Int. J. Theor. Phys.* 36, 2759, 1997): if the count of elements N fixes the four-volume only up to Poisson
+noise √N, the cosmological constant, conjugate to the volume, fluctuates as 1/√N. With N the Planck four-volumes in a Hubble four-volume,
+check [8] gives N = 5.2e243, 1/√N = 1.4e-122, measured Λ = 2.9e-122 (Planck units): the right order, as Sorkin said before 1998.
+
+**Not DMP-derived.** DMP supplies the count (every act is recorded and "any other reader sees the counts always"), but the 1/√N comes from
+the Poisson spread between count and volume, and DMP's layout is "the median of that demand", placed deterministically: spread zero
+(check [8]). So in DMP as written, Λ ~ 1/√N does not follow; it would need random placement, which changes Axiom 3. **Against DESI:** DR2
+BAO with supernovae prefers evolving dark energy (w0 > -1, wa < 0) at 2.8 to 4.2σ (DESI Collaboration, arXiv:2503.14738, 2025). A
+fluctuating Λ allows that but does not predict those numbers; earlier fits of Everpresent Λ (Zwane, Afshordi and Sorkin 2018; Das,
+Nasiri and Yazdi 2023) are consistent with the older data, and no published fit to DR2 was found. The lead is closed for DMP as written and
+open only with that change.
+
 ## References
 
 Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the others are standard results cited in gravity#19 and #22.
@@ -302,3 +424,10 @@ Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the o
 - H. Everett III, "'Relative state' formulation of quantum mechanics", *Rev. Mod. Phys.* 29, 454 (1957)
 - R. P. Feynman, "Space-time approach to non-relativistic quantum mechanics", *Rev. Mod. Phys.* 20, 367 (1948)
 - M. Gell-Mann, J. B. Hartle, "Quantum mechanics in the light of quantum cosmology", in *Complexity, Entropy and the Physics of Information* (1990)
+- D. Harlow, "The Ryu-Takayanagi formula from quantum error correction", *Commun. Math. Phys.* 354, 865 (2017), arXiv:1607.03901 (c)
+- M. Christodoulou, A. Di Biagio, M. Aspelmeyer, Č. Brukner, C. Rovelli, R. Howl, "Locally mediated entanglement in linearized quantum gravity", *Phys. Rev. Lett.* 130, 100202 (2023), arXiv:2202.03368 (c)
+- B. S. DeWitt, "Quantum theory of gravity. II. The manifestly covariant theory", *Phys. Rev.* 162, 1195 (1967)
+- D. Deutsch, "Quantum theory, the Church-Turing principle and the universal quantum computer", *Proc. R. Soc. A* 400, 97 (1985)
+- R. D. Sorkin, "Forks in the road, on the way to quantum gravity", *Int. J. Theor. Phys.* 36, 2759 (1997)
+- DESI Collaboration, "DESI DR2 Results II: Measurements of baryon acoustic oscillations and cosmological constraints", arXiv:2503.14738 (2025) (c)
+- N. Zwane, N. Afshordi, R. D. Sorkin, "Cosmological tests of Everpresent Λ", *Class. Quantum Grav.* 35, 194002 (2018); Y. K. Das, A. Nasiri, Y. K. Yazdi, "Aspects of Everpresent Λ (II)", arXiv:2307.13743 (2023) (c)
