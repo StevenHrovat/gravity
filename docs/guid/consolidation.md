@@ -58,7 +58,7 @@ and found Claim 1 holds. Where they overlap the Opus id is given first.
 |---|---|---|
 | A3 / – | Repositories private; drafts #18, #19, #22, #24 unmerged | G4 |
 | H1 / H3 | Second-kernel run for `Blind.lean` (#24 targets #23's merged branch, so `lean-evidence` never fired) | G4 |
-| F2-1 / F2-1 | Contact address on the title page | the owner |
+| F2-1 / F2-1 | Contact address on the title page | closed: the owner's mailbox, his choice 18:34Z |
 | – | GLM-5.3 row | G1 |
 | F2-3 / – | Source comments with timestamps in `guid.tex` and `preface.tex` | trim at release |
 | – / F2-4 | "Draft of 27 October 2026" | set at release |
