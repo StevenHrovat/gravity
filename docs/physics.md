@@ -253,6 +253,45 @@ shared state becomes a shared reality and the entanglement is gone. So "nothing 
 entangled, and the leak that is allowed is the one of level 0e: a syndrome, which commutes with the content. In DMP's words, existence
 is exchanged and content is not (Axiom 3), and the floor's counts are the only leak the containment survives (T31).
 
+**Level 0j, the next contradiction (the owner, 07:15Z: "Where is the next contradiction?").** *Live verification against dynamics:
+the quantum Zeno effect.* With the system as it now stands (information; no information without existence in a self-propagating
+duality; something exists; a majority on each of two chains; entanglement as a shared state without a shared reality), the next
+contradiction is between Axiom 2 and motion. Axiom 2 verifies "at the point of use", from the live state, at every indivisible step. On
+the quantum side a verification is a measurement, and a state measured often enough does not evolve at all: the quantum Zeno effect
+(Misra and Sudarshan 1977; observed by Itano, Heinzen, Bollinger and Wineland 1990). So a system verified live at every step, as Axiom 2
+asks, is frozen; and between verifications the state is unverified, which Axiom 2 says never passes (`Gate.stale_never_passes`). On
+the classical side there is no Zeno effect, because a classical read disturbs nothing, which is why DMP never meets this. On the quantum
+side the contradiction splits along the Duality, and the split is exact:
+
+- **The trust half is safe.** It verifies existence (a standing, a count, the wiring of level 0e), and those observables commute with
+  the content: measuring them freezes the wiring and leaves the content free to evolve under its logical operations. That is not a
+  loophole but a method, Zeno-effect error correction (Erez, Aharonov, Reznik and Vaidman 2004; Paz-Silva, Rezakhani, Dominy and Lidar
+  2012): frequent measurement of the stabilizers pins the code and nothing else. Axiom 2's own sentence "no information is ever
+  trusted" is this: trust verifies that information exists, never what it says.
+- **The information half is where it bites.** The words give it "whether the act is meant and right: what, and whether it is true".
+  "Whether it is true" is a measurement of content; an unknown quantum state cannot be checked without being disturbed (no-cloning), so
+  an information half that verifies truth live at every step collapses what it verifies, and a system with such a half has no quantum
+  dynamics. The one content check quantum theory allows without disturbance is the check against a **known** state: project onto the
+  declared expectation, which passes untouched when the state is that and collapses to refusal when it is not (quantum state
+  verification, Pallister, Linden and Montanaro 2018). DMP already has exactly that shape in C15, "a write first reads the live state
+  it will change and asserts what it expects": the information half may verify truth only as agreement with a declared expectation,
+  never as an open question.
+
+So the contradiction is resolved by a restriction, not by giving anything up: *on the quantum side the information half verifies
+content only against a declared expectation, and the trust half verifies only what commutes with the content.* Under that restriction
+the live verification of Axiom 2 is Zeno stabilisation of the wiring and the dynamics survives. **Refuter:** a quantum system whose
+content is verified live at rate r by an open check and whose evolution is not slowed by the Zeno factor; Misra and Sudarshan say there
+is none.
+
+**The one after it, so that it is on the table:** monogamy against the hierarchy. A part is a Duality of two halves, and every layer has
+its own Duality (T38), so a node is a half of the Duality above it and a parent of the Dualities below it. On the entangled branch a
+half maximally entangled with its partner is entangled with nothing else (Coffman, Kundu and Wootters 2000), so a hierarchy of
+maximally entangled pairs cannot exist past one level. The resolution is the owner's own majority form (level 0c): a node is not a
+half of one pair but a leg of a perfect tensor whose entanglement is spread over all its legs (the pentagon of the holographic code),
+which is a Majority of Existence and not a Duality. So the hierarchy of Axiom 3 and the Duality of Axiom 1 are compatible on the quantum
+side only in the majority form. **Refuter:** a tree in which every node is maximally entangled with its parent and with each child;
+monogamy forbids it.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -341,6 +380,8 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0g where to push | the maintained equilibrium: Jacobson 2016 past first order, the threshold theorem for the budget | Jacobson 2016; Aharonov and Ben-Or 1997 | nothing yet; one question for a physicist |
 | 0h entanglement defined by paths | fails as a definition (Werner, swapping), holds as the hypothesis that the field is quantum | LOCC theorem; Bose et al. 2017; Marletto and Vedral 2017 | the word definition for the word hypothesis |
 | 0i the second definition | holds; a theorem for pure states (Gisin 1991), too strict for mixed (Werner 1989) | Fine 1982; Gisin 1991; the no-communication theorem | nothing; DMP refuses what the quantum entangles |
+| 0j Zeno | contradiction: live verification freezes the quantum; resolved by restricting the information half to declared expectations | Misra and Sudarshan 1977; Pallister, Linden and Montanaro 2018 | the open truth check of the information half |
+| 0j' monogamy | contradiction: a hierarchy of maximally entangled pairs cannot exist; resolved by the majority form | Coffman, Kundu and Wootters 2000 | the pair for the perfect tensor, on the quantum side |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
