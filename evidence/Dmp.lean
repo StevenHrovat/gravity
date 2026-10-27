@@ -27,3 +27,4 @@ import Dmp.BreakC3
 import Dmp.Routes
 import Dmp.BreakC25
 import Dmp.NoGo
+import Dmp.NoGoVector

@@ -82,10 +82,30 @@ different optimal orders (`spanning_does_not_fix_optimum`). Existence in the Dua
 configuration (T4), decides the layout; nothing in the field determines the weights. The equations that do come out are the two of
 `docs/physics.md` section 2, the entropy bound on hops and the capacity bound on fan-out, and both take the measure as input.
 
+**4.5 The field as a vector (the owner's correction, 2026-10-27).** "You tried a scalar field, not a vector field. In QG it is a vector over
+time and space and in DMP it is the trust and refresh rate of that trust. In both times it is the space spanned and direction that give the
+vector meaning." Retried as that vector in `evidence/Dmp/NoGoVector.lean`: at every standing its trust (freshness) and its refresh rate, over
+the grant graph and the ticks, pointing along the grant chain toward the pair. Two things the vector adds, both in its favour and both
+theorems. The rates are coupled: every refresh draws on the one budget of checks, so one standing's rate is bounded by what every other
+leaves (`rates_share_the_budget`), where the scalar potential's terms were independent; the coupling is a conservation law (the rates sum to
+at most the budget), not a force between pairs. And a horizon depth falls out: a tree of fan-out b has at least b^D standings at depth D, so
+keeping them live needs b^D ≤ r·W (`horizon_depth_bound`): the depth the pair spans grows only logarithmically with its budget, the nearest
+thing in DMP to a radius, and a different law from Schwarzschild's, which is linear in the mass. Four things the vector does not change.
+The field's law is configuration: the demand and the window are functions of T4's parameters, chosen at the minting inside an interval, so
+two mintings span two different vector fields over the same graph (`field_law_is_configuration`) and no field equation can be a theorem;
+gravity has one law with one constant. The field has compact support: a contained item has no standing and so no vector
+(`no_vector_outside`), the space DMP's field spans is exactly the inside and it ends at the horizon, while a gravitational field has no edge
+(`gravity_has_no_edge`; in general relativity the horizon is not where the field stops). The space spanned, which the owner says gives the
+vector its meaning, is the one thing the two fields do not share. Bell is unchanged: a vector-valued, time-indexed hidden state (the whole
+history of trust and rate) is still a hidden state, and a verdict read from it with a local judge is still a local deterministic outcome
+(`history_gate_obeys_chsh`); direction and span do not make an outcome non-local. And Clausius is unchanged: the drop per entry is mass times
+staleness whether the field is read as a scalar or a vector; the rate adds a time axis, not a temperature.
+
 ## 5. The verdict
 
 **False.** The approach, instantiated as faithfully as DMP's own objects allow, produces the shape of a gravitational theory with an arrow of
-time (section 3) and cannot produce gravity (4.1), quantum mechanics (4.2), the field equations (4.3) or the measure (4.4). The first two are
+time (section 3) and cannot produce gravity (4.1), quantum mechanics (4.2), the field equations (4.3) or the measure (4.4); read as the
+owner's vector it gains a coupling through the budget and a horizon depth, and loses nothing of the four stops (4.5). The first two are
 not shortfalls of the instantiation but consequences of the axioms: member isolation and the frame rule forbid coupling, and the second axiom
 is local realism. Each would have to be given up for the approach to work, and giving either up gives up DMP: without isolation there is no
 containment, without local verification there is no Axiom 2.
@@ -98,5 +118,5 @@ owner's two axioms, and the three theorems above are the proof that none can be 
 
 Section 3 stands, and it is DMP's: a self-propagating duality under a field has a second law, a Lyapunov potential, an equilibrium, a horizon
 that leaks only counts and a boundary-set capacity. That is a theory of trusted infrastructure with the shape of black-hole thermodynamics,
-proven in 288 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
+proven in 295 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
 are the reason.
