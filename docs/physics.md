@@ -183,6 +183,36 @@ observer has one (Gibbons and Hawking 1977). DMP's "inside" is per layer and per
 drawn by a minting, not by the geometry. That is the one feature where DMP's shape matches de Sitter better than it matches anti-de
 Sitter, where the holographic results above are proven; nothing follows from it yet.
 
+**Level 0h, the owner's definition of entanglement, stress tested (07:08Z).** *Fails as a definition, holds as a hypothesis, and the
+hypothesis is the one experiment physics is building to test whether gravity is quantum.* The owner: "Two dualistic parts that occupy
+the same Existence space, and whose path of Existence, as well as possibility, can intersect towards the scalar field's direction, are
+entangled." Tested clause by clause.
+
+- *Same Existence space*: right, and necessary. Entanglement is defined only relative to a factorisation of one space into parts
+  (Werner 1989; Zanardi 2001, "virtual quantum subsystems"): the same state is entangled under one split and a product under another.
+- *Paths that can intersect*: necessary, not sufficient. Entanglement cannot be created by local operations and classical communication
+  (Bennett, DiVincenzo, Smolin and Wootters 1996; Vedral and Plenio 1998), so two parts become entangled only through a quantum
+  interaction or a shared quantum source: their pasts must meet, or meet something that met. But meeting does not entangle: two parts
+  that scatter and decohere leave a product state. And the converse fails outright: in entanglement swapping (Zukowski, Zeilinger, Horne
+  and Ekert 1993) two parts that never met and never will are entangled by a measurement on two others. So "can intersect" is at best
+  the possibility clause, and then it is the LOCC condition, already a theorem.
+- *The scalar field's direction*: undefined as written, by the owner's own earlier sentence (a scalar field has no direction; its
+  gradient has). Read as the gradient of the potential, "paths that can meet by moving along the existence field" is "parts that can
+  interact through gravity".
+- *Are entangled*: as a definition, no. Entanglement is a property of the joint state (not a convex mixture of products, Werner 1989),
+  not of paths or possibilities. As a **hypothesis** the sentence says: parts that interact only through the existence field become
+  entangled. By the LOCC theorem that is equivalent to *the existence field is a quantum channel*, because a classical field cannot
+  entangle. That is exactly the proposal of Bose et al. (2017) and Marletto and Vedral (2017): two masses, each in a superposition of
+  two places, interacting only through gravity, become entangled if and only if gravity is not classical. The experiment is tabletop and
+  in progress.
+
+**The sharpened form, keeping the owner's words beside it:** two parts of one existence space are entangled when their joint state is
+not a product; they can become so only through a quantum interaction or a shared quantum source; and the claim that meeting along the
+existence field's gradient entangles them is the claim that the field is quantum. **Refuter:** the Bose–Marletto–Vedral experiment
+showing no entanglement at the predicted strength; then the existence field is classical, the sentence is false, and the entangled
+branch of level 3 closes for gravity itself while staying open for the information half. This is the second place in the pass where
+physics has an experiment rather than a theorem, and the first where the owner's sentence names it.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -269,6 +299,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0e the wiring leaks | holds as a theorem (syndrome, Hawking, the floor); derived in DMP, primitive in a code | Gottesman 1997; the no-hair theorem; T31 and T33 | nothing; the count of the words stays |
 | 0f entanglement dynamics | holds: equal shares by Schmidt, gravity to first order by the first law of entanglement | Faulkner, Guica, Hartman, Myers and Van Raamsdonk 2014 | isolation and local verification (the branch) |
 | 0g where to push | the maintained equilibrium: Jacobson 2016 past first order, the threshold theorem for the budget | Jacobson 2016; Aharonov and Ben-Or 1997 | nothing yet; one question for a physicist |
+| 0h entanglement defined by paths | fails as a definition (Werner, swapping), holds as the hypothesis that the field is quantum | LOCC theorem; Bose et al. 2017; Marletto and Vedral 2017 | the word definition for the word hypothesis |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
