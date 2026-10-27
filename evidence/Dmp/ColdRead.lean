@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R23
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R25
 below are the labels of its table rows.
 -/
 
@@ -534,5 +534,124 @@ theorem cr_three_nodes_outvote_one_wrong : 2 * (3 - 1) > 3 := by decide
 
 /-- In general: against one wrong node a cluster of `n` has a right majority exactly when `n` exceeds two. -/
 theorem cr_majority_against_one_wrong_iff (n : Nat) (hn : 1 ≤ n) : 2 * (n - 1) > n ↔ 2 < n := by omega
+
+
+/-! ## R24. The paradoxical configuration, the refinement of R21 (the owner, 2026-10-27, sent during this pass)
+
+"Only a paradoxical configuration of two perfect dualities, that are, because of that fact, singularly able to do both: increase the
+total value of the vector field and the scalar field in a new existence, while maintaining their value in the current existence, which
+only radiates away as reality, not any other constituent part. So a minting of a new reality axiomatically follows, when the information
+in the system is no longer able to be contained within its baseline for reality." In the project's own objects the first half is a fact
+about one minted Duality laid beside the cluster as a root, for every recipe: nothing laid out before it changes (the frame rule), the
+root carries its own mass and its layer its own potential, and its admission is a function of its own two halves alone, so the two
+Dualities of the current existence are not in the condition. The second half has no antecedent: Axiom 3's record has no capacity (a run
+of `n` requests leaves `n` more entries, for every `n`), and on a contained item the gate offers re-admission and destruction only (T27,
+T31), no mint. Where the catch-all that ejects and the one that mints disagree, the ejecting one stands (Axiom 1). -/
+
+/-- A galaxy line with Duality `d` and no parent: a root laid beside the cluster, the "new existence" at the grain of the recipe. -/
+def crFreshRoot (d : DoT) : Line := ⟨.galaxy, d, none, 0⟩
+
+/-- The new root's admission is its own Duality's independence and nothing else: no line of the current existence is in the condition,
+    so two Dualities there are neither needed nor able. -/
+theorem cr_fresh_root_admitted_by_its_own_duality_alone (fcl : List FailureClass) (r : Recipe) (d : DoT) :
+    (r.extend (crFreshRoot d)).lineOk fcl r.n ↔ d.minted fcl := by
+  simp [Recipe.lineOk, Recipe.extend, crFreshRoot]
+
+/-- With a minted Duality the extended recipe is well formed: the root beside the cluster is admitted. -/
+theorem cr_fresh_root_is_well_formed (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (d : DoT) (hd : d.minted fcl) :
+    (r.extend (crFreshRoot d)).wf fcl :=
+  r.extend_wf fcl hwf _ ((cr_fresh_root_admitted_by_its_own_duality_alone fcl r d).mpr hd)
+
+/-- The new root's chain is itself alone: it is gated by nothing in the cluster. -/
+theorem cr_fresh_root_chain_is_itself (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (d : DoT) (hd : d.minted fcl) :
+    (r.extend (crFreshRoot d)).chain r.n = [r.n] := by
+  rw [Recipe.chain_unfold fcl _ (cr_fresh_root_is_well_formed fcl r hwf d hd) r.n (by simp [Recipe.extend])]
+  simp [Recipe.extend, crFreshRoot]
+
+/-- "Maintaining their value in the current existence": every existing line keeps its mass. -/
+theorem cr_fresh_root_keeps_every_mass (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (d : DoT) (hd : d.minted fcl)
+    (i : Nat) (hi : i < r.n) : (r.extend (crFreshRoot d)).mass i = r.mass i := by
+  unfold Recipe.mass
+  have hn : (r.extend (crFreshRoot d)).n = r.n + 1 := rfl
+  have hne : i ≠ r.n := Nat.ne_of_lt hi
+  rw [hn, List.range_succ, List.filter_append, List.length_append]
+  have hroot : ([r.n].filter fun k => k ≠ i && decide (i ∈ (r.extend (crFreshRoot d)).chain k)) = [] := by
+    simp [cr_fresh_root_chain_is_itself fcl r hwf d hd, hne]
+  rw [hroot, List.length_nil, Nat.add_zero]
+  congr 2
+  apply List.filter_congr
+  intro k hk
+  rw [r.extend_chain fcl hwf _ k (List.mem_range.mp hk)]
+
+/-- The new root carries mass one, its own: nothing derives through a root laid beside the cluster. -/
+theorem cr_fresh_root_has_mass_one (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (d : DoT) :
+    (r.extend (crFreshRoot d)).mass r.n = 1 := by
+  unfold Recipe.mass
+  have hn : (r.extend (crFreshRoot d)).n = r.n + 1 := rfl
+  rw [hn, List.range_succ, List.filter_append]
+  have hold : ((List.range r.n).filter fun k => k ≠ r.n && decide (r.n ∈ (r.extend (crFreshRoot d)).chain k)) = [] := by
+    rw [List.filter_eq_nil_iff]
+    intro k hk
+    have hnot := cr_new_line_is_on_no_existing_chain fcl r hwf (crFreshRoot d) k (List.mem_range.mp hk)
+    simp [hnot]
+  have hself : ([r.n].filter fun k => k ≠ r.n && decide (r.n ∈ (r.extend (crFreshRoot d)).chain k)) = [] := by simp
+  rw [hold, hself]
+  rfl
+
+/-- The total mass of a recipe: the masses of its lines, summed. -/
+def cr_totalMass (r : Recipe) : Nat := ((List.range r.n).map r.mass).sum
+
+/-- "Increase the total in a new existence while maintaining it in the current": the total rises by exactly the new root's own mass,
+    one, and every existing line keeps its mass. One Duality's bookkeeping, with no paradox and no second Duality in it. -/
+theorem cr_fresh_root_adds_exactly_its_own_mass (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (d : DoT) (hd : d.minted fcl) :
+    cr_totalMass (r.extend (crFreshRoot d)) = cr_totalMass r + 1 := by
+  unfold cr_totalMass
+  have hn : (r.extend (crFreshRoot d)).n = r.n + 1 := rfl
+  rw [hn, List.range_succ, List.map_append, List.sum_append]
+  simp only [List.map_cons, List.map_nil, List.sum_cons, List.sum_nil, Nat.add_zero, cr_fresh_root_has_mass_one fcl r hwf d]
+  congr 2
+  apply List.map_congr_left
+  intro i hi
+  exact cr_fresh_root_keeps_every_mass fcl r hwf d hd i (List.mem_range.mp hi)
+
+/-- The scalar: a new layer adds exactly its own potential to the stack and leaves every other layer's where it was. -/
+theorem cr_new_layer_adds_exactly_its_own_potential (l : List Held) (ls : List (List Held)) :
+    stackPhi (l :: ls) = stackPhi ls + phi l := by
+  simp only [stackPhi]
+  omega
+
+/-- Axiom 3's record has no capacity: from any state a run of `n` requests leaves `n` more entries, for every `n`. "No longer able to
+    be contained" names a state the model never reaches, so nothing follows from it. -/
+theorem cr_record_has_no_capacity (j1 j2 : Evidence → Verdict) (s : State) (r : Request) (n : Nat) :
+    (run j1 j2 s (List.replicate n r)).log.length = s.log.length + n := by
+  rw [run_records_all, List.length_replicate]
+
+/-- T27 and T31 as modelled: on a contained item the gate offers re-admission and destruction and nothing else. No mint is among the
+    engine's operations, so from containment no new reality follows. -/
+theorem cr_contained_item_is_offered_only_readmission_or_destruction (i : Item) (h : i.contained = true) (op : Op)
+    (hop : offered i op = true) : op = .readmit ∨ op = .destroy := by
+  cases op <;> simp_all [offered]
+
+/-- Two catch-alls, the one that ejects (C∞ as written) and the one that mints: where they disagree the stricter answer stands (Axiom 1,
+    C∞'s own last sentence), and ejection is the stricter. -/
+theorem cr_where_two_catch_alls_disagree_the_ejecting_one_stands : gate .refuse .pass = .refuse ∧ gate .pass .refuse = .refuse := by
+  decide
+
+
+/-! ## R25. Time as a component of the field (the owner, 2026-10-27, sent during this pass)
+
+"We should, as time is a component of the unified information field, be able to explain their refutation within our axiom system",
+said of a disproof of the exponential time hypothesis reported as unpublished. DMP's time is a reading: "now" is evidence tested
+against a validity window (T20), and freshness is the age of a standing since its last live read (T32). The exponential time hypothesis
+is about a step count, the steps any algorithm needs on a 3-SAT instance of `n` variables. The model carries the first and nothing of
+the second: the gate's answer depends on a request's time only through the window test, and no object of the chain counts steps. -/
+
+/-- Time enters the gate only through the window: two times the same evidence accepts alike get the same verdicts from both witnesses
+    and perform the same. -/
+theorem cr_time_enters_the_gate_only_through_the_window (j1 j2 : Evidence → Verdict) (s : State) (e1 e2 : Evidence) (t t' : Nat)
+    (h1 : e1.ok t = e1.ok t') (h2 : e2.ok t = e2.ok t') :
+    guard j1 e1 t = guard j1 e1 t' ∧ guard j2 e2 t = guard j2 e2 t' ∧
+    (step j1 j2 s ⟨t, e1, e2⟩).performed = (step j1 j2 s ⟨t', e1, e2⟩).performed := by
+  simp [step, guard, h1, h2]
 
 end Dmp
