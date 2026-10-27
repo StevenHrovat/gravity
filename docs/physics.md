@@ -575,6 +575,49 @@ and the first act inside, the lumps, which cause the matter and not the pattern.
 record (G0, written before any part acts), the lumps are the first parts, and a part cannot have caused its own minting record (T40).
 **Refuter of the correction:** a sky without the super-horizon anticorrelation; it has been measured for twenty years.
 
+**Level 0q, Existence hashes the forces (the owner, 07:48Z).** The owner, on the swap of level 0p: "For the swap, that is intended:
+Existence, since the forces change with each degradation, 'hashes' the forces to work on the same layer. That is the single key by
+which they can all be decoded to the same configuration."
+
+*"The forces change with each degradation" is the renormalisation group.* Every coupling is a dimensionless number that depends on the
+scale at which it is measured (Gell-Mann and Low 1954; Wilson 1971): the electromagnetic coupling grows from 1/137 to about 1/128 at the
+Z mass, the strong coupling shrinks going up (Gross and Wilczek 1973; Politzer 1973). "Degradation" is the running downward in scale, which
+is also the cooling of the universe through its symmetry breakings. So the information half's numbers of level 0p are not fixed; they
+are a function of the layer. Holds.
+
+*"Hashes" is the exact word, and it points downward.* Going down, Wilson's renormalisation group is a coarse-graining: at each step
+the couplings that scale away (the irrelevant operators) are lost, and only the few relevant and marginal ones reach the next layer
+(Kadanoff 1966; Wilson 1971). That is a hash in the strict sense: many configurations above map to one configuration below, and the map
+has no inverse. Its name in physics is universality: every theory in a class decodes to the same low-energy configuration, whatever its
+details above. So "the single key by which they can all be decoded to the same configuration" is true downward, and true in the way the
+owner did not say: the decoding is many-to-one, and the configuration they all decode to is the one at the bottom, the one we live in.
+In DMP's words the running is the tower of layers (T38, each layer its own Duality, sub-layers only tighten: an effective theory at
+each scale with matching at its thresholds), and the hash is the digest of level 0e (T33): what crosses a layer is the digest, not the
+record. A part at the bottom cannot recover the layers above from what reached it, which is level 0p's "a part cannot read its own
+minting record", and in physics it is the reason the theory at the top, quantum gravity, cannot be read off from below.
+
+*Upward, "the same configuration" is a claim with a name and a measurement.* The ruler of level 0p (ħ, G, c) is what lets every
+force be put on one axis, energy in Planck units, and the claim that they "all decode to the same configuration" at the top is
+unification: the three gauge couplings run toward one another and nearly meet near 10¹⁶ GeV (Georgi, Quinn and Weinberg 1974), and
+gravity's own coupling, G E², reaches one at the Planck scale. Measured, with the precision of LEP, the three of the Standard Model
+do **not** meet at one point; they meet only with new particles added (Amaldi, de Boer and Fuerstenau 1991), and none of those has
+been seen. The stronger form of the owner's sentence, that the top is one fixed configuration for every force including gravity, is
+asymptotic safety: the couplings run to a fixed point of the renormalisation group at the top, with finitely many free directions,
+which is a finite minting record (Weinberg 1979; Reuter 1998). It has one measured success: a Higgs mass near 126 GeV, predicted from
+the fixed point before the Higgs was found (Shaposhnikov and Wetterich 2010). Whether the fixed point exists is the open question of
+that programme. **Refuters:** for unification, the proton is stable beyond 10³⁴ years in the channels the simplest unifications
+predict (Super-Kamiokande), so "the same configuration" at the top must be one that does not decay the proton at that rate; for the
+fixed point, a demonstration that none exists.
+
+*The swap, as the owner intends it, is consistent.* The ruler is the key that assigns every force its layer; the dimensionless numbers
+are the information, and they are information per layer, not once. Only at a fixed point is there a number that holds on every
+layer, and that is why the fixed point is what "the same configuration" must mean at G0.
+
+**Verdict:** holds; the owner has restated the renormalisation group with the hash in the right place (downward, many-to-one,
+universality) and its upward claim is asymptotic safety, measured once, not yet proven to exist. The information half's content is
+per layer; the existence half's ruler is the one key. **Refuter of the whole level:** a coupling that does not run, which no measured
+coupling is.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -671,6 +714,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0n inflation as radiation | hypothesis: the horizon does radiate, the fast start is Vilenkin's, the smoothness is Penrose's; wrong in order, no tilt | Planck 2018 n_s; Kofman, Linde and Starobinsky 1994 | the word explain |
 | 0o oscillons, instantiation | holds: the condensate fragments into lumps (preheating), each a balance of two drives; "all information" per lump fails, per collapsed lump holds; completes the r = 0 prediction with a gravitational-wave peak and a tilt shift | Amin et al. 2012; Hertzberg 2010; Lozanov and Amin 2017 | the word inflation for the stage (preheating); all information per lump |
 | 0p smallest existence, discovery, decaying inflation | holds: Planck-mass black hole of zero total energy; de Sitter as discovery without act; H going down is the measured tilt; finite inflation gives r about 0 (TCC) | Duff, Okun and Veneziano 2002; Tryon 1973; Bedroya and Vafa 2019 | the constants as information (they are the ruler; the dimensionless numbers are the information) |
+| 0q existence hashes the forces | holds: the renormalisation group; the hash is Wilson's coarse-graining (downward, many-to-one, universality); upward it is unification (SM couplings do not meet) or asymptotic safety (fixed point unproven, Higgs mass predicted) | Wilson 1971; Amaldi, de Boer and Fuerstenau 1991; Shaposhnikov and Wetterich 2010 | nothing; the fixed point is the open question |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
