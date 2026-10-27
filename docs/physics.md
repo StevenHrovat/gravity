@@ -318,6 +318,35 @@ every partial order on N elements is a three-layer object that looks nothing lik
 majority, and no dynamics that does so is proven. **Refuter:** a pair of spacetimes with the same causal order and the same volumes that
 differ in geometry; Malament's theorem says none exists among distinguishing spacetimes.
 
+**Level 0l, truth as existence (the owner, 07:20Z).** *Holds, closes the Zeno contradiction exactly, closes a refuter of the two-axiom
+brief, and moves the system onto the constraint picture of canonical quantum gravity, whose own open problem is then the next one.* The
+owner, correcting level 0j: "The information assumption is incorrect. It is actually, can the information exist. Existing alone makes
+it true in the system. And information must exist, because something exists."
+
+- **Zeno closes.** "Can the information exist" is a membership check: is the state in the space of states the system allows. On the
+  quantum side that is the projection onto the allowed subspace, the code space, and it commutes with everything that acts inside it:
+  measuring it is a stabilizer check, which pins the wiring and leaves the content free (level 0j, Erez et al. 2004). So the information
+  half, reworded, verifies only what commutes with the content, and the restriction of level 0j is no longer a restriction: it is the
+  definition. The open truth check that collapsed is gone from the system.
+- **The converse closes.** "Information must exist, because something exists" is the direction the two-axiom brief's second refuter
+  asked for (everything that exists is information): with the third axiom (level 0b) it is a one-line theorem, and T1 (T39) keeps both
+  halves.
+- **Truth as existence has a name, twice.** In logic it is truth in a model: a sentence is true in the system exactly when the system
+  satisfies it (Tarski 1933), and its limit is Goedel's second theorem (1931): the system cannot prove from inside that something
+  exists in it consistently, which is why the third axiom is stated and not derived, as G0 already says of the minting. In canonical
+  quantum gravity it is the Dirac constraint programme (Dirac 1964; DeWitt 1967): a state is physical exactly when the constraints
+  annihilate it, Ĥψ = 0; "can it exist" is the whole content of the Wheeler–DeWitt equation, and "existing alone makes it true" is
+  that a physical state needs no further law.
+
+**The next contradiction, which this move buys.** The Wheeler–DeWitt equation has no time in it: the states that exist are frozen
+(the problem of time, Kuchar 1992; Isham 1993). The Zeno freeze of level 0j came from measuring too often; this one comes from the
+constraint itself, and it is the same freeze one level deeper. The resolution physics has is Page and Wootters (1983): time is not in
+the constraint but in the correlation between a clock subsystem and the rest, both inside the one frozen state; evolution is read as
+"what the rest looks like when the clock reads t" (made precise by Giovannetti, Lloyd and Maccone 2015). That clock is the owner's
+refresh rate (03:26Z: "essential that I included the refresh rate, otherwise it would have been a scalar field"), read now as a part
+of the system entangled with the rest, not as a parameter outside it. **Refuter:** a physical state of the constraint picture that
+evolves with no internal clock; the Wheeler–DeWitt equation says there is none.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -409,6 +438,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0j Zeno | contradiction: live verification freezes the quantum; resolved by restricting the information half to declared expectations | Misra and Sudarshan 1977; Pallister, Linden and Montanaro 2018 | the open truth check of the information half |
 | 0j' monogamy | contradiction: a hierarchy of maximally entangled pairs cannot exist; resolved by the majority form | Coffman, Kundu and Wootters 2000 | the pair for the perfect tensor, on the quantum side |
 | 0k authorisation downward | holds: causal set theory, order plus number is geometry; predicts Λ ~ 1/√N | Malament 1977; Bombelli, Lee, Meyer and Sorkin 1987; Rideout and Sorkin 2000 | nothing; the quantum dynamics is open |
+| 0l truth as existence | holds: closes Zeno (membership commutes with content), closes the converse; lands on the constraint picture | Tarski 1933; Dirac 1964; DeWitt 1967 | nothing; the next freeze is the problem of time, resolved by an internal clock (Page and Wootters 1983) |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
