@@ -219,6 +219,14 @@ experiment can see". Two cautions: whether pure 3D quantum gravity exists as a c
 and our universe is not 2+1, since gravitational waves, the local degrees of freedom 2+1 lacks, are measured (Abbott et al. 2016).
 **Effect on the verdict for our universe: none. For a 2+1 universe: CAN, up to one superselection rule on the global geometry.**
 
+**The owner, 14:01Z, verbatim:** "That is why DMP is the protocol and QG is the specification derived from it."
+
+Assessed: the direction is right, the name is not. What can be derived from DMP is a specification of gravity, and theorems A and B fix
+which one: classical geometry between parts over quantum content inside them (in 3+1 the class of Jacobson and Oppenheim; in 2+1
+nearly all of quantum gravity, section 8 above). Naming that specification "quantum gravity" would contradict X4, the one property the
+name refers to. The paper can say that DMP derives a specification of gravity and that the specification is classical between parts,
+which a positive test of gravitationally mediated entanglement in our 3+1 world would refute.
+
 ## References
 
 Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the others are standard results cited in gravity#19 and #22.
