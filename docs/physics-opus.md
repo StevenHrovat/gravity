@@ -16,7 +16,7 @@ fixed. Theorem numbers are DMP 0.9.8 (`45d3822`, `main`). Nothing here changes D
    quantizes geometry (strings, AdS/CFT, ER=EPR, loop quantum gravity) is therefore excluded by the axioms, not merely missing from them.
 2. **DMP does give a useful approach to the quantum-gravity *question*: it picks a side, and that side is testable.** What the axioms
    describe, exactly, is the *classical-gravity, quantum-matter* hypothesis: geometry is a classical, stochastic, local field that records
-   mass-energy and nothing else, and matter stays quantum. That is a live, published programme (Oppenheim, PRX 2023; Diósi 1987; Penrose
+   mass-energy and nothing else, and matter stays quantum. That is a live, published programme (Oppenheim, PRX 2023; Diosi 1987; Penrose
    1996). It predicts that gravity, acting locally, cannot entangle two masses, and that matter decoherence and spacetime diffusion obey a
    trade-off. Experiments being built now decide it.
 
@@ -48,12 +48,12 @@ The chain, each step with its source:
 | P5 | "No information is ever trusted" and "from trust nothing can be derived about information but its existence" | Axioms 2 and 3 |
 | T-E | Content is never broadcast, so it may stay quantum. **Matter (information) is quantum, gravity (trust) is classical** | P5, T-B |
 | P6 | Neither half overrules the other; each is gated only by the other | Axiom 1 |
-| T-F | So the coupling runs both ways (matter moves geometry, geometry moves matter). Any consistent coupling of a classical system to a quantum one with back-reaction must be **stochastic**: it decoheres the quantum side and makes the classical side diffuse, and the two rates trade off (long coherence demands strong diffusion relative to the coupling) | Oppenheim, PRX 13, 041040 (2023); Oppenheim, Sparaciari, Šoda and Weller-Davies, Nat. Commun. 14, 7910 (2023) |
+| T-F | So the coupling runs both ways (matter moves geometry, geometry moves matter). Any consistent coupling of a classical system to a quantum one with back-reaction must be **stochastic**: it decoheres the quantum side and makes the classical side diffuse, and the two rates trade off (long coherence demands strong diffusion relative to the coupling) | Oppenheim, PRX 13, 041040 (2023); Oppenheim, Sparaciari, Soda and Weller-Davies, Nat. Commun. 14, 7910 (2023) |
 | T-G | A classical mediator acting by local means is an LOCC channel, and LOCC cannot create entanglement: **gravity does not entangle two masses by local means** (locality is P3's "at the point of use") | Bose et al., PRL 119, 240401 (2017); Marletto and Vedral, PRL 119, 240402 (2017); Horodecki et al., RMP 81, 865 (2009) |
 
 What the chain also says, as checks that it is the right reading:
 
-- **The deterministic version is excluded by DMP itself.** Mean-field semiclassical gravity (Møller 1962, Rosenfeld 1963: curvature set by
+- **The deterministic version is excluded by DMP itself.** Mean-field semiclassical gravity (Moller 1962, Rosenfeld 1963: curvature set by
   the expectation value of matter) trusts an average nobody verified. Axiom 2 forbids that ("never a claim, a memory"; "without evidence
   for an act, the act does not happen"), and physics rejects it on its own grounds: a deterministic nonlinear coupling signals faster than
   light (Gisin 1990) and is in tension with experiment (Page and Geilker 1981, interpretation-dependent). The axioms select the stochastic
@@ -82,11 +82,11 @@ What the chain also says, as checks that it is the right reading:
 | Quantum information | **holds for the trust half, fails for content** | Axiom 3's "read in full by every witness" is possible only for classical records (T-B); content survives only because Axioms 2 and 3 never broadcast it | Barnum et al. 1996; Zurek, quantum Darwinism, Nat. Phys. 5, 181 (2009) |
 | The gate (Axiom 1) | holds as classical | a verdict computed from locally verified evidence is a local hidden-variable model and obeys the CHSH bound; that limits the **verdicts**, not the content they gate | Bell 1964; CHSH 1969; Team Fable `NoGo.lean`, section 4.2 |
 | Classical GR | holds as a map, not as a dynamics | horizon = containment, no hair = counts-only readout, area theorem = record only grows; the axioms do not yield the Einstein equations or G (they fix the class of theory, not its law) | Penrose 1965; Israel 1967; Hawking 1971; Jacobson 1995 |
-| Semiclassical gravity | **holds: selects the stochastic version** | Axiom 2 excludes mean-field (Møller–Rosenfeld); Axiom 1's two-way gating forces back-reaction; T-F forces stochasticity | Oppenheim 2023; Gisin 1990 |
+| Semiclassical gravity | **holds: selects the stochastic version** | Axiom 2 excludes mean-field (Moller–Rosenfeld); Axiom 1's two-way gating forces back-reaction; T-F forces stochasticity | Oppenheim 2023; Gisin 1990 |
 | Black holes | holds for containment, fails for entropy | DMP's evaporation destroys content before the cipher dies (T31), the non-unitary answer, which is the classical-gravity programme's answer too; but DMP's capacity is extensive (it grows with the number of Dualities, every layer bringing its own, T38) where Bekenstein–Hawking is an area law, so DMP's interior is **not holographic** | Hawking 1976; Bekenstein 1981; 't Hooft 1993 |
 | Quantized-geometry programmes | **fails, by the axioms** | ER=EPR makes connectivity (trust) out of entanglement (information): Axiom 2's "no information is ever trusted" forbids exactly that. Loop quantum gravity and strings put geometry in superposition: T-D forbids it | Maldacena and Susskind 2013; Van Raamsdonk 2010; Rovelli and Smolin 1995 |
 | DMP's own field, T32 | **fails as gravity** | the VIBE field is a sum of isolated per-member terms over a graph of pairwise grants; a gravitational field couples every place to every other. Pairwise classical channels as a model of gravity are already ruled out by atom interferometry | Team Fable `NoGo.lean` 4.1; Kafri, Taylor and Milburn 2014; Altamirano, Corona-Ugalde, Mann and Zych, arXiv 1612.07735 (CQG 2018) |
-| Experiment | **open: this is the test** | (1) gravity-induced entanglement observed, with nonlocal classical explanations closed off, refutes T-G and with it P2-on-gravity; (2) the decoherence-diffusion window closed from both sides refutes T-F; (3) the parameter-free Diósi–Penrose collapse is already ruled out, the parametrized classical-gravity models are not | Bose et al. 2017; Oppenheim et al. 2023; Donadi et al., Nat. Phys. 17, 74 (2021) |
+| Experiment | **open: this is the test** | (1) gravity-induced entanglement observed, with nonlocal classical explanations closed off, refutes T-G and with it P2-on-gravity; (2) the decoherence-diffusion window closed from both sides refutes T-F; (3) the parameter-free Diosi–Penrose collapse is already ruled out, the parametrized classical-gravity models are not | Bose et al. 2017; Oppenheim et al. 2023; Donadi et al., Nat. Phys. 17, 74 (2021) |
 | Cosmology | no DMP number | stochastic classical gravity has been proposed to mimic dark matter in rotation curves, and that claim is disputed; DMP adds no quantity to it | Oppenheim and Russo, arXiv 2402.19459; Hertzberg and Loeb, arXiv 2404.13037 |
 | DMP engineering | unaffected | every theorem about CMOS stands whichever way the experiments go | gravity `evidence/` |
 
