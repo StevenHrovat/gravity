@@ -418,6 +418,18 @@ grant (DMP-009), a record entry that is its time and three verdicts and nothing 
 records, and records are classical by construction, which is the reason, stated from the owner's side this time, that the chain's four
 stops of section 4 hold: the hash is the record, not the quantum, and quantum gravity is a theory of the quantum.
 
+The key rotation (the owner, 2026-10-27): "just like DMP can rotate its keys, existence can change the 'information hash' and restart
+perception, while keeping existence the same." Two things in physics change the labels and keep the existence. One is a gauge rotation: the
+phases of every quantum rotated together, existence unchanged, and nothing observable changed either, so no perception restarts; it is the
+gauge principle of 4.11 (Weyl 1929), and "rotate" is even its word. The other is the one the owner means, and it is a black hole's: a horizon
+re-encodes the information behind it in the scrambling time, about the light-crossing time times the logarithm of its entropy, the geometry
+unchanged (Hayden and Preskill 2007; Sekino and Susskind 2008). After it the old encoding is unreadable and the whole radiation must be read
+to recover anything: perception restarts, existence stays. That is a real key rotation, and the analogy holds, with one difference that is the
+difference of this whole section. DMP destroys the old key, and under a destroyed key the old ciphertext is random bytes forever (the floor,
+T24). Physics never destroys the key: the new encoding is related to the old by a unitary, and what looks like noise is recoverable with
+the whole system (Page 1993). The owner's rotation is a quantum black hole's, and it assumes exactly the unitarity that the owner's hash and
+DMP's key destruction give up. It is also, once more, a description of a known feature of quantum black holes, not a theory of them.
+
 The verdict for this section: a consistent frame that physics satisfies, and for that reason not a theory of anything in particular. It is
 satisfied by worlds with gravity and without, with Einstein's law and with Newton's, so it derives no gravity; a quantum gravity would have to
 begin where it leaves off, with a law for the existence field's own quantum.
