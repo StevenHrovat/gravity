@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R25
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R26
 below are the labels of its table rows.
 -/
 
@@ -653,5 +653,64 @@ theorem cr_time_enters_the_gate_only_through_the_window (j1 j2 : Evidence → Ve
     guard j1 e1 t = guard j1 e1 t' ∧ guard j2 e2 t = guard j2 e2 t' ∧
     (step j1 j2 s ⟨t, e1, e2⟩).performed = (step j1 j2 s ⟨t', e1, e2⟩).performed := by
   simp [step, guard, h1, h2]
+
+
+/-! ## R26. The fourth axiom proposed (the owner, 2026-10-27, sent during this pass)
+
+"Something can go from not existing to existing as the opposite of something, as long as the total value of the DMP complete fields
+of both sides of the boundary does not decrease", with the derivation "this is the only possible state where a DMP complete system
+would choose to eject the same information type of unreality, so that it can be compressed by hashing, because that is simply the
+most efficient thing to do; having to manage just one boundary of unreality is a lower stress situation of Existence than two
+separate boundaries". In the project's own objects the condition is vacuous or contradicts K4: the recipe's only operation adds
+lines, and the total mass never decreases under it, whatever the line; the potential is a cost the system's own acts lower, strictly
+when a stale standing that carries mass is refreshed. The derivation's saving does not exist: the potential of one list holding two
+boundaries' standings is exactly the sum of the two. -/
+
+/-- A pointwise bound on the summands bounds the sums. -/
+theorem cr_sum_le_sum (f g : Nat → Nat) : ∀ l : List Nat, (∀ x ∈ l, f x ≤ g x) → (l.map f).sum ≤ (l.map g).sum
+  | [], _ => Nat.le_refl 0
+  | x :: xs, h => by
+    simp only [List.map_cons, List.sum_cons]
+    exact Nat.add_le_add (h x (by simp)) (cr_sum_le_sum f g xs (fun y hy => h y (by simp [hy])))
+
+/-- No existing line loses mass under an extension by any line: the chains of existing lines are unchanged, and the new line can only
+    add to a count. -/
+theorem cr_extension_never_lowers_a_mass (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (l : Line) (i : Nat) :
+    r.mass i ≤ (r.extend l).mass i := by
+  unfold Recipe.mass
+  have hn : (r.extend l).n = r.n + 1 := rfl
+  rw [hn, List.range_succ, List.filter_append, List.length_append]
+  have heq : ((List.range r.n).filter fun k => k ≠ i && decide (i ∈ (r.extend l).chain k)) =
+      (List.range r.n).filter fun k => k ≠ i && decide (i ∈ r.chain k) := by
+    apply List.filter_congr
+    intro k hk
+    rw [r.extend_chain fcl hwf l k (List.mem_range.mp hk)]
+  rw [heq]
+  omega
+
+/-- The total mass never decreases under the recipe's only operation, whatever the line: the proposed condition holds of every
+    extension, so it permits every one of them and forbids none. -/
+theorem cr_total_mass_never_decreases_under_extension (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (l : Line) :
+    cr_totalMass r ≤ cr_totalMass (r.extend l) := by
+  unfold cr_totalMass
+  have hn : (r.extend l).n = r.n + 1 := rfl
+  rw [hn, List.range_succ, List.map_append, List.sum_append]
+  have := cr_sum_le_sum r.mass (r.extend l).mass (List.range r.n)
+    (fun i _ => cr_extension_never_lowers_a_mass fcl r hwf l i)
+  omega
+
+/-- Read on the potential, the condition forbids K4's own acts: refreshing a stale standing that carries mass lowers the potential
+    strictly. -/
+theorem cr_refresh_lowers_the_potential_strictly : ∃ l : List Held, phi (refreshAt 0 l) < phi l :=
+  ⟨[⟨1, 0⟩], by decide⟩
+
+/-- One boundary holding two boundaries' standings costs exactly the sum: the potential is additive, so "one boundary is less stress
+    than two" has no saving in it. -/
+theorem cr_one_boundary_costs_exactly_two : ∀ l1 l2 : List Held, phi (l1 ++ l2) = phi l1 + phi l2
+  | [], l2 => by simp [phi]
+  | h :: hs, l2 => by
+    simp only [List.cons_append, phi]
+    rw [cr_one_boundary_costs_exactly_two hs l2]
+    omega
 
 end Dmp
