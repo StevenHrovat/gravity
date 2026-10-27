@@ -146,13 +146,38 @@ the gate refuses is not made at all (`ln_one_witness_never_moves`, `ms_refused_n
 request is recorded either way (`run_records_all`). A decided move through an open gate is not a crossing of a closed one, and the CHSH bound
 of 4.2 stands over it: a reorganisation is a local deterministic outcome of locally verified signatures. False.
 
+**4.9 The rate-limited expansion (the owner's solution, 2026-10-27).** "While the existence space is able to grow simply by the vectors that
+define it being raised, the information needed to cause that expansion still has to observe the rate limit of the scalar giving direction,
+while travelling through the field spanned by the boundary vector. Try to disprove that." Instantiated in `evidence/Dmp/NoGoRate.lean`: the
+existence space is the set of standings inside the boundary, a vector is raised when a standing is granted or widened, the scalar giving
+direction is the budget of checks per tick whose spending order the field fixes (T26), and travelling through the field is the outward
+propagation of the pair's acts, one layer per verification round (T26, the wave clock of `R1Wave.lean`, the rounds of `R2Stable.lean`). The
+second half holds and was already a theorem (`growth_capped_by_budget`): the information that grows the boundary draws on the budget, so the
+growth of a window never exceeds it. Three things disprove the rest. Raising a vector is a requested act, and the axioms contain no requester:
+widening a standing needs both witnesses (`loosening_needs_both`, T16), the gate performs nothing without a request (`no_request_no_act`) and
+performs at most as many acts as it is asked (`growth_le_requests`); "simply by the vectors being raised" moves the cause from the declaration
+to whatever raises the vectors, and that is still configuration (T9). The rate limit forbids acceleration: every window has the same ceiling
+(`growth_never_accelerates`), so the growth over k windows is at most linear in k (`growth_at_most_linear`), and a history whose increments keep
+growing breaks the ceiling by window r·W + 1 (`accelerating_breaks_the_limit`); a boundary that coasts at a constant rate is a universe with
+deceleration parameter zero, and the measured value is about −0.53 (4.7). Travelling through the field delays the growth and never adds to
+it: a growth that reaches the boundary only after D rounds and is rate-limited after that lies under the same line shifted by D
+(`travel_delays_never_adds`), and the field's depth is bounded by the budget anyway (`horizon_depth_bound`), so the delay is finite and the
+propagation is neither a cause nor an acceleration. One consequence in the mechanism's favour, as far as it goes: expansion is paid with
+maintenance (`growth_costs_maintenance`; at the full rate nothing stays live, `extremal_keeps_nothing`), and with any positive growth the
+leftover over the bounded live set grows without bound (`no_stationary_ratio_under_growth`), so the ratio settles only at zero growth. ΛCDM's
+ratio of dark energy to matter grows without bound too, as a³, so the direction agrees; the value 2.17 is a moment in both and a prediction in
+neither. The claim's true half is DMP's rate limit. Its false half is that the rate limit supplies a cause, or allows the acceleration the
+universe shows. Disproved.
+
 ## 5. The verdict
 
 **False.** The approach, instantiated as faithfully as DMP's own objects allow, produces the shape of a gravitational theory with an arrow of
 time (section 3) and cannot produce gravity (4.1), quantum mechanics (4.2), the field equations (4.3) or the measure (4.4); read as the
 owner's vector it gains a coupling through the budget and a horizon depth, and loses nothing of the four stops (4.5); read as the
 owner's information black hole it attains every ratio of dark energy to dark matter and so predicts none (4.6), predicts no slowing of
-the expansion where the universe shows an acceleration (4.7), and has no tunnelling, because a refused move is never made (4.8). The first two are
+the expansion where the universe shows an acceleration (4.7), and has no tunnelling, because a refused move is never made (4.8); read as the
+owner's rate-limited expansion it keeps its true half, the budget as the rate limit, and that half forbids the acceleration the universe shows
+while supplying no cause (4.9). The first two are
 not shortfalls of the instantiation but consequences of the axioms: member isolation and the frame rule forbid coupling, and the second axiom
 is local realism. Each would have to be given up for the approach to work, and giving either up gives up DMP: without isolation there is no
 containment, without local verification there is no Axiom 2.
@@ -165,5 +190,5 @@ owner's two axioms, and the three theorems above are the proof that none can be 
 
 Section 3 stands, and it is DMP's: a self-propagating duality under a field has a second law, a Lyapunov potential, an equilibrium, a horizon
 that leaks only counts and a boundary-set capacity. That is a theory of trusted infrastructure with the shape of black-hole thermodynamics,
-proven in 310 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
+proven in 318 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
 are the reason.
