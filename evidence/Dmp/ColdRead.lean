@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R22
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R23
 below are the labels of its table rows.
 -/
 
@@ -517,5 +517,22 @@ theorem cr_new_line_is_on_no_existing_chain (fcl : List FailureClass) (r : Recip
   intro h
   have := r.chain_le fcl hwf i hi r.n h
   omega
+
+/-! ## R23. Two nodes (the owner, 2026-10-27, sent during this pass)
+
+"2 nodes in IT is only possible in a vSAN-like config, so a perfect naked duality, but not in any other case, where the minimum for
+a stable cluster is three." T3a's floor, from the IT side: a half answers by a majority of its nodes so that one wrong node cannot
+speak for it. The arithmetic: with one wrong node the right ones are a majority exactly when the cluster has more than two nodes.
+A two-node cluster with a witness at a third site has three voters, so it is not two nodes and not naked; two nodes alone are the
+pair one cause splits (`DoT.not_minted_collapses`). -/
+
+/-- Two nodes, one wrong: the right node is not a majority (one is not more than half of two). -/
+theorem cr_two_nodes_do_not_outvote_one_wrong : ¬ (2 * (2 - 1) > 2) := by decide
+
+/-- Three nodes, one wrong: the right two are a majority. -/
+theorem cr_three_nodes_outvote_one_wrong : 2 * (3 - 1) > 3 := by decide
+
+/-- In general: against one wrong node a cluster of `n` has a right majority exactly when `n` exceeds two. -/
+theorem cr_majority_against_one_wrong_iff (n : Nat) (hn : 1 ≤ n) : 2 * (n - 1) > n ↔ 2 < n := by omega
 
 end Dmp
