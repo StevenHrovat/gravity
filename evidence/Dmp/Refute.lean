@@ -1,7 +1,7 @@
 /-
 Team Fable, the adversary (docs/refutation.md): counter-models against claims made for DMP 0.9.8 and for the Lean of this chain.
 Nothing here changes a theorem that exists; each theorem below is the smallest model in which a claim fails, or in which a named
-theorem says less than its name. Every name carries the prefix `rf_` (theorems) or `Rf` (objects) so that nothing collides with the
+Lean theorem says less than its name. Every name carries the prefix `rf_` (theorems) or `Rf` (objects) so that nothing collides with the
 files of gravity#17.
 
 1. **The axioms as modelled have a model in which nothing ever happens.** With both judges refusing everything, no request is ever
