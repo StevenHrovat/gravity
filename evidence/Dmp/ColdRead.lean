@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R29
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R31
 below are the labels of its table rows.
 -/
 
@@ -785,5 +785,69 @@ theorem cr_line_below_adds_a_hop (fcl : List FailureClass) (r : Recipe) (hwf : r
   simp only [hline, hp, r.extend_chain fcl hwf l j hj, List.length_cons]
   have := List.length_pos_of_mem (r.chain_head j)
   omega
+
+
+/-! ## R30. The defence of R28 (the owner, 2026-10-27, sent during this pass)
+
+"Existence is made up of 3s1t, which radiates as gravitational waves. In DMP it is a revocation of trust. Since trust = Existence, it
+can be abstracted away." In the project's own objects a revocation is a tightening one witness performs (Standing.lean's
+`one_witness_tightens`), written to the record at the act, confined to the standing it names, and never raising the potential. And
+existence without trust is an object of the chain: a refused act leaves its entry in the record while nothing is performed, so "from
+trust only existence" (Axiom 3) is one-way, not an identity. -/
+
+/-- A revocation as the field holds it: the standing at position `i` is withdrawn, its mass no longer counting. -/
+def cr_revokeAt : Nat → List Held → List Held
+  | _, [] => []
+  | 0, h :: hs => { h with mass := 0 } :: hs
+  | n + 1, h :: hs => h :: cr_revokeAt n hs
+
+/-- A revocation reaches the one standing it names: every other position is unchanged. -/
+theorem cr_revocation_is_local : ∀ (l : List Held) (i j : Nat), j ≠ i → (cr_revokeAt i l)[j]? = l[j]?
+  | [], i, _, _ => by cases i <;> simp [cr_revokeAt]
+  | _ :: _, 0, 0, hne => absurd rfl hne
+  | _ :: _, 0, _ + 1, _ => by simp [cr_revokeAt]
+  | _ :: _, _ + 1, 0, _ => by simp [cr_revokeAt]
+  | _ :: hs, i + 1, j + 1, hne => by
+    simp only [cr_revokeAt, List.getElem?_cons_succ]
+    exact cr_revocation_is_local hs i j (fun h => hne (congrArg Nat.succ h))
+
+/-- A revocation never raises the potential: a withdrawn standing contributes nothing. -/
+theorem cr_revocation_never_raises_the_potential (i : Nat) (l : List Held) : phi (cr_revokeAt i l) ≤ phi l := by
+  induction l generalizing i with
+  | nil => cases i <;> simp [cr_revokeAt, phi]
+  | cons h hs ih =>
+    cases i with
+    | zero => simp [cr_revokeAt, phi]
+    | succ n =>
+      simp only [cr_revokeAt, phi]
+      exact Nat.add_le_add_left (ih n) _
+
+/-- Existence without trust: a refused act leaves its entry in the record (counts always) while nothing is performed. -/
+theorem cr_existence_without_trust (s : State) (r : Request) :
+    (step (fun _ => .refuse) (fun _ => .refuse) s r).log.length = s.log.length + 1 ∧
+    (step (fun _ => .refuse) (fun _ => .refuse) s r).performed = s.performed := by
+  refine ⟨step_records_once _ _ s r, ?_⟩
+  simp [step, guard, gate, Verdict.stricter, Verdict.rank]
+
+
+/-! ## R31. Trust as a shared belief (the owner, 2026-10-27, sent during this pass)
+
+"Trust is, at its root, a belief of a known world state shared by more than one part. And only if they fully trust each other can
+that be enough; otherwise redundancies should be added to keep that presumption of Existence stable." In the project's own objects a
+belief is evidence that is not live, and no judge passes on it, however many parts share it (K2); two halves that fully trust each
+other, each answering what the other answers on the same evidence, are one witness, and the dual gate degenerates to that one answer;
+and redundancy that shares the source is a shared cause, which breaks independence (R13, `shared_cause_breaks_independence`). -/
+
+/-- A belief is not live evidence: no judge passes on it, and the gate of two parts that share it refuses. -/
+theorem cr_shared_belief_passes_nothing (j1 j2 : Evidence → Verdict) (e : Evidence) (t : Nat) (h : e.live = false) :
+    guard j1 e t = .refuse ∧ guard j2 e t = .refuse ∧ gate (guard j1 e t) (guard j2 e t) = .refuse := by
+  have hok : e.ok t = false := by simp [Evidence.ok, h]
+  simp [guard, hok, gate, Verdict.stricter, Verdict.rank]
+
+/-- Two halves that fully trust each other answer alike on the same evidence, and the dual gate is then that one answer: one witness. -/
+theorem cr_full_mutual_trust_is_one_witness (j : Evidence → Verdict) (e : Evidence) (t : Nat) :
+    gate (guard j e t) (guard j e t) = guard j e t := by
+  generalize guard j e t = v
+  cases v <;> decide
 
 end Dmp
