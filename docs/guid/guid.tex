@@ -1,0 +1,522 @@
+% GUID: The General Unified Information Duality
+% Source of the paper. Build: see README.md in this folder (pdflatex twice; no BibTeX, the bibliography is inline).
+% Licence: Apache License 2.0 (the owner, 2026-10-27 17:37Z: "As long as it's Apache 2.0 at least, all is good").
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\newtheorem{claim}{Claim}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\setlength{\emergencystretch}{3em}
+\newcommand{\chk}[1]{\textsf{[#1]}}
+
+\title{GUID: The General Unified Information Duality\\[0.6ex]
+\large An information-theoretic axiom system for trust, tested against quantum gravity}
+\author{Steven Hrovat\thanks{Independent. Contact: \href{mailto:hrovat.steven@googlemail.com}{\nolinkurl{hrovat.steven@googlemail.com}}.}
+\and Sirius (Claude Opus 5.5)\thanks{An AI system by Anthropic, working as the coordinator of the first author's projects. See
+``Contributions and use of AI''.}}
+\date{Draft of 27 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent We present GUID, an information-theoretic axiom system for trust, and test it against quantum gravity. Its specification, the
+Dark Matter Protocol (DMP 0.9.9), has three axioms: no act happens unless two independent witnesses, one owning trust and one owning
+information, both pass it; a witness trusts only evidence it verified itself; and every act leaves a record that its witnesses read in
+full while anyone else sees the counts always and the content only by a grant, so that nothing about information can be derived from trust
+except its existence. We ask whether these axioms can be assembled to model quantum gravity, fix five expectations, and give the strongest
+assembly we found: parts as blocks of the five-qubit code, layers as trees of perfect tensors, the two witnesses as independent readers of the
+stabilizer syndrome. It reproduces minimal-cut entropies on the tree, recovery of a layer's content from any three of five children and
+from no two, refuse-and-restore under every single fault, and gate verdicts at the classical CHSH value while the content reaches 2.83.
+It stops at one place: every structure the axioms define between parts depends on the parts only through records two witnesses hold in
+full, so it acts as a classical mediator, and a classical mediator cannot entangle two masses. Our result is that DMP cannot model
+quantum gravity but can host it as content, its own structures staying the classical machine that runs it; 2+1 dimensions are no
+exception. We report a dissenting pass that scores the same facts as a model, and where the two part. We claim that the construction
+exists and that its checks reproduce, not that it is correct. Checks, Lean 4 proofs and every review are released with this paper under
+Apache 2.0, and we ask readers to break them.
+\end{abstract}
+
+\noindent\textbf{Keywords.} information-theoretic axioms; trust; no-broadcasting; holographic codes; quantum error correction;
+gravitationally mediated entanglement; formal verification; Lean 4.
+
+\noindent\textbf{Subject.} Information Theory (cs.IT); related: Logic in Computer Science (cs.LO), Cryptography and Security (cs.CR).
+
+\section*{Preface by the first author}
+\noindent\emph{The first author wrote the following in his own words. It holds his personal statements and conjectures. The body of the
+paper claims only what Sections~\ref{sec:assembly}--\ref{sec:record} show, and where the two differ, the body is the claim.}
+
+\medskip
+\input{preface.tex}
+
+\section{Introduction}\label{sec:intro}
+
+Infrastructure is assembled from many systems that each decide trust alone, so that one compromised witness decides for all. The Dark
+Matter Protocol (DMP) answers that failure with an axiom system rather than a product: no act happens unless two independent witnesses
+pass it, one owning trust and one owning information, each on evidence it verified itself, and every act leaves a record that its
+witnesses read in full and that everyone else sees only as counts. The first author calls the pair the \emph{Duality of Trust}. The
+vocabulary DMP uses for itself is gravitational: trust is ``a field, never a position'', a strong enough boundary ``contains'' what no
+trust reaches, ``what still leaves is entropy and nothing else''.
+
+This paper asks whether that vocabulary is more than vocabulary. The question, in the first author's words, was to ``either prove a
+useful approach to Quantum Gravity through the axiom system, or prove that the actual intended axiom system, as applied to QG, does not
+hold and if, exactly where''. We fixed what quantum gravity is expected to deliver (Section~\ref{sec:expect}),
+built the strongest assembly of DMP we found and ran it (Section~\ref{sec:assembly}), and then looked for the wall
+(Section~\ref{sec:wall}).
+
+\paragraph{Result.} DMP \emph{cannot model} quantum gravity in our universe but \emph{can host} it as content. Its own structures (the
+gate, the record, the layout) are forced by its axioms to be classical, and a classical structure cannot carry the one property that
+makes gravity quantum, the ability to entangle two masses. Content that DMP carries but makes no statement about can be anything,
+including a running quantum theory of gravity. Hosting is cheap: any substrate that allows universal quantum computation as content
+hosts; the content of the result is the \emph{cannot model} half. In 2+1 dimensions, where gravity has no local degrees of freedom, the
+verdict is the same, for a different reason (Section~\ref{sec:21}).
+
+\paragraph{What we claim.} We claim that the construction exists, that its numerical checks and machine-checked proofs reproduce from the
+repositories released with this paper, and that the argument from them to the result is as written. We do not claim the result is correct. One of our own
+review passes disagrees with it (Section~\ref{sec:dissent}), and the record of every pass, including the ones that refuted earlier
+versions, is in Section~\ref{sec:record}. Section~\ref{sec:break} lists where we expect the construction to break.
+
+\paragraph{Contributions.}
+\begin{enumerate}[nosep]
+\item The axiom system DMP 0.9.9 in its current form, stated compactly (Section~\ref{sec:dmp}).
+\item An assembly of DMP as a holographic quantum error-correcting code, with six runnable checks (Section~\ref{sec:assembly}).
+\item A short argument, from the no-broadcasting theorem and the Galley--Giacomini--Selby no-go, that DMP's shared structures are
+classical and cannot mediate entanglement, and the exact edge between modelling and hosting that follows (Sections~\ref{sec:wall}
+and~\ref{sec:host}).
+\item The dissent, and the facts on which every pass agrees (Section~\ref{sec:dissent}).
+\item The machine-checked part: a Lean 4 model of DMP in which every layout is modelled as a term of one recipe type (Section~\ref{sec:lean}).
+\end{enumerate}
+
+\section{The axiom system}\label{sec:dmp}
+
+We quote DMP 0.9.9 (commit \texttt{4400cce} of the DMP repository) in condensed form. It is 0.9.8 plus one rule in G0: 0.9.9 is the
+version this paper pins, it stays backwards compatible until at the latest one week after the paper's full publication in a recognized
+journal, and when stale it becomes provisional G0 until the first author revokes it with 1.0.0. The full text is a constitution of three axioms, a
+ground G0, theorems numbered T0 to T40 (with gaps) and derived constraints.
+
+\paragraph{The words.} Undefined, like point and line, are a \emph{part} (a Duality of Trust: two halves, one owning trust and one owning
+information; ``nothing further is said about what a part is made of''), an \emph{act}, a \emph{witness} (a part that decides trust for
+others), \emph{evidence} and \emph{time}. Trust is a relation $T(w,p,a,t)$: witness $w$ trusts part $p$ for act $a$ at time $t$. Two
+witnesses are \emph{independent} when they share no member of the failure classes declared for their layer (host, key, author, engine,
+operating image, person, time source, and whatever else the minting lists). A \emph{layer} is a place where trust is decided; its two
+witnesses are its \emph{halves}. A \emph{record} is evidence that outlives its act. A boundary \emph{contains} information when no part
+beyond it is trusted for any act on that information. A configuration is \emph{DMP-complete} when the words, every axiom and every
+theorem hold for all of it and two independent proof chains prove it.
+
+\paragraph{Axiom 1 (the Duality).} A part acts only while the two halves of its layer, two independent witnesses, each with full reach
+over the act and gated only by the other, trust it for that act. One half owns trust, the other information; neither overrules the
+other. Every input gets exactly one answer, and the gate has no other way through. Where the two disagree, the stricter answer stands.
+The balance is the direction of the system: every part restores by evidence what was lost without evidence against it, and never lowers
+the bar of evidence to get there.
+
+\paragraph{Axiom 2 (Trust).} A witness trusts only on evidence it verified itself at the point of use. No information is ever trusted:
+what a part says, carries, stores or forwards is never evidence of itself. The absence of evidence moves nothing. Trust is gravitational:
+a field, never a position, in which every standing has a source, a depth and a freshness that decays.
+
+\paragraph{Axiom 3 (Information).} Every grant, use and loss of trust leaves a record, written at the act, that every witness of the act
+can read in full and that outlives the act; any other reader sees the counts always and the content only by a grant. \emph{From trust
+nothing can be derived about information but its existence.} Content moves only by a grant to a part trusted for its class. Information
+is hierarchical: every layer has its own Duality and is a tree rooted there, and the tree carries no trust. The system lays itself out
+towards the fewest total hops for the representative composition of its requests, ``recomputed by both halves of the layer and never by
+one''. The axiom carries the first author's mission sentence, ``while maintaining absolute Observability''.
+
+\paragraph{G0 (the ground).} The dual gate cannot witness its own first instance. The \emph{minting}, in which at least five parts become
+the holders of the root keys, is stated, not derived; until it happens, the owner's words stand for both halves. T39: trust and
+information gate each other. T40: a minting originates only from G0 together with a DMP-complete state.
+
+\section{What is expected of quantum gravity}\label{sec:expect}
+
+Stated before the run, so that the target could not move to fit it (the record holds the table and the assembly in one commit):
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lLL@{}}
+\toprule
+Id & Expected of quantum gravity & Source \\
+\midrule
+X1 & Quantum content: superposition, correlations up to $2\sqrt2$ & Cirel'son~\cite{cirelson}; CHSH~\cite{chsh} \\
+X2 & Entropy of a boundary region equals the area of its minimal surface & Ryu--Takayanagi~\cite{rt} \\
+X3 & The bulk is a quantum error-correcting code & Almheiri--Dong--Harlow~\cite{adh}; Pastawski et al.~\cite{happy} \\
+X4 & Gravity is quantum: the field can be in superposition and entangle two masses & Bose et al.~\cite{bose}; Marletto--Vedral~\cite{mv}; Galley--Giacomini--Selby~\cite{ggs} \\
+X5 & The classical limit is a Lorentzian 3+1 manifold obeying Einstein's equations & general relativity \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent No discrete model is established to reach X5 (the nearest is the four-dimensional de Sitter phase reported by causal dynamical
+triangulations~\cite{cdt}), so X5 cannot decide the question alone. X4 is the property that makes gravity
+\emph{quantum}; a model without it models something else.
+
+\begin{definition}[model, host]\label{def:model}
+DMP \emph{models} quantum gravity if there is a dictionary that maps the gravitational degrees of freedom onto structures DMP itself
+defines between parts (the layout, the trust field, the order of acts, the counts), such that X1--X4 hold in an assembly that obeys DMP's text.
+Content that parts carry and move by grant is not such a structure. DMP \emph{hosts} quantum gravity if a configuration that obeys DMP's
+text can carry, as content, a running quantum theory of gravity together with everything that theory predicts. Neither definition asks
+for DMP-completeness (two proof chains), which no assembly here has.
+\end{definition}
+
+\noindent Hosting is the weaker property; it says only that DMP does not obstruct. The dissent of Section~\ref{sec:dissent} turns on
+this definition.
+
+\section{The assembly}\label{sec:assembly}
+
+Each row maps one DMP sentence (or, where marked, the first author's reading of one) to the object it becomes. Bracketed labels are checks in the public script
+\texttt{docs/qg-verdict/assembly.py} (numpy only, about a minute); all 18 pass on the commit this paper names.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}LLl@{}}
+\toprule
+DMP & The object & Check \\
+\midrule
+A part, ``no further statements about its constituents'' (G0) & One block of the five-qubit code~\cite{laflamme}: five physical qubits, one
+logical; its six-leg perfect tensor is the tile & \chk{1} \\
+``Every layer has its own Duality and is a tree rooted there'' (Axiom 3) & A rooted tree of tiles: one root, five children, twenty
+boundary legs & \chk{2} \\
+``The fewest hops in total'' (Axiom 3) & The minimal cut through the tree, equal to the entropy of each boundary region & \chk{2} \\
+Majority within a type (the first author's reading; DMP's T5 is a majority of key seats) & Reconstruction of the root's content from any 3 of the 5 children and from no 2 & \chk{3} \\
+Two independent witnesses, each verifying itself (Axioms 1, 2) & The trust half and the information half each measure the stabilizer
+syndrome; the gate passes only on two trivial syndromes & \chk{4} \\
+``From trust nothing \ldots\ but its existence'' (Axiom 3) & Stabilizers commute with the logical operators: the syndrome says that the
+content is in the code, never what it is & \chk{4}, \chk{5} \\
+Stricter answer stands; restore by evidence (Axiom 1) & A fault gives a nonzero syndrome, both halves refuse for the same reason, the
+correction restores the content & \chk{4} \\
+``Content moves only by a grant'' (Axiom 3) & Content is moved, never copied (no-cloning~\cite{wz,dieks}; cited, not checked) & --- \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent The checks report:
+\begin{itemize}[nosep]
+\item \chk{1} every three-leg cut of the six-leg state carries 3 bits (the tile is a perfect tensor);
+\item \chk{2} both tile maps are isometries, and $S(A)$ equals the minimal cut through the tree for every contiguous boundary region tested;
+\item \chk{3} $I(R:\text{pair})=0$ bits for all 10 pairs of children and $I(R:\text{triple})=2$ bits for all 10 triples, where $R$
+purifies the root's logical qubit;
+\item \chk{4} on 200 random contents both halves read the same trivial syndrome (by construction: code states have trivial syndrome) and
+the content fidelity after both reads is 1; the 15 single-qubit faults give 15 distinct syndromes, and refuse-and-restore returns
+fidelity 1; if the two halves instead read the content itself (logical $Z$, then logical $X$), the mean fidelity drops to $0.50$, so the
+reading of Axiom 1's ``full reach over the act'' as reading the content is refused;
+\item \chk{5} two parts whose content is a logical Bell pair reach CHSH $=2\sqrt2\approx 2.828$ on the content while the gates' verdicts,
+deterministic stabilizer readings, give exactly $2$; every syndrome operator commutes with every content observable.
+\end{itemize}
+
+\noindent So X1, X2 (on a tree) and X3 hold in an assembly that encodes the eight sentences of the table. It encodes nothing of the minting,
+the failure classes, the decay of freshness or records that outlive the act, and it is not shown DMP-complete. This is the kinematic
+content of the HaPPY model~\cite{happy}, on a tree of one layer. The gate is classical by construction and needs to be nothing else: \chk{5} shows a classical
+gate and quantum content at the same time, in different layers of one object. (A review pass noted that the verdicts' CHSH value of 2 is
+trivially classical, since the verdicts are deterministic; we use it only to show that the two layers coexist.)
+
+\section{The wall}\label{sec:wall}
+
+\begin{claim}[shared structures are classical]\label{cl:A}
+Every structure DMP defines between parts (the layout, the trust field, the order of acts, the counts that drive the layout) is held in
+full by at least two independent witnesses, so its dependence on the parts factors through classical records: as a mediator between parts
+it acts as a classical (entanglement-breaking) one.
+\end{claim}
+
+\begin{proof}[Argument]
+Content moves between parts only by a grant (Axiom 3), so a move is an act with a definite source and destination; the record names the
+act, not the content. Every act leaves a record that every witness of the act can read in full, any other reader sees the counts always
+(Axiom 3), the layout is ``recomputed by both halves and never by one'' (Axiom 3), and every standing of the trust field is such a record
+(Axioms 2 and 3). So each candidate structure is held in full by at least two independent witnesses (Axiom 1). A family of states that can be
+broadcast to two parties, each holding it in full, is pairwise commuting (Barnum, Caves, Fuchs, Jozsa and Schumacher~\cite{barnum}; for
+pure states, no-cloning~\cite{wz,dieks}). Records that any number of readers see are classical in the strong sense of quantum
+Darwinism~\cite{bph}. A structure that both halves recompute deterministically from those records (for instance, a fixed quantum state
+prepared from the counts) is a measure-and-prepare channel from the parts' point of view, so it too acts classically. The only escape is
+to erase the records coherently, which Axiom 3 allows only to both halves, on the legal date.
+\end{proof}
+
+\begin{remark}
+Claim~\ref{cl:A} is close to definitional, and a review pass objected that it ``assumes its conclusion''. We agree that it is a
+consequence of the axioms, not a discovery about nature: DMP demands absolute observability of its shared structures, and the
+no-broadcasting theorem says what that demand costs. In a holographic code it is the statement that the area is a number, not an
+operator: DMP gives one fixed-area sector at a time, which in holography is a special state~\cite{dhm}.
+\end{remark}
+
+\begin{claim}[a classical mediator cannot entangle]\label{cl:B}
+If a mediator interacts locally with two systems and is classical, it cannot create entanglement between them. Contrapositively, a field
+that entangles two masses by local mediation is not classical (Galley, Giacomini and Selby~\cite{ggs}, a theorem in generalised
+probabilistic theories; the experimental logic of~\cite{bose,mv}).
+\end{claim}
+
+\noindent Check \chk{6} runs the smallest case: two qubits $A$, $B$ in $\lvert+\rangle$ coupled through a mediator $M$ (CNOT $A\to M$,
+CZ $M$--$B$, CNOT $A\to M$). With $M$ coherent, the negativity~\cite{vw} of $AB$ is $0.5$ (maximal). With $M$ held by both halves as
+Claim~\ref{cl:A} requires, that is, dephased in its record basis after the first coupling, the negativity is $0$.
+
+\paragraph{Together.} In any dictionary in which a DMP structure is the geometry, the geometry, as a local classical mediator, cannot by
+itself entangle two masses, so X4 fails. Any dictionary in which no DMP structure is the geometry puts gravity inside the content, about which G0 says ``no further
+statements'', so DMP does not model it (Definition~\ref{def:model}). That is the verdict CAN NOT.
+
+\paragraph{The live debate.} Claim~\ref{cl:B} applies to gravity only if the inference ``gravitationally mediated entanglement implies
+non-classical gravity'' holds. Aziz and Howl~\cite{azizhowl} argue that classical gravity coupled to quantum matter fields can produce
+entanglement through virtual matter processes, an effect they expect to be far smaller than the quantum-gravity rate; Marletto, Oppenheim,
+Vedral and Wilson~\cite{movw}, Di\'osi~\cite{diosi}, Schneider, Huggett and Linnemann~\cite{shl} and Gundhi, Infantino and
+Bassi~\cite{gib} dispute it. If the inference failed, the experimental refuter in Section~\ref{sec:break} would weaken, and so would the
+sentence above; Claim~\ref{cl:A} would not change.
+
+\begin{proposition}[the tree is not our space; separate and removable]\label{pr:C}
+Read as space, a tree's boundary is totally disconnected (the $p$-adic line of $p$-adic AdS/CFT~\cite{hmss,gubser}, which is real and
+published), and no tree approximates a plane: an $n$-cycle needs distortion at least $n/3-1$ in any tree (Rabinovich and Raz~\cite{rr}).
+So X5 fails while ``every layer is a tree''. Keeping the hierarchy as the routing tree of each request over a graph with loops removes this
+proposition and leaves Claims~\ref{cl:A} and~\ref{cl:B} untouched.
+\end{proposition}
+
+\paragraph{What would change the verdict.} To reach X4 the geometry must cross between parts without a record both halves read. That needs
+two edits to Axiom 3: the layout checked by both halves ``that it is a layout, never what it is'' (one clause, cheap), and the counts of
+the acts that shape the geometry no longer visible to every reader (the mission sentence, ``absolute Observability''). The first without
+the second changes nothing, because the demand that drives the layout stays a classical source. The second is the price, and a DMP that
+pays it is no longer DMP.
+
+\subsection{In 2+1 dimensions}\label{sec:21}
+Gravity in 2+1 dimensions has no local degrees of freedom: no gravitational waves and no attraction between static masses, only conical
+deficits~\cite{djt}. Perturbatively it is exactly soluble as a Chern--Simons theory~\cite{witten88}, with a holographic boundary algebra
+for negative cosmological constant~\cite{bh}; whether pure 3D quantum gravity exists as a consistent theory is open~\cite{mw}. With no
+local field there is no local mediator for Claim~\ref{cl:B} to forbid. That does not make 2+1 an exception. Its quantum degrees of
+freedom are global: the holonomies of the flat connection, which do not commute once quantised~\cite{nr}. A DMP structure that carries
+the global geometry is held in full by two witnesses (Claim~\ref{cl:A}), so it can carry one classical sector of those holonomies, never
+their superposition; and with matter, point particles scatter through their conical deficits~\cite{thooft88}, so the same rule would
+decohere their relative positions. So in 2+1, too, DMP cannot model quantum gravity and can host it. The first author's own reason,
+in his words: ``The vector that would bound existence in a 2s1t formation would not be able to produce the gravitational effects that are
+needed by DMP-completeness.'' And a second: ``It is also correct, because a perfect duality, that does not interact with it's
+Existence, can not exist, because, through the intermarriage of Existence and Information, a perfect duality must try to X to Existence,
+which it can not, making that system already axiomatically unsound.'' Both are his reasoning, not results this paper proves. (An earlier draft scored 2+1 as CAN up to a superselection rule; a review pass showed that the rule removes
+the whole quantum content of the theory.) Our universe is not 2+1 in any case: the local degrees of freedom 2+1 lacks have been measured~\cite{ligo}.
+
+\section{Host, not model}\label{sec:host}
+
+\begin{proposition}[DMP hosts; argued, not proven]\label{pr:host}
+For any finitely specified quantum theory of gravity $H$, there is a configuration that obeys DMP's text and whose content runs $H$, to
+any finite precision.
+\end{proposition}
+
+\begin{proof}[Argument]
+G0 makes no statement about a part's constituents, and Axiom 3 restricts only how content moves between parts (by grant) and what the
+record says about it (that it exists, and the counts). By the Church--Turing--Deutsch principle~\cite{deutsch}, which we assume, a universal
+quantum computer approximates any finitely realisable physical system, and it can be carried as content inside parts whose gates read
+only existence. Content acted on jointly under a grant keeps its entanglement while every act is recorded, as long as the record is blind
+to the content beyond its existence. Check \chk{7} of the second pass (Section~\ref{sec:dissent}) runs this with three five-qubit parts:
+the record and the counts are identical for all 16 pairs of mass contents (by construction, since code states have trivial syndrome), and
+for the $\lvert+\rangle\lvert+\rangle$ contents the masses end entangled (negativity $0.5$). It rests on one construction choice: existence
+is each part's field register, which is always there, and the particle is its content. The alternative, existence read per mass position,
+is in the same script and gives negativity $0$. The Lean theorem \lean{blind\_record\_same} assumes the existence clause in the form
+``each witness's evidence is a function of existence and time only'' and proves that the record is then a function of existence and time
+only; it is about classical records, and says nothing about coherence, which is \chk{7}'s numerics.
+\end{proof}
+
+\noindent The first author names the host the \emph{Existence Turing machine} (ETM), assembled from DMP parts and redeployable from one
+sealed file that proves its own recipe (the \texttt{.cmb} file of Section~\ref{sec:lean}). The sentence the evidence supports is:
+\emph{DMP can host quantum gravity as content; its own structure is the classical machine that runs it.} Hosting is cheap, and we state
+it because it is the exact edge of the verdict, not because it is deep. One review pass refuted a stronger form of the ETM (``two
+independent but entangled singularities, from which all further ones are proven by extension''); gravity\#21, row A7, says how.
+
+\section{The dissent}\label{sec:dissent}
+
+A second, independent pass (gravity\#24, draft) attacked Claim~\ref{cl:A}, found it holds, and still scored the verdict CAN. Its
+argument, in brief:
+\begin{enumerate}[nosep]
+\item \emph{Background and fluctuation.} Split the geometry, as the background field method does~\cite{dewitt}: the background is a DMP
+structure and classical (Claim~\ref{cl:A}); the linearised fluctuation, which carries the Newtonian pull between laboratory masses, is
+content between parts. Gravitationally mediated entanglement follows from linearised quantum gravity on a fixed
+background~\cite{christodoulou}.
+\item \emph{The records stay blind.} Axiom 3's existence clause keeps every record blind to which branch the content is in
+(check \chk{7}, under the construction choice stated in Section~\ref{sec:host}; \lean{blind\_record\_same} for the classical record),
+so the fluctuation stays coherent and the masses entangle.
+\item \emph{The classical part is the area term.} In any quantum error-correcting code with complementary recovery the quantum Ryu--Takayanagi formula reads
+$S(A)=\langle \mathcal{L}\rangle + S_{\text{bulk}}$ with the area operator $\mathcal{L}$ in the centre of the two complementary wedge
+algebras~\cite{harlow}: held by both sides and commuting with everything either side does, like a DMP structure ``recomputed by both
+halves'' within one area sector. On this reading DMP's classical structures are the part of quantum gravity that is classical in quantum gravity too, and
+the assembly models the kinematics, not just hosts them.
+\end{enumerate}
+
+\paragraph{What every pass agrees on.} (i) Claim~\ref{cl:A} holds. (ii) Quantum content, including a linearised gravitational field, can
+move between parts by grant and stay entangled while every act is recorded (\chk{7}). (iii) DMP derives no dynamics and no constant; $G$,
+$\hbar$ and $\Lambda$ come in as content. (iv) X5 is open. (v) DMP forbids coherent superpositions of backgrounds (area sectors) while their
+records exist; the dissent's construction is linearised gravity on one classical background, never a superposition of backgrounds.
+
+\paragraph{Where they part.} Only on Definition~\ref{def:model}. If the gravitational degrees of freedom have to be DMP structures, the
+second pass's construction is a host with a classical centre, and the verdict is CAN NOT, CAN host; this is the verdict the first author
+accepted. If a classical centre plus quantum content is
+enough, the verdict is CAN at the standard of the published code models. With fact (v) stated, we report both because the choice is a
+definition, not a calculation, and the reader may hold the other one. The area-operator correspondence of point 3 is, in our view, the most interesting
+structural observation of the work, whichever definition is used.
+
+\section{The machine-checked part}\label{sec:lean}
+
+The Gravity repository holds a Lean~4 development~\cite{lean4}, core library only, that models DMP from a byte-for-byte vendored copy of
+its text, pinned by commit and hash; the pin is checked before anything else runs. At commit \texttt{06231b8} it holds 243 theorems. The
+check script refuses \texttt{sorry}, local axioms, \texttt{native\_decide} and external code, and fails any theorem resting on more than
+\lean{propext}, \lean{Quot.sound} and \lean{Classical.choice}; continuous integration re-checks the export with an independently written
+kernel (nanoda). The Lean files are unchanged since the last green run of both kernels (commit \texttt{6d09660}); two independent
+review passes re-ran the check with Lean~4.34.0 and got 243 theorems on \texttt{06231b8} and 246 on the second pass's branch.
+
+We model every layout the system admits as a term of one recipe type (a modelling assumption, not a theorem): a numbered list of lines, each adding one layer
+over an earlier line. By induction over the lines of a well-formed recipe: the stack's gate is a meet in the verdict lattice
+$\textsf{refuse}<\textsf{hold}<\textsf{pass}$ (Denning~\cite{denning}); every pass was passed by a minted pair of independent witnesses
+on live evidence, independence read as Malkhi and Reiter's fail-prone systems~\cite{mr}; adding a line changes no existing decision (the
+frame rule~\cite{ohearn}); placement never enters a decision (noninterference~\cite{gm}). A sealed publication format, the
+\texttt{.cmb} file, carries the recipe, its digest, both pins and the verdict; a half signs it only when its own build recomputes them.
+
+The proofs also returned findings the text had not said, among them: independence is relative to a declared class list, so an empty list
+would let one witness count as two (the model always declares the person); the empty recipe is proven (\lean{empty\_recipe\_proven});
+the recipe's digest is not injective (\lean{digest\_not\_injective}). A review pass showed that two theorems are weaker
+than their names: \lean{Recipe.verdict\_proven\_iff} takes the agreement of the two proof chains as an input, and a CHSH bound for the
+gate (\lean{gate\_obeys\_chsh}, on an unmerged branch) belongs to one encoding of the gate. We report the names as they stand and the
+objections with them.
+
+None of this verifies the physics of Sections~\ref{sec:assembly}--\ref{sec:dissent}; the Lean is about DMP, and only
+\lean{blind\_record\_same} (on the second pass's branch, with 246 theorems) is used by an argument above. It has been checked by
+Lean's kernel only; its second-kernel run is pending.
+
+\section{The record of review passes}\label{sec:record}
+
+Every pass below was run by an AI system under the first author's direction, each in its own session. The later verdict passes read
+the earlier ones: the first started from the cold read, the second attacked the first. Pull request numbers refer to the Gravity repository.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lllL@{}}
+\toprule
+Pass & System & Where & Finding \\
+\midrule
+Physics pass & Claude Fable & \#19 (draft) & DMP does not hold as quantum gravity; it fails at one fork: isolated halves are a local model,
+quantum halves are entangled \\
+Second witness & Claude Opus 5.5 & \#18 (draft) & gravity classical (Claim~\ref{cl:A} in an earlier form) \\
+Refutation & Claude Fable (Team) & \#21 (merged) & refuted the earlier claim that DMP is ``a useful approach to quantum gravity'';
+called the earlier form of Claim~\ref{cl:A} ``not implied''; refuted the strong ETM sentence \\
+Cold read & Claude Fable (Team) & \#22 (draft) & 13 requirements (7 conflicts), 8 divergences; found every offered dictionary entry
+failing and did not arrange the parts as quantum gravity \\
+Verdict, first pass & Claude Opus 5.5 & \#23 (merged) & CAN NOT model, CAN host (Sections~\ref{sec:assembly}--\ref{sec:host}); 18 of
+18 checks \\
+Verdict, second pass & Claude Opus 5.5 & \#24 (draft) & CAN (Section~\ref{sec:dissent}); 25 of 25 checks \\
+Independent verification & GLM-5.3, three verifiers & to be added & reported by the first author: cannot model, can host \\
+Final fault verification & Claude Opus 5.5 & \#26 (draft) & every number reproduces (18 of 18, 25 of 25, Lean 243 and 246); 35 of 35
+references correct; Claim~\ref{cl:A} holds; 6 release-blocking faults, corrected in this revision \\
+Final fault verification & Claude Fable & \#27 (draft) & every number reproduces; 35 of 35 references correct; Claim~\ref{cl:A} holds;
+the earlier 2+1 verdict (CAN) wrong; 6 release-blocking faults, corrected in this revision \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent The checks of both verdict passes were re-run for this draft and pass (18 of 18; 25 of 25).
+
+\section{Where we expect it to break}\label{sec:break}
+\begin{enumerate}[nosep]
+\item \emph{Claim~\ref{cl:A}.} Exhibit a structure DMP defines between parts that can be in superposition without breaking Axiom~3 as
+written. That would turn the verdict to CAN.
+\item \emph{Definition~\ref{def:model}.} Argue that a classical centre plus quantum content is a model (the dissent); or that hosting, as
+defined, is too weak to be worth stating.
+\item \emph{Experiment.} A positive test of gravitationally mediated entanglement~\cite{bose,mv} rules out every dictionary in which a DMP
+structure is the geometry, unless classical gravity can entangle~\cite{azizhowl}.
+\item \emph{The checks.} \texttt{assembly.py} encodes eight sentences as code blocks and syndrome reads; another faithful encoding that
+breaks a check breaks Section~\ref{sec:assembly}. Two are known: full reach read as reading the content breaks \chk{4}, and existence read
+per position breaks \chk{7}.
+\item \emph{The Lean.} Any theorem that rests on more than the three permitted axioms, or a recipe the type admits that DMP's text forbids.
+\item \emph{Constants.} DMP derives none of $G$, $\hbar$, $\Lambda$. A derivation from the axioms alone would be new; we have none. A
+count-based lead ($\Lambda\sim 1/\sqrt N$, after Sorkin) does not follow from DMP as written, because its layout is placed
+deterministically.
+\end{enumerate}
+
+\section{Conclusion}
+
+DMP states trust as three axioms: two independent witnesses, one owning trust and one owning information, on evidence each verified
+itself, with a record readable to the act's witnesses and counted by everyone else. Assembled as a holographic code, it reproduces the
+minimal-cut entropy, majority reconstruction and fault refusal of the HaPPY model on a fixed background, on a tree of one layer. Its demand for
+absolute observability makes every structure it shares between parts classical, so it cannot be the geometry of a quantum gravity that
+entangles masses; it can carry such a theory as content. That is the edge we found: \emph{cannot model, can host}. We claim the
+construction exists and reproduces. Whether it is right is for the reader to break.
+
+\section*{Contributions and use of AI}
+Steven Hrovat conceived DMP, set every question in this paper, made every decision recorded in the repositories, and takes responsibility
+for the soundness of the axiom system and the implications of its theorems. Sirius (Claude Opus 5.5, Anthropic) organised the work,
+built and ran the assembly of the first verdict pass, and wrote this text. The Lean development, the review passes and the second verdict
+pass were written by AI systems (Claude Fable, Claude Opus 5.5, GLM-5.3) under the first author's direction, as listed in
+Section~\ref{sec:record}. Every numerical claim is a script in the repository. Every formal claim is a theorem checked by Lean's kernel, and every theorem on
+\texttt{main} also by a second, independent kernel; the one theorem on the second pass's branch awaits that run.
+
+\section*{Licence and availability}
+This paper and its source are released under the Apache License, Version 2.0. DMP: \url{https://github.com/StevenHrovat/dmp} (version
+0.9.9 at commit \texttt{4400cce}: 0.9.8 plus the G0 rule of Section~\ref{sec:dmp}, dmp pull request \#25). Gravity: \url{https://github.com/StevenHrovat/gravity} (commit \texttt{06231b8}; the assembly in
+\texttt{docs/qg-verdict/}, the Lean development in \texttt{evidence/}, the review passes as pull requests \#18, \#19, \#21--\#24, \#26 and \#27, with \#24 at \texttt{60a1616}; the CHSH theorem of
+Section~\ref{sec:lean} on \#17). Both are Apache
+License 2.0. The prior work Gravity builds on is credited in \texttt{docs/acknowledgements.md}.
+
+\begin{thebibliography}{99}\small
+\bibitem{cirelson} B.~S. Cirel'son, ``Quantum generalizations of Bell's inequality'', \emph{Lett. Math. Phys.} 4, 93 (1980).
+\bibitem{chsh} J.~F. Clauser, M.~A. Horne, A. Shimony, R.~A. Holt, ``Proposed experiment to test local hidden-variable theories'',
+\emph{Phys. Rev. Lett.} 23, 880 (1969).
+\bibitem{rt} S. Ryu, T. Takayanagi, ``Holographic derivation of entanglement entropy from AdS/CFT'', \emph{Phys. Rev. Lett.} 96, 181602
+(2006).
+\bibitem{adh} A. Almheiri, X. Dong, D. Harlow, ``Bulk locality and quantum error correction in AdS/CFT'', \emph{JHEP} 04 (2015) 163.
+\bibitem{happy} F. Pastawski, B. Yoshida, D. Harlow, J. Preskill, ``Holographic quantum error-correcting codes: toy models for the
+bulk/boundary correspondence'', \emph{JHEP} 06 (2015) 149.
+\bibitem{bose} S. Bose et al., ``Spin entanglement witness for quantum gravity'', \emph{Phys. Rev. Lett.} 119, 240401 (2017).
+\bibitem{mv} C. Marletto, V. Vedral, ``Gravitationally induced entanglement between two massive particles is sufficient evidence of
+quantum effects in gravity'', \emph{Phys. Rev. Lett.} 119, 240402 (2017).
+\bibitem{ggs} T.~D. Galley, F. Giacomini, J.~H. Selby, ``A no-go theorem on the nature of the gravitational field beyond quantum
+theory'', \emph{Quantum} 6, 779 (2022).
+\bibitem{laflamme} R. Laflamme, C. Miquel, J.~P. Paz, W.~H. Zurek, ``Perfect quantum error correcting code'', \emph{Phys. Rev. Lett.}
+77, 198 (1996).
+\bibitem{wz} W.~K. Wootters, W.~H. Zurek, ``A single quantum cannot be cloned'', \emph{Nature} 299, 802 (1982).
+\bibitem{dieks} D. Dieks, ``Communication by EPR devices'', \emph{Phys. Lett. A} 92, 271 (1982).
+\bibitem{barnum} H. Barnum, C.~M. Caves, C.~A. Fuchs, R. Jozsa, B. Schumacher, ``Noncommuting mixed states cannot be broadcast'',
+\emph{Phys. Rev. Lett.} 76, 2818 (1996).
+\bibitem{bph} F.~G.~S.~L. Brand\~ao, M. Piani, P. Horodecki, ``Generic emergence of classical features in quantum Darwinism'',
+\emph{Nat. Commun.} 6, 7908 (2015).
+\bibitem{dhm} X. Dong, D. Harlow, D. Marolf, ``Flat entanglement spectra in fixed-area states of quantum gravity'', \emph{JHEP} 10
+(2019) 240.
+\bibitem{vw} G. Vidal, R.~F. Werner, ``Computable measure of entanglement'', \emph{Phys. Rev. A} 65, 032314 (2002).
+\bibitem{azizhowl} J. Aziz, R. Howl, ``Classical theories of gravity produce entanglement'', \emph{Nature} 646, 813 (2025).
+\bibitem{movw} C. Marletto, J. Oppenheim, V. Vedral, E. Wilson, ``Classical gravity cannot mediate entanglement'', arXiv:2511.07348
+(2025).
+\bibitem{diosi} L. Di\'osi, ``No, classical gravity does not entangle quantized matter fields'', arXiv:2511.00852 (2025).
+\bibitem{shl} M.~D. Schneider, N. Huggett, N. Linnemann, ``A demonstration that classical gravity does not produce entanglement'',
+arXiv:2511.19242 (2025).
+\bibitem{gib} L. Gundhi, A. Infantino, A. Bassi, ``Can classical theories of gravity produce entanglement?'', arXiv:2604.19696 (2026).
+\bibitem{cdt} J. Ambj{\o}rn, A. G{\"o}rlich, J. Jurkiewicz, R. Loll, ``Planckian birth of the quantum de Sitter universe'',
+arXiv:0712.2485 (2007).
+\bibitem{nr} J.~E. Nelson, T. Regge, ``Homotopy groups and (2+1)-dimensional quantum gravity'', \emph{Nucl. Phys. B} 328, 190 (1989).
+\bibitem{thooft88} G. 't~Hooft, ``Non-perturbative 2 particle scattering amplitudes in 2+1 dimensional quantum gravity'',
+\emph{Commun. Math. Phys.} 117, 685 (1988).
+\bibitem{hmss} M. Heydeman, M. Marcolli, I. Saberi, B. Stoica, ``Tensor networks, $p$-adic fields, and algebraic curves: arithmetic and
+the AdS$_3$/CFT$_2$ correspondence'', \emph{Adv. Theor. Math. Phys.} 22, 93 (2018).
+\bibitem{gubser} S.~S. Gubser, J. Knaute, S. Parikh, A. Samberg, P. Witaszczyk, ``$p$-adic AdS/CFT'', \emph{Commun. Math. Phys.} 352,
+1019 (2017).
+\bibitem{rr} Y. Rabinovich, R. Raz, ``Lower bounds on the distortion of embedding finite metric spaces in graphs'', \emph{Discrete
+Comput. Geom.} 19, 79 (1998).
+\bibitem{djt} S. Deser, R. Jackiw, G. 't~Hooft, ``Three-dimensional Einstein gravity: dynamics of flat space'', \emph{Ann. Phys.} 152, 220
+(1984).
+\bibitem{witten88} E. Witten, ``2+1 dimensional gravity as an exactly soluble system'', \emph{Nucl. Phys. B} 311, 46 (1988).
+\bibitem{bh} J.~D. Brown, M. Henneaux, ``Central charges in the canonical realization of asymptotic symmetries: an example from
+three-dimensional gravity'', \emph{Commun. Math. Phys.} 104, 207 (1986).
+\bibitem{mw} A. Maloney, E. Witten, ``Quantum gravity partition functions in three dimensions'', \emph{JHEP} 02 (2010) 029.
+\bibitem{ligo} B.~P. Abbott et al. (LIGO Scientific and Virgo Collaborations), ``Observation of gravitational waves from a binary black
+hole merger'', \emph{Phys. Rev. Lett.} 116, 061102 (2016).
+\bibitem{deutsch} D. Deutsch, ``Quantum theory, the Church--Turing principle and the universal quantum computer'', \emph{Proc. R. Soc.
+Lond. A} 400, 97 (1985).
+\bibitem{dewitt} B.~S. DeWitt, ``Quantum theory of gravity. II. The manifestly covariant theory'', \emph{Phys. Rev.} 162, 1195 (1967).
+\bibitem{christodoulou} M. Christodoulou, A. Di~Biagio, M. Aspelmeyer, \v{C}. Brukner, C. Rovelli, R. Howl, ``Locally mediated
+entanglement in linearized quantum gravity'', \emph{Phys. Rev. Lett.} 130, 100202 (2023).
+\bibitem{harlow} D. Harlow, ``The Ryu--Takayanagi formula from quantum error correction'', \emph{Commun. Math. Phys.} 354, 865 (2017),
+arXiv:1607.03901.
+\bibitem{lean4} L. de~Moura, S. Ullrich, ``The Lean 4 theorem prover and programming language'', in \emph{CADE 28}, LNCS 12699, 625
+(2021).
+\bibitem{denning} D.~E. Denning, ``A lattice model of secure information flow'', \emph{Commun. ACM} 19, 236 (1976).
+\bibitem{mr} D. Malkhi, M. Reiter, ``Byzantine quorum systems'', \emph{Distrib. Comput.} 11, 203 (1998).
+\bibitem{ohearn} P. O'Hearn, J. Reynolds, H. Yang, ``Local reasoning about programs that alter data structures'', in \emph{CSL 2001},
+LNCS 2142, 1 (2001).
+\bibitem{gm} J.~A. Goguen, J. Meseguer, ``Security policies and security models'', in \emph{IEEE Symposium on Security and Privacy}, 11
+(1982).
+\end{thebibliography}
+
+\end{document}

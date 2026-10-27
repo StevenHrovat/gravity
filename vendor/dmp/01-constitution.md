@@ -251,6 +251,11 @@ It is stated, not derived.
   instead that a DMP-complete system must never contain true AGI. To ensure this is possible, R136a1 (the flag of chapter 06) is always a
   DMP-complete answer over IM and excludes anything from being contained inside a DMP-complete system: a part answered R136a1 is outside,
   whatever it is, and nothing else needs to be proven about it (C∞).
+- **The publication version is provisional G0** (the owner, 2026-10-27 18:26Z and 18:27Z). DMP 0.9.9 is the version the paper (GUID: The
+  General Unified Information Duality) and the root repositories it needs are pinned to. 0.9.9 is the state that has to stay backwards
+  compatible until, at the latest, one week after the paper's full publication in any recognized journal. When it goes stale, 0.9.9
+  becomes provisional G0 until revoked by 1.0.0 from true G0 authority, the owner; the revocation is a DMP-complete act as of version
+  0.9.9.
 
 The owner (2026-10-27 00:13Z, the mission above, verbatim in it); (2026-10-26 23:28Z): "The boundary is not drawn by people, it is drawn by the minting of at least 5 constituent parts that become the
 WKHs. No further claim is made. Otherwise no system could remint and redeploy. The part is defined as a Duality of Trust, one owns trust, the
@@ -260,7 +265,10 @@ would contain a part that is recognized as true AGI, it must be a constituent of
 Usual Staleness rules apply to this, so within one year of the full publication of the paper and the publication of the repository the
 owner must have named a DoT of more then 11 people, who cast the decision in his stead. If it goes stale, the clause is instead, that a
 DMP-complete system must never contain true AGI. To ensure this is possible, R136a1 is always a DMP-complete answer over IM and excludes
-anything from being contained inside a DMP-complete system."
+anything from being contained inside a DMP-complete system."; (2026-10-27 18:26Z) "Then 0.9.9 is the state that has to be backwards
+compatible until, at the latest one week after full publication in any recognized journal. When stale 0.9.9 becomes provisional G0 until
+revoked by 1.0.0 from true G0 authority, the owner."; (18:27Z) "I approve the paper and it's associated version of needed repositories at
+v0.9.9, to be the preliminary G0, until it is revoked through a DMP complete act as of version 0.9.9"
 
 What else no chain reaches is listed, not hidden, in the assumption register (chapter 06): the DMP text itself, the mapping of code to acts,
 the door's code until its run-time check exists, the failure-class list, the time authorities, the provers' logic, the shared machines.
@@ -268,8 +276,9 @@ the door's code until its run-time check exists, the failure-class list, the tim
 Status: stable since DMP 0.9.4
 Amended: "organisation" replaced, approved by the owner 2026-10-26 15:19Z; mint prep approved by the owner 2026-10-26 15:04Z; the minting
 of at least five parts draws the boundary, the owner 2026-10-26 23:28Z; the owner may be a Duality, 23:32Z; a true AGI is a constituent of
-G0, the owner 2026-10-27 00:04Z, who recognizes it, 00:10Z; the mission, 00:13Z; all three approved as worded by the owner 00:21Z (stable
-since DMP 0.9.0 before that).
+G0, the owner 2026-10-27 00:04Z, who recognizes it, 00:10Z; the mission, 00:13Z; all three approved as worded by the owner 00:21Z; the
+publication version as provisional G0, the owner 2026-10-27 18:26Z and 18:27Z, approved as worded by the owner 18:34Z ("Both
+approved.") (stable since DMP 0.9.0 before that).
 Owner: CM coordinator
 Enforced by: DMP-014
 
