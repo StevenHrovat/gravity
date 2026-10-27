@@ -30,3 +30,4 @@ import Dmp.NoGo
 import Dmp.NoGoVector
 import Dmp.NoGoCosmo
 import Dmp.NoGoRate
+import Dmp.NoGoBound

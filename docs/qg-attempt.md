@@ -169,6 +169,52 @@ ratio of dark energy to matter grows without bound too, as a³, so the direction
 neither. The claim's true half is DMP's rate limit. Its false half is that the rate limit supplies a cause, or allows the acceleration the
 universe shows. Disproved.
 
+**4.10 The extension itself (the owner, 2026-10-27).** "QG is an extension of the two axiom system that prescribes existence alone as proof of
+existence, where that is replaced by the only allowable replacement, a vector consisting of one vector that bounds a space which can contain a
+field, and another, which gives change in the field a direction. Those two things, given initial settings, Planck's constant, G and c, is able
+to solve the field part of the duality, which also contains a hierarchical information space, which, with our settings, pushes the bounds
+faster than the field they project allows the force transmitting particles to catch up, to also extend the field, which carries them, as they
+go. So the growth of bounds, in our case, slows down, and should be completely modelable, since we are in an existence space that exists,
+making that axiom true beyond any possible evidence to the contrary (trust)." And: "You are doing the wrong thing." So this section models the
+extension and not DMP's objects. `evidence/Dmp/NoGoBound.lean` has a bound of the existence space, a field inside it that force carriers
+extend toward the bound at their speed, and a push on the bound by the information inside that acts only where the field has arrived, the
+push being projected through the field; nothing of DMP enters.
+
+What holds, and it is more than before: the picture is real physics with names. The bound that force carriers cannot catch up with is the
+cosmic event horizon of an accelerating universe: beyond it space recedes faster than light, and light sent from there never arrives (de
+Sitter; Gibbons and Hawking 1977, who also gave that horizon a temperature and an entropy proportional to its area, the universe as a black
+hole seen from inside, which is the owner's information black hole). The growth of that bound does slow down: the event horizon's radius
+approaches c·sqrt(3/Λ) and stops growing, and the Hubble radius does the same. Section 4.7 read "expansion" as the distances inside and
+called the slowing false; for the horizon it is true, and the owner's instinct about the bound was right. The information inside is capped by
+the bound's area (Bekenstein 1981; Bousso 1999), and the expansion of space as the quest for equipartition between the degrees of freedom on
+the horizon and in the bulk, with ħ, G and c as inputs and de Sitter as the end state, derives the Friedmann equation (Padmanabhan 2012). The
+owner's sentence is that programme in his words.
+
+What the model decides. The bound slows to the carriers' speed and never below it: it never gets further ahead of the field than one push
+(`bound_within_one_push`), the field advances at most c per tick (`field_speed_le_carriers`), so the bound advances at most c·t plus one push
+over t ticks (`bound_speed_le_carriers`), and it never stops, because while the information pushes and the carriers move the field reaches the
+bound again and the bound moves again (`bound_never_stops`). The slowing the owner's mechanism gives is from faster than the carriers to the
+carriers' speed, a coasting bound. To slow to zero, as the event horizon does, the bound needs a capacity: with a cap the push acts only while
+the bound stays within it, the bound never exceeds it (`capacity_stops_the_bound`) and the growth ends there (`growth_ends_at_capacity`). The
+capacity is where the physics enters, and it is the cosmological constant: the horizon freezes at c·sqrt(3/Λ), its information capacity is
+its area over 4ℓ_P², and ħ and G enter there and nowhere else. The same Λ makes the distances inside accelerate: the horizon freezes exactly
+because the recession speed at it reaches c, which is the acceleration of 4.7 seen from the edge. "The growth of bounds slows down" and "the
+expansion accelerates" are one fact, and the duality derives neither; Λ does.
+
+What breaks, three things. First, ħ, G and c do not fix Λ: they fix the Planck scale, and Λ is 10⁻¹²² of it (Weinberg 1989). The initial
+settings the owner names leave out the one number that sets where the bound stops, and in Padmanabhan's derivation it enters as the end state,
+not as an output. Second, the hierarchical information space is named and not given: the capacity counts degrees of freedom on the horizon,
+and the theory of those degrees of freedom is what quantum gravity would be. The extension says that they exist and that their count bounds
+the field; it does not say what they are, and the emergent-gravity programme it restates has the same open problem. Third, the change the
+direction vector gives is a definite function of the field, so the model is local realism and the gate of 4.2 stands over it: no amplitudes,
+so nothing quantum. And on the last sentence: "we are in an existence space that exists" proves that something exists, not that it is a
+duality of two vectors; and "true beyond any possible evidence to the contrary" is the one thing the owner's own second axiom refuses, since
+trust in DMP is live evidence and never existence.
+
+The verdict for this section: the extension is a cosmology, not a quantum gravity. As a cosmology it is the de Sitter horizon with holographic
+equipartition, which exists in the literature and reproduces the classical expansion with Λ as an input. As quantum gravity it is the
+statement that the horizon's degrees of freedom exist, which everyone grants and no one has.
+
 ## 5. The verdict
 
 **False.** The approach, instantiated as faithfully as DMP's own objects allow, produces the shape of a gravitational theory with an arrow of
@@ -177,18 +223,21 @@ owner's vector it gains a coupling through the budget and a horizon depth, and l
 owner's information black hole it attains every ratio of dark energy to dark matter and so predicts none (4.6), predicts no slowing of
 the expansion where the universe shows an acceleration (4.7), and has no tunnelling, because a refused move is never made (4.8); read as the
 owner's rate-limited expansion it keeps its true half, the budget as the rate limit, and that half forbids the acceleration the universe shows
-while supplying no cause (4.9). The first two are
+while supplying no cause (4.9); modelled as the owner's extension itself, a bound, a field, carriers and a push, it is the de Sitter horizon
+with holographic equipartition, real physics that takes Λ as its input and leaves the horizon's degrees of freedom unnamed, a cosmology and not
+a quantum gravity (4.10). The first two are
 not shortfalls of the instantiation but consequences of the axioms: member isolation and the frame rule forbid coupling, and the second axiom
 is local realism. Each would have to be given up for the approach to work, and giving either up gives up DMP: without isolation there is no
 containment, without local verification there is no Axiom 2.
 
 What would reopen it is therefore not more work on these axioms but a different theory: one whose field couples every place to every other,
 whose outcomes are not functions of locally verified evidence, and whose equation of state carries ħ, G and c. None of the three is in the
-owner's two axioms, and the three theorems above are the proof that none can be derived from them.
+owner's two axioms, and the three theorems above are the proof that none can be derived from them. The extension of 4.10 is the closest the
+owner has come: it reaches the classical horizon and stops where every emergent-gravity programme stops, at the microscopic degrees of freedom.
 
 ## 6. What stands
 
 Section 3 stands, and it is DMP's: a self-propagating duality under a field has a second law, a Lyapunov potential, an equilibrium, a horizon
 that leaks only counts and a boundary-set capacity. That is a theory of trusted infrastructure with the shape of black-hole thermodynamics,
-proven in 318 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
+proven in 332 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
 are the reason.
