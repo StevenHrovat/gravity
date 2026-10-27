@@ -15,7 +15,8 @@ Jacobson's derivation giving the "information first" reading; nothing there is n
 the word *quantum* enters, and the failure is a fork: a Duality whose two halves are **isolated** (the containment DMP is built on) is a
 local model and obeys Bell's bound; a Duality that behaves quantum mechanically is **entangled**, which is the one thing an isolated pair
 cannot be. Every other failure (no field equation constant, no area spectrum, no Born rule, no dark-sector number) is this fork seen from
-another level, or an input the system never claimed to fix. The useful approach exists and has a name: thermodynamic gravity joined to the
+another level, or an input the system never claimed to fix. The owner's third axiom, "something exists" in an existence space that is the
+hierarchy of information (06:48Z), is needed and holds, and it picks the entangled branch (level 0b). The useful approach exists and has a name: thermodynamic gravity joined to the
 informational reconstruction of quantum theory. Both halves are published, both stop at the same step (the microscopic degrees of
 freedom), and the axiom system adds no postulate to either. What it does add is on DMP's side, section 4.
 
@@ -34,6 +35,7 @@ where trust is the vector. That's why it was essential that I included the refre
 |---|---|---|
 | Information as the first axiom | "it from bit" (Wheeler 1990); the informational reconstructions of quantum theory (Hardy 2001; Chiribella, D'Ariano and Perinotti 2011; Masanes and Mueller 2011) | holds, published |
 | No information without existence in a duality | the **purification** postulate (Chiribella, D'Ariano and Perinotti 2011): every state of a system is the marginal of a pure state of the system and one partner | holds as one of six postulates |
+| Something exists, in an existence space that is the hierarchy of information (the third axiom, 06:48Z) | the non-vacuity axiom (a model must have a point); space from the hierarchy of entanglement: van Raamsdonk 2010, Swingle 2012 (MERA is AdS), Pastawski, Yoshida, Harlow and Preskill 2015 | holds, needed, and lands on the entangled branch of the fork |
 | The vectors that bound the possibility space | the **tetrad** (Cartan 1922; Einstein 1928): the metric is the product of four frame vectors, g = η(e, e) | holds, if "vector" means frame |
 | The refresh rate, without which the field is scalar | the **lapse** of the 3+1 split (Arnowitt, Deser and Misner 1962): the rate at which the spatial slice advances | holds as a reading |
 | Gravity as the existence-defining vector | gravity is a rank-2 field, not a vector: a vector field repels like sources and cannot bend light universally (Feynman 1962; Weinberg 1964; Deser 1970) | fails as worded, see level 1 |
@@ -54,6 +56,25 @@ duality" with the partner as the other half. That derivation needs six postulate
 compression, local distinguishability, pure conditioning, purification); the owner's two give the sixth and none of the other five. So the
 words land on the right programme and supply one sixth of it. **Refuter:** a derivation of the other five from the two axioms; none is
 known and this pass found none.
+
+**Level 0b, the arena (the owner's third axiom, 06:48Z).** *Holds, is needed, and chooses a branch of the fork rather than removing
+it.* The owner: "something that exists can never exist without somewhere to exist. Here the hierarchical structure of information comes
+in. Something can exist because it is in Existence space ... We can not rule out Existence as a needed axiom, if its derivation does not
+satisfy any proving. We can then add: 3: Something exists." Two things are right in it. First, the axiom is needed: the two axioms are
+satisfied by the empty world and by a world without gravity (`NoGoAxioms.axioms_hold_without_gravity`), so nothing derives existence, and
+every axiom system that wants a model with a point says so (first-order logic assumes a non-empty domain; set theory has an axiom that
+some set exists). Second, "the somewhere to exist is the hierarchy of information" is a published programme with results: spacetime from
+entanglement (van Raamsdonk 2010), the hierarchical tensor network MERA whose geometry is anti-de Sitter space (Swingle 2012), and the
+holographic codes in which a region's information is bounded by the minimal cut through the hierarchy (Pastawski, Yoshida, Harlow and
+Preskill 2015), which is the owner's min-leakage arrangement in quantum words, with Ryu and Takayanagi's formula as its theorem. So the
+third axiom does not fail. What it does is decide level 3: in every one of those results the links of the hierarchy are **entanglement**,
+and the geometry is built from how much entanglement crosses each cut. A hierarchy whose links are standings between isolated halves
+builds no geometry (`NoGo.dmp_field_uncoupled`: a refresh changes no other term). So with the third axiom the system is consistent with
+quantum theory exactly when it takes the entangled branch, trust read as entanglement and the DoT as a maximally entangled pair with
+monogamy as its exclusivity; that is the tensor-network form of holography, published, proven in anti-de Sitter space and open in ours.
+**Where it stops:** the same step as every holographic programme, the de Sitter case; and on the entangled branch Axiom 2's local
+verification is gone, so it is no longer DMP. **Refuter:** a hierarchy of isolated, locally verified links from which a geometry
+follows; `dmp_field_uncoupled` says the field of such links couples nothing.
 
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
@@ -135,6 +156,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | Level | Holds or fails | Decided by | What the system must give up to pass |
 |---|---|---|---|
 | 0 words | holds, one of six postulates | Chiribella, D'Ariano and Perinotti 2011 | nothing; five postulates to add |
+| 0b arena | holds, needed; picks the entangled branch | van Raamsdonk 2010; Swingle 2012; the HaPPY code 2015 | local verification, if the branch is taken |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
