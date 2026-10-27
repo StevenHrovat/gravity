@@ -366,7 +366,14 @@ the locality of the vertex, true and not new. What it adds, that each interactio
 is false: a photon diffracted by a crystal exchanges momentum with the lattice and no atom is the site, and the diffraction pattern exists only
 because the position did not collapse (Bragg and Bragg 1913); a recoil-free gamma ray shares its recoil with the whole crystal and localises
 in no nucleus (Moessbauer 1958). The amplitude sums over every place the exchange could have happened, and momentum conservation is the
-result of that sum, not of a collapse. The adaptation trades a false law for a tautology plus a different false statement. None of this
+result of that sum, not of a collapse. The adaptation trades a false law for a tautology plus a different false statement. The owner's final
+version, minutes later: "Both sides, as they cannot exist separately, need to dissolve at the same instant. As information cannot be
+destroyed, their information in both halves is liberated at once." That one is right, and it has a name: every conserved quantity is a
+symmetry (Noether 1918), and at a local vertex all of them are passed on together, energy, momentum, angular momentum and every charge, in
+the same interaction. It is the content of every vertex of the Standard Model, with two provisos that are the two facts above: the instant is
+summed over unless something measures it, and conservation is the result of that sum; and what is liberated is the conserved information,
+not the position, which no conservation law carries. It is also the end of the exchange question: a correct description of how quanta on
+the existence field interact, which is what the Standard Model is, and no more a quantum gravity than the Standard Model is. None of this
 touches the five requirements above: the carriers are quanta of fields on the existence field, the carrier of the existence exchange is the
 graviton, and the existence field's own quantum state is still not in the picture.
 
