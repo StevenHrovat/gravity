@@ -354,9 +354,13 @@ exchange changes colour and momentum at once; only the photon leaves the charges
 one that matters for the verdict: an interaction is not a transfer but a sum. Where two exchanges can lead to the same final state they
 interfere, with phases, and the interference is measured (Bhabha 1936, the two channels of electron-positron scattering); a bookkeeping of
 definite quanta transmitted has no phases to add and cannot produce it. The amplitude is the quantum content of a force, and the owner's
-picture carries the quantum numbers without the amplitude. None of this touches the five requirements above: the carriers are quanta of
-fields on the existence field, the carrier of the existence exchange is the graviton, and the existence field's own quantum state is still
-not in the picture.
+picture carries the quantum numbers without the amplitude. Sharpened by the owner to "only one information carrying layer CAN exchange
+information", a law rather than a habit, it meets a fourth fact, the first one quantum mechanics ever stated: the photon that gives an
+electron's position kicks its momentum (Heisenberg 1927), so information about the existence half is gained only together with an exchange
+in the other half, and the product of the two uncertainties is at least ħ/2. The two halves exchange inseparably; a rule that only one can is
+the negation of the uncertainty principle's mechanism. None of this touches the five requirements above: the carriers are quanta of fields on
+the existence field, the carrier of the existence exchange is the graviton, and the existence field's own quantum state is still not in the
+picture.
 
 The verdict for this section: a consistent frame that physics satisfies, and for that reason not a theory of anything in particular. It is
 satisfied by worlds with gravity and without, with Einstein's law and with Newton's, so it derives no gravity; a quantum gravity would have to
