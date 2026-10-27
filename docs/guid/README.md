@@ -93,5 +93,6 @@ Typos in the preface stay as written until the owner says otherwise ("subet", "a
 - **G3.** Every finding that can be closed is closed; the paper is corrected once, against all of them.
 - **G4.** The repositories hold at least everything needed to verify the paper (the owner, 17:40Z): the drafts this paper cites (#24's
   check [7] and `Blind.lean`, the review records) are merged or pinned by commit, and the repositories are public.
+  The owner made dmp, gravity, im and cm public on 2026-10-27 (about 19:00Z); the drafts are still open.
 - **G5.** The project's release gate (the owner, 2026-10-27 17:30Z): the owner and Sirius agree on the form; every repository is in a state
   we are proud to show; the commit author identity and a contributor's publish consent are settled.
