@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R38
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R39
 below are the labels of its table rows.
 -/
 
@@ -1005,5 +1005,30 @@ theorem cr_the_gate_is_the_meet_of_two (v1 v2 : Verdict) : gate v1 v2 = meet [v1
 /-- Three witnesses gate the same way: the meet of three is the gate applied twice, and so on for any number. -/
 theorem cr_three_witnesses_gate_the_same_way (v1 v2 v3 : Verdict) : meet [v1, v2, v3] = gate v1 (gate v2 v3) := by
   cases v1 <;> cases v2 <;> cases v3 <;> decide
+
+
+/-! ## R39. The two replies (the owner, 2026-10-27, sent during this pass)
+
+To R38: "a refused act immediately leads to an information EH being spanned". To R37: "Existence and Trust are both binary", and
+one failure "would invert the DMP-completeness state into total DMP-uncompleteness". In the chain a refused act's entry sits in the
+same open log as every pass; a verdict is refuse, hold or pass; Gravity's verdict is proven, unproven or out of spec; and one line
+the chains do not carry makes a layout unproven, not out of spec. -/
+
+/-- A refused act is recorded in the open: its entry, with its three refusals, is the last entry of the same log every pass goes to. -/
+theorem cr_refused_act_is_recorded_in_the_open (s : State) (r : Request) :
+    (step (fun _ => .refuse) (fun _ => .refuse) s r).log.getLast? = some ⟨r.t, .refuse, .refuse, .refuse⟩ := by
+  simp [step, guard, gate, Verdict.stricter, Verdict.rank]
+
+/-- Trust is not binary: a verdict can be hold, neither pass nor refuse. -/
+theorem cr_trust_is_not_binary : ∃ v : Verdict, v ≠ .pass ∧ v ≠ .refuse := ⟨.hold, by decide⟩
+
+/-- Completeness is not binary: a configuration can be unproven, neither proven nor out of spec. -/
+theorem cr_completeness_is_not_binary : ∃ v : Verdict3, v ≠ .proven ∧ v ≠ .outOfSpec := ⟨.unproven, by decide⟩
+
+/-- One line the chains do not carry makes layout A unproven, not out of spec: no inversion into "total uncompleteness". -/
+theorem cr_one_unproven_line_does_not_invert_to_out_of_spec :
+    Layouts.layoutA.verdict Layouts.classes (fun i => i != 3) = .unproven ∧
+    Layouts.layoutA.verdict Layouts.classes (fun i => i != 3) ≠ .outOfSpec := by
+  decide
 
 end Dmp
