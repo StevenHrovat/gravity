@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R26
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R28
 below are the labels of its table rows.
 -/
 
@@ -712,5 +712,60 @@ theorem cr_one_boundary_costs_exactly_two : ∀ l1 l2 : List Held, phi (l1 ++ l2
     simp only [List.cons_append, phi]
     rw [cr_one_boundary_costs_exactly_two hs l2]
     omega
+
+
+/-! ## R27. The field that pushes back (the owner, 2026-10-27, sent during this pass)
+
+"The black hole is leaking more information, so the information field spanning its outer bound is able to push back more, because it
+is more disorganized and has a more active interest in changing the balance", said of the remnant's spin. In the project's own objects
+the field's push back is the evidence demand in front of the gate (`gateP`), a function of depth and the parameters alone: the
+standings and their freshness, whose shortfall is the potential, are not an argument of it, so a more disordered field demands nothing
+more and refuses nothing more. The absence is the point, as in Theory.lean's layout that never votes. -/
+
+/-- The field as the sentence needs it: the standings a boundary holds (their shortfall is the potential, the disorder), the depth of
+    the boundary and the depth of the part in front of the gate. -/
+structure CrFieldState where
+  held : List Held
+  D : Nat
+  d : Nat
+
+/-- The push back: the gate with the field's demand in front (Field.lean's `gateP`). -/
+def CrFieldState.pushBack (π : Params) (s : CrFieldState) (level : Nat) (v1 v2 : Verdict) : Verdict :=
+  gateP π s.D s.d level v1 v2
+
+/-- Replacing every standing by any other, however stale, changes no answer: the push back is blind to the disorder. -/
+theorem cr_push_back_is_blind_to_the_disorder (π : Params) (s : CrFieldState) (held' : List Held) (level : Nat) (v1 v2 : Verdict) :
+    CrFieldState.pushBack π { s with held := held' } level v1 v2 = s.pushBack π level v1 v2 := rfl
+
+/-- Ageing raises the disorder (R16: the potential rises from zero) and changes no answer. -/
+theorem cr_disorder_rises_and_the_push_back_stays (π : Params) (s : CrFieldState) (level : Nat) (v1 v2 : Verdict) :
+    CrFieldState.pushBack π { s with held := cr_age s.held } level v1 v2 = s.pushBack π level v1 v2 := rfl
+
+
+/-! ## R28. The boundary that radiates everywhere (the owner, 2026-10-27, sent during this pass)
+
+"And since the boundary is made of existence, it radiates across the entire vector field." In the project's own objects the system's
+acts are local: a refresh touches the one standing it names and leaves every other where it was, and a refresh in one layer of the
+stack leaves every other layer. Nothing radiates across the field; a change reaches what it names. -/
+
+/-- A refresh touches one standing: every other position of the list is unchanged. -/
+theorem cr_refresh_is_local : ∀ (l : List Held) (i j : Nat), j ≠ i → (refreshAt i l)[j]? = l[j]?
+  | [], i, _, _ => by cases i <;> simp [refreshAt]
+  | _ :: _, 0, 0, hne => absurd rfl hne
+  | _ :: _, 0, _ + 1, _ => by simp [refreshAt]
+  | _ :: _, _ + 1, 0, _ => by simp [refreshAt]
+  | _ :: hs, i + 1, j + 1, hne => by
+    simp only [refreshAt, List.getElem?_cons_succ]
+    exact cr_refresh_is_local hs i j (fun h => hne (congrArg Nat.succ h))
+
+/-- A refresh in one layer of the stack leaves every other layer unchanged. -/
+theorem cr_stack_refresh_is_local : ∀ (s : List (List Held)) (k i k' : Nat), k' ≠ k → (stackRefresh k i s)[k']? = s[k']?
+  | [], k, _, _, _ => by cases k <;> simp [stackRefresh]
+  | _ :: _, 0, _, 0, hne => absurd rfl hne
+  | _ :: _, 0, _, _ + 1, _ => by simp [stackRefresh]
+  | _ :: _, _ + 1, _, 0, _ => by simp [stackRefresh]
+  | _ :: ls, k + 1, i, k' + 1, hne => by
+    simp only [stackRefresh, List.getElem?_cons_succ]
+    exact cr_stack_refresh_is_local ls k i k' (fun h => hne (congrArg Nat.succ h))
 
 end Dmp
