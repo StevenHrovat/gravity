@@ -439,6 +439,21 @@ a mechanism that cannot produce it does not explain inflation, only wish for it.
 pair cannot propagate without a minting (T-P, G0), and the field spreads from the pair outward (T32), which is the owner's "locked to
 information until it radiates".
 
+The owner's reason (07:30Z): "Because at that time only inflationary information existed and no Existence has been derived to bend
+it." Half false, half true, and the true half is a prediction. False as GR: inflation is bending; the expansion is the Friedmann
+equation, H² = 8πGρ/3, the geometry responding to the information half's energy, and without that bending nothing inflates. True for
+the part of the field that is gravity's own: the curvature of a homogeneous universe is all Ricci (dictated locally by matter) and no
+Weyl (the free gravitational field, tidal distortion, gravitational waves), and Weyl = 0 at the start is Penrose's hypothesis of level
+0m. So "no Existence has been derived to bend it" is exact if it means: the existence half had no degrees of freedom of its own yet;
+every curvature there was, the information half dictated. Where that ends is measured: the first independent gravitational degrees of
+freedom are the tensor modes inflation generates from the horizon's fluctuations (Starobinsky 1979), seen as the tensor-to-scalar ratio
+r. Standard inflation says r > 0 (quantum fluctuations of the metric itself, gravitons); the owner's sentence, read strictly, says
+r = 0 (no gravity of its own to fluctuate). That is a published fork: a detection of primordial tensor modes would establish that
+gravity is quantised (Krauss and Wilczek 2014), and the owner's reading is the classical side of it, consistent with level 0h. Current
+bound r < 0.036 (Planck 2018 with BICEP/Keck); the next experiments reach r about 0.001. **Refuter of the owner's reading:** any
+detection of primordial B-mode polarisation. **Refuter of the standard reading:** none yet; a null result at 0.001 would leave models
+with r below it, and the owner's r = 0 with them.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
