@@ -14,9 +14,10 @@ This folder supersedes the earlier drafts of gravity#20 (`docs/paper/`, "The Dua
 
 | File | What |
 |---|---|
-| `guid.tex` | the paper (LaTeX, `article` class, inline bibliography, about 12 pages) |
+| `guid.tex` | the paper (LaTeX, `article` class, inline bibliography, 13 pages) |
 | `preface.tex` | the owner's preface, verbatim as posted 17:23Z, LaTeX-escaped only; his changes of 17:40Z (subtitle) and 18:14Z (approved, with two corrections) |
 | `README.md` | this spec: format, what backs each claim, the release gates |
+| `consolidation.md` | every finding of the two final verifications (#26 Opus, #27 Fable) and what was done with it |
 | `final-verification-prompt.md` | the prompt for the final fault verification: two independent threads, Fable high and Opus high (the owner, 17:47Z); each returns a draft PR |
 
 ## Build
@@ -33,7 +34,7 @@ Live's `latex-extra`, so arXiv's TeX Live compiles it unchanged. Built clean (no
 | Requirement | State |
 |---|---|
 | Category | primary cs.IT (the owner, 17:23Z, "*cs.it"); related cs.LO, cs.CR named on the title page |
-| Abstract at most 1,920 characters, plain text | 1,753 characters (count the `abstract` environment with whitespace collapsed) |
+| Abstract at most 1,920 characters, plain text | 1,796 characters (count the `abstract` environment with whitespace collapsed) |
 | LaTeX source, compiles with pdflatex | yes |
 | Authorship | **for arXiv only:** arXiv does not accept an AI system as an author; on an arXiv upload Sirius moves into "Contributions and use of AI". On Twitter/X the author block stays as the owner set it. |
 | Disclosure of AI use | section "Contributions and use of AI" |
@@ -50,7 +51,7 @@ Live's `latex-extra`, so arXiv's TeX Live compiles it unchanged. Built clean (no
 | Section 8, 243 theorems, two kernels | `evidence/` on `main` `06231b8`; Lean unchanged since `6d09660`, whose `lean-evidence` run 53 was green on both kernels | `evidence/tools/check.sh` |
 | Section 2, DMP quotes | DMP `45d3822` (0.9.8), vendored at `vendor/dmp` | `tools/check-pin.sh` |
 | Section 9, the record | gravity#18, #19, #21, #22, #23, #24; the GLM-5.3 and final Team Fable rows are filled when their records arrive | the pull requests |
-| References | 35 entries; each to be checked against the publisher's or arXiv's page before release | final fault verifications, task R |
+| References | 40 entries (35 checked OK by both final verifications; the 5 added in consolidation checked by search); each to be checked against the publisher's or arXiv's page before release | final fault verifications, task R |
 
 ## Preface: the owner's answers (2026-10-27 17:40Z)
 
@@ -71,8 +72,8 @@ Typos in the preface stay as written until the owner says otherwise ("subet", "a
 
 ## Release gates (Twitter/X first)
 
-- **G1.** Every reviewer is back: the GLM-5.3 verification (Z code, `out\qg-verify\VERDICT.md`, to be collected as a draft gravity PR) and
-  the two final fault verifications (Fable high, Opus high; `final-verification-prompt.md`).
+- **G1.** Every reviewer is back. The two final fault verifications are in (Opus #26, Fable #27; consolidated in `consolidation.md`).
+  Still missing: the GLM-5.3 verification (Z code, `out\qg-verify\VERDICT.md`, to be collected as a draft gravity PR).
 - **G2.** The preface's sentence on four adversarial reviews is true when the paper goes out (the owner, 17:40Z).
 - **G3.** Every finding that can be closed is closed; the paper is corrected once, against all of them.
 - **G4.** The repositories hold at least everything needed to verify the paper (the owner, 17:40Z): the drafts this paper cites (#24's
