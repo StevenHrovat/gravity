@@ -2,13 +2,13 @@
 
 Team Fable's second, independent attack (C22) on the physics claimed for DMP 0.9.8 (`45d3822`) and on the Lean that carries it: gravity
 `main`, gravity#17, #18, #19, #20 and dmp#24, read in the brief's order. Nothing of the first attack (`docs/refutation.md`, `Refute.lean`,
-gravity#21, the last three acknowledgement rows) was opened before section 5 was written; the brief printed the first witness's target
-list in clear, the targets below were chosen from the reading, and section 5 says where the lists meet. Two sentences the owner sent
-while the pass ran are rows E10 and E11. A mapping is a *derivation* when
-premises in DMP's text or Gravity's Lean lead to the physics, a *relabeling* when the physics is cited and DMP's words are set beside it. A
-theorem is judged by its statement, never by its comment. One verdict per target: **refuted**, **survives**, **undecided**. The
-counter-models are `evidence/Dmp/ColdRead.lean` (prefix `cr_`); a row labelled R1 to R20 has its Lean in the section of that label. Every
-citation was checked on the arXiv listing or the publisher's page on 2026-10-27. Nothing here changes DMP.
+gravity#21, the last three acknowledgement rows) was opened before sections 1 to 4 were committed (`396bce8`); the brief printed the first
+witness's target list in clear, the targets below were chosen from the reading, and section 5 says where the lists meet. Two sentences the
+owner sent while the pass ran are rows E10 and E11. A mapping is a *derivation* when premises in DMP's text or Gravity's Lean lead to the
+physics, a *relabeling* when the physics is cited and DMP's words are set beside it. A theorem is judged by its statement, never by its
+comment. One verdict per target: **refuted**, **survives**, **undecided**. The counter-models are `evidence/Dmp/ColdRead.lean` (prefix
+`cr_`); a row labelled R1 to R21 has its Lean in the section of that label. Every citation was checked on the arXiv listing or the
+publisher's page on 2026-10-27. Nothing here changes DMP. The owner judges.
 
 **The verdict in one paragraph.** Gravity's chain survives as a verified safety theory of a trust gate, with four overclaims subtracted
 (R1, R5, R6, R7). Every physics claim made for it is a relabeling or a borrowing: the one "derivation" (gravity#18, trust is classical)
@@ -17,9 +17,8 @@ the encoding, not of the text (R18); the "uncoupled field" is proven about the w
 structural check, a tree has no spacelike ancestors (R10); the one arithmetic derivation of a physics bound overshoots it by a factor two
 (R15). Every prediction on offer (r = 0, gravity is classical, no gravitational entanglement, Λ ~ 1/√N, the inflationary consistency
 relations) belongs to a published programme, and the project's two witnesses pick opposite programmes, so by C22 DMP predicts nothing (W).
-Of the owner's eleven deductions (nine of 2026-10-27, two sent during the pass) one survives as Szilard and Landauer with the
-temperature restored (E1); ten are refuted, the merging theorem among them (E10, E11), which in DMP's own words makes the minting the gap
-it says is absent.
+Of the owner's eleven deductions (nine of 2026-10-27, two sent during the pass) one survives as Szilard and Landauer with the temperature
+restored (E1); ten are refuted, the merging theorem among them (E10, E11): in DMP's own words the minting is the gap it says is absent.
 
 ## 1. Verdicts, one row per target
 
@@ -34,13 +33,13 @@ it says is absent.
 | R2 | gravity#17 §4.1, `NoGo.dmp_field_isolated` ("the field is uncoupled") | A refresh changes only its own term. | True of freshness and of `Held.mass`, an input per standing. T32's mass is one plus the members deriving through the part, as Theory.lean computes it (`Recipe.mass`): a line laid under a descendant raises the root's mass from 4 to 5 in a proven configuration (`cr_mass_at_root_changes_when_a_line_is_added_below`, `cr_extended_layout_is_proven`). T32's field is coupled upward in its mass term. | refuted |
 | R3 | `NoGoVector.gravity_has_no_edge` | A field is felt at every distance. | It proves ∀ dist ∃ M, the mass chosen after the distance; for one fixed mass the same toy field in whole units vanishes beyond a finite distance (`cr_toy_field_of_fixed_mass_has_an_edge`). | refuted as stated |
 | R19 | `NoGo.no_single_temperature`, `clausius_fails` (§4.3) | Jacobson needs one temperature. | Jacobson's T is the Unruh temperature of each local horizon, and equilibrium temperatures in a gravitational field vary with position (Tolman and Ehrenfest 1930). A temperature per standing exists trivially (`cr_local_temperature_always_exists`); the reading refuted is nobody's. §4.3's other grounds stand. | refuted as a theorem; §4.3 survives otherwise |
-| R18 | `NoGo.gateModel`, `gate_obeys_chsh`; #19 level 3; #20 "stops, provably, at the quantum fork" | A verdict is a function of local evidence and a judge, so Bell's bound holds. | `chsh_bound` holds for every `LocalModel`; the DMP content of `gate_obeys_chsh` is that a function of (setting, shared state) is one. Axiom 1 gives each half "full reach over the act", "gated only by the other": read literally, a half may read the other's verdict and so its setting, and such a pair reaches 4 (`cr_cross_gated_pair_reaches_four`), above the local 2 and the quantum 2√2 (Cirel'son 1980). The bound decides a property of Gate.lean, not of the text; "provably" in #20 rests on it. It reaches verdicts only (#18 is right). | survives for Gate.lean's verdicts; refuted as a theorem about the text |
+| R18 | `NoGo.gateModel`, `gate_obeys_chsh`; #19 level 3; #20 "stops, provably, at the quantum fork" | A verdict is a function of local evidence and a judge, so Bell's bound holds. | `chsh_bound` holds for every `LocalModel`; the DMP content of `gate_obeys_chsh` is that a function of (setting, shared state) is one. Axiom 1 gives each half "full reach over the act", "gated only by the other": read literally, a half may read the other's verdict and so its setting, and such a pair reaches 4 (`cr_cross_gated_pair_reaches_four`), above the local 2 and the quantum 2√2 (Cirel'son 1980). The bound binds Gate.lean's gate and not the text; "provably" in #20 rests on it. It reaches verdicts only (#18 is right). | survives for Gate.lean's verdicts; refuted as a theorem about the text |
 | R20 | gravity#18, P1 to T-D: trust is classical by no-broadcasting, so gravity is | Only commuting states can be broadcast (Barnum et al. 1996). | The premise is not in the model: the halves read two different evidences and the act passes (`cr_halves_pass_on_different_evidence`); nothing is copied. What is classical is the record's type (R1), assumed in the words, so the theorem is applied to a set that commutes by construction. T-D fails a substitution test: had Axiom 2 said "trust is electromagnetic", the chain would prove the electromagnetic field classical, which is false. "Gravity is classical" is Oppenheim's hypothesis (2023) with DMP's words beside it. | refuted as derivation; relabeling |
 | B1 | gravity#17 B1, "the one place where the balance has a number" | r checks per tick, pigeonhole. | r is not in DMP's text: `Schedule.budget` is a field of the structure, so B1 is the budget's definition plus Dirichlet. DMP has a condition (T32: verify at least as often as standings age), not a number; the benchmark measures the structure. | survives as arithmetic; refuted as "DMP's number" |
 | C1 | gravity#18 T-F: the coupling must be stochastic; freshness decay "is the diffusion term" | The refresh rate makes a hybrid consistent. | Oppenheim's theorem (2023; Oppenheim et al. 2023) says the deterministic coupling is inconsistent. Every map in Gravity's chain is a deterministic function (`guard`, `step`, `refreshAt`, `lnAccept`); freshness decays on a schedule. The theorem cited excludes DMP's coupling, unless there is no quantum half. | refuted |
 | C2 | gravity#18 T-G ("gravity does not entangle two masses"); "the one 2" | A local classical mediator is LOCC; 2n key bits hide n qubits. | True of classical gravity (Bose et al. 2017; Marletto and Vedral 2017; Horodecki et al. 2009) and borrowed whole: DMP contributes one word of Axiom 2. A positive entanglement result refutes Oppenheim's programme and leaves every theorem of Gravity's chain standing, the test of whose prediction it was. T39 has no qubit. | borrowed; the 2 is a relabeling |
 | D0 | #19 levels 0 (purification) and 0b (the third axiom, the entangled branch) | The shape matches; the arena names spacetime from entanglement. | Purification concerns states of systems with uniqueness up to reversible maps on the partner; the owner's sentence has none of these, and #19 concedes five of six postulates missing. Level 0b holds, in #19's words, only where "it is no longer DMP". | relabeling (0); refuted for DMP (0b) |
-| D0c | levels 0c, 0d, 0e (majority; 2:2 and five; the wiring leaks) | No-cloning forces thresholds (Cleve, Gottesman and Lo 1999); [[4,2,2]] detects, [[5,1,3]] corrects. | Numerology: G0's five is stated configuration (T4), T3a's floor a premise. "Four detects, five restores" is false classically: agreement needs n ≥ 3m + 1 (Pease, Shostak and Lamport 1980; Lamport, Shostak and Pease 1982), so four parties already agree under one fault. Three "leaks" share a word. | refuted (0d); relabeling (0c, 0e) |
+| D0c | levels 0c, 0d, 0e (majority; 2:2 and five; the wiring leaks) | No-cloning forces thresholds (Cleve, Gottesman and Lo 1999); [[4,2,2]] detects, [[5,1,3]] corrects. | Numerology: G0's "at least five" is stated, a floor there and configuration in T3a (the first witness's A1c); T3a's node floor is a premise. "Four detects, five restores" is false classically: agreement needs n ≥ 3m + 1 (Pease, Shostak and Lamport 1980; Lamport, Shostak and Pease 1982), so four parties already agree under one fault. Three "leaks" share a word. | refuted (0d); relabeling (0c, 0e) |
 | D0f | level 0f (equal shares; the first law of entanglement) | S(A) = S(B) is the balance as an identity. | Both theorems need a pure joint state on a factorised Hilbert space; DMP's halves hold their own evidence (R20), and the balance is work, as #19 admits. | relabeling |
 | R16 | level 0g (Jacobson 2016 plus the threshold theorem) | Maintenance is DMP's sentence; physics has an equilibrium derivation. | Jacobson's hypothesis is the stationarity of vacuum entanglement in small balls at fixed volume, a property of a state; no rate enters. DMP's "equilibrium" is not stationary: ageing leaves Φ = 0 and only work restores it (`cr_zero_potential_is_not_stationary`, `k4_refresh_never_raises`). The threshold theorem has no Einstein equation in it; #19's own question concedes the join is open. | refuted as a join; undecided as a question |
 | D0h | levels 0h, 0i (entanglement by intersecting paths; "no shared reality, one shared state") | The BMV hypothesis; Gisin's theorem. | Correctly placed physics that cuts against DMP: 0h's hypothesis is "the existence field is a quantum channel", the negation of #18's T-D; 0i ends with "DMP refuses what the quantum entangles". | survives as physics; refuted as a reading of DMP |
@@ -55,7 +54,7 @@ it says is absent.
 | D4 | #19 §4, #17 §2 (2 − 2/N; b* = ⌊(rW − L)/2⌋; the benchmark) | Least leakage plus reachability gives a tree. | Correct graph theory and arithmetic about DMP's objects: 2 − 2/N is the mean degree of any tree, b* the budget halved, the benchmark a measurement of `Schedule.budget` (B1). | survives as arithmetic; not physics |
 | P24 | dmp#24, the two-axiom brief | Four DMP-internal refuters; keep three axioms. | The refuters survive (R13, R14). The fifth line, "a derivation from QG would be a derivation from conjecture", is too weak: every derivation offered runs the other way, from published physics into DMP's words (R20, R10, D0n). | survives |
 | W | The two witnesses disagree (#18: the isolated branch; #19: the entangled branch) | Two readings can both inform. | They exclude each other on every prediction: gravitational entanglement refutes #18 and confirms #19's branch; r = 0 is #18's and #19 claims it. C22: a mismatch leaves the part unproven and the stricter answer stands, which is that DMP predicts nothing about gravity. | refuted (any prediction) |
-| E1 | Deduction 1 (information created by itself loses its value and becomes energy; the inverse holds) | Szilard's engine; Landauer's erasure. | Right only with the temperature: k T ln 2 per bit (Szilard 1929; Landauer 1961; Bennett 1982; Toyabe et al. 2010), nothing at T → 0 (`cr_landauer_with_free_temperature_bounds_nothing`). "Created that way" has no referent; DMP has no energy object (gravity#17 §5). | survives as Szilard and Landauer with the temperature; undecided as DMP |
+| E1 | Deduction 1 (information created by itself loses its value and becomes energy; the inverse holds) | Szilard's engine; Landauer's erasure. | Right only with the temperature: k T ln 2 per bit (Szilard 1929; Landauer 1961; Bennett 1982; Toyabe et al. 2010), nothing at T → 0 (`cr_landauer_with_free_temperature_bounds_nothing`). "Created that way" has no referent; DMP has no energy object (gravity#17 §5). | refuted as an identity; survives as Szilard and Landauer with the temperature in them |
 | R17 | Deduction 2 (vector and scalar field entangled by transition; "every time information acts") | A refresh moves the vector and the potential together. | A refresh is a local map: two refreshes commute (`cr_refresh_commutes`) and each touches one position (#17's `refresh_touches_only_its_own`); local operations create no entanglement (Bennett, DiVincenzo, Smolin and Wootters 1996). A scalar and a vector field are different representations; a gradient is a derivative, not a conversion. | refuted |
 | E3 | Deduction 3 (entanglement is a function of DoE collapse) | Decoherence looks like collapse. | The direction is reversed: apparent collapse is a function of entanglement with the environment (Zurek 2003), and a measured pair is no longer entangled. In DMP collapse (T37) ends every act on the item (`Floor.road_gate`). | refuted |
 | E4 | Deduction 4 (a key pair whose hash is the Planck constant) | The minting mints constants. | ħ is dimensionful, 1 in natural units for every existence; only dimensionless numbers can be the output of anything (Duff, Okun and Veneziano 2002). A digest is a bit string; key pairs rest on computational hardness; the chain has no hash (Cmb.lean). | refuted |
@@ -114,3 +113,47 @@ Each checked on the arXiv listing or the publisher's page on 2026-10-27; a detai
 - Page, Phys. Rev. Lett. 71, 3743 (1993), hep-th/9306083; Penington, JHEP 09 (2020) 002, arXiv:1905.08255; Almheiri, Engelhardt, Marolf, Maxfield, JHEP 12 (2019) 063, arXiv:1905.08762; Maldacena, Susskind, Fortschr. Phys. 61, 781 (2013), arXiv:1306.0533.
 - Bell, Physics Physique Fizika 1, 195 (1964); Clauser, Horne, Shimony, Holt, Phys. Rev. Lett. 23, 880 (1969); Cirel'son, Lett. Math. Phys. 4, 93 (1980); Hensen et al., Nature 526, 682 (2015); 't Hooft, The Cellular Automaton Interpretation of Quantum Mechanics, Springer (2016), arXiv:1405.1548.
 - Khoury, Ovrut, Steinhardt, Turok, Phys. Rev. D 64, 123522 (2001), hep-th/0103239; Ashtekar, Pawlowski, Singh, Phys. Rev. Lett. 96, 141301 (2006), gr-qc/0602086; Borde, Guth, Vilenkin, Phys. Rev. Lett. 90, 151301 (2003), gr-qc/0110012; Abbott et al. (LIGO Scientific and Virgo Collaborations), Phys. Rev. Lett. 116, 061102 (2016), arXiv:1602.03837.
+
+## 5. Second witness against the first
+
+Read after the blind commit `396bce8`: `docs/refutation.md`, `Refute.lean`, gravity#21 and its three acknowledgement rows. Both passes were
+written blind to each other; the first witness's list of targets stood in the brief, so the convergence below is of attacks and of Lean,
+not of targets. The first witness could not install the toolchain; its eight theorems compile under the pinned toolchain in this session
+(`check.sh`: 279 theorems, standard axioms only), which is the first local kernel check of `Refute.lean`.
+
+**Where the two agree, with separately written Lean (two witnesses, C22).** The inert model (A1a and R6: `rf_nothing_ever_performed`,
+`cr_refusing_judges_perform_nothing`); the replay under K2 (A2a, R7); `pressed_collapse` without a pressing (A5b, R4); the CHSH bound as
+the encoding's, both counter-models at S = 4 (A5a, R18); DMP-complete as the ledger (A5c, R5; R5 adds that the ledger cannot see the lines);
+the tree against the causal set (B2, R10: `rf_past_is_a_chain`, `cr_ancestors_are_comparable`); the budget as a free parameter (A4a, B1);
+the counts against the floor (A4b, R8); the compliant act (A6, R12); "independent but entangled" and proof by extension (A7, R13, R14);
+"gravity is classical" and r = 0 as not implied (B4a, B4b, R20, D0n); the consistency relations (B5, D0r); Jacobson 2016 (B3b, R16); and the
+deductions (B6a to B6g against E1, R17, E3, E4, R11, E8, R9), with the same sign reversals found twice.
+
+**Where the first witness goes further, and this pass concedes.** A1b (the words' *part* has no base case; `CrPart` above and Stitch's
+`PartTree` add the leaf the words lack); A1c (five is a floor in G0 and configuration in T3a; row D0c now says so); A2b, A2c (two more
+derivation lines that are construction); A2d (by C22's own definition no `Coverage: proven` line is proven while the intent chain is absent;
+row W applies the same rule to the two physics witnesses); A3 (novelty: outside this pass's brief, no verdict).
+
+**Where this pass breaks or corrects the first.**
+1. B3e's constant. The first witness compares Landauer's count in bits (8πGM²/ħc ln 2) with the Bekenstein–Hawking entropy in nats
+   (4πGM²/ħc) and reports "off by 2/ln 2". In one unit the ratio is exactly 2 (`cr_endpoint_count_is_twice_area_law`); the ln 2 is bits
+   against nats, and the integrated first law restores A/4 (`cr_first_law_gives_area_law`). The verdict stands; the number does not.
+2. B3c rests on `dmp_field_uncoupled` ("DMP's links are uncoupled"). R2 shows that theorem is proven about Field.lean's input mass while
+   T32's mass is coupled upward (`cr_mass_at_root_changes_when_a_line_is_added_below`). B3c's verdict (analogy) survives on its other
+   ground, locally verified links; the citation does not.
+3. B3a accepts `clausius_fails` as gravity#17's refutation of Jacobson's equation of state; R19 shows it refutes a global temperature
+   nobody holds. B3a's verdict survives on the dictionary point.
+4. A4a's reason, "one live read of a signed registry verifies any number of standings", contradicts Axiom 2's first clause ("from the live
+   state of the part wherever the act's trust depends on the part") and T32 (freshness is per standing, "since a witness last verified it
+   live"). The per-standing check is DMP's; the number r is not. The verdict (r free) stands; the reason does not.
+5. A5a's "Bell neither binds nor fails it": Bell binds Gravity's gate as modelled (`gate_obeys_chsh` is true of Gate.lean) and does not
+   bind the text. R18 draws that boundary; the row should.
+6. B6a's label. "Refuted as an identity; survives as two inequalities" is the stricter of the two verdicts and, by C22, stands; row E1
+   above carries it.
+
+**What this pass adds that the first has no row for.** R1 (no hair is the type: a content-carrying record keeps K1 to K3), R2 (the coupled
+mass), R3 (the quantifier order of `gravity_has_no_edge`), R19, R17 (commuting refreshes), C1 (T-F excludes a deterministic coupling, which
+is all Gravity's chain has), D0j, D0m, D0q, and the two sentences sent during the pass (E10, E11, with `CrPart`).
+
+**Hygiene.** The three acknowledgement rows of #21 stood after the file's closing prose, outside any table; they are moved, unchanged, into
+the "Ideas and papers" table beside this pass's rows, and `evidence/README.md` gains the rows for `Refute.lean` and `ColdRead.lean` it lacked.
