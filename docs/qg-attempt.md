@@ -325,6 +325,21 @@ classical limit, and quantum gravity is the regime in which that reading fails. 
 a warping of existence can be called Bruce. Gravity is a warping with numbers behind it: 1.75 arcseconds at the Sun, 43 arcseconds a century
 for Mercury, waves at the speed of light with two polarisations. The axioms give Bruce. Einstein gives gravity.
 
+The owner, in the same hour: "An event horizon would, in that case, be an internal containment, because that former existence space is now
+occupied by something that is no longer possible outside of it, so space has to be separated." This holds, and it is the one mapping the chain
+had already made (`docs/physics.md` section 1; 4.6): containment is the horizon. Three details of the physics, each with its counterpart in
+DMP. The separation is causal and one-way, not a wall: things fall in, nothing comes out, and the outside geometry continues smoothly across
+the horizon, so an observer crossing it notices nothing at the place; the horizon is defined by the whole future, by what can ever escape,
+and not by anything local (Hawking and Ellis 1973; the locally defined surface, Penrose's trapped surface of 1965, is a different thing).
+DMP's T4 says the same of containment, "nothing defines this boundary; it follows", and the chain proves the one-way part: a contained item
+offers no read, forward or send (`contained_offers_nothing`), and admission is the only way across (`collapse_of_no_admission`). What the
+inside still does to the outside is warp it: its mass, charge and spin are felt and nothing else (no hair); DMP's contained item leaks its
+counts, size, staleness and rotation interval, and nothing else (`Entry.ext`). The one difference is the direction of release: a DMP
+containment is lifted by a two-witness re-admission, a recorded act; a classical black hole releases nothing, and the quantum one releases
+everything, scrambled, over its lifetime (Page 1993, above), which is the paradox the owner's second axiom resolves the right way. So the
+horizon as containment is right, and it is classical gravity's containment; the quantum question is what the contained information does,
+and the answer the field has reached is that it comes back out.
+
 The verdict for this section: a consistent frame that physics satisfies, and for that reason not a theory of anything in particular. It is
 satisfied by worlds with gravity and without, with Einstein's law and with Newton's, so it derives no gravity; a quantum gravity would have to
 begin where it leaves off, with a law for the existence field's own quantum.
