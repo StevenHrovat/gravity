@@ -16,7 +16,7 @@ and found Claim 1 holds. Where they overlap the Opus id is given first.
 | S1 / F3 | Dropped "the independent verification he reports agrees" until the GLM-5.3 record exists |
 | F2-2 / F2-1 (rows) | The final-verification row is filled from #26 and #27; the editors' instruction sentence under the table is removed. The GLM-5.3 row stays pending (G1) |
 | F1 / – | Agreed fact (v): no coherent superposition of backgrounds while records exist; "within one area sector" |
-| E4 / E4 | **2+1 verdict corrected to CAN NOT model, CAN host**, on the owner's ruling (18:19Z, "It is correct!"), with his reason quoted and the holonomy and particle-scattering arguments cited (Nelson and Regge 1989; 't Hooft 1988). Abstract and Result paragraph follow |
+| E4 / E4 | **2+1 verdict corrected to CAN NOT model, CAN host**, on the owner's ruling (18:19Z, "It is correct!"), with his two reasons (18:19Z, 18:21Z) quoted as his reasoning and the holonomy and particle-scattering arguments cited (Nelson and Regge 1989; 't Hooft 1988). Abstract and Result paragraph follow |
 | E5 / – | Chern-Simons "perturbatively"; Brown-Henneaux for negative cosmological constant |
 | G2 / – | "as far as the published code models go" becomes "the kinematic content of the HaPPY model, on a tree of one layer" (also in the conclusion) |
 | B1 / B1 | "obeys all three axioms as written" becomes "encodes the eight sentences of the table", with what it does not encode and "not shown DMP-complete" |
