@@ -387,6 +387,17 @@ exactly five constants in it. The Standard Model's remaining parameters are then
 right place for them in the owner's system (Axiom 3) and in physics (matter fields on a background). **Refuter:** a sixth constant in the
 capacity of existence; the de Sitter entropy has five. The caveat stands that this fixes the arena's capacity and still not its law.
 
+The owner (07:25Z): "Because to be DMP compliant, it has to contain a dualistic singularity." The minting is the singularity and both
+halves are present in it. Physics has exactly that object and it is the reason the universe has an arrow of time: at the initial
+singularity the two halves sit at opposite extremes, the matter (the information half) in thermal equilibrium at maximal entropy and
+the gravitational field (the existence half) perfectly smooth at minimal entropy, Penrose's Weyl curvature hypothesis (1979). The
+record of that state is the cosmic microwave background, thermal to one part in a hundred thousand: the owner's CMB, the sealed file of
+the minting, is named after the right thing. Two notes. A singularity in GR is where the theory fails, and every quantum gravity's job
+is to replace it with a state; the one proposal that does so by stating the initial state rather than deriving it is Hartle and
+Hawking's no-boundary state (1983), which is G0's "stated, not derived" in physics. And de Sitter space, the Λ half of the five, has a
+horizon and no singularity, so the dualistic singularity is the origin, not the present. **Refuter:** an initial state with
+gravitational entropy as high as its matter entropy; the observed smoothness of the microwave background rules it out.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
