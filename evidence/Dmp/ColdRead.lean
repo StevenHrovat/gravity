@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R28
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R29
 below are the labels of its table rows.
 -/
 
@@ -767,5 +767,23 @@ theorem cr_stack_refresh_is_local : ∀ (s : List (List Held)) (k i k' : Nat), k
   | _ :: ls, k + 1, i, k' + 1, hne => by
     simp only [stackRefresh, List.getElem?_cons_succ]
     exact cr_stack_refresh_is_local ls k i k' (fun h => hne (congrArg Nat.succ h))
+
+
+/-! ## R29. The derivation that replaced R27 (the owner, 2026-10-27, sent during this pass)
+
+"Mass falling in increases the information density and thus the order of the system." Axiom 3's order is "the fewest hops in total":
+the layout reorganises towards the highest total cohesion. In the recipe a line laid under any existing line sits one hop deeper
+than that line, so mass laid in adds hops and lowers the order by DMP's own measure; only a line laid beside the root adds none, and
+that is a new existence (R24), not more mass inside this boundary. -/
+
+/-- A line laid under line `j` has depth one more than `j`: mass laid in adds a hop. -/
+theorem cr_line_below_adds_a_hop (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (l : Line) (j : Nat) (hp : l.parent = some j)
+    (hj : j < r.n) (hwf' : (r.extend l).wf fcl) : (r.extend l).depth r.n = r.depth j + 1 := by
+  unfold Recipe.depth
+  have hline : (r.extend l).line r.n = l := by simp [Recipe.extend]
+  rw [Recipe.chain_unfold fcl _ hwf' r.n (by simp [Recipe.extend])]
+  simp only [hline, hp, r.extend_chain fcl hwf l j hj, List.length_cons]
+  have := List.length_pos_of_mem (r.chain_head j)
+  omega
 
 end Dmp
