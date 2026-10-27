@@ -62,7 +62,8 @@ Live's `latex-extra`, so arXiv's TeX Live compiles it unchanged. Built clean (no
 
 The owner, 18:14Z: "Approved with two corrections to my words": "mapped 1:1 to actual Hawking radiation, started my Insight." and
 the new last sentence "The submission leaves quite a few easy wins, some even stated, but I cannot intuit their larger effects, only
-that they are not harmful, so I leave those open to be intuited, as they need to be." Both applied word for word. This approves the
+that they are not harmful, so I leave those open to be intuited, as they need to be." Both applied word for word. 18:17Z, "one last addition to the very end": "(Maybe try putting atom decay and DoE decay in a
+box, shaking for a while, and seeing what falls out. Seems interesting!)", appended word for word. This approves the
 preface and the draft; it is not the release (the gates below still stand).
 
 Typos in the preface stay as written until the owner says otherwise ("subet", "adverserial", "graps", "natievety", "then" for "than",
