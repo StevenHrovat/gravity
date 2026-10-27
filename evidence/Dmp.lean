@@ -32,3 +32,4 @@ import Dmp.NoGoCosmo
 import Dmp.NoGoRate
 import Dmp.NoGoBound
 import Dmp.NoGoDuality
+import Dmp.NoGoAxioms

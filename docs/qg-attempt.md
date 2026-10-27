@@ -255,6 +255,58 @@ The verdict for this section: not a quantum gravity. A duality language for gaug
 contradiction (a unique past against a dissolving quantum) and leaving the one question of quantum gravity, the quantum of the existence field,
 unasked.
 
+**4.12 The axioms as stated (the owner, 2026-10-27).** In general: "1. Information that interacts with existence must exist in an existence
+field consisting of space vectors and a time vector, that is able to propagate a field through itself. 2. For information to be real it has to
+exist, for anything to exist, there has to be information about it." Applied to quantum gravity: "1. Existence is made of three spatial vectors
+and one time vector that moves forward in space. 2. [the first general axiom] 3. [the second general axiom]." Derived by the owner: information
+and the existence it occupies must be coupled to be real; the existence-space constants can be derived by collapsing a duality from its
+existence half, which exposes its information and ends its existence; the expansion can be derived in reverse; decay chains of force systems
+leave an imprint while their information half is irreversibly destroyed; and there is one universal shared quantum, "as one must always be two
+and two cannot become one".
+
+What holds, with names. The first applied axiom is Minkowski's stage (1908): three space directions and one time direction, with the arrow
+put in by hand, as every physical theory puts it in, since the equations run both ways and the arrow is a boundary condition. "Able to
+propagate a field through itself" is the one feature gravity alone has: the existence field carries waves of itself, and they were heard in
+2015 (Abbott et al. 2016). "Information and the existence it occupies have to be coupled to be real" is the coupling of matter to geometry,
+Einstein's equation in words. The decay chains whose imprint remains while the previous force system is gone are the phase transitions of the
+early universe: at high temperature the forces were one and the vacuum was different (Kirzhnits and Linde 1972), the transitions are
+irreversible, and their imprint, the masses, the asymmetries, the background, is what we read. The frame is the standard model of cosmology
+said in two sentences.
+
+What breaks, as physics. First, and decisive: the axioms are true of a world without gravity. Take flat spacetime with electrons and photons
+and nothing else, quantum electrodynamics with the gravitational coupling zero. It has three space directions and a forward time, fields
+propagate through it, information interacts with existence and exists in the field, and nothing exists without information about it. Every
+axiom holds and there is no gravity. An axiom system that a gravity-free world satisfies cannot entail gravity, let alone quantum gravity; to
+be a theory of gravity it would have to be false of that world. The kernel records the independence in the smallest form
+(`evidence/Dmp/NoGoAxioms.lean`: the axioms hold with the coupling zero and with it nonzero, `axioms_hold_without_gravity`,
+`axioms_hold_with_gravity`, so they fix nothing about it, `axioms_do_not_fix_gravity`). Second, "collapsing a duality from its existence half
+exposes its information and thus it ceases to exist" is contradicted by one electron: a single electron has been held in a trap and measured
+continuously for months (Wineland, Ekstrom and Dehmelt 1973, and ever since), its information exposed again and again, and it never ceased
+to exist. Measurement reads a quantum; it does not end it. Third, "the information half must be irreversibly destroyed when decaying"
+asserts what quantum theory forbids: evolution is unitary and no information is ever destroyed, not in a decay and, after the longest
+argument in the field, not in a black hole (Page 1993; Penington 2019; Almheiri, Engelhardt, Marolf and Maxfield 2019). A decay scrambles the
+information into its products; it does not destroy it. The owner's second axiom holds in physics more strongly than he uses it, and that is
+why the imprint can be read at all. Fourth, the constants: "derived by collapsing a duality" describes measuring them. A derivation would give
+their values before the measurement; none is given, and the gravity-free world shows that none can be, since the coupling is not fixed by
+the axioms.
+
+The lowest quantum (the owner, in the same hour): "that quantum being the lowest possible amount of energy, which is also the lowest amount of
+information." In flat space there is no lowest amount of energy: a photon's energy is ħ times its frequency, and the frequency can be as low
+as one likes. A lowest quantum exists only where there is a largest wavelength, and the existence space has one, the horizon: the lowest
+energy that fits inside it is about ħH, some 10⁻³³ electronvolt. The lowest amount of information is one bit, and the energy it costs is
+Landauer's kT ln 2, which depends on the temperature (Landauer 1961); at the horizon's own temperature (Gibbons and Hawking 1977) that cost is
+of the order of ħH, so the owner's identification holds there, and only there. Carried through, it is a known model: the horizon holds about
+10¹²² bits, one per Planck area, and 10¹²² quanta of ħH each is the measured dark energy density to within its order of magnitude (Cohen,
+Kaplan and Nelson 1999; Li 2004). That is the strongest thing the duality has said: it picks the right order of magnitude for Λ out of the
+10¹²⁰ the naive vacuum is off by. It does not pick the value: the horizon is set by Λ and the count by the horizon, so the argument is a
+consistency and not a derivation (with the Hubble radius as the cutoff the energy does not even accelerate the expansion, Hsu 2004; Li's
+version needs the future event horizon, which is Λ again). And it is the universe's lowest quantum, not gravity's: nothing in it says what the
+existence field's own quantum does at the Planck scale, the other end of the same horizon.
+
+The verdict for this section: a consistent frame that physics satisfies, and for that reason not a theory of anything in particular. It is
+satisfied by worlds with gravity and without, with Einstein's law and with Newton's, so it derives no gravity; a quantum gravity would have to
+begin where it leaves off, with a law for the existence field's own quantum.
+
 ## 5. The verdict
 
 **False.** The approach, instantiated as faithfully as DMP's own objects allow, produces the shape of a gravitational theory with an arrow of
@@ -266,7 +318,8 @@ owner's rate-limited expansion it keeps its true half, the budget as the rate li
 while supplying no cause (4.9); modelled as the owner's extension itself, a bound, a field, carriers and a push, it is the de Sitter horizon
 with holographic equipartition, real physics that takes Λ as its input and leaves the horizon's degrees of freedom unnamed, a cosmology and not
 a quantum gravity (4.10); read as the quantum of a duality of existence and information it is gauge theory, complementarity and inflation in
-the owner's words, with a unique past that its own dissolving quantum forbids and the quantum of the existence field unasked (4.11). The first two are
+the owner's words, with a unique past that its own dissolving quantum forbids and the quantum of the existence field unasked (4.11); and the axioms as finally stated are satisfied by a world without gravity, so they
+entail none (4.12). The first two are
 not shortfalls of the instantiation but consequences of the axioms: member isolation and the frame rule forbid coupling, and the second axiom
 is local realism. Each would have to be given up for the approach to work, and giving either up gives up DMP: without isolation there is no
 containment, without local verification there is no Axiom 2.
@@ -280,5 +333,5 @@ owner has come: it reaches the classical horizon and stops where every emergent-
 
 Section 3 stands, and it is DMP's: a self-propagating duality under a field has a second law, a Lyapunov potential, an equilibrium, a horizon
 that leaks only counts and a boundary-set capacity. That is a theory of trusted infrastructure with the shape of black-hole thermodynamics,
-proven in 334 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
+proven in 337 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
 are the reason.
