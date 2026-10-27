@@ -31,3 +31,4 @@ import Dmp.NoGoVector
 import Dmp.NoGoCosmo
 import Dmp.NoGoRate
 import Dmp.NoGoBound
+import Dmp.NoGoDuality

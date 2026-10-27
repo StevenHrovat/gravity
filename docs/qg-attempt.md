@@ -215,6 +215,46 @@ The verdict for this section: the extension is a cosmology, not a quantum gravit
 equipartition, which exists in the literature and reproduces the classical expansion with Λ as an input. As quantum gravity it is the
 statement that the horizon's degrees of freedom exist, which everyone grants and no one has.
 
+**4.11 The quantum as a duality of existence (the owner, 2026-10-27).** "It is a quantum gravity if the field that projects the inflation is
+the information in the other constituent of each quantum. Those are the universal forces. Their interaction with the existence field is
+what actually drives evolution, which also explains quantum effects. If you force a singularity to give up one of its constituent parts,
+either its existence in the space, or information about it, the DoE dissolves, ending the wave particle duality. [...] It is a system that
+ends there and started at the Inflation field and through all subsequent DoE chains, until it decayed to today. [...] the decay forward in
+the scalar direction can not be observed by its decay because its existence constants are not yet defined. Backwards in the scalar direction
+past decay chains can be seen by their imprint, since only one possible configuration can evolve into the current system. We currently can
+only detect the decay back to the Inflation field."
+
+What holds, with names. "The information in the other constituent of each quantum is the universal forces" is the gauge principle: a force
+is the rule for carrying a quantum's phase, its information half, from one place to another; Weyl found it for electromagnetism (1929) and
+Yang and Mills for the other forces (1954), and the Standard Model is nothing else. "Force a quantum to give up one constituent and the
+duality ends" is Bohr's complementarity (1928) and von Neumann's measurement (1932): a quantum shows its wave or its particle face according
+to what is asked of it, and the asking is irreversible. "Started at the inflation field, decayed to today, visible backward by its imprint,
+the earliest thing we can see" is inflationary cosmology (Guth 1981): the earliest light is the cosmic microwave background, and inflation is
+read off its imprint, the spectral tilt measured and the gravitational-wave amplitude bounded (Planck 2018; BICEP/Keck 2021). Existence from
+information as the ground of physics is Wheeler's "it from bit" (1990), the owner's first axiom in Wheeler's words. All of it is physics;
+none of it is new, and none of it is gravity.
+
+What breaks, as physics. First, the quantum in question is the existence field itself. Everything in the owner's picture lives on the
+existence field: the quanta, their information halves, the forces, the dissolutions. Quantum gravity is the question what the existence
+field's own quantum is. If its information half is treated like the other forces', that is the graviton, and that route is the one known to
+fail: the infinities at the Planck scale cannot be absorbed into finitely many constants ('t Hooft and Veltman 1974; Goroff and Sagnotti
+1986). The owner's text offers no cure, and the duality supplies none. Second, dissolution gives no probabilities and no entanglement. Which
+position the quantum lands at and with what likelihood (the Born rule), and how two dissolutions far apart agree beyond what any local account
+allows (4.2), are the quantum effects; "the duality dissolves" names them without giving them, and the direction vector still makes change
+a definite function of the field. Third, the picture contradicts itself. A dissolution throws one half away, so from what remains the quantum
+before it is not unique (`evidence/Dmp/NoGoDuality.lean`, `dissolution_forgets`), and "only one possible configuration can evolve into the
+current system" is exactly the uniqueness a dissolution destroys (`unique_past_forbids_dissolution`). Physics has had to choose since 1932:
+unitary evolution never forgets and nothing ever dissolves, or measurement forgets and the backward chain branches at every measurement. The
+owner's cosmology needs the first and his quantum needs the second. The imprint agrees with the branching: the pattern on the sky is one draw
+from quantum fluctuations during inflation, and what is unique backward is their statistics, not the configuration. Fourth, "its existence
+constants are not yet defined" forward in time: the constants have not changed over the whole backward chain. The fine-structure constant is
+the same in the cosmic microwave background as in the laboratory and drifts by less than a few parts in 10¹⁷ per year (Rosenband et al. 2008),
+so no decay so far has defined a constant, and nothing says the next would.
+
+The verdict for this section: not a quantum gravity. A duality language for gauge theory, complementarity and inflation, carrying one
+contradiction (a unique past against a dissolving quantum) and leaving the one question of quantum gravity, the quantum of the existence field,
+unasked.
+
 ## 5. The verdict
 
 **False.** The approach, instantiated as faithfully as DMP's own objects allow, produces the shape of a gravitational theory with an arrow of
@@ -225,7 +265,8 @@ the expansion where the universe shows an acceleration (4.7), and has no tunnell
 owner's rate-limited expansion it keeps its true half, the budget as the rate limit, and that half forbids the acceleration the universe shows
 while supplying no cause (4.9); modelled as the owner's extension itself, a bound, a field, carriers and a push, it is the de Sitter horizon
 with holographic equipartition, real physics that takes Λ as its input and leaves the horizon's degrees of freedom unnamed, a cosmology and not
-a quantum gravity (4.10). The first two are
+a quantum gravity (4.10); read as the quantum of a duality of existence and information it is gauge theory, complementarity and inflation in
+the owner's words, with a unique past that its own dissolving quantum forbids and the quantum of the existence field unasked (4.11). The first two are
 not shortfalls of the instantiation but consequences of the axioms: member isolation and the frame rule forbid coupling, and the second axiom
 is local realism. Each would have to be given up for the approach to work, and giving either up gives up DMP: without isolation there is no
 containment, without local verification there is no Axiom 2.
@@ -239,5 +280,5 @@ owner has come: it reaches the classical horizon and stops where every emergent-
 
 Section 3 stands, and it is DMP's: a self-propagating duality under a field has a second law, a Lyapunov potential, an equilibrium, a horizon
 that leaks only counts and a boundary-set capacity. That is a theory of trusted infrastructure with the shape of black-hole thermodynamics,
-proven in 332 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
+proven in 334 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
 are the reason.
