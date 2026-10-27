@@ -347,6 +347,33 @@ refresh rate (03:26Z: "essential that I included the refresh rate, otherwise it 
 of the system entangled with the rest, not as a parameter outside it. **Refuter:** a physical state of the constraint picture that
 evolves with no internal clock; the Wheeler–DeWitt equation says there is none.
 
+**Level 0m, the constants minted at G0 (the owner, 07:23Z: "That would solve it, right?").** *Right for two things, and not a solution
+for the third.* The owner: "All Existence derives it's existence from G0. At G0 WHKs are minted (Planck's constant, G, c), which MUST
+contain all information, and also has to create a starting balanced system with at least five members."
+
+- **Right: the constants are configuration, set at the minting.** No theory derives ħ, G or c; they are measured inputs that define the
+  units (Planck 1899), and the verifying session's `NoGoAxioms.axioms_do_not_fix_gravity` is not an objection once they are declared
+  configuration (T4) at G0, which is where DMP puts every number it does not derive. The placement is also physics' own: laws carry
+  parameters, and the parameters are inputs. Two corrections to the count. Three is too few: Λ is the fourth at the least (levels 2 and
+  6), and the full list a minting must hold is the Standard Model's nineteen plus the neutrino sector's seven and Λ, about twenty-seven,
+  none derived by anyone. And "at least five" is the owner's minimum for a correcting core (level 0d, the [[5,1,3]] code; G0's five
+  White Key Holders), not the number of constants; the two fives are different things that happen to agree.
+- **Right: the minting contains all information, and that is unitarity.** "All existence derives its existence from G0" and "must
+  contain all information" together say that the initial state determines everything after it, which is the conservation of
+  information under unitary evolution, the premise of the black-hole information problem and of Everett's universal state; in causal
+  set terms (level 0k) every element's past descends from the first ones. In physics the laws' parameters and the initial state are
+  two separate inputs; the owner puts both into one act, the minting. That is a choice with a published form: a universe whose
+  constants are set at its birth and could have been set otherwise is Smolin's cosmological natural selection (1992) or the landscape
+  (Susskind 2003), and the one testable consequence of Smolin's form (black-hole production is near a maximum under small changes of
+  the constants) is the only prediction either has made.
+- **Not solved: the dynamics.** Fixing the constants and the initial state at G0 fixes the inputs of a law; it does not supply the law.
+  Everything open at levels 0k and 0l stays open: the quantum dynamics of the order is not found, the physical states of the constraint
+  picture are frozen and need the internal clock of Page and Wootters, and the fork of level 3 keeps its placement (the order classical,
+  the measure quantum). A minting that holds all information is the initial state of a theory the system still has to name.
+
+**Refuter:** a derivation of G, ħ or c from the axioms; if one existed the constants would not be configuration and this level would be
+wrong in the other direction. None is known, in this system or in physics.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -439,6 +466,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0j' monogamy | contradiction: a hierarchy of maximally entangled pairs cannot exist; resolved by the majority form | Coffman, Kundu and Wootters 2000 | the pair for the perfect tensor, on the quantum side |
 | 0k authorisation downward | holds: causal set theory, order plus number is geometry; predicts Λ ~ 1/√N | Malament 1977; Bombelli, Lee, Meyer and Sorkin 1987; Rideout and Sorkin 2000 | nothing; the quantum dynamics is open |
 | 0l truth as existence | holds: closes Zeno (membership commutes with content), closes the converse; lands on the constraint picture | Tarski 1933; Dirac 1964; DeWitt 1967 | nothing; the next freeze is the problem of time, resolved by an internal clock (Page and Wootters 1983) |
+| 0m constants at G0 | right: configuration at the minting (about twenty-seven, not three) and unitarity; not the dynamics | Planck 1899; Smolin 1992 | nothing; the law is still unnamed |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
