@@ -11,6 +11,9 @@ DMP. The owner judges.
 
 ## 0. The verdict
 
+Accepted by the owner, 2026-10-27 14:43Z, on the wording "DMP CAN NOT model quantum gravity in our universe, but CAN host it as
+content": "Now that's thinking in subsets! Fully approved!"
+
 **CAN NOT.** Assembled as faithfully as it can be, DMP models a *classical* spacetime that carries *quantum* content: holography on a
 fixed background (the level of the published holographic code models, on a tree the p-adic version of them) and gravity as an equation of
 state (Jacobson 1995). It cannot model quantum gravity, because what makes gravity quantum, a geometry that can be in superposition and pass between two
