@@ -94,6 +94,17 @@ placement, majority within a type and unanimity across the two types; flattening
 **Refuter of the quantum claim:** a quantum code in which two disjoint boundary regions both recover the same bulk qubit; no-cloning says
 there is none.
 
+The owner's refinement (06:54Z): "While keeping the two different sides as independent, as well as self balancing, chains of
+existence. This MoE has to exist because it is still defined in Existence and this MoE has to exist because it's information still
+exists." That is the placement recommended above, said from the other end: a majority inside each side, and both sides needed, each
+proving existence by its own chain. On the quantum side the two chains have a name and a theorem. The existence side is geometric (the
+degree of freedom lies in the entanglement wedge, the region the minimal surface of Ryu and Takayanagi bounds); the information side is
+operational (its information is recoverable from the boundary region). Entanglement wedge reconstruction (Dong, Harlow and Wall 2016;
+Jafferis, Lewkowycz, Maldacena and Suh 2016) proves the two chains agree: in the wedge exactly when recoverable. That is C22 ("proven"
+is an act with two witnesses) with the geometric chain as the existence side and the recovery chain as the information side, and it is
+the strongest match of the whole pass, because it is a theorem and not a shape. It still sits on the entangled branch: both chains are
+built from entanglement, and the fork of level 3 is unchanged.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
