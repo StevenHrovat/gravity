@@ -255,14 +255,18 @@ hand, and integrated wherever it fits without breaking a measurement.
 | D5 | 2.42 is plausible, expected 2.6 to 2.8 | Yes, with the source named | The assembly gives 2 sqrt 2 = 2.83 for ideal content (check [5]); 2.42 is that value lowered by experimental imperfection. The 2.6 to 2.8 expectation is the quantum range. The number comes from quantum mechanics carried as content, not from DMP, and the ceiling is Cirel'son's 2 sqrt 2, not 3. |
 | D6 | Effect = strength of assertion times frequency | No | Landauer's price does not depend on the carrier's frequency. |
 | D7 | Oscillon decay explains flatness | No | Oscillons form after inflation (Amin et al. 2012); accelerated expansion drives curvature to zero (Guth 1981). |
-| D8 | "What's wrong with superconductors again?" | Yes, reversed | Below. |
+| D8 | Low existence lets information assemble into its most efficient formation (14:33Z) | Yes | Below: existence = thermal agitation; the condensate is the most efficient formation. |
 
-**Superconductors, reversed.** The sentence fails in direction and speed: a superconductor appears when information sharing becomes
-total, not low (every Cooper pair shares one macroscopic phase), and nothing in it approaches c (the pairs drift at millimetres per
-second; a signal in a superconducting line moves like one in any line). Reversed, it fits DMP well: a Cooper pair is two electrons bound
-into one unit, a Duality, and the flux quantum h/2e measures that unit's charge as 2e; the energy gap of about 3.5 kT_c (Bardeen, Cooper
-and Schrieffer 1957) is a gate that refuses every scattering act cheaper than breaking a pair, so no act happens and no resistance
-appears. A superconductor is a condensate of Dualities whose gate refuses every act below the cost of breaking one.
+**Superconductors, the owner's reading (corrected 14:33Z, verbatim):** "When the Existence in a system becomes so low, that it can no
+longer hinder the information to assemble into the most efficient formation." This holds, and it is the textbook mechanism in other
+words. A phase transition is decided by the free energy F = E - TS: above the critical temperature the thermal term TS (disorder) wins
+and the electrons stay unpaired; below it, thermal agitation can no longer break the pairs and the system falls into its most efficient
+formation, the condensate in which every Cooper pair shares one phase (Bardeen, Cooper and Schrieffer 1957; Landau's theory of phase
+transitions). The dictionary entry is "existence in a system = its thermal agitation, kT". It fits DMP's other readings: a Cooper pair
+is two electrons bound into one unit, a Duality (the flux quantum h/2e measures its charge as 2e), and the energy gap is a gate that
+refuses every scattering act cheaper than breaking a pair, so no resistance appears. What the entry still owes is its number: BCS
+derives the gap at zero temperature as 1.764 kT_c, and a DMP derivation would have to produce that factor. (An earlier reading here took
+the sentence of Q9, "the rate of information sharing becomes so low", as the claim; the owner's correction replaces it.)
 
 **Tally after integration.** Of thirteen conflicts: five integrated (Q1, Q2, Q4, Q7, Q11), three halves (Q3, Q5, Q13), one open
 (Q6), three not integrated (Q8, Q9 as written, Q10), one conceded (Q12). Of eight divergences: three integrated (D3, D5, D8), five stand.
