@@ -8,7 +8,7 @@ the potential of Field.lean and Theory.lean) read as the gravitational field, th
 What follows from it is in docs/qg-attempt.md section 3; what stops it is here, four theorems, each on the axioms as modelled:
 
 1. **The field of the axioms is uncoupled.** The potential is a sum of one term per standing, and the system's act on one standing
-   changes no other standing's term (member isolation, T32; the frame rule). A gravitational field is coupled: the field at one place
+   changes no other standing's term (member isolation, T26; the frame rule). A gravitational field is coupled: the field at one place
    changes when the mass at another does (Newton's potential; the Einstein equations). Isolated is the negation of coupled, so no
    instantiation of the axioms' field is gravitational (`dmp_field_uncoupled`, `refresh_touches_only_its_own`, `isolated_iff_not_coupled`,
    `newton_coupled`).
@@ -47,7 +47,7 @@ def term (l : List Held) (i : Nat) : Nat :=
 def Coupled {S : Type} (differ : S → S → Nat → Prop) (F : S → Nat → Nat) : Prop :=
   ∃ i j s s', i ≠ j ∧ differ s s' j ∧ F s i ≠ F s' i
 
-/-- Isolated: no position's value depends on another's (T32, member isolation: nothing done to one member's nodes changes what another
+/-- Isolated: no position's value depends on another's (T26, member isolation: nothing done to one member's nodes changes what another
     member's nodes receive). -/
 def Isolated {S : Type} (differ : S → S → Nat → Prop) (F : S → Nat → Nat) : Prop :=
   ∀ i j s s', i ≠ j → differ s s' j → F s i = F s' i

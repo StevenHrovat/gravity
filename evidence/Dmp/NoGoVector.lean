@@ -14,7 +14,7 @@ ticks (time), pointing along the grant chain toward the pair. What the vector ad
 
 And what the vector does not change, each a theorem:
 
-3. **The field's law is configuration.** The demand a standing must meet and the window it lives in are functions of the parameters of T4
+3. **The field's law is configuration.** The demand a standing must meet and the window it lives in are functions of the parameters of T9
    (κ, λ, w₀, e_min), chosen at the minting inside an interval; the axioms' laws do not see them (`Field.n1_laws_hold`). So two mintings
    span two different vector fields over the same graph (`field_law_is_configuration`), and no field equation can be a theorem: gravity's
    law is one law with one constant, DMP's is a parameter.
@@ -73,7 +73,7 @@ theorem horizon_depth_bound (s : Schedule r W) (b D n : Nat) (hn : b ^ D ≤ n) 
 
 /-! ## 3. The field's law is configuration -/
 
-/-- Two parameter vectors, both inside T4's intervals, give two different demands at the same depth: the vector field's magnitude law is
+/-- Two parameter vectors, both inside T9's intervals, give two different demands at the same depth: the vector field's magnitude law is
     an input of the minting, never a theorem of the axioms. -/
 theorem field_law_is_configuration : ∃ π π' : Params, demand π 4 1 ≠ demand π' 4 1 :=
   ⟨⟨330, 100, 500, 100, 100, 1⟩, ⟨330, 100, 1000, 100, 100, 1⟩, by decide⟩
