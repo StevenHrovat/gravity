@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R34
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R35
 below are the labels of its table rows.
 -/
 
@@ -933,5 +933,24 @@ theorem cr_three_in_one_is_never_the_root (fcl : List FailureClass) (r : Recipe)
   rw [hp] at hok
   rw [hk] at hok
   cases hok
+
+
+/-! ## R35. Dimensions minus one (the owner, 2026-10-27, sent during this pass)
+
+"(Number of dimensions minus one for generalization), also explains why 1s1t is not possible, no hashing so no infinite information
+density is possible." DMP has two floors, three nodes per half (T3a) and five parts at the minting (G0), and no single dimension count
+makes both of them "dimensions minus one". And the chain has no hash: the merge of two parts is one-to-one (R21), so by the
+sentence's own rule no infinite density is possible in DMP, which is R34's verdict reached from the other side. -/
+
+/-- No single dimension count makes both of DMP's floors "dimensions minus one": three (T3a) and five (G0) would need a four- and
+    a six-dimensional universe at once. -/
+theorem cr_no_dimension_fits_both_floors : ∀ d : Nat, ¬ (d - 1 = 3 ∧ d - 1 = 5) := by
+  intro d h
+  omega
+
+/-- The sentence's own rule applied to the chain: there is no hash in it, the merge reading its halves back (R21), so by that rule
+    no infinite density is possible in DMP, at G0 or anywhere. -/
+theorem cr_no_hash_in_the_chain (a b a' b' : CrPart) (h : CrPart.duality a b = CrPart.duality a' b') : a = a' ∧ b = b' :=
+  cr_merge_is_one_to_one a b a' b' h
 
 end Dmp
