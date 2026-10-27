@@ -2,7 +2,7 @@
 
 Verifier: Claude Fable 5.1, high effort, one session, 2026-10-27. Run from the prompt in `final-verification-prompt.md` with
 VERIFIER = fable. Paper at branch `claude/project-thread-x1aw4m` commit `0b20f2b` (`guid.tex` 482 lines; line numbers below are its
-lines). The other verifier's pull request was not opened, read or cited. Nothing in `guid.tex`, `preface.tex` or DMP was changed.
+lines; `preface.tex` line numbers are those of `0b20f2b` too: the branch moved to `0fdbb93` while this ran, which changed only `preface.tex` and `README.md`, and the three preface sentences cited below sit two lines lower there, at 9, 12 and 17). The other verifier's pull request was not opened, read or cited. Nothing in `guid.tex`, `preface.tex` or DMP was changed.
 
 Severity, per the prompt: **blocker** = a sentence is false, fabricated or unbacked; **major** = stronger than its evidence or
 misleading; **minor** = imprecise; **typo**.
