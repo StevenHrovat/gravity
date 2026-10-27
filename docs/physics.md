@@ -532,9 +532,9 @@ is fully contained in the existential vector field" holds in the exact sense tha
 information half's at every time, which is Axiom 1 as an energy balance. **Refuter:** a nonzero total energy for a closed universe,
 which the constraint forbids.
 
-*"Discover the existence around it, while committing no act" is de Sitter space.* The search for "ODP" in DMP, Gravity, IM, CM, Adhara
-and the project record came up empty (the only earlier use is the owner's own, 2026-10-26, undefined), so the reading here is the
-owner's gloss: discovery first. In physics the smallest existence with a Λ does exactly that: every point gets a horizon at distance
+*"Discover the existence around it, while committing no act" is de Sitter space.* "ODP" is the owner's own name, given at 07:49Z: "ODP stands for
+Oscillon Degradation Protocol ;)", the protocol by which the first parts (the lumps of level 0o) run down into everything after
+them; the reading here is its first step, discovery. In physics the smallest existence with a Λ does exactly that: every point gets a horizon at distance
 c/H and sees nothing beyond it (Gibbons and Hawking 1977, level 0g), the expansion is adiabatic and makes nothing (level 0n, "no act"),
 and de Sitter is the maximally symmetric solution and the maximum-entropy state for its Λ (Bousso 2000; Banks 2000), which is
 "maximally inflates all of Existence space". Holds, as a description of de Sitter in the owner's words.
@@ -574,6 +574,19 @@ Zaldarriaga 1997 proposed the test). So there are two firsts: the first act outs
 and the first act inside, the lumps, which cause the matter and not the pattern. In DMP's words: the sky's pattern is the minting
 record (G0, written before any part acts), the lumps are the first parts, and a part cannot have caused its own minting record (T40).
 **Refuter of the correction:** a sky without the super-horizon anticorrelation; it has been measured for twenty years.
+
+The owner (07:49Z): "Since the first act must always be the same, it holds no information other then it's existence, so the name
+Oscillon is meaningless in that sense." That is measured, and it is the strongest match of the pass to a single number. A first act
+that is always the same and carries nothing but its existence is, in physics, the statement that every mode of the primordial ripple
+is born in one and the same state, the unique de Sitter-invariant vacuum (Bunch and Davies 1978), and that the field it makes is
+Gaussian: a Gaussian random field is fixed by one function, its power spectrum (an amplitude and the tilt of level 0p), and has the
+largest entropy of any field with that variance, so it carries the least information a field can carry. The sky is that field to the
+precision measured: the non-Gaussian amplitude f_NL = −0.9 ± 5.1, consistent with zero (Planck 2018), and the perturbations are
+adiabatic, one ripple in everything at once, with no second kind seen. The lumps add nothing to this: an oscillon is an attractor
+whose profile does not depend on how it was made (level 0o), so "the name Oscillon is meaningless" holds for the content, and the only
+information in the first act is where the lumps are, which the frozen ripple decides. In DMP's words the first act of every part is
+the same act, discovery, and its content is level 0l's: that it exists. **Refuter:** a detection of primordial non-Gaussianity,
+f_NL measurably different from zero, which would mean the first act carried a signature of its own.
 
 **Level 0q, Existence hashes the forces (the owner, 07:48Z).** The owner, on the swap of level 0p: "For the swap, that is intended:
 Existence, since the forces change with each degradation, 'hashes' the forces to work on the same layer. That is the single key by
