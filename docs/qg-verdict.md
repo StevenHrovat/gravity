@@ -151,6 +151,29 @@ Oppenheim's classical gravity. A positive test of gravitationally mediated entan
 falsifiable stance, not a model of quantum gravity, and it is consistent with the framing the owner accepted at 08:09Z ("an
 information-theoretic axiom system for trust, tested against quantum gravity").
 
+## 8. The owner's reply: causality is the existence vector (2026-10-27 13:51Z)
+
+Verbatim: "The arrow of causality is placed wrong. We placed the arrow along the scalar component of the Existence vector, when causality
+actually IS the existence vector, finally given TRUE causality through the definition of causality as what was possible to happen in the
+past, what can happen and what will happen, because everything that CAN happen, does happen. There is no causality without the decay
+chain, as the initial decay is not an act, so would leave an orphaned causality root in it's stead."
+
+**What holds.** "Everything that can happen does happen" is the relative-state reading of quantum mechanics (Everett 1957) and the sum
+over histories (Feynman 1948): every possible history contributes. Read that way, Axiom 3's tree is neither space nor the causal order
+but the tree of histories, each branch one consistent record (decoherent histories, Gell-Mann and Hartle 1990). That is a better reading
+of the tree than either in theorem C, and it removes the cold read's Q1 objection (siblings are alternatives, not events that should be
+spacelike). The initial decay as no act is G0's "stated, not derived" and gravity#19 level 0p; in the Lean the root's minting is
+assumed (`cr_the_root_is_minted_by_assumption`), which is the orphaned root named correctly.
+
+**What it does not move.** In the relative-state reading the two witnesses' records do not collapse anything; they become entangled with
+the geometry, branch by branch. For the two masses that is the same thing: tracing out a record that carries which branch the mediator
+took is exactly the dephasing of check [6], so the masses end separable in every branch and on average. Galley, Giacomini and Selby's
+no-go is stated on the masses alone, so it does not care whether the record collapsed or branched. The only way back is to erase the
+record coherently before the masses are compared, and Axiom 3 forbids that: the record "outlives the act" and is destroyed only by
+both halves on the legal date. Inside each branch the tree is still a tree, so theorem C holds there unchanged.
+
+**Effect on the verdict:** none. CAN NOT stands; the reply improves the reading of the tree and leaves theorems A and B where they were.
+
 ## References
 
 Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the others are standard results cited in gravity#19 and #22.
@@ -175,3 +198,6 @@ Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the o
 - L. Bombelli, J. Lee, D. Meyer, R. D. Sorkin, *Phys. Rev. Lett.* 59, 521 (1987); R. D. Sorkin, *Mod. Phys. Lett. A* 9, 3119 (1994)
 - B. S. Cirel'son, *Lett. Math. Phys.* 4, 93 (1980); B. Hensen et al., *Nature* 526, 682 (2015)
 - J. Myrheim, "Statistical Geometry", CERN preprint (1978)
+- H. Everett III, "'Relative state' formulation of quantum mechanics", *Rev. Mod. Phys.* 29, 454 (1957)
+- R. P. Feynman, "Space-time approach to non-relativistic quantum mechanics", *Rev. Mod. Phys.* 20, 367 (1948)
+- M. Gell-Mann, J. B. Hartle, "Quantum mechanics in the light of quantum cosmology", in *Complexity, Entropy and the Physics of Information* (1990)
