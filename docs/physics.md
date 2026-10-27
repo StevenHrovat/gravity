@@ -689,6 +689,58 @@ exceeds its area over four, which no known object does.
 consistency relations), one half held (the arrow, not the clock), one not closed (the fork; its escapes refuted, one by the owner's own
 first act).
 
+**Level 0s, the minting as the answer to Bell, the Planck tick, and information converted to energy (the owner, 08:01Z).** The owner,
+verbatim: "The only way that 1 can be avoided is through the minting, which this is. There can be no other definition of Existence,
+before Existence is defined, so closed by Axiom 3." "For the time we can specify the settings for the minimum tick rate, as the planck
+distance, which would make the rate scale JUST like gravity." "For 4: Information in one existence is converted into energy in another."
+
+*1, the fork, by the minting.* A definition closes nothing that a measurement opened: Bell's bound is a theorem over every theory with
+local decisions, free settings and one outcome per act, whatever it calls existence, and the sky-side number is measured (loophole-free,
+Hensen et al. 2015, S = 2.42 ± 0.20 against a bound of 2). So "closed by Axiom 3" cannot mean the bound is escaped. It can mean, and
+read with level 0b it does mean, that DMP **picks the entangled branch by definition**: if existence (space, distance, "isolated") is
+defined only by the minting, then isolation is a derived notion and the minting's shared state is the primitive one. That is a
+published shape, ER = EPR (Maldacena and Susskind 2013): two black holes that are isolated in the emergent geometry and connected
+through it by the entanglement that made the geometry; isolated and entangled at once, at two levels, which is the fork dissolved
+rather than closed. The price, which DMP must pay in words: each half of a Duality holds only a digest of the content (a mixed state;
+the purity is in the pair, the purification postulate of level 3), the halves verify existence and not content (level 0l), and the two
+halves' disagreement is intrinsic at a known rate and not a fault. On that reading the fork is a choice with a price, not a
+contradiction. ER = EPR itself is a conjecture, proven in the holographic models and nowhere else. **Verdict:** not closed as a
+theorem; dissolved as a choice (the entangled branch, with existence derived from the minting), resting on a conjecture. **Refuter of
+the choice:** a witness that holds the content locally and still agrees with the sky; Bell forbids it.
+
+*3, the clock, by the Planck tick.* "A minimum tick at the Planck distance, with the rate scaling just like gravity" is a published
+theorem about clocks: a clock of mass M that must resolve a tick δt over a running time T cannot do so below a bound set by G, because a
+finer clock is heavier than the black hole of its own size (Salecker and Wigner 1958; Ng and van Dam 1994, δt ≥ (t_P² T)^⅓). The smallest
+tick of any physical clock is set by gravity, exactly the owner's "JUST like gravity", and the tick rate slows in a field as the lapse
+of level 0 does (measured to 33 cm of height, Chou et al. 2010). Two corrections and one gain. First, the tick must not be a lattice: a
+fixed Planck grid picks a frame, and Lorentz invariance holds to beyond the Planck scale for linear dispersion (Fermi, GRB 090510, Abdo
+et al. 2009); a discreteness that keeps the symmetry exists, the random sprinkling of causal sets (Bombelli, Henson and Sorkin 2009),
+level 0k again. Second, a tick is a grain and not a clock. The gain is that in the causal-set reading the count of ticks **is** the
+clock: proper time along a worldline is the length of the longest chain through it (Myrheim 1978; Brightwell and Gregory 1991), a time
+internal to the order, needing no outside parameter, which is what the problem of time of level 0l asked for and Page and Wootters
+supply with a subsystem. So the owner's tick, taken as the causal set's grain, gives level 0k its clock classically; the quantum
+version (the growth dynamics) is still the open item of 0k. **Verdict:** holds, with the tick a sprinkling and the clock a count.
+**Refuter:** any energy-dependent delay in the arrival of light from a burst, which a lattice tick predicts and the sky denies.
+
+*4, the area bound, by conversion.* "Information in one existence is converted into energy in another" is the first law of horizons
+and the way the area bound was first derived. Across a horizon the first law reads dE = T dS (Bardeen, Carter and Hawking 1973): the
+energy that falls in on one side is the entropy, the area, that grows on the other; Jacobson's derivation of level 0 is that sentence
+promoted to the Einstein equation at every local horizon. And it is how Bekenstein (1981) derived the bound: information lowered into a
+black hole costs at least the energy that keeps the second law whole, which with Landauer's price per bit (1961, measured by Berut et
+al. 2012) and the largest energy a region of radius R can hold before it collapses to its own black hole (level 0m's singularity, the
+owner's T37 reading of level 0r) gives S ≤ 2πER/ħc, and at the collapse itself A/4. So the owner's sentence does not adopt the bound,
+it **derives** it: conversion across the border, plus collapse at the energy limit, gives the content bound as a theorem, and T38 need
+not change. Each layer keeps its own Duality and budget; the content of any layer is still bounded, because every bit of it must have
+been converted at its border and the energy it became is bounded by collapse. This replaces level 0r's candidate amendment of T38 with
+a rule of conversion. Candidate for the owner's words, not DMP text: *information crossing a border between existences is converted
+into energy on the other side, at no less than Landauer's price per bit.* **Verdict:** holds, and closes level 7 without touching T38.
+**Refuter:** erasure below Landauer's price (never seen) or a region holding more than 2πER/ħc bits (none known).
+
+**Summary of the three.** The clock: closed classically (the count of ticks on a sprinkled order), open quantum mechanically. The area
+bound: closed, as a theorem from conversion and collapse, with T38 intact. The fork: dissolved, not closed; DMP picks the entangled
+branch by defining existence from the minting, pays with halves that hold digests and verify existence only, and rests on ER = EPR.
+What now does not hold is one item, and it has changed shape: not a contradiction but a conjecture the system depends on.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -787,6 +839,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0p smallest existence, discovery, decaying inflation | holds: Planck-mass black hole of zero total energy; de Sitter as discovery without act; H going down is the measured tilt; finite inflation gives r about 0 (TCC) | Duff, Okun and Veneziano 2002; Tryon 1973; Bedroya and Vafa 2019 | the constants as information (they are the ruler; the dimensionless numbers are the information) |
 | 0q existence hashes the forces | holds: the renormalisation group; the hash is Wilson's coarse-graining (downward, many-to-one, universality); upward it is unification (SM couplings do not meet) or asymptotic safety (fixed point unproven, Higgs mass predicted) | Wilson 1971; Amaldi, de Boer and Fuerstenau 1991; Shaposhnikov and Wetterich 2010 | nothing; the fixed point is the open question |
 | 0r the four answers | fork: not closed (common origin = socks or superdeterminism, both refuted); rate: holds, consistency relations are the tests; arrow: holds (Janus point), clock: open; area bound: premise refuted, conclusion = holography, closes level 7 only with a change to T38 | Rauch et al. 2018; Maldacena 2003; Barbour, Koslowski and Mercati 2014; Page 1993 | T38 as written, to gain the area bound |
+| 0s minting, tick, conversion | fork: dissolved as a choice (entangled branch; ER = EPR, a conjecture), not closed as a theorem; clock: holds classically (tick count on a sprinkled order), open quantum mechanically; area bound: derived from conversion and collapse, T38 intact | Hensen et al. 2015; Maldacena and Susskind 2013; Salecker and Wigner 1958; Bekenstein 1981 | local content in a half; a lattice tick |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
