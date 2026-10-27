@@ -243,6 +243,16 @@ agree on. That is the fork of level 3 restated as a definition, which is the cle
 quantum entangles.* **Refuter:** for pure states, none (Gisin); for mixed states, a Werner state, entangled with a shared reality, which
 the sentence does not call entangled.
 
+The owner's addition (07:13Z): "Also satisfies, that information has to be exchanged on interaction, without anything actually
+leaking." It does, in two senses, both theorems. Between the parts: an interaction is a unitary on the joint space, and it creates
+mutual information, I(A:B) = 2·S(A) for a pure pair, twice what any classical correlation can carry; yet each part's local state is
+untouched by anything the other does (the no-communication theorem), and for a maximally entangled pair each local state is maximally
+mixed, so a part holds nothing about the other locally: the information is in the correlation and nowhere else. To the outside: the
+pair stays pure, its total entropy stays zero, nothing has left it; the moment something does leak to a third party (decoherence), the
+shared state becomes a shared reality and the entanglement is gone. So "nothing leaks" is not a bonus but the condition of staying
+entangled, and the leak that is allowed is the one of level 0e: a syndrome, which commutes with the content. In DMP's words, existence
+is exchanged and content is not (Axiom 3), and the floor's counts are the only leak the containment survives (T31).
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
