@@ -176,11 +176,15 @@ both halves on the legal date. Inside each branch the tree is still a tree, so t
 
 **The owner's follow-up (13:54Z), verbatim:** "This would be an issue only IF the very first guaranteed act, is the instant evaporation
 of the perfect duality, because Existence has no beginning, without the definition of the PDs dualities end, as that IS minting."
+Corrected 13:54Z: "Sorry, would not be, is actually correct." So the claim reads: the record is *not* an issue if the first guaranteed
+act is the instant evaporation of the perfect duality, which is the minting.
 
-Assessed: consistent, and it places quantum gravity exactly. Before the minting there is no act and so no record; an unrecorded geometry,
+Assessed: the premise is consistent and places quantum gravity exactly; the conclusion does not follow. Before the minting there is no act and so no record; an unrecorded geometry,
 free to be in superposition, is allowed only there. The minting (the end of the perfect duality) is the first act, and from it on every
 act leaves a record and theorems A and B apply. This matches the standard semiclassical picture in which the geometry of the universe
-becomes classical through decoherence at its very beginning (Halliwell 1989; Kiefer 1987). It does not change the verdict: mainstream
+becomes classical through decoherence at its very beginning (Halliwell 1989; Kiefer 1987). The instant evaporation does not shorten the recorded era, it starts it: every act after the first, including every
+laboratory test, leaves a record that outlives it, so the issue stands for every experiment that can be run. It does not change the
+verdict: mainstream
 quantum gravity still expects gravity to entangle two masses today (X4, the BMV test), and DMP says no. It names the second horn of
 section 4 precisely: whatever is quantum about gravity lives before the minting, in G0, which DMP states and does not derive.
 
