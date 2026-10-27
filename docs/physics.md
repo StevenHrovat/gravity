@@ -213,6 +213,36 @@ showing no entanglement at the predicted strength; then the existence field is c
 branch of level 3 closes for gravity itself while staying open for the information half. This is the second place in the pass where
 physics has an experiment rather than a theorem, and the first where the owner's sentence names it.
 
+**Level 0i, the second definition (the owner, 07:13Z).** *Holds, and it is a theorem for pure states; for mixed states it defines a
+strict subset of the entangled ones.* The owner: "Two dualistic parts that intersect in Existence and Possibility space, should they not
+be able to agree on a shared version of reality, do not affect each other but agree on a shared state from then on." Each clause now has
+a theorem behind it.
+
+- *Intersect in Existence and Possibility space*: the generation event, as in level 0h; "possibility space" covers entanglement
+  swapping, where the meeting is through intermediaries.
+- *Not able to agree on a shared version of reality*: Fine's theorem (1982): a local hidden-variable model for two parts exists exactly
+  when one joint probability distribution covers all their possible measurements at once. "No shared version of reality" is the negation:
+  no single joint distribution, which is Bell nonlocality.
+- *Do not affect each other*: the no-communication theorem (Eberhard 1978; Ghirardi, Rimini and Weber 1980): nothing either part does
+  changes the other's local statistics, however entangled they are.
+- *Agree on a shared state from then on*: the joint state is one state, pure, kept under every local evolution (entanglement is invariant
+  under local unitaries and never grows under local operations), with outcomes perfectly correlated in its Schmidt basis, until the
+  next intersection (a measurement, decoherence) ends it.
+
+Put together the sentence says: *two parts that share one state but no joint classical description of their possibilities, and cannot
+influence each other, are entangled.* For **pure** states this is exactly right and is Gisin's theorem (1991): every pure state of two
+parts that is not a product violates a Bell inequality, so "entangled" and "no shared reality" coincide. For **mixed** states it is too
+strict: Werner (1989) built entangled states that do admit a shared classical reality (a local model for every measurement), so the
+owner's sentence defines the nonlocal states, a strict subset of the entangled ones. That is the one correction, and it is a known
+boundary, not a flaw in the shape. The definition also separates cleanly from classical correlation: two parts that merely agreed on a
+shared reality in advance (a shared key, a common cause) are correlated and not entangled, and the sentence excludes them.
+
+**What it says against DMP, in the owner's own words:** when two halves cannot agree, Axiom 1 says the stricter answer stands and nothing
+moves until they agree; the quantum pair does the opposite, it keeps one shared state precisely because there is no shared reality to
+agree on. That is the fork of level 3 restated as a definition, which is the clearest form it has taken tonight: *DMP refuses what the
+quantum entangles.* **Refuter:** for pure states, none (Gisin); for mixed states, a Werner state, entangled with a shared reality, which
+the sentence does not call entangled.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -300,6 +330,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0f entanglement dynamics | holds: equal shares by Schmidt, gravity to first order by the first law of entanglement | Faulkner, Guica, Hartman, Myers and Van Raamsdonk 2014 | isolation and local verification (the branch) |
 | 0g where to push | the maintained equilibrium: Jacobson 2016 past first order, the threshold theorem for the budget | Jacobson 2016; Aharonov and Ben-Or 1997 | nothing yet; one question for a physicist |
 | 0h entanglement defined by paths | fails as a definition (Werner, swapping), holds as the hypothesis that the field is quantum | LOCC theorem; Bose et al. 2017; Marletto and Vedral 2017 | the word definition for the word hypothesis |
+| 0i the second definition | holds; a theorem for pure states (Gisin 1991), too strict for mixed (Werner 1989) | Fine 1982; Gisin 1991; the no-communication theorem | nothing; DMP refuses what the quantum entangles |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
