@@ -124,6 +124,24 @@ by evidence"), and T7 says silence alarms and never isolates; a core that must d
 is what one Duality of two halves of at least three nodes (T8a) already is. **Refuter:** a code on four qubits that corrects an arbitrary
 single-qubit error; the quantum Hamming bound forbids it. The branch is unchanged: codes are entangled.
 
+**Level 0e, the wiring as the fifth primitive that always leaks (the owner, 06:59Z).** *Holds as a theorem on all three sides; in DMP
+it is derived, not primitive, and already public by construction.* The owner: "Maybe the way the layers are interconnected is the fifth
+information primitive, that also always automatically leaks." Three places say the same thing. In a stabilizer code the interconnection
+is the stabilizer group, which is the definition of the code and is public; what it leaks is the **syndrome**, which must leak for the
+correction to happen, and it never leaks the logical content below the distance (Gottesman 1997). In holography the interconnection is
+the entanglement structure, which is the geometry (level 0b), and the geometry is what the outside reads: the mass as the area, the
+temperature as the surface gravity, and Hawking's radiation is the always-automatic leak of exactly those and nothing else (the no-hair
+theorem). In DMP the interconnection is the recipe and the field over it (depth, mass, freshness), its digest is published next to the
+sealed file by construction (T33, the CMB; `Recipe.digest_congr`), and the floor says that a reader without a grant sees the counts
+always and the content never (T31, `Floor.road_gate`, `Entry.ext`). So "always leaks" is a theorem in all three: Hawking, syndrome
+extraction, the floor. Two corrections. First, the count: on the quantum side the wiring is primitive (the code is its stabilizers), while
+in DMP it is derived, since standings and admissions are edges made by acts of the words (part, act, witness, evidence, time), so the
+words stay at five and the wiring is their first theorem, not a sixth word; the brief's finding F11 (that *information* is not among the
+words) is the open count question, not this. Second, the number: four witnesses plus the wiring is not the fifth qubit of the [[5,1,3]]
+code, whose five are symmetric (it is cyclic); the honest reading of "2:2 plus the wiring" is the [[4,2,2]] code with its two stabilizers,
+four parts whose two syndrome bits leak, and the five of G0 stays the correcting core of level 0d. **Refuter:** a leak of the wiring that
+carries content: the code distance, the no-hair theorem and T31 each forbid it in their domain.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -207,6 +225,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0b arena | holds, needed; picks the entangled branch | van Raamsdonk 2010; Swingle 2012; the HaPPY code 2015 | local verification, if the branch is taken |
 | 0c majority | holds on the quantum side, forced by no-cloning; a loosening inside DMP | Cleve, Gottesman and Lo 1999; Almheiri, Dong and Harlow 2015 | nothing on the quantum side; the gate, if flattened in DMP |
 | 0d two pairs | holds as symmetry and detection; five corrects | the [[4,2,2]] and [[5,1,3]] codes; Lamport, Shostak and Pease 1982 | nothing; G0's five already carries it |
+| 0e the wiring leaks | holds as a theorem (syndrome, Hawking, the floor); derived in DMP, primitive in a code | Gottesman 1997; the no-hair theorem; T31 and T33 | nothing; the count of the words stays |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
