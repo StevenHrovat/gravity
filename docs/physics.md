@@ -105,6 +105,25 @@ is an act with two witnesses) with the geometric chain as the existence side and
 the strongest match of the whole pass, because it is a theorem and not a shape. It still sits on the entangled branch: both chains are
 built from entanglement, and the fork of level 3 is unchanged.
 
+**Level 0d, the core is two pairs (the owner, 06:56Z and 06:57Z).** *Holds as symmetry and as detection; correction needs five, which G0
+already says.* The owner: "Since every measurement collapses the DMP compliant state, maybe our layer layout is 2:2 at it's core." "It
+would hold symmetry." First the premise, which is true in DMP in its own sense: a read is an act (the words), every act leaves an entry
+(Axiom 3), and evidence read at an earlier step never passes (`Gate.stale_never_passes`), so the state after any observation is a new
+state. That is collapse by the record growing, deterministic and content-preserving; quantum collapse is random and disturbs what does
+not commute, and the two agree only in the one sentence "after a measurement the state is not the state before". Then the number. Two
+pairs is the symmetric form of the two chains of level 0c, a Duality on each side, four witnesses at the core. On the quantum side four
+is the smallest code that **detects** one collapse: the [[4,2,2]] code (Vaidman, Goldenberg and Wiesner 1996; Grassl, Beth and
+Pellizzari 1997), four physical qubits holding two logical ones, which is the owner's 2:2 to the digit, and the cell of the surface code.
+It detects any single error and corrects none: a collapse of one of the four is noticed, not healed. The smallest code that **corrects**
+one collapse is the [[5,1,3]] code (Laflamme, Miquel, Paz and Zurek 1996; Bennett, DiVincenzo, Smolin and Wootters 1996), the pentagon
+of level 0c, and five is what G0 already asks for at the minting ("at least five parts become the White Key Holders"). On the classical
+side the same two numbers appear: four is the least that reaches agreement under one Byzantine fault (Lamport, Shostak and Pease 1982,
+n ≥ 3f + 1), and a vote of four can tie at 2:2, which Axiom 1 resolves to refuse (the stricter answer stands); five has no tie. So: 2:2
+holds symmetry and alarms, five restores. Axiom 1's balance asks for restoring ("what was lost without evidence against it, it restores
+by evidence"), and T7 says silence alarms and never isolates; a core that must do both is five with the two-pair symmetry inside it, which
+is what one Duality of two halves of at least three nodes (T8a) already is. **Refuter:** a code on four qubits that corrects an arbitrary
+single-qubit error; the quantum Hamming bound forbids it. The branch is unchanged: codes are entangled.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -187,6 +206,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0 words | holds, one of six postulates | Chiribella, D'Ariano and Perinotti 2011 | nothing; five postulates to add |
 | 0b arena | holds, needed; picks the entangled branch | van Raamsdonk 2010; Swingle 2012; the HaPPY code 2015 | local verification, if the branch is taken |
 | 0c majority | holds on the quantum side, forced by no-cloning; a loosening inside DMP | Cleve, Gottesman and Lo 1999; Almheiri, Dong and Harlow 2015 | nothing on the quantum side; the gate, if flattened in DMP |
+| 0d two pairs | holds as symmetry and detection; five corrects | the [[4,2,2]] and [[5,1,3]] codes; Lamport, Shostak and Pease 1982 | nothing; G0's five already carries it |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
