@@ -340,6 +340,24 @@ everything, scrambled, over its lifetime (Page 1993, above), which is the parado
 horizon as containment is right, and it is classical gravity's containment; the quantum question is what the contained information does,
 and the answer the field has reached is that it comes back out.
 
+The owner's key point (2026-10-27): "every force is transmitted by a particle in a field, which in itself obeys the axiom system, so since
+information is limited while we can perceive it, and information can never be destroyed or created, each force interaction, carried by a DoE
+particle, must also transmit that exact quantum of information and cease to be perceivable. Also: only one of the information carrying layers
+must exchange information, either the existence part or the information part." What holds: forces carried by quanta of a field is Yukawa
+(1935), the carrier that is never seen is Feynman's virtual particle (1949), the internal line of the exchange, and information never created
+or destroyed is unitarity, which the owner now holds and which retracts his "irreversibly destroyed when decaying" of an hour earlier,
+rightly. Three things break. First, there is no exact quantum of information per interaction: what an exchange carries is partly quantised,
+one unit of spin, a unit of charge, a particle, and partly continuous, the momentum transferred, which takes any value and is what scattering
+measures; an interaction is not one bit. Second, "only one layer exchanges" is false of two of the four forces: beta decay (Fermi 1934)
+changes the flavour and the charge, the owner's information half, and the momenta, his existence half, in the same interaction, and a gluon
+exchange changes colour and momentum at once; only the photon leaves the charges alone, and even it carries angular momentum. Third, and the
+one that matters for the verdict: an interaction is not a transfer but a sum. Where two exchanges can lead to the same final state they
+interfere, with phases, and the interference is measured (Bhabha 1936, the two channels of electron-positron scattering); a bookkeeping of
+definite quanta transmitted has no phases to add and cannot produce it. The amplitude is the quantum content of a force, and the owner's
+picture carries the quantum numbers without the amplitude. None of this touches the five requirements above: the carriers are quanta of
+fields on the existence field, the carrier of the existence exchange is the graviton, and the existence field's own quantum state is still
+not in the picture.
+
 The verdict for this section: a consistent frame that physics satisfies, and for that reason not a theory of anything in particular. It is
 satisfied by worlds with gravity and without, with Einstein's law and with Newton's, so it derives no gravity; a quantum gravity would have to
 begin where it leaves off, with a law for the existence field's own quantum.
