@@ -406,6 +406,18 @@ spin and charge; the one candidate for a quantised existence, the area of loop q
 and Smolin 1995) and is a conjecture. The balance the owner states would make the universe a black hole and its spectra discrete; it is
 neither.
 
+The hash (the owner, 2026-10-27): "making the quantum of information a kind of 'hash' for the interaction of information and existence in
+that instantiation." A hash is many-to-one and one-way: a fixed-size digest with collisions, from which the input cannot be recovered. That is
+exactly what the quantum is not. Quantum evolution is one-to-one: a quantum state cannot be copied (Wootters and Zurek 1982) and cannot be
+deleted (Pati and Braunstein 2000), and the owner's own sentence of minutes before, that information is never destroyed, forbids a hash at the
+quantum, since a hash destroys information by construction; a hash of the interaction would have collisions, and a collision is the
+non-unique past of 4.11 (`dissolution_forgets`). Where a hash does live in physics is one level up, in the record: a macrostate is a
+many-to-one digest of a microstate, and the entropy is the count of its collisions (Boltzmann 1877); a detector's click is a hash of the
+event it records. That is the right place for it, and it is DMP's place: DMP's objects are records, counts and digests of acts, a hash of a
+grant (DMP-009), a record entry that is its time and three verdicts and nothing else (`Entry.ext`). A theory of hashes is a theory of
+records, and records are classical by construction, which is the reason, stated from the owner's side this time, that the chain's four
+stops of section 4 hold: the hash is the record, not the quantum, and quantum gravity is a theory of the quantum.
+
 The verdict for this section: a consistent frame that physics satisfies, and for that reason not a theory of anything in particular. It is
 satisfied by worlds with gravity and without, with Einstein's law and with Newton's, so it derives no gravity; a quantum gravity would have to
 begin where it leaves off, with a law for the existence field's own quantum.
