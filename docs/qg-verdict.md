@@ -188,6 +188,22 @@ verdict: mainstream
 quantum gravity still expects gravity to entangle two masses today (X4, the BMV test), and DMP says no. It names the second horn of
 section 4 precisely: whatever is quantum about gravity lives before the minting, in G0, which DMP states and does not derive.
 
+**The owner, 13:57Z, verbatim:** "The record of G0 Existence and the the part's linking to G0 can be proven axiomatically and actually
+is. Something has to exist. If nothing exists, then it is before minting. Any causality before minting is logically undefinable, because
+there is no before, we can only say what, in totality, can have the effects, that would be consistent with a G0 that produces an
+Existances as close to ours as it can be, because Existance would not play hash collisions with itself, so all three WHK must be
+irrational."
+
+Assessed, sentence by sentence. *The linking is proven*: holds; every line descends from a minted root in the Lean, while the root's
+minting itself is assumed by well-formedness (`cr_the_root_is_minted_by_assumption`), so "something exists" is still a candidate axiom
+(gravity#19 level 0b), not a theorem. *No before the minting*: holds, and is the no-boundary proposal (Hartle and Hawking 1983, "no
+before the Big Bang"); it confirms the second horn: what is quantum about gravity sits where DMP, by its own words, can say nothing.
+*Only what is consistent with an existence like ours*: a selection principle, the weak anthropic form; it constrains, it does not
+derive. *All three WKH irrational*: refuted for ħ, G and c, whose numbers are set by the choice of units (c is the exact integer
+299 792 458 in metres per second since 1983, and all three are 1 in Planck units; Duff, Okun and Veneziano 2002); untestable for the
+dimensionless constants, since no measurement of finite precision can show a number irrational; and irrational inputs do not prevent
+collisions, which are a property of the map, not of its inputs (the digest's own collision, finding F7). **Effect on the verdict: none.**
+
 ## References
 
 Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the others are standard results cited in gravity#19 and #22.
@@ -213,6 +229,7 @@ Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the o
 - B. S. Cirel'son, *Lett. Math. Phys.* 4, 93 (1980); B. Hensen et al., *Nature* 526, 682 (2015)
 - J. Myrheim, "Statistical Geometry", CERN preprint (1978)
 - J. J. Halliwell, "Decoherence in quantum cosmology", *Phys. Rev. D* 39, 2912 (1989); C. Kiefer, "Continuous measurement of mini-superspace variables by higher multipoles", *Class. Quantum Grav.* 4, 1369 (1987)
+- J. B. Hartle, S. W. Hawking, "Wave function of the Universe", *Phys. Rev. D* 28, 2960 (1983); M. J. Duff, L. B. Okun, G. Veneziano, "Trialogue on the number of fundamental constants", *JHEP* 03 (2002) 023
 - H. Everett III, "'Relative state' formulation of quantum mechanics", *Rev. Mod. Phys.* 29, 454 (1957)
 - R. P. Feynman, "Space-time approach to non-relativistic quantum mechanics", *Rev. Mod. Phys.* 20, 367 (1948)
 - M. Gell-Mann, J. B. Hartle, "Quantum mechanics in the light of quantum cosmology", in *Complexity, Entropy and the Physics of Information* (1990)
