@@ -15,7 +15,7 @@ This folder supersedes the earlier drafts of gravity#20 (`docs/paper/`, "The Dua
 | File | What |
 |---|---|
 | `guid.tex` | the paper (LaTeX, `article` class, inline bibliography, about 12 pages) |
-| `preface.tex` | the owner's preface, verbatim as posted 17:23Z, LaTeX-escaped only; one change, his (the subtitle, 17:40Z) |
+| `preface.tex` | the owner's preface, verbatim as posted 17:23Z, LaTeX-escaped only; his changes of 17:40Z (subtitle) and 18:14Z (approved, with two corrections) |
 | `README.md` | this spec: format, what backs each claim, the release gates |
 | `final-verification-prompt.md` | the prompt for the final fault verification: two independent threads, Fable high and Opus high (the owner, 17:47Z); each returns a draft PR |
 
@@ -59,6 +59,11 @@ Live's `latex-extra`, so arXiv's TeX Live compiles it unchanged. Built clean (no
 3. "The final result was proven correct by four separate adverserial reviews (Fable, Fable, GLM-5.3, Fable)": stays; "it being true is a
    gate for the papers release" (release gate G2 below).
 4. "DMP pinned to at least v1.0.0": stays, aspirational ("We will see where it ends up"). DMP `main` is 0.9.8.
+
+The owner, 18:14Z: "Approved with two corrections to my words": "mapped 1:1 to actual Hawking radiation, started my Insight." and
+the new last sentence "The submission leaves quite a few easy wins, some even stated, but I cannot intuit their larger effects, only
+that they are not harmful, so I leave those open to be intuited, as they need to be." Both applied word for word. This approves the
+preface and the draft; it is not the release (the gates below still stand).
 
 Typos in the preface stay as written until the owner says otherwise ("subet", "adverserial", "graps", "natievety", "then" for "than",
 "EMT" for "ETM", "WHKs" for "WKHs").
