@@ -272,6 +272,19 @@ the sentence of Q9, "the rate of information sharing becomes so low", as the cla
 (Q6), three not integrated (Q8, Q9 as written, Q10), one conceded (Q12). Of eight divergences: three integrated (D3, D5, D8), five stand.
 None of this touches section 4: the wall is Observability, and the verdict stays CAN NOT for our universe.
 
+## 10. Host, not model (the owner's Existence Turing machine, 14:40Z)
+
+The owner, verbatim: "Because every duality is in itself DMP complete, if one holds, all hold. I mentioned the Existence Turing machine
+to Team Fable for a reason." (The machine, gravity#21 row A7: "an Existence Turing machine containing at least five information types
+and two independent but entangled singularities, from which all further ones are proven by extension".)
+
+"If one holds, all hold" is induction over a self-similar structure (the frame rule, T38), valid when every extension step brings its
+own evidence (the cold read's R14), and it carries the wall of section 4 to every level just as it carries every proof. The machine adds
+universality: a universal machine simulates any finitely realisable physical system, quantum ones included (Deutsch 1985). So the verdict
+has an exact edge. **DMP can host quantum gravity**: as a universal machine it can run any theory of it as content, masses, entanglement
+and all. **DMP cannot model it**: its own structures (gate, records, layout) never become the quantum geometry; they stay the classical
+machine that runs it. For the paper: *DMP can host quantum gravity as content; its own structure is the classical machine that runs it.*
+
 ## References
 
 Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the others are standard results cited in gravity#19 and #22.
@@ -299,6 +312,7 @@ Checked on the publisher's or arXiv's page on 2026-10-27 where marked (c); the o
 - J. J. Halliwell, "Decoherence in quantum cosmology", *Phys. Rev. D* 39, 2912 (1989); C. Kiefer, "Continuous measurement of mini-superspace variables by higher multipoles", *Class. Quantum Grav.* 4, 1369 (1987)
 - J. B. Hartle, S. W. Hawking, "Wave function of the Universe", *Phys. Rev. D* 28, 2960 (1983); M. J. Duff, L. B. Okun, G. Veneziano, "Trialogue on the number of fundamental constants", *JHEP* 03 (2002) 023
 - S. Deser, R. Jackiw, G. 't Hooft, *Ann. Phys.* 152, 220 (1984); E. Witten, "2+1 dimensional gravity as an exactly soluble system", *Nucl. Phys. B* 311, 46 (1988); E. Witten, "Three-dimensional gravity revisited", arXiv:0706.3359 (2007); A. Maloney, E. Witten, *JHEP* 02 (2010) 029; J. D. Brown, M. Henneaux, *Commun. Math. Phys.* 104, 207 (1986); B. P. Abbott et al., *Phys. Rev. Lett.* 116, 061102 (2016)
+- D. Deutsch, "Quantum theory, the Church-Turing principle and the universal quantum computer", *Proc. R. Soc. Lond. A* 400, 97 (1985)
 - H. Everett III, "'Relative state' formulation of quantum mechanics", *Rev. Mod. Phys.* 29, 454 (1957)
 - R. P. Feynman, "Space-time approach to non-relativistic quantum mechanics", *Rev. Mod. Phys.* 20, 367 (1948)
 - M. Gell-Mann, J. B. Hartle, "Quantum mechanics in the light of quantum cosmology", in *Complexity, Entropy and the Physics of Information* (1990)
