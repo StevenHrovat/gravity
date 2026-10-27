@@ -292,6 +292,32 @@ which is a Majority of Existence and not a Duality. So the hierarchy of Axiom 3 
 side only in the majority form. **Refuter:** a tree in which every node is maximally entangled with its parent and with each child;
 monogamy forbids it.
 
+**Level 0k, authorisation to interact from Existence downward (the owner, 07:16Z).** *Holds, has a name, is a live quantum-gravity
+programme in exactly the owner's two halves, and it carries the first predicted number of the night.* The owner: "The information
+layers may also be able to receive 'authorization' to interact from Existence downward, in effect a minting from G0." In physics
+"which parts may interact" is the causal structure of spacetime: two fields at spacelike separation cannot act on each other
+(microcausality). Two theorems make the owner's sentence exact. First, the causal order alone fixes the geometry up to a local scale
+(Hawking, King and McCarthy 1976; Malament 1977): existence's authorisation *is* the metric, short of one number per point. Second, that
+number is a count: supply the volume as the number of elements and the geometry is complete, "order plus number equals geometry"
+(Sorkin). That is **causal set theory** (Bombelli, Lee, Meyer and Sorkin 1987): spacetime as a locally finite partial order, the order
+being who may influence whom (the existence half, the authorisation) and the number being how much is there (the information half, the
+count). Its dynamics is the owner's minting downward to the letter: in classical sequential growth (Rideout and Sorkin 2000) elements
+are born one at a time and each receives its causal past from the elements already there, so every later element's authorisation
+descends from the first, as every standing in DMP descends from the minting (G0, T32). And it predicts a number: the cosmological
+constant fluctuates as the inverse square root of the number of elements, Λ ~ 1/√N, which gave its observed order of magnitude before
+the observation (Sorkin 1997; Ahmed, Dodelson, Greene and Sorkin 2004). It is the first item tonight whose cousin predicts rather than
+describes.
+
+**What it does for the fork.** Causal set theory splits the two halves exactly where the fork of level 3 wants them split: the order is
+classical (a partial order, local, no Bell problem, so the trust half may stay isolated and verify locally), and the quantum lives in
+the measure over possible orders (the information half, a sum over histories; Sorkin's quantum measure theory). So the first reading of
+the owner's system in which the trust half is classical and the information half is quantum, with neither contradicting the other, is
+causal set theory. **Where it stops:** the quantum dynamics is not found (no derived Einstein equation; the quantum measure is a
+framework, not a law); and the majority problem of level 0c has a known shape here, the Kleitman and Rothschild orders (1975): almost
+every partial order on N elements is a three-layer object that looks nothing like a spacetime, so the dynamics must suppress the
+majority, and no dynamics that does so is proven. **Refuter:** a pair of spacetimes with the same causal order and the same volumes that
+differ in geometry; Malament's theorem says none exists among distinguishing spacetimes.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -382,6 +408,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0i the second definition | holds; a theorem for pure states (Gisin 1991), too strict for mixed (Werner 1989) | Fine 1982; Gisin 1991; the no-communication theorem | nothing; DMP refuses what the quantum entangles |
 | 0j Zeno | contradiction: live verification freezes the quantum; resolved by restricting the information half to declared expectations | Misra and Sudarshan 1977; Pallister, Linden and Montanaro 2018 | the open truth check of the information half |
 | 0j' monogamy | contradiction: a hierarchy of maximally entangled pairs cannot exist; resolved by the majority form | Coffman, Kundu and Wootters 2000 | the pair for the perfect tensor, on the quantum side |
+| 0k authorisation downward | holds: causal set theory, order plus number is geometry; predicts Λ ~ 1/√N | Malament 1977; Bombelli, Lee, Meyer and Sorkin 1987; Rideout and Sorkin 2000 | nothing; the quantum dynamics is open |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
