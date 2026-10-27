@@ -49,7 +49,7 @@ Live's `latex-extra`, so arXiv's TeX Live compiles it unchanged. Built clean (no
 | Sections 4 and 5, checks [1] to [6] | `docs/qg-verdict/assembly.py` on `main` `06231b8` | `python3 docs/qg-verdict/assembly.py` (18 of 18, re-run 2026-10-27) |
 | Section 6 and 7, check [7] and `blind_record_same` | gravity#24 head `60a1616` (draft) | its `assembly.py` (25 of 25, re-run 2026-10-27); `evidence/Dmp/Blind.lean` |
 | Section 8, 243 theorems, two kernels | `evidence/` on `main` `06231b8`; Lean unchanged since `6d09660`, whose `lean-evidence` run 53 was green on both kernels | `evidence/tools/check.sh` |
-| Section 2, DMP quotes | DMP `45d3822` (0.9.8), vendored at `vendor/dmp` | `tools/check-pin.sh` |
+| Section 2, DMP quotes | DMP 0.9.9 = `45d3822` (0.9.8) plus dmp#25's G0 rule; vendored at `vendor/dmp` (re-pin when dmp#25 merges) | `tools/check-pin.sh` |
 | Section 9, the record | gravity#18, #19, #21, #22, #23, #24; the GLM-5.3 and final Team Fable rows are filled when their records arrive | the pull requests |
 | References | 40 entries (35 checked OK by both final verifications; the 5 added in consolidation checked by search); each to be checked against the publisher's or arXiv's page before release | final fault verifications, task R |
 
@@ -59,7 +59,10 @@ Live's `latex-extra`, so arXiv's TeX Live compiles it unchanged. Built clean (no
 2. Subtitle end "can host a theory of QG whose run reproduces its predicted effects" (was "proves the observed effects of QG"): accepted.
 3. "The final result was proven correct by four separate adverserial reviews (Fable, Fable, GLM-5.3, Fable)": stays; "it being true is a
    gate for the papers release" (release gate G2 below).
-4. "DMP pinned to at least v1.0.0": stays, aspirational ("We will see where it ends up"). DMP `main` is 0.9.8.
+4. "DMP pinned to at least v1.0.0": first kept as aspirational; then (18:26Z, 18:27Z) 0.9.9 is the version the paper pins and the
+   preliminary G0, so the preface reads "at least v0.9.9". The rule is drafted as DMP text in dmp#25 (VERSION 0.9.9), awaiting the
+   owner's "approved". The owner, 18:27Z: "I approve the paper and it's associated version of needed repositories at v0.9.9, to be the
+   preliminary G0, until it is revoked through a DMP complete act as of version 0.9.9". 18:28Z: "And review approved :)".
 
 The owner, 18:14Z: "Approved with two corrections to my words": "mapped 1:1 to actual Hawking radiation, started my Insight." and
 the new last sentence "The submission leaves quite a few easy wins, some even stated, but I cannot intuit their larger effects, only
