@@ -394,6 +394,18 @@ that ratio is the horizon's bit count, about 10¹²² (`NoGoAxioms.lean` section
 are met: at the Planck length the warping must be quantum, the infinities appear, and the states must be counted. The axioms give the scale,
 which dimensional analysis gives anyone holding ħ, G and c, and nothing at it.
 
+The balance (the owner, 2026-10-27): "because they always need to keep each other in balance in order to exist, there can never be a quantum
+more existence than information, making them uniformly quantized." What holds: there is a relation between existence and information, and
+it runs one way. The information in a region never exceeds its area in Planck units (Bekenstein 1981; 't Hooft 1993; Susskind 1995): existence
+bounds information. What breaks: it is an inequality, not a balance, and only a black hole saturates it. Everything else holds far less
+information than its existence allows: the universe's information is about 10¹⁰⁴ bits, most of it in the largest black holes, against a
+horizon capacity of about 10¹²² (Egan and Lineweaver 2010), eighteen orders of magnitude from balance. If existence and information were
+always in balance, every object would be a black hole. And "uniformly quantized" is false of existence as physics finds it: the energy and
+momentum of a free particle take any value, the blackbody spectrum is continuous in frequency, and what is quantised in fixed units is action,
+spin and charge; the one candidate for a quantised existence, the area of loop quantum gravity, has a spectrum that is not uniform (Rovelli
+and Smolin 1995) and is a conjecture. The balance the owner states would make the universe a black hole and its spectra discrete; it is
+neither.
+
 The verdict for this section: a consistent frame that physics satisfies, and for that reason not a theory of anything in particular. It is
 satisfied by worlds with gravity and without, with Einstein's law and with Newton's, so it derives no gravity; a quantum gravity would have to
 begin where it leaves off, with a law for the existence field's own quantum.
