@@ -1,9 +1,12 @@
-# Final fault verification of the GUID paper: the Team Fable prompt
+# Final fault verification of the GUID paper: the prompt
 
-The owner pastes the block below into a fresh Team Fable session. It is self-contained.
+The owner, 2026-10-27 17:47Z: "TF wont be able to for a while, let's do it here when the time comes with a Fable High. More effort does
+not help it. Please also, to verify, an Opus High." So the block below is given, unchanged, to two independent threads of the project:
+one on Fable at high effort, one on Opus at high effort. Each fills in VERIFIER below with its own name (fable or opus). Neither reads the
+other's findings until both are in; the consolidation pass then merges them with every other review.
 
 ```text
-You are the final adversarial fault verifier of a paper before its public release. Your only job is to find every fault in it, prove each one or show it holds, and report. You do not rewrite the paper; a later pass consolidates every verifier's findings and corrects it once.
+You are one of two independent final adversarial fault verifiers of a paper before its public release. VERIFIER = your model family in lower case (fable or opus). Your only job is to find every fault in it, prove each one or show it holds, and report. You do not rewrite the paper; a later pass consolidates every verifier's findings and corrects it once.
 
 WHAT TO READ (GitHub, public or shared with you)
 - The paper: StevenHrovat/gravity, pull request #25, branch claude/project-thread-x1aw4m, folder docs/guid/: guid.tex (the paper), preface.tex (the first author's own preface), README.md (what backs each claim, the release gates). Build: cd docs/guid && pdflatex guid.tex && pdflatex guid.tex.
@@ -15,7 +18,7 @@ WHAT THE PAPER CLAIMS (attack exactly this, not a stronger or weaker version)
 - It claims the construction EXISTS and its checks REPRODUCE, not that it is correct. A fault is anything that makes a sentence of the paper false, unbacked, misquoted, or stronger than its evidence.
 
 TASKS (do all; number every finding)
-A. Reproduce. Run docs/qg-verdict/assembly.py on main (expect 18 of 18) and on #24's head (expect 25 of 25). Run evidence/tools/check.sh (expect 243 theorems on main, 246 on #24, nothing beyond propext, Quot.sound, Classical.choice). Report every number in the paper that does not match what you got.
+A. Reproduce. Run docs/qg-verdict/assembly.py on main (expect 18 of 18) and on #24's head (expect 25 of 25). Run evidence/tools/check.sh if your environment can install the pinned Lean toolchain (expect 243 theorems on main, 246 on #24, nothing beyond propext, Quot.sound, Classical.choice); if it cannot, say so, and check instead that evidence/ is unchanged between 6d09660 (lean-evidence run 53, green) and the commits named, and count the theorem declarations. Report every number in the paper that does not match what you got.
 B. Check each check. For [1] to [7], say whether the code computes what the paper says it computes, and whether the encoding of each DMP sentence is faithful to the quoted DMP text. Name any faithful alternative encoding that breaks a check.
 C. Attack Claim 1 (shared structures are classical). Find a structure DMP defines between parts that can be in superposition without breaking Axiom 3 as written, or show none exists. Judge the paper's own remark that the claim is close to definitional.
 D. Attack Claim 2 and its use (a classical mediator cannot entangle; Galley-Giacomini-Selby 2022). Include the 2025 debate (Aziz and Howl, Nature 646, 813; Marletto, Oppenheim, Vedral and Wilson, arXiv:2511.07348; Diosi, arXiv:2511.00852): is the paper's one-paragraph treatment accurate and sufficient?
@@ -29,7 +32,7 @@ S. Section 9 (the record of review passes): is every row an accurate summary of 
 F2. Format: abstract at most 1,920 characters of plain text; compiles cleanly; no leftover AI meta-comment, placeholder or instruction text anywhere in the paper; every cross-reference resolves.
 
 OUTPUT
-One file, docs/guid/review-tf-final.md, opened as a DRAFT pull request on StevenHrovat/gravity against the branch claude/project-thread-x1aw4m, titled "[TF] Final fault verification of GUID (#25)". Never merge it, never edit guid.tex or preface.tex, never change DMP.
+One file, docs/guid/review-final-VERIFIER.md, opened as a DRAFT pull request on StevenHrovat/gravity against the branch claude/project-thread-x1aw4m, titled "Final fault verification of GUID (#25): VERIFIER". Do not open, read or cite the other verifier's pull request. Never merge it, never edit guid.tex or preface.tex, never change DMP.
 The file has a table with one row per finding: id (task letter plus number, e.g. C3), severity (blocker: a sentence is false, fabricated or unbacked; major: stronger than its evidence or misleading; minor: imprecise; typo), location (section and line of guid.tex), the sentence, the evidence (a run, a theorem, a counter-model, or a source with URL), and the fix you propose in one sentence. Then a section per task with what you checked and found to hold, so absence of findings is visible. End with one line: "Release-blocking findings: N".
 
 RULES
