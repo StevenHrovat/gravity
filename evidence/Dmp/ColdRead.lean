@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R36
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R38
 below are the labels of its table rows.
 -/
 
@@ -971,5 +971,39 @@ theorem cr_one_quantum_per_quantum_is_k3 (j1 j2 : Evidence → Verdict) (s : Sta
     (step j1 j2 s r).log.length - s.log.length = 1 := by
   have := step_records_once j1 j2 s r
   omega
+
+
+/-! ## R37. Five answers to the open problems (the owner, 2026-10-27, sent during this pass)
+
+On singularities: what a horizon wraps "must automatically not exist, as far as G0 is concerned". On the absence of experiment:
+"some information always leaks out and gets destroyed". In the project's own objects a contained item is offered two transitions,
+re-admission and destruction, which is not what a thing that does not exist is offered; and destruction is scheduled at containment
+and executed at its date, by no leak: a tick before the date destroys nothing. -/
+
+/-- A contained item has two transitions, re-admission and destruction (T27, T31): it exists in the engine's hands. -/
+theorem cr_contained_item_has_two_transitions (i : Item) (h : i.contained = true) :
+    offered i .readmit = true ∧ offered i .destroy = true := by
+  simp [offered, h]
+
+/-- Destruction is scheduled, not leaked: before the destruction date a tick changes nothing. -/
+theorem cr_destruction_is_scheduled_not_leaked (i : Item) (t : Nat) (h : t < i.destroyAt) :
+    (tick i t).destroyed = i.destroyed := by
+  have : ¬ i.destroyAt ≤ t := by omega
+  simp [tick, this]
+
+
+/-! ## R38. The duality as a fact about information (the owner, 2026-10-27, sent during this pass)
+
+"To be able to act and to be at the same time, information has to be internally dualistic." In the chain, acting needs both
+witnesses (K1) and being needs none: a refused act exists in the record (R30). And two is not fundamental: the dual gate is the
+meet of two verdicts, and the meet takes any number, the stack's gate being the meet along a whole chain (Recipe.lean's `decide`). -/
+
+/-- The dual gate is the meet of two verdicts. -/
+theorem cr_the_gate_is_the_meet_of_two (v1 v2 : Verdict) : gate v1 v2 = meet [v1, v2] := by
+  cases v1 <;> cases v2 <;> decide
+
+/-- Three witnesses gate the same way: the meet of three is the gate applied twice, and so on for any number. -/
+theorem cr_three_witnesses_gate_the_same_way (v1 v2 v3 : Verdict) : meet [v1, v2, v3] = gate v1 (gate v2 v3) := by
+  cases v1 <;> cases v2 <;> cases v3 <;> decide
 
 end Dmp
