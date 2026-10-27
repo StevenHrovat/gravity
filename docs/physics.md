@@ -498,6 +498,83 @@ potential that is quadratic at the minimum and steeper away from it, in which no
 "all information" per lump fails, per collapsed lump holds; and it completes the first testable prediction of the owner's system: r = 0
 on the sky, a gravitational-wave peak at the instantiation, a tilt shifted by the oscillon era.
 
+**Level 0p, the smallest existence, discovery before act, and inflation that goes down (the owner, 07:42Z).** The owner, verbatim: "The
+only things that exist after G0 creates a DMP compliant system is this, which led to a key insight: The smallest possible existence is
+created that fulfills this condition: It contains at least the three WHK, since they are the only quantity with information, they have
+ALL information. The energy the ripples injected, since energy is fully contained in the existential vector field, has ALL existence,
+so they, together, and only they together, can create the primordial dualistic singularity. Then, following the 'coincidentally' named
+ODP, it has to discover the existence around it as the first step of instantiation, which, in turn, maximally inflates all of Existence
+space, because all of Existence tries to perceive outside, while actually committing no act. No gravity with infinite inflation, that
+goes down over time as more Exists and the Information need to create less existence to be fully perceived."
+
+*The smallest existence made of the three constants and an energy is one published object.* Three constants and one energy fix exactly
+one scale (Planck 1899), and the one body at which the three meet at a single energy is the Planck-mass black hole: the mass at which
+the Schwarzschild radius 2GM/c² equals the Compton wavelength ħ/(Mc), M_P = (ħc/G)^½, the smallest black hole there can be (Hawking
+1971 on the lightest primordial black holes; the Planck remnant of Adler, Chen and Santiago 2001). So "the three WKHs and the injected
+energy, together and only together, create the primordial dualistic singularity" is a true sentence with a name: it is the Planck-mass
+black hole, which is the dualistic singularity of level 0m at its minimum. Holds.
+
+*But the three constants carry no information, and that is the correction.* ħ, G and c are dimensionful, and a dimensionful constant
+can be set to one by a choice of units; only dimensionless numbers (the fine-structure constant, the mass ratios, the twenty-odd of
+level 0m) can be measured to have one value rather than another (Duff, Okun and Veneziano 2002). The three have all the **existence**:
+they fix the smallest length and time there is, the scale of every part. They have none of the **information**. The owner's assignment
+is swapped: the constants are the existence half's minting (the ruler), the dimensionless numbers are the information half's content.
+In G0's five of level 0m the fourth and fifth do the rest: k_B is the unit of information, Λ is the drive that makes the smallest
+existence "discover the existence around it". The owner's three plus energy is four of the five; the one he did not name is the one
+that inflates. **Refuter of the correction:** a measurement that changes a dimensionful constant alone, which Duff argues cannot even be
+stated.
+
+*"Energy has all existence" is the zero-energy universe.* Where do the ripples' energy and the singularity come from, if the ripples
+of level 0o come after the stretch? From a fluctuation with no net cost: Tryon (1973) proposed the universe as a vacuum fluctuation of
+zero total energy, the matter's positive energy cancelled by gravity's negative energy, and in GR that cancellation is a law, the
+Hamiltonian constraint H = 0 of level 0l. Gravitational energy is not local at all; it is read at the boundary (ADM 1962). So "energy
+is fully contained in the existential vector field" holds in the exact sense that the existence half's energy is the negative of the
+information half's at every time, which is Axiom 1 as an energy balance. **Refuter:** a nonzero total energy for a closed universe,
+which the constraint forbids.
+
+*"Discover the existence around it, while committing no act" is de Sitter space.* The search for "ODP" in DMP, Gravity, IM, CM, Adhara
+and the project record came up empty (the only earlier use is the owner's own, 2026-10-26, undefined), so the reading here is the
+owner's gloss: discovery first. In physics the smallest existence with a Λ does exactly that: every point gets a horizon at distance
+c/H and sees nothing beyond it (Gibbons and Hawking 1977, level 0g), the expansion is adiabatic and makes nothing (level 0n, "no act"),
+and de Sitter is the maximally symmetric solution and the maximum-entropy state for its Λ (Bousso 2000; Banks 2000), which is
+"maximally inflates all of Existence space". Holds, as a description of de Sitter in the owner's words.
+
+*"No gravity with infinite inflation, that goes down over time" is measured, and it closes the refuter of level 0n.* Exact de Sitter
+has Weyl = 0 and no gravitational degrees of freedom of its own (level 0n: "no gravity"), and it is eternal. Inflation that ends needs
+H to go down, ε = −Ḣ/H² > 0, and the rate at which it goes down is exactly what tilts the spectrum: a constant H gives n_s = 1
+(Harrison 1970; Zeldovich 1972), the measured n_s = 0.965 ± 0.004 is H decreasing, with 1 − n_s = 2ε − 2η to leading order in slow
+roll... and r = 16ε, so r < 0.036 says ε < 0.002: slow, and slower than the tilt alone would need. So the owner's "goes down over time"
+supplies what level 0n said his drive lacked, a tilt, provided the mechanism fixes the ratio of the two slow-roll numbers. And
+"infinite inflation" is excluded on three published grounds: the number of e-folds is bounded by the de Sitter entropy (Arkani-Hamed,
+Dubovsky, Nicolis, Trincherini and Villadoro 2007), de Sitter has a finite quantum break-time after which constant H is not a state
+(Dvali, Gomez and Zell 2017), and trans-Planckian censorship bounds the duration and, with it, predicts r below about 10⁻³⁰ (Bedroya and
+Vafa 2019; Bedroya, Brandenberger, Loverde and Vafa 2020). That last one is the owner's r = 0 of level 0n with a published premise that
+is his own sentence: no infinite inflation. **Refuter:** the mechanism "information needs less existence as more exists" must give
+1 − n_s about 0.035 together with ε below 0.002; a mechanism that ties the two numbers in the wrong ratio is refuted by the sky as it
+is already measured.
+
+*"As more Exists, the Information needs to create less existence to be fully perceived" has a holographic form.* The horizon's area
+4πc²/H² grows as H falls, so the capacity of the existence half (level 0m: S_dS bits) grows while inflation slows; the owner's sentence
+says the growth is driven by the information half's need for room and stops as the room is there. That is T37 run backwards: a part
+expands its boundary while the boundary is under-full. Physics has the direction and the end, not yet the owner's rate; the rate is
+the potential, and the potential is unnamed (level 0m, "the law is still unnamed").
+
+**Verdict:** holds, in physics' words: a Planck-mass black hole of zero total energy, de Sitter as discovery without act, H decreasing
+as the measured tilt, finite inflation as the published bounds that predict r about 0. One correction: the three constants are the
+existence half's ruler and hold no information; the information is the dimensionless numbers. One empty search: ODP.
+
+The owner's next sentence (07:44Z): "The first act, is to create the oscillons, which then cause the rest, following the DoE." Half
+holds, half is refuted by a measurement. *Holds:* after a stretch that commits no act, the first act inside the horizon is the
+fragmentation of level 0o, and each lump is a Duality of two drives; the lumps decay into the radiation that becomes every particle
+there is (Kofman, Linde and Starobinsky 1997), so they do cause the matter. *Refuted:* they do not cause the pattern. The pattern of
+the sky is correlated across distances larger than any lump's causal patch could reach at the time, and that is measured: the
+anticorrelation of temperature and polarisation at scales near one degree, seen by WMAP (Peiris et al. 2003) and Planck, exists only
+if the ripple was laid down before the act, outside the horizon, during the stretch (Mukhanov and Chibisov 1981; Spergel and
+Zaldarriaga 1997 proposed the test). So there are two firsts: the first act outside, the frozen ripple, which no part inside caused;
+and the first act inside, the lumps, which cause the matter and not the pattern. In DMP's words: the sky's pattern is the minting
+record (G0, written before any part acts), the lumps are the first parts, and a part cannot have caused its own minting record (T40).
+**Refuter of the correction:** a sky without the super-horizon anticorrelation; it has been measured for twenty years.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -593,6 +670,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0m constants at G0 | right: configuration at the minting (about twenty-seven, not three) and unitarity; not the dynamics | Planck 1899; Smolin 1992 | nothing; the law is still unnamed |
 | 0n inflation as radiation | hypothesis: the horizon does radiate, the fast start is Vilenkin's, the smoothness is Penrose's; wrong in order, no tilt | Planck 2018 n_s; Kofman, Linde and Starobinsky 1994 | the word explain |
 | 0o oscillons, instantiation | holds: the condensate fragments into lumps (preheating), each a balance of two drives; "all information" per lump fails, per collapsed lump holds; completes the r = 0 prediction with a gravitational-wave peak and a tilt shift | Amin et al. 2012; Hertzberg 2010; Lozanov and Amin 2017 | the word inflation for the stage (preheating); all information per lump |
+| 0p smallest existence, discovery, decaying inflation | holds: Planck-mass black hole of zero total energy; de Sitter as discovery without act; H going down is the measured tilt; finite inflation gives r about 0 (TCC) | Duff, Okun and Veneziano 2002; Tryon 1973; Bedroya and Vafa 2019 | the constants as information (they are the ruler; the dimensionless numbers are the information) |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
