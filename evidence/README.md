@@ -38,6 +38,7 @@ laws K0 to K4 do and proves what the gravitational wave test needs of every comp
 | `BreakC3.lean` | C3 (part 2) | the break model: under the axioms as modelled in Gate.lean and Record.lean a delivery to a part not trusted for the value's class passes the gate and is performed and recorded, because the gate's signature has no class; Flow.lean's shield refuses the same delivery |
 | `Routes.lean` | T8b, C18, C25 (part 2, finding F24) | the no-lockout clause in the smallest model with a route: an act that would remove a half's last route for an action is refused, after any single act every half keeps a route it had, and the known gaps only shrink |
 | `BreakC25.lean` | T8b, C18, C25 (part 2) | the break model: under T16 as modelled one witness lowers a route count from one to zero and nothing refuses it; with routes modelled the same act is refused |
+| `NoGo.lean` | docs/qg-attempt.md: the owner's approach tried on quantum gravity (2026-10-27) | the four theorems that stop it: the field of the axioms is isolated (a refresh changes no other standing's term; isolated is the negation of coupled, and a gravitational field is coupled), the gate is a local deterministic model and obeys the CHSH bound (Bell), no single temperature relates the potential's drop to the record's growth (no equation of state), and a spanning field fixes a probability space's support and not its measure |
 
 Parameters are thousandths (`0.33` is `330`): "we only have to adjust very small decimal values" (the owner, 2026-10-26).
 
