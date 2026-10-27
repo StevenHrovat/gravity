@@ -74,7 +74,9 @@ Typos in the preface stay as written until the owner says otherwise ("subet", "a
 
 - **G1.** Every reviewer is back. The two final fault verifications are in (Opus #26, Fable #27; consolidated in `consolidation.md`).
   Still missing: the GLM-5.3 verification (Z code, `out\qg-verify\VERDICT.md`, to be collected as a draft gravity PR).
-- **G2.** The preface's sentence on four adversarial reviews is true when the paper goes out (the owner, 17:40Z).
+- **G2.** The preface's sentence on the reviews is true when the paper goes out (the owner, 17:40Z). The owner replaced it at 18:23Z:
+  "Final review: One less win, 2s1t not DMP-complete. Credit Opus, GLM-5.3, Opus, Fable through Sirius, with direction assistance by
+  Steven." True once the GLM-5.3 record is in (G1).
 - **G3.** Every finding that can be closed is closed; the paper is corrected once, against all of them.
 - **G4.** The repositories hold at least everything needed to verify the paper (the owner, 17:40Z): the drafts this paper cites (#24's
   check [7] and `Blind.lean`, the review records) are merged or pinned by commit, and the repositories are public.
