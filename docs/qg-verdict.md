@@ -264,7 +264,7 @@ into one unit, a Duality, and the flux quantum h/2e measures that unit's charge 
 and Schrieffer 1957) is a gate that refuses every scattering act cheaper than breaking a pair, so no act happens and no resistance
 appears. A superconductor is a condensate of Dualities whose gate refuses every act below the cost of breaking one.
 
-**Tally after integration.** Of thirteen conflicts: six integrated (Q1, Q2, Q4, Q7, Q11, and Q3 half), two halves (Q5, Q13), one open
+**Tally after integration.** Of thirteen conflicts: five integrated (Q1, Q2, Q4, Q7, Q11), three halves (Q3, Q5, Q13), one open
 (Q6), three not integrated (Q8, Q9 as written, Q10), one conceded (Q12). Of eight divergences: three integrated (D3, D5, D8), five stand.
 None of this touches section 4: the wall is Observability, and the verdict stays CAN NOT for our universe.
 
