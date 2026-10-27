@@ -303,6 +303,28 @@ consistency and not a derivation (with the Hubble radius as the cutoff the energ
 version needs the future event horizon, which is Λ again). And it is the universe's lowest quantum, not gravity's: nothing in it says what the
 existence field's own quantum does at the Planck scale, the other end of the same horizon.
 
+The owner's rebuttal (2026-10-27): "You are provably wrong: gravity is simply what we call the warping of the existence dimension. [...] if you
+take my model and plug in the layers of information that are possible (the universal forces, because what is force but information given
+existence at a specified point in space and time) within our current existence, the warping of the resulting existence space is what we call
+gravity. Beings one layer up the information decay chain might have called it Bruce." Taken as the reading of the first axiom, "interacts
+with existence" means "warps it", and then the flat world above is excluded: an axiom that says information warps existence is false of a
+world where it does not. That much is conceded and recorded (`NoGoAxioms.lean` section 2, `strong_axioms_exclude_no_gravity`). What the
+stronger reading buys is this. First, the warping is now in the axiom by hand: that existence is warped by information is stipulated, not
+derived, and a stipulation that gravity exists is what every theory of gravity begins with, Newton's included. Second, the law is still free.
+A warping of existence by information can be a scalar, one number per point (Nordstroem 1913), or a tensor, the metric (Einstein 1915); the
+axioms admit both (`strong_axioms_admit_scalar_and_tensor`), and the sky chose: the scalar theory bends no light, and light bends by 1.75
+arcseconds at the Sun's limb (Dyson, Eddington and Davidson 1920). Add what the axioms do not say, that existence is a metric, that its
+dynamics is second order and that what is conserved locally sources it, and Lovelock's theorem (1971) makes the law Einstein's with two
+constants left free, G and Λ (`strong_axioms_do_not_fix_the_constant`). That is the honest best case for the owner's sentence: it is general
+relativity's own idea, that gravity is not a force but the geometry of existence warped by what it holds, and it reaches Einstein's equation
+only with Lovelock's assumptions added and two numbers put in. Third, and this is where quantum gravity lives: the information plugged in is
+quantum, and a warping by quantum information is the open problem. Warping by the average of the information, the semiclassical equation, is
+ruled out as a fundamental law by argument and by experiment (Eppley and Hannah 1977; Page and Geilker 1981); warping branch by branch means
+the warping itself is quantum, which is the graviton route and its infinities (4.11). "Plug in the forces and read off the warping" is the
+classical limit, and quantum gravity is the regime in which that reading fails. On Bruce: a name can be swapped when nothing is behind it, and
+a warping of existence can be called Bruce. Gravity is a warping with numbers behind it: 1.75 arcseconds at the Sun, 43 arcseconds a century
+for Mercury, waves at the speed of light with two polarisations. The axioms give Bruce. Einstein gives gravity.
+
 The verdict for this section: a consistent frame that physics satisfies, and for that reason not a theory of anything in particular. It is
 satisfied by worlds with gravity and without, with Einstein's law and with Newton's, so it derives no gravity; a quantum gravity would have to
 begin where it leaves off, with a law for the existence field's own quantum.
@@ -318,8 +340,8 @@ owner's rate-limited expansion it keeps its true half, the budget as the rate li
 while supplying no cause (4.9); modelled as the owner's extension itself, a bound, a field, carriers and a push, it is the de Sitter horizon
 with holographic equipartition, real physics that takes Λ as its input and leaves the horizon's degrees of freedom unnamed, a cosmology and not
 a quantum gravity (4.10); read as the quantum of a duality of existence and information it is gauge theory, complementarity and inflation in
-the owner's words, with a unique past that its own dissolving quantum forbids and the quantum of the existence field unasked (4.11); and the axioms as finally stated are satisfied by a world without gravity, so they
-entail none (4.12). The first two are
+the owner's words, with a unique past that its own dissolving quantum forbids and the quantum of the existence field unasked (4.11); and the axioms as finally stated are satisfied by a world without gravity, and read as
+stipulating the warping they fix neither its law nor its constant, so they entail a warping with a name and not gravity with its numbers (4.12). The first two are
 not shortfalls of the instantiation but consequences of the axioms: member isolation and the frame rule forbid coupling, and the second axiom
 is local realism. Each would have to be given up for the approach to work, and giving either up gives up DMP: without isolation there is no
 containment, without local verification there is no Axiom 2.
@@ -333,5 +355,5 @@ owner has come: it reaches the classical horizon and stops where every emergent-
 
 Section 3 stands, and it is DMP's: a self-propagating duality under a field has a second law, a Lyapunov potential, an equilibrium, a horizon
 that leaks only counts and a boundary-set capacity. That is a theory of trusted infrastructure with the shape of black-hole thermodynamics,
-proven in 337 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
+proven in 340 theorems. It is a good thing to have proven. It is not a theory of gravity, quantum or classical, and the four theorems above
 are the reason.

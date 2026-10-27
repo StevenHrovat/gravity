@@ -43,4 +43,46 @@ theorem axioms_do_not_fix_gravity : ¬ (∀ w w' : World, satisfiesAxioms w → 
   have := h ⟨3, true, true, true, 0⟩ ⟨3, true, true, true, 1⟩ ⟨rfl, rfl, rfl, rfl⟩ ⟨rfl, rfl, rfl, rfl⟩
   exact Nat.zero_ne_one this
 
+/-! ## 2. The owner's reading: "interacts with existence" means "warps it"
+
+The owner's rebuttal (2026-10-27): "Gravity is simply what we call the warping of the existence dimension. [...] plug in the layers of
+information that are possible (the universal forces) within our current existence, the warping of the resulting existence space is what we
+call gravity. Beings one layer up the information decay chain might have called it Bruce." So the first axiom is read strongly: information
+warps the existence it occupies, a coupling greater than zero. The gravity-free world of section 1 is then excluded, by stipulation
+(`strong_axioms_exclude_no_gravity`). What stays free is everything that makes gravity gravity rather than Bruce: the law of the warping,
+scalar (Nordstroem 1913, which bends no light) or tensor (Einstein 1915, 1.75 arcseconds at the Sun), and its constant
+(`strong_axioms_admit_scalar_and_tensor`, `strong_axioms_do_not_fix_the_constant`). With a metric, second-order dynamics and local
+conservation added, Lovelock (1971) makes the law Einstein's with G and Λ free; nothing in the axioms adds them. -/
+
+/-- The two shapes a warping of existence by information can take. -/
+inductive Warping where
+  | scalar
+  | tensor
+  deriving DecidableEq
+
+/-- A world under the strong reading: the axioms, and the law of the warping. -/
+structure WarpedWorld where
+  axioms : World
+  law : Warping
+
+/-- The strong reading: the axioms, and information warps existence (the coupling is not zero). -/
+def satisfiesStrongAxioms (w : WarpedWorld) : Prop := satisfiesAxioms w.axioms ∧ 0 < w.axioms.G
+
+/-- Under the strong reading the gravity-free world is excluded, by the stipulation itself. -/
+theorem strong_axioms_exclude_no_gravity (w : WarpedWorld) (h : satisfiesStrongAxioms w) : w.axioms.G ≠ 0 := by
+  have := h.2
+  omega
+
+/-- The strong reading admits a scalar warping and a tensor warping alike: the law is not fixed, and the sky had to choose. -/
+theorem strong_axioms_admit_scalar_and_tensor :
+    (∃ w, satisfiesStrongAxioms w ∧ w.law = .scalar) ∧ (∃ w, satisfiesStrongAxioms w ∧ w.law = .tensor) :=
+  ⟨⟨⟨⟨3, true, true, true, 1⟩, .scalar⟩, ⟨⟨rfl, rfl, rfl, rfl⟩, Nat.zero_lt_one⟩, rfl⟩,
+   ⟨⟨⟨3, true, true, true, 1⟩, .tensor⟩, ⟨⟨rfl, rfl, rfl, rfl⟩, Nat.zero_lt_one⟩, rfl⟩⟩
+
+/-- Even with the law fixed, the constant is not: two worlds with the same warping and different couplings satisfy the strong reading. -/
+theorem strong_axioms_do_not_fix_the_constant :
+    ∃ w w' : WarpedWorld, satisfiesStrongAxioms w ∧ satisfiesStrongAxioms w' ∧ w.law = w'.law ∧ w.axioms.G ≠ w'.axioms.G :=
+  ⟨⟨⟨3, true, true, true, 1⟩, .tensor⟩, ⟨⟨3, true, true, true, 2⟩, .tensor⟩,
+   ⟨⟨rfl, rfl, rfl, rfl⟩, Nat.zero_lt_one⟩, ⟨⟨rfl, rfl, rfl, rfl⟩, by decide⟩, rfl, by decide⟩
+
 end Dmp
