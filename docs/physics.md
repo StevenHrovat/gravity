@@ -631,6 +631,64 @@ universality) and its upward claim is asymptotic safety, measured once, not yet 
 per layer; the existence half's ruler is the one key. **Refuter of the whole level:** a coupling that does not run, which no measured
 coupling is.
 
+**Level 0r, the owner's answers to the four open items (07:56Z).** Asked "what still does not hold?", the pass named four things (the
+fork, the law's rate, time, the area bound). The owner answered each. Verbatim and tested, in his order.
+
+*1, the fork.* "The only Existence that does not need a link to G0 is the primordial duality, which already executes a known act."
+Read as an answer to Bell: the two halves are never isolated, because every part but the first is linked to G0 and so shares a common
+origin. That is one of the two published ways around Bell's bound, and both are closed. A shared **classical** record from the origin is
+a local hidden variable (Bell's socks, 1981): it gives correlation, never CHSH above 2, so it is the isolated branch with a longer
+history. A shared origin that fixes the **measurement choices** as well as the outcomes is superdeterminism (Bell 1985 on free
+variables; Hossenfelder and Palmer 2020), which does beat the bound, at the price of a common cause that carries the settings of every
+later experiment. The cosmic Bell tests push any such cause back to before the light of quasars left, seven billion years and more
+(Rauch et al. 2018), that is, to the primordial duality itself, and the owner's own level 0p closes that door: the first act carries
+no information but its existence, and a cause with no information cannot carry the settings. What remains is a shared **quantum**
+state from the origin, which is entanglement, the entangled branch, and the hash of level 0q is classical across every layer, so the
+state does not survive the descent. **Verdict:** does not close the fork; it names its two escapes, one of which the owner's own first
+act refutes. **Refuter of the superdeterministic reading:** the cosmic Bell tests, already run.
+
+*2, the law's rate.* "It should not, as that depends on the instant. Our instant can instead be measured and compared to see if the
+universe behaves in a DMP compliant way, thus giving stong evidence. Abolute proof requires abolute authority, which only G0 holds."
+Holds as a stance, and it is the stance physics already takes: the inflaton's potential is not derived from a principle, it is fitted
+to the sky (Planck 2018's model comparison), which makes it configuration, level 0m. The price is that a theory which fixes no number
+is not refuted by that number. What a theory of the shape still owes is the relations that hold for **every** instant, and inflation has
+two: the single-field consistency relation r = −8 n_t between the tensor amplitude and the tensor tilt (Liddle and Lyth 1992), and
+Maldacena's condition f_NL = (5/12)(1 − n_s) on the squeezed non-Gaussianity (Maldacena 2003). Both are independent of the potential,
+both are the owner's "measured and compared", and the second is already consistent with the sky (level 0p). "Absolute proof requires
+absolute authority, which only G0 holds" is level 0l's Goedel: the instance cannot prove its own minting. **Verdict:** holds; the
+compliance tests exist and are named. **Refuter:** a sky that breaks either relation, which would mean more than one field in the
+first act, against level 0p's "always the same".
+
+*3, time.* "Same as 2, the generalization leaves the arrow on the scalar field component of the Existence vector open on purpose,
+because both 'forwards' and 'backwards' can equally exist." Two different questions were conflated, the arrow and the clock. The
+arrow: the owner's sentence is a published shape, the Janus point (Barbour, Koslowski and Mercati 2014): a time-symmetric law with a
+central state of least structure from which an arrow points away in both directions, each side calling its own direction forward, and
+that central state is G0's minting (level 0m, Penrose's low-entropy start). It holds for the existence half exactly: gravity's law is
+time-symmetric. It fails by a measured amount for the information half: the weak force violates T (Christenson, Cronin, Fitch and Turlay
+1964 through CPT; measured directly by BaBar 2012), so "both can equally exist" is false for one force by a small, known number, and
+true only for the whole under CPT. The clock: leaving the arrow open does not make a clock, and the problem of time (level 0l) is the
+absence of a clock in the constraint, not of an arrow. That one stays open, with Page and Wootters as its known resolution and the
+fork as its known cost. **Verdict:** the arrow holds (Janus point, with T violation as the information half's exception); the clock is
+not answered.
+
+*4, the area bound.* "If all usable information is destroyed while crossing an event horizon and an event horizon is itself a border
+between Existences, then there is no more to explore but in and out, as there IS no more." The premise is refuted: information is not
+destroyed at a horizon, it is scrambled and conserved. Only the classical hairs are lost to the outside (no hair, level 7); the rest
+comes back in the radiation after the Page time (Page 1993), having been scrambled in a time of order the logarithm of the entropy
+(Hayden and Preskill 2007; Sekino and Susskind 2008), and the island computations of 2019 reproduce that curve from gravity itself.
+"Destroyed" was Hawking's 1976 position and he withdrew it in 2004. The conclusion, read as the owner means it ("there IS no more":
+the inside has no existence beyond what the border holds), is exactly holography ('t Hooft 1993; Susskind 1995): the interior is
+encoded on the boundary, and that is the content bound, S ≤ A/4, that level 7 says DMP lacks. So the owner's answer does close item 4,
+but only by adopting the bound, and T38 as written contradicts it (every layer its own Duality, its own budget, the interior unbounded
+by the boundary). The amendment this reading needs, as a candidate for the owner's words and not DMP text: *a layer's content is bounded
+by the capacity of its boundary; a layer whose content exceeds it has already collapsed (T37).* **Verdict:** the premise fails, the
+conclusion holds as holography, and holding it costs a change to T38. **Refuter of the amended form:** a black hole whose entropy
+exceeds its area over four, which no known object does.
+
+**Summary of the four.** One closed at the price of a DMP change (the area bound, T38), one held with its tests named (the rate; the
+consistency relations), one half held (the arrow, not the clock), one not closed (the fork; its escapes refuted, one by the owner's own
+first act).
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -728,6 +786,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0o oscillons, instantiation | holds: the condensate fragments into lumps (preheating), each a balance of two drives; "all information" per lump fails, per collapsed lump holds; completes the r = 0 prediction with a gravitational-wave peak and a tilt shift | Amin et al. 2012; Hertzberg 2010; Lozanov and Amin 2017 | the word inflation for the stage (preheating); all information per lump |
 | 0p smallest existence, discovery, decaying inflation | holds: Planck-mass black hole of zero total energy; de Sitter as discovery without act; H going down is the measured tilt; finite inflation gives r about 0 (TCC) | Duff, Okun and Veneziano 2002; Tryon 1973; Bedroya and Vafa 2019 | the constants as information (they are the ruler; the dimensionless numbers are the information) |
 | 0q existence hashes the forces | holds: the renormalisation group; the hash is Wilson's coarse-graining (downward, many-to-one, universality); upward it is unification (SM couplings do not meet) or asymptotic safety (fixed point unproven, Higgs mass predicted) | Wilson 1971; Amaldi, de Boer and Fuerstenau 1991; Shaposhnikov and Wetterich 2010 | nothing; the fixed point is the open question |
+| 0r the four answers | fork: not closed (common origin = socks or superdeterminism, both refuted); rate: holds, consistency relations are the tests; arrow: holds (Janus point), clock: open; area bound: premise refuted, conclusion = holography, closes level 7 only with a change to T38 | Rauch et al. 2018; Maldacena 2003; Barbour, Koslowski and Mercati 2014; Page 1993 | T38 as written, to gain the area bound |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
