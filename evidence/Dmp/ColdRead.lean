@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R33
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R34
 below are the labels of its table rows.
 -/
 
@@ -897,5 +897,41 @@ theorem cr_every_line_descends_from_a_minted_root (fcl : List FailureClass) (r :
 theorem cr_the_root_is_minted_by_assumption (fcl : List FailureClass) (r : Recipe) (j : Nat) (hj : j < r.n)
     (hroot : (r.line j).parent = none) : r.wf fcl → (r.line j).dot.minted fcl :=
   fun hwf => r.root_minted fcl hwf j hj hroot
+
+
+/-! ## R34. Infinite density at G0 (the owner, 2026-10-27, sent during this pass)
+
+"Least information yes, but infinite information density, which is normally not possible." A density needs a measure, and the
+chain has one candidate only: mass per hop. A root has depth zero and carries the whole recipe, so its mass per hop is a division
+by zero, which the kernel's own arithmetic makes zero, not infinity. "Infinite" is a reading of an undefined quotient. -/
+
+/-- A root has depth zero: its chain is itself alone. -/
+theorem cr_root_has_depth_zero (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (j : Nat) (hj : j < r.n)
+    (hroot : (r.line j).parent = none) : r.depth j = 0 := by
+  unfold Recipe.depth
+  rw [Recipe.chain_unfold fcl r hwf j hj]
+  simp [hroot]
+
+/-- Layout A's root carries the whole recipe at depth zero, and mass per hop there is a division by zero: zero in the kernel's
+    arithmetic, infinite in no arithmetic. -/
+theorem cr_density_at_the_root_is_a_division_by_zero :
+    Layouts.layoutA.depth 0 = 0 ∧ Layouts.layoutA.mass 0 = 4 ∧ Layouts.layoutA.mass 0 / Layouts.layoutA.depth 0 = 0 := by
+  decide
+
+
+/-- "All the information about the White Key Holders put into one quantum of existence": five parts in one quantum are one part,
+    and a Duality whose halves are one part is no Duality (Layer.lean's `same_part_is_no_duality`): the collapse, not the ground. -/
+theorem cr_one_quantum_holds_no_duality (fcl : List FailureClass) (w : Witness) : ¬ (DoT.mk w w).minted fcl :=
+  same_part_is_no_duality fcl w
+
+/-- "Thus the three in one": DMP's three in one is the privacy singularity, a cluster of at least three nodes answering as one half,
+    and in a well-formed recipe a singularity always has a parent. It is laid under a galaxy, never at the root, never at G0. -/
+theorem cr_three_in_one_is_never_the_root (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (i : Nat) (hi : i < r.n)
+    (hk : (r.line i).kind = .singularity) : (r.line i).parent ≠ none := by
+  have hok := (hwf i hi).1
+  intro hp
+  rw [hp] at hok
+  rw [hk] at hok
+  cases hok
 
 end Dmp
