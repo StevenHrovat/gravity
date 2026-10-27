@@ -76,6 +76,24 @@ monogamy as its exclusivity; that is the tensor-network form of holography, publ
 verification is gone, so it is no longer DMP. **Refuter:** a hierarchy of isolated, locally verified links from which a geometry
 follows; `dmp_field_uncoupled` says the field of such links couples nothing.
 
+**Level 0c, the majority (the owner, 06:53Z).** *Holds on the quantum side, where it is forced; on DMP's side it is a trade, not a
+gain.* The owner: "Maybe the DoE is not made up from one information layer from each side, but instead each field also is its own
+layer, with routing the internal network freely possible and freely composable. This would be axiomatically more consistent as well and
+introduce a Majority of Existence type situation, instead of a Duality type." On the entangled branch this is the better statement of
+level 0b, and the quantum forces its shape: in a holographic code a bulk degree of freedom exists (is recoverable) from any boundary
+region that is large enough, and never from two disjoint regions at once, because recovering it twice would clone it; so every
+authorized set is a majority (Cleve, Gottesman and Lo 1999 for quantum secret sharing; Almheiri, Dong and Harlow 2015 for the bulk).
+The pentagon code of Pastawski, Yoshida, Harlow and Preskill is literally "any three of five", and its tiling is the owner's free
+composition of layers. Majority of existence is a theorem of quantum information; in a classical quorum (Shamir 1979; Malkhi and Reiter
+1998) the threshold is a choice. Two limits. First, the fork stands: a majority of isolated, locally deciding witnesses is one more local
+judge, and `NoGo.gate_obeys_chsh` holds for every judge, so the majority is quantum only on the entangled branch. Second, inside DMP the
+change is a loosening: Axiom 1 is unanimity of two typed halves (the stricter answer stands, no element overrules the other), and a
+majority across layers lets a layer be overruled. DMP already holds both shapes where each belongs: a majority inside a half (a cluster
+of at least three nodes, T8a; at least five parts at the minting, G0) and unanimity across the two types. **Recommendation:** keep that
+placement, majority within a type and unanimity across the two types; flattening it to one majority buys availability and sells the gate.
+**Refuter of the quantum claim:** a quantum code in which two disjoint boundary regions both recover the same bulk qubit; no-cloning says
+there is none.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -157,6 +175,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 |---|---|---|---|
 | 0 words | holds, one of six postulates | Chiribella, D'Ariano and Perinotti 2011 | nothing; five postulates to add |
 | 0b arena | holds, needed; picks the entangled branch | van Raamsdonk 2010; Swingle 2012; the HaPPY code 2015 | local verification, if the branch is taken |
+| 0c majority | holds on the quantum side, forced by no-cloning; a loosening inside DMP | Cleve, Gottesman and Lo 1999; Almheiri, Dong and Harlow 2015 | nothing on the quantum side; the gate, if flattened in DMP |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
