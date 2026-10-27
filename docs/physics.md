@@ -142,6 +142,21 @@ code, whose five are symmetric (it is cyclic); the honest reading of "2:2 plus t
 four parts whose two syndrome bits leak, and the five of G0 stays the correcting core of level 0d. **Refuter:** a leak of the wiring that
 carries content: the code distance, the no-hair theorem and T31 each forbid it in their domain.
 
+**Level 0f, entanglement as a dynamic function between equal shares (the owner, 07:00Z).** *Holds twice as a theorem, and the second
+theorem is the one that reaches gravity.* "Equal shares" is forced: for any pure state of two parts the Schmidt decomposition gives both
+parts the same entanglement entropy, S(A) = S(B), whatever the parts' sizes (Schmidt 1907; Nielsen and Chuang 2000, theorem 2.7). The
+balance of Axiom 1, neither half holding more than the other, is an identity on the quantum side and work on DMP's side (the budget of
+level 7): that is the sharpest single difference between the two readings of the Duality. "Dynamic function": entanglement is a property
+of a state, generated and moved by the dynamics, and its motion has bounds (Lieb and Robinson 1972; the linear growth of Calabrese and
+Cardy 2005; the fast scrambling already cited). The theorem that matters: the first law of entanglement, δS = δ⟨H_mod⟩ (Blanco, Casini,
+Hung and Myers 2013), applied to every boundary ball of a holographic state, is equivalent to the linearised Einstein equations in the
+bulk (Lashkari, McDermott and Van Raamsdonk 2014; Faulkner, Guica, Hartman, Myers and Van Raamsdonk 2014). So "entanglement as a dynamic
+function between equal shares" produces gravity, to first order, as a published theorem, and it is the closest any sentence of this
+night comes to a quantum gravity: the dynamics of the information half, under the equal-shares identity, is the dynamics of the
+existence half. **Where it stops:** at first order (the non-linear equations need more than the first law), in anti-de Sitter space, and
+on the entangled branch, where the halves are not isolated and nothing is verified locally. **Refuter:** a pure two-part state whose
+halves carry unequal entanglement entropy; the Schmidt decomposition says there is none.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -226,6 +241,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0c majority | holds on the quantum side, forced by no-cloning; a loosening inside DMP | Cleve, Gottesman and Lo 1999; Almheiri, Dong and Harlow 2015 | nothing on the quantum side; the gate, if flattened in DMP |
 | 0d two pairs | holds as symmetry and detection; five corrects | the [[4,2,2]] and [[5,1,3]] codes; Lamport, Shostak and Pease 1982 | nothing; G0's five already carries it |
 | 0e the wiring leaks | holds as a theorem (syndrome, Hawking, the floor); derived in DMP, primitive in a code | Gottesman 1997; the no-hair theorem; T31 and T33 | nothing; the count of the words stays |
+| 0f entanglement dynamics | holds: equal shares by Schmidt, gravity to first order by the first law of entanglement | Faulkner, Guica, Hartman, Myers and Van Raamsdonk 2014 | isolation and local verification (the branch) |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
