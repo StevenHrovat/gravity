@@ -374,6 +374,19 @@ contain all information, and also has to create a starting balanced system with 
 **Refuter:** a derivation of G, ħ or c from the axioms; if one existed the constants would not be configuration and this level would be
 wrong in the other direction. None is known, in this system or in physics.
 
+The owner's follow-up (07:25Z): "Those two other things being the duality itself, maybe." Read as: the fourth and fifth White Key
+Holders are the two halves, one constant for the information side and one for the existence side. That reading has an exact physics
+form, and it closes the count at five. Planck's own list of natural units (1899) had four: ħ, G, c and **k_B**, Boltzmann's constant,
+the number that makes information a physical quantity (S = k_B ln W; Landauer's kT ln 2 per bit): the information half's constant. The
+existence half's constant is **Λ**, which sets the size of existence space, the de Sitter horizon (level 6; Gibbons and Hawking 1977).
+Those five, and no sixth, make one number: the entropy of the de Sitter horizon, S = 3π k_B c³ / (ħ G Λ), about 10¹²² bits, which is
+the bound on all information our universe can hold (Bousso 1999; Banks 2000), the verifying session's `two_ends_count_the_horizon`
+in physical units. So "five White Key Holders minted at G0, which must contain all information" is, with the owner's two halves as
+k_B and Λ, the sentence "ħ, G, c, k_B and Λ bound the information of existence at 3π k_B c³ / (ħ G Λ)", a published theorem with
+exactly five constants in it. The Standard Model's remaining parameters are then content inside the arena, not the arena, which is the
+right place for them in the owner's system (Axiom 3) and in physics (matter fields on a background). **Refuter:** a sixth constant in the
+capacity of existence; the de Sitter entropy has five. The caveat stands that this fixes the arena's capacity and still not its law.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
