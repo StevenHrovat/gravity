@@ -398,6 +398,47 @@ Hawking's no-boundary state (1983), which is G0's "stated, not derived" in physi
 horizon and no singularity, so the dualistic singularity is the origin, not the present. **Refuter:** an initial state with
 gravitational entropy as high as its matter entropy; the observed smoothness of the microwave background rules it out.
 
+**Level 0n, what the inside-and-outside proof closes, and inflation as radiation (the owner, 07:30Z).** The owner: "I have already
+proven the information black hole from the inside and outside, right? Does that close that finding?" and "Since one of it's three
+axioms is to self propagate, and a dualistic singularity is not able to do that while remaining locked to information, it should be
+expected to try to radiate all information away as fast as possible, explaining the fast initial inflation and the very smooth
+curvature."
+
+*What the two-sided proof closes.* On DMP's side the horizon is proven from outside (counts only: `Floor.road_gate`, `Entry.ext`) and
+from inside (one layout per signed state, `ms_one_layout`), and on the quantum side the two chains agree by entanglement wedge
+reconstruction (level 0c). That closes two of the brief's open questions: the ninth sentence's entropy split (outside maximal, inside
+minimal, a corollary and not a premise) and its min-cut question (the two optima are nested, section 4 item 1). It does not close the
+fork (level 3): on the quantum side both chains are built from entanglement, so the agreement is proven on the entangled branch and
+says nothing about an isolated pair. And it does not close level 7: DMP's interior stays unbounded by its boundary, which the quantum
+black hole's is not. Two closed, two open.
+
+*Inflation as the singularity radiating.* Tested against what inflation is (Guth 1981; Linde 1982; Albrecht and Steinhardt 1982) and
+what it has measured (Planck 2018: the spectral tilt n_s = 0.965 ± 0.004, the tensor ratio r < 0.036).
+
+- **The order is backwards.** Inflation does not radiate; it dilutes. The expansion is adiabatic, the universe ends inflation empty and
+  cold, and the radiation comes afterwards, at reheating, when the inflaton decays (Kofman, Linde and Starobinsky 1994). "Radiate all
+  information away as fast as possible" names reheating, which follows inflation, not inflation.
+- **What does radiate during inflation is the horizon, and it is the right object.** An inflating universe is quasi-de Sitter and its
+  horizon radiates at the Gibbons–Hawking temperature ħH/(2π k_B) (level 0m), fastest when H is largest, at the start; those horizon
+  fluctuations are the origin of every structure in the sky (Mukhanov and Chibisov 1981). Read so, "radiates as fast as possible" is a
+  true sentence about the inflationary horizon, with the leak rate set by H.
+- **"As fast as possible" has a published form and a rival.** Whether the universe starts with the largest H it can is the oldest open
+  argument about the initial state: the tunnelling wave function prefers the fastest inflation (Vilenkin 1982; Linde 1984), the
+  no-boundary state of level 0m prefers the slowest (Hartle and Hawking 1983). The owner's self-propagation reading sides with Vilenkin.
+  Neither is settled.
+- **"Explaining the smooth curvature" is Penrose's side, not inflation's.** Inflation stretches smoothness from a patch; Penrose (1979,
+  1989) argues it does not explain it, because a smooth start is a lower-entropy initial condition than inflation itself assumes, and the
+  smoothness is the Weyl curvature hypothesis, an initial condition, which is the dualistic singularity of level 0m. The owner's sentence
+  puts the smoothness in the singularity and the expansion in its drive, which is Penrose's position with a cause attached.
+- **The drive has no field and no number.** Inflation's rate is set by the inflaton's energy density (H² = 8πGρ/3), and its measured
+  signature is the tilt n_s and the ratio r. A drive to propagate gives no potential, no tilt and no ratio.
+
+**Verdict:** a hypothesis with its physics named (the horizon radiates, the fast-start preference, Penrose's initial condition), wrong in
+its order (radiation follows inflation) and empty where inflation is measured. **Refuter:** the measured tilt n_s = 0.965 ± 0.004;
+a mechanism that cannot produce it does not explain inflation, only wish for it. In DMP's words the sentence does hold: a singular
+pair cannot propagate without a minting (T-P, G0), and the field spreads from the pair outward (T32), which is the owner's "locked to
+information until it radiates".
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -491,6 +532,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0k authorisation downward | holds: causal set theory, order plus number is geometry; predicts Λ ~ 1/√N | Malament 1977; Bombelli, Lee, Meyer and Sorkin 1987; Rideout and Sorkin 2000 | nothing; the quantum dynamics is open |
 | 0l truth as existence | holds: closes Zeno (membership commutes with content), closes the converse; lands on the constraint picture | Tarski 1933; Dirac 1964; DeWitt 1967 | nothing; the next freeze is the problem of time, resolved by an internal clock (Page and Wootters 1983) |
 | 0m constants at G0 | right: configuration at the minting (about twenty-seven, not three) and unitarity; not the dynamics | Planck 1899; Smolin 1992 | nothing; the law is still unnamed |
+| 0n inflation as radiation | hypothesis: the horizon does radiate, the fast start is Vilenkin's, the smoothness is Penrose's; wrong in order, no tilt | Planck 2018 n_s; Kofman, Linde and Starobinsky 1994 | the word explain |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
