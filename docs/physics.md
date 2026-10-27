@@ -157,6 +157,32 @@ existence half. **Where it stops:** at first order (the non-linear equations nee
 on the entangled branch, where the halves are not isolated and nothing is verified locally. **Refuter:** a pure two-part state whose
 halves carry unequal entanglement entropy; the Schmidt decomposition says there is none.
 
+**Level 0g, where to push (the owner, 07:03Z: "Do we have any idea where to push further to get it to fit better?").** *One lever,
+in DMP's own words: the equilibrium is maintained, not given.* Everything that fits on the entangled branch fits as equilibrium
+thermodynamics, and the first law of level 0f stops at first order with the equilibrium assumed. DMP's distinctive sentences are about
+maintenance: a standing lapses unless re-verified (Axiom 2), the balance is work (Axiom 1), the median layout is kept by both halves
+(Axiom 3). Two published results sit exactly there and were not used above.
+
+1. **Entanglement equilibrium** (Jacobson 2016): from the hypothesis that the vacuum entanglement of every small causal diamond is
+   maximal, an equilibrium, the **full** non-linear Einstein equation follows, with Λ as an integration constant. The hypothesis is
+   Axiom 3's "by maintaining that state the information keeps its Duality stable" together with Axiom 1's balance, and it is the step
+   past first order that level 0f could not take.
+2. **The threshold theorem** (Aharonov and Ben-Or 1997; Knill, Laflamme and Zurek 1998; Kitaev 1997): a quantum code keeps its logical
+   content only while correction runs at a rate above the physical error rate. That is level 7's horizon held by work, with a quantum
+   name: the refresh budget r·W is the correction rate, a lapse is decoherence, the threshold is the Chandrasekhar line of section 4
+   item 2, and a code below threshold is T37's collapse.
+
+Joined, the system says in one sentence what physics states in two: *the equilibrium that gives gravity is held by correction at a
+rate, and the horizon is where the rate still suffices.* **Refuter:** Jacobson's equilibrium is a property of the ground state and
+needs no maintenance; if no rate enters the derivation at any order, the budget has no physics image and the fit ends at first order.
+Whether a rate enters is a real question and the one place this pass would ask a physicist: *does the entanglement-equilibrium
+derivation survive a finite correction rate, or does it need the ground state exactly?*
+
+A second, smaller place. Our universe is de Sitter, where holography is open, and the de Sitter horizon is observer-dependent: each
+observer has one (Gibbons and Hawking 1977). DMP's "inside" is per layer and per witness (the words), never global, and its boundary is
+drawn by a minting, not by the geometry. That is the one feature where DMP's shape matches de Sitter better than it matches anti-de
+Sitter, where the holographic results above are proven; nothing follows from it yet.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -242,6 +268,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0d two pairs | holds as symmetry and detection; five corrects | the [[4,2,2]] and [[5,1,3]] codes; Lamport, Shostak and Pease 1982 | nothing; G0's five already carries it |
 | 0e the wiring leaks | holds as a theorem (syndrome, Hawking, the floor); derived in DMP, primitive in a code | Gottesman 1997; the no-hair theorem; T31 and T33 | nothing; the count of the words stays |
 | 0f entanglement dynamics | holds: equal shares by Schmidt, gravity to first order by the first law of entanglement | Faulkner, Guica, Hartman, Myers and Van Raamsdonk 2014 | isolation and local verification (the branch) |
+| 0g where to push | the maintained equilibrium: Jacobson 2016 past first order, the threshold theorem for the budget | Jacobson 2016; Aharonov and Ben-Or 1997 | nothing yet; one question for a physicist |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
