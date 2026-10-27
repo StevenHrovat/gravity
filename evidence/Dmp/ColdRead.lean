@@ -16,7 +16,7 @@ A second, independent attack (C22: "proven" is an act with two witnesses) on the
 the owner's deductions of 2026-10-27, written blind to the first attack. Every declaration here carries the prefix `cr_` (or `Cr`),
 imports only files on `main`, and is named for what it proves. Nothing here changes DMP or the files it imports. Each section is a
 counter-model (the axioms as modelled hold and the claim fails), an arithmetic on record, or the statement of what an
-existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R32
+existing theorem does and does not say. The targets, steelmen, attacks and verdicts are in docs/cold-read-physics.md; the labels R1 to R33
 below are the labels of its table rows.
 -/
 
@@ -866,5 +866,36 @@ theorem cr_representation_without_a_dictionary_excludes_nothing (Model Obs : Typ
 /-- Over an empty observation set a representation exists only for an empty model. -/
 theorem cr_representing_the_unobserved_empties_the_model (Model : Type) (rep : Model → Empty) : Model → False :=
   fun m => (rep m).elim
+
+
+/-! ## R33. The generalized Duality and the proof at G0 (the owner, 2026-10-27, sent during this pass)
+
+"DoE = a generalized DoT. DoE can be derived by anything being on the direct dependency chain that started at G0. Nothing can ever
+be truly proven, as that possibility only exists with perfect information, which is only true at G0." At the grain of two witnesses
+there is nothing between a Duality and a collapse for a generalized Duality to be: a pair is minted, or one cause passes any act
+with good evidence alone. Everything on a chain from the root descends from a minted root, so "anything on the chain from G0" is
+every line of a well-formed recipe, the recipe itself under a new name. And "proven" is a verdict the chain reaches (R2,
+`cr_extended_layout_is_proven`), while the root's minting is the one thing it assumes and never derives. -/
+
+/-- A pair of witnesses is a minted Duality or collapses: one fail-prone set holds both halves and one influence passes any act
+    with good evidence alone. There is no third thing for a "generalized" pair to be. -/
+theorem cr_every_pair_is_a_duality_or_collapses (fcl : List FailureClass) (d : DoT) (judge : Witness → Evidence → Verdict)
+    (e1 e2 : Evidence) (t : Nat) (h1 : e1.ok t = true) (h2 : e2.ok t = true) :
+    d.minted fcl ∨ ∃ c ∈ person :: fcl, ∃ m, d.gate (bend c m (fun _ => .pass) judge) e1 e2 t = .pass := by
+  by_cases hm : d.minted fcl
+  · exact Or.inl hm
+  · exact Or.inr (DoT.not_minted_collapses fcl d hm judge e1 e2 t h1 h2)
+
+/-- Every line of a well-formed recipe descends from a root whose Duality is minted: "on the chain from G0" is every line. -/
+theorem cr_every_line_descends_from_a_minted_root (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (i : Nat) (hi : i < r.n) :
+    ∃ j ∈ r.chain i, (r.line j).parent = none ∧ (r.line j).dot.minted fcl := by
+  obtain ⟨j, hj, hroot⟩ := r.chain_has_root fcl hwf i hi
+  exact ⟨j, hj, hroot, r.root_minted fcl hwf j (r.chain_lt fcl hwf i hi j hj) hroot⟩
+
+/-- The root's minting is assumed by well-formedness and never derived: a recipe whose root is not minted is not well formed
+    (Theory.lean's `pressed_root_not_wf`), so G0 is the place where the chain assumes most and proves least. -/
+theorem cr_the_root_is_minted_by_assumption (fcl : List FailureClass) (r : Recipe) (j : Nat) (hj : j < r.n)
+    (hroot : (r.line j).parent = none) : r.wf fcl → (r.line j).dot.minted fcl :=
+  fun hwf => r.root_minted fcl hwf j hj hroot
 
 end Dmp
