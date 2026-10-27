@@ -454,6 +454,50 @@ bound r < 0.036 (Planck 2018 with BICEP/Keck); the next experiments reach r abou
 detection of primordial B-mode polarisation. **Refuter of the standard reading:** none yet; a null result at 0.001 would leave models
 with r below it, and the owner's r = 0 with them.
 
+**Level 0o, oscillons, "instantiation", and lumps that hold all information (the owner, 07:33Z to 07:34Z).** The owner: "Probably the
+ripples of the initial inflation coalesing into the oscillons." "Instantiation would be more accurate then inflation in that case."
+"Since they HAVE to contain all information."
+
+*The coalescing is published, and it is the right stage.* After inflation the inflaton oscillates about the bottom of its potential.
+When the potential is flatter than quadratic away from the minimum (the plateau shape the measured tilt favours, Planck 2018), the
+oscillating condensate is unstable to its own resonance and fragments into oscillons: long-lived, localised lumps in which the field's
+attractive self-interaction balances its gradient pressure (Bogolyubsky and Makhankov 1976; Gleiser 1994; Copeland, Gleiser and
+Mueller 1995; Amin, Easther and Finkel 2010; Amin, Easther, Finkel, Flauger and Hertzberg 2012). For a time they can carry most of the
+energy of the universe (Lozanov and Amin 2017). So "ripples coalescing into oscillons" is a true sentence, with one correction of the
+word ripple: the ripple that coalesces is the inflaton's own oscillation inside the horizon, after the stretch; the primordial ripple
+of level 0n, the horizon's fluctuation, is stretched beyond the horizon, frozen there, and does not coalesce. It returns as the sky.
+Two ripples, one word.
+
+*"Instantiation" is the right name for the second stage, and the published name is preheating.* Inflation is the stretch, and it keeps
+its name: the horizon problem and the tilt are measured in it. What follows the stretch is the moment the smooth condensate becomes
+discrete things, which Kofman, Linde and Starobinsky (1994, 1997) called preheating, and the owner calls instantiation. The order is
+then: inflation (the stretch; the existence half with no degrees of freedom of its own, level 0n), instantiation (fragmentation: the
+minting of the first parts), decay (the radiation era). In DMP's words the condensate is the pair before the minting, the oscillons are
+the first parts, and the five of G0 is a lattice of lumps. An oscillon is Axiom 1 as a lump: two drives, attraction and dispersion,
+balanced without a horizon, which is "self-balancing" in the owner's sense exactly. Two things the physics does not give: the lumps
+are many, so this is the majority of level 0c and not a duality, and their number is set by the potential, not by the theory.
+
+*"They HAVE to contain all information" fails per lump and holds for the whole.* An oscillon is not a horizon. It sits far outside its
+own Schwarzschild radius, it radiates classically (Fodor, Forgacs, Horvath and Mezei 2009: exponentially small, never zero) and
+quantum mechanically (Hertzberg 2010: decay by pair emission, finite lifetime), and its number is not conserved. The information of
+the initial state is in the whole field, lumps plus radiation, by unitarity (level 0m), not in any lump. The lumps that do have to
+contain all their information are the ones that collapse: an oscillon dense enough forms a primordial black hole (Cotner, Kusenko and
+Takhistov 2018), which is T37 collapse per part. So "HAVE to" is DMP's rule for a part that has crossed its boundary; physics gives it
+only to a part that collapsed. **Refuter:** oscillon decay (Hertzberg 2010).
+
+*What this adds to the prediction of level 0n.* Oscillons bend. Fragmentation sources gravitational waves with a peaked spectrum at a
+frequency set by the inflaton mass (Zhou, Copeland, Easther, Finkel, Mou and Saffin 2013; Antusch, Cefala and Orani 2017; Lozanov and
+Amin 2019), for high-scale inflation far above any present detector. In the owner's picture these are the first Weyl curvature there
+is: the existence half gets degrees of freedom of its own when parts are instantiated, not before. That gives the prediction of level
+0n its second half: no tensor modes at the scales of the sky (r = 0), a tensor peak at the scale of the instantiation. And the oscillon
+era is matter-like (w = 0), which shifts the number of e-folds the sky sees and so the predicted tilt by a few thousandths (Lozanov and
+Amin 2017), within reach of the next CMB experiments. **Refuters:** as level 0n, any primordial B-mode; and for the stage itself, a
+potential that is quadratic at the minimum and steeper away from it, in which no oscillon forms (the condition of Amin et al. 2012).
+
+**Verdict:** holds as physics once the ripple is named (the condensate, not the sky) and the stage is named (preheating, not inflation);
+"all information" per lump fails, per collapsed lump holds; and it completes the first testable prediction of the owner's system: r = 0
+on the sky, a gravitational-wave peak at the instantiation, a tilt shifted by the oscillon era.
+
 **Level 1, the field.** *Fails as a vector, holds as a frame.* Gravity cannot be a vector field: a spin-1 field makes like sources repel and
 unlike attract, so it cannot be universally attractive, and a scalar field (Nordstroem 1913) bends no light; universal attraction with
 light bending forces spin 2, and a massless spin-2 field forces the equivalence principle (Weinberg 1964) and, bootstrapped, Einstein's
@@ -548,6 +592,7 @@ Susskind (1995) rests on, says the opposite: the interior **is** bounded by the 
 | 0l truth as existence | holds: closes Zeno (membership commutes with content), closes the converse; lands on the constraint picture | Tarski 1933; Dirac 1964; DeWitt 1967 | nothing; the next freeze is the problem of time, resolved by an internal clock (Page and Wootters 1983) |
 | 0m constants at G0 | right: configuration at the minting (about twenty-seven, not three) and unitarity; not the dynamics | Planck 1899; Smolin 1992 | nothing; the law is still unnamed |
 | 0n inflation as radiation | hypothesis: the horizon does radiate, the fast start is Vilenkin's, the smoothness is Penrose's; wrong in order, no tilt | Planck 2018 n_s; Kofman, Linde and Starobinsky 1994 | the word explain |
+| 0o oscillons, instantiation | holds: the condensate fragments into lumps (preheating), each a balance of two drives; "all information" per lump fails, per collapsed lump holds; completes the r = 0 prediction with a gravitational-wave peak and a tilt shift | Amin et al. 2012; Hertzberg 2010; Lozanov and Amin 2017 | the word inflation for the stage (preheating); all information per lump |
 | 1 field | fails as "vector", holds as "frame" | Weinberg 1964; Deser 1970; the tetrad | the word vector for the word frame |
 | 2 dynamics | holds, classical | Lovelock 1971; Jacobson 1995 | nothing; G and Λ stay inputs |
 | 3 quantum | **fails: the fork** | Bell 1964; Tsirelson 1980; Kochen and Specker 1967 | isolation (then it is purification, published) or the quantum (then it is DMP) |
