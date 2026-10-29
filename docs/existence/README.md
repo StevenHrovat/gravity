@@ -111,13 +111,13 @@ is quoted in its edited form.
 | 13:23 | FSC is how much the EM field exists | 2.2 |
 | 13:26 | FSC as universal lowest entropy | 8.1 |
 | 14:39 | Einstein's legacy | not quoted (personal) |
-| 15:02 | Higgs as G0's remnant | 7.2 |
+| 15:02 | Higgs as G0's remnant | 7.2 (scope corrected by the owner 16:07: only the bosons that need it) |
 | 15:12 | flavours of h; W and Z as h*h | 7.2 |
 | 15:13 | QC breaks cryptography | 9 |
 
 Messages in the project threads on 2026-10-29: 09:24 (Bell under Dualism), 09:34 (alpha "slightly lower still"), 09:39 ("we can infer
 all that we can and no more"), 09:41 (HPE correction), 15:20 (the graviton), 15:22 (single-graviton bars, simplicity), 15:25
-(vector field and scalar field; photons, weight, singular quanta), 15:26 (the firewall origin), 15:33 (3+1 spans the existence vector).
+(vector field and scalar field; photons, weight, singular quanta), 15:26 (the firewall origin), 15:33 (3+1 spans the existence vector), 16:07 (Higgs scope: only the bosons that need it).
 
 Emoji in quotes are written as words in brackets (pdflatex has no emoji font). "in its tooth" (15:20) is quoted as dictated; the paper
 reads it as "in its truth".
