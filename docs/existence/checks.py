@@ -27,6 +27,8 @@ its expected value; the last line counts them. The paper stands on these checks 
   [E20] the spinning black hole from DMP's containment split: M^2 = m^2 + (J/2m)^2 gives Kerr's horizon area, a <= 1 and the 29%
   [E21] leptons as the inter-cluster protocol: a two-lepton cluster (positronium) falls over in 125 ps or 142 ns; the muon, once its
         stability is not protected, decays in 2.2 microseconds (Fermi's formula)
+  [E22] gravitational waves need no horizon: the quadrupole formula gives the measured orbital decay of the Hulse-Taylor pulsar, two
+        neutron stars; and the spin ladder: how far each spin turns before it looks the same
 """
 
 import math
@@ -433,6 +435,37 @@ check("ortho-positronium lifetime, leading order (measured 142.05 ns; radiative 
 GF, m_mu, hbar_GeVs = 1.1663788e-5, 0.1056583755, 6.582119569e-25  # GeV^-2, GeV, GeV s
 tau_mu = hbar_GeVs / (GF**2 * m_mu**5 / (192 * math.pi**3))
 check("muon lifetime from Fermi's formula G_F^2 m^5 / (192 pi^3) (measured 2.197 microseconds)", tau_mu, 2.1969811e-6, rtol=1e-2)
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[E22] Gravitational waves from two neutron stars (PSR B1913+16), and the spin ladder")
+# Peters and Mathews (1963): dP/dt = -(192 pi / 5) (G^(5/3) / c^5) (P/2pi)^(-5/3) f(e) m1 m2 (m1 + m2)^(-1/3).
+P_b, ecc, m1, m2 = 27906.979587, 0.6171340, 1.438 * M_sun, 1.390 * M_sun  # Weisberg and Huang (2016)
+f_e = (1 + 73 / 24 * ecc**2 + 37 / 96 * ecc**4) / (1 - ecc**2) ** 3.5
+dPdt = -(192 * math.pi / 5) * G ** (5 / 3) / c**5 * (P_b / (2 * math.pi)) ** (-5 / 3) * f_e * m1 * m2 * (m1 + m2) ** (-1 / 3)
+check("orbital decay of PSR B1913+16 from the quadrupole formula (Weisberg and Huang: -2.40263e-12; measured/predicted 0.9983 +- 0.0016)", dPdt, -2.40263e-12, rtol=2e-3)
+# The spin ladder, computed: a spin-1/2 state rotated by theta about z is exp(-i theta sigma_z / 2); a vector by the 3x3 rotation; a
+# spin-2 wave's polarisations (h+, hx) rotate by 2 theta about the direction of travel.
+sz = np.diag([1.0, -1.0])
+
+
+def rot_half(theta):
+    return np.diag(np.exp(-1j * theta * np.diag(sz) / 2))
+
+
+def rot_vec(theta):
+    return np.array([[math.cos(theta), -math.sin(theta), 0], [math.sin(theta), math.cos(theta), 0], [0, 0, 1]])
+
+
+def rot_pol(theta):
+    return np.array([[math.cos(2 * theta), math.sin(2 * theta)], [-math.sin(2 * theta), math.cos(2 * theta)]])
+
+
+check("spin 1/2 after 360 degrees: the state comes back times -1", np.real(rot_half(2 * math.pi)[0, 0]), -1, atol=1e-12)
+check("spin 1/2 after 720 degrees: the same again", np.real(rot_half(4 * math.pi)[0, 0]), 1, atol=1e-12)
+check("spin 1 (a vector) after 180 degrees: reversed, not the same", rot_vec(math.pi)[0, 0], -1, atol=1e-12)
+check("spin 1 after 360 degrees: the same", rot_vec(2 * math.pi)[0, 0], 1, atol=1e-12)
+check("spin 2 (a gravitational wave's h+) after 180 degrees: already the same", rot_pol(math.pi)[0, 0], 1, atol=1e-12)
+check("spin 2 after 90 degrees: h+ becomes -h+ (stretch and squeeze swap)", rot_pol(math.pi / 2)[0, 0], -1, atol=1e-12)
 
 # ---------------------------------------------------------------------------------------------------------------------------------
 passed = sum(results)

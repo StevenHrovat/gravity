@@ -14,13 +14,13 @@ since the content varies so dramatically and is only an application of DMP, plea
 |---|---|
 | `existence.tex` | the paper (LaTeX, `article` class, inline bibliography, 21 pages) |
 | `existence.pdf` | the paper as PDF, built from `existence.tex` |
-| `checks.py` | every numerical claim: checks E1 to E21, 73 of 73 (numpy, sympy, scipy) |
+| `checks.py` | every numerical claim: checks E1 to E22, 80 of 80 (numpy, sympy, scipy) |
 | `README.md` | this spec: what backs each claim, which notes are quoted where, the sources checked |
 
 ## Build and check
 
 ```sh
-python3 docs/existence/checks.py                 # 73 of 73 checks passed
+python3 docs/existence/checks.py                 # 80 of 80 checks passed
 cd docs/existence && export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct -- existence.tex) FORCE_SOURCE_DATE=1 \
   && pdflatex existence.tex && pdflatex existence.tex && rm -f existence.aux existence.log existence.out
 ```
@@ -38,7 +38,7 @@ the classical side of the Bose-Marletto-Vedral test. The owner's "Existence = g 
 graviton: established arguments collapse the detector, not the graviton; one quantum forms a horizon only at the Planck energy, and then
 any quantum (E6); single-graviton bars cannot tell a graviton from a classical wave (Carney, Domcke, Rodd 2024), as the owner said; but the
 classical choice is falsifiable by gravitationally mediated entanglement. Bell "not violated under Dualism" is refuted as stated and
-holds in the hosting reading (E19). Ledger of 31 statements: 18 hold or hold as readings, 8 refuted, 5 untested or live.
+holds in the hosting reading (E19). Ledger of 33 statements: 19 hold or hold as readings, 9 refuted, 5 untested or live.
 
 ## What backs each claim
 
@@ -65,6 +65,7 @@ holds in the hosting reading (E19). Ledger of 31 statements: 18 hold or hold as 
 | CHSH: local 2, full reach 4 and signals, singlet 2 sqrt 2, superdeterminism (S - 2)/3, measured S above 2 | [E19] (scipy linear programme) |
 | Kerr area, spin bound and 29% from M^2 = m^2 + (J/2m)^2 | [E20] |
 | Positronium 125 ps / 142 ns at leading order; muon 2.19 microseconds from Fermi's formula | [E21] |
+| Hulse-Taylor orbital decay -2.402e-12 from the quadrupole formula; spin 1/2, 1, 2 rotations (720, 360, 180 degrees) | [E22] |
 
 ## The owner's words in the paper
 
@@ -96,9 +97,9 @@ is quoted in its edited form.
 | 18:18 | photons as act carriers; gravitons shouldn't exist | 4.1, 7.1 |
 | 18:22 | gluons as IM packets; CMOS as the strong force | 7.3 (by its 18:25 and 23:43 follow-ups) |
 | 18:25 | three-node quark, two-node meson | 7.3 |
-| 19:14 | Yang-Mills? | 7.6 |
-| 19:30 | strong, weak, dark matter, dark energy | 7.6 |
-| 20:19 | IM through a horizon | 7.6 |
+| 19:14 | Yang-Mills? | 7.7 |
+| 19:30 | strong, weak, dark matter, dark energy | 7.7 |
+| 20:19 | IM through a horizon | 7.7 |
 | 21:20 | FSC as strong IM / EM binding | 8 (by its 21:47 follow-up, which the owner wrote after looking the formula up) |
 | 21:47 | FSC started at 1, early gravity | 2.2, 8.1, 8.2 |
 | 22:17 | things go in, total state comes out | 5.1 |
@@ -107,7 +108,7 @@ is quoted in its edited form.
 | 23:58 | IM-net; ~1/137 | 8.1 |
 | 10-29 00:53 | black holes contained in the host dimension; possibility space | 5.1 |
 | 01:40 | Einstein; Existence = g h / c; the bosons; Trust = Existence | 2.3, 3.1, 3.5, 7.2 |
-| 11:37 | neutrinos | 7.5 |
+| 11:37 | neutrinos | 7.6 |
 | 12:30 | FSC as coupling per energy; early Kugelblitz | 8.1 |
 | 13:23 | FSC is how much the EM field exists | 2.2 |
 | 13:26 | FSC as universal lowest entropy | 8.1 |
@@ -118,7 +119,7 @@ is quoted in its edited form.
 
 Messages in the project threads on 2026-10-29: 09:24 (Bell under Dualism), 09:34 (alpha "slightly lower still"), 09:39 ("we can infer
 all that we can and no more"), 09:41 (HPE correction), 15:20 (the graviton), 15:22 (single-graviton bars, simplicity), 15:25
-(vector field and scalar field; photons, weight, singular quanta), 15:26 (the firewall origin), 15:33 (3+1 spans the existence vector), 16:07 (Higgs scope: only the bosons that need it), 16:16 (leptons as GG, the protocol between clusters; section 7.4).
+(vector field and scalar field; photons, weight, singular quanta), 15:26 (the firewall origin), 15:33 (3+1 spans the existence vector), 16:07 (Higgs scope: only the bosons that need it), 16:16 (leptons as GG, the protocol between clusters; section 7.4), 16:21 and 16:23 (the spin ladder; gravitational waves from Non-Existence; section 7.5).
 
 Emoji in quotes are written as words in brackets (pdflatex has no emoji font). "in its tooth" (15:20) is quoted as dictated; the paper
 reads it as "in its truth".
@@ -134,7 +135,7 @@ aluminium 1800 kg, parameter table at 10 mK with bars to 15 000 kg); Tobar, Piko
 PRL 129, 121102 (2022; eta = (-1.5 +- 2.3 +- 1.5)e-15); Dvali and Zaldarriaga, PRL 88, 091303 (2002); Sandvik, Barrow, Magueijo, PRL 88,
 031302 (2002); Alvarez-Dominguez, Garay, Martin-Martinez, Polo-Gomez, PRL 133, 041401 (2024; Schwinger effect, radii 1e-29 to 1e8 m); Page's
 comment arXiv:2505.16202; Pathria, Nature 240, 298 (1972); Yang et al., PRL 121, 212001 (2018; quark mass term 9%); DESI 2024 VI, JCAP 02
-(2025) 021 (sum < 0.072 eV); LHCb pentaquarks PRL 115, 072001 (2015). Taken as standard without a fresh check: Unruh 1976, Jacobson 1995,
+(2025) 021 (sum < 0.072 eV); LHCb pentaquarks PRL 115, 072001 (2015). Taken as standard without a fresh check: Weinberg 1964, Deser 1970, Peters-Mathews 1963, Weisberg-Huang 2016, GW150914 PRL 116 061102, Borexino 2015, PDG 2024, Ore-Powell 1949, Unruh 1976, Jacobson 1995,
 Brans-Dicke 1961, Bekenstein 1982 and 2004, Jacobson-Mattingly 2001, GW170817 ApJL 848 L13, Will's Living Review 2014, Page-Geilker 1981,
 Bardeen-Press-Teukolsky 1972, Landauer 1961, Bekenstein 1973, Mead 1964, Wheeler 1955, Kofman-Linde-Starobinsky 1994, ATLAS and CMS
 Nature 607 (2022), LHCb T_cc Nat. Phys. 18, 751 (2022), Shor 1997, Grover 1997, FIPS 205, Aldrovandi-Pereira 2013, von Neumann 1956.
