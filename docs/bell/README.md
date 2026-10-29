@@ -13,13 +13,13 @@ science. Let's focus on showing why the 2022 nobel price winning bell experiment
 |---|---|
 | `bell.tex` | the paper (LaTeX, `article` class, inline bibliography, 14 pages) |
 | `bell.pdf` | the paper as PDF, built from `bell.tex` |
-| `checks.py` | every numerical claim: checks B1 to B7, 22 of 22 (numpy; scipy for B5's linear programme) |
+| `checks.py` | every numerical claim: checks B1 to B8, 26 of 26 (numpy; scipy for B5's linear programme) |
 | `README.md` | this spec: what backs each claim, the owner's words with times, the open questions |
 
 ## Build and check
 
 ```sh
-python3 docs/bell/checks.py                      # 22 of 22 checks passed
+python3 docs/bell/checks.py                      # 26 of 26 checks passed
 python3 docs/qg-verdict/assembly.py              # GUID's checks, 18 of 18 (used: [2] to [6])
 cd docs/bell && export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct -- bell.tex) FORCE_SOURCE_DATE=1 \
   && pdflatex bell.tex && pdflatex bell.tex && rm -f bell.aux bell.log bell.out
@@ -47,6 +47,7 @@ and device-independent protocols can only run in content.
 | The measured values | [B6]; references below |
 | Coherent gravity entangles, recorded gravity does not | [B7]; GUID check [6] |
 | Content at 2 sqrt 2, verdicts at 2, together | GUID check [5] |
+| Kerr horizon set by irreducible mass, r+ = 2 M_irr^2 / M; 29% rotational at a = 1 | [B8] |
 
 ## Sources checked (2026-10-29, by web search against publisher, arXiv, collaboration or repository records)
 
@@ -55,7 +56,7 @@ Hensen 2015 S = 2.42 +- 0.20, p = 0.039; Giustina 2015 p <= 3.74e-31 (11.5 s.d.,
 Rosenfeld 2017 S = 2.22 +- 0.033, p < 1.05e-9; Storz 2023 S = 2.0747 +- 0.0033, > 22 s.d.; Handsteiner 2017 ~600 years; Rauch 2018
 >= 7.78 Gyr; BIG Bell Test ~100,000 participants, 12 labs; Aspect 1982 5 s.d.; PDG W mass 80.3692 +- 0.0133 GeV; Super-K p -> e+ pi0
 > 2.4e34 yr; neutron 878.4 +- 0.5 s; Borexino electron > 6.6e28 yr; Planck XXIV alpha/alpha0 = 0.9934 +- 0.0042; ESPRESSO combined
--0.5 +- 0.5 (stat) +- 0.4 (sys) ppm over z = 0.6-2.4; Lange 2021 (1.0 +- 1.1)e-18 per year; Chou 2010 33 cm, ~4e-17; Cassini gamma - 1 = (2.1 +- 2.3)e-5; Pound-Rebka 1960 tower 74 ft; PDG charged pion 2.6033e-8 s; Israel 1967; EHT 2019 ApJL 875 L1; Hawking 1975; Page 1993; Fewell 1995 Ni-62 most tightly bound; Dreyer and Martins 2026 BBN bounds of tens
+-0.5 +- 0.5 (stat) +- 0.4 (sys) ppm over z = 0.6-2.4; Lange 2021 (1.0 +- 1.1)e-18 per year; Chou 2010 33 cm, ~4e-17; Cassini gamma - 1 = (2.1 +- 2.3)e-5; Pound-Rebka 1960 tower 74 ft; PDG charged pion 2.6033e-8 s; Israel 1967; Kerr 1963; Christodoulou 1970; Penrose-Floyd 1971; Blandford-Znajek 1977; EHT 2019 ApJL 875 L1; Hawking 1975; Page 1993; Fewell 1995 Ni-62 most tightly bound; Dreyer and Martins 2026 BBN bounds of tens
 of ppm (2 +- 22 and 2 +- 51 ppm by scenario). Not quoted because not verified: the S value of Weihs 1998 (only a secondary source), the
 precise PDG alpha(M_Z) (the text says "close to 1/128"). The Nobel citation sentence is quoted from the press coverage that reproduces it;
 nobelprize.org was not reachable from the session.
@@ -77,6 +78,7 @@ nobelprize.org was not reachable from the session.
 | 09:42 | his reading of gravity (his comment on dmp#25, 2026-10-28), posted as a screenshot | 3.5 |
 | 09:51 | clarifications: the photon carries its existence key (Planck's constant) and obeys curvature; "three nodes" meant more stable than two | 7, 3.5, 8.1 |
 | 09:52 | "at the end, maybe give a short outlook and on how our model would model the way through an event horizon" | 10 (outlook) |
+| 10:08 | "explain why the event horizon of a spinning black hole is smaller" | 10, last paragraph; check B8 |
 
 ## Open
 

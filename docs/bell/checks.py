@@ -14,6 +14,7 @@ checks below say what each other reading of the Duality has to give up to reprod
   [B5] superdeterminism: the least measurement dependence M (Hall 2010) a local deterministic model needs to reach S is (S - 2)/3
   [B6] the measured S values of the three loophole-free CHSH tests lie above 2
   [B7] gravity-mediated entanglement (Bose et al. 2017 geometry): coherent mediator entangles, recorded mediator does not
+  [B8] Kerr: the horizon is set by the irreducible mass alone, r+ = 2 M_irr^2 / M; the spin's share is up to 1 - 1/sqrt(2)
 """
 
 import itertools
@@ -227,5 +228,23 @@ check(f"negativity with a coherent mediator at t = {t_pi:.1f} s (maximal)", nega
 # A mediator held in full by two witnesses is recorded: the branch is dephased in the position basis.
 rho_rec = np.diag(np.diag(state_at(t_pi)))
 check("negativity with a recorded (classical) mediator at the same time", negativity(rho_rec), 0, tol=1e-12)
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[B8] Kerr: the horizon of a spinning black hole is set by its irreducible mass")
+# Units G = c = 1, mass M = 1, spin a = J / M^2 in [0, 1]. Kerr (1963): outer horizon r+ = M (1 + sqrt(1 - a^2)).
+# Christodoulou (1970): irreducible mass M_irr^2 = A / (16 pi), with horizon area A = 4 pi (r+^2 + a^2 M^2); the rest of M is rotational
+# energy that can be taken out (Penrose; Blandford and Znajek) without shrinking the area.
+M = 1.0
+worst = 0.0
+for a in np.linspace(0, 1, 11):
+    r_plus = M * (1 + np.sqrt(1 - a * a))
+    area = 4 * np.pi * (r_plus ** 2 + (a * M) ** 2)
+    m_irr = np.sqrt(area / (16 * np.pi))
+    worst = max(worst, abs(r_plus - 2 * m_irr ** 2 / M))
+check("largest |r+ - 2 M_irr^2 / M| over spins 0, 0.1, ..., 1 (the horizon depends on the spin only through M_irr)", worst, 0, tol=1e-12)
+check("horizon radius at a = 0 (Schwarzschild, 2M)", M * (1 + np.sqrt(1 - 0.0)), 2.0)
+check("horizon radius at a = 1 (extremal Kerr, M)", M * (1 + np.sqrt(1 - 1.0)), 1.0)
+m_irr_ext = np.sqrt(4 * np.pi * (1.0 + 1.0) / (16 * np.pi))
+check("share of the mass that is rotational at a = 1, 1 - M_irr/M", 1 - m_irr_ext / M, 1 - 1 / np.sqrt(2))
 
 print(f"\n{sum(results)} of {len(results)} checks passed")

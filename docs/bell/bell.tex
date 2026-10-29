@@ -84,7 +84,7 @@ DMP's own notion of independence. The fourth survives and is GUID's verdict: the
 and the Duality's own verdicts, which are classical, never violate the inequality. In that reading the 2022 Nobel experiments are an
 independent, empirical confirmation that DMP hosts and does not model.
 
-\paragraph{What we claim.} As in GUID: the checks reproduce (\texttt{docs/bell/checks.py}, 22 of 22), and the argument from them to the
+\paragraph{What we claim.} As in GUID: the checks reproduce (\texttt{docs/bell/checks.py}, 26 of 26), and the argument from them to the
 result is as written. We do not claim the result is correct, and we list where we expect it to break (Section~\ref{sec:break}).
 
 \section{What GUID established}\label{sec:guid}
@@ -521,6 +521,24 @@ information comes out in the radiation after the Page time~\cite{page}. DMP as w
 place it could let information back out is its own Axiom 3, a record that outlives the act; making that precise would be the next step of
 this outlook, and it would change T31's wording, which only the first author can approve.
 
+\paragraph{Why a spinning black hole's horizon is smaller.} The first author, in his words: ``What we can do is actually for the first
+time explain why the event horizon of a spinning black hole is smaller. That would be a nice outlook to give.'' General relativity
+already gives the size: for mass $M$ and spin $a=J/M^2$ (units $G=c=1$) the outer horizon of the Kerr solution~\cite{kerr} sits at
+$r_+=M\bigl(1+\sqrt{1-a^2}\bigr)$, from $2M$ without spin down to $M$ at the largest spin. It also gives the reason, in Christodoulou's
+split of the mass~\cite{christodoulou}: the horizon area fixes an \emph{irreducible} mass, $A=16\pi M_{\mathrm{irr}}^2$, and the rest of $M$
+is rotational energy that can be taken out from outside the horizon, by particles splitting in the ergosphere (Penrose and
+Floyd~\cite{penrosefloyd}) or by magnetic fields (Blandford and Znajek~\cite{bz}, the standard engine of jets). Check \chk{B8} confirms
+that the horizon depends on the spin only through that split, $r_+=2M_{\mathrm{irr}}^2/M$, and that at the largest spin
+$1-1/\sqrt2\approx29\%$ of the mass is rotational.
+
+\noindent In DMP's words the reason reads: a boundary contains only what no part beyond it can act on. The irreducible mass is contained;
+the rotational energy is not, because acts from outside can still reach it and take it away. The spin itself is one more count, visible to
+every reader (Axiom 3); the first author had pointed at this before (DMP pull request \#14, 27 October 2026): ``Also may explaining
+spinning black holes attributes, since they leak one more information.'' So, for a given total mass,
+a spinning black hole contains less, and the boundary that contains it is smaller. This agrees exactly with general relativity,
+because it is Christodoulou's split read in DMP's terms. It is the first reading of the result in DMP's vocabulary, not a first
+explanation of it, and it adds no number general relativity does not already give.
+
 \section{Conclusion}
 
 What GUID's verdict buys is a commitment: DMP's own structure is classical, so if it is the geometry, gravity does not entangle masses,
@@ -633,6 +651,14 @@ Lett.} 108, 241302 (2012).
 black hole'', \emph{Astrophys. J. Lett.} 875, L1 (2019).
 \bibitem{hawking} S.~W. Hawking, ``Particle creation by black holes'', \emph{Commun. Math. Phys.} 43, 199 (1975).
 \bibitem{page} D.~N. Page, ``Information in black hole radiation'', \emph{Phys. Rev. Lett.} 71, 3743 (1993).
+\bibitem{kerr} R.~P. Kerr, ``Gravitational field of a spinning mass as an example of algebraically special metrics'', \emph{Phys. Rev.
+Lett.} 11, 237 (1963).
+\bibitem{christodoulou} D. Christodoulou, ``Reversible and irreversible transformations in black-hole physics'', \emph{Phys. Rev. Lett.}
+25, 1596 (1970).
+\bibitem{penrosefloyd} R. Penrose, R.~M. Floyd, ``Extraction of rotational energy from a black hole'', \emph{Nature Phys. Sci.} 229, 177
+(1971).
+\bibitem{bz} R.~D. Blandford, R.~L. Znajek, ``Electromagnetic extraction of energy from Kerr black holes'', \emph{Mon. Not. R. Astron. Soc.}
+179, 433 (1977).
 \bibitem{lange} R. Lange et al., ``Improved limits for violations of local position invariance from atomic clock comparisons'',
 \emph{Phys. Rev. Lett.} 126, 011102 (2021).
 \end{thebibliography}
