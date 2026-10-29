@@ -31,6 +31,7 @@ these checks alone.
         overlap is 0 or 1, and two non-commuting states cannot be broadcast
   [B18] Proposition 2, Axiom 1's "neither overrules the other": a scalar on the gravitational term (Brans-Dicke) moves gamma off 1;
         Cassini forces omega above 4e4
+  [B19] Hawking-Penrose-Information radiation: the Hawking temperature of a solar-mass black hole, far below the 2.7 K sky
 """
 
 import itertools
@@ -285,6 +286,17 @@ check_true("Brans-Dicke gamma - 1 = -1/(omega + 2) for every omega tried", np.al
 omega_min = 1 / 2.5e-5 - 2
 check("smallest omega Cassini allows at 2 sigma", omega_min, 39998.0)
 check_true("gamma tends to 1 as omega grows (Brans-Dicke reduces to general relativity)", abs(gam[-1] - 1) < 1e-8)
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[B19] 'Let's call it Hawking-Penrose-Information radiation': how cold the Hawking part is")
+# T_H = hbar c^3 / (8 pi G M k_B) (Hawking 1975). CODATA 2018 G and k_B; IAU nominal solar mass parameter GM_sun = 1.3271244e20 m^3/s^2.
+k_B = 1.380649e-23
+GM_sun = 1.3271244e20
+T_H = hbar * c**3 / (8 * math.pi * GM_sun * k_B)
+print(f"     Hawking temperature of one solar mass: {T_H:.3g} K")
+check("Hawking temperature of a solar-mass black hole (K)", T_H, 6.17e-8, rtol=0.01)
+check_true("it is colder than the cosmic microwave background (2.725 K) by more than 1e7, so a real hole absorbs more than it emits",
+           2.725 / T_H > 1e7)
 
 # ---------------------------------------------------------------------------------------------------------------------------------
 passed = sum(results)
