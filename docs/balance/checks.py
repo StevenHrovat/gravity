@@ -16,7 +16,7 @@ these checks alone.
   [B8]  "Must the Higgs field even exist in my system?": without a Higgs, W W scattering breaks unitarity below about 1 TeV
   [B9]  IM = strong + weak, GG = EM: the electromagnetic and weak couplings are one (sin^2 theta_W from G_F, m_W and alpha);
         the strong coupling reaches 1, and so 137 times alpha, only near the hadron scale
-  [B10] the BSD, "how much Existence can interact with itself": the electron's self-interaction, its anomalous magnetic moment, is
+  [B10] the VIBE coefficient (formerly BSD), "how much Existence can interact with itself": the electron's self-interaction, its anomalous magnetic moment, is
         alpha / (2 pi) at first order (Schwinger) against the measured value
   [B11] "mass times length is the total amount of existence a space needs": m times the Compton wavelength is h/c for every particle,
         and alpha h / c is the electron's mass times the circumference of its classical radius
@@ -24,6 +24,9 @@ these checks alone.
   [B13] the Higgs as pure existence that cannot exist alone: its lifetime, and why gravity cannot be what gives particles their mass
   [B14] "in the end it's all one field": the three Standard Model couplings approach each other at high energy but do not meet
   [B15] "137 times higher": the electromagnetic share of the proton's mass
+  [B16] "the Higgs field [...] is indistinguishable [...] from G0 asserting Existence": if gravity weighed only the Higgs-given mass
+        (electrons in full, about 9% of each nucleon, none of the nuclear binding), titanium and platinum would fall differently by
+        about 1e-3; MICROSCOPE finds them equal to about 1e-15
 """
 
 import itertools
@@ -235,6 +238,20 @@ E_coul = 0.6 * alpha_hbar_c_MeV_fm / (r_p * 1e15)  # uniformly charged sphere of
 share = E_coul / 938.272
 print(f"     Coulomb self-energy of the proton {E_coul:.2f} MeV, share of its mass 1/{1 / share:.0f}")
 check_true("the electromagnetic share of the proton's mass is about 1/1000, not 1/137", 700 < 1 / share < 1500)
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[B16] 'the Higgs field [...] is indistinguishable [...] from G0 asserting Existence': does gravity weigh only the Higgs share?")
+# Atomic masses and binding from AME2020; the Higgs share of a nucleon's mass, the quark mass terms, is 9(2)% (Yang et al., PRL 121,
+# 212001, 2018). Electrons get all their mass from the Higgs field, nuclear binding none. MICROSCOPE (Touboul et al., PRL 129, 121102,
+# 2022): eta(Ti, Pt) = (-1.5 +- 2.3 stat +- 1.5 syst) e-15; we take 5e-15 as the bound.
+u_MeV, me_MeV, mp_MeV, mn_MeV = 931.49410242, 0.51099895, 938.27208816, 939.56542052
+atoms = {"Ti-48": (22, 48, 47.9479409), "Pt-195": (78, 195, 194.9647917)}
+eta_bound = 5e-15
+for f_N in (0.07, 0.09, 0.11):
+    share = {k: (Z * me_MeV + f_N * (Z * mp_MeV + (A - Z) * mn_MeV)) / (M * u_MeV) for k, (Z, A, M) in atoms.items()}
+    eta_pred = 2 * abs(share["Ti-48"] - share["Pt-195"]) / (share["Ti-48"] + share["Pt-195"])
+    print(f"     nucleon Higgs share {f_N:.2f}: Higgs share Ti {share['Ti-48']:.5f}, Pt {share['Pt-195']:.5f}, predicted eta {eta_pred:.2e}")
+    check_true(f"with a nucleon Higgs share of {f_N:.2f} the predicted eta exceeds MICROSCOPE's bound by more than 1e9", eta_pred > 1e9 * eta_bound)
 
 # ---------------------------------------------------------------------------------------------------------------------------------
 passed = sum(results)

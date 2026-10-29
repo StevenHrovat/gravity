@@ -7,21 +7,23 @@ the Duality of DMP 0.9.9 and tested against what is measured." Authors: Steven H
 The owner, 2026-10-29 21:33Z: "So over the hours I thought through some stuff in the last paper and answered some questions. Could you
 please also take all the new comments and assemble a brand new paper?" At 21:37Z he asked to see what did not hold before the paper was
 written, so he could adjust it; his corrections of 21:46Z, 21:52Z and 21:54Z are in the paper next to the notes they correct. At 21:54Z he
-asked to leave one withdrawn idea out entirely; it is not in the paper, the checks or this file.
+asked to leave one withdrawn idea out entirely; it is not in the paper, the checks or this file. At 22:09Z and 22:18Z he identified the
+Higgs field with G0's grant, renamed the BSD to the VIBE coefficient (Variable Balance Influence Equation) and placed the photon; these are
+in sections 5 and 11.
 
 ## Files
 
 | File | What |
 |---|---|
-| `balance.tex` | the paper (LaTeX, `article` class, inline bibliography, 11 pages) |
+| `balance.tex` | the paper (LaTeX, `article` class, inline bibliography, 13 pages) |
 | `balance.pdf` | the paper as PDF, built from `balance.tex` |
-| `checks.py` | every numerical claim: checks B1 to B15, 43 of 43 (numpy) |
+| `checks.py` | every numerical claim: checks B1 to B16, 46 of 46 (numpy) |
 | `README.md` | this file: what backs each claim, which notes are quoted where, the sources |
 
 ## Build and check
 
 ```sh
-python3 docs/balance/checks.py                   # 43 of 43 checks passed
+python3 docs/balance/checks.py                   # 46 of 46 checks passed
 cd docs/balance && export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct -- balance.tex) FORCE_SOURCE_DATE=1 \
   && pdflatex balance.tex && pdflatex balance.tex && rm -f balance.aux balance.log balance.out
 ```
@@ -45,6 +47,7 @@ cd docs/balance && export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct -- balance
 | Higgs lifetime 1.6e-22 s; gravity's coupling to the electron 1e39 times weaker than the Higgs coupling | [B13] |
 | SM couplings come within about 10% near 1e14 GeV and do not meet (one loop) | [B14] |
 | Electromagnetic self-energy of the proton about 1 MeV, 1/900 of its mass | [B15] |
+| Gravity weighing only the Higgs share would split titanium and platinum by about 1e-3; MICROSCOPE: equal to 1e-15 | [B16] |
 
 
 ## The owner's words in the paper
@@ -57,7 +60,8 @@ and cm since 2026-10-29 15:15Z found only these nine.
 
 Thread messages (2026-10-29): 16:21 and 16:23 (spin ladder; section 2), 21:46 (Shor, FSC, spin, Higgs, tiers of IM, 137, information is
 the witness; sections 2, 5, 7, 8), 21:52 (Shor as defining existence, mass times length, gluons; sections 6, 7, 10), 21:54 (keep one idea
-out; QC is for experts; gravity first).
+out; QC is for experts; gravity first), 22:09 (Higgs field as G0's grant, VIBE coefficient; sections 5 and 11), 22:18 (photon, the share
+the Higgs field leaves out, equation, alpha binds for witness acts; sections 5 and 11).
 
 ## Sources
 
@@ -67,7 +71,9 @@ preferred at 2.8 to 4.2 sigma with supernovae); Blandford and Znajek, MNRAS 179,
 1997, Farhi et al. 2001, Aharonov et al. 2007, Wootters-Zurek 1982, Barnum et al. 1996, Galley-Giacomini-Selby 2022, ATLAS and CMS 2012
 and 2022, PDG 2024, Glashow 1961, Weinberg 1964 and 1967, Salam 1968, Deser 1970, Yang et al. 2018, Joos-Zeh 1985, Zurek 2009,
 Schwinger 1948, Fan et al. 2023, Hensen 2015, Rosenfeld 2017, Storz 2023, Oppenheim 2023, Bose et al. and Marletto-Vedral 2017,
-Aldrovandi-Pereira 2013, Bekenstein 1982. Constants: CODATA 2018, PDG 2024, Planck 2018.
+Aldrovandi-Pereira 2013, Bekenstein 1982. Also taken as standard without a fresh check: Touboul et al.
+(MICROSCOPE), Phys. Rev. Lett. 129, 121102 (2022); Bertotti, Iess and Tortora (Cassini), Nature 425, 374 (2003); AME2020 atomic masses.
+Constants: CODATA 2018, PDG 2024, Planck 2018.
 
 ## Open
 
