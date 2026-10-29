@@ -14,7 +14,7 @@ checks below say what each other reading of the Duality has to give up to reprod
   [B5] superdeterminism: the least measurement dependence M (Hall 2010) a local deterministic model needs to reach S is (S - 2)/3
   [B6] the measured S values of the three loophole-free CHSH tests lie above 2
   [B7] gravity-mediated entanglement (Bose et al. 2017 geometry): coherent mediator entangles, recorded mediator does not
-  [B8] Kerr: the horizon is set by the irreducible mass alone, r+ = 2 M_irr^2 / M; the spin's share is up to 1 - 1/sqrt(2)
+  [B8] the spinning black hole rederived: M^2 = m^2 + J^2/(4 m^2) gives Kerr's horizon area, the spin bound and the 29% exactly
 """
 
 import itertools
@@ -230,21 +230,40 @@ rho_rec = np.diag(np.diag(state_at(t_pi)))
 check("negativity with a recorded (classical) mediator at the same time", negativity(rho_rec), 0, tol=1e-12)
 
 # ---------------------------------------------------------------------------------------------------------------------------------
-print("\n[B8] Kerr: the horizon of a spinning black hole is set by its irreducible mass")
-# Units G = c = 1, mass M = 1, spin a = J / M^2 in [0, 1]. Kerr (1963): outer horizon r+ = M (1 + sqrt(1 - a^2)).
-# Christodoulou (1970): irreducible mass M_irr^2 = A / (16 pi), with horizon area A = 4 pi (r+^2 + a^2 M^2); the rest of M is rotational
-# energy that can be taken out (Penrose; Blandford and Znajek) without shrinking the area.
+print("\n[B8] The spinning black hole, rederived: M^2 = m^2 + J^2/(4 m^2) from DMP's containment split (bell.tex section 10.1)")
+# Units G = c = 1. Steps 4-6 of the rederivation: the contained part m sets a Schwarzschild boundary (area 16 pi m^2); the spin count J,
+# carried at the boundary R = 2m, is a momentum J / R; the two combine as M^2 = m^2 + p^2. Solve m^4 - M^2 m^2 + J^2 / 4 = 0 for m and
+# compare with Kerr (1963): r+ = M (1 + sqrt(1 - a^2)), area 4 pi (r+^2 + a^2 M^2).
 M = 1.0
-worst = 0.0
-for a in np.linspace(0, 1, 11):
+
+
+def contained_mass(M, J):
+    """The larger root m of m^4 - M^2 m^2 + J^2/4 = 0, or None when no real root exists."""
+    disc = M ** 4 - J ** 2
+    if disc < 0:
+        return None
+    return np.sqrt((M ** 2 + np.sqrt(disc)) / 2)
+
+
+worst_area = worst_mass = 0.0
+for a in np.linspace(0, 1, 101):
+    J = a * M * M
+    m = contained_mass(M, J)
     r_plus = M * (1 + np.sqrt(1 - a * a))
-    area = 4 * np.pi * (r_plus ** 2 + (a * M) ** 2)
-    m_irr = np.sqrt(area / (16 * np.pi))
-    worst = max(worst, abs(r_plus - 2 * m_irr ** 2 / M))
-check("largest |r+ - 2 M_irr^2 / M| over spins 0, 0.1, ..., 1 (the horizon depends on the spin only through M_irr)", worst, 0, tol=1e-12)
-check("horizon radius at a = 0 (Schwarzschild, 2M)", M * (1 + np.sqrt(1 - 0.0)), 2.0)
-check("horizon radius at a = 1 (extremal Kerr, M)", M * (1 + np.sqrt(1 - 1.0)), 1.0)
-m_irr_ext = np.sqrt(4 * np.pi * (1.0 + 1.0) / (16 * np.pi))
-check("share of the mass that is rotational at a = 1, 1 - M_irr/M", 1 - m_irr_ext / M, 1 - 1 / np.sqrt(2))
+    kerr_area = 4 * np.pi * (r_plus ** 2 + (a * M) ** 2)
+    worst_area = max(worst_area, abs(16 * np.pi * m * m - kerr_area) / kerr_area)
+    worst_mass = max(worst_mass, abs(np.sqrt(m * m + (J / (2 * m)) ** 2) - M))
+check("largest relative gap between 16 pi m^2 and Kerr's horizon area, spins 0 to 1 in steps of 0.01", worst_area, 0, tol=1e-12)
+check("largest gap between sqrt(m^2 + (J/2m)^2) and M over the same spins (the formula closes)", worst_mass, 0, tol=1e-12)
+check("horizon area at a = 1 as a share of the area at a = 0", 16 * np.pi * contained_mass(M, 1.0) ** 2 / (16 * np.pi * M * M), 0.5)
+check_true("no real contained mass for a = 1.001: the spin bound a <= 1 comes out of the formula", contained_mass(M, 1.001) is None)
+check("share of the mass that can be taken out at a = 1, 1 - m/M", 1 - contained_mass(M, 1.0) / M, 1 - 1 / np.sqrt(2))
+m0 = contained_mass(M, 0.9)
+check("Kerr radius r+ equals 2 m^2 / M at a = 0.9", 2 * m0 ** 2 / M, M * (1 + np.sqrt(1 - 0.81)), tol=1e-12)
+# Step 7: lowering J at fixed m (taking the spin out) lowers M and leaves the area unchanged; the floor delta m >= 0 is delta A >= 0.
+m_fixed = contained_mass(M, 0.9)
+masses = [np.sqrt(m_fixed ** 2 + (J / (2 * m_fixed)) ** 2) for J in np.linspace(0.9, 0, 10)]
+check_true("taking the spin out at fixed m lowers M monotonically down to m", all(x > y for x, y in zip(masses, masses[1:]))
+           and abs(masses[-1] - m_fixed) < 1e-12)
 
 print(f"\n{sum(results)} of {len(results)} checks passed")

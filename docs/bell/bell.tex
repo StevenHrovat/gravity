@@ -39,17 +39,17 @@
 \noindent GUID, our earlier paper, found that the Dark Matter Protocol (DMP 0.9.9), an axiom system for trust built on a Duality of
 two independent witnesses, cannot model quantum gravity but can host it as content: every structure DMP shares between parts is held in
 full by two witnesses and is therefore classical. Here we ask what that verdict is good for, and test the first author's hypothesis that
-the Bell experiments honoured by the 2022 Nobel Prize ``did not violate Bell's inequality under Dualism''. First, we list what DMP models,
-hosts, or neither, and the experiments that bear on it: DMP sits on the classical-gravity side, so a positive test of gravitationally
-mediated entanglement refutes every reading in which a DMP structure is the geometry, and if DMP's classical geometry is given
-Oppenheim's dynamics, the trade-off between decoherence and diffusion applies. Second, the hypothesis as stated does not survive. Every
-loophole-free test measured a CHSH value above 2, and three of them read their outcomes on matter, not photons. A Duality whose halves
-decide on their own settings obeys CHSH at most 2; one whose halves see both settings reaches 4 and signals, and nothing in DMP stops it
-at the measured 2.83; a superdeterministic Duality needs a measurement dependence of at least (S-2)/3, which we compute. What survives is
-the hosting reading: the laboratories measured content, while the Duality's own verdicts stay at 2. The Bell experiments are thus
-independent evidence for GUID's verdict. We test the first author's further hypotheses (photons and gluons as carriers without time, the
-mass of the W and Z bosons, decay, the fine-structure constant, gravity as existence asserting itself) against the established results they touch. All checks are a
-public script; we ask readers to break them.
+the Bell experiments honoured by the 2022 Nobel Prize ``did not violate Bell's inequality under Dualism''. First, DMP sits on the
+classical-gravity side: a positive test of gravitationally mediated entanglement refutes every reading in which a DMP structure is the
+geometry, and a classical geometry with Oppenheim's dynamics must diffuse. Second, the hypothesis as stated does not survive. Every
+loophole-free test measured a CHSH value above 2, three of them on matter. A Duality whose halves decide on their own settings obeys
+CHSH at most 2; one whose halves see both settings reaches 4 and signals; a superdeterministic one needs a measurement dependence of at
+least (S-2)/3. What survives is the hosting reading: the laboratories measured content, while the Duality's verdicts stay at 2, so the
+Bell experiments are independent evidence for GUID's verdict. We test the first author's further hypotheses (photons and gluons as
+carriers without time, the W and Z masses, decay, the fine-structure constant, gravity as existence asserting itself) against the results
+they touch, and in an outlook rederive the horizon of a spinning black hole from DMP's containment split: with the Schwarzschild area and
+special relativity as inputs, the Kerr area, the spin bound and the area theorem follow exactly. All checks are a public script; we ask
+readers to break them.
 \end{abstract}
 
 \noindent\textbf{Keywords.} Bell inequalities; CHSH; measurement independence; superdeterminism; no-signalling; Tsirelson bound;
@@ -75,16 +75,18 @@ showing why the 2022 nobel price winning bell experiment actually did not violat
 it as one: we fix what was measured (Section~\ref{sec:measured}), state what any reading of the Duality must give up to reproduce it
 (Section~\ref{sec:readings}), and say plainly which reading survives (Section~\ref{sec:verdict}). The first author added premises and
 further hypotheses while this paper was written; each is quoted in his words and tested against the established result it touches
-(Sections~\ref{sec:photons} and~\ref{sec:further}).
+(Sections~\ref{sec:gravityreading}, \ref{sec:photons} and~\ref{sec:further}). An outlook (Section~\ref{sec:horizon}) maps DMP's words
+onto the way through an event horizon and rederives the horizon of a spinning black hole from DMP's containment split.
 
 \paragraph{Result.} The Bell experiments did violate Bell's inequality. No reading of the Duality changes the measured numbers; a reading
 can only change what the violation means. Of the four readings we find, three fail or carry a stated cost: isolated halves are refuted by
 the data, halves with full reach signal and overshoot nature, a superdeterministic root survives only at a computed price and against
 DMP's own notion of independence. The fourth survives and is GUID's verdict: the outcomes the laboratories recorded are \emph{content},
 and the Duality's own verdicts, which are classical, never violate the inequality. In that reading the 2022 Nobel experiments are an
-independent, empirical confirmation that DMP hosts and does not model.
+independent, empirical confirmation that DMP hosts and does not model. The outlook adds no new number: DMP's containment and floor, with
+two inputs from relativity and one identification, give the Kerr horizon exactly, a result general relativity has had since 1971.
 
-\paragraph{What we claim.} As in GUID: the checks reproduce (\texttt{docs/bell/checks.py}, 26 of 26), and the argument from them to the
+\paragraph{What we claim.} As in GUID: the checks reproduce (\texttt{docs/bell/checks.py}, 29 of 29), and the argument from them to the
 result is as written. We do not claim the result is correct, and we list where we expect it to break (Section~\ref{sec:break}).
 
 \section{What GUID established}\label{sec:guid}
@@ -100,8 +102,9 @@ give exactly 2, at the same time, in different layers of one object.
 does not (negativity 0).
 \item \emph{The Lean.} \lean{NoGo.gate\_obeys\_chsh} (gravity pull request \#17, unmerged) proves that the gate, encoded as
 \lean{gateModel} with each half reading its own setting and a hidden state that does not depend on the settings, obeys
-$|S|\le 2$. \lean{Refute.rf\_full\_reach\_reaches\_four} (on \texttt{main}) proves that a gate whose halves read both settings reaches
-$S=4$, so the bound belongs to the encoding, not to DMP's text. Both are used below.
+$|S|\le 2$. \lean{Refute.rf\_full\_reach\_reaches\_four} (on \texttt{main}, \texttt{evidence/Dmp/Refute.lean}) proves that a gate
+whose halves read both settings reaches $S=4$, so the bound belongs to the encoding, not to DMP's text. Both are used below, by their
+names without the module prefix, as is \lean{rf\_past\_is\_a\_chain} from the same file.
 \end{enumerate}
 
 \noindent We re-ran GUID's \texttt{assembly.py} for this draft: 18 of 18 checks pass.
@@ -122,6 +125,7 @@ Gravity entangles two masses~\cite{bose,mv} & no & yes & GUID Claim A, check [6]
 Superposition of geometries (area sectors) & no & no, while records exist & GUID fact (v) \\
 Classical limit: Lorentzian 3+1, Einstein's equations & open & yes & GUID X5 \\
 Dynamics; $G$, $\hbar$, $\Lambda$ & no & as input & GUID fact (iii) \\
+Kerr horizon, spin bound, area theorem & with two inputs & yes & Section~\ref{sec:kerr}; \chk{B8} \\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -197,9 +201,9 @@ those more qualified :D''
 \noindent\emph{Time slows down.} Gravitational time dilation is measured, down to a height difference of 33\,cm between two optical
 clocks, a fractional shift of about $4\times10^{-17}$ in agreement with general relativity~\cite{chou}. The reading has the right sign: a
 deeper position asserts less often. It has no number until the ``Existence value in the field'' is defined. If the assertion rate is
-$1/E$, the measurements fix $E$: in the weak field $E=(1+2\Phi/c^2)^{-1/2}$, with $\Phi$ the Newtonian potential, which is the inverse of
-general relativity's lapse, the ``refresh rate'' of the earlier physics pass. So the reading reproduces the data exactly when it is
-defined to, and predicts nothing beyond them yet.
+$1/E$, the measurements fix $E$: in the weak field $E=(1+2\Phi/c^2)^{-1/2}$, with $\Phi$ the Newtonian potential, so the assertion
+rate $1/E$ is general relativity's lapse, which the earlier physics pass (gravity pull request \#19, unmerged) reads as the first
+author's ``refresh rate''. So the reading reproduces the data exactly when it is defined to, and predicts nothing beyond them yet.
 
 \noindent\emph{Nothing falls into an event horizon.} This is general relativity as described by a distant observer: in the Schwarzschild
 time of an outside clock an infalling object never crosses the horizon and its light fades. In the infalling object's own time it
@@ -330,7 +334,8 @@ they must exist and thus cease to.''
 
 \noindent\emph{What matches.} A massless particle moves on a null worldline, along which no proper time elapses. A detected photon is
 absorbed: in every photonic Bell test the detection ends it. The photon and the gluon are exactly the gauge bosons of the two symmetries
-the Higgs field leaves unbroken, electromagnetism and colour, which is why both are massless~\cite{weinberg}; this is the cleanest true
+the Higgs field leaves unbroken, electromagnetism (in the electroweak theory~\cite{weinberg}) and colour, which is why both are
+massless; this is the cleanest true
 form of ``the only ones that are not always both''.
 
 \noindent\emph{What does not.} (1) The premise cannot carry Hypothesis~\ref{hy:bell}: three of the loophole-free tests recorded their
@@ -386,7 +391,11 @@ space'' takes the place of the Higgs field's vacuum value, and his reading of th
 a disagreement.
 
 \noindent\emph{What does not, or not yet.} The mechanism predicts numbers the reading does not: the ratio $m_W/m_Z=\cos\theta_W$ at tree
-level, a scalar particle of its own, and couplings to that particle that grow with mass, all measured. ``Three nodes are stable'', taken absolutely, holds for
+level, a scalar particle of its own, and couplings to that particle that grow with mass, all measured. \emph{Verdict: a re-description
+with the right shape and no testable difference yet.} It would get one if it fixed a number, the W/Z mass ratio first. The renaming of
+``part'' to ``node'' is the first author's proposal for DMP's text; nothing in DMP changes without his approval.
+
+\noindent\emph{Three nodes.} ``Three nodes are stable'', taken absolutely, holds for
 the proton (lifetime above $2.4\times10^{34}$ years in the channel $p\to e^+\pi^0$~\cite{superk}) but not for the free neutron (mean life
 $878.4\pm0.5$\,s~\cite{pdgn}) or the other baryons, all of which decay. The first author clarified that he meant it comparatively, in his
 words: ``And for three nodes stable, what I meant with that was generally that it was more
@@ -402,9 +411,8 @@ are built from three-quark clusters, and the most tightly bound nuclide is ${}^{
 certain ways, because it's stable'' is the measured binding-energy curve. One word needs care: a nucleus forms because the bound state has
 lower energy, and the energy it releases raises the total entropy of the world; ``lowest entropy'' holds for the bound system, while the
 whole moves to higher entropy, as the second law requires. ``Losing the least amount of existence to entropy'' fits that second reading.
-\emph{Verdict: a
-re-description with the right shape and no testable difference yet.} It would get one if it fixed a number, the W/Z mass ratio first.
-The renaming of ``part'' to ``node'' is the first author's proposal for DMP's text; nothing in DMP changes without his approval.
+\emph{Verdict: holds as a comparative statement at the bottom of each family; ``lowest entropy'' holds for the bound system, not for the
+whole.}
 
 \subsection{Decay}
 
@@ -478,23 +486,12 @@ testable sign prediction.} ``It adjusts to what it needs to'' is a stabilising c
 the effective coupling of electromagnetism grows with energy (it is close to $1/128$ at the Z mass), so the hot early universe saw a larger
 effective $\alpha$; in physics that runs with energy, not time, and it does not reach 1.
 
-\section{Where we expect it to break}\label{sec:break}
-\begin{enumerate}[nosep]
-\item \emph{Reading (b).} Find a sentence of DMP's text that bounds full reach at $2\sqrt2$ without signalling (for instance by
-information causality~\cite{ic}). That would make the Duality itself a candidate model of the measured correlations.
-\item \emph{Reading (c).} Show that DMP's independence of witnesses is compatible with a root that correlates every setting with its
-hidden state, or that the root needs less than $M_{\min}(S)$ because DMP's hidden states are not a mixture of deterministic strategies.
-\item \emph{The linear programme.} \chk{B5} uses CHSH with two settings per side and Hall's distance; another measure of measurement
-dependence gives another number. The equality $M_{\min}=(S-2)/3$ is checked at six values, not proven.
-\item \emph{Proposition~\ref{pr:bmv}.} It falls with GUID's Claim A and weakens if classical gravity can entangle~\cite{azizhowl}.
-\item \emph{Section~\ref{sec:further}.} Each verdict there rests on the measured value we cite; a better measurement of the drift of
-$\alpha$ with a negative sign would turn the last one into support.
-\end{enumerate}
-
 \section{Outlook: the way through an event horizon}\label{sec:horizon}
 
 \noindent The first author asked for a short outlook on how the model describes the way through an event horizon. This is a mapping of
-DMP's words onto general relativity, not a result; we state where it agrees, where it parts, and that nothing here is tested.
+DMP's words onto general relativity, not a result; we state where it agrees and where it parts. Section~\ref{sec:kerr} goes further
+and rederives the horizon of a spinning black hole from DMP's containment split, with its physical inputs named. None of it is tested
+by a new measurement.
 
 \paragraph{From outside.} DMP's words: a boundary \emph{contains} information ``when it bends trustspace around it so strongly that the
 information cannot cross it: no part beyond the boundary is trusted for any act on that information'', and ``the Event Horizon contains
@@ -521,23 +518,81 @@ information comes out in the radiation after the Page time~\cite{page}. DMP as w
 place it could let information back out is its own Axiom 3, a record that outlives the act; making that precise would be the next step of
 this outlook, and it would change T31's wording, which only the first author can approve.
 
-\paragraph{Why a spinning black hole's horizon is smaller.} The first author, in his words: ``What we can do is actually for the first
-time explain why the event horizon of a spinning black hole is smaller. That would be a nice outlook to give.'' General relativity
-already gives the size: for mass $M$ and spin $a=J/M^2$ (units $G=c=1$) the outer horizon of the Kerr solution~\cite{kerr} sits at
-$r_+=M\bigl(1+\sqrt{1-a^2}\bigr)$, from $2M$ without spin down to $M$ at the largest spin. It also gives the reason, in Christodoulou's
-split of the mass~\cite{christodoulou}: the horizon area fixes an \emph{irreducible} mass, $A=16\pi M_{\mathrm{irr}}^2$, and the rest of $M$
-is rotational energy that can be taken out from outside the horizon, by particles splitting in the ergosphere (Penrose and
-Floyd~\cite{penrosefloyd}) or by magnetic fields (Blandford and Znajek~\cite{bz}, the standard engine of jets). Check \chk{B8} confirms
-that the horizon depends on the spin only through that split, $r_+=2M_{\mathrm{irr}}^2/M$, and that at the largest spin
-$1-1/\sqrt2\approx29\%$ of the mass is rotational.
+\subsection{The spinning black hole, rederived from the Duality}\label{sec:kerr}
 
-\noindent In DMP's words the reason reads: a boundary contains only what no part beyond it can act on. The irreducible mass is contained;
-the rotational energy is not, because acts from outside can still reach it and take it away. The spin itself is one more count, visible to
-every reader (Axiom 3); the first author had pointed at this before (DMP pull request \#14, 27 October 2026): ``Also may explaining
-spinning black holes attributes, since they leak one more information.'' So, for a given total mass,
-a spinning black hole contains less, and the boundary that contains it is smaller. This agrees exactly with general relativity,
-because it is Christodoulou's split read in DMP's terms. It is the first reading of the result in DMP's vocabulary, not a first
-explanation of it, and it adds no number general relativity does not already give.
+\noindent The first author, in his words: ``What we can do is actually for the first time explain why the event horizon of a spinning
+black hole is smaller. That would be a nice outlook to give.'' And then: ``Let's completely redo the spinning section and just also
+rederive it from our theory.'' We do so below, in units $G=c=1$, and mark every step as coming from DMP's text~(D), from the first
+author's reading~(R), or from established physics~(P). General relativity has the exact answer since Kerr~\cite{kerr}: a black hole of
+mass $M$ and angular momentum $J$, spin $a=J/M^2$, has the horizon area $A=8\pi M^2\bigl(1+\sqrt{1-a^2}\bigr)$, from $16\pi M^2$ without
+spin down to half of that at the largest spin. The question is whether DMP's words reach the same formula, and with how much help.
+
+\paragraph{Step 1: split the mass (D).} A boundary \emph{contains} what no part beyond it can act on. Split the black hole's mass into the
+part $m$ that no act from outside can reach, and the rest, which acts from outside can reach and take away.
+
+\paragraph{Step 2: the contained part never shrinks (D).} Through a containing boundary ``what still leaves is entropy and nothing else''
+(T31). No outside act takes anything from $m$, so under every act from outside $\delta m\ge0$.
+
+\paragraph{Step 3: the spin is one more count (D, R).} Axiom 3: every other reader ``sees the counts always''. Outside a black hole those
+counts are $M$ and $J$ (with charge, here zero)~\cite{israel}; $J$ is the first author's ``one more information'' that a spinning hole
+leaks. Being readable and actable from outside, the spin belongs to the actable part, and it sits where outside acts reach: at the
+containing boundary.
+
+\paragraph{Step 4: the contained part alone sets the boundary (R, P).} In the first author's reading, gravity is existence asserting
+itself, so what bounds is what is contained. For a contained mass $m$ with nothing actable around it, the boundary is the Schwarzschild
+horizon of radius $2m$, so its area is $A=16\pi m^2$. This is the one place where general relativity's constant enters: DMP derives no
+$G$ (GUID, fact (iii)).
+
+\paragraph{Step 5: add the actable part (P, heuristic).} The spin count $J$, carried at the boundary of radius $R=2m$, is a momentum
+$p=J/R=J/(2m)$ of the actable part. Combine it with the contained part as special relativity combines rest energy and momentum,
+$M^2=m^2+p^2$:
+\[
+M^2=m^2+\frac{J^2}{4m^2}.
+\]
+This is exactly the mass formula Christodoulou and Ruffini derived from general relativity, with $m$ the irreducible
+mass~\cite{christodoulou,cr}. The step that carries the spin at $R=2m$ as $p=J/R$ is an identification, not a theorem of DMP; that it lands
+on the exact formula is checked \chk{B8}, not proven to be forced.
+
+\paragraph{Step 6: solve for the boundary.} At fixed $M$ and $J$ the formula is a quadratic in $m^2$, $m^4-M^2m^2+J^2/4=0$, with the
+solution $m^2=\tfrac{M^2}{2}\bigl(1+\sqrt{1-a^2}\bigr)$. Three results follow, each checked in \chk{B8}:
+\begin{enumerate}[nosep]
+\item \emph{The horizon.} $A=16\pi m^2=8\pi M^2\bigl(1+\sqrt{1-a^2}\bigr)$, Kerr's area exactly, for every spin. The horizon of a spinning
+black hole is smaller because, at the same total mass, part of the existence is held as actable spin at the boundary instead of being
+contained, and only the contained part sets the boundary.
+\item \emph{The largest spin.} $m$ is real only for $a\le1$, that is $J\le M^2$: the bound on the spin of a black hole comes out of the
+derivation instead of being put in. A boundary cannot carry more spin count than its contained part can hold.
+\item \emph{What can be taken out.} $M-m$, up to $1-1/\sqrt2\approx29\%$ of the mass at $a=1$, the value of~\cite{cr}; taking it out is
+what particles splitting in the ergosphere (Penrose and Floyd~\cite{penrosefloyd}) and magnetic fields (Blandford and Znajek~\cite{bz},
+the standard engine of jets) do.
+\end{enumerate}
+
+\paragraph{Step 7: the floor is the area theorem.} By step 2, $\delta m\ge0$, so $\delta A\ge0$ under every act from outside: Hawking's
+area theorem~\cite{hawkingarea}, which bounds what two merging black holes can radiate, here read as DMP's floor.
+
+\paragraph{What this is.} DMP supplied the split (step 1), its direction (step 2) and the place of the spin (step 3); the first author's
+reading put the boundary on the contained part (step 4); general relativity supplied the Schwarzschild area and special relativity the
+way energies combine (steps 4 and 5). With those two physical inputs and one identification, the words of DMP rederive the Kerr horizon,
+its spin bound, its extractable energy and the area theorem, all exactly. It is not a derivation from DMP alone, and it is not a new
+number: every result above is in general relativity since 1963 to 1971. What is new is that DMP's containment and floor are the right
+pieces: the split general relativity found by computation is the split DMP's text draws by definition.
+
+\section{Where we expect it to break}\label{sec:break}
+\begin{enumerate}[nosep]
+\item \emph{Reading (b).} Find a sentence of DMP's text that bounds full reach at $2\sqrt2$ without signalling (for instance by
+information causality~\cite{ic}). That would make the Duality itself a candidate model of the measured correlations.
+\item \emph{Reading (c).} Show that DMP's independence of witnesses is compatible with a root that correlates every setting with its
+hidden state, or that the root needs less than $M_{\min}(S)$ because DMP's hidden states are not a mixture of deterministic strategies.
+\item \emph{The linear programme.} \chk{B5} uses CHSH with two settings per side and Hall's distance; another measure of measurement
+dependence gives another number. The equality $M_{\min}=(S-2)/3$ is checked at six values, not proven.
+\item \emph{Proposition~\ref{pr:bmv}.} It falls with GUID's Claim A and weakens if classical gravity can entangle~\cite{azizhowl}.
+\item \emph{The spinning black hole.} Step 5 identifies the spin, carried at the boundary, with a momentum $J/2m$. Show that another
+identification as natural gives another formula, and the rederivation is a fit; show that DMP's text forces this one, and it is a
+derivation.
+\item \emph{What leaves.} T31 says only entropy leaves a containing boundary; a demonstration that black-hole evaporation returns the
+information~\cite{page} would contradict T31 as written.
+\item \emph{Section~\ref{sec:further}.} Each verdict there rests on the measured value we cite; a better measurement of the drift of
+$\alpha$ with a negative sign would turn the last one into support.
+\end{enumerate}
 
 \section{Conclusion}
 
@@ -545,16 +600,16 @@ What GUID's verdict buys is a commitment: DMP's own structure is classical, so i
 and if that geometry has dynamics, it diffuses; experiments now in preparation can refute both. The Bell experiments of the 2022 Nobel
 Prize did violate Bell's inequality, and under Dualism that is what one should expect of content. The Duality's verdicts never violated it;
 the measured particles did. Two very different experiments, one about gravity and one about non-locality, point to the same edge:
-\emph{host, not model}. The outlook of Section~\ref{sec:horizon} keeps the same balance: DMP's words read the horizon of a
-spinning black hole as smaller because spin energy stays actable from outside and is therefore not contained, which agrees exactly with
-general relativity because it is Christodoulou's split in DMP's terms; it is a new reading of a known explanation, not a new number. The
-first author put the stance in one line: ``Axiomatically, since we already don't have all the information
+\emph{host, not model}. The outlook of Section~\ref{sec:horizon} keeps the same balance: from DMP's containment split, its floor and its counts,
+with the Schwarzschild area and special relativity as the only physical inputs, the Kerr horizon, its spin bound, its extractable energy
+and the area theorem come out exactly; general relativity had them first, and what the rederivation shows is that DMP draws the same split
+by definition. The first author put the stance in one line: ``Axiomatically, since we already don't have all the information
 that was contained at the start, we can only know existence and can know no more about our reality. So axiomatically, we can infer all
 that we can and no more.''
 
 \section*{Contributions and use of AI}
-Steven Hrovat conceived DMP, set the questions of this paper and gave the hypotheses quoted in Sections~\ref{sec:verdict}--\ref{sec:further}
-in his own words; he takes responsibility for the axiom system. Sirius (Claude Opus 5.5, Anthropic) checked each hypothesis against the
+Steven Hrovat conceived DMP, set the questions of this paper and gave the hypotheses and readings quoted in Sections~\ref{sec:gravityreading}, \ref{sec:verdict}--\ref{sec:further}
+and~\ref{sec:horizon} in his own words; he takes responsibility for the axiom system. Sirius (Claude Opus 5.5, Anthropic) checked each hypothesis against the
 literature, wrote and ran \texttt{docs/bell/checks.py}, and wrote this text. Every reference was checked against a publisher, arXiv or
 collaboration record on 29 October 2026; the record is \texttt{docs/bell/README.md}.
 
@@ -658,6 +713,8 @@ black hole'', \emph{Astrophys. J. Lett.} 875, L1 (2019).
 Lett.} 11, 237 (1963).
 \bibitem{christodoulou} D. Christodoulou, ``Reversible and irreversible transformations in black-hole physics'', \emph{Phys. Rev. Lett.}
 25, 1596 (1970).
+\bibitem{cr} D. Christodoulou, R. Ruffini, ``Reversible transformations of a charged black hole'', \emph{Phys. Rev. D} 4, 3552 (1971).
+\bibitem{hawkingarea} S.~W. Hawking, ``Gravitational radiation from colliding black holes'', \emph{Phys. Rev. Lett.} 26, 1344 (1971).
 \bibitem{penrosefloyd} R. Penrose, R.~M. Floyd, ``Extraction of rotational energy from a black hole'', \emph{Nature Phys. Sci.} 229, 177
 (1971).
 \bibitem{bz} R.~D. Blandford, R.~L. Znajek, ``Electromagnetic extraction of energy from Kerr black holes'', \emph{Mon. Not. R. Astron. Soc.}
