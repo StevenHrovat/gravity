@@ -12,7 +12,7 @@ since the content varies so dramatically and is only an application of DMP, plea
 
 | File | What |
 |---|---|
-| `existence.tex` | the paper (LaTeX, `article` class, inline bibliography, 20 pages) |
+| `existence.tex` | the paper (LaTeX, `article` class, inline bibliography, 21 pages) |
 | `existence.pdf` | the paper as PDF, built from `existence.tex` |
 | `checks.py` | every numerical claim: checks E1 to E20, 70 of 70 (numpy, sympy, scipy) |
 | `README.md` | this spec: what backs each claim, which notes are quoted where, the sources checked |
