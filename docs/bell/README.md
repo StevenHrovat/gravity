@@ -11,7 +11,7 @@ science. Let's focus on showing why the 2022 nobel price winning bell experiment
 
 | File | What |
 |---|---|
-| `bell.tex` | the paper (LaTeX, `article` class, inline bibliography, 12 pages) |
+| `bell.tex` | the paper (LaTeX, `article` class, inline bibliography, 13 pages) |
 | `bell.pdf` | the paper as PDF, built from `bell.tex` |
 | `checks.py` | every numerical claim: checks B1 to B7, 22 of 22 (numpy; scipy for B5's linear programme) |
 | `README.md` | this spec: what backs each claim, the owner's words with times, the open questions |
