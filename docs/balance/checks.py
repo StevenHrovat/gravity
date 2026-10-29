@@ -27,6 +27,10 @@ these checks alone.
   [B16] "the Higgs field [...] is indistinguishable [...] from G0 asserting Existence": if gravity weighed only the Higgs-given mass
         (electrons in full, about 9% of each nucleon, none of the nuclear binding), titanium and platinum would fall differently by
         about 1e-3; MICROSCOPE finds them equal to about 1e-15
+  [B17] Lemma 1, Axiom 3's record: what every witness reads in full must be classical; one unitary copies two states only if their
+        overlap is 0 or 1, and two non-commuting states cannot be broadcast
+  [B18] Proposition 2, Axiom 1's "neither overrules the other": a scalar on the gravitational term (Brans-Dicke) moves gamma off 1;
+        Cassini forces omega above 4e4
 """
 
 import itertools
@@ -252,6 +256,35 @@ for f_N in (0.07, 0.09, 0.11):
     eta_pred = 2 * abs(share["Ti-48"] - share["Pt-195"]) / (share["Ti-48"] + share["Pt-195"])
     print(f"     nucleon Higgs share {f_N:.2f}: Higgs share Ti {share['Ti-48']:.5f}, Pt {share['Pt-195']:.5f}, predicted eta {eta_pred:.2e}")
     check_true(f"with a nucleon Higgs share of {f_N:.2f} the predicted eta exceeds MICROSCOPE's bound by more than 1e9", eta_pred > 1e9 * eta_bound)
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[B17] Lemma 1: 'a record ... that every witness of that act can read in full'. What can be read in full by two is classical")
+# A record every witness holds in full is copied to each of them. One unitary U with U|s>|0> = |s>|s> for two states s, t preserves
+# inner products, so <s|t> = <s|t>^2: the overlap is 0 or 1 (Wootters and Zurek 1982). For mixed states a set can be broadcast iff it
+# commutes (Barnum et al. 1996).
+ket0 = np.array([1.0, 0.0])
+ket1 = np.array([0.0, 1.0])
+ketp = np.array([1.0, 1.0]) / np.sqrt(2)
+ov = float(ket0 @ ketp)
+check("overlap of |0> and |+>", ov, 1 / np.sqrt(2))
+check_true("<0|+> differs from <0|+>^2, so no unitary records both in full", abs(ov - ov**2) > 0.2)
+for name, (u, v) in {"|0>, |1>": (ket0, ket1), "|0>, |0>": (ket0, ket0)}.items():
+    o = float(u @ v)
+    check_true(f"{name}: overlap {o:.0f} equals its square, a copier exists (a classical alphabet)", abs(o - o**2) < 1e-12)
+rho_a, rho_b = np.outer(ket0, ket0), np.outer(ketp, ketp)
+check("commutator norm of the two states (nonzero: the pair cannot be broadcast)", np.linalg.norm(rho_a @ rho_b - rho_b @ rho_a),
+      1 / np.sqrt(2))
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[B18] Proposition 2: a scalar that multiplies the gravitational term overrules the existence half; Cassini bounds it")
+# Brans-Dicke: gamma = (1 + omega) / (2 + omega). Cassini: gamma - 1 = (2.1 +- 2.3) e-5 (Bertotti, Iess, Tortora 2003); 2 sigma below
+# the central value is -2.5e-5.
+omegas = np.array([1.0, 10.0, 1e3, 1e6, 1e9])
+gam = (1 + omegas) / (2 + omegas)
+check_true("Brans-Dicke gamma - 1 = -1/(omega + 2) for every omega tried", np.allclose(gam - 1, -1 / (omegas + 2), rtol=1e-6, atol=1e-15))
+omega_min = 1 / 2.5e-5 - 2
+check("smallest omega Cassini allows at 2 sigma", omega_min, 39998.0)
+check_true("gamma tends to 1 as omega grows (Brans-Dicke reduces to general relativity)", abs(gam[-1] - 1) < 1e-8)
 
 # ---------------------------------------------------------------------------------------------------------------------------------
 passed = sum(results)
