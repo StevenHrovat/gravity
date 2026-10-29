@@ -17,6 +17,7 @@ in sections 5 and 11.
 |---|---|
 | `balance.tex` | the paper (LaTeX, `article` class, inline bibliography, 13 pages) |
 | `balance.pdf` | the paper as PDF, built from `balance.tex` |
+| `de/der-ausgeglichene-zustand.pdf` | the German translation (14 pages), at the owner's request (2026-10-29 22:20Z, 22:26Z); the English original governs. Only the PDF is tracked: the public-repository scan (`tools/scrub-scan.sh`) rejects German letters in tracked text, so the LaTeX source stays outside the repository |
 | `checks.py` | every numerical claim: checks B1 to B16, 46 of 46 (numpy) |
 | `README.md` | this file: what backs each claim, which notes are quoted where, the sources |
 
