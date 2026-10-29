@@ -14,13 +14,13 @@ since the content varies so dramatically and is only an application of DMP, plea
 |---|---|
 | `existence.tex` | the paper (LaTeX, `article` class, inline bibliography, 21 pages) |
 | `existence.pdf` | the paper as PDF, built from `existence.tex` |
-| `checks.py` | every numerical claim: checks E1 to E20, 70 of 70 (numpy, sympy, scipy) |
+| `checks.py` | every numerical claim: checks E1 to E21, 73 of 73 (numpy, sympy, scipy) |
 | `README.md` | this spec: what backs each claim, which notes are quoted where, the sources checked |
 
 ## Build and check
 
 ```sh
-python3 docs/existence/checks.py                 # 70 of 70 checks passed
+python3 docs/existence/checks.py                 # 73 of 73 checks passed
 cd docs/existence && export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct -- existence.tex) FORCE_SOURCE_DATE=1 \
   && pdflatex existence.tex && pdflatex existence.tex && rm -f existence.aux existence.log existence.out
 ```
@@ -38,7 +38,7 @@ the classical side of the Bose-Marletto-Vedral test. The owner's "Existence = g 
 graviton: established arguments collapse the detector, not the graviton; one quantum forms a horizon only at the Planck energy, and then
 any quantum (E6); single-graviton bars cannot tell a graviton from a classical wave (Carney, Domcke, Rodd 2024), as the owner said; but the
 classical choice is falsifiable by gravitationally mediated entanglement. Bell "not violated under Dualism" is refuted as stated and
-holds in the hosting reading (E19). Ledger of 30 statements: 17 hold or hold as readings, 8 refuted, 5 untested or live.
+holds in the hosting reading (E19). Ledger of 31 statements: 18 hold or hold as readings, 8 refuted, 5 untested or live.
 
 ## What backs each claim
 
@@ -64,6 +64,7 @@ holds in the hosting reading (E19). Ledger of 30 statements: 17 hold or hold as 
 | BMV geometry: entangling phase 1 rad after 8 s with a coherent mediator, none with a recorded one | [E18] |
 | CHSH: local 2, full reach 4 and signals, singlet 2 sqrt 2, superdeterminism (S - 2)/3, measured S above 2 | [E19] (scipy linear programme) |
 | Kerr area, spin bound and 29% from M^2 = m^2 + (J/2m)^2 | [E20] |
+| Positronium 125 ps / 142 ns at leading order; muon 2.19 microseconds from Fermi's formula | [E21] |
 
 ## The owner's words in the paper
 
@@ -95,9 +96,9 @@ is quoted in its edited form.
 | 18:18 | photons as act carriers; gravitons shouldn't exist | 4.1, 7.1 |
 | 18:22 | gluons as IM packets; CMOS as the strong force | 7.3 (by its 18:25 and 23:43 follow-ups) |
 | 18:25 | three-node quark, two-node meson | 7.3 |
-| 19:14 | Yang-Mills? | 7.5 |
-| 19:30 | strong, weak, dark matter, dark energy | 7.5 |
-| 20:19 | IM through a horizon | 7.5 |
+| 19:14 | Yang-Mills? | 7.6 |
+| 19:30 | strong, weak, dark matter, dark energy | 7.6 |
+| 20:19 | IM through a horizon | 7.6 |
 | 21:20 | FSC as strong IM / EM binding | 8 (by its 21:47 follow-up, which the owner wrote after looking the formula up) |
 | 21:47 | FSC started at 1, early gravity | 2.2, 8.1, 8.2 |
 | 22:17 | things go in, total state comes out | 5.1 |
@@ -106,7 +107,7 @@ is quoted in its edited form.
 | 23:58 | IM-net; ~1/137 | 8.1 |
 | 10-29 00:53 | black holes contained in the host dimension; possibility space | 5.1 |
 | 01:40 | Einstein; Existence = g h / c; the bosons; Trust = Existence | 2.3, 3.1, 3.5, 7.2 |
-| 11:37 | neutrinos | 7.4 |
+| 11:37 | neutrinos | 7.5 |
 | 12:30 | FSC as coupling per energy; early Kugelblitz | 8.1 |
 | 13:23 | FSC is how much the EM field exists | 2.2 |
 | 13:26 | FSC as universal lowest entropy | 8.1 |
@@ -117,7 +118,7 @@ is quoted in its edited form.
 
 Messages in the project threads on 2026-10-29: 09:24 (Bell under Dualism), 09:34 (alpha "slightly lower still"), 09:39 ("we can infer
 all that we can and no more"), 09:41 (HPE correction), 15:20 (the graviton), 15:22 (single-graviton bars, simplicity), 15:25
-(vector field and scalar field; photons, weight, singular quanta), 15:26 (the firewall origin), 15:33 (3+1 spans the existence vector), 16:07 (Higgs scope: only the bosons that need it).
+(vector field and scalar field; photons, weight, singular quanta), 15:26 (the firewall origin), 15:33 (3+1 spans the existence vector), 16:07 (Higgs scope: only the bosons that need it), 16:16 (leptons as GG, the protocol between clusters; section 7.4).
 
 Emoji in quotes are written as words in brackets (pdflatex has no emoji font). "in its tooth" (15:20) is quoted as dictated; the paper
 reads it as "in its truth".

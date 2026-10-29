@@ -25,6 +25,8 @@ its expected value; the last line counts them. The paper stands on these checks 
   [E19] Bell: halves that decide on their own setting stay at S <= 2; full reach gives 4 and signals; the singlet gives 2 sqrt(2);
         superdeterminism needs measurement dependence (S - 2)/3; the three loophole-free CHSH values lie above 2
   [E20] the spinning black hole from DMP's containment split: M^2 = m^2 + (J/2m)^2 gives Kerr's horizon area, a <= 1 and the 29%
+  [E21] leptons as the inter-cluster protocol: a two-lepton cluster (positronium) falls over in 125 ps or 142 ns; the muon, once its
+        stability is not protected, decays in 2.2 microseconds (Fermi's formula)
 """
 
 import math
@@ -418,6 +420,19 @@ for a in np.linspace(0, 1, 101):
 check("largest relative gap to Kerr's horizon area, spins 0 to 1 in steps of 0.01", worst, 0, atol=1e-12)
 check_true("no real contained mass above a = 1: the spin bound comes out of the formula", contained_mass(1.001) is None)
 check("share of the mass that can be taken out at a = 1, 1 - m/M", 1 - contained_mass(1.0), 1 - 1 / np.sqrt(2))
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[E21] 'A 2 node cluster still is not good design': two-lepton clusters and the leptons that are not protected")
+alpha_fs = 7.2973525693e-3
+me_c2 = 8.1871057769e-14  # J, electron rest energy
+tau_pps = 2 * hbar / (alpha_fs**5 * me_c2)  # para-positronium, leading order: Gamma = alpha^5 m_e c^2 / (2 hbar)
+check("para-positronium lifetime, leading order (measured 125 ps)", tau_pps, 125.1e-12, rtol=2e-2)
+gamma_ops = 2 * (math.pi**2 - 9) / (9 * math.pi) * alpha_fs**6 * me_c2 / hbar  # ortho-positronium, Ore and Powell 1949
+check("ortho-positronium lifetime, leading order (measured 142.05 ns; radiative corrections give the rest)", 1 / gamma_ops, 142.05e-9,
+      rtol=3e-2)
+GF, m_mu, hbar_GeVs = 1.1663788e-5, 0.1056583755, 6.582119569e-25  # GeV^-2, GeV, GeV s
+tau_mu = hbar_GeVs / (GF**2 * m_mu**5 / (192 * math.pi**3))
+check("muon lifetime from Fermi's formula G_F^2 m^5 / (192 pi^3) (measured 2.197 microseconds)", tau_mu, 2.1969811e-6, rtol=1e-2)
 
 # ---------------------------------------------------------------------------------------------------------------------------------
 passed = sum(results)

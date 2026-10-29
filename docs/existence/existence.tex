@@ -56,7 +56,7 @@ undetectable against Dyson, Rothman and Boughn, and the 2024 single-graviton pro
 the \emph{detector}, not the graviton; that one quantum forms a horizon only at the Planck energy; and that his choice of classical gravity is
 falsifiable, not by counting gravitons but by gravitationally mediated entanglement. We then test his readings of the Bell experiments,
 black-hole efficiency, the hadrons, the bosons, neutrinos and the fine-structure constant, each against the measurement it touches. All
-numbers come from one public script of 70 checks. We claim that the construction exists and reproduces, not that it is correct, and we
+numbers come from one public script of 73 checks. We claim that the construction exists and reproduces, not that it is correct, and we
 ask readers to break it.
 \end{abstract}
 
@@ -93,10 +93,10 @@ three of its properties (free fall is universal, the scalar does not enter the g
 classical). That structure is not new physics: it is general relativity, in its tetrad form, plus Bekenstein's 1982 theory of a varying
 $\alpha$, plus the classical-gravity side of the current experimental programme. What is new is that DMP's axioms select it, and that the
 first author's ``Existence'' turns out to be the Unruh temperature up to $4\pi^2$. DMP cannot model quantum gravity and can host it
-(Proposition~\ref{pr:host}). Of the 30 statements in the ledger (Section~\ref{sec:ledger}), 17 hold or hold as readings, eight are refuted by a
+(Proposition~\ref{pr:host}). Of the 31 statements in the ledger (Section~\ref{sec:ledger}), 18 hold or hold as readings, eight are refuted by a
 specific measurement or calculation, and the rest are untested or wait for a measurement that is now possible.
 
-\paragraph{What we claim.} The checks reproduce (\texttt{docs/existence/checks.py}, 70 of 70), and the argument from them to each
+\paragraph{What we claim.} The checks reproduce (\texttt{docs/existence/checks.py}, 73 of 73), and the argument from them to each
 verdict is as written. We do not claim the structure is correct. This paper contains no machine-checked proof: its derivations are short
 and written out in full, and a Lean toolchain was not available in the session that wrote it.
 
@@ -603,6 +603,35 @@ baryon number. \emph{Verdict: holds for DMP's T3a; holds as a comparative readin
 at two and four, where nature has bound states the voting rule calls weak.} ``Quarks decay'' needs one correction: quarks change flavour
 through the weak force, but a quark never decays into nothing.
 
+\subsection{Leptons as the protocol between clusters}
+
+The first author, 29 October, 16:16Z, after reading the Standard Model's particle table: ``Since the bosons with a spin one all seem to be
+internal IM, though one is tunneled through Existence, the leptons, with spin 1/2, seem to instead be the instruction set of GG. IM was always
+the protocol that allowed fully verifiable internal traffic, so I designed a protocol for linking CMOS clusters, I called it GG. Since
+IM/bosons are implicitly trusted and only need to be verified when from outside, they only carry implicit Existence then, GG/leptons are
+always expected to traverse Existence, but only as the information they carry and the certificate, that they are trusted. Applied to
+leptons, the information they carry may be derived from G0, which gives them inherent stability, since they are linked to Existence itself,
+but once that inherently axiomatically stable duality is broken, a 2 node cluster still is not good design (see mesons).''
+
+\paragraph{Test.} The spin-1 bosons are the gauge bosons, the carriers of the forces \tagP, which matches Section~\ref{sec:particles}'s
+reading of them as IM. The line between ``internal'' and ``between clusters'' is not spin, though: the quarks have spin $1/2$ as well. What
+separates the leptons from the quarks is colour. Leptons feel no strong force, so they are never confined inside a hadron and can travel
+between clusters; and the electrons are exactly what links nuclei to each other, in every chemical bond and every current \tagP. In that
+corrected form the reading is apt: the leptons are the colour-neutral matter that carries traffic between clusters. Each lepton carries
+conserved labels, electric charge and lepton number, which fit ``the certificate that they are trusted''; two corrections apply: leptons
+are not information only, since the charged ones have mass from the Higgs field (Section~\ref{sec:particles}), and neutrinos change flavour
+as they travel, so the flavour label is not kept.
+
+The stability claim holds for the first generation only. The electron is stable (its lifetime exceeds $6.6\times10^{28}$ years~\cite{borexino})
+because it is the lightest particle with electric charge, and the lightest neutrino is stable for the same kind of reason; the muon decays in
+$2.2$\,\textmu s through the W boson, as Fermi's formula gives within half a per cent \chk{E21}, and the tau in $0.29$\,ps~\cite{pdg}. In
+established physics the electron's stability comes from a conservation law, which the first author's ``linked to Existence itself'' reads
+well \tagR. The two-node claim holds: a cluster of two leptons, positronium (an electron and a positron), falls over in $125$\,ps or
+$142$\,ns depending on its spin, and the leading-order formulas give both within three per cent \chk{E21}~\cite{orepowell}; like the neutral
+mesons, a particle and its antiparticle carry no net conserved number that would protect them. Hydrogen is no counterexample: its proton is
+itself a three-quark cluster, and the electron is its link. \emph{Verdict: holds as a reading, with the line drawn by colour rather than
+spin; stability holds for the first generation, through conservation laws; ``a 2 node cluster is not good design'' holds for positronium.}
+
 \subsection{Neutrinos}
 
 At 11:37Z: ``Since they interact with external-IM/weak force and gravity/Existence, they seem to be the dualistic remnants of the
@@ -738,6 +767,7 @@ Photons, gluons cannot decay & holds for free massless quanta & \chk{E13} \\
 Higgs bestows existence on the bosons that need it & holds for W, Z; ``only the bosons'' refuted (fermion Yukawas) & Higgs mechanism; LHC \\
 W, Z as $h\cdot h$ & refuted (dimension); spin in units of $\hbar$ holds & \chk{E14} \\
 2, 3, 4, 5 nodes & holds for DMP T3a; comparative for hadrons; $c\bar c$ pentaquarks match & \chk{E11} \\
+Leptons as GG, the protocol between clusters & holds as a reading (line by colour, not spin); positronium falls over & \chk{E21} \\
 Neutrinos remnants of the handshake & holds as a reading & lepton number \\
 Neutrinos drive the expansion & refuted & \chk{E12}; DESI \\
 Strong and weak pass a horizon & refuted & general relativity \\
@@ -891,6 +921,10 @@ momentum tensor'', \emph{Phys. Rev. Lett.} 121, 212001 (2018).
 \bibitem{tcc} LHCb Collaboration, ``Observation of an exotic narrow doubly charmed tetraquark'', \emph{Nat. Phys.} 18, 751 (2022).
 \bibitem{lhcbpc} LHCb Collaboration, ``Observation of $J/\psi p$ resonances consistent with pentaquark states in $\Lambda_b^0\to J/\psi
 K^-p$ decays'', \emph{Phys. Rev. Lett.} 115, 072001 (2015).
+\bibitem{borexino} M. Agostini et al. (Borexino Collaboration), ``Test of electric charge conservation with Borexino'', \emph{Phys. Rev.
+Lett.} 115, 231802 (2015).
+\bibitem{pdg} S. Navas et al. (Particle Data Group), ``Review of particle physics'', \emph{Phys. Rev. D} 110, 030001 (2024).
+\bibitem{orepowell} A. Ore, J.~L. Powell, ``Three-photon annihilation of an electron-positron pair'', \emph{Phys. Rev.} 75, 1696 (1949).
 \bibitem{desi} DESI Collaboration, ``DESI 2024 VI: cosmological constraints from the measurements of baryon acoustic oscillations'',
 \emph{JCAP} 02 (2025) 021.
 \bibitem{weinberg} S. Weinberg, ``A model of leptons'', \emph{Phys. Rev. Lett.} 19, 1264 (1967).
