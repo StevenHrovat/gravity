@@ -1,0 +1,536 @@
+% Host, not model: the follow-up to GUID. What DMP can say about quantum gravity, and what the Bell experiments say about the Duality.
+% Source of the paper. Build: see README.md in this folder (pdflatex twice; no BibTeX, the bibliography is inline).
+% Licence: Apache License 2.0, as GUID.
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\newtheorem{claim}{Claim}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{hypothesis}{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\setlength{\emergencystretch}{3em}
+\newcommand{\chk}[1]{\textsf{[#1]}}
+
+\title{Host, Not Model\\[0.6ex]
+\large What the Duality of Trust can say about quantum gravity, and what the Bell experiments say about the Duality}
+\author{Steven Hrovat\thanks{Independent. Contact: \href{mailto:hrovat.steven@googlemail.com}{\nolinkurl{hrovat.steven@googlemail.com}}.}
+\and Sirius (Claude Opus 5.5)\thanks{An AI system by Anthropic, working as the coordinator of the first author's projects. See
+``Contributions and use of AI''.}}
+\date{Draft of 29 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent GUID, our earlier paper, found that the Dark Matter Protocol (DMP 0.9.9), an axiom system for trust built on a Duality of
+two independent witnesses, cannot model quantum gravity but can host it as content: every structure DMP shares between parts is held in
+full by two witnesses and is therefore classical. Here we ask what that verdict is good for, and test the first author's hypothesis that
+the Bell experiments honoured by the 2022 Nobel Prize ``did not violate Bell's inequality under Dualism''. First, we list what DMP models,
+hosts, or neither, and the experiments that bear on it: DMP sits on the classical-gravity side, so a positive test of gravitationally
+mediated entanglement refutes every reading in which a DMP structure is the geometry, and if DMP's classical geometry is given
+Oppenheim's dynamics, the trade-off between decoherence and diffusion applies. Second, the hypothesis as stated does not survive. Every
+loophole-free test measured a CHSH value above 2, and three of them read their outcomes on matter, not photons. A Duality whose halves
+decide on their own settings obeys CHSH at most 2; one whose halves see both settings reaches 4 and signals, and nothing in DMP stops it
+at the measured 2.83; a superdeterministic Duality needs a measurement dependence of at least (S-2)/3, which we compute. What survives is
+the hosting reading: the laboratories measured content, while the Duality's own verdicts stay at 2. The Bell experiments are thus
+independent evidence for GUID's verdict. We test the first author's further hypotheses (photons and gluons as carriers without time, the
+mass of the W and Z bosons, decay, the fine-structure constant) against the established results they touch. All checks are a
+public script; we ask readers to break them.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Bell inequalities; CHSH; measurement independence; superdeterminism; no-signalling; Tsirelson bound;
+gravitationally mediated entanglement; classical-quantum gravity; information-theoretic axioms; trust.
+
+\noindent\textbf{Subject.} Information Theory (cs.IT); related: Quantum Physics (quant-ph), Logic in Computer Science (cs.LO).
+
+\section{Introduction}\label{sec:intro}
+
+GUID~\cite{guid} asked whether the axioms of the Dark Matter Protocol (DMP) can be assembled to model quantum gravity, and answered: they
+cannot, but they can host it. DMP's shared structures (the gate, the record, the layout) are forced by its axioms to be classical,
+because each is held in full by two independent witnesses, and a classical mediator cannot entangle two masses. Content that DMP carries
+but says nothing about can be anything, including a running quantum theory of gravity.
+
+The first author set the question of this paper on 29 October 2026, in these words:
+
+\begin{quote}
+``Let's make a followup paper about exactly what we can now model from QG and how it could be used for real science. Let's focus on
+showing why the 2022 nobel price winning bell experiment actually did not violate Bell inequality under Dualism.''
+\end{quote}
+
+\noindent The first half asks what the verdict buys (Section~\ref{sec:part1}). The second is a hypothesis about an experiment, and we treat
+it as one: we fix what was measured (Section~\ref{sec:measured}), state what any reading of the Duality must give up to reproduce it
+(Section~\ref{sec:readings}), and say plainly which reading survives (Section~\ref{sec:verdict}). The first author added premises and
+further hypotheses while this paper was written; each is quoted in his words and tested against the established result it touches
+(Sections~\ref{sec:photons} and~\ref{sec:further}).
+
+\paragraph{Result.} The Bell experiments did violate Bell's inequality. No reading of the Duality changes the measured numbers; a reading
+can only change what the violation means. Of the four readings we find, three fail or carry a stated cost: isolated halves are refuted by
+the data, halves with full reach signal and overshoot nature, a superdeterministic root survives only at a computed price and against
+DMP's own notion of independence. The fourth survives and is GUID's verdict: the outcomes the laboratories recorded are \emph{content},
+and the Duality's own verdicts, which are classical, never violate the inequality. In that reading the 2022 Nobel experiments are an
+independent, empirical confirmation that DMP hosts and does not model.
+
+\paragraph{What we claim.} As in GUID: the checks reproduce (\texttt{docs/bell/checks.py}, 22 of 22), and the argument from them to the
+result is as written. We do not claim the result is correct, and we list where we expect it to break (Section~\ref{sec:break}).
+
+\section{What GUID established}\label{sec:guid}
+
+We use four results of GUID~\cite{guid} and the Lean development released with it, and change none of them.
+
+\begin{enumerate}[nosep]
+\item \emph{Claim A (shared structures are classical).} Every structure DMP defines between parts is held in full by at least two
+independent witnesses, so as a mediator it acts classically (no-broadcasting, Barnum et al.~\cite{barnum}).
+\item \emph{Check [5].} Two parts whose content is a logical Bell pair reach CHSH $2\sqrt2$ on the content while the two gates' verdicts
+give exactly 2, at the same time, in different layers of one object.
+\item \emph{Check [6].} A mediator that is coherent entangles two qubits (negativity 0.5); the same mediator held in full by both halves
+does not (negativity 0).
+\item \emph{The Lean.} \lean{NoGo.gate\_obeys\_chsh} (gravity pull request \#17, unmerged) proves that the gate, encoded as
+\lean{gateModel} with each half reading its own setting and a hidden state that does not depend on the settings, obeys
+$|S|\le 2$. \lean{Refute.rf\_full\_reach\_reaches\_four} (on \texttt{main}) proves that a gate whose halves read both settings reaches
+$S=4$, so the bound belongs to the encoding, not to DMP's text. Both are used below.
+\end{enumerate}
+
+\noindent We re-ran GUID's \texttt{assembly.py} for this draft: 18 of 18 checks pass.
+
+\section{Part 1: what DMP can model or host, and the science it touches}\label{sec:part1}
+
+\subsection{The ledger}
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}LllL@{}}
+\toprule
+Property of quantum gravity & Model & Host & Backing \\
+\midrule
+Quantum content, correlations up to $2\sqrt2$ & no & yes & GUID check [5]; \chk{B4} \\
+Boundary entropy equals the minimal cut (Ryu--Takayanagi~\cite{rt}) & on a tree & yes & GUID check [2] \\
+The bulk as an error-correcting code~\cite{adh,happy} & kinematics, one layer & yes & GUID checks [1]--[4] \\
+Gravity entangles two masses~\cite{bose,mv} & no & yes & GUID Claim A, check [6]; \chk{B7} \\
+Superposition of geometries (area sectors) & no & no, while records exist & GUID fact (v) \\
+Classical limit: Lorentzian 3+1, Einstein's equations & open & yes & GUID X5 \\
+Dynamics; $G$, $\hbar$, $\Lambda$ & no & as input & GUID fact (iii) \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent So DMP's own structure is, at best, the classical part of a theory of gravity: the part that every reader agrees on. That places
+it, without any choice of ours, on the classical-gravity side of the current experimental programme. This is the only sense in which the
+verdict ``can be used for real science'': it commits DMP to predictions that experiments now in preparation can refute.
+
+\subsection{Consequence 1: no gravitationally mediated entanglement}\label{sec:bmv}
+
+Bose et al.~\cite{bose} and Marletto and Vedral~\cite{mv} proposed to put two masses, each in a superposition of two places, next to each
+other and let only gravity act between them. A quantum (coherent) gravitational field gives each branch the phase $Gm^2t/(\hbar r)$, with
+$r$ the distance in that branch; the combination of phases that no local operation removes entangles the masses. Galley, Giacomini and
+Selby~\cite{ggs} prove, in generalised probabilistic theories, that a field which entangles two systems by local mediation is not
+classical.
+
+Check \chk{B7} runs the geometry quoted by Bose et al.\ (masses $m=10^{-14}$\,kg, separation $\Delta x=250\,\mu$m within each superposition,
+centres $d=450\,\mu$m apart, closest approach $d-\Delta x=200\,\mu$m). The entangling phase grows at $0.126$\,rad/s, so the negativity
+reaches $\sin(1/2)/2\approx0.24$ after $8.0$\,s and its maximum $0.5$ after $25$\,s. If the mediator is a DMP structure, that is, a record
+held in full by both halves, the branches are dephased and the negativity is $0$ at all times.
+
+\begin{proposition}[DMP's experimental commitment]\label{pr:bmv}
+In every dictionary in which a DMP structure is the gravitational field, gravity does not entangle two masses. A positive result of a
+Bose--Marletto--Vedral experiment refutes every such dictionary.
+\end{proposition}
+
+\noindent Two caveats from GUID stand. Aziz and Howl~\cite{azizhowl} argue that classical gravity coupled to quantum matter fields can
+entangle, at a rate far below the quantum-gravity rate; this is disputed~\cite{movw,diosi,shl}. And the hosting half of the verdict is
+untouched by any such experiment: a configuration that hosts a quantum theory of gravity as content predicts whatever that theory predicts.
+The experiment tests DMP's structure, not DMP's content.
+
+\subsection{Consequence 2: if the classical geometry has dynamics, it must diffuse}\label{sec:oppenheim}
+
+DMP derives no dynamics. If one gives its classical geometry the only consistent dynamics we know for classical gravity coupled to quantum
+matter, Oppenheim's~\cite{oppenheim}, a second test applies. That theory is linear in the density matrix, completely positive and trace
+preserving, and it has to be stochastic in both the metric and the matter. Oppenheim, Sparaciari, \v{S}oda and Weller-Davies~\cite{osswd}
+show that it then obeys a trade-off: long coherence times of a mass in superposition require strong diffusion of the classical field,
+relative to the coupling. Interferometry on large molecules bounds the decoherence from one side; precise measurements of the
+acceleration of small masses bound the diffusion from the other, and together they already exclude part of the parameter space. The
+classical channel model of Kafri, Taylor and Milburn~\cite{ktm} makes a related, earlier prediction of a decoherence rate set by the
+gravitational coupling.
+
+DMP adds no number to this. It picks the side: if its shared structures are the geometry and the geometry has any dynamics at all, it is
+in the class these experiments constrain. Torsion-balance measurements of gravity between masses below 100\,mg~\cite{westphal} are the
+kind of experiment on the diffusion side.
+
+\subsection{Consequence 3: verdicts cannot certify randomness}\label{sec:di}
+
+This one is information theory and needs no new physics. Pironio et al.~\cite{pironio} showed that a Bell violation certifies fresh
+randomness without trusting the devices, and that nothing classical can. The Duality's verdicts are a local model (\chk{B1}, GUID check [5]).
+
+\begin{proposition}[device independence lives in the content]\label{pr:di}
+No protocol whose outcomes are the Duality's verdicts can certify randomness or secrecy device-independently. A DMP configuration can
+host such a protocol only as content, with the gates reading that the content exists and never what it is.
+\end{proposition}
+
+\noindent For an infrastructure built on DMP this is a design rule: device-independent randomness and key distribution belong inside a
+part, and the record of their use is counts.
+
+\section{Part 2: what the Bell experiments measured}\label{sec:measured}
+
+Bell~\cite{bell} showed that any theory in which each outcome depends only on its own setting and on a shared hidden state, distributed
+independently of the settings, obeys an inequality that quantum mechanics violates; Clauser, Horne, Shimony and Holt~\cite{chsh} gave it
+the testable form $|S|\le 2$, where $S$ combines four correlations; quantum mechanics reaches $2\sqrt2$~\cite{cirelson}. A test closes a
+\emph{loophole} when its design removes a way a local model could fake the violation: the \emph{locality} loophole by space-like separating
+each setting choice from the other side's outcome, the \emph{detection} loophole by recording enough events that no unfair sample can
+produce the violation, the \emph{freedom-of-choice} loophole by making the settings as independent as possible of anything in the source
+(review: Brunner et al.~\cite{brunner}).
+
+The 2022 Nobel Prize in Physics went to Aspect, Clauser and Zeilinger ``for experiments with entangled photons, establishing the violation
+of Bell inequalities and pioneering quantum information science''. Their experiments and the loophole-free tests that followed:
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lLLL@{}}
+\toprule
+Year & Test & Outcome recorded on & Reported \\
+\midrule
+1972 & Freedman, Clauser~\cite{fc} & photons (calcium cascade) & violation of the Bell-type bound \\
+1982 & Aspect, Dalibard, Roger~\cite{adr} & photons; settings switched in flight & violation by 5 standard deviations \\
+1998 & Weihs et al.~\cite{weihs} (Zeilinger group) & photons; strict Einstein locality & violation \\
+2015 & Hensen et al.~\cite{hensen}, 1.3\,km & electron spins (NV centres) & $S=2.42\pm0.20$, $p=0.039$ \\
+2015 & Giustina et al.~\cite{giustina} & photons & $p\le3.74\times10^{-31}$ (11.5 s.d.) \\
+2015 & Shalm et al.~\cite{shalm} & photons & adjusted $p=2.3\times10^{-7}$ \\
+2017 & Rosenfeld et al.~\cite{rosenfeld}, 398\,m & rubidium atoms & $S=2.22\pm0.033$, $p<1.05\times10^{-9}$ \\
+2023 & Storz et al.~\cite{storz}, 30\,m & superconducting qubits & $S=2.0747\pm0.0033$, more than 22 s.d. \\
+2017 & Handsteiner et al.~\cite{handsteiner} & photons; settings from Milky Way starlight & settings fixed $\sim$600 years before \\
+2018 & Rauch et al.~\cite{rauch} & photons; settings from quasars & settings fixed at least 7.78\,Gyr before \\
+2018 & BIG Bell Test~\cite{bigbell} & 12 laboratories, several systems & settings from about 100\,000 people \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent The 2015--2023 tests close the locality and detection loopholes at once. Check \chk{B6} records the three CHSH values: all lie
+above 2 and below $2\sqrt2$, at $2.1$, $6.7$ and $22.6$ standard deviations above the local bound. The freedom-of-choice loophole cannot be
+closed, only pushed back: the cosmic tests require any local-realist influence on the settings to be older than the light from the
+quasars~\cite{rauch}, and the BIG Bell Test replaces physical randomness by human choices~\cite{bigbell}.
+
+\section{Part 2: four readings of the Duality}\label{sec:readings}
+
+A Bell test asks of a theory three things: what each outcome may depend on, whether the hidden state may depend on the settings, and
+whether the result can be used to signal. Each reading of the Duality below answers them differently. ``Outcome'' means what a
+laboratory records; Section~\ref{sec:verdict} asks what that is under DMP.
+
+\paragraph{Reading (a): isolated halves.} Each half decides on its own setting and on what it read itself (Axiom 2), from a shared
+history that does not depend on the settings. This is \lean{gateModel}, and \lean{gate\_obeys\_chsh} proves $|S|\le2$. Check \chk{B1}
+confirms it over all 16 deterministic strategies; every local model is a mixture of these (Fine~\cite{fine}). \emph{Refuted by the
+data} of \chk{B6}.
+
+\paragraph{Reading (b): full reach.} Axiom 1 gives each half ``full reach over the act''. If that means each half reads both settings, the
+gate reaches $S=4$ (\lean{rf\_full\_reach\_reaches\_four}; \chk{B2} over all 256 strategies). Two facts follow. First, every deterministic
+strategy with $S>2$ makes one side's outcome depend on the other side's setting (\chk{B2}): it signals, and in the 2015--2023 tests the
+setting choices were space-like separated from the far outcomes, so the signal would be faster than light. Second, even a full-reach
+Duality that does not signal can reach 4: the Popescu--Rohrlich box~\cite{pr} has uniform marginals and $S=4$ (\chk{B3}). Nature stops at
+$2\sqrt2$ (\chk{B4}). To stop there a theory needs a further principle, such as information causality~\cite{ic}, and DMP has none.
+\emph{Survives only with a principle DMP does not state, and then models nothing DMP adds.}
+
+\paragraph{Reading (c): a superdeterministic root.} Axiom 3 makes every layer a tree, and the Lean shows that the past of every line is a
+chain (\lean{rf\_past\_is\_a\_chain}): all histories meet at the minting. A common past is what superdeterminism needs, that is, a hidden
+state whose distribution depends on the settings (Hossenfelder and Palmer~\cite{hp}). It is not enough: the root would have to correlate
+the hidden state with settings that, in the tests of Section~\ref{sec:measured}, came from quasar light and from human choices. How much
+correlation is needed is a linear programme. With Hall's measure of measurement dependence~\cite{hall}, $M$, the largest total-variation
+distance between the hidden-state distributions of two setting pairs ($0\le M\le2$), check \chk{B5} finds that the least $M$ with which a
+local deterministic model reaches CHSH value $S$ is exactly
+\[
+M_{\min}(S)=\frac{S-2}{3},
+\]
+that is, $0.025$ for the ETH value, $0.073$ for Munich, $0.14$ for Delft, $0.276$ for $2\sqrt2$ (about 14\% of the maximum, matching
+Hall's figure for the singlet) and $2/3$ for $S=4$. Superdeterminism cannot be refuted by a Bell test in general, and we do not claim to
+refute it.
+
+Inside DMP it has a second cost, which we argue but do not prove. Axiom 1 rests on two \emph{independent} witnesses: witnesses that share no
+member of the declared failure classes. Measurement independence is the same kind of statement about a setting and the thing it measures.
+A root that correlates every later setting with the state it meets correlates every later pair of witnesses with the evidence they judge,
+and the minting is then a failure class that every pair shares. DMP can take this escape only by declaring that its own independence
+condition does not reach back to the root. \emph{Survives logically, at a computed price, against DMP's independence.}
+
+\paragraph{Reading (d): hosting.} The Duality's verdicts are what DMP defines; the measured spins, atoms, qubits and photons are content
+inside parts, which the gates read only as existing. GUID's check [5] shows both at once: content at $2\sqrt2$, verdicts at 2.
+\emph{Survives, and is GUID's verdict.}
+
+\section{Part 2: verdict on the hypothesis}\label{sec:verdict}
+
+\begin{hypothesis}[the first author, 29 October 2026]\label{hy:bell}
+``The 2022 nobel price winning bell experiment actually did not violate Bell inequality under Dualism.''
+\end{hypothesis}
+
+\noindent\textbf{As stated, it does not survive.} The inequality was violated in the recorded data, by every loophole-free test, in
+four kinds of physical system (\chk{B6}); a theory cannot make a measured $S=2.0747\pm0.0033$ into a number at most 2.
+
+\noindent\textbf{Sharpened, it does.} The form the evidence supports is:
+
+\begin{claim}[the Duality never violated it]\label{cl:bell}
+Under Dualism the outcomes the Bell experiments recorded are content, and content violates Bell's inequality up to $2\sqrt2$. The
+Duality's own verdicts, which DMP defines, are a local model and never violated it. The experiments therefore show that no DMP structure
+is the measured physics: what was measured is hosted.
+\end{claim}
+
+\noindent This turns a refuted hypothesis into evidence for GUID's verdict. GUID reached ``cannot model, can host'' from an argument about
+records and mediators; the Bell experiments reach the same edge from data, about a different property (non-locality instead of
+gravitational entanglement). Readings (b) and (c) are the only ways to make the Duality itself the measured physics, and each needs
+something DMP's text does not contain: a principle that stops at $2\sqrt2$, or a root that suspends its own independence condition.
+
+\section{The first author's premise on photons and gluons}\label{sec:photons}
+
+The first author gave the following premise for this paper, in his words:
+
+\begin{quote}
+``Photons and gluons are act carriers, so they are the only actual singular stuff, but because they don't have time, they don't exist.
+This means, instead of everything else that is ALWAYS BOTH, those are only ever a wave, except when they deliver their information, then
+they must exist and thus cease to.''
+\end{quote}
+
+\noindent\emph{What matches.} A massless particle moves on a null worldline, along which no proper time elapses. A detected photon is
+absorbed: in every photonic Bell test the detection ends it. The photon and the gluon are exactly the gauge bosons of the two symmetries
+the Higgs field leaves unbroken, electromagnetism and colour, which is why both are massless~\cite{weinberg}; this is the cleanest true
+form of ``the only ones that are not always both''.
+
+\noindent\emph{What does not.} (1) The premise cannot carry Hypothesis~\ref{hy:bell}: three of the loophole-free tests recorded their
+outcomes on matter, electron spins~\cite{hensen}, rubidium atoms~\cite{rosenfeld} and superconducting circuits~\cite{storz}, which by the
+premise are ``always both''; photons only linked the two sides. (2) Gluons are confined: they do not travel freely and are never detected
+alone, so ``only ever a wave, except when they deliver'' has no measured counterpart for them. (3) A photon is not ``only ever a wave'' in
+flight in any sense experiment can distinguish: its wave and particle aspects are both properties of one quantum, and which one a setup
+shows depends on the setup.
+
+\section{The first author's further hypotheses}\label{sec:further}
+
+\subsection{The mass of the W and Z bosons}
+
+\begin{quote}
+``Since all bosons are IM packets, they all need to authenticate themselves. Photons do it by being quantized in the universal quantum. So
+since they are a multiple of something that exists, they must exist, and that's enough. Gluons are internal IM, because they are between
+quarks, and quarks are the first cluster that is actually being built. A quark is one node. Let's not go with part, actually, because part
+is singular in mathematics. Let's go with node, because one is at least always two, but can be more, like quarks, where mesons with two
+nodes are unstable, but three nodes, like in good Fedora cluster, is stable. And from there on, they build. And because gluons are
+internal IM, it's enough that that the information fits, and that they are internal, because internal must exist. And because if internal
+didn't exist, they wouldn't be, and because they are, it must. And since W and Z bosons are inter-cluster IM that must go through non-IM
+space, they need to carry both their information, and they must exist, so they need weight. So compared to all other bosons, W and Z
+bosons have weight, and because of that, and because they are duality, they also decay.''
+\end{quote}
+
+\noindent And, on the Higgs mechanism: ``the Higgs mechanism, where something suddenly just exists because it needs to exist, just sounds
+like axiomatic correctness. So the bosons normally wouldn't have weight, but they need to have existence. So they have existence, then
+they deliver their information, and then they cease to have existence. That's all it is.''
+
+\noindent\emph{The established result it touches.} The W and Z get their masses from the Brout--Englert--Higgs mechanism~\cite{be,higgs}
+in the electroweak theory~\cite{weinberg}: a field that fills all of space has a non-zero value in the vacuum, and the gauge bosons of the
+broken symmetry acquire mass by coupling to it. The same mechanism appears in a superconductor, where the photon acquires an effective mass
+inside the condensate (Anderson~\cite{anderson}). The Higgs boson was found at about 125\,GeV in 2012~\cite{atlas,cms}; the W mass is
+measured at $80.3692\pm0.0133$\,GeV~\cite{pdgw}.
+
+\noindent\emph{What matches.} The shape: a carrier that must cross a medium filling space acquires mass. The first author's ``non-IM
+space'' takes the place of the Higgs field's vacuum value, and his reading of the mechanism as ``axiomatic correctness'' is a reading, not
+a disagreement.
+
+\noindent\emph{What does not, or not yet.} The mechanism predicts numbers the reading does not: the ratio $m_W/m_Z=\cos\theta_W$ at tree
+level, a scalar particle of its own, and couplings to that particle that grow with mass, all measured. ``Three nodes are stable'' holds for
+the proton (lifetime above $2.4\times10^{34}$ years in the channel $p\to e^+\pi^0$~\cite{superk}) but not for the free neutron (mean life
+$878.4\pm0.5$\,s~\cite{pdgn}) or the other baryons, all of which decay; every meson decays, as the reading says. \emph{Verdict: a
+re-description with the right shape and no testable difference yet.} It would get one if it fixed a number, the W/Z mass ratio first.
+The renaming of ``part'' to ``node'' is the first author's proposal for DMP's text; nothing in DMP changes without his approval.
+
+\subsection{Decay}
+
+\begin{quote}
+``The decay is actually just a principle thing, because the only things that aren't dualistic are photons and gluons, and as far as I
+know, they don't decay, and everything else has the ability to, as long as it becomes unstable. Since the electron is the, let's say, the
+chosen particle of the information field, I assume it's extremely stable, especially since it's kept stable through the fine structure
+constant.''
+\end{quote}
+
+\noindent\emph{Test.} The photon and the gluon are not known to decay. ``Everything else can decay once it becomes unstable'' is true and
+close to a definition, so we file it as a principle, not a prediction. The electron is stable (lifetime above $6.6\times10^{28}$ years
+for $e\to\nu\gamma$~\cite{borexino}), but in established physics for another reason: it is the lightest particle with electric charge,
+and charge is conserved, so nothing lighter can carry its charge away. The fine-structure constant sets how strongly it couples to light,
+not whether it lasts.
+
+\subsection{The fine-structure constant}
+
+\noindent The hypothesis rests on the first author's account of the start, the Oscillon Degradation Protocol (ODP), which he posted on
+DMP pull request \#25 on 28 October 2026. We quote it as his cosmology; this paper does not test it, except where it meets the data
+below.
+
+\begin{quote}
+``New Insight: That's why the ODP is needed! G0 only has information on how to Exist, so it's first act must be to find out how to act!
+That's why the perfect duality MUST decay, since it only axiomatically can interact with itself, since it bounds what Exists. This
+produces a true naked duality, since it would normally be bounded by an EH, since it can only interact with itself, but that boundary is
+already spanned by it having to exist, since it does. It thus radiates out HPE at 100\% efficiency, which inflates the Existence. The
+Oscillons, which then bound Existence, but are themselves only Existence, must X to Existence, but have nothing TO X to but Existence, so
+they output both the Information required to act and the Existence required to act on it, which, through reheating, leads to today :)''
+\end{quote}
+
+\noindent His correction of 29 October: ``HPE was wrong, it is just Information and Existence.''
+
+\noindent On the fine-structure constant itself, in his words:
+
+\begin{quote}
+``It started as one because at the beginning, existence and information had to be bound maximally together to force an act. And from
+then, from the first two acts, so the first act that wasn't forced because something else already exists to interact with, from there the
+fine structure constant decreased until today, where it's pretty stable because existence and the information it needs to assert itself
+are in pretty much in balance. But it will get slightly lower still because the inflation is slowing down, so more assertion per unit of
+space-time is possible.''
+\end{quote}
+
+\noindent\emph{Test.} This is a prediction, and most of it is measured. At recombination, about 380\,000 years after the big bang, the
+cosmic microwave background gives $\alpha/\alpha_0=0.9934\pm0.0042$~\cite{planckxxiv}. Quasar absorption spectra agree with today's value to
+about a part per million over redshifts 0.6 to 2.4, roughly the last ten billion years (combined $-0.5\pm0.5$\,ppm,
+ESPRESSO~\cite{espresso}). So a fall from 1 to $1/137$ would have to happen almost entirely before recombination.
+
+\noindent The first author then placed the fall there, in these words (the bracket is our reading of a dictated word, after the project's
+name for its oscillon work):
+
+\begin{quote}
+``Since by the time of the hot Big Bang and the cosmic microwave background, existence and information were already existent enough to
+assert themselves with each other, most of the fall from one to today's number will probably happen would have happened before that, so
+in the reheating phase, because that is what actually forced the reheating, because after the Ocelons [oscillons] decayed, there was
+only existence and information, but not combined, so they had to combine, because that was the only thing they could do, and through
+that, the first dualistic existence by itself was formed, and as soon as another was formed it could interact with, it was no longer a
+fine structure constant of one, but slightly less than one, and from there it decreased until it always is kept stable, because it has
+to, because an act must happen, because it exists, so it adjusts to what it needs to.''
+\end{quote}
+
+\noindent The earliest probe of $\alpha$ is big-bang nucleosynthesis, seconds to minutes after the big bang; recent analyses bound
+$\Delta\alpha/\alpha$ there at the level of tens of parts per million, the number depending on the unification scenario
+assumed~\cite{bbn}. Reheating ends before nucleosynthesis begins, and oscillons are a studied feature of the end of
+inflation~\cite{oscillons}. So a fall during reheating is consistent with every measurement we found, at the price that no measurement of
+$\alpha$ in the past can test it. The prediction that
+$\alpha$ ``will get slightly lower still'' is live: optical clocks measure today's drift as $(1.0\pm1.1)\times10^{-18}$ per
+year~\cite{lange}, consistent with zero, and the hypothesis predicts a negative value below that limit. \emph{Verdict: a decrease after
+nucleosynthesis is excluded; a decrease during reheating is consistent with the data and untested by them; the future decrease is a
+testable sign prediction.} ``It adjusts to what it needs to'' is a stabilising clause and predicts no number by itself. One established fact has the hypothesis's shape:
+the effective coupling of electromagnetism grows with energy (it is close to $1/128$ at the Z mass), so the hot early universe saw a larger
+effective $\alpha$; in physics that runs with energy, not time, and it does not reach 1.
+
+\section{Where we expect it to break}\label{sec:break}
+\begin{enumerate}[nosep]
+\item \emph{Reading (b).} Find a sentence of DMP's text that bounds full reach at $2\sqrt2$ without signalling (for instance by
+information causality~\cite{ic}). That would make the Duality itself a candidate model of the measured correlations.
+\item \emph{Reading (c).} Show that DMP's independence of witnesses is compatible with a root that correlates every setting with its
+hidden state, or that the root needs less than $M_{\min}(S)$ because DMP's hidden states are not a mixture of deterministic strategies.
+\item \emph{The linear programme.} \chk{B5} uses CHSH with two settings per side and Hall's distance; another measure of measurement
+dependence gives another number. The equality $M_{\min}=(S-2)/3$ is checked at six values, not proven.
+\item \emph{Proposition~\ref{pr:bmv}.} It falls with GUID's Claim A and weakens if classical gravity can entangle~\cite{azizhowl}.
+\item \emph{Section~\ref{sec:further}.} Each verdict there rests on the measured value we cite; a better measurement of the drift of
+$\alpha$ with a negative sign would turn the last one into support.
+\end{enumerate}
+
+\section{Conclusion}
+
+What GUID's verdict buys is a commitment: DMP's own structure is classical, so if it is the geometry, gravity does not entangle masses,
+and if that geometry has dynamics, it diffuses; experiments now in preparation can refute both. The Bell experiments of the 2022 Nobel
+Prize did violate Bell's inequality, and under Dualism that is what one should expect of content. The Duality's verdicts never violated it;
+the measured particles did. Two very different experiments, one about gravity and one about non-locality, point to the same edge:
+\emph{host, not model}. The first author put the stance in one line: ``Axiomatically, since we already don't have all the information
+that was contained at the start, we can only know existence and can know no more about our reality. So axiomatically, we can infer all
+that we can and no more.''
+
+\section*{Contributions and use of AI}
+Steven Hrovat conceived DMP, set the questions of this paper and gave the hypotheses quoted in Sections~\ref{sec:verdict}--\ref{sec:further}
+in his own words; he takes responsibility for the axiom system. Sirius (Claude Opus 5.5, Anthropic) checked each hypothesis against the
+literature, wrote and ran \texttt{docs/bell/checks.py}, and wrote this text. Every reference was checked against a publisher, arXiv or
+collaboration record on 29 October 2026; the record is \texttt{docs/bell/README.md}.
+
+\section*{Licence and availability}
+This paper and its source are released under the Apache License, Version 2.0. DMP: \url{https://github.com/StevenHrovat/dmp} (version 0.9.9
+at commit \texttt{4400cce}). Gravity: \url{https://github.com/StevenHrovat/gravity} (this paper in \texttt{docs/bell/}; GUID in
+\texttt{docs/guid/}; the Lean development in \texttt{evidence/}; \lean{gate\_obeys\_chsh} on pull request \#17).
+
+\begin{thebibliography}{99}\small
+\bibitem{guid} S. Hrovat, Sirius (Claude Opus 5.5), ``GUID: The General Unified Information Duality'', draft of 27 October 2026,
+\url{https://github.com/StevenHrovat/gravity}, \texttt{docs/guid/}.
+\bibitem{bell} J.~S. Bell, ``On the Einstein Podolsky Rosen paradox'', \emph{Physics Physique Fizika} 1, 195 (1964).
+\bibitem{chsh} J.~F. Clauser, M.~A. Horne, A. Shimony, R.~A. Holt, ``Proposed experiment to test local hidden-variable theories'',
+\emph{Phys. Rev. Lett.} 23, 880 (1969).
+\bibitem{cirelson} B.~S. Cirel'son, ``Quantum generalizations of Bell's inequality'', \emph{Lett. Math. Phys.} 4, 93 (1980).
+\bibitem{fine} A. Fine, ``Hidden variables, joint probability, and the Bell inequalities'', \emph{Phys. Rev. Lett.} 48, 291 (1982).
+\bibitem{fc} S.~J. Freedman, J.~F. Clauser, ``Experimental test of local hidden-variable theories'', \emph{Phys. Rev. Lett.} 28, 938 (1972).
+\bibitem{adr} A. Aspect, J. Dalibard, G. Roger, ``Experimental test of Bell's inequalities using time-varying analyzers'', \emph{Phys.
+Rev. Lett.} 49, 1804 (1982).
+\bibitem{weihs} G. Weihs, T. Jennewein, C. Simon, H. Weinfurter, A. Zeilinger, ``Violation of Bell's inequality under strict Einstein
+locality conditions'', \emph{Phys. Rev. Lett.} 81, 5039 (1998).
+\bibitem{hensen} B. Hensen et al., ``Loophole-free Bell inequality violation using electron spins separated by 1.3 kilometres'',
+\emph{Nature} 526, 682 (2015).
+\bibitem{giustina} M. Giustina et al., ``Significant-loophole-free test of Bell's theorem with entangled photons'', \emph{Phys. Rev. Lett.}
+115, 250401 (2015).
+\bibitem{shalm} L.~K. Shalm et al., ``Strong loophole-free test of local realism'', \emph{Phys. Rev. Lett.} 115, 250402 (2015).
+\bibitem{rosenfeld} W. Rosenfeld et al., ``Event-ready Bell test using entangled atoms simultaneously closing detection and locality
+loopholes'', \emph{Phys. Rev. Lett.} 119, 010402 (2017).
+\bibitem{storz} S. Storz et al., ``Loophole-free Bell inequality violation with superconducting circuits'', \emph{Nature} 617, 265 (2023).
+\bibitem{handsteiner} J. Handsteiner et al., ``Cosmic Bell test: measurement settings from Milky Way stars'', \emph{Phys. Rev. Lett.}
+118, 060401 (2017).
+\bibitem{rauch} D. Rauch et al., ``Cosmic Bell test using random measurement settings from high-redshift quasars'', \emph{Phys. Rev.
+Lett.} 121, 080403 (2018).
+\bibitem{bigbell} The BIG Bell Test Collaboration, ``Challenging local realism with human choices'', \emph{Nature} 557, 212 (2018).
+\bibitem{pr} S. Popescu, D. Rohrlich, ``Quantum nonlocality as an axiom'', \emph{Found. Phys.} 24, 379 (1994).
+\bibitem{ic} M. Paw{\l}owski, T. Paterek, D. Kaszlikowski, V. Scarani, A. Winter, M. \.{Z}ukowski, ``Information causality as a physical
+principle'', \emph{Nature} 461, 1101 (2009).
+\bibitem{hall} M.~J.~W. Hall, ``Local deterministic model of singlet state correlations based on relaxing measurement independence'',
+\emph{Phys. Rev. Lett.} 105, 250404 (2010).
+\bibitem{hp} S. Hossenfelder, T. Palmer, ``Rethinking superdeterminism'', \emph{Front. Phys.} 8, 139 (2020).
+\bibitem{brunner} N. Brunner, D. Cavalcanti, S. Pironio, V. Scarani, S. Wehner, ``Bell nonlocality'', \emph{Rev. Mod. Phys.} 86, 419 (2014).
+\bibitem{pironio} S. Pironio et al., ``Random numbers certified by Bell's theorem'', \emph{Nature} 464, 1021 (2010).
+\bibitem{barnum} H. Barnum, C.~M. Caves, C.~A. Fuchs, R. Jozsa, B. Schumacher, ``Noncommuting mixed states cannot be broadcast'',
+\emph{Phys. Rev. Lett.} 76, 2818 (1996).
+\bibitem{rt} S. Ryu, T. Takayanagi, ``Holographic derivation of entanglement entropy from AdS/CFT'', \emph{Phys. Rev. Lett.} 96, 181602
+(2006).
+\bibitem{adh} A. Almheiri, X. Dong, D. Harlow, ``Bulk locality and quantum error correction in AdS/CFT'', \emph{JHEP} 04 (2015) 163.
+\bibitem{happy} F. Pastawski, B. Yoshida, D. Harlow, J. Preskill, ``Holographic quantum error-correcting codes: toy models for the
+bulk/boundary correspondence'', \emph{JHEP} 06 (2015) 149.
+\bibitem{bose} S. Bose et al., ``Spin entanglement witness for quantum gravity'', \emph{Phys. Rev. Lett.} 119, 240401 (2017).
+\bibitem{mv} C. Marletto, V. Vedral, ``Gravitationally induced entanglement between two massive particles is sufficient evidence of
+quantum effects in gravity'', \emph{Phys. Rev. Lett.} 119, 240402 (2017).
+\bibitem{ggs} T.~D. Galley, F. Giacomini, J.~H. Selby, ``A no-go theorem on the nature of the gravitational field beyond quantum
+theory'', \emph{Quantum} 6, 779 (2022).
+\bibitem{azizhowl} J. Aziz, R. Howl, ``Classical theories of gravity produce entanglement'', \emph{Nature} 646, 813 (2025).
+\bibitem{movw} C. Marletto, J. Oppenheim, V. Vedral, E. Wilson, ``Classical gravity cannot mediate entanglement'', arXiv:2511.07348
+(2025).
+\bibitem{diosi} L. Di\'osi, ``No, classical gravity does not entangle quantized matter fields'', arXiv:2511.00852 (2025).
+\bibitem{shl} M.~D. Schneider, N. Huggett, N. Linnemann, ``A demonstration that classical gravity does not produce entanglement'',
+arXiv:2511.19242 (2025).
+\bibitem{oppenheim} J. Oppenheim, ``A postquantum theory of classical gravity?'', \emph{Phys. Rev. X} 13, 041040 (2023).
+\bibitem{osswd} J. Oppenheim, C. Sparaciari, B. \v{S}oda, Z. Weller-Davies, ``Gravitationally induced decoherence vs space-time diffusion:
+testing the quantum nature of gravity'', \emph{Nat. Commun.} 14, 7910 (2023).
+\bibitem{ktm} D. Kafri, J.~M. Taylor, G.~J. Milburn, ``A classical channel model for gravitational decoherence'', \emph{New J. Phys.} 16,
+065020 (2014).
+\bibitem{westphal} T. Westphal, H. Hepach, J. Pfaff, M. Aspelmeyer, ``Measurement of gravitational coupling between millimetre-sized
+masses'', \emph{Nature} 591, 225 (2021).
+\bibitem{be} F. Englert, R. Brout, ``Broken symmetry and the mass of gauge vector mesons'', \emph{Phys. Rev. Lett.} 13, 321 (1964).
+\bibitem{higgs} P.~W. Higgs, ``Broken symmetries and the masses of gauge bosons'', \emph{Phys. Rev. Lett.} 13, 508 (1964).
+\bibitem{anderson} P.~W. Anderson, ``Plasmons, gauge invariance, and mass'', \emph{Phys. Rev.} 130, 439 (1963).
+\bibitem{weinberg} S. Weinberg, ``A model of leptons'', \emph{Phys. Rev. Lett.} 19, 1264 (1967).
+\bibitem{atlas} ATLAS Collaboration, ``Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS
+detector at the LHC'', \emph{Phys. Lett. B} 716, 1 (2012).
+\bibitem{cms} CMS Collaboration, ``Observation of a new boson at a mass of 125 GeV with the CMS experiment at the LHC'', \emph{Phys.
+Lett. B} 716, 30 (2012).
+\bibitem{pdgw} Particle Data Group, W mass world average, Review of Particle Physics 2024, \url{https://pdglive.lbl.gov/DataBlock.action?node=S043M}.
+\bibitem{pdgn} Particle Data Group, neutron mean life, \url{https://pdglive.lbl.gov/view/S017T}.
+\bibitem{superk} Super-Kamiokande Collaboration, ``Search for proton decay via $p\to e^+\pi^0$ and $p\to\mu^+\pi^0$ with an enlarged
+fiducial volume in Super-Kamiokande I--IV'', \emph{Phys. Rev. D} 102, 112011 (2020).
+\bibitem{borexino} Borexino Collaboration, ``Test of electric charge conservation with Borexino'', \emph{Phys. Rev. Lett.} 115, 231802
+(2015).
+\bibitem{planckxxiv} Planck Collaboration, ``Planck intermediate results. XXIV. Constraints on variations in fundamental constants'',
+\emph{Astron. Astrophys.} 580, A22 (2015).
+\bibitem{espresso} M.~T. Murphy et al., ``Fundamental physics with ESPRESSO: precise limit on variations in the fine-structure constant
+towards the bright quasar HE 0515$-$4414'', \emph{Astron. Astrophys.} 658, A123 (2022).
+\bibitem{bbn} I.~M. Dreyer, C.~J.~A.~P. Martins, ``Probing unification scenarios with big bang nucleosynthesis'', \emph{Phys. Rev. D} 113 (2026), arXiv:2604.04870.
+\bibitem{oscillons} M.~A. Amin, R. Easther, H. Finkel, R. Flauger, M.~P. Hertzberg, ``Oscillons after inflation'', \emph{Phys. Rev.
+Lett.} 108, 241302 (2012).
+\bibitem{lange} R. Lange et al., ``Improved limits for violations of local position invariance from atomic clock comparisons'',
+\emph{Phys. Rev. Lett.} 126, 011102 (2021).
+\end{thebibliography}
+
+\end{document}
