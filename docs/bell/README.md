@@ -55,7 +55,7 @@ Hensen 2015 S = 2.42 +- 0.20, p = 0.039; Giustina 2015 p <= 3.74e-31 (11.5 s.d.,
 Rosenfeld 2017 S = 2.22 +- 0.033, p < 1.05e-9; Storz 2023 S = 2.0747 +- 0.0033, > 22 s.d.; Handsteiner 2017 ~600 years; Rauch 2018
 >= 7.78 Gyr; BIG Bell Test ~100,000 participants, 12 labs; Aspect 1982 5 s.d.; PDG W mass 80.3692 +- 0.0133 GeV; Super-K p -> e+ pi0
 > 2.4e34 yr; neutron 878.4 +- 0.5 s; Borexino electron > 6.6e28 yr; Planck XXIV alpha/alpha0 = 0.9934 +- 0.0042; ESPRESSO combined
--0.5 +- 0.5 (stat) +- 0.4 (sys) ppm over z = 0.6-2.4; Lange 2021 (1.0 +- 1.1)e-18 per year; Dreyer and Martins 2026 BBN bounds of tens
+-0.5 +- 0.5 (stat) +- 0.4 (sys) ppm over z = 0.6-2.4; Lange 2021 (1.0 +- 1.1)e-18 per year; Chou 2010 33 cm, ~4e-17; Cassini gamma - 1 = (2.1 +- 2.3)e-5; Pound-Rebka 1960 tower 74 ft; Dreyer and Martins 2026 BBN bounds of tens
 of ppm (2 +- 22 and 2 +- 51 ppm by scenario). Not quoted because not verified: the S value of Weihs 1998 (only a secondary source), the
 precise PDG alpha(M_Z) (the text says "close to 1/128"). The Nobel citation sentence is quoted from the press coverage that reproduces it;
 nobelprize.org was not reachable from the session.
@@ -74,6 +74,7 @@ nobelprize.org was not reachable from the session.
 | 09:39 | "we can infer all that we can and no more" | 10 |
 | 09:40 | the ODP explanation (his comment on dmp#25, 2026-10-28), posted as a screenshot | 8.3 |
 | 09:41 | "HPE was wrong, it is just Information and Existence." | 8.3, after the ODP quote |
+| 09:42 | his reading of gravity (his comment on dmp#25, 2026-10-28), posted as a screenshot | 3.5 |
 
 ## Open
 
