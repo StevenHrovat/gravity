@@ -47,19 +47,19 @@ what they leave to quantum theory, and the experiments that decide}
 \begin{abstract}
 \noindent The Dark Matter Protocol (DMP~0.9.9) is an information-theoretic axiom system: every act needs a Duality of two independent
 witnesses, one owning trust and one owning information; trust is a field; and every act leaves a record that its witnesses read in full
-while any other reader sees only counts. GUID reads these axioms as physics, taking trust as existence; this paper states its full account of
-quantum gravity. The existence half is a tetrad, the information half a scalar that sets the fine-structure constant
-together with all quantum content. From the axioms we derive universal free fall, the light-bending parameter $\gamma=1$ and, by the
-no-broadcasting theorem, that the frame is classical from the first recorded act on. A classical mediator cannot entangle, so gravity in
-GUID is a classical-quantum hybrid: the axioms can host any quantum theory of gravity as content and cannot be one. Consistency with
-quantum mechanics then requires the frame to diffuse, and the axioms' record-and-recompute structure is exactly a measurement-and-feedback
-channel of the Kafri-Taylor-Milburn and Tilloy-Di\'osi type. We treat horizon thermodynamics, black holes (Christodoulou's mass formula from the containment split;
-Hawking-Penrose-Information radiation), holographic codes (with a classical centre), 2+1 dimensions and cosmology, and compare with the
-main approaches to quantum gravity.
-The account is falsifiable: it predicts no gravitationally mediated entanglement in a Bose-Marletto-Vedral experiment, non-zero
-spacetime diffusion bounded below by coherence times, $\gamma=1$, universal free fall, and a fine-structure constant that does not
-grow. A reading of dark matter as trapped neutrinos is refuted by four independent bounds. All numbers come from one public script of 79 checks.
-We claim that the construction exists and reproduces, not that it is correct.
+while any other reader sees only counts. GUID reads these axioms as physics, taking trust as existence; this paper states its account of
+quantum gravity. The existence half is a tetrad, the information half a scalar that sets the fine-structure constant together with all
+quantum content. From the axioms we derive universal free fall, light bending with $\gamma=1$ and, by the no-broadcasting
+theorem, that the frame is classical once the start, inflation with the decay of its oscillons, is complete. Supplied with the base
+configuration currently assumed for our universe, DMP hosts this theory: its shared structure carries the classical frame, its information
+half the quantum content. Consistency with quantum mechanics requires the frame to diffuse, and the axioms' record-and-recompute
+structure is exactly a measurement-and-feedback channel of the Kafri-Taylor-Milburn and Tilloy-Di\'osi type. We also treat
+horizons, black holes (with Hawking-Penrose-Information radiation), holographic codes, 2+1 dimensions and cosmology. The theory lets remnants of interactions be
+trapped in the gravitational field: its stochastic remnant gives a linear potential at Milgrom's acceleration scale and roughly flat
+rotation curves with $v^4\propto M$, and its contained remnants are primordial black holes from the start. It predicts no gravitationally
+mediated entanglement, spacetime diffusion bounded below by coherence times, $\gamma=1$, universal free fall, and a fine-structure constant
+that does not grow. All numbers come from one public script of 93 checks. We claim that the construction exists and reproduces, not that
+it is correct.
 \end{abstract}
 
 \noindent\textbf{Keywords.} quantum gravity; classical-quantum dynamics; gravitationally mediated entanglement; no-broadcasting theorem;
@@ -113,24 +113,26 @@ is deliberate: a field that sources from mass, boundaries that contain, a floor 
 This paper collects what follows when that resemblance is taken literally, and states it as one account of quantum gravity. The account
 has three parts. \emph{What the axioms fix} (Section~\ref{sec:fix}): with trust read as existence, gravity is carried by a frame that falls
 universally, does not mix with the information half, and is classical, because the axioms make every one of its values a record that two
-witnesses hold in full; it therefore cannot mediate entanglement, and the axioms can host a quantum theory of gravity as content without
-being one. \emph{What consistency then demands} (Sections~\ref{sec:cq} and~\ref{sec:exp}): a classical frame coupled to quantum matter must
+witnesses hold in full; it therefore mediates no entanglement. Supplied with the base configuration currently assumed for our universe,
+DMP hosts this theory: its own shared structure carries the classical frame, and its information half the quantum content. \emph{What consistency then demands} (Sections~\ref{sec:cq} and~\ref{sec:exp}): a classical frame coupled to quantum matter must
 decohere that matter and must itself diffuse, with a trade-off between the two that experiments bound from both sides; the axioms' own
 architecture, record then recompute, is exactly the measurement-and-feedback channel that realises this. \emph{What it says elsewhere}
 (Sections~\ref{sec:thermo} to~\ref{sec:matter}): horizon thermodynamics, black holes, holographic codes, lower dimensions, cosmology and
-the matter content, each tested against measurement.
+the matter content, each tested against measurement, including three routes by which the theory traps remnants of interactions in the
+gravitational field and what each predicts for dark matter (Section~\ref{sec:darkmatter}).
 
 \paragraph{Result in one paragraph.} In GUID, quantum gravity is not a quantisation of geometry. It is a classical existence frame, the
-tetrad of general relativity, over quantum information. Free fall is universal, $\gamma=1$, gravitational waves are classical waves of
-the frame that travel at $c$, and the frame becomes classical with the first recorded act. The account is on the classical side of the
-Galley--Giacomini--Selby no-go theorem, with Jacobson's thermodynamic gravity, Oppenheim's classical-quantum gravity and the
-Kafri--Taylor--Milburn and Tilloy--Di\'osi channel models. It is falsifiable by a positive test of gravitationally mediated entanglement,
-by a test of the LOCC inequality of Lami, Pedernales and Plenio, and by the decoherence-diffusion trade-off. Within it, a quantum theory of
-gravity can still run as content, so the axioms do not forbid quantum gravity in nature; they forbid that it is the geometry the axioms
-themselves define.
+tetrad of general relativity, over quantum information, and DMP, supplied with the base configuration currently assumed for our universe,
+hosts it. Free fall is universal, $\gamma=1$, gravitational waves are classical waves of the frame that travel at $c$, and the frame is
+classical once the start, inflation together with the decay of the oscillons it ends in, is complete. The theory is on the classical side of
+the Galley--Giacomini--Selby no-go theorem, with Jacobson's thermodynamic gravity, Oppenheim's classical-quantum gravity and the
+Kafri--Taylor--Milburn and Tilloy--Di\'osi channel models. It lets remnants of interactions be trapped in the gravitational field, which gives
+it two live candidates for dark matter. It is falsifiable by a positive test of gravitationally mediated entanglement, by a test of the LOCC
+inequality of Lami, Pedernales and Plenio, and by the decoherence-diffusion trade-off. A theory in which the geometry itself is quantum can
+still run on DMP as content, so the axioms do not forbid quantum gravity in nature; such a geometry would not be DMP's frame.
 
 \paragraph{What we claim.} We claim that the derivations are as written, that every number reproduces from one public script
-(\texttt{docs/quantum-gravity/checks.py}, 79 of 79) and from the holographic-code assembly (\texttt{docs/qg-verdict/assembly.py},
+(\texttt{docs/quantum-gravity/checks.py}, 93 of 93) and from the holographic-code assembly (\texttt{docs/qg-verdict/assembly.py},
 18 of 18), and that the verdicts follow from the measurements cited. We do not claim that the account is correct, and we name in
 Section~\ref{sec:break} where we expect it to break.
 
@@ -138,12 +140,14 @@ Section~\ref{sec:break} where we expect it to break.
 \begin{enumerate}[nosep]
 \item A formal statement of DMP's axioms in the form physics needs, and the dictionary that reads them as two fields (Sections~\ref{sec:dmp},
 \ref{sec:fields}).
-\item Derivations from the axioms of universal free fall, $\gamma=1$, the classicality of the frame, and the edge between modelling and
-hosting quantum gravity (Section~\ref{sec:fix}).
+\item Derivations from the axioms of universal free fall, $\gamma=1$, the classicality of the frame, and the statement that DMP, supplied
+with the base configuration of our universe, hosts the proposed theory (Section~\ref{sec:fix}).
 \item The identification of the axioms' record-and-recompute structure with the measurement-and-feedback channel of classical-quantum
 gravity, and the predictions that follow (Sections~\ref{sec:cq},~\ref{sec:exp}).
 \item A consistent treatment of horizons, black holes, holographic codes, 2+1 gravity, cosmology and matter in that account
 (Sections~\ref{sec:thermo}--\ref{sec:matter}), with a comparison to the main approaches to quantum gravity (Section~\ref{sec:landscape}).
+\item Three routes by which the theory traps remnants of interactions in the gravitational field, with what each predicts for dark matter
+(Section~\ref{sec:darkmatter}).
 \item A table of predictions with the experiments that test them, and a ledger of every statement with its verdict
 (Sections~\ref{sec:predictions},~\ref{sec:ledger}).
 \end{enumerate}
@@ -321,7 +325,7 @@ record, read in full by every witness (Axiom 3) & the value of the frame, held b
 counts, seen by every reader (Axiom 3) & asymptotic charges $M$, $J$, $Q$ & \ref{h:horizon} \\
 containing boundary; trap (T27, T31) & event horizon & \ref{h:horizon} \\
 entropy floor; temperature of a boundary (T31, T32) & thermal radiation of the horizon; Hawking temperature & \ref{h:horizon} \\
-G0, the minting & the first recorded act; the beginning of the classical era & Section~\ref{sec:cosmo} \\
+G0, the minting & the start: inflation with the decay of its oscillons; the classical era begins as it completes & \ref{h:minting} \\
 balanced state $\Phi=0$ (T32) & the vacuum at the minimum of its potential & Section~\ref{sec:matter} \\
 \bottomrule
 \end{tabularx}
@@ -445,33 +449,35 @@ systems by local interaction cannot be classical~\cite{ggs}. Check \chk{Q4} runs
 couplings $A$--$M$, $M$--$B$, $A$--$M$ leave $A$ and $B$ entangled in most of 300 trials when $M$ is coherent (median negativity $0.12$)
 and never when $M$ is dephased after each coupling (largest negativity below $10^{-12}$).
 
-\subsection{Cannot model, can host}
+\subsection{DMP hosts the proposed theory}
 
-\begin{definition}[model, host]\label{def:model}
-The axioms \emph{model} quantum gravity if there is a dictionary that maps the gravitational degrees of freedom onto structures DMP itself
-defines between parts (the trust field, the layout, the order of acts, the counts) such that the result reproduces what quantum gravity is
-expected to deliver, in particular gravitationally mediated entanglement. Content that parts carry and move by grant is not such a
-structure. The axioms \emph{host} quantum gravity if a configuration that obeys them can carry, as content, a running quantum theory of
-gravity together with everything that theory predicts.
+\begin{definition}[base configuration, host]\label{def:model}
+The \emph{base configuration currently assumed for our universe} is what physics supplies and DMP does not derive, the configuration in
+DMP's sense (T4): the constants $G$, $\hbar$, $c$, $\Lambda$ and $\alpha$, the fields and parameters of the Standard Model, and the initial
+data of the $\Lambda$CDM model. A configuration that obeys DMP \emph{hosts} a theory of gravity if its own shared structures (the trust
+field, the layout, the order of acts, the counts) carry the theory's classical degrees of freedom and its information half carries the
+theory's quantum content, so that the configuration reproduces everything the theory predicts.
 \end{definition}
 
-\begin{theorem}[cannot model, can host]\label{th:host}
-Under Hypotheses~\ref{h:exist} and~\ref{h:info}: (i) the existence frame cannot mediate entanglement, so if gravity entangles two masses,
-gravity is not the frame and the axioms do not model it; (ii) the information half can carry any quantum content, so the axioms can host
-a quantum theory of gravity.
+\begin{theorem}[DMP hosts the proposed theory of quantum gravity]\label{th:host}
+Under Hypotheses~\ref{h:exist}--\ref{h:info}, and supplied with the base configuration currently assumed for our universe, DMP hosts the
+theory of this paper: a classical existence frame over quantum content. In it, (i) the frame, carried by DMP's shared structures, mediates
+no entanglement between the systems it acts on; (ii) the information half carries any quantum content.
 \end{theorem}
 
 \begin{proof}
-(i) Lemmas~\ref{lem:classical} and~\ref{lem:locc}. Any dictionary that puts the geometry in a structure DMP defines between parts puts it
-in a broadcast record (Axiom~3), so Lemma~\ref{lem:classical} applies to it whichever structure is chosen. (ii) Axiom~3 restricts what is
+(i) DMP's shared structures are broadcast records (Axiom~3), so by Lemma~\ref{lem:classical} the field they carry is classical, whichever
+structure carries it, and by Lemma~\ref{lem:locc} a classical mediator creates no entanglement. (ii) Axiom~3 restricts what is
 \emph{derived from trust} and how content moves (by grant); it does not require content to be broadcast, so nothing in the axioms forbids
-non-commuting states in the information half \tagD. A grant moves content without copying it, as no-cloning requires.
+non-commuting states in the information half \tagD. A grant moves content without copying it, as no-cloning requires. The base
+configuration supplies the constants and the content that DMP does not derive.
 \end{proof}
 
-Hosting is the weak half: any substrate that can run a universal quantum computer as content hosts, by the Church--Turing--Deutsch
-principle~\cite{deutsch} (Section~\ref{sec:host}). The content of the theorem is the first half. It says which side of the open question
-GUID is on, and it is a statement about the axioms, not yet about nature: Section~\ref{sec:exp} names the experiments that decide whether
-nature agrees.
+Two remarks place the theorem. First, the constants: DMP derives none of them, and the theorem needs them supplied, as every physical
+theory needs its parameters (Section~\ref{sec:break}). Second, universality: whatever can run a universal quantum computer as content can
+also run a theory in which the geometry itself is quantum, by the Church--Turing--Deutsch principle~\cite{deutsch} (Section~\ref{sec:host});
+in such a theory the quantum geometry would sit in the information half and would not be DMP's frame. Part~(i) is therefore the proposed
+theory's characteristic, falsifiable prediction, and Section~\ref{sec:exp} names the experiments that test it.
 
 \subsection{Gravitational waves and the graviton}
 
@@ -480,7 +486,7 @@ field has $D(D-3)/2$ propagating polarisations, two in 3+1 \chk{Q8}. Weinberg's 
 self-coupling argument~\cite{deser70} show that a massless spin-2 field must couple equally to all energy and, made consistent, is general
 relativity \tagP: the spin-2 wave is the existence frame's own, and its universal coupling is Proposition~\ref{pr:wep} again.
 
-By Lemma~\ref{lem:classical}, after the first recorded act these waves are classical waves of the frame: GUID has no graviton as a quantum
+By Lemma~\ref{lem:classical}, once the start is complete (Section~\ref{sec:cosmo}) these waves are classical waves of the frame: GUID has no graviton as a quantum
 of the frame \tagD. That is consistent with every observation, for reasons the literature has made precise. Dyson showed that detectors of
 the LIGO type cannot register single gravitons, because mirrors heavy enough would collapse into a black hole~\cite{dyson}; Rothman and
 Boughn found that even a Jupiter-mass absorber near a neutron star would be swamped by neutrinos, and a shield against them would collapse
@@ -579,7 +585,8 @@ classical field (Lemma~\ref{lem:classical}) leaves each branch's phase but remov
 separable at all times, $\mathcal N=0$ \chk{Q5}.
 
 \textbf{GUID predicts $\mathcal N=0$.} A positive result would show that the gravitational field is not the existence frame: the identification
-of Hypothesis~\ref{h:exist} would fail for nature, and GUID would be left with hosting only (Theorem~\ref{th:host}(ii)). Two caveats are
+of Hypothesis~\ref{h:exist} would fail for nature and the proposed theory would be refuted; a quantum geometry would then run on DMP only
+as content (Theorem~\ref{th:host}(ii)). Two caveats are
 under debate. Aziz and Howl argue that classical gravity coupled to quantum matter fields can produce entanglement through virtual matter
 processes, at a rate far below the quantum-gravity rate~\cite{azizhowl}; Marletto, Oppenheim, Vedral and Wilson~\cite{movw},
 Di\'osi~\cite{diosi25}, Schneider, Huggett and Linnemann~\cite{shl} and Gundhi, Infantino and Bassi~\cite{gib} dispute it. And
@@ -789,12 +796,12 @@ a fixed background (\chk{A1}--\chk{A5}) and stops exactly at superpositions of g
 background-field method does: the background is a DMP structure and classical; the linearised fluctuation, which carries the Newtonian
 pull between laboratory masses, is content between parts, and linearised quantum gravity on a fixed background already predicts the
 entanglement of the masses~\cite{christodoulou23}. On that reading DMP's classical structures are the part of quantum gravity that is
-classical in quantum gravity too, the centre of~\eqref{eq:harlow}, and the assembly models quantum gravity's kinematics rather than only
-hosting them. The two readings agree on every fact: the shared structures are classical, quantum content including a linearised field can
+classical in quantum gravity too, the centre of~\eqref{eq:harlow}, and the linearised field is quantum content on that classical
+centre. The two readings agree on every fact: the shared structures are classical, quantum content including a linearised field can
 move between parts by grant and stay entangled while every act is recorded, the axioms derive no constant, and they forbid coherent
-superpositions of backgrounds while their records exist. They differ only on Definition~\ref{def:model}. We adopt the stricter one;
-the dissent is the reading in which GUID's geometry includes a quantum fluctuation on a classical centre, and it predicts
-$\mathcal N>0$ in Section~\ref{sec:exp}.
+superpositions of backgrounds while their records exist. They differ in one place: whether the linearised field that pulls laboratory
+masses belongs to the frame (the proposed theory, which predicts $\mathcal N=0$ in Section~\ref{sec:exp}) or to the content (the dissent,
+which predicts $\mathcal N>0$). DMP hosts either; the experiment decides between them.
 
 \paragraph{The tree is not our space.} Read as space, a tree's boundary is totally disconnected (the $p$-adic line of $p$-adic
 AdS/CFT~\cite{hmss,gubser}), and no tree approximates a plane: an $n$-cycle needs distortion at least $n/3-1$ in any tree~\cite{rr}. So a
@@ -815,26 +822,37 @@ deficits~\cite{thooft88}.
 So 2+1 is not an exception to Theorem~\ref{th:host}. With no local field there is no local mediator to forbid, but the global holonomies are
 quantum, and a DMP structure that carries them is broadcast and so can carry one classical sector of them, never their superposition; with
 matter, the same rule decoheres the particles' relative positions. In GUID's terms, the existence frame in 2+1 would have nothing local
-that could be held as a classical record, and what it does carry is global and quantum. GUID can host 2+1 quantum gravity and cannot be it;
+that could be held as a classical record, and what it does carry is global and quantum. DMP can run 2+1 quantum gravity as content, but
+its frame cannot be 2+1 gravity;
 and our universe is 3+1, whose local degrees of freedom, gravitational waves, are measured~\cite{gw150914}. \emph{Verdict: derived}, with
 the dimension count as \emph{holds}.
 
 \section{Cosmology}\label{sec:cosmo}
 
-\subsection{The beginning: the minting}
+\subsection{The beginning: the start}
 
-G0 is stated, not derived, and the minting is the first act: before it there is no act and therefore no record \tagD. Lemma~\ref{lem:classical}
-rests on records, so it applies only from the minting on. Before it, the axioms place no restriction on the geometry, which may be in
-superposition; from it on, every geometry the axioms define is recorded and classical. This matches the standard semiclassical picture,
-in which the geometry of the universe becomes classical through decoherence at its very beginning (Halliwell~\cite{halliwell}; Kiefer
-\cite{kiefer87}), and the no-boundary proposal, in which there is no ``before'' (Hartle and Hawking~\cite{hartlehawking}) \tagP. In GUID
-the minting is therefore the boundary of quantum gravity in time: whatever is quantum about the geometry itself lies before it, where DMP
-by its own words makes no statement.
+G0 is stated, not derived, and the minting is the first act: before it there is no act and therefore no record \tagD.
+Lemma~\ref{lem:classical} rests on records, so it applies only once acts exist. GUID describes the beginning as one event, the
+\emph{start}. For anything to begin to exist it must be possible for it to exist, and the first step of existing is to inflate, through the
+decay of the oscillons that coalesce once the initial energy has been emitted. Inflation and that decay cannot be separated or ordered,
+because there is no causality yet in which to order them; together they are the start.
 
-\begin{hypothesis}[the minting closes reheating]\label{h:minting}
-The minting, the first recorded act, occurs when inflation and reheating have produced interacting matter: causality in DMP's sense, acts
-between existing parts, begins with reheating. \tagH
+\begin{hypothesis}[the start]\label{h:minting}
+Inflation and the decay of the oscillons it ends in are one event, the start, which is the minting. It has no internal order the axioms can
+refer to, and the classical era of Lemma~\ref{lem:classical}, with causality in DMP's sense (acts between existing parts), begins as it
+completes. \tagH
 \end{hypothesis}
+
+The physics of the start is standard \tagP. Inflation ends as the inflaton oscillates about the minimum of its potential; in a broad class
+of models self-resonance fragments it into oscillons, long-lived localised lumps of the field, which dominate the universe for a while
+(Amin et al.~\cite{amin}); their decay into the particles of the Standard Model reheats the universe (Kofman, Linde and
+Starobinsky~\cite{kls}). In physics these are stages of one field's history; GUID's statement that they form one event agrees with that,
+since the axioms, which need acts to order anything, have nothing by which to order them. Within the start the axioms place no restriction
+on the geometry, which may be in superposition; after it, every geometry the axioms define is recorded and classical. This matches the
+standard semiclassical picture, in which the geometry of the universe becomes classical through decoherence at its very beginning
+(Halliwell~\cite{halliwell}; Kiefer~\cite{kiefer87}), and the no-boundary proposal, in which there is no ``before'' (Hartle and
+Hawking~\cite{hartlehawking}). In GUID the start is therefore the boundary of quantum gravity in time: whatever is quantum about the
+geometry itself lies within it, where DMP by its own words makes no statement.
 
 \subsection{The universe at its own Schwarzschild threshold}
 
@@ -873,12 +891,10 @@ and its Hubble rate below $\hbar H=4.7\times10^{13}$\,GeV \chk{Q14}. Starobinsky
 scalar data, predicts $r\approx12/N^2\approx3\times10^{-3}$ at $N=60$ \chk{Q14}, the target of the next generation of polarisation
 surveys~\cite{litebird}.
 
-GUID's prediction depends on where the minting sits. Under Hypothesis~\ref{h:minting}, inflation precedes the minting; its tensor modes are
-generated where the axioms do not constrain the geometry, and become classical, as the standard account says they do through squeezing and
-decoherence~\cite{polarski}, before the first record. GUID then predicts the standard spectrum and the consistency relation, and a
-detection would be the first observation of the quantum geometry that, in GUID, precedes the minting. Were the minting placed before
-inflation, GUID would forbid tensor modes of vacuum origin and a detection with $n_t=-r/8$ would refute it. \emph{Verdict: live}; the
-observation fixes the minting's place relative to inflation.
+Under Hypothesis~\ref{h:minting} the tensor modes are generated within the start, where the axioms do not constrain the geometry,
+and become classical, as the standard account says they do through squeezing and decoherence~\cite{polarski}, as the start completes. GUID
+therefore allows the standard spectrum and its consistency relation, and a detection would be the first observation of the quantum
+geometry of the start. GUID's own predictions about the geometry begin after the start. \emph{Verdict: live}; consistent with every bound.
 
 \subsection{The late universe: the balanced state}
 
@@ -890,32 +906,81 @@ fallen to a constant. \emph{Verdict: holds as a reading} in $\Lambda$CDM. The ne
 prefers a dark energy that weakens with time at 2.8 to 4.2 standard deviations, depending on the supernova sample~\cite{desi2}; if that holds,
 the future is not exactly de Sitter and the reading must be redone.
 
-\subsection{Dark matter: is it trapped neutrinos?}
+\subsection{Dark matter: remnants trapped in the gravitational field}\label{sec:darkmatter}
 
-GUID has proposed that dark matter is the neutrinos emitted in acts, which, because they verified existence, must themselves exist and
-cannot escape the pull of the existence around them; that the amount of baryonic matter was fixed at the start while this residue of
-existence accumulated; and that the accumulation lowers the fine-structure constant. Four independent measurements decide it \tagP.
+\begin{hypothesis}[trapped remnants]\label{h:remnant}
+The modelling of this paper explicitly allows remnants of interactions to be trapped in the gravitational field: energy and momentum that
+interactions have left in the existence frame, or behind a boundary the frame has closed, continue to gravitate after the interaction.
+\tagH
+\end{hypothesis}
 
-\begin{enumerate}[nosep]
-\item \emph{Too little.} The cosmic density of neutrinos is $\Omega_\nu h^2=\sum m_\nu/93.14$\,eV. Cosmology bounds the mass sum below
-$0.072$\,eV~\cite{desi}, so neutrinos are less than $0.7\%$ of the dark matter density $\Omega_ch^2=0.120$~\cite{planck18} \chk{Q15}.
-\item \emph{Too light to pack.} Neutrinos are fermions: their phase-space density cannot exceed $g/(2\pi\hbar)^3$ (Tremaine and
-Gunn~\cite{tremainegunn}). A dwarf spheroidal galaxy, central density about $0.1\,M_\odot$\,pc$^{-3}$ and velocity dispersion about
-10\,km/s, could be made of neutrinos only if each weighed more than about 170\,eV, even granting speeds up to three times the dispersion
-\chk{Q15}: more than a thousand times the cosmological bound.
-\item \emph{Too fast to trap.} Relic neutrinos of $0.05$\,eV move today at about 3200\,km/s and neutrinos from stars essentially at $c$,
-while the escape speed from the Sun's neighbourhood in the Galaxy is about 533\,km/s~\cite{piffl} \chk{Q15}. Neither can be held by a
-galaxy.
-\item \emph{Already there.} The acoustic peaks of the microwave background measure the dark matter density at $z\approx1100$, before the
-first star, with the same comoving value that later structure requires~\cite{planck18}; the matter was baryonic in the share
-$\Omega_b/\Omega_m=0.157$ already then \chk{Q15}. Dark matter did not accumulate from later acts.
-\end{enumerate}
+DMP motivates the hypothesis twice: a record outlives its act (Axiom~3), and a containing boundary keeps what it holds while every outside
+reader sees only its counts (T31). Dark matter, as far as the data show, is matter of exactly that kind: it gravitates and does nothing
+else that has been seen. Within the classical-frame modelling there are three routes by which remnants are trapped, and each can be
+calculated.
 
-\noindent What survives is narrower. That the baryon content was fixed early holds: the baryon density inferred from nucleosynthesis and
-from the microwave background agree~\cite{planck18}. A neutral, feebly interacting fermion as dark matter survives in a different form: a
-sterile neutrino of keV mass, produced in the early universe (Dodelson and Widrow~\cite{dodelsonwidrow}), is a live candidate. That
-dark matter lowers $\alpha$ is refuted by the constancy of $\alpha$ (Section~\ref{sec:alpha}). \emph{Verdict: refuted} for the known
-neutrinos; \emph{live} only as a sterile neutrino, which is not the trapped residue of acts.
+\paragraph{The stochastic remnant.} Corollary~\ref{co:diffuse} makes the frame diffuse: every interaction of quantum matter with the
+classical frame leaves a random kick in the field. Oppenheim and Russo computed the expectation value of the metric in classical-quantum
+gravity from its path-integral formulation, for static, spherically symmetric configurations~\cite{oppenheimrusso}. Around a mass $M$ the
+Newtonian potential acquires a linear and a quadratic term,
+\begin{equation}\label{eq:stochpot}
+\Phi(r)=-\frac{GM}{r}-\frac{\gamma_0}{2}-\frac{\gamma_1}{2}\,r-\frac{\gamma_2}{2}\,r^2 ,
+\end{equation}
+where the quadratic term is the cosmological constant of Schwarzschild--de Sitter space, $\gamma_2=\Lambda c^2/3$, and the linear term is
+anticorrelated with it and of order $c^2\sqrt\Lambda$. Physically, where accelerations are low the variance of the field's acceleration
+exceeds the square of its mean and acts as an additional, entropic attraction. The circular speed is
+\begin{equation}\label{eq:vcirc}
+v^2(r)=r\,\frac{\dd\Phi}{\dd r}=\frac{GM}{r}+\frac{\gamma_1}{2}\,r+\gamma_2\,r^2 .
+\end{equation}
+The first two terms balance at $r_*=\sqrt{2GM/\gamma_1}$, where
+\begin{equation}\label{eq:btf}
+v_*^4=2GM\gamma_1 .
+\end{equation}
+Around $r_*$ the rotation curve is roughly flat, changing by about 12\% between $r_*/2$ and $2r_*$, and its height obeys $v^4\propto M$,
+the form of the observed baryonic Tully--Fisher relation. For a galaxy of $10^{11}$ solar masses in baryons and $\gamma_1=10^{-10}$\,m/s$^2$,
+the order Oppenheim and Russo find, $r_*=17$\,kpc and $v_*=227$\,km/s, with the $\Lambda$ term below $10^{-4}$ of $v_*^2$ there \chk{Q18}.
+The acceleration scale is tied to the cosmological constant: $c^2\sqrt{\Lambda/3}/2\pi=8.6\times10^{-11}$\,m/s$^2$, close to Milgrom's
+empirical $a_0=1.2\times10^{-10}$\,m/s$^2$~\cite{milgrom} \chk{Q18}. On this route a single mechanism, the frame's diffusion, gives both a
+dark-energy term and a dark-matter-like term. The calculation is preliminary, as its authors stress: it is static and spherically
+symmetric, depends on an infrared regularisation, fixes $\gamma_1$ by boundary conditions rather than by a coupling constant, and does not
+yet address gravitational lensing or the microwave background. A deterministic relative of the same idea exists in tetrad gravity: Hehl
+and Mashhoon found that a memory of the frame, a nonlocal dependence on its past, acts in the linear approximation as dark matter given by
+an integral transform of the matter~\cite{hehlmashhoon}.
+
+\paragraph{The contained remnant.} The second route is containment (Hypothesis~\ref{h:horizon}). Energy that collapsed behind a horizon
+during the start gravitates through its counts alone and is dark by T31: primordial black holes. The start itself makes them. When the
+inflaton fragments into oscillons, which in a broad class of models dominate the universe for a while after inflation~\cite{amin}, enough
+of them can collapse into black holes of sublunar mass to make up all of the dark matter (Cotner, Kusenko and Takhistov~\cite{cotner}).
+Primordial black holes can be all of the dark matter only in the asteroid-mass window, about $10^{14}$ to $10^{19}$\,kg ($10^{17}$ to
+$10^{22}$\,g), which current constraints leave open~\cite{gortongreen}. The window's light edge is set by the Hawking part of their HPI
+radiation: a hole of $10^{14}$\,kg glows at $1.2\times10^9$\,K, $k_BT\approx0.1$\,MeV, and its evaporation products (MeV gamma rays, and
+positrons that annihilate at 511\,keV) bound how many such holes there can be; holes lighter than a few $10^{11}$\,kg have evaporated
+already \chk{Q18}. At the heavy edge, $10^{19}$\,kg with a Schwarzschild radius of 15\,nm and a temperature of $1.2\times10^4$\,K,
+microlensing takes over \chk{Q18}. The prediction of this route is specific: if dark matter is the contained remnant of the start, the
+Hawking part of HPI radiation, unobservable for astrophysical black holes (Section~\ref{sec:bh}), becomes observable at the window's light
+edge.
+
+\paragraph{The radiated remnant.} Gravitational waves are remnants of interactions that propagate in the frame. Pulsar timing has found a
+nanohertz background with characteristic strain $h_c\approx2.4\times10^{-15}$ at the frequency $1/\text{yr}$ (NANOGrav~\cite{nanograv}),
+which corresponds to $\Omega_{\text{gw}}=2\pi^2f^2h_c^2/3H_0^2\approx8\times10^{-9}$ per logarithmic frequency \chk{Q18}: more than $10^7$
+times too little for the dark matter, and as radiation ($w=1/3$) it does not cluster. It is a real remnant trapped in the field, but not
+the dark matter.
+
+\paragraph{What every remnant must satisfy.} Four measurements constrain every route \tagP. (1) It must already be there at recombination:
+the acoustic peaks of the microwave background measure the dark matter density at $z\approx1100$, before the first star, as
+$\Omega_ch^2=0.120$, the same comoving value later structure requires, with the baryons then already at the share
+$\Omega_b/\Omega_m=0.157$~\cite{planck18} \chk{Q15}. So the remnant formed during the start, not from later acts; and the baryon content
+was fixed early, as nucleosynthesis and the microwave background agree. (2) It must be collisionless and move with the galaxies: in the
+merging cluster 1E0657$-$558 the lensing mass follows the galaxies, not the hot gas that holds most of the baryons (Clowe et
+al.~\cite{clowe}). (3) It cannot be the known neutrinos: they are less than $0.7\%$ of the dark matter density, since cosmology bounds
+their mass sum below $0.072$\,eV~\cite{desi}; a dwarf galaxy made of them would need each to weigh more than about 170\,eV by the Pauli
+principle (Tremaine and Gunn~\cite{tremainegunn}); and relic neutrinos move at about 3200\,km/s and stellar ones at nearly $c$, against a
+Galactic escape speed of 533\,km/s~\cite{piffl} \chk{Q15}. (4) It must leave $\alpha$ unchanged to about a part per million over ten
+billion years (Section~\ref{sec:alpha}).
+
+\emph{Verdict: live.} The contained route passes all four requirements by construction; the stochastic route reproduces the shape and
+scale of galactic rotation curves in a preliminary calculation and must still pass lensing, the acoustic peaks and the merging cluster;
+the radiated route is real but far too small.
 
 \subsection{The fine-structure constant as the information field}\label{sec:alpha}
 
@@ -991,13 +1056,15 @@ frame the tiers act in. \emph{Verdict: holds as a reading}; unification \emph{un
 
 \section{Hosting: the Existence Turing machine}\label{sec:host}
 
-Theorem~\ref{th:host}(ii) says the information half can carry any quantum content. Assembled from DMP parts, a universal quantum computer
+Theorem~\ref{th:host} says that DMP, supplied with the base configuration of our universe, hosts the proposed theory, and its part~(ii)
+that the information half can carry any quantum content. Assembled from DMP parts, a universal quantum computer
 can run as content, and by the Church--Turing--Deutsch principle it approximates every finitely realisable physical system to any finite
 precision~\cite{deutsch}. GUID calls such an assembly the \emph{Existence Turing machine}; a sealed file that carries the assembly's
 recipe, its digest, the versions of the axioms and of the proof chain, and the verdict lets the same machine be redeployed and checked
 anywhere. Two consequences matter for quantum gravity. First, every candidate theory of quantum gravity in Section~\ref{sec:landscape} can
-run on the machine with its predictions; the axioms are neutral among them, and so GUID does not forbid quantum gravity in nature. Second,
-the machine's own structure, the gates, records and layout, stays classical: it is the classical machine that runs the quantum theory. A
+also run on the machine with its predictions, so the axioms do not forbid quantum gravity in nature; a theory whose geometry is quantum runs
+as content, not as DMP's frame. Second, the machine's own structure, the gates, records and layout, is classical, and in the proposed theory
+it is the existence frame itself. A
 check of the second statement, with three five-qubit parts whose record and counts are identical for all sixteen pairs of mass contents
 while the contents end entangled, belongs to the dissenting review and rests on one construction choice (existence read per part, not per
 mass position); we do not use it here.
@@ -1017,7 +1084,7 @@ of Section~\ref{sec:holo} are shared, with a classical centre & entanglement of 
 Loop quantum gravity~\cite{ashtekar,rovellismolin} & the triad/tetrad; area has a discrete spectrum & the frame is LQG's own variable, not
 quantised; area a number & area spectrum (not accessible); BMV \\
 Asymptotic safety~\cite{weinberg79,reuter} & the metric, with a UV fixed point & hostable & BMV \\
-Causal dynamical triangulations~\cite{cdt} & sum over geometries & allowed before the minting only & BMV \\
+Causal dynamical triangulations~\cite{cdt} & sum over geometries & allowed within the start only & BMV \\
 Causal sets~\cite{bombelli} & discrete order; $\Lambda\sim1/\sqrt N$ & DMP's order is a tree, not a sprinkled causal set & Lorentz
 invariance needs random sprinkling \\
 Thermodynamic gravity~\cite{jacobson95} & the microscopic entropy only & GUID's thermal reading, Section~\ref{sec:thermo} & none
@@ -1029,6 +1096,8 @@ Gravity-related collapse~\cite{diosi87,penrose96} & matter, collapsing & paramet
 spontaneous radiation \\
 Semiclassical gravity~\cite{moller,rosenfeld63} & matter; metric sourced by $\langle T\rangle$ & rejected: nonlinear; Page--Geilker &
 done~\cite{pagegeilker} \\
+Modified dynamics (MOND)~\cite{milgrom} & nothing; a law at low acceleration & the stochastic remnant gives a linear term of
+size $a_0$, tied to $\Lambda$ (Section~\ref{sec:darkmatter}) & lensing, acoustic peaks, merging clusters \\
 Spacetime from entanglement~\cite{vanraamsdonk,ermepr} & content; geometry emergent & GUID's frame as the classical centre of such a geometry is
 open & unclear \\
 \bottomrule
@@ -1051,10 +1120,13 @@ Universality of free fall & exact for the frame; a scalar term $\eta=2\lambda^2f
 Light bending $\gamma$ & exactly 1 & 1 & $\gamma-1=(2.1\pm2.3)\times10^{-5}$~\cite{cassini} \\
 Speed of gravitational waves & $c$ & $c$ & $|c_{\text{gw}}/c-1|\lesssim10^{-15}$~\cite{gw170817} \\
 Single-graviton detector clicks~\cite{tobar} & possible, from a classical wave & possible & do not discriminate~\cite{cdr} \\
-Primordial tensor modes & standard spectrum, from before the minting & $r=16\epsilon$, $n_t=-r/8$ & $r<0.036$~\cite{bk18} \\
+Primordial tensor modes & standard spectrum, generated within the start & $r=16\epsilon$, $n_t=-r/8$ & $r<0.036$~\cite{bk18} \\
 Drift of $\alpha$ & zero or negative & none predicted & $(1.0\pm1.1)\times10^{-18}$/yr~\cite{lange} \\
 Hawking radiation & thermal to the outside reader; return of content open & Page curve & not observable \\
-Dark matter as the known neutrinos & --- (refuted) & --- & four bounds, Section~\ref{sec:cosmo} \\
+Galactic rotation (stochastic remnant) & roughly flat near $r_*=\sqrt{2GM/\gamma_1}$, $v_*^4=2GM\gamma_1$, $\gamma_1\sim c^2\sqrt\Lambda$ &
+dark matter halo needed & preliminary~\cite{oppenheimrusso}; lensing open \\
+Contained remnants & primordial black holes of $10^{14}$--$10^{19}$\,kg; Hawking glow at the light edge & no statement & window
+open~\cite{gortongreen} \\
 \bottomrule
 \end{longtable}
 \end{center}
@@ -1073,7 +1145,7 @@ Free fall is universal for the existence frame & derived; holds & Prop.~\ref{pr:
 The information scalar does not enter gravity; $\gamma=1$ & derived; holds & Prop.~\ref{pr:gamma}; \chk{Q7} \\
 The existence frame is classical after the first record & derived & Lemma~\ref{lem:classical}; \chk{Q3} \\
 A classical frame cannot mediate entanglement & derived & Lemma~\ref{lem:locc}; \chk{Q4} \\
-The axioms cannot model quantum gravity and can host it & derived & Theorem~\ref{th:host} \\
+DMP, with the base configuration of our universe, hosts the proposed theory & derived & Theorem~\ref{th:host} \\
 No graviton as a quantum of the frame & derived; consistent with all data & \chk{Q9} \\
 The frame must diffuse and decohere matter & derived (with CQ dynamics) & Cor.~\ref{co:diffuse} \\
 Record and recompute is measurement and feedback & derived (structure) & Prop.~\ref{pr:ktm} \\
@@ -1090,13 +1162,18 @@ Information returns from black holes & open & Section~\ref{sec:bh} \\
 Holographic minimal cuts and reconstruction from the axioms & holds, on a tree & \chk{A1}--\chk{A5} \\
 The area is a number (one fixed-area sector) & derived & \eqref{eq:harlow} \\
 The tree is our space & refuted as literal; holds as routing or histories & Section~\ref{sec:holo} \\
-2+1 gravity is an exception & refuted; hosted, not modelled & Section~\ref{sec:21}; \chk{Q8} \\
-Quantum geometry only before the minting & derived & Section~\ref{sec:cosmo} \\
+2+1 gravity is an exception & refuted; runs as content, not as the frame & Section~\ref{sec:21}; \chk{Q8} \\
+Inflation and oscillon decay are one start, the minting & holds as a reading & Hyp.~\ref{h:minting} \\
+Quantum geometry only within the start & derived (with Hyp.~\ref{h:minting}) & Section~\ref{sec:cosmo} \\
 The early universe a Kugelblitz & holds as a reading, at every epoch & \chk{Q12} \\
 Inflation as the possibility space; flatness & holds as a reading & \chk{Q13} \\
-Primordial tensor modes & live; locate the minting & \chk{Q14} \\
+Primordial tensor modes, generated within the start & live; consistent with all bounds & \chk{Q14} \\
 The balanced state as the de Sitter future & holds as a reading in $\Lambda$CDM & \chk{Q13} \\
-Dark matter is trapped neutrinos & refuted (four bounds) & \chk{Q15} \\
+Remnants of interactions are trapped in the gravitational field & live & Hyp.~\ref{h:remnant} \\
+Stochastic remnant: flat rotation curves, $v^4\propto M$, scale tied to $\Lambda$ & holds in a preliminary calculation; lensing open & \chk{Q18} \\
+Contained remnant: primordial black holes from the start & live (window open) & \chk{Q18} \\
+Radiated remnant (gravitational waves) as the dark matter & refuted (about $10^{-8}$) & \chk{Q18} \\
+The known neutrinos as the remnant & refuted (four bounds) & \chk{Q15} \\
 Baryon content fixed early & holds & Section~\ref{sec:cosmo} \\
 $\alpha$ does not grow & live & Section~\ref{sec:alpha} \\
 $\alpha$ began at one & beyond known physics; refuted after nucleosynthesis & \chk{Q16} \\
@@ -1111,7 +1188,7 @@ The forces as tiers; their unity & holds as a reading; unity untested & Section~
 
 \section{Where we expect it to break}\label{sec:break}
 \begin{enumerate}[nosep]
-\item \emph{The hypotheses.} Everything physical rests on Hypotheses~\ref{h:exist}--\ref{h:minting}, above all on reading trust as existence
+\item \emph{The hypotheses.} Everything physical rests on Hypotheses~\ref{h:exist}--\ref{h:remnant}, above all on reading trust as existence
 and existence as energy-momentum. Another faithful reading of either changes the propositions; the dissent of Section~\ref{sec:holo} is one,
 and it predicts $\mathcal N>0$.
 \item \emph{Experiment.} A positive test of gravitationally mediated entanglement, a violation of the LOCC inequality, or decoherence and
@@ -1120,10 +1197,13 @@ gravity can entangle after all~\cite{azizhowl}, a positive test is decisive.
 \item \emph{Constants.} The axioms derive none of $G$, $\hbar$, $\Lambda$, the entropy per area $\eta$, or the strength of the
 measurement-and-feedback channel; they enter as content or configuration. A derivation of any of them from the axioms would be new; we have
 none.
-\item \emph{The minting.} Hypothesis~\ref{h:minting} places the minting at the end of reheating. If it belongs before inflation, a detection of
-vacuum tensor modes refutes GUID.
+\item \emph{The start.} Hypothesis~\ref{h:minting} makes inflation and the oscillon decay one start that the axioms do not constrain, so GUID
+predicts nothing about primordial tensor modes beyond standard inflation; its predictions about the geometry begin after the start.
+\item \emph{Dark matter.} The stochastic remnant has been computed only for static, spherically symmetric configurations. If it cannot
+reproduce lensing, the acoustic peaks and the merging cluster 1E0657$-$558, it is not the dark matter and the contained remnant must carry
+it; if evaporation and microlensing close the asteroid-mass window, that route closes too.
 \item \emph{Black holes.} GUID does not say whether information returns from an evaporating hole. A derivation of the Page curve that needs
-superposed geometries after the minting would contradict Lemma~\ref{lem:classical}.
+superposed geometries after the start would contradict Lemma~\ref{lem:classical}.
 \item \emph{Space.} A literal tree is not our space; the routing reading avoids the objection but has not been shown to give a Lorentzian
 3+1 manifold in any limit.
 \item \emph{The checks.} \chk{Q6} uses the semi-empirical Coulomb term and a coarse composition of the Earth; \chk{Q13} a reheating
@@ -1134,16 +1214,19 @@ per cent, not the verdicts.
 \section{Conclusion}
 
 Read as physics, the three axioms of the Dark Matter Protocol give a definite account of quantum gravity, and it is not a quantisation of
-geometry. Trust becomes existence, existence becomes a tetrad that weighs all energy alike, never mixes with the information half, and
-from the first recorded act on is classical, because the axioms make each of its values a record that two independent witnesses hold in
-full. A classical mediator cannot entangle, so the axioms can carry any quantum theory of gravity as content and cannot be one. Consistency
-with quantum mechanics then fixes the rest of the dynamics: the frame must diffuse and decohere matter, and the axioms' own architecture,
-record then recompute, is the measurement-and-feedback channel that does so. Horizons are containing boundaries whose temperature is the
-existence they assert; black holes give up what the first law allows and an outside reader sees only their counts; holographic codes are
-reproduced up to their classical centre; 2+1 dimensions are no exception; quantum geometry is confined to before the minting. The account
-stands on the classical side of the one class of experiments that can decide it, gravitationally mediated entanglement and its relatives.
-If those experiments find entanglement, gravity is not GUID's frame, and GUID remains what Theorem~\ref{th:host} leaves it: a host. We
-claim that the construction exists and reproduces. Whether it is right is for the experiments, and for the reader, to break.
+geometry. Trust becomes existence, and existence becomes a tetrad that weighs all energy alike, never mixes with the information half, and
+is classical once the start, inflation with the decay of its oscillons, is complete, because the axioms make each of its values a record
+that two independent witnesses hold in full. Supplied with the base configuration currently assumed for our universe, DMP hosts this
+theory: its shared structure carries the classical frame, and its information half the quantum content. Consistency with quantum
+mechanics then fixes the rest of the dynamics: the frame must diffuse and decohere matter, and the axioms' own architecture, record then
+recompute, is the measurement-and-feedback channel that does so. Horizons are containing boundaries whose temperature is the existence they
+assert; black holes give up what the first law allows, and an outside reader sees only their counts; holographic codes are reproduced up to
+their classical centre; 2+1 dimensions are no exception; quantum geometry is confined to the start. The theory lets remnants of interactions
+be trapped in the gravitational field: its stochastic remnant already gives the shape and scale of galactic rotation curves in a first
+calculation, and its contained remnants are primordial black holes from the start. It stands on the classical side of the one class of
+experiments that can decide it, gravitationally mediated entanglement and its relatives. If those experiments find entanglement, the
+geometry is quantum and the proposed theory is refuted, and DMP would run its successor as content. We claim that the construction exists
+and reproduces. Whether it is right is for the experiments, and for the reader, to break.
 
 \section*{Acknowledgements}
 The first author thanks Sir Peter Higgs and the many theorists and experimentalists whose work this account requires and builds on. The
@@ -1166,14 +1249,15 @@ at commit \texttt{4400cce}). Gravity: \url{https://github.com/StevenHrovat/gravi
 \appendix
 \section{The checks}\label{app:checks}
 
-\texttt{python3 docs/quantum-gravity/checks.py} (numpy, scipy, sympy) prints 79 checks, all of which pass. Q1: Planck units, the existence
+\texttt{python3 docs/quantum-gravity/checks.py} (numpy, scipy, sympy) prints 93 checks, all of which pass. Q1: Planck units, the existence
 energy, Unruh, Hawking, Bekenstein--Hawking, Jacobson's entropy density, the size of the quantum term of~\eqref{eq:eft}. Q2: the lapse. Q3:
 no-cloning and broadcasting. Q4: classical against coherent mediation, 300 random couplings each. Q5: the Bose et al.\ geometry. Q6: the
 MICROSCOPE bound on the information scalar and the Higgs-share test. Q7: Brans--Dicke and Cassini. Q8: polarisations and Weyl components
 in $D$ dimensions. Q9: the single-graviton threshold. Q10: Kerr horizon, ergosphere, Christodoulou, efficiencies. Q11: Hawking radiation of
 real holes. Q12: the Hubble mass at its Schwarzschild threshold. Q13: flatness, de Sitter floor, onset of acceleration. Q14: the tensor
-spectrum, the BICEP/Keck bound, Starobinsky's $r$. Q15: dark matter as neutrinos, four bounds. Q16: $\alpha$ as self-interaction strength,
-the electron's lengths, gravity against electromagnetism, the running of $\alpha$. Q17: the speed of gravity.
+spectrum, the BICEP/Keck bound, Starobinsky's $r$. Q15: what every trapped remnant must satisfy, and why the known neutrinos do not. Q16: $\alpha$ as self-interaction strength,
+the electron's lengths, gravity against electromagnetism, the running of $\alpha$. Q17: the speed of gravity. Q18: remnants trapped in the field: the stochastic remnant's rotation curve and
+acceleration scale, the contained remnant's Hawking temperatures and evaporation, the radiated remnant's energy density.
 \texttt{python3 docs/qg-verdict/assembly.py} (numpy) prints the 18 checks of the holographic-code assembly; A1 to A5 in this paper are its
 checks [1] to [5], and its check [6] is the special case of \chk{Q4} with CNOT and CZ couplings.
 
@@ -1358,7 +1442,6 @@ Grav.} 13, 377 (1996).
 (1979).
 \bibitem{piffl} T. Piffl et al., ``The RAVE survey: the Galactic escape speed and the mass of the Milky Way'', \emph{Astron. Astrophys.}
 562, A91 (2014).
-\bibitem{dodelsonwidrow} S. Dodelson, L.~M. Widrow, ``Sterile neutrinos as dark matter'', \emph{Phys. Rev. Lett.} 72, 17 (1994).
 \bibitem{lange} R. Lange et al., ``Improved limits for violations of local position invariance from atomic clock comparisons'',
 \emph{Phys. Rev. Lett.} 126, 011102 (2021).
 \bibitem{espresso} M.~T. Murphy et al., ``Fundamental physics with ESPRESSO: precise limit on variations in the fine-structure constant
@@ -1390,6 +1473,22 @@ arXiv:0712.2485 (2007).
 \bibitem{bombelli} L. Bombelli, J. Lee, D. Meyer, R.~D. Sorkin, ``Space-time as a causal set'', \emph{Phys. Rev. Lett.} 59, 521 (1987).
 \bibitem{vanraamsdonk} M. Van~Raamsdonk, ``Building up spacetime with quantum entanglement'', \emph{Gen. Relativ. Gravit.} 42, 2323 (2010).
 \bibitem{ermepr} J. Maldacena, L. Susskind, ``Cool horizons for entangled black holes'', \emph{Fortschr. Phys.} 61, 781 (2013).
+\bibitem{oppenheimrusso} J. Oppenheim, A. Russo, ``Anomalous contribution to galactic rotation curves due to stochastic spacetime'',
+arXiv:2402.19459 (2024).
+\bibitem{milgrom} M. Milgrom, ``A modification of the Newtonian dynamics as a possible alternative to the hidden mass hypothesis'',
+\emph{Astrophys. J.} 270, 365 (1983).
+\bibitem{hehlmashhoon} F.~W. Hehl, B. Mashhoon, ``Nonlocal gravity simulates dark matter'', arXiv:0812.1059 (2008).
+\bibitem{amin} M.~A. Amin, R. Easther, H. Finkel, R. Flauger, M.~P. Hertzberg, ``Oscillons after inflation'', \emph{Phys. Rev. Lett.} 108,
+241302 (2012).
+\bibitem{kls} L. Kofman, A. Linde, A.~A. Starobinsky, ``Reheating after inflation'', \emph{Phys. Rev. Lett.} 73, 3195 (1994).
+\bibitem{cotner} E. Cotner, A. Kusenko, V. Takhistov, ``Primordial black holes from inflaton fragmentation into oscillons'', \emph{Phys.
+Rev. D} 98, 083513 (2018).
+\bibitem{gortongreen} M. Gorton, A.~M. Green, ``How open is the asteroid-mass primordial black hole window?'', \emph{SciPost Phys.} 17, 032
+(2024).
+\bibitem{nanograv} G. Agazie et al. (NANOGrav Collaboration), ``The NANOGrav 15 yr data set: evidence for a gravitational-wave
+background'', \emph{Astrophys. J. Lett.} 951, L8 (2023).
+\bibitem{clowe} D. Clowe, M. Brada\v{c}, A.~H. Gonzalez, M. Markevitch, S.~W. Randall, C. Jones, D. Zaritsky, ``A direct empirical proof of
+the existence of dark matter'', \emph{Astrophys. J. Lett.} 648, L109 (2006).
 \end{thebibliography}
 
 \end{document}

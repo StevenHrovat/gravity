@@ -23,11 +23,15 @@ The holographic-code assembly of Section 9 is a separate script, docs/qg-verdict
   [Q13] inflation: e-folds that flatten an order-one curvature; de Sitter floor of the Hubble rate; onset of acceleration
   [Q14] primordial tensor modes: P_t = 16 G hbar H^2 / (pi c^5) vanishes with hbar; the BICEP/Keck bound in inflation energy;
         Starobinsky's r and the consistency relation n_t = -r/8
-  [Q15] dark matter as neutrinos: cosmological density for the allowed mass sum, Pauli (Tremaine-Gunn) bound for a dwarf galaxy,
+  [Q15] what every trapped remnant must satisfy, and the known neutrinos fail: cosmological density, Pauli (Tremaine-Gunn) bound for a dwarf galaxy,
         relic and stellar neutrinos against the Galactic escape speed; the baryon fraction
   [Q16] alpha as the self-interaction strength of charge: Schwinger's a_e = alpha/2pi; alpha as the ratio of the electron's lengths;
         gravity against electromagnetism in hydrogen; 1/alpha at the Planck energy (Standard Model, one loop)
   [Q17] the speed of gravitational waves from GW170817 and GRB 170817A
+  [Q18] remnants of interactions trapped in the gravitational field: the stochastic remnant of classical-quantum gravity (a linear
+        potential term, flat rotation curves near r* = sqrt(2GM/gamma1), v^4 = 2 G M gamma1, Milgrom's coincidence with Lambda), the
+        contained remnant (primordial black holes in the asteroid-mass window, their Hawking temperatures and evaporation), and the
+        radiated remnant (the nanohertz gravitational-wave background)
 """
 
 import math
@@ -341,7 +345,7 @@ check("Starobinsky inflation, r = 12 / N^2 at N = 60", r_staro, 3.33e-3, rtol=1e
 check("single-field consistency relation, n_t = -r/8, for that r", -r_staro / 8, -4.17e-4, rtol=1e-2)
 
 # ---------------------------------------------------------------------------------------------------------------------------------
-print("\n[Q15] Can dark matter be neutrinos?")
+print("\n[Q15] What every trapped remnant must satisfy: the known neutrinos fail all four requirements")
 h_little, omega_c, omega_b = 0.674, 0.120, 0.0224               # Planck 2018
 for msum in (0.06, 0.072):
     omega_nu = msum / 93.14
@@ -389,6 +393,52 @@ print("\n[Q17] The speed of gravity")
 D_L = 40 * Mpc
 dt = 1.74
 check_true(f"GW170817: 1.74 s over 40 Mpc gives |v_gw/c - 1| about {dt * c / D_L:.1e}, below 1e-15", dt * c / D_L < 1e-15)
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[Q18] Remnants of interactions trapped in the gravitational field: three routes inside the classical-frame modelling")
+# Route 1, stochastic remnant: in classical-quantum gravity the expectation of the static, spherically symmetric potential is
+# Phi = -G M / r - gamma0/2 - gamma1 r / 2 - gamma2 r^2 / 2 (Oppenheim and Russo, arXiv:2402.19459), with gamma2 = Lambda c^2 / 3 and
+# gamma1 of order c^2 sqrt(Lambda), the size of Milgrom's a0. Circular speed: v^2 = r dPhi/dr = G M / r + gamma1 r / 2 + gamma2 r^2.
+H0 = 67.4e3 / Mpc
+Lam = 3 * 0.685 * H0**2 / c**2
+check("cosmological constant from Planck 2018 (Omega_L = 0.685, H0 = 67.4 km/s/Mpc), 1/m^2", Lam, 1.09e-52, rtol=1e-2)
+a_lam = c**2 * math.sqrt(Lam / 3) / (2 * math.pi)
+check("Milgrom's coincidence c^2 sqrt(Lambda/3) / 2pi, m/s^2 (a0 = 1.2e-10)", a_lam, 8.6e-11, rtol=1e-2)
+gamma1 = 1e-10                                          # m/s^2, the order Oppenheim and Russo find
+M_gal = 1e11 * M_sun                                    # baryonic mass of a large spiral
+r_star = math.sqrt(2 * G * M_gal / gamma1)
+v_star = (2 * G * M_gal * gamma1) ** 0.25
+kpc = 1e3 * pc
+check("radius where G M / r and gamma1 r / 2 balance, r* = sqrt(2 G M / gamma1), kpc (M = 1e11 solar masses)", r_star / kpc, 16.7, rtol=1e-2)
+check("circular speed there, v*^4 = 2 G M gamma1, km/s", v_star / 1e3, 227.0, rtol=1e-2)
+
+
+def v_circ(r, M):
+    return math.sqrt(G * M / r + gamma1 * r / 2 + c**2 * Lam / 3 * r**2)
+
+
+check("speed at 2 r* over speed at r*: the curve changes by about 12% over a factor 4 in radius (r*/2 to 2 r*)",
+      v_circ(2 * r_star, M_gal) / v_circ(r_star, M_gal), math.sqrt(1.25), rtol=1e-3)
+check_true("the Lambda term is negligible at r*: gamma2 r*^2 below 1e-4 of v*^2", c**2 * Lam / 3 * r_star**2 < 1e-4 * v_star**2)
+check("doubling the baryonic mass multiplies v*^4 by 2 (a Tully-Fisher law, v^4 proportional to M)",
+      (2 * G * 2 * M_gal * gamma1) / (2 * G * M_gal * gamma1), 2.0)
+# Route 2, contained remnant: primordial black holes from the start (oscillon collapse) in the asteroid-mass window 1e17 to 1e22 g.
+for M_pbh, T_want in ((1e14, 1.23e9), (1e19, 1.23e4)):
+    T_pbh = hbar * c**3 / (8 * math.pi * G * M_pbh * kB)
+    check(f"Hawking temperature of a {M_pbh:.0e} kg primordial black hole, K", T_pbh, T_want, rtol=1e-2)
+kT_MeV = hbar * c**3 / (8 * math.pi * G * 1e14) / eV / 1e6
+check("its photon energy scale at the window's light edge, k T in MeV (hence the 511 keV and MeV gamma-ray limits)", kT_MeV, 0.106, rtol=1e-2)
+t_age = 13.8e9 * year
+M_ev = (t_age * hbar * c**4 / (5120 * math.pi * G**2)) ** (1 / 3)
+check_true(f"holes lighter than about {M_ev:.1e} kg have evaporated by now (Stefan-Boltzmann estimate; fuller counts give a few 1e11 kg)",
+           1e11 < M_ev < 1e12)
+check("Schwarzschild radius at the window's heavy edge (1e19 kg), m", 2 * G * 1e19 / c**2, 1.48e-8, rtol=1e-2)
+# Route 3, radiated remnant: the gravitational-wave background. Omega_gw(f) = 2 pi^2 f^2 h_c^2 / (3 H0^2); NANOGrav 15 yr: h_c = 2.4e-15
+# at f = 1/yr.
+f_ref = 1 / year
+omega_gw = 2 * math.pi**2 * f_ref**2 * (2.4e-15) ** 2 / (3 * H0**2)
+check("energy density of the nanohertz background per logarithmic frequency, Omega_gw at 1/yr", omega_gw, 8.0e-9, rtol=0.02)
+check_true("it is more than 1e7 times too small for the dark matter (Omega_c = 0.26), and it is radiation, w = 1/3", 0.26 / omega_gw > 1e7)
 
 print(f"\n{sum(results)} of {len(results)} checks passed")
 raise SystemExit(0 if all(results) else 1)

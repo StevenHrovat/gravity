@@ -6,26 +6,28 @@ Licence: Apache License 2.0. **Draft; nothing here is released, nothing here cha
 
 The fifth paper of the GUID series and the first that states the whole account of quantum gravity in one place. It stands on its own: it
 cites DMP 0.9.9 and the physics literature only, quotes DMP's text where the wording matters, and states every reading of the axioms as a
-numbered hypothesis (H1 to H6) instead of quoting notes. It consolidates the verdict of `docs/qg-verdict.md`, the papers in `docs/guid/`,
+numbered hypothesis (H1 to H7) instead of quoting notes. It consolidates the verdict of `docs/qg-verdict.md`, the papers in `docs/guid/`,
 `docs/existence/` and `docs/balance/`, the Bell follow-up draft (gravity#29), the refutation record (`docs/refutation.md`) and the
 owner's notes on dmp#25 up to and including the dark-matter note of 2026-10-30; and it adds what those did not have: the consistency of a
 classical frame with quantum matter (the decoherence-diffusion trade-off), the identification of DMP's record-and-recompute structure with
 measurement-and-feedback models of gravity, the LOCC test without entanglement, the effective-field-theory baseline, the primordial tensor
-modes and the place of the minting, and a comparison with the main approaches to quantum gravity.
+modes and the start, three routes by which the theory traps remnants of interactions in the gravitational field (dark matter), and a
+comparison with the main approaches to quantum gravity.
 
 ## Files
 
 | File | What |
 |---|---|
-| `quantum-gravity.tex` | the paper (LaTeX, `article` class, inline bibliography, 32 pages, one appendix) |
+| `quantum-gravity.tex` | the paper (LaTeX, `article` class, inline bibliography, 35 pages, one appendix) |
 | `quantum-gravity.pdf` | the paper as PDF, built from `quantum-gravity.tex` |
-| `checks.py` | every numerical claim: checks Q1 to Q17, 79 of 79 (numpy, scipy, sympy) |
+| `checks.py` | every numerical claim: checks Q1 to Q18, 93 of 93 (numpy, scipy, sympy) |
+| `de/guid-v5-quantengravitation.pdf` | the German translation; the English original governs. Only the PDF is tracked, as for v4: the public-repository scan rejects German letters in tracked text |
 | `README.md` | this file: what backs each claim, the sources |
 
 ## Build and check
 
 ```sh
-python3 docs/quantum-gravity/checks.py          # 79 of 79 checks passed
+python3 docs/quantum-gravity/checks.py          # 93 of 93 checks passed
 python3 docs/qg-verdict/assembly.py             # 18 of 18: the holographic-code assembly (A1 to A5 in the paper)
 cd docs/quantum-gravity && pdflatex quantum-gravity.tex && pdflatex quantum-gravity.tex && pdflatex quantum-gravity.tex \
   && rm -f quantum-gravity.aux quantum-gravity.log quantum-gravity.out quantum-gravity.toc
@@ -51,9 +53,10 @@ Three runs because of the table of contents. Built clean (no overfull box, no un
 | 2 G M_H / c^2 = c / H at every epoch | [Q12] (sympy) |
 | About 62 e-folds for flatness; de Sitter floor 0.83 H0; acceleration since z = 0.63 | [Q13] |
 | P_t = 16 G hbar H^2 / (pi c^5); r < 0.036 means V^(1/4) < 1.4e16 GeV; Starobinsky r = 0.0033; n_t = -r/8 | [Q14] |
-| Neutrinos < 0.7% of dark matter; Pauli bound > 170 eV for a dwarf; relic 3200 km/s and stellar ~c against 533 km/s escape; baryon share 0.157 | [Q15] |
+| Requirements on any remnant: neutrinos < 0.7% of dark matter; Pauli bound > 170 eV for a dwarf; relic 3200 km/s and stellar ~c against 533 km/s escape; baryon share 0.157 | [Q15] |
 | a_e = alpha / 2 pi within 0.15%; r_e / lambda_C-bar = lambda_C-bar / a_0 = alpha; gravity/EM in hydrogen 4.4e-40; G m_e^2 / hbar c; 1/alpha(E_P) = 105 | [Q16] |
 | abs(c_gw / c - 1) of order 4e-16 from GW170817 | [Q17] |
+| Stochastic remnant: Lambda = 1.09e-52 /m^2, c^2 sqrt(Lambda/3)/2pi = 8.6e-11 m/s^2; r* = 17 kpc, v* = 227 km/s for 1e11 solar masses and gamma1 = 1e-10 m/s^2; 12% change from r*/2 to 2 r*; v^4 proportional to M. Contained remnant: T_H 1.2e9 K and 1.2e4 K at 1e14 and 1e19 kg, kT 0.1 MeV, evaporated below a few 1e11 kg. Radiated remnant: Omega_gw 8e-9 at 1/yr | [Q18] |
 | Minimal cuts, any 3 of 5, syndrome reading, CHSH 2.83 against 2 | `docs/qg-verdict/assembly.py` [1] to [5] |
 
 ## Sources
@@ -64,7 +67,12 @@ Kafri, Taylor, Milburn, New J. Phys. 16, 065020 (2014); Tilloy and Diosi, Phys. 
 D 89, 047501 (2014); BICEP/Keck, Phys. Rev. Lett. 127, 151301 (2021), r < 0.036; Tristram et al., Phys. Rev. D 105, 083524 (2022), r <
 0.032; Donadi et al., Nat. Phys. 17, 74 (2021); Lami, Pedernales, Plenio, Phys. Rev. X 14, 021022 (2024); Piffl et al., A&A 562, A91
 (2014), 533 km/s; LiteBIRD, PTEP 2023, 042F01; Jacobson 1995, the sound-in-air sentence (it is in the paper's conclusion, worded as quoted).
-Ambjorn et al., arXiv:0712.2485: the journal reference could not be confirmed, so only the arXiv number is cited.
+Ambjorn et al., arXiv:0712.2485: the journal reference could not be confirmed, so only the arXiv number is cited. For the dark-matter
+section: Oppenheim and Russo, arXiv:2402.19459 (2024; the potential with linear and quadratic terms, gamma2 = Lambda/3, gamma1 of order
+1e-10 m/s^2, and the authors' caveats, read in the arXiv HTML); Cotner, Kusenko, Takhistov, Phys. Rev. D 98, 083513 (2018); Gorton and
+Green, SciPost Phys. 17, 032 (2024); NANOGrav 15 yr, ApJL 951, L8 (2023), h_c = 2.4e-15 at 1/yr; Clowe et al., ApJL 648, L109 (2006);
+Amin et al., Phys. Rev. Lett. 108, 241302 (2012); Milgrom, ApJ 270, 365 (1983); Hehl and Mashhoon, arXiv:0812.1059 (its journal reference
+could not be confirmed, so the arXiv number is cited).
 
 **Carried from the earlier papers of the series, checked there on 2026-10-27 and 2026-10-29:** Galley-Giacomini-Selby, Bose et al.,
 Marletto-Vedral, Barnum et al., Wootters-Zurek, Dieks, Brandao-Piani-Horodecki, Vidal-Werner, the HaPPY model, Almheiri-Dong-Harlow,
@@ -81,7 +89,7 @@ and Hannah 1977; Page and Geilker 1981; Oppenheim 2023 (PRX); Moller 1962; Rosen
 Chou et al. 2010; Jacobson 2016; Landauer 1961; Israel 1967; Kerr 1963; Christodoulou 1970; Bardeen, Carter and Hawking 1973; Penrose
 1969; Blandford and Znajek 1977; Bardeen, Press and Teukolsky 1972; Cleve, Gottesman and Lo 1999; Gell-Mann and Hartle 1990; Halliwell
 1989; Kiefer 1987; Hartle and Hawking 1983; Guth 1981; Planck 2018 VI; Starobinsky 1979 and 1980; Polarski and Starobinsky 1996;
-Tremaine and Gunn 1979; Dodelson and Widrow 1994; Higgs 1964; Englert and Brout 1964; Schwinger 1948; Glashow 1961; Weinberg 1964, 1967
+Tremaine and Gunn 1979; Kofman, Linde and Starobinsky 1994; Higgs 1964; Englert and Brout 1964; Schwinger 1948; Glashow 1961; Weinberg 1964, 1967
 and 1979; Salam 1968; Deser 1970; Amaldi, de Boer and Furstenau 1991; Maldacena 1998; Ashtekar 1986; Rovelli and Smolin 1995; Reuter
 1998; Bombelli, Lee, Meyer and Sorkin 1987; Van Raamsdonk 2010; Maldacena and Susskind 2013; Aldrovandi and Pereira 2013; Jacobson and
 Mattingly 2001; GW170817; GW150914; Will 2014; Brans and Dicke 1961; Cassini; Deutsch 1985; Zurek 2009; Mead 1964; Goguen and Meseguer
@@ -89,6 +97,18 @@ Mattingly 2001; GW170817; GW150914; Will 2014; Brans and Dicke 1961; Cassini; De
 the publisher's or arXiv's page before release.
 
 Constants: SI 2019, CODATA 2018, PDG 2024, Planck 2018.
+
+## The owner's answers (2026-10-30)
+
+- The beginning: inflation and the decay of its oscillons are one start, the minting (Hypothesis 6).
+- Dark matter: the trapped-neutrino idea is dropped; the paper proposes that the modelling lets remnants of interactions be trapped in the
+  gravitational field (Hypothesis 7) and calculates three routes (Section 11.6, [Q18]).
+- The stance: supplied with the base configuration currently assumed for our universe, DMP hosts the proposed theory of quantum gravity
+  (Theorem 1).
+- Category gr-qc; a German translation.
+- The author line: the owner asked for "Opus 5.5" after Sirius. Sessions that write to these repositories may not put a model identifier
+  into pushed files, so the line reads "Sirius (Claude, Anthropic)"; the owner can change it in `quantum-gravity.tex` (the `\author` line and
+  "Contributions and use of AI").
 
 ## Open
 
