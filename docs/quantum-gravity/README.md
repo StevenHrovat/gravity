@@ -18,16 +18,16 @@ comparison with the main approaches to quantum gravity.
 
 | File | What |
 |---|---|
-| `quantum-gravity.tex` | the paper (LaTeX, `article` class, inline bibliography, 35 pages, one appendix) |
+| `quantum-gravity.tex` | the paper (LaTeX, `article` class, inline bibliography, 37 pages, one appendix) |
 | `quantum-gravity.pdf` | the paper as PDF, built from `quantum-gravity.tex` |
-| `checks.py` | every numerical claim: checks Q1 to Q18, 93 of 93 (numpy, scipy, sympy) |
+| `checks.py` | every numerical claim: checks Q1 to Q19, 112 of 112 (numpy, scipy, sympy) |
 | `de/guid-v5-quantengravitation.pdf` | the German translation; the English original governs. Only the PDF is tracked, as for v4: the public-repository scan rejects German letters in tracked text |
 | `README.md` | this file: what backs each claim, the sources |
 
 ## Build and check
 
 ```sh
-python3 docs/quantum-gravity/checks.py          # 93 of 93 checks passed
+python3 docs/quantum-gravity/checks.py          # 112 of 112 checks passed
 python3 docs/qg-verdict/assembly.py             # 18 of 18: the holographic-code assembly (A1 to A5 in the paper)
 cd docs/quantum-gravity && pdflatex quantum-gravity.tex && pdflatex quantum-gravity.tex && pdflatex quantum-gravity.tex \
   && rm -f quantum-gravity.aux quantum-gravity.log quantum-gravity.out quantum-gravity.toc
@@ -56,7 +56,8 @@ Three runs because of the table of contents. Built clean (no overfull box, no un
 | Requirements on any remnant: neutrinos < 0.7% of dark matter; Pauli bound > 170 eV for a dwarf; relic 3200 km/s and stellar ~c against 533 km/s escape; baryon share 0.157 | [Q15] |
 | a_e = alpha / 2 pi within 0.15%; r_e / lambda_C-bar = lambda_C-bar / a_0 = alpha; gravity/EM in hydrogen 4.4e-40; G m_e^2 / hbar c; 1/alpha(E_P) = 105 | [Q16] |
 | abs(c_gw / c - 1) of order 4e-16 from GW170817 | [Q17] |
-| Stochastic remnant: Lambda = 1.09e-52 /m^2, c^2 sqrt(Lambda/3)/2pi = 8.6e-11 m/s^2; r* = 17 kpc, v* = 227 km/s for 1e11 solar masses and gamma1 = 1e-10 m/s^2; 12% change from r*/2 to 2 r*; v^4 proportional to M. Contained remnant: T_H 1.2e9 K and 1.2e4 K at 1e14 and 1e19 kg, kT 0.1 MeV, evaporated below a few 1e11 kg. Radiated remnant: Omega_gw 8e-9 at 1/yr | [Q18] |
+| Stochastic remnant: Lambda = 1.09e-52 /m^2, c^2 sqrt(Lambda/3)/2pi = 8.6e-11 m/s^2; r* = 17 kpc, v* = 227 km/s for 1e11 solar masses and abs(gamma1) = 1e-10 m/s^2 (gamma1 < 0, attractive; the Lambda term subtracts); 12% change from r*/2 to 2 r*; v^4 proportional to M. Contained remnant: T_H 1.2e9 K and 1.2e4 K at 1e14 and 1e19 kg, kT 0.1 MeV, evaporated below a few 1e11 kg. Radiated remnant: Omega_gw 8e-9 at 1/yr | [Q18] |
+| Bridge A (cosmological event horizon as cut-off): abs(gamma1) = 0.90 to 1.00 c H_inf = 4.9 to 5.4e-10 m/s^2, 8.1 times too strong in v^4 (1.69 in v); 337 km/s at 7.6 kpc against 200 km/s for 1e11 solar masses; 620 km/s at 50 kpc. Bridge B (Planck-strength record, trade-off at equality): discrete model 1.2e-51 kg s, excluded; Diosi-Penrose kernel 1.6e-24 kg^2 s/m, allowed; rate G M^2 / hbar R; fullerene 6.3e-16 /s; the 1e-14 kg diamond microsphere (R = 0.88 um) 72 /s, 13.9 ms, 1.74e-3 rad of entangling phase | [Q19] |
 | Minimal cuts, any 3 of 5, syndrome reading, CHSH 2.83 against 2 | `docs/qg-verdict/assembly.py` [1] to [5] |
 
 ## Sources
@@ -109,6 +110,19 @@ Constants: SI 2019, CODATA 2018, PDG 2024, Planck 2018.
 - The author line: the owner asked for "Opus 5.5" after Sirius. Sessions that write to these repositories may not put a model identifier
   into pushed files, so the line reads "Sirius (Claude, Anthropic)"; the owner can change it in `quantum-gravity.tex` (the `\author` line and
   "Contributions and use of AI").
+
+## Follow-up (2026-10-30, the owner: "Please correct the mistakes, add the new stuff and merge")
+
+- Corrected: the circular speed of the stochastic remnant. gamma1 is negative (its mean attracts) and the Lambda term subtracts:
+  v^2 = G M / r + abs(gamma1) r / 2 - gamma2 r^2 (Section 11.6 and the same line in `checks.py`). No number changes: the Lambda term is
+  below 1e-4 of v^2 there.
+- Added: "What is new and what is not" (Section 1.3): the physics belongs to the classical-quantum family; what is new is the route from an
+  information principle and four statements. Section 5.4, "Fixing the free constant": the balance rule (the trade-off at equality), Bridge A
+  (refuted) and Bridge B (the Diosi-Penrose rate, live), with checks Q19. The tables, the conclusion, the abstract and the German
+  translation follow.
+- Sources for Section 5.4, checked 2026-10-30: Oppenheim et al. 2023, Eqs. (44), (46), (47) and their numerical windows (read in the arXiv
+  text); Oppenheim and Russo 2024, Eq. (20) and the definitions of gamma0, gamma1, gamma2 (arXiv HTML); Donadi et al. 2021 (the lower bound
+  on the nuclear smearing length, of order 1e-10 m as reported); Figurato et al., New J. Phys. 26, 113004 (2024), which quotes 4e-10 m.
 
 ## Open
 

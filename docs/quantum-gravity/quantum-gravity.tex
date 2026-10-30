@@ -54,11 +54,12 @@ theorem, that the frame is classical once the start, inflation with the decay of
 configuration currently assumed for our universe, DMP hosts this theory: its shared structure carries the classical frame, its information
 half the quantum content. Consistency with quantum mechanics requires the frame to diffuse, and the axioms' record-and-recompute
 structure is exactly a measurement-and-feedback channel of the Kafri-Taylor-Milburn and Tilloy-Di\'osi type. We also treat
-horizons, black holes (with Hawking-Penrose-Information radiation), holographic codes, 2+1 dimensions and cosmology. The theory lets remnants of interactions be
+horizons, black holes, holographic codes, 2+1 dimensions and cosmology. The theory lets remnants of interactions be
 trapped in the gravitational field: its stochastic remnant gives a linear potential at Milgrom's acceleration scale and roughly flat
-rotation curves with $v^4\propto M$, and its contained remnants are primordial black holes from the start. It predicts no gravitationally
-mediated entanglement, spacetime diffusion bounded below by coherence times, $\gamma=1$, universal free fall, and a fine-structure constant
-that does not grow. All numbers come from one public script of 93 checks. We claim that the construction exists and reproduces, not that
+rotation curves, and its contained remnants are primordial black holes from the start. It predicts no gravitationally
+mediated entanglement, spacetime diffusion tied to decoherence, $\gamma=1$ and universal free fall. Made parameter-free by its own
+principles, it gives the Di\'osi-Penrose rate: the route is new, the physics belongs to the classical-quantum family. All
+numbers come from one public script of 112 checks. We claim that the construction exists and reproduces, not that
 it is correct.
 \end{abstract}
 
@@ -132,9 +133,25 @@ inequality of Lami, Pedernales and Plenio, and by the decoherence-diffusion trad
 still run on DMP as content, so the axioms do not forbid quantum gravity in nature; such a geometry would not be DMP's frame.
 
 \paragraph{What we claim.} We claim that the derivations are as written, that every number reproduces from one public script
-(\texttt{docs/quantum-gravity/checks.py}, 93 of 93) and from the holographic-code assembly (\texttt{docs/qg-verdict/assembly.py},
+(\texttt{docs/quantum-gravity/checks.py}, 112 of 112) and from the holographic-code assembly (\texttt{docs/qg-verdict/assembly.py},
 18 of 18), and that the verdicts follow from the measurements cited. We do not claim that the account is correct, and we name in
 Section~\ref{sec:break} where we expect it to break.
+
+\paragraph{What is new and what is not.} Every physical prediction of this paper already belongs to an existing programme: classical
+gravity coupled to quantum matter and its decoherence-diffusion trade-off~\cite{oppenheim,osswd}, gravity as a measurement-and-feedback
+channel~\cite{ktm,tilloydiosi}, gravitationally mediated entanglement as the test~\cite{bose,mv,ggs}, horizon
+thermodynamics~\cite{unruh,hawking75,jacobson95}, Christodoulou's mass formula~\cite{christodoulou}, holographic codes with a classical
+centre~\cite{harlow}, and the dark-matter routes of Section~\ref{sec:darkmatter}. Made parameter-free by its own principles, GUID lands on
+the Di\'osi--Penrose rate or on a refuted value (Section~\ref{sec:bridges}). GUID is therefore not a new theory of quantum gravity; it is a
+member of the classical-quantum family. What is new is the route and four statements: (i) a derivation of the classical side of the open
+question from an information principle, namely that a structure every party can audit in full cannot be quantum (Lemma~\ref{lem:classical}),
+where the literature postulates it or leaves it to experiment; (ii) the identification of DMP's record-and-recompute architecture with
+measurement-and-feedback gravity (Proposition~\ref{pr:ktm}); (iii) one rule of its own, that DMP's balance holds the decoherence-diffusion
+trade-off at equality, so that a measured gravitational decoherence would fix the spacetime noise (Section~\ref{sec:bridges}); (iv) the
+converse lesson for the design of information systems, that a control structure every party can audit in full is classical while the data
+it governs need not be. All four rest on Hypothesis~\ref{h:exist}, which is an identification, not a derivation. We regard the paper as a
+contribution to the foundations of physics: an information-theoretic principle that selects classical-quantum gravity, with falsifiers of
+its own.
 
 \paragraph{Contributions.}
 \begin{enumerate}[nosep]
@@ -143,7 +160,8 @@ Section~\ref{sec:break} where we expect it to break.
 \item Derivations from the axioms of universal free fall, $\gamma=1$, the classicality of the frame, and the statement that DMP, supplied
 with the base configuration of our universe, hosts the proposed theory (Section~\ref{sec:fix}).
 \item The identification of the axioms' record-and-recompute structure with the measurement-and-feedback channel of classical-quantum
-gravity, and the predictions that follow (Sections~\ref{sec:cq},~\ref{sec:exp}).
+gravity, the balance rule that holds its trade-off at equality, the two bridges that fix its constant, and the predictions that follow
+(Sections~\ref{sec:cq},~\ref{sec:exp}).
 \item A consistent treatment of horizons, black holes, holographic codes, 2+1 gravity, cosmology and matter in that account
 (Sections~\ref{sec:thermo}--\ref{sec:matter}), with a comparison to the main approaches to quantum gravity (Section~\ref{sec:landscape}).
 \item Three routes by which the theory traps remnants of interactions in the gravitational field, with what each predicts for dark matter
@@ -425,7 +443,8 @@ The lemma is close to definitional: DMP demands absolute observability of its sh
 price. It is not a discovery about nature; it is the statement of which side of an open question the axioms take. It has a precise physical
 counterpart in quantum Darwinism: a quantity of which the environment holds many redundant records is objective and classical, and generic
 quantum dynamics makes exactly the pointer observables so recorded~\cite{zurek,bph}. DMP's ``every witness reads in full'' is that
-redundancy, imposed as an axiom.
+redundancy, imposed as an axiom. Read in the other direction, the lemma is a design statement for information systems: a control structure
+that every party can audit in full is classical, while the data it governs need not be.
 \end{remark}
 
 \subsection{A classical mediator cannot entangle}
@@ -561,7 +580,64 @@ The proposition fixes the architecture, not the constants. A measurement-and-fee
 or equivalently the smearing length of the measured mass density, which sets the decoherence rate and the noise. DMP derives no constant
 (Section~\ref{sec:break}), and the most economical choice, the parameter-free Di\'osi--Penrose collapse~\cite{diosi87,penrose96}, is
 excluded by the absence of the spontaneous radiation it predicts in an underground germanium detector~\cite{donadi} \tagP. GUID must
-therefore carry a free strength, fixed by experiment. \emph{Verdict: derived} as a structure; the constant is open.
+therefore carry a free strength, fixed by experiment or by a principle that ties DMP to physical units. \emph{Verdict: derived} as a
+structure; Section~\ref{sec:bridges} computes the constant from the two principles GUID suggests.
+
+\subsection{Fixing the free constant}\label{sec:bridges}
+
+Proposition~\ref{pr:ktm} fixes the architecture, not the constant. DMP cannot supply the constant by itself: its text makes every
+parameter configuration (T4, T32), and it has no unit of length, time or action. A number therefore needs one bridge principle that ties a
+DMP structure to a physical scale. We compute the two that GUID's own dictionary suggests. Neither is derived from the axioms; both are
+hypotheses \tagH, stated so that they can fail.
+
+\paragraph{The balance rule.} Both bridges use one structural rule. Axiom~1's balance moves every part towards its declared state, and the
+system's own acts never raise the VIBE potential (T32); read as dynamics, the frame adds no more noise than consistency requires. GUID
+therefore holds the trade-off~\eqref{eq:tradeoff} at equality,
+\begin{equation}\label{eq:saturate}
+2D_2=D_1\,D_0^{-1}\,D_1^{\dagger},
+\end{equation}
+so that a measured gravitational decoherence would fix the spacetime diffusion, and conversely. Other classical-quantum theories leave the
+two free above the bound; \eqref{eq:saturate} is GUID's own rule.
+
+\paragraph{Bridge A: the outermost horizon sets the scale.} The stochastic remnant of Section~\ref{sec:darkmatter} depends on the outer
+cut-off $r_{\max}$ of the path integral. Oppenheim and Russo find, in units with $c=1$, the mean
+$\gamma_1=-\tfrac92\,\gamma_2\,r_{\max}\,(1-4\beta)/(5-18\beta)$, with $\gamma_2=\Lambda/3$ and a parameter $\beta<0$ of their action to which
+the result is insensitive~\cite{oppenheimrusso}. In GUID the outermost containing boundary is the cosmological event horizon, which in
+$\Lambda$CDM tends to the de Sitter radius $r_{\text{dS}}=c/H_\infty=1.66\times10^{26}$\,m. With $r_{\max}=r_{\text{dS}}$ and $c$ restored,
+\begin{equation}\label{eq:bridgeA}
+|\gamma_1|=(0.90\ \text{to}\ 1.00)\;cH_\infty=(4.9\ \text{to}\ 5.4)\times10^{-10}\,\text{m/s}^2,
+\end{equation}
+with no free parameter \chk{Q19}. It has the right order of magnitude and is too strong. Matching the turnover speed~\eqref{eq:btf} to the
+observed baryonic Tully--Fisher relation $v^4=GMa_0$ requires $|\gamma_1|=a_0/2=6\times10^{-11}$\,m/s$^2$; Bridge~A exceeds this by a factor
+of 8 in $v^4$, 1.7 in $v$. For a galaxy of $10^{11}$ solar masses it gives 340\,km/s at $r_*=7.6$\,kpc, where the relation gives 200\,km/s,
+and the linear term lets the curve rise to 620\,km/s at 50\,kpc, where observed curves stay flat \chk{Q19}. \emph{Verdict: refuted} as it
+stands. Its near miss is Milgrom's coincidence $a_0\approx cH/2\pi$, which is known.
+
+\paragraph{Bridge B: one record per Planck time.} The second bridge reads DMP's tick as the Planck time: the frame records existence at
+Planck strength, so the coupling takes its value in Planck units, and the balance rule~\eqref{eq:saturate} holds. In the Newtonian limit
+Oppenheim et al.\ bound the coupling from both sides, from above by precision measurements of gravitational forces and from below by the
+observed coherence of massive molecules~\cite{osswd}. At Planck strength the discrete version of the dynamics has
+$(l_P^3/m_P)D_2=m_Pt_P\approx10^{-51}$\,kg\,s, below the allowed window $10^{-25}$ to $10^{-1}$\,kg\,s: \emph{excluded}. The continuous
+version with the Di\'osi--Penrose kernel has $l_P^2D_2=m_P^2/c=1.6\times10^{-24}$\,kg$^2$\,s/m, inside the allowed window $10^{-40}$ to
+$10^{-9}$\,kg$^2$\,s/m: \emph{allowed} \chk{Q19}. With the trade-off at equality, a mass $M$ of size $R$ in a superposition of two
+well-separated positions decoheres at the rate
+\begin{equation}\label{eq:dprate}
+\lambda=\frac{M^2}{R\,l_P^2D_2}=\frac{GM^2}{\hbar R},
+\end{equation}
+since $c/m_P^2=G/\hbar$: exactly the Di\'osi--Penrose rate~\cite{diosi87,penrose96}, to within the order-one factors of the Newtonian
+estimate. For a fullerene it is $6\times10^{-16}$ per second, far below what interferometry allows. For the diamond microsphere of the Bose
+et al.\ proposal ($10^{-14}$\,kg, radius 0.88\,\textmu m) it is 72 per second: coherence is lost in about 14\,ms, while the entangling phase
+needs 8 to 25\,s, so only $2\times10^{-3}$\,rad builds up \chk{Q19}. One length remains that the bridge does not fix: the mass density of each
+nucleus must be smeared over at least about $10^{-10}$\,m, or the noise makes matter radiate more than an underground germanium detector
+sees~\cite{donadi}, and later analyses quote $4\times10^{-10}$\,m~\cite{figurato}; at such smearing the bulk term in~\eqref{eq:dprate} still
+dominates \chk{Q19}. \emph{Verdict: live} and sharp: with Bridge~B, mesoscopic superpositions decohere at the Di\'osi--Penrose rate, and a
+Bose--Marletto--Vedral experiment sees decoherence and no entanglement.
+
+\paragraph{What the bridges show.} Made parameter-free with its own principles, GUID lands on known physics: Bridge~A is refuted, and
+Bridge~B is the Di\'osi--Penrose model, which predates this work. What GUID adds is a reason for that model, the balance
+rule~\eqref{eq:saturate} together with a record at Planck strength. A number of its own would need a prediction in which GUID differs from
+both the classical-quantum theory and Di\'osi--Penrose. The most promising lead is DMP's two independent witnesses, which may imply two
+independent noise sources with a statistical signature that a single source lacks; we have not worked it out.
 
 \section{The experiments that decide}\label{sec:exp}
 
@@ -584,7 +660,8 @@ $0.126$\,rad/s: one radian after $8.0$\,s, maximal entanglement ($\mathcal N=1/2
 classical field (Lemma~\ref{lem:classical}) leaves each branch's phase but removes the coherence between branches, and the masses stay
 separable at all times, $\mathcal N=0$ \chk{Q5}.
 
-\textbf{GUID predicts $\mathcal N=0$.} A positive result would show that the gravitational field is not the existence frame: the identification
+\textbf{GUID predicts $\mathcal N=0$.} With Bridge~B of Section~\ref{sec:bridges} it predicts more: the masses decohere at the
+Di\'osi--Penrose rate, about 72 per second for the proposed microspheres, long before an entangling phase can build up. A positive result would show that the gravitational field is not the existence frame: the identification
 of Hypothesis~\ref{h:exist} would fail for nature and the proposed theory would be refuted; a quantum geometry would then run on DMP only
 as content (Theorem~\ref{th:host}(ii)). Two caveats are
 under debate. Aziz and Howl argue that classical gravity coupled to quantum matter fields can produce entanglement through virtual matter
@@ -926,24 +1003,26 @@ Newtonian potential acquires a linear and a quadratic term,
 \begin{equation}\label{eq:stochpot}
 \Phi(r)=-\frac{GM}{r}-\frac{\gamma_0}{2}-\frac{\gamma_1}{2}\,r-\frac{\gamma_2}{2}\,r^2 ,
 \end{equation}
-where the quadratic term is the cosmological constant of Schwarzschild--de Sitter space, $\gamma_2=\Lambda c^2/3$, and the linear term is
-anticorrelated with it and of order $c^2\sqrt\Lambda$. Physically, where accelerations are low the variance of the field's acceleration
-exceeds the square of its mean and acts as an additional, entropic attraction. The circular speed is
+where the quadratic term is the cosmological constant of Schwarzschild--de Sitter space, $\gamma_2=\Lambda c^2/3>0$, which repels, and
+the linear term is anticorrelated with it: its mean is negative, $\gamma_1<0$, so it attracts, with $|\gamma_1|$ of order $c^2\sqrt\Lambda$.
+Physically, where accelerations are low the variance of the field's acceleration exceeds the square of its mean and acts as an additional,
+entropic attraction. The circular speed is
 \begin{equation}\label{eq:vcirc}
-v^2(r)=r\,\frac{\dd\Phi}{\dd r}=\frac{GM}{r}+\frac{\gamma_1}{2}\,r+\gamma_2\,r^2 .
+v^2(r)=r\,\frac{\dd\Phi}{\dd r}=\frac{GM}{r}+\frac{|\gamma_1|}{2}\,r-\gamma_2\,r^2 .
 \end{equation}
-The first two terms balance at $r_*=\sqrt{2GM/\gamma_1}$, where
+The first two terms balance at $r_*=\sqrt{2GM/|\gamma_1|}$, where
 \begin{equation}\label{eq:btf}
-v_*^4=2GM\gamma_1 .
+v_*^4=2GM|\gamma_1| .
 \end{equation}
 Around $r_*$ the rotation curve is roughly flat, changing by about 12\% between $r_*/2$ and $2r_*$, and its height obeys $v^4\propto M$,
-the form of the observed baryonic Tully--Fisher relation. For a galaxy of $10^{11}$ solar masses in baryons and $\gamma_1=10^{-10}$\,m/s$^2$,
+the form of the observed baryonic Tully--Fisher relation. For a galaxy of $10^{11}$ solar masses in baryons and $|\gamma_1|=10^{-10}$\,m/s$^2$,
 the order Oppenheim and Russo find, $r_*=17$\,kpc and $v_*=227$\,km/s, with the $\Lambda$ term below $10^{-4}$ of $v_*^2$ there \chk{Q18}.
 The acceleration scale is tied to the cosmological constant: $c^2\sqrt{\Lambda/3}/2\pi=8.6\times10^{-11}$\,m/s$^2$, close to Milgrom's
 empirical $a_0=1.2\times10^{-10}$\,m/s$^2$~\cite{milgrom} \chk{Q18}. On this route a single mechanism, the frame's diffusion, gives both a
 dark-energy term and a dark-matter-like term. The calculation is preliminary, as its authors stress: it is static and spherically
 symmetric, depends on an infrared regularisation, fixes $\gamma_1$ by boundary conditions rather than by a coupling constant, and does not
-yet address gravitational lensing or the microwave background. A deterministic relative of the same idea exists in tetrad gravity: Hehl
+yet address gravitational lensing or the microwave background. Fixing the boundary condition by GUID's outermost horizon gives a value
+eight times too strong in $v^4$ (Section~\ref{sec:bridges}). A deterministic relative of the same idea exists in tetrad gravity: Hehl
 and Mashhoon found that a memory of the frame, a nonlocal dependence on its past, acts in the linear approximation as dark matter given by
 an integral transform of the matter~\cite{hehlmashhoon}.
 
@@ -1123,10 +1202,13 @@ Single-graviton detector clicks~\cite{tobar} & possible, from a classical wave &
 Primordial tensor modes & standard spectrum, generated within the start & $r=16\epsilon$, $n_t=-r/8$ & $r<0.036$~\cite{bk18} \\
 Drift of $\alpha$ & zero or negative & none predicted & $(1.0\pm1.1)\times10^{-18}$/yr~\cite{lange} \\
 Hawking radiation & thermal to the outside reader; return of content open & Page curve & not observable \\
-Galactic rotation (stochastic remnant) & roughly flat near $r_*=\sqrt{2GM/\gamma_1}$, $v_*^4=2GM\gamma_1$, $\gamma_1\sim c^2\sqrt\Lambda$ &
+Galactic rotation (stochastic remnant) & roughly flat near $r_*=\sqrt{2GM/|\gamma_1|}$, $v_*^4=2GM|\gamma_1|$, $|\gamma_1|\sim c^2\sqrt\Lambda$ &
 dark matter halo needed & preliminary~\cite{oppenheimrusso}; lensing open \\
 Contained remnants & primordial black holes of $10^{14}$--$10^{19}$\,kg; Hawking glow at the light edge & no statement & window
 open~\cite{gortongreen} \\
+Spacetime noise given gravitational decoherence & on the trade-off line~\eqref{eq:saturate} & not required & neither yet measured \\
+Decoherence of mesoscopic superpositions (Bridge~B) & $\lambda=GM^2/\hbar R$: 72/s for the $10^{-14}$\,kg microsphere & none & untested at
+this scale \\
 \bottomrule
 \end{longtable}
 \end{center}
@@ -1149,6 +1231,9 @@ DMP, with the base configuration of our universe, hosts the proposed theory & de
 No graviton as a quantum of the frame & derived; consistent with all data & \chk{Q9} \\
 The frame must diffuse and decohere matter & derived (with CQ dynamics) & Cor.~\ref{co:diffuse} \\
 Record and recompute is measurement and feedback & derived (structure) & Prop.~\ref{pr:ktm} \\
+The balance holds the trade-off at equality & live & \eqref{eq:saturate} \\
+Bridge A: the outermost horizon fixes the stochastic remnant & refuted (8 in $v^4$) & \chk{Q19} \\
+Bridge B: a record at Planck strength gives the Di\'osi--Penrose rate & live; the BMV masses decohere in 14\,ms & \chk{Q19} \\
 Gravity entangles no two masses & live, falsifiable & \chk{Q5} \\
 The existence of a boundary $gh/c$ is $4\pi^2kT_U$ & holds as a reading & Prop.~\ref{pr:unruh}; \chk{Q1} \\
 Time slows where existence is strong (lapse) & holds & \chk{Q2} \\
@@ -1195,8 +1280,9 @@ and it predicts $\mathcal N>0$.
 diffusion both measured below the trade-off~\eqref{eq:tradeoff} would each show that gravity is not GUID's classical frame. Unless classical
 gravity can entangle after all~\cite{azizhowl}, a positive test is decisive.
 \item \emph{Constants.} The axioms derive none of $G$, $\hbar$, $\Lambda$, the entropy per area $\eta$, or the strength of the
-measurement-and-feedback channel; they enter as content or configuration. A derivation of any of them from the axioms would be new; we have
-none.
+measurement-and-feedback channel; they enter as content or configuration. The two bridges of Section~\ref{sec:bridges} fix the strength
+only by adding a principle, and give a refuted value (A) or the Di\'osi--Penrose rate (B). If mesoscopic superpositions are seen to keep
+their coherence well beyond $\hbar R/GM^2$, Bridge~B is refuted too.
 \item \emph{The start.} Hypothesis~\ref{h:minting} makes inflation and the oscillon decay one start that the axioms do not constrain, so GUID
 predicts nothing about primordial tensor modes beyond standard inflation; its predictions about the geometry begin after the start.
 \item \emph{Dark matter.} The stochastic remnant has been computed only for static, spherically symmetric configurations. If it cannot
@@ -1223,8 +1309,10 @@ recompute, is the measurement-and-feedback channel that does so. Horizons are co
 assert; black holes give up what the first law allows, and an outside reader sees only their counts; holographic codes are reproduced up to
 their classical centre; 2+1 dimensions are no exception; quantum geometry is confined to the start. The theory lets remnants of interactions
 be trapped in the gravitational field: its stochastic remnant already gives the shape and scale of galactic rotation curves in a first
-calculation, and its contained remnants are primordial black holes from the start. It stands on the classical side of the one class of
-experiments that can decide it, gravitationally mediated entanglement and its relatives. If those experiments find entanglement, the
+calculation, and its contained remnants are primordial black holes from the start. Made parameter-free with its own
+principles, it gives either a value the rotation curves refute or the Di\'osi--Penrose decoherence rate, so its physics is that of the
+classical-quantum family; what it adds is a reason for that family, drawn from an axiom system for trust. It stands on the classical side
+of the one class of experiments that can decide it, gravitationally mediated entanglement and its relatives. If those experiments find entanglement, the
 geometry is quantum and the proposed theory is refuted, and DMP would run its successor as content. We claim that the construction exists
 and reproduces. Whether it is right is for the experiments, and for the reader, to break.
 
@@ -1249,7 +1337,7 @@ at commit \texttt{4400cce}). Gravity: \url{https://github.com/StevenHrovat/gravi
 \appendix
 \section{The checks}\label{app:checks}
 
-\texttt{python3 docs/quantum-gravity/checks.py} (numpy, scipy, sympy) prints 93 checks, all of which pass. Q1: Planck units, the existence
+\texttt{python3 docs/quantum-gravity/checks.py} (numpy, scipy, sympy) prints 112 checks, all of which pass. Q1: Planck units, the existence
 energy, Unruh, Hawking, Bekenstein--Hawking, Jacobson's entropy density, the size of the quantum term of~\eqref{eq:eft}. Q2: the lapse. Q3:
 no-cloning and broadcasting. Q4: classical against coherent mediation, 300 random couplings each. Q5: the Bose et al.\ geometry. Q6: the
 MICROSCOPE bound on the information scalar and the Higgs-share test. Q7: Brans--Dicke and Cassini. Q8: polarisations and Weyl components
@@ -1257,7 +1345,8 @@ in $D$ dimensions. Q9: the single-graviton threshold. Q10: Kerr horizon, ergosph
 real holes. Q12: the Hubble mass at its Schwarzschild threshold. Q13: flatness, de Sitter floor, onset of acceleration. Q14: the tensor
 spectrum, the BICEP/Keck bound, Starobinsky's $r$. Q15: what every trapped remnant must satisfy, and why the known neutrinos do not. Q16: $\alpha$ as self-interaction strength,
 the electron's lengths, gravity against electromagnetism, the running of $\alpha$. Q17: the speed of gravity. Q18: remnants trapped in the field: the stochastic remnant's rotation curve and
-acceleration scale, the contained remnant's Hawking temperatures and evaporation, the radiated remnant's energy density.
+acceleration scale, the contained remnant's Hawking temperatures and evaporation, the radiated remnant's energy density. Q19: the two bridges that fix the free constant, Bridge A against the Tully--Fisher
+normalisation and Bridge B's windows and Di\'osi--Penrose rates.
 \texttt{python3 docs/qg-verdict/assembly.py} (numpy) prints the 18 checks of the holographic-code assembly; A1 to A5 in this paper are its
 checks [1] to [5], and its check [6] is the special case of \chk{Q4} with CNOT and CZ couplings.
 
@@ -1487,6 +1576,8 @@ Rev. D} 98, 083513 (2018).
 (2024).
 \bibitem{nanograv} G. Agazie et al. (NANOGrav Collaboration), ``The NANOGrav 15 yr data set: evidence for a gravitational-wave
 background'', \emph{Astrophys. J. Lett.} 951, L8 (2023).
+\bibitem{figurato} L. Figurato, M. Dirindin, J.~L. Gaona-Reyes, M. Carlesso, A. Bassi, S. Donadi, ``On the effectiveness of the collapse
+in the Di\'osi--Penrose model'', \emph{New J. Phys.} 26, 113004 (2024).
 \bibitem{clowe} D. Clowe, M. Brada\v{c}, A.~H. Gonzalez, M. Markevitch, S.~W. Randall, C. Jones, D. Zaritsky, ``A direct empirical proof of
 the existence of dark matter'', \emph{Astrophys. J. Lett.} 648, L109 (2006).
 \end{thebibliography}
