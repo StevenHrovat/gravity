@@ -32,6 +32,9 @@ The holographic-code assembly of Section 9 is a separate script, docs/qg-verdict
         potential term, flat rotation curves near r* = sqrt(2GM/gamma1), v^4 = 2 G M gamma1, Milgrom's coincidence with Lambda), the
         contained remnant (primordial black holes in the asteroid-mass window, their Hawking temperatures and evaporation), and the
         radiated remnant (the nanohertz gravitational-wave background)
+  [Q19] fixing the free constant with GUID's own principles: Bridge A (the cosmological event horizon as the cut-off of the stochastic
+        remnant; too strong by 8 in v^4) and Bridge B (Planck-strength record, trade-off at equality: the Diosi-Penrose rate G M^2 / hbar R,
+        72 per second for the 1e-14 kg microsphere of the Bose et al. geometry)
 """
 
 import math
@@ -397,8 +400,9 @@ check_true(f"GW170817: 1.74 s over 40 Mpc gives |v_gw/c - 1| about {dt * c / D_L
 # ---------------------------------------------------------------------------------------------------------------------------------
 print("\n[Q18] Remnants of interactions trapped in the gravitational field: three routes inside the classical-frame modelling")
 # Route 1, stochastic remnant: in classical-quantum gravity the expectation of the static, spherically symmetric potential is
-# Phi = -G M / r - gamma0/2 - gamma1 r / 2 - gamma2 r^2 / 2 (Oppenheim and Russo, arXiv:2402.19459), with gamma2 = Lambda c^2 / 3 and
-# gamma1 of order c^2 sqrt(Lambda), the size of Milgrom's a0. Circular speed: v^2 = r dPhi/dr = G M / r + gamma1 r / 2 + gamma2 r^2.
+# Phi = -G M / r - gamma0/2 - gamma1 r / 2 - gamma2 r^2 / 2 (Oppenheim and Russo, arXiv:2402.19459), with gamma2 = Lambda c^2 / 3 > 0
+# (repulsive) and gamma1 < 0 (its mean is negative: attractive), |gamma1| of order c^2 sqrt(Lambda), the size of Milgrom's a0.
+# Circular speed: v^2 = r dPhi/dr = G M / r + |gamma1| r / 2 - gamma2 r^2. Below, gamma1 stands for |gamma1|.
 H0 = 67.4e3 / Mpc
 Lam = 3 * 0.685 * H0**2 / c**2
 check("cosmological constant from Planck 2018 (Omega_L = 0.685, H0 = 67.4 km/s/Mpc), 1/m^2", Lam, 1.09e-52, rtol=1e-2)
@@ -414,7 +418,7 @@ check("circular speed there, v*^4 = 2 G M gamma1, km/s", v_star / 1e3, 227.0, rt
 
 
 def v_circ(r, M):
-    return math.sqrt(G * M / r + gamma1 * r / 2 + c**2 * Lam / 3 * r**2)
+    return math.sqrt(G * M / r + gamma1 * r / 2 - c**2 * Lam / 3 * r**2)
 
 
 check("speed at 2 r* over speed at r*: the curve changes by about 12% over a factor 4 in radius (r*/2 to 2 r*)",
@@ -439,6 +443,56 @@ f_ref = 1 / year
 omega_gw = 2 * math.pi**2 * f_ref**2 * (2.4e-15) ** 2 / (3 * H0**2)
 check("energy density of the nanohertz background per logarithmic frequency, Omega_gw at 1/yr", omega_gw, 8.0e-9, rtol=0.02)
 check_true("it is more than 1e7 times too small for the dark matter (Omega_c = 0.26), and it is radiation, w = 1/3", 0.26 / omega_gw > 1e7)
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[Q19] Fixing the free constant with GUID's own principles: two bridges")
+# Bridge A: the outermost containing boundary, the cosmological event horizon (de Sitter radius c / H_inf), as the cut-off r_max of the
+# stochastic remnant. Oppenheim and Russo, Eq. (20), in c = 1 units: mean gamma1 = -(9/2) gamma2 r_max (1 - 4 beta) / (5 - 18 beta),
+# gamma2 = Lambda / 3; restore c^2 to get m/s^2. beta < 0 for positive correlation functions; the factor runs from 0.9 (beta = 0) to 1.
+H_inf = c * math.sqrt(Lam / 3)
+r_dS = c / H_inf
+check("de Sitter rate over today's Hubble rate", H_inf / H0, math.sqrt(0.685), rtol=1e-3)
+check("de Sitter radius, the late-time event horizon, m", r_dS, 1.66e26, rtol=1e-2)
+gA = {beta: 4.5 * (1 - 4 * beta) / (5 - 18 * beta) * (Lam / 3) * r_dS * c**2 for beta in (0.0, -1.0, -1e9)}
+check("Bridge A, beta = 0: |gamma1| = 0.9 c H_inf, m/s^2", gA[0.0], 4.88e-10, rtol=1e-2)
+check("Bridge A, beta -> -infinity: |gamma1| = c H_inf, m/s^2", gA[-1e9], c * H_inf, rtol=1e-6)
+a0 = 1.2e-10
+g_need = a0 / 2                                         # v*^4 = 2 G M |gamma1| matched to the Tully-Fisher law v^4 = G M a0
+check("Bridge A over what the Tully-Fisher normalisation needs, in v^4", gA[0.0] / g_need, 8.1, rtol=1e-2)
+check("the same in v", (gA[0.0] / g_need) ** 0.25, 1.69, rtol=1e-2)
+gamma1 = gA[0.0]
+M11 = 1e11 * M_sun
+check("Bridge A, 1e11 solar masses: turnover radius r*, kpc", math.sqrt(2 * G * M11 / gamma1) / kpc, 7.6, rtol=1e-2)
+check("Bridge A, 1e11 solar masses: turnover speed v*, km/s", (2 * G * M11 * gamma1) ** 0.25 / 1e3, 337, rtol=1e-2)
+check("Tully-Fisher speed for the same mass, (G M a0)^(1/4), km/s", (G * M11 * a0) ** 0.25 / 1e3, 200, rtol=1e-2)
+check("Bridge A, speed at 50 kpc (still rising), km/s", v_circ(50 * kpc, M11) / 1e3, 620, rtol=1e-2)
+# Bridge B: Planck-strength coupling (D2 = m_P^2 t_P / l_P^3) and the trade-off at equality. Windows from Oppenheim, Sparaciari, Soda and
+# Weller-Davies (Nat. Commun. 14, 7910, Eqs. 46 and 47): discrete model 1e-25 <= (l_P^3/m_P) D2 <= 1e-1 kg s; Diosi-Penrose kernel
+# 1e-40 <= l_P^2 D2 <= 1e-9 kg^2 s / m.
+m_P = math.sqrt(hbar * c / G)
+disc = m_P * t_P
+dpk = m_P**2 / c
+check_true(f"Bridge B, discrete model: (l_P^3/m_P) D2 = m_P t_P = {disc:.1e} kg s, below the window 1e-25..1e-1: excluded", disc < 1e-25)
+check_true(f"Bridge B, Diosi-Penrose kernel: l_P^2 D2 = m_P^2/c = {dpk:.2e} kg^2 s/m, inside the window 1e-40..1e-9: allowed",
+           1e-40 < dpk < 1e-9)
+check("at equality the rate M^2 / (R l_P^2 D2) equals the Diosi-Penrose rate G M^2 / (hbar R): c / m_P^2 = G / hbar",
+      c / m_P**2, G / hbar, rtol=1e-12)
+
+
+def dp_rate(M, R):
+    return G * M**2 / (hbar * R)
+
+
+check("Bridge B, fullerene (1e-24 kg, 1e-9 m): decoherence rate per second", dp_rate(1e-24, 1e-9), 6.3e-16, rtol=1e-2)
+R_bmv = (3 * mm / (4 * math.pi * 3510.0)) ** (1 / 3)   # the 1e-14 kg diamond microsphere of [Q5]
+check("radius of the 1e-14 kg diamond microsphere, micrometres", R_bmv * 1e6, 0.88, rtol=1e-2)
+check("Bridge B, its decoherence rate per second", dp_rate(mm, R_bmv), 72, rtol=1e-2)
+check("its coherence time, ms", 1e3 / dp_rate(mm, R_bmv), 13.9, rtol=1e-2)
+check("entangling phase built up before it decoheres, rad", dphi_rate / dp_rate(mm, R_bmv), 1.74e-3, rtol=1e-2)
+m_C = 12 * 1.66053907e-27
+gran = (mm / m_C) * G * m_C**2 / 1e-10                  # nuclear mass density smeared over 1e-10 m, the order of the radiation bound
+check_true(f"with nuclei smeared over 1e-10 m the granular term ({gran:.1e} J) is far below the bulk term G M^2 / R "
+           f"({G * mm**2 / R_bmv:.1e} J)", gran < 1e-6 * G * mm**2 / R_bmv)
 
 print(f"\n{sum(results)} of {len(results)} checks passed")
 raise SystemExit(0 if all(results) else 1)
