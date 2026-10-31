@@ -1,22 +1,29 @@
 % GUID v6, Primer P4 (label box:cq): classical-quantum dynamics and collapse. Background only; it states no result of the paper.
 % Place it before "Consistent classical-quantum dynamics" (marker %PRIMER:cq in part1.tex): \input{primers/p4-cq}
 \begin{primer}{Classical-quantum dynamics and collapse}{box:cq}
+\setlength{\parskip}{3pt plus 1pt}%
 \emph{The problem.} A classical field cannot simply be sourced by the expectation value of a quantum one: such a coupling is nonlinear in
 the quantum state, and a mass in superposition would pull towards a place where it never is. A consistent coupling keeps the joint
 description linear, positive and normalised, as probability theory demands.
 
-\emph{The classical-quantum (CQ) state.} The joint state is a family $\varrho(z)$ of positive operators, one for each value $z$ of the
-classical variables (here the frame), normalised as $\int\dd z\,\Tr\varrho(z)=1$~\cite{oppenheim}. For continuous, Markovian dynamics the
-generator has, besides the Hamiltonian part, three kinds of term~\cite{osswd}:
+\emph{The classical-quantum (CQ) master equation.} The joint state is a family $\varrho(z)$ of positive operators, one for each value
+$z$ of the classical variables (here the frame), normalised as $\int\dd z\,\Tr\varrho(z)=1$~\cite{oppenheim}. For one classical variable
+$z$ driven by one quantum observable $L$ (for gravity, the mass density), continuous Markovian dynamics has the form~\cite{osswd}
+\[
+\partial_t\varrho=-\frac i\hbar[H,\varrho]+D_0\Big(L\varrho L-\tfrac12\{L^2,\varrho\}\Big)-\frac{D_1}2\,\partial_z\{L,\varrho\}
++\frac{D_2}2\,\partial_z^2\varrho ,
+\]
+with three coefficients beyond quantum mechanics:
 \begin{itemize}[nosep,leftmargin=*]
 \item $D_0$, \emph{decoherence}: the quantum system loses coherence between states that source the classical field differently (for
 gravity, different mass distributions);
 \item $D_1$, \emph{back-reaction}: a drift of $z$ driven by the quantum state, that is, how matter pushes the frame;
 \item $D_2$, \emph{diffusion}: random kicks of $z$, that is, noise in the frame.
 \end{itemize}
-Complete positivity forces the trade-off $D_1D_0^{-1}D_1^\dagger\preceq2D_2$, and $D_0$ cannot vanish where $D_1$ does
-not~\cite[Eq.~(23)]{osswd}. In words: \emph{a push implies noise}. If quantum matter pushes a classical field at all, the matter decoheres
-and the field diffuses, and the product of the two is at least of the order of the square of the push.
+Complete positivity requires $D_1^2\le4D_0D_2$ here, and $D_0>0$ wherever $D_1\ne0$; Oppenheim et al.\ give the general matrix form of
+this trade-off~\cite[Eq.~(23)]{osswd}, which is Eq.~\eqref{eq:tradeoff} of this paper. In words: \emph{a push implies noise}. If quantum matter pushes a
+classical field at all, the matter decoheres and the field diffuses, and the product of the two is bounded below by the square of the push,
+$D_0D_2\ge D_1^2/4$.
 
 \emph{Measurement and feedback.} An older family of consistent models makes gravity a channel. Each mass's position, or its mass density,
 is weakly and continuously measured, and a classical force computed from the record acts back on the other masses (Kafri, Taylor and

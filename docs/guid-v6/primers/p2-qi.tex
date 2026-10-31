@@ -1,10 +1,11 @@
 % GUID v6, Primer P2 (label box:qi): quantum information. Background only; it states no result of the paper.
 % Place it before "The frame is classical" (marker %PRIMER:qi in part1.tex): \input{primers/p2-qi}
 \begin{primer}{Quantum information}{box:qi}
+\setlength{\parskip}{3pt plus 1pt}%
 \emph{States and processes.} A quantum state is a \emph{density matrix} $\rho$: Hermitian, positive ($\rho\succeq0$) and of unit trace.
 It is pure when $\rho=\ket\psi\bra\psi$ and mixed otherwise. The state of one part $A$ of a system $AB$ is the partial trace
 $\rho_A=\Tr_B\rho_{AB}$~\cite{nielsen2010}. Every physical process is a \emph{completely positive, trace-preserving} (CPTP) map,
-$\rho\mapsto\sum_kK_k\rho K_k^\dagger$ with $\sum_kK_k^\dagger K_k=\mathbb 1$; ``completely'' means that the map stays positive when it
+$\rho\mapsto\sum_kK_k\rho K_k^\dagger$ with $\sum_kK_k^\dagger K_k=I$ (the identity); ``completely'' means that the map stays positive when it
 acts on one part of a larger system. A measurement with outcomes $k$ returns $k$ with probability $p_k=\Tr(K_k\rho K_k^\dagger)$ and leaves
 the state $K_k\rho K_k^\dagger/p_k$.
 

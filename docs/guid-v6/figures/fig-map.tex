@@ -1,0 +1,66 @@
+% GUID v6, Fig. 1 (label fig:map): the concept map from DMP through GUID's hypotheses to physics. Input in Section 1.2:
+% \input{figures/fig-map}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize,>={Stealth[length=1.6mm]},
+  dmp/.style={draw,rounded corners=2pt,fill=black!7,align=left,text width=3.6cm,inner sep=3pt,minimum height=1.55cm,anchor=north west},
+  hyp/.style={draw=blue!55!black,rounded corners=2pt,fill=blue!6,align=left,text width=6.35cm,inner sep=2pt,minimum height=0.8cm,
+    anchor=west},
+  psty/.style={draw,dashed,rounded corners=2pt,align=left,text width=6.35cm,inner sep=2pt,minimum height=0.8cm,anchor=west},
+  phy/.style={draw,rounded corners=2pt,align=left,text width=7.1cm,inner sep=2pt,minimum height=0.8cm,anchor=west},
+  bus/.style={black!60,line width=0.6pt},
+  dot/.style={circle,fill=black,inner sep=0pt,minimum size=3.6pt},
+  hd/.style={font=\footnotesize\bfseries,anchor=south,inner sep=1pt},
+]
+% ---- DMP: the three axioms and G0
+\node[dmp] (A1) at (0,0) {\textbf{A1, Duality:} two independent witnesses, a trust and an information half, gate each act};
+\node[dmp] (A2) at (4.05,0) {\textbf{A2, Trust:} a field, never a position; standings have source, depth, freshness};
+\node[dmp] (A3) at (8.1,0) {\textbf{A3, Information:} records read in full by the witnesses; counts for all others};
+\node[dmp] (G0) at (12.15,0) {\textbf{G0, minting:} the first act, stated, not derived; every standing descends from it};
+% ---- buses: one vertical line per DMP statement, routed without crossings
+\def\ybot{-11.7}
+\draw[bus] (0.25,0 |- A1.south) -- (0.25,\ybot);
+\draw[bus] (4.4,0 |- A2.south) -- (4.4,-1.72) -- (0.65,-1.72) -- (0.65,\ybot);
+\draw[bus] (8.45,0 |- A3.south) -- (8.45,-1.9) -- (1.05,-1.9) -- (1.05,\ybot);
+\draw[bus] (12.5,0 |- G0.south) -- (12.5,-2.08) -- (1.45,-2.08) -- (1.45,\ybot);
+\foreach \x/\l in {0.25/A1,0.65/A2,1.05/A3,1.45/G0}{\node[font=\tiny,anchor=north,inner sep=1.5pt] at (\x,\ybot) {\l};}
+% ---- column heads
+\node[hd] at (4.99,-2.62) {GUID's steps that no derivation supplies};
+\node[hd] at (12.32,-2.62) {what they give in physics};
+% ---- rows: reads (dots on the buses) -> hypothesis -> physics
+% \maprow{y}{bus x list, leftmost first}{hypothesis}{physics}
+\def\maprow#1#2#3#4{%
+  \foreach \x [count=\c] in {#2}{\node[dot] at (\x,#1) {};\ifnum\c=1 \draw[bus,black] (\x,#1) -- (1.75,#1);\fi}
+  \node[hyp] (h) at (1.75,#1) {#3};
+  \node[phy] (p) at (8.7,#1) {#4};
+  \draw[->,thick] (h.east) -- (p.west);
+}
+\maprow{-3.15}{0.65,1.05}{\textbf{H1$'$}: the trust field is \emph{the frame}, gravity, shaped by the counts}{\textbf{The frame is
+  classical}: its values are records read in full, so they commute; $\mathcal N=0$}
+\maprow{-4.05}{1.05}{\textbf{H2}: the frame couples to $T_{\mu\nu}$, the counts of energy and momentum}{\textbf{Universal free fall}
+  (with A3); the scalar stays out of gravity, $\gamma=1$ (with A1)}
+\maprow{-4.95}{0.65}{\textbf{H3}: the field is a tetrad, recorded up to local Lorentz transformations}{\textbf{The geometry of general
+  relativity}: no preferred frame; massless spin-2 waves}
+\maprow{-5.85}{0.25,1.05}{\textbf{H4}: the information half carries quantum content and a scalar setting $\alpha$;
+  \textbf{Reach}}{\textbf{Content is quantum}: never broadcast, moved by a grant without copying; $\alpha$ may vary}
+\node[psty] (h) at (1.75,-6.75) {\tagP\ consistent classical-quantum dynamics of a classical field and quantum matter};
+\node[phy] (p) at (8.7,-6.75) {\textbf{Decoherence plus diffusion}; A3's record then recompute is measurement and feedback};
+\draw[->,thick] (h.east) -- (p.west);
+\maprow{-7.65}{0.25,1.05}{\textbf{Balance rule}: the trade-off at equality; \textbf{Bridge~B}: one record per Planck
+  time}{\textbf{The Di\'osi--Penrose rate} $\lambda=GM^2/\hbar R$; the decisive test: mesoscopic decoherence}
+\maprow{-8.55}{0.65,1.05}{\textbf{H5}: a containing boundary is a horizon; its counts are $M$, $J$, $Q$}{\textbf{Horizons and black
+  holes}: no hair beyond $M$, $J$, $Q$; the entropy floor is Hawking radiation}
+\maprow{-9.45}{1.45}{\textbf{H6}: the start, inflation and oscillon decay, is the minting; \textbf{H6$'$}: the strong
+  split}{\textbf{Cosmology and the Standard Model}: the start, the electroweak split, the grant (H1$'$), $\alpha$ (H4)}
+\maprow{-10.35}{0.65,1.05}{\textbf{H7}: remnants are trapped in the frame; \textbf{Bridge~A}: the outer horizon sets a
+  scale}{\textbf{Dark matter}: trapped remnants, e.g.\ primordial black holes from the start (with H5, H6)}
+\maprow{-11.25}{0.25,1.05,1.45}{\textbf{H8}: hadrons are trees of colour-conjugate halves; \textbf{H9}: a pentaquark is a
+  minting}{\textbf{Hadrons}: compact and molecular trees; pentaquarks with a hidden-flavour pair}
+\end{tikzpicture}
+\caption{From DMP to physics. Top: the three axioms and the ground G0 (Section~\ref{sec:dmp}). Each row below is a step that no
+derivation supplies (Table~\ref{tab:hyp}): the dots mark the DMP statements it reads, and the arrow what it gives in physics. The dashed
+row is established physics \tagP; a hypothesis in brackets enters that row from another row. Reach reads ``full reach over the act''
+as reach over its existence. Hypothesis~1, the first reading, is
+superseded by 1$'$ and not shown.}
+\label{fig:map}
+\end{figure}
