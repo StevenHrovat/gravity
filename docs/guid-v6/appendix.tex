@@ -46,8 +46,8 @@ stated, so they are not redistributed with this paper. Both scripts check the fi
 Pass their folder with \texttt{--data <folder>} or the environment variable \texttt{SPARC\_DATA\_DIR}. All other data enter the scripts
 as published values, each with its source in the script and in Sections~\ref{sec:sparc} to~\ref{sec:data}.
 
-\paragraph{Results files.} Each simulation script writes its numbers to \texttt{docs/simulation/results/<name>.json} and a readable account to
-\texttt{<name>.md}. Its figures go to \texttt{docs/simulation/figures/}. The JSON files are the reference for every label of the form
+\paragraph{Results files.} Each simulation script writes its numbers to a JSON file and a readable account to a Markdown file of the
+same name, both in \texttt{docs/simulation/results/}; its figures go to \texttt{docs/simulation/figures/}. The JSON files are the reference for every label of the form
 \chk{script:label} in the text.
 
 \section{The checks of Part I}\label{app:checks}
