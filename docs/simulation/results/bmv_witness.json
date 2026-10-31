@@ -3,9 +3,9 @@
   "python": "3.13.17",
   "numpy": "2.5.3",
   "scipy": "1.18.1",
-  "source": "arXiv:1707.06050 v1 (19 Jul 2017), accepted-manuscript text; PRL 119, 240401 (2017) not read",
+  "source": "arXiv:1707.06050 v1 (19 Jul 2017), the only arXiv version; the published text, PRL 119, 240401 (2017), was not read",
   "state": "(1/2)[|00> + e^{ia}|01> + e^{ib}|10> + |11>], a = Delta phi_LR, b = Delta phi_RL, |up> = |0>",
-  "runtime_s": 51.7
+  "runtime_s": 49.3
  },
  "checks": [
   {
@@ -229,6 +229,14 @@
    "atol": 0.0
   },
   {
+   "label": "Sigma = pi/2: exactly k^2 runs per setting (cot(pi/4) = 1): 9 at 3 sigma, 25 at 5 sigma",
+   "ok": true,
+   "got": 2509.0,
+   "expected": 2509.0,
+   "rtol": 0,
+   "atol": 0.0
+  },
+  {
    "label": "Sigma = 1e-4 rad (the paper's 'modest' variant), 3 sigma: about 3.6e9 runs per setting",
    "ok": true,
    "got": 3599999994.0,
@@ -291,8 +299,8 @@
  "B4": {
   "Sigma=1,k=3": 31,
   "Sigma=1,k=5": 84,
-  "Sigma=1.5708,k=3": 10,
-  "Sigma=1.5708,k=5": 26,
+  "Sigma=1.5708,k=3": 9,
+  "Sigma=1.5708,k=5": 25,
   "Sigma=0.01,k=3": 359995,
   "Sigma=0.01,k=5": 999984,
   "Sigma=0.0001,k=3": 3599999994,
@@ -304,7 +312,7 @@
   }
  },
  "summary": {
-  "passed": 32,
-  "total": 32
+  "passed": 33,
+  "total": 33
  }
 }

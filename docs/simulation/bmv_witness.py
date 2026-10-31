@@ -115,7 +115,7 @@ def prod_max_opt(Wop, starts=40, seed=7):
 
 
 RES["meta"] = {"python": platform.python_version(), "numpy": np.__version__, "scipy": scipy.__version__,
-               "source": "arXiv:1707.06050 v1 (19 Jul 2017), accepted-manuscript text; PRL 119, 240401 (2017) not read",
+               "source": "arXiv:1707.06050 v1 (19 Jul 2017), the only arXiv version; the published text, PRL 119, 240401 (2017), was not read",
                "state": "(1/2)[|00> + e^{ia}|01> + e^{ib}|10> + |11>], a = Delta phi_LR, b = Delta phi_RL, |up> = |0>"}
 
 # =================================================================================================================================
@@ -319,13 +319,15 @@ B4 = RES["B4"] = {}
 
 def runs_per_setting(S, k):
     """Two settings, n runs each; <A1 B1> = 1 has no shot noise on the pure state, <A2 B2> = sin(S/2) has variance cos^2(S/2)/n."""
-    return math.ceil(k * k / math.tan(S / 2) ** 2)
+    return math.ceil(k * k / math.tan(S / 2) ** 2 - 1e-9)   # the tolerance keeps exact integers (pi/2: 9, 25) from rounding up
 
 
 for S in (1.0, math.pi / 2, 1e-2, 1e-4):
     for k in (3, 5):
         B4[f"Sigma={S:g},k={k}"] = runs_per_setting(S, k)
 check("Sigma = 1 rad, 5 sigma: runs per setting = ceil(25 cot^2(1/2))", B4["Sigma=1,k=5"], math.ceil(25 / math.tan(0.5) ** 2), rtol=0)
+check("Sigma = pi/2: exactly k^2 runs per setting (cot(pi/4) = 1): 9 at 3 sigma, 25 at 5 sigma",
+      B4["Sigma=1.5708,k=3"] + 100 * B4["Sigma=1.5708,k=5"], 9 + 100 * 25, rtol=0)
 check("Sigma = 1e-4 rad (the paper's 'modest' variant), 3 sigma: about 3.6e9 runs per setting", B4["Sigma=0.0001,k=3"], 3.6e9, rtol=1e-3)
 # Monte Carlo of the two-setting estimator at Sigma = 1 rad
 rngm = np.random.default_rng(17)
