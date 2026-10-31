@@ -1,7 +1,7 @@
 # GUID v6: Our proposed view of the universe, with its predictions tested against current experimental data
 
 A complete, standalone paper in four parts. Part I states GUID's account of gravity and of what gravity contains, with every hypothesis
-listed and a test plan at its end; it reports no results. Part II simulates the account, Part III confronts every prediction that existing
+listed and a test plan at its end; it quotes only the measured bounds its statements rest on. Part II simulates the account, Part III confronts every prediction that existing
 data can reach, and Part IV says what the tests show, gives the ledger of verdicts and names where we expect the account to break. Ten short
 primers introduce each field where it first enters, so a reader from any one field can follow the whole.
 
