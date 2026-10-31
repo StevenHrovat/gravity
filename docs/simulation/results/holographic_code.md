@@ -303,7 +303,7 @@ region size and of L. The entropies themselves grow with the boundary; for examp
 - **The erasure recursion.** It is exact for setting (b), where every bulk qubit is unknown, and was verified sample by sample.
   It is not a statement about setting (a). Monte Carlo fractions carry binomial noise; the per-sample agreement does not.
 - **Runtime.** Runtimes are for this machine (4 shared cores, one BLAS thread) and are not results. The full script ran in about
-  505 s with peak memory 1.4 GB: H2 98 s, H4 378 s, everything else under 15 s. Two runs gave identical JSON apart from the
+  518 s with peak memory 1.4 GB: H2 103 s, H4 387 s, everything else under 15 s. Two runs gave identical JSON apart from the
   runtime field.
 - **The tree is not space.** It is a tree, which is not our space (Section 9, "The tree is not our space").
 

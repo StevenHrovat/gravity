@@ -4,8 +4,8 @@ Section~\ref{sec:holo} assembles DMP's parts as a holographic quantum error-corr
 kinematics on 25 qubits. The checks cover perfect-tensor tiles, the Ryu--Takayanagi formula as a minimal cut through a layer's tree,
 entanglement-wedge reconstruction, and two witnesses that read the existence of content and never the content. Here we run the same assembly exactly, as a stabiliser state, on a tree of 1706 tiles with
 5120 boundary qubits (6826 qubits with references). We add an erasure test of the hierarchy and a control with a known answer, the
-toric code. In one sentence: the kinematics hold at scale with one qualification, and the qualification is the minimal-cut formula. That
-formula is exact for every region when the bulk legs are open; with the bulk fixed it holds only for contiguous regions, and only in one
+toric code. The kinematics hold at scale with one qualification, the minimal-cut formula: it is exact for every region when the bulk
+legs are open, but with the bulk fixed it holds only for contiguous regions, and only in one
 orientation of the tile. The root of a layer survives random erasure of up to $p_c=(5-\sqrt{13})/6\approx0.2324$ of the boundary, and
 the toric code gives $\gamma=\ln2$ at every size.
 
@@ -208,8 +208,8 @@ the assembly realises one fixed-area sector, as Lemma~\ref{lem:classical} requir
 
 For setting (a), with an empty residual region and a pure bulk, Harlow's formula gives $S=|\gamma_A|$, and we find
 $S=\mathrm{mc}$ in every such case. A residual tile is a bulk qubit that neither side can reconstruct alone, so complementary recovery
-of whole bulk qubits fails and Harlow's theorem in this form does not apply. The setting-(a) deficits have the tensor-network cause
-given in Section~\ref{sec:holocode-rt}. Whether they can also be described by a non-trivial centre of the reconstructable algebra is
+of whole bulk qubits fails and Harlow's theorem in this form does not apply. The deficits have the tensor-network cause of
+Section~\ref{sec:holocode-rt}; whether they can also be described by a non-trivial centre of the reconstructable algebra is
 \vd{untested}: $I(R_t\!:\!A)$ takes only the values 0 and 2, and the script does not construct any centre.
 
 \subsection{A control: the toric code}\label{sec:holocode-toric}
