@@ -2,22 +2,17 @@
 
 Gravitationally mediated entanglement of two masses (Bose et al.~\cite{bose}, Marletto and Vedral~\cite{mv}; Section~\ref{sec:exp}) is GUID's
 sharpest test. A classical frame cannot entangle (Lemma~\ref{lem:classical}), so GUID predicts zero negativity. Bridge~B adds a second
-prediction: every mass decoheres at the Di\'osi--Penrose rate $\lambda=Gm^2/(\hbar R)$ (Section~\ref{sec:bridges}). We ask two questions.
-First, can the experiment still tell GUID from quantum gravity if decoherence at that rate is real? Second, does the published spin witness
-certify what it is meant to certify? Our answers are:
-\begin{itemize}[nosep]
-\item No geometry of two solid spheres builds up entanglement at the Bridge-B rate, whether or not gravity is quantum. The bound is exact, and
-it holds for any two bodies at the exact Di\'osi--Penrose rate.
-\item The witness as printed in the arXiv version is not a valid entanglement witness. A corrected two-setting witness needs
-$\omega/\lambda>3.81$ under dephasing.
-\end{itemize}
+prediction: every mass decoheres at the Di\'osi--Penrose rate $\lambda=Gm^2/(\hbar R)$ (Section~\ref{sec:bridges}). We ask whether the
+experiment can still tell GUID from quantum gravity if decoherence at that rate is real, and whether the published spin witness certifies
+what it is meant to certify. The answers: no geometry of two solid spheres builds up entanglement at the Bridge-B rate, whether gravity is
+quantum or not (exactly, and for any two bodies at the exact Di\'osi--Penrose rate); and the witness as printed in the arXiv version is not
+valid, while a corrected two-setting witness needs $\omega/\lambda>3.81$ under dephasing.
 
 \subsection{Setting and hypotheses}\label{ss:bmv-setting}
 
 Two masses $m$ have centres $d$ apart, and each is split by $\Delta x$ along the line joining them. A coherent Newtonian field gives the
-branch pair $(a,b)$ the phase $\varphi_{ab}=Gm^2t/(\hbar d_{ab})$. The distances are $d_{00}=d_{11}=d$, $d-\Delta x$ for the inner pair and
-$d+\Delta x$ for the outer pair. Up to local phases the state is $\tfrac12(\ket{00}+\ket{01}+\ket{10}+e^{i\Sigma}\ket{11})$, with
-$\Sigma=\omega t$ and
+branch pair $(a,b)$ the phase $\varphi_{ab}=Gm^2t/(\hbar d_{ab})$, with $d_{00}=d_{11}=d$, $d-\Delta x$ for the inner pair and $d+\Delta x$
+for the outer pair. Up to local phases the state is $\tfrac12(\ket{00}+\ket{01}+\ket{10}+e^{i\Sigma}\ket{11})$, with $\Sigma=\omega t$,
 \begin{equation}\label{eq:bmv-omega}
 \omega=\frac{Gm^2}{\hbar}\Bigl[\frac1{d-\Delta x}+\frac1{d+\Delta x}-\frac2d\Bigr]=\frac{Gm^2}{\hbar}\,\frac{2\Delta x^2}{d(d-\Delta x)(d+\Delta x)},
 \end{equation}
@@ -34,24 +29,18 @@ with $f$ the mass-density operator. Under it the coherence between two mass conf
 \Gamma=\frac{I(\Delta f,\Delta f)}{2\hbar},\qquad I(f,g)=G\iint\frac{f(x)\,g(y)}{|x-y|}\,\dd^3x\,\dd^3y ,
 \end{equation}
 where $\Delta f$ is the difference of the two densities. For a uniform sphere displaced by $b$ this gives $\Gamma=E_G/\hbar$, with
-$E_G=(GM^2/R)(2\ell^2-\tfrac32\ell^3+\tfrac15\ell^5)$ for $\ell=b/2R\le1$ and $E_G=GM^2(6/5R-1/b)$ beyond~\cite{penrose96,howl2019}.
+$E_G=(GM^2/R)(2\ell^2-\tfrac32\ell^3+\tfrac15\ell^5)$ for $\ell=b/2R\le1$ and $E_G=GM^2(6/5R-1/b)$ beyond~\cite{penrose96,howl2019}. We checked
+this by radial quadrature of $I$: the self-energy integral is $\tfrac65GM^2/R$ to $10^{-12}$, and the closed form is reproduced to
+$2\times10^{-16}$ \chk{gravsim:G2}. Beyond one diameter the mutual term is exactly $GM^2/b$ (the shell theorem), so the phases between
+non-overlapping spheres are exactly those of point masses. Bridge~B's $\lambda=Gm^2/(\hbar R)$ differs from $E_G/\hbar$ only by the factor
+$6/5-R/b$, between 0.7 and 1.2. For the instance $\lambda=71.97$\,s$^{-1}$ (coherence time 13.9\,ms) and $E_G/\hbar=86.1$\,s$^{-1}$.
 
-We checked these by radial quadrature of $I$ \chk{gravsim:G2}:
-\begin{itemize}[nosep]
-\item the self-energy integral is $\tfrac65GM^2/R$ to $10^{-12}$;
-\item the closed form is reproduced to $2\times10^{-16}$;
-\item beyond one diameter the mutual term is exactly $GM^2/b$ (the shell theorem), so the phases between non-overlapping spheres are exactly
-those of point masses.
-\end{itemize}
-Bridge~B's $\lambda=Gm^2/(\hbar R)$ differs from $E_G/\hbar$ only by the factor $6/5-R/b$, which lies between 0.7 and 1.2. For the instance
-$\lambda=71.97$\,s$^{-1}$ (coherence time 13.9\,ms) and $E_G/\hbar=86.1$\,s$^{-1}$.
-
-\paragraph{Hypotheses.} We compare five evolutions of the same two masses. In each, the coherence factors multiply the coherent-field state
+\paragraph{Hypotheses.} We compare five evolutions of the same two masses. In each, coherence factors multiply the coherent-field state
 element by element.
 \begin{itemize}[nosep]
 \item \textbf{(Q)}: the coherent field, with no collapse.
-\item \textbf{(Q+DP local)}: (Q) with each mass dephasing independently at $\lambda$.
-\item \textbf{(Q+DP exact)}: the same at the exact sphere rate $E_G/\hbar$.
+\item \textbf{(Q+DP local)} and \textbf{(Q+DP exact)}: (Q) with each mass dephasing independently, at $\lambda$ and at the exact sphere rate
+$E_G/\hbar$ respectively.
 \item \textbf{(Q+DP full)}: (Q) with the joint master equation~\eqref{eq:bmv-dp} for the total density of both masses. Its cross term
 $I(\Delta f_A,\Delta f_B)/\hbar=\mp\omega$ makes the coherence between branches that differ in both masses decay at $2\Gamma\mp\omega$.
 \item \textbf{(G)}: the recorded frame of Section~\ref{sec:gravsim}, Eq.~\eqref{eq:gs-me}, with $2\kappa=\lambda$. We also run it at the
@@ -70,17 +59,15 @@ $4\times10^{-16}$. For the instance $\rho=1.745\times10^{-3}$, or $1.458\times10
 
 \paragraph{Supremum.} The spheres must not overlap, so the closest approach is $u=d-\Delta x\ge2R$. Then
 $\rho=2R\Delta x^2/[u(u+\Delta x)(u+2\Delta x)]$. Its derivative in $\Delta x$ has numerator $\Delta x(2u^2+3u\Delta x)>0$, so $\rho$
-increases towards $R/u$, and it decreases with $u$. Hence $\sup\rho=1/2$. It is approached as $\Delta x\to\infty$ with the inner branches
-touching, and never attained. Two further cases matter.
-\begin{itemize}[nosep]
-\item \emph{With Bose et al.'s gap.} Their closest approach of $200\,\mu$m, chosen so that the Casimir--Polder potential is a tenth of the
-gravitational one~\cite{bose}, gives $\rho\le R/u=4.4\times10^{-3}$.
-\item \emph{Any arrangement of two spheres.} Two of the four branch distances enter~\eqref{eq:bmv-omega} with a minus sign, so
-$\omega\le(Gm^2/\hbar)(1/r_{00}+1/r_{11})\le Gm^2/(\hbar R)$, and $\rho\le1$. The bound is approached by parallel splits side by side at
-contact, as $\Delta x\to\infty$. 188\,398 random non-overlapping geometries all stay below it; the largest is 0.446.
-\end{itemize}
-At the exact sphere rate the suprema are 1/2 for collinear splits (now as $\Delta x\to0$ at $d=2R+\Delta x$; it is 5/12 as
-$\Delta x\to\infty$) and 5/6 for any arrangement \chk{gravsim:G2}.
+increases towards $R/u$, and it decreases with $u$. Hence $\sup\rho=1/2$, approached as $\Delta x\to\infty$ with the inner branches touching
+and never attained.
+
+Bose et al.'s closest approach of $200\,\mu$m, chosen so that the Casimir--Polder potential is a tenth of the gravitational one~\cite{bose},
+gives $\rho\le R/u=4.4\times10^{-3}$. For any arrangement of two spheres, two of the four branch distances enter with a minus sign, so
+$\omega\le(Gm^2/\hbar)(1/r_{00}+1/r_{11})\le Gm^2/(\hbar R)$ and $\rho\le1$. This bound is approached by parallel splits side by side at
+contact as $\Delta x\to\infty$; 188\,398 random non-overlapping geometries all stay below it (largest 0.446). At the exact sphere rate the
+suprema are 1/2 for collinear splits (now as $\Delta x\to0$ at $d=2R+\Delta x$; it is 5/12 as $\Delta x\to\infty$) and 5/6 for any
+arrangement \chk{gravsim:G2}.
 
 \subsection{An exact threshold for entanglement}\label{ss:bmv-threshold}
 
@@ -90,32 +77,31 @@ local dephasing. Some product input becomes entangled at some time iff $\omega>2
 \end{proposition}
 
 \begin{proof}
-\emph{If.} From $\ket{++}$ the smallest eigenvalue of the partial transpose is $\tfrac t4(2\lambda-\omega)+O(t^2)$. At $\omega=3\lambda$
-the computed slope is $-0.25$, as this predicts \chk{gravsim:G2}.
-
-\emph{Only if.} For $\lambda\ge\omega/2$ the generator splits into two parts. The first is the averaged Kafri--Taylor--Milburn feedback
-generator at $\kappa=\omega/8$: it is the coherent coupling plus dephasing at $\omega/2$, the record average of an LOCC protocol
-(Eq.~\eqref{eq:gs-me}). The second is local dephasing at the rate $\lambda-\omega/2\ge0$. Both generate LOCC semigroups. By the Trotter
-product formula the evolution is a limit of LOCC maps, and the separable set is closed \tagP.
+\emph{If.} From $\ket{++}$ the smallest eigenvalue of the partial transpose is $\tfrac t4(2\lambda-\omega)+O(t^2)$; at $\omega=3\lambda$ the
+computed slope is $-0.25$ \chk{gravsim:G2}. \emph{Only if.} For $\lambda\ge\omega/2$ the generator is the sum of two parts. The first is the
+averaged Kafri--Taylor--Milburn feedback generator at $\kappa=\omega/8$, which is the coherent coupling plus dephasing at $\omega/2$, the
+record average of an LOCC protocol (Eq.~\eqref{eq:gs-me}). The second is local dephasing at $\lambda-\omega/2\ge0$. Both generate LOCC
+semigroups. By the Trotter product formula the evolution is a limit of LOCC maps, and the separable set is closed \tagP.
 \end{proof}
 
-The proof works instant by instant, so the result also holds when the geometry changes in time, provided $\lambda(t)\ge\omega(t)/2$
-throughout. Bisection over 40\,s of evolution gives the threshold $\omega/\lambda=2.0000$ \chk{gravsim:G2}. With the full kernel, the
-correlated term lowers the threshold to $\sqrt2$: bisection gives 1.41421, and at first order the eigenvalues of the partial transpose are
-$2\lambda\pm\sqrt2\,\omega$. The threshold is exactly the minimum decoherence $\omega/2$ that a classical channel needs (Section~\ref{ss:gs-ktm}).
+The proof works instant by instant, so it also covers geometries that change in time, provided $\lambda(t)\ge\omega(t)/2$ throughout.
+Bisection over 40\,s of evolution gives the threshold 2.0000 \chk{gravsim:G2}. With the full kernel the correlated term lowers the threshold
+to $\sqrt2$: bisection gives 1.41421, and at first order the eigenvalues of the partial transpose are $2\lambda\pm\sqrt2\,\omega$. The
+threshold coincides with the minimum decoherence $\omega/2$ that a classical channel needs (Section~\ref{ss:gs-ktm}).
 
 \begin{corollary}[any two bodies]\label{co:bmv-any}
 For any two bodies, (Q) with independent dephasing at the exact Di\'osi--Penrose rates never becomes entangled.
 \end{corollary}
 
 \begin{proof}
-The entangling rate is $\omega=|I(\Delta f_A,\Delta f_B)|/\hbar$ and the rates are $\Gamma_{A,B}=I(\Delta f_{A,B},\Delta f_{A,B})/2\hbar$. The
-kernel $1/|x-y|$ is positive (its Fourier transform is $4\pi/k^2$), so Cauchy--Schwarz gives $\omega\le2\sqrt{\Gamma_A\Gamma_B}$. With
-$2\kappa_{A,B}=\Gamma_{A,B}/2$ the same decomposition as in the proof above applies with unequal rates.
+The entangling rate is $\omega=|I(\Delta f_A,\Delta f_B)|/\hbar$, and the Di\'osi--Penrose rates are
+$\Gamma_A=I(\Delta f_A,\Delta f_A)/2\hbar$ and $\Gamma_B=I(\Delta f_B,\Delta f_B)/2\hbar$. The kernel $1/|x-y|$ is positive (its Fourier transform is $4\pi/k^2$), so Cauchy--Schwarz gives $\omega\le2\sqrt{\Gamma_A\Gamma_B}$. With
+$2\kappa_{A,B}=\Gamma_{A,B}/2$ the decomposition used in the proof of Proposition~\ref{pr:bmv-threshold} applies with unequal rates.
 \end{proof}
 
 Equality is impossible for disjoint bodies. The largest $\omega/(2\sqrt{\Gamma_A\Gamma_B})$ among the random geometries is 0.22
-\chk{gravsim:G2}. Decoherence at the Di\'osi--Penrose rate is therefore always at least the classical-channel minimum.
+\chk{gravsim:G2}. Decoherence at the Di\'osi--Penrose rate always meets the classical-channel minimum. Table~\ref{tab:bmv-hyp} shows the
+instance in time.
 
 \begin{table}[ht]\centering\small
 \caption{The Bose et al.\ instance under the hypotheses, over $0\le t\le40$\,s \chk{gravsim:G2}. Witnesses are evaluated in the local frame
@@ -137,12 +123,10 @@ control: (Q) with dephasing at $0.99\,\omega/2$ & $3.0\times10^{-4}$ at 1.55\,s 
 
 \subsection{The spin witness of Bose et al., checked and corrected}\label{ss:bmv-witness}
 
-We read the arXiv text, arXiv:1707.06050, which has a single version (v1, 19 July 2017). The published PRL text~\cite{bose} was not read:
-the publisher's host was outside the network we could reach. Whether the journal version corrects the operator is therefore open. All
-statements below refer to the arXiv text \chk{witness:B1}.
-
-In spin form, with $\ket\uparrow=\ket0$, the state after the two Stern--Gerlach interferometers (the unnumbered equation after their
-Eq.~(6)) is
+We read the arXiv text, arXiv:1707.06050, which has a single version (v1, 19 July 2017). The published PRL text~\cite{bose} was not read,
+because the publisher's host was outside the network we could reach; whether the journal version corrects the operator is open. All
+statements below refer to the arXiv text \chk{witness:B1}. In spin form, with $\ket\uparrow=\ket0$, the state after the two Stern--Gerlach
+interferometers (the unnumbered equation after their Eq.~(6)) is
 \begin{equation}\label{eq:bmv-spin}
 \ket\Psi=\tfrac12\bigl[\ket{00}+e^{ia}\ket{01}+e^{ib}\ket{10}+\ket{11}\bigr],\qquad a=\Delta\varphi_{LR},\ b=\Delta\varphi_{RL},\ \Sigma=a+b ,
 \end{equation}
@@ -151,41 +135,37 @@ with $\mathcal N=\tfrac12\sin(\Sigma/2)$.
 \paragraph{The printed witness is not a witness.} The paper defines $W=|\langle\sigma_x\otimes\sigma_z\rangle-\langle\sigma_y\otimes\sigma_z\rangle|$
 and states that $W>1$ proves entanglement. The two terms share $\sigma_z$ on the second spin, so
 $\sigma_x\otimes\sigma_z-\sigma_y\otimes\sigma_z=\sqrt2\,\sigma_n\otimes\sigma_z$ with $n=(\hat x-\hat y)/\sqrt2$. A product state with spin~1
-along $n$ and spin~2 up therefore gives $W=\sqrt2$, the largest value any state can give. An optimiser over product states finds $\sqrt2$, and
-400\,000 random product states reach 1.4097. On the proposal's own states the printed $W$ reaches at most $\sqrt2$, the value a product state
-already gives, so it can never certify entanglement there. At $a=0$, $b=1$\,rad it is 0.651, although the state is entangled
-($\mathcal N=0.240$). So the printed $W$ can exceed 1 on a product state and stay below 1 on an
-entangled one. The value $W\approx1.16$ that the paper quotes for $\Delta\varphi_{LR}\approx-0.2$, $\Delta\varphi_{RL}\approx0.7$ lies below
-$\sqrt2$ and certifies nothing.
+along $n$ and spin~2 up gives $W=\sqrt2$, the largest value any state can give. An optimiser over product states finds $\sqrt2$, and 400\,000
+random product states reach 1.4097. On the proposal's own states the printed $W$ reaches at most $\sqrt2$, the value a product state already
+gives, so it can never certify entanglement there. At $a=0$, $b=1$\,rad it is 0.651, although the state is entangled ($\mathcal N=0.240$).
+The value $W\approx1.16$ that the paper quotes for $\Delta\varphi_{LR}\approx-0.2$, $\Delta\varphi_{RL}\approx0.7$ lies below $\sqrt2$ and
+certifies nothing.
 
 \paragraph{Valid two-setting witnesses.} Let $a_1\perp a_2$ and $b_1\perp b_2$ be unit axes, and let a product state have Bloch vectors $u$
 and $v$. By Cauchy--Schwarz,
 \begin{equation}\label{eq:bmv-lemma}
 |(u\!\cdot\!a_1)(v\!\cdot\!b_1)+(u\!\cdot\!a_2)(v\!\cdot\!b_2)|\le\sqrt{(u\!\cdot\!a_1)^2+(u\!\cdot\!a_2)^2}\,\sqrt{(v\!\cdot\!b_1)^2+(v\!\cdot\!b_2)^2}\le1 ,
 \end{equation}
-and convexity extends the bound to every separable state~\cite{guhne2009}. The printed operator fails exactly because $b_1=b_2=\hat z$.
-
-In the symmetric gauge $a=b=\Sigma/2$ the corrected witness
+and convexity extends the bound to every separable state~\cite{guhne2009}. The printed operator fails exactly because $b_1=b_2=\hat z$. In
+the symmetric gauge $a=b=\Sigma/2$ the corrected witness
 \begin{equation}\label{eq:bmv-wc}
 W_c=|\langle\sigma_x\otimes\sigma_x\rangle+\langle\sigma_y\otimes\sigma_z\rangle|\ \le1\ \text{(separable)},\qquad W_c=1+\sin(\Sigma/2)=1+2\mathcal N
 \end{equation}
 detects every $\Sigma>0$ \chk{witness:B2}. In the laboratory gauge the axes rotate by $\theta=(\Delta\varphi_{LR}-\Delta\varphi_{RL})/2$:
-$x'=\cos\theta\,\hat x-\sin\theta\,\hat y$ and $y'=\sin\theta\,\hat x+\cos\theta\,\hat y$ on spin~1, and $x''=\cos\theta\,\hat x+\sin\theta\,\hat y$
-on spin~2, with $z$ unchanged. Then $|\langle\sigma_{x'}\otimes\sigma_{x''}\rangle+\langle\sigma_{y'}\otimes\sigma_z\rangle|=1+\sin(\Sigma/2)$
+$x'=\cos\theta\,\hat x-\sin\theta\,\hat y$ and $y'=\sin\theta\,\hat x+\cos\theta\,\hat y$ on spin~1, $x''=\cos\theta\,\hat x+\sin\theta\,\hat y$ on
+spin~2, with $z$ unchanged. Then $|\langle\sigma_{x'}\otimes\sigma_{x''}\rangle+\langle\sigma_{y'}\otimes\sigma_z\rangle|=1+\sin(\Sigma/2)$
 for every $(a,b)$. This is the readjustment ``in accordance to these local phases'' that the paper asks for. The angle is local data: the
-single-spin Bloch vectors are $\cos(\Sigma/2)(\cos\theta,-\sin\theta,0)$ and $\cos(\Sigma/2)(\cos\theta,\sin\theta,0)$. They are measured on
+single-spin Bloch vectors are $\cos(\Sigma/2)(\cos\theta,-\sin\theta,0)$ and $\cos(\Sigma/2)(\cos\theta,\sin\theta,0)$, measured on
 calibration runs separate from the witness runs.
 
-\paragraph{Gauge-free alternative.} Let $T_{ij}=\langle\sigma_i\otimes\sigma_j\rangle$ be the correlation matrix. Separable states satisfy
-$\|T\|_1\le1$ (trace norm): for a product state $T=uv^{\mathsf T}$, so $\|T\|_1=|u||v|\le1$, and convexity does the rest. This is the
-two-qubit case of de Vicente's criterion~\cite{devicente2007}. It needs nine settings and no phase knowledge. On~\eqref{eq:bmv-spin}
-$\|T\|_1=1+2\sin(\Sigma/2)$ in every gauge. Its estimate is biased upward: on a product state the bias is $+0.250$, $+0.075$ and $+0.023$
-at 100, 1000 and 10\,000 runs per setting. It therefore needs a calibrated null. $W_c$ has an unbiased linear estimator and is the one to use
-for a hypothesis test \chk{witness:B4}.
-
-\paragraph{A valid but weak variant.} $|\langle\sigma_x\otimes\sigma_z\rangle+\langle\sigma_y\otimes\sigma_y\rangle|$ satisfies the lemma, but
-in the paper's gauge ($a=0$) it equals $1-\cos\Sigma$ and detects only $\Sigma>\pi/2$. In the symmetric gauge it is 0 for every $\Sigma$
-\chk{witness:B2}. Table~\ref{tab:bmv-w} collects the values at the paper's target phase.
+\paragraph{Gauge-free and weak alternatives.} Let $T_{ij}=\langle\sigma_i\otimes\sigma_j\rangle$ be the correlation matrix. Separable states
+satisfy $\|T\|_1\le1$ (trace norm): for a product state $T=uv^{\mathsf T}$, so $\|T\|_1=|u||v|\le1$, and convexity does the rest. This is the
+two-qubit case of de Vicente's criterion~\cite{devicente2007}. It needs nine settings and no phase knowledge, and on~\eqref{eq:bmv-spin}
+$\|T\|_1=1+2\sin(\Sigma/2)$ in every gauge. Its estimate is biased upward: on a product state the bias is $+0.250$, $+0.075$ and $+0.023$ at
+100, 1000 and 10\,000 runs per setting. It therefore needs a calibrated null, whereas $W_c$ has an unbiased linear estimator and is the one
+for a hypothesis test \chk{witness:B4}. The variant $|\langle\sigma_x\otimes\sigma_z\rangle+\langle\sigma_y\otimes\sigma_y\rangle|$ satisfies
+the lemma but is weak. In the paper's gauge ($a=0$) it equals $1-\cos\Sigma$ and detects only $\Sigma>\pi/2$; in the symmetric gauge it is
+0 for every $\Sigma$ \chk{witness:B2}. Table~\ref{tab:bmv-w} collects the values at the paper's target phase.
 
 \begin{table}[ht]\centering\small
 \caption{Witnesses on the state~\eqref{eq:bmv-spin} at $\Sigma=1$\,rad, the order-one phase of~\cite{bose} \chk{witness:B2}.}\label{tab:bmv-w}
@@ -201,67 +181,52 @@ negativity $\mathcal N$ & 0.240 & 0 & yes (needs tomography)\\\bottomrule
 
 \paragraph{Under dephasing.} Let each mass dephase at $\lambda$, with $q=e^{-\lambda t}$ and $s=\sin(\omega t/2)$. In the symmetric gauge
 $T=\bigl(\begin{smallmatrix}q^2&0&0\\0&0&qs\\0&qs&0\end{smallmatrix}\bigr)$: $\langle xx\rangle$ lives on the coherences between branches
-that differ in both masses, and $\langle yz\rangle$, $\langle zy\rangle$ on those that differ in one. Each criterion has its own threshold
-in $\omega/\lambda$ \chk{witness:B3}:
-\begin{itemize}[nosep]
-\item The trace norm, $q^2+2qs=1+(\omega-2\lambda)t+\dots$, has threshold 2, as tight as the negativity.
-\item $W_c=q^2+qs=1+(\omega/2-2\lambda)t+\dots$ has threshold 4.
-\item $|\langle yz\rangle+\langle zy\rangle|=2qs$ peaks at a finite time, where $\tan(\omega t/2)=u$ with $u=\omega/2\lambda$. Its peak value is
-$2u\,e^{-\arctan(u)/u}/\sqrt{1+u^2}$, which equals 1 at $\omega/\lambda=3.8057$.
-\item The best two-pair witness, with axes re-optimised at every time, also has threshold 3.8057.
-\end{itemize}
-A two-setting witness therefore needs about twice the margin that entanglement itself needs.
+that differ in both masses, and $\langle yz\rangle$, $\langle zy\rangle$ on those that differ in one \chk{witness:B3}. The trace norm is
+$q^2+2qs=1+(\omega-2\lambda)t+\dots$, so its threshold in $\omega/\lambda$ is 2, as tight as the negativity. $W_c=q^2+qs=1+(\omega/2-2\lambda)t+\dots$
+has threshold 4. The pair $|\langle yz\rangle+\langle zy\rangle|=2qs$ peaks at a finite time, where $\tan(\omega t/2)=u$ with
+$u=\omega/2\lambda$; its peak value $2u\,e^{-\arctan(u)/u}/\sqrt{1+u^2}$ equals 1 at $\omega/\lambda=3.8057$. This is also the threshold of
+the best two-pair witness, with axes re-optimised at every time. A two-setting witness therefore needs about twice the margin that
+entanglement itself needs.
 
 \paragraph{Runs needed.} With two settings and $n$ runs each, $\langle xx\rangle=1$ has no shot noise on the pure state, and
 $\langle yz\rangle=\sin(\Sigma/2)$ has variance $\cos^2(\Sigma/2)/n$. A result at $k$ standard deviations therefore needs
-$n\ge k^2\cot^2(\Sigma/2)$ runs per setting \chk{witness:B4}:
-\begin{itemize}[nosep]
-\item 31 runs (3$\sigma$) or 84 runs (5$\sigma$) at $\Sigma=1$;
-\item 10 or 26 at $\pi/2$;
-\item $3.6\times10^5$ or $1.0\times10^6$ at $10^{-2}$;
-\item $3.6\times10^9$ or $1.0\times10^{10}$ at $\Sigma=10^{-4}$, the phase of the paper's more modest variant ($\Delta x\approx1\,\mu$m).
-\end{itemize}
-Twenty thousand simulated experiments of $2\times84$ runs at $\Sigma=1$ give a mean estimate of 1.481, against 1.479, and a mean significance
-of $5.06\sigma$.
+$n\ge k^2\cot^2(\Sigma/2)$ runs per setting \chk{witness:B4}. That is 31 runs (3$\sigma$) or 84 runs (5$\sigma$) at $\Sigma=1$, 10 or 26 at
+$\pi/2$, $3.6\times10^5$ or $1.0\times10^6$ at $10^{-2}$, and $3.6\times10^9$ or $1.0\times10^{10}$ at $\Sigma=10^{-4}$, the phase of the
+paper's more modest variant ($\Delta x\approx1\,\mu$m). Twenty thousand simulated experiments of $2\times84$ runs at $\Sigma=1$ give a mean
+estimate of 1.481 (against 1.479) and a mean significance of $5.06\sigma$.
 
 \subsection{What the experiment decides}\label{ss:bmv-decides}
 
 Every two-sphere geometry has $\omega/\lambda\le1$ at the Bridge-B rate, and at most 5/6 at the exact rate. Entanglement needs more than 2,
-and a two-setting witness more than 3.81. So, if decoherence at the Di\'osi--Penrose rate is real, a BMV experiment with two solid spheres
-finds no entanglement, whether gravity is quantum or classical \tagS. Bose et al.\ already remark that collapse mechanisms ``if true, will
-typically lead to a strong loss of coherence on the time-scale of the experiment and inhibit the gravitationally mediated
+and a two-setting witness more than 3.81. If decoherence at the Di\'osi--Penrose rate is real, a BMV experiment with two solid spheres
+therefore finds no entanglement, whether gravity is quantum or classical \tagS. Bose et al.\ already remark that collapse mechanisms ``if
+true, will typically lead to a strong loss of coherence on the time-scale of the experiment and inhibit the gravitationally mediated
 entanglement''~\cite{bose}. Proposition~\ref{pr:bmv-threshold} and Corollary~\ref{co:bmv-any} make this exact for Di\'osi--Penrose rates.
-Three consequences follow.
-\begin{itemize}[nosep]
-\item \emph{A null BMV result does not separate GUID with Bridge~B from quantum gravity with Di\'osi--Penrose collapse.}
-\item \emph{A positive result needs decoherence below $\omega/2$,} the minimum any classical channel needs. It would refute GUID
-(Lemma~\ref{lem:classical}), decoherence at the Di\'osi--Penrose rate (Bridge~B), and every classical mediator, together.
-\item \emph{What discriminates under Bridge~B is the decoherence itself.} The coherence time of a mesoscopic superposition, $\hbar R/(GM^2)$
-up to the factor $6/5-R/\Delta x$, together with the force noise that the balance rule ties to it, is the measurement of
-Section~\ref{sec:exp}, ``Diffusion against decoherence''.
-\end{itemize}
 
-\paragraph{Choices made after seeing the data.} We fixed the hypotheses, the geometries and the time grid before the first run. We sampled
-the random geometries once, with $\Delta x$ from $10^{-2}R$ to $10^4R$, and did not tune the ranges. We added the witness analysis after we
-had found the printed operator to be invalid, and it uses the paper's own state. No threshold or tolerance in this section was changed after
-a run.
+Three consequences follow. First, a null BMV result does not separate GUID with Bridge~B from quantum gravity with Di\'osi--Penrose collapse.
+Second, a positive result needs decoherence below $\omega/2$, the minimum any classical channel needs; it would refute GUID
+(Lemma~\ref{lem:classical}), decoherence at the Di\'osi--Penrose rate (Bridge~B) and every classical mediator together. Third, under
+Bridge~B the discriminating measurement is the decoherence itself. That is the coherence time of a mesoscopic superposition,
+$\hbar R/(GM^2)$ up to the factor $6/5-R/\Delta x$, together with the force noise that the balance rule ties to it: the ``diffusion against
+decoherence'' test of Section~\ref{sec:exp}.
 
-\paragraph{Caveats.}
-\begin{itemize}[nosep]
-\item \emph{Conventions.} Di\'osi--Penrose rates in the literature differ by factors of order one. At half the exact rate the spheres'
-supremum becomes 5/3, still below 2. At half the paper's $\lambda$ the supremum becomes 2, approached but never attained, so the margin
-vanishes in the extreme parallel geometry. With the full kernel and half the rate, extreme parallel geometries would reach $5/3>\sqrt2$.
-\item \emph{Scope.} We scanned only uniform rigid spheres with two branches, and neglected nuclear granularity; \chk{Q19} shows that the
-bulk term dominates.
-\item \emph{The debate.} The debate about classical gravity and quantum matter fields~\cite{azizhowl,movw,diosi25} is outside these models.
-\item \emph{The source.} The witness statements refer to the arXiv text; the PRL text was not read.
-\end{itemize}
+\paragraph{Choices made after seeing the data.} The hypotheses, geometries and time grid were fixed before the first run. The random
+geometries ($\Delta x$ from $10^{-2}R$ to $10^4R$) were sampled once, and the ranges were not tuned. The witness analysis was added after we
+found the printed operator to be invalid, and it uses the paper's own state. No threshold or tolerance in this section was changed after a
+run.
+
+\paragraph{Caveats.} Di\'osi--Penrose rates in the literature differ by factors of order one. At half the exact rate the spheres' supremum
+becomes 5/3, still below 2. At half the paper's $\lambda$ it becomes 2, approached but never attained, so the margin vanishes in the extreme
+parallel geometry. With the full kernel and half the rate, extreme parallel geometries would reach $5/3>\sqrt2$. Only uniform rigid spheres
+with two branches were scanned, and nuclear granularity is neglected (\chk{Q19} shows that the bulk term dominates). The debate about
+classical gravity and quantum matter fields~\cite{azizhowl,movw,diosi25} is outside these models. The witness statements refer to the arXiv
+text, since the PRL text was not read.
 
 All numbers in this section come from \texttt{docs/simulation/gravity\_simulated.py} (110 of 110 checks, about three minutes on one core)
 and \texttt{docs/simulation/bmv\_witness.py} (32 of 32 checks, under a minute); both are deterministic.
 
-\paragraph{Verdict.} At the Bridge-B rate, no BMV geometry of two spheres yields entanglement, whatever gravity is. The best case falls short
-of the exact threshold $\omega/\lambda=2$ by a factor of 2, and at the exact rates the Newton kernel forbids it for any two bodies
-(\emph{derived}). GUID's prediction $\mathcal N=0$ therefore \emph{holds} but does not discriminate. The decisive measurement under
-Bridge~B is the decoherence rate of mesoscopic superpositions (\emph{live}). The spin witness as printed in arXiv:1707.06050 is not a valid
-witness. Its correction, $W_c=1+\sin(\Sigma/2)$ with laboratory-gauge axes, works and needs $k^2\cot^2(\Sigma/2)$ runs per setting.
+\paragraph{Verdict.} At the Bridge-B rate no BMV geometry of two spheres yields entanglement, whatever gravity is. The best case falls short
+of the exact threshold $\omega/\lambda=2$ by a factor of 2, and at the exact rates the Newton kernel forbids entanglement for any two bodies
+(\emph{derived}). GUID's prediction $\mathcal N=0$ therefore \emph{holds} but does not discriminate. Under Bridge~B the decisive measurement
+is the decoherence rate of mesoscopic superpositions (\emph{live}). The spin witness as printed in arXiv:1707.06050 is not a valid witness.
+Its correction, $W_c=1+\sin(\Sigma/2)$ with laboratory-gauge axes, works and needs $k^2\cot^2(\Sigma/2)$ runs per setting.
