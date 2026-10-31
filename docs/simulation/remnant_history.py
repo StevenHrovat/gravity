@@ -59,6 +59,7 @@ from scipy import integrate, optimize, stats  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+sys.dont_write_bytecode = True        # importing the validated pipeline must not leave a __pycache__ in the repository
 import sparc_rotation as SR  # noqa: E402  (the validated pipeline)
 
 RESULTS, FIGURES = SR.RESULTS, SR.FIGURES
