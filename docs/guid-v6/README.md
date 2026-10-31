@@ -68,7 +68,7 @@ python3 docs/guid-v6/reproduce.py --data <folder with the two SPARC .mrt files>
 
 ## What changed from v5.1
 
-Section "What changed from version 5.1" of the paper lists fourteen corrections, each with its evidence. In short:
+Section "What changed from version 5.1" of the paper lists twenty-three corrections and sharpenings, each with its evidence. In short:
 - **Corrected bounds and data:**
   - the 95% bound on the information scalar (3.1e-5);
   - the newest clock bound, with the negative drift derived but unobservably small;
