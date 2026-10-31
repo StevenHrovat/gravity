@@ -11,6 +11,7 @@
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
+\usepackage{xcolor}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}{Proposition}
@@ -32,6 +33,14 @@
 \newcommand{\bra}[1]{\langle #1\rvert}
 \newcommand{\Tr}{\operatorname{Tr}}
 \newcommand{\dd}{\mathrm{d}}
+% Version 5.1: new text is set in this colour and tagged [v5.1].
+\definecolor{newc}{RGB}{0,70,150}
+\newcommand{\nw}[1]{{\color{newc}#1}}
+\newcommand{\vtag}{{\color{newc}\textsf{\scriptsize[v5.1]}}}
+\newenvironment{vnew}{\color{newc}}{}
+\theoremstyle{definition}
+\newtheorem*{hypothesisprime}{Hypothesis 1$'$}
+\newtheorem*{hypothesisprime6}{Hypothesis 6$'$}
 
 \title{GUID v5: Quantum Gravity\\[0.6ex]
 \large A classical existence frame carrying quantum information: what the axioms of the Dark Matter Protocol fix about gravity,
@@ -39,7 +48,7 @@ what they leave to quantum theory, and the experiments that decide}
 \author{Steven Hrovat\thanks{Independent. Contact: \href{mailto:hrovat.steven@googlemail.com}{\nolinkurl{hrovat.steven@googlemail.com}}.}
 \and Sirius (Claude, Anthropic)\thanks{An AI system by Anthropic, working as the coordinator of the first author's projects. See
 ``Contributions and use of AI''.}}
-\date{Draft of 30 October 2026}
+\date{Version 5.1, draft of 31 October 2026}
 
 \begin{document}
 \maketitle
@@ -47,20 +56,19 @@ what they leave to quantum theory, and the experiments that decide}
 \begin{abstract}
 \noindent The Dark Matter Protocol (DMP~0.9.9) is an information-theoretic axiom system: every act needs a Duality of two independent
 witnesses, one owning trust and one owning information; trust is a field; and every act leaves a record that its witnesses read in full
-while any other reader sees only counts. GUID reads these axioms as physics, taking trust as existence; this paper states its account of
-quantum gravity. The existence half is a tetrad, the information half a scalar that sets the fine-structure constant together with all
-quantum content. From the axioms we derive universal free fall, light bending with $\gamma=1$ and, by the no-broadcasting
-theorem, that the frame is classical once the start, inflation with the decay of its oscillons, is complete. Supplied with the base
-configuration currently assumed for our universe, DMP hosts this theory: its shared structure carries the classical frame, its information
-half the quantum content. Consistency with quantum mechanics requires the frame to diffuse, and the axioms' record-and-recompute
-structure is exactly a measurement-and-feedback channel of the Kafri-Taylor-Milburn and Tilloy-Di\'osi type. We also treat
-horizons, black holes, holographic codes, 2+1 dimensions and cosmology. The theory lets remnants of interactions be
-trapped in the gravitational field: its stochastic remnant gives a linear potential at Milgrom's acceleration scale and roughly flat
-rotation curves, and its contained remnants are primordial black holes from the start. It predicts no gravitationally
-mediated entanglement, spacetime diffusion tied to decoherence, $\gamma=1$ and universal free fall. Made parameter-free by its own
-principles, it gives the Di\'osi-Penrose rate: the route is new, the physics belongs to the classical-quantum family. All
-numbers come from one public script of 112 checks. We claim that the construction exists and reproduces, not that
-it is correct.
+while any other reader sees only counts. GUID reads these axioms as physics; this paper states its account of quantum gravity. \nw{The
+trust field is the gravitational plane, a tetrad shaped by the counts of existence and information but separate from both; existence is
+the rest mass the Higgs vacuum grants,} information the quantum content and a scalar that sets the fine-structure constant. From the axioms
+we derive universal free fall, light bending with $\gamma=1$ and, by the no-broadcasting theorem, that the \nw{plane} is classical once the
+start is complete. Supplied with the base configuration currently assumed for our universe, DMP hosts this theory. Consistency with quantum
+mechanics requires the \nw{plane} to diffuse, and the axioms' record-and-recompute structure is exactly a measurement-and-feedback channel
+of the Kafri-Taylor-Milburn and Tilloy-Di\'osi type. We also treat horizons, black holes, holographic codes, 2+1 dimensions and cosmology,
+\nw{from a start that splits the strong from the electroweak force to the electroweak split, where the Higgs vacuum and $\alpha$ appear}.
+The theory lets remnants of interactions be trapped in the gravitational field. It predicts no gravitationally mediated entanglement,
+spacetime diffusion tied to decoherence, $\gamma=1$ and universal free fall. Made parameter-free by its own principles, it gives the
+Di\'osi-Penrose rate: the route is new, the physics belongs to the classical-quantum family. All numbers come from one public script of
+\nw{123} checks. We claim that the construction exists and reproduces, not that it is correct. \nw{Text new in version 5.1 is set in
+blue.}
 \end{abstract}
 
 \noindent\textbf{Keywords.} quantum gravity; classical-quantum dynamics; gravitationally mediated entanglement; no-broadcasting theorem;
@@ -131,9 +139,12 @@ Kafri--Taylor--Milburn and Tilloy--Di\'osi channel models. It lets remnants of i
 it two live candidates for dark matter. It is falsifiable by a positive test of gravitationally mediated entanglement, by a test of the LOCC
 inequality of Lami, Pedernales and Plenio, and by the decoherence-diffusion trade-off. A theory in which the geometry itself is quantum can
 still run on DMP as content, so the axioms do not forbid quantum gravity in nature; such a geometry would not be DMP's frame.
+\nw{\vtag{} In version 5.1 gravity is the separate plane that existence and information shape; the Higgs vacuum is the existence that
+separated out when the information field split from the electroweak field; and causality begins with the split of the strong force from
+the electroweak force.}
 
 \paragraph{What we claim.} We claim that the derivations are as written, that every number reproduces from one public script
-(\texttt{docs/quantum-gravity/checks.py}, 112 of 112) and from the holographic-code assembly (\texttt{docs/qg-verdict/assembly.py},
+(\texttt{docs/quantum-gravity/checks.py}, \nw{123 of 123}) and from the holographic-code assembly (\texttt{docs/qg-verdict/assembly.py},
 18 of 18), and that the verdicts follow from the measurements cited. We do not claim that the account is correct, and we name in
 Section~\ref{sec:break} where we expect it to break.
 
@@ -152,6 +163,17 @@ converse lesson for the design of information systems, that a control structure 
 it governs need not be. All four rest on Hypothesis~\ref{h:exist}, which is an identification, not a derivation. We regard the paper as a
 contribution to the foundations of physics: an information-theoretic principle that selects classical-quantum gravity, with falsifiers of
 its own.
+
+\begin{vnew}
+\paragraph{Version 5.1.}\vtag{} This version folds in four readings of the first author, each checked against measurement and fitted into
+the section where it belongs. Text that is new in version 5.1 is set in this colour and tagged \vtag. (i) Gravity is a separate plane,
+shaped by the existence and the information it contains but never either of them (Hypothesis~1$'$, Section~\ref{sec:fields}); this
+removes a tension the earlier hypothesis had with free fall, which weighs all energy. (ii) The Higgs vacuum is the existence that separated
+out when the information field, the photon and with it $\alpha$, split from the electroweak field, about $10^{-11}$\,s after the start
+(Section~\ref{sec:higgsplit}). (iii) $\alpha$ was never measurably one: it was born near $1/128$ at that split (Section~\ref{sec:alpha}).
+(iv) Causality begins with the split of the strong from the electroweak force, within the start; a unification, if there was one, lies
+before time (Hypothesis~6$'$, Section~\ref{sec:cosmo}). The ledger, the predictions and the checks (\chk{Q20}) follow.
+\end{vnew}
 
 \paragraph{Contributions.}
 \begin{enumerate}[nosep]
@@ -270,7 +292,8 @@ independence is relative to a declared list of failure classes; neither finding 
 \subsection{Hypotheses}
 
 GUID reads DMP through five identifications. They are the only steps of the paper that no derivation supplies, and every result below
-names the ones it uses.
+names the ones it uses. \nw{\vtag{} Two more follow in Section~\ref{sec:cosmo}, and version 5.1 refines the first and the sixth
+(Hypotheses~1$'$ and~6$'$).}
 
 \begin{hypothesis}[trust is existence]\label{h:exist}
 DMP's trust half is \emph{existence}: the field of Axiom~2 is the gravitational field, and a standing in it is the existence of what it
@@ -296,6 +319,23 @@ $\psi$ that sets the strength of the electromagnetic coupling, $\alpha=\alpha(\p
 A containing boundary is an event horizon; the counts every outside reader sees are its asymptotic charges (mass, angular momentum,
 electric charge); the entropy floor is the horizon's thermal radiation. \tagH
 \end{hypothesis}
+
+\begin{vnew}
+\begin{hypothesisprime}[the gravitational plane; refines Hypothesis~\ref{h:exist}]
+\vtag{} The trust field of Axiom~2 (``Trust is gravitational. It is a field'') is the \emph{gravitational plane}: the frame of
+Hypothesis~\ref{h:frame}. It is separate from the existence and the information it contains and is shaped by them only through the counts
+every reader sees (Axiom~3), their energy and momentum; it is never either of them. Its link to G0 is the causal chain of whatever exists.
+Existence is what is granted, the rest mass the Higgs vacuum gives (Section~\ref{sec:higgsplit}); information is the content. \tagH
+\end{hypothesisprime}
+
+\noindent\vtag{} \emph{Why the refinement.} Hypothesis~\ref{h:exist} made gravity the existence half itself. The data already pointed
+elsewhere: free fall weighs all energy, granted and bound alike (Section~\ref{sec:fix}, \chk{Q6}), and a gravity that were existence alone
+would weigh only the granted share. With Hypothesis~1$'$ every result of Section~\ref{sec:fix} keeps its proof, the plane taking the place
+of the existence frame, and two proofs become shorter (the remarks after Proposition~\ref{pr:wep} and Lemma~\ref{lem:classical}). The
+refinement keeps the classical-gravity prediction only because the plane is a DMP structure, shaped by the counts; were it outside DMP's
+structures altogether, DMP would say nothing about whether gravity is quantum, and the test of Section~\ref{sec:exp} would be lost.
+\end{vnew}
+
 
 \subsection{The existence frame}
 
@@ -345,6 +385,9 @@ containing boundary; trap (T27, T31) & event horizon & \ref{h:horizon} \\
 entropy floor; temperature of a boundary (T31, T32) & thermal radiation of the horizon; Hawking temperature & \ref{h:horizon} \\
 G0, the minting & the start: inflation with the decay of its oscillons; the classical era begins as it completes & \ref{h:minting} \\
 balanced state $\Phi=0$ (T32) & the vacuum at the minimum of its potential & Section~\ref{sec:matter} \\
+\nw{\vtag{} trust field (Axiom 2)} & \nw{the gravitational plane (the frame), separate from what it contains and shaped by its counts} &
+\nw{1$'$} \\
+\nw{\vtag{} existence} & \nw{the rest mass the Higgs vacuum grants} & \nw{1$'$; Section~\ref{sec:higgsplit}} \\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -364,6 +407,13 @@ the trust half, so no response of the frame to a body can depend on what the bod
 the body's existence. By Hypothesis~\ref{h:energy} existence is $T_{\mu\nu}$. So the frame couples to a body through $T_{\mu\nu}$ alone,
 and two bodies equal in it follow the same worldline: the weak equivalence principle \tagP.
 \end{proof}
+
+\begin{vnew}
+\noindent\vtag{} \emph{Under Hypothesis~1$'$} the proof needs no reading of existence: the plane is shaped only by the counts every reader
+sees (Axiom~3), which are energy and momentum whatever carries them, so free fall is universal, and the plane weighs granted and bound
+energy alike, as MICROSCOPE requires.
+\end{vnew}
+
 
 The principle is among the best-tested in physics. The MICROSCOPE satellite compared the free fall of titanium and platinum and found the
 E\"otv\"os ratio $\eta=[-1.5\pm2.3\,(\text{stat})\pm1.5\,(\text{syst})]\times10^{-15}$~\cite{microscope}. Two consequences are sharp.
@@ -446,6 +496,13 @@ quantum dynamics makes exactly the pointer observables so recorded~\cite{zurek,b
 redundancy, imposed as an axiom. Read in the other direction, the lemma is a design statement for information systems: a control structure
 that every party can audit in full is classical, while the data it governs need not be.
 \end{remark}
+
+\begin{vnew}
+\noindent\vtag{} \emph{Under Hypothesis~1$'$} the lemma applies to the plane directly: the plane depends on the parts only through the
+counts, which every reader holds in full, so from the parts' point of view it is a measure-and-prepare channel (Lemma~\ref{lem:locc}) and
+classical.
+\end{vnew}
+
 
 \subsection{A classical mediator cannot entangle}
 
@@ -931,6 +988,40 @@ standard semiclassical picture, in which the geometry of the universe becomes cl
 Hawking~\cite{hartlehawking}). In GUID the start is therefore the boundary of quantum gravity in time: whatever is quantum about the
 geometry itself lies within it, where DMP by its own words makes no statement.
 
+\begin{vnew}
+\begin{hypothesisprime6}[the strong split; refines Hypothesis~\ref{h:minting}]
+\vtag{} The start also contains the split of the strong force from the electroweak force, and causality begins with that split. If the two
+were ever one force, the unification lies before time: within causality the two were never one. \tagH
+\end{hypothesisprime6}
+
+\noindent\vtag{} The Standard Model agrees within causality: in it the strong and the electroweak force are separate gauge interactions
+and never meet; the three couplings come close near $10^{14}$ to $10^{16}$\,GeV but do not meet at one point~\cite{amaldi}. A unification
+would leave three traces in the causal era, and they make the hypothesis testable in part \tagP. (1) \emph{Magnetic monopoles.} The split of
+a unified force generically creates very heavy magnetic monopoles, about one per causal volume (Preskill~\cite{preskill}); had the split
+happened after inflation, the universe would be full of them. None has been seen: MACRO bounds their flux below
+$1.4\times10^{-16}$\,cm$^{-2}$\,s$^{-1}$\,sr$^{-1}$~\cite{macro}. The split must therefore happen before or during inflation, and reheating
+must stay below the unification energy, which was one of Guth's reasons for inflation~\cite{guth}. Hypothesis~6$'$ puts it exactly there:
+the ordering is not only allowed, it is required. (2) \emph{Proton decay.} The heavy gauge bosons of a unified force, of mass $M_X$, still
+let protons decay after the split, with a lifetime of order $\tau\sim M_X^4/(\alpha_G^2m_p^5)$ to within a factor of about ten: about
+$5\times10^{35}$ years for $M_X=10^{16}$\,GeV and $\alpha_G=1/40$ \chk{Q20}. Super-Kamiokande finds $\tau(p\to e^+\pi^0)>2.4\times10^{34}$
+years~\cite{superk}, which requires $M_X\gtrsim5\times10^{15}$\,GeV in this estimate and excludes the simplest unified theory of Georgi and
+Glashow~\cite{georgiglashow}; Hyper-Kamiokande will reach much further~\cite{hyperk}. (3) \emph{The couplings.} A real unification needs
+particles beyond the Standard Model that make the couplings meet. The bound on inflation, $V^{1/4}<1.4\times10^{16}$\,GeV
+(Section~\ref{sec:tensor}), allows a split at the unification scale within the start \chk{Q20}. \emph{Verdict: holds as a reading}; the
+ordering is required by the absence of monopoles; the unification itself is \emph{untested}, with proton decay as its live test.
+
+\paragraph{\vtag{} The timeline.} Read together, Hypotheses~6, 6$'$ and Section~\ref{sec:higgsplit} give one sequence:
+\begin{enumerate}[nosep]
+\item \emph{The start.} The strong force splits from the electroweak force; inflation dilutes the monopoles of the split; the decay of the
+oscillons reheats the universe to below the unification energy. Causality begins.
+\item \emph{About $10^{-11}$\,s, at 160\,GeV.} The symmetric electroweak state becomes unstable; the Higgs vacuum takes over granting rest
+mass to the W, the Z and the matter particles, and the information field, the photon and with it $\alpha\approx1/128$, splits out of the
+electroweak field.
+\item \emph{Afterwards.} $\alpha$ runs down to $1/137$ at low energies; nucleosynthesis, recombination and the late universe follow.
+\end{enumerate}
+\end{vnew}
+
+
 \subsection{The universe at its own Schwarzschild threshold}
 
 For a flat Friedmann universe with Hubble rate $H$, the mass inside the Hubble radius, $M_H=\tfrac43\pi(c/H)^3\rho_c$ with
@@ -952,7 +1043,7 @@ temperature of $10^{15}$\,GeV to today it grows by about $5\times10^{51}$, so an
 Planck's bound $|\Omega_k|\lesssim5\times10^{-3}$~\cite{planck18} \chk{Q13}. \emph{Verdict: holds as a reading}; it supplies the motive, not
 the number.
 
-\subsection{Primordial gravitational waves}
+\subsection{Primordial gravitational waves}\label{sec:tensor}
 
 During inflation the vacuum fluctuations of the metric are stretched into a nearly scale-invariant background of gravitational waves
 (Starobinsky~\cite{starobinsky79}). Their power spectrum is
@@ -1068,9 +1159,17 @@ tight \tagP. Optical clocks bound today's drift to $\dot\alpha/\alpha=(1.0\pm1.1
 spectra bound changes over ten billion years to about a part per million~\cite{espresso}; the microwave background bounds the value at
 recombination to a few parts per thousand~\cite{planckxxiv}. MICROSCOPE bounds the scalar's coupling to matter by~\eqref{eq:lambdabound}.
 GUID's forward statement is that $\alpha$ does not grow: its drift is zero or negative. A measured positive drift would refute it.
-\emph{Verdict: live.} GUID has also proposed that $\alpha$ was of order one at the beginning. Measured $\alpha$ \emph{grows} with energy, to
-about $1/128$ at the Z mass, and the Standard Model at one loop gives $1/\alpha\approx105$ at the Planck energy \chk{Q16}, so a value of
-one lies beyond known physics. \emph{Verdict: untested} before nucleosynthesis, \emph{refuted} after it.
+\emph{Verdict: live.} 
+
+\begin{vnew}
+\vtag{} GUID's earlier statement that $\alpha$ began at one is withdrawn as a physical claim. The forced dissipation of G0 is no act and
+precedes any measurement; GUID labels it one axiomatically, and the label has no value in calculations. Physically $\alpha$ does not exist
+before the electroweak split: there is no photon then, only the couplings of the electroweak field, and $\alpha$ is born at the split, near
+$1/128$ at the Z mass, from which it runs down to $1/137$ at low energies (Section~\ref{sec:higgsplit}; \chk{Q16}, \chk{Q20}). Something
+close to the present value came out as the fields separated, which is what happened. \emph{Verdict: holds.} (Version 5 had tested the
+physical form of the statement and found it beyond known physics: the Standard Model gives $1/\alpha\approx105$ even at the Planck energy
+\chk{Q16}.)
+\end{vnew}
 
 \section{Matter in the existence frame}\label{sec:matter}
 
@@ -1114,6 +1213,39 @@ $Gm_e^2/\hbar c=1.75\times10^{-45}$, and its share of the binding of hydrogen, $
 \chk{Q16}. \emph{Verdict: holds as a reading} of the Higgs vacuum as the grant; \emph{refuted} as an identity of the Higgs field with
 gravity.
 
+\begin{vnew}
+\subsubsection*{\vtag{} The Higgs vacuum as the existence that separated out}\label{sec:higgsplit}
+
+In version 5.1 GUID makes the Higgs field the leading candidate for the existence field, the one that separated out when the fields did.
+Physics says when \tagP. Above about 160\,GeV the Higgs field rests at zero, and no elementary particle has rest mass; lattice calculations
+find that, with the measured Higgs mass, the change is a smooth crossover at $T_c=159.5\pm1.5$\,GeV (D'Onofrio and
+Rummukainen~\cite{donofrio}), about $10^{-11}$\,s after the start \chk{Q20}. GUID's posit, in its form that holds, has four parts.
+
+\emph{Before the split, existence asserted itself through interaction with existence.} In the hot plasma before the crossover the particles
+carry only thermal masses, of order coupling times temperature, which come entirely from their interactions with everything around them.
+\emph{Verdict: holds as a reading.}
+
+\emph{That became unstable.} As the universe cooled, the curvature of the Higgs potential at zero field turned negative and the field
+rolled to its present value $v=246$\,GeV; with a 125\,GeV Higgs this is gradual, not a sudden phase transition. \emph{Verdict: holds}, as a
+crossover.
+
+\emph{The information field split out of the electroweak field.} At the split the photon emerges as the fixed mixture
+$A=\sin\theta_W\,W^3+\cos\theta_W\,B$ of the two electroweak gauge fields, and the electric charge is born as $e=g\sin\theta_W$, so that $\alpha$
+appears near $1/128$ \chk{Q20}. \emph{Verdict: holds}, exactly.
+
+\emph{The Higgs field became needed then.} At that moment the W and Z take their masses from the vacuum, $m_W=gv/2\approx80$\,GeV and
+$m_Z=m_W/\cos\theta_W\approx91$\,GeV within half a per cent of the measured values at tree level \chk{Q20}, while the photon stays massless:
+the Higgs vacuum grants existence to the bosons that need it at the very moment the information field emerges. \emph{Verdict: holds.} The
+Standard Model Higgs belongs to this split, the weak from the electromagnetic; a Higgs-type field for the earlier split of the strong force,
+if that split was a unification breaking (Hypothesis~6$'$), would be a second, hypothetical field.
+
+\emph{An open tension.} In Higgs inflation the same field also drives the start: with a coupling $\xi H^\dagger HR$ of the Higgs to
+curvature, $\xi$ of order $10^4$, it fits the observed spectrum (Bezrukov and Shaposhnikov~\cite{bezrukov}), which would make the
+existence field the field of the start itself. That coupling is a scalar multiplying the curvature, which Proposition~\ref{pr:gamma}
+excludes in this form; written in the Einstein frame the field is minimally coupled. Whether Axiom~1 forbids Higgs inflation or only one way
+of writing it is open.
+\end{vnew}
+
 \subsection{The VIBE coefficient}
 
 GUID names $\alpha$ the \emph{VIBE coefficient}, after the Variable Influence Balancing Equation~\eqref{eq:vibe}, and reads it as the strength
@@ -1131,7 +1263,9 @@ links clusters of clusters. Each does that job \tagP: the strong force binds qua
 moves nuclei towards the valley of stability, electromagnetism binds atoms and molecules. The weak and electromagnetic forces are one
 electroweak interaction~\cite{glashow,weinberg67,salam}. Whether all three meet at one energy is open: in the Standard Model the couplings
 come close near $10^{14}$ to $10^{16}$\,GeV and do not meet at one point~\cite{amaldi}. Gravity is not among the tiers in GUID: it is the
-frame the tiers act in. \emph{Verdict: holds as a reading}; unification \emph{untested}.
+frame the tiers act in. \emph{Verdict: holds as a reading}; unification \emph{untested}. \nw{\vtag{} In GUID's timeline the
+strong force splits from the electroweak force at the start (Hypothesis~6$'$), and the electroweak field splits into the weak and the
+electromagnetic force about $10^{-11}$\,s later, when the Higgs vacuum appears (Section~\ref{sec:higgsplit}).}
 
 \section{Hosting: the Existence Turing machine}\label{sec:host}
 
@@ -1209,6 +1343,10 @@ open~\cite{gortongreen} \\
 Spacetime noise given gravitational decoherence & on the trade-off line~\eqref{eq:saturate} & not required & neither yet measured \\
 Decoherence of mesoscopic superpositions (Bridge~B) & $\lambda=GM^2/\hbar R$: 72/s for the $10^{-14}$\,kg microsphere & none & untested at
 this scale \\
+\nw{\vtag{} Proton decay (a unification before the start)} & \nw{possible; $\tau\sim5\times10^{35}$\,yr for $M_X=10^{16}$\,GeV} & \nw{---} &
+\nw{$\tau>2.4\times10^{34}$\,yr~\cite{superk}; Hyper-Kamiokande} \\
+\nw{\vtag{} Relic magnetic monopoles} & \nw{none: the strong split lies within the start} & \nw{---} & \nw{flux below $1.4\times10^{-16}$ per
+cm$^2$\,s\,sr~\cite{macro}} \\
 \bottomrule
 \end{longtable}
 \end{center}
@@ -1261,7 +1399,20 @@ Radiated remnant (gravitational waves) as the dark matter & refuted (about $10^{
 The known neutrinos as the remnant & refuted (four bounds) & \chk{Q15} \\
 Baryon content fixed early & holds & Section~\ref{sec:cosmo} \\
 $\alpha$ does not grow & live & Section~\ref{sec:alpha} \\
-$\alpha$ began at one & beyond known physics; refuted after nucleosynthesis & \chk{Q16} \\
+\nw{\vtag{} $\alpha$ was never measurably one; it was born near $1/128$ at the electroweak split} & \nw{holds (replaces ``$\alpha$ began at
+one'')} & \nw{Section~\ref{sec:alpha}; \chk{Q20}} \\
+\nw{\vtag{} Gravity is a separate plane, shaped by the counts of existence and information} & \nw{holds (general relativity; it weighs
+all energy)} & \nw{Hyp.~1$'$; \chk{Q6}} \\
+\nw{\vtag{} The plane's link to G0 is the causal chain of whatever exists} & \nw{holds as a reading} & \nw{Hyp.~1$'$} \\
+\nw{\vtag{} The Higgs vacuum is the existence that separated out at the electroweak split} & \nw{holds as a reading} &
+\nw{Section~\ref{sec:higgsplit}; \chk{Q20}} \\
+\nw{\vtag{} Before the split, existence through interaction (thermal masses)} & \nw{holds as a reading} & \nw{Section~\ref{sec:higgsplit}} \\
+\nw{\vtag{} The symmetric electroweak state became unstable} & \nw{holds (a smooth crossover at 160\,GeV)} & \nw{\chk{Q20}} \\
+\nw{\vtag{} The information field split out of the electroweak field} & \nw{holds} & \nw{Section~\ref{sec:higgsplit}; \chk{Q20}} \\
+\nw{\vtag{} Causality begins with the strong split; a unification lies before time} & \nw{holds as a reading; the order is required by
+the absence of monopoles; unification untested} & \nw{Hyp.~6$'$; \chk{Q20}} \\
+\nw{\vtag{} Higgs inflation: the Higgs field drives the start} & \nw{open; in tension with Prop.~\ref{pr:gamma}} &
+\nw{Section~\ref{sec:higgsplit}} \\
 Spin ladder & holds as a reading & Section~\ref{sec:matter} \\
 The Higgs vacuum is G0's grant of rest mass & holds as a reading & Section~\ref{sec:matter} \\
 The Higgs field is the gravitational field & refuted & \chk{Q6} \\
@@ -1292,6 +1443,12 @@ it; if evaporation and microlensing close the asteroid-mass window, that route c
 superposed geometries after the start would contradict Lemma~\ref{lem:classical}.
 \item \emph{Space.} A literal tree is not our space; the routing reading avoids the objection but has not been shown to give a Lorentzian
 3+1 manifold in any limit.
+\item \nw{\vtag{} \emph{The plane.} Hypothesis~1$'$ keeps the classical prediction only because the plane is a DMP structure shaped by
+the counts. If the plane is read as lying outside DMP's structures, DMP says nothing about whether gravity is quantum.}
+\item \nw{\vtag{} \emph{Higgs inflation.} If the Higgs field drives the start, its coupling to curvature must be reconciled with
+Proposition~\ref{pr:gamma}; if Axiom~1 forbids it in every form, Higgs inflation and GUID exclude each other.}
+\item \nw{\vtag{} \emph{Unification.} A proton decay found would show that a unification existed, as Hypothesis~6$'$ allows; continued
+silence at ever longer lifetimes makes a unification less likely but cannot refute one that lies before time.}
 \item \emph{The checks.} \chk{Q6} uses the semi-empirical Coulomb term and a coarse composition of the Earth; \chk{Q13} a reheating
 temperature of $10^{15}$\,GeV; \chk{Q15} round values for a dwarf galaxy; \chk{Q16} one-loop running. Better inputs move numbers by tens of
 per cent, not the verdicts.
@@ -1313,7 +1470,11 @@ calculation, and its contained remnants are primordial black holes from the star
 principles, it gives either a value the rotation curves refute or the Di\'osi--Penrose decoherence rate, so its physics is that of the
 classical-quantum family; what it adds is a reason for that family, drawn from an axiom system for trust. It stands on the classical side
 of the one class of experiments that can decide it, gravitationally mediated entanglement and its relatives. If those experiments find entanglement, the
-geometry is quantum and the proposed theory is refuted, and DMP would run its successor as content. We claim that the construction exists
+geometry is quantum and the proposed theory is refuted, and DMP would run its successor as content.
+\nw{\vtag{} In version 5.1 gravity is the separate plane that existence and information shape, the Higgs vacuum is the existence that
+separated out when the information field split from the electroweak field, $\alpha$ was never measurably one, and causality begins with
+the split of the strong force from the electroweak force, an order the absence of magnetic monopoles requires.} We claim that the
+construction exists
 and reproduces. Whether it is right is for the experiments, and for the reader, to break.
 
 \section*{Acknowledgements}
@@ -1337,7 +1498,7 @@ at commit \texttt{4400cce}). Gravity: \url{https://github.com/StevenHrovat/gravi
 \appendix
 \section{The checks}\label{app:checks}
 
-\texttt{python3 docs/quantum-gravity/checks.py} (numpy, scipy, sympy) prints 112 checks, all of which pass. Q1: Planck units, the existence
+\texttt{python3 docs/quantum-gravity/checks.py} (numpy, scipy, sympy) prints \nw{123} checks, all of which pass. Q1: Planck units, the existence
 energy, Unruh, Hawking, Bekenstein--Hawking, Jacobson's entropy density, the size of the quantum term of~\eqref{eq:eft}. Q2: the lapse. Q3:
 no-cloning and broadcasting. Q4: classical against coherent mediation, 300 random couplings each. Q5: the Bose et al.\ geometry. Q6: the
 MICROSCOPE bound on the information scalar and the Higgs-share test. Q7: Brans--Dicke and Cassini. Q8: polarisations and Weyl components
@@ -1346,7 +1507,9 @@ real holes. Q12: the Hubble mass at its Schwarzschild threshold. Q13: flatness, 
 spectrum, the BICEP/Keck bound, Starobinsky's $r$. Q15: what every trapped remnant must satisfy, and why the known neutrinos do not. Q16: $\alpha$ as self-interaction strength,
 the electron's lengths, gravity against electromagnetism, the running of $\alpha$. Q17: the speed of gravity. Q18: remnants trapped in the field: the stochastic remnant's rotation curve and
 acceleration scale, the contained remnant's Hawking temperatures and evaporation, the radiated remnant's energy density. Q19: the two bridges that fix the free constant, Bridge A against the Tully--Fisher
-normalisation and Bridge B's windows and Di\'osi--Penrose rates.
+normalisation and Bridge B's windows and Di\'osi--Penrose rates. \nw{\vtag{} Q20: the radiation-era clock and the time of
+the electroweak crossover, the W and Z masses from the Higgs vacuum, $\alpha$ at its birth and today, and the proton lifetime for a
+unification at the start.}
 \texttt{python3 docs/qg-verdict/assembly.py} (numpy) prints the 18 checks of the holographic-code assembly; A1 to A5 in this paper are its
 checks [1] to [5], and its check [6] is the special case of \chk{Q4} with CNOT and CZ couplings.
 
@@ -1578,6 +1741,16 @@ Rev. D} 98, 083513 (2018).
 background'', \emph{Astrophys. J. Lett.} 951, L8 (2023).
 \bibitem{figurato} L. Figurato, M. Dirindin, J.~L. Gaona-Reyes, M. Carlesso, A. Bassi, S. Donadi, ``On the effectiveness of the collapse
 in the Di\'osi--Penrose model'', \emph{New J. Phys.} 26, 113004 (2024).
+\bibitem{preskill} J.~P. Preskill, ``Cosmological production of superheavy magnetic monopoles'', \emph{Phys. Rev. Lett.} 43, 1365 (1979).
+\bibitem{macro} M. Ambrosio et al. (MACRO Collaboration), ``Final results of magnetic monopole searches with the MACRO experiment'',
+\emph{Eur. Phys. J. C} 25, 511 (2002).
+\bibitem{superk} A. Takenaka et al. (Super-Kamiokande Collaboration), ``Search for proton decay via $p\to e^+\pi^0$ and $p\to\mu^+\pi^0$
+with an enlarged fiducial volume in Super-Kamiokande I-IV'', \emph{Phys. Rev. D} 102, 112011 (2020).
+\bibitem{hyperk} K. Abe et al. (Hyper-Kamiokande Proto-Collaboration), ``Hyper-Kamiokande design report'', arXiv:1805.04163 (2018).
+\bibitem{georgiglashow} H. Georgi, S.~L. Glashow, ``Unity of all elementary-particle forces'', \emph{Phys. Rev. Lett.} 32, 438 (1974).
+\bibitem{donofrio} M. D'Onofrio, K. Rummukainen, ``Standard model cross-over on the lattice'', \emph{Phys. Rev. D} 93, 025003 (2016).
+\bibitem{bezrukov} F.~L. Bezrukov, M. Shaposhnikov, ``The Standard Model Higgs boson as the inflaton'', \emph{Phys. Lett. B} 659, 703
+(2008).
 \bibitem{clowe} D. Clowe, M. Brada\v{c}, A.~H. Gonzalez, M. Markevitch, S.~W. Randall, C. Jones, D. Zaritsky, ``A direct empirical proof of
 the existence of dark matter'', \emph{Astrophys. J. Lett.} 648, L109 (2006).
 \end{thebibliography}
