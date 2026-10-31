@@ -1,0 +1,2763 @@
+{
+ "script": "docs/simulation/exotic_hadrons.py",
+ "seed": 20210901,
+ "n_mc": 20000,
+ "n_perturb": 200,
+ "checks": {
+  "passed": 73,
+  "total": 73,
+  "list": [
+   {
+    "label": "E1 meson colour factor <lambda1.lambda2> (singlet)",
+    "ok": true,
+    "got": -5.33333,
+    "want": -5.33333,
+    "atol": 1e-10
+   },
+   {
+    "label": "E2 meson spin singlet <sigma1.sigma2>",
+    "ok": true,
+    "got": -3.0,
+    "want": -3.0,
+    "atol": 1e-10
+   },
+   {
+    "label": "E3 meson spin triplet <sigma1.sigma2>",
+    "ok": true,
+    "got": 1.0,
+    "want": 1.0,
+    "atol": 1e-10
+   },
+   {
+    "label": "E4 baryon pair colour factor (3bar)",
+    "ok": true,
+    "got": -2.66667,
+    "want": -2.66667,
+    "atol": 1e-10
+   },
+   {
+    "label": "E5 baryon pair colour factor (outer quark)",
+    "ok": true,
+    "got": -2.66667,
+    "want": -2.66667,
+    "atol": 1e-10
+   },
+   {
+    "label": "E6 tetraquark diquark colour factor (3bar)",
+    "ok": true,
+    "got": -2.66667,
+    "want": -2.66667,
+    "atol": 1e-10
+   },
+   {
+    "label": "E7 tetraquark cross colour factor (-4/3)",
+    "ok": true,
+    "got": -1.33333,
+    "want": -1.33333,
+    "atol": 1e-10
+   },
+   {
+    "label": "E8 tetraquark colour sum = -32/3",
+    "ok": true,
+    "got": -10.6667,
+    "want": -10.6667,
+    "atol": 1e-10
+   },
+   {
+    "label": "E9 pentaquark colour sum = -40/3",
+    "ok": true,
+    "got": -13.3333,
+    "want": -13.3333,
+    "atol": 1e-10
+   },
+   {
+    "label": "E10 pentaquark diquark-diquark cross pair (-2/3)",
+    "ok": true,
+    "got": -0.666667,
+    "want": -0.666667,
+    "atol": 1e-10
+   },
+   {
+    "label": "E11 pentaquark antiquark pair (-4/3)",
+    "ok": true,
+    "got": -1.33333,
+    "want": -1.33333,
+    "atol": 1e-10
+   },
+   {
+    "label": "E12 MPR S-wave multiplicities, light diquark spin 0: J=1/2 (2), 3/2 (1)",
+    "ok": true
+   },
+   {
+    "label": "E13 MPR S-wave multiplicities, light diquark spin 1: J=1/2 (3), 3/2 (3), 5/2 (1)",
+    "ok": true
+   },
+   {
+    "label": "E14 Delta: sum of <sigma.sigma> = +3",
+    "ok": true,
+    "got": 3.0,
+    "want": 3.0,
+    "atol": 1e-10
+   },
+   {
+    "label": "E15 [cq][cbar qbar] J=1: C eigenvalues {-1,-1,+1} (one 1++, two 1+-)",
+    "ok": true
+   },
+   {
+    "label": "E16 [cc]_1[cbar cbar]_1: C = +, -, + for J = 0, 1, 2",
+    "ok": true
+   },
+   {
+    "label": "H KR2014 Tables I-II N",
+    "ok": true,
+    "got": 939.0,
+    "want": 939.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II Delta",
+    "ok": true,
+    "got": 1239.0,
+    "want": 1239.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II Lambda",
+    "ok": true,
+    "got": 1114.0,
+    "want": 1114.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II Sigma",
+    "ok": true,
+    "got": 1179.06,
+    "want": 1179.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II Sigma*",
+    "ok": true,
+    "got": 1381.47,
+    "want": 1381.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II Xi",
+    "ok": true,
+    "got": 1326.82,
+    "want": 1327.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II Xi*",
+    "ok": true,
+    "got": 1529.23,
+    "want": 1529.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II Omega",
+    "ok": true,
+    "got": 1682.29,
+    "want": 1682.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II pi",
+    "ok": true,
+    "got": 140.0,
+    "want": 140.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II rho",
+    "ok": true,
+    "got": 780.0,
+    "want": 780.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II K",
+    "ok": true,
+    "got": 484.925,
+    "want": 485.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II K*",
+    "ok": true,
+    "got": 895.692,
+    "want": 896.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables I-II phi",
+    "ok": true,
+    "got": 1031.91,
+    "want": 1032.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 eq.(1)-(2) D*-D = 8b/(m_q m_c)",
+    "ok": true,
+    "got": 119.281,
+    "want": 119.3,
+    "atol": 0.06
+   },
+   {
+    "label": "H KR2014 Sec.IV B*-B",
+    "ok": true,
+    "got": 39.6499,
+    "want": 39.7,
+    "atol": 0.06
+   },
+   {
+    "label": "H KR2014 Sec.IV Bs*-Bs = 8b/(m_b m_s)",
+    "ok": true,
+    "got": 25.4482,
+    "want": 25.5,
+    "atol": 0.06
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Sigma_c",
+    "ok": true,
+    "got": 2444.06,
+    "want": 2444.0,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Sigma_c*",
+    "ok": true,
+    "got": 2507.72,
+    "want": 2507.7,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Xi_c",
+    "ok": true,
+    "got": 2475.34,
+    "want": 2475.3,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Xi_c'",
+    "ok": true,
+    "got": 2565.5,
+    "want": 2565.4,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Xi_c*",
+    "ok": true,
+    "got": 2632.68,
+    "want": 2632.6,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Omega_c",
+    "ok": true,
+    "got": 2692.23,
+    "want": 2692.1,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Omega_c*",
+    "ok": true,
+    "got": 2762.93,
+    "want": 2762.8,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Sigma_b",
+    "ok": true,
+    "got": 5805.11,
+    "want": 5805.1,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Sigma_b*",
+    "ok": true,
+    "got": 5826.7,
+    "want": 5826.7,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Xi_b",
+    "ok": true,
+    "got": 5801.49,
+    "want": 5801.5,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Xi_b'",
+    "ok": true,
+    "got": 5921.25,
+    "want": 5921.3,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Xi_b*",
+    "ok": true,
+    "got": 5944.03,
+    "want": 5944.1,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Omega_b",
+    "ok": true,
+    "got": 6042.69,
+    "want": 6042.8,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables IV, VI Omega_b*",
+    "ok": true,
+    "got": 6066.65,
+    "want": 6066.7,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2014 Tables VII, IX Xi_cc",
+    "ok": true,
+    "got": 3626.71,
+    "want": 3627.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables VII, IX Xi_cc*",
+    "ok": true,
+    "got": 3690.37,
+    "want": 3690.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables VII, IX Xi_bb",
+    "ok": true,
+    "got": 10161.9,
+    "want": 10162.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Tables VII, IX Xi_bb*",
+    "ok": true,
+    "got": 10183.5,
+    "want": 10184.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2014 Sec.VII power p of |psi(0)|^2 ~ mu^p",
+    "ok": true,
+    "got": 1.45778,
+    "want": 1.46,
+    "atol": 0.005
+   },
+   {
+    "label": "H KR2014 Sec.VII Bc*-Bc",
+    "ok": true,
+    "got": 68.0236,
+    "want": 68.0,
+    "atol": 0.05
+   },
+   {
+    "label": "H KR2014 eq.(19) spin-averaged bc: M(Bc)+3/4*68.0",
+    "ok": true,
+    "got": 6325.5,
+    "want": 6325.5,
+    "atol": 1e-09
+   },
+   {
+    "label": "H KR2017 Table I T(bb ubar dbar) 1+",
+    "ok": true,
+    "got": 10389.3,
+    "want": 10389.4,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2017 Table II T(cc ubar dbar) 1+",
+    "ok": true,
+    "got": 3882.15,
+    "want": 3882.2,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2017 Table III T(bc ubar dbar) 0+",
+    "ok": true,
+    "got": 7133.75,
+    "want": 7133.7,
+    "atol": 0.15
+   },
+   {
+    "label": "H KR2017 T_bb - B B* threshold (10604)",
+    "ok": true,
+    "got": -214.662,
+    "want": -215.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2017 T_cc - D0 D*+ threshold (3875)",
+    "ok": true,
+    "got": 7.15,
+    "want": 7.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KR2017 T_bc - B0bar D0 threshold (7144.5)",
+    "ok": true,
+    "got": -10.75,
+    "want": -11.0,
+    "atol": 0.6
+   },
+   {
+    "label": "H KNR2017 p (binding power law)",
+    "ok": true,
+    "got": 0.711876,
+    "want": 0.712,
+    "atol": 0.0006
+   },
+   {
+    "label": "H KNR2017 B((cc)(cbar cbar))",
+    "ok": true,
+    "got": -388.33,
+    "want": -388.3,
+    "atol": 0.1
+   },
+   {
+    "label": "H KNR2017 Delta M_3",
+    "ok": true,
+    "got": 79.2596,
+    "want": 79.3,
+    "atol": 0.05
+   },
+   {
+    "label": "H KNR2017 eq.(8) M(cc cbar cbar, 0++)",
+    "ok": true,
+    "got": 6191.55,
+    "want": 6191.5,
+    "atol": 0.15
+   },
+   {
+    "label": "F1 fit converged (scheme P, status 2)",
+    "ok": true
+   },
+   {
+    "label": "F3 Jacobian full rank (scheme P)",
+    "ok": true,
+    "got": 18.0,
+    "want": 18.0,
+    "atol": 0
+   },
+   {
+    "label": "F5 gradient of RSS at the minimum (scheme P, max |J^T r|)",
+    "ok": true,
+    "got": 1.54489e-05,
+    "want": 0.0,
+    "atol": 0.158484
+   },
+   {
+    "label": "F2 fit converged (scheme J, status 2)",
+    "ok": true
+   },
+   {
+    "label": "F4 Jacobian full rank (scheme J)",
+    "ok": true,
+    "got": 15.0,
+    "want": 15.0,
+    "atol": 0
+   },
+   {
+    "label": "F6 gradient of RSS at the minimum (scheme J, max |J^T r|)",
+    "ok": true,
+    "got": 5.41684e-06,
+    "want": 0.0,
+    "atol": 0.183705
+   },
+   {
+    "label": "F7 fit from a start 5% away reaches the same RSS",
+    "ok": true,
+    "got": 1584.83,
+    "want": 1584.83,
+    "atol": 0.00158483
+   },
+   {
+    "label": "F8 leave-one-out residuals at least as large as in-sample (RMS)",
+    "ok": true
+   },
+   {
+    "label": "B1 analytic null p-values agree with 20000 Monte Carlo placements per state (4.5 sigma)",
+    "ok": true
+   },
+   {
+    "label": "B2 Fisher statistic equals -2 sum ln p (consistency of chi2 tail)",
+    "ok": true,
+    "got": 5.36341e-05,
+    "want": 5.36341e-05,
+    "atol": 1e-15
+   }
+  ]
+ },
+ "hosting_KR": {
+  "T_cc": 3882.15,
+  "T_bb": 10389.3,
+  "T_bc0": 7133.75,
+  "Xi_cc": 3626.71,
+  "KNR_cccc": 6191.55
+ },
+ "fit": {
+  "P": {
+   "params": {
+    "m^m_q": 309.581,
+    "m^m_s": 481.842,
+    "m^m_c": 1658.09,
+    "m^m_b": 5001.64,
+    "m^b_q": 363.975,
+    "m^b_s": 536.002,
+    "m^b_c": 1715.86,
+    "m^b_b": 5047.78,
+    "b/(310)^2": 79.3203,
+    "a/(363)^2": 51.1369,
+    "k_s": 1.78908,
+    "B1(c sbar)": -66.1185,
+    "B1(b sbar)": -80.3948,
+    "B1(c cbar)": -247.47,
+    "B1(b bbar)": -558.394,
+    "B1(b cbar)": -334.598,
+    "v(c cbar)": 28.2,
+    "v(b bbar)": 15.3937
+   },
+   "param_err": {
+    "m^m_q": 2.12232,
+    "m^m_s": 3.14984,
+    "m^m_c": 5.24213,
+    "m^m_b": 5.442,
+    "m^b_q": 1.42867,
+    "m^b_s": 1.81645,
+    "m^b_c": 4.44166,
+    "m^b_b": 4.46237,
+    "b/(310)^2": 1.52585,
+    "a/(363)^2": 1.0187,
+    "k_s": 0.124052,
+    "B1(c sbar)": 6.74356,
+    "B1(b sbar)": 7.01816,
+    "B1(c cbar)": 12.296,
+    "B1(b bbar)": 12.6386,
+    "B1(b cbar)": 12.3941,
+    "v(c cbar)": 2.87304,
+    "v(b bbar)": 2.87304
+   },
+   "sigma_model": 8.12617,
+   "dof": 24,
+   "n_data": 42,
+   "residuals": {
+    "pi": 3.95243,
+    "rho": 3.23245,
+    "omega": -4.42755,
+    "K": -11.1823,
+    "K*": -0.0902122,
+    "phi": 9.88677,
+    "D": 11.3165,
+    "D*": -11.1886,
+    "Ds": 3.04014,
+    "Ds*": -4.25196,
+    "B": 2.28163,
+    "B*": -3.6852,
+    "Bs": 2.36223,
+    "Bs*": -0.997673,
+    "eta_c": 0.0,
+    "J/psi": -4.54747e-13,
+    "eta_b": 1.81899e-12,
+    "Upsilon": 0.0,
+    "Bc": 9.09495e-13,
+    "N": 0.334689,
+    "Delta": 12.5149,
+    "Lambda": -4.63823,
+    "Sigma": -16.3409,
+    "Sigma*": -1.1067,
+    "Xi": 3.27673,
+    "Xi*": -1.48908,
+    "Omega": 6.36775,
+    "Lambda_c": 4.76474,
+    "Sigma_c": -1.87901,
+    "Sigma_c*": -1.84318,
+    "Xi_c": 10.0906,
+    "Xi_c'": -9.17244,
+    "Xi_c*": -4.68119,
+    "Omega_c": -2.42667,
+    "Omega_c*": 5.52001,
+    "Lambda_b": 3.64303,
+    "Sigma_b": -2.33369,
+    "Sigma_b*": 0.101601,
+    "Xi_b": 11.2657,
+    "Xi_b'": -9.20754,
+    "Xi_b*": -2.07493,
+    "Omega_b": -1.35619
+   },
+   "max_abs_residual": 16.3409,
+   "rms_mesons": 5.49835,
+   "rms_baryons": 6.62809,
+   "v_bc": 16.8749,
+   "p_interp": 1.45172
+  },
+  "J": {
+   "params": {
+    "m_q": 310.263,
+    "m_s": 482.715,
+    "m_c": 1660.48,
+    "m_b": 4996.28,
+    "S": 160.559,
+    "b/(310)^2": 79.6609,
+    "a/(363)^2": 38.003,
+    "k_s": 1.87993,
+    "B1(c sbar)": -65.7027,
+    "B1(b sbar)": -79.5066,
+    "B1(c cbar)": -252.26,
+    "B1(b bbar)": -547.685,
+    "B1(b cbar)": -331.583,
+    "v(c cbar)": 28.2,
+    "v(b bbar)": 15.3938
+   },
+   "sigma_model": 8.24854,
+   "dof": 27
+  },
+  "loo": {
+   "rms": 11.1743,
+   "n": 37,
+   "residuals": {
+    "pi": 25.0702,
+    "rho": 4.92622,
+    "omega": -6.75248,
+    "K": -24.06,
+    "K*": -0.118899,
+    "phi": 19.1396,
+    "D": 20.1111,
+    "D*": -18.3042,
+    "Ds": 13.5472,
+    "Ds*": -12.6037,
+    "B": 3.88834,
+    "B*": -6.23472,
+    "Bs": 4.2476,
+    "Bs*": -1.80317,
+    "N": 0.546323,
+    "Delta": 20.8663,
+    "Lambda": -6.08343,
+    "Sigma": -19.1869,
+    "Sigma*": -1.42209,
+    "Xi": 4.52155,
+    "Xi*": -1.88147,
+    "Omega": 10.3471,
+    "Lambda_c": 6.93194,
+    "Sigma_c": -2.48157,
+    "Sigma_c*": -2.53608,
+    "Xi_c": 12.2951,
+    "Xi_c'": -10.9394,
+    "Xi_c*": -5.65275,
+    "Omega_c": -4.1063,
+    "Omega_c*": 9.46731,
+    "Lambda_b": 5.35671,
+    "Sigma_b": -3.08829,
+    "Sigma_b*": 0.137017,
+    "Xi_b": 14.2958,
+    "Xi_b'": -10.9956,
+    "Xi_b*": -2.51063,
+    "Omega_b": -2.35232
+   }
+  },
+  "Xi_cc_heldout": {
+   "model": 3642.91,
+   "err": 12.2692,
+   "data": 3621.55,
+   "data_err": 0.378021,
+   "pull": 1.74031
+  },
+  "inputs": [
+   {
+    "name": "pi",
+    "mass": 138.0,
+    "source": "KR2014 Table II"
+   },
+   {
+    "name": "rho",
+    "mass": 775.0,
+    "source": "KR2014 Table II"
+   },
+   {
+    "name": "omega",
+    "mass": 782.66,
+    "source": "PDG2024"
+   },
+   {
+    "name": "K",
+    "mass": 496.0,
+    "source": "KR2014 Table II"
+   },
+   {
+    "name": "K*",
+    "mass": 893.715,
+    "source": "PDG2024 (K*+ hadroproduced, K*0)"
+   },
+   {
+    "name": "phi",
+    "mass": 1019.46,
+    "source": "PDG2024"
+   },
+   {
+    "name": "D",
+    "mass": 1867.25,
+    "source": "PDG2024"
+   },
+   {
+    "name": "D*",
+    "mass": 2008.55,
+    "source": "PDG2024"
+   },
+   {
+    "name": "Ds",
+    "mass": 1968.35,
+    "source": "PDG2024"
+   },
+   {
+    "name": "Ds*",
+    "mass": 2112.2,
+    "source": "PDG2024"
+   },
+   {
+    "name": "B",
+    "mass": 5279.4,
+    "source": "KR2014 eq.(7)"
+   },
+   {
+    "name": "B*",
+    "mass": 5324.75,
+    "source": "PDG2024"
+   },
+   {
+    "name": "Bs",
+    "mass": 5366.77,
+    "source": "KR2014 eq.(10)"
+   },
+   {
+    "name": "Bs*",
+    "mass": 5415.4,
+    "source": "KR2014 eq.(10)"
+   },
+   {
+    "name": "eta_c",
+    "mass": 2984.1,
+    "source": "PDG2024"
+   },
+   {
+    "name": "J/psi",
+    "mass": 3096.9,
+    "source": "PDG2024"
+   },
+   {
+    "name": "eta_b",
+    "mass": 9398.7,
+    "source": "PDG2024"
+   },
+   {
+    "name": "Upsilon",
+    "mass": 9460.28,
+    "source": "KR2014 eqs.(16),(18)"
+   },
+   {
+    "name": "Bc",
+    "mass": 6274.5,
+    "source": "KR2014 eq.(19)"
+   },
+   {
+    "name": "N",
+    "mass": 939.0,
+    "source": "KR2014 Table I"
+   },
+   {
+    "name": "Delta",
+    "mass": 1232.0,
+    "source": "KR2014 Table I"
+   },
+   {
+    "name": "Lambda",
+    "mass": 1116.0,
+    "source": "KR2014 Table I"
+   },
+   {
+    "name": "Sigma",
+    "mass": 1193.0,
+    "source": "KR2014 Table I"
+   },
+   {
+    "name": "Sigma*",
+    "mass": 1385.0,
+    "source": "KR2014 Table I"
+   },
+   {
+    "name": "Xi",
+    "mass": 1318.0,
+    "source": "KR2014 Table I"
+   },
+   {
+    "name": "Xi*",
+    "mass": 1530.0,
+    "source": "KR2014 Table I"
+   },
+   {
+    "name": "Omega",
+    "mass": 1672.0,
+    "source": "KR2014 Table I"
+   },
+   {
+    "name": "Lambda_c",
+    "mass": 2286.46,
+    "source": "PDG2024"
+   },
+   {
+    "name": "Sigma_c",
+    "mass": 2453.4,
+    "source": "KR2014 Table IV"
+   },
+   {
+    "name": "Sigma_c*",
+    "mass": 2518.1,
+    "source": "KR2014 Table IV"
+   },
+   {
+    "name": "Xi_c",
+    "mass": 2469.07,
+    "source": "PDG2024"
+   },
+   {
+    "name": "Xi_c'",
+    "mass": 2578.7,
+    "source": "PDG2024 (Xi_c'0)"
+   },
+   {
+    "name": "Xi_c*",
+    "mass": 2645.9,
+    "source": "KR2014 Table IV"
+   },
+   {
+    "name": "Omega_c",
+    "mass": 2695.2,
+    "source": "PDG2024"
+   },
+   {
+    "name": "Omega_c*",
+    "mass": 2765.9,
+    "source": "PDG2024"
+   },
+   {
+    "name": "Lambda_b",
+    "mass": 5619.5,
+    "source": "KR2014 Table V"
+   },
+   {
+    "name": "Sigma_b",
+    "mass": 5814.26,
+    "source": "KR2014 Table V"
+   },
+   {
+    "name": "Sigma_b*",
+    "mass": 5833.83,
+    "source": "KR2014 Table V"
+   },
+   {
+    "name": "Xi_b",
+    "mass": 5792.68,
+    "source": "KR2014 Table V"
+   },
+   {
+    "name": "Xi_b'",
+    "mass": 5935.06,
+    "source": "LHCb_Xibprime + KR2014 Table V (Xi_b0) + m(pi-)"
+   },
+   {
+    "name": "Xi_b*",
+    "mass": 5952.3,
+    "source": "PDG2024 (Xi_b(5945)0)"
+   },
+   {
+    "name": "Omega_b",
+    "mass": 6046.38,
+    "source": "KR2014 Table V"
+   }
+  ]
+ },
+ "A": {
+  "items": [
+   {
+    "label": "T_cc+ (cc ubar dbar)",
+    "family": "T_cc",
+    "kind": "scored",
+    "note": "",
+    "JPC": "1+",
+    "P": {
+     "M": 3897.45,
+     "err": 12.2189,
+     "err_par": 9.12505,
+     "config": "T_cc",
+     "level": 0,
+     "binding": 22.3545,
+     "pull": 1.85893
+    },
+    "P-in": {
+     "M": 3897.45,
+     "err": 12.2189,
+     "err_par": 9.12505,
+     "config": "T_cc",
+     "level": 0,
+     "binding": 22.3545,
+     "pull": 1.85893
+    },
+    "J": {
+     "M": 3994.51,
+     "err": 11.1354,
+     "err_par": 7.48056,
+     "config": "T_cc",
+     "level": 0,
+     "binding": 119.414,
+     "pull": 10.7559
+    },
+    "threshold": {
+     "pair": "D*+ D0",
+     "M": 3875.1,
+     "verified": true
+    },
+    "data": {
+     "M": 3874.74,
+     "err_lo": 0.08,
+     "err_hi": 0.08,
+     "source": "LHCb_Tcc_NC"
+    },
+    "verdict": "holds"
+   },
+   {
+    "label": "T_bb- (bb ubar dbar)",
+    "family": "T_bb",
+    "kind": "live",
+    "note": "",
+    "JPC": "1+",
+    "P": {
+     "M": 10399.4,
+     "err": 12.3068,
+     "err_par": 9.24244,
+     "config": "T_bb",
+     "level": 0,
+     "binding": -204.664
+    },
+    "P-in": {
+     "M": 10399.4,
+     "err": 12.3068,
+     "err_par": 9.24244,
+     "config": "T_bb",
+     "level": 0,
+     "binding": -204.664
+    },
+    "J": {
+     "M": 10512.0,
+     "err": 11.157,
+     "err_par": 7.51264,
+     "config": "T_bb",
+     "level": 0,
+     "binding": -92.0859
+    },
+    "threshold": {
+     "pair": "B+~ B*0~",
+     "M": 10604.1,
+     "verified": false
+    },
+    "verdict": "live",
+    "lattice": [
+     {
+      "source": "Francis2017",
+      "binding": -189.0,
+      "err_lo": 10.0,
+      "err_hi": 10.0,
+      "pull_P": -0.987802
+     },
+     {
+      "source": "Leskovec2019",
+      "binding": -128.0,
+      "err_lo": 26.0,
+      "err_hi": 26.0,
+      "pull_P": -2.66513
+     },
+     {
+      "source": "Aoki2023",
+      "binding": -83.0,
+      "err_lo": 22.3607,
+      "err_hi": 22.3607,
+      "pull_P": -4.76671
+     },
+     {
+      "source": "Hudspith2023",
+      "binding": -112.0,
+      "err_lo": 13.2,
+      "err_hi": 13.2,
+      "pull_P": -5.13457
+     },
+     {
+      "source": "Tripathy2025",
+      "binding": -116.0,
+      "err_lo": 36.0,
+      "err_hi": 30.0,
+      "pull_P": -2.33047
+     }
+    ]
+   },
+   {
+    "label": "T_bc (bc ubar dbar), 0+",
+    "family": "T_bc0",
+    "kind": "live",
+    "note": "",
+    "JPC": "0+",
+    "P": {
+     "M": 7146.4,
+     "err": 11.0895,
+     "err_par": 7.54605,
+     "config": "T_bc(0+)",
+     "level": 0,
+     "binding": 1.89651
+    },
+    "P-in": {
+     "M": 7146.4,
+     "err": 11.0895,
+     "err_par": 7.54605,
+     "config": "T_bc(0+)",
+     "level": 0,
+     "binding": 1.89651
+    },
+    "J": {
+     "M": 7251.22,
+     "err": 10.8734,
+     "err_par": 7.08463,
+     "config": "T_bc(0+)",
+     "level": 0,
+     "binding": 106.715
+    },
+    "threshold": {
+     "pair": "D0 B0~",
+     "M": 7144.5,
+     "verified": false
+    },
+    "verdict": "live",
+    "lattice": [],
+    "lattice_note": "Alexandrou2024: shallow bound or virtual states a few MeV or less below the B(*) Dbar thresholds (no number in the abstract)"
+   },
+   {
+    "label": "T_bc (bc ubar dbar), 1+",
+    "family": "T_bc1",
+    "kind": "live",
+    "note": "",
+    "JPC": "1+",
+    "P": {
+     "M": 7180.15,
+     "err": 11.5316,
+     "err_par": 8.18189,
+     "config": "T_bc(1+)",
+     "level": 0,
+     "binding": -9.44364
+    },
+    "P-in": {
+     "M": 7180.15,
+     "err": 11.5316,
+     "err_par": 8.18189,
+     "config": "T_bc(1+)",
+     "level": 0,
+     "binding": -9.44364
+    },
+    "J": {
+     "M": 7285.0,
+     "err": 11.343,
+     "err_par": 7.78623,
+     "config": "T_bc(1+)",
+     "level": 0,
+     "binding": 95.4121
+    },
+    "threshold": {
+     "pair": "D0 B*0~",
+     "M": 7189.59,
+     "verified": true
+    },
+    "verdict": "live",
+    "lattice": [
+     {
+      "source": "Francis2019",
+      "binding": -38.0,
+      "err_lo": 23.0,
+      "err_hi": 23.0,
+      "pull_P": 1.10989
+     },
+     {
+      "source": "Padmanath2024",
+      "binding": -43.0,
+      "err_lo": 25.0,
+      "err_hi": 15.2315,
+      "pull_P": 1.75647
+     }
+    ]
+   },
+   {
+    "label": "X0(2900) (ud cbar sbar)",
+    "family": "X0",
+    "kind": "scored",
+    "note": "",
+    "JPC": "0+",
+    "P": {
+     "M": 2754.84,
+     "err": 9.50985,
+     "err_par": 4.93989,
+     "config": "[ud]0[cbar sbar]0",
+     "level": 0,
+     "binding": 392.393,
+     "pull": -9.28114
+    },
+    "P-in": {
+     "M": 2754.84,
+     "err": 9.50985,
+     "err_par": 4.93989,
+     "config": "[ud]0[cbar sbar]0",
+     "level": 0,
+     "binding": 392.393,
+     "pull": -9.28114
+    },
+    "J": {
+     "M": 2860.69,
+     "err": 10.0959,
+     "err_par": 5.82146,
+     "config": "[ud]0[cbar sbar]0",
+     "level": 0,
+     "binding": 498.242,
+     "pull": -0.426368
+    },
+    "threshold": {
+     "pair": "K0 D0~",
+     "M": 2362.45,
+     "verified": false
+    },
+    "data": {
+     "M": 2866.0,
+     "err_lo": 7.28011,
+     "err_hi": 7.28011,
+     "source": "LHCb_X2900"
+    },
+    "verdict": "refuted"
+   },
+   {
+    "label": "T_csbar0(2900) (c sbar u dbar)",
+    "family": "Tcsbar",
+    "kind": "scored",
+    "note": "",
+    "JPC": "0+",
+    "P": {
+     "M": 2808.53,
+     "err": 8.91284,
+     "err_par": 3.66115,
+     "config": "[cq][sbar qbar] J=0",
+     "level": 0,
+     "binding": 700.606,
+     "pull": -4.05952
+    },
+    "P-in": {
+     "M": 2825.06,
+     "err": 9.27614,
+     "err_par": 4.4735,
+     "config": "[cq][sbar qbar] J=0",
+     "level": 0,
+     "binding": 717.135,
+     "pull": -3.36648
+    },
+    "J": {
+     "M": 2915.86,
+     "err": 9.68344,
+     "err_par": 5.07253,
+     "config": "[cq][sbar qbar] J=0",
+     "level": 0,
+     "binding": 807.942,
+     "pull": 0.317098
+    },
+    "threshold": {
+     "pair": "pi+ Ds+",
+     "M": 2107.92,
+     "verified": false
+    },
+    "data": {
+     "M": 2908.0,
+     "err_lo": 22.8254,
+     "err_hi": 22.8254,
+     "source": "LHCb_Tcsbar"
+    },
+    "verdict": "refuted"
+   },
+   {
+    "label": "cc cbar cbar 2++ vs X(6900)",
+    "family": "cccc",
+    "kind": "scored",
+    "note": "",
+    "JPC": "2++",
+    "P": {
+     "M": 6424.92,
+     "err": 28.7169,
+     "err_par": 27.5432,
+     "config": "[cc]1[cbar cbar]1 J=2",
+     "level": 0,
+     "binding": 231.119,
+     "pull": -15.2222
+    },
+    "P-in": {
+     "M": 6672.39,
+     "err": 21.6447,
+     "err_par": 20.0613,
+     "config": "[cc]1[cbar cbar]1 J=2",
+     "level": 0,
+     "binding": 478.589,
+     "pull": -9.20559
+    },
+    "J": {
+     "M": 6514.92,
+     "err": 20.0226,
+     "err_par": 18.2446,
+     "config": "[cc]1[cbar cbar]1 J=2",
+     "level": 0,
+     "binding": 321.117,
+     "pull": -16.3258
+    },
+    "threshold": {
+     "pair": "J/psi J/psi",
+     "M": 6193.8,
+     "verified": true
+    },
+    "data": {
+     "M": 6905.0,
+     "err_lo": 13.0384,
+     "err_hi": 13.0384,
+     "source": "LHCb_X6900"
+    },
+    "verdict": "refuted"
+   },
+   {
+    "label": "cc cbar cbar 0++ vs X(6900)",
+    "family": "cccc",
+    "kind": "info",
+    "note": "",
+    "JPC": "0++",
+    "P": {
+     "M": 6340.32,
+     "err": 26.4735,
+     "err_par": 25.1955,
+     "config": "[cc]1[cbar cbar]1 J=0",
+     "level": 0,
+     "binding": 372.119,
+     "pull": -19.1352
+    },
+    "P-in": {
+     "M": 6587.79,
+     "err": 19.8545,
+     "err_par": 18.1154,
+     "config": "[cc]1[cbar cbar]1 J=0",
+     "level": 0,
+     "binding": 619.589,
+     "pull": -13.3546
+    },
+    "J": {
+     "M": 6430.32,
+     "err": 16.5328,
+     "err_par": 14.3281,
+     "config": "[cc]1[cbar cbar]1 J=0",
+     "level": 0,
+     "binding": 462.117,
+     "pull": -22.5444
+    },
+    "threshold": {
+     "pair": "eta_c eta_c",
+     "M": 5968.2,
+     "verified": true
+    },
+    "data": {
+     "M": 6905.0,
+     "err_lo": 13.0384,
+     "err_hi": 13.0384,
+     "source": "LHCb_X6900"
+    },
+    "verdict": "info"
+   },
+   {
+    "label": "cc cbar cbar 1+-",
+    "family": "cccc",
+    "kind": "live",
+    "note": "",
+    "JPC": "1+-",
+    "P": {
+     "M": 6368.52,
+     "err": 26.9371,
+     "err_par": 25.6822,
+     "config": "[cc]1[cbar cbar]1 J=1",
+     "level": 0,
+     "binding": 287.519
+    },
+    "P-in": {
+     "M": 6615.99,
+     "err": 20.0613,
+     "err_par": 18.3418,
+     "config": "[cc]1[cbar cbar]1 J=1",
+     "level": 0,
+     "binding": 534.989
+    },
+    "J": {
+     "M": 6458.52,
+     "err": 17.2872,
+     "err_par": 15.1924,
+     "config": "[cc]1[cbar cbar]1 J=1",
+     "level": 0,
+     "binding": 377.517
+    },
+    "threshold": {
+     "pair": "eta_c J/psi",
+     "M": 6081.0,
+     "verified": true
+    },
+    "verdict": "live"
+   },
+   {
+    "label": "P_c(4312) (lowest uud c cbar)",
+    "family": "Pc",
+    "kind": "scored",
+    "note": "",
+    "JPC": "",
+    "P": {
+     "M": 4276.8,
+     "err": 11.4229,
+     "err_par": 8.02788,
+     "config": "([cq][qq]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 354.427,
+     "pull": -3.06287
+    },
+    "P-in": {
+     "M": 4338.67,
+     "err": 11.5153,
+     "err_par": 8.15896,
+     "config": "([cq][qq]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 416.295,
+     "pull": 1.99881
+    },
+    "J": {
+     "M": 4485.1,
+     "err": 12.4559,
+     "err_par": 9.33335,
+     "config": "([cq][qq]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 562.725,
+     "pull": 12.1898
+    },
+    "threshold": {
+     "pair": "eta_c p",
+     "M": 3922.37,
+     "verified": false
+    },
+    "data": {
+     "M": 4311.9,
+     "err_lo": 0.921954,
+     "err_hi": 6.83593,
+     "source": "LHCb_Pc2019"
+    },
+    "verdict": "refuted"
+   },
+   {
+    "label": "P_c(4440) (nearest level)",
+    "family": "Pc",
+    "kind": "scored",
+    "note": "assignment by proximity",
+    "JPC": "",
+    "P": {
+     "M": 4428.4,
+     "err": 11.1028,
+     "err_par": 7.56555,
+     "config": "([cq][qq]_1)cbar J=1/2",
+     "level": 0,
+     "binding": 506.029,
+     "pull": -0.981232
+    },
+    "P-in": {
+     "M": 4396.33,
+     "err": 11.3182,
+     "err_par": 7.87822,
+     "config": "([cq][qq]_0)cbar J=3/2",
+     "level": 0,
+     "binding": 473.957,
+     "pull": -3.56792
+    },
+    "J": {
+     "M": 4485.1,
+     "err": 12.4559,
+     "err_par": 9.33335,
+     "config": "([cq][qq]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 562.725,
+     "pull": 3.3995
+    },
+    "threshold": {
+     "pair": "eta_c p",
+     "M": 3922.37,
+     "verified": false
+    },
+    "data": {
+     "M": 4440.3,
+     "err_lo": 4.87647,
+     "err_hi": 4.30116,
+     "source": "LHCb_Pc2019"
+    },
+    "verdict": "holds",
+    "p_chance": 0.567795,
+    "n_levels": 10
+   },
+   {
+    "label": "P_c(4457) (nearest level)",
+    "family": "Pc",
+    "kind": "scored",
+    "note": "assignment by proximity",
+    "JPC": "",
+    "P": {
+     "M": 4461.8,
+     "err": 11.1054,
+     "err_par": 7.56937,
+     "config": "([cq][qq]_1)cbar J=1/2",
+     "level": 1,
+     "binding": 539.425,
+     "pull": 0.379424
+    },
+    "P-in": {
+     "M": 4490.27,
+     "err": 11.3092,
+     "err_par": 7.86534,
+     "config": "([cq][qq]_1)cbar J=1/2",
+     "level": 0,
+     "binding": 567.897,
+     "pull": 2.73726
+    },
+    "J": {
+     "M": 4485.1,
+     "err": 12.4559,
+     "err_par": 9.33335,
+     "config": "([cq][qq]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 562.725,
+     "pull": 2.11756
+    },
+    "threshold": {
+     "pair": "eta_c p",
+     "M": 3922.37,
+     "verified": false
+    },
+    "data": {
+     "M": 4457.3,
+     "err_lo": 1.80278,
+     "err_hi": 4.14367,
+     "source": "LHCb_Pc2019"
+    },
+    "verdict": "holds",
+    "p_chance": 0.239862,
+    "n_levels": 10
+   },
+   {
+    "label": "P_psis(4338) (lowest I=0, J=1/2)",
+    "family": "Ppsis_A",
+    "kind": "scored",
+    "note": "",
+    "JPC": "1/2-",
+    "P": {
+     "M": 4392.01,
+     "err": 11.1461,
+     "err_par": 7.62891,
+     "config": "([cs][ud]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 292.222,
+     "pull": 4.81471
+    },
+    "P-in": {
+     "M": 4470.4,
+     "err": 10.934,
+     "err_par": 7.31559,
+     "config": "([cs][ud]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 370.619,
+     "pull": 12.0582
+    },
+    "J": {
+     "M": 4601.53,
+     "err": 12.2246,
+     "err_par": 9.02236,
+     "config": "([cs][ud]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 501.745,
+     "pull": 21.4941
+    },
+    "threshold": {
+     "pair": "eta_c Lambda",
+     "M": 4099.78,
+     "verified": false
+    },
+    "data": {
+     "M": 4338.2,
+     "err_lo": 0.806226,
+     "err_hi": 0.806226,
+     "source": "LHCb_Ppsis4338"
+    },
+    "verdict": "refuted"
+   },
+   {
+    "label": "P_cs(4459) (nearest level; evidence only)",
+    "family": "Ppsis_A",
+    "kind": "scored",
+    "note": "assignment by proximity; 'evidence'",
+    "JPC": "",
+    "P": {
+     "M": 4460.33,
+     "err": 10.8664,
+     "err_par": 7.21415,
+     "config": "([cs][ud]_0)cbar J=3/2",
+     "level": 0,
+     "binding": 360.545,
+     "pull": 0.12535
+    },
+    "P-in": {
+     "M": 4470.4,
+     "err": 10.934,
+     "err_par": 7.31559,
+     "config": "([cs][ud]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 370.619,
+     "pull": 0.947173
+    },
+    "J": {
+     "M": 4601.53,
+     "err": 12.2246,
+     "err_par": 9.02236,
+     "config": "([cs][ud]_0)cbar J=1/2",
+     "level": 0,
+     "binding": 501.745,
+     "pull": 10.6401
+    },
+    "threshold": {
+     "pair": "eta_c Lambda",
+     "M": 4099.78,
+     "verified": false
+    },
+    "data": {
+     "M": 4458.8,
+     "err_lo": 3.10161,
+     "err_hi": 5.52268,
+     "source": "LHCb_Pcs4459"
+    },
+    "verdict": "holds",
+    "p_chance": 0.0814892,
+    "n_levels": 13
+   },
+   {
+    "label": "P_cc ([cc][ud] qbar), lowest",
+    "family": "Pcc",
+    "kind": "live",
+    "note": "",
+    "JPC": "1/2-",
+    "P": {
+     "M": 4231.73,
+     "err": 12.2141,
+     "err_par": 9.11867,
+     "config": "([cc]1[ud]_0)qbar J=1/2",
+     "level": 0,
+     "binding": 470.609
+    },
+    "P-in": {
+     "M": 4231.73,
+     "err": 12.2141,
+     "err_par": 9.11867,
+     "config": "([cc]1[ud]_0)qbar J=1/2",
+     "level": 0,
+     "binding": 470.609
+    },
+    "J": {
+     "M": 4435.62,
+     "err": 12.7569,
+     "err_par": 9.73142,
+     "config": "([cc]1[ud]_0)qbar J=1/2",
+     "level": 0,
+     "binding": 674.496
+    },
+    "threshold": {
+     "pair": "pi+~ Xi_cc++",
+     "M": 3761.12,
+     "verified": false
+    },
+    "verdict": "live"
+   },
+   {
+    "label": "compact X(3872): [cq][cbar qbar] 1++",
+    "family": "hidden_c",
+    "kind": "info",
+    "note": "",
+    "JPC": "1++",
+    "P": {
+     "M": 4108.2,
+     "err": 11.2477,
+     "err_par": 7.77667,
+     "config": "[cq][cbar qbar] J=1",
+     "level": 1,
+     "binding": 236.511,
+     "pull": 21.0263
+    },
+    "P-in": {
+     "M": 4170.07,
+     "err": 11.4003,
+     "err_par": 7.99571,
+     "config": "[cq][cbar qbar] J=1",
+     "level": 1,
+     "binding": 298.379,
+     "pull": 26.1716
+    },
+    "J": {
+     "M": 4212.05,
+     "err": 10.8943,
+     "err_par": 7.11671,
+     "config": "[cq][cbar qbar] J=1",
+     "level": 1,
+     "binding": 340.362,
+     "pull": 31.2406
+    },
+    "threshold": {
+     "pair": "D0 D*0~",
+     "M": 3871.69,
+     "verified": true
+    },
+    "data": {
+     "M": 3871.7,
+     "err_lo": 0.095462,
+     "err_hi": 0.095462,
+     "source": "LHCb_X3872_ls"
+    },
+    "verdict": "info"
+   },
+   {
+    "label": "compact Z_c(3900): [cq][cbar qbar] 1+-",
+    "family": "hidden_c",
+    "kind": "info",
+    "note": "",
+    "JPC": "1+-",
+    "P": {
+     "M": 3985.21,
+     "err": 11.297,
+     "err_par": 7.84771,
+     "config": "[cq][cbar qbar] J=1",
+     "level": 0,
+     "binding": 748.744,
+     "pull": 6.72013
+    },
+    "P-in": {
+     "M": 4047.08,
+     "err": 11.4058,
+     "err_par": 8.00367,
+     "config": "[cq][cbar qbar] J=1",
+     "level": 0,
+     "binding": 810.612,
+     "pull": 11.4568
+    },
+    "J": {
+     "M": 4087.14,
+     "err": 11.0096,
+     "err_par": 7.29197,
+     "config": "[cq][cbar qbar] J=1",
+     "level": 0,
+     "binding": 850.67,
+     "pull": 14.959
+    },
+    "threshold": {
+     "pair": "pi+ J/psi",
+     "M": 3236.47,
+     "verified": false
+    },
+    "data": {
+     "M": 3899.0,
+     "err_lo": 6.0803,
+     "err_hi": 6.0803,
+     "source": "BESIII_Zc3900"
+    },
+    "verdict": "info"
+   },
+   {
+    "label": "T_cc partner I=1, J=0",
+    "family": "T_cc(I=1)",
+    "kind": "live",
+    "note": "",
+    "JPC": "0+",
+    "P": {
+     "M": 4041.51,
+     "err": 12.1199,
+     "err_par": 8.99206,
+     "config": "T_cc I=1 J=0",
+     "level": 0,
+     "binding": 311.828
+    },
+    "P-in": {
+     "M": 4041.51,
+     "err": 12.1199,
+     "err_par": 8.99206,
+     "config": "T_cc I=1 J=0",
+     "level": 0,
+     "binding": 311.828
+    },
+    "J": {
+     "M": 4143.16,
+     "err": 11.2197,
+     "err_par": 7.60546,
+     "config": "T_cc I=1 J=0",
+     "level": 0,
+     "binding": 413.476
+    },
+    "threshold": {
+     "pair": "D0 D0",
+     "M": 3729.68,
+     "verified": true
+    },
+    "verdict": "live"
+   },
+   {
+    "label": "T_bb partner I=1, J=0",
+    "family": "T_bb(I=1)",
+    "kind": "live",
+    "note": "",
+    "JPC": "0+",
+    "P": {
+     "M": 10583.2,
+     "err": 12.167,
+     "err_par": 9.0554,
+     "config": "T_bb I=1 J=0",
+     "level": 0,
+     "binding": 24.5079
+    },
+    "P-in": {
+     "M": 10583.2,
+     "err": 12.167,
+     "err_par": 9.0554,
+     "config": "T_bb I=1 J=0",
+     "level": 0,
+     "binding": 24.5079
+    },
+    "J": {
+     "M": 10700.3,
+     "err": 11.0936,
+     "err_par": 7.41815,
+     "config": "T_bb I=1 J=0",
+     "level": 0,
+     "binding": 141.65
+    },
+    "threshold": {
+     "pair": "B+~ B+~",
+     "M": 10558.7,
+     "verified": false
+    },
+    "verdict": "live"
+   },
+   {
+    "label": "T_cc partner I=1, J=1",
+    "family": "T_cc(I=1)",
+    "kind": "live",
+    "note": "",
+    "JPC": "1+",
+    "P": {
+     "M": 4071.21,
+     "err": 12.1243,
+     "err_par": 8.99805,
+     "config": "T_cc I=1 J=1",
+     "level": 0,
+     "binding": 199.518
+    },
+    "P-in": {
+     "M": 4071.21,
+     "err": 12.1243,
+     "err_par": 8.99805,
+     "config": "T_cc I=1 J=1",
+     "level": 0,
+     "binding": 199.518
+    },
+    "J": {
+     "M": 4172.87,
+     "err": 11.1273,
+     "err_par": 7.46845,
+     "config": "T_cc I=1 J=1",
+     "level": 0,
+     "binding": 301.185
+    },
+    "threshold": {
+     "pair": "D0 D*0",
+     "M": 3871.69,
+     "verified": true
+    },
+    "verdict": "live"
+   },
+   {
+    "label": "T_bb partner I=1, J=1",
+    "family": "T_bb(I=1)",
+    "kind": "live",
+    "note": "",
+    "JPC": "1+",
+    "P": {
+     "M": 10593.0,
+     "err": 12.173,
+     "err_par": 9.06355,
+     "config": "T_bb I=1 J=1",
+     "level": 0,
+     "binding": -11.0563
+    },
+    "P-in": {
+     "M": 10593.0,
+     "err": 12.173,
+     "err_par": 9.06355,
+     "config": "T_bb I=1 J=1",
+     "level": 0,
+     "binding": -11.0563
+    },
+    "J": {
+     "M": 10710.2,
+     "err": 11.0696,
+     "err_par": 7.38224,
+     "config": "T_bb I=1 J=1",
+     "level": 0,
+     "binding": 106.117
+    },
+    "threshold": {
+     "pair": "B+~ B*+~",
+     "M": 10604.1,
+     "verified": false
+    },
+    "verdict": "live"
+   },
+   {
+    "label": "T_cc partner I=1, J=2",
+    "family": "T_cc(I=1)",
+    "kind": "live",
+    "note": "",
+    "JPC": "2+",
+    "P": {
+     "M": 4130.61,
+     "err": 12.186,
+     "err_par": 9.08092,
+     "config": "T_cc I=1 J=2",
+     "level": 0,
+     "binding": 116.908
+    },
+    "P-in": {
+     "M": 4130.61,
+     "err": 12.186,
+     "err_par": 9.08092,
+     "config": "T_cc I=1 J=2",
+     "level": 0,
+     "binding": 116.908
+    },
+    "J": {
+     "M": 4232.31,
+     "err": 10.9935,
+     "err_par": 7.26765,
+     "config": "T_cc I=1 J=2",
+     "level": 0,
+     "binding": 218.613
+    },
+    "threshold": {
+     "pair": "D*0 D*0",
+     "M": 4013.7,
+     "verified": true
+    },
+    "verdict": "live"
+   },
+   {
+    "label": "T_bb partner I=1, J=2",
+    "family": "T_bb(I=1)",
+    "kind": "live",
+    "note": "",
+    "JPC": "2+",
+    "P": {
+     "M": 10612.7,
+     "err": 12.1906,
+     "err_par": 9.08718,
+     "config": "T_bb I=1 J=2",
+     "level": 0,
+     "binding": -36.7747
+    },
+    "P-in": {
+     "M": 10612.7,
+     "err": 12.1906,
+     "err_par": 9.08718,
+     "config": "T_bb I=1 J=2",
+     "level": 0,
+     "binding": -36.7747
+    },
+    "J": {
+     "M": 10730.0,
+     "err": 11.0272,
+     "err_par": 7.3185,
+     "config": "T_bb I=1 J=2",
+     "level": 0,
+     "binding": 80.4611
+    },
+    "threshold": {
+     "pair": "B*+~ B*+~",
+     "M": 10649.5,
+     "verified": true
+    },
+    "verdict": "live"
+   },
+   {
+    "label": "X0 partner [ud]0[cbar sbar]1, 1+",
+    "family": "X0(1+)",
+    "kind": "live",
+    "note": "",
+    "JPC": "1+",
+    "P": {
+     "M": 2807.28,
+     "err": 9.15212,
+     "err_par": 4.21031,
+     "config": "[ud]0[cbar sbar]1",
+     "level": 0,
+     "binding": 303.338
+    },
+    "P-in": {
+     "M": 2807.28,
+     "err": 9.15212,
+     "err_par": 4.21031,
+     "config": "[ud]0[cbar sbar]1",
+     "level": 0,
+     "binding": 303.338
+    },
+    "J": {
+     "M": 2907.67,
+     "err": 9.79425,
+     "err_par": 5.281,
+     "config": "[ud]0[cbar sbar]1",
+     "level": 0,
+     "binding": 403.736
+    },
+    "threshold": {
+     "pair": "K+ D*+~",
+     "M": 2503.94,
+     "verified": true
+    },
+    "verdict": "live"
+   }
+  ],
+  "n_scored": 9,
+  "n_holds": 4,
+  "n_refuted": 5
+ },
+ "B": {
+  "W": 150.0,
+  "W_alt": 300.0,
+  "n_states": 26,
+  "states": [
+   {
+    "name": "chi_c1(3872)",
+    "mass": 3871.7,
+    "err": 0.1,
+    "width": 1.39,
+    "J": 1,
+    "P": 1,
+    "C": 1,
+    "content": "cCuU",
+    "source": "LHCb_X3872_ls",
+    "nearest": "D0 D*0~",
+    "threshold": 3871.69,
+    "M_minus_T": 0.005,
+    "p": 0.0001,
+    "p_W300": 8.33333e-05,
+    "n_in_window": 3,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "Z_c(3900)+",
+    "mass": 3899.0,
+    "err": 6.1,
+    "width": 46.0,
+    "J": 1,
+    "P": 1,
+    "C": null,
+    "content": "cCuD",
+    "source": "BESIII_Zc3900",
+    "nearest": "pi+ psi(3770)",
+    "threshold": 3913.27,
+    "M_minus_T": -14.2704,
+    "p": 0.385244,
+    "p_W300": 0.192622,
+    "n_in_window": 5,
+    "nearest_masses_verified": false
+   },
+   {
+    "name": "Z_c(4020)+",
+    "mass": 4022.9,
+    "err": 2.8,
+    "width": 7.9,
+    "J": null,
+    "P": null,
+    "C": null,
+    "content": "cCuD",
+    "source": "BESIII_Zc4020",
+    "nearest": "D*0~ D*+",
+    "threshold": 4017.11,
+    "M_minus_T": 5.79,
+    "p": 0.108533,
+    "p_W300": 0.13865,
+    "n_in_window": 4,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "Z_c(4430)+",
+    "mass": 4475.0,
+    "err": 19.0,
+    "width": 172.0,
+    "J": 1,
+    "P": 1,
+    "C": null,
+    "content": "cCuD",
+    "source": "LHCb_Z4430",
+    "nearest": "D1(2420)0~ D1(2420)+",
+    "threshold": 4848.3,
+    "M_minus_T": -373.3,
+    "p": 0.718033,
+    "p_W300": 0.859017,
+    "n_in_window": 0,
+    "nearest_masses_verified": false
+   },
+   {
+    "name": "Z_cs(3985)+",
+    "mass": 3982.5,
+    "err": 3.1,
+    "width": 12.8,
+    "J": null,
+    "P": null,
+    "C": null,
+    "content": "cCuS",
+    "source": "BESIII_Zcs3985",
+    "nearest": "D0~ Ds*+",
+    "threshold": 3977.04,
+    "M_minus_T": 5.46,
+    "p": 0.339777,
+    "p_W300": 0.226077,
+    "n_in_window": 11,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "Z_cs(4000)+",
+    "mass": 4003.0,
+    "err": 11.0,
+    "width": 131.0,
+    "J": 1,
+    "P": 1,
+    "C": null,
+    "content": "cCuS",
+    "source": "LHCb_JpsiK",
+    "nearest": "K*+ J/psi",
+    "threshold": 3988.78,
+    "M_minus_T": 14.22,
+    "p": 0.329667,
+    "p_W300": 0.259633,
+    "n_in_window": 5,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "Z_cs(4220)+",
+    "mass": 4216.0,
+    "err": 40.0,
+    "width": 233.0,
+    "J": 1,
+    "P": null,
+    "C": null,
+    "content": "cCuS",
+    "source": "LHCb_JpsiK",
+    "nearest": "K+ psi(2S)",
+    "threshold": 4179.77,
+    "M_minus_T": 36.226,
+    "p": 0.893417,
+    "p_W300": 0.89054,
+    "n_in_window": 6,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "chi_c1(4140)",
+    "mass": 4118.0,
+    "err": 28.0,
+    "width": 162.0,
+    "J": 1,
+    "P": 1,
+    "C": 1,
+    "content": "cCsS",
+    "source": "LHCb_JpsiK",
+    "nearest": "phi J/psi",
+    "threshold": 4116.36,
+    "M_minus_T": 1.639,
+    "p": 0.0218533,
+    "p_W300": 0.0224533,
+    "n_in_window": 2,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "chi_c1(4274)",
+    "mass": 4294.0,
+    "err": 5.5,
+    "width": 53.0,
+    "J": 1,
+    "P": 1,
+    "C": 1,
+    "content": "cCsS",
+    "source": "LHCb_JpsiK",
+    "nearest": "omega psi(2S)",
+    "threshold": 4468.76,
+    "M_minus_T": -174.757,
+    "p": 0.990393,
+    "p_W300": 0.995197,
+    "n_in_window": 0,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "chi_c0(4500)",
+    "mass": 4474.0,
+    "err": 4.2,
+    "width": 77.0,
+    "J": 0,
+    "P": 1,
+    "C": 1,
+    "content": "cCsS",
+    "source": "LHCb_JpsiK",
+    "nearest": "omega psi(2S)",
+    "threshold": 4468.76,
+    "M_minus_T": 5.243,
+    "p": 0.10486,
+    "p_W300": 0.122337,
+    "n_in_window": 3,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "chi_c0(4700)",
+    "mass": 4694.0,
+    "err": 10.0,
+    "width": 87.0,
+    "J": 0,
+    "P": 1,
+    "C": 1,
+    "content": "cCsS",
+    "source": "LHCb_JpsiK",
+    "nearest": "phi psi(2S)",
+    "threshold": 4705.56,
+    "M_minus_T": -11.558,
+    "p": 0.423127,
+    "p_W300": 0.39832,
+    "n_in_window": 5,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "X(4685)",
+    "mass": 4684.0,
+    "err": 15.0,
+    "width": 126.0,
+    "J": 1,
+    "P": 1,
+    "C": 1,
+    "content": "cCsS",
+    "source": "LHCb_JpsiK",
+    "nearest": "phi psi(2S)",
+    "threshold": 4705.56,
+    "M_minus_T": -21.558,
+    "p": 0.493523,
+    "p_W300": 0.507082,
+    "n_in_window": 4,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "X(4630)",
+    "mass": 4626.0,
+    "err": 60.0,
+    "width": 174.0,
+    "J": 1,
+    "P": -1,
+    "C": 1,
+    "content": "cCsS",
+    "source": "LHCb_JpsiK",
+    "nearest": "Ds*+ Ds1(2536)+~",
+    "threshold": 4647.31,
+    "M_minus_T": -21.31,
+    "p": 0.787467,
+    "p_W300": 0.5861,
+    "n_in_window": 6,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "X(3960)",
+    "mass": 3956.0,
+    "err": 11.2,
+    "width": 43.0,
+    "J": 0,
+    "P": 1,
+    "C": 1,
+    "content": "cCsS",
+    "source": "LHCb_X3960",
+    "nearest": "eta' eta_c",
+    "threshold": 3941.88,
+    "M_minus_T": 14.12,
+    "p": 0.33493,
+    "p_W300": 0.4126,
+    "n_in_window": 5,
+    "nearest_masses_verified": false
+   },
+   {
+    "name": "psi(4230)",
+    "mass": 4222.0,
+    "err": 3.4,
+    "width": 44.1,
+    "J": 1,
+    "P": -1,
+    "C": -1,
+    "content": "cCuU",
+    "source": "BESIII_Y4230",
+    "nearest": "omega chi_c0",
+    "threshold": 4197.37,
+    "M_minus_T": 24.63,
+    "p": 0.587573,
+    "p_W300": 0.53075,
+    "n_in_window": 6,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "Z_b(10610)+",
+    "mass": 10607.2,
+    "err": 2.0,
+    "width": 18.4,
+    "J": null,
+    "P": null,
+    "C": null,
+    "content": "bBuD",
+    "source": "Belle_Zb",
+    "nearest": "B0~ B*+",
+    "threshold": 10604.4,
+    "M_minus_T": 2.79,
+    "p": 0.0754667,
+    "p_W300": 0.0728667,
+    "n_in_window": 5,
+    "nearest_masses_verified": false
+   },
+   {
+    "name": "Z_b(10650)+",
+    "mass": 10652.2,
+    "err": 1.5,
+    "width": 11.5,
+    "J": null,
+    "P": null,
+    "C": null,
+    "content": "bBuD",
+    "source": "Belle_Zb",
+    "nearest": "B*+ B*0~",
+    "threshold": 10649.5,
+    "M_minus_T": 2.7,
+    "p": 0.0550667,
+    "p_W300": 0.0707667,
+    "n_in_window": 4,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "T_cc(3875)+",
+    "mass": 3874.74,
+    "err": 0.08,
+    "width": 0.048,
+    "J": 1,
+    "P": 1,
+    "C": null,
+    "content": "ccUD",
+    "source": "LHCb_Tcc_NC",
+    "nearest": "D0 D*+",
+    "threshold": 3875.1,
+    "M_minus_T": -0.36,
+    "p": 0.0072,
+    "p_W300": 0.0036,
+    "n_in_window": 3,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "X0(2900)",
+    "mass": 2866.0,
+    "err": 7.3,
+    "width": 57.0,
+    "J": 0,
+    "P": 1,
+    "C": null,
+    "content": "udCS",
+    "source": "LHCb_X2900",
+    "nearest": "K*+ D*+~",
+    "threshold": 2902.14,
+    "M_minus_T": -36.14,
+    "p": 0.2418,
+    "p_W300": 0.1209,
+    "n_in_window": 2,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "X1(2900)",
+    "mass": 2904.0,
+    "err": 5.1,
+    "width": 110.0,
+    "J": 1,
+    "P": -1,
+    "C": null,
+    "content": "udCS",
+    "source": "LHCb_X2900",
+    "nearest": "K0 D1(2420)0~",
+    "threshold": 2919.71,
+    "M_minus_T": -15.711,
+    "p": 0.105293,
+    "p_W300": 0.0526467,
+    "n_in_window": 2,
+    "nearest_masses_verified": false
+   },
+   {
+    "name": "T_csbar0(2900)++",
+    "mass": 2908.0,
+    "err": 22.8,
+    "width": 136.0,
+    "J": 0,
+    "P": 1,
+    "C": null,
+    "content": "cSuD",
+    "source": "LHCb_Tcsbar",
+    "nearest": "K*+ D*+",
+    "threshold": 2902.14,
+    "M_minus_T": 5.86,
+    "p": 0.0390667,
+    "p_W300": 0.0195333,
+    "n_in_window": 1,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "P_c(4312)+",
+    "mass": 4311.9,
+    "err": 3.0,
+    "width": 9.8,
+    "J": null,
+    "P": null,
+    "C": null,
+    "content": "uudcC",
+    "source": "LHCb_Pc2019",
+    "nearest": "D0~ Sigma_c+",
+    "threshold": 4317.49,
+    "M_minus_T": -5.59,
+    "p": 0.250793,
+    "p_W300": 0.26025,
+    "n_in_window": 9,
+    "nearest_masses_verified": false
+   },
+   {
+    "name": "P_c(4440)+",
+    "mass": 4440.3,
+    "err": 4.6,
+    "width": 20.6,
+    "J": null,
+    "P": null,
+    "C": null,
+    "content": "uudcC",
+    "source": "LHCb_Pc2019",
+    "nearest": "chi_c1 p",
+    "threshold": 4448.94,
+    "M_minus_T": -8.642,
+    "p": 0.5527,
+    "p_W300": 0.426605,
+    "n_in_window": 16,
+    "nearest_masses_verified": false
+   },
+   {
+    "name": "P_c(4457)+",
+    "mass": 4457.3,
+    "err": 2.5,
+    "width": 6.4,
+    "J": null,
+    "P": null,
+    "C": null,
+    "content": "uudcC",
+    "source": "LHCb_Pc2019",
+    "nearest": "D0~ Lambda_c(2595)+",
+    "threshold": 4457.09,
+    "M_minus_T": 0.21,
+    "p": 0.0224,
+    "p_W300": 0.0154,
+    "n_in_window": 16,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "P_psis(4338)0",
+    "mass": 4338.2,
+    "err": 0.8,
+    "width": 7.0,
+    "J": 0.5,
+    "P": -1,
+    "C": null,
+    "content": "udscC",
+    "source": "LHCb_Ppsis4338",
+    "nearest": "D+~ Xi_c+",
+    "threshold": 4337.37,
+    "M_minus_T": 0.83,
+    "p": 0.0631333,
+    "p_W300": 0.0481667,
+    "n_in_window": 12,
+    "nearest_masses_verified": true
+   },
+   {
+    "name": "X(6900)",
+    "mass": 6905.0,
+    "err": 13.0,
+    "width": 80.0,
+    "J": null,
+    "P": null,
+    "C": 1,
+    "content": "ccCC",
+    "source": "LHCb_X6900",
+    "nearest": "chi_c0 chi_c1",
+    "threshold": 6925.38,
+    "M_minus_T": -20.38,
+    "p": 0.859467,
+    "p_W300": 0.726683,
+    "n_in_window": 8,
+    "nearest_masses_verified": true
+   }
+  ],
+  "fisher": {
+   "X2": 101.112,
+   "dof": 52,
+   "p": 5.36341e-05
+  },
+  "fisher_W300": {
+   "X2": 110.568,
+   "p": 4.12698e-06
+  },
+  "close": {
+   "5MeV": {
+    "observed": 7,
+    "expected": 3.821,
+    "poisson_p": 0.0928686
+   },
+   "10MeV": {
+    "observed": 13,
+    "expected": 6.99395,
+    "poisson_p": 0.0268406
+   },
+   "20MeV": {
+    "observed": 18,
+    "expected": 12.1946,
+    "poisson_p": 0.0707293
+   }
+  },
+  "n_below": 12,
+  "mean_thresholds_per_window": 5.5,
+  "perturbed_unverified_1MeV": [
+   7.00899e-06,
+   4.94974e-05,
+   7.46479e-05
+  ],
+  "perturbed_unverified_3MeV": [
+   5.00962e-07,
+   3.95681e-05,
+   0.000143868
+  ],
+  "known_JP": {
+   "n": 17,
+   "p": 0.000178863
+  },
+  "without_sub_MeV": {
+   "n": 22,
+   "p": 0.0573715
+  },
+  "n_threshold_hadrons": 83,
+  "n_unverified_hadrons": 45
+ },
+ "C": [
+  {
+   "id": "C1",
+   "prediction": "compact (diquark-tree) X(3872) = [cq][cbar qbar] 1++ has charged isospin partners X+- at about the X(3872) mass, produced in B -> X- K at twice the neutral rate (Maiani et al. 2005; the isovector hypothesis of BaBar)",
+   "search": "BaBar: B(B0 -> X- K+, X- -> J/psi pi- pi0) < 5.4e-6 (90% CL) where 2.56e-5 (75+-25 events) was expected; likelihood ratio 1.1e4 for no signal. Belle: limits well below the isospin-triplet expectation",
+   "sources": [
+    "MPPR2005",
+    "BaBar_Xminus",
+    "Belle_X3872"
+   ],
+   "verdict": "refuted (failed prediction of the compact X(3872) reading)"
+  },
+  {
+   "id": "C2",
+   "prediction": "our model's compact 1++ isomultiplet (I = 0 and 1 degenerate) at 4108 +- 11 MeV, 237 MeV above X(3872): the model does not make X(3872) compact; its charged 1++ partners lie near 4.1 GeV",
+   "search": "no search for a charged C = + (G = -) hidden-charm state near 4.1 GeV verified",
+   "sources": [],
+   "verdict": "untested"
+  },
+  {
+   "id": "C3",
+   "prediction": "T_cc isospin partners [cc]_1[qbar qbar]_1 (I = 1) with J = 0, 1, 2 at 4042, 4071, 4131 MeV, i.e. +312, +200, +117 MeV above their lowest S-wave thresholds (open, so broad); no isoscalar spin partner (a good antidiquark has spin 0)",
+   "search": "LHCb: no narrow signal in D+ D0 pi+ (3.9-4.0 GeV) or D+ D+ (up to 3.87 GeV); the isovector reading of T_cc+ itself is disfavoured. The predicted I = 1 states lie above these windows and would be broad",
+   "sources": [
+    "LHCb_Tcc_NC"
+   ],
+   "verdict": "consistent (the model's T_cc+ is isoscalar); the I = 1 partners are untested"
+  },
+  {
+   "id": "C4",
+   "prediction": "T_bb isospin partners (I = 1) with J = 0, 1, 2 at 10583, 10593, 10613 MeV, +25, -11, -37 MeV from their lowest S-wave thresholds",
+   "search": "none (no doubly bottom hadron observed)",
+   "sources": [],
+   "verdict": "live"
+  },
+  {
+   "id": "C5",
+   "prediction": "hidden-charm pentaquark multiplet: 10 S-wave levels with I = 1/2 from 4277 to 4584 MeV, and I = 3/2 partners degenerate with the 7 levels that contain a spin-1 light diquark",
+   "search": "LHCb Lambda_b -> J/psi p K- shows three narrow peaks; no search for I = 3/2 (doubly charged) hidden-charm pentaquarks verified; production in Lambda_b decay favours the spin-0 [ud] diquark (MPR 2015), so absent peaks do not exclude partners",
+   "sources": [
+    "LHCb_Pc2019",
+    "MPR2015"
+   ],
+   "verdict": "untested"
+  },
+  {
+   "id": "C6",
+   "prediction": "fully charmed S-wave triplet 0++, 1+-, 2++ at 6340, 6369, 6425 MeV; the 1+- cannot decay to J/psi J/psi",
+   "search": "di-J/psi structures of LHCb, CMS, ATLAS (Table of Section A); no 1+- channel searched",
+   "sources": [
+    "LHCb_X6900",
+    "CMS_diJpsi",
+    "ATLAS_diJpsi"
+   ],
+   "verdict": "the S-wave triplet is not X(6900) (Section A); untested otherwise"
+  },
+  {
+   "id": "C7",
+   "prediction": "X0(2900) partner [ud]_0[cbar sbar]_1 with J^P = 1+ at 2807 MeV",
+   "search": "a 1+ state cannot decay to D- K+ (two pseudoscalars); not visible in the LHCb analysis",
+   "sources": [
+    "LHCb_X2900"
+   ],
+   "verdict": "untested"
+  }
+ ],
+ "choices_after_data": [
+  "The rule for binding across the two halves (primary: KR's factorised potential applied to every pair; variant P-in: no binding across the root) was written into the script before any exotic state was computed, but by authors who knew the published masses of the exotic states. Both rules are reported for every state; they differ only where a heavy or strange pair sits in different halves (hidden-charm and fully charmed states, P_c, T_csbar).",
+  "k_s (KR's heavy-strange hyperfine enhancement a_cs = a_bs) is shared between mesons and baryons. KR apply it in baryons only; the extension was fixed before the fit, motivated by KR's own observation that the D_s* - D_s splitting is enhanced by the same factor, not by any exotic comparison.",
+  "For each catalogue state one measurement was taken: the most recent one of the cited collaboration that we could read (LHCb 2021 for the J/psi phi states, not the 2016 values; the BESIII discovery values for Z_c(3900) and Z_c(4020), not PDG averages, which we could not read). The catalogue excludes X(3915) (exotic status disputed), P_cs(4459) and P_c(4337) (evidence below 5 sigma).",
+  "The chance-proximity numbers for the three 'nearest level' assignments (p_chance) were added after seeing that they hold.",
+  "Tests B5 (states with measured J^P only) and B6 (without the two states within 1 MeV of a threshold) were added after seeing the Fisher result, to show what drives it.",
+  "The CMS and ATLAS di-J/psi structures are shown with the fully charmed levels but not scored; that the lowest ATLAS structure (6.41 GeV) lies near the model's S-wave levels was noticed after the comparison and is not a test."
+ ],
+ "caveats": [
+  "Effective-mass conventions dominate the multiquark predictions. Baryon masses for every constituent (KR) and universal masses with string junctions (variant J) differ by about 100 MeV for every tetraquark and 110-210 MeV for pentaquarks, ten times sigma_model; the fit to ordinary hadrons cannot choose between them (sigma_model 8.1 and 8.3 MeV).",
+  "sigma_model is the spread of ordinary hadrons. It does not include the uncertainty of carrying the model to four and five constituents (colour configurations outside the H8 tree, the spatial size of a diquark pair, binding across the halves).",
+  "The H8 tree keeps one colour configuration (3bar x 3 for tetraquarks). The full colour-spin model also has 6 x 6bar; mixing would lower the lowest levels, mostly for the fully heavy and hidden-charm states.",
+  "Only S-wave ground states are computed. Radial and orbital excitations (X1(2900) is 1-) are outside the model, so a mismatch refutes an S-wave assignment, not every compact reading.",
+  "Threshold test: the catalogue is not a random sample. Many exotic states were found as narrow structures near thresholds, and threshold cusps can mimic peaks, so proximity is partly a selection effect. The threshold list (hadrons narrower than 60 MeV) and the S-wave and C rules set the look-elsewhere count, on average 5.5 thresholds per +-150 MeV window; isospin and G parity are not imposed.",
+  "Threshold proximity is the standard signature of hadronic molecules and of threshold cusps in QCD; it supports the molecular branch of H8 only in the sense that H8 includes that branch.",
+  "Lattice QCD results for T_bb scatter from 83 to 189 MeV binding; the comparison is not a measurement."
+ ],
+ "citations": {
+  "DGG1975": {
+   "ref": "A. De Rujula, H. Georgi, S. L. Glashow, Phys. Rev. D 12, 147 (1975)",
+   "read": "cited for the colour-spin (chromomagnetic) hyperfine interaction; not re-read (no arXiv version)",
+   "values": "none used"
+  },
+  "KR2014": {
+   "ref": "M. Karliner, J. L. Rosner, Phys. Rev. D 90, 094007 (2014), arXiv:1408.5877",
+   "read": "full text: Tables I, II, IV, VI, VII, IX; eqs. (1)-(20)",
+   "values": "m^b_q=363, m^b_s=538, a/(m^b_q)^2=50, m^m_q=310, m^m_s=483, b/(m^m_q)^2=80, m^m_c=1663.3, m^b_c=1710.5, m^m_b=5003.8, m^b_b=5043.5, B(cs bar)=-69.9, B(cs)=-35.0, B(bs bar)=-83.6, 6a_cs/(m_s m_c)=70.7, a_bs=(70.7/43.0)a, Mbar(cc bar)=3068.6, M(J/psi)-M(eta_c)=113.2, Mbar(bb bar)=9444.7, M(Upsilon)-M(eta_b)=62.3, M(B_c)=6274.5, B_c* - B_c = 68.0, p=1.46; hadron masses quoted in the tables (PDG 2012 and KR's b-baryon averages); predictions Xi_cc=3627+-12, Xi_cc*=3690, Xi_bb=10162, Xi_bb*=10184"
+  },
+  "KR2017": {
+   "ref": "M. Karliner, J. L. Rosner, Phys. Rev. Lett. 119, 202001 (2017), arXiv:1707.07666",
+   "read": "full text: Tables I-III, Secs. II, III, VI",
+   "values": "T(bb ubar dbar) 1+ = 10389.4+-12 (215 below BB* at 10604; 170 below B- B0bar gamma at 10559); T(cc ubar dbar) 1+ = 3882.2+-12 (7 above D0 D*+ at 3875); T(bc ubar dbar) 0+ = 7133.7+-13 (11 below B0bar D0 at 7144.5); M(D0)+M(D*+)=3875.09+-0.07; string-junction term S=165 MeV"
+  },
+  "KNR2017": {
+   "ref": "M. Karliner, S. Nussinov, J. L. Rosner, Phys. Rev. D 95, 034011 (2017), arXiv:1611.00348",
+   "read": "Sec. II, eqs. (1)-(8)",
+   "values": "S=165.1, m_c=1655.6, m_b=4988.6, M(cc,3bar)=3204.1, B=-388.3, Delta M_3=79.3, M(cc cbar cbar, 0++) = 6191.5 (abstract 6192+-25); J/psi J/psi threshold 6193.8"
+  },
+  "LHCb_Tcc_NP": {
+   "ref": "LHCb, Nature Phys. 18, 751 (2022), arXiv:2109.01038",
+   "read": "abstract",
+   "values": "narrow state just below the D*+ D0 threshold, mass about 3875 MeV"
+  },
+  "LHCb_Tcc_NC": {
+   "ref": "LHCb, Nature Commun. 13, 3351 (2022), arXiv:2109.01056",
+   "read": "full text, eqs. (1), (4), (5), (12), Table 2, Fig. 4 and conclusions",
+   "values": "delta m_U = -359+-40 (+9 -6) keV; pole delta m = -360+-40 (+4 -0) keV, Gamma_pole = 48+-2 (+0 -14) keV; delta m_BW = -273+-61 keV; J^P = 1+ favoured; no signal in D+D0pi+ (3.9-4.0 GeV) or D+D+ (to 3.87 GeV): isovector interpretation disfavoured"
+  },
+  "LHCb_X6900": {
+   "ref": "LHCb, Sci. Bull. 65, 1983 (2020), arXiv:2006.16957",
+   "read": "full text, Sec. 5 and conclusions",
+   "values": "model I: m = 6905+-11+-7, Gamma = 80+-19+-33; model II: m = 6886+-11+-11, Gamma = 168+-33+-69; broad structure 6.2-6.8 GeV"
+  },
+  "CMS_diJpsi": {
+   "ref": "CMS, Phys. Rev. Lett. 132, 111901 (2024), arXiv:2306.07164",
+   "read": "abstract and Table I",
+   "values": "no interference: 6552+-10+-12 (Gamma 124), 6927+-9+-4 (122), 7287+20-18+-5 (95); interference: 6638+43+16-38-31, 6847+44+48-28-20, 7134+48+41-25-15"
+  },
+  "ATLAS_diJpsi": {
+   "ref": "ATLAS, Phys. Rev. Lett. 131, 151902 (2023), arXiv:2304.08962",
+   "read": "Table 2",
+   "values": "model A: 6.41+-0.08(+0.08-0.03), 6.63+-0.05(+0.08-0.01), 6.86+-0.03(+0.01-0.02) GeV; model B: 6.65+-0.02(+0.03-0.02), 6.91+-0.01+-0.01 GeV"
+  },
+  "LHCb_X2900": {
+   "ref": "LHCb, Phys. Rev. D 102, 112003 (2020), arXiv:2009.00026 (and PRL 125, 242001, arXiv:2009.00025)",
+   "read": "full text, Table 4 and conclusions",
+   "values": "X0(2900): spin 0, M = 2866+-7+-2, Gamma = 57+-12+-4; X1(2900): spin 1, M = 2904+-5+-1, Gamma = 110+-11+-4; D-K+ channel, minimal content cbar d sbar u"
+  },
+  "LHCb_Tcsbar": {
+   "ref": "LHCb, Phys. Rev. Lett. 131, 041902 (2023), arXiv:2212.02716",
+   "read": "abstract",
+   "values": "M = 2908+-11+-20, Gamma = 136+-23+-11, J^P = 0+, isospin triplet (D_s+ pi+ and D_s+ pi-)"
+  },
+  "LHCb_Pc2019": {
+   "ref": "LHCb, Phys. Rev. Lett. 122, 222001 (2019), arXiv:1904.03947",
+   "read": "full text, Table 1 and text",
+   "values": "P_c(4312): 4311.9+-0.7(+6.8-0.6), Gamma 9.8+-2.7(+3.7-4.5); P_c(4440): 4440.3+-1.3(+4.1-4.7), Gamma 20.6+-4.9(+8.7-10.1); P_c(4457): 4457.3+-0.6(+4.1-1.7), Gamma 6.4+-2.0(+5.7-1.9); 7.3 sigma and 5.4 sigma; J^P not determined"
+  },
+  "LHCb_Pcs4459": {
+   "ref": "LHCb, Sci. Bull. 66, 1278 (2021), arXiv:2012.10380",
+   "read": "abstract",
+   "values": "evidence: M = 4458.8+-2.9(+4.7-1.1), Gamma = 17.3+-6.5(+8.0-5.7)"
+  },
+  "LHCb_Ppsis4338": {
+   "ref": "LHCb, Phys. Rev. Lett. 131, 031901 (2023), arXiv:2210.10346",
+   "read": "abstract",
+   "values": "M = 4338.2+-0.7+-0.4, Gamma = 7.0+-1.2+-1.3, J = 1/2, negative parity preferred"
+  },
+  "MPR2015": {
+   "ref": "L. Maiani, A. D. Polosa, V. Riquer, Phys. Lett. B 749, 289 (2015), arXiv:1507.04980",
+   "read": "full text",
+   "values": "P = epsilon cbar [cq]_{s=0,1} [q'q'']_{s=0,1}, colour-3bar units; S-wave multiplicities J=1/2 (2), 3/2 (1) for s(q'q'')=0 and 1/2 (3), 3/2 (3), 5/2 (1) for s=1"
+  },
+  "MPPR2005": {
+   "ref": "L. Maiani, F. Piccinini, A. D. Polosa, V. Riquer, Phys. Rev. D 71, 014028 (2005), hep-ph/0412098",
+   "read": "abstract",
+   "values": "X(3872) as [cq][cbar qbar] with two neutral components and charged partners X+-"
+  },
+  "BaBar_Xminus": {
+   "ref": "BaBar, Phys. Rev. D 71, 031501 (2005), hep-ex/0412051",
+   "read": "full text",
+   "values": "B(B0 -> X- K+, X- -> J/psi pi- pi0) < 5.4e-6, B(B- -> X- K0bar) < 22e-6 (90% CL); isovector X predicts 75+-25 events, 2.56e-5; null favoured by likelihood ratio 1.1e4"
+  },
+  "Belle_X3872": {
+   "ref": "Belle, Phys. Rev. D 84, 052004 (2011), arXiv:1107.0163",
+   "read": "abstract",
+   "values": "charged-partner limits well below the isospin-triplet expectation; M = 3871.84+-0.27+-0.19"
+  },
+  "Francis2017": {
+   "ref": "A. Francis, R. J. Hudspith, R. Lewis, K. Maltman, Phys. Rev. Lett. 118, 142001 (2017), arXiv:1607.05214",
+   "read": "abstract",
+   "values": "ud bbar bbar 1+ 189(10) MeV below threshold"
+  },
+  "Leskovec2019": {
+   "ref": "L. Leskovec, S. Meinel, M. Pflaumer, M. Wagner, Phys. Rev. D 100, 014503 (2019), arXiv:1904.04197",
+   "read": "abstract",
+   "values": "binding -128+-24+-10 MeV, mass 10476+-24+-10 MeV"
+  },
+  "Aoki2023": {
+   "ref": "T. Aoki, S. Aoki, T. Inoue, Phys. Rev. D 108, 054502 (2023), arXiv:2306.03565",
+   "read": "abstract",
+   "values": "83(10) MeV below B B* (coupled channel), +-20 MeV systematic; single channel 155(17)"
+  },
+  "Hudspith2023": {
+   "ref": "R. J. Hudspith, D. Mohler, Phys. Rev. D 107, 114510 (2023), arXiv:2303.17295",
+   "read": "abstract",
+   "values": "112.0(13.2) MeV below B B*"
+  },
+  "Tripathy2025": {
+   "ref": "B. S. Tripathy, N. Mathur, M. Padmanath, arXiv:2503.09760 (2025)",
+   "read": "abstract",
+   "values": "Delta E = -116 (+30 -36) MeV relative to B B*"
+  },
+  "Francis2019": {
+   "ref": "A. Francis, R. J. Hudspith, R. Lewis, K. Maltman, Phys. Rev. D 99, 054505 (2019), arXiv:1810.10550",
+   "read": "abstract",
+   "values": "ud cbar bbar 0(1+) 15 to 61 MeV below Dbar B*"
+  },
+  "Padmanath2024": {
+   "ref": "M. Padmanath, A. Radhakrishnan, N. Mathur, Phys. Rev. Lett. 132, 201902 (2024), arXiv:2307.14128",
+   "read": "abstract",
+   "values": "1+: -43(+6-7)(+14-24) MeV with respect to D Bbar*"
+  },
+  "Alexandrou2024": {
+   "ref": "C. Alexandrou et al., Phys. Rev. Lett. 132, 151902 (2024), arXiv:2312.02925",
+   "read": "abstract",
+   "values": "shallow bound or virtual states a few MeV or less below the B(*) Dbar thresholds"
+  },
+  "LHCb_X3872_ls": {
+   "ref": "LHCb, Phys. Rev. D 102, 092005 (2020), arXiv:2005.13419",
+   "read": "abstract",
+   "values": "m(chi_c1(3872)) - m(psi(2S)) = 185.598+-0.067+-0.068; Gamma_BW = 1.39+-0.24+-0.10"
+  },
+  "LHCb_X3872_JPC": {
+   "ref": "LHCb, Phys. Rev. Lett. 110, 222001 (2013), arXiv:1302.6269",
+   "read": "abstract",
+   "values": "J^PC = 1++"
+  },
+  "BESIII_Zc3900": {
+   "ref": "BESIII, Phys. Rev. Lett. 110, 252001 (2013), arXiv:1303.5949",
+   "read": "abstract",
+   "values": "3899.0+-3.6+-4.9, Gamma 46+-10+-20"
+  },
+  "BESIII_Zc3900_JP": {
+   "ref": "BESIII, Phys. Rev. Lett. 119, 072001 (2017), arXiv:1706.04100",
+   "read": "abstract",
+   "values": "J^P = 1+"
+  },
+  "BESIII_Zc4020": {
+   "ref": "BESIII, Phys. Rev. Lett. 111, 242001 (2013), arXiv:1309.1896",
+   "read": "abstract",
+   "values": "4022.9+-0.8+-2.7, Gamma 7.9+-2.7+-2.6"
+  },
+  "LHCb_Z4430": {
+   "ref": "LHCb, Phys. Rev. Lett. 112, 222002 (2014), arXiv:1404.1903",
+   "read": "full text",
+   "values": "4475+-7(+15-25), Gamma 172+-13(+37-34), J^P = 1+"
+  },
+  "BESIII_Zcs3985": {
+   "ref": "BESIII, Phys. Rev. Lett. 126, 102001 (2021), arXiv:2011.07855",
+   "read": "abstract",
+   "values": "pole 3982.5(+1.8-2.6)+-2.1, Gamma 12.8(+5.3-4.4)+-3.0; 5.3 sigma"
+  },
+  "LHCb_JpsiK": {
+   "ref": "LHCb, Phys. Rev. Lett. 127, 082001 (2021), arXiv:2103.01803",
+   "read": "abstract and Table 1",
+   "values": "Zcs(4000) 1+ 4003+-6(+4-14), Gamma 131+-15+-26; Zcs(4220) 1+ or 1- 4216+-24(+43-30), Gamma 233; X(4140) 1+ 4118+-11(+19-36), Gamma 162; X(4274) 1+ 4294+-4(+3-6), Gamma 53; X(4500) 0+ 4474+-3+-3, Gamma 77; X(4700) 0+ 4694+-4(+16-3), Gamma 87; X(4685) 1+ 4684+-7(+13-16), Gamma 126; X(4630) 1- 4626+-16(+18-110), Gamma 174; all above 5 sigma"
+  },
+  "LHCb_JpsiPhi2016": {
+   "ref": "LHCb, Phys. Rev. Lett. 118, 022003 (2017), arXiv:1606.07895",
+   "read": "full text, Table 2",
+   "values": "X(4140) and X(4274) J^PC = 1++, X(4500) and X(4700) 0++"
+  },
+  "LHCb_X3960": {
+   "ref": "LHCb, Phys. Rev. Lett. 131, 071901 (2023), arXiv:2210.15153",
+   "read": "abstract",
+   "values": "3956+-5+-10, Gamma 43+-13+-8, J^PC = 0++, > 12 sigma"
+  },
+  "BESIII_Y4230": {
+   "ref": "BESIII, Phys. Rev. Lett. 118, 092001 (2017), arXiv:1611.01317",
+   "read": "abstract",
+   "values": "4222.0+-3.1+-1.4, Gamma 44.1+-4.3+-2.0 (e+e- -> pi+pi- J/psi, J^PC = 1--)"
+  },
+  "Belle_Zb": {
+   "ref": "Belle, Phys. Rev. Lett. 108, 122001 (2012), arXiv:1110.2251",
+   "read": "abstract",
+   "values": "10607.2+-2.0, Gamma 18.4+-2.4; 10652.2+-1.5, Gamma 11.5+-2.2"
+  },
+  "LHCb_Xicc": {
+   "ref": "LHCb, JHEP 02 (2020) 049, arXiv:1911.08594",
+   "read": "abstract",
+   "values": "M(Xi_cc++) = 3621.55+-0.23+-0.30"
+  },
+  "LHCb_Xibprime": {
+   "ref": "LHCb, Phys. Rev. Lett. 114, 062004 (2015), arXiv:1411.4849",
+   "read": "abstract",
+   "values": "m(Xi_b'-) - m(Xi_b0) - m(pi-) = 3.653+-0.018+-0.006"
+  },
+  "PDG2024": {
+   "ref": "S. Navas et al. (Particle Data Group), Phys. Rev. D 110, 030001 (2024) and 2025 update",
+   "read": "listings returned by web search (pdgLive, the 2024/2025 listings): D0 1864.84, D+ 1869.66, D*0 2006.85, D*+ 2010.26, D_s 1968.35, D_s* 2112.2, D2*(2460)0 2461.1, D_s1(2536) 2535.11, eta_c 2984.1, J/psi 3096.900, chi_c0 3414.71, chi_c1 3510.67, h_c 3525.37, chi_c2 3556.17, eta_c(2S) 3637.7, psi(2S) 3686.097, eta_b 9398.7, h_b(1P) 9899.3, B* 5324.75, omega 782.66, phi 1019.461, K*(892)0 895.55, K*(892)+ 891.88, Lambda_c 2286.46, Xi_c+ 2467.71, Xi_c0 2470.44, Xi_c'0 2578.7, Lambda_c(2595) 2592.25, Lambda_c(2625) 2628.11, Omega_c 2695.2, Omega_c(2770) 2765.9, Sigma(1385)+ 1382.83, Sigma(1385)0 1383.7, Xi_b- 5797.0, Sigma_b*+ 5830.32, Xi_b(5945)0 5952.3; D_s0*(2317) 2317.7 and D_s1(2460) 2459.5 as quoted in arXiv:2409.05337",
+   "values": "see THRESH_HADRONS; entries not in this list are PDG 2024 values not re-read (unverified)"
+  }
+ },
+ "runtime_s": 65.6
+}

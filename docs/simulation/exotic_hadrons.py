@@ -3,7 +3,7 @@ hadron spectroscopy, with tetraquarks and pentaquarks as the test bed.
 
 Run:  python3 docs/simulation/exotic_hadrons.py
 Needs numpy, scipy, matplotlib. Deterministic: fixed seeds, BLAS on one thread, no clock in any output except the runtime field, no
-network, no machine name; the PDF figures are written without a creation date. Runs in well under a minute, memory under 200 MB.
+network, no machine name; the PDF figures are written without a creation date. Runs in about a minute on one core, memory under 200 MB.
 Writes docs/simulation/results/exotic_hadrons.{json,md} and docs/simulation/figures/exotic_{fit,spectrum,levels,thresholds}.pdf.
 
 Every measured number below was read on 2026-10-31 in its source: the arXiv abstract or full text, or, for current Particle Data Group
@@ -1001,6 +1001,8 @@ def add_item(label, key, rule, kind, data=None, data_src=None, thr=None, note=""
         fn = level_fn(key, ci, k)
         val, err, err_par = predict(lambda Pq, fn=fn, scheme=scheme: fn(Pq, scheme), scheme)
         row[scheme] = {"M": val, "err": err, "err_par": err_par, "config": CFG[key][ci].name, "level": k}
+    ci, k = pick(key, KR, "P", rule)
+    row["KRpar"] = {"M": level_fn(key, ci, k)(KR, "P"), "config": CFG[key][ci].name}
     if thr is not None:
         row["threshold"] = {"pair": thr[1], "M": thr[0], "verified": thr[2]}
         for scheme in ("P", "P-in", "J"):
@@ -1653,8 +1655,8 @@ def fmt_row(r):
     dat = f"{d['M']:.1f} (-{d['err_lo']:.1f} +{d['err_hi']:.1f})" if d else "-"
     pull = f"{r['P']['pull']:+.2f}" if d else "-"
     thr = f"{r['threshold']['pair']} {r['threshold']['M']:.1f}: {r['P']['binding']:+.1f}" if "threshold" in r else "-"
-    return (f"| {r['label']} | {r['JPC']} | {r['P']['M']:.1f} +- {r['P']['err']:.1f} | {r['P-in']['M']:.1f} | {r['J']['M']:.1f} | "
-            f"{dat} | {pull} | {r['verdict']} | {thr} |")
+    return (f"| {r['label']} | {r['P']['config']} | {r['P']['M']:.1f} +- {r['P']['err']:.1f} | {r['KRpar']['M']:.1f} | "
+            f"{r['P-in']['M']:.1f} | {r['J']['M']:.1f} | {dat} | {pull} | {r['verdict']} | {thr} |")
 
 
 md = []
@@ -1695,8 +1697,9 @@ md.append("- **H8 as such.** Any colour singlet can be written as a binary tree 
 md.append("## (a) Compact exotics and live predictions\n")
 md.append("Model P: KR's convention, parameters fitted here. P-in: no binding across the halves. J: universal masses plus junctions. "
           "Pull with sigma_pred and the data error on the side of the model; |pull| < 2 holds.\n")
-md.append("| state | J^P | model P [MeV] | P-in | J | data | pull | verdict | lowest S-wave threshold: M - T |")
-md.append("|---|---|---|---|---|---|---|---|---|")
+md.append("| state | level (model P) | model P [MeV] | KR parameters | P-in | J | data | pull | verdict | lowest S-wave threshold "
+          "(~ = antiparticle): M - T |")
+md.append("|---|---|---|---|---|---|---|---|---|---|")
 for r in ITEMS:
     md.append(fmt_row(r))
 md.append("")
