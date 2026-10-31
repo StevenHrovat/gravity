@@ -38,11 +38,9 @@ of the script's numerics (closed forms against limits and quadrature, the Kerr e
 
 \subsection{Master table}\label{sec:data-table}
 
-Table~\ref{tab:data-master} lists every scored, conditional and consistency row; Fig.~\ref{fig:data-pulls} shows the Gaussian pulls. The INFO rows
-are the superseded clock value (D1.4) and the Planck-only spectral index (D4.1, P-ACT D4.2), the derived joint drift (D1.12) and de Sitter rate
-(D3.2), rows that overlap a scored row (D1.10, D2.2, D2.4, D3.6, D5.1, D5.3), the inconclusive transition redshift (D3.1 to D3.1d), the
-evaporation mass without a stated uncertainty (D7.2), the tree-level W and Z masses (D8.3, D8.4) and qualitative or derived notes (D1.11, D2.13,
-D4.5, D4.6, D5.8, D6.9, D7.3, D9.6).
+Table~\ref{tab:data-master} lists the scored, conditional and consistency rows; Fig.~\ref{fig:data-pulls} shows the Gaussian pulls. The INFO rows are
+superseded (D1.4, D4.1, D4.2), derived (D1.12, D3.2), overlapping (D1.10, D2.2, D2.4, D3.6, D5.1, D5.3), inconclusive (D3.1 to D3.1d), without a
+stated uncertainty (D7.2), tree-level values (D8.3, D8.4) or notes (D1.11, D2.13, D4.5, D4.6, D5.8, D6.9, D7.3, D9.6).
 
 \begin{figure}[!b]
 \centering
@@ -245,12 +243,10 @@ GUID's tally. At leading order both predict $n_s=1-2/N$ and $r=12/N^2$ for the $
 $0.967$ and $r=0.0048$ to $0.0033$ for $N=50$ to 60 \tagP. ACT DR6 with Planck, CMB lensing and DESI DR1 BAO (P-ACT-LB, $n_s=0.974\pm0.003$) needs
 $N\ge62.7$; at the best $N$ in the range, $N=60$, the pull is $+2.44\sigma$, a conditional FAIL \chk{data:D4.3}. Planck alone ($0.9649\pm0.0042$,
 best $N=57$, pull $-0.00\sigma$, $46\le N\le74$) and P-ACT ($N\ge54.7$) are included in P-ACT-LB and reported as INFO \chk{data:D4.1,D4.2}. The ratio
-$r\le0.0048$ lies far below $r<0.036$~\cite{bk18}, a conditional OK \chk{data:D4.4}. Hypothesis~6$'$ puts the strong split before or during inflation;
-Part~I requires that ordering because no relic monopoles are seen, so MACRO's bound~\cite{macro} is a consistency row (D8.2), not a test. A split
-after inflation would be excluded by far: one monopole per horizon at $T_c\sim10^{16}$\,GeV~\cite{preskill} gives a flux of about
-$4\times10^2\,\mathrm{cm^{-2}s^{-1}sr^{-1}}$ at $v=10^{-3}c$, $3\times10^{18}$ times the bound \chk{data:D4.5}. The ordering also needs reheating below the
-unification energy. Instantaneous reheating at the tensor bound gives at most $5.7\times10^{15}$\,GeV, against $M_X\gtrsim4.8\times10^{15}$\,GeV from
-proton decay \chk{Q20}. The data allow either order, so this constrains the reheating model and does not test it \chk{data:D4.6}.
+$r\le0.0048$ lies far below $r<0.036$~\cite{bk18}, a conditional OK \chk{data:D4.4}. Part~I requires the strong split before or during inflation
+because no relic monopoles are seen, so MACRO's bound~\cite{macro} is a consistency row (D8.2); a split after inflation, one monopole per horizon at
+$10^{16}$\,GeV~\cite{preskill}, would exceed it $3\times10^{18}$-fold \chk{data:D4.5}. Reheating below the unification energy is allowed, not tested
+(at most $5.7\times10^{15}$\,GeV against $M_X\gtrsim4.8\times10^{15}$\,GeV, \chk{Q20}, \chk{data:D4.6}).
 
 \begin{figure}[!t]
 \centering
@@ -353,10 +349,9 @@ $m_W=(\pi\hat\alpha/\sqrt2G_F\sin^2\hat\theta_W)^{1/2}=80.22$\,GeV lies $0.18\%$
 $m_Z=m_W/\cos\hat\theta_W=91.50$\,GeV lies $0.34\%$ above $91.1880\pm0.0020$\,GeV~\cite{navas2024}. Tree level is scheme dependent: $m_Z\cos\hat\theta_W$
 gives 79.95\,GeV ($-0.52\%$) and the on-shell route from $\alpha(0)$, $G_F$ and $m_Z$ gives 80.94\,GeV ($+0.71\%$). Part~I's half per cent therefore
 holds only in the $\overline{\rm MS}$ route, and D8.3 and D8.4 are reported as tree-level Standard Model values (INFO); only the loop-level Standard
-Model reaches the experimental precision \chk{data:D8.3,D8.4}. Part~I's $\alpha\approx1/128$ at the split and its crossover are read from the
-measured $1/\hat\alpha(M_Z)$ and $m_H=125.11\pm0.11$\,GeV~\cite{atlas2023}, which lies above the end point of the first-order line between 70 and
-95\,GeV~\cite{kajantie1996}; the lattice crossover is at $T_c=159.5\pm1.5$\,GeV~\cite{donofrio}, and $\alpha$ runs to
-$1/137.035999177(21)$~\cite{codata2022}. These are consistency rows \chk{data:D8.5,D8.6}. \emph{Verdict:} \vd{holds as a reading}; none of it is a test.
+Model reaches the experimental precision \chk{data:D8.3,D8.4}. Part~I's $\alpha\approx1/128$ and its crossover are read from the measured
+$1/\hat\alpha(M_Z)$ (running to $1/137.035999177(21)$~\cite{codata2022}) and $m_H=125.11\pm0.11$\,GeV~\cite{atlas2023}, above the 70 to 95\,GeV end
+point of the first-order line~\cite{kajantie1996} (crossover at $T_c=159.5\pm1.5$\,GeV~\cite{donofrio}): consistency rows \chk{data:D8.5,D8.6}. \emph{Verdict:} \vd{holds as a reading}; none of it is a test.
 
 \paragraph{The rest.} Quantum content reaches but does not exceed Tsirelson's bound $2\sqrt2$, while the gates give 2 (Section~\ref{sec:holo}). The
 best value, $S=2.82759\pm0.00051$~\cite{poh2015}, lies $1.64\sigma$ below the bound, and the loophole-free $S=2.42\pm0.20$~\cite{hensen2015} lies inside
@@ -385,32 +380,24 @@ Bridge B, Section~\ref{sec:bmv}), the LOCC inequality~\cite{lpp}, the decoherenc
 Bridge B's decoherence itself (Section~\ref{sec:data-bridgeB}) and the sign of the drift of $\alpha$. Tensor modes, the light-edge Hawking glow and
 proton decay have bounds only; graviton clicks do not discriminate; nothing reaches the return of information.
 
-\paragraph{Choices made after seeing the data.} Several choices were made after the data were seen:
-\begin{itemize}[nosep,leftmargin=*]
-\item The kinds were assigned after a first scoring; twenty-four rows scored as OK in that first pass, and one FAIL (D4.3, now
-conditional), left the tally.
-\item DESI is scored on its least significant combination.
-\item Of overlapping data, Cassini, the ephemeris $\beta$, DESI's curvature and Shankar et al.'s efficiency are the ones scored.
-\item The lunar errors are read as one standard deviation.
-\item The Kerr test uses the upper end of each efficiency range.
-\item Bridge B passes a run below $\Gamma\tau=0.1$.
-\end{itemize}
-Model inputs: $f_b=10^{-3}$, 1.8\,Gyr for Oklo, 1300\,kg/m$^3$ for the molecules, the cluster separation at its lower bound. Two INFO verdicts depend
+\paragraph{Choices made after seeing the data.} The kinds were assigned after a first scoring; twenty-four rows scored as OK in that pass,
+and one FAIL (D4.3, now conditional), left the tally. DESI is scored on its least significant combination; of overlapping data, Cassini, the
+ephemeris $\beta$, DESI's curvature and Shankar et al.'s efficiency are scored; the lunar errors are read as $1\sigma$; the Kerr test uses the upper end
+of each efficiency range; Bridge B passes a run below $\Gamma\tau=0.1$. Model inputs: $f_b=10^{-3}$, 1.8\,Gyr for Oklo, 1300\,kg/m$^3$ for the molecules, the cluster separation at its lower bound. Two INFO verdicts depend
 on choices and are named for that reason: D7.2 passed only through a tolerance of ten (the factor is 5.8), and D8.3 and D8.4 meet 0.5\% only in the
 $\overline{\rm MS}$ route. No scored verdict depends on these choices.
 
-\paragraph{Caveats.} Rows read only through secondary sources: Cassini's $\gamma$ (the ADS abstract), MESSENGER's $\eta_N$ (the journal record and
-Fienga and Minazzoli's Table~5), the PDG values of $m_Z$, $\sin^2\hat\theta_W$ (as quoted in a 2025 preprint) and the 2017 $\hat\alpha(M_Z)$, the CODATA
-$\alpha$ (NIST tables), the interferometer parameters of Fein et al.\ (a later LUMI preprint, a review and the university's release) and the species
-and separations of Refs.~\cite{kovachy2015,xu2019} (a review and the preprint's figure). Model B's mapping of $w_0$ to the field speed is exact at
+\paragraph{Caveats.} Read only through secondary sources: Cassini's $\gamma$ (ADS abstract), MESSENGER's $\eta_N$ (journal record), the PDG and CODATA
+constants (PDG and NIST records, a 2025 preprint), Fein et al.'s interferometer parameters (a later preprint, a review, the university's release),
+and the species and separations of Refs.~\cite{kovachy2015,xu2019} (a review, the preprint's figure). Model B's mapping of $w_0$ to the field speed is exact at
 $z=0$, but CPL is not a thawing fit. The nucleosynthesis datum uses 2001 abundances; recent analyses reach parts per million by letting all couplings
 vary together~\cite{martins2021}, which a scalar that sets only $\alpha$ does not do. The GW250114 statement is qualitative.
 
 All numbers in this section come from \texttt{docs/simulation/predictions\_vs\_data.py} (74 rows; 30 of 33 scored, 1 of 2 conditional; 6 of 6
 method checks; about four seconds on one core).
 
-\paragraph{Verdict.} Of 33 scored confrontations with current data, 30 hold at 95\% and 3 fail. The three FAILs, evolving dark energy, the Hubble
-constant and a $2\sigma$ curvature, are correlated $\Lambda$CDM tensions that GUID inherits; the plateau inflation Part~I names fails conditionally on
-the spectral index. Twenty of the scored rows hold equally for general relativity and quantum mechanics, and twelve further rows hold only because
-the prediction was set from the datum. The thirteen GUID-specific rows (the scalar, Bridge B) all hold, at sensitivities far from GUID's effects. No
-existing datum tells GUID apart; the experiments of Section~\ref{sec:exp} can.
+\paragraph{Verdict.} Of 33 scored confrontations with current data, 30 hold at 95\% and 3 fail: evolving dark energy, the Hubble constant and a
+$2\sigma$ curvature, correlated $\Lambda$CDM tensions that GUID inherits. The plateau inflation Part~I names fails conditionally on the spectral index.
+Twenty scored rows hold equally for general relativity and quantum mechanics, twelve more hold only because the prediction was set from the datum,
+and the thirteen GUID-specific rows hold at sensitivities far from GUID's effects. No existing datum tells GUID apart; the experiments of
+Section~\ref{sec:exp} can.
