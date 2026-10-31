@@ -59,7 +59,7 @@ python3 docs/guid-v6/reproduce.py --data <folder with the two SPARC .mrt files>
 | `docs/simulation/bmv_witness.py` | 32 of 32 |
 | `docs/simulation/sparc_rotation.py` | 36 of 36 |
 | `docs/simulation/remnant_history.py` | 39 of 39 |
-| `docs/simulation/predictions_vs_data.py` | 6 of 6 numerical checks; 54 of 58 scored confrontations consistent at 95% (exits 1 by design) |
+| `docs/simulation/predictions_vs_data.py` | 6 of 6 numerical checks; 30 of 33 scored confrontations consistent at 95% (exits 1 by design) |
 
 - **SPARC data.** The tables (Lelli, McGaugh and Schombert 2016) are not redistributed. Their SHA-256 digests are in Appendix A, and
   the scripts check them before use.
