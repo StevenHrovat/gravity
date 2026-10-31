@@ -1078,7 +1078,7 @@ save(fig, "data_pulls.pdf")
 FIGS.append("data_pulls.pdf")
 
 # 2. the information scalar
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(TEXTW, 2.6), gridspec_kw={"width_ratios": [1, 1.3]})
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(TEXTW, 2.45), gridspec_kw={"width_ratios": [1, 1.3]})
 labels = [l for l, *_ in implied] + ["joint"]
 bounds = [abs(d) + Z95 * s for *_, d, s in implied] + [max(abs(d95[0]), abs(d95[1]))]
 for i, (l, b) in enumerate(zip(labels, bounds)):
@@ -1114,12 +1114,12 @@ a2.set_xlabel(r"coupling $|\lambda|=|d\ln\alpha/d\phi|$")
 a2.set_ylabel(r"$\dot\alpha/\alpha$ today, $10^{-18}$ yr$^{-1}$")
 a2.set_title("(b) allowed region, 95% (shaded)")
 fig.legend(*a2.get_legend_handles_labels(), loc="lower center", ncol=3, handlelength=1.6, columnspacing=1.2, borderaxespad=0.2)
-fig.tight_layout(w_pad=1.0, rect=(0, 0.09, 1, 1))
+fig.tight_layout(w_pad=1.0, rect=(0, 0.095, 1, 1))
 save(fig, "data_alpha_scalar.pdf")
 FIGS.append("data_alpha_scalar.pdf")
 
 # 3. cosmology
-fig, (b1, b2, b3) = plt.subplots(1, 3, figsize=(TEXTW, 2.2))
+fig, (b1, b2, b3) = plt.subplots(1, 3, figsize=(TEXTW, 2.05))
 zl = [("Moresco 2016", 0.4, 0.1), ("Jesus 2018", j_mean, j_sig), ("combined", zt_mean, zt_sig)]
 for i, (l, v, s) in enumerate(zl):
     b1.errorbar([v], [i], xerr=[[s], [s]], fmt="o", color=C2 if l == "combined" else C1, ms=4, lw=1.4)
@@ -1155,7 +1155,7 @@ save(fig, "data_cosmology.pdf")
 FIGS.append("data_cosmology.pdf")
 
 # 4. inflation (printed beside figure 6, 3.0 in wide)
-fig, ax = plt.subplots(figsize=(3.0, 2.95))
+fig, ax = plt.subplots(figsize=(3.0, 2.8))
 for (lab, ref, v, s), col, name in zip(ns_data, (C1, C3, C2), ("Planck 2018", "P-ACT", "P-ACT-LB")):
     ax.axvspan(v - Z95 * s, v + Z95 * s, color=col, alpha=0.16, lw=0)
     ax.axvline(v, color=col, lw=1.2, label=f"{name}, 95% band")
@@ -1176,7 +1176,7 @@ save(fig, "data_inflation.pdf")
 FIGS.append("data_inflation.pdf")
 
 # 5. Kerr efficiency and spins
-fig, (k1, k2) = plt.subplots(1, 2, figsize=(TEXTW, 2.45))
+fig, (k1, k2) = plt.subplots(1, 2, figsize=(TEXTW, 2.35))
 aa = np.linspace(-1, 0.99999, 800)
 k1.plot(aa, [eff(a) for a in aa], color=INK, lw=2, label=r"Kerr thin disk, $1-E_{\rm isco}$")
 k1.axhline(eff_max, color=INK2, lw=0.8, ls=":", label=f"$a\\to1$ limit, {eff_max:.3f}")
@@ -1203,7 +1203,7 @@ save(fig, "data_kerr.pdf")
 FIGS.append("data_kerr.pdf")
 
 # 6. Bridge B (printed beside figure 4, 3.2 in wide)
-fig, ax = plt.subplots(figsize=(3.2, 2.95))
+fig, ax = plt.subplots(figsize=(3.2, 2.8))
 Mg = np.logspace(-26, -12, 300)
 for rho, col, lab in ((2200.0, C1, "silica"), (19300.0, C2, "gold")):
     Rg = (3 * Mg / (4 * math.pi * rho)) ** (1 / 3)

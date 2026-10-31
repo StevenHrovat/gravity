@@ -181,10 +181,10 @@ not the existence, and both pass it, as a syndrome that never reads content must
 
 \emph{The cost of a generic state.} One random layer is $n$ Haar-random single-qubit gates and $n-1$ controlled-$Z$ gates on a dense
 vector of $2^n$ amplitudes of 16 bytes. The measured peak memory is the state plus a fixed 16\,MiB buffer: 1.016 times the state at
-$n=26$ (1\,GiB). A layer takes 0.0012\,s at $n=10$, 0.67\,s at $n=22$ and 15.6\,s at $n=26$, and the layer time per qubit grows as
-$2^{1.065n}$ over $n=18$ to 26. At $7.3\times10^{-9}$\,s per qubit and amplitude for one layer (the $n-1$ controlled-$Z$ gates folded
+$n=26$ (1\,GiB). A layer takes 0.0011\,s at $n=10$, 0.63\,s at $n=22$ and 15.5\,s at $n=26$, and the layer time per qubit grows as
+$2^{1.068n}$ over $n=18$ to 26. At $6.9\times10^{-9}$\,s per qubit and amplitude for one layer (the $n-1$ controlled-$Z$ gates folded
 in), on one core,
-$n=50$ needs 18\,PB for the state and about 13 years per layer, and $n=4000$ needs $10^{1205.3}$ bytes. The $2n+3=4099$ logical qubits of
+$n=50$ needs 18\,PB for the state and about 12 years per layer, and $n=4000$ needs $10^{1205.3}$ bytes. The $2n+3=4099$ logical qubits of
 Beauregard's circuit for a 2048-bit RSA modulus \cite{beauregard2003} need $10^{1235.1}$ bytes. Structured content stays cheap: B2 hosts
 4000 qubits as four dense 128\,MB matrices because its state is Gaussian, not because a 4000-qubit state is cheap, and stabiliser circuits run in polynomial time by the
 Gottesman--Knill theorem \cite{gottesman1998,aaronson2004}, which Section~\ref{sec:holocode} uses for codes of thousands of qubits.
@@ -199,7 +199,7 @@ replaced an $X$ on the top work qubit, which for $N=15$, $a=2$ keeps the orbit $
 
 \paragraph{Caveats.} These are classical emulations of hosting: a classical host carries generic content only at $2^n$ cost, so the
 Existence Turing machine of Section~\ref{sec:host} needs a quantum information half once its content is generic and large. The modular
-multiplications of B4 are exact permutation gates, not elementary-gate circuits. B1 stops at $N=24$ for memory. Wall times (one core, shared machine) are reported, not checked. All numbers in this section come from \url{docs/simulation/hosted_benchmarks.py} (53 of 53 checks, 492\,s on one core,
+multiplications of B4 are exact permutation gates, not elementary-gate circuits. B1 stops at $N=24$ for memory. Wall times (one core, shared machine) are reported, not checked. All numbers in this section come from \url{docs/simulation/hosted_benchmarks.py} (53 of 53 checks, 475\,s on one core,
 peak memory 1.9\,GB).
 
 \paragraph{Verdict.} The hosting construction \vd{holds} on four configurations with known answers (the Heisenberg energy to

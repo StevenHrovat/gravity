@@ -18,7 +18,7 @@
     "E0_bethe": -3.651093408937176,
     "bethe_residual": 8.881784197001252e-16,
     "matvecs": 0,
-    "seconds": 0.0019410930008234573
+    "seconds": 0.011663819000006015
    },
    "10": {
     "dim": 252,
@@ -31,7 +31,7 @@
     "E0_bethe": -4.515446354492044,
     "bethe_residual": 1.7763568394002505e-15,
     "matvecs": 0,
-    "seconds": 0.005241162999482185
+    "seconds": 0.0061009959999864805
    },
    "12": {
     "dim": 924,
@@ -44,7 +44,7 @@
     "E0_bethe": -5.387390917445206,
     "bethe_residual": 8.881784197001252e-16,
     "matvecs": 0,
-    "seconds": 0.11210048099928827
+    "seconds": 0.11844745499999476
    },
    "14": {
     "dim": 3432,
@@ -57,7 +57,7 @@
     "E0_bethe": -6.263549533547037,
     "bethe_residual": 1.7763568394002505e-15,
     "matvecs": 79,
-    "seconds": 0.009308793999480258
+    "seconds": 0.013283563999976877
    },
    "16": {
     "dim": 12870,
@@ -70,7 +70,7 @@
     "E0_bethe": -7.142296360616781,
     "bethe_residual": 1.7763568394002505e-15,
     "matvecs": 116,
-    "seconds": 0.06071794800027419
+    "seconds": 0.05900258400001235
    },
    "18": {
     "dim": 48620,
@@ -83,7 +83,7 @@
     "E0_bethe": -8.022749087033755,
     "bethe_residual": 3.552713678800501e-15,
     "matvecs": 116,
-    "seconds": 0.2920068020002873
+    "seconds": 0.28979687000000354
    },
    "20": {
     "dim": 184756,
@@ -96,7 +96,7 @@
     "E0_bethe": -8.904386529876442,
     "bethe_residual": 2.6645352591003757e-15,
     "matvecs": 154,
-    "seconds": 1.7831378439996115
+    "seconds": 1.6991112380000004
    },
    "22": {
     "dim": 705432,
@@ -109,7 +109,7 @@
     "E0_bethe": -9.786880651765706,
     "bethe_residual": 1.7763568394002505e-15,
     "matvecs": 154,
-    "seconds": 8.968181692000144
+    "seconds": 8.121478136000007
    },
    "24": {
     "dim": 2704156,
@@ -122,7 +122,7 @@
     "E0_bethe": -10.67001451653724,
     "bethe_residual": 1.7763568394002505e-15,
     "matvecs": 154,
-    "seconds": 41.14345364900055
+    "seconds": 39.73451584
    }
   },
   "extrapolation": {
@@ -215,8 +215,8 @@
     "<Sz_tot^2>": 0.9999999999999871
    }
   },
-  "seconds": 53.40140595599951,
-  "peak_rss_gb_so_far": 1.865884
+  "seconds": 51.12411149600001,
+  "peak_rss_gb_so_far": 1.864468
  },
  "B2": {
   "hamiltonian": "H = -sum Z_i Z_{i+1} - g sum X_i, periodic ring",
@@ -232,8 +232,10 @@
     "E0_per_site": -1.2732395774600866,
     "E0_per_site_minus_e_inf": -3.272492388184389e-08,
     "gap_single_particle_min": 0.0015707962864221154,
-    "svd_seconds": 26.338866369000243,
+    "svd_seconds": 27.118437648999986,
     "c_casimir": 0.5000000051592527,
+    "c_casimir_float_error": 7.79359572101391e-09,
+    "c_casimir_expected_at_L": 0.5000000089957332,
     "entropy": {
      "l": [
       1,
@@ -341,7 +343,7 @@
       1.667082572640426,
       1.670111309631567
      ],
-     "seconds": 5.673686035999708
+     "seconds": 5.691882832999966
     },
     "cc_fit": {
      "window": [
@@ -369,7 +371,7 @@
      "fault_Z1_T_parity": -1.0,
      "fault_Z1_I_parity": -1.0
     },
-    "seconds": 40.18564975100071
+    "seconds": 40.78336020699999
    },
    "0.5": {
     "E0": -4254.17763989346,
@@ -378,7 +380,7 @@
     "E0_per_site": -1.0635444099733649,
     "E0_per_site_minus_e_inf": 0.0,
     "gap_single_particle_min": 1.0000006168500528,
-    "svd_seconds": 28.347771171000204,
+    "svd_seconds": 27.125195710000014,
     "entropy": {
      "l": [
       1,
@@ -408,7 +410,7 @@
       0.6989875284237512,
       0.6989875284252587
      ],
-     "seconds": 2.08763742300016
+     "seconds": 2.1212969860000044
     },
     "area_law": {
      "S_L_over_2": 0.6989875284252587,
@@ -427,7 +429,7 @@
      "fault_Z1_T_parity": -1.0,
      "fault_Z1_I_parity": -1.0
     },
-    "seconds": 38.12823505400047
+    "seconds": 36.49908394200003
    },
    "1.5": {
     "E0": -6687.704886144778,
@@ -436,7 +438,7 @@
     "E0_per_site": -1.6719262215361945,
     "E0_per_site_minus_e_inf": 4.440892098500626e-16,
     "gap_single_particle_min": 1.0000018505490174,
-    "svd_seconds": 26.097175244999562,
+    "svd_seconds": 26.002279249000026,
     "entropy": {
      "l": [
       1,
@@ -466,7 +468,7 @@
       0.30698251108031743,
       0.30698251108165103
      ],
-     "seconds": 2.074349004999931
+     "seconds": 2.110157779000019
     },
     "area_law": {
      "S_L_over_2": 0.30698251108165103,
@@ -485,11 +487,11 @@
      "fault_Z1_T_parity": -1.0,
      "fault_Z1_I_parity": -1.0
     },
-    "seconds": 36.06188340599965
+    "seconds": 35.91333289900001
    }
   },
-  "seconds": 115.48058466600014,
-  "peak_rss_gb_so_far": 1.865884,
+  "seconds": 114.28060032399998,
+  "peak_rss_gb_so_far": 1.864468,
   "memory_note": "dense 4000 x 4000 float64 matrices (128 MB each): K, U, V^T, G"
  },
  "B3": {
@@ -518,49 +520,49 @@
     "dim": 70,
     "nnz": 280,
     "matvecs": 0,
-    "seconds": 0.005808000999422802
+    "seconds": 0.0055757599999992635
    },
    "10": {
     "dim": 252,
     "nnz": 1260,
     "matvecs": 0,
-    "seconds": 0.046052176000557665
+    "seconds": 0.04346482500000093
    },
    "12": {
     "dim": 924,
     "nnz": 5544,
     "matvecs": 0,
-    "seconds": 1.1862585909993868
+    "seconds": 1.1641199089999645
    },
    "14": {
     "dim": 3432,
     "nnz": 24024,
     "matvecs": 1390,
-    "seconds": 0.11583458099994459
+    "seconds": 0.1431174830000259
    },
    "16": {
     "dim": 12870,
     "nnz": 102960,
     "matvecs": 1765,
-    "seconds": 0.8501845410000897
+    "seconds": 0.7916043150000291
    },
    "18": {
     "dim": 48620,
     "nnz": 437580,
     "matvecs": 2250,
-    "seconds": 4.542043073000059
+    "seconds": 4.436695424999982
    },
    "20": {
     "dim": 184756,
     "nnz": 1847560,
     "matvecs": 2845,
-    "seconds": 24.344783487999848
+    "seconds": 23.855405372999996
    },
    "22": {
     "dim": 705432,
     "nnz": 7759752,
     "matvecs": 3629,
-    "seconds": 160.2297385390002
+    "seconds": 151.97752627000006
    }
   },
   "gaps_M_over_g": {
@@ -1022,6 +1024,7 @@
      0.04660544666505555
     ],
     "sigma_stat": 0.01634532021359949,
+    "sigma_stat_meaning": "propagated N-extrapolation uncertainty",
     "sigma_sys": 0.0354258526014134,
     "sigma": 0.03901487569404999,
     "alternatives": {
@@ -1030,6 +1033,8 @@
      "cubic": 0.5699385116012753,
      "no linear term": 0.5503529212764807
     },
+    "chi2_main_fit": 0.04179914513198223,
+    "dof_main_fit": 3,
     "x_used": [
      4,
      3,
@@ -1049,6 +1054,7 @@
      0.05271338521136577
     ],
     "sigma_stat": 0.01244908171262554,
+    "sigma_stat_meaning": "propagated N-extrapolation uncertainty",
     "sigma_sys": 0.028151198277196365,
     "sigma": 0.030780994134849693,
     "alternatives": {
@@ -1056,6 +1062,8 @@
      "quadratic, x >= 1": 0.5794469773252975,
      "cubic": 0.5670445587292848
     },
+    "chi2_main_fit": 0.18458348394821442,
+    "dof_main_fit": 3,
     "x_used": [
      4,
      3,
@@ -1078,7 +1086,7 @@
    "computed": 0.6133882725145927,
    "difference": 7.87888919049351e-05,
    "sigma_N": 0.008742161629005207,
-   "seconds": 63.196884126999976
+   "seconds": 62.018141780000065
   },
   "witnesses": {
    "ground state": {
@@ -1106,8 +1114,8 @@
    "massive_case": "not run: the ED continuum error (several per cent) cannot test the MPS values (5e-5) meaningfully",
    "chiral_condensate": "not run: needs the free-theory subtraction and a continuum control that N <= 22 does not give"
   },
-  "seconds": 257.0533579559997,
-  "peak_rss_gb_so_far": 1.89422
+  "seconds": 246.64905378000003,
+  "peak_rss_gb_so_far": 1.893132
  },
  "B4": {
   "existence": "unit norm and work register value y < N (the computational subspace the modular multiplication permutes)",
@@ -1218,7 +1226,7 @@
     ],
     "mean_P_factor_over_bases": 0.42857142857142855,
     "mean_P_period_over_bases": 0.5,
-    "seconds": 0.00418278699999064
+    "seconds": 0.005170556999928522
    },
    "21": {
     "known_factors": [
@@ -1352,7 +1360,7 @@
     ],
     "mean_P_factor_over_bases": 0.2112157157067715,
     "mean_P_period_over_bases": 0.43776268103726507,
-    "seconds": 0.029556466000030923
+    "seconds": 0.029397284000083346
    },
    "33": {
     "known_factors": [
@@ -1542,7 +1550,7 @@
     ],
     "mean_P_factor_over_bases": 0.22029476415811358,
     "mean_P_period_over_bases": 0.4986647935299707,
-    "seconds": 0.5753148889998556
+    "seconds": 0.593069560999993
    },
    "35": {
     "known_factors": [
@@ -1760,7 +1768,7 @@
     ],
     "mean_P_factor_over_bases": 0.30331995659862715,
     "mean_P_period_over_bases": 0.41192550067565514,
-    "seconds": 0.6602462820001165
+    "seconds": 0.6564002609999307
    },
    "39": {
     "known_factors": [
@@ -1978,7 +1986,7 @@
     ],
     "mean_P_factor_over_bases": 0.303328443598157,
     "mean_P_period_over_bases": 0.4119255006756551,
-    "seconds": 0.6625371169993741
+    "seconds": 0.6530729569999494
    },
    "51": {
     "known_factors": [
@@ -2252,7 +2260,7 @@
     ],
     "mean_P_factor_over_bases": 0.4838709677419355,
     "mean_P_period_over_bases": 0.5,
-    "seconds": 0.9195080780000353
+    "seconds": 0.917056984999931
    },
    "55": {
     "known_factors": [
@@ -2582,7 +2590,7 @@
     ],
     "mean_P_factor_over_bases": 0.31973624607536155,
     "mean_P_period_over_bases": 0.4553474237890316,
-    "seconds": 1.2015262859995346
+    "seconds": 1.246856536999985
    },
    "57": {
     "known_factors": [
@@ -2884,7 +2892,7 @@
     ],
     "mean_P_factor_over_bases": 0.1795695090713323,
     "mean_P_period_over_bases": 0.4213526071153337,
-    "seconds": 1.062088521000078
+    "seconds": 1.1084296329999006
    },
    "143": {
     "known_factors": [
@@ -2969,7 +2977,7 @@
     ],
     "mean_P_factor_over_bases": 0.23224395173725226,
     "mean_P_period_over_bases": 0.3655158166797744,
-    "seconds": 31.88107779300026
+    "seconds": 28.54907821100005
    }
   },
   "iqft_gate_vs_fft_max_abs_diff": 1.825337997136398e-16,
@@ -2979,136 +2987,136 @@
      "state_bytes": 16384,
      "peak_bytes": 54855,
      "peak_over_state": 3.34808349609375,
-     "seconds_per_layer": 0.0011916960002054111,
-     "seconds_per_gate": 0.00011916960002054112,
+     "seconds_per_layer": 0.0011179340000353477,
+     "seconds_per_gate": 0.00011179340000353478,
      "norm_minus_1": -3.6637359812630166e-15
     },
     "11": {
      "state_bytes": 32768,
      "peak_bytes": 100488,
      "peak_over_state": 3.066650390625,
-     "seconds_per_layer": 0.0012591610002345988,
-     "seconds_per_gate": 0.00011446918183950898,
+     "seconds_per_layer": 0.0012764149998929497,
+     "seconds_per_gate": 0.00011603772726299543,
      "norm_minus_1": 0.0
     },
     "12": {
      "state_bytes": 65536,
      "peak_bytes": 198760,
      "peak_over_state": 3.0328369140625,
-     "seconds_per_layer": 0.0015619230007359874,
-     "seconds_per_gate": 0.00013016025006133228,
+     "seconds_per_layer": 0.0014695859999847016,
+     "seconds_per_gate": 0.00012246549999872514,
      "norm_minus_1": -1.1102230246251565e-16
     },
     "13": {
      "state_bytes": 131072,
      "peak_bytes": 395368,
      "peak_over_state": 3.01641845703125,
-     "seconds_per_layer": 0.003068746000280953,
-     "seconds_per_gate": 0.00023605738463699637,
+     "seconds_per_layer": 0.0018035929999768996,
+     "seconds_per_gate": 0.00013873792307514613,
      "norm_minus_1": -2.886579864025407e-15
     },
     "14": {
      "state_bytes": 262144,
      "peak_bytes": 788584,
      "peak_over_state": 3.008209228515625,
-     "seconds_per_layer": 0.0025099060003412887,
-     "seconds_per_gate": 0.00017927900002437776,
+     "seconds_per_layer": 0.002436597000041729,
+     "seconds_per_gate": 0.00017404264286012352,
      "norm_minus_1": -5.551115123125783e-15
     },
     "15": {
      "state_bytes": 524288,
      "peak_bytes": 1312872,
      "peak_over_state": 2.5041046142578125,
-     "seconds_per_layer": 0.004090940999958548,
-     "seconds_per_gate": 0.00027272939999723654,
+     "seconds_per_layer": 0.0038906580000457325,
+     "seconds_per_gate": 0.0002593772000030488,
      "norm_minus_1": -5.551115123125783e-16
     },
     "16": {
      "state_bytes": 1048576,
      "peak_bytes": 2622584,
      "peak_over_state": 2.5010910034179688,
-     "seconds_per_layer": 0.008149598999807495,
-     "seconds_per_gate": 0.0005093499374879684,
+     "seconds_per_layer": 0.0073481210000636565,
+     "seconds_per_gate": 0.00045925756250397853,
      "norm_minus_1": -3.3306690738754696e-15
     },
     "17": {
      "state_bytes": 2097152,
      "peak_bytes": 5244024,
      "peak_over_state": 2.5005455017089844,
-     "seconds_per_layer": 0.016325227000379527,
-     "seconds_per_gate": 0.0009603074706105605,
+     "seconds_per_layer": 0.016412371999990683,
+     "seconds_per_gate": 0.0009654336470582755,
      "norm_minus_1": -5.773159728050814e-15
     },
     "18": {
      "state_bytes": 4194304,
      "peak_bytes": 10486904,
      "peak_over_state": 2.500272750854492,
-     "seconds_per_layer": 0.032180111999878136,
-     "seconds_per_gate": 0.0017877839999932298,
+     "seconds_per_layer": 0.03242841100006899,
+     "seconds_per_gate": 0.0018015783888927217,
      "norm_minus_1": -2.886579864025407e-15
     },
     "19": {
      "state_bytes": 8388608,
      "peak_bytes": 20972696,
      "peak_over_state": 2.5001401901245117,
-     "seconds_per_layer": 0.06325554800059763,
-     "seconds_per_gate": 0.0033292393684525067,
+     "seconds_per_layer": 0.06235421799999585,
+     "seconds_per_gate": 0.0032818009473682026,
      "norm_minus_1": -4.440892098500626e-15
     },
     "20": {
      "state_bytes": 16777216,
      "peak_bytes": 33555880,
      "peak_over_state": 2.0000863075256348,
-     "seconds_per_layer": 0.12957879999976285,
-     "seconds_per_gate": 0.006478939999988142,
+     "seconds_per_layer": 0.12751365200006148,
+     "seconds_per_gate": 0.006375682600003074,
      "norm_minus_1": -4.218847493575595e-15
     },
     "21": {
      "state_bytes": 33554432,
      "peak_bytes": 50333416,
      "peak_over_state": 1.5000526905059814,
-     "seconds_per_layer": 0.27554673700069543,
-     "seconds_per_gate": 0.013121273190509306,
+     "seconds_per_layer": 0.2709732029999259,
+     "seconds_per_gate": 0.012903485857139328,
      "norm_minus_1": -2.4424906541753444e-15
     },
     "22": {
      "state_bytes": 67108864,
      "peak_bytes": 83888584,
      "peak_over_state": 1.2500373125076294,
-     "seconds_per_layer": 0.6698179639997761,
-     "seconds_per_gate": 0.030446271090898914,
+     "seconds_per_layer": 0.6341502110000192,
+     "seconds_per_gate": 0.028825009590909965,
      "norm_minus_1": -2.5979218776228663e-14
     },
     "23": {
      "state_bytes": 134217728,
      "peak_bytes": 150998920,
      "peak_over_state": 1.1250296235084534,
-     "seconds_per_layer": 1.48888423399967,
-     "seconds_per_gate": 0.06473409713042043,
+     "seconds_per_layer": 1.5408602349999683,
+     "seconds_per_gate": 0.06699392326086819,
      "norm_minus_1": -1.1102230246251565e-15
     },
     "24": {
      "state_bytes": 268435456,
      "peak_bytes": 285219592,
      "peak_over_state": 1.0625257790088654,
-     "seconds_per_layer": 3.250371408000319,
-     "seconds_per_gate": 0.1354321420000133,
+     "seconds_per_layer": 3.677243426000018,
+     "seconds_per_gate": 0.15321847608333408,
      "norm_minus_1": -4.809486142676178e-13
     },
     "25": {
      "state_bytes": 536870912,
      "peak_bytes": 553660936,
      "peak_over_state": 1.0312738567590714,
-     "seconds_per_layer": 7.1226509889993395,
-     "seconds_per_gate": 0.28490603955997357,
+     "seconds_per_layer": 6.70678739899995,
+     "seconds_per_gate": 0.268271495959998,
      "norm_minus_1": -1.1102230246251565e-14
     },
     "26": {
      "state_bytes": 1073741824,
      "peak_bytes": 1090543624,
      "peak_over_state": 1.0156478956341743,
-     "seconds_per_layer": 15.61526019899975,
-     "seconds_per_gate": 0.6005869307307596,
+     "seconds_per_layer": 15.501794565999944,
+     "seconds_per_gate": 0.5962228679230748,
      "norm_minus_1": -1.2545520178264269e-14
     }
    },
@@ -3117,31 +3125,31 @@
      18,
      26
     ],
-    "slope": 1.0649938655119195,
-    "intercept": -28.46302663362734
+    "slope": 1.0681829212418117,
+    "intercept": -28.533816354309966
    },
-   "seconds_per_gate_per_amplitude": 7.258956692433098e-09,
+   "seconds_per_gate_per_amplitude": 6.872476153918158e-09,
    "extrapolation": {
     "50": {
      "log10_state_bytes": 16.255619765854984,
-     "log10_seconds_per_layer": 8.611343992907457,
-     "log10_years_per_layer": 1.1122400258222296
+     "log10_seconds_per_layer": 8.587583029140475,
+     "log10_years_per_layer": 1.0884790620552476
     },
     "4000": {
      "log10_state_bytes": 1205.3241026385806,
-     "log10_seconds_per_layer": 1199.5829168526252,
-     "log10_years_per_layer": 1192.08381288554
+     "log10_seconds_per_layer": 1199.5591558888582,
+     "log10_years_per_layer": 1192.060051921773
     },
     "4099": {
      "log10_state_bytes": 1235.1260722093148,
-     "log10_seconds_per_layer": 1229.395504350348,
-     "log10_years_per_layer": 1221.8964003832627
+     "log10_seconds_per_layer": 1229.3717433865809,
+     "log10_years_per_layer": 1221.8726394194957
     }
    },
-   "note": "wall times measured single-threaded on a shared 4-core machine; memory = 16 bytes per amplitude (complex128)"
+   "note": "wall times measured single-threaded on a shared 4-core machine; memory = 16 bytes per amplitude (complex128); seconds_per_gate = seconds_per_layer / n, i.e. per qubit for one layer with the n - 1 CZ gates folded in, so seconds_per_gate_per_amplitude is per qubit and amplitude for one layer"
   },
-  "seconds": 66.3465666129996,
-  "peak_rss_gb_so_far": 1.89422
+  "seconds": 63.0002103459999,
+  "peak_rss_gb_so_far": 1.893132
  },
  "meta": {
   "script": "docs/simulation/hosted_benchmarks.py",
@@ -3151,8 +3159,8 @@
   "scipy": "1.18.1",
   "blas_threads": "1",
   "cpu_count": 4,
-  "total_seconds": 492.2888413189994,
-  "peak_rss_gb": 1.89422,
+  "total_seconds": 475.06071368500005,
+  "peak_rss_gb": 1.893132,
   "checks_passed": 53,
   "checks_total": 53
  },

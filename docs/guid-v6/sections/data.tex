@@ -33,8 +33,8 @@ inconclusive, or without a usable uncertainty; reported, not scored.
 \end{itemize}
 Were GUID right and the 33 scored data independent, $0.05\times33=1.7$ FAILs would occur by chance. They are not independent: D3.3 and D3.7 both use
 DESI DR2 BAO with the CMB, D3.4 rests on the CMB fit of $\Lambda$CDM, and the conditional D4.3 uses the CMB with DESI DR1 BAO. Every measured number
-was checked against the arXiv text or abstract of its source; the rows read only through secondary sources are listed under Caveats. Six checks
-of the script's numerics (closed forms against limits and quadrature, the Kerr efficiency at $a=-1,0,1$) all pass.
+was checked against the arXiv text or abstract of its source; rows read only through secondary sources are listed under Caveats. Six checks of
+the script's numerics all pass.
 
 \subsection{Master table}\label{sec:data-table}
 
@@ -53,8 +53,8 @@ potential. What to look for: the general-relativistic rows (D2) scatter within $
 
 {\footnotesize\setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}p{0.056\linewidth}p{0.30\linewidth}p{0.397\linewidth}p{0.107\linewidth}p{0.058\linewidth}@{}}
-\caption{Scored, conditional and consistency rows (pull: Eq.~\eqref{eq:pull}, datum minus GUID; ``in'': the GUID value lies inside the stated
-region; data at one standard deviation unless stated). IDs are rows of \texttt{predictions\_vs\_data.json}.}\label{tab:data-master}\\
+\caption{Scored, conditional and consistency rows (pull: Eq.~\eqref{eq:pull}; ``in'': inside the stated region; data at $1\sigma$ unless
+stated). IDs are rows of \texttt{predictions\_vs\_data.json}.}\label{tab:data-master}\\
 \toprule
 ID & GUID prediction & Datum and source & Pull/test & \\
 \midrule
@@ -161,7 +161,7 @@ $\alpha$ does not grow is therefore \vd{derived} for the action as written, but 
 $f_b=6.0\times10^{-5}$. Even with $f_b=10^{-3}$, a generous upper value for the electromagnetic self-energy of nucleons, and $|\lambda|$ at
 the bound~\eqref{eq:data-lambda}, the drift is $-9.6\times10^{-24}$ per year, four orders of magnitude below the clocks.
 
-\paragraph{Model B: a slowly rolling scalar.} To ask what the data can say at all, we give the scalar a linear potential $V=V_0-s\phi$ and make it a
+\paragraph{Model B: a slowly rolling scalar.} We give the scalar a linear potential $V=V_0-s\phi$ and make it a
 thawing dark energy, frozen early by Hubble friction. A canonical scalar has $\rho_\phi+p_\phi=\bar M_P^2\dot\phi^2$, so $\phi'^2=3\Omega_\phi(1+w)$
 exactly. For small slopes the history has a universal shape, and each $\alpha$ datum measures the present drift $d=\dot\alpha/\alpha|_0$:
 \begin{equation}\label{eq:data-G}
@@ -177,8 +177,8 @@ and nucleosynthesis~\cite{avelino2001} are three to six orders weaker. Their wei
 \paragraph{The sign.} The data say nothing about it. The clocks dominate; their central value is positive at $0.7\sigma$; $P(d<0)=0.24$; and
 the 95\% interval $[-3.1,6.7]\times10^{-19}$ per year holds both signs. In Model B, drift and coupling are linked only by the field speed,
 $d=\lambda H_0\phi'_0$. If the scalar drove the evolving dark energy DESI prefers, with $1+w_0=0.162$ and so $\phi'_0=0.577$, the clocks would
-demand $|\lambda|<1.7\times10^{-8}$, about two thousand times below the free-fall bound. For $1+w_0=10^{-3}$ they would demand
-$|\lambda|<2.1\times10^{-7}$ \chk{data:D1.12} (Fig.~\ref{fig:data-alpha}b). \emph{Verdict:} all eight scored rows hold. Free fall \vd{holds}, and the
+demand $|\lambda|<1.7\times10^{-8}$, about two thousand times below the free-fall bound ($2.1\times10^{-7}$ for
+$1+w_0=10^{-3}$) \chk{data:D1.12} (Fig.~\ref{fig:data-alpha}b). \emph{Verdict:} all eight scored rows hold. Free fall \vd{holds}, and the
 coupling is bounded by~\eqref{eq:data-lambda}. The negative drift is \vd{derived} for the action as written and \vd{untested}; where a drift could
 be seen, its sign is not predicted.
 
@@ -197,8 +197,8 @@ $10^{-7}$.}
 
 Minimal coupling (Section~\ref{sec:fix}) gives the post-Newtonian limit of general relativity \tagP: $\gamma=\beta=1$, a Nordtvedt parameter
 $\eta_N=4(\beta-1)-(\gamma-1)=0$~\cite{fienga2024}, the gravitational redshift of the lapse, and massless classical waves at $c$ with two tensor
-polarisations. Of overlapping data one row is scored: Cassini (D2.1) for $\gamma$, since its tracking data also enter the ephemerides (D2.2, INFO),
-and the ephemeris combination (D2.3) for $\beta$, since it contains MESSENGER's (D2.4, INFO). All ten scored rows hold. The largest pull is
+polarisations. Of overlapping data, Cassini (D2.1) is scored for $\gamma$ and the ephemeris combination (D2.3) for $\beta$; D2.2 and D2.4 are
+INFO. All ten scored rows hold. The largest pull is
 $1.06\sigma$ (lunar $\gamma$), and $\chi^2=4.68$ for 8 Gaussian pulls gives $p=0.79$, indicative only because the three lunar rows come from one
 fit \chk{data:D2}. The graviton bound is at 90\% credibility, and the GWTC-3 tests also find no non-tensor polarisation~\cite{ligo2025a}.
 \emph{Verdict:} \vd{holds}, and adds nothing to general relativity.
@@ -207,12 +207,10 @@ fit \chk{data:D2}. The graviton bound is at 90\% credibility, and the GWTC-3 tes
 
 GUID's late universe is flat $\Lambda$CDM settling into de Sitter expansion, $H\to H_\infty=\sqrt{\Omega_\Lambda}H_0$ (Section~\ref{sec:cosmo}).
 Acceleration starts at $z_t=(2\Omega_\Lambda/\Omega_m)^{1/3}-1$: $0.632\pm0.018$ for Planck's $\Omega_m=0.315\pm0.007$~\cite{planck18}, or $0.664\pm0.009$
-for DESI DR2 with the CMB~\cite{desi2}. The published determinations of $z_t$ do not agree with each other. Cosmic chronometers give
-$0.4\pm0.1$~\cite{moresco2016} ($-2.3\sigma$). $H(z)$ compilations give $0.72\pm0.05$ for $H_0=68\pm2.8$ ($+1.7\sigma$) and $0.84\pm0.03$ for
-$H_0=73.24\pm1.74$ ($+6.0\sigma$); the authors note that the value depends mainly on the $H_0$ prior~\cite{farooq2017}. Supernovae with $H(z)$ give
-$0.883\pm0.110$ ($+2.2\sigma$), the mean of three parametrisations with half their spread as a systematic error~\cite{jesus2018}. This test is
-therefore \vd{inconclusive} and is reported as INFO, with the individual pulls in rows D3.1a to D3.1d \chk{data:D3.1}. The de Sitter rate,
-$H_\infty=55.79\pm0.60\,\mathrm{km\,s^{-1}Mpc^{-1}}$ (Planck), is derived and exists only if $w=-1$ \chk{data:D3.2}.
+for DESI DR2 with the CMB~\cite{desi2}. Its published determinations disagree with each other: $0.4\pm0.1$ from cosmic
+chronometers~\cite{moresco2016} ($-2.3\sigma$), $0.72\pm0.05$ or $0.84\pm0.03$ from $H(z)$ for $H_0=68$ or 73.24, the value depending mainly on that
+prior~\cite{farooq2017} ($+1.7$, $+6.0\sigma$), and $0.883\pm0.110$ from supernovae with $H(z)$~\cite{jesus2018} ($+2.2\sigma$). The test is
+\vd{inconclusive} (INFO) \chk{data:D3.1}.
 
 The direct test is the equation of state. DESI DR2 fits $w=w_0+w_a(1-a)$. With the CMB it finds $w_0=-0.42\pm0.21$ and $w_a=-1.75\pm0.58$, which
 disfavours $\Lambda$CDM at $3.1\sigma$; with the three supernova samples it finds 2.8, 3.8 and $4.2\sigma$~\cite{desi2}. A recalibration of the DES
@@ -265,14 +263,13 @@ A superposition kept above the line would show Bridge B; existing ones fall shor
 GUID's black holes are Kerr's (Section~\ref{sec:bh}). Christodoulou's formula~\cite{christodoulou} has no solution above $|a|=1$, spin energy is
 extracted in the ergosphere, and the area never shrinks classically. Matter reaching the innermost stable orbit of a thin disk radiates
 $\epsilon(a)=1-E_{\rm isco}(a)$~\cite{bpt}: $0.0377$ for $a=-1$ (retrograde), $0.0572$ for $a=0$, $0.423$ for $a\to1$ \chk{data:D5}. The Soltan argument
-compares the light of all quasars with the mass in black holes today. Its determinations rest on similar inputs, so one is scored:
-$\epsilon=0.075$ to $0.094$~\cite{shankar2009}; the older $0.04$ to $0.16$~\cite{marconi2004} and the lower limit $0.1$ for luminous
-quasars~\cite{yu2002} are INFO. Individual disk fits give a mean of $0.089$~\cite{davis2011}. Both scored values lie below the Kerr maximum and imply
+compares the light of all quasars with the mass in black holes today. It gives $\epsilon=0.075$ to $0.094$~\cite{shankar2009} (the
+older $0.04$ to $0.16$~\cite{marconi2004} and $>0.1$~\cite{yu2002} rest on similar inputs and are INFO); individual disk fits give a mean of
+$0.089$~\cite{davis2011}. Both scored values lie below the Kerr maximum and imply
 typical spins of $0.40$ to $0.62$ and $0.58$ (Fig.~\ref{fig:data-kerr}a). The curve bounds the efficiency only from above: radiatively inefficient flows can
 fall below $5.7\%$. All 61 measured spins of the compilation of Reynolds~\cite{reynolds2021}, 36 supermassive and 25 stellar, lie in $[-1,1]$ at 90\%.
 They are measured with Kerr models capped at $a=0.998$, so this row cannot fail and is a consistency row. The ringdown of GW150914 shows an area
-increase with probability 0.97~\cite{isi2021}, and that of GW250114 shows it ``to high credibility''~\cite{ligo2025b} \chk{data:D5.6,D5.7}. Hawking
-radiation of a solar-mass hole ($6.2\times10^{-8}$\,K) is unobservable. \emph{Verdict:} \vd{holds}, with general relativity.
+increase with probability 0.97~\cite{isi2021}, and that of GW250114 shows it ``to high credibility''~\cite{ligo2025b} \chk{data:D5.6,D5.7}. \emph{Verdict:} \vd{holds}, with general relativity.
 
 \begin{figure}[!t]
 \centering
@@ -317,8 +314,8 @@ Cs atoms~\cite{xu2019} & $2.2\times10^{-25}$ & 3.9\,$\mu$m & 20 & $5.7\times10^{
 All four runs pass, with margins of $4\times10^{12}$ to $4\times10^{15}$ (Table~\ref{tab:data-bridgeB}) \chk{data:D6.1-D6.4}. The smearing length is
 free in Bridge B. The absence of spontaneous radiation in an underground germanium detector requires $R_0>0.54\times10^{-10}$\,m with probability
 0.95~\cite{donadi}, which excludes Penrose's parameter-free choice ($5\times10^{-12}$\,m for germanium). Current bounds are summarised as
-$R_0\gtrsim4\times10^{-10}$\,m~\cite{figurato}. Bridge B adopts $R_0\ge4\times10^{-10}$\,m from these bounds, so D6.5 to D6.7 are consistency rows; at that
-smearing the bulk term still exceeds the granular term of the $10^{-14}$\,kg sphere a thousandfold \chk{data:D6.5,D6.6,data:method}. Bridge B's diffusion,
+$R_0\gtrsim4\times10^{-10}$\,m~\cite{figurato}. Bridge B adopts $R_0\ge4\times10^{-10}$\,m from them (consistency rows), at which the bulk term still exceeds
+the granular term of the $10^{-14}$\,kg sphere a thousandfold \chk{data:D6.5,D6.6,data:method}. Bridge B's diffusion,
 $l_P^2D_2=m_P^2/c=1.6\times10^{-24}\,\mathrm{kg^2\,s/m}$, lies inside the window $10^{-40}$ to $10^{-9}$ that torsion balances and molecule interferometry
 leave~\cite{osswd}. The discrete version, $m_Pt_P=1.2\times10^{-51}$\,kg\,s, lies below its window and is excluded, as Part~I states \chk{data:D6.8,D6.9}.
 
@@ -334,9 +331,8 @@ superposition made, and tested by none: \vd{live}, \vd{untested}.
 
 \paragraph{Contained remnants.} The contained route makes dark matter of primordial black holes of $10^{14}$ to $10^{19}$\,kg from the start
 (Section~\ref{sec:darkmatter}). For a monochromatic mass function, Gorton and Green~\cite{gortongreen} find the window from about $10^{17}$ to
-$10^{22}$\,g open for all of the dark matter; it narrows for extended mass functions. INTEGRAL/SPI gamma rays and Voyager~1's positrons and
-electrons, products of Hawking evaporation, close it below about $10^{17}$\,g. Subaru-HSC microlensing of M31, blind below about $10^{22}$\,g
-through wave optics, bounds it above. Part~I adopted its window from this one, so D7.1 is a consistency row. The mass evaporated within
+$10^{22}$\,g open for all of the dark matter; it narrows for extended mass functions. Hawking evaporation products (INTEGRAL/SPI gamma rays,
+Voyager~1 electrons and positrons) close it below, Subaru-HSC microlensing of M31 above. Part~I adopted its window from this one (consistency). The mass evaporated within
 13.8\,Gyr, $1.7\times10^{11}$\,kg, is a factor 5.8 below the ``about $10^{15}$\,g'' of Carr et al.~\cite{carr2021}, a statement without an uncertainty
 (INFO) \chk{data:D7.1-D7.3}. \emph{Verdict:} \vd{live}; the glow predicted at the light edge is what bounds the window.
 
@@ -347,9 +343,8 @@ electroweak split the W and Z take their masses from $v=(\sqrt2G_F)^{-1/2}=246.2
 $1/\hat\alpha(M_Z)=127.950\pm0.017$~\cite{erler2017} and $\sin^2\hat\theta_W(M_Z)=0.23129\pm0.00004$~\cite{navas2024}, the tree-level
 $m_W=(\pi\hat\alpha/\sqrt2G_F\sin^2\hat\theta_W)^{1/2}=80.22$\,GeV lies $0.18\%$ below $80.369\pm0.013$\,GeV (without CDF)~\cite{lhctev2024}, and
 $m_Z=m_W/\cos\hat\theta_W=91.50$\,GeV lies $0.34\%$ above $91.1880\pm0.0020$\,GeV~\cite{navas2024}. Tree level is scheme dependent: $m_Z\cos\hat\theta_W$
-gives 79.95\,GeV ($-0.52\%$) and the on-shell route from $\alpha(0)$, $G_F$ and $m_Z$ gives 80.94\,GeV ($+0.71\%$). Part~I's half per cent therefore
-holds only in the $\overline{\rm MS}$ route, and D8.3 and D8.4 are reported as tree-level Standard Model values (INFO); only the loop-level Standard
-Model reaches the experimental precision \chk{data:D8.3,D8.4}. Part~I's $\alpha\approx1/128$ and its crossover are read from the measured
+gives 79.95\,GeV ($-0.52\%$) and the on-shell route from $\alpha(0)$, $G_F$ and $m_Z$ gives 80.94\,GeV ($+0.71\%$). Part~I's half per cent holds only in
+the $\overline{\rm MS}$ route, so D8.3 and D8.4 are tree-level Standard Model values (INFO) \chk{data:D8.3,D8.4}. Part~I's $\alpha\approx1/128$ and its crossover are read from the measured
 $1/\hat\alpha(M_Z)$ (running to $1/137.035999177(21)$~\cite{codata2022}) and $m_H=125.11\pm0.11$\,GeV~\cite{atlas2023}, above the 70 to 95\,GeV end
 point of the first-order line~\cite{kajantie1996} (crossover at $T_c=159.5\pm1.5$\,GeV~\cite{donofrio}): consistency rows \chk{data:D8.5,D8.6}. \emph{Verdict:} \vd{holds as a reading}; none of it is a test.
 
@@ -358,46 +353,42 @@ best value, $S=2.82759\pm0.00051$~\cite{poh2015}, lies $1.64\sigma$ below the bo
 $(2,2\sqrt2]$; both are scored. The statements that the known neutrinos and the gravitational-wave background are not the remnant were set from
 such data and are consistency rows: $\sum m_\nu<0.064$\,eV~\cite{desi2} leaves the neutrinos below 0.57\% of the dark matter, KATRIN's
 $m_\nu<0.45$\,eV (90\% CL)~\cite{katrin2025} leaves at most 12\%, and the nanohertz background has $\Omega_{\rm gw}\le1.3\times10^{-8}$ at
-1/yr~\cite{nanograv}. A gravity that weighed only the Higgs-given mass would separate titanium and platinum by $\eta\sim10^{-3}$, excluded by
-$4\times10^{11}\sigma$; gravity weighs all energy (Hypothesis~1$'$) \chk{data:D9.1-D9.6}.
+1/yr~\cite{nanograv}. Gravity weighing only the Higgs-given mass is excluded by MICROSCOPE (D9.6, INFO) \chk{data:D9.1-D9.6}.
 
 \subsection{The inherited tensions}\label{sec:data-tensions}
 
-The three scored FAILs and the conditional FAIL are real. Each is a tension of an established account that GUID adopts unchanged, GUID adds nothing
-that moves any of them, and they share data. \emph{Evolving dark energy} (D3.3): no combination reaches $5\sigma$, the recalibrated DES supernovae
-lower their own value to $3.2\sigma$, and the fitted $w$ crosses $-1$, which no single canonical scalar can do. If the preference holds, the future
+The three scored FAILs and the conditional FAIL are real tensions of established accounts that GUID adopts unchanged, and they share data.
+\emph{Evolving dark energy} (D3.3): no combination reaches $5\sigma$, recalibrated DES supernovae give $3.2\sigma$, and the fitted $w$ crosses $-1$,
+which no single canonical scalar can do. If the preference holds, the future
 is not de Sitter and the balanced state of Section~\ref{sec:cosmo} must be read again. An information scalar rolling with that dark energy would have
-to couple below $1.7\times10^{-8}$. \emph{The Hubble constant} (D3.4) and \emph{curvature} (D3.7) are known $\Lambda$CDM discrepancies: $4.9\sigma$ from the
-Cepheid ladder but $1.5\sigma$ from the TRGB, and a $2.1\sigma$ curvature that DESI calls not significant and that uses the same DESI BAO and CMB data as
-D3.3. \emph{The spectral index} (D4.3, conditional): the gap of a few e-folds to P-ACT-LB comes partly from the BAO that also drive D3.3, and since the
+to couple below $1.7\times10^{-8}$. \emph{The Hubble constant} (D3.4, $1.5\sigma$ from the TRGB) and \emph{curvature} (D3.7, called not significant by DESI and
+built on D3.3's data) are known $\Lambda$CDM discrepancies. \emph{The spectral index} (D4.3, conditional): the gap of a few e-folds to P-ACT-LB comes partly from the BAO that also drive D3.3, and since the
 e-folds of the pivot scale depend on reheating, it constrains the reheating as much as the potential. The plateau potential is in tension; GUID's
 start, which needs inflation but not this potential, is not tested by it.
 
 \subsection{No data yet}\label{sec:data-nodata}
 
-No measurement reaches the predictions that tell GUID apart: mediated entanglement ($\mathcal N=0$~\cite{bose,mv}, with decoherence first under
-Bridge B, Section~\ref{sec:bmv}), the LOCC inequality~\cite{lpp}, the decoherence-diffusion trade-off at equality (only the window of D6.8 is known),
-Bridge B's decoherence itself (Section~\ref{sec:data-bridgeB}) and the sign of the drift of $\alpha$. Tensor modes, the light-edge Hawking glow and
-proton decay have bounds only; graviton clicks do not discriminate; nothing reaches the return of information.
+No measurement reaches what tells GUID apart: mediated entanglement ($\mathcal N=0$~\cite{bose,mv}; Section~\ref{sec:bmv}), the LOCC
+inequality~\cite{lpp}, the trade-off at equality (only D6.8's window is known), Bridge B's decoherence and the sign of the drift of $\alpha$.
+Tensor modes, the light-edge Hawking glow and proton decay have bounds only; nothing reaches the return of information.
 
 \paragraph{Choices made after seeing the data.} The kinds were assigned after a first scoring; twenty-four rows scored as OK in that pass,
 and one FAIL (D4.3, now conditional), left the tally. DESI is scored on its least significant combination; of overlapping data, Cassini, the
 ephemeris $\beta$, DESI's curvature and Shankar et al.'s efficiency are scored; the lunar errors are read as $1\sigma$; the Kerr test uses the upper end
-of each efficiency range; Bridge B passes a run below $\Gamma\tau=0.1$. Model inputs: $f_b=10^{-3}$, 1.8\,Gyr for Oklo, 1300\,kg/m$^3$ for the molecules, the cluster separation at its lower bound. Two INFO verdicts depend
-on choices and are named for that reason: D7.2 passed only through a tolerance of ten (the factor is 5.8), and D8.3 and D8.4 meet 0.5\% only in the
-$\overline{\rm MS}$ route. No scored verdict depends on these choices.
+of each efficiency range; Bridge B passes a run below $\Gamma\tau=0.1$. Model inputs: $f_b=10^{-3}$, 1.8\,Gyr for Oklo, 1300\,kg/m$^3$ for the molecules, the cluster separation at its lower bound. D7.2 (a factor
+5.8, inside a chosen tolerance of ten) and D8.3, D8.4 ($0.5\%$ only in the $\overline{\rm MS}$ route) depend on choices and are INFO for that
+reason; no scored verdict depends on these choices.
 
 \paragraph{Caveats.} Read only through secondary sources: Cassini's $\gamma$ (ADS abstract), MESSENGER's $\eta_N$ (journal record), the PDG and CODATA
 constants (PDG and NIST records, a 2025 preprint), Fein et al.'s interferometer parameters (a later preprint, a review, the university's release),
 and the species and separations of Refs.~\cite{kovachy2015,xu2019} (a review, the preprint's figure). Model B's mapping of $w_0$ to the field speed is exact at
 $z=0$, but CPL is not a thawing fit. The nucleosynthesis datum uses 2001 abundances; recent analyses reach parts per million by letting all couplings
-vary together~\cite{martins2021}, which a scalar that sets only $\alpha$ does not do. The GW250114 statement is qualitative.
+vary together~\cite{martins2021}, which a scalar that sets only $\alpha$ does not do.
 
 All numbers in this section come from \texttt{docs/simulation/predictions\_vs\_data.py} (74 rows; 30 of 33 scored, 1 of 2 conditional; 6 of 6
 method checks; about four seconds on one core).
 
 \paragraph{Verdict.} Of 33 scored confrontations with current data, 30 hold at 95\% and 3 fail: evolving dark energy, the Hubble constant and a
 $2\sigma$ curvature, correlated $\Lambda$CDM tensions that GUID inherits. The plateau inflation Part~I names fails conditionally on the spectral index.
-Twenty scored rows hold equally for general relativity and quantum mechanics, twelve more hold only because the prediction was set from the datum,
-and the thirteen GUID-specific rows hold at sensitivities far from GUID's effects. No existing datum tells GUID apart; the experiments of
-Section~\ref{sec:exp} can.
+Twenty scored rows hold equally for general relativity and quantum mechanics, twelve more hold only by construction, and the thirteen
+GUID-specific rows hold far from GUID's effects. No datum tells GUID apart; the experiments of Section~\ref{sec:exp} can.
