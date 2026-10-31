@@ -25,9 +25,11 @@ and negativity $\mathcal N=\tfrac12|\sin(\Sigma/2)|$~\cite{vw}. For the instance
 $d=450\,\mu$m, diamond radius $R=0.879\,\mu$m), $\omega=0.1256$\,rad/s. The phase reaches 1\,rad after 7.96\,s and $\pi$ after 25.0\,s
 \chk{gravsim:G2}.
 
-\paragraph{The Di\'osi--Penrose rate.} Di\'osi's master equation is
-$\dot\rho=-(G/2\hbar)\iint\dd^3x\,\dd^3y\,[f(x),[f(y),\rho]]/|x-y|$, with $f$ the mass-density operator~\cite{diosi87}. Under it the coherence
-between two mass configurations decays at
+\paragraph{The Di\'osi--Penrose rate.} Di\'osi's master equation~\cite{diosi87} is
+\begin{equation*}
+\dot\rho=-\frac{G}{2\hbar}\iint\frac{[f(x),[f(y),\rho]]}{|x-y|}\,\dd^3x\,\dd^3y ,
+\end{equation*}
+with $f$ the mass-density operator. Under it the coherence between two mass configurations decays at
 \begin{equation}\label{eq:bmv-dp}
 \Gamma=\frac{I(\Delta f,\Delta f)}{2\hbar},\qquad I(f,g)=G\iint\frac{f(x)\,g(y)}{|x-y|}\,\dd^3x\,\dd^3y ,
 \end{equation}
@@ -117,11 +119,12 @@ Equality is impossible for disjoint bodies. The largest $\omega/(2\sqrt{\Gamma_A
 
 \begin{table}[ht]\centering\small
 \caption{The Bose et al.\ instance under the hypotheses, over $0\le t\le40$\,s \chk{gravsim:G2}. Witnesses are evaluated in the local frame
-of the (Q) prediction. The stabiliser witness $\langle XZ\rangle+\langle ZX\rangle$ is at most 1 for separable states (two-pair lemma below).
-The optimal witness is $\ket e\bra e^{T_B}$, with $e$ the negative eigenvector of the partial transpose of the (Q) state. The control row
-violates the threshold of Proposition~\ref{pr:bmv-threshold} on purpose.}\label{tab:bmv-hyp}
-\begin{tabular}{@{}lccc@{}}\toprule
-hypothesis & largest $\mathcal N$ & largest $\langle XZ\rangle+\langle ZX\rangle$ & smallest optimal witness\\\midrule
+of the (Q) prediction. The stabiliser witness is $W_{\rm st}=\langle XZ\rangle+\langle ZX\rangle$, at most 1 for separable states (two-pair
+lemma below). The optimal witness is $W_{\rm opt}=\ket e\bra e^{T_B}$, with $e$ the negative eigenvector of the partial transpose of the (Q)
+state; it is negative only on entangled states. The control row violates the threshold of Proposition~\ref{pr:bmv-threshold} on
+purpose.}\label{tab:bmv-hyp}
+\begin{tabularx}{\textwidth}{@{}Lccc@{}}\toprule
+hypothesis & largest $\mathcal N$ & largest $W_{\rm st}$ & smallest $W_{\rm opt}$\\\midrule
 (Q) & 0.5 at 25.0\,s & 2.0 & $-0.5$\\
 (Q+DP local), $\lambda=72$\,s$^{-1}$ & 0 ($10^{-16}$) & $8\times10^{-7}$ & $\ge0$\\
 (Q+DP exact), 86\,s$^{-1}$ & 0 & $6\times10^{-7}$ & $\ge0$\\
@@ -129,7 +132,7 @@ hypothesis & largest $\mathcal N$ & largest $\langle XZ\rangle+\langle ZX\rangle
 (G), Bridge~B & 0 & $8\times10^{-7}$ & $\ge0$\\
 (G) at the KTM minimum, 0.063\,s$^{-1}$ & 0 & 0.53 & $\ge0$\\
 control: (Q) with dephasing at $0.99\,\omega/2$ & $3.0\times10^{-4}$ at 1.55\,s & 0.54 & $-3\times10^{-4}$\\\bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{The spin witness of Bose et al., checked and corrected}\label{ss:bmv-witness}
