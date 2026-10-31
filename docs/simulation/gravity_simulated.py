@@ -307,6 +307,13 @@ for N in NS:
             srow[f"{tau:.6g}"] = half_entropy(np.exp(1j * tau * E) * 2 ** (-N / 2))
             timing[N]["entropy_s"] = time.perf_counter() - t1
         entropy[N] = srow
+    if N == 24:
+        zs, m3s = [], []
+        for tau in (1e5, 1e6, 1e7):
+            Z, M3 = x_moments(np.exp(1j * tau * E) * 2 ** (-N / 2))
+            zs.append(Z), m3s.append(M3)
+        longrun[N] = {"Z_mean": np.mean(zs), "Z_sem": np.std(zs, ddof=1) / math.sqrt(len(zs)), "M3_mean": np.mean(m3s),
+                      "S_mean_bits": entropy[24]["100000"], "S_page_bits": page_bits(12, 12), "taus": [1e5, 1e6, 1e7]}
     if N in (16, 20, 24):
         store_psi[N] = (h, J, E)
     print(f"     N = {N}: table {t_table:.2f} s, state + Z per time {np.median(tstate):.2f} s; Z(tau_pi) = {zrow[f'{tau_pi:.6g}']['Z']:.4g}, "
@@ -316,12 +323,17 @@ G1["a"]["half_chain_entropy_bits"] = entropy
 G1["a"]["late_time_average_tau_1e4_1e7"] = longrun
 
 check("t = 0: |+>^N, X outcome certain, Z = 2^N (N = 20)", x_moments(np.full(2**20, 2**-10, complex))[0], 2.0**20, rtol=1e-9)
+dz = [abs(longrun[N]["Z_mean"] - 2) for N in (12, 16, 20, 24)]
+dm = [abs(longrun[N]["M3_mean"] - 6) for N in (12, 16, 20, 24)]
+check_true(f"late times (tau 1e4..1e7): Porter-Thomas emerges with N: |Z - 2| = {', '.join(f'{v:.3f}' for v in dz)} and |M3 - 6| = "
+           f"{', '.join(f'{v:.2f}' for v in dm)} for N = 12, 16, 20, 24 (finite-size deviations shrink)", dz[3] < dz[1] and dm[3] < dm[1])
+for N in (20, 24):
+    lr = longrun[N]
+    check(f"late times, N = {N}: Z -> 2 (Porter-Thomas anticoncentration) within 1%", lr["Z_mean"], 2.0, rtol=0.01)
+    check(f"late times, N = {N}: third moment 2^(2N) sum p^3 -> 6 (Porter-Thomas) within 5%", lr["M3_mean"], 6.0, rtol=0.05)
 for N in (16, 20):
     lr = longrun[N]
-    check(f"late times (tau 1e4..1e7, 12 times), N = {N}: Z -> 2 (Porter-Thomas anticoncentration)", lr["Z_mean"], 2.0, rtol=0.03)
-    check(f"late times, N = {N}: third moment 2^(2N) sum p^3 -> 6 (Porter-Thomas)", lr["M3_mean"], 6.0, rtol=0.08)
     check(f"late times, N = {N}: half-chain entropy -> Page value, bits", lr["S_mean_bits"], lr["S_page_bits"], atol=0.15)
-check("N = 24, tau = 1e5: Z within 3% of 2", zN[24]["100000"]["Z"], 2.0, rtol=0.03)
 check("N = 24, tau = 1e5: half-chain entropy within 0.15 bit of Page (11.28 bits)", entropy[24]["100000"], page_bits(12, 12), atol=0.15)
 check("at tau_pi (t = 25 s) the half-chain entropy is one ebit, the bond across the cut (N = 24)", entropy[24][f"{tau_pi:.6g}"], 1.0, atol=0.03)
 zz10 = [zN[N]["10"]["Z"] for N in (8, 12, 16, 20, 24)]
@@ -343,9 +355,10 @@ G1["a"]["random_IQP_Z"] = zr
 
 # pairwise negativities: statevector against the exact two-body formula
 pn = {}
+TAU_PK = 1.3                                   # near the peak of nearest-neighbour negativity in the bulk of a chain
 for N in (16, 20, 24):
     h, J, E = store_psi[N]
-    taus = [tau_pi, 10.0, 1e3] if N < 24 else [tau_pi]
+    taus = [TAU_PK, tau_pi, 10.0, 1e3] if N == 16 else ([TAU_PK, tau_pi] if N == 20 else [TAU_PK])
     for tau in taus:
         psi = np.exp(1j * tau * E) * 2 ** (-N / 2)
         if N == 16:
@@ -366,10 +379,14 @@ for N in (16, 20, 24):
     check(f"N = {N}: two-body marginals from the statevector equal the exact product formula", max(
         v["max_dev_statevector_vs_exact"] for k, v in pn.items() if k.startswith(f"N{N}_")), 0, atol=1e-12)
 G1["a"]["pair_negativity"] = pn
-print(f"     N = 16, tau_pi: max pair negativity {pn[f'N16_tau{tau_pi:.6g}']['max_neg']:.4f}, "
-      f"entangled pairs {pn[f'N16_tau{tau_pi:.6g}']['n_pairs_entangled']} of 120; isolated pair would have 0.5")
-check_true("coherent field entangles: N = 16 pairs are entangled at tau_pi and tau = 10",
-           pn[f"N16_tau{tau_pi:.6g}"]["max_neg"] > 0.05 and pn["N16_tau10"]["max_neg"] > 0.05)
+p16 = {k: pn[f"N16_tau{k}"] for k in (f"{TAU_PK:.6g}", f"{tau_pi:.6g}", "10", "1000")}
+print("     N = 16, all 120 pairs: " + "; ".join(f"tau {k}: max negativity {v['max_neg']:.4f}, entangled pairs {v['n_pairs_entangled']}"
+                                                 for k, v in p16.items()), flush=True)
+check_true(f"coherent field, N = 16: pairs are entangled early (tau = 1.3, t = 9 s: max negativity {p16['1.3']['max_neg']:.3f}, "
+           f"{p16['1.3']['n_pairs_entangled']} of 120 pairs)", p16["1.3"]["max_neg"] > 0.1)
+check_true(f"... and every pair is separable at tau_pi and at tau = 1e3 although the half-chain entropy is 1 ebit and then Page: the "
+           f"entanglement is multipartite (monogamy), so pairwise negativity is not the witness at scale",
+           p16[f"{tau_pi:.6g}"]["n_pairs_entangled"] == 0 and p16["1000"]["n_pairs_entangled"] == 0)
 del store_psi
 
 # =================================================================================================================================
@@ -401,9 +418,9 @@ del nsig, sgn
 t_setup = time.perf_counter() - t0
 # Newtonian force, Born-averaged over all four branch pairs, by direct summation (independent code path) for sampled masses
 sample = [0, 1, 2, 17, 500, 1999, 2000, 3500, NB - 3, NB - 2, NB - 1]
-FN_direct = []
+FN_direct, FN_scale = [], []
 for j in sample:
-    tot = 0.0
+    tot, sc = 0.0, 0.0
     for i in range(NB):
         if i == j:
             continue
@@ -411,11 +428,13 @@ for j in sample:
             for si in (0, 1):
                 dxx = (i - j) + (si - sj) * DELTA
                 tot += 0.25 * math.copysign(1.0, dxx) / dxx**2
+                sc += 0.25 / dxx**2
     FN_direct.append(tot)
+    FN_scale.append(sc)
 FN = 0.5 * (Avec[0] + Avec[1]) + 0.25 * (Bmat[0].sum(axis=1) + Bmat[1].sum(axis=1))   # frame force at the mean records s_hat = 1/2
-relF = np.max(np.abs(FN[sample] - np.array(FN_direct)) / np.maximum(np.abs(FN_direct), 1e-300))
-check("frame force at the mean records equals the direct Newtonian sum (11 sampled masses incl. ends), max rel. difference", relF, 0,
-      atol=1e-11)
+relF = np.max(np.abs(FN[sample] - np.array(FN_direct)) / np.array(FN_scale))
+check("frame force at the mean records equals the direct Newtonian sum (11 sampled masses incl. ends): max |difference| / sum of "
+      "|pair forces| (bulk forces cancel to 1e-4 of the pair scale, so this is the meaningful relative error)", relF, 0, atol=1e-13)
 check("Newton's third law for the mean force: sum_j F_j / sum_j |F_j|", FN.sum() / np.abs(FN).sum(), 0, atol=1e-12)
 
 rngB = np.random.default_rng(4000)
@@ -521,17 +540,29 @@ check("N = 10 product state: 2^N sum_x p(x)^2 by enumeration = prod_j (1 + X_j^2
 del Bmat, Bs, impulse, JW, W, JdW, B0dW, B1dW, dWb, flat
 
 # quantum side at the same scale: exact nearest-neighbour two-body marginals of the coherent-field state, N = 4000 (no statevector)
-q4000 = {}
-for tau in (tau_pi, 10.0):
-    t1 = time.perf_counter()
-    rr = pair_rho_exact(hB, JB, tau, [(i, i + 1) for i in range(NB - 1)])
-    ng = negativity(rr)
-    q4000[f"{tau:.6g}"] = {"nn_neg_bulk_median": float(np.median(ng)), "nn_neg_min": ng.min(), "nn_neg_max": ng.max(),
-                           "seconds": time.perf_counter() - t1}
-G1["a"]["N4000_nearest_neighbour_negativity"] = q4000
-check_true(f"coherent field, N = 4000: every nearest-neighbour pair is entangled at tau_pi (exact two-body formula; min "
-           f"{q4000[f'{tau_pi:.6g}']['nn_neg_min']:.4f}, bulk {q4000[f'{tau_pi:.6g}']['nn_neg_bulk_median']:.4f})",
-           q4000[f"{tau_pi:.6g}"]["nn_neg_min"] > 0.01)
+t1 = time.perf_counter()
+ngall = negativity(pair_rho_exact(hB, JB, TAU_PK, [(i, i + 1) for i in range(NB - 1)]))
+t_all = time.perf_counter() - t1
+spairs = [(0, 1), (1, 2), (2, 3), (999, 1000), (1999, 2000), (2000, 2001), (2999, 3000), (NB - 2, NB - 1), (1999, 2001), (1999, 2002)]
+tau_scan = np.geomspace(0.05, 300.0, 36)
+scan = np.array([negativity(pair_rho_exact(hB, JB, tau, spairs)) for tau in tau_scan])
+iso = 0.5 * np.abs(np.sin(g1 * tau_scan / 2))
+bulk = scan[:, 4]
+death = tau_scan[np.argmax((bulk < 1e-12) & (tau_scan > 1))]
+G1["a"]["N4000_pairs"] = {"all_nn_at_tau_1.3": {"min": ngall.min(), "median": float(np.median(ngall)), "max": ngall.max(),
+                                                 "seconds": t_all},
+                          "scan_pairs": spairs, "tau": tau_scan, "t_seconds": tau_scan / omega0, "negativity": scan,
+                          "isolated_pair": iso, "bulk_nn_peak": bulk.max(), "bulk_nn_peak_tau": tau_scan[bulk.argmax()],
+                          "bulk_nn_first_zero_tau_after_1": death,
+                          "last_tau_any_scanned_pair_entangled": tau_scan[np.nonzero(scan.max(axis=1) > 1e-12)[0].max()]}
+print(f"     coherent field, N = 4000 (exact two-body formula, all 3999 neighbour pairs in {t_all:.1f} s): negativity at tau = 1.3 "
+      f"min {ngall.min():.4f}, median {np.median(ngall):.4f}; bulk peak {bulk.max():.4f} at tau = {tau_scan[bulk.argmax()]:.2f}; "
+      f"bulk pair first separable at tau = {death:.2f}", flush=True)
+check_true(f"coherent field, N = 4000: every nearest-neighbour pair is entangled at tau = 1.3 (t = 9 s; min negativity {ngall.min():.4f})",
+           ngall.min() > 0.1)
+check_true(f"coherent field, N = 4000: no scanned pair is entangled beyond tau = 30 (t = 3.6 min) while an isolated pair keeps oscillating "
+           f"to 1/2 (max {iso[tau_scan > 30].max():.3f}): pairwise entanglement in the chain dies of monogamy",
+           scan[tau_scan > 30].max() < 1e-12 and iso[tau_scan > 30].max() > 0.4)
 del hB, JB
 
 # small N: the averaged frame dynamics is the feedback master equation (Wiseman-Milburn), closed form because every operator is diagonal:
@@ -622,13 +653,17 @@ Ns = np.array([N for N in NS if N >= 16])
 ts_ = np.array([timing[N]["state_plus_Z_s_median"] + timing[N]["table_s"] for N in Ns])
 b_fit, a_fit = np.polyfit(Ns, np.log2(ts_), 1)
 log10_t4000 = (a_fit + b_fit * 4000) * math.log10(2)
+log10_t4000_pure = math.log10(ts_[-1]) + (4000 - Ns[-1]) * math.log10(2)    # conservative: exactly 2x per added mass from N = 24
 G1["cost"] = {"statevector_seconds": timing, "fit_log2_seconds_vs_N": {"slope": b_fit, "intercept": a_fit},
               "statevector_bytes_N24": 16 * 2**24, "log10_statevector_bytes_N4000": math.log10(16) + 4000 * math.log10(2),
-              "log10_seconds_statevector_N4000_extrapolated": log10_t4000,
+              "log10_seconds_statevector_N4000_extrapolated_fit": log10_t4000,
+              "log10_seconds_statevector_N4000_pure_2N_from_N24": log10_t4000_pure,
+              "seconds_statevector_N24_table_state_Z": ts_[-1],
               "frame_N4000_seconds": t_loop, "frame_N4000_seconds_per_step_per_trajectory": t_loop / (NSTEP * NTRAJ),
               "frame_memory_bytes_N4000": 3 * 8 * NB * NB}
-print(f"     cost: statevector time ~ 2^({b_fit:.2f} N); N = 24 state + Z {timing[24]['state_plus_Z_s_median']:.2f} s; "
-      f"extrapolated N = 4000: 10^{log10_t4000:.0f} s; frame N = 4000: {t_loop:.1f} s for {NSTEP * NTRAJ} trajectory-steps", flush=True)
+print(f"     cost: statevector time ~ 2^({b_fit:.2f} N); N = 24 table + state + Z {ts_[-1]:.2f} s; extrapolated N = 4000: at least "
+      f"10^{log10_t4000_pure:.0f} s (pure 2^N), 10^{log10_t4000:.0f} s (fit); frame N = 4000: {t_loop:.1f} s for {NSTEP * NTRAJ} "
+      f"trajectory-steps", flush=True)
 check("statevector cost grows as 2^N: fitted exponent of 2 per added mass (N = 16..24)", b_fit, 1.0, atol=0.35)
 
 # =================================================================================================================================
