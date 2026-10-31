@@ -15,7 +15,7 @@ python3 docs/simulation/hosted_benchmarks.py --only B3 # one benchmark, no JSON
 ```
 
 The script needs numpy and scipy only, and every seed is fixed. Measured on 2026-10-31 with Python 3.13.17, numpy 2.5.3 and scipy 1.18.1:
-492 s in total, peak resident memory 1.89 GB, single-threaded BLAS on a 4-core machine shared with two other jobs. BLAS is pinned to one
+475 s in total, peak resident memory 1.89 GB, single-threaded BLAS on a 4-core machine shared with two other jobs. BLAS is pinned to one
 thread by default because multi-threaded OpenBLAS on oversubscribed cores was measured about 20 times slower. Wall times depend on the
 machine and are reported, not checked (INFO lines). Every other number is deterministic.
 
@@ -33,14 +33,14 @@ machine and are reported, not checked (INFO lines). Every other number is determ
 
 | Benchmark | Known value | Hosted value | Deviation | Runtime |
 |---|---|---|---|---|
-| B1 Heisenberg ring, e0 = E0/N for N -> infinity | 1/4 - ln 2 = -0.4431471806 | -0.4431457 +- 0.0000011 | +1.5e-6 (1.3 sigma, 3.3e-6 relative) | 53 s |
-| B2 transverse-field Ising ring, L = 4000, g = 1: E0 | finite-L closed form -5092.958309840347 | -5092.958309840346 | 2e-16 relative | 116 s (all of B2) |
-| B2 central charge from the Casimir energy | 1/2 (+9.0e-9 at L = 4000) | 0.5000000052 | +5.2e-9 | |
+| B1 Heisenberg ring, e0 = E0/N for N -> infinity | 1/4 - ln 2 = -0.4431471806 | -0.4431457 +- 0.0000011 | +1.5e-6 (1.3 sigma, 3.3e-6 relative) | 51 s |
+| B2 transverse-field Ising ring, L = 4000, g = 1: E0 | finite-L closed form -5092.958309840347 | -5092.958309840346 | 2e-16 relative | 114 s (all of B2) |
+| B2 central charge from the Casimir energy | 1/2 (+9.0e-9 at L = 4000) | 0.500000005(8) | +5(8)e-9 | |
 | B2 central charge, Calabrese-Cardy fit of S(l) | 1/2 | 0.50000016 +- 0.00000026 | +1.6e-7 (0.6 sigma) | |
 | B2 area law, saturated S at g = 0.5 / 1.5 | 0.6989875284 / 0.3069825111 (corner transfer matrix) | 0.6989875284 / 0.3069825111 | 3.1e-12 / 2.8e-12 | |
-| B3 Schwinger model, vector mass M/g, m = 0, shifted lattice (main) | 1/sqrt(pi) = 0.5641896 | 0.586 +- 0.039 | +0.022 (0.55 sigma) | 257 s (all of B3) |
+| B3 Schwinger model, vector mass M/g, m = 0, shifted lattice (main) | 1/sqrt(pi) = 0.5641896 | 0.586 +- 0.039 | +0.022 (0.55 sigma; a consistency measure, see B3) | 247 s (all of B3) |
 | B3 same, naive lattice m_lat = 0 | 0.5641896 | 0.593 +- 0.031 | +0.028 (0.92 sigma) | |
-| B4 Shor, outcome distributions, 9 moduli, 192 bases | Shor's analytic distribution | max total-variation distance 7.5e-12 | | 66 s (all of B4) |
+| B4 Shor, outcome distributions, 9 moduli, 192 bases | Shor's analytic distribution | max total-variation distance 7.5e-12 | | 63 s (all of B4) |
 | B4 Shor, factors of 15, 21, 33, 35, 39, 51, 55, 57, 143 | 3x5, 3x7, 3x11, 5x7, 3x13, 3x17, 5x11, 3x19, 11x13 | all recovered | none | |
 | B4 dense statevector memory | 16 x 2^n bytes | 1.016 x 16 x 2^n at n = 26 (fixed 16 MiB buffer) | | |
 
@@ -84,7 +84,7 @@ That is within the error, but the error bar itself is large (7%); see the B3 cav
 - **Results.**
   - (a) E0 equals the finite-L closed form -sum_k sqrt(1 + g^2 - 2 g cos k) to 2e-16 relative at all three g. At g = 0.5 and 1.5,
     E0/L equals the thermodynamic limit -(2/pi)(1+g) E(4g/(1+g)^2) to 4e-16 (Pfeuty 1970). At g = 1, E0/L - e_inf = -3.2725e-8 =
-    -pi v c / (6 L^2), which gives c = 0.5000000052 (v = 2). The exact next term predicts 1/2 + 7 pi^2/(480 L^2) = 0.5000000090; the
+    -pi v c / (6 L^2), which gives c = 0.500000005(8) (v = 2; the uncertainty is floating-point error). The exact next term predicts 1/2 + 7 pi^2/(480 L^2) = 0.5000000090; the
     difference is float error.
   - (b) At g = 1, a fit of S(l) = (c/3) ln[(L/pi) sin(pi l / L)] + c1' (Calabrese-Cardy 2004, Eq. 1.1, periodic) on 100 <= l <= 2000
     gives c = 0.50000016 +- 0.00000026 (spread over windows starting at 50, 200 or 400, or ending at 1000), with c1' = 0.478558 and a
@@ -93,7 +93,7 @@ That is within the error, but the error bar itself is large (7%); see the B3 cav
     prediction (Calabrese-Cardy 2004, Eqs. 4.30-4.34, eps = pi K(k')/K(k), k = min(g, 1/g)) to 3e-12. A block has two cuts: in the
     disordered phase S = 2 S_half; in the ordered phase the even-parity ground state is the cat state, whose ln 2 is shared by the two
     cuts, so S = 2 S_half - ln 2. This assignment was derived before the comparison.
-- **Cost.** 116 s for all of B2 (three SVDs of about 27 s each, single-threaded) and 1.4 GB peak when B2 runs alone: O(L^2) memory and
+- **Cost.** 114 s for all of B2 (three SVDs of about 27 s each, single-threaded) and 1.4 GB peak when B2 runs alone: O(L^2) memory and
   O(L^3) time. This is the "4000-qubit hosted system with a known answer". It is cheap because the state is Gaussian (free fermions),
   not because 4000-qubit states are cheap; see B4.
 
@@ -121,7 +121,8 @@ That is within the error, but the error bar itself is large (7%); see the B3 cav
     quadratic on x >= 1, cubic, and no linear term. The exception: after the first (N <= 18) continuum run, the "no linear term"
     alternative was dropped for the naive lattice only, because that lattice has a known O(a) mass-shift term (Dempsey et al.).
     Keeping it would raise the naive lattice's fit-family spread from 0.028 to 0.074; the check passes either way.
-  - The total error is the propagated statistical error combined in quadrature with the fit-family spread.
+  - The total error is the uncertainty propagated from the N-extrapolations through the weighted fit, combined in quadrature with
+    the fit-family spread.
 - **Results.**
 
   | x | ag | shifted, N -> inf | shifted, N = 22 | naive, N -> inf | naive, N = 22 |
@@ -133,10 +134,12 @@ That is within the error, but the error bar itself is large (7%); see the B3 cav
   | 3 | 0.58 | 0.56199 +- 0.00601 | 0.60673 | 0.69004 +- 0.00486 | 0.72589 |
   | 4 | 0.50 | 0.56268 +- 0.00874 | 0.62221 | 0.67404 +- 0.00694 | 0.72279 |
 
-  - Continuum, shifted lattice (main): M/g = 0.586 +- 0.039 (statistical 0.016, fit family 0.035), against 1/sqrt(pi) = 0.5641896:
+  - Continuum, shifted lattice (main): M/g = 0.586 +- 0.039 (propagated N-extrapolation uncertainty 0.016, fit family 0.035), against 1/sqrt(pi) = 0.5641896:
     deviation +0.022, 0.55 sigma. The alternatives give 0.562 (linear, x >= 1.5), 0.578 (quadratic, x >= 1), 0.570 (cubic) and
     0.550 (no linear term).
   - Continuum, naive lattice: 0.593 +- 0.031, 0.92 sigma.
+  - The per-x errors are fit-family spreads, strongly correlated between x: the main continuum fits have chi^2 = 0.04 (shifted) and
+    0.18 (naive) for 3 degrees of freedom, so chi^2/dof << 1, and 0.55 and 0.92 sigma are consistency checks, not significances.
   - Out-of-sample test of the finite-size form: the N = 12..22 fit at x = 4 predicts the N = 24 gap as 0.613467. The computed value
     (2,704,156 states) is 0.613388, a difference of 7.9e-5, well inside sigma_N = 0.0087.
 - **Caveats.**
@@ -190,16 +193,16 @@ That is within the error, but the error bar itself is large (7%); see the B3 cav
 
   | n | state | measured peak | seconds per layer |
   |---|---|---|---|
-  | 10 | 16 KiB | 52 KiB | 0.0012 |
-  | 14 | 0.25 MiB | 0.75 MiB | 0.0025 |
+  | 10 | 16 KiB | 52 KiB | 0.0011 |
+  | 14 | 0.25 MiB | 0.75 MiB | 0.0024 |
   | 18 | 4 MiB | 10 MiB | 0.032 |
-  | 22 | 64 MiB | 80 MiB | 0.67 |
-  | 24 | 256 MiB | 272 MiB | 3.25 |
-  | 26 | 1 GiB | 1.016 GiB | 15.6 |
+  | 22 | 64 MiB | 80 MiB | 0.63 |
+  | 24 | 256 MiB | 272 MiB | 3.68 |
+  | 26 | 1 GiB | 1.016 GiB | 15.5 |
 
-  The time per gate grows as 2^(1.065 n) for n = 18..26 (slope 1 for the 2^n law; the excess is cache and memory bandwidth). With
-  7.3e-9 s per gate per amplitude (single core), the extrapolations are:
-  - n = 50: 18 PB (16 PiB) for the state alone, and about 10^8.6 s (13 years) per layer.
+  The layer time per qubit grows as 2^(1.068 n) for n = 18..26 (slope 1 for the 2^n law; the excess is cache and memory bandwidth).
+  With 6.9e-9 s per qubit and amplitude for one layer (the n - 1 CZ gates folded in; single core), the extrapolations are:
+  - n = 50: 18 PB (16 PiB) for the state alone, and about 10^8.6 s (12 years) per layer.
   - n = 4000: 10^1205.3 bytes.
   - n = 4099: 10^1235.1 bytes. 4099 is the 2n + 3 logical qubits of Beauregard's circuit for a 2048-bit RSA modulus.
 

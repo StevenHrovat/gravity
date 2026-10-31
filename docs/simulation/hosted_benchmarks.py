@@ -1,6 +1,6 @@
 """GUID v6: Our theory as simulated. Hosted benchmarks: hard quantum configurations with known answers, run as content.
 
-Run: python3 docs/simulation/hosted_benchmarks.py          (numpy and scipy only; measured 8.2 minutes on one core of a shared 4-core machine, peak
+Run: python3 docs/simulation/hosted_benchmarks.py          (numpy and scipy only; measured 475 s on one core of a shared 4-core machine, peak
      memory 1.9 GB). Writes docs/simulation/results/hosted_benchmarks.json with every number printed here. Each check prints OK or FAIL,
      the last line counts them, and the exit code is 0 only if all pass. Lines marked INFO are reported numbers that depend on the
      machine (wall times) and are not checks. `--only B2` runs one benchmark and writes no JSON.
