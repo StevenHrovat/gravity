@@ -1,0 +1,46 @@
+% GUID v6, Fig. 4 (label fig:timeline): the timeline of Section sec:split. Input at %FIG:timeline in part1.tex: \input{figures/fig-timeline}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize,>={Stealth[length=2mm]},
+  ev/.style={draw,rounded corners=2pt,fill=white,align=left,text width=2.85cm,inner sep=2.5pt,font=\scriptsize,anchor=north,
+    minimum height=1.8cm},
+  ttl/.style={align=center,text width=2.95cm,anchor=south,inner sep=1pt},
+  tck/.style={draw,circle,fill=black,inner sep=0pt,minimum size=4pt},
+  band/.style={fill=white,font=\scriptsize,inner sep=1.5pt},
+]
+% the start: a shaded region without internal order, closed by a jagged edge
+\fill[blue!7] (0,-3.35) rectangle (3.2,1.4);
+\draw[blue!45!black] (3.2,1.4) \foreach \k in {1,...,38}{ -- ({3.2+0.05*pow(-1,\k)},{1.4-0.125*\k}) };
+% the time axis
+\draw[->,thick] (0,0) -- (15.95,0);
+\foreach \x in {1.6,4.8,8.0,11.2,14.4}{\node[tck] at (\x,0) {};}
+% titles above the axis
+\node[ttl] at (1.6,0.15) {\textbf{The start}\\ {\scriptsize the minting (H6, H6$'$)}\\[-1pt] {\scriptsize no internal order}};
+\node[ttl] at (4.8,0.15) {\textbf{Electroweak split}\\ {\scriptsize about $10^{-11}$\,s}\\[-1pt] {\scriptsize $T\approx160$\,GeV}};
+\node[ttl] at (8.0,0.15) {\textbf{Nucleosynthesis}\\ {\scriptsize 1\,s to minutes}\\[-1pt] {\scriptsize $T\approx1$ to 0.1\,MeV}};
+\node[ttl] at (11.2,0.15) {\textbf{Recombination}\\ {\scriptsize about $3.8\times10^5$\,yr}\\[-1pt]
+  {\scriptsize $z\approx1100$, $T\approx0.3$\,eV}};
+\node[ttl] at (14.4,0.15) {\textbf{Late universe}\\ {\scriptsize accelerating, $z\lesssim0.6$}\\[-1pt]
+  {\scriptsize today 13.8\,Gyr}};
+% what happens, below the axis
+\node[ev] at (1.6,-0.22) {The strong force splits off; inflation dilutes its monopoles; oscillons decay and reheat.};
+\node[ev] at (4.8,-0.22) {The Higgs vacuum grants rest mass to W, Z and matter; the photon splits out, with $\alpha\approx1/128$.};
+\node[ev] at (8.0,-0.22) {Light nuclei form. Below the electron mass, $\alpha$ has run down to $1/137$.};
+\node[ev] at (11.2,-0.22) {Atoms form; the microwave background is released; the dark matter is already there.};
+\node[ev] at (14.4,-0.22) {Dark energy dominates; the expansion tends to de Sitter, read as the balanced state.};
+% bands: what the axioms say about the geometry, and alpha
+\node[font=\scriptsize,align=center,text width=2.95cm,anchor=north,inner sep=0pt] at (1.6,-2.4) {geometry may be in superposition;\\
+  the axioms are silent};
+\draw[|-|,black!60] (3.2,-2.55) -- node[band] {causality begins; the frame is classical: every geometry is recorded (Lemma~\ref{lem:classical})}
+  (15.85,-2.55);
+\draw[|-|,black!60] (3.2,-3.05) -- node[band] {no $\alpha$ yet} (4.8,-3.05);
+\draw[black!60] (4.8,-3.05) -- node[band] {$\alpha$ runs: $1/128\to1/137$} (8.0,-3.05) -- node[band] {$\alpha\approx1/137$}
+  (15.85,-3.05);
+\draw[black!60] (15.85,-3.15) -- (15.85,-2.95);
+\end{tikzpicture}
+\caption{The timeline of Section~\ref{sec:split}, not to scale. The start (shaded; Hypotheses~6 and~6$'$) has no internal order the axioms
+can refer to; causality and the classical frame begin as it completes. The electroweak split follows at about $10^{-11}$\,s and
+160\,GeV~\cite{donofrio}: the Higgs vacuum grants rest mass, and the photon, and with it $\alpha$, splits out of the electroweak field.
+Nucleosynthesis, recombination and the late universe are those of standard cosmology~\cite{navas2024,planck18}.}
+\label{fig:timeline}
+\end{figure}

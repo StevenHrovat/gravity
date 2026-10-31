@@ -1,0 +1,68 @@
+% GUID v6, Part III: the one place where the scoring rules of Parts II and III are fixed (pull, threshold, classes, BIC, bootstrap,
+% multiple tests, preregistration). The tally itself is Section sec:tally.
+\section{How the confrontations are scored}\label{sec:scoring}
+
+Sections~\ref{sec:data} to~\ref{sec:exotics} confront Part~I with measurements by one set of rules, fixed here; Primer~\ref{box:stats} gives
+the statistics behind them.
+
+\input{primers/p8-stats}
+
+\paragraph{The pull and the 95\% rule.} A confrontation sets a GUID value $x_G$ against a datum. Where it exists, a theory uncertainty
+$\sigma_G$ comes with $x_G$. It is propagated from measured inputs, such as Planck's $\Omega_m$, or it is a model's own error, such as the
+scatter of a fitted mass formula. For a Gaussian datum $x\pm\sigma$ (one standard deviation) the \emph{pull} is
+\begin{equation}\label{eq:pull}
+p=\frac{x-x_G}{\sqrt{\sigma^2+\sigma_G^2}} .
+\end{equation}
+A published 95\% half-width $b$ enters as $\sigma=b/1.96$; for an asymmetric error, the side towards the prediction is used. A confrontation
+is \textbf{OK} when $|p|<1.96$, that is at 95\% for a Gaussian, and a \textbf{FAIL} otherwise. The same threshold holds in every section.
+Other data are allowed regions, probabilities or qualitative statements of the experimenters. Such a confrontation is OK when $x_G$ lies
+inside the region. Where a region is quoted at 90\% CL the row says so; passing a 90\% region implies passing at 95\%. A FAIL stays a FAIL
+when general relativity, $\Lambda$CDM or the Standard Model share it. Its verdict word is then \vd{inherited} (Section~\ref{sec:howto}).
+
+\paragraph{The classes.} Every row has one class. A row that is not scored states the reason.
+\begin{itemize}[nosep,leftmargin=*]
+\item \emph{Scored}: a prediction confronted with a datum it was not set from, with the verdict OK or FAIL. Only scored rows enter the tally
+(Section~\ref{sec:tally}).
+\item \emph{Not yet sensitive}: a scored row whose prediction is specific to GUID, while the datum lies far from where GUID departs from
+general relativity, $\Lambda$CDM, the Standard Model or quantum mechanics. ``Far'' means that the departure is smaller than the datum's
+reach by a factor of ten or more, or that it scales with a free parameter that may be zero. Such a row can still fail, so it stays scored.
+When it holds, it shows only that GUID's departure is small.
+\item \emph{Conditional}: the same test for a model that Part~I uses but GUID does not derive, such as a plateau inflation potential.
+It is reported apart and not counted for GUID.
+\item \emph{Consistency} (CONS): the prediction was set from this datum, so it holds by construction. It is never counted as a success.
+\item \emph{Information} (INFO): superseded by a newer measurement that includes its data, derived from scored rows, overlapping a scored
+row, inconclusive, a check of a theory GUID adopts unchanged, or without a usable uncertainty. It is reported, not scored.
+\end{itemize}
+A scored row is also either \emph{shared}, when its prediction is that of general relativity, $\Lambda$CDM, the Standard Model or quantum
+mechanics, or \emph{GUID-specific}. Only a GUID-specific row that is sensitive can tell GUID apart from the theories it adopts.
+
+\paragraph{Chance and shared data.} If GUID were right and $n$ scored data were independent, about $0.05n$ FAILs would occur by chance.
+Data often share inputs, such as the microwave background, so FAILs can cluster. Each section names the rows that share data.
+
+\paragraph{Likelihoods and BIC.} Fits of whole curves, such as rotation curves, compare models by the Bayesian information
+criterion~\cite{schwarz1978} (Primer~\ref{box:stats}),
+\begin{equation}\label{eq:bic}
+\mathrm{BIC}=-2\ln\mathcal L_{\max}+k\ln N ,
+\end{equation}
+for $k$ fitted parameters and $N$ data points. Lower is better; $\Delta$BIC is the difference to a reference model, negative when the model
+fits better, and above 10 counts as very strong evidence for independent points~\cite{kassraftery1995}. The points of one galaxy share its
+distance, inclination and stellar mass-to-light ratio, so a point-wise $\Delta$BIC overstates the evidence, and a parameter fitted per
+galaxy absorbs the shared errors. Sections~\ref{sec:sparc} and~\ref{sec:remnant} therefore report $\Delta$BIC but base their verdicts on
+the galaxy bootstrap and on galaxy-by-galaxy counts.
+
+\paragraph{The galaxy bootstrap.} Ranges of fitted parameters come from a bootstrap over whole galaxies~\cite{efron1979}, with 1000 draws
+and a fixed random seed; a range in brackets is the 16th to 84th percentile.
+
+\paragraph{Many tests.} A family of tests uses the Holm correction~\cite{holm1979}; independent $p$-values are combined by Fisher's
+method~\cite{fisher1932}; and a search over many candidates counts the look-elsewhere effect~\cite{grossvitells2010} as the probability of
+a match at least as close over every candidate tried (Sections~\ref{sec:remnant} and~\ref{sec:exotics}). Primer~\ref{box:stats} explains
+all three.
+
+\paragraph{Preregistration.} The Standard Model statements and
+their scoring were committed in \texttt{docs/\allowbreak simulation/\allowbreak sm\_preregistration.md} before any analysis (Section~\ref{sec:sm}). The candidate
+scales and history proxies of Section~\ref{sec:remnant}, and the assignment of model levels to exotic hadrons in Section~\ref{sec:exotics},
+were fixed before the comparison. Each section lists, as ``choices made after seeing the data'', what it decided later and whether a verdict
+depends on it.
+
+\paragraph{Sources.} Every measured number was checked against the arXiv text or abstract of its source. Rows read only through secondary
+sources are listed in each section's caveats.

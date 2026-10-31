@@ -1,0 +1,2656 @@
+{
+ "meta": {
+  "script": "docs/simulation/gravity_simulated.py",
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "blas_threads": 1,
+  "units_G1": "lengths in d, phase rates in omega0 = G m^2/(hbar d)",
+  "instance": {
+   "m_kg": 1e-14,
+   "d_m": 0.00045,
+   "dx_m": 0.00025,
+   "diamond_density": 3510.0,
+   "R_m": 8.794302999328026e-07,
+   "omega0_rad_s": 0.14064265258750092,
+   "lambda_B_per_s": 71.96612815047577,
+   "lambda_over_omega0": 511.69490070376764
+  },
+  "runtime_seconds": 186.33730532499976,
+  "checks_passed": 110,
+  "checks_total": 110
+ },
+ "checks": [
+  {
+   "label": "R of the 1e-14 kg diamond sphere, um",
+   "ok": true,
+   "got": 0.8794302999328025,
+   "expected": 0.88,
+   "rtol": 0.01,
+   "atol": 0.0
+  },
+  {
+   "label": "phase unit omega0 = G m^2/(hbar d), rad/s",
+   "ok": true,
+   "got": 0.14064265258750092,
+   "expected": 0.1406,
+   "rtol": 0.002,
+   "atol": 0.0
+  },
+  {
+   "label": "nearest-neighbour entangling rate g(1) omega0 = the Bose et al. rate 0.1256 rad/s (checks.py Q5)",
+   "ok": true,
+   "got": 0.12557379695312584,
+   "expected": 0.1256,
+   "rtol": 0.002,
+   "atol": 0.0
+  },
+  {
+   "label": "Bridge-B rate G m^2/(hbar R) = 72 /s (checks.py Q19)",
+   "ok": true,
+   "got": 71.96612815047577,
+   "expected": 72.0,
+   "rtol": 0.01,
+   "atol": 0.0
+  },
+  {
+   "label": "Ising table h.s + sum J s s equals the direct sum of 1/|x_i - x_j| over all 256 branches (up to a constant)",
+   "ok": true,
+   "got": 1.0658141036401503e-14,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "t = 0: |+>^N, X outcome certain, Z = 2^N (N = 20)",
+   "ok": true,
+   "got": 1048576.0,
+   "expected": 1048576.0,
+   "rtol": 1e-09,
+   "atol": 0.0
+  },
+  {
+   "label": "late times (tau 1e4..1e7): Porter-Thomas emerges with N: |Z - 2| = 0.113, 0.069, 0.012, 0.002 and |M3 - 6| = 1.35, 0.79, 0.11, 0.02 for N = 12, 16, 20, 24 (finite-size deviations shrink)",
+   "ok": true
+  },
+  {
+   "label": "late times, N = 20: Z -> 2 (Porter-Thomas anticoncentration) within 1%",
+   "ok": true,
+   "got": 2.01168672070551,
+   "expected": 2.0,
+   "rtol": 0.01,
+   "atol": 0.0
+  },
+  {
+   "label": "late times, N = 20: third moment 2^(2N) sum p^3 -> 6 (Porter-Thomas) within 5%",
+   "ok": true,
+   "got": 6.114030010605593,
+   "expected": 6.0,
+   "rtol": 0.05,
+   "atol": 0.0
+  },
+  {
+   "label": "late times, N = 24: Z -> 2 (Porter-Thomas anticoncentration) within 1%",
+   "ok": true,
+   "got": 2.0023686632822755,
+   "expected": 2.0,
+   "rtol": 0.01,
+   "atol": 0.0
+  },
+  {
+   "label": "late times, N = 24: third moment 2^(2N) sum p^3 -> 6 (Porter-Thomas) within 5%",
+   "ok": true,
+   "got": 6.021761003331194,
+   "expected": 6.0,
+   "rtol": 0.05,
+   "atol": 0.0
+  },
+  {
+   "label": "late times, N = 16: half-chain entropy -> Page value, bits",
+   "ok": true,
+   "got": 7.269280675828913,
+   "expected": 7.278665320895993,
+   "rtol": 1e-06,
+   "atol": 0.15
+  },
+  {
+   "label": "late times, N = 20: half-chain entropy -> Page value, bits",
+   "ok": true,
+   "got": 9.281835256153856,
+   "expected": 9.2786532821411,
+   "rtol": 1e-06,
+   "atol": 0.15
+  },
+  {
+   "label": "N = 24, tau = 1e5: half-chain entropy within 0.15 bit of Page (11.28 bits)",
+   "ok": true,
+   "got": 11.270221938587051,
+   "expected": 11.278652529717123,
+   "rtol": 1e-06,
+   "atol": 0.15
+  },
+  {
+   "label": "at tau_pi (t = 25 s) the half-chain entropy is one ebit, the bond across the cut (N = 24)",
+   "ok": true,
+   "got": 1.0094426877435883,
+   "expected": 1.0,
+   "rtol": 1e-06,
+   "atol": 0.03
+  },
+  {
+   "label": "at tau = 10 (t = 71 s) the output is not anticoncentrated: Z grows with N [1.74, 2.1, 2.78, 3.78, 5.16]",
+   "ok": true
+  },
+  {
+   "label": "random-angle IQP, N = 10, 60 instances: mean Z = 2 - 2^-N within 4 standard errors",
+   "ok": true,
+   "got": 2.035514875151787,
+   "expected": 1.9990234375,
+   "rtol": 1e-06,
+   "atol": 0.07158251931840835
+  },
+  {
+   "label": "random-angle IQP, N = 14, 60 instances: mean Z = 2 - 2^-N within 4 standard errors",
+   "ok": true,
+   "got": 1.9953065708252302,
+   "expected": 1.99993896484375,
+   "rtol": 1e-06,
+   "atol": 0.01306496820723412
+  },
+  {
+   "label": "N = 16: two-body marginals from the statevector equal the exact product formula",
+   "ok": true,
+   "got": 1.9105953023459347e-14,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "N = 20: two-body marginals from the statevector equal the exact product formula",
+   "ok": true,
+   "got": 1.1935125226521846e-15,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "N = 24: two-body marginals from the statevector equal the exact product formula",
+   "ok": true,
+   "got": 2.5078894352394e-15,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "coherent field, N = 16: pairs are entangled early (tau = 1.3, t = 9 s: max negativity 0.212, 15 of 120 pairs)",
+   "ok": true
+  },
+  {
+   "label": "... and every pair is separable at tau_pi and at tau = 1e3 although the half-chain entropy is 1 ebit and then Page: the entanglement is multipartite (monogamy), so pairwise negativity is not the witness at scale",
+   "ok": true
+  },
+  {
+   "label": "frame force at the mean records equals the direct Newtonian sum (11 sampled masses incl. ends): max |difference| / sum of |pair forces| (bulk forces cancel to 1e-4 of the pair scale, so this is the meaningful relative error)",
+   "ok": true,
+   "got": 7.122569962572193e-15,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-13
+  },
+  {
+   "label": "Newton's third law for the mean force: sum_j F_j / sum_j |F_j|",
+   "ok": true,
+   "got": 1.9252691736303352e-14,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "single-mass coherence decays as exp(-lambda t): fitted rate / lambda (t = 0.2/lambda .. 3/lambda)",
+   "ok": true,
+   "got": 0.9971433411662683,
+   "expected": 1.0,
+   "rtol": 0.01,
+   "atol": 0.0
+  },
+  {
+   "label": "t = 1/lambda: mean |rho_01| over 4000 masses x 16 trajectories = exp(-lambda t)/2 (5 standard errors)",
+   "ok": true,
+   "got": 0.1839455384403392,
+   "expected": 0.18393972058572094,
+   "rtol": 1e-06,
+   "atol": 0.0030591505422461695
+  },
+  {
+   "label": "t = 1/lambda: complex coherence / exact closed form (incl. feedback phases and record noise) = 1 (5 s.e.)",
+   "ok": true,
+   "got": 3.336029005550892e-05,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 0.0166313130341428
+  },
+  {
+   "label": "t = 2/lambda: mean |rho_01| over 4000 masses x 16 trajectories = exp(-lambda t)/2 (5 standard errors)",
+   "ok": true,
+   "got": 0.06758470260894706,
+   "expected": 0.0676676416183061,
+   "rtol": 1e-06,
+   "atol": 0.0022064373459198083
+  },
+  {
+   "label": "t = 2/lambda: complex coherence / exact closed form (incl. feedback phases and record noise) = 1 (5 s.e.)",
+   "ok": true,
+   "got": 0.001226099173471801,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 0.03260714957646509
+  },
+  {
+   "label": "t = 3/lambda: mean |rho_01| over 4000 masses x 16 trajectories = exp(-lambda t)/2 (5 standard errors)",
+   "ok": true,
+   "got": 0.02514965806954424,
+   "expected": 0.024893534183931816,
+   "rtol": 1e-06,
+   "atol": 0.0013798973209806745
+  },
+  {
+   "label": "t = 3/lambda: complex coherence / exact closed form (incl. feedback phases and record noise) = 1 (5 s.e.)",
+   "ok": true,
+   "got": 0.01028877037278921,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 0.05543246246721419
+  },
+  {
+   "label": "record noise adds sum_i J_ij^2 / (32 kappa) to the decay rate: bulk value / lambda (infinite-chain sum), invisible here",
+   "ok": true,
+   "got": 3.842553663523408e-07,
+   "expected": 3.842553663523409e-07,
+   "rtol": 1e-06,
+   "atol": 0.0
+  },
+  {
+   "label": "mean impulse = T x Newtonian sum for all 4000 masses: mean t^2 over masses (Student t, 15 dof: 1.154)",
+   "ok": true,
+   "got": 1.0940278678728905,
+   "expected": 1.1538461538461537,
+   "rtol": 0.25,
+   "atol": 0.0
+  },
+  {
+   "label": "end mass (largest Newtonian force): mean impulse / (T F_Newton)",
+   "ok": true,
+   "got": 1.128917916447672,
+   "expected": 1.0,
+   "rtol": 1e-06,
+   "atol": 0.8371588659529325
+  },
+  {
+   "label": "per trajectory the total momentum is not conserved (sd of sum_j P_j = 0.396 against T sum_j |F_j| = 0.148); on average it is (mean 0.162, within 5 s.e.)",
+   "ok": true
+  },
+  {
+   "label": "X-basis output per trajectory is a product distribution; log2 Z = sum_j log2(1 + X_j^2) falls from 4000 (t = 0) through 1047, 315, 103, 35 at t = 1..4/lambda towards 0 (uniform), never near Porter-Thomas (log2 Z = 1)",
+   "ok": true
+  },
+  {
+   "label": "N = 10 product state: 2^N sum_x p(x)^2 by enumeration = prod_j (1 + X_j^2)",
+   "ok": true,
+   "got": 3.28871393116584,
+   "expected": 3.288713931165838,
+   "rtol": 1e-10,
+   "atol": 0.0
+  },
+  {
+   "label": "coherent field, N = 4000: every nearest-neighbour pair is entangled at tau = 1.3 (t = 9 s; min negativity 0.1528)",
+   "ok": true
+  },
+  {
+   "label": "coherent field, N = 4000: no scanned pair is entangled beyond tau = 30 (t = 3.6 min) while an isolated pair keeps oscillating to 1/2 (max 0.499): pairwise entanglement in the chain dies of monogamy",
+   "ok": true
+  },
+  {
+   "label": "N = 4: frame (feedback) state, 13 strengths kappa/kappa_opt = 1e-3..1e3 x 25 times: largest PT negativity over all 7 cuts",
+   "ok": true,
+   "got": 0.0,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "N = 4: frame state, largest pairwise negativity",
+   "ok": true,
+   "got": 0.0,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "N = 4: the coherent field entangles the same masses (largest PT eigenvalue magnitude 0.500)",
+   "ok": true
+  },
+  {
+   "label": "N = 6: frame (feedback) state, 13 strengths kappa/kappa_opt = 1e-3..1e3 x 25 times: largest PT negativity over all 31 cuts",
+   "ok": true,
+   "got": 0.0,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "N = 6: frame state, largest pairwise negativity",
+   "ok": true,
+   "got": 0.0,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "N = 6: the coherent field entangles the same masses (largest PT eigenvalue magnitude 0.500)",
+   "ok": true
+  },
+  {
+   "label": "N = 4, kappa = 0.2 omega0, t = 1.5/omega0: 40000 exact trajectories (mixtures of product states) average to the master-equation state, largest |z| over 256 elements",
+   "ok": true,
+   "got": 2.5150811085375087,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 5.0
+  },
+  {
+   "label": "joint 2^4 stochastic Schroedinger equation (Euler, 8000 trajectories): every trajectory stays a product, max s2/s1 over cuts",
+   "ok": true,
+   "got": 1.7525223969849124e-15,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "joint SSE average = master equation (max |difference| over 256 elements; statistical + O(dt) tolerance 0.02)",
+   "ok": true,
+   "got": 0.004555236840100674,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 0.02
+  },
+  {
+   "label": "statevector cost grows as 2^N: fitted exponent of 2 per added mass (N = 16..24)",
+   "ok": true,
+   "got": 1.2105960045275652,
+   "expected": 1.0,
+   "rtol": 1e-06,
+   "atol": 0.35
+  },
+  {
+   "label": "self-energy integral of a uniform sphere: G int int rho rho / |x-y| = 6/5 G M^2 / R (quadrature)",
+   "ok": true,
+   "got": 1.2,
+   "expected": 1.2,
+   "rtol": 1e-09,
+   "atol": 0.0
+  },
+  {
+   "label": "E_G of displaced spheres: quadrature = closed form (overlap polynomial; 6/5 - R/b for b >= 2R, shell theorem), max abs diff",
+   "ok": true,
+   "got": 2.393918396847994e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-09
+  },
+  {
+   "label": "BMV entangling phase rate omega = (G m^2/hbar)[1/(d-dx) + 1/(d+dx) - 2/d], rad/s",
+   "ok": true,
+   "got": 0.1255737969531259,
+   "expected": 0.1256,
+   "rtol": 0.002,
+   "atol": 0.0
+  },
+  {
+   "label": "rho = omega / lambda_B = R [1/(d-dx) + 1/(d+dx) - 2/d] (identity)",
+   "ok": true,
+   "got": 0.001744901388755562,
+   "expected": 0.0017449013887555608,
+   "rtol": 1e-12,
+   "atol": 0.0
+  },
+  {
+   "label": "rho for the Bose geometry (= entangling phase per coherence time, checks.py Q19: 1.74e-3 rad)",
+   "ok": true,
+   "got": 0.001744901388755562,
+   "expected": 0.00174,
+   "rtol": 0.01,
+   "atol": 0.0
+  },
+  {
+   "label": "rho is independent of the mass at fixed geometry (m = 1e-18 .. 1 kg): relative spread",
+   "ok": true,
+   "got": 3.7281264585114744e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "exact sphere DP rate for the Bose split, (G m^2/hbar)(6/5R - 1/dx), per s",
+   "ok": true,
+   "got": 86.10619700591343,
+   "expected": 86.10619700591342,
+   "rtol": 1e-12,
+   "atol": 0.0
+  },
+  {
+   "label": "collinear: rho increases with dx at d - dx = 2R and decreases with the closest approach",
+   "ok": true
+  },
+  {
+   "label": "collinear supremum: rho -> 1/2 (dx -> infinity, d - dx = 2R); value at dx = 1e7 R",
+   "ok": true,
+   "got": 0.499999850000035,
+   "expected": 0.5,
+   "rtol": 1e-06,
+   "atol": 0.0
+  },
+  {
+   "label": "collinear: rho < 1/2 for every finite geometry (never attained)",
+   "ok": true
+  },
+  {
+   "label": "collinear with Bose et al.'s Casimir gap d - dx >= 200 um: rho <= R/(d-dx) = 4.4e-3",
+   "ok": true,
+   "got": 0.0043971514996640135,
+   "expected": 0.0044,
+   "rtol": 0.01,
+   "atol": 0.0
+  },
+  {
+   "label": "any two-sphere geometry: omega <= (G m^2/hbar)(1/r_00 + 1/r_11) <= lambda_B, sup rho = 1 (parallel splits, dx -> inf)",
+   "ok": true,
+   "got": 0.9999998,
+   "expected": 1.0,
+   "rtol": 1e-06,
+   "atol": 0.0
+  },
+  {
+   "label": "188398 random non-overlapping two-sphere geometries: rho (paper rate) <= 1, max 0.4456",
+   "ok": true
+  },
+  {
+   "label": "Cauchy-Schwarz on the positive Newton kernel: omega <= 2 sqrt(Gamma_A Gamma_B) with exact DP rates (max omega / (2 sqrt(Gamma_A Gamma_B)) over samples 0.2221)",
+   "ok": true
+  },
+  {
+   "label": "exact DP rates: sup omega / Gamma over sphere geometries -> 5/6 (parallel, dx -> inf); value at dx = 1e7 R",
+   "ok": true,
+   "got": 0.8333332361111031,
+   "expected": 0.8333333333333334,
+   "rtol": 1e-06,
+   "atol": 0.0
+  },
+  {
+   "label": "random geometries never exceed 5/6 with exact DP rates (max 0.4441)",
+   "ok": true
+  },
+  {
+   "label": "collinear, exact DP rates: sup -> 1/2 again, now as dx -> 0 at d = 2R + dx; value at dx = 1e-4 R",
+   "ok": true,
+   "got": 0.4999437566399302,
+   "expected": 0.5,
+   "rtol": 0.001,
+   "atol": 0.0
+  },
+  {
+   "label": "threshold: Q + independent dephasing lambda per mass is ever entangled iff omega/lambda > 2 (bisection over 40 s of evolution)",
+   "ok": true,
+   "got": 2.0000000089630703,
+   "expected": 2.0,
+   "rtol": 0.0001,
+   "atol": 0.0
+  },
+  {
+   "label": "first order: smallest PT eigenvalue ~ (t/4)(2 lambda - omega) (omega = 3 lambda, t = 1e-7)",
+   "ok": true,
+   "got": -0.24999997513183309,
+   "expected": -0.25,
+   "rtol": 0.0001,
+   "atol": 0.0
+  },
+  {
+   "label": "threshold with the full DP kernel (correlated inter-mass term, locked to omega): omega/Gamma > sqrt 2",
+   "ok": true,
+   "got": 1.41421356740193,
+   "expected": 1.4142135623730951,
+   "rtol": 0.0001,
+   "atol": 0.0
+  },
+  {
+   "label": "same with the opposite sign of the correlation",
+   "ok": true,
+   "got": 1.41421356740193,
+   "expected": 1.4142135623730951,
+   "rtol": 0.0001,
+   "atol": 0.0
+  },
+  {
+   "label": "(Q) negativity at the entangling phase pi (t = 25 s) is maximal, 1/2",
+   "ok": true,
+   "got": 0.4999949495500559,
+   "expected": 0.5,
+   "rtol": 0.001,
+   "atol": 0.0
+  },
+  {
+   "label": "(Q) stabiliser witness <X Z> + <Z X> (separable bound 1) reaches 2 = 1 - cos(pi)",
+   "ok": true,
+   "got": 1.9999727180206106,
+   "expected": 2.0,
+   "rtol": 0.001,
+   "atol": 0.0
+  },
+  {
+   "label": "(Q+DP local) largest negativity over 0..40 s",
+   "ok": true,
+   "got": 1.4150003977845598e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-14
+  },
+  {
+   "label": "(Q+DP local) stabiliser witness never above 1 (max 8.24e-07); optimal PPT witness never negative (min 1.4e-17)",
+   "ok": true
+  },
+  {
+   "label": "(Q+DP exact local) largest negativity over 0..40 s",
+   "ok": true,
+   "got": 1.4150003977845598e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-14
+  },
+  {
+   "label": "(Q+DP exact local) stabiliser witness never above 1 (max 5.76e-07); optimal PPT witness never negative (min 1.4e-17)",
+   "ok": true
+  },
+  {
+   "label": "(Q+DP full) largest negativity over 0..40 s",
+   "ok": true,
+   "got": 1.4150003977845598e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-14
+  },
+  {
+   "label": "(Q+DP full) stabiliser witness never above 1 (max 5.76e-07); optimal PPT witness never negative (min 1.4e-17)",
+   "ok": true
+  },
+  {
+   "label": "(G) largest negativity over 0..40 s",
+   "ok": true,
+   "got": 1.4150003977845598e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-14
+  },
+  {
+   "label": "(G) stabiliser witness never above 1 (max 8.24e-07); optimal PPT witness never negative (min 1.4e-17)",
+   "ok": true
+  },
+  {
+   "label": "(G at KTM minimum) largest negativity over 0..40 s",
+   "ok": true,
+   "got": 1.4150003977845598e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-14
+  },
+  {
+   "label": "(G at KTM minimum) stabiliser witness never above 1 (max 5.29e-01); optimal PPT witness never negative (min -5.6e-17)",
+   "ok": true
+  },
+  {
+   "label": "control: Q with dephasing at 0.99 x omega/2 does entangle (max negativity 3.04e-04)",
+   "ok": true
+  },
+  {
+   "label": "Bose et al. witness as printed, |<sx sz> - <sy sz>|: maximum over product states (so a bound of 1 does not certify)",
+   "ok": true,
+   "got": 1.4142135623730956,
+   "expected": 1.4142135623730951,
+   "rtol": 1e-06,
+   "atol": 0.0
+  },
+  {
+   "label": "variant |<sx sz> + <sy sy>|: maximum over product states is 1 (a valid bound)",
+   "ok": true,
+   "got": 1.0000000000000004,
+   "expected": 1.0,
+   "rtol": 1e-06,
+   "atol": 0.0
+  },
+  {
+   "label": "finite-difference evolution matches the exact Gaussian solution (max error / peak over all runs)",
+   "ok": true,
+   "got": 0.00011384316959410124,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 0.0005
+  },
+  {
+   "label": "D1^2 = 2 D0 D2 (inside the bound): smallest block eigenvalue / peak",
+   "ok": true,
+   "got": -2.1906525004701623e-56,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "D1^2 = 4 D0 D2 (balance rule, equality): smallest block eigenvalue / peak",
+   "ok": true,
+   "got": -3.01759973362005e-17,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "D1^2 = 4.04 D0 D2 (1% beyond): positivity fails first at t* = 4 D0 s0^2 / (D1^2 - 4 D0 D2) = 1.00",
+   "ok": true,
+   "got": 1.0,
+   "expected": 1.0,
+   "rtol": 1e-06,
+   "atol": 0.050000001
+  },
+  {
+   "label": "D1^2 = 8 D0 D2: the joint classical-quantum object has negative eigenvalues (min block eigenvalue / peak -0.239, negative mass 9.70e-04)",
+   "ok": true
+  },
+  {
+   "label": "mapping: at equality OSSWD's (D1/2)^2/D0 equals 2 (D2/2)",
+   "ok": true,
+   "got": 1.0,
+   "expected": 1.0,
+   "rtol": 1e-12,
+   "atol": 0.0
+  },
+  {
+   "label": "smallest diffusion keeping positivity up to T = 50: D1^2/(4 D0) - s0^2/T -> the balance-rule value as T grows",
+   "ok": true,
+   "got": 0.9998000000000005,
+   "expected": 0.9998,
+   "rtol": 0.0001,
+   "atol": 0.0
+  },
+  {
+   "label": "unravelling: mean coherence int rho_01 dp = exp(-2 D0 t)/2",
+   "ok": true,
+   "got": 0.06784096502203342,
+   "expected": 0.06766764161830635,
+   "rtol": 0.013102317087791538,
+   "atol": 0.0
+  },
+  {
+   "label": "unravelling: branch-0 mean momentum = D1 t",
+   "ok": true,
+   "got": 2.0013514674778183,
+   "expected": 2.0,
+   "rtol": 0.01,
+   "atol": 0.0
+  },
+  {
+   "label": "at equality p is a perfect record: every block rho(p) is pure (largest 4 det/tr^2 over |p| < 1 is 8.3e-04, bin-width limited)",
+   "ok": true
+  },
+  {
+   "label": "above equality (D2 doubled) blocks are mixed: 4 det/tr^2 at p = 0 equals 1 - exp(-(4 D0 D2 - D1^2) t / D2) = 1 - e^-2",
+   "ok": true,
+   "got": 0.8646468880498167,
+   "expected": 0.8646647167633873,
+   "rtol": 0.03,
+   "atol": 0.0
+  },
+  {
+   "label": "vacuum: quantum coupling entangles (max log-negativity 0.145)",
+   "ok": true
+  },
+  {
+   "label": "vacuum: KTM channel, 9 strengths k = (1e-2..1e2) K/2, t <= 200: smallest 2 nu (>= 1 means log-negativity exactly 0)",
+   "ok": true,
+   "got": 1.0,
+   "expected": 1.0,
+   "rtol": 1e-06,
+   "atol": 1e-09
+  },
+  {
+   "label": "squeezed r=1: quantum coupling entangles (max log-negativity 2.960)",
+   "ok": true
+  },
+  {
+   "label": "squeezed r=1: KTM channel, 9 strengths k = (1e-2..1e2) K/2, t <= 200: smallest 2 nu (>= 1 means log-negativity exactly 0)",
+   "ok": true,
+   "got": 1.0,
+   "expected": 1.0,
+   "rtol": 1e-06,
+   "atol": 1e-09
+  },
+  {
+   "label": "vacuum: quantum coupling plus dephasing at 0.99 K (just below the channel's minimum) entangles (log-neg 1.32e-04): the KTM minimum is the separability edge",
+   "ok": true
+  },
+  {
+   "label": "heating D(k) = k + K^2/(4k) is minimal at k = K/2 (KTM Eq. 15: Gamma = K/2)",
+   "ok": true,
+   "got": 0.05000000012480853,
+   "expected": 0.05,
+   "rtol": 1e-06,
+   "atol": 0.0
+  },
+  {
+   "label": "minimal momentum diffusion = hbar K (KTM Eq. 19)",
+   "ok": true,
+   "got": 0.1,
+   "expected": 0.1,
+   "rtol": 1e-09,
+   "atol": 0.0
+  },
+  {
+   "label": "per trajectory the conditional covariance stays block-diagonal (product state, log-negativity 0): max |cross block|",
+   "ok": true,
+   "got": 0.0,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-300
+  },
+  {
+   "label": "per trajectory the conditional state of each mass stays pure: 4 det V_1",
+   "ok": true,
+   "got": 0.999951623121195,
+   "expected": 1.0,
+   "rtol": 0.001,
+   "atol": 0.0
+  },
+  {
+   "label": "mean dynamics match the quantum coupling: largest |z| of the 4 trajectory-averaged means at T = 10",
+   "ok": true,
+   "got": 2.072768771835688,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 4.5
+  },
+  {
+   "label": "averaged covariance = master-equation covariance (quantum coupling + diffusion D(k)): largest |z| over elements",
+   "ok": true,
+   "got": 0.9804225892308667,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 5.0
+  },
+  {
+   "label": "instance: K = 2 G m^2 / d^3 (KTM Eq. 5), N/m",
+   "ok": true,
+   "got": 1.4648669410150889e-28,
+   "expected": 1.465e-28,
+   "rtol": 0.002,
+   "atol": 0.0
+  },
+  {
+   "label": "linearised KTM minimum K dx^2/(2 hbar) = qubit minimum omega/2 x (d^2 - dx^2)/d^2 (same physics, exact 1/r vs linearised)",
+   "ok": true,
+   "got": 0.04340822610725337,
+   "expected": 0.043408226107253395,
+   "rtol": 1e-09,
+   "atol": 0.0
+  }
+ ],
+ "G1": {
+  "a": {
+   "g1": 0.892857142857143,
+   "tau_pi": 3.5185837720205675,
+   "tau_pi_seconds": 25.017899671875703,
+   "collision_Z_vs_N_tau": {
+    "8": {
+     "0.5": {
+      "Z": 156.2356296431699,
+      "M3": 30633.042737207557
+     },
+     "3.51858": {
+      "Z": 1.383998920956405,
+      "M3": 2.2061965540915214
+     },
+     "10": {
+      "Z": 1.741282259720864,
+      "M3": 4.083646122419344
+     },
+     "100": {
+      "Z": 4.190287758654254,
+      "M3": 58.497468399277274
+     },
+     "1000": {
+      "Z": 1.932809913480516,
+      "M3": 5.2773880544569085
+     },
+     "100000": {
+      "Z": 1.8499966829504753,
+      "M3": 5.014347587717311
+     }
+    },
+    "10": {
+     "0.5": {
+      "Z": 586.4043026557273,
+      "M3": 444819.4587160569
+     },
+     "3.51858": {
+      "Z": 1.387980795197199,
+      "M3": 2.2329807355063824
+     },
+     "10": {
+      "Z": 1.8268879011862187,
+      "M3": 5.220352802807679
+     },
+     "100": {
+      "Z": 2.8508028922338493,
+      "M3": 16.38803589690098
+     },
+     "1000": {
+      "Z": 2.3242798006008787,
+      "M3": 10.024643100328575
+     },
+     "100000": {
+      "Z": 2.0021183391575876,
+      "M3": 5.7825369532475905
+     }
+    },
+    "12": {
+     "0.5": {
+      "Z": 2209.8648453627566,
+      "M3": 6500566.096133396
+     },
+     "3.51858": {
+      "Z": 1.3880737215777788,
+      "M3": 2.242221575645131
+     },
+     "10": {
+      "Z": 2.098976864610144,
+      "M3": 8.395509397017694
+     },
+     "100": {
+      "Z": 3.7156161298996135,
+      "M3": 38.79614760304001
+     },
+     "1000": {
+      "Z": 1.9765768472154424,
+      "M3": 5.9862320580524475
+     },
+     "100000": {
+      "Z": 2.127211910157027,
+      "M3": 7.003899639180149
+     }
+    },
+    "14": {
+     "0.5": {
+      "Z": 8348.198229866051,
+      "M3": 95365784.3328484
+     },
+     "3.51858": {
+      "Z": 1.389441669557292,
+      "M3": 2.255436855692432
+     },
+     "10": {
+      "Z": 2.3950823934410725,
+      "M3": 12.430851004387499
+     },
+     "100": {
+      "Z": 4.20487648817713,
+      "M3": 60.3763586287218
+     },
+     "1000": {
+      "Z": 2.0034313726409567,
+      "M3": 6.0844496670165515
+     },
+     "100000": {
+      "Z": 2.0659877507359408,
+      "M3": 6.603124961089637
+     }
+    },
+    "16": {
+     "0.5": {
+      "Z": 31587.235032831533,
+      "M3": 1402576994.7061925
+     },
+     "3.51858": {
+      "Z": 1.392095709406938,
+      "M3": 2.2724588302685955
+     },
+     "10": {
+      "Z": 2.777079933571166,
+      "M3": 20.078040209714302
+     },
+     "100": {
+      "Z": 4.084356910799245,
+      "M3": 53.24102826159871
+     },
+     "1000": {
+      "Z": 2.017178546331447,
+      "M3": 6.21980267667381
+     },
+     "100000": {
+      "Z": 2.052837774005794,
+      "M3": 6.5550323908514905
+     }
+    },
+    "18": {
+     "0.5": {
+      "Z": 119649.00476248813,
+      "M3": 20664072895.263084
+     },
+     "3.51858": {
+      "Z": 1.3954949747971264,
+      "M3": 2.291630963183829
+     },
+     "10": {
+      "Z": 3.2361687211178327,
+      "M3": 32.42151930409378
+     },
+     "100": {
+      "Z": 4.349388694174525,
+      "M3": 64.76875726856167
+     },
+     "1000": {
+      "Z": 1.9941258567583806,
+      "M3": 5.959441569054114
+     },
+     "100000": {
+      "Z": 2.009165159872965,
+      "M3": 6.081679633568427
+     }
+    },
+    "20": {
+     "0.5": {
+      "Z": 453578.348845864,
+      "M3": 304824610720.3062
+     },
+     "3.51858": {
+      "Z": 1.3992579844759048,
+      "M3": 2.3117632461859423
+     },
+     "10": {
+      "Z": 3.7836984242399567,
+      "M3": 53.51546394327555
+     },
+     "100": {
+      "Z": 4.812345288780558,
+      "M3": 88.59781243015364
+     },
+     "1000": {
+      "Z": 1.9971171663128882,
+      "M3": 5.962102439388664
+     },
+     "100000": {
+      "Z": 2.0209057734509734,
+      "M3": 6.173101676045046
+     }
+    },
+    "22": {
+     "0.5": {
+      "Z": 1720497.100318471,
+      "M3": 4500813168579.322
+     },
+     "3.51858": {
+      "Z": 1.4031735683145614,
+      "M3": 2.332232030425503
+     },
+     "10": {
+      "Z": 4.420817389042507,
+      "M3": 88.40409897273491
+     },
+     "100": {
+      "Z": 5.467968522226094,
+      "M3": 125.8728891965105
+     },
+     "1000": {
+      "Z": 1.9963212350745843,
+      "M3": 5.9656857274625095
+     },
+     "100000": {
+      "Z": 2.0027976125358355,
+      "M3": 6.021961194909602
+     }
+    },
+    "24": {
+     "0.5": {
+      "Z": 6529111.492071437,
+      "M3": 66503458457745.914
+     },
+     "3.51858": {
+      "Z": 1.4071337647868907,
+      "M3": 2.352738525025705
+     },
+     "10": {
+      "Z": 5.158522926800096,
+      "M3": 146.6088654543737
+     },
+     "100": {
+      "Z": 6.284098618295496,
+      "M3": 197.82315575810014
+     },
+     "1000": {
+      "Z": 1.9959880545932216,
+      "M3": 5.965839656956961
+     },
+     "100000": {
+      "Z": 2.0057553179821914,
+      "M3": 6.0517373471726685
+     }
+    }
+   },
+   "half_chain_entropy_bits": {
+    "12": {
+     "0.1": 0.006298599965493289,
+     "0.24041": 0.02894165236853456,
+     "0.577969": 0.12366474509631617,
+     "1.38949": 0.4529255473933819,
+     "3.34049": 1.0036346858500773,
+     "3.51858": 1.0093224721412555,
+     "8.03086": 0.5163067763396298,
+     "19.307": 1.4353156478582212,
+     "46.4159": 2.0888790512463875,
+     "111.588": 2.711917774704833,
+     "268.27": 3.8363656734243894,
+     "644.947": 4.845491268842862,
+     "1550.52": 5.545975996334338,
+     "3727.59": 5.3803783412067645,
+     "8961.51": 5.269891573546694,
+     "21544.3": 4.84059111340585,
+     "51794.7": 4.522676296824271,
+     "124520": 4.072051071709235,
+     "299358": 5.316235395375745,
+     "719686": 5.329918121186854,
+     "1.7302e+06": 5.321310840102209,
+     "4.15956e+06": 5.144137016394665,
+     "1e+07": 5.3444652975445734
+    },
+    "16": {
+     "0.1": 0.006298781794287915,
+     "0.24041": 0.028942531715544173,
+     "0.577969": 0.12366881200062711,
+     "1.38949": 0.45294289151143935,
+     "3.34049": 1.0037080373965588,
+     "3.51858": 1.0094037123538344,
+     "8.03086": 0.5166303666136907,
+     "19.307": 1.4365253247125556,
+     "46.4159": 2.0944254319355844,
+     "111.588": 2.72459279516354,
+     "268.27": 3.873589847184588,
+     "644.947": 5.003840556759294,
+     "1550.52": 6.442844523572661,
+     "3727.59": 7.188116430211853,
+     "8961.51": 7.365253560259958,
+     "21544.3": 7.140563295137925,
+     "51794.7": 6.593099724980123,
+     "124520": 6.648865305664412,
+     "299358": 7.362250280117831,
+     "719686": 7.167969189423602,
+     "1.7302e+06": 7.375170497092364,
+     "4.15956e+06": 7.1438446998098195,
+     "1e+07": 7.375945344116242
+    },
+    "20": {
+     "0.1": 0.006298836415772972,
+     "0.24041": 0.02894279971024724,
+     "0.577969": 0.1236700796432317,
+     "1.38949": 0.45294852534423247,
+     "3.34049": 1.0037329523345286,
+     "3.51858": 1.0094312392964853,
+     "8.03086": 0.5167387909732601,
+     "19.307": 1.4369542147213095,
+     "46.4159": 2.0963413356783085,
+     "111.588": 2.7297921078582186,
+     "268.27": 3.889361530525877,
+     "644.947": 5.04741774266438,
+     "1550.52": 6.590439453513715,
+     "3727.59": 8.120873801379382,
+     "8961.51": 9.348049132562148,
+     "21544.3": 9.307041104629533,
+     "51794.7": 8.985586149043707,
+     "124520": 9.190028655137613,
+     "299358": 9.332610633238358,
+     "719686": 9.269341970265325,
+     "1.7302e+06": 9.325520140941723,
+     "4.15956e+06": 9.216893386753206,
+     "1e+07": 9.366367633348919
+    },
+    "22": {
+     "3.51858": 1.0094380826692144,
+     "1000": 5.961881860390585,
+     "100000": 10.268192086063198
+    },
+    "24": {
+     "3.51858": 1.0094426877435883,
+     "100000": 11.270221938587051
+    }
+   },
+   "late_time_average_tau_1e4_1e7": {
+    "12": {
+     "Z_mean": 2.1133048018428737,
+     "Z_sem": 0.06102092404970425,
+     "M3_mean": 7.350227777294875,
+     "S_mean_bits": 5.2702759051503945,
+     "S_page_bits": 5.2788579336132955
+    },
+    "16": {
+     "Z_mean": 2.068851836565973,
+     "Z_sem": 0.04867339312216809,
+     "M3_mean": 6.793502246929549,
+     "S_mean_bits": 7.269280675828913,
+     "S_page_bits": 7.278665320895993
+    },
+    "20": {
+     "Z_mean": 2.01168672070551,
+     "Z_sem": 0.005666044056078369,
+     "M3_mean": 6.114030010605593,
+     "S_mean_bits": 9.281835256153856,
+     "S_page_bits": 9.2786532821411
+    },
+    "24": {
+     "Z_mean": 2.0023686632822755,
+     "Z_sem": 0.001741806982904767,
+     "M3_mean": 6.021761003331194,
+     "S_mean_bits": 11.270221938587051,
+     "S_page_bits": 11.278652529717123,
+     "taus": [
+      100000.0,
+      1000000.0,
+      10000000.0
+     ]
+    }
+   },
+   "random_IQP_Z": {
+    "10": {
+     "mean": 2.035514875151787,
+     "sem": 0.017895629829602088,
+     "theory": 1.9990234375
+    },
+    "14": {
+     "mean": 1.9953065708252302,
+     "sem": 0.00326624205180853,
+     "theory": 1.99993896484375
+    }
+   },
+   "pair_negativity": {
+    "N16_tau1.3": {
+     "max_dev_statevector_vs_exact": 2.237726045655905e-16,
+     "max_neg": 0.2121316926692487,
+     "mean_neg": 0.020101402873270727,
+     "nn_neg_bulk": 0.15284059102888814,
+     "n_pairs": 120,
+     "n_pairs_entangled": 15
+    },
+    "N16_tau3.51858": {
+     "max_dev_statevector_vs_exact": 3.002224531865041e-16,
+     "max_neg": -0.0,
+     "mean_neg": 0.0,
+     "nn_neg_bulk": 0.0,
+     "n_pairs": 120,
+     "n_pairs_entangled": 0
+    },
+    "N16_tau10": {
+     "max_dev_statevector_vs_exact": 6.289521002130819e-16,
+     "max_neg": 0.09713834717028279,
+     "mean_neg": 0.0016189724528380455,
+     "nn_neg_bulk": 0.0,
+     "n_pairs": 120,
+     "n_pairs_entangled": 2
+    },
+    "N16_tau1000": {
+     "max_dev_statevector_vs_exact": 1.9105953023459347e-14,
+     "max_neg": -0.0,
+     "mean_neg": 0.0,
+     "nn_neg_bulk": 0.0,
+     "n_pairs": 120,
+     "n_pairs_entangled": 0
+    },
+    "N20_tau1.3": {
+     "max_dev_statevector_vs_exact": 1.1935125226521846e-15,
+     "max_neg": 0.21213168326628895,
+     "mean_neg": 0.137431381147918,
+     "nn_neg_bulk": 0.15283360757537204,
+     "n_pairs": 22,
+     "n_pairs_entangled": 19
+    },
+    "N20_tau3.51858": {
+     "max_dev_statevector_vs_exact": 3.7238012298709097e-16,
+     "max_neg": -0.0,
+     "mean_neg": 0.0,
+     "nn_neg_bulk": 0.0,
+     "n_pairs": 22,
+     "n_pairs_entangled": 0
+    },
+    "N24_tau1.3": {
+     "max_dev_statevector_vs_exact": 2.5078894352394e-15,
+     "max_neg": 0.21213168071106397,
+     "mean_neg": 0.12165408359845438,
+     "nn_neg_bulk": 0.18248112539768158,
+     "n_pairs": 3,
+     "n_pairs_entangled": 2
+    }
+   },
+   "N4000_pairs": {
+    "all_nn_at_tau_1.3": {
+     "min": 0.15283049962063514,
+     "median": 0.15283049962063552,
+     "max": 0.21213167911362205,
+     "seconds": 0.9976010410000526
+    },
+    "scan_pairs": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      999,
+      1000
+     ],
+     [
+      1999,
+      2000
+     ],
+     [
+      2000,
+      2001
+     ],
+     [
+      2999,
+      3000
+     ],
+     [
+      3998,
+      3999
+     ],
+     [
+      1999,
+      2001
+     ],
+     [
+      1999,
+      2002
+     ]
+    ],
+    "tau": [
+     0.05,
+     0.06410873138230258,
+     0.08219858878896458,
+     0.10539294497352161,
+     0.13513215997794595,
+     0.17326302690272957,
+     0.22215345700383515,
+     0.2848395260141756,
+     0.3652140132061035,
+     0.468268141393656,
+     0.6004015298299199,
+     0.7698196079477974,
+     0.9870431691750968,
+     1.2655617079076587,
+     1.6226711115996046,
+     2.080547728307228,
+     2.667625508842159,
+     3.4203617434988054,
+     4.385501044885381,
+     5.622978169267285,
+     7.209639940442164,
+     9.24401740609853,
+     11.852444575618012,
+     15.1969037104385,
+     19.485084356304377,
+     24.983280779196487,
+     32.032928730443004,
+     41.0718084673683,
+     52.66123072839794,
+     67.52089390056642,
+     86.57357699528737,
+     111.00244384791932,
+     142.32451710850782,
+     182.48488472850522,
+     233.97748912780378,
+     300.0
+    ],
+    "t_seconds": [
+     0.3555109284425112,
+     0.4558270922998789,
+     0.5844499323405797,
+     0.7493668743765433,
+     0.9608191931240303,
+     1.2319379911789836,
+     1.5795596351229386,
+     2.0252712870084877,
+     2.5967514583023483,
+     3.329488834138155,
+     4.268986106162778,
+     5.473585671095428,
+     7.018092669725546,
+     8.998420355590838,
+     11.537546268832342,
+     14.793149091189203,
+     18.967400427708046,
+     24.319519580810134,
+     31.1818709630561,
+     39.98060379136369,
+     51.2621157792561,
+     65.72698421161645,
+     84.2734715078273,
+     108.05330695098868,
+     138.5432086058084,
+     177.63658690704176,
+     227.76112467385167,
+     292.02953522094197,
+     374.432860583561,
+     480.08831359717317,
+     615.5570547236769,
+     789.2516374352302,
+     1011.9584243475537,
+     1297.5074159311105,
+     1663.6310878894617,
+     2133.065570655067
+    ],
+    "negativity": [
+     [
+      0.011095071758258699,
+      0.011030706802343112,
+      0.01103010465619457,
+      0.01103003823236175,
+      0.011030038232361719,
+      0.011030038232361752,
+      0.01103003823236175,
+      0.011095071758258754,
+      0.0008025312964028781,
+      4.560699680544305e-05
+     ],
+     [
+      0.014201069895216517,
+      0.014094554020940848,
+      0.014093558655202464,
+      0.014093448870422652,
+      0.014093448870422732,
+      0.014093448870422694,
+      0.014093448870422631,
+      0.01420106989521662,
+      0.000944842637977183,
+      -0.0
+     ],
+     [
+      0.018166740061827398,
+      0.01799016457123556,
+      0.017988516936594156,
+      0.01798833524328764,
+      0.01798833524328767,
+      0.017988335243287655,
+      0.01798833524328763,
+      0.018166740061827384,
+      0.0010761016464569785,
+      -0.0
+     ],
+     [
+      0.02322295642395295,
+      0.022929615071218507,
+      0.022926883216625837,
+      0.02292658203447403,
+      0.02292658203447412,
+      0.02292658203447406,
+      0.02292658203447407,
+      0.023222956423952938,
+      0.00116341009453671,
+      -0.0
+     ],
+     [
+      0.029657202095580367,
+      0.02916861043742217,
+      0.029164072082221635,
+      0.02916357189726889,
+      0.029163571897268953,
+      0.02916357189726897,
+      0.029163571897268967,
+      0.029657202095580263,
+      0.0011486673810066305,
+      -0.0
+     ],
+     [
+      0.03782294737209244,
+      0.03700660113334811,
+      0.036999045028038774,
+      0.036998212600895926,
+      0.036998212600895974,
+      0.03699821260089604,
+      0.036998212600896065,
+      0.03782294737209238,
+      0.0009341358045300606,
+      -0.0
+     ],
+     [
+      0.04814623514920292,
+      0.04677726674516418,
+      0.04676465636770984,
+      0.0467632679104851,
+      0.04676326791048503,
+      0.04676326791048504,
+      0.046763267910485025,
+      0.04814623514920291,
+      0.000361116163432024,
+      -0.0
+     ],
+     [
+      0.06112391092352129,
+      0.05881864790139607,
+      0.05879755372158997,
+      0.058795232899900074,
+      0.058795232899900116,
+      0.05879523289990017,
+      0.05879523289990014,
+      0.061123910923521235,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.07730198400199083,
+      0.0734025150987597,
+      0.07336716575184404,
+      0.07336328046112173,
+      0.07336328046112166,
+      0.07336328046112173,
+      0.07336328046112163,
+      0.07730198400199073,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.09721093106643434,
+      0.0905850260963523,
+      0.09052575989408651,
+      0.09051925473692816,
+      0.09051925473692807,
+      0.09051925473692812,
+      0.09051925473692818,
+      0.09721093106643432,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.12121227189801637,
+      0.10991063166000858,
+      0.10981149559742048,
+      0.10980063444911314,
+      0.10980063444911321,
+      0.10980063444911314,
+      0.10980063444911313,
+      0.1212122718980165,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.14916887352650068,
+      0.1298550188657152,
+      0.12969044909442592,
+      0.12967246513844324,
+      0.1296724651384432,
+      0.12967246513844322,
+      0.12967246513844322,
+      0.14916887352650088,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.17977843303173838,
+      0.14684065295909624,
+      0.14657215623312647,
+      0.1465429189657466,
+      0.1465429189657465,
+      0.14654291896574664,
+      0.14654291896574662,
+      0.17977843303173827,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.20930030415441264,
+      0.15366727010220133,
+      0.1532443030286517,
+      0.15319847269177592,
+      0.15319847269177592,
+      0.15319847269177603,
+      0.15319847269177586,
+      0.2093003041544127,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.22931031332991147,
+      0.13751970801479446,
+      0.1368974127728924,
+      0.13683045533449503,
+      0.13683045533449512,
+      0.13683045533449512,
+      0.136830455334495,
+      0.22931031332991136,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.22333144410031053,
+      0.07906281387679913,
+      0.07826440834317555,
+      0.07817936236999115,
+      0.07817936236999107,
+      0.07817936236999096,
+      0.07817936236999105,
+      0.2233314441003103,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.16396291711803887,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      0.16396291711803898,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.021337521636934514,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      0.02133752163693453,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.16129008411795445,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      0.16129008411795445,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.20225476537505963,
+      0.13581226989358358,
+      0.12634201785470095,
+      0.125284752767169,
+      0.12528475276716924,
+      0.1252847527671691,
+      0.12528475276716905,
+      0.20225476537505963,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.013957387223649179,
+      0.005738926779666274,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      0.013957387223649207,
+      0.11140950984818447,
+      -0.0
+     ],
+     [
+      0.18309528760931243,
+      0.05434171226804441,
+      0.04187665926561892,
+      0.0407744363120414,
+      0.04077443631204151,
+      0.040774436312041556,
+      0.040774436312041445,
+      0.1830952876093124,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.14241208041704717,
+      0.02825236811182276,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      0.14241208041704717,
+      -0.0,
+      -0.0
+     ],
+     [
+      0.08965877297605838,
+      0.05406983329954559,
+      0.01779970572609054,
+      0.015302129006726966,
+      0.01530212900672715,
+      0.015302129006727063,
+      0.01530212900672708,
+      0.08965877297605829,
+      0.03614260568325741,
+      -0.0
+     ],
+     [
+      0.014084605689170866,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      0.014084605689170837,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+     ]
+    ],
+    "isolated_pair": [
+     0.011159787511604997,
+     0.01430803120583522,
+     0.018343781736463352,
+     0.023516532100256036,
+     0.03014513611857204,
+     0.038636229409668606,
+     0.04950657579048759,
+     0.06340904323253059,
+     0.08116029040465968,
+     0.10376449573015815,
+     0.13241923024767654,
+     0.16847212354966673,
+     0.21326114137302138,
+     0.2677006889788248,
+     0.33134563795252525,
+     0.4004557569396623,
+     0.46435232962346773,
+     0.4995193906863757,
+     0.4630195905822442,
+     0.2951112899426016,
+     0.03846027465683231,
+     0.41669155291259197,
+     0.4185377044751685,
+     0.24021577636250827,
+     0.3319715633102482,
+     0.4937974315465628,
+     0.4933523324514577,
+     0.2458004323894599,
+     0.49931196400476374,
+     0.47794430859179504,
+     0.40665145483693266,
+     0.3262277138696486,
+     0.3243510536740989,
+     0.10664567313060244,
+     0.35223590114248277,
+     0.45838411663360046
+    ],
+    "bulk_nn_peak": 0.15319847269177592,
+    "bulk_nn_peak_tau": 1.2655617079076587,
+    "bulk_nn_first_zero_tau_after_1": 2.667625508842159,
+    "last_tau_any_scanned_pair_entangled": 19.485084356304377
+   }
+  },
+  "b": {
+   "params": {
+    "N": 4000,
+    "lambda_omega0": 511.69490070376764,
+    "kappa_omega0": 255.84745035188382,
+    "n_traj": 16,
+    "n_steps": 200,
+    "T_omega0": 0.007817158221624912,
+    "T_seconds": 0.055581703543037646,
+    "R_used_m": 8.794302999328026e-07,
+    "model": "measure Z_j at strength kappa (record dY = 2 sqrt(kappa) <Z_j> dt + dW_j); each mass feels the Newtonian field of the others' records s_hat_i dt = (dt - dY_i / (2 sqrt kappa)) / 2; exact branch-first sampling of the records"
+   },
+   "wall_seconds": {
+    "setup_matrices": 1.0161492950001048,
+    "time_loop": 8.21419752499969,
+    "per_step_per_trajectory": 0.0025669367265624033
+   },
+   "checkpoints": {
+    "1": {
+     "t_over_1/lambda": 1,
+     "mean_mag": 0.1839455384403392,
+     "mean_mag_sem": 0.0006118301084492339,
+     "theory_mag": 0.18393972058572094,
+     "u_mean_re": 1.0000316231118636,
+     "u_mean_im": -1.06248646416225e-05,
+     "u_sem": 0.00332626260682856,
+     "log2Z_mean": 1046.8304351908278,
+     "log2Z_traj_min": 1013.6882107132786,
+     "log2Z_traj_max": 1082.8547492747775
+    },
+    "2": {
+     "t_over_1/lambda": 2,
+     "mean_mag": 0.06758470260894706,
+     "mean_mag_sem": 0.00044128746918396165,
+     "theory_mag": 0.0676676416183061,
+     "u_mean_re": 0.9987743375207074,
+     "u_mean_im": -3.272109476519148e-05,
+     "u_sem": 0.006521429915293019,
+     "log2Z_mean": 315.3137916664069,
+     "log2Z_traj_min": 283.56962791636096,
+     "log2Z_traj_max": 332.138224772097
+    },
+    "3": {
+     "t_over_1/lambda": 3,
+     "mean_mag": 0.02514965806954424,
+     "mean_mag_sem": 0.0002759794641961349,
+     "theory_mag": 0.024893534183931816,
+     "u_mean_re": 1.0102887699291467,
+     "u_mean_im": -3.0214352432266953e-06,
+     "u_sem": 0.011086492493442839,
+     "log2Z_mean": 102.9052350388413,
+     "log2Z_traj_min": 95.12852641662398,
+     "log2Z_traj_max": 116.54802741538681
+    },
+    "4": {
+     "t_over_1/lambda": 4,
+     "mean_mag": 0.009345600960978733,
+     "mean_mag_sem": 0.00016763384675875004,
+     "theory_mag": 0.009157819444367016,
+     "u_mean_re": 1.0205048966213217,
+     "u_mean_im": -0.00013384166801665018,
+     "u_sem": 0.018305261378334735,
+     "log2Z_mean": 35.1312850181537,
+     "log2Z_traj_min": 23.09710139190749,
+     "log2Z_traj_max": 45.520556871300016
+    }
+   },
+   "fitted_decay_rate_over_lambda": 0.9971433411662683,
+   "feedback_extra_rate_over_lambda_bulk": 3.842553663523408e-07,
+   "force": {
+    "mean_t2": 1.0940278678728905,
+    "expected_t2": 1.1538461538461537,
+    "max_abs_t": 5.811376174214965,
+    "edge_mass_impulse_mean": 0.022559455948386514,
+    "edge_mass_newton_impulse": 0.01998325619578578,
+    "edge_mass_impulse_sem": 0.0033458320189821873,
+    "per_trajectory_total_impulse_sd": 0.3961576217777217,
+    "per_trajectory_total_impulse_mean": 0.16158773692564535
+   },
+   "small_N_separability": {
+    "4": {
+     "kappa_opt": 0.1581819921185214,
+     "max_pair_negativity_frame": 0.0,
+     "max_bipartition_PT_negativity_frame": 0.0,
+     "max_bipartition_PT_negativity_quantum": 0.49999999165641934
+    },
+    "6": {
+     "kappa_opt": 0.15855451405624013,
+     "max_pair_negativity_frame": 0.0,
+     "max_bipartition_PT_negativity_frame": 0.0,
+     "max_bipartition_PT_negativity_quantum": 0.4999999979566859
+    }
+   },
+   "mc_vs_master_equation": {
+    "max_z_exact_traj": 2.5150811085375087,
+    "joint_sse_max_abs_diff": 0.004555236840100674,
+    "joint_sse_max_schmidt_ratio": 1.7525223969849124e-15
+   }
+  },
+  "cost": {
+   "statevector_seconds": {
+    "8": {
+     "table_s": 0.00013807600043946877,
+     "state_plus_Z_s_median": 4.864250013270066e-05
+    },
+    "10": {
+     "table_s": 0.00019614299981185468,
+     "state_plus_Z_s_median": 9.098450027522631e-05
+    },
+    "12": {
+     "table_s": 0.00024855399988155114,
+     "state_plus_Z_s_median": 0.00028007499986415496
+    },
+    "14": {
+     "table_s": 0.00044571099988388596,
+     "state_plus_Z_s_median": 0.001031311500355514
+    },
+    "16": {
+     "table_s": 0.0009246079998774803,
+     "state_plus_Z_s_median": 0.0052685365003526385
+    },
+    "18": {
+     "table_s": 0.002834370000527997,
+     "state_plus_Z_s_median": 0.02766780150022896
+    },
+    "20": {
+     "table_s": 0.03309955300028378,
+     "state_plus_Z_s_median": 0.12224033700022119
+    },
+    "22": {
+     "table_s": 0.3146079460002511,
+     "state_plus_Z_s_median": 0.8246984160000466,
+     "entropy_s": 2.9057207270006984
+    },
+    "24": {
+     "table_s": 0.2004852390000451,
+     "state_plus_Z_s_median": 4.266488828000092,
+     "entropy_s": 28.69793743199989
+    }
+   },
+   "fit_log2_seconds_vs_N": {
+    "slope": 1.2105960045275652,
+    "intercept": -26.753740597673744
+   },
+   "statevector_bytes_N24": 268435456,
+   "log10_statevector_bytes_N4000": 1205.3241026385806,
+   "log10_seconds_statevector_N4000_extrapolated_fit": 1449.6491615589507,
+   "log10_seconds_statevector_N4000_pure_2N_from_N24": 1197.5452761911736,
+   "seconds_statevector_N24_table_state_Z": 4.466974067000137,
+   "frame_N4000_seconds": 8.21419752499969,
+   "frame_N4000_seconds_per_step_per_trajectory": 0.0025669367265624033,
+   "frame_memory_bytes_N4000": 384000000
+  }
+ },
+ "G2": {
+  "bose_instance": {
+   "omega_rad_s": 0.1255737969531259,
+   "lambda_B_per_s": 71.96612815047577,
+   "lambda_DP_exact_per_s": 86.10619700591343,
+   "rho_paper": 0.001744901388755562,
+   "rho_exact_DP": 0.0014583595759606245,
+   "coherence_time_ms": 13.89542588575941,
+   "t_1rad_s": 7.9634447971122455,
+   "t_pi_s": 25.017899671875693
+  },
+  "supremum": {
+   "collinear_paper_rate": 0.5,
+   "collinear_exact_DP": 0.5,
+   "any_two_spheres_paper_rate": 1.0,
+   "any_two_spheres_exact_DP": 0.8333333333333334,
+   "random_geometries": 188398,
+   "random_max_paper": 0.4455885596382366,
+   "random_max_exact": 0.444136501757662,
+   "random_max_cauchy_schwarz_ratio": 0.222068250878831,
+   "collinear_with_200um_gap": 0.0043971514996640135,
+   "collinear_scan": {
+    "dx_over_R": [
+     0.0001,
+     0.0012669424629259062,
+     0.016051432043647614,
+     0.20336240846866724,
+     2.5764847065183747,
+     32.64257879767324,
+     413.5626917817706,
+     5239.601353002634,
+     66382.73442923075,
+     841031.0505352605
+    ],
+    "rho_paper": [
+     2.4996250437453123e-09,
+     4.005243177433718e-07,
+     6.288980869566954e-05,
+     0.007798821521682643,
+     0.2027854330292258,
+     0.45712969608995013,
+     0.49639333862389473,
+     0.4997138461149391,
+     0.4999774045572234,
+     0.4999982164798345
+    ],
+    "rho_exact": [
+     0.4999437566399302,
+     0.4992884093690413,
+     0.49113933775429364,
+     0.40824312061716483,
+     0.24977442910855574,
+     0.39092125333238326,
+     0.41449633014472714,
+     0.4164944465294448,
+     0.41665306757072085,
+     0.41666559325183405
+    ]
+   }
+  },
+  "threshold": {
+   "local_dephasing": 2.0000000089630703,
+   "full_DP_kernel": 1.41421356740193,
+   "LOCC_sufficient_local": 2.0,
+   "KTM_qubit_min_decoherence": "omega/2",
+   "margin_local_vs_sup_paper": 2.0000000089630703,
+   "margin_full_vs_sup_exact": 1.697056280882316
+  },
+  "hypotheses": {
+   "Q": {
+    "max_negativity": 0.4999965897409462,
+    "t_at_max_s": 25.07672371851694,
+    "max_stabiliser_witness": 1.9999727180206106,
+    "min_optimal_witness": -0.49999658974094674,
+    "negativity_at_t_pi": 0.4999949495500559
+   },
+   "Q+DP local": {
+    "max_negativity": 1.4150003977845598e-16,
+    "t_at_max_s": 0.0,
+    "max_stabiliser_witness": 8.241043055190467e-07,
+    "min_optimal_witness": 1.3877787807814457e-17,
+    "negativity_at_t_pi": 0.0
+   },
+   "Q+DP exact local": {
+    "max_negativity": 1.4150003977845598e-16,
+    "t_at_max_s": 0.0,
+    "max_stabiliser_witness": 5.756623793345961e-07,
+    "min_optimal_witness": 1.3877787807814457e-17,
+    "negativity_at_t_pi": 0.0
+   },
+   "Q+DP full": {
+    "max_negativity": 1.4150003977845598e-16,
+    "t_at_max_s": 0.0,
+    "max_stabiliser_witness": 5.756623793345961e-07,
+    "min_optimal_witness": 1.3877787807814457e-17,
+    "negativity_at_t_pi": 0.0
+   },
+   "G": {
+    "max_negativity": 1.4150003977845598e-16,
+    "t_at_max_s": 0.0,
+    "max_stabiliser_witness": 8.24103992089209e-07,
+    "min_optimal_witness": 1.3877787807814457e-17,
+    "negativity_at_t_pi": 0.0
+   },
+   "G at KTM minimum": {
+    "max_negativity": 1.4150003977845598e-16,
+    "t_at_max_s": 0.0,
+    "max_stabiliser_witness": 0.5287968990678718,
+    "min_optimal_witness": -5.551115123125783e-17,
+    "negativity_at_t_pi": 0.0
+   },
+   "Q + dephasing 0.99 omega/2": {
+    "max_negativity": 0.00030446635185313293,
+    "t_at_max_s": 1.5493167387895268,
+    "max_stabiliser_witness": 0.5346954843560222,
+    "min_optimal_witness": -0.00030446635185319565,
+    "negativity_at_t_pi": 0.0
+   }
+  },
+  "series_sampled": {
+   "t_s": [
+    0.0,
+    2.3861342682670277e-06,
+    5.726966209481345e-06,
+    1.3745304445236167e-05,
+    3.299013603038863e-05,
+    7.917969948499375e-05,
+    0.00019003937433779834,
+    0.00045611392861558413,
+    0.0010947200631556888,
+    0.002627440079089593,
+    0.006306124827297094,
+    0.015135344342936284,
+    0.03632637390678494,
+    0.08718701149547416,
+    0.20925774185493715,
+    0.5022399756011899,
+    1.205427291988779,
+    2.893148747333515,
+    6.943852797946625,
+    16.66595667574669,
+    40.0
+   ],
+   "Q": [
+    1.4150003977845598e-16,
+    7.490898500558572e-08,
+    1.7978922300930377e-07,
+    4.3151251732148707e-07,
+    1.0356741607981843e-06,
+    2.4857238765258075e-06,
+    5.965991451392113e-06,
+    1.4318989462865572e-05,
+    3.43670387058112e-05,
+    8.248440637531189e-05,
+    0.00019797100448339759,
+    0.000475150592817949,
+    0.0011404091864912868,
+    0.002737087349241145,
+    0.006569133294509635,
+    0.015764432187447962,
+    0.03780640243294054,
+    0.09032723876779067,
+    0.21115081667125202,
+    0.4328141101356525,
+    0.29461953123898305
+   ],
+   "Q+DP local": [
+    1.4150003977845598e-16,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "Q+DP exact local": [
+    1.4150003977845598e-16,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "Q+DP full": [
+    1.4150003977845598e-16,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "G": [
+    1.4150003977845598e-16,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "G at KTM minimum": [
+    1.4150003977845598e-16,
+    1.5404055188511994e-17,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "Q + dephasing 0.99 omega/2": [
+    1.4150003977845598e-16,
+    7.490897249288039e-10,
+    1.7978916470986427e-09,
+    4.315121483810787e-09,
+    1.0356720453783101e-08,
+    2.485711637700986e-08,
+    5.965920947452456e-08,
+    1.4318583119085674e-07,
+    3.436469492187558e-07,
+    8.247086286552028e-07,
+    1.978924049046773e-06,
+    4.746897760755326e-06,
+    1.137643643926431e-05,
+    2.7196286129155632e-05,
+    6.447668613069268e-05,
+    0.00014783384314115983,
+    0.00028506216871727625,
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0
+   ]
+  },
+  "bose_witness_product_max": {
+   "as_printed": 1.4142135623730956,
+   "variant_xz_plus_yy": 1.0000000000000004
+  }
+ },
+ "G3": {
+  "fd_runs": {
+   "0.5": {
+    "D1": 1.4142135623730951,
+    "ratio_D1sq_over_4D0D2": 0.5,
+    "fd_max_rel_error": 8.355343323630508e-05,
+    "min_rel_block_eigenvalue": -2.1906525004701623e-56,
+    "joint_object_min_eigenvalue": -5.097894115623847e-59,
+    "joint_negative_mass_at_T": -0.0,
+    "first_negative_time": null,
+    "t_star_theory": "inf",
+    "rel_min_eig_series": [
+     -6.133507776201718e-164,
+     -4.1068252504883783e-134,
+     -1.5676847473063755e-71,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "1.0": {
+    "D1": 2.0,
+    "ratio_D1sq_over_4D0D2": 1.0,
+    "fd_max_rel_error": 9.465446558181893e-05,
+    "min_rel_block_eigenvalue": -3.01759973362005e-17,
+    "joint_object_min_eigenvalue": -3.469446951953614e-20,
+    "joint_negative_mass_at_T": 1.014813233446432e-18,
+    "first_negative_time": null,
+    "t_star_theory": "inf",
+    "rel_min_eig_series": [
+     -6.133507776201718e-164,
+     -3.20236063374975e-54,
+     -3.6481009828427664e-37,
+     -9.649941121442123e-28,
+     -4.5611747698795115e-24,
+     -2.608989058078401e-21,
+     -9.140632764933075e-20,
+     -7.895303840632324e-19,
+     -3.375176368930943e-18,
+     -1.431636744141112e-17,
+     -3.01759973362005e-17
+    ]
+   },
+   "1.01": {
+    "D1": 2.009975124224178,
+    "ratio_D1sq_over_4D0D2": 1.01,
+    "fd_max_rel_error": 9.486589073902011e-05,
+    "min_rel_block_eigenvalue": -0.0005020020030132051,
+    "joint_object_min_eigenvalue": -8.264528208645761e-07,
+    "joint_negative_mass_at_T": 1.637179349989489e-05,
+    "first_negative_time": 1.0,
+    "t_star_theory": 1.0000000000000215,
+    "rel_min_eig_series": [
+     -6.133507776201718e-164,
+     -6.360671231063623e-41,
+     -3.9188541948136416e-28,
+     -3.22288005614962e-13,
+     -0.00037172434113386885,
+     -0.0005020020030132051,
+     -0.0004383542747194361,
+     -0.00032950259557566064,
+     -0.0002293783320467985,
+     -0.00015237715394232938,
+     -9.808189133870808e-05
+    ]
+   },
+   "2.0": {
+    "D1": 2.8284271247461903,
+    "ratio_D1sq_over_4D0D2": 2.0,
+    "fd_max_rel_error": 0.00011384316959410124,
+    "min_rel_block_eigenvalue": -0.23916856784007817,
+    "joint_object_min_eigenvalue": -0.0008859372099942198,
+    "joint_negative_mass_at_T": 0.0009695716303191069,
+    "first_negative_time": 0.05,
+    "t_star_theory": 0.009999999999999997,
+    "rel_min_eig_series": [
+     -6.133507776201718e-164,
+     -0.233387737273252,
+     -0.2068461907572573,
+     -0.13688828826171434,
+     -0.082162052825888,
+     -0.047210465684191724,
+     -0.026547795029352325,
+     -0.014761919064146862,
+     -0.008159391923879803,
+     -0.00449540273380024,
+     -0.0024723816944150017
+    ]
+   }
+  },
+  "normalisation": {
+   "this_toy": "d rho/dt = D0 (Z rho Z - rho) - (D1/2) d_p {Z, rho} + (D2/2) d_p^2 rho",
+   "OSSWD_Eq9": "first moment D1^{0a} = D1/2, second moment D2^{00} = D2/2 (their D_n carry 1/n!)",
+   "OSSWD_Eq23": "(D1/2)^2 / D0 <= 2 (D2/2)  <=>  D1^2 <= 4 D0 D2",
+   "grid": {
+    "P": 22.0,
+    "h": 0.01,
+    "points": 4401
+   },
+   "s0": 0.1,
+   "D0": 1.0,
+   "D2": 1.0,
+   "T": 3.0
+  },
+  "unravelling": {
+   "n_traj": 400000,
+   "t": 1.0,
+   "D1": 2.0,
+   "D2_equality": 1.0,
+   "equality": {
+    "bins_p": [
+     -0.9999999999999999,
+     -0.95,
+     -0.8999999999999999,
+     -0.8499999999999999,
+     -0.7999999999999999,
+     -0.7499999999999999,
+     -0.7,
+     -0.6499999999999999,
+     -0.6,
+     -0.5499999999999999,
+     -0.49999999999999994,
+     -0.44999999999999996,
+     -0.39999999999999997,
+     -0.35,
+     -0.3,
+     -0.25,
+     -0.19999999999999996,
+     -0.14999999999999997,
+     -0.09999999999999998,
+     -0.04999999999999999,
+     -5.551115123125783e-17,
+     0.04999999999999993,
+     0.09999999999999998,
+     0.15000000000000002,
+     0.20000000000000007,
+     0.25,
+     0.29999999999999993,
+     0.35,
+     0.4,
+     0.44999999999999996,
+     0.4999999999999999,
+     0.5499999999999999,
+     0.6,
+     0.65,
+     0.7,
+     0.7499999999999999,
+     0.7999999999999999,
+     0.85,
+     0.8999999999999999,
+     0.9499999999999998,
+     0.9999999999999999
+    ],
+    "mixedness_4det_over_tr2": [
+     5.879183150185319e-05,
+     7.012946040397888e-05,
+     8.805054957351776e-05,
+     0.00010428440412752079,
+     0.00013130854691424586,
+     0.00014857446024444328,
+     0.00018112655378714143,
+     0.00021182768590252652,
+     0.0002603080845598931,
+     0.00029774810846697474,
+     0.00036925068852544814,
+     0.00040910556358574247,
+     0.0004919340891404351,
+     0.0005564247454918158,
+     0.0005990936525870861,
+     0.0006884074119190867,
+     0.000739296443733897,
+     0.0007105035538249754,
+     0.0008110820897552435,
+     0.0008324649604967117,
+     0.0008188344363357815,
+     0.0008119029748696826,
+     0.000803508798520113,
+     0.0007640191422697245,
+     0.0007592806254859567,
+     0.0006459354045259278,
+     0.0005872622227178911,
+     0.0005234434187859698,
+     0.0004684213617211775,
+     0.00039966289881392586,
+     0.0003708452932270063,
+     0.0003020479254519476,
+     0.0002526278928643994,
+     0.00021155296731031363,
+     0.00018272379670893318,
+     0.00015275570670119994,
+     0.00012296163858687095,
+     0.00010610903046594998,
+     8.586401751162255e-05,
+     6.99643277862773e-05,
+     5.98570032481319e-05
+    ],
+    "max_mixedness": 0.0008324649604967117,
+    "mixedness_at_p0": 0.0008188344363357815
+   },
+   "2x diffusion": {
+    "bins_p": [
+     -0.9999999999999999,
+     -0.95,
+     -0.8999999999999999,
+     -0.8499999999999999,
+     -0.7999999999999999,
+     -0.7499999999999999,
+     -0.7,
+     -0.6499999999999999,
+     -0.6,
+     -0.5499999999999999,
+     -0.49999999999999994,
+     -0.44999999999999996,
+     -0.39999999999999997,
+     -0.35,
+     -0.3,
+     -0.25,
+     -0.19999999999999996,
+     -0.14999999999999997,
+     -0.09999999999999998,
+     -0.04999999999999999,
+     -5.551115123125783e-17,
+     0.04999999999999993,
+     0.09999999999999998,
+     0.15000000000000002,
+     0.20000000000000007,
+     0.25,
+     0.29999999999999993,
+     0.35,
+     0.4,
+     0.44999999999999996,
+     0.4999999999999999,
+     0.5499999999999999,
+     0.6,
+     0.65,
+     0.7,
+     0.7499999999999999,
+     0.7999999999999999,
+     0.85,
+     0.8999999999999999,
+     0.9499999999999998,
+     0.9999999999999999
+    ],
+    "mixedness_4det_over_tr2": [
+     0.37420038866326766,
+     0.390061504427149,
+     0.42198725271314796,
+     0.45005836564897145,
+     0.4817324207626819,
+     0.5078264308037924,
+     0.5178824376166833,
+     0.5971717874394008,
+     0.6122304669254796,
+     0.6581818612591834,
+     0.6765494834762473,
+     0.7017192225690101,
+     0.7537637807475072,
+     0.7967878335723428,
+     0.7792573800707573,
+     0.8137527701267737,
+     0.8182982174767319,
+     0.8306431172738956,
+     0.8533630057763956,
+     0.8648686143058364,
+     0.8646468880498167,
+     0.8681633825555317,
+     0.8577500203997448,
+     0.8341079704208988,
+     0.8267107612370287,
+     0.794891953845127,
+     0.7699004482499187,
+     0.7711273062737222,
+     0.772180275120065,
+     0.6961130251489901,
+     0.6727701808524961,
+     0.6297077265912335,
+     0.6069506709523909,
+     0.5767670225178022,
+     0.5389255671668778,
+     0.5173724614249283,
+     0.4808181222120808,
+     0.4533211724813189,
+     0.426286267449777,
+     0.39734624168587335,
+     0.35198881801047854
+    ],
+    "max_mixedness": 0.8681633825555317,
+    "mixedness_at_p0": 0.8646468880498167
+   }
+  }
+ },
+ "G4": {
+  "log_negativity": {
+   "vacuum": {
+    "Q_max_log_neg": 0.1447491376705438,
+    "Q_t_at_max": 31.450000000000003,
+    "KTM_min_2nu_all_k": 1.0,
+    "below_minimum_0.99K_max_log_neg": 0.00013218640210579222
+   },
+   "squeezed r=1": {
+    "Q_max_log_neg": 2.9601662073148223,
+    "Q_t_at_max": 140.8,
+    "KTM_min_2nu_all_k": 1.0,
+    "below_minimum_0.99K_max_log_neg": 0.0
+   }
+  },
+  "heating_vs_k": {
+   "k_over_K": [
+    0.005,
+    0.015811388300841896,
+    0.05,
+    0.15811388300841897,
+    0.5,
+    1.5811388300841898,
+    5.0,
+    15.811388300841896,
+    50.0
+   ],
+   "D_over_K": [
+    50.005,
+    15.827199689142741,
+    5.05,
+    1.7392527130926085,
+    1.0,
+    1.7392527130926088,
+    5.05,
+    15.827199689142738,
+    50.004999999999995
+   ],
+   "k_opt": 0.05000000012480853,
+   "D_min": 0.1,
+   "coherence_decay_rate": "D (x - x')^2 / (2 hbar^2) >= K (x - x')^2 / (2 hbar)"
+  },
+  "trajectories": {
+   "n": 4000,
+   "dt": 0.002,
+   "T": 10.0,
+   "k": 0.05,
+   "max_z_means": 2.072768771835688,
+   "max_z_cov": 0.9804225892308667,
+   "max_cross_block": 0.0
+  },
+  "instance": {
+   "K_N_per_m": 1.4648669410150889e-28,
+   "D_min_hbarK": 1.5448073925960474e-62,
+   "Gamma_min_dx250um_per_s": 0.04340822610725337,
+   "qubit_KTM_min_omega_over_2_per_s": 0.06278689847656295,
+   "Bridge_B_per_s": 71.96612815047577,
+   "ratio_bridgeB_over_KTM_qubit": 1146.1965775764388
+  }
+ }
+}

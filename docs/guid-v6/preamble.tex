@@ -1,0 +1,51 @@
+% GUID v6: shared preamble of the paper and of the single-section test wrapper (testwrap.tex).
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,tabularx,array,longtable,multirow}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc}
+% Primer boxes: short background for readers from other fields, placed where the material is first needed.
+% Usage: \begin{primer}{Quantum information in one page}{box:qi} ... \end{primer}
+\newcounter{primer}
+\newenvironment{primer}[2]{\refstepcounter{primer}\label{#2}%
+  \begin{tcolorbox}[breakable,enhanced,colback=black!3,colframe=black!45,boxrule=0.5pt,arc=1pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\small,title={Primer~\theprimer: #1}]\small}{\end{tcolorbox}}
+\graphicspath{{../simulation/figures/}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem*{hypothesisprime}{Hypothesis 1$'$}
+\newtheorem*{hypothesisprime6}{Hypothesis 6$'$}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\setlength{\emergencystretch}{3em}
+% \chk{Q5}: check Q5 of docs/guid-v6/checks.py; \chk{gravsim:G2}: a check or result of a simulation script (see the paper's Appendix A).
+\newcommand{\chk}[1]{\textsf{[#1]}}
+\newcommand{\tagD}{\textsf{(D)}}
+\newcommand{\tagH}{\textsf{(H)}}
+\newcommand{\tagP}{\textsf{(P)}}
+\newcommand{\tagS}{\textsf{(S)}}
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\dd}{\mathrm{d}}
+% verdicts
+\newcommand{\vd}[1]{\emph{#1}}
