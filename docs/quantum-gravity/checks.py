@@ -35,6 +35,9 @@ The holographic-code assembly of Section 9 is a separate script, docs/qg-verdict
   [Q19] fixing the free constant with GUID's own principles: Bridge A (the cosmological event horizon as the cut-off of the stochastic
         remnant; too strong by 8 in v^4) and Bridge B (Planck-strength record, trade-off at equality: the Diosi-Penrose rate G M^2 / hbar R,
         72 per second for the 1e-14 kg microsphere of the Bose et al. geometry)
+  [Q20] version 5.1: the radiation-era clock and the time of the electroweak crossover (about 1e-11 s); the W and Z masses from the Higgs
+        vacuum and alpha born at the split (1/128, running to 1/137); the order-of-magnitude proton lifetime for a unification at the start
+        against Super-Kamiokande
 """
 
 import math
@@ -493,6 +496,45 @@ m_C = 12 * 1.66053907e-27
 gran = (mm / m_C) * G * m_C**2 / 1e-10                  # nuclear mass density smeared over 1e-10 m, the order of the radiation bound
 check_true(f"with nuclei smeared over 1e-10 m the granular term ({gran:.1e} J) is far below the bulk term G M^2 / R "
            f"({G * mm**2 / R_bmv:.1e} J)", gran < 1e-6 * G * mm**2 / R_bmv)
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+print("\n[Q20] Version 5.1: the electroweak split, where the Higgs vacuum and alpha appear, and the strong split at the start")
+# Radiation era: H = sqrt(8 pi^3 g* / 90) T^2 / M_Pl, t = 1 / (2 H); g* = 106.75 for the full Standard Model above the top mass.
+M_Pl_GeV = E_P / GeV
+hbar_GeVs = hbar / GeV
+
+
+def time_at(T_GeV, gstar=106.75):
+    H_nat = math.sqrt(8 * math.pi**3 * gstar / 90) * T_GeV**2 / M_Pl_GeV
+    return hbar_GeVs / (2 * H_nat)
+
+
+check("radiation-era clock: t at 1 MeV for g* = 1 is 2.42 s", time_at(1e-3, 1.0), 2.42, rtol=5e-3)
+check("time of the electroweak crossover, T_c = 159.5 GeV (D'Onofrio and Rummukainen 2016), s", time_at(159.5), 9.2e-12, rtol=1e-2)
+# At the split the photon is the mixture A = sin(theta_W) W3 + cos(theta_W) B and the charge is e = g sin(theta_W); the W and Z take
+# their masses from the Higgs vacuum v = 246.22 GeV: m_W = g v / 2, m_Z = m_W / cos(theta_W) (tree level, MS-bar inputs at M_Z).
+v_H = 246.22
+e_mz = math.sqrt(4 * math.pi / inv_alpha_mz)
+g_su2 = e_mz / math.sqrt(s2w)
+check("SU(2) coupling at the Z mass, g = e / sin(theta_W)", g_su2, 0.652, rtol=2e-3)
+check("W mass from the Higgs vacuum, g v / 2, GeV (measured 80.37)", g_su2 * v_H / 2, 80.37, rtol=5e-3)
+check("Z mass, m_W / cos(theta_W), GeV (measured 91.19)", g_su2 * v_H / 2 / math.sqrt(1 - s2w), 91.19, rtol=5e-3)
+check("alpha where it is born, at the electroweak scale: 1/alpha(M_Z)", 4 * math.pi / e_mz**2, 127.951, rtol=1e-6)
+check("alpha at low energy: 1/alpha(0), the value it runs down to", 1 / alpha, 137.036, rtol=1e-6)
+# A unification split at the start: heavy gauge bosons of mass M_X still let protons decay, tau ~ M_X^4 / (alpha_G^2 m_p^5), to within a
+# factor of about ten; Super-Kamiokande (2020): tau(p -> e+ pi0) > 2.4e34 yr.
+m_p_GeV = 0.93827
+
+
+def tau_p(M_X, alpha_G=1 / 40):
+    return M_X**4 / (alpha_G**2 * m_p_GeV**5) * hbar_GeVs / year
+
+
+check("order-of-magnitude proton lifetime for M_X = 1e16 GeV, alpha_G = 1/40, years", tau_p(1e16), 4.6e35, rtol=0.05)
+check_true("for M_X = 1e16 GeV it lies above the Super-Kamiokande bound of 2.4e34 years", tau_p(1e16) > 2.4e34)
+M_X_bound = 1e16 * (2.4e34 / tau_p(1e16)) ** 0.25
+check("unification mass at which the estimate meets that bound, GeV", M_X_bound, 4.8e15, rtol=0.03)
+check_true("the bound on inflation (V^(1/4) < 1.4e16 GeV, [Q14]) allows a split at the unification scale within the start", M_X_bound < 1.4e16)
 
 print(f"\n{sum(results)} of {len(results)} checks passed")
 raise SystemExit(0 if all(results) else 1)

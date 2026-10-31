@@ -18,16 +18,16 @@ comparison with the main approaches to quantum gravity.
 
 | File | What |
 |---|---|
-| `quantum-gravity.tex` | the paper (LaTeX, `article` class, inline bibliography, 37 pages, one appendix) |
+| `quantum-gravity.tex` | the paper (LaTeX, `article` class, inline bibliography, 41 pages, one appendix; version 5.1, new text in blue and tagged [v5.1]) |
 | `quantum-gravity.pdf` | the paper as PDF, built from `quantum-gravity.tex` |
-| `checks.py` | every numerical claim: checks Q1 to Q19, 112 of 112 (numpy, scipy, sympy) |
+| `checks.py` | every numerical claim: checks Q1 to Q20, 123 of 123 (numpy, scipy, sympy) |
 | `de/guid-v5-quantengravitation.pdf` | the German translation; the English original governs. Only the PDF is tracked, as for v4: the public-repository scan rejects German letters in tracked text |
 | `README.md` | this file: what backs each claim, the sources |
 
 ## Build and check
 
 ```sh
-python3 docs/quantum-gravity/checks.py          # 112 of 112 checks passed
+python3 docs/quantum-gravity/checks.py          # 123 of 123 checks passed
 python3 docs/qg-verdict/assembly.py             # 18 of 18: the holographic-code assembly (A1 to A5 in the paper)
 cd docs/quantum-gravity && pdflatex quantum-gravity.tex && pdflatex quantum-gravity.tex && pdflatex quantum-gravity.tex \
   && rm -f quantum-gravity.aux quantum-gravity.log quantum-gravity.out quantum-gravity.toc
@@ -58,6 +58,7 @@ Three runs because of the table of contents. Built clean (no overfull box, no un
 | abs(c_gw / c - 1) of order 4e-16 from GW170817 | [Q17] |
 | Stochastic remnant: Lambda = 1.09e-52 /m^2, c^2 sqrt(Lambda/3)/2pi = 8.6e-11 m/s^2; r* = 17 kpc, v* = 227 km/s for 1e11 solar masses and abs(gamma1) = 1e-10 m/s^2 (gamma1 < 0, attractive; the Lambda term subtracts); 12% change from r*/2 to 2 r*; v^4 proportional to M. Contained remnant: T_H 1.2e9 K and 1.2e4 K at 1e14 and 1e19 kg, kT 0.1 MeV, evaporated below a few 1e11 kg. Radiated remnant: Omega_gw 8e-9 at 1/yr | [Q18] |
 | Bridge A (cosmological event horizon as cut-off): abs(gamma1) = 0.90 to 1.00 c H_inf = 4.9 to 5.4e-10 m/s^2, 8.1 times too strong in v^4 (1.69 in v); 337 km/s at 7.6 kpc against 200 km/s for 1e11 solar masses; 620 km/s at 50 kpc. Bridge B (Planck-strength record, trade-off at equality): discrete model 1.2e-51 kg s, excluded; Diosi-Penrose kernel 1.6e-24 kg^2 s/m, allowed; rate G M^2 / hbar R; fullerene 6.3e-16 /s; the 1e-14 kg diamond microsphere (R = 0.88 um) 72 /s, 13.9 ms, 1.74e-3 rad of entangling phase | [Q19] |
+| Version 5.1: radiation-era clock (2.42 s at 1 MeV for g* = 1); electroweak crossover at 159.5 GeV at 9.2e-12 s; g = 0.652, m_W = g v / 2 = 80.2 GeV, m_Z = 91.5 GeV (measured 80.37, 91.19); 1/alpha 127.95 at the split, 137.036 today; proton lifetime ~4.6e35 yr for M_X = 1e16 GeV, alpha_G = 1/40, so M_X > 4.8e15 GeV against Super-Kamiokande's 2.4e34 yr | [Q20] |
 | Minimal cuts, any 3 of 5, syndrome reading, CHSH 2.83 against 2 | `docs/qg-verdict/assembly.py` [1] to [5] |
 
 ## Sources
@@ -123,6 +124,29 @@ Constants: SI 2019, CODATA 2018, PDG 2024, Planck 2018.
 - Sources for Section 5.4, checked 2026-10-30: Oppenheim et al. 2023, Eqs. (44), (46), (47) and their numerical windows (read in the arXiv
   text); Oppenheim and Russo 2024, Eq. (20) and the definitions of gamma0, gamma1, gamma2 (arXiv HTML); Donadi et al. 2021 (the lower bound
   on the nuclear smearing length, of order 1e-10 m as reported); Figurato et al., New J. Phys. 26, 113004 (2024), which quotes 4e-10 m.
+
+## Version 5.1 (2026-10-31)
+
+The owner, 2026-10-31: "Please fold all of it into the original documents, but please clearly mark what is new. But still fit it into the
+sections where it belongs, so it is not a mess to read." New text is set in blue and tagged [v5.1], in both the English paper and the German
+translation, inside the sections it belongs to; a "Version 5.1" paragraph in Section 1.3 lists the changes.
+
+- Hypothesis 1' (Section 3.1): gravity is a separate plane, shaped by the existence and the information it contains through their counts,
+  never either of them; existence is the rest mass the Higgs vacuum grants. Remarks after Proposition 1 and Lemma 3 show the shorter proofs.
+- Hypothesis 6' and the timeline (Section 11.1): causality begins with the split of the strong from the electroweak force, within the
+  start; a unification lies before time. Monopoles require that order (Preskill 1979; MACRO 2002); proton decay is the live test
+  (Super-Kamiokande 2020; Hyper-Kamiokande design report).
+- Section 11.7: alpha was never measurably one; it was born near 1/128 at the electroweak split (replaces "alpha began at one").
+- Section 12.2, "The Higgs vacuum as the existence that separated out": the electroweak crossover (D'Onofrio and Rummukainen 2016), thermal
+  masses before it, the photon splitting out, W and Z masses from the vacuum; Higgs inflation (Bezrukov and Shaposhnikov 2008) as an open
+  tension with Proposition 2.
+- Section 12.4, the predictions table (proton decay, monopoles), the ledger (nine rows), "where it breaks" (three items), the conclusion, the
+  abstract (1,870 characters), checks Q20.
+- Sources checked 2026-10-31: D'Onofrio and Rummukainen, Phys. Rev. D 93, 025003 (2016), T_c = 159.5 +- 1.5 GeV; MACRO, Eur. Phys. J. C 25,
+  511 (2002), flux below 1.4e-16 cm^-2 s^-1 sr^-1; Super-Kamiokande, Phys. Rev. D 102, 112011 (2020), tau(p -> e+ pi0) > 2.4e34 yr;
+  Hyper-Kamiokande design report, arXiv:1805.04163 (its sensitivity figure could not be read, so the paper gives none); Bezrukov and
+  Shaposhnikov, Phys. Lett. B 659, 703 (2008). Taken as standard: Preskill, Phys. Rev. Lett. 43, 1365 (1979); Georgi and Glashow, Phys. Rev.
+  Lett. 32, 438 (1974).
 
 ## Open
 
