@@ -39,34 +39,26 @@ mechanics, or \emph{GUID-specific}. Only a GUID-specific row that is sensitive c
 \paragraph{Chance and shared data.} If GUID were right and $n$ scored data were independent, about $0.05n$ FAILs would occur by chance.
 Data often share inputs, such as the microwave background, so FAILs can cluster. Each section names the rows that share data.
 
-\paragraph{Likelihoods and BIC.} Fits of whole curves, such as rotation curves, compare models by their likelihood $\mathcal L$. For a model
-with $k$ fitted parameters and $N$ data points, the Bayesian information criterion~\cite{schwarz1978} is
+\paragraph{Likelihoods and BIC.} Fits of whole curves, such as rotation curves, compare models by the Bayesian information
+criterion~\cite{schwarz1978} (Primer~\ref{box:stats}),
 \begin{equation}\label{eq:bic}
-\mathrm{BIC}=-2\ln\mathcal L_{\max}+k\ln N .
+\mathrm{BIC}=-2\ln\mathcal L_{\max}+k\ln N ,
 \end{equation}
-The model with the lower BIC is preferred. $\Delta$BIC is the difference to a reference model, negative when the model fits better. For
-independent points, a difference above 10 counts as very strong evidence~\cite{kassraftery1995}. The points of one galaxy are not
-independent, however: they share its distance, inclination and stellar mass-to-light ratio. A point-wise $\Delta$BIC counts each galaxy's
-common error once per point and so overstates the evidence. A parameter fitted per galaxy also absorbs these shared errors, which favours
-any model that has one. Sections~\ref{sec:sparc} and~\ref{sec:remnant} therefore report $\Delta$BIC but base their verdicts on the galaxy
-bootstrap and on galaxy-by-galaxy counts.
+for $k$ fitted parameters and $N$ data points. Lower is better; $\Delta$BIC is the difference to a reference model, negative when the model
+fits better, and above 10 counts as very strong evidence for independent points~\cite{kassraftery1995}. The points of one galaxy share its
+distance, inclination and stellar mass-to-light ratio, so a point-wise $\Delta$BIC overstates the evidence, and a parameter fitted per
+galaxy absorbs the shared errors. Sections~\ref{sec:sparc} and~\ref{sec:remnant} therefore report $\Delta$BIC but base their verdicts on
+the galaxy bootstrap and on galaxy-by-galaxy counts.
 
-\paragraph{The galaxy bootstrap.} Ranges of fitted parameters come from a bootstrap over galaxies~\cite{efron1979}. The sample is redrawn
-with replacement, whole galaxies at a time, and refitted; 1000 draws use a fixed random seed. A range in brackets is the 16th to 84th
-percentile. Resampling galaxies rather than points keeps each galaxy's correlated errors together.
+\paragraph{The galaxy bootstrap.} Ranges of fitted parameters come from a bootstrap over whole galaxies~\cite{efron1979}, with 1000 draws
+and a fixed random seed; a range in brackets is the 16th to 84th percentile.
 
-\paragraph{Many tests.} When many hypotheses are tested at once, some pass the 95\% threshold by chance.
-\begin{itemize}[nosep,leftmargin=*]
-\item The \emph{Holm correction}~\cite{holm1979} keeps the chance of any false positive in a family of $m$ tests below 5\%. It orders the
-$p$-values, compares the smallest with $0.05/m$, the next with $0.05/(m-1)$, and so on, and stops at the first that is not small enough.
-\item \emph{Fisher's method}~\cite{fisher1932} combines $n$ independent $p$-values into $X^2=-2\sum_i\ln p_i$. Under the null hypothesis
-$X^2$ follows a $\chi^2$ distribution with $2n$ degrees of freedom.
-\item The \emph{look-elsewhere effect}~\cite{grossvitells2010} is the chance of finding a coincidence somewhere when many places or
-candidate values are tried. We account for it by computing the probability of a match at least as close over every candidate tried
-(Sections~\ref{sec:remnant} and~\ref{sec:exotics}).
-\end{itemize}
+\paragraph{Many tests.} A family of tests uses the Holm correction~\cite{holm1979}; independent $p$-values are combined by Fisher's
+method~\cite{fisher1932}; and a search over many candidates counts the look-elsewhere effect~\cite{grossvitells2010} as the probability of
+a match at least as close over every candidate tried (Sections~\ref{sec:remnant} and~\ref{sec:exotics}). Primer~\ref{box:stats} explains
+all three.
 
-\paragraph{Preregistration.} A prediction fixed before the data are analysed cannot be tuned to them. The Standard Model statements and
+\paragraph{Preregistration.} The Standard Model statements and
 their scoring were committed in \texttt{docs/\allowbreak simulation/\allowbreak sm\_preregistration.md} before any analysis (Section~\ref{sec:sm}). The candidate
 scales and history proxies of Section~\ref{sec:remnant}, and the assignment of model levels to exotic hadrons in Section~\ref{sec:exotics},
 were fixed before the comparison. Each section lists, as ``choices made after seeing the data'', what it decided later and whether a verdict

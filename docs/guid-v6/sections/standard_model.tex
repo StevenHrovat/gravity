@@ -5,20 +5,20 @@
 \section{The Standard Model statements against precision data}\label{sec:sm}
 
 This section tests Part~I's five statements about the particles and couplings of the Standard Model, SM1 to SM5
-(Sections~\ref{sec:fields}, \ref{sec:cosmo}, \ref{sec:alpha} and~\ref{sec:matter}), as a preregistration fixed them before any analysis;
+(Sections~\ref{sec:split} and~\ref{sec:alpha} to~\ref{sec:higgsplit}), as a preregistration fixed them before any analysis;
 Primer~\ref{box:particle} gives the particle physics they use.
 
 \subsection{Statements and data}\label{sec:sm-method}
 
 The preregistration (\texttt{docs/simulation/sm\_preregistration.md}) states the five statements and fixes, for each, the data and the verdict.
 \begin{itemize}[nosep]
-\item SM1, the spin ladder: elementary quanta have spin 0, 1/2 or 1 (Section~\ref{sec:matter}).
+\item SM1, the spin ladder: elementary quanta have spin 0, 1/2 or 1 (Section~\ref{sec:spin}).
 \item SM2, Hypothesis~1$'$ read for matter: the Higgs vacuum grants every elementary rest mass (the \emph{grant}). Higgs couplings are then
-proportional to mass, neutrinos are Dirac particles, the photon and gluons are massless, and $m_W=gv/2$ (Section~\ref{sec:fields}).
+proportional to mass, neutrinos are Dirac particles, the photon and gluons are massless, and $m_W=gv/2$ (Section~\ref{sec:grant}).
 \item SM3, Hypothesis~\ref{h:info} with the action~\eqref{eq:action}: the information scalar multiplies only the Maxwell term
 (Section~\ref{sec:alpha}).
-\item SM4, Hypothesis~6$'$: within causality the forces were never one (Section~\ref{sec:cosmo}).
-\item SM5, the electroweak split: $\alpha$ is born near $1/128$ at the Z mass and runs to $1/137$ (Section~\ref{sec:matter}).
+\item SM4, Hypothesis~6$'$: within causality the forces were never one (Section~\ref{sec:split}).
+\item SM5, the electroweak split: $\alpha$ is born near $1/128$ at the Z mass and runs to $1/137$ (Section~\ref{sec:higgsplit}).
 \end{itemize}
 We score every statement as written. Where one turned out to be ill-posed, we say so and score it anyway. Pulls, the scoring classes (scored,
 not yet sensitive, INFO) and the verdict words are those of Section~\ref{sec:scoring}. Every measured number was checked on 2026-10-31
@@ -97,20 +97,12 @@ the oscillation minimum, are out of reach of any collider \chk{sm:SM2a.8}, \chk{
 \emph{Verdict: holds} for $W$, $Z$, $t$, $b$, $\tau$ and $\mu$; \emph{untested} for the rest. The statement is the Standard Model's, and the data
 that support it support both.
 
-\paragraph{Dirac neutrinos, and the assumption they need.} The grant alone does not make neutrinos Dirac particles. The Standard Model
-admits one operator of dimension five, $(L\Phi)(L\Phi)/\Lambda$, built from the lepton doublet $L$ and the Higgs doublet $\Phi$. Once the
-Higgs field takes its vacuum value, it gives a Majorana mass $m_\nu=f\,v^2/\Lambda$~\cite{weinberg1979,ma2009}. That mass comes from the same
-vacuum, so Hypothesis~1$'$ allows it. What forbids it is a conserved lepton number. The combination $B-L$ (baryon minus lepton number) is the
-one the Standard Model conserves exactly, and a Majorana mass changes it by two \tagP. Dirac neutrinos therefore need one assumption more
-\chk{sm:SM2b.0}:
-\begin{itemize}[nosep]
-\item \emph{Added reading (not derived).} $B-L$ is one of the counts that every reader sees (Axiom~3), like electric charge. The count of
-a closed part changes only when something carrying it crosses the part's boundary, by a grant or a loss that leaves a record; no act inside
-the part changes it. Neutrinoless double-beta decay would create two units of lepton number in a closed nucleus, with nothing carrying them
-in, and is excluded.
-\end{itemize}
-The reading forbids every Majorana mass, whatever its source. It still allows the proton decay of SM4, since $p\to e^+\pi^0$ conserves
-$B-L$. We label it an added reading: the axioms do not say which conserved quantities are counts \chk{sm:SM2b.7}.
+\paragraph{Dirac neutrinos, and the assumption they need.} The grant alone does not make neutrinos Dirac particles: the Weinberg operator
+gives a Majorana mass $m_\nu=f\,v^2/\Lambda$ from the same vacuum~\cite{weinberg1979,ma2009}, and a Majorana mass changes $B-L$, the
+combination the Standard Model conserves exactly, by two \tagP. Dirac neutrinos therefore need the added reading of
+Section~\ref{sec:grant}, that $B-L$ is a count, changed only by a recorded act across a boundary \chk{sm:SM2b.0}. It forbids every
+Majorana mass, whatever its source, and still allows the proton decay of SM4, since $p\to e^+\pi^0$ conserves $B-L$. It is not derived:
+the axioms do not say which conserved quantities are counts \chk{sm:SM2b.7}.
 
 Given this reading, neutrinos have Dirac masses from Yukawa couplings to right-handed partners, and neutrinoless double-beta decay does not
 occur at any rate. Through light-neutrino exchange its amplitude is proportional to the effective Majorana mass $m_{\beta\beta}=|\sum_iU_{ei}^2m_i|$,
@@ -418,10 +410,12 @@ SM5 & $\alpha$ born near $1/128$ at $m_Z$, runs to $1/137$ & holds & SM5.1--4 \\
 \end{tabularx}
 \end{table}
 
-\paragraph{The count.} Of 29 scored rows, 25 agree at 95\% \chk{sm:summary}. Twenty-two test statements GUID shares with the Standard Model or
-$\Lambda$CDM: 19 agree, and the 3 FAILs are inherited (CDF's W mass and the electron's moment against either value of $\alpha$). Three are
-GUID-specific and sensitive: the two neutrinoless double-beta searches agree, and the window of $R$ fails under the electroweak matching. Four
-GUID-specific rows are not yet sensitive and agree (SM3.2, SM3.4 to SM3.6). Table~\ref{tab:sm-verdicts} lists the verdicts. All numbers in this
+\paragraph{The count.} Of 29 scored rows, 25 agree at 95\% \chk{sm:summary}. In the classes of the tally (Section~\ref{sec:tally}), twenty test
+statements GUID shares with the Standard Model or $\Lambda$CDM: 17 agree, and the 3 FAILs are inherited (CDF's W mass and the electron's
+moment against either value of $\alpha$). One is GUID-specific and sensitive: the window of $R$, which fails under the electroweak matching.
+Eight GUID-specific rows agree but are not yet sensitive: the two neutrinoless double-beta searches, since Majorana neutrinos of normal
+ordering can also stay below them; the two $N_{\rm eff}$ rows, since decoupled partners change $N_{\rm eff}$ negligibly; and SM3.2 and
+SM3.4 to SM3.6, which scale with a coupling that may be zero. Table~\ref{tab:sm-verdicts} lists the verdicts. All numbers in this
 section come from \texttt{docs/simulation/standard\_model.py} (32 of 32 checks, about five seconds on one core) or, where marked ``data:'', from
 the script of Section~\ref{sec:data}.
 
