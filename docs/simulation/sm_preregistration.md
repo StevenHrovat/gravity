@@ -86,3 +86,40 @@ ground-state mesons and baryons only and then applied without refitting:
 - **Choices.** Every choice made after seeing a comparison is listed in the results under "choices made after seeing the data".
 - **Outcome.** A failed prediction is a result, not an error. The scripts exit 0 when their own numerical checks pass, whatever the
   physics verdicts.
+
+## SM7. The minting in hadrons (new Hypothesis H9, added 2026-10-31 after the SM6 results, before any H9 analysis)
+
+DMP's ground G0 says that the dual gate cannot witness its own first instance: "somebody has to trust the first two witnesses". The
+minting, the first act, makes at least five parts the holders of the root keys. Read for the strong force:
+
+**H9. A five-quark hadron (a pentaquark) is a minting.** It consists of:
+- three colour-bearers that together carry all three colours, the bound triple;
+- the first two witnesses, which are a quark and its own antiquark, that is, a pair of one flavour (hidden flavour).
+
+**Honesty note.** H9 was conceived after seeing that the established pentaquarks (P_c, P_cs, P_psi s) all contain a c cbar pair. So their
+agreement with H9 is not evidence for it. The predictions that count are those about states not yet established, and about the claimed
+states, scored against the record as it stands.
+
+**Predictions, fixed now:**
+
+- **P1, no open flavour.** A pentaquark whose antiquark has no partner quark of the same flavour does not exist. Examples are Theta+ (uudd
+  sbar), Theta_c (uudd cbar) and doubly charmed pentaquarks (cc q q qbar).
+  - Every such claim will remain unconfirmed.
+  - Score it against all claimed pentaquarks: hidden versus open flavour, crossed with established versus unconfirmed or refuted, with
+    the claims and their status verified per state.
+  - SM6's colour-spin model predicts a doubly charmed pentaquark. H9 forbids it, so the two readings conflict, and both are reported.
+- **P2, hidden bottom.** Hidden-bottom pentaquarks (uud b bbar, and uds b bbar) exist.
+  - Their masses are predicted from heavy-quark symmetry: near the Sigma_b B(*) and Xi_b B(*) thresholds, as the P_c states lie near the
+    Sigma_c D(*) thresholds.
+  - The prediction is live until they are found or excluded.
+- **P3, the general rule.** "Every exotic hadron contains a pair of one flavour" is tested as stated. G0 speaks of five parts, so H9 itself
+  is restricted to pentaquarks. The general form is a stronger, separate statement, and the open-flavour tetraquarks T_cc+, X0(2900) and
+  T_cs(2900) bear on it. It is reported as refuted if they are established.
+- **P4, the fine-structure constant.** The owner's phrase "the information half asserts once every fine-structure constant" is turned into
+  one rule. It was suggested by P_c(4457) - P_c(4440) = 17 MeV against alpha M / 2 = 16 MeV, so that pair does not count. The rule:
+  - the two members of a pentaquark spin doublet with the same light-quark content are split by alpha M / 2, where M is their mean mass;
+  - it is tested on every other pentaquark or tetraquark doublet that is resolved in the data. The list of eligible doublets is fixed
+    before their splittings are looked up, with the look-elsewhere count stated.
+  - If no other resolved doublet exists, P4 is untested.
+
+**Scoring.** As for SM6. A failed prediction is a result.
