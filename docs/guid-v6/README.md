@@ -1,8 +1,9 @@
 # GUID v6: Our proposed view of the universe, with its predictions tested against current experimental data
 
-A complete, standalone paper. It states GUID's account of gravity and of what gravity contains (Part I). It hosts that account in
-simulation (Part II) and confronts every prediction that existing data can reach (Part III). It ends with the predictions, the ledger of
-verdicts, the corrections to version 5.1 and where we expect it to break (Part IV).
+A complete, standalone paper in four parts. Part I states GUID's account of gravity and of what gravity contains, with every hypothesis
+listed and a test plan at its end; it reports no results. Part II simulates the account, Part III confronts every prediction that existing
+data can reach, and Part IV says what the tests show, gives the ledger of verdicts and names where we expect the account to break. Ten short
+primers introduce each field where it first enters, so a reader from any one field can follow the whole.
 
 **It replaces version 5.1** (`docs/quantum-gravity/`), which stays in the repository as the record. Nobody needs to read v5.1 or any
 other document to follow this one.
@@ -14,20 +15,27 @@ other document to follow this one.
 
 | file | what it holds |
 |---|---|
-| `guid-v6.tex` | title, abstract, introduction; includes everything else in reading order |
-| `preamble.tex` | packages, theorem environments, the marks (D), (H), (P), (S) and `\chk{}` |
-| `part1.tex` | Part I, the proposal: axioms, the two fields, what the axioms fix, classical-quantum dynamics and the bridges, the experiments, thermodynamics, black holes, holography, 2+1, cosmology and dark matter, matter, hosting, the landscape |
-| `sections/hosted.tex` | Part II: known quantum configurations hosted (`docs/simulation/hosted_benchmarks.py`) |
-| `sections/holocode.tex` | Part II: the holographic assembly at thousands of qubits (`holographic_code.py`) |
-| `sections/gravsim.tex` | Part II: the recorded frame against the coherent field (`gravity_simulated.py`, G1, G3, G4) |
+| `guid-v6.tex` | title, abstract, introduction (the problem, the proposal, the eight steps, what is new, results in brief, how to read); includes everything else in reading order |
+| `preamble.tex` | packages, theorem and primer environments, the marks (D), (H), (P), (S) and `\chk{}` |
+| `part1.tex` | Part I, the proposal: DMP, the hypotheses and names, what the axioms fix (with the start and hosting), classical-quantum dynamics and the bridges, the experiments and the dissent, black holes, holography, 2+1, cosmology, dark matter, the information scalar and matter (with H8 and H9), readings, the approaches, the test plan |
+| `primers/p1-dmp.tex` ... `p10-hadron.tex` | the ten background boxes (DMP, general relativity, quantum information, classical-quantum dynamics, holography, cosmology, particle physics, hadron spectroscopy, statistics, galaxy dynamics) |
+| `figures/fig-map.tex`, `fig-steps.tex`, `fig-act.tex`, `fig-timeline.tex` | the four TikZ figures of Part I |
+| `sections/gravsim.tex` | Part II: the recorded frame against the coherent field (`docs/simulation/gravity_simulated.py`, G1, G3, G4) |
 | `sections/bmv.tex` | Part II: the decisive experiment under Bridge B and the corrected spin witness (`gravity_simulated.py` G2, `bmv_witness.py`) |
-| `sections/sparc.tex` | Part III: rotation curves (`sparc_rotation.py`) |
-| `sections/remnant.tex` | Part III: the accumulated remnant, halos and the joint fit (`remnant_history.py`) |
-| `sections/data.tex` | Part III: every other prediction against data (`predictions_vs_data.py`) |
+| `sections/holocode.tex` | Part II: the holographic assembly at thousands of qubits (`holographic_code.py`) |
+| `sections/hosted.tex` | Part II: known quantum configurations hosted (`hosted_benchmarks.py`) |
+| `sections/scoring.tex` | Part III: the scoring rules and classes, fixed once for every section |
+| `sections/data.tex` | Part III: laboratory, solar-system and cosmological data (`predictions_vs_data.py`) |
+| `sections/sparc.tex` | Part III: dark matter I, rotation curves (`sparc_rotation.py`) |
+| `sections/remnant.tex` | Part III: dark matter II, accumulation, halos, cosmic time, primordial black holes; the one home of the dark-matter verdict (`remnant_history.py`) |
 | `sections/standard_model.tex` | Part III: the Standard Model statements, pre-registered in `docs/simulation/sm_preregistration.md` (`standard_model.py`) |
-| `sections/exotics.tex` | Part III: tetraquarks and pentaquarks, hadrons as trees of dualities (`exotic_hadrons.py`) |
-| `part4.tex` | Part IV: predictions, ledger, corrections from v5.1, where it breaks, conclusion, contributions, licence |
-| `appendix.tex` | reproducibility (scripts, checks, runtimes, data digests) and the checks of Part I |
+| `sections/exotics.tex` | Part III: hadrons as trees of dualities (H8) and the minting in hadrons (H9) (`exotic_hadrons.py`) |
+| `sections/tally.tex` | Part III: every scored confrontation counted in one table (`tally.py`) |
+| `part4.tex` | Part IV: what the tests show, the ledger, where it breaks, conclusion, acknowledgements, contributions, licence |
+| `appendix.tex` | Appendices A and B: reproducibility (scripts, checks, runtimes, data digests) and the checks of Part I |
+| `appendix-changes.tex` | Appendix C: the changes from version 5.1, each with its evidence |
+| `sections/hosted-appendix.tex`, `holocode-appendix.tex`, `exotics-appendix.tex` | Appendices D to F: the detail of the hosting benchmarks, the holographic code and the hadron model |
+| `appendix-readings.tex` | Appendix G: the readings that add no prediction, in full |
 | `bib-core.tex`, `bib-extra.tex`, `sections/*-bib.tex` | the reference pools; `build_bib.py` writes `bibliography.tex` from them |
 | `checks.py` | every number of Part I (125 of 125) |
 | `reproduce.py` | runs every script behind the paper and prints the check counts |
@@ -39,11 +47,12 @@ other document to follow this one.
 cd docs/guid-v6
 python3 build_bib.py            # bibliography.tex: every cited key, in order of first citation; fails on a missing key
 pdflatex guid-v6.tex
-pdflatex guid-v6.tex            # twice, for the references
+pdflatex guid-v6.tex
+pdflatex guid-v6.tex            # three passes, for the references and the long tables
 ```
 
-Requirements: a TeX Live with `longtable`, `tabularx`, `booktabs`, `multirow`, `caption`, `enumitem` and `hyperref`. The figures are
-read from `docs/simulation/figures/`.
+Requirements: a TeX Live with `longtable`, `tabularx`, `booktabs`, `multirow`, `caption`, `enumitem`, `hyperref`, `tcolorbox` and
+`tikz`. The data figures are read from `docs/simulation/figures/`; the four figures of Part I are TikZ sources in `figures/`.
 
 ## Reproduce every number
 
@@ -73,21 +82,22 @@ python3 docs/guid-v6/reproduce.py --data <folder with the two SPARC .mrt files>
 
 ## What changed from v5.1
 
-Section "What changed from version 5.1" of the paper lists twenty-three corrections and sharpenings, each with its evidence. In short:
-- **Corrected bounds and data:**
-  - the 95% bound on the information scalar (3.1e-5);
-  - the newest clock bound, with the negative drift derived but unobservably small;
-  - the Bridge B smearing length (R0 >= 4e-10 m);
-  - Starobinsky inflation against ACT DR6 (needs N >= 63);
-  - the DESI DR2 neutrino bound, the DES recalibration and the inherited H0 and curvature tensions;
-  - the graviton-mass bound.
-- **Experiments:**
-  - a null BMV result does not discriminate if Diosi-Penrose decoherence is real; decoherence does;
-  - the spin witness of Bose et al. as printed is reached by product states, and a corrected witness is given.
-- **Dark matter:**
-  - Bridge A is refuted by rotation curves too;
-  - the stochastic remnant is refuted as the dark matter in every form computed;
-  - primordial black holes from the start are the consistent reading.
+Appendix C of the paper lists twenty-three corrections and sharpenings, each with its evidence. Beyond them, version 6 adds:
+- **Structure:** one standalone paper in four parts (state, simulate, test, judge), ten primers, four figures, one scoring section and one
+  tally, so that every number has one home.
+- **Simulation (Part II):** the recorded frame against the coherent field at 4000 masses; the decisive experiment under Bridge B (no
+  two-sphere geometry entangles at the Diosi-Penrose rate) and a corrected spin witness; the holographic code at 5120 qubits; four
+  hosted quantum systems.
+- **Tests (Part III):** 72 scored confrontations, 58 hold. The 14 FAILs are 11 inherited tensions of LambdaCDM, the Standard Model and
+  a borrowed hadron model, and all 3 GUID-specific statements that a datum or a derivation can already reach; 22 GUID-specific rows hold
+  but are not yet sensitive.
+- **Dark matter:** Bridge A and the stochastic remnant are refuted by rotation curves in every form computed; primordial black holes from
+  the start remain, untested here.
+- **Standard Model:** pre-registered statements SM1 to SM5; the Higgs couplings follow mass; Dirac neutrinos with B-L read as a count
+  (an added reading) predict no neutrinoless double-beta decay; the pre-registered window for R = dln mu/dln alpha failed.
+- **Hadrons:** H8, hadrons as trees of dualities (a reading QCD allows; a standard colour-spin model fails for 5 of 9 measured masses),
+  and H9, a pentaquark as a minting (no open-flavour pentaquark, hidden-bottom pentaquarks near 11.1 GeV live; the general one-flavour
+  rule and the alpha M/2 splitting refuted).
 
 ## References
 
