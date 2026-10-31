@@ -37,9 +37,7 @@ unit norm. The two share no code path with each other or with the host, and the 
 each benchmark:
 $[H,\Sigma]=0$ on a small, complete Hilbert space; an injected fault that leaves $\mathcal H_E$, which both witnesses must refuse; two
 orthogonal states of $\mathcal H_E$ (two contents), which must receive the same verdict; and, in B4, a fault that changes only the
-content, which must pass.
-
-\emph{Uncertainties.} Exact identities are checked to floating-point accuracy. An extrapolated number carries, as $1\sigma$, the largest
+content, which must pass. \emph{Uncertainties.} Exact identities are checked to floating-point accuracy. An extrapolated number carries, as $1\sigma$, the largest
 change over a family of alternative fits (windows and functional forms) fixed in the code, combined in quadrature with the statistical
 error of a weighted fit where there is one. A comparison passes at $\vert\text{deviation}\vert\le2\sigma$.
 
@@ -75,8 +73,7 @@ $G_{jk}=\langle ia_jb_k\rangle=-(UV^{\mathsf T})_{jk}$. A block of $l$ consecuti
 $h(p)=-p\ln p-(1-p)\ln(1-p)$ and $\nu_m$ are the singular values of $G$ restricted to the block \cite{peschel2003,vidal2003}. Each
 coupling costs one SVD of a $4000\times4000$ matrix.
 
-With $E(m)$ and $K(k)$ the complete elliptic integrals of the second kind (parameter $m$) and of the first kind (modulus $k$), there are
-four comparisons \chk{hosted:B2}.
+Four comparisons follow \chk{hosted:B2}; $E(m)$ and $K(k)$ are complete elliptic integrals (parameter $m$, modulus $k$).
 (a)~$E_0$ equals the finite-$L$ closed form $-\sum_k\sqrt{1+g^2-2g\cos k}$, $k=2\pi(n+\tfrac12)/L$, to $2\times10^{-16}$ relative at all
 three couplings. At $g=0.5$ and $1.5$, $E_0/L$ equals $e_\infty=-\tfrac2\pi(1+g)E(4g/(1+g)^2)$ to $4\times10^{-16}$ \cite{pfeuty1970}.
 (b)~At $g=1$, $E_0/L-e_\infty=-3.27\times10^{-8}$. The Casimir term $-\pi vc/(6L^2)$ with $v=2$ gives $c=0.5000000052$; the exact
