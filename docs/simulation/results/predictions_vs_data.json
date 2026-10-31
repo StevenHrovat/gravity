@@ -4,8 +4,8 @@
  "criterion": "scored and conditional rows: OK = consistent at 95% (|pull| < 1.96 or inside the stated allowed region, 90% regions labelled); consistency rows (prediction set from the datum) are CONS and not counted; info rows are not scored",
  "summary": {
   "rows": 74,
-  "scored": 33,
-  "passed": 30,
+  "scored": 31,
+  "passed": 28,
   "failed": [
    "D3.3",
    "D3.4",
@@ -26,7 +26,7 @@
    "D6.4",
    "D6.8"
   ],
-  "shared_scored": 20,
+  "shared_scored": 18,
   "conditional": [
    "D4.3",
    "D4.4"
@@ -78,9 +78,28 @@
    "D7.3",
    "D8.3",
    "D8.4",
+   "D9.1",
+   "D9.2",
    "D9.6"
   ],
-  "expected_chance_fails_if_independent": 1.65,
+  "guid_specific_sensitive": [],
+  "guid_specific_not_yet_sensitive": [
+   "D1.1",
+   "D1.2",
+   "D1.3",
+   "D1.5",
+   "D1.6",
+   "D1.7",
+   "D1.8",
+   "D1.9",
+   "D6.1",
+   "D6.2",
+   "D6.3",
+   "D6.4",
+   "D6.8"
+  ],
+  "sensitivity_rule": "a GUID-specific scored row is not yet sensitive when GUID's departure from GR, LambdaCDM, the SM or QM is smaller than the datum's reach by a factor 10 or more, or scales with a free parameter",
+  "expected_chance_fails_if_independent": 1.55,
   "correlation_note": "D3.3 and D3.7 both use DESI DR2 BAO with the CMB, D3.4 rests on the CMB fit of LambdaCDM, and the conditional D4.3 uses the CMB with DESI DR1 BAO: the FAILs are correlated, and the chance expectation assumes an independence that does not hold",
   "method_checks": 6,
   "method_passed": 6
@@ -102,7 +121,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific parameter (lambda); WEP shared with GR",
-   "note": "95% CL profile-likelihood bound |lambda| < 3.1e-05 (version 5.1 quoted 2e-5, the 1-sigma-level |eta| < 2.7e-15); GUID fixes the sign, eta <= 0, so the test can fail"
+   "note": "95% CL profile-likelihood bound |lambda| < 3.1e-05 (version 5.1 quoted 2e-5, the 1-sigma-level |eta| < 2.7e-15); GUID fixes the sign, eta <= 0, so the test can fail",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": null,
+   "sensitivity_reason": "the departure scales with lambda^2, and lambda is free and may be zero: the datum bounds lambda, it does not test a predicted size"
   },
   {
    "id": "D1.2",
@@ -120,7 +142,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific parameter (lambda); WEP shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": null,
+   "sensitivity_reason": "the departure scales with lambda^2, and lambda is free and may be zero: the datum bounds lambda, it does not test a predicted size"
   },
   {
    "id": "D1.3",
@@ -138,7 +163,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (forward statement: drift zero or negative)",
-   "note": "no sign is measured: P(drift < 0 | clocks) = 0.24"
+   "note": "no sign is measured: P(drift < 0 | clocks) = 0.24",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 26037.2,
+   "sensitivity_reason": "Model A's drift at the largest allowed coupling lies this factor below the clocks' error; Model B's drift is free in size and sign"
   },
   {
    "id": "D1.4",
@@ -156,7 +184,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "GUID-specific",
-   "note": "version 5.1's predictions table quoted this value; the newer value of D1.3 is 4.4 times tighter"
+   "note": "version 5.1's predictions table quoted this value; the newer value of D1.3 is 4.4 times tighter",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D1.5",
@@ -175,7 +206,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
-   "note": "z_Oklo = 0.137 (1.8 Gyr in Planck 2018 LambdaCDM)"
+   "note": "z_Oklo = 0.137 (1.8 Gyr in Planck 2018 LambdaCDM)",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 562047.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor inside the bound; Model B is free"
   },
   {
    "id": "D1.6",
@@ -193,7 +227,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
-   "note": ""
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 8341760.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
   },
   {
    "id": "D1.7",
@@ -211,7 +248,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
-   "note": ""
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 137564000.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
   },
   {
    "id": "D1.8",
@@ -229,7 +269,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
-   "note": ""
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 1200290000.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
   },
   {
    "id": "D1.9",
@@ -247,7 +290,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
-   "note": ""
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 1527110000.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
   },
   {
    "id": "D1.10",
@@ -265,7 +311,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "GUID-specific",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D1.11",
@@ -283,7 +332,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "-",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D1.12",
@@ -306,7 +358,10 @@
    "kind_reason": "derived from D1.3 and the cosmological alpha data and dominated by D1.3 (both +0.72 sigma)",
    "scored": false,
    "cls": "GUID-specific",
-   "note": "P(drift < 0) = 0.24; the data do not determine the sign (a negative drift is disfavoured by 0.72 sigma)"
+   "note": "P(drift < 0) = 0.24; the data do not determine the sign (a negative drift is disfavoured by 0.72 sigma)",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.1",
@@ -324,7 +379,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.2",
@@ -342,7 +400,10 @@
    "kind_reason": "overlaps D2.1: Cassini tracking data enter the planetary ephemerides",
    "scored": false,
    "cls": "shared with GR",
-   "note": "Cassini tracking data enter the ephemerides"
+   "note": "Cassini tracking data enter the ephemerides",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.3",
@@ -360,7 +421,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.4",
@@ -379,7 +443,10 @@
    "kind_reason": "included in the ephemeris combination D2.3 (Fienga and Minazzoli, Table 5)",
    "scored": false,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.5",
@@ -397,7 +464,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.6",
@@ -415,7 +485,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.7",
@@ -433,7 +506,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.8",
@@ -451,7 +527,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.9",
@@ -469,7 +548,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.10",
@@ -487,7 +569,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.11",
@@ -505,7 +590,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.12",
@@ -523,7 +611,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D2.13",
@@ -541,7 +632,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.1",
@@ -562,7 +656,10 @@
    "kind_reason": "inconclusive: the published determinations disagree with each other and depend on the H0 prior and the parametrisation",
    "scored": false,
    "cls": "shared with LambdaCDM",
-   "note": "pulls against GUID: cosmic chronometers (Moresco 2016) -2.3 sigma, SNe Ia + H(z), 3 parametrizations (Jesus 2018) +2.2 sigma, H(z) data, H0 prior 68 +- 2.8 (Farooq 2017) +1.7 sigma, H(z) data, H0 prior 73.24 +- 1.74 (Farooq 2017) +6.0 sigma. The determinations disagree with each other (chronometers against SNe + H(z) at 3.2 sigma) and depend on the H0 prior and the parametrisation; a post-hoc scaled mean of two of them (0.62 +- 0.24, S = 3.25) is reported here and not scored. Dahiya & Jain 2023: best fits 0.61-0.82."
+   "note": "pulls against GUID: cosmic chronometers (Moresco 2016) -2.3 sigma, SNe Ia + H(z), 3 parametrizations (Jesus 2018) +2.2 sigma, H(z) data, H0 prior 68 +- 2.8 (Farooq 2017) +1.7 sigma, H(z) data, H0 prior 73.24 +- 1.74 (Farooq 2017) +6.0 sigma. The determinations disagree with each other (chronometers against SNe + H(z) at 3.2 sigma) and depend on the H0 prior and the parametrisation; a post-hoc scaled mean of two of them (0.62 +- 0.24, S = 3.25) is reported here and not scored. Dahiya & Jain 2023: best fits 0.61-0.82.",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.1a",
@@ -580,7 +677,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "shared with LambdaCDM",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.1b",
@@ -598,7 +698,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "shared with LambdaCDM",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.1c",
@@ -616,7 +719,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "shared with LambdaCDM",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.1d",
@@ -634,7 +740,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "shared with LambdaCDM",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.2",
@@ -653,7 +762,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "shared with LambdaCDM",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.3",
@@ -672,7 +784,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with LambdaCDM",
-   "note": "tension, not discovery: below 5 sigma in every combination and dependent on the supernova sample; the DES recalibration lowered 4.2 to 3.2 sigma with Bayesian odds of only ~5:1. If it holds, the de Sitter floor and the reading of Section 11.5 must be redone, as Part I says."
+   "note": "tension, not discovery: below 5 sigma in every combination and dependent on the supernova sample; the DES recalibration lowered 4.2 to 3.2 sigma with Bayesian odds of only ~5:1. If it holds, the de Sitter floor and the reading of Section 11.5 must be redone, as Part I says.",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.4",
@@ -691,7 +806,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with LambdaCDM",
-   "note": "the Hubble tension of LambdaCDM, inherited unchanged; GUID adds nothing that moves H0"
+   "note": "the Hubble tension of LambdaCDM, inherited unchanged; GUID adds nothing that moves H0",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.5",
@@ -710,7 +828,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with LambdaCDM",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.6",
@@ -728,7 +849,10 @@
    "kind_reason": "overlaps D3.7 (both rest on the CMB) and uses older BAO",
    "scored": false,
    "cls": "shared with inflation + LambdaCDM",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D3.7",
@@ -746,7 +870,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with inflation + LambdaCDM",
-   "note": "DESI: 'no significant preference for non-flat LambdaCDM'"
+   "note": "DESI: 'no significant preference for non-flat LambdaCDM'",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D4.1",
@@ -763,8 +890,11 @@
    "kind": "info",
    "kind_reason": "superseded by D4.3, which includes the Planck data",
    "scored": false,
-   "cls": "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
-   "note": ""
+   "cls": "plateau potential (Starobinsky/Higgs), not derived by GUID",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D4.2",
@@ -781,8 +911,11 @@
    "kind": "info",
    "kind_reason": "",
    "scored": false,
-   "cls": "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
-   "note": "P-ACT overlaps both neighbours; reported, not scored"
+   "cls": "plateau potential (Starobinsky/Higgs), not derived by GUID",
+   "note": "P-ACT overlaps both neighbours; reported, not scored",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D4.3",
@@ -797,10 +930,13 @@
    "pull": 2.44444,
    "verdict": "FAIL",
    "kind": "conditional",
-   "kind_reason": "conditional on the Starobinsky/Higgs plateau potential, which Part I names but GUID does not derive",
+   "kind_reason": "conditional on a plateau inflation potential (Starobinsky R^2 or Higgs inflation): GUID derives no inflaton potential, and both forms couple a scalar to curvature, in open tension with the proposition that fixes gamma = 1",
    "scored": false,
-   "cls": "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
-   "note": "the leading-order plateau predictions need N >= 63 here; the shift comes partly from the BAO in the combination"
+   "cls": "plateau potential (Starobinsky/Higgs), not derived by GUID",
+   "note": "the leading-order plateau predictions need N >= 63 here; the shift comes partly from the BAO in the combination",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D4.4",
@@ -815,10 +951,13 @@
    "pull": null,
    "verdict": "OK",
    "kind": "conditional",
-   "kind_reason": "conditional on the Starobinsky/Higgs plateau potential, which Part I names but GUID does not derive",
+   "kind_reason": "conditional on a plateau inflation potential (Starobinsky R^2 or Higgs inflation): GUID derives no inflaton potential, and both forms couple a scalar to curvature, in open tension with the proposition that fixes gamma = 1",
    "scored": false,
-   "cls": "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
-   "note": "the next generation (sigma(r) ~ 1e-3) reaches it; GUID itself allows the standard spectrum (Section 11.4)"
+   "cls": "plateau potential (Starobinsky/Higgs), not derived by GUID",
+   "note": "the next generation (sigma(r) ~ 1e-3) reaches it; GUID itself allows the standard spectrum (Section 11.4)",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D4.5",
@@ -836,7 +975,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "shared with standard inflationary cosmology",
-   "note": "the same datum is scored once, in D8.2"
+   "note": "the same datum is scored once, in D8.2",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D4.6",
@@ -855,7 +997,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "shared with standard inflationary cosmology",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D5.1",
@@ -873,7 +1018,10 @@
    "kind_reason": "overlaps D5.2: same kind of Soltan inputs (AGN luminosity function, local black-hole mass density), older",
    "scored": false,
    "cls": "shared with GR (Kerr)",
-   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows"
+   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D5.2",
@@ -891,7 +1039,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR (Kerr)",
-   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows"
+   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D5.3",
@@ -909,7 +1060,10 @@
    "kind_reason": "overlaps D5.2: same kind of Soltan inputs, older",
    "scored": false,
    "cls": "shared with GR (Kerr)",
-   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows"
+   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D5.4",
@@ -927,7 +1081,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR (Kerr)",
-   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows"
+   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D5.5",
@@ -945,7 +1102,10 @@
    "kind_reason": "the spins are measured with Kerr models capped at a = 0.998, so this test cannot fail",
    "scored": false,
    "cls": "shared with GR (Kerr)",
-   "note": "weak test: the spectral models are Kerr models restricted to |a| <= 0.998, so the bound is partly built in; the measurements show the ergosphere engines run fast (most SMBHs below 3e7 solar masses have a > 0.9)"
+   "note": "weak test: the spectral models are Kerr models restricted to |a| <= 0.998, so the bound is partly built in; the measurements show the ergosphere engines run fast (most SMBHs below 3e7 solar masses have a > 0.9)",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D5.6",
@@ -963,7 +1123,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D5.7",
@@ -981,7 +1144,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D5.8",
@@ -997,7 +1163,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "shared with semiclassical gravity",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D6.1",
@@ -1015,7 +1184,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
-   "note": ""
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 177400000000000.0,
+   "sensitivity_reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
   },
   {
    "id": "D6.2",
@@ -1033,7 +1205,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
-   "note": ""
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 4158070000000.0,
+   "sensitivity_reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
   },
   {
    "id": "D6.3",
@@ -1051,7 +1226,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
-   "note": ""
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 4096720000000000.0,
+   "sensitivity_reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
   },
   {
    "id": "D6.4",
@@ -1069,7 +1247,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
-   "note": ""
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 87589800000000.0,
+   "sensitivity_reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
   },
   {
    "id": "D6.5",
@@ -1087,7 +1268,10 @@
    "kind_reason": "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds",
    "scored": false,
    "cls": "GUID-specific (Bridge B needs a smearing length)",
-   "note": "Penrose's parameter-free choice (R0 = nuclear wave-function size, 5e-12 m for Ge) is excluded; Bridge B survives only with a free R0"
+   "note": "Penrose's parameter-free choice (R0 = nuclear wave-function size, 5e-12 m for Ge) is excluded; Bridge B survives only with a free R0",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D6.6",
@@ -1105,7 +1289,10 @@
    "kind_reason": "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds; overlaps D6.5",
    "scored": false,
    "cls": "GUID-specific",
-   "note": "version 5.1's '1e-10 m' sat below this summary; v6 uses 4e-10 m"
+   "note": "version 5.1's '1e-10 m' sat below this summary; v6 uses 4e-10 m",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D6.7",
@@ -1123,7 +1310,10 @@
    "kind_reason": "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds",
    "scored": false,
    "cls": "GUID-specific",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D6.8",
@@ -1141,7 +1331,10 @@
    "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
-   "note": "the window comes from torsion-balance noise (upper) and molecule interferometry (lower)"
+   "note": "the window comes from torsion-balance noise (upper) and molecule interferometry (lower)",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 632892000000000.0,
+   "sensitivity_reason": "GUID's value lies this factor inside the nearer edge of the window"
   },
   {
    "id": "D6.9",
@@ -1159,7 +1352,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "GUID-specific",
-   "note": "this version is excluded, as Part I says"
+   "note": "this version is excluded, as Part I says",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D7.1",
@@ -1177,7 +1373,10 @@
    "kind_reason": "the contained remnant's window 1e14 to 1e19 kg was adopted from the open window",
    "scored": false,
    "cls": "GUID route shares the PBH literature",
-   "note": "edges: INTEGRAL/SPI MeV gamma rays and Voyager 1 e+- (light), Subaru-HSC M31 microlensing (heavy)"
+   "note": "edges: INTEGRAL/SPI MeV gamma rays and Voyager 1 e+- (light), Subaru-HSC M31 microlensing (heavy)",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D7.2",
@@ -1195,7 +1394,10 @@
    "kind_reason": "the datum ('about 1e15 g') has no stated uncertainty; it passes only through the chosen tolerance of ten",
    "scored": false,
    "cls": "shared with semiclassical gravity",
-   "note": "agreement within a factor 5.8, inside the tolerance of ten chosen here"
+   "note": "agreement within a factor 5.8, inside the tolerance of ten chosen here",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D7.3",
@@ -1213,7 +1415,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "GUID route",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D8.1",
@@ -1231,7 +1436,10 @@
    "kind_reason": "GUID allows a unification at any M_X; the example M_X = 1e16 GeV was chosen above this bound",
    "scored": false,
    "cls": "GUID allows, does not require",
-   "note": "needs M_X >~ 4.8e15 GeV in Part I's estimate; Hyper-Kamiokande is the live test"
+   "note": "needs M_X >~ 4.8e15 GeV in Part I's estimate; Hyper-Kamiokande is the live test",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D8.2",
@@ -1249,7 +1457,10 @@
    "kind_reason": "Part I's ordering of the strong split is required by the absence of monopoles",
    "scored": false,
    "cls": "shared with standard inflationary cosmology",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D8.3",
@@ -1270,7 +1481,10 @@
    "kind_reason": "tree-level Standard Model value; scheme dependent, it meets 0.5% only in the MS-bar route",
    "scored": false,
    "cls": "Standard Model (tree level)",
-   "note": "tree level is scheme dependent: MS-bar route -0.18%, m_Z cos theta-hat 79.95 GeV (-0.52%), on-shell alpha(0), G_F, m_Z 80.94 GeV (+0.71%); only the MS-bar route meets 0.5%; the full Standard Model reaches 1e-4"
+   "note": "tree level is scheme dependent: MS-bar route -0.18%, m_Z cos theta-hat 79.95 GeV (-0.52%), on-shell alpha(0), G_F, m_Z 80.94 GeV (+0.71%); only the MS-bar route meets 0.5%; the full Standard Model reaches 1e-4",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D8.4",
@@ -1291,7 +1505,10 @@
    "kind_reason": "tree-level Standard Model value; scheme dependent",
    "scored": false,
    "cls": "Standard Model (tree level)",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D8.5",
@@ -1310,7 +1527,10 @@
    "kind_reason": "Part I's 1/128 is read from the measured alpha(M_Z)",
    "scored": false,
    "cls": "Standard Model",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D8.6",
@@ -1330,7 +1550,10 @@
    "kind_reason": "Part I's crossover statement is read from the measured Higgs mass and the lattice",
    "scored": false,
    "cls": "Standard Model",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D9.1",
@@ -1343,12 +1566,15 @@
    ],
    "measure": "pull = -1.64 sigma",
    "pull": -1.64142,
-   "verdict": "OK",
-   "kind": "scored",
-   "kind_reason": "",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "a check of quantum theory, which GUID adopts unchanged: Tsirelson's bound is a theorem of quantum mechanics",
+   "scored": false,
    "cls": "shared with quantum mechanics",
-   "note": "S above 2 sqrt 2 would refute quantum content; the measured S lies 1.65 sigma below the bound"
+   "note": "S above 2 sqrt 2 would refute quantum content; the measured S lies 1.65 sigma below the bound",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D9.2",
@@ -1361,12 +1587,15 @@
    ],
    "measure": "GUID value inside the allowed region (quantum range)",
    "pull": null,
-   "verdict": "OK",
-   "kind": "scored",
-   "kind_reason": "",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "a check of quantum theory, which GUID adopts unchanged",
+   "scored": false,
    "cls": "shared with quantum mechanics",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D9.3",
@@ -1385,7 +1614,10 @@
    "kind_reason": "that the known neutrinos are not the remnant is an empirical statement set from neutrino-mass bounds, not a prediction",
    "scored": false,
    "cls": "shared with LambdaCDM",
-   "note": "version 5.1 used 0.072 eV (DESI 2024), which gives 0.6%; DESI DR2 tightens it"
+   "note": "version 5.1 used 0.072 eV (DESI 2024), which gives 0.6%; DESI DR2 tightens it",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D9.4",
@@ -1403,7 +1635,10 @@
    "kind_reason": "that the known neutrinos are not the remnant is an empirical statement set from neutrino-mass bounds, not a prediction",
    "scored": false,
    "cls": "shared with the Standard Model",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D9.5",
@@ -1421,7 +1656,10 @@
    "kind_reason": "the radiated remnant was refuted from the NANOGrav amplitude itself",
    "scored": false,
    "cls": "GUID route; shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   },
   {
    "id": "D9.6",
@@ -1439,7 +1677,10 @@
    "kind_reason": "",
    "scored": false,
    "cls": "GUID v5.1 refinement; shared with GR",
-   "note": ""
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
   }
  ],
  "method": [

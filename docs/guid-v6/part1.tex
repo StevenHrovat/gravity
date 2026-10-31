@@ -1,10 +1,17 @@
-% GUID v6, Part I: the proposal. Revised from version 5.1 with every correction of Parts II and III applied.
-\section{The axiom system}\label{sec:dmp}
+% GUID v6, Part I: the proposal. It states the theory and its predictions; Parts II and III test them, Part IV judges them.
+\section{DMP for physicists}\label{sec:dmp}
 
 DMP opens with undefined words, then three axioms, then a ground, G0, that is stated and not derived; every later section is a theorem
-(T) or a derived constraint (C) that names the axioms it rests on~\cite{dmp}. We state the parts this paper uses, quoting DMP's sentences
+(T) or a derived constraint (C) that names the axioms it rests on~\cite{dmp}.\footnote{A Lean~4 development, core library only,
+models the axioms from a byte-for-byte copy of DMP pinned by hash~\cite{lean4}. It holds 243 theorems, each checked by Lean's kernel and
+by an independently written second kernel, among them that the gate of a stack of layers is the meet along its chain~\cite{denning},
+that every pass was passed by a minted pair of independent witnesses~\cite{mr}, that adding a layer changes no existing
+decision~\cite{ohearn}, that placement never enters a decision~\cite{gm}, and that the potential~\eqref{eq:vibe} never rises under the
+system's own refresh. It concerns the axiom system, not the physics: no result of this paper rests on it, and it shows only that the
+axioms are consistent in at least one model.} We state the parts this paper uses, quoting DMP's sentences
 where the wording matters, and give each a formal counterpart \tagD.
 
+%PRIMER:dmp
 \subsection{Words}
 
 The undefined words are \emph{part}, \emph{act}, \emph{witness}, \emph{evidence} and \emph{time}. A part is ``a Duality of Trust: two halves,
@@ -71,26 +78,40 @@ with $\Phi_{\mathrm V}=0$ ``exactly when the boundary holds what it declares''. 
 only losses and ageing do''. Every reader other than the two witnesses reads one number, the boundary's \emph{temperature}, its
 mass-weighted staleness. We call $\Phi_{\mathrm V}=0$ the \emph{balanced state}.
 
-\subsection{Formal status}
-
-A Lean~4 development, core library only, models the axioms from a byte-for-byte copy of DMP pinned by hash~\cite{lean4}. It holds 243
-theorems on its main branch, each checked by Lean's kernel and by an independently written second kernel, and each resting on no axiom
-beyond \texttt{propext}, \texttt{Quot.sound} and \texttt{Classical.choice}. Among them: the gate of a stack of layers is the meet along its
-chain~\cite{denning}; every pass in a well-formed configuration was passed by a minted pair of independent witnesses, read as fail-prone
-systems~\cite{mr}; adding a layer changes no existing decision (the frame rule~\cite{ohearn}); placement never enters a decision
-(noninterference~\cite{gm}); the potential~\eqref{eq:vibe} never rises under the system's own refresh. The Lean concerns the axiom system,
-not the physics: no theorem below rests on it, and it is cited here only so that the reader knows the axioms are consistent in at least one
-model. Adversarial reviews of that development found, among others, that the axioms admit an inert model that performs no act, and that
-independence is relative to a declared list of failure classes; neither finding touches what follows.
-
 \section{The physical reading: two fields}\label{sec:fields}
 
 \subsection{Hypotheses}
 
-GUID reads DMP through five identifications. Two more follow in Section~\ref{sec:cosmo}, and two refinements, Hypotheses~1$'$
-and~6$'$, sharpen the first and the sixth. Together with the balance rule and the two bridges of Section~\ref{sec:bridges} and the reading
-of ``full reach over the act'' in Section~\ref{sec:holo}, they are the steps of the paper that no derivation supplies, and every result
-below names the ones it uses.
+Everything physical in this paper rests on steps that no derivation supplies: identifications of a DMP word with a physical quantity,
+and a few bridge principles. Table~\ref{tab:hyp} lists all of them with where they are stated and what uses them; every result below
+names the ones it uses. This section states the first five and the refinement~1$'$; the others are stated where they are first needed.
+
+\begin{table}[tb]\centering\small
+\caption{Every step of the paper that no derivation supplies. ``Adopted'' marks the reading the paper uses where two are given.}
+\label{tab:hyp}
+\begin{tabularx}{\linewidth}{@{}lLlL@{}}
+\toprule
+& Statement & Stated in & Used in \\
+\midrule
+H1 & trust is existence (first reading) & Sec.~\ref{sec:fields} & superseded by 1$'$ \\
+H1$'$ & the trust field is the gravitational frame, shaped by the counts (adopted) & Sec.~\ref{sec:fields} & Sections~\ref{sec:fix}--\ref{sec:exp} \\
+H2 & what the frame couples to is $T_{\mu\nu}$ & Sec.~\ref{sec:fields} & free fall, Sec.~\ref{sec:fix} \\
+H3 & the field is a frame of four vectors (a tetrad) & Sec.~\ref{sec:fields} & no preferred frame, Sec.~\ref{sec:fields} \\
+H4 & the information half carries quantum content and a scalar that sets $\alpha$ & Sec.~\ref{sec:fields} & Sections~\ref{sec:fix}, \ref{sec:matter} \\
+H5 & a containing boundary is a horizon & Sec.~\ref{sec:fields} & Sections~\ref{sec:bh}, \ref{sec:darkmatter} \\
+H6 & the start: inflation with its oscillon decay is the minting & Sec.~\ref{sec:start} & classicality, cosmology \\
+H6$'$ & causality begins with the strong split & Sec.~\ref{sec:split} & cosmology, proton decay \\
+H7 & remnants of interactions are trapped in the frame & Sec.~\ref{sec:darkmatter} & dark matter \\
+H8 & hadrons are binary trees of colour-conjugate halves & Sec.~\ref{sec:trees} & tetraquarks, pentaquarks \\
+H9 & a pentaquark is a minting (hidden-flavour pair) & Sec.~\ref{sec:trees} & pentaquarks \\
+Balance & DMP's balance holds the trade-off at equality & Sec.~\ref{sec:bridges} & Bridge~B \\
+Bridge A & the outermost horizon sets the remnant's scale & Sec.~\ref{sec:darkmatter} & dark matter (refuted) \\
+Bridge B & one record per Planck time sets the coupling & Sec.~\ref{sec:bridges} & the Di\'osi--Penrose rate \\
+Reach & ``full reach over the act'' means reach over its existence & Sec.~\ref{sec:holo} & Prop.~\ref{th:host}(ii) \\
+$B-L$ & $B-L$ is a count, changed only by a recorded act & Sec.~\ref{sec:matter} & Dirac neutrinos \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \begin{hypothesis}[trust is existence]\label{h:exist}
 DMP's trust half is \emph{existence}: the field of Axiom~2 is the gravitational field, and a standing in it is the existence of what it
@@ -128,15 +149,16 @@ Existence is what is granted, the rest mass the Higgs vacuum gives (Section~\ref
 existence half itself, and ``existence'' must then mean all energy and momentum, bound as well as granted, because free fall weighs all of
 it (Section~\ref{sec:fix}, \chk{Q6}). Hypothesis~1$'$ is the reading this paper adopts. It keeps ``existence'' for what is granted, the
 rest mass the Higgs vacuum gives, and makes gravity a separate plane shaped by the counts of everything it contains; Hypothesis~\ref{h:energy}
-then becomes a statement about the counts: the plane couples to the energy-momentum tensor $T_{\mu\nu}$ of existence and information
+then becomes a statement about the counts: the frame couples to the energy-momentum tensor $T_{\mu\nu}$ of existence and information
 together. Both readings give the same frame, the tetrad of Hypothesis~\ref{h:frame}, and the same propositions: every result of
 Section~\ref{sec:fix} keeps its proof with ``the counts $T_{\mu\nu}$'' in place of ``existence'', and two proofs become shorter (the remarks
 after Proposition~\ref{pr:wep} and Lemma~\ref{lem:classical}). We keep the name \emph{existence frame} for this tetrad; under
 Hypothesis~1$'$ it is the gravitational plane, and the Higgs field, which grants existence in the narrow sense, is not it. The refinement
-keeps the classical-gravity prediction only because the plane is a DMP structure, shaped by the counts; were it outside DMP's structures
+keeps the classical-gravity prediction only because the frame is a DMP structure, shaped by the counts; were it outside DMP's structures
 altogether, DMP would say nothing about whether gravity is quantum, and the test of Section~\ref{sec:exp} would be lost.
 
-\subsection{The existence frame}
+%PRIMER:gr
+\subsection{The frame}
 
 A tetrad is a set of four one-forms $e^a=e^a{}_\mu\,\dd x^\mu$, $a=0,\dots,3$, orthonormal with respect to the metric they define:
 \begin{equation}\label{eq:tetrad}
@@ -177,7 +199,7 @@ for the scalar's coupling. The action is our construction; what the axioms fix a
 \toprule
 DMP & GUID (physics) & Hypothesis \\
 \midrule
-trust half; the trust field (Axiom 2), first reading & the existence frame $e^a{}_\mu$; gravity & \ref{h:exist}, \ref{h:frame} \\
+trust half; the trust field (Axiom 2), first reading & the frame $e^a{}_\mu$; gravity & \ref{h:exist}, \ref{h:frame} \\
 information half & quantum content $\Psi$ and the scalar $\phi$ that sets $\alpha$ & \ref{h:info} \\
 a standing; mass of a member (T32) & what the frame couples to: $T_{\mu\nu}$ & \ref{h:energy} \\
 record, read in full by every witness (Axiom 3) & the value of the frame, held by every system it acts on & \ref{h:exist} \\
@@ -186,24 +208,32 @@ containing boundary; trap (T27, T31) & event horizon & \ref{h:horizon} \\
 entropy floor; temperature of a boundary (T31, T32) & thermal radiation of the horizon; Hawking temperature & \ref{h:horizon} \\
 G0, the minting & the start: inflation with the decay of its oscillons; the classical era begins as it completes & \ref{h:minting} \\
 balanced state $\Phi_{\mathrm V}=0$ (T32) & the vacuum at the minimum of its potential & Section~\ref{sec:matter} \\
-the trust field (Axiom 2), adopted reading & the gravitational plane (the same frame), separate from what it contains and shaped by
+the trust field (Axiom 2), adopted reading & the frame, separate from what it contains and shaped by
 its counts & 1$'$, \ref{h:frame} \\
 existence, in the narrow sense & the rest mass the Higgs vacuum grants & 1$'$; Section~\ref{sec:higgsplit} \\
 \bottomrule
 \end{tabularx}
 \end{center}
 
+\subsection{Names}
+
+Three words carry the account, and we use them in one sense each from here on. \emph{The frame} is the gravitational field, the tetrad
+of Hypothesis~\ref{h:frame}, which the trust field of Axiom~2 becomes under Hypothesis~1$'$. \emph{Content} is the quantum state of matter
+and radiation, carried by the information half (Hypothesis~\ref{h:info}). \emph{The grant} is the rest mass an elementary particle has by
+its coupling to the Higgs vacuum, the narrow sense of ``existence'' in Hypothesis~1$'$. A \emph{record} is evidence that outlives its act
+and that the act's witnesses read in full; the \emph{counts} are what every other reader sees of it, which for the frame are energy and
+momentum. Where earlier versions spoke of the ``existence frame'' or the ``gravitational plane'', this paper says \emph{the frame}.
 \section{What the axioms fix}\label{sec:fix}
 
 \subsection{Free fall is universal}
 
 \begin{proposition}[weak equivalence principle]\label{pr:wep}
-Under Hypotheses~\ref{h:exist} and~\ref{h:energy}, two bodies with the same energy-momentum fall alike in the existence frame, whatever
+Under Hypotheses~\ref{h:exist} and~\ref{h:energy}, two bodies with the same energy-momentum fall alike in the frame, whatever
 they are made of.
 \end{proposition}
 
 \begin{proof}
-Axiom~3 \tagD: from trust nothing can be derived about information but its existence. By Hypothesis~\ref{h:exist} the existence frame is
+Axiom~3 \tagD: from trust nothing can be derived about information but its existence. By Hypothesis~\ref{h:exist} the frame is
 the trust half, so no response of the frame to a body can depend on what the body carries (composition, internal state) except through
 the body's existence. By Hypothesis~\ref{h:energy} existence is $T_{\mu\nu}$. So the frame couples to a body through $T_{\mu\nu}$ alone:
 the coupling is minimal, and then $\nabla^\mu T_{\mu\nu}=0$ makes every small body, whatever it is made of, follow a geodesic of the
@@ -211,7 +241,7 @@ metric the frame defines. Bodies that differ in composition but share their init
 worldline: the weak equivalence principle \tagP.
 \end{proof}
 
-\noindent \emph{Under Hypothesis~1$'$} the proof needs no reading of existence: the plane is shaped only by the counts every reader
+\noindent \emph{Under Hypothesis~1$'$} the proof needs no reading of existence: the frame is shaped only by the counts every reader
 sees (Axiom~3), which are energy and momentum whatever carries them; with the same geodesic step free fall is universal, and the plane
 weighs granted and bound energy alike, as MICROSCOPE requires.
 
@@ -241,7 +271,7 @@ MICROSCOPE, E\"ot-Wash and the lunar and planetary tests of Section~\ref{sec:dat
 \subsection{The scalar stays out of gravity: \texorpdfstring{$\gamma=1$}{gamma = 1}}
 
 \begin{proposition}[light bending]\label{pr:gamma}
-If the information half cannot change how the existence frame responds to existence, the parametrised post-Newtonian parameter of the
+If the information half cannot change how the frame responds to existence, the parametrised post-Newtonian parameter of the
 metric is $\gamma=1$, as in general relativity.
 \end{proposition}
 
@@ -261,6 +291,7 @@ frame in which the action is written, as Section~\ref{sec:higgsplit} discusses f
 proposition is the bound~\eqref{eq:lambdabound} together with $\gamma=1$ for the metric, not the form of the action. \emph{Verdict:
 derived}; \emph{holds}.
 
+%PRIMER:qi
 \subsection{The frame is classical}
 
 We need two theorems of quantum information.
@@ -283,8 +314,8 @@ the ``if'' direction is the copier in the common eigenbasis, $\ket i\to\ket i\ke
 $\ket+$ is not (each reader is left with $I/2$).
 \end{proof}
 
-\begin{lemma}[the existence frame is classical]\label{lem:classical}
-Under Hypothesis~\ref{h:exist}, every value the existence frame takes after the first recorded act belongs to a pairwise commuting family:
+\begin{lemma}[the frame is classical]\label{lem:classical}
+Under Hypothesis~\ref{h:exist}, every value the frame takes after the first recorded act belongs to a pairwise commuting family:
 the frame admits no superposition of two of its values.
 \end{lemma}
 
@@ -292,7 +323,7 @@ the frame admits no superposition of two of its values.
 Axiom~3 \tagD: every grant, use and loss of trust leaves a record that every witness of the act can read in full, and any other reader sees
 the counts always. Axiom~2 \tagD: every standing of the trust field is evidence held in such records. Axiom~1 \tagD: there are at least two
 independent witnesses. So every value of the trust field is held in full by at least two independent readers: it is broadcast. By
-Lemma~\ref{lem:nobroadcast}(ii) the values commute. By Hypothesis~\ref{h:exist} they are the values of the existence frame. Writing the
+Lemma~\ref{lem:nobroadcast}(ii) the values commute. By Hypothesis~\ref{h:exist} they are the values of the frame. Writing the
 value into records that are read in full also dephases the frame in the record basis after every act, which is the hypothesis of
 Lemma~\ref{lem:locc} below.
 \end{proof}
@@ -306,7 +337,7 @@ redundancy, imposed as an axiom. Read in the other direction, the lemma is a des
 that every party can audit in full is classical, while the data it governs need not be.
 \end{remark}
 
-\noindent \emph{Under Hypothesis~1$'$} the lemma applies to the plane directly: the plane depends on the parts only through the
+\noindent \emph{Under Hypothesis~1$'$} the lemma applies to the frame directly: the frame depends on the parts only through the
 counts, which every reader holds in full, so from the parts' point of view it is a measure-and-prepare channel (Lemma~\ref{lem:locc}) and
 classical.
 
@@ -332,7 +363,32 @@ systems by local interaction cannot be classical~\cite{ggs}. Check \chk{Q4} runs
 couplings $A$--$M$, $M$--$B$, $A$--$M$ leave $A$ and $B$ entangled in most of 300 trials when $M$ is coherent (median negativity $0.12$)
 and never when $M$ is dephased after each coupling (largest negativity below $10^{-12}$).
 
-\subsection{DMP can host the proposed account}
+\subsection{Where classicality begins: the start}\label{sec:start}
+
+G0 is stated, not derived, and the minting is the first act: before it there is no act and therefore no record \tagD.
+Lemma~\ref{lem:classical} rests on records, so it applies only once acts exist. GUID describes the beginning as one event, the
+\emph{start}. For anything to begin to exist it must be possible for it to exist, and the first step of existing is to inflate, through the
+decay of the oscillons that coalesce once the initial energy has been emitted. Inflation and that decay cannot be separated or ordered,
+because there is no causality yet in which to order them; together they are the start.
+
+\begin{hypothesis}[the start]\label{h:minting}
+Inflation and the decay of the oscillons it ends in are one event, the start, which is the minting. It has no internal order the axioms can
+refer to, and the classical era of Lemma~\ref{lem:classical}, with causality in DMP's sense (acts between existing parts), begins as it
+completes. \tagH
+\end{hypothesis}
+
+The physics of the start is standard \tagP. Inflation ends as the inflaton oscillates about the minimum of its potential; in a broad class
+of models self-resonance fragments it into oscillons, long-lived localised lumps of the field, which dominate the universe for a while
+(Amin et al.~\cite{amin}); their decay into the particles of the Standard Model reheats the universe (Kofman, Linde and
+Starobinsky~\cite{kls}). In physics these are stages of one field's history; GUID's statement that they form one event agrees with that,
+since the axioms, which need acts to order anything, have nothing by which to order them. Within the start the axioms place no restriction
+on the geometry, which may be in superposition; after it, every geometry the axioms define is recorded and classical. This matches the
+standard semiclassical picture, in which the geometry of the universe becomes classical through decoherence at its very beginning
+(Halliwell~\cite{halliwell}; Kiefer~\cite{kiefer87}), and the no-boundary proposal, in which there is no ``before'' (Hartle and
+Hawking~\cite{hartlehawking}). In GUID the start is therefore the boundary of quantum gravity in time: whatever is quantum about the
+geometry itself lies within it, where DMP by its own words makes no statement.
+
+\subsection{DMP can host the proposed account}\label{sec:host}
 
 \begin{definition}[base configuration, host]\label{def:model}
 The \emph{base configuration currently assumed for our universe} is what physics supplies and DMP does not derive, the configuration in
@@ -344,7 +400,7 @@ theory's quantum content, so that nothing in the axioms prevents the configurati
 
 \begin{proposition}[DMP can host the proposed account of gravity]\label{th:host}
 Under Hypotheses~\ref{h:exist}--\ref{h:info}, and supplied with the base configuration currently assumed for our universe, DMP hosts the
-theory of this paper: a classical existence frame over quantum content. In it, (i) the frame, carried by DMP's shared structures, mediates
+theory of this paper: a classical frame over quantum content. In it, (i) the frame, carried by DMP's shared structures, mediates
 no entanglement between the systems it acts on; (ii) the information half can carry any quantum content.
 \end{proposition}
 
@@ -364,15 +420,24 @@ also run a theory in which the geometry itself is quantum, by the Church--Turing
 in such a theory the quantum geometry would sit in the information half and would not be DMP's frame. Part~(i) is therefore the proposed
 theory's characteristic, falsifiable prediction, and Section~\ref{sec:exp} names the experiments that test it.
 
+\paragraph{The Existence Turing machine.}
+
+Proposition~\ref{th:host}(ii) says that the information half can carry any quantum content. Assembled from DMP parts, a universal
+quantum computer can then run as content, and by the Church--Turing--Deutsch principle it approximates every finitely realisable
+physical system to any finite precision~\cite{deutsch}; GUID calls such an assembly the \emph{Existence Turing machine}. On a classical
+host this costs memory and time of order $2^n$ for $n$ qubits of generic content, so the general route needs a quantum information half;
+Section~\ref{sec:hosted} hosts four known quantum configurations classically and recovers their known results. Two consequences matter
+for gravity. Every candidate theory of quantum gravity whose predictions are finitely realisable can also run on the machine, as content:
+the axioms do not forbid quantum gravity in nature, but its geometry would not be DMP's frame. And the machine's own structure, its gates,
+records and layout, is classical: in the proposed theory it is the frame itself (Section~\ref{sec:gravsim}).
+
 \subsection{Gravitational waves and the graviton}
 
 The frame's linearised excitations, $g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}$, are a massless spin-2 field. In $D$ spacetime dimensions such a
 field has $D(D-3)/2$ propagating polarisations, two in 3+1 \chk{Q8}. Weinberg's low-energy theorem~\cite{weinberg64} and Deser's
 self-coupling argument~\cite{deser70} show that a massless spin-2 field must couple equally to all energy and, made consistent, is general
-relativity \tagP: the spin-2 wave is the existence frame's own, and its universal coupling is Proposition~\ref{pr:wep} again. The data agree:
-gravitational waves travel at $c$ to within $10^{-15}$ (GW170817), the mass of the graviton is bounded by $m_g\le2.42\times10^{-23}$\,eV$/c^2$
-at 90\% credibility, and no polarisation beyond the two tensor modes has been found~\cite{ligo2025a} (Section~\ref{sec:data},
-\chk{data:D2.11}--\chk{data:D2.13}).
+relativity \tagP: the spin-2 wave is the frame's own, and its universal coupling is Proposition~\ref{pr:wep} again. Its speed, its
+mass and its polarisations are tested in Section~\ref{sec:data}.
 
 By Lemma~\ref{lem:classical}, once the start is complete (Section~\ref{sec:cosmo}) these waves are classical waves of the frame: GUID has no graviton as a quantum
 of the frame \tagD. That is consistent with every observation, for reasons the literature has made precise. Dyson showed that detectors of
@@ -385,7 +450,7 @@ graviton is $2\times10^{-41}$ of that. The proposals to register single quanta o
 bar~\cite{tobar} are a gravitational photoelectric effect, and like the photoelectric effect they can be explained by a classical wave acting
 on a quantised detector~\cite{cdr}. So the absence of the graviton in GUID is not testable by counting gravitons; it is testable only
 through the mediation experiments of Section~\ref{sec:exp} and, with Bridge~B, through the decoherence test of
-Section~\ref{sec:bridges}. \emph{Verdict: derived}; \emph{holds} against all data; testable indirectly.
+Section~\ref{sec:bridges}. \emph{Verdict: derived}; not testable by counting gravitons, only through those experiments.
 
 \section{How a classical frame can carry quantum matter}\label{sec:cq}
 
@@ -400,6 +465,7 @@ where the mass never is. Page and Geilker tested a macroscopic version, with the
 found the probe following the actual masses, not the average~\cite{pagegeilker} \tagP. The equation is also nonlinear in the quantum state,
 which in general permits signalling. So a classical frame cannot simply be sourced by expectation values.
 
+%PRIMER:cq
 \subsection{Consistent classical-quantum dynamics}
 
 The consistent alternative is a joint state $\varrho(z)$ of a classical phase-space variable $z$ (here the frame) and a quantum system,
@@ -426,7 +492,7 @@ $\sigma_z$ with feedback, in which $p$ is a perfect record and every block of th
 \chk{gravsim:G3}).
 
 \begin{corollary}[GUID diffuses]\label{co:diffuse}
-If the existence frame (Lemma~\ref{lem:classical}) is sourced by quantum content (Hypothesis~\ref{h:info}) through a dynamics that is linear,
+If the frame (Lemma~\ref{lem:classical}) is sourced by quantum content (Hypothesis~\ref{h:info}) through a dynamics that is linear,
 completely positive and Markovian, then mass superpositions decohere at a non-zero rate and the gravitational field fluctuates randomly,
 with~\eqref{eq:tradeoff} bounding the product from below.
 \end{corollary}
@@ -480,25 +546,6 @@ therefore holds the trade-off~\eqref{eq:tradeoff} at equality,
 so that a measured gravitational decoherence would fix the spacetime diffusion, and conversely. Other classical-quantum theories leave the
 two free above the bound; \eqref{eq:saturate} is GUID's own rule.
 
-\paragraph{Bridge A: the outermost horizon sets the scale.} The stochastic remnant of Section~\ref{sec:darkmatter} depends on the outer
-cut-off $r_{\max}$ of the path integral. Oppenheim and Russo find, in units with $c=1$, the mean
-$\gamma_1=-\tfrac92\,\gamma_2\,r_{\max}\,(1-4\beta)/(5-18\beta)$, with $\gamma_2=\Lambda/3$ and a parameter $\beta<0$ of their action to which
-the result is insensitive~\cite{oppenheimrusso}. In GUID the outermost containing boundary is the cosmological event horizon, which in
-$\Lambda$CDM tends to the de Sitter radius $r_{\text{dS}}=c/H_\infty=1.66\times10^{26}$\,m. With $r_{\max}=r_{\text{dS}}$ and $c$ restored,
-\begin{equation}\label{eq:bridgeA}
-|\gamma_1|=(0.90\ \text{to}\ 1.00)\;cH_\infty=(4.9\ \text{to}\ 5.4)\times10^{-10}\,\text{m/s}^2,
-\end{equation}
-with no free parameter \chk{Q19}. It has the right order of magnitude and is too strong. Matching the turnover speed~\eqref{eq:btf} to the
-observed baryonic Tully--Fisher relation $v^4=GMa_0$ requires $|\gamma_1|=a_0/2=6\times10^{-11}$\,m/s$^2$; Bridge~A exceeds this by a factor
-of 8 in $v^4$, 1.7 in $v$. For a galaxy of $10^{11}$ solar masses it gives 340\,km/s at $r_*=7.6$\,kpc, where the relation gives 200\,km/s,
-and the linear term lets the curve rise to 620\,km/s at 50\,kpc, where observed curves stay flat \chk{Q19}. The rotation curves of the
-SPARC galaxies settle it: with no free parameter, Bridge~A lies above the data at 98\% of 2696 points, by a median of 0.59\,dex and by
-0.97\,dex where the baryonic acceleration is below $10^{-11}$\,m/s$^2$. SPARC's own Tully--Fisher normalisation needs
-$|\gamma_1|=7.95\times10^{-11}$\,m/s$^2$ rather than $a_0/2$, against which Bridge~A gives 6.4 to 7.1 times the observed $v^4$ at the
-turnover and 80 to 98 times at the galaxies' outermost measured radii, where its curves still rise (Section~\ref{sec:sparc},
-\chk{sparc:S2b}, \chk{sparc:S3}). \emph{Verdict: refuted}, by the estimate and by the data. Its near miss is Milgrom's
-coincidence $a_0\approx cH/2\pi$, which is known.
-
 \paragraph{Bridge B: one record per Planck time.} The second bridge reads DMP's tick as the Planck time: the frame records existence at
 Planck strength, so the coupling takes its value in Planck units, and the balance rule~\eqref{eq:saturate} holds. In the Newtonian limit
 Oppenheim et al.\ bound the coupling from both sides, from above by precision measurements of gravitational forces and from below by the
@@ -514,23 +561,19 @@ since $c/m_P^2=G/\hbar$: the Di\'osi--Penrose rate~\cite{diosi87,penrose96}, up 
 exact self-energy gives $6/5-R/\Delta x$ in place of 1). Here $D_2$ is the strength of the diffusion kernel of the Newtonian potential in
 Oppenheim et al.'s Newtonian-limit model, in their normalisation, and the two windows are theirs~\cite[Eqs.~(44), (46), (47)]{osswd}. For a fullerene it is $6\times10^{-16}$ per second, far below what interferometry allows. For the diamond microsphere of the Bose
 et al.\ proposal ($10^{-14}$\,kg, radius 0.88\,\textmu m) it is 72 per second: coherence is lost in about 14\,ms, while the entangling phase
-needs 8 to 25\,s, so only $2\times10^{-3}$\,rad builds up \chk{Q19}. The rate is $1146$ times the least decoherence a classical channel
-needs for these masses, and no arrangement of two spheres builds up more than one radian of entangling phase per coherence time
-(Section~\ref{sec:bmv}); the exact self-energy of a uniform sphere gives $86$ per second instead of $72$, a factor $1.2$
-\chk{gravsim:G2}. One length remains that the bridge does not fix: the mass density of each
-nucleus must be smeared over a length $R_0$, or the noise makes matter radiate more than an underground germanium detector
-sees. Donadi et al.'s own 95\% bound is $R_0>0.54\times10^{-10}$\,m~\cite{donadi}, and the summary of all current bounds by Figurato et
-al.\ is $R_0\ge4\times10^{-10}$\,m~\cite{figurato}, which we adopt \chk{data:D6.5}, \chk{data:D6.6}. At such smearing the bulk term
-in~\eqref{eq:dprate} still dominates \chk{Q19}. The four record superpositions, of 28\,kDa oligoporphyrins, of 197\,kDa sodium clusters, of atoms 54\,cm apart and of atoms held for
-20\,s, lose a fraction between $2\times10^{-16}$ and $2\times10^{-13}$ of their coherence to this rate during their runs, consistent with their
-visibility by margins of $4\times10^{12}$ and more (Section~\ref{sec:data}, \chk{data:D6.1}--\chk{data:D6.4}). \emph{Verdict: live} and
-sharp: with Bridge~B, mesoscopic superpositions decohere at the Di\'osi--Penrose rate. The decoherence itself is the test
-(Section~\ref{sec:bmv}): the smallest decisive experiment holds a silica particle of about $10^{-14}$\,kg superposed over more than its own
-size for 10\,ms, or $8\times10^{-16}$\,kg for 1\,s \chk{data:D6}.
+needs 8 to 25\,s, so only $2\times10^{-3}$\,rad builds up \chk{Q19}. Of the two versions of the bridge, the discrete one is excluded by
+the windows and the continuous one allowed; adopting the continuous one is a choice made with the windows in view. One length remains that
+the bridge does not fix: the mass density of each nucleus must be smeared over a length $R_0$, or the noise makes matter radiate more than
+an underground germanium detector sees; we adopt the bound of current analyses, $R_0\ge4\times10^{-10}$\,m~\cite{donadi,figurato}, at
+which the bulk term in~\eqref{eq:dprate} still dominates \chk{Q19}. \emph{Verdict: live} and sharp: with Bridge~B, mesoscopic
+superpositions decohere at the Di\'osi--Penrose rate. Section~\ref{sec:data} shows how far today's superpositions are from testing
+it.
 
-\paragraph{What the bridges show.} Made parameter-free with its own principles, GUID lands on known physics: Bridge~A is refuted, and
-Bridge~B is the Di\'osi--Penrose model, which predates this work. What GUID adds is a reason for that model, the balance
-rule~\eqref{eq:saturate} together with a record at Planck strength. A number of its own would need a prediction in which GUID differs from
+\paragraph{What the bridges show.} Fixed by its own bridge hypotheses, GUID lands on known physics: Bridge~A (Section~\ref{sec:darkmatter})
+is refuted, and Bridge~B is the Di\'osi--Penrose model, which predates this work, with its smearing length set by experiment. What GUID
+adds is a reading of that model, the balance rule~\eqref{eq:saturate} with a record at Planck strength, not a derivation: at Planck
+strength the only Newtonian decoherence rate is $G/\hbar$ times a self-energy, so landing on $GM^2/\hbar R$ is close to dimensional
+analysis. A number of its own would need a prediction in which GUID differs from
 both the classical-quantum theory and Di\'osi--Penrose. The most promising lead is DMP's two independent witnesses, which may imply two
 independent noise sources with a statistical signature that a single source lacks; we have not worked it out.
 
@@ -559,29 +602,18 @@ $\omega/2$, the classical-channel minimum. Either way the masses stay separable 
 \textbf{GUID predicts $\mathcal N=0$.} With Bridge~B of Section~\ref{sec:bridges} it predicts more: the masses decohere at the
 Di\'osi--Penrose rate, about 72 per second for the proposed microspheres, long before an entangling phase can build up.
 
-\emph{A null result does not discriminate.} The simulation of Section~\ref{sec:bmv} shows why. The ratio of the entangling rate $\omega$
-to the Bridge-B decoherence rate $\lambda$ is fixed by the geometry: $G$, $\hbar$ and the mass cancel at fixed sizes (at fixed density
-the ratio grows as $m^{1/3}$ up to the geometric bound). It is $1.7\times10^{-3}$ for the proposal, at most $1/2$ for any collinear
-arrangement of two solid spheres and at most $1$ for any arrangement, while a coherent field with independent dephasing at $\lambda$ per
-mass entangles the pair at some time only if $\omega/\lambda>2$; with Di\'osi's correlated kernel and the exact sphere rates the ratio is
-at most $5/6$, below that kernel's threshold $\sqrt2$ \chk{gravsim:G2}. So if decoherence at the Di\'osi--Penrose rate is real, a quantised
-gravitational field would not entangle two such spheres either. What
-discriminates is the decoherence itself: a measured mesoscopic decoherence at the Di\'osi--Penrose rate supports Bridge~B, and its
-absence refutes it.
-
-\emph{A positive result} excludes every classical mediator; if the decoherence is local and uncorrelated, it also shows that it is
-below $\omega/2$, the least any classical channel must cause. It would show that the
-gravitational field is not the existence frame: the identification of Hypothesis~\ref{h:exist} would fail for nature and the proposed
-theory would be refuted, together with Bridge~B and every classical mediator; a quantum geometry would then run on DMP only as content
-(Proposition~\ref{th:host}(ii)). The spin witness proposed in~\cite{bose} to certify the entanglement, as printed in its arXiv version,
-is reached by product states, most likely a misprint: later work quotes a valid form~\cite{chevalier2020}, which in this geometry
-detects only entangling phases above $\pi/2$. Section~\ref{sec:bmv} discusses both and gives a two-setting witness that detects every
-entangling phase \chk{witness:B1}, \chk{witness:B2}. Two
+\emph{What a result would show.} If decoherence at the Di\'osi--Penrose rate is real, a quantised field would not entangle two solid
+spheres either: the ratio of the entangling to the decoherence rate is fixed by the geometry and stays below what entanglement needs
+(Section~\ref{sec:bmv}). The first experiment to decide is therefore whether that decoherence exists, which tests Bridge~B; only in its
+absence does the entanglement experiment separate classical from quantum gravity. A positive result would exclude every classical
+mediator. It would refute Hypothesis~1$'$, which puts the field that pulls laboratory masses into the frame; it would not refute DMP,
+which hosts either reading of that field (Section~\ref{sec:dissent}): a quantum geometry would then run on DMP as content
+(Proposition~\ref{th:host}(ii)). Section~\ref{sec:bmv} also checks the spin witness proposed to certify the entanglement. Two
 caveats are under debate. Aziz and Howl argue that classical gravity coupled to quantum matter fields can produce entanglement through virtual matter
 processes, at a rate far below the quantum-gravity rate~\cite{azizhowl}; Marletto, Oppenheim, Vedral and Wilson~\cite{movw},
 Di\'osi~\cite{diosi25}, Schneider, Huggett and Linnemann~\cite{shl} and Gundhi, Infantino and Bassi~\cite{gib} dispute it. And
 Christodoulou et al.\ showed that the entanglement follows from linearised quantum gravity on a fixed background with local
-mediation~\cite{christodoulou23}, which is the content-side mechanism of Section~\ref{sec:holo}'s dissent. Neither changes the prediction:
+mediation~\cite{christodoulou23}, which is the content-side mechanism of the dissent in Section~\ref{sec:dissent}. Neither changes the prediction:
 in GUID the frame is recorded, and Lemma~\ref{lem:locc} applies to it.
 
 \subsection{Quantumness without entanglement}
@@ -606,72 +638,20 @@ discrete gravitational quantum states~\cite{nesvizhevsky}. In both, the matter i
 whether the field itself can be in superposition. The current state of the field is reviewed by Carney, Stamp and Taylor~\cite{cst}.
 \emph{Verdict on GUID's classical frame: live, falsifiable.}
 
-\section{The thermodynamics of the frame}\label{sec:thermo}
+\subsection{A dissenting reading}\label{sec:dissent}
 
-\subsection{The existence of a boundary is its temperature}
-
-GUID defines the existence a boundary asserts as the product of the local strength of gravity $g$ and Planck's constant $h$, divided by
-the speed of light:
-\begin{equation}\label{eq:Eex}
-E_{\text{ex}}\equiv\frac{g\,h}{c}.
-\end{equation}
-
-\begin{proposition}[existence and the Unruh temperature]\label{pr:unruh}
-$E_{\text{ex}}$ is the only energy that an acceleration, Planck's constant and the speed of light can form, and
-\begin{equation}\label{eq:unruh}
-E_{\text{ex}}=4\pi^2\,k_BT_U,\qquad k_BT_U=\frac{\hbar g}{2\pi c},
-\end{equation}
-where $T_U$ is the temperature an observer of proper acceleration $g$ assigns to the vacuum (Unruh~\cite{unruh}). At a horizon of surface
-gravity $\kappa$ it is $4\pi^2$ times the Hawking temperature $k_BT_H=\hbar\kappa/2\pi c$; for a Schwarzschild hole $\kappa=c^4/4GM$.
-\end{proposition}
-
-\begin{proof}
-With dimensions $[g]=LT^{-2}$, $[h]=ML^2T^{-1}$, $[c]=LT^{-1}$, the monomial $g^ah^bc^k$ has the dimension of energy, $ML^2T^{-2}$, only
-for $(a,b,k)=(1,1,-1)$ \chk{Q1}. With $h=2\pi\hbar$, $E_{\text{ex}}/k_BT_U=4\pi^2$.
-\end{proof}
-
-The uniqueness means the form of~\eqref{eq:Eex} is not itself evidence; quantum field theory supplies the factor and the meaning. At standard
-gravity $T_U=4.0\times10^{-20}$\,K; at the horizon of a solar-mass hole $T_H=6.2\times10^{-8}$\,K \chk{Q1}. \emph{Verdict: holds as a
-reading} of the Unruh and Hawking temperatures.
-
-\subsection{Time: the lapse}
-
-In the GUID reading a clock asserts its existence at a rate that falls where the existence field is strong. In general relativity that
-rate is the lapse, $N=\sqrt{1+2\Phi/c^2}$ in a weak field and $N=\sqrt{1-2GM/rc^2}$ outside a mass, which vanishes at the horizon
-\chk{Q2}. It reproduces the redshift over the 22.5\,m Pound--Rebka tower, $2.46\times10^{-15}$~\cite{pr60}, and the rate difference of two
-optical clocks 33\,cm apart, $3.6\times10^{-17}$~\cite{chou}. \emph{Verdict: holds}; it adds nothing to general relativity.
-
-\subsection{Einstein's equation as an equation of state}
-
-Jacobson derived Einstein's equation from thermodynamics~\cite{jacobson95}, and GUID's two thermal inputs are exactly his. Take any point
-$p$ and any local Rindler horizon through it, generated by a null vector field $k^a$ with affine parameter $\lambda$, vanishing expansion and
-shear at $p$, and approximate boost Killing field $\chi^a=-\kappa\lambda k^a$. Assume:
-\begin{enumerate}[nosep]
-\item the horizon has the Unruh temperature $T=\hbar\kappa/2\pi$ (units $c=k_B=1$), Proposition~\ref{pr:unruh};
-\item its entropy is proportional to its area, $S=sA$, the boundary's floor (Hypothesis~\ref{h:horizon});
-\item the Clausius relation $\delta Q=T\,\dd S$ holds for the energy flux across it.
-\end{enumerate}
-The heat flux is $\delta Q=\int T_{ab}\chi^a\dd\Sigma^b=-\kappa\int\lambda\,T_{ab}k^ak^b\,\dd\lambda\,\dd\mathcal A$. The area change follows
-from the Raychaudhuri equation, $\dd\theta/\dd\lambda=-R_{ab}k^ak^b$ to first order, as $\delta A=-\int\lambda R_{ab}k^ak^b\,\dd\lambda\,\dd\mathcal A$.
-Equating $\delta Q=(\hbar\kappa/2\pi)s\,\delta A$ for every $p$ and every null $k^a$ gives
-$R_{ab}+f g_{ab}=(2\pi/\hbar s)T_{ab}$ for some function $f$; the contracted Bianchi identity and $\nabla^aT_{ab}=0$ fix
-$f=-R/2+\Lambda$, so
-\begin{equation}\label{eq:jacobson}
-G_{ab}+\Lambda g_{ab}=\frac{2\pi}{\hbar s}\,T_{ab},\qquad G=\frac{1}{4\hbar s}\ \ (c=1).
-\end{equation}
-Newton's constant is set by the entropy per area, $s=1/4L_P^2$ \chk{Q1}, and the cosmological constant enters as an integration
-constant. Jacobson's own conclusion fits GUID's classical frame: on this view, ``it may be no more appropriate to quantize the Einstein
-equation than it would be to quantize the wave equation for sound in air''~\cite{jacobson95}. Two limits: DMP supplies neither the value of $\eta$ nor
-a manifold, so the derivation is borrowed, not produced; and the entanglement-equilibrium version~\cite{jacobson16} needs a state, not a
-schedule, which the axioms do not define. \emph{Verdict: holds as a reading}; the constant is open.
-
-\subsection{Information radiation and the floor}
-
-DMP's T31 says that a containing boundary emits only thermal radiation, carrying ``entropy and no information'', and that an outside reader
-learns of the inside only its size and its staleness. With Hypothesis~\ref{h:horizon} that is the semiclassical horizon: a black hole of mass
-$M$ radiates at $T_H$ and an outside observer knows its mass, spin and charge \tagP. Erasing a bit costs at least $k_BT\ln2$ of heat
-(Landauer~\cite{landauer}); in the GUID reading entropy is the inefficiency of converting between existence and information, which is
-Landauer's principle in other words. \emph{Verdict: holds as a reading.}
+The same facts can be scored the other way. Split the geometry, as the
+background-field method does: the background is a DMP structure and classical; the linearised fluctuation, which carries the Newtonian
+pull between laboratory masses, is content between parts, and linearised quantum gravity on a fixed background already predicts the
+entanglement of the masses~\cite{christodoulou23}. On that reading DMP's classical structures are the part of quantum gravity that is
+classical in quantum gravity too, the classical centre of a holographic code (Section~\ref{sec:holo}), and the linearised field is quantum content on that classical
+centre. The two readings agree on every fact: the shared structures are classical, quantum content including a linearised field can
+move between parts by grant and stay entangled while every act is recorded, the axioms derive no constant, and they forbid coherent
+superpositions of backgrounds while their records exist. They differ in one place: whether the linearised field that pulls laboratory
+masses belongs to the frame (the proposed theory, Hypothesis~1$'$, which predicts $\mathcal N=0$) or to the content (the dissent,
+which predicts $\mathcal N>0$ as long as the decoherence stays below $\omega/2$). DMP hosts either. If Di\'osi--Penrose decoherence is
+real, neither reading gives entanglement for two spheres, and the decoherence measurement comes first; only in its absence does the
+entanglement experiment decide between them.
 
 \section{Black holes}\label{sec:bh}
 
@@ -683,20 +663,6 @@ keeps: mass $M$, angular momentum $J$, charge $Q$ (Israel~\cite{israel}; Kerr~\c
 coordinate is timelike and every future-directed path ends at the singularity: everything inside derives its causal future from it, a
 local ground in the sense of G0. Whether crossing is survivable is answered by the equivalence principle: at the horizon of a
 supermassive hole the tidal stretch across a body is small; for a stellar-mass hole it is lethal before the horizon.
-
-\subsection{The containment split gives Christodoulou's mass formula}
-
-DMP splits a contained boundary into what is inside and the counts every outside reader sees \tagD. Give the contained part a mass
-$M_{\text{irr}}$ that sets a Schwarzschild boundary of radius $2GM_{\text{irr}}/c^2$; let the spin count $J$ be carried at that boundary as
-a momentum $p=Jc^2/(2GM_{\text{irr}})$ (an identification, \tagH); and combine the two as energy and momentum combine in special relativity. In
-units $G=c=1$,
-\begin{equation}\label{eq:christo}
-M^2=M_{\text{irr}}^2+\left(\frac{J}{2M_{\text{irr}}}\right)^2 .
-\end{equation}
-This is Christodoulou's mass formula for the Kerr black hole~\cite{christodoulou}, with $M_{\text{irr}}=\sqrt{A/16\pi}$ \tagP; solved for
-$M_{\text{irr}}$ it returns Kerr's horizon area for every spin $a=J/M^2\in[0,1]$, has no real solution above $a=1$ (the spin bound), and
-gives the extractable share $1-M_{\text{irr}}/M=1-1/\sqrt2\approx29\%$ at maximal spin \chk{Q10}. The derivation uses DMP's split, two
-physical inputs and one identification, and gives no number general relativity does not. \emph{Verdict: holds as a rederivation.}
 
 \subsection{What a black hole gives up: Hawking--Penrose--Information radiation}
 
@@ -717,7 +683,7 @@ electric energy from the ergoregion (the $\Omega_H\dd J$ and $\Phi_H\dd Q$ terms
 $\kappa\,\dd A/8\pi$ term).
 \end{definition}
 
-In GUID terms the extraction is the existence frame being dragged along by the spinning hole, outside the horizon, so no act crosses it; the
+In GUID terms the extraction is the frame being dragged along by the spinning hole, outside the horizon, so no act crosses it; the
 Hawking part is the floor of T31. What leaves carries the counts and no content, as Axiom~3 requires. Spinning holes are more efficient
 engines: the binding energy radiated by matter falling to the innermost stable orbit is $1-\sqrt{8/9}=5.7\%$ of its rest energy without
 spin, $32\%$ at Thorne's limit $a=0.998$, and approaches $1-1/\sqrt3=42.3\%$ at maximal spin (Bardeen, Press and Teukolsky~\cite{bpt};
@@ -739,6 +705,7 @@ may be quantum, Proposition~\ref{th:host}(ii)) returns in the radiation as conte
 \emph{Verdict: open}, in physics and in GUID.
 
 \section{Holography and quantum error correction}\label{sec:holo}
+%PRIMER:holo
 
 \subsection{The strongest assembly}
 
@@ -788,22 +755,7 @@ $\mathcal M_R$: it commutes with everything either side can do~\cite{harlow}. DM
 elements. Lemma~\ref{lem:classical} then says that in GUID the area is a number, never an operator with a spread of values: the axioms
 allow one fixed-area sector at a time. In holography fixed-area states are a special, though useful, class (Dong, Harlow and
 Marolf~\cite{dhm}); the general state of quantum gravity superposes areas. So the assembly reproduces the kinematics of holographic codes on
-a fixed background (\chk{A1}--\chk{A5}) and stops exactly at superpositions of geometry. Section~\ref{sec:holocode} runs the same
-assembly at 5120 boundary qubits: the Ryu--Takayanagi equality and wedge reconstruction hold in millions of cases, the code has an exact
-erasure threshold $p_c=(5-\sqrt{13})/6\approx0.232$, and the two witnesses read identical syndromes whatever the content.
-
-\paragraph{A dissenting reading.} The same facts can be scored the other way. Split the geometry, as the
-background-field method does: the background is a DMP structure and classical; the linearised fluctuation, which carries the Newtonian
-pull between laboratory masses, is content between parts, and linearised quantum gravity on a fixed background already predicts the
-entanglement of the masses~\cite{christodoulou23}. On that reading DMP's classical structures are the part of quantum gravity that is
-classical in quantum gravity too, the centre of~\eqref{eq:harlow}, and the linearised field is quantum content on that classical
-centre. The two readings agree on every fact: the shared structures are classical, quantum content including a linearised field can
-move between parts by grant and stay entangled while every act is recorded, the axioms derive no constant, and they forbid coherent
-superpositions of backgrounds while their records exist. They differ in one place: whether the linearised field that pulls laboratory
-masses belongs to the frame (the proposed theory, which predicts $\mathcal N=0$ in Section~\ref{sec:exp}) or to the content (the dissent,
-which predicts $\mathcal N>0$ as long as the decoherence stays below $\omega/2$). DMP hosts either. If Di\'osi--Penrose decoherence is
-real, neither reading gives entanglement for two spheres, and the decoherence measurement comes first; only in its absence does the
-entanglement experiment decide between them.
+a fixed background (\chk{A1}--\chk{A5}) and stops exactly at superpositions of geometry. Section~\ref{sec:holocode} runs the assembly at scale.
 
 \paragraph{The tree is not our space.} Read as space, a tree's boundary is totally disconnected (the $p$-adic line of $p$-adic
 AdS/CFT~\cite{hmss,gubser}), and no tree approximates a plane: an $n$-cycle needs distortion at least $n/3-1$ in any tree~\cite{rr}. So a
@@ -823,7 +775,7 @@ deficits~\cite{thooft88}.
 
 So 2+1 is not an exception to Proposition~\ref{th:host}. With no local field there is no local mediator to forbid, but the global holonomies are
 quantum, and a DMP structure that carries them is broadcast and so can carry one classical sector of them, never their superposition; with
-matter, the same rule decoheres the particles' relative positions. In GUID's terms, the existence frame in 2+1 would have nothing local
+matter, the same rule decoheres the particles' relative positions. In GUID's terms, the frame in 2+1 would have nothing local
 that could be held as a classical record, and what it does carry is global and quantum. DMP can run 2+1 quantum gravity as content, but
 its frame cannot be 2+1 gravity;
 and our universe is 3+1, whose local degrees of freedom, gravitational waves, are measured~\cite{gw150914}. \emph{Verdict: holds as a reading}, with
@@ -831,30 +783,10 @@ the dimension count as \emph{holds}; a classical 2+1 frame with classical holono
 
 \section{Cosmology}\label{sec:cosmo}
 
-\subsection{The beginning: the start}
+%PRIMER:cosmo
+\subsection{The strong split and the timeline}\label{sec:split}
 
-G0 is stated, not derived, and the minting is the first act: before it there is no act and therefore no record \tagD.
-Lemma~\ref{lem:classical} rests on records, so it applies only once acts exist. GUID describes the beginning as one event, the
-\emph{start}. For anything to begin to exist it must be possible for it to exist, and the first step of existing is to inflate, through the
-decay of the oscillons that coalesce once the initial energy has been emitted. Inflation and that decay cannot be separated or ordered,
-because there is no causality yet in which to order them; together they are the start.
-
-\begin{hypothesis}[the start]\label{h:minting}
-Inflation and the decay of the oscillons it ends in are one event, the start, which is the minting. It has no internal order the axioms can
-refer to, and the classical era of Lemma~\ref{lem:classical}, with causality in DMP's sense (acts between existing parts), begins as it
-completes. \tagH
-\end{hypothesis}
-
-The physics of the start is standard \tagP. Inflation ends as the inflaton oscillates about the minimum of its potential; in a broad class
-of models self-resonance fragments it into oscillons, long-lived localised lumps of the field, which dominate the universe for a while
-(Amin et al.~\cite{amin}); their decay into the particles of the Standard Model reheats the universe (Kofman, Linde and
-Starobinsky~\cite{kls}). In physics these are stages of one field's history; GUID's statement that they form one event agrees with that,
-since the axioms, which need acts to order anything, have nothing by which to order them. Within the start the axioms place no restriction
-on the geometry, which may be in superposition; after it, every geometry the axioms define is recorded and classical. This matches the
-standard semiclassical picture, in which the geometry of the universe becomes classical through decoherence at its very beginning
-(Halliwell~\cite{halliwell}; Kiefer~\cite{kiefer87}), and the no-boundary proposal, in which there is no ``before'' (Hartle and
-Hawking~\cite{hartlehawking}). In GUID the start is therefore the boundary of quantum gravity in time: whatever is quantum about the
-geometry itself lies within it, where DMP by its own words makes no statement.
+The start (Hypothesis~\ref{h:minting}, Section~\ref{sec:start}) contains one more event that orders everything after it.
 
 \begin{hypothesisprime6}[the strong split; refines Hypothesis~\ref{h:minting}]
 The start also contains the split of the strong force from the electroweak force, and causality begins with that split. If the two
@@ -862,8 +794,8 @@ were ever one force, the unification lies before time: within causality the two 
 \end{hypothesisprime6}
 
 \noindent The Standard Model agrees within causality: in it the strong and the electroweak force are separate gauge interactions
-and never meet; run at two loops from the measured values, the three couplings cross pairwise at $1.1\times10^{13}$, $1.7\times10^{14}$
-and $2.9\times10^{16}$\,GeV and never meet at one point~\cite{amaldi} (Section~\ref{sec:sm}, \chk{sm:SM4}). A unification
+and never meet; run with the Standard Model's content alone, the three couplings do not meet at one point~\cite{amaldi}
+(Section~\ref{sec:sm}). A unification
 would leave three traces in the causal era, and they make the hypothesis testable in part \tagP. (1) \emph{Magnetic monopoles.} The split of
 a unified force generically creates very heavy magnetic monopoles, about one per causal volume (Preskill~\cite{preskill}); had the split
 happened after inflation, the universe would be full of them. None has been seen: MACRO bounds their flux below
@@ -889,29 +821,7 @@ electroweak field.
 \item \emph{Afterwards.} $\alpha$ runs down to $1/137$ at low energies; nucleosynthesis, recombination and the late universe follow.
 \end{enumerate}
 
-\subsection{The universe at its own Schwarzschild threshold}
-
-For a flat Friedmann universe with Hubble rate $H$, the mass inside the Hubble radius, $M_H=\tfrac43\pi(c/H)^3\rho_c$ with
-$\rho_c=3H^2/8\pi G$, has a Schwarzschild radius equal to the Hubble radius,
-\begin{equation}\label{eq:kugel}
-\frac{2GM_H}{c^2}=\frac cH ,
-\end{equation}
-exactly and at every epoch \chk{Q12}. This is the coincidence behind Pathria's ``universe as a black hole''~\cite{pathria}. GUID reads the
-early universe as a Kugelblitz, a horizon formed by energy alone, that could not contain its own existence; the reading holds in the sense
-of~\eqref{eq:kugel} and at every epoch, not only the earliest, and the universe is not a black hole in the sense of general relativity,
-having no outside. \emph{Verdict: holds as a reading.}
-
-\subsection{Inflation as the possibility space of existence}
-
-In GUID, inflation is the space that existence makes for itself wherever existence is possible. Physically it is a period of nearly
-exponential expansion, $a\propto e^{Ht}$, which dilutes a spatial curvature $|\Omega-1|$ by $e^{-2N}$ over $N$ e-folds (Guth~\cite{guth})
-\tagP. Afterwards the curvature share grows again, as $a^2$ while radiation dominates and as $a$ while matter does; from a reheating
-temperature of $10^{15}$\,GeV to today it grows by about $5\times10^{51}$, so an order-one initial curvature needs about 62 e-folds to meet
-Planck's bound $|\Omega_k|\lesssim5\times10^{-3}$~\cite{planck18} \chk{Q13}. The newest combination, DESI's second data release with the
-microwave background, finds $10^3\,\Omega_K=2.3\pm1.1$, a $2.1\sigma$ departure from flatness that inflation and $\Lambda$CDM share and that
-DESI does not claim as a detection (Section~\ref{sec:data}, \chk{data:D3.7}). \emph{Verdict: holds as a reading}; it supplies the motive,
-not the number.
-
+%FIG:timeline
 \subsection{Primordial gravitational waves}\label{sec:tensor}
 
 During inflation the vacuum fluctuations of the metric are stretched into a nearly scale-invariant background of gravitational waves
@@ -924,17 +834,22 @@ $r=16\epsilon$ in single-field slow roll, with the consistency relation $n_t=-r/
 $\hbar\to0$, Krauss and Wilczek argued that detecting this background would establish that the gravitational field was quantised during
 inflation~\cite{krausswilczek} \tagP. The current bound is $r<0.036$ at 95\% confidence (BICEP/Keck~\cite{bk18}; $r<0.032$ combined with
 Planck and baryon acoustic oscillations~\cite{tristram}), which puts the energy scale of inflation below $V^{1/4}=1.4\times10^{16}$\,GeV
-and its Hubble rate below $\hbar H=4.7\times10^{13}$\,GeV \chk{Q14}. Starobinsky's $R^2$ inflation~\cite{starobinsky80} predicts
-$n_s=1-2/N$ and $r\approx12/N^2\approx3\times10^{-3}$ at $N=60$ \chk{Q14}, the target of the next generation of polarisation
-surveys~\cite{litebird}. Its scalar tilt fits Planck 2018 for $N=50$ to $60$; the combination of the Atacama Cosmology Telescope's sixth
-data release with Planck, lensing and baryon acoustic oscillations, $n_s=0.974\pm0.003$~\cite{louis2025}, lies $2.4\sigma$ above it at
-$N=60$ and needs $N\ge63$ at leading order; without lensing and baryon acoustic oscillations the same telescope data allow
-$54.7\le N\le92.4$ (Section~\ref{sec:data}, \chk{data:D4.2}, \chk{data:D4.3}).
+and its Hubble rate below $\hbar H=4.7\times10^{13}$\,GeV \chk{Q14}.
 
-Under Hypothesis~\ref{h:minting} the tensor modes are generated within the start, where the axioms do not constrain the geometry,
-and become classical, as the standard account says they do through squeezing and decoherence~\cite{polarski}, as the start completes. GUID
+\emph{The inflaton is not GUID's.} The action~\eqref{eq:action} contains no inflaton, and Hypothesis~\ref{h:minting} places inflation
+within the start, where the axioms place no restriction. GUID therefore takes the inflaton and its potential from physics. The models that
+fit the scalar spectrum best are plateau potentials, among them Starobinsky's $R^2$ inflation~\cite{starobinsky80} and Higgs
+inflation~\cite{bezrukov}; both predict $n_s=1-2/N$ and $r\approx12/N^2\approx3\times10^{-3}$ at $N=60$ e-folds \chk{Q14}, the target of the
+next generation of polarisation surveys~\cite{litebird}. Both are written with a scalar coupled to curvature in one frame and as a
+minimally coupled scalar in another. That is the form Proposition~\ref{pr:gamma} excludes for the frame after the start; within the start
+the axioms do not constrain it, and afterwards the extra scalar of $R^2$ inflation is heavy, near $10^{13}$\,GeV, so it leaves $\gamma=1$
+in the solar system untouched. We score the plateau prediction conditionally on that choice (Section~\ref{sec:data}).
+
+Under Hypothesis~\ref{h:minting} the tensor modes are generated within the start, where the axioms do not constrain the geometry, and
+become classical, as the standard account says they do through squeezing and decoherence~\cite{polarski}, as the start completes. GUID
 therefore allows the standard spectrum and its consistency relation, and a detection would be the first observation of the quantum
-geometry of the start. GUID's own predictions about the geometry begin after the start. \emph{Verdict: live}; consistent with every bound.
+geometry of the start. GUID's own predictions about the geometry begin after the start. \emph{Verdict: holds as a reading}; GUID
+predicts nothing about tensor modes beyond the inflation model it borrows.
 
 \subsection{The late universe: the balanced state}
 
@@ -942,19 +857,14 @@ In the flat $\Lambda$CDM model that fits the data ($\Omega_m=0.315$, $\Omega_\La
 moment from the past into the far future and tends to the de Sitter rate $H_\infty=\sqrt{\Omega_\Lambda}\,H_0\approx0.83\,H_0$; the expansion
 has accelerated since $z=(2\Omega_\Lambda/\Omega_m)^{1/3}-1\approx0.63$ \chk{Q13}. A universe settling into de Sitter expansion cools towards
 an empty final state. GUID reads this as the cosmological balanced state, the equilibrium in which the need for further existence has
-fallen to a constant. \emph{Verdict: holds as a reading} in $\Lambda$CDM. The newest data leave the end open. DESI's second data release
-prefers a dark energy that weakens with time at 3.1 standard deviations with the microwave background alone and at 2.8 to 4.2 standard
-deviations with the three supernova samples~\cite{desi2}; the recalibration of the DES supernovae lowers the DES-based value from
-4.2 to 3.2~\cite{popovic2025}, so the range is now 2.8 to 3.8 (Section~\ref{sec:data}, \chk{data:D3.3}). If that holds, the future is not exactly de Sitter and the reading must be
-redone. The balanced state also inherits $\Lambda$CDM's open tension in the Hubble constant: the value fitted to the microwave background,
-$67.4\pm0.5$\,km\,s$^{-1}$\,Mpc$^{-1}$, lies $4.9\sigma$ below the Cepheid distance ladder and $1.5\sigma$ below the tip of the red giant
-branch (\chk{data:D3.4}, \chk{data:D3.5}). Neither tension is specific to GUID.
+fallen to a constant. \emph{Verdict: holds as a reading} in $\Lambda$CDM. The newest data leave the end open: an evolving dark energy,
+the Hubble constant and the curvature are tensions of $\Lambda$CDM that GUID inherits unchanged (Section~\ref{sec:data}).
 
-\subsection{Dark matter: remnants trapped in the gravitational field}\label{sec:darkmatter}
+\section{Dark matter: remnants trapped in the gravitational field}\label{sec:darkmatter}
 
 \begin{hypothesis}[trapped remnants]\label{h:remnant}
 The modelling of this paper explicitly allows remnants of interactions to be trapped in the gravitational field: energy and momentum that
-interactions have left in the existence frame, or behind a boundary the frame has closed, continue to gravitate after the interaction.
+interactions have left in the frame, or behind a boundary the frame has closed, continue to gravitate after the interaction.
 \tagH
 \end{hypothesis}
 
@@ -962,6 +872,18 @@ DMP motivates the hypothesis twice: a record outlives its act (Axiom~3), and a c
 reader sees only its counts (T31). Dark matter, as far as the data show, is matter of exactly that kind: it gravitates and does nothing
 else that has been seen. Within the classical-frame modelling there are three routes by which remnants are trapped, and each can be
 calculated.
+
+\paragraph{What every remnant must satisfy.} Four measurements constrain every route \tagP. (1) It must already be there at recombination:
+the acoustic peaks of the microwave background measure the dark matter density at $z\approx1100$, before the first star, as
+$\Omega_ch^2=0.120$, the same comoving value later structure requires, with the baryons then already at the share
+$\Omega_b/\Omega_m=0.157$~\cite{planck18} \chk{Q15}. So the remnant formed before matter-radiation equality, consistent with formation in the start; the baryon content was fixed early, as nucleosynthesis and the microwave background agree. (2) It must be collisionless and move with the galaxies: in the
+merging cluster 1E0657$-$558 the lensing mass follows the galaxies, not the hot gas that holds most of the baryons (Clowe et
+al.~\cite{clowe}). (3) It cannot be the known neutrinos: they are less than $0.6\%$ of the dark matter density, since cosmology bounds
+their mass sum below $0.064$\,eV~\cite{desi2}; a dwarf galaxy made of them would need each to weigh more than about 170\,eV by the Pauli
+principle (Tremaine and Gunn~\cite{tremainegunn}); and relic neutrinos move at about 3200\,km/s and stellar ones at nearly $c$, against a
+Galactic escape speed of 533\,km/s~\cite{piffl} \chk{Q15}. (4) It must leave $\alpha$ unchanged to about a part per million over ten
+billion years (Section~\ref{sec:alpha}).
+
 
 \paragraph{The stochastic remnant.} Corollary~\ref{co:diffuse} makes the frame diffuse: every interaction of quantum matter with the
 classical frame leaves a random kick in the field. Oppenheim and Russo computed the expectation value of the metric in classical-quantum
@@ -986,28 +908,30 @@ the form of the observed baryonic Tully--Fisher relation. For a galaxy of $10^{1
 the order Oppenheim and Russo find, $r_*=17$\,kpc and $v_*=227$\,km/s, with the $\Lambda$ term below $10^{-4}$ of $v_*^2$ there \chk{Q18}.
 The acceleration scale is tied to the cosmological constant: $c^2\sqrt{\Lambda/3}/2\pi=8.6\times10^{-11}$\,m/s$^2$, close to Milgrom's
 empirical $a_0=1.2\times10^{-10}$\,m/s$^2$~\cite{milgrom} \chk{Q18}. Such a closeness is Milgrom's known coincidence, not support:
-GUID supplies no factor $2\pi$, the scales without it that a horizon argument gives ($c^2\sqrt{\Lambda/3}$, $cH_0$, $c/t_0$) are excluded by
-the rotation curves, and among nine natural cosmological scales a random one would come as close as the best of them with a probability
-of 10 to 20\% (Section~\ref{sec:remnant}, \chk{remnant:R1b}). On this route a single mechanism, the frame's diffusion, would give both a
+GUID supplies no factor $2\pi$ (Section~\ref{sec:remnant} counts how often a random scale comes as close). On this route a single mechanism, the frame's diffusion, would give both a
 dark-energy term and a dark-matter-like term. The calculation is preliminary, as its authors stress: it is static and spherically
 symmetric, depends on an infrared regularisation, fixes $\gamma_1$ by boundary conditions rather than by a coupling constant, and does not
-yet address gravitational lensing or the microwave background. Fixing the boundary condition by GUID's outermost horizon gives a value
-eight times too strong in $v^4$ (Section~\ref{sec:bridges}). A deterministic relative of the same idea exists in tetrad gravity: Hehl
+yet address gravitational lensing or the microwave background, and Hertzberg and Loeb dispute that it can produce flat rotation
+curves at all~\cite{hertzberg2024}. A deterministic relative of the same idea exists in tetrad gravity: Hehl
 and Mashhoon found that a memory of the frame, a nonlocal dependence on its past, acts in the linear approximation as dark matter given by
-an integral transform of the matter~\cite{hehlmashhoon}; such a memory would make the effect depend on each galaxy's history, and the
-rotation curves show no such dependence (Section~\ref{sec:remnant}).
+an integral transform of the matter~\cite{hehlmashhoon}; such a memory would make the effect depend on each galaxy's history.
 
-\emph{The data.} Part~III confronts this route with the rotation curves of the SPARC galaxies, and it fails there. With one universal
-constant $|\gamma_1|$, the best fit, $4.54\times10^{-11}$\,m/s$^2$ (per galaxy the median is $5.95\times10^{-11}$\,m/s$^2$, not the
-$10^{-10}$\,m/s$^2$ assumed above), is worse than the one-parameter radial acceleration relation by $\Delta\mathrm{BIC}=+5066$, and the
-relation fits better in 109 of 147 galaxies; at low acceleration the excess $g_{\text{obs}}-g_{\text{bar}}$ rises with $g_{\text{bar}}$ with logarithmic slope
-$0.44$ (galaxy bootstrap 16--84\%: $0.39$ to $0.49$), where a constant term predicts zero; and Oppenheim and Russo's scaling of $\gamma_1$ with mass
-fits worse than a constant (Section~\ref{sec:sparc}, \chk{sparc:S2a}, \chk{sparc:S2c}, \chk{sparc:S2d}). A term that accumulates over the
-history of the frame's kicks (Section~\ref{sec:remnant}) fits the curves as well as the radial acceleration relation only in the form
-$g_{\text{obs}}=g_{\text{bar}}/2+\sqrt{g_{\text{bar}}^2/4+g_{\text{bar}}a_{\text{acc}}}$, which is Milgrom's ``simple'' interpolating
-function under another name; as a pointwise law it then exceeds the solar-system bounds on perihelion precession by factors of 190 to
-$8\times10^4$, it shows no dependence on a galaxy's history in thirty tests, and its natural growth in time runs opposite to the trend that
-the high-redshift data, within their systematics, suggest \chk{remnant:R1a}, \chk{remnant:R1c}, \chk{remnant:R2}, \chk{remnant:R5}.
+
+
+\paragraph{Bridge A: the outermost horizon sets the scale.} The first of GUID's two bridges (Section~\ref{sec:bridges}) fixes the
+stochastic remnant's scale. It depends on the outer
+cut-off $r_{\max}$ of the path integral. Oppenheim and Russo find, in units with $c=1$, the mean
+$\gamma_1=-\tfrac92\,\gamma_2\,r_{\max}\,(1-4\beta)/(5-18\beta)$, with $\gamma_2=\Lambda/3$ and a parameter $\beta<0$ of their action to which
+the result is insensitive~\cite{oppenheimrusso}. In GUID the outermost containing boundary is the cosmological event horizon, which in
+$\Lambda$CDM tends to the de Sitter radius $r_{\text{dS}}=c/H_\infty=1.66\times10^{26}$\,m. With $r_{\max}=r_{\text{dS}}$ and $c$ restored,
+\begin{equation}\label{eq:bridgeA}
+|\gamma_1|=(0.90\ \text{to}\ 1.00)\;cH_\infty=(4.9\ \text{to}\ 5.4)\times10^{-10}\,\text{m/s}^2,
+\end{equation}
+with no free parameter \chk{Q19}. It has the right order of magnitude and is too strong. Matching the turnover speed~\eqref{eq:btf} to the
+observed baryonic Tully--Fisher relation $v^4=GMa_0$ requires $|\gamma_1|=a_0/2=6\times10^{-11}$\,m/s$^2$; Bridge~A exceeds this by a factor
+of 8 in $v^4$, 1.7 in $v$. For a galaxy of $10^{11}$ solar masses it gives 340\,km/s at $r_*=7.6$\,kpc, where the relation gives 200\,km/s,
+and the linear term lets the curve rise to 620\,km/s at 50\,kpc, where observed curves stay flat \chk{Q19}. The estimate already rejects
+it; Section~\ref{sec:sparc} confronts it with the data. Its near miss is Milgrom's coincidence $a_0\approx cH/2\pi$, which is known.
 
 \paragraph{The contained remnant.} The second route is containment (Hypothesis~\ref{h:horizon}). Energy that collapsed behind a horizon
 during the start gravitates through its counts alone and is dark by T31: primordial black holes. The start itself makes them. When the
@@ -1020,7 +944,7 @@ positrons that annihilate at 511\,keV) bound how many such holes there can be; h
 already \chk{Q18}. At the heavy edge, $10^{19}$\,kg with a Schwarzschild radius of 15\,nm and a temperature of $1.2\times10^4$\,K,
 microlensing takes over \chk{Q18}. The prediction of this route is specific: if dark matter is the contained remnant of the start, the
 Hawking part of HPI radiation, unobservable for astrophysical black holes (Section~\ref{sec:bh}), becomes observable at the window's light
-edge.
+edge. The window is taken from current constraints and the formation from Cotner et al.; this paper does not test either.
 
 \paragraph{The radiated remnant.} Gravitational waves are remnants of interactions that propagate in the frame. Pulsar timing has found a
 nanohertz background with characteristic strain $h_c\approx2.4\times10^{-15}$ at the frequency $1/\text{yr}$ (NANOGrav~\cite{nanograv}),
@@ -1028,64 +952,35 @@ which corresponds to $\Omega_{\text{gw}}=2\pi^2f^2h_c^2/3H_0^2\approx8\times10^{
 times too little for the dark matter, and as radiation ($w=1/3$) it does not cluster. It is a real remnant trapped in the field, but not
 the dark matter.
 
-\paragraph{What every remnant must satisfy.} Four measurements constrain every route \tagP. (1) It must already be there at recombination:
-the acoustic peaks of the microwave background measure the dark matter density at $z\approx1100$, before the first star, as
-$\Omega_ch^2=0.120$, the same comoving value later structure requires, with the baryons then already at the share
-$\Omega_b/\Omega_m=0.157$~\cite{planck18} \chk{Q15}. So the remnant formed before matter-radiation equality, consistent with formation in the start, and a remnant that
-accumulates late, growing with cosmic time, is disfavoured in sign by the high-redshift rotation data as well (Section~\ref{sec:remnant},
-\chk{remnant:R5}); the baryon content was fixed early, as nucleosynthesis and the microwave background agree. (2) It must be collisionless and move with the galaxies: in the
-merging cluster 1E0657$-$558 the lensing mass follows the galaxies, not the hot gas that holds most of the baryons (Clowe et
-al.~\cite{clowe}). (3) It cannot be the known neutrinos: they are less than $0.6\%$ of the dark matter density, since cosmology bounds
-their mass sum below $0.064$\,eV~\cite{desi2} \chk{data:D9.3}; a dwarf galaxy made of them would need each to weigh more than about 170\,eV by the Pauli
-principle (Tremaine and Gunn~\cite{tremainegunn}); and relic neutrinos move at about 3200\,km/s and stellar ones at nearly $c$, against a
-Galactic escape speed of 533\,km/s~\cite{piffl} \chk{Q15}. (4) It must leave $\alpha$ unchanged to about a part per million over ten
-billion years (Section~\ref{sec:alpha}).
+\paragraph{What Part III tests.} Section~\ref{sec:sparc} confronts the stochastic remnant and Bridge~A with the rotation curves of the
+SPARC galaxies, and Section~\ref{sec:remnant} an accumulated version, cold-dark-matter halos and the change with cosmic time; it also
+holds the dark-matter verdict. Section~\ref{sec:data} confronts the other requirements.
 
-\emph{Verdict.} The \emph{contained remnant is live} and is the reading that survives: primordial black holes formed in the start
-pass all four requirements by construction, the asteroid-mass window is open, and the rotation curves are consistent with cold dark
-matter halos, which any cold dark matter must form; they cannot tell primordial black holes from particle dark matter, and per-galaxy
-halos fit worse than one free radial-acceleration scale per galaxy (Section~\ref{sec:remnant}, \chk{data:D7.1}, \chk{remnant:R3}). The
-\emph{stochastic remnant is refuted as the dark matter} in every form computed so far: the constant form by the rotation curves, the
-accumulated form by the solar system. Once halos are present, the data leave its square-root form 1 to 5\% and a constant 8 to 31\% of the
-dark acceleration at the outermost measured radii; cored halos prefer a small constant, which we read as a correction to the halo's shape
-\chk{remnant:R4}. The two remnants therefore do not combine into one picture; they compete for the same job, and the contained remnant
-keeps it. The consistent account is $\Lambda$CDM with
-primordial black holes as its cold dark matter, which inherits $\Lambda$CDM's open questions on galaxy scales, such as cores against
-cusps, rather than answering them. The radiated remnant is real but far too small.
+\section{The information scalar and matter}\label{sec:matter}
 
 \subsection{The fine-structure constant as the information field}\label{sec:alpha}
 
-In GUID $\alpha$ is set by the information scalar $\phi$ (Hypothesis~\ref{h:info}), so it may vary where $\phi$ does. The data are
-tight \tagP. Optical clocks bound today's drift to $\dot\alpha/\alpha=(1.8\pm2.5)\times10^{-19}$ per year (Filzinger et
-al.~\cite{filzinger2023}, which includes the earlier data of~\cite{lange}); quasar absorption spectra bound changes over ten billion years
-to about a part per million~\cite{espresso}; the microwave background bounds the value at recombination to a few parts per
-thousand~\cite{planckxxiv}. MICROSCOPE and the E\"ot-Wash balance bound the scalar's coupling to matter by~\eqref{eq:lambdabound}.
+In GUID $\alpha$ is set by the information scalar $\phi$ (Hypothesis~\ref{h:info}), so it may vary where $\phi$ does. Two statements
+follow, and Sections~\ref{sec:data} and~\ref{sec:sm} test them.
 
-GUID's forward statement is that $\alpha$ does not grow: its drift is zero or negative. With the action~\eqref{eq:action} as written, with
-no potential for $\phi$, the statement is \emph{derived}: the scalar is then driven only by the electrostatic energy of the baryons, as in
-Bekenstein's theory, and the drift is $\dot\alpha/\alpha=-9.7\times10^{-12}\,\lambda^2f_b$ per year, where $f_b\lesssim10^{-3}$ is the
-electrostatic share of baryonic mass. It is always negative, but at the bound~\eqref{eq:lambdabound} it is below $10^{-23}$ per year, far
-beyond any clock (Section~\ref{sec:data}, \chk{data:D1.3}). A drift large enough to measure needs a potential for $\phi$, and then the sign is
-not predicted; if the scalar rolled with a dark energy of the kind DESI prefers, $1+w_0=0.16$, the clocks would bound its coupling by
-$|\lambda|<1.7\times10^{-8}$. The joint fit of clocks, the Oklo reactor, quasars, the microwave background and nucleosynthesis gives a
-present drift of $(1.8\pm2.5)\times10^{-19}$ per year: the data do not yet know its sign \chk{data:D1.12}. A measured positive drift would
-refute the forward statement. \emph{Verdict: live}; derived but unobservably small without a potential.
+\emph{The forward statement: $\alpha$ does not grow.} With the action~\eqref{eq:action} as written, with no potential for $\phi$, this
+is \emph{derived}. The scalar is then driven only by the electrostatic energy of the baryons, as in Bekenstein's theory, so the drift
+$\dot\alpha/\alpha$ is negative, proportional to $\lambda^2$ and to the small electrostatic share $f_b\lesssim10^{-3}$ of baryonic mass,
+and at the bound~\eqref{eq:lambdabound} far below any clock. A drift large enough to measure needs a potential for $\phi$, and then the
+sign is not predicted. A measured positive drift would refute the action as written. \emph{Verdict: derived; untested.}
 
-Because the scalar multiplies only the Maxwell term, the proton-to-electron mass ratio $\mu=m_p/m_e$ varies only through the
-electromagnetic self-energies, and the electron's dominates: $\dd\ln\mu/\dd\ln\alpha=-0.045\pm0.002$, against $|R|$ of 20 to 50 in models
-where all couplings vary together. (Before the derivation we expected $10^{-3}$ to $10^{-2}$; that window was wrong by a factor of 4.5.) If
-$\alpha$ is ever seen to vary, $\mu$ must vary at least 400 times less than unification predicts; the data, consistent with no variation
-of either, allow both (Section~\ref{sec:sm}, \chk{sm:SM3}). \emph{Verdict: live.}
+\emph{Only $\alpha$ varies.} Because the scalar multiplies only the Maxwell term, the proton-to-electron mass ratio $\mu=m_p/m_e$ varies
+only through the electromagnetic self-energies of the proton and the electron. The ratio $R=\dd\ln\mu/\dd\ln\alpha$ is then small, at most
+a few hundredths in magnitude, against $|R|$ of 20 to 50 in models where all couplings vary together; its exact value depends on the
+scale at which the Yukawa couplings are held fixed (Section~\ref{sec:sm}). If $\alpha$ is ever seen to vary, $\mu$ must vary far less.
+\emph{Verdict: live.}
 
-The value of $\alpha$ has a beginning. G0's first act is no act and precedes any measurement, and no value of $\alpha$ can be assigned
-to it. Physically $\alpha$ does not exist before the electroweak split: there is no photon then, only the couplings of the electroweak field, and $\alpha$ is born at the split, near
-$1/128$ at the Z mass, from which it runs down to $1/137$ at low energies (Section~\ref{sec:higgsplit}; \chk{Q16}, \chk{Q20}). Something
-close to the present value came out as the fields separated, which is what happened (Section~\ref{sec:data}, \chk{data:D8.5}).
-\emph{Verdict: holds.} A value of one at any physical energy is beyond known physics: the Standard Model gives $1/\alpha\approx105$
-even at the Planck energy \chk{Q16}.
+\emph{$\alpha$ has a beginning.} Physically $\alpha$ does not exist before the electroweak split: there is no photon then, only the
+couplings of the electroweak field. It is born at the split, near $1/128$ at the Z mass, and runs down to $1/137$ at low energies
+(Section~\ref{sec:higgsplit}; \chk{Q16}, \chk{Q20}). A value of one at any physical energy is beyond known physics: the Standard Model
+gives $1/\alpha\approx105$ even at the Planck energy \chk{Q16}. \emph{Verdict: holds.}
 
-\section{Matter in the existence frame}\label{sec:matter}
-
+%PRIMER:particle
 \subsection{The spin ladder}
 
 GUID reads spin as the rungs of the Duality, and the Standard Model fills each rung \tagP:
@@ -1105,10 +1000,8 @@ Spin & GUID reading & Particles & Physics \\
 
 \noindent The rungs are told apart by rotation: a state of helicity $s$ picks up the phase $e^{is\theta}$ under a turn by $\theta$ about its
 momentum, so a spin-1 quantum looks the same again after $360^\circ$, a spin-2 quantum after $180^\circ$, and a spin-1/2 state only after
-$720^\circ$, returning with a minus sign after $360^\circ$. The ladder stops at spin~1 for quanta: no elementary spin-3/2 or spin-2
-quantum has appeared, with gluinos excluded below 2.3\,TeV, Randall--Sundrum gravitons below 4.5\,TeV and a spin-3/2 excited top quark
-below 1.2\,TeV, and the 125\,GeV boson is spin~0 at more than 99.9\% confidence (Section~\ref{sec:sm}, \chk{sm:SM1}). \emph{Verdict: holds
-as a reading}; the Standard Model says the same.
+$720^\circ$, returning with a minus sign after $360^\circ$. The ladder stops at spin~1 for quanta: no elementary spin-3/2 or spin-2 quantum is expected, and searches find none
+(Section~\ref{sec:sm}). \emph{Verdict: holds as a reading}; the Standard Model says the same.
 
 \subsection{The Higgs vacuum as the grant of existence}
 
@@ -1120,17 +1013,18 @@ Lemma~\ref{lem:classical}; the Higgs boson, a quantum ripple of the field that d
 minimum of its potential is the physical counterpart of the balanced state $\Phi_{\mathrm V}=0$ of~\eqref{eq:vibe}. Like G0 (``stated, not
 derived''), the Higgs potential is an input of the Standard Model, not a derivation.
 
-Two consequences can be tested. \emph{The couplings follow the grant.} If the vacuum grants every elementary rest mass, each massive
-particle couples to the Higgs boson in proportion to its mass. The measured couplings to the W, Z, top, bottom, $\tau$ and muon do: against
-mass they have slope $1.009\pm0.017$ and give a vacuum value $v=244\pm6$\,GeV; the charm quark, the electron and the light quarks are
-bounded, not measured (Section~\ref{sec:sm}, \chk{sm:SM2.1}). \emph{Verdict: holds} for the six measured couplings. \emph{Neutrinos are
-Dirac.} If the vacuum is the only source of elementary rest mass, neutrino masses come from Yukawa couplings, there is no Majorana mass,
-lepton number is conserved, and neutrinoless double-beta decay does not occur at any rate. Every search agrees (the half-life of
-${}^{136}$Xe exceeds $3.8\times10^{26}$ years); a signal at the next generation of experiments would refute the statement
-(\chk{sm:SM2.2}). \emph{Verdict: live.}
+Two consequences can be tested (Section~\ref{sec:sm}). \emph{The couplings follow the grant.} If the vacuum grants every elementary
+rest mass, each massive particle couples to the Higgs boson in proportion to its mass. \emph{Neutrinos are Dirac.} If, in addition,
+lepton number is conserved, neutrino masses come from Yukawa couplings and neutrinoless double-beta decay does not occur at any rate. The
+addition is needed: a Majorana mass can also come from the Higgs vacuum, through the Weinberg operator $(LH)(LH)/\Lambda$, so ``only the
+vacuum grants mass'' alone does not forbid it. We add one reading, not derived: the difference $B-L$ of baryon and lepton number is one
+of the counts every reader sees (Axiom~3), like electric charge, so it changes only when something carrying it crosses a boundary by a
+recorded act. Neutrinoless double-beta decay would create two units of lepton number inside a closed nucleus with nothing carrying them
+in, so it does not occur; proton decay, which conserves $B-L$, remains allowed. A signal at the next generation of experiments would refute
+the statement. \emph{Verdict: live}, given the added reading.
 
 The reading has one sharp limit, and it is gravitational. The Higgs field gives only about 9\% of a nucleon's mass, and gravity weighs
-all of it (Section~\ref{sec:fix}, \chk{Q6}). So the gravitational plane responds to all energy, granted (the Higgs share) and bound (the
+all of it (Section~\ref{sec:fix}, \chk{Q6}). So the frame responds to all energy, granted (the Higgs share) and bound (the
 internal energy of hadrons), and the Higgs field is not the gravitational field. And gravity is far too weak to give mass: its coupling to the electron,
 $Gm_e^2/\hbar c=1.75\times10^{-45}$, and its share of the binding of hydrogen, $4.4\times10^{-40}$ of the electric one, are negligible
 \chk{Q16}. \emph{Verdict: holds as a reading} of the Higgs vacuum as the grant; \emph{refuted} as an identity of the Higgs field with
@@ -1138,7 +1032,7 @@ gravity.
 
 \subsection{The Higgs vacuum as the existence that separated out}\label{sec:higgsplit}
 
-GUID makes the Higgs field the leading candidate for the existence field, the one that separated out when the fields did.
+GUID makes the Higgs field the leading candidate for the field that grants existence, the one that separated out when the fields did.
 Physics says when \tagP. Above about 160\,GeV the Higgs field rests at zero, and no elementary particle has rest mass; lattice calculations
 find that, with the measured Higgs mass, the change is a smooth crossover at $T_c=159.5\pm1.5$\,GeV (D'Onofrio and
 Rummukainen~\cite{donofrio}), about $10^{-11}$\,s after the start \chk{Q20}; the measured Higgs mass, 125.1\,GeV, lies well above the end
@@ -1154,33 +1048,33 @@ crossover.
 
 \emph{The information field split out of the electroweak field.} At the split the photon emerges as the fixed mixture
 $A=\sin\theta_W\,W^3+\cos\theta_W\,B$ of the two electroweak gauge fields, and the electric charge is born as $e=g\sin\theta_W$, so that $\alpha$
-appears near $1/128$: $1/\alpha(m_Z)=127.95$ in the $\overline{\text{MS}}$ scheme and $128.94$ on shell \chk{Q20}, \chk{sm:SM5}.
-\emph{Verdict: holds}, exactly.
+appears near $1/128$ at the Z mass \chk{Q20} (Section~\ref{sec:sm}). \emph{Verdict: holds}, exactly.
 
 \emph{The Higgs field became needed then.} At that moment the W and Z take their masses from the vacuum, $m_W=gv/2\approx80$\,GeV and
-$m_Z=m_W/\cos\theta_W\approx91$\,GeV, within half a per cent of the measured values at tree level in the $\overline{\text{MS}}$ scheme ($-0.18\%$ and $+0.34\%$; the
-on-shell route differs by up to $0.7\%$; \chk{Q20},
-\chk{data:D8.3}, \chk{data:D8.4}), while the photon stays massless:
+$m_Z=m_W/\cos\theta_W\approx91$\,GeV at tree level \chk{Q20}, within about half a per cent of the measured values, depending on the
+scheme (Section~\ref{sec:data}), while the photon stays massless:
 the Higgs vacuum grants existence to the bosons that need it at the very moment the information field emerges. \emph{Verdict: holds.} The
 Standard Model Higgs belongs to this split, the weak from the electromagnetic; a Higgs-type field for the earlier split of the strong force,
 if that split was a unification breaking (Hypothesis~6$'$), would be a second, hypothetical field.
 
-\emph{An open tension.} In Higgs inflation the same field also drives the start: with a coupling $\xi H^\dagger HR$ of the Higgs to
-curvature, $\xi$ of order $10^4$, it fits the observed spectrum (Bezrukov and Shaposhnikov~\cite{bezrukov}), which would make the
-existence field the field of the start itself. That coupling is a scalar multiplying the curvature, which Proposition~\ref{pr:gamma}
-excludes in this form; written in the Einstein frame the field is minimally coupled. Whether Axiom~1 forbids Higgs inflation or only one way
-of writing it is open.
+\emph{An open question.} In Higgs inflation the same field also drives the start: with a coupling $\xi H^\dagger HR$ of the Higgs to
+curvature, $\xi$ of order $10^4$, it fits the observed spectrum (Bezrukov and Shaposhnikov~\cite{bezrukov}), which would make the field
+that grants existence the field of the start itself. As for $R^2$ inflation (Section~\ref{sec:cosmo}), the coupling to curvature is the
+form Proposition~\ref{pr:gamma} excludes for the frame after the start, it disappears in the Einstein frame, and within the start the
+axioms do not constrain it. Whether Axiom~1 says more is open.
 
-\subsection{The VIBE coefficient}
+\subsection{The forces as tiers of one interaction}
 
-GUID names $\alpha$ the \emph{VIBE coefficient}, after the Variable Influence Balancing Equation~\eqref{eq:vibe}, and reads it as the strength
-with which existence interacts with itself before it must re-ground itself. In quantum electrodynamics $\alpha$ is the strength with which
-a charge interacts with the electromagnetic field and so, through it, with itself; each emission and reabsorption of a virtual photon costs
-one power of $\alpha$. The cleanest measure is the electron's anomalous magnetic moment, whose first term $a_e=\alpha/2\pi$
-(Schwinger~\cite{schwinger}) gives the measured value~\cite{fan} to $0.15\%$ \chk{Q16}. The same constant is the ratio of the electron's
-three lengths, $r_e/\bar\lambda_C=\bar\lambda_C/a_0=\alpha$ \chk{Q16}. \emph{Verdict: holds as a reading}; the VIBE coefficient is a name for
-$\alpha$, not a new constant.
+GUID reads the forces as tiers of one interaction: the strong force binds the cluster, the weak force keeps it stable, electromagnetism
+links clusters of clusters. Each does that job \tagP: the strong force binds quarks into nucleons and nucleons into nuclei, the weak force
+moves nuclei towards the valley of stability, electromagnetism binds atoms and molecules. The weak and electromagnetic forces are one
+electroweak interaction~\cite{glashow,weinberg67,salam}. Whether all three meet at one energy is open: in the Standard Model the couplings
+cross pairwise between $10^{13}$ and $3\times10^{16}$\,GeV and do not meet at one point~\cite{amaldi}, \chk{sm:SM4}. Gravity is not among the tiers in GUID: it is the
+frame the tiers act in. \emph{Verdict: holds as a reading}; unification \emph{untested}. In GUID's timeline the
+strong force splits from the electroweak force at the start (Hypothesis~6$'$), and the electroweak field splits into the weak and the
+electromagnetic force about $10^{-11}$\,s later, when the Higgs vacuum appears (Section~\ref{sec:higgsplit}).
 
+%PRIMER:hadron
 \subsection{Hadrons as trees of dualities}\label{sec:trees}
 
 Axiom~1 makes every part a Duality of two halves, and Axiom~3 makes every layer a tree rooted at its own Duality \tagD. Read for the
@@ -1194,12 +1088,9 @@ $(qqq)(q\bar q)$. \tagH
 
 \noindent We call it H8 for short. QCD's colour algebra already allows every colour singlet to be written as such a tree, so the statement as such holds as a
 reading. Its content lies in the masses a colour-spin model gives the compact trees, in how close the molecular ones lie to two-hadron
-thresholds, and in the partner states a tree implies. Section~\ref{sec:exotics} tests all three with one model fitted to ordinary hadrons
-only: the compact trees give the doubly charmed tetraquark $T_{cc}^+$ but not the charm-strange states near 2.9\,GeV, the four-charm
-X(6900) or two of the pentaquarks, and the charged partners of X(3872) that a compact reading implies are excluded; exotic hadrons do lie
-near thresholds, as the molecular branch and ordinary hadronic molecules both predict \chk{exotics:A}--\chk{exotics:C}. \emph{Verdict: holds as a
-reading}; the compact masses are \emph{refuted} in 5 of 9 confrontations; the doubly bottom tetraquark $T_{bb}^-$, predicted
-205\,MeV below its lowest threshold and so stable against strong decay, and the $T_{bc}$ states are \emph{live}.
+thresholds, and in the partner states a tree implies. Section~\ref{sec:exotics} tests all three with a standard colour-spin model on
+the compact trees, fitted to ordinary hadrons only. \emph{Verdict: holds as a reading}; the tests of its content are reported in
+Section~\ref{sec:exotics}.
 
 G0 gives a sharper reading of the five-quark hadrons. The dual gate cannot witness its own first instance: ``somebody has to trust the
 first two witnesses'', and the minting makes at least five parts the holders of the root keys (Section~\ref{sec:dmp}).
@@ -1216,31 +1107,30 @@ pentaquarks ($uudb\bar b$) as partners of the observed hidden-charm ones. It was
 pentaquark carries a $c\bar c$ pair, so those states are not evidence for it; the test lies in the states not yet established
 (Section~\ref{sec:exotics}).
 
-\subsection{The forces as tiers of one interaction}
+\section{Readings that add no prediction}\label{sec:readings}
 
-GUID reads the forces as tiers of one interaction: the strong force binds the cluster, the weak force keeps it stable, electromagnetism
-links clusters of clusters. Each does that job \tagP: the strong force binds quarks into nucleons and nucleons into nuclei, the weak force
-moves nuclei towards the valley of stability, electromagnetism binds atoms and molecules. The weak and electromagnetic forces are one
-electroweak interaction~\cite{glashow,weinberg67,salam}. Whether all three meet at one energy is open: in the Standard Model the couplings
-cross pairwise between $10^{13}$ and $3\times10^{16}$\,GeV and do not meet at one point~\cite{amaldi}, \chk{sm:SM4}. Gravity is not among the tiers in GUID: it is the
-frame the tiers act in. \emph{Verdict: holds as a reading}; unification \emph{untested}. In GUID's timeline the
-strong force splits from the electroweak force at the start (Hypothesis~6$'$), and the electroweak field splits into the weak and the
-electromagnetic force about $10^{-11}$\,s later, when the Higgs vacuum appears (Section~\ref{sec:higgsplit}).
+Several of GUID's identifications reproduce established physics without adding anything a measurement could tell apart. They show that
+the reading is consistent, not that it is right, and we collect them in one table; Appendix~\ref{app:readings} gives each in full.
 
-\section{Hosting: the Existence Turing machine}\label{sec:host}
+\begin{table}[tb]\centering\small
+\caption{Readings that agree with established physics and add no prediction. Verdict: \emph{holds as a reading} for each.}
+\label{tab:readings}
+\begin{tabularx}{\linewidth}{@{}lLl@{}}
+\toprule
+Reading & What it reproduces & Check \\
+\midrule
+The existence a boundary asserts, $gh/c$ & $4\pi^2$ times the Unruh temperature; the Hawking temperature at a horizon & \chk{Q1} \\
+Time slows where the frame is strong & the lapse; the Pound--Rebka and clock redshifts & \chk{Q2} \\
+Einstein's equation as an equation of state & Jacobson's derivation from the Clausius relation; the constant is open & \eqref{eq:jacobson} \\
+Entropy as the cost of converting existence and information & Landauer's principle; DMP's entropy floor (T31) & \\
+The containment split of a horizon & Christodoulou's mass formula for the Kerr hole & \eqref{eq:christo}, \chk{Q10} \\
+The early universe a Kugelblitz & the Hubble mass at its own Schwarzschild radius, at every epoch & \chk{Q12} \\
+Inflation as the possibility space of existence & the flattening of curvature over about 60 e-folds & \chk{Q13} \\
+$\alpha$ as the VIBE coefficient & $\alpha$ as the self-interaction strength of charge; $a_e=\alpha/2\pi$ & \chk{Q16} \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-Proposition~\ref{th:host} says that DMP, supplied with the base configuration of our universe, hosts the proposed theory, and its part~(ii)
-that the information half can carry any quantum content. Assembled from DMP parts, a universal quantum computer
-can run as content, and by the Church--Turing--Deutsch principle it approximates every finitely realisable physical system to any finite
-precision~\cite{deutsch}. GUID calls such an assembly the \emph{Existence Turing machine}. Hosting is not free when the host is classical: emulating generic quantum content of $n$ qubits costs memory and time of
-order $2^n$ (measured: the time of a layer of gates grows as $2^{1.068n}$, and the state alone needs 18 petabytes at $n=50$), so the Church--Turing--Deutsch route needs a quantum information
-half, and a classical emulation is valid only for small or structured content \chk{hosted:B4}. Section~\ref{sec:hosted} hosts four known,
-hard quantum configurations in this way, from a Heisenberg ring to Shor's factoring circuit, and recovers their known results; Section~\ref{sec:holocode} hosts the holographic assembly of
-Section~\ref{sec:holo} at thousands of qubits. Two consequences matter for quantum gravity. First, every candidate theory of quantum gravity in Section~\ref{sec:landscape} whose predictions are finitely realisable can
-also run on the machine, so the axioms do not forbid quantum gravity in nature; a theory whose geometry is quantum runs
-as content, not as DMP's frame. Second, the machine's own structure, the gates, records and layout, is classical, and in the proposed theory
-it is the existence frame itself. Section~\ref{sec:gravsim} simulates that frame for 4000 masses, side by side with a coherent
-field.
 
 \section{Relation to the approaches to quantum gravity}\label{sec:landscape}
 
@@ -1274,12 +1164,62 @@ Gravity-related collapse~\cite{diosi87,penrose96} & matter, collapsing & Bridge~
 $R_0\ge4\times10^{-10}$\,m allowed~\cite{donadi,figurato} & decoherence of a $10^{-14}$\,kg superposition (Section~\ref{sec:bmv}) \\
 Semiclassical gravity~\cite{moller,rosenfeld63} & matter; metric sourced by $\langle T\rangle$ & rejected: nonlinear; Page--Geilker &
 done~\cite{pagegeilker} \\
-Modified dynamics (MOND)~\cite{milgrom} & nothing; a law at low acceleration & the accumulated stochastic remnant reduces to MOND's
-simple interpolating function and fails in the solar system (Section~\ref{sec:remnant}) & lensing, acoustic peaks, merging clusters,
-planetary ephemerides \\
+Modified dynamics (MOND)~\cite{milgrom} & nothing; a law at low acceleration & the stochastic remnant gives a term of the size $a_0$; tested in Sections~\ref{sec:sparc} and~\ref{sec:remnant} & lensing,
+acoustic peaks, merging clusters, planetary ephemerides \\
 Spacetime from entanglement~\cite{vanraamsdonk,ermepr} & content; geometry emergent & GUID's frame as the classical centre of such a geometry is
 open & unclear \\
 \bottomrule
+\end{longtable}
+\end{center}
+
+
+\section{What Part I predicts and where it is tested}\label{sec:plan}
+
+Table~\ref{tab:plan} closes Part I with every prediction that an experiment or an observation can reach, the alternative it must be told
+apart from, and where Parts II and III test it. Part IV collects the verdicts.
+
+\begin{center}\small
+\begin{longtable}{@{}P{0.3\linewidth}P{0.3\linewidth}P{0.22\linewidth}P{0.1\linewidth}@{}}
+\caption{The test plan: predictions of Part I, their alternatives and where they are tested.}\label{tab:plan}\\
+\toprule
+Observable & GUID & Alternative & Tested in \\
+\midrule
+\endfirsthead
+\toprule
+Observable & GUID & Alternative & Tested in \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{4}{@{}l}{\emph{The frame}} \\
+Free fall; the information scalar & universal; $\eta=2\lambda^2f_\oplus\Delta f$, $|\lambda|$ bounded & universal & Sec.~\ref{sec:data} \\
+Post-Newtonian $\gamma$, $\beta$, Nordtvedt $\eta$ & as in general relativity & as GR & Sec.~\ref{sec:data} \\
+Gravitational waves & speed $c$, massless, two tensor modes & as GR & Sec.~\ref{sec:data} \\
+Entanglement of two masses through gravity & none, $\mathcal N=0$ & quantised metric: $\mathcal N=\tfrac12|\sin(\Delta\varphi/2)|$ & Sec.~\ref{sec:bmv} \\
+Decoherence of mesoscopic superpositions (Bridge~B) & rate $GM^2/\hbar R$ & none required & Secs.~\ref{sec:bmv}, \ref{sec:data} \\
+LOCC inequality, massive oscillators & satisfied & can be violated & proposed \\
+Decoherence against diffusion & both non-zero, trade-off at equality & neither required & Sec.~\ref{sec:gravsim} \\
+\multicolumn{4}{@{}l}{\emph{Black holes and holography}} \\
+Kerr holes & efficiency $\le42.3\%$; $|a|\le1$; area never shrinks & as GR & Sec.~\ref{sec:data} \\
+Holographic assembly & minimal cuts, reconstruction, classical centre & quantum code kinematics & Sec.~\ref{sec:holocode} \\
+\multicolumn{4}{@{}l}{\emph{Cosmology}} \\
+Late universe & de Sitter floor, $w=-1$ & evolving dark energy & Sec.~\ref{sec:data} \\
+Scalar tilt (plateau inflation, borrowed) & $n_s=1-2/N$ & other potentials & Sec.~\ref{sec:data} \\
+Primordial tensor modes & standard spectrum, made within the start & $r=16\epsilon$ & Sec.~\ref{sec:data} \\
+Relic monopoles; proton decay & none; possible from a unification before the start & --- & Secs.~\ref{sec:data}, \ref{sec:sm} \\
+\multicolumn{4}{@{}l}{\emph{Dark matter}} \\
+Stochastic remnant; Bridge~A & flat curves, $v^4\propto M$, scale from the horizon & halos; RAR & Secs.~\ref{sec:sparc}, \ref{sec:remnant} \\
+Contained remnant & primordial black holes, asteroid-mass window & particle dark matter & Sec.~\ref{sec:remnant} \\
+\multicolumn{4}{@{}l}{\emph{The information scalar and matter}} \\
+Drift of $\alpha$ & zero or negative & none predicted & Sec.~\ref{sec:data} \\
+Variation of $\mu=m_p/m_e$ with $\alpha$ & small, $|R|$ below a few hundredths & unification: $|R|=20$ to 50 & Sec.~\ref{sec:sm} \\
+Higgs couplings & proportional to mass & Standard Model & Sec.~\ref{sec:sm} \\
+Neutrinoless double-beta decay & none (with $B-L$ as a count) & Majorana masses & Sec.~\ref{sec:sm} \\
+Unification of the gauge couplings & none within the Standard Model's running & grand unification & Sec.~\ref{sec:sm} \\
+Elementary spin & 0, 1/2 and 1 only & Standard Model & Sec.~\ref{sec:sm} \\
+Exotic hadrons (H8) & compact-tree masses; molecules near thresholds; partners & QCD models & Sec.~\ref{sec:exotics} \\
+Pentaquarks (H9) & hidden flavour only; hidden-bottom states exist & open flavour allowed & Sec.~\ref{sec:exotics} \\
+Hawking radiation of real holes & thermal; return of content open & Page curve & not observable \\
 \end{longtable}
 \end{center}
 

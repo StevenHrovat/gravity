@@ -1,0 +1,748 @@
+{
+ "script": "docs/simulation/tally.py",
+ "sources": [
+  "docs/simulation/results/predictions_vs_data.json",
+  "docs/simulation/results/standard_model.json",
+  "docs/simulation/results/exotic_hadrons.json"
+ ],
+ "classes": {
+  "shared": "the prediction is that of GR, LambdaCDM, the Standard Model (QCD included) or quantum mechanics",
+  "specific-sensitive": "GUID-specific; the datum or a derivation reaches where GUID departs from those theories",
+  "specific-not-yet-sensitive": "GUID-specific; GUID's departure is smaller than the datum's reach by a factor of ten or more, or scales with a free parameter that may be zero"
+ },
+ "sections": {
+  "data": "sec:data (predictions_vs_data.py)",
+  "sm": "sec:sm (standard_model.py)",
+  "exotics": "sec:exotics (exotic_hadrons.py)"
+ },
+ "per_section": {
+  "data": {
+   "scored": 31,
+   "ok": 28,
+   "fail": [
+    "D3.3",
+    "D3.4",
+    "D3.7"
+   ],
+   "shared": {
+    "n": 18,
+    "ok": 15,
+    "fail": [
+     "D3.3",
+     "D3.4",
+     "D3.7"
+    ]
+   },
+   "specific-sensitive": {
+    "n": 0,
+    "ok": 0,
+    "fail": []
+   },
+   "specific-not-yet-sensitive": {
+    "n": 13,
+    "ok": 13,
+    "fail": []
+   }
+  },
+  "sm": {
+   "scored": 30,
+   "ok": 26,
+   "fail": [
+    "SM2d.4",
+    "SM3.1",
+    "SM3.8",
+    "SM3.9"
+   ],
+   "shared": {
+    "n": 21,
+    "ok": 18,
+    "fail": [
+     "SM2d.4",
+     "SM3.8",
+     "SM3.9"
+    ]
+   },
+   "specific-sensitive": {
+    "n": 1,
+    "ok": 0,
+    "fail": [
+     "SM3.1"
+    ]
+   },
+   "specific-not-yet-sensitive": {
+    "n": 8,
+    "ok": 8,
+    "fail": []
+   }
+  },
+  "exotics": {
+   "scored": 9,
+   "ok": 4,
+   "fail": [
+    "A:X0(2900)",
+    "A:T_csbar0(2900)",
+    "A:X(6900) 2++",
+    "A:P_c(4312)",
+    "A:P_psis(4338)"
+   ],
+   "shared": {
+    "n": 9,
+    "ok": 4,
+    "fail": [
+     "A:X0(2900)",
+     "A:T_csbar0(2900)",
+     "A:X(6900) 2++",
+     "A:P_c(4312)",
+     "A:P_psis(4338)"
+    ]
+   },
+   "specific-sensitive": {
+    "n": 0,
+    "ok": 0,
+    "fail": []
+   },
+   "specific-not-yet-sensitive": {
+    "n": 0,
+    "ok": 0,
+    "fail": []
+   }
+  }
+ },
+ "total": {
+  "scored": 70,
+  "ok": 58,
+  "fail": [
+   "D3.3",
+   "D3.4",
+   "D3.7",
+   "SM2d.4",
+   "SM3.1",
+   "SM3.8",
+   "SM3.9",
+   "A:X0(2900)",
+   "A:T_csbar0(2900)",
+   "A:X(6900) 2++",
+   "A:P_c(4312)",
+   "A:P_psis(4338)"
+  ],
+  "shared": {
+   "n": 48,
+   "ok": 37,
+   "fail": [
+    "D3.3",
+    "D3.4",
+    "D3.7",
+    "SM2d.4",
+    "SM3.8",
+    "SM3.9",
+    "A:X0(2900)",
+    "A:T_csbar0(2900)",
+    "A:X(6900) 2++",
+    "A:P_c(4312)",
+    "A:P_psis(4338)"
+   ]
+  },
+  "specific-sensitive": {
+   "n": 1,
+   "ok": 0,
+   "fail": [
+    "SM3.1"
+   ]
+  },
+  "specific-not-yet-sensitive": {
+   "n": 21,
+   "ok": 21,
+   "fail": []
+  }
+ },
+ "h9_present": false,
+ "stale_sm_class_entries": [],
+ "rows": [
+  {
+   "section": "data",
+   "id": "D1.1",
+   "label": "Universality of free fall, Ti/Pt (MICROSCOPE): eta = 2 lambda^2 f_E (f_Ti - f_Pt)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "the departure scales with lambda^2, and lambda is free and may be zero: the datum bounds lambda, it does not test a predicted size"
+  },
+  {
+   "section": "data",
+   "id": "D1.2",
+   "label": "Universality of free fall, Be/Ti torsion balance (Eot-Wash 2008)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "the departure scales with lambda^2, and lambda is free and may be zero: the datum bounds lambda, it does not test a predicted size"
+  },
+  {
+   "section": "data",
+   "id": "D1.3",
+   "label": "Present drift of alpha, optical clocks (Yb+ E3/E2, PTB 2023)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Model A's drift at the largest allowed coupling lies this factor below the clocks' error; Model B's drift is free in size and sign"
+  },
+  {
+   "section": "data",
+   "id": "D1.5",
+   "label": "Oklo natural reactor, 1.8 Gyr ago",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Model A's shift at the largest allowed coupling lies this factor inside the bound; Model B is free"
+  },
+  {
+   "section": "data",
+   "id": "D1.6",
+   "label": "Delta alpha/alpha: Quasar absorption, ESPRESSO, z = 1.15",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
+  },
+  {
+   "section": "data",
+   "id": "D1.7",
+   "label": "Delta alpha/alpha: Quasar absorption, four systems at z = 5.5 to 7.1",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
+  },
+  {
+   "section": "data",
+   "id": "D1.8",
+   "label": "Delta alpha/alpha: CMB (Planck 2015), alpha at recombination",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
+  },
+  {
+   "section": "data",
+   "id": "D1.9",
+   "label": "Delta alpha/alpha: BBN (alpha alone varying; 2001 abundances)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
+  },
+  {
+   "section": "data",
+   "id": "D2.1",
+   "label": "Light bending / Shapiro delay, gamma - 1 (Cassini)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D2.3",
+   "label": "beta - 1, planetary ephemerides (combined intervals)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D2.5",
+   "label": "Nordtvedt parameter eta, MESSENGER",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D2.6",
+   "label": "beta - 1, lunar laser ranging",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D2.7",
+   "label": "gamma - 1, lunar laser ranging",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D2.8",
+   "label": "Earth-Moon free fall towards the Sun, Delta(m_g/m_i) (WEP + SEP), lunar laser ranging",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D2.9",
+   "label": "Strong-field SEP, pulsar in a triple system (Delta)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D2.10",
+   "label": "Gravitational redshift (local position invariance), Galileo satellites",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D2.11",
+   "label": "Speed of gravitational waves, (c_gw - c)/c (GW170817 + GRB 170817A)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D2.12",
+   "label": "Graviton mass",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D3.3",
+   "label": "de Sitter floor (w = -1 for all time) against DESI DR2's evolving dark energy (w0, wa)",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "shared with LambdaCDM"
+  },
+  {
+   "section": "data",
+   "id": "D3.4",
+   "label": "Hubble constant: GUID's late universe (flat LambdaCDM fitted to the CMB) against the Cepheid distance ladder (SH0ES)",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "shared with LambdaCDM"
+  },
+  {
+   "section": "data",
+   "id": "D3.5",
+   "label": "Hubble constant against the tip of the red giant branch (CCHP, HST + JWST)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with LambdaCDM"
+  },
+  {
+   "section": "data",
+   "id": "D3.7",
+   "label": "Spatial flatness: Omega_K, DESI DR2 BAO + CMB",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "shared with inflation + LambdaCDM"
+  },
+  {
+   "section": "data",
+   "id": "D5.2",
+   "label": "Radiative efficiency of accretion (Soltan argument): Shankar et al. 2009",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR (Kerr)"
+  },
+  {
+   "section": "data",
+   "id": "D5.4",
+   "label": "Radiative efficiency of accretion (Soltan argument): Davis & Laor 2011 (sample mean)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR (Kerr)"
+  },
+  {
+   "section": "data",
+   "id": "D5.6",
+   "label": "Area theorem: the horizon never shrinks classically (GW150914 ringdown)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D5.7",
+   "label": "Area theorem (GW250114)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "shared with GR"
+  },
+  {
+   "section": "data",
+   "id": "D6.1",
+   "label": "Coherence of the largest superpositions: Oligoporphyrins, 28 kDa (Fein et al. 2019)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
+  },
+  {
+   "section": "data",
+   "id": "D6.2",
+   "label": "Coherence of the largest superpositions: Na clusters, 197 kDa (Pedalino et al. 2025)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
+  },
+  {
+   "section": "data",
+   "id": "D6.3",
+   "label": "Coherence of the largest superpositions: Rb-87 atoms, 54 cm (Kovachy et al. 2015)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
+  },
+  {
+   "section": "data",
+   "id": "D6.4",
+   "label": "Coherence of the largest superpositions: Cs-133 atoms held 20 s (Xu et al. 2019)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
+  },
+  {
+   "section": "data",
+   "id": "D6.8",
+   "label": "Bridge B's diffusion, Diosi-Penrose kernel: l_P^2 D2 = m_P^2 / c",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "GUID's value lies this factor inside the nearer edge of the window"
+  },
+  {
+   "section": "sm",
+   "id": "SM1.1",
+   "label": "Supersymmetry, whose gravitino is spin 3/2, through its coloured superpartners",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model makes the same statement for its own content"
+  },
+  {
+   "section": "sm",
+   "id": "SM1.2",
+   "label": "Spin-2 Kaluza-Klein graviton (Randall-Sundrum) in diphoton",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model makes the same statement for its own content"
+  },
+  {
+   "section": "sm",
+   "id": "SM1.3",
+   "label": "Elementary spin-3/2 resonance: excited top quark of spin 3/2",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model makes the same statement for its own content"
+  },
+  {
+   "section": "sm",
+   "id": "SM1.4",
+   "label": "The 125 GeV scalar is spin 0, not spin 2",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model makes the same statement for its own content"
+  },
+  {
+   "section": "sm",
+   "id": "SM2a.1",
+   "label": "All tree-level kappa = 1 (W, Z, t, b, tau, mu), joint",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model's Higgs couplings, proportional to mass"
+  },
+  {
+   "section": "sm",
+   "id": "SM2a.2",
+   "label": "All nine kappa = 1, CMS's own likelihood",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model's Higgs couplings, proportional to mass"
+  },
+  {
+   "section": "sm",
+   "id": "SM2a.3",
+   "label": "kappa_V = kappa_F = 1 (ATLAS two-parameter fit)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model's Higgs couplings, proportional to mass"
+  },
+  {
+   "section": "sm",
+   "id": "SM2a.4",
+   "label": "Slope of the reduced coupling against mass (prediction 1)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model's Higgs couplings, proportional to mass"
+  },
+  {
+   "section": "sm",
+   "id": "SM2a.5",
+   "label": "Vacuum value from the couplings (prediction v = (sqrt2 G_F)^-1/2)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model's Higgs couplings, proportional to mass"
+  },
+  {
+   "section": "sm",
+   "id": "SM2b.1",
+   "label": "No neutrinoless double-beta decay (Xe-136)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "Dirac neutrinos give no signal, but so can Majorana neutrinos: their effective mass scales with free phases and the lightest mass and may vanish, and with normal ordering it lies below these bounds"
+  },
+  {
+   "section": "sm",
+   "id": "SM2b.2",
+   "label": "No neutrinoless double-beta decay (Ge-76, GERDA + MAJORANA + LEGEND-200)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "as SM2b.1"
+  },
+  {
+   "section": "sm",
+   "id": "SM2b.4",
+   "label": "N_eff with decoupled right-handed partners (Planck 2018 + BAO)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "decoupled right-handed partners add a negligible Delta N_eff: the prediction is the Standard Model's 3.044, far inside the error"
+  },
+  {
+   "section": "sm",
+   "id": "SM2b.5",
+   "label": "N_eff with decoupled right-handed partners (ACT DR6 + Planck + lensing + BAO)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "as SM2b.4"
+  },
+  {
+   "section": "sm",
+   "id": "SM2b.6",
+   "label": "Sum of neutrino masses: cosmology against the oscillation minimum (inherited; Dirac or Majorana alike)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "a tension of LambdaCDM with the oscillation data, for Dirac and Majorana neutrinos alike"
+  },
+  {
+   "section": "sm",
+   "id": "SM2d.1",
+   "label": "m_W: Standard Model with loops against ATLAS 2024 (7 TeV, reanalysis)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model's W mass with loops"
+  },
+  {
+   "section": "sm",
+   "id": "SM2d.2",
+   "label": "m_W: Standard Model with loops against CMS 2024",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model's W mass with loops"
+  },
+  {
+   "section": "sm",
+   "id": "SM2d.3",
+   "label": "m_W: Standard Model with loops against LHCb 2022",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model's W mass with loops"
+  },
+  {
+   "section": "sm",
+   "id": "SM2d.4",
+   "label": "m_W: Standard Model with loops against CDF 2022",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "the Standard Model's W mass with loops"
+  },
+  {
+   "section": "sm",
+   "id": "SM3.1",
+   "label": "R = dln mu / dln alpha when only the Maxwell coefficient varies (preregistered: of order 1e-3 to 1e-2); Yukawas fixed at M_Z, the matching Hypothesis 4 selects",
+   "verdict": "FAIL",
+   "tally_class": "specific-sensitive",
+   "reason": "decided by derivation: the preregistered window misses the derived R by a factor 4.5"
+  },
+  {
+   "section": "sm",
+   "id": "SM3.2",
+   "label": "Molecular mu (methanol, z = 0.89) with quasar alpha (ESPRESSO, z = 1.15) on GUID's line Delta mu/mu = R Delta alpha/alpha",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "GUID's line Delta mu/mu = R Delta alpha/alpha passes through zero, and the variation scales with a free coupling that may be zero"
+  },
+  {
+   "section": "sm",
+   "id": "SM3.4",
+   "label": "Clocks: present drifts of mu and alpha on GUID's line",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "as SM3.2"
+  },
+  {
+   "section": "sm",
+   "id": "SM3.5",
+   "label": "High-redshift H2 (z = 2.0-4.2)",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "as SM3.2; the bound does not constrain alpha on GUID's line"
+  },
+  {
+   "section": "sm",
+   "id": "SM3.6",
+   "label": "The scalar's contribution to lepton g-2 at |lambda| < 3.1e-5",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "the scalar's share of g-2 lies 36 to 38 orders of magnitude below the precision"
+  },
+  {
+   "section": "sm",
+   "id": "SM3.8",
+   "label": "a_e: measurement against the Standard Model with alpha(Rb 2020)",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "the Standard Model's electron g-2 (the scalar's share is negligible, SM3.6)"
+  },
+  {
+   "section": "sm",
+   "id": "SM3.9",
+   "label": "a_e: measurement against the Standard Model with alpha(Cs 2018)",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "as SM3.8"
+  },
+  {
+   "section": "sm",
+   "id": "SM3.10",
+   "label": "a_mu: final Fermilab-based world average against the 2025 Standard Model value",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model's muon g-2"
+  },
+  {
+   "section": "sm",
+   "id": "SM4.1",
+   "label": "Standard Model couplings do not meet at one point (two loops)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model makes the same statement for its own content: its couplings do not meet"
+  },
+  {
+   "section": "sm",
+   "id": "SM4.2",
+   "label": "Exact unification would need alpha_s(M_Z) of",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "as SM4.1"
+  },
+  {
+   "section": "sm",
+   "id": "SM4.5",
+   "label": "A unification at the SM's alpha1 = alpha2 crossing",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the Standard Model without unification says the same; the bound is the proton-decay search's"
+  },
+  {
+   "section": "sm",
+   "id": "SM5.1",
+   "label": "alpha born near 1/128 at m_Z (on-shell, from alpha(0) and the vacuum polarisation)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "the measured running coupling; Section data treats the same reading as a consistency row (D8.5)"
+  },
+  {
+   "section": "exotics",
+   "id": "A:T_cc+",
+   "label": "T_cc+ (cc ubar dbar)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  },
+  {
+   "section": "exotics",
+   "id": "A:X0(2900)",
+   "label": "X0(2900) (ud cbar sbar)",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  },
+  {
+   "section": "exotics",
+   "id": "A:T_csbar0(2900)",
+   "label": "T_csbar0(2900) (c sbar u dbar)",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  },
+  {
+   "section": "exotics",
+   "id": "A:X(6900) 2++",
+   "label": "cc cbar cbar 2++ vs X(6900)",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  },
+  {
+   "section": "exotics",
+   "id": "A:P_c(4312)",
+   "label": "P_c(4312) (lowest uud c cbar)",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  },
+  {
+   "section": "exotics",
+   "id": "A:P_c(4440)",
+   "label": "P_c(4440) (nearest level)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  },
+  {
+   "section": "exotics",
+   "id": "A:P_c(4457)",
+   "label": "P_c(4457) (nearest level)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  },
+  {
+   "section": "exotics",
+   "id": "A:P_psis(4338)",
+   "label": "P_psis(4338) (lowest I=0, J=1/2)",
+   "verdict": "FAIL",
+   "tally_class": "shared",
+   "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  },
+  {
+   "section": "exotics",
+   "id": "A:P_cs(4459)",
+   "label": "P_cs(4459) (nearest level; evidence only)",
+   "verdict": "OK",
+   "tally_class": "shared",
+   "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  }
+ ],
+ "checks": [
+  {
+   "label": "data: 31 scored, 28 OK, as predictions_vs_data.json says",
+   "ok": true
+  },
+  {
+   "label": "Standard Model: 30 scored, 26 OK, as standard_model.json says",
+   "ok": true
+  },
+  {
+   "label": "exotics: 9 model rows, 4 hold, as exotic_hadrons.json says",
+   "ok": true
+  },
+  {
+   "label": "every scored row has a tally class",
+   "ok": true
+  },
+  {
+   "label": "the classes and the verdicts add up to the total",
+   "ok": true
+  },
+  {
+   "label": "no row is counted twice",
+   "ok": true
+  }
+ ]
+}

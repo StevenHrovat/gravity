@@ -1,6 +1,6 @@
 # Hadrons as trees of dualities (H8): tetraquarks and pentaquarks against data
 
-Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (seed 20210901); every number is also in `exotic_hadrons.json`. Figures: `docs/simulation/figures/exotic_fit.pdf`, `exotic_spectrum.pdf`, `exotic_levels.pdf`, `exotic_thresholds.pdf`. Checks: **75 of 75 passed** (engine, hosting check, fit numerics, null distribution); every confrontation with data is a result, not a check. Runtime 67 s.
+Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (seed 20210901); every number is also in `exotic_hadrons.json`. Figures: `docs/simulation/figures/exotic_fit.pdf`, `exotic_spectrum.pdf`, `exotic_levels.pdf`, `exotic_thresholds.pdf`. Checks: **80 of 80 passed** (engine, hosting check, fit numerics, null distribution); every confrontation with data is a result, not a check. Runtime 67 s.
 
 ## Verdict
 
@@ -159,6 +159,114 @@ KR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/3
 - **C6** fully charmed S-wave triplet 0++, 1+-, 2++ at 6340, 6369, 6425 MeV; the 1+- cannot decay to J/psi J/psi. *Search:* di-J/psi structures of LHCb, CMS, ATLAS (Table of Section A); no 1+- channel searched. **the S-wave triplet is not X(6900) (Section A); untested otherwise**.
 - **C7** X0(2900) partner [ud]_0[cbar sbar]_1 with J^P = 1+ at 2807 MeV. *Search:* a 1+ state cannot decay to D- K+ (two pseudoscalars); not visible in the LHCb analysis. **untested**.
 
+## Hypothesis H9: the minting in hadrons (SM7)
+
+H9 (fixed in sm_preregistration.md, SM7, after the SM6 results and before this analysis): a pentaquark is a minting, a bound triple of colour-bearers plus a quark and its own antiquark. **Honesty note:** H9 was conceived after seeing that every established pentaquark carries c cbar, so those states are not evidence for it.
+
+### I1 (P1) no open flavour
+
+| claimed pentaquark | content | pair | status | claim | not confirmed by |
+|---|---|---|---|---|---|
+| Theta+(1540) | uuddS | open | unconfirmed | LEPS2003 | CLAS2006, HERAB2004 |
+| Xi--(1860) | ddssU | open | unconfirmed | NA49_2004 | HERAB2004 |
+| Theta_c(3100) | uuddC | open | unconfirmed | H1_2004 | ZEUS2004 |
+| P_c(4380) | uudcC | hidden | unconfirmed | LHCb_Pc2015 | LHCb_Pc2019_text |
+| P_c(4312) | uudcC | hidden | established | LHCb_Pc2019 | - |
+| P_c(4440) | uudcC | hidden | established | LHCb_Pc2019 | - |
+| P_c(4457) | uudcC | hidden | established | LHCb_Pc2019 | - |
+| P_c(4337) | uudcC | hidden | unconfirmed | LHCb_Pc4337 | - |
+| P_cs(4459) | udscC | hidden | unconfirmed | LHCb_Pcs4459_text | LHCb_LcDs2025 |
+| P_psis(4338) | udscC | hidden | established | LHCb_Ppsis4338 | - |
+| doubly charmed, Sigma_c D channel, e.g. Sigma_c++ D+ (cc u u dbar) | ccuuD | open | no claim; searched | - | LHCb_prompt2024 |
+| doubly charmed, Lambda_c+ D0 channel (cc u d ubar) | ccudU | hidden | no claim; searched | - | LHCb_prompt2024 |
+| hidden-strange P_s (uud s sbar) | uudsS | hidden | no claim; searched | - | Belle2017 |
+
+Hidden/open x established/not: [[4, 3], [0, 3]] (rows hidden, open). Fisher's exact p = 0.167 one-sided, 0.200 two-sided. Every open-flavour claim unconfirmed: True. Verdict: holds (every open-flavour claim is unconfirmed); not significant as a contrast (Fisher p one-sided 0.17); conflicts with SM6's I = 3/2 doubly charmed levels, neither decided. Light hidden-flavour pentaquarks (uud s sbar, uud u ubar) would mix with N* resonances and are hard to tag, and the open-flavour claims date from 2003-2004 while the hidden-charm ones come from far larger LHCb samples: selection, not only physics. Ill-posed example: SM7's example 'doubly charmed pentaquarks (cc q q qbar)' is forbidden by H9's rule only when the light antiquark has no partner quark (e.g. cc u u dbar, I = 3/2); cc u d ubar contains a pair of one flavour. SM6's lowest doubly charmed level ([cc]_1[ud]_0)qbar at 4232 MeV has I = 1/2 and is allowed; its I = 3/2 level cc u u dbar at 4301 +- 12 MeV (+540 MeV from pi+ Xi_cc++) is forbidden by H9: the two readings conflict there. LHCb's prompt search saw no doubly charmed pentaquark, which bounds production, not existence.
+
+### I2 (P2) hidden-bottom pentaquarks
+
+| partner of | bottom threshold | T [MeV] | binding carried over [MeV] | M (same binding) | M (binding x mu_b/mu_c) |
+|---|---|---|---|---|---|
+| P_c(4312) | Sigma_b Bbar | 11093.7 | +8.8 | 11084.9 | 11070.8 |
+| P_c(4440) | Sigma_b Bbar* | 11139.0 | +21.7 | 11117.4 | 11084.5 |
+| P_c(4457) | Sigma_b Bbar* | 11139.0 | +4.7 | 11134.4 | 11127.3 |
+| P_psis(4338) | Xi_b Bbar | 11072.1 | -1.9 | 11074.0 | 11077.0 |
+
+Compact ([bq][qq]) bbar (colour-spin model, KR convention): lowest level 10882.7 +- 11.3 MeV (variant J 11100.1), multiplet 10883 to 11141 MeV; lowest J = 1/2 udsb bbar 10993.1 +- 11.0 MeV. Lowest S-wave thresholds: eta_b p 10337.0, eta_b Lambda 10514.4 MeV. Search status: no experimental search for hidden-bottom pentaquarks found on arXiv; proposals (Cao2020). Verdict: live.
+
+### I3 (P3) the general rule
+
+Established exotic hadrons without a pair of one flavour: T_cc(3875)+, X0(2900), X1(2900), T_csbar0(2900)++. Verdict: refuted.
+
+### I4 (P4) Delta M = alpha M / 2 for spin doublets
+
+Eligible doublets, fixed from quark content and J^P only before any splitting was computed:
+
+- c cbar u dbar: Z_c(3900)+ / Z_c(4020)+
+- c cbar u dbar: Z_c(3900)+ / Z_c(4430)+
+- c cbar u dbar: Z_c(4020)+ / Z_c(4430)+
+- c cbar u sbar: Z_cs(3985)+ / Z_cs(4000)+
+- c cbar u sbar: Z_cs(3985)+ / Z_cs(4220)+
+- c cbar u sbar: Z_cs(4000)+ / Z_cs(4220)+
+- c cbar s sbar, P = +: X(3960) / chi_c1(4140)
+- c cbar s sbar, P = +: X(3960) / chi_c1(4274)
+- c cbar s sbar, P = +: X(3960) / chi_c0(4500)
+- c cbar s sbar, P = +: X(3960) / X(4685)
+- c cbar s sbar, P = +: X(3960) / chi_c0(4700)
+- c cbar s sbar, P = +: chi_c1(4140) / chi_c1(4274)
+- c cbar s sbar, P = +: chi_c1(4140) / chi_c0(4500)
+- c cbar s sbar, P = +: chi_c1(4140) / X(4685)
+- c cbar s sbar, P = +: chi_c1(4140) / chi_c0(4700)
+- c cbar s sbar, P = +: chi_c1(4274) / chi_c0(4500)
+- c cbar s sbar, P = +: chi_c1(4274) / X(4685)
+- c cbar s sbar, P = +: chi_c1(4274) / chi_c0(4700)
+- c cbar s sbar, P = +: chi_c0(4500) / X(4685)
+- c cbar s sbar, P = +: chi_c0(4500) / chi_c0(4700)
+- c cbar s sbar, P = +: X(4685) / chi_c0(4700)
+- b bbar u dbar: Z_b(10610)+ / Z_b(10650)+
+- u u d c cbar: P_c(4312)+ / P_c(4440)+
+- u u d c cbar: P_c(4312)+ / P_c(4457)+
+- c c cbar cbar: X(6600) CMS / X(6900) CMS
+
+Not eligible: X(4630) (c cbar s sbar with P = -: parity differs from the other c cbar s sbar states); X(3872), psi(4230) (c cbar q qbar with I = 0: parities differ); X0(2900), X1(2900) (cbar sbar u d: parities differ); P_c(4440), P_c(4457) (the pair that suggested the rule); P_cs(4459) two-peak fit (not resolved: LHCb 'cannot confirm or refute the two-peak hypothesis'); X(7100) CMS, P_c(4337), P_c(4380) (not established as observations).
+
+| pair | Delta [MeV] | alpha M/2 | pull | colour-spin model Delta (pull) |
+|---|---|---|---|---|
+| Z_c(3900)+ / Z_c(4020)+ | 123.9 +- 6.7 | 14.5 | +16.3 | 131.6 +- 8.9 (-0.7); two 1+- levels of [cq][cbar qbar] (taking Z_c(4020) as 1+-) |
+| Z_c(3900)+ / Z_c(4430)+ | 576.0 +- 20.0 | 15.3 | +28.1 | - |
+| Z_c(4020)+ / Z_c(4430)+ | 452.1 +- 19.2 | 15.5 | +22.7 | - |
+| Z_cs(3985)+ / Z_cs(4000)+ | 20.5 +- 11.4 | 14.6 | +0.5 | 63.9 +- 8.3 (-3.1); two lowest 1+ levels of [cq][cbar sbar] |
+| Z_cs(3985)+ / Z_cs(4220)+ | 233.5 +- 40.1 | 15.0 | +5.4 | - |
+| Z_cs(4000)+ / Z_cs(4220)+ | 213.0 +- 41.5 | 15.0 | +4.8 | - |
+| X(3960) / chi_c1(4140) | 162.0 +- 30.2 | 14.7 | +4.9 | - |
+| X(3960) / chi_c1(4274) | 338.0 +- 12.5 | 15.1 | +25.9 | - |
+| X(3960) / chi_c0(4500) | 518.0 +- 12.0 | 15.4 | +42.0 | 32.5 +- 8.4 (+33.2); two 0++ levels of [cs][cbar sbar] |
+| X(3960) / X(4685) | 728.0 +- 18.7 | 15.8 | +38.0 | - |
+| X(3960) / chi_c0(4700) | 738.0 +- 15.0 | 15.8 | +48.1 | 32.5 +- 8.4 (+41.0); two 0++ levels of [cs][cbar sbar] |
+| chi_c1(4140) / chi_c1(4274) | 176.0 +- 28.5 | 15.3 | +5.6 | - |
+| chi_c1(4140) / chi_c0(4500) | 356.0 +- 28.3 | 15.7 | +12.0 | - |
+| chi_c1(4140) / X(4685) | 566.0 +- 31.8 | 16.1 | +17.3 | - |
+| chi_c1(4140) / chi_c0(4700) | 576.0 +- 29.7 | 16.1 | +18.8 | - |
+| chi_c1(4274) / chi_c0(4500) | 180.0 +- 6.9 | 16.0 | +23.7 | - |
+| chi_c1(4274) / X(4685) | 390.0 +- 16.0 | 16.4 | +23.4 | - |
+| chi_c1(4274) / chi_c0(4700) | 400.0 +- 11.4 | 16.4 | +33.6 | - |
+| chi_c0(4500) / X(4685) | 210.0 +- 15.6 | 16.7 | +12.4 | - |
+| chi_c0(4500) / chi_c0(4700) | 220.0 +- 10.8 | 16.7 | +18.7 | 32.5 +- 8.4 (+13.7); two 0++ levels of [cs][cbar sbar] |
+| X(4685) / chi_c0(4700) | 10.0 +- 18.0 | 17.1 | -0.4 | - |
+| Z_b(10610)+ / Z_b(10650)+ | 45.0 +- 2.5 | 38.8 | +2.5 | 143.8 +- 8.9 (-10.7); two 1+- levels of [bq][bbar qbar] (taking both as 1+-) |
+| P_c(4312)+ / P_c(4440)+ | 128.4 +- 5.5 | 16.0 | +20.5 | - |
+| P_c(4312)+ / P_c(4457)+ | 145.4 +- 3.9 | 16.0 | +33.1 | - |
+| X(6600) CMS / X(6900) CMS | 375.0 +- 18.5 | 24.6 | +19.0 | - |
+
+2 of 25 pass at 2 sigma; 4.28 expected by chance (Poisson p of at least 2: 0.93); 22 fail by 3 sigma or more. Motivating pair (excluded): Delta = 17.0, alpha M/2 = 16.2. P_cs(4459) two-peak hypothesis (not resolved, info): Delta = 12.9 +- 4.6 against 16.3. Verdict: refuted as a rule for every resolved doublet.
+
+### H9: choices made after seeing the data
+
+1. H9 itself was conceived after seeing that every established pentaquark carries c cbar (SM7's honesty note); those states are not evidence for it.
+2. The claimed-pentaquark list was compiled from the claims we could find and verify on arXiv; light hidden-flavour candidates are not claimed as pentaquarks in the literature we read, so the table has no light hidden-flavour row.
+3. I2: the molecular masses carry over binding energies relative to isospin-averaged thresholds (the lead's instruction and SM7); the reduced-mass scaling is a variant added with it, not chosen after seeing anything, since no hidden-bottom pentaquark is known.
+4. I4: the eligibility rule and the list were written before any splitting was computed, but the masses of all candidate states were known from SM6, and the P_cs(4459) two-peak masses were read (for the status in I1) before the list was written; it is listed as not resolved by the rule. The chance null (Delta uniform in 0 to 300 MeV) and the 2 sigma pass criterion were fixed with the list.
+
 ## Choices made after seeing the data
 
 1. The rule for binding across the two halves (primary: KR's factorised potential applied to every pair; variant P-in: no binding across the root) was written into the script before any exotic state was computed, but by authors who knew the published masses of the exotic states. Both rules are reported for every state; they differ only where a heavy or strange pair sits in different halves (hidden-charm and fully charmed states, P_c, T_csbar).
@@ -221,10 +329,25 @@ KR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/3
 - **LHCb_Xicc**: LHCb, JHEP 02 (2020) 049, arXiv:1911.08594. Read: abstract. Values: M(Xi_cc++) = 3621.55+-0.23+-0.30.
 - **LHCb_Xibprime**: LHCb, Phys. Rev. Lett. 114, 062004 (2015), arXiv:1411.4849. Read: abstract. Values: m(Xi_b'-) - m(Xi_b0) - m(pi-) = 3.653+-0.018+-0.006.
 - **PDG2024**: S. Navas et al. (Particle Data Group), Phys. Rev. D 110, 030001 (2024) and 2025 update. Read: listings returned by web search (pdgLive, the 2024/2025 listings): D0 1864.84, D+ 1869.66, D*0 2006.85, D*+ 2010.26, D_s 1968.35, D_s* 2112.2, D2*(2460)0 2461.1, D_s1(2536) 2535.11, eta_c 2984.1, J/psi 3096.900, chi_c0 3414.71, chi_c1 3510.67, h_c 3525.37, chi_c2 3556.17, eta_c(2S) 3637.7, psi(2S) 3686.097, eta_b 9398.7, h_b(1P) 9899.3, B* 5324.75, omega 782.66, phi 1019.461, K*(892)0 895.55, K*(892)+ 891.88, Lambda_c 2286.46, Xi_c+ 2467.71, Xi_c0 2470.44, Xi_c'0 2578.7, Lambda_c(2595) 2592.25, Lambda_c(2625) 2628.11, Omega_c 2695.2, Omega_c(2770) 2765.9, Sigma(1385)+ 1382.83, Sigma(1385)0 1383.7, Xi_b- 5797.0, Sigma_b*+ 5830.32, Xi_b(5945)0 5952.3; D_s0*(2317) 2317.7 and D_s1(2460) 2459.5 as quoted in arXiv:2409.05337. Values: see THRESH_HADRONS; entries not in this list are PDG 2024 values not re-read (unverified).
+- **LEPS2003**: T. Nakano et al. (LEPS), Phys. Rev. Lett. 91, 012002 (2003), hep-ex/0301020. Read: abstract. Values: S=+1 baryon (Theta+) at 1.54+-0.01 GeV, width < 25 MeV, 4.6 sigma.
+- **CLAS2006**: B. McKinnon, K. Hicks et al. (CLAS), Phys. Rev. Lett. 96, 212001 (2006), hep-ex/0603028. Read: abstract. Values: no evidence for a narrow pentaquark with more than 30 times the luminosity of the earlier measurement; sigma(gamma d -> p K- Theta+) < 0.3 nb (95% CL), 1.52-1.56 GeV.
+- **HERAB2004**: K. T. Knoepfle, M. Zavertyaev, T. Zivko for HERA-B, J. Phys. G 30, S1363 (2004), hep-ex/0403020. Read: abstract. Values: no evidence for Theta+(1540) or Xi--(1862); Theta+/Lambda(1520) < 0.02, Br x Xi--/Xi(1530)0 < 0.077 (95% CL).
+- **NA49_2004**: NA49, Phys. Rev. Lett. 92, 042003 (2004), hep-ex/0310014. Read: abstract. Values: S=-2, Q=-2 baryon at 1.862+-0.002 GeV, width below 0.018 GeV, 4.0 sigma.
+- **H1_2004**: H1, Phys. Lett. B 588, 17 (2004), hep-ex/0403017. Read: abstract. Values: anti-charmed baryon uuddcbar at 3099+-3+-5 MeV, Gaussian width 12+-3 MeV.
+- **ZEUS2004**: ZEUS, Eur. Phys. J. C 38, 29 (2004), hep-ex/0409033. Read: abstract. Values: no resonance in D*p with more than 60000 D*; not compatible with the H1 report.
+- **LHCb_Pc2015**: LHCb, Phys. Rev. Lett. 115, 072001 (2015), arXiv:1507.03414. Read: abstract. Values: 4380+-8+-29 (Gamma 205+-18+-86) and 4449.8+-1.7+-2.5 (Gamma 39+-5+-19), each above 9 sigma.
+- **LHCb_Pc4337**: LHCb, Phys. Rev. Lett. 128, 062001 (2022), arXiv:2108.04720. Read: abstract. Values: evidence: 4337(+7-4)(+2-2), Gamma 29(+26-12)(+14-14), 3.1 to 3.7 sigma.
+- **LHCb_Pcs4459_text**: LHCb, Sci. Bull. 66, 1278 (2021), arXiv:2012.10380. Read: full text, Sec. 4 and 5. Values: 3.1 sigma including systematics and look-elsewhere; two-peak fit 4454.9+-2.7 (Gamma 7.5+-9.7) and 4467.8+-3.7 (Gamma 5.2+-5.3), statistical only; 'cannot confirm or refute the two-peak hypothesis'.
+- **LHCb_Pc2019_text**: LHCb, Phys. Rev. Lett. 122, 222001 (2019), arXiv:1904.03947. Read: full text. Values: verification of the P_c(4380)+ state awaits an amplitude analysis.
+- **LHCb_LcDs2025**: LHCb, Phys. Rev. D 112, 052013 (2025), arXiv:2507.10713. Read: abstract. Values: no evidence for P_ccbars(4338) or P_ccbars(4459) in Lambda_c+ D_s-; production ratios < 0.12 and < 0.20 (95% CL).
+- **LHCb_prompt2024**: LHCb, Phys. Rev. D 110, 032001 (2024), arXiv:2404.07131. Read: abstract. Values: no significant signal for hidden-charm (Sigma_c Dbar, Lambda_c Dbar) or doubly charmed (Sigma_c D, Lambda_c D) pentaquarks in prompt production; known pentaquark yields consistent with zero.
+- **Belle2017**: Belle, Phys. Rev. D 96, 051102 (2017), arXiv:1707.00089. Read: abstract. Values: hidden-strangeness pentaquark P_s+ -> phi p: B(Lambda_c+ -> P_s+ pi0) x B(P_s+ -> phi p) < 8.3e-5 (90% CL), no evidence.
+- **Cao2020**: X. Cao et al., Phys. Rev. D 101, 074010 (2020), arXiv:1912.12054. Read: abstract. Values: proposes a P_b search in gamma p -> Upsilon p at an electron-ion collider; no P_b observed.
+- **CODATA2022**: CODATA 2022, arXiv:2409.03787. Read: the value used in predictions_vs_data.py. Values: 1/alpha = 137.035999177.
 
 ## Checks
 
-75 of 75 passed.
+80 of 80 passed.
 
 - OK E1 meson colour factor <lambda1.lambda2> (singlet)
 - OK E2 meson spin singlet <sigma1.sigma2>
@@ -301,3 +424,8 @@ KR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/3
 - OK F8 leave-one-out residuals at least as large as in-sample (RMS)
 - OK B1 analytic null p-values agree with 20000 Monte Carlo placements per state (4.5 sigma)
 - OK B2 Fisher statistic equals -2 sum ln p (consistency of chi2 tail)
+- OK I0a flavour-pair test: T_cc (ccUD) has none, Z_c (cCuD) has one, Theta+ (uuddS) is open, P_c (uudcC) is hidden
+- OK I0b Fisher one-sided p equals the hypergeometric tail
+- OK I0c Sigma_b Bbar threshold (isospin averages) = 5814.26 + 5279.4
+- OK I0d number of eligible doublets fixed by content and J^P (3 + 3 + 15 + 1 + 2 + 1)
+- OK I0e expected chance passes: analytic sum against 4000 Monte Carlo replicas (5 sigma)

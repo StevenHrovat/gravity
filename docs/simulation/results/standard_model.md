@@ -2,7 +2,7 @@
 
 Written by `docs/simulation/standard_model.py` (deterministic; numpy, scipy, matplotlib; no network); every number is also in `standard_model.json`. Statements and scoring: `docs/simulation/sm_preregistration.md` (fixed before this script). Figures: `docs/simulation/figures/sm_couplings.pdf`, `docs/simulation/figures/sm_neutrino.pdf`, `docs/simulation/figures/sm_precision.pdf`, `docs/simulation/figures/sm_mu_alpha.pdf`, `docs/simulation/figures/sm_running.pdf`.
 
-**Scored confrontations: 26 of 30 consistent at 95%.** FAIL: SM2d.4 (inherited tension), SM3.1 (refuted as stated (by derivation); corrected value derived), SM3.8 (inherited tension), SM3.9 (inherited tension). Checks of the script's own numerics: 30 of 30.
+**Scored confrontations: 26 of 30 consistent at 95%.** FAIL: SM2d.4 (inherited tension), SM3.1 (refuted under the M_Z matching (by derivation); corrected value derived), SM3.8 (inherited tension), SM3.9 (inherited tension). Checks of the script's own numerics: 32 of 32.
 
 ## Verdicts
 
@@ -10,23 +10,23 @@ Written by `docs/simulation/standard_model.py` (deterministic; numpy, scipy, mat
 |---|---|---|---|
 | SM1 | spin ladder: no elementary spin-3/2 or spin-2 quantum | holds as a reading | SM1.1-SM1.4; the Standard Model says the same |
 | SM2.1 | couplings proportional to mass, kappa = 1 | holds (W, Z, t, b, tau, mu); untested (c, e, u, d, s, nu) | SM2a.1-SM2a.9 |
-| SM2.2 | Dirac neutrinos, m_bb = 0, lepton number conserved | live (holds against every 0vbb search) | SM2b.1-SM2b.7 |
+| SM2.2 | Dirac neutrinos, m_bb = 0, lepton number conserved | live, given B-L conservation (an added reading; Hypothesis 1' alone allows Majorana masses through the Weinberg operator); holds against every 0vbb search | SM2b.0-SM2b.7 |
 | SM2.3 | photon and gluons massless | holds as a reading | SM2c.1 |
 | SM2.4 | W and Z masses from the vacuum (rho = 1), with SM loops | holds; CDF 2022 is an inherited tension | SM2d.1-SM2d.6 |
-| SM3 | only alpha varies; R of order 1e-3 to 1e-2 | window refuted by derivation (R = -0.045 +- 0.002); live against data | SM3.1-SM3.5 |
+| SM3 | only alpha varies; R of order 1e-3 to 1e-2 | window refuted under the M_Z matching that Hypothesis 4 selects (R = -0.045 +- 0.002); inside it under the low-energy matching (R = +6.7e-04); live against data (not yet sensitive) | SM3.1-SM3.5 |
 | SM3 side | scalar's g-2 contribution negligible | derived; holds (a_mu); a_e limited by the Cs-Rb alpha discrepancy (inherited) | SM3.6-SM3.10 |
-| SM4 | no unification within causality | holds (two-loop SM misses by many sigma); proton decay live | SM4.1-SM4.5 |
+| SM4 | no unification within causality | holds as a reading (the Standard Model's own statement); Hypothesis 6' untested | SM4.1-SM4.5 |
 | SM5 | alpha born near 1/128 at m_Z, runs to 1/137; crossover | holds | SM5.1-SM5.4 |
 
 ## Live predictions
 
-- **SM2b:** any neutrinoless double-beta signal refutes GUID's Dirac neutrinos. LEGEND-1000 (3-sigma discovery at 1.3e28 yr, m_bb ~ 9-21 meV) and nEXO (1.35e28 yr) reach the Majorana band of the inverted ordering (>= 18.2 meV) for most nuclear matrix elements.
-- **SM3:** if alpha is ever seen to vary, mu must vary 0.045 times as much and with the opposite sign; a detected Delta mu/mu much larger than that (as unification predicts, |R| ~ 20-50) refutes Hypothesis 4.
-- **SM4:** proton decay is allowed only from a unification before the start; Hyper-Kamiokande is the test (data:D8.1).
+- **SM2b (given B-L conservation, an added reading):** any neutrinoless double-beta signal refutes GUID's Dirac neutrinos. Hypothesis 1' alone does not imply them: the Weinberg operator gives a Majorana mass from the same Higgs vacuum. LEGEND-1000 (3-sigma discovery at 1.3e28 yr, m_bb ~ 9-21 meV) and nEXO (1.35e28 yr) reach the Majorana band of the inverted ordering (>= 18.2 meV) for most nuclear matrix elements.
+- **SM3:** if alpha is ever seen to vary, mu must vary 0.045 times as much and with the opposite sign (M_Z matching; +6.7e-04 times under the low-energy matching); a detected Delta mu/mu much larger than that (as unification predicts, |R| ~ 20-50) refutes Hypothesis 4.
+- **SM4:** Hypothesis 6' is untested: proton decay is allowed only from a unification before the start, with M_X free; Hyper-Kamiokande is the test (data:D8.1). The non-meeting of the couplings is the Standard Model's own statement.
 
 ## Failed or refuted
 
-- **SM3.1, the preregistered window for R.** The careful derivation gives R = -0.0451 +- 0.0023, outside 'of order 1e-3 to 1e-2' by a factor 4.5. The estimate behind the window used the proton's electromagnetic mass; the electron's is larger in proportion (its QED self-energy from the electroweak scale down, 4.6% of m_e against 0.09% for the proton). The window is refuted by derivation, not by data; the corrected R is far from unification's and consistent with data.
+- **SM3.1, the preregistered window for R.** The careful derivation gives R = -0.0451 +- 0.0023, outside 'of order 1e-3 to 1e-2' by a factor 4.5. The estimate behind the window used the proton's electromagnetic mass; the electron's is larger in proportion (its QED self-energy from the electroweak scale down, 4.6% of m_e against 0.09% for the proton). The window is refuted under the M_Z matching, by derivation, not by data. Under the low-energy matching (the electron's low-energy mass held fixed) R = +6.7e-04 +- 4.3e-04 (all low-energy masses) or +8.9e-04 +- 7.6e-04 (only the electron's), of order 1e-3 and inside the window. Hypothesis 4 selects the M_Z matching: holding the low-energy electron mass fixed needs the scalar on the electron's mass term (d ln y_e / d ln alpha = -0.046), which Hypothesis 4 excludes. Either way R is far from unification's and consistent with data.
 - **SM2d.4** m_W: Standard Model with loops against CDF 2022: pull = +7.64 sigma (inherited tension).
 - **SM3.8** a_e: measurement against the Standard Model with alpha(Rb 2020): pull = +2.15 sigma (inherited tension).
 - **SM3.9** a_e: measurement against the Standard Model with alpha(Cs 2018): pull = -3.89 sigma (inherited tension).
@@ -35,7 +35,7 @@ Written by `docs/simulation/standard_model.py` (deterministic; numpy, scipy, mat
 
 | ID | statement | GUID | data | sources | test | result | verdict |
 |---|---|---|---|---|---|---|---|
-| SM1.1 | Supersymmetry, whose gravitino is spin 3/2, through its coloured superpartners | none (SM1 excludes superpartners) | gluino > 2.30 TeV, squarks > 1.85 TeV (95% CL, simplified models, massless LSP) | atlas_susy | null search / spin test: no spin-3/2 or spin-2 quantum seen | **OK** | holds as a reading |
+| SM1.1 | Supersymmetry, whose gravitino is spin 3/2, through its coloured superpartners | none (no elementary spin-3/2 quantum) | gluino > 2.30 TeV, squarks > 1.85 TeV (95% CL, simplified models, massless LSP) | atlas_susy | null search / spin test: no spin-3/2 or spin-2 quantum seen | **OK** | holds as a reading |
 | SM1.2 | Spin-2 Kaluza-Klein graviton (Randall-Sundrum) in diphoton | none (no graviton as a quantum) | RS1 excluded below 4.5 TeV (k/M_Pl = 0.1), 3.9 TeV (0.05), 2.2 TeV (0.01) | atlas_diphoton | null search / spin test: no spin-3/2 or spin-2 quantum seen | **OK** | holds as a reading |
 | SM1.3 | Elementary spin-3/2 resonance: excited top quark of spin 3/2 | none | m > 1.2 TeV (95% CL) | cms_tstar | null search / spin test: no spin-3/2 or spin-2 quantum seen | **OK** | holds as a reading |
 | SM1.4 | The 125 GeV scalar is spin 0, not spin 2 | spin 0 (the Higgs rung) | all spin-2 alternatives excluded at > 99.9% CL | atlas_spin | null search / spin test: no spin-3/2 or spin-2 quantum seen | **OK** | holds as a reading |
@@ -58,14 +58,15 @@ Written by `docs/simulation/standard_model.py` (deterministic; numpy, scipy, mat
 | SM2a.7 | Electron: kappa_e = 1 | 1 | \|kappa_e\| < 240 (95%); SM B(H -> ee) ~ 5e-9 | cms_hee | bound 240 times the prediction | **INFO** | untested |
 | SM2a.8 | Light quarks u, d, s: kappa_q = 1 | 1 | no measurement |  | - | **INFO** | untested |
 | SM2a.9 | Neutrinos: Dirac Yukawas y_nu = sqrt2 m_nu / v ~ 1e-13 | Higgs coupling to neutrinos | unmeasurable at any collider |  | - | **INFO** | untested |
-| SM2b.1 | No neutrinoless double-beta decay (Xe-136) | m_bb = 0: no signal at any exposure | T_1/2 > 3.8e26 yr (90%); m_bb < 28-122 meV | kamland | no signal | **OK** | holds |
-| SM2b.2 | No neutrinoless double-beta decay (Ge-76, GERDA + MAJORANA + LEGEND-200) | no signal | T_1/2 > 1.9e26 yr (90%); m_bb < 75-200 meV | legend200 | no signal | **OK** | holds |
-| SM2b.3 | What the next generation can do | a signal at any level refutes SM2b | LEGEND-1000 3-sigma discovery at 1.3e28 yr (m_bb ~ 9-21 meV); nEXO 1.35e28 yr; Majorana IO band >= 18.2 meV | legend1000, nexo, nufit6 | if the ordering is inverted and neutrinos were Majorana, a signal is expected inside the reach | **INFO** | live |
+| SM2b.0 | Does 'only the Higgs vacuum grants rest mass' imply Dirac neutrinos? | only with B-L conserved (an added reading) | the Weinberg operator (L Phi)(L Phi)/Lambda gives a Majorana mass f v^2/Lambda from the same vacuum | weinberg1979, ma2009 | Hypothesis 1' alone allows Majorana masses | **INFO** | the Dirac step needs B-L conservation |
+| SM2b.1 | No neutrinoless double-beta decay (Xe-136) | m_bb = 0: no signal at any exposure (given B-L conservation) | T_1/2 > 3.8e26 yr (90%); m_bb < 28-122 meV | kamland | no signal | **OK** | holds, given B-L conservation |
+| SM2b.2 | No neutrinoless double-beta decay (Ge-76, GERDA + MAJORANA + LEGEND-200) | no signal | T_1/2 > 1.9e26 yr (90%); m_bb < 75-200 meV | legend200 | no signal | **OK** | holds, given B-L conservation |
+| SM2b.3 | What the next generation can do | a signal at any level refutes SM2b | LEGEND-1000 3-sigma discovery at 1.3e28 yr (m_bb ~ 9-21 meV); nEXO 1.35e28 yr; Majorana IO band >= 18.2 meV | legend1000, nexo, nufit6 | if the ordering is inverted and neutrinos were Majorana, a signal is expected inside the reach | **INFO** | live, given B-L conservation |
 | SM2b.4 | N_eff with decoupled right-handed partners (Planck 2018 + BAO) | 3.044 (+ negligible) | 2.99 +- 0.17 | planck18, neff_sm, luo2020 | pull = -0.32 sigma | **OK** | holds |
 | SM2b.5 | N_eff with decoupled right-handed partners (ACT DR6 + Planck + lensing + BAO) | 3.044 (+ negligible) | 2.86 +- 0.13 | act_ext, neff_sm | pull = -1.42 sigma | **OK** | holds |
 | SM2b.5b | Variant: partners thermalised in the start and decoupled before the split | N_eff = 3.185 | 2.99 +- 0.17 (Planck); 2.86 +- 0.13 (P-ACT-LB) | planck18, act_ext | pulls -1.14 and -2.50 sigma | **INFO** | not GUID's statement |
 | SM2b.6 | Sum of neutrino masses: cosmology against the oscillation minimum (inherited; Dirac or Majorana alike) | sum >= 0.0588 eV (NO), >= 0.0989 eV (IO) | DESI DR2 + CMB: < 0.0642 eV (95%, Bayesian) | desi_nu, nufit6 | the NO minimum lies 0.0054 eV below the 95% bound; IO's lies above it | **OK** | holds (NO); inherited tension |
-| SM2b.7 | Lepton number conserved | no Majorana mass anywhere | no 0vbb signal (SM2b.1, SM2b.2) | kamland, legend200 | consistent | **INFO** | live |
+| SM2b.7 | B-L conserved (an added reading of Axiom 3: B-L is a count every reader sees) | no Majorana mass anywhere | no 0vbb signal (SM2b.1, SM2b.2) | kamland, legend200 | consistent | **INFO** | added reading; live |
 | SM2c.1 | The photon and the gluons are massless | massless | a reading of the Standard Model (no number scored) |  | - | **INFO** | holds as a reading |
 | SM2d.1 | m_W: Standard Model with loops against ATLAS 2024 (7 TeV, reanalysis) | 80.3499 +- 0.0056 GeV (SM fit without M_W) | 80.3665 +- 0.0159 GeV | atlas_mw, deblas | pull = +0.98 sigma | **OK** | holds |
 | SM2d.2 | m_W: Standard Model with loops against CMS 2024 | 80.3499 +- 0.0056 GeV (SM fit without M_W) | 80.3602 +- 0.0099 GeV | cms_mw, deblas | pull = +0.91 sigma | **OK** | holds |
@@ -73,7 +74,8 @@ Written by `docs/simulation/standard_model.py` (deterministic; numpy, scipy, mat
 | SM2d.4 | m_W: Standard Model with loops against CDF 2022 | 80.3499 +- 0.0056 GeV (SM fit without M_W) | 80.4335 +- 0.0094 GeV | cdf_mw, deblas | pull = +7.64 sigma | **FAIL** | inherited tension |
 | SM2d.5 | m_W: Standard Model with loops against LHC-TeV combination without CDF (2023; includes ATLAS 2017 and LHCb 2022) | 80.3499 +- 0.0056 GeV (SM fit without M_W) | 80.3692 +- 0.0133 GeV | mw_comb, deblas | pull = +1.34 sigma | **INFO** | holds |
 | SM2d.6 | Tree level m_W = g v / 2, m_Z = m_W / cos theta_W (rho = 1) | within 0.5% (Part I) | D8.3: -0.18%; D8.4: +0.34% | mw_comb, mz_pdg | cited from predictions_vs_data.py rows D8.3, D8.4 | **INFO** | holds |
-| SM3.1 | R = dln mu / dln alpha when only the Maxwell coefficient varies (preregistered: of order 1e-3 to 1e-2) | \|R\| in [1e-3, 1e-2] | derived R = -0.0451 +- 0.0023 | gasser_leutwyler, glr2021, bmw_sigma, steinhauser, dhmz | \|R\| = 0.045 lies outside the window, a factor 4.5 above its top | **FAIL** | refuted as stated (by derivation); corrected value derived |
+| SM3.1 | R = dln mu / dln alpha when only the Maxwell coefficient varies (preregistered: of order 1e-3 to 1e-2); Yukawas fixed at M_Z, the matching Hypothesis 4 selects | \|R\| in [1e-3, 1e-2] | derived R = -0.0451 +- 0.0023 | gasser_leutwyler, glr2021, bmw_sigma, steinhauser, dhmz | \|R\| = 0.045 lies outside the window, a factor 4.5 above its top | **FAIL** | refuted under the M_Z matching (by derivation); corrected value derived |
+| SM3.1b | Same with the low-energy masses held fixed (a matching Hypothesis 4 excludes: it needs the scalar on the mass terms) | \|R\| in [1e-3, 1e-2] | R = +6.7e-04 +- 4.3e-04 (all low-energy masses fixed); +8.9e-04 +- 7.6e-04 (only the electron's) | gasser_leutwyler, bmw_sigma | of order 1e-3: at the window's lower edge, within 1 sigma of 1e-3 | **INFO** | inside the window (as an order of magnitude) |
 | SM3.2 | Molecular mu (methanol, z = 0.89) with quasar alpha (ESPRESSO, z = 1.15) on GUID's line Delta mu/mu = R Delta alpha/alpha | R = -0.045 | \|Delta mu/mu\| <= 1.1e-7 (2 sigma); Delta alpha/alpha = 1.3 +- 1.36 ppm | kanekar, espresso | chi2 = 0.51 (1 dof), p = 0.48; along the line Delta alpha/alpha = +0.58 +- 0.91 ppm | **OK** | live |
 | SM3.3 | Same data on a unification line (R = -24.3) | not GUID | as SM3.2 | kanekar, espresso, ferreira | chi2 = 0.91, p = 0.34; along the line \|Delta alpha/alpha\| < 4.4e-09 (95%) | **INFO** | contrast |
 | SM3.4 | Clocks: present drifts of mu and alpha on GUID's line | R = -0.045 | alpha-dot/alpha = (1.8 +- 2.5)e-19 /yr; mu-dot/mu = (-8 +- 36)e-18 /yr | filzinger, lange | chi2 = 0.05, p = 0.82 | **OK** | live |
@@ -83,11 +85,11 @@ Written by `docs/simulation/standard_model.py` (deterministic; numpy, scipy, mat
 | SM3.8 | a_e: measurement against the Standard Model with alpha(Rb 2020) | Standard Model (scalar negligible, SM3.6) | a_e(exp) - a_e(SM) = +0.34e-12; in alpha^-1: 137.035999206 vs 137.035999166(15) from a_e | morel2020, fan2023 | pull = +2.15 sigma | **FAIL** | inherited tension |
 | SM3.9 | a_e: measurement against the Standard Model with alpha(Cs 2018) | Standard Model (scalar negligible, SM3.6) | a_e(exp) - a_e(SM) = -1.02e-12; in alpha^-1: 137.035999046 vs 137.035999166(15) from a_e | parker2018, fan2023 | pull = -3.89 sigma | **FAIL** | inherited tension |
 | SM3.10 | a_mu: final Fermilab-based world average against the 2025 Standard Model value | Standard Model (scalar negligible) | 116592071.5(14.5)e-11 vs 116592033(62)e-11 | fnal_gm2, wp25 | pull = +0.60 sigma | **OK** | holds |
-| SM4.1 | Standard Model couplings do not meet at one point (two loops) | no single meeting point | smallest spread of 1/alpha_i = 3.20 at 1.7e+14 GeV | alpha_mz, s2w, antusch, buttazzo | 7 sigma from zero (inputs and a theory allowance 0.47) | **OK** | holds |
-| SM4.2 | Exact unification would need alpha_s(M_Z) of | not 0.118 (no unification) | SM: 0.0738; measured 0.118 +- 0.0009 | antusch, denterria | 49 sigma (input error only) | **OK** | holds |
-| SM4.3 | Contrast: MSSM with M_SUSY = 2 TeV (excluded by SM1) | not GUID | smallest spread 0.003 at 1.1e+16 GeV; needs alpha_s(M_Z) = 0.1181 | martin_vaughn, martin_primer | alpha_s off by +0.1 sigma of the input (+0.1%) | **INFO** | contrast |
-| SM4.4 | Proton decay only from a unification before the start | possible, not required | tau/B(p -> e+ pi0) > 2.4e34 yr (90%) | superk | M_X > 4.8e+15 GeV (alpha_G = 1/40), 4.7e+15 GeV (alpha_G = 1/42.2); cited as data:D8.1 | **INFO** | live |
-| SM4.5 | A unification at the SM's alpha1 = alpha2 crossing | excluded (no unification within causality) | crossing at 1.1e+13 GeV would give tau ~ 7e+23 yr | superk | 4e+10 times below the bound | **OK** | holds |
+| SM4.1 | Standard Model couplings do not meet at one point (two loops) | no single meeting point | smallest spread of 1/alpha_i = 3.20 at 1.7e+14 GeV | alpha_mz, s2w, antusch, buttazzo | 7 sigma from zero (inputs and a theory allowance 0.47) | **OK** | holds as a reading (the Standard Model's own statement) |
+| SM4.2 | Exact unification would need alpha_s(M_Z) of | not 0.118 (no unification) | SM: 0.0738; measured 0.118 +- 0.0009 | antusch, denterria | 49 sigma (input error only) | **OK** | holds as a reading (the Standard Model's own statement) |
+| SM4.3 | Contrast: MSSM with M_SUSY = 2 TeV (content GUID does not have; SM1 bounds such partners, it cannot exclude them) | not GUID | smallest spread 0.003 at 1.1e+16 GeV; needs alpha_s(M_Z) = 0.1181 | martin_vaughn, martin_primer | alpha_s off by +0.1 sigma of the input (+0.1%) | **INFO** | contrast |
+| SM4.4 | Proton decay only from a unification before the start | possible, not required | tau/B(p -> e+ pi0) > 2.4e34 yr (90%) | superk | M_X > 4.8e+15 GeV (alpha_G = 1/40), 4.7e+15 GeV (alpha_G = 1/42.2); cited as data:D8.1 | **INFO** | untested (Hypothesis 6'; M_X is free) |
+| SM4.5 | A unification at the SM's alpha1 = alpha2 crossing | excluded (no unification within causality) | crossing at 1.1e+13 GeV would give tau ~ 7e+23 yr | superk | 4e+10 times below the bound | **OK** | holds as a reading (the Standard Model's own statement) |
 | SM5.1 | alpha born near 1/128 at m_Z (on-shell, from alpha(0) and the vacuum polarisation) | 1/alpha(M_Z) ~ 128 (within 1%) | 128.937 +- 0.014 | codata22, steinhauser, dhmz | +0.73% from 128 | **OK** | holds |
 | SM5.2 | Same, MS-bar | within 1% | 127.950 +- 0.017 (D8.5) | alpha_mz, erler1999 | -0.04% from 128; recomputed 127.96 | **INFO** | holds |
 | SM5.3 | alpha runs down to 1/137 | 1/alpha(0) = 137.036 | 137.035999177(21) | codata22 | the running is the measured vacuum polarisation | **INFO** | holds |
@@ -111,6 +113,7 @@ Notes:
 - SM2a.3b: ATLAS gives the per-particle values only graphically; they were not read off and are not used in the fits below
 - SM2a.4: six CMS couplings over 3.2 decades of mass; correlations ignored
 - SM2a.6: bounded at a few times the prediction; a 2-sigma-level upward fluctuation in one experiment
+- SM2b.0: B-L conservation forbids every Majorana mass and allows the B-L-conserving proton decay of SM4
 - SM2b.3: for normal ordering a Majorana m_bb can be far below any planned reach, so a null result does not establish Dirac neutrinos
 - SM2b.5b: disfavoured at 2.5 sigma by P-ACT-LB; GUID's partners never thermalise (Yukawa-only interactions)
 - SM2b.6: the Feldman-Cousins limit 0.053 eV and the effective-mass analysis (3 sigma) breach the oscillation minimum: a tension of LambdaCDM with oscillations, not of GUID
@@ -120,6 +123,7 @@ Notes:
 - SM2d.4: GUID adds no loop of its own: m_W is the Standard Model's
 - SM2d.5: GUID adds no loop of its own: m_W is the Standard Model's; overlaps SM2d.1 and SM2d.3
 - SM3.1: the electron's electromagnetic share (its QED running from the electroweak scale plus the pole conversion, 4.6% of m_e) dominates; the proton's (0.09%) was the estimate behind the window. The physical claim that \|R\| is far below unification's 20-50 holds.
+- SM3.1b: holding the low-energy electron mass fixed while alpha varies requires d ln y_e / d ln alpha = -0.046, a coupling of the scalar to the electron's mass term; Hypothesis 4 lets the scalar multiply only the Maxwell term, so it fixes the Yukawas where the Maxwell term is defined, at the electroweak scale
 - SM3.2: under GUID the methanol bound limits alpha at z ~ 0.9 about as tightly as the quasar itself; the two redshifts differ
 - SM3.3: a detected alpha change of ppm size with \|Delta mu/mu\| < 1e-7 would exclude this line and agree with GUID's
 - SM3.4: the Cs-based mu drift assumes a model for the Cs nuclear g-factor; the alpha and mu values share data
@@ -127,7 +131,7 @@ Notes:
 - SM3.7: the Cs-Rb discrepancy is experimental or in the Standard Model's inputs, not GUID's
 - SM3.8: the comparison is made in alpha^-1 with Fan et al.'s alpha from a_e (their QED series); the a_e difference uses d a_e / d alpha^-1 = -alpha^2 / 2pi
 - SM3.9: the comparison is made in alpha^-1 with Fan et al.'s alpha from a_e (their QED series); the a_e difference uses d a_e / d alpha^-1 = -alpha^2 / 2pi
-- SM4.1: the Standard Model shares this statement
+- SM4.1: the Standard Model's own statement since Amaldi et al.; it does not test Hypothesis 6', which places any unification before the start
 - SM4.3: meets within the input errors at this threshold (no GUT or superpartner threshold corrections, no DR-bar conversion); the SM needs alpha_s 37% below the measured value
 - SM5.2: cited from data:D8.5
 
@@ -149,13 +153,17 @@ Notes:
 - SM2a: fermion masses at M_Z from the MS-bar Yukawas (baseline) and pole / PDG masses (variant) were both fixed before the fit; the slope changes by less than its error.
 - SM3: the electromagnetic self-energy of the proton is taken as Gasser and Leutwyler's 0.63 MeV with +-0.40 MeV, set before computing R to cover their +-0.2 MeV residual and the spread between Cottingham (0.58 MeV) and lattice (1.0 MeV) values of the proton-neutron difference.
 - SM3: the preregistration does not say at which scale the Yukawa couplings are held fixed; M_Z (where alpha is 'born near 1/128') is the baseline, and M_W to v is the stated systematic.
+- SM3: the argument that Hypothesis 4 selects the M_Z matching (the Yukawas, not the low-energy masses, are held fixed) was written after R had been computed and after a reader pointed out that the low-energy matching puts R inside the window; the M_Z baseline itself was chosen before computing R.
+- SM2b: the Dirac step is made conditional on B-L conservation after a reader pointed out the Weinberg operator; the data and their outcome are unchanged.
 - SM3: the two a_e rows (alpha from Rb and from Cs) are scored separately although they show one tension, the disagreement of the two alpha determinations; this was decided after both were seen to fail.
 - SM4: the smallest spread is evaluated at the pairwise crossings rather than on the grid, after the grid minimum was seen to sit at a kink; the change is below 0.02 in 1/alpha.
 - SM4: the MSSM contrast uses one common superpartner threshold M_SUSY = 2 TeV (near the gluino limit of SM1.1) and tan beta = 10, fixed before running; the MS-bar to DR-bar conversion and all threshold corrections are omitted.
 
 ## Ill-posed points in the preregistration
 
-- SM3's window '1e-3 to 1e-2' is numerically wrong (see above); the preregistration also does not fix the scale at which the Yukawas are held, which moves R by about +-0.002, too little to reach the window.
+- SM3's window '1e-3 to 1e-2' depends on a matching the preregistration leaves open: it is wrong by a factor 4.5 under the M_Z matching (Yukawas fixed where the Maxwell term is defined, which Hypothesis 4 selects) and right under the low-energy matching. Within the electroweak matching, the scale (M_W to v) moves R by about +-0.002, too little to reach the window.
+- SM2.2's step from 'only the Higgs vacuum grants rest mass' to Dirac neutrinos does not follow: the Weinberg operator gives a Majorana mass f v^2/Lambda from the same vacuum. It needs B-L (lepton-number) conservation as an added reading; SM2.2 is scored 'live, given B-L conservation'.
+- SM4's non-meeting of the couplings is the Standard Model's own statement and cannot test Hypothesis 6', whose unification lies before the start; SM1 bounds superpartner masses and cannot exclude them.
 - SM2.4 tests the W mass 'with the Standard Model's loop corrections': GUID adds nothing to them, so the test is the Standard Model's, inherited.
 - SM1's 'holds as a reading' cannot become 'holds': null searches bound masses, they do not exclude a spin.
 
@@ -171,6 +179,8 @@ Notes:
 - `cms_hee`: CMS Collaboration, Phys. Lett. B 846 (2023) 137783, arXiv:2208.00265. Read: arXiv abstract and full text. Value: B(H -> ee) < 3.0e-4 (95% CL), |kappa_e| < 240; SM prediction B ~ 5e-9.
 - `antusch`: S. Antusch, K. Hinze, S. Saad, 'Updated running quark and lepton parameters at various scales', arXiv:2510.01312. Read: arXiv HTML (inputs and Eq. 4). Value: PDG 2024 inputs m_b(m_b) = 4.183 +- 0.004 GeV, M_tau = 1776.93 +- 0.09 MeV, M_mu = 105.6583755 MeV, M_e = 0.51099895000 MeV, alpha_s(M_Z) = 0.1180 +- 0.0009; MS-bar Yukawas at M_Z: y_t = 0.967 +- 0.004, y_b = 1.630e-2, y_c = 3.56e-3, y_tau = 0.99378e-2, y_mu = 5.85042e-4, y_e = 2.77713e-6.
 - `top_comb`: ATLAS and CMS Collaborations, Phys. Rev. Lett. 132 (2024) 261902, arXiv:2402.08713. Read: arXiv abstract. Value: m_t = 172.52 +- 0.14 (stat) +- 0.30 (syst) GeV, total 0.33 GeV.
+- `weinberg1979`: S. Weinberg, Phys. Rev. Lett. 43, 1566 (1979). Read: through E. Ma, arXiv:0905.0221, Sect. II and ref. [4] (arXiv full text). Value: the unique dimension-five operator of the Standard Model, (L Phi)(L Phi)/Lambda, gives a Majorana neutrino mass f v^2 / Lambda once the Higgs field has its vacuum value.
+- `ma2009`: E. Ma, 'Neutrino mass: mechanisms and models', arXiv:0905.0221 (2009). Read: arXiv full text, Sect. II. Value: 'all Majorana neutrino masses in the SM are necessarily seesaw: for v fixed, m_nu goes down as Lambda goes up'.
 - `kamland`: KamLAND-Zen Collaboration, Phys. Rev. Lett. 135, 262501 (2025), arXiv:2406.11438. Read: arXiv abstract. Value: T_1/2(0vbb, Xe-136) > 3.8e26 yr (90% CL); m_bb < 28-122 meV.
 - `legend200`: LEGEND Collaboration, arXiv:2505.10440, doi:10.1103/25tk-nctn (2025). Read: arXiv abstract. Value: GERDA + MAJORANA DEMONSTRATOR + LEGEND-200 combined: T_1/2(Ge-76) > 1.9e26 yr (90% CL), sensitivity 2.8e26 yr; m_bb < 75-200 meV.
 - `legend1000`: LEGEND Collaboration, 'LEGEND-1000 preconceptual design report', arXiv:2107.11462. Read: arXiv abstract. Value: 99.7%-CL discovery sensitivity T_1/2 = 1.3e28 yr; m_bb upper limit 9-21 meV.
@@ -235,6 +245,8 @@ Notes:
 - OK: electron term with alpha frozen at alpha0 equals (3 alpha0 / 2pi) ln(M_Z / m_e) + alpha0/pi
 - OK: Coulomb self-energy of a dipole charge distribution: quadrature equals (5/32) alpha Lambda (0.961 MeV)
 - OK: the classical Coulomb estimate lies inside E_em +- its error (cross-check of the scale) (0.96 MeV vs 0.63 +- 0.40)
+- OK: low-energy matching: with every low-energy mass fixed R is the proton's electromagnetic share alone; with only the electron's fixed it is d ln m_p / d ln alpha
+- OK: the two matchings bracket the window's lower edge: |R(M_Z)| > 1e-2 and the low-energy values lie within 1 sigma of 1e-3
 - OK: unification relation of Ferreira et al. with R ~ 30, S ~ 160 gives Delta mu/mu = -24.3 Delta alpha/alpha
 - OK: line fit: for R -> 0 the alpha estimate is the alpha datum alone
 - OK: Earth's surface potential G M / (R c^2) and the Sun's annual change 2 e G M_sun / (AU c^2) are both below 1e-9

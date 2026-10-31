@@ -86,6 +86,11 @@ CITATIONS = {
     "top_comb": dict(ref="ATLAS and CMS Collaborations, Phys. Rev. Lett. 132 (2024) 261902, arXiv:2402.08713", read="arXiv abstract",
                      value="m_t = 172.52 +- 0.14 (stat) +- 0.30 (syst) GeV, total 0.33 GeV"),
     # SM2b
+    "weinberg1979": dict(ref="S. Weinberg, Phys. Rev. Lett. 43, 1566 (1979)", read="through E. Ma, arXiv:0905.0221, Sect. II and ref. [4] "
+                         "(arXiv full text)", value="the unique dimension-five operator of the Standard Model, (L Phi)(L Phi)/Lambda, gives a "
+                                                "Majorana neutrino mass f v^2 / Lambda once the Higgs field has its vacuum value"),
+    "ma2009": dict(ref="E. Ma, 'Neutrino mass: mechanisms and models', arXiv:0905.0221 (2009)", read="arXiv full text, Sect. II",
+                   value="'all Majorana neutrino masses in the SM are necessarily seesaw: for v fixed, m_nu goes down as Lambda goes up'"),
     "kamland": dict(ref="KamLAND-Zen Collaboration, Phys. Rev. Lett. 135, 262501 (2025), arXiv:2406.11438", read="arXiv abstract",
                     value="T_1/2(0vbb, Xe-136) > 3.8e26 yr (90% CL); m_bb < 28-122 meV"),
     "legend200": dict(ref="LEGEND Collaboration, arXiv:2505.10440, doi:10.1103/25tk-nctn (2025)", read="arXiv abstract",
@@ -211,17 +216,26 @@ def fmt(x, d=3):
     return f"{x:.{d}g}" if 1e-3 <= abs(x) < 1e4 else f"{x:.{d - 1}e}"
 
 
+NOT_SENSITIVE = {"SM3.2", "SM3.4", "SM3.5", "SM3.6"}      # scored, but the data lie far from where GUID differs (see sec:scoring)
+GUID_SPECIFIC = {"SM2b.1", "SM2b.2", "SM2b.3", "SM2b.7", "SM3.1", "SM3.1b", "SM3.2", "SM3.4", "SM3.5", "SM3.6", "SM3.7"}
+
+
 def row(rid, statement, guid, data, refs, measure, test, verdict, note="", pull=None, scored=True):
-    """test: 'OK' / 'FAIL' (scored) or 'INFO'. verdict: the paper's verdict word."""
+    """test: 'OK' / 'FAIL' (scored) or 'INFO'. verdict: the paper's verdict word. scoring_class follows sec:scoring of the paper:
+    'scored', 'not yet sensitive' (scored, but far from where GUID differs) or 'INFO'; share says whether GUID shares the statement
+    with the Standard Model (or LambdaCDM) or makes it alone."""
     if not scored:
         test = "INFO"
+    sclass = "INFO" if not scored else ("not yet sensitive" if rid in NOT_SENSITIVE else "scored")
+    share = "GUID-specific" if rid in GUID_SPECIFIC else "shared with the Standard Model or LambdaCDM"
     r = dict(id=rid, block=rid.split(".")[0], statement=statement, guid=guid, data=data, refs=refs, measure=measure, test=test,
-             verdict=verdict, note=note, pull=None if pull is None else float(pull), scored=bool(scored))
+             verdict=verdict, note=note, pull=None if pull is None else float(pull), scored=bool(scored), scoring_class=sclass,
+             share=share)
     ROWS.append(r)
     print(f"\n[{rid}] {statement}\n     GUID : {guid}\n     data : {data}   [{', '.join(refs)}]\n     test : {measure}")
     if note:
         print(f"     note : {note}")
-    print(f"{test:<4} verdict: {verdict}")
+    print(f"{test:<4} verdict: {verdict}   [{sclass}; {share}]")
     return r
 
 
@@ -254,7 +268,7 @@ chk("v = (sqrt2 G_F)^(-1/2) = 246.22 GeV", abs(v_H - 246.2196) < 1e-3, f"{v_H:.4
 
 # =================================================================================================================================
 print("\n" + "=" * 110 + "\nSM1  The spin ladder: no elementary spin-3/2 or spin-2 quantum\n" + "=" * 110)
-SM1 = [("SM1.1", "Supersymmetry, whose gravitino is spin 3/2, through its coloured superpartners", "none (SM1 excludes superpartners)",
+SM1 = [("SM1.1", "Supersymmetry, whose gravitino is spin 3/2, through its coloured superpartners", "none (no elementary spin-3/2 quantum)",
         "gluino > 2.30 TeV, squarks > 1.85 TeV (95% CL, simplified models, massless LSP)", ["atlas_susy"]),
        ("SM1.2", "Spin-2 Kaluza-Klein graviton (Randall-Sundrum) in diphoton", "none (no graviton as a quantum)",
         "RS1 excluded below 4.5 TeV (k/M_Pl = 0.1), 3.9 TeV (0.05), 2.2 TeV (0.01)", ["atlas_diphoton"]),
@@ -421,15 +435,19 @@ chk("m_bb band: closed-form min/max equal a scan over both Majorana phases", ok_
 ibo_min, ibo_max = mbb_range(0.0, "IO")
 print(f"Majorana m_bb (if the neutrinos were Majorana): IO band at m_light = 0: {ibo_min * 1e3:.1f} to {ibo_max * 1e3:.1f} meV; "
       f"NO at m_light = 0: {mbb_range(0, 'NO')[0] * 1e3:.2f} to {mbb_range(0, 'NO')[1] * 1e3:.2f} meV")
-row("SM2b.1", "No neutrinoless double-beta decay (Xe-136)", "m_bb = 0: no signal at any exposure",
-    "T_1/2 > 3.8e26 yr (90%); m_bb < 28-122 meV", ["kamland"], "no signal", "OK", "holds")
+row("SM2b.0", "Does 'only the Higgs vacuum grants rest mass' imply Dirac neutrinos?", "only with B-L conserved (an added reading)",
+    "the Weinberg operator (L Phi)(L Phi)/Lambda gives a Majorana mass f v^2/Lambda from the same vacuum", ["weinberg1979", "ma2009"],
+    "Hypothesis 1' alone allows Majorana masses", "INFO", "the Dirac step needs B-L conservation", scored=False,
+    note="B-L conservation forbids every Majorana mass and allows the B-L-conserving proton decay of SM4")
+row("SM2b.1", "No neutrinoless double-beta decay (Xe-136)", "m_bb = 0: no signal at any exposure (given B-L conservation)",
+    "T_1/2 > 3.8e26 yr (90%); m_bb < 28-122 meV", ["kamland"], "no signal", "OK", "holds, given B-L conservation")
 row("SM2b.2", "No neutrinoless double-beta decay (Ge-76, GERDA + MAJORANA + LEGEND-200)", "no signal",
-    "T_1/2 > 1.9e26 yr (90%); m_bb < 75-200 meV", ["legend200"], "no signal", "OK", "holds")
+    "T_1/2 > 1.9e26 yr (90%); m_bb < 75-200 meV", ["legend200"], "no signal", "OK", "holds, given B-L conservation")
 row("SM2b.3", "What the next generation can do", "a signal at any level refutes SM2b",
     f"LEGEND-1000 3-sigma discovery at 1.3e28 yr (m_bb ~ 9-21 meV); nEXO 1.35e28 yr; Majorana IO band >= {ibo_min * 1e3:.1f} meV",
     ["legend1000", "nexo", "nufit6"], "if the ordering is inverted and neutrinos were Majorana, a signal is expected inside the reach",
-    "INFO", "live", scored=False, note="for normal ordering a Majorana m_bb can be far below any planned reach, so a null result does not "
-                                          "establish Dirac neutrinos")
+    "INFO", "live, given B-L conservation", scored=False, note="for normal ordering a Majorana m_bb can be far below any planned reach, "
+                                                                "so a null result does not establish Dirac neutrinos")
 # N_eff: decoupled right-handed partners add nothing (pure SM interactions); thermalised partners that decoupled above the split add
 # 3 (g*s(nu decoupling) / g*s(above the top))^(4/3) = 3 (10.75 / 106.75)^(4/3).
 Neff_SM = 3.0440
@@ -450,8 +468,8 @@ row("SM2b.6", "Sum of neutrino masses: cosmology against the oscillation minimum
     f"the NO minimum lies {0.0642 - sum_NO:.4f} eV below the 95% bound; IO's lies above it", "OK", "holds (NO); inherited tension",
     note="the Feldman-Cousins limit 0.053 eV and the effective-mass analysis (3 sigma) breach the oscillation minimum: a tension of "
          "LambdaCDM with oscillations, not of GUID")
-row("SM2b.7", "Lepton number conserved", "no Majorana mass anywhere", "no 0vbb signal (SM2b.1, SM2b.2)", ["kamland", "legend200"],
-    "consistent", "INFO", "live", scored=False)
+row("SM2b.7", "B-L conserved (an added reading of Axiom 3: B-L is a count every reader sees)", "no Majorana mass anywhere",
+    "no 0vbb signal (SM2b.1, SM2b.2)", ["kamland", "legend200"], "consistent", "INFO", "added reading; live", scored=False)
 SM2b = dict(dm21=dm21, dm31_NO=dm31_NO, dm32_IO=dm32_IO, sum_min_NO=sum_NO, sum_min_IO=sum_IO, mbb_IO_at_0=[ibo_min, ibo_max],
             y_nu3_NO_min=math.sqrt(2) * math.sqrt(dm31_NO) * 1e-9 / v_H,
             mbb_NO_at_0=list(mbb_range(0, "NO")), dNeff_thermal=dNeff_th, Neff_SM=Neff_SM)
@@ -557,6 +575,11 @@ def R_of(**kw):
 
 R0, dp0, parts0 = R_of()
 de0 = dln_me()
+# Alternative matching (not the one Hypothesis 4 selects, see SM3.1b): the low-energy masses held fixed. (i) All of them (electron pole
+# mass and the light-quark masses at 2 GeV): only the proton's electromagnetic self-energy moves. (ii) Only the electron's low-energy mass,
+# with the quark Yukawas still fixed at M_Z.
+R_low_all = parts0["em"]
+R_low_e = dp0
 f_hof = {"u": F_BMW["u"] * 59.1 / 37.4, "d": F_BMW["d"] * 59.1 / 37.4, "s": F_BMW["s"]}
 VAR = {
     "proton electromagnetic self-energy +-0.40 MeV": E_em_err / m_p,
@@ -567,6 +590,9 @@ VAR = {
     "two-loop QED anomalous dimension, O(alpha/pi) relative": de0 * alpha0 / math.pi,
 }
 sig_R = math.sqrt(sum(x**2 for x in VAR.values()))
+sig_low_all = E_em_err / m_p
+sig_low_e = math.sqrt((E_em_err / m_p) ** 2 + VAR["sigma terms (BMW 2020 vs sigma_piN = 59.1 MeV)"] ** 2 +
+                      VAR["Lambda^(3) fixed vs alpha_s(M_Z) fixed"] ** 2)
 R_env = sorted([R_of(mu0=mW_ref)[0], R_of(mu0=v_H)[0], R_of(lam_fixed="alpha_s")[0], R_of(f=f_hof)[0], R0])
 print(f"d ln m_p / d ln alpha = {dp0:.3e} (electromagnetic {parts0['em']:.2e}, light-quark masses {parts0['quark_masses']:.2e}); "
       f"d ln M_e / d ln alpha = {de0:.4f} (running {c3 * I2(m_e, mZ):.4f}, pole {alpha0 / math.pi:.4f})")
@@ -586,13 +612,24 @@ CHOICES.append("SM3: the electromagnetic self-energy of the proton is taken as G
 CHOICES.append("SM3: the preregistration does not say at which scale the Yukawa couplings are held fixed; M_Z (where alpha is 'born near "
                "1/128') is the baseline, and M_W to v is the stated systematic.")
 in_window = 1e-3 <= abs(R0) <= 1e-2
-row("SM3.1", "R = dln mu / dln alpha when only the Maxwell coefficient varies (preregistered: of order 1e-3 to 1e-2)",
-    "|R| in [1e-3, 1e-2]", f"derived R = {R0:.4f} +- {sig_R:.4f}", ["gasser_leutwyler", "glr2021", "bmw_sigma", "steinhauser", "dhmz"],
+chk("low-energy matching: with every low-energy mass fixed R is the proton's electromagnetic share alone; with only the electron's "
+    "fixed it is d ln m_p / d ln alpha", R_low_all == parts0["em"] and abs(R_low_e - (R0 + de0)) < 1e-15)
+chk("the two matchings bracket the window's lower edge: |R(M_Z)| > 1e-2 and the low-energy values lie within 1 sigma of 1e-3",
+    abs(R0) > 1e-2 and abs(R_low_all - 1e-3) < sig_low_all and abs(R_low_e - 1e-3) < sig_low_e)
+row("SM3.1", "R = dln mu / dln alpha when only the Maxwell coefficient varies (preregistered: of order 1e-3 to 1e-2); Yukawas fixed at "
+    "M_Z, the matching Hypothesis 4 selects", "|R| in [1e-3, 1e-2]", f"derived R = {R0:.4f} +- {sig_R:.4f}", ["gasser_leutwyler", "glr2021", "bmw_sigma", "steinhauser", "dhmz"],
     f"|R| = {abs(R0):.3f} lies {'inside' if in_window else 'outside'} the window, a factor {abs(R0) / 1e-2:.1f} above its top",
-    "OK" if in_window else "FAIL", "holds" if in_window else "refuted as stated (by derivation); corrected value derived",
+    "OK" if in_window else "FAIL", "holds" if in_window else "refuted under the M_Z matching (by derivation); corrected value derived",
     note=f"the electron's electromagnetic share (its QED running from the electroweak scale plus the pole conversion, {100 * de0:.1f}% of "
          f"m_e) dominates; the proton's ({100 * dp0:.2f}%) was the estimate behind the window. The physical claim that |R| is far below "
          "unification's 20-50 holds.")
+row("SM3.1b", "Same with the low-energy masses held fixed (a matching Hypothesis 4 excludes: it needs the scalar on the mass terms)",
+    "|R| in [1e-3, 1e-2]", f"R = {R_low_all:+.1e} +- {sig_low_all:.1e} (all low-energy masses fixed); {R_low_e:+.1e} +- {sig_low_e:.1e} "
+    "(only the electron's)", ["gasser_leutwyler", "bmw_sigma"], "of order 1e-3: at the window's lower edge, within 1 sigma of 1e-3",
+    "INFO", "inside the window (as an order of magnitude)", scored=False,
+    note="holding the low-energy electron mass fixed while alpha varies requires d ln y_e / d ln alpha = -" + f"{de0:.3f}" + ", a coupling "
+         "of the scalar to the electron's mass term; Hypothesis 4 lets the scalar multiply only the Maxwell term, so it fixes the Yukawas "
+         "where the Maxwell term is defined, at the electroweak scale")
 # --- data: astrophysics near z ~ 1 and clocks
 R_unif = 0.8 * 30 - 0.3 * (1 + 160)          # Ferreira et al., typical GUT values
 chk("unification relation of Ferreira et al. with R ~ 30, S ~ 160 gives Delta mu/mu = -24.3 Delta alpha/alpha", abs(R_unif + 24.3) < 1e-9)
@@ -611,9 +648,9 @@ def line_fit(R, ax, sx, my, sy):
     return xh, sig, chi2, stats.chi2.sf(chi2, 1)
 
 
-astro = {name: line_fit(R, a_esp, s_esp, 0.0, s_meth) for name, R in (("GUID", R0), ("unification", R_unif))}
-clock = {name: line_fit(R, a_clk, s_clk, m_clk, s_mclk) for name, R in (("GUID", R0), ("unification", R_unif))}
-for name in ("GUID", "unification"):
+astro = {name: line_fit(R, a_esp, s_esp, 0.0, s_meth) for name, R in (("GUID", R0), ("unification", R_unif), ("low-energy matching", R_low_all))}
+clock = {name: line_fit(R, a_clk, s_clk, m_clk, s_mclk) for name, R in (("GUID", R0), ("unification", R_unif), ("low-energy matching", R_low_all))}
+for name in ("GUID", "unification", "low-energy matching"):
     xh, sg, c2, pv = astro[name]
     print(f"z ~ 1, {name:11s}: Delta alpha/alpha = ({xh * 1e6:+.3f} +- {sg * 1e6:.3f}) ppm along the line, chi2 = {c2:.2f}, p = {pv:.2f}")
     xh, sg, c2, pv = clock[name]
@@ -680,6 +717,8 @@ row("SM3.10", "a_mu: final Fermilab-based world average against the 2025 Standar
     "116592071.5(14.5)e-11 vs 116592033(62)e-11", ["fnal_gm2", "wp25"], f"pull = {p_amu:+.2f} sigma", "OK" if abs(p_amu) < Z95 else "FAIL",
     "holds", pull=p_amu)
 SM3 = dict(R=R0, sigma_R=sig_R, R_envelope=[R_env[0], R_env[-1]], dlnmp=dp0, dlnmp_parts=parts0, dlnme=de0,
+           R_low_energy_all=R_low_all, sigma_low_energy_all=sig_low_all, R_low_energy_electron_only=R_low_e,
+           sigma_low_energy_electron_only=sig_low_e, yukawa_shift_needed_for_low_energy_matching=-de0,
            dlnme_running=c3 * I2(m_e, mZ), dlnme_pole=alpha0 / math.pi, ln_MZ_over_me=L_e, R_at_mu0=dict(MW=R_of(mu0=mW_ref)[0], v=R_of(mu0=v_H)[0]),
            R_alpha_s_fixed=R_of(lam_fixed="alpha_s")[0], budget=VAR, R_unification=R_unif,
            ratio_unification_to_GUID_min=20 / max(abs(R_env[0]), abs(R_env[-1])), ratio_unification_to_GUID_typical=abs(R_unif / R0),
@@ -699,6 +738,11 @@ B1_MS = np.array([33 / 5, 1.0, -3.0])
 B2_MS = np.array([[199 / 25, 27 / 5, 88 / 5], [9 / 5, 25.0, 24.0], [11 / 5, 9.0, 14.0]])
 DT_MS = np.array([26 / 5, 6.0, 4.0])
 M_SUSY, TANB = 2000.0, 10.0
+CHOICES.append("SM3: the argument that Hypothesis 4 selects the M_Z matching (the Yukawas, not the low-energy masses, are held fixed) "
+               "was written after R had been computed and after a reader pointed out that the low-energy matching puts R inside the "
+               "window; the M_Z baseline itself was chosen before computing R.")
+CHOICES.append("SM2b: the Dirac step is made conditional on B-L conservation after a reader pointed out the Weinberg operator; the "
+               "data and their outcome are unchanged.")
 CHOICES.append("SM3: the two a_e rows (alpha from Rb and from Cs) are scored separately although they show one tension, the disagreement "
                "of the two alpha determinations; this was decided after both were seen to fail.")
 CHOICES.append("SM4: the smallest spread is evaluated at the pairwise crossings rather than on the grid, after the grid minimum was seen to "
@@ -837,11 +881,14 @@ print(f"smallest spread: SM {res['SM']['dmin']:.2f} +- {sd['SM']:.3f} (inputs) +
 row("SM4.1", "Standard Model couplings do not meet at one point (two loops)", "no single meeting point",
     f"smallest spread of 1/alpha_i = {res['SM']['dmin']:.2f} at {res['SM']['mu_star']:.1e} GeV",
     ["alpha_mz", "s2w", "antusch", "buttazzo"], f"{res['SM']['dmin'] / sig_SM:.0f} sigma from zero (inputs and a theory allowance "
-    f"{higher:.2f})", "OK" if res["SM"]["dmin"] / sig_SM > Z95 else "FAIL", "holds",
-    note="the Standard Model shares this statement")
+    f"{higher:.2f})", "OK" if res["SM"]["dmin"] / sig_SM > Z95 else "FAIL", "holds as a reading (the Standard Model's own statement)",
+    note="the Standard Model's own statement since Amaldi et al.; it does not test Hypothesis 6', which places any unification before "
+         "the start")
 row("SM4.2", "Exact unification would need alpha_s(M_Z) of", "not 0.118 (no unification)", f"SM: {as_SM:.4f}; measured {as_MZ} +- {as_err}",
-    ["antusch", "denterria"], f"{(as_MZ - as_SM) / as_err:.0f} sigma (input error only)", "OK", "holds")
-row("SM4.3", "Contrast: MSSM with M_SUSY = 2 TeV (excluded by SM1)", "not GUID",
+    ["antusch", "denterria"], f"{(as_MZ - as_SM) / as_err:.0f} sigma (input error only)", "OK",
+    "holds as a reading (the Standard Model's own statement)")
+row("SM4.3", "Contrast: MSSM with M_SUSY = 2 TeV (content GUID does not have; SM1 bounds such partners, it cannot exclude them)",
+    "not GUID",
     f"smallest spread {res['MSSM']['dmin']:.3f} at {res['MSSM']['mu_star']:.1e} GeV; needs alpha_s(M_Z) = {as_MS:.4f}",
     ["martin_vaughn", "martin_primer"], f"alpha_s off by {(as_MS - as_MZ) / as_err:+.1f} sigma of the input ({100 * (as_MS / as_MZ - 1):+.1f}%)",
     "INFO", "contrast", scored=False, note=f"meets within the input errors at this threshold (no GUT or superpartner threshold corrections, no "
@@ -863,10 +910,10 @@ chk("proton lifetime estimate reproduces Part I / D8.1: 4.6e35 yr at M_X = 1e16 
     and abs(MX_bound / 4.8e15 - 1) < 0.03)
 row("SM4.4", "Proton decay only from a unification before the start", "possible, not required",
     "tau/B(p -> e+ pi0) > 2.4e34 yr (90%)", ["superk"], f"M_X > {MX_bound:.1e} GeV (alpha_G = 1/40), {MX_bound_SM:.1e} GeV (alpha_G = "
-    f"1/{1 / aG_SM:.1f}); cited as data:D8.1", "OK", "live", scored=False)
+    f"1/{1 / aG_SM:.1f}); cited as data:D8.1", "OK", "untested (Hypothesis 6'; M_X is free)", scored=False)
 row("SM4.5", "A unification at the SM's alpha1 = alpha2 crossing", "excluded (no unification within causality)",
     f"crossing at {res['SM']['c12'][0]:.1e} GeV would give tau ~ {tau_at_c12:.0e} yr", ["superk"],
-    f"{2.4e34 / tau_at_c12:.0e} times below the bound", "OK", "holds")
+    f"{2.4e34 / tau_at_c12:.0e} times below the bound", "OK", "holds as a reading (the Standard Model's own statement)")
 SM4 = dict(inputs=dict(inv_alpha_hat=inv_ahat, s2w=s2w, alpha_s=as_MZ, yt_MZ=yt_MZ, M_SUSY=M_SUSY, tan_beta=TANB),
            inverse_alphas_at_MZ=x0, significance_SM=res["SM"]["dmin"] / sig_SM, alpha_s_deficit_percent=100 * (1 - as_SM / as_MZ),
            SM=dict((k, v) for k, v in res["SM"].items() if k not in ("t", "y")),
@@ -1131,17 +1178,28 @@ RESULTS.mkdir(parents=True, exist_ok=True)
 VERDICTS = [
     ("SM1", "spin ladder: no elementary spin-3/2 or spin-2 quantum", "holds as a reading", "SM1.1-SM1.4; the Standard Model says the same"),
     ("SM2.1", "couplings proportional to mass, kappa = 1", "holds (W, Z, t, b, tau, mu); untested (c, e, u, d, s, nu)", "SM2a.1-SM2a.9"),
-    ("SM2.2", "Dirac neutrinos, m_bb = 0, lepton number conserved", "live (holds against every 0vbb search)", "SM2b.1-SM2b.7"),
+    ("SM2.2", "Dirac neutrinos, m_bb = 0, lepton number conserved", "live, given B-L conservation (an added reading; Hypothesis 1' "
+     "alone allows Majorana masses through the Weinberg operator); holds against every 0vbb search", "SM2b.0-SM2b.7"),
     ("SM2.3", "photon and gluons massless", "holds as a reading", "SM2c.1"),
     ("SM2.4", "W and Z masses from the vacuum (rho = 1), with SM loops", "holds; CDF 2022 is an inherited tension", "SM2d.1-SM2d.6"),
-    ("SM3", "only alpha varies; R of order 1e-3 to 1e-2", f"window refuted by derivation (R = {R0:.3f} +- {sig_R:.3f}); live against data",
+    ("SM3", "only alpha varies; R of order 1e-3 to 1e-2", f"window refuted under the M_Z matching that Hypothesis 4 selects (R = {R0:.3f} "
+     f"+- {sig_R:.3f}); inside it under the low-energy matching (R = {R_low_all:+.1e}); live against data (not yet sensitive)",
      "SM3.1-SM3.5"),
     ("SM3 side", "scalar's g-2 contribution negligible", "derived; holds (a_mu); a_e limited by the Cs-Rb alpha discrepancy (inherited)",
      "SM3.6-SM3.10"),
-    ("SM4", "no unification within causality", "holds (two-loop SM misses by many sigma); proton decay live", "SM4.1-SM4.5"),
+    ("SM4", "no unification within causality", "holds as a reading (the Standard Model's own statement); Hypothesis 6' untested",
+     "SM4.1-SM4.5"),
     ("SM5", "alpha born near 1/128 at m_Z, runs to 1/137; crossover", "holds", "SM5.1-SM5.4"),
 ]
-summary = dict(scored=len(scored), consistent=n_ok, failed=[r["id"] for r in fails], checks=len(CHECKS), checks_passed=c_ok, v_GeV=v_H,
+tally = {}
+for r in scored:
+    key = ("not yet sensitive" if r["scoring_class"] == "not yet sensitive" else
+           ("GUID-specific, sensitive" if r["share"] == "GUID-specific" else "shared with the Standard Model or LambdaCDM"))
+    tally.setdefault(key, {"rows": 0, "OK": 0, "FAIL": 0})
+    tally[key]["rows"] += 1
+    tally[key][r["test"]] += 1
+summary = dict(scored=len(scored), consistent=n_ok, failed=[r["id"] for r in fails], checks=len(CHECKS), checks_passed=c_ok, tally=tally,
+               v_GeV=v_H,
                gstar_neutrino_decoupling=10.75, gstar_above_top=106.75)
 out = dict(script="docs/simulation/standard_model.py", verified_on=DATE_VERIFIED, preregistration="docs/simulation/sm_preregistration.md",
            criterion="test OK = consistent at 95% (|pull| < 1.96 or inside the allowed region); verdict words as in the paper",
@@ -1183,17 +1241,25 @@ L = ["# GUID's Standard Model statements SM1 to SM5 against data\n",
      "## Verdicts\n", "| statement | content | verdict | rows |", "|---|---|---|---|"]
 L += [f"| {a} | {esc(b)} | {esc(c)} | {d} |" for a, b, c, d in VERDICTS]
 L += ["\n## Live predictions\n",
-      "- **SM2b:** any neutrinoless double-beta signal refutes GUID's Dirac neutrinos. LEGEND-1000 (3-sigma discovery at 1.3e28 yr, m_bb "
+      "- **SM2b (given B-L conservation, an added reading):** any neutrinoless double-beta signal refutes GUID's Dirac neutrinos. "
+      "Hypothesis 1' alone does not imply them: the Weinberg operator gives a Majorana mass from the same Higgs vacuum. LEGEND-1000 (3-sigma discovery at 1.3e28 yr, m_bb "
       "~ 9-21 meV) and nEXO (1.35e28 yr) reach the Majorana band of the inverted ordering (>= " + f"{ibo_min * 1e3:.1f}" + " meV) for "
       "most nuclear matrix elements.",
-      "- **SM3:** if alpha is ever seen to vary, mu must vary " + f"{abs(R0):.3f}" + " times as much and with the opposite sign; a "
-      "detected Delta mu/mu much larger than that (as unification predicts, |R| ~ 20-50) refutes Hypothesis 4.",
-      "- **SM4:** proton decay is allowed only from a unification before the start; Hyper-Kamiokande is the test (data:D8.1).\n",
+      "- **SM3:** if alpha is ever seen to vary, mu must vary " + f"{abs(R0):.3f}" + " times as much and with the opposite sign (M_Z "
+      "matching; " + f"{R_low_all:+.1e}" + " times under the low-energy matching); a detected Delta mu/mu much larger than that (as "
+      "unification predicts, |R| ~ 20-50) refutes Hypothesis 4.",
+      "- **SM4:** Hypothesis 6' is untested: proton decay is allowed only from a unification before the start, with M_X free; "
+      "Hyper-Kamiokande is the test (data:D8.1). The non-meeting of the couplings is the Standard Model's own statement.\n",
       "## Failed or refuted\n",
       "- **SM3.1, the preregistered window for R.** The careful derivation gives R = " + f"{R0:.4f} +- {sig_R:.4f}" + ", outside "
       "'of order 1e-3 to 1e-2' by a factor " + f"{abs(R0) / 1e-2:.1f}" + ". The estimate behind the window used the proton's "
       "electromagnetic mass; the electron's is larger in proportion (its QED self-energy from the electroweak scale down, " +
-      f"{100 * de0:.1f}% of m_e against {100 * dp0:.2f}% for the proton). The window is refuted by derivation, not by data; the corrected R is far from unification's and consistent with data.",
+      f"{100 * de0:.1f}% of m_e against {100 * dp0:.2f}% for the proton). The window is refuted under the M_Z matching, by derivation, not by data. "
+      "Under the low-energy matching (the electron's low-energy mass held fixed) R = " + f"{R_low_all:+.1e} +- {sig_low_all:.1e}" +
+      " (all low-energy masses) or " + f"{R_low_e:+.1e} +- {sig_low_e:.1e}" + " (only the electron's), of order 1e-3 and inside the "
+      "window. Hypothesis 4 selects the M_Z matching: holding the low-energy electron mass fixed needs the scalar on the electron's mass "
+      "term (d ln y_e / d ln alpha = " + f"{-de0:.3f}" + "), which Hypothesis 4 excludes. Either way R is far from unification's and "
+      "consistent with data.",
       ] + [f"- **{r['id']}** {esc(r['statement'])}: {esc(r['measure'])} ({esc(r['verdict'])})." for r in fails if r["id"] != "SM3.1"]
 L += ["\n## All rows\n", "| ID | statement | GUID | data | sources | test | result | verdict |", "|---|---|---|---|---|---|---|---|"]
 for r in ROWS:
@@ -1229,8 +1295,14 @@ L += ["\n## Method\n",
       "Erler's paired values.\n",
       "## Choices made after seeing the data\n"] + [f"- {c}" for c in CHOICES] + [
       "\n## Ill-posed points in the preregistration\n",
-      "- SM3's window '1e-3 to 1e-2' is numerically wrong (see above); the preregistration also does not fix the scale at which the "
-      "Yukawas are held, which moves R by about +-0.002, too little to reach the window.",
+      "- SM3's window '1e-3 to 1e-2' depends on a matching the preregistration leaves open: it is wrong by a factor 4.5 under the M_Z "
+      "matching (Yukawas fixed where the Maxwell term is defined, which Hypothesis 4 selects) and right under the low-energy matching. "
+      "Within the electroweak matching, the scale (M_W to v) moves R by about +-0.002, too little to reach the window.",
+      "- SM2.2's step from 'only the Higgs vacuum grants rest mass' to Dirac neutrinos does not follow: the Weinberg operator gives a "
+      "Majorana mass f v^2/Lambda from the same vacuum. It needs B-L (lepton-number) conservation as an added reading; SM2.2 is scored "
+      "'live, given B-L conservation'.",
+      "- SM4's non-meeting of the couplings is the Standard Model's own statement and cannot test Hypothesis 6', whose unification lies "
+      "before the start; SM1 bounds superpartner masses and cannot exclude them.",
       "- SM2.4 tests the W mass 'with the Standard Model's loop corrections': GUID adds nothing to them, so the test is the Standard "
       "Model's, inherited.",
       "- SM1's 'holds as a reading' cannot become 'holds': null searches bound masses, they do not exclude a spin.\n",

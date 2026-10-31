@@ -1,53 +1,45 @@
-\section{Rotation curves: the stochastic remnant against SPARC}\label{sec:sparc}
+\section{Dark matter I: rotation curves against the stochastic remnant}\label{sec:sparc}
 
-Hypothesis~\ref{h:remnant} (Section~\ref{sec:darkmatter}) lets the frame's diffusion leave a remnant in the gravitational field. In the
-classical-quantum calculation of Oppenheim and Russo~\cite{oppenheimrusso} it is a term linear in the radius in the static potential of
-every mass, and Bridge~A (Section~\ref{sec:bridges}) fixes its size by the cosmological event horizon. A linear potential term adds the
-same centripetal acceleration at every radius. Rotation curves therefore test the remnant point by point, not only through the
-Tully--Fisher normalisation that Part~I used. We test it against the SPARC galaxies~\cite{lelli2016}, after reproducing the published
-radial acceleration relation (RAR)~\cite{mcgaugh2016} as a check of the pipeline. Bridge~A is refuted by the rotation-curve points
-themselves. A constant extra acceleration of any size is refuted as a description of the data: the observed excess rises as
-$g_{\rm bar}^{0.44}$, where a constant predicts slope zero.
+We test the stochastic remnant of Section~\ref{sec:darkmatter}, with its size fixed by Bridge~A (Eq.~\eqref{eq:bridgeA}) or left free,
+against the rotation curves of the SPARC galaxies; Primer~\ref{box:galaxy} gives the background.
 
-\subsection{The prediction and the comparison models}\label{sec:sparc-model}
+\subsection{The model tested}\label{sec:sparc-model}
 
-In the Newtonian limit of the metric of Ref.~\cite[Eq.~(18)]{oppenheimrusso}, the potential of a mass $M$ and its circular speed are
-\begin{equation}\label{eq:sparc-phi}
-\Phi(r)=-\frac{GM}{r}-\frac{\gamma_0}{2}-\frac{\gamma_1}{2}\,r-\frac{\gamma_2}{2}\,r^2,\qquad
-v^2=r\,\frac{\dd\Phi}{\dd r}=\frac{GM}{r}+\frac{|\gamma_1|}{2}\,r-\gamma_2\,r^2.
-\end{equation}
-Here $\gamma_2=\Lambda c^2/3>0$, the mean $\gamma_1<0$ is in units of acceleration ($c^2$ restored), and the constant $\gamma_0$ has no
-dynamical effect \tagH. In Ref.~\cite{oppenheimrusso} $\gamma_1$ is a boundary condition of the path integral, not a field sourced by
-local matter, so we take the remnant to be independent of how the baryons are distributed. At radius $R$ of a disc galaxy, the remnant as
-written in Section~\ref{sec:darkmatter} then predicts the centripetal acceleration
+The linear term of Eq.~\eqref{eq:stochpot} adds $|\gamma_1|/2$ to the centripetal acceleration at every radius, Eq.~\eqref{eq:vcirc}.
+In Ref.~\cite{oppenheimrusso}, $\gamma_1$ is a boundary condition of the path integral, not a field sourced by local matter. We therefore
+take it to be the same at every radius of a galaxy, whatever the distribution of its baryons. At radius $R$ of a disc galaxy the
+prediction is
 \begin{equation}\label{eq:sparc-model}
 g_{\rm model}(R)=g_{\rm bar}(R)+\tfrac12|\gamma_1|-\gamma_2 R ,
 \end{equation}
-where $g_{\rm bar}$ is the Newtonian acceleration of the observed stars and gas.
+where $g_{\rm bar}$ is the Newtonian acceleration of the observed stars and gas \tagH.
 
-\paragraph{The $\Lambda$ term and the turnover.} With $H_0=67.4$\,km\,s$^{-1}$\,Mpc$^{-1}$ and $\Omega_\Lambda=0.685$~\cite{planck18},
-$\gamma_2=3.27\times10^{-36}$\,s$^{-2}$. The term $\gamma_2R$ stays below $7\times10^{-4}$ of the observed acceleration at every point,
-and it moves the fitted $|\gamma_1|$ by $7\times10^{-5}$ of its value \chk{sparc:S2a}. For a point mass, $v$ has its minimum
-$v_*^4=2GM|\gamma_1|$ at $r_*=\sqrt{2GM/|\gamma_1|}$, and beyond it the curve rises as $\sqrt{|\gamma_1|r/2}$.
+\paragraph{The $\Lambda$ term and the turnover.} With the Planck 2018 value of $\Lambda$~\cite{planck18}, $\gamma_2=\Lambda c^2/3=
+3.27\times10^{-36}$\,s$^{-2}$. The term $\gamma_2R$ stays below $7\times10^{-4}$ of the observed acceleration at every point. It moves
+the fitted $|\gamma_1|$ by $7\times10^{-5}$ of its value \chk{sparc:S2a}. For a point mass the speed has its minimum $v_*$ at the turnover
+radius $r_*$ of Eq.~\eqref{eq:btf}; beyond it the curve rises as $\sqrt{|\gamma_1|r/2}$.
 
-\paragraph{The values tested.} (i) Bridge~A, $|\gamma_1|=0.9$ to $1.0\,cH_\infty=4.88$ to $5.42\times10^{-10}$\,m\,s$^{-2}$
-\chk{Q19}, with no free parameter. (ii) One universal fitted $|\gamma_1|$. (iii) The dwarf-galaxy scaling of
-Ref.~\cite{oppenheimrusso}, $|\gamma_1|(M)=g_0(1+M/10^{10}M_\odot)$ with $g_0\approx10^{-28}$\,m$^{-1}$ ($c=1$), i.e.\
-$8.99\times10^{-12}$\,m\,s$^{-2}$, taken over from conformal-gravity fits rather than derived.
+\paragraph{The values tested.}
+\begin{enumerate}[nosep,label=(\roman*)]
+\item Bridge~A, Eq.~\eqref{eq:bridgeA}: $|\gamma_1|=4.88\times10^{-10}$ ($\beta=0$) to $5.42\times10^{-10}$\,m\,s$^{-2}$
+($\beta\to-\infty$) \chk{Q19}, with no free parameter.
+\item One universal $|\gamma_1|$, fitted.
+\item The dwarf-galaxy scaling of Ref.~\cite{oppenheimrusso}, $|\gamma_1|(M)=g_0(1+M/10^{10}M_\odot)$, with $g_0\approx10^{-28}$\,m$^{-1}$
+in units $c=1$, i.e.\ $8.99\times10^{-12}$\,m\,s$^{-2}$. The authors take it over from conformal-gravity fits; it is not derived.
+\end{enumerate}
 
-\paragraph{Comparison models.} We compare with Newton, $g_{\rm model}=g_{\rm bar}$, and with the empirical RAR \tagP~\cite{mcgaugh2016}
+\paragraph{Comparison models.} We compare with Newton, $g_{\rm model}=g_{\rm bar}$, and with the empirical radial acceleration
+relation (RAR)~\cite{mcgaugh2016}, which has one acceleration scale $g_\dagger$ \tagP:
 \begin{equation}\label{eq:sparc-rar}
-g_{\rm model}=F(g_{\rm bar})=g_{\rm bar}\big/\big[1-\exp\big(-\sqrt{g_{\rm bar}/g_\dagger}\big)\big],
+g_{\rm model}=F(g_{\rm bar})=g_{\rm bar}\big/\big[1-\exp\big(-\sqrt{g_{\rm bar}/g_\dagger}\big)\big].
 \end{equation}
-which tends to $g_{\rm bar}$ for $g_{\rm bar}\gg g_\dagger$ and to the deep-MOND form $\sqrt{g_{\rm bar}g_\dagger}$~\cite{milgrom} for
-$g_{\rm bar}\ll g_\dagger$.
 
 \subsection{Data, error model and likelihood}\label{sec:sparc-data}
 
-\paragraph{Data and provenance.} SPARC~\cite{lelli2016} gives, at 3391 radii of 175 disc galaxies, the rotation speed $V_{\rm obs}$,
-its random error $\delta V$, and the speeds $V_{\rm gas}$ (with helium), $V_{\rm disk}$ and $V_{\rm bul}$ that each component would
-produce alone at unit mass-to-light ratio. Per galaxy it gives $D$, $i$, their errors, $L_{[3.6]}$, $M_{\rm HI}$, $V_{\rm flat}$ and a
-quality flag $Q$. The script reads the two public files, which are not in the repository, and stops if their SHA256 differs
+\paragraph{Data and provenance.} From SPARC~\cite{lelli2016} we use 175 disc galaxies and 3391 radii. At each radius we use the
+rotation speed $V_{\rm obs}$ and its random error $\delta V$. We also use the speeds $V_{\rm gas}$, $V_{\rm disk}$ and $V_{\rm bul}$ of
+the mass model at unit mass-to-light ratio. Per galaxy we use $D$, $i$ and their errors, $L_{[3.6]}$, $M_{\rm HI}$, $V_{\rm flat}$ and the
+quality flag $Q$. The two public files are not in the repository. The script checks their SHA256 and stops on a mismatch
 \chk{sparc:S0}:
 \begin{center}\footnotesize
 \begin{tabular}{@{}ll@{}}
@@ -55,7 +47,7 @@ quality flag $Q$. The script reads the two public files, which are not in the re
 \texttt{SPARC\_Lelli2016c.mrt} & \texttt{5aa0501f6b0d881fa579030e315e7b5b6ef561a5bd3a07472f9929c7e5728243}
 \end{tabular}
 \end{center}
-As in Ref.~\cite{mcgaugh2016}, $Q=3$ removes 12 galaxies and $i<30^\circ$ removes 10 more, leaving 153. The cut
+We apply the cuts of Ref.~\cite{mcgaugh2016}. $Q=3$ removes 12 galaxies and $i<30^\circ$ removes 10 more, which leaves 153. The cut
 $\delta V/V_{\rm obs}<0.1$ keeps 2696 of their 3168 points, from 147 galaxies \chk{sparc:S1}.
 
 \paragraph{Accelerations and errors.} With $\Upsilon_{\rm d}=0.5$ and $\Upsilon_{\rm b}=0.7$~\cite{mcgaugh2016},
@@ -70,36 +62,39 @@ $g_{\rm bar}$:
 +\Big(\frac{\delta D}{D}\Big)^2\Big]^{1/2},\qquad \delta g_{\rm bar}=\big[(0.1\,g_{\rm gas})^2+(0.25\,g_\star)^2\big]^{1/2}.
 \end{equation}
 The terms of $\delta g_{\rm bar}$ are a 10\% HI flux calibration and a 25\% scatter in $\Upsilon$. In dex the two errors average 0.104
-and 0.089 (Ref.~\cite{lelli2017}: 0.1 and 0.08). We work in $\log_{10}g$ because the dominant errors are multiplicative.
+and 0.089, against 0.1 and 0.08 in Ref.~\cite{lelli2017}. We work in $\log_{10}g$ because the dominant errors are multiplicative.
 
-\paragraph{Likelihood.} Let $r_i=\log_{10}g_{{\rm obs},i}-\log_{10}g_{{\rm model},i}$ be the residual of point $i$ for a model with $k$
-parameters, and $\sigma_{\rm obs}$, $\sigma_{\rm bar}$ the errors of Eq.~\eqref{eq:sparc-err} in dex. The primary likelihood, L1, is
-Gaussian with an effective variance:
+\paragraph{Likelihood.} The residual of point $i$ is $r_i=\log_{10}g_{{\rm obs},i}-\log_{10}g_{{\rm model},i}$. The primary likelihood,
+L1, is the Gaussian likelihood of Section~\ref{sec:scoring} in $r_i$, with the effective variance
 \begin{equation}\label{eq:sparc-like}
-\begin{gathered}
-\sigma_i^2=\sigma_{{\rm obs},i}^2+s_i^2\,\sigma_{{\rm bar},i}^2,\qquad s_i=\frac{\partial\log g_{\rm model}}{\partial\log g_{\rm bar}},\\
--2\ln\mathcal L=\sum_{i=1}^N\Big[\frac{r_i^2}{\sigma_i^2}+\ln(2\pi\sigma_i^2)\Big],\qquad \mathrm{BIC}=-2\ln\mathcal L_{\max}+k\ln N,
-\qquad N=2696.
-\end{gathered}
+\sigma_i^2=\sigma_{{\rm obs},i}^2+s_i^2\,\sigma_{{\rm bar},i}^2,\qquad s_i=\frac{\partial\log g_{\rm model}}{\partial\log g_{\rm bar}} .
 \end{equation}
-The variant L2 uses velocity errors plus an intrinsic floor $\sigma_{\rm int}$ fitted per model, which measures how much unexplained
-scatter each model needs. Points of one galaxy share its distance, inclination and $\Upsilon$ errors, so point-wise BIC differences overstate the evidence. We
-therefore take parameter ranges from a bootstrap over galaxies (1000 draws, fixed seed; brackets give the 16--84\% range), and we count
-galaxy by galaxy which model fits better.
+Here $\sigma_{\rm obs}$ and $\sigma_{\rm bar}$ are the errors of Eq.~\eqref{eq:sparc-err} in dex; the error in $g_{\rm bar}$ thus enters
+through the model's slope. The variant L2 uses the velocity errors plus an intrinsic floor $\sigma_{\rm int}$, fitted for each model. It
+measures how much unexplained scatter each model needs. Models are compared by $\Delta$BIC, as defined in Section~\ref{sec:scoring}, with
+$N=2696$ points.
+
+Points of one galaxy share its distance, inclination and $\Upsilon$ errors. Point-wise BIC differences therefore overstate the evidence.
+We take parameter ranges from a bootstrap over galaxies (1000 draws, fixed seed; brackets give the 16--84\% range), and we count galaxy by
+galaxy which model fits better.
 
 \subsection{The radial acceleration relation reproduced}\label{sec:sparc-rar}
 
-We fit Eq.~\eqref{eq:sparc-rar} by orthogonal-distance regression in $(\log g_{\rm bar},\log g_{\rm obs})$ with errors in both
-variables, as Refs.~\cite{mcgaugh2016,lelli2017} did; our implementation reproduces \texttt{scipy.odr} to $10^{-3}$. The galaxy cuts
-reproduce exactly (153). The public release has slightly more points than the 2016 version (3168 and 2696, against 3149 and 2693). The
-scatter reproduces: rms 0.133\,dex (published 0.13), Gaussian width 0.110 (0.11), and 0.130 expected from the errors (0.12)
-\chk{sparc:S1}. Figure~\ref{fig:sparc-rar-btfr}a shows the relation.
+We fit Eq.~\eqref{eq:sparc-rar} by orthogonal-distance regression in $(\log g_{\rm bar},\log g_{\rm obs})$, with errors in both
+variables, as Refs.~\cite{mcgaugh2016,lelli2017} did. Our implementation reproduces \texttt{scipy.odr} to $10^{-3}$.
+\begin{itemize}[nosep]
+\item The galaxy cuts reproduce exactly (153).
+\item The public release has slightly more points than the 2016 version: 3168 and 2696, against 3149 and 2693.
+\item The scatter reproduces: rms 0.133\,dex (published 0.13), Gaussian width 0.110 (0.11), and 0.130 expected from the errors (0.12)
+\chk{sparc:S1}.
+\end{itemize}
+Figure~\ref{fig:sparc-rar-btfr}a shows the relation.
 
 \paragraph{The scale $g_\dagger$.} We find $g_\dagger=(1.102\pm0.016)\times10^{-10}$\,m\,s$^{-2}$ ($1\sigma$, scaled by
-$\sqrt{\chi^2/\mathrm{dof}}=\sqrt{1.55}$), against the published $(1.20\pm0.02\,\mathrm{stat}\pm0.24\,\mathrm{sys})\times10^{-10}$. Ours
+$\sqrt{\chi^2/\mathrm{dof}}=\sqrt{1.55}$). The published value is $(1.20\pm0.02\,\mathrm{stat}\pm0.24\,\mathrm{sys})\times10^{-10}$. Ours
 lies within the total uncertainty but not within three times the random error. Across six fitting choices it ranges from 1.02 to 1.27
-(orthogonal distance in log or linear space, with full or velocity-only errors on $g_{\rm obs}$, and least squares in log space)
-\chk{sparc:S1}, and the papers do not state the space of their fit. The pipeline is right; the quoted random error leaves out a
+\chk{sparc:S1}. The choices are orthogonal distance in log or linear space, with full or velocity-only errors on $g_{\rm obs}$, and least
+squares in log space. The papers do not state the space of their fit. The pipeline is right, and the quoted random error leaves out a
 fitting-choice dependence of about $\pm0.12$. This orthogonal-distance value serves only the comparison with the published fit. The
 model comparisons below use the L1 maximum-likelihood value, $g_\dagger=1.12\times10^{-10}$\,m\,s$^{-2}$ (Table~\ref{tab:sparc-models}).
 
@@ -116,27 +111,32 @@ Bridge~A (dash-dotted) \chk{sparc:S1}, \chk{sparc:S3}.}
 \label{fig:sparc-rar-btfr}
 \end{figure}
 
-\subsection{Bridge A is refuted}\label{sec:sparc-bridgea}
+\subsection{Bridge A against the data}\label{sec:sparc-bridgea}
 
-With $|\gamma_1|=4.88$ to $5.42\times10^{-10}$\,m\,s$^{-2}$, Eq.~\eqref{eq:sparc-model} has no free parameter, and it lies above the data
-at 98\% of the points. The median of $\log(g_{\rm obs}/g_{\rm model})$ is $-0.59$ to $-0.63$\,dex overall, $-0.97$ to $-1.02$\,dex at
-$g_{\rm bar}<10^{-11}$\,m\,s$^{-2}$, and $-0.15$ to $-0.17$\,dex at $g_{\rm bar}>10^{-10}$\,m\,s$^{-2}$. The misfit grows where the remnant dominates (Figure~\ref{fig:sparc-residuals}a). The fit has $\chi^2/N=96$ to 107, and its BIC exceeds
+With Bridge~A's value, Eq.~\eqref{eq:sparc-model} has no free parameter. It lies above the data at 98\% of the points. The median of
+$\log(g_{\rm obs}/g_{\rm model})$ is:
+\begin{itemize}[nosep]
+\item $-0.59$ to $-0.63$\,dex overall;
+\item $-0.97$ to $-1.02$\,dex at $g_{\rm bar}<10^{-11}$\,m\,s$^{-2}$;
+\item $-0.15$ to $-0.17$\,dex at $g_{\rm bar}>10^{-10}$\,m\,s$^{-2}$.
+\end{itemize}
+The misfit grows where the remnant dominates (Figure~\ref{fig:sparc-residuals}a). The fit has $\chi^2/N=96$ to 107, and its BIC exceeds
 the RAR's by 2.5 to $2.8\times10^5$ \chk{sparc:S2b}. Bridge~A's value is 11 times the best universal one and 8 times the per-galaxy
 median. Section~\ref{sec:sparc-btfr} gives its Tully--Fisher consequences.
 
 \subsection{One universal \texorpdfstring{$|\gamma_1|$}{|gamma1|} against the RAR}\label{sec:sparc-universal}
 
 The best universal remnant is $|\gamma_1|=4.54\times10^{-11}$\,m\,s$^{-2}$ [4.15, 4.98] (Table~\ref{tab:sparc-models}). That is below
-Bridge~A, and below the $a_0/2$ that Part~I inferred. The value is a compromise: it overshoots the lowest accelerations and undershoots
-intermediate ones (Figure~\ref{fig:sparc-residuals}a). Against the one-parameter RAR, its BIC is worse by $+5066$ under L1. Under L2,
-where each model fits its own floor, it is worse by $+1542$; the constant then needs $\sigma_{\rm int}=0.169$\,dex where the RAR needs
-0.123. The RAR fits better in 109 of the 147 galaxies \chk{sparc:S2a}.
+Bridge~A, and below the $a_0/2$ used in the estimate of Section~\ref{sec:bridges}. The value is a compromise. It overshoots the lowest
+accelerations and undershoots intermediate ones (Figure~\ref{fig:sparc-residuals}a). Against the one-parameter RAR its BIC is worse by
+$+5066$ under L1. Under L2, where each model fits its own floor, it is worse by $+1542$. The constant then needs
+$\sigma_{\rm int}=0.169$\,dex where the RAR needs 0.123. The RAR fits better in 109 of the 147 galaxies \chk{sparc:S2a}.
 
 \begin{table}[!t]
 \centering\footnotesize
 \caption{Models fitted to the 2696 points \chk{sparc:S2a}, \chk{sparc:S2b}, \chk{sparc:S2d}. $k$: free parameters; brackets: galaxy
-bootstrap 16--84\% in units of the value's power of ten; $\Delta$BIC relative to the RAR (positive: worse). The RAR row is the
-L1 maximum-likelihood fit, used below; the orthogonal-distance value of Section~\ref{sec:sparc-rar}, $1.102\times10^{-10}$, serves only the
+bootstrap 16--84\% in units of the value's power of ten; $\Delta$BIC relative to the RAR (positive: worse). The RAR row is the L1
+maximum-likelihood fit, used below; the orthogonal-distance value of Section~\ref{sec:sparc-rar}, $1.102\times10^{-10}$, serves only the
 comparison with the published fit.}
 \label{tab:sparc-models}
 \setlength{\tabcolsep}{4pt}
@@ -159,35 +159,38 @@ free exponent $p$ & 2 & $K=7.56\times10^{-11}$, $p=0.436$ & 1.55 & $+82$ & & \\
 \subsection{The excess acceleration is not constant}\label{sec:sparc-slope}
 
 Whatever the value of $|\gamma_1|$, Eq.~\eqref{eq:sparc-model} predicts the same excess $\Delta g=g_{\rm obs}-g_{\rm bar}$ at every
-$g_{\rm bar}$. The RAR instead has $\Delta g\simeq\sqrt{g_{\rm bar}g_\dagger}$ for $g_{\rm bar}\ll g_\dagger$, a logarithmic slope of
-$1/2$. We take binned medians of $\Delta g$ in 0.3\,dex bins, below $g_\dagger/10=1.12\times10^{-11}$\,m\,s$^{-2}$ (914 points), and fit
-their slope, resampling galaxies:
+$g_{\rm bar}$. The RAR instead tends to $\Delta g\simeq\sqrt{g_{\rm bar}g_\dagger}$ for $g_{\rm bar}\ll g_\dagger$, a logarithmic slope of
+$1/2$. We take binned medians of $\Delta g$ in 0.3\,dex bins below $g_\dagger/10=1.12\times10^{-11}$\,m\,s$^{-2}$ (914 points). Then we
+fit their slope, resampling galaxies:
 \begin{equation}\label{eq:sparc-slope}
 \dd\log\Delta g/\dd\log g_{\rm bar}=0.44\ [0.39,\ 0.49]\qquad\text{(a constant: 0; the RAR in the same bins: 0.45)}
 \end{equation}
-\chk{sparc:S2d}. The RAR's local slope is below $1/2$ because these bins are not deep in the low-acceleration regime. The law
-$g_{\rm bar}+K(g_{\rm bar}/10^{-10}\,{\rm m\,s^{-2}})^p$, which contains the constant at $p=0$, agrees. Fitted under L1 with $K$
-and $p$ free, it gives $p=0.436$ [0.396, 0.464] from all points, and the same two-parameter fit restricted to the 914 points below
-$g_\dagger/10$ gives $p=0.543$. Against $p=0$, $\Delta\mathrm{BIC}=-4983$, yet $+82$ against the RAR. Below $g_\dagger/10$ the binned
-excess rises from 1.4 to $3.0\times10^{-11}$\,m\,s$^{-2}$ with no plateau. Further up it rises to $8.4\times10^{-11}$ and flattens in the
-bins at $\log g_{\rm bar}=-9.77$ and $-9.46$, where the RAR excess also reaches its maximum (Figure~\ref{fig:sparc-residuals}b).
+\chk{sparc:S2d}. The RAR's local slope is below $1/2$ because these bins are not deep in the low-acceleration regime.
+
+\paragraph{A free exponent.} The law $g_{\rm bar}+K(g_{\rm bar}/10^{-10}\,{\rm m\,s^{-2}})^p$ contains the constant at $p=0$. Fitted under
+L1 with $K$ and $p$ free, it gives $p=0.436$ [0.396, 0.464] from all points. The same fit restricted to the 914 points below
+$g_\dagger/10$ gives $p=0.543$. Against $p=0$, $\Delta\mathrm{BIC}=-4983$; against the RAR it is still $+82$.
+
+\paragraph{The binned excess.} Below $g_\dagger/10$ the binned excess rises from 1.4 to $3.0\times10^{-11}$\,m\,s$^{-2}$, with no
+plateau. Further up it rises to $8.4\times10^{-11}$ and flattens in the bins at $\log g_{\rm bar}=-9.77$ and $-9.46$. The RAR excess also
+reaches its maximum there (Figure~\ref{fig:sparc-residuals}b).
 
 \paragraph{A null test of the estimator.} $\Delta g$ is binned in the noisy $g_{\rm bar}$, so its errors are correlated with the
-binning variable, and we test the estimator on mock data. Each mock keeps the real radii, velocity errors and assumed $g_{\rm bar}$ of the
-153 galaxies. Per galaxy it draws:
+binning variable. We therefore test the estimator on mock data. Each mock keeps the real radii, velocity errors and assumed $g_{\rm bar}$
+of the 153 galaxies. Per galaxy it draws:
 \begin{itemize}[nosep]
 \item a true distance and inclination from their tabulated errors;
 \item a true stellar mass-to-light ratio (0.1\,dex) and a true HI flux (10\%).
 \end{itemize}
-Per point it draws a velocity error. The true acceleration follows from the true $g_{\rm bar}$ at the true radius, and the observer
-infers $g_{\rm obs}$ with the assumed distance and inclination. The mock then passes the same precision cut, bins, low-acceleration cut,
-slope estimator and galaxy bootstrap \chk{sparc:S2d\_mock}.
+Per point it draws a velocity error. The true acceleration follows from the true $g_{\rm bar}$ at the true radius. The observer infers
+$g_{\rm obs}$ with the assumed distance and inclination. The mock then passes the same precision cut, bins, low-acceleration cut, slope
+estimator and galaxy bootstrap \chk{sparc:S2d\_mock}.
 \begin{itemize}[nosep]
 \item \emph{Null.} For a constant $|\gamma_1|=4.54\times10^{-11}$\,m\,s$^{-2}$, 400 mocks return a slope of $+0.005$ [$-0.033$, $+0.046$]
 (16--84\% over the mocks). One mock analysed exactly like the data gives $+0.012$, with bootstrap range [$-0.033$, $+0.048$]. None of the
 400 reaches the data's 0.436; the largest is 0.10.
-\item \emph{Positive control.} For the RAR the mocks return $0.469$ [0.424, 0.518], against 0.45 without noise, and 76\% of them lie
-above the data's value.
+\item \emph{Positive control.} For the RAR the mocks return $0.469$ [0.424, 0.518], against 0.45 without noise. 76\% of them lie above
+the data's value.
 \end{itemize}
 The estimator cannot turn a constant excess into the observed slope, and the data sit inside the RAR's mock distribution.
 
@@ -204,23 +207,29 @@ shaded region the slope is 0.44, where a constant would be flat. Bins whose rang
 \subsection{One \texorpdfstring{$|\gamma_1|$}{|gamma1|} per galaxy and the Oppenheim--Russo scaling}\label{sec:sparc-pergal}
 
 If the remnant were a boundary constant per galaxy, each galaxy could carry its own value. We fit one $|\gamma_1|$ to each of the 132
-galaxies with at least five points ($\Upsilon$ fixed, velocity errors per point). Distance, inclination, $\Upsilon$ ($\pm25\%$) and HI
-($\pm10\%$) errors enter as whole-galaxy refits, added in quadrature (median total error 0.18\,dex). The values have median $5.95\times10^{-11}$\,m\,s$^{-2}$, 16--84\% range 3.69 to $10.4\times10^{-11}$, and spread 0.25\,dex
+galaxies with at least five points, with $\Upsilon$ fixed and velocity errors per point. Distance, inclination, $\Upsilon$ ($\pm25\%$) and
+HI ($\pm10\%$) errors enter as whole-galaxy refits, added in quadrature; the median total error is 0.18\,dex. The values have median
+$5.95\times10^{-11}$\,m\,s$^{-2}$, a 16--84\% range of 3.69 to $10.4\times10^{-11}$, and a spread of 0.25\,dex
 (Figure~\ref{fig:sparc-gamma1}). 131 of the 132 lie below Bridge~A beyond their errors \chk{sparc:S2c}.
 
 \paragraph{The mass trend.} $|\gamma_1|$ rises with $M_{\rm bar}=\Upsilon_{\rm d}L_{[3.6]}+1.33M_{\rm HI}$: Spearman $\rho=0.45$
-($p=4\times10^{-8}$), log-log slope 0.14 [0.12, 0.17]. Against $V_{\rm flat}$ (116 galaxies) $\rho=0.61$ and the slope is 0.69
+($p=4\times10^{-8}$), log-log slope 0.14 [0.12, 0.17]. Against $V_{\rm flat}$ (116 galaxies), $\rho=0.61$ and the slope is 0.69
 [0.60, 0.76]. Part of the mass trend trades against $\Upsilon$. With $\Upsilon_{\rm d}$ free (a log-normal prior of 0.11\,dex around 0.5,
 bounded to 0.1--1.0), the slope is 0.09 and $\rho=0.34$.
 
-\paragraph{The Oppenheim--Russo scaling} rises far more steeply than the data. Fitted to the per-galaxy $\log|\gamma_1|$, a constant
-gives rms 0.249\,dex (BIC 17.2) and a power law in $M_{\rm bar}$ 0.215\,dex ($-16.7$). The law $g_0(1+M/10^{10}M_\odot)$ gives 0.395\,dex
-(138.8) with $g_0$ fitted ($2.04\times10^{-11}$), and 0.531\,dex (212.5) with the $g_0$ of Ref.~\cite{oppenheimrusso}. Even with its amplitude fitted, the scaling is worse than a constant by $+122$. It also has a structural flaw: for massive galaxies it
-makes $|\gamma_1|\propto M$, so $v_*^4\propto M^2$, a Tully--Fisher slope of 2 where the data give 3.7.
+\paragraph{The Oppenheim--Russo scaling} rises far more steeply than the data. We fit four laws to the per-galaxy $\log|\gamma_1|$:
+\begin{itemize}[nosep]
+\item a constant: rms 0.249\,dex, BIC 17.2;
+\item a power law in $M_{\rm bar}$: rms 0.215\,dex, BIC $-16.7$;
+\item $g_0(1+M/10^{10}M_\odot)$ with $g_0$ fitted ($2.04\times10^{-11}$): rms 0.395\,dex, BIC 138.8;
+\item the same law with the $g_0$ of Ref.~\cite{oppenheimrusso}: rms 0.531\,dex, BIC 212.5.
+\end{itemize}
+Even with its amplitude fitted, the scaling is worse than a constant by $+122$. It also has a structural flaw. For massive galaxies it
+makes $|\gamma_1|\propto M$, so $v_*^4\propto M^2$: a Tully--Fisher slope of 2, where the data give 3.7.
 
-\paragraph{The shape within galaxies.} With one free parameter per galaxy for each law and velocity errors only (2652 points), a free
-constant gives $\chi^2=109720$ and a free $g_\dagger$ gives 26790; the RAR shape wins in 98 of 132 galaxies. Both $\chi^2$ are large
-because velocity errors omit non-circular motions and galaxy-wide errors.
+\paragraph{The shape within galaxies.} We fit one free parameter per galaxy for each law, with velocity errors only (2652 points). A
+free constant gives $\chi^2=109720$, and a free $g_\dagger$ gives 26790. The RAR shape wins in 98 of 132 galaxies. Both $\chi^2$ are large
+because velocity errors omit non-circular motions and the galaxy-wide errors.
 
 \begin{figure}[!tb]
 \centering
@@ -234,54 +243,69 @@ below Bridge~A and rise far more slowly with mass than $(1+M/10^{10}M_\odot)$ \c
 
 \subsection{The baryonic Tully--Fisher relation}\label{sec:sparc-btfr}
 
-We repeat the analysis of Ref.~\cite{lelli2016a} \tagP. The sample is the galaxies with $V_{\rm flat}$ and $i\ge30^\circ$, without the
-eight starburst dwarfs and Holmberg~II (UGC~4305) it excludes. We use $M_{\rm bar}=\Upsilon_{\rm d}L_{[3.6]}+1.33M_{\rm HI}$ with
-$\Upsilon_{\rm d}=0.5$ and the errors of its Eq.~(5) (10\% on $M_{\rm HI}$). The fit of $\log M_{\rm bar}=s\log V_{\rm flat}+\log A$ has
-errors in both variables, an intrinsic scatter that sets $\chi^2/\mathrm{dof}=1$, and $2.6\sigma$ clipping as in
-LTS\_LINEFIT~\cite{cappellari2013}; the clipping removes UGC~7125, the outlier the paper names. We find $s=3.67\pm0.10$, $\log A=2.36\pm0.21$ (bootstrap) and an intrinsic scatter of 0.109\,dex for 123 galaxies. The paper finds
+We repeat the analysis of Ref.~\cite{lelli2016a} \tagP:
+\begin{itemize}[nosep]
+\item the galaxies with $V_{\rm flat}$ and $i\ge30^\circ$, without the eight starburst dwarfs and Holmberg~II (UGC~4305) it excludes;
+\item $M_{\rm bar}=\Upsilon_{\rm d}L_{[3.6]}+1.33M_{\rm HI}$ with $\Upsilon_{\rm d}=0.5$, and the errors of its Eq.~(5), with 10\% on
+$M_{\rm HI}$;
+\item a fit of $\log M_{\rm bar}=s\log V_{\rm flat}+\log A$ with errors in both variables and an intrinsic scatter that sets
+$\chi^2/\mathrm{dof}=1$;
+\item $2.6\sigma$ clipping as in LTS\_LINEFIT~\cite{cappellari2013}, which removes UGC~7125, the outlier the paper names.
+\end{itemize}
+We find $s=3.67\pm0.10$ and $\log A=2.36\pm0.21$ (bootstrap), with an intrinsic scatter of 0.109\,dex for 123 galaxies. The paper finds
 $3.71\pm0.08$, $2.27\pm0.18$ and $0.10\pm0.02$ for 118; the public table has $V_{\rm flat}$ for more galaxies. Without clipping we find
 3.65, 2.41 and 0.119 \chk{sparc:S3}.
 
 \paragraph{The turnover relation.} With the slope fixed at 4, $\log A=1.676$, i.e.\ $V_{\rm flat}^4=GM_{\rm bar}a$ with
-$a=1.59\times10^{-10}$\,m\,s$^{-2}$ (MOND: $a_0=1.2\times10^{-10}$~\cite{milgrom}). Through $v_*^4=2GM|\gamma_1|$ this needs
+$a=1.59\times10^{-10}$\,m\,s$^{-2}$, against MOND's $a_0=1.2\times10^{-10}$~\cite{milgrom}. Through Eq.~\eqref{eq:btf} this needs
 $|\gamma_1|=7.95\times10^{-11}$\,m\,s$^{-2}$. Two estimators compare Bridge~A with the data in $v^4$ at fixed mass:
 \begin{itemize}[nosep]
 \item the ratio of normalisations, Bridge~A's $|\gamma_1|$ over the $7.95\times10^{-11}$ that the fitted $\log A$ needs: 6.1 to 6.8;
 \item the median offset of the galaxies from the Bridge~A relation at their observed $V_{\rm flat}$,
-$10^{\,{\rm median}(\log M_{\rm obs}-\log M_{\rm pred})}$: 6.4 to 7.1 (Part~I estimated 8).
+$10^{\,{\rm median}(\log M_{\rm obs}-\log M_{\rm pred})}$: 6.4 to 7.1.
 \end{itemize}
-Both use $v_*$, the minimum of the model curve, while $V_{\rm flat}$ is measured further out.
+Both use $v_*$, the minimum of the model curve, while $V_{\rm flat}$ is measured further out. Section~\ref{sec:bridges} gives the
+estimate against $a_0/2$.
 
 \paragraph{The outer speed.} The direct test predicts each galaxy's speed at its outermost measured radius from its own baryons (124
-galaxies). The median $\log(V_{\rm pred}/V_{\rm flat})$ and the rms are $+0.014$ and 0.061\,dex for the RAR, and $+0.006$ and
-0.087\,dex for the best universal constant. Bridge~A gives $+0.48$ to $+0.50$\,dex, a factor 80 to 98 in $v^4$; Newton gives
-$-0.32$\,dex. The constant gets the outer normalisation right on average, but with more scatter, and with a mass trend (Spearman $\rho=-0.42$, against
-$-0.08$ for the RAR). It overshoots small galaxies and undershoots large ones \chk{sparc:S3}.
+galaxies). The median $\log(V_{\rm pred}/V_{\rm flat})$ and the rms are:
+\begin{itemize}[nosep]
+\item the RAR: $+0.014$ and 0.061\,dex;
+\item the best universal constant: $+0.006$ and 0.087\,dex;
+\item Bridge~A: $+0.48$ to $+0.50$\,dex, a factor 80 to 98 in $v^4$;
+\item Newton: $-0.32$\,dex.
+\end{itemize}
+The constant gets the outer normalisation right on average. It has more scatter than the RAR, though, and a trend with mass (Spearman
+$\rho=-0.42$, against $-0.08$ for the RAR). It overshoots small galaxies and undershoots large ones \chk{sparc:S3}.
 
 \paragraph{Choices made after seeing the data.}
 \begin{itemize}[nosep]
-\item The $g_\dagger$ check first required $1.20\pm3\times0.02$ and failed at 1.10; it now uses the total uncertainty, $\pm0.24$.
+\item The $g_\dagger$ check first required $1.20\pm3\times0.02$ and failed at 1.10. It now uses the total uncertainty, $\pm0.24$.
 \item The 1\% tolerance on the point counts was set after seeing 3168 and 2696.
-\item The first BTFR fit kept Holmberg~II and did not clip, missing the published slope by over $2\sigma$; both steps then followed
-the published method~\cite{lelli2016a,cappellari2013}.
+\item The first BTFR fit kept Holmberg~II and did not clip, and it missed the published slope by more than $2\sigma$. Both steps were then
+taken from the published method~\cite{lelli2016a,cappellari2013}.
 \item The bound $0.1\le\Upsilon_{\rm d}\le1$ was added after unbounded fits ran to $\Upsilon_{\rm d}\approx9$ in a few galaxies.
 \item The outer-speed test was added after we saw that $v_*$ misrepresents rising model curves.
-\item The mock null test of the slope estimator was added after the slope was known. Its two tolerances, $|{\rm median}|<0.1$ for the
-null and within 0.1 of the noiseless RAR slope for the control, were fixed before the mocks were first run.
+\item The mock null test of the slope estimator was added after the slope was known. Its two tolerances were fixed before the mocks were
+first run: $|{\rm median}|<0.1$ for the null, and within 0.1 of the noiseless RAR slope for the control.
 \end{itemize}
 None of these choices changes a verdict.
 
-\paragraph{Caveats.} We test the remnant as written: a constant $|\gamma_1|$, independent of the mass distribution, from a static,
-spherically symmetric calculation its authors call preliminary~\cite{oppenheimrusso}; Hertzberg and Loeb dispute that the large-scale
-force follows from the theory~\cite{hertzberg2024}. A remnant that follows the matter distribution is untested here, as are lensing, the
-microwave background and clusters. Point-wise $\Delta$BIC overstates the evidence, but every comparison keeps its sign in the bootstrap.
+\paragraph{Caveats.}
+\begin{itemize}[nosep]
+\item We test the remnant as written: a constant $|\gamma_1|$, independent of the mass distribution, from a static, spherically symmetric
+calculation~\cite{oppenheimrusso}. Hertzberg and Loeb dispute its large-scale force~\cite{hertzberg2024}; Section~\ref{sec:darkmatter}
+gives its other limits.
+\item A remnant that follows the matter distribution is untested here, as are lensing, the microwave background and clusters.
+\item Point-wise $\Delta$BIC overstates the evidence, but every comparison keeps its sign in the bootstrap and in the galaxy counts.
+\end{itemize}
 
 All numbers in this section come from \path{docs/simulation/sparc_rotation.py} (39 of 39 checks, about 70\,s on one core), with results in
 \path{docs/simulation/results/sparc_rotation.json}.
 
-\paragraph{Verdict.} The pipeline reproduces the RAR from the public SPARC data: the same 153 galaxies, the same scatter, and $g_\dagger$
-inside its published uncertainty. Bridge~A is \vd{refuted} by the rotation-curve points themselves: it overshoots 98\% of them, by a dex
-at low acceleration. A constant extra acceleration of any size, and the Oppenheim--Russo mass scaling, are \vd{refuted} as the
-explanation of rotation curves. The best constant fits worse than the one-parameter RAR (BIC $+5066$, worse in 109 of 147 galaxies), and
-the observed excess rises as $g_{\rm bar}^{0.44}$ where a constant predicts slope zero. Section~\ref{sec:remnant} takes up the
-accumulated form of the remnant, halos and primordial black holes.
+\paragraph{Verdict.} The reproduction of the RAR from the public SPARC data \vd{holds}: the same 153 galaxies, the same scatter, and
+$g_\dagger$ inside its published uncertainty. Bridge~A is \vd{refuted} by the rotation-curve points themselves; it overshoots 98\% of them,
+by a dex at low acceleration. A constant extra acceleration of any size, and the Oppenheim--Russo mass scaling, are \vd{refuted} as the
+explanation of rotation curves. The best constant fits worse than the one-parameter RAR ($\Delta$BIC $+5066$, worse in 109 of 147
+galaxies), and the observed excess rises as $g_{\rm bar}^{0.44}$ where a constant predicts zero, a slope the estimator does not create in
+mocks. Section~\ref{sec:remnant} takes up the accumulated remnant, halos and primordial black holes, and gives the dark-matter verdict.

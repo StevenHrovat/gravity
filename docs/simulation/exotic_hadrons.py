@@ -4,7 +4,7 @@ hadron spectroscopy, with tetraquarks and pentaquarks as the test bed.
 Run:  python3 docs/simulation/exotic_hadrons.py
 Needs numpy, scipy, matplotlib. Deterministic: fixed seeds, BLAS on one thread, no clock in any output except the runtime field, no
 network, no machine name; the PDF figures are written without a creation date. Runs in about a minute on one core, memory under 200 MB.
-Writes docs/simulation/results/exotic_hadrons.{json,md} and docs/simulation/figures/exotic_{fit,spectrum,levels,thresholds}.pdf.
+Writes docs/simulation/results/exotic_hadrons.{json,md} and docs/simulation/figures/exotic_{fit,spectrum,levels,thresholds,alpha}.pdf.
 
 Every measured number below was read on 2026-10-31 in its source: the arXiv abstract or full text, or, for current Particle Data Group
 (PDG) values, the PDG listing as returned by a web search (the PDG server itself was not reachable from this environment). CITATIONS
@@ -77,6 +77,8 @@ PARTNERS (c): the model's isospin and spin partners of the compact states agains
   [A] compact exotics: predictions and pulls (results)
   [B] threshold proximity (results; analytic null checked by Monte Carlo)
   [C] partners (results)
+  [I] Hypothesis H9, the minting in hadrons (SM7): I1 no open flavour, I2 hidden-bottom pentaquarks, I3 the general rule, I4 the
+      alpha M / 2 splitting rule (results; checks I0a-I0e test the block's own numerics)
 """
 
 import os
@@ -1579,6 +1581,346 @@ figures()
 
 
 # =====================================================================================================================================
+# Section I: Hypothesis H9, the minting in hadrons (SM7 of sm_preregistration.md, fixed after the SM6 results and before this block).
+# A pentaquark is a minting: a bound triple of colour-bearers plus a quark and its own antiquark (a pair of one flavour).
+# Honesty note (SM7): H9 was conceived after seeing that every established pentaquark carries c cbar, so those states are not
+# evidence for it.
+#   I1 (P1) no open flavour: every claimed pentaquark, hidden versus open flavour, crossed with established versus not; Fisher's
+#      exact test (one-sided: open-flavour claims less often established).
+#   I2 (P2) hidden bottom: masses from heavy-quark flavour symmetry (molecular: the binding energies of P_c(4312), P_c(4440),
+#      P_c(4457) and P_psis(4338) relative to isospin-averaged Sigma_c Dbar(*) and Xi_c Dbar thresholds carried over unchanged to
+#      Sigma_b B(*) and Xi_b B; variant: binding scaled with the reduced mass) and the colour-spin model's compact levels; live
+#      unless a search excludes them.
+#   I3 (P3) the general rule "every exotic hadron contains a pair of one flavour" against the SM6 catalogue.
+#   I4 (P4) the splitting rule Delta M = alpha M / 2 for spin doublets. Eligibility is decided from quark content and J^P only and
+#      the list I4_ELIGIBLE below was written before any splitting was computed (the masses of these states were known from SM6):
+#      two exotic states with the same quark content (isospin partners counted as one), each reported as an observation, with equal
+#      or unknown parity and |J1 - J2| <= 1 (unknown J allowed); P_c(4440)/P_c(4457), which suggested the rule, excluded; states
+#      reported only as evidence, or as an unresolved two-peak hypothesis, are not resolved. A pair passes if |Delta - alpha M/2| <
+#      2 sigma_Delta. Look-elsewhere: under a null with Delta uniform in [0, 300] MeV a pair passes by chance with probability
+#      p_k = |[alpha M/2 - 2 sigma, alpha M/2 + 2 sigma] cap [0, 300]| / 300; the observed number of passes is compared with sum p_k.
+#      QCD baseline: the colour-spin model's splitting of the same two S-wave levels where the model has such a pair.
+# =====================================================================================================================================
+print("[I] Hypothesis H9, the minting in hadrons (results, not checks)")
+ALPHA = 1.0 / 137.035999177                  # CODATA 2022, as in predictions_vs_data.py
+CITATIONS.update({
+    "LEPS2003": {"ref": "T. Nakano et al. (LEPS), Phys. Rev. Lett. 91, 012002 (2003), hep-ex/0301020", "read": "abstract",
+                 "values": "S=+1 baryon (Theta+) at 1.54+-0.01 GeV, width < 25 MeV, 4.6 sigma"},
+    "CLAS2006": {"ref": "B. McKinnon, K. Hicks et al. (CLAS), Phys. Rev. Lett. 96, 212001 (2006), hep-ex/0603028", "read": "abstract",
+                 "values": "no evidence for a narrow pentaquark with more than 30 times the luminosity of the earlier measurement; "
+                           "sigma(gamma d -> p K- Theta+) < 0.3 nb (95% CL), 1.52-1.56 GeV"},
+    "HERAB2004": {"ref": "K. T. Knoepfle, M. Zavertyaev, T. Zivko for HERA-B, J. Phys. G 30, S1363 (2004), hep-ex/0403020",
+                  "read": "abstract", "values": "no evidence for Theta+(1540) or Xi--(1862); Theta+/Lambda(1520) < 0.02, "
+                                                "Br x Xi--/Xi(1530)0 < 0.077 (95% CL)"},
+    "NA49_2004": {"ref": "NA49, Phys. Rev. Lett. 92, 042003 (2004), hep-ex/0310014", "read": "abstract",
+                  "values": "S=-2, Q=-2 baryon at 1.862+-0.002 GeV, width below 0.018 GeV, 4.0 sigma"},
+    "H1_2004": {"ref": "H1, Phys. Lett. B 588, 17 (2004), hep-ex/0403017", "read": "abstract",
+                "values": "anti-charmed baryon uuddcbar at 3099+-3+-5 MeV, Gaussian width 12+-3 MeV"},
+    "ZEUS2004": {"ref": "ZEUS, Eur. Phys. J. C 38, 29 (2004), hep-ex/0409033", "read": "abstract",
+                 "values": "no resonance in D*p with more than 60000 D*; not compatible with the H1 report"},
+    "LHCb_Pc2015": {"ref": "LHCb, Phys. Rev. Lett. 115, 072001 (2015), arXiv:1507.03414", "read": "abstract",
+                    "values": "4380+-8+-29 (Gamma 205+-18+-86) and 4449.8+-1.7+-2.5 (Gamma 39+-5+-19), each above 9 sigma"},
+    "LHCb_Pc4337": {"ref": "LHCb, Phys. Rev. Lett. 128, 062001 (2022), arXiv:2108.04720", "read": "abstract",
+                    "values": "evidence: 4337(+7-4)(+2-2), Gamma 29(+26-12)(+14-14), 3.1 to 3.7 sigma"},
+    "LHCb_Pcs4459_text": {"ref": "LHCb, Sci. Bull. 66, 1278 (2021), arXiv:2012.10380", "read": "full text, Sec. 4 and 5",
+                          "values": "3.1 sigma including systematics and look-elsewhere; two-peak fit 4454.9+-2.7 (Gamma 7.5+-9.7) and "
+                                    "4467.8+-3.7 (Gamma 5.2+-5.3), statistical only; 'cannot confirm or refute the two-peak "
+                                    "hypothesis'"},
+    "LHCb_Pc2019_text": {"ref": "LHCb, Phys. Rev. Lett. 122, 222001 (2019), arXiv:1904.03947", "read": "full text",
+                         "values": "verification of the P_c(4380)+ state awaits an amplitude analysis"},
+    "LHCb_LcDs2025": {"ref": "LHCb, Phys. Rev. D 112, 052013 (2025), arXiv:2507.10713", "read": "abstract",
+                      "values": "no evidence for P_ccbars(4338) or P_ccbars(4459) in Lambda_c+ D_s-; production ratios < 0.12 and "
+                                "< 0.20 (95% CL)"},
+    "LHCb_prompt2024": {"ref": "LHCb, Phys. Rev. D 110, 032001 (2024), arXiv:2404.07131", "read": "abstract",
+                        "values": "no significant signal for hidden-charm (Sigma_c Dbar, Lambda_c Dbar) or doubly charmed (Sigma_c D, "
+                                  "Lambda_c D) pentaquarks in prompt production; known pentaquark yields consistent with zero"},
+    "Belle2017": {"ref": "Belle, Phys. Rev. D 96, 051102 (2017), arXiv:1707.00089", "read": "abstract",
+                  "values": "hidden-strangeness pentaquark P_s+ -> phi p: B(Lambda_c+ -> P_s+ pi0) x B(P_s+ -> phi p) < 8.3e-5 "
+                            "(90% CL), no evidence"},
+    "Cao2020": {"ref": "X. Cao et al., Phys. Rev. D 101, 074010 (2020), arXiv:1912.12054", "read": "abstract",
+                "values": "proposes a P_b search in gamma p -> Upsilon p at an electron-ion collider; no P_b observed"},
+    "CODATA2022": {"ref": "CODATA 2022, arXiv:2409.03787", "read": "the value used in predictions_vs_data.py",
+                   "values": "1/alpha = 137.035999177"},
+})
+
+# ---------------------------------------------------------------- I1: claimed pentaquarks
+# name, content (lower case quark, upper case antiquark), status, claim source, non-confirmations
+PENTA_CLAIMS = [
+    ("Theta+(1540)", "uuddS", "unconfirmed", "LEPS2003", ["CLAS2006", "HERAB2004"]),
+    ("Xi--(1860)", "ddssU", "unconfirmed", "NA49_2004", ["HERAB2004"]),
+    ("Theta_c(3100)", "uuddC", "unconfirmed", "H1_2004", ["ZEUS2004"]),
+    ("P_c(4380)", "uudcC", "unconfirmed", "LHCb_Pc2015", ["LHCb_Pc2019_text"]),
+    ("P_c(4312)", "uudcC", "established", "LHCb_Pc2019", []),
+    ("P_c(4440)", "uudcC", "established", "LHCb_Pc2019", []),
+    ("P_c(4457)", "uudcC", "established", "LHCb_Pc2019", []),
+    ("P_c(4337)", "uudcC", "unconfirmed", "LHCb_Pc4337", []),
+    ("P_cs(4459)", "udscC", "unconfirmed", "LHCb_Pcs4459_text", ["LHCb_LcDs2025"]),
+    ("P_psis(4338)", "udscC", "established", "LHCb_Ppsis4338", []),
+]
+PENTA_SEARCHES = [("doubly charmed, Sigma_c D channel, e.g. Sigma_c++ D+ (cc u u dbar)", "ccuuD", "LHCb_prompt2024"),
+                  ("doubly charmed, Lambda_c+ D0 channel (cc u d ubar)", "ccudU", "LHCb_prompt2024"),
+                  ("hidden-strange P_s (uud s sbar)", "uudsS", "Belle2017")]
+
+
+def one_flavour_pair(content):
+    """True if some flavour appears both as a quark (lower case) and as an antiquark (upper case)."""
+    return any(f in content and f.upper() in content for f in "udscb")
+
+
+def antiquark_paired(content):
+    """H9's condition for a pentaquark: its antiquark has a partner quark of the same flavour."""
+    anti = [x for x in content if x.isupper()]
+    return len(anti) == 1 and anti[0].lower() in content
+
+
+check_true("I0a flavour-pair test: T_cc (ccUD) has none, Z_c (cCuD) has one, Theta+ (uuddS) is open, P_c (uudcC) is hidden",
+           (not one_flavour_pair("ccUD")) and one_flavour_pair("cCuD") and (not antiquark_paired("uuddS"))
+           and antiquark_paired("uudcC"))
+I1_TABLE = [[0, 0], [0, 0]]       # rows: hidden, open; columns: established, not established
+for (nm, ct, st, src, nul) in PENTA_CLAIMS:
+    I1_TABLE[0 if antiquark_paired(ct) else 1][0 if st == "established" else 1] += 1
+I1_FISHER_ONE = float(stats.fisher_exact(I1_TABLE, alternative="greater")[1])
+I1_FISHER_TWO = float(stats.fisher_exact(I1_TABLE, alternative="two-sided")[1])
+_a, _b, _c, _d = I1_TABLE[0][0], I1_TABLE[0][1], I1_TABLE[1][0], I1_TABLE[1][1]
+_n, _k, _m = _a + _b + _c + _d, _a + _c, _a + _b
+_hyp = sum(math.comb(_m, x) * math.comb(_n - _m, _k - x) for x in range(_a, min(_k, _m) + 1)) / math.comb(_n, _k)
+check("I0b Fisher one-sided p equals the hypergeometric tail", I1_FISHER_ONE, _hyp, 1e-12)
+I1_OPEN_UNCONFIRMED = all(st != "established" for (nm, ct, st, src, nul) in PENTA_CLAIMS if not antiquark_paired(ct))
+# SM7 names "doubly charmed pentaquarks (cc q q qbar)" as forbidden, but H9's rule (the antiquark has a partner quark of its flavour)
+# forbids only those whose light antiquark has no partner, e.g. cc u u dbar (I = 3/2); cc u d ubar contains u ubar. SM6's lowest
+# doubly charmed level ([cc]_1[ud]_0)qbar has I = 1/2 and contains such a pair; the I = 3/2 levels ([cc]_1[qq]_1)qbar, which include
+# cc u u dbar, are the ones H9 forbids.
+_pcc32 = [t for t in spectrum("Pcc", PFIT, "P") if CFG["Pcc"][t[1]].asgs[0][(2, 3)] == 1]
+_pcc32_low = min(_pcc32, key=lambda t: t[0])
+I1_PCC_I32 = predict(lambda P, ci=_pcc32_low[1], k=_pcc32_low[2]: float(levels(CFG["Pcc"][ci], P, "P")[0][k]))
+I1_PCC_I32_J = _pcc32_low[3]
+TH_PCC32 = lowest_threshold("ccuuD", None, -1)
+print(f"  I1 table (hidden/open x established/not): {I1_TABLE}; Fisher p one-sided {I1_FISHER_ONE:.3f}, two-sided "
+      f"{I1_FISHER_TWO:.3f}; every open-flavour claim unconfirmed: {I1_OPEN_UNCONFIRMED}; SM6 level forbidden by H9 (cc u u dbar, "
+      f"I = 3/2, J = {I1_PCC_I32_J}): {I1_PCC_I32[0]:.1f} +- {I1_PCC_I32[1]:.1f}, {I1_PCC_I32[0] - TH_PCC32[0]:+.1f} from {TH_PCC32[1]} "
+      f"{TH_PCC32[0]:.1f}")
+
+# ---------------------------------------------------------------- I2: hidden-bottom pentaquarks
+# isospin-averaged thresholds from the fit inputs (KR2014 Tables IV-V, PDG2024)
+M_SIGC, M_SIGCS, M_XIC = 2453.4, 2518.1, (2467.71 + 2470.44) / 2
+M_SIGB, M_SIGBS, M_XIB = 5814.26, 5833.83, 5792.68
+M_D, M_DS_, M_B, M_BS_ = (1864.84 + 1869.66) / 2, (2006.85 + 2010.26) / 2, 5279.4, 5324.75
+PB_INPUT = [  # name, measured mass, charm threshold (masses), bottom threshold (masses)
+    ("P_c(4312)", 4311.9, (M_SIGC, M_D), (M_SIGB, M_B), "Sigma_b Bbar"),
+    ("P_c(4440)", 4440.3, (M_SIGC, M_DS_), (M_SIGB, M_BS_), "Sigma_b Bbar*"),
+    ("P_c(4457)", 4457.3, (M_SIGC, M_DS_), (M_SIGB, M_BS_), "Sigma_b Bbar*"),
+    ("P_psis(4338)", 4338.2, (M_XIC, M_D), (M_XIB, M_B), "Xi_b Bbar"),
+]
+I2_MOL = []
+for nm, m, (a1, a2), (b1, b2), lab in PB_INPUT:
+    Tc, Tb = a1 + a2, b1 + b2
+    Bc = Tc - m                                    # binding (positive below threshold)
+    mu_c, mu_b = a1 * a2 / Tc, b1 * b2 / Tb
+    I2_MOL.append({"partner_of": nm, "bottom_threshold": lab, "T_charm": Tc, "binding_charm": Bc, "T_bottom": Tb,
+                   "M_same_binding": Tb - Bc, "M_mu_scaled": Tb - Bc * mu_b / mu_c, "mu_ratio": mu_b / mu_c})
+check("I0c Sigma_b Bbar threshold (isospin averages) = 5814.26 + 5279.4", I2_MOL[0]["T_bottom"], 11093.66, 1e-6)
+CFG["Pb"] = [penta(f"([bq][qq]_{s})bbar J={J}", "b", "q", "q", "q", "b", J, s34=s)
+             for s, Js in ((0, (Hh, H3)), (1, (Hh, H3, H5))) for J in Js]
+CFG["Pbs_A"] = [penta(f"([bs][ud]_0)bbar J={J}", "b", "s", "q", "q", "b", J, s34=0) for J in (Hh, H3)]
+CFG["Pbs_B"] = [penta(f"([bq][qs])bbar J={J}", "b", "q", "q", "s", "b", J) for J in (Hh, H3, H5)]
+_pb_low = pick("Pb", PFIT, "P", ("lowest", ANY))
+I2_PB_COMPACT = predict(lambda P, ci=_pb_low[0], k=_pb_low[1]: float(levels(CFG["Pb"][ci], P, "P")[0][k]))
+_pb_all = sorted(t[0] for t in spectrum("Pb", PFIT, "P"))
+_fa = [t for t in spectrum("Pbs_A", PFIT, "P") if t[3] == Hh]
+_fb = [t for t in spectrum("Pbs_B", PFIT, "P") if t[3] == Hh]
+_pbs_fam = "Pbs_A" if min(_fa)[0] <= min(_fb)[0] else "Pbs_B"
+_pbs_low = pick(_pbs_fam, PFIT, "P", ("lowest", lambda t: t[3] == Hh))
+I2_PBS_COMPACT = predict(lambda P, ci=_pbs_low[0], k=_pbs_low[1], f=_pbs_fam: float(levels(CFG[f][ci], P, "P")[0][k]))
+I2_PB_COMPACT_J = predict(lambda P, ci=pick("Pb", FIT["J"]["P"], "J", ("lowest", ANY))[0],
+                          k=pick("Pb", FIT["J"]["P"], "J", ("lowest", ANY))[1]: float(levels(CFG["Pb"][ci], P, "J")[0][k]), "J")
+TH_PB = lowest_threshold("uudbB", None, -1)
+TH_PBS = lowest_threshold("udsbB", None, -1)
+print("  I2 molecular: " + "; ".join(f"{d['partner_of']} -> {d['bottom_threshold']} {d['T_bottom']:.1f}: {d['M_same_binding']:.1f} "
+                                       f"(mu-scaled {d['M_mu_scaled']:.1f})" for d in I2_MOL))
+print(f"  I2 compact: lowest ([bq][qq])bbar {I2_PB_COMPACT[0]:.1f} +- {I2_PB_COMPACT[1]:.1f} (variant J {I2_PB_COMPACT_J[0]:.1f}); "
+      f"levels {_pb_all[0]:.0f} to {_pb_all[-1]:.0f}; lowest J=1/2 udsb bbar {I2_PBS_COMPACT[0]:.1f}; lowest S-wave thresholds "
+      f"{TH_PB[1]} {TH_PB[0]:.1f}, {TH_PBS[1]} {TH_PBS[0]:.1f}")
+
+# ---------------------------------------------------------------- I3: the general rule
+I3_ROWS = [{"state": c[0], "content": c[7], "one_flavour_pair": one_flavour_pair(c[7])} for c in CATALOGUE]
+I3_VIOLATORS = [r["state"] for r in I3_ROWS if not r["one_flavour_pair"]]
+print(f"  I3 established exotic hadrons without a pair of one flavour: {I3_VIOLATORS}")
+
+# ---------------------------------------------------------------- I4: alpha M / 2 for spin doublets
+# Eligible doublets, fixed from quark content and J^P only before any splitting was computed (see the header of Section I).
+I4_STATES = {   # name: (mass, error, J, P) -- J, P as in the SM6 catalogue; CMS structures from Table I (no interference)
+    "Z_c(3900)+": (3899.0, 6.1, 1, 1), "Z_c(4020)+": (4022.9, 2.8, None, None), "Z_c(4430)+": (4475.0, 19.0, 1, 1),
+    "Z_cs(3985)+": (3982.5, 3.1, None, None), "Z_cs(4000)+": (4003.0, 11.0, 1, 1), "Z_cs(4220)+": (4216.0, 40.0, 1, None),
+    "X(3960)": (3956.0, 11.2, 0, 1), "chi_c1(4140)": (4118.0, 28.0, 1, 1), "chi_c1(4274)": (4294.0, 5.5, 1, 1),
+    "chi_c0(4500)": (4474.0, 4.2, 0, 1), "X(4685)": (4684.0, 15.0, 1, 1), "chi_c0(4700)": (4694.0, 10.0, 0, 1),
+    "Z_b(10610)+": (10607.2, 2.0, None, None), "Z_b(10650)+": (10652.2, 1.5, None, None),
+    "P_c(4312)+": (4311.9, 3.0, None, None), "P_c(4440)+": (4440.3, 4.6, None, None), "P_c(4457)+": (4457.3, 2.5, None, None),
+    "X(6600) CMS": (6552.0, math.hypot(10, 12), None, None), "X(6900) CMS": (6927.0, math.hypot(9, 4), None, None),
+}
+I4_GROUPS = {"c cbar u dbar": ["Z_c(3900)+", "Z_c(4020)+", "Z_c(4430)+"],
+             "c cbar u sbar": ["Z_cs(3985)+", "Z_cs(4000)+", "Z_cs(4220)+"],
+             "c cbar s sbar, P = +": ["X(3960)", "chi_c1(4140)", "chi_c1(4274)", "chi_c0(4500)", "X(4685)", "chi_c0(4700)"],
+             "b bbar u dbar": ["Z_b(10610)+", "Z_b(10650)+"],
+             "u u d c cbar": ["P_c(4312)+", "P_c(4440)+", "P_c(4457)+"],
+             "c c cbar cbar": ["X(6600) CMS", "X(6900) CMS"]}
+I4_NOT_ELIGIBLE = [("X(4630)", "c cbar s sbar with P = -: parity differs from the other c cbar s sbar states"),
+                   ("X(3872), psi(4230)", "c cbar q qbar with I = 0: parities differ"),
+                   ("X0(2900), X1(2900)", "cbar sbar u d: parities differ"),
+                   ("P_c(4440), P_c(4457)", "the pair that suggested the rule"),
+                   ("P_cs(4459) two-peak fit", "not resolved: LHCb 'cannot confirm or refute the two-peak hypothesis'"),
+                   ("X(7100) CMS, P_c(4337), P_c(4380)", "not established as observations")]
+
+
+def jp_compatible(a, b):
+    Ja, Pa, Jb, Pb = a[2], a[3], b[2], b[3]
+    if Pa is not None and Pb is not None and Pa != Pb:
+        return False
+    if Ja is not None and Jb is not None and abs(Ja - Jb) > 1:
+        return False
+    return True
+
+
+I4_ELIGIBLE = []
+for grp, members in I4_GROUPS.items():
+    for s1, s2 in itertools.combinations(members, 2):
+        if {s1, s2} == {"P_c(4440)+", "P_c(4457)+"}:
+            continue
+        if jp_compatible(I4_STATES[s1], I4_STATES[s2]):
+            I4_ELIGIBLE.append((grp, s1, s2))
+check("I0d number of eligible doublets fixed by content and J^P (3 + 3 + 15 + 1 + 2 + 1)", len(I4_ELIGIBLE), 25, 0)
+
+# QCD baseline: the colour-spin model's splitting of two S-wave levels of the same J^P(C) where the model has such a pair
+CFG["hidden_b"] = [tetra(f"[bq][bbar qbar] J={J}", "b", "q", "b", "q", J, cperm=[2, 3, 0, 1]) for J in (0, 1, 2)]
+CFG["hidden_cs"] = [tetra(f"[cs][cbar sbar] J={J}", "c", "s", "c", "s", J, cperm=[2, 3, 0, 1]) for J in (0, 1, 2)]
+CFG["hidden_cqs"] = [tetra(f"[cq][cbar sbar] J={J}", "c", "q", "c", "s", J) for J in (0, 1, 2)]
+
+
+def model_split(key, J, C):
+    """Splitting of the two lowest S-wave levels with total spin J (and C parity C, if given) of a configuration family."""
+    def f(P, scheme="P"):
+        lv = sorted(t[0] for t in spectrum(key, P, scheme) if t[3] == J and (C is None or t[4] == C))
+        return lv[1] - lv[0]
+    return f
+
+
+I4_MODEL = {("Z_c(3900)+", "Z_c(4020)+"): ("hidden_c", 1, -1, "two 1+- levels of [cq][cbar qbar] (taking Z_c(4020) as 1+-)"),
+            ("Z_b(10610)+", "Z_b(10650)+"): ("hidden_b", 1, -1, "two 1+- levels of [bq][bbar qbar] (taking both as 1+-)"),
+            ("Z_cs(3985)+", "Z_cs(4000)+"): ("hidden_cqs", 1, None, "two lowest 1+ levels of [cq][cbar sbar]"),
+            ("X(3960)", "chi_c0(4500)"): ("hidden_cs", 0, 1, "two 0++ levels of [cs][cbar sbar]"),
+            ("X(3960)", "chi_c0(4700)"): ("hidden_cs", 0, 1, "two 0++ levels of [cs][cbar sbar]"),
+            ("chi_c0(4500)", "chi_c0(4700)"): ("hidden_cs", 0, 1, "two 0++ levels of [cs][cbar sbar]")}
+I4_ROWS = []
+for grp, s1, s2 in I4_ELIGIBLE:
+    m1, e1 = I4_STATES[s1][:2]
+    m2, e2 = I4_STATES[s2][:2]
+    dlt, sd = abs(m2 - m1), math.hypot(e1, e2)
+    pred = ALPHA * (m1 + m2) / 2 / 2
+    z = (dlt - pred) / sd
+    pch = interval_cover([(pred - 2 * sd, pred + 2 * sd)], 0.0, 300.0) / 300.0
+    row = {"group": grp, "pair": [s1, s2], "Delta": dlt, "err": sd, "alpha_M_over_2": pred, "pull": z, "passes": abs(z) < 2,
+           "p_chance": pch}
+    if (s1, s2) in I4_MODEL:
+        key, J, C, desc = I4_MODEL[(s1, s2)]
+        val, err, _ = predict(model_split(key, J, C))
+        row["model"] = {"Delta": val, "err": err, "desc": desc, "pull": (dlt - val) / math.hypot(sd, err)}
+    I4_ROWS.append(row)
+I4_PASS = sum(r["passes"] for r in I4_ROWS)
+I4_EXPECT = sum(r["p_chance"] for r in I4_ROWS)
+I4_P_EXCESS = float(stats.poisson.sf(I4_PASS - 1, I4_EXPECT))
+I4_FAIL3 = sum(abs(r["pull"]) >= 3 for r in I4_ROWS)
+rng_i4 = np.random.default_rng(SEED + 4)
+_mc_pass = np.zeros(4000)
+for r in I4_ROWS:
+    _mc_pass += np.abs(rng_i4.uniform(0, 300, 4000) - r["alpha_M_over_2"]) < 2 * r["err"]
+check("I0e expected chance passes: analytic sum against 4000 Monte Carlo replicas (5 sigma)", float(np.mean(_mc_pass)), I4_EXPECT,
+      5 * float(np.std(_mc_pass)) / math.sqrt(4000) + 1e-9)
+I4_MOTIVATING = {"pair": ["P_c(4440)+", "P_c(4457)+"], "Delta": 4457.3 - 4440.3, "alpha_M_over_2": ALPHA * (4440.3 + 4457.3) / 4}
+I4_PCS_INFO = {"pair": ["4454.9", "4467.8"], "Delta": 4467.8 - 4454.9, "err": math.hypot(2.7, 3.7),
+               "alpha_M_over_2": ALPHA * (4454.9 + 4467.8) / 4, "note": "unresolved two-peak hypothesis, statistical errors only"}
+for r in I4_ROWS:
+    s = f"  I4 {r['pair'][0]:<14s} {r['pair'][1]:<14s} Delta {r['Delta']:6.1f} +- {r['err']:5.1f}  alpha M/2 {r['alpha_M_over_2']:5.1f}  " \
+        f"pull {r['pull']:+6.1f}  {'pass' if r['passes'] else 'fail'}"
+    if "model" in r:
+        s += f"  | model {r['model']['Delta']:5.1f} +- {r['model']['err']:4.1f} pull {r['model']['pull']:+5.1f}"
+    print(s)
+print(f"  I4: {I4_PASS} of {len(I4_ROWS)} pass; {I4_EXPECT:.2f} expected by chance (Poisson p of >= {I4_PASS}: {I4_P_EXCESS:.2f}); "
+      f"{I4_FAIL3} fail by 3 sigma or more")
+H9 = {"I1": {"claims": [{"state": nm, "content": ct, "pair": "hidden" if antiquark_paired(ct) else "open", "status": st,
+                         "source": src, "not_confirmed_by": nul} for (nm, ct, st, src, nul) in PENTA_CLAIMS],
+             "searches_without_claim": [{"state": a, "content": b, "source": c} for a, b, c in PENTA_SEARCHES],
+             "table_hidden_open_x_established_not": I1_TABLE, "fisher_p_one_sided": I1_FISHER_ONE,
+             "fisher_p_two_sided": I1_FISHER_TWO, "every_open_claim_unconfirmed": I1_OPEN_UNCONFIRMED,
+             "Pcc_forbidden_level": {"M": I1_PCC_I32[0], "err": I1_PCC_I32[1], "J": I1_PCC_I32_J, "content": "cc u u dbar",
+                                     "threshold": {"pair": TH_PCC32[1], "M": TH_PCC32[0]}},
+             "ill_posed_note": "SM7's example 'doubly charmed pentaquarks (cc q q qbar)' is forbidden by H9's rule only when the light "
+                               "antiquark has no partner quark (e.g. cc u u dbar, I = 3/2); cc u d ubar contains a pair of one flavour",
+             "verdict": "holds (every open-flavour claim is unconfirmed); not significant as a contrast (Fisher p one-sided "
+                        f"{I1_FISHER_ONE:.2f}); conflicts with SM6's I = 3/2 doubly charmed levels, neither decided"},
+      "I2": {"molecular": I2_MOL, "compact_Pb_lowest": {"M": I2_PB_COMPACT[0], "err": I2_PB_COMPACT[1]},
+             "compact_Pb_lowest_J": {"M": I2_PB_COMPACT_J[0], "err": I2_PB_COMPACT_J[1]},
+             "compact_Pb_levels": _pb_all, "compact_Pbs_lowest_half": {"M": I2_PBS_COMPACT[0], "err": I2_PBS_COMPACT[1]},
+             "lowest_S_wave_threshold_Pb": {"pair": TH_PB[1], "M": TH_PB[0]},
+             "lowest_S_wave_threshold_Pbs": {"pair": TH_PBS[1], "M": TH_PBS[0]},
+             "search_status": "no experimental search for hidden-bottom pentaquarks found on arXiv; proposals (Cao2020)",
+             "verdict": "live"},
+      "I3": {"rows": I3_ROWS, "violators": I3_VIOLATORS, "verdict": "refuted" if I3_VIOLATORS else "holds"},
+      "I4": {"eligible": [{"group": g, "pair": [a, b]} for g, a, b in I4_ELIGIBLE], "not_eligible": I4_NOT_ELIGIBLE,
+             "rows": I4_ROWS, "n_pass": I4_PASS, "n_eligible": len(I4_ROWS), "expected_chance": I4_EXPECT,
+             "poisson_p_excess": I4_P_EXCESS, "n_fail_3sigma": I4_FAIL3, "motivating_pair": I4_MOTIVATING,
+             "Pcs4459_two_peak_info": I4_PCS_INFO, "alpha": ALPHA,
+             "verdict": "refuted as a rule for every resolved doublet" if I4_FAIL3 else "holds"}}
+
+
+# I4 figure: splittings against alpha M / 2
+def figure_alpha():
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    meta = {"CreationDate": None, "ModDate": None, "Producer": None, "Creator": None}
+    fig, ax = plt.subplots(1, 1, figsize=(3.1, 2.7), layout="constrained")
+    fig.get_layout_engine().set(w_pad=0.02, h_pad=0.02)
+    mm = np.linspace(3500, 11500, 200)
+    ax.plot(mm, ALPHA * mm / 2, color="#0b0b0b", lw=1.0, label=r"$\alpha M/2$")
+    for r in I4_ROWS:
+        mbar = (I4_STATES[r["pair"][0]][0] + I4_STATES[r["pair"][1]][0]) / 2
+        ax.errorbar([mbar], [r["Delta"]], yerr=[min(r["err"], r["Delta"] * 0.95)], fmt="o", ms=3.8,
+                    color=COL["P"] if r["passes"] else COL["P-in"], mec="white", mew=0.4, lw=0.7, capsize=1, zorder=3)
+        if "model" in r:
+            ax.plot([mbar], [r["model"]["Delta"]], "^", ms=4, color=COL["J"], mec="white", mew=0.4, zorder=4)
+    ax.plot([], [], "o", ms=3.8, color=COL["P"], label=r"eligible pair, within $2\sigma$")
+    ax.plot([], [], "o", ms=3.8, color=COL["P-in"], label="eligible pair, outside")
+    ax.plot([], [], "^", ms=4, color=COL["J"], label="colour-spin model")
+    mot = I4_MOTIVATING
+    ax.plot([(4440.3 + 4457.3) / 2], [mot["Delta"]], "*", ms=6, color="#52514e", label=r"$P_c(4440)/P_c(4457)$ (excluded)")
+    ax.set_yscale("log")
+    ax.set_ylim(0.3, 1500)
+    ax.set_xlim(3500, 11500)
+    ax.set_xlabel("mean mass $M$ [MeV]")
+    ax.set_ylabel(r"splitting $\Delta$ [MeV]")
+    ax.legend(loc="lower right", frameon=False, fontsize=6.3, handletextpad=0.3)
+    fig.savefig(FIGURES / "exotic_alpha.pdf", metadata=meta)
+    plt.close(fig)
+
+
+figure_alpha()
+
+CHOICES_AFTER_DATA_H9 = [
+    "H9 itself was conceived after seeing that every established pentaquark carries c cbar (SM7's honesty note); those states are "
+    "not evidence for it.",
+    "The claimed-pentaquark list was compiled from the claims we could find and verify on arXiv; light hidden-flavour candidates "
+    "are not claimed as pentaquarks in the literature we read, so the table has no light hidden-flavour row.",
+    "I2: the molecular masses carry over binding energies relative to isospin-averaged thresholds (the lead's instruction and SM7); "
+    "the reduced-mass scaling is a variant added with it, not chosen after seeing anything, since no hidden-bottom pentaquark is "
+    "known.",
+    "I4: the eligibility rule and the list were written before any splitting was computed, but the masses of all candidate states "
+    "were known from SM6, and the P_cs(4459) two-peak masses were read (for the status in I1) before the list was written; it is "
+    "listed as not resolved by the rule. The chance null (Delta uniform in 0 to 300 MeV) and the 2 sigma pass criterion were fixed "
+    "with the list.",
+]
+H9["choices_after_data"] = CHOICES_AFTER_DATA_H9
+
+
+# =====================================================================================================================================
 # Outputs
 # =====================================================================================================================================
 CHOICES_AFTER_DATA = [
@@ -1682,6 +2024,7 @@ out = {
           "distance_floored_at_sigma_M": {"p": FISH_FLOOR[1]},
           "n_threshold_hadrons": len(THRESH_HADRONS), "n_unverified_hadrons": sum(1 for h in THRESH_HADRONS if not h[7])},
     "C": PARTNERS,
+    "I": H9,
     "delta_J_minus_P": DELTA_J,
     "choices_after_data": CHOICES_AFTER_DATA, "caveats": CAVEATS,
     "citations": CITATIONS,
@@ -1782,6 +2125,59 @@ md.append(f"\n(u): a threshold hadron mass not re-read. Fisher X2 = {FISH_MAIN[0
 md.append("## (c) Partners\n")
 for pt in PARTNERS:
     md.append(f"- **{pt['id']}** {pt['prediction']}. *Search:* {pt['search']}. **{pt['verdict']}**.")
+md.append("\n## Hypothesis H9: the minting in hadrons (SM7)\n")
+md.append("H9 (fixed in sm_preregistration.md, SM7, after the SM6 results and before this analysis): a pentaquark is a minting, a "
+          "bound triple of colour-bearers plus a quark and its own antiquark. **Honesty note:** H9 was conceived after seeing that "
+          "every established pentaquark carries c cbar, so those states are not evidence for it.\n")
+md.append("### I1 (P1) no open flavour\n")
+md.append("| claimed pentaquark | content | pair | status | claim | not confirmed by |")
+md.append("|---|---|---|---|---|---|")
+for c in H9["I1"]["claims"]:
+    md.append(f"| {c['state']} | {c['content']} | {c['pair']} | {c['status']} | {c['source']} | "
+              f"{', '.join(c['not_confirmed_by']) or '-'} |")
+for c in H9["I1"]["searches_without_claim"]:
+    md.append(f"| {c['state']} | {c['content']} | {'hidden' if antiquark_paired(c['content']) else 'open'} | no claim; searched "
+              f"| - | {c['source']} |")
+md.append(f"\nHidden/open x established/not: {I1_TABLE} (rows hidden, open). Fisher's exact p = {I1_FISHER_ONE:.3f} one-sided, "
+          f"{I1_FISHER_TWO:.3f} two-sided. Every open-flavour claim unconfirmed: {I1_OPEN_UNCONFIRMED}. Verdict: "
+          f"{H9['I1']['verdict']}. Light hidden-flavour pentaquarks (uud s sbar, uud u ubar) would mix with N* resonances and are hard "
+          "to tag, and the open-flavour claims date from 2003-2004 while the hidden-charm ones come from far larger LHCb samples: "
+          "selection, not only physics. Ill-posed example: " + H9["I1"]["ill_posed_note"] + ". SM6's lowest doubly charmed level "
+          f"([cc]_1[ud]_0)qbar at {ROW['P_cc ([cc][ud] qbar), lowest']['P']['M']:.0f} MeV has I = 1/2 and is allowed; its I = 3/2 "
+          f"level cc u u dbar at {I1_PCC_I32[0]:.0f} +- {I1_PCC_I32[1]:.0f} MeV ({I1_PCC_I32[0] - TH_PCC32[0]:+.0f} MeV from "
+          f"{TH_PCC32[1]}) is forbidden by H9: the two readings conflict there. LHCb's prompt search saw no doubly charmed "
+          "pentaquark, which bounds production, not existence.\n")
+md.append("### I2 (P2) hidden-bottom pentaquarks\n")
+md.append("| partner of | bottom threshold | T [MeV] | binding carried over [MeV] | M (same binding) | M (binding x mu_b/mu_c) |")
+md.append("|---|---|---|---|---|---|")
+for d in I2_MOL:
+    md.append(f"| {d['partner_of']} | {d['bottom_threshold']} | {d['T_bottom']:.1f} | {d['binding_charm']:+.1f} | "
+              f"{d['M_same_binding']:.1f} | {d['M_mu_scaled']:.1f} |")
+md.append(f"\nCompact ([bq][qq]) bbar (colour-spin model, KR convention): lowest level {I2_PB_COMPACT[0]:.1f} +- "
+          f"{I2_PB_COMPACT[1]:.1f} MeV (variant J {I2_PB_COMPACT_J[0]:.1f}), multiplet {_pb_all[0]:.0f} to {_pb_all[-1]:.0f} MeV; "
+          f"lowest J = 1/2 udsb bbar {I2_PBS_COMPACT[0]:.1f} +- {I2_PBS_COMPACT[1]:.1f} MeV. Lowest S-wave thresholds: {TH_PB[1]} "
+          f"{TH_PB[0]:.1f}, {TH_PBS[1]} {TH_PBS[0]:.1f} MeV. Search status: {H9['I2']['search_status']}. Verdict: live.\n")
+md.append("### I3 (P3) the general rule\n")
+md.append(f"Established exotic hadrons without a pair of one flavour: {', '.join(I3_VIOLATORS)}. Verdict: {H9['I3']['verdict']}.\n")
+md.append("### I4 (P4) Delta M = alpha M / 2 for spin doublets\n")
+md.append("Eligible doublets, fixed from quark content and J^P only before any splitting was computed:\n")
+for g, a1, a2 in I4_ELIGIBLE:
+    md.append(f"- {g}: {a1} / {a2}")
+md.append("\nNot eligible: " + "; ".join(f"{a} ({b})" for a, b in I4_NOT_ELIGIBLE) + ".\n")
+md.append("| pair | Delta [MeV] | alpha M/2 | pull | colour-spin model Delta (pull) |")
+md.append("|---|---|---|---|---|")
+for r in I4_ROWS:
+    mo = f"{r['model']['Delta']:.1f} +- {r['model']['err']:.1f} ({r['model']['pull']:+.1f}); {r['model']['desc']}" if "model" in r else "-"
+    md.append(f"| {r['pair'][0]} / {r['pair'][1]} | {r['Delta']:.1f} +- {r['err']:.1f} | {r['alpha_M_over_2']:.1f} | "
+              f"{r['pull']:+.1f} | {mo} |")
+md.append(f"\n{I4_PASS} of {len(I4_ROWS)} pass at 2 sigma; {I4_EXPECT:.2f} expected by chance (Poisson p of at least {I4_PASS}: "
+          f"{I4_P_EXCESS:.2f}); {I4_FAIL3} fail by 3 sigma or more. Motivating pair (excluded): Delta = {I4_MOTIVATING['Delta']:.1f}, "
+          f"alpha M/2 = {I4_MOTIVATING['alpha_M_over_2']:.1f}. P_cs(4459) two-peak hypothesis (not resolved, info): Delta = "
+          f"{I4_PCS_INFO['Delta']:.1f} +- {I4_PCS_INFO['err']:.1f} against {I4_PCS_INFO['alpha_M_over_2']:.1f}. Verdict: "
+          f"{H9['I4']['verdict']}.\n")
+md.append("### H9: choices made after seeing the data\n")
+for i, c in enumerate(CHOICES_AFTER_DATA_H9, 1):
+    md.append(f"{i}. {c}")
 md.append("\n## Choices made after seeing the data\n")
 for i, c in enumerate(CHOICES_AFTER_DATA, 1):
     md.append(f"{i}. {c}")

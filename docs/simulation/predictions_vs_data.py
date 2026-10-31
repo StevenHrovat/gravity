@@ -11,14 +11,18 @@ paper is on arXiv, otherwise the journal or collaboration record through a web s
 reference, what was read and the value quoted. Numbers that could not be verified are left out, and the Markdown report says which.
 
 Each confrontation prints the GUID prediction, the datum, the pull (in standard deviations) or the bound, and a verdict line. Every row
-has one of four kinds (table KIND below):
+has one of four kinds (table KIND below), and every scored row one tally class (table SENS below):
   scored       a prediction confronted with a datum it was not set from: OK if GUID is consistent with the datum at 95% (|pull| < 1.96, or
                the GUID value inside the allowed region; 90% regions are labelled as such), FAIL otherwise. A FAIL stays a FAIL, also when
                general relativity, LambdaCDM or the Standard Model share it. Only these rows enter the tally.
-  conditional  the same test for a prediction of a model Part I names but GUID does not derive (the Starobinsky/Higgs plateau potential);
+  conditional  the same test for a prediction of a model GUID does not derive (a plateau inflation potential, Starobinsky or Higgs);
                OK/FAIL reported and counted separately.
   consistency  the prediction or statement was set from this datum, so it cannot fail; reported as CONS, never counted as a success.
-  info         superseded, derived, overlapping a scored row, or without a usable uncertainty; reported as INFO, not scored.
+  info         superseded, derived, overlapping a scored row, a check of quantum theory, or without a usable uncertainty; reported
+               as INFO, not scored.
+Tally classes of scored rows: 'shared' (the prediction is that of general relativity, LambdaCDM, the Standard Model or quantum
+mechanics), 'specific-sensitive' and 'specific-not-yet-sensitive'. A GUID-specific row is not yet sensitive when GUID's departure from
+those theories is smaller than the datum's reach by a factor of ten or more, or scales with a free parameter that may be zero.
 The last line counts the scored confrontations; the exit code is 0 only if all of them pass. Separate METHOD checks (marked [M]) test
 the script's own numerics (closed forms against quadrature, ODE against analytic limits); they must all pass.
 
@@ -236,7 +240,8 @@ CITATIONS = {
 # ---------------------------------------------------------------------------------------------------------------------------------
 ROWS = []          # every confrontation
 METHOD = []        # method checks
-COND = "conditional on the Starobinsky/Higgs plateau potential, which Part I names but GUID does not derive"
+COND = ("conditional on a plateau inflation potential (Starobinsky R^2 or Higgs inflation): GUID derives no inflaton potential, and both "
+        "forms couple a scalar to curvature, in open tension with the proposition that fixes gamma = 1")
 R0SET = "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds"
 NUEMP = "that the known neutrinos are not the remnant is an empirical statement set from neutrino-mass bounds, not a prediction"
 KIND = {  # rows whose kind is not 'scored' (or 'info' for rows passed with scored=False); reason in the second field
@@ -266,6 +271,8 @@ KIND = {  # rows whose kind is not 'scored' (or 'info' for rows passed with scor
     "D9.3": ("consistency", NUEMP),
     "D9.4": ("consistency", NUEMP),
     "D9.5": ("consistency", "the radiated remnant was refuted from the NANOGrav amplitude itself"),
+    "D9.1": ("info", "a check of quantum theory, which GUID adopts unchanged: Tsirelson's bound is a theorem of quantum mechanics"),
+    "D9.2": ("info", "a check of quantum theory, which GUID adopts unchanged"),
 }
 VERDICT_TEXT = {"OK": "GUID consistent with this datum at 95%", "FAIL": "GUID NOT consistent with this datum at 95%",
                 "CONS": "consistent by construction (prediction set from this datum): not counted", "INFO": "reported, not scored"}
@@ -513,11 +520,13 @@ gauss("D1.4", "Present drift of alpha, optical clocks (PTB 2021; superseded by D
 inside("D1.5", "Oklo natural reactor, 1.8 Gyr ago", lam95**2 * f_b_hi * (solA.sol(-math.log1p(z_oklo))[0] - solA.y[0, -1]), -1.1e-8, 1.1e-8,
        "95% CL", ["oklo_dh", "oklo_dd"], "GUID-specific", guid_text="Model A: < 1e-15; Model B: -(drift/H0) G(z_Oklo)",
        note=f"z_Oklo = {z_oklo:.3f} (1.8 Gyr in Planck 2018 LambdaCDM)")
+VA_D1 = {}
 for rid, (lab, ref, z, v, s), title in (("D1.6", alpha_data[1], "Quasar absorption, ESPRESSO, z = 1.15"),
                                          ("D1.7", alpha_data[2], "Quasar absorption, four systems at z = 5.5 to 7.1"),
                                          ("D1.8", alpha_data[3], "CMB (Planck 2015), alpha at recombination"),
                                          ("D1.9", alpha_data[4], "BBN (alpha alone varying; 2001 abundances)")):
     vA = lam95**2 * f_b_hi * (solA.sol(max(-math.log1p(z), N0))[0] - solA.y[0, -1])
+    VA_D1[rid] = (vA, s)
     gauss(rid, f"Delta alpha/alpha: {title}", vA, v, s, [ref], "GUID-specific", guid_text=f"Model A: {fmt(vA)} (at the largest allowed lambda)",
           data_text=f"{fmt(v)} +- {fmt(s)} (1 sigma)")
 gauss("D1.10", "Planck intermediate XXIV, alpha at recombination (same data family as D1.8)", 0.0, 3.6e-3, 3.7e-3, ["planck_xxiv"],
@@ -673,13 +682,13 @@ for i, (lab, ref, v, s) in enumerate(ns_data):
            f"n_s = {ns_pred[0]:.4f} (N = 50) to {ns_pred[-1]:.4f} (N = 60)", f"{v} +- {s} (68%)", [ref],
            f"best N = {Ns[best]}: pull {pulls[best]:+.2f} sigma (N = 50: {pulls[0]:+.2f}, N = 60: {pulls[-1]:+.2f}); 95% needs N in "
            f"[{Nmin:.1f}, {Nmax:.1f}]",
-           ok, "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
+           ok, "plateau potential (Starobinsky/Higgs), not derived by GUID",
            scored=(i != 1), pull=float(pulls[best]),
            note=("P-ACT overlaps both neighbours; reported, not scored" if i == 1 else
                  ("the leading-order plateau predictions need N >= 63 here; the shift comes partly from the BAO in the combination"
                   if i == 2 else "")))
 inside("D4.4", "Tensor-to-scalar ratio r = 12/N^2 (N = 50 to 60)", float(r_pred[0]), 0.0, 0.036, "95% CL", ["bk18"],
-       "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID", guid_text=f"{r_pred[-1]:.4f} to {r_pred[0]:.4f}",
+       "plateau potential (Starobinsky/Higgs), not derived by GUID", guid_text=f"{r_pred[-1]:.4f} to {r_pred[0]:.4f}",
        data_text="r_0.05 < 0.036 (95%), sigma(r) = 0.009",
        note="the next generation (sigma(r) ~ 1e-3) reaches it; GUID itself allows the standard spectrum (Section 11.4)")
 # Ordering of the strong split and inflation (Hypothesis 6'): monopoles. Kibble-Preskill estimate without inflation: one monopole per
@@ -992,11 +1001,43 @@ COVERED = [("Galactic rotation curves, stochastic remnant, Bridge A", "docs/simu
             "holographic_code,gravity_simulated}.json", "separate workstreams")]
 
 # =================================================================================================================================
+# Tally classes. A scored row is 'shared' when its prediction is that of general relativity, LambdaCDM, the Standard Model or quantum
+# mechanics. A GUID-specific scored row is 'specific-not-yet-sensitive' when GUID's departure from those theories is smaller than the
+# datum's reach by SENS_FACTOR or more (factor = reach / departure), or when the departure scales with a free parameter that may be zero
+# (factor None); otherwise 'specific-sensitive'. SENS lists every GUID-specific scored row with its factor and reason.
+SENS_FACTOR = 10.0
+FREE = "the departure scales with lambda^2, and lambda is free and may be zero: the datum bounds lambda, it does not test a predicted size"
+v_oklo_A = lam95**2 * f_b_hi * (solA.sol(-math.log1p(z_oklo))[0] - solA.y[0, -1])
+SENS = {"D1.1": (None, FREE), "D1.2": (None, FREE),
+        "D1.3": (s_clock / abs(dA_max), "Model A's drift at the largest allowed coupling lies this factor below the clocks' error; "
+                                        "Model B's drift is free in size and sign"),
+        "D1.5": (1.1e-8 / abs(v_oklo_A), "Model A's shift at the largest allowed coupling lies this factor inside the bound; Model B is free")}
+for rid, (vA, sA) in VA_D1.items():
+    SENS[rid] = (sA / abs(vA), "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free")
+for i, e in enumerate(D6["experiments"]):
+    SENS[f"D6.{i + 1}"] = (e["margin"], "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1")
+SENS["D6.8"] = (min(1e-9 / DP_kernel, DP_kernel / 1e-40), "GUID's value lies this factor inside the nearer edge of the window")
+for r in ROWS:
+    r["tally_class"], r["sensitivity_factor"], r["sensitivity_reason"] = None, None, ""
+    if r["kind"] != "scored":
+        continue
+    if not r["cls"].startswith("GUID-specific"):
+        r["tally_class"] = "shared"
+        continue
+    assert r["id"] in SENS, f"GUID-specific scored row {r['id']} has no sensitivity entry"
+    fac, why = SENS[r["id"]]
+    r["sensitivity_factor"], r["sensitivity_reason"] = fac, why
+    r["tally_class"] = "specific-not-yet-sensitive" if (fac is None or fac >= SENS_FACTOR) else "specific-sensitive"
+assert set(SENS) == {r["id"] for r in ROWS if r["tally_class"] and r["tally_class"].startswith("specific")}, "SENS lists a row not scored"
+
+# =================================================================================================================================
 by_kind = {k: [r for r in ROWS if r["kind"] == k] for k in ("scored", "conditional", "consistency", "info")}
 scored = by_kind["scored"]
 n_ok = sum(1 for r in scored if r["verdict"] == "OK")
 fails = [r for r in scored if r["verdict"] == "FAIL"]
 specific = [r for r in scored if r["cls"].startswith("GUID-specific")]
+nys = [r for r in specific if r["tally_class"] == "specific-not-yet-sensitive"]
+sens = [r for r in specific if r["tally_class"] == "specific-sensitive"]
 cond_ok = [r["id"] for r in by_kind["conditional"] if r["verdict"] == "OK"]
 cond_fail = [r["id"] for r in by_kind["conditional"] if r["verdict"] == "FAIL"]
 cons_fail = [r["id"] for r in by_kind["consistency"] if r["verdict"] == "FAIL"]
@@ -1009,6 +1050,8 @@ print(f"Rows: {len(ROWS)} = {len(scored)} scored + {len(by_kind['conditional'])}
       f"+ {len(by_kind['info'])} info")
 print(f"Scored: {len(scored)}, OK {n_ok}, FAIL {len(fails)}; GUID-specific (scalar, Bridge B) {len(specific)}, shared with GR, LambdaCDM, "
       f"the Standard Model or quantum mechanics {len(scored) - len(specific)}")
+print(f"GUID-specific scored rows: {len(sens)} sensitive, {len(nys)} not yet sensitive (departure below the datum's reach by a factor "
+      f"{SENS_FACTOR:.0f} or more, or scaling with a free parameter): " + ", ".join(r["id"] for r in nys))
 print(f"Conditional on the plateau potential: OK {cond_ok}, FAIL {cond_fail}; consistency rows (not counted): {len(by_kind['consistency'])}"
       f"{', FAIL ' + str(cons_fail) if cons_fail else ''}")
 print(f"If the scored rows were independent, a correct theory would fail about {0.05 * len(scored):.1f} of {len(scored)} at 95%; but {CORREL}.")
@@ -1056,7 +1099,8 @@ for ax, g in zip(axes, groups):
         p = r["pull"]
         ok = r["verdict"] == "OK"
         cond = r["kind"] == "conditional"
-        ax.plot([p], [i], marker="o" if ok else "X", ms=5 if ok else 7, color=C1 if ok else CRIT, ls="none",
+        nys_row = r["tally_class"] == "specific-not-yet-sensitive"
+        ax.plot([p], [i], marker="o" if ok else "X", ms=5 if ok else 7, color=(INK2 if nys_row else C1) if ok else CRIT, ls="none",
                 markerfacecolor="white" if cond else None, markeredgewidth=1.2)
         if not ok:
             ax.annotate(f"{'cond. ' if cond else ''}FAIL {p:+.1f}", (p, i), xytext=(-7, 0), textcoords="offset points", color=INK,
@@ -1070,8 +1114,9 @@ for ax, g in zip(axes, groups):
     ax.grid(axis="y", lw=0)
     ax.set_xlabel(r"pull $(x-x_G)/\sigma$")
 axes[0].set_title("D1, D2")
-axes[1].set_title("D3, D4, D9")
-axes[1].text(0.03, 0.05, "shaded: consistent at 95%\n" + r"$\times$: FAIL (shared with $\Lambda$CDM)" + "\nopen: conditional on the\nplateau potential",
+axes[1].set_title("D3, D4")
+axes[1].text(0.03, 0.05, "shaded: consistent at 95%\ngrey: GUID-specific,\nnot yet sensitive\n" + r"$\times$: FAIL (shared with $\Lambda$CDM)"
+             + "\nopen: conditional on the\nplateau potential",
              transform=axes[1].transAxes, fontsize=FS, color=INK2, va="bottom")
 fig.tight_layout(w_pad=1.0)
 save(fig, "data_pulls.pdf")
@@ -1237,6 +1282,9 @@ RESULTS.mkdir(parents=True, exist_ok=True)
 summary = dict(rows=len(ROWS), scored=len(scored), passed=n_ok, failed=[r["id"] for r in fails], guid_specific_scored=[r["id"] for r in specific],
                shared_scored=len(scored) - len(specific), conditional=[r["id"] for r in by_kind["conditional"]], conditional_ok=cond_ok,
                conditional_fail=cond_fail, consistency=[r["id"] for r in by_kind["consistency"]], info=[r["id"] for r in by_kind["info"]],
+               guid_specific_sensitive=[r["id"] for r in sens], guid_specific_not_yet_sensitive=[r["id"] for r in nys],
+               sensitivity_rule=f"a GUID-specific scored row is not yet sensitive when GUID's departure from GR, LambdaCDM, the SM or QM is "
+                                f"smaller than the datum's reach by a factor {SENS_FACTOR:.0f} or more, or scales with a free parameter",
                expected_chance_fails_if_independent=0.05 * len(scored), correlation_note=CORREL,
                method_checks=len(METHOD), method_passed=sum(m["ok"] for m in METHOD))
 out = dict(script="docs/simulation/predictions_vs_data.py", verified_on=DATE_VERIFIED, criterion="scored and conditional rows: OK = consistent at 95% "
@@ -1291,22 +1339,26 @@ L.append("Workstream of *GUID v6: Our theory as simulated*. Written by `docs/sim
          ", ".join(f"`docs/simulation/figures/{f}`" for f in FIGS) + ".\n")
 L.append(f"**{len(ROWS)} rows: {len(scored)} scored, {len(by_kind['conditional'])} conditional, {len(by_kind['consistency'])} consistency, "
          f"{len(by_kind['info'])} info. Scored: {n_ok} OK, {len(fails)} FAIL** (" + ", ".join(r["id"] for r in fails) + "), all shared with "
-         f"LambdaCDM. Of the {len(scored)} scored rows, {len(specific)} test GUID-specific content (the information scalar and Bridge B) and "
-         f"{len(scored) - len(specific)} test content GUID shares with general relativity, LambdaCDM or quantum mechanics. Conditional on the "
-         f"Starobinsky/Higgs plateau potential: OK " + ", ".join(cond_ok) + "; FAIL " + ", ".join(cond_fail) + ". The consistency rows were "
+         f"LambdaCDM. Of the {len(scored)} scored rows, {len(scored) - len(specific)} test content GUID shares with general relativity, "
+         f"LambdaCDM or the Standard Model, and {len(specific)} test GUID-specific content (the information scalar and Bridge B): "
+         f"{len(sens)} sensitive, {len(nys)} not yet sensitive. Conditional on a "
+         f"plateau potential (Starobinsky or Higgs): OK " + ", ".join(cond_ok) + "; FAIL " + ", ".join(cond_fail) + ". The consistency rows were "
          f"set from their own data and are never counted as successes. If the scored rows were independent, a correct theory would fail about "
          f"{0.05 * len(scored):.1f} of them by chance at 95%; but {CORREL}. Method checks of the script's own numerics: "
          f"{sum(m['ok'] for m in METHOD)} of {len(METHOD)}.\n")
 L.append("Kinds: **scored** rows confront a prediction with a datum it was not set from: **OK** if GUID is consistent with the datum at 95% "
          "(|pull| < 1.96, or the GUID value inside the allowed region; rows at 90% CL say so), **FAIL** otherwise, also when general "
-         "relativity, LambdaCDM or the Standard Model share it. **Conditional** rows apply the same test to a model Part I names but GUID does "
-         "not derive. **Consistency** rows (CONS) hold by construction, because the prediction was set from the datum. **INFO** rows are "
-         "superseded, derived, overlapping or without a usable uncertainty. The reason for every non-scored kind is given with the row.\n")
+         "relativity, LambdaCDM or the Standard Model share it. **Conditional** rows apply the same test to a model GUID does not derive. **Consistency** rows (CONS) hold by construction, because the prediction was set from the datum. **INFO** rows are "
+         "superseded, derived, overlapping, checks of quantum theory or without a usable uncertainty. The reason for every non-scored kind is "
+         "given with the row. Every scored row has a **tally class**: *shared* (the prediction is that of general relativity, LambdaCDM, the "
+         "Standard Model or quantum mechanics), *specific-sensitive*, or *specific-not-yet-sensitive* (GUID's departure from those theories "
+         f"is smaller than the datum's reach by a factor {SENS_FACTOR:.0f} or more, or scales with a free parameter that may be zero; the "
+         "factor is given with the row).\n")
 L.append("Every measured number was checked on " + DATE_VERIFIED + " against the arXiv text or abstract of its source; rows read only "
          "through secondary sources (a web search of the journal record, or a review that quotes the value) are listed in the citations.\n")
 L.append("## Summary\n")
 L.append(
-    "- **Consistent and distinctive of GUID:** none yet has data that could tell GUID apart. The information scalar is consistent with every "
+    "- **GUID-specific, all not yet sensitive:** no datum yet reaches what would tell GUID apart. The information scalar is consistent with every "
     f"datum: free fall bounds its coupling to |lambda| < {lam95:.1e} (95% CL; version 5.1's 2e-5 is the one-sigma-level value), and the drift "
     f"of alpha is consistent with zero. The data say **nothing about the sign** of the drift: the newest clock value is "
     f"(1.8 +- 2.5)e-19 /yr, and the joint fit of a slowly rolling scalar gives ({d_hat:.1e} +- {d_sig:.1e}) /yr, P(negative) = {P_neg:.2f}. "
@@ -1317,13 +1369,14 @@ L.append(
     f"{min(e['margin'] for e in D6['experiments']):.0e} and more, and with the radiation bounds once the smearing length is R0 >= 4e-10 m.\n"
     "- **Consistent, not distinctive (shared with general relativity, quantum mechanics):** gamma = beta = 1, the Nordtvedt and strong-field "
     f"equivalence tests, the gravitational redshift, the speed and mass of gravitational waves (D2, 10 scored rows, chi2 = {chi2_d2:.1f} for "
-    f"{len(d2_pulls)} Gaussian pulls); Soltan efficiencies inside the Kerr range and the area theorem (D5); Tsirelson's bound (D9).\n"
+    f"{len(d2_pulls)} Gaussian pulls); Soltan efficiencies inside the Kerr range and the area theorem (D5). Tsirelson's bound and the loophole-free Bell test (D9.1, D9.2) "
+    "are checks of quantum theory and reported as INFO.\n"
     "- **Consistent by construction, not counted (prediction set from the datum):** the smearing length of Bridge B, the black-hole window, "
     "monopoles and proton decay, alpha(M_Z) near 1/128, the electroweak crossover, the neutrinos and the gravitational-wave background as "
     "non-remnants, the Kerr bound on measured spins.\n"
     "- **In tension (all shared with LambdaCDM, and correlated):** DESI DR2's evolving dark energy against the de Sitter floor (2.8 to 4.2 "
     "sigma; 3.2 sigma with recalibrated DES supernovae) [D3.3]; the Hubble tension against SH0ES (4.9 sigma) while the TRGB value agrees "
-    "[D3.4, D3.5]; DESI DR2 + CMB curvature at 2.1 sigma [D3.7]. Conditional on the plateau potential Part I names: ACT DR6 + lensing + BAO "
+    "[D3.4, D3.5]; DESI DR2 + CMB curvature at 2.1 sigma [D3.7]. Conditional on a plateau potential (Starobinsky or Higgs): ACT DR6 + lensing + BAO "
     "puts n_s = 0.974 +- 0.003, which the leading-order predictions reach only for N >= 63 (2.4 sigma at N = 60) [D4.3].\n"
     "- **No data yet:** gravitationally mediated entanglement (Bose-Marletto-Vedral), the LOCC test, the decoherence-diffusion trade-off at "
     "the needed sensitivity, Bridge B's decoherence, single-graviton clicks, primordial tensor modes, the Hawking glow at the light edge of "
@@ -1334,6 +1387,9 @@ L.append("|---|---|---|---|---|---|---|---|---|")
 for r in ROWS:
     src = "; ".join(cite_names.get(k, k) for k in r["refs"]) or "-"
     kind = r["kind"] + (f": {r['kind_reason']}" if r["kind_reason"] else "")
+    if r["tally_class"]:
+        fac = r["sensitivity_factor"]
+        kind += f" [{r['tally_class']}" + (f", factor {fac:.1e}" if fac else (", free parameter" if r["sensitivity_reason"] else "")) + "]"
     L.append(f"| {r['id']} | {md_escape(r['observable'])} | {md_escape(src)} | {md_escape(r['data'])} | {md_escape(r['guid'])} | "
              f"{md_escape(r['measure'])} | **{r['verdict']}** | {md_escape(kind)} | {md_escape(r['cls'])} |")
 L.append("\nNotes on rows:\n")
@@ -1373,7 +1429,8 @@ L.append(
     "not scored: it exists only if w = -1.\n")
 L.append(
     "**D4.** Leading-order plateau predictions n_s = 1 - 2/N, r = 12/N^2 for Starobinsky and Higgs inflation, N = 50 to 60. These rows are "
-    "conditional on that potential, which Part I names but GUID does not derive. The n_s datum is ACT DR6 + Planck + lensing + DESI DR1 BAO "
+    "conditional on that potential, which GUID does not derive (both forms couple a scalar to curvature, in open tension with the "
+    "proposition that fixes gamma = 1). The n_s datum is ACT DR6 + Planck + lensing + DESI DR1 BAO "
     "(it includes the Planck data, so Planck alone and P-ACT are reported). A prediction band passes when some N in [50, 60] is within 95%; "
     "the pull quoted is the one at the best N.\n")
 L.append(

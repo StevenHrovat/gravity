@@ -1,33 +1,30 @@
-\section{Remnants with a history: accumulation, halos and cosmic time}\label{sec:remnant}
+\section{Dark matter II: accumulation, halos, cosmic time and primordial black holes}\label{sec:remnant}
 
-Section~\ref{sec:sparc} rejected the stochastic remnant of Section~\ref{sec:darkmatter} in the static form Oppenheim and Russo
-derived~\cite{oppenheimrusso}: a constant extra acceleration $|\gamma_1|/2$ cannot make the excess $g_{\rm obs}-g_{\rm bar}$ over the
-baryons' Newtonian acceleration rise with $g_{\rm bar}$ with the observed logarithmic slope of 0.44 \chk{sparc:S2d}. GUID's cosmology
-(Section~\ref{sec:cosmo}) is a long evolution, and Hypothesis~\ref{h:remnant} keeps the remnants of interactions in the frame, so they may accumulate.
-We test an accumulated stochastic term, its dependence on each galaxy's past, the contained remnant (cold dark matter halos, which primordial
-black holes would form), the two together, and the change of scale with cosmic time. The result: an accumulated term of the self-consistent
-form fits the rotation curves as well as the radial acceleration relation (RAR), but it is MOND's phenomenology, fails the solar system,
-carries no galaxy-specific history and has the wrong arrow in time; once cold halos are present, the data leave the square-root term 1 to 5\%
-and a constant 8 to 31\% of the dark acceleration (the constant preferred with cored halos, which we read as halo shape). Data, cuts, error
-model, the likelihoods L1 and L2 and the BIC are those of Section~\ref{sec:sparc-data}; our galaxy-bootstrap resamples are drawn with a
-different random seed, so bootstrap ranges can differ from that section's in the last digit.
+This section tests the two routes of Hypothesis~\ref{h:remnant} (Section~\ref{sec:darkmatter}) once their history is included, and scores
+primordial black holes, the contained remnant's candidate, against published constraints.
 
 \subsection{The accumulated stochastic remnant}\label{sec:remnant-acc}
 
+Data, cuts, error model, the likelihoods L1 and L2 and the BIC are those of Section~\ref{sec:sparc-data}. Primers~\ref{box:galaxy}
+and~\ref{box:stats} explain the quantities and the statistics. Our galaxy-bootstrap resamples use a different random seed, so bootstrap
+ranges can differ from that section's in the last digit.
+
 \paragraph{Hypothesis.} \tagH\ The random kicks that the frame's diffusion leaves in the field (Section~\ref{sec:cq}) accumulate as a random
-walk. If the variance of the extra acceleration grows with the local source and with time at a constant rate $\dot a$,
-$\langle\delta g^2\rangle=g_{\rm bar}\,\dot a\,t$, and the entropic attraction is of the order of its root mean square, the extra acceleration
-is the geometric mean of $g_{\rm bar}$ and an accumulated scale $a_{\rm acc}\equiv\dot a\,t$. The classical-quantum dynamics does not give this. We fixed two forms before any fit:
+walk. Suppose the variance of the extra acceleration grows with the local source and with time at a constant rate $\dot a$,
+$\langle\delta g^2\rangle=g_{\rm bar}\,\dot a\,t$. If the entropic attraction is of the order of its root mean square, the extra acceleration
+is the geometric mean of $g_{\rm bar}$ and an accumulated scale $a_{\rm acc}\equiv\dot a\,t$. The classical-quantum dynamics does not give this
+law; it is an assumption. We fixed two forms before any fit:
 \begin{align}
 \text{form B (Brownian sum):}\quad & g_{\rm obs}=g_{\rm bar}+\sqrt{g_{\rm bar}\,a_{\rm acc}}\,,\label{eq:formB}\\
-\text{form S (self-consistent):}\quad & g_{\rm obs}=\tfrac12 g_{\rm bar}+\big(\tfrac14 g_{\rm bar}^2+g_{\rm bar}\,a_{\rm acc}\big)^{1/2}\,,
+\text{form S (self-consistent):}\quad & g_{\rm obs}=\tfrac12 g_{\rm bar}+\big(\tfrac14 g_{\rm bar}^2+g_{\rm bar}\,a_{\rm acc}\big)^{1/2}\,.
 \label{eq:formS}
 \end{align}
-where form S solves $(g_{\rm obs}-g_{\rm bar})\,g_{\rm obs}=g_{\rm bar}a_{\rm acc}$: the excess is sourced by the total field it helps to make.
-Both tend to $\sqrt{g_{\rm bar}a_{\rm acc}}$ at low acceleration, so $a_{\rm acc}$ plays the role of Milgrom's $a_0$~\cite{milgrom}. Form S
-\emph{is} MOND's ``simple'' interpolating function, $\nu(y)=\tfrac12+(\tfrac14+1/y)^{1/2}$ in $g_{\rm obs}=\nu(g_{\rm bar}/a_0)g_{\rm bar}$;
-form B adds the Newtonian and the deep-MOND acceleration. The square-root form was proposed after the slope 0.44 was measured, so agreeing
-with it is not a prediction. The reference is the RAR of Eq.~\eqref{eq:sparc-rar}~\cite{mcgaugh2016} with one universal $g_\dagger$.
+Form S solves $(g_{\rm obs}-g_{\rm bar})\,g_{\rm obs}=g_{\rm bar}a_{\rm acc}$: the excess is sourced by the total field it helps to make. Both
+forms tend to $\sqrt{g_{\rm bar}a_{\rm acc}}$ at low acceleration, so $a_{\rm acc}$ plays the role of Milgrom's $a_0$~\cite{milgrom}. Form S
+\emph{is} MOND's ``simple'' interpolating function, $\nu(y)=\tfrac12+(\tfrac14+1/y)^{1/2}$ in $g_{\rm obs}=\nu(g_{\rm bar}/a_0)\,g_{\rm bar}$.
+Form B adds the Newtonian and the deep-MOND acceleration. Both forms were introduced after Section~\ref{sec:sparc-slope} had measured the
+residual slope of 0.44. Agreeing with that slope is therefore not a prediction, and refuting them refutes these two forms, not every form a
+GUID prediction could take. The reference is the RAR of Eq.~\eqref{eq:sparc-rar}~\cite{mcgaugh2016}, with one universal $g_\dagger$.
 
 \begin{table}[b]
 \centering\footnotesize
@@ -46,38 +43,41 @@ form S, $a_{\rm acc}$ & 1.10 [1.02, 1.19] & 1.542 & $-5.5$ & 0.123 & $-2.6$ & $-
 \end{table}
 
 \paragraph{Fits.} Form S fits as well as the RAR, with $a_{\rm acc}=1.10\times10^{-10}$\,m\,s$^{-2}$ (Table~\ref{tab:remnant-r1},
-Fig.~\ref{fig:remnant-forms}) \tagS. Form B is worse by $\Delta$BIC $+209$: its excess keeps growing and overshoots the inner parts of massive
-galaxies by 0.07 to 0.08 dex. Both beat the constant by about 5000. The low-acceleration slope of $\log(g_{\rm obs}-g_{\rm bar})$ is 0.436 in
-the data, 0.448 for the RAR, 0.449 for form S and $1/2$ for form B; the universal RAR beats form S in 73 of 147 galaxies \chk{remnant:R1a}.
+Fig.~\ref{fig:remnant-forms}) \tagS. Form B is worse by $\Delta$BIC $+209$. Its excess keeps growing with $g_{\rm bar}$ and overshoots the inner
+parts of massive galaxies by 0.07 to 0.08 dex. Both forms beat the constant by about 5000. The low-acceleration slope of
+$\log(g_{\rm obs}-g_{\rm bar})$ is 0.436 in the data, 0.448 for the RAR, 0.449 for form S and $1/2$ for form B. Galaxy by galaxy, the universal
+RAR beats form S in 73 of 147 galaxies \chk{remnant:R1a}.
 
 \begin{figure}[tbp]
 \centering
 \includegraphics{remnant_forms.pdf}
-\caption{(a) Binned median residual $\log(g_{\rm obs}/g_{\rm model})$ of the universal fits of Table~\ref{tab:remnant-r1} (band: 16--84\% of
-points about the RAR). (b) The excess $g_{\rm obs}-g_{\rm bar}$ with binned medians and the four models. SPARC data~\cite{lelli2016} \tagS\
-\chk{remnant:R1a}. Look for form B drifting low above $10^{-10}$\,m\,s$^{-2}$ and form S on the RAR.}
+\caption{(a) Binned median residual $\log(g_{\rm obs}/g_{\rm model})$ of the universal fits (band: 16--84\% of the points about the RAR).
+(b) The excess $g_{\rm obs}-g_{\rm bar}$ with binned medians and the four models. SPARC data~\cite{lelli2016} \tagS\ \chk{remnant:R1a}. Look
+for form B drifting low above $10^{-10}$\,m\,s$^{-2}$ and form S on the RAR.}
 \label{fig:remnant-forms}
 \end{figure}
 
-\paragraph{The solar system.} Both forms are pointwise laws in $g_{\rm bar}$, and the Sun's field is the cleanest $g_{\rm bar}$ there is.
-A small extra radial force $f=k\,r^n$ with $\epsilon=fr^2/GM$ changes the apsidal angle $\psi=\pi[3+\dd\ln F/\dd\ln r]^{-1/2}$ of near-circular
-orbits through $\dd\ln F/\dd\ln r=-2+(n+2)\epsilon$, so the perihelion moves by
+\paragraph{The solar system.} Both forms are pointwise laws in $g_{\rm bar}$, and the Sun's field is the cleanest $g_{\rm bar}$ there is. Add a
+small radial force $f=k\,r^n$ to $F=GM/r^2$ and write $\epsilon=fr^2/GM$. Near-circular orbits have the apsidal angle
+$\psi=\pi[3+\dd\ln F/\dd\ln r]^{-1/2}$, and $\dd\ln F/\dd\ln r=-2+(n+2)\epsilon$. The perihelion therefore moves by
 \begin{equation}\label{eq:precession}
-\Delta\varpi=2\psi-2\pi=-\pi\,(n+2)\,\epsilon\quad\text{per orbit}
+\Delta\varpi=2\psi-2\pi=-\pi\,(n+2)\,\epsilon\quad\text{per orbit},
 \end{equation}
-(checked by integrating orbits \chk{remnant:R1a}). Form B adds $\sqrt{GMa_{\rm acc}}/r$ ($n=-1$), form S tends to the constant $a_{\rm acc}$
-($n=0$). With the fitted scales, form B turns the perihelion of Mars by $-6.0\times10^4$\,mas/yr and form S that of Saturn by $-74$\,mas/yr,
-where the EPM2011 ephemerides allow $-0.00020\pm0.00037$ and $-0.0032\pm0.0047$\,mas/yr~\cite{pitjeva2013}. Over six planets form B exceeds
-the allowed range by factors of $10^5$ to $1.6\times10^8$ and form S by 190 to $8\times10^4$: as written, both are \vd{refuted}. A survivor
-would need a rule that switches the term off at high acceleration, as the RAR's exponential does; accumulation supplies none.
+which we checked by integrating orbits \chk{remnant:R1a}. Form B adds $\sqrt{GMa_{\rm acc}}/r$ ($n=-1$); form S tends to the constant
+$a_{\rm acc}$ ($n=0$). With the fitted scales, form B turns the perihelion of Mars by $-6.0\times10^4$\,mas/yr and form S that of Saturn by
+$-74$\,mas/yr. The EPM2011 ephemerides allow $-0.00020\pm0.00037$ and $-0.0032\pm0.0047$\,mas/yr~\cite{pitjeva2013}. Over six planets,
+form B exceeds the allowed range by factors of $10^5$ to $1.6\times10^8$ and form S by 190 to $8\times10^4$. As written, both forms are
+\vd{refuted}. A survivor would need a rule that switches the term off at high acceleration, as the RAR's exponential does; accumulation
+supplies none.
 
 \subsection{Natural scales and the look-elsewhere effect}\label{sec:remnant-scales}
 
-We fixed nine candidates for $a_{\rm acc}$ before fitting: $cH_0$, $cH_0/2\pi$, $cH_\infty$, $cH_\infty/2\pi$ ($H_\infty=\sqrt{\Omega_\Lambda}H_0$,
-$\Omega_\Lambda=0.685$) for $H_0=67.4$~\cite{planck18} and 73\,km\,s$^{-1}$\,Mpc$^{-1}$, and $c/t_0$ with $t_0=13.8$\,Gyr. SPARC's 97
-Hubble-flow distances assume $H_0=73$~\cite{lelli2016}; rescaled to 67.4 they give $a_{\rm acc}=1.03\times10^{-10}$ (form S), and each 67.4
-candidate is compared with these data. The error on $\log a_{\rm acc}$ is 0.110 dex for form S (galaxy bootstrap 0.034, a $\pm0.1$\,dex shift
-of $\Upsilon$ 0.105, likelihood choice 0.008) and 0.131 dex for form B \chk{remnant:R1b}.
+We fixed nine candidates for $a_{\rm acc}$ before fitting: $cH_0$, $cH_0/2\pi$, $cH_\infty$ and $cH_\infty/2\pi$, with
+$H_\infty=\sqrt{\Omega_\Lambda}H_0$ and $\Omega_\Lambda=0.685$, each for $H_0=67.4$~\cite{planck18} and 73\,km\,s$^{-1}$\,Mpc$^{-1}$; and $c/t_0$
+with $t_0=13.8$\,Gyr. SPARC's 97 Hubble-flow distances assume $H_0=73$~\cite{lelli2016}. Rescaled to 67.4 they give
+$a_{\rm acc}=1.03\times10^{-10}$\,m\,s$^{-2}$ for form S, and each 67.4 candidate is compared with these rescaled data. The error on
+$\log a_{\rm acc}$ is 0.110 dex for form S: galaxy bootstrap 0.034, a $\pm0.1$\,dex shift of $\Upsilon$ 0.105, likelihood choice 0.008. For
+form B it is 0.131 dex \chk{remnant:R1b}.
 
 \begin{table}[t]
 \centering\footnotesize
@@ -97,50 +97,52 @@ $cH_0$, $cH_\infty$, $c/t_0$ & (5.4--7.1)$\times10^{-10}$ & 0.11--0.13 & $>29000
 \end{tabular}
 \end{table}
 
-The scales without $2\pi$ that a horizon argument gives, Bridge A among them (Section~\ref{sec:bridges}), are excluded
-(Table~\ref{tab:remnant-scales}, Fig.~\ref{fig:remnant-scales}). Form S's $a_{\rm acc}$ lies within 3\% of $cH_0/2\pi$ at either $H_0$, and within 1\% when both use 67.4. This is
-Milgrom's coincidence $a_0\approx cH_0/2\pi$~\cite{milgrom}, which $g_\dagger$ shares, and not a test: accumulation supplies no factor $2\pi$; the
-candidates form two clusters a factor $2\pi$ apart (span 0.91 dex, median spacing 0.035 dex), four of them within $2\sigma$ of $a_{\rm acc}$; and
-a scale drawn log-uniformly within $\pm1$ dex of the fit would land as close to a candidate with probability 0.10 (form S) or 0.21 (form B,
-nearest $cH_\infty/2\pi$) \chk{remnant:R1b}.
+The scales without $2\pi$ are excluded (Table~\ref{tab:remnant-scales}, Fig.~\ref{fig:remnant-scales}). They are the ones a horizon argument
+gives, Bridge~A among them (Section~\ref{sec:bridges}). Form S's $a_{\rm acc}$ lies within 3\% of $cH_0/2\pi$ at either $H_0$, and within 1\%
+when both use 67.4. This is Milgrom's coincidence $a_0\approx cH_0/2\pi$~\cite{milgrom}, which $g_\dagger$ shares; it is not a test, for three
+reasons. First, accumulation supplies no factor $2\pi$. Second, the candidates form two clusters a factor $2\pi$ apart (span 0.91 dex, median
+spacing 0.035 dex), and four of them lie within $2\sigma$ of $a_{\rm acc}$. Third, a scale drawn log-uniformly within $\pm1$ dex of the fit
+would land as close to a candidate with probability 0.10 for form S. For form B, whose nearest candidate is $cH_\infty/2\pi$, the
+probability is 0.21 \chk{remnant:R1b}.
 
 \begin{figure}[tbp]
 \centering
 \includegraphics{remnant_scales.pdf}
-\caption{$-2\ln L$ of the universal fit against $a_{\rm acc}$ for forms B (a) and S (b), with the nine candidates (solid: $H_0=67.4$, dashed:
-73, dotted: $c/t_0$) and the band $\pm\sigma_{\rm tot}$ \tagS\ \chk{remnant:R1b}. Look for the two clusters a factor $2\pi$ apart: the minimum
-falls in the lower one, with four candidates inside the band.}
+\caption{$-2\ln L$ of the universal fit against $a_{\rm acc}$ for forms B (a) and S (b), with the nine candidates and the band
+$\pm\sigma_{\rm tot}$ \tagS\ \chk{remnant:R1b}. Blue: $cH_0$ family; orange: $cH_\infty$ family; solid: $H_0=67.4$; dashed: 73; dotted:
+$c/t_0$. Look for the two clusters a factor $2\pi$ apart: the minimum falls in the lower one, with four candidates inside the band.}
 \label{fig:remnant-scales}
 \end{figure}
 
 \subsection{Per-galaxy scales and history}\label{sec:remnant-history}
 
-We fitted one scale to each of the 132 galaxies with at least five points, with velocity errors per point and distance, inclination,
-$\Upsilon$ ($\pm25\%$) and H\,\textsc{i} mass ($\pm10\%$) as whole-galaxy shifts added in quadrature into an error $s_i$, and estimated the
-intrinsic scatter $\tau$ of $\ell_i=\log a_i$ by maximising $-\sum_i[(\ell_i-\mu)^2/(s_i^2+\tau^2)+\ln(s_i^2+\tau^2)]$.
+We fitted one scale to each of the 132 galaxies with at least five points. Each fit uses velocity errors per point. Distance, inclination,
+$\Upsilon$ ($\pm25\%$) and H\,\textsc{i} mass ($\pm10\%$) enter as whole-galaxy shifts, added in quadrature into an error $s_i$. The intrinsic
+scatter $\tau$ of $\ell_i=\log a_i$ maximises $-\sum_i[(\ell_i-\mu)^2/(s_i^2+\tau^2)+\ln(s_i^2+\tau^2)]$.
 
 \paragraph{Universality.} Form S gives $\tau=0.20$\,dex, as much as the RAR's per-galaxy $g_\dagger$; form B gives 0.23 \chk{remnant:R1c}.
 Mock universes with a universal RAR, passed through the SPARC error model and the same analysis, give $\tau=0.04$ (16--84\%: 0.00 to 0.10)
-\chk{remnant:R2}. The galaxies thus scatter more than this error model allows, equally for $g_\dagger$ and $a_{\rm acc}$: either a galaxy-level
-term is missing (an $\Upsilon$ varying by more than 0.1 dex could cause it) or neither scale is universal. Marginalising each galaxy over
-$\Upsilon$, distance and inclination, Li et al.\ find no credible variation~\cite{li2018}, Rodrigues et al.\ the opposite~\cite{rodrigues2018};
-form S and the RAR stand or fall together.
+\chk{remnant:R2}. The galaxies thus scatter more than this error model allows, equally for $g_\dagger$ and $a_{\rm acc}$. Either a
+galaxy-level term is missing, such as an $\Upsilon$ that varies by more than 0.1 dex, or neither scale is universal. Marginalising each
+galaxy over $\Upsilon$, distance and inclination, Li et al.\ find no credible variation~\cite{li2018}; Rodrigues et al.\ conclude the
+opposite~\cite{rodrigues2018}. Here form S and the RAR stand or fall together.
 
-\paragraph{History.} A universal $a_{\rm acc}$ carries no history beyond the global time; a galaxy-specific accumulation would give older,
-more evolved systems a larger scale. Before computing anything we fixed five proxies and the predicted signs: $\log a_i$ should fall with
-Hubble type, gas fraction and disk scale length, and rise with effective surface brightness and with $N_{\rm orb}=t_0V_{\rm out}/(2\pi R_{\rm out})$,
-the orbits completed at the outermost radius in a Hubble time (median 17); a fixed variance per orbit gives $a_i\propto N_{\rm orb}$. For form B's
-$a_i$, the mean residual from the universal form B and the RAR's $g_{\dagger,i}$ we computed 15 Spearman and 15 partial (fixed
-$\log M_{\rm bar}$) correlations, with bootstrap intervals and the Holm correction over all 30. A universal law fitted per galaxy with a slightly
-wrong shape already correlates with proxies that track a galaxy's place on the $g_{\rm bar}$ axis, so we also tested each $\rho$ against its
-mean in 500 mock universes (distances, inclinations, $\Upsilon$ and gas drawn from their errors, plus 0.044 dex of point scatter calibrated on
-the data), using the data's own bootstrap spread.
+\paragraph{History.} A universal $a_{\rm acc}$ carries no history beyond the global time. A galaxy-specific accumulation would give older,
+more evolved systems a larger scale. Before computing anything we fixed five proxies and the predicted signs. $\log a_i$ should fall with
+Hubble type, gas fraction and disk scale length. It should rise with effective surface brightness and with
+$N_{\rm orb}=t_0V_{\rm out}/(2\pi R_{\rm out})$, the orbits completed at the outermost radius in a Hubble time (median 17). A fixed variance per
+orbit gives $a_i\propto N_{\rm orb}$. We correlated three per-galaxy quantities with the proxies: form B's $a_i$, the mean residual from the
+universal form B, and the RAR's $g_{\dagger,i}$. That gives 15 Spearman and 15 partial correlations (at fixed $\log M_{\rm bar}$), with
+bootstrap intervals and the Holm correction over all 30. A universal law fitted per galaxy with a slightly wrong shape already correlates
+with proxies that track a galaxy's place on the $g_{\rm bar}$ axis. We therefore also tested each $\rho$ against its mean in 500 mock
+universes, using the data's own bootstrap spread. The mocks draw distances, inclinations, $\Upsilon$ and gas from their errors and add
+0.044 dex of point scatter, calibrated on the data.
 
-None of the 30 correlations survives the Holm correction (smallest adjusted $p=0.33$), and none departs from the universal-RAR baseline
-(smallest adjusted $p=0.35$) \chk{remnant:R2}. Six partial correlations fall outside the mocks' 95\% bands, which are too narrow because the
-mocks lack the extra scatter found above. The predicted signs hold for two of five proxies, and the slope of $\log a_i$ on $\log N_{\rm orb}$ is
-$+0.12$ (95\%: $-0.17$ to $+0.46$) where a per-orbit random walk predicts $+1$ (Fig.~\ref{fig:remnant-history}). There is no history dependence
-beyond the global time, and per-orbit accumulation is \vd{refuted}.
+None of the 30 correlations survives the Holm correction (smallest adjusted $p=0.33$). None departs from the universal-RAR baseline
+(smallest adjusted $p=0.35$) \chk{remnant:R2}. Six partial correlations fall outside the mocks' 95\% bands, but those bands are too narrow,
+because the mocks lack the extra scatter found above. The predicted signs hold for two of five proxies. The slope of $\log a_i$ on
+$\log N_{\rm orb}$ is $+0.12$ (95\%: $-0.17$ to $+0.46$), where a per-orbit random walk predicts $+1$ (Fig.~\ref{fig:remnant-history}). There
+is no history dependence beyond the global time, and per-orbit accumulation is \vd{refuted}.
 
 \begin{figure}[tbp]
 \centering
@@ -153,31 +155,55 @@ fit \tagS\ \chk{remnant:R2}. Look for the absence of the predicted trends, in pa
 
 \subsection{The contained remnant: halos}\label{sec:remnant-halos}
 
-The second route of Section~\ref{sec:darkmatter} is energy contained behind horizons at the start: primordial black holes, cold and
-collisionless, which form halos as cold dark matter does. We fitted each of the 132 galaxies with $g_{\rm model}=g_{\rm bar}+GM_{\rm h}(<R)/R^2$
-under L1, maximising likelihood times prior. (i) NFW, $M_{\rm h}(<r)=M_{200}\,\mu(cr/r_{200})/\mu(c)$ with $\mu(u)=\ln(1+u)-u/(1+u)$ and
-$M_{200}=\tfrac{4\pi}{3}200\rho_{\rm crit}r_{200}^3$, with the concentration prior $\log c_{200}=0.905-0.101\log[M_{200}/(10^{12}h^{-1}M_\odot)]$,
-scatter 0.11 dex~\cite{dutton2014}. (ii) Cosmological NFW: in addition the stellar-to-halo relation
-$m_\star/M_{200}=2N[(M_{200}/M_1)^{-\beta}+(M_{200}/M_1)^{\gamma}]^{-1}$ ($\log M_1=11.590$, $N=0.0351$, $\beta=1.376$, $\gamma=0.608$, 0.15
-dex)~\cite{moster2013} with $m_\star=0.5L_{[3.6]}$: the halos that any cold dark matter, primordial black holes included, must form. (iii)
-Burkert, cored, $\rho=\rho_0r_0^3/[(r+r_0)(r^2+r_0^2)]$, no prior. Per-galaxy BIC counts $k=2$ for a halo, 1 for a free scale, 0 for a
-universal law.
+Primordial black holes are cold and collisionless, so they would form halos as any cold dark matter does. We fitted each of the 132
+galaxies with $g_{\rm model}=g_{\rm bar}+GM_{\rm h}(<R)/R^2$ under L1, maximising likelihood times prior. Three halo models enter.
+\begin{enumerate}[nosep]
+\item NFW, $M_{\rm h}(<r)=M_{200}\,\mu(cr/r_{200})/\mu(c)$ with $\mu(u)=\ln(1+u)-u/(1+u)$ and $M_{200}=\tfrac{4\pi}{3}200\rho_{\rm crit}r_{200}^3$.
+The concentration prior is $\log c_{200}=0.905-0.101\log[M_{200}/(10^{12}h^{-1}M_\odot)]$, with 0.11 dex scatter~\cite{dutton2014}.
+\item Cosmological NFW: in addition, the stellar-to-halo relation of Moster et al.~\cite{moster2013},
+\[
+m_\star/M_{200}=2N\big[(M_{200}/M_1)^{-\beta}+(M_{200}/M_1)^{\gamma}\big]^{-1},
+\]
+with $\log M_1=11.590$, $N=0.0351$, $\beta=1.376$, $\gamma=0.608$, 0.15 dex scatter and $m_\star=0.5L_{[3.6]}$. These are the halos that any
+cold dark matter must form.
+\item Burkert, a cored profile, $\rho=\rho_0r_0^3/[(r+r_0)(r^2+r_0^2)]$, without prior.
+\end{enumerate}
+The per-galaxy BIC counts $k=2$ for a halo, 1 for a free scale and 0 for a universal law.
 
 Summed over galaxies and relative to the universal RAR, $\Delta$BIC is $-1360$ for NFW (264 parameters), $-1108$ for cosmological NFW and
-$-1780$ for Burkert (form S: $-4.6$; form B: $+218$) \chk{remnant:R3} \tagS. Every per-galaxy model beats every universal law, largely
-because L1 treats a galaxy's common distance, inclination and $\Upsilon$ errors as independent per point and any per-galaxy parameter absorbs
-them: one free RAR scale per galaxy already reaches $-1883$. Against that yardstick NFW halos are worse by $+523$, Burkert halos by $+103$ and
-cosmological NFW halos by $+775$; cored halos beat cuspy ones by $-420$, the known cusp-core issue. Per galaxy, NFW beats the universal RAR in
-88 of 132 and Burkert in 98; the NFW halos have $\log M_{200}=11.47$ (16--84\%: 10.76 to 12.18), about 24 times the baryonic mass. Halos
-accommodate the RAR's one-parameter regularity with two parameters per galaxy; they do not predict it. These fits test generic cold dark matter
-halos: nothing here distinguishes primordial black holes from particle dark matter.
+$-1780$ for Burkert \chk{remnant:R3} \tagS. The universal forms S and B have $-4.6$ and $+218$. Every per-galaxy model beats every universal law. This is
+largely because L1 treats a galaxy's common distance, inclination and $\Upsilon$ errors as independent per point, and any per-galaxy
+parameter absorbs them: one free RAR scale per galaxy already reaches $-1883$. Against that yardstick NFW halos are worse by $+523$,
+Burkert halos by $+103$ and cosmological NFW halos by $+775$. Cored halos beat cuspy ones by $-420$, the known cusp-core issue. Per galaxy,
+NFW beats the universal RAR in 88 of 132 galaxies and Burkert in 98. The NFW halos have $\log M_{200}=11.47$ (16--84\%: 10.76 to 12.18),
+about 24 times the baryonic mass. Halos accommodate the RAR's one-parameter regularity with two parameters per galaxy; they do not predict
+it. These fits test generic cold dark matter halos: nothing here distinguishes primordial black holes from particle dark matter.
+
+\subsection{The contained remnant: primordial black holes}\label{sec:remnant-pbh}
+
+This paper does not test primordial black holes. Section~\ref{sec:darkmatter} takes them as GUID's contained remnant, holes formed in the
+start when the inflaton fragments into oscillons. That formation channel is the result of Cotner, Kusenko and Takhistov~\cite{cotner}, not
+ours. The mass window is adopted, not predicted. Gorton and Green find that primordial black holes can be all of the dark matter between
+about $10^{17}$ and $10^{22}$\,g ($10^{14}$ to $10^{19}$\,kg) for a single mass. For extended mass functions the window is
+narrower~\cite{gortongreen}. Products of Hawking evaporation close the window below (INTEGRAL/SPI MeV gamma rays, Voyager~1 electrons and
+positrons). Microlensing of M31 by Subaru-HSC closes it above. Three rows of Section~\ref{sec:data} record the comparison, in the classes of
+Section~\ref{sec:scoring} \chk{data:D7.1-D7.3}:
+\begin{itemize}[nosep]
+\item D7.1, the window: GUID's window coincides with the open one because it was taken from it (CONS).
+\item D7.2, the evaporation edge: holes lighter than $1.7\times10^{11}$\,kg have evaporated within 13.8\,Gyr (a Stefan--Boltzmann estimate).
+That is a factor 5.8 below the ``about $10^{15}$\,g'' of Carr et al.~\cite{carr2021}, a value without a stated uncertainty (INFO).
+\item D7.3, the edge temperatures: a hole of $10^{14}$\,kg glows at $1.23\times10^9$\,K ($k_BT=0.106$\,MeV), one of $10^{19}$\,kg at
+$1.23\times10^4$\,K. The glow at the light edge is what bounds the window (INFO).
+\end{itemize}
+\emph{Verdict:} \vd{untested} in this paper. As a candidate it is \vd{live}: evaporation and microlensing searches can close the
+window~\cite{gortongreen}.
 
 \subsection{Halos and a universal stochastic term together}\label{sec:remnant-joint}
 
 The cohesive whole would be baryons, a halo per galaxy and one universal term, $\Delta g_{\rm u}=A$ or $\Delta g_{\rm u}=\sqrt{g_{\rm bar}A}$.
 At 66 amplitudes from $10^{-16}$ to $10^{-9.5}$\,m\,s$^{-2}$ we refitted every halo and summed the profile
 $\mathcal{P}(A)=\sum_i\min_{\theta_i}[-2\ln L_i(\theta_i,A)-2\ln p(\theta_i)]$, with $p$ the halo prior. The one-sided 95\% bound is where
-$\mathcal{P}$ rises by 2.71; adding the term costs $\Delta\mathrm{BIC}=\mathcal{P}(\hat A)-\mathcal{P}(0)+\ln N$ with $N=2652$ points.
+$\mathcal{P}$ rises by 2.71. Adding the term costs $\Delta\mathrm{BIC}=\mathcal{P}(\hat A)-\mathcal{P}(0)+\ln N$, with $N=2652$ points.
 
 \begin{table}[t]
 \centering\footnotesize
@@ -199,15 +225,17 @@ Burkert & constant & $4.2\times10^{-12}$ & $-50.1$ & $5.1\times10^{-12}$ ($6.7\t
 \end{tabular}
 \end{table}
 
-With NFW halos the best square-root amplitude is zero (in 87 to 97\% of galaxy resamples) and the profile rises roughly as $\sqrt A$: the
-refitted halos cannot absorb the term, so it costs at first order (Table~\ref{tab:remnant-joint}, Fig.~\ref{fig:remnant-halos}) \tagS. With
-cosmological halos its bound, $3.0\times10^{-14}$ at the bootstrap 84th percentile, is about 2600 times below what form B needs alone. With
-NFW halos a constant is bounded at 4 to 5\% of the value that replaces the halos; Burkert halos prefer one at about a fifth of that value
-($\Delta$BIC $-50$), which we read as a correction to the cored halo's outer shape, since NFW halos do not want it. \emph{Consistency
-requirement:} the acoustic peaks fix $\Omega_ch^2=0.120\pm0.001$ of collisionless matter at $z\approx1100$~\cite{planck18}. If that is the
-contained remnant, halos of cosmological mass exist and a stochastic term must not count their dark acceleration twice. The room left, as a
-median share of the dark acceleration at the outermost radius, is 1 to 5\% for the square-root term (2.1\% with cosmological halos) and 8 to
-31\% for a constant (8.5\% with cosmological halos, 31\% with the Burkert halos that prefer it) \chk{remnant:R4}.
+With NFW halos the best square-root amplitude is zero, in 87 to 97\% of galaxy resamples (Table~\ref{tab:remnant-joint},
+Fig.~\ref{fig:remnant-halos}) \tagS. The profile rises roughly as $\sqrt A$: the refitted halos cannot absorb the term, so it costs at first
+order. With cosmological halos its bound, $3.0\times10^{-14}$ at the bootstrap 84th percentile, is about 2600 times below what form B needs
+alone. With NFW halos a constant is bounded at 4 to 5\% of the value that replaces the halos. Burkert halos prefer one at about a fifth of
+that value ($\Delta$BIC $-50$); since NFW halos do not want it, we read it as a correction to the cored halo's outer shape.
+
+\emph{Consistency requirement.} The acoustic peaks fix $\Omega_ch^2=0.120\pm0.001$ of collisionless matter at $z\approx1100$~\cite{planck18}.
+If that is the contained remnant, halos of cosmological mass exist, and a stochastic term must not count their dark acceleration twice. The
+room left is the share in Table~\ref{tab:remnant-joint}, measured at each galaxy's outermost radius. For the square-root term it is 1 to 5\%
+of the dark acceleration, 2.1\% with cosmological halos. For a constant it is 8 to 31\%: 8.5\% with cosmological halos and 31\% with the
+Burkert halos that prefer it \chk{remnant:R4}.
 
 \begin{figure}[tbp]
 \centering
@@ -221,30 +249,31 @@ the square-root curves leaving zero at once, orders of magnitude below the value
 
 \subsection{Cosmic time}\label{sec:remnant-time}
 
-We compare four laws fixed in advance: $a_{\rm acc}$ constant, $\propto H(z)=H_0[\Omega_m(1+z)^3+\Omega_\Lambda]^{1/2}$, $\propto1/t$ and
-$\propto t$ (random-walk accumulation), with $\Omega_m=0.315$~\cite{planck18} and the flat-$\Lambda$CDM age
-$t(z)=\tfrac{2}{3H_0\sqrt{\Omega_\Lambda}}\mathrm{arsinh}[\sqrt{\Omega_\Lambda/\Omega_m}(1+z)^{-3/2}]$. They give $a(1)/a(0)=1$, 1.79, 2.36 and
-0.42, and $a(2)/a(0)=1$, 3.03, 4.21 and 0.24 \chk{remnant:R5}. In the deep regime $V^4=GMa_{\rm acc}$, so at fixed rotation speed
-$\Delta\log M_{\rm bar}=-\log[a(z)/a(0)]$ (accumulation: $+0.34$ dex at $z=0.9$, $+0.69$ at $z=2.3$). Massive disks at high redshift sit at 3 to 11 $a_0$ at their half-light radii~\cite{milgrom2017}, where any change is
-diluted: for a RAR-shaped law at fixed $V$ and $R$ with $g_{\rm obs}=3g_\dagger$ the shifts shrink by factors of 2 to 7 (dashed in
-Fig.~\ref{fig:remnant-redshift}).
+We compare four laws, fixed in advance: $a_{\rm acc}$ constant, $\propto H(z)=H_0[\Omega_m(1+z)^3+\Omega_\Lambda]^{1/2}$, $\propto1/t$, and
+$\propto t$ (random-walk accumulation). We use $\Omega_m=0.315$~\cite{planck18} and the flat-$\Lambda$CDM age
+$t(z)=\tfrac{2}{3H_0\sqrt{\Omega_\Lambda}}\mathrm{arsinh}[\sqrt{\Omega_\Lambda/\Omega_m}(1+z)^{-3/2}]$. The laws give $a(1)/a(0)=1$, 1.79, 2.36
+and 0.42, and $a(2)/a(0)=1$, 3.03, 4.21 and 0.24 \chk{remnant:R5}. In the deep regime $V^4=GMa_{\rm acc}$, so at fixed rotation speed
+$\Delta\log M_{\rm bar}=-\log[a(z)/a(0)]$. For accumulation this is $+0.34$ dex at $z=0.9$ and $+0.69$ at $z=2.3$. Massive disks at high redshift
+sit at 3 to 11 $a_0$ at their half-light radii~\cite{milgrom2017}, where any change is diluted. For a RAR-shaped law at fixed $V$ and $R$ with
+$g_{\rm obs}=3g_\dagger$ the shifts shrink by factors of 2 to 7 (dashed in Fig.~\ref{fig:remnant-redshift}).
 
-\paragraph{Measurements.} \"Ubler et al.~\cite{ubler2017} find baryonic Tully--Fisher zero-point offsets of $-0.44\pm0.04$\,dex at
-$z\approx0.9$ (65 disks) and $-0.27\pm0.05$ at $z\approx2.3$ (46), with statistical errors only and the local slope 3.75; without their
-pressure-support correction, $-0.33$ and $-0.09$. Their baryonic masses carry about 0.15 dex each, with gas from scaling relations. Read as a
-change of scale, they imply $a(z)/a(0)=2.8$ (deep) to 7.6 ($3g_\dagger$) at $z\approx0.9$ and 1.9 to 4.2 at $z\approx2.3$ \chk{remnant:R5}.
-MUSE-DARK III~\cite{ciocan2026} fits the RAR of 79 galaxies at $0.33<z<1.44$ and finds $a_0(z\approx1)=2.38^{+0.12}_{-0.10}\times10^{-10}$\,m\,s$^{-2}$,
-$1.98\pm0.44$ times the local 1.2, with $g_{\rm obs}$ and $g_{\rm bar}$ from one model. Six rotation curves at $z\approx0.9$--2.4 ``all but
-exclude'' about $4a_0$ at $z\approx2$~\cite{milgrom2017}. Dark-matter fractions of high-redshift disks~\cite{nestorshachar2023} would need each
-galaxy's $g_{\rm bar}$ and are not used.
+\paragraph{Measurements.} \"Ubler et al.~\cite{ubler2017} fit KMOS$^{\rm 3D}$ disks with the local slope 3.75. They find baryonic
+Tully--Fisher zero-point offsets of $-0.44\pm0.04$\,dex at $z\approx0.9$ (65 disks) and $-0.27\pm0.05$ at $z\approx2.3$ (46), with
+statistical errors only. Without their
+pressure-support correction the offsets are $-0.33$ and $-0.09$. Their baryonic masses carry about 0.15 dex each, with gas from scaling
+relations. Read as a change of scale, the offsets imply $a(z)/a(0)=2.8$ (deep) to 7.6 ($3g_\dagger$) at $z\approx0.9$, and 1.9 to 4.2 at
+$z\approx2.3$ \chk{remnant:R5}. MUSE-DARK III~\cite{ciocan2026} fits the RAR of 79 galaxies at $0.33<z<1.44$. It finds
+$a_0(z\approx1)=2.38^{+0.12}_{-0.10}\times10^{-10}$\,m\,s$^{-2}$, $1.98\pm0.44$ times the local 1.2, with $g_{\rm obs}$ and $g_{\rm bar}$ taken
+from one model. Six rotation curves at $z\approx0.9$--2.4 ``all but exclude'' about $4a_0$ at $z\approx2$~\cite{milgrom2017}. Dark-matter
+fractions of high-redshift disks~\cite{nestorshachar2023} would need each galaxy's $g_{\rm bar}$ and are not used.
 
-\paragraph{Comparison.} Accumulation predicts a smaller scale in the past, hence more baryons at fixed speed; every measurement points the
-other way (Fig.~\ref{fig:remnant-redshift}). MUSE-DARK's $2.0\pm0.4$ lies between the $H(z)$ and $1/t$ laws, and at $z=2$ the $1/t$ law reaches
-the excluded $4a_0$. The \"Ubler offsets have the sign of a larger past scale but fall between $z\approx0.9$ and 2.3, which no monotonic law
-does. The systematics (gas masses, pressure support, model-dependent $g_{\rm bar}$) are as large as the effect and $\Lambda$CDM galaxy evolution
-makes such offsets too, so this is not a clean test; read literally, the data disfavour accumulation. The time arrows also disagree in
-principle: an accumulated scale grows while $cH$ and $c/t$ fall, so an accumulating $a_{\rm acc}$ equals $cH_0/2\pi$ only by a coincidence of
-the present epoch.
+\paragraph{Comparison.} Accumulation predicts a smaller scale in the past, hence more baryons at fixed speed. Every measurement points the
+other way (Fig.~\ref{fig:remnant-redshift}). MUSE-DARK's $2.0\pm0.4$ lies between the $H(z)$ and $1/t$ laws, and at $z=2$ the $1/t$ law
+reaches the excluded $4a_0$. The \"Ubler offsets have the sign of a larger past scale, but they fall between $z\approx0.9$ and 2.3, which no
+monotonic law does. The systematics (gas masses, pressure support, model-dependent $g_{\rm bar}$) are as large as the effect, and
+$\Lambda$CDM galaxy evolution makes such offsets too. This is therefore not a clean test; read literally, the data disfavour accumulation.
+The time arrows also disagree in principle. An accumulated scale grows, while $cH$ and $c/t$ fall, so an accumulating $a_{\rm acc}$ equals
+$cH_0/2\pi$ only by a coincidence of the present epoch.
 
 \begin{figure}[tbp]
 \centering
@@ -259,33 +288,42 @@ sign: accumulation above zero, every measurement below.}
 \subsection{What cannot be fitted}\label{sec:remnant-cannot}
 
 The stochastic remnant exists only as the Newtonian limit of a static, spherical calculation~\cite{oppenheimrusso}. The acoustic peaks
-($\Omega_ch^2=0.120$ of pressureless matter at $z\approx1100$~\cite{planck18}) need its cosmological perturbation theory and lensing needs its
-metric; neither exists (\vd{untested}). MOND-like laws reduce the mass discrepancy of clusters three- to four-fold without
-removing it~\cite{sanders2003}, and forms B and S inherit that residual (no cluster test was run). In 1E0657$-$558 the lensing mass follows the
-galaxies, offset from the X-ray gas at $8\sigma$~\cite{clowe}; a term set by the local baryonic field follows the gas. Cold dark matter of any
-kind, primordial black holes included, covers all four as $\Lambda$CDM does (\vd{live}).
+($\Omega_ch^2=0.120$ of pressureless matter at $z\approx1100$~\cite{planck18}) need its cosmological perturbation theory, and lensing needs
+its metric. Neither exists (\vd{untested}). MOND-like laws reduce the mass discrepancy of clusters three- to four-fold without removing
+it~\cite{sanders2003}; forms B and S inherit that residual, and no cluster test was run. In 1E0657$-$558 the lensing mass follows the
+galaxies, offset from the X-ray gas at $8\sigma$~\cite{clowe}, whereas a term set by the local baryonic field follows the gas. Cold dark
+matter of any kind, primordial black holes included, covers all four as $\Lambda$CDM does (\vd{live}).
 
-\paragraph{Choices made after seeing the data.} (1) The amplitude grid of Section~\ref{sec:remnant-joint} first started at
-$10^{-13}$\,m\,s$^{-2}$; the first run put the square-root bound below it, and that amplitude is not negligible ($\sqrt{10^{-12}\cdot10^{-13}}$
-is 30\% of the lowest $g_{\rm bar}$), so the grid now starts at $10^{-16}$ and the consistency check uses $10^{-30}$. (2) The mocks were raised from 200
-to 500 per null model after a test run. (3) The mocks' extra point scatter is calibrated on the data. (4) One free RAR scale per galaxy was
-chosen as the halos' yardstick after seeing that every per-galaxy model beats every universal one. (5) Reading the Burkert constant as a
-halo-shape correction is an interpretation made after seeing it. (6) The shift test and the mock calibration of $\tau$ were added after test
-runs with 4 to 20 mocks whose bands looked narrower than the bootstrap intervals; all are reported.
+\paragraph{Choices made after seeing the data.}
+\begin{enumerate}[nosep]
+\item The amplitude grid of Section~\ref{sec:remnant-joint} first started at $10^{-13}$\,m\,s$^{-2}$. The first run put the square-root bound
+below it, and that amplitude is not negligible: $\sqrt{10^{-12}\cdot10^{-13}}$ is 30\% of the lowest $g_{\rm bar}$. The grid now starts at
+$10^{-16}$, and the consistency check uses $10^{-30}$.
+\item The mocks were raised from 200 to 500 per null model after a test run.
+\item The mocks' extra point scatter is calibrated on the data.
+\item One free RAR scale per galaxy was chosen as the halos' yardstick after seeing that every per-galaxy model beats every universal one.
+\item Reading the Burkert constant as a halo-shape correction is an interpretation made after seeing it.
+\item The shift test and the mock calibration of $\tau$ were added after test runs with 4 to 20 mocks, whose bands looked narrower than the
+bootstrap intervals. All are reported.
+\end{enumerate}
 
-\paragraph{Caveats.} $\Upsilon$ is fixed (0.5, 0.7; $m_\star=0.5L_{[3.6]}$ in the stellar-to-halo prior); a free $\Upsilon$ would improve
-halo fits and universal laws alike. The stellar-to-halo relation was derived for a WMAP7 cosmology and is not checked at SPARC's lowest masses;
-halos are not adiabatically contracted; the high-redshift numbers are published summaries for disks selected differently from SPARC.
+\paragraph{Caveats.}
+\begin{itemize}[nosep]
+\item $\Upsilon$ is fixed at 0.5 and 0.7, and $m_\star=0.5L_{[3.6]}$ in the stellar-to-halo prior. A free $\Upsilon$ would improve halo fits and
+universal laws alike.
+\item The stellar-to-halo relation was derived for a WMAP7 cosmology and is not checked at SPARC's lowest masses. The halos are not
+adiabatically contracted.
+\item The high-redshift numbers are published summaries for disks selected differently from SPARC.
+\end{itemize}
 
 All numbers in this section come from \texttt{docs/simulation/remnant\_history.py} (39 of 39 checks, about two and a half minutes on one
-core).
+core), except the D7 rows, which come from Section~\ref{sec:data}.
 
-\paragraph{Verdict.} An accumulated stochastic remnant of the self-consistent form fits the rotation curves as well as the radial acceleration
-relation, but it is MOND's simple interpolating function: its scale matches $cH_0/2\pi$ only as Milgrom's $a_0$ always has, it is
-\vd{refuted} in the solar system as a pointwise law, it carries no galaxy-specific history, and the high-redshift data favour a scale that was
-larger in the past rather than one that accumulates. The contained remnant is consistent with generic cold dark matter halos, which cover the
-microwave background, lensing and the merging cluster and fit the rotation curves with two parameters per galaxy, though NFW halos lose to one
-free RAR scale per galaxy ($\Delta$BIC $+523$, and $+775$ with cosmological halos) (\vd{live}); nothing here distinguishes primordial black
-holes from particle dark matter. Once halos are present, the data leave the square-root term 1 to 5\% and a constant 8 to 31\% of the dark
-acceleration (preferred with cored halos, which we read as halo shape). The two remnants compete rather than combine; the consistent reading of
-Hypothesis~\ref{h:remnant} is the contained remnant as the cold dark matter, with primordial black holes as GUID's candidate for it.
+\paragraph{Verdict.} The stochastic remnant does not supply the dark acceleration of galaxies. Its static form is \vd{refuted} by the
+rotation curves (Section~\ref{sec:sparc}). The accumulated forms B and S were introduced after the residual slope was measured, so their
+failure refutes these two forms, not every form a GUID prediction could take. Form S fits as well as the RAR but is MOND's simple
+interpolating function. As pointwise laws, both forms are \vd{refuted} in the solar system. Neither shows a galaxy-specific history, and the
+high-redshift data favour a scale that was larger in the past, not one that accumulates. The rotation curves are consistent with cold dark
+matter halos of any kind (\vd{live}), although NFW halos lose to one free RAR scale per galaxy. With halos present, the stochastic term keeps
+only the small room of Table~\ref{tab:remnant-joint}, so the two routes compete rather than combine. GUID's remaining dark-matter candidate is
+primordial black holes formed in the start~\cite{cotner}; this paper does not test it.

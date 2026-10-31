@@ -4,8 +4,8 @@
  "n_mc": 20000,
  "n_perturb": 200,
  "checks": {
-  "passed": 75,
-  "total": 75,
+  "passed": 80,
+  "total": 80,
   "list": [
    {
     "label": "E1 meson colour factor <lambda1.lambda2> (singlet)",
@@ -507,6 +507,38 @@
     "got": 5.36341e-05,
     "want": 5.36341e-05,
     "atol": 1e-15
+   },
+   {
+    "label": "I0a flavour-pair test: T_cc (ccUD) has none, Z_c (cCuD) has one, Theta+ (uuddS) is open, P_c (uudcC) is hidden",
+    "ok": true
+   },
+   {
+    "label": "I0b Fisher one-sided p equals the hypergeometric tail",
+    "ok": true,
+    "got": 0.166667,
+    "want": 0.166667,
+    "atol": 1e-12
+   },
+   {
+    "label": "I0c Sigma_b Bbar threshold (isospin averages) = 5814.26 + 5279.4",
+    "ok": true,
+    "got": 11093.7,
+    "want": 11093.7,
+    "atol": 1e-06
+   },
+   {
+    "label": "I0d number of eligible doublets fixed by content and J^P (3 + 3 + 15 + 1 + 2 + 1)",
+    "ok": true,
+    "got": 25.0,
+    "want": 25.0,
+    "atol": 0
+   },
+   {
+    "label": "I0e expected chance passes: analytic sum against 4000 Monte Carlo replicas (5 sigma)",
+    "ok": true,
+    "got": 4.288,
+    "want": 4.27844,
+    "atol": 0.143887
    }
   ]
  },
@@ -2653,6 +2685,963 @@
    "verdict": "untested"
   }
  ],
+ "I": {
+  "I1": {
+   "claims": [
+    {
+     "state": "Theta+(1540)",
+     "content": "uuddS",
+     "pair": "open",
+     "status": "unconfirmed",
+     "source": "LEPS2003",
+     "not_confirmed_by": [
+      "CLAS2006",
+      "HERAB2004"
+     ]
+    },
+    {
+     "state": "Xi--(1860)",
+     "content": "ddssU",
+     "pair": "open",
+     "status": "unconfirmed",
+     "source": "NA49_2004",
+     "not_confirmed_by": [
+      "HERAB2004"
+     ]
+    },
+    {
+     "state": "Theta_c(3100)",
+     "content": "uuddC",
+     "pair": "open",
+     "status": "unconfirmed",
+     "source": "H1_2004",
+     "not_confirmed_by": [
+      "ZEUS2004"
+     ]
+    },
+    {
+     "state": "P_c(4380)",
+     "content": "uudcC",
+     "pair": "hidden",
+     "status": "unconfirmed",
+     "source": "LHCb_Pc2015",
+     "not_confirmed_by": [
+      "LHCb_Pc2019_text"
+     ]
+    },
+    {
+     "state": "P_c(4312)",
+     "content": "uudcC",
+     "pair": "hidden",
+     "status": "established",
+     "source": "LHCb_Pc2019",
+     "not_confirmed_by": []
+    },
+    {
+     "state": "P_c(4440)",
+     "content": "uudcC",
+     "pair": "hidden",
+     "status": "established",
+     "source": "LHCb_Pc2019",
+     "not_confirmed_by": []
+    },
+    {
+     "state": "P_c(4457)",
+     "content": "uudcC",
+     "pair": "hidden",
+     "status": "established",
+     "source": "LHCb_Pc2019",
+     "not_confirmed_by": []
+    },
+    {
+     "state": "P_c(4337)",
+     "content": "uudcC",
+     "pair": "hidden",
+     "status": "unconfirmed",
+     "source": "LHCb_Pc4337",
+     "not_confirmed_by": []
+    },
+    {
+     "state": "P_cs(4459)",
+     "content": "udscC",
+     "pair": "hidden",
+     "status": "unconfirmed",
+     "source": "LHCb_Pcs4459_text",
+     "not_confirmed_by": [
+      "LHCb_LcDs2025"
+     ]
+    },
+    {
+     "state": "P_psis(4338)",
+     "content": "udscC",
+     "pair": "hidden",
+     "status": "established",
+     "source": "LHCb_Ppsis4338",
+     "not_confirmed_by": []
+    }
+   ],
+   "searches_without_claim": [
+    {
+     "state": "doubly charmed, Sigma_c D channel, e.g. Sigma_c++ D+ (cc u u dbar)",
+     "content": "ccuuD",
+     "source": "LHCb_prompt2024"
+    },
+    {
+     "state": "doubly charmed, Lambda_c+ D0 channel (cc u d ubar)",
+     "content": "ccudU",
+     "source": "LHCb_prompt2024"
+    },
+    {
+     "state": "hidden-strange P_s (uud s sbar)",
+     "content": "uudsS",
+     "source": "Belle2017"
+    }
+   ],
+   "table_hidden_open_x_established_not": [
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     3
+    ]
+   ],
+   "fisher_p_one_sided": 0.166667,
+   "fisher_p_two_sided": 0.2,
+   "every_open_claim_unconfirmed": true,
+   "Pcc_forbidden_level": {
+    "M": 4300.93,
+    "err": 12.3198,
+    "J": 0.5,
+    "content": "cc u u dbar",
+    "threshold": {
+     "pair": "pi+ Xi_cc++",
+     "M": 3761.12
+    }
+   },
+   "ill_posed_note": "SM7's example 'doubly charmed pentaquarks (cc q q qbar)' is forbidden by H9's rule only when the light antiquark has no partner quark (e.g. cc u u dbar, I = 3/2); cc u d ubar contains a pair of one flavour",
+   "verdict": "holds (every open-flavour claim is unconfirmed); not significant as a contrast (Fisher p one-sided 0.17); conflicts with SM6's I = 3/2 doubly charmed levels, neither decided"
+  },
+  "I2": {
+   "molecular": [
+    {
+     "partner_of": "P_c(4312)",
+     "bottom_threshold": "Sigma_b Bbar",
+     "T_charm": 4320.65,
+     "binding_charm": 8.75,
+     "T_bottom": 11093.7,
+     "M_same_binding": 11084.9,
+     "M_mu_scaled": 11070.8,
+     "mu_ratio": 2.60965
+    },
+    {
+     "partner_of": "P_c(4440)",
+     "bottom_threshold": "Sigma_b Bbar*",
+     "T_charm": 4461.95,
+     "binding_charm": 21.655,
+     "T_bottom": 11139.0,
+     "M_same_binding": 11117.4,
+     "M_mu_scaled": 11084.5,
+     "mu_ratio": 2.51663
+    },
+    {
+     "partner_of": "P_c(4457)",
+     "bottom_threshold": "Sigma_b Bbar*",
+     "T_charm": 4461.95,
+     "binding_charm": 4.655,
+     "T_bottom": 11139.0,
+     "M_same_binding": 11134.4,
+     "M_mu_scaled": 11127.3,
+     "mu_ratio": 2.51663
+    },
+    {
+     "partner_of": "P_psis(4338)",
+     "bottom_threshold": "Xi_b Bbar",
+     "T_charm": 4336.32,
+     "binding_charm": -1.875,
+     "T_bottom": 11072.1,
+     "M_same_binding": 11074.0,
+     "M_mu_scaled": 11077.0,
+     "mu_ratio": 2.59789
+    }
+   ],
+   "compact_Pb_lowest": {
+    "M": 10882.7,
+    "err": 11.3306
+   },
+   "compact_Pb_lowest_J": {
+    "M": 11100.1,
+    "err": 12.3718
+   },
+   "compact_Pb_levels": [
+    10882.7,
+    10887.9,
+    10905.3,
+    11034.5,
+    11048.3,
+    11053.8,
+    11106.9,
+    11111.9,
+    11120.6,
+    11140.9
+   ],
+   "compact_Pbs_lowest_half": {
+    "M": 10993.1,
+    "err": 11.0342
+   },
+   "lowest_S_wave_threshold_Pb": {
+    "pair": "eta_b p",
+    "M": 10337.0
+   },
+   "lowest_S_wave_threshold_Pbs": {
+    "pair": "eta_b Lambda",
+    "M": 10514.4
+   },
+   "search_status": "no experimental search for hidden-bottom pentaquarks found on arXiv; proposals (Cao2020)",
+   "verdict": "live"
+  },
+  "I3": {
+   "rows": [
+    {
+     "state": "chi_c1(3872)",
+     "content": "cCuU",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "Z_c(3900)+",
+     "content": "cCuD",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "Z_c(4020)+",
+     "content": "cCuD",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "Z_c(4430)+",
+     "content": "cCuD",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "Z_cs(3985)+",
+     "content": "cCuS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "Z_cs(4000)+",
+     "content": "cCuS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "Z_cs(4220)+",
+     "content": "cCuS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "chi_c1(4140)",
+     "content": "cCsS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "chi_c1(4274)",
+     "content": "cCsS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "chi_c0(4500)",
+     "content": "cCsS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "chi_c0(4700)",
+     "content": "cCsS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "X(4685)",
+     "content": "cCsS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "X(4630)",
+     "content": "cCsS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "X(3960)",
+     "content": "cCsS",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "psi(4230)",
+     "content": "cCuU",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "Z_b(10610)+",
+     "content": "bBuD",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "Z_b(10650)+",
+     "content": "bBuD",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "T_cc(3875)+",
+     "content": "ccUD",
+     "one_flavour_pair": false
+    },
+    {
+     "state": "X0(2900)",
+     "content": "udCS",
+     "one_flavour_pair": false
+    },
+    {
+     "state": "X1(2900)",
+     "content": "udCS",
+     "one_flavour_pair": false
+    },
+    {
+     "state": "T_csbar0(2900)++",
+     "content": "cSuD",
+     "one_flavour_pair": false
+    },
+    {
+     "state": "P_c(4312)+",
+     "content": "uudcC",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "P_c(4440)+",
+     "content": "uudcC",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "P_c(4457)+",
+     "content": "uudcC",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "P_psis(4338)0",
+     "content": "udscC",
+     "one_flavour_pair": true
+    },
+    {
+     "state": "X(6900)",
+     "content": "ccCC",
+     "one_flavour_pair": true
+    }
+   ],
+   "violators": [
+    "T_cc(3875)+",
+    "X0(2900)",
+    "X1(2900)",
+    "T_csbar0(2900)++"
+   ],
+   "verdict": "refuted"
+  },
+  "I4": {
+   "eligible": [
+    {
+     "group": "c cbar u dbar",
+     "pair": [
+      "Z_c(3900)+",
+      "Z_c(4020)+"
+     ]
+    },
+    {
+     "group": "c cbar u dbar",
+     "pair": [
+      "Z_c(3900)+",
+      "Z_c(4430)+"
+     ]
+    },
+    {
+     "group": "c cbar u dbar",
+     "pair": [
+      "Z_c(4020)+",
+      "Z_c(4430)+"
+     ]
+    },
+    {
+     "group": "c cbar u sbar",
+     "pair": [
+      "Z_cs(3985)+",
+      "Z_cs(4000)+"
+     ]
+    },
+    {
+     "group": "c cbar u sbar",
+     "pair": [
+      "Z_cs(3985)+",
+      "Z_cs(4220)+"
+     ]
+    },
+    {
+     "group": "c cbar u sbar",
+     "pair": [
+      "Z_cs(4000)+",
+      "Z_cs(4220)+"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "chi_c1(4140)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "chi_c1(4274)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "chi_c0(4500)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "X(4685)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "chi_c0(4700)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4140)",
+      "chi_c1(4274)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4140)",
+      "chi_c0(4500)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4140)",
+      "X(4685)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4140)",
+      "chi_c0(4700)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4274)",
+      "chi_c0(4500)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4274)",
+      "X(4685)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4274)",
+      "chi_c0(4700)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c0(4500)",
+      "X(4685)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c0(4500)",
+      "chi_c0(4700)"
+     ]
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(4685)",
+      "chi_c0(4700)"
+     ]
+    },
+    {
+     "group": "b bbar u dbar",
+     "pair": [
+      "Z_b(10610)+",
+      "Z_b(10650)+"
+     ]
+    },
+    {
+     "group": "u u d c cbar",
+     "pair": [
+      "P_c(4312)+",
+      "P_c(4440)+"
+     ]
+    },
+    {
+     "group": "u u d c cbar",
+     "pair": [
+      "P_c(4312)+",
+      "P_c(4457)+"
+     ]
+    },
+    {
+     "group": "c c cbar cbar",
+     "pair": [
+      "X(6600) CMS",
+      "X(6900) CMS"
+     ]
+    }
+   ],
+   "not_eligible": [
+    [
+     "X(4630)",
+     "c cbar s sbar with P = -: parity differs from the other c cbar s sbar states"
+    ],
+    [
+     "X(3872), psi(4230)",
+     "c cbar q qbar with I = 0: parities differ"
+    ],
+    [
+     "X0(2900), X1(2900)",
+     "cbar sbar u d: parities differ"
+    ],
+    [
+     "P_c(4440), P_c(4457)",
+     "the pair that suggested the rule"
+    ],
+    [
+     "P_cs(4459) two-peak fit",
+     "not resolved: LHCb 'cannot confirm or refute the two-peak hypothesis'"
+    ],
+    [
+     "X(7100) CMS, P_c(4337), P_c(4380)",
+     "not established as observations"
+    ]
+   ],
+   "rows": [
+    {
+     "group": "c cbar u dbar",
+     "pair": [
+      "Z_c(3900)+",
+      "Z_c(4020)+"
+     ],
+     "Delta": 123.9,
+     "err": 6.71193,
+     "alpha_M_over_2": 14.4522,
+     "pull": 16.3065,
+     "passes": false,
+     "p_chance": 0.0894924,
+     "model": {
+      "Delta": 131.56,
+      "err": 8.85187,
+      "desc": "two 1+- levels of [cq][cbar qbar] (taking Z_c(4020) as 1+-)",
+      "pull": -0.68955
+     }
+    },
+    {
+     "group": "c cbar u dbar",
+     "pair": [
+      "Z_c(3900)+",
+      "Z_c(4430)+"
+     ],
+     "Delta": 576.0,
+     "err": 19.9552,
+     "alpha_M_over_2": 15.277,
+     "pull": 28.0991,
+     "passes": false,
+     "p_chance": 0.183958
+    },
+    {
+     "group": "c cbar u dbar",
+     "pair": [
+      "Z_c(4020)+",
+      "Z_c(4430)+"
+     ],
+     "Delta": 452.1,
+     "err": 19.2052,
+     "alpha_M_over_2": 15.503,
+     "pull": 22.7333,
+     "passes": false,
+     "p_chance": 0.179712
+    },
+    {
+     "group": "c cbar u sbar",
+     "pair": [
+      "Z_cs(3985)+",
+      "Z_cs(4000)+"
+     ],
+     "Delta": 20.5,
+     "err": 11.4285,
+     "alpha_M_over_2": 14.5683,
+     "pull": 0.519032,
+     "passes": true,
+     "p_chance": 0.124751,
+     "model": {
+      "Delta": 63.8588,
+      "err": 8.28941,
+      "desc": "two lowest 1+ levels of [cq][cbar sbar]",
+      "pull": -3.07112
+     }
+    },
+    {
+     "group": "c cbar u sbar",
+     "pair": [
+      "Z_cs(3985)+",
+      "Z_cs(4220)+"
+     ],
+     "Delta": 233.5,
+     "err": 40.1199,
+     "alpha_M_over_2": 14.9568,
+     "pull": 5.44724,
+     "passes": false,
+     "p_chance": 0.317322
+    },
+    {
+     "group": "c cbar u sbar",
+     "pair": [
+      "Z_cs(4000)+",
+      "Z_cs(4220)+"
+     ],
+     "Delta": 213.0,
+     "err": 41.4849,
+     "alpha_M_over_2": 14.9942,
+     "pull": 4.77296,
+     "passes": false,
+     "p_chance": 0.326547
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "chi_c1(4140)"
+     ],
+     "Delta": 162.0,
+     "err": 30.1569,
+     "alpha_M_over_2": 14.7297,
+     "pull": 4.88347,
+     "passes": false,
+     "p_chance": 0.250145
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "chi_c1(4274)"
+     ],
+     "Delta": 338.0,
+     "err": 12.4776,
+     "alpha_M_over_2": 15.0508,
+     "pull": 25.8824,
+     "passes": false,
+     "p_chance": 0.133353
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "chi_c0(4500)"
+     ],
+     "Delta": 518.0,
+     "err": 11.9616,
+     "alpha_M_over_2": 15.3792,
+     "pull": 42.0195,
+     "passes": false,
+     "p_chance": 0.131008,
+     "model": {
+      "Delta": 32.5108,
+      "err": 8.40189,
+      "desc": "two 0++ levels of [cs][cbar sbar]",
+      "pull": 33.2128
+     }
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "X(4685)"
+     ],
+     "Delta": 728.0,
+     "err": 18.72,
+     "alpha_M_over_2": 15.7623,
+     "pull": 38.0468,
+     "passes": false,
+     "p_chance": 0.177341
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(3960)",
+      "chi_c0(4700)"
+     ],
+     "Delta": 738.0,
+     "err": 15.0147,
+     "alpha_M_over_2": 15.7805,
+     "pull": 48.101,
+     "passes": false,
+     "p_chance": 0.152699,
+     "model": {
+      "Delta": 32.5108,
+      "err": 8.40189,
+      "desc": "two 0++ levels of [cs][cbar sbar]",
+      "pull": 41.0035
+     }
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4140)",
+      "chi_c1(4274)"
+     ],
+     "Delta": 176.0,
+     "err": 28.5351,
+     "alpha_M_over_2": 15.3463,
+     "pull": 5.63004,
+     "passes": false,
+     "p_chance": 0.241388
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4140)",
+      "chi_c0(4500)"
+     ],
+     "Delta": 356.0,
+     "err": 28.3132,
+     "alpha_M_over_2": 15.6747,
+     "pull": 12.02,
+     "passes": false,
+     "p_chance": 0.241004
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4140)",
+      "X(4685)"
+     ],
+     "Delta": 566.0,
+     "err": 31.7648,
+     "alpha_M_over_2": 16.0578,
+     "pull": 17.313,
+     "passes": false,
+     "p_chance": 0.265291
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4140)",
+      "chi_c0(4700)"
+     ],
+     "Delta": 576.0,
+     "err": 29.7321,
+     "alpha_M_over_2": 16.0761,
+     "pull": 18.8323,
+     "passes": false,
+     "p_chance": 0.251801
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4274)",
+      "chi_c0(4500)"
+     ],
+     "Delta": 180.0,
+     "err": 6.92026,
+     "alpha_M_over_2": 15.9958,
+     "pull": 23.6991,
+     "passes": false,
+     "p_chance": 0.0922701
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4274)",
+      "X(4685)"
+     ],
+     "Delta": 390.0,
+     "err": 15.9765,
+     "alpha_M_over_2": 16.3789,
+     "pull": 23.3856,
+     "passes": false,
+     "p_chance": 0.161107
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c1(4274)",
+      "chi_c0(4700)"
+     ],
+     "Delta": 400.0,
+     "err": 11.4127,
+     "alpha_M_over_2": 16.3972,
+     "pull": 33.6119,
+     "passes": false,
+     "p_chance": 0.130742
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c0(4500)",
+      "X(4685)"
+     ],
+     "Delta": 210.0,
+     "err": 15.5769,
+     "alpha_M_over_2": 16.7073,
+     "pull": 12.4089,
+     "passes": false,
+     "p_chance": 0.159537
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "chi_c0(4500)",
+      "chi_c0(4700)"
+     ],
+     "Delta": 220.0,
+     "err": 10.8462,
+     "alpha_M_over_2": 16.7255,
+     "pull": 18.7415,
+     "passes": false,
+     "p_chance": 0.12806,
+     "model": {
+      "Delta": 32.5108,
+      "err": 8.40189,
+      "desc": "two 0++ levels of [cs][cbar sbar]",
+      "pull": 13.6656
+     }
+    },
+    {
+     "group": "c cbar s sbar, P = +",
+     "pair": [
+      "X(4685)",
+      "chi_c0(4700)"
+     ],
+     "Delta": 10.0,
+     "err": 18.0278,
+     "alpha_M_over_2": 17.1086,
+     "pull": -0.394317,
+     "passes": true,
+     "p_chance": 0.177214
+    },
+    {
+     "group": "b bbar u dbar",
+     "pair": [
+      "Z_b(10610)+",
+      "Z_b(10650)+"
+     ],
+     "Delta": 45.0,
+     "err": 2.5,
+     "alpha_M_over_2": 38.7843,
+     "pull": 2.48627,
+     "passes": false,
+     "p_chance": 0.0333333,
+     "model": {
+      "Delta": 143.757,
+      "err": 8.86634,
+      "desc": "two 1+- levels of [bq][bbar qbar] (taking both as 1+-)",
+      "pull": -10.7204
+     }
+    },
+    {
+     "group": "u u d c cbar",
+     "pair": [
+      "P_c(4312)+",
+      "P_c(4440)+"
+     ],
+     "Delta": 128.4,
+     "err": 5.49181,
+     "alpha_M_over_2": 15.967,
+     "pull": 20.4728,
+     "passes": false,
+     "p_chance": 0.0732242
+    },
+    {
+     "group": "u u d c cbar",
+     "pair": [
+      "P_c(4312)+",
+      "P_c(4457)+"
+     ],
+     "Delta": 145.4,
+     "err": 3.90512,
+     "alpha_M_over_2": 15.998,
+     "pull": 33.1365,
+     "passes": false,
+     "p_chance": 0.0520683
+    },
+    {
+     "group": "c c cbar cbar",
+     "pair": [
+      "X(6600) CMS",
+      "X(6900) CMS"
+     ],
+     "Delta": 375.0,
+     "err": 18.4662,
+     "alpha_M_over_2": 24.5903,
+     "pull": 18.9758,
+     "passes": false,
+     "p_chance": 0.205075
+    }
+   ],
+   "n_pass": 2,
+   "n_eligible": 25,
+   "expected_chance": 4.27844,
+   "poisson_p_excess": 0.926819,
+   "n_fail_3sigma": 22,
+   "motivating_pair": {
+    "pair": [
+     "P_c(4440)+",
+     "P_c(4457)+"
+    ],
+    "Delta": 17.0,
+    "alpha_M_over_2": 16.2322
+   },
+   "Pcs4459_two_peak_info": {
+    "pair": [
+     "4454.9",
+     "4467.8"
+    ],
+    "Delta": 12.9,
+    "err": 4.58039,
+    "alpha_M_over_2": 16.278,
+    "note": "unresolved two-peak hypothesis, statistical errors only"
+   },
+   "alpha": 0.00729735,
+   "verdict": "refuted as a rule for every resolved doublet"
+  },
+  "choices_after_data": [
+   "H9 itself was conceived after seeing that every established pentaquark carries c cbar (SM7's honesty note); those states are not evidence for it.",
+   "The claimed-pentaquark list was compiled from the claims we could find and verify on arXiv; light hidden-flavour candidates are not claimed as pentaquarks in the literature we read, so the table has no light hidden-flavour row.",
+   "I2: the molecular masses carry over binding energies relative to isospin-averaged thresholds (the lead's instruction and SM7); the reduced-mass scaling is a variant added with it, not chosen after seeing anything, since no hidden-bottom pentaquark is known.",
+   "I4: the eligibility rule and the list were written before any splitting was computed, but the masses of all candidate states were known from SM6, and the P_cs(4459) two-peak masses were read (for the status in I1) before the list was written; it is listed as not resolved by the rule. The chance null (Delta uniform in 0 to 300 MeV) and the 2 sigma pass criterion were fixed with the list."
+  ]
+ },
  "delta_J_minus_P": {
   "tetraquarks": [
    89.9985,
@@ -2885,7 +3874,82 @@
    "ref": "S. Navas et al. (Particle Data Group), Phys. Rev. D 110, 030001 (2024) and 2025 update",
    "read": "listings returned by web search (pdgLive, the 2024/2025 listings): D0 1864.84, D+ 1869.66, D*0 2006.85, D*+ 2010.26, D_s 1968.35, D_s* 2112.2, D2*(2460)0 2461.1, D_s1(2536) 2535.11, eta_c 2984.1, J/psi 3096.900, chi_c0 3414.71, chi_c1 3510.67, h_c 3525.37, chi_c2 3556.17, eta_c(2S) 3637.7, psi(2S) 3686.097, eta_b 9398.7, h_b(1P) 9899.3, B* 5324.75, omega 782.66, phi 1019.461, K*(892)0 895.55, K*(892)+ 891.88, Lambda_c 2286.46, Xi_c+ 2467.71, Xi_c0 2470.44, Xi_c'0 2578.7, Lambda_c(2595) 2592.25, Lambda_c(2625) 2628.11, Omega_c 2695.2, Omega_c(2770) 2765.9, Sigma(1385)+ 1382.83, Sigma(1385)0 1383.7, Xi_b- 5797.0, Sigma_b*+ 5830.32, Xi_b(5945)0 5952.3; D_s0*(2317) 2317.7 and D_s1(2460) 2459.5 as quoted in arXiv:2409.05337",
    "values": "see THRESH_HADRONS; entries not in this list are PDG 2024 values not re-read (unverified)"
+  },
+  "LEPS2003": {
+   "ref": "T. Nakano et al. (LEPS), Phys. Rev. Lett. 91, 012002 (2003), hep-ex/0301020",
+   "read": "abstract",
+   "values": "S=+1 baryon (Theta+) at 1.54+-0.01 GeV, width < 25 MeV, 4.6 sigma"
+  },
+  "CLAS2006": {
+   "ref": "B. McKinnon, K. Hicks et al. (CLAS), Phys. Rev. Lett. 96, 212001 (2006), hep-ex/0603028",
+   "read": "abstract",
+   "values": "no evidence for a narrow pentaquark with more than 30 times the luminosity of the earlier measurement; sigma(gamma d -> p K- Theta+) < 0.3 nb (95% CL), 1.52-1.56 GeV"
+  },
+  "HERAB2004": {
+   "ref": "K. T. Knoepfle, M. Zavertyaev, T. Zivko for HERA-B, J. Phys. G 30, S1363 (2004), hep-ex/0403020",
+   "read": "abstract",
+   "values": "no evidence for Theta+(1540) or Xi--(1862); Theta+/Lambda(1520) < 0.02, Br x Xi--/Xi(1530)0 < 0.077 (95% CL)"
+  },
+  "NA49_2004": {
+   "ref": "NA49, Phys. Rev. Lett. 92, 042003 (2004), hep-ex/0310014",
+   "read": "abstract",
+   "values": "S=-2, Q=-2 baryon at 1.862+-0.002 GeV, width below 0.018 GeV, 4.0 sigma"
+  },
+  "H1_2004": {
+   "ref": "H1, Phys. Lett. B 588, 17 (2004), hep-ex/0403017",
+   "read": "abstract",
+   "values": "anti-charmed baryon uuddcbar at 3099+-3+-5 MeV, Gaussian width 12+-3 MeV"
+  },
+  "ZEUS2004": {
+   "ref": "ZEUS, Eur. Phys. J. C 38, 29 (2004), hep-ex/0409033",
+   "read": "abstract",
+   "values": "no resonance in D*p with more than 60000 D*; not compatible with the H1 report"
+  },
+  "LHCb_Pc2015": {
+   "ref": "LHCb, Phys. Rev. Lett. 115, 072001 (2015), arXiv:1507.03414",
+   "read": "abstract",
+   "values": "4380+-8+-29 (Gamma 205+-18+-86) and 4449.8+-1.7+-2.5 (Gamma 39+-5+-19), each above 9 sigma"
+  },
+  "LHCb_Pc4337": {
+   "ref": "LHCb, Phys. Rev. Lett. 128, 062001 (2022), arXiv:2108.04720",
+   "read": "abstract",
+   "values": "evidence: 4337(+7-4)(+2-2), Gamma 29(+26-12)(+14-14), 3.1 to 3.7 sigma"
+  },
+  "LHCb_Pcs4459_text": {
+   "ref": "LHCb, Sci. Bull. 66, 1278 (2021), arXiv:2012.10380",
+   "read": "full text, Sec. 4 and 5",
+   "values": "3.1 sigma including systematics and look-elsewhere; two-peak fit 4454.9+-2.7 (Gamma 7.5+-9.7) and 4467.8+-3.7 (Gamma 5.2+-5.3), statistical only; 'cannot confirm or refute the two-peak hypothesis'"
+  },
+  "LHCb_Pc2019_text": {
+   "ref": "LHCb, Phys. Rev. Lett. 122, 222001 (2019), arXiv:1904.03947",
+   "read": "full text",
+   "values": "verification of the P_c(4380)+ state awaits an amplitude analysis"
+  },
+  "LHCb_LcDs2025": {
+   "ref": "LHCb, Phys. Rev. D 112, 052013 (2025), arXiv:2507.10713",
+   "read": "abstract",
+   "values": "no evidence for P_ccbars(4338) or P_ccbars(4459) in Lambda_c+ D_s-; production ratios < 0.12 and < 0.20 (95% CL)"
+  },
+  "LHCb_prompt2024": {
+   "ref": "LHCb, Phys. Rev. D 110, 032001 (2024), arXiv:2404.07131",
+   "read": "abstract",
+   "values": "no significant signal for hidden-charm (Sigma_c Dbar, Lambda_c Dbar) or doubly charmed (Sigma_c D, Lambda_c D) pentaquarks in prompt production; known pentaquark yields consistent with zero"
+  },
+  "Belle2017": {
+   "ref": "Belle, Phys. Rev. D 96, 051102 (2017), arXiv:1707.00089",
+   "read": "abstract",
+   "values": "hidden-strangeness pentaquark P_s+ -> phi p: B(Lambda_c+ -> P_s+ pi0) x B(P_s+ -> phi p) < 8.3e-5 (90% CL), no evidence"
+  },
+  "Cao2020": {
+   "ref": "X. Cao et al., Phys. Rev. D 101, 074010 (2020), arXiv:1912.12054",
+   "read": "abstract",
+   "values": "proposes a P_b search in gamma p -> Upsilon p at an electron-ion collider; no P_b observed"
+  },
+  "CODATA2022": {
+   "ref": "CODATA 2022, arXiv:2409.03787",
+   "read": "the value used in predictions_vs_data.py",
+   "values": "1/alpha = 137.035999177"
   }
  },
- "runtime_s": 66.7
+ "runtime_s": 66.6
 }
