@@ -2,7 +2,7 @@
 
 Run from the repository root:   python3 docs/guid-v6/reproduce.py [--data <SPARC folder>]
 The two rotation-curve scripts need the SPARC tables (not redistributed; see Appendix A); without --data or SPARC_DATA_DIR they are
-skipped and reported as such. The data-confrontation script exits 1 by design (four confrontations fail at 95%, Section "data").
+skipped and reported as such. The data-confrontation script exits 1 by design (three scored confrontations fail at 95%, Section "data").
 """
 import os
 import re
@@ -29,6 +29,7 @@ SCRIPTS = [
     ("docs/simulation/predictions_vs_data.py", [], 1),
     ("docs/simulation/standard_model.py", [], 0),
     ("docs/simulation/exotic_hadrons.py", [], 0),
+    ("docs/simulation/tally.py", [], 0),
 ]
 
 env = dict(os.environ, OPENBLAS_NUM_THREADS="1", OMP_NUM_THREADS="1", MKL_NUM_THREADS="1", PYTHONDONTWRITEBYTECODE="1")

@@ -51,7 +51,7 @@ form of Karliner and Rosner 2014, 2017, called KR below):
   HOSTING CHECK: with KR's published parameters the implementation reproduces KR's tables and their T_cc, T_bb, T_bc and Xi_cc masses.
 
 SCORING (fixed beforehand): pull z = (M_model - M_data) / sqrt(sigma_pred^2 + sigma_data^2), with the data error on the side of the
-model; holds if |z| < 2, refuted if |z| >= 2 (as in predictions_vs_data.py, 95%); states not yet observed are live, with the binding
+model; holds (OK) if |z| < 1.96, refuted (FAIL) otherwise (95%, the paper's scoring section); states not yet observed are live, with the binding
 relative to the lowest two-hadron threshold allowed in an S wave. Assignments (pre-registered):
   T_cc+       [cc]_1[ubar dbar]_0, J^P = 1+                      against LHCb T_cc+(3875)
   T_bb-       [bb]_1[ubar dbar]_0, 1+                            live; lattice QCD for comparison
@@ -101,6 +101,7 @@ T_START = time.perf_counter()
 HERE = Path(__file__).resolve().parent
 RESULTS = HERE / "results"
 FIGURES = HERE / "figures"
+Z95 = 1.96                          # the paper's threshold for a scored confrontation (95%)
 SEED = 20210901                     # fixed; used only by the Monte Carlo checks and the robustness perturbations of test B
 N_MC = 20000                        # Monte Carlo placements per state for the check of the analytic null
 N_PERTURB = 200                     # perturbed threshold tables for test B4
@@ -1038,7 +1039,7 @@ def add_item(label, key, rule, kind, data=None, data_src=None, thr=None, note=""
             e = err_toward(row[scheme]["M"], data)
             row[scheme]["pull"] = (row[scheme]["M"] - data[0]) / math.hypot(row[scheme]["err"], e)
         z = row["P"]["pull"]
-        row["verdict"] = ("holds" if abs(z) < 2 else "refuted") if kind == "scored" else "info"
+        row["verdict"] = ("holds" if abs(z) < Z95 else "refuted") if kind == "scored" else "info"
     elif kind == "live":
         row["verdict"] = "live"
     ITEMS.append(row)
@@ -1597,8 +1598,8 @@ figures()
 #      two exotic states with the same quark content (isospin partners counted as one), each reported as an observation, with equal
 #      or unknown parity and |J1 - J2| <= 1 (unknown J allowed); P_c(4440)/P_c(4457), which suggested the rule, excluded; states
 #      reported only as evidence, or as an unresolved two-peak hypothesis, are not resolved. A pair passes if |Delta - alpha M/2| <
-#      2 sigma_Delta. Look-elsewhere: under a null with Delta uniform in [0, 300] MeV a pair passes by chance with probability
-#      p_k = |[alpha M/2 - 2 sigma, alpha M/2 + 2 sigma] cap [0, 300]| / 300; the observed number of passes is compared with sum p_k.
+#      1.96 sigma_Delta. Look-elsewhere: under a null with Delta uniform in [0, 300] MeV a pair passes by chance with probability
+#      p_k = |[alpha M/2 - 1.96 sigma, alpha M/2 + 1.96 sigma] cap [0, 300]| / 300; the observed number of passes is compared with sum p_k.
 #      QCD baseline: the colour-spin model's splitting of the same two S-wave levels where the model has such a pair.
 # =====================================================================================================================================
 print("[I] Hypothesis H9, the minting in hadrons (results, not checks)")
@@ -1816,8 +1817,8 @@ for grp, s1, s2 in I4_ELIGIBLE:
     dlt, sd = abs(m2 - m1), math.hypot(e1, e2)
     pred = ALPHA * (m1 + m2) / 2 / 2
     z = (dlt - pred) / sd
-    pch = interval_cover([(pred - 2 * sd, pred + 2 * sd)], 0.0, 300.0) / 300.0
-    row = {"group": grp, "pair": [s1, s2], "Delta": dlt, "err": sd, "alpha_M_over_2": pred, "pull": z, "passes": abs(z) < 2,
+    pch = interval_cover([(pred - Z95 * sd, pred + Z95 * sd)], 0.0, 300.0) / 300.0
+    row = {"group": grp, "pair": [s1, s2], "Delta": dlt, "err": sd, "alpha_M_over_2": pred, "pull": z, "passes": abs(z) < Z95,
            "p_chance": pch}
     if (s1, s2) in I4_MODEL:
         key, J, C, desc = I4_MODEL[(s1, s2)]
@@ -1831,7 +1832,7 @@ I4_FAIL3 = sum(abs(r["pull"]) >= 3 for r in I4_ROWS)
 rng_i4 = np.random.default_rng(SEED + 4)
 _mc_pass = np.zeros(4000)
 for r in I4_ROWS:
-    _mc_pass += np.abs(rng_i4.uniform(0, 300, 4000) - r["alpha_M_over_2"]) < 2 * r["err"]
+    _mc_pass += np.abs(rng_i4.uniform(0, 300, 4000) - r["alpha_M_over_2"]) < Z95 * r["err"]
 check("I0e expected chance passes: analytic sum against 4000 Monte Carlo replicas (5 sigma)", float(np.mean(_mc_pass)), I4_EXPECT,
       5 * float(np.std(_mc_pass)) / math.sqrt(4000) + 1e-9)
 I4_MOTIVATING = {"pair": ["P_c(4440)+", "P_c(4457)+"], "Delta": 4457.3 - 4440.3, "alpha_M_over_2": ALPHA * (4440.3 + 4457.3) / 4}
@@ -1887,7 +1888,7 @@ def figure_alpha():
                     color=COL["P"] if r["passes"] else COL["P-in"], mec="white", mew=0.4, lw=0.7, capsize=1, zorder=3)
         if "model" in r:
             ax.plot([mbar], [r["model"]["Delta"]], "^", ms=4, color=COL["J"], mec="white", mew=0.4, zorder=4)
-    ax.plot([], [], "o", ms=3.8, color=COL["P"], label=r"eligible pair, within $2\sigma$")
+    ax.plot([], [], "o", ms=3.8, color=COL["P"], label=r"eligible pair, within $1.96\sigma$")
     ax.plot([], [], "o", ms=3.8, color=COL["P-in"], label="eligible pair, outside")
     ax.plot([], [], "^", ms=4, color=COL["J"], label="colour-spin model")
     mot = I4_MOTIVATING
@@ -1914,7 +1915,7 @@ CHOICES_AFTER_DATA_H9 = [
     "known.",
     "I4: the eligibility rule and the list were written before any splitting was computed, but the masses of all candidate states "
     "were known from SM6, and the P_cs(4459) two-peak masses were read (for the status in I1) before the list was written; it is "
-    "listed as not resolved by the rule. The chance null (Delta uniform in 0 to 300 MeV) and the 2 sigma pass criterion were fixed "
+    "listed as not resolved by the rule. The chance null (Delta uniform in 0 to 300 MeV) and the 1.96 sigma pass criterion were fixed "
     "with the list.",
 ]
 H9["choices_after_data"] = CHOICES_AFTER_DATA_H9
@@ -2008,7 +2009,7 @@ out = {
     },
     "A": {"items": ITEMS, "n_scored": len(scored), "n_holds": n_hold,
           "n_refuted": sum(r["verdict"] == "refuted" for r in scored),
-          "n_holds_by_scheme": {sch: sum(abs(r[sch]["pull"]) < 2 for r in scored) for sch in ("P", "P-in", "J")}},
+          "n_holds_by_scheme": {sch: sum(abs(r[sch]["pull"]) < Z95 for r in scored) for sch in ("P", "P-in", "J")}},
     "B": {"W": W_MAIN, "W_alt": W_ALT, "n_states": len(CATALOGUE),
           "states": [{"name": c[0], "mass": c[1], "err": c[2], "width": c[3], "J": c[4], "P": c[5], "C": c[6], "content": c[7],
                       "source": c[8], "nearest": THR[c[0]]["main"]["nearest"], "threshold": THR[c[0]]["main"]["T"],
@@ -2080,7 +2081,7 @@ md.append("- **H8 as such.** Any colour singlet can be written as a binary tree 
           "often than it holds.\n")
 md.append("## (a) Compact exotics and live predictions\n")
 md.append("Model P: KR's convention, parameters fitted here. P-in: no binding across the halves. J: universal masses plus junctions. "
-          "Pull with sigma_pred and the data error on the side of the model; |pull| < 2 holds.\n")
+          "Pull with sigma_pred and the data error on the side of the model; |pull| < 1.96 holds (OK).\n")
 md.append("| state | level (model P) | model P [MeV] | KR parameters | P-in | J | data | pull | verdict | lowest S-wave threshold "
           "(~ = antiparticle): M - T |")
 md.append("|---|---|---|---|---|---|---|---|---|---|")
@@ -2170,7 +2171,7 @@ for r in I4_ROWS:
     mo = f"{r['model']['Delta']:.1f} +- {r['model']['err']:.1f} ({r['model']['pull']:+.1f}); {r['model']['desc']}" if "model" in r else "-"
     md.append(f"| {r['pair'][0]} / {r['pair'][1]} | {r['Delta']:.1f} +- {r['err']:.1f} | {r['alpha_M_over_2']:.1f} | "
               f"{r['pull']:+.1f} | {mo} |")
-md.append(f"\n{I4_PASS} of {len(I4_ROWS)} pass at 2 sigma; {I4_EXPECT:.2f} expected by chance (Poisson p of at least {I4_PASS}: "
+md.append(f"\n{I4_PASS} of {len(I4_ROWS)} pass at 1.96 sigma; {I4_EXPECT:.2f} expected by chance (Poisson p of at least {I4_PASS}: "
           f"{I4_P_EXCESS:.2f}); {I4_FAIL3} fail by 3 sigma or more. Motivating pair (excluded): Delta = {I4_MOTIVATING['Delta']:.1f}, "
           f"alpha M/2 = {I4_MOTIVATING['alpha_M_over_2']:.1f}. P_cs(4459) two-peak hypothesis (not resolved, info): Delta = "
           f"{I4_PCS_INFO['Delta']:.1f} +- {I4_PCS_INFO['err']:.1f} against {I4_PCS_INFO['alpha_M_over_2']:.1f}. Verdict: "

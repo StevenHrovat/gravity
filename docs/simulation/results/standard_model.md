@@ -2,7 +2,7 @@
 
 Written by `docs/simulation/standard_model.py` (deterministic; numpy, scipy, matplotlib; no network); every number is also in `standard_model.json`. Statements and scoring: `docs/simulation/sm_preregistration.md` (fixed before this script). Figures: `docs/simulation/figures/sm_couplings.pdf`, `docs/simulation/figures/sm_neutrino.pdf`, `docs/simulation/figures/sm_precision.pdf`, `docs/simulation/figures/sm_mu_alpha.pdf`, `docs/simulation/figures/sm_running.pdf`.
 
-**Scored confrontations: 26 of 30 consistent at 95%.** FAIL: SM2d.4 (inherited tension), SM3.1 (refuted under the M_Z matching (by derivation); corrected value derived), SM3.8 (inherited tension), SM3.9 (inherited tension). Checks of the script's own numerics: 32 of 32.
+**Scored confrontations: 25 of 29 consistent at 95%.** FAIL: SM2d.4 (inherited tension), SM3.1 (refuted under the M_Z matching (by derivation); corrected value derived), SM3.8 (inherited tension), SM3.9 (inherited tension). Checks of the script's own numerics: 32 of 32.
 
 ## Verdicts
 
@@ -90,7 +90,7 @@ Written by `docs/simulation/standard_model.py` (deterministic; numpy, scipy, mat
 | SM4.3 | Contrast: MSSM with M_SUSY = 2 TeV (content GUID does not have; SM1 bounds such partners, it cannot exclude them) | not GUID | smallest spread 0.003 at 1.1e+16 GeV; needs alpha_s(M_Z) = 0.1181 | martin_vaughn, martin_primer | alpha_s off by +0.1 sigma of the input (+0.1%) | **INFO** | contrast |
 | SM4.4 | Proton decay only from a unification before the start | possible, not required | tau/B(p -> e+ pi0) > 2.4e34 yr (90%) | superk | M_X > 4.8e+15 GeV (alpha_G = 1/40), 4.7e+15 GeV (alpha_G = 1/42.2); cited as data:D8.1 | **INFO** | untested (Hypothesis 6'; M_X is free) |
 | SM4.5 | A unification at the SM's alpha1 = alpha2 crossing | excluded (no unification within causality) | crossing at 1.1e+13 GeV would give tau ~ 7e+23 yr | superk | 4e+10 times below the bound | **OK** | holds as a reading (the Standard Model's own statement) |
-| SM5.1 | alpha born near 1/128 at m_Z (on-shell, from alpha(0) and the vacuum polarisation) | 1/alpha(M_Z) ~ 128 (within 1%) | 128.937 +- 0.014 | codata22, steinhauser, dhmz | +0.73% from 128 | **OK** | holds |
+| SM5.1 | alpha born near 1/128 at m_Z (on-shell, from alpha(0) and the vacuum polarisation) | 1/alpha(M_Z) ~ 128 (within 1%) | 128.937 +- 0.014 | codata22, steinhauser, dhmz | +0.73% from 128 | **INFO** | holds |
 | SM5.2 | Same, MS-bar | within 1% | 127.950 +- 0.017 (D8.5) | alpha_mz, erler1999 | -0.04% from 128; recomputed 127.96 | **INFO** | holds |
 | SM5.3 | alpha runs down to 1/137 | 1/alpha(0) = 137.036 | 137.035999177(21) | codata22 | the running is the measured vacuum polarisation | **INFO** | holds |
 | SM5.4 | The split is a smooth crossover near 160 GeV | crossover | data:D8.6 (m_H = 125.11 GeV above the first-order end point) |  | cited from predictions_vs_data.py | **INFO** | holds |
@@ -133,6 +133,7 @@ Notes:
 - SM3.9: the comparison is made in alpha^-1 with Fan et al.'s alpha from a_e (their QED series); the a_e difference uses d a_e / d alpha^-1 = -alpha^2 / 2pi
 - SM4.1: the Standard Model's own statement since Amaldi et al.; it does not test Hypothesis 6', which places any unification before the start
 - SM4.3: meets within the input errors at this threshold (no GUT or superpartner threshold corrections, no DR-bar conversion); the SM needs alpha_s 37% below the measured value
+- SM5.1: consistency: Part I took 'near 1/128' from this physics, as data:D8.5 (CONS) does; not counted as a success
 - SM5.2: cited from data:D8.5
 
 ## Method

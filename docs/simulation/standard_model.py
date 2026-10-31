@@ -932,7 +932,8 @@ chk("MS-bar estimate (on-shell minus Erler's scheme offset) agrees with the PDG 
 print(f"1/alpha(M_Z): on-shell {inv_alpha_MZ_OS:.3f} +- {inv_err_OS:.3f}; MS-bar 127.950 +- 0.017 (PDG, D8.5); scheme offset {off_erler:.3f}")
 row("SM5.1", "alpha born near 1/128 at m_Z (on-shell, from alpha(0) and the vacuum polarisation)", "1/alpha(M_Z) ~ 128 (within 1%)",
     f"{inv_alpha_MZ_OS:.3f} +- {inv_err_OS:.3f}", ["codata22", "steinhauser", "dhmz"], f"{100 * (inv_alpha_MZ_OS / 128 - 1):+.2f}% from 128",
-    "OK" if abs(inv_alpha_MZ_OS / 128 - 1) < 0.01 else "FAIL", "holds")
+    "OK" if abs(inv_alpha_MZ_OS / 128 - 1) < 0.01 else "FAIL", "holds", scored=False,
+    note="consistency: Part I took 'near 1/128' from this physics, as data:D8.5 (CONS) does; not counted as a success")
 row("SM5.2", "Same, MS-bar", "within 1%", "127.950 +- 0.017 (D8.5)", ["alpha_mz", "erler1999"], f"{100 * (127.950 / 128 - 1):+.2f}% from 128; "
     f"recomputed {inv_MS_est:.2f}", "OK", "holds", scored=False, note="cited from data:D8.5")
 row("SM5.3", "alpha runs down to 1/137", "1/alpha(0) = 137.036", "137.035999177(21)", ["codata22"], "the running is the measured vacuum "

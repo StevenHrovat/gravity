@@ -45,8 +45,8 @@
    }
   },
   "sm": {
-   "scored": 30,
-   "ok": 26,
+   "scored": 29,
+   "ok": 25,
    "fail": [
     "SM2d.4",
     "SM3.1",
@@ -54,8 +54,8 @@
     "SM3.9"
    ],
    "shared": {
-    "n": 21,
-    "ok": 18,
+    "n": 20,
+    "ok": 17,
     "fail": [
      "SM2d.4",
      "SM3.8",
@@ -109,8 +109,8 @@
   }
  },
  "total": {
-  "scored": 70,
-  "ok": 58,
+  "scored": 69,
+  "ok": 57,
   "fail": [
    "D3.3",
    "D3.4",
@@ -126,8 +126,8 @@
    "A:P_psis(4338)"
   ],
   "shared": {
-   "n": 48,
-   "ok": 37,
+   "n": 47,
+   "ok": 36,
    "fail": [
     "D3.3",
     "D3.4",
@@ -156,7 +156,9 @@
   }
  },
  "h9_present": false,
- "stale_sm_class_entries": [],
+ "stale_sm_class_entries": [
+  "SM5.1"
+ ],
  "rows": [
   {
    "section": "data",
@@ -639,14 +641,6 @@
    "reason": "the Standard Model without unification says the same; the bound is the proton-decay search's"
   },
   {
-   "section": "sm",
-   "id": "SM5.1",
-   "label": "alpha born near 1/128 at m_Z (on-shell, from alpha(0) and the vacuum polarisation)",
-   "verdict": "OK",
-   "tally_class": "shared",
-   "reason": "the measured running coupling; Section data treats the same reading as a consistency row (D8.5)"
-  },
-  {
    "section": "exotics",
    "id": "A:T_cc+",
    "label": "T_cc+ (cc ubar dbar)",
@@ -725,7 +719,7 @@
    "ok": true
   },
   {
-   "label": "Standard Model: 30 scored, 26 OK, as standard_model.json says",
+   "label": "Standard Model: 29 scored, 25 OK, as standard_model.json says",
    "ok": true
   },
   {

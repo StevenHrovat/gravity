@@ -1,6 +1,6 @@
 # Hadrons as trees of dualities (H8): tetraquarks and pentaquarks against data
 
-Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (seed 20210901); every number is also in `exotic_hadrons.json`. Figures: `docs/simulation/figures/exotic_fit.pdf`, `exotic_spectrum.pdf`, `exotic_levels.pdf`, `exotic_thresholds.pdf`. Checks: **80 of 80 passed** (engine, hosting check, fit numerics, null distribution); every confrontation with data is a result, not a check. Runtime 67 s.
+Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (seed 20210901); every number is also in `exotic_hadrons.json`. Figures: `docs/simulation/figures/exotic_fit.pdf`, `exotic_spectrum.pdf`, `exotic_levels.pdf`, `exotic_thresholds.pdf`. Checks: **80 of 80 passed** (engine, hosting check, fit numerics, null distribution); every confrontation with data is a result, not a check. Runtime 66 s.
 
 ## Verdict
 
@@ -13,7 +13,7 @@ Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (see
 
 ## (a) Compact exotics and live predictions
 
-Model P: KR's convention, parameters fitted here. P-in: no binding across the halves. J: universal masses plus junctions. Pull with sigma_pred and the data error on the side of the model; |pull| < 2 holds.
+Model P: KR's convention, parameters fitted here. P-in: no binding across the halves. J: universal masses plus junctions. Pull with sigma_pred and the data error on the side of the model; |pull| < 1.96 holds (OK).
 
 | state | level (model P) | model P [MeV] | KR parameters | P-in | J | data | pull | verdict | lowest S-wave threshold (~ = antiparticle): M - T |
 |---|---|---|---|---|---|---|---|---|---|
@@ -258,14 +258,14 @@ Not eligible: X(4630) (c cbar s sbar with P = -: parity differs from the other c
 | P_c(4312)+ / P_c(4457)+ | 145.4 +- 3.9 | 16.0 | +33.1 | - |
 | X(6600) CMS / X(6900) CMS | 375.0 +- 18.5 | 24.6 | +19.0 | - |
 
-2 of 25 pass at 2 sigma; 4.28 expected by chance (Poisson p of at least 2: 0.93); 22 fail by 3 sigma or more. Motivating pair (excluded): Delta = 17.0, alpha M/2 = 16.2. P_cs(4459) two-peak hypothesis (not resolved, info): Delta = 12.9 +- 4.6 against 16.3. Verdict: refuted as a rule for every resolved doublet.
+2 of 25 pass at 1.96 sigma; 4.21 expected by chance (Poisson p of at least 2: 0.92); 22 fail by 3 sigma or more. Motivating pair (excluded): Delta = 17.0, alpha M/2 = 16.2. P_cs(4459) two-peak hypothesis (not resolved, info): Delta = 12.9 +- 4.6 against 16.3. Verdict: refuted as a rule for every resolved doublet.
 
 ### H9: choices made after seeing the data
 
 1. H9 itself was conceived after seeing that every established pentaquark carries c cbar (SM7's honesty note); those states are not evidence for it.
 2. The claimed-pentaquark list was compiled from the claims we could find and verify on arXiv; light hidden-flavour candidates are not claimed as pentaquarks in the literature we read, so the table has no light hidden-flavour row.
 3. I2: the molecular masses carry over binding energies relative to isospin-averaged thresholds (the lead's instruction and SM7); the reduced-mass scaling is a variant added with it, not chosen after seeing anything, since no hidden-bottom pentaquark is known.
-4. I4: the eligibility rule and the list were written before any splitting was computed, but the masses of all candidate states were known from SM6, and the P_cs(4459) two-peak masses were read (for the status in I1) before the list was written; it is listed as not resolved by the rule. The chance null (Delta uniform in 0 to 300 MeV) and the 2 sigma pass criterion were fixed with the list.
+4. I4: the eligibility rule and the list were written before any splitting was computed, but the masses of all candidate states were known from SM6, and the P_cs(4459) two-peak masses were read (for the status in I1) before the list was written; it is listed as not resolved by the rule. The chance null (Delta uniform in 0 to 300 MeV) and the 1.96 sigma pass criterion were fixed with the list.
 
 ## Choices made after seeing the data
 

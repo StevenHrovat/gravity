@@ -536,9 +536,9 @@
    {
     "label": "I0e expected chance passes: analytic sum against 4000 Monte Carlo replicas (5 sigma)",
     "ok": true,
-    "got": 4.288,
-    "want": 4.27844,
-    "atol": 0.143887
+    "got": 4.228,
+    "want": 4.21441,
+    "atol": 0.143353
    }
   ]
  },
@@ -2089,7 +2089,7 @@
   "n_refuted": 5,
   "n_holds_by_scheme": {
    "P": 4,
-   "P-in": 3,
+   "P-in": 2,
    "J": 2
   }
  },
@@ -3258,7 +3258,7 @@
      "alpha_M_over_2": 14.4522,
      "pull": 16.3065,
      "passes": false,
-     "p_chance": 0.0894924,
+     "p_chance": 0.0877025,
      "model": {
       "Delta": 131.56,
       "err": 8.85187,
@@ -3277,7 +3277,7 @@
      "alpha_M_over_2": 15.277,
      "pull": 28.0991,
      "passes": false,
-     "p_chance": 0.183958
+     "p_chance": 0.181297
     },
     {
      "group": "c cbar u dbar",
@@ -3290,7 +3290,7 @@
      "alpha_M_over_2": 15.503,
      "pull": 22.7333,
      "passes": false,
-     "p_chance": 0.179712
+     "p_chance": 0.177151
     },
     {
      "group": "c cbar u sbar",
@@ -3303,7 +3303,7 @@
      "alpha_M_over_2": 14.5683,
      "pull": 0.519032,
      "passes": true,
-     "p_chance": 0.124751,
+     "p_chance": 0.123227,
      "model": {
       "Delta": 63.8588,
       "err": 8.28941,
@@ -3322,7 +3322,7 @@
      "alpha_M_over_2": 14.9568,
      "pull": 5.44724,
      "passes": false,
-     "p_chance": 0.317322
+     "p_chance": 0.311973
     },
     {
      "group": "c cbar u sbar",
@@ -3335,7 +3335,7 @@
      "alpha_M_over_2": 14.9942,
      "pull": 4.77296,
      "passes": false,
-     "p_chance": 0.326547
+     "p_chance": 0.321016
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3348,7 +3348,7 @@
      "alpha_M_over_2": 14.7297,
      "pull": 4.88347,
      "passes": false,
-     "p_chance": 0.250145
+     "p_chance": 0.246124
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3361,7 +3361,7 @@
      "alpha_M_over_2": 15.0508,
      "pull": 25.8824,
      "passes": false,
-     "p_chance": 0.133353
+     "p_chance": 0.131689
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3374,7 +3374,7 @@
      "alpha_M_over_2": 15.3792,
      "pull": 42.0195,
      "passes": false,
-     "p_chance": 0.131008,
+     "p_chance": 0.129413,
      "model": {
       "Delta": 32.5108,
       "err": 8.40189,
@@ -3393,7 +3393,7 @@
      "alpha_M_over_2": 15.7623,
      "pull": 38.0468,
      "passes": false,
-     "p_chance": 0.177341
+     "p_chance": 0.174845
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3406,7 +3406,7 @@
      "alpha_M_over_2": 15.7805,
      "pull": 48.101,
      "passes": false,
-     "p_chance": 0.152699,
+     "p_chance": 0.150698,
      "model": {
       "Delta": 32.5108,
       "err": 8.40189,
@@ -3425,7 +3425,7 @@
      "alpha_M_over_2": 15.3463,
      "pull": 5.63004,
      "passes": false,
-     "p_chance": 0.241388
+     "p_chance": 0.237584
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3438,7 +3438,7 @@
      "alpha_M_over_2": 15.6747,
      "pull": 12.02,
      "passes": false,
-     "p_chance": 0.241004
+     "p_chance": 0.237229
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3451,7 +3451,7 @@
      "alpha_M_over_2": 16.0578,
      "pull": 17.313,
      "passes": false,
-     "p_chance": 0.265291
+     "p_chance": 0.261056
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3464,7 +3464,7 @@
      "alpha_M_over_2": 16.0761,
      "pull": 18.8323,
      "passes": false,
-     "p_chance": 0.251801
+     "p_chance": 0.247837
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3477,7 +3477,7 @@
      "alpha_M_over_2": 15.9958,
      "pull": 23.6991,
      "passes": false,
-     "p_chance": 0.0922701
+     "p_chance": 0.0904247
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3490,7 +3490,7 @@
      "alpha_M_over_2": 16.3789,
      "pull": 23.3856,
      "passes": false,
-     "p_chance": 0.161107
+     "p_chance": 0.158976
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3503,7 +3503,7 @@
      "alpha_M_over_2": 16.3972,
      "pull": 33.6119,
      "passes": false,
-     "p_chance": 0.130742
+     "p_chance": 0.12922
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3516,7 +3516,7 @@
      "alpha_M_over_2": 16.7073,
      "pull": 12.4089,
      "passes": false,
-     "p_chance": 0.159537
+     "p_chance": 0.15746
     },
     {
      "group": "c cbar s sbar, P = +",
@@ -3529,7 +3529,7 @@
      "alpha_M_over_2": 16.7255,
      "pull": 18.7415,
      "passes": false,
-     "p_chance": 0.12806,
+     "p_chance": 0.126614,
      "model": {
       "Delta": 32.5108,
       "err": 8.40189,
@@ -3548,7 +3548,7 @@
      "alpha_M_over_2": 17.1086,
      "pull": -0.394317,
      "passes": true,
-     "p_chance": 0.177214
+     "p_chance": 0.17481
     },
     {
      "group": "b bbar u dbar",
@@ -3561,7 +3561,7 @@
      "alpha_M_over_2": 38.7843,
      "pull": 2.48627,
      "passes": false,
-     "p_chance": 0.0333333,
+     "p_chance": 0.0326667,
      "model": {
       "Delta": 143.757,
       "err": 8.86634,
@@ -3580,7 +3580,7 @@
      "alpha_M_over_2": 15.967,
      "pull": 20.4728,
      "passes": false,
-     "p_chance": 0.0732242
+     "p_chance": 0.0717597
     },
     {
      "group": "u u d c cbar",
@@ -3593,7 +3593,7 @@
      "alpha_M_over_2": 15.998,
      "pull": 33.1365,
      "passes": false,
-     "p_chance": 0.0520683
+     "p_chance": 0.051027
     },
     {
      "group": "c c cbar cbar",
@@ -3606,13 +3606,13 @@
      "alpha_M_over_2": 24.5903,
      "pull": 18.9758,
      "passes": false,
-     "p_chance": 0.205075
+     "p_chance": 0.202613
     }
    ],
    "n_pass": 2,
    "n_eligible": 25,
-   "expected_chance": 4.27844,
-   "poisson_p_excess": 0.926819,
+   "expected_chance": 4.21441,
+   "poisson_p_excess": 0.922926,
    "n_fail_3sigma": 22,
    "motivating_pair": {
     "pair": [
@@ -3639,7 +3639,7 @@
    "H9 itself was conceived after seeing that every established pentaquark carries c cbar (SM7's honesty note); those states are not evidence for it.",
    "The claimed-pentaquark list was compiled from the claims we could find and verify on arXiv; light hidden-flavour candidates are not claimed as pentaquarks in the literature we read, so the table has no light hidden-flavour row.",
    "I2: the molecular masses carry over binding energies relative to isospin-averaged thresholds (the lead's instruction and SM7); the reduced-mass scaling is a variant added with it, not chosen after seeing anything, since no hidden-bottom pentaquark is known.",
-   "I4: the eligibility rule and the list were written before any splitting was computed, but the masses of all candidate states were known from SM6, and the P_cs(4459) two-peak masses were read (for the status in I1) before the list was written; it is listed as not resolved by the rule. The chance null (Delta uniform in 0 to 300 MeV) and the 2 sigma pass criterion were fixed with the list."
+   "I4: the eligibility rule and the list were written before any splitting was computed, but the masses of all candidate states were known from SM6, and the P_cs(4459) two-peak masses were read (for the status in I1) before the list was written; it is listed as not resolved by the rule. The chance null (Delta uniform in 0 to 300 MeV) and the 1.96 sigma pass criterion were fixed with the list."
   ]
  },
  "delta_J_minus_P": {
@@ -3951,5 +3951,5 @@
    "values": "1/alpha = 137.035999177"
   }
  },
- "runtime_s": 66.6
+ "runtime_s": 66.0
 }

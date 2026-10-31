@@ -4,8 +4,8 @@
  "preregistration": "docs/simulation/sm_preregistration.md",
  "criterion": "test OK = consistent at 95% (|pull| < 1.96 or inside the allowed region); verdict words as in the paper",
  "summary": {
-  "scored": 30,
-  "consistent": 26,
+  "scored": 29,
+  "consistent": 25,
   "failed": [
    "SM2d.4",
    "SM3.1",
@@ -16,8 +16,8 @@
   "checks_passed": 32,
   "tally": {
    "shared with the Standard Model or LambdaCDM": {
-    "rows": 23,
-    "OK": 20,
+    "rows": 22,
+    "OK": 19,
     "FAIL": 3
    },
    "GUID-specific, sensitive": {
@@ -1125,12 +1125,12 @@
     "dhmz"
    ],
    "measure": "+0.73% from 128",
-   "test": "OK",
+   "test": "INFO",
    "verdict": "holds",
-   "note": "",
+   "note": "consistency: Part I took 'near 1/128' from this physics, as data:D8.5 (CONS) does; not counted as a success",
    "pull": null,
-   "scored": true,
-   "scoring_class": "scored",
+   "scored": false,
+   "scoring_class": "INFO",
    "share": "shared with the Standard Model or LambdaCDM"
   },
   {
