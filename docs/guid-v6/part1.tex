@@ -404,7 +404,10 @@ D_1\,D_0^{-1}\,D_1^{\dagger}\;\preceq\;2D_2 ,
 with $D_0^{-1}$ the generalised inverse, and in addition $D_0$ cannot vanish where $D_1$ does not \tagP. In words: if quantum matter pushes on
 the classical frame at all ($D_1\neq0$), the matter must decohere ($D_0>0$) and the frame must diffuse ($D_2>0$), and the product of the two
 is bounded below by the square of the coupling. Long coherence times of massive superpositions demand strong random fluctuations of the
-gravitational field, and weak fluctuations demand short coherence times.
+gravitational field, and weak fluctuations demand short coherence times. For a qubit coupled through $\sigma_z$ to a classical momentum
+$p$, with the back-reaction written $-(D_1/2)\partial_p\{\sigma_z,\varrho\}$ and the diffusion $(D_2/2)\partial_p^2\varrho$, the bound
+reads $D_1^2\le4D_0D_2$, and at equality the dynamics is exactly a measurement of $\sigma_z$ with feedback, in which $p$ is a perfect
+record and every block of the state stays pure (Section~\ref{sec:gravsim}, \chk{gravsim:G3}).
 
 \begin{corollary}[GUID diffuses]\label{co:diffuse}
 If the existence frame (Lemma~\ref{lem:classical}) is sourced by quantum content (Hypothesis~\ref{h:info}) through a dynamics that is linear,
@@ -422,7 +425,9 @@ There is a second, older family of consistent classical-quantum models, and DMP'
 model the gravitational interaction between two masses as a continuous weak measurement of each mass's position followed by a classical
 force applied to the other according to the recorded result~\cite{ktm}; Tilloy and Di\'osi source a classical Newtonian potential from a
 continuously measured (spontaneously collapsing) mass density~\cite{tilloydiosi}. In both, gravity reproduces Newton's law on average,
-cannot entangle, decoheres superpositions and adds noise, as Corollary~\ref{co:diffuse} requires.
+cannot entangle, decoheres superpositions and adds noise, as Corollary~\ref{co:diffuse} requires. For two masses the least decoherence a
+classical channel can cause is half the entangling rate, $\omega/2$, reached at an optimal measurement strength where the heating is
+also least (Section~\ref{sec:gravsim}, \chk{gravsim:G4}).
 
 Read through the dictionary, DMP's Axiom~3 has exactly this structure \tagD+\tagH. Every act leaves a record that every witness reads in
 full: a measurement of the act's existence. Any other reader sees the counts: the measured mass density, coarse-grained. The layout of the
@@ -488,7 +493,10 @@ well-separated positions decoheres at the rate
 since $c/m_P^2=G/\hbar$: exactly the Di\'osi--Penrose rate~\cite{diosi87,penrose96}, to within the order-one factors of the Newtonian
 estimate. For a fullerene it is $6\times10^{-16}$ per second, far below what interferometry allows. For the diamond microsphere of the Bose
 et al.\ proposal ($10^{-14}$\,kg, radius 0.88\,\textmu m) it is 72 per second: coherence is lost in about 14\,ms, while the entangling phase
-needs 8 to 25\,s, so only $2\times10^{-3}$\,rad builds up \chk{Q19}. One length remains that the bridge does not fix: the mass density of each
+needs 8 to 25\,s, so only $2\times10^{-3}$\,rad builds up \chk{Q19}. The rate is $1146$ times the least decoherence a classical channel
+needs for these masses, and no arrangement of two spheres builds up more than one radian of entangling phase per coherence time
+(Section~\ref{sec:bmv}); the exact self-energy of a uniform sphere gives $86$ per second instead of $72$, a factor $1.2$
+\chk{gravsim:G2}. One length remains that the bridge does not fix: the mass density of each
 nucleus must be smeared over a length $R_0$, or the noise makes matter radiate more than an underground germanium detector
 sees. Donadi et al.'s own 95\% bound is $R_0>0.54\times10^{-10}$\,m~\cite{donadi}, and the summary of all current bounds by Figurato et
 al.\ is $R_0\ge4\times10^{-10}$\,m~\cite{figurato}, which we adopt \chk{data:D6.5}, \chk{data:D6.6}. At such smearing the bulk term
@@ -523,8 +531,9 @@ $\Delta\varphi=\varphi_{RL}+\varphi_{LR}-\varphi_{LL}-\varphi_{RR}$; its concurr
 \end{equation}
 For the parameters of~\cite{bose}, $m=10^{-14}$\,kg, $\Delta x=250$\,\textmu m, $d=450$\,\textmu m, the entangling phase grows at
 $0.126$\,rad/s: one radian after $8.0$\,s, maximal entanglement ($\mathcal N=1/2$, $\Delta\varphi=\pi$) after $25$\,s \chk{Q5}. A recorded,
-classical field (Lemma~\ref{lem:classical}) leaves each branch's phase but removes the coherence between branches, and the masses stay
-separable at all times, $\mathcal N=0$ \chk{Q5}.
+classical field (Lemma~\ref{lem:classical}) in its projective extreme leaves each branch's phase but removes the coherence between
+branches; as a measurement-and-feedback channel it reproduces the branch phases on average and decoheres each mass at a rate of at least
+$\omega/2$, the classical-channel minimum. Either way the masses stay separable at all times, $\mathcal N=0$ \chk{Q5}, \chk{gravsim:G4}.
 
 \textbf{GUID predicts $\mathcal N=0$.} With Bridge~B of Section~\ref{sec:bridges} it predicts more: the masses decohere at the
 Di\'osi--Penrose rate, about 72 per second for the proposed microspheres, long before an entangling phase can build up.
@@ -1169,11 +1178,11 @@ Approach & What is quantum & Relation to GUID & What tells them apart \\
 Effective field theory~\cite{donoghue,bdh} & metric fluctuations below $E_P$ & GUID keeps the classical part; the graviton-loop term
 of~\eqref{eq:eft} is absent & a term $10^{-70}$ of Newton's at 1\,m \chk{Q1}: unmeasurable \\
 String theory, AdS/CFT~\cite{maldacena} & everything; geometry emerges from a quantum boundary & hostable as content; the code kinematics
-of Section~\ref{sec:holo} are shared, with a classical centre & entanglement of masses \\
+of Section~\ref{sec:holo} are shared, with a classical centre & entanglement of masses, if decoherence $<\omega/2$ \\
 Loop quantum gravity~\cite{ashtekar,rovellismolin} & the triad/tetrad; area has a discrete spectrum & the frame is LQG's own variable, not
-quantised; area a number & area spectrum (not accessible); BMV \\
-Asymptotic safety~\cite{weinberg79,reuter} & the metric, with a UV fixed point & hostable & BMV \\
-Causal dynamical triangulations~\cite{cdt} & sum over geometries & allowed within the start only & BMV \\
+quantised; area a number & area spectrum (not accessible); BMV if decoherence $<\omega/2$ \\
+Asymptotic safety~\cite{weinberg79,reuter} & the metric, with a UV fixed point & hostable & BMV if decoherence $<\omega/2$ \\
+Causal dynamical triangulations~\cite{cdt} & sum over geometries & allowed within the start only & BMV if decoherence $<\omega/2$ \\
 Causal sets~\cite{bombelli} & discrete order; $\Lambda\sim1/\sqrt N$ & DMP's order is a tree, not a sprinkled causal set & Lorentz
 invariance needs random sprinkling \\
 Thermodynamic gravity~\cite{jacobson95} & the microscopic entropy only & GUID's thermal reading, Section~\ref{sec:thermo} & none

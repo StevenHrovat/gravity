@@ -35,13 +35,11 @@ $v_*^4=2GM|\gamma_1|$ at $r_*=\sqrt{2GM/|\gamma_1|}$, and beyond it the curve ri
 Ref.~\cite{oppenheimrusso}, $|\gamma_1|(M)=g_0(1+M/10^{10}M_\odot)$ with $g_0\approx10^{-28}$\,m$^{-1}$ ($c=1$), i.e.\
 $8.99\times10^{-12}$\,m\,s$^{-2}$, taken over from conformal-gravity fits rather than derived.
 
-\paragraph{Comparison models.} We compare with Newton, $g_{\rm model}=g_{\rm bar}$, and with the empirical RAR
-\tagP~\cite{mcgaugh2016},
+\paragraph{Comparison models.} We compare with Newton, $g_{\rm model}=g_{\rm bar}$, and with the empirical RAR \tagP~\cite{mcgaugh2016}
 \begin{equation}\label{eq:sparc-rar}
-g_{\rm model}=F(g_{\rm bar})=g_{\rm bar}\big/\big[1-\exp\big(-\sqrt{g_{\rm bar}/g_\dagger}\big)\big].
+g_{\rm model}=F(g_{\rm bar})=g_{\rm bar}\big/\big[1-\exp\big(-\sqrt{g_{\rm bar}/g_\dagger}\big)\big],
 \end{equation}
-The RAR tends to $g_{\rm bar}$ for $g_{\rm bar}\gg g_\dagger$, and to the deep-MOND form $\sqrt{g_{\rm bar}g_\dagger}$~\cite{milgrom}
-for $g_{\rm bar}\ll g_\dagger$.
+which tends to $g_{\rm bar}$ for $g_{\rm bar}\gg g_\dagger$ and to the deep-MOND form $\sqrt{g_{\rm bar}g_\dagger}$~\cite{milgrom} below.
 
 \subsection{Data, error model and likelihood}\label{sec:sparc-data}
 
@@ -243,9 +241,8 @@ None of these choices changes a verdict.
 
 \paragraph{Caveats.} We test the remnant as written: a constant $|\gamma_1|$, independent of the mass distribution, from a static,
 spherically symmetric calculation its authors call preliminary~\cite{oppenheimrusso}; Hertzberg and Loeb dispute that the large-scale
-force follows from the theory at all~\cite{hertzberg2024}. A remnant that follows the matter distribution is untested here, as are lensing,
-the microwave background and clusters. $\Upsilon$ is fixed except in one variant. Point-wise $\Delta$BIC overstates the evidence, but every
-comparison keeps its sign in the galaxy bootstrap and in the galaxy-by-galaxy counts.
+force follows from the theory~\cite{hertzberg2024}. A remnant that follows the matter distribution is untested here, as are lensing, the
+microwave background and clusters. Point-wise $\Delta$BIC overstates the evidence, but every comparison keeps its sign in the bootstrap.
 
 All numbers in this section come from \path{docs/simulation/sparc_rotation.py} (36 of 36 checks, about 70\,s on one core), with results in
 \path{docs/simulation/results/sparc_rotation.json}.
