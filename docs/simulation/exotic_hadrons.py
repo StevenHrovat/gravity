@@ -1543,3 +1543,213 @@ def figures():
 
 
 figures()
+
+
+# =====================================================================================================================================
+# Outputs
+# =====================================================================================================================================
+CHOICES_AFTER_DATA = [
+    "The rule for binding across the two halves (primary: KR's factorised potential applied to every pair; variant P-in: no binding "
+    "across the root) was written into the script before any exotic state was computed, but by authors who knew the published "
+    "masses of the exotic states. Both rules are reported for every state; they differ only where a heavy or strange pair sits in "
+    "different halves (hidden-charm and fully charmed states, P_c, T_csbar).",
+    "k_s (KR's heavy-strange hyperfine enhancement a_cs = a_bs) is shared between mesons and baryons. KR apply it in baryons only; "
+    "the extension was fixed before the fit, motivated by KR's own observation that the D_s* - D_s splitting is enhanced by the "
+    "same factor, not by any exotic comparison.",
+    "For each catalogue state one measurement was taken: the most recent one of the cited collaboration that we could read (LHCb 2021 "
+    "for the J/psi phi states, not the 2016 values; the BESIII discovery values for Z_c(3900) and Z_c(4020), not PDG averages, which "
+    "we could not read). The catalogue excludes X(3915) (exotic status disputed), P_cs(4459) and P_c(4337) (evidence below 5 sigma).",
+    "The chance-proximity numbers for the three 'nearest level' assignments (p_chance) were added after seeing that they hold.",
+    "Tests B5 (states with measured J^P only) and B6 (without the two states within 1 MeV of a threshold) were added after seeing "
+    "the Fisher result, to show what drives it.",
+    "The CMS and ATLAS di-J/psi structures are shown with the fully charmed levels but not scored; that the lowest ATLAS structure "
+    "(6.41 GeV) lies near the model's S-wave levels was noticed after the comparison and is not a test.",
+]
+CAVEATS = [
+    "Effective-mass conventions dominate the multiquark predictions. Baryon masses for every constituent (KR) and universal masses "
+    "with string junctions (variant J) differ by about 100 MeV for every tetraquark and 110-210 MeV for pentaquarks, ten times "
+    "sigma_model; the fit to ordinary hadrons cannot choose between them (sigma_model 8.1 and 8.3 MeV).",
+    "sigma_model is the spread of ordinary hadrons. It does not include the uncertainty of carrying the model to four and five "
+    "constituents (colour configurations outside the H8 tree, the spatial size of a diquark pair, binding across the halves).",
+    "The H8 tree keeps one colour configuration (3bar x 3 for tetraquarks). The full colour-spin model also has 6 x 6bar; mixing would "
+    "lower the lowest levels, mostly for the fully heavy and hidden-charm states.",
+    "Only S-wave ground states are computed. Radial and orbital excitations (X1(2900) is 1-) are outside the model, so a mismatch "
+    "refutes an S-wave assignment, not every compact reading.",
+    "Threshold test: the catalogue is not a random sample. Many exotic states were found as narrow structures near thresholds, and "
+    "threshold cusps can mimic peaks, so proximity is partly a selection effect. The threshold list (hadrons narrower than 60 MeV) "
+    "and the S-wave and C rules set the look-elsewhere count, on average 5.5 thresholds per +-150 MeV window; isospin and G parity "
+    "are not imposed.",
+    "Threshold proximity is the standard signature of hadronic molecules and of threshold cusps in QCD; it supports the molecular "
+    "branch of H8 only in the sense that H8 includes that branch.",
+    "Lattice QCD results for T_bb scatter from 83 to 189 MeV binding; the comparison is not a measurement.",
+]
+
+
+def clean(o):
+    if isinstance(o, dict):
+        return {str(k): clean(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [clean(v) for v in o]
+    if isinstance(o, Fraction):
+        return float(o)
+    if isinstance(o, (np.floating, float)):
+        return float(f"{float(o):.6g}")
+    if isinstance(o, (np.integer,)):
+        return int(o)
+    if isinstance(o, np.ndarray):
+        return clean(o.tolist())
+    if isinstance(o, np.bool_):
+        return bool(o)
+    return o
+
+
+n_ok = sum(results)
+n_all = len(results)
+scored = [r for r in ITEMS if r["kind"] == "scored"]
+n_hold = sum(r["verdict"] == "holds" for r in scored)
+out = {
+    "script": "docs/simulation/exotic_hadrons.py", "seed": SEED, "n_mc": N_MC, "n_perturb": N_PERTURB,
+    "checks": {"passed": n_ok, "total": n_all, "list": check_log},
+    "hosting_KR": {"T_cc": levels(T_CC, KR)[0][0], "T_bb": levels(T_BB, KR)[0][0], "T_bc0": levels(T_BC0, KR)[0][0],
+                   "Xi_cc": mass1("Xi_cc", KR), "KNR_cccc": KNR_CCCC},
+    "fit": {
+        "P": {"params": dict(zip(PAR_P, FIT["P"]["theta"])), "param_err": dict(zip(PAR_P, np.sqrt(np.diag(FIT["P"]["cov"])))),
+              "sigma_model": FIT["P"]["sigma"], "dof": FIT["P"]["dof"], "n_data": len(FIT_M),
+              "residuals": dict(zip(FIT_NAMES, FIT["P"]["res"])), "max_abs_residual": float(np.max(np.abs(FIT["P"]["res"]))),
+              "rms_mesons": float(np.sqrt(np.mean([FIT["P"]["res"][i] ** 2 for i, n in enumerate(FIT_NAMES) if ORD[n].n == 2]))),
+              "rms_baryons": float(np.sqrt(np.mean([FIT["P"]["res"][i] ** 2 for i, n in enumerate(FIT_NAMES) if ORD[n].n == 3]))),
+              "v_bc": PFIT.v_bc, "p_interp": interp_vbc(PFIT.v_cc, PFIT.v_bb, PFIT.mm["c"], PFIT.mm["b"])[1]},
+        "J": {"params": dict(zip(PAR_J, FIT["J"]["theta"])), "sigma_model": FIT["J"]["sigma"], "dof": FIT["J"]["dof"]},
+        "loo": {"rms": LOO_RMS, "n": len(loo), "residuals": loo},
+        "Xi_cc_heldout": {"model": _xicc[0], "err": _xicc[1], "data": XICC[0], "data_err": XICC[1], "pull": XICC_PULL},
+        "inputs": [{"name": d[0], "mass": d[1], "source": d[2]} for d in FIT_DATA],
+    },
+    "A": {"items": ITEMS, "n_scored": len(scored), "n_holds": n_hold,
+          "n_refuted": sum(r["verdict"] == "refuted" for r in scored)},
+    "B": {"W": W_MAIN, "W_alt": W_ALT, "n_states": len(CATALOGUE),
+          "states": [{"name": c[0], "mass": c[1], "err": c[2], "width": c[3], "J": c[4], "P": c[5], "C": c[6], "content": c[7],
+                      "source": c[8], "nearest": THR[c[0]]["main"]["nearest"], "threshold": THR[c[0]]["main"]["T"],
+                      "M_minus_T": THR[c[0]]["main"]["d"], "p": THR[c[0]]["main"]["p"], "p_W300": THR[c[0]]["alt"]["p"],
+                      "n_in_window": THR[c[0]]["main"]["n_window"], "nearest_masses_verified": THR[c[0]]["main"]["nearest_verified"]}
+                     for c in CATALOGUE],
+          "fisher": {"X2": FISH_MAIN[0], "dof": 2 * len(CATALOGUE), "p": FISH_MAIN[1]},
+          "fisher_W300": {"X2": FISH_ALT[0], "p": FISH_ALT[1]},
+          "close": {f"{int(d)}MeV": {"observed": N_CLOSE[d], "expected": EXP_CLOSE[d], "poisson_p": P_CLOSE[d]} for d in N_CLOSE},
+          "n_below": N_BELOW, "mean_thresholds_per_window": MEAN_NWIN,
+          "perturbed_unverified_1MeV": pert[1.0], "perturbed_unverified_3MeV": pert[3.0],
+          "known_JP": {"n": len(KNOWN_JP), "p": FISH_KNOWN[1]}, "without_sub_MeV": {"n": len(FAR), "p": FISH_FAR[1]},
+          "n_threshold_hadrons": len(THRESH_HADRONS), "n_unverified_hadrons": sum(1 for h in THRESH_HADRONS if not h[7])},
+    "C": PARTNERS,
+    "choices_after_data": CHOICES_AFTER_DATA, "caveats": CAVEATS,
+    "citations": CITATIONS,
+    "runtime_s": round(time.perf_counter() - T_START, 1),
+}
+RESULTS.mkdir(parents=True, exist_ok=True)
+(RESULTS / "exotic_hadrons.json").write_text(json.dumps(clean(out), indent=1, ensure_ascii=True) + "\n")
+
+
+def fmt_row(r):
+    d = r.get("data")
+    dat = f"{d['M']:.1f} (-{d['err_lo']:.1f} +{d['err_hi']:.1f})" if d else "-"
+    pull = f"{r['P']['pull']:+.2f}" if d else "-"
+    thr = f"{r['threshold']['pair']} {r['threshold']['M']:.1f}: {r['P']['binding']:+.1f}" if "threshold" in r else "-"
+    return (f"| {r['label']} | {r['JPC']} | {r['P']['M']:.1f} +- {r['P']['err']:.1f} | {r['P-in']['M']:.1f} | {r['J']['M']:.1f} | "
+            f"{dat} | {pull} | {r['verdict']} | {thr} |")
+
+
+md = []
+md.append("# Hadrons as trees of dualities (H8): tetraquarks and pentaquarks against data\n")
+md.append(f"Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (seed {SEED}); every number is also in "
+          f"`exotic_hadrons.json`. Figures: `docs/simulation/figures/exotic_fit.pdf`, `exotic_spectrum.pdf`, `exotic_levels.pdf`, "
+          f"`exotic_thresholds.pdf`. Checks: **{n_ok} of {n_all} passed** (engine, hosting check, fit numerics, null "
+          f"distribution); every confrontation with data is a result, not a check. Runtime {out['runtime_s']:.0f} s.\n")
+md.append("## Verdict\n")
+md.append(f"- **Model.** The colour-spin model of De Rujula, Georgi and Glashow in Karliner and Rosner's form reproduces KR's "
+          f"published numbers to 0.15 MeV (T_cc 3882.2, T_bb 10389.4, T_bc 7133.7, Xi_cc 3627). Refitted to 42 ordinary ground-state "
+          f"hadrons it has sigma_model = {SIG:.1f} MeV ({FIT['P']['dof']} dof; leave-one-out {LOO_RMS:.1f} MeV). The held-out "
+          f"Xi_cc++ comes out at {_xicc[0]:.1f} +- {_xicc[1]:.1f} MeV against 3621.55 (pull {XICC_PULL:+.2f}).")
+md.append(f"- **(a) Compact exotics: {n_hold} of {len(scored)} scored confrontations hold, "
+          f"{out['A']['n_refuted']} are refuted.** T_cc+ holds ({ROW['T_cc+ (cc ubar dbar)']['P']['M']:.1f} +- "
+          f"{ROW['T_cc+ (cc ubar dbar)']['P']['err']:.1f} against 3874.7, pull {ROW['T_cc+ (cc ubar dbar)']['P']['pull']:+.2f}), but "
+          f"the model puts it {ROW['T_cc+ (cc ubar dbar)']['P']['binding']:+.0f} MeV from the D*+ D0 threshold where it is bound by "
+          f"0.36 MeV. X0(2900), T_csbar(2900), X(6900) as an S-wave [cc][cbar cbar], P_c(4312) and P_psis(4338) are refuted. The "
+          f"three assignments by proximity (P_c(4440), P_c(4457), P_cs(4459)) hold, with chance probabilities "
+          + ", ".join(f"{r['p_chance']:.2f}" for r in scored if 'p_chance' in r) + ".")
+md.append(f"- **Live predictions.** T_bb- at {ROW['T_bb- (bb ubar dbar)']['P']['M']:.0f} +- {ROW['T_bb- (bb ubar dbar)']['P']['err']:.0f}"
+          f" MeV, {ROW['T_bb- (bb ubar dbar)']['P']['binding']:+.0f} MeV below B B* (lattice: 83 to 189 MeV); T_bc 0+ at "
+          f"{ROW['T_bc (bc ubar dbar), 0+']['P']['M']:.0f} ({ROW['T_bc (bc ubar dbar), 0+']['P']['binding']:+.0f} MeV from B0bar D0), "
+          f"T_bc 1+ at {ROW['T_bc (bc ubar dbar), 1+']['P']['M']:.0f} ({ROW['T_bc (bc ubar dbar), 1+']['P']['binding']:+.0f} MeV "
+          f"from D0 B*); P_cc at {ROW['P_cc ([cc][ud] qbar), lowest']['P']['M']:.0f} MeV, "
+          f"{ROW['P_cc ([cc][ud] qbar), lowest']['P']['binding']:+.0f} MeV above Xi_cc pi.")
+md.append(f"- **(b) Threshold proximity.** Of {len(CATALOGUE)} established exotic hadrons, {N_CLOSE[10.0]} lie within 10 MeV of an "
+          f"allowed S-wave two-hadron threshold where {EXP_CLOSE[10.0]:.1f} are expected for random placement in +-150 MeV windows. "
+          f"Fisher's combined p = {FISH_MAIN[1]:.1e} (W = 150 MeV; {FISH_ALT[1]:.1e} for W = 300 MeV). Without T_cc+ and X(3872), "
+          f"p = {FISH_FAR[1]:.2f}. Selection and look-elsewhere caveats below.")
+md.append("- **(c) Partners.** The compact (diquark-tree) reading of X(3872) predicts charged partners that BaBar and Belle exclude: "
+          "a failed prediction. Our model itself places the compact 1++ state "
+          f"{_xc['P']['M'] - _xc['data']['M']:.0f} MeV above X(3872). Every other predicted partner is untested or live.")
+md.append("- **H8 as such.** Any colour singlet can be written as a binary tree of colour-conjugate pairs (3 x 3 contains 3bar, "
+          "3 x 3bar contains 1), so the generic statement holds as a reading and cannot fail; with its either-or (compact or molecular) "
+          "for every multiquark, it also cannot fail on any single state. Its content is in the model's masses, and there it fails more "
+          "often than it holds.\n")
+md.append("## (a) Compact exotics and live predictions\n")
+md.append("Model P: KR's convention, parameters fitted here. P-in: no binding across the halves. J: universal masses plus junctions. "
+          "Pull with sigma_pred and the data error on the side of the model; |pull| < 2 holds.\n")
+md.append("| state | J^P | model P [MeV] | P-in | J | data | pull | verdict | lowest S-wave threshold: M - T |")
+md.append("|---|---|---|---|---|---|---|---|---|")
+for r in ITEMS:
+    md.append(fmt_row(r))
+md.append("")
+for lab in LATTICE:
+    r = ROW[lab]
+    md.append(f"- {lab}: model binding {r['P']['binding']:+.1f} +- {r['P']['err']:.1f} MeV; lattice: "
+              + ", ".join(f"{d['source']} {d['binding']:+.0f} (pull {d['pull_P']:+.1f})" for d in r["lattice"])
+              + (f"; {r['lattice_note']}" if "lattice_note" in r else ""))
+md.append("")
+md.append("## Fit to ordinary hadrons\n")
+md.append("| parameter | value | 1 sigma |")
+md.append("|---|---|---|")
+for n, v, e in zip(PAR_P, FIT["P"]["theta"], np.sqrt(np.diag(FIT["P"]["cov"]))):
+    md.append(f"| {n} | {v:.4g} | {e:.2g} |")
+md.append(f"\nKR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/310^2 = 80; a/363^2 = 50; "
+          f"a_cs/a = {KR_KS_C:.3f}; B1 = -69.9, -83.6, -258.0, -562.8, -341.5. Scheme J: S = {FIT['J']['theta'][4]:.1f} MeV, "
+          f"sigma_model = {FIT['J']['sigma']:.2f} MeV.\n")
+md.append("| hadron | input [MeV] | source | model - input |")
+md.append("|---|---|---|---|")
+for (n, m, src), rr in zip(FIT_DATA, FIT["P"]["res"]):
+    md.append(f"| {n} | {m:.2f} | {src} | {rr:+.1f} |")
+md.append("\n## (b) Threshold proximity\n")
+md.append("| state | M [MeV] | J^P(C) | nearest allowed S-wave threshold | T [MeV] | M - T | p (W=150) | p (W=300) | source |")
+md.append("|---|---|---|---|---|---|---|---|---|")
+for c in CATALOGUE:
+    t = THR[c[0]]
+    jp = ("?" if c[4] is None else str(Fraction(c[4]))) + ({1: "+", -1: "-", None: "?"}[c[5]]) + \
+         ({1: "+", -1: "-", None: ""}[c[6]])
+    md.append(f"| {c[0]} | {c[1]:.1f} | {jp} | {t['main']['nearest']}{'' if t['main']['nearest_verified'] else ' (u)'} | "
+              f"{t['main']['T']:.1f} | {t['main']['d']:+.1f} | {t['main']['p']:.4f} | {t['alt']['p']:.4f} | {c[8]} |")
+md.append(f"\n(u): a threshold hadron mass not re-read. Fisher X2 = {FISH_MAIN[0]:.1f} ({2 * len(CATALOGUE)} dof), p = "
+          f"{FISH_MAIN[1]:.2e}; W = 300: p = {FISH_ALT[1]:.2e}. Within 5/10/20 MeV: {N_CLOSE[5.0]}/{N_CLOSE[10.0]}/{N_CLOSE[20.0]} "
+          f"observed, {EXP_CLOSE[5.0]:.2f}/{EXP_CLOSE[10.0]:.2f}/{EXP_CLOSE[20.0]:.2f} expected (Poisson p {P_CLOSE[5.0]:.3f}/"
+          f"{P_CLOSE[10.0]:.3f}/{P_CLOSE[20.0]:.3f}). Below the nearest threshold: {N_BELOW} of {len(CATALOGUE)}. Mean number of "
+          f"allowed thresholds per window: {MEAN_NWIN:.1f}. Unverified threshold masses perturbed by 1 MeV: p from {pert[1.0][0]:.1e} "
+          f"to {pert[1.0][2]:.1e}; by 3 MeV: {pert[3.0][0]:.1e} to {pert[3.0][2]:.1e}. States with measured J^P only "
+          f"({len(KNOWN_JP)}): p = {FISH_KNOWN[1]:.1e}. Without T_cc+ and X(3872): p = {FISH_FAR[1]:.3f}.\n")
+md.append("## (c) Partners\n")
+for pt in PARTNERS:
+    md.append(f"- **{pt['id']}** {pt['prediction']}. *Search:* {pt['search']}. **{pt['verdict']}**.")
+md.append("\n## Choices made after seeing the data\n")
+for i, c in enumerate(CHOICES_AFTER_DATA, 1):
+    md.append(f"{i}. {c}")
+md.append("\n## Caveats\n")
+for c in CAVEATS:
+    md.append(f"- {c}")
+md.append("\n## Citations (what was read, the values used)\n")
+for k, v in CITATIONS.items():
+    md.append(f"- **{k}**: {v['ref']}. Read: {v['read']}. Values: {v['values']}.")
+md.append(f"\n## Checks\n\n{n_ok} of {n_all} passed.\n")
+for c in check_log:
+    md.append(f"- {'OK' if c['ok'] else 'FAIL'} {c['label']}")
+(RESULTS / "exotic_hadrons.md").write_text("\n".join(md) + "\n")
+
+print(f"{n_ok} of {n_all} checks passed; {n_hold} of {len(scored)} scored confrontations hold; runtime {out['runtime_s']:.0f} s")
+sys.exit(0 if n_ok == n_all else 1)
