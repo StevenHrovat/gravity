@@ -11,6 +11,15 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
 \usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc}
+% Primer boxes: short background for readers from other fields, placed where the material is first needed.
+% Usage: \begin{primer}{Quantum information in one page}{box:qi} ... \end{primer}
+\newcounter{primer}
+\newenvironment{primer}[2]{\refstepcounter{primer}\label{#2}%
+  \begin{tcolorbox}[breakable,enhanced,colback=black!3,colframe=black!45,boxrule=0.5pt,arc=1pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+  fonttitle=\bfseries\small,title={Primer~\theprimer: #1}]\small}{\end{tcolorbox}}
 \graphicspath{{../simulation/figures/}}
 
 \newtheorem{theorem}{Theorem}
