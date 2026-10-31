@@ -19,9 +19,9 @@ form the \emph{pull}
 \begin{equation}\label{eq:pull}
 p=\frac{x-x_G}{\sqrt{\sigma^2+\sigma_G^2}} .
 \end{equation}
-Other data are allowed regions at 90\% or more, or probabilities and qualitative statements of the experimenters. The rule is one line. A
+Other data are allowed regions at 90\% or more, or probabilities and qualitative statements of the experimenters. A
 confrontation is \textbf{OK} when $|p|<1.96$ or $x_G$ lies inside the allowed region, and a \textbf{FAIL} otherwise; it stays a FAIL when general
-relativity, $\Lambda$CDM or the Standard Model share it. Passing a 90\% region implies passing at 95\%. A row is \textbf{INFO}, reported but not
+relativity, $\Lambda$CDM or the Standard Model share it. A row is \textbf{INFO}, reported but not
 scored, when a newer measurement that includes its data supersedes it, when it is derived rather than measured, or when it overlaps a scored
 datum; 14 of 72 rows are INFO. Independent determinations of one quantity that disagree beyond their errors are combined with the weighted
 mean and the Particle Data Group's scale factor $S=[\chi^2/(N-1)]^{1/2}\ge1$, which multiplies the error of the mean. Were GUID right and the
@@ -36,7 +36,7 @@ explain each prediction and test.
 
 \begin{figure}[!b]
 \centering
-\includegraphics[width=0.56\linewidth]{data_pulls.pdf}
+\includegraphics[width=\linewidth]{data_pulls.pdf}
 \caption{Pulls, Eq.~\eqref{eq:pull}, of every scored confrontation with a Gaussian datum (Table~\ref{tab:data-master}; bounds and qualitative rows
 not shown). Shaded: $|p|<1.96$, consistency at 95\%; crosses: the four FAILs. What to look for: the general-relativistic rows (D2) scatter
 within $1.1\sigma$; the FAILs are cosmological (D3) or concern the spectral index (D4).}
@@ -158,8 +158,8 @@ $\phi'_0=-0.141\,\lambda f_b$ and
 The scalar rolls towards lower matter energy, and a positive electrostatic share makes that a fall in $\alpha$. GUID's forward statement that
 $\alpha$ does not grow is therefore \vd{derived} for the action as written. It is not observable. The helium Coulomb energy alone gives
 $f_b=6.0\times10^{-5}$. Even with $f_b=10^{-3}$, taken as a generous upper value for the electromagnetic self-energy of nucleons, and $|\lambda|$ at
-the bound~\eqref{eq:data-lambda}, the drift is $-9.6\times10^{-24}$ per year. That is four orders of magnitude below the clocks, with
-$\Delta\alpha/\alpha=2.1\times10^{-12}$ at recombination.
+the bound~\eqref{eq:data-lambda}, the drift is $-9.6\times10^{-24}$ per year, four orders
+of magnitude below the clocks.
 
 \paragraph{Model B: a slowly rolling scalar.} To ask what the data can say at all, we give the scalar a linear potential $V=V_0-s\phi$ and make it a
 thawing dark energy, frozen early by Hubble friction. A canonical scalar has $\rho_\phi+p_\phi=\bar M_P^2\dot\phi^2$, so $\phi'^2=3\Omega_\phi(1+w)$
@@ -169,10 +169,9 @@ exactly. For small slopes the history has a universal shape, and each $\alpha$ d
 \end{equation}
 $G$ is $0.118$ at Oklo ($z=0.137$, the 1.8\,Gyr implied by the quoted bound and rate of Damour and Dyson~\cite{damour1996}), $0.435$ at $z=1.15$,
 $0.514$ at $z=6.3$ and $0.516$ from recombination back. For $1+w_0=0.16$ these values change by less than 2\%. Each datum gives
-$d_i=-H_0(\Delta\alpha/\alpha)_i/G(z_i)$, with one-standard-deviation widths of $2.5\times10^{-19}$ (clocks~\cite{filzinger2023}, which include the
-data of~\cite{lange}), $3.3\times10^{-18}$ (Oklo~\cite{davis2015}), $2.2\times10^{-16}$ (ESPRESSO~\cite{espresso}), $9.7\times10^{-15}$
-(quasars~\cite{wilczynska2020}), $3.3\times10^{-13}$ (CMB~\cite{hart2018}) and $6.7\times10^{-13}$ per year (nucleosynthesis~\cite{avelino2001};
-Fig.~\ref{fig:data-alpha}a). Their weighted mean is $d=(1.79\pm2.49)\times10^{-19}$ per year, with $\chi^2=3.05$ for 5 degrees of freedom
+$d_i=-H_0(\Delta\alpha/\alpha)_i/G(z_i)$ (Fig.~\ref{fig:data-alpha}a): the clocks~\cite{filzinger2023}, which include the data of~\cite{lange}, give
+$\pm2.5\times10^{-19}$ per year, Oklo~\cite{davis2015} $\pm3.3\times10^{-18}$, and the quasars~\cite{espresso,wilczynska2020}, the CMB~\cite{hart2018}
+and nucleosynthesis~\cite{avelino2001} are three to six orders weaker. Their weighted mean is $d=(1.79\pm2.49)\times10^{-19}$ per year, with $\chi^2=3.05$ for 5 degrees of freedom
 \chk{data:D1.12}.
 
 \paragraph{The sign.} The data say nothing about it. The clocks dominate; their central value is positive at $0.7\sigma$; $P(d<0)=0.24$; and
@@ -185,7 +184,7 @@ Free fall \vd{holds}, and the coupling is bounded by~\eqref{eq:data-lambda}. The
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.8\linewidth]{data_alpha_scalar.pdf}
+\includegraphics[width=\linewidth]{data_alpha_scalar.pdf}
 \caption{The information scalar. (a) The 95\% bound on the present drift of $\alpha$ implied by each datum and by all together in Model B,
 Eq.~\eqref{eq:data-G}. (b) The 95\% allowed region (shaded) of coupling $|\lambda|$ and present drift from free fall and the $\alpha$ data.
 Coloured curves: the drift of a scalar that is a thawing dark energy, $d=\pm\lambda H_0\phi'_0$, for $1+w_0=0.16$ and $10^{-3}$. Dashed: Model A,
@@ -199,8 +198,7 @@ $10^{-7}$.}
 Minimal coupling (Section~\ref{sec:fix}) gives the post-Newtonian limit of general relativity \tagP: $\gamma=\beta=1$, a Nordtvedt parameter
 $\eta_N=4(\beta-1)-(\gamma-1)=0$~\cite{fienga2024}, the gravitational redshift of the lapse, and massless classical waves at $c$ with two tensor
 polarisations. All twelve confrontations hold; the largest pull is $1.06\sigma$ (lunar $\gamma$), and $\chi^2=5.63$ for 10 Gaussian pulls gives
-$p=0.84$, indicative only because Cassini's radio data also enter the ephemerides \chk{data:D2}. The final GWTC-3 tests also find no non-tensor polarisation~\cite{ligo2025a}. The
-lunar errors are read as one standard deviation, which the paper does not state; this is the stricter reading. \emph{Verdict:} \vd{holds},
+$p=0.84$, indicative only because Cassini's radio data also enter the ephemerides \chk{data:D2}. The final GWTC-3 tests also find no non-tensor polarisation~\cite{ligo2025a}. \emph{Verdict:} \vd{holds},
 and adds nothing to general relativity.
 
 \subsection{D3: the balanced state}\label{sec:data-cosmo}
@@ -210,8 +208,8 @@ Acceleration starts at $z_t=(2\Omega_\Lambda/\Omega_m)^{1/3}-1$: $0.632\pm0.018$
 $0.664\pm0.009$ for DESI DR2 with the CMB~\cite{desi2}. Two independent determinations exist. Cosmic chronometers give $0.4\pm0.1$~\cite{moresco2016}.
 Supernovae with $H(z)$ give $0.883\pm0.110$~\cite{jesus2018}, the mean of three parametrisations with half their spread added as a systematic
 error. They pull by $-2.3\sigma$ and $+2.2\sigma$ and disagree with each other by $3.2\sigma$. Combined with $S=3.25$ they give $0.62\pm0.24$, a pull of
-$-0.06\sigma$ \chk{data:D3.1}. The de Sitter rate is derived, not measured: $H_\infty=55.79\pm0.60\,\mathrm{km\,s^{-1}Mpc^{-1}}$, so
-$c/H_\infty=1.66\times10^{26}$\,m (Planck), and it exists only if $w=-1$ \chk{data:D3.2}. The direct test is the equation of state. DESI DR2 fits
+$-0.06\sigma$ \chk{data:D3.1}. The de Sitter rate, $H_\infty=55.79\pm0.60\,\mathrm{km\,s^{-1}Mpc^{-1}}$ (Planck),
+is derived and exists only if $w=-1$ \chk{data:D3.2}. The direct test is the equation of state. DESI DR2 fits
 $w=w_0+w_a(1-a)$; with the CMB it finds $w_0=-0.42\pm0.21$, $w_a=-1.75\pm0.58$, which disfavours $\Lambda$CDM at $3.1\sigma$, and with the three
 supernova samples it finds 2.8, 3.8 and $4.2\sigma$~\cite{desi2}. A recalibration of the DES supernovae lowers its value to $3.2\sigma$, with Bayesian
 odds of about 5:1~\cite{popovic2025}. Scored on the weakest combination, $2.8\sigma$, the floor FAILs \chk{data:D3.3}. The model's
@@ -222,7 +220,7 @@ significant preference \chk{data:D3.6,D3.7}.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.8\linewidth]{data_cosmology.pdf}
+\includegraphics[width=\linewidth]{data_cosmology.pdf}
 \caption{The balanced state (one standard deviation). (a) Transition redshift: GUID with Planck's $\Omega_m$ (line and band), two
 determinations~\cite{moresco2016,jesus2018}, their scaled combination. (b) $H_0$: the $\Lambda$CDM fits GUID inherits against the Cepheid
 ladder~\cite{riess2022} and the TRGB~\cite{freedman2025}. (c) $w_0$ of DESI DR2 for five combinations~\cite{desi2,popovic2025} with the quoted
@@ -246,8 +244,8 @@ Instantaneous reheating at the tensor bound gives at most $5.7\times10^{15}$\,Ge
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.46\linewidth]{data_inflation.pdf}\hfill
-\includegraphics[width=0.52\linewidth]{data_bridgeB.pdf}
+\includegraphics[width=0.476\linewidth]{data_inflation.pdf}\hfill
+\includegraphics[width=0.508\linewidth]{data_bridgeB.pdf}
 \caption{Left: Starobinsky and Higgs inflation at leading order for $N=50$ to 60 (black) against the 95\% bands of $n_s$ from Planck~\cite{planck2020x},
 P-ACT and P-ACT-LB~\cite{louis2025} and $r<0.036$~\cite{bk18}; the line is inside the Planck band, partly inside P-ACT, outside P-ACT-LB. Right
 (Section~\ref{sec:data-bridgeB}): Bridge B's coherence time $\hbar R/(\tfrac65GM^2)$ for silica and gold spheres (lines), the observed coherence of the
@@ -267,12 +265,12 @@ the Kerr maximum, and they imply typical spins of $0.40$ to $0.62$, above $0.67$
 curve bounds the efficiency only from above: radiatively inefficient flows can fall below $5.7\%$. All 61 measured spins of the compilation of
 Reynolds~\cite{reynolds2021}, 36 supermassive and 25 stellar, lie in $[-1,1]$ at 90\%. The test is weak, because the spectral models are Kerr models
 capped at $a=0.998$. The ringdown of GW150914 shows an area increase with probability 0.97~\cite{isi2021}, and that of GW250114 shows it ``to high
-credibility''~\cite{ligo2025b} \chk{data:D5.6,D5.7}. The Hawking radiation of a solar-mass hole, at $6.2\times10^{-8}$\,K, is unobservable and
-unobserved. \emph{Verdict:} \vd{holds}, with general relativity.
+credibility''~\cite{ligo2025b} \chk{data:D5.6,D5.7}. Hawking radiation of a solar-mass hole ($6.2\times10^{-8}$\,K) is unobservable. \emph{Verdict:}
+\vd{holds}, with general relativity.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.78\linewidth]{data_kerr.pdf}
+\includegraphics[width=\linewidth]{data_kerr.pdf}
 \caption{Black holes. (a) Kerr thin-disk efficiency against spin (black) with the Soltan efficiencies of
 Refs.~\cite{marconi2004,shankar2009,yu2002,davis2011}; where a band meets the curve it reads off the typical spin. (b) 90\% ranges of 36 supermassive
 and 25 stellar spins~\cite{reynolds2021}, sorted; lines: the Kerr bound. What to look for: every efficiency is below the $a\to1$ limit, and no spin
@@ -332,7 +330,7 @@ superposition made, and tested by none: \vd{live}, \vd{untested}.
 (Section~\ref{sec:darkmatter}). For a monochromatic mass function, Gorton and Green~\cite{gortongreen} find the window from about $10^{17}$ to
 $10^{22}$\,g open for all of the dark matter; it narrows for extended mass functions. INTEGRAL/SPI gamma rays and Voyager~1's positrons and
 electrons, products of Hawking evaporation, close it below about $10^{17}$\,g. Subaru-HSC microlensing of M31, blind below about $10^{22}$\,g
-through wave optics, bounds it above. The Hawking temperatures at the edges are $1.2\times10^9$\,K ($k_BT=0.11$\,MeV) and $1.2\times10^4$\,K. The
+through wave optics, bounds it above. The
 mass evaporated within 13.8\,Gyr, $1.7\times10^{11}$\,kg, agrees within a factor of ten with the ``about $10^{15}$\,g'' of Carr et
 al.~\cite{carr2021} \chk{data:D7.1-D7.3}. \emph{Verdict:} \vd{live}; the glow predicted at the light edge is what bounds the window.
 
@@ -361,41 +359,35 @@ The four FAILs are real, and each is a tension of the established account that G
 \emph{Evolving dark energy} (D3.3): no combination reaches $5\sigma$, the recalibrated DES supernovae lower their own value to $3.2\sigma$, and the
 fitted $w$ crosses $-1$, which no single canonical scalar can do. If the preference holds, the future is not de Sitter and the balanced state of
 Section~\ref{sec:cosmo} must be read again; an information scalar rolling with that dark energy would have to couple below $1.7\times10^{-8}$.
-\emph{The Hubble constant} (D3.4): $4.9\sigma$ from the Cepheid ladder but $1.5\sigma$ from the TRGB; the disagreement between the local methods is
-part of the open question. \emph{Curvature} (D3.7): $2.1\sigma$ from DESI with the CMB, which its
-authors call not significant, against flatness to 0.4\% from Planck with BAO.
-\emph{The spectral index} (D4.3): at leading order, the plateau inflation Part~I names needs $N\ge63$ for P-ACT-LB and $N\ge55$ for P-ACT, while Planck
-alone accepts $N=50$ to 60. The BAO that also drive D3.3 cause part of the shift. How many e-folds belong to the pivot scale depends on reheating,
-so the gap of a few e-folds constrains the reheating as much as the potential. The model is in tension; GUID's start, which needs inflation but
-not this potential, is not.
+\emph{The Hubble constant} (D3.4) and \emph{curvature} (D3.7) are known $\Lambda$CDM discrepancies: $4.9\sigma$ from the Cepheid ladder but $1.5\sigma$
+from the TRGB, and a $2.1\sigma$ curvature that DESI calls not significant and Planck with BAO does not see. \emph{The spectral index} (D4.3): the
+gap of a few e-folds to P-ACT-LB comes partly from the BAO that also drive D3.3, and since the e-folds of the pivot scale depend on reheating, it
+constrains the reheating as much as the potential. The model is in tension; GUID's start, which needs inflation but not this potential, is not.
 
 \subsection{No data yet}\label{sec:data-nodata}
 
-No measurement reaches the predictions that would tell GUID apart: gravitationally mediated entanglement ($\mathcal N=0$~\cite{bose,mv}, with
+No measurement reaches the predictions that tell GUID apart: mediated entanglement ($\mathcal N=0$~\cite{bose,mv}, with
 decoherence first under Bridge B, Section~\ref{sec:bmv}), the LOCC inequality~\cite{lpp}, the decoherence-diffusion trade-off at equality (only the
-window of D6.8 is known), Bridge B's decoherence itself (Section~\ref{sec:data-bridgeB}) and the sign of the drift of $\alpha$. Tensor modes, the Hawking
-glow at the window's light edge and proton decay have bounds only; single-graviton clicks do not discriminate; the return of information is
-reached by no observation.
+window of D6.8 is known), Bridge B's decoherence itself (Section~\ref{sec:data-bridgeB}) and the sign of the drift of $\alpha$. Tensor modes, the light-edge Hawking
+glow and proton decay have bounds only; graviton clicks do not discriminate; nothing reaches the return of information.
 
 \paragraph{Choices made after seeing the data.} The two $z_t$ determinations were combined with the scale factor after they were seen to disagree,
 and one paper's three parametrisations were merged with their spread as a systematic error; scored alone, either would FAIL, in opposite
-directions. Further, DESI is scored on its least significant combination; Planck and P-ACT-LB are scored, and P-ACT, which overlaps both,
-is reported; the lunar errors are read as one standard deviation; the Kerr test uses the upper end of each efficiency range; D7.2 carries a
-tolerance of a factor of ten; Bridge B passes a run below $\Gamma\tau=0.1$; and the monopole datum is scored once. The model inputs are $f_b=10^{-3}$ as an upper value, 1.8\,Gyr for Oklo, a molecular density of 1300\,kg/m$^3$, and the cluster separation at its
-stated lower bound. No verdict except D3.1 depends on these choices.
+directions. DESI is scored on its least significant combination; P-ACT, which overlaps Planck and P-ACT-LB, is not scored; the lunar errors
+are read as $1\sigma$; the Kerr test uses the upper end of each efficiency range; D7.2 has a tolerance of ten; Bridge B passes below
+$\Gamma\tau=0.1$; the monopole datum is scored once. Model inputs: $f_b=10^{-3}$, 1.8\,Gyr for Oklo, 1300\,kg/m$^3$ for the molecules, the
+cluster separation at its lower bound. No verdict except D3.1 depends on these choices.
 
-\paragraph{Caveats.} Several values were read through a web search, because the publisher's page could not be opened. They are Cassini's $\gamma$,
-MESSENGER's $\eta_N$, the Particle Data Group values of $m_Z$ and $\sin^2\hat\theta_W$, the 2017 value of $\hat\alpha(M_Z)$, the CODATA $\alpha$, the
-interferometer parameters of Fein et al., and the species and separations of Refs.~\cite{kovachy2015,xu2019}. The DESI significances are the
-collaboration's conversions of $\Delta\chi^2$ for two extra parameters. Model B's $w_0$-to-speed mapping is exact at $z=0$, but CPL is not a thawing fit. The nucleosynthesis datum uses 2001 abundances; recent analyses reach parts per million but let all couplings vary
-together~\cite{martins2021}, which a scalar that sets only $\alpha$ does not do. Spins are measured with Kerr models, and the GW250114 statement is
-qualitative.
+\paragraph{Caveats.} Cassini's $\gamma$, MESSENGER's $\eta_N$, the PDG and CODATA constants, the interferometer parameters of Fein et
+al.\ and the species and separations of Refs.~\cite{kovachy2015,xu2019} were read through a web search, because the publisher's page could not
+be opened. Model B's mapping of $w_0$ to the field speed is exact at $z=0$, but CPL is not a thawing fit. The nucleosynthesis datum uses 2001
+abundances; recent analyses reach parts per million by letting all couplings vary together~\cite{martins2021}, which a scalar that sets only
+$\alpha$ does not do. Spins are measured with Kerr models, and the GW250114 statement is qualitative.
 
-All numbers in this section come from \texttt{docs/simulation/predictions\_vs\_data.py} (72 rows, 54 of 58 scored confrontations consistent,
-6 of 6 method checks, about four seconds on one core).
+All numbers in this section come from \texttt{docs/simulation/predictions\_vs\_data.py} (54 of 58 scored, 6 of 6 method checks,
+about four seconds on one core).
 
-\paragraph{Verdict.} Of 58 confrontations of GUID with current data, 54 hold at 95\%. The four that do not are tensions of $\Lambda$CDM and of
-plateau inflation that GUID inherits unchanged: evolving dark energy, the Hubble constant, a $2\sigma$ curvature and the spectral index. Everything else
-holds, but holds equally for general relativity, $\Lambda$CDM and the Standard Model. The information scalar's negative drift is derived and is too small to measure, and Bridge B lies
-five to eight orders of magnitude in mass beyond the largest superpositions made. No existing datum tells GUID apart; the experiments of
-Section~\ref{sec:exp} can.
+\paragraph{Verdict.} Of 58 confrontations with current data, 54 hold at 95\%; the four that do not are tensions GUID inherits from
+$\Lambda$CDM and plateau inflation. The rest hold equally for general relativity, $\Lambda$CDM and the Standard Model. The scalar's negative
+drift is derived but too small to measure, Bridge B lies five to eight orders of magnitude in mass beyond the largest superpositions, and no
+datum yet tells GUID apart; the experiments of Section~\ref{sec:exp} can.

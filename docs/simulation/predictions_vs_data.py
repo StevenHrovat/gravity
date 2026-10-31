@@ -938,13 +938,17 @@ for r in fails:
 
 
 # =================================================================================================================================
-# Figures
+# Figures. Each is drawn at the width it prints in the paper (text width 6.3 in: A4 with 2.5 cm margins), so it is included at scale 1
+# and its fonts print at 8 to 9 pt.
+TEXTW = 6.3
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#d9d8d4"
 C1, C2, C3 = "#2a78d6", "#eb6834", "#1baf7a"
-GOOD, CRIT = "#0ca30c", "#d03b3b"
-plt.rcParams.update({"font.size": 8.5, "axes.edgecolor": INK2, "axes.labelcolor": INK, "xtick.color": INK2, "ytick.color": INK2,
+CRIT = "#d03b3b"
+FS = 8.0                                  # smallest font (ticks, legends, annotations), pt
+plt.rcParams.update({"font.size": 8.5, "axes.titlesize": 8.5, "axes.labelsize": 8.5, "xtick.labelsize": FS, "ytick.labelsize": FS,
+                     "legend.fontsize": FS, "axes.edgecolor": INK2, "axes.labelcolor": INK, "xtick.color": INK2, "ytick.color": INK2,
                      "axes.spines.top": False, "axes.spines.right": False, "axes.grid": True, "grid.color": GRID, "grid.linewidth": 0.5,
-                     "legend.frameon": False, "pdf.fonttype": 42, "lines.linewidth": 2})
+                     "legend.frameon": False, "pdf.fonttype": 42, "lines.linewidth": 1.6, "axes.titlelocation": "left"})
 
 
 def save(fig, name):
@@ -954,180 +958,193 @@ def save(fig, name):
 
 
 FIGS = []
-# 1. master pull chart
-def shorten(text, n=52):
-    if len(text) <= n:
-        return text
-    cut = text[:n].rsplit(" ", 1)[0].rstrip(",:;(")
-    return cut + " ..."
-
-
+# 1. pull chart: two panels side by side, one row per scored Gaussian confrontation
+SHORTP = {"D1.1": "free fall Ti/Pt", "D1.2": "free fall Be/Ti", "D1.3": r"$\dot\alpha$, clocks", "D1.6": r"$\Delta\alpha$, quasar $z=1.15$",
+          "D1.7": r"$\Delta\alpha$, quasars $z\approx6$", "D1.8": r"$\Delta\alpha$, CMB", "D1.9": r"$\Delta\alpha$, BBN",
+          "D1.12": r"$\dot\alpha$, joint (model B)", "D2.1": r"$\gamma$, Cassini", "D2.2": r"$\gamma$, ephemerides", "D2.3": r"$\beta$, ephemerides",
+          "D2.4": r"$\beta$, MESSENGER", "D2.5": r"$\eta_N$, MESSENGER", "D2.6": r"$\beta$, lunar ranging", "D2.7": r"$\gamma$, lunar ranging",
+          "D2.8": "Earth-Moon free fall", "D2.9": "SEP, triple pulsar", "D2.10": "redshift, Galileo", "D3.1": r"$z_t$, two determinations",
+          "D3.3": r"$w=-1$ vs DESI DR2", "D3.4": r"$H_0$ vs SH0ES", "D3.5": r"$H_0$ vs CCHP (TRGB)", "D3.7": r"$\Omega_K$, DESI DR2 + CMB",
+          "D4.1": r"$n_s$, Planck 2018", "D4.3": r"$n_s$, P-ACT-LB", "D9.1": "CHSH vs Tsirelson"}
 pr = [r for r in ROWS if r["scored"] and r["pull"] is not None]
-fig, ax = plt.subplots(figsize=(7.4, 0.2 * len(pr) + 1.1))
-ax.axvspan(-Z95, Z95, color="#eef3fb", zorder=0)
-ax.axvline(0, color=INK2, lw=0.8)
-for i, r in enumerate(pr):
-    p = r["pull"]
-    ok = r["verdict"] == "OK"
-    ax.plot([p], [i], marker="o" if ok else "X", ms=6 if ok else 8, color=C1 if ok else CRIT, ls="none")
-    if not ok:
-        ax.annotate(f"FAIL {p:+.1f}", (p, i), xytext=(-8, 0), textcoords="offset points", color=INK, fontsize=7, ha="right", va="center")
-ax.set_yticks(range(len(pr)))
-ax.set_yticklabels([f"{r['id']}  {shorten(r['observable'])}" for r in pr], fontsize=6.5)
-ax.invert_yaxis()
-ax.set_xlabel("pull = (datum - GUID) / sigma;  shaded: consistent at 95%;  X: FAIL")
-ax.set_xlim(-5.5, 5.5)
-ax.grid(axis="y", lw=0)
-ax.set_title("Scored confrontations with a Gaussian pull", loc="left", fontsize=9, color=INK)
-fig.tight_layout()
+groups = [[r for r in pr if r["section"] in ("D1", "D2")], [r for r in pr if r["section"] not in ("D1", "D2")]]
+nmax = max(len(g) for g in groups)
+fig, axes = plt.subplots(1, 2, figsize=(TEXTW, 0.15 * nmax + 0.75))
+for ax, g in zip(axes, groups):
+    ax.axvspan(-Z95, Z95, color="#e3edf9", zorder=0, lw=0)
+    ax.axvline(0, color=INK2, lw=0.8)
+    for i, r in enumerate(g):
+        p = r["pull"]
+        ok = r["verdict"] == "OK"
+        ax.plot([p], [i], marker="o" if ok else "X", ms=5 if ok else 7, color=C1 if ok else CRIT, ls="none")
+        if not ok:
+            ax.annotate(f"FAIL {p:+.1f}", (p, i), xytext=(-7, 0), textcoords="offset points", color=INK, fontsize=FS, ha="right",
+                        va="center")
+    ax.set_yticks(range(len(g)))
+    ax.set_yticklabels([f"{r['id']}  {SHORTP.get(r['id'], r['observable'][:24])}" for r in g])
+    ax.set_ylim(nmax - 0.5, -0.5)
+    ax.set_xlim(-5.5, 5.5)
+    ax.set_xticks([-4, -2, 0, 2, 4])
+    ax.grid(axis="y", lw=0)
+    ax.set_xlabel(r"pull $(x-x_G)/\sigma$")
+axes[0].set_title("D1, D2")
+axes[1].set_title("D3, D4, D9")
+axes[1].text(0.03, 0.05, "shaded: consistent at 95%\n" + r"$\times$: FAIL, all shared" + "\n" + r"with $\Lambda$CDM or the" + "\nnamed inflation model",
+             transform=axes[1].transAxes, fontsize=FS, color=INK2, va="bottom")
+fig.tight_layout(w_pad=1.0)
 save(fig, "data_pulls.pdf")
 FIGS.append("data_pulls.pdf")
 
 # 2. the information scalar
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.6, 3.3), gridspec_kw={"width_ratios": [1, 1.25]})
+fig, (a1, a2) = plt.subplots(1, 2, figsize=(TEXTW, 2.6), gridspec_kw={"width_ratios": [1, 1.3]})
 labels = [l for l, *_ in implied] + ["joint"]
 bounds = [abs(d) + Z95 * s for *_, d, s in implied] + [max(abs(d95[0]), abs(d95[1]))]
 for i, (l, b) in enumerate(zip(labels, bounds)):
     col = C2 if l == "joint" else C1
     a1.plot([1e-20, b], [i, i], color=col, lw=2, solid_capstyle="round")
-    a1.plot([b], [i], "o", color=col, ms=5)
-    a1.annotate(f"{b:.0e}", (b, i), xytext=(5, 0), textcoords="offset points", va="center", fontsize=7, color=INK2)
+    a1.plot([b], [i], "o", color=col, ms=4)
+    a1.annotate(f"{b:.0e}", (b, i), xytext=(4, 0), textcoords="offset points", va="center", fontsize=FS, color=INK2)
 a1.set_xscale("log")
-a1.set_xlim(1e-20, 1e-9)
+a1.set_xlim(1e-20, 1e-8)
+a1.set_xticks([1e-20, 1e-17, 1e-14, 1e-11, 1e-8])
 a1.set_yticks(range(len(labels)))
 a1.set_yticklabels(labels)
 a1.invert_yaxis()
-a1.set_xlabel("95% bound on |present drift of alpha|, 1/yr")
-a1.set_title("(a) what each datum allows (model B)", loc="left", fontsize=8.5)
+a1.set_xlabel(r"95% bound on $|\dot\alpha/\alpha|$ today, yr$^{-1}$")
+a1.set_title("(a) what each datum allows (model B)")
 lam = np.logspace(-11, -4, 400)
 dgrid = np.linspace(-1.5e-18, 1.5e-18, 301)
 LL, DD = np.meshgrid(lam, dgrid)
 chi_l = np.array([chi2_ep(l) for l in lam])
 CH = chi_l[None, :] + ((DD - d_hat) / d_sig) ** 2
 CH -= CH.min()
-a2.contourf(LL, DD, CH, levels=[0, stats.chi2.ppf(0.95, 2)], colors=["#d6e6f8"])
-a2.contour(LL, DD, CH, levels=[stats.chi2.ppf(0.95, 2)], colors=[C1], linewidths=1.2)
-for uu, col, lab in ((u0_desi, C2, f"scalar = thawing dark energy, 1+w0 = {1 + w0_desi:.2f}"),
-                     (u0_th, C3, f"scalar = thawing dark energy, 1+w0 = {1 + w0_th:.0e}")):
-    a2.plot(lam, lam * H0_yr * uu, color=col, lw=1.4, label=lab)
-    a2.plot(lam, -lam * H0_yr * uu, color=col, lw=1.4)
-a2.axhline(0, color=INK, lw=1.0, ls="--", label="model A (paper's action): |drift| < 1e-23 /yr")
+a2.contourf(LL, DD * 1e18, CH, levels=[0, stats.chi2.ppf(0.95, 2)], colors=["#d6e6f8"])
+a2.contour(LL, DD * 1e18, CH, levels=[stats.chi2.ppf(0.95, 2)], colors=[C1], linewidths=1.2)
+for uu, col, lab in ((u0_desi, C2, f"thawing, $1+w_0={1 + w0_desi:.2f}$"),
+                     (u0_th, C3, r"thawing, $1+w_0=10^{-3}$")):
+    a2.plot(lam, lam * H0_yr * uu * 1e18, color=col, lw=1.4, label=lab)
+    a2.plot(lam, -lam * H0_yr * uu * 1e18, color=col, lw=1.4)
+a2.axhline(0, color=INK, lw=1.0, ls="--", label=r"model A, $|\dot\alpha/\alpha|<10^{-23}$ yr$^{-1}$")
 a2.set_xscale("log")
-a2.set_ylim(dgrid[0], dgrid[-1])
-a2.set_xlabel("coupling |lambda| = |d ln alpha / d phi|")
-a2.set_ylabel("present drift of alpha, 1/yr")
-a2.set_title("(b) allowed region, 95% (shaded)", loc="left", fontsize=8.5)
-a2.legend(fontsize=6.3, loc="lower left")
-fig.tight_layout()
+a2.set_ylim(-1.5, 1.5)
+a2.set_xticks([1e-10, 1e-8, 1e-6, 1e-4])
+a2.set_xlabel(r"coupling $|\lambda|=|d\ln\alpha/d\phi|$")
+a2.set_ylabel(r"$\dot\alpha/\alpha$ today, $10^{-18}$ yr$^{-1}$")
+a2.set_title("(b) allowed region, 95% (shaded)")
+fig.legend(*a2.get_legend_handles_labels(), loc="lower center", ncol=3, handlelength=1.6, columnspacing=1.2, borderaxespad=0.2)
+fig.tight_layout(w_pad=1.0, rect=(0, 0.09, 1, 1))
 save(fig, "data_alpha_scalar.pdf")
 FIGS.append("data_alpha_scalar.pdf")
 
 # 3. cosmology
-fig, (b1, b2, b3) = plt.subplots(1, 3, figsize=(7.8, 2.9))
+fig, (b1, b2, b3) = plt.subplots(1, 3, figsize=(TEXTW, 2.2))
 zl = [("Moresco 2016", 0.4, 0.1), ("Jesus 2018", j_mean, j_sig), ("combined", zt_mean, zt_sig)]
 for i, (l, v, s) in enumerate(zl):
-    b1.errorbar([v], [i], xerr=[[s], [s]], fmt="o", color=C2 if l == "combined" else C1, ms=5, lw=1.6)
-b1.axvspan(zt_P - zt_P_err, zt_P + zt_P_err, color="#e6e6e3")
+    b1.errorbar([v], [i], xerr=[[s], [s]], fmt="o", color=C2 if l == "combined" else C1, ms=4, lw=1.4)
+b1.axvspan(zt_P - zt_P_err, zt_P + zt_P_err, color="#e6e6e3", lw=0)
 b1.axvline(zt_P, color=INK, lw=1)
 b1.set_yticks(range(len(zl)))
 b1.set_yticklabels([l for l, *_ in zl])
-b1.invert_yaxis()
-b1.set_xlabel("transition redshift z_t (1 sigma)")
-b1.set_title("(a) z_t; line: GUID", loc="left", fontsize=8)
+b1.set_ylim(len(zl) - 0.5, -0.5)
+b1.set_xlabel(r"$z_t$ ($1\sigma$)")
+b1.set_title("(a) $z_t$; line: GUID")
 hl = [("Planck LCDM", 67.4, 0.5), ("DESI+CMB LCDM", 68.17, 0.28), ("SH0ES", 73.04, 1.04), ("CCHP TRGB", 70.39, 1.94)]
 for i, (l, v, s) in enumerate(hl):
-    b2.errorbar([v], [i], xerr=[[s], [s]], fmt="o", color=C1 if "LCDM" in l else C2, ms=5, lw=1.6)
+    b2.errorbar([v], [i], xerr=[[s], [s]], fmt="o", color=C1 if "LCDM" in l else C2, ms=4, lw=1.4)
 b2.set_yticks(range(len(hl)))
 b2.set_yticklabels([l for l, *_ in hl])
-b2.invert_yaxis()
-b2.set_xlabel("H0, km/s/Mpc (1 sigma)")
-b2.set_title("(b) H0; blue: GUID = LCDM", loc="left", fontsize=8)
+b2.set_ylim(len(hl) - 0.5, -0.5)
+b2.set_xlabel(r"$H_0$, km s$^{-1}$ Mpc$^{-1}$ ($1\sigma$)")
+b2.set_title("(b) $H_0$; blue: GUID")
 short_desi = ["BAO+CMB", "+Pantheon+", "+Union3", "+DES-SN5YR", "+DES-Dovekie"]
 for i, ((l, w0v, w0e, wav, wae, sg), sl) in enumerate(zip(desi_rows, short_desi)):
-    b3.errorbar([w0v], [i], xerr=[[w0e], [w0e]], fmt="o", color=C1, ms=5, lw=1.6)
-    b3.annotate(f"{sg:.1f} sigma", (w0v + w0e, i), xytext=(4, 0), textcoords="offset points", fontsize=6.5, va="center", color=INK2)
+    b3.errorbar([w0v], [i], xerr=[[w0e], [w0e]], fmt="o", color=C1, ms=4, lw=1.4)
+    b3.annotate(f"{sg:.1f}$\\sigma$", (w0v, i), xytext=(0, 4), textcoords="offset points", fontsize=FS, ha="center", va="bottom",
+                color=INK2)
 b3.axvline(-1, color=INK, lw=1)
-b3.set_xlim(-1.08, -0.05)
+b3.set_xlim(-1.08, -0.1)
 b3.set_yticks(range(len(desi_rows)))
 b3.set_yticklabels(short_desi)
-b3.invert_yaxis()
-b3.set_xlabel("w0 (CPL, 1 sigma)")
-b3.set_title("(c) DESI DR2; line: w = -1", loc="left", fontsize=8)
-fig.tight_layout()
+b3.set_ylim(len(desi_rows) - 0.5, -0.8)
+b3.set_xlabel(r"$w_0$ (CPL, $1\sigma$)")
+b3.set_title("(c) DESI DR2 $w_0$")
+fig.tight_layout(w_pad=0.8)
 save(fig, "data_cosmology.pdf")
 FIGS.append("data_cosmology.pdf")
 
-# 4. inflation
-fig, ax = plt.subplots(figsize=(4.8, 4.0))
-for (lab, ref, v, s), col in zip(ns_data, (C1, C3, C2)):
+# 4. inflation (printed beside figure 6, 3.0 in wide)
+fig, ax = plt.subplots(figsize=(3.0, 2.95))
+for (lab, ref, v, s), col, name in zip(ns_data, (C1, C3, C2), ("Planck 2018", "P-ACT", "P-ACT-LB")):
     ax.axvspan(v - Z95 * s, v + Z95 * s, color=col, alpha=0.16, lw=0)
-    ax.axvline(v, color=col, lw=1.2, label=f"{lab.split(' (')[0]}: n_s = {v} +- {s}; band 95%")
-ax.plot(ns_pred, r_pred, color=INK, lw=2, label="Starobinsky / Higgs, leading order, N = 50..60")
-for N in (50, 55, 60):
-    ax.plot([1 - 2 / N], [12 / N**2], "o", color=INK, ms=4)
-    ax.annotate(f"N={N}", (1 - 2 / N, 12 / N**2), xytext=(-6, -12), textcoords="offset points", fontsize=7)
-ax.axhline(0.036, color=INK2, lw=1, ls="--", label="BICEP/Keck r < 0.036 (95%)")
+    ax.axvline(v, color=col, lw=1.2, label=f"{name}, 95% band")
+ax.plot(ns_pred, r_pred, color=INK, lw=2, label="Starobinsky/Higgs, $N$=50-60")
+for N in (50, 60):
+    ax.plot([1 - 2 / N], [12 / N**2], "o", color=INK, ms=3.5)
+    ax.annotate(f"$N$={N}", (1 - 2 / N, 12 / N**2), xytext=(0, -11), textcoords="offset points", fontsize=FS, ha="center")
+ax.axhline(0.036, color=INK2, lw=1, ls="--", label="BICEP/Keck $r<0.036$")
 ax.set_yscale("log")
-ax.set_ylim(1e-3, 0.1)
-ax.set_xlim(0.952, 0.985)
-ax.set_xlabel("scalar spectral index n_s")
-ax.set_ylabel("tensor-to-scalar ratio r")
-ax.legend(fontsize=6.3, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=1)
+ax.set_ylim(1e-3, 0.4)
+ax.set_xlim(0.952, 0.982)
+ax.set_xticks([0.955, 0.965, 0.975])
+ax.set_xlabel("$n_s$")
+ax.set_ylabel("$r$")
+ax.legend(loc="upper left", frameon=True, framealpha=0.92, edgecolor="none", borderaxespad=0.3, handlelength=1.4, labelspacing=0.25)
 fig.tight_layout()
 save(fig, "data_inflation.pdf")
 FIGS.append("data_inflation.pdf")
 
 # 5. Kerr efficiency and spins
-fig, (k1, k2) = plt.subplots(1, 2, figsize=(7.6, 3.1))
+fig, (k1, k2) = plt.subplots(1, 2, figsize=(TEXTW, 2.45))
 aa = np.linspace(-1, 0.99999, 800)
-k1.plot(aa, [eff(a) for a in aa], color=INK, lw=2, label="Kerr thin disk, 1 - E_isco")
-k1.axhline(eff_max, color=INK2, lw=0.8, ls=":", label=f"a -> 1 limit, {eff_max:.3f}")
-k1.axhspan(0.04, 0.16, color=C1, alpha=0.12, lw=0, label="Marconi et al. 2004: 0.04-0.16")
-k1.axhspan(0.075, 0.094, color=C2, alpha=0.45, lw=0, label="Shankar et al. 2009: 0.075-0.094")
-k1.axhline(0.1, color=C3, lw=1.3, ls="--", label="Yu & Tremaine 2002: > 0.1 (luminous QSOs)")
+k1.plot(aa, [eff(a) for a in aa], color=INK, lw=2, label=r"Kerr thin disk, $1-E_{\rm isco}$")
+k1.axhline(eff_max, color=INK2, lw=0.8, ls=":", label=f"$a\\to1$ limit, {eff_max:.3f}")
+k1.axhspan(0.04, 0.16, color=C1, alpha=0.12, lw=0, label="Marconi 2004: 0.04-0.16")
+k1.axhspan(0.075, 0.094, color=C2, alpha=0.45, lw=0, label="Shankar 2009: 0.075-0.094")
+k1.axhline(0.1, color=C3, lw=1.3, ls="--", label="Yu & Tremaine 2002: > 0.1")
 k1.axhline(10**-1.05, color="#6250d6", lw=1.3, ls="-.", label="Davis & Laor 2011: mean 0.089")
 k1.set_ylim(0, 0.45)
-k1.set_xlabel("spin a (negative: retrograde)")
+k1.set_xlabel("spin $a$ (negative: retrograde)")
 k1.set_ylabel("radiative efficiency")
-k1.legend(fontsize=5.9, loc="upper left", bbox_to_anchor=(0.0, 0.91))
-k1.set_title("(a) Soltan efficiencies on the Kerr curve", loc="left", fontsize=8)
+k1.legend(loc="upper left", bbox_to_anchor=(0.0, 0.93), handlelength=1.6, labelspacing=0.2)
+k1.set_title("(a) Soltan efficiencies on the Kerr curve")
 for j, (lst, col, lab) in enumerate(((smbh, C1, "SMBH, X-ray reflection"), (xrb, C2, "X-ray binaries"))):
     for i, (lo, hi) in enumerate(sorted(lst)):
-        k2.plot([lo, hi], [i + 0.35 * j, i + 0.35 * j], color=col, lw=1.6, label=lab if i == 0 else None)
+        k2.plot([lo, hi], [i + 0.35 * j, i + 0.35 * j], color=col, lw=1.4, label=lab if i == 0 else None)
 k2.axvline(1, color=INK, lw=1)
 k2.axvline(-1, color=INK, lw=1)
-k2.set_xlabel("spin a, 90% range; lines: Kerr bound |a| = 1")
+k2.set_xlabel("spin $a$, 90% range; lines: $|a|=1$")
 k2.set_yticks([])
-k2.legend(fontsize=6.5, loc="upper left")
-k2.set_title("(b) measured spins (Reynolds 2021)", loc="left", fontsize=8)
-fig.tight_layout()
+k2.legend(loc="upper left", handlelength=1.6)
+k2.set_title("(b) measured spins (Reynolds 2021)")
+fig.tight_layout(w_pad=1.0)
 save(fig, "data_kerr.pdf")
 FIGS.append("data_kerr.pdf")
 
-# 6. Bridge B
-fig, ax = plt.subplots(figsize=(5.4, 3.8))
+# 6. Bridge B (printed beside figure 4, 3.2 in wide)
+fig, ax = plt.subplots(figsize=(3.2, 2.95))
 Mg = np.logspace(-26, -12, 300)
 for rho, col, lab in ((2200.0, C1, "silica"), (19300.0, C2, "gold")):
     Rg = (3 * Mg / (4 * math.pi * rho)) ** (1 / 3)
-    ax.plot(Mg, hbar * Rg / (1.2 * G * Mg**2), color=col, lw=1.6, label=f"Bridge B coherence time, {lab} sphere")
-offsets = [(-8, -9), (6, 4), (6, -9), (6, 4)]
-for e, off in zip(D6["experiments"], offsets):
-    ax.plot([e["mass_kg"]], [e["coherence_s"]], "o", color=C3, ms=6)
-    ax.annotate(e["label"].split(" (")[0], (e["mass_kg"], e["coherence_s"]), xytext=off, textcoords="offset points", fontsize=6.5,
-                ha="right" if off[0] < 0 else "left")
-ax.plot([mm], [25.0], "s", color=INK, ms=6)
-ax.annotate("BMV proposal: 1e-14 kg needs 8-25 s;\nBridge B decoheres it in 12 ms (on the line)", (mm, 25.0), xytext=(0, 70),
-            textcoords="offset points", fontsize=6.5, ha="center",
+    ax.plot(Mg, hbar * Rg / (1.2 * G * Mg**2), color=col, lw=1.6, label=f"Bridge B time, {lab} sphere")
+short_exp = ["28 kDa", "197 kDa", "Rb, 54 cm", "Cs, 20 s"]
+offsets = [(0, -11), (5, 3), (-5, -9), (5, 2)]
+has = ["center", "left", "right", "left"]
+for e, sl, off, ha in zip(D6["experiments"], short_exp, offsets, has):
+    ax.plot([e["mass_kg"]], [e["coherence_s"]], "o", color=C3, ms=5)
+    ax.annotate(sl, (e["mass_kg"], e["coherence_s"]), xytext=off, textcoords="offset points", fontsize=FS, ha=ha)
+ax.plot([mm], [25.0], "s", color=INK, ms=5)
+ax.annotate("BMV: needs 8-25 s,\nBridge B: 12 ms", (mm, 25.0), xytext=(0, 40), textcoords="offset points", fontsize=FS, ha="center",
             arrowprops=dict(arrowstyle="-", color=INK2, lw=0.6))
-ax.plot([], [], "o", color=C3, label="existing superpositions (observed coherence)")
+ax.plot([], [], "o", color=C3, label="superpositions made")
 ax.set_xscale("log")
 ax.set_yscale("log")
+ax.set_xlim(1e-26, 1e-12)
 ax.set_ylim(1e-4, 1e21)
+ax.set_xticks([1e-26, 1e-22, 1e-18, 1e-14])
+ax.set_yticks([1e0, 1e5, 1e10, 1e15, 1e20])
 ax.set_xlabel("mass, kg")
-ax.set_ylabel("time, s")
-ax.legend(fontsize=6.3, loc="upper right")
-ax.set_title("A superposition kept longer than the line would show Bridge B.\nExisting ones fall short by factors of 1e12 to 1e16.", loc="left",
-             fontsize=8)
+ax.set_ylabel("coherence time, s")
+ax.legend(loc="upper right", handlelength=1.4, labelspacing=0.25)
 fig.tight_layout()
 save(fig, "data_bridgeB.pdf")
 FIGS.append("data_bridgeB.pdf")

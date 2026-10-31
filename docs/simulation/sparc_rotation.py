@@ -1297,13 +1297,21 @@ INK, MUTED, DATA = "#1f1f1f", "#555555", "#9a9a9a"
 
 
 def figures(d):
+    """Paper-size figures: the text width of the paper is 6.3 in (A4, 2.5 cm margins). Full-width figures are 6.3 in wide, the RAR and
+    BTFR panels 3.1 in each (a side-by-side pair); all text is 8 to 9 pt, so the figures are included at a scale of 0.9 to 1.0.
+    Constrained layout and no tight bounding box keep each PDF page exactly at its figure size."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
 
-    plt.rcParams.update({"pdf.fonttype": 42, "font.size": 9, "axes.labelsize": 10, "legend.fontsize": 8, "axes.linewidth": 0.8,
-                         "xtick.direction": "in", "ytick.direction": "in", "xtick.top": True, "ytick.right": True,
-                         "axes.spines.top": True, "savefig.bbox": "tight", "lines.linewidth": 1.6})
+    plt.rcParams.update({"pdf.fonttype": 42, "font.size": 8, "axes.labelsize": 8.5, "legend.fontsize": 8, "xtick.labelsize": 8,
+                         "ytick.labelsize": 8, "axes.linewidth": 0.6, "xtick.major.width": 0.6, "ytick.major.width": 0.6,
+                         "xtick.minor.width": 0.5, "ytick.minor.width": 0.5, "xtick.major.size": 3, "ytick.major.size": 3,
+                         "xtick.minor.size": 1.5, "ytick.minor.size": 1.5, "xtick.direction": "in", "ytick.direction": "in",
+                         "xtick.top": True, "ytick.right": True, "lines.linewidth": 1.2, "legend.handlelength": 2.2,
+                         "legend.borderaxespad": 0.3, "legend.labelspacing": 0.3, "savefig.bbox": None})
     FIGURES.mkdir(parents=True, exist_ok=True)
     meta = {"CreationDate": None, "ModDate": None, "Producer": None, "Creator": None}
     o = d["out"]
@@ -1312,141 +1320,153 @@ def figures(d):
     gd_odr = o["S1"]["gdag_odr"]
     gb_line = np.logspace(-12.7, -8.2, 400)
     lab_gs = r"$g_{\rm bar}$ [m s$^{-2}$]"
+    PAIR, FULL = 3.1, 6.3                                     # inches
+    PAIR_H = 3.55                                             # both panels of the pair: same height, three legend rows each
 
-    # Figure 1: the radial acceleration relation with the model curves.
-    fig, ax = plt.subplots(figsize=(5.6, 5.0))
-    ax.scatter(d["g_bar"], d["g_obs"], s=3, color=DATA, alpha=0.45, lw=0, label=f"SPARC, {o['S1']['n_points']} points", zorder=1)
+    def new_fig(w, h, ncols=1):
+        fig, axs = plt.subplots(1, ncols, figsize=(w, h), layout="constrained")
+        fig.get_layout_engine().set(w_pad=0.02, h_pad=0.02, wspace=0.04)
+        return fig, axs
+
+    # Figure 1: the radial acceleration relation with the model curves (one of a pair, 3.1 in).
+    fig, ax = new_fig(PAIR, PAIR_H)
+    ax.scatter(d["g_bar"], d["g_obs"], s=1.2, color=DATA, alpha=0.45, lw=0, label="SPARC points", zorder=1, rasterized=False)
     B = d["B1"]
-    ax.errorbar(B[:, 0], B[:, 1], yerr=[B[:, 1] - B[:, 2], B[:, 3] - B[:, 1]], fmt="s", ms=4, color=INK, lw=1, capsize=0,
-                label="binned median (bar: 16-84% of points)", zorder=5)
-    ax.plot(gb_line, gb_line, ls=":", color=MUTED, lw=1.2, label=r"Newton: $g_{\rm obs}=g_{\rm bar}$", zorder=2)
-    ax.plot(gb_line, F_rar(gb_line, gd_odr), color=BLUE, label=rf"RAR fit (S1): $g_\dagger$ = {gd_odr / 1e-10:.2f}e-10", zorder=4)
-    ax.plot(gb_line, gb_line + a_best, ls="--", color=ORANGE,
-            label=rf"GUID, best universal $|\gamma_1|$ = {2 * a_best / 1e-11:.1f}e-11", zorder=4)
+    ax.errorbar(B[:, 0], B[:, 1], yerr=[B[:, 1] - B[:, 2], B[:, 3] - B[:, 1]], fmt="s", ms=2.6, color=INK, lw=0.8, capsize=0,
+                label="binned median", zorder=5)
+    ax.plot(gb_line, gb_line, ls=":", color=MUTED, lw=1.0, label="Newton", zorder=2)
+    ax.plot(gb_line, F_rar(gb_line, gd_odr), color=BLUE, label=rf"RAR, $g_\dagger$ = {gd_odr / 1e-10:.2f}e-10", zorder=4)
+    ax.plot(gb_line, gb_line + a_best, ls="--", color=ORANGE, label="constant, best fit", zorder=4)
     ax.fill_between(gb_line, gb_line + gA0 / 2, gb_line + gA1 / 2, color=AQUA, alpha=0.35, lw=0, zorder=3)
-    ax.plot(gb_line, gb_line + gA0 / 2, ls="-.", color=AQUA, lw=1.4,
-            label=rf"GUID, Bridge A: $|\gamma_1|$ = {gA0 / 1e-10:.1f}-{gA1 / 1e-10:.1f}e-10", zorder=3)
+    ax.plot(gb_line, gb_line + gA0 / 2, ls="-.", color=AQUA, label="Bridge A", zorder=3)
     ax.set_xscale("log")
     ax.set_yscale("log")
     ax.set_xlim(10**-12.6, 10**-8.3)
     ax.set_ylim(10**-12.0, 10**-8.3)
     ax.set_xlabel(lab_gs)
     ax.set_ylabel(r"$g_{\rm obs}=V_{\rm obs}^2/R$ [m s$^{-2}$]")
-    ax.legend(loc="lower right", frameon=True, framealpha=0.9, edgecolor="none")
-    ax.text(0.03, 0.97, rf"$\Upsilon_{{\rm d}}=0.5$, $\Upsilon_{{\rm b}}=0.7$; {o['S1']['n_galaxies_with_points']} galaxies",
-            transform=ax.transAxes, ha="left", va="top", color=MUTED, fontsize=8)
+    h_, l_ = ax.get_legend_handles_labels()
+    order = [l_.index(k) for k in ("SPARC points", "binned median", "Newton")] + \
+        [i for i, k in enumerate(l_) if k not in ("SPARC points", "binned median", "Newton")]
+    fig.legend([h_[i] for i in order], [l_[i] for i in order], loc="outside lower center", ncol=2, frameon=False, handlelength=1.6,
+               columnspacing=0.8)
+    ax.text(0.03, 0.97, f"(a) {o['S1']['n_points']} points, {o['S1']['n_galaxies_with_points']} galaxies", transform=ax.transAxes,
+            ha="left", va="top", color=MUTED)
     fig.savefig(FIGURES / "sparc_rar.pdf", metadata=meta)
     plt.close(fig)
 
-    # Figure 2: residuals per model (a) and the excess acceleration g_obs - g_bar (b).
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.0, 4.4))
-    for res, col, ls, mk, lab in ((d["res_rar"], BLUE, "-", "o", rf"RAR, $g_\dagger$ = {o['S2a']['rar']['best'] / 1e-10:.2f}e-10"),
-                                  (d["res_guid"], ORANGE, "--", "s", rf"GUID, best universal $|\gamma_1|$ = {2 * a_best / 1e-11:.1f}e-11"),
-                                  (d["res_bA"], AQUA, "-.", "^", rf"GUID, Bridge A $|\gamma_1|$ = {gA0 / 1e-10:.1f}e-10")):
+    # Figure 2: residuals per model (a) and the excess acceleration g_obs - g_bar (b); full width, one legend below both panels.
+    fig, (ax1, ax2) = new_fig(FULL, 2.75, 2)
+    for res, col, ls, mk in ((d["res_rar"], BLUE, "-", "o"), (d["res_guid"], ORANGE, "--", "s"), (d["res_bA"], AQUA, "-.", "^")):
         bc, med, lo, hi = binned_stats(d["x"], res)
         ax1.fill_between(10**bc, lo, hi, color=col, alpha=0.18, lw=0)
-        ax1.plot(10**bc, med, ls=ls, marker=mk, ms=4, color=col, label=lab)
-    ax1.axhline(0, color=MUTED, lw=0.8)
+        ax1.plot(10**bc, med, ls=ls, marker=mk, ms=3, color=col)
+    ax1.axhline(0, color=MUTED, lw=0.6)
     ax1.set_xscale("log")
     ax1.set_xlabel(lab_gs)
     ax1.set_ylabel(r"$\log_{10}(g_{\rm obs}/g_{\rm model})$ [dex]")
     ax1.set_ylim(-1.5, 0.8)
-    ax1.legend(loc="lower right", frameon=False)
-    ax1.text(0.02, 0.97, "(a) binned median; band: 16-84% of points", transform=ax1.transAxes, va="top", fontsize=8, color=MUTED)
+    ax1.text(0.03, 0.97, "(a) binned median; band: 16-84% of points", transform=ax1.transAxes, va="top", color=MUTED)
     pos = d["dg"] > 0
-    ax2.scatter(d["g_bar"][pos], d["dg"][pos], s=3, color=DATA, alpha=0.4, lw=0, label=r"points with $g_{\rm obs}>g_{\rm bar}$")
+    ax2.scatter(d["g_bar"][pos], d["dg"][pos], s=1.2, color=DATA, alpha=0.4, lw=0)
     B0, Bb = d["B0"], d["Bb"]
     lo_b = np.nanpercentile(Bb[:, :, 1], 16, axis=0)
     hi_b = np.nanpercentile(Bb[:, :, 1], 84, axis=0)
     okb = np.isfinite(B0[:, 0]) & (B0[:, 1] > 0) & (lo_b > 0)     # bins whose bootstrap range reaches Delta g <= 0 are not drawn
-    ax2.errorbar(10**B0[okb, 0], B0[okb, 1], yerr=[B0[okb, 1] - lo_b[okb], hi_b[okb] - B0[okb, 1]], fmt="s", ms=4, color=INK, lw=1,
-                 capsize=0, label="binned median (bar: galaxy bootstrap 16-84%)", zorder=5)
-    ax2.plot(gb_line, F_rar(gb_line, o["S2a"]["rar"]["best"]) - gb_line, color=BLUE, label="RAR prediction")
-    ax2.axhline(a_best, ls="--", color=ORANGE, label=r"GUID: constant $|\gamma_1|/2$, best universal")
+    ax2.errorbar(10**B0[okb, 0], B0[okb, 1], yerr=[B0[okb, 1] - lo_b[okb], hi_b[okb] - B0[okb, 1]], fmt="s", ms=2.6, color=INK, lw=0.8,
+                 capsize=0, zorder=5)
+    ax2.plot(gb_line, F_rar(gb_line, o["S2a"]["rar"]["best"]) - gb_line, color=BLUE)
+    ax2.axhline(a_best, ls="--", color=ORANGE)
     ax2.axhspan(gA0 / 2, gA1 / 2, color=AQUA, alpha=0.35, lw=0)
-    ax2.axhline(gA0 / 2, ls="-.", color=AQUA, label=r"GUID: constant $|\gamma_1|/2$, Bridge A")
+    ax2.axhline(gA0 / 2, ls="-.", color=AQUA)
     ax2.axvspan(1e-13, o["S2d"]["low_regime_gbar_below"], color=MUTED, alpha=0.08, lw=0)
     sd = o["S2d"]
-    ax2.text(0.02, 0.97, rf"(b) slope of $\log\,\Delta g$ for $g_{{\rm bar}}<${sd['low_regime_gbar_below']:.1e} (shaded): "
-             rf"{sd['slope_binned_low']:.2f} [{sd['slope_binned_low_boot_16_84'][0]:.2f}, {sd['slope_binned_low_boot_16_84'][1]:.2f}]"
-             "\n" rf"RAR: {sd['slope_rar_same_bins']:.2f}; constant: 0; deep MOND: 0.5", transform=ax2.transAxes, va="top", fontsize=8)
+    ax2.text(0.03, 0.97, rf"(b) slope in shaded range: {sd['slope_binned_low']:.2f} "
+             rf"[{sd['slope_binned_low_boot_16_84'][0]:.2f}, {sd['slope_binned_low_boot_16_84'][1]:.2f}]" "\n"
+             rf"RAR {sd['slope_rar_same_bins']:.2f}; constant 0; deep MOND 0.5", transform=ax2.transAxes, va="top")
     ax2.set_xscale("log")
     ax2.set_yscale("log")
     ax2.set_xlim(10**-12.6, 10**-8.3)
-    ax2.set_ylim(1e-13, 3e-9)
+    ax2.set_ylim(1e-13, 3e-8)
     ax2.set_xlabel(lab_gs)
     ax2.set_ylabel(r"$\Delta g = g_{\rm obs}-g_{\rm bar}$ [m s$^{-2}$]")
-    ax2.legend(loc="lower center", frameon=False, ncol=2, fontsize=7.5)
-    fig.tight_layout()
+    handles = [Line2D([], [], color=BLUE, ls="-", marker="o", ms=3, label=rf"RAR ($g_\dagger$ = {o['S2a']['rar']['best'] / 1e-10:.2f}e-10)"),
+               Line2D([], [], color=ORANGE, ls="--", marker="s", ms=3, label=r"constant, best universal $|\gamma_1|$"),
+               Line2D([], [], color=AQUA, ls="-.", marker="^", ms=3, label=r"constant, Bridge A ($\beta=0$)"),
+               Line2D([], [], color=INK, ls="none", marker="s", ms=3, label=r"binned median of $\Delta g$ (galaxy bootstrap)"),
+               Line2D([], [], color=DATA, ls="none", marker="o", ms=2.5, label=r"points with $\Delta g>0$")]
+    fig.legend(handles=handles, loc="outside lower center", ncol=3, frameon=False, columnspacing=1.5)
     fig.savefig(FIGURES / "sparc_residuals.pdf", metadata=meta)
     plt.close(fig)
 
-    # Figure 3: per-galaxy |gamma1|.
+    # Figure 3: per-galaxy |gamma1|; full width, one legend below the three panels, a0 and a0/2 labelled on their lines.
     lg1, st, lM, Vf = d["lg1"], d["s_tot"], d["lM"], d["Vf"]
     c2 = o["S2c"]
-    fig, (a1, a2, a3) = plt.subplots(1, 3, figsize=(13.0, 4.2))
-    a1.hist(lg1, bins=np.arange(-11.6, -9.0, 0.1), color=DATA, edgecolor="white", lw=0.6, label=f"{c2['n_galaxies']} galaxies")
-    a1.axvspan(math.log10(gA0), math.log10(gA1), color=AQUA, alpha=0.45, lw=0, label="Bridge A")
-    a1.axvline(math.log10(2 * a_best), ls="--", color=ORANGE, label=r"best universal $|\gamma_1|$")
-    a1.axvline(math.log10(A0_MOND), ls=":", color=INK, label=r"$a_0$ = 1.2e-10 (Oppenheim-Russo order)")
-    a1.axvline(math.log10(A0_MOND / 2), ls=(0, (1, 3)), color=MUTED, label=r"$a_0/2$: what $v_*^4=2GM|\gamma_1|$ needs")
-    a1.set_xlabel(r"$\log_{10}|\gamma_1|$ per galaxy [m s$^{-2}$]")
+    fig, (a1, a2, a3) = new_fig(FULL, 2.85, 3)
+    a1.hist(lg1, bins=np.arange(-11.6, -9.0, 0.1), color=DATA, edgecolor="white", lw=0.5)
+    a1.axvspan(math.log10(gA0), math.log10(gA1), color=AQUA, alpha=0.45, lw=0)
+    a1.axvline(math.log10(2 * a_best), ls="--", color=ORANGE)
+    for val, lab, sty, col in ((A0_MOND, r"$a_0$", ":", INK), (A0_MOND / 2, r"$a_0/2$", (0, (1, 3)), MUTED)):
+        a1.axvline(math.log10(val), ls=sty, color=col)
+        a1.text(math.log10(val) + 0.03, 0.72, lab, transform=a1.get_xaxis_transform(), rotation=90, va="bottom", ha="left", color=col)
+    a1.set_xlabel(r"$\log_{10}|\gamma_1|$ [m s$^{-2}$]")
     a1.set_ylabel("galaxies")
-    a1.set_ylim(0, 1.75 * a1.get_ylim()[1])
-    a1.legend(loc="upper left", frameon=False, fontsize=7)
-    a1.text(0.98, 0.97, "(a)", transform=a1.transAxes, va="top", ha="right", fontsize=8, color=MUTED)
+    a1.set_ylim(0, 1.5 * a1.get_ylim()[1])
+    a1.set_ylabel(f"galaxies (of {c2['n_galaxies']})")
+    a1.text(0.03, 0.97, "(a)", transform=a1.transAxes, va="top", color=MUTED)
     Mg = np.logspace(6.5, 11.8, 200)
-    for ax_, xx, xlab, key in ((a2, 10**lM, r"$M_{\rm bar}=\Upsilon_{\rm d}L_{[3.6]}+1.33\,M_{\rm HI}$ [M$_\odot$]", "M"),
-                               (a3, Vf, r"$V_{\rm flat}$ [km s$^{-1}$]", "V")):
+    for ax_, xx, xlab, key in ((a2, 10**lM, r"$M_{\rm bar}$ [M$_\odot$]", "M"), (a3, Vf, r"$V_{\rm flat}$ [km s$^{-1}$]", "V")):
         ok = xx > 0
-        ax_.errorbar(xx[ok], 10**lg1[ok], yerr=[10**lg1[ok] * (1 - 10**-st[ok]), 10**lg1[ok] * (10**st[ok] - 1)], fmt="o", ms=3,
-                     color=INK, ecolor=DATA, elinewidth=0.8, lw=0, label=r"per-galaxy fit ($\pm$ stat. and sys.)", zorder=4)
+        ax_.errorbar(xx[ok], 10**lg1[ok], yerr=[10**lg1[ok] * (1 - 10**-st[ok]), 10**lg1[ok] * (10**st[ok] - 1)], fmt="o", ms=2,
+                     color=INK, ecolor=DATA, elinewidth=0.6, lw=0, zorder=4)
         xl = Mg if key == "M" else np.logspace(1.2, 2.55, 100)
-        ax_.axhspan(gA0, gA1, color=AQUA, alpha=0.45, lw=0, label="Bridge A")
-        ax_.axhline(2 * a_best, ls="--", color=ORANGE, label=r"best universal $|\gamma_1|$")
+        ax_.axhspan(gA0, gA1, color=AQUA, alpha=0.45, lw=0)
+        ax_.axhline(2 * a_best, ls="--", color=ORANGE)
         if key == "M":
-            ax_.plot(xl, d["g0_OR"] * (1 + xl / 1e10), ls=":", color=INK, lw=1.4,
-                     label=r"Oppenheim-Russo: $c^2\,10^{-28}$ m$^{-1}(1+M/10^{10}M_\odot)$")
-            ax_.plot(xl, 10**d["c_OR"] * (1 + xl / 1e10), ls=(0, (5, 2, 1, 2)), color=MUTED, lw=1.2,
-                     label=rf"same shape, amplitude fitted ({10**d['c_OR']:.1e})")
-            ax_.plot(xl, 10**(d["ic_M"] + d["sl_M"] * (np.log10(xl) - 10)), color=BLUE,
-                     label=rf"power law fit: slope {d['sl_M']:.2f}")
-            tag = rf"(b) Spearman $\rho$ = {c2['spearman_Mbar'][0]:.2f}"
+            ax_.plot(xl, d["g0_OR"] * (1 + xl / 1e10), ls=":", color=INK, lw=1.3)
+            ax_.plot(xl, 10**d["c_OR"] * (1 + xl / 1e10), ls=(0, (5, 2, 1, 2)), color=MUTED, lw=1.1)
+            ax_.plot(xl, 10**(d["ic_M"] + d["sl_M"] * (np.log10(xl) - 10)), color=BLUE)
+            tag = rf"(b) $\rho$ = {c2['spearman_Mbar'][0]:.2f}, slope {d['sl_M']:.2f}"
         else:
-            ax_.plot(xl, 10**(d["ic_V"] + d["sl_V"] * (np.log10(xl) - 2)), color=BLUE, label=rf"power law fit: slope {d['sl_V']:.2f}")
-            tag = rf"(c) Spearman $\rho$ = {c2['spearman_Vflat'][0]:.2f}, {c2['n_with_Vflat']} galaxies with $V_{{\rm flat}}$"
+            ax_.plot(xl, 10**(d["ic_V"] + d["sl_V"] * (np.log10(xl) - 2)), color=BLUE)
+            tag = rf"(c) $\rho$ = {c2['spearman_Vflat'][0]:.2f}, slope {d['sl_V']:.2f}"
         ax_.set_xscale("log")
         ax_.set_yscale("log")
         if key == "V":
-            plain_log_ticks(ax_, [20, 30, 50, 100, 200, 300])
-        ax_.set_ylim(2e-13, 2e-9)
+            plain_log_ticks(ax_, [20, 50, 100, 200])
+        ax_.set_ylim(5e-12, 2e-9)
         ax_.set_xlabel(xlab)
         ax_.set_ylabel(r"$|\gamma_1|$ [m s$^{-2}$]")
-        ax_.legend(loc="lower right", frameon=False, fontsize=7)
-        ax_.text(0.02, 0.97, tag, transform=ax_.transAxes, va="top", fontsize=8, color=MUTED)
-    fig.tight_layout()
+        ax_.text(0.03, 0.97, tag, transform=ax_.transAxes, va="top", color=MUTED)
+    handles = [Line2D([], [], color=INK, ls="none", marker="o", ms=2.5, label="per-galaxy fit"),
+               Patch(facecolor=AQUA, alpha=0.45, label="Bridge A"),
+               Line2D([], [], color=ORANGE, ls="--", label=r"best universal $|\gamma_1|$"),
+               Line2D([], [], color=INK, ls=":", lw=1.3, label=r"Oppenheim-Russo, $g_0=c^2\,10^{-28}$ m$^{-1}$"),
+               Line2D([], [], color=MUTED, ls=(0, (5, 2, 1, 2)), lw=1.1, label=r"same shape, $g_0$ fitted"),
+               Line2D([], [], color=BLUE, ls="-", label="power-law fit")]
+    fig.legend(handles=handles, loc="outside lower center", ncol=3, frameon=False, columnspacing=1.5)
     fig.savefig(FIGURES / "sparc_gamma1.pdf", metadata=meta)
     plt.close(fig)
 
-    # Figure 4: the baryonic Tully-Fisher relation.
+    # Figure 4: the baryonic Tully-Fisher relation (one of a pair, 3.1 in).
     s3 = o["S3"]
-    fig, ax = plt.subplots(figsize=(5.6, 5.0))
+    fig, ax = new_fig(PAIR, PAIR_H)
     xb, yb, sxb, syb, keep = d["xb"], d["yb"], d["sxb"], d["syb"], d["keepb"]
     out_ = np.setdiff1d(np.arange(len(xb)), keep)
     ax.errorbar(10**xb[keep], 10**yb[keep], xerr=[10**xb[keep] * (1 - 10**-sxb[keep]), 10**xb[keep] * (10**sxb[keep] - 1)],
-                yerr=[10**yb[keep] * (1 - 10**-syb[keep]), 10**yb[keep] * (10**syb[keep] - 1)], fmt="o", ms=3, color=INK, ecolor=DATA,
-                elinewidth=0.7, lw=0, label=f"SPARC, {len(keep)} galaxies", zorder=4)
+                yerr=[10**yb[keep] * (1 - 10**-syb[keep]), 10**yb[keep] * (10**syb[keep] - 1)], fmt="o", ms=2, color=INK, ecolor=DATA,
+                elinewidth=0.5, lw=0, label=f"SPARC, {len(keep)} galaxies", zorder=4)
     if len(out_):
-        ax.plot(10**xb[out_], 10**yb[out_], "o", ms=4, mfc="none", mec=INK, label="clipped (2.6$\\sigma$)", zorder=4)
+        ax.plot(10**xb[out_], 10**yb[out_], "o", ms=3, mfc="none", mec=INK, mew=0.7, zorder=4)   # the clipped galaxy (caption)
     vv = np.logspace(1.25, 2.55, 100)
-    ax.plot(vv, 10**(s3["logA"] + s3["slope"] * np.log10(vv)), color=BLUE, label=f"fit here: slope {s3['slope']:.2f}")
-    ax.plot(vv, 10**(2.27 + 3.71 * np.log10(vv)), ls="--", color=MUTED, label="Lelli et al. 2016: slope 3.71")
-    ax.plot(vv, 10**(d["rels"]["MOND_a0"] + 4 * np.log10(vv)), ls=":", color=INK, lw=1.4, label=r"MOND: $v^4=GMa_0$, $a_0$ = 1.2e-10")
+    ax.plot(vv, 10**(s3["logA"] + s3["slope"] * np.log10(vv)), color=BLUE, label=f"fit: slope {s3['slope']:.2f}")
+    ax.plot(vv, 10**(2.27 + 3.71 * np.log10(vv)), ls="--", color=MUTED, label="Lelli et al.: 3.71")
+    ax.plot(vv, 10**(d["rels"]["MOND_a0"] + 4 * np.log10(vv)), ls=":", color=INK, lw=1.3, label=r"$v^4=GMa_0$")
     ax.plot(vv, 10**(d["rels"]["GUID_universal_best"] + 4 * np.log10(vv)), ls="--", color=ORANGE, dashes=(6, 2),
-            label=r"GUID $v_*^4=2GM|\gamma_1|$, best universal")
+            label=r"$v_*^4=2GM|\gamma_1|$, best")
     ax.fill_between(vv, 10**(d["rels"]["GUID_bridgeA_beta_minf"] + 4 * np.log10(vv)), 10**(d["rels"]["GUID_bridgeA_beta0"] + 4 * np.log10(vv)),
                     color=AQUA, alpha=0.4, lw=0)
-    ax.plot(vv, 10**(d["rels"]["GUID_bridgeA_beta0"] + 4 * np.log10(vv)), ls="-.", color=AQUA, label=r"GUID $v_*^4=2GM|\gamma_1|$, Bridge A")
+    ax.plot(vv, 10**(d["rels"]["GUID_bridgeA_beta0"] + 4 * np.log10(vv)), ls="-.", color=AQUA, label=r"$v_*^4$, Bridge A")
     ax.set_xscale("log")
     ax.set_yscale("log")
     ax.set_xlim(18, 350)
@@ -1454,7 +1474,12 @@ def figures(d):
     ax.set_ylim(1e7, 1e12)
     ax.set_xlabel(r"$V_{\rm flat}$ [km s$^{-1}$]")
     ax.set_ylabel(r"$M_{\rm bar}$ [M$_\odot$]")
-    ax.legend(loc="upper left", frameon=False)
+    h_, l_ = ax.get_legend_handles_labels()
+    first = [i for i, k in enumerate(l_) if k.startswith("SPARC")]
+    order = first + [i for i in range(len(l_)) if i not in first]
+    fig.legend([h_[i] for i in order], [l_[i] for i in order], loc="outside lower center", ncol=2, frameon=False, handlelength=1.6,
+               columnspacing=0.8)
+    ax.text(0.03, 0.97, "(b)", transform=ax.transAxes, ha="left", va="top", color=MUTED)
     fig.savefig(FIGURES / "sparc_btfr.pdf", metadata=meta)
     plt.close(fig)
 

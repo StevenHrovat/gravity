@@ -1684,143 +1684,156 @@ MSTYLE = {"rar": (BLUE, "-", "o"), "const": (ORANGE, "--", "s"), "brown": (AQUA,
 
 
 def figures(S, o, fit, per, Q, Pp, g5, null, PRO, TA, a_r1, B0, okb):
+    """Five figures drawn at their print width (6.3 in, the text width of A4 with 2.5 cm margins) with 8-9 pt text."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib.lines import Line2D
 
-    plt.rcParams.update({"pdf.fonttype": 42, "font.size": 9, "axes.labelsize": 10, "legend.fontsize": 8, "axes.linewidth": 0.8,
-                         "xtick.direction": "in", "ytick.direction": "in", "xtick.top": True, "ytick.right": True,
-                         "savefig.bbox": "tight", "lines.linewidth": 1.6})
+    W = 6.3                                    # inches: included at \textwidth, scale about 1
+    FS = 8                                     # pt: smallest text in every figure
+    plt.rcParams.update({"pdf.fonttype": 42, "font.size": 8.5, "axes.labelsize": 9, "xtick.labelsize": FS, "ytick.labelsize": FS,
+                         "legend.fontsize": FS, "axes.linewidth": 0.7, "xtick.direction": "in", "ytick.direction": "in",
+                         "xtick.top": True, "ytick.right": True, "savefig.bbox": "tight", "savefig.pad_inches": 0.02,
+                         "lines.linewidth": 1.3, "legend.handlelength": 2.2, "legend.borderaxespad": 0.3})
     FIGURES.mkdir(parents=True, exist_ok=True)
     meta = {"CreationDate": None, "ModDate": None, "Producer": None, "Creator": None}
     lab_gb = r"$g_{\rm bar}$ [m s$^{-2}$]"
-    short = {"rar": r"RAR, $g_\dagger$", "const": r"constant $|\gamma_1|/2$", "brown": r"form B: $g_{\rm bar}+\sqrt{g_{\rm bar}a_{\rm acc}}$",
-             "simple": r"form S: $\frac{g_{\rm bar}}{2}+\sqrt{\frac{g_{\rm bar}^2}{4}+g_{\rm bar}a_{\rm acc}}$"}
+    name = {"rar": r"RAR", "const": r"constant $|\gamma_1|/2$", "brown": "form B", "simple": "form S"}
 
-    # 1. the forms against the data
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.0, 4.4))
+    def tag(ax, s, x=0.015, y=0.97, ha="left", va="top", **kw):
+        ax.text(x, y, s, transform=ax.transAxes, ha=ha, va=va, fontsize=FS, **kw)
+
+    # 1. the forms against the data (1 x 2)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(W, 3.0))
     for k in ("rar", "const", "brown", "simple"):
         col, ls, mk = MSTYLE[k]
         res = S.y - MODELS[k]([fit[k][0]], S.g_bar, S.R)[0]
         bc, med, lo, hi = SR.binned_stats(S.x, res)
         if k == "rar":
             ax1.fill_between(10 ** bc, lo, hi, color=col, alpha=0.15, lw=0)
-        ax1.plot(10 ** bc, med, ls=ls, marker=mk, ms=4, color=col, label=f"{short[k]} = {10 ** fit[k][0]:.2e}")
-    ax1.axhline(0, color=MUTED, lw=0.8)
+        ax1.plot(10 ** bc, med, ls=ls, marker=mk, ms=3, color=col, label=f"{name[k]} ({10 ** fit[k][0]:.2e})")
+    ax1.axhline(0, color=MUTED, lw=0.7)
     ax1.set_xscale("log")
     ax1.set_ylim(-0.45, 0.45)
     ax1.set_xlabel(lab_gb)
     ax1.set_ylabel(r"$\log_{10}(g_{\rm obs}/g_{\rm model})$ [dex]")
-    ax1.legend(loc="lower left", frameon=False, fontsize=7)
-    ax1.text(0.02, 0.97, "(a) binned median residual, universal fits (L1); band: RAR 16-84% of points", transform=ax1.transAxes, va="top",
-             fontsize=8, color=MUTED)
+    tag(ax1, "(a) binned median residual")
     dg = S.g_obs - S.g_bar
     pos = dg > 0
-    ax2.scatter(S.g_bar[pos], dg[pos], s=3, color=DATA, alpha=0.35, lw=0, label=r"points with $g_{\rm obs}>g_{\rm bar}$")
+    ax2.scatter(S.g_bar[pos], dg[pos], s=1.5, color=DATA, alpha=0.35, lw=0)
     okp = np.isfinite(B0[:, 0]) & (B0[:, 1] > 0)
-    ax2.plot(10 ** B0[okp, 0], B0[okp, 1], "s", ms=5, color=INK, label="binned median", zorder=5)
+    ax2.plot(10 ** B0[okp, 0], B0[okp, 1], "s", ms=3.5, color=INK, zorder=5)
     gl = np.logspace(-12.6, -8.3, 300)
     for k in ("rar", "const", "brown", "simple"):
         col, ls, _ = MSTYLE[k]
-        ax2.plot(gl, g_lin(k, gl, 10 ** fit[k][0]) - gl, ls=ls, color=col, label=short[k])
+        ax2.plot(gl, g_lin(k, gl, 10 ** fit[k][0]) - gl, ls=ls, color=col)
     ax2.axvspan(1e-13, 10 ** fit["rar"][0] / 10, color=MUTED, alpha=0.08, lw=0)
     rs = o["R1a"]["residual_slope"]
-    ax2.text(0.02, 0.97, rf"(b) slope of $\log\Delta g$ in the shaded range: data {rs['data']:.2f}, RAR {rs['rar']:.2f}, "
-             rf"S {rs['simple']:.2f}, B 0.50, constant 0", transform=ax2.transAxes, va="top", fontsize=8)
+    tag(ax2, f"(b) slope in the shaded range:\ndata {rs['data']:.2f}, RAR {rs['rar']:.2f},\nS {rs['simple']:.2f}, B 0.50, constant 0",
+        bbox=dict(facecolor="white", edgecolor="none", pad=1.0, alpha=0.8))
     ax2.set_xscale("log")
     ax2.set_yscale("log")
     ax2.set_xlim(10 ** -12.6, 10 ** -8.3)
     ax2.set_ylim(1e-13, 3e-9)
     ax2.set_xlabel(lab_gb)
-    ax2.set_ylabel(r"$\Delta g=g_{\rm obs}-g_{\rm bar}$ [m s$^{-2}$]")
-    ax2.legend(loc="lower right", frameon=False, fontsize=7)
-    fig.tight_layout()
+    ax2.set_ylabel(r"$g_{\rm obs}-g_{\rm bar}$ [m s$^{-2}$]")
+    ax2.legend(handles=[Line2D([], [], ls="", marker="o", ms=3, color=DATA, label="points"),
+                        Line2D([], [], ls="", marker="s", ms=3.5, color=INK, label="binned median")], loc="lower right", frameon=False)
+    h, l_ = ax1.get_legend_handles_labels()
+    fig.legend(h, l_, loc="upper center", ncol=4, frameon=False, bbox_to_anchor=(0.5, 1.0), columnspacing=1.2, handlelength=2.6)
+    fig.tight_layout(rect=(0, 0, 1, 0.92), w_pad=1.0)
     fig.savefig(FIGURES / "remnant_forms.pdf", metadata=meta)
     plt.close(fig)
 
-    # 2. natural scales
+    # 2. natural scales (2 x 1); candidates by family (colour) and H0 (line style)
     b = o["R1b"]
     tt = np.array(b["profile_t"])
-    fig, axs = plt.subplots(1, 2, figsize=(11.0, 4.2), sharey=True)
-    for ax, k, tag in ((axs[0], "brown", "(a) form B"), (axs[1], "simple", "(b) form S")):
+    fig, axs = plt.subplots(2, 1, figsize=(W, 4.9), sharex=True)
+
+    def cstyle(cname):
+        if "t0" in cname:
+            return INK, ":"
+        col = ORANGE if "H_inf" in cname else BLUE
+        return col, ("-" if "67.4" in cname else "--")
+
+    for ax, k, lab in ((axs[0], "brown", "(a) form B"), (axs[1], "simple", "(b) form S")):
         col = MSTYLE[k][0]
         f_ = b["forms"][k]
-        ax.plot(10 ** tt, np.array(b["profile"][k]) + 1, color=col, label=r"$\Delta(-2\ln L)+1$, universal fit (L1)")
         tb = math.log10(f_["best_native"])
-        ax.axvspan(10 ** (tb - f_["sigma_tot_dex"]), 10 ** (tb + f_["sigma_tot_dex"]), color=col, alpha=0.2, lw=0,
-                   label=rf"best $a_{{\rm acc}}$ $\pm\,\sigma_{{\rm tot}}$ ({f_['sigma_tot_dex']:.2f} dex)")
-        order = sorted(b["candidates"].items(), key=lambda kv: kv[1])
-        lo_grp = [kv for kv in order if kv[1] < 2e-10]
-        hi_grp = [kv for kv in order if kv[1] >= 2e-10]
-        levels = [4e5, 1.2e5, 3.5e4, 1e4, 3e3]
-        for grp, ha in ((lo_grp, "left"), (hi_grp, "right")):
-            for i, (name, val) in enumerate(grp):
-                ls = "-" if "67.4" in name else ("--" if "73" in name else ":")
-                ax.axvline(val, color=MUTED, lw=0.9, ls=ls)
-                lab_ = name.replace(" (H0 = ", " (").replace(" (t0 = 13.8 Gyr)", "")
-                ax.text(val * (1.03 if ha == "left" else 0.97), levels[i], lab_, fontsize=6, color=MUTED, ha=ha, va="center",
-                        bbox=dict(facecolor="white", edgecolor="none", pad=0.5, alpha=0.8))
+        ytop = 1e6                                # lines and band stop below the panel's text
+        ax.fill_between([10 ** (tb - f_["sigma_tot_dex"]), 10 ** (tb + f_["sigma_tot_dex"])], 0.5, ytop, color=col, alpha=0.22, lw=0)
+        for cname, val in b["candidates"].items():
+            c_, ls = cstyle(cname)
+            ax.vlines(val, 0.5, ytop, color=c_, lw=0.9, ls=ls)
+        ax.plot(10 ** tt, np.array(b["profile"][k]) + 1, color=col, lw=1.6)
         le = f_["look_elsewhere"]
-        ax.text(0.02, 0.03, f"{tag}: nearest scale {le['nearest_dex']:.3f} dex away;\n{le['n_within_2sigma_tot']} of 9 within 2$\\sigma$; "
-                f"chance as close: {le['p_as_close_in_2dex_window']:.2f}", transform=ax.transAxes, va="bottom", fontsize=8)
+        tag(ax, f"{lab}: best $a_{{\\rm acc}}$ = {f_['best_native']:.2e} $\\pm$ {f_['sigma_tot_dex']:.2f} dex; nearest scale "
+                f"{le['nearest_dex']:.3f} dex away;\n{le['n_within_2sigma_tot']} of 9 within 2$\\sigma$; chance as close: "
+                f"{le['p_as_close_in_2dex_window']:.2f}")
         ax.set_xscale("log")
         ax.set_yscale("log")
         ax.set_xlim(10 ** tt[0], 10 ** tt[-1])
-        ax.set_ylim(0.5, 1e6)
-        ax.set_xlabel(r"$a_{\rm acc}$ [m s$^{-2}$]  (grey: candidate scales; solid $H_0$=67.4, dashed 73, dotted $c/t_0$)")
-        ax.legend(loc="lower right", frameon=True, framealpha=0.9, edgecolor="none", fontsize=7)
-    axs[0].set_ylabel(r"$-2\ln L - \min + 1$")
-    fig.tight_layout()
+        ax.set_ylim(0.5, 3e7)
+        ax.set_ylabel(r"$-2\ln L-\min+1$")
+    axs[1].set_xlabel(r"$a_{\rm acc}$ [m s$^{-2}$]")
+    handles = [Line2D([], [], color=AQUA, lw=1.6, label="profile, form B"), Line2D([], [], color=YELLOW, lw=1.6, label="profile, form S"),
+               Line2D([], [], color=BLUE, ls="-", label=r"$cH_0$, $cH_0/2\pi$; $H_0$ = 67.4"),
+               Line2D([], [], color=BLUE, ls="--", label=r"same, $H_0$ = 73"),
+               Line2D([], [], color=ORANGE, ls="-", label=r"$cH_\infty$, $cH_\infty/2\pi$; 67.4"),
+               Line2D([], [], color=ORANGE, ls="--", label=r"same, 73"), Line2D([], [], color=INK, ls=":", label=r"$c/t_0$"),
+               plt.Rectangle((0, 0), 1, 1, color=MUTED, alpha=0.25, lw=0, label=r"best $\pm\,\sigma_{\rm tot}$")]
+    fig.legend(handles=handles, loc="lower center", ncol=4, frameon=False, bbox_to_anchor=(0.5, 0.0), columnspacing=1.0)
+    fig.tight_layout(rect=(0, 0.1, 1, 1), h_pad=0.6)
     fig.savefig(FIGURES / "remnant_scales.pdf", metadata=meta)
     plt.close(fig)
 
-    # 3. history
+    # 3. history (3 x 2)
     tests = {(t["quantity"], t["proxy"]): t for t in o["R2"]["tests"]}
     qk = "log a_acc (B, per galaxy)"
     t5, s5 = per["brown"]["t"], per["brown"]["s_tot"]
     lM5 = np.log10(S.Mbar[g5])
-    fig, axs = plt.subplots(2, 3, figsize=(12.0, 7.2), sharey=True)
+    fig, axs = plt.subplots(3, 2, figsize=(W, 7.4), sharey=True)
     panels = [("log M_bar", lM5, r"$\log_{10} M_{\rm bar}$ [M$_\odot$]")] + [(pk, Pp[pk], {
         "Hubble type T": "Hubble type $T$", "gas fraction": r"gas fraction $1.33M_{\rm HI}/M_{\rm bar}$",
         "log SB_eff": r"$\log_{10}$ SB$_{\rm eff}$ [L$_\odot$ pc$^{-2}$]", "log R_disk": r"$\log_{10} R_{\rm disk}$ [kpc]",
-        "log N_orb": r"$\log_{10} N_{\rm orb}=\log_{10}[t_0\,V_{\rm out}/(2\pi R_{\rm out})]$"}[pk]) for pk in Pp]
+        "log N_orb": r"$\log_{10} N_{\rm orb}=\log_{10}[t_0V_{\rm out}/(2\pi R_{\rm out})]$"}[pk]) for pk in Pp]
     for ax, (pk, xv, xl) in zip(axs.ravel(), panels):
-        ax.errorbar(xv, t5, yerr=s5, fmt="o", ms=3, color=INK, ecolor=DATA, elinewidth=0.6, lw=0, zorder=3)
-        ax.axhline(fit["brown"][0], color=AQUA, ls="-.", lw=1.2, label=r"universal $a_{\rm acc}$ (form B)")
+        ax.errorbar(xv, t5, yerr=s5, fmt="o", ms=2.2, color=INK, ecolor=DATA, elinewidth=0.5, lw=0, zorder=3)
+        ax.axhline(fit["brown"][0], color=AQUA, ls="-.", lw=1.2)
         if pk == "log M_bar":
             e = o["R1c"]["brown"]
-            txt = rf"Spearman $\rho$ = {e['spearman_logMbar'][0]:+.2f}, slope {e['slope_vs_logMbar']:+.2f}"
+            txt = f"Spearman $\\rho$ = {e['spearman_logMbar'][0]:+.2f}\nslope {e['slope_vs_logMbar']:+.2f}"
         else:
             t = tests[(qk, pk)]
-            txt = (rf"$\rho$ = {t['rho']:+.2f} [{t['rho_boot_2.5_97.5'][0]:+.2f}, {t['rho_boot_2.5_97.5'][1]:+.2f}], $p_{{\rm Holm}}$ = {t['p_holm']:.2g}"
-                   "\n" rf"null (universal RAR): [{t['null_rar_rho_2.5_97.5'][0]:+.2f}, {t['null_rar_rho_2.5_97.5'][1]:+.2f}]; "
-                   f"predicted sign {'+' if o['R2']['predicted_sign'][pk] > 0 else '-'}")
-        ax.text(0.02, 0.97, txt, transform=ax.transAxes, va="top", fontsize=7)
+            txt = (f"$\\rho$ = {t['rho']:+.2f} [{t['rho_boot_2.5_97.5'][0]:+.2f}, {t['rho_boot_2.5_97.5'][1]:+.2f}], "
+                   f"$p_{{\\rm Holm}}$ = {t['p_holm']:.2g}\nnull: [{t['null_rar_rho_2.5_97.5'][0]:+.2f}, "
+                   f"{t['null_rar_rho_2.5_97.5'][1]:+.2f}]; predicted sign {'+' if o['R2']['predicted_sign'][pk] > 0 else '$-$'}")
+        tag(ax, txt)
         ax.set_xlabel(xl)
-        ax.set_ylim(-12.6, -8.4)
+        ax.set_ylim(-12.7, -7.7)
     for ax in axs[:, 0]:
-        ax.set_ylabel(r"$\log_{10} a_{\rm acc}$ per galaxy, form B [m s$^{-2}$]")
-    axs[0, 0].legend(loc="lower right", frameon=False, fontsize=7)
-    fig.tight_layout()
+        ax.set_ylabel(r"$\log_{10} a_{\rm acc}$, form B [m s$^{-2}$]")
+    fig.tight_layout(h_pad=0.8, w_pad=0.8)
     fig.savefig(FIGURES / "remnant_history.pdf", metadata=meta)
     plt.close(fig)
 
-    # 4. halos and the joint fit
+    # 4. halos and the joint fit (2 x 1)
     pg = o["R3"]["per_galaxy"]
     n = np.array([p["n"] for p in pg])
     bic = {k: np.array([p[f"m2lnL_{k}"] for p in pg]) + kk * np.log(n) for k, kk in
            (("rar", 0), ("brown", 0), ("simple", 0), ("nfw_cm", 2), ("nfw_shmr", 2), ("burkert", 2))}
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.0, 4.4))
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(W, 5.8))
     edges = np.arange(-80, 81, 5)
-    for k, col, lab in (("nfw_cm", BLUE, "NFW + c-M prior"), ("nfw_shmr", ORANGE, "NFW + c-M + stellar-to-halo prior"),
+    for k, col, lab in (("nfw_cm", BLUE, "NFW + concentration prior"), ("nfw_shmr", ORANGE, "NFW, cosmological"),
                         ("burkert", AQUA, "Burkert"), ("simple", YELLOW, r"form S, universal $a_{\rm acc}$")):
         d = np.clip(bic[k] - bic["rar"], -79.9, 79.9)
-        ax1.hist(d, bins=edges, histtype="step", color=col, lw=1.6, label=f"{lab}: better in {int(np.sum(d < 0))} of {len(d)}")
-    ax1.axvline(0, color=MUTED, lw=0.8)
-    ax1.set_xlabel(r"per-galaxy $\Delta$BIC against the universal RAR (clipped at $\pm$80)")
+        ax1.hist(d, bins=edges, histtype="step", color=col, lw=1.4, label=f"{lab}: better in {int(np.sum(d < 0))} of {len(d)}")
+    ax1.axvline(0, color=MUTED, lw=0.7)
+    ax1.set_xlabel(r"per-galaxy $\Delta$BIC against the universal RAR (clipped at $\pm80$)")
     ax1.set_ylabel("galaxies")
-    ax1.legend(loc="upper left", frameon=False, fontsize=7)
-    ax1.text(0.98, 0.97, "(a)", transform=ax1.transAxes, va="top", ha="right", fontsize=8, color=MUTED)
+    ax1.legend(loc="upper left", frameon=False)
+    tag(ax1, "(a)", x=0.985, ha="right", color=MUTED)
     F = o["R4"]["fits"]
     hname = {"nfw_cm": "NFW", "nfw_shmr": "NFW, cosmological", "burkert": "Burkert"}
     for hk, col in (("nfw_cm", BLUE), ("nfw_shmr", ORANGE), ("burkert", AQUA)):
@@ -1828,60 +1841,60 @@ def figures(S, o, fit, per, Q, Pp, g5, null, PRO, TA, a_r1, B0, okb):
             cur = np.array(F[f"{hk}+{sk}"]["dm2lnL_curve"])
             ax2.plot(10 ** TA, cur, color=col, ls=ls,
                      label=f"{hname[hk]} + " + (r"$\sqrt{g_{\rm bar}A}$" if sk == "sqrt" else "constant $A$"))
-    ax2.axhline(2.71, color=INK, lw=0.8, ls=":")
-    ax2.text(3e-10, 3.3, "95%\n(one-sided)", fontsize=7, color=INK, ha="right", va="bottom")
+    ax2.axhline(2.71, color=INK, lw=0.7, ls=":")
+    ax2.text(1.3e-16, 3.3, "95% (one-sided)", fontsize=FS, color=INK, ha="left", va="bottom")
     for sk, ls in (("sqrt", "-"), ("const", "--")):
-        ax2.axvline(a_r1[sk], color=MUTED, ls=ls, lw=1.0)
-    ax2.text(a_r1["sqrt"] * 1.1, 0.15, "form B alone", fontsize=7, color=MUTED, rotation=90, va="bottom")
-    ax2.text(a_r1["const"] * 0.9, 0.15, "constant alone", fontsize=7, color=MUTED, rotation=90, va="bottom", ha="right")
+        ax2.axvline(a_r1[sk], color=MUTED, ls=ls, lw=0.9)
+    ax2.text(a_r1["sqrt"] * 1.15, 0.12, "form B alone", fontsize=FS, color=MUTED, rotation=90, va="bottom")
+    ax2.text(a_r1["const"] * 0.87, 0.12, "constant alone", fontsize=FS, color=MUTED, rotation=90, va="bottom", ha="right")
     ax2.set_xscale("log")
     ax2.set_yscale("symlog", linthresh=1.0)
-    ax2.set_ylim(0, 3e4)
+    ax2.set_ylim(0, 3e5)
     ax2.set_xlim(10 ** TA[0], 10 ** TA[-1])
     ax2.set_xlabel(r"amplitude $A$ of the universal term [m s$^{-2}$]")
-    ax2.set_ylabel(r"$\Delta(-2\ln L)$ against the best, summed over galaxies")
-    ax2.legend(loc="upper left", frameon=False, fontsize=7)
-    ax2.text(0.62, 0.97, "(b) halos refitted at every A", transform=ax2.transAxes, ha="center", va="top", fontsize=8, color=MUTED)
-    fig.tight_layout()
+    ax2.set_ylabel(r"$\Delta(-2\ln L)$, summed")
+    ax2.legend(loc="upper left", frameon=False, ncol=3, columnspacing=1.0)
+    tag(ax2, "(b)", x=0.985, y=0.03, ha="right", va="bottom", color=MUTED)
+    fig.tight_layout(h_pad=0.8)
     fig.savefig(FIGURES / "remnant_halos.pdf", metadata=meta)
     plt.close(fig)
 
-    # 5. redshift
+    # 5. redshift (2 x 1)
     z5 = o["R5"]
     zz = np.linspace(0, 3, 301)
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.0, 4.4))
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(W, 5.6), sharex=True)
     gd0 = 10 ** fit["rar"][0]
     for (lw_, f), col in zip(LAWS.items(), (BLUE, ORANGE, AQUA, YELLOW)):
         r = np.array([f(z) for z in zz])
         ax1.plot(zz, r, color=col, label=lw_)
-        ax2.plot(zz, -np.log10(r), color=col, label=f"{lw_}, deep regime")
+        ax2.plot(zz, -np.log10(r), color=col)
         zc = zz[::10]
-        ax2.plot(zc, [db_regime(f(z), 3.0, gd0) for z in zc], color=col, ls="--", lw=1.1)
+        ax2.plot(zc, [db_regime(f(z), 3.0, gd0) for z in zc], color=col, ls="--", lw=1.0)
     md = z5["musedark_ratio_vs_local"]
     ax1.errorbar([1.0], [md], yerr=[[z5["musedark_ratio_vs_local_err"]], [z5["musedark_ratio_vs_local_err"]]],
-                 xerr=[[1.0 - MUSEDARK["z_lo"]], [MUSEDARK["z_hi"] - 1.0]], fmt="s", ms=6, color=INK, capsize=0,
-                 label="MUSE-DARK III, $a_0(z\\approx1)$ / local 1.2e-10")
-    ax1.plot([1.0], [z5["musedark_ratio_own_fit"]], "s", ms=6, mfc="none", mec=INK, label="MUSE-DARK III, own fit $a_0(z)=1.0+1.59z$")
-    ax1.plot([2.0], [4.0], "x", ms=9, mew=2, color=INK, label="~4 $a_0$ at z ~ 2: 'all but excluded' (Milgrom 2017)")
+                 xerr=[[1.0 - MUSEDARK["z_lo"]], [MUSEDARK["z_hi"] - 1.0]], fmt="s", ms=4.5, color=INK, capsize=0, elinewidth=0.9,
+                 label="MUSE-DARK III, against local 1.2e-10")
+    ax1.plot([1.0], [z5["musedark_ratio_own_fit"]], "s", ms=4.5, mfc="none", mec=INK, label=r"MUSE-DARK III, own fit $1.0+1.59z$")
+    ax1.plot([2.0], [4.0], "x", ms=7, mew=1.6, color=INK, label=r"$\sim4a_0$ at $z\sim2$: all but excluded (Milgrom 2017)")
     ax1.set_yscale("log")
-    ax1.set_ylim(0.1, 10)
+    ax1.set_ylim(0.06, 40)
     ax1.yaxis.set_major_formatter(lambda v, _pos: f"{v:g}")
     ax1.yaxis.set_minor_formatter(lambda v, _pos: "")
-    ax1.set_xlabel("redshift z")
     ax1.set_ylabel(r"$a_{\rm acc}(z)/a_{\rm acc}(0)$")
-    ax1.legend(loc="lower left", frameon=True, framealpha=0.9, edgecolor="none", fontsize=7)
-    ax1.text(0.98, 0.03, "(a)", transform=ax1.transAxes, ha="right", fontsize=8, color=MUTED)
-    ax2.errorbar(UBLER17["z"], UBLER17["db"], yerr=UBLER17["db_err"], fmt="o", ms=6, color=INK, capsize=0,
-                 label="Ubler et al. 2017 (bTFR, pressure-corrected; stat. errors)")
-    ax2.plot(UBLER17["z"], UBLER17["db_no_pressure"], "o", ms=6, mfc="none", mec=INK, label="same, without pressure correction")
-    ax2.axhline(0, color=MUTED, lw=0.8)
-    ax2.plot([], [], color=MUTED, ls="--", lw=1.1, label=r"dashed: at $g_{\rm obs}=3g_\dagger$ (RAR shape)")
-    ax2.set_xlabel("redshift z")
-    ax2.set_ylabel(r"$\Delta\log M_{\rm bar}$ at fixed rotation speed [dex]")
-    ax2.legend(loc="lower left", frameon=True, framealpha=0.9, edgecolor="none", fontsize=7, ncol=2)
-    ax2.set_ylim(-1.45, 0.85)
-    ax2.text(0.98, 0.97, "(b)", transform=ax2.transAxes, ha="right", va="top", fontsize=8, color=MUTED)
-    fig.tight_layout()
+    ax1.legend(loc="upper left", frameon=False, ncol=2, columnspacing=1.0)
+    tag(ax1, "(a)", x=0.985, y=0.03, ha="right", va="bottom", color=MUTED)
+    ax2.errorbar(UBLER17["z"], UBLER17["db"], yerr=UBLER17["db_err"], fmt="o", ms=4.5, color=INK, capsize=0, elinewidth=0.9,
+                 label="Ubler et al. 2017, pressure-corrected (stat. errors)")
+    ax2.plot(UBLER17["z"], UBLER17["db_no_pressure"], "o", ms=4.5, mfc="none", mec=INK, label="same, uncorrected")
+    ax2.axhline(0, color=MUTED, lw=0.7)
+    ax2.plot([], [], color=MUTED, ls="-", label="deep regime")
+    ax2.plot([], [], color=MUTED, ls="--", lw=1.0, label=r"at $g_{\rm obs}=3g_\dagger$ (RAR shape)")
+    ax2.set_xlabel("redshift $z$")
+    ax2.set_ylabel(r"$\Delta\log M_{\rm bar}$ at fixed $V$ [dex]")
+    ax2.legend(loc="lower left", frameon=True, framealpha=0.9, edgecolor="none", ncol=2, columnspacing=1.0)
+    ax2.set_ylim(-1.25, 0.85)
+    tag(ax2, "(b)", x=0.985, ha="right", color=MUTED)
+    fig.tight_layout(h_pad=0.6)
     fig.savefig(FIGURES / "remnant_redshift.pdf", metadata=meta)
     plt.close(fig)
 
