@@ -14,8 +14,8 @@ the trade-off of Section~\ref{sec:cq} holds exactly, with its equality case bein
 
 \paragraph{Masses on a line.} We take $N$ masses $m$ on a line with spacing $d$. Each mass is a two-level system with branch
 $s_i\in\{0,1\}$ and position $x_i=i\,d+(s_i-\tfrac12)\Delta x$, so $\delta=\Delta x/d<1$. Phases are measured in units of
-$\omega_0=Gm^2/(\hbar d)$, and $\tau=\omega_0t$. A coherent Newtonian field gives the branch configuration $s=(s_1,\dots,s_N)$ the phase
-$\tau\,\Omega(s)$, with $\Omega(s)=\sum_{i<j}d/|x_i(s_i)-x_j(s_j)|$. From the product state $\ket{+}^{\otimes N}$ the state is
+$\omega_0=Gm^2/(\hbar d)$, and $\tau=\omega_0t$. A coherent Newtonian field gives the branch configuration $s$ the phase $\tau\,\Omega(s)$,
+with $\Omega(s)=\sum_{i<j}d/|x_i(s_i)-x_j(s_j)|$. From $\ket{+}^{\otimes N}$ the state is
 \begin{equation}\label{eq:gs-psi}
 \ket{\Psi(\tau)}=2^{-N/2}\sum_{s\in\{0,1\}^N}e^{i\tau\Omega(s)}\ket{s}.
 \end{equation}
@@ -27,28 +27,27 @@ g(n)=\frac1{n-\delta}+\frac1{n+\delta}-\frac2n=\frac{2\delta^2}{n(n^2-\delta^2)}
 The local fields $h_i$ collect $1/(n-\delta)-1/n$ from every partner on the right and $1/(n+\delta)-1/n$ from every partner on the left. A
 direct sum over all 256 branches at $N=8$ agrees with~\eqref{eq:gs-ising} to $10^{-14}$ \chk{gravsim:G1}. The nearest-neighbour coupling
 $g(1)=2\delta^2/(1-\delta^2)$ is the entangling rate of an isolated pair, the BMV rate of Section~\ref{sec:bmv}. The couplings fall as
-$g(n)\approx2\delta^2/n^3$. Measuring every mass in the $X$ basis after the diagonal phases implements the circuit
-$H^{\otimes N}e^{i\tau\Omega}H^{\otimes N}$ on $\ket0^{\otimes N}$, an IQP (instantaneous quantum polynomial-time) circuit in the sense of
-Bremner, Jozsa and Shepherd~\cite{bremner2011}.
+$g(n)\approx2\delta^2/n^3$. Measuring every mass in the $X$ basis after the diagonal phases implements $H^{\otimes N}e^{i\tau\Omega}H^{\otimes N}$
+on $\ket0^{\otimes N}$, an IQP (instantaneous quantum polynomial-time) circuit~\cite{bremner2011}.
 
-\paragraph{The recorded frame.} The frame of Proposition~\ref{pr:ktm} is modelled as follows \tagH:
-\begin{itemize}[nosep]
-\item Each mass $j$ is measured continuously in its branch basis. This contributes the Lindblad term $\kappa(Z_j\rho Z_j-\rho)$ with
-$Z_j=1-2s_j$, which decays the mass's coherence at the rate $2\kappa$.
-\item The measurement leaves the record $\dd Y_j=2\sqrt\kappa\,\langle Z_j\rangle\,\dd t+\dd W_j$, with independent Wiener increments
-$\dd W_j$.
-\item The frame turns each record into a position estimate, $\hat s_j\,\dd t=\tfrac12(\dd t-\dd Y_j/2\sqrt\kappa)$.
-\item It acts on mass $j$ with the classical Newtonian field of the others' estimates: the phase of branch $s_j=1$ relative to $s_j=0$
-advances at $h_j+\sum_iJ_{ij}\hat s_i$ (in units of $\omega_0$).
-\end{itemize}
-Nothing else couples the masses. Bridge~B sets $2\kappa=\lambda=Gm^2/(\hbar R)=(d/R)\,\omega_0$. The record noise is the only noise the frame
-adds, which is the balance rule~\eqref{eq:saturate}; Section~\ref{ss:gs-cq} shows that this is exactly the equality case of the trade-off.
+\paragraph{The instance.} We use the proposal of Bose et al.~\cite{bose} throughout: $m=10^{-14}$\,kg, $\Delta x=250\,\mu$m and
+$d=450\,\mu$m, so $\delta=5/9$, with a uniform diamond sphere of radius $R=0.879\,\mu$m. Then $\omega_0=0.1406$\,rad/s, and the pair
+entangling rate is $g(1)\,\omega_0=0.1256$\,rad/s. An isolated pair acquires the phase $\pi$ at $\tau_\pi=\pi/g(1)=3.52$ ($t=25.0$\,s). The
+Bridge-B rate is $\lambda=Gm^2/(\hbar R)=71.97$\,s$^{-1}$, so $\lambda/\omega_0=d/R=511.7$ \chk{gravsim:G1}.
 
-We sample the records exactly. Each mass's branch is drawn with its Born probability, then $Y_j(t)=2\sqrt\kappa\,z_jt+W_j(t)$, where $z_j=\pm1$
-is the drawn branch. The conditional state of mass $j$ is a function of $Y_j$ alone, and the frame's phases are linear in the $W_i$. This
-representation is standard for a measured observable that commutes with the dynamics. We also check it against a direct Euler integration
-of the joint stochastic Schr\"odinger equation (below). A time step costs three $N\times N$ matrix products: one for the phases and one for each
-branch-dependent force. The cost per step is therefore $O(N^2)$.
+\paragraph{The recorded frame.} The frame of Proposition~\ref{pr:ktm} is modelled as follows \tagH. Each mass $j$ is measured continuously in
+its branch basis, contributing the Lindblad term $\kappa(Z_j\rho Z_j-\rho)$ with $Z_j=1-2s_j$; this decays its coherence at $2\kappa$. The
+measurement leaves the record $\dd Y_j=2\sqrt\kappa\,\langle Z_j\rangle\,\dd t+\dd W_j$, with independent Wiener increments $\dd W_j$. The
+frame turns each record into a position estimate, $\hat s_j\,\dd t=\tfrac12(\dd t-\dd Y_j/2\sqrt\kappa)$, and acts on mass $j$ with the
+classical Newtonian field of the others' estimates: the phase of branch $s_j=1$ relative to $s_j=0$ advances at $h_j+\sum_iJ_{ij}\hat s_i$.
+Nothing else couples the masses. Bridge~B sets $2\kappa=\lambda=(d/R)\,\omega_0$. The record noise is the only noise the frame adds, which is
+the balance rule~\eqref{eq:saturate}; Section~\ref{ss:gs-cq} shows that this is exactly the equality case of the trade-off.
+
+We sample the records exactly. Each mass's branch is drawn with its Born probability, and then $Y_j(t)=2\sqrt\kappa\,z_jt+W_j(t)$, where
+$z_j=\pm1$ is the drawn branch. The conditional state of mass $j$ is a function of $Y_j$ alone, and the frame's phases are linear in the
+$W_i$. This representation is standard for a measured observable that commutes with the dynamics, and we also check it against an Euler
+integration of the joint stochastic Schr\"odinger equation. A time step costs three $N\times N$ matrix products, one for the phases and one
+for each branch-dependent force, so the cost is $O(N^2)$ per step.
 
 \paragraph{The averaged frame.} Averaged over records, measurement with Markovian feedback obeys the Wiseman--Milburn master
 equation~\cite{wiseman1993}. Here every operator is diagonal in the branch basis, so it integrates in closed form:
@@ -56,54 +55,29 @@ equation~\cite{wiseman1993}. Here every operator is diagonal in the branch basis
 \rho_{ss'}(\tau)=\rho_{ss'}(0)\exp\Bigl\{\tau\Bigl[i\bigl(\Omega(s)-\Omega(s')\bigr)-\kappa\sum_k(1-z_kz'_k)\\
 -\tfrac12\sum_i\bigl(F_i(s)-F_i(s')\bigr)^2\Bigr]\Bigr\},
 \end{multline}
-with $F_i(s)=(4\sqrt\kappa)^{-1}\sum_jJ_{ij}s_j$. The three terms in the exponent are:
-\begin{enumerate}[nosep]
-\item the coherent field's commutator $-i[H_Q,\rho]$, which the frame reproduces exactly on average;
-\item the measurement dephasing, at the rate $2\kappa$ per mass;
-\item the record noise fed back as force noise, which dephases the masses that share a record in a correlated way.
-\end{enumerate}
-Mass $j$ loses coherence at the rate $\Gamma_j=2\kappa+\sum_iJ_{ij}^2/(32\kappa)\ge\frac12(\sum_iJ_{ij}^2)^{1/2}$, with equality at
-$\kappa=(\sum_iJ_{ij}^2)^{1/2}/8$. For a single partner the minimum is $\omega/2$, half the entangling rate. This is the qubit form of the
-Kafri--Taylor--Milburn minimum~\cite{ktm} (Section~\ref{ss:gs-ktm} and Section~\ref{sec:bmv}).
-
-\paragraph{The instance.} Table~\ref{tab:gs-instance} gives the parameters of the Bose et al.\ proposal~\cite{bose}, which we use
-throughout. All other quantities in this section are dimensionless or follow from these.
-
-\begin{table}[ht]\centering\small
-\caption{The physical instance, the geometry of Bose et al.~\cite{bose} with a uniform diamond sphere of density 3510\,kg/m$^3$
-\chk{gravsim:G1}. In this section the phase unit is $\omega_0$ and the decoherence rate is $\lambda$ of Bridge~B.}\label{tab:gs-instance}
-\begin{tabular}{@{}lll@{}}\toprule
-quantity & symbol & value\\\midrule
-mass, split, spacing & $m,\ \Delta x,\ d$ & $10^{-14}$\,kg, $250\,\mu$m, $450\,\mu$m ($\delta=5/9$)\\
-radius & $R$ & $0.879\,\mu$m\\
-phase unit & $\omega_0=Gm^2/(\hbar d)$ & 0.1406\,rad/s\\
-pair entangling rate & $g(1)\,\omega_0$ & 0.1256\,rad/s\\
-Bridge-B decoherence rate & $\lambda=Gm^2/(\hbar R)$ & 71.97\,s$^{-1}$ ($\lambda/\omega_0=d/R=511.7$)\\
-phase $\pi$ on an isolated pair & $\tau_\pi=\pi/g(1)$ & 3.52 ($t=25.0$\,s)\\\bottomrule
-\end{tabular}
-\end{table}
+with $F_i(s)=(4\sqrt\kappa)^{-1}\sum_jJ_{ij}s_j$. The first term is the coherent field's commutator $-i[H_Q,\rho]$, which the frame
+reproduces exactly on average. The second is the measurement dephasing. The third is the record noise fed back as force noise, which
+dephases masses that share a record in a correlated way. Mass $j$ loses coherence at $\Gamma_j=2\kappa+\sum_iJ_{ij}^2/(32\kappa)$, which is
+at least $\frac12(\sum_iJ_{ij}^2)^{1/2}$, with equality at $\kappa=(\sum_iJ_{ij}^2)^{1/2}/8$. For a single partner the minimum is $\omega/2$,
+half the entangling rate. This is the qubit form of the Kafri--Taylor--Milburn minimum~\cite{ktm} (Section~\ref{ss:gs-ktm} and
+Section~\ref{sec:bmv}).
 
 \subsection{Many masses: what each picture produces}\label{ss:gs-many}
 
-\paragraph{The coherent field builds volume-law entanglement, slowly.} We build the state~\eqref{eq:gs-psi} exactly for $N=8$ to 24. The
-largest case is a statevector of $2^{24}$ amplitudes, 256\,MB in double precision. Let $S$ be the entropy, in bits, of the reduced state of
-the first $N/2$ masses. Its value for a random pure state is Page's mean~\cite{page1993},
-$S_{\rm Page}=[\psi(D^2+1)-\psi(D+1)-(D-1)/2D]/\ln2$ with $D=2^{N/2}$ and $\psi$ the digamma function. Table~\ref{tab:gs-entropy} shows how
-$S$ grows \chk{gravsim:G1}.
-\begin{itemize}[nosep]
-\item At $\tau_\pi$ (25\,s) the cut carries exactly one ebit: 1.009 at both $N=20$ and $N=24$. This is the bond across the cut, which is
-maximally entangling at that time.
-\item $S$ then grows as more and longer couplings wind past $2\pi$. Over twelve times with $\tau=10^4$ to $10^7$ it averages 9.282 at
-$N=20$, against Page's 9.279.
-\item At $N=24$ and $\tau=10^5$ it is 11.270, against Page's 11.279.
-\end{itemize}
-Because the couplings fall as $1/n^3$, the state stays close to an area law at the times a laboratory can reach ($t\lesssim100$\,s,
+\paragraph{The coherent field builds volume-law entanglement, slowly.} We build~\eqref{eq:gs-psi} exactly for $N=8$ to 24; the largest case
+is a statevector of $2^{24}$ amplitudes, 256\,MB in double precision. Let $S$ be the entropy, in bits, of the reduced state of the first $N/2$
+masses. Its value for a random pure state is Page's mean~\cite{page1993}, $S_{\rm Page}=[\psi(D^2+1)-\psi(D+1)-(D-1)/2D]/\ln2$, with
+$D=2^{N/2}$ and $\psi$ the digamma function. Table~\ref{tab:gs-entropy} shows how $S$ grows \chk{gravsim:G1}. At $\tau_\pi$ the cut carries exactly one ebit (1.009 at both
+$N=20$ and 24): the bond across the cut, maximally entangling at that time. $S$ then grows as longer couplings wind past $2\pi$; over twelve
+times with $\tau=10^4$ to $10^7$ it averages 9.282 at $N=20$ (Page: 9.279), and at $N=24$, $\tau=10^5$ it is 11.270 (Page: 11.279). Because
+the couplings fall as $1/n^3$, the state stays close to an area law at the times a laboratory can reach ($t\lesssim100$\,s,
 $\tau\lesssim14$). It reaches Page entanglement only after hours.
 
 \begin{table}[ht]\centering\small
 \caption{Half-chain entropy (bits) of the coherent-field state~\eqref{eq:gs-psi}, $N=20$, against the dimensionless time $\tau=\omega_0t$
 and the physical time of the instance \chk{gravsim:G1}. The last column is the mean over twelve times between $\tau=10^4$ and $10^7$; the
 individual values lie between 9.0 and 9.4. Page's value is 9.279 bits.}\label{tab:gs-entropy}
+\setlength{\tabcolsep}{5pt}
 \begin{tabular}{@{}lccccccc@{}}\toprule
 $\tau$ & 0.58 & 3.52 ($\tau_\pi$) & 46 & 268 & 1550 & 8960 & $10^4$--$10^7$\\
 $t$ & 4\,s & 25\,s & 5.5\,min & 32\,min & 3.1\,h & 18\,h & 20\,h--2.3\,yr\\\midrule
@@ -116,55 +90,53 @@ masses factorises:
 \begin{equation}\label{eq:gs-pair}
 \rho_{ij}\bigl[(a,b),(a',b')\bigr]=\tfrac14\,e^{i\tau[e(a,b)-e(a',b')]}\prod_{k\ne i,j}\frac{1+e^{i\tau[J_{ik}(a-a')+J_{jk}(b-b')]}}{2},
 \end{equation}
-with $e(a,b)=h_ia+h_jb+J_{ij}ab$. At $N=16$, 20 and 24 this agrees with partial traces of the statevector to $2.3\times10^{-14}$. It needs no statevector, so it runs at
-$N=4000$: all 3999 neighbouring pairs take about one second \chk{gravsim:G1}. We measure entanglement by the negativity
-$\mathcal N$~\cite{vw}, the sum of the negative eigenvalues of the partial transpose~\cite{peres1996,horodecki1996}, taken with a positive
-sign. The results, at $N=4000$ unless stated:
+with $e(a,b)=h_ia+h_jb+J_{ij}ab$. At $N=16$, 20 and 24 this agrees with partial traces of the statevector to $2.3\times10^{-14}$, and it
+runs at $N=4000$: all 3999 neighbouring pairs take about one second \chk{gravsim:G1}. We measure entanglement by the negativity
+$\mathcal N$~\cite{vw}, the magnitude of the sum of the negative eigenvalues of the partial transpose~\cite{peres1996,horodecki1996}. The
+results at $N=4000$ are these.
 \begin{itemize}[nosep]
-\item Bulk neighbours reach $\mathcal N=0.153$ at $\tau=1.27$ (9\,s).
-\item At $\tau=1.3$ every one of the 3999 neighbouring pairs is entangled. The minimum is 0.1528; the end pair has 0.212.
-\item A bulk pair is first separable at $\tau=2.67$ (19\,s). It is separable at $\tau_\pi$, where an isolated pair would have $\mathcal N=1/2$.
+\item Bulk neighbours reach $\mathcal N=0.153$ at $\tau=1.27$ (9\,s). At $\tau=1.3$ every one of the 3999 neighbouring pairs is entangled;
+the minimum is 0.1528 and the end pair has 0.212.
+\item A bulk pair is first separable at $\tau=2.67$ (19\,s), and it is separable at $\tau_\pi$, where an isolated pair would have
+$\mathcal N=1/2$.
 \item No scanned pair is entangled beyond $\tau\approx19.5$ (2.3\,min; scan to $\tau=300$), while an isolated pair keeps oscillating up to
 $\frac12|\sin(g(1)\tau/2)|=0.499$.
-\item At $N=16$ the number of entangled pairs is 15 of 120 at $\tau=1.3$, none at $\tau_\pi$, two (the end pairs) at $\tau=10$, and none at
-$\tau=10^3$.
 \end{itemize}
+At $N=16$ the entangled pairs number 15 of 120 at $\tau=1.3$, none at $\tau_\pi$, two (the end pairs) at $\tau=10$, and none at $\tau=10^3$.
 Each mass is entangled with both of its neighbours, and entanglement is monogamous, so the coherent field's entanglement becomes
-multipartite. At scale, pairwise negativity is the wrong witness and the half-chain entropy is the right one.
+multipartite. At scale, pairwise negativity is the wrong witness; the half-chain entropy is the right one.
 
-\paragraph{Porter--Thomas statistics emerge with $N$.} Let $p(x)$ be the distribution of the $X$-basis outcomes $x\in\{0,1\}^N$. We use
-two moments: the collision probability $Z=2^N\sum_xp(x)^2$ and the third moment $M_3=2^{2N}\sum_xp(x)^3$. For the exponential
-(Porter--Thomas~\cite{porter1956}) distribution of $2^Np$ they are $Z=2$ and $M_3=6$. Anticoncentration ($Z=O(1)$) is the regime in which
-classical sampling of IQP circuits is argued to be hard~\cite{bremner2011,bremner2016}.
-\begin{itemize}[nosep]
-\item As a reference, IQP circuits with independent uniform angles give $\mathbb E[Z]=2-2^{-N}$ exactly. The phase average forces
-$\{s_1,s_3\}=\{s_2,s_4\}$ bit by bit in the fourth moment, a quadratic term forbids mixing the two pairings, and $2\cdot4^N-2^N$ quadruples
+\paragraph{Porter--Thomas statistics emerge with $N$.} Let $p(x)$ be the distribution of the $X$-basis outcomes. We use two moments: the
+collision probability $Z=2^N\sum_xp(x)^2$ and the third moment $M_3=2^{2N}\sum_xp(x)^3$. For the exponential (Porter--Thomas~\cite{porter1956})
+distribution of $2^Np$ they are $Z=2$ and $M_3=6$. Anticoncentration ($Z=O(1)$) is the regime in which classical sampling of IQP circuits is
+argued to be hard~\cite{bremner2011,bremner2016}.
+
+As a reference, IQP circuits with independent uniform angles give $\mathbb E[Z]=2-2^{-N}$ exactly. The proof: in the fourth moment the
+phase average forces $\{s_1,s_3\}=\{s_2,s_4\}$ bit by bit, a quadratic term forbids mixing the two pairings, and $2\cdot4^N-2^N$ quadruples
 remain. Sixty random instances give $2.036\pm0.018$ at $N=10$ and $1.9953\pm0.0033$ at $N=14$ (1$\sigma$) \chk{gravsim:G1}.
-\item For the gravitational circuit, $Z=2^N$ at $t=0$ and $Z=1.38$ to $1.41$ at $\tau_\pi$ for every $N$, flatter than Porter--Thomas. The
-near-cluster state at $\tau_\pi$ has almost uniform $X$ outcomes.
-\item At $\tau=10$ (71\,s), $Z=1.74$, 2.10, 2.78, 3.78 and 5.16 for $N=8$, 12, 16, 20 and 24. $Z$ grows with $N$, so the output is not
-anticoncentrated.
-\item From $\tau\approx10^3$ (2\,h), Porter--Thomas statistics emerge. Over twelve times with $\tau=10^4$ to $10^7$ (three at $N=24$),
-$|Z-2|=0.113$, 0.069, 0.012 and 0.002 and $|M_3-6|=1.35$, 0.79, 0.11 and 0.02 for $N=12$, 16, 20 and 24.
-\end{itemize}
 
-\paragraph{The recorded frame at $N=4000$.} We run 4000 masses, 16 trajectories and 200 steps up to $t=4/\lambda$ (55.6\,ms) with the
-Bridge-B rate \chk{gravsim:G1}. The time loop takes 8.2\,s on one core, 2.6\,ms per trajectory-step. Building the matrices takes another
-1.0\,s, and they occupy 384\,MB.
+For the gravitational circuit $Z=2^N$ at $t=0$, and $Z=1.38$ to 1.41 at $\tau_\pi$ for every $N$, flatter than Porter--Thomas (the
+near-cluster state has almost uniform $X$ outcomes). At $\tau=10$ (71\,s), $Z=1.74$, 2.10, 2.78, 3.78 and 5.16 for $N=8$, 12, 16, 20 and 24:
+$Z$ grows with $N$, and the output is not anticoncentrated. From $\tau\approx10^3$ (2\,h) Porter--Thomas statistics emerge. Over twelve times
+with $\tau=10^4$ to $10^7$ (three at $N=24$), $|Z-2|=0.113$, 0.069, 0.012 and 0.002 and $|M_3-6|=1.35$, 0.79, 0.11 and 0.02 for $N=12$, 16,
+20 and 24.
+
+\paragraph{The recorded frame at $N=4000$.} We run 4000 masses, 16 trajectories and 200 steps up to $t=4/\lambda$ (55.6\,ms) at the Bridge-B
+rate \chk{gravsim:G1}. The time loop takes 8.2\,s on one core (2.6\,ms per trajectory-step); building the matrices takes 1.0\,s, and they
+occupy 384\,MB.
 \begin{itemize}[nosep]
 \item \emph{Entanglement is exactly zero.} Each trajectory is a product state by construction. A direct Euler integration of the joint
-stochastic Schr\"odinger equation for $N=4$ confirms this without the product ansatz: the largest second Schmidt coefficient over all cuts
-is $1.8\times10^{-15}$.
-\item \emph{Coherence decays as $e^{-\lambda t}$.} The mean $|\rho_{01}|$ over 64\,000 mass-trajectories equals $\tfrac12e^{-\lambda t}$
-within five standard errors at $t=1$, 2 and $3/\lambda$. The fitted rate is $0.997\lambda$. The complex mean also matches the closed form
+stochastic Schr\"odinger equation for $N=4$ confirms it without the product ansatz: the largest second Schmidt coefficient is
+$1.8\times10^{-15}$.
+\item \emph{Coherence decays as $e^{-\lambda t}$.} The mean $|\rho_{01}|$ over 64\,000 mass-trajectories equals $\tfrac12e^{-\lambda t}$ within
+five standard errors at $t=1$, 2 and $3/\lambda$; the fitted rate is $0.997\lambda$. The complex mean matches the closed form
 $\tfrac12e^{-\lambda t}e^{-ih_jt}\prod_i(1+e^{-iJ_{ij}t})/2\cdot e^{-\sum_iJ_{ij}^2t/32\kappa}$. Record noise adds
-$\sum_iJ_{ij}^2/(32\kappa)=3.8\times10^{-7}\lambda$ to the rate.
+$\sum_iJ_{ij}^2/(32\kappa)=3.8\times10^{-7}\lambda$.
 \item \emph{The mean force is Newton's.} At the mean records the frame's force equals a direct double sum over masses and branches of
-$Gm^2\,\mathrm{sgn}(x_i-x_j)/(x_i-x_j)^2$. The agreement is $10^{-13}$ of the pair-force scale, and Newton's third law holds to
-$1.9\times10^{-14}$. With the record noise included, the impulse averaged over trajectories equals $T$ times the Newtonian force for all
-4000 masses: the mean squared Student $t$ over masses is 1.09, against 1.15 expected for 15 degrees of freedom. For the end mass the ratio
-is $1.13\pm0.17$.
-\item \emph{Momentum is conserved only on average.} Per trajectory, the total impulse scatters with standard deviation 0.40, compared with
+$Gm^2\,\mathrm{sgn}(x_i-x_j)/(x_i-x_j)^2$, to $10^{-13}$ of the pair-force scale; Newton's third law holds to $1.9\times10^{-14}$. With the
+record noise, the trajectory-averaged impulse equals $T$ times the Newtonian force for all 4000 masses: the mean squared Student $t$ is 1.09,
+against 1.15 expected for 15 degrees of freedom. For the end mass the ratio is $1.13\pm0.17$.
+\item \emph{Momentum is conserved only on average.} Per trajectory, the total impulse scatters with standard deviation 0.40, against
 $T\sum_j|F_j|=0.15$. This is the frame's diffusion, the $D_2$ of Section~\ref{sec:cq}.
 \item \emph{The output is a product distribution.} Per trajectory $p(x)=\prod_jp_j(x_j)$, so
 $Z=\prod_j2(p_{j,0}^2+p_{j,1}^2)=\prod_j(1+\langle\sigma_x\rangle_j^2)$; enumeration at $N=10$ confirms this. The mean $\log_2Z$ falls from
@@ -172,31 +144,18 @@ $Z=\prod_j2(p_{j,0}^2+p_{j,1}^2)=\prod_j(1+\langle\sigma_x\rangle_j^2)$; enumera
 appear.
 \end{itemize}
 
-\paragraph{The averaged frame never entangles.} Product trajectories make the mixture separable. Equation~\eqref{eq:gs-me} lets us test this
-independently, at every measurement strength. For $N=4$ and 6 we take 13 strengths, $\kappa/\kappa_{\rm opt}=10^{-3}$ to $10^3$, and 25
-times $\tau=10^{-2}$ to 50. The largest negative eigenvalue of the partial transpose over all bipartitions (7 and 31 cuts) and all pairs is
-exactly 0. The coherent field gives $-0.5$ for the same masses \chk{gravsim:G1}. Two Monte Carlo checks reproduce~\eqref{eq:gs-me} at $N=4$
-with $\kappa=0.2\,\omega_0$:
-\begin{itemize}[nosep]
-\item 40\,000 exactly sampled trajectories: the largest $|z|$ over the 256 matrix elements is 2.5;
-\item 8000 Euler-integrated trajectories of the joint equation: the largest difference from~\eqref{eq:gs-me} is 0.005.
-\end{itemize}
+\paragraph{The averaged frame never entangles.} Product trajectories make the mixture separable, and~\eqref{eq:gs-me} tests this
+independently at every measurement strength. For $N=4$ and 6, with 13 strengths $\kappa/\kappa_{\rm opt}=10^{-3}$ to $10^3$ and 25 times
+$\tau=10^{-2}$ to 50, the largest negative eigenvalue of the partial transpose over all bipartitions (7 and 31 cuts) and all pairs is
+exactly 0. The coherent field gives $-0.5$ for the same masses \chk{gravsim:G1}. Two Monte Carlo checks at $N=4$ with $\kappa=0.2\,\omega_0$
+reproduce~\eqref{eq:gs-me}: 40\,000 exactly sampled trajectories (largest $|z|$ over the 256 matrix elements 2.5), and 8000 Euler-integrated
+trajectories of the joint equation (largest difference 0.005).
 
-\paragraph{Cost.} Table~\ref{tab:gs-cost} compares the two pictures. The statevector time grows as $2^{1.21N}$ for $N=16$ to 24. This
-exponent includes the $N2^N$ cost of the Hadamard transform and memory effects. Scaling conservatively by exactly 2 per added mass from
-$N=24$ gives at least $10^{1198}$\,s at $N=4000$; the fitted law gives $10^{1450}$\,s. The statevector itself would need $10^{1205}$ bytes.
-The frame does the same 4000 masses in seconds.
-
-\begin{table}[ht]\centering\small
-\caption{Cost of the two pictures on one core of a shared machine \chk{gravsim:G1}. Timings vary by about 20\% between runs. The coherent
-field is the brute-force statevector; see the caveats for cheaper methods at short times.}\label{tab:gs-cost}
-\begin{tabularx}{\textwidth}{@{}lLL@{}}\toprule
- & coherent field (statevector) & recorded frame\\\midrule
-$N=24$ & 4.5\,s per time (state and $Z$); 29\,s for $S$; 256\,MB & --\\
-$N=4000$ & $\ge10^{1198}$\,s; $10^{1205}$ bytes & 8.2\,s for $16\times200$ trajectory-steps; 384\,MB\\
-scaling & $2^{1.21N}$ measured & $O(N^2)$ per step\\\bottomrule
-\end{tabularx}
-\end{table}
+\paragraph{Cost.} On one core of a shared machine (timings vary by about 20\% between runs) the coherent field at $N=24$ takes 4.5\,s per
+time for the state and $Z$, and 29\,s for $S$, in 256\,MB \chk{gravsim:G1}. Its time grows as $2^{1.21N}$ for $N=16$ to 24; the exponent
+includes the $N2^N$ cost of the Hadamard transform and memory effects. Scaling conservatively by exactly 2 per added mass from $N=24$ gives at
+least $10^{1198}$\,s at $N=4000$ (the fitted law gives $10^{1450}$\,s), and the statevector would need $10^{1205}$ bytes. The recorded frame
+does the same 4000 masses in 8.2\,s for $16\times200$ trajectory-steps, in 384\,MB, at $O(N^2)$ per step.
 
 \subsection{The classical-quantum toy and the trade-off}\label{ss:gs-cq}
 
@@ -205,30 +164,30 @@ $p$-dependent $2\times2$ block $\rho(p)$, with $\int\Tr\rho(p)\,\dd p=1$, and it
 \begin{equation}\label{eq:gs-cqme}
 \partial_t\rho(p)=D_0\bigl(\sigma_z\rho\sigma_z-\rho\bigr)-\frac{D_1}{2}\,\partial_p\{\sigma_z,\rho(p)\}+\frac{D_2}{2}\,\partial_p^2\rho(p).
 \end{equation}
-In blocks, $\rho_{00}$ drifts at $+D_1$ and $\rho_{11}$ at $-D_1$, both diffusing with $D_2$. The coherence $\rho_{01}$ does not drift; it
+In blocks, $\rho_{00}$ drifts at $+D_1$ and $\rho_{11}$ at $-D_1$, both diffusing with $D_2$; the coherence $\rho_{01}$ does not drift, but
 diffuses and decays at $2D_0$.
 
 Start from $\ket+\bra+$ times a Gaussian of width $s_0$. The blocks stay Gaussian, with common variance $s^2=s_0^2+D_2t$. A block is positive
-iff $|\rho_{01}|^2\le\rho_{00}\rho_{11}$. Since $N(p;a,s)N(p;-a,s)=N(p;0,s)^2e^{-a^2/s^2}$, the condition is independent of $p$ and reads
+iff $|\rho_{01}|^2\le\rho_{00}\rho_{11}$. Since $N(p;a,s)N(p;-a,s)=N(p;0,s)^2e^{-a^2/s^2}$, the condition does not depend on $p$; it reads
 $e^{-4D_0t}\le e^{-D_1^2t^2/(s_0^2+D_2t)}$. Positivity therefore holds for all $t$ iff
 \begin{equation}\label{eq:gs-bound}
-D_1^2\le4D_0D_2 .
+D_1^2\le4D_0D_2 ,
 \end{equation}
-Beyond the bound it fails from $t^*=4D_0s_0^2/(D_1^2-4D_0D_2)$ on \tagP. The joint operator $\sum_p\ket p\bra p\otimes\rho(p)$ is
+and beyond the bound it fails from $t^*=4D_0s_0^2/(D_1^2-4D_0D_2)$ on \tagP. The joint operator $\sum_p\ket p\bra p\otimes\rho(p)$ is
 block-diagonal, so its spectrum is the union of the blocks' spectra.
 
-\paragraph{Mapping to the trade-off.} Oppenheim et al.\ write the master equation with moments $D_n$ that already carry the factor
-$1/n!$, and the back-reaction as $-\partial_p(D_1^{0\alpha}L_\alpha\rho+\text{h.c.})$~\cite[Eq.~(9)]{osswd}. For~\eqref{eq:gs-cqme} this gives
+\paragraph{Mapping to the trade-off.} Oppenheim et al.\ write the master equation with moments $D_n$ that already carry the factor $1/n!$,
+and the back-reaction as $-\partial_p(D_1^{0\alpha}L_\alpha\rho+\text{h.c.})$~\cite[Eq.~(9)]{osswd}. For~\eqref{eq:gs-cqme} this gives
 $D_1^{\rm OSSWD}=D_1/2$ and $D_2^{\rm OSSWD}=D_2/2$. Their trade-off~\cite[Eq.~(23)]{osswd}, $D_1D_0^{-1}D_1^\dagger\preceq2D_2$, which is
-Eq.~\eqref{eq:tradeoff} of Part~I, then reads $(D_1/2)^2/D_0\le2\,(D_2/2)$. This is exactly~\eqref{eq:gs-bound}. Eq.~\eqref{eq:tradeoff} is
-therefore correct as written, in Oppenheim et al.'s normalisation \chk{gravsim:G3}.
+Eq.~\eqref{eq:tradeoff} of Part~I, then reads $(D_1/2)^2/D_0\le2\,(D_2/2)$. This is exactly~\eqref{eq:gs-bound}, so Eq.~\eqref{eq:tradeoff}
+is correct as written, in Oppenheim et al.'s normalisation \chk{gravsim:G3}.
 
 \paragraph{Numerics.} We discretise $p\in[-22,22]$ on 4401 points (spacing 0.01) with second-order central differences and evolve to $T=3$
-with a Krylov matrix exponential. The parameters are $D_0=D_2=1$ and $s_0=0.1$, and we sample 61 times. The largest deviation from the exact
-Gaussian solution is $1.1\times10^{-4}$ of the peak. Table~\ref{tab:gs-cq} gives the results \chk{gravsim:G3}. Inside the bound and at
-equality no block ever turns negative. At 1\% beyond the bound positivity fails first at $t=1.00$, as predicted. At twice the bound the
-smallest block eigenvalue reaches $-0.24$ of the peak. Bisection on $D_2$ finds the smallest diffusion that keeps positivity up to $T=50$:
-it is $0.9998=D_1^2/(4D_0)-s_0^2/T$, which tends to the bound as $T$ grows.
+with a Krylov matrix exponential, taking $D_0=D_2=1$ and $s_0=0.1$ and sampling 61 times. The largest deviation from the exact Gaussian
+solution is $1.1\times10^{-4}$ of the peak. Table~\ref{tab:gs-cq} gives the results \chk{gravsim:G3}. Inside the bound and at equality no
+block ever turns negative. At 1\% beyond the bound positivity fails first at $t=1.00$, as predicted, and at twice the bound the smallest block
+eigenvalue reaches $-0.24$ of the peak. Bisection on $D_2$ finds the smallest diffusion that keeps positivity up to $T=50$: $0.9998=D_1^2/(4D_0)-s_0^2/T$, which tends to the bound as
+$T$ grows.
 
 \begin{table}[ht]\centering\small
 \caption{The classical-quantum toy~\eqref{eq:gs-cqme} against the bound~\eqref{eq:gs-bound}, with $D_0=D_2=1$, $s_0=0.1$ and $T=3$
@@ -243,28 +202,24 @@ joint object: negative mass at $T$ & 0 & $10^{-18}$ & $1.6\times10^{-5}$ & $9.7\
 \end{tabular}
 \end{table}
 
-\paragraph{What equality is.} Measure $\sigma_z$ at strength $D_0$ and drive $p$ by the record, $\dd p=\alpha\,\dd Y$. By It\^o calculus
-the joint law of $(p,\rho_c)$ obeys~\eqref{eq:gs-cqme} with $D_1=2\alpha\sqrt{D_0}$ and $D_2=\alpha^2$: exactly the equality case. Any
-additional independent noise on $p$ raises $D_2$ above the bound. We sample 400\,000 trajectories at $t=1$ ($D_0=1$, $\alpha=1$,
-$s_0=0$) \chk{gravsim:G3}:
-\begin{itemize}[nosep]
-\item They reproduce $\int\rho_{01}\,\dd p=\tfrac12e^{-2D_0t}$ (0.06784 against 0.06767) and the branch drift $D_1t$ (2.001 against 2).
-\item At equality $p$ is a perfect record, since $p$ determines the conditional state. Every block $\rho(p)$ is then pure: the mixedness
-$4\det\rho(p)/(\Tr\rho(p))^2$ is at most $8\times10^{-4}$, set by the bin width.
-\item With $D_2$ doubled the blocks are mixed. At $p=0$ the mixedness is 0.8646, against $1-e^{-(4D_0D_2-D_1^2)t/D_2}=0.8647$.
-\end{itemize}
-The balance rule~\eqref{eq:saturate} therefore says that the frame keeps every bit of its record. It is minimal diffusion for the given
+\paragraph{What equality is.} Measure $\sigma_z$ at strength $D_0$ and drive $p$ by the record, $\dd p=\alpha\,\dd Y$. By It\^o calculus the
+joint law of $(p,\rho_c)$ obeys~\eqref{eq:gs-cqme} with $D_1=2\alpha\sqrt{D_0}$ and $D_2=\alpha^2$: exactly the equality case. Any additional
+independent noise on $p$ raises $D_2$ above the bound. We sample 400\,000 trajectories at $t=1$ ($D_0=1$, $\alpha=1$, $s_0=0$)
+\chk{gravsim:G3}. They reproduce $\int\rho_{01}\,\dd p=\tfrac12e^{-2D_0t}$ (0.06784 against 0.06767) and the branch drift $D_1t$ (2.001
+against 2). At equality $p$ determines the conditional state, so $p$ is a perfect record and every block $\rho(p)$ is pure: the mixedness
+$4\det\rho(p)/(\Tr\rho(p))^2$ is at most $8\times10^{-4}$, set by the bin width. With $D_2$ doubled the blocks are mixed: at $p=0$ the
+mixedness is 0.8646, against $1-e^{-(4D_0D_2-D_1^2)t/D_2}=0.8647$. The balance rule~\eqref{eq:saturate} therefore says that the frame keeps every bit of its record: minimal diffusion for the given
 decoherence, or equivalently minimal decoherence for the given diffusion.
 
 \subsection{Two oscillators: the quantum coupling against the Kafri--Taylor--Milburn channel}\label{ss:gs-ktm}
 
 \paragraph{Model.} Two oscillators interact through the linearised Newtonian coupling. In units $\hbar=m=\Omega=1$ the Hamiltonian is
 $H=\sum_k(p_k^2+x_k^2)/2-Kx_1x_2$, with $K=0.1$. The covariance matrix $\sigma$ of $(x_1,p_1,x_2,p_2)$ obeys
-$\dot\sigma=A\sigma+\sigma A^{\mathsf T}+D$. We solve it exactly with an augmented matrix exponential. The log-negativity is
-$E_N=\max(0,-\log_2 2\tilde\nu_-)$, where $\tilde\nu_-$ is the smallest symplectic eigenvalue of the partially transposed $\sigma$; the
+$\dot\sigma=A\sigma+\sigma A^{\mathsf T}+D$, which we solve exactly with an augmented matrix exponential. The log-negativity is
+$E_N=\max(0,-\log_2 2\tilde\nu_-)$, with $\tilde\nu_-$ the smallest symplectic eigenvalue of the partially transposed $\sigma$; the
 Peres--Horodecki criterion is necessary and sufficient for two-mode Gaussian states~\cite{simon2000}.
 
-In the KTM channel~\cite{ktm} each $x_k$ is measured at strength $k$, with Lindblad term $k(x\rho x-\tfrac12\{x^2,\rho\})$, and the record
+In the KTM channel~\cite{ktm} each $x_k$ is measured at strength $k$ (Lindblad term $k(x\rho x-\tfrac12\{x^2,\rho\})$), and the record
 $\hat x_k$ drives the force $K\hat x_k$ on the other mass. Averaged over records, the dynamics is the quantum coupling plus a momentum
 diffusion
 \begin{equation}\label{eq:gs-ktm}
@@ -280,39 +235,31 @@ locally by $r=1$ in each mode (at $t=141$).
 $\ge1$ to $10^{-9}$, so the log-negativity is exactly 0 for both initial states.
 \item \emph{The minimum is the separability edge.} The quantum coupling plus dephasing at $0.99K$, just below the channel's minimum,
 entangles the vacuum ($E_N=1.3\times10^{-4}$), as KTM's Eq.~(18) states.
-\item \emph{Trajectories.} We run 4000 trajectories with $\dd t=0.002$ to $T=10$ at $k=K/2$. The conditional covariance stays
-block-diagonal (cross block exactly 0) and pure ($4\det V_1=0.99995$), so every trajectory is a product state. The trajectory-averaged
-means follow the quantum mean dynamics from $\langle x_1\rangle=1$ (largest $|z|=2.1$). The covariance of the means plus the conditional
-covariance equals the master-equation covariance (largest $|z|=0.98$).
-\item \emph{The instance.} With $K=2Gm^2/d^3=1.465\times10^{-28}$\,N/m (KTM's Eq.~(5)), the minimal coherence decay for $\Delta x=250\,\mu$m
-is $K\Delta x^2/(2\hbar)=0.0434$\,s$^{-1}$. This equals the qubit minimum $\omega/2=0.0628$\,s$^{-1}$ of Section~\ref{ss:gs-models} times
-$(d^2-\Delta x^2)/d^2$: the same physics, linearised. Bridge~B's 72\,s$^{-1}$ is 1146 times the classical-channel minimum. The balance rule
-ties diffusion to decoherence, but under Bridge~B the decoherence is set by each mass's own record, not by the pair coupling.
+\item \emph{Trajectories} (4000, $\dd t=0.002$, $T=10$, $k=K/2$). The conditional covariance stays block-diagonal (cross block exactly 0) and
+pure ($4\det V_1=0.99995$), so every trajectory is a product state. The trajectory-averaged means follow the quantum mean dynamics from
+$\langle x_1\rangle=1$ (largest $|z|=2.1$). The covariance of the means plus the conditional covariance equals the master-equation covariance
+(largest $|z|=0.98$).
+\item \emph{The instance.} With $K=2Gm^2/d^3=1.465\times10^{-28}$\,N/m (KTM's Eq.~(5)), the minimal coherence decay for $\Delta x=250\,\mu$m is
+$K\Delta x^2/(2\hbar)=0.0434$\,s$^{-1}$. This equals the qubit minimum $\omega/2=0.0628$\,s$^{-1}$ times $(d^2-\Delta x^2)/d^2$: the same
+physics, linearised. Bridge~B's 72\,s$^{-1}$ is 1146 times the classical-channel minimum. The balance rule ties diffusion to decoherence,
+but under Bridge~B the decoherence is set by each mass's own record, not by the pair coupling.
 \end{itemize}
 
-\paragraph{Choices made after seeing the data.} Four checks were changed after a first run had failed them; each change is recorded in the
-script.
-\begin{enumerate}[nosep]
-\item We first tested pairwise entanglement at $\tau_\pi$ and found every pair separable. We kept that result and moved the pair check to
-$\tau=1.3$, near the bulk maximum, with a scan in $\tau$.
-\item A 3\% tolerance on $Z-2$ failed at $N=16$ (deviation 3.4\%). We replaced it by a convergence check over $N$ and a 1\% check at $N\ge20$,
-and added three late times at $N=24$.
-\item We first normalised the force comparison by the near-cancelling bulk sum; it now uses the pair-force scale.
-\item We report the conservative $2^N$ extrapolation instead of the fitted exponent.
-\end{enumerate}
-In G3 and G4 the parameters were fixed before the runs. $K=0.1$ is far stronger than gravity, chosen so that the entanglement is visible.
+\paragraph{Choices made after seeing the data.} Four checks were changed after a first run had failed them; the script records each change.
+(i) We first tested pairwise entanglement at $\tau_\pi$ and found every pair separable; we kept that result and moved the pair check to
+$\tau=1.3$, near the bulk maximum, with a scan in $\tau$. (ii) A 3\% tolerance on $Z-2$ failed at $N=16$ (deviation 3.4\%); we replaced it
+by a convergence check over $N$ and a 1\% check at $N\ge20$, and added three late times at $N=24$. (iii) We first normalised the force
+comparison by the near-cancelling bulk sum; it now uses the pair-force scale. (iv) We report the conservative $2^N$ extrapolation instead of
+the fitted exponent. The parameters of G3 and G4 were fixed before the runs; $K=0.1$ is far stronger than gravity, chosen so that the
+entanglement is visible.
 
-\paragraph{Caveats.}
-\begin{itemize}[nosep]
-\item \emph{The $2^N$ figure is the brute-force cost.} At laboratory times the coherent chain carries about one bit across the cut, and
-tensor networks would simulate it cheaply. It is hard only at late times. The hardness of IQP sampling~\cite{bremner2011,bremner2016} is a
-complexity-theoretic conjecture for typical circuits, not a theorem about this structured one.
-\item \emph{Only each mass's own record is measured.} The cross term of the Di\'osi--Penrose kernel between masses, of relative order
-$\omega/\lambda=1.7\times10^{-3}$ here (Section~\ref{sec:bmv}), is not modelled.
-\item \emph{The geometry is restricted.} The masses are two-level idealisations with branches along the line; a ring was not run.
-\item \emph{G3 is a toy.} It has one qubit, one classical variable and constant coefficients.
-\item \emph{G4 is idealised.} It uses symmetric oscillators and unit detection efficiency.
-\end{itemize}
+\paragraph{Caveats.} The $2^N$ figure is the brute-force cost. At laboratory times the coherent chain carries about one bit across the cut,
+and tensor networks would simulate it cheaply; it is hard only at late times, and the hardness of IQP
+sampling~\cite{bremner2011,bremner2016} is a complexity-theoretic conjecture for typical circuits, not a theorem about this structured one.
+The frame measures each mass's own record only: the inter-mass cross term of the Di\'osi--Penrose kernel, of relative order
+$\omega/\lambda=1.7\times10^{-3}$ here (Section~\ref{sec:bmv}), is not modelled. The masses are two-level systems with branches along the
+line, and a ring was not run. G3 has one qubit, one classical variable and constant coefficients; G4 has symmetric oscillators and unit
+detection efficiency.
 
 All numbers in this section come from \texttt{docs/simulation/gravity\_simulated.py} (110 of 110 checks, about three minutes on one core;
 deterministic, with fixed seeds).
@@ -321,5 +268,5 @@ deterministic, with fixed seeds).
 law on average, decoheres each mass at $\lambda$, adds momentum noise, and never entangles, at any measurement strength. The coherent field
 entangles the same masses multipartitely, reaching Page entropy and Porter--Thomas statistics only after hours, while its pairwise
 entanglement dies within seconds. The trade-off of Section~\ref{sec:cq} holds as written (\emph{derived}). The balance rule is its equality
-case, which is the measurement-and-feedback unravelling with a pure record (\emph{holds}). The Kafri--Taylor--Milburn minimum is the exact
+case, the measurement-and-feedback unravelling with a pure record (\emph{holds}). The Kafri--Taylor--Milburn minimum is the exact
 separability edge (\emph{holds}).

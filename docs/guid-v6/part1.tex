@@ -712,12 +712,16 @@ model~\cite{happy}. A part (``no further statements about its constituents'') be
 which encodes one logical qubit in five physical ones with distance 3. Its encoding map is a \emph{perfect tensor} with six legs: every
 bipartition of the six legs into three and three is a unitary map, so every three-leg cut carries three qubits of maximal entanglement
 \chk{A1}. A layer, which Axiom~3 makes a tree rooted at its Duality, becomes a rooted tree of such tiles, one root and five children with
-twenty boundary legs, each tile's logical leg the information sitting there; both tile maps are isometries \chk{A2}.
+twenty boundary legs. In the orientation we use, a child tile's logical leg carries the edge to its parent and one of its physical legs
+carries the information sitting there (the bulk leg); both tile maps are isometries \chk{A2}.
 
-\paragraph{Minimal cuts.} For a boundary region $R$, the entropy of the reduced boundary state equals the number of legs cut by the minimal
-cut through the tree that separates $R$ from its complement \chk{A2}. This is the Ryu--Takayanagi formula~\cite{rt},
+\paragraph{Minimal cuts.} For a contiguous boundary region $R$, the entropy of the reduced boundary state equals the number of legs cut
+by the minimal cut through the tree that separates $R$ from its complement \chk{A2}. This is the Ryu--Takayanagi formula~\cite{rt},
 $S(R)=|\gamma_R|/4G\hbar$ with $\gamma_R$ the minimal bulk surface anchored on $\partial R$, on a tree. DMP's ``fewest hops in total''
-selects the same minimal surfaces.
+selects the same minimal surfaces. The equality holds for every region, contiguous or not, when each bulk leg is left open (entangled with
+a reference); with the bulk legs fixed it fails for some non-contiguous regions, where a tile whose legs the cut splits two against two
+lets one classical bit past, and in the opposite orientation of the tiles it fails even for intervals (Section~\ref{sec:holocode},
+\chk{holo:H2}).
 
 \paragraph{Reconstruction.} The five-qubit code corrects any two erasures, so the logical qubit is recoverable from any three of the five
 physical qubits and from no two: a $((3,5))$ quantum threshold scheme~\cite{cgl}. In mutual information with a reference $R$ purifying the
@@ -728,7 +732,8 @@ reconstruction~\cite{adh}: a bulk operator is reconstructable on any boundary re
 with the logical operators, so the syndrome says that content is present and in the code, never what it is: this is Axiom~3's existence
 clause, exactly. Both halves read the same syndrome; the gate passes only on two trivial syndromes; each of the 15 single-qubit faults gives
 a distinct syndrome on which both refuse, and correction restores the content with fidelity 1. If the two halves instead read the content
-itself, the content is disturbed (mean fidelity $0.50$), so ``full reach over the act'' must mean full reach over its existence \chk{A4}.
+itself, the content is disturbed (fidelity exactly $1/2$ for every content), so ``full reach over the act'' must mean full reach over its
+existence \chk{A4}.
 
 \paragraph{Two layers in one object.} Two parts whose content is a logical Bell pair reach the Tsirelson value $2\sqrt2\approx2.83$ of the
 CHSH combination on their content, while the gates' verdicts, deterministic syndrome readings, give exactly the classical value 2
@@ -746,7 +751,8 @@ elements. Lemma~\ref{lem:classical} then says that in GUID the area is a number,
 allow one fixed-area sector at a time. In holography fixed-area states are a special, though useful, class (Dong, Harlow and
 Marolf~\cite{dhm}); the general state of quantum gravity superposes areas. So the assembly reproduces the kinematics of holographic codes on
 a fixed background (\chk{A1}--\chk{A5}) and stops exactly at superpositions of geometry. Section~\ref{sec:holocode} runs the same
-assembly at thousands of physical qubits.
+assembly at 5120 boundary qubits: the Ryu--Takayanagi equality and wedge reconstruction hold in millions of cases, the code has an exact
+erasure threshold $p_c=(5-\sqrt{13})/6\approx0.232$, and the two witnesses read identical syndromes whatever the content.
 
 \paragraph{A dissenting reading.} The same facts can be scored the other way. Split the geometry, as the
 background-field method does: the background is a DMP structure and classical; the linearised fluctuation, which carries the Newtonian
