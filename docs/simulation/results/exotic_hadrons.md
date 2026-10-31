@@ -1,6 +1,6 @@
 # Hadrons as trees of dualities (H8): tetraquarks and pentaquarks against data
 
-Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (seed 20210901); every number is also in `exotic_hadrons.json`. Figures: `docs/simulation/figures/exotic_fit.pdf`, `exotic_spectrum.pdf`, `exotic_levels.pdf`, `exotic_thresholds.pdf`. Checks: **80 of 80 passed** (engine, hosting check, fit numerics, null distribution); every confrontation with data is a result, not a check. Runtime 66 s.
+Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (seed 20210901); every number is also in `exotic_hadrons.json`. Figures: `docs/simulation/figures/exotic_fit.pdf`, `exotic_spectrum.pdf`, `exotic_levels.pdf`, `exotic_thresholds.pdf`. Checks: **80 of 80 passed** (engine, hosting check, fit numerics, null distribution); every confrontation with data is a result, not a check. Runtime 68 s.
 
 ## Verdict
 

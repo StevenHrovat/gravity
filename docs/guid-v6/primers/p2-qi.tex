@@ -1,0 +1,45 @@
+% GUID v6, Primer P2 (label box:qi): quantum information. Background only; it states no result of the paper.
+% Place it before "The frame is classical" (marker %PRIMER:qi in part1.tex): \input{primers/p2-qi}
+\begin{primer}{Quantum information}{box:qi}
+\emph{States and processes.} A quantum state is a \emph{density matrix} $\rho$: Hermitian, positive ($\rho\succeq0$) and of unit trace.
+It is pure when $\rho=\ket\psi\bra\psi$ and mixed otherwise. The state of one part $A$ of a system $AB$ is the partial trace
+$\rho_A=\Tr_B\rho_{AB}$~\cite{nielsen2010}. Every physical process is a \emph{completely positive, trace-preserving} (CPTP) map,
+$\rho\mapsto\sum_kK_k\rho K_k^\dagger$ with $\sum_kK_k^\dagger K_k=\mathbb 1$; ``completely'' means that the map stays positive when it
+acts on one part of a larger system. A measurement with outcomes $k$ returns $k$ with probability $p_k=\Tr(K_k\rho K_k^\dagger)$ and leaves
+the state $K_k\rho K_k^\dagger/p_k$.
+
+\emph{Dephasing is reading.} Dephasing in a basis $\{\ket k\}$, $\rho\mapsto\sum_k\ket k\bra k\rho\ket k\bra k$, erases the off-diagonal
+elements (the coherences) and keeps the diagonal. It is what a measurement in that basis does to a system when the outcome is written
+somewhere else. A system that is dephased in one fixed basis after every interaction behaves as a classical variable.
+
+\emph{Entanglement.} A state of $AB$ is \emph{separable} if it is a mixture of products, $\rho_{AB}=\sum_ip_i\,\rho_A^i\otimes\rho_B^i$,
+and \emph{entangled} otherwise~\cite{horodecki2009}. Two numbers measure it for two qubits.
+\begin{itemize}[nosep,leftmargin=*]
+\item The \emph{negativity} $\mathcal N$ is the magnitude of the sum of the negative eigenvalues of the partial transpose $\rho^{T_B}$
+(the transpose taken on $B$ alone)~\cite{vw}. For two qubits $\mathcal N>0$ exactly when the state is entangled~\cite{peres1996,horodecki1996}.
+\item The \emph{concurrence} of a pure two-qubit state $a\ket{00}+b\ket{01}+c\ket{10}+d\ket{11}$ is $C=2|ad-bc|$, from 0 for a product to 1
+for a maximally entangled state~\cite{wootters1998}. For pure two-qubit states $\mathcal N=C/2$.
+\end{itemize}
+An \emph{entanglement witness} is an observable $W$ with $\Tr(W\sigma)\ge0$ for every separable $\sigma$; a measured $\Tr(W\rho)<0$
+certifies entanglement~\cite{guhne2009}. A given witness misses every entangled state for which $\Tr(W\rho)\ge0$.
+
+\emph{LOCC.} In local operations and classical communication each party acts on its own system and the parties exchange only measurement
+outcomes. LOCC maps take separable states to separable states, and no entanglement measure grows under them~\cite{vw,horodecki2009}.
+Creating entanglement between two systems therefore needs a carrier that is itself quantum.
+
+\emph{No-cloning and no-broadcasting.} No process copies two pure states that are neither equal nor orthogonal~\cite{wz,dieks}. A family
+of states can be \emph{broadcast}, so that each of two readers ends up with the original, only if its members commute pairwise~\cite{barnum}.
+A quantity that several readers hold in full is therefore diagonal in one basis, which is the core of quantum Darwinism~\cite{zurek}.
+
+\emph{Worked example: a dephased mediator.} Qubits $A$ and $B$ start in $\ket+=(\ket0+\ket1)/\sqrt2$ and a mediator qubit $M$ in $\ket0$.
+They interact only through $M$: a CNOT from $A$ to $M$, a controlled-$Z$ between $M$ and $B$, and the same CNOT again.
+\begin{itemize}[nosep,leftmargin=*]
+\item \emph{$M$ coherent.} The first CNOT gives $(\ket{0_A0_M}+\ket{1_A1_M})/\sqrt2$. The controlled-$Z$ turns $B$ into
+$\ket-=(\ket0-\ket1)/\sqrt2$ in the second branch, and the second CNOT returns $M$ to $\ket0$. What remains is
+$(\ket{0}_A\ket{+}_B+\ket{1}_A\ket{-}_B)/\sqrt2$, a maximally entangled state: $C=1$, $\mathcal N=1/2$.
+\item \emph{$M$ dephased} in $\{\ket0,\ket1\}$ after the first CNOT. The state becomes the mixture
+$\tfrac12(\ket{00}\bra{00}+\ket{11}\bra{11})_{AM}\otimes\ket+\bra+_B$, and the same two steps leave
+$\tfrac12(\ket0\bra0_A\otimes\ket+\bra+_B+\ket1\bra1_A\otimes\ket-\bra-_B)$. This is separable: $\mathcal N=0$.
+\end{itemize}
+The dephased mediator carried one classical bit from $A$ to $B$; that is LOCC, and it correlates the two qubits without entangling them.
+\end{primer}

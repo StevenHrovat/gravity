@@ -1,0 +1,35 @@
+% GUID v6, Primer P5 (label box:holo): holography and quantum error correction. Background only; it states no result of the paper.
+% Place it at the start of Section sec:holo (marker %PRIMER:holo in part1.tex): \input{primers/p5-holo}
+\begin{primer}{Holography and quantum error correction}{box:holo}
+\emph{Stabiliser codes.} A quantum error-correcting code stores $k$ logical qubits in $n$ physical ones so that some errors can be
+undone. In a \emph{stabiliser code} the code space is the joint $+1$ eigenspace of $n-k$ commuting products of Pauli matrices, the
+\emph{stabilisers}~\cite{gottesman1997}. Measuring them gives the \emph{syndrome}. An error that anticommutes with a stabiliser flips its
+sign and so shows in the syndrome. The stabilisers commute with the logical operators, so the syndrome reveals nothing about the stored
+content. A code of distance $d$, written $[[n,k,d]]$, corrects any $\lfloor(d-1)/2\rfloor$ unknown errors, or any $d-1$
+\emph{erasures} (losses at known places).
+
+\emph{The five-qubit code.} The smallest code that corrects every single-qubit error is $[[5,1,3]]$, with the stabiliser $XZZXI$ and its
+cyclic shifts~\cite{laflamme,bennett1996}. It corrects any two erasures, so its logical qubit can be recovered from any three of the five
+qubits and from no two: a $((3,5))$ quantum threshold scheme~\cite{cgl}.
+
+\emph{Perfect tensors and the HaPPY code.} A tensor with $2m$ legs is \emph{perfect} if every split of its legs into $m$ and $m$ is, up to
+normalisation, a unitary map. The encoding map of the five-qubit code, with its logical leg as a sixth, is such a tensor. Pastawski,
+Yoshida, Harlow and Preskill tile the hyperbolic disc with pentagons, place one perfect tensor on each, contract neighbouring legs, and
+leave one leg per tile in the bulk and the outermost legs on the boundary~\cite{happy}. The network is an isometry from the bulk to the
+boundary, a toy model of the bulk-boundary correspondence of AdS/CFT~\cite{maldacena}.
+
+\emph{Ryu--Takayanagi as a minimal cut.} In AdS/CFT the entropy of a boundary region $A$ is $S(A)=\mathrm{Area}(\gamma_A)/4G\hbar$ (with
+$c=k_B=1$), where $\gamma_A$ is the bulk surface of least area anchored on the edge of $A$~\cite{rt}. In a network of perfect tensors the
+entropy of $A$, in bits, is for many regions the number of qubit legs cut by the smallest cut that separates $A$ from the rest of the
+boundary~\cite{happy}.
+
+\emph{Reconstruction.} The bulk region between $A$ and $\gamma_A$ is the \emph{entanglement wedge} of $A$. Every bulk operator inside it can
+be represented by an operator acting on $A$ alone~\cite{adh,dong2016}: the bulk is encoded redundantly, like a logical qubit. A code has
+\emph{complementary recovery} when what cannot be reconstructed on $A$ can be reconstructed on the rest of the boundary.
+
+\emph{The area operator.} Harlow showed that every code with complementary recovery obeys a quantum Ryu--Takayanagi formula
+(Eq.~\eqref{eq:harlow} in Section~\ref{sec:holo}). Its area term is the expectation value of an \emph{area operator} that lies in the centre
+of the algebra reconstructable on $A$: it commutes with everything that either side can do~\cite{harlow}. A \emph{fixed-area state} is an
+eigenstate of this operator, and such states have a flat entanglement spectrum~\cite{dhm}. A general state of quantum gravity is a
+superposition of areas.
+\end{primer}

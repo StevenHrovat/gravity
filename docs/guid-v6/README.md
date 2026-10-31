@@ -61,9 +61,10 @@ python3 docs/guid-v6/reproduce.py --data <folder with the two SPARC .mrt files>
 | `docs/simulation/bmv_witness.py` | 34 of 34 |
 | `docs/simulation/sparc_rotation.py` | 39 of 39 |
 | `docs/simulation/remnant_history.py` | 39 of 39 |
-| `docs/simulation/predictions_vs_data.py` | 6 of 6 numerical checks; 30 of 33 scored confrontations consistent at 95% (exits 1 by design) |
-| `docs/simulation/standard_model.py` | 30 of 30 |
-| `docs/simulation/exotic_hadrons.py` | 75 of 75 |
+| `docs/simulation/predictions_vs_data.py` | 6 of 6 numerical checks; 28 of 31 scored confrontations consistent at 95% (exits 1 by design) |
+| `docs/simulation/standard_model.py` | 32 of 32 |
+| `docs/simulation/exotic_hadrons.py` | 80 of 80 |
+| `docs/simulation/tally.py` | 6 of 6 (72 scored confrontations across the paper, 58 hold) |
 
 - **SPARC data.** The tables (Lelli, McGaugh and Schombert 2016) are not redistributed. Their SHA-256 digests are in Appendix A, and
   the scripts check them before use.

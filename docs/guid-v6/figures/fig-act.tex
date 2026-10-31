@@ -1,0 +1,52 @@
+% GUID v6, Fig. 3 (label fig:act): one act of DMP. Input in Section sec:dmp next to Primer box:dmp: \input{figures/fig-act}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize,>={Stealth[length=1.8mm]},
+  every node/.style={align=center},
+  box/.style={draw,rounded corners=2pt,inner sep=3pt},
+  wit/.style={box,fill=black!7,text width=3.0cm,minimum height=1.05cm},
+  lbl/.style={font=\scriptsize,text=black!70},
+]
+% the layer and its boundary
+\draw[rounded corners=6pt,dashed,black!55] (-0.15,-2.6) rectangle (11.85,2.6);
+\node[lbl,anchor=south west,align=left] at (-0.05,-2.55) {layer $L$; its boundary contains what\\ no part beyond it is trusted for};
+% the part
+\node[box,text width=1.75cm,minimum height=1.6cm] (p) at (1.1,-0.2) {part $p$\\[1pt]{\scriptsize asks for}\\ act $a$ at $t$};
+% the two witnesses
+\node[wit] (wt) at (4.65,1.2) {\textbf{trust half} $w_T$\\ {\scriptsize may the act happen?}};
+\node[wit] (wi) at (4.65,-1.5) {\textbf{information half} $w_I$\\ {\scriptsize is it meant and right?}};
+% the gate
+\node[circle,draw,thick,fill=white,minimum size=0.8cm,inner sep=0pt,font=\normalsize] (meet) at (7.6,-0.2) {$\wedge$};
+\node[lbl,anchor=north west,align=left] at (7.75,-0.62) {gate $=v_{w_T}\wedge v_{w_I}$};
+% the record
+\node[box,fill=black!3,text width=2.15cm,minimum height=1.05cm] (rec) at (10.45,-0.2) {\textbf{record}\\ {\scriptsize written at the act,}\\[-1pt]
+  {\scriptsize outlives it}};
+% requests
+\draw[->] ([yshift=0.3cm]p.east) |- (wt.west);
+\draw[->] ([yshift=-0.3cm]p.east) |- (wi.west);
+% verdicts into the meet
+\draw[->] (wt.east) -| node[pos=0.3,above,lbl] {verdict $v_{w_T}$} (meet.north);
+\draw[->] (wi.east) -| node[pos=0.3,below,lbl] {verdict $v_{w_I}$} (meet.south);
+% pass: the act is performed and recorded
+\draw[->,thick] (meet.east) -- node[above,lbl] {\textsf{pass}: act} (rec.west);
+% read in full by both witnesses
+\draw[->,black!70] (rec.north) -- (rec.north |- 0,2.15) -- node[pos=0.5,above,lbl] {read in full by both witnesses}
+  (wt.north |- 0,2.15) -- (wt.north);
+\draw[->,black!70] (rec.south) -- (rec.south |- 0,-2.35) -- (wi.south |- 0,-2.35) -- (wi.south);
+% outside readers
+\node[box,text width=2.95cm,minimum height=0.8cm] (oth) at (14.4,0.75) {\textbf{any other reader}\\ {\scriptsize sees the counts, always}};
+\node[box,dashed,text width=2.95cm,minimum height=0.8cm] (gra) at (14.4,-1.15) {\textbf{a part granted its class}\\
+  {\scriptsize gets the content}};
+\draw[->,densely dashed] ([yshift=0.25cm]rec.east) to[out=0,in=180] (oth.west);
+\draw[->,dotted,thick] ([yshift=-0.25cm]rec.east) to[out=0,in=180] (gra.west);
+% verdict lattice
+\node[lbl,anchor=north west,align=left] at (-0.05,-2.75) {verdicts: \textsf{refuse} $<$ \textsf{hold} $<$ \textsf{pass}; the stricter
+  answer stands, e.g.\ \textsf{pass} $\wedge$ \textsf{hold} $=$ \textsf{hold}, and nothing is done};
+\end{tikzpicture}
+\caption{One act in DMP (Section~\ref{sec:dmp}; Primer~\ref{box:dmp}). A part $p$ asks for an act $a$. The two halves of its layer, two
+independent witnesses, each return a verdict; the gate is their meet, so the act is performed only if both say \textsf{pass}. The act
+writes a record that both witnesses read in full. Every other reader sees only the counts (Axiom~3); the content moves only to a part
+granted its class. From trust alone nothing about the content can be derived but its existence. Section~\ref{sec:fields} reads the record
+as the value of the frame and the counts as energy and momentum.}
+\label{fig:act}
+\end{figure}

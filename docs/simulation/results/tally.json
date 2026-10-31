@@ -76,14 +76,16 @@
    }
   },
   "exotics": {
-   "scored": 9,
-   "ok": 4,
+   "scored": 12,
+   "ok": 5,
    "fail": [
     "A:X0(2900)",
     "A:T_csbar0(2900)",
     "A:X(6900) 2++",
     "A:P_c(4312)",
-    "A:P_psis(4338)"
+    "A:P_psis(4338)",
+    "H9:I3",
+    "H9:I4"
    ],
    "shared": {
     "n": 9,
@@ -97,20 +99,23 @@
     ]
    },
    "specific-sensitive": {
-    "n": 0,
+    "n": 2,
     "ok": 0,
-    "fail": []
+    "fail": [
+     "H9:I3",
+     "H9:I4"
+    ]
    },
    "specific-not-yet-sensitive": {
-    "n": 0,
-    "ok": 0,
+    "n": 1,
+    "ok": 1,
     "fail": []
    }
   }
  },
  "total": {
-  "scored": 69,
-  "ok": 57,
+  "scored": 72,
+  "ok": 58,
   "fail": [
    "D3.3",
    "D3.4",
@@ -123,7 +128,9 @@
    "A:T_csbar0(2900)",
    "A:X(6900) 2++",
    "A:P_c(4312)",
-   "A:P_psis(4338)"
+   "A:P_psis(4338)",
+   "H9:I3",
+   "H9:I4"
   ],
   "shared": {
    "n": 47,
@@ -143,19 +150,21 @@
    ]
   },
   "specific-sensitive": {
-   "n": 1,
+   "n": 3,
    "ok": 0,
    "fail": [
-    "SM3.1"
+    "SM3.1",
+    "H9:I3",
+    "H9:I4"
    ]
   },
   "specific-not-yet-sensitive": {
-   "n": 21,
-   "ok": 21,
+   "n": 22,
+   "ok": 22,
    "fail": []
   }
  },
- "h9_present": false,
+ "h9_present": true,
  "stale_sm_class_entries": [
   "SM5.1"
  ],
@@ -711,6 +720,30 @@
    "verdict": "OK",
    "tally_class": "shared",
    "reason": "a standard QCD colour-spin model (Karliner and Rosner) on the compact trees of Hypothesis 8; the hypothesis itself cannot fail on a single state, and the compact-diquark picture predates GUID"
+  },
+  {
+   "section": "exotics",
+   "id": "H9:I1",
+   "label": "Hypothesis H9, I1",
+   "verdict": "OK",
+   "tally_class": "specific-not-yet-sensitive",
+   "reason": "the open-against-hidden-flavour contrast is not significant"
+  },
+  {
+   "section": "exotics",
+   "id": "H9:I3",
+   "label": "Hypothesis H9, I3",
+   "verdict": "FAIL",
+   "tally_class": "specific-sensitive",
+   "reason": "a rule GUID adds to QCD, decided by the catalogue of exotic hadrons"
+  },
+  {
+   "section": "exotics",
+   "id": "H9:I4",
+   "label": "Hypothesis H9, I4",
+   "verdict": "FAIL",
+   "tally_class": "specific-sensitive",
+   "reason": "a splitting rule GUID adds to QCD, decided by the measured doublets"
   }
  ],
  "checks": [

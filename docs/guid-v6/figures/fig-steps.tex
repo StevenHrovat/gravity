@@ -1,0 +1,56 @@
+% GUID v6, Fig. 2 (label fig:steps): the argument in eight steps. Input in Section sec:steps: \input{figures/fig-steps}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize,>={Stealth[length=1.8mm]},
+  step/.style={draw,rounded corners=2pt,fill=white,align=left,text width=9.35cm,inner sep=3pt,minimum height=0.86cm,anchor=west},
+  num/.style={circle,draw,fill=black!8,inner sep=0pt,minimum size=0.56cm,font=\footnotesize\bfseries},
+  hyp/.style={draw=blue!55!black,rounded corners=2pt,fill=blue!6,align=left,text width=3.95cm,inner sep=2.5pt,font=\scriptsize,
+    anchor=west},
+  mark/.style={font=\scriptsize,text=black!60},
+  into/.style={->,blue!55!black,thick},
+]
+\def\pitch{1.12}
+\foreach \i/\txt/\where in {%
+ 1/{Axioms 3, 2 and 1 give \textbf{broadcast records}: every value of the trust field is a record that at least two independent
+   witnesses read in full.}/{Sec.~\ref{sec:fix}\ \tagD},
+ 2/{The \textbf{frame is classical}: values that independent readers hold in full commute (no-broadcasting).}/{Lemma~\ref{lem:classical}\
+   \tagD\,+\,\tagH},
+ 3/{\textbf{LOCC gives $\mathcal N=0$}: a classical mediator acts by local operations and classical communication, so two masses stay
+   separable.}/{Lemma~\ref{lem:locc}\ \tagP},
+ 4/{Consistency forces \textbf{decoherence and diffusion}: a classical frame pushed by quantum matter decoheres it and diffuses, with a
+   trade-off.}/{Sec.~\ref{sec:cq}\ \tagP},
+ 5/{\textbf{Record then recompute} is measurement and feedback: the record measures energy and momentum, the layout feeds back.}/%
+   {Prop.~\ref{pr:ktm}\ \tagD\,+\,\tagH},
+ 6/{The balance rule and Bridge~B give the \textbf{DP rate}, $\lambda=GM^2/\hbar R$, for a mass $M$ of size $R$.}/{Sec.~\ref{sec:bridges}\
+   \tagH},
+ 7/{At the DP rate \textbf{BMV cannot discriminate}: two spheres decohere before an entangling phase builds up, whether gravity is
+   classical or quantum.}/{Sec.~\ref{sec:bmv}\ \tagS},
+ 8/{The decisive test is \textbf{mesoscopic decoherence}: its presence at the DP rate supports Bridge~B, its absence refutes it.}/%
+   {Secs.~\ref{sec:bmv}, \ref{sec:data}}%
+}{
+  \node[num] (n\i) at (0.3,-\i*\pitch) {\i};
+  \node[step] (s\i) at (0.8,-\i*\pitch) {\txt\hfill{\scriptsize\textcolor{black!60}{\where}}};
+}
+\foreach \i [count=\j from 2] in {1,...,7}{\draw[->] (n\i) -- (n\j);}
+% where the hypotheses enter
+\node[hyp] (h6) at (11.85,-1.5*\pitch) {\textbf{H6}, the start: records exist only after the first act, so the frame is classical once
+  the start is complete};
+\node[hyp] (h1) at (11.85,-2.68*\pitch) {\textbf{H1$'$}: the trust field is the frame, and the field that pulls laboratory masses
+  belongs to it (the dissent puts it in the content)};
+\node[hyp] (h24) at (11.85,-4.5*\pitch) {\textbf{H2}: the frame couples to the counts $T_{\mu\nu}$, so content pushes it ($D_1\ne0$) and
+  is what the record measures; \textbf{H4}: the content is quantum};
+\node[hyp] (hb) at (11.85,-6*\pitch) {\textbf{balance rule}: the trade-off holds at equality; \textbf{Bridge~B}: one record per Planck
+  time sets the coupling};
+\draw[into] (h6.west) -- ++(-0.25,0) |- ([yshift=0.13cm]s2.east);
+\draw[into] (h1.west) -- ++(-0.5,0) |- ([yshift=-0.13cm]s2.east);
+\draw[into] (h1.west) -- ++(-0.5,0) |- (s3.east);
+\draw[into] (h24.west) -- ++(-0.35,0) |- (s4.east);
+\draw[into] (h24.west) -- ++(-0.35,0) |- (s5.east);
+\draw[into] (hb.west) -- ++(-0.35,0) |- (s6.east);
+\end{tikzpicture}
+\caption{The argument in eight steps (Section~\ref{sec:steps}). Left: the chain, with where each step is made and its mark (\tagD{}
+from DMP's text, \tagH{} hypothesis, \tagP{} established physics, \tagS{} simulation). Right: where the hypotheses of
+Table~\ref{tab:hyp} enter. Step~7 is a result of Part~II; Step~8 names the experiment that decides. Bridge~A, the other bridge, fixes the
+scale of the stochastic dark-matter remnant instead and does not enter the chain (Section~\ref{sec:darkmatter}).}
+\label{fig:steps}
+\end{figure}

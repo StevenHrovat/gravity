@@ -95,7 +95,7 @@ for it in exo["A"]["items"]:
         cls, why = (it["tally_class"], it.get("tally_reason", "")) if it.get("tally_class") else EXO_A_CLASS
         name = it["label"].split(" vs ")[1] + " " + it.get("JPC", "") if " vs " in it["label"] else it["label"].split(" (")[0]
         add("exotics", "A:" + name.strip(), it["label"], it["verdict"] == "holds", cls, why)
-h9 = exo.get("H9")
+h9 = exo.get("I") or exo.get("H9")   # the exotics script writes the H9 rows under key "I"
 h9_present = isinstance(h9, dict)
 for key, e in (h9.items() if h9_present else []):
     if not isinstance(e, dict):
