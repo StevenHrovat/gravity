@@ -592,7 +592,7 @@ check("N = 4, kappa = 0.2 omega0, t = 1.5/omega0: 40000 exact trajectories (mixt
       "state, largest |z| over 256 elements", zsc.max(), 0, atol=5.0)
 # the same with a plain Euler integration of the joint 2^N stochastic Schroedinger equation (no product ansatz)
 r5 = np.random.default_rng(45)
-n5, dt5 = 4000, 0.005
+n5, dt5 = 8000, 0.005
 sb = bits(N4)
 zb = 1 - 2 * sb
 psi5 = np.full((n5, 2**N4), 2 ** (-N4 / 2), complex)
@@ -610,7 +610,7 @@ for cut in range(1, N4):
     sv = np.linalg.svd(psi5[:200].reshape(200, 2**cut, -1), compute_uv=False)
     schmidt = max(schmidt, float((sv[:, 1] / sv[:, 0]).max()))
 r5m = np.einsum("ts,tu->su", psi5, psi5.conj()) / n5
-check("joint 2^4 stochastic Schroedinger equation (Euler, 4000 trajectories): every trajectory stays a product, max s2/s1 over cuts",
+check("joint 2^4 stochastic Schroedinger equation (Euler, 8000 trajectories): every trajectory stays a product, max s2/s1 over cuts",
       schmidt, 0, atol=1e-12)
 check("joint SSE average = master equation (max |difference| over 256 elements; statistical + O(dt) tolerance 0.02)",
       np.abs(r5m - rme).max(), 0, atol=0.02)
@@ -890,12 +890,13 @@ ts3 = np.linspace(0, T3, nt3)
 gauss0 = np.exp(-pg**2 / (2 * s0**2)) / math.sqrt(2 * math.pi * s0**2)
 
 
-def cq_blocks_exact(D1, D2_, ts, s0_=s0):
+def cq_blocks_exact(D1, D2_, ts, s0_=s0, pp=pg):
+    """Exact blocks rho_00, rho_11, rho_01 of the toy from a Gaussian of width s0 times |+><+|."""
     s2 = s0_**2 + D2_ * ts[:, None]
     nrm = 1 / np.sqrt(2 * math.pi * s2)
-    A = 0.5 * nrm * np.exp(-(pg - D1 * ts[:, None]) ** 2 / (2 * s2))
-    B = 0.5 * nrm * np.exp(-(pg + D1 * ts[:, None]) ** 2 / (2 * s2))
-    C = 0.5 * nrm * np.exp(-2 * D0 * ts[:, None]) * np.exp(-pg**2 / (2 * s2))
+    A = 0.5 * nrm * np.exp(-(pp - D1 * ts[:, None]) ** 2 / (2 * s2))
+    B = 0.5 * nrm * np.exp(-(pp + D1 * ts[:, None]) ** 2 / (2 * s2))
+    C = 0.5 * nrm * np.exp(-2 * D0 * ts[:, None]) * np.exp(-pp**2 / (2 * s2))
     return A, B, C
 
 
@@ -940,7 +941,7 @@ tgrid = np.linspace(0, Tlong, 2001)
 
 
 def positive_until(D2_):
-    A, B, C = cq_blocks_exact(D1f, D2_, tgrid[1:, None][:, 0])
+    A, B, C = cq_blocks_exact(D1f, D2_, tgrid[1:], pp=np.linspace(-3, 3, 41))
     return bool(((A * B - C * C) >= -1e-14 * (A + B) ** 2).all())
 
 
@@ -961,7 +962,7 @@ c6 = 0.5 * sech(2 * math.sqrt(D0) * Y6)
 pur = {}
 for lab, beta in (("equality", 0.0), ("2x diffusion", 1.0)):
     p6 = alpha * Y6 + beta * r6.normal(0, math.sqrt(t6), n6)
-    edges = np.arange(-1.0, 1.0001, 0.05)
+    edges = np.linspace(-1.025, 1.025, 42)          # 41 bins of width 0.05 centred on -1.00 .. 1.00
     k6 = np.digitize(p6, edges) - 1
     inb = (k6 >= 0) & (k6 < edges.size - 1)
     sA = np.bincount(k6[inb], q0[inb], edges.size - 1)
@@ -969,7 +970,7 @@ for lab, beta in (("equality", 0.0), ("2x diffusion", 1.0)):
     sC = np.bincount(k6[inb], c6[inb], edges.size - 1)
     mix = 4 * (sA * sB - sC**2) / (sA + sB) ** 2
     pur[lab] = {"bins_p": 0.5 * (edges[1:] + edges[:-1]), "mixedness_4det_over_tr2": mix, "max_mixedness": mix.max(),
-                "mixedness_at_p0": mix[edges.size // 2 - 1]}
+                "mixedness_at_p0": mix[20]}
 G3["unravelling"] = {"n_traj": n6, "t": t6, "D1": 2 * alpha * math.sqrt(D0), "D2_equality": alpha**2, **pur}
 check("unravelling: mean coherence int rho_01 dp = exp(-2 D0 t)/2", c6.mean(), 0.5 * math.exp(-2 * D0 * t6), rtol=5 * c6.std() / c6.mean() / math.sqrt(n6))
 check("unravelling: branch-0 mean momentum = D1 t", np.sum(q0 * alpha * Y6) / np.sum(q0), 2 * alpha * math.sqrt(D0) * t6, rtol=0.01)
