@@ -1,0 +1,262 @@
+\section{Hosting known quantum systems}\label{sec:hosted}
+
+Part~I states that DMP hosts quantum content. Its information half can carry any quantum content (Sections~\ref{sec:fix}
+and~\ref{sec:host}), while its witnesses read only that content exists, as a stabiliser syndrome reads that a code state is present and
+not what it encodes (Section~\ref{sec:holo}). We test the operational form of this statement on four configurations with known answers:
+an interacting critical spin chain, a free-fermion chain of 4000 sites, a gauge theory with a local constraint, and a quantum algorithm.
+All four reproduce the known values within honest uncertainties, the Schwinger-model mass only to 7\%. This validates the host and our
+code. It tests no new physics, and no number here is evidence for or against GUID \tagS.
+
+\subsection{Hosting, operationally}\label{sec:hosted:def}
+
+A \emph{configuration} is a pair $(H,\Sigma)$: a Hamiltonian $H$ on a finite Hilbert space and a \emph{syndrome} $\Sigma\ge0$ with
+$[H,\Sigma]=0$. A state exists when $\Sigma\ket\psi=0$. The \emph{existence sector} $\mathcal H_E=\ker\Sigma$ is invariant under the
+dynamics, and reading $\Sigma$ does not disturb the content. The \emph{host} runs the configuration inside $\mathcal H_E$, by Lanczos
+iteration, a Bogoliubov transformation or a gate sequence. Two \emph{witnesses} then decide whether the result exists.
+\emph{Witness~T} (the trust half) checks in integer arithmetic that every computational-basis configuration carrying amplitude has
+syndrome zero. \emph{Witness~I} (the information half) requires $\bra\psi\Sigma\ket\psi=0$ to rounding accuracy, in floating point,
+together with unit norm. The two share no code path with each other or with the host (for example a bit-parallel count of set bits
+against the host's lookup table, or a Householder QR against a pivoted LU), and the gate passes only when both pass.
+
+Each benchmark carries four controls. First, $[H,\Sigma]=0$ is checked on a small, complete Hilbert space. Second, an injected fault
+that leaves $\mathcal H_E$ must be refused by both witnesses. Third, two orthogonal states of $\mathcal H_E$, that is two different
+contents, must receive the same verdict. Fourth, in B4, a fault that changes only the content must pass.
+
+\emph{Uncertainties.} Exact identities (closed forms, commutators) are checked to floating-point accuracy. An extrapolated number
+carries, as $1\sigma$, the largest change of the result over a family of alternative fits (windows and functional forms) fixed in the
+code, combined in quadrature with the statistical error of a weighted fit where there is one. A comparison passes at
+$\vert\text{deviation}\vert\le2\sigma$. Table~\ref{tab:hosted:summary} collects the results.
+
+\begin{table}[t]\centering\small
+\caption{Hosted benchmarks against known values \tagS\ (B1~\chk{hosted:B1}, B2~\chk{hosted:B2}, B3~\chk{hosted:B3}, B4~\chk{hosted:B4}).
+Deviation is hosted minus known; $\sigma$ as defined in the text.}\label{tab:hosted:summary}
+\begin{tabularx}{\textwidth}{@{}LLll@{}}
+\toprule
+Benchmark & Known value & Hosted value & Deviation\\
+\midrule
+B1 Heisenberg ring, $e_0$ & $\tfrac14-\ln2=-0.4431471806$ & $-0.4431457(11)$ & $+1.5\times10^{-6}$ ($1.3\sigma$)\\
+B2 Ising ring, $L=4000$: $E_0$ & finite-$L$ closed form & equal & $2\times10^{-16}$ relative\\
+B2 central charge, Casimir energy & $\tfrac12$ ($+9.0\times10^{-9}$ at this $L$) & $0.5000000052$ & $+5.2\times10^{-9}$\\
+B2 central charge, block entropy & $\tfrac12$ & $0.50000016(26)$ & $0.6\sigma$\\
+B2 saturated entropy, $g=0.5$ / $1.5$ & $0.6989875284$ / $0.3069825111$ & equal & $3\times10^{-12}$\\
+B3 Schwinger $M/g$, shifted / naive lattice & $1/\sqrt\pi=0.5641896$ & $0.586(39)$ / $0.593(31)$ & $0.55\sigma$ / $0.92\sigma$\\
+B4 Shor outcome distributions, 192 states & Shor's analytic distribution & equal & TV distance $\le7.5\times10^{-12}$\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{B1: the Heisenberg chain}
+
+$H=\sum_{i=1}^{N}\mathbf S_i\cdot\mathbf S_{i+1}$ acts on spins $1/2$ on a ring, for even $N$ from 8 to 24. The syndrome
+$\Sigma=(S^z_{\rm tot})^2$ selects the sector $S^z_{\rm tot}=0$, of dimension 2\,704\,156 at $N=24$ (33.9 million nonzero matrix
+elements). The ground-state energy per site tends to $e_0=\tfrac14-\ln2$ \cite{bethe1931,hulthen1938}. Implicitly restarted Lanczos gives
+the two lowest levels. At every $N$ the ground energy agrees to $1.3\times10^{-15}$ per site with an independent Newton solution of the
+Bethe equations ($M=N/2$, $I_j=-\tfrac{M-1}2,\dots,\tfrac{M-1}2$):
+\[
+N\arctan2\lambda_j=\pi I_j+\sum_k\arctan(\lambda_j-\lambda_k),\qquad E_0=\frac N4-\sum_j\frac2{1+4\lambda_j^2}.
+\]
+Conformal invariance gives $E_0(N)/N=e_0-\pi vc/(6N^2)+\dots$ for a critical chain \cite{blote1986}, here with $c=1$ and $v=\pi/2$, and
+corrected by powers of $1/\ln N$ \cite{affleck1989}. We fit $a+bN^{-2}+dN^{-4}$ on $N\ge12$. The nine alternatives are the windows
+$N\ge8,10,14,16$ and all five windows with an added $N^{-6}$ term.
+
+The fit gives $a=-0.4431457(11)$: a deviation of $+1.5\times10^{-6}$ ($1.3\sigma$, $3.3\times10^{-6}$ relative) \chk{hosted:B1}. All nine
+alternatives lie above the exact value, as the logarithmic corrections predict, since no power series in $1/N^2$ absorbs them. Read as
+$-\pi vc/6$, the fitted $b$ gives $c=1.004$. The triplet gap $\Delta_N=E_1-E_0$ closes. $N\Delta_N$ grows from 4.18 to 4.39 between
+$N=8$ and 24, and the local exponent $-\dd\ln\Delta_N/\dd\ln N$ rises from 0.946 to 0.968. A fit $\Delta_\infty+\beta_1/N+\beta_2/N^2$ on
+$N\ge12$ gives $\Delta_\infty=0.0024$, against $\Delta_{24}=0.183$: the chain is gapless, and $N\Delta_N\to\pi^2/2$ only logarithmically.
+
+\emph{Witnesses.} T counts the up spins of every $N$-bit register index that carries amplitude. I evaluates
+$\langle(S^z_{\rm tot})^2\rangle$, with $S^z_{\rm tot}$ applied site by site. $[H,S^z_{\rm tot}]=0$ exactly on the full
+$2^{10}$-dimensional space. The $N=24$ ground state and the orthogonal triplet pass. A single spin flip, with
+$\langle(S^z_{\rm tot})^2\rangle=1$, is refused by both.
+
+\subsection{B2: the transverse-field Ising ring at $L=4000$}
+
+$H=-\sum_iZ_iZ_{i+1}-g\sum_iX_i$ acts on a ring of $L=4000$ spins, at $g=1$ (critical), $0.5$ and $1.5$. We use the Majorana operators
+$a_j=(\prod_{l<j}X_l)Z_j$ and $b_j=(\prod_{l<j}X_l)Y_j$, which give $X_j=ia_jb_j$ and $Z_jZ_{j+1}=ib_ja_{j+1}$. The bond that closes the
+ring carries the parity $P=\prod_iX_i$, and for $P=+1$ it becomes an antiperiodic fermion bond \cite{lieb1961,pfeuty1970}. That sector is
+$\mathcal H_E$. There, and only there, $H=i\sum_{jk}K_{jk}a_jb_k$ with $K_{jj}=-g$, $K_{j+1,j}=1$, $K_{1L}=-1$, and all other entries
+zero; at $L=10$ this reproduces the lowest even-parity eigenvalue of the full spin Hamiltonian to $1.8\times10^{-14}$.
+
+The singular-value decomposition $K=U\,{\rm diag}(s_m)V^{\mathsf T}$ gives $H=i\sum_ms_ma'_mb'_m$. Hence $E_0=-\sum_ms_m$, and the ground
+state is Gaussian with $G_{jk}=\langle ia_jb_k\rangle=-(UV^{\mathsf T})_{jk}$. A block of $l$ consecutive spins has entropy
+$S(l)=\sum_mh(\tfrac{1+\nu_m}2)$, where $h(p)=-p\ln p-(1-p)\ln(1-p)$ and $\nu_m$ are the singular values of $G$ restricted to the block
+\cite{peschel2003,vidal2003}. Each coupling costs one SVD of a $4000\times4000$ matrix (four dense 128\,MB matrices).
+
+There are four comparisons. Below, $E(m)$ and $K(k)$ are the complete elliptic integrals of the second kind (parameter $m$) and of the
+first kind (modulus $k$).
+(a) $E_0$ equals the finite-$L$ closed form $-\sum_k\sqrt{1+g^2-2g\cos k}$, $k=2\pi(n+\tfrac12)/L$, to $2\times10^{-16}$ relative at all
+three couplings. At $g=0.5$ and $1.5$, $E_0/L$ equals $e_\infty=-\tfrac2\pi(1+g)E(4g/(1+g)^2)$ to $4\times10^{-16}$ \cite{pfeuty1970}
+\chk{hosted:B2}.
+(b) At $g=1$, $E_0/L-e_\infty=-3.27\times10^{-8}$. The Casimir term $-\pi vc/(6L^2)$ with $v=2$ then gives $c=0.5000000052$; the exact
+expansion predicts $\tfrac12+7\pi^2/(480L^2)=0.5000000090$.
+(c) At $g=1$ the Calabrese--Cardy form for a ring \cite{calabrese2004}, $S(l)=\tfrac c3\ln[\tfrac L\pi\sin\tfrac{\pi l}L]+c_1'$, fitted on
+$100\le l\le2000$, gives $c=0.50000016(26)$ and $c_1'=0.478558$. The uncertainty is the spread over windows starting at 50, 200 or 400
+or ending at 1000.
+(d) At $g=0.5$ and $1.5$ the entropy saturates, with $S(L/2)-S(L/8)=2\times10^{-12}$: an area law. The saturated values, 0.6989875284 and
+0.3069825111, match the corner-transfer-matrix prediction to $3\times10^{-12}$. That prediction gives a half-infinite chain the
+entanglement levels $(2j+1)\epsilon$ for $g>1$ and $2j\epsilon$ for $g<1$, with $\epsilon=\pi K(k')/K(k)$ and $k=\min(g,1/g)$
+\cite[Eqs.~4.30--4.34]{calabrese2004}. A block has two cuts, so $S=2S_{\rm half}$ for $g>1$. For $g<1$ the even-parity ground state is a
+cat state whose $\ln2$ the two cuts share, so $S=2S_{\rm half}-\ln2$; we derived this before the comparison.
+
+\emph{Witnesses.} The syndrome is the parity, $\langle P\rangle=\det G$, together with purity ($G$ orthogonal). T reads $\det G$ from a
+pivoted LU factorisation: parity $+1$, $\vert\ln\vert\det G\vert\vert<10^{-13}$. I reads it from a Householder QR (the number of reflectors
+and the signs of ${\rm diag}\,R$) and finds $\max\vert GG^{\mathsf T}-\mathbb1\vert\le7\times10^{-15}$. A spin flip $Z_1$ reverses the
+first row of $G$, and both witnesses read $-1$: refused. These 4000 qubits are cheap because the state is Gaussian, not because a
+4000-qubit state is cheap (Section~\ref{sec:hosted:shor}).
+
+\subsection{B3: the Schwinger model}
+
+Quantum electrodynamics in 1+1 dimensions, with one fermion of mass $m$ and charge $g$, confines. At $m=0$ it is a free boson of mass
+$g/\sqrt\pi$, the vector particle \cite{schwinger1962}. We use Kogut--Susskind staggered fermions \cite{kogut1975} on $N$ sites, with
+open boundaries and zero background field. Gauss's law, $L_n-L_{n-1}=Q_n$ with $Q_n=\tfrac12(\sigma^z_n+(-1)^n)$, fixes the field on
+every link, $L_n=\sum_{k\le n}Q_k$, and leaves \cite[Eq.~2.6]{banuls2013}
+\begin{equation}\label{eq:hosted:schwinger}
+W=\frac{2H}{ag^2}=x\sum_{n=0}^{N-2}\bigl(\sigma^+_n\sigma^-_{n+1}+{\rm h.c.}\bigr)+\frac\mu2\sum_{n=0}^{N-1}\bigl(1+(-1)^n\sigma^z_n\bigr)
++\sum_{n=0}^{N-2}L_n^2,
+\end{equation}
+with lattice spacing $a$, $x=(ag)^{-2}$ and $\mu=2m_{\rm lat}/(ag^2)$. The vector mass is $M/g=(W_1-W_0)/(2\sqrt x)$, taken to
+$N\to\infty$ and then to $x\to\infty$. We run two lattice masses: the naive $m_{\rm lat}=0$, and $m_{\rm lat}=-g^2a/8$ ($\mu=-\tfrac14$),
+which the discrete chiral symmetry of the lattice model identifies as the massless point \cite{dempsey2022}. The shift vanishes as
+$a\to0$, so both lattices have the same continuum limit.
+
+\emph{Existence and witnesses.} $\mathcal H_E$ is fixed by Gauss's law at every site, with $L_{-1}=0$ (no background) and $L_{N-1}=0$
+(no field beyond the last site); together these imply total charge zero. The host keeps an integer link register $L_0,\dots,L_{N-2}$ for
+every basis configuration. T checks $G_n\equiv L_n-L_{n-1}-Q_n=0$ at every site of every configuration carrying amplitude; I evaluates
+$\langle\sum_nG_n^2+Q_{\rm tot}^2\rangle$. The ground and vector states at $N=22$ pass. A charge without its field (one spin flipped) and a
+flux line without charges (one link raised) give the value 2 and are refused by both. As a check of the elimination itself, we solve the
+model with explicit integer links at $N=6$ (1\,075\,648 states; $\vert L_n\vert\le3$ is exact there). It has $[H,G_n]=0$ for all $n$, and
+its 20 states with all $G_n=0$ reproduce the spectrum of \eqref{eq:hosted:schwinger} to $2.5\times10^{-14}$.
+
+\emph{Method.} We use Lanczos for $N=8,\dots,22$ (705\,432 states at $N=22$) at $x=0.5,1,1.5,2,3,4$. At each $x$ we fit
+$M_N/g=w+\alpha N^{-2}+\beta N^{-3}$ on $N\ge12$. The $N^{-2}$ term is the kinetic energy $\pi^2/(2M\ell^2)$ of the vector particle in a
+box of length $\ell$, and $N^{-3}$ absorbs a boundary shift of $\ell$. The alternatives are $N\ge14$, $N\ge16$,
+$\alpha N^{-2}+\beta N^{-4}$, and $\alpha N^{-2}$ alone on the last four sizes. Only values of $x$ with $N_{\max}/\sqrt x\ge10$ (a box of
+at least ten units of $1/g$) enter the continuum fit; all six qualify. The fit of $w(x)$ is quadratic in $y=1/\sqrt x=ag$ and weighted by
+the inverse squared $N$-extrapolation errors. Its alternatives are linear on $x\ge1.5$, quadratic on $x\ge1$, cubic, and, for the shifted
+lattice only, quadratic without the linear term.
+
+\begin{table}[t]\centering\small
+\caption{Schwinger model at $m=0$: vector mass $M/g$ at each $x=1/(ag)^2$, extrapolated to $N\to\infty$ (fit-family spread in units of
+the last digit), and its value at $N=22$ \tagS~\chk{hosted:B3}. The exact value is $1/\sqrt\pi=0.5641896$. In the continuum the shifted
+lattice gives $0.586\pm0.039$ and the naive lattice $0.593\pm0.031$.}\label{tab:hosted:schwinger}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+& & \multicolumn{2}{c}{shifted, $m_{\rm lat}=-g^2a/8$} & \multicolumn{2}{c}{naive, $m_{\rm lat}=0$}\\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+$x$ & $ag$ & $N\to\infty$ & $N=22$ & $N\to\infty$ & $N=22$\\
+\midrule
+0.5 & 1.41 & 0.5835(6) & 0.5892 & 0.8955(4) & 0.8986\\
+1 & 1.00 & 0.5648(15) & 0.5784 & 0.7848(10) & 0.7939\\
+1.5 & 0.82 & 0.5620(24) & 0.5836 & 0.7422(18) & 0.7580\\
+2 & 0.71 & 0.5616(35) & 0.5910 & 0.7180(28) & 0.7405\\
+3 & 0.58 & 0.5620(60) & 0.6067 & 0.6900(49) & 0.7259\\
+4 & 0.50 & 0.5627(87) & 0.6222 & 0.6740(69) & 0.7228\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Results} (Table~\ref{tab:hosted:schwinger}). The shifted lattice gives $M/g=0.586\pm0.039$ (statistical 0.016, fit family 0.035),
+$0.55\sigma$ from $1/\sqrt\pi$. The naive lattice gives $0.593\pm0.031$, at $0.92\sigma$. The finite-size form survives an out-of-sample
+test: at $x=4$ the fit on $N\le22$ predicts the $N=24$ gap as 0.613467, and the computed value, from 2\,704\,156 states, is 0.613388.
+
+\emph{Precision limits.} The reference values are $0.56421(9)$ from matrix product states \cite{banuls2013} and $0.5642(2)$ from DMRG
+\cite{byrnes2002}, as tabulated in \cite{banuls2013}; our uncertainty is more than 400 times larger. Matrix product states reach hundreds
+of sites, and need $N\ge20\sqrt x$ for small finite-volume effects at $x$ from 5 to 600 \cite{banuls2013}. Exact diagonalisation stops at
+$N=22$, hence at $x\le4$ and $ag\ge0.5$. The weighted continuum fit is dominated by the coarsest lattice, $x=0.5$: its $N$-extrapolation
+is the most precise, but a quadratic in $ag$ describes its lattice artefacts worst. This pulls the central value up and sets the 7\%
+error. With the mass shift, the values at $1.5\le x\le4$ already lie within 0.5\% of $1/\sqrt\pi$, in line with \cite{dempsey2022}; they
+are not continuum values, and we claim nothing from them. We did not attempt the massive model, where \cite{banuls2013} gives binding
+energies to $5\times10^{-5}$, or the chiral condensate: a continuum error of several per cent cannot test either.
+
+\subsection{B4: Shor's period finding, and the cost of a generic state}\label{sec:hosted:shor}
+
+To factor $N$ we use a counting register of $t=2n$ qubits and a work register of $n=\lceil\log_2N\rceil$ qubits, held as an exact state
+vector \cite{shor1997}. The counting register starts in uniform superposition and the work register in $\ket1$. Controlled $U^{2^j}$
+follow, with $U\ket y=\ket{ay\bmod N}$ for $y<N$ and $U\ket y=\ket y$ otherwise. The inverse quantum Fourier transform is applied as the
+exact discrete Fourier transform; it agrees with the explicit gate circuit to $1.8\times10^{-16}$. $U$ permutes $\{y<N\}$, so
+$\mathcal H_E$ (unit norm, work register $y<N$) is invariant. An outcome $k$ becomes a period $r$ through the continued-fraction
+convergents of $k/2^t$ (the first denominator $q<N$ with $a^q\equiv1$). It becomes a factor $\gcd(a^{r/2}-1,N)$ when $r$ is even and
+$a^{r/2}\not\equiv-1\pmod N$, in one run. We host $N=15,21,33,35,39,51,55,57$ with every base $a$ coprime to $N$, and $N=143$ (24 qubits)
+with $a=2,3,5,7$: 192 states in all.
+
+For every $N$ and $a$ the simulated distribution equals Shor's analytic one \cite{shor1997},
+$P(k)=Q^{-2}\sum_{x_0<r}\vert\sum_{j<m(x_0)}e^{-2\pi ijrk/Q}\vert^2$ with $Q=2^t$ and $m(x_0)=\lfloor(Q-1-x_0)/r\rfloor+1$, to a
+total-variation distance of at most $7.5\times10^{-12}$. The factors recovered over all bases are exactly the known ones
+(Table~\ref{tab:hosted:shor}) \chk{hosted:B4}. The textbook failure appears where it should: for $N=33$ and $57$ with $a=2$ the period is
+found, but $2^{r/2}\equiv-1$.
+
+\begin{table}[t]\centering\small
+\caption{Shor's period finding on an exact state vector \tagS~\chk{hosted:B4}. The simulated register has $3n$ qubits; Beauregard's
+circuit needs $2n+3$ \cite{beauregard2003}. Exact single-run probabilities for $a=2$, and the mean over all hosted bases. $P$(factor) can
+exceed $P$(period), because a recovered multiple of $r$ can also yield a factor.}\label{tab:hosted:shor}
+\begin{tabular}{@{}rlrrrrrrr@{}}
+\toprule
+$N$ & factors & $3n$ & $2n+3$ & bases & $r$ ($a=2$) & $P$(period) & $P$(factor) & mean $P$(factor)\\
+\midrule
+15 & $3\times5$ & 12 & 11 & 7 & 4 & 0.500 & 0.500 & 0.429\\
+21 & $3\times7$ & 15 & 13 & 11 & 6 & 0.331 & 0.331 & 0.211\\
+33 & $3\times11$ & 18 & 15 & 19 & 10 & 0.398 & 0.000 & 0.220\\
+35 & $5\times7$ & 18 & 15 & 23 & 12 & 0.331 & 0.331 & 0.303\\
+39 & $3\times13$ & 18 & 15 & 23 & 12 & 0.331 & 0.331 & 0.303\\
+51 & $3\times17$ & 18 & 15 & 31 & 8 & 0.500 & 0.500 & 0.484\\
+55 & $5\times11$ & 18 & 15 & 39 & 20 & 0.393 & 0.393 & 0.320\\
+57 & $3\times19$ & 18 & 15 & 35 & 18 & 0.329 & 0.000 & 0.180\\
+143 & $11\times13$ & 24 & 19 & 4 & 60 & 0.265 & 0.265 & 0.232\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Witnesses.} T requires every amplitude with $y\ge N$ to be exactly zero and the norm to be one; I evaluates
+$\langle\Pi_{y\ge N}\rangle=0$ with the projector applied as an operator. All 192 states pass. A faulty multiplier that exchanges $\ket1$
+and $\ket{2^n-1}$ moves amplitude out of $\mathcal H_E$, and both witnesses refuse it in every case. A phase $Z$ on one work qubit changes
+the content but not the existence, and both pass it, as a syndrome that never reads content must. A plain $X$ on the top work qubit is
+not always such a fault: for $N=15$, $a=2$ it maps the orbit $\{1,2,4,8\}$ to $\{9,10,12,0\}$, inside $\mathcal H_E$.
+
+\emph{The cost of a generic state.} One random layer consists of $n$ Haar-random single-qubit gates and $n-1$ controlled-$Z$ gates on a
+dense state vector of $2^n$ amplitudes, 16 bytes each. The measured peak memory is the state plus a fixed 16\,MiB buffer: 1.016 times
+the state at $n=26$ (1\,GiB). A layer takes 0.0012\,s at $n=10$, 0.032\,s at $n=18$, 0.67\,s at $n=22$ and 15.6\,s at $n=26$; per gate the
+time grows as $2^{1.065n}$ over $n=18$ to 26, the excess over $2^n$ being cache and memory bandwidth. At $7.3\times10^{-9}$\,s per gate
+and amplitude on one core, $n=50$ needs 18\,PB for the state and about 13 years per layer. $n=4000$ needs $10^{1205.3}$ bytes. $n=4099$,
+the $2n+3$ logical qubits of Beauregard's circuit for a 2048-bit RSA modulus \cite{beauregard2003}, needs $10^{1235.1}$ bytes.
+
+Structured content stays cheap. B2 hosts 4000 qubits in four 128\,MB matrices because its state is Gaussian. Stabiliser circuits run in
+polynomial time by the Gottesman--Knill theorem \cite{gottesman1998,aaronson2004}; Section~\ref{sec:holocode} uses this for codes of
+thousands of qubits. Generic content costs $2^n$ on a classical host.
+
+\subsection{What the benchmarks show}
+
+In all four configurations the host reproduces the known result. The witnesses accept exactly the existence sector, refuse every
+injected fault that leaves it, and give the same verdict for different contents. This is the syndrome reading of
+Section~\ref{sec:holo}, run on systems far larger than a five-qubit code \tagS. Three limits belong to the record. First, these are
+classical emulations of hosting, and a classical host carries generic content only at $2^n$ cost. The Existence Turing machine of
+Section~\ref{sec:host} therefore needs a quantum information half once its content is generic and large; DMP's statement concerns what
+that half can carry, not classical simulation. Second, the precision of B3 is set by exact diagonalisation, not by the host. Third,
+nothing here tests a prediction of GUID: Part~I enters only through the bookkeeping of existence, which the benchmarks show to be
+consistent and blind to content.
+
+\paragraph{Choices made after seeing the data.}
+(i)~In B1 the fit family and the $2\sigma$ pass rule were fixed after a prototype had shown the extrapolated value; under a $1\sigma$
+rule B1 would fail ($1.3\sigma$).
+(ii)~In B2 the window family of the entropy fit was fixed after a prototype had shown $c=0.500000$ to six digits for windows starting
+at 50 to 200.
+(iii)~In B3 the $x$ grid and $N_{\max}=22$ were set from the cost of exploratory runs, before any continuum fit. The fit rules were written
+before the first continuum fit (on $N\le18$) and not changed after it, with one exception: the alternative without a linear term was then
+dropped for the naive lattice only, because its lattice-mass shift is an $O(a)$ effect \cite{dempsey2022}. Keeping it would widen the naive
+uncertainty from 0.031 to 0.075 (recomputed from Table~\ref{tab:hosted:schwinger}); the comparison passes either way.
+(iv)~In B4 the fault was changed from an $X$ on the top work qubit to the faulty multiplier, once the former turned out not always to
+leave $\mathcal H_E$.
+
+\paragraph{Caveats.} The modular multiplications of B4 are exact permutation gates, not decomposed into elementary gates; this changes
+gate counts but not states, and the registers use the textbook $t=2n$, not Beauregard's layout. B1 stops at $N=24$, the memory limit of a
+sector code without translation symmetry. Wall times are single-core on a shared machine and are reported, not checked. All other numbers
+are deterministic.
+
+All numbers in this section come from \url{docs/simulation/hosted_benchmarks.py} (53 of 53 checks, 492\,s on one core, peak memory
+1.9\,GB).
+
+\paragraph{Verdict.} The hosting construction \vd{holds} on four hard configurations with known answers: the Heisenberg energy to
+$1.5\times10^{-6}$, the Ising central charge at 4000 sites to $2\times10^{-7}$, the Schwinger mass to 7\%, and Shor's distributions to
+$10^{-11}$. Throughout, the two witnesses accept exactly the existence sector and never read content \tagS. This validates the host and
+our code. It tests no new physics, and every prediction of GUID remains \vd{untested} by it. On a classical host generic content costs
+$2^n$, so the Existence Turing machine is cheap only for structured content.

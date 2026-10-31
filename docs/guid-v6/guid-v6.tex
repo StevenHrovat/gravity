@@ -1,0 +1,200 @@
+% GUID v6: Our proposed view of the universe, with its predictions tested against current experimental data.
+% A complete, standalone paper: it replaces version 5.1 (docs/quantum-gravity/) and needs no other document.
+% Build: see README.md in this folder (pdflatex twice; no BibTeX, the bibliography is generated into bibliography.tex by tools in README).
+% Licence: Apache License 2.0.
+\documentclass[11pt,a4paper]{article}
+\input{preamble}
+
+\title{GUID v6: Our Proposed View of the Universe,\\ with Its Predictions Tested against Current Experimental Data\\[0.8ex]
+\large A classical existence frame carrying quantum information, read from the axioms of the Dark Matter Protocol,
+hosted in simulation and confronted with the data}
+\author{Steven Hrovat\thanks{Independent. Contact: \href{mailto:hrovat.steven@googlemail.com}{\nolinkurl{hrovat.steven@googlemail.com}}.}
+\and Sirius (Claude, Anthropic)\thanks{An AI system by Anthropic, working as the coordinator of the first author's projects. See
+``Contributions and use of AI''.}}
+\date{Version 6.0, draft of 31 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent GUID, the General Unified Information Duality, reads an information-theoretic axiom system, the Dark Matter Protocol (DMP~0.9.9),
+as physics. Every act needs two independent witnesses, one owning trust and one owning information; trust is a field; every act leaves a
+record that its witnesses read in full while any other reader sees only counts. Read this way, gravity is a classical frame, the tetrad
+of general relativity, shaped by the counts of energy and momentum, over quantum content. From the axioms we derive universal free fall,
+$\gamma=1$, and, by the no-broadcasting theorem, that the frame is classical and cannot mediate entanglement. Consistency with quantum
+mechanics then makes the frame a measurement-and-feedback channel that decoheres matter and diffuses; made parameter-free by its own
+principles, it lands on the Di\'osi--Penrose rate. This paper states the whole account in one place and tests it two ways. \emph{By
+simulation:} we host four known, hard quantum configurations and recover their known results, run the holographic assembly at thousands
+of qubits, and simulate 4000 gravitating masses under a recorded frame and under a coherent field. \emph{Against data:} rotation curves
+of 175 galaxies refute one of the two ways of fixing the theory's constant and the stochastic dark-matter remnant in every form computed,
+and leave primordial black holes from the start as the consistent dark matter; of 58 scored confrontations with laboratory, solar-system,
+astrophysical and cosmological data, 54 agree at 95\%, and the four tensions are inherited from $\Lambda$CDM and from the named inflation
+model. The simulations also show that a null entanglement experiment cannot tell GUID from quantum gravity if Di\'osi--Penrose decoherence
+is real, that the decoherence itself is the test, and that the spin witness of the original proposal needs a correction, which we give.
+Every number comes from public scripts with 496 passing checks. We claim that the construction exists, reproduces and is consistent with
+the data named, not that it is correct.
+\end{abstract}
+
+\noindent\textbf{Keywords.} quantum gravity; classical-quantum dynamics; gravitationally mediated entanglement; entanglement witness;
+no-broadcasting theorem; tetrad gravity; spacetime diffusion; Di\'osi--Penrose decoherence; dark matter; primordial black holes; rotation
+curves; varying fine-structure constant; holographic codes; information-theoretic axioms.
+
+\noindent\textbf{Subject.} General Relativity and Quantum Cosmology (gr-qc); related: Quantum Physics (quant-ph), Cosmology and Nongalactic
+Astrophysics (astro-ph.CO), Information Theory (cs.IT).
+
+\tableofcontents
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The problem}
+
+General relativity describes gravity as the curvature of a classical spacetime metric $g_{\mu\nu}$ sourced by energy and momentum,
+$G_{\mu\nu}+\Lambda g_{\mu\nu}=(8\pi G/c^4)T_{\mu\nu}$. Quantum theory describes every other interaction as a quantum field. The two
+meet in three places, and in each the meeting is not understood.
+
+\emph{The ultraviolet.} Quantising the metric perturbatively around flat space, $g_{\mu\nu}=\eta_{\mu\nu}+\kappa h_{\mu\nu}$ with
+$\kappa=\sqrt{32\pi G}/c^2$, gives a massless spin-2 particle, the graviton, whose coupling has the dimension of a length. The theory is
+not renormalisable: pure gravity diverges at two loops (Goroff and Sagnotti~\cite{goroff}), and with matter already at one loop ('t~Hooft and
+Veltman~\cite{thooftveltman}). Below the Planck energy $E_P=\sqrt{\hbar c^5/G}\approx1.22\times10^{19}$\,GeV the theory is nevertheless a
+reliable effective field theory (Donoghue~\cite{donoghue}); its leading quantum correction to the Newtonian potential is
+\begin{equation}\label{eq:eft}
+V(r)=-\frac{Gm_1m_2}{r}\left[1+3\frac{G(m_1+m_2)}{rc^2}+\frac{41}{10\pi}\frac{G\hbar}{r^2c^3}\right],
+\end{equation}
+where the middle term is classical and the last is quantum~\cite{bdh}. At a distance of one metre the quantum term is about
+$3\times10^{-70}$ of the first \chk{Q1}. What completes the theory above $E_P$ is the subject of string theory, loop quantum gravity,
+asymptotic safety, causal dynamical triangulations, causal sets and others (Section~\ref{sec:landscape}).
+
+\emph{Black holes.} A black hole radiates thermally at the Hawking temperature $k_BT_H=\hbar c^3/8\pi GM$~\cite{hawking75} and carries the
+Bekenstein--Hawking entropy $S=k_Bc^3A/4G\hbar$~\cite{bekenstein73}. Whether the radiation carries the information that fell in, and how,
+is the black-hole information problem~\cite{page93,penington,aemm}.
+
+\emph{Whether to quantise at all.} Nothing in experiment yet requires the gravitational field itself to be quantum. Feynman's argument for
+quantising it, the Eppley--Hannah thought experiment~\cite{eppley} and the Page--Geilker experiment~\cite{pagegeilker} rule out specific
+ways of coupling a classical metric to quantum matter, not all of them. A consistent classical-quantum dynamics exists and is testable
+(Oppenheim~\cite{oppenheim}; Oppenheim, Sparaciari, \v{S}oda and Weller-Davies~\cite{osswd}), and the question has become experimental:
+if gravity can entangle two masses through local interaction, it is not classical (Bose et al.~\cite{bose}; Marletto and Vedral~\cite{mv};
+Galley, Giacomini and Selby~\cite{ggs}).
+
+\subsection{The proposal in brief}
+
+GUID, the General Unified Information Duality, is the reading of an information-theoretic axiom system, the Dark Matter Protocol
+(DMP~0.9.9~\cite{dmp}), as physics. DMP was written to govern trust in computer systems. Its first axiom asks that every act be passed by
+two independent witnesses, one owning trust and one owning information; its second calls trust ``gravitational'', a field with sources,
+depths and a freshness that decays; its third asks that every act leave a record that its witnesses read in full while every other reader
+sees only counts, and that nothing about information be derivable from trust except that it exists. The structural resemblance to physics
+is deliberate: a field that sources from mass, boundaries that contain, a floor at which only entropy leaves.
+
+Taken literally, that resemblance gives one account of gravity and of what it contains (Part~I). Gravity is the trust field: a classical
+frame, the tetrad of general relativity, shaped by the counts of energy and momentum but never identical to what it contains. It falls
+universally, does not mix with the information half, and is classical once the start of the universe is complete, because the axioms make
+every one of its values a record that two witnesses hold in full; therefore it mediates no entanglement. Supplied with the base
+configuration currently assumed for our universe, DMP hosts this theory: its shared structure carries the classical frame, and its
+information half carries any quantum content. A classical frame coupled to quantum matter must decohere that matter and must itself
+diffuse, with a trade-off between the two; the axioms' own architecture, record then recompute, is exactly the measurement-and-feedback
+channel that realises it, and two bridge principles fix its one free constant. The same reading covers horizons, black holes, holographic
+codes, lower dimensions, the start of the universe, the Higgs vacuum, the fine-structure constant, and the dark matter, which the theory
+lets be remnants of interactions trapped in the gravitational field.
+
+\subsection{What this paper does}
+
+Version~5.1 of this work stated the account and computed what follows from it. This version tests it, in two ways, and states the result
+in one self-contained paper.
+
+\emph{The theory as simulated} (Part~II). If DMP hosts quantum content, a classical computer can host known, hard quantum
+configurations as existence and recover their known results; if the frame is a recorded classical channel, simulating it against a
+coherent field must show the difference. We run both.
+
+\emph{The predictions against data} (Part~III). Every prediction of Part~I that existing data can reach is confronted with them, with
+stated likelihoods, pulls and verdicts, and with the choices made after seeing the data listed.
+
+The results, in brief:
+\begin{enumerate}[nosep]
+\item \emph{Hosting works and tests no new physics.} A Heisenberg ring, a transverse-field Ising chain of 4000 sites at criticality, the
+lattice Schwinger model and Shor's factoring circuit are hosted and recover their known results: the ground-state energy per site to
+$1.5\times10^{-6}$, the central charge $1/2$ to $5\times10^{-9}$, the mass gap $1/\sqrt\pi$ to 7\%, and Shor's outcome distribution to
+$10^{-11}$ (Section~\ref{sec:hosted}). The holographic assembly runs at thousands of qubits (Section~\ref{sec:holocode}).
+\item \emph{The recorded frame and the coherent field differ as the theory says.} For 4000 gravitating masses the recorded frame keeps
+every trajectory a product state while reproducing Newton's force; a coherent field drives small systems towards the Page entropy and
+Porter--Thomas statistics. A classical-quantum toy reproduces the decoherence-diffusion trade-off, and the Kafri--Taylor--Milburn channel
+reaches its minimal heating (Section~\ref{sec:gravsim}).
+\item \emph{A null entanglement experiment does not discriminate; decoherence does.} If decoherence at the Di\'osi--Penrose rate is real,
+no arrangement of two solid spheres becomes entangled even if gravity is quantum, because the ratio of the entangling to the decoherence
+rate is at most 1 while entanglement needs more than 2. The spin witness of the original proposal admits product states and is corrected
+(Section~\ref{sec:bmv}).
+\item \emph{Rotation curves refute the stochastic remnant.} Bridge~A lies above 98\% of the SPARC data; a universal linear term fits worse
+than the radial acceleration relation by $\Delta\mathrm{BIC}=+5066$; an accumulated term fits only as Milgrom's interpolating function and
+is excluded in the solar system. The consistent reading is primordial black holes from the start as the cold dark matter
+(Sections~\ref{sec:sparc} and~\ref{sec:remnant}).
+\item \emph{Everything else agrees, with four inherited tensions.} Of 58 scored confrontations, from MICROSCOPE and optical clocks to
+DESI and the Atacama Cosmology Telescope, 54 agree at 95\%. The four that do not, evolving dark energy, the Hubble constant, curvature and
+the scalar tilt of Starobinsky inflation, are tensions of $\Lambda$CDM and of the named inflation model, not of anything specific to GUID
+(Section~\ref{sec:data}).
+\item \emph{Fourteen statements of version~5.1 are corrected}, from the 95\% bound on the information scalar to the dark-matter verdict
+(Section~\ref{sec:corrections}).
+\end{enumerate}
+
+\paragraph{What we claim.} We claim that the derivations are as written, that every number reproduces from public scripts, and that the
+verdicts follow from the measurements cited. The scripts and their checks are: \texttt{docs/guid-v6/checks.py} (125 of 125) for Part~I;
+\texttt{docs/qg-verdict/assembly.py} (18 of 18) for the holographic assembly; and in \texttt{docs/simulation/},
+\texttt{hosted\_benchmarks.py} (53 of 53), \texttt{holographic\_code.py} (77 of 77), \texttt{gravity\_simulated.py} (110 of 110),
+\texttt{bmv\_witness.py} (32 of 32), \texttt{sparc\_rotation.py} (36 of 36), \texttt{remnant\_history.py} (39 of 39) and
+\texttt{predictions\_vs\_data.py}, whose 6 numerical checks pass and whose 58 scored confrontations are results, 54 of them consistent.
+Appendix~\ref{app:repro} gives runtimes, seeds and data provenance. We do not claim that the account is correct, and we name in
+Section~\ref{sec:break} where we expect it to break.
+
+\paragraph{What is new and what is not.} Every physical prediction of this paper already belongs to an existing programme: classical
+gravity coupled to quantum matter and its decoherence-diffusion trade-off~\cite{oppenheim,osswd}, gravity as a measurement-and-feedback
+channel~\cite{ktm,tilloydiosi}, gravitationally mediated entanglement as the test~\cite{bose,mv,ggs}, horizon
+thermodynamics~\cite{unruh,hawking75,jacobson95}, Christodoulou's mass formula~\cite{christodoulou}, holographic codes with a classical
+centre~\cite{harlow}, primordial black holes as dark matter~\cite{gortongreen}. Made parameter-free by its own principles, GUID lands on the
+Di\'osi--Penrose rate or on a refuted value (Section~\ref{sec:bridges}). GUID is therefore not a new theory of quantum gravity; it is a
+member of the classical-quantum family. What is new is the route and these statements: (i) a derivation of the classical side of the open
+question from an information principle, namely that a structure every party can audit in full cannot be quantum (Lemma~\ref{lem:classical}),
+where the literature postulates it or leaves it to experiment; (ii) the identification of DMP's record-and-recompute architecture with
+measurement-and-feedback gravity (Proposition~\ref{pr:ktm}); (iii) one rule of its own, that DMP's balance holds the decoherence-diffusion
+trade-off at equality, so that a measured gravitational decoherence would fix the spacetime noise (Section~\ref{sec:bridges}); (iv) the
+converse lesson for the design of information systems, that a control structure every party can audit in full is classical while the data
+it governs need not be; and, from the tests of this version, (v) the result that under Di\'osi--Penrose decoherence the
+entangling-to-decoherence ratio of any two spheres is mass-independent and bounded by 1, so that the decoherence measurement, not the
+entanglement test, decides between classical gravity with that decoherence and quantum gravity with it (Section~\ref{sec:bmv}), and (vi)
+a valid two-setting witness for the spin version of the experiment (Section~\ref{sec:bmv}). Statements (i) to (iv) rest on
+Hypothesis~\ref{h:exist}, which is an identification, not a derivation; (v) and (vi) hold independently of GUID.
+
+\subsection{How to read this paper}
+
+Part~I states the proposal; Part~II simulates it; Part~III confronts it with data; Part~IV collects the predictions, the ledger of every
+statement with its verdict, the corrections to version~5.1, and where we expect the account to break. Every step carries one of four
+marks. \tagD{} follows from the text of DMP~0.9.9 (commit \texttt{4400cce} of its repository~\cite{dmp}). \tagH{} is a hypothesis of
+GUID: an identification of a DMP word with a physical quantity, which no derivation supplies and which the paper states once, in
+Section~\ref{sec:fields} or~\ref{sec:cosmo}, and uses by name. \tagP{} is established physics, with its source. \tagS{} is a result of a
+simulation in this paper. Every statement that meets data receives one of six verdicts: \emph{derived} (it follows from the axioms and the
+hypotheses named), \emph{holds} (it agrees with measurement and follows from the steps given), \emph{holds as a reading} (it agrees, but adds
+nothing a measurement could tell apart from the established account), \emph{refuted} (a measurement or calculation contradicts it),
+\emph{untested} (no measurement yet reaches it), or \emph{live} (it can be tested and a test is possible or under way). A label such as
+\chk{Q5} names a check in \texttt{docs/guid-v6/checks.py}; \chk{A3} names check~3 of the holographic assembly; a label such as
+\chk{gravsim:G2} or \chk{data:D3.4} names a result of a simulation script, listed in Appendix~\ref{app:repro}. Units are SI unless stated;
+where we set $G=c=1$ or $\hbar=c=k_B=1$ we say so. The metric signature is $(-,+,+,+)$.
+
+\part{The proposal}\label{part:proposal}
+\input{part1}
+
+\part{The theory as simulated}\label{part:simulated}
+\input{sections/hosted}
+\input{sections/holocode}
+\input{sections/gravsim}
+\input{sections/bmv}
+
+\part{The predictions tested against data}\label{part:data}
+\input{sections/sparc}
+\input{sections/remnant}
+\input{sections/data}
+
+\part{Synthesis}\label{part:synthesis}
+\input{part4}
+
+\appendix
+\input{appendix}
+
+\input{bibliography}
+
+\end{document}

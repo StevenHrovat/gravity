@@ -1,0 +1,83 @@
+% GUID v6, appendices.
+\section{Reproducibility}\label{app:repro}
+
+Every number of this paper is printed by one of the scripts in Table~\ref{tab:scripts}. Each script prints OK or FAIL for each of its
+checks and exits with code 0 only if all pass. The one exception is the data-confrontation script, which exits with code 1 on purpose
+because four confrontations fail at 95\% (Section~\ref{sec:data}). \texttt{python3 docs/guid-v6/reproduce.py} runs all of them and
+prints the table again from the scripts' own output.
+
+All scripts are deterministic. They fix their random seeds, pin the linear-algebra libraries to one thread, and read no clock except to
+report their own runtime. Two runs of each gave identical output files apart from that runtime field. The runtimes in the table are for
+one core of a shared machine and are not results. The scripts need Python~3 with numpy and scipy; \texttt{checks.py} also needs sympy, and
+the rotation-curve and data scripts need matplotlib for their figures. None of them needs a network connection.
+
+\begin{center}\small
+\begin{longtable}{@{}p{0.27\linewidth}p{0.17\linewidth}p{0.15\linewidth}p{0.08\linewidth}p{0.22\linewidth}@{}}
+\caption{The scripts behind the paper. The first two are \texttt{docs/guid-v6/checks.py} and \texttt{docs/qg-verdict/assembly.py}; the
+others are in \texttt{docs/simulation/}.}\label{tab:scripts}\\
+\toprule
+Script & Sections & Checks & Runtime & Labels \\
+\midrule
+\endfirsthead
+\toprule
+Script & Sections & Checks & Runtime & Labels \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{checks.py} & Part~I & 125 of 125 & seconds & \chk{Q1}--\chk{Q20} \\
+\texttt{assembly.py} & \ref{sec:holo} & 18 of 18 & seconds & \chk{A1}--\chk{A5} \\
+\texttt{hosted\_benchmarks.py} & \ref{sec:hosted} & 53 of 53 & 8 min & \chk{hosted:B1}--\chk{hosted:B4} \\
+\texttt{holographic\_code.py} & \ref{sec:holocode} & 77 of 77 & 8 min & \chk{holo:\dots} \\
+\texttt{gravity\_simulated.py} & \ref{sec:gravsim}, \ref{sec:bmv} & 110 of 110 & 3 min & \chk{gravsim:G1}--\chk{gravsim:G4} \\
+\texttt{bmv\_witness.py} & \ref{sec:bmv} & 32 of 32 & 1 min & \chk{witness:B1}--\chk{witness:B4} \\
+\texttt{sparc\_rotation.py} & \ref{sec:sparc} & 36 of 36 & 1 min & \chk{sparc:S1}--\chk{sparc:S3} \\
+\texttt{remnant\_history.py} & \ref{sec:remnant} & 39 of 39 & 2.5 min & \chk{remnant:R1}--\chk{remnant:R6} \\
+\texttt{predictions\_vs\_data.py} & \ref{sec:data} & 6 of 6; 54 of 58 scored & 4 s & \chk{data:D1.1}--\chk{data:D9.6} \\
+\end{longtable}
+\end{center}
+
+\paragraph{Data.} The rotation-curve analyses read the SPARC tables of Lelli, McGaugh and Schombert~\cite{lelli2016}. Their licence is not
+stated, so they are not redistributed with this paper. Both scripts check the files by SHA-256 before use and stop if a digest differs:
+\begin{itemize}[nosep]
+\item \texttt{MassModels\_Lelli2016c.mrt}:\\ {\footnotesize\texttt{9108994b12cc401b94a1768beca61c53ec354779385c9c9cc571049f3043244c}};
+\item \texttt{SPARC\_Lelli2016c.mrt}:\\ {\footnotesize\texttt{5aa0501f6b0d881fa579030e315e7b5b6ef561a5bd3a07472f9929c7e5728243}}.
+\end{itemize}
+Pass their folder with \texttt{--data <folder>} or the environment variable \texttt{SPARC\_DATA\_DIR}. All other data enter the scripts
+as published values, each with its source in the script and in Sections~\ref{sec:sparc} to~\ref{sec:data}.
+
+\paragraph{Results files.} Each simulation script writes its numbers to \texttt{docs/simulation/results/<name>.json} and a readable account to
+\texttt{<name>.md}. Its figures go to \texttt{docs/simulation/figures/}. The JSON files are the reference for every label of the form
+\chk{script:label} in the text.
+
+\section{The checks of Part I}\label{app:checks}
+
+\texttt{python3 docs/guid-v6/checks.py} (numpy, scipy, sympy) prints 125 checks, all of which pass.
+\begin{itemize}[nosep]
+\item Q1: Planck units, the existence energy, Unruh, Hawking, Bekenstein--Hawking, Jacobson's entropy density, and the size of the quantum
+term of~\eqref{eq:eft}.
+\item Q2: the lapse.
+\item Q3: no-cloning and broadcasting.
+\item Q4: classical against coherent mediation, 300 random couplings each.
+\item Q5: the Bose et al.\ geometry.
+\item Q6: the MICROSCOPE bound on the information scalar, at the one-standard-deviation level and at 95\%, and the Higgs-share test.
+\item Q7: Brans--Dicke and Cassini.
+\item Q8: polarisations and Weyl components in $D$ dimensions.
+\item Q9: the single-graviton threshold.
+\item Q10: Kerr horizon, ergosphere, Christodoulou, efficiencies.
+\item Q11: Hawking radiation of real holes.
+\item Q12: the Hubble mass at its Schwarzschild threshold.
+\item Q13: flatness, the de Sitter floor and the onset of acceleration.
+\item Q14: the tensor spectrum, the BICEP/Keck bound and Starobinsky's $r$.
+\item Q15: what every trapped remnant must satisfy, and why the known neutrinos do not (with the DESI~DR2 mass bound).
+\item Q16: $\alpha$ as self-interaction strength, the electron's lengths, gravity against electromagnetism, and the running of $\alpha$.
+\item Q17: the speed of gravity.
+\item Q18: remnants trapped in the field: the stochastic remnant's rotation curve and acceleration scale, the contained remnant's Hawking
+temperatures and evaporation, and the radiated remnant's energy density.
+\item Q19: the two bridges, Bridge~A against the Tully--Fisher normalisation, Bridge~B's windows and Di\'osi--Penrose rates, and the
+granular term at both smearing bounds.
+\item Q20: the radiation-era clock and the time of the electroweak crossover, the W and Z masses from the Higgs vacuum, $\alpha$ at its
+birth and today, and the proton lifetime for a unification at the start.
+\end{itemize}
+\texttt{python3 docs/qg-verdict/assembly.py} (numpy) prints the 18 checks of the holographic-code assembly. A1 to A5 in this paper are
+its checks [1] to [5]; its check [6] is the special case of \chk{Q4} with CNOT and CZ couplings.
