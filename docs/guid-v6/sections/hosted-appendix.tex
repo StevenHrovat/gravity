@@ -236,8 +236,8 @@ case.
 \subsection{The cost map}\label{app:hosted:cost}
 
 One random layer consists of $n$ Haar-random (uniformly distributed) single-qubit unitaries and $n-1$ controlled-$Z$ gates. They act on
-a dense state vector of $2^n$ amplitudes, 16 bytes each, on one core. The measured peak memory is the state plus a fixed 16\,MiB gate
-buffer (Table~\ref{tab:hosted:cost}). The layer time divided by $n$ grows as $2^{1.068n}$ for $n=18$ to 26. The excess over $2^n$ comes from
+a dense state vector of $2^n$ amplitudes, 16 bytes each, on one core. The measured peak memory is the state plus a gate buffer of at most 16\,MiB
+(Table~\ref{tab:hosted:cost}). The layer time divided by $n$ grows as $2^{1.068n}$ for $n=18$ to 26. The excess over $2^n$ comes from
 cache and memory bandwidth. The rate is $6.9\times10^{-9}$\,s per qubit and amplitude for one layer, with the $n-1$ controlled-$Z$ gates
 folded in. The extrapolations of Section~\ref{sec:hosted} use this rate.
 
