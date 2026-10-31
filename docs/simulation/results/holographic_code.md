@@ -3,14 +3,14 @@
 Workstream H of *GUID v6: Our theory as simulated*. Script: `docs/simulation/holographic_code.py` (77 of 77 checks pass). Every
 number below is in `holographic_code.json` next to this file. Entropies and mutual informations are in bits.
 
-## In one paragraph
+## Summary
 
 The one-layer assembly of Section 9 (`docs/qg-verdict/assembly.py`, 25 qubits) was scaled to a five-level tree: 1706 tiles,
 5120 boundary qubits, and 6826 qubits once every bulk qubit has its own reference. The state is handled exactly as a stabilizer
 state. Five results:
 
 - **Ryu-Takayanagi on the tree (H2).** With every bulk leg open (setting b), S(A) equals the minimal cut for every region tested.
-  That is all 2^20 regions at D = 1, and 2.2 million region-network cases in all. With every bulk leg fixed to |0> (setting a),
+  That is all 2^20 regions at D = 1, and 2.2 million region-network cases in all. With every bulk leg fixed to |0⟩ (setting a),
   S(A) never exceeds the cut. In assembly.py's orientation it equals the cut for every contiguous interval at every depth. It
   falls below the cut for many non-contiguous regions, and, in the HaPPY orientation, for 10 to 32 % of intervals. Every
   exception has a non-empty residual region.
@@ -22,7 +22,7 @@ state. Five results:
   samples agrees with the recursion sample by sample.
 - **The two witnesses (H5).** At D = 5 the syndrome is the same bit for bit for every content, and two independently coded
   extractions agree. Reading the content instead halves its fidelity. On one tile the exact logical failure probability is
-  10p² − O(p³), below the generic distance-3 closed form.
+  10p² + O(p³), below the generic distance-3 closed form by a term of order p³.
 - **Toric code (H6).** The topological entanglement entropy is γ = 1 bit (ln 2) for every region size and every torus up to
   L = 45 (4050 qubits), by both Kitaev-Preskill and Levin-Wen.
 
