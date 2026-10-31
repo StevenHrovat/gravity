@@ -1,7 +1,7 @@
 """GUID v6: Our theory as simulated. Workstream H: the holographic code of Section 9 at scale, by stabilizer methods.
 
-Run:  python3 docs/simulation/holographic_code.py      (numpy and stim 1.16; deterministic, fixed seeds; about 10 minutes on one
-      core, peak memory under 1 GB)
+Run:  python3 docs/simulation/holographic_code.py      (numpy and stim 1.16; deterministic, fixed seeds; about 8.5 minutes on one
+      core, peak memory about 1.4 GB)
 Writes docs/simulation/results/holographic_code.json with every number the paper may quote. Each check prints OK or FAIL with what
 was got and what was expected; the last line counts them; the exit code is 0 only if every check passes. A miss is a finding: the
 script prints it and the JSON keeps it; nothing is tuned to pass.
@@ -914,11 +914,14 @@ P_ROOT_C = binom_ge(5, 3, A_STAR)
 check("at p_c every depth gives the same root recovery probability P(Bin(5, a*) >= 3) (max spread over D = 1..12)",
       max(analytic(D, P_C)[0] for D in range(1, 13)) - min(analytic(D, P_C)[0] for D in range(1, 13)), 0.0, 1e-12)
 print(f"     root recovery probability at the crossing: {P_ROOT_C:.6f}")
+check("at p_c the hierarchy is scale invariant: every bulk qubit, at every depth of every D = 1..12, is recovered with that "
+      "probability (max deviation)", max(abs(x - P_ROOT_C) for D in range(1, 13) for x in analytic(D, P_C)), 0.0, 1e-12)
 # For comparison: a plain concatenation of the five-qubit code (no bulk qubit in the inner tiles, five children per tile) needs
 # 3 of 5 children, a -> P(Bin(5, a) >= 3); its fixed point is 1/2, the no-cloning bound of the erasure channel.
 G_CONC = lambda a: binom_ge(5, 3, a)  # noqa: E731
 check("plain concatenated [[5,1,3]] (no inner bulk qubits): fixed point of a -> P(Bin(5,a) >= 3) at a = 1/2", G_CONC(0.5), 0.5, 1e-15)
-check("its slope there (central difference; 30 a^2 (1-a)^2 = 15/8 > 1, so p_c = 1/2)", (G_CONC(0.5 + 1e-6) - G_CONC(0.5 - 1e-6)) / 2e-6, 1.875, 1e-6)
+check("its slope there (central difference; 30 a^2 (1-a)^2 = 15/8 > 1, so p_c = 1/2)",
+      (G_CONC(0.5 + 1e-6) - G_CONC(0.5 - 1e-6)) / 2e-6, 1.875, 1e-6)
 # D = 1 exactly: the 2^20 regions of [H3] are the 2^20 erasure patterns.
 P_GRID = [0.05, 0.10, 0.15, 0.20, 0.22, round(P_C, 6), 0.25, 0.28, 0.32, 0.40, 0.50]
 _k = PC20
@@ -1162,7 +1165,9 @@ content, pairs = CONTENTS[0]
 sim = content_state(netS, content, pairs)
 depth = netS["depth"]
 _srng = random.Random(8)
-sample = [0] + [t for d in range(1, netS["D"] + 1) for t in sorted(_srng.sample([u for u in range(netS["ntiles"]) if depth[u] == d], min(20, 5 * 4 ** (d - 1))))]
+sample = [0]
+for d in range(1, netS["D"] + 1):  # the root and up to 20 bulk qubits at every depth
+    sample += sorted(_srng.sample([u for u in range(netS["ntiles"]) if depth[u] == d], min(20, 5 * 4 ** (d - 1))))
 for t in sample:
     sim.measure_observable(LOGZ[t])
     sim.measure_observable(LOGX[t])
@@ -1211,7 +1216,8 @@ for q in range(5):
         LOOKUP[syn5(e)] = e
 check("distinct syndromes of the identity and the 15 single-qubit errors (a perfect code: all 16 syndromes used)", len(LOOKUP), 16)
 BASE5 = [tile_state(c) for c in range(6)]
-check_true("the root tableau encodes each of the 6 cardinal contents as the +1 eigenstate of its logical XXXXX / YYYYY-type / ZZZZZ observable",
+check_true("the root tableau encodes each of the 6 cardinal contents as the +1 eigenstate of its logical observable (XXXXX, ZZZZZ, "
+           "or their product for Y)",
            all(BASE5[c].peek_observable_expectation(cardinal_logical(c)) == 1 for c in range(6)))
 agree5, indep5, cls_match, single_ok = True, True, True, True
 n_ref, n_pass, n_harmless, n_logical = 0, 0, 0, 0
