@@ -1,0 +1,358 @@
+% GUID v6, Part III: the precision Standard Model statements SM1 to SM5 against data. Numbers: docs/simulation/standard_model.py,
+% results in docs/simulation/results/standard_model.{json,md}; \chk{sm:SMx.y} names a row of that file, \chk{data:Dn.m} a row of
+% predictions_vs_data.json. Statements and scoring: docs/simulation/sm_preregistration.md (fixed before the script existed).
+\section{The Standard Model statements against precision data}\label{sec:sm}
+
+Part~I makes five statements about the particles and couplings of the Standard Model. SM1, the spin ladder, admits elementary quanta of spin
+0, 1/2 and 1 only (Section~\ref{sec:matter}). SM2 is Hypothesis~1$'$ read for matter: the Higgs vacuum grants every elementary rest mass, so
+every coupling to the Higgs boson is proportional to mass, neutrinos have Dirac masses, the photon and gluons stay massless and the weak bosons
+take their masses from the vacuum (Sections~\ref{sec:fields} and~\ref{sec:higgsplit}). SM3 is Hypothesis~\ref{h:info} with the action
+\eqref{eq:action}: the information scalar multiplies the Maxwell term and nothing else, so the proton-to-electron mass ratio $\mu$ can vary only
+through electromagnetic parts of masses (Section~\ref{sec:alpha}). SM4 is Hypothesis~6$'$: within causality the forces were never one
+(Section~\ref{sec:cosmo}). SM5 is the electroweak split, at which $\alpha$ is born near $1/128$ (Section~\ref{sec:higgsplit}). These are the
+places where GUID speaks about the best-measured part of physics; a wrong number there would count against it however well the gravitational
+part fares. The statements and their scoring were fixed in a preregistration committed before any analysis. In one sentence: 26 of 30 scored
+confrontations hold at 95\%; three FAILs are tensions GUID inherits unchanged from the Standard Model, and one is GUID's own: the preregistered
+size of the ratio $R=\dd\ln\mu/\dd\ln\alpha$ is wrong by a factor of 4.5, because the electron's electromagnetic self-energy, not the
+proton's, sets it; the corrected $R=-0.045\pm0.002$ is consistent with every bound and is a live prediction \chk{sm:summary}, \chk{sm:SM3.1}.
+
+\subsection{Statements, scoring and data}\label{sec:sm-method}
+
+The preregistration (\texttt{docs/simulation/sm\_preregistration.md}) states SM1 to SM5 as they are summarised above and fixes for each the data
+and the verdict. We score every statement as written; where one turned out to be ill-posed or numerically wrong we say so and score it anyway.
+For a Gaussian datum $x\pm\sigma$ and a prediction $x_G\pm\sigma_G$ the pull is
+\begin{equation}\label{eq:sm-pull}
+p=\frac{x-x_G}{\sqrt{\sigma^2+\sigma_G^2}},
+\end{equation}
+as in Section~\ref{sec:data}. A confrontation is \textbf{OK} when $|p|<1.96$ or the prediction lies inside the published allowed region, and
+\textbf{FAIL} otherwise; a FAIL stays a FAIL when the Standard Model shares it. Rows that overlap a scored row, that only report a number, or
+that a sibling script already scores are \textbf{INFO}. Separately, each statement receives one of the paper's verdict words; a tension the
+Standard Model has as well is called \emph{inherited}. Every measured number was checked on 2026-10-31 against its publication, on arXiv
+wherever possible. The exceptions are the CDF W mass, read from a fit paper that quotes it; the rubidium value of $\alpha$, read from the journal
+abstract; Gasser and Leutwyler's 1982 value, read through a later thesis; and the PDG and CODATA values that Section~\ref{sec:data} verified and
+we reuse. The script's citation list says, per source, what was read and the value. Its 30 checks of
+its own numerics (integrators against closed forms, phase scans against closed forms, reproductions of numbers the sources state) all pass.
+Table~\ref{tab:sm-verdicts} summarises the verdicts; the subsections derive them.
+
+\begin{table}[t]
+\centering\small
+\caption{The preregistered statements and their verdicts. Rows are those of \texttt{standard\_model.json}; ``data:'' rows are those of
+Section~\ref{sec:data}.}\label{tab:sm-verdicts}
+\begin{tabularx}{\linewidth}{@{}lLLl@{}}
+\toprule
+& statement & verdict & rows \\
+\midrule
+SM1 & no elementary spin-3/2 or spin-2 quantum & holds as a reading (the Standard Model says the same) & SM1.1--1.4 \\
+SM2.1 & Higgs couplings $\propto$ mass, all $\kappa=1$ & holds for $W,Z,t,b,\tau,\mu$; untested for $c$, $e$, $u$, $d$, $s$, $\nu$ & SM2a.1--9 \\
+SM2.2 & Dirac neutrinos, $m_{\beta\beta}=0$ & live; holds against every search & SM2b.1--7 \\
+SM2.3 & photon and gluons massless & holds as a reading & SM2c.1 \\
+SM2.4 & $m_W=gv/2$, $\rho=1$, with Standard Model loops & holds; CDF 2022 an inherited tension & SM2d.1--6 \\
+SM3 & only $\alpha$ varies; $R$ ``of order $10^{-3}$ to $10^{-2}$'' & the window is refuted by derivation; $R=-0.045\pm0.002$ is live & SM3.1--5 \\
+SM3 side & scalar's share of lepton $g-2$ negligible & derived; holds; $a_e$ limited by the inherited $\alpha$ discrepancy & SM3.6--10 \\
+SM4 & no unification within causality & holds (shared with the Standard Model); proton decay live & SM4.1--5 \\
+SM5 & $\alpha$ born near $1/128$ at $m_Z$, runs to $1/137$ & holds & SM5.1--4 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{SM1: the spin ladder}\label{sec:sm-spin}
+
+SM1 says that elementary quanta have spin 0, 1/2 or 1, that the spin-2 wave belongs to the classical frame and has no quantum, and that no
+elementary spin-3/2 quantum exists. Its test is the absence of what a richer ladder would add. Supersymmetry, whose gravitino has spin 3/2, is
+bounded through its coloured partners: ATLAS excludes gluinos below 2.30\,TeV and degenerate light squarks below 1.85\,TeV at 95\%~CL in simplified
+models with a massless lightest neutralino~\cite{atlas2021a} \chk{sm:SM1.1}. A spin-2 Kaluza--Klein graviton of the Randall--Sundrum model is
+excluded below 4.5, 3.9 and 2.2\,TeV for $k/\bar M_{\rm Pl}=0.1$, 0.05 and 0.01 in diphotons~\cite{atlas2021b} \chk{sm:SM1.2}. An excited top quark
+of spin 3/2 is excluded below 1.2\,TeV~\cite{cms2018} \chk{sm:SM1.3}. The one scalar found has spin 0: every spin-2 alternative is excluded at more
+than 99.9\%~CL~\cite{atlas2015} \chk{sm:SM1.4}. We found no gravitino-specific limit we could verify and use none. Null searches bound masses;
+they cannot exclude a spin, and the Standard Model makes the same statement for its own content. \emph{Verdict: holds as a reading}, and it
+cannot become more.
+
+\subsection{SM2: the Higgs vacuum grants every elementary rest mass}\label{sec:sm-higgs}
+
+\paragraph{Couplings proportional to mass.} In the Standard Model a fermion of mass $m_f$ couples to the Higgs boson with $y_f=\sqrt2\,m_f/v$
+and a weak boson with $g_{hVV}=2m_V^2/v$, $v=(\sqrt2G_F)^{-1/2}=246.22$\,GeV~\cite{mulan2013} \tagP. Hypothesis~1$'$ makes this the only source
+of elementary rest mass, so it predicts exactly these couplings. The experiments measure coupling modifiers $\kappa_i$, which scale each
+Standard Model coupling, and the \emph{reduced couplings}
+\begin{equation}\label{eq:sm-red}
+y_f^{\rm red}=\kappa_f\frac{m_f}{v},\qquad y_V^{\rm red}=\sqrt{\kappa_V}\,\frac{m_V}{v},
+\end{equation}
+which the prediction puts on one line, $y^{\rm red}=m/v$, of slope 1 on logarithmic axes~\cite{atlas2022,cms2022a}. To test slope and intercept
+together we fit
+\begin{equation}\label{eq:sm-fit}
+\ln\kappa_{{\rm eff},i}=a+(s-1)\ln\frac{m_i}{m_*},\qquad \kappa_{\rm eff}=\kappa_f\ \text{or}\ \sqrt{\kappa_V},\qquad v_{\rm fit}=v\,e^{-a},
+\end{equation}
+by weighted least squares with the symmetrised errors of each $\kappa$, and with the pivot $m_*$ chosen so that $a$ and $s$ are uncorrelated. The
+prediction is $s=1$ and $v_{\rm fit}=v$. The data are the CMS coupling modifiers of the fit with effective photon, gluon and $Z\gamma$ couplings,
+$\kappa_W=1.02\pm0.08$, $\kappa_Z=1.04\pm0.07$, $\kappa_t=1.01^{+0.11}_{-0.10}$, $\kappa_b=0.99^{+0.17}_{-0.16}$, $\kappa_\tau=0.92\pm0.08$ and
+$\kappa_\mu=1.12^{+0.21}_{-0.22}$~\cite{cms2022a}. ATLAS gives its per-particle values only graphically~\cite{atlas2022}; we did not read them off
+a figure and use its two-parameter fit instead. Fermion masses enter at the electroweak scale, $m_f=y_f(M_Z)\,v/\sqrt2$ from the $\overline{\rm MS}$
+Yukawa couplings~\cite{antusch2025} (168.4, 2.84, 1.730 and 0.1019\,GeV for $t$, $b$, $\tau$, $\mu$), close to ATLAS's convention of quark masses
+at the Higgs mass; the $W$ and $Z$ enter with their pole masses \chk{sm:SM2a}.
+
+The fit gives $s=1.009\pm0.017$ and $v_{\rm fit}=244.0\pm5.7$\,GeV at the pivot $m_*=57$\,GeV, with $\chi^2=1.25$ for 4 degrees of freedom: pulls of
+$+0.54\sigma$ and $-0.39\sigma$ \chk{sm:SM2a.4}, \chk{sm:SM2a.5}. With pole and PDG masses instead the slope is $1.009\pm0.017$ again; the mass
+convention moves each point along the line, not off it. Jointly, the six tree-level modifiers give $\chi^2=1.70$ for 6 against $\kappa=1$ with
+diagonal errors ($p=0.95$; each error taken on the side towards 1) \chk{sm:SM2a.1}. The covariance is not published in the text, so the
+collaborations' own likelihoods decide: CMS finds $p=0.28$ for all nine modifiers~\cite{cms2022a}, and ATLAS $p=0.56$ (with $\kappa_c=\kappa_t$),
+0.65 ($\kappa_c$ free) and 0.61 (effective loop couplings)~\cite{atlas2022} \chk{sm:SM2a.2}. ATLAS's two-parameter fit, $\kappa_V=1.035\pm0.031$
+and $\kappa_F=0.95\pm0.05$ with correlation 0.39, gives $\chi^2=3.72$ for 2 ($p=0.16$; ATLAS quotes 0.14) \chk{sm:SM2a.3}. The largest single
+departure is the loop-induced $\kappa_{Z\gamma}=1.65^{+0.34}_{-0.37}$, $+1.76\sigma$, not a mass coupling \chk{sm:SM2a.kZgamma}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{sm_couplings.pdf}
+\caption{(a) Reduced Higgs couplings, Eq.~\eqref{eq:sm-red}, against mass at the electroweak scale (CMS 2022~\cite{cms2022a}; fermion masses
+from~\cite{antusch2025}). Black: the prediction $m/v$; dashed: the fit of Eq.~\eqref{eq:sm-fit}. Green bar: the CMS 95\% interval for charm;
+triangle: the ATLAS 95\% bound $|\kappa_c|<4.2$~\cite{atlas2025}; arrow: the electron bound $|\kappa_e|<240$~\cite{cms2023} above the predicted
+value (open circle). (b) The CMS modifiers (68\%; green: loop-induced) and ATLAS's $\kappa_V$, $\kappa_F$. What to look for: six couplings over
+3.2 decades of mass lie on the line; charm and the electron are bounded, not measured.}
+\label{fig:sm-couplings}
+\end{figure}
+
+What is not measured is untested. For charm, CMS's 95\% interval $1.1<|\kappa_c|<5.5$ just excludes 1, while ATLAS's newer bound $|\kappa_c|<4.2$
+includes it~\cite{cms2022a,atlas2025} \chk{sm:SM2a.6}. The electron's coupling is bounded at $|\kappa_e|<240$ by $B(H\to ee)<3.0\times10^{-4}$, against a
+predicted branching fraction of about $5\times10^{-9}$~\cite{cms2023} \chk{sm:SM2a.7}. The light quarks are unmeasured, and the neutrinos' Dirac
+couplings, $y_\nu=\sqrt2m_\nu/v\approx2.9\times10^{-13}$ for the heaviest neutrino at the oscillation minimum, are out of reach of any collider
+\chk{sm:SM2a.8}, \chk{sm:SM2a.9}. \emph{Verdict: holds} for $W$, $Z$, $t$, $b$, $\tau$ and $\mu$; \emph{untested} for the rest. The statement is the
+Standard Model's; the data that support it support both.
+
+\paragraph{Dirac neutrinos.} If the Higgs vacuum is the only source of rest mass, neutrino masses are Dirac masses from Yukawa couplings to
+right-handed partners, there is no Majorana mass, and lepton number is conserved. Neutrinoless double-beta decay, which changes lepton number by
+two, then does not occur at any rate; through light-neutrino exchange its amplitude is proportional to the effective Majorana mass
+$m_{\beta\beta}=|\sum_iU_{ei}^2m_i|$, which is zero \tagP. The searches agree.
+KamLAND-Zen finds $T_{1/2}(^{136}\mathrm{Xe})>3.8\times10^{26}$\,yr at 90\%~CL, $m_{\beta\beta}<28$ to 122\,meV depending on the nuclear matrix
+element~\cite{kamlandzen2025} \chk{sm:SM2b.1}; GERDA, the MAJORANA DEMONSTRATOR and LEGEND-200 together find $T_{1/2}(^{76}\mathrm{Ge})>1.9\times10^{26}$\,yr,
+$m_{\beta\beta}<75$ to 200\,meV~\cite{legend2025} \chk{sm:SM2b.2}. Were the neutrinos Majorana, the oscillation parameters of
+NuFIT~6.0~\cite{esteban2024} would put $m_{\beta\beta}$ between 18.2 and 48.2\,meV for the inverted ordering and between 1.5 and 3.7\,meV for the
+normal ordering at zero lightest mass (Fig.~\ref{fig:sm-neutrino}a). LEGEND-1000 aims at a $3\sigma$ discovery at $1.3\times10^{28}$\,yr, 9 to
+21\,meV~\cite{legend2021}, and nEXO at $1.35\times10^{28}$\,yr~\cite{nexo2022} \chk{sm:SM2b.3}. A signal in any of them would refute SM2.2. A null
+result would not establish Dirac neutrinos, since a normal-ordered Majorana spectrum can hide below every planned reach. \emph{Verdict: live};
+it holds against every search so far.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{sm_neutrino.pdf}
+\caption{(a) The effective Majorana mass that Majorana neutrinos would have, for either ordering (NuFIT~6.0~\cite{esteban2024}; bands over both
+Majorana phases), against the KamLAND-Zen bound~\cite{kamlandzen2025} and the LEGEND-1000 reach~\cite{legend2021}. GUID predicts
+$m_{\beta\beta}=0$, below the plot. (b) 95\% upper bounds on $\sum m_\nu$~\cite{elbers2025,calabrese2025,planck18} against the oscillation minima
+(dashed: normal, dotted: inverted ordering). (c) $N_{\rm eff}$ measured~\cite{planck18,calabrese2025} against decoupled right-handed partners
+(GUID, 3.044) and partners thermalised before the electroweak split. What to look for: a signal in (a) would refute GUID's Dirac neutrinos; the
+tension in (b) is shared with every neutrino model.}
+\label{fig:sm-neutrino}
+\end{figure}
+
+Two side tests concern the right-handed partners and the mass scale. With only Yukawa interactions the partners never come into equilibrium,
+and their contribution to the radiation density is negligible~\cite{luo2020}, so $N_{\rm eff}=3.0440$~\cite{bennett2021}. Planck with baryon
+acoustic oscillations finds $2.99\pm0.17$~\cite{planck18} and ACT DR6 with Planck, lensing and BAO $2.86\pm0.13$~\cite{calabrese2025}: pulls of
+$-0.32\sigma$ and $-1.42\sigma$ \chk{sm:SM2b.4}, \chk{sm:SM2b.5}. Had the partners been thermalised in the start and decoupled above every Standard
+Model threshold, each would add $(10.75/106.75)^{4/3}$, by entropy conservation, so $N_{\rm eff}=3.185$; that lies $2.50\sigma$ above the ACT value
+\chk{sm:SM2b.5b}. It is not GUID's statement, but it tells the start not to equilibrate them. The sum of the masses is bounded from below by
+oscillations, $\sum m_\nu\ge0.0588$\,eV for the normal and $\ge0.0989$\,eV for the inverted ordering (NuFIT quotes 0.058 and 0.098\,eV), and from above by
+cosmology. DESI's baseline 95\% bound, $\sum m_\nu<0.0642$\,eV, lies 0.0054\,eV \emph{above} the normal-ordering minimum; its Feldman--Cousins
+limit, 0.053\,eV, breaches it, and its analysis with an effective mass allowed to go negative is in $3\sigma$ tension with it~\cite{elbers2025}
+\chk{sm:SM2b.6}. The inverted ordering is disfavoured. The tension is the same for Dirac and Majorana neutrinos and is $\Lambda$CDM's, inherited;
+the same bound makes the known neutrinos less than 0.57\% of the dark matter \chk{data:D9.3}.
+
+\paragraph{Massless bosons and the W mass.} That the photon and the gluons stay massless is a reading of the Standard Model, with no number
+scored \chk{sm:SM2c.1}. At tree level $m_W=gv/2$ and $m_Z=m_W/\cos\theta_W$ come within $-0.18\%$ and $+0.34\%$ of the measured masses
+\chk{data:D8.3}, \chk{data:D8.4}. Beyond tree level GUID adds no loop of its own, so its prediction for $m_W$ is the Standard Model's: the global
+electroweak fit without $m_W$ gives $80.3499\pm0.0056$\,GeV~\cite{deblas2022}. The new measurements agree with it: ATLAS's $80.3665\pm0.0159$\,GeV
+($+0.98\sigma$)~\cite{atlas2024b}, CMS's $80.3602\pm0.0099$\,GeV ($+0.91\sigma$)~\cite{cms2026} and LHCb's $80.354\pm0.032$\,GeV
+($+0.13\sigma$)~\cite{lhcb2022} \chk{sm:SM2d.1-SM2d.3}; the combination without CDF, which shares data with them, is $+1.34\sigma$~\cite{lhctev2024}
+\chk{sm:SM2d.5}. CDF's $80.4335\pm0.0094$\,GeV~\cite{cdf2022} lies $7.6\sigma$ above (Fig.~\ref{fig:sm-precision}a) \chk{sm:SM2d.4}. We reproduce the
+fit authors' $6.5\sigma$ against the 2022 average that included CDF. \emph{Verdict: holds}; CDF is an inherited tension, now isolated by three
+experiments that agree with the Standard Model and with each other.
+
+\subsection{SM3: only the Maxwell term varies}\label{sec:sm-mu}
+
+\paragraph{The ratio $R$.} Hypothesis~\ref{h:info} with the action~\eqref{eq:action} lets the scalar change one coefficient, that of
+$F_{\mu\nu}F^{\mu\nu}$; the gauge couplings of the strong and weak forces, the Yukawa couplings and the Higgs potential do not move. Below the
+electroweak scale this shifts $1/\alpha$ by a constant that is the same at every scale at one loop, since the running of $1/\alpha$ does not depend on
+$\alpha$ there; hence $\delta\ln\alpha(\mu)=[\alpha(\mu)/\alpha(0)]\,\delta\ln\alpha(0)$. We hold the Yukawa couplings and $v$ fixed at a matching scale
+$\mu_0$, taken as $M_Z$ where Part~I places the birth of $\alpha$, and the three-flavour QCD scale $\Lambda_{\rm QCD}$ fixed, as the
+statement intends. The mass ratio $\mu=m_p/M_e$ then changes only through electromagnetic contributions, and
+\begin{equation}\label{eq:sm-R}
+R\equiv\frac{\dd\ln\mu}{\dd\ln\alpha}=\frac{\dd\ln m_p}{\dd\ln\alpha}-\frac{\dd\ln M_e}{\dd\ln\alpha}.
+\end{equation}
+\emph{The electron.} Its $\overline{\rm MS}$ mass runs in QED as $\dd\ln m/\dd\ln\mu=-3\alpha(\mu)/2\pi$ at one loop, and its pole mass is
+$M_e=m_e(m_e)(1+\alpha/\pi)$ \tagP; these are the QCD relations with the colour factor $4/3$ replaced by 1. With $m_e(\mu_0)=y_ev/\sqrt2$ fixed,
+\begin{equation}\label{eq:sm-me}
+\frac{\dd\ln M_e}{\dd\ln\alpha}=\frac{3}{2\pi\alpha(0)}\int_{m_e}^{\mu_0}\alpha(\mu)^2\,\dd\ln\mu+\frac{\alpha}{\pi}=0.0436+0.0023=0.0460 .
+\end{equation}
+The running $\alpha(\mu)$ is the one-loop leptonic running scaled to the three-loop $\Delta\alpha_{\rm lep}(M_Z^2)=314.977\times10^{-4}$~\cite{steinhauser1998}
+plus the hadronic $\Delta\alpha^{(5)}_{\rm had}(M_Z^2)=(276.0\pm1.0)\times10^{-4}$~\cite{davier2020} spread logarithmically from 0.5\,GeV to $M_Z$; it
+reproduces $1/\alpha(M_Z)=128.937$ on shell. With $\alpha$ frozen at $\alpha(0)$ the first term would be $(3\alpha/2\pi)\ln(M_Z/m_e)$, with
+$\ln(M_Z/m_e)=12.09$ \chk{sm:SM3}. This is the electron's electromagnetic self-energy: 4.6\% of its mass.
+
+\emph{The proton.} Two pieces carry $\alpha$: its electromagnetic self-energy $E_{\rm em}$, at fixed quark masses at 2\,GeV, and the QED running of
+those quark masses between $\mu_0$ and 2\,GeV, weighted by the sigma terms $f_q=\sigma_q/m_N$,
+\begin{equation}\label{eq:sm-mp}
+\frac{\dd\ln m_p}{\dd\ln\alpha}=\frac{E_{\rm em}}{m_p}+\sum_{q=u,d,s}f_qQ_q^2\,\frac{3}{2\pi\alpha(0)}\int_{2\,{\rm GeV}}^{\mu_0}\alpha(\mu)^2\,\dd\ln\mu
+=6.7\times10^{-4}+2.2\times10^{-4}.
+\end{equation}
+We take $E_{\rm em}=0.63$\,MeV, Gasser and Leutwyler's Born-level value from the measured form factors~\cite{gasser1982} (read through~\cite{stern2008}),
+with $\pm0.40$\,MeV. This error covers their estimate of $\pm0.2$\,MeV for intermediate states and the spread of the proton-neutron difference
+between the Cottingham evaluation, $0.58\pm0.16$\,MeV, and lattice values near 1.0\,MeV~\cite{gasser2021}. The individual self-energy is not an
+observable on its own; its scheme dependence is part of this error. The sigma-term fractions are those of the lattice, $f_u=0.0142$, $f_d=0.0242$
+and $f_s=0.0577$~\cite{borsanyi2020}; scaling $f_u$ and $f_d$ up to the dispersive $\sigma_{\pi N}=59.1\pm3.5$\,MeV~\cite{hoferichter2015} changes
+$R$ by $8\times10^{-5}$ \chk{sm:SM3}.
+
+\begin{table}[t]
+\centering\small
+\caption{The error budget of $R$, Eqs.~\eqref{eq:sm-R}--\eqref{eq:sm-mp}; quadrature sum $\pm0.0023$.}\label{tab:sm-budget}
+\begin{tabular}{@{}lr@{}}
+\toprule
+source & $\delta R$ \\
+\midrule
+matching scale $\mu_0$ between $M_W$ and $v$ (half range) & $2.2\times10^{-3}$ \\
+$\Lambda^{(3)}_{\rm QCD}$ fixed against $\alpha_s(M_Z)$ fixed (heavy-quark thresholds) & $6.2\times10^{-4}$ \\
+proton electromagnetic self-energy, $\pm0.40$\,MeV & $4.3\times10^{-4}$ \\
+two-loop QED anomalous dimension, $O(\alpha/\pi)$ of the electron term & $1.1\times10^{-4}$ \\
+sigma terms, lattice against dispersive & $7.5\times10^{-5}$ \\
+hadronic running model, onset 0.3 to 1\,GeV (half range) & $6.2\times10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Together, $R=8.9\times10^{-4}-0.0460=-0.0451\pm0.0023$ (Table~\ref{tab:sm-budget}); over the range of choices the value lies between $-0.0489$ and
+$-0.0444$ \chk{sm:SM3.1}. Its sign is fixed: a larger $\alpha$ gives the electron more self-energy, in proportion, than the proton. The
+preregistration expected $R$ ``of order $10^{-3}$ to $10^{-2}$''. The derived value lies a factor of 4.5 above that window, and no choice of the
+matching scale between $M_W$ and $v$ brings it inside. The estimate behind the window counted the proton's electromagnetic mass, 0.09\% of it,
+and missed that the electron's is 4.6\%. We score the window as written: \emph{refuted}, by derivation rather than by data. The preregistration
+also left the matching scale open; that is part of the budget above. What the window was meant to say survives: unification models tie $\mu$
+to $\alpha$ through $\Lambda_{\rm QCD}$ and give $|R|$ of 20 to 50. In the class studied by Ferreira et al.,
+$\Delta\mu/\mu=[0.8R_\Lambda-0.3(1+S)]\Delta\alpha/\alpha$, which is $-24.3$ for their typical $R_\Lambda\sim30$, $S\sim160$~\cite{ferreira2012};
+Calmet and Fritzsch find the nucleon mass changing about 40 times faster than $\alpha$~\cite{calmet2002}. GUID's $|R|$ is 540 times smaller than
+the first and at least 400 times smaller than any $|R|\ge20$ \chk{sm:SM3}.
+
+\paragraph{The data.} Each model is a line through the origin, $\Delta\mu/\mu=R\,\Delta\alpha/\alpha$, and the data are bounds near zero on both
+axes (Fig.~\ref{fig:sm-mualpha}). Methanol absorption at $z=0.886$ gives $|\Delta\mu/\mu|\le1.1\times10^{-7}$ at $2\sigma$, over a lookback time of
+7.5\,Gyr~\cite{kanekar2015}, which we read as a Gaussian $0\pm0.55\times10^{-7}$. ESPRESSO gives $\Delta\alpha/\alpha=1.3\pm1.3\pm0.4$\,ppm at
+$z=1.15$~\cite{espresso} \chk{data:D1.6}. On GUID's line the two combine to $\chi^2=0.51$ for one degree of freedom ($p=0.48$) and to
+$\Delta\alpha/\alpha=0.58\pm0.91$\,ppm: under GUID the molecular bound limits $\alpha$ about as tightly as the quasar does \chk{sm:SM3.2}. On the
+unification line $R=-24.3$ the data are equally consistent ($p=0.34$), but they then force $|\Delta\alpha/\alpha|<4.4\times10^{-9}$ at 95\%
+\chk{sm:SM3.3}. Molecular hydrogen at $z=2.0$ to 4.2 gives $|\Delta\mu/\mu|<5\times10^{-6}$ at $3\sigma$~\cite{ubachs2016}: no constraint on
+$\alpha$ under GUID ($<1.1\times10^{-4}$), $2.1\times10^{-7}$ under unification \chk{sm:SM3.5}. Today's clocks give
+$\dot\alpha/\alpha=(1.8\pm2.5)\times10^{-19}\,\mathrm{yr}^{-1}$~\cite{filzinger2023} \chk{data:D1.3} and $\dot\mu/\mu=(-8\pm36)\times10^{-18}\,\mathrm{yr}^{-1}$
+from ytterbium against caesium~\cite{lange}. Both lines pass ($p=0.82$ and 0.92) \chk{sm:SM3.4}. No variation has been seen, so no datum can yet
+tell the lines apart. The test that would: a variation of $\alpha$ at the ppm level with $|\Delta\mu/\mu|$ below $10^{-7}$ would exclude unification and agree
+with GUID, and a $\Delta\mu/\mu$ much larger than $0.045\,|\Delta\alpha/\alpha|$ would refute Hypothesis~\ref{h:info}. \emph{Verdict: live.}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{sm_mu_alpha.pdf}
+\caption{Variations of $\mu$ against variations of $\alpha$. (a) Near $z\approx1$: the ESPRESSO 95\% band in $\alpha$ ($z=1.15$)~\cite{espresso}
+and the methanol $2\sigma$ band in $\mu$ ($z=0.89$)~\cite{kanekar2015}; the lines are GUID's $R=-0.045$ and unification's $R=-24$ (dashed;
+dotted: $-20$ and $-50$)~\cite{ferreira2012}. (b) Present drifts from clocks~\cite{filzinger2023,lange}. What a model allows is its line
+inside both bands: a segment of ppm length for GUID, a point within $4\times10^{-9}$ of zero for unification at $z\approx1$.}
+\label{fig:sm-mualpha}
+\end{figure}
+
+\paragraph{Lepton magnetic moments.} The scalar couples to a lepton only through the lepton's electromagnetic self-energy, with strength
+$\lambda\,m_\ell/\bar M_{\rm P}$ times a factor below 0.05 (0.046 for the electron, Eq.~\eqref{eq:sm-me}), and to photons with strength $\lambda/\bar M_{\rm P}$; any contribution to
+$a_\ell=(g-2)/2$ needs two such insertions and one helicity flip. Hence $\Delta a_\ell=C\lambda^2m_\ell^2/\bar M_{\rm P}^2$, where $C$ collects loop
+factors and logarithms; we take $C\le10$, generously. At $|\lambda|<3.1\times10^{-5}$~\eqref{eq:lambdabound} this gives $\Delta a_e\lesssim4\times10^{-52}$
+and $\Delta a_\mu\lesssim2\times10^{-47}$, 38 and 36 orders of magnitude below the experimental errors \chk{sm:SM3.6}: \emph{derived}, and
+\emph{holds}. Nor can the scalar make $\alpha$ differ between laboratories. A body of electrostatic share $f$ sources $\phi=2\lambda f\,\Phi/c^2$
+(the coupling behind Eq.~\eqref{eq:fifth}), so $\delta\alpha/\alpha=2\lambda^2f\,\delta\Phi/c^2\le10^{-20}$ for $f\le5\times10^{-3}$ and
+$\delta\Phi/c^2\le10^{-9}$, which covers the Earth's surface potential and the annual change of the Sun's \chk{sm:SM3.7}. The two best
+determinations of $\alpha$ differ by $1.2\times10^{-9}$, $5.5\sigma$: $\alpha^{-1}=137.035999046(27)$ from caesium~\cite{parker2018} and
+$137.035999206(11)$ from rubidium~\cite{morel2020}. That difference is $10^{11}$ times what the scalar allows; it is experimental, or lies in the
+inputs of the Standard Model, and is not GUID's.
+
+The electron's moment, $g/2=1.00115965218059(13)$, gives with the Standard Model $\alpha^{-1}=137.035999166(15)$~\cite{fan}. Against rubidium that
+is $+2.15\sigma$ ($a_e^{\rm exp}-a_e^{\rm SM}=+0.34\times10^{-12}$) and against caesium $-3.89\sigma$ ($-1.02\times10^{-12}$); both FAIL at 95\%
+\chk{sm:SM3.8}, \chk{sm:SM3.9}. They are one inherited tension, in the determinations of $\alpha$, seen twice. The muon is clean. The world
+average after Fermilab's final result, $a_\mu=116\,592\,071.5(14.5)\times10^{-11}$~\cite{muongtwo2025}, lies $+0.60\sigma$ from the Standard Model
+value $116\,592\,033(62)\times10^{-11}$ of the 2025 theory initiative~\cite{aliberti2025} \chk{sm:SM3.10} (Fig.~\ref{fig:sm-precision}b,c).
+\emph{Verdict} of the side prediction: \emph{derived}; \emph{holds}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{sm_precision.pdf}
+\caption{(a) The W mass: measurements~\cite{atlas2024b,cms2026,lhcb2022,lhctev2024,cdf2022} against the Standard Model fit without
+$m_W$~\cite{deblas2022} (band, $1\sigma$). (b) $\alpha^{-1}$ from caesium~\cite{parker2018}, rubidium~\cite{morel2020}, the electron's
+moment~\cite{fan} and CODATA 2022~\cite{codata2022}. (c) The muon anomaly, world average~\cite{muongtwo2025} and Standard Model~\cite{aliberti2025}. What
+to look for: CDF alone departs in (a); in (b) the electron's moment sits between two determinations of $\alpha$ that disagree with each other;
+(c) agrees.}
+\label{fig:sm-precision}
+\end{figure}
+
+\subsection{SM4: no unification within causality}\label{sec:sm-unif}
+
+Hypothesis~6$'$ puts any unification of the strong with the electroweak force before the start, so within causality the Standard Model couplings,
+run with Standard Model content alone, should not meet at one point; SM1 excludes the superpartners that would make them meet. We run the
+three couplings at two loops, with $\alpha_1=\frac53\alpha_Y$ normalised for grand unification,
+\begin{equation}\label{eq:sm-rge}
+\frac{\dd\alpha_i^{-1}}{\dd\ln\mu}=-\frac{b_i}{2\pi}-\sum_j\frac{b_{ij}\alpha_j}{8\pi^2}+\frac{d_i\,y_t^2}{32\pi^3},
+\end{equation}
+with $b=(41/10,-19/6,-7)$, $b_{ij}=\bigl(\begin{smallmatrix}199/50&27/10&44/5\\9/10&35/6&12\\11/10&9/2&-26\end{smallmatrix}\bigr)$, $d=(17/10,3/2,2)$ and
+$16\pi^2\,\dd y_t/\dd\ln\mu=y_t(\tfrac92y_t^2-8g_3^2-\tfrac94g_2^2-\tfrac{17}{20}g_1^2)$~\cite{buttazzo2013}. For contrast, the minimal supersymmetric
+extension takes over above a common threshold $M_{\rm SUSY}=2$\,TeV, with $b=(33/5,1,-3)$,
+$b_{ij}=\bigl(\begin{smallmatrix}199/25&27/5&88/5\\9/5&25&24\\11/5&9&14\end{smallmatrix}\bigr)$, $d=(26/5,6,4)$~\cite{martin1994}, its own top-Yukawa
+equation~\cite{martin1997}, $y_t\to y_t/\sin\beta$ and $\tan\beta=10$. The inputs are $1/\hat\alpha(M_Z)=127.950\pm0.017$~\cite{erler2017},
+$\sin^2\hat\theta_W=0.23129\pm0.00004$~\cite{navas2024}, $\alpha_s(M_Z)=0.1180\pm0.0009$~\cite{antusch2025,denterria2024} and $y_t(M_Z)=0.967$~\cite{antusch2025},
+so $\alpha_i^{-1}(M_Z)=59.01$, 29.59 and 8.47. As the measure of mismatch we take the smallest spread $\Delta=\max_i\alpha_i^{-1}-\min_i\alpha_i^{-1}$
+over $10^{12}$ to $10^{19}$\,GeV, which lies at a pairwise crossing. Its error combines 200 draws of the inputs (fixed seed) with a theory allowance
+equal to the whole two-loop correction, $|\Delta_{\rm 2\,loop}-\Delta_{\rm 1\,loop}|=0.47$, a deliberately generous stand-in for missing higher orders
+and threshold corrections \chk{sm:SM4}.
+
+In the Standard Model $\alpha_1$ meets $\alpha_2$ at $1.08\times10^{13}$\,GeV, $\alpha_1$ meets $\alpha_3$ at $1.71\times10^{14}$\,GeV and $\alpha_2$ meets
+$\alpha_3$ at $2.93\times10^{16}$\,GeV (Fig.~\ref{fig:sm-running}). The smallest spread is $\Delta=3.20$ at $1.7\times10^{14}$\,GeV, against $0.045$
+from the inputs and 0.47 from the allowance: $6.8\sigma$ from a single point \chk{sm:SM4.1}. Put differently, a single meeting point would need
+$\alpha_s(M_Z)=0.0738$, 37\% below the measured value and $49\sigma$ from it \chk{sm:SM4.2}. The supersymmetric contrast meets at
+$1.15\times10^{16}$\,GeV with $1/\alpha_G=25.66$ and needs $\alpha_s(M_Z)=0.1181$, within the input error, before any threshold correction
+\chk{sm:SM4.3}. Content beyond the Standard Model is what a unification within causality would require. Proton decay is the remaining trace: in
+Part~I's estimate $\tau\sim M_X^4/(\alpha_G^2m_p^5)$, Super-Kamiokande's $\tau/B(p\to e^+\pi^0)>2.4\times10^{34}$\,yr~\cite{superk} requires
+$M_X>4.8\times10^{15}$\,GeV for $\alpha_G=1/40$, and $4.7\times10^{15}$\,GeV for the Standard Model's $\alpha_G=1/42.2$ \chk{sm:SM4.4},
+\chk{data:D8.1}. A unification at the Standard Model's $\alpha_1=\alpha_2$ crossing would give $\tau\sim7\times10^{23}$\,yr, $3.5\times10^{10}$ times too short
+\chk{sm:SM4.5}. \emph{Verdict: holds}, as the Standard Model's own statement; a unification before the start stays \emph{untested}, with
+Hyper-Kamiokande~\cite{hyperk} as its live test.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{sm_running.pdf}
+\caption{(a) The inverse couplings at two loops, Eq.~\eqref{eq:sm-rge}, in the Standard Model (solid) and with supersymmetric content above
+2\,TeV (dashed), from the measured values at $M_Z$~\cite{erler2017,navas2024,antusch2025}. (b) Their spread $\max_i\alpha_i^{-1}-\min_i\alpha_i^{-1}$;
+dots: the smallest spread. What to look for: the Standard Model's three crossings span three decades in energy and never close to a point.}
+\label{fig:sm-running}
+\end{figure}
+
+\subsection{SM5: the coupling at the split}\label{sec:sm-split}
+
+Part~I says that $\alpha$ is born near $1/128$ at the Z mass and runs down to $1/137$. From $\alpha(0)$~\cite{codata2022} and the measured vacuum
+polarisation, $1/\alpha(M_Z)=\alpha(0)^{-1}[1-\Delta\alpha_{\rm lep}-\Delta\alpha_{\rm had}^{(5)}]=128.937\pm0.014$ on shell~\cite{steinhauser1998,davier2020},
+$+0.73\%$ from 128 \chk{sm:SM5.1}. In $\overline{\rm MS}$ the value is $127.950\pm0.017$~\cite{erler2017}, $-0.04\%$ from 128 \chk{data:D8.5}; the
+scheme offset implied by Erler's paired values~\cite{erler1999}, 0.98, turns our on-shell value into 127.96 \chk{sm:SM5.2}. The two schemes differ by
+about one unit in $1/\alpha$, which is as precisely as ``near $1/128$'' can be meant. The split itself is the lattice crossover at $T_c=159.5\pm1.5$\,GeV,
+with the measured Higgs mass above the end point of the first-order line \chk{data:D8.6}. \emph{Verdict: holds}, in either scheme, as the Standard
+Model's.
+
+\paragraph{Choices made after seeing the data.} ATLAS publishes its per-particle coupling modifiers only in figures, so the mass-coupling fit uses
+the CMS values and ATLAS enters through its two-parameter fit and its $p$-values. The preregistration does not say at which scale the Yukawa
+couplings are held fixed; we chose $M_Z$ before computing $R$ and carry $M_W$ to $v$ as a systematic. The error of the proton's electromagnetic
+self-energy, $\pm0.40$\,MeV, was set before computing $R$. The supersymmetric threshold of 2\,TeV and $\tan\beta=10$ were fixed before running. The
+methanol $2\sigma$ bound is read as a Gaussian centred on zero. Two choices did follow the data: the two rows of the electron's moment are
+scored separately, although they show one tension, after both were seen to fail; and the smallest spread of the couplings is evaluated at their
+crossings rather than on a grid, after the grid minimum was seen to sit at a kink (a change below 0.02). No verdict depends on these choices: $R$
+stays outside the preregistered window for every choice, and the Standard Model's running involves none of the others.
+
+\paragraph{Caveats.} The coupling fit ignores correlations between the $\kappa$, which are not published in the text; the collaborations' own
+$p$-values, which include them, agree with the verdict. The proton's electromagnetic self-energy is not an observable on its own, and its scheme
+dependence is covered only by the error we assign. The matching of the electron's mass at the electroweak scale has electroweak corrections of
+order $\alpha/\pi$ that we bound but do not compute. The methanol and quasar data lie at different redshifts and along different lines of sight;
+combining them assumes a slowly varying scalar. The clock values of $\alpha$ and $\mu$ share data, and the caesium-based $\mu$ assumes a model for the
+caesium nuclear $g$-factor. The two-loop running omits threshold corrections at the top mass, the $\overline{\rm MS}$ to $\overline{\rm DR}$
+conversion in the contrast model and all corrections at a unification scale; the theory allowance is a deliberately large stand-in for them. The
+Standard Model value of $m_W$ was fitted with the 2022 top mass. CDF's $m_W$ was read from a paper quoting it, and the rubidium $\alpha$ from the
+journal abstract.
+
+All numbers in this section come from \texttt{docs/simulation/standard\_model.py} (30 of 30 checks, about five seconds on one core) or,
+where marked ``data:'', from the script of Section~\ref{sec:data}.
+
+\paragraph{Verdict.} GUID's statements about the Standard Model hold wherever the data reach them, and almost everywhere they hold as the Standard
+Model's own: couplings proportional to mass over three decades, the W mass at loop level, no unification without new content, $\alpha$ near
+$1/128$ at the split. Three FAILs are inherited: CDF's W mass and the electron's moment against either of two disagreeing values of $\alpha$. One
+number was GUID's own and was wrong: the variation of $\mu$ that Hypothesis~\ref{h:info} allows is $R=-0.045\pm0.002$ times that of $\alpha$, set by
+the electron's self-energy, not 0.001 to 0.01 as preregistered. Two predictions are live and specific: no neutrinoless double-beta decay at any
+rate, and, should $\alpha$ ever be seen to vary, a $\mu$ that varies at least 400 times less than unification requires.

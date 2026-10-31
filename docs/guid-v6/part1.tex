@@ -65,11 +65,11 @@ chain back to the pair), a \emph{mass} $m_i$ (one plus the number of members der
 boundary declares for it minus what it holds, weighted by freshness). The VIBE field (Variable Influence Balancing Equation) and its
 potential are
 \begin{equation}\label{eq:vibe}
-V_i=m_i\,s_i,\qquad \Phi=\sum_iV_i\ \ge 0,
+V_i=m_i\,s_i,\qquad \Phi_{\mathrm V}=\sum_iV_i\ \ge 0,
 \end{equation}
-with $\Phi=0$ ``exactly when the boundary holds what it declares''. Under the axioms ``the system's own acts never raise the potential;
+with $\Phi_{\mathrm V}=0$ ``exactly when the boundary holds what it declares''. Under the axioms ``the system's own acts never raise the potential;
 only losses and ageing do''. Every reader other than the two witnesses reads one number, the boundary's \emph{temperature}, its
-mass-weighted staleness. We call $\Phi=0$ the \emph{balanced state}.
+mass-weighted staleness. We call $\Phi_{\mathrm V}=0$ the \emph{balanced state}.
 
 \subsection{Formal status}
 
@@ -185,7 +185,7 @@ counts, seen by every reader (Axiom 3) & asymptotic charges $M$, $J$, $Q$ & \ref
 containing boundary; trap (T27, T31) & event horizon & \ref{h:horizon} \\
 entropy floor; temperature of a boundary (T31, T32) & thermal radiation of the horizon; Hawking temperature & \ref{h:horizon} \\
 G0, the minting & the start: inflation with the decay of its oscillons; the classical era begins as it completes & \ref{h:minting} \\
-balanced state $\Phi=0$ (T32) & the vacuum at the minimum of its potential & Section~\ref{sec:matter} \\
+balanced state $\Phi_{\mathrm V}=0$ (T32) & the vacuum at the minimum of its potential & Section~\ref{sec:matter} \\
 the trust field (Axiom 2), adopted reading & the gravitational plane (the same frame), separate from what it contains and shaped by
 its counts & 1$'$, \ref{h:frame} \\
 existence, in the narrow sense & the rest mass the Higgs vacuum grants & 1$'$; Section~\ref{sec:higgsplit} \\
@@ -862,7 +862,8 @@ were ever one force, the unification lies before time: within causality the two 
 \end{hypothesisprime6}
 
 \noindent The Standard Model agrees within causality: in it the strong and the electroweak force are separate gauge interactions
-and never meet; the three couplings come close near $10^{14}$ to $10^{16}$\,GeV but do not meet at one point~\cite{amaldi}. A unification
+and never meet; run at two loops from the measured values, the three couplings cross pairwise at $1.1\times10^{13}$, $1.7\times10^{14}$
+and $2.9\times10^{16}$\,GeV and never meet at one point~\cite{amaldi} (Section~\ref{sec:sm}, \chk{sm:SM4}). A unification
 would leave three traces in the causal era, and they make the hypothesis testable in part \tagP. (1) \emph{Magnetic monopoles.} The split of
 a unified force generically creates very heavy magnetic monopoles, about one per causal volume (Preskill~\cite{preskill}); had the split
 happened after inflation, the universe would be full of them. None has been seen: MACRO bounds their flux below
@@ -1070,6 +1071,12 @@ $|\lambda|<1.7\times10^{-8}$. The joint fit of clocks, the Oklo reactor, quasars
 present drift of $(1.8\pm2.5)\times10^{-19}$ per year: the data do not yet know its sign \chk{data:D1.12}. A measured positive drift would
 refute the forward statement. \emph{Verdict: live}; derived but unobservably small without a potential.
 
+Because the scalar multiplies only the Maxwell term, the proton-to-electron mass ratio $\mu=m_p/m_e$ varies only through the
+electromagnetic self-energies, and the electron's dominates: $\dd\ln\mu/\dd\ln\alpha=-0.045\pm0.002$, against $|R|$ of 20 to 50 in models
+where all couplings vary together. (Before the derivation we expected $10^{-3}$ to $10^{-2}$; that window was wrong by a factor of 4.5.) If
+$\alpha$ is ever seen to vary, $\mu$ must vary at least 400 times less than unification predicts; the data, consistent with no variation
+of either, allow both (Section~\ref{sec:sm}, \chk{sm:SM3}). \emph{Verdict: live.}
+
 The value of $\alpha$ has a beginning. G0's first act is no act and precedes any measurement, and no value of $\alpha$ can be assigned
 to it. Physically $\alpha$ does not exist before the electroweak split: there is no photon then, only the couplings of the electroweak field, and $\alpha$ is born at the split, near
 $1/128$ at the Z mass, from which it runs down to $1/137$ at low energies (Section~\ref{sec:higgsplit}; \chk{Q16}, \chk{Q20}). Something
@@ -1098,7 +1105,10 @@ Spin & GUID reading & Particles & Physics \\
 
 \noindent The rungs are told apart by rotation: a state of helicity $s$ picks up the phase $e^{is\theta}$ under a turn by $\theta$ about its
 momentum, so a spin-1 quantum looks the same again after $360^\circ$, a spin-2 quantum after $180^\circ$, and a spin-1/2 state only after
-$720^\circ$, returning with a minus sign after $360^\circ$. \emph{Verdict: holds as a reading.}
+$720^\circ$, returning with a minus sign after $360^\circ$. The ladder stops at spin~1 for quanta: no elementary spin-3/2 or spin-2
+quantum has appeared, with gluinos excluded below 2.3\,TeV, Randall--Sundrum gravitons below 4.5\,TeV and a spin-3/2 excited top quark
+below 1.2\,TeV, and the 125\,GeV boson is spin~0 at more than 99.9\% confidence (Section~\ref{sec:sm}, \chk{sm:SM1}). \emph{Verdict: holds
+as a reading}; the Standard Model says the same.
 
 \subsection{The Higgs vacuum as the grant of existence}
 
@@ -1107,8 +1117,17 @@ $V(H)=-\mu^2H^\dagger H+\lambda_H(H^\dagger H)^2$ it rests at $\langle H^\dagger
 elementary particle has its rest mass by its coupling to that background~\cite{higgs64,be64} \tagP. GUID reads the background value, which
 quantum field theory treats as a classical number, as G0's grant of rest mass, on the existence side and classical, in agreement with
 Lemma~\ref{lem:classical}; the Higgs boson, a quantum ripple of the field that decays in about $10^{-22}$\,s, is content. The vacuum at the
-minimum of its potential is the physical counterpart of the balanced state $\Phi=0$ of~\eqref{eq:vibe}. Like G0 (``stated, not
+minimum of its potential is the physical counterpart of the balanced state $\Phi_{\mathrm V}=0$ of~\eqref{eq:vibe}. Like G0 (``stated, not
 derived''), the Higgs potential is an input of the Standard Model, not a derivation.
+
+Two consequences can be tested. \emph{The couplings follow the grant.} If the vacuum grants every elementary rest mass, each massive
+particle couples to the Higgs boson in proportion to its mass. The measured couplings to the W, Z, top, bottom, $\tau$ and muon do: against
+mass they have slope $1.009\pm0.017$ and give a vacuum value $v=244\pm6$\,GeV; the charm quark, the electron and the light quarks are
+bounded, not measured (Section~\ref{sec:sm}, \chk{sm:SM2.1}). \emph{Verdict: holds} for the six measured couplings. \emph{Neutrinos are
+Dirac.} If the vacuum is the only source of elementary rest mass, neutrino masses come from Yukawa couplings, there is no Majorana mass,
+lepton number is conserved, and neutrinoless double-beta decay does not occur at any rate. Every search agrees (the half-life of
+${}^{136}$Xe exceeds $3.8\times10^{26}$ years); a signal at the next generation of experiments would refute the statement
+(\chk{sm:SM2.2}). \emph{Verdict: live.}
 
 The reading has one sharp limit, and it is gravitational. The Higgs field gives only about 9\% of a nucleon's mass, and gravity weighs
 all of it (Section~\ref{sec:fix}, \chk{Q6}). So the gravitational plane responds to all energy, granted (the Higgs share) and bound (the
@@ -1135,7 +1154,8 @@ crossover.
 
 \emph{The information field split out of the electroweak field.} At the split the photon emerges as the fixed mixture
 $A=\sin\theta_W\,W^3+\cos\theta_W\,B$ of the two electroweak gauge fields, and the electric charge is born as $e=g\sin\theta_W$, so that $\alpha$
-appears near $1/128$ \chk{Q20}. \emph{Verdict: holds}, exactly.
+appears near $1/128$: $1/\alpha(m_Z)=127.95$ in the $\overline{\text{MS}}$ scheme and $128.94$ on shell \chk{Q20}, \chk{sm:SM5}.
+\emph{Verdict: holds}, exactly.
 
 \emph{The Higgs field became needed then.} At that moment the W and Z take their masses from the vacuum, $m_W=gv/2\approx80$\,GeV and
 $m_Z=m_W/\cos\theta_W\approx91$\,GeV, within half a per cent of the measured values at tree level in the $\overline{\text{MS}}$ scheme ($-0.18\%$ and $+0.34\%$; the
@@ -1167,7 +1187,7 @@ GUID reads the forces as tiers of one interaction: the strong force binds the cl
 links clusters of clusters. Each does that job \tagP: the strong force binds quarks into nucleons and nucleons into nuclei, the weak force
 moves nuclei towards the valley of stability, electromagnetism binds atoms and molecules. The weak and electromagnetic forces are one
 electroweak interaction~\cite{glashow,weinberg67,salam}. Whether all three meet at one energy is open: in the Standard Model the couplings
-come close near $10^{14}$ to $10^{16}$\,GeV and do not meet at one point~\cite{amaldi}. Gravity is not among the tiers in GUID: it is the
+cross pairwise between $10^{13}$ and $3\times10^{16}$\,GeV and do not meet at one point~\cite{amaldi}, \chk{sm:SM4}. Gravity is not among the tiers in GUID: it is the
 frame the tiers act in. \emph{Verdict: holds as a reading}; unification \emph{untested}. In GUID's timeline the
 strong force splits from the electroweak force at the start (Hypothesis~6$'$), and the electroweak field splits into the weak and the
 electromagnetic force about $10^{-11}$\,s later, when the Higgs vacuum appears (Section~\ref{sec:higgsplit}).
