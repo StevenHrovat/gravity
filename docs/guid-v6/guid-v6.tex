@@ -31,12 +31,16 @@ pairwise for 4000. \emph{Against data:} the rotation curves of 147 SPARC galaxie
 dark-matter remnant in its computed form; its accumulated form fits them only as Milgrom's interpolating function and fails in the solar
 system. The dark-matter reading that survives is primordial black holes from the start, consistent with cold-dark-matter halos. Of 33
 scored confrontations with laboratory, solar-system, astrophysical and cosmological data, 30 agree at 95\%, among them all 13 that test
-GUID-specific statements; the three tensions are inherited from $\Lambda$CDM, and the named inflation model meets a fourth. The simulations also show that, if Di\'osi--Penrose decoherence is real,
+GUID-specific statements; the three tensions are inherited from $\Lambda$CDM, and the named inflation model meets a fourth. Statements about the Standard Model, fixed before the
+analysis, hold for the Higgs couplings and predict no neutrinoless double-beta decay; our own predicted ratio of the variations of the
+proton-to-electron mass ratio and $\alpha$ was wrong by a factor of 4.5, and its corrected value is live. A reading of hadrons as trees of
+dualities, tested with tetraquarks and pentaquarks, fails for 5 of 9 measured masses and leaves the doubly bottom tetraquark as a live
+prediction. The simulations also show that, if Di\'osi--Penrose decoherence is real,
 no entanglement test can separate classical gravity from quantum gravity with that decoherence; the first experiment to decide is
 whether the decoherence exists, which tests Bridge~B. The spin witness of the original proposal, as printed in its arXiv version, is
 reached by product states, and the form quoted in later work is valid but detects only large entangling phases; we give a two-setting
 witness that detects every entangling phase.
-Every number comes from public scripts with 496 passing checks. We claim that the construction exists, reproduces and is consistent with
+Every number comes from public scripts with 606 passing checks. We claim that the construction exists, reproduces and is consistent with
 the data named, not that it is correct.
 \end{abstract}
 
@@ -142,7 +146,10 @@ a fourth. Rows that only restate the datum a prediction was taken from, or that 
 the Higgs couplings follow mass (slope $1.009\pm0.017$; holds), neutrinos are Dirac and neutrinoless double-beta decay does not occur
 (live), and the proton-to-electron mass ratio varies with $\alpha$ at $-0.045$ times its rate, at least 400 times less than unification
 predicts (live; the window we fixed beforehand was wrong by a factor of 4.5, a failed prediction we report). The gauge couplings never
-meet within the Standard Model's running (Section~\ref{sec:sm}). %EXOTICS
+meet within the Standard Model's running (Section~\ref{sec:sm}). Read for the strong force, the axioms make every hadron a tree of two
+colour-conjugate halves (H8). A colour-spin model fitted to ordinary hadrons gives the doubly charmed tetraquark but fails for 5 of 9
+measured tetraquark and pentaquark masses and for the charged partners of X(3872), while the doubly bottom tetraquark, predicted bound by
+205\,MeV, is live (Section~\ref{sec:exotics}).
 \item \emph{Twenty-three statements of version~5.1 are corrected or sharpened}, from the 95\% bound on the information scalar to the
 dark-matter verdict (Section~\ref{sec:corrections}).
 \end{enumerate}
@@ -151,8 +158,9 @@ dark-matter verdict (Section~\ref{sec:corrections}).
 verdicts follow from the measurements cited. The scripts and their checks are: \texttt{docs/guid-v6/checks.py} (125 of 125) for Part~I;
 \texttt{docs/qg-verdict/assembly.py} (18 of 18) for the holographic assembly; and in \texttt{docs/simulation/},
 \texttt{hosted\_benchmarks.py} (53 of 53), \texttt{holographic\_code.py} (77 of 77), \texttt{gravity\_simulated.py} (110 of 110),
-\texttt{bmv\_witness.py} (32 of 32), \texttt{sparc\_rotation.py} (36 of 36), \texttt{remnant\_history.py} (39 of 39) and
-\texttt{predictions\_vs\_data.py}, whose 6 numerical checks pass and whose 33 scored confrontations are results, 30 of them consistent.
+\texttt{bmv\_witness.py} (34 of 34), \texttt{sparc\_rotation.py} (39 of 39), \texttt{remnant\_history.py} (39 of 39),
+\texttt{standard\_model.py} (30 of 30), \texttt{exotic\_hadrons.py} (75 of 75) and \texttt{predictions\_vs\_data.py}, whose 6 numerical
+checks pass and whose 33 scored confrontations are results, 30 of them consistent.
 Appendix~\ref{app:repro} gives runtimes, seeds and data provenance. We do not claim that the account is correct, and we name in
 Section~\ref{sec:break} where we expect it to break.
 

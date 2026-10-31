@@ -125,8 +125,9 @@ def check_true(label, cond):
 # Sources. Each entry: reference, what was read, the values used.
 # =====================================================================================================================================
 CITATIONS = {
-    "DGG1975": {"ref": "A. De Rujula, H. Georgi, S. L. Glashow, Phys. Rev. D 12, 147 (1975)", "read": "cited for the colour-spin "
-                "(chromomagnetic) hyperfine interaction; not re-read (no arXiv version)", "values": "none used"},
+    "DGG1975": {"ref": "A. De Rujula, H. Georgi, S. L. Glashow, Phys. Rev. D 12, 147 (1975)", "read": "the reference as given in "
+                "KR2014 ref. [23]; cited for the colour-spin (chromomagnetic) hyperfine interaction; the paper itself not re-read "
+                "(no arXiv version)", "values": "none used"},
     "KR2014": {"ref": "M. Karliner, J. L. Rosner, Phys. Rev. D 90, 094007 (2014), arXiv:1408.5877",
                "read": "full text: Tables I, II, IV, VI, VII, IX; eqs. (1)-(20)",
                "values": "m^b_q=363, m^b_s=538, a/(m^b_q)^2=50, m^m_q=310, m^m_s=483, b/(m^m_q)^2=80, m^m_c=1663.3, m^b_c=1710.5, "
@@ -142,7 +143,7 @@ CITATIONS = {
     "KNR2017": {"ref": "M. Karliner, S. Nussinov, J. L. Rosner, Phys. Rev. D 95, 034011 (2017), arXiv:1611.00348",
                 "read": "Sec. II, eqs. (1)-(8)", "values": "S=165.1, m_c=1655.6, m_b=4988.6, M(cc,3bar)=3204.1, B=-388.3, "
                 "Delta M_3=79.3, M(cc cbar cbar, 0++) = 6191.5 (abstract 6192+-25); J/psi J/psi threshold 6193.8"},
-    "LHCb_Tcc_NP": {"ref": "LHCb, Nature Phys. 18, 751 (2022), arXiv:2109.01038", "read": "abstract",
+    "LHCb_Tcc_NP": {"ref": "LHCb, Nature Phys. (2022), doi:10.1038/s41567-022-01614-y, arXiv:2109.01038", "read": "abstract",
                     "values": "narrow state just below the D*+ D0 threshold, mass about 3875 MeV"},
     "LHCb_Tcc_NC": {"ref": "LHCb, Nature Commun. 13, 3351 (2022), arXiv:2109.01056", "read": "full text, eqs. (1), (4), (5), (12), "
                     "Table 2, Fig. 4 and conclusions", "values": "delta m_U = -359+-40 (+9 -6) keV; pole delta m = -360+-40 (+4 -0) "
@@ -184,11 +185,12 @@ CITATIONS = {
                     "read": "abstract", "values": "ud bbar bbar 1+ 189(10) MeV below threshold"},
     "Leskovec2019": {"ref": "L. Leskovec, S. Meinel, M. Pflaumer, M. Wagner, Phys. Rev. D 100, 014503 (2019), arXiv:1904.04197",
                      "read": "abstract", "values": "binding -128+-24+-10 MeV, mass 10476+-24+-10 MeV"},
-    "Aoki2023": {"ref": "T. Aoki, S. Aoki, T. Inoue, Phys. Rev. D 108, 054502 (2023), arXiv:2306.03565", "read": "abstract",
+    "Aoki2023": {"ref": "T. Aoki, S. Aoki, T. Inoue, arXiv:2306.03565 (2023)", "read": "abstract",
                  "values": "83(10) MeV below B B* (coupled channel), +-20 MeV systematic; single channel 155(17)"},
     "Hudspith2023": {"ref": "R. J. Hudspith, D. Mohler, Phys. Rev. D 107, 114510 (2023), arXiv:2303.17295", "read": "abstract",
                      "values": "112.0(13.2) MeV below B B*"},
-    "Tripathy2025": {"ref": "B. S. Tripathy, N. Mathur, M. Padmanath, arXiv:2503.09760 (2025)", "read": "abstract",
+    "Tripathy2025": {"ref": "B. S. Tripathy, N. Mathur, M. Padmanath, Phys. Rev. D 111, 114504 (2025), arXiv:2503.09760",
+                     "read": "abstract",
                      "values": "Delta E = -116 (+30 -36) MeV relative to B B*"},
     "Francis2019": {"ref": "A. Francis, R. J. Hudspith, R. Lewis, K. Maltman, Phys. Rev. D 99, 054505 (2019), arXiv:1810.10550",
                     "read": "abstract", "values": "ud cbar bbar 0(1+) 15 to 61 MeV below Dbar B*"},
@@ -563,6 +565,27 @@ check("E14 Delta: sum of <sigma.sigma> = +3", sum(_d.ssm[p][0, 0] for p in _d.ss
 _x = tetra("chk", "c", "q", "c", "q", 1, cperm=[2, 3, 0, 1])
 _cvals = sorted(int(round(v)) for v in np.linalg.eigvalsh(_x.cmat))
 check_true("E15 [cq][cbar qbar] J=1: C eigenvalues {-1,-1,+1} (one 1++, two 1+-)", _cvals == [-1, -1, 1])
+# H8's two tetraquark trees span the colour-singlet space: the compact [12]_3bar[34]_3 and the molecular (13)_1(24)_1 states are two
+# vectors of the two-dimensional singlet space of q q qbar qbar with overlap 1/sqrt(3)
+def _colour_singlets(anti, node_targets):
+    n = len(anti)
+    F = [[embed(-GELLMANN[a].conj() / 2 if anti[i] else GELLMANN[a] / 2, i, n, 3) for a in range(8)] for i in range(n)]
+    M = np.zeros((3 ** n, 3 ** n), dtype=complex)
+    for lv, target in node_targets:
+        cas = sum((sum(F[i][a] for i in lv)) @ (sum(F[i][a] for i in lv)) for a in range(8))
+        D = cas - target * np.eye(3 ** n)
+        M += D.conj().T @ D
+    w, V = np.linalg.eigh(M)
+    return V[:, w < 1e-8]
+
+
+_tet_anti = [False, False, True, True]
+_all = _colour_singlets(_tet_anti, [((0, 1, 2, 3), 0.0)])
+_cmp = _colour_singlets(_tet_anti, [((0, 1), 4 / 3), ((2, 3), 4 / 3), ((0, 1, 2, 3), 0.0)])
+_mol = _colour_singlets(_tet_anti, [((0, 2), 0.0), ((1, 3), 0.0)])
+check("E17 dimension of the q q qbar qbar colour-singlet space", _all.shape[1], 2, 0)
+check("E18 |<compact tree|molecular tree>|^2 = 1/3 (the two H8 trees span the singlet space)",
+      abs(np.vdot(_cmp[:, 0], _mol[:, 0])) ** 2, 1 / 3, 1e-10)
 _cc4 = [tetra("chk", "c", "c", "c", "c", J, cperm=[2, 3, 0, 1]) for J in (0, 1, 2)]
 check_true("E16 [cc]_1[cbar cbar]_1: C = +, -, + for J = 0, 1, 2",
            [int(round(c.cmat[0, 0])) for c in _cc4] == [1, -1, 1])
@@ -1233,6 +1256,14 @@ for sd in (1.0, 3.0):
         ps = np.array([proximity(c, hs, W_MAIN)["p"] for c in CATALOGUE])
         fs.append(fisher(ps)[1])
     pert[sd] = (float(np.min(fs)), float(np.median(fs)), float(np.max(fs)))
+# B7: distances below the measurement error are not resolved: replace |M - T| by max(|M - T|, sigma_M)
+def proximity_floor(c, W):
+    t = THR[c[0]]["main"]
+    d = max(abs(t["d"]), c[2])
+    return interval_cover([(x - d, x + d) for x in t["thresholds"]], c[1] - W, c[1] + W) / (2 * W)
+
+
+FISH_FLOOR = fisher(np.array([proximity_floor(c, W_MAIN) for c in CATALOGUE]))
 # B5: the same test on the subset of states whose J^P is measured (no free choice of partial wave)
 KNOWN_JP = [c for c in CATALOGUE if c[4] is not None and c[5] is not None]
 FISH_KNOWN = fisher(np.array([THR[c[0]]["main"]["p"] for c in KNOWN_JP]))
@@ -1244,7 +1275,7 @@ print(f"  within 5/10/20 MeV: {N_CLOSE[5.0]}/{N_CLOSE[10.0]}/{N_CLOSE[20.0]} obs
       f"{EXP_CLOSE[20.0]:.2f} expected; below threshold: {N_BELOW} of {len(CATALOGUE)}; mean thresholds per window {MEAN_NWIN:.1f}")
 print(f"  perturbed unverified masses: 1 MeV -> p in [{pert[1.0][0]:.1e}, {pert[1.0][2]:.1e}], 3 MeV -> [{pert[3.0][0]:.1e}, "
       f"{pert[3.0][2]:.1e}];  measured-J^P subset ({len(KNOWN_JP)}): p = {FISH_KNOWN[1]:.2e};  without the two <1 MeV states: "
-      f"p = {FISH_FAR[1]:.2e}")
+      f"p = {FISH_FAR[1]:.2e};  distances floored at sigma_M: p = {FISH_FLOOR[1]:.2e}")
 
 
 # =====================================================================================================================================
@@ -1562,15 +1593,22 @@ CHOICES_AFTER_DATA = [
     "for the J/psi phi states, not the 2016 values; the BESIII discovery values for Z_c(3900) and Z_c(4020), not PDG averages, which "
     "we could not read). The catalogue excludes X(3915) (exotic status disputed), P_cs(4459) and P_c(4337) (evidence below 5 sigma).",
     "The chance-proximity numbers for the three 'nearest level' assignments (p_chance) were added after seeing that they hold.",
-    "Tests B5 (states with measured J^P only) and B6 (without the two states within 1 MeV of a threshold) were added after seeing "
-    "the Fisher result, to show what drives it.",
+    "Tests B5 (states with measured J^P only), B6 (without the two states within 1 MeV of a threshold) and B7 (distances floored at "
+    "the mass error) were added after seeing the Fisher result, to show what drives it.",
     "The CMS and ATLAS di-J/psi structures are shown with the fully charmed levels but not scored; that the lowest ATLAS structure "
     "(6.41 GeV) lies near the model's S-wave levels was noticed after the comparison and is not a test.",
 ]
+_tet = [ROW[l]["J"]["M"] - ROW[l]["P"]["M"] for l in ("T_cc+ (cc ubar dbar)", "T_bb- (bb ubar dbar)", "T_bc (bc ubar dbar), 0+",
+                                                      "X0(2900) (ud cbar sbar)", "T_csbar0(2900) (c sbar u dbar)",
+                                                      "cc cbar cbar 2++ vs X(6900)")]
+_pen = [ROW[l]["J"]["M"] - ROW[l]["P"]["M"] for l in ("P_c(4312) (lowest uud c cbar)", "P_psis(4338) (lowest I=0, J=1/2)",
+                                                      "P_cc ([cc][ud] qbar), lowest")]
+DELTA_J = {"tetraquarks": (min(_tet), max(_tet)), "pentaquarks": (min(_pen), max(_pen))}
 CAVEATS = [
-    "Effective-mass conventions dominate the multiquark predictions. Baryon masses for every constituent (KR) and universal masses "
-    "with string junctions (variant J) differ by about 100 MeV for every tetraquark and 110-210 MeV for pentaquarks, ten times "
-    "sigma_model; the fit to ordinary hadrons cannot choose between them (sigma_model 8.1 and 8.3 MeV).",
+    f"Effective-mass conventions dominate the multiquark predictions. Baryon masses for every constituent (KR) and universal masses "
+    f"with string junctions (variant J) differ by {min(_tet):.0f} to {max(_tet):.0f} MeV for the tetraquarks and {min(_pen):.0f} to "
+    f"{max(_pen):.0f} MeV for the lowest pentaquarks, ten to twenty-five times sigma_model; the fit to ordinary hadrons cannot choose "
+    f"between them (sigma_model {FIT['P']['sigma']:.1f} and {FIT['J']['sigma']:.1f} MeV).",
     "sigma_model is the spread of ordinary hadrons. It does not include the uncertainty of carrying the model to four and five "
     "constituents (colour configurations outside the H8 tree, the spatial size of a diquark pair, binding across the halves).",
     "The H8 tree keeps one colour configuration (3bar x 3 for tetraquarks). The full colour-spin model also has 6 x 6bar; mixing would "
@@ -1579,8 +1617,8 @@ CAVEATS = [
     "refutes an S-wave assignment, not every compact reading.",
     "Threshold test: the catalogue is not a random sample. Many exotic states were found as narrow structures near thresholds, and "
     "threshold cusps can mimic peaks, so proximity is partly a selection effect. The threshold list (hadrons narrower than 60 MeV) "
-    "and the S-wave and C rules set the look-elsewhere count, on average 5.5 thresholds per +-150 MeV window; isospin and G parity "
-    "are not imposed.",
+    f"and the S-wave and C rules set the look-elsewhere count, on average {MEAN_NWIN:.1f} thresholds per +-150 MeV window; isospin "
+    "and G parity are not imposed.",
     "Threshold proximity is the standard signature of hadronic molecules and of threshold cusps in QCD; it supports the molecular "
     "branch of H8 only in the sense that H8 includes that branch.",
     "Lattice QCD results for T_bb scatter from 83 to 189 MeV binding; the comparison is not a measurement.",
@@ -1627,7 +1665,8 @@ out = {
         "inputs": [{"name": d[0], "mass": d[1], "source": d[2]} for d in FIT_DATA],
     },
     "A": {"items": ITEMS, "n_scored": len(scored), "n_holds": n_hold,
-          "n_refuted": sum(r["verdict"] == "refuted" for r in scored)},
+          "n_refuted": sum(r["verdict"] == "refuted" for r in scored),
+          "n_holds_by_scheme": {sch: sum(abs(r[sch]["pull"]) < 2 for r in scored) for sch in ("P", "P-in", "J")}},
     "B": {"W": W_MAIN, "W_alt": W_ALT, "n_states": len(CATALOGUE),
           "states": [{"name": c[0], "mass": c[1], "err": c[2], "width": c[3], "J": c[4], "P": c[5], "C": c[6], "content": c[7],
                       "source": c[8], "nearest": THR[c[0]]["main"]["nearest"], "threshold": THR[c[0]]["main"]["T"],
@@ -1640,8 +1679,10 @@ out = {
           "n_below": N_BELOW, "mean_thresholds_per_window": MEAN_NWIN,
           "perturbed_unverified_1MeV": pert[1.0], "perturbed_unverified_3MeV": pert[3.0],
           "known_JP": {"n": len(KNOWN_JP), "p": FISH_KNOWN[1]}, "without_sub_MeV": {"n": len(FAR), "p": FISH_FAR[1]},
+          "distance_floored_at_sigma_M": {"p": FISH_FLOOR[1]},
           "n_threshold_hadrons": len(THRESH_HADRONS), "n_unverified_hadrons": sum(1 for h in THRESH_HADRONS if not h[7])},
     "C": PARTNERS,
+    "delta_J_minus_P": DELTA_J,
     "choices_after_data": CHOICES_AFTER_DATA, "caveats": CAVEATS,
     "citations": CITATIONS,
     "runtime_s": round(time.perf_counter() - T_START, 1),
@@ -1736,7 +1777,8 @@ md.append(f"\n(u): a threshold hadron mass not re-read. Fisher X2 = {FISH_MAIN[0
           f"{P_CLOSE[10.0]:.3f}/{P_CLOSE[20.0]:.3f}). Below the nearest threshold: {N_BELOW} of {len(CATALOGUE)}. Mean number of "
           f"allowed thresholds per window: {MEAN_NWIN:.1f}. Unverified threshold masses perturbed by 1 MeV: p from {pert[1.0][0]:.1e} "
           f"to {pert[1.0][2]:.1e}; by 3 MeV: {pert[3.0][0]:.1e} to {pert[3.0][2]:.1e}. States with measured J^P only "
-          f"({len(KNOWN_JP)}): p = {FISH_KNOWN[1]:.1e}. Without T_cc+ and X(3872): p = {FISH_FAR[1]:.3f}.\n")
+          f"({len(KNOWN_JP)}): p = {FISH_KNOWN[1]:.1e}. Without T_cc+ and X(3872): p = {FISH_FAR[1]:.3f}. Distances floored at "
+          f"the mass error: p = {FISH_FLOOR[1]:.1e}.\n")
 md.append("## (c) Partners\n")
 for pt in PARTNERS:
     md.append(f"- **{pt['id']}** {pt['prediction']}. *Search:* {pt['search']}. **{pt['verdict']}**.")

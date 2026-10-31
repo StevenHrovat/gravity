@@ -27,6 +27,8 @@ SCRIPTS = [
     ("docs/simulation/sparc_rotation.py", ["--data"], 0),
     ("docs/simulation/remnant_history.py", ["--data"], 0),
     ("docs/simulation/predictions_vs_data.py", [], 1),
+    ("docs/simulation/standard_model.py", [], 0),
+    ("docs/simulation/exotic_hadrons.py", [], 0),
 ]
 
 env = dict(os.environ, OPENBLAS_NUM_THREADS="1", OMP_NUM_THREADS="1", MKL_NUM_THREADS="1", PYTHONDONTWRITEBYTECODE="1")

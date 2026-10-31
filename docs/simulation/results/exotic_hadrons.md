@@ -1,6 +1,6 @@
 # Hadrons as trees of dualities (H8): tetraquarks and pentaquarks against data
 
-Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (seed 20210901); every number is also in `exotic_hadrons.json`. Figures: `docs/simulation/figures/exotic_fit.pdf`, `exotic_spectrum.pdf`, `exotic_levels.pdf`, `exotic_thresholds.pdf`. Checks: **73 of 73 passed** (engine, hosting check, fit numerics, null distribution); every confrontation with data is a result, not a check. Runtime 66 s.
+Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (seed 20210901); every number is also in `exotic_hadrons.json`. Figures: `docs/simulation/figures/exotic_fit.pdf`, `exotic_spectrum.pdf`, `exotic_levels.pdf`, `exotic_thresholds.pdf`. Checks: **75 of 75 passed** (engine, hosting check, fit numerics, null distribution); every confrontation with data is a result, not a check. Runtime 67 s.
 
 ## Verdict
 
@@ -15,32 +15,32 @@ Workstream SM6 of *GUID v6*. Written by `docs/simulation/exotic_hadrons.py` (see
 
 Model P: KR's convention, parameters fitted here. P-in: no binding across the halves. J: universal masses plus junctions. Pull with sigma_pred and the data error on the side of the model; |pull| < 2 holds.
 
-| state | J^P | model P [MeV] | P-in | J | data | pull | verdict | lowest S-wave threshold: M - T |
-|---|---|---|---|---|---|---|---|---|
-| T_cc+ (cc ubar dbar) | 1+ | 3897.5 +- 12.2 | 3897.5 | 3994.5 | 3874.7 (-0.1 +0.1) | +1.86 | holds | D*+ D0 3875.1: +22.4 |
-| T_bb- (bb ubar dbar) | 1+ | 10399.4 +- 12.3 | 10399.4 | 10512.0 | - | - | live | B+~ B*0~ 10604.1: -204.7 |
-| T_bc (bc ubar dbar), 0+ | 0+ | 7146.4 +- 11.1 | 7146.4 | 7251.2 | - | - | live | D0 B0~ 7144.5: +1.9 |
-| T_bc (bc ubar dbar), 1+ | 1+ | 7180.1 +- 11.5 | 7180.1 | 7285.0 | - | - | live | D0 B*0~ 7189.6: -9.4 |
-| X0(2900) (ud cbar sbar) | 0+ | 2754.8 +- 9.5 | 2754.8 | 2860.7 | 2866.0 (-7.3 +7.3) | -9.28 | refuted | K0 D0~ 2362.5: +392.4 |
-| T_csbar0(2900) (c sbar u dbar) | 0+ | 2808.5 +- 8.9 | 2825.1 | 2915.9 | 2908.0 (-22.8 +22.8) | -4.06 | refuted | pi+ Ds+ 2107.9: +700.6 |
-| cc cbar cbar 2++ vs X(6900) | 2++ | 6424.9 +- 28.7 | 6672.4 | 6514.9 | 6905.0 (-13.0 +13.0) | -15.22 | refuted | J/psi J/psi 6193.8: +231.1 |
-| cc cbar cbar 0++ vs X(6900) | 0++ | 6340.3 +- 26.5 | 6587.8 | 6430.3 | 6905.0 (-13.0 +13.0) | -19.14 | info | eta_c eta_c 5968.2: +372.1 |
-| cc cbar cbar 1+- | 1+- | 6368.5 +- 26.9 | 6616.0 | 6458.5 | - | - | live | eta_c J/psi 6081.0: +287.5 |
-| P_c(4312) (lowest uud c cbar) |  | 4276.8 +- 11.4 | 4338.7 | 4485.1 | 4311.9 (-0.9 +6.8) | -3.06 | refuted | eta_c p 3922.4: +354.4 |
-| P_c(4440) (nearest level) |  | 4428.4 +- 11.1 | 4396.3 | 4485.1 | 4440.3 (-4.9 +4.3) | -0.98 | holds | eta_c p 3922.4: +506.0 |
-| P_c(4457) (nearest level) |  | 4461.8 +- 11.1 | 4490.3 | 4485.1 | 4457.3 (-1.8 +4.1) | +0.38 | holds | eta_c p 3922.4: +539.4 |
-| P_psis(4338) (lowest I=0, J=1/2) | 1/2- | 4392.0 +- 11.1 | 4470.4 | 4601.5 | 4338.2 (-0.8 +0.8) | +4.81 | refuted | eta_c Lambda 4099.8: +292.2 |
-| P_cs(4459) (nearest level; evidence only) |  | 4460.3 +- 10.9 | 4470.4 | 4601.5 | 4458.8 (-3.1 +5.5) | +0.13 | holds | eta_c Lambda 4099.8: +360.5 |
-| P_cc ([cc][ud] qbar), lowest | 1/2- | 4231.7 +- 12.2 | 4231.7 | 4435.6 | - | - | live | pi+~ Xi_cc++ 3761.1: +470.6 |
-| compact X(3872): [cq][cbar qbar] 1++ | 1++ | 4108.2 +- 11.2 | 4170.1 | 4212.1 | 3871.7 (-0.1 +0.1) | +21.03 | info | D0 D*0~ 3871.7: +236.5 |
-| compact Z_c(3900): [cq][cbar qbar] 1+- | 1+- | 3985.2 +- 11.3 | 4047.1 | 4087.1 | 3899.0 (-6.1 +6.1) | +6.72 | info | pi+ J/psi 3236.5: +748.7 |
-| T_cc partner I=1, J=0 | 0+ | 4041.5 +- 12.1 | 4041.5 | 4143.2 | - | - | live | D0 D0 3729.7: +311.8 |
-| T_bb partner I=1, J=0 | 0+ | 10583.2 +- 12.2 | 10583.2 | 10700.3 | - | - | live | B+~ B+~ 10558.7: +24.5 |
-| T_cc partner I=1, J=1 | 1+ | 4071.2 +- 12.1 | 4071.2 | 4172.9 | - | - | live | D0 D*0 3871.7: +199.5 |
-| T_bb partner I=1, J=1 | 1+ | 10593.0 +- 12.2 | 10593.0 | 10710.2 | - | - | live | B+~ B*+~ 10604.1: -11.1 |
-| T_cc partner I=1, J=2 | 2+ | 4130.6 +- 12.2 | 4130.6 | 4232.3 | - | - | live | D*0 D*0 4013.7: +116.9 |
-| T_bb partner I=1, J=2 | 2+ | 10612.7 +- 12.2 | 10612.7 | 10730.0 | - | - | live | B*+~ B*+~ 10649.5: -36.8 |
-| X0 partner [ud]0[cbar sbar]1, 1+ | 1+ | 2807.3 +- 9.2 | 2807.3 | 2907.7 | - | - | live | K+ D*+~ 2503.9: +303.3 |
+| state | level (model P) | model P [MeV] | KR parameters | P-in | J | data | pull | verdict | lowest S-wave threshold (~ = antiparticle): M - T |
+|---|---|---|---|---|---|---|---|---|---|
+| T_cc+ (cc ubar dbar) | T_cc | 3897.5 +- 12.2 | 3882.2 | 3897.5 | 3994.5 | 3874.7 (-0.1 +0.1) | +1.86 | holds | D*+ D0 3875.1: +22.4 |
+| T_bb- (bb ubar dbar) | T_bb | 10399.4 +- 12.3 | 10389.3 | 10399.4 | 10512.0 | - | - | live | B+~ B*0~ 10604.1: -204.7 |
+| T_bc (bc ubar dbar), 0+ | T_bc(0+) | 7146.4 +- 11.1 | 7133.8 | 7146.4 | 7251.2 | - | - | live | D0 B0~ 7144.5: +1.9 |
+| T_bc (bc ubar dbar), 1+ | T_bc(1+) | 7180.1 +- 11.5 | 7167.8 | 7180.1 | 7285.0 | - | - | live | D0 B*0~ 7189.6: -9.4 |
+| X0(2900) (ud cbar sbar) | [ud]0[cbar sbar]0 | 2754.8 +- 9.5 | 2754.2 | 2754.8 | 2860.7 | 2866.0 (-7.3 +7.3) | -9.28 | refuted | K0 D0~ 2362.5: +392.4 |
+| T_csbar0(2900) (c sbar u dbar) | [cq][sbar qbar] J=0 | 2808.5 +- 8.9 | 2811.9 | 2825.1 | 2915.9 | 2908.0 (-22.8 +22.8) | -4.06 | refuted | pi+ Ds+ 2107.9: +700.6 |
+| cc cbar cbar 2++ vs X(6900) | [cc]1[cbar cbar]1 J=2 | 6424.9 +- 28.7 | 6382.6 | 6672.4 | 6514.9 | 6905.0 (-13.0 +13.0) | -15.22 | refuted | J/psi J/psi 6193.8: +231.1 |
+| cc cbar cbar 0++ vs X(6900) | [cc]1[cbar cbar]1 J=0 | 6340.3 +- 26.5 | 6297.7 | 6587.8 | 6430.3 | 6905.0 (-13.0 +13.0) | -19.14 | info | eta_c eta_c 5968.2: +372.1 |
+| cc cbar cbar 1+- | [cc]1[cbar cbar]1 J=1 | 6368.5 +- 26.9 | 6326.0 | 6616.0 | 6458.5 | - | - | live | eta_c J/psi 6081.0: +287.5 |
+| P_c(4312) (lowest uud c cbar) | ([cq][qq]_0)cbar J=1/2 | 4276.8 +- 11.4 | 4263.6 | 4338.7 | 4485.1 | 4311.9 (-0.9 +6.8) | -3.06 | refuted | eta_c p 3922.4: +354.4 |
+| P_c(4440) (nearest level) | ([cq][qq]_1)cbar J=1/2 | 4428.4 +- 11.1 | 4445.5 | 4396.3 | 4485.1 | 4440.3 (-4.9 +4.3) | -0.98 | holds | eta_c p 3922.4: +506.0 |
+| P_c(4457) (nearest level) | ([cq][qq]_1)cbar J=1/2 | 4461.8 +- 11.1 | 4455.8 | 4490.3 | 4485.1 | 4457.3 (-1.8 +4.1) | +0.38 | holds | eta_c p 3922.4: +539.4 |
+| P_psis(4338) (lowest I=0, J=1/2) | ([cs][ud]_0)cbar J=1/2 | 4392.0 +- 11.1 | 4382.1 | 4470.4 | 4601.5 | 4338.2 (-0.8 +0.8) | +4.81 | refuted | eta_c Lambda 4099.8: +292.2 |
+| P_cs(4459) (nearest level; evidence only) | ([cs][ud]_0)cbar J=3/2 | 4460.3 +- 10.9 | 4441.7 | 4470.4 | 4601.5 | 4458.8 (-3.1 +5.5) | +0.13 | holds | eta_c Lambda 4099.8: +360.5 |
+| P_cc ([cc][ud] qbar), lowest | ([cc]1[ud]_0)qbar J=1/2 | 4231.7 +- 12.2 | 4215.3 | 4231.7 | 4435.6 | - | - | live | pi+~ Xi_cc++ 3761.1: +470.6 |
+| compact X(3872): [cq][cbar qbar] 1++ | [cq][cbar qbar] J=1 | 4108.2 +- 11.2 | 4093.4 | 4170.1 | 4212.1 | 3871.7 (-0.1 +0.1) | +21.03 | info | D0 D*0~ 3871.7: +236.5 |
+| compact Z_c(3900): [cq][cbar qbar] 1+- | [cq][cbar qbar] J=1 | 3985.2 +- 11.3 | 3969.3 | 4047.1 | 4087.1 | 3899.0 (-6.1 +6.1) | +6.72 | info | pi+ J/psi 3236.5: +748.7 |
+| T_cc partner I=1, J=0 | T_cc I=1 J=0 | 4041.5 +- 12.1 | 4022.5 | 4041.5 | 4143.2 | - | - | live | D0 D0 3729.7: +311.8 |
+| T_bb partner I=1, J=0 | T_bb I=1 J=0 | 10583.2 +- 12.2 | 10569.5 | 10583.2 | 10700.3 | - | - | live | B+~ B+~ 10558.7: +24.5 |
+| T_cc partner I=1, J=1 | T_cc I=1 J=1 | 4071.2 +- 12.1 | 4052.3 | 4071.2 | 4172.9 | - | - | live | D0 D*0 3871.7: +199.5 |
+| T_bb partner I=1, J=1 | T_bb I=1 J=1 | 10593.0 +- 12.2 | 10579.4 | 10593.0 | 10710.2 | - | - | live | B+~ B*+~ 10604.1: -11.1 |
+| T_cc partner I=1, J=2 | T_cc I=1 J=2 | 4130.6 +- 12.2 | 4112.0 | 4130.6 | 4232.3 | - | - | live | D*0 D*0 4013.7: +116.9 |
+| T_bb partner I=1, J=2 | T_bb I=1 J=2 | 10612.7 +- 12.2 | 10599.2 | 10612.7 | 10730.0 | - | - | live | B*+~ B*+~ 10649.5: -36.8 |
+| X0 partner [ud]0[cbar sbar]1, 1+ | [ud]0[cbar sbar]1 | 2807.3 +- 9.2 | 2801.3 | 2807.3 | 2907.7 | - | - | live | K+ D*+~ 2503.9: +303.3 |
 
 - T_bb- (bb ubar dbar): model binding -204.7 +- 12.3 MeV; lattice: Francis2017 -189 (pull -1.0), Leskovec2019 -128 (pull -2.7), Aoki2023 -83 (pull -4.8), Hudspith2023 -112 (pull -5.1), Tripathy2025 -116 (pull -2.3)
 - T_bc (bc ubar dbar), 1+: model binding -9.4 +- 11.5 MeV; lattice: Francis2019 -38 (pull +1.1), Padmanath2024 -43 (pull +1.8)
@@ -147,7 +147,7 @@ KR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/3
 | P_psis(4338)0 | 4338.2 | 1/2- | D+~ Xi_c+ | 4337.4 | +0.8 | 0.0631 | 0.0482 | LHCb_Ppsis4338 |
 | X(6900) | 6905.0 | ??+ | chi_c0 chi_c1 | 6925.4 | -20.4 | 0.8595 | 0.7267 | LHCb_X6900 |
 
-(u): a threshold hadron mass not re-read. Fisher X2 = 101.1 (52 dof), p = 5.36e-05; W = 300: p = 4.13e-06. Within 5/10/20 MeV: 7/13/18 observed, 3.82/6.99/12.19 expected (Poisson p 0.093/0.027/0.071). Below the nearest threshold: 12 of 26. Mean number of allowed thresholds per window: 5.5. Unverified threshold masses perturbed by 1 MeV: p from 7.0e-06 to 7.5e-05; by 3 MeV: 5.0e-07 to 1.4e-04. States with measured J^P only (17): p = 1.8e-04. Without T_cc+ and X(3872): p = 0.057.
+(u): a threshold hadron mass not re-read. Fisher X2 = 101.1 (52 dof), p = 5.36e-05; W = 300: p = 4.13e-06. Within 5/10/20 MeV: 7/13/18 observed, 3.82/6.99/12.19 expected (Poisson p 0.093/0.027/0.071). Below the nearest threshold: 12 of 26. Mean number of allowed thresholds per window: 5.5. Unverified threshold masses perturbed by 1 MeV: p from 7.0e-06 to 7.5e-05; by 3 MeV: 5.0e-07 to 1.4e-04. States with measured J^P only (17): p = 1.8e-04. Without T_cc+ and X(3872): p = 0.057. Distances floored at the mass error: p = 5.1e-03.
 
 ## (c) Partners
 
@@ -165,12 +165,12 @@ KR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/3
 2. k_s (KR's heavy-strange hyperfine enhancement a_cs = a_bs) is shared between mesons and baryons. KR apply it in baryons only; the extension was fixed before the fit, motivated by KR's own observation that the D_s* - D_s splitting is enhanced by the same factor, not by any exotic comparison.
 3. For each catalogue state one measurement was taken: the most recent one of the cited collaboration that we could read (LHCb 2021 for the J/psi phi states, not the 2016 values; the BESIII discovery values for Z_c(3900) and Z_c(4020), not PDG averages, which we could not read). The catalogue excludes X(3915) (exotic status disputed), P_cs(4459) and P_c(4337) (evidence below 5 sigma).
 4. The chance-proximity numbers for the three 'nearest level' assignments (p_chance) were added after seeing that they hold.
-5. Tests B5 (states with measured J^P only) and B6 (without the two states within 1 MeV of a threshold) were added after seeing the Fisher result, to show what drives it.
+5. Tests B5 (states with measured J^P only), B6 (without the two states within 1 MeV of a threshold) and B7 (distances floored at the mass error) were added after seeing the Fisher result, to show what drives it.
 6. The CMS and ATLAS di-J/psi structures are shown with the fully charmed levels but not scored; that the lowest ATLAS structure (6.41 GeV) lies near the model's S-wave levels was noticed after the comparison and is not a test.
 
 ## Caveats
 
-- Effective-mass conventions dominate the multiquark predictions. Baryon masses for every constituent (KR) and universal masses with string junctions (variant J) differ by about 100 MeV for every tetraquark and 110-210 MeV for pentaquarks, ten times sigma_model; the fit to ordinary hadrons cannot choose between them (sigma_model 8.1 and 8.3 MeV).
+- Effective-mass conventions dominate the multiquark predictions. Baryon masses for every constituent (KR) and universal masses with string junctions (variant J) differ by 90 to 113 MeV for the tetraquarks and 204 to 210 MeV for the lowest pentaquarks, ten to twenty-five times sigma_model; the fit to ordinary hadrons cannot choose between them (sigma_model 8.1 and 8.2 MeV).
 - sigma_model is the spread of ordinary hadrons. It does not include the uncertainty of carrying the model to four and five constituents (colour configurations outside the H8 tree, the spatial size of a diquark pair, binding across the halves).
 - The H8 tree keeps one colour configuration (3bar x 3 for tetraquarks). The full colour-spin model also has 6 x 6bar; mixing would lower the lowest levels, mostly for the fully heavy and hidden-charm states.
 - Only S-wave ground states are computed. Radial and orbital excitations (X1(2900) is 1-) are outside the model, so a mismatch refutes an S-wave assignment, not every compact reading.
@@ -180,11 +180,11 @@ KR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/3
 
 ## Citations (what was read, the values used)
 
-- **DGG1975**: A. De Rujula, H. Georgi, S. L. Glashow, Phys. Rev. D 12, 147 (1975). Read: cited for the colour-spin (chromomagnetic) hyperfine interaction; not re-read (no arXiv version). Values: none used.
+- **DGG1975**: A. De Rujula, H. Georgi, S. L. Glashow, Phys. Rev. D 12, 147 (1975). Read: the reference as given in KR2014 ref. [23]; cited for the colour-spin (chromomagnetic) hyperfine interaction; the paper itself not re-read (no arXiv version). Values: none used.
 - **KR2014**: M. Karliner, J. L. Rosner, Phys. Rev. D 90, 094007 (2014), arXiv:1408.5877. Read: full text: Tables I, II, IV, VI, VII, IX; eqs. (1)-(20). Values: m^b_q=363, m^b_s=538, a/(m^b_q)^2=50, m^m_q=310, m^m_s=483, b/(m^m_q)^2=80, m^m_c=1663.3, m^b_c=1710.5, m^m_b=5003.8, m^b_b=5043.5, B(cs bar)=-69.9, B(cs)=-35.0, B(bs bar)=-83.6, 6a_cs/(m_s m_c)=70.7, a_bs=(70.7/43.0)a, Mbar(cc bar)=3068.6, M(J/psi)-M(eta_c)=113.2, Mbar(bb bar)=9444.7, M(Upsilon)-M(eta_b)=62.3, M(B_c)=6274.5, B_c* - B_c = 68.0, p=1.46; hadron masses quoted in the tables (PDG 2012 and KR's b-baryon averages); predictions Xi_cc=3627+-12, Xi_cc*=3690, Xi_bb=10162, Xi_bb*=10184.
 - **KR2017**: M. Karliner, J. L. Rosner, Phys. Rev. Lett. 119, 202001 (2017), arXiv:1707.07666. Read: full text: Tables I-III, Secs. II, III, VI. Values: T(bb ubar dbar) 1+ = 10389.4+-12 (215 below BB* at 10604; 170 below B- B0bar gamma at 10559); T(cc ubar dbar) 1+ = 3882.2+-12 (7 above D0 D*+ at 3875); T(bc ubar dbar) 0+ = 7133.7+-13 (11 below B0bar D0 at 7144.5); M(D0)+M(D*+)=3875.09+-0.07; string-junction term S=165 MeV.
 - **KNR2017**: M. Karliner, S. Nussinov, J. L. Rosner, Phys. Rev. D 95, 034011 (2017), arXiv:1611.00348. Read: Sec. II, eqs. (1)-(8). Values: S=165.1, m_c=1655.6, m_b=4988.6, M(cc,3bar)=3204.1, B=-388.3, Delta M_3=79.3, M(cc cbar cbar, 0++) = 6191.5 (abstract 6192+-25); J/psi J/psi threshold 6193.8.
-- **LHCb_Tcc_NP**: LHCb, Nature Phys. 18, 751 (2022), arXiv:2109.01038. Read: abstract. Values: narrow state just below the D*+ D0 threshold, mass about 3875 MeV.
+- **LHCb_Tcc_NP**: LHCb, Nature Phys. (2022), doi:10.1038/s41567-022-01614-y, arXiv:2109.01038. Read: abstract. Values: narrow state just below the D*+ D0 threshold, mass about 3875 MeV.
 - **LHCb_Tcc_NC**: LHCb, Nature Commun. 13, 3351 (2022), arXiv:2109.01056. Read: full text, eqs. (1), (4), (5), (12), Table 2, Fig. 4 and conclusions. Values: delta m_U = -359+-40 (+9 -6) keV; pole delta m = -360+-40 (+4 -0) keV, Gamma_pole = 48+-2 (+0 -14) keV; delta m_BW = -273+-61 keV; J^P = 1+ favoured; no signal in D+D0pi+ (3.9-4.0 GeV) or D+D+ (to 3.87 GeV): isovector interpretation disfavoured.
 - **LHCb_X6900**: LHCb, Sci. Bull. 65, 1983 (2020), arXiv:2006.16957. Read: full text, Sec. 5 and conclusions. Values: model I: m = 6905+-11+-7, Gamma = 80+-19+-33; model II: m = 6886+-11+-11, Gamma = 168+-33+-69; broad structure 6.2-6.8 GeV.
 - **CMS_diJpsi**: CMS, Phys. Rev. Lett. 132, 111901 (2024), arXiv:2306.07164. Read: abstract and Table I. Values: no interference: 6552+-10+-12 (Gamma 124), 6927+-9+-4 (122), 7287+20-18+-5 (95); interference: 6638+43+16-38-31, 6847+44+48-28-20, 7134+48+41-25-15.
@@ -200,9 +200,9 @@ KR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/3
 - **Belle_X3872**: Belle, Phys. Rev. D 84, 052004 (2011), arXiv:1107.0163. Read: abstract. Values: charged-partner limits well below the isospin-triplet expectation; M = 3871.84+-0.27+-0.19.
 - **Francis2017**: A. Francis, R. J. Hudspith, R. Lewis, K. Maltman, Phys. Rev. Lett. 118, 142001 (2017), arXiv:1607.05214. Read: abstract. Values: ud bbar bbar 1+ 189(10) MeV below threshold.
 - **Leskovec2019**: L. Leskovec, S. Meinel, M. Pflaumer, M. Wagner, Phys. Rev. D 100, 014503 (2019), arXiv:1904.04197. Read: abstract. Values: binding -128+-24+-10 MeV, mass 10476+-24+-10 MeV.
-- **Aoki2023**: T. Aoki, S. Aoki, T. Inoue, Phys. Rev. D 108, 054502 (2023), arXiv:2306.03565. Read: abstract. Values: 83(10) MeV below B B* (coupled channel), +-20 MeV systematic; single channel 155(17).
+- **Aoki2023**: T. Aoki, S. Aoki, T. Inoue, arXiv:2306.03565 (2023). Read: abstract. Values: 83(10) MeV below B B* (coupled channel), +-20 MeV systematic; single channel 155(17).
 - **Hudspith2023**: R. J. Hudspith, D. Mohler, Phys. Rev. D 107, 114510 (2023), arXiv:2303.17295. Read: abstract. Values: 112.0(13.2) MeV below B B*.
-- **Tripathy2025**: B. S. Tripathy, N. Mathur, M. Padmanath, arXiv:2503.09760 (2025). Read: abstract. Values: Delta E = -116 (+30 -36) MeV relative to B B*.
+- **Tripathy2025**: B. S. Tripathy, N. Mathur, M. Padmanath, Phys. Rev. D 111, 114504 (2025), arXiv:2503.09760. Read: abstract. Values: Delta E = -116 (+30 -36) MeV relative to B B*.
 - **Francis2019**: A. Francis, R. J. Hudspith, R. Lewis, K. Maltman, Phys. Rev. D 99, 054505 (2019), arXiv:1810.10550. Read: abstract. Values: ud cbar bbar 0(1+) 15 to 61 MeV below Dbar B*.
 - **Padmanath2024**: M. Padmanath, A. Radhakrishnan, N. Mathur, Phys. Rev. Lett. 132, 201902 (2024), arXiv:2307.14128. Read: abstract. Values: 1+: -43(+6-7)(+14-24) MeV with respect to D Bbar*.
 - **Alexandrou2024**: C. Alexandrou et al., Phys. Rev. Lett. 132, 151902 (2024), arXiv:2312.02925. Read: abstract. Values: shallow bound or virtual states a few MeV or less below the B(*) Dbar thresholds.
@@ -224,7 +224,7 @@ KR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/3
 
 ## Checks
 
-73 of 73 passed.
+75 of 75 passed.
 
 - OK E1 meson colour factor <lambda1.lambda2> (singlet)
 - OK E2 meson spin singlet <sigma1.sigma2>
@@ -241,6 +241,8 @@ KR's values: m^m = 310, 483, 1663.3, 5003.8; m^b = 363, 538, 1710.5, 5043.5; b/3
 - OK E13 MPR S-wave multiplicities, light diquark spin 1: J=1/2 (3), 3/2 (3), 5/2 (1)
 - OK E14 Delta: sum of <sigma.sigma> = +3
 - OK E15 [cq][cbar qbar] J=1: C eigenvalues {-1,-1,+1} (one 1++, two 1+-)
+- OK E17 dimension of the q q qbar qbar colour-singlet space
+- OK E18 |<compact tree|molecular tree>|^2 = 1/3 (the two H8 trees span the singlet space)
 - OK E16 [cc]_1[cbar cbar]_1: C = +, -, + for J = 0, 1, 2
 - OK H KR2014 Tables I-II N
 - OK H KR2014 Tables I-II Delta

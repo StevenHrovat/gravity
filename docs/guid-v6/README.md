@@ -24,6 +24,8 @@ other document to follow this one.
 | `sections/sparc.tex` | Part III: rotation curves (`sparc_rotation.py`) |
 | `sections/remnant.tex` | Part III: the accumulated remnant, halos and the joint fit (`remnant_history.py`) |
 | `sections/data.tex` | Part III: every other prediction against data (`predictions_vs_data.py`) |
+| `sections/standard_model.tex` | Part III: the Standard Model statements, pre-registered in `docs/simulation/sm_preregistration.md` (`standard_model.py`) |
+| `sections/exotics.tex` | Part III: tetraquarks and pentaquarks, hadrons as trees of dualities (`exotic_hadrons.py`) |
 | `part4.tex` | Part IV: predictions, ledger, corrections from v5.1, where it breaks, conclusion, contributions, licence |
 | `appendix.tex` | reproducibility (scripts, checks, runtimes, data digests) and the checks of Part I |
 | `bib-core.tex`, `bib-extra.tex`, `sections/*-bib.tex` | the reference pools; `build_bib.py` writes `bibliography.tex` from them |
@@ -56,10 +58,12 @@ python3 docs/guid-v6/reproduce.py --data <folder with the two SPARC .mrt files>
 | `docs/simulation/hosted_benchmarks.py` | 53 of 53 |
 | `docs/simulation/holographic_code.py` | 77 of 77 |
 | `docs/simulation/gravity_simulated.py` | 110 of 110 |
-| `docs/simulation/bmv_witness.py` | 32 of 32 |
-| `docs/simulation/sparc_rotation.py` | 36 of 36 |
+| `docs/simulation/bmv_witness.py` | 34 of 34 |
+| `docs/simulation/sparc_rotation.py` | 39 of 39 |
 | `docs/simulation/remnant_history.py` | 39 of 39 |
 | `docs/simulation/predictions_vs_data.py` | 6 of 6 numerical checks; 30 of 33 scored confrontations consistent at 95% (exits 1 by design) |
+| `docs/simulation/standard_model.py` | 30 of 30 |
+| `docs/simulation/exotic_hadrons.py` | 75 of 75 |
 
 - **SPARC data.** The tables (Lelli, McGaugh and Schombert 2016) are not redistributed. Their SHA-256 digests are in Appendix A, and
   the scripts check them before use.
