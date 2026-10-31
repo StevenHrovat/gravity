@@ -731,7 +731,10 @@ reconstruction~\cite{adh}: a bulk operator is reconstructable on any boundary re
 \paragraph{The two witnesses.} The trust half and the information half each measure the stabiliser syndrome of the code. Stabilisers commute
 with the logical operators, so the syndrome says that content is present and in the code, never what it is: this is Axiom~3's existence
 clause, exactly. Both halves read the same syndrome; the gate passes only on two trivial syndromes; each of the 15 single-qubit faults gives
-a distinct syndrome on which both refuse, and correction restores the content with fidelity 1. If the two halves instead read the content
+a distinct syndrome on which both refuse, and correction restores the content with fidelity 1. That every single-qubit fault is caught is a
+property of this code's stabilisers, not of existence checks in general: a witness that reads only the existence sector detects faults
+that leave the sector and passes, by construction, a fault that changes the content inside it. The witnesses certify existence; they do
+not protect content (Section~\ref{sec:hosted} shows both behaviours on sectors of up to 2.7 million states). If the two halves instead read the content
 itself, the content is disturbed (fidelity exactly $1/2$ for every content), so ``full reach over the act'' must mean full reach over its
 existence \chk{A4}.
 
@@ -1143,8 +1146,10 @@ that the information half can carry any quantum content. Assembled from DMP part
 can run as content, and by the Church--Turing--Deutsch principle it approximates every finitely realisable physical system to any finite
 precision~\cite{deutsch}. GUID calls such an assembly the \emph{Existence Turing machine}; a sealed file that carries the assembly's
 recipe, its digest, the versions of the axioms and of the proof chain, and the verdict lets the same machine be redeployed and checked
-anywhere. Section~\ref{sec:hosted} hosts four known, hard quantum configurations in this way, from a Heisenberg ring to Shor's
-factoring circuit, and recovers their known results; Section~\ref{sec:holocode} hosts the holographic assembly of
+anywhere. Hosting is not free when the host is classical: emulating generic quantum content of $n$ qubits costs memory and time of
+order $2^n$ (measured: $2^{1.065n}$ per gate, 18 petabytes at $n=50$), so the Church--Turing--Deutsch route needs a quantum information
+half, and a classical emulation is valid only for small or structured content \chk{hosted:B4}. Section~\ref{sec:hosted} hosts four known,
+hard quantum configurations in this way, from a Heisenberg ring to Shor's factoring circuit, and recovers their known results; Section~\ref{sec:holocode} hosts the holographic assembly of
 Section~\ref{sec:holo} at thousands of qubits. Two consequences matter for quantum gravity. First, every candidate theory of quantum gravity in Section~\ref{sec:landscape} can
 also run on the machine with its predictions, so the axioms do not forbid quantum gravity in nature; a theory whose geometry is quantum runs
 as content, not as DMP's frame. Second, the machine's own structure, the gates, records and layout, is classical, and in the proposed theory
