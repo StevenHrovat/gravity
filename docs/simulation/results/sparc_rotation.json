@@ -409,6 +409,65 @@
   },
   "m2lnL_constant_check": 2603.35
  },
+ "S2d_mock": {
+  "n_mock": 400,
+  "data_slope": 0.436365,
+  "truth_constant_abs_gamma1": 4.53764e-11,
+  "truth_rar_gdag": 1.11922e-10,
+  "rar_noiseless_same_bins": 0.44761,
+  "const": {
+   "ensemble_median": 0.00459907,
+   "ensemble_16_84": [
+    -0.0326059,
+    0.0460127
+   ],
+   "ensemble_2.5_97.5": [
+    -0.0679811,
+    0.0796761
+   ],
+   "ensemble_min_max": [
+    -0.0935105,
+    0.103145
+   ],
+   "frac_ge_data_slope": 0.0,
+   "n_points_median": 2674.5,
+   "one_mock": {
+    "slope": 0.0119713,
+    "boot_16_84": [
+     -0.032711,
+     0.0476089
+    ],
+    "n_points": 2677,
+    "n_galaxies": 147
+   }
+  },
+  "rar": {
+   "ensemble_median": 0.469218,
+   "ensemble_16_84": [
+    0.424486,
+    0.518134
+   ],
+   "ensemble_2.5_97.5": [
+    0.382295,
+    0.568103
+   ],
+   "ensemble_min_max": [
+    0.305422,
+    0.596251
+   ],
+   "frac_ge_data_slope": 0.7575,
+   "n_points_median": 2703.0,
+   "one_mock": {
+    "slope": 0.512064,
+    "boot_16_84": [
+     0.467805,
+     0.559027
+    ],
+    "n_points": 2694,
+    "n_galaxies": 149
+   }
+  }
+ },
  "S3": {
   "n_galaxies": 124,
   "n_after_clip": 123,
@@ -2678,6 +2737,24 @@
    "ok": true,
    "got": 1.00046e-10,
    "want": 1e-10
+  },
+  {
+   "label": "the mock slope estimator, applied to the real points, reproduces the S2d slope",
+   "ok": true,
+   "got": 0.436365,
+   "want": 0.436365
+  },
+  {
+   "label": "null test: mocks with a constant |gamma1| return a low-acceleration slope consistent with 0 (|median| < 0.1)",
+   "ok": true,
+   "got": 0.00459907,
+   "want": 0.0
+  },
+  {
+   "label": "positive control: RAR mocks return the RAR slope in the same bins (median within 0.1)",
+   "ok": true,
+   "got": 0.469218,
+   "want": 0.44761
   },
   {
    "label": "BTFR slope, Ups = 0.5 (paper: 3.71 +- 0.08; tolerance 2 sigma)",

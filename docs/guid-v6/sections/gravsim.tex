@@ -7,7 +7,7 @@ equality (Section~\ref{sec:bridges}). In this section we simulate the frame and 
 side by side. We treat three systems: many masses on a line (G1), the classical-quantum toy that defines the trade-off (G3), and two coupled
 oscillators with the Kafri--Taylor--Milburn channel (G4). The two-mass experiment is treated in Section~\ref{sec:bmv}. The result in one
 sentence: the recorded frame reproduces Newton's law on average and never entangles at any measurement strength, and it runs 4000 masses at
-$O(N^2)$ cost per step; the coherent field drives the same chain to Page entanglement and Porter--Thomas statistics at a cost of $2^N$; and
+$O(N^2)$ cost per step; the coherent field drives the same chain to Page entanglement and Porter--Thomas statistics (shown for $N\le24$) at a cost of $2^N$; and
 the trade-off of Section~\ref{sec:cq} holds exactly, with its equality case being the measurement-and-feedback unravelling \tagS.
 
 \subsection{Two models of the same masses}\label{ss:gs-models}
@@ -67,7 +67,7 @@ Section~\ref{sec:bmv}).
 \paragraph{The coherent field builds volume-law entanglement, slowly.} We build~\eqref{eq:gs-psi} exactly for $N=8$ to 24; the largest case
 is a statevector of $2^{24}$ amplitudes, 256\,MB in double precision. Let $S$ be the entropy, in bits, of the reduced state of the first $N/2$
 masses. Its value for a random pure state is Page's mean~\cite{page1993}, $S_{\rm Page}=[\psi(q^2+1)-\psi(q+1)-(q-1)/2q]/\ln2$, with
-$q=2^{N/2}$ and $\psi$ the digamma function. Table~\ref{tab:gs-entropy} shows how $S$ grows \chk{gravsim:G1}. At $\tau_\pi$ the cut carries exactly one ebit (1.009 at both
+$q=2^{N/2}$ and $\psi$ the digamma function. Table~\ref{tab:gs-entropy} shows how $S$ grows \chk{gravsim:G1}. At $\tau_\pi$ the cut carries about one ebit (1.009 at both
 $N=20$ and 24): the bond across the cut, maximally entangling at that time. $S$ then grows as longer couplings wind past $2\pi$; over twelve
 times with $\tau=10^4$ to $10^7$ it averages 9.282 at $N=20$ (Page: 9.279), and at $N=24$, $\tau=10^5$ it is 11.270 (Page: 11.279). Because
 the couplings fall as $1/n^3$, the state stays close to an area law at the times a laboratory can reach ($t\lesssim100$\,s,
@@ -134,10 +134,13 @@ $\tfrac12e^{-\lambda t}e^{-ih_jt}\prod_i(1+e^{-iJ_{ij}t})/2\cdot e^{-\sum_iJ_{ij
 $\sum_iJ_{ij}^2/(32\kappa)=3.8\times10^{-7}\lambda$.
 \item \emph{The mean force is Newton's.} At the mean records the frame's force equals a direct double sum over masses and branches of
 $Gm^2\,\mathrm{sgn}(x_i-x_j)/(x_i-x_j)^2$, to $10^{-13}$ of the pair-force scale; Newton's third law holds to $1.9\times10^{-14}$. With the
-record noise, the trajectory-averaged impulse equals $T$ times the Newtonian force for all 4000 masses: the mean squared Student $t$ is 1.09,
-against 1.15 expected for 15 degrees of freedom. For the end mass the ratio is $1.13\pm0.17$.
-\item \emph{Momentum is conserved only on average.} Per trajectory, the total impulse scatters with standard deviation 0.40, against
-$T\sum_j|F_j|=0.15$. This is the frame's diffusion, the $D_2$ of Section~\ref{sec:cq}.
+record noise included, let $P_j=\int_0^TF_j\,\dd t$ be the impulse on mass $j$ over the run, with $T=4/\lambda=7.8\times10^{-3}/\omega_0$,
+forces in units of $Gm^2/d^2$ and time in units of $1/\omega_0$. Averaged over trajectories, $P_j$ equals $T$ times the Newtonian force for
+all 4000 masses: the mean squared Student $t$ is 1.09, against 1.15 expected for 15 degrees of freedom. For the end mass the ratio is
+$1.13\pm0.17$.
+\item \emph{Momentum is conserved only on average.} The total impulse $\sum_jP_j$ has mean 0.16 and standard deviation 0.40 over the 16
+trajectories. It is zero on average, within the standard error of 0.10, as Newton's third law requires, but not per trajectory. This is the
+frame's diffusion, the $D_2$ of Section~\ref{sec:cq}.
 \item \emph{The output is a product distribution.} Per trajectory $p(x)=\prod_jp_j(x_j)$, so
 $Z=\prod_j2(p_{j,0}^2+p_{j,1}^2)=\prod_j(1+\langle\sigma_x\rangle_j^2)$; enumeration at $N=10$ confirms this. The mean $\log_2Z$ falls from
 4000 at $t=0$ to 1047, 315, 103 and 35 at $t=1$, 2, 3 and $4/\lambda$, towards 0, the uniform distribution. Porter--Thomas statistics never
@@ -266,7 +269,7 @@ deterministic, with fixed seeds).
 
 \paragraph{Verdict.} Simulated at 4000 masses, the recorded frame does what Proposition~\ref{pr:ktm} claims \tagS. It reproduces Newton's
 law on average, decoheres each mass at $\lambda$, adds momentum noise, and never entangles, at any measurement strength. The coherent field
-entangles the same masses multipartitely, reaching Page entropy and Porter--Thomas statistics only after hours, while its pairwise
+entangles the same masses multipartitely, reaching Page entropy and Porter--Thomas statistics (shown for $N\le24$) only after hours, while its pairwise
 entanglement dies within seconds. The trade-off of Section~\ref{sec:cq} holds as written (\emph{derived}). The balance rule is its equality
 case, the measurement-and-feedback unravelling with a pure record (\emph{holds}). The Kafri--Taylor--Milburn minimum is the exact
 separability edge (\emph{holds}).

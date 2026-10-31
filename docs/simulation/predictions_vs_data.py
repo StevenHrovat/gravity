@@ -1,4 +1,5 @@
-"""GUID v6: every prediction of GUID v5.1 that existing measurements reach, confronted with those measurements.
+"""GUID v6: every prediction of GUID (Part I of the v6 paper; version 5.1 where noted) that existing measurements reach, confronted
+with those measurements.
 
 Run:  python3 docs/simulation/predictions_vs_data.py
 Needs numpy, scipy, matplotlib. Deterministic: no random numbers, no clock, no network, no machine name; the PDF figures are written
@@ -9,10 +10,15 @@ Every measured number in this file was checked on 2026-10-31 against the publica
 paper is on arXiv, otherwise the journal or collaboration record through a web search. CITATIONS below lists, for each source, the
 reference, what was read and the value quoted. Numbers that could not be verified are left out, and the Markdown report says which.
 
-Each confrontation prints the GUID prediction, the datum, the pull (in standard deviations) or the bound, and a verdict line:
-  OK    GUID is consistent with this datum at 95% (|pull| < 1.96, or the GUID value lies inside the 95% (or tighter) allowed region)
-  FAIL  it is not. A FAIL is a finding and stays a FAIL, also when general relativity, LambdaCDM or the Standard Model share it.
-  INFO  a number that is reported but not scored (derived quantities, superseded data, inputs that overlap a scored datum).
+Each confrontation prints the GUID prediction, the datum, the pull (in standard deviations) or the bound, and a verdict line. Every row
+has one of four kinds (table KIND below):
+  scored       a prediction confronted with a datum it was not set from: OK if GUID is consistent with the datum at 95% (|pull| < 1.96, or
+               the GUID value inside the allowed region; 90% regions are labelled as such), FAIL otherwise. A FAIL stays a FAIL, also when
+               general relativity, LambdaCDM or the Standard Model share it. Only these rows enter the tally.
+  conditional  the same test for a prediction of a model Part I names but GUID does not derive (the Starobinsky/Higgs plateau potential);
+               OK/FAIL reported and counted separately.
+  consistency  the prediction or statement was set from this datum, so it cannot fail; reported as CONS, never counted as a success.
+  info         superseded, derived, overlapping a scored row, or without a usable uncertainty; reported as INFO, not scored.
 The last line counts the scored confrontations; the exit code is 0 only if all of them pass. Separate METHOD checks (marked [M]) test
 the script's own numerics (closed forms against quadrature, ODE against analytic limits); they must all pass.
 
@@ -20,7 +26,7 @@ Not done here, because other workstreams of the paper do it: galaxy rotation cur
 (remnant_history.*), hosted quantum benchmarks, holographic codes, gravity ensembles and the BMV witness. Their result files are cited.
 
   D1  the information scalar (Hypothesis 4): coupling lambda = d ln alpha / d phi and the present drift of alpha; MICROSCOPE,
-      Eot-Wash, optical clocks, Oklo, quasars, CMB, BBN; two cosmological models (A: the paper's action, no potential, the scalar
+      Eot-Wash, optical clocks, Oklo, quasars, CMB, BBN; two cosmological models (A: Part I's action, no potential, the scalar
       driven by the electrostatic energy of baryons, BSBM-like; B: a slowly rolling, thawing scalar with the dark energy); the sign
   D2  PPN gravity: gamma, beta, Nordtvedt eta, strong-field SEP, gravitational redshift, speed of gravity, graviton mass
   D3  the balanced state: transition redshift, de Sitter rate, DESI DR2 evolving dark energy, H0, spatial flatness
@@ -142,6 +148,9 @@ CITATIONS = {
                     read="arXiv abstract", value="z_t = 0.4 +- 0.1 (cosmic chronometers, cosmology-independent)"),
     "jesus": dict(ref="J. F. Jesus, R. F. L. Holanda, S. H. Pereira, JCAP 05 (2018) 073, arXiv:1712.01075",
                   read="arXiv abstract", value="z_t = 0.806 +- 0.094, 0.870 +- 0.063, 0.973 +- 0.058 (three parametrizations; SNe Ia + H(z); 1 sigma)"),
+    "farooq": dict(ref="O. Farooq, F. Madiyar, S. Crandall, B. Ratra, Astrophys. J. 835, 26 (2017), arXiv:1607.03537",
+                   read="arXiv abstract", value="weighted-mean deceleration-acceleration redshift z_da = 0.72 +- 0.05 (0.84 +- 0.03) for "
+                                                "H0 = 68 +- 2.8 (73.24 +- 1.74) km/s/Mpc; z_da depends mainly on the H0 prior"),
     "dahiya": dict(ref="D. Dahiya, D. Jain, Res. Astron. Astrophys. (2023), arXiv:2212.04751",
                    read="arXiv abstract", value="best-fit z_t between 0.61 and 0.82 for four dark-energy models (Pantheon+ and H(z); no uncertainty given)"),
     "bk18": dict(ref="P. A. R. Ade et al. (BICEP/Keck), Phys. Rev. Lett. 127, 151301 (2021), arXiv:2110.00483",
@@ -227,6 +236,39 @@ CITATIONS = {
 # ---------------------------------------------------------------------------------------------------------------------------------
 ROWS = []          # every confrontation
 METHOD = []        # method checks
+COND = "conditional on the Starobinsky/Higgs plateau potential, which Part I names but GUID does not derive"
+R0SET = "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds"
+NUEMP = "that the known neutrinos are not the remnant is an empirical statement set from neutrino-mass bounds, not a prediction"
+KIND = {  # rows whose kind is not 'scored' (or 'info' for rows passed with scored=False); reason in the second field
+    "D1.12": ("info", "derived from D1.3 and the cosmological alpha data and dominated by D1.3 (both +0.72 sigma)"),
+    "D2.2": ("info", "overlaps D2.1: Cassini tracking data enter the planetary ephemerides"),
+    "D2.4": ("info", "included in the ephemeris combination D2.3 (Fienga and Minazzoli, Table 5)"),
+    "D3.1": ("info", "inconclusive: the published determinations disagree with each other and depend on the H0 prior and the "
+                     "parametrisation"),
+    "D3.6": ("info", "overlaps D3.7 (both rest on the CMB) and uses older BAO"),
+    "D4.1": ("info", "superseded by D4.3, which includes the Planck data"),
+    "D4.3": ("conditional", COND),
+    "D4.4": ("conditional", COND),
+    "D5.1": ("info", "overlaps D5.2: same kind of Soltan inputs (AGN luminosity function, local black-hole mass density), older"),
+    "D5.3": ("info", "overlaps D5.2: same kind of Soltan inputs, older"),
+    "D5.5": ("consistency", "the spins are measured with Kerr models capped at a = 0.998, so this test cannot fail"),
+    "D6.5": ("consistency", R0SET),
+    "D6.6": ("consistency", R0SET + "; overlaps D6.5"),
+    "D6.7": ("consistency", R0SET),
+    "D7.1": ("consistency", "the contained remnant's window 1e14 to 1e19 kg was adopted from the open window"),
+    "D7.2": ("info", "the datum ('about 1e15 g') has no stated uncertainty; it passes only through the chosen tolerance of ten"),
+    "D8.1": ("consistency", "GUID allows a unification at any M_X; the example M_X = 1e16 GeV was chosen above this bound"),
+    "D8.2": ("consistency", "Part I's ordering of the strong split is required by the absence of monopoles"),
+    "D8.3": ("info", "tree-level Standard Model value; scheme dependent, it meets 0.5% only in the MS-bar route"),
+    "D8.4": ("info", "tree-level Standard Model value; scheme dependent"),
+    "D8.5": ("consistency", "Part I's 1/128 is read from the measured alpha(M_Z)"),
+    "D8.6": ("consistency", "Part I's crossover statement is read from the measured Higgs mass and the lattice"),
+    "D9.3": ("consistency", NUEMP),
+    "D9.4": ("consistency", NUEMP),
+    "D9.5": ("consistency", "the radiated remnant was refuted from the NANOGrav amplitude itself"),
+}
+VERDICT_TEXT = {"OK": "GUID consistent with this datum at 95%", "FAIL": "GUID NOT consistent with this datum at 95%",
+                "CONS": "consistent by construction (prediction set from this datum): not counted", "INFO": "reported, not scored"}
 
 
 def fmt(x, digits=3):
@@ -243,9 +285,16 @@ def method(label, ok):
 
 
 def record(rid, observable, guid, data, refs, measure, ok, cls, note="", scored=True, pull=None):
-    verdict = ("OK" if ok else "FAIL") if scored else "INFO"
+    kind, reason = KIND.get(rid, ("scored" if scored else "info", ""))
+    if kind in ("scored", "conditional"):
+        verdict = "OK" if ok else "FAIL"
+    elif kind == "consistency":
+        verdict = "CONS" if ok else "FAIL"
+    else:
+        verdict = "INFO"
     row = dict(id=rid, section=rid.split(".")[0], observable=observable, guid=guid, data=data, refs=refs, measure=measure,
-               pull=None if pull is None else float(pull), verdict=verdict, scored=scored, cls=cls, note=note)
+               pull=None if pull is None else float(pull), verdict=verdict, kind=kind, kind_reason=reason, scored=(kind == "scored"),
+               cls=cls, note=note)
     ROWS.append(row)
     print(f"\n[{rid}] {observable}")
     print(f"     GUID : {guid}")
@@ -253,7 +302,10 @@ def record(rid, observable, guid, data, refs, measure, ok, cls, note="", scored=
     print(f"     test : {measure}")
     if note:
         print(f"     note : {note}")
-    print(f"{verdict:<4} {'GUID consistent with this datum at 95%' if verdict == 'OK' else ('GUID NOT consistent with this datum at 95%' if verdict == 'FAIL' else 'reported, not scored')}")
+    if reason:
+        print(f"     kind : {kind} ({reason})")
+    tag = " [conditional: not counted for GUID]" if kind == "conditional" else ""
+    print(f"{verdict:<4} {VERDICT_TEXT[verdict]}{tag}")
     return row
 
 
@@ -328,12 +380,13 @@ lam_best_mic, lam95_mic = lam_bound(0)
 lam_paper = math.sqrt(2.7e-15 / abs(k_mic))      # checks.py [Q6]: |eta| < 2.7e-15
 print(f"electrostatic shares: Ti {f_Ti:.3e}, Pt {f_Pt:.3e}, Be {f_Be:.3e}, Earth {f_E:.3e}")
 print(f"profile likelihood (MICROSCOPE + Eot-Wash): best |lambda| = {lam_best:.2e}, 95% CL upper limit |lambda| < {lam95:.2e} "
-      f"(MICROSCOPE alone {lam95_mic:.2e}); the paper's |lambda| < 2e-5 is |eta| < 2.7e-15 -> {lam_paper:.2e}")
+      f"(MICROSCOPE alone {lam95_mic:.2e}); version 5.1's |lambda| < 2e-5 is |eta| < 2.7e-15 -> {lam_paper:.2e}")
 
 gauss("D1.1", "Universality of free fall, Ti/Pt (MICROSCOPE): eta = 2 lambda^2 f_E (f_Ti - f_Pt)", 0.0, eta_mic, sig_mic, ["microscope"],
       "GUID-specific parameter (lambda); WEP shared with GR", guid_text=f"0 for the frame; scalar term {k_mic:.2e} lambda^2 (<= 0)",
       data_text="(-1.5 +- 2.3 stat +- 1.5 syst) e-15, combined 2.75e-15",
-      note=f"95% CL profile-likelihood bound |lambda| < {lam95:.1e} (paper quotes 2e-5, which is the 1-sigma-level |eta| < 2.7e-15)")
+      note=f"95% CL profile-likelihood bound |lambda| < {lam95:.1e} (version 5.1 quoted 2e-5, the 1-sigma-level |eta| < 2.7e-15); GUID fixes "
+           f"the sign, eta <= 0, so the test can fail")
 gauss("D1.2", "Universality of free fall, Be/Ti torsion balance (Eot-Wash 2008)", 0.0, eta_ew, sig_ew, ["eotwash"],
       "GUID-specific parameter (lambda); WEP shared with GR", guid_text=f"0 for the frame; scalar term {k_ew:.2e} lambda^2",
       data_text="(0.3 +- 1.8) e-13")
@@ -445,7 +498,7 @@ f_b_hi, f_b_lo = 1e-3, 0.25 * f_coulomb(2, 4)
 dA_max = lam95**2 * f_b_hi * H0_yr * U0
 PhiA_cmb = (solA.sol(max(-math.log(1101), N0))[0] - solA.y[0, -1])     # per unit lambda f_b; Delta alpha/alpha = lambda^2 f_b * this
 dalpha_A_cmb = lam95**2 * f_b_hi * PhiA_cmb
-print(f"\nModel A (the paper's action, no potential): phi'(today) = {U0:.4f} lambda f_b; alpha-dot/alpha = {U0 * H0_yr:.3e} lambda^2 f_b /yr "
+print(f"\nModel A (Part I's action, no potential): phi'(today) = {U0:.4f} lambda f_b; alpha-dot/alpha = {U0 * H0_yr:.3e} lambda^2 f_b /yr "
       f"<= 0 for f_b > 0. At |lambda| = {lam95:.1e} and f_b = {f_b_hi:.0e}: alpha-dot/alpha = {dA_max:.1e} /yr; Delta alpha/alpha(z=1100) = "
       f"{dalpha_A_cmb:.1e}")
 
@@ -456,7 +509,7 @@ gauss("D1.3", "Present drift of alpha, optical clocks (Yb+ E3/E2, PTB 2023)", dA
       note=f"no sign is measured: P(drift < 0 | clocks) = {stats.norm.cdf(-d_clock / s_clock):.2f}")
 gauss("D1.4", "Present drift of alpha, optical clocks (PTB 2021; superseded by D1.3, which includes its data)", dA_max, 1.0e-18, 1.1e-18,
       ["lange"], "GUID-specific", unit="/yr", data_text="(1.0 +- 1.1) e-18 /yr", scored=False,
-      guid_text="as D1.3", note="the paper's predictions table quotes this value; the newer value of D1.3 is 4.4 times tighter")
+      guid_text="as D1.3", note="version 5.1's predictions table quoted this value; the newer value of D1.3 is 4.4 times tighter")
 inside("D1.5", "Oklo natural reactor, 1.8 Gyr ago", lam95**2 * f_b_hi * (solA.sol(-math.log1p(z_oklo))[0] - solA.y[0, -1]), -1.1e-8, 1.1e-8,
        "95% CL", ["oklo_dh", "oklo_dd"], "GUID-specific", guid_text="Model A: < 1e-15; Model B: -(drift/H0) G(z_Oklo)",
        note=f"z_Oklo = {z_oklo:.3f} (1.8 Gyr in Planck 2018 LambdaCDM)")
@@ -495,7 +548,7 @@ print("\n" + "=" * 100 + "\nD2  PPN gravity: GUID predicts general relativity's 
 gr = "shared with GR"
 gauss("D2.1", "Light bending / Shapiro delay, gamma - 1 (Cassini)", 0.0, 2.1e-5, 2.3e-5, ["cassini"], gr, guid_text="0 exactly")
 gauss("D2.2", "gamma - 1, planetary ephemerides (combined intervals)", 0.0, 0.55e-5, 1.35e-5, ["fienga"], gr, guid_text="0 exactly",
-      note="overlaps Cassini radio data; listed separately because the ephemeris fit is a different method")
+      note="Cassini tracking data enter the ephemerides")
 gauss("D2.3", "beta - 1, planetary ephemerides (combined intervals)", 0.0, -0.45e-5, 1.75e-5, ["fienga"], gr, guid_text="0 exactly")
 gauss("D2.4", "beta - 1, Mercury from MESSENGER (gamma fixed to Cassini)", 0.0, -1.6e-5, 1.8e-5, ["genova", "fienga"], gr, guid_text="0 exactly")
 gauss("D2.5", "Nordtvedt parameter eta, MESSENGER", 0.0, -6.6e-5, 7.2e-5, ["genova"], gr, guid_text="0 exactly")
@@ -507,7 +560,8 @@ gauss("D2.9", "Strong-field SEP, pulsar in a triple system (Delta)", 0.0, 0.5e-6
       data_text="(0.5 +- 1.8) e-6 at 95% (0.92e-6 at 1 sigma)")
 gauss("D2.10", "Gravitational redshift (local position invariance), Galileo satellites", 0.0, 0.19e-5, 2.48e-5, ["delva"], gr,
       guid_text="0 (the lapse of GR, Section 6.2)")
-inside("D2.11", "Speed of gravitational waves, (c_gw - c)/c (GW170817 + GRB 170817A)", 0.0, -3e-15, 7e-16, "stated interval", ["gw170817"], gr,
+inside("D2.11", "Speed of gravitational waves, (c_gw - c)/c (GW170817 + GRB 170817A)", 0.0, -3e-15, 7e-16,
+       "interval stated by the collaborations, conservative, no CL", ["gw170817"], gr,
        guid_text="0 (classical waves of the frame at c)")
 inside("D2.12", "Graviton mass", 0.0, 0.0, 2.42e-23, "90% credible", ["gwtc3tgr"], gr, unit="eV/c^2", guid_text="0 (massless spin-2 wave of the frame)")
 record("D2.13", "Gravitational-wave polarizations", "two tensor polarizations (D(D-3)/2 = 2 in 3+1)", "no evidence for non-GR polarization modes",
@@ -515,8 +569,8 @@ record("D2.13", "Gravitational-wave polarizations", "two tensor polarizations (D
 d2_pulls = [r["pull"] for r in ROWS if r["section"] == "D2" and r["pull"] is not None and r["scored"]]
 chi2_d2 = sum(p * p for p in d2_pulls)
 p_d2 = stats.chi2.sf(chi2_d2, len(d2_pulls))
-print(f"\nD2 combined: chi2 = {chi2_d2:.2f} for {len(d2_pulls)} Gaussian pulls (p = {p_d2:.2f}); the data are not all independent "
-      f"(D2.1/D2.2, D2.4/D2.5), so this p-value is indicative.")
+print(f"\nD2 combined: chi2 = {chi2_d2:.2f} for {len(d2_pulls)} scored Gaussian pulls (p = {p_d2:.2f}); D2.6 to D2.8 come from one lunar "
+      f"fit and D2.3/D2.5 share MESSENGER data, so this p-value is indicative.")
 
 # =================================================================================================================================
 print("\n" + "=" * 100 + "\nD3  Cosmology of the balanced state: flat LambdaCDM with a de Sitter floor\n" + "=" * 100)
@@ -539,6 +593,8 @@ jz = np.array([0.806, 0.870, 0.973])
 js = np.array([0.094, 0.063, 0.058])
 j_mean, j_sig = float(jz.mean()), float(math.hypot(js.mean(), (jz.max() - jz.min()) / 2))
 zt_meas = [("cosmic chronometers (Moresco 2016)", "moresco", 0.4, 0.1), ("SNe Ia + H(z), 3 parametrizations (Jesus 2018)", "jesus", j_mean, j_sig)]
+# Farooq et al. 2017 (H(z) compilation): the weighted mean depends mainly on the H0 prior; reported, not combined.
+zt_farooq = [("H(z) data, H0 prior 68 +- 2.8 (Farooq 2017)", "farooq", 0.72, 0.05), ("H(z) data, H0 prior 73.24 +- 1.74 (Farooq 2017)", "farooq", 0.84, 0.03)]
 wz = np.array([1 / s**2 for *_, s in zt_meas])
 vz = np.array([v for _, _, v, _ in zt_meas])
 zt_mean = float(np.sum(wz * vz) / np.sum(wz))
@@ -550,14 +606,18 @@ for lab, ref, v, s in zt_meas:
     print(f"   {lab}: {v:.3f} +- {s:.3f} -> pull against GUID {(v - zt_P) / math.hypot(s, zt_P_err):+.2f} sigma")
 print(f"   the two determinations disagree with each other by {abs(vz[0] - vz[1]) / math.sqrt(1 / wz[0] + 1 / wz[1]):.1f} sigma; "
       f"PDG-style scale factor S = {S_zt:.2f}; combined z_t = {zt_mean:.3f} +- {zt_sig:.3f}")
-gauss("D3.1", "Transition redshift to acceleration, z_t = (2 Omega_L/Omega_m)^(1/3) - 1", zt_P, zt_mean, zt_sig, ["moresco", "jesus", "planck18"], lcdm,
-      guid_sig=zt_P_err, guid_text=f"{zt_P:.3f} +- {zt_P_err:.3f} (Planck 2018 Omega_m)",
-      data_text=f"{zt_mean:.3f} +- {zt_sig:.3f} (two determinations, scale factor {S_zt:.1f})",
-      note=f"individually: Moresco 0.40 +- 0.10 ({(0.4 - zt_P) / math.hypot(0.1, zt_P_err):+.1f} sigma) and Jesus et al. {j_mean:.2f} +- "
-           f"{j_sig:.2f} ({(j_mean - zt_P) / math.hypot(j_sig, zt_P_err):+.1f} sigma) pull in opposite directions; they disagree with each "
-           f"other at {abs(vz[0] - vz[1]) / math.sqrt(1 / wz[0] + 1 / wz[1]):.1f} sigma, so they are combined with a scale factor rather than scored one by one. Dahiya & Jain 2023: best fits 0.61-0.82.")
-for lab, ref, v, s in zt_meas:
-    gauss("D3.1" + ("a" if ref == "moresco" else "b"), f"Transition redshift, {lab}", zt_P, v, s, [ref], lcdm, guid_sig=zt_P_err,
+zt_all = zt_meas + zt_farooq
+zt_pulls = {lab: (v - zt_P) / math.hypot(s, zt_P_err) for lab, _, v, s in zt_all}
+record("D3.1", "Transition redshift to acceleration, z_t = (2 Omega_L/Omega_m)^(1/3) - 1", f"{zt_P:.3f} +- {zt_P_err:.3f} (Planck 2018 Omega_m)",
+      "inconclusive: 0.40 +- 0.10 (chronometers), 0.72 +- 0.05 or 0.84 +- 0.03 (H(z), H0 prior 68 or 73.24), "
+                f"{j_mean:.2f} +- {j_sig:.2f} (SNe + H(z))",
+      ["moresco", "jesus", "farooq", "planck18"], "inconclusive: individual pulls in rows D3.1a to D3.1d", True, lcdm,
+      note="pulls against GUID: " + ", ".join(f"{lab} {pv:+.1f} sigma" for lab, pv in zt_pulls.items()) +
+           f". The determinations disagree with each other (chronometers against SNe + H(z) at {abs(vz[0] - vz[1]) / math.sqrt(1 / wz[0] + 1 / wz[1]):.1f} "
+           f"sigma) and depend on the H0 prior and the parametrisation; a post-hoc scaled mean of two of them ({zt_mean:.2f} +- {zt_sig:.2f}, "
+           f"S = {S_zt:.2f}) is reported here and not scored. Dahiya & Jain 2023: best fits 0.61-0.82.")
+for k, (lab, ref, v, s) in enumerate(zt_all):
+    gauss("D3.1" + "abcd"[k], f"Transition redshift, {lab}", zt_P, v, s, [ref], lcdm, guid_sig=zt_P_err,
           scored=False, guid_text=f"{zt_P:.3f}")
 # de Sitter rate H_inf = H0 sqrt(Omega_L); with Omega_m h^2 fixed by the CMB, H_inf^2 = H0^2 - 1e4 omega_m
 om_h2 = ombh2 + omch2 + 0.06 / 93.14
@@ -578,7 +638,7 @@ record("D3.3", "de Sitter floor (w = -1 for all time) against DESI DR2's evolvin
                              "Gaussian-equivalent sigma); scored on the least significant combination, 2.8 sigma", False, lcdm,
        note="tension, not discovery: below 5 sigma in every combination and dependent on the supernova sample; the DES recalibration "
             "lowered 4.2 to 3.2 sigma with Bayesian odds of only ~5:1. If it holds, the de Sitter floor and the reading of Section 11.5 "
-            "must be redone, as the paper says.", pull=2.8)
+            "must be redone, as Part I says.", pull=2.8)
 gauss("D3.4", "Hubble constant: GUID's late universe (flat LambdaCDM fitted to the CMB) against the Cepheid distance ladder (SH0ES)", H0_kms,
       73.04, 1.04, ["sh0es", "planck18"], lcdm, guid_sig=H0_err, unit="km/s/Mpc", guid_text="67.4 +- 0.5 km/s/Mpc (Planck 2018 LambdaCDM)",
       data_text="73.04 +- 1.04 km/s/Mpc", note="the Hubble tension of LambdaCDM, inherited unchanged; GUID adds nothing that moves H0")
@@ -607,17 +667,20 @@ for i, (lab, ref, v, s) in enumerate(ns_data):
     lo, hi = v - Z95 * s, v + Z95 * s
     Nmin, Nmax = 2 / (1 - lo), (2 / (1 - hi) if hi < 1 else math.inf)
     ok = bool(np.any(np.abs(pulls) < Z95))
-    D4["datasets"].append(dict(label=lab, n_s=v, sigma=s, pull_N50=float(pulls[0]), pull_N60=float(pulls[-1]), N_range_95=[Nmin, Nmax]))
+    D4["datasets"].append(dict(label=lab, n_s=v, sigma=s, best_N=int(Ns[best]), pull_best=float(pulls[best]), pull_N50=float(pulls[0]),
+                               pull_N60=float(pulls[-1]), N_range_95=[Nmin, Nmax]))
     record(f"D4.{i + 1}", f"Scalar spectral index n_s for N = 50 to 60 e-folds, against {lab}",
            f"n_s = {ns_pred[0]:.4f} (N = 50) to {ns_pred[-1]:.4f} (N = 60)", f"{v} +- {s} (68%)", [ref],
-           f"pull {pulls[0]:+.2f} (N = 50) to {pulls[-1]:+.2f} (N = 60) sigma; 95% needs N in [{Nmin:.1f}, {Nmax:.1f}]",
-           ok, "inflation model named by the paper (Section 11.4), not a GUID derivation",
+           f"best N = {Ns[best]}: pull {pulls[best]:+.2f} sigma (N = 50: {pulls[0]:+.2f}, N = 60: {pulls[-1]:+.2f}); 95% needs N in "
+           f"[{Nmin:.1f}, {Nmax:.1f}]",
+           ok, "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
            scored=(i != 1), pull=float(pulls[best]),
            note=("P-ACT overlaps both neighbours; reported, not scored" if i == 1 else
                  ("the leading-order plateau predictions need N >= 63 here; the shift comes partly from the BAO in the combination"
                   if i == 2 else "")))
 inside("D4.4", "Tensor-to-scalar ratio r = 12/N^2 (N = 50 to 60)", float(r_pred[0]), 0.0, 0.036, "95% CL", ["bk18"],
-       "inflation model named by the paper", guid_text=f"{r_pred[-1]:.4f} to {r_pred[0]:.4f}", data_text="r_0.05 < 0.036 (95%), sigma(r) = 0.009",
+       "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID", guid_text=f"{r_pred[-1]:.4f} to {r_pred[0]:.4f}",
+       data_text="r_0.05 < 0.036 (95%), sigma(r) = 0.009",
        note="the next generation (sigma(r) ~ 1e-3) reaches it; GUID itself allows the standard spectrum (Section 11.4)")
 # Ordering of the strong split and inflation (Hypothesis 6'): monopoles. Kibble-Preskill estimate without inflation: one monopole per
 # horizon at the split, n/T^3 ~ (H/T)^3 with H = 1.66 sqrt(g*) T^2 / M_Pl, T_c ~ M_X = 1e16 GeV, g* = 106.75; today n = (n/s) s0.
@@ -634,7 +697,7 @@ record("D4.5", "Ordering: the strong split before or during inflation (Hypothesi
        note="the same datum is scored once, in D8.2", scored=False)
 record("D4.6", "Reheating below the unification energy (needed for D4.5)",
        "T_reh < M_X", "instantaneous reheating at the r bound gives T_reh <= (30/(pi^2 g*))^(1/4) V^(1/4) = 5.7e15 GeV for V^(1/4) < 1.4e16 GeV; "
-       "proton decay gives M_X >~ 4.8e15 GeV (paper's estimate, [Q20])", ["bk18", "superk"],
+       "proton decay gives M_X >~ 4.8e15 GeV (Part I's estimate, [Q20])", ["bk18", "superk"],
        "not decided by data: both orderings of T_reh,max and M_X,min are still allowed; a constraint on the reheating model", True,
        "shared with standard inflationary cosmology", scored=False)
 
@@ -769,10 +832,10 @@ for i, (lab, ref, M, R, d, tau, nat, ma) in enumerate(expts):
            "GUID-specific (Bridge B = Diosi-Penrose)")
 inside("D6.5", "Diosi-Penrose smearing length R0 against spontaneous radiation (underground Ge detector)", R0_fig, R0_min, math.inf,
        "95% probability", ["donadi"], "GUID-specific (Bridge B needs a smearing length)", unit="m",
-       guid_text="R0 >= 4e-10 m adopted (the paper writes 'at least about 1e-10 m')",
+       guid_text="R0 >= 4e-10 m adopted (version 5.1 wrote 'at least about 1e-10 m')",
        note="Penrose's parameter-free choice (R0 = nuclear wave-function size, 5e-12 m for Ge) is excluded; Bridge B survives only with a free R0")
 inside("D6.6", "R0 against the summary of current bounds", R0_fig, R0_fig, math.inf, "as stated", ["figurato"],
-       "GUID-specific", unit="m", guid_text="R0 >= 4e-10 m", note="the paper's '1e-10 m' would sit below this summary: use 4e-10 m")
+       "GUID-specific", unit="m", guid_text="R0 >= 4e-10 m", note="version 5.1's '1e-10 m' sat below this summary; v6 uses 4e-10 m")
 inside("D6.7", "R0 against gravitational-wave-detector heating", R0_fig, 40.1e-15, math.inf, "as stated", ["donadi"], "GUID-specific", unit="m",
        guid_text="R0 >= 4e-10 m")
 DP_kernel = m_P**2 / c
@@ -780,7 +843,7 @@ disc = m_P * (L_P / c)
 inside("D6.8", "Bridge B's diffusion, Diosi-Penrose kernel: l_P^2 D2 = m_P^2 / c", DP_kernel, 1e-40, 1e-9, "experimental window",
        ["osswd"], "GUID-specific", unit="kg^2 s/m", note="the window comes from torsion-balance noise (upper) and molecule interferometry (lower)")
 inside("D6.9", "Bridge B's diffusion, discrete (local) model: (l_P^3/m_P) D2 = m_P t_P", disc, 1e-25, 1e-1, "experimental window", ["osswd"],
-       "GUID-specific", unit="kg s", scored=False, note="this version is excluded; the paper already says so (Section 5.4)")
+       "GUID-specific", unit="kg s", scored=False, note="this version is excluded, as Part I says")
 # BMV microsphere and the first experiment that would see Bridge B
 mm = 1e-14
 R_bmv = (3 * mm / (4 * math.pi * 3510.0)) ** (1 / 3)
@@ -822,7 +885,8 @@ record("D7.1", "Contained remnant (primordial black holes from the start) as all
        ["gorton_green"], "the GUID window coincides with the open window", True, "GUID route shares the PBH literature",
        note="edges: INTEGRAL/SPI MeV gamma rays and Voyager 1 e+- (light), Subaru-HSC M31 microlensing (heavy)")
 inside("D7.2", "Mass below which holes have evaporated by now", M_ev, 1e12 / 10, 1e12 * 10, "order of magnitude", ["carr21"],
-       "shared with semiclassical gravity", unit="kg", guid_text=f"{M_ev:.1e} kg (Stefan-Boltzmann estimate; the paper: a few 1e11 kg)",
+       "shared with semiclassical gravity", unit="kg", guid_text=f"{M_ev:.1e} kg (Stefan-Boltzmann estimate; Part I: a few 1e11 kg)",
+       note=f"agreement within a factor {1e12 / M_ev:.1f}, inside the tolerance of ten chosen here",
        data_text="about 1e15 g = 1e12 kg (allowed: within a factor 10)")
 record("D7.3", "Hawking temperatures at the window edges", f"{T_hawking(1e14):.2e} K (1e14 kg, kT = {kB * T_hawking(1e14) / eV / 1e6:.3f} MeV) and "
        f"{T_hawking(1e19):.2e} K (1e19 kg)", "the light edge is set by the evaporation products themselves (MeV photons, e+-)",
@@ -841,28 +905,29 @@ def tau_p(M_X, alpha_G=1 / 40):
 
 inside("D8.1", "Proton decay after a unification before the start (Hypothesis 6')", tau_p(1e16), 2.4e34, math.inf, "90% CL",
        ["superk"], "GUID allows, does not require", unit="yr", guid_text=f"possible; tau ~ {tau_p(1e16):.1e} yr for M_X = 1e16 GeV (to a factor ~10)",
-       data_text="tau/B(p -> e+ pi0) > 2.4e34 yr", note="needs M_X >~ 4.8e15 GeV in the paper's estimate; Hyper-Kamiokande is the live test")
+       data_text="tau/B(p -> e+ pi0) > 2.4e34 yr", note="needs M_X >~ 4.8e15 GeV in Part I's estimate; Hyper-Kamiokande is the live test")
 inside("D8.2", "Relic magnetic monopoles", 0.0, 0.0, 1.4e-16, "90% CL", ["macro"], "shared with standard inflationary cosmology",
        unit="cm^-2 s^-1 sr^-1", guid_text="0 (the strong split lies within the start)")
 inv_a, s2, GF, mZ = 127.950, 0.23129, 1.1663787e-5, 91.1880
 alpha0 = 1 / 137.035999177
 mW_meas, mW_err = 80.3692, 0.0133
 v_H = (math.sqrt(2) * GF) ** -0.5
-mW_1 = math.sqrt(math.pi / inv_a / (math.sqrt(2) * GF * s2))           # g v / 2 with g = e/sin, e from alpha-hat(M_Z): the paper's route
+mW_1 = math.sqrt(math.pi / inv_a / (math.sqrt(2) * GF * s2))           # g v / 2 with g = e/sin, e from alpha-hat(M_Z): Part I's route
 mZ_1 = mW_1 / math.sqrt(1 - s2)
 mW_2 = mZ * math.sqrt(1 - s2)                                            # m_Z cos theta-hat
 A0 = math.pi * alpha0 / (math.sqrt(2) * GF * mZ**2)                     # on-shell with alpha(0), G_F, m_Z
 s2_os = (1 - math.sqrt(1 - 4 * A0)) / 2
 mW_3 = mZ * math.sqrt(1 - s2_os)
 spread = (max(mW_1, mW_2, mW_3) - min(mW_1, mW_2, mW_3)) / 2
-print(f"v = (sqrt2 G_F)^(-1/2) = {v_H:.2f} GeV; tree-level m_W: {mW_1:.3f} (paper's route, alpha-hat(M_Z), s^2-hat, G_F), "
+print(f"v = (sqrt2 G_F)^(-1/2) = {v_H:.2f} GeV; tree-level m_W: {mW_1:.3f} (Part I's route, alpha-hat(M_Z), s^2-hat, G_F), "
       f"{mW_2:.3f} (m_Z cos theta-hat), {mW_3:.3f} (on-shell alpha(0), G_F, m_Z); scheme half-spread {spread:.2f} GeV")
-inside("D8.3", "W mass from the Higgs vacuum at tree level, m_W = g v / 2 (paper: within half a per cent)", (mW_1 / mW_meas - 1) * 100, -0.5, 0.5,
-       "the paper's stated tolerance, 0.5%", ["mw_comb", "alpha_mz", "s2w", "gf_mulan"], "Standard Model (tree level)", unit="%",
+inside("D8.3", "W mass from the Higgs vacuum at tree level, m_W = g v / 2 (Part I: within half a per cent)", (mW_1 / mW_meas - 1) * 100, -0.5, 0.5,
+       "Part I's stated tolerance, 0.5%", ["mw_comb", "alpha_mz", "s2w", "gf_mulan"], "Standard Model (tree level)", unit="%",
        guid_text=f"{mW_1:.3f} GeV ({(mW_1 / mW_meas - 1) * 100:+.2f}%)", data_text=f"{mW_meas} +- {mW_err} GeV",
-       note=f"tree level is scheme dependent: the three standard routes give {min(mW_1, mW_2, mW_3):.2f} to {max(mW_1, mW_2, mW_3):.2f} GeV "
-            f"(+-{spread / mW_meas * 100:.1f}%); the measured value lies inside; the full Standard Model reaches 1e-4")
-inside("D8.4", "Z mass at tree level, m_Z = m_W / cos theta_W", (mZ_1 / mZ - 1) * 100, -0.5, 0.5, "the paper's stated tolerance, 0.5%",
+       note=f"tree level is scheme dependent: MS-bar route {(mW_1 / mW_meas - 1) * 100:+.2f}%, m_Z cos theta-hat {mW_2:.2f} GeV "
+            f"({(mW_2 / mW_meas - 1) * 100:+.2f}%), on-shell alpha(0), G_F, m_Z {mW_3:.2f} GeV ({(mW_3 / mW_meas - 1) * 100:+.2f}%); only the "
+            f"MS-bar route meets 0.5%; the full Standard Model reaches 1e-4")
+inside("D8.4", "Z mass at tree level, m_Z = m_W / cos theta_W", (mZ_1 / mZ - 1) * 100, -0.5, 0.5, "Part I's stated tolerance, 0.5%",
        ["mz_pdg", "alpha_mz", "s2w", "gf_mulan"], "Standard Model (tree level)", unit="%", guid_text=f"{mZ_1:.3f} GeV ({(mZ_1 / mZ - 1) * 100:+.2f}%)",
        data_text="91.1880 +- 0.0020 GeV")
 inside("D8.5", "alpha born near 1/128 at the electroweak split, running to 1/137", abs(inv_a / 128 - 1) * 100, 0.0, 1.0, "within 1% of 1/128",
@@ -887,7 +952,7 @@ frac_katrin = 3 * 0.45 / 93.14 / omch2
 inside("D9.3", "The known neutrinos are not the remnant (cosmology)", frac_desi * 100, 0.0, 1.0, "95% CL", ["desi2", "planck18"],
        "shared with LambdaCDM", unit="% of the dark matter", guid_text="refuted as the remnant (ledger)",
        data_text=f"sum m_nu < 0.064 eV -> Omega_nu < {frac_desi * 100:.2f}% of Omega_c",
-       note="the paper's 0.072 eV (DESI 2024) gives 0.6%; DESI DR2 tightens it")
+       note="version 5.1 used 0.072 eV (DESI 2024), which gives 0.6%; DESI DR2 tightens it")
 inside("D9.4", "The known neutrinos are not the remnant (laboratory, KATRIN)", frac_katrin * 100, 0.0, 100.0, "90% CL", ["katrin"],
        "shared with the Standard Model", unit="% of the dark matter", guid_text="refuted as the remnant",
        data_text=f"m_nu < 0.45 eV -> 3 flavours below {frac_katrin * 100:.0f}% of Omega_c")
@@ -920,21 +985,35 @@ NO_DATA = [
 COVERED = [("Galactic rotation curves, stochastic remnant, Bridge A", "docs/simulation/results/sparc_rotation.{json,md}",
             "Bridge A refuted by the rotation-curve points (98% of points below the model); one universal |gamma1| fits worse than the RAR "
             "(Delta BIC +5066)"),
-           ("Accumulated remnant / joint halo fit", "docs/simulation/results/remnant_history.{json,md}", "in progress (placeholder at the time of this run)"),
+           ("Accumulated remnant, history, halos, joint fit, cosmic time", "docs/simulation/results/remnant_history.{json,md}",
+            "the two remnants do not combine; the consistent reading is the contained remnant (primordial black holes as cold dark matter) "
+            "with a stochastic term too small to matter in galaxies"),
            ("BMV witness, hosted benchmarks, holographic codes, gravity ensembles", "docs/simulation/results/{bmv_witness,hosted_benchmarks,"
             "holographic_code,gravity_simulated}.json", "separate workstreams")]
 
 # =================================================================================================================================
-scored = [r for r in ROWS if r["scored"]]
+by_kind = {k: [r for r in ROWS if r["kind"] == k] for k in ("scored", "conditional", "consistency", "info")}
+scored = by_kind["scored"]
 n_ok = sum(1 for r in scored if r["verdict"] == "OK")
 fails = [r for r in scored if r["verdict"] == "FAIL"]
+specific = [r for r in scored if r["cls"].startswith("GUID-specific")]
+cond_ok = [r["id"] for r in by_kind["conditional"] if r["verdict"] == "OK"]
+cond_fail = [r["id"] for r in by_kind["conditional"] if r["verdict"] == "FAIL"]
+cons_fail = [r["id"] for r in by_kind["consistency"] if r["verdict"] == "FAIL"]
 m_ok = all(m["ok"] for m in METHOD)
+CORREL = ("D3.3 and D3.7 both use DESI DR2 BAO with the CMB, D3.4 rests on the CMB fit of LambdaCDM, and the conditional D4.3 uses the CMB "
+          "with DESI DR1 BAO: the FAILs are correlated, and the chance expectation assumes an independence that does not hold")
 print("\n" + "=" * 100)
 print(f"Method checks: {sum(m['ok'] for m in METHOD)} of {len(METHOD)} passed")
-print(f"Scored confrontations: {len(scored)}; a theory that is right fails about {0.05 * len(scored):.1f} of them by chance at 95% "
-      f"(if they were independent)")
-for r in fails:
-    print(f"   FAIL [{r['id']}] {r['observable']} ({r['measure']}; {r['cls']})")
+print(f"Rows: {len(ROWS)} = {len(scored)} scored + {len(by_kind['conditional'])} conditional + {len(by_kind['consistency'])} consistency "
+      f"+ {len(by_kind['info'])} info")
+print(f"Scored: {len(scored)}, OK {n_ok}, FAIL {len(fails)}; GUID-specific (scalar, Bridge B) {len(specific)}, shared with GR, LambdaCDM, "
+      f"the Standard Model or quantum mechanics {len(scored) - len(specific)}")
+print(f"Conditional on the plateau potential: OK {cond_ok}, FAIL {cond_fail}; consistency rows (not counted): {len(by_kind['consistency'])}"
+      f"{', FAIL ' + str(cons_fail) if cons_fail else ''}")
+print(f"If the scored rows were independent, a correct theory would fail about {0.05 * len(scored):.1f} of {len(scored)} at 95%; but {CORREL}.")
+for r in fails + [r for r in by_kind["conditional"] if r["verdict"] == "FAIL"]:
+    print(f"   FAIL [{r['id']}] ({r['kind']}) {r['observable']} ({r['measure']}; {r['cls']})")
 
 
 # =================================================================================================================================
@@ -966,7 +1045,7 @@ SHORTP = {"D1.1": "free fall Ti/Pt", "D1.2": "free fall Be/Ti", "D1.3": r"$\dot\
           "D2.8": "Earth-Moon free fall", "D2.9": "SEP, triple pulsar", "D2.10": "redshift, Galileo", "D3.1": r"$z_t$, two determinations",
           "D3.3": r"$w=-1$ vs DESI DR2", "D3.4": r"$H_0$ vs SH0ES", "D3.5": r"$H_0$ vs CCHP (TRGB)", "D3.7": r"$\Omega_K$, DESI DR2 + CMB",
           "D4.1": r"$n_s$, Planck 2018", "D4.3": r"$n_s$, P-ACT-LB", "D9.1": "CHSH vs Tsirelson"}
-pr = [r for r in ROWS if r["scored"] and r["pull"] is not None]
+pr = [r for r in ROWS if r["kind"] in ("scored", "conditional") and r["pull"] is not None]
 groups = [[r for r in pr if r["section"] in ("D1", "D2")], [r for r in pr if r["section"] not in ("D1", "D2")]]
 nmax = max(len(g) for g in groups)
 fig, axes = plt.subplots(1, 2, figsize=(TEXTW, 0.15 * nmax + 0.75))
@@ -976,12 +1055,15 @@ for ax, g in zip(axes, groups):
     for i, r in enumerate(g):
         p = r["pull"]
         ok = r["verdict"] == "OK"
-        ax.plot([p], [i], marker="o" if ok else "X", ms=5 if ok else 7, color=C1 if ok else CRIT, ls="none")
+        cond = r["kind"] == "conditional"
+        ax.plot([p], [i], marker="o" if ok else "X", ms=5 if ok else 7, color=C1 if ok else CRIT, ls="none",
+                markerfacecolor="white" if cond else None, markeredgewidth=1.2)
         if not ok:
-            ax.annotate(f"FAIL {p:+.1f}", (p, i), xytext=(-7, 0), textcoords="offset points", color=INK, fontsize=FS, ha="right",
-                        va="center")
+            ax.annotate(f"{'cond. ' if cond else ''}FAIL {p:+.1f}", (p, i), xytext=(-7, 0), textcoords="offset points", color=INK,
+                        fontsize=FS, ha="right", va="center")
     ax.set_yticks(range(len(g)))
-    ax.set_yticklabels([f"{r['id']}  {SHORTP.get(r['id'], r['observable'][:24])}" for r in g])
+    ax.set_yticklabels([f"{r['id']}  {SHORTP.get(r['id'], r['observable'][:24])}{' (cond.)' if r['kind'] == 'conditional' else ''}"
+                        for r in g])
     ax.set_ylim(nmax - 0.5, -0.5)
     ax.set_xlim(-5.5, 5.5)
     ax.set_xticks([-4, -2, 0, 2, 4])
@@ -989,7 +1071,7 @@ for ax, g in zip(axes, groups):
     ax.set_xlabel(r"pull $(x-x_G)/\sigma$")
 axes[0].set_title("D1, D2")
 axes[1].set_title("D3, D4, D9")
-axes[1].text(0.03, 0.05, "shaded: consistent at 95%\n" + r"$\times$: FAIL, all shared" + "\n" + r"with $\Lambda$CDM or the" + "\nnamed inflation model",
+axes[1].text(0.03, 0.05, "shaded: consistent at 95%\n" + r"$\times$: FAIL (shared with $\Lambda$CDM)" + "\nopen: conditional on the\nplateau potential",
              transform=axes[1].transAxes, fontsize=FS, color=INK2, va="bottom")
 fig.tight_layout(w_pad=1.0)
 save(fig, "data_pulls.pdf")
@@ -1152,10 +1234,14 @@ FIGS.append("data_bridgeB.pdf")
 # =================================================================================================================================
 # Outputs
 RESULTS.mkdir(parents=True, exist_ok=True)
-summary = dict(scored=len(scored), passed=n_ok, failed=[r["id"] for r in fails], expected_chance_fails=0.05 * len(scored),
+summary = dict(rows=len(ROWS), scored=len(scored), passed=n_ok, failed=[r["id"] for r in fails], guid_specific_scored=[r["id"] for r in specific],
+               shared_scored=len(scored) - len(specific), conditional=[r["id"] for r in by_kind["conditional"]], conditional_ok=cond_ok,
+               conditional_fail=cond_fail, consistency=[r["id"] for r in by_kind["consistency"]], info=[r["id"] for r in by_kind["info"]],
+               expected_chance_fails_if_independent=0.05 * len(scored), correlation_note=CORREL,
                method_checks=len(METHOD), method_passed=sum(m["ok"] for m in METHOD))
-out = dict(script="docs/simulation/predictions_vs_data.py", verified_on=DATE_VERIFIED, criterion="OK = consistent at 95% (|pull| < 1.96 or "
-           "inside the stated allowed region)", summary=summary, rows=ROWS, method=METHOD, D1=D1, D2=dict(chi2=chi2_d2, n=len(d2_pulls), p=p_d2),
+out = dict(script="docs/simulation/predictions_vs_data.py", verified_on=DATE_VERIFIED, criterion="scored and conditional rows: OK = consistent at 95% "
+           "(|pull| < 1.96 or inside the stated allowed region, 90% regions labelled); consistency rows (prediction set from the datum) are "
+           "CONS and not counted; info rows are not scored", summary=summary, rows=ROWS, method=METHOD, D1=D1, D2=dict(chi2=chi2_d2, n=len(d2_pulls), p=p_d2),
            D3=D3, D4=D4, D5=D5, D6=D6, D7=D7, D8=D8, no_data=[dict(prediction=a, guid=b, status=cc) for a, b, cc in NO_DATA],
            covered_elsewhere=[dict(topic=a, files=b, result=cc) for a, b, cc in COVERED], citations=CITATIONS, figures=FIGS)
 
@@ -1187,6 +1273,7 @@ SHORT = dict(microscope="Touboul et al. 2022 (MICROSCOPE)", eotwash="Schlamminge
              gw170817="Abbott et al. 2017 (GW170817)", gwtc3tgr="LVK 2025 (GWTC-3 tests)", delva="Delva et al. 2018", planck18="Planck 2018 VI",
              planck18x="Planck 2018 X", desi2="DESI DR2 2025", dovekie="Popovic et al. 2025 (DES)", sh0es="Riess et al. 2022 (SH0ES)",
              cchp="Freedman et al. 2025 (CCHP)", moresco="Moresco et al. 2016", jesus="Jesus et al. 2018", dahiya="Dahiya & Jain 2023",
+             farooq="Farooq et al. 2017",
              bk18="BICEP/Keck 2021", act_dr6="Louis et al. 2025 (ACT DR6)", macro="MACRO 2002", superk="Takenaka et al. 2020 (Super-K)",
              mw_comb="LHC-TeV MW WG 2024", mz_pdg="PDG (Z mass)", atlas_mh="ATLAS 2023", alpha_mz="Erler & Freitas, PDG 2017",
              s2w="PDG 2024", gf_mulan="MuLan 2013", codata22="CODATA 2022", donofrio="D'Onofrio & Rummukainen 2016",
@@ -1202,59 +1289,64 @@ L.append("# GUID's predictions against existing data\n")
 L.append("Workstream of *GUID v6: Our theory as simulated*. Written by `docs/simulation/predictions_vs_data.py` (deterministic; numpy, "
          "scipy, matplotlib; no network); every number is also in `predictions_vs_data.json`. Figures: " +
          ", ".join(f"`docs/simulation/figures/{f}`" for f in FIGS) + ".\n")
-L.append(f"**Scored confrontations: {n_ok} of {len(scored)} consistent with GUID at 95%.** FAIL: " +
-         (", ".join(f"{r['id']}" for r in fails) if fails else "none") +
-         f". A correct theory would fail about {0.05 * len(scored):.0f} of {len(scored)} independent tests at 95% by chance; the FAILs here are "
-         f"not chance alone (two are at 3 to 5 sigma), and every one is shared with LambdaCDM or with the inflation model the paper names. "
-         f"Method checks of the script's own numerics: {sum(m['ok'] for m in METHOD)} of {len(METHOD)}.\n")
-L.append("Criterion: **OK** means GUID is consistent with the datum at 95% (|pull| < 1.96 for a Gaussian datum, or the GUID value inside "
-         "the stated allowed region); **FAIL** means it is not, and it stays a FAIL when general relativity, LambdaCDM or the Standard Model "
-         "share it; **INFO** rows are reported and not scored (superseded data, derived numbers, data that overlap a scored row).\n")
-L.append("Every measured number was checked on " + DATE_VERIFIED + " against the publication (list at the end: what was read, the value "
-         "quoted). Several journal pages could not be opened from this environment (PDG, Nature, ADS); for those the value was read through a "
-         "web search of the publication or of a review that quotes it, and the citation list says so.\n")
+L.append(f"**{len(ROWS)} rows: {len(scored)} scored, {len(by_kind['conditional'])} conditional, {len(by_kind['consistency'])} consistency, "
+         f"{len(by_kind['info'])} info. Scored: {n_ok} OK, {len(fails)} FAIL** (" + ", ".join(r["id"] for r in fails) + "), all shared with "
+         f"LambdaCDM. Of the {len(scored)} scored rows, {len(specific)} test GUID-specific content (the information scalar and Bridge B) and "
+         f"{len(scored) - len(specific)} test content GUID shares with general relativity, LambdaCDM or quantum mechanics. Conditional on the "
+         f"Starobinsky/Higgs plateau potential: OK " + ", ".join(cond_ok) + "; FAIL " + ", ".join(cond_fail) + ". The consistency rows were "
+         f"set from their own data and are never counted as successes. If the scored rows were independent, a correct theory would fail about "
+         f"{0.05 * len(scored):.1f} of them by chance at 95%; but {CORREL}. Method checks of the script's own numerics: "
+         f"{sum(m['ok'] for m in METHOD)} of {len(METHOD)}.\n")
+L.append("Kinds: **scored** rows confront a prediction with a datum it was not set from: **OK** if GUID is consistent with the datum at 95% "
+         "(|pull| < 1.96, or the GUID value inside the allowed region; rows at 90% CL say so), **FAIL** otherwise, also when general "
+         "relativity, LambdaCDM or the Standard Model share it. **Conditional** rows apply the same test to a model Part I names but GUID does "
+         "not derive. **Consistency** rows (CONS) hold by construction, because the prediction was set from the datum. **INFO** rows are "
+         "superseded, derived, overlapping or without a usable uncertainty. The reason for every non-scored kind is given with the row.\n")
+L.append("Every measured number was checked on " + DATE_VERIFIED + " against the arXiv text or abstract of its source; rows read only "
+         "through secondary sources (a web search of the journal record, or a review that quotes the value) are listed in the citations.\n")
 L.append("## Summary\n")
 L.append(
     "- **Consistent and distinctive of GUID:** none yet has data that could tell GUID apart. The information scalar is consistent with every "
-    f"datum: free fall bounds its coupling to |lambda| < {lam95:.1e} (95% CL; the paper's 2e-5 is the one-sigma-level value), and the drift "
+    f"datum: free fall bounds its coupling to |lambda| < {lam95:.1e} (95% CL; version 5.1's 2e-5 is the one-sigma-level value), and the drift "
     f"of alpha is consistent with zero. The data say **nothing about the sign** of the drift: the newest clock value is "
     f"(1.8 +- 2.5)e-19 /yr, and the joint fit of a slowly rolling scalar gives ({d_hat:.1e} +- {d_sig:.1e}) /yr, P(negative) = {P_neg:.2f}. "
-    f"The paper's own action (no potential, the scalar driven by the electrostatic energy of baryons) predicts a drift that is negative, "
+    f"Part I's action (no potential, the scalar driven by the electrostatic energy of baryons) predicts a drift that is negative, "
     f"as GUID's forward statement says, but of size <~ 1e-23 /yr, four orders of magnitude below the clocks: the forward statement is derived "
     f"in that model and untestable. If the scalar instead rolled with DESI's dark energy (1 + w0 ~ 0.16), the clocks would force "
     f"|lambda| < {lam_desi:.0e}. Bridge B (the Diosi-Penrose rate) is consistent with every superposition made so far, by factors of "
     f"{min(e['margin'] for e in D6['experiments']):.0e} and more, and with the radiation bounds once the smearing length is R0 >= 4e-10 m.\n"
-    "- **Consistent, not distinctive (shared with general relativity, the Standard Model, quantum mechanics):** gamma = beta = 1, the "
-    "Nordtvedt and strong-field equivalence tests, the gravitational redshift, the speed and mass of gravitational waves (D2, all 12 within "
-    f"1.1 sigma, chi2 = {chi2_d2:.1f} for {len(d2_pulls)}); radiative efficiencies and spins inside the Kerr range and the area theorem (D5); "
-    "the tree-level W and Z masses within the paper's half per cent, alpha(M_Z) near 1/128, a Higgs mass that makes the electroweak split a "
-    "crossover, proton-decay and monopole bounds (D8); Tsirelson's bound, the neutrinos and the gravitational-wave background as non-remnants "
-    "(D9); the open primordial-black-hole window (D7).\n"
-    "- **In tension (all shared with LambdaCDM or with Starobinsky / Higgs inflation):** DESI DR2's evolving dark energy against the de Sitter "
-    "floor (2.8 to 4.2 sigma; 3.2 sigma with recalibrated DES supernovae) [D3.3]; the Hubble tension against SH0ES (4.9 sigma) while the "
-    "TRGB value agrees [D3.4, D3.5]; DESI DR2 + CMB curvature at 2.1 sigma [D3.7]; ACT DR6 + lensing + BAO puts n_s = 0.974 +- 0.003, which "
-    "the leading-order plateau predictions reach only for N >= 63 (2.4 sigma at N = 60) [D4.3], while Planck 2018 alone is fine [D4.1].\n"
+    "- **Consistent, not distinctive (shared with general relativity, quantum mechanics):** gamma = beta = 1, the Nordtvedt and strong-field "
+    f"equivalence tests, the gravitational redshift, the speed and mass of gravitational waves (D2, 10 scored rows, chi2 = {chi2_d2:.1f} for "
+    f"{len(d2_pulls)} Gaussian pulls); Soltan efficiencies inside the Kerr range and the area theorem (D5); Tsirelson's bound (D9).\n"
+    "- **Consistent by construction, not counted (prediction set from the datum):** the smearing length of Bridge B, the black-hole window, "
+    "monopoles and proton decay, alpha(M_Z) near 1/128, the electroweak crossover, the neutrinos and the gravitational-wave background as "
+    "non-remnants, the Kerr bound on measured spins.\n"
+    "- **In tension (all shared with LambdaCDM, and correlated):** DESI DR2's evolving dark energy against the de Sitter floor (2.8 to 4.2 "
+    "sigma; 3.2 sigma with recalibrated DES supernovae) [D3.3]; the Hubble tension against SH0ES (4.9 sigma) while the TRGB value agrees "
+    "[D3.4, D3.5]; DESI DR2 + CMB curvature at 2.1 sigma [D3.7]. Conditional on the plateau potential Part I names: ACT DR6 + lensing + BAO "
+    "puts n_s = 0.974 +- 0.003, which the leading-order predictions reach only for N >= 63 (2.4 sigma at N = 60) [D4.3].\n"
     "- **No data yet:** gravitationally mediated entanglement (Bose-Marletto-Vedral), the LOCC test, the decoherence-diffusion trade-off at "
     "the needed sensitivity, Bridge B's decoherence, single-graviton clicks, primordial tensor modes, the Hawking glow at the light edge of "
     "the window, the return of information, proton decay (table below).\n")
 L.append("## Master table\n")
-L.append("| ID | Prediction / observable | Data source | Measured | GUID value | Pull / bound | Verdict | Class |")
-L.append("|---|---|---|---|---|---|---|---|")
+L.append("| ID | Prediction / observable | Data source | Measured | GUID value | Pull / bound | Verdict | Kind | Class |")
+L.append("|---|---|---|---|---|---|---|---|---|")
 for r in ROWS:
     src = "; ".join(cite_names.get(k, k) for k in r["refs"]) or "-"
+    kind = r["kind"] + (f": {r['kind_reason']}" if r["kind_reason"] else "")
     L.append(f"| {r['id']} | {md_escape(r['observable'])} | {md_escape(src)} | {md_escape(r['data'])} | {md_escape(r['guid'])} | "
-             f"{md_escape(r['measure'])} | **{r['verdict']}** | {md_escape(r['cls'])} |")
+             f"{md_escape(r['measure'])} | **{r['verdict']}** | {md_escape(kind)} | {md_escape(r['cls'])} |")
 L.append("\nNotes on rows:\n")
 L.extend(f"- {r['id']}: {md_escape(r['note'])}" for r in ROWS if r["note"])
 L.append("")
 L.append("## Method\n")
 L.append(
-    "**D1, the information scalar.** The action of the paper (Eq. action) gives the scalar phi a kinetic term normalised to the reduced "
+    "**D1, the information scalar.** Part I's action gives the scalar phi a kinetic term normalised to the reduced "
     "Planck mass and a coupling lambda = d ln alpha / d phi. A body whose mass has electrostatic share f carries the scalar charge lambda f, "
     "so a pair falling towards the Earth differs by eta = 2 lambda^2 f_Earth (f_1 - f_2) (Eq. fifth); shares from the Coulomb term of the "
     f"semi-empirical mass formula as in checks.py [Q6] (Ti {f_Ti:.3e}, Pt {f_Pt:.3e}, Be {f_Be:.3e}, Earth {f_E:.3e}; the MICROSCOPE alloys "
     "TA6V and PtRh10 change the difference by about 3%). The bound on lambda is a profile likelihood with lambda^2 >= 0 (Delta chi^2 = 3.84). "
-    "Two cosmological models: **Model A** is the paper's action as written, with no potential: the scalar obeys phi'' + 3 H phi' = "
+    "Two cosmological models: **Model A** is Part I's action as written, with no potential: the scalar obeys phi'' + 3 H phi' = "
     "-lambda f_b rho_b, driven only by the electrostatic energy of baryons (dark matter, a gravitational remnant, carries none). It is solved "
     f"in flat LambdaCDM (Planck 2018); the attractor gives phi'(today) = {U0:.3f} lambda f_b, so d ln alpha/dt = {U0 * H0_yr:.2e} lambda^2 "
     "f_b per year, negative for f_b > 0; f_b <= 1e-3 is used as a generous upper value (He-4 Coulomb energy alone gives 6e-5). This is "
@@ -1268,26 +1360,28 @@ L.append(
     "`data_alpha_scalar.pdf`. Oklo's 1.8 Gyr is the elapsed time implied by Damour and Dyson's quoted bounds and rates. The clock value of "
     "Filzinger et al. 2023 includes the data of Lange et al. 2021, so only the newer value enters the fit.\n")
 L.append(
-    "**D2.** Pulls against general relativity's values. The LLR errors of Biskupek et al. are read as 1 sigma (the paper does not say; this "
-    "is the stricter reading). The pulsar SEP bound is converted from 95% to 1 sigma. The combined chi2 is indicative only, since some data "
-    "overlap.\n")
+    "**D2.** Pulls against general relativity's values. The LLR errors of Biskupek et al. are read as 1 sigma (their paper does not say; "
+    "this is the stricter reading). The pulsar SEP bound is converted from 95% to 1 sigma. Of overlapping pairs one row is scored: Cassini "
+    "(D2.1) for gamma, the ephemeris combination (D2.3) for beta. The combined chi2 is indicative only, since the lunar rows come from one fit.\n")
 L.append(
-    "**D3.** GUID's late universe is flat LambdaCDM with a de Sitter floor. The transition redshift follows from Omega_m. The two independent "
-    "determinations found (cosmic chronometers; SNe Ia + H(z), whose three parametrizations are merged with their half-range as a systematic) "
-    f"disagree with each other at {abs(vz[0] - vz[1]) / math.sqrt(1 / wz[0] + 1 / wz[1]):.1f} sigma, so they are combined with the PDG scale factor; each alone pulls about 2.3 sigma in opposite directions "
-    "(rows D3.1a and D3.1b). The DESI significances are the collaboration's (Delta chi^2 for two extra parameters, converted to Gaussian "
+    "**D3.** GUID's late universe is flat LambdaCDM with a de Sitter floor. The transition redshift follows from Omega_m. Its published "
+    "determinations (cosmic chronometers; H(z) compilations, whose weighted mean depends mainly on the H0 prior; SNe Ia + H(z), whose three "
+    "parametrisations are merged with their half-range as a systematic) disagree with each other, so D3.1 is reported as inconclusive and not "
+    "scored (rows D3.1a to D3.1d give the individual pulls). Of the two flatness data, the newer (DESI DR2 with the CMB, D3.7) is scored. "
+    "The DESI significances are the collaboration's (Delta chi^2 for two extra parameters, converted to Gaussian "
     "sigma); the check scores the least significant combination. H_inf is derived (H_inf^2 = H0^2 - (100 km/s/Mpc)^2 omega_m) and is reported, "
     "not scored: it exists only if w = -1.\n")
 L.append(
-    "**D4.** Leading-order plateau predictions n_s = 1 - 2/N, r = 12/N^2 for Starobinsky and Higgs inflation, N = 50 to 60. The scored n_s "
-    "data are Planck 2018 alone and ACT DR6 + Planck + lensing + DESI DR1 BAO (the most constraining published combination); P-ACT without "
-    "BAO is reported. A prediction band passes when some N in [50, 60] is within 95%.\n")
+    "**D4.** Leading-order plateau predictions n_s = 1 - 2/N, r = 12/N^2 for Starobinsky and Higgs inflation, N = 50 to 60. These rows are "
+    "conditional on that potential, which Part I names but GUID does not derive. The n_s datum is ACT DR6 + Planck + lensing + DESI DR1 BAO "
+    "(it includes the Planck data, so Planck alone and P-ACT are reported). A prediction band passes when some N in [50, 60] is within 95%; "
+    "the pull quoted is the one at the best N.\n")
 L.append(
     "**D5.** Novikov-Thorne efficiency 1 - E_isco from Bardeen, Press and Teukolsky, signed spin (retrograde a < 0): 3.8% (a = -1), 5.7% (a = 0), "
     "42.3% (a -> 1). The Soltan efficiencies are read on that curve to give the typical spin. The spin tables are entered as 90% ranges "
     "(lower limits as [limit, 1]).\n")
 L.append(
-    "**D6.** Bridge B's rate for each experiment is computed two ways, and the larger is used: the paper's G M^2/(hbar R) and the full "
+    "**D6.** Bridge B's rate for each experiment is computed two ways, and the larger is used: Part I's G M^2/(hbar R) and the full "
     "Diosi-Penrose self-energy difference E_Delta = (G/2) int int (rho_1 - rho_2)(rho_1' - rho_2')/|x - x'| for the actual separation, a "
     "uniform sphere for the bulk plus each nucleus smeared as a Gaussian of width R0 = 0.54e-10 m (the smallest allowed; larger R0 lowers "
     "the rate). Single atoms are their nucleus smeared over R0. The closed forms are checked against Fourier quadrature. An experiment is "
@@ -1296,11 +1390,11 @@ L.append(
     "mattering.\n")
 L.append(
     "**D8.** Tree-level masses from alpha-hat(M_Z) = 1/127.950, sin^2 theta-hat = 0.23129 and v = (sqrt2 G_F)^(-1/2) = " + f"{v_H:.2f}" +
-    " GeV, the paper's route; two other standard tree-level routes show the scheme spread. The scored test is the paper's own claim, "
-    "agreement within half a per cent.\n")
+    " GeV, Part I's route; two other standard tree-level routes show the scheme spread. Part I's claim, agreement within half a per cent, "
+    "holds only in that route, so these rows are reported as tree-level Standard Model values (INFO).\n")
 L.append("## D1 in numbers\n")
 L.append(f"| quantity | value |\n|---|---|\n| 95% CL bound on lambda (MICROSCOPE + Eot-Wash) | {lam95:.2e} |\n| same, MICROSCOPE alone | "
-         f"{lam95_mic:.2e} |\n| paper's bound (\\|eta\\| < 2.7e-15) | {lam_paper:.2e} |\n| Model A drift coefficient | {U0 * H0_yr:.2e} lambda^2 f_b /yr |\n"
+         f"{lam95_mic:.2e} |\n| version 5.1's bound (\\|eta\\| < 2.7e-15) | {lam_paper:.2e} |\n| Model A drift coefficient | {U0 * H0_yr:.2e} lambda^2 f_b /yr |\n"
          f"| Model A drift at the largest lambda, f_b = 1e-3 | {dA_max:.1e} /yr |\n| Model B joint drift | ({d_hat:.2e} +- {d_sig:.2e}) /yr |\n"
          f"| P(drift < 0) | {P_neg:.3f} |\n| lambda bound if the scalar is DESI-like thawing dark energy (1 + w0 = 0.162) | {lam_desi:.1e} |\n")
 L.append("Implied present drift per datum in Model B (1 sigma):\n")
@@ -1312,7 +1406,7 @@ L.append("| experiment | mass [kg] | separation [m] | coherence [s] | Bridge B r
 for e in D6["experiments"]:
     L.append(f"| {e['label']} | {e['mass_kg']:.2e} | {e['separation_m']:.2e} | {e['coherence_s']:.3g} | {max(e['rate_paper'], e['rate_full']):.1e} | "
              f"{e['decoherence_in_run']:.1e} | {e['margin']:.0e} |")
-L.append(f"\nThe BMV microsphere (1e-14 kg, R = {R_bmv * 1e6:.2f} um) decoheres in {tau_bmv_paper * 1e3:.1f} ms by the paper's formula and "
+L.append(f"\nThe BMV microsphere (1e-14 kg, R = {R_bmv * 1e6:.2f} um) decoheres in {tau_bmv_paper * 1e3:.1f} ms by Part I's formula and "
          f"{tau_bmv_full * 1e3:.1f} ms by the full Diosi-Penrose energy at 250 um separation. **The first experiment to see Bridge B** is a "
          "centre-of-mass superposition, separated by more than the particle's size, of a silica particle of " +
          ", ".join(f"{v['silica']:.0e} kg held {k}" for k, v in first.items()) +
@@ -1327,13 +1421,13 @@ L.append("\n## Covered by other workstreams (not redone here)\n")
 L.append("| topic | files | result |\n|---|---|---|")
 for a, b, cc in COVERED:
     L.append(f"| {md_escape(a)} | `{b}` | {md_escape(cc)} |")
-L.append("\n## Suggested corrections to the paper\n")
+L.append("\n## Corrections made to version 5.1 (applied in Part I of the v6 paper)\n")
 L.append(
-    f"1. Section 4.1, Eq. (lambdabound): |lambda| < 2e-5 is the one-sigma-level value (|eta| < 2.7e-15); the 95% CL profile-likelihood bound "
+    f"1. Version 5.1, Section 4.1, Eq. (lambdabound): |lambda| < 2e-5 is the one-sigma-level value (|eta| < 2.7e-15); the 95% CL profile-likelihood bound "
     f"from MICROSCOPE and Eot-Wash is |lambda| < {lam95:.1e}.\n"
     "2. Section 11.7 and the predictions table: the newest clock bound is (1.8 +- 2.5)e-19 /yr (Filzinger et al. 2023, which includes the "
     "data of Lange et al. 2021).\n"
-    "3. Section 11.7: with the paper's action (no potential) the drift is negative, -C lambda^2 f_b with C ~ 1e-11 /yr, so the forward "
+    "3. Section 11.7: with Part I's action (no potential) the drift is negative, -C lambda^2 f_b with C ~ 1e-11 /yr, so the forward "
     "statement 'zero or negative' is derived there, but it is below 1e-23 /yr; a measurable drift needs a potential, and then the sign is "
     "not predicted.\n"
     "4. Section 5.4 (Bridge B): 'smeared over at least about 1e-10 m' should read 'at least 4e-10 m' (Figurato et al. 2024 summarise the "
@@ -1351,8 +1445,8 @@ L.append(
     "BICEP/Keck bound and Planck X's 0.4% flatness statement are used instead.\n"
     "- The MICROSCOPE alloy compositions, the Sun's composition for the LLR scalar term and the nucleon electromagnetic self-energy are model "
     "inputs, not data; they are stated as such and do not change any verdict.\n"
-    "- An individual area value for GW250114 and a significance in sigma (press releases quote 99.999%) were not found in the paper's "
-    "abstract or HTML; only the abstract's statement is used.\n"
+    "- An individual area value for GW250114 and a significance in sigma (press releases quote 99.999%) were not found in the "
+    "collaboration's abstract or HTML; only the abstract's statement is used.\n"
     "- Bild et al. 2023 (a 16 microgram mechanical cat state) is not a centre-of-mass superposition, so a Diosi-Penrose rate needs its mode "
     "shape; it is left out.\n")
 L.append("## Citations (all verified " + DATE_VERIFIED + ")\n")
@@ -1364,5 +1458,7 @@ L.append("")
 print(f"\nWrote {RESULTS / 'predictions_vs_data.json'}, {RESULTS / 'predictions_vs_data.md'} and {len(FIGS)} figures.")
 if not m_ok:
     print("METHOD CHECK FAILED")
-print(f"\n{n_ok} of {len(scored)} checks passed")
+print(f"\n{n_ok} of {len(scored)} scored confrontations passed ({len(fails)} FAIL; conditional: {len(cond_ok)} OK, {len(cond_fail)} FAIL; "
+      f"{len(by_kind['consistency'])} consistency rows not counted; {len(by_kind['info'])} info)")
+print(f"{n_ok} of {len(scored)} checks passed")
 sys.exit(0 if (n_ok == len(scored) and m_ok) else 1)

@@ -4,19 +4,19 @@ Part~I states that DMP hosts quantum content. Its information half can carry any
 and~\ref{sec:host}), while its witnesses read only that content exists, as a stabiliser syndrome reads that a code state is present and
 not what it encodes (Section~\ref{sec:holo}). We test the operational form of this statement on four configurations with known answers:
 an interacting critical spin chain, a free-fermion chain of 4000 sites, a gauge theory with a local constraint, and a quantum algorithm.
-All four reproduce the known values within honest uncertainties, the Schwinger-model mass only to 7\% (Table~\ref{tab:hosted:summary}).
+All four reproduce the known values within the stated uncertainties, the Schwinger-model mass only to 7\% (Table~\ref{tab:hosted:summary}).
 This validates the host and our code. It tests no new physics, and no number here is evidence for or against GUID \tagS.
 
 \begin{table}[tb]\centering\footnotesize\setlength{\tabcolsep}{4pt}
 \caption{Hosted benchmarks against known values \tagS\ (B1~\chk{hosted:B1}, B2~\chk{hosted:B2}, B3~\chk{hosted:B3}, B4~\chk{hosted:B4}).
-$\sigma$ as defined in Section~\ref{sec:hosted:def}.}\label{tab:hosted:summary}
+$\sigma$ as defined in Section~\ref{sec:hosted:def}; for B3 it measures consistency, not significance.}\label{tab:hosted:summary}
 \begin{tabular}{@{}llll@{}}
 \toprule
 Benchmark & Known value & Hosted value & Deviation\\
 \midrule
 B1 Heisenberg ring, $e_0$ & $\tfrac14-\ln2=-0.4431471806$ & $-0.4431457(11)$ & $+1.5\times10^{-6}$ ($1.3\sigma$)\\
 B2 Ising ring, $L=4000$, $E_0$ & finite-$L$ closed form & equal & $2\times10^{-16}$ relative\\
-B2 $c$ from the Casimir energy & $\tfrac12$ ($+9.0\times10^{-9}$ at this $L$) & $0.5000000052$ & $+5.2\times10^{-9}$\\
+B2 $c$ from the Casimir energy & $\tfrac12$ ($+9.0\times10^{-9}$ at this $L$) & $0.500000005(8)$ & $+5(8)\times10^{-9}$\\
 B2 $c$ from the block entropy & $\tfrac12$ & $0.50000016(26)$ & $0.6\sigma$\\
 B2 saturated $S$, $g=0.5$ / $1.5$ & $0.6989875284$ / $0.3069825111$ & equal & $3\times10^{-12}$\\
 B3 Schwinger $M/g$, shifted / naive & $1/\sqrt\pi=0.5641896$ & $0.586(39)$ / $0.593(31)$ & $0.55\sigma$ / $0.92\sigma$\\
@@ -37,9 +37,11 @@ unit norm. The two share no code path with each other or with the host, and the 
 each benchmark:
 $[H,\Sigma]=0$ on a small, complete Hilbert space; an injected fault that leaves $\mathcal H_E$, which both witnesses must refuse; two
 orthogonal states of $\mathcal H_E$ (two contents), which must receive the same verdict; and, in B4, a fault that changes only the
-content, which must pass. \emph{Uncertainties.} Exact identities are checked to floating-point accuracy. An extrapolated number carries, as $1\sigma$, the largest
-change over a family of alternative fits (windows and functional forms) fixed in the code, combined in quadrature with the statistical
-error of a weighted fit where there is one. A comparison passes at $\vert\text{deviation}\vert\le2\sigma$.
+content, which must pass.
+
+\emph{Uncertainties.} Exact identities are checked to floating-point accuracy. An extrapolated number carries, as $1\sigma$, the largest
+change over a family of alternative fits (windows and functional forms) fixed in the code. Where a second fit uses such spreads as
+weights (B3), the uncertainty it propagates is combined in quadrature. A comparison passes at $\vert\text{deviation}\vert\le2\sigma$.
 
 \subsection{B1: the Heisenberg chain}
 
@@ -76,8 +78,8 @@ coupling costs one SVD of a $4000\times4000$ matrix.
 Four comparisons follow \chk{hosted:B2}; $E(m)$ and $K(k)$ are complete elliptic integrals (parameter $m$, modulus $k$).
 (a)~$E_0$ equals the finite-$L$ closed form $-\sum_k\sqrt{1+g^2-2g\cos k}$, $k=2\pi(n+\tfrac12)/L$, to $2\times10^{-16}$ relative at all
 three couplings. At $g=0.5$ and $1.5$, $E_0/L$ equals $e_\infty=-\tfrac2\pi(1+g)E(4g/(1+g)^2)$ to $4\times10^{-16}$ \cite{pfeuty1970}.
-(b)~At $g=1$, $E_0/L-e_\infty=-3.27\times10^{-8}$. The Casimir term $-\pi vc/(6L^2)$ with $v=2$ gives $c=0.5000000052$; the exact
-expansion predicts $\tfrac12+7\pi^2/(480L^2)=0.5000000090$.
+(b)~At $g=1$, $E_0/L-e_\infty=-3.27\times10^{-8}$. The Casimir term $-\pi vc/(6L^2)$ with $v=2$ gives $c=0.500000005(8)$, the
+uncertainty being floating-point error; the exact expansion predicts $\tfrac12+7\pi^2/(480L^2)=0.5000000090$.
 (c)~At $g=1$ the Calabrese--Cardy form for a ring \cite{calabrese2004}, $S(l)=\tfrac c3\ln[\tfrac L\pi\sin\tfrac{\pi l}L]+c_1'$, fitted on
 $100\le l\le2000$, gives $c=0.50000016(26)$ (spread over four alternative windows) and $c_1'=0.478558$.
 (d)~At $g=0.5$ and $1.5$ the entropy saturates, $S(L/2)-S(L/8)=2\times10^{-12}$: an area law. The saturated values, 0.6989875284 and
@@ -140,12 +142,15 @@ $x$ & $ag$ & $N\to\infty$ & $N=22$ & $N\to\infty$ & $N=22$\\
 \end{tabular}
 \end{table}
 
-\emph{Results} (Table~\ref{tab:hosted:schwinger}). The shifted lattice gives $M/g=0.586\pm0.039$ (statistical 0.016, fit family 0.035),
-$0.55\sigma$ from $1/\sqrt\pi$; the naive lattice gives $0.593\pm0.031$, at $0.92\sigma$. The finite-size form passes an out-of-sample
+\emph{Results} (Table~\ref{tab:hosted:schwinger}). The shifted lattice gives $M/g=0.586\pm0.039$ (propagated $N$-extrapolation uncertainty
+0.016, continuum fit family 0.035), $0.55\sigma$ from $1/\sqrt\pi$; the naive lattice gives $0.593\pm0.031$, at $0.92\sigma$. The
+per-$x$ errors are fit-family spreads, strongly correlated between $x$: the main continuum fits have $\chi^2=0.04$ (shifted) and 0.18
+(naive) for 3 degrees of freedom, so $\chi^2/{\rm dof}\ll1$, and the $0.55\sigma$ and $0.92\sigma$ are consistency checks, not
+significances. The finite-size form passes an out-of-sample
 test: at $x=4$ the fit on $N\le22$ predicts the $N=24$ gap as 0.613467, and the computed value is 0.613388.
 
 \emph{Precision limits.} Matrix product states give $0.56421(9)$ \cite{banuls2013} and DMRG $0.5642(2)$ \cite{byrnes2002} (as tabulated in
-\cite{banuls2013}), with uncertainties over 400 times smaller than ours. They use $x$ from 5 to 600 with $N\ge20\sqrt x$
+\cite{banuls2013}), with uncertainties 200 to 400 times smaller than ours. They use $x$ from 5 to 600 with $N\ge20\sqrt x$
 \cite{banuls2013}; exact diagonalisation stops at $N=22$, hence at $x\le4$. The
 weighted continuum fit is dominated by the coarsest lattice, $x=0.5$: its $N$-extrapolation is the most precise, but a quadratic in $ag$
 describes its lattice artefacts worst. This pulls the central value up and sets the 7\% error. The shifted values at $1.5\le x\le4$ lie
@@ -176,8 +181,9 @@ not the existence, and both pass it, as a syndrome that never reads content must
 
 \emph{The cost of a generic state.} One random layer is $n$ Haar-random single-qubit gates and $n-1$ controlled-$Z$ gates on a dense
 vector of $2^n$ amplitudes of 16 bytes. The measured peak memory is the state plus a fixed 16\,MiB buffer: 1.016 times the state at
-$n=26$ (1\,GiB). A layer takes 0.0012\,s at $n=10$, 0.67\,s at $n=22$ and 15.6\,s at $n=26$, and the time per gate grows as $2^{1.065n}$
-over $n=18$ to 26. At $7.3\times10^{-9}$\,s per gate and amplitude on one core,
+$n=26$ (1\,GiB). A layer takes 0.0012\,s at $n=10$, 0.67\,s at $n=22$ and 15.6\,s at $n=26$, and the layer time per qubit grows as
+$2^{1.065n}$ over $n=18$ to 26. At $7.3\times10^{-9}$\,s per qubit and amplitude for one layer (the $n-1$ controlled-$Z$ gates folded
+in), on one core,
 $n=50$ needs 18\,PB for the state and about 13 years per layer, and $n=4000$ needs $10^{1205.3}$ bytes. The $2n+3=4099$ logical qubits of
 Beauregard's circuit for a 2048-bit RSA modulus \cite{beauregard2003} need $10^{1235.1}$ bytes. Structured content stays cheap: B2 hosts
 4000 qubits as four dense 128\,MB matrices because its state is Gaussian, not because a 4000-qubit state is cheap, and stabiliser circuits run in polynomial time by the
@@ -196,7 +202,7 @@ Existence Turing machine of Section~\ref{sec:host} needs a quantum information h
 multiplications of B4 are exact permutation gates, not elementary-gate circuits. B1 stops at $N=24$ for memory. Wall times (one core, shared machine) are reported, not checked. All numbers in this section come from \url{docs/simulation/hosted_benchmarks.py} (53 of 53 checks, 492\,s on one core,
 peak memory 1.9\,GB).
 
-\paragraph{Verdict.} The hosting construction \vd{holds} on four hard configurations with known answers (the Heisenberg energy to
+\paragraph{Verdict.} The hosting construction \vd{holds} on four configurations with known answers (the Heisenberg energy to
 $1.5\times10^{-6}$, the Ising central charge at 4000 sites to $2\times10^{-7}$, the Schwinger mass to 7\%, Shor's distributions to
 $10^{-11}$), and its two witnesses accept exactly the existence sector and never read content \tagS. This validates the host and our
 code; it tests no new physics, and every prediction of GUID remains \vd{untested} by it.

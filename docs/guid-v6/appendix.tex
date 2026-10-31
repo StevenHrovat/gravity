@@ -8,11 +8,11 @@ prints the table again from the scripts' own output.
 
 All scripts are deterministic. They fix their random seeds, pin the linear-algebra libraries to one thread, and read no clock except to
 report their own runtime. Two runs of each gave identical output files apart from that runtime field. The runtimes in the table are for
-one core of a shared machine and are not results. The scripts need Python~3 with numpy and scipy; \texttt{checks.py} also needs sympy, and
-the rotation-curve and data scripts need matplotlib for their figures. None of them needs a network connection.
+one core of a shared machine and are not results. The scripts need Python~3 with numpy and scipy; \texttt{checks.py} also needs sympy,
+\texttt{holographic\_code.py} needs stim~1.16, and the scripts that draw figures need matplotlib. None of them needs a network connection.
 
 \begin{center}\small
-\begin{longtable}{@{}p{0.27\linewidth}p{0.17\linewidth}p{0.15\linewidth}p{0.08\linewidth}p{0.22\linewidth}@{}}
+\begin{longtable}{@{}P{0.26\linewidth}P{0.17\linewidth}P{0.15\linewidth}P{0.09\linewidth}P{0.22\linewidth}@{}}
 \caption{The scripts behind the paper. The first two are \texttt{docs/guid-v6/checks.py} and \texttt{docs/qg-verdict/assembly.py}; the
 others are in \texttt{docs/simulation/}.}\label{tab:scripts}\\
 \toprule
@@ -47,8 +47,9 @@ Pass their folder with \texttt{--data <folder>} or the environment variable \tex
 as published values, each with its source in the script and in Sections~\ref{sec:sparc} to~\ref{sec:data}.
 
 \paragraph{Results files.} Each simulation script writes its numbers to a JSON file and a readable account to a Markdown file of the
-same name, both in \texttt{docs/simulation/results/}; its figures go to \texttt{docs/simulation/figures/}. The JSON files are the reference for every label of the form
-\chk{script:label} in the text.
+same name, both in \texttt{docs/simulation/results/}; its figures go to \texttt{docs/simulation/figures/}. The JSON files are the reference for the labels of the form \chk{script:label} in the
+text; a label that names a whole analysis step (such as \chk{sparc:S0} or \chk{remnant:R6}) points to the step in the script and its
+results note.
 
 \section{The checks of Part I}\label{app:checks}
 

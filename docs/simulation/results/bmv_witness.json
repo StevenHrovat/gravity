@@ -5,7 +5,7 @@
   "scipy": "1.18.1",
   "source": "arXiv:1707.06050 v1 (19 Jul 2017), the only arXiv version; the published text, PRL 119, 240401 (2017), was not read",
   "state": "(1/2)[|00> + e^{ia}|01> + e^{ib}|10> + |11>], a = Delta phi_LR, b = Delta phi_RL, |up> = |0>",
-  "runtime_s": 49.3
+  "runtime_s": 49.0
  },
  "checks": [
   {
@@ -57,6 +57,14 @@
    "ok": true,
    "got": 0.6505843394698784,
    "expected": 0.6506,
+   "rtol": 0.001,
+   "atol": 0.0
+  },
+  {
+   "label": "at the phases where the arXiv text quotes W ~ 1.16 (Delta phi_LR = -0.2, Delta phi_RL = 0.7) the printed operator gives 0.33",
+   "ok": true,
+   "got": 0.33038637349969147,
+   "expected": 0.3304,
    "rtol": 0.001,
    "atol": 0.0
   },
@@ -271,7 +279,8 @@
   "W_print(a=0.0000,b=1.0000)": -0.6505843394698784,
   "W_print(a=0.5000,b=0.5000)": -0.479425538604203,
   "W_print(a=0.0000,b=1.5708)": -1.0,
-  "W_print(a=0.0000,b=3.1416)": -1.0
+  "W_print(a=0.0000,b=3.1416)": -1.0,
+  "W_print_at_quoted_phases(a=-0.2,b=0.7)": 0.33038637349969147
  },
  "B2": {
   "two_pair_lemma_max": 1.0000000000000009,
@@ -312,7 +321,7 @@
   }
  },
  "summary": {
-  "passed": 33,
-  "total": 33
+  "passed": 34,
+  "total": 34
  }
 }

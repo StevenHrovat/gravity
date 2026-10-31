@@ -1,6 +1,6 @@
 # SPARC rotation curves against GUID's stochastic remnant
 
-Workstream of *GUID v6: Our theory as simulated*. Written by `docs/simulation/sparc_rotation.py` from one run (seed 20161101, 1000 bootstrap resamples over galaxies); every number is also in `sparc_rotation.json`. Figures: `docs/simulation/figures/sparc_rar.pdf`, `sparc_residuals.pdf`, `sparc_gamma1.pdf`, `sparc_btfr.pdf`. Checks: **36 of 36 passed** (pipeline reproduction and internal consistency; the model comparisons are results, not checks).
+Workstream of *GUID v6: Our theory as simulated*. Written by `docs/simulation/sparc_rotation.py` from one run (seed 20161101, 1000 bootstrap resamples over galaxies); every number is also in `sparc_rotation.json`. Figures: `docs/simulation/figures/sparc_rar.pdf`, `sparc_residuals.pdf`, `sparc_gamma1.pdf`, `sparc_btfr.pdf`. Checks: **39 of 39 passed** (pipeline reproduction and internal consistency; the model comparisons are results, not checks).
 
 The model under test is the paper's stochastic remnant (Section 11.6, after Oppenheim and Russo): v² = GM/r + |γ1| r/2 - γ2 r², so the observed centripetal acceleration should be g_obs = g_bar + |γ1|/2 - γ2 R, a constant extra acceleration on top of the Newtonian one from the baryons.
 
@@ -119,6 +119,7 @@ A constant extra acceleration predicts Δg = g_obs - g_bar independent of g_bar.
 - Low-acceleration slope d log Δg / d log g_bar = 0.436 [0.390, 0.490]. The RAR predicts 0.448 in the same bins, a constant predicts 0, and deep MOND (g_obs = √(g_bar a0)) predicts 0.5.
 - Point fit g_obs = g_bar + K (g_bar/10⁻¹⁰)^p: p = 0.436 [0.396, 0.464] over all points, p = 0.543 below g†/10. Against the constant (p = 0), ΔBIC = -4983 in favour of the free exponent. The two-parameter law is still worse than the one-parameter RAR (ΔBIC +82).
 - At g_bar > 10⁻⁹ m/s², Δg is a small difference of large numbers and its bins are not informative.
+- Mock null test of the estimator (400 mocks per truth; the error model of S1 drawn per galaxy and per point, then the same precision cut, bins, low-acceleration cut, slope estimator and galaxy bootstrap). Constant |γ1| = 4.54e-11: slope +0.005 [-0.033, +0.046] over the mocks; one mock analysed like the data gives +0.012 with bootstrap [-0.033, +0.048]; 0.000 of the null mocks reach the data's 0.436. RAR (positive control): +0.469 [+0.424, +0.518], against 0.448 without noise.
 
 ## S3: baryonic Tully-Fisher relation
 

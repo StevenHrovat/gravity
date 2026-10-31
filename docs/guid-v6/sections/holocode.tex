@@ -68,8 +68,9 @@ max deficit & 0 & 4 & 53 & 51 & 2 & 4 \\\bottomrule
 at $D=1$ \tagS. This is the Ryu--Takayanagi formula~\cite{rt} with the bulk entropy included (Eq.~\eqref{eq:holocode-qrt}), and it
 \vd{holds}.
 
-\paragraph{Bulk legs fixed.} In setting (a), $S(A)\le\mathrm{mc}(A)$ in all 4\,303\,160 cases, as for any tensor network. In
-orientation A equality holds for all 42\,428 contiguous intervals at $D=1,\dots,5$, which extends the 25-qubit claim of
+\paragraph{Bulk legs fixed.} In setting (a), $S(A)\le\mathrm{mc}(A)$ in all 2\,206\,008 region--network cases, as for any tensor
+network. In orientation A equality holds for all 42\,428 tested intervals at $D=1,\dots,5$ (exhaustive at $D=1$), which extends the
+25-qubit claim of
 Section~\ref{sec:holo} to 5120 qubits. For non-contiguous regions equality fails: in 13.3\,\% of all regions at $D=1$, and in 37\,\% of
 the random subsets at $D=5$, with deficits up to 53 bits. In orientation H it fails even for 10.5 to 32\,\% of the intervals
 (Table~\ref{tab:holocode-rt}).
@@ -86,12 +87,13 @@ cuts meeting. On a tree with fixed bulk they need not meet, and then the minimal
 In setting (b) we computed $I(R_t\!:\!A)$ for 13\,243\,616 pairs of region and bulk qubit \chk{holo:H3}. These are all $2^{20}$
 regions times 6 qubits times 2 orientations at $D=1$, and intervals and random subsets of 11 sizes at $D=2,\dots,5$. $I$ is always 0 or
 2 bits, never 1. Four predictions agree in every pair: exact recoverability, the greedy wedge, the recursion of
-Proposition~\ref{prop:holocode-erasure}, and the min-cut prediction $I_{\rm cut}=1+\mathrm{mc}(A)-\mathrm{mc}(A\cup R_t)$, which never
-ties. Wedge reconstruction~\cite{adh,dong2016} therefore \vd{holds} at scale \tagS.
+Proposition~\ref{prop:holocode-erasure}, and the min-cut prediction $I_{\rm cut}=1+\mathrm{mc}(A)-\mathrm{mc}(A\cup R_t)$; and
+$I_{\rm cut}$ never takes the value 1. Wedge reconstruction~\cite{adh,dong2016} therefore \vd{holds} at scale \tagS.
 
 Table~\ref{tab:holocode-wedge} shows two regimes. An interval holds the bulk geometrically: a deep qubit is in the wedge when its
-subtree is, and the root needs more than half the ring. A random subset holds almost nothing until about 77\,\% of the boundary
-survives ($1-p_c$, Section~\ref{sec:holocode-erasure}), and then holds nearly everything.
+subtree is, and the root needs more than half the ring. For a random subset the root and the upper levels hold nothing until about
+77\,\% of the boundary survives ($1-p_c$, Section~\ref{sec:holocode-erasure}), and then nearly everything; qubits near the leaves are
+recovered in proportion to their local coverage.
 
 \begin{table}[ht]\centering\small
 \caption{Fraction of bulk qubits recoverable at $D=5$ (orientation A, setting b), by depth (0 is the root) and by the fraction
@@ -192,8 +194,9 @@ precision, and reading the content leaves fidelity exactly $\tfrac12$. The exist
 
 Section~\ref{sec:holo} closes on Harlow's formula~\cite{harlow}, $S(\rho_R)=\Tr(\rho\,\mathcal L_R)+S_{\rm bulk}(\rho,\mathcal M_R)$,
 with the area operator in the centre of the reconstructable algebra. In setting (b) we can read it off. The cut function is
-submodular, so minimal cuts are closed under union and the largest $A$-side among them is itself a minimal cut. Because
-$I_{\rm cut}=I$, that side is the wedge $W_A$. The cut crosses one bulk leg per tile of $W_A$ and $|\gamma_A|$ non-bulk legs, so
+submodular, so minimal cuts are closed under union and the largest $A$-side among them is itself a minimal cut.
+$I_{\rm cut}(t)=2$ holds exactly when tile $t$ lies on $A$'s side of some minimal cut, so this largest side is the set of tiles with
+$I_{\rm cut}=2$; because $I_{\rm cut}=I$ in every pair, it is the wedge $W_A$. The cut crosses one bulk leg per tile of $W_A$ and $|\gamma_A|$ non-bulk legs, so
 \begin{equation}\label{eq:holocode-qrt}
 S(A)=|\gamma_A|+|W_A|\qquad\text{(setting b)}.
 \end{equation}
@@ -203,11 +206,11 @@ formula with $S_{\rm bulk}=|W_A|$ and $\Tr(\rho\,\mathcal L_A)=|\gamma_A|$, a nu
 the assembly realises one fixed-area sector, as Lemma~\ref{lem:classical} requires, and cannot represent a superposition of areas. That
 \vd{holds} by construction; the superposition of geometries stays \vd{untested}.
 
-The setting-(a) exceptions show the other side. With an empty residual region and a pure bulk, Harlow's formula gives
-$S=|\gamma_A|$, and we find $S=\mathrm{mc}$ in every such case. A residual tile, by contrast, is a bulk qubit that neither side can
-reconstruct alone. There $\mathcal M_A$ cannot be a tensor factor over whole qubits, Harlow's theorem needs a non-trivial centre, and the
-entropy of a fixed bulk falls below the cut. We read the deficits, at most one bit per pair of residual tiles, as the classical centre
-at work inside one fixed geometry. This \vd{holds as a reading}: the script does not construct the centre.
+For setting (a), with an empty residual region and a pure bulk, Harlow's formula gives $S=|\gamma_A|$, and we find
+$S=\mathrm{mc}$ in every such case. A residual tile is a bulk qubit that neither side can reconstruct alone, so complementary recovery
+of whole bulk qubits fails and Harlow's theorem in this form does not apply. The setting-(a) deficits have the tensor-network cause
+given in Section~\ref{sec:holocode-rt}. Whether they can also be described by a non-trivial centre of the reconstructable algebra is
+\vd{untested}: $I(R_t\!:\!A)$ takes only the values 0 and 2, and the script does not construct any centre.
 
 \subsection{A control: the toric code}\label{sec:holocode-toric}
 
@@ -226,8 +229,8 @@ entropy. The Monte Carlo samples at $D=5$ were raised from 160 to 400. Two float
 $10^{-11}$ and $10^{-13}$, after rounding exceeded them. The region sets were sized for runtime.
 
 \paragraph{Caveats.} This is kinematics on a fixed background. The states are stabiliser states, and non-stabiliser contents were tested
-on one tile only. The noise is Pauli or erasure noise, with noiseless syndrome extraction. The $\lfloor r/2\rfloor$ bound is observed in
-4.3 million cases, not proved, and the regions at $D\ge2$ are samples. The recursion is exact only in setting (b). A tree is not our
+on one tile only. The noise is Pauli or erasure noise, with noiseless syndrome extraction. The $\lfloor r/2\rfloor$ bound is observed in all
+2\,206\,008 setting-(a) cases (about 2.2 million), not proved, and the regions at $D\ge2$ are samples. The recursion is exact only in setting (b). A tree is not our
 space (Section~\ref{sec:holo}).
 
 All numbers in this section come from \texttt{docs/simulation/holographic\_code.py} (77 of 77 checks, about 8.5 minutes on one core).

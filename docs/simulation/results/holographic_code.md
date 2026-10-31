@@ -11,7 +11,7 @@ state. Five results:
 
 - **Ryu-Takayanagi on the tree (H2).** With every bulk leg open (setting b), S(A) equals the minimal cut for every region tested.
   That is all 2^20 regions at D = 1, and 2.2 million region-network cases in all. With every bulk leg fixed to |0> (setting a),
-  S(A) never exceeds the cut. In assembly.py's orientation it equals the cut for every contiguous interval at every depth. It
+  S(A) never exceeds the cut. In assembly.py's orientation it equals the cut for every interval tested at every depth (exhaustive at D = 1). It
   falls below the cut for many non-contiguous regions, and, in the HaPPY orientation, for 10 to 32 % of intervals. Every
   exception has a non-empty residual region.
 - **Entanglement wedge (H3).** In 13.2 million (region, bulk qubit) pairs, I(R_t : A) is always 0 or 2 bits. Four predictions of
@@ -96,7 +96,7 @@ How the regions were chosen:
 
 **Characterisation of the exceptions.** All of them are in setting (a).
 
-1. S(A) is never above the cut (4 303 160 region-network cases).
+1. S(A) is never above the cut (2 206 008 region-network cases).
 2. Every exception has a non-empty residual region, the set of tiles in neither greedy wedge (of A, or of its boundary
    complement). In setting (b) this greedy wedge is the exact entanglement wedge, as shown in H3. Where the residual region is
    empty, S(A) equals the cut, in every case tested. The deficit never exceeded floor((residual tiles)/2). This is an observed bound,
@@ -121,7 +121,7 @@ bulk legs open (setting b).
   both as intervals and as random subsets, in both orientations. In all, 13 243 616 (region, bulk qubit) pairs.
 - **No partial recovery.** I(R_t : A) is 0 or 2 bits in every pair; 1 bit never occurs.
 - **Four predictions agree.** These are I(R_t : A) = 2 from the stabilizer group, the greedy wedge, the tree recursion of H4 and
-  the min-cut prediction I_cut = 1 + mc(A) - mc(A u R_t). The min-cut prediction never ties (I_cut = 1 occurs 0 times).
+  the min-cut prediction I_cut = 1 + mc(A) - mc(A u R_t). I_cut never takes the value 1.
 
 Recoverable fraction of bulk qubits at D = 5, orientation A, by depth (rows; 0 = root) and region size \|A\|/n (columns). The
 intervals use 6 starts per size; the random subsets use 6 samples per size.
@@ -149,8 +149,9 @@ Random subsets (the same as erasure at p = 1 - \|A\|/n):
 | 5 | 0.00 | 0.00 | 0.03 | 0.09 | 0.18 | 0.32 | 0.52 | 0.75 | 0.96 | 1.00 | 1.00 |
 
 An interval holds the bulk geometrically: a deep qubit is in its wedge when its own subtree lies inside the interval. The root
-needs more than half the ring. A random subset holds nothing until about 77 % of the boundary survives, and then holds
-everything. This is the erasure threshold of H4.
+needs more than half the ring. For a random subset the root and the upper levels hold nothing until about 77 % of the boundary
+survives, and then nearly everything; qubits near the leaves are recovered in proportion to their local coverage. This is
+the erasure threshold of H4.
 
 ## H4. Erasure threshold of the hierarchy
 
@@ -297,7 +298,7 @@ region size and of L. The entropies themselves grow with the boundary; for examp
   - The noise models are Pauli noise and erasure. Syndrome extraction is noiseless; the noise acts on the data before both
     witnesses read it.
 - **RT in setting (a).** The setting-(a) RT results depend on orientation. The floor(residual/2) bound on the deficit is observed
-  on 4.3 million cases, not proved. The intervals at D = 4 and 5 and the random subsets are samples, not exhaustive. D = 1 is
+  on all 2 206 008 setting-(a) cases (about 2.2 million), not proved. The intervals at D = 4 and 5 and the random subsets are samples, not exhaustive. D = 1 is
   exhaustive.
 - **The erasure recursion.** It is exact for setting (b), where every bulk qubit is unknown, and was verified sample by sample.
   It is not a statement about setting (a). Monte Carlo fractions carry binomial noise; the per-sample agreement does not.

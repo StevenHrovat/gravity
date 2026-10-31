@@ -147,6 +147,10 @@ for a, b in ((0.0, 1.0), (0.5, 0.5), (0.0, math.pi / 2), (0.0, math.pi)):
     B1[f"W_print(a={a:.4f},b={b:.4f})"] = ev(dm(ket_bmv(a, b)), W_print)
 check("example: a = 0, b = 1 rad (the paper's Sigma ~ O(1), inner branches closest): printed W = 0.65, below 1 though the state is entangled",
       abs(B1["W_print(a=0.0000,b=1.0000)"]), 0.6506, rtol=1e-3)
+w_quoted = abs(ev(dm(ket_bmv(-0.2, 0.7)), W_print))
+B1["W_print_at_quoted_phases(a=-0.2,b=0.7)"] = w_quoted
+check("at the phases where the arXiv text quotes W ~ 1.16 (Delta phi_LR = -0.2, Delta phi_RL = 0.7) the printed operator gives 0.33",
+      w_quoted, 0.3304, rtol=1e-3)
 
 # =================================================================================================================================
 print("\n[B2] Valid witnesses")

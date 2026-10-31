@@ -1,17 +1,87 @@
 {
  "script": "docs/simulation/predictions_vs_data.py",
  "verified_on": "2026-10-31",
- "criterion": "OK = consistent at 95% (|pull| < 1.96 or inside the stated allowed region)",
+ "criterion": "scored and conditional rows: OK = consistent at 95% (|pull| < 1.96 or inside the stated allowed region, 90% regions labelled); consistency rows (prediction set from the datum) are CONS and not counted; info rows are not scored",
  "summary": {
-  "scored": 58,
-  "passed": 54,
+  "rows": 74,
+  "scored": 33,
+  "passed": 30,
   "failed": [
    "D3.3",
    "D3.4",
-   "D3.7",
+   "D3.7"
+  ],
+  "guid_specific_scored": [
+   "D1.1",
+   "D1.2",
+   "D1.3",
+   "D1.5",
+   "D1.6",
+   "D1.7",
+   "D1.8",
+   "D1.9",
+   "D6.1",
+   "D6.2",
+   "D6.3",
+   "D6.4",
+   "D6.8"
+  ],
+  "shared_scored": 20,
+  "conditional": [
+   "D4.3",
+   "D4.4"
+  ],
+  "conditional_ok": [
+   "D4.4"
+  ],
+  "conditional_fail": [
    "D4.3"
   ],
-  "expected_chance_fails": 2.9,
+  "consistency": [
+   "D5.5",
+   "D6.5",
+   "D6.6",
+   "D6.7",
+   "D7.1",
+   "D8.1",
+   "D8.2",
+   "D8.5",
+   "D8.6",
+   "D9.3",
+   "D9.4",
+   "D9.5"
+  ],
+  "info": [
+   "D1.4",
+   "D1.10",
+   "D1.11",
+   "D1.12",
+   "D2.2",
+   "D2.4",
+   "D2.13",
+   "D3.1",
+   "D3.1a",
+   "D3.1b",
+   "D3.1c",
+   "D3.1d",
+   "D3.2",
+   "D3.6",
+   "D4.1",
+   "D4.2",
+   "D4.5",
+   "D4.6",
+   "D5.1",
+   "D5.3",
+   "D5.8",
+   "D6.9",
+   "D7.2",
+   "D7.3",
+   "D8.3",
+   "D8.4",
+   "D9.6"
+  ],
+  "expected_chance_fails_if_independent": 1.65,
+  "correlation_note": "D3.3 and D3.7 both use DESI DR2 BAO with the CMB, D3.4 rests on the CMB fit of LambdaCDM, and the conditional D4.3 uses the CMB with DESI DR1 BAO: the FAILs are correlated, and the chance expectation assumes an independence that does not hold",
   "method_checks": 6,
   "method_passed": 6
  },
@@ -28,9 +98,11 @@
    "measure": "pull = -0.55 sigma",
    "pull": -0.546268,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific parameter (lambda); WEP shared with GR",
-   "note": "95% CL profile-likelihood bound |lambda| < 3.1e-05 (paper quotes 2e-5, which is the 1-sigma-level |eta| < 2.7e-15)"
+   "note": "95% CL profile-likelihood bound |lambda| < 3.1e-05 (version 5.1 quoted 2e-5, the 1-sigma-level |eta| < 2.7e-15); GUID fixes the sign, eta <= 0, so the test can fail"
   },
   {
    "id": "D1.2",
@@ -44,6 +116,8 @@
    "measure": "pull = +0.17 sigma",
    "pull": 0.166667,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific parameter (lambda); WEP shared with GR",
    "note": ""
@@ -60,6 +134,8 @@
    "measure": "pull = +0.72 sigma",
    "pull": 0.720038,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (forward statement: drift zero or negative)",
    "note": "no sign is measured: P(drift < 0 | clocks) = 0.24"
@@ -76,9 +152,11 @@
    "measure": "pull = +0.91 sigma",
    "pull": 0.9091,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "GUID-specific",
-   "note": "the paper's predictions table quotes this value; the newer value of D1.3 is 4.4 times tighter"
+   "note": "version 5.1's predictions table quoted this value; the newer value of D1.3 is 4.4 times tighter"
   },
   {
    "id": "D1.5",
@@ -93,6 +171,8 @@
    "measure": "GUID value inside the allowed region (95% CL)",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
    "note": "z_Oklo = 0.137 (1.8 Gyr in Planck 2018 LambdaCDM)"
@@ -109,6 +189,8 @@
    "measure": "pull = +0.96 sigma",
    "pull": 0.955779,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
    "note": ""
@@ -125,6 +207,8 @@
    "measure": "pull = -0.30 sigma",
    "pull": -0.299862,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
    "note": ""
@@ -141,6 +225,8 @@
    "measure": "pull = -0.28 sigma",
    "pull": -0.28,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
    "note": ""
@@ -157,6 +243,8 @@
    "measure": "pull = -1.40 sigma",
    "pull": -1.4,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
    "note": ""
@@ -173,6 +261,8 @@
    "measure": "pull = +0.97 sigma",
    "pull": 0.972973,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "GUID-specific",
    "note": ""
@@ -189,6 +279,8 @@
    "measure": "model assumption differs; listed for completeness",
    "pull": null,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "-",
    "note": ""
@@ -209,8 +301,10 @@
    ],
    "measure": "pull = +0.72 sigma",
    "pull": 0.716812,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "derived from D1.3 and the cosmological alpha data and dominated by D1.3 (both +0.72 sigma)",
+   "scored": false,
    "cls": "GUID-specific",
    "note": "P(drift < 0) = 0.24; the data do not determine the sign (a negative drift is disfavoured by 0.72 sigma)"
   },
@@ -226,6 +320,8 @@
    "measure": "pull = +0.91 sigma",
    "pull": 0.913043,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -241,10 +337,12 @@
    ],
    "measure": "pull = +0.41 sigma",
    "pull": 0.407407,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "overlaps D2.1: Cassini tracking data enter the planetary ephemerides",
+   "scored": false,
    "cls": "shared with GR",
-   "note": "overlaps Cassini radio data; listed separately because the ephemeris fit is a different method"
+   "note": "Cassini tracking data enter the ephemerides"
   },
   {
    "id": "D2.3",
@@ -258,6 +356,8 @@
    "measure": "pull = -0.26 sigma",
    "pull": -0.257143,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -274,8 +374,10 @@
    ],
    "measure": "pull = -0.89 sigma",
    "pull": -0.888889,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "included in the ephemeris combination D2.3 (Fienga and Minazzoli, Table 5)",
+   "scored": false,
    "cls": "shared with GR",
    "note": ""
   },
@@ -291,6 +393,8 @@
    "measure": "pull = -0.92 sigma",
    "pull": -0.916667,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -307,6 +411,8 @@
    "measure": "pull = +0.86 sigma",
    "pull": 0.861111,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -323,6 +429,8 @@
    "measure": "pull = +1.06 sigma",
    "pull": 1.0625,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -339,6 +447,8 @@
    "measure": "pull = -0.88 sigma",
    "pull": -0.875,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -355,6 +465,8 @@
    "measure": "pull = +0.54 sigma",
    "pull": 0.544434,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -371,6 +483,8 @@
    "measure": "pull = +0.08 sigma",
    "pull": 0.0766129,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -380,13 +494,15 @@
    "section": "D2",
    "observable": "Speed of gravitational waves, (c_gw - c)/c (GW170817 + GRB 170817A)",
    "guid": "0 (classical waves of the frame at c)",
-   "data": "allowed [-3.00e-15, 7.00e-16] (stated interval)",
+   "data": "allowed [-3.00e-15, 7.00e-16] (interval stated by the collaborations, conservative, no CL)",
    "refs": [
     "gw170817"
    ],
-   "measure": "GUID value inside the allowed region (stated interval)",
+   "measure": "GUID value inside the allowed region (interval stated by the collaborations, conservative, no CL)",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -403,6 +519,8 @@
    "measure": "GUID value inside the allowed region (90% credible)",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -419,6 +537,8 @@
    "measure": "qualitative",
    "pull": null,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "shared with GR",
    "note": ""
@@ -428,18 +548,21 @@
    "section": "D3",
    "observable": "Transition redshift to acceleration, z_t = (2 Omega_L/Omega_m)^(1/3) - 1",
    "guid": "0.632 +- 0.018 (Planck 2018 Omega_m)",
-   "data": "0.618 +- 0.240 (two determinations, scale factor 3.2)",
+   "data": "inconclusive: 0.40 +- 0.10 (chronometers), 0.72 +- 0.05 or 0.84 +- 0.03 (H(z), H0 prior 68 or 73.24), 0.88 +- 0.11 (SNe + H(z))",
    "refs": [
     "moresco",
     "jesus",
+    "farooq",
     "planck18"
    ],
-   "measure": "pull = -0.06 sigma",
-   "pull": -0.0574297,
-   "verdict": "OK",
-   "scored": true,
+   "measure": "inconclusive: individual pulls in rows D3.1a to D3.1d",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "inconclusive: the published determinations disagree with each other and depend on the H0 prior and the parametrisation",
+   "scored": false,
    "cls": "shared with LambdaCDM",
-   "note": "individually: Moresco 0.40 +- 0.10 (-2.3 sigma) and Jesus et al. 0.88 +- 0.11 (+2.2 sigma) pull in opposite directions; they disagree with each other at 3.2 sigma, so they are combined with a scale factor rather than scored one by one. Dahiya & Jain 2023: best fits 0.61-0.82."
+   "note": "pulls against GUID: cosmic chronometers (Moresco 2016) -2.3 sigma, SNe Ia + H(z), 3 parametrizations (Jesus 2018) +2.2 sigma, H(z) data, H0 prior 68 +- 2.8 (Farooq 2017) +1.7 sigma, H(z) data, H0 prior 73.24 +- 1.74 (Farooq 2017) +6.0 sigma. The determinations disagree with each other (chronometers against SNe + H(z) at 3.2 sigma) and depend on the H0 prior and the parametrisation; a post-hoc scaled mean of two of them (0.62 +- 0.24, S = 3.25) is reported here and not scored. Dahiya & Jain 2023: best fits 0.61-0.82."
   },
   {
    "id": "D3.1a",
@@ -453,6 +576,8 @@
    "measure": "pull = -2.29 sigma",
    "pull": -2.28776,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "shared with LambdaCDM",
    "note": ""
@@ -469,6 +594,44 @@
    "measure": "pull = +2.25 sigma",
    "pull": 2.24943,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with LambdaCDM",
+   "note": ""
+  },
+  {
+   "id": "D3.1c",
+   "section": "D3",
+   "observable": "Transition redshift, H(z) data, H0 prior 68 +- 2.8 (Farooq 2017)",
+   "guid": "0.632",
+   "data": "0.72 +- 0.05  (1 sigma)",
+   "refs": [
+    "farooq"
+   ],
+   "measure": "pull = +1.65 sigma",
+   "pull": 1.65372,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with LambdaCDM",
+   "note": ""
+  },
+  {
+   "id": "D3.1d",
+   "section": "D3",
+   "observable": "Transition redshift, H(z) data, H0 prior 73.24 +- 1.74 (Farooq 2017)",
+   "guid": "0.632",
+   "data": "0.84 +- 0.03  (1 sigma)",
+   "refs": [
+    "farooq"
+   ],
+   "measure": "pull = +5.97 sigma",
+   "pull": 5.96672,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "shared with LambdaCDM",
    "note": ""
@@ -486,6 +649,8 @@
    "measure": "derived, not measured: H_inf exists only if w = -1",
    "pull": null,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "shared with LambdaCDM",
    "note": ""
@@ -503,9 +668,11 @@
    "measure": "significance quoted by the collaborations (Delta chi^2 of w0waCDM against LambdaCDM, 2 parameters, as Gaussian-equivalent sigma); scored on the least significant combination, 2.8 sigma",
    "pull": 2.8,
    "verdict": "FAIL",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with LambdaCDM",
-   "note": "tension, not discovery: below 5 sigma in every combination and dependent on the supernova sample; the DES recalibration lowered 4.2 to 3.2 sigma with Bayesian odds of only ~5:1. If it holds, the de Sitter floor and the reading of Section 11.5 must be redone, as the paper says."
+   "note": "tension, not discovery: below 5 sigma in every combination and dependent on the supernova sample; the DES recalibration lowered 4.2 to 3.2 sigma with Bayesian odds of only ~5:1. If it holds, the de Sitter floor and the reading of Section 11.5 must be redone, as Part I says."
   },
   {
    "id": "D3.4",
@@ -520,6 +687,8 @@
    "measure": "pull = +4.89 sigma",
    "pull": 4.88756,
    "verdict": "FAIL",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with LambdaCDM",
    "note": "the Hubble tension of LambdaCDM, inherited unchanged; GUID adds nothing that moves H0"
@@ -537,6 +706,8 @@
    "measure": "pull = +1.50 sigma",
    "pull": 1.4955,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with LambdaCDM",
    "note": ""
@@ -552,8 +723,10 @@
    ],
    "measure": "GUID value inside the allowed region (95% CL)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "overlaps D3.7 (both rest on the CMB) and uses older BAO",
+   "scored": false,
    "cls": "shared with inflation + LambdaCDM",
    "note": ""
   },
@@ -569,6 +742,8 @@
    "measure": "pull = +2.09 sigma",
    "pull": 2.09091,
    "verdict": "FAIL",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with inflation + LambdaCDM",
    "note": "DESI: 'no significant preference for non-flat LambdaCDM'"
@@ -582,11 +757,13 @@
    "refs": [
     "planck18x"
    ],
-   "measure": "pull +1.17 (N = 50) to -0.42 (N = 60) sigma; 95% needs N in [46.2, 74.4]",
+   "measure": "best N = 57: pull -0.00 sigma (N = 50: +1.17, N = 60: -0.42); 95% needs N in [46.2, 74.4]",
    "pull": -0.00292398,
-   "verdict": "OK",
-   "scored": true,
-   "cls": "inflation model named by the paper (Section 11.4), not a GUID derivation",
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "superseded by D4.3, which includes the Planck data",
+   "scored": false,
+   "cls": "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
    "note": ""
   },
   {
@@ -598,11 +775,13 @@
    "refs": [
     "act_dr6"
    ],
-   "measure": "pull +2.87 (N = 50) to +1.11 (N = 60) sigma; 95% needs N in [54.7, 92.4]",
+   "measure": "best N = 60: pull +1.11 sigma (N = 50: +2.87, N = 60: +1.11); 95% needs N in [54.7, 92.4]",
    "pull": 1.11404,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
-   "cls": "inflation model named by the paper (Section 11.4), not a GUID derivation",
+   "cls": "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
    "note": "P-ACT overlaps both neighbours; reported, not scored"
   },
   {
@@ -614,11 +793,13 @@
    "refs": [
     "act_dr6"
    ],
-   "measure": "pull +4.67 (N = 50) to +2.44 (N = 60) sigma; 95% needs N in [62.7, 99.4]",
+   "measure": "best N = 60: pull +2.44 sigma (N = 50: +4.67, N = 60: +2.44); 95% needs N in [62.7, 99.4]",
    "pull": 2.44444,
    "verdict": "FAIL",
-   "scored": true,
-   "cls": "inflation model named by the paper (Section 11.4), not a GUID derivation",
+   "kind": "conditional",
+   "kind_reason": "conditional on the Starobinsky/Higgs plateau potential, which Part I names but GUID does not derive",
+   "scored": false,
+   "cls": "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
    "note": "the leading-order plateau predictions need N >= 63 here; the shift comes partly from the BAO in the combination"
   },
   {
@@ -633,8 +814,10 @@
    "measure": "GUID value inside the allowed region (95% CL)",
    "pull": null,
    "verdict": "OK",
-   "scored": true,
-   "cls": "inflation model named by the paper",
+   "kind": "conditional",
+   "kind_reason": "conditional on the Starobinsky/Higgs plateau potential, which Part I names but GUID does not derive",
+   "scored": false,
+   "cls": "plateau potential named by Part I (Starobinsky/Higgs), not derived by GUID",
    "note": "the next generation (sigma(r) ~ 1e-3) reaches it; GUID itself allows the standard spectrum (Section 11.4)"
   },
   {
@@ -649,6 +832,8 @@
    "measure": "a split after inflation (Kibble-Preskill estimate, T_c = 1e16 GeV, v = 1e-3 c) gives 4e+02 cm^-2 s^-1 sr^-1, 3e+18 times the bound; GUID's ordering gives 0",
    "pull": null,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "shared with standard inflationary cosmology",
    "note": "the same datum is scored once, in D8.2"
@@ -658,7 +843,7 @@
    "section": "D4",
    "observable": "Reheating below the unification energy (needed for D4.5)",
    "guid": "T_reh < M_X",
-   "data": "instantaneous reheating at the r bound gives T_reh <= (30/(pi^2 g*))^(1/4) V^(1/4) = 5.7e15 GeV for V^(1/4) < 1.4e16 GeV; proton decay gives M_X >~ 4.8e15 GeV (paper's estimate, [Q20])",
+   "data": "instantaneous reheating at the r bound gives T_reh <= (30/(pi^2 g*))^(1/4) V^(1/4) = 5.7e15 GeV for V^(1/4) < 1.4e16 GeV; proton decay gives M_X >~ 4.8e15 GeV (Part I's estimate, [Q20])",
    "refs": [
     "bk18",
     "superk"
@@ -666,6 +851,8 @@
    "measure": "not decided by data: both orderings of T_reh,max and M_X,min are still allowed; a constraint on the reheating model",
    "pull": null,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "shared with standard inflationary cosmology",
    "note": ""
@@ -681,8 +868,10 @@
    ],
    "measure": "measured efficiency up to 0.160 <= the Kerr maximum 0.423",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "overlaps D5.2: same kind of Soltan inputs (AGN luminosity function, local black-hole mass density), older",
+   "scored": false,
    "cls": "shared with GR (Kerr)",
    "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows"
   },
@@ -698,6 +887,8 @@
    "measure": "measured efficiency up to 0.094 <= the Kerr maximum 0.423",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR (Kerr)",
    "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows"
@@ -713,8 +904,10 @@
    ],
    "measure": "measured efficiency 0.100 <= the Kerr maximum 0.423",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "overlaps D5.2: same kind of Soltan inputs, older",
+   "scored": false,
    "cls": "shared with GR (Kerr)",
    "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows"
   },
@@ -730,6 +923,8 @@
    "measure": "measured efficiency 0.089 <= the Kerr maximum 0.423",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR (Kerr)",
    "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows"
@@ -745,8 +940,10 @@
    ],
    "measure": "0 of 61 ranges outside [-1, 1]",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "the spins are measured with Kerr models capped at a = 0.998, so this test cannot fail",
+   "scored": false,
    "cls": "shared with GR (Kerr)",
    "note": "weak test: the spectral models are Kerr models restricted to |a| <= 0.998, so the bound is partly built in; the measurements show the ergosphere engines run fast (most SMBHs below 3e7 solar masses have a > 0.9)"
   },
@@ -762,6 +959,8 @@
    "measure": "probability that the area did not shrink: 0.97",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -778,6 +977,8 @@
    "measure": "qualitative statement of the collaboration",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with GR",
    "note": ""
@@ -792,6 +993,8 @@
    "measure": "no datum distinguishes",
    "pull": null,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "shared with semiclassical gravity",
    "note": ""
@@ -808,6 +1011,8 @@
    "measure": "predicted decoherence during the run Gamma tau = 5.6e-15 (OK if < 0.1); margin 2e+14",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
    "note": ""
@@ -824,6 +1029,8 @@
    "measure": "predicted decoherence during the run Gamma tau = 2.4e-13 (OK if < 0.1); margin 4e+12",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
    "note": ""
@@ -840,6 +1047,8 @@
    "measure": "predicted decoherence during the run Gamma tau = 2.4e-16 (OK if < 0.1); margin 4e+15",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
    "note": ""
@@ -856,6 +1065,8 @@
    "measure": "predicted decoherence during the run Gamma tau = 1.1e-14 (OK if < 0.1); margin 9e+13",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
    "note": ""
@@ -864,15 +1075,17 @@
    "id": "D6.5",
    "section": "D6",
    "observable": "Diosi-Penrose smearing length R0 against spontaneous radiation (underground Ge detector)",
-   "guid": "R0 >= 4e-10 m adopted (the paper writes 'at least about 1e-10 m')",
+   "guid": "R0 >= 4e-10 m adopted (version 5.1 wrote 'at least about 1e-10 m')",
    "data": "allowed [5.40e-11, +inf] m (95% probability)",
    "refs": [
     "donadi"
    ],
    "measure": "GUID value inside the allowed region (95% probability)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds",
+   "scored": false,
    "cls": "GUID-specific (Bridge B needs a smearing length)",
    "note": "Penrose's parameter-free choice (R0 = nuclear wave-function size, 5e-12 m for Ge) is excluded; Bridge B survives only with a free R0"
   },
@@ -887,10 +1100,12 @@
    ],
    "measure": "GUID value inside the allowed region (as stated)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds; overlaps D6.5",
+   "scored": false,
    "cls": "GUID-specific",
-   "note": "the paper's '1e-10 m' would sit below this summary: use 4e-10 m"
+   "note": "version 5.1's '1e-10 m' sat below this summary; v6 uses 4e-10 m"
   },
   {
    "id": "D6.7",
@@ -903,8 +1118,10 @@
    ],
    "measure": "GUID value inside the allowed region (as stated)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds",
+   "scored": false,
    "cls": "GUID-specific",
    "note": ""
   },
@@ -920,6 +1137,8 @@
    "measure": "GUID value inside the allowed region (experimental window)",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "GUID-specific",
    "note": "the window comes from torsion-balance noise (upper) and molecule interferometry (lower)"
@@ -936,9 +1155,11 @@
    "measure": "GUID value outside the allowed region (experimental window)",
    "pull": null,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "GUID-specific",
-   "note": "this version is excluded; the paper already says so (Section 5.4)"
+   "note": "this version is excluded, as Part I says"
   },
   {
    "id": "D7.1",
@@ -951,8 +1172,10 @@
    ],
    "measure": "the GUID window coincides with the open window",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "the contained remnant's window 1e14 to 1e19 kg was adopted from the open window",
+   "scored": false,
    "cls": "GUID route shares the PBH literature",
    "note": "edges: INTEGRAL/SPI MeV gamma rays and Voyager 1 e+- (light), Subaru-HSC M31 microlensing (heavy)"
   },
@@ -960,17 +1183,19 @@
    "id": "D7.2",
    "section": "D7",
    "observable": "Mass below which holes have evaporated by now",
-   "guid": "1.7e+11 kg (Stefan-Boltzmann estimate; the paper: a few 1e11 kg)",
+   "guid": "1.7e+11 kg (Stefan-Boltzmann estimate; Part I: a few 1e11 kg)",
    "data": "about 1e15 g = 1e12 kg (allowed: within a factor 10)",
    "refs": [
     "carr21"
    ],
    "measure": "GUID value inside the allowed region (order of magnitude)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "the datum ('about 1e15 g') has no stated uncertainty; it passes only through the chosen tolerance of ten",
+   "scored": false,
    "cls": "shared with semiclassical gravity",
-   "note": ""
+   "note": "agreement within a factor 5.8, inside the tolerance of ten chosen here"
   },
   {
    "id": "D7.3",
@@ -984,6 +1209,8 @@
    "measure": "the prediction 'Hawking glow at the light edge' is what bounds the window: live",
    "pull": null,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "GUID route",
    "note": ""
@@ -999,10 +1226,12 @@
    ],
    "measure": "GUID value inside the allowed region (90% CL)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "GUID allows a unification at any M_X; the example M_X = 1e16 GeV was chosen above this bound",
+   "scored": false,
    "cls": "GUID allows, does not require",
-   "note": "needs M_X >~ 4.8e15 GeV in the paper's estimate; Hyper-Kamiokande is the live test"
+   "note": "needs M_X >~ 4.8e15 GeV in Part I's estimate; Hyper-Kamiokande is the live test"
   },
   {
    "id": "D8.2",
@@ -1015,15 +1244,17 @@
    ],
    "measure": "GUID value inside the allowed region (90% CL)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Part I's ordering of the strong split is required by the absence of monopoles",
+   "scored": false,
    "cls": "shared with standard inflationary cosmology",
    "note": ""
   },
   {
    "id": "D8.3",
    "section": "D8",
-   "observable": "W mass from the Higgs vacuum at tree level, m_W = g v / 2 (paper: within half a per cent)",
+   "observable": "W mass from the Higgs vacuum at tree level, m_W = g v / 2 (Part I: within half a per cent)",
    "guid": "80.223 GeV (-0.18%)",
    "data": "80.3692 +- 0.0133 GeV",
    "refs": [
@@ -1032,12 +1263,14 @@
     "s2w",
     "gf_mulan"
    ],
-   "measure": "GUID value inside the allowed region (the paper's stated tolerance, 0.5%)",
+   "measure": "GUID value inside the allowed region (Part I's stated tolerance, 0.5%)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "tree-level Standard Model value; scheme dependent, it meets 0.5% only in the MS-bar route",
+   "scored": false,
    "cls": "Standard Model (tree level)",
-   "note": "tree level is scheme dependent: the three standard routes give 79.95 to 80.94 GeV (+-0.6%); the measured value lies inside; the full Standard Model reaches 1e-4"
+   "note": "tree level is scheme dependent: MS-bar route -0.18%, m_Z cos theta-hat 79.95 GeV (-0.52%), on-shell alpha(0), G_F, m_Z 80.94 GeV (+0.71%); only the MS-bar route meets 0.5%; the full Standard Model reaches 1e-4"
   },
   {
    "id": "D8.4",
@@ -1051,10 +1284,12 @@
     "s2w",
     "gf_mulan"
    ],
-   "measure": "GUID value inside the allowed region (the paper's stated tolerance, 0.5%)",
+   "measure": "GUID value inside the allowed region (Part I's stated tolerance, 0.5%)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "tree-level Standard Model value; scheme dependent",
+   "scored": false,
    "cls": "Standard Model (tree level)",
    "note": ""
   },
@@ -1070,8 +1305,10 @@
    ],
    "measure": "GUID value inside the allowed region (within 1% of 1/128)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Part I's 1/128 is read from the measured alpha(M_Z)",
+   "scored": false,
    "cls": "Standard Model",
    "note": ""
   },
@@ -1088,8 +1325,10 @@
    ],
    "measure": "GUID value inside the allowed region (lattice end point < 95 GeV)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Part I's crossover statement is read from the measured Higgs mass and the lattice",
+   "scored": false,
    "cls": "Standard Model",
    "note": ""
   },
@@ -1105,6 +1344,8 @@
    "measure": "pull = -1.64 sigma",
    "pull": -1.64142,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with quantum mechanics",
    "note": "S above 2 sqrt 2 would refute quantum content; the measured S lies 1.65 sigma below the bound"
@@ -1121,6 +1362,8 @@
    "measure": "GUID value inside the allowed region (quantum range)",
    "pull": null,
    "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
    "scored": true,
    "cls": "shared with quantum mechanics",
    "note": ""
@@ -1137,10 +1380,12 @@
    ],
    "measure": "GUID value inside the allowed region (95% CL)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "that the known neutrinos are not the remnant is an empirical statement set from neutrino-mass bounds, not a prediction",
+   "scored": false,
    "cls": "shared with LambdaCDM",
-   "note": "the paper's 0.072 eV (DESI 2024) gives 0.6%; DESI DR2 tightens it"
+   "note": "version 5.1 used 0.072 eV (DESI 2024), which gives 0.6%; DESI DR2 tightens it"
   },
   {
    "id": "D9.4",
@@ -1153,8 +1398,10 @@
    ],
    "measure": "GUID value inside the allowed region (90% CL)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "that the known neutrinos are not the remnant is an empirical statement set from neutrino-mass bounds, not a prediction",
+   "scored": false,
    "cls": "shared with the Standard Model",
    "note": ""
   },
@@ -1169,8 +1416,10 @@
    ],
    "measure": "GUID value inside the allowed region (upper end of the 90% interval)",
    "pull": null,
-   "verdict": "OK",
-   "scored": true,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "the radiated remnant was refuted from the NANOGrav amplitude itself",
+   "scored": false,
    "cls": "GUID route; shared with GR",
    "note": ""
   },
@@ -1186,6 +1435,8 @@
    "measure": "a Higgs-share-only gravity predicts eta ~ 1e-3 [Q6], excluded by 4e+11 sigma; the plane's prediction is D1.1",
    "pull": null,
    "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
    "scored": false,
    "cls": "GUID v5.1 refinement; shared with GR",
    "note": ""
@@ -1306,9 +1557,9 @@
   }
  },
  "D2": {
-  "chi2": 5.63447,
-  "n": 10,
-  "p": 0.844982
+  "chi2": 4.67837,
+  "n": 8,
+  "p": 0.791334
  },
  "D3": {
   "z_t_planck": 0.632313,
@@ -1418,6 +1669,8 @@
     "label": "Planck 2018 (TT,TE,EE+lowE+lensing)",
     "n_s": 0.9649,
     "sigma": 0.0042,
+    "best_N": 57,
+    "pull_best": -0.00292398,
     "pull_N50": 1.16667,
     "pull_N60": -0.420635,
     "N_range_95": [
@@ -1429,6 +1682,8 @@
     "label": "P-ACT (ACT DR6 + Planck)",
     "n_s": 0.9709,
     "sigma": 0.0038,
+    "best_N": 60,
+    "pull_best": 1.11404,
     "pull_N50": 2.86842,
     "pull_N60": 1.11404,
     "N_range_95": [
@@ -1440,6 +1695,8 @@
     "label": "P-ACT-LB (+ CMB lensing + DESI DR1 BAO)",
     "n_s": 0.974,
     "sigma": 0.003,
+    "best_N": 60,
+    "pull_best": 2.44444,
     "pull_N50": 4.66667,
     "pull_N60": 2.44444,
     "N_range_95": [
@@ -1648,9 +1905,9 @@
    "result": "Bridge A refuted by the rotation-curve points (98% of points below the model); one universal |gamma1| fits worse than the RAR (Delta BIC +5066)"
   },
   {
-   "topic": "Accumulated remnant / joint halo fit",
+   "topic": "Accumulated remnant, history, halos, joint fit, cosmic time",
    "files": "docs/simulation/results/remnant_history.{json,md}",
-   "result": "in progress (placeholder at the time of this run)"
+   "result": "the two remnants do not combine; the consistent reading is the contained remnant (primordial black holes as cold dark matter) with a stochastic term too small to matter in galaxies"
   },
   {
    "topic": "BMV witness, hosted benchmarks, holographic codes, gravity ensembles",
@@ -1798,6 +2055,11 @@
    "ref": "J. F. Jesus, R. F. L. Holanda, S. H. Pereira, JCAP 05 (2018) 073, arXiv:1712.01075",
    "read": "arXiv abstract",
    "value": "z_t = 0.806 +- 0.094, 0.870 +- 0.063, 0.973 +- 0.058 (three parametrizations; SNe Ia + H(z); 1 sigma)"
+  },
+  "farooq": {
+   "ref": "O. Farooq, F. Madiyar, S. Crandall, B. Ratra, Astrophys. J. 835, 26 (2017), arXiv:1607.03537",
+   "read": "arXiv abstract",
+   "value": "weighted-mean deceleration-acceleration redshift z_da = 0.72 +- 0.05 (0.84 +- 0.03) for H0 = 68 +- 2.8 (73.24 +- 1.74) km/s/Mpc; z_da depends mainly on the H0 prior"
   },
   "dahiya": {
    "ref": "D. Dahiya, D. Jain, Res. Astron. Astrophys. (2023), arXiv:2212.04751",

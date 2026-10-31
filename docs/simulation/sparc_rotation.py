@@ -18,7 +18,9 @@ comparisons themselves are results: they are printed and written out as numbers,
        (a) one universal |gamma1| against the RAR (one universal g+) and against Newton, likelihoods stated below, chi^2 and BIC
        (b) Bridge A's parameter-free |gamma1| = 0.9 to 1.0 c H_inf
        (c) one |gamma1| per galaxy: spread, correlation with baryonic mass and with Vflat, Oppenheim and Russo's gamma1 (1 + M / 1e10 Msun)
-       (d) the residual pattern: g_obs - g_bar against g_bar (a constant predicts slope 0, MOND-like behaviour slope 1/2)
+       (d) the residual pattern: g_obs - g_bar against g_bar (a constant predicts slope 0, MOND-like behaviour slope 1/2), with a
+           mock null test of the slope estimator (a constant |gamma1| and, as a positive control, the RAR, through the error model,
+           cuts, binning and galaxy bootstrap)
   [S3] the baryonic Tully-Fisher relation (Lelli, McGaugh and Schombert, ApJL 816, L14, 2016) against MOND's v^4 = G M a0 and GUID's
        turnover relation v*^4 = 2 G M |gamma1|; and each model's speed at a galaxy's outermost measured radius against Vflat
 """
@@ -776,6 +778,100 @@ def main():
           f"low-acceleration points only: p = {qgl[1]:.3f}; dBIC (general - constant) = {S2d['general_fit_all']['dBIC_vs_guid']:+.0f}")
     S2d["m2lnL_constant_check"] = nll_gui_p0
 
+    # (d') Null test of the slope estimator with mock data. Delta g = g_obs - g_bar is binned in the noisy g_bar, so its errors are
+    # correlated with the binning variable; mocks show what the whole pipeline returns when the truth is known. Each mock galaxy keeps
+    # its real radii, velocity errors and assumed g_bar (Ups 0.5/0.7). Per galaxy it draws a true distance (dD/D of the table), a true
+    # inclination (dInc of the table), a true stellar M/L (0.1 dex, the 25% of the error model) and a true HI flux (10%); per point a
+    # velocity error dV. The true acceleration is the model's, of the true g_bar, at the true radius; the observer infers
+    # g_obs = V_obs^2 / R with the assumed distance and inclination. The mock then passes the same precision cut (dV/V_obs < 0.1, on the
+    # mock speeds, over all 3168 points of the 153 galaxies), the same bins, the same low-acceleration cut (g+/10 of the data fit), the
+    # same slope estimator and the same galaxy bootstrap. Truths: the best universal constant (the null; expected slope 0) and the RAR
+    # with the fitted g+ (positive control; expected about the noiseless value in the same bins). Tolerances, fixed before the mocks
+    # were first run: |median null slope| < 0.1; median control slope within 0.1 of the noiseless RAR slope.
+    N_MOCK = 400
+    gname_all = np.array([r[0] for r in pts_all])
+    R_all = np.array([r[2] for r in pts_all])
+    eV_all = np.array([r[4] for r in pts_all])
+    Vg_a, Vd_a, Vb_a = (np.array([r[k] for r in pts_all]) for k in (5, 6, 7))
+    gg_all = kms2_per_kpc_to_si(Vg_a * np.abs(Vg_a) / R_all)
+    gs_all = kms2_per_kpc_to_si((UPS_D * Vd_a * np.abs(Vd_a) + UPS_B * Vb_a * np.abs(Vb_a)) / R_all)
+    gb_all = gg_all + gs_all
+    xa = np.log10(np.where(gb_all > 0, gb_all, 1e-30))
+    mg_list = sorted(set(gname_all))
+    mg_of = {n: k for k, n in enumerate(mg_list)}
+    pg = np.array([mg_of[n] for n in gname_all])
+    eDr = np.array([gal[n]["eD"] / gal[n]["D"] for n in mg_list])
+    eIn = np.array([gal[n]["eInc"] for n in mg_list])
+    inc_a = np.array([gal[n]["Inc"] for n in gname_all])
+    sin_a = np.sin(np.radians(inc_a))
+    R_m = R_all * kpc
+    low_log = math.log10(low_cut)
+
+    def slope_from(xv, dgv, idx, mask=None):
+        """The S2d estimator: medians of Delta g in the 0.3-dex bins with >= 15 points; slope over the bins below g+/10 whose median
+        is positive. mask: the bins chosen on the full sample (as for the data), reused for its bootstrap resamples."""
+        Bm = []
+        for lo_, hi_ in zip(bins[:-1], bins[1:]):
+            sel = idx[(xv[idx] >= lo_) & (xv[idx] < hi_)]
+            Bm.append((float(np.median(xv[sel])), float(np.median(dgv[sel]))) if len(sel) >= 15 else (np.nan, np.nan))
+        Bm = np.array(Bm)
+        if mask is None:
+            mask = (Bm[:, 0] < low_log) & (Bm[:, 1] > 0)
+        ok_ = mask & np.isfinite(Bm[:, 0]) & (Bm[:, 1] > 0)
+        return (float(np.polyfit(Bm[ok_, 0], np.log10(Bm[ok_, 1]), 1)[0]) if ok_.sum() >= 2 else np.nan), mask
+
+    check("the mock slope estimator, applied to the real points, reproduces the S2d slope", slope_from(x, dg, allidx)[0], slope_data,
+          rtol=1e-12)
+
+    def mock(truth, rng_):
+        ng = len(mg_list)
+        dD = np.maximum(rng_.normal(0, 1, ng) * eDr, -0.7)
+        itrue = np.radians(np.clip(inc_a + (rng_.normal(0, 1, ng) * eIn)[pg], 5.0, 90.0))
+        fs = 10 ** rng_.normal(0, 0.1, ng)
+        fg = 1 + 0.1 * rng_.normal(0, 1, ng)
+        gbt = np.maximum(gg_all * fg[pg] + gs_all * fs[pg], 1e-14)
+        Rt = R_m * (1 + dD[pg])
+        g_true = gbt + a_best - gamma2 * Rt if truth == "const" else F_rar(gbt, S2a["rar"]["best"])
+        v_obs = np.sqrt(g_true * Rt) / 1e3 * np.sin(itrue) / sin_a + rng_.normal(0, 1, len(R_all)) * eV_all
+        keep = (v_obs > 0) & (eV_all / np.where(v_obs > 0, v_obs, 1.0) < 0.1) & (gb_all > 0)
+        return np.flatnonzero(keep), kms2_per_kpc_to_si(v_obs**2 / R_all) - gb_all
+
+    rng_mk = np.random.default_rng(SEED + 7)
+    rng_mb = np.random.default_rng(SEED + 8)
+    S2d_mock = {"n_mock": N_MOCK, "data_slope": slope_data, "truth_constant_abs_gamma1": 2 * a_best, "truth_rar_gdag": S2a["rar"]["best"],
+                "rar_noiseless_same_bins": slope_rar}
+    for truth in ("const", "rar"):
+        sl_e, np_e = [], []
+        for _ in range(N_MOCK):
+            idx_, dgm = mock(truth, rng_mk)
+            sl_e.append(slope_from(xa, dgm, idx_)[0])
+            np_e.append(len(idx_))
+        sl_e = np.array(sl_e)
+        # one mock analysed exactly like the data: point estimate and galaxy bootstrap
+        idx_, dgm = mock(truth, rng_mb)
+        gl = [g_ for g_ in (idx_[pg[idx_] == k] for k in range(len(mg_list))) if len(g_)]
+        s0, mask0 = slope_from(xa, dgm, idx_)
+        bs = np.array([slope_from(xa, dgm, np.concatenate([gl[j] for j in rng_mb.integers(0, len(gl), len(gl))]), mask0)[0]
+                       for _ in range(args.boot)])
+        bs = bs[np.isfinite(bs)]
+        S2d_mock[truth] = {"ensemble_median": float(np.nanmedian(sl_e)),
+                           "ensemble_16_84": [float(v) for v in np.nanpercentile(sl_e, [16, 84])],
+                           "ensemble_2.5_97.5": [float(v) for v in np.nanpercentile(sl_e, [2.5, 97.5])],
+                           "ensemble_min_max": [float(np.nanmin(sl_e)), float(np.nanmax(sl_e))],
+                           "frac_ge_data_slope": float(np.mean(sl_e >= slope_data)),
+                           "n_points_median": float(np.median(np_e)),
+                           "one_mock": {"slope": s0, "boot_16_84": [float(v) for v in np.percentile(bs, [16, 84])],
+                                        "n_points": int(len(idx_)), "n_galaxies": len(gl)}}
+        e_ = S2d_mock[truth]
+        print(f"     mock ({truth}, {N_MOCK} mocks): slope median {e_['ensemble_median']:+.3f}, 16-84% {e_['ensemble_16_84'][0]:+.3f} to "
+              f"{e_['ensemble_16_84'][1]:+.3f}, 2.5-97.5% {e_['ensemble_2.5_97.5'][0]:+.3f} to {e_['ensemble_2.5_97.5'][1]:+.3f}; "
+              f"one mock {s0:+.3f} (bootstrap {e_['one_mock']['boot_16_84'][0]:+.3f} to {e_['one_mock']['boot_16_84'][1]:+.3f}); "
+              f"{e_['n_points_median']:.0f} points; fraction >= data slope {e_['frac_ge_data_slope']:.3f}")
+    check("null test: mocks with a constant |gamma1| return a low-acceleration slope consistent with 0 (|median| < 0.1)",
+          S2d_mock["const"]["ensemble_median"], 0.0, atol=0.1)
+    check("positive control: RAR mocks return the RAR slope in the same bins (median within 0.1)", S2d_mock["rar"]["ensemble_median"],
+          slope_rar, atol=0.1)
+
     # ---------------------------------------------------------------------------------------------------------------------------
     print("\n[S3] The baryonic Tully-Fisher relation (Lelli, McGaugh and Schombert 2016, ApJL 816, L14)")
     # Their sample: Vflat measured, i >= 30 deg, the 8 starburst dwarfs of Lelli et al. (2014a) (SPARC reference code Le14) and Holmberg II
@@ -915,7 +1011,7 @@ def main():
         "S2a": S2a, "S2a_galaxies_prefer_rar": [n_pref_rar, n_gal_pts], "S2a_lambda_term": {"max_ratio_to_gobs": float(lam_ratio.max()),
                                                                                               "rel_shift_best_gamma1": float(10**(t_gnl - t_gui) - 1)},
         "S2a_gamma1_best": g1_best, "S2a_gamma1_boot_16_50_84": g1_boot,
-        "S2b": S2b, "S2c": S2c, "S2d": S2d, "S3": S3,
+        "S2b": S2b, "S2c": S2c, "S2d": S2d, "S2d_mock": S2d_mock, "S3": S3,
         "per_galaxy": [{k: (round(v, 5) if isinstance(v, float) else v) for k, v in p.items()} for p in per_gal],
         "checks": check_log,
     }
@@ -1190,6 +1286,16 @@ def markdown(o):
       "in favour of the free exponent. "
       f"The two-parameter law is still worse than the one-parameter RAR (ΔBIC +{gen['dBIC_vs_rar']:.0f}).")
     w("- At g_bar > 10⁻⁹ m/s², Δg is a small difference of large numbers and its bins are not informative.")
+    mk = o["S2d_mock"]
+    w(f"- Mock null test of the estimator ({mk['n_mock']} mocks per truth; the error model of S1 drawn per galaxy and per point, then the "
+      "same precision cut, bins, low-acceleration cut, slope estimator and galaxy bootstrap). "
+      f"Constant |γ1| = {e(mk['truth_constant_abs_gamma1'])}: slope {mk['const']['ensemble_median']:+.3f} "
+      f"[{mk['const']['ensemble_16_84'][0]:+.3f}, {mk['const']['ensemble_16_84'][1]:+.3f}] over the mocks; one mock analysed like the "
+      f"data gives {mk['const']['one_mock']['slope']:+.3f} with bootstrap [{mk['const']['one_mock']['boot_16_84'][0]:+.3f}, "
+      f"{mk['const']['one_mock']['boot_16_84'][1]:+.3f}]; {mk['const']['frac_ge_data_slope']:.3f} of the null mocks reach the data's "
+      f"{mk['data_slope']:.3f}. RAR (positive control): {mk['rar']['ensemble_median']:+.3f} "
+      f"[{mk['rar']['ensemble_16_84'][0]:+.3f}, {mk['rar']['ensemble_16_84'][1]:+.3f}], against {mk['rar_noiseless_same_bins']:.3f} "
+      "without noise.")
     w("")
     w("## S3: baryonic Tully-Fisher relation")
     w("")

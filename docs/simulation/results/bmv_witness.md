@@ -1,6 +1,6 @@
 # The Bose et al. spin entanglement witness: checked and corrected
 
-Script: `docs/simulation/bmv_witness.py` (numpy, scipy; deterministic; about a minute). Numbers: `results/bmv_witness.json`. **32 of 32 checks pass.**
+Script: `docs/simulation/bmv_witness.py` (numpy, scipy; deterministic; about a minute). Numbers: `results/bmv_witness.json`. **34 of 34 checks pass.**
 
 **Source read.** S. Bose, A. Mazumdar, G. W. Morley, H. Ulbricht, M. Toros, M. Paternostro, A. A. Geraci, P. F. Barker, M. S. Kim, G. Milburn,
 "Spin entanglement witness for quantum gravity", arXiv:1707.06050. arXiv lists a single version, v1 of 19 July 2017, with the journal reference
@@ -21,7 +21,10 @@ Its entanglement depends only on Sigma (the paper says so as well): the negativi
   - A product state with spin 1 along n and spin 2 up gives **W = sqrt2 = 1.414**: the largest value any state, entangled or not, can give.
   - On the proposal's own states the printed W also misses entanglement. At a = 0, b = 1 rad (the paper's Sigma ~ O(1), inner branches
     closest) it is 0.65 while the state is clearly entangled (negativity 0.24).
-  - So it can fire on a product state and stay silent on an entangled one.
+  - At the phases where the arXiv text quotes W ~ 1.16 (Delta phi_LR = -0.2, Delta phi_RL = 0.7), the printed operator gives 0.33.
+  - So it can fire on a product state and stay silent on an entangled one. The printed operator is most likely a misprint: a later analysis,
+    Chevalier, Paige and Kim, arXiv:2005.13922 (Phys. Rev. A 102, 022428 (2020)), quotes the condition as |<sx sz> + <sy sy>| > 1. That form
+    is valid but weak in this geometry (below).
 - **The corrected witness** keeps the paper's two-setting design:
   - In the symmetric gauge (a = b = Sigma/2), **W_c = |<sx (x) sx> + <sy (x) sz>| <= 1** for every separable state, and **W_c = 1 + sin(Sigma/2)**
     on the BMV state. It detects every Sigma > 0, and W_c - 1 is twice the negativity.
@@ -76,7 +79,7 @@ k standard deviations need **n >= k^2 cot^2(Sigma/2)** runs per setting.
 | Sigma | 3 sigma | 5 sigma |
 |---|---|---|
 | 1 rad (the paper's target) | 31 | 84 |
-| pi/2 | 10 | 26 |
+| pi/2 | 9 | 25 |
 | 1e-2 | 3.6e5 | 1.0e6 |
 | 1e-4 (the paper's "modest" variant) | 3.6e9 | 1.0e10 |
 
@@ -89,4 +92,5 @@ mean significance is 5.06 sigma. At several seconds per run, the paper's modest 
   changes.
 - GUID v6 quotes the printed witness only as checked and wrong, with the counterexample, and uses W_c (two settings) and the trace norm (nine
   settings) with the thresholds above.
-- Open: whether the published PRL text corrects the operator. If the PRL page becomes readable, re-check it and record the result here.
+- Open: whether the published PRL text prints the valid form. The later literature quotes |<sx sz> + <sy sy>|; if the PRL page becomes
+  readable, re-check it and record the result here.

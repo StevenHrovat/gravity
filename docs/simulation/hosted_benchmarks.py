@@ -402,6 +402,9 @@ def b2():
         if g == 1.0:
             c_cas = -(E0 - L * e_inf) * 6 * L / (math.pi * 2.0)        # E0 = L e_inf - pi v c / (6 L), v = 2
             rec["c_casimir"] = c_cas
+            # float error of c: the SVD-against-closed-form difference of E0 plus L * eps * |e_inf|, times 6L/(pi v)
+            rec["c_casimir_float_error"] = (abs(E0 - E_closed) + L * np.finfo(float).eps * abs(e_inf)) * 6 * L / (math.pi * 2.0)
+            rec["c_casimir_expected_at_L"] = 0.5 + 7 * math.pi**2 / (480 * L**2)
             check("g = 1: c from the Casimir energy, -(E0 - L e_inf) 6L / (pi v), v = 2 (tolerance 1e-7: next term 7pi^2/(480 L^2) = 9e-9)",
                   c_cas, 0.5, atol=1e-7)
             ls = np.unique(np.round(np.geomspace(1, L // 2, 60)).astype(int))
@@ -570,7 +573,11 @@ def continuum(xs, w, s, allow_no_linear):
     if allow_no_linear:
         alts["no linear term"] = fit(allm, (2,))[0][0]
     ssys = max(abs(v - cm[0]) for v in alts.values())
-    return {"M": cm[0], "coefficients": cm, "sigma_stat": sm, "sigma_sys": ssys, "sigma": math.hypot(sm, ssys), "alternatives": alts}
+    # The weights are fit-family spreads, correlated between x, not independent statistical errors: chi^2/dof << 1 is expected, so
+    # sigma_stat is a propagated N-extrapolation uncertainty and the deviation in sigma is a consistency measure, not a significance.
+    chi2 = float(np.sum(((w - (cm[0] + cm[1] * y + cm[2] * y**2)) / s) ** 2))
+    return {"M": cm[0], "coefficients": cm, "sigma_stat": sm, "sigma_stat_meaning": "propagated N-extrapolation uncertainty",
+            "sigma_sys": ssys, "sigma": math.hypot(sm, ssys), "alternatives": alts, "chi2_main_fit": chi2, "dof_main_fit": len(xs) - 3}
 
 
 def b3():
@@ -923,7 +930,9 @@ def b4():
                     "log10_years_per_layer": log10_layer_s - math.log10(3.15576e7)}
     out["cost_map"] = {"per_n": cmap, "fit_log2_seconds_per_gate_vs_n": {"n_range": [18, 26], "slope": slope, "intercept": icpt},
                        "seconds_per_gate_per_amplitude": A, "extrapolation": extra,
-                       "note": "wall times measured single-threaded on a shared 4-core machine; memory = 16 bytes per amplitude (complex128)"}
+                       "note": "wall times measured single-threaded on a shared 4-core machine; memory = 16 bytes per amplitude (complex128); "
+                               "seconds_per_gate = seconds_per_layer / n, i.e. per qubit for one layer with the n - 1 CZ gates folded in, so "
+                               "seconds_per_gate_per_amplitude is per qubit and amplitude for one layer"}
     print("  cost map (one random layer):")
     for n in ns:
         print(f"     n = {n:>2}: state {cmap[n]['state_bytes'] / 2**20:10.3f} MiB, measured peak {cmap[n]['peak_bytes'] / 2**20:10.3f} MiB, "

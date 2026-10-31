@@ -768,8 +768,17 @@ for _D in range(2, 6):
 for name, get in _rows:
     cells = [f"{get(o, s)['exceptions']}/{get(o, s)['regions']} ({get(o, s)['max_deficit_bits']})" for o in "AH" for s in "ab"]
     print(f"       {name:30s} " + "  ".join(f"{c:18s}" for c in cells))
-_b = [v for k, v in ALL_H2 if "_b" in k]
-_a = [v for k, v in ALL_H2 if "_a" in k]
+
+
+def setting_of(key):
+    """The setting ("a" or "b") of an ALL_H2 key: "D1_<orient>_<setting>_<class>" or "<orient>_<setting>_D<D>_<class>"."""
+    parts = key.split("_")
+    return parts[2] if parts[0] == "D1" else parts[1]
+
+
+_b = [v for k, v in ALL_H2 if setting_of(k) == "b"]
+_a = [v for k, v in ALL_H2 if setting_of(k) == "a"]
+assert len(_a) == len(_b) == len(ALL_H2) // 2
 n_b = sum(v["regions"] for v in _b)
 check("setting (b), every bulk leg open: regions with S(A) != min cut, over all depths, classes and both orientations",
       sum(v["exceptions"] for v in _b), 0)
