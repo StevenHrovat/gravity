@@ -4,13 +4,13 @@ import Dmp.Layer
 # The recipe: every layout CMOS can take, and nothing else
 
 The owner, 2026-10-26 15:25Z: DMP "can only be proven through an absolutely solid unified theory of Gravity across all the possible
-layers it can create as a hyperdimensional information layout recipe". And T35: compliance belongs to an assembly, "a recipe for how
+layers it can create as a hyperdimensional information layout recipe". And T28: compliance belongs to an assembly, "a recipe for how
 to assemble them to form a self balancing CMOS galaxy".
 
 A recipe is a numbered list of lines. Each line adds one layer and names the line it is laid over, which is always an earlier line.
 The kinds are DMP's: a **galaxy** (a root Duality, C17, "Who maintains it"), an **information** layer overlaid on the field (C12, with its
-own Duality, T38), a privacy **singularity** (C12: a cluster of at least three nodes), a **dwarf** galaxy minted under another's roots
-("Who maintains it"), and a thin **surface** (T25). The type is closed: a layout that is not a term of it does not exist, so a theorem
+own Duality, T5), a privacy **singularity** (C12: a cluster of at least three nodes), a **dwarf** galaxy minted under another's roots
+("Who maintains it"), and a thin **surface** (T21). The type is closed: a layout that is not a term of it does not exist, so a theorem
 proved for every term is proved for every layout (the possibility space is the recipe, and only the recipe).
 
 This file holds the recipe and its structure only (the lines, the chain of a line up to its root, well-formedness, the stack's gate as
@@ -47,7 +47,7 @@ structure Recipe where
   line : Nat → Line
 
 /-- A line is well formed when it refers only to an earlier line, a galaxy has no parent and nothing else lacks one, a singularity's
-    cluster meets the floor (T3a: three nodes), and T38 holds: a Duality that is not minted is laid over a line that gates it. -/
+    cluster meets the floor (T8a: three nodes), and T5 holds: a Duality that is not minted is laid over a line that gates it. -/
 def Recipe.lineOk (fcl : List FailureClass) (r : Recipe) (i : Nat) : Prop :=
   (match (r.line i).parent with
    | none => (r.line i).kind = .galaxy

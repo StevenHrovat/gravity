@@ -7,7 +7,7 @@ import Dmp.Field
 DMP, the words: "A **layer** is a place where trust is decided; its two witnesses are its **halves**; the pair at a layer is the
 **Duality of Trust** (DoT)." And: "Two witnesses are **independent** when they share no member of the failure classes declared for
 their layer in the minting record (host, key, author, engine, operating image, person, time source, and whatever else the minting
-lists). Independence is always relative to that list; the list is configuration (T4)."
+lists). Independence is always relative to that list; the list is configuration (T9)."
 
 The owner, 2026-10-26 15:25Z: Gravity has to hold "across all the possible layers it can create as a hyperdimensional information
 layout recipe". Before the recipe (Recipe.lean) comes the one thing every line of it adds: a layer, and what it means for its two
@@ -22,23 +22,23 @@ quorum of size two. Nothing here is invented beyond that reading.
 What this file proves:
 
 1. Independence is "no shared fail-prone set" (the Malkhi-Reiter reading), it is symmetric, and declaring more classes only removes
-   independence, never adds it (T29: discovering a shared cause tightens; T4: the list is the minting's).
+   independence, never adds it (T18: discovering a shared cause tightens; T9: the list is the minting's).
 2. The person is always a declared class. Without that, an empty list would make any two witnesses independent, including one witness
    written twice, and a pressed pair (G0, T-P) would count as minted. So `DoT.minted` reads the list as `person :: list`: the one
    class that is not configuration.
-3. The same part twice is never a Duality (T38's "the two halves may be one part only when that part is itself part of a higher-order
+3. The same part twice is never a Duality (T5's "the two halves may be one part only when that part is itself part of a higher-order
    DoT"; the higher-order gating is Recipe.lean's business).
 4. The layer's gate is the dual gate of its halves behind the evidence guard (K1, K2): an act passes only when both halves passed on
    live evidence; and on a minted pair an influence confined to one fail-prone set never passes an act alone, because the other half
    is outside that set and the stricter answer stands. On a pair that is not minted, one fail-prone set holds both halves: the shared
-   cause of T29, and the collapse of Ground.lean.
+   cause of T18, and the collapse of Ground.lean.
 5. The pair of Ground.lean (two owners) is the special case of a Duality with the person as the only class.
 -/
 
 namespace Dmp
 
 /-- A failure class the minting record declares. Class `0` is the person; the others (host, key, author, engine, operating image, time
-    source, ...) are whatever the minting lists (T4). -/
+    source, ...) are whatever the minting lists (T9). -/
 abbrev FailureClass := Nat
 
 /-- The one class every list carries: the person a witness traces to (G0: "two people"; T-P: "both trace to one"). -/
@@ -73,12 +73,12 @@ theorem independent_iff_no_shared_failProne (fcl : List FailureClass) (w1 w2 : W
 theorem independent_symm (fcl : List FailureClass) (w1 w2 : Witness) (h : independent fcl w1 w2) : independent fcl w2 w1 :=
   fun c hc heq => h c hc heq.symm
 
-/-- T4, T29: a longer list is stricter. Independence under a list holds under every list it contains, never the other way round. -/
+/-- T9, T18: a longer list is stricter. Independence under a list holds under every list it contains, never the other way round. -/
 theorem independent_of_superlist (fcl fcl' : List FailureClass) (w1 w2 : Witness) (hsub : ∀ c, c ∈ fcl → c ∈ fcl')
     (h : independent fcl' w1 w2) : independent fcl w1 w2 :=
   fun c hc => h c (hsub c hc)
 
-/-- T29: discovering a shared cause the minting did not declare is evidence against the layer's independence: once the class is
+/-- T18: discovering a shared cause the minting did not declare is evidence against the layer's independence: once the class is
     declared, the pair is a one-witness layer. -/
 theorem shared_cause_breaks_independence (fcl : List FailureClass) (c : FailureClass) (w1 w2 : Witness)
     (hshared : w1.member c = w2.member c) : ¬ independent (c :: fcl) w1 w2 :=
@@ -109,7 +109,7 @@ def DoT.mintedB (fcl : List FailureClass) (d : DoT) : Bool := independentB (pers
 theorem DoT.mintedB_iff (fcl : List FailureClass) (d : DoT) : d.mintedB fcl = true ↔ d.minted fcl :=
   independentB_iff _ _ _
 
-/-- T38: the two halves may not be one part. (When they are, only a higher-order Duality can gate the layer: Recipe.lean.) -/
+/-- T5: the two halves may not be one part. (When they are, only a higher-order Duality can gate the layer: Recipe.lean.) -/
 theorem same_part_is_no_duality (fcl : List FailureClass) (w : Witness) : ¬ (DoT.mk w w).minted fcl :=
   same_part_never_independent fcl person w
 
