@@ -1,0 +1,42 @@
+% GUID v6, Primer P3 (label box:gr): general relativity and the tetrad. Background only; it states no result of the paper.
+% Place it before "The frame" (marker %PRIMER:gr in part1.tex): \input{primers/p3-gr}
+\begin{primer}{General relativity and the tetrad}{box:gr}
+\setlength{\parskip}{3pt plus 1pt}%
+\emph{The metric.} General relativity describes gravity as the geometry of spacetime. A metric $g_{\mu\nu}$ gives the interval
+$\dd s^2=g_{\mu\nu}\dd x^\mu\dd x^\nu$, with signature $(-,+,+,+)$, and Einstein's equation
+$G_{\mu\nu}+\Lambda g_{\mu\nu}=(8\pi G/c^4)\,T_{\mu\nu}$ ties its curvature to the energy-momentum tensor $T_{\mu\nu}$ of matter and
+radiation~\cite{wald1984}.
+
+\emph{The tetrad.} A tetrad, or frame, is a set of four orthonormal one-forms $e^a=e^a{}_\mu\dd x^\mu$ ($a=0,\dots,3$) with
+$g_{\mu\nu}=\eta_{ab}e^a{}_\mu e^b{}_\nu$ and $\eta=\operatorname{diag}(-1,1,1,1)$. At each point it can be rotated and boosted,
+${e^a\to\Lambda^a{}_b(x)\,e^b}$, without changing $g_{\mu\nu}$: this is the \emph{local Lorentz freedom}. Of the tetrad's 16 components, 6 are
+that freedom and 10 are the metric. General relativity can be written with the tetrad as its only field~\cite{aldrovandi}. A single unit
+timelike vector field added to the metric is different: it picks out a rest frame at every point. That is Einstein--aether
+theory~\cite{aether}, and its preferred-frame effects are tightly bounded, for example by the equal speeds of gravitational waves and
+light~\cite{gw170817}.
+
+\emph{Free fall.} Matter couples \emph{minimally} when it feels gravity only through $g_{\mu\nu}$, with partial derivatives replaced by
+covariant ones. Then $\nabla^\mu T_{\mu\nu}=0$, and a small body follows a geodesic,
+$\ddot x^\mu+\Gamma^\mu{}_{\alpha\beta}\dot x^\alpha\dot x^\beta=0$ (dots: derivatives by proper time), whatever it is made of. That is the
+weak equivalence principle. Experiments compare the accelerations $a_1$, $a_2$ of two materials through the E\"otv\"os ratio
+${\eta=2|a_1-a_2|/|a_1+a_2|}$~\cite{microscope}; with indices, $\eta$ is the Minkowski metric.
+
+\emph{PPN parameters.} In weak fields, metric theories are compared through the parametrised post-Newtonian (PPN) expansion~\cite{will}.
+With $U>0$ the Newtonian potential,
+\[
+g_{00}=-1+\frac{2U}{c^2}-2\beta\frac{U^2}{c^4},\qquad g_{ij}=\Big(1+2\gamma\frac{U}{c^2}\Big)\delta_{ij}.
+\]
+$\gamma$ says how much space curvature a unit mass produces; light bending and the Shapiro delay scale as $(1+\gamma)/2$. $\beta$ measures
+the nonlinearity of gravity and enters the perihelion advance with $\gamma$. General relativity has $\gamma=\beta=1$.
+
+\emph{The lapse.} Split into space and time, spacetime has a \emph{lapse} $N$: the proper time that a static clock records per unit of
+coordinate time. In a weak potential $\Phi=-U$ it is $N=\sqrt{1+2\Phi/c^2}$, outside a mass $M$ it is $N=\sqrt{1-2GM/rc^2}$, and it
+vanishes at a horizon.
+
+\emph{Black holes.} A stationary black hole is fixed by three numbers: its mass $M$, angular momentum $J$ and charge
+$Q$~\cite{israel,kerr}. The rotating hole (Kerr) has its horizon at $r_+=(GM/c^2)\big(1+\sqrt{1-a_*^2}\big)$, with spin
+$a_*=cJ/GM^2\le1$~\cite{kerr}. Its \emph{surface gravity} $\kappa$ is the acceleration, as measured from far away, needed to hold a body
+at the horizon; for a hole without spin $\kappa=c^4/4GM$. Quantum fields make the horizon radiate at $k_BT_H=\hbar\kappa/2\pi c$~\cite{hawking75}.
+The \emph{area theorem}: with positive energy, the horizon area of classical general relativity never decreases~\cite{hawking1971}. It is
+the second law of black-hole mechanics~\cite{bch}, with entropy $S=k_Bc^3A/4G\hbar$~\cite{bekenstein73}.
+\end{primer}

@@ -1,0 +1,255 @@
+\section{The holographic code in detail}\label{app:holocode}
+
+This appendix holds the construction, the methods, the proofs and the remaining results behind Section~\ref{sec:holocode}.
+
+\subsection{Construction and method}\label{sec:holocode-model}
+
+\paragraph{The tile.} A tile is the six-leg perfect tensor of the five-qubit code~\cite{laflamme,bennett1996}:
+\[
+T_{b\,q_1\dots q_5}=\bra{q_1\dots q_5}E\ket{b}/\sqrt2 .
+\]
+Here $E$ is the encoding isometry of $[[5,1,3]]$, whose stabilisers are $XZZXI$ and its cyclic shifts, with $\bar X=XXXXX$ and
+$\bar Z=ZZZZZ$. The leg $b$ is the logical leg. Every split of the six legs into three and three is unitary~\cite{happy}.
+
+\paragraph{The tree.} The root has its bulk leg $b$ and five legs to children. Every other tile has a bulk leg, a parent leg and four
+child legs. The leaves' legs form the boundary, $n=5\cdot4^D$ qubits in ring order, carried by $1+5(4^{D}-1)/3$ tiles. For
+$D=1,\dots,5$ this gives $n=20$, 80, 320, 1280 and 5120 boundary qubits on 6, 26, 106, 426 and 1706 tiles. With one reference per
+bulk qubit, setting (b) has 6826 qubits at $D=5$.
+
+\paragraph{Orientations.} The children sit on $q_2,\dots,q_5$ in both orientations.
+\begin{itemize}[nosep]
+\item \emph{Orientation A}, the main construction, is the 25-qubit assembly of Section~\ref{sec:holo}: the parent edge sits on $b$ and
+  the bulk on $q_1$.
+\item \emph{Orientation H}, the HaPPY convention, puts the bulk on $b$ and the parent edge on $q_1$.
+\end{itemize}
+Both make every tile a perfect tensor. They differ only in which legs meet across an edge.
+
+\paragraph{Exact computation.} Every tile map is a Clifford isometry, $V\ket v=U\ket{v,0,\dots,0}$. We find $U$ from the dense tensor
+and check it against that tensor. The generators are pushed through the tree as signed Pauli strings~\cite{aaronson2004}. In all 20
+networks (five depths, two settings, two orientations) they are $N$ independent generators on $N$ qubits. Each one, sign included, is a
+$+1$ stabiliser of an independent composition of the same Cliffords by stim~\cite{gidney2021} \chk{holo:H1}. Entropies, in bits,
+follow exactly from the generator matrix $G$ over GF(2)~\cite{fattal2004,hamma2005}:
+\begin{equation}\label{eq:holocode-rank}
+S(A)=\operatorname{rank}\bigl(G|_A\bigr)-|A| .
+\end{equation}
+At $D=1$ these entropies agree with a dense contraction of the tensors to $2\times10^{-15}$. On a $3\times3$ toric code they match the
+dense state vector exactly \chk{holo:H1}, \chk{holo:H6}.
+
+\paragraph{Recovery.} Bulk qubit $t$ is recoverable from region $A$ when $I(R_t\!:\!A)=S(R_t)+S(A)-S(R_tA)=2$ bits. For a stabiliser
+state,
+\[
+I(R_t\!:\!A)=\dim\bigl(V\cap\langle X_{R_t},Z_{R_t}\rangle\bigr),
+\]
+where $V$ is the reference part of the stabilisers supported on $A\cup R$. One elimination, with columns ordered as complement,
+references, $A$, gives $V$ for all bulk qubits at once.
+
+\paragraph{Cuts, wedges and the residual region.}
+\begin{itemize}[nosep]
+\item The minimal cut $\mathrm{mc}(A)$ assigns every tile to the side of $A$ or of its complement and counts the legs crossed, with unit
+  capacity per leg. Dynamic programming on the tree finds the cheapest assignment.
+\item In setting (b) a bulk leg is crossed when its tile lies on $A$'s side, because its reference belongs to the complement.
+\item The greedy algorithm of Ref.~\cite{happy} absorbs a tile into $A$'s wedge when at least 3 of its 5 non-bulk legs lie in the
+  region. We run it to its fixed point.
+\item The \emph{residual region} consists of the tiles absorbed neither from $A$ nor from its boundary complement.
+\end{itemize}
+
+\subsection{The exceptions to the minimal-cut formula}\label{sec:holocode-rt}
+
+Section~\ref{sec:holocode} gives the exceptions in setting (a) and their cause. Here we characterise them over all setting-(a) cases
+\chk{holo:H2}:
+\begin{itemize}[nosep]
+\item Every exception has a non-empty residual region, so the two greedy cuts never meet.
+\item The deficit never exceeded $\lfloor r/2\rfloor$ for $r$ residual tiles. We observed this bound; we did not prove it.
+\item Degenerate minimal cuts are not the explanation: 95\,735 exceptions have a unique minimal cut.
+\item The argument of Ref.~\cite{happy} for connected regions rests on the greedy cuts meeting. On a tree with fixed bulk they need not
+  meet, and then the minimal cut is only an upper bound.
+\end{itemize}
+One interval is confirmed as an exception in orientation H by dense contraction alone \chk{holo:H1}.
+
+\subsection{Entanglement-wedge reconstruction}\label{sec:holocode-wedge}
+
+\paragraph{The pairs tested.} These are all $2^{20}$ regions, 6 bulk qubits and 2 orientations at $D=1$, plus intervals and random
+subsets of 11 sizes at $D=2,\dots,5$ \chk{holo:H3}.
+
+\paragraph{The predictions compared.} In every pair, four predictions agree:
+\begin{itemize}[nosep]
+\item the exact recoverability;
+\item the greedy wedge;
+\item the recursion of Proposition~\ref{prop:holocode-erasure};
+\item the min-cut prediction $I_{\rm cut}=1+\mathrm{mc}(A)-\mathrm{mc}(A\cup R_t)$.
+\end{itemize}
+$I_{\rm cut}$ never takes the value 1. Wedge reconstruction~\cite{adh,dong2016} therefore holds in this code.
+
+\paragraph{Two regimes.} Table~\ref{tab:holocode-wedge} shows them.
+\begin{itemize}[nosep]
+\item An interval holds the bulk geometrically. A deep qubit is in the wedge when its subtree is, and the root needs more than half the
+  ring.
+\item For a random subset, the root and the upper levels hold nothing until about 77\,\% of the boundary survives, which is $1-p_c$.
+  Then they hold nearly everything. Qubits near the leaves are recovered in proportion to their local coverage.
+\end{itemize}
+
+\begin{table}[ht]\centering\small
+\caption{Fraction of bulk qubits recoverable at $D=5$ (orientation A, setting b), by depth (0 is the root) and by the fraction
+$|A|/n$ of the boundary held. Each entry averages 6 interval starts or 6 random subsets. \chk{holo:H3}}\label{tab:holocode-wedge}
+\begin{tabular}{lcccccccc}\toprule
+& \multicolumn{4}{c}{interval, $|A|/n=$} & \multicolumn{4}{c}{random subset, $|A|/n=$} \\
+depth & 0.3 & 0.5 & 0.6 & 0.7 & 0.6 & 0.7 & 0.8 & 0.9 \\\midrule
+0 & 0.00 & 0.17 & 0.67 & 1.00 & 0.00 & 0.00 & 1.00 & 1.00 \\
+1 & 0.27 & 0.43 & 0.53 & 0.77 & 0.00 & 0.03 & 1.00 & 1.00 \\
+3 & 0.29 & 0.50 & 0.60 & 0.70 & 0.07 & 0.44 & 0.99 & 1.00 \\
+5 & 0.30 & 0.50 & 0.60 & 0.70 & 0.52 & 0.75 & 0.96 & 1.00 \\\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The erasure recursion}\label{sec:holocode-erasure}
+
+\paragraph{Definitions.} Let $A$ be the boundary qubits that survive erasure. The edge above a tile is \emph{available from below} when
+its qubit can be recovered from the part of $A$ below the tile. It is \emph{available from above} when its qubit can be recovered from
+the part of $A$ outside the tile's subtree. A surviving boundary leg counts as available.
+
+\begin{proposition}[exact erasure recursion, setting (b); \vd{proven}]\label{prop:holocode-erasure}
+\leavevmode
+\begin{itemize}[nosep]
+\item Seen from either side, every edge is either available or decoupled; that is, its channel to that part of $A$ is constant.
+\item An edge is available from below if and only if at least 3 of the 4 legs below its tile are available.
+\item An edge is available from above if and only if at least 3 of the parent's other 4 non-bulk legs are available.
+\item Bulk qubit $t$ has $I(R_t\!:\!A)=2$ if at least 3 of its tile's 5 non-bulk legs are available, and $I(R_t\!:\!A)=0$ otherwise.
+  For the root, this means 3 of its 5 children.
+\end{itemize}
+\end{proposition}
+
+\noindent\emph{Proof.} Two properties of a perfect tensor are used. Any three legs are a unitary image of the other three, and any
+three legs are maximally mixed.
+\begin{itemize}[nosep]
+\item Suppose at least 3 legs below a tile are available. Decoding them recovers the remaining legs, of which there are at most three:
+  the edge, the bulk leg and at most one child.
+\item Suppose at most 2 legs are available. Then the edge and those legs form three maximally mixed legs, so $I=1+2-3=0$.
+\item By induction on the height, an unavailable subtree is a constant channel. After local decoding, an available subtree is
+  equivalent to its edge qubit.
+\end{itemize}
+The same argument runs from above, and with the bulk leg as the target. \hfill$\square$
+
+\paragraph{The probabilities.} The availabilities in Proposition~\ref{prop:holocode-erasure} depend on disjoint sets of boundary
+qubits, so they are independent. This gives Eq.~\eqref{eq:holocode-rec}, with the binomial step
+$a_h=P(\mathrm{Bin}(4,a_{h-1})\ge3)$. Analogous closed forms hold at every depth. At $a^*$ the map has slope
+$f'(a^*)=12a^{*2}(1-a^*)=1.643>1$. Its fixed point is therefore unstable, and the transition window narrows as $1.643^{-D}$
+\chk{holo:H4}.
+
+\begin{table}[ht]\centering\small
+\caption{Probability that the root is recoverable after erasure at rate $p$: the Monte Carlo estimate, with the recursion
+\eqref{eq:holocode-rec} in brackets. There are 4000, 2000, 1500, 1000 and 400 samples per $p$ for $D=1,\dots,5$. The row $0.2324$
+is $p_c$. \chk{holo:H4}}\label{tab:holocode-mc}
+\begin{tabular}{lccccc}\toprule
+$p$ & $D=1$ & $D=2$ & $D=3$ & $D=4$ & $D=5$ \\\midrule
+0.22 & 0.938 (0.932) & 0.946 (0.942) & 0.958 (0.956) & 0.976 (0.973) & 0.990 (0.988) \\
+0.2324 & 0.913 (0.914) & 0.909 (0.914) & 0.907 (0.914) & 0.905 (0.914) & 0.912 (0.914) \\
+0.25 & 0.886 (0.884) & 0.854 (0.860) & 0.821 (0.815) & 0.704 (0.722) & 0.517 (0.529) \\
+0.28 & 0.818 (0.819) & 0.713 (0.730) & 0.549 (0.546) & 0.247 (0.236) & 0.020 (0.017) \\\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Checks of the recursion.}
+\begin{itemize}[nosep]
+\item At $D=1$ the recursion equals, to $3\times10^{-13}$, the exact recovery polynomial built from all $2^{20}$ erasure patterns.
+\item The Monte Carlo samples of Section~\ref{sec:holocode} cover orientation A at $D=1,\dots,5$, at 11 values of $p$ from 0.05 to
+  0.5. A further check in orientation H at $D=5$ agrees in the same way.
+\item The Monte Carlo fractions match the probabilities at every point of $D$, $p$ and depth, with largest $|z|=2.55$.
+\item The Monte Carlo curves for $D=4$ and $D=5$ cross at $p=0.2331$, within the noise of 400 samples \chk{holo:H4}.
+\end{itemize}
+
+\subsection{The witnesses in detail}\label{sec:holocode-witness}
+
+\paragraph{Contents.} The six bulk contents of Section~\ref{sec:holocode} are five random products of cardinal states and one with 400
+bulk Bell pairs.
+
+\paragraph{The two witnesses.} Witness I reads the basis $g_1,g_1g_2,g_2g_3,\dots$ of the stabiliser group, not the generators
+themselves, and decodes the result. In the noisy runs, both witnesses also match the commutation pattern of the error with the
+generators, which is computed separately.
+
+\paragraph{Reading the content.} After the content of the 86 read qubits is read, the other 1620 bulk qubits keep fidelity 1
+\chk{holo:H5}.
+
+\paragraph{One tile.} We enumerated every Pauli error on the five qubits of a tile. The syndrome never depends on the content, and lookup
+correction restores every single-qubit error. By weight $0,\dots,5$, the correctable errors number $1,15,0,60,135,45$. Under
+depolarising noise of rate $p$, the logical failure probability is therefore exactly
+\begin{equation}\label{eq:holocode-pfail}
+P_{\rm fail}=1-\Bigl[(1-p)^5+5p(1-p)^4+\tfrac{20}{9}p^3(1-p)^2+\tfrac53p^4(1-p)+\tfrac{5}{27}p^5\Bigr]=10p^2+O(p^3).
+\end{equation}
+\begin{itemize}[nosep]
+\item This lies below the closed form $1-(1-p)^5-5p(1-p)^4$ for a distance-3 code that corrects only weight-1 errors. The two give
+  $0.0795$ against $0.0815$ at $p=0.1$, and $0.249$ against $0.263$ at $p=0.2$.
+\item The difference comes from errors of weight 3 to 5 that equal a correctable error times a stabiliser.
+\item The pseudo-threshold, where $P_{\rm fail}=p$, is $p=0.1376$.
+\item For Haar-random contents the syndrome distribution is independent of the content to machine precision. Reading the content
+  leaves fidelity exactly $\tfrac12$ \chk{holo:H5}.
+\end{itemize}
+
+\subsection{The classical centre}\label{sec:holocode-centre}
+
+Section~\ref{sec:holo} closes on Harlow's formula~\cite{harlow},
+$S(\rho_R)=\Tr(\rho\,\mathcal L_R)+S_{\rm bulk}(\rho,\mathcal M_R)$. In it the area operator $\mathcal L_R$ lies in the centre of the
+reconstructable algebra $\mathcal M_R$. In setting (b) we can read the formula off directly, in three steps.
+\begin{itemize}[nosep]
+\item The cut function is submodular, so minimal cuts are closed under union. The largest $A$-side among them is therefore itself a
+  minimal cut.
+\item $I_{\rm cut}(t)=2$ holds exactly when tile $t$ lies on $A$'s side of some minimal cut. So this largest side is the set of tiles
+  with $I_{\rm cut}=2$. Because $I_{\rm cut}=I$ in every pair, it is the wedge $W_A$.
+\item The cut crosses one bulk leg per tile of $W_A$ and $|\gamma_A|$ non-bulk legs. Hence
+\end{itemize}
+\begin{equation}\label{eq:holocode-qrt}
+S(A)=|\gamma_A|+|W_A|\qquad\text{(setting b)}.
+\end{equation}
+
+\paragraph{An empty residual region.} Every bulk qubit then lies either in $W_A$ or in the wedge of the complement. Operators on $A$
+commute with operators on the complement, so $\mathcal M_A$ is exactly the algebra of the qubits in $W_A$. Equation~\eqref{eq:holocode-qrt}
+is then Harlow's formula, with $S_{\rm bulk}=|W_A|$ and $\Tr(\rho\,\mathcal L_A)=|\gamma_A|$, which is a number. On a fixed tree the area
+can only be a number. The assembly realises one fixed-area sector, as Lemma~\ref{lem:classical} requires, and it cannot represent a
+superposition of areas. That \vd{holds} by construction. The superposition of geometries stays \vd{untested}.
+
+\paragraph{Setting (a).} With an empty residual region and a pure bulk, Harlow's formula gives $S=|\gamma_A|$, and we find
+$S=\mathrm{mc}$ in every such case.
+
+\paragraph{A non-empty residual region.} A residual tile is a bulk qubit that neither side can reconstruct alone. Complementary
+recovery of whole bulk qubits then fails, and Harlow's theorem in this form does not apply. The deficits have the tensor-network cause
+given in Section~\ref{sec:holocode}. Whether a non-trivial centre of the reconstructable algebra also describes them is
+\vd{untested}: $I(R_t\!:\!A)$ takes only the values 0 and 2, and the script constructs no centre.
+
+\subsection{A control: the toric code}\label{sec:holocode-toric}
+
+We built the ground state of the toric code~\cite{kitaev2003} on $L\times L$ tori for $L=8$, 16, 24, 32, 40 and 45, which reaches 4050
+qubits. The generators are the stars, the plaquettes and two non-contractible $Z$ loops; their GF(2) rank is $2L^2$. The regions are
+sets of edges in disks or annuli about a generic centre \chk{holo:H6}. We applied two constructions.
+\begin{itemize}[nosep]
+\item \emph{Kitaev and Preskill}~\cite{kitaev2006}, $-\gamma=S_A+S_B+S_C-S_{AB}-S_{BC}-S_{CA}+S_{ABC}$, on 33 disks of radius 2 to 18.
+  Each disk is cut into three sectors.
+\item \emph{Levin and Wen}~\cite{levin2006}, $-2\gamma=(S_1-S_2)-(S_3-S_4)$, on 20 annuli, from radii 2--4.5 to 10--19.5. Region 1 is
+  the annulus, regions 2 and 3 have one gap each, and region 4 has both gaps.
+\end{itemize}
+Every case gives $\gamma=1$ bit $=\ln2$, the value for $\mathbb Z_2$ topological order, whatever the region size and $L$ \tagP. The same
+machinery that finds the deficits of Table~\ref{tab:holocode-rt} reproduces this universal constant exactly.
+
+\subsection{Choices and caveats}\label{sec:holocode-caveats}
+
+\paragraph{Choices made after seeing the data.}
+\begin{itemize}[nosep]
+\item Orientation H was added after the exhaustive run at $D=1$ showed interval exceptions in the HaPPY convention.
+\item A first characterisation, that exceptions need a degenerate minimal cut, failed on 95\,735 regions. The residual region and the
+  observed $\lfloor r/2\rfloor$ bound replaced it.
+\item The first witness run at scale failed: shortening the pushed generators had mixed reference factors into the code stabilisers.
+  Shortening now uses only reference-free generators, and no entropy changes.
+\item The Monte Carlo samples at $D=5$ were raised from 160 to 400.
+\item Two floating-point tolerances were widened tenfold, to $10^{-11}$ and $10^{-13}$, after rounding exceeded them.
+\item A counting error in the script had added the setting-(b) sets at $D=1$ to the setting-(a) total. It is fixed. The checks and every
+  other number are unchanged.
+\item The region sets were sized for runtime.
+\end{itemize}
+
+\paragraph{Caveats.}
+\begin{itemize}[nosep]
+\item This is kinematics on a fixed background.
+\item The states are stabiliser states. Non-stabiliser contents were tested on one tile only.
+\item The noise is Pauli or erasure noise, and syndrome extraction is noiseless.
+\item The $\lfloor r/2\rfloor$ bound is observed in every setting-(a) case, not proved, and the regions at $D\ge2$ are samples.
+\item The recursion is exact only in setting (b).
+\item A tree is not our space (Section~\ref{sec:holo}).
+\end{itemize}

@@ -1,0 +1,211 @@
+\section{Hadrons as trees of dualities}\label{sec:exotics}
+
+This section tests Hypotheses~\ref{h:tree} (H8) and~\ref{h:mint} (H9) of Section~\ref{sec:trees} against hadron spectroscopy: the
+masses of compact trees, the closeness of molecular states to thresholds, the partners a tree implies, and H9's four registered
+predictions.
+
+\subsection{The model and the scoring}\label{sec:exotics-model}
+
+H8 fixes no mass by itself. To give its compact trees masses we use the colour-spin (chromomagnetic) model of De R\'ujula, Georgi and
+Glashow~\cite{derujula1975} in the form of Karliner and Rosner~\cite{karliner2014,karliner2017} (KR), the model that predicted the doubly
+charmed baryon and a bound doubly bottom tetraquark (Primer~\ref{box:hadron}). The mass of a hadron is
+\begin{equation}\label{eq:exo-H}
+M=\sum_i m_i+\sum_{i<j}B_{ij}-\sum_{i<j}C_{ij}\,\langle\boldsymbol\lambda_i\!\cdot\!\boldsymbol\lambda_j\,
+\boldsymbol\sigma_i\!\cdot\!\boldsymbol\sigma_j\rangle ,
+\end{equation}
+with effective quark masses $m_i$, binding terms $B_{ij}$ for heavy and strange pairs, and hyperfine strengths $C_{ij}\propto
+1/(m_im_j)$; $\boldsymbol\lambda$ are the colour (Gell-Mann) and $\boldsymbol\sigma$ the spin (Pauli) matrices. The expectation value is
+taken in the H8 tree: each node below the root couples two colour triplets to the conjugate triplet, the root couples to a singlet, and
+node spins with the same total $J$ are mixed. As in KR, every constituent of a multiquark takes its effective mass from baryons, and a
+binding term scales with the colour factor of its pair.
+
+We fit all 18 parameters to 42 ordinary ground-state mesons and baryons and to nothing exotic. The spread of the fit,
+$\sigma_{\rm model}=8.1$\,MeV, fixed before any exotic comparison, sets the model's uncertainty. The held-out doubly charmed baryon
+$\Xi_{cc}^{++}$ comes out at $3642.9\pm12.3$\,MeV against LHCb's $3621.55\pm0.38$\,MeV~\cite{lhcb2020j} (pull $+1.74$). With KR's own
+parameters the code reproduces KR's published masses to 0.15\,MeV \chk{exotics:H}, \chk{exotics:F}. Rows are scored as in
+Section~\ref{sec:scoring}: OK, and the prediction \emph{holds}, for $|{\rm pull}|<1.96$, with the model's $\sigma_{\rm pred}$ and the
+data error on the side of the model. States not yet seen are \emph{live}. Each assignment of a model level to a state was fixed before
+the comparison. Appendix~\ref{app:exotics} gives the couplings, the fit, two variants of the mass convention and the full spectra.
+
+\subsection{Compact trees against data}\label{sec:exotics-compact}
+
+The model and its doubly heavy predictions are KR's. We refit its parameters and apply it to H8's trees without refitting
+(Table~\ref{tab:exo-a}, Fig.~\ref{fig:exo-spectrum}) \chk{exotics:A}. What the table tests is that model's masses for compact trees, in
+KR's mass convention, which dominates them (Appendix~\ref{app:exotics-variants}). It does not test GUID: H8 is a reading QCD allows.
+
+\begin{table}[tbp]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Compact H8 trees in KR's colour-spin model (our fit): model mass with $\sigma_{\rm pred}$, measured mass, pull, verdict, and model
+mass minus the lowest S-wave two-hadron threshold. $^\dagger$: assigned to the nearest level, with chance probability 0.57, 0.24 and 0.08
+that a mass placed at random within $\pm150$\,MeV lies as close. Data: $T_{cc}^+$~\cite{lhcb2022i}, $X_0(2900)$~\cite{lhcb2020i},
+$T_{c\bar s0}(2900)$~\cite{lhcb2023h}, $X(6900)$~\cite{lhcb2020h}, $P_c$~\cite{lhcb2019h}, $P_{\psi s}(4338)$~\cite{lhcb2023j},
+$P_{cs}(4459)$~\cite{lhcb2021h}. Variants and further states: Table~\ref{tab:exo-full}. Masses in MeV \chk{exotics:A}.}
+\label{tab:exo-a}
+\begin{tabular}{@{}llrrrlr@{}}
+\toprule
+state & tree, $J^{P(C)}$ & model & data & pull & verdict & $M-T$ \\
+\midrule
+$T_{cc}^+$ & $[cc]_1[\bar u\bar d]_0$, $1^+$ & $3897\pm12$ & $3874.74\pm0.08$ & $+1.86$ & holds & $+22$ \\
+$X_0(2900)$ & $[ud]_0[\bar c\bar s]_0$, $0^+$ & $2755\pm10$ & $2866\pm7$ & $-9.28$ & refuted & $+392$ \\
+$T_{c\bar s0}(2900)$ & $[cq][\bar s\bar q]$, $0^+$ & $2809\pm9$ & $2908\pm23$ & $-4.06$ & refuted & $+701$ \\
+$X(6900)$ & $[cc]_1[\bar c\bar c]_1$, $2^{++}$ & $6425\pm29$ & $6905\pm13$ & $-15.2$ & refuted & $+231$ \\
+$P_c(4312)$ & lowest $([cq][qq])\bar c$ & $4277\pm11$ & $4311.9^{+6.8}_{-0.9}$ & $-3.06$ & refuted & $+354$ \\
+$P_c(4440)^\dagger$ & $([cq][qq]_1)\bar c$, $\frac12^-$ & $4428\pm11$ & $4440.3^{+4.3}_{-4.9}$ & $-0.98$ & holds & $+506$ \\
+$P_c(4457)^\dagger$ & $([cq][qq]_1)\bar c$, $\frac12^-$ & $4462\pm11$ & $4457.3^{+4.1}_{-1.8}$ & $+0.38$ & holds & $+539$ \\
+$P_{\psi s}(4338)$ & $([cs][ud]_0)\bar c$, $\frac12^-$ & $4392\pm11$ & $4338.2\pm0.8$ & $+4.81$ & refuted & $+292$ \\
+$P_{cs}(4459)^\dagger$ & $([cs][ud]_0)\bar c$, $\frac32^-$ & $4460\pm11$ & $4458.8^{+5.5}_{-3.1}$ & $+0.13$ & holds & $+361$ \\
+\midrule
+$T_{bb}^-$ & $[bb]_1[\bar u\bar d]_0$, $1^+$ & $10399\pm12$ & -- & -- & live & $-205$ \\
+$T_{bc}$ & $[bc]_0[\bar u\bar d]_0$, $0^+$ & $7146\pm11$ & -- & -- & live & $+2$ \\
+$T_{bc}$ & $[bc]_1[\bar u\bar d]_0$, $1^+$ & $7180\pm12$ & -- & -- & live & $-9$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tbp]\centering
+\includegraphics[width=\linewidth]{exotic_spectrum.pdf}
+\caption{Left: model minus measured mass for the nine scored states of Table~\ref{tab:exo-a} (symmetric logarithmic axis, linear within
+$\pm30$\,MeV), for the model with its $\pm1\sigma$ combined error and the variants P-in and J of Appendix~\ref{app:exotics-variants};
+$\dagger$ marks assignments by proximity. Right: mass minus the lowest S-wave threshold for the doubly heavy tetraquarks: the model,
+variant J, KR's published values~\cite{karliner2017}, LHCb's $T_{cc}^+$~\cite{lhcb2022i}, and lattice QCD~\cite{francis2017,
+leskovec2019,aoki2023,hudspith2023,tripathy2025,francis2019,padmanath2024}. What to look for: most scored points lie far outside
+$\pm2\sigma$, and no mass convention places them all \chk{exotics:A}.}
+\label{fig:exo-spectrum}
+\end{figure}
+
+\paragraph{Doubly heavy tetraquarks.} $T_{cc}^+$, LHCb's narrow $D^0D^0\pi^+$ state 0.36\,MeV below the $D^{*+}D^0$ threshold
+\cite{lhcb2022h,lhcb2022i}, \emph{holds} at $z=+1.86$. The model, however, puts it 22\,MeV above that threshold; with
+$\sigma_{\rm pred}=12$\,MeV it cannot tell whether the state is bound, as KR said of their own 3882\,MeV~\cite{karliner2017}. The
+bound $T_{bb}^-$ is KR's prediction (215\,MeV below $B\bar B^*$~\cite{karliner2017}) and lattice QCD's (83 to 189\,MeV
+\cite{francis2017,leskovec2019,aoki2023,hudspith2023,tripathy2025}). Refitted here, it lies at $10399\pm12$\,MeV, 205\,MeV below the
+threshold. \emph{Live}, as their prediction. The $T_{bc}$ states lie within $\sigma_{\rm pred}$ of their thresholds.
+
+\paragraph{The refutations.} Five masses fail. $X_0(2900)$ ($z=-9.3$) and $T_{c\bar s0}(2900)$ ($z=-4.1$) come out 100\,MeV too light.
+LHCb's $X(6900)$ lies 480\,MeV above even the most favourable S-wave assignment ($z=-15$). The lowest pentaquark levels miss
+$P_c(4312)$ ($z=-3.1$) and $P_{\psi s}(4338)$ ($z=+4.8$). Three states hold only by proximity, among levels dense enough to match most
+peaks. The junction variant would rescue the two states near 2.9\,GeV, but it puts $T_{cc}^+$ 120\,MeV too high; no convention fits all.
+The compact tree $[cq][\bar c\bar q]$ places $1^{++}$ 236\,MeV above $X(3872)$, which sits on the $D^0\bar D^{*0}$ threshold as a
+molecular tree would.
+
+\subsection{Partners}\label{sec:exotics-partners}
+
+A tree with light-quark halves comes in isospin multiplets; one whose halves carry spin comes in spin multiplets \chk{exotics:C}.
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \emph{Charged partners of a compact $X(3872)$.} The diquark-antidiquark reading of $X(3872)$~\cite{maiani2005} implies charged
+$X^\pm$ near 3872\,MeV. BaBar finds $\mathcal B(B^0\to X^-K^+,X^-\to J/\psi\pi^-\pi^0)<5.4\times10^{-6}$ (90\% CL), where an isovector
+partner implies $2.56\times10^{-5}$~\cite{babar2005h}; Belle's limits are also well below that expectation~\cite{belle2011h}.
+\emph{Failed prediction} of the compact reading. Our model's charged $1^{++}$ partners lie near 4108\,MeV, where no search was found.
+\item \emph{Isospin partners of $T_{cc}^+$} with $J=0,1,2$: 4042, 4071 and 4131\,MeV, above their open thresholds and hence broad. LHCb
+saw nothing narrow near threshold~\cite{lhcb2022i}, as the model has it; the predicted states lie outside the searched windows:
+\emph{untested}.
+\item \emph{Isospin partners of $T_{bb}^-$}: 10583, 10593 and 10613\,MeV: \emph{live}.
+\item \emph{Pentaquark multiplets}: 10 levels with isospin $1/2$ and partners with isospin $3/2$; three peaks are seen, and their
+production favours a spin-0 light diquark~\cite{maiani2015}: \emph{untested}.
+\end{itemize}
+
+\subsection{Threshold proximity}\label{sec:exotics-thresholds}
+
+Where both halves are colour singlets, H8 makes the state a molecule, which lies near the threshold of its two hadrons. We take the 26
+exotic hadrons reported as observations, find for each the nearest two-hadron threshold allowed in an S wave, and compare the distance
+with a null that places each mass uniformly within $\pm150$\,MeV (Appendix~\ref{app:exotics-thresholds}). Thirteen states lie within
+10\,MeV of an allowed threshold, where 7.0 are expected. Fisher's combined $p$ is $5.4\times10^{-5}$ ($4.1\times10^{-6}$ for
+$\pm300$\,MeV) \chk{exotics:B}. Two states carry it: $X(3872)$ sits 0.005\,MeV above $D^0\bar D^{*0}$ and $T_{cc}^+$ 0.36\,MeV below
+$D^{*+}D^0$; without them, $p=0.057$. With distances floored at the mass error, $p=5.1\times10^{-3}$. Exotic hadrons do lie near
+thresholds. That is the molecular branch of H8, but it is also the standard behaviour of hadronic molecules and threshold cusps in QCD.
+Many of these states were found as narrow structures near a threshold, so part of the excess is selection. \emph{Verdict: holds} as a
+statement about exotic hadrons; as evidence for H8 over QCD, \emph{holds as a reading}.
+
+\subsection{The minting in hadrons (H9)}\label{sec:exotics-mint}
+
+H9 was conceived after seeing that every established pentaquark carries $c\bar c$; those states agree with it by construction and are
+not evidence. We test the four predictions registered as SM7 before this analysis.
+
+\paragraph{I1, no open flavour.} Table~\ref{tab:exo-mint} lists every pentaquark claim we could find and verify. The three claims with an
+antiquark that has no partner are all unconfirmed. LEPS's $\Theta^+(1540)$~\cite{nakano2003} was not seen by CLAS with more than 30
+times the luminosity~\cite{mckinnon2006}. NA49's $\Xi^{--}(1860)$~\cite{na492004} and H1's $\Theta_c(3100)$~\cite{h12004} were not seen by
+HERA-B~\cite{knoepfle2004} and ZEUS~\cite{zeus2004}. Crossing hidden or open with established or not gives Fisher's exact $p=0.17$
+(one-sided) \chk{exotics:I1}. The contrast is weak and not clean:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item the open claims date from 2003 and 2004 and rest on small samples;
+\item the hidden-charm states come from LHCb's samples of $b$-hadron decays, whose $b\to c\bar cs$ transition supplies a $c\bar c$ pair
+\tagP;
+\item light hidden-flavour pentaquarks share their quantum numbers with $N^*$ resonances and are not tagged as pentaquarks.
+\end{itemize}
+SM7 names doubly charmed pentaquarks as forbidden, but H9's rule forbids only those whose light antiquark lacks a partner, such as
+$ccuu\bar d$. So the model's lowest doubly charmed level, $([cc]_1[ud]_0)\bar q$ at 4232\,MeV, is allowed. Its isospin-$3/2$ level
+$ccuu\bar d$ at $4301\pm12$\,MeV, 540\,MeV above $\Xi_{cc}^{++}\pi^+$, is forbidden. The two readings conflict there; LHCb's null search
+in $\Sigma_cD$ and $\Lambda_cD$~\cite{lhcb2024h} bounds production, not existence. \emph{Verdict: holds} as registered, with no
+statistical weight.
+
+\begin{table}[tbp]\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{Claimed pentaquarks: content, whether the antiquark has a partner of its flavour (hidden) or not (open), status, claim and
+searches that did not confirm it \chk{exotics:I1}.}
+\label{tab:exo-mint}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+state & content & pair & status & claim & not confirmed by \\
+\midrule
+$\Theta^+(1540)$ & $uudd\bar s$ & open & unconfirmed & LEPS~\cite{nakano2003} & CLAS~\cite{mckinnon2006}, HERA-B~\cite{knoepfle2004} \\
+$\Xi^{--}(1860)$ & $ddss\bar u$ & open & unconfirmed & NA49~\cite{na492004} & HERA-B~\cite{knoepfle2004} \\
+$\Theta_c(3100)$ & $uudd\bar c$ & open & unconfirmed & H1~\cite{h12004} & ZEUS~\cite{zeus2004} \\
+$P_c(4380)$ & $uudc\bar c$ & hidden & unconfirmed & LHCb~\cite{lhcb2015i} & verification pending~\cite{lhcb2019h} \\
+$P_c(4312,4440,4457)$ & $uudc\bar c$ & hidden & established & LHCb~\cite{lhcb2019h} & -- \\
+$P_c(4337)$ & $uudc\bar c$ & hidden & evidence & LHCb~\cite{lhcb2022j} & -- \\
+$P_{cs}(4459)$ & $udsc\bar c$ & hidden & evidence & LHCb~\cite{lhcb2021h} & $\Lambda_c^+D_s^-$~\cite{lhcb2025h} \\
+$P_{\psi s}(4338)$ & $udsc\bar c$ & hidden & established & LHCb~\cite{lhcb2023j} & -- \\
+\midrule
+doubly charmed & $ccuu\bar d$, $ccud\bar u$ & open, hidden & never claimed & -- & LHCb~\cite{lhcb2024h} \\
+hidden strange & $uuds\bar s$ & hidden & never claimed & -- & Belle~\cite{belle2017h} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{I2, hidden bottom.} Heavy-quark flavour symmetry lets the light cloud bind a $\Sigma_b\bar B^{(*)}$ pair as it binds
+$\Sigma_c\bar D^{(*)}$. Carrying the binding energies of $P_c(4312)$, $P_c(4440)$, $P_c(4457)$ and $P_{\psi s}(4338)$ over unchanged
+gives molecular states at 11085\,MeV (below $\Sigma_b\bar B$ at 11093.7\,MeV), 11117 and 11134\,MeV (below $\Sigma_b\bar B^*$ at
+11139.0\,MeV), and a $udsb\bar b$ state at 11074\,MeV. Scaling the binding with the reduced mass moves them by up to 33\,MeV
+(Appendix~\ref{app:exotics-mint}). The compact tree $([bq][qq])\bar b$ has its lowest level at $10883\pm11$\,MeV, about 200\,MeV lower,
+so a measurement would decide between the readings \chk{exotics:I2}. We found no experimental search on arXiv. These states cannot be
+made in $b$-hadron decays as the $P_c$ were; photoproduction $\gamma p\to\Upsilon p$ at an electron-ion collider has been proposed
+\cite{cao2020}. \emph{Verdict: live.}
+
+\paragraph{I3, the general rule.} ``Every exotic hadron contains a pair of one flavour'' fails on four established states:
+$T_{cc}^+$ ($cc\bar u\bar d$), $X_0(2900)$ and $X_1(2900)$ ($\bar c\bar sud$), and $T_{c\bar s0}(2900)$ ($c\bar su\bar d$) \chk{exotics:I3}.
+\emph{Verdict: refuted.} H9 itself is restricted to pentaquarks and is not touched.
+
+\paragraph{I4, the splitting $\alpha M/2$.} The rule says the two members of a spin doublet are split by $\alpha M/2$, with $M$ their mean
+mass~\cite{codata2022}. $P_c(4440)/P_c(4457)$ suggested it (17.0 against 16.2\,MeV) and does not count. Eligible pairs were fixed from
+quark content and $J^P$ only, before any splitting was computed: 25 pairs of observed exotic states (Appendix~\ref{app:exotics-mint}).
+Two pass at 1.96$\sigma$, both with errors as large as the prediction, where 4.2 are expected by chance; 22 fail by $3\sigma$ or more.
+The two pairs most often read as heavy-quark spin partners fail: $Z_b(10650)-Z_b(10610)=45.0\pm2.5$\,MeV against 38.8\,MeV, and
+$Z_c(4020)-Z_c(3900)=123.9\pm6.7$\,MeV against 14.5\,MeV. The colour-spin model gives the $Z_c$ splitting, $131.6\pm8.9$\,MeV
+\chk{exotics:I4}. \emph{Verdict: refuted}, with no excess of agreements over chance.
+
+\paragraph{Choices made after seeing the data.}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item The binding rule across the two halves of a multiquark was written into the script before any exotic state was computed, by
+authors who knew the published masses; the alternative rule is reported for every state (Appendix~\ref{app:exotics-variants}).
+\item Sharing KR's heavy-strange hyperfine enhancement between mesons and baryons was fixed before the fit, from KR's published
+residuals.
+\item One measurement per catalogue state was taken, the most recent one we could read; $X(3915)$, $P_{cs}(4459)$ and $P_c(4337)$ were left
+out of the threshold catalogue.
+\item The chance probabilities of the proximity assignments, and the threshold tests without the two sub-MeV states and with floored
+distances, were added after seeing the results.
+\item H9 was conceived after seeing the established pentaquarks. Reading SM7's doubly charmed example by H9's own rule was decided
+before the I1 counts.
+\item The I4 list was written before any splitting was computed, but all masses were known from the threshold catalogue.
+\end{itemize}
+
+\paragraph{Caveats.} KR's mass convention for multiquarks dominates the compact masses: the junction variant shifts tetraquarks by 90
+to 113\,MeV and pentaquarks by about 205\,MeV, and ordinary hadrons cannot choose between them. $\sigma_{\rm model}$ does not contain the
+uncertainty of carrying the model to four and five quarks. Only S-wave ground states are computed. The threshold test inherits the
+selection of its catalogue. Appendix~\ref{app:exotics-caveats} gives the full list.
+
+All numbers in this section and in Appendix~\ref{app:exotics} come from the script \texttt{exotic\_hadrons.py} in
+\texttt{docs/simulation} (80 of 80 checks, about one minute on one core).
+
+\paragraph{Verdict.} H8 holds as a reading: QCD's colour algebra already writes every hadron as a tree of conjugate halves. KR's
+colour-spin model on H8's compact trees, fitted to ordinary hadrons, holds for $T_{cc}^+$ and fails for 5 of 9 measured masses. These
+refutations hit that model's compact masses, not GUID. The bound $T_{bb}^-$ that the model and lattice QCD predict, $10399\pm12$\,MeV
+here, remains live. Exotic hadrons lie closer to thresholds than chance ($p=5\times10^{-5}$, carried by two states), as hadronic
+molecules in QCD do. Of H9's predictions, I1 holds without statistical weight, the hidden-bottom pentaquarks of I2 are live near 11.1\,GeV,
+and the general rule I3 and the splitting rule I4 are refuted.

@@ -1,0 +1,327 @@
+{
+ "meta": {
+  "python": "3.13.17",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "source": "arXiv:1707.06050 v1 (19 Jul 2017), the only arXiv version; the published text, PRL 119, 240401 (2017), was not read",
+  "state": "(1/2)[|00> + e^{ia}|01> + e^{ib}|10> + |11>], a = Delta phi_LR, b = Delta phi_RL, |up> = |0>",
+  "runtime_s": 49.0
+ },
+ "checks": [
+  {
+   "label": "operator identity: sx sz - sy sz = sqrt2 s_n sz, n = (x - y)/sqrt2 (max entry of the difference)",
+   "ok": true,
+   "got": 0.0,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-15
+  },
+  {
+   "label": "product state (qubit 1 Bloch vector (1, -1, 0)/sqrt2, qubit 2 up) gives W = sqrt2",
+   "ok": true,
+   "got": 1.4142135623730947,
+   "expected": 1.4142135623730951,
+   "rtol": 1e-12,
+   "atol": 0.0
+  },
+  {
+   "label": "its negativity is 0 (a product state)",
+   "ok": true,
+   "got": 1.3401577416544662e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-15
+  },
+  {
+   "label": "400 000 random product states reach 1.4097 (> 1)",
+   "ok": true
+  },
+  {
+   "label": "maximum over product states (optimiser, 40 starts) = sqrt2",
+   "ok": true,
+   "got": 1.4142135623730956,
+   "expected": 1.4142135623730951,
+   "rtol": 1e-08,
+   "atol": 0.0
+  },
+  {
+   "label": "largest printed W on the proposal's states over all (a, b): the separable value sqrt2 is never exceeded",
+   "ok": true,
+   "got": 1.414213562373095,
+   "expected": 1.4142135623730951,
+   "rtol": 0.001,
+   "atol": 0.0
+  },
+  {
+   "label": "example: a = 0, b = 1 rad (the paper's Sigma ~ O(1), inner branches closest): printed W = 0.65, below 1 though the state is entangled",
+   "ok": true,
+   "got": 0.6505843394698784,
+   "expected": 0.6506,
+   "rtol": 0.001,
+   "atol": 0.0
+  },
+  {
+   "label": "at the phases where the arXiv text quotes W ~ 1.16 (Delta phi_LR = -0.2, Delta phi_RL = 0.7) the printed operator gives 0.33",
+   "ok": true,
+   "got": 0.33038637349969147,
+   "expected": 0.3304,
+   "rtol": 0.001,
+   "atol": 0.0
+  },
+  {
+   "label": "two-pair lemma: 25 random orthogonal axis pairs, largest product-state value = 1",
+   "ok": true,
+   "got": 1.0000000000000009,
+   "expected": 1.0,
+   "rtol": 1e-07,
+   "atol": 0.0
+  },
+  {
+   "label": "corrected witness W_c = |<sx sx> + <sy sz>|: maximum over product states = 1",
+   "ok": true,
+   "got": 1.0000000000000004,
+   "expected": 1.0,
+   "rtol": 1e-08,
+   "atol": 0.0
+  },
+  {
+   "label": "variant |<sx sz> + <sy sy>|: maximum over product states = 1 (valid)",
+   "ok": true,
+   "got": 1.0000000000000004,
+   "expected": 1.0,
+   "rtol": 1e-08,
+   "atol": 0.0
+  },
+  {
+   "label": "symmetric gauge a = b = Sigma/2: W_c = 1 + sin(Sigma/2) for Sigma in (0, pi] (max deviation)",
+   "ok": true,
+   "got": 2.220446049250313e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-13
+  },
+  {
+   "label": "negativity = sin(Sigma/2)/2 (max deviation), so W_c - 1 = 2 x negativity on these pure states",
+   "ok": true,
+   "got": 3.885780586188048e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-13
+  },
+  {
+   "label": "lab gauge (any a, b in [-pi, pi]): axes rotated by theta = (Delta phi_LR - Delta phi_RL)/2 give <W_c> = 1 + sin((a + b)/2), Sigma not reduced mod 2pi (a shift of a by 2pi flips the sign of both x axes) (max deviation)",
+   "ok": true,
+   "got": 4.440892098500626e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "calibration from local data: qubit 1 Bloch vector = cos(Sigma/2) (cos th, -sin th, 0) (max deviation, a = 0, b = 1)",
+   "ok": true,
+   "got": 0.0,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-13
+  },
+  {
+   "label": "qubit 2 Bloch vector = cos(Sigma/2) (cos th, sin th, 0) (max deviation)",
+   "ok": true,
+   "got": 0.0,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-13
+  },
+  {
+   "label": "trace norm ||T||_1 = 1 + 2 sin(Sigma/2) (max deviation)",
+   "ok": true,
+   "got": 2.220446049250313e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "and it does not depend on the gauge a - b (max deviation over 9 gauges per Sigma)",
+   "ok": true,
+   "got": 8.881784197001252e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "trace norm of a product state = |u||v| = 1 (2000 random product states, max)",
+   "ok": true,
+   "got": 1.0000000000000009,
+   "expected": 1.0,
+   "rtol": 1e-12,
+   "atol": 0.0
+  },
+  {
+   "label": "best two-pair witness on the proposal's states = 1 + sin(Sigma/2), any gauge (max deviation)",
+   "ok": true,
+   "got": 6.661338147750939e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-12
+  },
+  {
+   "label": "variant in the paper's geometry (a = 0): |<sx sz> + <sy sy>| = 1 - cos(Sigma) (max deviation)",
+   "ok": true,
+   "got": 0.0,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-13
+  },
+  {
+   "label": "variant in the symmetric gauge: 0 for every Sigma (max |value|)",
+   "ok": true,
+   "got": 1.1102230246251565e-16,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-13
+  },
+  {
+   "label": "dephased singular values = (e^{-2 lambda t}, e^{-lambda t} sin(omega t/2) twice) (omega = 3 lambda, t = 0.37/lambda, max deviation)",
+   "ok": true,
+   "got": 5.551115123125783e-17,
+   "expected": 0.0,
+   "rtol": 1e-06,
+   "atol": 1e-13
+  },
+  {
+   "label": "negativity threshold omega/lambda (reproduces gravity_simulated.py G2)",
+   "ok": true,
+   "got": 2.0000000416046078,
+   "expected": 2.0,
+   "rtol": 0.0001,
+   "atol": 0.0
+  },
+  {
+   "label": "trace-norm criterion threshold omega/lambda: as tight as the negativity (first order q^2 + 2 q s = 1 + (omega - 2 lambda) t)",
+   "ok": true,
+   "got": 2.0000000165084657,
+   "expected": 2.0,
+   "rtol": 0.0001,
+   "atol": 0.0
+  },
+  {
+   "label": "W_c = |<xx> + <yz>| (symmetric gauge) threshold: 4 (first order q^2 + q s = 1 + (omega/2 - 2 lambda) t)",
+   "ok": true,
+   "got": 4.000000044815579,
+   "expected": 4.0,
+   "rtol": 0.0001,
+   "atol": 0.0
+  },
+  {
+   "label": "|<yz> + <zy>| threshold = 2 u*, u* from the closed form (maximum at a finite time, not at t -> 0)",
+   "ok": true,
+   "got": 3.805718710067822,
+   "expected": 3.805718710058178,
+   "rtol": 1e-05,
+   "atol": 0.0
+  },
+  {
+   "label": "best two-pair witness (axes re-optimised at every t) threshold = min(4, 2 u*) = 2 u*",
+   "ok": true,
+   "got": 3.805718710067822,
+   "expected": 3.805718710058178,
+   "rtol": 1e-05,
+   "atol": 0.0
+  },
+  {
+   "label": "Sigma = 1 rad, 5 sigma: runs per setting = ceil(25 cot^2(1/2))",
+   "ok": true,
+   "got": 84.0,
+   "expected": 84.0,
+   "rtol": 0,
+   "atol": 0.0
+  },
+  {
+   "label": "Sigma = pi/2: exactly k^2 runs per setting (cot(pi/4) = 1): 9 at 3 sigma, 25 at 5 sigma",
+   "ok": true,
+   "got": 2509.0,
+   "expected": 2509.0,
+   "rtol": 0,
+   "atol": 0.0
+  },
+  {
+   "label": "Sigma = 1e-4 rad (the paper's 'modest' variant), 3 sigma: about 3.6e9 runs per setting",
+   "ok": true,
+   "got": 3599999994.0,
+   "expected": 3600000000.0,
+   "rtol": 0.001,
+   "atol": 0.0
+  },
+  {
+   "label": "Monte Carlo (20000 experiments of 2 x n runs, Sigma = 1): mean estimate = 1 + sin(1/2)",
+   "ok": true,
+   "got": 1.4809488095238095,
+   "expected": 1.479425538604203,
+   "rtol": 0.002,
+   "atol": 0.0
+  },
+  {
+   "label": "... and the mean significance (W - 1)/sd is at least 5 (5.06)",
+   "ok": true
+  },
+  {
+   "label": "estimated trace norm on a product state is biased upward: +0.250, +0.075, +0.0231 at n = 100, 1000, 10000 runs per setting (so it needs a calibrated null; W_c has an unbiased linear estimator)",
+   "ok": true
+  }
+ ],
+ "B1": {
+  "product_max_sampled": 1.4097213161389734,
+  "product_max_opt": 1.4142135623730956,
+  "counterexample_W": 1.4142135623730947,
+  "max_on_bmv_states": 1.414213562373095,
+  "argmax_a": 0.7853981633974483,
+  "argmax_b": 2.356194490192345,
+  "W_print(a=0.0000,b=1.0000)": -0.6505843394698784,
+  "W_print(a=0.5000,b=0.5000)": -0.479425538604203,
+  "W_print(a=0.0000,b=1.5708)": -1.0,
+  "W_print(a=0.0000,b=3.1416)": -1.0,
+  "W_print_at_quoted_phases(a=-0.2,b=0.7)": 0.33038637349969147
+ },
+ "B2": {
+  "two_pair_lemma_max": 1.0000000000000009,
+  "W_c_formula": "1 + sin(Sigma/2)",
+  "trace_norm_formula": "1 + 2 sin(Sigma/2)",
+  "variant_formula_paper_geometry": "1 - cos(Sigma), detects only Sigma > pi/2",
+  "at_Sigma_1rad": {
+   "W_c": 1.479425538604203,
+   "trace_norm": 1.958851077208406,
+   "variant_a0": 0.45969769413186023,
+   "printed_a0": -0.6505843394698784,
+   "negativity": 0.2397127693021015
+  }
+ },
+ "B3": {
+  "threshold_negativity": 2.0000000416046078,
+  "threshold_trace_norm": 2.0000000165084657,
+  "threshold_two_pair": 3.805718710067822,
+  "threshold_W_c": 4.000000044815579,
+  "threshold_yz_plus_zy": 3.805718710067822,
+  "threshold_yz_plus_zy_closed_form": 3.805718710058178,
+  "bose_instance_rho": 0.001745,
+  "note": "every two-sphere geometry has omega/lambda <= 1 (gravity_simulated.py G2), below every threshold here"
+ },
+ "B4": {
+  "Sigma=1,k=3": 31,
+  "Sigma=1,k=5": 84,
+  "Sigma=1.5708,k=3": 9,
+  "Sigma=1.5708,k=5": 25,
+  "Sigma=0.01,k=3": 359995,
+  "Sigma=0.01,k=5": 999984,
+  "Sigma=0.0001,k=3": 3599999994,
+  "Sigma=0.0001,k=5": 9999999984,
+  "trace_norm_bias_product": {
+   "100": 0.2502409196411828,
+   "1000": 0.07502097673592512,
+   "10000": 0.023103056882990636
+  }
+ },
+ "summary": {
+  "passed": 34,
+  "total": 34
+ }
+}

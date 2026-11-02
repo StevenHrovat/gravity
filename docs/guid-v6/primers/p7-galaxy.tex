@@ -1,0 +1,37 @@
+% GUID v6, Primer P7 (label box:galaxy): galaxy dynamics. Background only; it states no result of the paper.
+% Place it at the start of Section sec:sparc (or at Section sec:darkmatter if the lead prefers): \input{primers/p7-galaxy}
+\begin{primer}{Galaxy dynamics}{box:galaxy}
+\setlength{\parskip}{3pt plus 1pt}%
+\emph{Rotation curves.} Gas and stars in a disc galaxy move on nearly circular orbits. Their speed $V$ against radius $R$ is the
+\emph{rotation curve}, and the centripetal acceleration is $g_{\rm obs}=V^2/R$. Far out, most curves stay flat where the visible mass alone
+would make them fall as $R^{-1/2}$: the missing-mass problem.
+
+\emph{Baryonic mass models.} The visible, or \emph{baryonic}, mass has three parts, each with its own contribution to $V^2$, computed from
+its observed surface density: the gas (atomic hydrogen with its helium), the stellar disc and the central bulge. Starlight becomes stellar
+mass through a mass-to-light ratio $\Upsilon$; at a wavelength of 3.6\,\textmu m it is near 0.5 for discs and 0.7 for
+bulges~\cite{mcgaugh2016}. The sum of the three, divided by $R$, is the baryonic acceleration $g_{\rm bar}$.
+
+\emph{Two empirical laws.} The \emph{baryonic Tully--Fisher relation} (BTFR): a galaxy's baryonic mass grows as the fourth power of its flat
+rotation speed, $M_{\rm bar}\propto V_{\rm flat}^4$, with small scatter~\cite{lelli2016a}. The \emph{radial acceleration relation} (RAR): at
+every radius of every galaxy, $g_{\rm obs}$ is one function of $g_{\rm bar}$. It is close to $g_{\rm bar}$ at high acceleration and close to
+$\sqrt{g_{\rm bar}\,g_\dagger}$ below a scale $g_\dagger\approx10^{-10}$\,m\,s$^{-2}$~\cite{mcgaugh2016,lelli2017}.
+
+\emph{MOND.} In Milgrom's modified Newtonian dynamics, $g_{\rm obs}=\nu(g_{\rm bar}/a_0)\,g_{\rm bar}$, where the new constant
+$a_0$ is about $1.2\times10^{-10}$\,m\,s$^{-2}$~\cite{milgrom}. The \emph{interpolating function} $\nu(y)$ tends to 1 at high acceleration
+($y\gg1$) and to $y^{-1/2}$ at low; the deep regime gives $V^4=GMa_0$, the BTFR. Common choices are the ``simple'' function
+$\nu(y)=\tfrac12+(\tfrac14+1/y)^{1/2}$ and the ``standard'' one, and the RAR's fitting function is another~\cite{famaey2012}.
+
+\emph{Dark-matter halos.} In cold dark matter each galaxy sits in a halo. Simulated halos follow the NFW profile
+\[
+\rho(r)=\frac{\rho_s}{(r/r_s)(1+r/r_s)^2}
+\]
+of Navarro, Frenk and White~\cite{navarro1996}. Its mass $M_{200}$ is counted inside the radius $r_{200}$ that encloses 200 times the
+critical density, and its concentration $c=r_{200}/r_s$ falls slowly with mass~\cite{dutton2014}. At the centre the density rises as
+$r^{-1}$, a \emph{cusp}. Many dwarf and low-surface-brightness galaxies prefer a \emph{core} of nearly constant density, as in the Burkert
+profile $\rho=\rho_0r_0^3/[(r+r_0)(r^2+r_0^2)]$~\cite{burkert1995}; this mismatch is the cusp-core problem~\cite{deblok2010}. The
+\emph{stellar-to-halo relation}, found by matching the abundances of galaxies and halos, gives the stellar mass a halo of given mass hosts;
+the ratio peaks at a few per cent near $10^{12}$ solar masses~\cite{moster2013}.
+
+\emph{SPARC.} The Spitzer Photometry and Accurate Rotation Curves sample holds 175 disc galaxies with 3.6\,\textmu m photometry and
+rotation curves from atomic-hydrogen and H$\alpha$ data, with mass models for gas, disc and bulge~\cite{lelli2016}.
+\end{primer}

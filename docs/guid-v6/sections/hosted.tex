@@ -1,0 +1,68 @@
+\section{Hosting known quantum systems}\label{sec:hosted}
+
+Section~\ref{sec:host} states that DMP's information half can carry any quantum content while its witnesses read only that the content
+exists. Here we host four quantum configurations with known answers. This validates that construction and our code; it tests no new
+physics.
+
+\paragraph{What hosting means.} A configuration is hosted as existence when it is given as a pair $(H,\Sigma)$: a Hamiltonian $H$ and a
+\emph{syndrome} $\Sigma\ge0$ that commutes with $H$. The states with $\Sigma\ket\psi=0$ form the \emph{existence sector}, the states the
+configuration allows: a fixed total spin, Gauss's law, or a register that holds only values below $N$. Because $[H,\Sigma]=0$, the
+dynamics never leaves the sector, and reading $\Sigma$ leaves the quantum state, the content, undisturbed. The host runs the configuration
+inside the sector. Two independent witnesses then check only that the result lies in the sector, never what it contains. Witness~T works
+in integer arithmetic on every basis configuration that carries amplitude. Witness~I evaluates $\bra\psi\Sigma\ket\psi$ in floating
+point. This is the reading of a stabiliser syndrome (a measurement that shows a code state is present without revealing it,
+Section~\ref{sec:holo}), applied here to sectors of up to 2.7 million basis states.
+
+\paragraph{The four configurations.} Appendix~\ref{app:hosted} gives the models and methods.
+\begin{itemize}[nosep]
+\item B1, the antiferromagnetic Heisenberg ring of up to 24 spins. It is solved by Lanczos iteration (a Krylov-subspace eigensolver) and
+extrapolated in the ring size.
+\item B2, the transverse-field Ising ring of $L=4000$ spins. It is solved exactly as free fermions by a Bogoliubov transformation (a change to
+independent fermion modes). Its central charge $c=\tfrac12$ is read twice: from the ground-state energy and from the entanglement entropy
+of blocks.
+\item B3, the Schwinger model (quantum electrodynamics in 1+1 dimensions) on up to 22 lattice sites. Its vector mass $M/g=1/\sqrt\pi$
+\cite{schwinger1962} is reached by extrapolating in lattice size and lattice spacing.
+\item B4, Shor's period-finding circuit \cite{shor1997} on an exact state vector of up to 24 qubits, for nine composite numbers from 15
+to 143.
+\end{itemize}
+Table~\ref{tab:hosted:summary} compares the hosted values with the known ones.
+
+\begin{table}[htb]\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Hosted benchmarks against known values \tagS\ (B1~\chk{hosted:B1}, B2~\chk{hosted:B2}, B3~\chk{hosted:B3}, B4~\chk{hosted:B4}).
+$\sigma$ is the largest change over a fixed family of alternative fits, combined with any propagated uncertainty
+(Appendix~\ref{app:hosted}); for B3 it measures consistency, not significance. TV is the total-variation distance.}\label{tab:hosted:summary}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Benchmark & Known value & Hosted value & Deviation\\
+\midrule
+B1 Heisenberg ring, $e_0$ ($N\to\infty$) & $\tfrac14-\ln2=-0.4431471806$ & $-0.4431457(11)$ & $+1.5\times10^{-6}$ ($1.3\sigma$)\\
+B2 Ising ring ($L=4000$), $E_0$ & finite-$L$ closed form & equal & $2\times10^{-16}$ relative\\
+B2 $c$ from the Casimir energy & $\tfrac12$ ($+9.0\times10^{-9}$ at this $L$) & $0.500000005(8)$ & $+5(8)\times10^{-9}$\\
+B2 $c$ from the block entropy & $\tfrac12$ & $0.50000016(26)$ & $+1.6\times10^{-7}$ ($0.6\sigma$)\\
+B2 saturated $S$, $g=0.5$ / $1.5$ & $0.6989875284$ / $0.3069825111$ & equal & $3\times10^{-12}$\\
+B3 Schwinger $M/g$, shifted / naive & $1/\sqrt\pi=0.5641896$ & $0.586(39)$ / $0.593(31)$ & $0.55\sigma$ / $0.92\sigma$\\
+B4 Shor distributions, 192 states & Shor's analytic form & equal & TV $\le7.5\times10^{-12}$\\
+B4 factors of nine numbers, 15 to 143 & the known prime factors & all recovered & none\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Witnesses and faults.} In every benchmark both witnesses pass the hosted states, and two orthogonal states of one sector (two
+different contents) receive the same verdict. Faults that leave the sector (a single spin flip, a charge without its electric field, a
+register value out of range) are refused by both, while a fault inside the sector passes, as Section~\ref{sec:holocode} discusses.
+
+\paragraph{The cost of classical hosting.} A dense state vector of $n$ qubits holds $2^n$ complex amplitudes of 16 bytes. Measured on one
+core, the time of a layer of gates per qubit grows as $2^{1.068n}$ for $n=18$ to 26 (Appendix~\ref{app:hosted}). Extrapolated, $n=50$
+needs 18\,PB for the state and about 12 years per layer. The $2n+3=4099$ logical qubits of Beauregard's circuit for a 2048-bit RSA modulus
+\cite{beauregard2003} would need $10^{1235}$ bytes. Structured content stays cheap. B2 hosts 4000 qubits in four 128\,MB matrices because
+its state is Gaussian, and stabiliser circuits are simulated in polynomial time by the Gottesman--Knill theorem
+\cite{gottesman1998,aaronson2004} (Section~\ref{sec:holocode}). A classical host therefore emulates the Existence Turing machine of
+Section~\ref{sec:host} only for small or structured content.
+
+All numbers in this section and in Appendix~\ref{app:hosted} come from \url{docs/simulation/hosted_benchmarks.py} (53 of 53 checks, 475\,s
+on one core).
+
+\paragraph{Verdict.} The hosting construction \vd{holds} on four configurations with known answers: the Heisenberg energy to
+$1.5\times10^{-6}$, the Ising central charge to $3\times10^{-7}$ by two routes, the Schwinger mass to 7\%, and Shor's outcome distributions
+to better than $10^{-11}$ \tagS. The witnesses read existence, never content. This validates the host and our code. It tests no new
+physics, and every prediction of GUID remains \vd{untested} by it.

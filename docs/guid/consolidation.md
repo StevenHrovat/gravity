@@ -56,7 +56,7 @@ and found Claim 1 holds. Where they overlap the Opus id is given first.
 
 | Ids | What | Gate |
 |---|---|---|
-| A3 / – | Repositories private; drafts #18, #19, #22, #24 unmerged | G4 |
+| A3 / – | Repositories public since 2026-10-27 (the owner); drafts #18, #19, #22, #24 still unmerged | G4 |
 | H1 / H3 | Second-kernel run for `Blind.lean` (#24 targets #23's merged branch, so `lean-evidence` never fired) | G4 |
 | F2-1 / F2-1 | Contact address on the title page | closed: the owner's mailbox, his choice 18:34Z |
 | – | GLM-5.3 row | G1 |

@@ -1,0 +1,2020 @@
+{
+ "script": "docs/simulation/standard_model.py",
+ "verified_on": "2026-10-31",
+ "preregistration": "docs/simulation/sm_preregistration.md",
+ "criterion": "test OK = consistent at 95% (|pull| < 1.96 or inside the allowed region); verdict words as in the paper",
+ "summary": {
+  "scored": 29,
+  "consistent": 25,
+  "failed": [
+   "SM2d.4",
+   "SM3.1",
+   "SM3.8",
+   "SM3.9"
+  ],
+  "checks": 32,
+  "checks_passed": 32,
+  "tally": {
+   "shared with the Standard Model or LambdaCDM": {
+    "rows": 22,
+    "OK": 19,
+    "FAIL": 3
+   },
+   "GUID-specific, sensitive": {
+    "rows": 3,
+    "OK": 2,
+    "FAIL": 1
+   },
+   "not yet sensitive": {
+    "rows": 4,
+    "OK": 4,
+    "FAIL": 0
+   }
+  },
+  "v_GeV": 246.22,
+  "gstar_neutrino_decoupling": 10.75,
+  "gstar_above_top": 106.75
+ },
+ "verdicts": [
+  {
+   "statement": "SM1",
+   "text": "spin ladder: no elementary spin-3/2 or spin-2 quantum",
+   "verdict": "holds as a reading",
+   "rows": "SM1.1-SM1.4; the Standard Model says the same"
+  },
+  {
+   "statement": "SM2.1",
+   "text": "couplings proportional to mass, kappa = 1",
+   "verdict": "holds (W, Z, t, b, tau, mu); untested (c, e, u, d, s, nu)",
+   "rows": "SM2a.1-SM2a.9"
+  },
+  {
+   "statement": "SM2.2",
+   "text": "Dirac neutrinos, m_bb = 0, lepton number conserved",
+   "verdict": "live, given B-L conservation (an added reading; Hypothesis 1' alone allows Majorana masses through the Weinberg operator); holds against every 0vbb search",
+   "rows": "SM2b.0-SM2b.7"
+  },
+  {
+   "statement": "SM2.3",
+   "text": "photon and gluons massless",
+   "verdict": "holds as a reading",
+   "rows": "SM2c.1"
+  },
+  {
+   "statement": "SM2.4",
+   "text": "W and Z masses from the vacuum (rho = 1), with SM loops",
+   "verdict": "holds; CDF 2022 is an inherited tension",
+   "rows": "SM2d.1-SM2d.6"
+  },
+  {
+   "statement": "SM3",
+   "text": "only alpha varies; R of order 1e-3 to 1e-2",
+   "verdict": "window refuted under the M_Z matching that Hypothesis 4 selects (R = -0.045 +- 0.002); inside it under the low-energy matching (R = +6.7e-04); live against data (not yet sensitive)",
+   "rows": "SM3.1-SM3.5"
+  },
+  {
+   "statement": "SM3 side",
+   "text": "scalar's g-2 contribution negligible",
+   "verdict": "derived; holds (a_mu); a_e limited by the Cs-Rb alpha discrepancy (inherited)",
+   "rows": "SM3.6-SM3.10"
+  },
+  {
+   "statement": "SM4",
+   "text": "no unification within causality",
+   "verdict": "holds as a reading (the Standard Model's own statement); Hypothesis 6' untested",
+   "rows": "SM4.1-SM4.5"
+  },
+  {
+   "statement": "SM5",
+   "text": "alpha born near 1/128 at m_Z, runs to 1/137; crossover",
+   "verdict": "holds",
+   "rows": "SM5.1-SM5.4"
+  }
+ ],
+ "rows": [
+  {
+   "id": "SM1.1",
+   "block": "SM1",
+   "statement": "Supersymmetry, whose gravitino is spin 3/2, through its coloured superpartners",
+   "guid": "none (no elementary spin-3/2 quantum)",
+   "data": "gluino > 2.30 TeV, squarks > 1.85 TeV (95% CL, simplified models, massless LSP)",
+   "refs": [
+    "atlas_susy"
+   ],
+   "measure": "null search / spin test: no spin-3/2 or spin-2 quantum seen",
+   "test": "OK",
+   "verdict": "holds as a reading",
+   "note": "the Standard Model makes the same statement for its own content; a gravitino-specific limit was not verified and is not used",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM1.2",
+   "block": "SM1",
+   "statement": "Spin-2 Kaluza-Klein graviton (Randall-Sundrum) in diphoton",
+   "guid": "none (no graviton as a quantum)",
+   "data": "RS1 excluded below 4.5 TeV (k/M_Pl = 0.1), 3.9 TeV (0.05), 2.2 TeV (0.01)",
+   "refs": [
+    "atlas_diphoton"
+   ],
+   "measure": "null search / spin test: no spin-3/2 or spin-2 quantum seen",
+   "test": "OK",
+   "verdict": "holds as a reading",
+   "note": "the Standard Model makes the same statement for its own content; a gravitino-specific limit was not verified and is not used",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM1.3",
+   "block": "SM1",
+   "statement": "Elementary spin-3/2 resonance: excited top quark of spin 3/2",
+   "guid": "none",
+   "data": "m > 1.2 TeV (95% CL)",
+   "refs": [
+    "cms_tstar"
+   ],
+   "measure": "null search / spin test: no spin-3/2 or spin-2 quantum seen",
+   "test": "OK",
+   "verdict": "holds as a reading",
+   "note": "the Standard Model makes the same statement for its own content; a gravitino-specific limit was not verified and is not used",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM1.4",
+   "block": "SM1",
+   "statement": "The 125 GeV scalar is spin 0, not spin 2",
+   "guid": "spin 0 (the Higgs rung)",
+   "data": "all spin-2 alternatives excluded at > 99.9% CL",
+   "refs": [
+    "atlas_spin"
+   ],
+   "measure": "null search / spin test: no spin-3/2 or spin-2 quantum seen",
+   "test": "OK",
+   "verdict": "holds as a reading",
+   "note": "the Standard Model makes the same statement for its own content; a gravitino-specific limit was not verified and is not used",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.kW",
+   "block": "SM2a",
+   "statement": "kappa_W = 1 (CMS, effective-loop fit)",
+   "guid": "1",
+   "data": "1.02 +0.08 -0.08",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "pull = +0.25 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "reported per coupling; scored jointly in SM2a.1 and SM2a.2",
+   "pull": 0.25,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.kZ",
+   "block": "SM2a",
+   "statement": "kappa_Z = 1 (CMS, effective-loop fit)",
+   "guid": "1",
+   "data": "1.04 +0.07 -0.07",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "pull = +0.57 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "reported per coupling; scored jointly in SM2a.1 and SM2a.2",
+   "pull": 0.571429,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.kt",
+   "block": "SM2a",
+   "statement": "kappa_t = 1 (CMS, effective-loop fit)",
+   "guid": "1",
+   "data": "1.01 +0.11 -0.1",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "pull = +0.10 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "reported per coupling; scored jointly in SM2a.1 and SM2a.2",
+   "pull": 0.1,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.kb",
+   "block": "SM2a",
+   "statement": "kappa_b = 1 (CMS, effective-loop fit)",
+   "guid": "1",
+   "data": "0.99 +0.17 -0.16",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "pull = -0.06 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "reported per coupling; scored jointly in SM2a.1 and SM2a.2",
+   "pull": -0.0588235,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.ktau",
+   "block": "SM2a",
+   "statement": "kappa_tau = 1 (CMS, effective-loop fit)",
+   "guid": "1",
+   "data": "0.92 +0.08 -0.08",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "pull = -1.00 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "reported per coupling; scored jointly in SM2a.1 and SM2a.2",
+   "pull": -1.0,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.kmu",
+   "block": "SM2a",
+   "statement": "kappa_mu = 1 (CMS, effective-loop fit)",
+   "guid": "1",
+   "data": "1.12 +0.21 -0.22",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "pull = +0.55 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "reported per coupling; scored jointly in SM2a.1 and SM2a.2",
+   "pull": 0.545455,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.kgamma",
+   "block": "SM2a",
+   "statement": "kappa_gamma = 1 (CMS, effective-loop fit)",
+   "guid": "1",
+   "data": "1.1 +0.08 -0.08",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "pull = +1.25 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "reported per coupling; scored jointly in SM2a.1 and SM2a.2; loop-induced, not a direct mass coupling",
+   "pull": 1.25,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.kg",
+   "block": "SM2a",
+   "statement": "kappa_g = 1 (CMS, effective-loop fit)",
+   "guid": "1",
+   "data": "0.92 +0.08 -0.08",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "pull = -1.00 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "reported per coupling; scored jointly in SM2a.1 and SM2a.2; loop-induced, not a direct mass coupling",
+   "pull": -1.0,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.kZgamma",
+   "block": "SM2a",
+   "statement": "kappa_Zgamma = 1 (CMS, effective-loop fit)",
+   "guid": "1",
+   "data": "1.65 +0.34 -0.37",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "pull = +1.76 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "reported per coupling; scored jointly in SM2a.1 and SM2a.2; loop-induced, not a direct mass coupling",
+   "pull": 1.75676,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.1",
+   "block": "SM2a",
+   "statement": "All tree-level kappa = 1 (W, Z, t, b, tau, mu), joint",
+   "guid": "chi2 / dof ~ 1",
+   "data": "CMS 2022 kappas; chi2 = 1.70 for 6",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "p = 0.95 (diagonal errors; correlations not published in the text)",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.2",
+   "block": "SM2a",
+   "statement": "All nine kappa = 1, CMS's own likelihood",
+   "guid": "SM point inside",
+   "data": "p = 0.28 (CMS); diagonal approximation p = 0.60",
+   "refs": [
+    "cms_nature"
+   ],
+   "measure": "collaboration p-value",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.3",
+   "block": "SM2a",
+   "statement": "kappa_V = kappa_F = 1 (ATLAS two-parameter fit)",
+   "guid": "(1, 1)",
+   "data": "kappa_V = 1.035 +- 0.031, kappa_F = 0.95 +- 0.05, rho = 0.39",
+   "refs": [
+    "atlas_nature"
+   ],
+   "measure": "chi2 = 3.72 for 2, p = 0.16 (ATLAS: 0.14)",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.3b",
+   "block": "SM2a",
+   "statement": "ATLAS seven- and nine-parameter fits",
+   "guid": "SM point inside",
+   "data": "p = 0.56 (kappa_c = kappa_t), 0.65 (kappa_c free), 0.61 (effective couplings)",
+   "refs": [
+    "atlas_nature"
+   ],
+   "measure": "collaboration p-values",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "ATLAS gives the per-particle values only graphically; they were not read off and are not used in the fits below",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.4",
+   "block": "SM2a",
+   "statement": "Slope of the reduced coupling against mass (prediction 1)",
+   "guid": "1",
+   "data": "s = 1.009 +- 0.017 (pole/PDG masses: 1.009 +- 0.017)",
+   "refs": [
+    "cms_nature",
+    "antusch"
+   ],
+   "measure": "pull = +0.54 sigma",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "six CMS couplings over 3.2 decades of mass; correlations ignored",
+   "pull": 0.540445,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.5",
+   "block": "SM2a",
+   "statement": "Vacuum value from the couplings (prediction v = (sqrt2 G_F)^-1/2)",
+   "guid": "246.22 GeV",
+   "data": "v = 244.0 +- 5.7 GeV (at the pivot mass 57 GeV)",
+   "refs": [
+    "cms_nature",
+    "gf_mulan"
+   ],
+   "measure": "pull = -0.39 sigma",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "",
+   "pull": -0.385098,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.6",
+   "block": "SM2a",
+   "statement": "Charm: kappa_c = 1",
+   "guid": "1",
+   "data": "CMS 1.1 < |kappa_c| < 5.5 (95%); ATLAS |kappa_c| < 4.2 (95%)",
+   "refs": [
+    "cms_nature",
+    "atlas_cc"
+   ],
+   "measure": "CMS's 95% interval just excludes 1; ATLAS's includes it",
+   "test": "INFO",
+   "verdict": "untested",
+   "note": "bounded at a few times the prediction; a 2-sigma-level upward fluctuation in one experiment",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.7",
+   "block": "SM2a",
+   "statement": "Electron: kappa_e = 1",
+   "guid": "1",
+   "data": "|kappa_e| < 240 (95%); SM B(H -> ee) ~ 5e-9",
+   "refs": [
+    "cms_hee"
+   ],
+   "measure": "bound 240 times the prediction",
+   "test": "INFO",
+   "verdict": "untested",
+   "note": "",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.8",
+   "block": "SM2a",
+   "statement": "Light quarks u, d, s: kappa_q = 1",
+   "guid": "1",
+   "data": "no measurement",
+   "refs": [],
+   "measure": "-",
+   "test": "INFO",
+   "verdict": "untested",
+   "note": "",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2a.9",
+   "block": "SM2a",
+   "statement": "Neutrinos: Dirac Yukawas y_nu = sqrt2 m_nu / v ~ 1e-13",
+   "guid": "Higgs coupling to neutrinos",
+   "data": "unmeasurable at any collider",
+   "refs": [],
+   "measure": "-",
+   "test": "INFO",
+   "verdict": "untested",
+   "note": "",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2b.0",
+   "block": "SM2b",
+   "statement": "Does 'only the Higgs vacuum grants rest mass' imply Dirac neutrinos?",
+   "guid": "only with B-L conserved (an added reading)",
+   "data": "the Weinberg operator (L Phi)(L Phi)/Lambda gives a Majorana mass f v^2/Lambda from the same vacuum",
+   "refs": [
+    "weinberg1979",
+    "ma2009"
+   ],
+   "measure": "Hypothesis 1' alone allows Majorana masses",
+   "test": "INFO",
+   "verdict": "the Dirac step needs B-L conservation",
+   "note": "B-L conservation forbids every Majorana mass and allows the B-L-conserving proton decay of SM4",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2b.1",
+   "block": "SM2b",
+   "statement": "No neutrinoless double-beta decay (Xe-136)",
+   "guid": "m_bb = 0: no signal at any exposure (given B-L conservation)",
+   "data": "T_1/2 > 3.8e26 yr (90%); m_bb < 28-122 meV",
+   "refs": [
+    "kamland"
+   ],
+   "measure": "no signal",
+   "test": "OK",
+   "verdict": "holds, given B-L conservation",
+   "note": "",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM2b.2",
+   "block": "SM2b",
+   "statement": "No neutrinoless double-beta decay (Ge-76, GERDA + MAJORANA + LEGEND-200)",
+   "guid": "no signal",
+   "data": "T_1/2 > 1.9e26 yr (90%); m_bb < 75-200 meV",
+   "refs": [
+    "legend200"
+   ],
+   "measure": "no signal",
+   "test": "OK",
+   "verdict": "holds, given B-L conservation",
+   "note": "",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM2b.3",
+   "block": "SM2b",
+   "statement": "What the next generation can do",
+   "guid": "a signal at any level refutes SM2b",
+   "data": "LEGEND-1000 3-sigma discovery at 1.3e28 yr (m_bb ~ 9-21 meV); nEXO 1.35e28 yr; Majorana IO band >= 18.2 meV",
+   "refs": [
+    "legend1000",
+    "nexo",
+    "nufit6"
+   ],
+   "measure": "if the ordering is inverted and neutrinos were Majorana, a signal is expected inside the reach",
+   "test": "INFO",
+   "verdict": "live, given B-L conservation",
+   "note": "for normal ordering a Majorana m_bb can be far below any planned reach, so a null result does not establish Dirac neutrinos",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM2b.4",
+   "block": "SM2b",
+   "statement": "N_eff with decoupled right-handed partners (Planck 2018 + BAO)",
+   "guid": "3.044 (+ negligible)",
+   "data": "2.99 +- 0.17",
+   "refs": [
+    "planck18",
+    "neff_sm",
+    "luo2020"
+   ],
+   "measure": "pull = -0.32 sigma",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "",
+   "pull": -0.317647,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2b.5",
+   "block": "SM2b",
+   "statement": "N_eff with decoupled right-handed partners (ACT DR6 + Planck + lensing + BAO)",
+   "guid": "3.044 (+ negligible)",
+   "data": "2.86 +- 0.13",
+   "refs": [
+    "act_ext",
+    "neff_sm"
+   ],
+   "measure": "pull = -1.42 sigma",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "",
+   "pull": -1.41538,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2b.5b",
+   "block": "SM2b",
+   "statement": "Variant: partners thermalised in the start and decoupled before the split",
+   "guid": "N_eff = 3.185",
+   "data": "2.99 +- 0.17 (Planck); 2.86 +- 0.13 (P-ACT-LB)",
+   "refs": [
+    "planck18",
+    "act_ext"
+   ],
+   "measure": "pulls -1.14 and -2.50 sigma",
+   "test": "INFO",
+   "verdict": "not GUID's statement",
+   "note": "disfavoured at 2.5 sigma by P-ACT-LB; GUID's partners never thermalise (Yukawa-only interactions)",
+   "pull": -2.49657,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2b.6",
+   "block": "SM2b",
+   "statement": "Sum of neutrino masses: cosmology against the oscillation minimum (inherited; Dirac or Majorana alike)",
+   "guid": "sum >= 0.0588 eV (NO), >= 0.0989 eV (IO)",
+   "data": "DESI DR2 + CMB: < 0.0642 eV (95%, Bayesian)",
+   "refs": [
+    "desi_nu",
+    "nufit6"
+   ],
+   "measure": "the NO minimum lies 0.0054 eV below the 95% bound; IO's lies above it",
+   "test": "OK",
+   "verdict": "holds (NO); inherited tension",
+   "note": "the Feldman-Cousins limit 0.053 eV and the effective-mass analysis (3 sigma) breach the oscillation minimum: a tension of LambdaCDM with oscillations, not of GUID",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2b.7",
+   "block": "SM2b",
+   "statement": "B-L conserved (an added reading of Axiom 3: B-L is a count every reader sees)",
+   "guid": "no Majorana mass anywhere",
+   "data": "no 0vbb signal (SM2b.1, SM2b.2)",
+   "refs": [
+    "kamland",
+    "legend200"
+   ],
+   "measure": "consistent",
+   "test": "INFO",
+   "verdict": "added reading; live",
+   "note": "",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM2c.1",
+   "block": "SM2c",
+   "statement": "The photon and the gluons are massless",
+   "guid": "massless",
+   "data": "a reading of the Standard Model (no number scored)",
+   "refs": [],
+   "measure": "-",
+   "test": "INFO",
+   "verdict": "holds as a reading",
+   "note": "",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2d.1",
+   "block": "SM2d",
+   "statement": "m_W: Standard Model with loops against ATLAS 2024 (7 TeV, reanalysis)",
+   "guid": "80.3499 +- 0.0056 GeV (SM fit without M_W)",
+   "data": "80.3665 +- 0.0159 GeV",
+   "refs": [
+    "atlas_mw",
+    "deblas"
+   ],
+   "measure": "pull = +0.98 sigma",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "GUID adds no loop of its own: m_W is the Standard Model's",
+   "pull": 0.984734,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2d.2",
+   "block": "SM2d",
+   "statement": "m_W: Standard Model with loops against CMS 2024",
+   "guid": "80.3499 +- 0.0056 GeV (SM fit without M_W)",
+   "data": "80.3602 +- 0.0099 GeV",
+   "refs": [
+    "cms_mw",
+    "deblas"
+   ],
+   "measure": "pull = +0.91 sigma",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "GUID adds no loop of its own: m_W is the Standard Model's",
+   "pull": 0.905567,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2d.3",
+   "block": "SM2d",
+   "statement": "m_W: Standard Model with loops against LHCb 2022",
+   "guid": "80.3499 +- 0.0056 GeV (SM fit without M_W)",
+   "data": "80.3540 +- 0.0316 GeV",
+   "refs": [
+    "lhcb_mw",
+    "deblas"
+   ],
+   "measure": "pull = +0.13 sigma",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "GUID adds no loop of its own: m_W is the Standard Model's",
+   "pull": 0.127729,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2d.4",
+   "block": "SM2d",
+   "statement": "m_W: Standard Model with loops against CDF 2022",
+   "guid": "80.3499 +- 0.0056 GeV (SM fit without M_W)",
+   "data": "80.4335 +- 0.0094 GeV",
+   "refs": [
+    "cdf_mw",
+    "deblas"
+   ],
+   "measure": "pull = +7.64 sigma",
+   "test": "FAIL",
+   "verdict": "inherited tension",
+   "note": "GUID adds no loop of its own: m_W is the Standard Model's",
+   "pull": 7.64052,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2d.5",
+   "block": "SM2d",
+   "statement": "m_W: Standard Model with loops against LHC-TeV combination without CDF (2023; includes ATLAS 2017 and LHCb 2022)",
+   "guid": "80.3499 +- 0.0056 GeV (SM fit without M_W)",
+   "data": "80.3692 +- 0.0133 GeV",
+   "refs": [
+    "mw_comb",
+    "deblas"
+   ],
+   "measure": "pull = +1.34 sigma",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "GUID adds no loop of its own: m_W is the Standard Model's; overlaps SM2d.1 and SM2d.3",
+   "pull": 1.33741,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM2d.6",
+   "block": "SM2d",
+   "statement": "Tree level m_W = g v / 2, m_Z = m_W / cos theta_W (rho = 1)",
+   "guid": "within 0.5% (Part I)",
+   "data": "D8.3: -0.18%; D8.4: +0.34%",
+   "refs": [
+    "mw_comb",
+    "mz_pdg"
+   ],
+   "measure": "cited from predictions_vs_data.py rows D8.3, D8.4",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM3.1",
+   "block": "SM3",
+   "statement": "R = dln mu / dln alpha when only the Maxwell coefficient varies (preregistered: of order 1e-3 to 1e-2); Yukawas fixed at M_Z, the matching Hypothesis 4 selects",
+   "guid": "|R| in [1e-3, 1e-2]",
+   "data": "derived R = -0.0451 +- 0.0023",
+   "refs": [
+    "gasser_leutwyler",
+    "glr2021",
+    "bmw_sigma",
+    "steinhauser",
+    "dhmz"
+   ],
+   "measure": "|R| = 0.045 lies outside the window, a factor 4.5 above its top",
+   "test": "FAIL",
+   "verdict": "refuted under the M_Z matching (by derivation); corrected value derived",
+   "note": "the electron's electromagnetic share (its QED running from the electroweak scale plus the pole conversion, 4.6% of m_e) dominates; the proton's (0.09%) was the estimate behind the window. The physical claim that |R| is far below unification's 20-50 holds.",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM3.1b",
+   "block": "SM3",
+   "statement": "Same with the low-energy masses held fixed (a matching Hypothesis 4 excludes: it needs the scalar on the mass terms)",
+   "guid": "|R| in [1e-3, 1e-2]",
+   "data": "R = +6.7e-04 +- 4.3e-04 (all low-energy masses fixed); +8.9e-04 +- 7.6e-04 (only the electron's)",
+   "refs": [
+    "gasser_leutwyler",
+    "bmw_sigma"
+   ],
+   "measure": "of order 1e-3: at the window's lower edge, within 1 sigma of 1e-3",
+   "test": "INFO",
+   "verdict": "inside the window (as an order of magnitude)",
+   "note": "holding the low-energy electron mass fixed while alpha varies requires d ln y_e / d ln alpha = -0.046, a coupling of the scalar to the electron's mass term; Hypothesis 4 lets the scalar multiply only the Maxwell term, so it fixes the Yukawas where the Maxwell term is defined, at the electroweak scale",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM3.2",
+   "block": "SM3",
+   "statement": "Molecular mu (methanol, z = 0.89) with quasar alpha (ESPRESSO, z = 1.15) on GUID's line Delta mu/mu = R Delta alpha/alpha",
+   "guid": "R = -0.045",
+   "data": "|Delta mu/mu| <= 1.1e-7 (2 sigma); Delta alpha/alpha = 1.3 +- 1.36 ppm",
+   "refs": [
+    "kanekar",
+    "espresso"
+   ],
+   "measure": "chi2 = 0.51 (1 dof), p = 0.48; along the line Delta alpha/alpha = +0.58 +- 0.91 ppm",
+   "test": "OK",
+   "verdict": "live",
+   "note": "under GUID the methanol bound limits alpha at z ~ 0.9 about as tightly as the quasar itself; the two redshifts differ",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "not yet sensitive",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM3.3",
+   "block": "SM3",
+   "statement": "Same data on a unification line (R = -24.3)",
+   "guid": "not GUID",
+   "data": "as SM3.2",
+   "refs": [
+    "kanekar",
+    "espresso",
+    "ferreira"
+   ],
+   "measure": "chi2 = 0.91, p = 0.34; along the line |Delta alpha/alpha| < 4.4e-09 (95%)",
+   "test": "INFO",
+   "verdict": "contrast",
+   "note": "a detected alpha change of ppm size with |Delta mu/mu| < 1e-7 would exclude this line and agree with GUID's",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM3.4",
+   "block": "SM3",
+   "statement": "Clocks: present drifts of mu and alpha on GUID's line",
+   "guid": "R = -0.045",
+   "data": "alpha-dot/alpha = (1.8 +- 2.5)e-19 /yr; mu-dot/mu = (-8 +- 36)e-18 /yr",
+   "refs": [
+    "filzinger",
+    "lange"
+   ],
+   "measure": "chi2 = 0.05, p = 0.82",
+   "test": "OK",
+   "verdict": "live",
+   "note": "the Cs-based mu drift assumes a model for the Cs nuclear g-factor; the alpha and mu values share data",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "not yet sensitive",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM3.5",
+   "block": "SM3",
+   "statement": "High-redshift H2 (z = 2.0-4.2)",
+   "guid": "|Delta mu/mu| = 0.045 |Delta alpha/alpha|",
+   "data": "|Delta mu/mu| < 5e-6 (3 sigma)",
+   "refs": [
+    "ubachs"
+   ],
+   "measure": "allows |Delta alpha/alpha| < 1.1e-04 on GUID's line, 2.1e-07 on the unification line",
+   "test": "OK",
+   "verdict": "live",
+   "note": "no constraint on alpha under GUID; a strong one under unification",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "not yet sensitive",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM3.6",
+   "block": "SM3",
+   "statement": "The scalar's contribution to lepton g-2 at |lambda| < 3.1e-5",
+   "guid": "Delta a ~ C lambda^2 m_l^2 / Mbar_P^2, C <~ 10",
+   "data": "precision: a_e 1.3e-13, a_mu 1.45e-10",
+   "refs": [
+    "fan2023",
+    "fnal_gm2"
+   ],
+   "measure": "Delta a_e <~ 4e-52, Delta a_mu <~ 2e-47: 38 and 36 orders of magnitude below",
+   "test": "OK",
+   "verdict": "derived; holds",
+   "note": "",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "not yet sensitive",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM3.7",
+   "block": "SM3",
+   "statement": "No environment dependence of alpha between laboratories",
+   "guid": "|delta alpha/alpha| <= 1e-20 (scalar; Earth's and the Sun's potential)",
+   "data": "alpha^-1: Cs 137.035999046(27), Rb 137.035999206(11): differ by 1.2e-09 (5.5 sigma)",
+   "refs": [
+    "parker2018",
+    "morel2020"
+   ],
+   "measure": "the measured difference is 1e+11 times what the scalar allows",
+   "test": "INFO",
+   "verdict": "derived",
+   "note": "the Cs-Rb discrepancy is experimental or in the Standard Model's inputs, not GUID's",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "GUID-specific"
+  },
+  {
+   "id": "SM3.8",
+   "block": "SM3",
+   "statement": "a_e: measurement against the Standard Model with alpha(Rb 2020)",
+   "guid": "Standard Model (scalar negligible, SM3.6)",
+   "data": "a_e(exp) - a_e(SM) = +0.34e-12; in alpha^-1: 137.035999206 vs 137.035999166(15) from a_e",
+   "refs": [
+    "morel2020",
+    "fan2023"
+   ],
+   "measure": "pull = +2.15 sigma",
+   "test": "FAIL",
+   "verdict": "inherited tension",
+   "note": "the comparison is made in alpha^-1 with Fan et al.'s alpha from a_e (their QED series); the a_e difference uses d a_e / d alpha^-1 = -alpha^2 / 2pi",
+   "pull": 2.15041,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM3.9",
+   "block": "SM3",
+   "statement": "a_e: measurement against the Standard Model with alpha(Cs 2018)",
+   "guid": "Standard Model (scalar negligible, SM3.6)",
+   "data": "a_e(exp) - a_e(SM) = -1.02e-12; in alpha^-1: 137.035999046 vs 137.035999166(15) from a_e",
+   "refs": [
+    "parker2018",
+    "fan2023"
+   ],
+   "measure": "pull = -3.89 sigma",
+   "test": "FAIL",
+   "verdict": "inherited tension",
+   "note": "the comparison is made in alpha^-1 with Fan et al.'s alpha from a_e (their QED series); the a_e difference uses d a_e / d alpha^-1 = -alpha^2 / 2pi",
+   "pull": -3.88514,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM3.10",
+   "block": "SM3",
+   "statement": "a_mu: final Fermilab-based world average against the 2025 Standard Model value",
+   "guid": "Standard Model (scalar negligible)",
+   "data": "116592071.5(14.5)e-11 vs 116592033(62)e-11",
+   "refs": [
+    "fnal_gm2",
+    "wp25"
+   ],
+   "measure": "pull = +0.60 sigma",
+   "test": "OK",
+   "verdict": "holds",
+   "note": "",
+   "pull": 0.604652,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM4.1",
+   "block": "SM4",
+   "statement": "Standard Model couplings do not meet at one point (two loops)",
+   "guid": "no single meeting point",
+   "data": "smallest spread of 1/alpha_i = 3.20 at 1.7e+14 GeV",
+   "refs": [
+    "alpha_mz",
+    "s2w",
+    "antusch",
+    "buttazzo"
+   ],
+   "measure": "7 sigma from zero (inputs and a theory allowance 0.47)",
+   "test": "OK",
+   "verdict": "holds as a reading (the Standard Model's own statement)",
+   "note": "the Standard Model's own statement since Amaldi et al.; it does not test Hypothesis 6', which places any unification before the start",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM4.2",
+   "block": "SM4",
+   "statement": "Exact unification would need alpha_s(M_Z) of",
+   "guid": "not 0.118 (no unification)",
+   "data": "SM: 0.0738; measured 0.118 +- 0.0009",
+   "refs": [
+    "antusch",
+    "denterria"
+   ],
+   "measure": "49 sigma (input error only)",
+   "test": "OK",
+   "verdict": "holds as a reading (the Standard Model's own statement)",
+   "note": "",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM4.3",
+   "block": "SM4",
+   "statement": "Contrast: MSSM with M_SUSY = 2 TeV (content GUID does not have; SM1 bounds such partners, it cannot exclude them)",
+   "guid": "not GUID",
+   "data": "smallest spread 0.003 at 1.1e+16 GeV; needs alpha_s(M_Z) = 0.1181",
+   "refs": [
+    "martin_vaughn",
+    "martin_primer"
+   ],
+   "measure": "alpha_s off by +0.1 sigma of the input (+0.1%)",
+   "test": "INFO",
+   "verdict": "contrast",
+   "note": "meets within the input errors at this threshold (no GUT or superpartner threshold corrections, no DR-bar conversion); the SM needs alpha_s 37% below the measured value",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM4.4",
+   "block": "SM4",
+   "statement": "Proton decay only from a unification before the start",
+   "guid": "possible, not required",
+   "data": "tau/B(p -> e+ pi0) > 2.4e34 yr (90%)",
+   "refs": [
+    "superk"
+   ],
+   "measure": "M_X > 4.8e+15 GeV (alpha_G = 1/40), 4.7e+15 GeV (alpha_G = 1/42.2); cited as data:D8.1",
+   "test": "INFO",
+   "verdict": "untested (Hypothesis 6'; M_X is free)",
+   "note": "",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM4.5",
+   "block": "SM4",
+   "statement": "A unification at the SM's alpha1 = alpha2 crossing",
+   "guid": "excluded (no unification within causality)",
+   "data": "crossing at 1.1e+13 GeV would give tau ~ 7e+23 yr",
+   "refs": [
+    "superk"
+   ],
+   "measure": "4e+10 times below the bound",
+   "test": "OK",
+   "verdict": "holds as a reading (the Standard Model's own statement)",
+   "note": "",
+   "pull": null,
+   "scored": true,
+   "scoring_class": "scored",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM5.1",
+   "block": "SM5",
+   "statement": "alpha born near 1/128 at m_Z (on-shell, from alpha(0) and the vacuum polarisation)",
+   "guid": "1/alpha(M_Z) ~ 128 (within 1%)",
+   "data": "128.937 +- 0.014",
+   "refs": [
+    "codata22",
+    "steinhauser",
+    "dhmz"
+   ],
+   "measure": "+0.73% from 128",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "consistency: Part I took 'near 1/128' from this physics, as data:D8.5 (CONS) does; not counted as a success",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM5.2",
+   "block": "SM5",
+   "statement": "Same, MS-bar",
+   "guid": "within 1%",
+   "data": "127.950 +- 0.017 (D8.5)",
+   "refs": [
+    "alpha_mz",
+    "erler1999"
+   ],
+   "measure": "-0.04% from 128; recomputed 127.96",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "cited from data:D8.5",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM5.3",
+   "block": "SM5",
+   "statement": "alpha runs down to 1/137",
+   "guid": "1/alpha(0) = 137.036",
+   "data": "137.035999177(21)",
+   "refs": [
+    "codata22"
+   ],
+   "measure": "the running is the measured vacuum polarisation",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  },
+  {
+   "id": "SM5.4",
+   "block": "SM5",
+   "statement": "The split is a smooth crossover near 160 GeV",
+   "guid": "crossover",
+   "data": "data:D8.6 (m_H = 125.11 GeV above the first-order end point)",
+   "refs": [],
+   "measure": "cited from predictions_vs_data.py",
+   "test": "INFO",
+   "verdict": "holds",
+   "note": "",
+   "pull": null,
+   "scored": false,
+   "scoring_class": "INFO",
+   "share": "shared with the Standard Model or LambdaCDM"
+  }
+ ],
+ "checks": [
+  {
+   "label": "v = (sqrt2 G_F)^(-1/2) = 246.22 GeV",
+   "ok": true,
+   "detail": "246.2197"
+  },
+  {
+   "label": "ATLAS (kappa_V, kappa_F) Gaussian chi2 reproduces ATLAS's p = 14% within 0.03",
+   "ok": true,
+   "detail": "p = 0.156"
+  },
+  {
+   "label": "mass-coupling fit returns slope 1 and v = 246.22 GeV for kappa = 1",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "weighted slope: matrix solve equals the closed form",
+   "ok": true,
+   "detail": "0.009261"
+  },
+  {
+   "label": "oscillation minimum sum m_nu (NO) = sqrt(dm21) + sqrt(dm31), and NuFIT's 0.058 eV",
+   "ok": true,
+   "detail": "0.0588 eV"
+  },
+  {
+   "label": "oscillation minimum sum m_nu (IO) agrees with NuFIT's 0.098 eV",
+   "ok": true,
+   "detail": "0.0989 eV"
+  },
+  {
+   "label": "m_bb band: closed-form min/max equal a scan over both Majorana phases",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "Delta N_eff of three thermalised Weyl partners decoupled above all SM thresholds = 0.140",
+   "ok": true,
+   "detail": "0.1406"
+  },
+  {
+   "label": "de Blas et al.'s CDF pull is reproduced: (80.4133 - 80.3499) / sqrt(0.0080^2 + 0.0056^2) = 6.5",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "one-loop asymptotic leptonic running reproduces Steinhauser's one-loop 314.19e-4 to 3e-6 (mass terms O(m_tau^2/M_Z^2) neglected)",
+   "ok": true,
+   "detail": "314.2089e-4"
+  },
+  {
+   "label": "running alpha reproduces 1/alpha(M_Z) on-shell = 1/alpha(0) (1 - Delta_lep - Delta_had)",
+   "ok": true,
+   "detail": "128.937 vs 128.937"
+  },
+  {
+   "label": "alpha-squared integral: Simpson converged (n = 4001 against 16001 to 1e-7 relative)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "alpha-squared integral lies between the constant-alpha bounds alpha0 L and alpha(M_Z)^2/alpha0 L",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "electron term with alpha frozen at alpha0 equals (3 alpha0 / 2pi) ln(M_Z / m_e) + alpha0/pi",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "Coulomb self-energy of a dipole charge distribution: quadrature equals (5/32) alpha Lambda",
+   "ok": true,
+   "detail": "0.961 MeV"
+  },
+  {
+   "label": "the classical Coulomb estimate lies inside E_em +- its error (cross-check of the scale)",
+   "ok": true,
+   "detail": "0.96 MeV vs 0.63 +- 0.40"
+  },
+  {
+   "label": "low-energy matching: with every low-energy mass fixed R is the proton's electromagnetic share alone; with only the electron's fixed it is d ln m_p / d ln alpha",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "the two matchings bracket the window's lower edge: |R(M_Z)| > 1e-2 and the low-energy values lie within 1 sigma of 1e-3",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "unification relation of Ferreira et al. with R ~ 30, S ~ 160 gives Delta mu/mu = -24.3 Delta alpha/alpha",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "line fit: for R -> 0 the alpha estimate is the alpha datum alone",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "Earth's surface potential G M / (R c^2) and the Sun's annual change 2 e G M_sun / (AU c^2) are both below 1e-9",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "Cs-Rb disagreement exceeds 5 standard deviations (Morel et al.)",
+   "ok": true,
+   "detail": "5.49"
+  },
+  {
+   "label": "a_e difference and alpha^-1 difference give the same significance (linear map)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "a_mu: world average minus WP25 reproduces 38(63)e-11",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "one-loop running: integrator equals the closed form 1/alpha_i(t) = 1/alpha_i(0) - b_i t / 2pi to 1e-8",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "two-loop running: tolerances 1e-10 and 1e-12 agree to 1e-7",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "inputs reproduce alpha-hat: 1/alpha = (5/3) 1/alpha_1 + 1/alpha_2",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "SM: smallest spread at a crossing is not above the grid minimum and within 0.02 of it",
+   "ok": true,
+   "detail": "3.1964 vs 3.2141"
+  },
+  {
+   "label": "MSSM: smallest spread at a crossing is not above the grid minimum and within 0.02 of it",
+   "ok": true,
+   "detail": "0.0027 vs 0.0197"
+  },
+  {
+   "label": "Monte Carlo is reproducible with the fixed seed",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "proton lifetime estimate reproduces Part I / D8.1: 4.6e35 yr at M_X = 1e16 GeV and M_X > 4.8e15 GeV",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "label": "MS-bar estimate (on-shell minus Erler's scheme offset) agrees with the PDG value 127.950 +- 0.017 used in D8.5",
+   "ok": true,
+   "detail": "127.960"
+  }
+ ],
+ "SM2a": {
+  "kappa_cms": {
+   "W": [
+    1.02,
+    0.08,
+    0.08
+   ],
+   "Z": [
+    1.04,
+    0.07,
+    0.07
+   ],
+   "t": [
+    1.01,
+    0.11,
+    0.1
+   ],
+   "b": [
+    0.99,
+    0.17,
+    0.16
+   ],
+   "tau": [
+    0.92,
+    0.08,
+    0.08
+   ],
+   "mu": [
+    1.12,
+    0.21,
+    0.22
+   ],
+   "gamma": [
+    1.1,
+    0.08,
+    0.08
+   ],
+   "g": [
+    0.92,
+    0.08,
+    0.08
+   ],
+   "Zgamma": [
+    1.65,
+    0.34,
+    0.37
+   ]
+  },
+  "chi2_tree": 1.70001,
+  "p_tree": 0.94512,
+  "chi2_all9": 7.34871,
+  "p_all9": 0.600863,
+  "atlas_VF": {
+   "chi2": 3.72138,
+   "p": 0.155565
+  },
+  "fit_running_masses": {
+   "s": 1.00926,
+   "sig_s": 0.0171351,
+   "v": 244.018,
+   "sig_v": 5.71813,
+   "chi2": 1.24504,
+   "dof": 4,
+   "pivot_GeV": 56.8937,
+   "a": 0.00898362,
+   "b": 0.00926056,
+   "cov": [
+    [
+     0.000549118,
+     -1.78174e-19
+    ],
+    [
+     -2.01623e-19,
+     0.000293611
+    ]
+   ]
+  },
+  "fit_pdg_masses": {
+   "s": 1.00942,
+   "sig_s": 0.0174204,
+   "v": 244.018,
+   "sig_v": 5.71813,
+   "chi2": 1.24445,
+   "dof": 4,
+   "pivot_GeV": 57.5455,
+   "a": 0.00898362,
+   "b": 0.00942427,
+   "cov": [
+    [
+     0.000549118,
+     -1.31782e-20
+    ],
+    [
+     -1.42087e-20,
+     0.000303472
+    ]
+   ]
+  },
+  "masses_running_GeV": {
+   "t": 168.358,
+   "b": 2.83789,
+   "c": 0.619809,
+   "tau": 1.73021,
+   "mu": 0.101858,
+   "e": 0.000483508,
+   "W": 80.3692,
+   "Z": 91.188
+  },
+  "masses_pdg_GeV": {
+   "t": 172.52,
+   "b": 4.183,
+   "tau": 1.77693,
+   "mu": 0.105658,
+   "W": 80.3692,
+   "Z": 91.188
+  },
+  "decades_of_mass": 3.21824
+ },
+ "SM2b": {
+  "dm21": 7.49e-05,
+  "dm31_NO": 0.002513,
+  "dm32_IO": -0.002484,
+  "sum_min_NO": 0.0587843,
+  "sum_min_IO": 0.0989223,
+  "mbb_IO_at_0": [
+   0.0181992,
+   0.0482156
+  ],
+  "y_nu3_NO_min": 2.87931e-13,
+  "mbb_NO_at_0": [
+   0.00149616,
+   0.00371691
+  ],
+  "dNeff_thermal": 0.140554,
+  "Neff_SM": 3.044
+ },
+ "SM2d": {
+  "mW_SM": [
+   80.3499,
+   0.0056
+  ],
+  "data": {
+   "ATLAS 2024 (7 TeV, reanalysis)": [
+    80.3665,
+    0.0159
+   ],
+   "CMS 2024": [
+    80.3602,
+    0.0099
+   ],
+   "LHCb 2022": [
+    80.354,
+    0.031607
+   ],
+   "CDF 2022": [
+    80.4335,
+    0.0094
+   ],
+   "LHC-TeV combination without CDF (2023; includes ATLAS 2017 and LHCb 2022)": [
+    80.3692,
+    0.0133
+   ]
+  }
+ },
+ "SM3": {
+  "R": -0.0450683,
+  "sigma_R": 0.00231005,
+  "R_envelope": [
+   -0.0489364,
+   -0.0444453
+  ],
+  "dlnmp": 0.000894171,
+  "dlnmp_parts": {
+   "em": 0.000671447,
+   "quark_masses": 0.000222724,
+   "lambda_shift": 0.0
+  },
+  "dlnme": 0.0459625,
+  "R_low_energy_all": 0.000671447,
+  "sigma_low_energy_all": 0.000426316,
+  "R_low_energy_electron_only": 0.000894171,
+  "sigma_low_energy_electron_only": 0.0007587,
+  "yukawa_shift_needed_for_low_energy_matching": -0.0459625,
+  "dlnme_running": 0.0436397,
+  "dlnme_pole": 0.00232282,
+  "ln_MZ_over_me": 12.0921,
+  "R_at_mu0": {
+   "MW": -0.0445796,
+   "v": -0.0489364
+  },
+  "R_alpha_s_fixed": -0.0444453,
+  "budget": {
+   "proton electromagnetic self-energy +-0.40 MeV": 0.000426316,
+   "sigma terms (BMW 2020 vs sigma_piN = 59.1 MeV)": 7.54683e-05,
+   "Lambda^(3) fixed vs alpha_s(M_Z) fixed": 0.000623046,
+   "matching scale M_W to v (half range)": 0.00217841,
+   "hadronic running model, mu_h = 0.3 to 1 GeV (half range)": 6.21212e-05,
+   "two-loop QED anomalous dimension, O(alpha/pi) relative": 0.000106763
+  },
+  "R_unification": -24.3,
+  "ratio_unification_to_GUID_min": 408.694,
+  "ratio_unification_to_GUID_typical": 539.181,
+  "astro": {
+   "GUID": {
+    "alpha_hat": 5.79789e-07,
+    "sigma": 9.08342e-07,
+    "chi2": 0.506094,
+    "p": 0.476835
+   },
+   "unification": {
+    "alpha_hat": 3.59984e-12,
+    "sigma": 2.26337e-09,
+    "chi2": 0.913511,
+    "p": 0.339185
+   },
+   "low-energy matching": {
+    "alpha_hat": 1.29964e-06,
+    "sigma": 1.35996e-06,
+    "chi2": 0.000251805,
+    "p": 0.987339
+   }
+  },
+  "clocks": {
+   "GUID": {
+    "alpha_hat": 1.80017e-19,
+    "sigma": 2.5e-19,
+    "chi2": 0.0492826,
+    "p": 0.824316
+   },
+   "unification": {
+    "alpha_hat": 1.84132e-19,
+    "sigma": 2.46515e-19,
+    "chi2": 0.00986407,
+    "p": 0.920886
+   },
+   "low-energy matching": {
+    "alpha_hat": 1.8e-19,
+    "sigma": 2.5e-19,
+    "chi2": 0.0493842,
+    "p": 0.824138
+   }
+  },
+  "inv_alpha_MZ_onshell": 128.937,
+  "g2_scalar_bound": {
+   "e": 4.23219e-52,
+   "mu": 1.80939e-47
+  },
+  "alpha_env": 9.61e-21,
+  "alpha_env_inputs": {
+   "f_max": 0.005,
+   "dPhi_max": 1e-09,
+   "lambda_95": 3.1e-05
+  },
+  "model_inputs": {
+   "E_em_MeV": 0.63,
+   "E_em_err_MeV": 0.4,
+   "f_BMW": {
+    "u": 0.0142,
+    "d": 0.0242,
+    "s": 0.0577
+   },
+   "hadronic_onset_GeV": 0.5,
+   "quark_mass_scale_GeV": 2.0,
+   "matching_scale_GeV": 91.188,
+   "methanol_sigma": 5.5e-08
+  },
+  "amu_pull": 0.604652,
+  "Coulomb_dipole_MeV": 0.960759
+ },
+ "SM4": {
+  "inputs": {
+   "inv_alpha_hat": 127.95,
+   "s2w": 0.23129,
+   "alpha_s": 0.118,
+   "yt_MZ": 0.967,
+   "M_SUSY": 2000.0,
+   "tan_beta": 10.0
+  },
+  "inverse_alphas_at_MZ": [
+   59.0139,
+   29.5936,
+   8.47458
+  ],
+  "significance_SM": 6.78349,
+  "alpha_s_deficit_percent": 37.418,
+  "SM": {
+   "c12": [
+    10758700000000.0,
+    42.202
+   ],
+   "c23": [
+    2.92563e+16,
+    46.1458
+   ],
+   "c13": [
+    171069000000000.0,
+    40.3845
+   ],
+   "mu_star": 171069000000000.0,
+   "dmin": 3.19639
+  },
+  "MSSM": {
+   "c12": [
+    1.14921e+16,
+    25.6613
+   ],
+   "c23": [
+    1.14083e+16,
+    25.6626
+   ],
+   "c13": [
+    1.14565e+16,
+    25.6646
+   ],
+   "mu_star": 1.14565e+16,
+   "dmin": 0.00273511
+  },
+  "SM_1loop": {
+   "mu_star": 242210000000000.0,
+   "dmin": 3.66547,
+   "c12": [
+    10180000000000.0,
+    42.4143
+   ],
+   "c23": [
+    9.85036e+16,
+    47.0397
+   ]
+  },
+  "spread_sd_inputs": {
+   "SM": 0.0446988,
+   "MSSM": 0.0240339
+  },
+  "theory_allowance": 0.469077,
+  "alpha_s_needed": {
+   "SM": 0.0738467,
+   "MSSM": 0.118069
+  },
+  "MX_bound": 4782080000000000.0,
+  "MX_bound_alphaG_SM": 4655650000000000.0,
+  "alphaG_SM_inv": 42.202,
+  "tau_at_SM_crossing": 6.84425e+23,
+  "bound_over_tau": 35065900000.0,
+  "n_mc": 200,
+  "seed": 20261031
+ },
+ "SM5": {
+  "inv_alpha_MZ_onshell": 128.937,
+  "err": 0.0137036,
+  "inv_alpha_MZ_MSbar_est": 127.96,
+  "scheme_offset": 0.977452
+ },
+ "choices_after_seeing_data": [
+  "SM2a: the CMS per-particle kappas of Fig. 4 (left) are used for the mass-coupling fit because they are the only published per-particle values in text form; ATLAS enters through its (kappa_V, kappa_F) fit and its p-values.",
+  "SM2a: fermion masses at M_Z from the MS-bar Yukawas (baseline) and pole / PDG masses (variant) were both fixed before the fit; the slope changes by less than its error.",
+  "SM3: the electromagnetic self-energy of the proton is taken as Gasser and Leutwyler's 0.63 MeV with +-0.40 MeV, set before computing R to cover their +-0.2 MeV residual and the spread between Cottingham (0.58 MeV) and lattice (1.0 MeV) values of the proton-neutron difference.",
+  "SM3: the preregistration does not say at which scale the Yukawa couplings are held fixed; M_Z (where alpha is 'born near 1/128') is the baseline, and M_W to v is the stated systematic.",
+  "SM3: the argument that Hypothesis 4 selects the M_Z matching (the Yukawas, not the low-energy masses, are held fixed) was written after R had been computed and after a reader pointed out that the low-energy matching puts R inside the window; the M_Z baseline itself was chosen before computing R.",
+  "SM2b: the Dirac step is made conditional on B-L conservation after a reader pointed out the Weinberg operator; the data and their outcome are unchanged.",
+  "SM3: the two a_e rows (alpha from Rb and from Cs) are scored separately although they show one tension, the disagreement of the two alpha determinations; this was decided after both were seen to fail.",
+  "SM4: the smallest spread is evaluated at the pairwise crossings rather than on the grid, after the grid minimum was seen to sit at a kink; the change is below 0.02 in 1/alpha.",
+  "SM4: the MSSM contrast uses one common superpartner threshold M_SUSY = 2 TeV (near the gluino limit of SM1.1) and tan beta = 10, fixed before running; the MS-bar to DR-bar conversion and all threshold corrections are omitted."
+ ],
+ "cited_rows_of_predictions_vs_data": [
+  "D1.1",
+  "D1.3",
+  "D1.6",
+  "D8.1",
+  "D8.3",
+  "D8.4",
+  "D8.5",
+  "D8.6",
+  "D9.3"
+ ],
+ "citations": {
+  "atlas_susy": {
+   "ref": "ATLAS Collaboration, JHEP 02 (2021) 143, arXiv:2010.14293",
+   "read": "arXiv abstract",
+   "value": "gluino excluded below 2.30 TeV (only gluino and massless lightest neutralino); mass-degenerate first- and second-generation squarks excluded below 1.85 TeV (massless neutralino), 95% CL"
+  },
+  "atlas_diphoton": {
+   "ref": "ATLAS Collaboration, Phys. Lett. B 822 (2021) 136651, arXiv:2102.13405",
+   "read": "arXiv full text, Sect. 8",
+   "value": "RS1 graviton excluded for m_G* below 2.2, 3.9 and 4.5 TeV for k/M_Pl = 0.01, 0.05 and 0.1"
+  },
+  "cms_tstar": {
+   "ref": "CMS Collaboration, Phys. Lett. B 778 (2018) 349, arXiv:1711.10949",
+   "read": "arXiv abstract",
+   "value": "spin-3/2 excited top quark: lower mass limit 1.2 TeV (95% CL)"
+  },
+  "atlas_spin": {
+   "ref": "ATLAS Collaboration, Eur. Phys. J. C 75 (2015) 476, arXiv:1506.05669",
+   "read": "arXiv abstract",
+   "value": "J^P = 0+ tested against alternatives including spin-2 models: all alternatives excluded at more than 99.9% CL"
+  },
+  "cms_nature": {
+   "ref": "CMS Collaboration, Nature 607, 60 (2022), arXiv:2207.00043",
+   "read": "arXiv full text: values printed in Fig. 4 (left) and in the captions of Figs. 3 and 4; Sect. on charm",
+   "value": "kappa_W = 1.02 +- 0.08, kappa_Z = 1.04 +- 0.07, kappa_gamma = 1.10 +- 0.08, kappa_g = 0.92 +- 0.08, kappa_t = 1.01 +0.11 -0.10, kappa_b = 0.99 +0.17 -0.16, kappa_tau = 0.92 +- 0.08, kappa_mu = 1.12 +0.21 -0.22, kappa_Zgamma = 1.65 +0.34 -0.37 (68%); p = 28% (Fig. 4 left); reduced-coupling fit p = 37.5% (Fig. 3 right); 1.1 < |kappa_c| < 5.5 observed (|kappa_c| < 3.4 expected), 95% CL"
+  },
+  "atlas_nature": {
+   "ref": "ATLAS Collaboration, Nature 607, 52 (2022), arXiv:2207.00092",
+   "read": "arXiv full text (pp. 8-10 and figure captions); the per-particle kappa values appear only in Figs. 5 and 6 and were not read off",
+   "value": "kappa_V = 1.035 +- 0.031, kappa_F = 0.95 +- 0.05, correlation 39%, p = 14%; reduced-coupling fits p = 56% (kappa_c = kappa_t) and 65% (kappa_c free); effective-coupling fit p = 61%; kappa_c < 5.7 (95%); mu = 1.05 +- 0.06"
+  },
+  "atlas_cc": {
+   "ref": "ATLAS Collaboration, JHEP 04 (2025) 075, arXiv:2410.19611",
+   "read": "arXiv abstract",
+   "value": "|kappa_c| < 4.2 (95% CL); VH(cc) below 11.5 (10.6 expected) times the SM"
+  },
+  "cms_hee": {
+   "ref": "CMS Collaboration, Phys. Lett. B 846 (2023) 137783, arXiv:2208.00265",
+   "read": "arXiv abstract and full text",
+   "value": "B(H -> ee) < 3.0e-4 (95% CL), |kappa_e| < 240; SM prediction B ~ 5e-9"
+  },
+  "antusch": {
+   "ref": "S. Antusch, K. Hinze, S. Saad, 'Updated running quark and lepton parameters at various scales', arXiv:2510.01312",
+   "read": "arXiv HTML (inputs and Eq. 4)",
+   "value": "PDG 2024 inputs m_b(m_b) = 4.183 +- 0.004 GeV, M_tau = 1776.93 +- 0.09 MeV, M_mu = 105.6583755 MeV, M_e = 0.51099895000 MeV, alpha_s(M_Z) = 0.1180 +- 0.0009; MS-bar Yukawas at M_Z: y_t = 0.967 +- 0.004, y_b = 1.630e-2, y_c = 3.56e-3, y_tau = 0.99378e-2, y_mu = 5.85042e-4, y_e = 2.77713e-6"
+  },
+  "top_comb": {
+   "ref": "ATLAS and CMS Collaborations, Phys. Rev. Lett. 132 (2024) 261902, arXiv:2402.08713",
+   "read": "arXiv abstract",
+   "value": "m_t = 172.52 +- 0.14 (stat) +- 0.30 (syst) GeV, total 0.33 GeV"
+  },
+  "weinberg1979": {
+   "ref": "S. Weinberg, Phys. Rev. Lett. 43, 1566 (1979)",
+   "read": "through E. Ma, arXiv:0905.0221, Sect. II and ref. [4] (arXiv full text)",
+   "value": "the unique dimension-five operator of the Standard Model, (L Phi)(L Phi)/Lambda, gives a Majorana neutrino mass f v^2 / Lambda once the Higgs field has its vacuum value"
+  },
+  "ma2009": {
+   "ref": "E. Ma, 'Neutrino mass: mechanisms and models', arXiv:0905.0221 (2009)",
+   "read": "arXiv full text, Sect. II",
+   "value": "'all Majorana neutrino masses in the SM are necessarily seesaw: for v fixed, m_nu goes down as Lambda goes up'"
+  },
+  "kamland": {
+   "ref": "KamLAND-Zen Collaboration, Phys. Rev. Lett. 135, 262501 (2025), arXiv:2406.11438",
+   "read": "arXiv abstract",
+   "value": "T_1/2(0vbb, Xe-136) > 3.8e26 yr (90% CL); m_bb < 28-122 meV"
+  },
+  "legend200": {
+   "ref": "LEGEND Collaboration, arXiv:2505.10440, doi:10.1103/25tk-nctn (2025)",
+   "read": "arXiv abstract",
+   "value": "GERDA + MAJORANA DEMONSTRATOR + LEGEND-200 combined: T_1/2(Ge-76) > 1.9e26 yr (90% CL), sensitivity 2.8e26 yr; m_bb < 75-200 meV"
+  },
+  "legend1000": {
+   "ref": "LEGEND Collaboration, 'LEGEND-1000 preconceptual design report', arXiv:2107.11462",
+   "read": "arXiv abstract",
+   "value": "99.7%-CL discovery sensitivity T_1/2 = 1.3e28 yr; m_bb upper limit 9-21 meV"
+  },
+  "nexo": {
+   "ref": "nEXO Collaboration, J. Phys. G 49, 015104 (2022), arXiv:2106.16243",
+   "read": "arXiv abstract",
+   "value": "half-life sensitivity 1.35e28 yr (90% CL, 10 yr); covers the inverted ordering"
+  },
+  "nufit6": {
+   "ref": "I. Esteban et al., 'NuFit-6.0', arXiv:2410.05380v2",
+   "read": "arXiv HTML, Table 1 (IC24 with SK-atm) and Eq. (22)",
+   "value": "dm21^2 = 7.49 (+0.19 -0.19) e-5 eV^2; dm3l^2 = +2.513 (+0.021 -0.019) e-3 (NO), -2.484 (+-0.020) e-3 (IO); sin^2 th12 = 0.308 (+0.012 -0.011); sin^2 th13 = 0.02215 (NO), 0.02231 (IO); sum m_nu >= 0.058 eV (NO), >= 0.098 eV (IO)"
+  },
+  "desi_nu": {
+   "ref": "W. Elbers et al. (DESI Collaboration), arXiv:2503.14744 (accepted in Phys. Rev. D)",
+   "read": "arXiv abstract",
+   "value": "sum m_nu < 0.0642 eV (95%, LCDM); Feldman-Cousins 95% upper limit 0.053 eV, 'breaching the lower limit from neutrino oscillations'; the effective-mass analysis is 'in 3 sigma tension with the same oscillation limit'"
+  },
+  "planck18": {
+   "ref": "Planck Collaboration, Astron. Astrophys. 641, A6 (2020), arXiv:1807.06209",
+   "read": "arXiv abstract",
+   "value": "N_eff = 2.99 +- 0.17 (with BAO); sum m_nu < 0.12 eV"
+  },
+  "act_ext": {
+   "ref": "E. Calabrese et al. (ACT), JCAP 11 (2025) 063, arXiv:2503.14454",
+   "read": "arXiv abstract and HTML Eq. (30)",
+   "value": "N_eff = 2.86 +- 0.13 (68%, P-ACT-LB), 2.73 +- 0.14 (P-ACT); sum m_nu < 0.082 eV (95%)"
+  },
+  "neff_sm": {
+   "ref": "J. J. Bennett et al., JCAP 04 (2021) 073, arXiv:2012.02726",
+   "read": "arXiv abstract",
+   "value": "N_eff^SM = 3.0440 +- 0.0002"
+  },
+  "luo2020": {
+   "ref": "X. Luo, W. Rodejohann, X.-J. Xu, JCAP 06 (2020) 058, arXiv:2005.01629",
+   "read": "arXiv abstract",
+   "value": "Dirac neutrinos: 'With pure standard model interactions, the contribution [to N_eff] is negligibly small'"
+  },
+  "atlas_mw": {
+   "ref": "ATLAS Collaboration, Eur. Phys. J. C 84 (2024) 1309, arXiv:2403.15085",
+   "read": "arXiv abstract",
+   "value": "m_W = 80366.5 +- 9.8 (stat) +- 12.5 (syst) MeV = 80366.5 +- 15.9 MeV"
+  },
+  "cms_mw": {
+   "ref": "CMS Collaboration, Nature 652 (2026) 321, arXiv:2412.13872",
+   "read": "arXiv abstract",
+   "value": "m_W = 80360.2 +- 9.9 MeV"
+  },
+  "lhcb_mw": {
+   "ref": "LHCb Collaboration, JHEP 01 (2022) 036, arXiv:2109.01113",
+   "read": "arXiv abstract",
+   "value": "m_W = 80354 +- 23 (stat) +- 10 (exp) +- 17 (theory) +- 9 (PDF) MeV"
+  },
+  "cdf_mw": {
+   "ref": "CDF Collaboration, Science 376, 170 (2022)",
+   "read": "the value as quoted in de Blas et al. 2022, Eq. (3) (arXiv full text); the journal page was not opened",
+   "value": "m_W = 80.4335 +- 0.0094 GeV"
+  },
+  "mw_comb": {
+   "ref": "LHC-TeV MW Working Group, Eur. Phys. J. C 84, 451 (2024), arXiv:2308.09417",
+   "read": "arXiv abstract",
+   "value": "m_W = 80369.2 +- 13.3 MeV without CDF; 80394.6 +- 11.5 MeV with CDF (compatibility 0.5%)"
+  },
+  "deblas": {
+   "ref": "J. de Blas, M. Pierini, L. Reina, L. Silvestrini, Phys. Rev. Lett. 129, 271801 (2022), arXiv:2204.04204",
+   "read": "arXiv full text, Tables I and II",
+   "value": "SM prediction (fit without M_W) M_W = 80.3499 +- 0.0056 GeV (standard average), 80.3505 +- 0.0077 GeV (conservative); pull 6.5 sigma against 80.4133 +- 0.0080 GeV"
+  },
+  "gasser_leutwyler": {
+   "ref": "J. Gasser, H. Leutwyler, Phys. Rep. 87, 77 (1982)",
+   "read": "through S. Stern, dissertation, Heidelberg 2008, arXiv:0812.3377, Eqs. (8.8)-(8.10) (arXiv full text)",
+   "value": "Born-level electromagnetic masses m_p^gamma = 0.63 MeV, m_n^gamma = -0.13 MeV; residual from intermediate states +-0.2 MeV; (m_n - m_p)^gamma = -0.76 +- 0.30 MeV"
+  },
+  "glr2021": {
+   "ref": "J. Gasser, H. Leutwyler, A. Rusetsky, Phys. Lett. B 814, 136087 (2021), arXiv:2003.13612",
+   "read": "arXiv full text, Eqs. (18), (21) and the discussion",
+   "value": "m_QED(p - n) = 0.58 +- 0.16 MeV, elastic part 0.75 +- 0.02 MeV; lattice values quoted there 1.00(7)(14), 1.03(17), 1.53(25)(50) MeV"
+  },
+  "bmw_sigma": {
+   "ref": "Sz. Borsanyi et al., arXiv:2007.03319",
+   "read": "arXiv HTML, Table 1 and Sect. 3.4",
+   "value": "f_u^p = 0.0142(12)(15), f_d^p = 0.0242(22)(30), f_s^N = 0.0577(46)(33) (sigma_q / M_N); sigma_piN = 42.0(1.3)(1.4) MeV (mesonic route)"
+  },
+  "hoferichter": {
+   "ref": "M. Hoferichter, J. Ruiz de Elvira, B. Kubis, U.-G. Meissner, Phys. Rev. Lett. 115, 092301 (2015), arXiv:1506.04142",
+   "read": "arXiv abstract",
+   "value": "sigma_piN = 59.1 +- 3.5 MeV"
+  },
+  "erler1999": {
+   "ref": "J. Erler, Phys. Rev. D 59, 054008 (1999), arXiv:hep-ph/9803453",
+   "read": "arXiv full text",
+   "value": "1/alpha-hat(M_Z) = 127.934 +- 0.027 (MS-bar) for alpha_s = 0.120, corresponding to the on-shell Delta alpha_had^(5)(M_Z) = 0.02779 +- 0.00020; m_c(m_c) = 1.31 +- 0.07 GeV, m_b(m_b) = 4.24 +- 0.11 GeV"
+  },
+  "kanekar": {
+   "ref": "N. Kanekar et al., Mon. Not. R. Astron. Soc. 448, L104 (2015), arXiv:1412.7757",
+   "read": "arXiv abstract",
+   "value": "|Delta mu / mu| <= 1.1e-7 (2 sigma), methanol, z = 0.88582, lookback ~7.5 Gyr"
+  },
+  "ubachs": {
+   "ref": "W. Ubachs, J. Bagdonaite, E. J. Salumbides, M. T. Murphy, L. Kaper, Rev. Mod. Phys. 88, 021003 (2016), arXiv:1511.04476",
+   "read": "arXiv abstract",
+   "value": "|Delta mu / mu| < 5e-6 (3 sigma), H2 in ten quasar systems, z = 2.0-4.2"
+  },
+  "lange": {
+   "ref": "R. Lange et al., Phys. Rev. Lett. 126, 011102 (2021), arXiv:2010.06620",
+   "read": "arXiv abstract",
+   "value": "d ln alpha/dt = 1.0(1.1)e-18 /yr; d ln mu/dt = -8(36)e-18 /yr"
+  },
+  "filzinger": {
+   "ref": "M. Filzinger et al., Phys. Rev. Lett. 130, 253001 (2023), arXiv:2301.03433",
+   "read": "as verified for predictions_vs_data.py (arXiv full text, Suppl. Eq. 9)",
+   "value": "d ln alpha/dt = 1.8(2.5)e-19 /yr"
+  },
+  "espresso": {
+   "ref": "M. T. Murphy et al., Astron. Astrophys. 658, A123 (2022), arXiv:2112.05819",
+   "read": "as verified for predictions_vs_data.py (arXiv abstract)",
+   "value": "Delta alpha/alpha = 1.3 +- 1.3 (stat) +- 0.4 (sys) ppm at z = 1.15"
+  },
+  "ferreira": {
+   "ref": "M. C. Ferreira, M. D. Juliao, C. J. A. P. Martins, A. M. R. V. L. Monteiro, Phys. Rev. D 86, 125025 (2012), arXiv:1212.4164",
+   "read": "arXiv full text, Eqs. (2)-(4) and Sect. III",
+   "value": "unification class: Delta mu/mu = [0.8 R - 0.3 (1 + S)] Delta alpha/alpha, typical GUT values R ~ 30, S ~ 160"
+  },
+  "calmet": {
+   "ref": "X. Calmet, H. Fritzsch, Eur. Phys. J. C 24, 639 (2002), arXiv:hep-ph/0112110",
+   "read": "arXiv abstract",
+   "value": "'The relative change of the nucleon mass is about 40 times larger than the relative change of alpha'"
+  },
+  "fan2023": {
+   "ref": "X. Fan, T. G. Myers, B. A. D. Sukra, G. Gabrielse, Phys. Rev. Lett. 130, 071801 (2023), arXiv:2209.13084",
+   "read": "arXiv abstract",
+   "value": "g/2 = 1.001 159 652 180 59 (13); with SM theory alpha^-1 = 137.035 999 166 (15)"
+  },
+  "parker2018": {
+   "ref": "R. H. Parker, C. Yu, W. Zhong, B. Estey, H. Mueller, Science 360, 191 (2018), arXiv:1812.04130",
+   "read": "arXiv abstract",
+   "value": "alpha = 1/137.035999046(27)"
+  },
+  "morel2020": {
+   "ref": "L. Morel, Z. Yao, P. Clade, S. Guellati-Khelifa, Nature 588, 61 (2020)",
+   "read": "journal abstract through a web search (not on arXiv)",
+   "value": "alpha^-1 = 137.035999206(11), 81 ppt; differs by more than 5 standard deviations from the Cs value"
+  },
+  "codata22": {
+   "ref": "CODATA 2022 recommended values",
+   "read": "as verified for predictions_vs_data.py",
+   "value": "alpha^-1 = 137.035999177(21)"
+  },
+  "fnal_gm2": {
+   "ref": "Muon g-2 Collaboration, arXiv:2506.03069 (2025)",
+   "read": "arXiv abstract",
+   "value": "a_mu(FNAL, full) = 116 592 0705(148) e-12 (127 ppb); world average 116 592 0715(145) e-12 (124 ppb)"
+  },
+  "wp25": {
+   "ref": "R. Aliberti et al., Phys. Rept. 1143 (2025) 1, arXiv:2505.21476",
+   "read": "arXiv abstract",
+   "value": "a_mu^SM = 116 592 033(62) e-11; a_mu^exp - a_mu^SM = 38(63) e-11, 'no tension'"
+  },
+  "buttazzo": {
+   "ref": "D. Buttazzo et al., JHEP 12 (2013) 089, arXiv:1307.3536",
+   "read": "arXiv full text, App. B Eqs. (96)-(98) and Eq. (76)",
+   "value": "two-loop SM gauge beta functions (g1 GUT normalised): one-loop (41/10, -19/6, -7); two-loop matrix [[199/50, 27/10, 44/5], [9/10, 35/6, 12], [11/10, 9/2, -26]]; top-Yukawa terms (17/10, 3/2, 2); (4 pi)^2 d y_t^2 / d ln mu^2 = y_t^2 (9/2 y_t^2 - 8 g3^2 - 9/4 g2^2 - 17/20 g1^2)"
+  },
+  "martin_vaughn": {
+   "ref": "S. P. Martin, M. T. Vaughn, Phys. Rev. D 50, 2282 (1994), arXiv:hep-ph/9311340",
+   "read": "arXiv full text, Eqs. (4.4)-(4.5)",
+   "value": "MSSM: B^(1) = (33/5, 1, -3); B^(2) = [[199/25, 27/5, 88/5], [9/5, 25, 24], [11/5, 9, 14]]; C^u = (26/5, 6, 4)"
+  },
+  "martin_primer": {
+   "ref": "S. P. Martin, 'A supersymmetry primer', arXiv:hep-ph/9709356 (v7, 2016)",
+   "read": "arXiv full text, Eqs. (6.4.7) and (6.5.22)",
+   "value": "16 pi^2 d y_t/dt = y_t (6 y_t^2 + y_b^2 - 16/3 g3^2 - 3 g2^2 - 13/15 g1^2) in the MSSM"
+  },
+  "alpha_mz": {
+   "ref": "J. Erler, A. Freitas, Electroweak model and constraints on new physics, PDG 2017",
+   "read": "as verified for predictions_vs_data.py (web search of the PDG review)",
+   "value": "1/alpha-hat(M_Z) = 127.950 +- 0.017 (MS-bar)"
+  },
+  "s2w": {
+   "ref": "Particle Data Group 2024, quoted in arXiv:2509.18251",
+   "read": "arXiv HTML",
+   "value": "sin^2 theta-hat_W(M_Z) = 0.23129 +- 0.00004"
+  },
+  "denterria": {
+   "ref": "D. d'Enterria et al., J. Phys. G 51, 090501 (2024), arXiv:2203.08271",
+   "read": "arXiv abstract",
+   "value": "alpha_s(m_Z) = 0.1179 +- 0.0009"
+  },
+  "dhmz": {
+   "ref": "M. Davier, A. Hoecker, B. Malaescu, Z. Zhang, Eur. Phys. J. C 80, 241 (2020), arXiv:1908.00921",
+   "read": "arXiv abstract",
+   "value": "Delta alpha_had^(5)(m_Z^2) = (276.0 +- 1.0) e-4"
+  },
+  "steinhauser": {
+   "ref": "M. Steinhauser, Phys. Lett. B 429, 158 (1998), arXiv:hep-ph/9803313",
+   "read": "arXiv full text, Table 1",
+   "value": "Delta alpha_lep(M_Z^2) = 314.97686 e-4 (three loops; one loop 314.19007 e-4)"
+  },
+  "gf_mulan": {
+   "ref": "MuLan Collaboration, Phys. Rev. D 87, 052003 (2013), arXiv:1211.0960",
+   "read": "as verified for predictions_vs_data.py",
+   "value": "G_F = 1.1663787(6) e-5 GeV^-2"
+  },
+  "mz_pdg": {
+   "ref": "Particle Data Group, Z boson mass",
+   "read": "as verified for predictions_vs_data.py",
+   "value": "m_Z = 91.1880 +- 0.0020 GeV"
+  },
+  "superk": {
+   "ref": "A. Takenaka et al. (Super-Kamiokande), Phys. Rev. D 102, 112011 (2020), arXiv:2010.16098",
+   "read": "arXiv abstract (as for predictions_vs_data.py)",
+   "value": "tau/B(p -> e+ pi0) > 2.4e34 yr (90% CL)"
+  }
+ },
+ "figures": [
+  "sm_couplings.pdf",
+  "sm_neutrino.pdf",
+  "sm_precision.pdf",
+  "sm_mu_alpha.pdf",
+  "sm_running.pdf"
+ ]
+}
