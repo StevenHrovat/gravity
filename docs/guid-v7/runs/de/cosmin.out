@@ -1,0 +1,22 @@
+(aH)_min at a=0.609 (z=0.64); ln[(aH)_1MeV/(aH)_min] = 17.895
+Starobinsky V0^(1/4)=8.09e+15 GeV, rho_end^(1/4)=6.55e+15 GeV; target ln ratio 6pi^2 = 59.22
+instant reheating at rho_end (Padmanabhan's case)              ln= 60.71  N_c=12.884 (4pi=12.566)  rho_L(pred)/obs = 10^+3.9
+Starobinsky + T_reh 2.3e9 GeV, no switch                       ln= 56.06  N_c=11.895 (4pi=12.566)  rho_L(pred)/obs = 10^-8.2
++ switch T_V=1e+05, Gamma/H*=3e-03, supercool 0 e-folds        ln= 54.94  N_c=11.660 (4pi=12.566)  rho_L(pred)/obs = 10^-11.1
++ switch T_V=1e+05, Gamma/H*=3e-03, supercool 5 e-folds        ln= 49.94  N_c=10.598 (4pi=12.566)  rho_L(pred)/obs = 10^-24.2
++ switch T_V=1e+05, Gamma/H*=3e-03, supercool 10 e-folds       ln= 44.94  N_c= 9.537 (4pi=12.566)  rho_L(pred)/obs = 10^-37.2
++ switch T_V=1e+05, Gamma/H*=3e-04, supercool 0 e-folds        ln= 54.56  N_c=11.578 (4pi=12.566)  rho_L(pred)/obs = 10^-12.1
++ switch T_V=1e+05, Gamma/H*=3e-04, supercool 5 e-folds        ln= 49.56  N_c=10.517 (4pi=12.566)  rho_L(pred)/obs = 10^-25.2
++ switch T_V=1e+05, Gamma/H*=3e-04, supercool 10 e-folds       ln= 44.56  N_c= 9.456 (4pi=12.566)  rho_L(pred)/obs = 10^-38.2
++ switch T_V=3e+06, Gamma/H*=3e-03, supercool 0 e-folds        ln= 54.94  N_c=11.660 (4pi=12.566)  rho_L(pred)/obs = 10^-11.1
++ switch T_V=3e+06, Gamma/H*=3e-03, supercool 5 e-folds        ln= 49.94  N_c=10.598 (4pi=12.566)  rho_L(pred)/obs = 10^-24.2
++ switch T_V=3e+06, Gamma/H*=3e-03, supercool 10 e-folds       ln= 44.94  N_c= 9.537 (4pi=12.566)  rho_L(pred)/obs = 10^-37.2
++ switch T_V=3e+06, Gamma/H*=3e-04, supercool 0 e-folds        ln= 54.56  N_c=11.578 (4pi=12.566)  rho_L(pred)/obs = 10^-12.1
++ switch T_V=3e+06, Gamma/H*=3e-04, supercool 5 e-folds        ln= 49.56  N_c=10.517 (4pi=12.566)  rho_L(pred)/obs = 10^-25.2
++ switch T_V=3e+06, Gamma/H*=3e-04, supercool 10 e-folds       ln= 44.56  N_c= 9.456 (4pi=12.566)  rho_L(pred)/obs = 10^-38.2
++ switch T_V=3e+07, Gamma/H*=3e-03, supercool 0 e-folds        ln= 54.94  N_c=11.660 (4pi=12.566)  rho_L(pred)/obs = 10^-11.1
++ switch T_V=3e+07, Gamma/H*=3e-03, supercool 5 e-folds        ln= 49.94  N_c=10.598 (4pi=12.566)  rho_L(pred)/obs = 10^-24.2
++ switch T_V=3e+07, Gamma/H*=3e-03, supercool 10 e-folds       ln= 44.94  N_c= 9.537 (4pi=12.566)  rho_L(pred)/obs = 10^-37.2
++ switch T_V=3e+07, Gamma/H*=3e-04, supercool 0 e-folds        ln= 54.56  N_c=11.578 (4pi=12.566)  rho_L(pred)/obs = 10^-12.1
++ switch T_V=3e+07, Gamma/H*=3e-04, supercool 5 e-folds        ln= 49.56  N_c=10.517 (4pi=12.566)  rho_L(pred)/obs = 10^-25.2
++ switch T_V=3e+07, Gamma/H*=3e-04, supercool 10 e-folds       ln= 44.56  N_c= 9.456 (4pi=12.566)  rho_L(pred)/obs = 10^-38.2

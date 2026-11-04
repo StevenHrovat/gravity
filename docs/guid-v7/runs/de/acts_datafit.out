@@ -1,0 +1,16 @@
+/mnt/project-files/gravity-v7/de/acts_datafit.py:78: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  DMs=c/(100*h)*quad(lambda z: 1/np.sqrt(Or*(1+z)**4+Om*(1+z)**3+ODE*fDE(model,np.array([z]),ex)[0]),0,zst,limit=200)[0]
+LCDM: chi2 1419.08 (BAO 11.72, SN 1405.27, CMB 2.09)  Om 0.3042 h 0.6855 ob 0.02249  N_SN 1590
+CPL : chi2 1412.37 (BAO 9.06, SN 1402.93, CMB 0.38)  dchi2 -6.72 (2 extra)  Om 0.3126 h 0.6787 w0 -0.860 wa -0.509  [DESI DR2+CMB+Pantheon+: w0 -0.838, wa -0.62, 2.8 sigma]
+acts=SFR M_esc=1e9      : chi2 1411.33 (BAO 8.73, SN 1402.46, CMB 0.13)  dchi2 vs LCDM -7.76 (0 extra)  Om 0.3121 h 0.6823
+acts=collapse M_esc=1e9 : chi2 1433.85 (BAO 16.92, SN 1408.20, CMB 8.73)  dchi2 vs LCDM +14.77 (0 extra)  Om 0.3245 h 0.6594
+acts=SFR M_esc=1e10     : chi2 1411.73 (BAO 9.02, SN 1402.47, CMB 0.24)  dchi2 vs LCDM -7.35 (0 extra)  Om 0.3113 h 0.6836
+acts=collapse M_esc=1e10: chi2 1430.34 (BAO 15.54, SN 1407.40, CMB 7.40)  dchi2 vs LCDM +11.26 (0 extra)  Om 0.3235 h 0.6611
+acts=SFR M_esc=1e11     : chi2 1412.83 (BAO 9.68, SN 1402.65, CMB 0.50)  dchi2 vs LCDM -6.25 (0 extra)  Om 0.3097 h 0.6859
+acts=collapse M_esc=1e11: chi2 1425.00 (BAO 13.43, SN 1406.08, CMB 5.48)  dchi2 vs LCDM +5.91 (0 extra)  Om 0.3218 h 0.6640
+acts=SFR M_esc=1e12     : chi2 1416.16 (BAO 11.42, SN 1403.55, CMB 1.19)  dchi2 vs LCDM -2.92 (0 extra)  Om 0.3067 h 0.6904
+acts=collapse M_esc=1e12: chi2 1417.73 (BAO 10.64, SN 1404.09, CMB 2.99)  dchi2 vs LCDM -1.35 (0 extra)  Om 0.3184 h 0.6693
+acts=SFR M_esc=1e13     : chi2 1426.91 (BAO 16.27, SN 1407.69, CMB 2.95)  dchi2 vs LCDM +7.83 (0 extra)  Om 0.3009 h 0.6989
+acts=collapse M_esc=1e13: chi2 1411.97 (BAO 8.78, SN 1402.50, CMB 0.70)  dchi2 vs LCDM -7.11 (0 extra)  Om 0.3118 h 0.6790

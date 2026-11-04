@@ -1,0 +1,25 @@
+Cogenesis check: one switch event -> PBH dark matter + matter surplus (2026-11-01).
+
+After percolation the vacuum energy rho_V sits in the switch-sector field X (matter-like, mass m_X), a fraction beta_0 is
+in black holes (matter-like, no accretion). X decays with rate Gamma, each decay leaves a lepton surplus eps (mirror
+preference); sphalerons turn 28/79 of B-L into baryons. Radiation from the decays sets the entropy.
+Claim to verify: Omega_PBH / Omega_b = (79/28) beta_0 m_X / (eps m_p), independent of Gamma (the dilution cancels).
+Units: M_pl = 1 reduced; rho_V = 3 H*^2 with H* = 1; only ratios matter. g* = 106.75.
+
+T_V = 3.2e+06 GeV, m_X = 3.2e+06 GeV
+ Gamma/H*    beta0      eps  T_reh/T_V       Y_B Omega_P/Omega_b   formula
+    3e-03    1e-14    5e-09  1.935e-07  8.97e-11          19.251    19.251
+    3e-03    1e-14    1e-08  1.935e-07  1.79e-10           9.625     9.625
+    1e-03    1e-14    5e-09  1.018e-07  5.19e-11          19.251    19.251
+    1e-03    1e-14    1e-08  1.018e-07  1.04e-10           9.625     9.625
+    3e-04    1e-14    5e-09  5.045e-08  2.84e-11          19.251    19.251
+    3e-04    1e-14    1e-08  5.045e-08  5.69e-11           9.625     9.625
+    1e-04    1e-14    5e-09  2.657e-08  1.64e-11          19.251    19.251
+    1e-04    1e-14    1e-08  2.657e-08  3.29e-11           9.625     9.625
+
+Observed: Y_B = 8.7e-11, Omega_DM/Omega_b = 5.36. With m_X = T_V the event needs eps / beta0 = (79/28) m_X/(5.36 m_p).
+  m_X = 1.0e+05 GeV: eps/beta0 = 5.61e+04
+  m_X = 1.0e+06 GeV: eps/beta0 = 5.61e+05
+  m_X = 3.2e+06 GeV: eps/beta0 = 1.80e+06
+  m_X = 1.0e+07 GeV: eps/beta0 = 5.61e+06
+  m_X = 3.2e+07 GeV: eps/beta0 = 1.80e+07

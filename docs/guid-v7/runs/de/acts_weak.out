@@ -1,0 +1,36 @@
+SN set: pantheon N = 1590
+LCDM chi2 1419.08   (forms this run: 15)
+fusion x unclumped 1e9             rho(0,.25,.5,1,2) 1.00 0.91 0.81 0.59 0.25  peak z 0.00  dchi2  +67.90  Om 0.2841
+SN x unclumped 1e9                 rho(0,.25,.5,1,2) 1.00 1.05 1.06 0.98 0.55  peak z 0.50  dchi2   -7.76  Om 0.3121
+mix(conv) x unclumped 1e9          rho(0,.25,.5,1,2) 1.00 0.94 0.86 0.67 0.31  peak z 0.00  dchi2  +38.03  Om 0.2899
+fusion x unclumped 1e10            rho(0,.25,.5,1,2) 1.00 0.91 0.81 0.58 0.24  peak z 0.00  dchi2  +72.03  Om 0.2835
+SN x unclumped 1e10                rho(0,.25,.5,1,2) 1.00 1.04 1.05 0.97 0.52  peak z 0.45  dchi2   -7.35  Om 0.3113
+mix(conv) x unclumped 1e10         rho(0,.25,.5,1,2) 1.00 0.94 0.86 0.66 0.30  peak z 0.00  dchi2  +41.38  Om 0.2892
+fusion x unclumped 1e11            rho(0,.25,.5,1,2) 1.00 0.90 0.79 0.56 0.22  peak z 0.00  dchi2  +79.82  Om 0.2824
+SN x unclumped 1e11                rho(0,.25,.5,1,2) 1.00 1.04 1.04 0.94 0.48  peak z 0.40  dchi2   -6.25  Om 0.3097
+mix(conv) x unclumped 1e11         rho(0,.25,.5,1,2) 1.00 0.93 0.85 0.64 0.27  peak z 0.00  dchi2  +47.77  Om 0.2880
+fusion redshifted-E                rho(0,.25,.5,1,2) 1.00 0.88 0.74 0.47 0.15  peak z 0.00  dchi2 +124.95  Om 0.2774
+SN redshifted-E                    rho(0,.25,.5,1,2) 1.00 1.07 1.07 0.92 0.42  peak z 0.40  dchi2   -4.03  Om 0.3139
+SN redshifted-E x unclumped 1e10   rho(0,.25,.5,1,2) 1.00 1.21 1.36 1.43 0.87  peak z 0.85  dchi2  +40.53  Om 0.3451
+BBN baseline B=0.50 + SN 1e10      rho(0,.25,.5,1,2) 1.00 1.02 1.03 0.98 0.76  peak z 0.45  dchi2   -6.39  Om 0.3076
+BBN baseline B=0.90 + SN 1e10      rho(0,.25,.5,1,2) 1.00 1.00 1.01 1.00 0.95  peak z 0.45  dchi2   -1.75  Om 0.3049
+BBN baseline B=0.92 + SN 1e10      rho(0,.25,.5,1,2) 1.00 1.00 1.00 1.00 0.96  peak z 0.45  dchi2   -1.38  Om 0.3048
+fusion rate / SFR shape (z: 0,.5,1,2,3): 1.00/1.00 1.55/2.92 1.87/5.79 1.42/8.81 0.87/6.00
+SN set: des N = 1820
+LCDM chi2 1648.25   (forms this run: 15)
+fusion x unclumped 1e9             rho(0,.25,.5,1,2) 1.00 0.91 0.81 0.59 0.25  peak z 0.00  dchi2  +81.12  Om 0.2867
+SN x unclumped 1e9                 rho(0,.25,.5,1,2) 1.00 1.05 1.06 0.98 0.55  peak z 0.50  dchi2   -8.92  Om 0.3122
+mix(conv) x unclumped 1e9          rho(0,.25,.5,1,2) 1.00 0.94 0.86 0.67 0.31  peak z 0.00  dchi2  +45.74  Om 0.2917
+fusion x unclumped 1e10            rho(0,.25,.5,1,2) 1.00 0.91 0.81 0.58 0.24  peak z 0.00  dchi2  +85.97  Om 0.2861
+SN x unclumped 1e10                rho(0,.25,.5,1,2) 1.00 1.04 1.05 0.97 0.52  peak z 0.45  dchi2   -8.48  Om 0.3114
+mix(conv) x unclumped 1e10         rho(0,.25,.5,1,2) 1.00 0.94 0.86 0.66 0.30  peak z 0.00  dchi2  +49.67  Om 0.2912
+fusion x unclumped 1e11            rho(0,.25,.5,1,2) 1.00 0.90 0.79 0.56 0.22  peak z 0.00  dchi2  +95.13  Om 0.2852
+SN x unclumped 1e11                rho(0,.25,.5,1,2) 1.00 1.04 1.04 0.94 0.48  peak z 0.40  dchi2   -7.26  Om 0.3100
+mix(conv) x unclumped 1e11         rho(0,.25,.5,1,2) 1.00 0.93 0.85 0.64 0.27  peak z 0.00  dchi2  +57.17  Om 0.2901
+fusion redshifted-E                rho(0,.25,.5,1,2) 1.00 0.88 0.74 0.47 0.15  peak z 0.00  dchi2 +148.52  Om 0.2811
+SN redshifted-E                    rho(0,.25,.5,1,2) 1.00 1.07 1.07 0.92 0.42  peak z 0.40  dchi2   -6.61  Om 0.3141
+SN redshifted-E x unclumped 1e10   rho(0,.25,.5,1,2) 1.00 1.21 1.36 1.43 0.87  peak z 0.85  dchi2  +47.22  Om 0.3438
+BBN baseline B=0.50 + SN 1e10      rho(0,.25,.5,1,2) 1.00 1.02 1.03 0.98 0.76  peak z 0.45  dchi2   -7.01  Om 0.3079
+BBN baseline B=0.90 + SN 1e10      rho(0,.25,.5,1,2) 1.00 1.00 1.01 1.00 0.95  peak z 0.45  dchi2   -1.89  Om 0.3053
+BBN baseline B=0.92 + SN 1e10      rho(0,.25,.5,1,2) 1.00 1.00 1.00 1.00 0.96  peak z 0.45  dchi2   -1.48  Om 0.3052
+fusion rate / SFR shape (z: 0,.5,1,2,3): 1.00/1.00 1.55/2.92 1.87/5.79 1.42/8.81 0.87/6.00

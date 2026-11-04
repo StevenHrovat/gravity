@@ -1,0 +1,8 @@
+H0 = 6.924e-11 /yr
+w0=-0.99: phi_dot/M_Pl=9.96e-12/yr  clock -> zeta<3.2e-07  quasar(z~1) -> zeta<1.3e-05  (field moved 0.08 M_Pl since z~1)
+w0=-0.95: phi_dot/M_Pl=2.23e-11/yr  clock -> zeta<1.4e-07  quasar(z~1) -> zeta<5.6e-06  (field moved 0.18 M_Pl since z~1)
+w0=-0.90: phi_dot/M_Pl=3.15e-11/yr  clock -> zeta<1.0e-07  quasar(z~1) -> zeta<4.0e-06  (field moved 0.25 M_Pl since z~1)
+w0=-0.80: phi_dot/M_Pl=4.46e-11/yr  clock -> zeta<7.2e-08  quasar(z~1) -> zeta<2.8e-06  (field moved 0.36 M_Pl since z~1)
+w0=-0.75: phi_dot/M_Pl=4.98e-11/yr  clock -> zeta<6.4e-08  quasar(z~1) -> zeta<2.5e-06  (field moved 0.40 M_Pl since z~1)
+rho_Lambda ~ (2.3 meV)^4 = 2.8e-11 eV^4; Planck^4/rho = 7.9e+122; (100 GeV)^4/rho = 3.6e+54
+neutrino masses meV: [0.36, 8.66, 50.1] ; rho_L^(1/4) = 2.3 meV; sqrt(m1 m3) = 4.25 meV (numerology, no look-elsewhere control)
