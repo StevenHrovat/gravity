@@ -1,0 +1,15 @@
+beta/H 5.5: ln P_coll -18.05  (G-V fit -23.88)
+beta/H 6.0: ln P_coll -24.12  (G-V fit -30.33)
+beta/H 6.25: ln P_coll -27.22  (G-V fit -34.12)
+beta/H 6.5: ln P_coll -31.49  (G-V fit -38.34)
+beta/H 6.75: ln P_coll -35.84  (G-V fit -43.05)
+beta/H 7.0: ln P_coll -40.20  (G-V fit -48.28)
+f_PBH = 1 at 1e17 g: ours beta/H = 6.76
+f_PBH = 1 at 1e19 g: ours beta/H = 6.63
+f_PBH = 1 at 1e22 g: ours beta/H = 6.43
+
+2025 objection (threshold x10 in the flat-gauge delta):
+beta/H 2.0: dc 4.0: lnP -119.4; dc 5.0: lnP -220.7; dc 6.67: lnP -520.7; max delta 18.6
+beta/H 2.5: dc 4.0: lnP -249.5; dc 5.0: lnP -493.1; dc 6.67: lnP -1252.1; max delta 18.0
+beta/H 3.0: dc 4.0: lnP -510.0; dc 5.0: lnP -1048.4; dc 6.67: lnP -2840.1; max delta 17.5
+(stopped after beta/H 3.0: larger beta only lowers P; f=1 needs ln P ~ -30 to -36)

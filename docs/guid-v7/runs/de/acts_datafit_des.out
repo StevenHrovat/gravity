@@ -1,0 +1,13 @@
+SN set: des N = 1820
+LCDM: chi2 1648.25 (BAO 11.96, SN 1634.35, CMB 1.94)  Om 0.3047 h 0.6852 ob 0.02249  N_SN 1820
+CPL : chi2 1638.55 (BAO 8.89, SN 1629.48, CMB 0.18)  dchi2 -9.69 (2 extra)  Om 0.3147 h 0.6771 w0 -0.827 wa -0.632  [DESI DR2+CMB+Pantheon+: w0 -0.838, wa -0.62, 2.8 sigma]
+acts=SFR M_esc=1e9      : chi2 1639.33 (BAO 8.72, SN 1630.46, CMB 0.14)  dchi2 vs LCDM -8.92 (0 extra)  Om 0.3122 h 0.6822
+acts=collapse M_esc=1e9 : chi2 1663.92 (BAO 16.62, SN 1638.09, CMB 9.21)  dchi2 vs LCDM +15.67 (0 extra)  Om 0.3239 h 0.6598
+acts=SFR M_esc=1e10     : chi2 1639.77 (BAO 9.01, SN 1630.51, CMB 0.26)  dchi2 vs LCDM -8.48 (0 extra)  Om 0.3114 h 0.6835
+acts=collapse M_esc=1e10: chi2 1660.11 (BAO 15.28, SN 1637.02, CMB 7.81)  dchi2 vs LCDM +11.86 (0 extra)  Om 0.3229 h 0.6615
+acts=SFR M_esc=1e11     : chi2 1640.99 (BAO 9.66, SN 1630.79, CMB 0.54)  dchi2 vs LCDM -7.26 (0 extra)  Om 0.3100 h 0.6857
+acts=collapse M_esc=1e11: chi2 1654.28 (BAO 13.25, SN 1635.26, CMB 5.78)  dchi2 vs LCDM +6.04 (0 extra)  Om 0.3213 h 0.6643
+acts=SFR M_esc=1e12     : chi2 1644.79 (BAO 11.38, SN 1632.11, CMB 1.30)  dchi2 vs LCDM -3.46 (0 extra)  Om 0.3072 h 0.6900
+acts=collapse M_esc=1e12: chi2 1646.30 (BAO 10.55, SN 1632.61, CMB 3.14)  dchi2 vs LCDM -1.94 (0 extra)  Om 0.3180 h 0.6695
+acts=SFR M_esc=1e13     : chi2 1657.34 (BAO 16.21, SN 1637.82, CMB 3.31)  dchi2 vs LCDM +9.10 (0 extra)  Om 0.3019 h 0.6982
+acts=collapse M_esc=1e13: chi2 1640.04 (BAO 8.79, SN 1630.57, CMB 0.69)  dchi2 vs LCDM -8.20 (0 extra)  Om 0.3118 h 0.6790

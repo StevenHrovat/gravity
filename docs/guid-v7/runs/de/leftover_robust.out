@@ -1,0 +1,24 @@
+SN set: pantheon N = 1590
+LCDM 1419.08
+acts=SFR M_esc=1e9     dchi2   -7.76  peak z 0.50  bump 6.3%  rho(z=2) 0.55
+acts=SFR M_esc=1e10    dchi2   -7.35  peak z 0.45  bump 5.5%  rho(z=2) 0.52
+acts=SFR M_esc=1e11    dchi2   -6.25  peak z 0.40  bump 4.3%  rho(z=2) 0.48
+MF17 1e9               dchi2   -7.99  peak z 0.60  bump 8.1%  rho(z=2) 0.61
+MF17 1e10              dchi2   -7.95  peak z 0.55  bump 7.2%  rho(z=2) 0.58
+MF17 1e11              dchi2   -7.50  peak z 0.50  bump 5.7%  rho(z=2) 0.54
+
+held-out (parts: 0 BAO, 1 SN, 2 CMB). Score of the part NOT used in the fit:
+fit BAO+CMB -> score SN: LCDM +0.00 | CPL +56.59 (w0 -0.46 wa -1.61) | acts=SFR M_esc=1e10 -3.03 | MF17 1e10 -2.99
+fit SN+CMB -> score BAO: LCDM +0.00 | CPL -12.96 (w0 -0.93 wa -0.24) | acts=SFR M_esc=1e10 -20.21 | MF17 1e10 -21.05
+SN set: des N = 1820
+LCDM 1648.25
+acts=SFR M_esc=1e9     dchi2   -8.92  peak z 0.50  bump 6.3%  rho(z=2) 0.55
+acts=SFR M_esc=1e10    dchi2   -8.48  peak z 0.45  bump 5.5%  rho(z=2) 0.52
+acts=SFR M_esc=1e11    dchi2   -7.26  peak z 0.40  bump 4.3%  rho(z=2) 0.48
+MF17 1e9               dchi2   -9.12  peak z 0.60  bump 8.1%  rho(z=2) 0.61
+MF17 1e10              dchi2   -9.09  peak z 0.55  bump 7.2%  rho(z=2) 0.58
+MF17 1e11              dchi2   -8.61  peak z 0.50  bump 5.7%  rho(z=2) 0.54
+
+held-out (parts: 0 BAO, 1 SN, 2 CMB). Score of the part NOT used in the fit:
+fit BAO+CMB -> score SN: LCDM +0.00 | CPL +51.80 (w0 -0.46 wa -1.61) | acts=SFR M_esc=1e10 -4.26 | MF17 1e10 -4.23
+fit SN+CMB -> score BAO: LCDM +0.00 | CPL -20.89 (w0 -0.81 wa -0.78) | acts=SFR M_esc=1e10 -21.64 | MF17 1e10 -22.25
