@@ -376,3 +376,15 @@ can end on −1, the other half of the root (the root swap): the twist eater is 
 centre. The order-12 binary dihedral group is non-abelian, yet no round trip in it ends on −1: self-charge alone is not enough, the
 causal loop must reach the root. So the separating property, read in DMP terms, is that the in/out reach of the self-charge spans to the
 root.
+
+Internally verifiable messages, bounded locality (the owner, 2026-11-22): "In my original DMP proposal, IM was always meant to be
+internally verifiable in DMP, so that only correct messages could be sent. Transferring it to YM, the reach spans to the root since it is
+defined by it. In physics this is done through confinement or mass, which both give a bounded locality to existence." Reading: the
+physics form of "only correct messages can be sent" is **Gauss's law**: a physical state must satisfy the gauge constraint at every point,
+a local check any part can make; on the twisted box the states that pass split into the electric-flux sectors by how they respond to
+gauge transformations twisted by the centre (the root), so the sectors are defined by the root, as the owner says. The difference between
+light and gluons is in what the check covers: QED's law ∇·E = ρ does not count the photon (it carries no charge: payload, unverified,
+unbounded locality), while Yang–Mills' law D·E = ρ includes the gluons' own colour (the field is checked by its own law: self-charge). That
+self-verification is the candidate reason for bounded locality; confinement (a flux costs σ per length) and mass (range 1/m) are the two
+physical forms it can take. Claim level: this is the DMP-side reason and a precise physics dictionary; that Yang–Mills' self-verifying
+Gauss law forces bounded locality is the open problem itself.
