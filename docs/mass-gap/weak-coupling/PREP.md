@@ -123,3 +123,22 @@ certificate, or a sharp reduction), reported at its true claim level.
    weak-coupling attack (route 1, route 3) on the admissible theory, where the large-field problem is absent. References to read:
    Luescher, "Topology of lattice gauge fields" (Commun. Math. Phys. 85 (1982) 39) and the admissibility literature on lattice chiral
    gauge theories; Zwanziger on the Gribov horizon.
+
+## Guiding principle for the open hypothesis (the owner, 2026-11-21)
+
+The one open hypothesis of the reduction (`UniformGDS`: a box of fixed physical size forgets its boundary by the same margin at every
+grid fineness) is, in DMP terms, Axiom 1's reach at every layer: inevitable inside DMP, to be proven for Yang-Mills hosted as content.
+The owner's reading of *why*: "What light does not have is existence/mass, which is the part of the duality that is affected by the need
+to assert itself. Information without existence has no causality, so by itself there is no path prescribed. [...] Since they [gluons] are
+IM, they exist, so they are bound to it."
+
+Physics translation: light's carrier has no charge (no self-interaction, free superposition, nothing pins its paths: massless); a gluon
+carries the colour charge it transmits (a source of its own field, bound by it). In gauge theory "the carriers carry charge" and "the
+order of transports matters" (`nonabelian_loop_value_moves`) are the same property, so "the path is prescribed" and "gluons exist" are one
+fact seen from two sides (finding MG5). Precision: gluons have no mass of their own; their "existence" in this reading is their
+self-charge, and the mass appears in the bound states, which is the gap to be proven. Chain to be made a theorem: self-charge (existence)
+⇒ bound to its own field (prescribed path) ⇒ bounded reach, the same at every layer ⇒ mass of the bound states.
+
+Use: the **layer inequality** (if a box forgets its boundary at spacing a, it does at a/2 without loss) must use the self-charge, since it
+must fail for U(1) (photon test). Leg B's data across β show how the boundary influence actually changes from one fineness to the next:
+the numerical shape of that inequality, to look at before any proof attempt.
