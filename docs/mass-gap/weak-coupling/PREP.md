@@ -355,3 +355,15 @@ asymptotically free yet flow to an infrared fixed point: unlimited reach in both
 not force a floor; what pure Yang–Mills must add is that its running does not stall at an infrared fixed point (round 3's "no fixed
 point", here as the condition that turns inward reach into outward limit). **Banks–Zaks test:** any argument for the gap that would
 also apply to an asymptotically free theory in the conformal window is wrong.
+
+Something must run (the owner): "DMP demands that something inside of it DOES exist, so something must be able to run and thus not stall."
+Reading: an infrared fixed point is long-distance scale invariance, and a scale-invariant theory has no act with a floor: if existence
+times extent is one quantum at every scale, nothing fixes an existence, so nothing exists in DMP's sense (it behaves like payload). So
+DMP's demand is exactly the missing condition of the reach reading: **a DMP-hostable theory has no infrared fixed point**, and the
+conformal-window theories (Banks–Zaks) are excluded by it, which is the difference the Banks–Zaks test asks for. Claim level: on the DMP
+side this is an axiom (DMP requires existence); for the proof it is a selection principle, not yet a derivation, because showing that
+pure Yang–Mills is hostable with a non-trivial act is the same as showing its running does not stall. What it gives is the cleanest target
+so far: **exclude an infrared fixed point for pure SU(2)** (in physics: the trace anomaly, proportional to β(g)·F², cannot vanish at long
+distances), weaker and more natural than round 3's worst-case condition D′, and exactly what the conformal window violates. Known:
+perturbatively pure Yang–Mills has no such zero (its first two running coefficients have the same sign); non-perturbatively it is open,
+and lattice data show none.
