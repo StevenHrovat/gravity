@@ -404,3 +404,8 @@ bounds), which T3d ranks first. Content comes from the balance, the one commitme
 nothing keeps the bounds and fails the balance"). In the proof the balance is the non-degeneracy requirements: a good blocking with a
 non-trivial continuum limit (blueprint P1.8), identification of the limit as non-trivial (P6.2), and the assembly's lemma that the
 pure-noise theory fails its hypotheses (P7.3). Exclusion is always available; existence has to be shown.
+History (checked in the DMP repository): the exclusion is DMP 0.9.8 (2026-10-27, `45d3822`, the G0 mission): "R136a1 is always a
+DMP-complete answer over IM and excludes anything from being contained inside a DMP-complete system", the total refusal that the blocking
+onto a point mirrors. 0.9.9 made the publication state provisional G0 (`4400cce`): the instance stands until revoked by a DMP-complete
+act, existence asserted at the ground. The balance clause itself ("a system that does nothing keeps the bounds and fails the balance") is
+older, from the reduction to three axioms (2026-10-26).
