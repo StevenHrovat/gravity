@@ -32,4 +32,33 @@ unrefereed; checking them independently would be audit work, which the owner has
 
 ## Shot 2: does a box forget its boundary, across the whole range? (`wall.py`, `analyse_wall.py`)
 
-(results below when the runs finish)
+28 runs, 300 + 600 sweeps each, 8³ × 16 (SU(2)) and 6³, 10³ × 16 (U(1)). Δ(r) is the cold − hot difference of the mean spatial
+plaquette at distance r from the frozen wall (noise floor about 10⁻³); decay length from an exponential fit over the significant points.
+
+| group | β | box | Δ(1) | Δ(2) | Δ(3) | decay length (sites) |
+|---|---|---|---|---|---|---|
+| SU(2) | 0.5, 1.0, 1.5 | 8 | ≤ 0.022 | in noise | in noise | below 0.5 (gone after one site) |
+| SU(2) | 2.0 | 8 | 0.075 | 0.009 | 0.0016 | 0.48 ± 0.01 |
+| SU(2) | 2.3 | 8 | 0.080 | 0.016 | 0.0045 | 0.65 ± 0.01 |
+| SU(2) | 2.5 | 8 | 0.070 | 0.010 | 0.0031 | 0.55 ± 0.01 |
+| U(1) confined | 0.9 | 6 / 10 | 0.10 / 0.10 | 0.012 / 0.011 | noise | 0.47 / 0.46 |
+| U(1) **Coulomb** | 1.1 | 6 / 10 | 0.10 / 0.10 | 0.013 / 0.014 | 0.0007 / 0.0018 | 0.50 / 0.52 |
+| U(1) **Coulomb** | 1.5 | 6 / 10 | 0.042 / 0.042 | 0.0014 / 0.0014 | noise | 0.30 / 0.30 |
+
+(U(1) at β = 0.6: only Δ(1) ≈ 0.008–0.010 is significant. Raw numbers: `wall_summary.json`.)
+
+**Verdict, by the pre-registered criteria: inconclusive, because the photon test failed.** SU(2) forgets the wall within about half a
+site even at β = 2.3–2.5, which would read as "merit". But U(1) in its Coulomb phase, where light is massless, does exactly the same,
+with no dependence on the box size. A probe that cannot tell the massless phase from the gapped one says nothing about the gap. The
+reason is physics, not noise: a change of local energy couples to pairs of photons, whose effect is too small to see here, while
+the single photon is carried by the field itself (the odd, flux-like part), which this probe does not look at.
+
+## What the two shots say together
+
+- The rigorous route (Dobrushin, single link or blocks) takes the **worst** boundary condition; others already report it stalling
+  near β ≈ 0.22 (single link) and ≈ 0.43 (blocks), far below the physics region near 2.3.
+- The **typical** boundary is forgotten within a site at every β tested, for both groups, so typical-case behaviour of local energy is
+  not where the gap shows. What separates gluons from light is the flux-carrying, non-local part.
+- So pushing the strong-coupling threshold has no special opening for this project. The difficulty sits where the experts put it:
+  controlling rare, large-field configurations and the flux sector uniformly across the scales, which is Bałaban's programme and the
+  open bridge of README §4.
