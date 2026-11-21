@@ -217,3 +217,12 @@ error, which is used as an adversarial check). Five routes in parallel: the lead
 satisfies the one-box bound), glued by a proven robustness lemma. The owner: "H1 is the definition of how something can exist and H2 is
 the definition of what existence is." Reading: H1 is the path from the fine grid up to the node's scale, the causal chain through the
 layers along which an existence is built; H2 is the certificate at one scale, a node that forgets its outside by a fixed margin.
+
+Refinement (the owner, 2026-11-21): "That also splits it neatly into H1 as the quantum half and H2 as the classical half, both only valid
+together." Physics: H1 is where the quantum (loop) effects live: the running of the coupling (asymptotic freedom) is a one-loop quantum
+effect, without which the theory generates no scale; H2 is a statement about one fixed effective theory at one scale, a strongly coupled
+statistical system of block variables (classical statistical mechanics, no running, no limit). H1 alone gives a theory without gap
+information; H2 alone concerns some coarse lattice system unconnected to continuum Yang-Mills; only the pair gives the gap. Mirrors the
+duality: the information half and the existence half, neither sufficient alone. Precision: on the lattice both halves are probability
+measures; "quantum" means the regime governed by loop corrections, "classical" the regime where the effective theory behaves as a classical
+strongly coupled system.
