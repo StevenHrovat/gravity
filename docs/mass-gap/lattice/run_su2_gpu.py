@@ -7,7 +7,8 @@ updated together (one GPU launch for all of them); their measurements are stored
 unchanged (its jackknife bins stay inside one chain when CHAINS divides 20).
 
 Usage:
-  python run_su2_gpu.py BETA L T N_THERM N_MEAS SEED OUT.npz [N_OR] [EVERY] [CHAINS]
+  python run_su2_gpu.py BETA L T N_THERM N_MEAS SEED OUT.npz [N_OR] [EVERY] [CHAINS] [LEVELS]
+      LEVELS: APE smearing levels, comma separated (default 4,12, as run_su2.py); more levels = a larger operator basis
   python run_su2_gpu.py selftest     every GPU measurement against su2.py on the same configuration (must agree to 1e-10)
 Needs cupy (pip install "cupy-cuda12x[ctk]") and an NVIDIA GPU.
 """
@@ -73,11 +74,11 @@ def torelon_ops(V, L):
     return out
 
 
-def measure(g, L):
+def measure(g, L, levels=SMEAR_LEVELS):
     """Plaquette (B,), glueball ops (B, 2*levels, T), torelon ops (B, levels, T) on the current configuration."""
     V = [g.U[0], g.U[1], g.U[2]]
     glue, tor, done = [], [], 0
-    for n in SMEAR_LEVELS:
+    for n in levels:
         V = g.ape(ALPHA, n - done, niter=0, U=V)
         done = n
         glue.append(glueball_ops(V))
@@ -131,18 +132,19 @@ def main():
     n_or = int(sys.argv[8]) if len(sys.argv) > 8 else 4
     every = int(sys.argv[9]) if len(sys.argv) > 9 else 2
     chains = int(sys.argv[10]) if len(sys.argv) > 10 else 1
+    levels = tuple(int(x) for x in sys.argv[11].split(",")) if len(sys.argv) > 11 else SMEAR_LEVELS
     g = G.Gauge(L, T, beta, nc=2, B=chains, seed=seed, start="cold")
     t0 = time.time()
     for _ in range(n_therm):
         g.sweep(n_or)
     plaq = np.zeros((n_meas, chains))
-    glue = np.zeros((n_meas, chains, 2 * len(SMEAR_LEVELS), T))
-    tor = np.zeros((n_meas, chains, len(SMEAR_LEVELS), T))
+    glue = np.zeros((n_meas, chains, 2 * len(levels), T))
+    tor = np.zeros((n_meas, chains, len(levels), T))
 
     def save(m, partial):
         """Chain-major: all of chain 0's measurements, then chain 1's, ... (analyse.py reads it as one series)."""
         np.savez(out, beta=beta, L=L, T=T, seed=seed, n_therm=n_therm, n_or=n_or, every=every, chains=chains,
-                 smear_levels=np.array(SMEAR_LEVELS), plaq=plaq[:m].T.reshape(-1),
+                 smear_levels=np.array(levels), plaq=plaq[:m].T.reshape(-1),
                  glue=glue[:m].transpose(1, 0, 2, 3).reshape(-1, glue.shape[2], T),
                  tor=tor[:m].transpose(1, 0, 2, 3).reshape(-1, tor.shape[2], T),
                  seconds=time.time() - t0, partial=int(partial), backend="gpu")
@@ -150,7 +152,7 @@ def main():
     for m in range(n_meas):
         for _ in range(every):
             g.sweep(n_or)
-        plaq[m], glue[m], tor[m] = measure(g, L)
+        plaq[m], glue[m], tor[m] = measure(g, L, levels)
         if m % 100 == 0:
             if m:
                 save(m, True)
