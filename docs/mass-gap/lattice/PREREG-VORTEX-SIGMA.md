@@ -27,3 +27,19 @@ The original control criterion is not repeated; its outcome (fail) stands, and i
 **Verdict.** 1 and 2 at R = 4 and 5 for β = 2.4 (the blind case): **pass** of the follow-up. β = 2.3 is reported with the same rule but
 marked "not blind". Errors: jackknife as in `analyse_vortex.py` (largest of bin sizes 1, 5, 10), combined in quadrature with the error
 of σa² for the ratios.
+
+## Result (2026-11-21; post-hoc follow-up, nothing above changed)
+
+| β | blind? | R | χ_proj / σa² (crit. 1, within 30 %) | χ_removed (crit. 2) |
+|---|---|---|---|---|
+| 2.3 | no | 4 | 1.21 ± 0.05: pass | 0.013 ± 0.008: pass |
+| 2.3 | no | 5 | 1.18 ± 0.08: pass | 0.024 ± 0.034: pass |
+| 2.4 | yes | 4 | 1.28 ± 0.03: pass | 0.041 ± 0.004 (62 % of σa², not consistent with 0): fail |
+| 2.4 | yes | 5 | 1.32 ± 0.03: fail | 0.017 ± 0.011: pass |
+
+**Verdict: fail** in the blind case (β = 2.4); pass at β = 2.3 (not blind). The projected string tension exceeds the measured one by
+18-32 %, growing with β, consistent with the gauge-fixing dependence noted in `PREREG-VORTEX.md` (Gribov copies of the maximal centre
+gauge). Centre dominance at these β is neither confirmed nor refuted by this code; a decisive test needs better gauge fixing (simulated
+annealing, several copies) or a gauge-independent vortex definition. The MG3 reading ("the twists carry the string tension") stays
+untested by our numerics; the formal side (`AreaLaw/TwistVanish.lean`, the area law by centre twists) proves the mechanism at strong
+coupling.
