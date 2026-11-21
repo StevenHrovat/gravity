@@ -29,9 +29,25 @@ BE            Bakry-Emery / Otto-Reznikoff (C 2.1), SU(2) base action only: (24 
 S'            B's soft-swap criterion (r2-coupling/NOTE.md 3.4): delta_X = 1 - (psi_min / psi_max)^2 = 1 - exp(-2 range(log psi_X)) per
               factor type; value = max over factor types X of sum over types Y of n(X meets Y) delta_Y, the counts n from enumeration
               (factors sharing at least one link, X itself excluded). Inside: value < 1.
-Decision      per point, criterion and fit: INSIDE if value_hi + 2 stat < 1; OUTSIDE if value_lo - 2 stat > 1; else UNDECIDED. The
-              point's verdict is INSIDE (OUTSIDE) only if the base fit and every extension fit say so (BE: base only); otherwise
-              UNDECIDED. This is the truncation test: the verdict must survive adding the spin3/2 (q3) and rect couplings.
+Decision      per point, criterion and fit: NOT_EXCLUDED if value_hi + 2 stat < 1; EXCLUDED if value_lo - 2 stat > 1; else
+              UNDECIDED. The point's verdict is NOT_EXCLUDED (EXCLUDED) only if the base fit and every extension fit say so (BE: base
+              only); otherwise UNDECIDED. (Renamed after the round-3 review from INSIDE / OUTSIDE.) NOT_EXCLUDED means "not excluded
+              on the truncated fit": the criteria are suprema over all configurations and all terms of the effective action, the fit
+              is an equilibrium match of 2 to 4 terms, and omitted terms add non-negative oscillation, so the verdict is biased
+              towards NOT_EXCLUDED (false positives). EXCLUDED is the robust direction: the fitted terms alone already break it.
+Tables        D' and S' are evaluated with the infinite-volume pair/factor tables (enumerated on 7^4 and 6^4; identical for every
+              torus side >= 5), which is the uniform-in-volume statement the theorems need; 'Dprime_torus' repeats D' with the
+              table of the actual coarse torus (side N / b; on 3^4 and 4^4 wrap-around merges pairs), reported.
+Signal        (SU(2), after the review) Creutz ratio chi(R0) = -ln(W(R0,R0) W(R0-1,R0-1) / (W(R0,R0-1) W(R0-1,R0))) of the flowed fine
+              field at the blocking time, R0 = max(3, ceil(sqrt(8t))); the coarse loops of the deterministic block variable are
+              exactly products of these fine loops, so this checks that the variable carries sigma at the smoothing scale. PASS if
+              0.5 <= chi / (a sqrt(sigma))^2 <= 1.5 with error <= 0.25; otherwise FAIL or NOT_RESOLVED, and the point does not
+              count. Separately: 'fundamental resolved' if the coarse plaquette exceeds 3 errors (at L sqrt(sigma) >= 3 it cannot:
+              e^{-9} and below); an unresolved point speaks only through its adjoint channel.
+Photon gate   (quantitative after the review) U(1) Coulomb, per (beta, f, noise): every b EXCLUDED on W1, D', S'; the base-fit q1
+              coupling flat in b, |b_1(b) - mean| <= 0.15 mean + 2 err(b) for every b; and mean >= 0.5 beta_bare.
+Volume        (after the review) runs at the same (group, beta) and different N: per (b, f, noise), b_F and b_A agree within 2
+              combined errors.
 GF coupling   g^2_GF(t) = (128 pi^2 / 9) t^2 E(t), E = 24 (1 - plaquette), alpha_GF = g^2 / (4 pi), at scale sqrt(8t) a sqrt(sigma).
 """
 
@@ -69,10 +85,9 @@ def a_sqrt_sigma(beta):
 
 # ---------------------------------------------------------------------------------------------------------------------------- counts
 
-def factor_counts():
+def factor_counts(L=6):
     """n(X meets Y) for X, Y in {plaquette, rectangle}: number of factors of type Y sharing at least one link with a given factor
-    of type X (X itself excluded), by enumeration on a periodic 6^4 lattice (maximum over orientations)."""
-    L = 6
+    of type X (X itself excluded), by enumeration on a periodic L^4 lattice (maximum over orientations; L >= 5 is infinite volume)."""
     E = np.eye(4, dtype=int)
 
     def lk(x, mu):
@@ -105,11 +120,11 @@ def factor_counts():
     return out
 
 
-def pair_table():
+def pair_table(L=7):
     """For a link z: every other link i sharing a factor with it, as (n_P, n_R, dist): the number of plaquettes and of rectangles
-    containing both, and dist = ceil(l_inf distance of the link midpoints) (coarse units). By enumeration on a periodic 7^4 lattice;
-    the same multiset for all four directions (asserted)."""
-    L = 7
+    containing both, and dist = ceil(l_inf distance of the link midpoints, minimum image) (coarse units). By enumeration on a periodic
+    L^4 lattice (L = 7: infinite volume; L = 3, 4: the small coarse tori, where wrap-around merges pairs); the same multiset for all
+    four directions (asserted)."""
     E = np.eye(4, dtype=int)
 
     def lk(x, mu):
@@ -135,7 +150,7 @@ def pair_table():
 
     tables = []
     for mu in range(4):
-        z = lk((3, 3, 3, 3), mu)
+        z = lk((L // 2,) * 4, mu)
         acc = {}
         for kind, links in facs:
             if z in links:
@@ -152,20 +167,21 @@ def pair_table():
     return tables[0]
 
 
-PAIRS = None
+PAIRS = {}
+INF_L = 7
 
 
-def pairs():
-    global PAIRS
-    if PAIRS is None:
-        PAIRS = pair_table()
-    return PAIRS
+def pairs(L=INF_L):
+    L = INF_L if L is None or L >= 5 else L
+    if L not in PAIRS:
+        PAIRS[L] = pair_table(L)
+    return PAIRS[L]
 
 
-def dprime(oP, oR, lam=0.0):
+def dprime(oP, oR, lam=0.0, L=INF_L):
     """r3-robust's D'_lambda: sum over links i != z of tanh(S_iz / 2) exp(lambda dist(z, i)), S_iz = n_P o_P + n_R o_R (the
-    oscillations of the factors through both links, worst case over configurations)."""
-    return float(sum(math.tanh((nP * oP + nR * oR) / 2) * math.exp(lam * d) for nP, nR, d in pairs()))
+    oscillations of the factors through both links, worst case over configurations); pair table of torus side L."""
+    return float(sum(math.tanh((nP * oP + nR * oR) / 2) * math.exp(lam * d) for nP, nR, d in pairs(L)))
 
 
 def dprime_lambda_star(oP, oR):
@@ -181,14 +197,14 @@ def dprime_lambda_star(oP, oR):
     return lo
 
 
-COUNTS = None
+COUNTS = {}
 
 
-def counts():
-    global COUNTS
-    if COUNTS is None:
-        COUNTS = factor_counts()
-    return COUNTS
+def counts(L=6):
+    L = 6 if L is None or L >= 5 else L
+    if L not in COUNTS:
+        COUNTS[L] = factor_counts(L)
+    return COUNTS[L]
 
 
 # ---------------------------------------------------------------------------------------------------------------------------- fits
@@ -232,8 +248,9 @@ def range_u1(b1, b2, b3):
     return f.max() - f.min()
 
 
-def criteria(group, b):
-    """Window criteria for full coupling vector b (length 4 for su2/u1: base + spin3/2|q3 + rect; length 2 for z2: plaq, rect)."""
+def criteria(group, b, Lc=None):
+    """Window criteria for full coupling vector b (length 4 for su2/u1: base + spin3/2|q3 + rect; length 2 for z2: plaq, rect);
+    D' and S' with the infinite-volume tables, 'Dprime_torus' with the table of the coarse torus side Lc."""
     n = counts()
     if group == "su2":
         bF, bA, bT, bR = (abs(x) for x in b)
@@ -263,7 +280,8 @@ def criteria(group, b):
     row_p = n["P"]["P"] * dP + n["P"]["R"] * dR
     row_r = n["R"]["P"] * dP + n["R"]["R"] * dR if dR > 0 else 0.0  # rectangle factors exist only with a rect coupling
     sp = max(row_p, row_r)
-    return {"W1_hi": float(g_hi), "W1_lo": float(g_lo), "Sprime": float(sp), "BE": float(be), "Dprime": dpr, "Dprime_lam": lam}
+    return {"W1_hi": float(g_hi), "W1_lo": float(g_lo), "Sprime": float(sp), "BE": float(be), "Dprime": dpr, "Dprime_lam": lam,
+            "Dprime_torus": dprime(oP, oR, 0.0, Lc)}
 
 
 def full_vector(group, S, beta):
@@ -301,13 +319,37 @@ def decide(v_hi, v_lo, err):
     if not np.isfinite(v_hi):
         return "n/a"
     if v_hi + 2 * err < 1:
-        return "INSIDE"
+        return "NOT_EXCLUDED"
     if v_lo - 2 * err > 1:
-        return "OUTSIDE"
+        return "EXCLUDED"
     return "UNDECIDED"
 
 
 # ---------------------------------------------------------------------------------------------------------------------------- per run
+
+SIGNAL = {"ratio_lo": 0.5, "ratio_hi": 1.5, "max_err": 0.25}
+
+
+def signal_check(cz_b, i, asq):
+    """Creutz-ratio signal check of the flowed fine field at point i's flow time (see the module docstring)."""
+    if cz_b is None or asq is None:
+        return {"status": "NOT_MEASURED"}
+
+    def func(w):
+        W0, W1, W2, W3 = w[i]
+        q = W1 * W0 / (W2 * W3) if min(W0, W1, W2, W3) > 0 else float("nan")
+        chi = -math.log(q) if q > 0 else float("nan")
+        return {"chi": chi, "ratio": chi / asq[0] ** 2}
+    full, err = jackknife([cz_b], func)
+    rerr = math.hypot(err["ratio"], full["ratio"] * 2 * asq[1] / asq[0]) if np.isfinite(full["ratio"]) else float("nan")
+    if not np.isfinite(full["ratio"]) or not np.isfinite(rerr) or rerr > SIGNAL["max_err"]:
+        st = "NOT_RESOLVED"
+    elif SIGNAL["ratio_lo"] <= full["ratio"] <= SIGNAL["ratio_hi"]:
+        st = "PASS"
+    else:
+        st = "FAIL"
+    return {"chi": full["chi"], "chi_err": err["chi"], "ratio": full["ratio"], "ratio_err": rerr, "status": st}
+
 
 GF_GRID = [0.5, 0.5]  # t_min, dt of the alpha_GF table (lattice units); pre-registered values, --gf-grid only for the pipeline test
 
@@ -320,6 +362,9 @@ def analyse_run(path):
     sched = d["schedule"]
     asq = a_sqrt_sigma(beta) if group == "su2" else None
     fits = FITS[group]
+    N = int(d["N"])
+    sched = np.array([tuple(p) + (0.0,) * (4 - len(p)) for p in sched])
+    cz_b = block_means(d["creutz"], chains) if "creutz" in d.files and d["creutz"].size else None
     out = {"file": os.path.basename(path), "group": group, "beta": beta, "N": int(d["N"]), "chains": chains,
            "n_meas": int(d["n_done"]), "partial": int(d["partial"]), "a_sqrt_sigma": asq, "points": []}
     obs_b = block_means(d["obs"], chains)  # (nb, P, 3)
@@ -327,8 +372,9 @@ def analyse_run(path):
         data_b = [block_means(d["hist"].astype(float), chains)]
     else:
         data_b = [block_means(d["M"], chains), block_means(d["c"], chains)]
-    for i, (t, b, f) in enumerate(sched):
+    for i, (t, b, f, noise) in enumerate(sched):
         b = int(b)
+        Lc = N // b
 
         def func(*arrs, i=i):
             r = {}
@@ -342,7 +388,7 @@ def analyse_run(path):
                 vals[name] = v
                 for j, x in enumerate(v):
                     r[f"{name}:b{j}"] = float(x)
-                for k, x in criteria(group, v).items():
+                for k, x in criteria(group, v, Lc).items():
                     r[f"{name}:{k}"] = x
             if group != "z2":
                 M, c = arrs[0][i], arrs[1][i]
@@ -354,12 +400,13 @@ def analyse_run(path):
 
         full, err = jackknife([x for x in data_b], func)
         ob, oe = jackknife([obs_b], lambda o, i=i: {f"obs{j}": float(o[i, j]) for j in range(3)})
-        pt = {"t": float(t), "b": b, "f": float(f), "sqrt8t": float(math.sqrt(8 * t)), "L_sqrt_sigma": (b * asq[0]) if asq else None,
+        pt = {"t": float(t), "b": b, "f": float(f), "noise": float(noise), "coarse_side": Lc, "sqrt8t": float(math.sqrt(8 * t)),
+              "L_sqrt_sigma": (b * asq[0]) if asq else None,
               "obs": [ob[f"obs{j}"] for j in range(3)], "obs_err": [oe[f"obs{j}"] for j in range(3)], "fits": {}, "decision": {}}
         for name in fits:
             k = 2 if group == "z2" else 4
             pt["fits"][name] = {"beta": [full[f"{name}:b{j}"] for j in range(k)], "stat": [err[f"{name}:b{j}"] for j in range(k)]}
-            for crit in ("W1_hi", "W1_lo", "Sprime", "BE", "Dprime", "Dprime_lam"):
+            for crit in ("W1_hi", "W1_lo", "Sprime", "BE", "Dprime", "Dprime_lam", "Dprime_torus"):
                 pt["fits"][name][crit] = (full[f"{name}:{crit}"], err[f"{name}:{crit}"])
         if group != "z2":
             pt["closure"] = {j: (full[f"closure{j}"], err[f"closure{j}"]) for j in range(4) if f"closure{j}" in full}
@@ -369,7 +416,7 @@ def analyse_run(path):
         pt["beta"] = base["beta"][:2] if group != "z2" else base["beta"][:1]
         pt["beta_err"] = [math.hypot(base["stat"][j], trunc_b[j]) for j in range(len(pt["beta"]))]
         pt["beta_trunc"] = trunc_b[:len(pt["beta"])]
-        for crit, lo in (("W1", "W1_lo"), ("Dprime", "Dprime"), ("Sprime", "Sprime"), ("BE", "BE")):
+        for crit, lo in (("W1", "W1_lo"), ("Dprime", "Dprime"), ("Dprime_torus", "Dprime_torus"), ("Sprime", "Sprime"), ("BE", "BE")):
             hi = "W1_hi" if crit == "W1" else crit
             v_hi, s_hi = base[hi]
             v_lo, s_lo = base[lo]
@@ -383,6 +430,9 @@ def analyse_run(path):
             pt["decision"][crit] = {"value_hi": v_hi, "value_lo": v_lo, "stat": s_hi, "trunc": tr, "err": s_hi,
                                     "per_fit": dict(zip(names, vs)), "verdict": verdict}
         pt["Dprime_lambda_star"] = min(pt["fits"][n]["Dprime_lam"][0] for n in fits)  # weighted D': rate in coarse units, min over fits
+        pt["fund_resolved"] = bool(abs(pt["obs"][0]) > 3 * pt["obs_err"][0])
+        pt["signal"] = signal_check(cz_b, i, asq) if group == "su2" else {"status": "n/a"}
+        pt["counts"] = pt["signal"]["status"] in ("PASS", "n/a")
         if group == "su2":
             bF, bA = pt["beta"]
             pt["alpha_F"] = 1 / (np.pi * bF) if bF > 0 else float("inf")
@@ -435,7 +485,8 @@ def print_run(r):
     names = {"su2": "(b_F, b_A)", "u1": "(b_1, b_2)", "z2": "(b_P)"}[r["group"]]
     for p in r["points"]:
         L = f" L*sqrt(sigma)={p['L_sqrt_sigma']:.2f}" if p["L_sqrt_sigma"] else ""
-        print(f"  b={p['b']:2d} f={p['f']:.2f} t={p['t']:.3f}{L}  coarse plaq {fmt(p['obs'][0], p['obs_err'][0])}  "
+        nz = f" noise beta_n={p['noise']:g}" if p["noise"] else ""
+        print(f"  b={p['b']:2d} f={p['f']:.2f}{nz} t={p['t']:.3f}{L} coarse {p['coarse_side']}^4  coarse plaq {fmt(p['obs'][0], p['obs_err'][0])}  "
               f"{names} = {', '.join(fmt(v, e) for v, e in zip(p['beta'], p['beta_err']))} (trunc {', '.join(f'{x:.2g}' for x in p['beta_trunc'])})")
         ext = "; ".join(f"{n}: {np.round(f['beta'], 4).tolist()}" for n, f in p["fits"].items() if n != "base")
         print(f"      extensions {ext}")
@@ -445,6 +496,10 @@ def print_run(r):
                         f" [ext spread {d['trunc']:.2g}] {d['verdict']}" for c, d in p["decision"].items() if d["verdict"] != "n/a")
         print(f"      {dec}")
         if r["group"] == "su2":
+            sg = p["signal"]
+            print(f"      signal check: {sg['status']}" + (f" (chi/sigma a^2 = {fmt(sg['ratio'], sg['ratio_err'], 3)})" if "ratio" in sg else "")
+                  + f"; fundamental channel {'resolved' if p['fund_resolved'] else 'NOT resolved'}; D' on the {p['coarse_side']}^4 torus "
+                  f"{fmt(p['decision']['Dprime_torus']['value_hi'], None, 3)}")
             print(f"      alpha_F = 1/(pi b_F) = {fmt(p['alpha_F'], None, 3)}; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = {fmt(p['alpha_eq'], None, 3)}")
     if "gf" in r:
         g = r["gf"]
@@ -453,16 +508,20 @@ def print_run(r):
         print(f"  monotone (no decrease beyond 2 sigma): {g['monotone_no_decrease_2sigma']}; strictly increasing: {g['strictly_increasing_2sigma']}")
 
 
-def gate(runs, group, beta, f, want):
-    """All points of the given run(s) with smoothing f: every window verdict must be `want` (OUTSIDE for the photon and deconfined
-    Z2) on W1 and S'. Returns (status, details)."""
+PHOTON_FLAT = {"rel_tol": 0.15, "min_level": 0.5}
+L_DECONF = 1.45  # 1 / T_c in units of 1 / sqrt(sigma), T_c / sqrt(sigma) ~ 0.69 for SU(2) (recalled)
+
+
+def gate(runs, group, beta, f, want, noise=0.0):
+    """All points of the given run(s) with smoothing f and noise: every window verdict must be `want` (EXCLUDED for the photon and
+    deconfined Z2) on W1, D' and S'. Returns (status, details)."""
     rs = [r for r in runs if r["group"] == group and abs(r["beta"] - beta) < 1e-9]
     if not rs:
         return "missing", []
     det, good = [], True
     for r in rs:
         for p in r["points"]:
-            if abs(p["f"] - f) > 1e-9:
+            if abs(p["f"] - f) > 1e-9 or abs(p["noise"] - noise) > 1e-9:
                 continue
             v = {c: p["decision"][c]["verdict"] for c in ("W1", "Dprime", "Sprime")}
             det.append((p["b"], v))
@@ -470,19 +529,42 @@ def gate(runs, group, beta, f, want):
     return ("pass" if good else "fail"), det
 
 
+def photon_gate(runs, beta, f, noise=0.0):
+    """Quantitative photon gate (after the round-3 review): windows EXCLUDED at every b, and the q1 coupling flat in b at the
+    Coulomb level. Returns (status, details)."""
+    st, det = gate(runs, "u1", beta, f, "EXCLUDED", noise)
+    if st == "missing":
+        return st, {}
+    pts = [p for r in runs if r["group"] == "u1" and abs(r["beta"] - beta) < 1e-9 for p in r["points"]
+           if abs(p["f"] - f) < 1e-9 and abs(p["noise"] - noise) < 1e-9]
+    b1 = [(p["b"], p["beta"][0], p["beta_err"][0]) for p in pts]
+    mean = float(np.mean([x for _, x, _ in b1]))
+    flat = all(abs(x - mean) <= PHOTON_FLAT["rel_tol"] * mean + 2 * e for _, x, e in b1)
+    level = mean >= PHOTON_FLAT["min_level"] * beta
+    ok = st == "pass" and flat and level
+    return ("pass" if ok else "fail"), {"windows": det, "q1_by_b": b1, "mean": mean, "flat": flat, "level": level}
+
+
 def summary(runs):
     out = {}
     print("\n=== controls")
-    fs = sorted({p["f"] for r in runs if r["group"] == "u1" for p in r["points"]})
+    variants = sorted({(p["f"], p["noise"]) for r in runs if r["group"] == "u1" for p in r["points"]})
     out["photon"] = {}
-    for f in fs:
-        st, det = gate(runs, "u1", GATES["photon_beta"], f, "OUTSIDE")
-        out["photon"][f] = st
-        print(f"  photon (U(1) beta={GATES['photon_beta']}, f={f}): {st.upper()}  {det}")
-    st, det = gate(runs, "z2", GATES["z2_deconfined_beta"], 0.0, "OUTSIDE")
-    w1_only = all(v["W1"] == "OUTSIDE" for _, v in det) if det else None
+    out["photon_all"] = {}
+    for beta in sorted({r["beta"] for r in runs if r["group"] == "u1" and r["beta"] >= 1.05}):
+        for f, nz in variants:
+            st, det = photon_gate(runs, beta, f, nz)
+            if st == "missing":
+                continue
+            out["photon_all"][f"beta{beta}_f{f}_noise{nz:g}"] = st
+            if abs(beta - GATES["photon_beta"]) < 1e-9 and nz == 0:
+                out["photon"][f] = st
+            print(f"  photon (U(1) beta={beta}, f={f}, noise={nz:g}): {st.upper()}  q1 by b {[(b, round(x, 4), round(e, 4)) for b, x, e in det['q1_by_b']]}"
+                  f" mean {det['mean']:.4f} flat {det['flat']} level {det['level']}; windows {det['windows']}")
+    st, det = gate(runs, "z2", GATES["z2_deconfined_beta"], 0.0, "EXCLUDED")
+    w1_only = all(v["W1"] == "EXCLUDED" for _, v in det) if det else None
     out["z2_deconfined_W1"] = "pass" if w1_only else ("missing" if w1_only is None else "fail")
-    dp_only = all(v["Dprime"] == "OUTSIDE" for _, v in det) if det else None
+    dp_only = all(v["Dprime"] == "EXCLUDED" for _, v in det) if det else None
     out["z2_deconfined_Dprime"] = "pass" if dp_only else ("missing" if dp_only is None else "fail")
     print(f"  Z2 deconfined (beta={GATES['z2_deconfined_beta']}, f=0): W1 {out['z2_deconfined_W1'].upper()}, D' "
           f"{out['z2_deconfined_Dprime'].upper()} (S' reported, gap-only) {det}")
@@ -494,40 +576,76 @@ def summary(runs):
                  if p["b"] == bmax]
             out[f"positive_{grp}"] = v
             print(f"  positive control {grp} beta={beta} (confined) at b={bmax}: (b, f, W1, D') {v}")
-    print("\n=== SU(2): click table (primary f = 0.5 unless stated)")
+    print("\n=== SU(2): click table. NOT_EXCLUDED = not excluded on the truncated fit (biased towards false positives: omitted terms add "
+          "oscillation); only points whose signal check PASSes count")
     su = sorted([r for r in runs if r["group"] == "su2"], key=lambda r: r["beta"])
     out["su2"] = []
     for r in su:
         for p in r["points"]:
-            row = {"beta": r["beta"], "b": p["b"], "f": p["f"], "L": p["L_sqrt_sigma"], "beta_FA": p["beta"], "err": p["beta_err"],
+            row = {"beta": r["beta"], "N": r["N"], "b": p["b"], "f": p["f"], "noise": p["noise"], "L": p["L_sqrt_sigma"],
+                   "beta_FA": p["beta"], "err": p["beta_err"], "signal": p["signal"]["status"], "counts": p["counts"],
+                   "fund_resolved": p["fund_resolved"], "Dprime_torus_value": p["decision"]["Dprime_torus"]["value_hi"],
                    **{c: p["decision"][c]["verdict"] for c in ("W1", "Dprime", "Sprime", "BE")},
                    "Dprime_value": p["decision"]["Dprime"]["value_hi"], "Dprime_lambda_star": p["Dprime_lambda_star"],
                    "W1_value": (p["decision"]["W1"]["value_hi"], p["decision"]["W1"]["value_lo"], p["decision"]["W1"]["stat"])}
             out["su2"].append(row)
             if True:  # every blocking is listed; the decision uses the primary one
                 L = f"{p['L_sqrt_sigma']:.2f}" if p["L_sqrt_sigma"] else "?"
-                print(f"  beta={r['beta']} L*sqrt(sigma)={L} f={p['f']:.2f}: b_F={fmt(p['beta'][0], p['beta_err'][0], 3)} "
+                print(f"  beta={r['beta']} N={r['N']} L*sqrt(sigma)={L} f={p['f']:.2f} noise={p['noise']:g} signal {row['signal']}"
+                      f"{'' if row['fund_resolved'] else ' (fund. unresolved)'}: b_F={fmt(p['beta'][0], p['beta_err'][0], 3)} "
                       f"b_A={fmt(p['beta'][1], p['beta_err'][1], 3)}  W1 {row['W1']} ({p['decision']['W1']['value_hi']:.3g}/"
                       f"{p['decision']['W1']['value_lo']:.3g} +- {p['decision']['W1']['stat']:.2g})  D' {row['Dprime']} ({row['Dprime_value']:.3g}, "
                       f"lambda* {row['Dprime_lambda_star']:.2g})  S' {row['Sprime']}  BE {row['BE']}")
-    prim = [r for r in out["su2"] if abs(r["f"] - GATES["primary_f"]) < 1e-9 and r["L"]]
+    nmain = {}
+    for r in out["su2"]:
+        nmain[r["beta"]] = max(nmain.get(r["beta"], 0), r["N"])
+    prim = [r for r in out["su2"] if abs(r["f"] - GATES["primary_f"]) < 1e-9 and r["L"] and r["noise"] == 0 and r["N"] == nmain[r["beta"]]]
     for beta in sorted({r["beta"] for r in prim}):
         rows = sorted([r for r in prim if r["beta"] == beta], key=lambda r: r["L"])
-        clicks = [r["L"] for r in rows if r["W1"] == "INSIDE"]
-        dclicks = [r["L"] for r in rows if r["Dprime"] == "INSIDE"]
+        clicks = [r["L"] for r in rows if r["W1"] == "NOT_EXCLUDED" and r["counts"]]
+        dclicks = [r["L"] for r in rows if r["Dprime"] == "NOT_EXCLUDED" and r["counts"]]
         out[f"entry_beta{beta}"] = {"first_inside_L": min(clicks) if clicks else None, "crossing_hi": crossing(rows, 0),
                                     "crossing_lo": crossing(rows, 1), "Dprime_first_inside_L": min(dclicks) if dclicks else None,
                                     "Dprime_crossing": crossing([{**r, "W1_value": (r["Dprime_value"],)} for r in rows], 0)}
-        print(f"  beta={beta}: first INSIDE at L*sqrt(sigma) = {min(clicks) if clicks else 'none'}; gamma_hi = 1 crossing at "
+        print(f"  beta={beta}: first NOT_EXCLUDED (counted) at L*sqrt(sigma) = {min(clicks) if clicks else 'none'}; gamma_hi = 1 crossing at "
               f"{out[f'entry_beta{beta}']['crossing_hi']}, gamma_lo at {out[f'entry_beta{beta}']['crossing_lo']} (log-linear "
-              f"interpolation; C's proxy: 3.3 to 3.9); D' first INSIDE at {out[f'entry_beta{beta}']['Dprime_first_inside_L']}, "
+              f"interpolation; C's proxy: 3.3 to 3.9); D' first NOT_EXCLUDED (counted) at {out[f'entry_beta{beta}']['Dprime_first_inside_L']}, "
               f"D' = 1 crossing at {out[f'entry_beta{beta}']['Dprime_crossing']}")
+    # item 7 of the round-3 review: for L < 1/T_c (T_c ~ 0.69 sqrt(sigma), recalled) a torus one block thick is deconfined, so
+    # a D' (or W1) valid uniformly over tori cannot hold there; a NOT_EXCLUDED below L_DECONF flags a false positive of the method
+    out["deconfinement_flags"] = [(r["beta"], r["L"], r["f"], r["noise"], c) for r in out["su2"] if r["L"] and r["L"] < L_DECONF
+                                  for c in ("W1", "Dprime", "Sprime", "BE") if r[c] == "NOT_EXCLUDED"]
+    print(f"  NOT_EXCLUDED below L*sqrt(sigma) = {L_DECONF} (1/T_c; would be a false positive): {out['deconfinement_flags'] or 'none'}")
     out["scaling"] = scaling(prim)
     if out["scaling"]:
         print(f"  scaling beta 2.3 vs 2.4 (interpolated in L): {out['scaling']}")
+    out["volume"] = volume_check(out["su2"])
+    for v in out["volume"]:
+        print(f"  coarse volume (beta={v['beta']}, b={v['b']}, f={v['f']}, noise={v['noise']:g}): N {v['N']} -> coarse sides {v['sides']}: "
+              f"b_F {v['bF']}, b_A {v['bA']}, D' {v['Dp']}; agree within 2 sigma: {v['pass']}")
+    noisy = sorted({r["noise"] for r in out["su2"] if r["noise"] > 0})
+    for nz in noisy:
+        rows = sorted([r for r in out["su2"] if r["noise"] == nz and r["L"] and r["N"] == nmain[r["beta"]]], key=lambda r: (r["beta"], r["L"]))
+        print(f"  noisy variant beta_n={nz:g}: " + "; ".join(f"beta={r['beta']} L={r['L']:.2f}: W1 {r['W1']}, D' {r['Dprime']}" for r in rows))
     pg = out["photon"].get(GATES["primary_f"])
-    print(f"\n=== reading: photon gate for the primary blocking: {pg}; Z2 deconfined W1: {out['z2_deconfined_W1']}")
+    print(f"\n=== reading: photon gate (beta {GATES['photon_beta']}) for the primary blocking: {pg}; all photon variants {out['photon_all']}; "
+          f"Z2 deconfined W1: {out['z2_deconfined_W1']}, D': {out['z2_deconfined_Dprime']}")
     return out
+
+
+def volume_check(rows):
+    """Same (beta, b, f, noise) at different N: couplings and D' against the coarse torus side."""
+    res = []
+    keys = {(r["beta"], r["b"], r["f"], r["noise"]) for r in rows}
+    for k in sorted(keys):
+        rs = sorted([r for r in rows if (r["beta"], r["b"], r["f"], r["noise"]) == k], key=lambda r: r["N"])
+        if len(rs) < 2:
+            continue
+        ok = all(abs(rs[0]["beta_FA"][j] - r["beta_FA"][j]) < 2 * math.hypot(rs[0]["err"][j], r["err"][j]) for r in rs[1:] for j in (0, 1))
+        res.append({"beta": k[0], "b": k[1], "f": k[2], "noise": k[3], "N": [r["N"] for r in rs], "sides": [r["N"] // k[1] for r in rs],
+                    "bF": [round(r["beta_FA"][0], 5) for r in rs], "bA": [round(r["beta_FA"][1], 5) for r in rs],
+                    "Dp": [round(r["Dprime_value"], 4) for r in rs], "pass": ok})
+    return res
 
 
 def crossing(rows, which):
@@ -578,7 +696,8 @@ def main():
     files = sorted({f for p in a.files for f in glob.glob(p)})
     runs = [analyse_run(f) for f in files]
     n = counts()
-    print(f"D' pair table (n_P, n_R, dist): multiplicity { {k: pairs().count(k) for k in sorted(set(pairs()))} }")
+    for Lt in (INF_L, 4, 3):
+        print(f"D' pair table on a {Lt}^4 torus (n_P, n_R, dist): multiplicity { {k: pairs(Lt).count(k) for k in sorted(set(pairs(Lt)))} }")
     print(f"factor counts (enumerated): plaquette meets {n['P']['P']} plaquettes and {n['P']['R']} rectangles; rectangle meets "
           f"{n['R']['P']} plaquettes and {n['R']['R']} rectangles")
     for r in runs:

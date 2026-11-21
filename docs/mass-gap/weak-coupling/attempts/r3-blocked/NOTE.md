@@ -103,7 +103,7 @@ f = 1/2: β_A = −0.13 ± 0.03). This is why the criteria use |β| and the exac
 
 ## 3. Expected runtime
 
-**About 3.7 h of GPU time, ±50 %.**
+**About 3.7 h of GPU time, ±50 %** (before the review; now about 4.5 h with the addendum, section 8).
 
 | step | minutes |
 |---|---|
@@ -168,6 +168,28 @@ My recommendation: a separate pre-registered job with its own kernel and tests, 
 - **Untested here:** the GPU code path. The queue gates on its own selftest first, with an array-code fallback.
 - **Single most promising next step:** run the queue. The first number that matters is the photon gate for f = 1/2. The second is
   β_A(L√σ = 3.15) against C's stand-in value of 0.50.
+
+## 8. Amendments after the round-3 review (2026-11-21, 23:00–23:20, before any GPU data)
+
+The full record, change by change, is in PREREG.md, last section ("Changes before data"). In short:
+- **Noisy variants of the block variable** (r3-wp's Wilson-type kernel, β_n = 16 and 64) are measured as reported variants. The
+  verdict text says what a deterministic block variable does and does not imply.
+- **Verdicts renamed** NOT_EXCLUDED (on the truncated fit) / EXCLUDED, with the false-positive bias of truncation stated.
+- **Pair and factor tables per coarse torus.** The verdicts use the infinite-volume tables; on 3⁴ and 4⁴ wrap-around merges pairs.
+  This was checked in a new 3⁴ self-test.
+- **A coarse-volume run** (addendum).
+- **A Creutz-ratio signal check.** A point counts only if it passes; "fundamental channel resolved" is reported separately.
+- **A quantitative photon gate** (flat q1 coupling in b, Coulomb level), plus a second Coulomb β (addendum).
+- **Non-abelian negative controls.**
+  - Deconfined SU(2) at matched L cannot be done on coarse tori: it would need L√σ < 0.48.
+  - 2I in the frozen phase needs new update code and about 40 min of GPU; it is specified but not queued.
+- **A deconfinement-edge flag** below L√σ = 1.45.
+
+**Mechanics.** The running main queue script is unchanged. It calls the amended Python files fresh, with identical command lines,
+so it picks everything up without a restart. New runs are in `queue_blocked_gpu_addendum.ps1`. Self-test now 16/16 (59 s); the
+pipeline test was rerun on all eight run types (88 s).
+
+**Runtime:** about 4.5 h in total (main queue 4.0 h, addendum 35 min), ±50 %.
 
 ## References (ideas only; nothing copied)
 

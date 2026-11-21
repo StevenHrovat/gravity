@@ -1,4 +1,4 @@
-z2 beta=0.6 N=6 thermalised (60 sweeps) t=1s; schedule (t, b, f): [(0.0, 1, 0.0), (0.0, 2, 0.0)]
+z2 beta=0.6 N=6 thermalised (60 sweeps) t=1s; schedule (t, b, f, noise): [(0.0, 1, 0.0, 0.0), (0.0, 2, 0.0, 0.0)]
 z2 beta=0.6 N=6 meas 1/24 t=1s coarse plaq per point [0.9902, 0.9802]
 z2 beta=0.6 N=6 meas 10/24 t=1s coarse plaq per point [0.9941, 0.9882]
 z2 beta=0.6 N=6 meas 20/24 t=2s coarse plaq per point [0.9923, 0.9846]

@@ -5,6 +5,10 @@ minutes, marked as such below) has been run. The coordinator's addition of r3-ro
 before any data) is part of the criteria below. Runs: `queue_blocked_gpu.ps1`, to be started by the coordinating session after Leg B.
 Any change after the first GPU data must be marked as such, as in `../../../lattice/PREREG-BOUNDARY.md`.
 
+**Amended 2026-11-21, 23:00–23:20, before any GPU data, after an independent adversarial review of round 3:** see the last section,
+"Changes before data (after the round-3 review)". It overrides the text above where they differ. In particular, the verdicts INSIDE /
+OUTSIDE are now NOT_EXCLUDED (on the truncated fit) / EXCLUDED, and a point counts only if its signal check passes.
+
 **Why.** Round 2 left the crossover as the open core (`../ROUND-2.md`): does the theory, blocked to a physical scale L₁, sit in a
 window where a strong-coupling criterion is proven? Attempt C (`../r2-curvature/NOTE.md`) could only compare its windows with a
 two-coupling *stand-in* (fundamental coupling from σ, adjoint from the glueball mass), whose model error it could not quantify, and
@@ -178,3 +182,131 @@ then the analysis): every stage runs and every verdict is produced. At this size
 For the record: the photon gate passes at all f; f = 1/2 keeps the U(1) coupling at b = 2 (1.10 ± 0.23), while f = 0 halves it
 (0.53); deconfined Z₂ stays OUTSIDE; confined Z₂ clicks at b = 2 (W1 and D′ INSIDE); α_GF rises monotonically; every SU(2) point is
 OUTSIDE.
+
+## Changes before data (after the round-3 review), 2026-11-21, 23:00–23:20
+
+Made after an independent adversarial review of round 3, relayed by the coordinating session, **before any GPU data**. At the time of
+the change the main queue `queue_blocked_gpu.ps1` had been started and was waiting for Leg B: its log held only "QUEUE START". The
+queue script is **unchanged**. PowerShell has parsed it; it calls `blocked.py` and `analyse_blocked.py` afresh at every step, so every
+change below takes effect in that queue without a restart. The command lines are unchanged. New runs are in a separate
+`queue_blocked_gpu_addendum.ps1`, which waits for "BLOCKED DONE" (`blocked.PLAN_ADDENDUM`). After the changes: CPU selftest 16/16
+pass (3 new tests); pipeline test rerun on all eight run types (`cpu-test/`).
+
+**C1. Deterministic against noisy block variables** (review item 1).
+- **The mismatch.** The block variable above is deterministic: flow, then path product. r3-wp's noise lemma and the r3-robust chain
+  are about a noisy last blocking step, a kernel with density bounded below.
+- **The added variants.** For SU(2) and U(1), at the primary f = 1/2, the same coarse links are also multiplied by independent
+  Wilson-type noise, κ(W) ∝ exp(β_n ½tr W) (U(1): exp(β_n cos w)). This is the kernel of `../r3-wp/NOTE.md` §3.1, continuous and
+  bounded below (ratio e^{2β_n} per link). Two strengths: β_n = 16 and 64. They are fitted and judged with the same criteria, as
+  **reported variants**. The primary stays deterministic.
+- **Direction of the noise effect.** At small couplings the noise multiplies each character coefficient per link by its Bessel
+  ratio:
+
+  | | fundamental / q1, per plaquette | adjoint / q2, per plaquette |
+  |---|---|---|
+  | SU(2), β_n = 16 | 0.68 | 0.36 |
+  | SU(2), β_n = 64 | 0.91 | 0.78 |
+  | U(1), β_n = 16 | 0.88 | 0.60 |
+  | U(1), β_n = 64 | 0.97 | 0.88 |
+
+  So noise pushes every criterion towards NOT_EXCLUDED: strong enough noise makes anything pass. A noisy variant therefore counts
+  only if its own photon gate passes (C5). A noisy NOT_EXCLUDED next to a deterministic EXCLUDED is reported as a statement about
+  the noise strength, not about SU(2).
+- **What the deterministic verdict does and does not imply** (stated in every report of the result):
+  - A deterministic D′ NOT_EXCLUDED says the fitted action of a deterministic block variable satisfies D′. It does **not** enter
+    r3-robust's proven chain, which needs the noisy step. It is an indication that the matching noisy statement is within reach,
+    and the noisy variants test exactly that.
+  - A deterministic EXCLUDED does **not** exclude noisy variables, since noise only flattens; again the noisy variants measure how
+    much.
+- **Implementation.** `blocked.py` `add_noise`, schedule column 4. Self-test: the kernel means equal I₂/I₁ and I₁/I₀ at β_n = 16.
+
+**C2. Verdict names and the bias direction** (review item 2).
+- **Renamed.** INSIDE → **NOT_EXCLUDED (on the truncated fit)**; OUTSIDE → **EXCLUDED**; UNDECIDED unchanged. The gates and rules
+  above read with these names: the photon and Z₂ controls must be EXCLUDED; "CLICK" means NOT_EXCLUDED.
+- **Bias, stated.** All four criteria are suprema over all configurations and all terms of the effective action. The fit is an
+  equilibrium match of 2 to 4 terms, and omitted terms only add non-negative oscillation. So NOT_EXCLUDED is biased towards false
+  positives (refitting with more terms can also move the fitted ones). EXCLUDED is the robust direction: the fitted terms alone
+  already violate the criterion. The extension fits (spin-3/2, rectangles) probe this bias, but only for the terms included.
+
+**C3. Coarse volume** (review item 3).
+- **Rectangle pairs on small tori.** Counting under wrap-around is now enumerated per torus side:
+
+  | torus side | distinct neighbours | note |
+  |---|---|---|
+  | ≥ 5 (infinite-volume table) | 62 | |
+  | 4 | 59 | 3 rectangle-only pairs merge |
+  | 3 | 44 | pairs share up to 3 rectangles |
+
+  Plaquette-only D′ is the same on every side (18 pairs). New selftest: on a 3⁴ torus the rectangle staples are exact (sum rule,
+  one-link response to 10⁻¹⁴); no link repeats in a loop for side ≥ 3.
+- **Which table decides.** D′ and S′ verdicts use the infinite-volume tables, the uniform-in-volume statement the theorems need.
+  D′ on the actual coarse torus (side N/b = 6, 4, 3) is reported next to it.
+- **What needs volume-uniformity.** Any use of a D′ verdict as the hypothesis of r3-robust's theorem does: the limit theory blocked
+  to L must satisfy D′ on every torus. Two things back this here:
+  1. the tables (infinite volume);
+  2. the volume independence of the fitted couplings. That is tested only at L√σ = 2.10 (β = 2.3, b = 6: 4⁴ coarse in the addendum
+     run at N = 24, against 6⁴ at N = 36), and at L√σ = 2.8 (b = 8, 3⁴) without a partner. Pre-stated: β_F and β_A agree within 2
+     combined errors.
+
+  The L√σ = 4.2 point (3⁴) has no volume check. **Optional, not queued:** β = 2.3, N = 48, b = 12 (4⁴ coarse), f = 1/2 only,
+  2 chains × 80, about 70 min. W1 is a single-configuration-class bound and BE a per-site curvature bound; neither needs more than
+  the tables, but both are evaluated on the same volume-dependent couplings.
+
+**C4. Signal check** (review item 4).
+- **The check.** For SU(2), at each point's flow time t, the Creutz ratio χ(R₀) of the flowed fine field, R₀ = max(3, ⌈√(8t)⌉):
+  R₀ = 3, 5, 6 at f = 1/2 and b = 6, 9, 12. The coarse Wilson loops of the deterministic block variable are exactly products of
+  these fine loops, so this checks that the variable carries the string tension at its own smoothing scale. For the noisy variants
+  the noise is independent per coarse link, so Creutz ratios are unchanged and only the known per-link factor of C1 applies.
+- **Pass rule.** 0.5 ≤ χ/(a√σ)² ≤ 1.5 with error ≤ 0.25 (a√σ error included). Otherwise FAIL or NOT_RESOLVED, and **the point does
+  not count**: it cannot be a CLICK, and the entry scale uses counted points only. The tolerance is wide because Creutz ratios at
+  R ≈ √(8t) carry Coulomb and smearing corrections of order 10 to 30 %. It was not calibrated at production size: the 6⁴ toy lattice
+  gives 1.7 at R₀ = 3 in a box of 6, meaningless there. If the production check fails everywhere, the report says so and gives the
+  ratios.
+- **Fundamental resolution.** Separately, a point is "fundamental channel resolved" if the coarse plaquette exceeds 3 errors.
+  Pre-stated: at L√σ ≥ 3 the expected value (e^{−9} and below) is beyond any affordable statistics. There a verdict rests on the
+  adjoint channel only, and the report says so; a fundamental-blind block variable would give the same fundamental numbers.
+- **Self-test.** The loops are gauge invariant, W(2,2) equals the b = 2 coarse plaquette exactly, and GPU against CPU is compared in
+  `selftest --gpu`.
+
+**C5. Photon gate, quantitative** (review item 5). For U(1) Coulomb, per (β, f, noise), all of:
+1. every b EXCLUDED on W1, D′ and S′;
+2. the base-fit q1 coupling flat in b: |β₁(b) − mean| ≤ 0.15·mean + 2·err(b) for every b;
+3. mean ≥ 0.5·β_bare (the photon stays at its Coulomb level, a factor 6 to 9 above every window).
+
+**Second Coulomb β = 1.3**, addendum, about 21 min. The queue's stop decision uses β = 1.1 (the addendum runs later). The final
+reading needs both βs to pass for the primary variable, and for any noisy variant that is to count. Pipeline test: f = 0 fails the
+flatness rule at both βs (β₁ 1.09 → 0.53 from b = 1 to 2), f = 1/4 fails at β = 1.3, f = 1/2 passes, with and without noise.
+
+**C6. Non-abelian negative controls** (review item 6). Neither is in any queue.
+- **(a) Deconfined SU(2) at matched L does not exist on coarse tori.** A deconfined (finite-T) lattice needs N_t·a < 1/T_c. Our
+  Schwinger–Dyson identities need at least 3 coarse sites per direction: at 1, a link repeats in its own plaquettes, and rectangles
+  need 3. So N_t ≥ 3b, i.e. L = b·a < 1/(3T_c) ≈ 0.48/√σ, far below the L√σ = 1.5 to 4.2 under test. This is review item 7 seen from
+  the other side: for L > 1/T_c a deconfined torus is less than one block thick and leaves the class of coarse tori the measurement
+  (and a fit) can see.
+  - **Optional, not queued:** β = 2.6, a 36³ × 6 lattice (T ≈ 1.2√σ ≈ 1.7 T_c), b = 2 (L√σ = 0.28, coarse 18³ × 3), f = 0 and 1/2,
+    4 chains × 80, about 5 min. It needs non-cubic support in `blocked.py`: Python only, no kernel (Gauge takes ns, nt).
+  - It is expected EXCLUDED, **trivially**: at L√σ = 0.28 every SU(2) block action is weakly coupled in either phase. So it cannot
+    fail informatively, and I do not recommend it.
+- **(b) Frozen-phase binary icosahedral group (2I) at β = 8.** This is above the freezing transition near β ≈ 6 (recalled, not
+  re-read: the icosahedral subgroup studies of the early 1980s). It is a non-abelian theory with an ordered phase whose blocked
+  action must stay EXCLUDED on W1 and D′.
+  - **Not queued:** it needs new update code, an array-code Metropolis over the 120-element group with a GPU path, plus tests (no
+    change to the fused kernel).
+  - **Cost:** about 40 min GPU at 36⁴ (b = 6, 9, 12, f = 0 and 1/2, 4 chains × 80), plus about an hour of coding and CPU testing.
+  - Expected EXCLUDED, like deconfined Z₂, which already tests the same failure mode (an ordered phase with a gap); its added value
+    is that the group is non-abelian.
+
+**C7. The deconfinement edge** (review item 7). For L < 1/T_c ≈ 1.45/√σ (T_c ≈ 0.69√σ for SU(2), recalled), a D′ valid uniformly
+over tori is false: the torus one block thick in one direction is deconfined.
+- The β = 2.4 point at L√σ = 1.55 sits at that edge, and the β = 2.3 point at 2.10 is 1.45 times above it.
+- Expectation: EXCLUDED at 1.55.
+- Pre-registered: any NOT_EXCLUDED below L√σ = 1.45 is flagged by the analysis as a false positive of the method, not as a click.
+  A NOT_EXCLUDED at 1.55 is reported with the remark that it lies within 7 % of the bound.
+
+**Runtime after the changes.**
+- Main queue: about 4.0 h. The Creutz loops add about 0.6 s and the noisy fits about 0.5 s per SU(2) configuration, about +15 min in
+  all.
+- Addendum: about 35 min (U(1) β = 1.3: 21 min; SU(2) N = 24: 12 min).
+- **Total: about 4.5 h ± 50 %.**
+- Optional runs (not queued): N = 48 volume check 70 min; 2I control 40 min plus coding; small-L deconfined run 5 min plus coding
+  (not recommended).

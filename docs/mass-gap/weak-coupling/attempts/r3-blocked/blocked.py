@@ -343,19 +343,79 @@ def hist_z2(ops, V):
 
 # ---------------------------------------------------------------------------------------------------------------------------- schedule
 
-def make_schedule(blocks, fracs):
-    """Measurement points (t, b, f), sorted by flow time t = (f b)^2 / 8."""
-    pts = sorted({((f * b) ** 2 / 8.0, b, f) for b in blocks for f in fracs})
-    return [(float(t), int(b), float(f)) for t, b, f in pts]
+PRIMARY_F = 0.5
+NOISE_BETAS = (16.0, 64.0)  # Wilson-type noise kappa(W) ~ exp(beta_n (1/2) tr W) (U(1): exp(beta_n cos)), r3-wp/NOTE.md 3.1
 
 
-def measure_config(group, ops, U, schedule, rho, t_extra=0.0):
+def make_schedule(blocks, fracs, group="su2", noise=True):
+    """Measurement points (t, b, f, noise), sorted by flow time t = (f b)^2 / 8. noise = 0: the deterministic block variable;
+    noise = beta_n > 0 (SU(2), U(1), primary f only): the same coarse links multiplied by independent Wilson-type noise
+    (added after the round-3 review, PREREG.md 'Changes before data')."""
+    pts = {((f * b) ** 2 / 8.0, b, f, 0.0) for b in blocks for f in fracs}
+    if noise and group != "z2":
+        pts |= {((f * b) ** 2 / 8.0, b, f, bn) for b in blocks for f in fracs if abs(f - PRIMARY_F) < 1e-12 for bn in NOISE_BETAS}
+    return [(float(t), int(b), float(f), float(n)) for t, b, f, n in sorted(pts)]
+
+
+def creutz_r0(t):
+    """Loop size of the Creutz signal check at flow time t: max(3, ceil(sqrt(8t)))."""
+    return max(3, int(math.ceil(math.sqrt(8 * t) - 1e-9)))
+
+
+def creutz_loops(ops, W, R0):
+    """Mean (1/2) tr of the R x T Wilson loops of the (flowed) fine SU(2) field, over all sites and the six planes, for
+    (R, T) = (R0-1, R0-1), (R0, R0), (R0, R0-1), (R0-1, R0). Creutz ratio chi = -ln(W[1] W[0] / (W[2] W[3]))."""
+    xp = ops.xp
+    lines = []
+    for mu in range(4):
+        cur, d = W[mu], {1: W[mu]}
+        for n in range(2, R0 + 1):
+            cur = ops.mul(cur, sh(ops, W[mu], mu, n - 1))
+            d[n] = cur
+        lines.append(d)
+    out = []
+    for R, T in ((R0 - 1, R0 - 1), (R0, R0), (R0, R0 - 1), (R0 - 1, R0)):
+        acc = 0.0
+        for mu in range(4):
+            for nu in range(mu + 1, 4):
+                a = ops.mul(lines[mu][R], sh(ops, lines[nu][T], mu, R))
+                b_ = ops.mul(lines[nu][T], sh(ops, lines[mu][R], nu, T))
+                acc = acc + ops.dot(a, b_).mean()  # (1/2) tr(a b_^dagger) = <a, b_>
+        out.append(float(acc) / 6)
+    return np.array(out)
+
+
+def add_noise(ops, V, beta_n, rng):
+    """Multiply every coarse link by an independent draw of the Wilson-type noise kernel (density exp(beta_n (1/2) tr W) against
+    Haar for SU(2), exp(beta_n cos w) for U(1)); a kernel continuous and bounded below, as r3-wp's noise lemma needs."""
+    xp = ops.xp
+    out = []
+    for v in V:
+        if ops.group == "su2":
+            n = int(np.prod(v.shape[1:]))
+            x0 = BD.kp_x0(np.full((1, n), beta_n), BD.Draws(np, int(rng.integers(1 << 62)), 1))[0]
+            d = rng.normal(size=(3, n))
+            d /= np.linalg.norm(d, axis=0, keepdims=True)
+            w = np.concatenate([x0[None], np.sqrt(np.maximum(0.0, 1 - x0 * x0))[None] * d]).reshape(v.shape)
+            out.append(ops.mul(xp.asarray(w), v))
+        else:
+            n = int(np.prod(v.shape))
+            ang = BD.vonmises(np, np.full((1, n), beta_n), BD.Draws(np, int(rng.integers(1 << 62)), 1))[0].reshape(v.shape)
+            out.append(v + xp.asarray(ang))
+    return out
+
+
+def measure_config(group, ops, U, schedule, rho, t_extra=0.0, rng=None, creutz=None):
     """Flow one configuration through the schedule (and on to t_extra, recording only the plaquette); returns per point (M, c, obs)
-    or (hist, obs), and the flow record (t, plaq) taken at the start of every flow step."""
+    or (hist, obs), and the flow record (t, plaq) taken at the start of every flow step. With creutz = [] (SU(2)), the Creutz
+    signal-check loops of the flowed fine field at each point's flow time are appended to it, one row per point."""
+    rng = np.random.default_rng(0) if rng is None else rng
+    schedule = [tuple(p) + (0.0,) * (4 - len(p)) for p in schedule]
     W = U
     tcur = 0.0
     flow = []
     res = [None] * len(schedule)
+    cz = [None] * len(schedule)
     step = flow_euler_su2 if group == "su2" else flow_euler_u1
     targets = sorted({p[0] for p in schedule} | ({t_extra} if group != "z2" and t_extra > 0 else set()))
     for t in targets:
@@ -365,10 +425,20 @@ def measure_config(group, ops, U, schedule, rho, t_extra=0.0):
             W, P = step(ops, W, eps)
             flow.append((tcur, P))
             tcur += eps
-        for i, (tp, b, f) in enumerate(schedule):
-            if abs(tp - t) < 1e-12:
-                V = block(ops, W, b)
-                res[i] = sd_su2(ops, V) if group == "su2" else (sd_u1(ops, V) if group == "u1" else hist_z2(ops, V))
+        idx = [i for i, p in enumerate(schedule) if abs(p[0] - t) < 1e-12]
+        if idx and creutz is not None and group == "su2":
+            loops = creutz_loops(ops, W, creutz_r0(t))
+            for i in idx:
+                cz[i] = loops
+        for b in sorted({schedule[i][1] for i in idx}):
+            V = block(ops, W, b)
+            for i in idx:
+                if schedule[i][1] != b:
+                    continue
+                Vi = V if schedule[i][3] == 0 else add_noise(ops, V, schedule[i][3], rng)
+                res[i] = sd_su2(ops, Vi) if group == "su2" else (sd_u1(ops, Vi) if group == "u1" else hist_z2(ops, Vi))
+    if creutz is not None:
+        creutz.extend(cz)
     return res, flow
 
 
@@ -436,7 +506,7 @@ def run(a):
     for b in blocks:
         if a.N % b or a.N // b < 3:
             raise SystemExit(f"block {b}: must divide N = {a.N} with N / b >= 3")
-    schedule = make_schedule(blocks, fracs)
+    schedule = make_schedule(blocks, fracs, a.group)
     box = PeriodicBox(a.N)
     B = a.chains
     upd = make_updater(a.group, box, a.beta, B, a.seed, gpu, a.hot)
@@ -444,16 +514,19 @@ def run(a):
     t0 = time.time()
     for _ in range(a.n_therm):
         upd.sweep(a.n_or)
-    print(f"{a.group} beta={a.beta} N={a.N} thermalised ({a.n_therm} sweeps) t={time.time() - t0:.0f}s; schedule (t, b, f): "
-          f"{[(round(t, 4), b, f) for t, b, f in schedule]}", flush=True)
-    rec = {"M": [], "c": [], "obs": [], "hist": [], "flow_plaq": []}
+    print(f"{a.group} beta={a.beta} N={a.N} thermalised ({a.n_therm} sweeps) t={time.time() - t0:.0f}s; schedule (t, b, f, noise): "
+          f"{[(round(t, 4), b, f, n) for t, b, f, n in schedule]}", flush=True)
+    rec = {"M": [], "c": [], "obs": [], "hist": [], "flow_plaq": [], "creutz": []}
     flow_t = None
 
     def save(m, partial):
         out = dict(group=a.group, beta=a.beta, N=a.N, blocks=np.array(blocks), fracs=np.array(fracs), schedule=np.array(schedule),
                    rho=a.rho, gf_tmax=a.gf_tmax, chains=B, n_therm=a.n_therm, hot=int(a.hot), every=a.every, n_or=a.n_or, seed=a.seed, backend="gpu" if gpu else "cpu",
                    basis=np.array(BASIS[a.group]), seconds=time.time() - t0, partial=int(partial), n_done=m,
-                   obs=np.array(rec["obs"]))
+                   obs=np.array(rec["obs"]), noise_betas=np.array(NOISE_BETAS), primary_f=PRIMARY_F)
+        if a.group == "su2":
+            out["creutz"] = np.array(rec["creutz"])
+            out["creutz_r0"] = np.array([creutz_r0(p[0]) for p in schedule])
         if a.group == "z2":
             out["hist"] = np.array(rec["hist"])
         else:
@@ -467,7 +540,11 @@ def run(a):
         links = upd.links()
         per = {k: [] for k in rec}
         for c in range(B):
-            res, flow = measure_config(a.group, ops, chain_config(a.group, xp, links, c), schedule, a.rho, a.gf_tmax)
+            cz = [] if a.group == "su2" else None
+            res, flow = measure_config(a.group, ops, chain_config(a.group, xp, links, c), schedule, a.rho, a.gf_tmax,
+                                       rng=np.random.default_rng((a.seed, m, c)), creutz=cz)
+            if cz is not None:
+                per["creutz"].append(cz)
             if a.group == "z2":
                 per["hist"].append([r[0] for r in res])
             else:
@@ -626,7 +703,7 @@ def selftest(a):
     U = rand_su2(N)
     g = renorm(np, rng.normal(size=(4, 1) + (N,) * 4))
     Ug = [qo.mul(qo.mul(g, U[mu]), qo.dag(sh(qo, g, mu))) for mu in range(4)]
-    sched = make_schedule([2], [0.0, 0.5])
+    sched = make_schedule([2], [0.0, 0.5], noise=False)  # the noisy variant is covariant in distribution only
     r1, f1 = measure_config("su2", qo, U, sched, 0.1)
     r2, f2 = measure_config("su2", qo, Ug, sched, 0.1)
     dm = max(max(np.abs(x - y).max() for x, y in zip(p1, p2)) for p1, p2 in zip(r1, r2))
@@ -648,6 +725,46 @@ def selftest(a):
     d = max(np.abs(np.angle(np.exp(1j * (np.arctan2(We[mu][3], We[mu][0]) - Wa[mu])))).max() for mu in range(4))
     report("flow normalisation: SU(2) Euler step on a U(1)-subgroup field = U(1) heat-equation step (unit coefficient)",
            d < 1e-12 and abs(Pe - Pa) < 1e-12, f"angle difference {d:.1e}, plaquette {Pe:.6f} vs {Pa:.6f}")
+
+    # 4b. (after the round-3 review) rectangles on a 3^4 torus, where wrap-around could merge links: sum rule and exact response
+    U3 = rand_su2(3)
+    U3l = [np.moveaxis(u, 0, -1) for u in U3]
+    R3 = sum(qo.dot(U3[mu], qo.dag(sum(path(qo, U3, mu, st) for st in RECT[mu]))).sum() for mu in range(4))
+    T3 = rect_total(U3l)
+    errs3 = []
+    for trial in range(8):
+        mu = trial % 4
+        x0 = tuple(rng.integers(0, 3, size=4))
+        w = rng.normal(size=4)
+        w /= np.linalg.norm(w)
+        Rl = qo.dag(sum(path(qo, U3, mu, st) for st in RECT[mu]))[(slice(None), 0) + x0]
+        U2 = [u.copy() for u in U3]
+        U2[mu][(slice(None), 0) + x0] = w
+        errs3.append(abs(rect_total([np.moveaxis(u, 0, -1) for u in U2]) - T3 - np.dot(w - U3[mu][(slice(None), 0) + x0], Rl)))
+    report("rectangles on a 3^4 torus (wrap-around): sum rule and exact one-link response", abs(R3 - 6 * T3) < 1e-9 and max(errs3) < 1e-10,
+           f"sum {R3:.6f} vs 6 x {T3:.6f}; response error {max(errs3):.1e}")
+
+    # 4c. Creutz loops: gauge invariant, and W(2, 2) of the fine field = the coarse plaquette at b = 2 (all 16 origins = all sites)
+    U = rand_su2(6)
+    g = renorm(np, rng.normal(size=(4, 1) + (6,) * 4))
+    Ug = [qo.mul(qo.mul(g, U[mu]), qo.dag(sh(qo, g, mu))) for mu in range(4)]
+    c1, c2 = creutz_loops(qo, U, 3), creutz_loops(qo, Ug, 3)
+    plaq_b2 = sd_su2(qo, block(qo, U, 2))[2][0]
+    report("Creutz loops: gauge invariant; W(2,2) = coarse plaquette at b = 2", np.abs(c1 - c2).max() < 1e-12 and abs(c1[0] - plaq_b2) < 1e-12,
+           f"{np.abs(c1 - c2).max():.1e}; {c1[0]:.6f} vs {plaq_b2:.6f}")
+
+    # 4d. noise kernels: mean (1/2) tr W = I_2/I_1 (SU(2)), mean cos w = I_1/I_0 (U(1)), at beta_n = 16 (exact Bessel ratios)
+    from scipy.special import iv
+    rngn = np.random.default_rng(3)
+    V1 = [np.stack([np.ones((1, 40, 40)), 0 * np.ones((1, 40, 40)), 0 * np.ones((1, 40, 40)), 0 * np.ones((1, 40, 40))])] * 4
+    Wn = add_noise(qo, V1, 16.0, rngn)
+    m_su2 = np.mean([w[0].mean() for w in Wn])
+    Va = [np.zeros((1, 40, 40))] * 4
+    Wa = add_noise(ao, Va, 16.0, rngn)
+    m_u1 = np.mean([np.cos(w).mean() for w in Wa])
+    e1, e2 = iv(2, 16) / iv(1, 16), iv(1, 16) / iv(0, 16)
+    report("noise kernels at beta_n = 16: SU(2) <(1/2) tr W> = I2/I1, U(1) <cos w> = I1/I0 (6400 draws each)",
+           abs(m_su2 - e1) < 0.006 and abs(m_u1 - e2) < 0.006, f"{m_su2:.4f} vs {e1:.4f}; {m_u1:.4f} vs {e2:.4f}")
 
     # 5. SD fit at b = 1 on Wilson configurations from boundary.py's own heat bath recovers the bare coupling
     box = PeriodicBox(6)
@@ -730,10 +847,13 @@ def selftest(a):
         print(f"GPU path: {'fused quaternion kernel' if qg.kernel is not None else 'array code (BLOCKED_FUSED=0)'}", flush=True)
         U = cfgs["su2"][-1]
         sched = make_schedule([2, 3], [0.0, 0.25, 0.5])
-        rc, fc = measure_config("su2", qo, U, sched, 0.1)
-        rg, fg = measure_config("su2", QOps(cp), [cp.asarray(u) for u in U], sched, 0.1)
+        czc, czg = [], []
+        rc, fc = measure_config("su2", qo, U, sched, 0.1, creutz=czc)
+        rg, fg = measure_config("su2", QOps(cp), [cp.asarray(u) for u in U], sched, 0.1, creutz=czg)
         dm = max(max(np.abs(np.asarray(x) - np.asarray(y)).max() for x, y in zip(p1, p2)) for p1, p2 in zip(rc, rg))
-        report("GPU = CPU: SU(2) flow, blocking, SD sums on one configuration", dm < 1e-9, f"{dm:.1e}")
+        dz = max(float(np.abs(np.asarray(x) - np.asarray(y)).max()) for x, y in zip(czc, czg))
+        report("GPU = CPU: SU(2) flow, blocking, noisy variants, SD sums, Creutz loops on one configuration", max(dm, dz) < 1e-9,
+               f"{dm:.1e}, {dz:.1e}")
         th = cfgs["u1"][-1]
         rc, _ = measure_config("u1", ao, th, sched, 0.1)
         rg, _ = measure_config("u1", AOps(cp), [cp.asarray(u) for u in th], sched, 0.1)
@@ -799,12 +919,12 @@ def bench(a):
     # projection of the pre-registered plan (PLAN) from these timings; sweep and flow costs scaled by volume if N differs from the
     # plan's N (bandwidth-bound array code: proportional to the volume once the GPU is saturated; small N underestimates nothing)
     total = 0.0
-    for (grp, beta, Np, blocks, fracs, therm, meas, ch, every, hot, gfmax, seed) in PLAN:
+    for (grp, beta, Np, blocks, fracs, therm, meas, ch, every, hot, gfmax, seed) in PLAN + PLAN_ADDENDUM:
         ts, tf, tb = out[grp]
         ts, tf = ts * (Np / N) ** 4, tf * (Np / N) ** 4
-        sched = make_schedule([int(x) for x in blocks.split(",")], [float(x) for x in fracs.split(",")] if grp != "z2" else [0.0])
+        sched = make_schedule([int(x) for x in blocks.split(",")], [float(x) for x in fracs.split(",")] if grp != "z2" else [0.0], grp)
         steps = count_flow_steps(sched, 0.1, gfmax) if grp != "z2" else 0
-        tm = sum(tb.get(b, max(tb.values())) for _, b, _ in sched)
+        tm = sum(tb.get(p[1], max(tb.values())) for p in sched)
         sec = therm * ch * ts + meas * ch * (every * ts + steps * tf + tm)
         total += sec
         print(f"  plan {grp} beta={beta} N={Np}: {steps} flow steps per config, about {sec / 60:.0f} min")
@@ -831,6 +951,11 @@ PLAN = [
     ("u1", 0.9, 36, "6,9,12", "0,0.25,0.5", 200, 80, 4, 4, True, 0.0, 3104),       # confined U(1), positive control
     ("z2", 0.3, 36, "6,9,12", "0", 200, 80, 4, 4, True, 0.0, 3105),               # confined Z2, positive control
     ("su2", 2.4, 36, "6,9,12", "0,0.25,0.5", 200, 80, 4, 4, False, 0.0, 3106),     # L sqrt(sigma) = 1.55, 2.32, 3.10 (scaling)
+]
+# Added after the round-3 review (PREREG.md 'Changes before data'); queue_blocked_gpu_addendum.ps1 runs these after the main queue:
+PLAN_ADDENDUM = [
+    ("u1", 1.3, 36, "6,9,12", "0,0.25,0.5", 200, 80, 4, 4, False, 0.0, 3107),     # second Coulomb beta for the photon gate
+    ("su2", 2.3, 24, "6,8", "0,0.25,0.5", 200, 80, 4, 4, False, 0.0, 3108),       # coarse-volume check: b = 6 on 4^4 (vs 6^4)
 ]
 
 
