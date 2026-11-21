@@ -43,3 +43,6 @@ gauge). Centre dominance at these β is neither confirmed nor refuted by this co
 annealing, several copies) or a gauge-independent vortex definition. The MG3 reading ("the twists carry the string tension") stays
 untested by our numerics; the formal side (`AreaLaw/TwistVanish.lean`, the area law by centre twists) proves the mechanism at strong
 coupling.
+
+**Parked (the owner, 2026-11-21)** until the underlying theory is firm. To pick up: better maximal-centre-gauge fixing (simulated
+annealing, several gauge copies, keep the best) or a vortex definition that needs no gauge fixing; then a fresh pre-registration.
