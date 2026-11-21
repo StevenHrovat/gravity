@@ -134,6 +134,10 @@ still preserving the way through the git history." Once the weak-coupling attemp
 - **DMP**: the few DMP theorems or readings that turn out unneeded or more general go to the DMP repository as proposals through its own
   process (gravity never edits `vendor/dmp`).
 - The git history keeps the path; the consolidated tree is what readers see.
+- **The final paper gets a chapter that explains the Lean construction in prose** (the owner, 2026-11-21: "so that they don't need to dig
+  out every shred of information just to understand our proof"): for each formal result, what is defined (lattice, measure, observables,
+  weights), the exact statement in words and formulas, the proof route step by step, which hypotheses remain open, and where it lives
+  (file and theorem name). Written for a reader who does not read Lean.
 
 ## 4. Rules that held, and should keep holding
 
