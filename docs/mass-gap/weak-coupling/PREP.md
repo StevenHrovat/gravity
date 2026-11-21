@@ -280,3 +280,20 @@ give the limit object by compactness (attempt 5, proved in the abstract form), s
 by-product. The same split is familiar in physics: Yang–Mills as an effective theory with a physical cutoff (the root at finite depth),
 the continuum as its idealisation. Attempt 5 made the difference between the two existences exact, and kept what transfers (T38: every
 blocked layer has its own Duality, i.e. reflection positivity of each layer).
+
+## Compactness is not collapse; where black holes do enter (the owner's question, 2026-11-21, after round 3, attempt 3)
+
+The owner asked whether W_p's reduced form (compactness) is why energy can collapse into a kugelblitz, so that black-hole models could
+supply the compactness and Hawking radiation its entropy. Answer: the word is shared, the thing is not. **Compactness** in attempt 3 is
+the mathematical property that nothing escapes to infinity: every link is an element of SU(2), a bounded space (a 3-sphere), so a
+sequence of probability laws on it always has a convergent subsequence (Prokhorov). It needs no physics and is already free; no
+collapse is involved, and large gauge fields in Yang–Mills are suppressed exponentially, not concentrated. What the noisy blocking step
+adds is a **floor**: every coarse configuration keeps a positive weight, as in a heat bath, so nothing is ever completely forbidden; in the
+owner's terms, blocking with noise is coarse-graining that radiates detail away without erasing any possibility. **Where entropy and black
+holes do enter is the crossover**, not W_p: (1) confinement in the vortex picture ('t Hooft; Mack–Petkova) is entropy beating energy: the
+twist free energy F = E − TS falls to zero because the entropy of placing a centre vortex pays for its action, and the Dobrushin
+condition D′ of attempt 1 is the local form of "entropy wins"; (2) in the holographic (gauge/gravity) picture, deconfinement of a
+Yang–Mills-like theory is the formation of a black hole in the dual geometry (the Hawking–Page transition, Witten 1998), and both
+confinement and black-hole entropy obey area laws. That duality is a conjecture for SU(2) Yang–Mills in four dimensions, so it can guide
+(where to look, what to measure) but cannot prove; a black-hole entropy argument would have to be rebuilt inside the lattice theory to
+count.
