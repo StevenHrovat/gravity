@@ -11,7 +11,7 @@ import OneScale.CorollaryB
 /-!
 # From the open hypothesis `UniformGDS` to the physical-units decay statement
 
-This file closes the formal chain of Corollary B (lattice part). The only open hypothesis is
+This file closes the formal chain of Corollary B (lattice part) for the H form; the W form, the project's open hypothesis, has the same chain in `OneScale/CorollaryBW.lean`. Here the only open hypothesis is
 `OneScale.CorollaryB.UniformGDS` (GDS for thin cubes of side `ℓ_k = ⌈L₀/a_k⌉` at every level `k`), required here on
 every torus of a sequence `N_{k,j} → ∞` (`j ∈ ℕ`) at each level.
 

@@ -10,7 +10,7 @@ Standard background, reproved here in our setting: Dobrushin's uniqueness theore
 of lattice gauge theory and the doubling argument (Osterwalder–Seiler 1978). New in the proof note and formalised here:
 the block telescoping proof of Theorem A without a frozen set (correction C1), its uniformity in the number of blocks,
 the multiplicity-weighted single-link GDS (valid for every torus size), and the bookkeeping of Corollary B.
-The uniform hypothesis of Corollary B (`OneScale.CorollaryB.UniformGDS`) is OPEN: it is stated, not proved.
+The uniform hypothesis of Corollary B is OPEN: it is stated, not proved. The project's open hypothesis is its W form `OneScale.CorollaryB.UniformGDS_W` (PROOF-NOTE §7); the H form `UniformGDS` is kept with its own chain.
 
 - `OneScale.Blocks`: splicing, oscillation bounds, Lemma 2.3 (telescoping), block specifications, Lemma 2.2, Lemma 2.6.
 - `OneScale.Comparison`: Lemma 2.5 (propagation), Step 1 (contraction).
@@ -31,6 +31,9 @@ The uniform hypothesis of Corollary B (`OneScale.CorollaryB.UniformGDS`) is OPEN
 - `OneScale.CubeChain`: Theorem A with the thin-cube family on the torus for slab observables, Theorem C under GDS for
   thin cubes, a finite-volume decay bound uniform in `N`, and `corollaryB_of_uniformGDS`: Corollary B.1 with
   `UniformGDS` (on a sequence of tori per level) as the only open hypothesis.
+- `OneScale.CorollaryBW`: the W-form hypothesis `UniformGDS_W` (**the open hypothesis of the project**, PROOF-NOTE §7;
+  the H form `UniformGDS` is stronger in general and may fail where the W form holds) and the chain for it,
+  `corollaryB_of_uniformGDS_W`, with Lipschitz observables; H ⇒ W only for a separated cost (`uniformGDS_W_of_uniformGDS`).
 -/
 
 import OneScale.Blocks
@@ -47,3 +50,4 @@ import OneScale.CorollaryB
 import OneScale.LinkDist
 import OneScale.TimeShift
 import OneScale.CubeChain
+import OneScale.CorollaryBW

@@ -13,7 +13,7 @@ import OneScale.Doubling
 A sequence of lattice spacings `a_k → 0`, a physical length `L₀ > 0`, thin cubes of side `ℓ_k = ⌈L₀ / a_k⌉`
 (so `D₁ = ℓ_k + 1`), and one `γ ∈ (0, 1)`.
 
-* `UniformGDS` — **the open hypothesis (OS_k)** of the note: at every level `k`, GDS with the same `γ` for the family of
+* `UniformGDS` — the H-form version of the open hypothesis (OS_k) (H form; the project's open hypothesis is the W form `UniformGDS_W`, `OneScale/CorollaryBW.lean`, PROOF-NOTE §7; the H form may be false at fixed L₀ even when the W form holds, attempts/twist S1): at every level `k`, GDS with the same `γ` for the family of
   thin cubes of side `ℓ_k` on the level-`k` torus, for the gauge measure with weight `φ_k`. **This is the open problem;
   nothing here proves it.**
 * `rate_lt_of_lt`: any `λ < log(1/γ)/D₁` satisfies Theorem A's condition `γ e^{λ D₁} < 1`.
@@ -57,7 +57,7 @@ def thinCube {N : ℕ} [NeZero N] (ℓ : ℕ) (x : FinLatticeSites d N) : Finset
 /-- The cube side at level `k`: `ℓ_k = ⌈L₀ / a_k⌉`. -/
 def side (L₀ : ℝ) (a : ℕ → ℝ) (k : ℕ) : ℕ := ⌈L₀ / a k⌉₊
 
-/-- **Hypothesis (OS_k) — OPEN.** At every level `k` (torus `(ℤ/N_kℤ)^d`, weight `φ_k`, e.g. Wilson at `β_k`),
+/-- **Hypothesis (OS_k), H form — OPEN.** (H form; the project's open hypothesis is the W form `UniformGDS_W`, `OneScale/CorollaryBW.lean`, PROOF-NOTE §7; the H form may be false at fixed L₀ even when the W form holds, attempts/twist S1) At every level `k` (torus `(ℤ/N_kℤ)^d`, weight `φ_k`, e.g. Wilson at `β_k`),
 there are influence bounds `κ_x(z)` for the thin cubes of side `ℓ_k = ⌈L₀/a_k⌉` (one block per site `x`) satisfying
 GDS with the same `γ`. This is the uniform one-scale bound of the proof note (§7, "the hypothesis (OS_k) ... is the open
 problem"); it is stated, not proved. -/
