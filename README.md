@@ -44,6 +44,8 @@ evidence/tools/check.sh                              # runs the pin check first,
 Where `release.lean-lang.org` is not reachable, the same toolchain is the GitHub release asset
 `https://github.com/leanprover/lean4/releases/download/<tag>/lean-<version>-linux.tar.zst`; unpack it and put its `bin/` on the PATH.
 
-CI: `lean-evidence` (build, axiom report, independent kernel) and `scrub-scan` (no company data, no secrets) on GitHub-hosted runners.
+CI: `lean-evidence` (build, axiom report, independent kernel) and `scrub-scan` (no company data, no secrets) run on the self-hosted
+runners (`["self-hosted","linux","wsl"]`) for pushes, manual runs and pull requests from this repository; only a pull request from a fork
+runs on GitHub-hosted `ubuntu-latest`, so outside code never runs on the self-hosted machines.
 
 Licensed under the Apache License 2.0 ([LICENSE](LICENSE)).
