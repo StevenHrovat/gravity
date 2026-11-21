@@ -36,3 +36,22 @@ eqn 6; jackknife errors over 20 bins (one chain spans whole bins).
 
 **Verdict.** 1 to 3 hold: **pass**. Any of them fails: **fail**, with the failing β named. A β without a plateau in either channel is
 reported as "no plateau" and left out of the fit; if fewer than three β remain, the verdict is "not enough data", not a pass.
+
+## Result (2026-11-21, after all five runs; nothing above changed)
+
+| β | lattice | t* (glueball, torelon) | a√σ (vs Teper) | a·m₀₊₊ (vs Teper) | TTL in ticks | TTL · √σ |
+|---|---|---|---|---|---|---|
+| 2.3 | 12⁴ | 1, 1 | 0.350 ± 0.006 (tension, 2.9) | 1.20 ± 0.04 (agree) | 0.83 ± 0.03 | 0.291 ± 0.010 |
+| 2.4 | 16⁴ | 2, 1 | 0.258 ± 0.003 (tension, 3.0) | 1.01 ± 0.05 (agree) | 0.99 ± 0.04 | 0.256 ± 0.012 |
+| 2.5 | 20⁴ | 1, 2 | 0.182 ± 0.002 (agree) | 0.720 ± 0.009 (tension, 2.5) | 1.39 ± 0.02 | 0.253 ± 0.004 |
+| 2.6 | 28⁴ | 2, 1 | 0.140 ± 0.002 (tension, 2.1) | 0.52 ± 0.02 (agree) | 1.92 ± 0.08 | 0.268 ± 0.012 |
+| 2.7 | 32⁴ | 3, 1 | 0.106 ± 0.002 (agree) | 0.39 ± 0.02 (agree) | 2.54 ± 0.12 | 0.268 ± 0.014 |
+
+1. Same at every layer: constant 0.2603 ± 0.0036, χ²/dof = 12.5/4, p = 0.014; β = 2.3 lies 3.0 errors above: **fail** (at β = 2.3).
+2. Against the continuum value 1/3.74 = 0.267 ± 0.009: 0.8 errors: pass.
+3. Ticks grow from β = 2.3 to 2.7 by 3.05 ± 0.17 against the a√σ ratio 3.31 ± 0.08: 1.4 errors: pass.
+
+**Verdict: fail**, by criterion 1 at the coarsest grid. Likely cause, stated beside the verdict and not used to change it: scaling
+violations at coarse lattice spacing; Teper's own β = 2.3 entry has m₀₊₊/√σ = 3.30 (TTL · √σ = 0.303), also above the continuum value. The
+four finer grids (β = 2.4 to 2.7) are mutually consistent, but excluding β = 2.3 after seeing the data would not be a pre-registered result.
+Stored: `results/ttl_summary.json`.
