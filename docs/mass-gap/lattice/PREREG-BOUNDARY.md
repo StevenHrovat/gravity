@@ -167,10 +167,10 @@ larger box (PROOF-NOTE C2: only the full thick cube is measured, which is what t
 CPU only, 4 chains, 10 to 17 jobs sharing the CPU; many runs were analysed from checkpoints (number of measurements given). Raw files:
 `runs/boundary-feas/` (gitignored). These numbers informed the design changes marked above; they are not results.
 
-**Photon test.** U(1), ℓ = 12, Φ = 2π, 300 measurements: Coulomb (β = 1.1) loop deficit D_deep(R = 6) = 0.985 ± 0.023 against the free-field
-value 1.000; the whole curve D_deep(R), R = 1..11, follows 1 − cos(ΦR²/ℓ²) within errors; the profile in depth is flat (1.00, 1.00, 1.01,
-0.98, 0.99, 1.00, 0.92); odd witness F̄/F̄_free = 0.91 ± 0.03. Confined (β = 0.9): F̄/F̄_free = −0.03 ± 0.04 (screened); loops of side 4 and
-more are consistent with zero (area law). Criterion P as now worded: **pass**. ℓ = 8, Φ = π/2, 800 flux and 500 to 700 calm
+**Photon test.** U(1), ℓ = 12, Φ = 2π, 600 measurements (complete): Coulomb (β = 1.1) loop deficit D_deep(R = 6) = 1.025 ± 0.020 against
+the free-field value 1.000; the whole curve D_deep(R), R = 1..11, follows 1 − cos(ΦR²/ℓ²) within errors; the profile in depth is flat
+(last/first 1.02); odd witness F̄/F̄_free = 0.94 ± 0.02. Confined (β = 0.9): F̄/F̄_free = −0.01 ± 0.03 (screened); loops of side 4 and more
+are consistent with zero (area law). Criterion P as now worded: **pass**. ℓ = 8, Φ = π/2, 800 flux and 500 to 700 calm
 measurements: Coulomb F̄/F̄_free = 0.93 ± 0.05, D_deep(R) again on the free-field curve; confined 0.22 ± 0.07, partly screened (hence the
 gate at ℓ = 12). In this box the faces pin the non-compact flux, so even Φ = 2π stays in its sector in the Coulomb phase; Φ = π/2 is kept
 anyway (PROOF-NOTE C9).
