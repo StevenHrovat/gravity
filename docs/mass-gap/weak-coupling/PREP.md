@@ -343,3 +343,15 @@ reaches G0, the tie holds. For φ⁴ in four dimensions and, as far as is known,
 Duminil-Copin 2021). So "it runs and stays tied to G0" is asymptotic freedom, the very feature that separates Yang–Mills from φ⁴ in the
 triviality test. What it does not settle by itself: that the same trajectory continues, without stalling, from weak coupling through
 α_s of order one (the crossover); the identity holds along whatever trajectory exists.
+
+Tie to G0 is reach (the owner: "Isn't tie to G0 simply reach?"). Reading: yes, with two directions. **Inward reach** is how far the running
+can be traced back towards the root; **outward reach** is Axiom 1's R, how far an act can extend (the floor Q/R, `Reach.lean`). One sign
+trades them: the sign of the running (b₀). Yang–Mills (b₀ > 0, asymptotic freedom): unlimited inward reach (the coupling vanishes at the
+root) and, if the gap holds, limited outward reach (confinement, R of order 1/√σ). QED and φ⁴ (the opposite sign): limited inward reach
+(the Landau pole) and unlimited outward reach (the photon's long range; free massless behaviour). In these terms the mass gap problem
+reads: unlimited inward reach forces limited outward reach. A sharp warning, and a new unit test: that implication is false in general.
+Gauge theories with enough massless matter (QCD with roughly 9 to 16 flavours, the conformal window; Banks and Zaks 1982) are
+asymptotically free yet flow to an infrared fixed point: unlimited reach in both directions, no gap. So unlimited inward reach alone does
+not force a floor; what pure Yang–Mills must add is that its running does not stall at an infrared fixed point (round 3's "no fixed
+point", here as the condition that turns inward reach into outward limit). **Banks–Zaks test:** any argument for the gap that would
+also apply to an asymptotically free theory in the conformal window is wrong.
