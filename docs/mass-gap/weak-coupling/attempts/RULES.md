@@ -43,3 +43,17 @@ fail, we are sure to learn something interesting for a better round 4")
   coordinating session runs it after Leg B, never an attempt.
 - **Lean:** build in your own WSL folder `~/formal-att-r3-<n>` (copy of `../../formal` made with `FORMAL_DST=~/formal-att-r3-<n> bash
   sync-build.sh <target>`); new files under `../../formal/Attempts/R3/`.
+
+## Round 4 additions (2026-11-21, after the adversarial review of round 3, `r3-review/REVIEW.md`; the owner: "full steam ahead")
+
+- **Read first:** `r3-review/REVIEW.md`, the corrected verdict of `ROUND-3.md`, and `../round4-prep/DMP-SCOUT.md` (the act identity on a
+  twisted box: the act number z(L) = E_e(L)·L; Conjecture W; the missing sector transfer).
+- **Claim discipline (from the review):** state for every target whether it is weaker than, equal to, or stronger than the mass gap. A
+  theorem "about Yang–Mills" must have Yang–Mills inside its hypotheses (SU(2), the 4D lattice, the Wilson measure or its blocking, the
+  tuning); a toy model must be called a toy in its name or first line. A reduction counts as machine-checked only if one Lean theorem
+  assembles it. No "exactly one open piece" without listing existence, identification, observables, positivity and symmetry.
+- **Unit tests, one more:** the **deconfinement test**: a claim of uniform decay or of a strong-coupling condition at scale L must fail for
+  L below 1/T_c (about 1.45/√σ for SU(2)), where a box one block thick is deconfined. The finite-subgroup test of round 3 stays.
+- **Adversarial review** is part of the round: every attempt's final claims will be reviewed independently; write so a hostile expert can
+  check each step.
+- **Lean:** build folders `~/formal-att-r4-<n>`; new files under `../../formal/Attempts/R4/`; keep build scripts in your own folder.
