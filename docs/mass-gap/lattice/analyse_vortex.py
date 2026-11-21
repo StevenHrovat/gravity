@@ -58,8 +58,30 @@ def analyse(path):
     z = np.abs(wc) / ec
     out["control"] = {"max_abs_W_over_err_RT_ge_2": float(np.max(z)), "W_2_2": [float(wc[0, 0]), float(ec[0, 0])],
                       "criterion3": bool(np.all(z <= 2))}
+    # follow-up (PREREG-VORTEX-SIGMA.md, post-hoc): R = 4, 5 against the torelon string tension of the TTL scan
+    sig = SIGMA.get(round(out["beta"], 2))
+    if sig is not None:
+        fu = {"sigma_a2": sig, "R": {}}
+        for R in (4, 5):
+            i = R - 2
+            cp_, ep = est(proj, lambda W: creutz(W)[i])
+            cr, er = est(rem, lambda W: creutz(W)[i])
+            rat = cp_ / sig[0]
+            erat = rat * np.hypot(ep / cp_, sig[1] / sig[0])
+            noisy = bool(ep / abs(cp_) > 0.5)
+            f1 = bool(abs(rat - 1) <= 0.30 and not noisy)
+            f2 = bool(cr < 0.20 * sig[0] or abs(cr) <= 2 * er)
+            fu["R"][R] = {"chi_proj": [cp_, ep], "chi_removed": [cr, er], "proj_over_sigma": [rat, erat], "too_noisy": noisy,
+                          "f1": f1, "f2": f2}
+        fu["pass"] = bool(all(x["f1"] and x["f2"] for x in fu["R"].values()))
+        out["followup"] = fu
     out["pass"] = bool(all(out["R"][R]["criterion1"] and out["R"][R]["criterion2"] for R in (3, 4)) and out["control"]["criterion3"])
     return out
+
+
+# sigma a^2 = (a sqrt(sigma))^2 from the TTL scan's torelons (error: 2 x relative error of a sqrt(sigma))
+SIGMA = {round(x["beta"], 2): (x["a_sqrt_sigma"][0] ** 2, 2 * x["a_sqrt_sigma"][0] * x["a_sqrt_sigma"][1])
+         for x in json.load(open("../results/ttl_summary.json"))}
 
 
 def fmt(v):
@@ -78,5 +100,12 @@ if __name__ == "__main__":
         c = r["control"]
         print(f"  control: W(2,2) {fmt(c['W_2_2'])}, max |W|/err over R,T>=2 = {c['max_abs_W_over_err_RT_ge_2']:.2f} "
               f"[{'pass' if c['criterion3'] else 'FAIL'}]")
-        print(f"  => {'pass' if r['pass'] else 'FAIL'}")
+        print(f"  => {'pass' if r['pass'] else 'FAIL'} (PREREG-VORTEX.md)")
+        if "followup" in r:
+            fu = r["followup"]
+            print(f"  follow-up (post-hoc, PREREG-VORTEX-SIGMA.md), sigma a^2 = {fmt(fu['sigma_a2'])}:")
+            for R, x in fu["R"].items():
+                print(f"    R={R}: proj {fmt(x['chi_proj'])}, proj/sigma {fmt(x['proj_over_sigma'])}{' TOO NOISY' if x['too_noisy'] else ''} "
+                      f"[{'pass' if x['f1'] else 'FAIL'}]  removed {fmt(x['chi_removed'])} [{'pass' if x['f2'] else 'FAIL'}]")
+            print(f"    => follow-up {'pass' if fu['pass'] else 'FAIL'}")
     json.dump(res, open("../results/vortex_summary.json", "w"), indent=1, default=float)
