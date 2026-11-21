@@ -240,3 +240,16 @@ curvature. Fit with round 1: route (d) found the group curvature swamped at weak
 is strongly coupled, where curvature can dominate. DMP reading: existence as positive curvature (a node closes on itself: bounded
 diameter, a gap; light is flat). Precision: this uses the mathematics of GR (curvature, comparison geometry, optimal transport), not
 Einstein's equations; the gap does not depend on gravity.
+
+## Why the reverse fails: existence boundaries (the owner, 2026-11-21)
+
+`H2-CURVATURE.md`: W-form GDS implies positive coarse curvature, the converse fails (curvature takes the worst boundary once for the whole
+system; GDS per block). The owner: "That is exactly why the forces split. The classical side is horrible at asserting itself so takes the
+first opportunity to erect an existence boundary so that it does not have to be lossy. (VIBE coefficient in prior work)" Reading:
+curvature is a global existence certificate, GDS a per-node one; the difference between them is the existence boundaries; global
+assertion over large regions is lossy (the VIBE coefficient: keeping an act existing costs h·(1/c)·α per h, Balance paper), so the system
+splits into nodes that certify themselves locally. Physics: stretched colour flux costs energy proportional to its length (string tension
+σ, measured in the TTL scan), so the field closes into bound states (glueballs: closed flux loops); "the first opportunity" is the length
+where the flux cost reaches one quantum, 1/√σ (the earlier reach reading, README §3.1b), which is the confinement scale L₁ where H2
+switches on in the effective-theory split. Light (no self-charge) has no flux cost and no reason to close; the weak carriers acquire
+existence (mass) outside confinement; the strong force closes into nodes.
