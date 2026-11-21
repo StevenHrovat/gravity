@@ -203,3 +203,9 @@ an existence boundary forces a root swap, which a cheap line cannot carry). Phot
 pass every box. Observable already recorded by Leg B: the straight lines across the box from face to face (anchoring lines from the outside
 root through the node); how their cost grows with box size is a direct numerical look at the root swap. The black-hole part of the reading
 is outside what this work can test and is not used here (GUID series).
+
+**Attempts started before the data (the owner, 2026-11-21, 16:50).** "Is there any harm in just going ahead with the proof attempts and
+just using the tests that run now to test it later on?" No: the decision rule above was a resource gate, not a scientific one. The attempt
+round starts now, before any SU(2) Leg B result exists; the attempts therefore cannot be tuned to the data. The rule's role changes: it
+now decides how the attempts' results are weighed (if the data argue against a fixed reach, an attempt that claims one must contain an
+error, which is used as an adversarial check). Five routes in parallel: the lead route and (a)-(d), outputs in `attempts/<route>/`.
