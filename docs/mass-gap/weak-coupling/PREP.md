@@ -331,3 +331,15 @@ blocking, round 3, attempt 2), and with it the **act number**: z(2L) of the fine
 attempt 2 is proving this exact per-layer transport). So the act, and the existence it is asserted on, passes unchanged through every
 lossy step; what is lost from layer to layer is the description (the effective action), not the act. What is not conserved, and carries
 the open problem, is how the blocked action compares with the original on the same box (the running).
+
+Why it is conserved (the owner): "It is conserved by the simple fact that it IS running. If it runs, it has to belong to the same
+definition of existence, which satisfies its tie to G0." Reading: this is the Callan–Symanzik equation in words. Along one
+renormalisation trajectory the coupling g(μ) changes with the scale μ in exactly the way that keeps one scale Λ fixed
+((μ∂/∂μ + β(g)∂/∂g)Λ = 0): the running is the conservation, not an exception to it; every point of the trajectory describes the one
+theory fixed at the root. The tie to G0 then has a sharp test: follow the running back towards the root (infinite depth, the cutoff
+removed). For Yang–Mills the coupling goes smoothly to zero there (asymptotic freedom, Gross, Wilczek, Politzer 1973): the trajectory
+reaches G0, the tie holds. For φ⁴ in four dimensions and, as far as is known, for QED, the coupling blows up before the root is reached
+(Landau pole): the trajectory cannot be traced back to G0, and the continuum theory is trivial (proved for φ⁴₄ by Aizenman and
+Duminil-Copin 2021). So "it runs and stays tied to G0" is asymptotic freedom, the very feature that separates Yang–Mills from φ⁴ in the
+triviality test. What it does not settle by itself: that the same trajectory continues, without stalling, from weak coupling through
+α_s of order one (the crossover); the identity holds along whatever trajectory exists.
