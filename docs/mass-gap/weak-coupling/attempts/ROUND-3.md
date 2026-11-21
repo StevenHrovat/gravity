@@ -14,17 +14,27 @@ re-run where named in the commits).
 | 4, Leg C (data) | `r3-blocked/` | 8144373 | none | the click test pre-registered and CPU-tested; GPU run queued after Leg B |
 | 5, the owner's DMP route | `r3-dmp/` | c2bb2ab | `DmpBridge`, `DmpFlow`, `DmpBalance`, `DmpDuality`, 34 | "YM ⊂ DMP" made precise; not a shorter route to analytic existence; one transfer kept (T38) |
 
-## Verdict
+## Verdict (corrected after the adversarial review, `r3-review/REVIEW.md`)
 
-**The proof is not complete; it now has exactly one open piece, in two exact forms, each backed by a proved theorem.** The quantum half
-(W_p) and the robustness piece of `ROUND-2.md` are closed or reduced to classical formalising work; what is left is the crossover, the
-stretch where α_s grows through order one, which is where the problem was always expected to live.
+**The first version of this verdict overclaimed.** It said the proof "now has exactly one open piece, in two exact forms". The review
+(checked by the coordinating session) showed: (1) "no fixed point" is not a second form of the open piece, only a tuning step; (2) the
+Lean pieces are not assembled into one theorem about Yang–Mills, and the gap theorems are about abstract finite Gibbs systems (a pure-noise
+limit satisfies their hypotheses); (3) crossover-D′ is strictly stronger than the mass gap (complete-analyticity type), with all its
+content in volume-uniformity; (4) existence and identification of the limit, physical observables beyond block observables, reflection
+positivity and symmetry of the limit, and the Lean assembly are further open pieces.
 
-## The reduction after round 3
+**What round 3 does establish** (the claim level the review endorses): Dobrushin's uniqueness theorem with exponential weights for
+finite Gibbs systems, its openness under local perturbation, and a compactness lemma for noisy blockings are formalised; on paper they
+give: if every subsequential limit of a noisily blocked lattice gauge theory at scale L₁ satisfies a volume-uniform worst-case Dobrushin
+condition, then covariances of L₁ block observables of those limits decay exponentially, uniformly in the volume. A correct conditional
+statement whose hypothesis is at least as strong as the gap. The structural findings below (the breaking step of the monotonicity
+argument, the large-field lower bound from noise, the two kinds of existence) stand as stated.
+
+## The reduction after round 3 (as first written; read with the corrected verdict above: the assembly is on paper, D′ is stronger than the gap, and the second form below is only a tuning step)
 
 **Gap of the continuum theory at scale L₁, uniform in the volume** ⇐
 1. **One noisy blocking step** at some scale up to L₁ (attempt 3: then W_p holds per volume along a subsequence by compactness;
-   Lean: `noise_uniform`, `noise_subseq`; still to formalise: Theorem A with exponentially weighted influences (Dobrushin; Kuensch),
+   Lean: `noise_uniform`, `noise_subseq`; Theorem A with exponentially weighted influences (Dobrushin; Kuensch) is formalised as `theoremA_w`; still to formalise:
    attempt D's Lemma T, the per-volume gap theorem), and
 2. **Crossover-D′**: every limit theory, blocked to L₁, has one-site conditional laws satisfying the weighted Dobrushin condition
    Σ_{i≠z} tanh(S_iz/2)·e^{λ·dist(z,i)} ≤ γ < 1 with one γ (attempt 1; Lean: `gds_of_flat`, `theoremA_w`, `continuum_decay`,
@@ -94,4 +104,4 @@ deconfinement as black-hole formation, a guide, not a proof). Both in `../PREP.m
    about 11 h, pre-registered); the D′ form needs Leg C first.
 4. **T38 in full**: reflection positivity of a blocked layer including coarse links that cross the reflection plane, for a blocking built
    to respect the reflection.
-5. **Adversarial review** of the round-3 chain by an independent reviewer given the code and notes, not the conclusions.
+5. **Adversarial review**: done (`r3-review/REVIEW.md`); its fixes for the claim level are applied above, and its Leg C fixes are being made in the pre-registration before any GPU data. Further fixes it proposes for round 4: assemble the Lean into one theorem whose hypotheses are a noisy kernel plus D′ for every limit point; add the deconfinement test (L₁ > 1/T_c) to the unit tests; require `dist` to be a metric.
