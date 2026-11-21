@@ -149,3 +149,9 @@ gluons (inside the bound state, existence guaranteed: massless, never alone); W 
 80 and 91 GeV, short range); photon (payload, no existence: massless, free). Precision: in physics W and Z get their mass from the Higgs
 mechanism (electroweak symmetry breaking) and the weak force does not confine; "leaving confinement requires an inherent existence" is
 the owner's reading of why a carrier acting on its own must carry mass. It matches the outcome of the Higgs mechanism, not its derivation.
+
+Stated generally (the owner, 2026-11-21): "To exist outside of confinement requires an inherent existence/mass." Checkable form: every
+particle that exists (is not payload) and is not confined has mass. Against the Standard Model: quarks and gluons (confined: existence
+guaranteed inside); charged leptons, neutrinos (tiny but nonzero mass, from oscillations), W, Z, Higgs (unconfined, massive); photon
+(payload, massless): consistent throughout. Edge case outside this work: a hypothetical massless graviton; in the GUID reading gravity is
+the existence field itself and needs its own classification (GUID series, not here).
