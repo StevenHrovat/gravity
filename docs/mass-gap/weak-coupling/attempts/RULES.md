@@ -29,3 +29,17 @@ Shared by the five proof attempts on the open hypothesis `UniformGDS` (see `../P
   `OneScale.Effective.gap_of_effective_W` (H1 `EffectiveConvergence` + H2 `LimitGDS_W`).
 - **Numerics:** tests of something new only, pre-registered in your folder before running, CPU only, one process, at most 15 minutes per
   run. The GPU runs Leg B overnight; its data will be fed in when available.
+
+## Round 3 additions (2026-11-21, the owner: "the full proof is within reach in round 3, if we set the ambitions high enough; and if we
+fail, we are sure to learn something interesting for a better round 4")
+
+- **Read first:** `ROUND-2.md` (the three-piece map: W_p, the crossover, torus robustness) and the round-2 note your attempt builds on.
+- **Ambition:** aim at the full piece, not a fragment of it. A failure is a result when it names the exact step that breaks and why;
+  record the precise obstruction and what would get past it.
+- **Unit tests:** as in round 2. **Existence-type claims** (a continuum limit exists, a theory is DMP-complete) have a third test, the
+  **triviality test**: the argument must not give a non-trivial continuum limit of φ⁴ in four dimensions (it is trivial: Aizenman and
+  Duminil-Copin 2021), and it must give the free photon (4D U(1) at weak coupling exists, as a free field).
+- **Numerics:** as in round 2 (pre-registered, CPU, one process, at most 15 minutes per run). Only attempt 4 prepares a GPU job; the
+  coordinating session runs it after Leg B, never an attempt.
+- **Lean:** build in your own WSL folder `~/formal-att-r3-<n>` (copy of `../../formal` made with `FORMAL_DST=~/formal-att-r3-<n> bash
+  sync-build.sh <target>`); new files under `../../formal/Attempts/R3/`.
