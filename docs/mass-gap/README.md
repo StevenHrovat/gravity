@@ -60,9 +60,12 @@ in time: with μ > 0 every staleness returns to balance in bounded time, and wit
 **What transfers.** A trust network in which every part keeps its own keys and every pair holds a key translation is, exactly, a lattice
 gauge field: re-keying is a gauge transformation, closed loops of translations are Wilson loops, and DMP's "trust is a field, never a
 position" is the fact that a gauge field lives on links, never on sites (`Gauge.lean`, proven for the integers and for the six
-relabellings of a three-node cluster). The structure transfers. **The mechanism does not.** Every DMP argument for a gap is blind to
-whether translations commute, so it would also give light a mass. Light is massless (proven for four-dimensional lattice U(1) at weak coupling since 1980), so
-no such argument can be the proof (**the photon test**, section 3).
+relabellings of a three-node cluster). The structure transfers. DMP's gap **mechanisms** (counting, floors, the stability margin) are
+blind to whether translations commute, so on their own they would also give light a mass. Light is massless (proven for
+four-dimensional lattice U(1) at weak coupling since 1980), so no such mechanism alone can be the proof (**the photon test**,
+section 3). DMP's **classification** passes the test (owner's correction, 2026-11-21): the strong and weak forces are IM, the two-signed
+medium, and light is payload. In gauge theory that is the carriers' self-charge C_A, and the zoom-out computed in section 5 runs at a rate
+proportional to it (SU(3) against SU(2): 2.26 predicted 2.25; finding MG5).
 
 **Our attempt at the missing piece.** We ran the bridge in its most DMP-like form: an exact layer-by-layer zoom-out over a tree of layers
 (the Migdal–Kadanoff recursion, section 5). For gluons it works strikingly well. Per layer the coupling strengthens by a steady
@@ -177,9 +180,12 @@ weak coupling it has a **massless photon**, proven rigorously (Guth 1980; Froehl
 > **Any argument that would also give light a mass is wrong.**
 
 This is a unit test with a known answer, and it is how the experts judged the most serious layer-by-layer attempt (section 5). It sorts
-the DMP transfers at once. Every DMP structure that could yield a gap (counting, floors, the stability margin, member isolation, two
-witnesses) means the same thing whether translations commute or not, so each of them would "prove" a photon mass. They can describe a
-gap; none of them can be the reason for one. What light lacks and gluons have is exactly what `nonabelian_loop_value_moves` shows. A
+the DMP transfers at once. Every DMP mechanism that could yield a gap (counting, floors, the stability margin, member isolation)
+means the same thing whether translations commute or not, so each of them alone would "prove" a photon mass. They can describe a gap;
+none of them alone can be the reason for one. DMP's classification of the forces is different, and passes: IM, the two-signed medium (a
+message passes a door only with both signatures, C19), is the strong and weak force, while light is payload that the gate never reads
+and that acts only on the system it reaches. A gluon carries a colour and an anticolour and interacts with other gluons; a photon carries
+no charge (finding MG5, the owner's correction of 2026-11-21). What light lacks and gluons have is exactly what `nonabelian_loop_value_moves` shows. A
 gluon's field is not something every reader agrees on, only its class is. So a lone gluon is not an observable thing, while a lone photon
 is. A proof has to use that.
 
@@ -272,6 +278,20 @@ photon test bites in four dimensions only, which is where the millennium problem
 Reproduce: `python3 hierarchy/mk_flow.py "SU(2)" 4 12 2,3,4,6,10`, `python3 hierarchy/mk_flow.py "U(1)" 4 22 1.0,1.25,1.5,1.75,2.0,2.25`
 (and the same with `3` for three dimensions), then `python3 hierarchy/summarise.py`. Stored outputs: `results/mk_*.json`.
 
+**The rate is the carriers' self-charge (added 2026-11-21, pre-registered in [`hierarchy/PREREG-SU3.md`](hierarchy/PREREG-SU3.md)).**
+The same recursion for SU(3), the real strong force, computed on the eigenvalue torus ([`hierarchy/mk_torus.py`](hierarchy/mk_torus.py),
+which reproduces the SU(2) table above digit for digit). One-loop physics says 1/g² changes per layer by an amount proportional to the
+self-charge C_A (3 for SU(3), 2 for SU(2), 0 for U(1)); in β = 2N/g² that makes SU(3)'s drop 2.25 times SU(2)'s.
+
+| start β, SU(2) / SU(3) (same 1/g²) | per layer, SU(2) | per layer, SU(3) | ratio (predicted 2.25) |
+|---|---|---|---|
+| 10 / 15 | 0.2520 | 0.5699 | 2.262 |
+| 16 / 24 | 0.2512 | 0.5666 | 2.256 |
+
+Both trees sit the same 2 to 2.4 % below the exact one-loop law (0.2575 and 0.5794). In DMP's words (finding MG5): the zoom-out is
+driven by the second signature, and light, which has none, does not flow. Reproduce: `python3 hierarchy/mk_torus.py SU3 8 6,9,15,24`
+(stored: `results/mk_su3_d4.json`).
+
 ![The layer-by-layer zoom-out: the gluon coupling falls steadily towards strong coupling, light's stalls](figures/zoom.png)
 
 ![Per-layer change on a log scale: gluons about 0.25, light falling exponentially to 1e-12](figures/drift.png)
@@ -344,7 +364,8 @@ no number of its own), **refuted** (fails a test), **open**.
 | Key rotation at the minting | gauge transformation | theorem (`loop_hol_rekey`, `wilsonPot_rekey`) |
 | A closed chain of verifications | Wilson loop, the only re-keying-proof observable | theorem for the integers and S₃; reading for DMP |
 | VIBE potential = mass × shortfall, zero in balance | Wilson action = β × (1 − ½ Re tr U_p), zero for consistent loops | reading: same shape, different content (freshness, not loop consistency) |
-| Mass ≥ 1, the floor of three (T32, T3a) | confinement: only composite, colour-neutral things travel; the lightest has a mass | DMP side theorem (`MassGap.lean`); as a mechanism for the physical gap **refuted by the photon test** |
+| Mass ≥ 1, the floor of three (T32, T3a) | confinement: only composite, colour-neutral things travel; the lightest has a mass | DMP side theorem (`MassGap.lean`); as a mechanism for the physical gap on its own **refuted by the photon test** |
+| IM (two signatures, C19) versus payload (unread by the gate) | carriers with self-charge (gluons: colour and anticolour, C_A = N) versus without (photon, C_A = 0) | the owner's reading (2026-11-21); passes the photon test; computed: the zoom-out rate is proportional to C_A (SU(3) : SU(2) = 2.26, predicted 2.25), finding MG5 |
 | The potential's gap of one thousandth | a gap in lattice units | theorem that it closes under refinement (`mg_refinement_closes_potential_gap`): a grid artefact, exactly the trap of the physics problem |
 | Stability margin μ > 0 | spectral gap of the dynamics (the rate of return to balance, the route of Shen–Zhu–Zhu) | DMP side theorem (`mg_returns_to_balance`); in DMP configured, in physics it has to be derived: reading |
 | Member isolation (T32) | exact clustering | reading |
