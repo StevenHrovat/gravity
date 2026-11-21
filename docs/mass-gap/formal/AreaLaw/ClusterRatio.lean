@@ -18,7 +18,7 @@ partition function of the gas restricted to the polymers disjoint from `S` (acti
   `ε ≤ 1 / (2 e (Δ + 1)²)` and `α = 1`.
 -/
 
-import Balaban.Polymer.Lattice
+import AreaLaw.Vendor.Lattice
 
 open scoped Classical
 

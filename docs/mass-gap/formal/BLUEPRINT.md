@@ -15,7 +15,8 @@ claims one (not checked). What this project adds is an independent proof by a di
 balaban-lean, a centre-parity selection rule, and a minimal-area count by projection to the loop's plane), on a narrower window of β.
 It is a cross-check, not a first.
 
-Reused: `scottnarmstrong/balaban-lean` (Apache-2.0), `Balaban.Polymer`: `Xi`, `KPCond`, `pe_xi_eq_exp`, `pe_logSeries_bound`,
+Reused: `scottnarmstrong/balaban-lean` (Apache-2.0, commit 493e9eb), `Balaban.Polymer`, vendored in `AreaLaw/Vendor/` (ten files, licence
+alongside, module-system keywords removed) so the project builds on gravity's baseline, Lean 4.34.0 with Mathlib v4.34.0: `Xi`, `KPCond`, `pe_xi_eq_exp`, `pe_logSeries_bound`,
 `decomposition`, `pe_lattice`, `card_animals_le`, `RootedAnimals`. Ours: `AreaLaw.Lattice`, `WilsonLoop`, `CentreSymmetry`, `Expansion`.
 
 ## Notation
@@ -73,6 +74,10 @@ law with K · ε ↦ √(2ε) e^{2Δ'α}: |⟨W_C⟩| ≤ n e^{c'|C|} (2ε)^{A/2
 - P1, P2, P4, P6, P7, P9: measure side and assembly (files `AreaLaw/Expansion.lean`, `AreaLaw/Integrals.lean`, `AreaLaw/Assembly.lean`).
 
 ## Status (2026-11-21): complete
+
+Build: `bash sync-build.sh` (WSL; Lean 4.34.0, Mathlib v4.34.0, no other dependency). The `Influence` library in the same project holds
+the sharper single-link bounds of `../dobrushin/LGT-NOTE.md`.
+
 
 All steps are proved; `lake build AreaLaw` succeeds, no `sorry`, and `#print axioms` on the final theorems shows only `propext`,
 `Classical.choice`, `Quot.sound`. The final statements (`AreaLaw/Concrete.lean`) are `wilson_area_law_SU2` and `wilson_area_law_Un`: for

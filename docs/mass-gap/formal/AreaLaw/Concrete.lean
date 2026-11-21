@@ -65,6 +65,8 @@ theorem plaq_ext {p q : LatticePlaquette d N} (hs : p.site = q.site) (h1 : p.dir
     p = q := by
   cases p; cases q; simp_all
 
+section PlaqFinite
+
 variable [Fintype (LatticePlaquette d N)]
 
 /-- The plaquettes having the link `l` in boundary slot `i`. -/
@@ -167,6 +169,8 @@ theorem card_loopPlaqs_rect_le (x : FinLatticeSites d N) (μ ν : Fin d) (R T : 
   (card_loopPlaqs_le _).trans (Nat.mul_le_mul_left _ (card_pathLinks_rect_le x μ ν R T))
 
 /-! ## 4. Compact gauge groups: measurability, Haar probability, the explicit area law -/
+
+end PlaqFinite
 
 section Generic
 
