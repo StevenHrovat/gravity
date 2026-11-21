@@ -79,11 +79,11 @@ All steps are proved; `lake build AreaLaw` succeeds, no `sorry`, and `#print axi
 SU(2) and U(n) with normalised Haar measure, on (ℤ/Nℤ)^d, β ≥ 0 with e^{nβ} − 1 ≤ 1 / (4 e^{16d+1} (16d+1)⁴), and an R × T rectangle
 (1 ≤ R, T < N), the partition function is nonzero and
 
-  |⟨W_C⟩| ≤ n · e^{8d(R+T)} · (e^{16d+1} (e^{nβ} − 1))^{A/2},   A = min(R·T, N² − R·T).
+  |⟨W_C⟩| ≤ n · e^{16d(R+T)} · (e^{16d+1} (e^{nβ} − 1))^{A/2},   A = min(R·T, N² − R·T).
 
 The base of the power is below 1 throughout the allowed range, so the bound decays with the area. Differences from the goal stated at the
 top: the smallness parameter is e^{nβ} − 1 (what the measure lemmas use), and the plaquette graph's degree bound is 16d (proved), giving
-the constants above. The window of β is very small (for d = 4, β below about 10⁻³⁶): this is a proof of the strong-coupling regime only,
+the constants above. The window of β is very small (for d = 4, β below about 4 × 10⁻³⁷; this β multiplies Re tr U_p, so for SU(2) it is half the standard β): this is a proof of the strong-coupling regime only,
 like every cluster-expansion area law, and says nothing about the continuum. `wilson_area_law_explicit` is the same result for any
 compact group with a continuous unitary representation, a left-invariant Haar probability measure and a central z with rep z = −1.
 Files: `Lattice`, `WilsonLoop`, `CentreSymmetry`, `Expansion`, `Integrals` (P1, P2, P4, P6), `ClusterRatio` (P8), `MinArea` (P5),
