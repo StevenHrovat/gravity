@@ -40,8 +40,8 @@ Nothing here tests the continuum limit or proves anything; it reproduces publish
 ## Addendum (2026-11-21, after the β = 2.5 result, before the diagnostic runs)
 
 Result by the rule above: β = 2.3 and 2.4 agree on all numbers; at β = 2.5 a√σ = 0.1990 ± 0.0030 against Teper's 0.1834 ± 0.0026
-(3.9 errors): **fail**, so that number is not used in README §6. The torelon effective mass is flat from t = a to 3a (0.57, 0.55,
-0.57), so excited states are not the cause. Diagnostic runs on the GPU (`run_su2_gpu.py`), fixed before running:
+(3.9 errors): **fail**, so that number is not used in README §6. (This addendum first said the torelon effective mass was flat from
+t = a to 3a, so excited states were not the cause; with the diagnostic's statistics that turned out wrong, see the result below.) Diagnostic runs on the GPU (`run_su2_gpu.py`), fixed before running:
 
 1. **Statistics.** β = 2.5, 16⁴, ten independent chains of 1500 measurements (500 thermalisation sweeps each), same analysis. If a√σ
    agrees with Teper within 2 errors, the CPU run's error was underestimated or it fluctuated, and the GPU value is reported next to it.
@@ -49,3 +49,9 @@ Result by the rule above: β = 2.3 and 2.4 agree on all numbers; at β = 2.5 a�
    too small for our torelon analysis at this β.
 
 If neither explains it, the cause stays open and is reported as such; the analysis rule is not changed to make the number agree.
+
+**Result of the diagnostics (2026-11-21).** (1) Statistics: 16⁴, 15 000 measurements: a√σ = 0.1936 ± 0.0012 (3.6 errors from Teper),
+a·m₀₊₊ = 0.771 ± 0.012 (Teper 0.660 ± 0.022): not explained. (2) Box size: 20⁴, 10 000 measurements: a√σ = 0.1983 ± 0.0015, higher than on
+16⁴, not lower: not explained. Both show effective masses that keep falling with t (torelon on 16⁴: 0.534, 0.526, 0.507, 0.478), so the
+cause is the analysis window t = a → 2a with two smearing levels, contaminated by heavier states on this finer grid. The verdict stays
+**fail** for β = 2.5 under this pre-registration; the corrected method is a separate pre-registration (`PREREG-TTL.md`).

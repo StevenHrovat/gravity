@@ -45,7 +45,7 @@ like a protocol specification with no timeouts anywhere whose running system nev
 |---|---|---|
 | A Yang–Mills theory exists in four dimensions (as a limit of lattices, along a chosen sequence) | proven, Lean-checked, validated 10 Nov 2026 | OpenAI's submission; the Gross committee's assessment |
 | That theory has a mass gap | **open**: "The construction provides no evidence for or against a mass gap" | the committee, §2 |
-| On a coarse grid at strong coupling, lattice Yang–Mills has a gap | proven since 1978, sharpened 2022, Lean-checked in the `lgt` library | Osterwalder–Seiler; Shen–Zhu–Zhu; `lgt` |
+| On a coarse grid at strong coupling, lattice Yang–Mills has a gap | proven since 1978, sharpened 2022, Lean-checked for U(n) in the `lgt` library | Osterwalder–Seiler; Shen–Zhu–Zhu; `lgt` |
 | The bridge: the fine-grid theory flows to the coarse-grid regime without losing control in between | **open: this is the problem** | Section 4 |
 | DMP's own mass gap | **proven here** | `MassGap.lean`, section 2 |
 
@@ -62,28 +62,33 @@ in time: with μ > 0 every staleness returns to balance in bounded time, and wit
 gauge field: re-keying is a gauge transformation, closed loops of translations are Wilson loops, and DMP's "trust is a field, never a
 position" is the fact that a gauge field lives on links, never on sites (`Gauge.lean`, proven for the integers and for the six
 relabellings of a three-node cluster). The structure transfers. DMP's gap **mechanisms** (counting, floors, the stability margin) are
-blind to whether translations commute, so on their own they would also give light a mass. Light is massless (proven for
-four-dimensional lattice U(1) at weak coupling since 1980), so no such mechanism alone can be the proof (**the photon test**,
-section 3). DMP's **classification** passes the test (owner's correction, 2026-11-21): the strong and weak forces are IM, the two-signed
-medium, and light is payload. In gauge theory that is the carriers' self-charge C_A, and the zoom-out computed in section 5 runs at a rate
-proportional to it (SU(3) against SU(2): 2.26 predicted 2.25; finding MG5).
+blind to whether translations commute, so on their own they would also give light a mass. Light is massless (four-dimensional
+lattice U(1) at weak coupling: Froehlich and Spencer, 1982), so no such mechanism alone can be the proof (**the photon test**, section 3).
+DMP's **classification** (owner's correction, 2026-11-21) separates the cases differently: the strong and weak forces are IM, the
+two-signed medium, and light is payload. In gauge theory that matches whether the force carriers are themselves charged (non-abelian,
+self-charge C_A ≠ 0) or not, which in four-dimensional pure gauge theory is what separates asymptotic freedom from a free massless photon.
+It is not a criterion for a gap in general: compact U(1) confines at strong coupling and in three dimensions, the weak force's masses come
+from the Higgs mechanism, and non-abelian theories with matter can be gapless (finding MG5).
 
 **Our attempt at the missing piece.** We ran the bridge in its most DMP-like form: an exact layer-by-layer zoom-out over a tree of layers
-(the Migdal–Kadanoff recursion, section 5). For gluons it works strikingly well. Per layer the coupling strengthens by a steady
-**0.252**, against **0.2575** from the exact one-loop law of asymptotic freedom, and marches into the strong-coupling regime where the gap
-is a theorem. For light, the per-layer change decays to **10⁻⁸ to 10⁻¹³**, where the truth is **exactly 0**. The tree approximation cannot
+(the Migdal–Kadanoff recursion, section 5). For gluons it gets the sign and the group factor right: per layer the coupling strengthens by
+**0.25** for SU(2) (0.5625 for SU(3)), the tree's own closed form at weak coupling, near the one-loop value 0.2575 (the closeness is an
+accident of halving per step; with other step sizes the tree is far off). It reaches β ≈ 1 after a number of layers proportional to β; the
+proven strong-coupling region (β below about 0.1) is further out. For light, the per-layer change decays to **10⁻⁸ to 10⁻¹³**, while
+the real lattice U(1) does not flow to strong coupling at all (it has a Coulomb phase). The tree approximation cannot
 tell "exponentially slow" from "never". That is exactly the hole Ito and Seiler found in 2008 in Tomboulis's attempt to turn these layers
 into a proof: the argument "would seem to work" for U(1), which deconfines. A proof has to control effects as small as 10⁻¹¹ per layer
 and must use the one thing light lacks, non-commuting translations.
 
 **Verdict.** DMP's own mass gap: **proven**. The physical mass gap: **not proven, by anyone**. DMP supplies a faithful vocabulary, a correct
 dictionary and a sharp test. The layer picture reproduces the physics numerically and fails the photon test exactly where the experts
-said a proof must not. **Updated 2026-11-21, with the owner's readings (findings MG5 to MG7):** DMP's classification of the forces (IM
-versus payload) passes the photon test and sets the zoom-out rate (SU(3) against SU(2): 2.26, predicted 2.25). Inside DMP the gap
-follows from Axiom 1: an IM act lies within the full reach of its two witnesses at every layer, so its existence has a floor that
-survives every refinement of the grid (`Reach.lean`), while payload has none. In physics words that chain is "confinement implies the
-gap", so DMP does not prove the Yang–Mills mass gap; it locates it: the Yang–Mills content must be shown to obey Axiom 1 for its IM, that
-is, to confine at every scale (section 3.1b). Section 8 lists what would move it.
+said a proof must not. **Updated 2026-11-21, with the owner's readings and an adversarial review (findings MG5 to MG7):** DMP's classification of
+the forces (IM versus payload) matches the line between asymptotically free and free massless gauge fields in four dimensions; it is not a
+gap criterion in general. The owner reads Axiom 1's "full reach over the act" as a bound on an IM act's extent, the same at every layer;
+with that postulate and his rule "existence times extent is one quantum", a floor on existence follows by one line of arithmetic
+(`Reach.lean`). In physics the postulate is a finite correlation length, which is the mass gap itself, so this is a **restatement, not a
+derivation**: DMP names where the open problem lives (Yang–Mills must be shown to confine with a gap at every scale); it does not solve it
+(section 3.1b). Section 8 lists what would move it.
 
 ---
 
@@ -193,7 +198,8 @@ IM") and his messages of 21 November:
 | a node has mass because, as a whole, it must assert its existence over its own radius | **mass gap Δ = ħc / ξ**, ξ the correlation length (the radius beyond which nothing of a disturbance is left) | yes: this is the standard equivalence of a spectral gap and exponential clustering |
 
 So in DMP's terms the Yang–Mills mass gap **is** the statement that IM always closes into nodes of bounded radius, the same bound at every
-grid fineness. The reading passes the photon test (payload forms no node) and agrees with every qualitative fact in the table.
+grid fineness. The reading agrees with every qualitative fact in the table; it does not by itself pass the photon test in every regime
+(compact U(1) forms "nodes" at strong coupling, finding MG5).
 
 **Where it stops, precisely.** In DMP the node and its boundary are given: G0 is "stated, not derived", the cluster floor of three is an
 axiom (T3a), the maximum depth is a setting (chapter 04). In Yang–Mills the bounded radius is exactly what has to be **derived** from the
@@ -231,10 +237,10 @@ correct acts, it has to be assumed that it must be able to communicate them at t
 
 | step | DMP | physics |
 |---|---|---|
-| 1 | an IM act needs two witnesses with full reach over it | the two signatures of a gluon link (colour, anticolour) must stay within each other's reach |
-| 2 | so its extent is bounded, the same at every layer | separating colour costs σ per metre (the string tension): **confinement**, at every scale |
-| 3 | existence times extent is one quantum, so a bounded extent forces a floor: existence ≥ ħ / (c · reach) | confinement implies the gap: the smallest closed flux loop has a minimum size and mass |
-| 4 | payload is not an act inside CMOS: no reach bound, no floor | light is massless (the photon test passes) |
+| 1 | an IM act needs two witnesses with full reach over it (the owner reads "reach" as a bound on the act's extent; in Axiom 1's text it is authority over the act) | colour sources (fundamental charges) cannot be separated freely |
+| 2 | so its extent is bounded, the same at every layer (a postulate) | separating fundamental colour costs σ per metre (the string tension): **confinement**, at every scale (open in the continuum) |
+| 3 | existence times extent is one quantum (the owner's rule), so a bounded extent forces a floor: existence ≥ ħ / (c · reach) | a bounded correlation length *is* a gap (Δ = ħc / ξ); that confinement implies the gap is expected, not a general theorem |
+| 4 | payload is not an act inside CMOS: no reach bound, no floor | light at weak coupling is massless (but compact U(1) confines at strong coupling) |
 | — | "not fully trusted is automatically ejected" (C∞) | a lone colour charge is not a physical state |
 
 **The existence TTL (the owner, 2026-11-21).** "Using an existence TTL would be a good analog for that. [...] it derives the existence from the confined space (3s), as well as the time it's existence is certified (1t)." A node's existence is a certificate with a time to live; Axiom 1's witnesses can renew it only within their reach, so the TTL has a ceiling. In physics the TTL is the correlation time: in imaginary time a disturbance's signal decays as e^(−Δt/ħ), so **Δ = ħ / TTL**, and a gap means every certificate expires within a bounded time (light's decay only by a power law). In a relativistic theory the space reach and the TTL are one statement (TTL = reach / c). The lattice's effective mass is exactly the certificate's expiry rate: at β = 2.3 the TTL is about 0.8 grid ticks, and with a finer grid it grows in ticks and stays put in real units (section 6).
@@ -244,12 +250,13 @@ certificate):
 
 | | TTL in grid ticks | TTL in real units |
 |---|---|---|
-| SU(2), β = 2.3, 2.4, 2.5 | 0.81, 1.01, 1.38 (± 5 %) | TTL · √σ = 0.294, 0.275, 0.275 (± 0.015): the same at every layer |
+| SU(2), β = 2.3, 2.4 | 0.81, 1.01 (± 5 %) | TTL · √σ = 0.294, 0.275 (± 0.016): consistent with one value |
 | U(1), Coulomb phase, boxes 8, 12, 16 | 1.33, 1.92, 2.56 | grows with the box, TTL / L = 0.166, 0.160, 0.160 (about 1/2π): never expires in infinite space |
 | U(1), confined phase, boxes 8, 12 | about 1.2 and 0.5 (large errors) | does not grow |
 
-(The β = 2.5 string tension failed its pre-registered comparison with Teper and is under diagnosis, section 6; the TTL in ticks does not
-depend on it.) **The two witnesses.** In physics Axiom 1's pair reads as reflection positivity: a configuration and its mirror image
+(β = 2.5 is left out: its string tension and glueball mass failed the pre-registered comparison with Teper, because the analysis window
+was contaminated by heavier states, section 6. Whether the TTL is the same at every layer over a wide range is the pre-registered TTL scan,
+[`lattice/PREREG-TTL.md`](lattice/PREREG-TTL.md).) **The two witnesses.** In physics Axiom 1's pair reads as reflection positivity: a configuration and its mirror image
 always pair positively, which makes one tick of renewal a positive transfer matrix and the TTL well defined. It implies that every
 correlator matrix of time-slice operators is positive at every time step; on all three SU(2) runs, for both operator sets and t = 0 to
 4, the smallest eigenvalue is positive within 2 errors (`ttl.py`). For the Wilson action this is a theorem (Osterwalder and Seiler, 1978),
@@ -257,14 +264,14 @@ so the check validates the data; the reading "two witnesses = reflection positiv
 
 Lean (`evidence/Dmp/Reach.lean`, whole-number model of the chain): `mg_reach_existence_floor` (the floor `Q/R`, on a grid of any
 resolution), `mg_reach_floor_every_layer` (the same floor at every layer), `mg_reach_floor_positive` (never zero),
-`mg_no_reach_no_floor` (without the reach bound every proposed floor is undercut: payload), `mg_ttl_existence_floor` (the same floor from a bounded time to live), `mg_space_time_certificate` (one existence certified with one quantum over its space and over its TTL forces reach = TTL, the 3s1t consistency). Unlike the potential's gap of section 2,
-which closes under refinement, this floor does not mention the grid's resolution: **it survives every refinement**, which is exactly
-the property the physical problem asks for.
+`mg_no_reach_no_floor` (without the reach bound every proposed floor is undercut: payload), `mg_ttl_existence_floor` (the same floor from a bounded time to live), `mg_space_time_certificate` (one existence certified with one quantum over its space and over its TTL forces reach = TTL, the 3s1t consistency). These are one-line consequences of the two postulates (the same arithmetic under different names). Unlike the potential's gap of
+section 2, the floor does not mention the grid's resolution, but only because the reach is postulated in real units, which is where the
+whole difficulty of the physical problem sits.
 
 A weak numerical check: with the reach at the length where a link's cost equals one quantum (√(ħc/σ)), the floor is about 1 × √σ; the
 lattice glueball is 3.74 ± 0.12 × √σ (SU(2)). Consistent, not sharp.
 
-**Status.** Inside DMP, a derivation from the axioms. For Yang–Mills, an open requirement: the content must be shown to obey Axiom 1 for its
+**Status.** A restatement in DMP's terms, not a derivation: the reach postulate is the gap. For Yang–Mills, an open requirement: the content must be shown to obey Axiom 1 for its
 IM, i.e. to confine at every scale. Confinement is proven on coarse lattices (Osterwalder and Seiler 1978; extended by Cao, Nissim and
 Sheffield, arXiv:2505.16585) and open in the continuum; Jaffe and Witten list it as a separate open property; and "confinement implies the
 gap" is expected rather than a theorem in general. DMP does not prove the Yang–Mills mass gap; it states precisely where it lives.
@@ -272,7 +279,7 @@ gap" is expected rather than a theorem in general. DMP does not prove the Yang�
 ### 3.2 The photon test
 
 Four-dimensional U(1) lattice gauge theory, the lattice theory of light, has two phases. At strong coupling it confines and has a gap. At
-weak coupling it has a **massless photon**, proven rigorously (Guth 1980; Froehlich and Spencer 1982). So:
+weak coupling it does not confine (Guth 1980, Villain action) and has a **massless photon** with power-law correlations (Froehlich and Spencer 1982). So:
 
 > **Any argument that would also give light a mass is wrong.**
 
@@ -349,8 +356,10 @@ Gluons, SU(2) in four dimensions. Per layer (one halving of the resolution) the 
 | 6.0 | 0.217 to 0.256 | ≈ 19 by the rate (12 computed) |
 | 10.0 | 0.215 to 0.252 (0.2524 at the end) | ≈ 35 by the rate (12 computed) |
 
-The exact one-loop law of asymptotic freedom gives 8·b₀·ln 2 = **0.2575** per layer (b₀ = 11·2/(48π²)); the tree's 0.252 at weak coupling
-is 2% below it, and the rate rises towards strong coupling as the two-loop law says it should.
+At weak coupling the tree has a closed form: bond moving a heat-kernel weight leaves a Jacobian factor, and β falls by N²(1 − 1/b²)/12 per
+step of scale factor b, exactly **0.25** for SU(2) at b = 2 (checked: 0.25008 at β = 200). The one-loop law of asymptotic freedom gives
+8·b₀·ln 2 = 0.2575 (b₀ = 11·2/(48π²)). The tree has the right sign and the right group factor but not the one-loop coefficient: the
+closeness at b = 2 is an accident (at b = 3 the tree is about 27 % off). Towards strong coupling the rate rises.
 
 Light, U(1) in four dimensions. After the reshaping the per-layer change shrinks about 16-fold per layer, then stalls at a tail (positive:
 towards strong coupling):
@@ -375,18 +384,19 @@ photon test bites in four dimensions only, which is where the millennium problem
 Reproduce: `python3 hierarchy/mk_flow.py "SU(2)" 4 12 2,3,4,6,10`, `python3 hierarchy/mk_flow.py "U(1)" 4 22 1.0,1.25,1.5,1.75,2.0,2.25`
 (and the same with `3` for three dimensions), then `python3 hierarchy/summarise.py`. Stored outputs: `results/mk_*.json`.
 
-**The rate is the carriers' self-charge (added 2026-11-21, pre-registered in [`hierarchy/PREREG-SU3.md`](hierarchy/PREREG-SU3.md)).**
-The same recursion for SU(3), the real strong force, computed on the eigenvalue torus ([`hierarchy/mk_torus.py`](hierarchy/mk_torus.py),
-which reproduces the SU(2) table above digit for digit). One-loop physics says 1/g² changes per layer by an amount proportional to the
-self-charge C_A (3 for SU(3), 2 for SU(2), 0 for U(1)); in β = 2N/g² that makes SU(3)'s drop 2.25 times SU(2)'s.
+**SU(3) (added 2026-11-21; [`hierarchy/PREREG-SU3.md`](hierarchy/PREREG-SU3.md)).** The same recursion for SU(3), the real strong force,
+computed on the eigenvalue torus ([`hierarchy/mk_torus.py`](hierarchy/mk_torus.py), which reproduces the SU(2) table above digit for
+digit). By the closed form above the ratio of the SU(3) and SU(2) drops at weak coupling is (3/2)² = 2.25 identically, so this is a
+**consistency check of the code against an algebraic identity, not an independent test** (an adversarial review pointed this out after
+the pre-registration had called it a test).
 
 | start β, SU(2) / SU(3) (same 1/g²) | per layer, SU(2) | per layer, SU(3) | ratio (predicted 2.25) |
 |---|---|---|---|
 | 10 / 15 | 0.2520 | 0.5699 | 2.262 |
 | 16 / 24 | 0.2512 | 0.5666 | 2.256 |
 
-Both trees sit the same 2 to 2.4 % below the exact one-loop law (0.2575 and 0.5794). In DMP's words (finding MG5): the zoom-out is
-driven by the second signature, and light, which has none, does not flow. Reproduce: `python3 hierarchy/mk_torus.py SU3 8 6,9,15,24`
+Both converge to the tree's closed form (0.25 and 0.5625; 0.5640 at β = 60). What the tree does show: the flow at weak coupling comes from
+the curvature of the group (zero for the flat U(1)), the non-commutativity the photon test asks for. Reproduce: `python3 hierarchy/mk_torus.py SU3 8 6,9,15,24`
 (stored: `results/mk_su3_d4.json`).
 
 ![The layer-by-layer zoom-out: the gluon coupling falls steadily towards strong coupling, light's stalls](figures/zoom.png)
@@ -395,13 +405,13 @@ driven by the second signature, and light, which has none, does not flow. Reprod
 
 **What it shows.**
 
-1. **For gluons, the layer picture is right and fast.** The coupling strengthens by a steady 0.252 per layer, within 2% of the exact
-   one-loop asymptotic-freedom value 8·b₀·ln 2 = 0.2575 (b₀ = 11·2/(48π²)), and reaches strong coupling, where B applies, after a number of
-   layers proportional to β. That is the bridge working as hoped, but only in a tree approximation.
+1. **For gluons, the layer picture has the right sign and group factor.** The coupling strengthens by 0.25 per layer (the tree's
+   closed form, near but not equal to the one-loop 0.2575) and reaches β ≈ 1 after a number of layers proportional to β. The proven
+   strong-coupling region (β below about 0.1) is further. A picture of the bridge, in a tree approximation, not the bridge.
 2. **For light, it stalls.** After the reshaping, the per-layer change shrinks about 16-fold per layer down to a tail that is itself
    exponentially small in β (from 5 × 10⁻⁵ at β ≈ 0.88 to 7 × 10⁻¹³ at β ≈ 2.1). In the tree, light still drifts towards confinement,
-   just absurdly slowly (a correlation length of about 2 to the power of two billion grid steps). On the real lattice the drift is **exactly zero**
-   (Guth; Froehlich and Spencer). The tree approximation therefore **fails the photon test**, by an amount far below anything a numerical
+   just absurdly slowly (a correlation length of about 2 to the power of two billion grid steps). On the real lattice U(1) does not flow to strong
+   coupling: it has a Coulomb phase (Guth; Froehlich and Spencer). The tree approximation therefore **fails the photon test**, by an amount far below anything a numerical
    check could resolve.
 3. **So the bridge must control exponentially small effects.** Whether light has a gap is decided by effects of size 10⁻¹¹ per layer and smaller. A
    proof that keeps only "the coupling grows as we zoom out" at the level of the tree cannot distinguish the two groups. That is the
@@ -420,19 +430,30 @@ numbers of Teper's review (hep-th/9812187, Table 10).
 
 **SU(2): the gap in grid units shrinks, in real units it stays.** The published table (Teper, Table 10) shows the whole pattern: as the
 grid is refined from β = 2.2 to 2.85 the gap in grid steps falls from 1.44 to 0.23, while the gap in units of the string tension
-stays near 3.7. Our code reproduces the β = 2.3 point; the β = 2.4 and 2.5 runs were stopped part-way at the owner's request (2026-11-21)
-to continue on the owner's laptop (`HANDOVER.md`).
+stays near 3.7. Our code reproduces the β = 2.3 and 2.4 points. At β = 2.5 it **fails** the pre-registered comparison ([`lattice/PREREG.md`](lattice/PREREG.md)):
+the cause is the analysis, not the code (below), and the wider scan with a better analysis is pre-registered in
+[`lattice/PREREG-TTL.md`](lattice/PREREG-TTL.md).
 
 | β | lattice | a√σ (string tension, grid units) | a·m₀₊₊ (gap, grid units) | m₀₊₊/√σ (gap, real units) | source |
 |---|---|---|---|---|---|
 | 2.3 | 10⁴, 3000 measurements | 0.363 ± 0.011 | 1.24 ± 0.05 | 3.41 ± 0.18 | this code |
 | 2.3 | 10⁴ | 0.3687 ± 0.0022 | 1.216 ± 0.023 | 3.30 | Teper Table 10 |
+| 2.4 | 14⁴, 2000 measurements | 0.273 ± 0.004 | 0.99 ± 0.05 | 3.63 ± 0.20 | this code (agrees: 0.9 and 0.6 errors) |
+| 2.5 | 16⁴, 1500 measurements | 0.199 ± 0.003 | 0.72 ± 0.04 | (3.64 ± 0.19) | this code: **fails** on a√σ (3.9 errors), not used |
 | 2.4 | 14⁴ | 0.2686 ± 0.0021 | 0.959 ± 0.020 | 3.57 | Teper Table 10 |
 | 2.5 | 16⁴ | 0.1834 ± 0.0026 | 0.660 ± 0.022 | 3.60 | Teper Table 10 |
 | 2.6 | 20⁴ | 0.1326 ± 0.0030 | 0.51 ± 0.03 | 3.85 | Teper Table 10 |
 | 2.7 | 32⁴ | 0.1005 ± 0.0020 | 0.39 ± 0.03 | 3.88 | Teper Table 10 |
 | 2.85 | 48³ × 56 | 0.0636 ± 0.0012 | 0.229 ± 0.012 | 3.60 | Teper Table 10 |
 | continuum | | | | **3.74 ± 0.12** | Teper Table 1 |
+
+**The β = 2.5 failure, diagnosed** (pre-registered diagnostics, run on the GPU path, `lattice/gpu/README.md`): with ten times the
+statistics on 16⁴ the string tension stays high (a√σ = 0.1936 ± 0.0012) and the glueball mass now fails too (0.771 ± 0.012 against
+0.660 ± 0.022); on 20⁴ a√σ = 0.1983 ± 0.0015, higher, not lower, so the box is not the cause. In both, the effective masses keep falling
+with time (torelon 0.534, 0.526, 0.507, 0.478 on 16⁴), so the fixed window t = a → 2a with only two smearing levels is contaminated by
+heavier states on this finer grid. The code is not at fault (the GPU path reproduces every measurement of the CPU code to 3 × 10⁻¹⁴); the
+analysis rule is too simple for β ≥ 2.5, and the rule is not changed after the fact: the TTL scan uses a larger operator basis and a
+plateau rule fixed before its data existed.
 
 Plaquette at β = 2.3: 0.60224 ± 0.00006. String tension from torelons (flux closed around the box), gap from the scalar glueball, both
 as effective masses from t = a to 2a with a variational basis of smeared operators, as in Teper's Appendix A.
@@ -456,8 +477,9 @@ runs (two box sizes, both phases) are listed in `lattice/README.md` and `HANDOVE
 
 In the Coulomb phase the energy falls like 2π/L (E₁ · L ≈ 2π = 6.28), and a fit E₁² = m² + E_free² gives m² = 0.0044 ± 0.0028,
 consistent with a massless photon. **Verdict by the pre-registered rule: tension, not pass**, because the 12³ box lies 2.03 errors
-above the massless value, just outside the 2-error limit; no fail (m is 1.6 errors from 0, the fail line was 3). In the confined phase
-the energy does not fall with the box (ratio 2.1, the rule asked for more than 0.85): pass, with large errors. Stored:
+above the massless value, just outside the 2-error limit; no fail (m² is 1.6 errors from 0, the fail line was 3). In the confined phase
+the rule's ratio is 2.1 (it asked for more than 0.85), formally a pass, but with errors of about 70 % the energies are also compatible with
+the massless values: **inconclusive**, and the rule was too weak for this statistics. Stored:
 `results/u1_*.npz`, `results/u1_summary.json`, `results/u1_photon_test.json`.
 
 ![The lattice photon's energy against momentum on the massless curve](figures/photon.png)
@@ -479,11 +501,11 @@ no number of its own), **refuted** (fails a test), **open**.
 | A closed chain of verifications | Wilson loop, the only re-keying-proof observable | theorem for the integers and S₃; reading for DMP |
 | VIBE potential = mass × shortfall, zero in balance | Wilson action = β × (1 − ½ Re tr U_p), zero for consistent loops | reading: same shape, different content (freshness, not loop consistency) |
 | Mass ≥ 1, the floor of three (T32, T3a) | confinement: only composite, colour-neutral things travel; the lightest has a mass | DMP side theorem (`MassGap.lean`); as a mechanism for the physical gap on its own **refuted by the photon test** |
-| IM (two signatures, C19) versus payload (unread by the gate) | carriers with self-charge (gluons: colour and anticolour, C_A = N) versus without (photon, C_A = 0) | the owner's reading (2026-11-21); passes the photon test; computed: the zoom-out rate is proportional to C_A (SU(3) : SU(2) = 2.26, predicted 2.25), finding MG5 |
+| IM (two signatures, C19) versus payload (unread by the gate) | carriers with self-charge (non-abelian, C_A = N) versus without (photon, C_A = 0) | the owner's reading (2026-11-21); matches asymptotically free versus free massless gauge fields in 4D; not a gap criterion in general (compact U(1) confines at strong coupling and in 3D); finding MG5 |
 | The potential's gap of one thousandth | a gap in lattice units | theorem that it closes under refinement (`mg_refinement_closes_potential_gap`): a grid artefact, exactly the trap of the physics problem |
 | Stability margin μ > 0 | spectral gap of the dynamics (the rate of return to balance, the route of Shen–Zhu–Zhu) | DMP side theorem (`mg_returns_to_balance`); in DMP configured, in physics it has to be derived: reading |
 | Member isolation (T32) | exact clustering | reading |
-| Restoration one layer per round | the renormalisation group, layer by layer | reading; computed in its exact tree form: reproduces asymptotic freedom within 2%, **fails the photon test** (section 5) |
+| Restoration one layer per round | the renormalisation group, layer by layer | reading; computed in its tree form: right sign and group factor, not the one-loop coefficient; **fails the photon test** (section 5) |
 | Two independent witnesses (Axiom 1) | reflection positivity (a theory and its mirror image make a positive pairing) | reading, untested |
 | Relabellings of three nodes do not commute; of two, they do | S₃ is the Weyl group of SU(3); non-commutativity is what light lacks | theorem for the groups (`perm3_not_abelian`, `perm2_abelian`); reading for the link to T3a |
 | "Is this (also) Yang–Mills?" (dmp#25, 2026-10-28) | | the forces are; DMP is not (Existence paper §7.7), and the dictionary above is the precise sense in which DMP's vocabulary fits them |
