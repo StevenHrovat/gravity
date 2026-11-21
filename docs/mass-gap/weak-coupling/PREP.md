@@ -367,3 +367,12 @@ so far: **exclude an infrared fixed point for pure SU(2)** (in physics: the trac
 distances), weaker and more natural than round 3's worst-case condition D′, and exactly what the conformal window violates. Known:
 perturbatively pure Yang–Mills has no such zero (its first two running coefficients have the same sign); non-perturbatively it is open,
 and lattice data show none.
+
+The centre reached through the chain of causality (the owner, on round 4, attempt 3's finding that the separating property is "−1 is a
+commutator"): "This, at least in DMP, is done through the chain of causality, so the in/out reach." Reading: a commutator is literally a
+causal round trip, a b a⁻¹ b⁻¹: out along a, out along b, back along a, back along b. Outward reach then inward reach. In an abelian group
+the round trip always closes on the identity: going out and coming back changes nothing, the root is never reached. In SU(2) the round trip
+can end on −1, the other half of the root (the root swap): the twist eater is a closed causal loop, out and back, whose net result is the
+centre. The order-12 binary dihedral group is non-abelian, yet no round trip in it ends on −1: self-charge alone is not enough, the
+causal loop must reach the root. So the separating property, read in DMP terms, is that the in/out reach of the self-charge spans to the
+root.
