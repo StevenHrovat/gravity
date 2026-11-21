@@ -28,14 +28,14 @@ duality), and is recorded in `PREP.md`; it guides, it does not prove.
 | P1.1 | Wilson measure on the 4D torus, SU(2) and general compact G | Lean | `formal/AreaLaw/ConcreteSUn.lean`, `formal/OneScale/` |
 | P1.2 | reflection positivity, site and link | Lean | `formal/Positivity/` |
 | P1.3 | temporal-gauge transfer kernel; centre flip of one row as a symmetry; parity-sector norm ordering | Lean (kernel, symmetry, ordering); Gauss law not formalised; `Z_Wilson = tr(P_G Tⁿ)` not formalised; strict E_e > 0 open | `R4/LayerKernel.lean`, `LayerSector.lean` |
-| P1.3′ | 't Hooft's electric-flux sectors proper (Gauss-law states, eigenspaces of the centre transformation) and E_e as their gap | open | review finding 2 |
+| P1.3′ | 't Hooft's electric-flux sectors proper and E_e as their gap; cheapest route (free win 1): E_e as the decay rate of a centre-odd slab observable on the 4D measure via the formal Hankel/RP-doubling machinery (`OneScale/TimeShift.lean`, `TorusRP.lean`), no Gauss projection needed | open (free win 1) | review finding 2; `attempts/r4-review/FREE-WINS.md` |
 | P1.4 | sector Fourier identity Z_e = (Z ± Z_tw)/2 | Lean (definitional) | `LayerSector.lean` (`twist_centre_transform`) |
 | P1.4′ | 't Hooft duality proper (lattice rotation on a symmetric box, temporal vs spatial twist) | open | review finding 3 |
 | P1.5 | decimation by 2: gauge covariant, centre-flip and reflection commuting | Lean | `R4/LayerDecimation.lean` |
 | P1.5′ | "act conserved": image measures keep total mass | Lean (definitional) | `LayerTransport.lean` |
 | P1.5″ | the image of the twisted ensemble is the twist of one local coarse action (real flux-sector transport) | open | `r4-layer/NOTE.md` |
 | P1.6 | reflection positivity of a decimated layer, one step | Lean; but decimation at fixed L₁ has a pure-noise limit, so it is not the route's blocking | `decimated_wilson_rp_SU2` |
-| P1.8 | **a good blocking**: centre-covariant, reflection-positive at every level, non-trivial continuum limit at fixed L₁ | open (averaging with odd factor: paper sketch for link positivity) | `r4-layer/NOTE.md` |
+| P1.8 | **a good blocking**: centre-covariant, reflection-positive at every level, non-trivial continuum limit at fixed L₁; free win 3: positivity is needed in the time direction only, so averaging inside time slices with decimation in time keeps it | open (abstract lemma about 10 lines) | `r4-layer/NOTE.md`, `attempts/r4-review/FREE-WINS.md` |
 
 ### P2. Decay machinery (Route A, conditional)
 
@@ -45,7 +45,7 @@ duality), and is recorded in `PREP.md`; it guides, it does not prove.
 | P2.2 | D′ ⇒ single-site GDS; openness under local perturbation | Lean | `R3/FlatFactors.lean`, `R3/Robust.lean` |
 | P2.3 | decay of block observables from D′ at L₁ | Lean (abstract Gibbs systems; satisfied by pure noise) | `gap_of_localFactorsW`, `continuum_decay` |
 | P2.4 | Corollary B: physical units | Lean | `formal/OneScale/CorollaryB*.lean` |
-| P2.5 | strong-coupling gap, any compact group; soft swap | Lean / paper | `AreaLaw.Clustering`, `R2/CouplingSwap.lean` |
+| P2.5 | strong-coupling gap, any compact group; soft swap | Lean / paper (widest window: `OneScale/SingleLink.lean`, 18·tanh(nβ) < 1) | `OneScale/SingleLink.lean`, `AreaLaw.Clustering`, `R2/CouplingSwap.lean` |
 
 ### P3. Quantum half (weak coupling)
 
@@ -60,7 +60,7 @@ duality), and is recorded in `PREP.md`; it guides, it does not prove.
 
 | piece | statement | status | where |
 |---|---|---|---|
-| P4.1 | Route A: every limit theory blocked to L₁ (with the good blocking P1.8) satisfies D′, uniformly in volume **and** spacing, order of limits stated | open | `ROUND-3.md` |
+| P4.1 | Route A, **gap strength** (free win 2): torus slab covariances of the Wilson theory along the line of constant physics decay at one physical rate, any prefactor (`LevelDecay`, what `corollaryB_lattice` consumes). Sufficient conditions: D′ at L₁ (stronger than the gap, false below 1/T_c), or D′ on centre-blind (SO(3)) block variables (free win 4, to check) | open | `ROUND-3.md`, `attempts/r4-review/FREE-WINS.md` |
 | P4.2 | Route B: Conjecture W (summed form W_Σ: z grows by a margin per doubling along the line of constant physics) | open; photon marginality (Villain/free form) and finite-group failure: paper | `r4-conjw/NOTE.md`, `R4/ConjW.lean` (toy) |
 | P4.3 | (B1) minimal action on T³×ℝ is 4π²/g² | numerical only; certifiable | `r4-conjw/NOTE.md` |
 | P4.4 | (B2) fluctuation prefactor along the line of constant physics (where b₀ enters) | open; needs constructive renormalisation | `r4-conjw/NOTE.md` |
