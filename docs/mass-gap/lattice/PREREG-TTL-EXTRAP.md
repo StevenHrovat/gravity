@@ -17,3 +17,15 @@ cannot change the scan's recorded verdict, and it is labelled as such wherever i
 
 **Verdict.** 1 to 3 hold: the failure is consistent with an a² discretisation effect and the continuum TTL agrees with the known value.
 Any failing: reported as such. Either way the scan's own verdict (fail) stands.
+
+## Result (2026-11-21)
+
+Fit y = c + k·x with x = (a√σ)²: c = 0.2470 ± 0.0061, k = 0.30 ± 0.11, χ²/dof = 5.4/3, p = 0.15.
+
+1. Fit quality: p = 0.15 > 0.05: pass.
+2. Continuum value: c against 1/3.74 = 0.267 ± 0.009: 1.9 errors: pass (narrowly).
+3. Coarse-grid term: k > 0 at 2.7 errors: pass.
+
+**Verdict:** the TTL scan's failure is consistent with an a² discretisation effect, and the extrapolated continuum TTL agrees with the
+known value within 2 errors (at the margin). This is a post-hoc hypothesis tested after a pre-registration of its own; the scan's verdict
+(fail on constancy across raw lattice spacings) stands. Stored: `results/ttl_extrapolation.json`.
