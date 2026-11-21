@@ -6,7 +6,14 @@ the periodic lattice (ℤ/Nℤ)^d, and the R × T rectangular Wilson loop C in a
   |⟨W_C⟩| ≤ K₀ · e^{κ₁ · |C|} · (K · (e^{2nβ} − 1))^{A},   A = min(R·T, N² − R·T),
 
 with constants depending only on d and n (|C| = 2(R + T) links). That is the area law. Everything is finite (finite lattice, finite sums);
-no limit is taken. Known mathematics (Osterwalder–Seiler 1978, via cluster expansion); not formalised anywhere so far.
+no limit is taken. Known mathematics (Osterwalder–Seiler 1978, via cluster expansion).
+
+**Prior formalisations (found 2026-11-21, after this blueprint was written).** This is not the first Lean area law:
+`github.com/bharathsrivats/fisher-lorentz-formalization` proves a general SU(N) strong-coupling area law (`area_law_general`, checked
+here: no `sorry`; the repository carries no licence, so nothing is copied from it), and `github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME`
+claims one (not checked). What this project adds is an independent proof by a different route (Kotecký–Preiss cluster expansion from
+balaban-lean, a centre-parity selection rule, and a minimal-area count by projection to the loop's plane), on a narrower window of β.
+It is a cross-check, not a first.
 
 Reused: `scottnarmstrong/balaban-lean` (Apache-2.0), `Balaban.Polymer`: `Xi`, `KPCond`, `pe_xi_eq_exp`, `pe_logSeries_bound`,
 `decomposition`, `pe_lattice`, `card_animals_le`, `RootedAnimals`. Ours: `AreaLaw.Lattice`, `WilsonLoop`, `CentreSymmetry`, `Expansion`.
