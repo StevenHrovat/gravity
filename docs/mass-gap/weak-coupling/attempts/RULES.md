@@ -18,3 +18,14 @@ Shared by the five proof attempts on the open hypothesis `UniformGDS` (see `../P
    `../../formal/Attempts/<Route>/` built in your own WSL folder. No German umlauts (transliterate names). Do not commit or push.
 7. **Report:** what you tried, what holds (with statements), what fails and why, the photon/Z2 check, and the single most promising next
    step.
+
+## Round 2 additions (2026-11-21)
+
+- **Unit tests, refined after round 1:** the photon test is unchanged (no claim may give U(1) at weak coupling a gap or a reach). The Z₂
+  test applies to **confinement-type** claims (area law, boundary-uniform GDS): they must fail for weak-coupling Z₂. A **gap-only** claim
+  (torus decay, a uniform ratio bound) must instead *hold* for weak-coupling Z₂, which has a gap, and must not imply an area law for it.
+- **Read first:** `ROUND-1.md`, `../H1-OPENAI.md`, `../H2-CURVATURE.md`, `../followups/PREREG-FOLLOWUPS.md` (Result section), and
+  `../PREP.md` (the effective-theory split H1/H2 and the owner's readings). The Lean reduction now runs through
+  `OneScale.Effective.gap_of_effective_W` (H1 `EffectiveConvergence` + H2 `LimitGDS_W`).
+- **Numerics:** tests of something new only, pre-registered in your folder before running, CPU only, one process, at most 15 minutes per
+  run. The GPU runs Leg B overnight; its data will be fed in when available.
