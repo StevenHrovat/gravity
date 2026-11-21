@@ -54,7 +54,7 @@ def analyse(path):
     amg, damg = float(mg[tg]), float(eg[tg])
     ratio = amg / asq
     dratio = ratio * np.hypot(damg / amg, dasq / asq)
-    out.update({"a_sqrt_sigma": [asq, dasq], "a_m_0pp": [amg, damg], "m_0pp_over_sqrt_sigma": [ratio, dratio],
+    out.update({"torelon_mass": [aml, daml], "a_sqrt_sigma": [asq, dasq], "a_m_0pp": [amg, damg], "m_0pp_over_sqrt_sigma": [ratio, dratio],
                 "ttl_ticks": [1 / amg, damg / amg ** 2], "ttl_sqrt_sigma": [1 / ratio, dratio / ratio ** 2]})
     return out
 
