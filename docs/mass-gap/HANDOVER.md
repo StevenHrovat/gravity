@@ -230,3 +230,27 @@ open follow-ups) so the work can be continued. If you have open questions, ask t
   implies the gap", so the open requirement is that Yang–Mills obeys Axiom 1 for its IM). Thread C: U(1) photon test done (tension by the
   pre-registered rule); SU(2) β = 2.6 stopped at 150 measurements by the owner's leave, β = 2.4 and 2.5 finishing. Threads A and B
   dropped; the quick shots of `dobrushin/` closed the threshold route.
+
+### State at 2026-11-21 ~20:30 (before a context compaction)
+
+Running in the background:
+- **Leg B (GPU, overnight):** `lattice/queue_boundary_gpu2.ps1` (reordered: larger boxes β 2.3/ℓ 12 and β 2.4/ℓ 16 first, then β 2.5 flux
+  and hot (flux rerun: the first attempt ended with its stopped coordinator), β 2.6, β 2.7 last); log `lattice/runs-gpu/boundary/queue_boundary.log`;
+  final analysis `analyse_boundary.py` writes `boundary_summary.json` / `analysis.log` after the photon gate.
+- **Leg B controls (CPU):** `lattice/queue_boundary_cpu.ps1` (U(1), Z₂ controls, then the photon gate: "PHOTON TEST PASSED/FAILED" in the
+  log). The SU(2) result counts only if the gate passes. Pre-registration with all run-order changes: `lattice/PREREG-BOUNDARY.md`.
+- **Attempt round 2** (four Opus agents, notes in `weak-coupling/attempts/r2-2d/`, `r2-coupling/`, `r2-curvature/`, `r2-stepscaling/`;
+  Lean in `formal/Attempts/R2/`): A certified 2D worked example; B reflection-positive coupling; C H2 via curvature at L₁; D H1 step-scaling
+  interface. Each to be verified (build, escape-hatch scan, axioms) and committed by the coordinating session.
+
+To do next: verify and commit round 2; when Leg B finishes, run the analysis against `PREREG-BOUNDARY.md` (photon gate, Q1, Q2, the decision
+rule in `weak-coupling/PREP.md`, the effective coupling at L₁ for attempt C, the twist at the larger box for the root swap); then decide
+round 3 or Leg C (bootstrap speed-up, VM prompt when RAM-bound); then the consolidation phase and the paper (plan in this file, §3 planned
+phases: the paper explains theory and proof itself, credit at point of use, final review round).
+
+Where things stand: the reduction is machine-checked from H1 `EffectiveConvergence` + H2 `LimitGDS_W` (`formal/OneScale/Effective/Physical.lean`,
+`gap_of_effective_W`) and from `UniformGDS_W` (`OneScale/CorollaryBW.lean`); existence layer (reflection positivity, incl. admissible
+weights), strong-coupling gap, reach, area laws (SU(n)) proven; round 1 (`weak-coupling/attempts/ROUND-1.md`): one common obstruction
+(local flatness; contraction only at the physical scale; exact AF coefficient needed); follow-ups: a Schroedinger-functional-type coupling
+runs by the exact rate, 2D U(1) one-box bound switches on near 3/√σ. The owner's readings: `weak-coupling/PREP.md` (guiding principle,
+root swap, naked duality, H1/H2 as how/what of existence and quantum/classical halves, curvature tools, existence boundaries).
