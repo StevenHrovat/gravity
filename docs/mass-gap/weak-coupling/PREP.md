@@ -209,3 +209,11 @@ just using the tests that run now to test it later on?" No: the decision rule ab
 round starts now, before any SU(2) Leg B result exists; the attempts therefore cannot be tuned to the data. The rule's role changes: it
 now decides how the attempts' results are weighed (if the data argue against a fixed reach, an attempt that claims one must contain an
 error, which is used as an adversarial check). Five routes in parallel: the lead route and (a)-(d), outputs in `attempts/<route>/`.
+
+## The effective-theory split in DMP terms (the owner, 2026-11-21)
+
+`gap_of_effective_W` (`../formal/OneScale/Effective/Physical.lean`) replaces the uniform one-box hypothesis by (H1) `EffectiveConvergence`
+(the theory zoomed out to blocks of physical size L₁ converges as the grid is refined) and (H2) `LimitGDS_W` (that single limiting theory
+satisfies the one-box bound), glued by a proven robustness lemma. The owner: "H1 is the definition of how something can exist and H2 is
+the definition of what existence is." Reading: H1 is the path from the fine grid up to the node's scale, the causal chain through the
+layers along which an existence is built; H2 is the certificate at one scale, a node that forgets its outside by a fixed margin.
