@@ -97,9 +97,11 @@ The one-sided step every route meets: comparing the blocked measure with the ori
 
 | piece | statement | status |
 |---|---|---|
-| P7.1 | Route A assembly: one Lean theorem, Yang–Mills in the hypotheses, open pieces as named hypotheses, gap as conclusion | being built (`formal/ProofPhase/`) |
-| P7.2 | Route B assembly: same, ending at flux confinement, with P5.1 as a named hypothesis for the gap | being built |
-| P7.3 | non-triviality: the pure-noise / zero-potential theory fails the assembly's hypotheses | being built |
+| P7.1 | `ProofPhase.yang_mills_assembly`: for SU(2) Wilson on 4D tori along a tuning, `OpenPieces` (line of constant physics with one-loop running and a converging act number; `NonTrivial`; crossover = Route A `SlabDecay` at gap strength, or Route B `ConjW` ∧ `SectorTransfer`) ⇒ `MassGap` (continuum decay, volume then spacing) ∧ `LimitRP` (proved) ∧ `NonTrivial` (passed through) | Lean (the two routes joined by a case split; they do not compose) |
+| P7.2 | Lean content of the assembly: Theorem C removes level-dependent constants and carries decay through both limits (`corr_le_of_decay`, `massGap_of_latticeGap`); `slabDecay_of_uniformGDS` (D′ is a sufficient condition); `blocked_wilson_rp` for any reflection-respecting blocking | Lean |
+| P7.3 | non-triviality: pure noise and every bounded coupling fail the hypotheses (`not_trivial`, `not_onLCP_of_bounded`); pure noise does satisfy `SlabDecay` alone, so identification rests on the line of constant physics and `NonTrivial` | Lean |
+| P7.4 | the blocked route at L₁ (H1Local ∧ LimitDprime ∧ ObsTransfer ⇒ SlabDecay) | paper only; not in `OpenPieces` |
+| P7.5 | not statable on these objects yet: rotation invariance, uniqueness of the limit, the infinite-volume limit as its own piece, the flux energy from the 4D measure (needs anisotropic tori), other compact groups | open (`proof-phase/ASSEMBLY.md`) |
 
 ## Unit tests (every claimed discharge)
 
