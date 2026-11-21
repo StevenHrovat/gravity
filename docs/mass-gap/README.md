@@ -172,6 +172,30 @@ shape transfers, the content does not. And the relabellings of a three-node clus
 of the strong force (the Weyl group of SU(3)), while the two-node ones commute. That this lines up with T3a's floor of three and the
 owner's "Quark: three node cluster" (dmp#25) is a **reading**: a true coincidence of small numbers, not a derivation.
 
+### 3.1a The mass gap in DMP's own terms (the owner's reading, 2026-11-21)
+
+Read from the owner's notes in the Balance and Existence papers (`docs/balance/balance.tex` §"What it costs to exist", §"The VIBE
+coefficient", the 29 October notes; `docs/existence/existence.tex` §"Particles", §"Leptons as the protocol between clusters", §"Forces as
+IM") and his messages of 21 November:
+
+| DMP / GUID | Physics | Consistent? |
+|---|---|---|
+| h, the universal quantum, quantises the **assertion** of existence; keeping an act in existence costs h·(1/c)·α per h, α the VIBE coefficient (Balance, 19:58Z note) | ħ is the quantum of action; every particle's mass times its Compton length is h/c | yes, as a reading (Balance tags the m·λ_C identity as physics) |
+| inside a node (a glueball, a quark cluster) existence need not be asserted, it is guaranteed ("contained inside what must definitely exist, because it bounds a radius in which observation is guaranteed") | gluons are massless and never travel alone; the bound state has the mass | yes |
+| IM: the strong force inside a node; between systems the weak force runs over GG, the verified inter-cluster protocol, with an existence handshake ("an external-IM packet / W-/Z-boson") | W and Z gain mass at the electroweak split; gluons stay massless | yes, qualitatively |
+| light is payload: only information until it acts, then it becomes existence and ceases | the photon is massless and absorbed whole | yes |
+| a node has mass because, as a whole, it must assert its existence over its own radius | **mass gap Δ = ħc / ξ**, ξ the correlation length (the radius beyond which nothing of a disturbance is left) | yes: this is the standard equivalence of a spectral gap and exponential clustering |
+
+So in DMP's terms the Yang–Mills mass gap **is** the statement that IM always closes into nodes of bounded radius, the same bound at every
+grid fineness. The reading passes the photon test (payload forms no node) and agrees with every qualitative fact in the table.
+
+**Where it stops, precisely.** In DMP the node and its boundary are given: G0 is "stated, not derived", the cluster floor of three is an
+axiom (T3a), the maximum depth is a setting (chapter 04). In Yang–Mills the bounded radius is exactly what has to be **derived** from the
+dynamics; the Clay problem is the derivation. DMP therefore models a gapped world by axiom, consistently, and cannot supply the proof:
+the thing to be proven is one of its axioms. The same pattern as MG2 (the stability margin μ is configured in DMP, derived in physics).
+A number would follow from the reading only once "the radius" of a node is defined independently of its mass; until then m · λ = h/c holds
+for every particle by definition and tests nothing (finding MG6).
+
 ### 3.2 The photon test
 
 Four-dimensional U(1) lattice gauge theory, the lattice theory of light, has two phases. At strong coupling it confines and has a gap. At
