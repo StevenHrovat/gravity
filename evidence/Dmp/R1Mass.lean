@@ -6,7 +6,7 @@ import Dmp.R1Lens
 The owner, 2026-10-26 13:08Z, asked whether the Milky Way net may author reorderings, "from the DoT itself or from the majority of the
 trust mass pulling the other nodes naturally inward". Agreed at 13:20Z: the mass pulls, the DoT signs. The field's pull (Infall)
 computes the new layout as a pure function of the signed trust state; each of the two witnesses recomputes it with its own build and
-signs only when its own result matches. A majority stays unweighted (T5); the weight never votes (T32).
+signs only when its own result matches. A majority stays unweighted (T10); the weight never votes (T26).
 
 What this file proves:
 
@@ -74,7 +74,7 @@ theorem ms_refused_never_moves {S : Type} (law1 law2 : S → List Nat) (p : MsPr
 
 /-! ## Why the weight never votes -/
 
-/-- Mass as T32 counts it: one plus the parts that derive through it. A hub with `n` children has mass `n + 1`, each child 1, so
+/-- Mass as T26 counts it: one plus the parts that derive through it. A hub with `n` children has mass `n + 1`, each child 1, so
 the total is `2n + 1`, and the hub alone holds more than half. -/
 theorem ms_hub_is_mass_majority (n : Nat) : 2 * (n + 1) > (n + 1) + n * 1 := by omega
 
@@ -82,7 +82,7 @@ theorem ms_hub_is_mass_majority (n : Nat) : 2 * (n + 1) > (n + 1) + n * 1 := by 
 theorem ms_mass_vote_is_one_witness (n : Nat) : ∃ backers : List Nat, backers.length = 1 ∧ 2 * backers.sum > (n + 1) + n * 1 :=
   ⟨[n + 1], rfl, by simp only [List.sum_cons, List.sum_nil]; omega⟩
 
-/-- Counted by seats (T5, unweighted), one seat is never more than half once there are at least two. -/
+/-- Counted by seats (T10, unweighted), one seat is never more than half once there are at least two. -/
 theorem ms_one_seat_never_majority (seats : Nat) (h : 2 ≤ seats) : ¬ (2 * 1 > seats) := by omega
 
 end Dmp

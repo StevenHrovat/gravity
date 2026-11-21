@@ -1,6 +1,6 @@
 /-
-The VIBE field (T32) and Gravity's constant (Gravity's constant, in the design notes of this repository): N1 the laws do not see the parameters, N1b
-the schedule never votes, N1c the demands never change the laws (and only both witnesses lower them, T24), K4 the system's own acts never raise the potential, N2 the potential is
+The VIBE field (T26) and Gravity's constant (Gravity's constant, in the design notes of this repository): N1 the laws do not see the parameters, N1b
+the schedule never votes, N1c the demands never change the laws (and only both witnesses lower them, T16), K4 the system's own acts never raise the potential, N2 the potential is
 bounded. Parameters are thousandths (the owner: "we only have to adjust very small decimal values"), so 0.33 is 330.
 -/
 import Dmp.Gate
@@ -58,7 +58,7 @@ theorem n1c_stricter_demand_passes_less (π π' : Params) (D d level : Nat) (v1 
     simp [this, h]
   · cases h
 
-/-! ### Who may move a parameter (T24, the "Tighter when" column of Gravity's constant) -/
+/-! ### Who may move a parameter (T16, the "Tighter when" column of Gravity's constant) -/
 
 /-- A settings write of a parameter whose higher value is tighter (κ, e_min, ρ, μ): one witness may raise it, lowering needs both.
 Parameters whose lower value is tighter (λ, θ, w₀, lifetimes) are written with `update` (Standing.lean), whose levels are higher-is-looser. -/
@@ -66,13 +66,13 @@ def writeUp (old new : Nat) (w1 w2 : Bool) : Nat :=
   if old ≤ new then (if w1 || w2 then new else old)
   else (if w1 && w2 then new else old)
 
-/-- T24 on a parameter: one witness alone never lowers a higher-is-tighter parameter, whichever witness it is. -/
+/-- T16 on a parameter: one witness alone never lowers a higher-is-tighter parameter, whichever witness it is. -/
 theorem one_witness_never_lowers (old new : Nat) (w : Bool) :
     old ≤ writeUp old new w false ∧ old ≤ writeUp old new false w := by
   unfold writeUp
   cases w <;> constructor <;> split <;> simp_all <;> omega
 
-/-- T24 on a parameter: a higher-is-tighter parameter goes down only with both witnesses. -/
+/-- T16 on a parameter: a higher-is-tighter parameter goes down only with both witnesses. -/
 theorem lowering_needs_both (old new : Nat) (w1 w2 : Bool) (h : writeUp old new w1 w2 < old) : w1 = true ∧ w2 = true := by
   unfold writeUp at h
   split at h
@@ -81,7 +81,7 @@ theorem lowering_needs_both (old new : Nat) (w1 w2 : Bool) (h : writeUp old new 
     · rename_i hb; simp at hb; exact hb
     · omega
 
-/-- N1c with T24: after one witness writes κ and e_min, the gate passes no act it refused before. Lowering the demand takes both. -/
+/-- N1c with T16: after one witness writes κ and e_min, the gate passes no act it refused before. Lowering the demand takes both. -/
 theorem one_witness_never_weakens_demand (π : Params) (k e : Nat) (w : Bool) (D d level : Nat) (v1 v2 : Verdict)
     (h : gateP { π with kappa := writeUp π.kappa k w false, eMin := writeUp π.eMin e w false } D d level v1 v2 = .pass) :
     gateP π D d level v1 v2 = .pass :=

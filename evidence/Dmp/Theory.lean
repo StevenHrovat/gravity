@@ -9,12 +9,12 @@ Each theorem names the DMP section it carries.
 
 1. **The stack's gate is a meet** (Axiom 1 at every level). A decision is never looser than any layer on its chain, and a sub-layer's
    decision is never looser than its parent's: sub-layers only tighten. An act passes a line only when every layer on its chain passed it.
-2. **Every pass has two independent witnesses** (T38, G0). In a well-formed recipe every chain ends at a galaxy whose Duality is minted,
+2. **Every pass has two independent witnesses** (T5, G0). In a well-formed recipe every chain ends at a galaxy whose Duality is minted,
    so whatever passes anywhere was passed by two independent halves at least once on its chain; a Duality that is not minted is gated
    from above or the recipe refuses it.
 3. **A pressed top collapses the whole chain** (T-P, K0). A root whose halves trace to one person is refused by the recipe; were it
    admitted, one influence would pass the root's gate alone, and the root gates nothing else.
-4. **The frame rule** (member isolation, T32; containment, T37). Adding a line changes no existing chain and no existing decision: a new
+4. **The frame rule** (member isolation, T26; containment, T4). Adding a line changes no existing chain and no existing decision: a new
    layer cannot loosen, tighten or reach anything already laid out. Containment is preserved by construction of the recipe: a line adds no
    admission, so an item contained before the line is contained after it.
 5. **Siblings do not gate each other** (dwarf galaxies, "Who maintains it"). Two lines laid over the same line never appear on each
@@ -22,7 +22,7 @@ Each theorem names the DMP section it carries.
 6. **The layout never votes** (C12, general covariance). Placement and routing order are not arguments of the decision: a reorganisation
    that moves information or work between places changes no gate answer. This holds by the shape of the signature, which is the point of
    C12: "a layer places information, never grants trust" is not a rule the model follows but a place the model does not have.
-7. **The expected field is a function of the recipe** (T33, finding F2). Depth and mass of every line follow from the lines alone, so two
+7. **The expected field is a function of the recipe** (T27, finding F2). Depth and mass of every line follow from the lines alone, so two
    configurations from the same recipe carry the same digest, and the owner can precompute it before anything runs.
 8. **The stack potential never rises under the system's own acts** (K4 across layers). The potential of the stack is the sum of the
    layers' potentials, and a refresh at any layer lowers or keeps it.
@@ -100,7 +100,7 @@ theorem Recipe.chain_has_root (fcl : List FailureClass) (r : Recipe) (hwf : r.wf
       obtain ⟨j, hj, hr⟩ := ih p hok.1 (by omega)
       exact ⟨j, by simp [hj], hr⟩
 
-/-- The galaxy at the end of every chain is minted: a root nobody gates must be a Duality (T38, G0). -/
+/-- The galaxy at the end of every chain is minted: a root nobody gates must be a Duality (T5, G0). -/
 theorem Recipe.root_minted (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (j : Nat) (hj : j < r.n)
     (hroot : (r.line j).parent = none) : (r.line j).dot.minted fcl := by
   have hok := (hwf j hj).2.2
@@ -108,7 +108,7 @@ theorem Recipe.root_minted (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fc
   | inl h => exact h
   | inr h => exact absurd hroot h
 
-/-- T38 at the stack: whatever passes a line of a well-formed recipe was passed by a minted Duality on its chain. -/
+/-- T5 at the stack: whatever passes a line of a well-formed recipe was passed by a minted Duality on its chain. -/
 theorem Recipe.pass_has_two_independent_witnesses (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (v : Nat → Verdict)
     (i : Nat) (hi : i < r.n) (h : r.decide v i = .pass) :
     ∃ j ∈ r.chain i, (r.line j).dot.minted fcl ∧ v j = .pass := by
@@ -180,7 +180,7 @@ theorem Recipe.extend_chain (fcl : List FailureClass) (r : Recipe) (hwf : r.wf f
   r.extend_chainF fcl hwf l i i hi
 
 /-- The frame rule: a new line changes no existing decision. A layer added to the stack can neither loosen nor tighten nor reach what was
-    laid out before it (member isolation, T32), and nothing contained before it is reached after it (T37). -/
+    laid out before it (member isolation, T26), and nothing contained before it is reached after it (T4). -/
 theorem Recipe.extend_preserves_decisions (fcl : List FailureClass) (r : Recipe) (hwf : r.wf fcl) (l : Line) (v : Nat → Verdict)
     (i : Nat) (hi : i < r.n) : (r.extend l).decide v i = r.decide v i := by
   unfold Recipe.decide
@@ -251,14 +251,14 @@ theorem Config.relayout_never_votes (c : Config) (p : Placement) (v : Nat → Ve
 
 /-! ## 7. The expected field is a function of the recipe -/
 
-/-- The depth of a line: the length of its grant chain back to the galaxy (T32: never network hops). -/
+/-- The depth of a line: the length of its grant chain back to the galaxy (T26: never network hops). -/
 def Recipe.depth (r : Recipe) (i : Nat) : Nat := (r.chain i).length - 1
 
 /-- The mass of a line: one plus the number of lines that derive through it. -/
 def Recipe.mass (r : Recipe) (i : Nat) : Nat :=
   1 + ((List.range r.n).filter fun k => k ≠ i && Decidable.decide (i ∈ r.chain k)).length
 
-/-- The VIBE digest of a recipe (T33): depth and mass of every line, in line order. -/
+/-- The VIBE digest of a recipe (T27): depth and mass of every line, in line order. -/
 def Recipe.digest (r : Recipe) : List (Nat × Nat) := (List.range r.n).map fun i => (r.depth i, r.mass i)
 
 /-- Two well-formed recipes with the same lines have the same digest: the expected field is determined by the layout alone, so it can

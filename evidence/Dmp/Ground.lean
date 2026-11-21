@@ -1,6 +1,6 @@
 /-
 G0 and T-P, as K0 states them: the dual gate's independence holds only when the two witnesses trace to two people (minted). A pressed
-instance (both witnesses trace to one person) is out of spec: one influence can bend both witnesses at once (T29, shared cause), which
+instance (both witnesses trace to one person) is out of spec: one influence can bend both witnesses at once (T18, shared cause), which
 exposes the singularity. "Can a pressed CMOS instance ever be axiomatically sound. I say no, so Gravity abhors it" (the owner, 2026-10-26).
 -/
 import Dmp.Gate

@@ -1,5 +1,5 @@
 /-
-T31 (the trap, the floor) and T34 (three roads to the floor): each of the three bounds alone brings contained information to the entropy
+T24 (the trap, the floor) and T25 (three roads to the floor): each of the three bounds alone brings contained information to the entropy
 floor, by a road of its own. Each road below is proven from its own construction only: the gate road for any key and any record, the
 evidence road for any gate and any record, the record road for any gate and any key. "Each engine has to prove that at least one of the
 axioms alone really does guarantee that the data is fully destroyed or ... lowers to the floor" (the owner, 2026-10-26).
@@ -33,7 +33,7 @@ inductive Yield where
   | nothing
   deriving DecidableEq, Repr
 
-/-! ### Road 1: the dual gate alone (T31's trap) -/
+/-! ### Road 1: the dual gate alone (T24's trap) -/
 
 /-- The gate's offer on a contained item: no part is trusted for any act on it but re-admission and destruction. -/
 def offered (i : Item) (op : Op) : Bool :=
