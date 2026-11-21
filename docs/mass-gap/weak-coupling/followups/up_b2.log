@@ -1,0 +1,3 @@
+beta=2 l=10 gamma_hi=1.5188 kP0=4.203 kPmid=5.656 kD=2.804 per-phi=['1.371', '1.451'] (92s)
+beta=2 l=14 gamma_hi=0.9866 kP0=4.326 kPmid=4.048 kD=2.804 per-phi=['0.943', '0.957'] (217s)
+beta=2 l=18 gamma_hi=0.8146 kP0=4.037 kPmid=4.174 kD=2.804 per-phi=['0.771', '0.782'] (386s)
