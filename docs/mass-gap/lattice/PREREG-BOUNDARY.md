@@ -223,3 +223,19 @@ commands and seeds. The exploratory SU(2) coupled-chain runs on the CPU (Q3) wer
 completed; the others stopped and not used), to free the CPU for the controls and the photon gate; the attempt round and the curvature
 study (`../weak-coupling/H2-CURVATURE.md`) had found that this estimator measures curvature at one configuration only. The run
 `su2_b2.5_l15_flux`, already started at the swap, continued; its completion is logged by `watch_orphan_flux25.ps1`.
+
+## Photon gate evaluated early (2026-11-21, 20:50)
+
+On the owner's question, the gate (criterion P at ℓ = 12) was evaluated as soon as its inputs were complete: all six U(1) ℓ = 12 runs
+had finished, and the CPU queue was waiting only for the exploratory coupled chains (`cpl_u1_b*_l10`, Q3), which the gate does not use.
+Same script and criteria (`analyse_boundary.py --photon-gate`, inputs `u1_*` and `u1phi05_*`); the queue's own gate run follows
+unchanged. **Result: pass.**
+
+| ℓ | Coulomb D_deep(R_ph) (free 1) | Coulomb flux ratio | confined flux ratio | Coulomb profile last/first | P1–P4 |
+|---|---|---|---|---|---|
+| 6 | 1.003 ± 0.004 | 0.96 ± 0.06 | 0.44 ± 0.08 | 0.98 | P3 fails (trend only) |
+| 8 | 1.029 ± 0.004 | 0.95 ± 0.04 | 0.13 ± 0.07 | 1.02 | pass (trend only) |
+| **12 (gate)** | **1.041 ± 0.013** | **0.90 ± 0.08** | **0.004 ± 0.079** | **1.01** | **pass** |
+
+The trend is the pre-registered one: the confined flux ratio falls with ℓ (0.44, 0.13, 0.00) while the Coulomb ratio stays near 1. The
+instrument sees the photon as long-range and the confined U(1) phase as screened, so the SU(2) results count as evidence about the gap.
