@@ -1,0 +1,14 @@
+name = "AreaLaw"
+version = "0.1.0"
+defaultTargets = ["AreaLaw"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "Balaban"
+git = "https://github.com/scottnarmstrong/balaban-lean.git"
+rev = "493e9eb97292ebf6070c1c217a09bcf1adc23857"
+
+[[lean_lib]]
+name = "AreaLaw"
