@@ -202,6 +202,140 @@ theorem abs_IC_le {β : ℝ} (hβ : 0 ≤ β) (C : List (PathStep d N)) (X : Fin
   rw [Real.norm_eq_abs, probReal_univ, mul_one] at h
   exact h
 
+/-! ### Expansion -/
+
+include hbd hmeas in
+theorem integrable_prod_gfun {β : ℝ} (hβ : 0 ≤ β) (X : Finset (LatticePlaquette d N)) :
+    Integrable (fun U : GaugeConnection G d N => ∏ p ∈ X, gfun β (xp n p U)) (productHaar G d N) :=
+  Integrable.of_bound (measurable_prod_gfun hmeas β X).aestronglyMeasurable _
+    (Filter.Eventually.of_forall (fun U => by rw [Real.norm_eq_abs]; exact abs_prod_gfun_le hbd hβ X U))
+
+include hbd hmeas in
+theorem integrable_W_prod_gfun {β : ℝ} (hβ : 0 ≤ β) (C : List (PathStep d N)) (hW : Measurable (wilsonLoop (G := G) n C))
+    (X : Finset (LatticePlaquette d N)) :
+    Integrable (fun U : GaugeConnection G d N => wilsonLoop n C U * ∏ p ∈ X, gfun β (xp n p U)) (productHaar G d N) :=
+  Integrable.of_bound (hW.mul (measurable_prod_gfun hmeas β X)).aestronglyMeasurable _
+    (Filter.Eventually.of_forall (fun U => by
+      rw [Real.norm_eq_abs, abs_mul]
+      exact mul_le_mul (hbd _) (abs_prod_gfun_le hbd hβ X U) (abs_nonneg _) (by positivity)))
+
+theorem prod_exp_eq_sum (β : ℝ) (P : Finset (LatticePlaquette d N)) (U : GaugeConnection G d N) :
+    ∏ p ∈ P, exp (β * xp n p U) = ∑ X ∈ P.powerset, ∏ p ∈ X, gfun β (xp n p U) := by
+  rw [← Finset.prod_one_add]
+  exact Finset.prod_congr rfl (fun p _ => (one_add_gfun β _).symm)
+
+include hbd hmeas in
+/-- **The expansion (P1).** The partition function is ∑_X I(X). -/
+theorem integral_expand_Z {β : ℝ} (hβ : 0 ≤ β) (P : Finset (LatticePlaquette d N)) :
+    ∫ U, ∏ p ∈ P, exp (β * xp n p U) ∂(productHaar G d N) = ∑ X ∈ P.powerset, Iint (G := G) n β X := by
+  simp_rw [prod_exp_eq_sum]
+  rw [integral_finsetSum _ (fun X _ => integrable_prod_gfun hbd hmeas hβ X)]
+  rfl
+
+include hbd hmeas in
+/-- **The expansion (P1).** The Wilson-loop numerator is ∑_X I_C(X). -/
+theorem integral_expand_W {β : ℝ} (hβ : 0 ≤ β) (C : List (PathStep d N)) (hW : Measurable (wilsonLoop (G := G) n C))
+    (P : Finset (LatticePlaquette d N)) :
+    ∫ U, wilsonLoop n C U * ∏ p ∈ P, exp (β * xp n p U) ∂(productHaar G d N) = ∑ X ∈ P.powerset, ICint (G := G) n β C X := by
+  simp_rw [prod_exp_eq_sum, Finset.mul_sum]
+  rw [integral_finsetSum _ (fun X _ => integrable_W_prod_gfun hbd hmeas hβ C hW X)]
+  rfl
+
+/-! ### Factorisation (P2) -/
+
+theorem xp_linkDep (p : LatticePlaquette d N) : LinkDep (G := G) (xp n p) (plaqLinks p) := fun U V h => by
+  simp only [xp, plaquetteHolonomy_dependsOn p U V h]
+
+theorem prod_gfun_linkDep (β : ℝ) (X : Finset (LatticePlaquette d N)) :
+    LinkDep (G := G) (fun U => ∏ p ∈ X, gfun β (xp n p U)) (linksOf X) :=
+  LinkDep.prod X _ plaqLinks (fun p _ U V h => by simp only [xp_linkDep p U V h])
+
+theorem disjoint_of_linksOf {X Y : Finset (LatticePlaquette d N)} (h : Disjoint (linksOf X) (linksOf Y)) : Disjoint X Y := by
+  rw [Finset.disjoint_left]
+  intro p hX hY
+  have hl : p.boundaryLinks 0 ∈ plaqLinks p := Finset.mem_image_of_mem _ (Finset.mem_univ 0)
+  exact Finset.disjoint_left.mp h (Finset.mem_biUnion.mpr ⟨p, hX, hl⟩) (Finset.mem_biUnion.mpr ⟨p, hY, hl⟩)
+
+include hmeas in
+/-- I(X ∪ Y) = I(X) I(Y) for link-disjoint X, Y. -/
+theorem I_union (β : ℝ) {X Y : Finset (LatticePlaquette d N)} (h : Disjoint (linksOf X) (linksOf Y)) :
+    Iint (G := G) n β (X ∪ Y) = Iint (G := G) n β X * Iint (G := G) n β Y := by
+  simp only [Iint, Finset.prod_union (disjoint_of_linksOf h)]
+  exact integral_mul_of_disjoint (prod_gfun_linkDep β X) (prod_gfun_linkDep β Y) h
+    (measurable_prod_gfun hmeas β X) (measurable_prod_gfun hmeas β Y)
+
+include hmeas in
+/-- I_C(X ∪ Y) = I_C(X) I(Y) when Y shares no link with X or with the loop. -/
+theorem IC_union (β : ℝ) (C : List (PathStep d N)) (hW : Measurable (wilsonLoop (G := G) n C))
+    {X Y : Finset (LatticePlaquette d N)} (h : Disjoint (pathLinks C ∪ linksOf X) (linksOf Y)) :
+    ICint (G := G) n β C (X ∪ Y) = ICint (G := G) n β C X * Iint (G := G) n β Y := by
+  have hXY : Disjoint (linksOf X) (linksOf Y) := Finset.disjoint_of_subset_left Finset.subset_union_right h
+  simp only [ICint, Iint, Finset.prod_union (disjoint_of_linksOf hXY), ← mul_assoc]
+  have hdepW : LinkDep (G := G) (wilsonLoop n C) (pathLinks C) := fun U V hUV => by
+    simp only [wilsonLoop, pathHol_dependsOn C U V hUV]
+  exact integral_mul_of_disjoint (hdepW.mul (prod_gfun_linkDep β X)) (prod_gfun_linkDep β Y) h
+    (hW.mul (measurable_prod_gfun hmeas β X)) (measurable_prod_gfun hmeas β Y)
+
+/-! ### Parity (P4) -/
+
+theorem abs_exp_bound {y b : ℝ} (hy : |y| ≤ b) : exp y ≤ exp b ∧ exp (-y) ≤ exp b :=
+  ⟨exp_le_exp.mpr (le_trans (le_abs_self y) hy), exp_le_exp.mpr (le_trans (neg_le_abs y) hy)⟩
+
+theorem abs_gminus_le {β x : ℝ} (hβ : 0 ≤ β) (hx : |x| ≤ n) : |gminus β x| ≤ exp (n * β) := by
+  have hy : |β * x| ≤ n * β := by rw [abs_mul, abs_of_nonneg hβ]; nlinarith [abs_nonneg x]
+  obtain ⟨h1, h2⟩ := abs_exp_bound hy
+  simp only [gminus, sinh_eq, abs_le]
+  constructor <;> nlinarith [exp_pos (β * x), exp_pos (-(β * x))]
+
+theorem abs_gplus_le {β x : ℝ} (hβ : 0 ≤ β) (hx : |x| ≤ n) : |gplus β x| ≤ exp (n * β) := by
+  have hy : |β * x| ≤ n * β := by rw [abs_mul, abs_of_nonneg hβ]; nlinarith [abs_nonneg x]
+  obtain ⟨h1, h2⟩ := abs_exp_bound hy
+  have hc : 1 ≤ cosh (β * x) := one_le_cosh _
+  simp only [gplus, abs_le]
+  rw [cosh_eq] at hc ⊢
+  constructor <;> nlinarith [exp_pos (β * x), exp_pos (-(β * x))]
+
+include hbd hmeas in
+theorem integrable_parity_term {β : ℝ} (hβ : 0 ≤ β) (C : List (PathStep d N)) (hW : Measurable (wilsonLoop (G := G) n C))
+    (O Q : Finset (LatticePlaquette d N)) :
+    Integrable (fun U : GaugeConnection G d N => wilsonLoop n C U * (∏ p ∈ O, gminus β (xp n p U)) *
+      ∏ p ∈ Q, gplus β (xp n p U)) (productHaar G d N) := by
+  have mm : Measurable (fun U : GaugeConnection G d N => ∏ p ∈ O, gminus β (xp n p U)) :=
+    Finset.measurable_prod _ (fun p _ => (show Measurable (fun x : ℝ => sinh (β * x)) by fun_prop).comp (hmeas p))
+  have mp : Measurable (fun U : GaugeConnection G d N => ∏ p ∈ Q, gplus β (xp n p U)) :=
+    Finset.measurable_prod _ (fun p _ => (show Measurable (fun x : ℝ => cosh (β * x) - 1) by fun_prop).comp (hmeas p))
+  refine Integrable.of_bound ((hW.mul mm).mul mp).aestronglyMeasurable (n * exp (n * β) ^ O.card * exp (n * β) ^ Q.card)
+    (Filter.Eventually.of_forall (fun U => ?_))
+  rw [Real.norm_eq_abs, abs_mul, abs_mul, Finset.abs_prod, Finset.abs_prod]
+  have b1 : ∏ p ∈ O, |gminus β (xp n p U)| ≤ exp (n * β) ^ O.card := by
+    rw [← Finset.prod_const]; exact Finset.prod_le_prod₀ (fun _ _ => abs_nonneg _) (fun p _ => abs_gminus_le hβ (hbd _))
+  have b2 : ∏ p ∈ Q, |gplus β (xp n p U)| ≤ exp (n * β) ^ Q.card := by
+    rw [← Finset.prod_const]; exact Finset.prod_le_prod₀ (fun _ _ => abs_nonneg _) (fun p _ => abs_gplus_le hβ (hbd _))
+  have hw : |wilsonLoop n C U| ≤ n := hbd _
+  have p1 : 0 ≤ ∏ p ∈ O, |gminus β (xp n p U)| := Finset.prod_nonneg (fun _ _ => abs_nonneg _)
+  have p2 : 0 ≤ ∏ p ∈ Q, |gplus β (xp n p U)| := Finset.prod_nonneg (fun _ _ => abs_nonneg _)
+  exact mul_le_mul (mul_le_mul hw b1 p1 (by positivity)) b2 p2 (by positivity)
+
+include hbd hmeas in
+/-- **Parity vanishing (P4).** I_C(X) = 0 unless some O ⊆ X forms, with the loop C, a closed surface mod 2. -/
+theorem IC_eq_zero_of_no_parity (z : G) (hz : ∀ g : G, Commute z g) (hzz : z * z = 1)
+    (hrep : HasGaugeTrace.rep (G := G) (n := n) z = -1) (hzm : MeasurePreserving (z * ·) (haarG G) (haarG G))
+    {β : ℝ} (hβ : 0 ≤ β) (C : List (PathStep d N)) (hW : Measurable (wilsonLoop (G := G) n C))
+    (X : Finset (LatticePlaquette d N)) (hno : ∀ O ∈ X.powerset, ∃ ℓ, Odd (visits ℓ C + plaqVisits ℓ O)) :
+    ICint (G := G) n β C X = 0 := by
+  have hsplit : ∀ U : GaugeConnection G d N, wilsonLoop n C U * ∏ p ∈ X, gfun β (xp n p U) =
+      ∑ O ∈ X.powerset, wilsonLoop n C U * (∏ p ∈ O, gminus β (xp n p U)) * ∏ p ∈ X \ O, gplus β (xp n p U) := by
+    intro U
+    simp_rw [gfun_eq]
+    rw [Finset.prod_add, Finset.mul_sum]
+    exact Finset.sum_congr rfl (fun O _ => by ring)
+  simp only [ICint, hsplit]
+  rw [integral_finsetSum _ (fun O _ => integrable_parity_term hbd hmeas hβ C hW O (X \ O))]
+  apply Finset.sum_eq_zero
+  intro O hO
+  obtain ⟨ℓ, hℓ⟩ := hno O hO
+  exact integral_parity_eq_zero z hz hzz hrep hzm C O (X \ O) (gminus β) (gplus β) (gminus_odd β) (gplus_even β) ℓ hℓ
+
 end Integrals
 
 end
