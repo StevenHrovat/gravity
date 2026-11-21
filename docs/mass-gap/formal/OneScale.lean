@@ -23,6 +23,14 @@ The uniform hypothesis of Corollary B (`OneScale.CorollaryB.UniformGDS`) is OPEN
 - `OneScale.Doubling`: Lemma 6.2, Theorem C (abstract), Corollary C1 (`prefactor_free`).
 - `OneScale.TorusRP`: Theorem C on the finite torus from site reflection positivity (`torus_theoremC`).
 - `OneScale.CorollaryB`: Corollary B.1, lattice part, physical units; the open hypothesis `UniformGDS`.
+- `OneScale.LinkDist`: a concrete link distance (`ℓ^∞` cyclic distance of base sites), the time-slab separation, and
+  the unconditional strong-coupling decay in time (`wilson_singleLink_timeDecay`).
+- `OneScale.TimeShift`: time translation, invariance of the torus measure under it and under `Θ`,
+  `S_k ∘ Θ = Θ ∘ S_{-k}`, the Hankel identity (Lemma 6.1), Theorem C with `hH` discharged (`torus_theoremC_corr`,
+  `torus_theoremC_hankel`).
+- `OneScale.CubeChain`: Theorem A with the thin-cube family on the torus for slab observables, Theorem C under GDS for
+  thin cubes, a finite-volume decay bound uniform in `N`, and `corollaryB_of_uniformGDS`: Corollary B.1 with
+  `UniformGDS` (on a sequence of tori per level) as the only open hypothesis.
 -/
 
 import OneScale.Blocks
@@ -36,3 +44,6 @@ import OneScale.SingleLink
 import OneScale.Doubling
 import OneScale.TorusRP
 import OneScale.CorollaryB
+import OneScale.LinkDist
+import OneScale.TimeShift
+import OneScale.CubeChain
