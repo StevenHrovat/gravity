@@ -134,19 +134,23 @@ def lattice_figures():
         f, (ax,) = fig(w=7.2, h=3.8)
         ps = [0.02 * i for i in range(1, 80)]
         ax.plot(ps, [2 * math.asinh(math.sin(p / 2)) for p in ps], color=MUTED, lw=1.2, ls="--")
-        ax.text(1.05, 1.15, "massless: E → 0 with p", color=INK2, fontsize=8)
+        ax.text(0.45, 1.05, "dashed: a massless particle, E → 0 as p → 0", color=INK2, fontsize=8)
+        phases = set()
         for r in u1:
             L = r["L"]
-            col = LIGHT if r["beta"] > 1.01 else INK2
+            coulomb = r["beta"] > 1.01
+            phases.add(coulomb)
             for nm in (1, 2):
                 E, dE = r[f"E_p{nm}_used"]
                 if math.isfinite(E):
-                    ax.errorbar([2 * math.pi * nm / L], [E], yerr=[dE if math.isfinite(dE) else 0], fmt="o" if r["beta"] > 1.01 else "^",
-                                color=col, ms=5, lw=1.5, capsize=0)
-        ax.text(0.15, 2.45, "▲ U(1), β = 0.8 (confined phase): gapped", color=INK, fontsize=8.5)
-        ax.text(0.15, 2.2, "● U(1), β = 1.2 (Coulomb phase): light", color=INK, fontsize=8.5)
+                    ax.errorbar([2 * math.pi * nm / L], [E], yerr=[dE if math.isfinite(dE) else 0], fmt="o" if coulomb else "^",
+                                color=LIGHT if coulomb else INK2, ms=6, lw=1.5, capsize=0)
+        if True in phases:
+            ax.text(0.83, 0.55, "U(1), β = 1.2 (Coulomb phase):\nthe lattice photon", color=INK, fontsize=8.5)
+        if False in phases:
+            ax.text(0.15, 2.3, "U(1), β = 0.8 (confined phase): gapped", color=INK, fontsize=8.5)
         ax.set_xlim(0, 1.7)
-        ax.set_ylim(0, 2.7)
+        ax.set_ylim(0, 1.8)
         ax.set_xlabel("momentum p (lattice units)", color=INK2, fontsize=9)
         ax.set_ylabel("energy of the lightest state", color=INK2, fontsize=9)
         ax.set_title("The photon test, on the lattice", color=INK, fontsize=10.5, loc="left")

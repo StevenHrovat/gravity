@@ -2,7 +2,7 @@
 
 *What a mass gap is, what DMP proves about its own, how far the real one is from proven, and an attempt at the missing piece.*
 
-Status: work in progress, written for the owner (a sysadmin, not a mathematician) and for the next session that continues it. Claim level,
+Status: handed over on 2026-11-21 to a local session (`HANDOVER.md`), written for the owner (a sysadmin, not a mathematician) and for the next session that continues it. Claim level,
 as in the rest of this series: **we claim that every theorem named below is proved by Lean's kernel and that every number is reproduced
 by the scripts here; we do not claim a proof of the Yang–Mills mass gap, and nothing here is one.** Nothing here has been reviewed by a
 physicist or a mathematician.
@@ -12,6 +12,7 @@ physicist or a mathematician.
   `propext`, `Quot.sound`, `Classical.choice`).
 - Numerics: [`lattice/`](lattice/) (SU(2) and U(1) lattice gauge theory in four dimensions, validated against the literature) and
   [`hierarchy/`](hierarchy/) (the layer-by-layer zoom-out, Migdal–Kadanoff), with stored results in [`results/`](results/).
+- **Continuing this work:** [`HANDOVER.md`](HANDOVER.md) (state, verified facts, ranked next threads, local setup, starting prompt).
 - Prior work in this project: the research report on the 2026 existence proof (claude-internal, branch `ccr-9ed5a4e8-x9lo61`, closed
   draft #165, `reports/Yang Mills proof and GUID contribution.md`), and the Existence paper's answer to the owner's question "Is this
   (also) Yang-Mills?": "the forces are, and DMP as written is not" (`docs/existence/existence.tex`, §7.7). Before this folder the phrase
@@ -300,7 +301,35 @@ Reproduce: `python3 hierarchy/mk_flow.py "SU(2)" 4 12 2,3,4,6,10`, `python3 hier
 Evidence, not proof: our own lattice code ([`lattice/`](lattice/), numpy, CPU, fixed seeds), validated against the published SU(2)
 numbers of Teper's review (hep-th/9812187, Table 10).
 
-RESULTS_LATTICE
+**SU(2): the gap in grid units shrinks, in real units it stays.** The published table (Teper, Table 10) shows the whole pattern: as the
+grid is refined from β = 2.2 to 2.85 the gap in grid steps falls from 1.44 to 0.23, while the gap in units of the string tension
+stays near 3.7. Our code reproduces the β = 2.3 point; the β = 2.4 and 2.5 runs were stopped part-way at the owner's request (2026-11-21)
+to continue on the owner's laptop (`HANDOVER.md`).
+
+| β | lattice | a√σ (string tension, grid units) | a·m₀₊₊ (gap, grid units) | m₀₊₊/√σ (gap, real units) | source |
+|---|---|---|---|---|---|
+| 2.3 | 10⁴, 3000 measurements | 0.363 ± 0.011 | 1.24 ± 0.05 | 3.41 ± 0.18 | this code |
+| 2.3 | 10⁴ | 0.3687 ± 0.0022 | 1.216 ± 0.023 | 3.30 | Teper Table 10 |
+| 2.4 | 14⁴ | 0.2686 ± 0.0021 | 0.959 ± 0.020 | 3.57 | Teper Table 10 |
+| 2.5 | 16⁴ | 0.1834 ± 0.0026 | 0.660 ± 0.022 | 3.60 | Teper Table 10 |
+| 2.6 | 20⁴ | 0.1326 ± 0.0030 | 0.51 ± 0.03 | 3.85 | Teper Table 10 |
+| 2.7 | 32⁴ | 0.1005 ± 0.0020 | 0.39 ± 0.03 | 3.88 | Teper Table 10 |
+| 2.85 | 48³ × 56 | 0.0636 ± 0.0012 | 0.229 ± 0.012 | 3.60 | Teper Table 10 |
+| continuum | | | | **3.74 ± 0.12** | Teper Table 1 |
+
+Plaquette at β = 2.3: 0.60224 ± 0.00006. String tension from torelons (flux closed around the box), gap from the scalar glueball, both
+as effective masses from t = a to 2a with a variational basis of smeared operators, as in Teper's Appendix A.
+
+![Left: the gap in grid units falls with beta; right: the gap in units of the string tension stays near 3.7](figures/gap.png)
+
+**U(1): light is massless.** In the Coulomb phase (β = 1.2) the lightest state at the two smallest momenta of an 8³ × 16 box has energy
+0.70 ± 0.03 and 1.33 ± 0.09, on the curve of a massless particle (0.75 and 1.32). This is a 200-measurement smoke test; the production
+runs (two box sizes, both phases) are listed in `lattice/README.md` and `HANDOVER.md`.
+
+![The lattice photon's energy against momentum on the massless curve](figures/photon.png)
+
+Stored: `results/su2_b2.3_L10.npz`, `results/u1_b1.2_L8_smoke.npz` (raw measurements), `results/lattice_summary.json` (the analysis).
+Reproduce the analysis with `python3 lattice/analyse.py results/*.npz` and the figures with `python3 figures.py`.
 
 ---
 
