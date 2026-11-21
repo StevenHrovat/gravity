@@ -26,7 +26,7 @@ on its own is an *excitation*. A theory has a **mass gap** when every excitation
 price for existing at all. The equivalent picture, which is the one proofs use: every disturbance has a **finite blast radius**. Its effect
 falls off exponentially with distance, the same fraction lost per hop, so far-away parts of the system are statistically independent.
 Light has **no** gap: radio waves can be made arbitrarily long and cheap, and their effect falls off only slowly (by a power law). The
-strong force is expected to have one: a single gluon never travels alone, and the cheapest thing that does (a *glueball*, a closed knot of
+strong force is expected to have one: a single gluon never travels alone, and the cheapest thing that does (a *glueball*, a closed loop of
 gluon field) weighs about 1.5 to 1.7 GeV for the real strong force, and 3.7 times the square root of the string tension for its two-colour
 cousin SU(2).
 
@@ -43,7 +43,7 @@ like a protocol specification with no timeouts anywhere whose running system nev
 |---|---|---|
 | A Yang–Mills theory exists in four dimensions (as a limit of lattices, along a chosen sequence) | proven, Lean-checked, validated 10 Nov 2026 | OpenAI's submission; the Gross committee's assessment |
 | That theory has a mass gap | **open**: "The construction provides no evidence for or against a mass gap" | the committee, §2 |
-| On a coarse grid at strong coupling, lattice Yang–Mills has a gap | proven since 1978, sharpened 2022, Lean-checked in 2026 | Osterwalder–Seiler; Shen–Zhu–Zhu; `lgt` |
+| On a coarse grid at strong coupling, lattice Yang–Mills has a gap | proven since 1978, sharpened 2022, Lean-checked in the `lgt` library | Osterwalder–Seiler; Shen–Zhu–Zhu; `lgt` |
 | The bridge: the fine-grid theory flows to the coarse-grid regime without losing control in between | **open: this is the problem** | Section 4 |
 | DMP's own mass gap | **proven here** | `MassGap.lean`, section 2 |
 
@@ -60,8 +60,8 @@ in time: with μ > 0 every staleness returns to balance in bounded time, and wit
 gauge field: re-keying is a gauge transformation, closed loops of translations are Wilson loops, and DMP's "trust is a field, never a
 position" is the fact that a gauge field lives on links, never on sites (`Gauge.lean`, proven for the integers and for the six
 relabellings of a three-node cluster). The structure transfers. **The mechanism does not.** Every DMP argument for a gap is blind to
-whether translations commute, so it would also give light a mass. Light is massless (proven for four-dimensional U(1) since 1980), so no
-such argument can be the proof (**the photon test**, section 3).
+whether translations commute, so it would also give light a mass. Light is massless (proven for four-dimensional lattice U(1) at weak coupling since 1980), so
+no such argument can be the proof (**the photon test**, section 3).
 
 **Our attempt at the missing piece.** We ran the bridge in its most DMP-like form: an exact layer-by-layer zoom-out over a tree of layers
 (the Migdal–Kadanoff recursion, section 5). For gluons it works strikingly well. Per layer the coupling strengthens by a steady
@@ -99,8 +99,8 @@ Two consequences of the table are the whole difficulty.
 **Grid units shrink, real units must not.** Let the grid be fine (spacing a). Measured in grid steps, the gap is a·Δ, and for the
 continuum limit that number has to go to zero (the grid gets finer, the real gap stays). The proof has to show that a·Δ goes to zero at
 *exactly* the rate a does. That is "uniform in the lattice spacing". It also has to hold however large the box ("uniform in the volume").
-On any one finite grid a gap is guaranteed and meaningless, just as a monitoring system that samples every millisecond can never report a
-latency below one millisecond.
+On any one finite grid a gap is guaranteed and meaningless, just as a counter that counts whole milliseconds never shows anything between
+0 and 1 ms.
 
 **The gap must come from nowhere.** The Yang–Mills equations have no parameter with the units of a mass. The quantum theory has to
 generate a scale by itself ("dimensional transmutation"): the coupling grows as you zoom out, and where it becomes of order one, that
@@ -213,8 +213,9 @@ These proofs are all `contraction_decay` in spirit: show that each step passes o
 From the Bridge, `contraction_decay` (in its real-number form) gives correlations that fall like q^(r/L₀) at every lattice spacing and in
 every volume. That needs the usual technical care, because a zoomed-out theory is not exactly nearest-neighbour, so the contraction has to
 be of the robust kind (Dobrushin–Shlosman) that tolerates small long-range tails. A uniform bound survives the limit of A, and exponential
-clustering of the reconstructed theory's correlations is a spectral gap of at least ln(1/q)/L₀. These steps are standard. **The Bridge itself is as hard as the problem**: a gap implies something very close to it, so
-this reformulation localises the difficulty and does not reduce it. The `lgt` library carries the same step as an "RG scale-transfer
+clustering of the reconstructed theory's correlations is a spectral gap of at least ln(1/q)/L₀. These steps are standard. **The Bridge
+itself is as hard as the problem**: a gap implies something very close to it, so this reformulation localises the difficulty and does not
+reduce it. The `lgt` library carries the same step as an "RG scale-transfer
 bridge" whose key fields are "still stated as hypotheses".
 
 ---
@@ -222,7 +223,7 @@ bridge" whose key fields are "still stated as hypotheses".
 ## 5. Our attempt at the bridge: the layers, computed
 
 **Why this route.** DMP's structure is a tree of layers ("restoration moves outward from the pair one layer per verification round",
-T32). The one version of the zoom-out that can be computed exactly treats the lattice as such a tree: the **Migdal–Kadanoff recursion**
+T32). The simplest version of the zoom-out that can be computed exactly treats the lattice as such a tree: the **Migdal–Kadanoff recursion**
 (1975/76). Each step merges 2 × 2 grid cells into one in two moves, "bond moving" (raise the plaquette weight to the power 2^(d−2)) and
 "decimation" (combine four plaquettes into one). In 2007 Tomboulis (arXiv:0707.2179) tried to turn exactly these decimations, bracketed
 between upper and lower bounds, into a proof of confinement at every coupling for SU(2). Ito and Seiler (arXiv:0711.4930, 0803.3019)
