@@ -263,6 +263,12 @@ window (16d)²(1 − e^{−4n|β|}) < 1, i.e. β ≲ 3·10⁻⁵ for SU(2), d = 
 constants cannot be traded across scales. The realistic curvature route to H2 is a **block** (Dobrushin–Shlosman type) certificate
 at one scale, where the curvature formulation buys the pointwise constant γ_♭ (2.4–2.5) and the Hessian test above, nothing more.
 
+**Correction (round 2, attempt C, `attempts/r2-curvature/NOTE.md`).** The "tiny" windows above come from a different β normalisation
+and crude counting. In standard Wilson units (β = 4/g², α_s = 1/(πβ)) the single-link W₁ (coarse-curvature) window is β < 0.1243
+(proved), never beyond π/16 (exact ceiling, α_s ≤ 16/π²), and Bakry–Émery gives β < 1/12; the centre-blind (adjoint) channel allows
+β_A ≈ 0.29–0.39. Against a two-coupling stand-in for the blocked theory at 3/√σ (β_A ≈ 0.50) the gap is a factor of about 2, closing
+at L₁√σ ≈ 3.3–3.9; the stand-in's own model error is not quantified.
+
 ## 5. Question 4: photon and Z₂ tests
 
 ### 5.1 Gaussian U(1): exactly flat at every scale (proved here)
