@@ -15,3 +15,6 @@ name = "AreaLaw"
 
 [[lean_lib]]
 name = "Influence"
+
+[[lean_lib]]
+name = "Positivity"
