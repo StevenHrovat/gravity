@@ -151,7 +151,8 @@ similar short-distance RG for the simpler O(N) model, is 1.09M lines and unfinis
    the Wilson weight) is their lattice measure, so Corollary B's "survives every continuum limit" connects to their limit formally.
 3. Reformalise the parts our chain touches (reflection positivity, the subsequential limit): tens of thousands of lines.
 4. The full short-distance RG: months; aspirational.
-Stages 1-2 after the current legs; 3-4 only if the rest succeeds.
+Timing (the owner, 2026-11-21): stages 1-4 run sequentially, roughly after the paper and all its associated work are done, as a
+background effort while the paper and its material are with expert reviewers; no deadline, "just see how it goes".
 
 ## 4. Rules that held, and should keep holding
 
