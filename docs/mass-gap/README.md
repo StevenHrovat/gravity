@@ -8,8 +8,9 @@ by the scripts here; we do not claim a proof of the Yang–Mills mass gap, and n
 physicist or a mathematician.
 
 - Lean: [`evidence/Dmp/MassGap.lean`](../../evidence/Dmp/MassGap.lean) (DMP's own gap), [`evidence/Dmp/Gauge.lean`](../../evidence/Dmp/Gauge.lean)
-  (the dictionary to gauge theory). 36 theorems, all checked by `evidence/tools/check.sh` (279 in the chain, none resting on more than
-  `propext`, `Quot.sound`, `Classical.choice`).
+  (the dictionary to gauge theory), [`evidence/Dmp/Reach.lean`](../../evidence/Dmp/Reach.lean) (the gap from Axiom 1's reach, MG7).
+  40 theorems, all checked by `evidence/tools/check.sh` (283 in the chain, none resting on more than `propext`, `Quot.sound`,
+  `Classical.choice`).
 - Numerics: [`lattice/`](lattice/) (SU(2) and U(1) lattice gauge theory in four dimensions, validated against the literature) and
   [`hierarchy/`](hierarchy/) (the layer-by-layer zoom-out, Migdal–Kadanoff), with stored results in [`results/`](results/).
 - **Continuing this work:** [`HANDOVER.md`](HANDOVER.md) (state, verified facts, ranked next threads, local setup, starting prompt).
@@ -76,8 +77,13 @@ into a proof: the argument "would seem to work" for U(1), which deconfines. A pr
 and must use the one thing light lacks, non-commuting translations.
 
 **Verdict.** DMP's own mass gap: **proven**. The physical mass gap: **not proven, by anyone**. DMP supplies a faithful vocabulary, a correct
-dictionary and a sharp test, but no mechanism. The layer picture reproduces the physics numerically and fails the photon test exactly
-where the experts said a proof must not. Section 8 lists what would move it.
+dictionary and a sharp test. The layer picture reproduces the physics numerically and fails the photon test exactly where the experts
+said a proof must not. **Updated 2026-11-21, with the owner's readings (findings MG5 to MG7):** DMP's classification of the forces (IM
+versus payload) passes the photon test and sets the zoom-out rate (SU(3) against SU(2): 2.26, predicted 2.25). Inside DMP the gap
+follows from Axiom 1: an IM act lies within the full reach of its two witnesses at every layer, so its existence has a floor that
+survives every refinement of the grid (`Reach.lean`), while payload has none. In physics words that chain is "confinement implies the
+gap", so DMP does not prove the Yang–Mills mass gap; it locates it: the Yang–Mills content must be shown to obey Axiom 1 for its IM, that
+is, to confine at every scale (section 3.1b). Section 8 lists what would move it.
 
 ---
 
@@ -211,6 +217,39 @@ Neither rule matches; the measured value lies between them (the geometric mean, 
 reading does get right is the shape: a glueball's mass is a pure number of order a few times √σ, as in the closed-flux-tube models of
 physics (Isgur and Paton, 1985). Caveats: these rules were derived with the lattice value already known, so this is an exploratory
 check, not a pre-registered test; a fair test needs the rule fixed from DMP's text first and one number written down before comparing.
+
+### 3.1b The gap from Axiom 1 (the owner's reading, 2026-11-21; finding MG7)
+
+The framing (the owner): DMP joins an information system (the quantum world, here Yang–Mills) to a causal vector field (existence) and
+keeps both stable; it needs some definition of existence that gives a quantum and a tick rate (here ħ and 1/c). Yang–Mills is content of
+the information half (GUID: DMP "cannot model, can host"); DMP.QG is any such content with a DMP-compliant definition of existence. 2s1t
+is not complete because gravity there has no local degrees of freedom (GUID v1, §2+1).
+
+Axiom 1: "A part acts in CMOS only while the two halves of its layer, two independent witnesses, each with full reach over the act and
+gated only by the other, trust it for that act. [...] This holds at every layer." The owner: "Since everything inside CMOS can only perform
+correct acts, it has to be assumed that it must be able to communicate them at the internal rates."
+
+| step | DMP | physics |
+|---|---|---|
+| 1 | an IM act needs two witnesses with full reach over it | the two signatures of a gluon link (colour, anticolour) must stay within each other's reach |
+| 2 | so its extent is bounded, the same at every layer | separating colour costs σ per metre (the string tension): **confinement**, at every scale |
+| 3 | existence times extent is one quantum, so a bounded extent forces a floor: existence ≥ ħ / (c · reach) | confinement implies the gap: the smallest closed flux loop has a minimum size and mass |
+| 4 | payload is not an act inside CMOS: no reach bound, no floor | light is massless (the photon test passes) |
+| — | "not fully trusted is automatically ejected" (C∞) | a lone colour charge is not a physical state |
+
+Lean (`evidence/Dmp/Reach.lean`, whole-number model of the chain): `mg_reach_existence_floor` (the floor `Q/R`, on a grid of any
+resolution), `mg_reach_floor_every_layer` (the same floor at every layer), `mg_reach_floor_positive` (never zero),
+`mg_no_reach_no_floor` (without the reach bound every proposed floor is undercut: payload). Unlike the potential's gap of section 2,
+which closes under refinement, this floor does not mention the grid's resolution: **it survives every refinement**, which is exactly
+the property the physical problem asks for.
+
+A weak numerical check: with the reach at the length where a link's cost equals one quantum (√(ħc/σ)), the floor is about 1 × √σ; the
+lattice glueball is 3.74 ± 0.12 × √σ (SU(2)). Consistent, not sharp.
+
+**Status.** Inside DMP, a derivation from the axioms. For Yang–Mills, an open requirement: the content must be shown to obey Axiom 1 for its
+IM, i.e. to confine at every scale. Confinement is proven on coarse lattices (Osterwalder and Seiler 1978; extended by Cao, Nissim and
+Sheffield, arXiv:2505.16585) and open in the continuum; Jaffe and Witten list it as a separate open property; and "confinement implies the
+gap" is expected rather than a theorem in general. DMP does not prove the Yang–Mills mass gap; it states precisely where it lives.
 
 ### 3.2 The photon test
 

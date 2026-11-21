@@ -138,7 +138,7 @@ do all of it far faster.
 cd ~ && git clone https://github.com/StevenHrovat/gravity.git && cd gravity && git checkout ccr-be614210-u4r7na
 curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain "$(cat evidence/lean-toolchain)"
 python3 -m pip install --user numpy scipy mpmath matplotlib
-evidence/tools/check.sh                                   # expect: OK 279 theorems
+evidence/tools/check.sh                                   # expect: OK 283 theorems (279 before Reach.lean)
 python3 docs/mass-gap/hierarchy/summarise.py              # reprints the README §5 tables from results/
 ```
 
@@ -149,7 +149,7 @@ python3 docs/mass-gap/hierarchy/summarise.py              # reprints the README 
 ```text
 Continue the Yang–Mills mass gap work in the gravity repository, branch ccr-be614210-u4r7na (pull request StevenHrovat/gravity#37).
 Read docs/mass-gap/HANDOVER.md first, then docs/mass-gap/README.md, and set up with HANDOVER section 5 (Lean via elan, Python with
-numpy, scipy, mpmath, matplotlib; evidence/tools/check.sh must report 279 theorems).
+numpy, scipy, mpmath, matplotlib; evidence/tools/check.sh must report 283 theorems).
 
 My goal: make a real, verifiable contribution to the Yang–Mills existence and mass gap problem. I am a sysadmin, not a mathematician:
 explain in infrastructure pictures, recommend one way forward rather than a menu, and I will nudge you in directions. Use this laptop's
@@ -179,3 +179,9 @@ open follow-ups) so the work can be continued. If you have open questions, ask t
 - **2026-11-21, later.** Owner's decision: drop the kernel replay beyond prep work and focus on the mass gap. Threads A and B are
   closed here (others are better placed); `replay.md` keeps the search result and the scripts. Next: a mass-gap concept for the owner
   (proven-gap region pushed outward by computer-checked bounds, see the session's proposal), plus thread C's runs.
+- **2026-11-21, evening.** With the owner's readings the mass-gap work moved to DMP's own terms: MG5 (IM versus payload is the
+  carriers' self-charge; SU(3) zoom-out rate 2.26 against 2.25 predicted), MG6 (in DMP the gap is a node's bounded radius, an axiom),
+  MG7 (inside DMP the gap follows from Axiom 1's reach; `Dmp/Reach.lean`, 4 theorems, 283 in the chain; in physics words "confinement
+  implies the gap", so the open requirement is that Yang–Mills obeys Axiom 1 for its IM). Thread C: U(1) photon test done (tension by the
+  pre-registered rule); SU(2) β = 2.6 stopped at 150 measurements by the owner's leave, β = 2.4 and 2.5 finishing. Threads A and B
+  dropped; the quick shots of `dobrushin/` closed the threshold route.
