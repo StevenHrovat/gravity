@@ -323,3 +323,11 @@ the twist and the electric-flux free energies): in the confined phase a centre v
 electric flux does not (its energy grows like σL), and across a transition the roles swap. "Still existing in itself during the
 transition" is the crossing point, where the flux costs about one quantum: the act number z = E_e·L crossing 1 (3s1t: box size equals time
 to live), which sits near the deconfinement length 1/T_c.
+
+What is conserved (the owner, same evening): "What is conserved, in my view, seems to be the act, so the assertion of existence, or at
+least the existence that the assertion can be made on." Candidate reading: under an exact gauge-covariant, centre-respecting blocking the
+**flux sector** is conserved (the centre flux is topological: local blocking can neither create nor destroy it; the twist survives exact
+blocking, round 3, attempt 2), and with it the **act number**: z(2L) of the fine theory equals z(L) of the blocked theory (round 4,
+attempt 2 is proving this exact per-layer transport). So the act, and the existence it is asserted on, passes unchanged through every
+lossy step; what is lost from layer to layer is the description (the effective action), not the act. What is not conserved, and carries
+the open problem, is how the blocked action compares with the original on the same box (the running).
