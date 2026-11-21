@@ -142,3 +142,10 @@ self-charge, and the mass appears in the bound states, which is the gap to be pr
 Use: the **layer inequality** (if a box forgets its boundary at spacing a, it does at a/2 without loss) must use the self-charge, since it
 must fail for U(1) (photon test). Leg B's data across β show how the boundary influence actually changes from one fineness to the next:
 the numerical shape of that inequality, to look at before any proof attempt.
+
+Refinement (the owner, 2026-11-21): "Inside confinement they [gluons] possess inherent existence and can thus be massless, in the case of
+the (non-photon) Bosons, they leave confinement and are thus imbued with an inherent existence/mass." Three cases, matching physics:
+gluons (inside the bound state, existence guaranteed: massless, never alone); W and Z (act on their own, outside any bound state: massive,
+80 and 91 GeV, short range); photon (payload, no existence: massless, free). Precision: in physics W and Z get their mass from the Higgs
+mechanism (electroweak symmetry breaking) and the weak force does not confine; "leaving confinement requires an inherent existence" is
+the owner's reading of why a carrier acting on its own must carry mass. It matches the outcome of the Higgs mechanism, not its derivation.
