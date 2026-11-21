@@ -5,6 +5,7 @@ The one-scale reduction, effective-theory layer, root import (2026-11-21). Relea
 import OneScale.Effective.Robust
 import OneScale.Effective.Reduction
 import OneScale.Effective.Physical
+import OneScale.Effective.Curvature
 
 /-!
 # Effective-theory reduction: two hypotheses at one physical scale in place of `UniformGDS`
