@@ -47,3 +47,7 @@ Reading: the leading strong-coupling mechanism (four plaquettes per time step) d
 loses half of it by β = 2.2, where the TTL scan's region begins. The proven windows (standard β below 0.09 for the area law, far below
 for clustering) lie much further out. The hand-over from the strong-coupling picture to the physical region happens between β ≈ 1.7 and
 2.2, on this lattice; that interval is the middle range a proof has to bridge.
+
+**Classification (2026-11-21).** Expectation 4 missed because it compared the plaquette with the leading strong-coupling term only;
+higher terms of the series are known to give corrections of this size already at β = 1.7. An over-optimistic expectation, not a failure of
+the code or of any reading.

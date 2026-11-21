@@ -43,3 +43,8 @@ is not shown. Stored: `results/luscher_summary.json`.
 Reading: the flux-tube energies are consistent with a string (the Nambu–Goto form, which contains the π/(3L) term, fits); the free
 coefficient is 2.3 errors above π/3 with three box sizes, the smallest at L√σ ≈ 2.2 where higher corrections are expected. Lattice work
 with larger boxes and more statistics confirms π/3 (Luescher and Weisz 2002); this run is too small to add to that.
+
+**Classification (the owner, 2026-11-21).** A measurement limit, not a statement about theory: three usable box sizes, the smallest at
+L√σ ≈ 2.2 where the O(1/L³) corrections pull the free coefficient upward, plus a code defect in the analysis. The run shows that this
+project's tooling is consistent with the established results (string tension against Teper, the Nambu–Goto form); it was an exploration,
+not a test of DMP. Settling π/3 needs larger boxes and more statistics, which the literature has done.
