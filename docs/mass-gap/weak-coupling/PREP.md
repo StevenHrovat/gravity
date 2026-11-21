@@ -253,3 +253,13 @@ splits into nodes that certify themselves locally. Physics: stretched colour flu
 where the flux cost reaches one quantum, 1/√σ (the earlier reach reading, README §3.1b), which is the confinement scale L₁ where H2
 switches on in the effective-theory split. Light (no self-charge) has no flux cost and no reason to close; the weak carriers acquire
 existence (mass) outside confinement; the strong force closes into nodes.
+
+## Pointer: the coupling between the halves (the owner, 2026-11-21)
+
+The owner: the coupling between the existence and the information field is expressed as the fine-structure constant α, "so anywhere
+where alpha happens to show up is a good point to poke". Here: the strong coupling α_s = g²/4π is what H1 tracks (its running with
+distance), and L₁, the border between H1 and H2, is where α_s reaches order one: where information and existence couple strongly enough to
+erect an existence boundary. For light, α ≈ 1/137 is small and decreases at large distances (screening): it never reaches order one, so
+light never erects an existence boundary; α_s grows with distance (asymptotic freedom), reaches order one at L₁, and nodes form. Places to
+poke later: the value of α_s (or the Schroedinger-functional coupling) at L₁ ≈ 3/√σ (attempt C of round 2 computes it), and any appearance
+of α in the GUID series' existence rules.
