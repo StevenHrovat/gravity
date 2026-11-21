@@ -388,3 +388,9 @@ unbounded locality), while Yang–Mills' law D·E = ρ includes the gluons' own 
 self-verification is the candidate reason for bounded locality; confinement (a flux costs σ per length) and mass (range 1/m) are the two
 physical forms it can take. Claim level: this is the DMP-side reason and a precise physics dictionary; that Yang–Mills' self-verifying
 Gauss law forces bounded locality is the open problem itself.
+
+## Guiding principle for the proof phase (the owner, 2026-11-22)
+
+"In the past it was highly beneficial to generalize and try to fit everything that seems to belong together into one neat DMP-complete
+picture; this approach has worked surprisingly well, so be ambitious, sniff out what seems related, and then see what clicks." Recorded
+in `attempts/RULES.md` as the phase's guiding principle, next to the claim discipline that keeps the clicks honest.

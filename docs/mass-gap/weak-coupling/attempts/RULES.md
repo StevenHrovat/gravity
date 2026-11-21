@@ -57,3 +57,21 @@ fail, we are sure to learn something interesting for a better round 4")
 - **Adversarial review** is part of the round: every attempt's final claims will be reviewed independently; write so a hostile expert can
   check each step.
 - **Lean:** build folders `~/formal-att-r4-<n>`; new files under `../../formal/Attempts/R4/`; keep build scripts in your own folder.
+
+## Unit test added after round 4
+
+- **Banks–Zaks test:** an argument for the gap must not apply to asymptotically free gauge theories in the conformal window (enough
+  massless matter, e.g. QCD with roughly 9–16 flavours; Banks and Zaks 1982): they are asymptotically free and gapless.
+
+## The proof phase (round 5, from 2026-11-22; the owner: "make it a goal to produce the full proof")
+
+- **Guiding principle (the owner):** "In the past it was highly beneficial to generalize and try to fit everything that seems to belong
+  together into one neat DMP-complete picture; this approach has worked surprisingly well, so be ambitious, sniff out what seems related,
+  and then see what clicks." Look across workstreams, rounds and the owner's readings for structures that are the same thing seen twice
+  (round 4's examples: the act identity, 't Hooft duality and the owner's inversion; the commutator and the causal round trip; Gauss's law
+  and internally verifiable messages); when something clicks, state it precisely and test it.
+- **Ambition with discipline:** the clicks are leads; every claim still passes the claim discipline of round 4 and all unit tests
+  (photon, Z₂, finite subgroups, deconfinement, triviality, Banks–Zaks) and the standing adversarial review.
+- **The map:** `../PROOF-BLUEPRINT.md` lists every piece of the proof with its status; every result says which piece it changes.
+- **The assembly:** one Lean theorem with Yang–Mills in its hypotheses and the open pieces as named hypotheses; a piece counts as
+  discharged only when the assembly builds without that hypothesis.
