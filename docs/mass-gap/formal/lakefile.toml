@@ -21,3 +21,6 @@ name = "Positivity"
 
 [[lean_lib]]
 name = "OneScale"
+
+[[lean_lib]]
+name = "Attempts"
