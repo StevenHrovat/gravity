@@ -7,7 +7,7 @@ src=/mnt/c/claude/gravity-ym/docs/mass-gap/formal
 dst=${FORMAL_DST:-~/formal}
 mkdir -p "$dst"
 cd "$src"
-for f in lean-toolchain lakefile.toml $(ls *.lean) $(find AreaLaw Influence Positivity -name '*.lean' 2>/dev/null); do
+for f in lean-toolchain lakefile.toml $(ls *.lean) $(find AreaLaw Influence Positivity OneScale -name '*.lean' 2>/dev/null); do
   mkdir -p "$dst/$(dirname "$f")"; tr -d '\r' < "$f" > "$dst/$f"
 done
 cd "$dst"
