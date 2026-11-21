@@ -139,6 +139,13 @@ still preserving the way through the git history." Once the weak-coupling attemp
   well as possible, so that lean really is just for what it's made for, machine verification, not explanation."). The paper carries the
   argument in mathematics and plain language, complete enough to follow without opening a Lean file; each formal result gets one line
   pointing to its theorem name for anyone who wants to check it by machine.
+- **Framing of the contribution, and credit** (the owner, 2026-11-21): "All Insight is [...] a cycle of fuzzing the possibility space and then
+  condensing it into actually good ideas to build upon. [...] I have no idea about the tools, but they allowed me to build a language that
+  describes all of them [...] Given a tool, something can be done with it, without either the tool or an idea to use it on, neither really
+  have a purpose. That is why I am so pedantic about crediting the giants upon whose shoulders I can stand to see." The paper presents its
+  contribution as a language (DMP) that places established techniques where they belong (reflection positivity, Dobrushin-Shlosman,
+  cluster expansions, centre symmetry, curvature, the renormalisation group, the 2026 construction), with each technique credited at the
+  point where it enters the argument, not only in the bibliography.
 - **A final round of review, tightening and optimising the paper's knowledge delivery** before it goes out (the owner: "It is the best
   vehicle to get our novel approach, which combines a potpourri of established techniques to make it work mathematically, across to any
   reader."): adversarial review for correctness and claim level, a readability pass for the target reader, and a tightening pass
