@@ -297,3 +297,14 @@ Yang–Mills-like theory is the formation of a black hole in the dual geometry (
 confinement and black-hole entropy obey area laws. That duality is a conjecture for SU(2) Yang–Mills in four dimensions, so it can guide
 (where to look, what to measure) but cannot prove; a black-hole entropy argument would have to be rebuilt inside the lattice theory to
 count.
+
+## The act identity as the core (the owner, 2026-11-21, choosing the direction for round 4)
+
+The owner: "The act identity, maybe combined with our universal quantum and the tick rate, seems like the most promising approach.
+Existence asserting itself, which an act is, seems to be the core principle on which everything stands, so it would be the logical
+choice." The family is `evidence/Dmp/Reach.lean`: existence times extent is one quantum (x·e = Q·k²), its floor on every grid, the same
+at every layer, the existence TTL (x·τ = Q·k², a bounded time to live is a gap) and 3s1t (space reach and time to live certify the same
+existence). Candidate physics counterpart, to be checked by the round-4 scout: in a twisted box of side L the energy of one unit of
+electric flux times L is dimensionless and runs with the coupling (existence × extent = coupling × quantum, which joins the α pointer to
+the act identity); confinement makes it grow like σL²; the crossover in form (b) becomes "it has no plateau"; the TTL side is the transfer
+matrix that reflection positivity provides, and 3s1t is the space-time symmetry relating spatial decay to the temporal gap.
