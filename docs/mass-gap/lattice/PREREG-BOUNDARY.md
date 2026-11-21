@@ -214,3 +214,12 @@ By the owner's decision the SU(2) GPU phase was started before the photon gate, 
 hours (`queue_boundary.ps1` split into `queue_boundary_cpu.ps1` (controls, then the gate) and `queue_boundary_gpu.ps1` (SU(2) and the SU(2)
 coupled chains, then the final analysis after the gate); identical commands and seeds; control jobs already started kept running). The gate's
 role is unchanged: if it fails, the SU(2) results are not used as evidence about the gap.
+
+## Second change of run order (2026-11-21, 19:41, before any of the reordered runs had data)
+
+By the owner's decision (long runs saved for low load): the remaining SU(2) GPU runs reordered (`queue_boundary_gpu2.ps1`): the larger
+boxes (ℓ·a√σ ≈ 4.2 at β = 2.3 and 2.4, question Q2) first, then the rest of β = 2.5, then β = 2.6, then β = 2.7 last (overnight). Identical
+commands and seeds. The exploratory SU(2) coupled-chain runs on the CPU (Q3) were paused (`cpl_su2_b2.3_l4` and `_l6`, `cpl_su2_b2.5_l6`
+completed; the others stopped and not used), to free the CPU for the controls and the photon gate; the attempt round and the curvature
+study (`../weak-coupling/H2-CURVATURE.md`) had found that this estimator measures curvature at one configuration only. The run
+`su2_b2.5_l15_flux`, already started at the swap, continued; its completion is logged by `watch_orphan_flux25.ps1`.
