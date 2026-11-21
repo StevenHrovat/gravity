@@ -6,3 +6,4 @@ import AreaLaw.Integrals
 import AreaLaw.ClusterRatio
 import AreaLaw.MinArea
 import AreaLaw.Assembly
+import AreaLaw.Concrete

@@ -70,4 +70,22 @@ law with K · ε ↦ √(2ε) e^{2Δ'α}: |⟨W_C⟩| ≤ n e^{c'|C|} (2ε)^{A/2
 - P5: self-contained combinatorics on `AreaLaw.Lattice` and `WilsonLoop` (file `AreaLaw/MinArea.lean`).
 - P8: self-contained on a finite bounded-degree graph with `Balaban.Polymer` (file `AreaLaw/ClusterRatio.lean`): the ratio bound for a
   polymer gas restricted to polymers avoiding a vertex set.
-- P1, P2, P4, P6, P7, P9: measure side and assembly (files `AreaLaw/Centred.lean`, `AreaLaw/Polymers.lean`, `AreaLaw/Main.lean`).
+- P1, P2, P4, P6, P7, P9: measure side and assembly (files `AreaLaw/Expansion.lean`, `AreaLaw/Integrals.lean`, `AreaLaw/Assembly.lean`).
+
+## Status (2026-11-21): complete
+
+All steps are proved; `lake build AreaLaw` succeeds, no `sorry`, and `#print axioms` on the final theorems shows only `propext`,
+`Classical.choice`, `Quot.sound`. The final statements (`AreaLaw/Concrete.lean`) are `wilson_area_law_SU2` and `wilson_area_law_Un`: for
+SU(2) and U(n) with normalised Haar measure, on (ℤ/Nℤ)^d, β ≥ 0 with e^{nβ} − 1 ≤ 1 / (4 e^{16d+1} (16d+1)⁴), and an R × T rectangle
+(1 ≤ R, T < N), the partition function is nonzero and
+
+  |⟨W_C⟩| ≤ n · e^{8d(R+T)} · (e^{16d+1} (e^{nβ} − 1))^{A/2},   A = min(R·T, N² − R·T).
+
+The base of the power is below 1 throughout the allowed range, so the bound decays with the area. Differences from the goal stated at the
+top: the smallness parameter is e^{nβ} − 1 (what the measure lemmas use), and the plaquette graph's degree bound is 16d (proved), giving
+the constants above. The window of β is very small (for d = 4, β below about 10⁻³⁶): this is a proof of the strong-coupling regime only,
+like every cluster-expansion area law, and says nothing about the continuum. `wilson_area_law_explicit` is the same result for any
+compact group with a continuous unitary representation, a left-invariant Haar probability measure and a central z with rep z = −1.
+Files: `Lattice`, `WilsonLoop`, `CentreSymmetry`, `Expansion`, `Integrals` (P1, P2, P4, P6), `ClusterRatio` (P8), `MinArea` (P5),
+`Assembly` (P7, P9), `Concrete` (finiteness, degree and perimeter bounds, SU(2) and U(n)). Proof work on `ClusterRatio`, `MinArea`,
+`Assembly` and `Concrete` was done by Opus subagents and checked here (build, escape-hatch scan, axioms).
