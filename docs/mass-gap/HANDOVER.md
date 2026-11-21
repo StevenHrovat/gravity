@@ -176,3 +176,6 @@ open follow-ups) so the work can be continued. If you have open questions, ask t
   [`replay.md`](replay.md), waiting for the owner's go-ahead. Thread B: humanise-yang-mills already proved in Lean that the public target
   `JointExistence` is met by a generalized free field (their PRs #339, #359, #380); what is left for B is the committee's stronger
   `combined_acceptance` (their issue #382 leaves "whether the stronger target admits a degenerate lattice family" undetermined).
+- **2026-11-21, later.** Owner's decision: drop the kernel replay beyond prep work and focus on the mass gap. Threads A and B are
+  closed here (others are better placed); `replay.md` keeps the search result and the scripts. Next: a mass-gap concept for the owner
+  (proven-gap region pushed outward by computer-checked bounds, see the session's proposal), plus thread C's runs.

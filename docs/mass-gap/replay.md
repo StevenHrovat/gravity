@@ -54,3 +54,7 @@ limit (WSL currently sees 19 GB of the laptop's 32 GB). Publishing: YM has no is
 - 2026-11-21: WSL memory raised to 28 GB (swap 64 GB) with the owner's go-ahead; a separate distro `ym-replay` created for the replay
   so the CI runners' distro stays untouched ([`replay-run/setup-distro.sh`](replay-run/setup-distro.sh)). Stage 1 started with
   [`replay-run/stage1.sh`](replay-run/stage1.sh) (YM `b379615`, 10 Lean threads): `verify.py integrity` passed (exit 0).
+- 2026-11-21, later: **stopped by the owner's decision** ("others are much better placed, so let's only do the stuff we need for
+  prep work and focus on the mass gap"). Stages 2 and 3 (the second kernels) are dropped. Stage 1 was stopped during the project build;
+  its only use here was as groundwork for thread B, which is dropped for the same reason (the humanise-yang-mills team does statement
+  audits). The `ym-replay` distro keeps the downloaded dependency cache (8.6 GB) in case the build is ever needed.
