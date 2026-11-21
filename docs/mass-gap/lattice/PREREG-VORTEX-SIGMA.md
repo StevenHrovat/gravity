@@ -1,8 +1,10 @@
 # Pre-registration: vortex follow-up against the measured string tension (2026-11-21)
 
 **Status.** A **follow-up hypothesis formed after seeing the β = 2.3 data** of `PREREG-VORTEX.md` (which failed there). Written and
-committed before any β = 2.4 vortex data existed (the run was thermalising). It cannot change the original verdict, and it is labelled
-as post-hoc wherever reported. For β = 2.3 it is not blind; for β = 2.4 it is.
+written before any β = 2.4 vortex data were seen. Correction (same day): the β = 2.4 run wrote its first configuration (of 100) at 09:11,
+one minute before the commit (ee21303), and that configuration's one-line log was printed by the same command that made the commit;
+nothing in this file was changed after it. It cannot change the original verdict, and it is labelled as post-hoc wherever reported.
+For β = 2.3 it is not blind; for β = 2.4 it is blind up to that one configuration.
 
 **Why.** The original criteria compare χ_proj with the full Creutz ratio χ_full at R = 3 and 4. At β = 2.3, χ_full still falls with R
 (0.214 at R = 3, 0.184 at R = 4) while χ_proj is flat (0.145, 0.149): small full Wilson loops carry short-distance (Coulomb-like) terms
