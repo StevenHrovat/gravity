@@ -207,3 +207,10 @@ boxes) and **vacuous in rough, confining regimes**, exactly where GDS should hol
 tested; Q3 is therefore marked exploratory, and a better coupling is an open design question. Getting here required three fixes, each
 found by a failing trial: rejection samplers desynchronise the pair (SU(2) k̂ ≈ 3200 at ℓ = 6); overrelaxation never forgets a
 difference (k̂ ≈ 490 at ℓ = 4); without running re-alignment the SU(2) pair's relative gauge drifts (k̂ growing without limit).
+
+## Change of run order (2026-11-21, 16:48, before any SU(2) data existed)
+
+By the owner's decision the SU(2) GPU phase was started before the photon gate, in parallel with the CPU controls, to save about 3
+hours (`queue_boundary.ps1` split into `queue_boundary_cpu.ps1` (controls, then the gate) and `queue_boundary_gpu.ps1` (SU(2) and the SU(2)
+coupled chains, then the final analysis after the gate); identical commands and seeds; control jobs already started kept running). The gate's
+role is unchanged: if it fails, the SU(2) results are not used as evidence about the gap.
