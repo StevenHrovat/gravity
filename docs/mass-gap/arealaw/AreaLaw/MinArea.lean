@@ -1,3 +1,20 @@
+/-
+Minimal area (area-law project, step P5 of BLUEPRINT.md, 2026-11-21). Released under Apache 2.0.
+
+# A plaquette set closing a rectangle mod 2 has at least the minimal area
+
+Project to the (μ, ν) torus. Summing the parity condition over all μ-links (resp. ν-links) above one cell, plaquettes in other planes
+cancel in pairs and the (μ, ν)-plaquettes give `cellPar (i, j) + cellPar (i, j - 1)` (resp. `(i - 1, j)`); the rectangle gives the same
+for the indicator of its R × T cells (`strip`). So the `defect` (cell parity plus indicator) is invariant under both unit shifts, hence
+constant on the torus, and the cells of odd parity are either the rectangle's cells or their complement. Each such cell holds a
+plaquette of `O`.
+
+## Main results
+
+- `rect_parity_area_of_le`: the bound for `R, T ≤ N`, `[NeZero N]`.
+- `rect_parity_area`: the statement used by the assembly (`1 ≤ R, T`, `R, T < N`).
+-/
+
 import AreaLaw.CentreSymmetry
 
 noncomputable section
@@ -218,4 +235,132 @@ theorem cnt_rect_nu [NeZero N] (x : FinLatticeSites d N) {μ ν : Fin d} (hμν 
   simp only [card_filter_const_and]
   ring
 
+/-- The defect: cell parity plus the indicator of the rectangle's cells. -/
+def defect (x : FinLatticeSites d N) (μ ν : Fin d) (R T : ℕ) (O : Finset (LatticePlaquette d N)) (i j : ZMod N) :
+    ZMod 2 :=
+  cellPar O μ ν i j + strip (x μ) R i * strip (x ν) T j
+
+theorem defect_def (x : FinLatticeSites d N) (μ ν : Fin d) (R T : ℕ) (O : Finset (LatticePlaquette d N)) (i j : ZMod N) :
+    defect x μ ν R T O i j = cellPar O μ ν i j + strip (x μ) R i * strip (x ν) T j := rfl
+
+/-! ## The cell equations -/
+
+section CellEquations
+
+variable [NeZero N] (x : FinLatticeSites d N) {μ ν : Fin d} (hμν : μ < ν) (R T : ℕ)
+  (O : Finset (LatticePlaquette d N))
+  (hpar : ∀ ℓ : LatticeLink d N, Even (visits ℓ (rectPath x μ ν R T) + plaqVisits ℓ O))
+include hμν hpar
+
+/-- Summing the parity condition over the μ-links above the cell `(i, j)`. -/
+theorem cell_eq_mu (i j : ZMod N) :
+    strip (x μ) R i * (strip (x ν) T j + strip (x ν) T (j - 1)) + cellPar O μ ν i j + cellPar O μ ν i (j - 1) = 0 := by
+  have h := fibre_parity _ O hpar μ (fibre μ ν i j)
+  rw [cnt_rect_mu x hμν.ne, Finset.sum_congr rfl (fun p _ => cnt_plaq_mu hμν i j p), Finset.sum_add_distrib,
+    Finset.sum_boole, Finset.sum_boole] at h
+  rw [strip_telescope]
+  simpa [cellPar, add_assoc] using h
+
+/-- Summing the parity condition over the ν-links above the cell `(i, j)`. -/
+theorem cell_eq_nu (i j : ZMod N) :
+    (strip (x μ) R i + strip (x μ) R (i - 1)) * strip (x ν) T j + cellPar O μ ν i j + cellPar O μ ν (i - 1) j = 0 := by
+  have h := fibre_parity _ O hpar ν (fibre μ ν i j)
+  rw [cnt_rect_nu x hμν.ne, Finset.sum_congr rfl (fun p _ => cnt_plaq_nu hμν i j p), Finset.sum_add_distrib,
+    Finset.sum_boole, Finset.sum_boole] at h
+  rw [strip_telescope]
+  simpa [cellPar, add_assoc] using h
+
+theorem defect_succ_nu (i j : ZMod N) : defect x μ ν R T O i (j + 1) = defect x μ ν R T O i j := by
+  have h := cell_eq_mu x hμν R T O hpar i (j + 1)
+  rw [add_sub_cancel_right] at h
+  simp only [defect_def]
+  linear_combination h - (cellPar O μ ν i j + strip (x μ) R i * strip (x ν) T j) * z2_two
+
+theorem defect_succ_mu (i j : ZMod N) : defect x μ ν R T O (i + 1) j = defect x μ ν R T O i j := by
+  have h := cell_eq_nu x hμν R T O hpar (i + 1) j
+  rw [add_sub_cancel_right] at h
+  simp only [defect_def]
+  linear_combination h - (cellPar O μ ν i j + strip (x μ) R i * strip (x ν) T j) * z2_two
+
+end CellEquations
+
+/-- On the cycle `ZMod N` a function invariant under `+1` is constant. -/
+theorem const_of_succ [NeZero N] {α : Type*} (f : ZMod N → α) (hf : ∀ t, f (t + 1) = f t) (t : ZMod N) :
+    f t = f 0 := by
+  rw [← ZMod.natCast_zmod_val t]
+  generalize t.val = n
+  induction n with
+  | zero => simp
+  | succ n ih => rw [Nat.cast_succ, hf, ih]
+
+/-! ## Counting -/
+
+/-- Each cell of odd parity holds at least one (μ, ν)-plaquette of `O`. -/
+theorem card_cells_le [NeZero N] (O : Finset (LatticePlaquette d N)) (μ ν : Fin d) :
+    (univ.filter (fun c : ZMod N × ZMod N => cellPar O μ ν c.1 c.2 = 1)).card ≤
+      (O.filter (fun p => p.dir1 = μ ∧ p.dir2 = ν)).card := by
+  rw [Finset.card_filter, Finset.card_eq_sum_card_fiberwise (s := O.filter (fun p => p.dir1 = μ ∧ p.dir2 = ν))
+    (f := fun p => (p.site μ, p.site ν)) (t := univ) (fun _ _ => by simp)]
+  apply Finset.sum_le_sum
+  intro c _
+  split_ifs with h
+  · rw [Nat.one_le_iff_ne_zero]
+    intro h0
+    have e : (O.filter (fun p => p.dir1 = μ ∧ p.dir2 = ν)).filter (fun p => (p.site μ, p.site ν) = c) =
+        O.filter (fun p => p.dir1 = μ ∧ p.dir2 = ν ∧ p.site μ = c.1 ∧ p.site ν = c.2) := by
+      ext p; simp [Prod.ext_iff, and_assoc]
+    rw [e] at h0
+    simp [cellPar, h0] at h
+  · exact Nat.zero_le _
+
 end MinArea
+
+open MinArea in
+/-- **Minimal area (P5), general form.** If the plaquette set `O` closes the rectangle `rectPath x μ ν R T` mod 2, with
+    `R, T ≤ N`, then `O` holds at least `min (R T) (N² − R T)` plaquettes in the plane (μ, ν). -/
+theorem rect_parity_area_of_le {d N : ℕ} [NeZero N] (x : FinLatticeSites d N) {μ ν : Fin d} (hμν : μ < ν) (R T : ℕ)
+    (hRN : R ≤ N) (hTN : T ≤ N) (O : Finset (LatticePlaquette d N))
+    (hpar : ∀ ℓ : LatticeLink d N, Even (visits ℓ (rectPath x μ ν R T) + plaqVisits ℓ O)) :
+    min (R * T) (N * N - R * T) ≤ (O.filter (fun p => p.dir1 = μ ∧ p.dir2 = ν)).card := by
+  have hc := card_cells_le O μ ν
+  have hD : ∀ i j, defect x μ ν R T O i j = defect x μ ν R T O 0 0 := by
+    intro i j
+    rw [const_of_succ (fun j => defect x μ ν R T O i j)
+        (fun t => defect_succ_nu x hμν R T O hpar i t) j,
+      const_of_succ (fun i => defect x μ ν R T O i 0)
+        (fun t => defect_succ_mu x hμν R T O hpar t 0) i]
+  have hA : ∀ i j, cellPar O μ ν i j = defect x μ ν R T O 0 0 +
+      (if i ∈ stripSet (x μ) R then 1 else 0) * (if j ∈ stripSet (x ν) T then 1 else 0) := by
+    intro i j
+    rw [← hD i j, ← strip_eq (x μ) hRN i, ← strip_eq (x ν) hTN j, defect_def]
+    rw [add_assoc, z2_add_self, add_zero]
+  rcases (by decide : ∀ z : ZMod 2, z = 0 ∨ z = 1) (defect x μ ν R T O 0 0) with h0 | h1
+  · have e : univ.filter (fun c : ZMod N × ZMod N => cellPar O μ ν c.1 c.2 = 1) =
+        stripSet (x μ) R ×ˢ stripSet (x ν) T := by
+      ext c
+      simp only [mem_filter, mem_univ, true_and, mem_product, hA, h0, zero_add]
+      split_ifs <;> simp_all
+    rw [e, card_product, card_stripSet _ hRN, card_stripSet _ hTN] at hc
+    exact le_trans (min_le_left _ _) hc
+  · have e : univ.filter (fun c : ZMod N × ZMod N => cellPar O μ ν c.1 c.2 = 1) =
+        (stripSet (x μ) R ×ˢ stripSet (x ν) T)ᶜ := by
+      ext c
+      simp only [mem_filter, mem_univ, true_and, mem_compl, mem_product, hA, h1]
+      split_ifs <;> simp_all
+    rw [e, card_compl, card_product, card_stripSet _ hRN, card_stripSet _ hTN, Fintype.card_prod,
+      ZMod.card] at hc
+    exact le_trans (min_le_right _ _) hc
+
+set_option linter.unusedVariables false in
+/-- **Minimal area (P5).** If the plaquette set `O` closes the rectangle `rectPath x μ ν R T` mod 2, then `O` holds at least
+    `min (R T) (N² − R T)` plaquettes in the plane (μ, ν). (The bounds `1 ≤ R, T` are not needed; see
+    `rect_parity_area_of_le`.) -/
+theorem rect_parity_area {d N : ℕ} (x : FinLatticeSites d N) {μ ν : Fin d} (hμν : μ < ν) (R T : ℕ)
+    (hR : 1 ≤ R) (hT : 1 ≤ T) (hRN : R < N) (hTN : T < N)
+    (O : Finset (LatticePlaquette d N))
+    (hpar : ∀ ℓ : LatticeLink d N, Even (visits ℓ (rectPath x μ ν R T) + plaqVisits ℓ O)) :
+    min (R * T) (N * N - R * T) ≤ (O.filter (fun p => p.dir1 = μ ∧ p.dir2 = ν)).card := by
+  have : NeZero N := ⟨by omega⟩
+  exact rect_parity_area_of_le x hμν R T hRN.le hTN.le O hpar
+
+-- #print axioms rect_parity_area  -- checked: [propext, Classical.choice, Quot.sound]
