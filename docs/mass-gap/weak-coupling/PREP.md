@@ -34,7 +34,9 @@ which is massless. Our layer computation (README §5) puts a number on it: in th
   (arXiv:1212.5562), III convergence (arXiv:1304.0705, on φ⁴₃); QED₃ (arXiv:2009.01156). The readable entry point to Balaban's method.
 - **Magnen, Rivasseau, Sénéor** (1993): SU(2) Yang–Mills in 4D with a fixed infrared cutoff and the UV cutoff removed, in a
   regularised axial gauge. Again UV only.
-- **`balaban-lean`** (Armstrong et al., Lean): a formalisation effort of Balaban's programme; status in `SURVEY-LEAN.md`.
+- **`balaban-lean`** (Lean, Apache-2.0): Balaban's low-temperature RG for the **O(N) spin model**, not gauge theory; about 1.09M lines,
+  unfinished (its two main theorems are frozen `sorry` placeholders, six mathematical blockers recorded). No Lean formalisation of
+  Balaban's gauge-theory RG exists (`SURVEY-LEAN.md`). The OpenAI construction uses a Balaban-style RG map for the short-distance end.
 
 ### Probabilistic and analytic routes (strong-coupling side, pushing outward)
 - **Chatterjee**, "A probabilistic mechanism for quark confinement" (Commun. Math. Phys. 2021, arXiv:2006.16229): exponential decay of
@@ -54,11 +56,11 @@ which is massless. Our layer computation (README §5) puts a number on it: in th
 - **3D**: Nair's outline of a 3D proof (arXiv:2608.10133, unreviewed).
 
 ### Numerical bridges (non-rigorous, but they are exactly the middle range, measured)
-- **Step scaling** (Lüscher, Weisz, Wolff 1991; Lüscher, Narayanan, Weisz, Wolff, Schroedinger functional; ALPHA collaboration): define a
+- **Step scaling** (Luescher, Weisz, Wolff 1991; Luescher, Narayanan, Weisz, Wolff, Schroedinger functional; ALPHA collaboration): define a
   coupling at box size L, double the box, measure the new coupling, iterate; the step-scaling function σ(s, u) is the measured layer map
   from weak to strong coupling. SU(2) quenched studies (e.g. hep-lat/9411017, hep-lat/9407028). **This is the numerical version of the
   owner's layer picture and of the Bridge lemma**, with the real lattice instead of the Migdal–Kadanoff tree.
-- **Gradient (Wilson) flow** (Lüscher, arXiv:1006.4518): a continuous smoothing that defines renormalised observables at every scale;
+- **Gradient (Wilson) flow** (Luescher, arXiv:1006.4518): a continuous smoothing that defines renormalised observables at every scale;
   the modern standard for running couplings and scale setting. A continuous version of "restoration one layer per round".
 - **Bootstrap** (Kazakov–Zheng 2203.11360, 2404.16925; SU(3) 2502.14421; abelian 2404.17071; loop equations 2601.04316): rigorous
   bounds from consistency at every β, including the middle range. Our own bootstrap is running now.
@@ -79,7 +81,7 @@ bridge. Some claim full proofs; none is validated.
 - **Influence bounds** (TV lemma, tanh(nβ) per link).
 - **DMP side**: `Reach.lean` (existence floor), `MassGap.lean`, `Gauge.lean` (dictionary, `contraction_decay`).
 - **Numerics**: validated SU(2)/U(1) GPU code (100× CPU), plateau analysis, TTL scan β = 2.3–2.7 with continuum extrapolation, vortex
-  code, strong-coupling scan (running), Lüscher runs, the bootstrap (running), Migdal–Kadanoff flow (exact).
+  code, strong-coupling scan (running), Luescher runs, the bootstrap (running), Migdal–Kadanoff flow (exact).
 
 ## 4. Candidate routes for the voyage (for discussion after the restart; not decided)
 
