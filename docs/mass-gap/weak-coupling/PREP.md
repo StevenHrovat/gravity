@@ -226,3 +226,17 @@ information; H2 alone concerns some coarse lattice system unconnected to continu
 duality: the information half and the existence half, neither sufficient alone. Precision: on the lattice both halves are probability
 measures; "quantum" means the regime governed by loop corrections, "classical" the regime where the effective theory behaves as a classical
 strongly coupled system.
+
+## Tools for H2 from the existence half's language: curvature (the owner, 2026-11-21)
+
+The owner: "Since GR fits perfectly as the existence half of DMP, we can use the already highly developed tools that come with that
+'language' to use it in our approaches, wherever H2 needs tools." The mathematical core of GR is curvature, and curvature does what H2
+needs: positive Ricci curvature bounds the diameter (Bonnet–Myers: bounded reach) and gives a spectral gap (Lichnerowicz). These tools
+exist beyond smooth spaces: Ollivier's coarse Ricci curvature of Markov chains (2009) is positive exactly when the chain contracts in
+Wasserstein distance, which is the W form of the one-box bound; Dobrushin's condition is a special case, and Ollivier treats spin-system
+Glauber dynamics as examples; Bakry–Émery and Lott–Sturm–Villani curvature belong to the same family (Shen–Zhu–Zhu's strong-coupling gap
+uses the curvature of SU(N)). Restatement of H2: the block dynamics of the effective theory at scale L₁ has positive coarse Ricci
+curvature. Fit with round 1: route (d) found the group curvature swamped at weak coupling at the lattice scale; at L₁ the effective theory
+is strongly coupled, where curvature can dominate. DMP reading: existence as positive curvature (a node closes on itself: bounded
+diameter, a gap; light is flat). Precision: this uses the mathematics of GR (curvature, comparison geometry, optimal transport), not
+Einstein's equations; the gap does not depend on gravity.
