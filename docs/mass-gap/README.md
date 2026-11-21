@@ -211,8 +211,9 @@ These proofs are all `contraction_decay` in spirit: show that each step passes o
 > volume.
 
 From the Bridge, `contraction_decay` (in its real-number form) gives correlations that fall like q^(r/L₀) at every lattice spacing and in
-every volume. A uniform bound survives the limit of A, and exponential clustering in the reconstructed theory is a spectral gap of at least
-ln(1/q)/L₀. These steps are standard. **The Bridge itself is as hard as the problem**: a gap implies something very close to it, so
+every volume. That needs the usual technical care, because a zoomed-out theory is not exactly nearest-neighbour, so the contraction has to
+be of the robust kind (Dobrushin–Shlosman) that tolerates small long-range tails. A uniform bound survives the limit of A, and exponential
+clustering of the reconstructed theory's correlations is a spectral gap of at least ln(1/q)/L₀. These steps are standard. **The Bridge itself is as hard as the problem**: a gap implies something very close to it, so
 this reformulation localises the difficulty and does not reduce it. The `lgt` library carries the same step as an "RG scale-transfer
 bridge" whose key fields are "still stated as hypotheses".
 
@@ -268,6 +269,10 @@ photon test bites in four dimensions only, which is where the millennium problem
 
 Reproduce: `python3 hierarchy/mk_flow.py "SU(2)" 4 12 2,3,4,6,10`, `python3 hierarchy/mk_flow.py "U(1)" 4 22 1.0,1.25,1.5,1.75,2.0,2.25`
 (and the same with `3` for three dimensions), then `python3 hierarchy/summarise.py`. Stored outputs: `results/mk_*.json`.
+
+![The layer-by-layer zoom-out: the gluon coupling falls steadily towards strong coupling, light's stalls](figures/zoom.png)
+
+![Per-layer change on a log scale: gluons about 0.25, light falling exponentially to 1e-12](figures/drift.png)
 
 **What it shows.**
 

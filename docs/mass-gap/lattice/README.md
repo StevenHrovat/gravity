@@ -29,6 +29,7 @@ python3 run_u1.py 1.2 8 16 300 1500 31 u1_b1.2_L8.npz 3 2
 python3 run_u1.py 1.2 12 24 300 1200 32 u1_b1.2_L12.npz 3 2
 python3 run_u1.py 0.8 8 16 300 1500 33 u1_b0.8_L8.npz 3 2
 python3 run_u1.py 0.8 12 24 300 1200 34 u1_b0.8_L12.npz 3 2
+python3 run_u1.py 1.2 16 32 300 800 35 u1_b1.2_L16.npz 3 2
 python3 analyse.py *.npz > summary.json
 ```
 
