@@ -9,7 +9,7 @@ physicist or a mathematician.
 
 - Lean: [`evidence/Dmp/MassGap.lean`](../../evidence/Dmp/MassGap.lean) (DMP's own gap), [`evidence/Dmp/Gauge.lean`](../../evidence/Dmp/Gauge.lean)
   (the dictionary to gauge theory), [`evidence/Dmp/Reach.lean`](../../evidence/Dmp/Reach.lean) (the gap from Axiom 1's reach, MG7).
-  40 theorems, all checked by `evidence/tools/check.sh` (283 in the chain, none resting on more than `propext`, `Quot.sound`,
+  42 theorems, all checked by `evidence/tools/check.sh` (285 in the chain, none resting on more than `propext`, `Quot.sound`,
   `Classical.choice`).
 - Numerics: [`lattice/`](lattice/) (SU(2) and U(1) lattice gauge theory in four dimensions, validated against the literature) and
   [`hierarchy/`](hierarchy/) (the layer-by-layer zoom-out, Migdal–Kadanoff), with stored results in [`results/`](results/).
@@ -239,9 +239,25 @@ correct acts, it has to be assumed that it must be able to communicate them at t
 
 **The existence TTL (the owner, 2026-11-21).** "Using an existence TTL would be a good analog for that. [...] it derives the existence from the confined space (3s), as well as the time it's existence is certified (1t)." A node's existence is a certificate with a time to live; Axiom 1's witnesses can renew it only within their reach, so the TTL has a ceiling. In physics the TTL is the correlation time: in imaginary time a disturbance's signal decays as e^(−Δt/ħ), so **Δ = ħ / TTL**, and a gap means every certificate expires within a bounded time (light's decay only by a power law). In a relativistic theory the space reach and the TTL are one statement (TTL = reach / c). The lattice's effective mass is exactly the certificate's expiry rate: at β = 2.3 the TTL is about 0.8 grid ticks, and with a finer grid it grows in ticks and stays put in real units (section 6).
 
+**The TTL measured** ([`lattice/ttl.py`](lattice/ttl.py) on the stored runs; TTL = 1 / energy of the lightest state that carries the
+certificate):
+
+| | TTL in grid ticks | TTL in real units |
+|---|---|---|
+| SU(2), β = 2.3, 2.4, 2.5 | 0.81, 1.01, 1.38 (± 5 %) | TTL · √σ = 0.294, 0.275, 0.275 (± 0.015): the same at every layer |
+| U(1), Coulomb phase, boxes 8, 12, 16 | 1.33, 1.92, 2.56 | grows with the box, TTL / L = 0.166, 0.160, 0.160 (about 1/2π): never expires in infinite space |
+| U(1), confined phase, boxes 8, 12 | about 1.2 and 0.5 (large errors) | does not grow |
+
+(The β = 2.5 string tension failed its pre-registered comparison with Teper and is under diagnosis, section 6; the TTL in ticks does not
+depend on it.) **The two witnesses.** In physics Axiom 1's pair reads as reflection positivity: a configuration and its mirror image
+always pair positively, which makes one tick of renewal a positive transfer matrix and the TTL well defined. It implies that every
+correlator matrix of time-slice operators is positive at every time step; on all three SU(2) runs, for both operator sets and t = 0 to
+4, the smallest eigenvalue is positive within 2 errors (`ttl.py`). For the Wilson action this is a theorem (Osterwalder and Seiler, 1978),
+so the check validates the data; the reading "two witnesses = reflection positivity" stays a reading.
+
 Lean (`evidence/Dmp/Reach.lean`, whole-number model of the chain): `mg_reach_existence_floor` (the floor `Q/R`, on a grid of any
 resolution), `mg_reach_floor_every_layer` (the same floor at every layer), `mg_reach_floor_positive` (never zero),
-`mg_no_reach_no_floor` (without the reach bound every proposed floor is undercut: payload). Unlike the potential's gap of section 2,
+`mg_no_reach_no_floor` (without the reach bound every proposed floor is undercut: payload), `mg_ttl_existence_floor` (the same floor from a bounded time to live), `mg_space_time_certificate` (one existence certified with one quantum over its space and over its TTL forces reach = TTL, the 3s1t consistency). Unlike the potential's gap of section 2,
 which closes under refinement, this floor does not mention the grid's resolution: **it survives every refinement**, which is exactly
 the property the physical problem asks for.
 

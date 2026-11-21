@@ -61,4 +61,24 @@ theorem mg_no_reach_no_floor (Q R : Nat) (hQ : 0 < Q) :
   have h : R + 1 ≤ Q * (R + 1) := Nat.le_mul_of_pos_left (R + 1) hQ
   omega
 
+/-! ## The existence TTL (the owner, 2026-11-21)
+
+"Using an existence TTL would be a good analog for that. [...] it derives the existence from the confined space (3s), as well as the time
+it's existence is certified (1t)." The time side has the same shape: a certificate lives `τ` ticks (`τ / k` units of time), its existence
+times its time to live is one quantum (`x · τ = Q · k · k`, existence times time, the quantum of action), and Axiom 1's witnesses renew it
+only within their reach in time, at most `Tmax` units (`τ ≤ Tmax · k`). -/
+
+/-- **The TTL floor.** A certificate renewed within a bounded time has existence at least `Q / Tmax`, on every grid: a bounded time to
+    live is a mass gap (physics: `Δ = ħ / TTL`, the TTL being the correlation time). -/
+theorem mg_ttl_existence_floor (Q Tmax k x τ : Nat) (hk : 0 < k) (hcert : x * τ = Q * k * k) (httl : τ ≤ Tmax * k) :
+    Q * k ≤ x * Tmax :=
+  mg_reach_existence_floor Q Tmax k x τ hk hcert httl
+
+/-- **3s1t: space and time certify the same existence.** If one existence is certified with one quantum both over its confined space
+    (extent `e`) and over its time to live (`τ`), and it is not zero, then extent and time to live coincide in grid units: space reach and
+    TTL are one statement (in physics, `reach = c · TTL`, with `c = 1` in these units). -/
+theorem mg_space_time_certificate (Q k x e τ : Nat) (hx : 0 < x) (hspace : x * e = Q * k * k) (htime : x * τ = Q * k * k) :
+    e = τ :=
+  Nat.eq_of_mul_eq_mul_left hx (hspace.trans htime.symm)
+
 end Dmp

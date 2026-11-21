@@ -138,7 +138,7 @@ GUID v7 kernels) does it about 100 times faster.
 cd ~ && git clone https://github.com/StevenHrovat/gravity.git && cd gravity && git checkout ccr-be614210-u4r7na
 curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain "$(cat evidence/lean-toolchain)"
 python3 -m pip install --user numpy scipy mpmath matplotlib
-evidence/tools/check.sh                                   # expect: OK 283 theorems (279 before Reach.lean)
+evidence/tools/check.sh                                   # expect: OK 285 theorems (279 before Reach.lean)
 python3 docs/mass-gap/hierarchy/summarise.py              # reprints the README §5 tables from results/
 ```
 
@@ -149,7 +149,7 @@ python3 docs/mass-gap/hierarchy/summarise.py              # reprints the README 
 ```text
 Continue the Yang–Mills mass gap work in the gravity repository, branch ccr-be614210-u4r7na (pull request StevenHrovat/gravity#37).
 Read docs/mass-gap/HANDOVER.md first, then docs/mass-gap/README.md, and set up with HANDOVER section 5 (Lean via elan, Python with
-numpy, scipy, mpmath, matplotlib; evidence/tools/check.sh must report 283 theorems).
+numpy, scipy, mpmath, matplotlib; evidence/tools/check.sh must report 285 theorems).
 
 My goal: make a real, verifiable contribution to the Yang–Mills existence and mass gap problem. I am a sysadmin, not a mathematician:
 explain in infrastructure pictures, recommend one way forward rather than a menu, and I will nudge you in directions. Use this laptop's
