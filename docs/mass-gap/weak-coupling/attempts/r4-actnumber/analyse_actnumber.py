@@ -28,8 +28,13 @@ from analyse_plateau import plateau  # noqa: E402
 
 TTL = os.path.normpath(os.path.join(HERE, "..", "..", "..", "results", "ttl_summary.json"))
 SQRT_SIGMA_OVER_TC = 1.0 / 0.709  # 1/T_c in units of 1/sqrt(sigma) for SU(2) (T_c/sqrt(sigma) = 0.709; Lucini, Teper, Wenger 2004)
-NG_CROSS = 1.58
-F_STAR = math.log(1 + math.sqrt(2))  # self-dual point of F = -log tanh(F/2) (r3-monotone, r4-conjw C7)                   # Nambu-Goto z = sigma L^2 sqrt(1 - 2 pi / (3 sigma L^2)) = 1
+NG_CROSS = 1.58                   # Nambu-Goto z = sigma L^2 sqrt(1 - 2 pi / (3 sigma L^2)) = 1
+F_STAR = math.log(1 + math.sqrt(2))  # self-dual point of F = -log tanh(F/2) (r3-monotone, r4-conjw C7)
+# after the round-4 review (PREREG.md "Changes before data (after the round-4 review)"):
+MIN_CHAINS = 8        # errors from the spread between chains (delete-one-chain jackknife) need at least 8 chains
+N_FLIP_MIN = 10       # every chain must change its dominant flux sector, sign(sum_t p_top(t)), at least this often in Monte Carlo time
+G_THRESHOLD = 1.5     # growth per doubling must exceed this AND the photon's own doubling factor (+ 2 sigma) at 2 sigma
+EXACT_Z2 = os.path.join(HERE, "exact_z2.json")
 
 
 def a_sqrt_sigma(beta):
@@ -107,6 +112,25 @@ def jk(samples, fn, B):
     return full, err, kpc
 
 
+def jk_chains(samples, fn):
+    """Delete-one-chain jackknife (samples (B, n, ...)): the error comes from the spread between independent chains."""
+    B = samples.shape[0]
+    full = fn(samples.reshape((-1,) + samples.shape[2:]))
+    if B < 2:
+        return full, np.full_like(np.asarray(full, float), np.nan)
+    reps = np.array([fn(np.delete(samples, b, axis=0).reshape((-1,) + samples.shape[2:])) for b in range(B)])
+    with np.errstate(invalid="ignore"):
+        err = np.sqrt((B - 1) / B * np.nansum((reps - np.nanmean(reps, axis=0)) ** 2, axis=0))
+    return full, err
+
+
+def cold_hot_split(group, B):
+    """Chain indices started cold (twist eater or all 1) and hot (actnumber.initial with start 'mixed')."""
+    if group in ("su2", "2i"):
+        return [i for i in range(B) if i % 4 in (0, 1)], [i for i in range(B) if i % 4 in (2, 3)]
+    return [i for i in range(B) if i % 2 == 0], [i for i in range(B) if i % 2 == 1]
+
+
 def tau_int(x, c=6.0):
     """Integrated autocorrelation time (Sokal's automatic window), x 1D."""
     x = np.asarray(x, float) - np.mean(x)
@@ -145,15 +169,17 @@ def analyse_run(path):
 
     def fmass(x):
         return masses(x, T, project=True, rotor=(group == "u1"))
-    m, e, kpc = jk(X, fmass, B)
+    m, e = jk_chains(X, fmass)  # primary: errors from the spread between chains
+    mb, eb, kpc = jk(X, fmass, B)  # bins inside chains, reported for comparison
     out["meff"] = [[float(a), float(b)] for a, b in zip(m, e)]
+    out["meff_err_bins"] = [float(b) for b in eb]
     tp = plateau(m, e)
     out["t_plateau"] = tp
     # sign operator
     if group != "u1":
         S = np.sign(np.real(X[:, :, -1:, :]))
         S[S == 0] = 1.0
-        ms, es, _ = jk(S, lambda x: masses(x, T, project=False), B)
+        ms, es = jk_chains(S, lambda x: masses(x, T, project=False))
         out["meff_sign"] = [[float(a), float(b)] for a, b in zip(ms, es)]
         ts = plateau(ms, es)
         out["t_plateau_sign"] = ts
@@ -161,41 +187,61 @@ def analyse_run(path):
         out["z_sign"] = [L * float(ms[ts]), L * float(es[ts])] if ts is not None else None
     # upper estimate from t = 2 (or the largest finite t <= 2)
     tu = 2 if len(m) > 2 and np.isfinite(m[2]) else (1 if np.isfinite(m[1]) else None)
-    out["z_up"] = float(L * (m[tu] + 2 * e[tu])) if tu is not None else None
+    out["z_up"] = float(L * (m[tu] + 2 * e[tu])) if tu is not None and np.isfinite(e[tu]) else None
     # checks
     sheet = d["sheet"]  # (n, B, 2)
     dsb = (sheet[..., 0] - sheet[..., 1]).T  # (B, n)
-    blk = dsb.reshape(B * kpc, -1) if n % kpc == 0 else dsb[:, : n // kpc * kpc].reshape(B * kpc, -1)
-    dm, de = float(dsb.mean()), float(blk.mean(axis=1).std(ddof=1) / np.sqrt(blk.shape[0]))
+    dm = float(dsb.mean())
+    de = float(dsb.mean(axis=1).std(ddof=1) / np.sqrt(B)) if B > 1 else float("nan")
     out["sheet_minus_bulk"] = [dm, de]
     out["sheet_ok"] = (not out["twisted"]) or abs(dm) <= 3 * de + 0.005
     xt = np.real(X[:, :, -1, :])  # top level
     lag = max(1, T // 4)
     series = (xt * np.roll(xt, -lag, axis=2)).mean(axis=2)  # (B, n): per-configuration C(T/4) estimate
-    taus = [tau_int(series[b]) for b in range(B)]
-    tau = float(np.max(taus))
-    binlen = n / kpc
+    tau = float(np.max([tau_int(series[b]) for b in range(B)]))
     out["tau_int_C(T/4)"] = tau
-    out["bin_length"] = binlen
-    out["tau_ok"] = binlen >= 4 * tau
+    out["tau_ok"] = n >= 20 * tau
+    # tunnelling diagnostics: sector flips in Monte Carlo time per chain, and Euclidean kinks per configuration
+    sec = np.sign(xt.sum(axis=2))
+    sec[sec == 0] = 1
+    flips = (sec[:, 1:] != sec[:, :-1]).sum(axis=1)
+    out["sector_flips_per_chain"] = [int(v) for v in flips]
+    # the rule targets discrete flux sectors separated by a barrier (frozen chains with no Euclidean kinks give C(t) = const); U(1) has a
+    # continuous flux variable with no barrier, and Re p(t) p*(0) does not depend on its global phase: reported, not required
+    out["flips_ok"] = bool(flips.min() >= N_FLIP_MIN) if group != "u1" else True
+    st = np.sign(xt)
+    st[st == 0] = 1
+    out["euclidean_kinks_per_config"] = float((st != np.roll(st, 1, axis=2)).sum(axis=2).mean())
+    out["chains_ok"] = B >= MIN_CHAINS
     if tp is not None:
         E, dE = float(m[tp]), float(e[tp])
         out["E"] = [E, dE]
         out["z"] = [L * E, L * dE]
+        if tp + 1 < len(m) and np.isfinite(m[tp + 1]):  # large-L systematic of the early plateau (review item 4)
+            out["E_alt"] = [float(m[tp + 1]), float(e[tp + 1])]
+            out["z_alt"] = [L * float(m[tp + 1]), L * float(e[tp + 1])]
         h = n // 2
         if h >= 8:
-            m1, e1, _ = jk(X[:, :h], fmass, B)
-            m2, e2, _ = jk(X[:, h:], fmass, B)
+            m1, e1 = jk_chains(X[:, :h], fmass)
+            m2, e2 = jk_chains(X[:, h:], fmass)
             dd = abs(m1[tp] - m2[tp])
             out["drift"] = [float(m1[tp]), float(e1[tp]), float(m2[tp]), float(e2[tp])]
             out["drift_ok"] = bool(np.isfinite(dd) and dd <= 2 * np.hypot(e1[tp], e2[tp]))
         else:
             out["drift_ok"] = False
+        cold, hot = cold_hot_split(group, B)
+        if len(cold) >= 2 and len(hot) >= 2:
+            mc, ec = jk_chains(X[cold], fmass)
+            mh, eh = jk_chains(X[hot], fmass)
+            out["E_cold_hot"] = [float(mc[tp]), float(ec[tp]), float(mh[tp]), float(eh[tp])]
+            out["cold_hot_ok"] = bool(np.isfinite(mc[tp] - mh[tp]) and abs(mc[tp] - mh[tp]) <= 2 * np.hypot(ec[tp], eh[tp]))
+        else:
+            out["cold_hot_ok"] = False
         if out.get("E_sign"):
             out["sign_consistent"] = bool(abs(out["E_sign"][0] - E) <= 2 * np.hypot(out["E_sign"][1], dE))
-        out["counted"] = bool(out["sheet_ok"] and out["drift_ok"] and out["tau_ok"])
-        out["verdict"] = "counted" if out["counted"] else "not counted (" + ", ".join(
-            k for k in ("sheet_ok", "drift_ok", "tau_ok") if not out[k]) + ")"
+        keys = ("chains_ok", "sheet_ok", "drift_ok", "tau_ok", "cold_hot_ok", "flips_ok")
+        out["counted"] = bool(all(out[k] for k in keys))
+        out["verdict"] = "counted" if out["counted"] else "not counted (" + ", ".join(k for k in keys if not out[k]) + ")"
     else:
         out["counted"] = False
         out["verdict"] = "no plateau"
@@ -230,7 +276,7 @@ def mc_samples(xs, dxs, zs, dzs, ns=4000, seed=1):
     return sx, np.maximum(sz, 1e-9)
 
 
-def four_moves(cubes, boxes):
+def four_moves(cubes, boxes, thr=G_THRESHOLD):
     """r4-conjw's split of one doubling into lengthening l = E(L,L,2L)/E(L,L,L) and widenings w_x = E(2L,L,2L)/E(L,L,2L),
     w_y = E(2L,2L,2L)/E(2L,L,2L), at the same beta (aE, so no lattice spacing); z(2L)/z(L) = 2 l w_x w_y. Counted runs only.
     W: l >= 2 and w >= (1 + delta)/2 with delta > 0 at 2 sigma; light: l = 2, w = 1/2. Margin delta = min(2 w_x - 1, 2 w_y - 1)."""
@@ -255,15 +301,16 @@ def four_moves(cubes, boxes):
         if all(k in ent for k in ("w_x", "w_y")):
             ent["delta"] = min(2 * ent["w_x"][0] - 1, 2 * ent["w_y"][0] - 1)
             wl = min(ent["w_x"][0] - 2 * ent["w_x"][1], ent["w_y"][0] - 2 * ent["w_y"][1])
-            l_ok = "l" in ent and ent["l"][0] + 2 * ent["l"][1] >= 2
-            l_bad = "l" in ent and ent["l"][0] + 2 * ent["l"][1] < 2
-            if l_ok and wl > 0.5:
-                ent["verdict"] = "W HOLDS (widening above 1/2 and lengthening not below 2, at 2 sigma)"
-            elif l_bad or min(ent["w_x"][0] + 2 * ent["w_x"][1], ent["w_y"][0] + 2 * ent["w_y"][1]) < 0.5:
-                ent["verdict"] = "W FAILS (a widening below 1/2 or the lengthening below 2, at 2 sigma)"
-            else:
-                ent["verdict"] = "NOT RESOLVED"
-            ent["delta_2sigma"] = 2 * wl - 1
+            ent["delta_w_2sigma"] = 2 * wl - 1  # per-move widening margin, reported only
+        if "l" in ent:
+            ent["l_minus_2"] = [ent["l"][0] - 2, ent["l"][1]]  # reported only: l >= 2 is marginal in the dilute regime (review item 6)
+        if e1 and e4:
+            gs = 2 * e4[0] / e1[0]  # = 2 l w_x w_y = z(2L)/z(L): the summed form W_Sigma carries the only W verdict
+            dgs = gs * math.hypot(e4[1] / e4[0], e1[1] / e1[0])
+            ent["W_sigma"] = [gs, dgs]
+            if g == "su2":
+                ent["verdict"] = ("W_SIGMA HOLDS (z(2L)/z(L) above the threshold at 2 sigma)" if gs - 2 * dgs > thr else
+                                  ("W_SIGMA FAILS (z(2L)/z(L) <= 1 at 2 sigma)" if gs + 2 * dgs <= 1 else "W_SIGMA NOT RESOLVED"))
         if g == "u1" and "l" in ent and "w_x" in ent and "w_y" in ent:
             # light: l = 2, w = 1/2, within 2 sigma plus a 10 % allowance for the box dependence of e_R^2 (Wilson action)
             okl = abs(ent["l"][0] - 2) <= 2 * ent["l"][1] + 0.2
@@ -280,11 +327,58 @@ def four_moves(cubes, boxes):
     return out
 
 
+def growth_of(xs, sx, sz, thr):
+    """Doubling factors g = z(2x)/z(x) on the grid x = 0.5, 0.625, ..., 1.75 inside the counted range, and the root-2 steps.
+    Verdicts (after the round-4 review): GROWS WITH MARGIN needs the 2.3 % quantile of g above thr = max(1.5, photon g + 2 sigma)."""
+    grid = [x for x in np.arange(0.5, 1.80001, 0.125) if xs[0] <= x and 2 * x <= xs[-1]]
+    gro = []
+    for x in grid:
+        g = np.array([interp_logz(2 * x, sx[k], sz[k]) / interp_logz(x, sx[k], sz[k]) for k in range(len(sx))])
+        g = g[np.isfinite(g)]
+        if g.size > 100:
+            gro.append({"L_sqrt_sigma": float(x), "g": [float(g.mean()), float(g.std())], "g_lo_2sigma": float(np.quantile(g, 0.0228))})
+    root2 = []
+    for x in np.arange(0.5, 3.6, 0.125):
+        if xs[0] <= x and math.sqrt(2) * x <= xs[-1]:
+            g = np.array([interp_logz(math.sqrt(2) * x, sx[k], sz[k]) / interp_logz(x, sx[k], sz[k]) for k in range(len(sx))])
+            g = g[np.isfinite(g)]
+            if g.size > 100:
+                root2.append({"L_sqrt_sigma": float(x), "g": [float(g.mean()), float(g.std())], "g_lo_2sigma": float(np.quantile(g, 0.0228))})
+    entry = {"doubling": gro, "root2_step": root2, "threshold": thr}
+    if gro:
+        j = int(np.argmin([q["g"][0] for q in gro]))
+        entry["g_min"] = gro[j]
+        lows = [q["g_lo_2sigma"] for q in gro]
+        if min(lows) > thr:
+            entry["verdict"] = "GROWS WITH MARGIN"
+        elif any(q["g"][0] + 2 * q["g"][1] < 1 for q in gro):
+            entry["verdict"] = "FALLS SOMEWHERE"
+        elif min(lows) > 1:
+            entry["verdict"] = "GROWS, BUT NOT CLEAR OF THE PHOTON BAND (no margin claimed)"
+        else:
+            entry["verdict"] = "NEAR FIXED POINT (g consistent with 1 somewhere)"
+        entry["delta_2sigma"] = float(min(lows) - 1)
+    else:
+        entry["verdict"] = "NOT TESTED (no doubling inside the counted range)"
+    return entry
+
+
 def readings(runs_all):
     R = {}
     boxes = [r for r in runs_all if not r["cubic"]]
     runs = [r for r in runs_all if r["cubic"]]
-    R["four_moves"] = four_moves(runs, boxes)
+    # the photon's own doubling factor (review item 1): growth verdicts must clear it
+    ph = {r["L"]: r for r in runs if r["group"] == "u1" and abs(r["beta"] - 1.1) < 1e-9 and r.get("counted")}
+    thr = G_THRESHOLD
+    if 4 in ph and 8 in ph:
+        g = ph[8]["z"][0] / ph[4]["z"][0]
+        dg = g * math.hypot(ph[8]["z"][1] / ph[8]["z"][0], ph[4]["z"][1] / ph[4]["z"][0])
+        R["photon_doubling"] = {"g": [g, dg], "g_plus_2sigma": g + 2 * dg}
+        thr = max(G_THRESHOLD, g + 2 * dg)
+    else:
+        R["photon_doubling"] = None
+    R["growth_threshold"] = thr
+    R["four_moves"] = four_moves(runs, boxes, thr)
     su2 = [r for r in runs if r["group"] == "su2" and r["twisted"] and r["plane"] == [0, 1] and r.get("counted") and r.get("L_sqrt_sigma")]
     by_beta = {}
     for r in su2:
@@ -350,34 +444,16 @@ def readings(runs_all):
         else:
             R["crossing"][str(b)] = {"L_star_sqrt_sigma": None, "note": "z = 1 not bracketed by counted points",
                                      "z_range": [float(zs.min()), float(zs.max())]}
-        grid = [x for x in np.arange(0.5, 1.80001, 0.125) if xs[0] <= x and 2 * x <= xs[-1]]
-        gro = []
-        for x in grid:
-            g = np.array([interp_logz(2 * x, sx[k], sz[k]) / interp_logz(x, sx[k], sz[k]) for k in range(len(sx))])
-            g = g[np.isfinite(g)]
-            if g.size > 100:
-                gro.append({"L_sqrt_sigma": float(x), "g": [float(g.mean()), float(g.std())], "g_lo_2sigma": float(np.quantile(g, 0.0228))})
-        root2 = []
-        for x in np.arange(0.5, 3.6, 0.125):
-            if xs[0] <= x and math.sqrt(2) * x <= xs[-1]:
-                g = np.array([interp_logz(math.sqrt(2) * x, sx[k], sz[k]) / interp_logz(x, sx[k], sz[k]) for k in range(len(sx))])
-                g = g[np.isfinite(g)]
-                if g.size > 100:
-                    root2.append({"L_sqrt_sigma": float(x), "g": [float(g.mean()), float(g.std())], "g_lo_2sigma": float(np.quantile(g, 0.0228))})
-        entry = {"doubling": gro, "root2_step": root2}
-        if gro:
-            j = int(np.argmin([q["g"][0] for q in gro]))
-            entry["g_min"] = gro[j]
-            lows = [q["g_lo_2sigma"] for q in gro]
-            if min(lows) > 1:
-                entry["verdict"] = "GROWS WITH MARGIN"
-            elif any(q["g"][0] + 2 * q["g"][1] < 1 for q in gro):
-                entry["verdict"] = "FALLS SOMEWHERE"
-            else:
-                entry["verdict"] = "NEAR FIXED POINT (g consistent with 1 somewhere)"
-            entry["delta_2sigma"] = float(min(lows) - 1)
-        else:
-            entry["verdict"] = "NOT TESTED (no doubling inside the counted range)"
+        entry = growth_of(xs, sx, sz, thr)
+        alt = sorted((r["L_sqrt_sigma"][0], r["L_sqrt_sigma"][1], (r.get("z_alt") or r["z"])[0], (r.get("z_alt") or r["z"])[1], r["L"])
+                     for r in su2 if r["beta"] == b)
+        axs, adxs, azs, adzs = curve(alt)
+        asx, asz = mc_samples(axs, adxs, azs, adzs, seed=int(b * 1000) + 1)
+        ealt = growth_of(axs, asx, asz, thr)
+        if entry.get("g_min") and ealt.get("g_min"):
+            entry["g_min_with_E_at_t_plus_1"] = ealt["g_min"]
+            entry["plateau_systematic_of_g_min"] = float(ealt["g_min"]["g"][0] - entry["g_min"]["g"][0])
+            entry["verdict_with_E_at_t_plus_1"] = ealt["verdict"]
         R["growth"][str(b)] = entry
         # (iv) large end, (v) small-L exponent
         big = [{"L_sqrt_sigma": float(x), "R_string": float(z / (x * x - math.pi / 3)), "dR": float(dz / (x * x - math.pi / 3)),
@@ -389,7 +465,7 @@ def readings(runs_all):
                 "between": [float(xs[0]), float(xs[1])],
                 "d_log_z_d_log_L": float(math.log(zs[1] / zs[0]) / math.log(xs[1] / xs[0])) if zs[0] > 0 and zs[1] > 0 else None}
     # (vi) collapse test (added before data at the request of r4-minting: its assumption (U), one flow sigma)
-    R["collapse"] = collapse(runs)
+    R["collapse"] = collapse(runs, thr)
     # deconfinement expectation: no counted z - 2 sigma > 1 at L sqrt(sigma) <= 1.2
     viol = [(r["beta"], r["L"]) for r in su2 if r["L_sqrt_sigma"][0] <= 1.2 and r["z"][0] - 2 * r["z"][1] > 1]
     R["deconfinement_test"] = "CONSISTENT (z < 1 below L sqrt(sigma) = 1.2)" if not viol else f"ANOMALY at {viol}"
@@ -412,23 +488,45 @@ def readings(runs_all):
         else:
             res["verdict"] = "PHOTON GATE FAILED (not every U(1) point counted)"
         R["photon_gate"] = res
-    # deconfined controls
+    # deconfined controls (after the round-4 review: a control passes only on a positive measurement, and Z2 is validated against
+    # the exact transfer matrix of the twisted 2^3 box)
+    exact = json.load(open(EXACT_Z2)) if os.path.exists(EXACT_Z2) else {}
+    val = []
+    for r in runs:
+        key = "%g" % r["beta"]
+        if r["group"] == "z2" and r["L"] == 2 and key in exact:
+            ze = exact[key]["z"]
+            if r.get("counted"):
+                pull = (r["z"][0] - ze) / r["z"][1]
+                val.append({"beta": r["beta"], "z_mc": r["z"], "z_exact": ze, "pull": pull, "ok": bool(abs(pull) <= 2)})
+            else:
+                val.append({"beta": r["beta"], "z_mc": r.get("z"), "z_exact": ze, "pull": None, "ok": False, "note": r["verdict"]})
+    R["z2_exact_validation"] = {"points": val, "verdict": ("VALIDATED" if val and all(v["ok"] for v in val) else
+                                                           ("NOT RUN" if not val else "VALIDATION FAILED: readings suspended"))}
     for grp, beta in (("z2", 0.5), ("2i", 8.0)):
         rr = sorted([r for r in runs if r["group"] == grp and abs(r["beta"] - beta) < 1e-9], key=lambda r: r["L"])
         if not rr:
             continue
         ent = {"points": [{"L": r["L"], "z": r.get("z"), "z_up": r.get("z_up"), "verdict": r["verdict"]} for r in rr]}
-        first, last = rr[0], rr[-1]
-        zl = first["z"][0] if first.get("z") else None
-        up_last = last.get("z_up")
-        grow = (zl is not None and last.get("z") and last["z"][0] - 2 * last["z"][1] > zl + 2 * first["z"][1])
-        if up_last is None:
-            ent["verdict"] = "NOT RESOLVED"
-        elif grow or up_last >= 1:
-            ent["verdict"] = "CONTROL FAILED (no fall)"
+        first = rr[0]
+        if not first.get("counted"):
+            ent["verdict"] = "NOT RESOLVED (the smallest box is not counted: no positive measurement to fall from)"
         else:
-            ent["verdict"] = "Z FALLS (control passed)"
-        R[f"control_{grp}_{beta}"] = ent
+            z0, d0 = first["z"]
+            later = rr[1:]
+            grows = any(r.get("counted") and r["z"][0] - 2 * r["z"][1] > z0 + 2 * d0 for r in later)
+            falls = len(later) > 0 and all(r.get("z_up") is not None and r["z_up"] < z0 - 2 * d0 for r in later)
+            if grows:
+                ent["verdict"] = "CONTROL FAILED (z grows)"
+            elif falls:
+                ent["verdict"] = "Z FALLS (control passed: measured upper bounds below the smallest box's z)"
+            else:
+                ent["verdict"] = "NOT RESOLVED (no growth, fall not resolved)"
+        if grp == "z2":
+            ent["requires"] = "z2_exact_validation = VALIDATED"
+            if R["z2_exact_validation"]["verdict"] != "VALIDATED" and ent["verdict"].startswith("Z FALLS"):
+                ent["verdict"] = "NOT RESOLVED (exact validation missing or failed)"
+        R["control_%s_%s" % (grp, beta)] = ent
     # symmetry control
     s12 = [r for r in runs if r["group"] == "su2" and r["plane"] == [1, 2] and r.get("z")]
     for r in s12:
@@ -474,11 +572,13 @@ def _interp_sigma(u0, U, S):
     return math.exp(np.interp(math.log(u0), np.log(U[o]), np.log(S[o])))
 
 
-def collapse(runs):
+def collapse(runs, thr=G_THRESHOLD):
     """Collapse test of the one-flow assumption (U) of r4-minting: z(2L) against z(L) at several beta on one curve sigma(u).
     Pulls between beta curves; (a/L)^2 extrapolation at common u; min sigma(u)/u; controls U(1) (identity), Z2 and 2I (below)."""
     res = {}
     su2 = [r for r in runs if r["group"] == "su2" and r["twisted"] and r["plane"] == [0, 1] and r.get("counted")]
+    res["resolutions_a_over_L"] = sorted({"1/%d" % r["L"] for r in su2
+                                          if any(q["L"] == 2 * r["L"] and q["beta"] == r["beta"] for q in su2)})
     curves = {}
     for b in sorted({r["beta"] for r in su2}):
         pts = sorted((r["L"], r["z"][0], r["z"][1]) for r in su2 if r["beta"] == b)
@@ -520,8 +620,9 @@ def collapse(runs):
     if pulls:
         p = np.abs([q["pull"] for q in pulls])
         ok = np.sum(p > 2) == 0 or (np.sum(p > 2) == 1 and p.max() <= 3 and len(p) >= 5)
-        res["verdict"] = ("COLLAPSE HOLDS" if ok else
-                          "COLLAPSE FAILS (the one-flow reading fails in this scheme at these spacings, or cutoff effects exceed the errors)")
+        res["verdict"] = ("COLLAPSE HOLDS (indicative: two or three resolutions)" if ok else
+                          "COLLAPSE FAILS (indicative: the one-flow reading fails in this scheme at these spacings, or cutoff effects "
+                          "exceed the errors)")
     else:
         res["verdict"] = "NOT TESTED (no two beta curves overlap in u)"
     grid = []
@@ -556,7 +657,10 @@ def collapse(runs):
     rat = [(g["ratio_continuum"], g["u"], g["n_beta"]) for g in grid if "ratio_continuum" in g]
     if rat:
         j = int(np.argmin([r[0][0] for r in rat]))
-        res["min_sigma_over_u_continuum"] = {"value": rat[j][0], "at_u": rat[j][1], "n_beta": rat[j][2]}
+        res["min_sigma_over_u_continuum"] = {
+            "value": rat[j][0], "at_u": rat[j][1], "n_beta": rat[j][2], "threshold": thr,
+            "note": ("two beta: the (a/L)^2 fit is exactly determined (no check of the fit form)" if rat[j][2] == 2 else "three beta"),
+            "clears_threshold_2sigma": bool(rat[j][0][0] - 2 * rat[j][0][1] > thr)}
     allr = [(q["sigma_over_u"], q["u"], b) for b, v in res["points"].items() for q in v]
     if allr:
         j = int(np.argmin([r[0][0] for r in allr]))

@@ -1,7 +1,7 @@
 """CPU end-to-end pipeline test (PREREG.md "Pipeline test": a test of the pipeline only, not physics). One process, numpy only.
 
 Runs a miniature version of every run type of the plan (U(1) photon gate, SU(2) in two planes and untwisted, Z2, 2I frozen and below
-freezing) at tiny sizes, then the full analysis, into cpu-test/. About eight minutes on one core.
+freezing) at tiny sizes, then the full analysis, into cpu-test/. About ten minutes on one core.
 
 Usage: python pipeline_test.py       (sets CUDA_VISIBLE_DEVICES=-1 itself)
 """
@@ -22,16 +22,17 @@ import analyse_actnumber as AA  # noqa: E402
 OUT = os.path.join(HERE, "cpu-test")
 MINI = [
     # name, group, beta, L, T, plane, twisted, chains, therm, meas, every, levels, seed
-    ("u1_b1.1_L2", "u1", 1.1, 2, 16, "01", True, 4, 100, 200, 2, "0,2", 1),
-    ("u1_b1.1_L4", "u1", 1.1, 4, 32, "01", True, 4, 100, 200, 2, "0,2", 2),
-    ("u1_b1.1_L6", "u1", 1.1, 6, 32, "01", True, 4, 60, 120, 2, "0,2", 3),
+    ("u1_b1.1_L2", "u1", 1.1, 2, 16, "01", True, 8, 100, 200, 2, "0,2", 1),
+    ("u1_b1.1_L4", "u1", 1.1, 4, 32, "01", True, 8, 100, 200, 2, "0,2", 2),
+    ("u1_b1.1_L6", "u1", 1.1, 6, 32, "01", True, 8, 60, 120, 2, "0,2", 3),
     ("su2_b2.4_L2", "su2", 2.4, 2, 32, "01", True, 4, 100, 200, 2, "0,2", 4),
-    ("su2_b2.4_L4", "su2", 2.4, 4, 24, "01", True, 4, 60, 150, 2, "0,2,6", 5),
+    ("su2_b2.4_L4", "su2", 2.4, 4, 24, "01", True, 8, 60, 150, 2, "0,2,6", 5),
     ("su2_b2.4_L4_p12", "su2", 2.4, 4, 24, "12", True, 4, 60, 150, 2, "0,2,6", 6),
     ("su2_b2.4_L4_per", "su2", 2.4, 4, 24, "01", False, 4, 60, 100, 2, "0,2,6", 7),
-    ("z2_b0.5_L2", "z2", 0.5, 2, 16, "01", True, 4, 100, 200, 2, "0", 8),
+    ("z2_b0.5_L2", "z2", 0.5, 2, 16, "01", True, 8, 100, 200, 2, "0", 8),
+    ("z2_b0.42_L2", "z2", 0.42, 2, 16, "01", True, 8, 100, 200, 2, "0", 17),
     ("z2_b0.5_L4", "z2", 0.5, 4, 16, "01", True, 4, 100, 150, 2, "0", 9),
-    ("2i_b8.0_L2", "2i", 8.0, 2, 16, "01", True, 4, 100, 200, 2, "0,2", 10),
+    ("2i_b8.0_L2", "2i", 8.0, 2, 16, "01", True, 8, 100, 200, 2, "0,2", 10),
     ("2i_b8.0_L4", "2i", 8.0, 4, 16, "01", True, 4, 60, 100, 2, "0,2", 11),
     ("2i_b2.4_L4", "2i", 2.4, 4, 24, "01", True, 4, 60, 100, 2, "0,2,6", 12),
     # the four-move addendum in miniature (cubes L = 2 and 4 above): boxes (2, 2, 4) and (4, 2, 4)

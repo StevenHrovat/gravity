@@ -15,11 +15,11 @@ DMP-SCOUT.md` §2.9). Nothing was run on the GPU; the coordinating session runs 
    stretch, incomparable with the gap), and, for r4-minting, whether z(2L) depends on z(L) alone (one flow). It cannot show the sector
    transfer or anything rigorous. Growth would be evidence about pure SU(2) specifically: asymptotic freedom alone does not imply it
    (Banks–Zaks theories are asymptotically free and gapless).
-3. **The plan.** 38 runs in the main queue: U(1) photon gate first (stops the queue if z is not frozen), SU(2) at β = 2.4 and 2.5 across L√σ = 0.73–3.61,
-   small-L points at β = 2.6 and 2.7, deconfined Z₂ and frozen binary icosahedral (2I) controls, the symmetry control (twist in another
-   plane), and reported extras (β = 2.3, a second Coulomb β, the untwisted box, 2I below its freezing). About 4.8 GPU hours (±50 %), core
-   4.2 h; the cuts are listed in `PREREG.md`. An optional addendum (13 runs, about 1.3 h, switch `-AddendumW`) measures r4-conjw's
-   four-move split of one doubling at the small end.
+3. **The plan (as amended after the round-4 review, 2026-11-22).** 30 runs in the main queue: U(1) photon gate first (stops the queue
+   if z is not frozen), SU(2) at β = 2.4 and 2.5 across L√σ = 0.73–3.61, small-L points at β = 2.6, Z₂ (exactly validated at L = 2) and
+   frozen binary icosahedral (2I) controls, the symmetry control (twist in another plane), and β = 2.3 at the large end. 8 chains per
+   run. About 5.2 GPU hours (±50 %); the cuts are listed in `PREREG.md`. An optional addendum (13 runs, about 2.4 h, switch
+   `-AddendumW`) measures r4-conjw's four-move split of one doubling at the small end.
 4. **Readings added at other attempts' request, before any data.** r4-minting: the collapse test, i.e. whether z(2L) plotted against
    z(L) at several β falls on one curve σ(u), with the minimum of σ(u)/u, and controls (U(1) on the diagonal, Z₂ and 2I below it); the
    Banks–Zaks point. r4-conjw: the inversion box z = log(1 + √2) = 0.881 in the two-state form (free); the four-move ratios (addendum);
@@ -65,7 +65,7 @@ DMP-SCOUT.md` §2.9). Nothing was run on the GPU; the coordinating session runs 
 |---|---|---|
 | fractional instantons in twisted boxes (García Pérez, González-Arroyo, Snippe, van Baal 1994) | not re-read; the directly relevant papers are the next two rows | memory |
 | electric flux energies in twisted SU(2) boxes, small L, Q = ½ tunnelling | García Pérez, González-Arroyo, Martínez et al., Phys. Lett. B 305 (1993) 366, hep-lat/9302007 (HTML read via a summarising fetch): m = (1,1,1), N_s = 4, 6, 8, Q = ½ dilute gas, lattice instanton actions S_L(4, 6, 8) = 37.49, 38.64, 39.00 → 4π²; **Monte Carlo autocorrelation very large at large β** (a pair did not annihilate in several 10⁵ sweeps at β = 3, N_s = 4) | **read (summary)** |
-| "how the string tension is built up" | González-Arroyo and Martínez, Nucl. Phys. B 459 (1996) 337, hep-lat/9507001 (**read in full**): N_s = 4, 6, 8, N_t = 128, 128, 64, β = 2.25–2.6, Polyakov-loop correlators, M(3); the flux energies interpolate smoothly from semiclassics to confinement; Σ_{e} = E/(|e| l_s) reaches σ within about 20 % at l_s ≈ 1.0–1.2 fm (l√σ ≈ 2.2–2.7 in their units σ = 5 fm⁻²); in the dilute region l_s E_(1,1,1) ≈ 2 (l_s/l̄)^α, α ≈ 2, l̄ ≈ 0.6–0.7 fm (l̄√σ ≈ 1.3–1.6); 10⁴–10⁵ thermalisation sweeps, N_skip 50–500 | **read** |
+| "Investigating Yang-Mills theory and confinement as a function of the spatial volume" (title corrected by the reading pack; "how the string tension is built up" is the proceedings hep-lat/9312066) | González-Arroyo and Martínez, Nucl. Phys. B 459 (1996) 337, hep-lat/9507001 (**read in full**): N_s = 4, 6, 8, N_t = 128, 128, 64, β = 2.25–2.6, Polyakov-loop correlators, M(3); the flux energies interpolate smoothly from semiclassics to confinement; Σ_{e} = E/(|e| l_s) reaches σ within about 20 % at l_s ≈ 1.0–1.2 fm (l√σ ≈ 2.2–2.7 in their units σ = 5 fm⁻²); in the dilute region l_s E_(1,1,1) ≈ 2 (l_s/l̄)^α, α ≈ 2, l̄ ≈ 0.6–0.7 fm (l̄√σ ≈ 1.3–1.6); 10⁴–10⁵ thermalisation sweeps, N_skip 50–500 | **read** |
 | electric flux free energies, de Forcrand and von Smekal 2002 | Phys. Rev. D 66 (2002) 011504, hep-lat/0107018, abstract read: 't Hooft loops of maximal size, electric flux free energies vanish exponentially with L below T_c, evidence for a mass gap | **read (abstract)**; "linear in L" not confirmed from the abstract |
 | twisted-Polyakov-loop scheme, de Divitiis, Frezzotti, Guagnelli, Petronzio | hep-lat/9312085 (definition; Λ_TP/Λ_MSbar = 1.6136(2)), hep-lat/9407028 (non-perturbative running over a factor ~30 in energy); journal Nucl. Phys. B 422 (1994) 382 per a later citation | **read (abstracts)** |
 | van Baal's thesis, Luescher 1983, Koller and van Baal | not re-read (not relied on; cited by hep-lat/9507001 as refs. 11, 12) | memory |
@@ -97,15 +97,38 @@ counted, flat within 5 %. So 2πα_R ≈ 0.7, α_R ≈ 0.11 against the bare 1/(
 tiny lattices the owner's α pointer already reads as an identity on data: the photon's act number is frozen and equals 2πα (with the
 renormalised α near the U(1) transition). Not a result: two box sizes, CPU statistics.
 
+## 4.2 Amendment after the round-4 review (2026-11-22, before any data)
+
+The adversarial review found that the pre-registration could give a false or powerless verdict. All six findings are addressed in
+`PREREG.md`, section "Changes before data (after the round-4 review)", which overrides the earlier text:
+1. growth needs the 2σ-lower doubling factor above max(1.5, the photon's own doubling factor + 2σ); a new verdict "grows, but not clear
+   of the photon band";
+2. frozen tunnelling: a point counts only with 8 chains (errors from the spread between chains), cold and hot starts agreeing, and at
+   least 10 sector flips per chain in Monte Carlo time; small boxes get 14 000 sweeps per chain; the two lowest points (L√σ 0.56, 0.63)
+   and most extras are cut;
+3. controls pass only on positive measurements; Z₂ on the twisted 2³ box is now validated against an **exact transfer-matrix result**
+   (`exact_z2.py`: β = 0.5: z = 0.557856; β = 0.42: z = 1.686915), and a failed validation suspends every reading;
+4. the large-L plateau bias (E high, margin high) is quoted as a systematic (E at t* + 1);
+5. the collapse test is labelled indicative (three resolutions, an exactly determined fit where two β cover u), and the PREREG says
+   that only the quantitative margin and the collapse carry new information;
+6. Conjecture W is judged only in its summed form W_Σ.
+Two decisions made during the post-review pipeline test (before data): the sector-flip rule applies to SU(2), Z₂ and 2I, not to U(1),
+whose flux variable is a continuous phase without a barrier (applied to U(1) it failed a toy photon point on global-phase diffusion
+alone, which could have stopped the queue at the photon gate); and the frozen-2I control is declared unable to pass (E unmeasurable at
+every size at β = 8, so it is reported only; the non-abelian negative control is missing from the data side).
+Tests after the changes: self-test 28/28; pipeline 550 s, exact Z₂ validation passes on the toy runs (pulls −0.42, −0.92).
+New GPU estimate 5.2 h (was 4.8 h); the optional addendum 2.4 h (or 1.4 h without one pair). The waiting queue needs no restart.
+
 ## 5. What the coordinator must decide
 
 1. **When to start the queue.** `pwsh -File queue_actnumber_gpu.ps1` (from this folder) can be started at any time: it waits for Leg C's
    addendum to finish ("ADDENDUM DONE" or "ADDENDUM not run" in `../r3-blocked/runs-gpu/queue_blocked.log`; or "BLOCKED DONE" with no
    addendum queue process alive) and for no blocked.py/boundary.py run to be left, checked twice 3 minutes apart. It does not look at
    other GPU users (other round-4 queues); if another GPU job is planned after Leg C, order them by hand.
-2. **Whether to add the four-move addendum** (`-AddendumW`, +1.3 h). Recommended only if the main result shows a small margin at the
+2. **Whether to add the four-move addendum** (`-AddendumW`, +2.4 h after the review amendment, or +1.4 h without the β = 2.5,
+   L = 6 pair, which would need removing those two entries from `PLAN_W` first). Recommended only if the main result shows a small margin at the
    small end (the addendum covers L√σ ≤ 1.55 only).
-3. **Budget.** Main plan about 4.8 h ±50 % at estimated rates (the U(1)/Z₂/2I array-code rates are guesses); the queue's bench step logs
+3. **Budget.** Main plan about 5.2 h ±50 % (after the review amendment) at estimated rates (the U(1)/Z₂/2I array-code rates are guesses); the queue's bench step logs
    the measured projection as its third line. If it projects more than 7 h, cut in the order given in `PREREG.md` (extras first).
 4. **Whether to prepare the exact F_e/F_m measurement** (not prepared; about 2–3 h of code, 50 GPU min).
 5. **Note for the GPU self-test.** The fused path (unchanged kernels plus the sheet fix-up) has been tested on the CPU only through a numpy
@@ -127,5 +150,5 @@ renormalised α near the U(1) transition). Not a result: two box sizes, CPU stat
 ## 7. Files (all in this folder)
 
 - `PREREG.md`: the pre-registration (question, estimator, runs, counted points, readings (i)–(viii), controls and gates, limits).
-- `actnumber.py`, `analyse_actnumber.py`, `pipeline_test.py`, `queue_actnumber_gpu.ps1`.
+- `actnumber.py`, `analyse_actnumber.py`, `pipeline_test.py`, `queue_actnumber_gpu.ps1`, `exact_z2.py` (+ `exact_z2.json`).
 - `cpu-test/`: `selftest.log`, `pipeline.log`, `analysis.log`, `summary.json` and the toy `.npz` files; `u1-feasibility/`.

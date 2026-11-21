@@ -692,52 +692,49 @@ LV_S = "0,2,6"          # small boxes
 LV_M = "0,3,8,16"       # medium
 LV_L = "0,4,12,24"      # large boxes
 PLAN = [
+    # Amended 2026-11-22 after the round-4 review, before any data (PREREG.md "Changes before data (after the round-4 review)"):
+    # every run has 8 chains (errors from the spread between chains; cold and hot starts compared), the small boxes (L sqrt(sigma)
+    # <= 1.12) run 14000 sweeps per chain, the lowest points (beta 2.6 L 4, beta 2.7 L 6) and most reported extras are cut.
+    # S = small box: 8 chains, 4000 thermalisation sweeps, 500 measurements every 20 sweeps; M = medium: 1500, 400 every 8;
+    # B = large: 1000, 400 every 4.
     # photon gate (U(1), Coulomb phase): run first, the queue stops if it fails
-    ("u1_b1.1_L4", "u1", 1.1, 4, 32, "01", True, 4, 300, 500, 4, LV_S, 4101),
-    ("u1_b1.1_L6", "u1", 1.1, 6, 32, "01", True, 4, 300, 500, 4, LV_S, 4102),
-    ("u1_b1.1_L8", "u1", 1.1, 8, 48, "01", True, 4, 300, 500, 4, LV_M, 4103),
-    ("u1_b1.1_L10", "u1", 1.1, 10, 48, "01", True, 4, 300, 500, 4, LV_M, 4104),
+    ("u1_b1.1_L4", "u1", 1.1, 4, 32, "01", True, 8, 300, 400, 4, LV_S, 4101),
+    ("u1_b1.1_L6", "u1", 1.1, 6, 32, "01", True, 8, 300, 400, 4, LV_S, 4102),
+    ("u1_b1.1_L8", "u1", 1.1, 8, 48, "01", True, 8, 300, 300, 4, LV_M, 4103),
+    ("u1_b1.1_L10", "u1", 1.1, 10, 48, "01", True, 8, 300, 300, 4, LV_M, 4104),
     # SU(2), coarse spacing beta 2.4 (a sqrt(sigma) = 0.258)
-    ("su2_b2.4_L4", "su2", 2.4, 4, 96, "01", True, 8, 1000, 500, 8, LV_S, 4201),
-    ("su2_b2.4_L6", "su2", 2.4, 6, 64, "01", True, 8, 1000, 500, 8, LV_S, 4202),
-    ("su2_b2.4_L8", "su2", 2.4, 8, 48, "01", True, 8, 1000, 500, 6, LV_M, 4203),
-    ("su2_b2.4_L10", "su2", 2.4, 10, 32, "01", True, 4, 1000, 1000, 4, LV_M, 4204),
-    ("su2_b2.4_L12", "su2", 2.4, 12, 32, "01", True, 4, 1000, 800, 4, LV_L, 4205),
-    ("su2_b2.4_L14", "su2", 2.4, 14, 32, "01", True, 4, 1000, 800, 4, LV_L, 4206),
+    ("su2_b2.4_L4", "su2", 2.4, 4, 96, "01", True, 8, 4000, 500, 20, LV_S, 4201),
+    ("su2_b2.4_L6", "su2", 2.4, 6, 64, "01", True, 8, 1500, 400, 8, LV_S, 4202),
+    ("su2_b2.4_L8", "su2", 2.4, 8, 48, "01", True, 8, 1500, 400, 8, LV_M, 4203),
+    ("su2_b2.4_L10", "su2", 2.4, 10, 32, "01", True, 8, 1000, 400, 4, LV_M, 4204),
+    ("su2_b2.4_L12", "su2", 2.4, 12, 32, "01", True, 8, 1000, 400, 4, LV_L, 4205),
+    ("su2_b2.4_L14", "su2", 2.4, 14, 32, "01", True, 8, 1000, 400, 4, LV_L, 4206),
     # SU(2), fine spacing beta 2.5 (a sqrt(sigma) = 0.182)
-    ("su2_b2.5_L4", "su2", 2.5, 4, 128, "01", True, 8, 1500, 500, 10, LV_S, 4301),
-    ("su2_b2.5_L6", "su2", 2.5, 6, 96, "01", True, 8, 1000, 500, 8, LV_S, 4302),
-    ("su2_b2.5_L8", "su2", 2.5, 8, 64, "01", True, 8, 1000, 500, 6, LV_M, 4303),
-    ("su2_b2.5_L10", "su2", 2.5, 10, 48, "01", True, 4, 1000, 1000, 4, LV_M, 4304),
-    ("su2_b2.5_L12", "su2", 2.5, 12, 32, "01", True, 4, 1000, 800, 4, LV_M, 4305),
-    ("su2_b2.5_L14", "su2", 2.5, 14, 32, "01", True, 4, 1000, 800, 4, LV_L, 4306),
-    ("su2_b2.5_L16", "su2", 2.5, 16, 32, "01", True, 4, 1000, 800, 4, LV_L, 4307),
+    ("su2_b2.5_L4", "su2", 2.5, 4, 128, "01", True, 8, 4000, 500, 20, LV_S, 4301),
+    ("su2_b2.5_L6", "su2", 2.5, 6, 64, "01", True, 8, 4000, 500, 20, LV_S, 4302),
+    ("su2_b2.5_L8", "su2", 2.5, 8, 64, "01", True, 8, 1500, 400, 8, LV_M, 4303),
+    ("su2_b2.5_L10", "su2", 2.5, 10, 48, "01", True, 8, 1500, 400, 8, LV_M, 4304),
+    ("su2_b2.5_L12", "su2", 2.5, 12, 32, "01", True, 8, 1000, 400, 4, LV_M, 4305),
+    ("su2_b2.5_L14", "su2", 2.5, 14, 32, "01", True, 8, 1000, 400, 4, LV_L, 4306),
+    ("su2_b2.5_L16", "su2", 2.5, 16, 32, "01", True, 8, 1000, 400, 4, LV_L, 4307),
     # symmetry control: twist in the yz-plane, flux along x
-    ("su2_b2.4_L6_p12", "su2", 2.4, 6, 64, "12", True, 8, 1000, 500, 8, LV_S, 4309),
-    # Z2 deconfined (beta 0.5 > beta_c = 0.4407) and frozen 2I (beta 8): z must fall
+    ("su2_b2.4_L6_p12", "su2", 2.4, 6, 64, "12", True, 8, 1500, 400, 8, LV_S, 4309),
+    # Z2: L = 2 at beta 0.5 (deconfined) and 0.42 (confined) validated against the exact transfer matrix (exact_z2.py); beta 0.5 at
+    # L = 4, 6: z must fall. Frozen 2I (beta 8): z must fall
     ("z2_b0.5_L2", "z2", 0.5, 2, 32, "01", True, 8, 300, 500, 4, "0", 4401),
+    ("z2_b0.42_L2", "z2", 0.42, 2, 32, "01", True, 8, 300, 500, 4, "0", 4404),
     ("z2_b0.5_L4", "z2", 0.5, 4, 32, "01", True, 8, 300, 500, 4, "0", 4402),
-    ("z2_b0.5_L6", "z2", 0.5, 6, 32, "01", True, 4, 300, 500, 4, "0", 4403),
+    ("z2_b0.5_L6", "z2", 0.5, 6, 32, "01", True, 8, 300, 500, 4, "0", 4403),
     ("2i_b8.0_L2", "2i", 8.0, 2, 32, "01", True, 8, 300, 500, 4, LV_S, 4501),
     ("2i_b8.0_L4", "2i", 8.0, 4, 32, "01", True, 8, 300, 500, 4, LV_S, 4502),
-    ("2i_b8.0_L6", "2i", 8.0, 6, 32, "01", True, 4, 300, 500, 4, LV_S, 4503),
-    # small-L end and a third doubling curve for the collapse test (beta 2.6: a sqrt(sigma) = 0.140; beta 2.7: 0.106)
-    ("su2_b2.6_L4", "su2", 2.6, 4, 128, "01", True, 8, 1500, 500, 12, LV_S, 4601),
-    ("su2_b2.6_L6", "su2", 2.6, 6, 128, "01", True, 8, 1500, 500, 10, LV_S, 4602),
-    ("su2_b2.6_L8", "su2", 2.6, 8, 96, "01", True, 4, 1000, 750, 6, LV_M, 4605),
-    ("su2_b2.6_L12", "su2", 2.6, 12, 48, "01", True, 4, 1000, 800, 4, LV_M, 4606),
-    ("su2_b2.7_L6", "su2", 2.7, 6, 128, "01", True, 8, 1500, 500, 12, LV_S, 4603),
-    # reported extras: coarse beta 2.3 (large end at a second spacing), second Coulomb coupling (collapse control), periodic
-    # (untwisted) comparison, 2I below its freezing (mimics SU(2))
-    ("su2_b2.3_L4", "su2", 2.3, 4, 64, "01", True, 8, 1000, 500, 8, LV_S, 4701),
-    ("su2_b2.3_L6", "su2", 2.3, 6, 32, "01", True, 8, 1000, 500, 4, LV_M, 4702),
-    ("su2_b2.3_L8", "su2", 2.3, 8, 32, "01", True, 4, 1000, 1000, 4, LV_M, 4703),
-    ("su2_b2.3_L10", "su2", 2.3, 10, 32, "01", True, 4, 1000, 800, 4, LV_L, 4704),
-    ("u1_b1.3_L4", "u1", 1.3, 4, 32, "01", True, 4, 300, 500, 4, LV_S, 4105),
-    ("u1_b1.3_L8", "u1", 1.3, 8, 48, "01", True, 4, 300, 500, 4, LV_M, 4106),
-    ("su2_b2.5_L6_per", "su2", 2.5, 6, 64, "01", False, 8, 1000, 500, 6, LV_S, 4801),
-    ("su2_b2.5_L12_per", "su2", 2.5, 12, 32, "01", False, 4, 1000, 500, 4, LV_M, 4802),
-    ("2i_b2.4_L6", "2i", 2.4, 6, 32, "01", True, 4, 500, 300, 4, LV_S, 4803),
+    ("2i_b8.0_L6", "2i", 8.0, 6, 32, "01", True, 8, 300, 300, 4, LV_S, 4503),
+    # small-L end at a finer spacing and a third doubling curve for the (indicative) collapse test (beta 2.6: a sqrt(sigma) = 0.140)
+    ("su2_b2.6_L6", "su2", 2.6, 6, 96, "01", True, 8, 4000, 500, 20, LV_S, 4602),
+    ("su2_b2.6_L8", "su2", 2.6, 8, 64, "01", True, 8, 4000, 400, 16, LV_M, 4605),
+    ("su2_b2.6_L12", "su2", 2.6, 12, 48, "01", True, 8, 1000, 400, 6, LV_M, 4606),
+    # reported extra: the large end at a second spacing (beta 2.3: a sqrt(sigma) = 0.350)
+    ("su2_b2.3_L8", "su2", 2.3, 8, 32, "01", True, 8, 1000, 400, 4, LV_M, 4703),
+    ("su2_b2.3_L10", "su2", 2.3, 10, 32, "01", True, 8, 1000, 400, 4, LV_L, 4704),
 ]
 
 
@@ -746,17 +743,19 @@ PLAN = [
 # come from PLAN. (L, 2L, 2L) once, as the symmetry check of the widened box. Run only on the coordinator's decision
 # (queue_actnumber_gpu.ps1 -AddendumW). Same fields as PLAN plus the box.
 PLAN_W = [
-    ("su2_b2.4_box4x4x8", "su2", 2.4, 8, 48, "01", True, 8, 1000, 500, 8, LV_S, 4901, "4,4,8"),
-    ("su2_b2.4_box8x4x8", "su2", 2.4, 8, 48, "01", True, 8, 1000, 500, 8, LV_S, 4902, "8,4,8"),
-    ("su2_b2.4_box6x6x12", "su2", 2.4, 12, 32, "01", True, 8, 1000, 500, 8, LV_M, 4903, "6,6,12"),
-    ("su2_b2.4_box12x6x12", "su2", 2.4, 12, 32, "01", True, 8, 1000, 500, 8, LV_M, 4904, "12,6,12"),
-    ("su2_b2.4_box6x12x12", "su2", 2.4, 12, 32, "01", True, 8, 1000, 500, 8, LV_M, 4905, "6,12,12"),
-    ("su2_b2.5_box4x4x8", "su2", 2.5, 8, 64, "01", True, 8, 1500, 500, 10, LV_S, 4911, "4,4,8"),
-    ("su2_b2.5_box8x4x8", "su2", 2.5, 8, 64, "01", True, 8, 1500, 500, 10, LV_S, 4912, "8,4,8"),
-    ("su2_b2.5_box6x6x12", "su2", 2.5, 12, 48, "01", True, 8, 1000, 500, 8, LV_M, 4913, "6,6,12"),
-    ("su2_b2.5_box12x6x12", "su2", 2.5, 12, 48, "01", True, 8, 1000, 500, 8, LV_M, 4914, "12,6,12"),
-    ("u1_b1.1_box4x4x8", "u1", 1.1, 8, 32, "01", True, 4, 300, 500, 4, LV_S, 4921, "4,4,8"),
-    ("u1_b1.1_box8x4x8", "u1", 1.1, 8, 32, "01", True, 4, 300, 500, 4, LV_S, 4922, "8,4,8"),
+    # amended 2026-11-22 after the round-4 review: 8 chains everywhere; the small boxes (cube L sqrt(sigma) <= 1.1) run as the plan's
+    # small boxes (4000 thermalisation sweeps, 500 measurements every 20 sweeps)
+    ("su2_b2.4_box4x4x8", "su2", 2.4, 8, 48, "01", True, 8, 4000, 500, 20, LV_S, 4901, "4,4,8"),
+    ("su2_b2.4_box8x4x8", "su2", 2.4, 8, 48, "01", True, 8, 4000, 500, 20, LV_S, 4902, "8,4,8"),
+    ("su2_b2.4_box6x6x12", "su2", 2.4, 12, 32, "01", True, 8, 1500, 400, 8, LV_M, 4903, "6,6,12"),
+    ("su2_b2.4_box12x6x12", "su2", 2.4, 12, 32, "01", True, 8, 1500, 400, 8, LV_M, 4904, "12,6,12"),
+    ("su2_b2.4_box6x12x12", "su2", 2.4, 12, 32, "01", True, 8, 1500, 400, 8, LV_M, 4905, "6,12,12"),
+    ("su2_b2.5_box4x4x8", "su2", 2.5, 8, 64, "01", True, 8, 4000, 500, 20, LV_S, 4911, "4,4,8"),
+    ("su2_b2.5_box8x4x8", "su2", 2.5, 8, 64, "01", True, 8, 4000, 500, 20, LV_S, 4912, "8,4,8"),
+    ("su2_b2.5_box6x6x12", "su2", 2.5, 12, 48, "01", True, 8, 4000, 500, 20, LV_M, 4913, "6,6,12"),
+    ("su2_b2.5_box12x6x12", "su2", 2.5, 12, 48, "01", True, 8, 4000, 500, 20, LV_M, 4914, "12,6,12"),
+    ("u1_b1.1_box4x4x8", "u1", 1.1, 8, 32, "01", True, 8, 300, 400, 4, LV_S, 4921, "4,4,8"),
+    ("u1_b1.1_box8x4x8", "u1", 1.1, 8, 32, "01", True, 8, 300, 400, 4, LV_S, 4922, "8,4,8"),
     ("2i_b8.0_box2x2x4", "2i", 8.0, 4, 32, "01", True, 8, 300, 500, 4, LV_S, 4931, "2,2,4"),
     ("2i_b8.0_box4x2x4", "2i", 8.0, 4, 32, "01", True, 8, 300, 500, 4, LV_S, 4932, "4,2,4"),
 ]

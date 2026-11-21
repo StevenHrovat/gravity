@@ -7,6 +7,10 @@ first GPU data must be marked as such, as in `../../../lattice/PREREG-BOUNDARY.m
 during preparation, before any data) is part of the readings: reading (vi), the collapse test, and the Banks–Zaks point under "What z
 measures".
 
+**Amended 2026-11-22, before any GPU data, after the adversarial review of round 4:** see the last section, "Changes before data
+(after the round-4 review)". It overrides the text above where they differ: new counting rules (8 chains, between-chain errors, cold =
+hot, sector flips), a growth threshold above the photon band, an exact Z₂ validation, a new Runs table (30 runs, about 5.2 GPU hours).
+
 **Why.** The round-4 scout (`../../round4-prep/DMP-SCOUT.md` §2) reads the DMP act identity (existence × extent = one quantum) in
 Yang–Mills as the act number of a twisted box, z(L) = E_e(L)·L: the energy of the cheapest state that carries one unit of centre
 flux around a periodic box of side L, times L. For the photon it is frozen at 2πα (classical); for SU(2) it should run, cross 1 near the
@@ -303,3 +307,106 @@ Both made during preparation, before any GPU data, on relayed requests of finish
 2. r4-conjw: reading (vii), the two-state inversion box; the line-of-constant-physics statement; the optional addendum W (reading (viii),
    `PLAN_W`, `-AddendumW`) with anisotropic boxes in the code (self-test 28/28 with three new anisotropic checks; one more in
    `selftest --gpu`); the exact F_e/F_m measurement written up as optional, not prepared.
+
+## Changes before data (after the round-4 review), 2026-11-22
+
+Made after the independent adversarial review of round 4, relayed by the coordinating session, **before any GPU data**. At the time of
+the change `queue_actnumber_gpu.ps1` had been started and was waiting for Leg C. **The queue script is unchanged and needs no restart**:
+it reads the job list from `actnumber.PLAN` at run time (`plannames`, `runplan`), calls `actnumber.py` and `analyse_actnumber.py` afresh at
+every step, and the four photon-gate names it hard-codes are still in `PLAN`. This section overrides the text above where they differ;
+in particular the Runs table above is replaced by the one below.
+
+**R1. Growth threshold (review item 1).** "GROWS WITH MARGIN" now needs the 2.3 % quantile of the doubling factor g above
+**max(1.5, g_photon + 2σ)** at every grid point, at both main β, where g_photon = z(8)/z(4) of U(1) at β = 1.1 (reported as
+`photon_doubling`; the photon gate tolerates 15 % + 2σ drift, and the CPU feasibility data rose 0.694 → 0.729, so a photon-like drift
+must not pass as growth). New verdict between the old ones: **GROWS, BUT NOT CLEAR OF THE PHOTON BAND** (g > 1 at 2σ, no margin
+claimed). The same threshold applies to the collapse test's min σ(u)/u (`clears_threshold_2sigma`) and to the addendum's W_Σ.
+
+**R2. Tunnelling at small L (review item 2).** Without vacuum subtraction a chain that never tunnels gives C(t) ≈ const, E ≈ 0: z biased
+low at small L and g inflated; the drift and τ checks of one run do not see a frozen chain. A point now counts only if, in addition to
+plateau, sheet, drift and τ (now: measurements per chain ≥ 20 τ_int):
+- **chains**: at least 8; **every error is the delete-one-chain jackknife** (spread between independent chains; the binned error is
+  reported next to it);
+- **cold = hot**: E at t* from the cold-start chains (twist eaters P_f = ±1; U(1), Z₂: all links 1) and from the hot-start chains agree
+  within 2 combined errors;
+- **sector flips** (SU(2), Z₂, 2I): in Monte Carlo time, every chain changes its dominant flux sector, sign Σ_t p_top(t), at least
+  **10 times** (`sector_flips_per_chain`); the Euclidean kink count per configuration is reported. Not required for U(1) (reported
+  only): its flux variable is a continuous phase with no barrier, the frozen-kink mechanism does not exist, and Re p(t)p*(0) does not
+  depend on the global phase. Decided during the post-review pipeline test, before any GPU data: with the rule applied to U(1), the
+  toy L = 6 point failed on global-phase diffusion alone (5–36 flips), which in production could have stopped the queue at the photon gate
+  for a reason that has nothing to do with the photon.
+
+The plan was changed to match, at about the same GPU time (below): 8 chains everywhere; small boxes (L√σ ≤ 1.12) run 4000
+thermalisation sweeps and 500 measurements every 20 sweeps, i.e. 14 000 sweeps per chain and 112 000 per point (the literature used
+10⁴–10⁵ per point, with heat bath only; we add 3 overrelaxation steps per sweep). **Cut:** β = 2.6, L = 4 (L√σ = 0.56) and β = 2.7, L = 6
+(0.63), the two points most exposed to frozen tunnelling: the measured range now starts at L√σ = 0.73 (β = 2.5, L = 4); β = 2.3, L = 4
+and 6; the second Coulomb β = 1.3 (the collapse's U(1) control uses β = 1.1, L = 4 → 8); the periodic-box comparison; 2I at β = 2.4.
+**Added:** Z₂ at β = 0.42, L = 2 (R3).
+
+**R3. Controls that pass on failure (review item 3).** A control now passes only on a positive measurement.
+- **Exact validation (new, `exact_z2.py`).** The flux energy of Z₂ on the twisted 2³ box is computed exactly from the transfer matrix
+  (temporal gauge, 2²⁴ link states, Gauss's law by projection, flux sectors by the centre transformation, Lanczos):
+  **β = 0.5: aE = 0.278928, z = 0.557856; β = 0.42: aE = 0.843458, z = 1.686915** (`exact_z2.json`, `cpu-test/exact_z2.log`). The Monte Carlo runs
+  z2_b0.5_L2 and z2_b0.42_L2 must reproduce these within 2σ with every counting check passed; **otherwise "VALIDATION FAILED: readings
+  suspended"**: the estimator (unsubtracted correlator, cosh form, plateau rule, chain jackknife) has failed on a theory with an exactly
+  known answer, and no SU(2) reading is made until the cause is found. For the record, the earlier CPU pipeline run (4 chains,
+  200 measurements, not counted) gave z = 0.566 ± 0.055 at β = 0.5, a pull of 0.15 from the exact value.
+- **Z₂ "z falls" (β = 0.5)** now needs: the validation passed, the L = 2 point counted, and the measured upper bounds
+  z_up = L(m(2) + 2e(2)) at L = 4 and 6 below z(2) − 2σ. Growth at 2σ fails the control; anything else is NOT RESOLVED. No plateau at
+  L = 4, 6 is expected (E ~ e^{−2βL²}) and is no longer a pass by itself.
+- **2I (β = 8)**: the same rule without an exact value. **Stated now: it cannot pass.** Its tunnelling cost, about 0.955·β·N² (r4-conjw;
+  about 30 at N = 2), makes E unmeasurable at every size, so the smallest box never counts (the post-review pipeline: no plateau, zero
+  sector flips at L = 2) and the verdict will be NOT RESOLVED; the measured statements are the upper bounds z_up. It is reported, not a
+  control. The non-abelian negative control of this measurement is therefore missing; the finite-subgroup test remains a paper
+  statement (r4-conjw Theorem B).
+
+**R4. Large-L plateau bias (review item 4).** At large L the house plateau rule usually stops at t* = 1 or 2, where excited states can
+still contribute; with noisy tails the rule's agreement test passes early. Both bias E **high**, hence z high at large L, hence the
+doubling factor g high wherever 2L is a large box: the margin is biased **upwards**. Reported with every growth reading: g_min recomputed
+with E taken at t* + 1 (`g_min_with_E_at_t_plus_1`, `plateau_systematic_of_g_min`, and the verdict under that choice). The margin is
+quoted as g_min ± stat ± this systematic. A verdict that holds only with E(t*) is reported as "not robust to the plateau choice".
+
+**R5. Power (review item 5).** Stated plainly: the qualitative outcome, a smooth rise of the flux energy from semiclassics to the string,
+is known (González-Arroyo and Martínez 1996). What this measurement adds is quantitative: the crossing L*√σ, the size and location of
+the minimal doubling margin in this scheme, and the collapse. **The collapse test is indicative only**: it has the resolutions
+a/L = 1/4, 1/6, 1/8 (doublings 4 → 8, 6 → 12, 8 → 16; β = 2.6 adds 6 → 12 at another u), and where only two β cover a value of u the
+(a/L)² fit is exactly determined and cannot test its own form; the analysis says which. A fourth resolution (10 → 20 at β = 2.5 or 2.6,
+a 20³ × 32 box) would cost about 1–1.5 GPU hours and is not planned; the verdict names are now "COLLAPSE HOLDS (indicative)" and
+"COLLAPSE FAILS (indicative)".
+
+**R6. Conjecture W (review item 6).** In the dilute semiclassical regime the clause l ≥ 2 is exactly marginal (lengthening only
+doubles the number of places, r4-conjw §4.3), so a per-move verdict would be decided by noise. The addendum's only W verdict is now the
+summed form **W_Σ**: z(2L)/z(L) = 2·l·w_x·w_y above the threshold of R1 at 2σ (W_SIGMA HOLDS / FAILS / NOT RESOLVED). l − 2 and the
+widening margin 2w − 1 are reported without a verdict.
+
+**New Runs table** (replaces the one above; `actnumber.PLAN`; S = 8 chains, 4000 thermalisation, 500 measurements every 20 sweeps;
+M = 8 chains, 1500, 400 every 8; B = 8 chains, 1000, 400 every 4; U(1): 8 chains, 300, 400 (L 4, 6) or 300 (L 8, 10) every 4):
+
+| # | run | β | L (T) | L√σ | type | role |
+|---|---|---|---|---|---|---|
+| 1–4 | U(1) | 1.1 | 4 (32), 6 (32), 8 (48), 10 (48) | — | U(1) | photon gate; g_photon from 4 → 8 |
+| 5–10 | SU(2) | 2.4 | 4 (96), 6 (64), 8 (48), 10, 12, 14 (32) | 1.03, 1.55, 2.06, 2.58, 3.10, 3.61 | S, M, M, B, B, B | coarse |
+| 11–17 | SU(2) | 2.5 | 4 (128), 6 (64), 8 (64), 10 (48), 12, 14, 16 (32) | 0.73, 1.09, 1.46, 1.82, 2.19, 2.55, 2.92 | S, S, M, M, B, B, B | fine |
+| 18 | SU(2), twist yz | 2.4 | 6 (64) | 1.55 | M | symmetry control |
+| 19–22 | Z₂ | 0.5; 0.42 | 2, 4, 6 (32); 2 (32) | — | 8 chains, 300, 500 every 4 | exact validation (L 2), deconfined control |
+| 23–25 | 2I | 8.0 | 2, 4, 6 (32) | — | 8 chains | frozen finite-subgroup control |
+| 26–28 | SU(2) | 2.6 | 6 (96), 8 (64), 12 (48) | 0.84, 1.12, 1.68 | S, S (400 every 16), M (1000, 400 every 6) | small-L second spacing; third collapse curve |
+| 29–30 | SU(2) | 2.3 | 8, 10 (32) | 2.80, 3.50 | B | reported: large end at a second spacing |
+
+**GPU time: about 5.2 h (±50 %)** with the same rate model as before (fused kernel 0.45 µs per site and sweep, 25 ms floor per sweep;
+array-code rates estimated), up from 4.8 h: the small boxes cost more, the cut points less. Without the reported β = 2.3 runs: 5.0 h.
+Cheapest further cuts: runs 29–30 (12 min); run 28, β = 2.6, L = 12 (21 min, loses the third collapse curve); runs 26–27 (about
+50 min, lose the second small-L spacing). The four-move addendum (`PLAN_W`) follows the same rules: 8 chains everywhere, the boxes built on cubes with
+L√σ ≤ 1.1 run as small boxes; its cost rises from 1.3 h to **about 2.4 h**, or **1.4 h** without the β = 2.5, L = 6 pair (boxes
+(6, 6, 12) and (12, 6, 12), L√σ = 1.09).
+
+**Expectations, revised where the rules changed:** the frozen-tunnelling checks are expected to pass at β = 2.4 and 2.5 for L√σ ≥ 0.73
+(the literature measured these sizes), and may fail at β = 2.6, L = 6 (0.84), which is then not counted. g_photon ≈ 1.0–1.1, so the
+threshold is 1.5; the expected g_min (≥ 3) clears it comfortably if the literature's smooth rise holds.
+
+**Tests after the changes** (CPU, one process at a time): self-test **28/28 pass** (`cpu-test/selftest.log`; the code changes after the review are in the analysis and the plan, not in the update or measurement code); pipeline test 550 s, one process, numpy (`cpu-test/pipeline.log`, `analysis.log`, `summary.json`, `synthetic.log`;
+a pipeline test only). Every run type and reading runs; the exact Z₂ validation **passes** on the toy runs (8 chains, 200 measurements):
+z = 0.541 ± 0.040 against exact 0.558 at β = 0.5 (pull −0.42), 1.612 ± 0.082 against 1.687 at β = 0.42 (pull −0.92), and the Z₂ control
+then reads "Z FALLS" from a positive measurement; the new rules bite as intended: the short toy SU(2) chains (150 measurements, 0–11
+sector flips per chain) are not counted; the toy photon gate passes (after the U(1) flip-rule decision above, analysis rerun on the
+same toy data); the synthetic check of the combining readings gives the same answers as before, with the threshold 1.5 applied.
