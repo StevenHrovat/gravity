@@ -308,3 +308,18 @@ existence). Candidate physics counterpart, to be checked by the round-4 scout: i
 electric flux times L is dimensionless and runs with the coupling (existence × extent = coupling × quantum, which joins the α pointer to
 the act identity); confinement makes it grow like σL²; the crossover in form (b) becomes "it has no plateau"; the TTL side is the transfer
 matrix that reflection positivity provides, and 3s1t is the space-time symmetry relating spatial decay to the temporal gap.
+
+## G0, lossy causality, and the existence boundary as an inversion (the owner, 2026-11-21, round 4)
+
+The owner: "At G0, there is all the information and all the existence at once in the perfect duality, as well as the WHKs to give it its
+initial settings. That is the only state where the entirety of existence can be faithfully described. From there, once lossy causality
+began, existence no longer completely contains itself and its entire information. An existence boundary can be seen as a complete
+inversion of what existence means: when transitioning, one goes from existing by definition to simply not existing by definition, while
+still existing in itself during the transition." Candidate physics reading, for round 4 to check: G0 is the bare theory at the root, the
+only level that holds every scale's information (the full lattice measure); each blocking step is lossy (information never increases
+under blocking: round 3, attempt 5's data-processing reading of "a sublayer only tightens"), so no coarse layer contains the whole. The
+existence boundary as an inversion matches 't Hooft's electric–magnetic duality (round 3, attempt 2: an order-reversing involution between
+the twist and the electric-flux free energies): in the confined phase a centre vortex exists freely (twist free energy → 0) while a lone
+electric flux does not (its energy grows like σL), and across a transition the roles swap. "Still existing in itself during the
+transition" is the crossing point, where the flux costs about one quantum: the act number z = E_e·L crossing 1 (3s1t: box size equals time
+to live), which sits near the deconfinement length 1/T_c.
