@@ -96,8 +96,8 @@ python3 run_u1.py 1.2 16 32 300 800 35 u1_b1.2_L16.npz 3 2      # about half an 
 
 Then move the `.npz` files to `../results/`, run `python3 analyse.py ../results/*.npz > ../results/lattice_summary.json` and
 `python3 ../figures.py`, and update README §6. Done when β = 2.4 and 2.5 sit next to Teper's values and the U(1) photon's energy falls like
-2π/L with the box size in the Coulomb phase while staying large in the confined phase. The GUID v7 GPU code, put in a repository, would
-do all of it far faster.
+2π/L with the box size in the Coulomb phase while staying large in the confined phase. The GPU path (`lattice/run_su2_gpu.py`, added 2026-11-21,
+GUID v7 kernels) does it about 100 times faster.
 
 ### D. Turn Ito and Seiler's objection into a number
 

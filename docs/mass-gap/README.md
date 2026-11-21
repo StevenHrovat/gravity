@@ -237,6 +237,8 @@ correct acts, it has to be assumed that it must be able to communicate them at t
 | 4 | payload is not an act inside CMOS: no reach bound, no floor | light is massless (the photon test passes) |
 | — | "not fully trusted is automatically ejected" (C∞) | a lone colour charge is not a physical state |
 
+**The existence TTL (the owner, 2026-11-21).** "Using an existence TTL would be a good analog for that. [...] it derives the existence from the confined space (3s), as well as the time it's existence is certified (1t)." A node's existence is a certificate with a time to live; Axiom 1's witnesses can renew it only within their reach, so the TTL has a ceiling. In physics the TTL is the correlation time: in imaginary time a disturbance's signal decays as e^(−Δt/ħ), so **Δ = ħ / TTL**, and a gap means every certificate expires within a bounded time (light's decay only by a power law). In a relativistic theory the space reach and the TTL are one statement (TTL = reach / c). The lattice's effective mass is exactly the certificate's expiry rate: at β = 2.3 the TTL is about 0.8 grid ticks, and with a finer grid it grows in ticks and stays put in real units (section 6).
+
 Lean (`evidence/Dmp/Reach.lean`, whole-number model of the chain): `mg_reach_existence_floor` (the floor `Q/R`, on a grid of any
 resolution), `mg_reach_floor_every_layer` (the same floor at every layer), `mg_reach_floor_positive` (never zero),
 `mg_no_reach_no_floor` (without the reach bound every proposed floor is undercut: payload). Unlike the potential's gap of section 2,
@@ -483,7 +485,7 @@ In order of what this project can actually do:
    result: for a *finite* number of layers, rigorous interval-arithmetic bounds that the true SU(2) lattice at a given β lands in the
    strong-coupling region of B, with the same computation provably failing for U(1). It would hold only for that β, but it would be a
    theorem, and it is the "computer-assisted bound" the research report lists as a publishable kind of partial result.
-3. **More lattice points**, β = 2.6 and 2.7 (section 6), on the owner's laptop or with the GUID v7 GPU code once it is in a repository.
+3. **More lattice points**, β = 2.6 and 2.7 (section 6), now cheap with the GPU path (`lattice/run_su2_gpu.py`, kernels from the GUID v7 lattice code, about 100 times faster).
    These show the same plateau with smaller errors.
 4. **Audit work on the existence proof** (the research report's options 1 to 3): an external-kernel replay and statement-fidelity audits.
    They need no physics claim and give this project the Mathlib-scale build any formal bridge work would need.

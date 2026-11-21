@@ -2,14 +2,15 @@
 
 Small, readable numpy code for the two theories the mass-gap explainer ([`../README.md`](../README.md)) compares: SU(2), a two-colour
 cousin of the strong force with a mass gap (expected, not proved), and U(1), the lattice theory of light, with a massless photon at weak
-coupling (proved). Everything reproduces published numbers; nothing here proves anything. It stands in for the GUID v7 lattice code,
-which is kept on the first author's laptop and is in no repository.
+coupling (proved). Everything reproduces published numbers; nothing here proves anything. Its GPU path (`run_su2_gpu.py`) uses the kernels of the GUID v7 lattice code
+(copied into `gpu/`, unchanged; the original stays on the first author's laptop).
 
 | File | What it does |
 |---|---|
 | `su2.py` | SU(2) links as unit quaternions; Wilson action; Kennedy–Pendleton heat bath and overrelaxation on a checkerboard; APE smearing; Wilson loops, torelons, glueball operators |
 | `run_su2.py` | generates configurations and records the plaquette, torelon (flux around the box) and scalar glueball (0⁺⁺) operators |
 | `u1.py`, `run_u1.py` | compact U(1): exact heat bath (von Mises) and overrelaxation; the photon operator (a transverse magnetic field at the smallest momenta) |
+| `run_su2_gpu.py`, `gpu/` | the same SU(2) runs on an NVIDIA GPU, about 100 times faster per measurement, with independent chains; kernels from the GUID v7 lattice code; checks and timings in [`gpu/README.md`](gpu/README.md) |
 | `analyse.py` | variational correlator analysis with jackknife errors: the glueball mass, the string tension from torelons (Teper's method), the photon energy against the free massless dispersion |
 
 Every random number comes from one seeded generator, so a run is reproducible on one platform. Checks done before the production runs:
@@ -49,4 +50,4 @@ nohup python3 run_su2.py 2.6 20 20 300 1000 26 su2_b2.6_L20.npz 3 2 > su2_b2.6.l
 ```
 
 Then commit `su2_b2.6_L20.npz` to `docs/mass-gap/results/` on the branch (or attach it to the pull request), and the next session analyses
-it. The GUID v7 GPU code, if it is put in a repository, does the same far faster.
+it. `run_su2_gpu.py` does the same about 100 times faster on the laptop's GPU (`gpu/README.md`).
