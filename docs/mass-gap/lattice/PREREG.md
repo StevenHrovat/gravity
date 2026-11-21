@@ -36,3 +36,16 @@ pattern: a·m₀₊₊ falls with β while m₀₊₊/√σ stays within 2 error
   correlator is lost in noise before t = 2a (no cosh solution), that is reported as "E₁ above about 2", which also passes.
 
 Nothing here tests the continuum limit or proves anything; it reproduces published lattice physics with our own code.
+
+## Addendum (2026-11-21, after the β = 2.5 result, before the diagnostic runs)
+
+Result by the rule above: β = 2.3 and 2.4 agree on all numbers; at β = 2.5 a√σ = 0.1990 ± 0.0030 against Teper's 0.1834 ± 0.0026
+(3.9 errors): **fail**, so that number is not used in README §6. The torelon effective mass is flat from t = a to 3a (0.57, 0.55,
+0.57), so excited states are not the cause. Diagnostic runs on the GPU (`run_su2_gpu.py`), fixed before running:
+
+1. **Statistics.** β = 2.5, 16⁴, ten independent chains of 1500 measurements (500 thermalisation sweeps each), same analysis. If a√σ
+   agrees with Teper within 2 errors, the CPU run's error was underestimated or it fluctuated, and the GPU value is reported next to it.
+2. **Box size.** β = 2.5, 20⁴, ten chains of 1000 measurements. If a√σ at 20⁴ is lower than at 16⁴ by more than 2 errors, the 16⁴ box is
+   too small for our torelon analysis at this β.
+
+If neither explains it, the cause stays open and is reported as such; the analysis rule is not changed to make the number agree.
