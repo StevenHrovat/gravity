@@ -1,102 +1,113 @@
-# Proof blueprint (the map of the proof phase; first version 2026-11-22)
+# Proof blueprint (the map of the proof phase; version 2, 2026-11-22, after the round-4 review)
 
-The Clay statement for SU(2) (Jaffe–Witten): a quantum Yang–Mills theory on ℝ⁴ exists (satisfying the Osterwalder–Schrader or Wightman
-axioms) and has a mass gap Δ > 0. This file lists every piece a proof along our route needs, with its exact status. Statuses: **Lean**
-(machine-checked, named theorem), **paper** (proved on paper in a note, not formalised), **known** (in the literature, cited, not
-reproduced), **open**. Every phase result names the piece it changes. Claim discipline: `attempts/RULES.md` (round 4 and the phase
-section); the review that set it: `attempts/r3-review/REVIEW.md`.
+The Clay statement (Jaffe–Witten): for every compact simple gauge group G, a quantum Yang–Mills theory on ℝ⁴ exists (satisfying the
+Osterwalder–Schrader or Wightman axioms, with local gauge-invariant fields) and has a mass gap Δ > 0. We work with SU(2) first and state
+which pieces generalise. Statuses: **Lean** (machine-checked, content as stated), **Lean (definitional)** (machine-checked but true by
+definition or for any model: no physics content), **paper**, **known** (literature, cited), **external** (a claim read, not built or
+verified by us), **numerical**, **open**. Claim discipline: `attempts/RULES.md`; reviews: `attempts/r3-review/REVIEW.md`,
+`attempts/r4-review/REVIEW.md` (version 1 of this file joined two routes and overstated statuses; corrected here).
 
-## The route in one paragraph
+## Two routes, not one
 
-Build the lattice theory (Wilson action, SU(2), 4D torus), block it scale by scale towards a physical scale L₁ where the coupling is of
-order one, and show that the blocked theory there has a gap that survives the removal of the cutoff and of the volume. The weak-coupling
-side (blocking from the cutoff to a fixed weak scale) is the **quantum half** H1; the strong-coupling side (the gap at L₁) is the
-**classical half** H2; between them lies the **crossover**, where α_s grows through order one. The owner's DMP reading organises it:
-existence is an act asserting itself (existence × extent = one quantum), the act is conserved through every lossy layer because it runs
-(Callan–Symanzik), the tie to G0 is reach (inward: asymptotic freedom; outward: confinement), and an existence boundary is an inversion
-('t Hooft duality).
+- **Route A (Dobrushin):** build the lattice theory, block it with a good blocking to a physical scale L₁ where the coupling is of order
+  one, and show the blocked limit theory satisfies a worst-case Dobrushin condition D′ (P4.1); then block observables decay (P2.3) and,
+  with the field and axiom pieces, the gap follows. D′ is strictly stronger than the gap and false for L₁ < 1/T_c.
+- **Route B (flux / act number):** show the act number z(L) = E_e·L of the twisted box grows by a margin per doubling (Conjecture W,
+  P4.2): that is **flux confinement**, not the gap. Route B reaches the vacuum gap only through the sector transfer P5.1, for which no route
+  is known. Deconfined Z₂ has a gap and no flux floor: floor and gap are different properties.
+
+The owner's DMP reading organises both (existence as an act; the act conserved because it runs; tie to G0 = reach; the inversion =
+duality), and is recorded in `PREP.md`; it guides, it does not prove.
 
 ## Pieces
 
-### P1. The lattice theory and its structure
+### P1. Lattice theory and structure
 
 | piece | statement | status | where |
 |---|---|---|---|
 | P1.1 | Wilson measure on the 4D torus, SU(2) and general compact G | Lean | `formal/AreaLaw/ConcreteSUn.lean`, `formal/OneScale/` |
 | P1.2 | reflection positivity, site and link | Lean | `formal/Positivity/` |
-| P1.3 | transfer matrix (temporal gauge), flux sectors via 't Hooft's centre transformation, E_e ≥ 0, flux-correlator decay | Lean (kernel); paper (kernel = 4D path integral, standard) | `formal/Attempts/R4/LayerKernel.lean`, `LayerTwisted.lean` |
-| P1.4 | 't Hooft duality F_e = dual(F_m), unique self-dual point log(1+√2) | Lean | `LayerTwisted.lean` (`freeFlux_eq_dual`), `R4/ConjW.lean` |
-| P1.5 | blocking (decimation) gauge covariant, centre- and reflection-commuting; the act conserved per layer | Lean | `R4/LayerDecimation.lean`, `LayerTransport.lean` (`act_conserved_per_layer`) |
-| P1.6 | reflection positivity of every decimated layer (T38) | Lean (decimation); open (averaging blockings, Balaban's) | `decimated_wilson_rp_SU2` |
-| P1.7 | strict E_e > 0 in finite volume; centre elements beyond z² = 1 (SU(N)) | paper / open | `r4-layer/NOTE.md` |
+| P1.3 | temporal-gauge transfer kernel; centre flip of one row as a symmetry; parity-sector norm ordering | Lean (kernel, symmetry, ordering); Gauss law not formalised; `Z_Wilson = tr(P_G Tⁿ)` not formalised; strict E_e > 0 open | `R4/LayerKernel.lean`, `LayerSector.lean` |
+| P1.3′ | 't Hooft's electric-flux sectors proper (Gauss-law states, eigenspaces of the centre transformation) and E_e as their gap | open | review finding 2 |
+| P1.4 | sector Fourier identity Z_e = (Z ± Z_tw)/2 | Lean (definitional) | `LayerSector.lean` (`twist_centre_transform`) |
+| P1.4′ | 't Hooft duality proper (lattice rotation on a symmetric box, temporal vs spatial twist) | open | review finding 3 |
+| P1.5 | decimation by 2: gauge covariant, centre-flip and reflection commuting | Lean | `R4/LayerDecimation.lean` |
+| P1.5′ | "act conserved": image measures keep total mass | Lean (definitional) | `LayerTransport.lean` |
+| P1.5″ | the image of the twisted ensemble is the twist of one local coarse action (real flux-sector transport) | open | `r4-layer/NOTE.md` |
+| P1.6 | reflection positivity of a decimated layer, one step | Lean; but decimation at fixed L₁ has a pure-noise limit, so it is not the route's blocking | `decimated_wilson_rp_SU2` |
+| P1.8 | **a good blocking**: centre-covariant, reflection-positive at every level, non-trivial continuum limit at fixed L₁ | open (averaging with odd factor: paper sketch for link positivity) | `r4-layer/NOTE.md` |
 
-### P2. Decay machinery (classical half, conditional)
+### P2. Decay machinery (Route A, conditional)
 
 | piece | statement | status | where |
 |---|---|---|---|
-| P2.1 | Dobrushin uniqueness with exponential weights for finite Gibbs systems (Theorem A, weighted) | Lean | `R3/TailDecay.lean` (`theoremA_w`) |
-| P2.2 | local flatness criterion D′ ⇒ single-site GDS; openness under local perturbation | Lean | `R3/FlatFactors.lean`, `R3/Robust.lean` |
-| P2.3 | gap of block observables from D′ at L₁, uniform in volume and spacing | Lean (abstract Gibbs systems) | `gap_of_localFactorsW`, `continuum_decay` |
-| P2.4 | Corollary B: decay in physical units | Lean | `formal/OneScale/CorollaryB*.lean` |
-| P2.5 | strong-coupling gap (any compact group), soft swap | Lean / paper | `AreaLaw.Clustering`, `R2/CouplingSwap.lean` |
-
-Caveat (review): D′ is a worst-case condition, strictly stronger than the gap, and false for L₁ < 1/T_c.
+| P2.1 | Dobrushin uniqueness with exponential weights, finite Gibbs systems | Lean | `R3/TailDecay.lean` (`theoremA_w`) |
+| P2.2 | D′ ⇒ single-site GDS; openness under local perturbation | Lean | `R3/FlatFactors.lean`, `R3/Robust.lean` |
+| P2.3 | decay of block observables from D′ at L₁ | Lean (abstract Gibbs systems; satisfied by pure noise) | `gap_of_localFactorsW`, `continuum_decay` |
+| P2.4 | Corollary B: physical units | Lean | `formal/OneScale/CorollaryB*.lean` |
+| P2.5 | strong-coupling gap, any compact group; soft swap | Lean / paper | `AreaLaw.Clustering`, `R2/CouplingSwap.lean` |
 
 ### P3. Quantum half (weak coupling)
 
 | piece | statement | status | where |
 |---|---|---|---|
-| P3.1 | one noisy blocking step gives a large-field lower bound; per volume W_p by compactness | Lean (core) | `R3/WpNoise.lean` |
+| P3.1 | one noisy blocking step: large-field lower bound; per volume W_p by compactness | Lean (core) | `R3/WpNoise.lean` |
 | P3.2 | Lemma T (relative closeness survives blocking, uniformly in the boundary) | paper | `r2-stepscaling/NOTE.md` §4 |
-| P3.3 | per-volume gap theorem joining P3.1 to P2.3 | paper (reviewer: correct in the order mesh, volume, observable) | `r3-wp/NOTE.md`, `r3-review/REVIEW.md` |
-| P3.4 | ultraviolet stability, small-field control, one-loop running | known (Balaban; the OpenAI construction, read at stage level) | `H1-OPENAI.md` |
+| P3.3 | per-volume gap theorem joining P3.1 to P2.3 | paper (reviewer: correct in the order mesh, volume, observable) | `r3-wp/NOTE.md` |
+| P3.4 | ultraviolet stability, small-field control, one-loop running | external (OpenAI construction, read at stage level; controls the weak-coupling unit scale, not L₁); Balaban's published results give stability of the partition function, not of correlation functions | `H1-OPENAI.md` |
 
 ### P4. The crossover (open; the core)
 
 | piece | statement | status | where |
 |---|---|---|---|
-| P4.1 | form (a): every limit theory blocked to L₁ satisfies D′ (stronger than the gap) | open | `ROUND-3.md` |
-| P4.2 | Conjecture W: the act number z(L) = E_e·L grows by a margin per doubling (flux-sector confinement) | open; photon marginality and finite-group failure proved | `r4-conjw/NOTE.md`, `R4/ConjW.lean` |
-| P4.3 | (B1) minimal action on T³×ℝ is 4π²/g² (half-instanton) | known numerically; certifiable | `r4-conjw/NOTE.md` |
-| P4.4 | (B2) the fluctuation prefactor grows like (L/a)^{11/3} along the line of constant physics (where b₀ enters) | open; needs constructive renormalisation | `r4-conjw/NOTE.md` |
+| P4.1 | Route A: every limit theory blocked to L₁ (with the good blocking P1.8) satisfies D′, uniformly in volume **and** spacing, order of limits stated | open | `ROUND-3.md` |
+| P4.2 | Route B: Conjecture W (summed form W_Σ: z grows by a margin per doubling along the line of constant physics) | open; photon marginality (Villain/free form) and finite-group failure: paper | `r4-conjw/NOTE.md`, `R4/ConjW.lean` (toy) |
+| P4.3 | (B1) minimal action on T³×ℝ is 4π²/g² | numerical only; certifiable | `r4-conjw/NOTE.md` |
+| P4.4 | (B2) fluctuation prefactor along the line of constant physics (where b₀ enters) | open; needs constructive renormalisation | `r4-conjw/NOTE.md` |
 | P4.5 | (B3) order of limits: time to infinity before doubling | open | `r4-conjw/NOTE.md` |
-| P4.6 | no infrared fixed point for pure SU(2) (the owner's "something must run") | open; perturbatively true; selection principle in toy Lean | `r4-minting/NOTE.md`, `R4/MintingScale.lean` |
-| P4.7 | assumption (U): each blocked layer is the original action at another coupling (collapse) | open; tested by the act-number run | `r4-minting/NOTE.md` |
+| P4.6 | no infrared fixed point for pure SU(2) | open; not on the critical path to the gap (neither needed nor sufficient) | `r4-minting/NOTE.md` |
+| P4.7 | universality of blocked actions up to O(a²) (assumption (U), restated; literally false as "Wilson at another coupling") | open; tested by the act-number collapse | `r4-minting/NOTE.md` |
 
-The one-sided step every route meets: comparing the blocked measure with the original on the same box (`r4-layer/NOTE.md`).
+The one-sided step every route meets: comparing the blocked measure with the original on the same box.
 
-### P5. From the flux sector to the vacuum gap
-
-| piece | statement | status |
-|---|---|---|
-| P5.1 | sector transfer: growth of z (flux-sector gap) ⇒ a gap in the vacuum (glueball) sector | open; no known route |
-| P5.2 | relation of block observables at L₁ to all local gauge-invariant observables | paper with a stated gap (`r3-robust/NOTE.md`: H1-fine) |
-
-### P6. Existence, identification and the axioms
+### P5. From block observables / flux sector to the gap
 
 | piece | statement | status |
 |---|---|---|
-| P6.1 | existence of the continuum limit (subsequential) | known (OpenAI construction, read at reading level); our compactness lemma P3.1 |
-| P6.2 | identification: the limit is non-trivial (not free, not pure noise) and unique along the line of constant physics | open (review finding 2: a pure-noise limit satisfies P2.3's hypotheses) |
-| P6.3 | reflection positivity of the limit (OS positivity) | partial: per layer (P1.6); the limit open |
-| P6.4 | Euclidean (rotation) invariance of the limit | open |
-| P6.5 | infinite-volume limit and the Wightman reconstruction | known given the OS axioms (Osterwalder–Schrader) |
-| P6.6 | tuning / line of constant physics inside the hypotheses | open (absent from every round-3 hypothesis) |
+| P5.1 | Route B only: sector transfer, flux-sector gap ⇒ vacuum (glueball) gap | open; no known route |
+| P5.2 | block observables at L₁ ⇒ all local gauge-invariant observables | paper with a stated gap (`r3-robust/NOTE.md`, H1-fine) |
+| P5.3 | the gap for the whole field algebra: one rate for all truncated correlations; uniqueness of the vacuum | open |
+
+### P6. Existence, identification, fields and axioms
+
+| piece | statement | status |
+|---|---|---|
+| P6.1 | existence of the continuum limit (subsequential), correlation functions included | external (OpenAI construction); our compactness lemma P3.1 is per volume and about densities |
+| P6.2 | identification: non-trivial (not free, not pure noise), unique along the line of constant physics | open |
+| P6.3 | OS positivity of the limit | follows from lattice positivity for half-space observables once limiting correlation functions exist (P6.1) |
+| P6.4 | Euclidean invariance: translations and rotations of the limit | open |
+| P6.5 | infinite-volume limit | open |
+| P6.6 | Wightman reconstruction | known given the OS axioms (Osterwalder–Schrader) |
+| P6.7 | tuning / line of constant physics inside the hypotheses | open |
+| P6.8 | local gauge-invariant renormalised fields (e.g. tr F²) as distributions, with the OS regularity bound | open |
+| P6.9 | short-distance agreement with perturbation theory (asymptotic freedom of correlation functions; bears on non-triviality) | open |
+| P6.10 | scope: every compact simple G (not only SU(2)); centre elements beyond z² = 1 | open |
 
 ### P7. Assembly
 
 | piece | statement | status |
 |---|---|---|
-| P7.1 | one Lean theorem: Yang–Mills in the hypotheses (SU(2), 4D torus, Wilson measure, tuning), the open pieces above as named hypotheses, the gap (and the OS-type properties proved so far) as conclusion | to be built (readiness step) |
+| P7.1 | Route A assembly: one Lean theorem, Yang–Mills in the hypotheses, open pieces as named hypotheses, gap as conclusion | being built (`formal/ProofPhase/`) |
+| P7.2 | Route B assembly: same, ending at flux confinement, with P5.1 as a named hypothesis for the gap | being built |
+| P7.3 | non-triviality: the pure-noise / zero-potential theory fails the assembly's hypotheses | being built |
 
 ## Unit tests (every claimed discharge)
 
-Photon (U(1) at weak coupling gets no gap), Z₂ (no area law at weak coupling; gap-only claims must hold for it), finite subgroups of
-SU(2) (frozen), deconfinement (no strong-coupling condition below 1/T_c), triviality (no non-trivial φ⁴₄), Banks–Zaks (nothing that
-would gap the conformal window).
+Photon, Z₂ (and its gap without a flux floor), finite subgroups of SU(2) and the order-12 binary dihedral group, deconfinement,
+triviality, Banks–Zaks. A group-blind theorem passes them all and proves nothing about Yang–Mills: say so when it happens.
 
-## The owner's readings that organise the map
+## The owner's readings that organise the map (`PREP.md`)
 
-Act identity (P4.2), the act conserved per layer because it runs (P1.5, P4.7), tie to G0 = inward reach (P3.4), outward reach =
-confinement (P4.2), inversion = 't Hooft duality (P1.4), something must run (P4.6), the centre reached through the causal round trip
-("−1 is a commutator", P4.2), Gauss's law as internal verification (P1.3). All in `PREP.md`.
+Act identity (P4.2), the act conserved because it runs (P1.5″, P4.7), tie to G0 = inward reach (P3.4), outward reach = confinement
+(P4.2), inversion = duality (P1.4′), something must run (P4.6), the centre reached through the causal round trip (necessary condition in
+P4.2), Gauss's law as internal verification (P1.3′), what exists is the finite-depth family (P6.1, P6.7).

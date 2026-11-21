@@ -13,13 +13,22 @@ Quot.sound; check scripts and selftests re-run where named in the commits).
 | 3, Conjecture W | `r4-conjw/` | 570c4fa | `ConjW`, 10 (toy) | W stated precisely; photon marginality and finite-group failure proved; where b₀ enters; three named blocking steps |
 | 4, the owner's minting conservation | `r4-minting/` | 0a15c2f | `MintingDmp`, `MintingScale`, 34 (toy) | minted quantum and tick carried to every layer by perfect duality; Λ as the act's conservation in units; a selection principle against fixed points |
 
-## Verdict
+## Verdict (corrected after the adversarial review, `r4-review/REVIEW.md`)
 
-Round 4 did not aim at the gap and does not claim it. It built the **exact, two-sided layer structure** the earlier rounds lacked, on the
-real lattice theory: the flux sector of the SU(2) Wilson transfer matrix, its exact conservation under a gauge-covariant,
-centre-respecting, reflection-respecting blocking, 't Hooft's duality as an exact identity, and reflection positivity of every decimated
-layer. It located, again exactly, the one-sided step every route meets: **comparing the blocked measure with the original on the same
-box** (Conjecture W's widening ratio). And it sharpened the separating property: not "non-abelian" but **"−1 is a commutator of G"**.
+**The first version of this verdict overclaimed**, and the coordinating session had passed the headline statements on after checking only
+builds and axioms. It said round 4 built "the exact, two-sided layer structure on the real lattice theory". In Lean: "the act is conserved
+per layer" is total-mass invariance of an image measure (true for any map); the "flux sectors" are centre-parity sectors without Gauss's
+law, whose "flux energy" is bounded by the one-link static potential; "'t Hooft duality" is the definition of a two-point Fourier
+transform; reflection positivity is proved for one decimation step, and decimation at fixed physical scale has a pure-noise continuum
+limit. "−1 is a commutator" is necessary, not separating (Q8, 2T, 2O, 2I have it and fail W).
+
+**What survives** (the reviewer's words): for the SU(2) temporal-gauge Wilson kernel, a centre flip of one row of links is a symmetry and
+the odd-parity sector's norm is at most the even sector's; decimation by 2 commutes with gauge transformations, that flip and time
+reflection, so decimated observables inherit reflection positivity for one step; the rest are algebraic identities and labelled toys
+(Conjecture W stated precisely, with its photon and finite-group checks on paper; the minting conservation as a toy). Still useful: the
+precise statement of the one-sided step every route meets (**comparing the blocked measure with the original on the same box**), the
+three named blocking steps of W, and the two-route structure the review made explicit (Route A: D′; Route B: flux confinement, reaching
+the gap only through the open sector transfer).
 
 ## What each attempt established
 
