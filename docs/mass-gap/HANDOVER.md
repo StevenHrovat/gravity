@@ -121,6 +121,20 @@ GUID v7 kernels) does it about 100 times faster.
 - A suggested side task (stale facts in Gravity's docs: the missing `Refute.lean` row, the Lean package version, the runner sentence) was
   queued from the cloud session.
 
+### Planned phase: consolidation before the final write-up (the owner, 2026-11-21)
+
+"Before we go further, we should clean all that stuff up and refactor our work [...] That would give a much nicer final result, while
+still preserving the way through the git history." Once the weak-coupling attempts have a result, and before the final paper:
+- **Lean (`formal/`)**: remove what the final chain does not use (e.g. the cluster-expansion area law is superseded by the twist area law;
+  keep it only if the paper cites it as the independent cross-check), merge duplicated lattice lemmas, state theorems at their natural
+  generality (any compact group / any plaquette weight where the proof allows it), one consistent naming scheme, and a short map from
+  each paper claim to its theorem.
+- **Gravity (`evidence/Dmp/`, `docs/mass-gap/`)**: drop superseded notes and scripts, fold the pre-registrations into one index with
+  their verdicts, keep every stored result that a claim rests on.
+- **DMP**: the few DMP theorems or readings that turn out unneeded or more general go to the DMP repository as proposals through its own
+  process (gravity never edits `vendor/dmp`).
+- The git history keeps the path; the consolidated tree is what readers see.
+
 ## 4. Rules that held, and should keep holding
 
 - **Claim level:** a theorem is what Lean's kernel checked, a number is what a script reproduces; neither is a proof of the mass gap.
