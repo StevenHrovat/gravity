@@ -31,7 +31,7 @@ asymptotically free); it is what a spin-1 carrier gives.
 ## The same ζ(−1) in the flux tube (to be measured)
 
 A confining flux tube closed around a periodic box of length L vibrates, and the zero-point sum of its modes is (d − 2)(2π/L)·ζ(−1):
-E(L) = σL − π/(3L) in four dimensions, the coefficient π/3 = −4π·ζ(−1) (the Lüscher term). The measurement with this project's GPU code
+E(L) = σL − π/(3L) in four dimensions, the coefficient π/3 = −4π·ζ(−1) (the Luescher term). The measurement with this project's GPU code
 is pre-registered in [`PREREG-LUSCHER.md`](PREREG-LUSCHER.md) (SU(2), β = 2.3, five box sizes; fit `luscher.py`; runs queued after the
 main GPU queue by `queue_luscher.ps1`).
 

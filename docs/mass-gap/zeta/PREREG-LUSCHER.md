@@ -7,8 +7,8 @@ regularised, is (d − 2)·(2π/L)·ζ(−1). In d = 4 its energy is
 
   E(L) = σL − π/(3L) + O(1/L³),   the coefficient π/3 = −4π·ζ(−1)
 
-(the Lüscher term for a closed string; Nambu–Goto resums it as σL·√(1 − 2π/(3σL²))). Measuring the coefficient with this project's code
-is a measurement of ζ(−1) in an IM flux tube. Known physics (Lüscher 1981; lattice confirmations by Lüscher and Weisz 2002, Athenodorou
+(the Luescher term for a closed string; Nambu–Goto resums it as σL·√(1 − 2π/(3σL²))). Measuring the coefficient with this project's code
+is a measurement of ζ(−1) in an IM flux tube. Known physics (Luescher 1981; lattice confirmations by Luescher and Weisz 2002, Athenodorou
 and Teper): this reproduces, it does not discover.
 
 **Runs** (`run_su2_gpu.py`, after the TTL and vortex queue): SU(2), β = 2.3, boxes L³ × 16 for L = 6, 8, 10, 12, 14 (even only: the checkerboard update needs an even
