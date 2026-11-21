@@ -1,0 +1,355 @@
+u1 beta=1.1 L=2 T=16 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 1.1s
+  meas 50/200  plaq 0.63357  sheet/bulk 0.4701/0.4675  <|p_top|> 0.9886  t=2s
+  meas 100/200  plaq 0.63103  sheet/bulk 0.4592/0.4691  <|p_top|> 0.9878  t=4s
+  meas 150/200  plaq 0.63009  sheet/bulk 0.4567/0.4713  <|p_top|> 0.9880  t=5s
+  meas 200/200  plaq 0.62897  sheet/bulk 0.4595/0.4690  <|p_top|> 0.9876  t=6s
+done in 5.9s
+PIPELINE u1_b1.1_L2: 5.9s
+u1 beta=1.1 L=4 T=32 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 6.6s
+  meas 50/200  plaq 0.71036  sheet/bulk 0.6934/0.6993  <|p_top|> 0.9272  t=13s
+  meas 100/200  plaq 0.71065  sheet/bulk 0.6931/0.6995  <|p_top|> 0.9282  t=20s
+  meas 150/200  plaq 0.71101  sheet/bulk 0.6962/0.6999  <|p_top|> 0.9288  t=27s
+  meas 200/200  plaq 0.71141  sheet/bulk 0.6976/0.7000  <|p_top|> 0.9290  t=34s
+done in 33.7s
+PIPELINE u1_b1.1_L4: 33.7s
+u1 beta=1.1 L=6 T=32 plane=01 twisted=True path=array chains=4: 60 thermalisation sweeps in 13.0s
+  meas 50/120  plaq 0.71385  sheet/bulk 0.7100/0.7121  <|p_top|> 0.8280  t=35s
+  meas 100/120  plaq 0.71412  sheet/bulk 0.7136/0.7116  <|p_top|> 0.8286  t=58s
+  meas 120/120  plaq 0.71419  sheet/bulk 0.7136/0.7119  <|p_top|> 0.8284  t=67s
+done in 67.5s
+PIPELINE u1_b1.1_L6: 67.5s
+su2 beta=2.4 L=2 T=32 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 3.0s
+  meas 50/200  plaq 0.62786  sheet/bulk 0.5918/0.5929  <|p_top|> 0.8679  t=6s
+  meas 100/200  plaq 0.62803  sheet/bulk 0.5909/0.5930  <|p_top|> 0.8722  t=9s
+  meas 150/200  plaq 0.62825  sheet/bulk 0.5900/0.5928  <|p_top|> 0.8742  t=12s
+  meas 200/200  plaq 0.62728  sheet/bulk 0.5914/0.5914  <|p_top|> 0.8715  t=15s
+done in 15.0s
+PIPELINE su2_b2.4_L2: 15.0s
+su2 beta=2.4 L=4 T=24 plane=01 twisted=True path=array chains=4: 60 thermalisation sweeps in 6.0s
+  meas 50/150  plaq 0.63081  sheet/bulk 0.6291/0.6295  <|p_top|> 0.6115  t=16s
+  meas 100/150  plaq 0.63045  sheet/bulk 0.6304/0.6293  <|p_top|> 0.6074  t=26s
+  meas 150/150  plaq 0.63028  sheet/bulk 0.6287/0.6291  <|p_top|> 0.6079  t=36s
+done in 35.9s
+PIPELINE su2_b2.4_L4: 35.9s
+su2 beta=2.4 L=4 T=24 plane=12 twisted=True path=array chains=4: 60 thermalisation sweeps in 5.9s
+  meas 50/150  plaq 0.63036  sheet/bulk 0.6278/0.6292  <|p_top|> 0.6052  t=16s
+  meas 100/150  plaq 0.63010  sheet/bulk 0.6300/0.6289  <|p_top|> 0.5990  t=25s
+  meas 150/150  plaq 0.62991  sheet/bulk 0.6304/0.6285  <|p_top|> 0.5972  t=35s
+done in 34.6s
+PIPELINE su2_b2.4_L4_p12: 34.6s
+su2 beta=2.4 L=4 T=24 plane=01 twisted=False path=array chains=4: 60 thermalisation sweeps in 5.5s
+  meas 50/100  plaq 0.63276  sheet/bulk 0.6384/0.6325  <|p_top|> 0.4956  t=15s
+  meas 100/100  plaq 0.63247  sheet/bulk 0.6370/0.6324  <|p_top|> 0.5018  t=24s
+done in 24.5s
+PIPELINE su2_b2.4_L4_per: 24.5s
+z2 beta=0.5 L=2 T=16 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 0.7s
+  meas 50/200  plaq 0.68911  sheet/bulk 0.4941/0.4457  <|p_top|> 0.8692  t=2s
+  meas 100/200  plaq 0.68842  sheet/bulk 0.4777/0.4488  <|p_top|> 0.8699  t=2s
+  meas 150/200  plaq 0.68927  sheet/bulk 0.4641/0.4539  <|p_top|> 0.8736  t=3s
+  meas 200/200  plaq 0.68896  sheet/bulk 0.4628/0.4537  <|p_top|> 0.8751  t=4s
+done in 3.8s
+PIPELINE z2_b0.5_L2: 3.8s
+z2 beta=0.5 L=4 T=16 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 2.4s
+  meas 50/150  plaq 0.92664  sheet/bulk 0.8592/0.8474  <|p_top|> 0.9479  t=5s
+  meas 100/150  plaq 0.92633  sheet/bulk 0.8388/0.8486  <|p_top|> 0.9487  t=7s
+  meas 150/150  plaq 0.92656  sheet/bulk 0.8452/0.8480  <|p_top|> 0.9487  t=10s
+done in 9.9s
+PIPELINE z2_b0.5_L4: 9.9s
+2i beta=8.0 L=2 T=16 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 3.1s
+  meas 50/200  plaq 0.98329  sheet/bulk 0.9956/0.9953  <|p_top|> 0.9993  t=6s
+  meas 100/200  plaq 0.98390  sheet/bulk 0.9963/0.9960  <|p_top|> 0.9992  t=9s
+  meas 150/200  plaq 0.98435  sheet/bulk 0.9971/0.9968  <|p_top|> 0.9992  t=13s
+  meas 200/200  plaq 0.98448  sheet/bulk 0.9973/0.9970  <|p_top|> 0.9991  t=16s
+done in 15.8s
+PIPELINE 2i_b8.0_L2: 15.8s
+2i beta=8.0 L=4 T=16 plane=01 twisted=True path=array chains=4: 60 thermalisation sweeps in 5.2s
+  meas 50/100  plaq 0.99203  sheet/bulk 0.9865/0.9902  <|p_top|> 0.9565  t=14s
+  meas 100/100  plaq 0.99280  sheet/bulk 0.9890/0.9915  <|p_top|> 0.9649  t=23s
+done in 23.3s
+PIPELINE 2i_b8.0_L4: 23.4s
+2i beta=2.4 L=4 T=24 plane=01 twisted=True path=array chains=4: 60 thermalisation sweeps in 7.9s
+  meas 50/100  plaq 0.63089  sheet/bulk 0.6319/0.6295  <|p_top|> 0.6024  t=21s
+  meas 100/100  plaq 0.63005  sheet/bulk 0.6307/0.6289  <|p_top|> 0.5955  t=35s
+done in 34.5s
+PIPELINE 2i_b2.4_L4: 34.5s
+su2 beta=2.4 L=4 T=32 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 4.2s
+  meas 50/200  plaq 0.62188  sheet/bulk 0.6074/0.6068  <|p_top|> 0.6881  t=8s
+  meas 100/200  plaq 0.62107  sheet/bulk 0.6050/0.6062  <|p_top|> 0.6869  t=13s
+  meas 150/200  plaq 0.62133  sheet/bulk 0.6061/0.6063  <|p_top|> 0.6892  t=17s
+  meas 200/200  plaq 0.62168  sheet/bulk 0.6068/0.6071  <|p_top|> 0.6900  t=21s
+done in 21.4s
+PIPELINE su2_b2.4_box2x2x4: 21.4s
+su2 beta=2.4 L=4 T=24 plane=01 twisted=True path=array chains=4: 60 thermalisation sweeps in 3.3s
+  meas 50/150  plaq 0.62142  sheet/bulk 0.6118/0.6131  <|p_top|> 0.4827  t=9s
+  meas 100/150  plaq 0.62153  sheet/bulk 0.6116/0.6134  <|p_top|> 0.4795  t=14s
+  meas 150/150  plaq 0.62173  sheet/bulk 0.6121/0.6133  <|p_top|> 0.4853  t=20s
+done in 20.0s
+PIPELINE su2_b2.4_box4x2x4: 20.0s
+u1 beta=1.1 L=4 T=32 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 2.3s
+  meas 50/200  plaq 0.61480  sheet/bulk 0.4758/0.4703  <|p_top|> 0.9028  t=5s
+  meas 100/200  plaq 0.61257  sheet/bulk 0.4723/0.4710  <|p_top|> 0.8973  t=7s
+  meas 150/200  plaq 0.61285  sheet/bulk 0.4742/0.4707  <|p_top|> 0.8981  t=10s
+  meas 200/200  plaq 0.61356  sheet/bulk 0.4733/0.4714  <|p_top|> 0.9001  t=12s
+done in 12.3s
+PIPELINE u1_b1.1_box2x2x4: 12.3s
+u1 beta=1.1 L=4 T=32 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 4.3s
+  meas 50/200  plaq 0.68248  sheet/bulk 0.6499/0.6541  <|p_top|> 0.8645  t=9s
+  meas 100/200  plaq 0.68377  sheet/bulk 0.6527/0.6543  <|p_top|> 0.8689  t=13s
+  meas 150/200  plaq 0.68354  sheet/bulk 0.6532/0.6533  <|p_top|> 0.8673  t=17s
+  meas 200/200  plaq 0.68398  sheet/bulk 0.6539/0.6535  <|p_top|> 0.8683  t=21s
+done in 21.2s
+PIPELINE u1_b1.1_box4x2x4: 21.2s
+u1_b1.1_L2.npz               z = 0.9614 +- 0.0589         z_up 0.9521  t* 3  z_sign None  tau 0.8/bin 40  sheet-bulk [-0.009560433476124645, 0.007494636544572263]    [counted]
+u1_b1.1_L4.npz               z = 0.7067 +- 0.0246         z_up 0.7843  t* 1  z_sign None  tau 2.3/bin 40  sheet-bulk [-0.0024309127092260446, 0.0016809537015656966]    [counted]
+u1_b1.1_L6.npz               z = 0.7337 +- 0.0369         z_up 0.8618  t* 1  z_sign None  tau 1.4/bin 24  sheet-bulk [0.0017847999157830023, 0.0017315132987885376]    [counted]
+su2_b2.4_L2.npz              z = 0.1107 +- 0.0199         z_up 0.1548  t* 1  z_sign [0.1099, 0.0213]  tau 15.9/bin 40  sheet-bulk [-3.842402982062343e-05, 0.002348467196897686]  L sqrt(sigma) = 0.52  [not counted (tau_ok)]
+su2_b2.4_L4.npz              z = 0.4310 +- 0.0359         z_up 0.492  t* 1  z_sign [0.3979, 0.0398]  tau 5.2/bin 30  sheet-bulk [-0.00034279915726616853, 0.0013287262795586743]  L sqrt(sigma) = 1.03  [counted]
+su2_b2.4_L4_p12.npz          z = 0.5282 +- 0.0492         z_up 0.675  t* 1  z_sign [0.509, 0.0613]  tau 8.1/bin 30  sheet-bulk [0.0018731739821299968, 0.0011281896102906717]  L sqrt(sigma) = 1.03  [not counted (tau_ok)]
+su2_b2.4_L4_per.npz          z = 0.8750 +- 0.0525         z_up 1.0647  t* 1  z_sign [0.8622, 0.0735]  tau 2.2/bin 20  sheet-bulk [0.004566924521806591, 0.0011314652290546853]  L sqrt(sigma) = 1.03  [counted]
+z2_b0.5_L2.npz               z = 0.5662 +- 0.0551         z_up 0.652  t* 1  z_sign [0.5287, 0.0635]  tau 4.8/bin 40  sheet-bulk [0.009062499999999996, 0.017698187883210394]    [counted]
+z2_b0.5_L4.npz               z = -                        z_up 0.0358  t* None  z_sign None  tau 0.8/bin 30  sheet-bulk [-0.0028888888888888905, 0.040135282573378804]    [no plateau]
+2i_b8.0_L2.npz               z = 0.3585 +- 0.0700         z_up 0.6405  t* 1  z_sign [0.3699, 0.0729]  tau 2.7/bin 40  sheet-bulk [0.00032635232693865396, 0.00029860920606174083]    [counted]
+2i_b8.0_L4.npz               z = -                        z_up 0.6022  t* None  z_sign None  tau 8.3/bin 20  sheet-bulk [-0.0025487832522400377, 0.0028007870331567624]    [no plateau]
+2i_b2.4_L4.npz               z = 0.3194 +- 0.0707         z_up 0.5322  t* 4  z_sign [0.3361, 0.0694]  tau 7.2/bin 20  sheet-bulk [0.0018180909719826032, 0.0019481562096645866]  L sqrt(sigma) = 1.03  [not counted (tau_ok)]
+su2_b2.4_box2x2x4.npz        z = 0.9853 +- 0.0471         z_up 1.1633  t* 1  z_sign [0.9914, 0.0536]  tau 7.1/bin 40  sheet-bulk [-0.00025043668222101453, 0.0013994461387775378]  L sqrt(sigma) = 1.03  [counted]
+su2_b2.4_box4x2x4.npz        z = 1.2814 +- 0.0670         z_up 1.4726  t* 1  z_sign [1.2458, 0.086]  tau 3.5/bin 30  sheet-bulk [-0.0011966813864043243, 0.001740083918158128]  L sqrt(sigma) = 1.03  [counted]
+u1_b1.1_box2x2x4.npz         z = 3.8955 +- 0.1178         z_up 4.2772  t* 1  z_sign None  tau 0.7/bin 40  sheet-bulk [0.0019161740946200061, 0.003976541450653513]    [counted]
+u1_b1.1_box4x2x4.npz         z = 1.7678 +- 0.0574         z_up 1.8825  t* 2  z_sign None  tau 1.0/bin 40  sheet-bulk [0.0003447458539866109, 0.002716002067365671]    [counted]
+{
+ "four_moves": [
+  {
+   "group": "su2",
+   "beta": 2.4,
+   "L": 2,
+   "E": [
+    null,
+    [
+     0.24632112632258474,
+     0.011780310603264364
+    ],
+    [
+     0.3203595584910611,
+     0.016746947548536797
+    ],
+    [
+     0.10776053837743998,
+     0.008979354642553405
+    ]
+   ],
+   "w_x": [
+    1.3005768659547086,
+    0.09214802139760764
+   ],
+   "w_y": [
+    0.3363737260876728,
+    0.033088134808443304
+   ],
+   "delta": -0.3272525478246544,
+   "verdict": "W FAILS (a widening below 1/2 or the lengthening below 2, at 2 sigma)",
+   "delta_2sigma": -0.4596050870584276
+  },
+  {
+   "group": "u1",
+   "beta": 1.1,
+   "L": 2,
+   "E": [
+    [
+     0.48071434142900393,
+     0.029465522227103462
+    ],
+    [
+     0.9738639813847414,
+     0.029454391066269753
+    ],
+    [
+     0.441946407245597,
+     0.014345538630514514
+    ],
+    [
+     0.17667565643953176,
+     0.00614251151212155
+    ]
+   ],
+   "l": [
+    2.0258683743234442,
+    0.1384702023829077
+   ],
+   "w_x": [
+    0.45380711854358907,
+    0.02013389184186734
+   ],
+   "w_y": [
+    0.399767151724689,
+    0.01901480661607394
+   ],
+   "delta": -0.20046569655062196,
+   "verdict": "W FAILS (a widening below 1/2 or the lengthening below 2, at 2 sigma)",
+   "delta_2sigma": -0.2765249230149177
+  }
+ ],
+ "scaling": [],
+ "scaling_verdict": "NOT TESTED (no overlap)",
+ "crossing": {},
+ "growth": {},
+ "collapse": {
+  "points": {},
+  "pulls": [],
+  "verdict": "NOT TESTED (no two beta curves overlap in u)",
+  "continuum_grid": [],
+  "control_u1_1.1": {
+   "pairs": [
+    {
+     "L": 2,
+     "sigma_over_u": [
+      0.7350546518513834,
+      0.05179850161883612
+     ],
+     "identity": false
+    }
+   ],
+   "verdict": "FAILED"
+  },
+  "control_z2_0.5": {
+   "pairs": [
+    {
+     "L": 2,
+     "u": 0.5662483058575474,
+     "sigma": null,
+     "sigma_up": 0.035830917151465434,
+     "position": "below"
+    }
+   ],
+   "verdict": "PASSED (sigma below the diagonal)"
+  },
+  "control_2i_8.0": {
+   "pairs": [
+    {
+     "L": 2,
+     "u": 0.358513584458924,
+     "sigma": null,
+     "sigma_up": 0.6022253432174436,
+     "position": "not resolved"
+    }
+   ],
+   "verdict": "NOT RESOLVED (no growth, but not resolved below the diagonal)"
+  }
+ },
+ "deconfinement_test": "CONSISTENT (z < 1 below L sqrt(sigma) = 1.2)",
+ "photon_gate": {
+  "points": [
+   {
+    "L": 2,
+    "z": [
+     0.9614286828580079,
+     0.058931044454206924
+    ],
+    "verdict": "counted"
+   },
+   {
+    "L": 4,
+    "z": [
+     0.706702625758127,
+     0.0245700460484862
+    ],
+    "verdict": "counted"
+   },
+   {
+    "L": 6,
+    "z": [
+     0.7336554780028353,
+     0.03693204280248861
+    ],
+    "verdict": "counted"
+   }
+  ],
+  "mean_z": 0.8005955955396568,
+  "two_pi_alpha_bare": 0.45454545454545453,
+  "alpha_R": 0.12741874644773613,
+  "alpha_bare": 0.0723431559508615,
+  "flat": true,
+  "no_growth": true,
+  "level": true,
+  "verdict": "PHOTON GATE PASSED"
+ },
+ "control_z2_0.5": {
+  "points": [
+   {
+    "L": 2,
+    "z": [
+     0.5662483058575474,
+     0.05513453203070229
+    ],
+    "z_up": 0.6520117582198335,
+    "verdict": "counted"
+   },
+   {
+    "L": 4,
+    "z": null,
+    "z_up": 0.035830917151465434,
+    "verdict": "no plateau"
+   }
+  ],
+  "verdict": "Z FALLS (control passed)"
+ },
+ "control_2i_8.0": {
+  "points": [
+   {
+    "L": 2,
+    "z": [
+     0.358513584458924,
+     0.07000653703066373
+    ],
+    "z_up": 0.6404663394018848,
+    "verdict": "counted"
+   },
+   {
+    "L": 4,
+    "z": null,
+    "z_up": 0.6022253432174436,
+    "verdict": "no plateau"
+   }
+  ],
+  "verdict": "Z FALLS (control passed)"
+ },
+ "symmetry_control": {
+  "z_12": [
+   0.5281853790893678,
+   0.04917967407017209
+  ],
+  "z_01": [
+   0.43104215350975994,
+   0.03591741857021362
+  ],
+  "pull": 1.595150233128049,
+  "verdict": "PASSED"
+ },
+ "extras": [
+  {
+   "run": "su2_b2.4_L4_per.npz",
+   "z": [
+    0.874980312184573,
+    0.05252482436989777
+   ],
+   "twisted_su2_same_beta_L": [
+    0.43104215350975994,
+    0.03591741857021362
+   ]
+  },
+  {
+   "run": "2i_b2.4_L4.npz",
+   "z": [
+    0.3193812221521638,
+    0.07070010620420011
+   ],
+   "twisted_su2_same_beta_L": [
+    0.43104215350975994,
+    0.03591741857021362
+   ]
+  }
+ ]
+}
+u1_b1.1_L2.npz               z = 0.9614 +- 0.0589         z_up 0.9521  t* 3  z_sign None  tau 0.8/bin 40  sheet-bulk [-0.009560433476124645, 0.007494636544572263]    [counted]
+u1_b1.1_L4.npz               z = 0.7067 +- 0.0246         z_up 0.7843  t* 1  z_sign None  tau 2.3/bin 40  sheet-bulk [-0.0024309127092260446, 0.0016809537015656966]    [counted]
+u1_b1.1_L6.npz               z = 0.7337 +- 0.0369         z_up 0.8618  t* 1  z_sign None  tau 1.4/bin 24  sheet-bulk [0.0017847999157830023, 0.0017315132987885376]    [counted]
+PHOTON GATE PASSED
+PIPELINE TEST DONE in 390s

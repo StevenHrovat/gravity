@@ -1,0 +1,250 @@
+2i_b2.4_L4.npz               z = 0.3194 +- 0.0707         z_up 0.5322  t* 4  z_sign [0.3361, 0.0694]  tau 7.2/bin 20  sheet-bulk [0.0018180909719826032, 0.0019481562096645866]  L sqrt(sigma) = 1.03  [not counted (tau_ok)]
+2i_b8.0_L2.npz               z = 0.3585 +- 0.0700         z_up 0.6405  t* 1  z_sign [0.3699, 0.0729]  tau 2.7/bin 40  sheet-bulk [0.00032635232693865396, 0.00029860920606174083]    [counted]
+2i_b8.0_L4.npz               z = -                        z_up 0.6022  t* None  z_sign None  tau 8.3/bin 20  sheet-bulk [-0.0025487832522400377, 0.0028007870331567624]    [no plateau]
+su2_b2.4_L2.npz              z = 0.1107 +- 0.0199         z_up 0.1548  t* 1  z_sign [0.1099, 0.0213]  tau 15.9/bin 40  sheet-bulk [-3.842402982062343e-05, 0.002348467196897686]  L sqrt(sigma) = 0.52  [not counted (tau_ok)]
+su2_b2.4_L4.npz              z = 0.4310 +- 0.0359         z_up 0.492  t* 1  z_sign [0.3979, 0.0398]  tau 5.2/bin 30  sheet-bulk [-0.00034279915726616853, 0.0013287262795586743]  L sqrt(sigma) = 1.03  [counted]
+su2_b2.4_L4_p12.npz          z = 0.5282 +- 0.0492         z_up 0.675  t* 1  z_sign [0.509, 0.0613]  tau 8.1/bin 30  sheet-bulk [0.0018731739821299968, 0.0011281896102906717]  L sqrt(sigma) = 1.03  [not counted (tau_ok)]
+su2_b2.4_L4_per.npz          z = 0.8750 +- 0.0525         z_up 1.0647  t* 1  z_sign [0.8622, 0.0735]  tau 2.2/bin 20  sheet-bulk [0.004566924521806591, 0.0011314652290546853]  L sqrt(sigma) = 1.03  [counted]
+su2_b2.4_box2x2x4.npz        z = 0.9853 +- 0.0471         z_up 1.1633  t* 1  z_sign [0.9914, 0.0536]  tau 7.1/bin 40  sheet-bulk [-0.00025043668222101453, 0.0013994461387775378]  L sqrt(sigma) = 1.03  [counted]
+su2_b2.4_box4x2x4.npz        z = 1.2814 +- 0.0670         z_up 1.4726  t* 1  z_sign [1.2458, 0.086]  tau 3.5/bin 30  sheet-bulk [-0.0011966813864043243, 0.001740083918158128]  L sqrt(sigma) = 1.03  [counted]
+u1_b1.1_L2.npz               z = 0.9614 +- 0.0589         z_up 0.9521  t* 3  z_sign None  tau 0.8/bin 40  sheet-bulk [-0.009560433476124645, 0.007494636544572263]    [counted]
+u1_b1.1_L4.npz               z = 0.7067 +- 0.0246         z_up 0.7843  t* 1  z_sign None  tau 2.3/bin 40  sheet-bulk [-0.0024309127092260446, 0.0016809537015656966]    [counted]
+u1_b1.1_L6.npz               z = 0.7337 +- 0.0369         z_up 0.8618  t* 1  z_sign None  tau 1.4/bin 24  sheet-bulk [0.0017847999157830023, 0.0017315132987885376]    [counted]
+u1_b1.1_box2x2x4.npz         z = 3.8955 +- 0.1178         z_up 4.2772  t* 1  z_sign None  tau 0.7/bin 40  sheet-bulk [0.0019161740946200061, 0.003976541450653513]    [counted]
+u1_b1.1_box4x2x4.npz         z = 1.7678 +- 0.0574         z_up 1.8825  t* 2  z_sign None  tau 1.0/bin 40  sheet-bulk [0.0003447458539866109, 0.002716002067365671]    [counted]
+z2_b0.5_L2.npz               z = 0.5662 +- 0.0551         z_up 0.652  t* 1  z_sign [0.5287, 0.0635]  tau 4.8/bin 40  sheet-bulk [0.009062499999999996, 0.017698187883210394]    [counted]
+z2_b0.5_L4.npz               z = -                        z_up 0.0358  t* None  z_sign None  tau 0.8/bin 30  sheet-bulk [-0.0028888888888888905, 0.040135282573378804]    [no plateau]
+{
+ "four_moves": [
+  {
+   "group": "su2",
+   "beta": 2.4,
+   "L": 2,
+   "E": [
+    null,
+    [
+     0.24632112632258474,
+     0.011780310603264364
+    ],
+    [
+     0.3203595584910611,
+     0.016746947548536797
+    ],
+    [
+     0.10776053837743998,
+     0.008979354642553405
+    ]
+   ],
+   "w_x": [
+    1.3005768659547086,
+    0.09214802139760764
+   ],
+   "w_y": [
+    0.3363737260876728,
+    0.033088134808443304
+   ],
+   "delta": -0.3272525478246544,
+   "verdict": "W FAILS (a widening below 1/2 or the lengthening below 2, at 2 sigma)",
+   "delta_2sigma": -0.4596050870584276
+  },
+  {
+   "group": "u1",
+   "beta": 1.1,
+   "L": 2,
+   "E": [
+    [
+     0.48071434142900393,
+     0.029465522227103462
+    ],
+    [
+     0.9738639813847414,
+     0.029454391066269753
+    ],
+    [
+     0.441946407245597,
+     0.014345538630514514
+    ],
+    [
+     0.17667565643953176,
+     0.00614251151212155
+    ]
+   ],
+   "l": [
+    2.0258683743234442,
+    0.1384702023829077
+   ],
+   "w_x": [
+    0.45380711854358907,
+    0.02013389184186734
+   ],
+   "w_y": [
+    0.399767151724689,
+    0.01901480661607394
+   ],
+   "delta": -0.20046569655062196,
+   "verdict": "W FAILS (a widening below 1/2 or the lengthening below 2, at 2 sigma)",
+   "delta_2sigma": -0.2765249230149177,
+   "control": "LIGHT: FAILED"
+  }
+ ],
+ "scaling": [],
+ "scaling_verdict": "NOT TESTED (no overlap)",
+ "crossing": {},
+ "growth": {},
+ "collapse": {
+  "points": {},
+  "pulls": [],
+  "verdict": "NOT TESTED (no two beta curves overlap in u)",
+  "continuum_grid": [],
+  "control_u1_1.1": {
+   "pairs": [
+    {
+     "L": 2,
+     "sigma_over_u": [
+      0.7350546518513834,
+      0.05179850161883612
+     ],
+     "identity": false
+    }
+   ],
+   "verdict": "FAILED"
+  },
+  "control_z2_0.5": {
+   "pairs": [
+    {
+     "L": 2,
+     "u": 0.5662483058575474,
+     "sigma": null,
+     "sigma_up": 0.035830917151465434,
+     "position": "below"
+    }
+   ],
+   "verdict": "PASSED (sigma below the diagonal)"
+  },
+  "control_2i_8.0": {
+   "pairs": [
+    {
+     "L": 2,
+     "u": 0.358513584458924,
+     "sigma": null,
+     "sigma_up": 0.6022253432174436,
+     "position": "not resolved"
+    }
+   ],
+   "verdict": "NOT RESOLVED (no growth, but not resolved below the diagonal)"
+  }
+ },
+ "deconfinement_test": "CONSISTENT (z < 1 below L sqrt(sigma) = 1.2)",
+ "photon_gate": {
+  "points": [
+   {
+    "L": 2,
+    "z": [
+     0.9614286828580079,
+     0.058931044454206924
+    ],
+    "verdict": "counted"
+   },
+   {
+    "L": 4,
+    "z": [
+     0.706702625758127,
+     0.0245700460484862
+    ],
+    "verdict": "counted"
+   },
+   {
+    "L": 6,
+    "z": [
+     0.7336554780028353,
+     0.03693204280248861
+    ],
+    "verdict": "counted"
+   }
+  ],
+  "mean_z": 0.8005955955396568,
+  "two_pi_alpha_bare": 0.45454545454545453,
+  "alpha_R": 0.12741874644773613,
+  "alpha_bare": 0.0723431559508615,
+  "flat": true,
+  "no_growth": true,
+  "level": true,
+  "verdict": "PHOTON GATE PASSED"
+ },
+ "control_z2_0.5": {
+  "points": [
+   {
+    "L": 2,
+    "z": [
+     0.5662483058575474,
+     0.05513453203070229
+    ],
+    "z_up": 0.6520117582198335,
+    "verdict": "counted"
+   },
+   {
+    "L": 4,
+    "z": null,
+    "z_up": 0.035830917151465434,
+    "verdict": "no plateau"
+   }
+  ],
+  "verdict": "Z FALLS (control passed)"
+ },
+ "control_2i_8.0": {
+  "points": [
+   {
+    "L": 2,
+    "z": [
+     0.358513584458924,
+     0.07000653703066373
+    ],
+    "z_up": 0.6404663394018848,
+    "verdict": "counted"
+   },
+   {
+    "L": 4,
+    "z": null,
+    "z_up": 0.6022253432174436,
+    "verdict": "no plateau"
+   }
+  ],
+  "verdict": "Z FALLS (control passed)"
+ },
+ "symmetry_control": {
+  "z_12": [
+   0.5281853790893678,
+   0.04917967407017209
+  ],
+  "z_01": [
+   0.43104215350975994,
+   0.03591741857021362
+  ],
+  "pull": 1.595150233128049,
+  "verdict": "PASSED"
+ },
+ "extras": [
+  {
+   "run": "2i_b2.4_L4.npz",
+   "z": [
+    0.3193812221521638,
+    0.07070010620420011
+   ],
+   "twisted_su2_same_beta_L": [
+    0.43104215350975994,
+    0.03591741857021362
+   ]
+  },
+  {
+   "run": "su2_b2.4_L4_per.npz",
+   "z": [
+    0.874980312184573,
+    0.05252482436989777
+   ],
+   "twisted_su2_same_beta_L": [
+    0.43104215350975994,
+    0.03591741857021362
+   ]
+  }
+ ]
+}
