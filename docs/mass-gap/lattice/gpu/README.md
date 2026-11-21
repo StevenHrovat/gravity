@@ -10,10 +10,13 @@ repository; the code behind GUID v7's SU(3) results). Pure-gauge SU(N) for N = 2
 subgroups for SU(3)) and overrelaxation on a checkerboard per link direction, reunitarisation, plaquette, Polyakov loop, APE smearing,
 straight lines and Wilson loops; B independent lattices are updated in one launch.
 
-| file | sha256 |
-|---|---|
-| `gauge.py` | `ecc449483a53f35fb5faf8cdec95a015f589a5aff2e4568ce7ba86335cf8ec7a` |
-| `su3_cuda.py` | `25b3dcf7c51446649c6482ce00041922b79b3bd1560afdc2a63f216307c0d17b` |
+The originals have Windows line endings; Git stores them with Unix ones, the only difference (checked by comparing after removing the
+carriage returns).
+
+| file | sha256 of the original (CRLF) | sha256 as stored in Git (LF) |
+|---|---|---|
+| `gauge.py` | `ecc449483a53f35fb5faf8cdec95a015f589a5aff2e4568ce7ba86335cf8ec7a` | `2e4bc51ae6b9677cf4cb6005f38c4b2d8307ffc9afa7cfe1154b6c799145f5c5` |
+| `su3_cuda.py` | `25b3dcf7c51446649c6482ce00041922b79b3bd1560afdc2a63f216307c0d17b` | `8c64ed53b5d07deef2365c7054d5636e82cf74cf93d88b1a5e6b61f4477b9ba2` |
 
 ## Checks
 
