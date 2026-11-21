@@ -155,3 +155,20 @@ particle that exists (is not payload) and is not confined has mass. Against the 
 guaranteed inside); charged leptons, neutrinos (tiny but nonzero mass, from oscillations), W, Z, Higgs (unconfined, massive); photon
 (payload, massless): consistent throughout. Edge case outside this work: a hypothetical massless graviton; in the GUID reading gravity is
 the existence field itself and needs its own classification (GUID series, not here).
+
+## Decision rule for the layer-inequality attempts (fixed 2026-11-21, before any SU(2) result of Leg B exists)
+
+The owner: "If the Leg B data is halfway promising, I'd at least want to throw a couple attempts at it, see what sticks, and what ideas
+might pop out." Leg B counts as halfway promising if at least one holds (`../lattice/PREREG-BOUNDARY.md`, SU(2) phase):
+1. the boundary-influence length in physical units (Q1, typical against calm) is consistent with a constant over β = 2.3–2.7, or drifts
+   by less than a factor 1.5 with no growing trend;
+2. at the larger box (ℓ·a√σ ≈ 4.2) the twisted boundary is seen as a random vortex, not a spread field (Q2(b) passes there);
+3. at the same physical box size, the influence at the finer grid is never larger than at the coarser one within errors (the numerical
+   shadow of the layer inequality).
+None holding: the data argue against a fixed reach, and that is written up as the result.
+
+If promising: one round of independent proof attempts in parallel, each with an adversarial check and each required to fail for U(1):
+(a) the twist route (centre twists, as in `AreaLaw/Twist*`), (b) the positivity route (reflection positivity, chessboard estimates,
+comparing spacing a/2 with a), (c) the admissible route (route 6: a Balaban-style single step without large fields), (d) the self-charge
+route (the guiding principle above: non-commuting transport bounding the reach). Each ends in a precise lemma (proved or reduced) or a
+documented failure; the ideas that come out go into the record either way.
