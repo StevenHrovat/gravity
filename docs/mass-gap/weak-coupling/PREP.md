@@ -394,3 +394,13 @@ Gauss law forces bounded locality is the open problem itself.
 "In the past it was highly beneficial to generalize and try to fit everything that seems to belong together into one neat DMP-complete
 picture; this approach has worked surprisingly well, so be ambitious, sniff out what seems related, and then see what clicks." Recorded
 in `attempts/RULES.md` as the phase's guiding principle, next to the claim discipline that keeps the clicks honest.
+
+Exclusion must stay possible (the owner, on round 4's "conservation" holding even for a blocking onto a single point): "Blocking onto a
+single point needs to be valid, so it's good we caught it. It plays into that exclusion from a DMP-complete system always has to be an
+option." Reading: the blocking onto a point is the total refusal, the inert configuration DMP always admits (`evidence/Dmp/Refute.lean`:
+under refusing judges nothing is performed and every theorem holds; the empty recipe counts as proven). So a conservation law that holds
+for every blocking, the trivial one included, is the DMP-consistent form, and it cannot carry content by itself: that is safety (the
+bounds), which T3d ranks first. Content comes from the balance, the one commitment that asks for something to happen ("a system that does
+nothing keeps the bounds and fails the balance"). In the proof the balance is the non-degeneracy requirements: a good blocking with a
+non-trivial continuum limit (blueprint P1.8), identification of the limit as non-trivial (P6.2), and the assembly's lemma that the
+pure-noise theory fails its hypotheses (P7.3). Exclusion is always available; existence has to be shown.
