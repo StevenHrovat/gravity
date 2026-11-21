@@ -24,3 +24,6 @@ name = "OneScale"
 
 [[lean_lib]]
 name = "Attempts"
+
+[[lean_lib]]
+name = "ProofPhase"

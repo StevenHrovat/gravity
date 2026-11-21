@@ -25,8 +25,9 @@ A sequence of lattice spacings `a_k → 0`, a physical length `L₀ > 0`, thin c
 
 **What links `UniformGDS` to `LevelDecay`, and what of it is formal.** Theorem A on the torus
 (`OneScale.BlockSpec.theoremA_H` with `OneScale.Gauge.gaugeBlockSpec`, formal), Theorem C on the finite torus
-(`OneScale.TorusRP.torus_theoremC`, formal given the Hankel identity), Corollary C1 (`OneScale.prefactor_free`, formal).
-Not formal: the Hankel identity (time-translation invariance, note Lemma 6.1), a torus link distance with the slab
+(`OneScale.TorusRP.torus_theoremC`; the Hankel identity is formal in `OneScale.TimeShift.hankel_identity`, and the
+combined form is `torus_theoremC_hankel`), Corollary C1 (`OneScale.prefactor_free`, formal).
+Not formal: a torus link distance with the slab
 separation used in Theorem C, and the existence of limit points (note Lemma 6.3). The spectral reading of the rate as a
 transfer-matrix gap (note Theorem C2, Osterwalder–Seiler reconstruction) is not formalised; here "gap" means the
 exponential decay rate of the limit correlations.
