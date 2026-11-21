@@ -1,0 +1,5 @@
+u1 beta=0.9 N=6 thermalised (60 sweeps) t=2s; schedule (t, b, f): [(0.0, 1, 0.0), (0.0, 2, 0.0), (0.0078, 1, 0.25), (0.0312, 1, 0.5), (0.0312, 2, 0.25), (0.125, 2, 0.5)]
+u1 beta=0.9 N=6 meas 1/24 t=2s coarse plaq per point [0.4614, 0.0525, 0.4775, 0.5223, 0.0678, 0.1165]
+u1 beta=0.9 N=6 meas 10/24 t=3s coarse plaq per point [0.4694, 0.0419, 0.4857, 0.5311, 0.0571, 0.1095]
+u1 beta=0.9 N=6 meas 20/24 t=5s coarse plaq per point [0.4704, 0.0617, 0.4865, 0.5317, 0.081, 0.1397]
+done cpu-test/u1_b0.9_N6.npz in 6s

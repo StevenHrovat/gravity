@@ -1,0 +1,160 @@
+D' pair table (n_P, n_R, dist): multiplicity {(0, 1, 1): 12, (0, 1, 2): 30, (0, 6, 1): 2, (1, 2, 1): 18}
+factor counts (enumerated): plaquette meets 20 plaquettes and 64 rectangles; rectangle meets 32 plaquettes and 86 rectangles
+=== su2 beta=2.3 N=6 chains=2 meas=24  a*sqrt(sigma)=0.3503
+  b= 1 f=0.00 t=0.000 L*sqrt(sigma)=0.35  coarse plaq 0.6014 +- 0.0014  (b_F, b_A) = 2.308 +- 0.014, -0.0102 +- 0.013 (trunc 0.006, 0.0089)
+      extensions ext_T: [2.314, -0.0191, 0.0059, 0.0]; ext_R: [2.3055, -0.0101, 0.0, 0.0012]; ext_TR: [2.3115, -0.019, 0.0059, 0.0012]
+      closure of unfitted SD identities 2: -0.00125 +- 0.0032, 3: -0.000642 +- 0.0023
+      W1 11.8 +- 0.094 (lo 11.8) [ext spread 0.095] OUTSIDE; Dprime 17.6 +- 0.0086 [ext spread 0.074] OUTSIDE; Sprime 20 +- 9.6e-05 [ext spread 12] OUTSIDE; BE 28.1 +- 0.51 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.138; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.14
+  b= 2 f=0.00 t=0.000 L*sqrt(sigma)=0.70  coarse plaq 0.1809 +- 0.0027  (b_F, b_A) = 0.6624 +- 0.025, -0.0804 +- 0.0073 (trunc 0.024, 0.0046)
+      extensions ext_T: [0.6635, -0.085, 0.013, 0.0]; ext_R: [0.6385, -0.0798, 0.0, 0.0405]; ext_TR: [0.6396, -0.0844, 0.0129, 0.0405]
+      closure of unfitted SD identities 2: -3.68 +- 13, 3: -0.22 +- 0.015
+      W1 3.65 +- 0.058 (lo 3.58) [ext spread 0.96] OUTSIDE; Dprime 10.4 +- 0.1 [ext spread 3] OUTSIDE; Sprime 18.6 +- 0.05 [ext spread 24] OUTSIDE; BE 11 +- 0.29 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.481; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.711
+  b= 1 f=0.25 t=0.008 L*sqrt(sigma)=0.35  coarse plaq 0.6256 +- 0.0014  (b_F, b_A) = 2.418 +- 0.11, 0.08808 +- 0.015 (trunc 0.11, 0.011)
+      extensions ext_T: [2.4245, 0.0794, 0.0055, 0.0]; ext_R: [2.518, 0.0865, 0.0, -0.0486]; ext_TR: [2.5243, 0.0775, 0.0057, -0.0486]
+      closure of unfitted SD identities 2: -0.000865 +- 0.0026, 3: 0.023 +- 0.0022
+      W1 12.6 +- 0.041 (lo 12.5) [ext spread 1.8] OUTSIDE; Dprime 17.7 +- 0.0078 [ext spread 2.7] OUTSIDE; Sprime 20 +- 7e-05 [ext spread 27] OUTSIDE; BE 32.4 +- 0.27 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.132; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.12
+  b= 1 f=0.50 t=0.031 L*sqrt(sigma)=0.35  coarse plaq 0.6918 +- 0.0014  (b_F, b_A) = 2.662 +- 0.7, 0.5207 +- 0.11 (trunc 0.7, 0.11)
+      extensions ext_T: [2.7472, 0.4068, 0.0634, 0.0]; ext_R: [3.272, 0.5267, 0.0, -0.2729]; ext_TR: [3.359, 0.4109, 0.0645, -0.2729]
+      closure of unfitted SD identities 2: -0.00464 +- 0.0015, 3: 0.0946 +- 0.0021
+      W1 15.4 +- 0.062 (lo 14.9) [ext spread 10] OUTSIDE; Dprime 17.8 +- 0.0073 [ext spread 13] OUTSIDE; Sprime 20 +- 4e-05 [ext spread 69] OUTSIDE; BE 51.7 +- 0.34 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.12; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.0786
+  b= 2 f=0.25 t=0.031 L*sqrt(sigma)=0.70  coarse plaq 0.2427 +- 0.0034  (b_F, b_A) = 0.8889 +- 0.027, -0.1103 +- 0.012 (trunc 0.024, 0.01)
+      extensions ext_T: [0.8918, -0.1206, 0.021, 0.0]; ext_R: [0.8644, -0.1099, 0.0, 0.0312]; ext_TR: [0.8674, -0.1202, 0.0208, 0.0312]
+      closure of unfitted SD identities 2: -0.79 +- 0.15, 3: -0.107 +- 0.012
+      W1 4.91 +- 0.07 (lo 4.81) [ext spread 0.77] OUTSIDE; Dprime 12.8 +- 0.094 [ext spread 2.2] OUTSIDE; Sprime 19.4 +- 0.024 [ext spread 22] OUTSIDE; BE 14.9 +- 0.34 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.358; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.535
+  b= 2 f=0.50 t=0.125 L*sqrt(sigma)=0.70  coarse plaq 0.4326 +- 0.0052  (b_F, b_A) = 1.757 +- 0.16, -0.1309 +- 0.028 (trunc 0.16, 0.027)
+      extensions ext_T: [1.7691, -0.1576, 0.028, 0.0]; ext_R: [1.9051, -0.1263, 0.0, -0.1095]; ext_TR: [1.9172, -0.1522, 0.0272, -0.1094]
+      closure of unfitted SD identities 2: -0.0431 +- 0.013, 3: 0.135 +- 0.007
+      W1 9.4 +- 0.12 (lo 9.28) [ext spread 3.7] OUTSIDE; Dprime 17 +- 0.039 [ext spread 6.3] OUTSIDE; Sprime 20 +- 0.0014 [ext spread 42] OUTSIDE; BE 26.1 +- 0.53 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.181; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.226
+  gradient-flow coupling alpha_GF(sqrt(8t)): 0.31/sqrt(sigma): 0.455 +- 0.0038, 0.44/sqrt(sigma): 0.918 +- 0.014, 0.54/sqrt(sigma): 1.2 +- 0.027, 0.63/sqrt(sigma): 1.42 +- 0.042, 0.70/sqrt(sigma): 1.63 +- 0.059, 0.77/sqrt(sigma): 1.83 +- 0.077, 0.83/sqrt(sigma): 2.04 +- 0.097, 0.89/sqrt(sigma): 2.24 +- 0.12, 0.94/sqrt(sigma): 2.45 +- 0.14
+  monotone (no decrease beyond 2 sigma): True; strictly increasing: True
+=== su2 beta=2.4 N=6 chains=2 meas=24  a*sqrt(sigma)=0.2579
+  b= 1 f=0.00 t=0.000 L*sqrt(sigma)=0.26  coarse plaq 0.632 +- 0.001  (b_F, b_A) = 2.398 +- 0.016, 0.001605 +- 0.013 (trunc 0.0028, 0.0039)
+      extensions ext_T: [2.4011, -0.0023, 0.0023, 0.0]; ext_R: [2.3973, 0.0016, 0.0, 0.0004]; ext_TR: [2.4001, -0.0022, 0.0023, 0.0004]
+      closure of unfitted SD identities 2: -0.000329 +- 0.0018, 3: -0.000209 +- 0.0018
+      W1 12.2 +- 0.057 (lo 12.2) [ext spread 0.029] OUTSIDE; Dprime 17.7 +- 0.0092 [ext spread 0.027] OUTSIDE; Sprime 20 +- 8.6e-05 [ext spread 12] OUTSIDE; BE 28.8 +- 0.23 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.133; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.132
+  b= 2 f=0.00 t=0.000 L*sqrt(sigma)=0.52  coarse plaq 0.2279 +- 0.0019  (b_F, b_A) = 0.7977 +- 0.05, -0.1151 +- 0.0083 (trunc 0.05, 0.0063)
+      extensions ext_T: [0.7994, -0.1214, 0.0138, 0.0]; ext_R: [0.7478, -0.113, 0.0, 0.0632]; ext_TR: [0.7495, -0.1191, 0.0135, 0.0632]
+      closure of unfitted SD identities 2: -3.45 +- 1.3e+02, 3: -0.211 +- 0.0078
+      W1 4.46 +- 0.039 (lo 4.36) [ext spread 1.4] OUTSIDE; Dprime 11.9 +- 0.054 [ext spread 4.2] OUTSIDE; Sprime 19.2 +- 0.018 [ext spread 31] OUTSIDE; BE 13.9 +- 0.24 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.399; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.649
+  b= 1 f=0.25 t=0.008 L*sqrt(sigma)=0.26  coarse plaq 0.6564 +- 0.001  (b_F, b_A) = 2.494 +- 0.12, 0.114 +- 0.016 (trunc 0.12, 0.0082)
+      extensions ext_T: [2.4979, 0.1094, 0.0026, 0.0]; ext_R: [2.6119, 0.1109, 0.0, -0.0533]; ext_TR: [2.6157, 0.1058, 0.0029, -0.0533]
+      closure of unfitted SD identities 2: -0.000273 +- 0.0014, 3: 0.0227 +- 0.0017
+      W1 13.1 +- 0.047 (lo 13) [ext spread 2] OUTSIDE; Dprime 17.8 +- 0.0085 [ext spread 2.9] OUTSIDE; Sprime 20 +- 6.5e-05 [ext spread 29] OUTSIDE; BE 34.3 +- 0.33 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.128; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.114
+  b= 1 f=0.50 t=0.031 L*sqrt(sigma)=0.26  coarse plaq 0.7226 +- 0.00098  (b_F, b_A) = 2.628 +- 0.84, 0.6275 +- 0.15 (trunc 0.84, 0.15)
+      extensions ext_T: [2.7474, 0.482, 0.0733, 0.0]; ext_R: [3.344, 0.6274, 0.0, -0.2993]; ext_TR: [3.4663, 0.479, 0.0748, -0.2993]
+      closure of unfitted SD identities 2: -0.00331 +- 0.00072, 3: 0.0929 +- 0.0015
+      W1 15.6 +- 0.07 (lo 15) [ext spread 12] OUTSIDE; Dprime 17.8 +- 0.0092 [ext spread 14] OUTSIDE; Sprime 20 +- 5.4e-05 [ext spread 72] OUTSIDE; BE 55.4 +- 0.39 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.121; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.074
+  b= 2 f=0.25 t=0.031 L*sqrt(sigma)=0.52  coarse plaq 0.3027 +- 0.0023  (b_F, b_A) = 1.056 +- 0.051, -0.1518 +- 0.019 (trunc 0.051, 0.018)
+      extensions ext_T: [1.062, -0.17, 0.0291, 0.0]; ext_R: [1.005, -0.15, 0.0, 0.0487]; ext_TR: [1.0115, -0.1681, 0.0288, 0.0486]
+      closure of unfitted SD identities 2: -0.441 +- 0.098, 3: -0.104 +- 0.0066
+      W1 5.9 +- 0.05 (lo 5.76) [ext spread 1.1] OUTSIDE; Dprime 14.1 +- 0.046 [ext spread 3.1] OUTSIDE; Sprime 19.7 +- 0.0077 [ext spread 27] OUTSIDE; BE 18.4 +- 0.29 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.302; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.489
+  b= 2 f=0.50 t=0.125 L*sqrt(sigma)=0.52  coarse plaq 0.5231 +- 0.0035  (b_F, b_A) = 2.074 +- 0.3, -0.1768 +- 0.06 (trunc 0.3, 0.059)
+      extensions ext_T: [2.1092, -0.236, 0.0469, 0.0]; ext_R: [2.3372, -0.175, 0.0, -0.1501]; ext_TR: [2.3732, -0.235, 0.0476, -0.1501]
+      closure of unfitted SD identities 2: -0.0261 +- 0.0085, 3: 0.118 +- 0.0051
+      W1 11.2 +- 0.11 (lo 11) [ext spread 5.7] OUTSIDE; Dprime 17.4 +- 0.018 [ext spread 8.1] OUTSIDE; Sprime 20 +- 0.00032 [ext spread 51] OUTSIDE; BE 31.6 +- 0.55 [ext spread 0] OUTSIDE
+      alpha_F = 1/(pi b_F) = 0.153; alpha_eq = 1/(pi (b_F + 8 b_A / 3)) = 0.199
+  gradient-flow coupling alpha_GF(sqrt(8t)): 0.23/sqrt(sigma): 0.378 +- 0.0025, 0.33/sqrt(sigma): 0.673 +- 0.0086, 0.40/sqrt(sigma): 0.767 +- 0.016, 0.46/sqrt(sigma): 0.816 +- 0.024, 0.52/sqrt(sigma): 0.853 +- 0.033, 0.57/sqrt(sigma): 0.887 +- 0.042, 0.61/sqrt(sigma): 0.919 +- 0.051, 0.65/sqrt(sigma): 0.947 +- 0.062, 0.69/sqrt(sigma): 0.973 +- 0.073
+  monotone (no decrease beyond 2 sigma): True; strictly increasing: True
+=== u1 beta=0.9 N=6 chains=2 meas=24
+  b= 1 f=0.00 t=0.000  coarse plaq 0.4668 +- 0.0013  (b_1, b_2) = 0.9058 +- 0.006, -0.00738 +- 0.0033 (trunc 0.0045, 0.001)
+      extensions ext_T: [0.9053, -0.0064, -0.0013, 0.0]; ext_R: [0.9103, -0.0074, 0.0, -0.0031]; ext_TR: [0.9098, -0.0064, -0.0013, -0.0031]
+      closure of unfitted SD identities 2: 0.0261 +- 0.072, 3: 0.00589 +- 0.0055
+      W1 10.5 +- 0.076 [ext spread 0.23] OUTSIDE; Dprime 12.9 +- 0.035 [ext spread 0.26] OUTSIDE; Sprime 19.5 +- 0.0086 [ext spread 13] OUTSIDE
+  b= 2 f=0.00 t=0.000  coarse plaq 0.05266 +- 0.0017  (b_1, b_2) = 0.1049 +- 0.0035, -0.003365 +- 0.0026 (trunc 0.00011, 0.0001)
+      extensions ext_T: [0.1049, -0.0033, -0.0014, 0.0]; ext_R: [0.1048, -0.0034, 0.0, 0.0006]; ext_TR: [0.1048, -0.0033, -0.0014, 0.0006]
+      closure of unfitted SD identities 2: -0.915 +- 0.53, 3: -0.0904 +- 0.26
+      W1 1.24 +- 0.054 [ext spread 0.048] OUTSIDE; Dprime 1.88 +- 0.063 [ext spread 0.05] OUTSIDE; Sprime 6.85 +- 0.19 [ext spread 4.3] OUTSIDE
+  b= 1 f=0.25 t=0.008  coarse plaq 0.4829 +- 0.0013  (b_1, b_2) = 0.9602 +- 0.022, 0.01157 +- 0.0034 (trunc 0.022, 0.00079)
+      extensions ext_T: [0.9598, 0.0123, -0.0009, 0.0]; ext_R: [0.982, 0.0116, 0.0, -0.0147]; ext_TR: [0.9816, 0.0124, -0.0009, -0.0147]
+      closure of unfitted SD identities 2: 0.0124 +- 0.052, 3: 0.0258 +- 0.0054
+      W1 11.1 +- 0.035 [ext spread 1.1] OUTSIDE; Dprime 13.4 +- 0.035 [ext spread 1.2] OUTSIDE; Sprime 19.6 +- 0.0074 [ext spread 17] OUTSIDE
+  b= 1 f=0.50 t=0.031  coarse plaq 0.5277 +- 0.0014  (b_1, b_2) = 1.143 +- 0.1, 0.08228 +- 0.0076 (trunc 0.1, 0.0066)
+      extensions ext_T: [1.1463, 0.0757, 0.0074, 0.0]; ext_R: [1.2441, 0.084, 0.0, -0.0621]; ext_TR: [1.247, 0.0775, 0.0073, -0.0621]
+      closure of unfitted SD identities 2: -0.0497 +- 0.024, 3: 0.0881 +- 0.0051
+      W1 14 +- 0.045 [ext spread 4.8] OUTSIDE; Dprime 14.7 +- 0.032 [ext spread 4.5] OUTSIDE; Sprime 19.8 +- 0.0044 [ext spread 31] OUTSIDE
+  b= 2 f=0.25 t=0.031  coarse plaq 0.06867 +- 0.002  (b_1, b_2) = 0.137 +- 0.004, -0.003645 +- 0.0026 (trunc 5e-05, 0.00026)
+      extensions ext_T: [0.137, -0.0034, -0.0026, 0.0]; ext_R: [0.1371, -0.0036, 0.0, -0.0002]; ext_TR: [0.137, -0.0034, -0.0026, -0.0002]
+      closure of unfitted SD identities 2: -0.945 +- 0.1, 3: 0.0248 +- 0.2
+      W1 1.61 +- 0.062 [ext spread 0.041] OUTSIDE; Dprime 2.45 +- 0.071 [ext spread 0.047] OUTSIDE; Sprime 8.44 +- 0.19 [ext spread 5.1] OUTSIDE
+  b= 2 f=0.50 t=0.125  coarse plaq 0.1201 +- 0.0026  (b_1, b_2) = 0.2452 +- 0.0061, -0.003155 +- 0.0023 (trunc 0.0023, 0.00082)
+      extensions ext_T: [0.2451, -0.0024, -0.0043, 0.0]; ext_R: [0.2475, -0.0031, 0.0, -0.0063]; ext_TR: [0.2474, -0.0023, -0.0043, -0.0064]
+      closure of unfitted SD identities 2: -1.06 +- 0.1, 3: 0.269 +- 0.11
+      W1 2.85 +- 0.075 [ext spread 0.43] OUTSIDE; Dprime 4.33 +- 0.095 [ext spread 0.59] OUTSIDE; Sprime 12.5 +- 0.17 [ext spread 9.8] OUTSIDE
+=== u1 beta=1.1 N=6 chains=2 meas=24
+  b= 1 f=0.00 t=0.000  coarse plaq 0.7183 +- 0.0013  (b_1, b_2) = 1.089 +- 0.018, 0.008587 +- 0.011 (trunc 0.017, 0.0094)
+      extensions ext_T: [1.0987, -0.0004, 0.0054, 0.0]; ext_R: [1.0961, 0.0083, 0.0, -0.0027]; ext_TR: [1.1061, -0.0008, 0.0055, -0.0029]
+      closure of unfitted SD identities 2: -0.0119 +- 0.0091, 3: 0.00204 +- 0.0019
+      W1 12.6 +- 0.04 [ext spread 0.33] OUTSIDE; Dprime 14.3 +- 0.048 [ext spread 0.33] OUTSIDE; Sprime 19.7 +- 0.0075 [ext spread 13] OUTSIDE
+  b= 2 f=0.00 t=0.000  coarse plaq 0.3928 +- 0.0025  (b_1, b_2) = 0.5252 +- 0.075, -0.06778 +- 0.013 (trunc 0.075, 0.013)
+      extensions ext_T: [0.5317, -0.0804, 0.0191, 0.0]; ext_R: [0.45, -0.0624, 0.0, 0.0491]; ext_TR: [0.4578, -0.0743, 0.0179, 0.048]
+      closure of unfitted SD identities 2: -4.24 +- 1.6, 3: -0.113 +- 0.0064
+      W1 6.8 +- 0.059 [ext spread 2.3] OUTSIDE; Dprime 8.67 +- 0.051 [ext spread 3.2] OUTSIDE; Sprime 17.6 +- 0.036 [ext spread 25] OUTSIDE
+  b= 1 f=0.25 t=0.008  coarse plaq 0.7384 +- 0.0012  (b_1, b_2) = 1.109 +- 0.065, 0.05434 +- 0.0086 (trunc 0.064, 0.0056)
+      extensions ext_T: [1.1115, 0.052, 0.0014, 0.0]; ext_R: [1.1695, 0.0522, 0.0, -0.0235]; ext_TR: [1.1733, 0.0488, 0.002, -0.0235]
+      closure of unfitted SD identities 2: -0.00217 +- 0.0071, 3: 0.0165 +- 0.0019
+      W1 13.3 +- 0.042 [ext spread 2] OUTSIDE; Dprime 14.5 +- 0.052 [ext spread 1.9] OUTSIDE; Sprime 19.8 +- 0.0077 [ext spread 20] OUTSIDE
+  b= 1 f=0.50 t=0.031  coarse plaq 0.793 +- 0.0011  (b_1, b_2) = 1.069 +- 0.36, 0.2592 +- 0.026 (trunc 0.36, 0.025)
+      extensions ext_T: [1.0845, 0.2448, 0.0074, 0.0]; ext_R: [1.4048, 0.2532, 0.0, -0.1228]; ext_TR: [1.4267, 0.234, 0.0099, -0.1231]
+      closure of unfitted SD identities 2: -0.00499 +- 0.0037, 3: 0.0658 +- 0.0019
+      W1 15.2 +- 0.055 [ext spread 11] OUTSIDE; Dprime 14.2 +- 0.078 [ext spread 9] OUTSIDE; Sprime 19.7 +- 0.013 [ext spread 46] OUTSIDE
+  b= 2 f=0.25 t=0.031  coarse plaq 0.4833 +- 0.0026  (b_1, b_2) = 0.6463 +- 0.057, -0.07872 +- 0.022 (trunc 0.057, 0.022)
+      extensions ext_T: [0.6607, -0.101, 0.0256, 0.0]; ext_R: [0.5892, -0.075, 0.0, 0.031]; ext_TR: [0.6061, -0.0967, 0.0248, 0.0293]
+      closure of unfitted SD identities 2: -1.85 +- 0.28, 3: -0.05 +- 0.0051
+      W1 8.31 +- 0.072 [ext spread 1.7] OUTSIDE; Dprime 10.2 +- 0.056 [ext spread 2.1] OUTSIDE; Sprime 18.5 +- 0.028 [ext spread 20] OUTSIDE
+  b= 2 f=0.50 t=0.125  coarse plaq 0.7164 +- 0.0024  (b_1, b_2) = 1.105 +- 0.23, -0.01148 +- 0.011 (trunc 0.23, 0.0091)
+      extensions ext_T: [1.104, -0.011, -0.0003, 0.0]; ext_R: [1.3298, -0.0186, 0.0, -0.0864]; ext_TR: [1.332, -0.0206, 0.0012, -0.0864]
+      closure of unfitted SD identities 2: 0.000759 +- 0.011, 3: 0.0605 +- 0.0036
+      W1 12.8 +- 0.16 [ext spread 7.7] OUTSIDE; Dprime 14.4 +- 0.06 [ext spread 6.4] OUTSIDE; Sprime 19.8 +- 0.009 [ext spread 37] OUTSIDE
+=== z2 beta=0.3 N=6 chains=2 meas=24
+  b= 1 f=0.00 t=0.000  coarse plaq 0.3017 +- 0.0023  (b_P) = 0.3025 +- 0.0028 (trunc 0.0013)
+      extensions ext_R: [0.3011, 0.0015]
+      W1 5.28 +- 0.04 [ext spread 0.11] OUTSIDE; Dprime 5.28 +- 0.04 [ext spread 0.11] OUTSIDE; Sprime 14 +- 0.058 [ext spread 8.9] OUTSIDE
+  b= 2 f=0.00 t=0.000  coarse plaq 0.006533 +- 0.0017  (b_P) = 0.00653 +- 0.0017 (trunc 2.5e-05)
+      extensions ext_R: [0.0066, -0.0011]
+      W1 0.118 +- 0.031 [ext spread 0.1] INSIDE; Dprime 0.118 +- 0.031 [ext spread 0.1] INSIDE; Sprime 0.516 +- 0.13 [ext spread 0.7] UNDECIDED
+=== z2 beta=0.6 N=6 chains=2 meas=24
+  b= 1 f=0.00 t=0.000  coarse plaq 0.9919 +- 0.00058  (b_P) = 0.5856 +- 0.2 (trunc 0.2)
+      extensions ext_R: [0.3843, 0.0669]
+      W1 9.48 +- 0.071 [ext spread 3.1] OUTSIDE; Dprime 9.48 +- 0.071 [ext spread 2.7] OUTSIDE; Sprime 18.1 +- 0.042 [ext spread 27] OUTSIDE
+  b= 2 f=0.00 t=0.000  coarse plaq 0.9837 +- 0.0012  (b_P) = 0.5311 +- 0.14 (trunc 0.14)
+      extensions ext_R: [0.3891, 0.0474]
+      W1 8.75 +- 0.076 [ext spread 2.2] OUTSIDE; Dprime 8.75 +- 0.076 [ext spread 1.9] OUTSIDE; Sprime 17.6 +- 0.053 [ext spread 22] OUTSIDE
+
+=== controls
+  photon (U(1) beta=1.1, f=0.0): PASS  [(1, {'W1': 'OUTSIDE', 'Dprime': 'OUTSIDE', 'Sprime': 'OUTSIDE'}), (2, {'W1': 'OUTSIDE', 'Dprime': 'OUTSIDE', 'Sprime': 'OUTSIDE'})]
+  photon (U(1) beta=1.1, f=0.25): PASS  [(1, {'W1': 'OUTSIDE', 'Dprime': 'OUTSIDE', 'Sprime': 'OUTSIDE'}), (2, {'W1': 'OUTSIDE', 'Dprime': 'OUTSIDE', 'Sprime': 'OUTSIDE'})]
+  photon (U(1) beta=1.1, f=0.5): PASS  [(1, {'W1': 'OUTSIDE', 'Dprime': 'OUTSIDE', 'Sprime': 'OUTSIDE'}), (2, {'W1': 'OUTSIDE', 'Dprime': 'OUTSIDE', 'Sprime': 'OUTSIDE'})]
+  Z2 deconfined (beta=0.6, f=0): W1 PASS, D' PASS (S' reported, gap-only) [(1, {'W1': 'OUTSIDE', 'Dprime': 'OUTSIDE', 'Sprime': 'OUTSIDE'}), (2, {'W1': 'OUTSIDE', 'Dprime': 'OUTSIDE', 'Sprime': 'OUTSIDE'})]
+  positive control u1 beta=0.9 (confined) at b=2: (b, f, W1, D') [(2, 0.0, 'OUTSIDE', 'OUTSIDE'), (2, 0.25, 'OUTSIDE', 'OUTSIDE'), (2, 0.5, 'OUTSIDE', 'OUTSIDE')]
+  positive control z2 beta=0.3 (confined) at b=2: (b, f, W1, D') [(2, 0.0, 'INSIDE', 'INSIDE')]
+
+=== SU(2): click table (primary f = 0.5 unless stated)
+  beta=2.3 L*sqrt(sigma)=0.35 f=0.00: b_F=2.31 +- 0.014 b_A=-0.0102 +- 0.013  W1 OUTSIDE (11.8/11.8 +- 0.094)  D' OUTSIDE (17.6, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.3 L*sqrt(sigma)=0.70 f=0.00: b_F=0.662 +- 0.025 b_A=-0.0804 +- 0.0073  W1 OUTSIDE (3.65/3.58 +- 0.058)  D' OUTSIDE (10.4, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.3 L*sqrt(sigma)=0.35 f=0.25: b_F=2.42 +- 0.11 b_A=0.0881 +- 0.015  W1 OUTSIDE (12.6/12.5 +- 0.041)  D' OUTSIDE (17.7, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.3 L*sqrt(sigma)=0.35 f=0.50: b_F=2.66 +- 0.7 b_A=0.521 +- 0.11  W1 OUTSIDE (15.4/14.9 +- 0.062)  D' OUTSIDE (17.8, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.3 L*sqrt(sigma)=0.70 f=0.25: b_F=0.889 +- 0.027 b_A=-0.11 +- 0.012  W1 OUTSIDE (4.91/4.81 +- 0.07)  D' OUTSIDE (12.8, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.3 L*sqrt(sigma)=0.70 f=0.50: b_F=1.76 +- 0.16 b_A=-0.131 +- 0.028  W1 OUTSIDE (9.4/9.28 +- 0.12)  D' OUTSIDE (17, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.4 L*sqrt(sigma)=0.26 f=0.00: b_F=2.4 +- 0.016 b_A=0.00161 +- 0.013  W1 OUTSIDE (12.2/12.2 +- 0.057)  D' OUTSIDE (17.7, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.4 L*sqrt(sigma)=0.52 f=0.00: b_F=0.798 +- 0.05 b_A=-0.115 +- 0.0083  W1 OUTSIDE (4.46/4.36 +- 0.039)  D' OUTSIDE (11.9, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.4 L*sqrt(sigma)=0.26 f=0.25: b_F=2.49 +- 0.12 b_A=0.114 +- 0.016  W1 OUTSIDE (13.1/13 +- 0.047)  D' OUTSIDE (17.8, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.4 L*sqrt(sigma)=0.26 f=0.50: b_F=2.63 +- 0.84 b_A=0.628 +- 0.15  W1 OUTSIDE (15.6/15 +- 0.07)  D' OUTSIDE (17.8, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.4 L*sqrt(sigma)=0.52 f=0.25: b_F=1.06 +- 0.051 b_A=-0.152 +- 0.019  W1 OUTSIDE (5.9/5.76 +- 0.05)  D' OUTSIDE (14.1, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.4 L*sqrt(sigma)=0.52 f=0.50: b_F=2.07 +- 0.3 b_A=-0.177 +- 0.06  W1 OUTSIDE (11.2/11 +- 0.11)  D' OUTSIDE (17.4, lambda* 0)  S' OUTSIDE  BE OUTSIDE
+  beta=2.3: first INSIDE at L*sqrt(sigma) = none; gamma_hi = 1 crossing at > 0.70, gamma_lo at > 0.70 (log-linear interpolation; C's proxy: 3.3 to 3.9); D' first INSIDE at None, D' = 1 crossing at > 0.70
+  beta=2.4: first INSIDE at L*sqrt(sigma) = none; gamma_hi = 1 crossing at > 0.52, gamma_lo at > 0.52 (log-linear interpolation; C's proxy: 3.3 to 3.9); D' first INSIDE at None, D' = 1 crossing at > 0.52
+  scaling beta 2.3 vs 2.4 (interpolated in L): [{'L': 0.516, 'coupling': 'b_F', 'beta2.4': 2.0738010263796047, 'beta2.3_interp': 2.187023404695184, 'diff_sigma': -0.25957981256042156, 'pass': True}, {'L': 0.516, 'coupling': 'b_A', 'beta2.4': -0.17675663133935254, 'beta2.3_interp': 0.21265663186503536, 'diff_sigma': -4.509489352191572, 'pass': False}]
+
+=== reading: photon gate for the primary blocking: pass; Z2 deconfined W1: pass
+PHOTON GATE PASSED
