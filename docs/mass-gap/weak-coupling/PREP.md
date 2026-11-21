@@ -109,3 +109,17 @@ bridge. Some claim full proofs; none is validated.
 
 Honest frame for the voyage: nobody has crossed the middle range; the realistic aim is a new, precise, checkable piece (a theorem, a
 certificate, or a sharp reduction), reported at its true claim level.
+6. **DMP-admissible Yang–Mills (the owner's idea, 2026-11-21).** The owner: DMP "doesn't allow any not DMP complete system to exist",
+   so "there may be some configurations in Yang–Mills that simply are not DMP complete", and DMP "settles the question of existence for
+   any system that can be described in it". In physics this is a selection rule on configurations, legitimate if it is local and gauge
+   invariant, keeps reflection positivity, and does not change the continuum limit (universality). Physics has such rules: Luescher's
+   **admissibility condition** (every plaquette's shortfall ‖1 − U_p‖ below a bound: DMP's balance rule, "shortfall per loop stays
+   bounded", word for word), used for topology and chiral gauge theory with the same continuum limit; and the Gribov–Zwanziger
+   restriction of gauge copies. Admissibility removes **large fields** by construction, the part where Balaban's programme (and
+   `balaban-lean`'s open blockers) are stuck. Checks built in: admissible U(1) keeps a massless photon (the rule alone does not make a
+   gap: photon test passed); the MG3 twists must be admissible, since removing them removes confinement (our vortex test). Plan:
+   (a) prove reflection positivity of the admissible measure with our `Positivity` tools; (b) measure the fraction of plaquettes above
+   the bound at β = 2.3–2.7 on the GPU (if it vanishes as the grid is refined, the rule is physically free); (c) re-examine the
+   weak-coupling attack (route 1, route 3) on the admissible theory, where the large-field problem is absent. References to read:
+   Luescher, "Topology of lattice gauge fields" (Commun. Math. Phys. 85 (1982) 39) and the admissibility literature on lattice chiral
+   gauge theories; Zwanziger on the Gribov horizon.
