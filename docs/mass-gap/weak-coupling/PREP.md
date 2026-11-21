@@ -172,3 +172,34 @@ If promising: one round of independent proof attempts in parallel, each with an 
 comparing spacing a/2 with a), (c) the admissible route (route 6: a Balaban-style single step without large fields), (d) the self-charge
 route (the guiding principle above: non-commuting transport bounding the reach). Each ends in a precise lemma (proved or reduced) or a
 documented failure; the ideas that come out go into the record either way.
+
+## Lead route for the attempt round: a flow for the influence, read as a root swap (2026-11-21)
+
+**The approach (proposed by the coordinating session, adopted by the owner).** Do not track the coupling from layer to layer (the
+Migdal–Kadanoff tree and Tomboulis's decimations did that and failed the photon test). Track the quantity the reduction needs: the box
+influence κ(ℓ) on boxes of growing side ℓ at a fixed grid, and look for a recursion κ(2ℓ) ≤ f(κ(ℓ)) (a box of twice the size given its
+eight sub-boxes). Then: (1) uniformity in a becomes a fixed-point property of f (more doublings inside a box of physical size L₀ only help
+if f contracts); (2) the photon test is built in (for U(1), κ(ℓ) grows like ℓ: no contracting fixed point; Leg B feasibility shows the flux
+passing through); (3) f is local (one box and its sub-boxes: DMP's restoration one layer per round, applied to the disturbance instead of
+the coupling), so it can be measured and possibly certified at bounded size; (4) the proof engine is reflection positivity (proven,
+`Positivity`): by chessboard estimates, an influence crossing a large box needs a "bad event" spanning it, bounded by the single-block
+probability to the power of the number of blocks. Deliverables: κ(ℓ) at several ℓ (Leg B's two box sizes first, then more sizes at one β
+if the decision rule says go); a Lean theorem "a contracting recursion for κ implies `UniformGDS`"; the chessboard bound as the attempt.
+
+**The owner's reading of the bad event (2026-11-21).** "The confinement is, in DMP terms, an existence boundary. [...] the causal chain,
+which ties something to existence, switches at that boundary. [...] everything that exists within it is tied to that G0 by the causal chain,
+with the mass bosons tied to it through the Higgs field. Once something crosses an existence boundary, like when entering a black hole or
+entering confinement, the definition of existence, so the G0 that is defined as root for that node, swaps over."
+
+Physics translation (the root swap): by Gauss's law a charge exists only anchored by a field line (a dressing, a Wilson line) to
+something that absorbs its charge. Electromagnetism anchors at infinity cheaply (the global root): free charges exist. In the confined
+phase anchoring colour to infinity costs σ per unit length (infinite), so colour anchors locally, to an anticharge in the node: **the node
+is its own root**. At high temperature (deconfined) a global colour root reappears. The order parameter for "is there a global root" is the
+Polyakov loop (zero when confined: unbroken centre symmetry, no global colour root; nonzero when deconfined); the centre symmetry is the MG3
+twist, a change of the root's frame no local check sees, and it is the extra ingredient in Chatterjee's theorem (decay + unbroken centre ⇒
+confinement). Applied to the lead route: the **bad event** is "a block lets an anchoring line through: the outside root leaks across the
+existence boundary"; the chessboard bound needs this to be rare in a single block, and the root swap is the reason it should be (crossing
+an existence boundary forces a root swap, which a cheap line cannot carry). Photon test: light is anchored at infinity cheaply, so its lines
+pass every box. Observable already recorded by Leg B: the straight lines across the box from face to face (anchoring lines from the outside
+root through the node); how their cost grows with box size is a direct numerical look at the root swap. The black-hole part of the reading
+is outside what this work can test and is not used here (GUID series).
