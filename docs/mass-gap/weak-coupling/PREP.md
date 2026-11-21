@@ -263,3 +263,20 @@ erect an existence boundary. For light, α ≈ 1/137 is small and decreases at l
 light never erects an existence boundary; α_s grows with distance (asymptotic freedom), reaches order one at L₁, and nodes form. Places to
 poke later: the value of α_s (or the Schroedinger-functional coupling) at L₁ ≈ 3/√σ (attempt C of round 2 computes it), and any appearance
 of α in the GUID series' existence rules.
+
+## Which existence: the root at infinite depth (the owner, 2026-11-21, after round 3, attempt 5)
+
+The owner: "Doesn't DMP have a theorem that every invalid state is automatically excluded? If DMP requires finite and the root were to
+move infinitely deep, it would no longer exist / have an existence boundary spanned to it." And: "my existence for free assumed the wrong
+'existence' was in question." Reading: DMP does exclude (a recipe that is not well formed is out of spec and refused, `evidence/Dmp/
+Complete.lean`, `verdict_outOfSpec_iff`; a pressed root collapses the chain, `Theory.lean`), and every DMP object is finite. The Clay
+question asks for exactly the object DMP excludes: the continuum limit is the theory with the root moved infinitely deep (the lattice
+spacing to zero). Two notions of existence meet here. **DMP-existence** of a configuration is provable completeness at finite depth;
+**analytic existence** (Osterwalder–Schrader, the OpenAI construction) is a limit object. In DMP terms what exists is the family of
+finite-depth theories, and what matters physically must hold the same at every depth (Axiom 1: "this holds at every layer"); that is a
+gap **uniform in the lattice spacing**, which is what the reduction proves conditionally (round 3, attempt 1: `gap_of_localFactorsW`, the
+same rate and constant for every fine enough level and every volume). The two views do not conflict: uniform bounds at every finite depth
+give the limit object by compactness (attempt 5, proved in the abstract form), so the DMP-native statement carries the analytic one as a
+by-product. The same split is familiar in physics: Yang–Mills as an effective theory with a physical cutoff (the root at finite depth),
+the continuum as its idealisation. Attempt 5 made the difference between the two existences exact, and kept what transfers (T38: every
+blocked layer has its own Duality, i.e. reflection positivity of each layer).
