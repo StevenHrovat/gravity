@@ -134,10 +134,15 @@ still preserving the way through the git history." Once the weak-coupling attemp
 - **DMP**: the few DMP theorems or readings that turn out unneeded or more general go to the DMP repository as proposals through its own
   process (gravity never edits `vendor/dmp`).
 - The git history keeps the path; the consolidated tree is what readers see.
-- **The final paper gets a chapter that explains the Lean construction in prose** (the owner, 2026-11-21: "so that they don't need to dig
-  out every shred of information just to understand our proof"): for each formal result, what is defined (lattice, measure, observables,
-  weights), the exact statement in words and formulas, the proof route step by step, which hypotheses remain open, and where it lives
-  (file and theorem name). Written for a reader who does not read Lean.
+- **The final paper explains the theory and the proof itself; Lean is only for verification** (the owner, 2026-11-21, replacing the
+  earlier "Lean chapter" plan: "having a guide to the lean seems excessive. We should instead focus on explaining the theory and proof as
+  well as possible, so that lean really is just for what it's made for, machine verification, not explanation."). The paper carries the
+  argument in mathematics and plain language, complete enough to follow without opening a Lean file; each formal result gets one line
+  pointing to its theorem name for anyone who wants to check it by machine.
+- **A final round of review, tightening and optimising the paper's knowledge delivery** before it goes out (the owner: "It is the best
+  vehicle to get our novel approach, which combines a potpourri of established techniques to make it work mathematically, across to any
+  reader."): adversarial review for correctness and claim level, a readability pass for the target reader, and a tightening pass
+  (remove what does not serve the argument, make the line of the argument visible: which established technique enters where and why).
 
 ### Aspirational: the OpenAI construction in our system (the owner, 2026-11-21)
 
