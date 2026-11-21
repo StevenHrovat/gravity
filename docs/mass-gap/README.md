@@ -196,6 +196,22 @@ the thing to be proven is one of its axioms. The same pattern as MG2 (the stabil
 A number would follow from the reading only once "the radius" of a node is defined independently of its mass; until then m · λ = h/c holds
 for every particle by definition and tests nothing (finding MG6).
 
+**A first definition of the radius (2026-11-21, the owner asked for one; exploratory, not pre-registered).** DMP's own structures give
+no physical length: depth counts grant links ("never network hops"), windows and the depth bound are configuration. The one length rule
+in the owner's notes is "mass times the length it has to assert itself over" = h/c, used with a circumference for the electron
+(α·h/c = m_e·2πr_e, Balance §"What it costs to exist"). Pure Yang–Mills has one scale, the string tension σ, the existence cost per unit
+length of a stretched IM link. Taking a glueball as a closed IM loop of radius r:
+
+| rule | equations (ħ = c = 1) | glueball mass | lattice, SU(2) |
+|---|---|---|---|
+| the loop's cost is the node's existence, asserted over its circumference | m = 2πσr and m · 2πr = 2π | m = √(2π) √σ = **2.51 √σ** | **3.74 ± 0.12 √σ** (Teper, Table 1) |
+| the node settles where loop cost plus assertion cost is lowest | E(r) = 2πσr + 1/r, minimised | m = 2√(2π) √σ = **5.01 √σ** | |
+
+Neither rule matches; the measured value lies between them (the geometric mean, 3.54, is not a rule and is not claimed). What the
+reading does get right is the shape: a glueball's mass is a pure number of order a few times √σ, as in the closed-flux-tube models of
+physics (Isgur and Paton, 1985). Caveats: these rules were derived with the lattice value already known, so this is an exploratory
+check, not a pre-registered test; a fair test needs the rule fixed from DMP's text first and one number written down before comparing.
+
 ### 3.2 The photon test
 
 Four-dimensional U(1) lattice gauge theory, the lattice theory of light, has two phases. At strong coupling it confines and has a gap. At
