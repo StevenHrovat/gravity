@@ -22,6 +22,11 @@ def main():
         for _ in range(n_or):
             lat.overrelax()
     plaq, ops = [], []
+    def save(partial):
+        """Write everything measured so far (a checkpoint while partial is 1; a killed run keeps its data)."""
+        np.savez(out, beta=beta, L=L, T=T, seed=seed, n_therm=n_therm, n_or=n_or, every=every, plaq=np.array(plaq), ops=np.array(ops),
+                 seconds=time.time() - t0, partial=int(partial))
+
     for m in range(n_meas):
         for _ in range(every):
             lat.heatbath()
@@ -30,9 +35,10 @@ def main():
         plaq.append(lat.plaquette())
         ops.append(lat.photon_ops())
         if m % 100 == 0:
+            if m:
+                save(True)
             print(f"U(1) beta={beta} L={L} meas {m}/{n_meas} plaq={np.mean(plaq):.5f} t={time.time() - t0:.0f}s", flush=True)
-    np.savez(out, beta=beta, L=L, T=T, seed=seed, n_therm=n_therm, n_or=n_or, every=every, plaq=np.array(plaq), ops=np.array(ops),
-             seconds=time.time() - t0)
+    save(False)
     print(f"done {out} plaq={np.mean(plaq):.5f} in {time.time() - t0:.0f}s", flush=True)
 
 

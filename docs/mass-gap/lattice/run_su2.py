@@ -38,6 +38,11 @@ def main():
             lat.reunitarise()
     plaq, glue, tor = [], [], []
     smear_levels = (4, 12)  # APE steps with alpha = 0.5
+    def save(partial):
+        """Write everything measured so far (a checkpoint while partial is 1; a killed run keeps its data)."""
+        np.savez(out, beta=beta, L=L, T=T, seed=seed, n_therm=n_therm, n_or=n_or, every=every, smear_levels=np.array(smear_levels),
+                 plaq=np.array(plaq), glue=np.array(glue), tor=np.array(tor), seconds=time.time() - t0, partial=int(partial))
+
     for m in range(n_meas):
         for _ in range(every):
             lat.heatbath()
@@ -56,9 +61,10 @@ def main():
         glue.append(np.concatenate(g, axis=0))
         tor.append(np.array(tr))
         if m % 50 == 0:
+            if m:
+                save(True)
             print(f"beta={beta} L={L} meas {m}/{n_meas} plaq={np.mean(plaq):.5f} t={time.time() - t0:.0f}s", flush=True)
-    np.savez(out, beta=beta, L=L, T=T, seed=seed, n_therm=n_therm, n_or=n_or, every=every, smear_levels=np.array(smear_levels),
-             plaq=np.array(plaq), glue=np.array(glue), tor=np.array(tor), seconds=time.time() - t0)
+    save(False)
     print(f"done {out} plaq={np.mean(plaq):.5f} in {time.time() - t0:.0f}s", flush=True)
 
 

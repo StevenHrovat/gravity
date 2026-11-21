@@ -167,3 +167,12 @@ Rules: HANDOVER section 4 (claim level, the photon test, pre-registration, Gravi
 were true on 13 and 21 November 2026; re-check each one before relying on it. Keep progress in pull requests in gravity (update #37 or
 open follow-ups) so the work can be continued. If you have open questions, ask them in one block early; otherwise go ahead.
 ```
+
+## 7. Local session log
+
+- **2026-11-21, laptop session.** Lean set up in WSL (`check.sh`: OK 279 theorems). Thread C runs started on the laptop, one core each,
+  after a pre-registration ([`lattice/PREREG.md`](lattice/PREREG.md)); the run scripts now write a checkpoint every 50 (SU(2)) or 100
+  (U(1)) measurements, so a stopped run keeps its data. Thread A searched: no independent-kernel replay exists; findings and the plan in
+  [`replay.md`](replay.md), waiting for the owner's go-ahead. Thread B: humanise-yang-mills already proved in Lean that the public target
+  `JointExistence` is met by a generalized free field (their PRs #339, #359, #380); what is left for B is the committee's stronger
+  `combined_acceptance` (their issue #382 leaves "whether the stronger target admits a degenerate lattice family" undetermined).
