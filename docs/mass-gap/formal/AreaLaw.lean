@@ -7,3 +7,5 @@ import AreaLaw.ClusterRatio
 import AreaLaw.MinArea
 import AreaLaw.Assembly
 import AreaLaw.Concrete
+import AreaLaw.Clustering
+import AreaLaw.Reach
