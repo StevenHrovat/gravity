@@ -346,6 +346,23 @@ as effective masses from t = a to 2a with a variational basis of smeared operato
 0.70 ± 0.03 and 1.33 ± 0.09, on the curve of a massless particle (0.75 and 1.32). This is a 200-measurement smoke test; the production
 runs (two box sizes, both phases) are listed in `lattice/README.md` and `HANDOVER.md`.
 
+**Production runs (2026-11-21, pre-registered in [`lattice/PREREG.md`](lattice/PREREG.md), evaluated by
+[`lattice/photon_test.py`](lattice/photon_test.py)).** Energy E₁ of the lightest state at the smallest momentum 2π/L:
+
+| phase | box | E₁ | massless value | E₁ · L |
+|---|---|---|---|---|
+| Coulomb, β = 1.2 | 8³ × 16 | 0.751 ± 0.011 | 0.748 | 6.01 |
+| Coulomb, β = 1.2 | 12³ × 24 | 0.522 ± 0.005 | 0.512 | 6.26 |
+| Coulomb, β = 1.2 | 16³ × 32 | 0.390 ± 0.004 | 0.388 | 6.24 |
+| confined, β = 0.8 | 8³ × 16 | 0.86 ± 0.49 | 0.748 | |
+| confined, β = 0.8 | 12³ × 24 | 1.85 ± 0.68 | 0.512 | |
+
+In the Coulomb phase the energy falls like 2π/L (E₁ · L ≈ 2π = 6.28), and a fit E₁² = m² + E_free² gives m² = 0.0044 ± 0.0028,
+consistent with a massless photon. **Verdict by the pre-registered rule: tension, not pass**, because the 12³ box lies 2.03 errors
+above the massless value, just outside the 2-error limit; no fail (m is 1.6 errors from 0, the fail line was 3). In the confined phase
+the energy does not fall with the box (ratio 2.1, the rule asked for more than 0.85): pass, with large errors. Stored:
+`results/u1_*.npz`, `results/u1_summary.json`, `results/u1_photon_test.json`.
+
 ![The lattice photon's energy against momentum on the massless curve](figures/photon.png)
 
 Stored: `results/su2_b2.3_L10.npz`, `results/u1_b1.2_L8_smoke.npz` (raw measurements), `results/lattice_summary.json` (the analysis).
