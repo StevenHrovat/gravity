@@ -139,6 +139,20 @@ still preserving the way through the git history." Once the weak-coupling attemp
   weights), the exact statement in words and formulas, the proof route step by step, which hypotheses remain open, and where it lives
   (file and theorem name). Written for a reader who does not read Lean.
 
+### Aspirational: the OpenAI construction in our system (the owner, 2026-11-21)
+
+"Since the current proof is not understood, [...] reformalize OpenAI's proof in our system. That would put a nice bow on it." Scale: the
+construction is about 988k lines in 9,477 files (Lean 4.32; the committee's build took about 3 h on 8 cores, 52 GiB disk); `balaban-lean`, a
+similar short-distance RG for the simpler O(N) model, is 1.09M lines and unfinished. Staged plan:
+1. **Guided reading** (days): an architecture map in plain language (what each part constructs, the key theorems, where reflection
+   positivity, chessboard estimates and the Balaban-style RG map sit, how the subsequential limit is taken); feeds the paper's
+   explanation chapter.
+2. **Statement bridge** (similar): their main theorem restated in our vocabulary, and a proof that our lattice measure (`productHaar` with
+   the Wilson weight) is their lattice measure, so Corollary B's "survives every continuum limit" connects to their limit formally.
+3. Reformalise the parts our chain touches (reflection positivity, the subsequential limit): tens of thousands of lines.
+4. The full short-distance RG: months; aspirational.
+Stages 1-2 after the current legs; 3-4 only if the rest succeeds.
+
 ## 4. Rules that held, and should keep holding
 
 - **Claim level:** a theorem is what Lean's kernel checked, a number is what a script reproduces; neither is a proof of the mass gap.
