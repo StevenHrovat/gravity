@@ -48,3 +48,9 @@ Searched all issues and pull requests of the three trackers named in HANDOVER, d
 Resources: about 100 GB of disk (humanise's build plus Comparator copy was about that; the laptop has over 300 GB free); memory is the
 limit (WSL currently sees 19 GB of the laptop's 32 GB). Publishing: YM has no issue tracker, so the record would go to
 `hairer/humanise-yang-mills` under its claim protocol (a CLAIM comment, then a draft pull request), with the owner's approval first.
+
+## 4. Run log
+
+- 2026-11-21: WSL memory raised to 28 GB (swap 64 GB) with the owner's go-ahead; a separate distro `ym-replay` created for the replay
+  so the CI runners' distro stays untouched ([`replay-run/setup-distro.sh`](replay-run/setup-distro.sh)). Stage 1 started with
+  [`replay-run/stage1.sh`](replay-run/stage1.sh) (YM `b379615`, 10 Lean threads): `verify.py integrity` passed (exit 0).
