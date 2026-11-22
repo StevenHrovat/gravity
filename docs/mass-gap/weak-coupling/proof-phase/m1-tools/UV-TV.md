@@ -24,6 +24,8 @@
 
 > **Status (section 34 and final, section 32):** final fixes after the reviews of 30-32: one coupling for all sites; link-length truncation; units in `M`-cubes; van den Berg-Maes along links; the last kernel to the bare field; (B) built from three towers across a slab; NITs; the adaptation's domain class named. **Lemma UV-TV is complete at paper level**, given (c) and the named readings and adaptation (section 32).
 
+> **Status (sections 35-38):** the four sketch points and the four adaptations of M1-PLAN 0 are resolved (35, 36). After the reviews of 34-37: (B) is rewritten by the law of total covariance along the scales (38.1); "cap reached implies irregular `W`" is proved by a coarse shadow, with per-cluster growth (38.2); the levels are corrected (38.3); the last kernel is fixed (38.4); the Lean instantiation duties are stated (38.5). The final verdict for all of M1 is section 37.
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -1763,6 +1765,8 @@ All three: (c) goes through, with no step failing.
 
 ### 28.3 Instantiation for UV-TV (checks against sections 16 and 21-24)
 
+> **Sites and couplings per 38.5:** one per-site space `S` (bonds, plaquette labels and noise of a lattice site), blocks made of whole sites, and the block couplings built as measurable kernels from explicit densities.
+
 * **Sites:** scale-`j` bonds, with the configuration `(V_j, τ'_j, noise)`, in the block-axial gauge.
 * **Measures:** `μ_ω`, `μ'_{ω'}` given the patterns, coupled first by H1. Supports: the pattern supports.
 * **Blocks:**
@@ -2104,6 +2108,8 @@ For a set `A` of cubes:
 
 ## 32. Final status of Lemma UV-TV (updated after 33-34)
 
+> **Updated by 38:** (B) goes by total covariance along the scales (38.1), and the last kernel by 38.4. The slab construction (34.6) is withdrawn, so its adaptation is not needed. The Lean of 28 is done (38.3 (4)).
+
 **Lemma UV-TV, N-2's key step: complete at paper level.** REVIEW-2's long-standing N-2 GAP is withdrawn (thirteenth
 follow-up), and REVIEW-3 has no GAP (follow-up 12). The argument (sections 8-12, 16, 21-24, 26, 28-31, with the fixes of
 27, 33 and 34) is complete at paper level **given**:
@@ -2303,6 +2309,8 @@ Neither review has a FATAL or GAP finding. REVIEW-2 withdraws its N-2 GAP.
 
 ### 34.5 The last kernel: from the scale-0 state to the bare field
 
+> **Superseded by 38.4:** given the scale-0 state, the alternatives are not only ties (closed sets that the local decoder leaves), and they are weighted by the Z2 couplings, not uniformly. Their size is truncated, and the cap joins `a_{−1}`.
+
 * The tower ends at the scale-0 state `(V_0, τ'_0) = (Ad U, σ*(τ))`. The bare SU(2) field needs one more reverse kernel:
   `K_{−1}(dU | V_0, τ'_0)`.
 * **What it is.** Given `V_0`, write `U = s Û` with lift signs `s` (1.1). The Z2 layer `τ = (ds) τ̂` is determined by
@@ -2319,6 +2327,8 @@ Neither review has a FATAL or GAP finding. REVIEW-2 withdraws its N-2 GAP.
   more term in 30.3's sum. Gauge-invariant `F` sees only the gauge-invariant content.
 
 ### 34.6 Statement (B), built from towers
+
+> **Withdrawn (38.1).** Conditioning one copy on bare slab content reweights every scale's kernel by `P(Y_P = y | X_j)`, a frozen-region-type step (REVIEW-2 fourteenth follow-up GAP; REVIEW-3 follow-up 13). (B) now goes by the law of total covariance along the scale filtration.
 
 * **The reflection plane** is a time plane on the boundary of the scale-`ℓ` block grid, hence on block boundaries at
   every finer scale.
@@ -2370,6 +2380,8 @@ Neither review has a FATAL or GAP finding. REVIEW-2 withdraws its N-2 GAP.
 
 ### 34.8 The domain class of the Balaban-on-domains adaptation (29.6, 32)
 
+> **After 38.1:** the slab use went with 34.6, so the shells are shaped by a cluster only.
+
 * **Named precisely**, the adaptation is: Balaban's small-field machinery used on domains that are **shells**:
   * of width `≫ M` (so all his estimates, local at scale `M`, see the shape only through boundary layers);
   * thinner than one `M R_j`-cube;
@@ -2387,6 +2399,8 @@ Neither review has a FATAL or GAP finding. REVIEW-2 withdraws its N-2 GAP.
 ## 35. Group 1: the four sketch-level points
 
 ### 35.0 Result in plain words
+
+> **Point 1 was not closed as written here** (REVIEW-3 follow-up 13 GAP; REVIEW-2 fourteenth follow-up). Step 3's coarse square can meet other piercings of the deep set, and step 2 assumed a planar loop. Point 1 is closed in 38.2 by a coarse shadow and per-cluster growth. Points 2-4 stand.
 
 All four close; none is an obstruction.
 1. **"Cap reached implies irregular `W`"** (FILL 0.2): **paper**, via an exact coarse Stokes inequality, after one change
@@ -2407,6 +2421,8 @@ All four close; none is an obstruction.
    * The strengthened induction (c) and the one-box contraction (12.2) therefore cover every label.
 
 ### 35.1 Point 1: cap reached implies irregular `W`
+
+> **Steps 2-4 are replaced by 38.2.** Steps 1, 5 and 6 stand. The "Status: paper" below holds only with 38.2.
 
 **The test, restated** (replacing 2's `C_tw r0 |γ|²`): a hole `H` is twist-free if every loop `γ` in its outer layer
 `O(H)` with `|γ| ≤ λ := 8(ℓ_max + 2)` satisfies `|Hol(γ) − 1| ≤ C_tw r0 λ²`.
@@ -2522,6 +2538,8 @@ What remains outside proofs and citations is listed in the final verdict (37):
 
 ### 36.1 Adaptation 1: (P2), line by line against the source
 
+> **Item 2 and the level are replaced by 38.3 (2).** In [III] (2.39), `A'` is the complex deviation of size `α_1`. (P2) is a citation of (1.73)-(1.74) around every real regular base, plus a paper chaining step. "The range of `A'`" is not a reading any more.
+
 **What is used** (11.1). For a released labelled component `X` and real or complex configurations `V` in Balaban's
 analyticity domain around a regular base `U`:
 `Φ_ℓ(X; V) = Φ_ℓ(X; U)(1 + η)` with `|η| ≤ e^{sup|Δ|} − 1`.
@@ -2579,6 +2597,8 @@ paper.
 
 ### 36.3 Adaptation 3: the indexed, non-covariant local term
 
+> **Level per 38.3 (3):** paper (12.2) on a citation-level use of Balaban's local cluster expansion, with one extra small local insertion.
+
 * **Where Balaban uses covariance:** to identify the relevant parts extracted at each step (vacuum energy, coupling
   renormalisation) as constants, via [III] (2.29) and (2.32). The cluster expansion of the fluctuation integral is
   local term by term and uses no covariance ([I] Sects. 3-7; [III] Sect. 3).
@@ -2613,7 +2633,11 @@ paper.
   All now go through (c) and (P2), with no appeal to "Balaban's next step".
 * **Level: re-proof (c)**, checked three ways. The adaptation is superseded.
 
-## 37. Final verdict for the whole of M1
+## 37. Final verdict for the whole of M1 (rewritten after the reviews of 34-37; the fixes are in 38)
+
+**History.** The first version of this section said "complete, no item at sketch level". Both reviews found that
+premature, because of two GAPs: (B) via a slab (34.6), and 35.1 step 3. Both are closed in 38 (38.1, 38.2), and the
+levels they flagged are corrected there (38.3). This version is subject to the reviewers' check of 38.
 
 **Levels:**
 * **Lean:** machine-checked, standard axioms;
@@ -2621,6 +2645,7 @@ paper.
 * **re-proof:** a strengthened version of a Balaban argument, written line by line against the source and checked;
 * **citation:** Balaban or another source, used as stated;
 * **citation-level reading:** an interpretation of the source that the text supports but does not state;
+* **citation-level use:** a cited result used on one more term of the class it treats, not verbatim;
 * **adaptation:** Balaban's machinery used on objects outside his stated setting;
 * **sketch:** argued with gaps named;
 * **external:** an input from outside the series;
@@ -2631,48 +2656,413 @@ paper.
 | item | content | level |
 |---|---|---|
 | law preservation | the RG densities are the true laws at every scale (conditional step, any measurable blocking with noise) | **Lean** (`Exact.lean`, `Assembly.lean` `m1_laws`; `Interface/RandBlocking.lean`) |
-| blocking | SO(3) × Z2 split; local decoder; mod-2 Stokes; excision with twist-free envelopes; Balaban's average; random swallowed bonds | **paper** (`ROUTE-B.md` 1, `CLOSING.md`, `REVIEW3-RESPONSE.md` 1-2, 5, `FILL.md`, `UV-TV.md` 35.1, `SKETCH-STEPS.md` 1) |
-| S1, the one-step induction | `Form_k` with the order of constants; the step S0-S11 | **paper** on citations (`S1-INDUCTION.md`), with (c), and the sketch points closed (35) |
+| blocking | SO(3) × Z2 split; local decoder; mod-2 Stokes; excision with twist-free envelopes grown per cluster of the deep set; Balaban's average; random swallowed bonds | **paper** (`ROUTE-B.md` 1, `CLOSING.md`, `REVIEW3-RESPONSE.md` 1-2, 5, `FILL.md`, `SKETCH-STEPS.md` 1, `UV-TV.md` 38.2) |
+| S1, the one-step induction | `Form_k` with the order of constants; the step S0-S11 | **paper** on citations (`S1-INDUCTION.md`), with (c); sketch points closed (35, 38.2) |
 | R1 off-centre dilution | contraction of localised moderate cores | **paper + Lean steps** (`OFFCENTRE.md`, `OffCentre.lean`) |
 | R2 regular within the delay | attribution; footprint-weighted lifetime | **paper + Lean** (`R2-REPAIR.md`, `footprint_sum_le`); lifetime **citation** [V] (1.80)-(1.81) (35.2) |
-| R3 filling near the cut | twist-free envelopes; implicit-function filling; cap reached implies irregular `W` | **paper** (`FILL.md`, `REVIEW3-RESPONSE.md` 2, `UV-TV.md` 35.1) |
+| R3 filling near the cut | twist-free envelopes; implicit-function filling; cap reached implies irregular `W` | **paper** (`FILL.md`, `REVIEW3-RESPONSE.md` 2, `UV-TV.md` 38.2) |
 | R4 fibre mass (E7.J) | ordinary and swallowed coarse bonds | **paper** (+ **Lean** slicing, `FibreMass.lean`) |
 | R5 action lower bound | [16] (69)-(71) | **citation** (read) |
 | R12 [16] (71) in 4D | from [12] (48)-(53) | **paper** (`CLOSE-OUT.md` 1) |
 | R6 decoder locality | per component of the flip cubes | **paper** (`REVIEW3-RESPONSE.md` 5) |
 | R7′ per-flip normalisation | `Z_{−P}/Z ≤ (C β^{3/2})^{|P|}` | **citation**, exponent by a rank count (paper) |
 | R8 released terms | no linear coupling; dimension 4; summable | **paper** (`CLOSE-OUT.md` 2) |
-| R9 SO(3) carry-over | Balaban for the adjoint field, small-field rule per scale | **citation** with the change table (`CLOSE-OUT.md` 5) |
-| labels | `a_ℓ e^{L_ℓ}`; persistence of the parent; one-box contraction; positive pattern gas | **paper** (`REVIEW3-RESPONSE.md` 11-12, `UV-TV.md` 31, 35.3-35.4, 36.2-36.3) on citations; one **citation-level reading** (36.1, the range of `A'`) |
+| R9 SO(3) carry-over | Balaban for the adjoint field with a closed Z2 layer, the per-scale small-field rule, label factors in `Form_k` | **citation-level adaptation** (`CLOSE-OUT.md` 5, `UV-TV.md` 38.3 (1)); the scale-0 to scale-1 transition **paper** (`REVIEW3-RESPONSE.md` 1.2) |
+| labels | `a_ℓ e^{L_ℓ}`; persistence of the parent; one-box contraction; positive pattern gas | **paper** (`REVIEW3-RESPONSE.md` 11-12, `UV-TV.md` 31, 35.3-35.4, 36.2) on citations |
+| (P2), stability of `Φ_ℓ` | relative stability under real and complex deviations | **citation** ([V] (1.73)-(1.74), `F = 1_ℓ`, around every real regular base) **+ paper** chaining through `α_1`-balls (38.3 (2)) |
+| the label term in the fluctuation integral | Balaban's local cluster expansion with one extra small local insertion `e^{L_ℓ}` | **paper** (12.2) on a **citation-level use** (38.3 (3)) |
 | the count | closed remainders through the 1-skeleton, `L^{(1 − 16 b(1−δ)) k}` | **paper** (`CLOSING.md` 2) with the rate **external** ([I] (0.31)) |
 | (c), the strengthened induction | [V] (1.80)-(1.97) with a slack `e^{−c p0²}` per birth-scale cube; conditions (P0), (P2) | **re-proof**, checked three ways (independent reader, REVIEW-2, REVIEW-3) |
 | R10 hand-over, `L¹` form | positive partition, `A`-clusters, normalisation via (c) | **paper** on citations, with (c) (36.4) |
-| N-2, Lemma UV-TV | OS-norm density of the block observables | **paper** (`UV-TV.md` 32), given (c), the readings and the adaptation below |
-| Theorem A_good, coupling form | the generic contraction on couplings | **paper** (`UV-TV.md` 28, 34.1); **Lean** in progress with a separate worker (`OneBox/CouplingDS.lean`) |
+| N-2, Lemma UV-TV | OS-norm density: (A) by the tower (30), (B) by total covariance along the scales (38.1) | **paper** (`UV-TV.md` 32, 38.1), given (c), the readings and the shell adaptation |
+| Theorem A_good, coupling form | the generic contraction on couplings | **Lean** (`OneBox/CouplingDS.lean`, 37 theorems, standard axioms); its instantiation **paper** (28.3, 38.5) |
 | Lemma C, H3 | composite boxes; collar coupling | **paper** with constant-size inputs (`UV-TV.md` 29, 33.6-33.7) |
+| the last kernel | bare field from the scale-0 state; Boltzmann-weighted alternatives, truncated | **paper** (38.4) |
 | `κ` large for fixed `L` | at the cost of larger `M` and smaller coupling bound `γ` | **citation** ([I] Theorem 3; [III] p. 260) |
 | (a), what `E_k(Z)` is | normalisation and vacuum constants of the small-field alternative | **citation-level reading** (`EK-DERIVATION.md`) |
 | admissibility | deleting whole history components keeps admissibility | **citation-level reading** (poor scan of [III] (2.3)-(2.9)) |
-| the range of `A'` | Balaban's first-order expansion covers real deviations | **citation-level reading** (36.1) |
-| Balaban on shells | his small-field machinery on shells of width `≫ M`, thinner than an `M R_j`-cube, shaped by a cluster or a slab, with data on both sides, constants uniform in the shape | **adaptation** (29.6, 33.7, 34.8) |
+| Balaban on shells | his small-field machinery on shells of width `≫ M`, thinner than an `M R_j`-cube, shaped by a cluster, with data on both sides, constants uniform in the shape | **adaptation** (29.6, 33.7, 34.8) |
 | [I] Theorem 2 | the running coupling with its rate (0.31) | **external** (unpublished) |
 | P4 | the crossover `L_* → L₁` | **separate** (not M1's; open) |
 | the interface | block state `(SO(3), closed Z2)`; `MassGapLoc` via the limit, statement unchanged | **separate** (outside M1's folders) |
 
-**No item is at sketch level.** The four sketch points of M1-PLAN 0 are closed (35). The four unchecked adaptations are
-now citations, a proof, or superseded by (c) (36).
+**No item is at sketch level:**
+* the four sketch points of M1-PLAN 0 are closed (35, with point 1 by 38.2);
+* the four unchecked adaptations are citations, a proof, or superseded by (c) (36, with the levels of 38.3);
+* the two GAPs of the reviews of 34-37 are closed (38.1, 38.2).
 
 ### 37.2 What M1's argument rests on, in one list
 
-1. **Lean:** exactness (law preservation) and the assembly bookkeeping, plus the Lean steps of R1, R2 and R4: 57
-   theorems in 12 modules, standard axioms. The coupling-form theorem is in progress separately.
+1. **Lean:**
+   * exactness (law preservation), the assembly bookkeeping, and the Lean steps of R1, R2 and R4: 57 theorems in 12
+     modules;
+   * the coupling-form theorem: 37 theorems in `OneBox/CouplingDS.lean`.
+   
+   All on standard axioms only.
 2. **One re-proof:** (c), the strengthened induction of [V] (1.80)-(1.97).
-3. **Citations:** Balaban [I]-[V], [12]-[16] as listed per item, the SO(3) carry-over (R9), and `κ` large.
-4. **Three citation-level readings:** (a), what `E_k(Z)` is; admissibility; the range of `A'`.
-5. **One adaptation:** Balaban's small-field machinery on shells with Dirichlet data on both sides.
+3. **Citations:** Balaban [I]-[V] and [12]-[16] as listed per item, including (P2)'s (1.73)-(1.74), and `κ` large.
+4. **Two citation-level readings and one citation-level use:**
+   * readings: (a), what `E_k(Z)` is; admissibility;
+   * use: Balaban's local cluster expansion with one extra small local insertion (the label term).
+5. **Two adaptations:**
+   * Balaban's small-field machinery on cluster-shaped shells with Dirichlet data on both sides;
+   * the SO(3) carry-over (R9): his series for the adjoint field with a closed Z2 layer, the per-scale small-field rule
+     and label factors.
 6. **External:** [I] Theorem 2 with its rate (0.31).
 7. **Separate:** P4 and the interface.
 
-**Verdict.** M1 has a complete argument: every row is proved at paper level, in Lean, or by citation, given the list
-above. The points that are not plain citations are the re-proof (c), the three readings and the one adaptation, each
-named with where it is used. P4 and [I] Theorem 2 are outside M1.
+**Verdict.** M1 has a complete argument: every row is proved in Lean, at paper level, or by citation, given the list
+above.
+* The points that are not plain citations are named, each with where it is used: the re-proof (c), the two readings,
+  the one citation-level use, and the two adaptations.
+* P4 and [I] Theorem 2 are outside M1.
+* This verdict waits on the reviewers' check of 38.
+
+## 38. Fixes after the reviews of 34-37 (REVIEW-2 fourteenth follow-up with extension, REVIEW-3 follow-up 13 with extension)
+
+Neither review has a FATAL finding. Both found that 37's "complete, no item at sketch level" was premature, for two
+GAPs: (B) as built in 34.6, and 35.1 step 3. Both are closed here, and the levels they flagged are corrected.
+
+### 38.0 Result in plain words
+
+1. **(B) is rewritten by the law of total covariance along the scale filtration (38.1).** Each term is a covariance
+   under a single kernel `K_j`. Its two functions are local up to a small `L¹` error by (A) at scale `j`. Conditioning
+   `K_j` on its own scale-`j` variables near `A` (33.3's argument, used at one scale only) decorrelates them. Nothing
+   is conditioned on bare content, and the slab construction of 34.6 is withdrawn. So is the "slab-conditioned
+   half-space" adaptation it would have needed.
+2. **"Cap reached implies irregular `W`" is proved for any failing loop (38.2).** Two changes:
+   * holes grow per cluster of the deep set at a fixed range `D = 2ℓ_max + 2`, so at the cap the failing loop is at
+     distance `≥ ℓ_max + 1` from **all** deep plaquettes, its own cluster's included;
+   * the coarse loop is the **coarse shadow** of the failing loop, joined to it by a ribbon of width `O(L)`, in place
+     of 35.1's translation and coarse square.
+   
+   Coarse Stokes is an exact inequality for `W`, whatever `W` does inside the coarse disc. So curved sheets, multiple
+   piercings and non-planar loops need no separate treatment. The twist-free test is unchanged, and so is the
+   filling's data bound.
+3. **Levels corrected (38.3):**
+   * R9 is a citation-level adaptation, with the scale-0 to scale-1 transition on paper;
+   * (P2) is a citation plus a paper chaining step, so "the range of `A'`" is dropped from the readings;
+   * the label term uses Balaban's cluster expansion with one extra small local insertion, a citation-level use;
+   * the coupling theorem is Lean, and its instantiation is paper;
+   * `2 m_k 100^d δ_k ≤ ε_*` is added to the `γ0` row, after `M`.
+4. **The last kernel (38.4)** has real alternatives, Boltzmann-weighted by the Z2 couplings. Their size is truncated,
+   and the cap joins the front.
+5. **The Lean instantiation's duties are stated and discharged on paper (38.5):** one per-site space, blocks made of
+   whole sites, and measurable block couplings.
+
+### 38.1 Statement (B) by the law of total covariance along the scales (replaces 34.6)
+
+**Objects.**
+* **Scales.** `X_{−1} := U`, the bare field. For `j = 0, ..., ℓ`, `X_j` is the scale-`j` state `(V_j, τ'_j, noise)`. The
+  blocking chain is Markov in the scale. Its reverse kernels are `K_j(dX_j | X_{j+1})` for `j = −1, ..., ℓ − 1`, with
+  `K_{−1}` the last kernel (38.4).
+* **Filtration.** `G_j := σ(X_j, X_{j+1}, ..., X_ℓ)`, decreasing in `j`. `G_{−1}` is everything, and `G_ℓ = σ(X_ℓ) = 𝓕_ℓ`.
+* **Observables.** `f` is bounded, measurable and gauge invariant near `A` (positive time `≥ t`), and `g` the same near
+  `θA`, with `|f|, |g| ≤ 1`.
+  * For (B) of `REVIEW3-RESPONSE.md` 13.4, take `f = F/‖F‖` and `g = θF̄/‖F‖`.
+  * `E[F | 𝓗]` is `𝓕_ℓ`-measurable, so `Cov(θR̄, R | 𝓕_ℓ) = Cov(θF̄, F | 𝓕_ℓ)`.
+  * (B) asks for `E|Cov(f, g | 𝓕_ℓ)| → 0`.
+* `h_j^f := E[f | G_j] = E[f | X_j]`. The second equality is the Markov property in the scale: given `X_j`, the finer
+  scales are independent of the coarser ones. `h_{−1}^f = f`. The same for `g`.
+
+**The identity (exact).**
+`Cov(f, g | G_ℓ) = Σ_{j=−1}^{ℓ−1} E[ Cov(h_j^f, h_j^g | G_{j+1}) | G_ℓ ]`.
+
+*Proof.* By the tower property `E[h_j^f | G_{j+1}] = h_{j+1}^f`, so
+`E[h_j^f h_j^g | G_{j+1}] − h_{j+1}^f h_{j+1}^g = Cov(h_j^f, h_j^g | G_{j+1})`. Take `E[· | G_ℓ]` and sum over `j`. The sum
+telescopes to `E[fg | G_ℓ] − h_ℓ^f h_ℓ^g`. ∎
+
+**Each term is a covariance under one kernel.** `h_j^f` and `h_j^g` are functions of `X_j`. By the Markov property,
+`Cov(h_j^f, h_j^g | G_{j+1}) = Cov_{K_j(·|X_{j+1})}(h_j^f, h_j^g)`.
+
+**Step 1: localisation by (A) at top scale `j`.**
+* Let `A_j` and `(θA)_j` be the scale-`j` sites within physical distance `t/2` of `A` and of `θA`. They are at physical
+  distance `≥ t`.
+* Put `φ_j := E[f | X_j on A_j]` and `ψ_j := E[g | X_j on (θA)_j]`.
+* **(A) with top scale `j`.** Use the tower of 30 from scale `j` down, with the comparison state of 8 (`X_j` kept on
+  `A_j`, the rest resampled from the law given it). This gives
+  `E|h_j^f − φ_j| ≤ 2 P(differ on supp f) ≤ C polylog(t/(L^j a)) (t/(L^j a))^{−d C_2}`,
+  where `L^j a` is the physical block size at scale `j`, and the same for `g`.
+  * Every input of 30 is per scale and under the law, so moving the top scale from `ℓ` to `j` changes nothing.
+  * The front condition of 30.3 is easier: `Δ_j` grows like `L^{ℓ−j}`, while `A_j` grows only polylogarithmically.
+* Since all four functions are bounded by 1,
+  `|Cov_{K_j}(h_j^f, h_j^g) − Cov_{K_j}(φ_j, ψ_j)| ≤ 2 E_{K_j}|h_j^f − φ_j| + 2 E_{K_j}|h_j^g − ψ_j|`.
+  Its expectation over `X_{j+1}` is bounded by step 1.
+
+**Step 2: decorrelation under one kernel.** This is 33.3's argument, applied at scale `j` only, where it is correct
+(REVIEW-2, fourteenth follow-up, 1).
+* Write `Y := X_j` under `K_j(·|X_{j+1})`. Then `Cov(φ_j, ψ_j) = E[φ_j(Y_{A_j})(E[ψ_j | Y_{A_j}] − E[ψ_j])]`, so
+  `|Cov| ≤ E_{y, y'}|E[ψ_j | Y_{A_j} = y] − E[ψ_j | Y_{A_j} = y']|`, with `y`, `y'` independent samples of `Y_{A_j}`.
+  They lie in the support almost surely.
+* **For fixed in-support `y`, `y'`.** The two measures `K_j(· | X_{j+1}, Y_{A_j} = y)` and the same with `y'` are
+  regular conditional laws of the scale-`j` kernel **on its own variables**. Away from `A_j`, both have the block
+  specifications of `K_j(·|X_{j+1})` (DLR). So:
+  * no reweighting by content of another scale appears;
+  * blocks at distance `> r_int` from `A_j` are good or composite as in 28.3, with (I) for in-support boundaries (33.4);
+  * blocks meeting the `r_int`-neighbourhood of `A_j` are source blocks;
+  * for the patterns, `N_{D_c}(A_j)` joins the source set of H1's coupling (31.5).
+* **One-scale front** (30.2, with `Λ''_j` the ball of radius `t/(2 L^j a)` around `(θA)_j`):
+  * on the complement of the scale-`j` truncation events (a case split first, 33.1), the disagreement stays within
+    `a_j` of the sources;
+  * `a_j` is polylog, while `dist(A_j, (θA)_j) ≥ t/(L^j a)`, so it does not reach `(θA)_j`.
+  
+  Hence `|E[ψ_j | y] − E[ψ_j | y']| ≤ 2 P(E_j | y, y')`.
+* **Averaging.** `y` and `y'` are samples of the law, so `E_{X_{j+1}} E_{y,y'} P(E_j | y, y') ≤ 2 P(E_j)`. That is the
+  annealed bound `C (t/(L^j a))^{−d C_2}`. No supremum over content is taken.
+
+**Step 3: the bare term `j = −1`.**
+* There `h_{−1}^f = f` and `h_{−1}^g = g`, and the covariance is under `K_{−1}(·|X_0)`.
+* By 38.4, off the event `T_{−1}` the truncated kernel `K̃_{−1}` is a product over decoder clusters of diameter
+  `≤ a_{−1}`. `f` and `g` are `2t` apart, so they are independent under `K̃_{−1}`.
+* With `‖K_{−1} − K̃_{−1}‖_TV ≤ P(T_{−1} | X_0)`: `E|Cov_{K_{−1}}(f, g)| ≤ 4 P(T_{−1}) ≤ C (t/a)^{−d C_2}`.
+
+**Sum.**
+`E|Cov(f, g | 𝓕_ℓ)| ≤ Σ_{j=−1}^{ℓ−1} C polylog(t/(L^j a)) (t/(L^j a))^{−d C_2} ≤ C' polylog(t/ℓ) (t/ℓ)^{−d C_2}`.
+* The sum is geometric from the top: `t/(L^j a) = (t/ℓ) L^{ℓ−j}`, with `ℓ = L^ℓ a`.
+* It is uniform in the spacing and the volume.
+* So `E[Cov(θR̄, R | 𝓕_ℓ)] ≤ ‖F‖² C' polylog(t/ℓ)(t/ℓ)^{−d C_2} → 0`. That is (B).
+
+**What (B) no longer uses:**
+* the slab, the mixed tower, and conditional independence of half-spaces;
+* any conditioning on bare or fine content across scales.
+
+The only conditionings are:
+* on the filtration `G_j`, generated by the system's own variables;
+* of one kernel on its own scale-`j` variables near `A`.
+
+This follows the owner's rule: condition only on σ-algebras generated by the system's own variables, never on
+externally chosen fine content. 34.6 is withdrawn, together with REVIEW-3's NIT on its conditional independence and
+REVIEW-2's "smaller point" about coarse bonds crossing the plane.
+
+### 38.2 Cap reached implies irregular `W`, for any failing loop (replaces 35.1, steps 2-4)
+
+**Change 1: holes grow per cluster of the deep set** (replaces "components that touch are merged", `FILL.md` 2,
+`REVIEW3-RESPONSE.md` 2).
+* `H_0` = bonds of plaquettes at angle `≥ r0`. Its **clusters** are the components of `H_0` under the relation
+  `dist ≤ D := 2ℓ_max + 2`.
+* Each cluster `C` grows its own hole `H_C^{(i)} := N_i(C)`, the bonds within distance `i` of `C`, for `i = 1, 2, ...`.
+  Growth stops at the first `i` where the twist-free test passes on `O(H_C^{(i)})`, or at `i = ℓ_max` (the cap).
+* **(a)** Holes of different clusters never touch, since `dist(H_C, H_{C'}) ≥ D − 2ℓ_max = 2`. So no merging during
+  growth is needed.
+* **(b)** At the cap, `O(H_C)` lies at distance exactly `ℓ_max + 1` from `C`. It lies at distance
+  `≥ D − ℓ_max − 1 = ℓ_max + 1` from every other cluster. So `dist(O(H_C), H_0) ≥ ℓ_max + 1`.
+* **Unchanged:**
+  * the twist-free test (every loop of length `≤ λ` in `O(H)`, threshold `C_tw r0 λ²`), so the filling's data bound
+    (22, 27.8, 33.6) is unchanged;
+  * determinism and measurability;
+  * localised cores finish: the argument is per spanning set, and `H_C` contains every core's spanning set after
+    `ρ + 1 ≤ ℓ_max` layers.
+* **What changes:** a localised core within `D` of an extended structure joins its cluster and loses its excision.
+  That costs nothing, because that cluster lies in an irregular-`W` fibre (the claim below), where the region is
+  carried and no excision is needed (`FILL.md` 0.2). Each deep plaquette is a large field at scale `k` (`r0 ≫ ε_k`),
+  so connecting at range `D` adds a fixed entropy factor `(C D)^d` per deep plaquette, against `e^{−c p²}`.
+
+**Claim.** If a cluster `C` reaches the cap, the coarse field `W` (Balaban's average at scale `k + 1`) is irregular at
+a coarse plaquette within distance `C λ` of `C`.
+
+**Proof.**
+1. **A failing loop, of any shape.** There is a closed loop `γ = (x_0, ..., x_n = x_0) ⊂ O(H_C)` with `n ≤ λ` and
+   `θ := |Hol(γ) − 1| > C_tw r0 λ²`. Nothing about its shape is assumed. Let:
+   * `C_av L` be the radius of the neighbourhood that Balaban's average of one coarse bond uses;
+   * `C_3 := 2d + C_av + 2`;
+   * `R := N_{C_3 L}(γ)`.
+   
+   By (b) and `ℓ_max = C_1 L ≥ C_3 L`, `R ∩ H_0 = ∅`: every plaquette in `R` has angle `< r0`.
+2. **Stokes, exact inequality.** For a closed fine loop `η` that bounds a lattice disc `S`,
+   `|Hol(η) − 1| ≤ Σ_{p ∈ S} |U(∂p) − 1|`. The proof is the one of 35.1 step 5: write `Hol(η)` as an ordered product of
+   conjugated plaquette holonomies (lassos) and use unitary invariance. The same holds on the coarse lattice for `W`.
+3. **The coarse shadow `Γ'`.** Let the coarse sites be `L Z^d`.
+   * Set `c_0 :=` the coarse site nearest to `x_0`.
+   * Then `c_{i+1} := c_i` if `|x_{i+1} − c_i|_∞ ≤ 3L/4`; otherwise `c_{i+1} :=` the coarse site nearest to `x_{i+1}`.
+   
+   Then:
+   * `|x_i − c_i|_∞ ≤ 3L/4 + 1`;
+   * consecutive distinct `c`'s differ by at most 1 in each coordinate;
+   * after a change `|x − c|_∞ ≤ L/2`, so changes are at least `L/4 − 1` steps apart, and their number is
+     `m ≤ 8n/L + 1` for `L ≥ 8`.
+   
+   Join each change, and the closing step from `c_n` to `c_0`, by at most `d` coarse bonds. This gives a closed coarse
+   loop `Γ'` of coarse length `N ≤ d(m + 2) ≤ C_5 λ/L`.
+4. **The ribbon: `γ` against the fine image of `Γ'`.**
+   * Let `γ̃` be the fine loop that replaces each coarse bond of `Γ'` by the straight fine path of length `L`. Let `π_i`
+     be the axial fine path from `x_i` to `c_i` (coordinates in a fixed order, length `≤ d(3L/4 + 1)`).
+   * The loop `∂Q_i` runs:
+     * from `x_i` to `x_{i+1}`;
+     * along `π_{i+1}`;
+     * back along `γ̃` from `c_{i+1}` to `c_i` (empty if they are equal, at most `d` straight segments otherwise);
+     * along `π_i^{−1}`.
+     
+     It has length `≤ C L` and lies in `R`. It bounds a lattice disc of area `≤ C L` if `c_i = c_{i+1}` (two axial paths
+     from neighbouring endpoints to one point differ by a ladder of width 1), and of area `≤ C L²` otherwise.
+   * Inserting `π_i π_i^{−1}` between the steps gives the exact identity
+     `Hol_{x_0}(γ) = π_0 Hol_{c_0}(γ̃) π_0^{−1} · Π_i (conjugates of Hol(∂Q_i))`.
+   * So, by step 2:
+     `|Hol(γ) − π_0 Hol(γ̃) π_0^{−1}| ≤ Σ_i |Hol(∂Q_i) − 1| ≤ r0 (n C L + (m + 1) C L²) ≤ C_6 r0 λ L`.
+5. **Balaban's average along `Γ'`.**
+   * For each coarse bond `b' = (c, c')` of `Γ'`, its averaging neighbourhood (side `≤ C_av L`) lies in `R`.
+   * In the complete axial gauge rooted at `c` on that neighbourhood:
+     * every fine bond is within `C r0 L²` of `1` (its value is the holonomy of a lasso of length `≤ C L` and area
+       `≤ C L²`, by step 2);
+     * the straight fine path from `c` to `c'` is `1`;
+     * each path product in the average is within `C r0 L²` of `1`.
+   * The average and its projection are smooth near `1`, with value `1` at the identity configuration ([I] (0.3)-(0.4)).
+     So `|W(b') − 1| ≤ C r0 L²` in this gauge.
+   * By gauge covariance and unitary invariance, `|W(b') − U(c → c')| ≤ C r0 L²` in every gauge, where `U(c → c')` is the
+     straight fine path.
+   * Over the `N` coarse bonds: `|Hol_W(Γ') − Hol(γ̃)| ≤ N C r0 L² ≤ C_7 r0 λ L`.
+6. **The coarse holonomy is twisted.** `|Hol_W(Γ') − 1| ≥ θ − (C_6 + C_7) r0 λ L ≥ θ/2`.
+   * This needs `(C_6 + C_7) L ≤ C_tw λ/2`.
+   * Since `λ = 8(ℓ_max + 2) ≥ 8L`, `C_tw ≥ (C_6 + C_7)/4` suffices. It is a constant, independent of `L` and `C_1`.
+7. **Coarse Stokes.**
+   * `Γ'` has length `N ≤ C_5 λ/L`. It is contractible (`N` is far below the size of the coarse torus) and bounds a
+     coarse lattice disc `S'` of `≤ C_d N²` coarse plaquettes (axial lasso construction), within coarse distance `N`
+     of `Γ'`.
+   * By step 2 on the coarse lattice, `θ/2 ≤ |Hol_W(Γ') − 1| ≤ Σ_{p' ∈ S'} |W(∂p') − 1|`.
+   * So some `p'` has `|W(∂p') − 1| ≥ θ/(2 C_d N²) ≥ C_tw r0 L²/(2 C_d C_5²) = C_tw c/(2 C_d C_5² L²)`.
+8. **Irregular.**
+   * The bound of step 7 is a fixed constant at fixed `L`, while `ε_{k+1} → 0`. So `p'` is irregular once
+     `ε_{k+1} < C_tw c/(2 C_d C_5² L²)`. That is a condition on `γ0(L)` (row 8).
+   * `p'` is within fine distance `C N L ≤ C λ` of `γ`. ∎
+
+**Why this closes the reviewers' objections.**
+* **No translation, no coarse square, no planar loop.** The deformation from `γ` to the coarse loop stays in a ribbon of
+  width `O(L)` around `γ` itself, and by (b) that ribbon avoids all deep plaquettes, its own cluster's included.
+* **Curved sheets, multiple piercings and cancelling fluxes** inside the coarse disc `S'` do not matter. Step 7 is an
+  inequality for `W`, valid whatever `W` is inside `S'`. Only the ribbon must avoid `H_0`.
+* **Balaban's averaging neighbourhoods** along `Γ'` lie in `R` (step 5).
+* Neither REVIEW-2's merge at `4λ` nor REVIEW-3's rectangle-only test is needed. The cluster range `D` plays the role of
+  the merge range. The twist-free test, and with it the filling, is unchanged.
+
+**Constants** (row 3): `C_1 ≥ C_3` and `C_tw ≥ max(8 max(C, 1), (C_6 + C_7)/4)`. Both come before `c` in `r0`.
+
+**Status: paper.** Point 1 of 35 is closed. With it, R3 is paper, and so is S1's use of E7.J at regular `W`.
+
+### 38.3 Levels corrected
+
+1. **R9, the SO(3) carry-over: citation-level adaptation**, plus a paper step.
+   * Balaban's series is written for a compact group `G`, so the change of group is within his setting.
+   * Three things are not in his setting:
+     * the per-scale small-field rule (SU(2)-regular at scale 0, SO(3)-regular above);
+     * the label factors in `Form_k`;
+     * the closed Z2 layer next to the adjoint field.
+   * The scale-0 to scale-1 transition is paper (`REVIEW3-RESPONSE.md` 1.2).
+   * Listed in 37.2 next to the shell adaptation.
+2. **(P2): citation + paper chaining** (replaces 36.1 item 2 and its level).
+   * **The correction.** In [III] (2.39), `U = U' U''` with `U'' = exp(iA')`. `A'` is the **complex**, `g^c`-valued
+     deviation of size `≤ α_1`, not a real deviation of size `α_0`. So "first order in `A'`, `J`" on [V] p. 379 is first
+     order in the complex deviation and in `J`.
+   * **Citation.** [V] (1.73)-(1.74) with `F = 1_ℓ ≥ 0` hold around **every** real regular base `U'` (plaquettes
+     `≤ α_{0,k}`; small-field configurations are such bases, since `q0 ≥ p0`), for complex deviations
+     `|A'|, |∇A'| ≤ α_{1,k}`, real directions included:
+     `|T^ℓ(U'U'', J) 1 − T^ℓ(U', 0) 1| ≤ (e^{sup|Δ|} − 1) T^ℓ(U', 0) 1`.
+   * **Paper (chaining).** Compare a small-field `V` with the flat configuration on a patch (inside a `100 M R_k`-cube,
+     35.3).
+     * In the patch's axial gauge, `V = exp(iA)` with `|A| ≤ C M R_k ε_k`. The configurations `V_s := exp(i sA)`,
+       `s ∈ [0, 1]`, are real and regular.
+     * Step from base to base in increments of size `≤ α_{1,k}`. That takes `m_k := C M R_k ε_k/α_{1,k} + 1` steps, a
+       polylog in `g_k^{−2}`.
+     * Each step multiplies `Φ_ℓ` by `1 + η_i` with `|η_i| ≤ e^{100^d δ_k} − 1`.
+     * So `Φ_ℓ(V) = Φ_ℓ(flat)(1 + η)` with `|η| ≤ e^{2 m_k 100^d δ_k} − 1 → 0`, since `δ_k` carries a factor `g_k`.
+     * A complex configuration in the domain takes one more step from its real base.
+   * **Consequences:**
+     * `|L_ℓ| ≤ 2 m_k 100^d δ_k` replaces `2 δ_X`;
+     * the condition `2 m_k 100^d δ_k ≤ ε_*` (which implies `100^d δ_k ≤ ε_*`, REVIEW-3) joins the `γ0` row, after `M`;
+     * "the range of `A'`" is dropped from the readings.
+3. **The label term (36.3): paper (12.2) on a citation-level use** of Balaban's local cluster expansion.
+   * The fluctuation integral `<e^{L^{(k)}}>_B` runs with the other E-terms. Clusters that join the label to them go
+     into `L^{(k+1)}`. Clusters that avoid it are Balaban's covariant ones.
+   * So his expansion is used with one extra small (`|L_ℓ| ≤ 2ε_*`), analytic, local insertion. That is within his class
+     of local analytic terms, but not a verbatim citation.
+4. **Theorem A_good, coupling form: Lean.**
+   * `formal/ProofPhase/OneBox/CouplingDS.lean`, by the separate worker: 37 theorems, each on
+     `[propext, Classical.choice, Quot.sound]` only, with no `sorry`, `native_decide` or axiom declarations
+     (`m1-cds/axioms.log`).
+   * The one-coupling corollary is `exists_iter_forall_le`.
+   * The instantiation (28.3 with 38.5) is paper.
+5. **Row 8 (`γ0`)** gains, after `M`:
+   * `2 m_k 100^d δ_k ≤ ε_*` (labels small at release);
+   * `ε_{k+1} < C_tw c/(2 C_d C_5² L²)` (38.2).
+
+### 38.4 The last kernel (replaces 34.5's "deterministic except at ties")
+
+* **The conditional law.** Given `X_0 = (V_0, τ'_0)`, `V_0 = Ad U` fixes `U` up to lift signs, and `τ = (ds) τ̂` with
+  `τ̂` fixed by `V_0`.
+  * The conditional law of `τ` given `V_0` is the Z2 gauge theory with couplings `J_p(V_0) = (β/2)|tr U_p|` (1.1),
+    weight `exp(Σ_p J_p τ_p)`.
+  * `K_{−1}` is this law restricted to `σ*^{−1}(τ'_0)`.
+* **The preimage** (REVIEW-3, follow-up 13). The local decoder (H2, `REVIEW3-RESPONSE.md` 5) acts per flip-cube
+  component, with range `r_dec`. Given `τ'_0`, the preimage consists of:
+  * the decoder's fillings, ties included;
+  * closed sets `Q` meeting the flips that the decoder leaves (positive-gain sets leaving `D_0`, the fidelity loss).
+  
+  All alternatives are weighted by `exp(Σ J_p τ_p)`, not uniformly.
+* **Truncation.** Alternatives meet the flips and are Peierls-priced, as in the decoder's fidelity bound (row 7).
+  * Let `T_{−1}` be the event that some alternative meeting `Λ''_{−1}` has diameter `> s_{−1} := C log|Λ''_{−1}|`. Then
+    `P(T_{−1}) ≤ |Λ''_{−1}|^{−C_2}`.
+  * `K̃_{−1}` is `K_{−1}` with alternatives restricted to diameter `≤ s_{−1}`, renormalised. Then
+    `‖K_{−1} − K̃_{−1}‖_TV ≤ P(T_{−1} | X_0)`.
+* **Factorisation.** Join decoder components that lie within `2 s_{−1} + 2 r_dec` of each other into **decoder clusters**.
+  * Under `K̃_{−1}`, alternatives of different clusters have disjoint supports, beyond each other's decoder range.
+  * So the preimage is a product over clusters, the weight factorises, and `K̃_{−1}` is a product over clusters.
+  * Each factor is a function of `X_0` within `s_{−1} + r_dec` of its cluster.
+* **Coupling and front.**
+  * Clusters that are the same in both copies, with the same `X_0` data within their reach, are coupled identically.
+    The others take the product coupling.
+  * On `T_{−1}^c`, and off the decoder-component cap on `F_0^c`, `D_{−1} ⊂ N_{a_{−1}}(D_0)` with
+    `a_{−1} := N_0 M R_0 + 2 s_{−1} + 2 r_dec`. This is one more term in 30.3's sum, with `T_{−1}` in `E_{−1}`.
+* Gauge-invariant `F` of bounded extent lives on a contractible region, so the global `H¹` lift classes play no role.
+
+### 38.5 Instantiation duties for the Lean theorem (replaces 28.3's "Sites: scale-`j` bonds")
+
+1. **One per-site space.**
+   * The sites are the scale-`j` lattice sites `x`. Each site holds:
+     * the `d` bonds with lower endpoint `x` (`V_j`);
+     * the `d(d−1)/2` plaquettes with lower corner `x` (`τ'_j`);
+     * the swallowed-bond noise of those `d` bonds, with a fixed dummy value where a bond is not swallowed.
+   * So `S := SO(3)^d × Z2^{d(d−1)/2} × N^d`, the same at every site, with `N` the standard Borel noise space. `S` is
+     standard Borel, so `[MeasurableEq S]` holds.
+   * A site disagrees when any of its coordinates differ.
+   * H3's and Lemma C's influence weights, given per bond, are summed over the `≤ C_d` variables of a site. The factor
+     `C_d` goes into `K_b`, and the column condition (K) absorbs it through `ℓ_B` (22.3).
+2. **Blocks made of whole sites.**
+   * Every box of 28.3 (good, composite, source) is the set of sites of its `L`-blocks.
+   * The update `q_b` resamples the variables of `b`'s sites that the box law moves: bonds with both endpoints in the
+     box, the plaquettes inside, and their noise. It keeps the other variables of those sites.
+   * The Lean asks only that sites outside `B b` are kept (`q_local`), so this is allowed.
+   * The gauge is the block-axial gauge relative to the coarse configuration (19). Exact equality of site values is
+     then the Lean's "disagree".
+3. **Measurable block couplings (the main obligation), on paper.**
+   * **The densities.** The box laws are `q_b(σ, dy) = ρ_b(σ, y) λ_b(dy)`:
+     * `λ_b` is the product of Haar measures, counting measure on the Z2 labels and the noise reference;
+     * `ρ_b` is Balaban's effective density on the box, normalised, times the box's characteristic functions;
+     * `ρ_b` is jointly measurable (continuous in `σ` on the `C ε`-neighbourhood, times indicators of measurable sets).
+   * **The maximal coupling** of `ρλ` and `ρ'λ` is:
+     * the push-forward of `(ρ ∧ ρ')λ` to the diagonal;
+     * plus `(ρ − ρ ∧ ρ')λ ⊗ (ρ' − ρ ∧ ρ')λ / (1 − ∫ ρ ∧ ρ')`, with the product law on the measurable set where
+       `∫ ρ ∧ ρ' = 1`.
+     
+     Each piece is measurable in `(σ, σ')` by Tonelli.
+   * **H3's far-to-near coupling** (Goldstein, finitely many nested coordinate groups) is a finite composition of
+     operations of the same kinds. Its ingredients are minima of densities, normalised differences, and conditional
+     densities, which are ratios of partial integrals of `ρ_b`, set to a fixed density where the denominator vanishes.
+     So it is a measurable kernel (Ionescu-Tulcea for finitely many measurable kernels).
+   * **Lemma C's coupling** (maximal on the inner data, then the collar coupling of 29.5) is built in the same way.
+   * **Source blocks** take the product kernel `q_b(σ) ⊗ q'_b(σ')`.
+   * The patterns are discrete and are coupled first by H1, so measurability in `ω` is trivial.
+   
+   No abstract disintegration theorem is needed, because every density is explicit. **Level: paper.**
+
+### 38.6 Changes made elsewhere
+
+* **In this file:**
+  * 34.5 is superseded by 38.4;
+  * 34.6 is withdrawn (38.1);
+  * 34.8's shells are shaped by a cluster only, since the slab use went with 34.6;
+  * 35.1 steps 2-4 are replaced by 38.2;
+  * 36.1 item 2 and its level are replaced by 38.3 (2);
+  * 36.3's level is set by 38.3 (3);
+  * 32's (B) goes through 38.1;
+  * 37 is rewritten.
+* **`FILL.md` and `REVIEW3-RESPONSE.md` 2:** the cluster rule of 38.2 (update notes).
+* **`S1-INDUCTION.md`:** rows 3 and 8.
+* **`M1-PLAN.md` 0:** the verdict.

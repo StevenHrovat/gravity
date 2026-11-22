@@ -28,12 +28,12 @@ Balaban's parts are cited by equation, not re-proved. Every change to them is st
 |---|---|---|---|---|
 | 1 | `d = 4`, `SU(2)`, `b = 0.0929` | the model | `16 b = 1.49 > 1` | label count |
 | 2 | `L` (odd) | absolute | `θ = 5^d L^{1−d} + C(r0 + L² ε) < 1`; `L ≥ 13` gives `0.284` | R1 |
-| 3 | `ℓ_max = C_1 L`, `λ = 8(ℓ_max + 2)`, `C_tw` | `L` | `C_1 L ≥ C L + 1` (localised cores finish) | H5 |
+| 3 | `ℓ_max = C_1 L`, `λ = 8(ℓ_max + 2)`, `C_tw` | `L` | `C_1 L ≥ C L + 1` (localised cores finish); `C_1 ≥ C_3 = 2d + C_av + 2` (the ribbon of `UV-TV.md` 38.2); `C_tw ≥ max(8 max(C, 1), (C_6 + C_7)/4)`; holes grow per cluster of `H_0` at range `D = 2ℓ_max + 2` | H5 |
 | 4 | `r0 = c/L⁴` (excision threshold) | `L`, `C_1`, `C_tw` | `c ≤ c'/(256 C_tw C_1^4)`: data deviation `C_tw r0 λ²` below the Dirichlet gap `c'/(4 C_1² L²)`, and E7.J's `‖E‖ ≤ ½` (`REVIEW3-RESPONSE.md` 11.7) | R3, E7.J |
 | 5 | `M`, `α_0`, `α_1`, `κ`, `B`, `A`, `C_0` | Balaban, given `L` | his conditions ([III] Sect. 2, [V] Sect. 1); `κ` beats polymer entropy; `κ ≥ 4 log L + log C` (one-box contraction tails, `REVIEW3-RESPONSE.md` 13.1); UV-TV subcriticality per `M R_j`-cube: `C 200^d e^{−c κ/2} < ½` (`UV-TV.md` 24.1, 26.5; `κ` large is a citation, [I] Theorem 3, at the cost `M ≥ M(κ)` and a smaller `γ`) | all E-rows |
 | 6 | `p(g)`, `p0(g) = A0 (log g^{-2})^p`, `R_j ≥ (log g_j^{-2})^r` with `r ≥ 2`, `n0`, `q0` | Balaban, given 5 | `A_1² p0² ≳ M^d L^{d+1} R^{d+2}` (his, after (1.82); doubled constant (P0) for the UV-TV slack, `UV-TV.md` 26.3); `p0 ≥ C(κ + M^d) 100^d R^d` (P1, insurance); `q0 ≥ p0` (analyticity domain contains the small-field set, `UV-TV.md` 33.6); UV-TV box side `ℓ_B ≥ C (log p/m)^{2d+1}/γ_DS²` with `γ_DS < 1` the Dobrushin-Shlosman contraction constant, not the coupling bound `γ` (`UV-TV.md` 22.3, 27.8); `p0 ≫ log g^{-2}` (carrying); `R_j ≥ n_loc ≈ 0.4 log g^{-2}` (R2); `p0` growing faster than `log(k − j)` (R8); Balaban's fixed-domain threshold `ε_* ≤ L^{−4}/(2C)` (one-box contraction, `REVIEW3-RESPONSE.md` 12.2) | E5-E9, R2, R8, labels |
 | 7 | `β_min` | absolute (`d` only) | Peierls sum and R7′: `(2 C_d)(C β^{3/2} e^{−β})^{1/4} < 1` | decoder fidelity, label count |
-| 8 | `γ0(L)` (bare coupling bound) | 2-7 | `4/γ0² ≥ β_min`; `δ = p0²/β ≤ δ_*` with `16 b(1 − δ_*) > 1`; `δ_k ≤ c` (label carrying); `r0²/(8 g_k²) ≥ C(C_1) (n0 + R_k) p(g)² + p(g_k)²` (E-row 7c below, every scale of a region's life); [I] Theorem 2's `γ ≤ γ0(L)` | everything; UV-TV: the condition of `UV-TV.md` 23.3 is superseded by the `κ` condition of row 5 (24.1) |
+| 8 | `γ0(L)` (bare coupling bound) | 2-7 | `4/γ0² ≥ β_min`; `δ = p0²/β ≤ δ_*` with `16 b(1 − δ_*) > 1`; `δ_k ≤ c` (label carrying); `r0²/(8 g_k²) ≥ C(C_1) (n0 + R_k) p(g)² + p(g_k)²` (E-row 7c below, every scale of a region's life); [I] Theorem 2's `γ ≤ γ0(L)`; after `M`: `2 m_k 100^d δ_k ≤ ε_*` with `m_k = C M R_k ε_k/α_{1,k} + 1` (labels small at release, chained (P2), `UV-TV.md` 35.3, 38.3); `ε_{k+1} < C_tw c/(2 C_d C_5² L²)` (cap reached implies irregular `W`, 38.2) | everything; UV-TV: the condition of `UV-TV.md` 23.3 is superseded by the `κ` condition of row 5 (24.1) |
 | 9 | window `≈ (3/4) log g^{-2}/log L` | 6, 8 | `≤ R_j` | thick-born sheets (`BYPASS.md` 1) |
 | 10 | `L_*` (stopping scale, physical), `K` | 8 | `g_K` small enough for 5-8 at scale `K` | hand-over |
 | 11 | `t_0(n, R/ℓ)` and `C(n, R/ℓ, L_*/ℓ)` | 1-10 and the observable | `|t| ≤ t_0` keeps `tF` within the E-term bounds | R10 only |
@@ -222,3 +222,5 @@ is (11.2).
 4. Labelled components above `ε_*`: none (35.4).
 
 The induction is paper on citations, given the re-proof (c), the three citation-level readings and the shell adaptation (37).
+
+**Update (`UV-TV.md` 38):** sketch point 1 (cap reached implies irregular `W`) was not closed by 35.1 as written. It is closed in 38.2, by a coarse shadow of the failing loop and with holes grown per cluster of the deep set. Rows 3 and 8 carry the new conditions. The induction is paper on citations, given (c), the two readings, the citation-level use and the two adaptations of `UV-TV.md` 37.2.

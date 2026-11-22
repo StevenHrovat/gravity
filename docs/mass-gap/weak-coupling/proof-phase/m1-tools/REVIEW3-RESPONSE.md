@@ -122,6 +122,8 @@ irrelevant above it). **Status: paper.**
 **Kept:** the slab gap `≥ 2(π/(w + 1))²` is independent of the area (REVIEW-3), and the data bound `C r0 w ≤ C c L^{-3}` is
 small against it. **Status: paper**, except item 2's last step (**sketch**).
 
+**Update (`UV-TV.md` 38.2):** "components that touch are merged" is replaced by growth per cluster of `H_0` at range `D = 2ℓ_max + 2`, and "cap reached implies irregular `W`" is proved there (paper).
+
 ## 3. H6: the per-flip normalisation
 
 * **Withdrawn:** `f(P) ≤ |P|/6`, and the claim that the Jensen route of `CLOSE-OUT.md` 4 works for arbitrary `P`.

@@ -76,29 +76,39 @@ F2 (Bianchi halo) and F3 (P2′) are absorbed: halos live in released large-fiel
 because nothing is frozen. V1 with excision (`V1-EXCISION.md`, `V1-INPUTS.md`) is no longer on the main line: holes are
 never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `CutAvoid.lean` are off the main line;
 `Exact.lean`, `Dilution.lean`, `Vortex.lean`, `FibreMass.lean`, `Routine.lean`, `FluxTube.lean` and `Assembly.lean`
-(as bookkeeping, REVIEW-1 F7) remain in use. **Final verdict for the whole of M1 (2026-11-23; `UV-TV.md` 37).** M1 has a complete argument. Every row is proved at
-paper level, in Lean, or by citation, given:
-1. **Lean:** exactness (law preservation), the assembly bookkeeping, and the Lean steps of R1, R2 and R4. 57 theorems in
-   12 modules, standard axioms. The coupling-form theorem of `UV-TV.md` 28 is in progress with a separate worker
-   (`OneBox/CouplingDS.lean`).
+(as bookkeeping, REVIEW-1 F7) remain in use. **Final verdict for the whole of M1 (2026-11-23, rewritten after the reviews of `UV-TV.md` 34-37; `UV-TV.md` 37, fixes in 38).**
+M1 has a complete argument. Every row is proved in Lean, at paper level, or by citation, given:
+1. **Lean:**
+   * exactness (law preservation), the assembly bookkeeping, and the Lean steps of R1, R2 and R4: 57 theorems in 12
+     modules;
+   * the coupling-form theorem: `OneBox/CouplingDS.lean`, 37 theorems.
+
+   All on standard axioms. The theorem's instantiation is paper (`UV-TV.md` 28.3, 38.5).
 2. **One re-proof:** (c), the strengthened induction of [V] (1.80)-(1.97), with a slack `e^{−c p0²}` per birth-scale
    cube (`UV-TV.md` 26-27). Checked three ways.
-3. **Citations:** Balaban [I]-[V], [12]-[16] as listed per item, the SO(3) carry-over (R9), and `κ` large for fixed `L`
-   ([I] Theorem 3).
-4. **Three citation-level readings:** (a), what `E_k(Z)` is (`../m1-review/EK-DERIVATION.md`); admissibility (poor scan
-   of [III] (2.3)-(2.9)); the range of `A'` in [V] p. 379 (`UV-TV.md` 36.1).
-5. **One adaptation:** Balaban's small-field machinery on shells (width `≫ M`, thinner than one `M R_j`-cube, shaped by
-   a cluster or a slab, data on both sides), with his constants uniform in the shape (`UV-TV.md` 34.8).
+3. **Citations:** Balaban [I]-[V] and [12]-[16] as listed per item; (P2) from [V] (1.73)-(1.74), with a paper chaining
+   step (`UV-TV.md` 38.3); `κ` large for fixed `L` ([I] Theorem 3).
+4. **Two citation-level readings and one citation-level use:**
+   * readings: (a), what `E_k(Z)` is (`../m1-review/EK-DERIVATION.md`); admissibility (poor scan of [III] (2.3)-(2.9));
+   * use: Balaban's local cluster expansion with one extra small local insertion, the label term (`UV-TV.md` 38.3).
+5. **Two adaptations:**
+   * Balaban's small-field machinery on cluster-shaped shells with Dirichlet data on both sides, his constants
+     uniform in the shape (`UV-TV.md` 34.8);
+   * the SO(3) carry-over (R9): the adjoint field with a closed Z2 layer, the per-scale small-field rule, and label
+     factors. The scale-0 to scale-1 transition is paper.
 6. **External:** [I] Theorem 2 with its rate (0.31).
 7. **Separate:** P4 (the crossover `L_* → L₁`) and the interface (block state `(SO(3), closed Z2)`; `MassGapLoc` via
    the limit, statement unchanged).
 
 **No item is at sketch level:**
-* the four sketch points are closed (`UV-TV.md` 35);
-* the four unchecked adaptations are now a citation (36.1, 36.2), a proof (36.3), or superseded by (c) (36.4).
+* the four sketch points are closed (`UV-TV.md` 35, with "cap reached implies irregular `W`" by 38.2);
+* the four unchecked adaptations are resolved (36, levels per 38.3);
+* the two GAPs of the reviews of 34-37 are closed: (B) by total covariance along the scales (38.1, the slab
+  construction withdrawn), and the cap (38.2).
 
-The full table with a level per item is `UV-TV.md` 37.1. The rows above this verdict keep their history; where a row
-still says "sketch" or "unchecked", section 37 supersedes it.
+This verdict waits on the reviewers' check of `UV-TV.md` 38. The full table with a level per item is `UV-TV.md` 37.1.
+The rows above this verdict keep their history; where a row still says "sketch" or "unchecked", section 37
+supersedes it.
 
 Parts A and B below are the pre-review plan, kept for the record.
 
