@@ -76,6 +76,7 @@ The one-sided step every route meets: comparing the blocked measure with the ori
 | piece | statement | status |
 |---|---|---|
 | P5.1 | Route B only: sector transfer, flux-sector gap ⇒ vacuum (glueball) gap | no route through twist or flux inequalities (Kanazawa's twist insensitivity gives only centre-charged decay; the SU(2)×U(1) product theory has flux growth and no gap); discharged only through Route A (`SlabDecay`/`TorusDecay` ⇒ `SectorTransfer`, definitional): **Route B lands on Route A** |
+| P5.1′ | Conjecture S (sector transfer for simple groups, from the owner's reading): `AreaLaw → MassGap` | open; breaks exactly at small loops (`areaLaw_iff_large`: the area law is silent on loops below a fixed area, while the gap is decided on generators, `norm_pow_le_of_generators`, and loops of ≤ 3 plaquettes generate); a reflection-positive, invariant mixture has an area law and no gap (`not_expDecay_mix`); Heller's SU(3) endpoint (numerical). Lands on Route A: the gap is decay of small Wilson loops at one rate | `ProofPhase/SectorS/`, `proof-phase/c2b-conjS/NOTE.md` |
 | P5.2 | block observables at L₁ ⇒ all local gauge-invariant observables | paper with a stated gap (`r3-robust/NOTE.md`, H1-fine) |
 | P5.3 | the gap for the whole field algebra: one rate for all truncated correlations; uniqueness of the vacuum | open |
 
@@ -101,19 +102,24 @@ for a selected phase of a phase average; `nonfree`. Not proved there: uniqueness
 | P6.11 | order of limits | `TorusDecay` (level-uniform constant) ⇒ `MassGap` ∧ `MassGapMF` (`bothOrders_of_torusDecay`, Lean); `SlabDecay` reaches only ours |
 | P6.12 | observable bridge: our bounded slab observables vs their unbounded local fields | open (ratio/L² form of lattice decay: paper sketch) |
 
-### P7. Assembly
+### P7. Assembly (after cycle 2, workstream C)
 
 | piece | statement | status |
 |---|---|---|
-| P7.1 | `ProofPhase.yang_mills_assembly`: for SU(2) Wilson on 4D tori along a tuning, `OpenPieces` (line of constant physics with one-loop running and a converging act number; `NonTrivial`; crossover = Route A `SlabDecay` at gap strength, or Route B `ConjW` ∧ `SectorTransfer`) ⇒ `MassGap` (continuum decay, volume then spacing) ∧ `LimitRP` (proved) ∧ `NonTrivial` (passed through) | Lean (the two routes joined by a case split; they do not compose) |
-| P7.2 | Lean content of the assembly: Theorem C removes level-dependent constants and carries decay through both limits (`corr_le_of_decay`, `massGap_of_latticeGap`); `slabDecay_of_uniformGDS` (D′ is a sufficient condition); `blocked_wilson_rp` for any reflection-respecting blocking | Lean |
-| P7.3 | non-triviality: pure noise and every bounded coupling fail the hypotheses (`not_trivial`, `not_onLCP_of_bounded`); pure noise does satisfy `SlabDecay` alone, so identification rests on the line of constant physics and `NonTrivial` | Lean |
-| P7.4 | the blocked route at L₁ (H1Local ∧ LimitDprime ∧ ObsTransfer ⇒ SlabDecay) | Lean, twice independently (`RouteA/BlockedSlab.lean`, `Quantum/BlockedRoute.lean`); `assembly_blockedRoute`; reaches `SlabDecay`, not `TorusDecay` (needs ObsTransfer counted in L₁ cells, or `ObsTransferU`) |
-| P7.5 | not statable on these objects yet: rotation invariance, uniqueness of the limit, the infinite-volume limit as its own piece, the flux energy from the 4D measure (needs anisotropic tori), other compact groups | open (`proof-phase/ASSEMBLY.md`) |
+| P7.1 | `yang_mills_assembly` (`ProofPhase/Torus/Top.lean`): `OpenPieces` ⇒ `MassGapLoc` (one rate for every slab observable of bounded physical extent) ∧ `LimitRP` ∧ `NonTrivial`. `OpenPieces` = line of constant physics (one-loop running with slope 11/(6π²); act number L·`fluxRate` → z⋆ > 0) ∧ `NonTrivial` ∧ crossover, one of: **torus route** (good blocking ∧ `H1Local` ∧ `LimitDprime` ∧ `ObsTransferPhys`), slab route (same with `ObsTransfer`), Route B (`ConjW` ∧ `SectorTransfer`) | Lean |
+| P7.2 | `yang_mills_assembly_torus`: the torus route gives `TorusDecayLoc` and the gap in **both orders of limits** (`MassGapLoc` ∧ `MassGapMFLoc`) | Lean |
+| P7.3 | non-triviality: pure noise and every bounded coupling fail `OpenPieces` (`not_trivial`) | Lean |
+| P7.4 | the blocked route's last link, twice independently (`RouteA/BlockedSlab.lean`, `Quantum/BlockedRoute.lean`); with `ObsTransferPhys` to `TorusDecayLoc` (`Torus/Local.lean`) | Lean |
+| P7.5 | `MassGapLoc` ⇒ spectral gap needs density of bounded-extent local vectors in the reconstructed space and the reconstruction itself | paper |
+| P7.6 | rotation invariance, uniqueness of the limit, other compact groups | open |
+
+**The open inputs of the preferred (torus) route, as of cycle 2:** `H1Local` (quantum half at L₁, uniform in the lattice), `LimitDprime`
+(the Dobrushin condition at L₁; its core is the **adjoint half**, cycle 2 workstream A), `ObsTransferPhys` (ultraviolet quasi-locality of
+the good blocking), the line of constant physics, and `NonTrivial`.
 
 ## Unit tests (every claimed discharge)
 
-Photon, Z₂ (and its gap without a flux floor), finite subgroups of SU(2) and the order-12 binary dihedral group, deconfinement,
+Added in cycle 2: **mixture test** (a reflection-positive invariant mixture of two states: area law, no gap) and **Heller endpoint** (a simple-group local action with finite string tension and massless 0⁺⁺, numerical). Photon, Z₂ (and its gap without a flux floor), finite subgroups of SU(2) and the order-12 binary dihedral group, deconfinement,
 triviality, Banks–Zaks. A group-blind theorem passes them all and proves nothing about Yang–Mills: say so when it happens.
 
 ## The owner's readings that organise the map (`PREP.md`)
