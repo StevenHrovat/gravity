@@ -1304,6 +1304,11 @@ thread.
   as the one that I needed for DMP to finally host. Something HAS to exist, whatever it is, both something has to." Reading
   (coordinator): the corollary (UV-TV.md 34.1, added to the Lean target) says that the averaged update does not depend on the weights
   used to measure disagreement, so one and the same sequence of couplings satisfies every weighted bound at once. The object exists
-  first, independently of how it is measured; each choice of weights is only a way of looking at it. And a coupling is by definition a
-  single joint object whose two sides are both genuine laws (both marginals are kept by every update): "both something has to". In the
-  proof this is what makes the union bound over all sites refer to one thing rather than to a different coupling for each site.
+  first, independently of how it is measured; each choice of weights is only a way of looking at it. In the proof this is what makes
+  the union bound over all sites refer to one thing rather than to a different coupling for each site.
+  Correction by the owner ("both something" was a mistype): "What I meant was that a DMP-complete system has to actually run, because
+  it needs to bring existence and non-existence back together through causality, so creation is needed for balance to have something
+  to work with." Reading (coordinator): the theorem is proved exactly that way. The coupling is not assumed as a ready-made
+  equilibrium object; it is produced by running the averaged update from the product coupling, step by step, and the bound holds after
+  finitely many steps. The update is a genuine dynamics only for β ≠ 0 (at β = 0 nothing propagates, the earlier reading), so the
+  balance the bound expresses is reached by running, not by fiat.
