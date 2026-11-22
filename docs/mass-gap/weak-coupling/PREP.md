@@ -793,3 +793,9 @@ frozen holes (the hole = the whole irregular part of the root region, surroundin
 hole becomes small relative to the scale). So the candidate: **any core that stays deep for N steps is trapped** (frozen, boundary-only),
 which may make NT′(b′) unnecessary — the surroundings are then always regular, so the logarithm's cut is never met. Sent to the M1
 thread.
+- **"For a while", sharpened (the owner, same day):** "The 'for a while' can be sharpened through the tick rate of assertion that
+  existence needs, I presume." Reading (coordinator): the trapping delay should be one **assertion tick**: the time the information
+  layer needs to forget by the universal factor 1/e. A core that is merely information (a fluctuation) has faded within that time; a
+  core that is still deep after one tick is asserting existence and is trapped. In M1's numbers a moderate core shrinks by about
+  L^(1−d) = 1/2197 per blocking step, so one tick is well inside a single step: the rule becomes "still deep after one (or a fixed few)
+  blocking steps ⇒ trapped", with the delay a fixed number of steps, not a growing one. Sent to the M1 thread with the trapping proposal.
