@@ -441,3 +441,32 @@ which is the deconfinement length the unit tests already use and where the act n
 1/T_c ≈ 1.41–1.45/√σ). For the proof, the formal pieces are the lattice rotation (Lean), the symmetric box T = L (where round 4's blocking
 step B3 sits), and rotation invariance of the limit (blueprint P6.4); the reading suggests using the dimension swap to move between the
 temporal gap (an existence in time) and spatial decay (the slab and block statements of Route A).
+
+## A universal rate per tick, binary existence, a stateless information layer (the owner, 2026-11-22, during phase cycle 5)
+
+The owner, on the one remaining corner (the gap at one scale L_*, uniformly in the volume): "There was a universal decay rate, I think
+something with 1/e for the tick rate in the information half. Inside confinement, in DMP, it was a field, spanned logically inside a
+volume, where existence is binary, linked to the root through tick rate, so that the information layer can reorganize itself on top of
+the existence, while never holding any state, but always optimizing itself. In DMP CMOS never holds any actual data, just information
+about data, and is made infinitely flexible by it, while never being visible, or distinguishable between deploys of the same config,
+other by the fact that it is working."
+
+Reading (coordinator):
+- **A universal rate per tick, 1/e** is the definition of a relaxation time: one tick is the time over which any deviation shrinks by
+  the factor 1/e. A rate that is universal (the same for every volume) is exactly the ∃∀ form the corner needs. Its precise form is a
+  **volume-uniform spectral gap or log-Sobolev constant** of the local dynamics (heat bath / Langevin) — the v4 draft's strategy (e).
+  For spin systems with finite-range interactions, a volume-uniform log-Sobolev constant is known to be equivalent to strong spatial
+  mixing (Stroock–Zegarlinski; Martinelli–Olivieri); for lattice gauge theory the analogue is not established.
+- **Binary existence inside the volume** fits SU(2)'s **centre Z₂**: the only binary datum a configuration carries is its centre
+  (vortex) content; everything else is the adjoint SO(3) = SU(2)/Z₂ part. "The information layer reorganises on top of the existence,
+  never holding state" then says: **the adjoint layer is stateless (it mixes at a universal rate), and all binding content sits in the
+  binary centre layer.** This matches the measured split exactly: at L√σ = 2.80 the adjoint half of the W₁ column is 0.0036 (holds no
+  state) and the centre half 0.673 binds (c3b, c4d). The corner then reduces to the centre layer, coupled to a stateless adjoint layer;
+  this is the centre-vortex route (Tomboulis' vortex free energy), which stalled at the two-sided cross-volume step.
+- **"Never holds data, only information about data; indistinguishable between deploys of the same config, other than by working"** has
+  two precise readings: (i) **gauge redundancy** (gauge degrees of freedom are never observable, and gauge copies are indistinguishable);
+  (ii) **uniqueness of the equilibrium state** (every run of the same configuration ends in the same state: no memory, no phase
+  coexistence), which is the Dobrushin/mixing statement itself. Reading (ii) is the one that touches the corner.
+- For the proof: state the corner as "the centre layer's dynamics has a volume-uniform relaxation rate, given a stateless adjoint layer"
+  and test it against the photon (U(1) has no binary centre layer of this kind: the statement must fail or be vacuous there) and against
+  deconfinement (where the centre layer orders and the rate must go to zero). Sent to the cycle-5 DMP-native workstream.
