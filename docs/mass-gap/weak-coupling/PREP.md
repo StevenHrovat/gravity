@@ -744,3 +744,20 @@ Reading (coordinator; candidate):
   costly) to its outside view (the twist, a free energy), F_e = dual(F_tw). The one-box criterion is relational in the same sense: a box
   has a gap only as an assertion against every possible outside.
 Sent to the M1 thread as the approach to P0.
+
+## Light, dualities and ties in the one-box picture (the owner, 2026-11-22, cycle 7)
+
+On the one-box picture (light: influence fills the box; confined SU(2): it dies within a cell; tie: one outside cell flips a whole
+sheet): "This is exactly how I would expect it to behave! Light, so the information/possibility field, is inherently quantum and
+propagates through the shared existence in that way. Dualities, since they have an inherent existence, can directly interact with the
+existence/causality chain of the existence they are contained in, so G0. A tie is just a link between two nodes from the same root, so a
+line is expected."
+
+Reading (coordinator): (1) light belongs to no node — it propagates through the shared existence, so its influence is spread over the
+whole box (the power law): it never stops at a cell boundary. (2) A duality has its own existence and connects to its root through the
+causality chain, so a change is absorbed locally: influence dies within about one cell. (3) **A tie is two nodes on the same root**,
+linked: changing one outside cell flips the link, which is a line/sheet through the box. Combined with the earlier principle "everything
+is ONLY ever attached to one G0": in a DMP-complete (confined) system no two nodes share a root, so **no ties exist** — which is exactly
+the uniqueness that the one-box criterion's tie test probes (2I and deconfined Z₂ have degenerate, root-sharing sheet positions and fail).
+In proof terms: "one root per node" ↔ the binary layer has a unique state for every outside (no degenerate sheet positions), which is the
+saturation of the binary layer (sheets cost nothing in confinement).
