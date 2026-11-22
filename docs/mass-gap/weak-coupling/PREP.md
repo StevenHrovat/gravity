@@ -936,3 +936,19 @@ thread.
   all released records is a renormalisation of the coupling (which is what the running of β is), not a sum of separate maintenance
   costs. The reviewer's estimate that release still diverges (Σ L^((2 − bA)j)) adds the effects in absolute value; whether they instead
   combine into the coupling is the open mathematical question. Sent to the M1 thread with the review.
+- **The preserved bit lives on the boundary (the owner, same day, on the persistent centre vortex):** "The information side gives me an
+  idea: The bit that is preserved is the fact that it exists. This fact is asserted through the boundary, so through something that
+  belongs to neither existence or non-existence, but is instead the definition of it and translation between it." Reading
+  (coordinator): this matches a precise mathematical object. The bit is the Z2 (centre) flux. It is not a property of the field inside
+  any region but of a boundary: the flux through a plaquette is read off around its boundary loop, and the vortex sheet itself lives on
+  the dual lattice, between the cells, belonging to neither side. In bundle language the twist sits in the transition functions (the
+  gluing between patches), which is 't Hooft's construction: "the translation between". Consequence for M1 (route (b), concrete): split
+  the SU(2) field into a smooth adjoint SO(3) part (no centre, so the vortex-persistence theorem has nothing to act on) and a Z2 layer on
+  plaquettes (the SO(3) × Z2 rewriting of SU(2) lattice gauge theory known from Mack–Petkova and Tomboulis). Block the adjoint part with
+  Balaban's average and the Z2 layer by exact mod-2 summation (Stokes): the coarse flux through a coarse plaquette is the sum mod 2 of
+  the fine fluxes through the fine plaquettes tiling it. The bit is then counted, not averaged, so the symmetric-average tie that makes
+  the core persist does not arise; small closed vortex sheets inside a block cancel mod 2 and disappear, while sheets that really cross
+  the coarse plaquette survive (the confining ones). This is also the owner's earlier two-layer reading (binary centre layer +
+  stateless adjoint layer) and the split κ_Z + κ_A of cycle 8. To check: the constraint coupling the two layers (Z2 monopoles of the
+  SO(3) field), whether Balaban's estimates hold for the SO(3) part with a Z2 background in the action, reflection positivity of the
+  split blocking, and whether the cores of `Vortex.lean` are of the cancelling kind.
