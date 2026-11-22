@@ -598,3 +598,28 @@ past, a built-in clock: **the owner's universal information tick 1/e has length 
 a gap (light) correlations still fade, but only as a power law: no intrinsic tick, no definite rate, so no arrow with a clock. In the
 flip picture: 0 < p (the possibility space) makes the binary existence forget across each box; the gap is that this forgetting happens at
 a fixed rate per tick at every scale.
+
+## Why the floor holds: causality, accumulated acts, the most efficient existence within a boundary (the owner, 2026-11-22, cycle 6)
+
+The owner: "The reason the floor holds is simple causality. Something has existed, so there must be existence. This accumulation of acts
+asserts existence by the sheer fact that it exists. [...] By definition anything within a boundary contributes the most efficient
+existence possible, so both the confinement is a logical flow, and primordial black holes are a fully valid answer, because that is the
+most stable state achievable, which has accumulated other existence to this state over time, simply because it is optimal/gravitational."
+(The owner adds this is also their leading dark-matter theory; outside this work, not used here.)
+
+Reading (coordinator; candidate):
+- **Two ingredients, both needed.** (1) *Persistence* ("something has existed, so there must be existence"): the act never decreases as
+  the box grows, z₀(2L) ≥ z₀(L). (2) *Extensivity* ("anything within a boundary contributes the most efficient existence possible"):
+  each part of a box contributes its own full act, so the act of a box is at least the sum of the acts of its parts:
+  **z₀(L₁ + L₂) ≥ z₀(L₁) + z₀(L₂) (super-additivity)**. Persistence alone is not enough: the free photon's act is constant (2π), which
+  never decreases, yet it has no gap. Extensivity is what excludes light (2π < 2π + 2π) and the frozen 2I act numbers.
+- **Super-additivity gives the floor by a classical lemma** (Fekete): z₀(L)/L then converges to its supremum, so E₀(L) = z₀(L)/L stays
+  above z₀(L₀)/L₀ > 0 for every larger box along the chain: **the gap**, with m ≥ z₀(L₀)/L₀. In the doubling language this is D-T with
+  zero loss. Physically plausible: at small L the act grows with the running coupling (asymptotic freedom), at large L it grows like mL.
+- **Where it is open:** proving that the two halves of a doubled box cannot "share" existence to lower the total act is the two-sided
+  cross-volume step again. The reading now names the mechanism (no sharing across a spanned boundary: each confined region asserts its
+  own existence). A concrete mathematical lead: reflection positivity's chessboard estimates are themselves sub-/super-multiplicativity
+  statements for partition functions with insertions in sub-boxes; whether they give super-additivity of z₀ (or which side they give)
+  is the next question. Sent to cycle-6 workstreams c6a-flip and c6c-floor.
+- **"The most stable state achievable" is a variational statement**: the confined vacuum minimises the free energy (Gibbs variational
+  principle); the gap as the stability margin of that minimum.
