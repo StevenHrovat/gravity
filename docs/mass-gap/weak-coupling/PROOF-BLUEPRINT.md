@@ -52,8 +52,8 @@ duality), and is recorded in `PREP.md`; it guides, it does not prove.
 | piece | statement | status | where |
 |---|---|---|---|
 | P3.1 | one noisy blocking step: large-field lower bound; per volume W_p by compactness | Lean (core) | `R3/WpNoise.lean` |
-| P3.2 | Lemma T (relative closeness survives blocking, uniformly in the boundary) | paper | `r2-stepscaling/NOTE.md` §4 |
-| P3.3 | per-volume gap theorem joining P3.1 to P2.3 | paper (reviewer: correct in the order mesh, volume, observable) | `r3-wp/NOTE.md` |
+| P3.2 | Lemma T (relative closeness survives blocking, uniformly in the boundary) | Lean (`ProofPhase/Quantum/LemmaT.lean`, instantiated for SU(2) Wilson; part (b) for image variables paper) | `proof-phase/ws3-quantum/NOTE.md` |
+| P3.3 | per-volume gap theorem joining P3.1 to P2.3 | Lean (`NoisyBlocking.perVolumeGap`, conditional on H2-all: D′ for every mesh limit point, one γ for all volumes) | `ProofPhase/Quantum/PerVolume.lean` |
 | P3.4 | ultraviolet stability, small-field control, one-loop running | external (OpenAI construction, read at stage level; controls the weak-coupling unit scale, not L₁); Balaban's published results give stability of the partition function, not of correlation functions | `H1-OPENAI.md` |
 
 ### P4. The crossover (open; the core)
@@ -92,7 +92,7 @@ for a selected phase of a phase average; `nonfree`. Not proved there: uniqueness
 | P6.2 | non-triviality and uniqueness | non-triviality external for their selected phase (trace two-point asymptotics); open for our `NonTrivial`; uniqueness open (gap ⇒ single phase: paper sketch) |
 | P6.3 | OS positivity of the limit | ours Lean (`limitRP`); theirs external |
 | P6.4 | Euclidean invariance | external for their objects; not statable for ours (needs P6.8) |
-| P6.5 | infinite-volume limit | external, subsequential; `MassGapMF` (their order) does not need uniqueness |
+| P6.5 | infinite-volume limit | external, subsequential; ours: limit states exist (Lean, weak convergence, `exists_limitState`); invariance of the limit state paper; `MassGapMF` does not need uniqueness |
 | P6.6 | Wightman reconstruction | external for their selected phase; standard for ours once OS axioms hold on a field algebra |
 | P6.7 | tuning / line of constant physics | open; slope corrected (our β = 2/g², slope 11/(6π²)); relation of their β(unit) = bar to our act-number condition open |
 | P6.8 | local gauge-invariant fields as distributions | external, partial (their fixed-stencil insertions); adopt as our field notion |
@@ -108,7 +108,7 @@ for a selected phase of a phase average; `nonfree`. Not proved there: uniqueness
 | P7.1 | `ProofPhase.yang_mills_assembly`: for SU(2) Wilson on 4D tori along a tuning, `OpenPieces` (line of constant physics with one-loop running and a converging act number; `NonTrivial`; crossover = Route A `SlabDecay` at gap strength, or Route B `ConjW` ∧ `SectorTransfer`) ⇒ `MassGap` (continuum decay, volume then spacing) ∧ `LimitRP` (proved) ∧ `NonTrivial` (passed through) | Lean (the two routes joined by a case split; they do not compose) |
 | P7.2 | Lean content of the assembly: Theorem C removes level-dependent constants and carries decay through both limits (`corr_le_of_decay`, `massGap_of_latticeGap`); `slabDecay_of_uniformGDS` (D′ is a sufficient condition); `blocked_wilson_rp` for any reflection-respecting blocking | Lean |
 | P7.3 | non-triviality: pure noise and every bounded coupling fail the hypotheses (`not_trivial`, `not_onLCP_of_bounded`); pure noise does satisfy `SlabDecay` alone, so identification rests on the line of constant physics and `NonTrivial` | Lean |
-| P7.4 | the blocked route at L₁ (H1Local ∧ LimitDprime ∧ ObsTransfer ⇒ SlabDecay) | paper only; not in `OpenPieces` |
+| P7.4 | the blocked route at L₁ (H1Local ∧ LimitDprime ∧ ObsTransfer ⇒ SlabDecay) | Lean, twice independently (`RouteA/BlockedSlab.lean`, `Quantum/BlockedRoute.lean`); `assembly_blockedRoute`; reaches `SlabDecay`, not `TorusDecay` (needs ObsTransfer counted in L₁ cells, or `ObsTransferU`) |
 | P7.5 | not statable on these objects yet: rotation invariance, uniqueness of the limit, the infinite-volume limit as its own piece, the flux energy from the 4D measure (needs anisotropic tori), other compact groups | open (`proof-phase/ASSEMBLY.md`) |
 
 ## Unit tests (every claimed discharge)
