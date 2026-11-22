@@ -54,4 +54,5 @@
 'ProofPhase.M1.transverse_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.wavg_common_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.sum_abs_sum_le_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.footprint_sum_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 no sorry / native_decide / axiom in ProofPhase/M1

@@ -53,10 +53,10 @@ the notes):
 | item | content | level |
 |---|---|---|
 | R1 off-centre dilution (F5, in SO(3)) | contraction of localised moderate cores at every position (in-block parts cancel; only segments transmit) | **paper + Lean steps** (`OFFCENTRE.md`, `OffCentre.lean`): `θ = 5^d L^{1-d} + C(r0 + L² ε)`; sheets are not R1 (excision R3, growth R2) |
-| R2 regular within the delay | every released region's next field is regular within Balaban's delay | **false as stated** (`REGULAR.md`): proved for localised cores and smooth growing fields; moderate conserved-flux sheets stay irregular beyond the delay. Needs a decomposition lemma and an extension of Balaban's entropy induction (E8) to long-lived regions: harder than marked |
+| R2 regular within the delay | every released region is regular within the delay, or is carried, paid by its own action | **paper + Lean step** in the repaired form (`R2-REPAIR.md`): attribution instead of a partition; footprint-weighted lifetime (`footprint_sum_le`); suppression from [16] (71) (read); E8 insertion a re-reading of [V] (1.80)-(1.85); the remainder route (`R2-REMAINDER.md`) compared and not taken: its rarity bound (a) closes, its splitting (b) needs a defect-decoupling lemma |
 | R3 filling near the cut (F4) | one-step excision filling with Bianchi-halo data: uniqueness and analyticity with `r0 = c/L⁴`, a rule for blocks swallowed by a hole, measurable selection | open (fixable-looking) |
 | R4 fibre mass with excision (E7.J) | the easy form with filled bonds next to excised SO(3)-cut plaquettes | paper given R3 |
-| R5 action lower bound (F6) | the bound behind [V] (1.76): [16] (71) | citation not read |
+| R5 action lower bound (F6) | the bound behind [V] (1.76) | **read**: [16] (69)-(71), action in the four blocks of an irregular coarse plaquette `≥ ¼|V(∂p') - 1|²/g²`, given regularity (68) of the finer field; proof via [12] (50), (53), any dimension |
 | R6 decoder locality | the global decoder equals a clustered, local one away from dense monopole clusters; needed for Balaban's factorisation over components | sketch |
 | R7 normalisation per real flip | `O(1)^{|τ|}` ratio of partition functions in the counting of closed remainders | citation (standard weak-coupling bound) |
 | R8 release of acts and labels | dimension-4 field dependence of released terms and of the labels' coupling to the SO(3) layer; summability over scales | paper sketch |
