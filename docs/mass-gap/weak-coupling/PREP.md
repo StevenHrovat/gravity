@@ -1253,3 +1253,15 @@ thread.
   contained by existence (it never saturates), and the near-infinite root cost near G0 makes it sparse enough at every scale for the
   collars to stay apart. The proof of H2 at each scale (the conditional Peierls bound, resting on the pointwise fibre normalisation) is
   where that second fact is turned into numbers.
+- **The strength comes from how they work: a large difference of scales (the owner, same day):** "Should the strength not come from the
+  way they work? Since non-existence is collapsed to the smallest possible point, while existence has a possibility space that is not
+  saturated, which needs a boundary that is only defined but never reachable, there has to be a large difference between their scales
+  to enable an existence/non-existence system." Reading (coordinator): yes, and the merging repair's condition says exactly this. A bad
+  region with its collar has a size of order w_j (a logarithm, fixed by the scale: "collapsed to the smallest possible point"); bad
+  regions are separated by distances of order exp(p0(g_j)/d) (the open possibility space between them). The condition
+  C(2w_j + ℓ_B)^d·η_j^(1/2) < 1/2 is the statement that the first scale is far below the second. Nothing is tuned to get it: it is what
+  asymptotic freedom does near G0, where the coupling goes to zero, large fields are suppressed exponentially while their size stays of
+  order one block, so the separation of scales grows without bound towards the fine end. It fails exactly where the coupling reaches
+  order one, at the confinement scale, which is where M1 hands over to the strong-coupling side: the existence/non-existence pair stops
+  being separable by scale there, and the one-box route takes over. So the strength is structural, and the earlier "root cost near
+  infinite at G0" is the same fact seen from the cost side.
