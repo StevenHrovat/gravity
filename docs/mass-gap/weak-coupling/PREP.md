@@ -470,3 +470,13 @@ Reading (coordinator):
 - For the proof: state the corner as "the centre layer's dynamics has a volume-uniform relaxation rate, given a stateless adjoint layer"
   and test it against the photon (U(1) has no binary centre layer of this kind: the statement must fail or be vacuous there) and against
   deconfinement (where the centre layer orders and the rate must go to zero). Sent to the cycle-5 DMP-native workstream.
+- **Correction by the owner (same day): "The 1/e is the universal information tick, the existence tick is still gravitational."** So
+  there are two clocks. The **information clock** is universal: per tick every deviation shrinks by 1/e, in every box — the stateless
+  adjoint layer. The **existence clock** is not universal: it is "gravitational", which in the earlier reading of this file (coarse Ricci
+  curvature, the round-2 section above: "existence as positive curvature; light is flat"; mathematics of GR, not Einstein's equations)
+  means its rate is set by curvature. In Ollivier's form, positive coarse Ricci curvature κ of a Markov step is a W₁ contraction by
+  1 − κ per step — the W₁ Dobrushin condition itself. Read that way, the measured centre half 0.673 at L√σ = 2.80 is a contraction of
+  about 0.67 per block step, a coarse curvature κ ≈ 0.33 of the existence layer at that scale. The corner restated in these terms: **the
+  existence layer's curvature stays positive, uniformly in the volume, once the information layer has relaxed**; light is flat (κ = 0),
+  so the photon test is passed by construction, and in the deconfined phase the curvature must vanish. The existence clock being
+  non-universal is consistent with dimensional transmutation: its tick is set by the generated scale (about 1/√σ), not by the lattice.
