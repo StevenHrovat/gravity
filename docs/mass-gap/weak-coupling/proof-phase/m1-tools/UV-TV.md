@@ -16,6 +16,8 @@
 
 > **Status (part 9, sections 27-28):** checks of (c) folded in (slack renamed `ψ`; `(1+β_0)^{−2}` in `c'_ψ`; (P2) with `log β`; (P1) kept as insurance; constant-size smallness only, for write-outs 2 and 4). Write-out 1, the coupling-form Dobrushin-Shlosman theorem (the Lean target), is written (section 28). Verdict: Lemma UV-TV has a complete paper-sketch argument given (c), with (a) and admissibility as citation-level readings; write-outs 2-4 remain.
 
+> **Status (section 29):** write-out 2 (Lemma C's cross term and the collar coupling, which is also H3's Pinsker step) is written with constant-size smallness only. All smallness comes from decay across the collar. It uses Balaban's machinery on a domain with Dirichlet data, a citation-level adaptation.
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -1780,3 +1782,139 @@ The proof is finite-dimensional linear algebra on `Φ` plus kernel composition. 
 (`Measure.bind`, `ProbabilityTheory.Kernel`). The kernel and coupling API is the main work.
 
 **Status of write-out 1: paper, written.**
+
+## 29. Write-out 2: Lemma C's cross term, and the collar coupling, using constant-size smallness only
+
+**Rule (27.9).** Only these inputs are used:
+* Balaban's constant-size bounds: `O(1)` per site ([III] Theorem 2), or `O(1) e^{−κ d(X)}` per localised term ([I]
+  (1.18));
+* the explicit decay of his propagators and backgrounds;
+* his cluster expansion.
+
+Never "`1 + O(δ)`, `δ → 0`". All smallness comes from **decay across the collar**: from the width `w`, not from the
+size of the terms.
+
+### 29.1 Setting
+
+* **Composite box** `W = K ∪ collar` at scale `j`, in the block-axial gauge relative to the coarse configuration.
+  * `I` is the inner layer, the collar sites within `r_int` of `K`.
+  * `O` is the outer layer, the collar sites within `r_int` of `∂W`.
+  * The rest of the collar has width `≥ w − 2r_int` between `I` and `O`.
+* **Inner and outer data.** `c` is the configuration on `K ∪ I`; `σ` the configuration outside `W`, which by finite
+  range (H0) enters only through `O`.
+* **The collar measure.** Given `(c, σ)`, the collar variables between `I` and `O` have the law
+  `ρ_j|_{fibre} · χ / Z(c, σ)`.
+  * `ρ_j = exp(A_j(V_j))` on the pattern-good collar, with `A_j(V) = −A(U_j(V))/g_j² + Σ_X E_j(X; U_j(V))` ([III]
+    (2.23)).
+  * `χ` is the product of the small-field characteristic functions on the collar.
+  * The fibre constraint `block(V_j) = X_{j+1}` lies inside the `L`-blocks.
+* **The law of `W`** given `σ` is `w(c) Z(c, σ)/norm(σ)`. Here `w(c)` collects everything depending only on `c`: the
+  cluster's own `T`-operations and labels, which are never bounded.
+
+### 29.2 The decomposition of `log Z(c, σ)`
+
+This is Balaban's step `j → j + 1`, done on the domain `collar ∖ (I ∪ O)` with Dirichlet data `(c, σ)` instead of the
+whole lattice. He constructs exactly this localisation: minimal configurations and determining sets restricted to a
+domain with boundary data ([III] (2.13)-(2.15), "we localize ... to a domain `Ω`"), with [15]'s variational problem
+on the domain.
+
+1. **The constrained background.** `U_bg(c, σ)` is the minimiser of `A` on the collar with the block constraints and
+   Dirichlet data `c`, `σ` ([15] Theorem 1, regular data). It is analytic in the data.
+   * Its dependence on the data decays: `|∂U_bg(x)/∂(data at y)| ≤ C e^{−m d(x, y)}` ([15] (190); [13] Theorems 3.12,
+     3.13 for the propagators with block constraints).
+   * `m` is a fixed constant in scale-`j` units.
+2. **The classical part** is `−A(U_bg(c, σ))/g_j²`. Its mixed variation is the cross term of the constrained Dirichlet
+   energy. To second order it is `⟨Δc, G_{I,O} Δσ⟩/g_j²`, with `G_{I,O}` the constrained Green's function between the
+   layers, `|G_{I,O}(x, y)| ≤ C e^{−m d(x, y)}`.
+   * The data deviate by at most `|Δc|, |Δσ| ≤ 2C ε_j`: both are small field, in the same gauge, within `C ε_j` of the
+     same background.
+   * So the term is `≤ C Σ_{x ∈ I, y ∈ O} (ε_j/g_j)² e^{−m d(x, y)} = C p(g_j)² Σ e^{−m d}`.
+   * Higher orders carry extra factors `ε_j` and the same decay (analyticity of `U_bg` in the data).
+   * The only non-constant factor is `p²`, a polylog, the size of small-field data in units of the width `g`.
+3. **The fluctuation part** is `log ∫ dB e^{−½⟨B, Δ(U_bg) B⟩ + (higher-order terms) + Σ E_j}` over the collar, with
+   the block constraint.
+   * Balaban's random-walk expansion of the constrained propagator and his cluster expansion write it as a sum of
+     localised terms `Σ_X Φ(X; c, σ)`.
+   * Each depends on the data only near `X`, with `|Φ(X; ·)| ≤ C_0 e^{−κ d(X)}`: constant size, the form of [I] (1.18)
+     and [III] Theorem 2.
+   * The inherited `E_j`-terms enter the same expansion as local factors of the same constant size.
+4. **The characteristic functions.** Write `χ = Π_{cubes}(1 − χ^c_□)`.
+   * Under the collar measure, `χ^c_□` has probability `≤ e^{−c p²}` per cube (Gaussian tail at `p` standard
+     deviations).
+   * Expanding the product puts the `χ^c` factors into the cluster expansion as local polymers of activity
+     `≤ e^{−c p²}`.
+   * The truncation contributes to `log Z` only through connected clusters, so its mixed variation also needs a cluster
+     joining `I` to the `σ`-dependent part: `≤ C e^{−c p²} e^{−κ d}` (REVIEW-3), not a flat `e^{−c p²}`.
+
+### 29.3 The mixed variation
+
+`Mix(c, c'; σ, σ') := log Z(c, σ) − log Z(c, σ') − log Z(c', σ) + log Z(c', σ')`.
+* **Cancellation.** Every term of 29.2 that depends only on `c`, or only on `σ`, cancels.
+* **What remains:**
+  * the classical cross term;
+  * the localised terms `Φ(X)` whose domain meets both the `r_int`-neighbourhood of `I` and the
+    `r_int`-neighbourhood of the sites `Z` where `σ ≠ σ'`;
+  * the truncation clusters doing the same.
+* **The bound:**
+  `|Mix| ≤ Σ_{z ∈ Z} Σ_{x ∈ I} [C p² e^{−m d(x, z)} + 4 C_0 e^{−κ d(x, z)} + C e^{−c p²} e^{−κ d(x, z)}]
+         ≤ C' (p² + C_0) Σ_{z ∈ Z} e^{−m' d(z, I)}`,
+  with `m' := min(m, κ)/2`.
+  * The sum over `x ∈ I` costs only a constant, since `Σ_x e^{−m d(x, z)} ≤ C_m e^{−m' d(z, I)}`, as REVIEW-2 corrected;
+    there is no `|∂_in|` factor.
+* **Constant-size inputs only:** `C_0 = O(1)` (Balaban), the decay rates `m` and `κ`, and `p²` from the data size.
+  Smallness comes from `d(z, I) ≥ w − 2r_int` for `z` outside `W`.
+
+### 29.4 Total variation of the inner marginal, and Lemma C
+
+* **The ratio.** `law(c | σ)/law(c | σ') ∝ Z(c, σ)/Z(c, σ')`. Fix a reference `c_0`. Then
+  `log [Z(c, σ)/Z(c, σ')] − log [Z(c_0, σ)/Z(c_0, σ')] = Mix(c, c_0; σ, σ')`.
+  So the density ratio lies in `[e^{−2M}, e^{2M}]` after normalisation, with `M := sup_{c, c_0} |Mix|`.
+* **Hence** `TV(law(c | σ), law(c | σ')) ≤ e^{2M} − 1 ≤ 4M` for `M ≤ ¼`, and
+  `M ≤ C (p² + C_0) Σ_{z ∈ Z} e^{−m' d(z, I)}`.
+* **Lemma C** (as in 22.2, now with constant-size inputs):
+  `k_W(z) ≤ k_collar(z) + (|K| + C |I| (log p/m)^d) · 4 C (p² + C_0) e^{−m' d(z, I)}`,
+  with `k_collar` from 29.5.
+* **The collar width.** For `z` outside `W`, `d(z, I) ≥ w − 2r_int`. With
+  `w ≥ 2r_int + (1/m') log(C N (M R)^d p²/ε_W)` and `|K| ≤ N (M R)^d` boxes (24.1), the second term is `≤ ε_W`.
+  * That is the collar `w_j` of 24.1, with `m'` now `min(m, κ)/2`.
+  * No `δ → 0` is used.
+
+### 29.5 The collar coupling given equal inner data (H3's Pinsker step, redone)
+
+* **Given `c = c'`**, couple the collar laws given `(c, σ)` and `(c, σ')`, far to near, as in 10.2 and 19.
+* **The far-marginal bound.** Interpolate `σ_t := σ + t(σ' − σ)`. Every `σ_t` is small field in the common gauge
+  (pair-good). For bounded measurable `f` of the collar sites `F` at distance `≥ r` from `Z`:
+  `d/dt μ_t(f) = Cov_t(f, L_t)`, with `L_t := ∂_t log(weight)`, a local analytic function supported within `r_int` of
+  `Z`.
+* `|Cov_t(f, L_t)| = |Cov_t(f, E_t[L_t | φ_F])| ≤ 2‖f‖_∞ sup_{φ_F, φ'_F} |E_t[L_t | φ_F] − E_t[L_t | φ'_F]|`.
+* **The conditional expectation `E_t[L_t | φ_F]`** is the expectation of a local analytic function under the collar
+  measure with additional Dirichlet data `φ_F` (small field). By 29.2 applied to that domain:
+  * its dependence on `φ_F` is a sum of localised terms joining `supp L_t` to `F`;
+  * each has constant size `C_0 ‖L_t‖`, with `‖L_t‖ ≤ C p²` (linear in data deviations of size `≤ 2ε_j/g = 2p`, times
+    fluctuations up to `p`);
+  * each decays like `e^{−m' d}`.
+* **So** `TV_r := sup_f |μ_σ(f) − μ_{σ'}(f)|/(2‖f‖_∞) ≤ C (p² + C_0) p² Σ_{z ∈ Z} r^{d−1} e^{−m' r}`, plus
+  `C e^{−c p²} e^{−κ r}` from the truncation.
+  * This replaces 19's "`C p |F|^{1/2} e^{−m r}` with the perturbation changing constants by `1 + O(δ)`". Prefactors
+    are polylog in `p`, and there is no `δ`.
+* **The coupling.** Far-to-near maximal coupling as in 10.2:
+  `k_collar(z) ≤ Σ_r #(sites at distance r) TV_r ≤ C (log p/m')^d`. The polylog prefactor shifts the crossover
+  radius only by `O(log p/m')`.
+* **H3 for good boxes** is the same computation on a good box, so H3 also uses constant-size inputs only.
+
+### 29.6 Status of write-out 2, and its citation-level inputs
+
+**Written (paper):** the decomposition, the mixed variation, the total variation, Lemma C, and the collar coupling.
+
+**Citation-level inputs** (Balaban's machinery used on a domain with Dirichlet data):
+1. [15] Theorem 1 and (190): the constrained background on a domain, analytic in the data, with exponential decay.
+2. [13] Theorems 3.12, 3.13: constrained propagators, the random-walk expansion.
+3. [III] (2.13)-(2.15): localisation of determining sets and minimal configurations to a domain.
+4. The cluster expansion of the fluctuation integral with localised terms `O(1) e^{−κ d}`, as in [I] (1.18) and [III]
+   Theorem 2, run on a domain with fixed boundary data.
+   * That Balaban's expansion runs on a domain with fixed boundary data, and not only on the whole lattice, is the
+     adaptation. It is the same construction he uses in his localisations; this is a citation-level reading of it.
+
+**Not used:** any `δ → 0` (27.9).
+
+**Next:** write-out 3, the front advance.
