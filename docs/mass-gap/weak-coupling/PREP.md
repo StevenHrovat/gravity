@@ -963,3 +963,17 @@ thread.
   for the open M1 blocker: a thick-vortex background is a region of acts, and a theory of fluctuations around it could be organised as
   an axis field n (values on the 2-sphere) on the vortex's act region plus small fluctuations, instead of an expansion around flat.
   Whether that structure makes the needed estimates tractable is unexamined.
+- **Thick vortices as the efficient assertion; balance as the outcome (the owner, same day):** "A thick vortex, our dark matter, just
+  being the most efficient way for existence to assert itself makes sense and fits. So the system optimizes for thick vortexes, but for
+  them to exist, there needs to be an outside existence, which is spatially undefined, so that the possibility space does not saturate
+  it. Once both those states balance themselves existence = non-existence and the 'heat death' route comes to an end by existence simply
+  ceasing. This would also suggest an immediate, since causality no longer exists otherwise, restart after it, with the same outcome,
+  but the possibility for different paths inside of it. This is also a nice view of the universe: The outcome, so balance in all things,
+  is guaranteed, but how we get there, is our choice, we just have to follow the rules." Reading (coordinator), only where it touches
+  the Yang–Mills mathematics: (1) thick vortices as the cheapest carriers of flux is what route (b) and the saturation workstream found
+  (a −1 is carried most cheaply by acts; thick SU(2) vortices cost the same at every width). (2) "The outside keeps it from saturating":
+  at every finite volume and every β ≠ 0 the twisted weight is strictly below the reference (`su2_Ztw_lt_Z`), while in the confined
+  large-volume limit the ratio tends to 1. (3) "Balance, existence = non-existence, causality ends": equality Z_tw = Z holds exactly at
+  β = 0, the state with no correlations and an infinite gap (earlier reading), and only there. The identification of thick vortices with
+  dark matter and the restart are cosmological statements outside the Yang–Mills problem; recorded as the owner's reading, not tested
+  here.
