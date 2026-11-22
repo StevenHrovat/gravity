@@ -205,3 +205,128 @@ not "paper". Confidence: medium-high.
 * The slab filling line by line.
 * Whether the minimal action of a closed Z2 sheet exceeds `1/b` (bears on N-2). This is a physics question outside the
   notes.
+
+## Second follow-up (part 1)
+
+Read for this: `../m1-tools/REVIEW3-RESPONSE.md` (sections 1-5) and the update notes in `DECODER-LOCAL.md`, `FILL.md`,
+`WRITEOUTS.md`, `S1-CURRENT.md`, `CLOSING.md`, `CLOSE-OUT.md` and `M1-PLAN.md` 0. I re-read [V] pp. 379-380
+((1.73)-(1.75) and the first-order bound before them) and pp. 388-391 ((1.92)-(1.97), (1.103)-(1.104)) in the extracted
+text layer of the local PDF. REVIEW-3 itself was not read, to keep this check independent.
+
+### Verdict (part 1)
+
+* **N-1: resolved.** At scale 0 small field now means SU(2)-regular, which is exactly the fix I asked for, and section
+  1.1 of the response derives it exactly.
+* **G3 residual: resolved by a change of the blocking.** The new decoder is local by definition, and its stopping-set
+  property holds.
+* **G2: much improved.** Extracting the label before the expansion, as a positive factor with relative stability in the
+  complex directions, is the right mechanism, and the bound it rests on follows from positivity. But the carrying
+  argument for labels that survive to `L_*` (section 4.4) contains one undercounted sum and leans on (1.103) for more
+  than (1.103) gives. That is one reduced GAP.
+* The withdrawal of the "complete at paper level" verdict in `M1-PLAN.md` 0 is right.
+
+No FATAL finding.
+
+### N-1 (small field at scale 0): resolved
+
+* `S1-CURRENT.md` (F-c), the R9 rows and `M1-PLAN.md` 0 now say: SU(2)-regular at scale 0, SO(3)-regular from scale 1
+  on.
+* The exact observation of section 1.1 is correct, and I checked it:
+  * given the SO(3) field, the Z2 layer is a Z2 gauge theory with couplings `(beta/2)|tr U_p|`;
+  * flipping `tau` on a closed set `S` costs `exp(-beta sum_S |tr U_p|)`;
+  * since `|tr U_p| = 2 cos(phi_p/2)`, this inverts the SO(3) quadratic term on `S` (`e^{-2 beta} e^{+beta phi^2/4}`).
+  
+  It is the precise form of ROUTE-B 0.4 and justifies the rule.
+* Every flip (`tr U_p < 0`, operator distance `>= sqrt 2` from the identity) now lies in Balaban's scale-0
+  large-field set in every term, and is charged its own action. The split `p0^2 + (1 - delta) beta` per flip, with
+  `delta = p0^2/beta`, is consistent: no action is used twice, and the label exponent becomes `16 b (1 - delta)`, a
+  negligible loss.
+
+### G3 residual (decoder components not stopping sets): resolved by redesign
+
+* **The new decoder.** It runs per connected component `C` of the union `D_0` of the `M R_0`-cubes that contain a bare
+  flip, and packs only closed positive-gain sets contained in `C`.
+* **Local in the sense Balaban needs.**
+  * The output on `C` is a function of `tau` on `C`.
+  * The event "`C` is a component of `D_0`" depends only on `tau` on `C` and on the adjacent cubes (which must be
+    flip-free). It is a product of per-cube indicators, so it is a stopping set.
+  * By N-1 every flip cube lies in Balaban's scale-0 large-field domain, so `C` lies inside one component of `Z_0`, and
+    the decoder is a function of that component's integration variables.
+* **What is kept.** The label count (each chosen set has positive gain, at least 4 flips for the smallest), the
+  absorption of lone flips and measurability all carry over.
+* **What changes, and where it goes.**
+  * Covariance is now only under shifts of Balaban's grid, as for his own domains.
+  * Real thin closed sheets that leave `D_0` (an unflipped stretch longer than `M R_0`) are absorbed rather than
+    labelled. This is a loss of fidelity, not of correctness, and it belongs to N-2, which is correctly deferred.
+  * `D_0` is sparse: per `M R_0`-cube the expected number of flips is `(M R_0)^4 e^{-beta_0} poly << 1`, so
+    components of `D_0` have cube-animal tails.
+
+### G2 (labels): mostly resolved; one reduced GAP
+
+**What is now right.**
+* **Labels extracted before the expansion.** At release, `T_k(X)` is split by label pattern before the Mayer
+  expansion, into positive operations, and `Phi_ell(X; V) := T^ell_k(X) 1 > 0` (P1).
+* **(P2) is sound.** From [V] p. 379: the integrand of `T_k(X, (U, J))` is the positive real integrand at `(U, 0)` times
+  `e^{Delta}`, with `Delta` the small first-order term. Then for `F = 1_ell >= 0`,
+  `|T(U, J) 1_ell - T(U, 0) 1_ell| <= (e^{sup|Delta|} - 1) T(U, 0) 1_ell`. This follows from positivity alone, and
+  (1.75) is the ratio form of the same thing.
+* **No smallness of a constant prefactor is needed.** The earlier `a_ell (1 + h_ell)` form is abandoned.
+* **The count (P3)** is consistent with N-1's action split.
+
+**What is not yet right.**
+
+1. **The carrying sum is undercounted (section 4.4).**
+   * The response bounds the total change of a label factor over all later steps by
+     `exp(C sum_{k'} (delta_{k'} + c1) |X_{k'}|) <= exp(C |X| + C' sqrt(K) polylog)`, "since `|X_{k'}|` shrinks by
+     `L^{-4}` per step".
+   * But a domain cannot shrink below one cube. A label on a bond of the deep coarse skeleton survives up to `K` steps,
+     so `|X_{k'}| >= 1` for all of them, and the `c1` term gives at least `C c1 (K - k)`, linear in `K`.
+   * The `delta_{k'}` part does give `sqrt(K) polylog` (`delta ~ g polylog`, `sum_j (b j log L)^{-1/2} ~ sqrt(K)`), which
+     is harmless against `L^{(1 - 16b')k}`.
+   * The `c1` part is harmless only if the attached-cluster constant is itself summable over scales, for example of size
+     `e^{-p0(g_{k'})}` as in R8's sum. Otherwise it is a per-step cost: the bound closes only under a rate condition
+     `C c1 < (16 b' - 1) log L`. That is the P3 rate condition of `D-PIN.md` in a weak form, with a constant instead of
+     a polylog.
+   * Which case holds depends on what `c1` is for clusters attached to a fixed domain in a small-field neighbourhood.
+     The response does not say.
+   * Note that the response also drops R8's dimension-4 argument for labels ("not needed"). That argument is exactly
+     what would make the attached clusters cancel against the vacuum ones and be summable.
+2. **(1.103) covers less than it is cited for.**
+   * In [V] (1.103)-(1.104), Balaban's fixed domains `Y_i` "are still large field domains", carrying characteristic
+     functions. They stay part of `Z` and are governed by (1.80)-(1.83) at later steps.
+   * The labelled domains of the response are not large-field domains after release: the SO(3) field there is regular.
+     So (1.103) supports only the one-step convergence of the Mayer expansion with fixed domains (no tree decay needed
+     for them). It does not support their treatment at later steps, which rests entirely on section 4.4's own argument
+     (point 1).
+   * The response should say this, and state what a labelled domain is in `Form_{k'}` for `k' >` release: neither a
+     large-field domain nor an E/R-term.
+3. **The relative bound along real directions.**
+   * Section 4.4 writes `Phi_ell(V_k) = Phi_ell(U_bg)(1 + eta(B))` for the real fluctuation `V_k = U_bg e^{i g B}`. That
+     compares two real configurations, so the statement in 4.3/4.4 that "real backgrounds are never compared" and "the
+     real oscillation of `Phi_ell` is never needed" is not accurate.
+   * The bound is available if Balaban's first-order expansion around a regular `U` is in both the real and the complex
+     deviation (the text layer says "first order in `A'`, `J`", which supports this) over the next step's fluctuation
+     domain. Then the same positivity argument covers real deviations of size `g|B|`.
+   * Citation-level and plausible, but the citation should say that `A'` covers the real fluctuation, and the wording
+     should be corrected.
+4. **Per cube or per component.** The author's own open point (is `delta_k` per `M R_k`-cube or per component?) stands.
+   * The displayed bound before (1.73) carries `M^d R_k^{d+2}`, which looks like a per-cube volume factor.
+   * The remark "the resummed expression has the same bound" for `V(X~)` is ambiguous.
+   * The case split (small components released, large ones carried until `delta |X| <= 1/4`) covers both readings, so
+     this is not a gap, only a check.
+
+Severity of the remaining G2 point: GAP (reduced). Confidence:
+* high that the sum in 4.4 is undercounted as written;
+* medium on whether `c1` is summable (I could not pin it in the text layer);
+* medium-high on point 2.
+
+### Smaller observations on part 1
+
+* **H6 (per-flip normalisation): consistent with my N1.** The withdrawal of `f(P) <= |P|/6` and the rank-count exponent
+  `beta^{3/2}` per removed plaquette are what I would expect. The ratio stays at citation level, as stated.
+* **Label lifetime: corrected.** Labels are decided at scale 0 and extracted at the release of their component, up to
+  `n0 + R_0` steps later (section 4.2). This matches my earlier note.
+* **New NIT: "an upper bound, not a closed form".** The response says the parity sum of `WRITEOUTS.md` 1 step 4 is now
+  only an upper bound (labelled domains have a hard core). That is fine for the count, but `Form_k`'s sum over
+  `ell ~ tau'` must then be written as a hard-core polymer sum over labelled domains, not as a product over coarse
+  bonds. It should go into the part-2 rewrite of `S1-CURRENT.md`.
