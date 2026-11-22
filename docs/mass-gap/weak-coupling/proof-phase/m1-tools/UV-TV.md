@@ -18,6 +18,8 @@
 
 > **Status (section 29):** write-out 2 (Lemma C's cross term and the collar coupling, which is also H3's Pinsker step) is written with constant-size smallness only. All smallness comes from decay across the collar. It uses Balaban's machinery on a domain with Dirichlet data, a citation-level adaptation.
 
+> **Status (sections 30-32):** write-out 3 (front advance; `P(differ on B) ≤ C (t/ℓ)^{−d C_2}`, uniform in spacing and volume) and write-out 4 (H1 by positive gas, Kotecký-Preiss and van den Berg-Maes on polymer configurations) are written. All four write-outs are done. Lemma UV-TV has a complete argument written at paper level, given (c) and the citation-level readings (32).
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -1918,3 +1920,191 @@ on the domain.
 **Not used:** any `δ → 0` (27.9).
 
 **Next:** write-out 3, the front advance.
+
+## 30. Write-out 3: the front advance (the chaining of 12.4, written out)
+
+### 30.1 Objects
+
+* **Scales** `j = ℓ, ℓ−1, ..., 0`. At scale `j` the two coupled states are `X_j`, `X'_j`, and
+  `D_j := {x : X_j(x) ≠ X'_j(x)}` (scale-`j` sites, block-axial gauge).
+* **Target.** `B_j` is the image of the observable's support at scale `j`. The **front distance** is
+  `Δ_j := dist_j(B_j, D_j)`, in scale-`j` units.
+* **Start.**
+  * (A): the far coarse data are resampled at physical distance `≥ t/2` from `supp F`, so `Δ_ℓ ≥ c t/ℓ`.
+  * (B): fresh randomness on the mirror side at physical distance `≥ 2t`, so again `Δ_ℓ ≥ c t/ℓ`.
+* **Regions.** `Λ''_j :=` the deterministic ball of radius `ρ_j := L^{ℓ−j} Δ_ℓ` (scale-`j` units) around `B_j`. Every
+  truncation event is taken over `Λ''_j`. So `|Λ''_j| ≤ C (L^{ℓ−j} t/ℓ)^d / ℓ_B^d`.
+
+### 30.2 One scale
+
+At scale `j`, conditionally on all coarser data of both copies, the **sources** are:
+* `src¹_j`: the boxes under the coarse sites of `D_{j+1}`, enlarged by one box;
+* `src²_j`: boxes where the patterns of the two copies differ (write-out 4);
+* `src³_j`: everything outside `Λ''_j`.
+
+**Claim (front advance).** Let `a_j := C_F (λ_j^{−1} + M R_j/κ) log|Λ''_j| + N_j M R_j`. Here `λ_j` is the rate of 28 per
+scale-`j` unit, `M R_j` the cube size, and `N_j` the composite-box cap in cubes (24.1). Then, except on an event
+`E_j` with `P(E_j) ≤ C|Λ''_j|^{−C_2}`, `D_j ⊂ N_{a_j}(src_j)`.
+
+**Proof.**
+1. **Pointwise disagreement.** Theorem 28 with weights `v(·) := e^{−λ_j dist_ω(·, x)}` centred at a site `x` gives
+   `P(x ∈ D_j | coarser) ≤ C_s Σ_{y ∈ src_j} e^{−λ_j dist_ω(x, y)}`.
+   * `C_s := max_y c(y)/((1 − γ_DS) c_min)` is polylog: coverage `≤ n_W + ℓ_B^d`.
+   * Union over the sites `x ∈ Λ''_j` with `dist_ω(x, src_j) > a`:
+     `P(some such x ∈ D_j) ≤ C_s |Λ''_j| Σ_{s > a} s^{d−1} e^{−λ_j s} ≤ C |Λ''_j| e^{−λ_j a/2}`.
+2. **From `dist_ω` to `dist`.** `dist_ω` contracts composite boxes. Let `E^{path}_j` be the event that some path in
+   `Λ''_j` of length `≥ a'` has at least half its length inside composite boxes.
+   * Count at the level of `M R_j`-cubes: a path of length `a'` crosses `≥ a'/(C M R_j)` cubes, and cube paths number
+     `≤ (3^d)^{#cubes}`.
+   * At least half of those cubes must be bad in one copy, priced by H2 (born) or H2a (inherited), with the min-trick.
+   * So `P(E^{path}_j) ≤ |Λ''_j| Σ_{n ≥ a'/(C M R_j)} (3^d (C e^{−c κ/2})^{1/2})^n ≤ |Λ''_j| e^{−c' κ a'/(M R_j)}`.
+   * On its complement, `dist(x, y) ≤ 2 dist_ω(x, y) + max diam(composite box) ≤ 2 dist_ω(x, y) + N_j M R_j`.
+3. **Choose** `a := (2/λ_j)(C_2 + 1) log|Λ''_j|` and `a' := (M R_j/(c' κ))(C_2 + 1) log|Λ''_j|`. Then
+   `E_j := {step 1 fails} ∪ E^{path}_j ∪ F_j ∪ G_j ∪ T_j ∪ T_{j+1}`, with `P(E_j) ≤ C|Λ''_j|^{−C_2}`, and
+   `D_j ⊂ N_{a_j}(src_j)` on `E_j^c`. ∎
+
+**The pattern sources** `src²_j` are themselves within distance `a^{pat}_j := C (M R_j/κ) log|Λ''_j|` of
+`src¹_j ∪ src³_j`, except on an event of probability `≤ |Λ''_j|^{−C_2}` (write-out 4, 31.5). They are absorbed into
+`a_j` by enlarging `C_F`.
+
+### 30.3 The recursion
+
+* **On `E_j^c`:**
+  * the inherited sources lie within one box of the image of `D_{j+1}`, which is at distance `L Δ_{j+1} − L ℓ_B` from
+    `B_j`;
+  * the outside lies at distance `ρ_j` from `B_j`.
+* **So** `Δ_j ≥ min(L Δ_{j+1} − C ℓ_B L, ρ_j) − a_j`.
+* **By induction from `ℓ`**, with `ρ_j = L^{ℓ−j} Δ_ℓ`:
+  `Δ_j ≥ L^{ℓ−j} Δ_ℓ − Σ_{i=j}^{ℓ−1} L^{i−j}(a_i + C ℓ_B L) = L^{ℓ−j}[Δ_ℓ − Σ_{k=1}^{ℓ−j} L^{−k}(a_{ℓ−k} + C ℓ_B L)]`.
+* **Size of `a_{ℓ−k}`.** `log|Λ''_{ℓ−k}| ≤ d(k log L + log(t/ℓ))`, `N_{ℓ−k}` is polynomial in `log|Λ''|` (24.1), and
+  `R_{ℓ−k} = (log g_{ℓ−k}^{−2})^r` with `g_{ℓ−k}^{−2} ≈ g_ℓ^{−2} + b k log L`. So
+  `a_{ℓ−k} ≤ C M (R_ℓ + k)^{r} (k + log(t/ℓ))^q` for some fixed `q`: polynomial in `k` and in `log(t/ℓ)`.
+* **The bracket.** `Σ_k L^{−k} a_{ℓ−k} ≤ C M R_ℓ^{r'} (log(t/ℓ))^q =: A_ℓ`, a geometric sum.
+* **Condition** (front intact): `Δ_ℓ ≥ 2(A_ℓ + C ℓ_B L)`. With `Δ_ℓ = c t/ℓ` and `A_ℓ` polylog in `1/ℓ`, it holds for all
+  `ℓ ≤ ℓ_0(t)` at fixed `t > 0`.
+* **Then on `∩_j E_j^c`:** `Δ_j ≥ L^{ℓ−j} Δ_ℓ/2 > 0` at every scale. In particular `Δ_0 > 0`: the fine fields agree on
+  `B`.
+
+### 30.4 Result
+
+* `P(the fine fields differ on B) ≤ Σ_{j=0}^{ℓ} P(E_j) ≤ C Σ_{k ≥ 0} (L^k t/ℓ)^{−d C_2} ≤ C' (t/ℓ)^{−d C_2}`.
+  * The sum is geometric in `k`, dominated by the top scale.
+  * Any `C_2 > 0` suffices here: the union over sites is already inside `P(E_j)`.
+  * This replaces 12.4's two-term form, which counted the exponential tail separately, by the front argument.
+* **Uniform** in the spacing (geometric in `k`, polylog constants depending on `g_ℓ` and `t/ℓ` only) and in the volume
+  (only the balls `Λ''_j` enter).
+* **For OS density** (13.4): `‖F − f_ℓ‖_OS → 0` as `ℓ → 0` at fixed `t`, at rate `(t/ℓ)^{−d C_2}`.
+* **Status of write-out 3: paper, written.**
+
+## 31. Write-out 4: H1 at the polymer level
+
+### 31.1 The gas
+
+* **Setting.** Fix scale `j`, the coarse data `X_{j+1}`, and a region `G` of cells (`M R_j`-cubes) on which `X_{j+1}` is
+  small field. The rest of the region (inherited, coarse-bad cells) is handled in 31.6.
+* **Polymers** `γ`: connected components, under cube adjacency, of the discrete data of the pattern `ω_j` inside `G`.
+  The discrete data are:
+  * the domain history at scales `≤ j`, with unreleased regions;
+  * labels and Z2 excitations.
+  
+  Long-range interactions are handled by links (31.2).
+* **Compatibility.** Two polymers are compatible iff they are more than `D_c := 100` cubes apart: Balaban's
+  admissibility distances ([III] (2.3)-(2.9), poor scan; REVIEW-3). A pattern is a finite family of pairwise compatible
+  polymers.
+* **Activities.** `z(γ) := ∫_{fibre} ρ^{γ}_j / ∫_{fibre} ρ^{∅}_j`, the ratio of the term with `γ` to the small-field
+  alternative on `γ`'s neighbourhood, given the rest. By 24.1 with the slack of (1.97') and (P2):
+  `z(γ) ≤ e^{−p0(g_j)} (C e^{−c κ})^{#cubes(γ)}`.
+* **Effective interaction.** Polymers interact through the small-field fluctuation integral on the complement. By the
+  constant-size cluster expansion (29.2), `w(ω) ∝ Π_γ z(γ) · exp(Σ_X I_X(ω))`, where:
+  * `I_X` is a localised term whose domain `X` meets at least two polymers. Since polymers are `D_c` apart, `X` has
+    linear size `d(X) ≥ D_c`;
+  * `|I_X| ≤ M_X := C (p² + C_0) e^{−κ d(X)}`: constant size times decay (27.9);
+  * `I_X := 0` for every other `X` with `d(X) ≥ D_c`.
+
+### 31.2 The positive split (REVIEW-3)
+
+* For every domain `X` with `d(X) ≥ D_c` in the region, `e^{I_X(ω)} = e^{−M_X}(1 + h_X(ω))`, with
+  `0 ≤ h_X(ω) ≤ e^{2M_X} − 1`.
+* The factor `Π_X e^{−M_X}` is a **global constant**, independent of `ω`.
+* So `w(ω) ∝ Σ_{ℒ} Π_γ z(γ) Π_{X ∈ ℒ} h_X(ω)`, summed over link sets `ℒ`: a **positive** measure on pairs `(ω, ℒ)`
+  with product weights and the hard core `D_c`.
+* **Links are objects.** A link `X ∈ ℒ` occupies the cubes of `X`, with weight `≤ e^{2M_X} − 1 ≤ C (p² + C_0) e^{−κ d(X)}`,
+  `d(X) ≥ D_c`.
+  * Vacuum links (where `I_X = 0`) carry `h_X = e^{M_X} − 1 ≤ C M_X`. Their density per cube is
+    `≤ Σ_{X ∋ x} C M_X ≤ C (p² + C_0) e^{−κ D_c}`, which is tiny.
+* **Markov structure.** The joint law of `(ω, ℒ)` is a positive product-form gas of objects (polymers and links) with a
+  hard core of range `D_c`.
+  * Each link's weight depends only on the polymers it meets.
+  * As a field of cell states ("which objects occupy this cube"), it is Markov with respect to `D_c`-neighbourhoods,
+    extended along occupied links.
+
+### 31.3 Peierls per copy
+
+For a set `A` of cubes:
+`P(every cube of A is occupied by a polymer or a link) ≤ (C e^{−c κ/2})^{|A|}`.
+* By positivity and the product form, the probability that given objects `o_1, ..., o_n` are present is
+  `≤ Π_i weight(o_i) · sup Π (1 + h)` over the links touching them.
+* The sum over the families of objects covering `A` (lattice animals in cubes, `(3^d)^{|A|}`, and links with
+  `e^{−κ d}`) converges for `κ` large.
+* This is the H2 of 24.1 together with the links.
+
+### 31.4 Correlations (Kotecký-Preiss)
+
+* The gas of 31.1-31.2, with Mayer bonds `e^{I_X} − 1` for the correlation expansion, satisfies the Kotecký-Preiss
+  criterion `Σ_{γ ∋ cube} |z(γ)| e^{a #cubes(γ)} ≤ a` for `κ` large, with the compatibility entropy `(C 200^d)^n`.
+* This gives decay of pattern correlations:
+  `|Cov(φ_A(ω), φ_B(ω))| ≤ C ‖φ_A‖ ‖φ_B‖ |A| (C e^{−c κ/2})^{dist(A, B)/(M R_j)}`.
+* That covers the pattern-index covariance term of (B) (`REVIEW3-RESPONSE.md` 13 (iii); Theorem A_good 16 (iii)).
+
+### 31.5 The coupling: disagreement percolation on polymer configurations
+
+* **Two gases.** The two copies' gases have the same objects and weights away from
+  `S := N_{D_c}(D) ∪ (cells outside Λ''_j) ∪ (cells where the coarse data differ)`. Activities and link weights depend
+  on the coarse data only near the object.
+* **The coupling** (van den Berg-Maes, on cells, as in their hard-core gas case).
+  * Reveal cells in an order adjacent to the current disagreement set, starting from `S`, and couple each cell's
+    conditional laws maximally given what is revealed.
+  * **Key property:** if both copies are vacuum at a cell, they agree there. So a disagreement at a cell implies that
+    the cell is occupied in at least one copy. This is deterministic and needs **no conditional bound**, which is why
+    forced continuation does no harm.
+  * Agreement propagates: an unrevealed region surrounded by revealed agreeing cells, with equal weights, has the same
+    conditional law in both copies (Markov, 31.2). So it is coupled identically.
+* **Path bound.** A disagreement at cell `b` requires a chain `c_1, ..., c_n` from `S` to `b` of cells occupied in copy
+  1 or in copy 2: adjacent within `D_c`, or joined by a link. Splitting the chain between the copies and using 31.3
+  for each copy (min-trick):
+  `P(chain) ≤ Σ_{A_1 ⊔ A_2} min(P_1(A_1 occ), P_2(A_2 occ)) ≤ 2^n (C e^{−c κ/2})^{n/2}`.
+* **Result:**
+  `P(ω_b ≠ ω'_b) ≤ C Σ_{b' ∈ S} (C' e^{−c κ/4})^{dist(b, b')/(D_c M R_j)}`.
+  * This is the quantitative H1 used in 24.2 and 30.2.
+  * With a union bound over `b ∈ Λ''_j`, pattern disagreements lie within `C (D_c M R_j/κ) log|Λ''_j|` of `S`, except
+    with probability `≤ |Λ''_j|^{−C_2}`. That is 30.2's `a^{pat}_j`.
+
+### 31.6 Cells where the coarse field is bad
+
+* There the gas is not dilute: the patterns belong to inherited composite boxes.
+* For the coupling, such cells count as **always occupied**: disagreement passes freely, as through composite boxes in
+  28.
+* Their rarity is priced by the annealed H2a and the truncation `T_{j+1}` (23.1), not by the gas. Paths through them
+  are counted in 30.2's `E^{path}_j`.
+* If the coarse data agree there and the surrounding patterns agree, the conditional pattern laws inside coincide, and
+  they are coupled identically. A bad box acts only through its boundary (16).
+
+### 31.7 Status of write-out 4
+
+**Paper, written.** Inputs:
+1. the activity bound of 24.1 with the slack of (1.97') (re-proof (c));
+2. the constant-size cluster expansion for the interactions (29.2);
+3. the compatibility range from Balaban's admissibility (citation, poor scan);
+4. Kotecký-Preiss and van den Berg-Maes (standard).
+
+## 32. State after the four write-outs
+
+* **Lemma UV-TV (N-2's key step)** has a complete argument written at paper level. It rests on:
+  * **(c)**, the strengthened induction (section 26, a re-proof checked three ways);
+  * **citation-level readings:**
+    * (a), what `E_k(Z)` is;
+    * admissibility (poor scan);
+    * Balaban's machinery on a domain with Dirichlet data (29.6);
+  * **standard tools:** Kotecký-Preiss, van den Berg-Maes, and the coupling contraction of 28.
+* **The write-outs:** 1 (28), 2 (29), 3 (30), 4 (31) are written.
+* **Lean:** the coupling-form theorem (28.4) is the first target, after the reviewers' check of 28.

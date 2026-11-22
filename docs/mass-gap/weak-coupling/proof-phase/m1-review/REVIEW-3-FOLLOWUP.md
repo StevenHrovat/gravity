@@ -1499,3 +1499,130 @@ Read: `../m1-tools/UV-TV.md` 27 and 28 in full; `S1-INDUCTION.md` 1, rows 5-6. N
 * The Follow-up 9 points are folded in correctly. Item 9 (constant-size smallness only) is a real constraint on
   write-outs 2 and 4 (Lemma C, H3's Pinsker step). It is workable through analyticity at the fluctuation scale and
   Balaban's cluster expansion, but not through any `delta -> 0`.
+
+## Follow-up 11 (write-out 2: Lemma C's cross term and the collar coupling, `UV-TV.md` 29), 2026-11-23
+
+Read: `../m1-tools/UV-TV.md` 29 in full. Nothing was built or re-run.
+
+### Verdict
+
+Write-out 2 is sound at paper level.
+* **No hidden `1 + O(delta)`.** Every M1-specific step gets its smallness from decay across the collar
+  (`e^{-m' w}`), with constant-size prefactors (`C_0 = O(1)`, `p^2`). Balaban's own internal smallness (analyticity
+  radius `alpha_0` against the fluctuation width `g`) enters only through the conclusions of his cluster expansion,
+  which 27.9 allows.
+* **The decomposition is legitimate**, with the fibre constraint and the block-axial gauge, if the layers `I` and `O`
+  are chosen as unions of `L`-blocks (NIT).
+* **The mixed-variation bound has no interface factor.** For each changed site `z`, the sum over `x ∈ I` is
+  `<= C e^{-m' d(z, I)}`. The size factors `|K|` and `|I|` appear only in Lemma C's count of disagreeing sites, and
+  `w` absorbs them logarithmically.
+* **"Balaban's machinery on a domain with fixed boundary data" has real content.**
+  * Fixed outside fields are part of his own framework, but his theorems are proved for admissible domains with
+    `R`-scale margins. The collar is thinner than one `M R_j`-cube and shaped by `K`.
+  * It is plausible, since his estimates are local at scale `M << w`. It should be named as an adaptation to
+    non-admissible domain shapes, uniform in the shape and two-sided, not merely as a reading.
+* No FATAL, no GAP.
+
+### (1) Does any step secretly use `1 + O(delta)`?
+
+**No, in M1's own steps.** Checked step by step:
+* **The classical cross term (29.2, item 2).** The second-order term is `<= C p^2 e^{-m d}`. Here `p = eps_j/g_j` is
+  the explicit size of small-field data, and the decay comes from [15] (190) and [13] Theorems 3.12-3.13.
+  * Higher orders carry `eps^3/g^2 = g p^3`: the explicit cubic Wilson terms, allowed by 27.9.
+  * No `delta`.
+* **The fluctuation terms (29.2, item 3).**
+  * The output bound `|Phi(X)| <= C_0 e^{-kappa d(X)}` is Balaban's constant-size bound ([I] (1.18), [III] Theorem 2).
+  * In the mixed variation each term is bounded by `4 sup|Phi|`, with no smallness of `Phi` used. Only the decay of
+    terms joining `I` to `Z` makes it small.
+  * Internally, Balaban's expansion converges because the E-terms' variation over fluctuations of width `g` is small
+    against his analyticity radius `alpha_0 = g C_0 (log g^{-2})^{q0}`. That is his smallness, used only through his
+    result, as 27.9 permits.
+* **The truncation (29.2, item 4).** "Probability `<= e^{-c p^2}` per cube (Gaussian tail)" silently treats the
+  collar measure as Gaussian at the scale of `p` standard deviations.
+  * With constant-size E-terms the honest bound is `<= e^{-c p^2 + C M^d}` per `M`-cube, since the E-terms change the
+    weight by at most `e^{O(1)}` per site of the cube.
+  * Since `p^2 >> M^d`, this is harmless. Or cite it directly as Balaban's large-field estimate for the
+    characteristic functions. **NIT**: write it that way.
+* **The collar coupling (29.5).**
+  * `||L_t|| <= C (p^2 + C_0)`: data deviation `p` times fluctuation `p`, plus the E-terms' `t`-derivative of constant
+    size.
+  * The dependence of `E_t[L_t | phi_F]` on `phi_F` runs through connected terms joining `supp L_t` to `F`, each of
+    constant size, with decay.
+  * No `delta`. This correctly replaces 19's "`1 + O(delta)`".
+* **Conclusion.** The rule of 27.9 is respected.
+
+### (2) Is the decomposition of `log Z(c, sigma)` legitimate with the fibre constraint and the gauge fixing?
+
+**Yes, with one NIT.**
+* **Fibre constraint.** The constrained background ([15]: minimisers with fixed block averages) and the constrained
+  propagators ([13] Theorems 3.12, 3.13) are exactly Balaban's tools for the block constraint. On the collar with
+  Dirichlet data they apply verbatim, provided every block constraint is either wholly inside the free collar or
+  wholly inside the data.
+  * If an `L`-block straddles `I` and the free collar, its constraint couples `c` to collar variables. The decomposition
+    still holds in principle, but the background problem then has mixed constraints.
+  * **NIT:** take `I` and `O` as unions of `L`-blocks, which costs at most `L` in width, so that the constraints separate
+    cleanly.
+* **Gauge.**
+  * In the block-axial gauge relative to the coarse configuration, the axial trees lie inside the `L`-blocks, so the
+    gauge fixing is local and consistent between data and collar.
+  * The data `c` and `sigma` are in the same gauge as the collar, since the coarse field is the same near `W` in both
+    copies.
+  * Gauge-fixing and Faddeev-Popov Jacobians that depend on the background are part of the fluctuation terms (local,
+    constant size). Constant ones cancel in `Mix`.
+* **Non-locality of the background.** `U_bg(c, sigma)` depends on both data sets everywhere in the collar, with decay.
+  A localised term `Phi(X; U_bg)` far from both `I` and `Z` therefore still depends on both. Its mixed derivative has
+  the product decay `e^{-m (d(X, I) + d(X, Z))} <= e^{-m d(I, Z)}`, and the sum over `X` is polynomial in `d`, absorbed
+  by halving `m`.
+  * 29.3's phrase "terms `Phi(X)` whose domain meets both neighbourhoods" holds after Balaban's localisation of the
+    background ([V] (1.59)-(1.63)). Say so in one line.
+
+### (3) Running Balaban's machinery on a domain with fixed boundary data: a fair reading, or a hidden assumption?
+
+**Fair in spirit, but with real content. Name it as an adaptation.**
+* **What supports it.** Balaban's small-field integrals are always done on domains `Ω_k` with the configuration
+  outside held fixed:
+  * [IV] (1.74)-(1.75), restriction and extension of a regular outside field;
+  * [III] (2.13)-(2.15), localisation of determining sets and minimisers to a domain.
+  
+  His random-walk and cluster expansions are local at the scale of `M`-cubes.
+* **What is new.**
+  * **Domain class.** His theorems are proved for admissible domains: unions of `M R_j`-cubes, with distance
+    conditions of order `R_j` between small-field boundaries and large-field regions. The collar has width
+    `w ~ polylog(log g^{-2}) << M R_j`, and its shape is set by the cluster `K`. It is not an admissible Balaban domain.
+  * **Two-sided data.** Inner and outer Dirichlet data, with the decay across the shell as the quantity of interest.
+  * **Uniformity.** The constants `C_0`, `m`, `kappa` must be uniform over all collar shapes and all small-field data.
+* **Why it is plausible.** Every estimate used is local at scale `M` (propagator decay, localisation, cluster
+  expansion), and `w >> M` for small `g`. The `R`-margins in Balaban serve his large-field bookkeeping (factors (1.76),
+  the delay), which the collar does not need.
+* **Required wording.** "Citation-level adaptation: [13], [15], [I]/[II] on non-admissible domains (shells of width
+  `w >> M`, any shape), with Dirichlet data on both sides, constants uniform in the shape." This goes in the list of
+  unchecked adaptations next to (a) and admissibility, not as a mere reading. 29.6 item 4 already points this way;
+  make the domain class explicit.
+
+### (4) Does the mixed-variation bound really have no interface factor?
+
+**Yes.**
+* For a changed site `z` at distance `D` from the inner layer `I`, which is a surface of any extent,
+  `Sum_{x ∈ I} e^{-m |x - z|} <= Sum_rho rho^{d-2} e^{-m sqrt(D^2 + rho^2)} <= C_m e^{-m' D}`, with `m' = m/2`.
+  The polynomial factor is absorbed by halving the rate.
+* The same holds for the fluctuation and truncation terms: polymers joining `z` to `I`, summed over their attachment
+  points on `I`.
+* So `M <= C (p^2 + C_0) Sum_{z ∈ Z} e^{-m' d(z, I)}`, with no `|∂_in|`. This corrects 16's step 2, as REVIEW-2 asked.
+* **What remains, correctly:** the factor `(|K| + C |I| (log p)^d)` in `k_W(z)`. When `c` differs, all of `K` and the
+  collar's response near `I` count as disagreeing. It is a counting factor, not part of the variation, and the
+  collar's width `w >= 2 r_int + (1/m') log(C N (M R)^d p^2/eps_W)` absorbs it logarithmically. Consistent with 24.1.
+
+### Findings, one line each (follow-up 11)
+
+* No FATAL, no GAP.
+* No hidden `1 + O(delta)` in write-out 2. The smallness comes from decay across the collar, with constant-size
+  prefactors. Balaban's internal smallness enters only through his cluster-expansion conclusions.
+* The mixed variation has no interface factor (sum over `I` at fixed `z` is `<= C e^{-m' d(z, I)}`). The `|K|`, `|I|`
+  factors appear only in the disagreement count, absorbed by `log` in `w`.
+* Naming: "Balaban's machinery on a domain with fixed boundary data" has content. The collar is thinner than an
+  `M R_j`-cube, `K`-shaped and two-sided, and the constants must be uniform in shape. It is plausible (everything is
+  local at scale `M << w`). List it as a citation-level adaptation with that domain class explicit.
+* NITs:
+  * take `I`, `O` as unions of `L`-blocks, so the block constraints separate;
+  * truncation tail `e^{-c p^2 + C M^d}` per cube, or cite Balaban's large-field estimate;
+  * the background-mediated mixed terms are localised by [V] (1.59)-(1.63), with product decay.

@@ -1565,3 +1565,103 @@ Renumber once.
 | tenth-follow-up points | resolved |
 | write-out numbering | inconsistent (NIT) |
 | **N-2** | **GAP (reduced):** write-out "coupling-form theorem" done; still owes Lemma C's cross term (constant smallness only), the front advance, H1's polymer coupling, and (c)'s write-up |
+
+## Twelfth follow-up
+
+Read for this: `../m1-tools/UV-TV.md` 29. REVIEW-3 was not read. Nothing was built.
+
+### Verdict (twelfth follow-up)
+
+* **Write-out 2 (Lemma C's cross term and the collar coupling) is correct at paper level.**
+* **It respects the constant-size restriction throughout.** The only inputs are:
+  * Balaban's `O(1)` per site and `C_0 e^{-κ d}` per localised term;
+  * the decay rates `m` and `κ`;
+  * the data size `p = ε_j/g_j` (polylog).
+  
+  Every smallness comes from decay across the collar width `w`, never from a `δ -> 0`.
+* **The fixed-boundary-data reading does not bring back a frozen region:**
+  * the data held fixed are small-field configurations in the support of the pattern-conditioned measure (the inner
+    layer `I`, the outer layer `O`, and in 29.5 the far collar sites `F`);
+  * they are fixed for one renormalisation step on a finite collar, never carried through scales;
+  * the bounds are uniform over such data.
+  
+  The frozen region of `SKETCH-STEPS.md` 2 was arbitrary, unpenalised fine content (possibly large field) held fixed
+  through all scales. Neither feature is present.
+* **The bound is uniform in the volume.** Everything is local to the composite box `W`. The only non-local inputs (the
+  cluster size bound `N (M R)^d` and the collar width) depend on `log |Λ''|`, not on the total volume.
+* **Three NITs:**
+  * the inner and outer Dirichlet layers should be unions of `L`-blocks, because of the fibre constraint;
+  * the constant in the collar width contains Balaban's `E_0(M)`, which grows when `κ` is raised. It enters only
+    logarithmically, but should be named;
+  * the expansion of the characteristic functions relies on Balaban's analyticity domain containing their support
+    (`q0 >= p0`, `EK-DERIVATION.md` Q4).
+* **N-2 stays a GAP, reduced further.** Write-outs 1 and 2 are done. It owes the front advance, H1's polymer coupling,
+  and the write-up of (c). No FATAL finding.
+
+### 1. Is the constant-size restriction respected?
+
+| place | input used | check |
+|---|---|---|
+| 29.2 (1), background | [15] Theorem 1, (190); [13] Theorems 3.12, 3.13: `|∂U_bg/∂data| <= C e^{-m d}` | decay only; constant `C`. Fine. |
+| 29.2 (2), classical cross term | `⟨Δc, G_{I,O} Δσ⟩/g^2` with `|Δc|, |Δσ| <= 2C ε_j` | gives `p^2 e^{-m d}`; `p^2` is the data size, not a small parameter. Higher orders carry extra `ε` and the same decay. Fine. |
+| 29.2 (3), fluctuation part | cluster expansion, localised terms `C_0 e^{-κ d(X)}` ([I] (1.18), [III] Theorem 2) | constant size; inherited E-terms as local factors of the same size. Fine. |
+| 29.2 (4), characteristic functions | `χ = Π(1 - χ^c_□)`, `χ^c` at `e^{-c p^2}` per cube, entering through connected clusters | needs `exp(A_j)` controlled on the smooth cut-off's support, which lies inside Balaban's analyticity domain since `α_0 >= 2 ε` when `q0 >= p0` (`EK-DERIVATION.md` Q4). Balaban's own handling of the characteristic functions (their derivatives in [III] (3.37)) is the citation. NIT: state it. |
+| 29.3, mixed variation | sum of the three cross terms over `x ∈ I`, `z ∈ Z` | `Σ_x e^{-m d(x, z)} <= C_m e^{-m' d(z, I)}`, with no interface factor. `C'(p^2 + C_0)` prefactor. Fine. |
+| 29.4, total variation and Lemma C | `TV <= e^{2M} - 1 <= 4M` for `M <= 1/4`; `k_W(z) <= k_collar(z) + (|K| + C|I|(log p/m)^d) 4C(p^2 + C_0) e^{-m' d(z, I)}` | correct. Collar `w >= 2 r_int + (1/m') log(C N (M R)^d p^2/ε_W)`. The constant `C` here contains Balaban's `E_0`, which depends on `M`, and `M = M(κ)` grows when `κ` is raised ([I] Theorem 3). It enters `w` only through a logarithm, so it is harmless. NIT: name it (`EK-DERIVATION.md` Q3's caution). |
+| 29.5, collar coupling (Pinsker redone) | `Cov_t(f, L_t) = Cov_t(f, E_t[L_t | φ_F])`, with `‖L_t‖ <= C p^2` | the conditional expectation's dependence on `φ_F` comes from the same cluster expansion with Dirichlet data; constant size times decay. The bound on `∂_t` of the E-terms uses Cauchy with `|Δσ|/α_0 <~ p/(log g^{-2})^{q0} = O(1)` for `q0 >= p0`. Fine. `TV_r <= C (p^2 + C_0) p^2 Σ_z r^{d-1} e^{-m' r} + C e^{-c p^2} e^{-κ r}`; `k_collar <= C (log p/m')^d`. Correct. |
+
+**Verdict on the restriction: respected.** The previous "`1 + O(δ)`" of 19 is gone, and the price is only a polylog
+prefactor in `p`, which shifts the crossover radius by `O(log p/m')`.
+
+### 2. Does the fixed-boundary-data reading bring back a frozen region?
+
+**No.**
+* **What is held fixed:**
+  * in 29.3-29.4, the inner data `c` enter `Z(c, σ)` only through the inner layer `I` (finite range, H0; good collar
+    boxes carry no links, and links from `K` are cluster edges);
+  * the outer data `σ` enter only through the outer layer `O`;
+  * in 29.5, the far collar sites `F`.
+  
+  All of these are pattern-good collar sites, so the configurations there are small field and lie in the support of
+  `μ_ω`. **The multimodal content of `K` is never held fixed inside an estimate:** it sits in `w(c)`, which cancels in
+  the ratio.
+* **For how long:** for one step, the integral over the scale-`j` collar variables with `A_j` (which already contains
+  all finer scales as E-terms) on a finite domain. Nothing is carried through the induction with frozen content.
+* **Uniformity over the data:** all bounds are sup over small-field data within `C ε_j` of a common background. Those
+  are exactly the configurations Balaban's small-field estimates control.
+* **Is the reading plausible?** Yes. Balaban's analysis always runs on small-field domains `Ω_k` whose complements are
+  large-field regions with given fields. His localisation ([III] (2.13)-(2.15)) and [15]'s variational problem on a
+  domain with boundary data are built for this. The boundary fields there are regular, as here. Citation level, as the
+  note says.
+* **Contrast with the frozen region (`SKETCH-STEPS.md` 2):** that was the content of `supp F`, arbitrary and possibly
+  large field, with no action penalty, held fixed through `log_L(ell/a)` steps. None of these features is present.
+
+### 3. Uniformity in the volume
+
+* Every quantity in 29.2-29.5 is local to `W`: the collar, the layers `I`, `O`, the cluster `K`. The bounds depend on
+  `|K| <= N (M R)^d`, `|I|`, `p`, `C_0`, `m`, `κ`.
+* `N` depends on `log |Λ''_j|` (24.1), a local region of the size of `dist(B, D)`, never on the total volume.
+* So Lemma C's `k_W` and the collar width are uniform in the volume. Combined with the theorem of 28 (eleventh
+  follow-up), the per-scale conclusion is uniform in the volume, as `MassGapLoc`'s volume-first limit needs.
+
+### 4. Smaller points
+
+* **Layers and the fibre constraint (NIT).** The block constraint `block(V_j) = X_{j+1}` acts inside `L`-blocks. If `I`
+  or `O` (width `r_int`) cut an `L`-block, a constraint straddles the Dirichlet boundary. [15]'s formulation on domains
+  can handle that, but it is simpler to round `r_int` up to a multiple of `L`, so that `I`, `O` and the integrated
+  region are unions of `L`-blocks.
+* **Collar width versus `M R_j`.** `w ~ (1/m') log(...)`, with `m' = min(m, κ)/2`. The fluctuation mass `m` in scale-`j`
+  units may be of order `L^{-2}` (Poincare). Then `w ~ L^2 log(...)`, still far below `M R_j >= M (log g_j^{-2})^2` at
+  small `g`. So the merge-range-within-one-cube argument of 24.1 is unaffected. Worth one line.
+* **Goldstein's simultaneous maximal coupling** for the nested far sets (29.5) exists and is measurable. Fine.
+
+### Status (twelfth follow-up)
+
+| item | status |
+|---|---|
+| write-out 2 (Lemma C cross term, collar coupling) | **correct at paper level** |
+| constant-size restriction | **respected**: `O(1)` per site, `C_0 e^{-κ d}` per term, decay, data size `p^2`; no `δ -> 0` |
+| fixed-boundary-data reading vs frozen region | **no frozen region**: data are small field, in the support, held for one step on a finite collar; `K`'s content stays in `w(c)` and cancels |
+| volume uniformity | **holds** (local to `W`; `N` depends on `log |Λ''|` only) |
+| NITs | Dirichlet layers as unions of `L`-blocks; name `E_0(M)` in the collar constant (logarithmic); state that the `χ`-expansion uses `q0 >= p0` |
+| **N-2** | **GAP (reduced):** write-outs 1, 2 done; owes the front advance, H1's polymer coupling, and the write-up of (c) |
