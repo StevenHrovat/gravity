@@ -22,9 +22,9 @@ Theorem 2. In words: Balaban's control of large fields, which in his papers hold
 | 2 | **Setting.** Lattices, Balaban's block average [I] (0.3)-(0.4), densities and large-field regions [III] Sect. 2, constants (with the retuning of §6) | citation | `NOTE.md` 1, `D-N.md` 1 |
 | 3 | **The conditional step and its exactness.** `R̂`: resample on `Λ` in the fibre of the next field, ratio `N/D`; `T R̂ = T` term by term; branches (a)/(b); gauge-fixing removal exact inside `T` | **Lean** (`map_resample_eq`, `map_comp_resample_eq`, `sum_map_resample_eq`, `map_resample_rnDeriv_eq`); hypothesis H1 (fibre densities) and X2 open (routine, 2 pp.) | `NOTE.md` 3, `Exact.lean`; rows X1, X1.H1, X1.H2, X2 |
 | 4 | **The twisted blocking.** Z2 label field plus smooth part; small-field identity with Balaban; covariance, symmetry, locality; link reflection positivity of every layer; exactness with labels | **Lean** (`Twist.lean`: `twistBlock_one`, `_pureGauge`, `_gauge`, `_sym`, `_local`, `rp_map`) + **paper** (that Balaban's average, the decimation and the creation/drop rules meet the hypotheses) | `TWIST.md` 1-3, `P0.md`; row P0 |
-| 5 | **Core dilution.** (5.1) Star weights of Balaban's average, exact; moderate cores dilute by `L^{1-d}` per step (Lemma D-mod). (5.2) Deep cores: vortex persistence for every covariant symmetric average (deterministic dilution is false). (5.3) Deep cores in the twisted blocking: labelled at the root, carried; no trapping | (5.1) **Lean** core (`balaban_star_dilution`, `spread_iterate_quadratic`) + **paper** (weights; exact-fraction check), constants `K, K'` open; (5.2) **Lean** (`vortex_persists`) + paper; (5.3) **numerical** (`twist_dynamics.py`, `lattice_twist.py`), proof **open** | `NOTE.md` 2, `D-PIN.md` 2, `TWIST.md` 4; rows D-mod, D-vortex, P0 |
+| 5 | **Core dilution.** (5.1) Star weights of Balaban's average, exact; moderate cores dilute by `L^{1-d}` per step (Lemma D-mod); off-centre cores are diluted to spread `< 0.1` in one step at `L = 13`. (5.2) Deep cores: vortex persistence for every covariant symmetric average (deterministic dilution is false); slow balanced stars (uniform capture fails). (5.3) Deep cores in the twisted blocking: labelled at the root and carried; what is needed is **cut avoidance** (Lemma NT′), not capture | (5.1) **Lean** core (`balaban_star_dilution`, `spread_iterate_quadratic`) + **paper** (weights; exact-fraction check) + **numerical** (`offcentre_L13.py`), constants `K, K'` open; (5.2) **Lean** (`vortex_persists`) + paper + **numerical** (`notrap_longsearch.py`); (5.3) NT′ **open**, numerically and adversarially supported (`cut_avoidance.py`, `cut_adversarial.py`) | `NOTE.md` 2, `D-PIN.md` 2, `TWIST.md` 4, `NO-TRAP.md`; rows D-mod, D-vortex, P0, NT′ |
 | 6 | **The step under the block constraint.** Constrained minimiser for the two-scale determining set (`[15]` Thm 1), background regularity, linear term via `J_0 = Q*λ`, quadratic form on `ker Q`, denominator, normalisations, analytic extension, large-field factors, entropy induction with retuned exponents (`p0 > (2d+6) r`, `(p0+(2d+6)r)/2 < p1 < p0`; the [IV] p. 198 condition removed), fundamental inequality, polymer gas and exponentiation | **citation** for the unchanged parts; **open (routine)** for the constrained versions (about 25 pp.); `D-N.md` 1 (**paper**) for the constants | rows V1, V2, E1-E13, D-N |
-| 7 | **Rooted cores.** One root per pinned core; no suppression used twice; root suppression `exp(-A_min/g_h²)`; carried label + frozen hole; per-step effect of the hole summable (P2′); sum over roots `≤ exp(-A_min/(2g_k²))` | root bookkeeping **paper**; P4 **citation level**; P2′ **sketch** (3 pp. to finish) | `D-PIN.md` 3-4, `P2-PRIME.md`; rows D-pin, P2′, P4 |
+| 7 | **Rooted cores.** One root per pinned core; no suppression used twice; root suppression `exp(-A_min/g_h²)`; carried label + frozen hole; per-step effect of the hole summable (P2′); near-cut steps paid by the root (NT′); sum over roots `≤ exp(-A_min/(2g_k²))` | root bookkeeping **paper**; P4 **citation level**; P2′ **proof** given Balaban's bounds I1-I3 (capacity lemma, soft constraint, determinant, background with the root's action split off: proved; local terms: Balaban's analyticity used as a black box) | `D-PIN.md` 3-4, `P2-PRIME.md`, `NO-TRAP.md` 4; rows D-pin, P2′, P4, NT′ |
 | 8 | **The inductive form for laws; main theorem.** Assembly of §3-7 into [III] (2.18)-form for the laws | **open** (5 pp.); one Lean assembly theorem with the open estimates as named hypotheses would make the logical structure machine-checked (recommended) | row S1 |
 | A | **Appendices.** A1 reading map of Balaban's papers (where each estimate sits); A2 numerics (star weights, star dynamics, twisted lattice tests) with scripts; A3 the excluded devices (random grid shifts, `D-N.md`) | **paper** + **numerical** | `NOTE.md` 1, `D-N.md`, scripts in this folder |
 
@@ -32,9 +32,10 @@ Theorem 2. In words: Balaban's control of large fields, which in his papers hold
 moderate-core dilution (§5.1) has its elementary core in Lean and its weights checked exactly; the deterministic
 obstruction (§5.2) is a Lean theorem; the root bookkeeping (§7) and the constant retuning (§6) are proved on paper.
 
-**What is not.** No trapping (§5.3) is numerical only, and the `d = 4` full-lattice test is limited to `L = 3`; P2′
-(§7) is a sketch; the constrained estimates of §6 (about 25 pages, routine) and the assembly (§8) are unwritten; the
-running-coupling input ([I] Theorem 2) is external and unpublished.
+**What is not.** Cut avoidance (§5.3, Lemma NT′) is open, supported numerically and adversarially; uniform capture is
+not true as stated (slow balanced stars). P2′ (§7) rests on Balaban's bounds I1-I3 used as black boxes. The
+constrained estimates of §6 (about 25 pages, routine) and the assembly (§8) are unwritten; the running-coupling input
+([I] Theorem 2) is external and unpublished.
 
 ## Part B. Estimate inventory (every estimate the paper needs)
 
@@ -54,9 +55,10 @@ running-coupling input ([I] Theorem 2) is external and unpublished.
 | D-shift | shift-averaged blocking leaves every blocked law unchanged | new | `NOTE.md` 2.5 | paper (exact, short); **not needed** after D-N | 0 |
 | D-prob | **Lemma D-prob**: under i.i.d. uniform shifts a deep core stays deep for `n` steps with probability `≤ p_stayⁿ`, `p_stay = O(L^{1-d})` | new | `NOTE.md` 2.5; missing: cone bound `f(z) ≤ C |z - y'|^{1-d}` on the path fraction, multi-site bookkeeping | **ruled out as a device** (`D-N.md` 2: shifts buy `≤ L^{-d}` per step, Balaban charges `exp(O(1) log g^{-2}(MR)^d)` per step); the estimate itself not needed | 0 |
 | D-N | constants: D-prob needs `N ≳ p0(g)/((d-1) log L)`, i.e. `ν ≥ p0`; compatible with `½ν ≤ p0 - p1 - 1` iff `p0 ≥ 2p1 + 2`; recent-region entropy then at equal powers (`A0 > 4 log L` times a constant) | [IV] p. 198; [V] p. 363, (1.80)-(1.85), p. 389 | `D-N.md` | **answered (paper)**: `N ≈ p0/(d log L)` admissible after removing the [IV] p. 198 artefact (`g_k/g_h ≤ √2`) and retuning `p0 > (2d+6) r`, `(p0+(2d+6)r)/2 < p1 < p0`, `β0` small; does not rescue the shift device | done |
-| D-pin | **deep cores pinned at nested block centres**: root rule (one root per core, suppression charged once, core carried as a Z2 label plus a frozen hole) | new | `D-PIN.md`, `P0.md`, `TWIST.md`, `P2-PRIME.md` | **SURVIVES WITH LEMMAS**: P0 (written; no-trapping numerical), P2′ (sketch), P4 (citation level); root bookkeeping paper | see P-rows |
+| D-pin | **deep cores pinned at nested block centres**: root rule (one root per core, suppression charged once, core carried as a Z2 label plus a frozen hole) | new | `D-PIN.md`, `P0.md`, `TWIST.md`, `P2-PRIME.md` | **SURVIVES WITH LEMMAS**: P0 (written), NT′ (cut avoidance, open), P2′ (proof given Balaban bounds I1-I3), P4 (citation level); root bookkeeping paper | see P-rows |
 | P0 | **twisted blocking**: Z2 label field + smooth part blocked by (0.4) + straight-path decimation of labels; creation at isolated centre patterns, drop on contradiction | new; [I] (0.4), p. 254 | `TWIST.md`, `P0.md`; `Twist.lean`; `lattice_twist.py`, `twist_dynamics.py` | definition, small-field identity, covariance, symmetry, locality, link RP: **Lean + paper**; no trapping: **numerical** (`d = 2, 3` multi-level; `d = 4` one-site `L = 13` and full lattice `L = 3`, 2 steps); proof open | 3 + proof |
-| P2′ | **subscale hole decoupling**: frozen hole of diameter `ρ_k = D0 L^{-(k-h)}` changes the step's `N/D` by `exp(O(ρ_k^{(d-2)/2}(1 + p0(g_k)²)))`; summed `≤ C D0 p0(g_h)²` | new; model [V] (1.31), (1.47); [13]; `[15]` Thm 1 | `P2-PRIME.md` | **paper sketch** (capacity argument); missing: discrete capacity lemma for Balaban's forms, hole as data in `[15]`, local-term estimate | 3 |
+| P2′ | **subscale hole decoupling**: `|Δ_k| ≤ C[ρ_k^{d-2}(1 + p0²) + ρ_k^{(d-2)/2} p0 (1 + a^{1/2}/g_h)]`, `ρ_k = D0 L^{-(k-h)}`; summed `≪ a/g_h²` | new; [13], [II], `[15]` Thm 1 and (9)-(10); [I] (1.18), [II] (2.41), [III] (2.31), (2.42) | `P2-PRIME.md` v2 | **proof** given I1-I3: capacity lemma (proved), soft constraint, determinant, background (proved given I1, I2), hole as data in `[15]` (checked), local terms (I3, Balaban's analyticity as black box) | 3 (write-up) |
+| NT′ | **cut avoidance**: (a) every star has a sign pattern with corrected relative angles `≤ θ_root < π`; (b′) at most `N_cut` near-cut steps over a pinned core's orbit. Replaces uniform no trapping, which fails (slow balanced stars) | new | `NO-TRAP.md` | **open**; numerically: `θ_root ≈ 147°` adversarially, at most 1 step in 31 above 160°; (a) looks short (covering on `RP³`) | 2-4 |
 | P3 | rate condition `A_min b log L > C_1`, `b = 22/(6π²) ≈ 0.37` (not needed if P2′ holds) | [III] (2.42), [I] Thm 2 | `D-PIN.md` 4(b) | open (constants) | 1 |
 | P4 | root suppression of a deep core `exp(-A_min/g_h²)`, `A_min = c0 r0²` | `[15]` Thm 1; [V] p. 380 | `D-PIN.md` 4 | citation level | 1 |
 | E1 | linear term: `J_0 = Q*_{k+1} λ` on `Λ`; its core contribution `≤ g_k^{-2} ε_{k+1} θ^{n_mod} r0 ≪ 1` | [V] (1.2)-(1.6), (1.28)-(1.29), p. 363 | Lagrange-multiplier identity, D-mod | open (routine + D-mod) | 2 |
@@ -77,20 +79,20 @@ running-coupling input ([I] Theorem 2) is external and unpublished.
 ## Totals
 
 * **Done:** X1, P0 algebra and positivity, D-mod core, D-vortex (**Lean**: 30 theorems in `Exact.lean`, `Dilution.lean`,
-  `Vortex.lean`, `Twist.lean`); D-N, root bookkeeping, link reflection positivity of the twisted blocking (**paper**);
-  reading of [IV] pp. 177-199, [V] pp. 364-386, `[15]` Theorem 1.
-* **Sketch:** P2′ (3 pp. to finish).
-* **Numerical only:** no trapping (P0); a proof is open, and a `d = 4` test at realistic `L` needs a reduced multi-block
-  model.
-* **Open, routine:** S1, X1.H1, X2, V1 check, V2, D-mod constants, E1-E13 under the block constraint, P4: about 35 pages,
-  plus re-reading about 40 pages of Balaban.
+  `Vortex.lean`, `Twist.lean`); D-N, root bookkeeping, link reflection positivity of the twisted blocking, P2′ given
+  Balaban's bounds I1-I3 (**paper**); the `d = 4`, `L = 13` off-centre step and the cut-avoidance evidence
+  (**numerical**, adversarially checked); reading of [IV] pp. 177-199, [V] pp. 364-386, `[15]` Theorem 1.
+* **Open, new:** Lemma NT′ (cut avoidance: (a) root bound, short; (b′) few near-cut steps, no proof idea beyond the
+  observed expulsion and local contraction).
+* **False as first stated:** deterministic Lemma D (vortex), uniform no trapping (slow balanced stars).
+* **Open, routine:** S1, X1.H1, X2, V1 check, V2, D-mod constants, E1-E13 under the block constraint, P4, the P2′
+  write-up: about 38 pages, plus re-reading about 40 pages of Balaban.
 * **External:** [I] Theorem 2.
 
 ## Order of work (recommended)
 
-1. P2′ to a proof (discrete capacity lemma; hole as data in `[15]`; local terms).
-2. No trapping: a reduced multi-block `d = 4` test at `L = 13` (CPU), then a proof attempt (every deep centre star is
-   either an isolated sign pattern or becomes moderate under (0.4) in a bounded number of steps).
-3. §6 with `[15]`: constrained Proposition 1 (V1), then E1-E3, E9.
-4. A Lean assembly theorem for §8 with the open estimates as named hypotheses.
-5. The routine rows, then the write-up of the paper.
+1. Lemma NT′(a), the root bound (covering argument on `RP³`); then a proof idea for (b′) (expulsion near the cut plus
+   local contraction below about 1.5 rad of spread), with longer adversarial orbits as a check.
+2. §6 with `[15]`: constrained Proposition 1 (V1), then E1-E3, E9.
+3. A Lean assembly theorem for §8 with the open estimates as named hypotheses.
+4. The routine rows, then the write-up of the paper.

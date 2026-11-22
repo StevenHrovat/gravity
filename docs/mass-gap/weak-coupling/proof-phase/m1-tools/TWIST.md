@@ -1,5 +1,9 @@
 # The twisted blocking on the full lattice (m1-tools, 2026-11-22)
 
+**Update (`NO-TRAP.md`):** the `d = 4` gap of section 4 is closed numerically at `L = 13` with exact paths: an
+off-centre deep core of any kind becomes moderate in one step (largest coarse spread 0.099 over 21744 cores). Uniform
+no trapping is not supported (slow balanced stars exist); what M1 needs is cut avoidance (Lemma NT′), see `NO-TRAP.md`.
+
 Brief: P0 write-up, part 1 of the owner's "whole plan": define the twisted blocking on the full lattice, check link
 reflection positivity, and test for trapping with several cores and correlated shells (CPU). Builds on `P0.md` (the
 one-site rule). Claim marks as in `NOTE.md`. Lean: `formal/ProofPhase/M1/Twist.lean` (new). Numerics:

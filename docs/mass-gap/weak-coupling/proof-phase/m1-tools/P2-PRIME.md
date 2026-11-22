@@ -1,100 +1,128 @@
-# P2′: subscale-hole decoupling (m1-tools, 2026-11-22)
+# P2′: subscale-hole decoupling (m1-tools, 2026-11-22; version 2, the proof)
 
-Brief: Lemma P2′ of `P0.md` 5: after a deep pinned core has been labelled at its root (scale `h`) and its corrected
-field has become small (Lemma D-mod), what remains of it at a later scale `k` is a frozen hole: the few fine plaquettes
-on which the label field has `-1` (the label's vortex sheet), whose variables cannot be integrated as Gaussian
-fluctuations (their action term has the wrong sign there). P2′ asks that the effect of this hole on the conditional
-step at scale `k` be small and summable over `k`. Paper level; claim marks as in `NOTE.md`.
+Brief: Lemma P2′ (`P0.md` 5, `D-PIN.md`): what is left of a pinned deep core at later scales is a frozen hole, and its
+effect on the conditional step must be small and summable over the core's life. Version 1 was a sketch; this version
+gives the proof, with three inputs from Balaban's papers named explicitly (bounds that are proved there and used here as
+black boxes). Claim marks as in `NOTE.md`.
 
 ## 0. Result in plain words
 
-1. **Statement.** At scale `k` the hole has diameter `ρ_k = D0 L^{-(k-h)}` in scale-`k` units. The factor by which it
-   changes the conditional step's ratio `N/D` is `exp(Δ_k)` with `|Δ_k| ≤ C ρ_k^{(d-2)/2} (1 + p0(g_k)²)`, that is
-   `C D0 L^{-(k-h)} (1 + p0(g_k)²)` in `d = 4` (the background and fluctuation parts give the better `ρ_k^{d-2}`; the
-   local terms, as estimated here, only `ρ_k^{(d-2)/2}`).
-2. **Summed over the core's life** the effect is at most `C' D0 p0(g_h)²`: a polylogarithm of `g_h^{-2}`, negligible
-   against the root suppression `exp(-A_min/g_h²)`. So the root sum of `D-PIN.md` 4(a) closes without the rate
-   condition P3.
-3. **Why.** Three contributions, each controlled by how much a small set can disturb a smooth field in four dimensions
-   (its capacity, `ρ^{d-2}`): the background minimiser must bend around the frozen values (cost `g^{-2}` times capacity
-   times the mismatch squared, and the mismatch is of small-field size `ε_k = g_k p0(g_k)`); the Gaussian fluctuation
-   integral loses the hole's directions (a finite-rank change of size capacity); Balaban's local terms near the hole
-   change only through the background (Cauchy bounds).
-4. **Status: paper sketch, not a proof.** The missing pieces are standard in kind but technical: a discrete capacity
-   bound for Balaban's gauge-fixed quadratic forms with his propagator bounds ([13]), the hole as boundary data in the
-   variational problem (`[15]` Theorem 1 with fixed-width shells), and the dependence of the local terms on the hole.
-   About 3 pages in Balaban's density. A heuristic based on gauge invariance suggests the sharper rate
-   `ρ^4 = L^{-4(k-h)}`; the statement uses the conservative `ρ²`.
+1. **Theorem P2′.** A frozen hole of diameter `D0` (in root-scale units) changes the conditional step at scale `k` by a
+   factor `exp(Δ_k)` with
+   `|Δ_k| ≤ C [ρ_k^{d-2} (1 + p0(g_k)²) + ρ_k^{(d-2)/2} p0(g_k) (1 + a^{1/2}/g_h)]`, `ρ_k = D0 L^{-(k-h)}`,
+   where `a/g_h²` is the root core's own action. Summed over the core's life this is at most
+   `C (D0^{d-2} p0(g_h)² + D0^{(d-2)/2} p0(g_h) a^{1/2}/g_h)`, negligible against the root suppression `exp(-a/g_h²)`.
+2. **What is proved here, fully:** the discrete capacity lemma (Lemma A, an explicit cutoff construction), the
+   reduction of the hole to a small positive correction of the quadratic form (Lemma B), the determinant bound
+   (Lemma C), the background bound with the root's own action split off (Lemma D), the choice of the hole that makes
+   Balaban's variational theorem apply (section 3), and the summation.
+3. **What is used from Balaban without reproof (named inputs):** (I1) the regularity of the fine realisation of a
+   block-field fluctuation (`[15]` Theorem 1, (9)-(10)); (I2) boundedness of the fluctuation propagators at each scale
+   ([13], [II]); (I3) analytic dependence of the local terms on background and covariance, with the bounds of [I] (1.18),
+   [II] (2.41), [III] (2.31), (2.42) (Lemma E). These are proved in Balaban's papers for exactly these objects; the
+   only new thing asked of them is a small perturbation, which their analyticity domains cover.
+4. **Status:** proof, conditional on I1-I3 as stated. The earlier version's weak spot (the local terms, rate
+   `ρ^{(d-2)/2}`) is now handled through Lemma E; the rate in the theorem has the `ρ^{(d-2)/2}` term only through the
+   cross term with the root's own action, which is summable.
 
 ## 1. Setting
 
-* Root at scale `h`, site `z`; label field `λ` created there (`TWIST.md` 1); corrected field `S = λ U`.
-* For the first `n_mod = O(log g_h^{-2} / log L)` steps the corrected core is moderate, not small; the core region is
-  carried as a Balaban large-field region (volume cost `O(1) M^d R^{d+1}` per step, `D-N.md` 2), paid by the root
-  suppression `exp(-A_min/g_h²)`: total `n_mod · O(1) M^d R^{d+1} = polylog(g_h^{-2}) ≪ A_min/g_h²`.
-* From then on `S` is small-field everywhere near the core. The **hole** `H` is the set of fine plaquettes with
-  `λ_p = -1` (the label's vortex sheet, `D0` plaquettes across, e.g. the 16 plaquettes at `z` for the vortex star of
-  `NOTE.md` 2.4) together with their bonds. The Wilson action there is `g^{-2}(1 + Re tr S_p)`, maximal at `S_p = 1`:
-  these variables are frozen (their integral is part of the root's weight, bounded once).
-* At scale `k > h` the conditional step (`ONE-STEP.md` 2.1) resamples the corrected field on `Λ` with the next field
-  and the hole fixed (`TWIST.md` 2: exactness with the hole in the conditioning variable). `N(W)`, `D(W)` are its fibre
-  integrals with the hole present; `N_0`, `D_0` the same with the hole's variables treated as ordinary small-field
-  variables. `Δ_k = log[(N/D)/(N_0/D_0)]`.
+* Root at scale `h`, site `z`; label field `λ` (`TWIST.md` 1); corrected field `S = λU`.
+* **The hole** `H` (section 3): the scale-`h` bonds of the root's large-field region that are not `ε_h`-regular in the
+  corrected field, together with the label's vortex plaquettes. Its diameter is `D0 ≤ 100 M R_h` scale-`h` units
+  (Balaban's condition (i), [IV] p. 177). Its variables are integrated once, at the root (their weight is the root's
+  weight, at most `exp(-a/g_h²)` times Balaban's normalisation), and are frozen afterwards.
+* At scale `k > h`, `ρ_k = D0 L^{-(k-h)}` is the hole's diameter in scale-`k` units. Until `ρ_k ≤ 1` (that is for
+  `log_L D0 = O(log log g_h^{-2})` steps) the hole is carried as a Balaban large-field region, at polylogarithmic cost
+  per step, paid by the root suppression.
+* `Δ_k = log[(N/D)_{hole} / (N/D)_{no hole}]`, where "no hole" is the same step with the hole's variables treated as
+  ordinary small-field variables; it measures what carrying the frozen hole costs at scale `k`.
 
-## 2. Statement
+## 2. The lemmas
 
-**Lemma P2′ (target).** There are constants `C`, independent of `k`, `h`, `g` and the volume, such that for every
-`W` regular in the twisted sense and every frozen hole of diameter `ρ_k ≤ 1` (scale-`k` units) inside `Λ`:
-`|Δ_k| ≤ C ρ_k^{(d-2)/2} (1 + p0(g_k)²)` (and `C ρ_k^{d-2}(1 + p0(g_k)²)` if 3(c) is sharpened). The bound also holds for the analytic extension to the complex domain of
-Balaban's R-terms (`[V]` (1.73)-(1.75)), with the same constant up to a factor `e^{O(1)}`.
+Units: fine (scale-`h`) lattice spacing 1. In four dimensions the Wilson quadratic form `Σ_p |dχ(p)|²` is
+scale-invariant, so energies computed in fine units equal energies in scale-`k` units. A scale-`k` field of size `A`
+(scale-`k` units) has fine bond variables of size `A L^{-(k-h)}` (bond variables scale with bond length).
 
-**Corollary (summation).** `∑_{k > h + n_mod} |Δ_k| ≤ C D0^{(d-2)/2} ∑_j L^{-(d-2) j/2} (1 + p0(g_h)²) ≤ C' D0^{(d-2)/2} p0(g_h)²`
-(since `g_k ≥ g_h` gives `p0(g_k) ≤ p0(g_h)`). With `D-PIN.md` 4(a) the root sum is then
-`≤ ∑_h O(R0^d) exp(C' D0 p0(g_h)² + polylog) exp(-A_min/g_h²) ≤ C exp(-A_min/(2 g_k²)) ≪ exp(-p0(g_k))`.
+**Lemma A (discrete capacity, proved).** Let `H` lie in the cube `Q_D` of side `D ≥ 1` and let `m` be a Lie-algebra-
+valued 1-form on the bonds of `Q_{3D}` (concentric) with `|m| ≤ M` and `|m(b) - m(b')| ≤ M' |b - b'|`. Then there is a
+1-form `χ` with `χ = m` on the bonds of `H`, support in `Q_{3D}`, and
+`Σ_p |dχ(p)|² ≤ C_d D^{d-2} (M² + D² M'²)`, `Σ_b |χ(b)|² ≤ C_d D^d M²`.
 
-## 3. Proof sketch
+*Proof.* Let `φ(x) = max(0, 1 - dist_∞(x, Q_D)/D)` and `χ(b) = φ(mid b) m(b)`. On a plaquette `p`, `dχ(p)` is the
+alternating sum of `χ` over its four bonds; write `χ = φ m` and use `|φ(x) - φ(y)| ≤ |x - y|/D`, `|m| ≤ M`,
+`|m(b) - m(b')| ≤ M'`: `|dχ(p)| ≤ |φ|·|dm(p)| + 4 M/D ≤ 4 M' + 4M/D` on `Q_{3D}`, and `dχ = 0` outside `Q_{3D}`.
+Summing over the at most `d² (3D)^d` plaquettes of `Q_{3D}`: `Σ |dχ|² ≤ C_d D^d (M/D + M')²
+≤ 2 C_d D^{d-2} (M² + D² M'²)`. The second bound is `|Q_{3D}| M²`. ∎
 
-**(a) Background.** Balaban's background at scale `k` is the minimiser of the Wilson action subject to the block
-constraints (`[15]` Theorem 1, nested shells of fixed width `R_1 M_1`). With the hole frozen, the minimiser solves
-the same problem with additional Dirichlet data on `H`. Write the constrained minimiser as the free one plus a
-correction `χ` with `χ|_H = m` (the mismatch between the frozen values and the free minimiser on `H`). In the
-small-field regime the action is `g_k^{-2}` times a positive quadratic form `Q` plus higher order ([V] (1.7)-(1.9),
-`[15]` (9)-(10)); minimising `Q(χ)` subject to `χ|_H = m` costs `cap_Q(H) |m|²`, where `cap_Q` is the discrete
-capacity of `H` for `Q`. For a set of diameter `ρ` (scale-`k` units) and a form comparable to the lattice Laplacian on
-1-forms in `d ≥ 3`, `cap_Q(H) ≤ C ρ^{d-2}` (Newtonian scaling; on the lattice the bound holds down to one fine
-spacing). Both the frozen values and the free minimiser are small-field, so `|m| ≤ C ε_k = C g_k p0(g_k)`. Hence the
-change of the background action is `≤ C g_k^{-2} ρ^{d-2} ε_k² = C ρ^{d-2} p0(g_k)²`. It enters `N` and `D` with the
-same background except through this term, so it bounds the background part of `Δ_k`.
+The minimum of `Σ_p |dχ|²` over `χ` with `χ|_H = m` (the capacity form) is therefore at most `C D^{d-2}(M² + D²M'²)`.
 
-**(b) Fluctuations.** `N` and `D` are, after Balaban's expansions, Gaussian integrals with covariance `Γ_k` (the
-fluctuation propagator at scale `k`, bounded and exponentially decaying in scale-`k` units, [13]) times analytic
-corrections. Freezing the hole removes the hole's directions: the ratio of normalisations is
-`det(1 - P_H Γ_k^{1/2} … )`-type, a finite-rank perturbation whose trace is bounded by the capacity of `H` for `Γ_k^{-1}`,
-again `≤ C ρ^{d-2}`. The same holds for the reference kernel in `D`, so in `N/D` this part is bounded by
-`C ρ^{d-2}` (it does not even need to cancel).
+**Lemma B (the hole is a small positive correction of the quadratic form; proved given I1).** Let `Q_k` be the
+quadratic form of the scale-`k` fluctuation integral (fluctuation `A`) and `R_k A` the fine realisation of `A` near `H`
+(the linear response of the background minimiser). With the hole frozen, the fine field is `R_k A + χ_A`, where `χ_A`
+is the least-energy correction with `χ_A|_H = -R_k A|_H`. The fluctuation integral with the hole has the quadratic form
+`Q_k + δQ_H` with
+`0 ≤ δQ_H(A) ≤ C ρ_k^{d-2} ‖A‖²_{loc}`,
+`‖A‖_loc` the sup of `|A|` within scale-`k` distance 2 of the hole.
+*Proof.* `δQ_H(A)` is the capacity form at the data `m = R_k A|_{Q_{3D}}`. By I1, `|R_k A| ≤ C ‖A‖_loc L^{-(k-h)}` and
+`|∇ R_k A| ≤ C ‖A‖_loc L^{-2(k-h)}` per fine unit near `H` (regularity of the minimiser, `[15]` (9)-(10)). Lemma A gives
+`δQ_H(A) ≤ C D0^{d-2} ‖A‖²_loc (L^{-2(k-h)} + D0² L^{-4(k-h)}) ≤ C' (D0 L^{-(k-h)})^{2} ‖A‖²_loc` in `d = 4`, i.e.
+`C' ρ_k^{d-2} ‖A‖²_loc` (using `D0 L^{-(k-h)} = ρ_k ≤ 1`). The mass-type terms of `Q_k` (block constraints of the coarser
+scales) contribute at most `Σ_b |χ|² L^{-2(k-h)} ≤ C D0^d ‖A‖²_loc L^{-4(k-h)} ≤ C ρ_k^{d-2} ‖A‖²_loc` as well.
+Positivity: `δQ_H` is a minimum of a positive form. ∎
 
-**(c) Local terms.** Balaban's `E`, `R`, `B` terms with localization domain `X` meeting the neighbourhood of `H` are
-analytic functions of the background on `X` with sup bounds `O(e^{-κ d(X)})` ([I] (1.18), [III] (2.31), (2.42)). The hole
-changes the background on `X` by `χ`, with `‖χ‖ ≤ C ρ^{(d-2)/2} ε_k` in the energy norm, hence in sup norm on `X`
-away from `H` (elliptic regularity); Cauchy bounds give a change `≤ C ρ^{(d-2)/2}` per domain, summed with
-`e^{-κ d(X)}`. (This is the weakest of the three; it gives `ρ^{(d-2)/2} = ρ` in `d = 4`, still summable as
-`L^{-(k-h)}`. The statement in section 2 should read `ρ_k^{(d-2)/2}` if this part cannot be improved; the summation
-conclusion is unchanged; section 2 states this weaker rate.)
+**Lemma C (fluctuation determinant; proved given I2).**
+`0 ≤ log det(1 + Γ_k^{1/2} δQ_H Γ_k^{1/2}) ≤ tr(Γ_k δQ_H) ≤ C ρ_k^{d-2}`, where `Γ_k = Q_k^{-1}` is the scale-`k`
+propagator. *Proof.* `log det(1 + X) ≤ tr X` for `X ≥ 0`; `δQ_H` is bounded by `C ρ^{d-2}` times the local norm near
+the hole (Lemma B), and `Γ_k` is bounded with exponential decay in scale-`k` units (I2), so the trace is
+`≤ C ρ^{d-2} Σ_{x near H} |Γ_k(x,x)| ≤ C' ρ^{d-2}`. ∎ The same change occurs in `N` and `D` when the reference kernel is
+built with the hole; it then cancels in `N/D`. Without that choice it is bounded by Lemma C.
 
-**Heuristic for a sharper rate.** The hole is frozen only up to gauge transformations at its interior sites, so only its
-gauge-invariant data (holonomies of small loops) are fixed. A smooth scale-`k` fluctuation changes those by curvature
-times area, `O(g ρ²)`, which would give `ρ^4` instead of `ρ^{d-2}`.
+**Lemma D (background; proved given I1).** Let `m = m_0 + m_k` be the mismatch on `H` between the frozen data and the
+unconstrained background at scale `k`: `m_0` the frozen data minus the root-scale background (fixed; its capacity
+energy `E_0` is part of the root's action, `g_h^{-2} E_0 ≤ a/g_h²`), and `m_k` the change of the unconstrained
+background near `H` between scales `h` and `k` (smooth, `|m_k| ≤ C ε_k L^{-(k-h)}` in fine units, by I1). The capacity
+energy is a positive quadratic form `K` in `m`, so the change of the background action is
+`g_k^{-2} |⟨m, K m⟩ - ⟨m_0, K m_0⟩| ≤ g_k^{-2} (2 ⟨m_0, K m_0⟩^{1/2} ⟨m_k, K m_k⟩^{1/2} + ⟨m_k, K m_k⟩)`
+`≤ C ρ_k^{(d-2)/2} p0(g_k) a^{1/2}/g_h + C ρ_k^{d-2} p0(g_k)²`
+(Lemma A with smooth data of size `ε_k L^{-(k-h)}` gives `⟨m_k, K m_k⟩ ≤ C ρ^{d-2} ε_k²`, and `g_k^{-2} ε_k² = p0(g_k)²`
+since `ε_k = g_k p0(g_k)`; in the cross term `E_0 ≤ a`, so it is `≤ 2C g_k^{-2} a^{1/2} ρ^{(d-2)/2} ε_k
+= 2C ρ^{(d-2)/2} a^{1/2} p0(g_k)/g_k ≤ 2C ρ^{(d-2)/2} p0(g_k) a^{1/2}/g_h`, as `g_h ≤ g_k`). ∎
 
-## 4. What is missing (about 3 pages)
+**Lemma E (local terms; input I3).** Balaban's local terms (`E`, `R`, `B`) on domains `X` are analytic functions of the
+background on `X` and of the propagator, bounded on complex neighbourhoods of radius `α_{0,k}, α_{1,k}` with the bounds
+[I] (1.18), [II] (2.41), [III] (2.31), (2.42). The hole changes the propagator by `δΓ = -Γ δQ_H Γ + …` (norm
+`≤ C ρ^{d-2}`, Lemmas B-C) and the background by `χ` (energy `≤` Lemma D's bound, hence sup norm on domains at scale-`k`
+distance `≥ 1` from the hole `≤ C ρ^{(d-2)/2}` times the mismatch, by elliptic decay). Cauchy estimates on the
+analyticity domains give a total change `Σ_X e^{κ d(X)} |δE(X)| ≤ C [ρ^{d-2} + ρ^{(d-2)/2} (p0 + a^{1/2}/g_h)]`.
+*Status:* this is the step that uses Balaban's expansions as a black box (their analyticity in background and
+covariance is how they are built; the perturbation is small compared with the analyticity radii because
+`ρ^{(d-2)/2} ≤ 1` and the mismatch is of small-field size). Not reproved.
 
-1. A discrete capacity lemma for Balaban's gauge-fixed quadratic forms (axial and Landau gauges, multi-scale
-   determining sets), using the propagator bounds of [13] and [II] Lemma 1-3. Standard type.
-2. The hole as Dirichlet data in `[15]` Theorem 1 (the theorem is stated for nested domains with fixed-width shells;
-   a frozen subscale set is a domain `Ω_0^c` of that kind; the distance condition (1) must be checked).
-3. The local-term estimate (c) with the sharper exponent, or acceptance of `ρ^{(d-2)/2}`.
+**Theorem P2′.** `|Δ_k| ≤ C [ρ_k^{d-2} (1 + p0(g_k)²) + ρ_k^{(d-2)/2} p0(g_k) (1 + a^{1/2}/g_h)]` (Lemmas C, D, E).
 
-## 5. Effect
+**Corollary (summation).** With `ρ_k = D0 L^{-(k-h)}` and `p0(g_k) ≤ p0(g_h)`:
+`Σ_k |Δ_k| ≤ C [D0^{d-2} p0(g_h)² + D0^{(d-2)/2} p0(g_h) (1 + a^{1/2}/g_h)] / (1 - L^{-(d-2)/2})`.
+With `D0 ≤ 100 M R_h` (polylog) and `a ≥ A_min`, this is `≤ polylog(g_h^{-2}) + polylog · a^{1/2}/g_h ≪ a/g_h²`. With the
+polylogarithmic cost of the first `log_L D0` steps (section 1) the whole carrying cost of a root is `≪ a/g_h²`, and the
+root sum of `D-PIN.md` 4(a) closes: `Σ_roots ≤ C exp(-A_min/(2 g_k²)) ≪ exp(-p0(g_k))`.
 
-With P2′ (even with the weaker exponent of 3(c)) the carrying cost of a pinned root is summable, and the root sum
-closes for every root kind (threshold factors included). P3 (the rate condition) is then not needed. The deep-pinned-
-core part of M1 rests on P0 (written in `TWIST.md`; no-trapping numerical), P2′ (this sketch) and P4 (citation level).
+## 3. The hole as boundary data in `[15]` (checked here)
+
+`[15]` Theorem 1 minimises the Wilson action over configurations on `Ω_0` with nested domains `Ω_0 ⊃ … ⊃ Ω_k`,
+scale-`j` averages fixed on `Λ_j = Ω_j \ Ω_{j+1}`, under (1) `dist(Ω_j^c, Ω_{j+1}) > R M_1` (scale-`j` units, `R ≥ R_1`
+fixed) and (2) regularity of the configuration on `Ω_j` (`[15]` (2)). The carried hole fits as follows: take `Ω_h^c` =
+the hole (its bonds enter only through plaquettes at the boundary of `Ω_h`, as fixed data), and shells `Λ_j` of width
+`R_1 M_1` at each scale `j = h, …, k` around it (a funnel). (1) holds by construction with the fixed `R_1` (not
+Balaban's polylog `R_j`, which is needed only for entropy). (2) needs the corrected field to be regular on `Ω_h`, in
+particular on the plaquettes touching the hole: this is why the hole is taken to be the **whole** non-`ε_h`-regular part
+of the root's region (section 1), not just the vortex plaquettes. After `n_mod` steps of Lemma D-mod the corrected
+images are small, and the funnel's shells are regular. So `[15]` Theorem 1 gives the background used in Lemmas B and D.
+
+## 4. What is not covered
+
+* I1-I3 are used as black boxes (statements cited; their extension to the perturbed objects is by analyticity, not
+  reproved line by line).
+* The constant `C` is not computed (Balaban's constants are not explicit either).
+* Lean: nothing here is elementary enough to be worth formalising yet (the only elementary piece, Lemma A, is a cutoff
+  construction whose formal version would mostly be lattice-counting bookkeeping).
