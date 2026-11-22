@@ -141,3 +141,164 @@ What does not yet follow:
   included), and a localisation of `Phi ∘ U_bg`. Carrying beyond the lifetime is sketch, not citation.
 * No FATAL findings. NITs: the H5 inequality direction and the data-bound constants order; the H2 fidelity claim; the
   thin-component shrink rate.
+
+## Follow-up 2 (part 2 of the response and the new labels repair), 2026-11-22
+
+Read: `../m1-tools/REVIEW3-RESPONSE.md` 6-12 (all of part 2 and the labels sections 11-12), `S1-INDUCTION.md` (all),
+`M1-PLAN.md` 0 (the new verdict). Source checked: [I] (1.11)-(1.12) (the analyticity domain, text layer, raw mode) and
+[III] p. 261 ((2.34)-(2.39)). Nothing was built or re-run. Commit ids were not checked (no git).
+
+### Verdict
+
+The remaining GAPs are closed at the level the notes now claim. I found no FATAL error and no new GAP. The one-step
+induction is now written as an induction, with its constants in order. R10 is redone on Balaban's positive
+representation with a scale-`K` normalisation that works. The labels have a clean form: a constant times `exp` of a
+local term with no linear coupling, contracting by `C L^{-4}` per step. The density argument in the OS norm is a sound
+idea, correctly marked sketch. What remains is FIXABLE or NIT, listed below. The verdict in `M1-PLAN.md` 0 is
+essentially accurate; I would amend it in three places (last subsection).
+
+### H1 (labels, sections 11-12): **resolved**, at the stated level, with NITs
+
+What checks:
+* **Persistence rule (12.1).** The skeletons are nested, so a remainder appears in `tau'_j` exactly for
+  `j <= j(S)`. A remainder with `j(S) = 0` changes no coarse bit and can be summed into the released history. Summing
+  a label out at the step past `j(S)` is exact, because its index stops being a variable of the law. Upper counts only
+  decrease.
+* **Form at release (11.1).** `Phi_l = a_l e^{L_l}` with `L_l(flat) = 0`. The no-linear-coupling lemma (R8) applies
+  because `L_l` is gauge invariant and analytic at the flat configuration. This is now derived from the stability
+  bound (P2) plus R8, not asserted.
+* **Contraction lemma (12.2).** I followed it step by step.
+  * A term localised at one scale-`k` box with no linear part contracts by `L^{-4}` per step, because background
+    curvature in scale-`k` units is `L^{-2}` times the coarse curvature. A point term is irrelevant, while a bulk `F^2`
+    density summed over a block is marginal.
+  * There is no term linear in `F_bg`: the R8 lemma applies to the whole new gauge-invariant `L^{(k+1)}`, so the
+    cross term vanishes in total.
+  * The dependence of the fluctuation covariance on the background enters only at order
+    `N_k (g_k/alpha_1)^2 L^{-4}`.
+  * Iterating gives a total weight drift `e^{O(eps_*)}`, independent of the label's lifetime. This removes the
+    linear-in-`K` problem of follow-up 1.
+* **Constant into `a_l`, not into the coupling (11.5).** Correct. A position-dependent `F^2` would not be covered by
+  [I] Theorem 2, and the label's own constant does not touch the bulk running.
+
+NITs:
+1. **Tails.** The localisation tails "add `C e^{-kappa} N_k` ... absorbed into `C`". They carry no `L^{-4}`, so
+   `theta = C L^{-4} <= 1/2` needs `e^{-kappa} <~ L^{-4}`, that is `kappa >= 4 log L + C`. Balaban allows `kappa`
+   large given `L` ([III] p. 260), but the condition belongs in `S1-INDUCTION.md` 1, row 5.
+2. **Multi-cube components.** The lemma assumes the label term is localised in one box. A released component spanning
+   several cubes contracts only once its image is below a cube. Before that the step is marginal: bounded by
+   `1 + C N_k + C e^{-kappa}`, for `log_L(size)` steps. The threshold `eps_*` keeps the drift `e^{O(eps_* log size)}`.
+   This should be said.
+3. **The reading of [V] p. 379 (sketch point 3), half settled.** [I] (1.11)-(1.12) define the analyticity domain
+   as `U = U' U''`:
+   * `U'` is G-valued with `|dU' - 1| <= alpha_0`, and per cube of size `O(1) L M` it is gauge equivalent to
+     `exp(iA)` with `|A|, |grad A| <= O(1) L M B alpha_0`;
+   * `U'' = exp(iA'')` with `A''` in the complexified algebra, `|A''|, |grad A''| <= alpha_1`.
+   
+   The printed first-order bound before (1.73) carries the factor `(alpha_{0k} + alpha_{1k})`. That supports the
+   response's reading: the expansion covers deviations of the real base of size `alpha_0` as well as the complex part.
+   So taking the flat configuration as base, patch by patch, is consistent with the per-cube distance
+   `O(1) L M B alpha_0`. If the expansion turns out to cover only `alpha_1`, chain through `O(L M B alpha_0/alpha_1)`
+   balls per cube: the drift is still `O(polylog) delta_X`, far below `eps_*`. Either way the conclusion stands. The
+   per-cube versus per-component question remains as answered above.
+4. **"Citation-level adaptations".** Three of the inputs in 11.6 are not citations but claims that Balaban's proofs
+   carry over with a change:
+   * (P2) on the full domain;
+   * the localisation of `L_l ∘ U_bg`;
+   * small-field steps that accept an indexed, non-covariant local term whose constant is moved by hand.
+   
+   They are plausible and named, but they are unchecked adaptations. The verdict should call them that (see below).
+
+### H3 (the induction, `S1-INDUCTION.md`): **resolved**, one FIXABLE point
+
+* **What resolves it.**
+  * The constants table has no circularity I could find: `L`, `C_1, C_tw`, `r0`, Balaban's constants, `beta_min`,
+    then `gamma0(L)` last, with `t_0` per observable.
+  * `Form_k` includes the window form (unreleased labels as indicators inside `T`) and the label sum as a hard-core
+    polymer sum.
+  * Each of the eleven operations has its level.
+  * The new E-row 7c attributes the factors of coarse plaquettes meeting a hole to the deep plaquette's own action. It
+    uses the true configuration's action, not the filled field's, and the attribution count `6 (2 C_1 + 5)^d` is right.
+* **FIXABLE: 7c pays only the first generation.** Irregularity created by Haar noise on swallowed bonds, or by a
+  filling whose curvature lies between `eps` and `r0`, can persist at later scales of the same region's life. At scale
+  `k + 2`, [16] (71) again does not apply, because the scale-`(k+1)` field in the blocks is the noise or the filled
+  field. Those factors must also be attributed to the original deep set. The budget suffices:
+  `r0^2/(8 g_k^2) ~ g^{-2}` against `R_k * C(C_1) p^2 = polylog`. State condition 8 as
+  `r0^2/(8 g_k^2) >= C(C_1) R_k p(g)^2 + p(g_k)^2`, and say that 7c applies at every scale of the region's life.
+  Medium confidence that later generations occur at all, but the fix is free.
+* **NIT.** Add `kappa >= 4 log L + C` (H1 NIT 1) and `eps_* <= L^{-4}/(2C)` with `C` after `kappa` in the order.
+
+### H4 (R10 on the positive partition, section 7): **resolved**, one FIXABLE wording point
+
+* **What resolves it.**
+  * The mixture formula `E[F|V,tau'] = Sum_G P(G|V,tau') d_t log rho_G` is correct for non-negative `rho_G`.
+  * The `L^1` estimate splits cleanly into a local part and `P(G crosses)`.
+  * The scale-`K` normalisation now works. The upper bound uses Haar `<= 1` on `G`'s region. The lower bound
+    restricts `Z` to small fields on that region, using the positivity of all terms, and gives
+    `exp(O(1) (M R_K)^d log g_K^{-2})` per cube. This is paid from the per-cube large-field budget
+    (`p0 >> M^d R^{d+1} >= (M R)^d log g^{-2}`, since `R >= log g^{-2}`).
+  * The "one more step" argument is legitimate: the induction hypothesis at scale `K` must allow the step
+    `K -> K + 1`, whose normalisation is exactly this. Say so explicitly.
+* **FIXABLE: positivity and the Mayer expansion are mixed.** "The large-field domains ... with their attached boundary
+  terms Mayer-expanded into connected clusters ... form a polymer configuration with non-negative activities" is false
+  as stated: Mayer activities `e^{B'} - 1` are signed.
+  * The argument needs only `rho_G >= 0`. That holds if `G` is defined before any Mayer expansion: from the
+    large-field domains `Y_i` and the labelled domains of a term of (1.104), with the boundary terms kept in the
+    exponent as part of each term's (real) action.
+  * Mayer-expand only inside the ratio `Xi_{-G}/Xi`, which need not be termwise positive.
+  * Also note that at fixed `V` the top-scale characteristic functions fix the top large-field set, so the "gas at
+    fixed `V`" is a sum over earlier unreleased regions and labels under a fixed constraint. Harmless, but it is the
+    accurate statement.
+* **NIT.** With real `t` only, "Cauchy in `t`" is used for the analytic local terms `Phi_t(X)`, which are analytic in
+  complex `t`; the measure is never tilted by complex `t`. One sentence.
+
+### H2 side remark (labels lost near the scale-0 grid): **resolved by moving it to N-2**
+
+* The false fidelity claim is withdrawn (11.7).
+* Lost labels are local structures: a lost minimal bubble is a sign flip of one bond. Given the block state they are
+  local noise, handled by the conditional decorrelation of section 8. Closed sets large enough to link `C` and
+  `theta C` are crossing terms.
+* Nothing in M1's law or counts used fidelity.
+
+### N-2 (density in the OS norm, section 8): **new argument, sound in outline, correctly marked sketch**
+
+* **The idea is right.**
+  * `||.||_OS <= ||.||_{L^2}`. The spectral upgrade needs density in the OS norm only.
+  * `||F - f_l||^2_OS` splits by the law of total covariance into a conditional covariance of observables `2t` apart
+    and `E[E[theta R|G] E[R|G]]`. The second is bounded by `C ||E[F|G] - f_l||_{L^1}` without any measurability of
+    `theta f_l`.
+  * Sub-`l` vortices linking only `C` decorrelate; those linking both `C` and `theta C` are crossing terms.
+  * So the question of `c0` against `1/b` is avoided. That is a genuine improvement on the REVIEW-2 follow-up's
+    concern.
+* **NIT (wording).** "`f_l` drops out, being `F_l`-measurable": only `f_l` drops out. `theta f_l` is not
+  `F_l`-measurable, because the blocking is not reflection covariant (lexicographic tie-breaks, noise, and the scale-0
+  grid unless the plane is a grid plane). The term `Cov(theta f_l, F | F_l)` is a conditional covariance of two
+  observables `2t` apart and is bounded by the same decorrelation. No consequence.
+* **What is sketch (named in `M1-PLAN.md` 0 item 4, agreed).**
+  * Conditional decorrelation for **bounded fine** observables, uniformly in the spacing. Section 7's insertion
+    cannot be used for them, since `t_0` would depend on `a`. It needs the fine observable treated as a fixed
+    large-field insertion in Balaban's representation at every scale below `l`.
+  * The uniform polynomial approximation of `f_l`.
+
+### Is the verdict in `M1-PLAN.md` 0 accurate?
+
+Essentially yes. It no longer claims completeness, it names five sketch points, and the levels match the notes. Three
+amendments:
+1. **Name the adaptations.** "Labels: paper on citation-level adaptations below `eps_*`" should name the three
+   adaptations of 11.6 (H1 NIT 4) as unchecked carry-overs of Balaban's proofs, as a sixth item or under item 3. The
+   same applies to "R10: paper on citation-level inputs" for the one-more-step normalisation.
+2. **Sketch point 3 is half settled.** [I] (1.11)-(1.12) and the factor `(alpha_0 + alpha_1)` support the reading of
+   `A'` (H1 NIT 3). The per-cube versus per-component question stays open, and the case split is kept.
+3. **Add the FIXABLE items to the to-do list.** 7c's attribution at every scale of the region's life (budget with
+   `R_k`); the conditions `kappa >= 4 log L + C` and the multi-cube contraction remark; and the positivity of `rho_G`
+   defined before the Mayer expansion in R10.
+
+### Findings, one line each (follow-up 2)
+
+* No FATAL, no GAP.
+* FIXABLE: S1-INDUCTION 7c must attribute factors at every later scale of the region's life (condition 8 with a
+  factor `R_k`).
+* FIXABLE: R10's "non-negative activities after the Mayer expansion" is false as worded; define `G` before the Mayer
+  expansion.
+* NITs: the contraction lemma's tail condition `kappa >= 4 log L + C`; marginal steps for multi-cube components; the
+  `theta f_l` wording in N-2; Cauchy in `t` only for the local terms; the verdict should call the label inputs
+  adaptations, not citations.
