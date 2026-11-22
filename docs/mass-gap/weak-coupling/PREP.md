@@ -1242,3 +1242,14 @@ thread.
   pattern indices of the positive mixture cover every configuration (total weight one). What still has to be proved: that the regions of
   each scale are sparse enough relative to their collars for the hierarchy to be consistent, which comes from the rarity bound H2 at that
   scale.
+- **Per-scale sparseness from DMP (the owner, same day):** "That it holds at each scale should also come from DMP. Since non-existence,
+  everything inside a collar, is defined by existence, since existence has to be at least non-existence + 1 while causality exists,
+  that is given." Reading (coordinator): the dominance reading gives a floor, not the strength the hierarchy needs. "Existence ≥
+  non-existence + 1" (proved as su2_Ztw_lt_Z for β ≠ 0) says bad regions never outweigh good ones: density below one half at every scale.
+  The layered isolation needs much more: at each scale the bad regions must be exponentially rare compared with their collar volume
+  (density ≪ w^(−d), with w ~ log of the cluster size). That strength comes from the earlier reading "the root cost is near infinite
+  at G0": towards the fine scales the coupling goes to zero, so creating non-existence costs about exp(−p0(g_j)) per box of scale j, which
+  is Balaban's large-field suppression and is what H2 uses. So both readings enter: dominance guarantees that non-existence is always
+  contained by existence (it never saturates), and the near-infinite root cost near G0 makes it sparse enough at every scale for the
+  collars to stay apart. The proof of H2 at each scale (the conditional Peierls bound, resting on the pointwise fibre normalisation) is
+  where that second fact is turned into numbers.
