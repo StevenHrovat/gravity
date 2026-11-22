@@ -922,3 +922,17 @@ thread.
     and the scale K where it stops holding is the stopping scale of F1, where the running coupling becomes of order one: the
     confinement scale, i.e. the scale of the mass gap itself. Beyond K the M1 machinery does not apply (other, strong-coupling
     arguments take over); the theory itself still exists there.
+- **The fourth dimension is what M1 is missing (the owner, same day, on review F1):** "What is missing from M1 is the fourth
+  dimension. The arrow of causality is the force that brings beta from infinity to 0 through the finite range, so any record only has to
+  hold to the outside existence for the duration of the transition from infinity towards 0, which is the heat death/balanced state of a
+  duality/box." Reading (coordinator): in the renormalisation group the "transition" is the flow along the scale direction: the
+  effective coupling runs from β = ∞ at the bare scale (G0) through finite values to the stopping scale K, where it is of order one, and
+  towards β → 0 at coarser scales (beyond the correlation length every box is balanced, the β = 0 state of an earlier reading). M1 as
+  written carries every record along the whole flow (TRAP: "maintenance for ever"); the reading says a record needs to hold only for its
+  own transition, until its inside has balanced, and must then be released, leaving only its loss. Two honest notes. (1) Bounded
+  carrying alone does not cure F1: F1 is about how many records are born (every fine scale produces its own, and their number per
+  physical cell grows like L^((d − bA)k)), not about how long each is carried. (2) What could cure it is the release itself, done the
+  way the flow does it: an old record, once balanced, is absorbed into the effective action as a local term, and the combined effect of
+  all released records is a renormalisation of the coupling (which is what the running of β is), not a sum of separate maintenance
+  costs. The reviewer's estimate that release still diverges (Σ L^((2 − bA)j)) adds the effects in absolute value; whether they instead
+  combine into the coupling is the open mathematical question. Sent to the M1 thread with the review.
