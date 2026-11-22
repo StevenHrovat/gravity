@@ -1199,3 +1199,158 @@ Read: `../m1-tools/UV-TV.md` 24 and 25 in full. Nothing was built or re-run; the
   cluster expansion.
 * H1 at the polymer level is sound in principle: polymer presence has uniform conditional bounds, so there is no
   forced continuation and no inherited badness.
+
+## Follow-up 9 (the retained slack, `UV-TV.md` 26 and 25 revised; `EK-DERIVATION.md`), 2026-11-22
+
+Read: `../m1-tools/UV-TV.md` 26, 25 (revised) and 26.5; `EK-DERIVATION.md` Q2 and Q4 and its comparison and verdict;
+`S1-INDUCTION.md` 1 (constants). Not re-checked against the page images; the independent reader is doing that line by
+line. Nothing was built or re-run.
+
+### Verdict
+
+* **The slack does what it is meant to do.** Half of the creation gain `gamma_0 A_1^2 p0^2` per unit of birth-scale
+  linear size is never spent. It survives (1.83) and the merging step unchanged, and passes through (1.92)-(1.96) as
+  an extra factor, because those steps spend only the per-component `p0`. Converted to current-scale cubes, it is
+  `>= c'_sigma p0^2(g_k)` per cube.
+* (P0) makes that exceed the `O(1)`-per-site denominator loss of [III] Theorem 2 on a cube, so the `delta`-bound I
+  required in Follow-up 8 is no longer needed. I found no step that fails.
+* **Three precisions are needed in how the slack is applied:**
+  * the uses H2, H2a and R10 concern **carried** regions, so the bound to cite is the induction factor (1.80') at the
+    current scale, not the released activity (1.97');
+  * deleting whole history components moves the denominator loss onto their whole footprint, which their own slack
+    covers;
+  * the Gaussian normalisation of the current **top** variables should be covered explicitly. Either cite `kappa`'s
+    reserve for the next step, or state (P2) with a factor `log beta`, which (P0) implies.
+* **(P1) looks redundant but harmless.**
+* **The new verdict is accurate**, if "given (c)" is read as "given (c), with (a) and admissibility as citation-level
+  readings", which section 25 (revised) in fact lists.
+* **The H1 NITs are folded in correctly.**
+* No FATAL, no GAP.
+
+### (1) Does the slack absorb the `O(1)`-per-site denominator loss in all three uses?
+
+**Yes, with three precisions.**
+* **(i) Which bound is used.** The bad sets in the quenched H2 (12.1, 24.1), in H2a (23.1) and in R10's `G` (section
+  7) are **unreleased** large-field regions of the current term. They are `omega_j`'s carried history, or the second
+  class `Y_i` of (1.104) at scale `K`.
+  * Their factor is the strengthened induction hypothesis (1.80'):
+    `exp(-kappa_j(Z) - sigma_j(Z) - 2 p0(g_{j(Z)}))`, with `kappa_j(Z) >= 0`.
+  * It is not the released activity (1.97'), which concerns regions that have already left the pattern and become R-
+    or B-terms.
+  * The slack is present in both, so the conclusion stands. But 26.2 step 8 and 26.3 should cite (1.80') for H2, H2a
+    and R10, with the conversion of step 7 applied to the carried region `Z`. That conversion is the same.
+* **(ii) The footprint of the deletion.** 24.1's admissible completion deletes **every history component meeting
+  `N_A`, at all scales**. Such a component can extend far beyond `N_A`, and the small-field alternative then stands on
+  its whole footprint.
+  * The loss is `C (M R_j)^d` per cube of that footprint, plus the one-cube layer of `N_A`. The deleted components'
+    own slack covers their footprint at `c'_sigma p0^2` per cube, and (P2)'s factor `3^d` covers the layer.
+  * State it this way. As written, 26.3 bounds only `N_A`.
+* **(iii) The top variables' normalisation.**
+  * `EK-DERIVATION.md` Q1 settles that the `beta^{3/2}`-per-bond Haar Jacobian of the variables **already integrated**
+    is part of `E_k(Z)` and paid in (1.79).
+  * The fibre integral in H2 (over `V_j` given `X_{j+1}`), and R10's lower bound for `Z` (over the top `V_K`), also
+    integrate the **current top** variables. Balaban pays their Gaussian normalisation in the next step's constants,
+    from the region's reserve `kappa_j(Z) >= Sum (future costs)`, as the cost of step `j + 1`. For a carried region
+    `K >= 1`.
+  * The comparison therefore uses `kappa_j(Z) >= cost(j + 1)`, not merely `kappa >= 0`.
+  * **Simplest robust form:** state (P2) as `c'_sigma p0^2(g_k) >= 2C 3^d (M R_k)^d log beta_k`. It follows from (P0),
+    since `R^2 >= (log g^{-2})^{2r} >= C log beta`. Then the slack pays both, whichever reading of where the top
+    Jacobian sits is right.
+* **(iv) Bad items that are not `T`-regions:**
+  * labels (weight `<= e^{-16(1-delta)/g^2}` per labelled bond, `>> e^{C (M R)^d}`);
+  * Z2 excitations (`e^{-2 J_p}`, `J_p ~ beta` on good boxes);
+  * links (deleting a link replaces `1 + h` by `1`; no small-field alternative is created, so no denominator loss).
+  
+  None needs the slack. Say so in 26.3.
+* **The three uses, one by one.**
+  * **Quenched H2:** yes, given (i)-(iii).
+  * **H2a:** yes. A non-small `X_i` on a cube means a large-field region at scale `i`, newly born (gain
+    `~ p0^2(g_i)`) or older (its slack converts). The denominator is the law's normalisation one scale up, with the
+    same loss.
+  * **R10:** yes for the large-field domains of `G`. Labelled domains in `G` are small field and need nothing.
+
+### (2) The re-proof itself, from my side (the independent reader checks the text)
+
+* **Step 2, halving (1.82)'s first term:** fine under (P0), which is Balaban's condition with the constant doubled.
+  Both sides are powers of `log g^{-2}`, and his condition already makes the left side win. It must hold at every
+  scale up to `K`, at `g_j <= gamma`, as his does. That is a condition on `gamma0`, consistent with row 8.
+* **Step 5, merging:**
+  * the merging costs `O(1) 2d M^d R^{d+1}` are paid by the `p0` surplus `2(1+beta_0)^{-1} p0`, not by `p0^2`, so
+    halving the `p0^2` terms does not touch them;
+  * the future costs of the connecting part of a merged region are paid by the new regions' halved `p0^2` under (P0);
+  * sub-additivity `d'(Z) + 1 <= Sum_n (d'_n + 1) + (new regions)` holds.
+  
+  I see no use of the new regions' full `p0^2` elsewhere. Item 2 of 26.4 is the right place for the line-by-line
+  check.
+* **Step 7, the polymer step:** (1.92)-(1.96) spend `e^{-q p0/2}` from the per-component `p0`, the condition
+  `-2(1+beta_0)^{-1} p0 + 1 + 2 kappa (100 R_k)^d <= -(3/2) p0`, and the `eps^{1/3}` factors. None of these uses
+  `kappa_k >= 0` in a form that `sigma` would have to supply.
+* **Conversion to current-scale cubes:** it needs `#cubes <= d' + 1`, so Balaban's linear size must be a tree length
+  (`>= #cubes - 1`), not a diameter. It is: otherwise (1.97)'s `e^{-kappa d}` could not beat polymer entropy. The
+  additive `(64)^d` of (1.81) per birth is absorbed in `C`.
+* **(P1) looks redundant.** In step 4 (a new large field in the preparatory operations), `Z = S(Z_0)` keeps
+  `sigma_j(Z_0)`, which converts to `>= c'_sigma p0^2` per current cube of `S(Z_0)`. So it already covers the
+  denominator loss on `Z`, which lies inside one `100 M R`-cube, without the extra `e^{-p0}`. (P1) is harmless, but its
+  justification ("regions whose only gain is the preparatory `e^{-p0}`") seems not to describe any region: every
+  large-field component descends from a (1.76) birth. Check whether such regions exist. If not, drop (P1), which also
+  removes the question about the exponent chain (26.4 item 5).
+
+### (3) Does it change my earlier findings?
+
+* **Follow-up 7's GAP** (per-unit rarity) is fully resolved. The per-cube Peierls rate is `kappa` without any reading
+  (b), and the slack even gives `e^{-c p0^2}` per cube for large-field-born bad cubes. The fixed `kappa` condition is
+  still needed for the parts the slack does not cover: links, the polymer compatibility hard core, and the
+  lattice-animal entropy.
+* **Follow-up 8:** the `delta`-input (b) is no longer needed, as `EK-DERIVATION.md` Q4 also concludes (b is not in the
+  source). My fallback arithmetic is superseded, and the stronger margin `p0^2` (not `p0`) is the right one, as the EK
+  reader notes.
+* **Everything else stands:**
+  * Lemma C;
+  * the coupling form of Dobrushin-Shlosman;
+  * coverage;
+  * the constant multiplicity with overlapping good boxes;
+  * the persistence and bridge truncations;
+  * polynomial tails;
+  * the chaining.
+* **NIT on the constants table** (`S1-INDUCTION.md` 1):
+  * row 5 contains `l_B >= C (log p/m)^{2d+1}/gamma^2`, but `p(g)` is fixed in row 6 and `l_B` is scale-dependent
+    anyway. Move it after row 6;
+  * the `gamma` there is the Dobrushin-Shlosman contraction constant, not the coupling bound. Rename it.
+
+### (4) Is the new verdict accurate?
+
+**Yes, with one wording point.**
+* Section 25 (revised) rests the lemma on (c), the re-proof of [V] (1.80)-(1.97) with the slack and conditions (P0),
+  (P1). It also lists:
+  * (a), what `E_k(Z)` is, as a citation-level reading confirmed in substance;
+  * `kappa` large, as a citation;
+  * admissibility, from a poor scan.
+* "Single point of failure: (c)" is fair if (a) and admissibility are treated as settled readings. They are still
+  used: (a) makes the numerator's `T'` normalised against the small-field constants. The one-line summary should
+  therefore read "UV-TV holds given (c), with (a) and admissibility as citation-level readings", not "given (c)" alone.
+* Add (1)'s precisions (i)-(iii) to (c)'s check list (26.4), and the four write-outs remain.
+
+### (5) Were the H1 NITs folded in correctly?
+
+**Yes.**
+* **Compatibility range:** polymers are compatible only beyond about 100 `M R`-cubes, matching Balaban's admissibility
+  distances. The hard core's entropy `(C 200^d)^n` is absorbed by `kappa`, and the subcriticality condition is updated
+  to `C 200^d e^{-c kappa/2} < 1/2` in row 5.
+* **Positive split:** `e^{E} = e^{m}(1 + h)`, `h >= 0`, so the coupling runs on a positive mixture. The signed
+  `e^{E} - 1` is used only in the cluster expansion.
+* **Admissibility caveat:** recorded.
+
+### Findings, one line each (follow-up 9)
+
+* No FATAL, no GAP.
+* The slack absorbs the `O(1)`-per-site loss in the quenched H2, H2a and R10, with three precisions:
+  * cite the carried-region factor (1.80'), not the released (1.97');
+  * the denominator loss sits on the whole footprint of the deleted components, covered by their own slack;
+  * cover the current top variables' normalisation by `kappa`'s next-step reserve, or by (P2) with `log beta` (implied
+    by (P0)).
+* (P1) appears redundant: every region descends from a (1.76) birth, and its inherited slack covers the preparatory
+  case. Check, then drop it or keep it as harmless.
+* Earlier findings: Follow-up 7's GAP is fully resolved and Follow-up 8's `delta`-input is unnecessary. The rest
+  stands. NIT: in the constants table, move `l_B` after row 6, and rename the Dobrushin-Shlosman `gamma`.
+* The verdict is accurate, read as "given (c), with (a) and admissibility as citation-level readings". The H1 NITs are
+  folded in correctly.

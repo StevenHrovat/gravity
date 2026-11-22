@@ -1321,3 +1321,123 @@ layer. REVIEW-3 was not read. Nothing was built.
 | new dependency | rarity now fixed (`C e^{-c κ}`); "`κ` large for given `L`" ([III] p. 260) is load-bearing and should be listed with the readings |
 | final verdict | accurate, plus the `κ` dependency and the scan caveat |
 | **N-2** | **GAP (reduced):** complete paper-sketch argument; owes the normalisation reading (or its fallback) and four write-outs |
+
+## Tenth follow-up
+
+Read for this: `../m1-review/EK-DERIVATION.md` in full, `../m1-tools/UV-TV.md` 26 and 25 (revised). For the parts of
+[V] pp. 379-390 that the re-proof touches, I compared against the extracted text layer, with the page-image readings of
+`EK-DERIVATION.md` as the reference where the OCR is poor. REVIEW-3 was not read. Nothing was built.
+
+### Verdict (tenth follow-up)
+
+* **Route (c), Balaban's induction re-run with a kept slack `c_σ p0^2` per birth-scale `M R`-cube, is the right fix.**
+  * It is a re-proof, internal to Balaban's own bounds, of the unconditioned large-field weights. The frozen region
+    stays out: the slack is a property of the terms of `ρ_j`, and it is used only inside ratios conditioned on coarse
+    data (quenched H2), or under the law (H2a, R10).
+  * It removes reading (b), which `EK-DERIVATION.md` shows is not in Balaban, and the withdrawn `β^{3/2}` fallback.
+  * The steps I can follow against the text are plausible:
+    * halving the creation term, which needs (P0);
+    * keeping the slack unchanged in (1.83) and summed in (1.85);
+    * carrying `e^{-σ}` outside the entropy sums of (1.92)-(1.96), which spend only the per-component `p0` and `κ`;
+    * the conversion to current-scale cubes, which now uses `p0(g_{j_b}) >= p0(g_k)` in the right direction.
+* **None of my earlier points changes.** Bridging, inherited regions, localisation and the cascade are untouched; the
+  slack only strengthens the per-cube rarity. The one-box label contraction's condition `κ >= 4 log L + log C` is
+  compatible with "`κ` large at the cost of larger `M` and smaller `γ`" ([I] Theorem 3, now cited).
+* **Two points the verdict does not yet reflect:**
+  1. **(1.97') as stated covers only regions with births.** Regions from step 4 (new large fields of the preparatory
+     operations) carry only the per-component `e^{-p0}`, no `p0^2` slack. Their cubes must be split off from `A` and
+     priced through (P1). The text says (P1) is needed "in one place", but the statement (1.97') and its use in
+     12.1/24.1 do not split `A`. NIT, but it should be written that way.
+  2. **`EK-DERIVATION.md` Q4 also bears on Lemma C and H3,** not only on the denominator.
+     * Balaban bounds the field-dependent small-field terms only as `O(1)` per site ([III] Theorem 2), or through
+       analyticity on his domains.
+     * H3's Pinsker step and Lemma C's cross term are written for "a Gaussian times **small** analytic terms", with
+       factors `1 + O(δ)`.
+     * The source supplies smallness only as a **constant** per `M`-cube, through the ratio of the fluctuation range
+       to the analyticity radius, about `(A0/C0)^2 (log g^{-2})^{2(p0-q0)}`. It does not supply `δ_j -> 0`.
+     * That is probably enough, since both arguments need only a weak perturbation and exponential decay, which
+       Balaban's own cluster expansion of the fluctuation measure gives. But write-outs 1 (Lemma C) and 3 (front
+       advance through H3) must be done with that smallness, not with `δ -> 0`. This belongs on the dependency list.
+* **The verdict "UV-TV holds given (c), a re-proof" is nearly accurate.** It should read "has a complete paper-sketch
+  argument given (c)", with the four write-outs, (c)'s check list including (P1) against Balaban's exponent chain, and
+  the two points above.
+* **N-2 stays a GAP (reduced)** until (c) is written and checked and the write-outs are done. No FATAL finding.
+
+### 1. Does the re-proof keep the frozen region out?
+
+**Yes.**
+* (1.80') and (1.97') are statements about Balaban's own terms: creation factors, the induction, and the activities of
+  the unconditioned representation. Nothing is conditioned on.
+* M1 uses them only:
+  * in the quenched H2 (12.1, 24.1), a ratio of pattern weights **given the coarse field**, small field near `A`;
+  * in H2a and R10's normalisation, under the law.
+* The denominator side now uses only [III] Theorem 2's `O(1)` per site on the small-field alternative, in a coarse
+  region where the coarse field is small. That is again conditioned on coarse data only, and the loss
+  `C 3^d (M R)^d` per cube is paid by the slack under (P2).
+* No unpenalised fine content enters anywhere.
+* **Double use?** The same carried region appears in `Bad_j` at several scales of the tower. That is not a double use
+  of the slack: each scale's quenched bound is a separate conditional probability, computed from its own normalised
+  law. The tower multiplies conditional probabilities by the chain rule, so each conditional factor may use the term's
+  full slack.
+
+### 2. The re-proof itself (what I could check)
+
+| step | assessment |
+|---|---|
+| creation, (1.79) | unchanged source of both halves. Correct. |
+| first step, (1.82): halving | Balaban's condition becomes (P0), with the constant doubled. Both sides are powers of `log g^{-2}`, and his condition already makes the `p0^2` side win, so (P0) holds for small `g`. Plausible. |
+| (1.83), no new field | `σ` unchanged, costs to `κ`. Correct. |
+| (1.83), preparatory new field | `κ_{j+1} := p0 - costs` as Balaban; old `σ` kept. Correct, **but** the new region has no `p0^2` slack (point 1 above). |
+| merging (1.85)-(1.88) | the new regions' `p0^2` term is halved, and the tree argument uses the parts' `κ` and the `p0` surplus. So only the single-new-region case re-invokes (P0). Plausible; I cannot verify (1.86)-(1.88) line by line from the scan, and it is on (c)'s check list. |
+| release (1.89) | `T'_k(X) 1 <= e^{-σ_k(X)} e^{-2(1+β0)^{-1} p0}`. Follows from the above. |
+| activities (1.92)-(1.97) | `e^{-σ}` is carried outside. Balaban's entropy is paid by the per-component `p0`, the `κ` decay, and the "admissible sequences" factor `exp(O(1)(M R_j)^{-d} |Z_j|)` before (1.79), which is already a cost charged to `κ`. So `σ` is not needed there. Plausible. |
+| conversion to current-scale cubes | `#cubes_k(X) <= d'_k(X) + 1` for connected unions, (1.81)'s scaling `d'_k <= 2^{-(k-j)} d'_j + 64^d`, and `p0(g_{j_b}) >= p0(g_k)` (correct direction). Gives `Σ σ >= (c_σ/C) p0^2(g_k) |A_births|`. Correct, for the cubes covered by regions with births (point 1). |
+| (P2) from (P0) | `c'_σ p0^2 >= 2C 3^d (M R)^d` follows from `A_1^2 p0^2 >~ M^d L^{d+1} R^{d+2}`. Correct. |
+| (P1) | `p0 >= C(κ + M^d) 100^d R^d`, the same form as Balaban's p. 389 condition. Compatibility with `2 p1 - (d+5) r0 > p0` is on the check list. Fine. |
+
+### 3. Do my earlier points change?
+
+* **Bridging, inherited regions, localisation, cascade:** no change. The slack strengthens the per-cube rarity under
+  both the quenched H2 and H2a. The truncations, merge range (one cube) and pricing at the own scale are as in the
+  ninth follow-up.
+* **`κ` large (ninth follow-up):** now cited ([I] Theorem 3: `κ >= κ0` free, `M >= M(κ)`, `γ` smaller; `γ0` absolute).
+  * M1's conditions on `κ` (subcriticality `C 200^d e^{-c κ/2} < 1/2`, H1's Kotecky-Preiss condition,
+    `κ >= 4 log L + log C`) compare `κ` with constants that do not grow with `M`: lattice-animal entropy, the
+    compatibility range in cubes, and `L`.
+  * As `EK-DERIVATION.md` Q3 asks, I looked for M1 constants hiding `e^{O(κ)}` or `M^q`. The denominator loss
+    `C 3^d (M R)^d` grows with `M`, but it is paid by `p0^2`, not by `κ`, so a larger `M(κ)` only tightens (P0)-(P2),
+    which hold for small `g`. I found no other.
+* **Labels (one-box contraction):** unaffected. Their release bound may now also use the slack, which only helps.
+
+### 4. Is the verdict and dependency list accurate?
+
+Section 25 (revised): "complete at paper-sketch level given (c)". It lists:
+* (c) as a re-proof and single point of failure;
+* (a) as citation-level, correct in substance;
+* (b) as not in Balaban and not needed;
+* `κ` as a citation;
+* admissibility from a poor scan;
+* four write-outs and (c)'s check list.
+
+**Accurate, with three additions:**
+1. **Split (1.97')** into regions with births (slack `c'_σ p0^2` per current cube) and preparatory-only regions (per
+   component `e^{-p0}`, at most `100^d` cubes, priced by (P1)). Use the split in 12.1/24.1. NIT.
+2. **Add Q4 to the dependencies of write-outs 1 and 3.** Lemma C's cross term and H3's Pinsker step must use only the
+   smallness the source gives: a constant per `M`-cube from analyticity, `(A0/C0)^2 (log g^{-2})^{2(p0-q0)}` with
+   `q0 >= p0`, plus Balaban's cluster expansion for decay. "Factors `1 + O(δ)` with `δ -> 0`" is not available. This
+   is probably sufficient, but it is a dependency.
+3. **Wording.** "UV-TV holds given (c)" should be "UV-TV has a complete paper-sketch argument given (c)". It still owes
+   four write-outs, and (c) is itself a re-proof still to be checked (26.4).
+
+### Status (tenth follow-up)
+
+| item | status |
+|---|---|
+| frozen region under route (c) | **kept out** (re-proof is about unconditioned terms; used only in coarse-conditioned or annealed ratios) |
+| re-proof (c), steps I could check | plausible; merging (1.86)-(1.88) not verifiable line by line from the scan (on the check list) |
+| (1.97') | needs the split into birth-covered and preparatory-only cubes (NIT) |
+| earlier points (bridging, inherited regions, localisation, cascade, labels) | unchanged; the slack only strengthens them |
+| `κ` large | now a citation ([I] Theorem 3); no hidden `e^{O(κ)}` or `M^q` found in M1's `κ`-conditions |
+| Q4 (small-field non-Gaussian part only `O(1)` per site in the source) | resolved for the denominator by the slack; **still a dependency for Lemma C and H3**, which must use constant-size analytic smallness, not `δ -> 0` |
+| verdict | nearly accurate: add the split, the Q4 dependency, and say "paper-sketch argument" rather than "holds" |
+| **N-2** | **GAP (reduced):** paper-sketch argument complete given (c); owes (c)'s write-up and checks and four write-outs |
