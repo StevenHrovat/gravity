@@ -239,3 +239,47 @@ unchanged. **Result: pass.**
 
 The trend is the pre-registered one: the confined flux ratio falls with ℓ (0.44, 0.13, 0.00) while the Coulomb ratio stays near 1. The
 instrument sees the photon as long-range and the confined U(1) phase as screened, so the SU(2) results count as evidence about the gap.
+
+## Result (2026-11-22, all runs complete; final analysis `runs-gpu/boundary/analysis.log`, read against the criteria above)
+
+**P (photon gate): passed** (the queue's own run reproduced the early evaluation exactly). **Z (Ising-gauge test): behaves as expected**
+(deconfined Z₂ at β = 0.6: rigid long range, D ≈ 2 at every ℓ; confined β = 0.3: area law, loops unmeasurable).
+
+**Q1 (constant decay length in physical units): fails as pre-registered.** Typical BC against calm, other five planes, tail fit:
+
+| β | box ℓ | ξ (lattice units) | ξ√σ |
+|---|---|---|---|
+| 2.3 | 8 | 1.15 ± 0.01 | 0.403 ± 0.008 |
+| 2.4 | 11 | 1.57 ± 0.08 | 0.406 ± 0.021 |
+| 2.5 | 15 | 1.24 ± 0.03 | 0.225 ± 0.007 |
+| 2.6 | 20 | 1.46 ± 0.20 | 0.204 ± 0.028 |
+| 2.7 | 26 | 1.35 ± 0.14 | 0.143 ± 0.015 |
+
+The fitted length stays near 1.2–1.6 **lattice units** at every β, so in physical units it shrinks with the spacing: the pre-registered
+tail window measures a lattice-scale (ultraviolet) part of the boundary influence. A reading made after seeing the data (not
+pre-registered): at β ≥ 2.5 the local decay slows with depth (β = 2.6: successive ratios 4.6, 5.7, 3.2, 2.0, 2.0, 1.3), consistent
+with a fast lattice-scale part plus a slower tail at depths where the errors are large. This is the split the attempt rounds found in
+theory (round 1: every non-abelian effect costs about g² per link; the ultraviolet part is the quantum half's territory, the physical
+tail the crossover's). The instrument as built cannot isolate the physical tail at these depths.
+
+**Q2(b) (twist and flux seen as a randomly placed vortex at the box centre):**
+
+| β | ℓ | L√σ | flux | twist |
+|---|---|---|---|---|
+| 2.3 | 8 | 2.80 | fail (0.183) | fail (0.288) |
+| 2.3 | 12 | 4.20 | **pass** (0.090) | fail (0.233) |
+| 2.4 | 11 | 2.84 | pass (0.076) | fail (0.198) |
+| 2.4 | 16 | 4.13 | **pass** (0.120 ± 0.051) | fail (0.448) |
+| 2.5 | 15 | 2.73 | fail (0.122) | fail (0.347) |
+| 2.6 | 20 | 2.79 | fail (0.298) | fail (0.601) |
+| 2.7 | 26 | 2.75 | pass, uninformative (0.137 ± 0.227) | fail (0.643) |
+
+The smooth flux is vortex-like at the larger physical size (about 4.2/√σ) at both β where it was run; the centre twist fails at every
+box and every β, and at fixed physical size about 2.8/√σ its deficit grows as the lattice is refined (0.29 → 0.64). As stated
+beforehand, the twist is long-range on every box we could afford, and the instrument cannot show GDS for twisted boundary conditions.
+**Q3** (coupled chains, exploratory) and **A** (admissibility: the fraction above ε = 1.5 falls with β, 5.3·10⁻³ → 2.1·10⁻³ from
+β = 2.3 to 2.5, about a hundred times above the expectation) as reported in the interim and the analysis log.
+
+**What it means for the proof phase:** the assembly's Route A hypothesis is about time correlations of slab observables in the
+continuum limit, not about this boundary-influence instrument; Leg B gives no evidence for or against it beyond showing that the
+boundary influence measured at fixed lattice depth is dominated by a lattice-scale part at every β.
