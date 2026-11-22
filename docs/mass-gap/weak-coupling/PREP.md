@@ -623,3 +623,17 @@ Reading (coordinator; candidate):
   is the next question. Sent to cycle-6 workstreams c6a-flip and c6c-floor.
 - **"The most stable state achievable" is a variational statement**: the confined vacuum minimises the free energy (Gibbs variational
   principle); the gap as the stability margin of that minimum.
+- **"Not lowering" through DMP (the owner, same day):** "We should be able to prove the not lowering through DMP. To be DMP-complete
+  even one box must not lower its existence." Reading (coordinator): the DMP evidence already contains the rule in abstract form:
+  `evidence/Dmp/Standing.lean` (T24): **one witness alone never loosens; loosening needs both witnesses** (`one_witness_never_loosens`,
+  `loosening_needs_both`), and `evidence/Dmp/Complete.lean`: in a proven configuration **a sub-layer only tightens**
+  (`Recipe.proven_sublayer_only_tightens`); `evidence/Dmp/Reach.lean`: Axiom 1's two witnesses = the two halves of a layer, each with full
+  reach, gated only by the other, give an existence floor on every grid. The dictionary candidate: **DMP's two witnesses = the two halves
+  exchanged by the reflection** (reflection positivity: inside and outside of the reflected boundary). In reflection positivity the
+  cross term between the halves is bounded by the halves' own terms (Cauchy–Schwarz, chessboard); "one box cannot lower its existence on
+  its own; lowering needs both halves" would then read as a chessboard inequality for the act, which is the super-additivity needed above.
+  What is not yet there, and is the content: those DMP theorems are about DMP's own model (whole-number standings), and Reach.lean says
+  plainly it proves nothing about Yang–Mills; "proving through DMP" means proving the dictionary — that SU(2) Yang–Mills satisfies the
+  premises (Axiom 1's two-witness structure with full reach, i.e. the reflection halves plus a reach bound) — and the reach bound is
+  confinement. The dictionary must also use something the finite group 2I lacks (cycle 5: DMP objects so far are group-blind). Sent to
+  c6a-flip (Lean: does the chessboard estimate give "one box does not lower the act") and c6c-floor.
