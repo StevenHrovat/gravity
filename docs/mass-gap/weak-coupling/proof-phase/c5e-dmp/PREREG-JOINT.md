@@ -170,3 +170,25 @@ U(1) gate. Option B (sector-resolved U(1) control) is not part of this run. Noth
    contains.
 5. **Stage 0 control: PASS** (torelon aE at L = 6, 8, 10: 0.5991(46), 0.9803(313), 1.2232(246) against 0.599, 0.980, 1.223). Pilot
    numbers (existing data, T = 16, never counted) in `pilot/`. All analysis choices: `ANALYSIS-NOTES.md`.
+
+## Result (after data; JOINT DONE 2026-11-22 16:26; `runs-gpu/joint_report.txt`, `joint_summary.json`, `joint_z.png`; coordinator)
+
+Run as pre-registered (with the amendment above); all 13 runs exit 0, nothing dropped by the cut rule, photon formula agrees with
+`photon_exact.json` exactly.
+
+**J1 (doubling):** all **six** resolved pairs read **DOUBLES**, robust at t* and t*+1: g₀ = z₀(2L)/z₀(L) = 3.32 (2.4: 1.03→2.06), 4.14
+(2.5: 1.09→2.19), 3.73 (2.3: 1.40→2.80), 3.46 (2.5: 1.46→2.92), 2.43 (2.4: 2.06→4.13), 2.25 (2.3: 2.10→4.20); the photon's ratio at the same
+L is 1.04–1.14. One pair NOT RESOLVED (2.4: 6→12, z₀ at L = 12 has no plateau).
+**J2 (start):** L_D√σ = **1.03**; D-S candidates (ζ₀, ζe) = (1.81(2), 0.84(1)) at β 2.4, L 4 and (1.75(7), 0.97(2)) at β 2.5, L 6.
+**J4 (loss):** η = 1 − g₀/2 is **negative at every pair** (the act more than doubles): −0.66 … −1.07 at the small starts, −0.22 and −0.13
+at the starts 2.06 and 2.10 — approaching 0 from below as the box gap approaches the glueball mass (E₀ at L√σ ≈ 4.2: 1.23 at β 2.3,
+0.92 at β 2.4, close to 3.6·a√σ). In the Lean form c = 2z₀(L) − z₀(2L): −1.7 … −4.6, i.e. no loss at all on the measured stretch.
+**J3 (branch):** FLUX-PAIR at 2.06 (β 2.4) and 1.09–2.19 (β 2.5); GLUEBALL at 2.10–2.80 (β 2.3) and 2.92 (β 2.5); switch L_s√σ = 2.55 at
+β 2.5; the branch assignment is not consistent across β at L√σ ≈ 2.1 (see J5).
+**J5 (scaling):** ARTEFACTS VISIBLE at L√σ ≈ 1.4–2.9 (spreads 0.6–1.3 in z₀); **SCALING OK** at 4.13/4.20 (14.66 vs 14.76).
+**J6:** z₀ crosses 4π (two quanta) between L√σ = 2.92 (11.0) and 4.13 (14.7).
+
+**Reading (coordinator):** on the measured stretch L√σ = 1.03 → 4.20 the vacuum act **more than doubles at every resolved doubling**, so
+the premise of `su2_gap_of_doubling_defect` (bounded loss c with c < z₀(L₀)) holds there with c < 0. This is numerical, on three
+spacings with visible artefacts at small boxes, and says nothing beyond L√σ ≈ 4.2, where the loss must tend to 0 (η → 0⁻ is seen). It
+does not prove anything; it is what the Lean premise needs to look like, and it does.

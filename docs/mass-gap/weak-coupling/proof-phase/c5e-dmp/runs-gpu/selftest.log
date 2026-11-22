@@ -1,0 +1,4 @@
+C:\Users\Steven\AppData\Roaming\Python\Python314\site-packages\cupy\_environment.py:286: UserWarning: CUDA path could not be detected. Set CUDA_PATH environment variable if CuPy fails to load.
+  warnings.warn(
+selftest: largest difference GPU vs su2.py = 2.84e-14
+OK

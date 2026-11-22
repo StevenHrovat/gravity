@@ -41,3 +41,12 @@ start at x >= 2.0. The switch at x_s = 2.0 to 2.35 (where z0 is 7 to 9, about on
 
 Not tested here: anything beyond x = 4.4, the continuum limit, and the open premise itself (X, the persistence of the non-flux
 branch); the measurement can only show that its numerical shape is as stated.
+
+## Score against the joint measurement (coordinator, after JOINT DONE 2026-11-22 16:26)
+
+- **P1: REFUTED** — β 2.5, 6→12 (1.09→2.19) has both ends FLUX-PAIR (w_pp 0.77, 0.83), a dyadic pair inside the flux-pair window.
+- **P2: NOT RESOLVED** — both qualifying pairs (2.3: 6→12, 2.4: 8→16) lack a counted z_e at the large end.
+- **P3: CONFIRMED** — c = 2z₀(L) − z₀(2L) = −1.7 … −4.6 ≤ 1 at all six pairs (model range −6 … −1).
+- **P4: SPLIT** — holds at 1.03 (Δ = +0.032(5)), refuted at 1.09 (Δ = −0.032(11), below the pair threshold).
+- **P5: CONFIRMED** — z₀ < 4π at every counted x ≤ 3.10, z₀ > 4π at 4.13 and 4.20; no flux-pair point above 4π.
+- **P6:** not read (post hoc pair-only plateau not computed).

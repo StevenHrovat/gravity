@@ -1,0 +1,18 @@
+C:\Users\Steven\AppData\Roaming\Python\Python314\site-packages\cupy\_environment.py:286: UserWarning: CUDA path could not be detected. Set CUDA_PATH environment variable if CuPy fails to load.
+  warnings.warn(
+beta=2.4 L=12 chains=10 meas 0/1500 plaq=0.62916 t=52s
+beta=2.4 L=12 chains=10 meas 100/1500 plaq=0.62998 t=107s
+beta=2.4 L=12 chains=10 meas 200/1500 plaq=0.63000 t=160s
+beta=2.4 L=12 chains=10 meas 300/1500 plaq=0.63000 t=214s
+beta=2.4 L=12 chains=10 meas 400/1500 plaq=0.63000 t=268s
+beta=2.4 L=12 chains=10 meas 500/1500 plaq=0.63000 t=322s
+beta=2.4 L=12 chains=10 meas 600/1500 plaq=0.63000 t=376s
+beta=2.4 L=12 chains=10 meas 700/1500 plaq=0.63000 t=429s
+beta=2.4 L=12 chains=10 meas 800/1500 plaq=0.63000 t=483s
+beta=2.4 L=12 chains=10 meas 900/1500 plaq=0.63000 t=537s
+beta=2.4 L=12 chains=10 meas 1000/1500 plaq=0.63000 t=591s
+beta=2.4 L=12 chains=10 meas 1100/1500 plaq=0.62999 t=645s
+beta=2.4 L=12 chains=10 meas 1200/1500 plaq=0.62999 t=699s
+beta=2.4 L=12 chains=10 meas 1300/1500 plaq=0.62999 t=753s
+beta=2.4 L=12 chains=10 meas 1400/1500 plaq=0.62999 t=807s
+done C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\c5e-dmp\runs-gpu\joint_b2.4_L12.npz plaq=0.62999 in 861s

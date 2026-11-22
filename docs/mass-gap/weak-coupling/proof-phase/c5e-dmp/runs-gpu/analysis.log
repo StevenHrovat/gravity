@@ -1,0 +1,107 @@
+JOINT MEASUREMENT REPORT  [joint measurement (T = 32)]
+
+Per point (E, z = L E at t*, and at t*+1 as systematic):
+- beta 2.30 L  4 T 32 (L sqrt(sigma) 1.40), n 20000 in 10 chains
+    z0: t* 3  E 0.648(0.019)  z 2.591(0.075)   | t*+1: E 0.648(0.031)  z 2.592(0.125)  kept ops 12/12
+    z_e: t* 1  E 0.337(0.003)  z 1.347(0.012)   | t*+1: E 0.339(0.004)  z 1.355(0.015)  kept ops 4/4
+    z_e sign flips per chain: [463, 484, 465, 518, 486, 464, 439, 477, 488, 471]  (min 439)
+    J3: w_pp 0.177  Delta = E0 - 2E_e -0.026(0.019) (t*+1: -0.030(0.032))  -> MIXED
+- beta 2.30 L  6 T 32 (L sqrt(sigma) 2.10), n 20000 in 10 chains
+    z0: t* 1  E 1.092(0.012)  z 6.551(0.071)   | t*+1: E 1.088(0.037)  z 6.525(0.224)  kept ops 12/12
+    z_e: t* 2  E 0.591(0.006)  z 3.548(0.037)   | t*+1: E 0.590(0.009)  z 3.540(0.057)  kept ops 4/4
+    z_e sign flips per chain: [677, 716, 666, 730, 652, 715, 674, 699, 718, 685]  (min 652)
+    J3: w_pp 0.051  Delta = E0 - 2E_e -0.091(0.016) (t*+1: -0.092(0.034))  -> GLUEBALL
+- beta 2.30 L  8 T 32 (L sqrt(sigma) 2.80), n 20000 in 10 chains
+    z0: t* 1  E 1.209(0.013)  z 9.671(0.106)   | t*+1: E 1.172(0.045)  z 9.374(0.364)  kept ops 12/12
+    z_e: t* 1  E 0.920(0.010)  z 7.362(0.077)   | t*+1: E 0.919(0.020)  z 7.353(0.164)  kept ops 4/4
+    z_e sign flips per chain: [861, 891, 826, 858, 872, 863, 846, 838, 902, 885]  (min 826)
+    J3: w_pp 0.002  Delta = E0 - 2E_e -0.632(0.021) (t*+1: -0.667(0.049))  -> GLUEBALL
+- beta 2.30 L 12 T 32 (L sqrt(sigma) 4.20), n 15000 in 10 chains
+    z0: t* 1  E 1.230(0.019)  z 14.761(0.223)   | t*+1: E 1.245(0.069)  z 14.943(0.826)  kept ops 12/12
+    z_e: NOT COUNTED (no plateau), kept ops 4/4
+    z_e sign flips per chain: [749, 743, 720, 754, 725, 744, 747, 728, 712, 733]  (min 712)
+    J3: NOT RESOLVED (z0 or z_e not counted)
+- beta 2.40 L  4 T 32 (L sqrt(sigma) 1.03), n 20000 in 10 chains
+    z0: t* 2  E 0.453(0.006)  z 1.813(0.023)   | t*+1: E 0.446(0.008)  z 1.785(0.033)  kept ops 12/12
+    z_e: t* 1  E 0.211(0.002)  z 0.843(0.010)   | t*+1: E 0.211(0.003)  z 0.845(0.012)  kept ops 4/4
+    z_e sign flips per chain: [321, 296, 334, 320, 332, 316, 298, 372, 341, 312]  (min 296)
+    J3: w_pp 0.367  Delta = E0 - 2E_e 0.032(0.005) (t*+1: 0.024(0.007))  -> MIXED
+- beta 2.40 L  6 T 32 (L sqrt(sigma) 1.55), n 20000 in 10 chains
+    z0: t* 3  E 0.542(0.010)  z 3.251(0.059)   | t*+1: E 0.528(0.018)  z 3.167(0.111)  kept ops 12/12
+    z_e: t* 1  E 0.273(0.003)  z 1.639(0.017)   | t*+1: E 0.273(0.004)  z 1.637(0.023)  kept ops 4/4
+    z_e sign flips per chain: [346, 400, 414, 418, 365, 397, 397, 424, 389, 396]  (min 346)
+    J3: w_pp 0.261  Delta = E0 - 2E_e -0.005(0.009) (t*+1: -0.018(0.019))  -> MIXED
+- beta 2.40 L  8 T 32 (L sqrt(sigma) 2.06), n 20000 in 10 chains
+    z0: t* 2  E 0.753(0.012)  z 6.025(0.094)   | t*+1: E 0.740(0.033)  z 5.921(0.267)  kept ops 12/12
+    z_e: t* 1  E 0.405(0.004)  z 3.237(0.034)   | t*+1: E 0.403(0.006)  z 3.228(0.050)  kept ops 4/4
+    z_e sign flips per chain: [544, 533, 575, 575, 566, 586, 589, 522, 547, 532]  (min 522)
+    J3: w_pp 0.673  Delta = E0 - 2E_e -0.056(0.013) (t*+1: -0.067(0.034))  -> FLUX-PAIR
+- beta 2.40 L 12 T 32 (L sqrt(sigma) 3.10), n 15000 in 10 chains
+    z0: NOT COUNTED (no plateau), kept ops 12/12
+    z_e: t* 1  E 0.736(0.005)  z 8.836(0.066)   | t*+1: E 0.739(0.011)  z 8.868(0.129)  kept ops 4/4
+    z_e sign flips per chain: [600, 601, 623, 609, 595, 619, 602, 610, 624, 590]  (min 590)
+    J3: NOT RESOLVED (z0 or z_e not counted)
+- beta 2.40 L 16 T 32 (L sqrt(sigma) 4.13), n 10000 in 10 chains
+    z0: t* 1  E 0.916(0.011)  z 14.663(0.174)   | t*+1: E 0.921(0.021)  z 14.737(0.343)  kept ops 12/12
+    z_e: NOT COUNTED (no plateau), kept ops 4/4
+    z_e sign flips per chain: [488, 500, 480, 446, 466, 467, 486, 456, 485, 481]  (min 446)
+    J3: NOT RESOLVED (z0 or z_e not counted)
+- beta 2.50 L  6 T 32 (L sqrt(sigma) 1.09), n 20000 in 10 chains
+    z0: t* 6  E 0.292(0.012)  z 1.749(0.070)   | t*+1: E 0.289(0.017)  z 1.737(0.103)  kept ops 12/12
+    z_e: t* 1  E 0.162(0.003)  z 0.971(0.016)   | t*+1: E 0.161(0.003)  z 0.965(0.019)  kept ops 4/4
+    z_e sign flips per chain: [282, 231, 273, 243, 252, 236, 199, 261, 268, 194]  (min 194)
+    J3: w_pp 0.765  Delta = E0 - 2E_e -0.032(0.011) (t*+1: -0.032(0.015))  -> FLUX-PAIR
+- beta 2.50 L  8 T 32 (L sqrt(sigma) 1.46), n 20000 in 10 chains
+    z0: t* 1  E 0.398(0.005)  z 3.186(0.041)   | t*+1: E 0.392(0.007)  z 3.140(0.058)  kept ops 12/12
+    z_e: t* 1  E 0.188(0.003)  z 1.502(0.025)   | t*+1: E 0.187(0.004)  z 1.498(0.029)  kept ops 4/4
+    z_e sign flips per chain: [314, 379, 298, 297, 304, 340, 270, 317, 274, 279]  (min 270)
+    J3: w_pp 0.926  Delta = E0 - 2E_e 0.023(0.003) (t*+1: 0.018(0.004))  -> FLUX-PAIR
+- beta 2.50 L 12 T 32 (L sqrt(sigma) 2.19), n 15000 in 10 chains
+    z0: t* 1  E 0.604(0.008)  z 7.244(0.099)   | t*+1: E 0.592(0.011)  z 7.107(0.132)  kept ops 12/12
+    z_e: t* 1  E 0.320(0.003)  z 3.843(0.041)   | t*+1: E 0.319(0.004)  z 3.824(0.049)  kept ops 4/4
+    z_e sign flips per chain: [439, 422, 408, 382, 415, 365, 412, 368, 402, 395]  (min 365)
+    J3: w_pp 0.830  Delta = E0 - 2E_e -0.037(0.008) (t*+1: -0.045(0.011))  -> FLUX-PAIR
+- beta 2.50 L 16 T 32 (L sqrt(sigma) 2.92), n 10000 in 10 chains
+    z0: t* 3  E 0.688(0.030)  z 11.015(0.478)   | t*+1: E 0.743(0.048)  z 11.887(0.774)  kept ops 12/12
+    z_e: t* 1  E 0.499(0.006)  z 7.976(0.090)   | t*+1: E 0.491(0.007)  z 7.851(0.110)  kept ops 4/4
+    z_e sign flips per chain: [367, 377, 424, 376, 408, 370, 402, 380, 372, 387]  (min 367)
+    J3: w_pp 0.022  Delta = E0 - 2E_e -0.309(0.033) (t*+1: -0.239(0.053))  -> GLUEBALL
+
+J1 doubling per pair  (photon: photon formula agrees with photon_exact.json (largest difference 0.0e+00))
+- beta 2.30 4->8 (L sqrt(sigma) 1.40->2.80): g0 3.733(0.116) [t*+1: 3.617(0.224)], g_gamma 1.136: DOUBLES   [shift 0: DOUBLES, shift 1: DOUBLES]
+- beta 2.30 6->12 (L sqrt(sigma) 2.10->4.20): g0 2.253(0.042) [t*+1: 2.290(0.149)], g_gamma 1.064: DOUBLES   [shift 0: DOUBLES, shift 1: DOUBLES]
+- beta 2.40 4->8 (L sqrt(sigma) 1.03->2.06): g0 3.324(0.068) [t*+1: 3.317(0.162)], g_gamma 1.136: DOUBLES   [shift 0: DOUBLES, shift 1: DOUBLES]
+- beta 2.40 6->12: NOT RESOLVED (a point does not count)
+- beta 2.40 8->16 (L sqrt(sigma) 2.06->4.13): g0 2.434(0.048) [t*+1: 2.489(0.127)], g_gamma 1.037: DOUBLES   [shift 0: DOUBLES, shift 1: DOUBLES]
+- beta 2.50 6->12 (L sqrt(sigma) 1.09->2.19): g0 4.141(0.175) [t*+1: 4.091(0.254)], g_gamma 1.064: DOUBLES   [shift 0: DOUBLES, shift 1: DOUBLES]
+- beta 2.50 8->16 (L sqrt(sigma) 1.46->2.92): g0 3.457(0.156) [t*+1: 3.786(0.256)], g_gamma 1.037: DOUBLES   [shift 0: DOUBLES, shift 1: DOUBLES]
+
+J2 start: L_D sqrt(sigma) = 1.03
+   set {1.03, 1.09}: DOUBLES starts [(2.4, 4, 1.032), (2.5, 6, 1.095)]  qualifies: True
+   set {1.40, 1.46}: DOUBLES starts [(2.3, 4, 1.4), (2.5, 8, 1.46)]  qualifies: True
+   set {2.06, 2.10, 2.19}: DOUBLES starts [(2.4, 8, 2.064), (2.3, 6, 2.0999999999999996)]  qualifies: True
+   set {2.80, 2.92}: DOUBLES starts []  qualifies: False
+   set {4.13, 4.20, 4.38}: DOUBLES starts []  qualifies: False
+   D-S candidate beta 2.40 L 4: zeta0 1.813(0.023), zeta_e 0.843(0.010)
+   D-S candidate beta 2.50 L 6: zeta0 1.749(0.070), zeta_e 0.971(0.016)
+
+J3 branch and switch per beta:
+   beta 2.3: [(4, 'MIXED'), (6, 'GLUEBALL'), (8, 'GLUEBALL'), (12, 'NOT RESOLVED')]  switch: no switch in the measured stretch (no FLUX-PAIR point below the first GLUEBALL point)
+   beta 2.4: [(4, 'MIXED'), (6, 'MIXED'), (8, 'FLUX-PAIR'), (12, 'NOT RESOLVED'), (16, 'NOT RESOLVED')]  switch: no switch in the measured stretch (no GLUEBALL point)
+   beta 2.5: [(6, 'FLUX-PAIR'), (8, 'FLUX-PAIR'), (12, 'FLUX-PAIR'), (16, 'GLUEBALL')]  switch: L_s sqrt(sigma) = 2.55 (between 2.19 and 2.92)
+
+J4 loss eta = 1 - g0/2 (DOUBLES pairs):
+   beta 2.40 4->8 (L sqrt(sigma) 1.03): eta -0.662(0.034)  [t*+1 -0.659(0.081)]
+   beta 2.50 6->12 (L sqrt(sigma) 1.09): eta -1.070(0.087)  [t*+1 -1.046(0.127)]
+   beta 2.30 4->8 (L sqrt(sigma) 1.40): eta -0.866(0.058)  [t*+1 -0.808(0.112)]
+   beta 2.50 8->16 (L sqrt(sigma) 1.46): eta -0.729(0.078)  [t*+1 -0.893(0.128)]
+   beta 2.40 8->16 (L sqrt(sigma) 2.06): eta -0.217(0.024)  [t*+1 -0.245(0.063)]
+   beta 2.30 6->12 (L sqrt(sigma) 2.10): eta -0.127(0.021)  [t*+1 -0.145(0.075)]
+
+J5 scaling:
+   {1.40, 1.46}: ARTEFACTS VISIBLE, spread 0.595; members [(1.4, 2.3, 4, 2.591, 0.075), (1.46, 2.5, 8, 3.186, 0.041)]
+   {2.06, 2.10, 2.19}: ARTEFACTS VISIBLE, spread 1.219; members [(2.06, 2.4, 8, 6.025, 0.094), (2.1, 2.3, 6, 6.551, 0.071), (2.19, 2.5, 12, 7.244, 0.099)]
+   {2.80, 2.92}: ARTEFACTS VISIBLE, spread 1.344; members [(2.8, 2.3, 8, 9.671, 0.106), (2.92, 2.5, 16, 11.015, 0.478)]
+   {4.13, 4.20, 4.38}: SCALING OK, spread 0.098; members [(4.13, 2.4, 16, 14.663, 0.174), (4.2, 2.3, 12, 14.761, 0.223)]
+
+J6: z0 and z_e against L sqrt(sigma) (z0 = 3.6 L sqrt(sigma) for orientation): see the table above and the plot.
