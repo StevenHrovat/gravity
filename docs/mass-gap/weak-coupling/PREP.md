@@ -654,3 +654,13 @@ Reading (coordinator; candidate):
   no gap. Confinement: the act grows (≈ m·L) while the loss stays fixed, so the net is positive — "inside confinement is most
   efficient". Both c and z₀(L) are directly measurable: the pre-registered joint z₀/z_e measurement (c5e, `PREREG-JOINT.md`) gives z₀ at
   doubling pairs, hence the per-doubling loss c(L) = 2z₀(L) − z₀(2L), and whether it stays bounded.
+- **"More than loss is given by the universal quantum / cost of assertion" (the owner, same day, as a question).** Reading
+  (coordinator): with ħ = 1 the photon's act is exactly 2π = h, **one universal quantum**: light asserts its existence once. The quantum
+  sets both sides: the act of anything that exists is at least one quantum (the DMP floor, `evidence/Dmp/Reach.lean`), and the loss per
+  doubling can reach one quantum (light's whole act). That gives act ≥ loss, i.e. a net ≥ 0, not > 0: light sits exactly at equality,
+  which is why it has no gap. "More than loss" needs **strictly more than one quantum** in some start box. The owner's earlier reading
+  (only something that actually exists as a duality crosses; the assertion reflects, inside and outside) suggests an existing thing
+  asserts twice: act ≥ 2 quanta = 4π, so with loss ≤ 2π the net is ≥ 2π > 0. Checkable: in SU(2) small boxes the lowest centre-even state
+  is a flux pair (z₀ ≈ 2z_e; c6b: z_e = 3.59 at L√σ = 2.1, so z₀ ≈ 7.2 > 2π), and at L√σ ≈ 3.5 the glueball gives z₀ ≈ m·L ≈ 13 > 4π. Open:
+  that SU(2)'s loss per doubling is bounded by one quantum (known only for the photon), and the 4π floor itself. Both are read off the
+  joint z₀/z_e measurement.
