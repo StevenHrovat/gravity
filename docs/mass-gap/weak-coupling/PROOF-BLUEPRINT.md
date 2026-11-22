@@ -28,14 +28,14 @@ duality), and is recorded in `PREP.md`; it guides, it does not prove.
 | P1.1 | Wilson measure on the 4D torus, SU(2) and general compact G | Lean | `formal/AreaLaw/ConcreteSUn.lean`, `formal/OneScale/` |
 | P1.2 | reflection positivity, site and link | Lean | `formal/Positivity/` |
 | P1.3 | temporal-gauge transfer kernel; centre flip of one row as a symmetry; parity-sector norm ordering | Lean (kernel, symmetry, ordering); Gauss law not formalised; `Z_Wilson = tr(P_G Tⁿ)` not formalised; strict E_e > 0 open | `R4/LayerKernel.lean`, `LayerSector.lean` |
-| P1.3′ | 't Hooft's electric-flux sectors proper and E_e as their gap; cheapest route (free win 1): E_e as the decay rate of a centre-odd slab observable on the 4D measure via the formal Hankel/RP-doubling machinery (`OneScale/TimeShift.lean`, `TorusRP.lean`), no Gauss projection needed | open (free win 1) | review finding 2; `attempts/r4-review/FREE-WINS.md` |
+| P1.3′ | the flux energy on the real 4D measure: anisotropic torus as a chain of slices, RP, Hankel identity; for the summed Wilson line (centre-odd) effective masses decrease to `fluxRate ≥ 0` with |h(t)| ≤ h(0)e^{−rate·t} | Lean (`ProofPhase/RouteB/Chain.lean`, `FluxEnergy.lean`); holds for any group, says nothing about the value; uniqueness of the T → ∞ limit open | `proof-phase/ws2-routeB/NOTE.md` |
 | P1.4 | sector Fourier identity Z_e = (Z ± Z_tw)/2 | Lean (definitional) | `LayerSector.lean` (`twist_centre_transform`) |
-| P1.4′ | 't Hooft duality proper (lattice rotation on a symmetric box, temporal vs spatial twist) | open | review finding 3 |
+| P1.4′ | 't Hooft duality proper: the lattice rotation maps the temporal twist to the spatial twist on the symmetric box (T = L) | Lean (`tHooft_rotation`, Euclidean form) | `ProofPhase/RouteB/Duality.lean` |
 | P1.5 | decimation by 2: gauge covariant, centre-flip and reflection commuting | Lean | `R4/LayerDecimation.lean` |
 | P1.5′ | "act conserved": image measures keep total mass | Lean (definitional) | `LayerTransport.lean` |
 | P1.5″ | the image of the twisted ensemble is the twist of one local coarse action (real flux-sector transport) | open | `r4-layer/NOTE.md` |
 | P1.6 | reflection positivity of a decimated layer, one step | Lean; but decimation at fixed L₁ has a pure-noise limit, so it is not the route's blocking | `decimated_wilson_rp_SU2` |
-| P1.8 | **a good blocking**: centre-covariant, reflection-positive at every level, non-trivial continuum limit at fixed L₁; free win 3: positivity is needed in the time direction only, so averaging inside time slices with decimation in time keeps it | open (abstract lemma about 10 lines) | `r4-layer/NOTE.md`, `attempts/r4-review/FREE-WINS.md` |
+| P1.8 | **a good blocking**: centre-covariant, reflection-positive at every level, non-trivial continuum limit at fixed L₁ | Lean for the construction (spatial staple smearing within time slices, temporal decimation) and RP at every layer (`goodBlocking_rp`); non-trivial limit: power counting plus a one-loop check; covariance off a null set: paper | `ProofPhase/RouteA/Blocking.lean`, `proof-phase/ws1-routeA/NOTE.md` |
 
 ### P2. Decay machinery (Route A, conditional)
 
@@ -61,6 +61,7 @@ duality), and is recorded in `PREP.md`; it guides, it does not prove.
 | piece | statement | status | where |
 |---|---|---|---|
 | P4.1 | Route A, **gap strength** (free win 2): torus slab covariances of the Wilson theory along the line of constant physics decay at one physical rate, any prefactor (`LevelDecay`, what `corollaryB_lattice` consumes). Sufficient conditions: D′ at L₁ (stronger than the gap, false below 1/T_c), or D′ on centre-blind (SO(3)) block variables (free win 4, to check) | open | `ROUND-3.md`, `attempts/r4-review/FREE-WINS.md` |
+| P4.1′ | blocked route (Lean, `slabDecay_of_blockedRoute`): good blocking ∧ `H1Local` ∧ `LimitDprime` ∧ `ObsTransfer` ⇒ `SlabDecay`; with `ObsTransferU` ⇒ `TorusDecay` (both orders of limits). Refined D′ (paper): a centre half (confinement-type; proxy holds from L₁√σ ≈ 2–2.5) and an **adjoint half, the real obstruction** (proxy factor ~6 short at L₁√σ = 3); centre-blind D′ alone fails the photon test | open: `H1Local`, `LimitDprime` (adjoint half), `ObsTransfer(U)` | `ProofPhase/RouteA/BlockedSlab.lean`, `proof-phase/ws1-routeA/NOTE.md` |
 | P4.2 | Route B: Conjecture W (summed form W_Σ: z grows by a margin per doubling along the line of constant physics) | open; photon marginality (Villain/free form) and finite-group failure: paper | `r4-conjw/NOTE.md`, `R4/ConjW.lean` (toy) |
 | P4.3 | (B1) minimal action on T³×ℝ is 4π²/g² | numerical only; certifiable | `r4-conjw/NOTE.md` |
 | P4.4 | (B2) fluctuation prefactor along the line of constant physics (where b₀ enters) | open; needs constructive renormalisation | `r4-conjw/NOTE.md` |
@@ -74,7 +75,7 @@ The one-sided step every route meets: comparing the blocked measure with the ori
 
 | piece | statement | status |
 |---|---|---|
-| P5.1 | Route B only: sector transfer, flux-sector gap ⇒ vacuum (glueball) gap | open; no known route |
+| P5.1 | Route B only: sector transfer, flux-sector gap ⇒ vacuum (glueball) gap | no route through twist or flux inequalities (Kanazawa's twist insensitivity gives only centre-charged decay; the SU(2)×U(1) product theory has flux growth and no gap); discharged only through Route A (`SlabDecay`/`TorusDecay` ⇒ `SectorTransfer`, definitional): **Route B lands on Route A** |
 | P5.2 | block observables at L₁ ⇒ all local gauge-invariant observables | paper with a stated gap (`r3-robust/NOTE.md`, H1-fine) |
 | P5.3 | the gap for the whole field algebra: one rate for all truncated correlations; uniqueness of the vacuum | open |
 
