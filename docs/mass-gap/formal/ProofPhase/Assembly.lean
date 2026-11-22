@@ -65,9 +65,12 @@ namespace ProofPhase
 
 /-! ## P6.6: the line of constant physics -/
 
-/-- The one-loop slope of the SU(2) bare coupling: `β = 4/g²`, `1/g²(1/a) ≈ 2 b₀ log(1/(aΛ))`, `b₀ = 11/(24π²)`, so
-`β_k ≈ 8 b₀ log ℓ_k = (11/(3π²)) log ℓ_k`. -/
-def oneLoopSlope : ℝ := 11 / (3 * Real.pi ^ 2)
+/-- The one-loop slope of the SU(2) bare coupling **in this project's normalisation**: the plaquette weight is
+`exp (β Re tr U_p)` (`wilsonWeight`), so `β = β_std / 2 = 2/g²` (standard Wilson `β_std = 4/g²`). With
+`1/g²(1/a) ≈ 2 b₀ log(1/(aΛ))`, `b₀ = 11/(24π²)`: `β_k ≈ 4 b₀ log ℓ_k = (11/(6π²)) log ℓ_k`. (Corrected 2026-11-22 by phase
+workstream 4: the first version used the standard-β slope `11/(3π²)`, under which the physical unit `L₁` would shrink to
+zero; see `weak-coupling/proof-phase/ws4-existence/NOTE.md`.) -/
+def oneLoopSlope : ℝ := 11 / (6 * Real.pi ^ 2)
 
 theorem oneLoopSlope_pos : 0 < oneLoopSlope := by unfold oneLoopSlope; positivity
 
