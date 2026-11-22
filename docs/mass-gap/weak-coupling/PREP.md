@@ -1030,3 +1030,11 @@ thread.
   bounded observable. Rough size: a sheet that outlives Balaban's delay spans at least about L^(2 R_j) plaquettes at moderate flux above
   the small-field threshold, so its weight is far below its count of positions; the bound has to be done in physical units (the F1
   trap). Sent to the M1 thread as the preferred form of the R2 repair.
+- **Correction: it exists, but has no existence (the owner, same day, on R2):** "The carrying route is actually the correct one, since my
+  reading was imprecise. That state can not have existence, so not become a duality, but it can exist, so interact with existence."
+  Reading (coordinator): this is the owner's earlier distinction (light only "exists"; a duality "has existence") applied to the
+  long-lived moderate flux sheets, and it matches what the carrying route does. The sheet never becomes a coarse degree of freedom of its
+  own: it is not a record, not a Z2 label, not part of the block field's inductive form (it does not "have existence"). But it is not
+  dropped either: it is attributed to the regions it touches and charged through its shrinking footprint, so its effect on everything
+  else is kept in full (it "exists" and interacts). The remainder route failed exactly because it tried to remove the sheet as if it did
+  not exist at all; removing it disturbed its surroundings in a way only a decoupling lemma could repair.
