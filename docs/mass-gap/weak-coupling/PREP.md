@@ -645,3 +645,12 @@ Reading (coordinator; candidate):
   cross-volume step; (ii) the **flux act** z_e = E_e·L is super-additive with a large margin in the data (≈ (L√σ)² − 0.9), so the owner's
   "accumulation of existence" fits the flux (the confining string) better than the vacuum. Reflection positivity gives the vacuum side
   only subadditivity. Details: `proof-phase/c6c-floor/NOTE.md`.
+- **The fixed loss (the owner, same day):** "The fixed loss sounds like exactly what we need. It is the inefficiency created by the
+  assertion of existence by the expansion of possibility space that it required. Also why inside confinement is most efficient."
+  Reading (coordinator): in z₀(2L) ≥ 2z₀(L) − c the loss c is the price of asserting existence over the doubled possibility space. Two
+  conditions make it a proof: (a) **c does not grow with L** — a candidate mechanism is that what is newly chosen per doubling is a fixed,
+  finite set of binary centre-flux sectors (their number does not depend on L), not the bulk; (b) **one start box carries more act than
+  the loss**, z₀(L₀) > c; then m ≥ (z₀(L₀) − c)/L₀ > 0. Light: its whole act (2π) is eaten by the loss (c up to 2π), so nothing is left:
+  no gap. Confinement: the act grows (≈ m·L) while the loss stays fixed, so the net is positive — "inside confinement is most
+  efficient". Both c and z₀(L) are directly measurable: the pre-registered joint z₀/z_e measurement (c5e, `PREREG-JOINT.md`) gives z₀ at
+  doubling pairs, hence the per-doubling loss c(L) = 2z₀(L) − z₀(2L), and whether it stays bounded.
