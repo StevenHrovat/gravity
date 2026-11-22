@@ -15,21 +15,23 @@ decoder, `CLOSING.md`) is **not** reflection positive (`CLOSING.md` 4).
 1. **Blocking.**
    * Split each SU(2) bond into its adjoint SO(3) part and the Z2 layer `τ_p = sign tr U_p` (the exact
      Mack-Petkova/Tomboulis rewriting, `ROUTE-B.md` 1).
-   * Close the bare Z2 layer once with the global decoder: the nearest closed layer, minimal filling of the monopole
-     boundary, ties absorbed, then a fixed order (`CLOSING.md`).
+   * Close the bare Z2 layer once with the decoder: in each connected union of Balaban's scale-0 `M R_0`-cubes that
+     contain a flip, take the maximum-weight packing of positive-gain closed sets, with ties absorbed, then a
+     lexicographic order (`CLOSING.md`, `REVIEW3-RESPONSE.md` 5).
    * Block the Z2 layer by mod-2 Stokes.
    * Block the SO(3) part with Balaban's average, excising for one step the SO(3) plaquettes near the cut (threshold
      `r0 = c/L⁴`, F4), so that constrained variables stay below `r0` (E7.J, easy form).
 2. **Law preservation:** the conditional step (`Exact.lean`) for any measurable blocking.
-3. **Small fields:** Balaban's analysis. Near the identity SO(3) and SU(2) agree, and the Z2 background is `+1` in
-   small-field regions.
+3. **Small fields:** Balaban's analysis. At scale 0, small field means SU(2)-regular (so `τ = +1`); from scale 1 on,
+   it means SO(3)-regular, and `τ'` enters only through label factors (`REVIEW3-RESPONSE.md` 1, 4).
 4. **Large fields** (deep cores, SO(3)-cut plaquettes and monopole loops, Bianchi halos, sheets during their window):
    ordinary Balaban large-field regions, renormalised after the delay and **released** into R-terms. Released effects
    are gauge invariant and local; their field dependence is of dimension 4 (no invariant vector in `so(3)`), summed by
    [III] (2.30)-(2.33) (`F1-REPAIR.md` 2-3, `BYPASS.md` 1).
 5. **Persistent Z2 flux:** only closed remainders feed the coarse bit, through the coarse 1-skeleton; count
    `L^{(1 - 16b)k}`, converging (`CLOSING.md` 2). Thick-born sheets never enter `τ`; they are large-field regions
-   during a window of about `(3/4) log g^{-2}/log L` steps and are then erased (`BYPASS.md` 1).
+   during a window of about `(3/4) log g^{-2}/log L` steps and are then erased (`BYPASS.md` 1). Labels are carried as
+   positive fixed-domain factors (`REVIEW3-RESPONSE.md` 4).
 6. **Hand-over at `L_*`:** the law of `(V_K, τ_K)` in Balaban's form, and the `L_*` half of the ultraviolet transfer.
    The crossover `L_* → L₁` (P4) is not M1's (`HANDOVER.md`).
 
@@ -55,15 +57,18 @@ the notes):
 | R1 off-centre dilution (F5, in SO(3)) | contraction of localised moderate cores at every position (in-block parts cancel; only segments transmit) | **paper + Lean steps** (`OFFCENTRE.md`, `OffCentre.lean`): `θ = 5^d L^{1-d} + C(r0 + L² ε)`; sheets are not R1 (excision R3, growth R2) |
 | R2 regular within the delay | every released region is regular within the delay, or is carried, paid by its own action | **paper + Lean step** in the repaired form (`R2-REPAIR.md`): attribution instead of a partition; footprint-weighted lifetime (`footprint_sum_le`); suppression from [16] (71) (read); E8 insertion a re-reading of [V] (1.80)-(1.85); the remainder route (`R2-REMAINDER.md`) compared and not taken: its rarity bound (a) closes, its splitting (b) needs a defect-decoupling lemma; **E8: no insertion needed**, [V] (1.80)-(1.81) already allow `K ≤ n0 - j + R_j` with `n0` the shrinking time (`R10-SCOPE.md` 1; `REGULAR.md` 0.4 misread it) |
 | R3 filling near the cut (F4) | holes = twist-free envelopes of deep structures; filling = small-field Dirichlet problem; swallowed blocks filled globally (no per-block rule, RP dropped) | **paper** (`FILL.md`); the old hole (deep plaquettes only) was wrong: the data carried the flux |
-| R4 fibre mass with excision (E7.J) | needed only at regular `W`; swallowed coarse bonds | **paper, explicit** (`FILL.md`, `SKETCH-STEPS.md` 1): ordinary bonds as `E7J.md`; swallowed bonds get an independent Haar value (fibre density 1). Design change: blocking with auxiliary randomness (needs R11 to allow it) |
+| R4 fibre mass with excision (E7.J) | needed only at regular `W`; swallowed coarse bonds | **paper, explicit** (`FILL.md`, `SKETCH-STEPS.md` 1): ordinary bonds as `E7J.md`; swallowed bonds get an independent Haar value (fibre density 1). Design change: blocking with auxiliary randomness (`Interface/RandBlocking.lean` allows it) |
 | R5 action lower bound (F6) | the bound behind [V] (1.76) | **read**: [16] (69)-(71), action in the four blocks of an irregular coarse plaquette `≥ ¼|V(∂p') - 1|²/g²`, given regularity (68) of the finer field; proof via [12] (50), (53), any dimension |
-| R6 decoder locality | the decoder's output depends on `τ` only locally, with exponential tails | **paper** (`REVIEW2-RESPONSE.md` 1): max-weight packing of positive-gain closed sets; exact decomposition over conflict-graph components; Peierls bound `(2C)^u (c β^{3/2} e^{-β})^{u/4}`, volume-uniform, no percolation. The merging rule of `DECODER-LOCAL.md` is withdrawn (REVIEW-2 G3) |
-| R7 normalisation per real flip | `O(1)^{|τ|}` ratio of partition functions | **citation**, reduction written (`CLOSE-OUT.md` 4): Jensen plus the weak-coupling plaquette bound from Balaban's two-sided partition-function bounds |
-| R8 release of acts and labels | dimension-4 coupling, summable | **paper** (`CLOSE-OUT.md` 2): no-linear-coupling lemma (gauge invariance and no invariant vector in `so(3)`); sum `ε_k² Σ_j e^{-p0(g_j)}` (needs `p0` growing faster than `log(k - j)`, i.e. `A0 > 1` if `p = 1`) |
-| R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field | **citation** carry-over with the change table (`CLOSE-OUT.md` 5): small-field means SO(3)-regular (`τ = +1` dropped, REVIEW-2 G2); no centre; otherwise constants only |
-| R10 hand-over (b) | the `L_*` half of the ultraviolet transfer, `L¹` form | **paper** (`WRITEOUTS.md` 2) for character polynomials of block variables at a fixed physical scale; rate `min(κ/2, c p0²/(MR))/L_*`, constants `C(n, R/ℓ)` |
+| R6 decoder locality | the decoder's output enters Balaban's `T`-operations as a function of their own variables | **paper** (`REVIEW3-RESPONSE.md` 5): local by definition, per component of the flip cubes of Balaban's scale-0 grid. The conflict-graph Peierls bound (`REVIEW2-RESPONSE.md` 1) is kept as a fidelity estimate. The merging rule and the global decoder's locality claim are withdrawn |
+| R7 normalisation per real flip | `Z_{−P}/Z ≤ (C β^{3/2})^{|P|}` (R7′) | **citation**, exponent derived by a rank count (`REVIEW3-RESPONSE.md` 3); the Jensen route and `f(P) ≤ |P|/6` withdrawn (REVIEW-3 H6) |
+| R8 release of acts and labels | dimension-4 coupling, summable | **paper** (`CLOSE-OUT.md` 2): no-linear-coupling lemma (gauge invariance and no invariant vector in `so(3)`); sum `ε_k² Σ_j e^{-p0(g_j)}` (needs `p0` growing faster than `log(k - j)`, i.e. `A0 > 1` if `p = 1`); labels no longer use it (fixed-domain factors, `REVIEW3-RESPONSE.md` 4) |
+| R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field | **citation** carry-over with the change table (`CLOSE-OUT.md` 5): small field means SU(2)-regular at scale 0 (`τ = +1`, N-1) and SO(3)-regular from scale 1 on; no centre; otherwise constants only |
+| R10 hand-over (b) | the `L_*` half of the ultraviolet transfer, `L¹` form | **sketch** (`WRITEOUTS.md` 2): REVIEW-3 H4, the split must use the positive partition and the probability bound needs a scale-`K` normalisation; part 2 |
 | R12 [16] (71) in 4D | the action lower bound behind [V] (1.76) in four dimensions | **paper**, written out from [12] (48)-(53) (`CLOSE-OUT.md` 1) |
-| R11 interface | `BlockingFamily` relaxed to measurable blockings; SU(2) encoding of `(V, τ)` (`HANDOVER.md` 0.3) | formal refactor, outside M1's folders |
+| G2/H1 labels | labels in Balaban's form | **paper** for components with `δ_k |X| ≤ 1/4`; **citation-level** for the normalised-operation Mayer expansion and the carrying within the lifetime; **sketch** for the super-rare tail (`REVIEW3-RESPONSE.md` 4) |
+| H3 one-step induction | `S1-CURRENT.md` written as the induction, with the order of constants | **outline** only; part 2 |
+| N-2 density | the block-observable class is dense in the limit | **open**; part 2 (bears on the interface) |
+| R11 interface | measurable blockings with noise (done, `Interface/RandBlocking.lean`); block state `(SO(3), closed Z2)` with gauge-invariant observables (no SU(2) encoding, REVIEW-2 G5) | formal refactor, outside M1's folders |
 | ext | [I] Theorem 2 (running coupling, with `γ ≤ γ0(L)`) | external, unpublished |
 | P4 | the crossover `L_* → L₁` | not M1's; open, the core |
 
@@ -71,41 +76,47 @@ F2 (Bianchi halo) and F3 (P2′) are absorbed: halos live in released large-fiel
 because nothing is frozen. V1 with excision (`V1-EXCISION.md`, `V1-INPUTS.md`) is no longer on the main line: holes are
 never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `CutAvoid.lean` are off the main line;
 `Exact.lean`, `Dilution.lean`, `Vortex.lean`, `FibreMass.lean`, `Routine.lean`, `FluxTube.lean` and `Assembly.lean`
-(as bookkeeping, REVIEW-1 F7) remain in use. **Main theorem, final status (2026-11-22).** Every row above has an argument. What each argument rests on:
+(as bookkeeping, REVIEW-1 F7) remain in use. **Verdict (corrected after REVIEW-3 and the REVIEW-2 follow-up, 2026-11-22).** The earlier verdict, "complete at
+paper level", overstated what is written and is withdrawn. M1 is a complete programme. The counting, the decoder, the
+labels' form, the small-field rule and the extended holes are repaired. Still to be written:
+* **H3:** the one-step induction (`S1-CURRENT.md` is an outline). Part 2.
+* **H4:** R10's split on the positive partition, with a scale-`K` normalisation (sketch). Part 2.
+* **N-2:** density of the block-observable class in the limit (open; bears on the interface). Part 2.
 
-* **Lean (machine-checked):** exactness of the conditional step; the dilution core; vortex persistence; the
-  fibre-mass slicing; the Poincaré counting; the local-modification identities; fibre densities; gauge fixing at a
-  leaf; the record gas; the flux-tube lower bound; the off-centre steps; the footprint sum; and the assembly as
-  bookkeeping.
-* **Paper, written out:** R1, R2 (repaired form), R3, R4 for ordinary bonds, R6, R8, R12, the closing rule, the
-  release route, the counting.
-* **Paper sketch (not written out line by line):**
-  * R4 for swallowed coarse bonds: surjectivity plus compactness, constant not explicit;
-  * R10, the conditional cluster expansion at fixed top field;
-  * the insertion of the footprint-weighted lifetime into [V] (1.80)-(1.85).
-* **Citation (Balaban, as he states it):** R5 (read), R7, R9 (carry-over with two stated changes), [13] Theorems 3.12,
-  3.13 (read; exponents of (3.133) illegible in the scan), [I]-[V], [12], [14], [15].
-* **External:** [I] Theorem 2 (unpublished).
-* **Separate:** the crossover P4.
+Repaired in `REVIEW3-RESPONSE.md`:
+* N-1 (paper);
+* H2, the local decoder (paper);
+* H1, labels as fixed-domain factors: paper for small components, citation-level extension, super-rare tail sketch;
+* H5 (paper, one sketch step);
+* H6 (citation, exponent derived).
 
-**Final verdict (2026-11-22, after `WRITEOUTS.md`).** M1's main theorem has a complete argument at paper level,
-apart from:
+As before:
 * **external:** [I] Theorem 2 with its rate (0.31);
-* **separate:** the crossover P4;
-* **outside M1:** the interface changes (block state `(SO(3), closed Z2)`, `MassGapLoc` via the limit; REVIEW-2 G4,
-  G5), planned separately by the coordinator.
+* **separate:** P4;
+* **outside M1:** the interface changes.
 
-It rests on:
+What each part rests on:
 * **Lean (machine-checked):** exactness of the conditional step, dilution and off-centre steps, slicing, Poincaré
-  counting, local-modification identities, fibre densities, gauge fixing at a leaf, the record gas, the flux-tube
-  bound, the footprint sum, and the assembly as bookkeeping;
-* **paper:** R1-R4, R6, R8, R10, R12, the decoder (packing plus Peierls), the labels (mixed expansion), extended holes,
-  `S1-CURRENT.md`;
-* **citation:** Balaban [I]-[V], [12]-[16] as stated, with the SO(3) carry-over (R9), the normalisation lower bound
-  (R7), and [13] (3.133)'s illegible exponents.
-
-What M1 hands over: the law of `(V_K, τ'_K)` in the inductive form of `S1-CURRENT.md`, and the `L¹` UV transfer of
-`WRITEOUTS.md` 2. Next: REVIEW-3 on the new pieces.
+  counting, local-modification identities, fibre densities, gauge fixing at a leaf, the flux-tube bound, the footprint
+  sum, and the assembly as bookkeeping. Unchanged: 57 theorems in 12 modules, standard axioms.
+* **Paper:**
+  * R1, R2 (repaired), R3, R4, R12;
+  * the closing rule and the count;
+  * the local decoder;
+  * N-1;
+  * the labels' form for small components;
+  * extended holes (with one sketch step).
+* **Sketch:**
+  * R10;
+  * the footprint-weighted lifetime in [V] (1.80)-(1.85) (super-rare tails of R2 and of the labels);
+  * "cap reached implies irregular `W`" (`FILL.md` 0.2).
+* **Outline:** the induction (`S1-CURRENT.md`).
+* **Citation:**
+  * Balaban [I]-[V], [12]-[16] as stated;
+  * R9 carry-over;
+  * R7′;
+  * the normalised-operation Mayer expansion of [V] (1.103) used for labels;
+  * [13] (3.133)'s illegible exponents.
 
 Parts A and B below are the pre-review plan, kept for the record.
 

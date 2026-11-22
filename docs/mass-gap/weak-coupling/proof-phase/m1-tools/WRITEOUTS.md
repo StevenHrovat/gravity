@@ -141,3 +141,14 @@ volume enters only through locality. **Status: paper.**
 **What this delivers** (the honest form of `REVIEW2-RESPONSE.md` 5(b)): for every `n`, `R`, `ℓ ≤ L_*`, the `L¹` UV
 transfer to `(V_K, τ'_K)` for character polynomials of degree `≤ n` in the block variables at scale `ℓ` on extent `R`,
 with rate `m` (physical, independent of the class) and constants `C(n, R/ℓ)`.
+
+**Update (REVIEW-3 H1, H4, H7; `REVIEW3-RESPONSE.md`):**
+* **Section 1:** steps 2-4 are superseded by `REVIEW3-RESPONSE.md` 4. Labels are positive fixed-domain factors with
+  (P1)-(P3); no constant `a_ℓ` or small `h_ℓ` is claimed. Corrections:
+  * labels are extracted at the release of their component, not within the window;
+  * "at least 4 flips per labelled skeleton bond" holds in the interior of coarse bonds; at coarse vertices the bound is
+    per component;
+  * the parity sum of step 4 is an upper bound (labelled domains have a hard core).
+* **Section 2 (R10) is back to sketch.** `E_D` is a summation index, so the split has to use the positive partition.
+  The probability bound needs a scale-`K` normalisation; R7 is bare-scale. The class must be the gauge-invariant
+  polynomials, and the constants depend on `L_*/ℓ` too. Part 2.

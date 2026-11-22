@@ -147,3 +147,13 @@ Agree on all four points.
   and `f(P) ≤ |P|/6`. So the factor is `poly(β)` per flip, which the margins absorb.
 * **N2:** `DECODER-LOCAL.md` 6.4 (sum over twist sectors) withdrawn.
 * **N3:** see the table in section 0.
+
+**Update (REVIEW-3, REVIEW-2 follow-up; `REVIEW3-RESPONSE.md`):**
+* **Section 1:** the locality claim is replaced by a local decoder, per component of the flip cubes of Balaban's
+  scale-0 grid (`REVIEW3-RESPONSE.md` 5). The Peierls bound stays, as a probability estimate.
+* **Section 2:** the form `a_ℓ (1 + h_ℓ)` is withdrawn; labels are fixed-domain factors (`REVIEW3-RESPONSE.md` 4). The
+  amended small-field rule holds from scale 1 on only; at scale 0, small field means SU(2)-regular (N-1).
+* **Section 3:** the bullet "The Z2 part" confused two objects (corrected in `REVIEW3-RESPONSE.md` 2.5). The filling is
+  the implicit-function critical point.
+* **Section 5(c):** "dense by martingale convergence" is not routine (follow-up N-2); part 2.
+* **Section 6, N1:** `f(P) ≤ |P|/6` is false (REVIEW-3 H6); restated as R7′ (`REVIEW3-RESPONSE.md` 3).

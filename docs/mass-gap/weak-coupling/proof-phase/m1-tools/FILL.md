@@ -86,3 +86,13 @@ estimate as `TRAP-CHECKS.md` T1, now with twist-free data). With `r0 = c/L⁴` t
 * In `M1-PLAN.md`: R3 **paper**; R4 **paper** (ordinary bonds) + **sketch** (swallowed bonds).
 
 **Update (REVIEW-2 G6, N3):** the growth cap is on the number of layers, not the extent; extended thin slabs (centre-flux sheets) are filled in local gauges with the Dirichlet gap `(π/w)²` (`REVIEW2-RESPONSE.md` 3). "Unique modulo gauge" is made measurable by an axial gauge selection in each patch, rooted away from block centres where Balaban's average is covariant.
+
+**Update (REVIEW-3 H5; `REVIEW3-RESPONSE.md` 2):**
+* The twist-free test with loops of length `≤ 8` was vacuous. It uses loops of length up to `λ = 8(ℓ_max + 2)` in the
+  first outer layer, with threshold `C_tw r0 |γ|²`.
+* Cap: `ℓ_max = C_1 L ≥ C L + 1`.
+* The filling is the implicit-function critical point, not "the least-action configuration".
+* Owned bonds lie outside the Dirichlet data.
+* "Cap reached implies irregular `W`" remains a sketch, through section 0.2.
+* Sections 0.4-0.5 (surjectivity and compactness for swallowed bonds) are superseded by the randomised swallowed bonds
+  (`SKETCH-STEPS.md` 1).

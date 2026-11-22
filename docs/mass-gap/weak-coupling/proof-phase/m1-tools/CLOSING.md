@@ -128,3 +128,7 @@ Reflection positivity of the bare measure is enough (`LimitRP`; the block-law in
 statements; the one-box strong-coupling route uses no reflection positivity). **The closing rule is kept with the
 global decoder, and it is not reflection positive**: the blocked laws of M1 carry no RP claim. Checks 1-3 stand at the
 levels stated; check 4's failure is recorded and no longer blocks. Follow-up: `HANDOVER.md`, `M1-PLAN.md` 0.
+
+**Update (REVIEW-3 H2, H8; `REVIEW3-RESPONSE.md` 5):** the rule of section 1 is applied per component of the flip
+cubes of Balaban's scale-0 grid, with closed sets restricted to the component. Tie-break (iii) is lexicographic in a
+fixed plaquette order.

@@ -125,3 +125,8 @@ small-field regions (`τ = +1`) and the absence of the centre. Nothing else chan
 * R9 table row 1 amended: small field means SO(3)-regular; `τ = +1` is no longer required. Labels enter as explicit polymer factors (`REVIEW2-RESPONSE.md` 2).
 * R7 restated as `poly(β)^{|τ|}`, with freed bonds counted (`REVIEW2-RESPONSE.md` 6).
 * R10 (section 3) holds only in `L¹`, not pointwise; for block-variable observables at a fixed physical scale (`REVIEW2-RESPONSE.md` 5).
+
+**Update (REVIEW-3 H6, REVIEW-2 follow-up N-1; `REVIEW3-RESPONSE.md` 1, 3):**
+* R9 row 1 again: at scale 0, small field means SU(2)-regular (`τ = +1`); from scale 1 on, SO(3)-regular.
+* R7 (section 4): the Jensen route fails for general `P`, and `f(P) ≤ |P|/6` is false. It is restated as R7′,
+  `Z_{−P}/Z ≤ (C β^{3/2})^{|P|}`: the exponent by a rank count, the ratio by citation.

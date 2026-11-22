@@ -82,3 +82,13 @@ paper outline with explicit deltas; no row is open beyond those two.
 * **Citation:** Balaban [I]-[V], [12]-[16] for SO(3) (R9, with the amended row 1).
 * **Lean:** `Assembly.lean`'s rows now name the current design (`Decoder`, `Labels`, `Release`, `Excision`); assembly
   remains bookkeeping.
+
+**Update (REVIEW-3, REVIEW-2 follow-up; `REVIEW3-RESPONSE.md`):**
+* **(F-a)** The decoder is local by definition: it works per component of the flip cubes of Balaban's scale-0 grid
+  (section 5).
+* **(F-c)** At scale 0, small field means SU(2)-regular (`τ = +1`); from scale 1 on, it means SO(3)-regular (N-1,
+  section 1).
+* **(F-f)** Labels are not `a_ℓ (1 + h_ℓ)`. Each labelled released component carries a positive fixed-domain factor
+  `Φ_ℓ(X; V)` with properties (P1)-(P3); before release, a label is an indicator inside `T` (section 4).
+* **Status:** this note is an outline with deltas, not the induction (REVIEW-3 H3). Section 0's "two points stay at
+  sketch level" is out of date. The induction, with the order of constants, is part 2 of the response.

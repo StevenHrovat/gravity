@@ -120,3 +120,7 @@ local-rare, except for the wrapping case, which is area-suppressed.
 conserved deterministically (paper). Nothing in the local correction depends on the sector choice.
 
 **Update (REVIEW-2 G3, N2):** the probabilistic parts of sections 0, 2, 4 and 6.1 are withdrawn. The merging rule percolates in large volume and its `C^n` shape count is wrong. They are replaced by the conflict-graph Peierls bound of `REVIEW2-RESPONSE.md` 1. Section 3's deterministic lemma stays true (with the doubling-walk form of the Steiner step) but is no longer used. Section 6.4 (sum over twist sectors) is withdrawn: it is not volume-uniform, and nothing uses it.
+
+**Update (REVIEW-3 H2; `REVIEW3-RESPONSE.md` 5):** the decoder is now local by definition. It decodes per connected
+union of Balaban's scale-0 `M R_0`-cubes that contain a bare flip, using closed sets inside that union. The text above,
+including section 0, describes withdrawn or superseded rules.
