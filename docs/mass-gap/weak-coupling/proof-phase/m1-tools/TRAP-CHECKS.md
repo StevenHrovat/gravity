@@ -1,5 +1,7 @@
 # Trapping checks T1-T4 (m1-tools, 2026-11-22)
 
+> **Status (2026-11-22):** the trapping design is superseded (REVIEW-1 F1, `M1-PLAN.md` 0); T2 (reflection positivity of the excised blocking) is no longer required. The text below is left as it was.
+
 Brief: the four open checks of `TRAP.md` 0.6 for trapping with excision: T1 the per-block filling is well defined and
 regular; T2 the excised blocking is link-reflection positive; T3 P2′ (and the rest of §6) applies with excision; T4 the
 filled field is small-field across block faces inside a hole. Paper level; claim marks as in `NOTE.md`.

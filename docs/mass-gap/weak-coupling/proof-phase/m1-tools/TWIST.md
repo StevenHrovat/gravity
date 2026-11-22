@@ -1,5 +1,7 @@
 # The twisted blocking on the full lattice (m1-tools, 2026-11-22)
 
+> **Status (2026-11-22):** the aim of link reflection positivity of the blocked laws (`rp_map`, section 3) is dropped as no longer required: the main assembly uses reflection positivity only for the bare measure (`LimitRP`), and the block-law inputs are decay and transfer statements (`M1-PLAN.md` 0). The Z2 labels of this note are off the main line (replaced by the closed Z2 layer of `CLOSING.md`). The text below is left as it was.
+
 **Update (`NO-TRAP.md`):** the `d = 4` gap of section 4 is closed numerically at `L = 13` with exact paths: an
 off-centre deep core of any kind becomes moderate in one step (largest coarse spread 0.099 over 21744 cores). Uniform
 no trapping is not supported (slow balanced stars exist); what M1 needs is cut avoidance (Lemma NT′), see `NO-TRAP.md`.

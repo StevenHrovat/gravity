@@ -1,6 +1,79 @@
 # M1: outline of the accompanying paper, and the estimate inventory (m1-tools, 2026-11-22)
 
-> **Status (2026-11-22): broken by REVIEW-1 F1** (`../m1-review/REVIEW-1.md`): the root count here assumes one position per cell per scale, valid only for cores pinned at nested centres, while trapping traps every deep plaquette; records are then dense in physical units and the bounds are not uniform. Assessment and repair attempt: `F1-REPAIR.md`. The text below is left as it was.
+> **Status (2026-11-22): the trapping design is broken by REVIEW-1 F1; current main line in section 0** (`../m1-review/REVIEW-1.md`): the root count here assumes one position per cell per scale, valid only for cores pinned at nested centres, while trapping traps every deep plaquette; records are then dense in physical units and the bounds are not uniform. Assessment and repair attempt: `F1-REPAIR.md`. The text below is left as it was.
+
+## 0. Current status and main line (2026-11-22, after REVIEW-1; supersedes the status statements below)
+
+**Decision on reflection positivity (coordinator, 2026-11-22).** M1 does **not** claim reflection positivity of
+the blocked laws. The main assembly uses reflection positivity only as `LimitRP`, proved from the bare Wilson measure
+(`rp_gaugeMeasure`). The block-law inputs (`BlockGapBddW`, `LawGapBddW`, `ObsTransferPhysTW`) are decay and transfer
+statements, and the strong-coupling side (one-box route) uses no reflection positivity. The `rp_map` aim of
+`TWIST.md` and the T2 check of `TRAP-CHECKS.md` are dropped as no longer required. The current blocking (global
+decoder, `CLOSING.md`) is **not** reflection positive (`CLOSING.md` 4).
+
+**The main line.**
+1. **Blocking.**
+   * Split each SU(2) bond into its adjoint SO(3) part and the Z2 layer `τ_p = sign tr U_p` (the exact
+     Mack-Petkova/Tomboulis rewriting, `ROUTE-B.md` 1).
+   * Close the bare Z2 layer once with the global decoder: the nearest closed layer, minimal filling of the monopole
+     boundary, ties absorbed, then a fixed order (`CLOSING.md`).
+   * Block the Z2 layer by mod-2 Stokes.
+   * Block the SO(3) part with Balaban's average, excising for one step the SO(3) plaquettes near the cut (threshold
+     `r0 = c/L⁴`, F4), so that constrained variables stay below `r0` (E7.J, easy form).
+2. **Law preservation:** the conditional step (`Exact.lean`) for any measurable blocking.
+3. **Small fields:** Balaban's analysis. Near the identity SO(3) and SU(2) agree, and the Z2 background is `+1` in
+   small-field regions.
+4. **Large fields** (deep cores, SO(3)-cut plaquettes and monopole loops, Bianchi halos, sheets during their window):
+   ordinary Balaban large-field regions, renormalised after the delay and **released** into R-terms. Released effects
+   are gauge invariant and local; their field dependence is of dimension 4 (no invariant vector in `so(3)`), summed by
+   [III] (2.30)-(2.33) (`F1-REPAIR.md` 2-3, `BYPASS.md` 1).
+5. **Persistent Z2 flux:** only closed remainders feed the coarse bit, through the coarse 1-skeleton; count
+   `L^{(1 - 16b)k}`, converging (`CLOSING.md` 2). Thick-born sheets never enter `τ`; they are large-field regions
+   during a window of about `(3/4) log g^{-2}/log L` steps and are then erased (`BYPASS.md` 1).
+6. **Hand-over at `L_*`:** the law of `(V_K, τ_K)` in Balaban's form, and the `L_*` half of the ultraviolet transfer.
+   The crossover `L_* → L₁` (P4) is not M1's (`HANDOVER.md`).
+
+**Routes tried, and why they were set aside.**
+
+| route | idea | outcome | note |
+|---|---|---|---|
+| deterministic Lemma D | every core dilutes | false: centre vortices persist under every covariant symmetric average (`Vortex.lean`) | `NOTE.md` 2.4 |
+| random shifts (D-prob) | shifts dilute deep cores | shifts buy `≤ L^{-d}` per step against Balaban's per-step cost | `D-N.md` |
+| pinning + Z2 labels + cut avoidance | hold cores at nested centres | cut avoidance NT′(b′) open; uniform capture false (slow balanced stars) | `D-PIN.md`, `NO-TRAP.md`, `NT-A.md`, `NT-B.md` |
+| trapping at creation, records for ever | freeze every deep core, excise, pay root + maintenance | **fatal** (REVIEW-1 F1): records dense in physical units; F2 Bianchi halo | `TRAP.md`, `F1-REPAIR.md` |
+| release + records only at nested centres | counting repaired | persistent centre cores cost polylog per step, more than the flow frees | `F1-REPAIR.md` 4 |
+| route (b), SO(3) × Z2 split | store the centre bit on boundaries | central persistence removed; a thin sheet is an action maximum for SO(3) (the act at the tie) | `ROUTE-B.md` |
+| act-region background | fluctuation theory around a thick vortex | no minimum at finite thickness (runaway); charged quartic zero mode | `MILESTONE-1.md` |
+| bypass, labels by plain mod-2 Stokes | carry sheets as costly large fields | sheets close; open single flips on the 2-skeleton diverge (`b A_1 ≤ 0.94 < 2`) | `BYPASS.md` |
+| **closing rule (current)** | only closed sheets feed the coarse bit | counting converges; not RP (dropped as not required) | `CLOSING.md` |
+
+**What remains for M1, with claim levels** (everything else in the main line is Lean, paper or citation as listed in
+the notes):
+
+| item | content | level |
+|---|---|---|
+| R1 off-centre dilution (F5, in SO(3)) | contraction of localised moderate and SO(3)-cut cores away from block centres, with BCH corrections; sub-block sheet cores | open: numerics only (`offcentre_L13.py`, `route_b_cores.py`); centre case paper + Lean |
+| R2 regular within the delay | every released region's next field is regular within Balaban's delay (dilution or growth to a deep core) | open (sketch) |
+| R3 filling near the cut (F4) | one-step excision filling with Bianchi-halo data: uniqueness and analyticity with `r0 = c/L⁴`, a rule for blocks swallowed by a hole, measurable selection | open (fixable-looking) |
+| R4 fibre mass with excision (E7.J) | the easy form with filled bonds next to excised SO(3)-cut plaquettes | paper given R3 |
+| R5 action lower bound (F6) | the bound behind [V] (1.76): [16] (71) | citation not read |
+| R6 decoder locality | the global decoder equals a clustered, local one away from dense monopole clusters; needed for Balaban's factorisation over components | sketch |
+| R7 normalisation per real flip | `O(1)^{|τ|}` ratio of partition functions in the counting of closed remainders | citation (standard weak-coupling bound) |
+| R8 release of acts and labels | dimension-4 field dependence of released terms and of the labels' coupling to the SO(3) layer; summability over scales | paper sketch |
+| R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field with the Z2 background `+1` in small-field regions | citation (carry-over, not re-read for SO(3)) |
+| R10 hand-over (b) | the `L_*` half of `ObsTransferPhysTW` from Balaban's polymer representation | paper-level claim, not written out |
+| R11 interface | `BlockingFamily` relaxed to measurable blockings; SU(2) encoding of `(V, τ)` (`HANDOVER.md` 0.3) | formal refactor, outside M1's folders |
+| ext | [I] Theorem 2 (running coupling, with `γ ≤ γ0(L)`) | external, unpublished |
+| P4 | the crossover `L_* → L₁` | not M1's; open, the core |
+
+F2 (Bianchi halo) and F3 (P2′) are absorbed: halos live in released large-field regions, and P2′ is not needed
+because nothing is frozen. V1 with excision (`V1-EXCISION.md`, `V1-INPUTS.md`) is no longer on the main line: holes are
+never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `CutAvoid.lean` are off the main line;
+`Exact.lean`, `Dilution.lean`, `Vortex.lean`, `FibreMass.lean`, `Routine.lean`, `FluxTube.lean` and `Assembly.lean`
+(as bookkeeping, REVIEW-1 F7) remain in use. **Main theorem:** M1 has a complete argument only modulo R1-R11 above
+(R1-R3 and R6 are genuine open lemmas), the external input and P4. It is not complete yet.
+
+Parts A and B below are the pre-review plan, kept for the record.
 
 M1 = Balaban's large-field operation R ([IV], [V]) redone so that the effective densities stay the **laws** of the
 block fields. The owner (2026-11-22): M1 becomes **an accompanying paper to the main series** (which starts with GUID

@@ -121,3 +121,10 @@ sum over scales converges after vacuum subtraction ([III] (2.30)-(2.33)).
 * Items 5 (bypass 3-5, `M1-PLAN.md`) are not done.
 
 New files: this note only. No Lean this round, no build folder used.
+
+## 6. Decision (coordinator, 2026-11-22)
+
+Reflection positivity of the bare measure is enough (`LimitRP`; the block-law inputs are decay and transfer
+statements; the one-box strong-coupling route uses no reflection positivity). **The closing rule is kept with the
+global decoder, and it is not reflection positive**: the blocked laws of M1 carry no RP claim. Checks 1-3 stand at the
+levels stated; check 4's failure is recorded and no longer blocks. Follow-up: `HANDOVER.md`, `M1-PLAN.md` 0.
