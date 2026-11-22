@@ -1151,3 +1151,14 @@ thread.
   the real remaining gap (decorrelation of bounded fine observables given the block state, uniformly in the lattice spacing). One possible
   easing, to be checked: the OS norm only needs the uncaptured parts on the two sides of the reflection plane to decorrelate from each
   other, at separation at least twice their distance to the plane, which is weaker than decorrelation for every observable everywhere.
+- **The fine observable and the glueball (the owner, same day, on N-2):** "The fine observable is just the glueball again, right? The
+  minimum part of information given existence, which then decays at the fastest possible rate." Reading (coordinator): close, with the
+  two ends swapped. A fine observable is a question asked of the field; seen from far away, its answer is carried by the physical
+  states (transfer-matrix eigenstates). The lightest glueball is the component that decays SLOWEST: its correlation falls at rate m, the
+  gap, and everything else falls faster. The part of a fine observable that the coarse state does not capture, F − E[F | block state],
+  sits at the other end: lattice-scale, high-energy components (energies of order 1/ℓ at block scale ℓ), sub-quantum, which decay
+  FASTEST. That is the owner's "minimum information, fastest decay", applied to the uncaptured part rather than to the glueball. It gives
+  N-2 a spectral target: if the uncaptured part has no overlap with states below energy c/ℓ, its OS norm across a separation 2δ from the
+  plane is at most e^(−2cδ/ℓ) times its norm, which vanishes as ℓ → 0 for fixed δ. Equivalently: the block observables at scale ℓ
+  generate all states below energy c/ℓ. Whether that is easier to prove than uniform conditional decorrelation is to be checked;
+  forwarded to the M1 thread.
