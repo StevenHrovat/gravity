@@ -1,4 +1,4 @@
-# The assembly (proof phase, readiness step P7.1; updated in cycle 2 by workstream C, 2026-11-22; v3 section added in cycle 4, workstream c4a)
+# The assembly (proof phase, readiness step P7.1; updated in cycle 2 by workstream C, 2026-11-22; v3 section added in cycle 4, workstream c4a; v4 section added in cycle 5, workstream c5a)
 
 Lean: `../../formal/ProofPhase/Objects.lean` (the objects, the gap, what already follows), `../../formal/ProofPhase/Assembly.lean`
 (the open pieces, the route theorems) and `../../formal/ProofPhase/Torus/Top.lean` (the top-level theorems; cycle 2), with
@@ -231,3 +231,63 @@ blockings would make the representation, part (b) and `EnvelopeW` provable from 
 `H1LocalLipW` are about blocked laws, `CondMassAnn`/`CondMass`/`SmootherStable` about conditioned systems (the photon satisfies them),
 `ObsQuasiLoc` about conditional expectations. The `_dec` variant, which takes part (c) itself, is a law-of-total-covariance reduction
 (given coarse decay, (c) is equivalent to fine decay: c3a's difficulty conservation); the named theorem uses `CondMassAnn` instead.
+
+## Assembly v4 (cycle 5, workstream c5a, 2026-11-22): cut at L_*
+
+Lean: `../../formal/ProofPhase/V4/` (`LCP`, `Gap`, `Recursion`, `UV`, `Top`); details, findings and the full claim check
+in `c5a-v4/NOTE.md`; the map it implements is `c4-fable/BLUEPRINT-v4-DRAFT.md` (plan step 1). Built in `~/formal-c5a` with
+`c5a-v4/build.sh ProofPhase.V4.Top`; `c5a-v4/axioms.sh` prints 24 headline theorems, all `propext, Classical.choice,
+Quot.sound`; no `sorry`, no `native_decide`, no new axioms. `Objects.lean` and `Assembly.lean` unchanged (no renames).
+
+The tuning's unit `L₁` is **read as L_\***, the scale where segment 1 ends (running coupling small and fixed). `B` is any
+`BlockingFamily` onto L_* cells. Version 4 has three layers: ID (identification), UV (lattice spacing to L_*), IR (the L_*
+theory). Exactly one input is of gap strength, the IR one.
+
+**Top theorem** (as drafted):
+
+```
+theorem ProofPhase.V4.yang_mills_assembly_v4 {T : Tuning} (hL : OnLCP' T) (hN : NonTrivial T) (B : BlockingFamily T)
+    {lam : ℝ} (hlam : 0 < lam) (hIR : BlockGapUnifW T B lam) (hUV : ObsTransferPhysTW T B) :
+    TorusDecayLoc T.toV ∧ MassGapLoc T ∧ MassGapMFLoc T.toV ∧ LimitRP T ∧ NonTrivial T
+```
+
+and the stronger form with the weaker infrared input `BlockGapBddW` (`yang_mills_assembly_v4_bdd`; packaged as
+`OpenInputsV4` / `yang_mills_assembly_v4_inputs`). v3's preferred inputs imply v4's at the same unit
+(`openInputsV4_of_levelTorusRouteW`); pure noise fails them (`not_trivial_v4`).
+
+### The open inputs of v4
+
+| input | exact Lean statement (quantifier bookkeeping abridged) | layer | gap |
+|---|---|---|---|
+| `OnLCP' T` | `Tendsto T.ℓ atTop atTop`; `β_k / log ℓ_k → 11/(6π²)`; `∃ 0 < z_lo ≤ z_hi, ∃ k₀, ∀ k ≥ k₀, ∀ h` flux time limit of the unit box: `z_lo ≤ ℓ_k · fluxRate h ≤ z_hi` | ID | P (scheme: P/N; a decay rate in a fixed **finite** box, the photon satisfies it; not gap strength) |
+| `NonTrivial T` | some slab correlation at some `τ > 0` has all continuum limit points `≥ c > 0` in modulus | ID | P (anti-decay) |
+| `ObsTransferPhysTW T B` | for gauge-invariant `|F|, |G| ≤ 1` of physical extent `≤ R` at time distance `≥ D ≥ 0`: coarse `f, g` with `Σ vf ≤ 2K(1 + D/L_*)⁴`, `g` geodesic-Lipschitz `≤ K`, supports at distance `≥ D/2`; `‖E[F|Φ] − f∘Φ‖₁`, `‖E[G|Φ] − g∘Φ‖₁`, `|E[FG] − E[E[F|Φ]E[G|Φ]]|` all `≤ c e^{−mD}`, uniformly in `k ≥ k₀`, `j` | UV (L_*) | P (photon satisfies it in time; (c) equals fine decay only **given** IR) |
+| **`BlockGapUnifW T B λ`**, `λ > 0` | `∃ C ≥ 0, ∃ k₀, ∀ k ≥ k₀, ∀ j`, bounded `f` (oscillations `vf` on `A`), `g` geodesic-Lipschitz `Lg` on `Sg`, `linkDist ≥ R`: `|Cov_{T.ym k j}(f∘B, g∘B)| ≤ C (Σ_A vf) Lg e^{−λR}` | IR (L_*) | **G**: the lattice gap for block observables at one scale; named as the one gap-strength input |
+| ↳ (weaker, sufficient) `BlockGapBddW T B λ` | the same for `|f|, |g| ≤ 1`, `R ≥ 0`, bound `C (1 + Σ_A vf)(1 + Lg) e^{−λR}` | IR (L_*) | **G** |
+
+No other input of v4 is a decay statement for observables of the Wilson measure in infinite volume (table with reasons
+in `c5a-v4/NOTE.md` §5).
+
+### Strategy (a) for IR: the recursion lemma (cycles 2 to 4 kept as a proved reduction)
+
+`ν = blockedLaw T B` (the L_* theory), `B₂ k j` a blocking of the L_* torus onto an L₁ torus of side `M j`, `s = L₁/L_*`.
+
+| input | exact Lean statement (abridged) | layer | gap |
+|---|---|---|---|
+| `LevelDprimeWOn (fun k j => (ν k j).map (B₂ k j)) λ₂` | v3's `LevelDprimeW` for the L₁ laws (Gibbs, single-link W₁ influences, column sums `≤ γ`, range `≤ D₁`, `γ e^{λ₂D₁} < 1`) | IR at L₁ | G/N (confinement-type, the cheap half at L₁ ≈ 2.8/√σ) |
+| `StageTwoW ν B₂ s` | for L_* block observables `|f|, |g| ≤ 1` (osc. `vf`, Lipschitz `Lg`) at distance `≥ R ≥ 0`: L₁ approximants with `Σ v₂ ≤ K(1 + Σvf)(1 + R)⁴`, `L₂ ≤ K(1 + Lg)`, L₁ distance `≥ R/(2s)`; (a), (b), (c) under `ν` all `≤ c(1 + Σvf)(1 + Lg)e^{−mR}` | IR, L_* → L₁ | (a), (b) N; **(c) G** at L₁ ≈ 2.8/√σ (Lemma X) |
+
+`blockGapBddW_of_stageTwo` / `blockGapBddW_of_levelDprimeWOn` (S): these give `BlockGapBddW T B λ` with
+`λ = min(λ₂/(4s), m)`; `yang_mills_assembly_v4_strategyA` wires it into the top theorem. **Finding:** the draft's version
+("v3 inputs at L₁ imply `BlockGapUnifW` at L_*") does not follow from v3's literal shapes (extent-indexed constants,
+additive errors); the true version lands in `BlockGapBddW` and needs the prefactor form `StageTwoW`. Open bookkeeping:
+`B₂` must exist for every volume (two cell sizes when `2^r ∤ 2(j+1)`).
+
+### Seg1, and what left the top statement
+
+`UV1Polymer T B λ' M_E := Seg1.PolymerRepW coarseSide (blockedLaw T B) λ' M_E` and `gibbsRep_of_uv1Polymer` (S): segment 1
+on the L_* laws of v4 (local Gibbs representation, uniform `EnvelopeW`). It feeds UV (the supplier of the L_* theory for
+the proof of UV2 and for strategies stated on the L_* laws); no Lean theorem consumes it yet, so it is not a hypothesis of
+the top theorem. Out of the top statement, files kept: route B, the sup family, `H1LocalLipW ∧ LimitDprimeW` (now inside
+strategy (a) only), the `_dec`/`_smoother`/`_condMass` variants, `OnLCP.scheme` in convergence form (`OnLCP → OnLCP'`,
+`OnLCP.toOnLCP'`; every use of `OnLCP` needs only `OnLCP'`).
