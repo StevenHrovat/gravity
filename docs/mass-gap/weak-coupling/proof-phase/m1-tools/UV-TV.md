@@ -2,6 +2,8 @@
 
 > **Status (part 2, sections 7-13 below):** Lemma UV-TV (i) is restated in averaged form (section 8). The good-boundary Theorem A is restated in site-level Dobrushin-Shlosman coupling form, with bad clusters as nodes (section 9, paper sketch). Section 3.1's independent-percolation hypothesis is withdrawn. Next: the multi-scale crossing estimate (section 12).
 
+> **Status (part 3, sections 14-20):** the reviewers' dynamic fix of Theorem A_good saturates inside bad clusters (section 15). The repair is static: composite boxes (cluster plus good collar) with Lemma C, Dobrushin-Shlosman per `ω` worst case over the support, then an average over `ω` (section 16, paper sketch). H2 is quenched in the coarse field (17). Section 12 has not started and waits on the reviewers' check of section 16.
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -519,3 +521,259 @@ fibre integral)` near small-field boxes. It is the same as R10's scale-`K` norma
 | H1, H2 for M1 (10.3) | open: section 12, with the pointwise fibre normalisation as an unchecked adaptation |
 | unimodality after matching (11) | confirmed: given the full discrete index, the remaining law is unimodal and small field on good boxes (the box law is a mixture; competing states are kept as indices) |
 | Doeblin floor (11) | positive, `e^{−O(β_0 L^{dj}|J|)}`; qualitative only, but it gives the unique ergodicity used in step 2 of Theorem A_good |
+
+# Part 3 (2026-11-22): Theorem A_good repaired, after REVIEW-2 (fifth follow-up) and REVIEW-3 (follow-up 4)
+
+Brief:
+1. Fix steps 3-5 of Theorem A_good. The reviewers propose: identical coupling on agreeing bad boxes; start from
+   agreement; take the minimal solution; pass to the limit in time.
+2. Use H2 conditional on the coarser data (quenched in the coarse field).
+3. The coarse bad set.
+4. Small items.
+
+Report after 1-4, then section 12. Stop at the first real obstruction.
+
+## 14. Result of part 3 in plain words
+
+1. **The proposed fix does not close.** With identical coupling on agreeing bad boxes and the minimal solution, a
+   bad cluster still **saturates**. Its boxes re-infect each other with gain `≥ 1`, so any positive input drives the
+   minimal solution to 1 on the whole cluster. Every cluster gets positive input, because good boxes pass on a small
+   but non-zero disagreement. The bound is again of order the bad-box density, not decay (section 15).
+   * The cause is structural. A dynamic coupling with arbitrary couplings on bad boxes accumulates activation over
+     time, while the true marginals on a far bad cluster differ only by the tiny influence that reaches it.
+   * **This is a real obstruction to the dynamic route, and I stop before section 12**, as instructed.
+2. **The repair is static** (section 16). Each bad cluster, together with a good collar of width
+   `w(𝒦) ≈ (2/m) log(|𝒦| p(g_j))`, becomes **one composite box**. Its influence bound (Lemma C) comes from a
+   partition-function ratio:
+   * the outer boundary acts on the cluster only through the collar's Gaussian;
+   * the cross term between outer data and the cluster's inner collar is `p² e^{−m w}` per pair of sites;
+   * so the cluster's marginal moves in total variation only in proportion to the input. There is no saturation, and
+     no bound on the multimodal inside of the cluster is needed.
+3. **With composite boxes, every box of an `ω`-dependent block family has a proper influence bound**, for **all**
+   boundaries in the support, because the collar is a buffer that the pattern forces to be small field. That is the
+   Dobrushin-Shlosman condition **worst case over the support**, as in the existing Lean theorem.
+   * **Theorem A_good** (static form): for each fixed `ω`, Dobrushin-Shlosman in a metric where each composite box
+     counts as one step, then averaged over `ω` with the Peierls bound.
+   * The dynamics, the stationary or limiting coupling and the Feller question all disappear.
+4. **Items 2-4** are done (sections 17-19):
+   * H2 quenched in the coarse field, pointwise only where the coarse field is small field;
+   * the coarse bad set as an event, with its threshold outside the support of the small-field characteristic
+     functions, and no joint mixture across scales;
+   * the Pinsker or interpolation step for H3, written;
+   * `r_int ≳ (2/κ) log p`;
+   * (B) as a hybrid of two conditionally independent copies;
+   * Balaban's block-axial gauge.
+
+## 15. Why the dynamic fix saturates
+
+* **Setting.** `(ω, ω')` fixed. `𝒦` is a cluster of bad boxes on which `ω = ω'`, far from `D`, with a good collar.
+* **Coupled update of a bad box `J ⊂ 𝒦`:**
+  * identical if `J`'s `r_int`-collar agrees (H0);
+  * arbitrary otherwise.
+  
+  So `P(J disagrees after its update) ≤ P(its collar disagreed)`, with weight 1 per collar site.
+* **Minimal solution of `d = min(1, M d + s)`.**
+  * For two boxes `J_1`, `J_2 ⊂ 𝒦`, each in the other's collar: `d_1 ≥ |J_2 ∩ coll(J_1)| d_2` and the same the other way
+    round, so the loop gain is `≥ 1`.
+  * Even a single bad box with its good collar has loop gain `Σ_{collar} Σ_{y ∈ J} k(y, ·) ≳ |coll|`, which is `≥ 1`.
+  * Iterating from 0, any positive input `ε` grows geometrically until it reaches the cap: the minimal solution is
+    1 on the cluster.
+* **Every cluster gets positive input.** Good boxes transmit with weights `k > 0` within range `r_int`, and the boxes
+  form one connected graph. So every site reachable from `N(D)` has a positive value, and every cluster saturates.
+  Then `d(x)` near `B` is about `Σ_{clusters near B} P(cluster) e^{−λ dist(cluster, B)}`, of order `η`, with no
+  dependence on `dist(B, D)`.
+* **What it means.** In the dynamics, an isolated cluster is activated as soon as a small input arrives, and the
+  arbitrary bad-box coupling never needs to deactivate it. The optimal static coupling of the marginals on `𝒦` would
+  disagree only with probability equal to the transmitted influence. Bad clusters must therefore be treated through
+  their **marginal** law, not box by box in time.
+
+## 16. The repair: composite boxes and the static Dobrushin-Shlosman form
+
+**Composite boxes.**
+* For a fixed pattern pair, let `𝒦` range over the `w`-connected components of `Bad(ω) ∪ Bad(ω')` (components after
+  enlarging by `w`). Here `w = w(𝒦) := (2/m) log(C |𝒦| p(g_j))`, so clusters closer than `2w` merge.
+* The composite box is `W(𝒦) := 𝒦 ∪ collar_w(𝒦)`. Its collar consists of good boxes, with `ω = ω'` there, unless `𝒦`
+  is joined to `N(D)` (then `𝒦` is part of the source).
+* **Block family `𝔅_ω`:** the good boxes not meeting any `W(𝒦)`, plus the composite boxes `W(𝒦)`.
+
+**A bad box acts only through its boundary** (the owner's reading, `../../PREP.md`, "A bad box acts only through its
+boundary"; the same rule as the reviewers' identical coupling).
+* Given matched patterns (`ω = ω'` on the composite box and its surroundings) and agreeing surroundings, the two
+  conditional laws of a bad box, and of a whole composite box `W(𝒦)`, coincide by H0's agreement clause. Their update
+  is identical in both copies.
+* So a bad cluster creates no disagreement: **disagreement enters a bad cluster only through its boundary.**
+* Section 15 shows that this rule alone, used box by box in time, does not bound **how much** enters: inside the
+  cluster the gain is `≥ 1` and the dynamics saturates.
+* Lemma C supplies the quantitative form. Taken through the cluster's marginal, what crosses the boundary moves the
+  cluster only in proportion to the input, `C |∂_in| p² Σ_z e^{−m d(z, ∂_in)}`. The cluster carries what crosses its
+  boundary and amplifies nothing beyond the factor `|W|` counted in `k_W`.
+
+**Lemma C (influence of a composite box).**
+* Let `σ, σ'` be configurations outside `W = W(𝒦)`, in the supports, differing on a set `Z`. The two conditional laws
+  of `W` admit a coupling with
+  `E[#{y ∈ W : Y_y ≠ Y'_y}] ≤ Σ_{z ∈ Z} k_W(z)`, where
+  `k_W(z) ≤ C (log p/m)^d + C |W| |∂_in W| p(g_j)² e^{−m dist(z, ∂_in W)}`.
+* Here `∂_in W` is the interface between `𝒦` and its collar.
+
+**Proof.**
+1. **Marginal of the inner data.**
+   * Write `c` for the configuration on `𝒦` and the inner layer of the collar (width `r_int`). The inner layer is
+     pattern-good, hence small field.
+   * By H0 (finite range), the law of `W` given `σ` is `w(c) Z(c, σ) / norm`, with `Z(c, σ)` the integral over the
+     rest of the collar given `c` and `σ`.
+   * On the collar the law is the fibre-restricted fluctuation measure: Gaussian with covariance `g_j² Γ`, massive,
+     plus small analytic terms.
+2. **The cross term.**
+   * `log Z(c, σ) = Q_1(c) + Q_2(σ) + X(c, σ) + R`, with `X` the inner-outer cross term mediated by the collar's
+     Green's function.
+   * Its mixed variation is bounded by
+     `|X(c, σ) − X(c, σ') − X(c', σ) + X(c', σ')| ≤ C Σ_{x ∈ ∂_in, z ∈ Z} (|Δc_x|/g)(|Δσ_z|/g) e^{−m d(x, z)}`.
+     It involves only small-field data on both sides, so each factor is `≤ 2p`.
+   * `R` (the analytic perturbation) has a mixed variation of the same form with smaller constants: Balaban's
+     small-field bounds, through a cumulant expansion in the collar.
+3. **Total variation of the inner marginal.**
+   `TV(law(c | σ), law(c | σ')) ≤ e^{2 sup_{c, c'} |mixed variation|} − 1 ≤ C |∂_in| p² Σ_{z ∈ Z} e^{−m d(z, ∂_in)}`.
+   * The multimodal inside of `𝒦` is integrated against its own weight `w(c)` and never bounded. Only the
+     `c`-dependence of the collar's response enters, and it is small field.
+4. **Coupling.**
+   * Couple `c` maximally. If it differs, count all of `W` as disagreeing.
+   * Given equal `c`, couple the collar by the far-to-near coupling of 10.2, which gives `C (log p/m)^d` per `z`.
+   * Summing gives the bound. ∎
+
+**The one-box sum with composite boxes.**
+* **Metric.** Measure distances in `dist_ω`, in which each composite box has diameter 1: contract it to a point.
+* **Composite box.** `Σ_{z ∉ W} k_W(z) e^{λ Ê_W(z)}`:
+  * `z` on the outer boundary of the collar has `d(z, ∂_in) ≈ w`, so the second term of `k_W` is
+    `≤ C |W|² p² e^{−m w}`, and `≤ |W|^{−1}` by the choice of `w`;
+  * with `Ê_W ≤ 2` in `dist_ω`, the sum is `≤ C |∂W| (log p/m)^{d+1} + C`.
+* **The condition.** The Dobrushin-Shlosman condition in `theoremA_w`'s weighted form compares this with
+  `γ c_min(W)`, where `c_min` is the coverage of the block family.
+* **Coverage.** Composite boxes cover their sites once, good boxes `|Λ_0|` times. Repeat each composite box in the
+  family `⌈C |∂W| (log p)^{d+1}/γ⌉` times (allowed: a block family is a multiset of blocks with a coverage condition).
+  Then its own coverage dominates its boundary influence.
+* **Price:** the contraction factor `θ = 1 − c_min(1 − γ)/M` of `cov_le_weighted_on` gets closer to 1. That is
+  harmless, since the decay rate comes from the weights `e^{λ Ê}`, not from `θ`.
+* **This needs checking in detail**, as the precise form of the condition with variable blocks (section 16, check 1).
+
+**Theorem A_good, static form.**
+* **(i) For fixed `(ω, ω')`.**
+  * On the agreeing region the two specifications coincide (H0). Every block of `𝔅_ω` has an influence bound for all
+    boundaries in the support: H3 for good boxes, Lemma C for composite boxes.
+  * The weighted Dobrushin-Shlosman condition holds with `λ` per step of `dist_ω`.
+  * So the boundary influence of `N(D)` on `B` is `≤ C |B| e^{−λ dist_ω(B, N(D) ∪ 𝒮)}`, where `𝒮` is the union of
+    composite boxes joined to `D` (part of the source).
+  * The same holds for covariances: `|Cov_{μ_ω}(f, g)| ≤ C |A| e^{−λ dist_ω(A, S_g)}` (Lean: `theoremA_on`/`theoremA_w`
+    with general blocks).
+* **(ii) Averaging over `ω`.**
+  * `dist_ω(B, D) ≥ dist(B, D) − Σ_{𝒦 on a geodesic} diam W(𝒦)`.
+  * By H2 (now conditional, section 17) and the min-trick, the probability that composite boxes cover a fraction
+    `≥ ½` of some path from `B` to `D` is `≤ C|B| Σ_{n ≥ dist/2} (C (log p)^d η^{1/2})^n`.
+  * So `E_Π[C|B| e^{−λ dist_ω}] ≤ C|B|(e^{−λ dist/2} + (C' η^{1/2})^{dist/2})`.
+* **(iii) The pattern-index covariance**, for covariance statements under the mixture,
+  `Cov_w(μ_ω f, μ_ω g)`, is bounded by H1: the patterns decorrelate away from bad chains.
+
+**What this changes.**
+* **Gone:** the dynamics, the stationary or limiting coupling, the Feller question and unique ergodicity. The Doeblin
+  floor stays only as the qualitative side remark of section 11.
+* **The worst-case quantifier** of the existing Lean layer is now available per `ω`. That is the point of the collar
+  as a buffer: the pattern forces the collar to be small field, so every boundary in the support is buffered.
+* **Lean:** for (B), covariance under `μ_ω`, the present `theoremA_on`/`theoremA_w` apply per `ω`, given:
+  * general blocks with multiplicities;
+  * the specification extended off the support (it is only used `μ`-almost surely);
+  * the metric `dist_ω`.
+  
+  For (A), comparison of two measures, a boundary-influence version is needed. It is the same iteration; new in Lean.
+
+**To check before Lean:**
+1. the weighted condition with variable blocks and multiplicities, in `theoremA_w`'s exact form (`GDSw`, coverage);
+2. Lemma C's cross-term bound with the fibre constraint and Balaban's analytic perturbation in the collar;
+3. merging clusters within `2w`, and the lattice-animal count for `w`-connected clusters, with `w` growing like
+   `log |𝒦|`.
+
+## 17. H2 conditional on the coarse data (item 2)
+
+* **Agreed** (REVIEW-2). In the tower the source at scale `j` is the disagreement inherited from scale `j + 1`. It is
+  random, correlated with the scale-`j` bad sets, and concentrated where the coarse field is bad. Theorem A_good
+  must therefore be applied **conditionally on all coarser data** `𝒳_{j+1} := (X_{j+1}, ..., X_ℓ)`, with the source
+  measurable with respect to it.
+* **H2, quenched form.** For every finite set `A` of boxes **outside `Bad^c(X_{j+1})`**, and links `ℓ`:
+  `P(A ⊂ Bad_j(ω), ℓ ⊂ Lk(ω) | 𝒳_{j+1}) ≤ η^{|A|} Π e^{−κ s}`, with `η = e^{−c p0(g_j)}`.
+  * Pointwise in `𝒳_{j+1}`, but only for boxes where the coarse field is small field (REVIEW-3).
+  * The kernel `K_j` depends on `𝒳_{j+1}` only through `X_{j+1}` (Markov in the scale), so this is a statement about
+    the pattern weights `w_ω(X_{j+1})`.
+* **What it needs: the pointwise fibre-normalisation lower bound.** For a box `J` outside `Bad^c(X_{j+1})`, the
+  denominator `∫_{fibre(X_{j+1})} ρ_j` restricted to `J`'s neighbourhood is at least `e^{−C}` per box times the
+  small-field Gaussian fibre integral. This is the unchecked adaptation, now pointwise and at every scale. It
+  conditions only on coarse data, so no frozen region.
+* **Where the coarse field is bad**, H2 says nothing. Those boxes are in the source or bad by fiat, and their rarity
+  comes from scale `j + 1`, given `𝒳_{j+2}`. That is the chaining of section 12.
+* **Reconciled.**
+  * Sections 8 and 9: "annealed" now means annealed in the scale-`j` index `ω` only, and quenched in the coarse data.
+  * The min-trick uses the quenched bound for each copy, given its coarse data. In (A) the two copies' coarse data
+    differ far away, but both bounds are pointwise.
+
+## 18. The coarse bad set (item 3)
+
+* **Definition.** `Bad^c(X_{j+1})` := boxes whose block field `X_{j+1}` violates the small-field condition at scale
+  `j + 1` with the **sharp** threshold `ε'_{j+1} := 2 ε_{j+1}`.
+  * Balaban's smooth small-field characteristic functions at scale `j + 1` are supported where the field is
+    `≤ (1 + δ) ε_{j+1}` with `δ < 1`. So the threshold lies **outside their support**.
+  * A coarse box in `Bad^c` therefore lies in a large-field domain of every term of `ρ_{j+1}`'s representation, and
+    its rarity comes only from the large-field pattern weights of `ρ_{j+1}` (REVIEW-2's first proviso).
+* **No joint mixture across scales.**
+  * The R-operation that builds `ρ_{j+1}` from `ρ_j` exponentiates and resums, so `ω_j` and `ω_{j+1}` are not
+    indices of one positive mixture.
+  * The tower carries coarse badness only as the event `Bad^c(X_{j+1})` of the conditioning variable, plus the
+    unreleased regions that `ρ_j`'s own indices still hold (regions born at finer scales).
+  * Each scale's index `ω_j` is drawn afresh, from `w_ω(X_{j+1})`, given the coarse data.
+
+## 19. Small items (item 4)
+
+**H3: the Pinsker (interpolation) step, written.**
+* Good box `J`, boundary data `σ_t = σ + t(σ' − σ)`, `t ∈ [0, 1]`. Every `σ_t` is within `C ε_j` of the background in
+  the block-axial gauge.
+* The box law is `μ_t ∝ χ · exp(−½⟨φ, A φ⟩ + ⟨b(σ_t), φ⟩ + V(φ; σ_t))`, with:
+  * `φ` the fluctuation in units of `g_j`, on the linearised fibre;
+  * `A` positive-definite with mass `m`;
+  * `b` linear in `σ/g`;
+  * `V` analytic and small;
+  * `χ` the small-field truncation at `p(g_j)` standard deviations.
+* For bounded measurable `f` of the sites at distance `≥ r` from `z`:
+  `d/dt μ_t(f) = Cov_t(f, ⟨Δb, φ⟩ + ∂_t V)`.
+* Write `L := ⟨Δb, φ⟩ + ∂_t V`, supported within `r_int` of `z`, with `|Δb| ≤ 2p` at `z`. Then
+  `|Cov_t(f, L)| ≤ 2‖f‖_∞ E_t|E_t[L | φ_F] − E_t L|`, with `F` the far set.
+* For the Gaussian part, `E[L | φ_F]` is linear in `φ_F` with coefficients `≤ C p e^{−m r}`. The perturbation `V` and
+  the truncation change this by factors `1 + O(δ)` and by `e^{−c p²}` (Balaban's small-field bounds; the truncation
+  is at `p` standard deviations).
+* Integrating over `t`: `TV(μ_σ|_F, μ_{σ'}|_F) ≤ C p |F|^{1/2} e^{−m r} + e^{−c p²}`. This is the far-marginal bound
+  used in 10.2. The `e^{−c p²}` is far below the scales used.
+
+**Long-link tails.** On small field the localised pieces of the main term are `~ p(g_j)² e^{−κ d}` (REVIEW-3), so the
+link weights are `h_X ≤ C p² e^{−κ d(X)}`. Taking `r_int := (2/κ) log p + C` keeps links between boxes rare, at
+`≤ e^{−κ s/2}`, and `r_int ≪ ℓ_B`.
+* **Large-field regions** use the local bare Wilson action inside `T`, not the background, so they create no long tails
+  of size `g^{−2}`.
+
+**Unique ergodicity** is no longer needed: the static form uses no dynamics. The Doeblin floor stays a qualitative
+side remark.
+
+**(B) as a hybrid.**
+* Let `Y` and `Y°` be two copies of the fine field, conditionally independent given `𝓕_ℓ`, with their randomness
+  indexed by region.
+* Build `H` with law `μ_{𝓕}` so that `H = Y` near `A` and `H = Y°` near `θA`, except on disagreement events. Theorem
+  A_good, applied to the two regions with the source in between, gives them.
+* Then `|Cov(f, g | 𝓕_ℓ)| ≤ ‖f‖ ‖g‖ (P(H_A ≠ Y_A) + P(H_{θA} ≠ Y°_{θA}))`.
+
+**Gauge.** Balaban's **block-axial gauge** relative to the given coarse configuration: fully gauge-fixed once the
+coarse data are equal near `J`. This replaces "modulo gauge" in sections 8-10.
+
+## 20. Status after part 3
+
+| piece | level |
+|---|---|
+| dynamic fix of steps 3-5 (the reviewers' proposal) | **fails**: saturation inside bad clusters (section 15). A real obstruction to that route |
+| static form: composite boxes + Lemma C + Dobrushin-Shlosman per `ω` + averaging (section 16) | **paper sketch**; three checks listed before Lean |
+| H2 quenched in the coarse field (17) | statement reconciled; needs the pointwise fibre normalisation (unchecked adaptation) |
+| coarse bad set (18) | written |
+| H3 Pinsker step, `r_int`, (B), gauge (19) | written |
+| section 12 (multi-scale crossing) | **not started**: it builds on Theorem A_good, whose proof form changed. Waiting for the reviewers' check of section 16 |
