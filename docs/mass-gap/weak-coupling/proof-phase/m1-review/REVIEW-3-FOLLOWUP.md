@@ -586,3 +586,185 @@ from agreement**, not from stationarity. FIXABLE with a known construction (belo
 * NITs: block-move irreducibility for unique ergodicity; the size of the long-link tails (`p^2 e^{-kappa d}`,
   `r_int >~ log p/kappa`); spell out (B) as a hybrid of two conditionally independent copies; say "block-axial gauge"
   instead of "modulo gauge".
+
+## Follow-up 5 (static form, `UV-TV.md` 14-20), 2026-11-22
+
+Read: `../m1-tools/UV-TV.md` 14-20 in full. Checked against the Lean layer's exact condition:
+`Attempts.R3.GDSw block k e γ := ∀ x, Σ_{j : x ∉ block j} k j x * e j x ≤ γ * coverage block x` (a per-site column
+condition), and `cov_le_weighted_on` / `theoremA_on` (`hcov : ∀ x, cmin ≤ coverage x`, `cmin ≥ 1`). Nothing was built
+or re-run; the commit was not checked (no git).
+
+### Verdict
+
+* **The author is right about my Follow-up 4 fix. It does not close.** I claimed that the minimal solution of the
+  capped inequality is a first-passage sum with clusters "activated once". It is not. With Hamming counting, a bad
+  box and its collar have loop gain `>= 1`, so any positive input drives the minimal solution to 1 on the cluster.
+* **The static repair is the right idea.** Composite boxes carry the cluster's whole conditional law, and Lemma C's
+  marginal estimate replaces the box-by-box counting.
+* **Lemma C is correct in principle**, for the fibre-constrained, gauge-fixed, truncated and perturbed measure, with
+  one omission: long links.
+* **The Dobrushin-Shlosman bookkeeping with variable blocks is wrong as written**, in three ways:
+  * the multiplicity rule breaks the per-site condition at sites outside large composite boxes;
+  * sites in gaps narrower than `l_B` are left uncovered;
+  * the merging cascade (`w` growing like `log |K|`, merging within `2w`) makes composite boxes percolate in large
+    volumes, so the per-pattern condition fails on the whole torus and volume uniformity is lost.
+  
+  All three are repairable: constant multiplicity, merging at scale `l_B`, and localisation with truncated cluster
+  sizes.
+* **The per-pattern-pair then average structure is valid as a reduction.** The within-pattern covariance needs no H1,
+  but the comparison of two measures in (A) and the pattern-index covariance in (B) are conditional on H1, which is
+  open.
+* No FATAL; one GAP (the cascade and volume uniformity); several FIXABLE points.
+
+### (1) Is section 15's argument against the dynamic fix right?
+
+**Yes, and it overturns my Follow-up 4 proposal.**
+* With identical coupling only when a bad box's collar agrees, and arbitrary coupling otherwise, a box `J` that
+  disagrees makes its adjacent collar sites disagree with probability `~ 1`. A value change of size `O(1)` against
+  width `g` gives total variation `~ 1`, so `k(y, z) >~ 1` for adjacent `y, z`. The collar in turn re-infects `J` with
+  weight `|J|`.
+* So the capped system `d_K <= min(1, |K| Sum_{coll} d)`, `d_coll >= k d_K + s` has minimal solution 1 on `K` for any
+  input `s > 0`, as soon as `|K| k >= 1`. Already one box suffices.
+* Activation is therefore not proportional to the instantaneous input: it accumulates over time. My "first passage,
+  activated once" bound was wrong, and I withdraw it.
+* **What exactly is obstructed:** Hamming bookkeeping of bad boxes, box by box. It discards how large the
+  disagreement is that reaches a bad box. Dynamics as such is not obstructed. A block heat bath in which each
+  composite box is resampled as one block, with Lemma C's coupling, does not saturate:
+  * the cluster interior lies at distance `w > r_int` from outside sites, so it has no direct influence outside
+    (finite range);
+  * the whole composite box is resampled at each update, so earlier inside disagreement is forgotten.
+  
+  The static and dynamic forms are then equivalent; the composite box is what matters.
+
+### (2) Lemma C
+
+**Correct in principle.** Given `omega`, the law of `W` given `sigma` is `w(c) Z(c, sigma)/norm`, where `c` lives on
+`K` plus the inner collar layer (finite range, H0). The total variation of the `c`-marginal is controlled by the
+oscillation in `c` of `log Z(c, sigma) - log Z(c, sigma')`, the mixed variation. The checks:
+* **Gaussian part.** On `ker Q` (the fibre constraint, internal to `L`-blocks; the collar is a union of boxes, hence of
+  blocks), the collar is a massive Gaussian (Poincare). `log Z` is a quadratic form in the Dirichlet data, and the
+  cross term is the bilinear form `Delta c^T G_{in,out} Delta sigma / g^2`, with `|G_{in,out}| <~ e^{-m d}`. Right.
+* **Analytic perturbation.** Its contribution to `log Z(c, sigma)` that depends on both `c` and `sigma` comes from
+  connected clusters spanning the collar: decay `e^{-kappa' w}`.
+  * Data differences `|Delta c|, |Delta sigma| <~ 2 L eps_j` lie inside Balaban's analyticity radius (that is how
+    `eps` and `alpha` are chosen), so Cauchy estimates give the stated form.
+  * Use `min(m, kappa')` as the rate in `w`.
+* **Hard truncation `chi`.** Its mixed variation also needs a correlation across the collar, so it is
+  `<~ e^{-c p^2} e^{-m' w}`. It is not a free additive `e^{-c p^2}`, which for large `|K|` could exceed the target
+  `1/|K|`. Write it this way.
+* **Gauge.** Block-axial gauge relative to the coarse field. The collar's coarse field is not coarse-bad (coarse-bad
+  boxes are in `Bad`, hence in `K`), so inner and outer data are within `C L eps` of the same background. Fine.
+* **"The outer boundary reaches the cluster only through the collar"** holds by finite range given `omega`, **except
+  through chosen long links.** Bad boxes are defined without link endpoints (section 8: large-field domains,
+  unreleased regions, labels, Z2 excitations, the coarse bad set), and composite boxes are components of
+  `Bad(omega) ∪ Bad(omega')`. A link from `K` to a box beyond the collar joins `K`'s law to far `sigma` directly.
+  * **Fix (FIXABLE):** take components in the graph that also has the chosen links as edges. Link-joined clusters form
+    one composite box, possibly non-contiguous.
+  * Each link is then paid by `e^{-kappa s}` in the averaging, against the `lambda s` it saves in `dist_omega`. That
+    is fine, since `lambda << kappa`.
+* **The `w` arithmetic.** With `w = (2/m) log(C |K| p)`, `e^{-m w} = (C |K| p)^{-2}`. Then the claimed
+  `C |W|^2 p^2 e^{-m w} <= |W|^{-1}` does not follow: one gets `~ (|W|/|K|)^2/C^2`, and `|W|/|K|` grows with `w`.
+  Something like `w = (3/m) log(|K| p) + C` is needed, or whatever the per-site condition below requires. Any
+  logarithmic `w` works, which matters for (3).
+
+### (3) Dobrushin-Shlosman with variable blocks and multiplicities; merging
+
+`GDSw` is a **per-site column** condition: for each site `x`, the influence of `x` on all blocks not containing it,
+weighted, is at most `γ` times the number of blocks containing `x`. The one-box row sum is equivalent to it only for
+translates of one box (`sum_box`). For variable blocks the columns must be checked.
+* **(a) The multiplicity must be constant, not proportional to `|∂W|`. FIXABLE.**
+  * Each copy of `W` is a separate block. So it adds `k_W(x) e^{lambda E}` to the column of **every outside site `x`**
+    near `W`.
+  * With `n_W ~ |∂W| (log p)^{d+1}/gamma`, the column at a site just outside a large `W` is `>~ |∂W| (log p)^{2d+1}`,
+    against `gamma * coverage(x) <= gamma l_B^d`. It fails for large `W`.
+  * What the inside needs is small. Sites of `W` deeper than `r_int` have **zero** influence outside (finite range),
+    and sites in the outer `r_int`-layer influence adjacent good boxes with column `~ l_B^{d-1} (log p/m)^{d+1}`.
+  * So take `n_W := ceil(C l_B^{d-1} (log p/m)^{d+1}/gamma)`, the same for all `W`. The outside columns then need
+    `n_W (log p/m)^d <~ gamma c l_B^d`, that is `l_B >~ (log p/m)^{2d+1}/gamma^2`. This is a harmless enlargement of
+    the boxes.
+* **(b) Coverage of gaps. FIXABLE.**
+  * The family keeps only good boxes that meet no composite box. A site in a gap or concave pocket narrower than `l_B`
+    (between two composite boxes at distance between `2w` and `l_B`, or inside an irregular `W`) lies in no block.
+  * Then `coverage(x) = 0`, which violates `hcov` (`cmin >= 1`) and the column condition.
+  * Merge composite boxes closer than `l_B + 2 r_int`, and round each `W` up to a union of grid boxes with pockets
+    filled. The entropy changes from `G = 2w` to `G ~ l_B`: `(C l_B^d)^n` against `eta^{n/2}`, with
+    `l_B^d = polylog(p)` far below `e^{c p0}`. Fine.
+* **(c) The merging cascade: not volume-uniform as written. GAP (fixable-looking).**
+  * With `w(K)` growing like `log |K|` and merging within `2w`, a cluster of size `n` reaches out to distance
+    `~ (2/m) log(n p)`.
+  * Bad boxes have density `~ eta`, so typical spacing `eta^{-1/d}`. Once `(2/m) log(n p) > C eta^{-1/d}`, that is
+    `n > n* ~ exp(c m eta^{-1/d})`, the cluster absorbs every bad box within reach, grows, and reaches further. It
+    percolates through the volume.
+  * A seed of size `n*` occurs somewhere once the volume is `>~ eta^{-c n*}` (doubly exponential in `eta^{-1/d}`).
+    On such tori one composite box spans everything, and the per-pattern condition, being global, gives nothing.
+    Since M1 claims uniformity in the volume, this must be fixed. Two pieces:
+    * **Localise** Theorem A_good to a region `Λ'` around `B ∪ D` of size `~ (dist + R)`, as the conditional measure
+      given the outside. The outside enters as a boundary condition at distance `>~ t`; its influence is covered by
+      the same estimate.
+    * **Truncate** cluster sizes: patterns with a cluster in `Λ'` above `n_max := C log(#boxes in Λ')/log(1/eta)` go
+      into the failure event, with probability `<= #boxes * eta^{c n_max}`.
+  * Then `w <= w_max ~ (3/m) log(n_max p)` and no cascade occurs. It must be checked that `#boxes in Λ'` stays below
+    the cascade threshold at every scale.
+    * At fine scales, `#boxes ~ (R/(L^j a))^d` grows as `a -> 0`, while `eta_j = e^{-c p0(g_j)}` with
+      `p0 = A0 (log g_j^{-2})^p`. The threshold beats `(R/l_j)^d` when `p >= 2`, or when `p = 1` and `c A0/d > 1`:
+      Balaban's constants, to be stated.
+    * Near `L_*`, `#boxes` is bounded.
+* **(d) Off-support extension. FIXABLE.**
+  * "The specification extended off the support (only used `mu`-a.s.)" is not enough for the oscillation iteration
+    behind `theoremA_on`. It bounds `sup_{sigma, s} |h(sigma) - h(sigma^{z -> s})|` through single-site hybrids, and
+    the `omega`-supports are not product sets: small-field and large-field constraints are per plaquette or per cube.
+  * Inside composite boxes, hybrids of two admissible large-field configurations can leave the support, where no
+    influence bound holds.
+  * Use the **coupling (Hamming-Wasserstein) form** of Dobrushin-Shlosman instead. It needs couplings of block laws
+    only at pairs of in-support boundaries, which is what H3 and Lemma C give. Iterate it by the block heat bath with
+    composite boxes as blocks (no saturation, see (1)), or as a fixed point of couplings. The Lean layer needs a
+    support-relative or coupling version; that is new, but routine.
+* **(e) The averaging (ii).** Composite boxes now contain gaps up to `~ l_B`, so covering half a path of length `R`
+  needs only `~ R/(l_B + w_max)` bad boxes. The averaged term is `<~ (C l_B^d eta^{1/2})^{R/(l_B + w_max)}`: still
+  exponential, with a rate reduced by `l_B + w_max`. Fine after (c).
+
+### (4) Per pattern pair, then average, with H1 open
+
+* **Valid as a reduction.**
+  * For one measure, `Cov_mu(f, g) = E_w[Cov_{mu_omega}(f, g)] + Cov_w(mu_omega f, mu_omega g)`. The first term needs
+    only the per-`omega` Dobrushin-Shlosman form (single measure, no pattern pair) and the Peierls average: no H1.
+  * The second term, the pattern-index covariance, needs two things:
+    * that `mu_omega f` depends on `omega` only near `supp f`, which is the two-measure comparison with
+      `omega != omega'` far away (composite boxes there act as source);
+    * that the pattern law itself decorrelates, which is H1.
+  * (A) needs H1 for the coupling `Pi`.
+* **Not circular in principle.** H1 is a uniqueness or decorrelation statement for the positive marginal law of the
+  discrete data. Its effective interactions come from Balaban's convergent small-field expansions (exponentially
+  decaying, small), not from the statement being proved. So H1 is a separate input, not hidden in the conclusion.
+* **But it is real work** (many-body, non-hard-core interactions; the domain history as a function of the field). So
+  the result is, as the note says, conditional on H1 and on section 12.
+
+### Sections 17-19, briefly
+
+* **17 (quenched H2):** correct framing. Pointwise only outside the coarse bad set, with the pointwise fibre
+  normalisation as the named unchecked adaptation.
+* **18 (coarse bad set):** the sharp threshold `2 eps_{j+1}`, outside the support of Balaban's smooth small-field
+  functions, puts coarse-bad boxes in a large-field domain of every term. Clean. "No joint mixture across scales" is
+  right.
+* **19:** the interpolation (Pinsker) step is fine. Truncation contributes `e^{-c p^2}` additively here, which is
+  harmless for a single box, unlike Lemma C's large clusters (see (2)). The values of `r_int`, (B) and the gauge are
+  fine.
+
+### Findings, one line each (follow-up 5)
+
+* No FATAL.
+* **Concession:** my Follow-up 4 dynamic fix was wrong. Section 15 is right that Hamming bookkeeping of bad boxes
+  saturates. The obstruction is to box-by-box counting, not to dynamics with composite boxes as blocks.
+* **GAP:** the merging cascade (`w ~ log |K|`, merging within `2w`) makes composite boxes percolate in volumes beyond
+  `~ eta^{-c exp(c' eta^{-1/d})}`, so the global per-pattern condition fails. Localise to a region around `B ∪ D`,
+  truncate cluster sizes at `n_max ~ log(#boxes)/log(1/eta)`, and check the threshold against the box count at every
+  scale (needs Balaban's `p >= 2` or `A0` large).
+* FIXABLE: the multiplicity must be a constant `~ l_B^{d-1} (log p)^{d+1}/gamma`, not proportional to `|∂W|` (which
+  breaks the column condition outside large `W`). Then `l_B >~ (log p)^{2d+1}/gamma^2`.
+* FIXABLE: gaps and pockets narrower than `l_B` are uncovered (`coverage = 0`). Merge and round composite boxes at
+  scale `l_B`.
+* FIXABLE: Lemma C must include chosen long links as edges of the cluster graph. Fix the `w` arithmetic (about
+  `(3/m) log(|K| p)`, with rate `min(m, kappa')`). The truncation cross term is `e^{-c p^2} e^{-m' w}`.
+* FIXABLE: the oscillation iteration needs hybrids, which leave the non-product `omega`-supports. Use the coupling form
+  of Dobrushin-Shlosman (a support-relative Lean layer).
+* Open, as stated: H1, on which (A) and (B)'s pattern-index covariance depend; and section 12.
