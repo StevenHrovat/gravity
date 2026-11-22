@@ -799,3 +799,12 @@ thread.
   core that is still deep after one tick is asserting existence and is trapped. In M1's numbers a moderate core shrinks by about
   L^(1−d) = 1/2197 per blocking step, so one tick is well inside a single step: the rule becomes "still deep after one (or a fixed few)
   blocking steps ⇒ trapped", with the delay a fixed number of steps, not a growing one. Sent to the M1 thread with the trapping proposal.
+- **Maintaining non-existence costs (the owner, same day, more precise):** "Once something no longer asserts its existence as expected,
+  it no longer exists. If that something is a duality, it has to continuously assert that non-existence, which spans a boundary that
+  must be maintained, along with its associated cost." Reading (coordinator): (1) for M1, trapping is not free: a trapped core is a
+  duality that has stopped existing as expected, so it keeps paying for the boundary of its non-existence every step. The bookkeeping
+  is therefore **root suppression (once) + a maintenance cost per step**, and the proof needs the maintenance summed over the core's
+  life to stay below the root suppression. P2′ is exactly that maintenance bound: the trapped hole's effect per step is about
+  ρ_k^(d−2) with ρ_k = D0·L^(−(k−h)), shrinking geometrically with age, so the sum converges. (2) In Yang–Mills terms the same rule reads
+  as confinement itself: a colour charge that no longer exists freely must keep its flux tube — the boundary of its non-existence — and
+  the tube costs σ per unit length and time; **the string tension is the maintenance cost of asserting non-existence.**
