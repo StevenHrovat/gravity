@@ -31,8 +31,10 @@ marks as in `NOTE.md`.
    gauge). With excision this record never enters a later average or integral; it is a label of the term, like Balaban's
    history labels. Its cost is paid at the root (the action and the one-time entropy above) and in the maintenance, which
    depends on the hole's size and the mismatch with its surroundings, not on whether the datum is central.
-4. **A fixed delay fits.** Deep cores (some plaquette at distance `≥ r0 = O(1)` from the identity) are trapped after a
-   fixed number of steps `N_t` (0, 1 or 2 — one "assertion tick"); during those steps they are carried as large-field
+4. **A fixed delay fits** (and `E7J.md` fixes it at `N_t = 0`: trap at creation, so that no deep variable ever enters a
+   block constraint; with the trapping threshold `r0 ≤ c/L²`, still `O(1)` in `g`). Deep cores (some plaquette at
+   distance `≥ r0` from the identity) are trapped after a fixed number of steps `N_t` (0, 1 or 2 — one "assertion
+   tick"; `N_t = 0` is the choice used from `E7J.md` on); during those steps they are carried as large-field
    regions at polylogarithmic cost, paid by the root. Balaban's delay `N ≈ R` stays as it is for the **moderate** large
    fields (above his threshold `ε_k = g_k p0(g_k)` but below `r0`), which are diluted (Lemma D-mod) and renormalised by the
    conditional step. The two classes do not interfere. Trapping a deep core that would have diluted anyway (most do, in

@@ -86,5 +86,5 @@ carry such factors anyway). ∎ (paper, sketch-level constants)
 
 ## 5. Effect
 
-TRAP is now: accounting (paper, `TRAP.md`), T1, T2, T4 (paper, here), T3 (paper except the V1 adaptation, routine, not
-done). The deep-core part of M1 rests on: TRAP (as above), P2′ (proof given Balaban's bounds I1-I3), P4 (citation level).
+TRAP is now: accounting (paper, `TRAP.md`), T1, T2, T4 (paper, here), T3 (checked against `[15]` section by section in
+`V1-EXCISION.md`, with two inputs from `[5]`, `[6]` cited in modified form). The deep-core part of M1 rests on: TRAP (as above), P2′ (proof given Balaban's bounds I1-I3), P4 (citation level).

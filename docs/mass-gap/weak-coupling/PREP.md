@@ -863,3 +863,12 @@ thread.
   margin. The cosmological matter–antimatter imbalance is outside pure Yang–Mills (no matter fields); in standard physics it needs
   Sakharov's three conditions (baryon-number violation, C and CP violation, departure from thermal equilibrium). The third is an arrow of
   time, which connects to the owner's earlier reading "mass gap = an arrow of causality exists"; not pursued here.
+- **Weak, but always bigger (the owner, same day, on the caveats):** "Yes, it's weak, but it always is bigger. The matter surplus is
+  the same thing, since trust=existence=a duality=mass." Reading (coordinator): (1) the owner's claim is strict dominance at every
+  finite stage, with a margin that may shrink in the limit. The Lean statement is currently the weak form Z_tw ≤ Z; at finite volume and
+  finite β > 0 the strict form Z_tw < Z should hold (the twisted weight is strictly smaller on a set of positive measure), while
+  Z_tw/Z → 1 in the confined large-volume limit. That matches "weak, but always bigger" exactly; the strict version is a small Lean
+  item (candidate `su2_Ztw_lt_Z`). (2) In DMP the matter surplus is the same statement, through the chain trust = existence = a
+  duality = mass; on the physics side, pure Yang–Mills carries the "mass" link (the gap is the energy of the lightest existing state)
+  and the "existence" link (the untwisted reference sector), while matter fields are outside the problem. Recorded as the owner's
+  identification.

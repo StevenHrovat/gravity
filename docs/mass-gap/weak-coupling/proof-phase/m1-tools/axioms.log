@@ -35,4 +35,8 @@
 'ProofPhase.M1.M1Hypotheses.step_law' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.m1_assembly' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.m1_laws' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.M1RowHypotheses.stepEstimates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.m1_assembly_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.map_prod_le_of_slices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.sum_sq_le_of_paths' depends on axioms: [propext, Classical.choice, Quot.sound]
 no sorry / native_decide / axiom in ProofPhase/M1
