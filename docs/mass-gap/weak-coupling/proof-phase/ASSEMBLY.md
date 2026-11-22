@@ -1,4 +1,4 @@
-# The assembly (proof phase, readiness step P7.1; updated in cycle 2 by workstream C, 2026-11-22)
+# The assembly (proof phase, readiness step P7.1; updated in cycle 2 by workstream C, 2026-11-22; v3 section added in cycle 4, workstream c4a)
 
 Lean: `../../formal/ProofPhase/Objects.lean` (the objects, the gap, what already follows), `../../formal/ProofPhase/Assembly.lean`
 (the open pieces, the route theorems) and `../../formal/ProofPhase/Torus/Top.lean` (the top-level theorems; cycle 2), with
@@ -151,3 +151,83 @@ wsl -d ym-replay -u ym -- bash /mnt/c/claude/gravity-ym/docs/mass-gap/weak-coupl
 
 (`axioms-asm.sh` in this folder imports only `ProofPhase.Assembly`; since `yang_mills_assembly` moved to `ProofPhase.Torus.Top`, its
 first line no longer resolves. Use `c2c-torus/axioms.sh`.)
+
+## Assembly v3 (cycle 4, workstream c4a, 2026-11-22)
+
+Lean: `../../formal/ProofPhase/V3/` (`TimeSep`, `CondMass`, `W1Route`, `CondInputs`, `Top`); details and marks in
+`c4a-condmass/NOTE.md`. Built in `~/formal-c4a` with `c4a-condmass/build.sh ProofPhase.V3.Top`; `c4a-condmass/axioms.sh` prints 35
+headline theorems, all `propext, Classical.choice, Quot.sound`; no `sorry`, no `native_decide`, no new axioms. `Objects.lean` and
+`Assembly.lean` unchanged (no renames). `V3/CondInputs.lean` imports c4c's `ProofPhase.Seg2.Filter`.
+
+**Top theorem.**
+
+```
+structure OpenInputsV3 (T : Tuning) : Prop where
+  lcp : OnLCP T
+  nontrivial : NonTrivial T
+  crossover : LevelTorusRouteW T ∨ LevelTorusRouteT T
+
+theorem ProofPhase.V3.yang_mills_assembly_v3 {T : Tuning} (P : OpenInputsV3 T) :
+    TorusDecayLoc T.toV ∧ MassGapLoc T ∧ MassGapMFLoc T.toV ∧ LimitRP T ∧ NonTrivial T
+```
+
+Both orders of limits (volume first: `MassGapLoc`; spacing first at fixed physical volume: `MassGapMFLoc`), with the level-uniform
+torus decay `TorusDecayLoc`. `LevelTorusRouteW T := ∃ B λ, 0 < λ ∧ LevelDprimeW T B λ ∧ ObsTransferPhysTW T B` (preferred: c3b's
+action reaches the W₁ window, not the sup window); `LevelTorusRouteT T := ∃ B λ, 0 < λ ∧ LevelDprime T B λ ∧ ObsTransferPhysT T B`.
+Cycle 2's `BlockedTorusRoute` and cycle 3's `LevelTorusRoute` imply the inputs (`openInputsV3_of_blockedTorusRoute`,
+`openInputsV3_of_level`); pure noise fails them (`not_trivial_v3`).
+
+**Named form of the preferred route** (every open input its own hypothesis):
+
+```
+theorem ProofPhase.V3.yang_mills_assembly_v3_W1 {T : Tuning} (hL : OnLCP T) (hN : NonTrivial T) (B : BlockingFamily T)
+    {Vk : ∀ j, ℕ → CoarsePot j} {Vinf : ∀ j, LatticePlaquette 4 (coarseSide j) → GaugeConnection SU2 4 (coarseSide j) → ℝ}
+    (hH1 : H1LocalLipW T B Vk Vinf) (hD : LimitDprimeW Vinf) (hC : CondMassAnn T B) (hQ : ObsQuasiLocTW T B) :
+    OpenInputsV3 T ∧ TorusDecayLoc T.toV ∧ MassGapLoc T ∧ MassGapMFLoc T.toV ∧ LimitRP T ∧ NonTrivial T
+```
+
+Variants: `yang_mills_assembly_v3_certified` (`CertifiedAdjointW`, a corner `c`, `Vinf = fun _ => twoCoupling β_F β_A` with
+`|β_A| ≤ cornerA c`, `|β_F| ≤ cornerF c`, in place of `LimitDprimeW`), `_W1_condMass` (`CondMass`, Dobrushin form),
+`_W1_smoother` (c4c's `Seg2.SmootherStable T B (sepT T)`), `_W1_dec` (part (c) itself, `Seg2.CondDecouple T B (sepT T)`),
+`yang_mills_assembly_v3_sup` (`LevelDprime T B λ`, `CondMassAnn`, `ObsQuasiLocT`).
+
+### The open inputs of v3
+
+Segment 1 = lattice spacing → L_* (running coupling small, weak coupling; its depth grows with the level); segment 2 = L_* → L₁ (a
+fixed number of blocking steps, coupling of order one). "Minimal" = what `yang_mills_assembly_v3` needs; the indented rows (↳) are the
+proposed proofs of the row above them (each implication is Lean).
+
+| input | exact Lean statement (quantifier bookkeeping abridged) | physical content | segment |
+|---|---|---|---|
+| `OnLCP T` | `Tendsto T.ℓ atTop atTop`, `β_k / log ℓ_k → 11/(6π²)`, `∃ z⋆ > 0` with `ℓ_k · fluxRate h_k → z⋆` for every choice of flux time limits | line of constant physics: asymptotic freedom of the bare coupling and a renormalisation condition fixing L₁ (act number of the L₁ box) | running: segment 1 (b₀ > 0); scheme: fixes the order-one coupling at L₁, segment 2 |
+| `NonTrivial T` | some slab correlation at some `τ > 0` has all continuum limit points `≥ c > 0` in modulus | the limit is not pure noise | identification (both) |
+| `LevelDprimeW T B λ` (minimal, W₁) | `∃ γ D₁, 0 ≤ γ ∧ γ e^{λD₁} < 1 ∧ ∃ k₀, ∀ k ≥ k₀, ∀ j, ∃ V : CoarsePot j, blockedLaw T B k j = gibbsMeasure haar V ∧ Potential id V ∧ ∃ kk, SiteInfluenceW haar id V geodSU2 kk ∧ (column sums ≤ γ) ∧ (range ≤ D₁)` | D′ in W₁ form for the blocked effective action at L₁, every level, every volume: the coarse theory is in a uniqueness regime. **Carries the infrared (gap) content**; fails for the photon and below 1/T_c | segment 2 (its locality part also segment 1) |
+| ↳ `H1LocalLipW T B Vk Vinf` | blocked laws `= gibbsMeasure haar (Vk j k)`, bounded local potentials, and `InfluenceDevW geodSU2 {i} (siteSpec haar plaqSupp (Vinf j) i) (siteSpec haar id (Vk j k) i) z (δ k j i z)` with `Σ_i δ k j i z ≤ ε_k → 0` uniformly in `j`, range `≤ D₁` | H1 in W₁ (C¹) form: the effective action at L₁ is close, in single-link W₁ influences, to a limit plaquette action, uniformly in the volume | segment 1 (quasi-locality from Balaban-type upper bounds, paper) and segment 2 (the last steps at order-one coupling, open) |
+| ↳ `LimitDprimeW Vinf` | `∃ γ ∈ [0,1), ∀ j, ∃ k, SiteInfluenceW haar plaqSupp (Vinf j) geodSU2 k ∧ (column sums ≤ γ) ∧ (range ≤ 1)` | W₁ Dobrushin condition for the limit action at L₁ (adjoint half + centre half) | segment 2 (the crossover) |
+| ↳↳ `CertifiedAdjointW` | c3c's computer-assisted single-link W₁ influence bounds for the two-coupling action at six certified corners | discharges `LimitDprimeW` when the limit is the isotropic two-coupling action in the window; c3b's measured action (anisotropic, `β_F ss = 0.171`) is outside it (c4d) | segment 2 |
+| `ObsTransferPhysTW T B` (minimal, W₁) | `ObsTransferPhys` restricted to `0 ≤ D` and time-separated supports (`D ≤ a_k · timeDist e e'`), with the approximant `g` Lipschitz (`LipBound geodSU2 g (fun _ => K)`, `0 ≤ K`) | ultraviolet quasi-locality of the blocked theory for time-separated pairs | both |
+| ↳ `CondMassAnn T B` | for gauge-invariant measurable `|F|,|G| ≤ 1` of physical extent `≤ R` at time distance `≥ D ≥ 0`: `∫ |E[FG|Φ] − E[F|Φ] E[G|Φ]| ≤ c e^{−mD}`, uniformly in `k ≥ k₀` and `j` | the fine field conditioned on the block field mixes at the block scale, on average over the block field. Gap-free (photon) for a content-keeping blocking; equal to the gap for a content-losing one | segment 1 (conditional fluctuations, weak coupling) and segment 2 (conditional uniqueness at order-one coupling) |
+| ↳↳ `CondMass T B` (sufficient) | cells of size L₁ (`CellGeometry`), a regular conditional law `κ`, and for a.e. block configuration the Dobrushin–Shlosman condition `CellDobrushin (κ y)` (blocks of cells, oscillation influences, `GDSw` with weights `e^{λE}`, `γ < 1`, uniform constants) | quenched Dobrushin form; `CondMass ⇒ CondMassDecay ⇒ CondMassAnn` | both |
+| ↳↳ `Seg2.SmootherStable T B (sepT T)` (sufficient, c4c) | Markov split at time slices and smoother-stability defect `≤ c e^{−mD}` | filter form of part (c) | segment 2 (and 1) |
+| ↳ `ObsQuasiLocTW T B` | parts (a), (b) of `ObsTransferPhysTW`: coarse approximants with oscillation sum `≤ 2K(1 + D/L₁)⁴`, `g` Lipschitz, `L¹` errors `≤ c e^{−mD}` | quasi-locality of conditional expectations given the block field (Lemma UV(b) and Lemma X(b) of c3a) | segment 1 (Lemma UV) and segment 2 (Lemma X) |
+| (sup form) `LevelDprime T B λ`, `ObsTransferPhysT T B` | cycle 3's D′ along the levels (sup form); the time-separated transfer | as above in sup form; the sup window is not reached at c3b's point | 2; both |
+
+**Sufficient conditions proved in v3 (Lean):** `levelDprimeW_of_h1LocalLip` (W₁ openness), `levelDprimeW_of_certified`,
+`blockGapUnifW_of_levelDprimeW`, `torusDecayLoc_of_blockGapUnifW`, `torusDecayLoc_of_blockGapUnifT` (**`ObsTransferPhysT` is
+enough**: the route pairs only `F∘S_n` with `F∘Θ`, which are separated in time), `obsTransferPhysT_of_condDecouple`,
+`obsTransferPhysTW_of_condDecouple`, `condDecouple_of_condMassAnn`, `condMassDecay_of_condMass`, `condDecouple_of_condMass`.
+
+**What changed from cycle 3.** On the preferred route `H1Local` (sup) is replaced by `H1LocalLipW` (W₁), `LimitDprime` (sup) by
+`LimitDprimeW` (W₁; certified for the window), `ObsTransferPhys` by the weaker `ObsTransferPhysT(W)`, whose part (c) is carried by one
+gap-free hypothesis about the conditioned system (`CondMassAnn`). `EnvelopeW` is not an input: `CondMass ⇒ EnvelopeW` holds on paper
+for a noisy local blocking with the quenched form (c4a §2.3) and feeds the locality half of `H1LocalLipW`.
+
+**Still missing (unchanged from cycle 2 unless noted):** uniqueness of the infinite-volume and continuum limits beyond limit points,
+Euclidean invariance (P6.4) and OS reconstruction (P6.6), the bridge to unbounded local fields (P6.12), other compact simple groups;
+new: the finite range `D₁` in the W₁ inputs (a weighted W₁ Theorem A would remove it) and the deterministic `BlockingFamily` (noisy
+blockings would make the representation, part (b) and `EnvelopeW` provable from `CondMass`).
+
+**Claim check (round-4 lesson).** No input is a decay statement for fine observables of the Wilson measure: `LevelDprime(W)` and
+`H1LocalLipW` are about blocked laws, `CondMassAnn`/`CondMass`/`SmootherStable` about conditioned systems (the photon satisfies them),
+`ObsQuasiLoc` about conditional expectations. The `_dec` variant, which takes part (c) itself, is a law-of-total-covariance reduction
+(given coarse decay, (c) is equivalent to fine decay: c3a's difficulty conservation); the named theorem uses `CondMassAnn` instead.
