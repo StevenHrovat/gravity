@@ -1291,3 +1291,12 @@ thread.
   factored out); only the local excess over it matters. That is why the re-proof (c) has to bound only the excess per cube, the loss of
   the small-field alternative relative to the uniform floor, and why the kept slack is measured against that excess and not against the
   floor itself.
+- **Where the reserve comes from (the owner, same day, after the re-proof checks):** "The reserve is in the perfect duality at G0, through
+  the establishment of causality that reserve gets separated to non-existence." Reading (coordinator): this matches what the
+  independent check established. Every large-field region descends from a creation event (EK-DERIVATION, re-proof check: preparatory
+  fields arise only inside existing regions), and at creation it receives the gain γ0·A1²·p0²(g) per cube, which is largest towards G0,
+  where the coupling vanishes (the earlier "root cost near infinite at G0"). Half of that gain is booked to the region at its birth and
+  carried with it, never spent: the reserve is separated off to the non-existence region at the moment it is created ("through the
+  establishment of causality"), and it travels with that region through merging and release until it pays for the region's loss at
+  the end. So the reserve is not produced along the way; it is a share of the original gain near G0, handed to each non-existence at
+  its birth.
