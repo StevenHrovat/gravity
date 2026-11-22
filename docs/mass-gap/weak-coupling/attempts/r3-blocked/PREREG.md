@@ -340,3 +340,9 @@ noise there (β_F, β_A ≈ 10⁻²–10⁻³; c2a's adjoint coarse plaquette at
 noise-limit trap (`../../proof-phase/c2a-adjoint/NOTE.md` §5.1, `../../proof-phase/c3a-uv/NOTE.md`). The real test is the
 good-blocking refit with a mandatory content check (`../../proof-phase/c3b-refit/PREREG.md`, queued). The halves evaluation
 (c2a) on all runs: `../../proof-phase/c2a-adjoint/eval_all.log`.
+
+**Addendum (BLOCKED ADDENDUM DONE 2026-11-22 05:24; `runs-gpu/analysis.log` now covers all runs):** photon gate at the second
+β (U(1) β = 1.3): f = 1/2 (all variants) and f = 1/4 pass, f = 0 fails (as at β = 1.1). Coarse-volume check (SU(2) β = 2.3, b = 6,
+N = 24 against 36, coarse sides 4 and 6): β_F, β_A and D′ agree within 2σ for every blocking (f = 0, ¼, ½, both noisy variants),
+e.g. f = ½: β_F 0.1873 / 0.1863, D′ 3.33 / 3.32. So the fitted couplings are volume-stable at that point; the failed check is the
+β-scaling one, not the volume one. The reading above is unchanged.
