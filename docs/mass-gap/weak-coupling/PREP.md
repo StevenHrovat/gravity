@@ -555,3 +555,36 @@ Reading (coordinator; candidate, to be checked):
   step).
 - Open question for the owner (asked, not yet answered): can the asserted existence flip or be lost while crossing (a vortex piercing the
   boundary), or does it always arrive intact? The binary-channel candidate above needs occasional flips.
+
+## The possibility space, binary existence, and the reflected assertion (the owner, 2026-11-22, cycle 5, after the flip question)
+
+The owner (written): "This seems to be the link between the existence half, which describes the dimension of existence and locality,
+with the information half, which describes how to exist and, crucially, also WHERE something CAN exist. The possibility space spanned by
+the quantum nature of the information half is what gives rise to causality because something might happen, but it does not have to,
+establishing proper causality, because it is not a forced act. This possibility space (might (probably is) be inflation) extends into
+existence space. If it is fully confined within a boundary, like inside confinement, existence is binary, thus stripping the locality and
+prohibiting a true act by information. In our universe, the possibility space does not extend to the dimension boundary, so we can not
+assert outward, but inward assertion has to be possible. [...] The assertion at a boundary 'reflects', asserting the boundary from the
+inside and the outside, which would put a limit on conversion of 50%-Entropy, roughly."
+
+Context: the coordinator's flip picture (a ±1 existence passed across nested box boundaries; a flip with probability p at each crossing;
+the signal after n crossings is (1 − 2p)ⁿ; p = 0 is long-range order (deconfined), 0 < p is exponential fading (the gap); a flip is a
+centre vortex piercing the boundary).
+
+Reading (coordinator; candidate):
+- **"Might happen, but does not have to" is 0 < p < 1.** p = 0 is a forced act (the existence always arrives: order, no gap); the
+  possibility space is exactly what makes the per-crossing contraction |1 − 2p| < 1. Causality in this sense and the gap are one
+  condition. Confinement makes existence binary and strips locality: colour has no location of its own, only singlets propagate.
+- **The flip probability is a measured quantity: the twist (vortex) free energy.** The chance that the binary flux sector of a box of size
+  L is inverted is the weight of the twisted sector, p(L) = Z_tw / (Z_tw + Z_0) = 1 / (1 + e^{F_tw(L)}), with F_tw the 't Hooft twist free
+  energy (round 3: r3-monotone's twist free energy, Leg B's twist data). Confined: F_tw → 0, so p → ½; deconfined: F_tw grows, p → 0.
+- **"The assertion reflects, giving a 50 % limit":** reflection positivity gives Z_tw ≤ Z_0 (as recalled: Tomboulis–Yaffe 1985), i.e.
+  F_tw ≥ 0 and **p ≤ ½**: a crossing can scramble the binary existence at most halfway. The deficit from ½ is set by F_tw, a free energy
+  (an entropy-type quantity): "50 % minus entropy". The black-hole counterpart the owner's earlier remark points to: Hawking's area
+  theorem bounds the energy radiated when two maximally rotating black holes merge by about 50 % (29 % for non-rotating ones), the
+  limit coming from entropy (area) not decreasing.
+- **Outward vs inward:** "we cannot assert outward, inward assertion has to be possible" is the earlier inward reach = asymptotic freedom
+  (G0), outward reach = confinement, now with the reason: the possibility space ends before the dimension boundary.
+- **For the proof:** the corner in this language is "p(L) stays bounded away from 0 as L grows", i.e. the twist free energy stays
+  bounded — Tomboulis' vortex criterion, whose small-L → large-L step stalled. What the reading adds is the two-sided structure: the
+  reflection bound p ≤ ½ (proved, from reflection positivity) and a lower bound from "inward assertion must be possible" (open).
