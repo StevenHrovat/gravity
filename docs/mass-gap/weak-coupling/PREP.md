@@ -990,3 +990,19 @@ thread.
   (the bypass of milestone 1); full-size vortices only appear at K, which is exactly where M1 hands over to strong-coupling arguments.
   The thickness runaway is then not M1's problem but the hand-over point. Open: whether the bypass bookkeeping actually closes (cost of
   carrying against the sheet action, with Balaban's per-cube rates), and what becomes of the flat charged mode for sub-quantum sheets.
+- **How an act is composed (the owner, same day, on the open M1 question after the bypass):** "The issue at question seems to be how an
+  act is composed. An act, which is the assertion of existence, works through dimensional transmutation. It ties the perfectly efficient
+  non-existence inside a boundary to the existence outside of it, by which it defines and asserts itself. Since dimensional transmutation
+  only allows dualities to transfer, and an act only existing not being existence, it is instead reflected, asserting the boundary
+  inside and outside, while paying the flux cost to keep the entirety of its 'existence system' existing." Reading (coordinator): this
+  separates exactly the two kinds of object the bypass found. A single equatorial flip is an **open** piece of vortex sheet: its
+  boundary is a small monopole loop (where the Z2 layer does not close, the SO(3) field sits at its cut). A **closed** sheet has no
+  boundary. BYPASS.md: closed skeleton bubbles converge (24b = 2.23 > 1); the open single flips are what diverge. The reading says only
+  dualities (closed, boundary on both sides) transfer to the next scale; a lone act is reflected: it is closed by its own mirror across
+  its boundary and stays local, paying its flux cost there. As a rule for M1 (a "closing" or decoding rule): before the mod-2 Stokes sum,
+  close every open piece of the Z2 sheet by a minimal filling of its monopole boundary (with a fixed tie-break where two fillings are
+  equally small: one root), so that only the closed part feeds the coarse bit. A tie crossing then changes the sheet only locally, and the
+  closure absorbs it, so the threshold at trace 0 no longer reaches the coarse bit. This is the renormalisation-group decoder of the toric
+  code in DMP terms. To check: the count of remaining closed structures, the count of monopole loops under the running coupling (large
+  open sheets), that the open acts' effects are released into the SO(3) layer at summable cost, measurability of the rule (law
+  preservation), and what the tie-break costs in lattice symmetry and reflection positivity.
