@@ -1,0 +1,2 @@
+# Raw run files are large; logs and analyses are committed.
+*.npz
