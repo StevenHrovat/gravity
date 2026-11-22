@@ -903,3 +903,22 @@ thread.
   correlation bounded away from zero at a fixed physical time in the limit), which excludes exactly the β = 0-like trivial limit. In
   this reading the Yang–Mills theorem is "0 < mass gap < ∞": existence with an arrow of causality, between the inside of a defined box
   (β = 0, infinite gap, no causality) and the massless photon-like case (gap zero, no boundary).
+- **Readings on M1's corrections F2-F4 (the owner, same day):** (F2, nearby holes merged into one record) "Literally merging black
+  holes." (F3, maintenance measured by capacity) "What we expect for a boundary in 3s1t." (F4, explicit coupling bound) "Here I am not
+  sure, it might be, that, since the coupling is the link between existence and non-existence, that it has to be agreed upon for there
+  to be either." Readings (coordinator):
+  * **F2:** two trapped holes closer than R_sep become one record: one hole, one boundary, one root, one record of its content. In the
+    accounting the root cost adds (it counts deep plaquettes, a ≥ c0 r0² n), while the outward effect, the capacity, is subadditive:
+    cap(A ∪ B) ≤ cap(A) + cap(B). So merging never leaks more outward than the parts did. Analogy, not derived: in a black-hole merger
+    the final mass is below the sum of the masses (the difference is radiated away).
+  * **F3:** in four dimensions the capacity of a hole of diameter ρ scales like ρ^(d−2) = ρ², the area of a 2-sphere of radius ρ: the
+    horizon area of a black hole in 3 space + 1 time. So a trapped hole acts outward through its boundary area, not its volume, exactly
+    the Bekenstein–Hawking scaling the owner expects for a boundary in 3s1t. (The cap by covering numbers N_k(H) handles shapes that
+    are not balls.)
+  * **F4:** the condition says one coupling g must serve both sides at once: Balaban's small-field expansion (existence side) needs g
+    small, and the root suppression of a trapped core (non-existence side, threshold r0 ≤ c/L²) must beat the generic large-field cost,
+    which needs g ≤ γ0(L). Both use the same g, so the distinction between existence and trapped non-existence is only defined where the
+    coupling satisfies both: "agreed upon for there to be either". Asymptotic freedom makes this hold at all fine scales (towards G0),
+    and the scale K where it stops holding is the stopping scale of F1, where the running coupling becomes of order one: the
+    confinement scale, i.e. the scale of the mass gap itself. Beyond K the M1 machinery does not apply (other, strong-coupling
+    arguments take over); the theory itself still exists there.
