@@ -1272,3 +1272,14 @@ thread.
   else only through gauge-invariant dimension-4 terms and the shared coupling, i.e. through the universal channel that all of existence
   shares, not through any direct one. The identification with dark matter and gravity is cosmology outside the Yang–Mills problem and
   is recorded as the owner's reading, not tested here.
+- **Normalisation as tick rate, vacuum constant as quantum of assertion; a positive lower bound (the owner, same day, on EK-DERIVATION):**
+  "That the terms are the normalisation, so the tick rate, and the vacuum constant, the quantum of existence assertion, makes sense and
+  fits nicely. We can provide a lower bound through DMP of greater than 0, because that is needed for causality, so an
+  existence/non-existence system, to exist." Reading (coordinator): Balaban's E_k(Z) are per-site constants of the small-field
+  alternative (normalisation and vacuum energy), i.e. the fixed cost per site and step that every region pays: the owner's tick rate and
+  quantum of assertion. A lower bound greater than zero does hold, and the mathematics agrees it must: Wilson weights are strictly
+  positive (stepK_pos), so every normalisation is positive (the Doeblin floor). What the proof needs on top is its size per cube: the
+  small-field alternative must not lose more per M·R_j-cube than the margin available. That size is not in Balaban (EK-DERIVATION (b));
+  route (c) supplies it from the margin at creation, p0²(g_j) per birth-scale cube, which is the earlier reading "the root cost is near
+  infinite at G0" in quantitative form. So: DMP guarantees the floor (positivity, causality); the near-infinite root cost supplies the
+  margin the proof spends.
