@@ -28,4 +28,8 @@
 'ProofPhase.M1.twistBlock_sym' depends on axioms: [Quot.sound]
 'ProofPhase.M1.twistBlock_local' depends on axioms: [propext]
 'ProofPhase.M1.rp_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.inner_ge_of_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.signCorrect_inner_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.cap_of_away' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.angle_le_two_arccos' depends on axioms: [propext, Classical.choice, Quot.sound]
 no sorry / native_decide / axiom in ProofPhase/M1

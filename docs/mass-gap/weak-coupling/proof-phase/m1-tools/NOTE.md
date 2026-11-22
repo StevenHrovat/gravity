@@ -304,7 +304,9 @@ hypothesis of exactness; it enters the estimates (E3, E6 of the plan). The inter
   `D-PIN.md` (row D-pin: one root per pinned core), with `star_dynamics.py`, `near_vortex.py`, `zlift_traps.py`;
   `P0.md` (the twisted-sector average), with `twist_dynamics.py`; `NO-TRAP.md` (the `L = 13` off-centre step, local
   contraction, slow balanced stars, cut avoidance), with `offcentre_L13.py`, `notrap_search.py`,
-  `notrap_longsearch.py`, `cut_avoidance.py`, `cut_adversarial.py` and their `run_*.log`.
+  `notrap_longsearch.py`, `cut_avoidance.py`, `cut_adversarial.py` and their `run_*.log`; `NT-A.md` (NT′(a), proved;
+  `formal/ProofPhase/M1/CutAvoid.lean`), `NT-B.md` (NT′(b′) reduced to the Cap Lemma, with `nt_b.py`, `cap_fixed.py`), `S6-START.md` (§6: V1 from `[15]`). `TRAP.md` (trapping of deep cores, the owner's proposal:
+  root once + maintenance; replaces cut avoidance on the critical path). `E3.md` (§6 row E3: the constrained denominator).
 - `TWIST.md` (the twisted blocking on the full lattice, link reflection positivity, multi-site tests; with
   `lattice_twist.py`, `run_lattice_d34.log` and `formal/ProofPhase/M1/Twist.lean`), `P2-PRIME.md` (subscale-hole
   decoupling, sketch). `M1-PLAN.md` is now the outline of the accompanying paper plus the estimate inventory.
