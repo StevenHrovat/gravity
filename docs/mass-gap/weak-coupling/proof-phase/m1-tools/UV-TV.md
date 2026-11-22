@@ -14,6 +14,8 @@
 
 > **Status (part 8, section 26 and 25 revised):** the strengthened induction (c) re-proves [V] (1.80)-(1.97) with a retained slack `e^{−c p0²}` per birth-scale cube, so reading (b) is no longer needed. (a) holds in substance as a citation-level reading. `κ` large is a citation. The single point of failure is now (c), a re-proof, with conditions (P0) and (P1) and a check list (26.4).
 
+> **Status (part 9, sections 27-28):** checks of (c) folded in (slack renamed `ψ`; `(1+β_0)^{−2}` in `c'_ψ`; (P2) with `log β`; (P1) kept as insurance; constant-size smallness only, for write-outs 2 and 4). Write-out 1, the coupling-form Dobrushin-Shlosman theorem (the Lean target), is written (section 28). Verdict: Lemma UV-TV has a complete paper-sketch argument given (c), with (a) and admissibility as citation-level readings; write-outs 2-4 remain.
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -1441,18 +1443,18 @@ images.
   * Split it in two halves:
     * one half pays Balaban's own induction (`κ_j(Z)`), exactly as he does, under his condition after (1.82) with the
       constant doubled;
-    * the other half is kept as a **slack** `σ_j(Z)`, which is never spent.
+    * the other half is kept as a **slack** `ψ_j(Z)`, which is never spent.
 * **The slack only adds:**
   * it is unchanged in (1.83), where no new large field appears;
   * in the merging step (1.85)-(1.88) it is the sum over the merged parts;
   * it is untouched by the costs, which Balaban charges to `κ` alone.
-* **At release**, (1.89) becomes `T'_k(X) 1 ≤ e^{−σ_k(X)} e^{−2(1+β_0)^{−1} p0(g_k)}`.
-* **In the polymer step (1.92)-(1.97)** the factor `Π_h e^{−σ_k(X_{j_h})}` is carried **outside** Balaban's entropy
+* **At release**, (1.89) becomes `T'_k(X) 1 ≤ e^{−ψ_k(X)} e^{−2(1+β_0)^{−1} p0(g_k)}`.
+* **In the polymer step (1.92)-(1.97)** the factor `Π_h e^{−ψ_k(X_{j_h})}` is carried **outside** Balaban's entropy
   sums. He spends only `e^{−q p0/2}`, from the per-component `p0`, on the sum over `q` and the positions (1.96). So
   nothing of the slack needs to be given up.
 * **Result** (1.97'): activities `F_A(X')` restricted to decompositions whose large-field regions cover a set `A` of
   current-scale cubes satisfy
-  `|F_A(X')| ≤ c1 e^{−(1+β) κ d_k(X')} e^{−c_σ p0²(g_k) |A|}`.
+  `|F_A(X')| ≤ c1 e^{−(1+β) κ d_k(X')} e^{−c_ψ p0²(g_k) |A|}`.
 * **That replaces reading (b).** The denominator's `O(1)`-per-site loss in 12.1 and 24.1 (`[III]` Theorem 2) is
   `≤ C (M R_k)^d` per cube, and the slack absorbs it under (P2) below, which Balaban's own condition implies.
 * **One added parameter condition (P1)**, for regions whose only gain is the preparatory `e^{−p0}`:
@@ -1466,12 +1468,12 @@ images.
   (1.79) as `exp(−κ_j(Z) − 2 p0(g_{j(Z)}))`. Then
   `κ_j(Z) ≥ Σ_{n=j+1}^{j+K} O(1) M^d R_n^{d+1} d'_n(S^{n−j}(Z))`,
   with `K` the number of further steps until `S^K(Z)` satisfies (i), (ii).
-* **Strengthened statement (1.80').** Write the factor as `exp(−κ_j(Z) − σ_j(Z) − 2 p0(g_{j(Z)}))`, with `σ_j(Z) ≥ 0`.
+* **Strengthened statement (1.80').** Write the factor as `exp(−κ_j(Z) − ψ_j(Z) − 2 p0(g_{j(Z)}))`, with `ψ_j(Z) ≥ 0`.
   Then:
   * **(κ)** `κ_j(Z)` satisfies (1.80) as stated;
-  * **(σ)** `σ_j(Z) ≥ c_σ Σ_{b ∈ births(Z)} p0²(g_{j_b}) (d'_{j_b}(Z_b) + 1)`, summed over the large-field regions `Z_b`
-    created by (1.76) at scales `j_b ≤ j` that were absorbed into `Z`. Here `c_σ := ⅛ γ_0 (14)^{−d} A_1²`.
-* The units of (σ) are **birth-scale** `M R_{j_b}`-cubes (REVIEW-2, REVIEW-3, `EK-DERIVATION.md`).
+  * **(ψ)** `ψ_j(Z) ≥ c_ψ Σ_{b ∈ births(Z)} p0²(g_{j_b}) (d'_{j_b}(Z_b) + 1)`, summed over the large-field regions `Z_b`
+    created by (1.76) at scales `j_b ≤ j` that were absorbed into `Z`. Here `c_ψ := ⅛ γ_0 (14)^{−d} A_1²`.
+* The units of (ψ) are **birth-scale** `M R_{j_b}`-cubes (REVIEW-2, REVIEW-3, `EK-DERIVATION.md`).
 
 ### 26.2 The induction, equation by equation
 
@@ -1482,21 +1484,21 @@ images.
 2. **The first step, `j = 1`** ((1.82)).
    * Balaban: `κ_1(Z) ≥ ¼ γ_0 (14)^{−d} A_1² p0²(g_1)(d'_1(Z) + 1) − O(1) M^d R_1^{d+1} d'_1(Z)`. The `(14)^{−d}` comes
      from covering `Z` by the regions `(Z_1^{(i)})^{~3}` of (1.76).
-   * **Split:** assign `c_σ p0²(g_1)(d'_1(Z) + 1)` (half of the first term) to `σ_1(Z)`, and the rest to `κ_1(Z)`. Then
+   * **Split:** assign `c_ψ p0²(g_1)(d'_1(Z) + 1)` (half of the first term) to `ψ_1(Z)`, and the rest to `κ_1(Z)`. Then
      `κ_1(Z) ≥ ⅛ γ_0 (14)^{−d} A_1² p0²(g_1)(d'_1(Z) + 1) − O(1) M^d R_1^{d+1} d'_1(Z)`.
    * By (1.81), the right-hand side of (1.80) is `≤ O(1)(64)^d M^d L^{d+1} R_1^{d+2}(d'_1(Z) + 1)`.
    * **Condition (P0)** (Balaban's condition after (1.82), with the constant doubled):
      `⅛ γ_0 (14)^{−d} A_1² p0²(g_1) ≥ O(1) 2(64)^d M^d L^{d+1} R_1^{d+2}`.
      "Satisfied for `p0` large and `g_1` sufficiently small", as his is: both sides are powers of `log g^{−2}`, and his
      condition already makes the left exponent win.
-   * (σ) holds by definition.
+   * (ψ) holds by definition.
 3. **No new large field** ((1.83), first case).
    * `κ_{j+1}(Z) = κ_j(Z_0) − O(1) M^d R_{j+1}^{d+1} d'_{j+1}(Z)` with `Z = S(Z_0)`.
-   * **Set `σ_{j+1}(Z) := σ_j(Z_0)`.** The births are the same, so (σ) holds. (κ) holds as in Balaban.
+   * **Set `ψ_{j+1}(Z) := ψ_j(Z_0)`.** The births are the same, so (ψ) holds. (κ) holds as in Balaban.
 4. **A new large field in the preparatory operations** ((1.83), second case).
    * `Z = S(Z_0)`, with `Z_0` satisfying (i), (ii). Balaban sets `κ_{j+1}(Z) := p0(g_j) − O(1) M^d R_{j+1}^{d+1} d'_{j+1}(Z)`
      from the factor `e^{−p0(g_j)}` of (1.79)'s last product. `Z` is small: contained in a `100 M R_{j+1}`-cube.
-   * **Set `σ_{j+1}(Z) := σ_j(Z_0)`.** The old slack is kept, since `Z_0`'s factor `e^{−σ_j(Z_0)}` is still in the
+   * **Set `ψ_{j+1}(Z) := ψ_j(Z_0)`.** The old slack is kept, since `Z_0`'s factor `e^{−ψ_j(Z_0)}` is still in the
      product.
    * The preparatory large field brings only `e^{−p0}`, no `p0²`. This is the one place where condition (P1) of 26.3 is
      needed.
@@ -1505,8 +1507,8 @@ images.
      * the components' `κ_j(Z^{(n)}) + 2 p0(g_{j(Z^{(n)})})`;
      * the new regions' `γ_0 A_1² p0²(g_{j+1})(d'_{j+1}(Z^{(i)}_{j+1}) + 1) + 2 p0(g_{j+1})`;
      * minus `O(1) M^d R_{j+1}^{d+1} d'_{j+1}(Z)` and `2 p0(g_{j(Z)})`.
-   * **Split the new regions' term:** `c_σ p0²(g_{j+1})(d'_{j+1} + 1)` goes to `σ`, the rest to `κ`. Set
-     `σ_{j+1}(Z) := Σ_n σ_j(Z^{(n)}) + Σ_i c_σ p0²(g_{j+1})(d'_{j+1}(Z^{(i)}_{j+1}) + 1)`, so (σ) holds.
+   * **Split the new regions' term:** `c_ψ p0²(g_{j+1})(d'_{j+1} + 1)` goes to `ψ`, the rest to `κ`. Set
+     `ψ_{j+1}(Z) := Σ_n ψ_j(Z^{(n)}) + Σ_i c_ψ p0²(g_{j+1})(d'_{j+1}(Z^{(i)}_{j+1}) + 1)`, so (ψ) holds.
    * **The κ part.** Balaban's tree induction (1.86)-(1.88) uses:
      * the surplus `2p0(g_{j(X)}) + 2p0(g_{j(Y)}) − 2p0(g_{j(Z)}) ≥ 2(1+β_0)^{−1} p0(g_{j+1})`;
      * the `κ`'s of the parts;
@@ -1516,23 +1518,23 @@ images.
      (P0). The rest of (1.86)-(1.88) is unchanged, since it only adds the parts' `κ` and uses the `p0` surplus.
 6. **Release** ((1.89)).
    * Balaban: `κ_k(X) ≥ 0`, hence `T'_k(X) 1 ≤ exp(−2(1+β_0)^{−1} p0(g_k))`.
-   * **With the slack:** `T'_k(X) 1 ≤ exp(−σ_k(X) − 2(1+β_0)^{−1} p0(g_k))`.
+   * **With the slack:** `T'_k(X) 1 ≤ exp(−ψ_k(X) − 2(1+β_0)^{−1} p0(g_k))`.
 7. **Activities** ((1.90)-(1.97)).
    * (1.92) bounds each activity by a product over the `q` factors `T'_k(X_{j_h})`, each
      `≤ exp(−2(1+β_0)^{−1} p0(g_k) + 1)` by (1.89), times boundary and Mayer terms.
-   * **Keep `Π_h e^{−σ_k(X_{j_h})}` as an extra factor**, and do not use it in any of the following steps:
+   * **Keep `Π_h e^{−ψ_k(X_{j_h})}` as an extra factor**, and do not use it in any of the following steps:
      * the bound (1.93) on the boundary terms;
      * the payment `2(100 R_k)^d` per factor (p. 389), which uses `−2(1+β_0)^{−1} p0 + 1 + 2(100R_k)^d ≤ −(3/2)p0`;
      * the sum (1.96) over `q` and positions, which spends `e^{−q p0/2}`.
    * Those steps spend only the per-component `p0`, never `p0²`. **This is where (1.92)-(1.97) "gives up less entropy":
-     it gives up nothing of `σ`.** The only change is that the factor `e^{−σ}` passes through.
+     it gives up nothing of `ψ`.** The only change is that the factor `e^{−ψ}` passes through.
    * **Converting to the current scale.** For a decomposition whose regions `X_{j_h}` cover a set `A` of current-scale
      `M R_k`-cubes:
      * `|A| ≤ Σ_h #cubes_k(X_{j_h}) ≤ Σ_h (d'_k(X_{j_h}) + 1)`;
      * by (1.81)'s scaling, `d'_k(S^{k−j}(Z)) ≤ 2^{−(k−j)} d'_j(Z) + (64)^d`, so `#cubes_k ≤ C Σ_b (d'_{j_b} + 1)`;
      * `p0(g_{j_b}) ≥ p0(g_k)` since `g_{j_b} ≤ g_k`;
-     * hence `Σ_h σ_k(X_{j_h}) ≥ (c_σ/C) p0²(g_k) |A|`.
-   * **Result (1.97').** `|F_A(X')| ≤ c1 e^{−(1+β) κ d_k(X')} e^{−c'_σ p0²(g_k) |A|}`, with `c'_σ := c_σ/C`.
+     * hence `Σ_h ψ_k(X_{j_h}) ≥ (c_ψ/C) p0²(g_k) |A|`.
+   * **Result (1.97').** `|F_A(X')| ≤ c1 e^{−(1+β) κ d_k(X')} e^{−c'_ψ p0²(g_k) |A|}`, with `c'_ψ := c_ψ/C`.
    * The sup over admissible internal histories in (1.79) is harmless: every history inside a released component `X`
      creates the births that make `X`, and the bound on `|A|` holds for each.
 8. **R- and B-terms** ((1.98)-(1.100)). Unchanged. The slack is needed only for the activities covering `A` in H2,
@@ -1549,10 +1551,10 @@ images.
   * Same form as Balaban's p. 389 condition `p0 ≳ 8κ 100^d R^d`, which already forces the `log g^{−2}`-exponent of
     `p0` to be at least `r d`.
   * With that, (P1) holds for `g` small, or with `A0 ≥ C M^d`. `A0` is chosen after `M` ([III]: "`A0` much larger").
-* **(P2)** `c'_σ p0²(g_k) ≥ 2C 3^d (M R_k)^d`: absorbs the denominator loss `O(1)` per site on the one-cube
+* **(P2)** `c'_ψ p0²(g_k) ≥ 2C 3^d (M R_k)^d`: absorbs the denominator loss `O(1)` per site on the one-cube
   neighbourhood `N_A` ([III] Theorem 2). It follows from (P0), since `L^{d+1} R^{d+2} ≥ R^d`.
 * **Where the slack is spent:**
-  * **12.1 and 24.1 (quenched H2):** the ratio is now `≤ e^{−p0 #comp} (C e^{−c κ})^{|A|} · e^{−c'_σ p0² |A|} ·
+  * **12.1 and 24.1 (quenched H2):** the ratio is now `≤ e^{−p0 #comp} (C e^{−c κ})^{|A|} · e^{−c'_ψ p0² |A|} ·
     e^{C 3^d (M R)^d |A|}`, which is `≤ e^{−p0 #comp}(C e^{−c κ})^{|A|}` by (P2). The denominator uses only
     `[III]` Theorem 2's `O(1)` per site. **Reading (b) is no longer needed.**
   * **H2a (23.1, 24.1) and R10's scale-`K` normalisation (13.3):** the same, one scale up.
@@ -1564,7 +1566,7 @@ images.
 1. The split in step 2: whether (1.82)'s first term can be halved, with (1.81) then needing (P0).
 2. Step 5: that Balaban's tree argument (1.86)-(1.88) uses only the parts' `κ` and the `p0` surplus, so that halving the
    new regions' `p0²` term only invokes (P0) again.
-3. Step 7: that no inequality in (1.92)-(1.96) uses (1.89)'s `κ_k ≥ 0` in a form that would need `σ`.
+3. Step 7: that no inequality in (1.92)-(1.96) uses (1.89)'s `κ_k ≥ 0` in a form that would need `ψ`.
 4. The conversion to current-scale cubes, and the sup over internal histories (step 7).
 5. (P1)'s compatibility with Balaban's exponent chain ([V] p. 383, `2p_1 − (d+5) r_0 > p_0`), which may need `p_1`
    raised with `p_0`.
@@ -1602,6 +1604,12 @@ images.
 * **Admissibility** (24.1, step 1): checked against the definitions as read, from a poor scan of [III] (2.3)-(2.9). Low
   risk; listed with the readings.
 
+**Wording** (27.10): Lemma UV-TV has a complete paper-sketch argument given (c), with (a) and admissibility as
+citation-level readings; four write-outs remain. Write-out 1 is done (28).
+
+**Dependency added** (27.9): Lemma C's cross term and the Pinsker step use only Balaban's constant-size smallness
+(`O(1)` per site, or a constant per `M`-cube from analyticity) and his cluster expansion, never `δ → 0`.
+
 **Write-outs owed** (before Lean):
 1. Lemma C's cross term, with the fibre constraint and the analytic perturbation.
 2. The coupling-form Dobrushin-Shlosman theorem with composite boxes and the exact per-site column condition.
@@ -1625,3 +1633,150 @@ images.
   * The cluster expansion for correlations may still use `e^{E} − 1`; the coupling uses the positive split.
 * **Admissibility caveat:** the deletion argument (24.1, step 1) was checked against the definitions as read from a poor
   scan of [III] (2.3)-(2.9).
+
+# Part 9 (2026-11-23): fold-ins after the checks of (c), and write-out 1
+
+## 27. Fold-ins after the three checks of (c)
+
+Sources:
+* `../m1-review/EK-DERIVATION.md`, "Re-proof check" (independent reader, page images);
+* REVIEW-2, tenth follow-up;
+* REVIEW-3, follow-up 9.
+
+All three: (c) goes through, with no step failing.
+
+1. **The slack is renamed `ψ`** (it was `σ`, which clashes with Balaban's `σ` in (1.73)-(1.75) and `σ_0` in the Haar
+   density). Section 26 now uses `ψ_j(Z)`, `c_ψ`, `c'_ψ` throughout.
+2. **Step 5, the new regions' term.** It is `½ γ_0 A_1² p0²(g_{j+1})(d'_{j+1} + 1)`, matching the creation factor on
+   p. 381. The source prints `γ_0` without the `½` in (1.85), which conflicts with p. 381. Half of it, `c_ψ`-sized, goes
+   to `ψ`, as in step 2.
+3. **Birth-scale versus current coupling.** [III] (2.6)-(2.7) give only `g_birth ≤ (1+β_0) g_k`. So
+   `p0(g_birth) ≥ (1+β_0)^{−1} p0(g_k)`, not `≥ p0(g_k)`. Hence `c'_ψ := c_ψ (1+β_0)^{−2}/C` in (1.97'). The factor is a
+   fixed constant, and (P2) absorbs it.
+4. **Regions not yet released** (inside `T`-operations at scale `j`, used in H2a and in the band of 23.1) take their
+   slack from (1.79) and (1.80'), the factor `e^{−ψ_j(Z)}` of the unreleased component, not from (1.97') (independent
+   reader, REVIEW-3).
+5. **(P1), kept as insurance**, with a note:
+   * preparatory large fields carry only `e^{−p0}` (REVIEW-2);
+   * but every region descends from a creation event and inherits that event's slack (REVIEW-3), so in the main case
+     (P1) is not needed;
+   * this rests on preparatory domains staying inside `S(Z_0)` ([V] p. 384; [IV] Sect. 1 not re-read).
+6. **The deletion footprint** (REVIEW-3). In 24.1 step 1, the comparison deletes whole history components meeting
+   `N_A`. The denominator loss then falls on their whole current footprint, not only on `N_A`.
+   * It is covered by the deleted components' own slack, `c'_ψ p0²` per current cube of their footprint, against
+     `C (M R)^d` per cube.
+   * The `3^d` in (P2) covers the one-cube neighbourhood.
+7. **The current top variables' Gaussian normalisation** (REVIEW-3). In the fibre integral over `V_j` on the region,
+   the normalisation of the top variables, about `β^{3/2}` per bond, is the **next** step's constant, not part of
+   `E_k`. (P2) is stated with an extra `log β` per site:
+   `c'_ψ p0²(g_k) ≥ C 3^d (M R_k)^d (1 + log β_k)`.
+   It still follows from (P0), since `R ≥ log g^{−2} ≥ log β` gives `(M R)^d log β ≤ M^d R^{d+1} ≤ M^d L^{d+1} R^{d+2}`.
+   This replaces citing Balaban's reserve for the next step.
+8. **Constants table** (`S1-INDUCTION.md` 1, REVIEW-3):
+   * `ℓ_B` depends on `p(g)`, so its condition moves from row 5 to row 6, below the row where `p(g)` is fixed;
+   * the Dobrushin-Shlosman contraction constant is renamed `γ_DS < 1`, so it is not confused with Balaban's coupling
+     bound `γ`.
+9. **Constant-size smallness only** (REVIEW-2). Lemma C's cross term (16) and the Pinsker step of H3 (19) may use only:
+   * Balaban's constant-size smallness: `O(1)` per site ([III] Theorem 2), or a constant per `M`-cube from analyticity
+     (`EK-DERIVATION.md` Q4);
+   * the explicit `O(g^{1−β})` per site of the cubic Wilson terms ([V] (1.2));
+   * his cluster expansion.
+   
+   They may **not** use a "`1 + O(δ)`, `δ → 0`" for the inherited E-terms. Write-outs 2 and 4 are written accordingly.
+   This is now on the dependency list (25, revised).
+10. **Verdict wording** (25, revised): "Lemma UV-TV has a complete paper-sketch argument given (c), with (a) and
+    admissibility as citation-level readings; four write-outs remain."
+
+## 28. Write-out 1: the coupling-form Dobrushin-Shlosman theorem (generic; the Lean target)
+
+### 28.1 Statement
+
+**Data.**
+* A finite set `Λ` of sites, measurable spaces `(S_x)_{x ∈ Λ}`, and `Ω := Π_x S_x` with the product σ-algebra.
+* Two probability measures `μ, μ'` on `Ω`, with measurable sets `Ω_0, Ω'_0` of full measure (the supports).
+* A finite family (a multiset) of blocks `B_b ⊂ Λ`, `b ∈ 𝔅`, `N := |𝔅|`. The coverage `c(x) := #{b : x ∈ B_b}`
+  satisfies `c(x) ≥ c_min ≥ 1`.
+* A partition `𝔅 = 𝔅_good ⊔ 𝔅_src` (good blocks and source blocks).
+* Site weights `v : Λ → (0, ∞)`.
+* Numbers `K_b(z) ≥ 0` for `b ∈ 𝔅_good`, `z ∉ B_b`.
+* A constant `γ ∈ [0, 1)` (this is `γ_DS`).
+
+**Hypotheses.**
+* **(S) Specifications.** For each block `b` there are probability kernels `q_b, q'_b : Ω → Prob(Ω)` such that:
+  * `q_b(σ, ·)` is supported on `{ξ : ξ = σ off B_b}` and depends only on `σ` off `B_b`;
+  * `μ q_b = μ` (DLR);
+  * `q_b(σ, Ω_0) = 1` for `σ ∈ Ω_0`;
+  * the same for `q'_b`, `μ'` and `Ω'_0`.
+* **(C) Block couplings.** For each block `b` there is a kernel `Q_b : Ω × Ω → Prob(Ω × Ω)` whose marginals are
+  `q_b(σ, ·)` and `q'_b(σ', ·)` for every `(σ, σ') ∈ Ω_0 × Ω'_0`.
+* **(I) Influence on good blocks.** For `b ∈ 𝔅_good` and `(σ, σ') ∈ Ω_0 × Ω'_0`:
+  `Σ_{y ∈ B_b} v(y) Q_b((σ, σ'), {ξ_y ≠ ξ'_y}) ≤ Σ_{z ∉ B_b} 1{σ_z ≠ σ'_z} K_b(z) v(z)`.
+  * **In particular**, if `σ = σ'` off `B_b`, the updated pair agrees on `B_b` almost surely.
+* **(K) The column condition.** For every site `z`: `Σ_{b ∈ 𝔅_good, z ∉ B_b} K_b(z) ≤ γ c(z)`.
+
+**Conclusion.** For every `ε > 0` there is a coupling `π` of `μ` and `μ'` with
+`Σ_x v(x) π(Y_x ≠ Y'_x) ≤ s/((1 − γ) c_min) + ε`, where `s := Σ_{b ∈ 𝔅_src} Σ_{y ∈ B_b} v(y)`.
+
+**Consequence.** For bounded measurable `F` depending on the coordinates in `A ⊂ Λ`:
+`|μ(F) − μ'(F)| ≤ 2‖F‖_∞ (min_A v)^{−1} s/((1 − γ) c_min)`.
+
+### 28.2 Proof
+
+1. **The averaged update.** For a coupling `π` of `μ, μ'` supported on `Ω_0 × Ω'_0`, define
+   `T π := (1/N) Σ_b ∫ π(dσ, dσ') Q_b((σ, σ'), ·)`.
+   * **Marginals.** The first marginal is `(1/N) Σ_b μ q_b = μ` by (S), the second `μ'`. So `T π` is again a coupling.
+   * **Support.** By (S) and (C), `T π` is supported on `Ω_0 × Ω'_0`. So (I) applies at every later step, and **no
+     configuration outside the supports is ever used**.
+2. **One step.** Write `d(x) := π(Y_x ≠ Y'_x)` and `Φ(π) := Σ_x v(x) d(x)`. For a block `b`:
+   * sites outside `B_b` keep their pair, contributing `Σ_{x ∉ B_b} v(x) d(x)`;
+   * for `b ∈ 𝔅_good`, integrating (I) over `π`: `Σ_{y ∈ B_b} v(y) P(new pair differs at y) ≤ Σ_{z ∉ B_b} d(z) K_b(z) v(z)`;
+   * for `b ∈ 𝔅_src`, at most `Σ_{y ∈ B_b} v(y)`.
+3. **Average over blocks:**
+   `Φ(Tπ) ≤ (1/N)[Σ_x v(x) d(x)(N − c(x)) + Σ_{b good} Σ_{z ∉ B_b} d(z) K_b(z) v(z) + s]`.
+   By (K), the middle sum is `≤ Σ_z v(z) d(z) γ c(z)`, so
+   `Φ(Tπ) ≤ Φ(π) − (1/N)(1 − γ) Σ_x c(x) v(x) d(x) + s/N ≤ θ Φ(π) + s/N`, with `θ := 1 − (1 − γ) c_min/N < 1`.
+4. **Iterate.** Start from the product coupling `π_0 := μ ⊗ μ'`, which is supported on `Ω_0 × Ω'_0`. Then
+   `Φ(T^n π_0) ≤ θ^n Φ(π_0) + s/((1 − γ) c_min)` and `Φ(π_0) ≤ Σ_x v(x) < ∞` (`Λ` is finite). Take `n` large. ∎
+5. **Consequence.** `|μ(F) − μ'(F)| = |E_π[F(Y) − F(Y')]| ≤ 2‖F‖_∞ π(Y ≠ Y' on A)`, and
+   `π(Y ≠ Y' on A) ≤ Σ_{x ∈ A} d(x) ≤ (min_A v)^{−1} Φ(π)`. Let `ε → 0`.
+
+**Remarks.**
+* **No limit in time and no topology.** The conclusion holds up to `ε` for a finite iterate. No weak limit, Feller
+  property or ergodicity is needed, which removes REVIEW-3's portmanteau and Feller points. A limiting coupling exists
+  for Polish `S_x` (tightness), but it is not needed.
+* **No saturation.** Source blocks contribute only through `s`. Bad clusters enter as composite good blocks whose
+  `K_b` comes from Lemma C, not as source blocks.
+* **Where the decay comes from.** With `v(x) := e^{−λ dist_ω(x, A)}`, (I) and (K) are the influence bound weighted by
+  `e^{λ E_b(z)}` (`K_b(z) ≤ k_b(z) e^{λ (diam B_b + dist(z, B_b))}`), as in 22.3. Then `s ≤ Σ_{y ∈ src} c(y) e^{−λ dist(y, A)}`
+  gives `C e^{−λ dist(A, src)}`.
+* **Covariance form, for (B).** The same theorem, applied to the hybrid construction of 19 (two conditionally
+  independent copies with randomness indexed by region), gives the conditional covariance bound.
+
+### 28.3 Instantiation for UV-TV (checks against sections 16 and 21-24)
+
+* **Sites:** scale-`j` bonds, with the configuration `(V_j, τ'_j, noise)`, in the block-axial gauge.
+* **Measures:** `μ_ω`, `μ'_{ω'}` given the patterns, coupled first by H1. Supports: the pattern supports.
+* **Blocks:**
+  * good boxes, at distance `≥ r_int + 1` from every cluster: in `𝔅_good`, with `K_b` from H3 (10.2, 19);
+  * composite boxes `W(K)`, multiplicity `n_W`: in `𝔅_good`, with `K_b` from Lemma C (16, 22.2);
+  * boxes meeting the source (the inherited disagreement, pattern disagreements, outside `Λ''_j`, truncation events):
+    in `𝔅_src`.
+* **Column condition (K):** 22.3, with `γ_DS`.
+* **Specifications (S):** the box laws of `μ_ω` (DLR by construction). Their supports are preserved, because the
+  pattern's characteristic functions are part of the specification.
+* **Block couplings (C):** H3's far-to-near coupling and Lemma C's coupling, measurable in the pair. The standard
+  explicit maximal coupling, built from the densities with respect to a common reference, is measurable; Goldstein's
+  nested version is measurable in the same way.
+
+### 28.4 Lean target
+
+A generic layer next to `OneBox/Restricted.lean`, with no gauge or physics content:
+* `structure CouplingSpec`: the blocks, the kernels `q_b`, `q'_b`, `Q_b`, the supports, and (S), (C);
+* `theorem couplingDS_bound`: under (I) and (K), for every `ε > 0`, there is a coupling with
+  `Σ_x v x * π {Y x ≠ Y' x} ≤ s/((1 − γ) c_min) + ε`;
+* `corollary`: `|∫ F dμ − ∫ F dμ'| ≤ 2 ‖F‖ (min_A v)⁻¹ s/((1 − γ) c_min)`.
+
+The proof is finite-dimensional linear algebra on `Φ` plus kernel composition. I expect it to be routine in Mathlib
+(`Measure.bind`, `ProbabilityTheory.Kernel`). The kernel and coupling API is the main work.
+
+**Status of write-out 1: paper, written.**
