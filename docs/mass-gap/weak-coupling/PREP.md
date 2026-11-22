@@ -819,3 +819,19 @@ thread.
   (coordinator): in M1 a trapped core is excised — its interior never enters a later average; only its boundary (record, maintenance
   cost) acts outward. That is the DMP rule: what is behind a boundary contributes nothing but the loss of asserting itself (the
   maintenance term, summed and bounded by P2′).
+- **The hierarchical order of existence (the owner, same day, on Lemma E7.J):** "One = about L3 makes sense and ties into something I
+  thought about much earlier, that can now be given more substance: That, in itself, is the representation of the hierarchical order of
+  existence. One connection goes towards root, while the layer that comes from it, must always be two nodes, since a duality must always
+  split into dualities." Reading (coordinator): in the blocking this is literal. (1) **One connection towards the root:** every fine bond
+  that crosses a block face belongs to exactly one coarse bond, the one joining those two blocks, and to no other. Ownership is a tree,
+  not a network: one parent per fine bond. This exclusive ownership is exactly what makes the fibre mass factorise over coarse bonds in
+  the E7.J sketch (different coarse bonds depend on disjoint sets of fine bonds), the same structure as "one root per node ⇒ no ties".
+  (2) **The layer below is always two nodes:** a coarse bond is always a link between two blocks, and the fine bonds it owns are precisely
+  the fine links that cross from one block to the other: L^(d−1) = L³ of them in four dimensions. The coarse connection is the duality,
+  and its owned fine bonds are the dualities it splits into, each one again joining the two sides. (3) Caveat on the numbers: M1 works
+  with Balaban's large odd block size (L = 13; the twisted blocking needs L ≥ 5), so one Balaban step is several duality splits at once
+  (log₂ 13 ≈ 3.7); the elementary split L = 2 is the step of our own doubling theorem (z₀(2L) ≥ 2z₀(L) − c). Exact steps compose (a
+  composition of law-preserving maps is law-preserving), so the two pictures are compatible; whether L can be taken as a power of two
+  is a question for the M1 thread. (4) Open part of E7.J in this language: the averaging is smooth everywhere except at the flip to the
+  other centre element (−1), where many fine histories collapse onto one coarse value; the factorisation (the tree) is not the problem,
+  the binary boundary is.
