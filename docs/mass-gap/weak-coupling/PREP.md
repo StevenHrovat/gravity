@@ -1123,3 +1123,11 @@ thread.
   label's own units shrinks like L^(−4) per step, so the per-step cost is summable over the label's whole life rather than linear in K.
   "At least two ticks to establish causality": a label is pulled out at release and needs the following step to hand its remainder to
   the coupling; from then on only the shrinking dimension-4 part is carried. Sent to the M1 thread as the intended form of the repair.
+- **Correction on "two ticks" (the owner, same day):** "The 'two tick' argument actually relates to the existence the label was released
+  from. That has to exist at least two ticks, which shows the shrinking of cost in a one-box system." Reading (coordinator): the two ticks
+  belong to the parent, the closed Z2 remainder (a duality) from which the label is released, not to the label after release. Only a
+  closed remainder that persists across at least two consecutive scales becomes a label; one that lives a single step is absorbed (a lone
+  act). And the shrinking can then be shown on one box over two consecutive steps: in the first step the remainder's interaction is
+  handed to the coupling, in the second only the dimension-4 residue is left, so the label's cost on that box contracts by a fixed factor
+  from one step to the next. A one-step contraction on a single box, iterated, gives the geometric decay over the label's whole life:
+  the same shape as the one-box criterion, applied to a label's cost. Forwarded to the M1 thread.
