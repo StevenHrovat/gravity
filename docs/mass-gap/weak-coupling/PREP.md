@@ -891,3 +891,15 @@ thread.
   assertion tick" reading: one tick lies well inside a single blocking step, so "after one tick" and "at creation" are the same step.
   A related boundary case for the strict dominance (next item): at β = 0 (no coupling, no duality to assert anything) Z_tw = Z exactly,
   so "existence = non-existence + 1" needs something to exist, as the owner said earlier; the strict form can only hold for β ≠ 0.
+- **β = 0 is non-existence (the owner, same day, on what β = 0 means):** "Since pure possibility would be an information half without its
+  existence half, [it] can not exist, or, to be more precise, is non-existence. That is [the] state the inside of a black hole or a
+  defined box is in. Everything is possible, but since nothing can change the defined state by an unforced act, there is no
+  causality/locality." Reading (coordinator): on the lattice this is exact. At β = 0 the measure is product Haar: every link is
+  independent and uniform, every configuration equally weighted ("everything is possible"). Gauge-invariant observables on disjoint
+  link sets are independent, so every connected correlation between different times vanishes from separation one on: correlation length
+  zero, the mass gap infinite, nothing propagates even one step ("no causality/locality"). So both ends of the problem have content:
+  the gap must be **positive** (a boundary holds: confinement, existence) and **finite** (something propagates: causality). The
+  assembly already carries the second half as the hypothesis `NonTrivial` (ProofPhase/Assembly.lean: some observable keeps a
+  correlation bounded away from zero at a fixed physical time in the limit), which excludes exactly the β = 0-like trivial limit. In
+  this reading the Yang–Mills theorem is "0 < mass gap < ∞": existence with an arrow of causality, between the inside of a defined box
+  (β = 0, infinite gap, no causality) and the massless photon-like case (gap zero, no boundary).
