@@ -637,3 +637,11 @@ Reading (coordinator; candidate):
   premises (Axiom 1's two-witness structure with full reach, i.e. the reflection halves plus a reach bound) — and the reach bound is
   confinement. The dictionary must also use something the finite group 2I lacks (cycle 5: DMP objects so far are group-blind). Sent to
   c6a-flip (Lean: does the chessboard estimate give "one box does not lower the act") and c6c-floor.
+- **Correction (coordinator, after c6c-floor, same day):** the translation "super-additivity of the vacuum act z₀" in the section "Why
+  the floor holds" above is **false as stated**: in every exactly gapped model checked (2D Ising strips against Onsager's value; a
+  massive scalar with Dirichlet walls) the box gap approaches m from **above**, so z₀(L₁+L₂) < z₀(L₁) + z₀(L₂) for all pairs; SU(2)'s box
+  gap also blows up in small boxes (Luescher). What survives: (i) the repaired form **z₀(2L) ≥ 2z₀(L) − c** (a fixed loss per doubling,
+  bounded by what light can hold, 2π), which from one box gives m ≥ (z₀(L₀) − c)/L₀ — c5e's doubling law with loss, still the open
+  cross-volume step; (ii) the **flux act** z_e = E_e·L is super-additive with a large margin in the data (≈ (L√σ)² − 0.9), so the owner's
+  "accumulation of existence" fits the flux (the confining string) better than the vacuum. Reflection positivity gives the vacuum side
+  only subadditivity. Details: `proof-phase/c6c-floor/NOTE.md`.
