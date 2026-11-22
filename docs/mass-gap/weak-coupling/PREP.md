@@ -1300,3 +1300,10 @@ thread.
   establishment of causality"), and it travels with that region through merging and release until it pays for the region's loss at
   the end. So the reserve is not produced along the way; it is a share of the original gain near G0, handed to each non-existence at
   its birth.
+- **The one-coupling corollary and "something has to exist" (the owner, same day):** "Funnily enough, the corollary was also the same one
+  as the one that I needed for DMP to finally host. Something HAS to exist, whatever it is, both something has to." Reading
+  (coordinator): the corollary (UV-TV.md 34.1, added to the Lean target) says that the averaged update does not depend on the weights
+  used to measure disagreement, so one and the same sequence of couplings satisfies every weighted bound at once. The object exists
+  first, independently of how it is measured; each choice of weights is only a way of looking at it. And a coupling is by definition a
+  single joint object whose two sides are both genuine laws (both marginals are kept by every update): "both something has to". In the
+  proof this is what makes the union bound over all sites refer to one thing rather than to a different coupling for each site.
