@@ -26,6 +26,9 @@ Part 1 (sections 0-6) covers N-1, H5, H6, H1 and H2. Part 2 (sections 7-10) cove
   * The remainders stay with the label (constant into `a_ℓ`), not with the coupling, so [I]'s running is untouched.
   * **Paper** on citation-level adaptations; components above Balaban's `ε_*` are **sketch**.
 * **Nothing fatal.** The remaining sketch points are listed in `M1-PLAN.md` 0.
+* **After the part-2 reviews (section 13):** small fixes applied. N-2's key step is a new piece of analysis, Lemma UV-TV
+  (total-variation locality of the reverse kernels). A coupling route avoids the frozen region, but the lemma is open.
+  The theorem's statement is unchanged.
 
 ## 0. Result in plain words
 
@@ -291,8 +294,10 @@ labels.
   * the characteristic functions and the `T(Y)1` are non-negative;
   * the action is real;
   * the label factors are positive ((P1), section 4).
-* The large-field domains `Y_i` of a term, with their attached boundary terms Mayer-expanded into connected clusters,
-  and the labelled fixed domains, form a polymer configuration with non-negative activities.
+* **[Corrected in 13.3: Mayer activities are signed.]** The `A`-cluster is defined from the large-field domains `Y_i`
+  and the labelled domains of a term of (1.104), **before** any Mayer expansion, with the boundary terms kept in the
+  exponent as part of the term's real action. Each `ρ_G` is then non-negative. The Mayer expansion is used only inside
+  the ratio `Ξ_{−G}/Ξ`.
 * Those activities are bounded uniformly in `V` by `e^{−p0(g_K)} e^{−κ d_K(Y)}` ([V] (1.89) improved, (1.99)).
 * Let `N(A)` be the `L_*`-neighbourhood of the scale-`K` image of `A`. The **`A`-cluster** `G` of a term is the
   connected component of `N(A)` in the union of `N(A)` and the polymers of the term.
@@ -385,7 +390,9 @@ the spectral upgrade does not need.**
    * Then `‖R_ℓ‖²_OS = E[Cov(θR̄_ℓ, R_ℓ | F_ℓ)] + E[E[θR̄_ℓ | F_ℓ] E[R_ℓ | F_ℓ]]`, with `F_ℓ` the block state at scale
      `ℓ`, everywhere.
    * The second term is `≤ C ‖E[F | F_ℓ] − f_ℓ‖_{L¹}`. The first is the conditional covariance of two observables at
-     distance `≥ 2t` (`f_ℓ` drops out, being `F_ℓ`-measurable).
+     distance `≥ 2t`. Only `f_ℓ` drops out, being `F_ℓ`-measurable. `θf_ℓ` is not, since the blocking is not reflection
+     covariant; `Cov(θf_ℓ, F | F_ℓ)` is a conditional covariance of two observables `2t` apart, bounded by the same
+     decorrelation (13.3).
    * Section 7's argument at top scale `ℓ` bounds both by `C(F) e^{−c t/ℓ}`.
    * Uniformity in the spacing: the clusters at scale `j < ℓ` contribute `(R/(L^j a))^d e^{−κ t/(L^j a)}`, summed over
      `j`, dominated by the top scale.
@@ -418,8 +425,8 @@ the spectral upgrade does not need.**
     `ℓ`), with `|⟨F⟩_V − ⟨F⟩_{V'}|` bounded by the clusters linking `supp F` to where `V ≠ V'`. Standard in form, not
     written line by line.
   * Item 4's uniform polynomial approximation is a sketch.
-* **For the interface:** `MassGapLoc` should be stated for the OS closure of bounded local gauge-invariant observables.
-  The physics question `c0` versus `1/b` is not needed.
+* **[Withdrawn in 13.4.]** The suggestion to state `MassGapLoc` on the OS closure is withdrawn: it would weaken the
+  theorem unless Lemma UV-TV is proved. The physics question `c0` versus `1/b` is not needed.
 
 ## 9. H3: the induction
 
@@ -675,3 +682,246 @@ with `⟨·⟩_B` Balaban's normalised fluctuation measure at fixed `V_{k+1}`.
   * the dimension-2 scaling of the background ([15]).
 * It replaces 11.2's series; 11.1, 11.3, 11.4 and 11.5 stand.
 * Components above `ε_*` remain **sketch** (11.4).
+
+## 13. After the part-2 reviews (REVIEW-2 third follow-up, REVIEW-3 follow-up 2)
+
+Neither review found anything fatal. Both mark labels, the induction and R10 as resolved, with small fixes. They differ
+on N-2. Small fixes first, then N-2, then the `g0` remark.
+
+### 13.1 The one-box contraction: tails and multi-cube components
+
+* **Tails.** Step 6 of 12.2 absorbed the localisation tails, `C e^{−κ} N_k`, into `θ = C L^{−4}` without the factor
+  `L^{−4}`. Fixed by a condition: `κ ≥ 4 log L + log C`. Balaban's `κ` may be taken large for given `L` ([III]
+  p. 260). It is now in row 5 of `S1-INDUCTION.md` 1, and `ε_* ≤ L^{−4}/(2C)` comes after it. Any fixed `θ < 1` is
+  enough for the iteration; `θ = ½` is what is used.
+* **Multi-cube components.** The lemma assumes the label term sits in one box. A released component spanning several
+  cubes contracts only once its image is below a cube. Before that, each step is marginal: `N_{k+1} ≤ (1 + C e^{−κ}) N_k`
+  and the weight drift is `≤ C N_k`.
+  * This lasts `≤ log_L(size) ≤ log_L(ε_*/δ_k) = O(log g^{-1})` steps (size `≤ ε_*/δ_k` below the threshold).
+  * So the drift is at most `C ε_* log g^{-1}`: a factor `poly(g^{-1})` per label, absorbed by the margin
+    `16 b(1 − δ) > 1` like the other polynomial factors.
+
+### 13.2 `S1-INDUCTION.md`
+
+* **"Uniformity"** now states the bound `e^{4Cε_*}`, plus 13.1's marginal steps. "Sub-exponential" is removed.
+* **7c** cites R2's attribution for the recursive case. It now applies at **every scale of the region's life**:
+  irregularity from Haar noise or fillings can persist. Condition 8 carries the factor `n0 + R_k`:
+  `r0²/(8 g_k²) ≥ C(C_1)(n0 + R_k) p² + p(g_k)²`, still `g^{-2}` against polylog.
+* **Hard core** at the release scale only; afterwards label factors multiply.
+
+### 13.3 R10 and N-2 wording
+
+* **Positivity** (section 7, both reviews). The `A`-cluster `G` is defined from the large-field and labelled domains
+  of a term of (1.104), before any Mayer expansion, with the boundary terms in the exponent. So `ρ_G ≥ 0` termwise. The
+  Mayer expansion enters only the ratio `Ξ_{−G}/Ξ`, which need not be termwise positive.
+  * Accurate statement (REVIEW-3): at fixed top `V` the top-scale characteristic functions fix the top large-field
+    set, so the sum is over earlier unreleased regions and labels under that constraint.
+  * Cauchy estimates in `t` are used only for the local terms `Φ_t(X)`, which are analytic in complex `t`. The measure
+    is tilted only by real `t`.
+* **One more step** (section 7's normalisation). The top variables' normalisation is exactly what the step `K → K + 1`
+  pays. So the induction hypothesis at `K` must allow that step, and it does, since `g_K ≤ γ0(L)`. This is an
+  **unchecked adaptation** of Balaban's accounting before (1.89), not a citation.
+* **`θ f_ℓ`** (section 8): not block-measurable, bounded by the same decorrelation (corrected in place).
+
+### 13.4 N-2: what the density step needs, and whether the easing helps
+
+**Where the two reviews differ.** Both agree that the key input is conditional decorrelation of **bounded measurable
+fine** observables given the block state, uniformly in the spacing.
+* REVIEW-3 calls the outline sound at sketch level.
+* REVIEW-2 calls it the frozen-region problem of `SKETCH-STEPS.md` 2, a new piece of analysis. It warns that
+  restating `MassGapLoc` on the OS closure would quietly prove a weaker theorem.
+
+**My assessment: REVIEW-2 is right about the kind of step. It is a new piece of analysis, not a write-out.** The
+theorem's statement stays as it is (`MassGapLoc` over bounded measurable slab families). Section 8's remark "for the
+interface" is withdrawn, as is the "outside M1" line in `M1-PLAN.md` 0.
+
+**What the OS route needs, exactly.** Let `F` be bounded measurable, gauge invariant, of physical extent `R`, at time
+`≥ t`. Take `f_ℓ := E[F | 𝓗]`, with `𝓗` the block state in the `t/2`-neighbourhood of `supp F`: a positive-time
+block function by construction. Then `R := F − f_ℓ` has mean zero, and `‖R‖²_OS = E[θR̄ R] = Cov(θR̄, R)`. Conditioning
+on the full block state `𝓕_ℓ` splits this into two parts:
+* **(A) locality in coarse data:** `‖E[F | 𝓕_ℓ] − E[F | 𝓗]‖_{L¹} → 0` as `ℓ → 0` at fixed `t`. Given the nearby block
+  data, the far block data barely move the conditional law of `F`'s fine field.
+* **(B) cross-plane decoupling given the coarse data:** `E[Cov(θR̄, R | 𝓕_ℓ)] → 0`. Given all block data, the fine
+  fields near `supp F` and near `θ supp F` (`≥ 2t` apart) are nearly independent.
+
+**Is the easing weaker?** Yes in its quantifiers, not in kind.
+* **Weaker:** it needs decoupling only at separation `≥ 2t` with `t` fixed while `ℓ → 0`, so `t/ℓ → ∞`. Any bound
+  `C (R/ℓ)^d e^{−c t/ℓ}` suffices, with prefactors polynomial in `R/ℓ`.
+* **Weaker:** it is needed only for the uncaptured parts, not as a uniform decay rate for all observables at all
+  distances. That uniform rate is the gap itself and is not needed here.
+* **Not weaker:** both (A) and (B) are statements about the conditional law of the **fine** field on a region with
+  `(R/a)^d` variables, in total variation (`sup` over measurable `F`), uniformly in `a`. That is the measurable
+  ultraviolet transfer at scales below `ℓ`.
+* **The plane does not remove it.** Given the block state, the two sides interact through the fine fluctuations of
+  all scales below `ℓ` across the gap, not only through the block field. Showing that this coupling is small is (B)
+  itself.
+
+**Does it avoid the frozen region?** It can, depending on the method.
+* **The frozen region comes from the density-ratio method** (`SKETCH-STEPS.md` 2): insert `F` as a weight, then bound
+  `sup_a |log w(a; V) − log w(a; V')|` uniformly in the content `a` of `supp F`. That requires running Balaban's
+  induction with a region of arbitrary fixed content through `log_L(ℓ/a)` steps. Its boundary is a large-field region
+  without an action penalty, so nothing pays the entropy.
+* **A coupling method avoids it.**
+  * Generate the fine field given the block state by the reverse kernels `K_j(dV_j | V_{j+1})`, from scale `ℓ` down to
+    `a`. The blocking chain is Markov in the scale (each `V_{j+1}` is a function of `V_j` plus independent noise), so
+    the conditional law of the fine field given `𝓕_ℓ` is exactly the composition of these kernels. Each `K_j` is the
+    fibre measure of `ρ_j`, M1's conditional step.
+  * Couple two copies with different far data, or the two sides of the plane, kernel by kernel, so that they agree near
+    `supp F` except on a disagreement set.
+  * Then `|E[F | 𝓕] − E[F | 𝓕']| ≤ 2‖F‖ · P(the disagreement reaches supp F)` for **every** bounded measurable `F`,
+    and nothing is frozen.
+  * The fine field near `supp F` is never fixed; only the two true conditional measures are coupled.
+
+**What must be proved: Lemma UV-TV**, the new analysis, in two parts.
+1. **(i) Total-variation locality of one reverse kernel.**
+   * Let `B` be a region of `|B|` scale-`j` cubes. Let `V_{j+1}`, `V'_{j+1}` agree on the `r`-neighbourhood of `B`
+     (scale-`(j+1)` units).
+   * Then there is a coupling of `K_j(· | V_{j+1})` and `K_j(· | V'_{j+1})` under which the two `V_j` agree on `B`
+     except with probability `≤ C |B| e^{−κ r}`, uniformly in `j`, in the volume, and in the field outside the
+     neighbourhood.
+   * The same holds for two disjoint regions (approximate conditional independence).
+2. **(ii) Composition (routine given (i)).** A union bound over scales `j` from `ℓ` down to `a`: the disagreement
+   spreads by `O(1)` cubes per scale plus tails. Using `|B_j| = (R/(L^j a))^d` and `r_j ≈ t/(L^j a)`:
+   `P(disagreement reaches supp F) ≤ Σ_j C (R/(L^j a))^d e^{−κ t/(L^j a)} ≤ C' (R/ℓ)^d e^{−κ t/ℓ}`,
+   uniformly in `a`. This gives (A) and (B), hence `‖F − f_ℓ‖_OS → 0` for each fixed `t > 0`.
+
+**Where (i) could fail, part by part.**
+* **The Z2 layer: low risk.**
+  * Given the SO(3) field it is a Z2 lattice gauge theory at coupling `≈ β ≫ 1` (section 1.1), with a convergent
+    low-temperature expansion over a product reference measure.
+  * Total-variation locality for measurable observables is standard there (polymers with small sup-norm activities,
+    Dobrushin-Shlosman type).
+* **The large-field parts: moderate risk.**
+  * Inside `T`-operations there is no expansion; locality has to come from rarity.
+  * A disagreement can cross a large-field region only if one connects `B` to distance `r`. That probability is the
+    crossing estimate of section 7 at each scale, `≤ e^{−κ r}`, which needs the scale-`j` normalisation of 7 at every
+    `j` (an unchecked adaptation).
+  * Risk: the per-scale normalisation adaptations have to hold at every scale, not only at `K`.
+* **The small-field part: the real work.**
+  * The kernel is a perturbation of Balaban's fluctuation Gaussian, with exponentially decaying covariance and the
+    background through the minimiser [15].
+  * For a Gaussian alone, (i) holds: given different far data, the conditional means on `B` differ by
+    `≤ C e^{−κ r}` per site, and the total variation is `≤ C |B|^{1/2} e^{−κ r}`.
+  * For the perturbed measure one needs a cluster expansion that admits **measurable** observables over a **Gaussian**
+    reference. Standard expansions either use a product reference (fine for measurable observables) or Gaussian
+    integration by parts (which needs smooth observables).
+  * Possible routes:
+    * a finite-range decomposition of the fluctuation covariance, which makes the reference a product of
+      finite-range-dependent blocks, plus a total-variation bound for the exponentially small remainder;
+    * or a direct Dobrushin-type contraction for the single-scale kernel, which is a weakly coupled, massive,
+      locally interacting measure.
+  * Neither is in Balaban's papers. **This is the step that could fail technically.** I see no reason it should fail
+    physically: at each scale the fluctuation is massive in its own units.
+* **Gauge fixing and the background: low risk.**
+  * `F` is gauge invariant, so it suffices to couple modulo gauge.
+  * The background minimiser is non-local only with exponential decay ([15] (190)), which (i)'s tail term covers.
+
+**Verdict on N-2.**
+* It is **a new piece of analysis**: Lemma UV-TV (i), at every scale below `ℓ`, uniformly in the spacing. This is the
+  scale-`< ℓ` part of the blueprint's P5.2 (measurable UV transfer). It is not sketch-level.
+* What section 8 does settle: OS density is the right notion (the owner's reading "coarse observables capture
+  everything that has existence" in mathematical form), and the comparison of `c0` with `1/b` is not needed.
+* Lemma UV-TV is precisely the statement that the uncaptured part `F − E[F | block state]` has vanishing OS norm in the
+  limit.
+* The coupling method avoids the frozen region, so the earlier assessment (`SKETCH-STEPS.md` 2: "new analysis") stands,
+  but with a route that does not need it. **Its status stays open**, and the theorem's statement is unchanged.
+* Simplification (REVIEW-2): `f_ℓ` itself is a bounded measurable block observable, so the polynomial approximation of
+  section 8 item 4 is not needed if P4 and `BlockGapBddW` treat such observables.
+
+### 13.5 The labels' constants and the bare coupling (the owner's reading "The remainder is attached to G0")
+
+* **In the law**, with `τ'` fixed, each label keeps its constant `a_ℓ` at its own position, its root. No remainder
+  enters the bulk running coupling (12.2).
+* **Averaged over positions,** that is with `τ'` summed out, the labels' point terms add up to a translation-invariant
+  `F²` term: a shift of the bare coupling.
+* **Size.**
+  * A label released at scale `k_r` contributes at scale `k` a point term `≤ C δ_X (ε + g)² L^{−4(k − k_r)}` (12.2).
+  * The labels persisting at scale `k` number `≤ e^{−16(1−δ)/g_k²} L^{(1−16b')k} poly(g^{-2})` per scale-`k` cell
+    (12.1, `CLOSING.md` 2).
+  * So the shift of `g_k^{-2}` per scale is `≤ C ε_* e^{−16(1−δ)/g_k²} L^{(1−16b')k} poly`, and the total, summed over
+    `k`, is `Δ(g_0^{-2}) ≤ C ε_* e^{−16(1−δ)/g_0²} poly(g_0^{-2})`.
+* **Uniform in the volume:** it is a density per cell, built from local terms.
+* **Uniform in the spacing:** the sum over `k` converges geometrically (`L^{(1−16b')k}`, `16b' > 1`, and
+  `e^{−16/g_k²}` decreasing), with a bound independent of `K`. It tends to 0 as `g_0 → 0`.
+* **So it is a finite renormalisation of the initial condition `g_0`**, absorbed by choosing `g_0` (the bare coupling
+  is a free parameter, within `g_0 ≤ γ0(L)`). The running law from `g_0` ([I] Theorem 2) is untouched.
+* **Caveat:** this shift describes the label-summed law. M1's law keeps `τ'` and the labels' position-dependent parts.
+  The remark shows only that, seen from the coupling, the labels act through the origin, as the reading says.
+
+### 13.6 Status after this round
+
+| item | level |
+|---|---|
+| labels (11-12, with 13.1) | paper, on three **unchecked adaptations** of Balaban's proofs: (P2) on the full domain (the `A'` reading is supported by [I] (1.11)-(1.12) and the factor `α_0 + α_1`); the localisation of `L_ℓ ∘ U_bg`; small-field steps accepting an indexed non-covariant local term. Above `ε_*`: sketch |
+| induction (`S1-INDUCTION.md`) | paper, with Balaban's results cited by equation and the adaptations named |
+| R10 (7, 13.3) | paper; the one-more-step normalisation is an **unchecked adaptation** |
+| N-2 (8, 13.4) | **open, new analysis**: Lemma UV-TV (i). Section 8's framework and (ii) are paper |
+| `g0` remark (13.5) | paper |
+
+## 14. N-2: the spectral formulation compared (the owner's reading "The fine observable and the glueball")
+
+**The proposal.**
+* The uncaptured part of a fine observable consists of lattice-scale, high-energy components. If it has no overlap
+  with transfer-matrix states below energy `c/ℓ`, its OS norm at distance `δ` from the plane is at most
+  `e^{−cδ/ℓ}` times its norm.
+* Equivalently, the block observables at scale `ℓ` generate every state below energy `c/ℓ`.
+
+**14.1 The statement, made precise.**
+* On each lattice the Wilson measure is reflection positive, so there is a transfer matrix `T_a = e^{−aH_a}`,
+  `0 ≤ T_a ≤ 1`.
+* For a positive-time observable `G` at time `≥ δ`, `‖G‖_OS = ‖e^{−δH_a} φ_G‖`, where `φ_G` is the vector of `G`
+  shifted to the plane, and `‖φ_G‖ ≤ ‖G‖_{L²}`.
+* Let `𝓑_ℓ` be the closed span, in the OS space, of the positive-time block observables at scale `ℓ`.
+* **Spectral claim (S):** `𝓑_ℓ ⊇ 1_{[0, c/ℓ)}(H_a) 𝓗_a`, uniformly in `a`.
+* (S) gives: `dist_OS(F, 𝓑_ℓ) ≤ e^{−cδ/ℓ} ‖F‖_{L²}`, which tends to 0 as `ℓ → 0` at fixed `δ`. Exactly what density
+  needs, and with a rate.
+* **(S) is about the OS-orthogonal complement**, not about `F − E[F | block state]`. The `L²` conditional expectation
+  is not the OS projection, and `F − E[F | 𝓕_ℓ]` can carry low-energy components through its dependence on far coarse
+  data: item (A) of 13.4. The proposal's "uncaptured part" has to be read as the OS-orthogonal part for (S) to hold.
+
+**14.2 What proving (S) requires.**
+* (S) says `𝓑_ℓ^⊥` lies in the spectral subspace `[c/ℓ, ∞)`: for every vector `χ` OS-orthogonal to all block
+  observables, `⟨χ, e^{−2sH_a} χ⟩ ≤ e^{−2cs/ℓ} ‖χ‖²`, uniformly in `a`.
+* So vectors orthogonal to the coarse data must decorrelate from their own reflection at rate `c/ℓ` in physical units.
+* With `χ` represented by an observable `G` with `E[θB̄ G] = 0` for all block observables `B`, the decay is a
+  statement about the fine fluctuations of `G` given the coarse data. That is (B) of 13.4. To pass from `G` to its
+  uncaptured part one needs the coarse part of `G` controlled, which is (A).
+* **So (S) is equivalent in strength to OS density with a rate**, and proving it from correlation bounds needs the same
+  Lemma UV-TV.
+
+**14.3 Comparison.**
+
+| formulation | what it asks | rate | needs | frozen region? |
+|---|---|---|---|---|
+| uniform conditional decorrelation (REVIEW-2) | every bounded measurable fine `F`, every distance | yes | UV-TV (i), all geometries | depends on the method |
+| the easing (13.4: two sides at `2t`, `t/ℓ → ∞`) | only the cross-plane pairing of uncaptured parts | any `o(1)` | UV-TV (i) for (A) and (B) | depends on the method |
+| spectral (S) | block observables span all states below `c/ℓ` | `e^{−cδ/ℓ}` | the same decorrelation, as a statement about `𝓑_ℓ^⊥` | depends on the method |
+
+**14.4 Which is most provable from M1's tools.**
+* **The easing, proved by coupling the reverse kernels (Lemma UV-TV), is the most M1-native.**
+  * M1 controls the **laws** of the block fields and the conditional kernels between scales: exactness (Lean), the
+    inductive form, positivity, and the crossing estimates of section 7.
+  * The coupling statement is about exactly those objects, one scale at a time.
+* **The spectral form (S) is not more provable.** M1 has no direct handle on the transfer matrix's spectrum. Any proof
+  of (S) would go through correlation decay of the orthogonal complement, that is through (A) and (B).
+* **(S) is still useful:**
+  * it states the target with its natural rate `e^{−cδ/ℓ}`;
+  * it identifies the uncaptured part as the high-energy sector, with the physics the owner describes: the lightest
+    glueball decays slowest, the uncaptured part fastest;
+  * using the OS projection instead of `E[F | 𝓗]` removes the need for a **local positive-time** approximant. (A) is
+    then used only inside the proof of the decay, not as a separate locality requirement.
+* **Recommendation:** keep the easing as the working formulation and Lemma UV-TV as the step to prove. Record (S) as
+  the equivalent target and as the reading of what is proved.
+
+**14.5 The frozen region.**
+* **Neither formulation avoids it by itself.** Formulations fix what is to be shown, not how. The frozen region is a
+  property of the **density-ratio method**: inserting `F` as a weight with arbitrary fixed content and running
+  Balaban's induction with it.
+* **What avoids it is the coupling method** (13.4), and it does so for all three formulations alike: nothing is frozen,
+  and only the true conditional measures are coupled.
+* **The step it leaves** is Lemma UV-TV (i): total-variation locality of one reverse kernel, uniformly in the spacing.
+  Its small-field part needs a cluster expansion that accepts measurable observables over a Gaussian reference. Neither
+  the easing nor (S) changes that.
+
+**Status:** unchanged. N-2's key step is Lemma UV-TV (i), **open, new analysis**. (S) is recorded as an equivalent
+target.

@@ -126,3 +126,5 @@ stated in this torus form.
 * See `REVIEW2-RESPONSE.md` 5.
 
 **Update (REVIEW-2 follow-up N-2):** density of the block-observable class holds in the OS norm, not via martingale convergence in `L²` (`REVIEW3-RESPONSE.md` 8).
+
+**Update (`REVIEW3-RESPONSE.md` 13.4):** OS-norm density reduces to Lemma UV-TV (total-variation locality of the reverse kernels below `ℓ`), which is open.

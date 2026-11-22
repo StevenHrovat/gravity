@@ -70,3 +70,5 @@ mass-gap theorem still needs the crossover (P4) and the two interface changes, b
 * The `L¹` transfer is now paper (`REVIEW3-RESPONSE.md` 7).
 * Density of block observables holds in the OS norm (paper sketch, section 8). `MassGapLoc` should be stated for the OS closure of bounded local gauge-invariant observables.
 * The Wilson-loop proxy is the Stokes lift over coarse plaquettes (section 8.5).
+
+**Update (part-2 reviews; `REVIEW3-RESPONSE.md` 13.4):** the suggestion to state `MassGapLoc` on the OS closure is withdrawn. Density of the block observables needs Lemma UV-TV (open, new analysis); the theorem's statement is unchanged.

@@ -96,3 +96,5 @@ insertion not started. M1's main theorem does not have a complete argument apart
 a genuine open problem**, and the E8 insertion is unchecked.
 
 **Update (`R10-SCOPE.md`):** step 3 closes as written in [V] (no insertion needed). Step 2 is scoped: paper sketch for analytic observables, and the uniform-over-measurable form is not needed, given reflection positivity of the bare measure and an interface change.
+
+**Update (`REVIEW3-RESPONSE.md` 13.4):** the frozen region of section 2 arises from the density-ratio method. A coupling of the reverse kernels avoids it. What remains is Lemma UV-TV (i), open.
