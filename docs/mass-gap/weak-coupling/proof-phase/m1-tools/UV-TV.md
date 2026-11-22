@@ -6,6 +6,8 @@
 
 > **Status (part 4, section 21):** the merging cascade is repaired by a fixed merge range per scale (collar `w_j` set by the scale), localisation around `B` with truncation of scale-`j`-born clusters at `n_j = C log|Λ''_j|/log(1/η_j)`, and isolation of inherited regions at their birth scale (paper sketch). The fixable items and section 12 follow.
 
+> **Status (part 5, section 22 and section 12 continued):** the fixable items are written: links as edges; Lemma C without the interface factor; constant multiplicity with overlapping good boxes; coverage by rounding; the coupling-form Dobrushin-Shlosman theorem (no off-support hybrids); the cut-off check. Section 12 has started with the pointwise fibre normalisation, checked up to one reading (12.1).
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -502,7 +504,7 @@ via a shared G0"; the owner's correction, `../../PREP.md`).**
   * It rules out frozen box laws and gives the unique ergodicity used in step 2 of Theorem A_good.
   * It gives no estimate uniform in `a`, and plays no role in the contraction.
 
-## 12. Next: the multi-scale crossing estimate (not started)
+## 12. Next: the multi-scale crossing estimate (started in part 5, at the end of this note)
 
 * H1 and H2 for Balaban's patterns, given the coarse field, at every scale, with the pointwise fibre normalisation
   checked.
@@ -902,3 +904,165 @@ width set by that scale, not growing with its later size.
 Next, after the report: the fixable items of the two reviews (Lemma C's interface factor, constant multiplicity with
 overlapping good boxes, coverage by rounding, the coupling form instead of off-support hybrids, the cut-off in [III]
 (2.17)), then section 12.
+
+# Part 5 (2026-11-22): the fixable items, and the start of section 12
+
+## 22. The fixable items (REVIEW-2 sixth follow-up, REVIEW-3 follow-up 5)
+
+### 22.1 Long links as edges (Lemma C)
+
+* **Cluster connectivity** uses chosen links as edges (21.1), so link endpoints belong to the cluster.
+* A link-joined composite box may be non-contiguous: two pieces with their collars, joined by the link.
+* Lemma C's proof is unchanged: `c` now lives on all pieces and their inner layers. Given `ω`, the only `c`-`σ`
+  couplings left are through the collars, since every chosen link has both ends in `K`.
+* `dist_ω` contracts the whole composite box. In the averaging, a link of length `s` costs `e^{−κ s}` (H2) against the
+  `λ s` it saves, which is fine since `λ ≪ κ`.
+
+### 22.2 Lemma C without the interface factor
+
+* For fixed `z`, `Σ_{x ∈ ∂_in} e^{−m' d(x, z)} ≤ C_{m'} e^{−m' d(z, ∂_in)}` (REVIEW-2). So
+  `TV(law(c | σ), law(c | σ')) ≤ C p² Σ_{z ∈ Z} e^{−m' d(z, ∂_in)} + C e^{−c p²} Σ_{z ∈ Z} e^{−m' d(z, ∂_in)}`.
+  * The second term is the hard truncation, which also needs a correlation across the collar (REVIEW-3).
+* If `c` differs, the disagreeing sites number `≤ |K| + C |∂_in| (log p/m)^d` (the cluster, plus the collar's
+  near-inner layer). Hence
+  `k_W(z) ≤ C (log p/m)^d + C (|K| + |∂_in| (log p/m)^d) p² e^{−m' d(z, ∂_in)}`.
+* For `z` outside the collar, `d(z, ∂_in) ≥ w_j`. With `w_j = (3/m') log(C L^d n_j p)` (21.1) the second term is
+  `≤ (C L^d n_j)^{−2} p^{−1}`, so negligible.
+
+### 22.3 Constant multiplicity, good boxes overlapping the collar (per-site column condition)
+
+* **Block family `𝔅_ω`:**
+  * every good box (a translate of the side-`ℓ_B` box) at distance `≥ r_int + 1` from every cluster `K`, including
+    good boxes overlapping collars;
+  * each composite box `W(K)` with the **same** multiplicity
+    `n_W := ⌈C ℓ_B^{d−1} (log p/m)^{d+1}/γ⌉`.
+* **The condition**, per site `x` (Lean's `GDSw`):
+  `Σ_{blocks B ∌ x} k_B(x) e^{λ E_B(x)} ≤ γ · coverage(x)`.
+* **Sites of `K`:** no block other than its own `W` lies within `r_int` of `x` (good boxes keep distance `≥ r_int + 1`),
+  so the column is 0 by finite range. The coverage is `n_W ≥ 1`.
+* **Inner-layer sites** (collar sites within `r_int + 1` of `K`): they are covered by `W` only (`n_W` times). Their
+  column is their influence on nearby good boxes, `≤ C ℓ_B^{d−1} (log p/m)^{d+1} e^{λ(ℓ_B + C)}` (the one-box estimate
+  of 10.2). This is `≤ γ n_W` by the choice of `n_W` and `λ = 1/ℓ_B`.
+* **Other collar sites and good sites** near `W`: coverage `≥ c_0 ℓ_B^d` (a positive fraction of the translates fit,
+  after the rounding of 22.4). Their column is the good-box part `≤ γ c_0 ℓ_B^d / 2` (10.2), plus
+  `n_W k_W(x) e^{λ E_W(x)} ≤ n_W · C (log p/m)^d · C`.
+  * The second part is `≤ γ c_0 ℓ_B^d/2` if `ℓ_B ≥ C (log p/m)^{2d+1}/γ²` (REVIEW-3). Added to `S1-INDUCTION.md` 1
+    (row 5).
+* **Weights `E_W(x)`:** with `W` contracted in `dist_ω`, `E_W(x) ≤ 2`. Good boxes have `E ≤ ℓ_B + C`, so
+  `e^{λ E} ≤ e^{1 + Cλ}`.
+
+### 22.4 Coverage of gaps
+
+* Composite boxes are rounded up to unions of grid boxes, and merged when closer than `ℓ_B + 2r_int + 2`.
+* Then every site outside all `W` lies in a region in which some side-`ℓ_B` translate containing it stays
+  `≥ r_int + 1` away from every cluster. So `coverage(x) ≥ 1`, and `≥ c_0 ℓ_B^d` at distance `≥ ℓ_B` from every `W`.
+* This changes the proximity of 21.1 from `2w_j + ℓ_B` to `2w_j + ℓ_B + 2r_int + 2`. The lattice-animal entropy is
+  still `(C(w_j + ℓ_B)^d)^n` and the subcriticality condition of 21.3 is unchanged in form.
+
+### 22.5 The coupling form of Dobrushin-Shlosman (no hybrids off the support)
+
+* **Coupling-form Theorem DS.**
+  * Fix `(ω, ω')`, the block family `𝔅_ω`, and site weights `v(x) := e^{−λ dist_ω(x, B)}`.
+  * Suppose each block `b` has, for every pair of boundaries **in the supports**, a coupling of its two laws with
+    `E[#{y ∈ b : Y_y ≠ Y'_y} weighted by v] ≤ Σ_z k_b(z) v(z) e^{λ E_b(z)} 1{σ_z ≠ σ'_z}`.
+  * Suppose the per-site column condition of 22.3 holds.
+  * Then there is a coupling `π` of `μ_ω` and `μ'_{ω'}` with
+    `Σ_x v(x) P_π(Y_x ≠ Y'_x) ≤ (1 − θ)^{−1} Σ_{x ∈ S} v(x)`, where `S` is the source (`N(D)`, non-agreeing boxes and
+    `∂Λ''`).
+  * In particular `P(Y ≠ Y' on B) ≤ C(1 − θ)^{−1} Σ_{x ∈ S} e^{−λ dist_ω(x, B)}`.
+* **Proof.**
+  1. Let `T` be the averaged block update on couplings: pick a block `b` at random, then resample both copies on `b`
+     by its coupling given the current boundaries (sources arbitrary).
+  2. `T` maps couplings of `(μ_ω, μ'_{ω'})` to couplings of the same pair (DLR for each copy).
+  3. Both copies are always samples of their own laws, so only boundary pairs **in the supports** ever occur. No hybrid
+     configuration is used.
+  4. The column condition gives `Φ(Tπ) ≤ θ Φ(π) + (1 − θ) Σ_S v`, with `Φ(π) := Σ_x v(x) P_π(Y_x ≠ Y'_x)` finite
+     (`Σ_x v(x) < ∞` in `d = 4`).
+  5. Iterate from the product coupling, so `Φ(T^n π_0) ≤ θ^n Φ(π_0) + Σ_S v`.
+  6. The configuration space is compact, so take a weak limit point. `{Y_x ≠ Y'_x}` is open, so `P(Y_x ≠ Y'_x)` is
+     lower semicontinuous (portmanteau) and the bound passes to the limit. Its marginals are `μ_ω` and `μ'_{ω'}`. ∎
+* **What it replaces:**
+  * the oscillation iteration of `theoremA_on`, which passes through off-support hybrids (REVIEW-3);
+  * the dynamics of part 3. This is a contraction on couplings of fixed marginals, not a time evolution from
+    agreement, so nothing accumulates. Composite boxes carry Lemma C, so there is no saturation.
+* **Lean:** a new generic layer, "coupling contraction on block families", routine. For (B), covariance from the
+  hybrid of 19 uses the same theorem.
+
+### 22.6 The cut-off in [III] (2.17), checked
+
+* In the text layer of [III] (CMP 119, pp. 247-248 and 257), Balaban's decompositions of unity are
+  `1 = χ(sup |…| ≤ α) + (1 − χ(…))` with `χ` the **characteristic function of the set** (e.g. (1.8),
+  `χ_0(Q) χ_0(Q_1)`, and (2.17), `χ_k := χ(N sup |U_{k,□}(V_k, ∂p) − 1| < ε_k)` over the `L M² R_k`-cubes).
+* No smoothing is visible in the text layer. Analyticity is used in the variables **within** the sets, not of `χ`.
+* So the support of the small-field function is exactly `{sup ≤ ε_k}`.
+* **The coarse threshold** `Bad^c(X_{j+1})`, defined with the same quantity (the cube-wise sup of the minimiser's
+  plaquettes) at `2ε_{j+1}`, lies strictly outside that support.
+* If a smoothed version is used anywhere, its reach is `(1 + δ)ε` with `δ < 1` by construction, and `2ε` is still
+  strictly above. To be safe against the poor OCR, take `3ε_{j+1}`.
+* **Status:** checked as far as the text layer allows.
+
+### 22.7 Inherited coarse-bad regions
+
+* As agreed (REVIEW-2), they are priced at their own scale, not in step (ii) of Theorem A_good at scale `j`.
+* At scale `j` they are composite boxes whose sizes are bounded by `F_{j+1}^c` (21.2), with Lemma C. Their probability
+  enters the multi-scale chain of section 12.
+
+**Status of part 5's fixable items:** all written (paper). Lean: the coupling-contraction layer (22.5) is the generic
+theorem to formalise, once section 21 and this part are checked.
+
+## 12 (continued, part 5). The multi-scale crossing estimate (started)
+
+**Route** (REVIEW-2): apply Theorem A_good (coupling form, 22.5) at each scale, conditionally on the coarser data
+`𝒳_{j+1}`. The source at scale `j` is the disagreement inherited from `j + 1`. Chain the conclusions from `ℓ` down.
+
+### 12.1 The pointwise fibre-normalisation lower bound, checked
+
+**Statement needed (quenched H2).** For `X_{j+1}` small field on the `C w_j`-neighbourhood of a set `A` of scale-`j`
+boxes:
+`Σ_{ω : A ⊂ Bad_j(ω)} w_ω(X_{j+1}) ≤ η_j^{|A|}`, with `w_ω(X_{j+1}) = ∫_{fibre(X_{j+1})} ρ^ω_j / ρ_{j+1}(X_{j+1})`.
+
+**The denominator is the coarse law.** The normalisation `∫_{fibre(X_{j+1})} ρ_j` is exactly `ρ_{j+1}(X_{j+1})`, by
+exactness (`map_resample_eq`; the fibre integral of the fine law is the coarse density). It is a sum of non-negative
+terms, so it is bounded below by any single family of terms.
+
+**Comparison term by term.** For each `ω` with `A ⊂ Bad(ω)`, let `ω_0 := ω` modified on the `C w_j`-neighbourhood
+`N_A` of `A` to be small field there (no large-field domain, label or excitation on `N_A`), the same elsewhere.
+Admissibility is local, so `ω_0` is admissible. Then
+`w_ω / w_{ω_0} = ∫_{fibre} ρ^ω_j / ∫_{fibre} ρ^{ω_0}_j`.
+* **Numerator.** By (2.19) factorisation and locality, the integrand differs from the `ω_0` one only on `N_A`. There it
+  is a product of `T`-activities, each bounded by `e^{−2(1+β)p0 − κ d}` ((1.89), with Balaban's normalisation constants
+  "`O(1) log g^{−2}` per site" included), times `exp(boundary terms)`, bounded by `e^{C|∂N_A|}`.
+* **Denominator.** On `N_A`, `ρ^{ω_0}_j` is the small-field term. Its action is within `O(1)` per cube of the
+  quadratic form ([III] (2.23)-(2.42): E-terms `O(1) e^{−κ d}`). Its fibre integral over the small-field set
+  around the background `U(X_{j+1})` is
+  `≥ e^{−C|N_A|} × (Gaussian fibre normalisation on N_A)`.
+  * This uses that `X_{j+1}` is small field on `N_A`, so the background is regular and the small-field set has
+    Gaussian mass `≥ 1 − e^{−c p²}` per cube.
+* **The ratio.** Balaban's `T`-activities are normalised by the same Gaussian constants (his normalisation terms
+  `E_k(Z)` in (1.70)-(1.71)). So
+  `w_ω/w_{ω_0} ≤ e^{−2(1+β)p0 #components(A) − κ d(A) + C|N_A|}`.
+* **Summing.** Summing over the `ω`-restrictions on `N_A` (entropy `C^{|N_A|}`) and using `w_{ω_0} ≤ 1` gives
+  `Σ_{ω : A ⊂ Bad} w_ω ≤ (C e^{−c p0})^{|A|}` per box, since `|N_A| ≤ C w_j^d |A|` and `p0 ≫ w_j^d`. That is
+  `η_j^{|A|}` with `η_j := e^{−c' p0(g_j)}`.
+* **Pointwise in `X_{j+1}`**, and at every scale `j` (constants scale-uniform).
+
+**What is still a reading, not a citation.** That the normalisation constants inside Balaban's `T`-activities ((1.70)
+`E_k(Z)`, "normalization terms ... with localizations intersecting the large field domain") are exactly the Gaussian
+fibre normalisations of the small-field alternative on the same region, so that the comparison has no leftover factor
+`(β^{3/2})^{#bonds}`.
+* This is the same point as R10's scale-`K` normalisation (13.3), now term by term and pointwise.
+* It is plausible by construction: Balaban normalises each step's Gaussian integral and subtracts it. It is not stated
+  in this form in the text.
+* **Status:** checked up to this one reading. It is **unchecked adaptation 4** of `M1-PLAN.md` 0, now localised to a
+  precise statement.
+
+### 12.2 Next (not yet done)
+
+* **H1:** rewrite Balaban's pattern marginal as a positive gas with small local activities given the coarse data:
+  * activities as in 12.1;
+  * many-body interactions from the small-field fluctuation integral on the complement: Balaban's cluster expansion,
+    bounded and decaying, with the single-polymer parts absorbed into the activities.
+  
+  Then a quantitative H1 from its convergent cluster expansion: local pattern marginals depend on far coarse data with
+  decay.
+* **The chaining** from `ℓ` down, with inherited regions priced at their own scale.
