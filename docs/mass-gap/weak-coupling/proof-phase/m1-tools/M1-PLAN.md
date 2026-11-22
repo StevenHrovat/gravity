@@ -61,7 +61,7 @@ the notes):
 | R7 normalisation per real flip | `O(1)^{|τ|}` ratio of partition functions | **citation**, reduction written (`CLOSE-OUT.md` 4): Jensen plus the weak-coupling plaquette bound from Balaban's two-sided partition-function bounds |
 | R8 release of acts and labels | dimension-4 coupling, summable | **paper** (`CLOSE-OUT.md` 2): no-linear-coupling lemma (gauge invariance and no invariant vector in `so(3)`); sum `ε_k² Σ_j e^{-p0(g_j)}` (needs `p0` growing faster than `log(k - j)`, i.e. `A0 > 1` if `p = 1`) |
 | R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field | **citation** carry-over with the change table (`CLOSE-OUT.md` 5): small-field means SO(3)-regular (`τ = +1` dropped, REVIEW-2 G2); no centre; otherwise constants only |
-| R10 hand-over (b) | the `L_*` half of the ultraviolet transfer | **paper sketch for analytic observables** (`R10-SCOPE.md` 2: one extra local analytic term in Balaban's induction, Cauchy in `t`; same rate, observable-dependent constants). The uniform-over-measurable form of `ObsTransferPhysTW` is not proved and **not needed**: RP of the bare measure upgrades dense-class decay to the uniform gap (`R10-SCOPE.md` 3). Interface change proposed |
+| R10 hand-over (b) | the `L_*` half of the ultraviolet transfer, `L¹` form | **paper** (`WRITEOUTS.md` 2) for character polynomials of block variables at a fixed physical scale; rate `min(κ/2, c p0²/(MR))/L_*`, constants `C(n, R/ℓ)` |
 | R12 [16] (71) in 4D | the action lower bound behind [V] (1.76) in four dimensions | **paper**, written out from [12] (48)-(53) (`CLOSE-OUT.md` 1) |
 | R11 interface | `BlockingFamily` relaxed to measurable blockings; SU(2) encoding of `(V, τ)` (`HANDOVER.md` 0.3) | formal refactor, outside M1's folders |
 | ext | [I] Theorem 2 (running coupling, with `γ ≤ γ0(L)`) | external, unpublished |
@@ -88,25 +88,24 @@ never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `
 * **External:** [I] Theorem 2 (unpublished).
 * **Separate:** the crossover P4.
 
-**Verdict (after REVIEW-2, `REVIEW2-RESPONSE.md`, `S1-CURRENT.md`):** no fatal finding. The one-step induction for
-the current design is written (`S1-CURRENT.md`).
+**Final verdict (2026-11-22, after `WRITEOUTS.md`).** M1's main theorem has a complete argument at paper level,
+apart from:
+* **external:** [I] Theorem 2 with its rate (0.31);
+* **separate:** the crossover P4;
+* **outside M1:** the interface changes (block state `(SO(3), closed Z2)`, `MassGapLoc` via the limit; REVIEW-2 G4,
+  G5), planned separately by the coordinator.
 
-* **Repaired:** G3 (decoder locality, paper), G6 (extended holes, paper).
-* **Repaired at sketch level:** G2 (labels as explicit polymer factors).
-* **Not an M1 matter:** G5 (no SU(2) encoding; the interface should take `(V, closed τ)` with gauge-invariant
-  observables).
-* **G4, the hand-over, restated honestly.** M1 delivers:
-  * (a) the law in inductive form;
-  * (b) an `L¹` UV transfer for character polynomials of block variables at a fixed physical scale.
+It rests on:
+* **Lean (machine-checked):** exactness of the conditional step, dilution and off-centre steps, slicing, Poincaré
+  counting, local-modification identities, fibre densities, gauge fixing at a leaf, the record gas, the flux-tube
+  bound, the footprint sum, and the assembly as bookkeeping;
+* **paper:** R1-R4, R6, R8, R10, R12, the decoder (packing plus Peierls), the labels (mixed expansion), extended holes,
+  `S1-CURRENT.md`;
+* **citation:** Balaban [I]-[V], [12]-[16] as stated, with the SO(3) carry-over (R9), the normalisation lower bound
+  (R7), and [13] (3.133)'s illegible exponents.
 
-  The reflection-positivity upgrade must be done in the limit and targets `MassGapLoc`.
-* **Auxiliary randomness is already implemented** in `Interface/RandBlocking.lean`.
-
-M1's argument stands apart from [I] Theorem 2 (with its rate), P4, and two sketch-level points:
-1. the mixed Mayer expansion with explicit label factors;
-2. R10's insertion bookkeeping.
-
-Citations are as listed.
+What M1 hands over: the law of `(V_K, τ'_K)` in the inductive form of `S1-CURRENT.md`, and the `L¹` UV transfer of
+`WRITEOUTS.md` 2. Next: REVIEW-3 on the new pieces.
 
 Parts A and B below are the pre-review plan, kept for the record.
 
