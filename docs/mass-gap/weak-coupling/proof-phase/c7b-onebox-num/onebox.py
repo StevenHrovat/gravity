@@ -96,6 +96,48 @@ def apply_gauge(group, U, box, B, rng):
     return U
 
 
+def tie_links(group, box, B, sep, tiebreak):
+    """TIE background (PREREG-AMEND.md): two thin centre-vortex sheets, i.e. the boundary data of twist (Dirac strings, flux pi on a single
+    plaquette of the xy plane, continued over all (z, t) faces) at the two xy positions x = c -/+ sep, y = c. Two sheets can stay flat
+    (area 2 ell^2) or join into a tube along the walls (area about 8 ell sep): at sep about ell / 4 the two topologies have equal area, the
+    tie. tiebreak: one frozen link (the Dirac string of the +sep sheet, on the faces y = 0, z = 0, t = ell/2) is changed: ONE shell cell."""
+    ell, N = box.ell, box.N
+    c = (ell - 1) // 2
+    f = np.zeros((ell, ell))
+    f[c - sep, c] = np.pi
+    f[c + sep, c] = np.pi
+    G = np.zeros((ell, ell + 1))
+    G[:, :ell] = np.cumsum(f[:, ::-1], axis=1)[:, ::-1]
+    A = np.zeros((4,) + box.dims)
+    A[0, :ell, :ell + 1] = G[:, :, None, None]
+    if tiebreak:
+        A[0, c + sep, 0, ell // 2, ell // 2] += np.pi
+    shape = (B,) + box.dims
+    out = []
+    for mu in range(4):
+        a = np.broadcast_to(A[mu], shape)
+        if group == "su2":
+            q = np.zeros(shape + (4,))
+            q[..., 0] = np.cos(a)
+            q[..., 3] = np.sin(a)
+        else:
+            q = np.angle(np.exp(1j * np.array(a, dtype=float)))
+            if group == "z2":
+                q = np.where(np.abs(q) > 1.0, np.pi, 0.0)
+        out.append(q)
+    return out
+
+
+def tie_indicator(ops, U, box):
+    """Mean xy plaquette at the two sheet positions over the deep (z, t) slices: (B, 2). Frustrated (sheet through it): about -1 x plaquette."""
+    ell = box.ell
+    c = (ell - 1) // 2
+    sep = box.tie_sep
+    P = ops.re(ops.mul(ops.mul(U[0], bd.sh(U[1], 0)), ops.mul(ops.dag(bd.sh(U[0], 1)), ops.dag(U[1]))))
+    lo, hi = 2, ell - 1
+    return np.stack([bd.to_host(P[:, c + s, c, lo:hi, lo:hi]).mean(axis=(1, 2)) for s in (-sep, sep)], axis=1)
+
+
 # ------------------------------------------------------------------------------------------------------------------ measurement
 
 class Meas:
@@ -173,14 +215,18 @@ def run(a):
     B = a.chains
     ops = bd.make_ops(a.group, xp)
     t0 = time.time()
-    U = bd.initial_links(a.group, box, a.bg, B, a.seed, a.phi)
+    box.tie_sep = a.tie_sep if a.tie_sep > 0 else max(1, a.ell // 4)
+    if a.bg == "tie":
+        U = tie_links(a.group, box, B, box.tie_sep, a.pert == "tiebreak")
+    else:
+        U = bd.initial_links(a.group, box, a.bg, B, a.seed, a.phi)
     if a.bg == "typical":  # periodic stage, then freeze its faces; same seed = same boundary for every patch variant
         upd = bd.make_updater(a.group, box, a.beta, U, a.seed, gpu)
         upd.set_dynamic([np.ones(box.dims, bool)] * 4)
         for _ in range(a.periodic_therm):
             upd.sweep(a.n_or)
         U = [bd.to_host(u).copy() for u in upd.links()]
-    if a.patch > 0:
+    if a.patch > 0 and a.pert != "tiebreak":
         if a.pert == "flip":
             U = apply_flip(a.group, U, box, a.patch)
         else:
@@ -194,7 +240,7 @@ def run(a):
 
     def save(m, partial):
         drift = max(float(np.max(np.abs(bd.to_host(u)[:, ~box.dyn[mu]] - frozen0[mu]))) for mu, u in enumerate(upd.links()))
-        np.savez(a.out, group=a.group, beta=a.beta, ell=a.ell, bg=a.bg, patch=a.patch, pert=a.pert, seed=a.seed, chains=B,
+        np.savez(a.out, tie_sep=box.tie_sep, group=a.group, beta=a.beta, ell=a.ell, bg=a.bg, patch=a.patch, pert=a.pert, seed=a.seed, chains=B,
                  therm=a.therm, n_or=a.n_or, every=a.every, backend="gpu" if gpu else "cpu", cnt1=meas.cnt[1], cnt2=meas.cnt[2],
                  seconds=time.time() - t0, partial=int(partial), n_done=m, frozen_drift=drift,
                  **{k: np.array(v[:m]) for k, v in rec.items()})
@@ -203,8 +249,11 @@ def run(a):
     for m in range(a.meas):
         for _ in range(a.every):
             upd.sweep(a.n_or)
-        for k, v in meas(upd.links()).items():
+        L = upd.links()
+        for k, v in meas(L).items():
             rec.setdefault(k, []).append(v)
+        if a.bg == "tie":
+            rec.setdefault("ind", []).append(tie_indicator(ops, L, box))
         if m % 100 == 0 and m:
             save(m, True)
     drift = save(a.meas, False)
@@ -235,13 +284,21 @@ def profile(z, n=1):
     return m, np.sqrt(var)
 
 
+def safe_err(diff, a, b, chains):
+    """Error of a paired difference, never smaller than the error of two INDEPENDENT runs: shared random numbers can merge a pair
+    exactly (deconfined Z2 pairs become identical, paired error 0), which would make a zero look resolved."""
+    d, ep = ab.mean_err(diff, chains)
+    _, ea = ab.mean_err(a, chains)
+    _, eb = ab.mean_err(b, chains)
+    return d, np.maximum(ep, np.sqrt(ea ** 2 + eb ** 2))
+
+
 def influence_odd(zp, zb):
     """U(1) only: shift of the mean sin(theta_p) (odd in the field), per plane; returns the plane with the largest shift/sd at each depth."""
     c = zp["cnt1"].astype(float)
     k = min(zp["so1"].shape[0], zb["so1"].shape[0])
     diff = zp["so1"][:k] - zb["so1"][:k]  # (n, B, 6, nd)
-    n_, B_ = diff.shape[:2]
-    d, e = ab.mean_err(diff, int(zp["chains"]))  # (6, nd)
+    d, e = safe_err(diff, zp["so1"][:k], zb["so1"][:k], int(zp["chains"]))  # (6, nd)
     var = np.maximum(zb["to1"].mean(axis=(0, 1)) - zb["so1"].mean(axis=(0, 1)) ** 2, 1e-30)
     s = np.sqrt(var)
     pl = np.argmax(np.abs(d) / s, axis=0)
@@ -256,8 +313,32 @@ def influence(zp, zb, n=1):
     mb, sb = profile(zb, n)
     k = min(mp.shape[0], mb.shape[0])
     diff = mp[:k] - mb[:k]
-    d, e = ab.mean_err(diff, int(zp["chains"]))
+    d, e = safe_err(diff, mp[:k], mb[:k], int(zp["chains"]))
     return d, e, sb
+
+
+def q_lower(zp, zb, ell):
+    """Rigorous-direction number of PREREG-AMEND.md: Q_LB = (1 / ell^4) sum over box sites x of |E O_x(perturbed) - E O_x(base)|, O_x the
+    range-one observable (1 - loop) / 2 (SU(2), Z2, U(1) cos) or (1 + sin) / 2 (U(1) odd) averaged over the loops at x. At every depth the
+    best of the available observable types is used; the depth-pooled shift is a lower bound for the sum of the per-site |shifts|. Returns
+    (central, lower 3-sigma, sum_x |shift|, its error); N_d = number of sites at depth d."""
+    cands = []
+    for n in (1, 2):
+        d, e, _ = influence(zp, zb, n)
+        N = zp[f"cnt{n}"].astype(float).mean(axis=0)
+        cands.append((d, e, N))
+    if str(zp["group"]) == "u1":
+        d, e, _ = influence_odd(zp, zb)
+        cands.append((d, e, zp["cnt1"].astype(float).mean(axis=0)))
+    nd = min(len(c[0]) for c in cands)
+    cen = low = err = 0.0
+    for k in range(nd):
+        c_ = [(c[2][k] * abs(c[0][k]) / 2, c[2][k] * c[1][k] / 2) for c in cands]
+        i = int(np.argmax([x[0] - 3 * x[1] for x in c_]))
+        cen += c_[i][0]
+        low += max(0.0, c_[i][0] - 3 * c_[i][1])
+        err += c_[i][1]
+    return cen / ell ** 4, low / ell ** 4, cen, err
 
 
 def fit_decay(delta, err, d0=1):
@@ -314,6 +395,12 @@ def analyse(a):
                     rec["xi_lat"], _ = fit_decay(d, e)
                 # surface-count estimate: 8 faces, per-cell influence from this patch by linear response, 0.4 per standard deviation
                 nface = (ell + 1) ** 3
+                if n == 1:
+                    qc, ql, Ksum, Kerr = q_lower(z, base, ell)
+                    rec["Q_LB"], rec["Q_LB_lower3"] = qc, ql
+                    if patch < ell:  # one cell of side b = patch: Q_cell = 8 (ell/b)^3 * K_cells / (ell/b)^4, K_cells = Ksum / b^4
+                        rec["Q_cell"] = 8 * Ksum / (ell * patch ** 3)
+                        rec["Q_cell_err"] = 8 * Kerr / (ell * patch ** 3)
                 rec["S_est"] = [8 * nface * TV_PER_SIGMA * float(j) / ncell for j in J]
                 rec["S_est_err"] = [8 * nface * TV_PER_SIGMA * float(j) / ncell for j in Je]
                 res["groups"].setdefault(f"{g} beta={beta} bg={bg}", []).append(rec)
@@ -325,7 +412,8 @@ def analyse(a):
         if calm is None or z is None or bg == "calm":
             continue
         d, e, s = influence_odd(z, calm) if g == "u1" else influence(z, calm, 1)
-        ext.append({"group": g, "beta": beta, "ell": ell, "bg": bg, "J": (np.abs(d) / s).tolist(), "J_err": (e / s).tolist(),
+        qc, ql, _, _ = q_lower(z, calm, ell)
+        ext.append({"Q_LB": qc, "Q_LB_lower3": ql, "group": g, "beta": beta, "ell": ell, "bg": bg, "J": (np.abs(d) / s).tolist(), "J_err": (e / s).tolist(),
                     "shift": d.tolist(), "err": e.tolist()})
     res["extreme"] = ext
     # gauge control
@@ -339,7 +427,28 @@ def analyse(a):
             gc.append({"key": list(map(str, k)), "max_abs_over_err": float(np.max(np.abs(d) / np.maximum(e, 1e-300))),
                        "max_abs_shift": float(np.max(np.abs(d))), "shift": d.tolist(), "err": e.tolist()})
     res["gauge_control"] = gc
+    # tie: base tie vs tie with one shell cell changed; indicator = (1 - plaquette) / 2 at the two sheet positions, deep slices
+    ties = []
+    for k, z in runs.items():
+        if k[5] == "tiebreak":
+            base = runs.get((k[0], k[1], k[2], "tie", 0, "flip"))
+            if base is None:
+                continue
+            m = min(z["ind"].shape[0], base["ind"].shape[0])
+            diff = -(z["ind"][:m] - base["ind"][:m]).mean(axis=2) / 2  # (n, B): change of the frustration indicator
+            d, e = safe_err(diff[..., None], -z["ind"][:m].mean(axis=2)[..., None] / 2, -base["ind"][:m].mean(axis=2)[..., None] / 2,
+                            int(z["chains"]))
+            occ = float((1 - base["ind"].mean(axis=(0, 1, 2))) / 2)
+            ell = k[2]
+            nsl = max(ell - 3, 1) ** 2
+            sw = float(np.mean(np.std(base["ind"].mean(axis=2), axis=0)))  # time std of the indicator, mean over chains: 0 = never switches
+            ties.append({"switching_std": sw, "group": k[0], "beta": k[1], "ell": ell, "sep": int(z["tie_sep"]), "delta": float(d[0]), "err": float(e[0]),
+                         "frustration_base": occ, "n_slices": nsl, "Q_LB_tie": float(2 * nsl * abs(d[0]) / ell ** 4),
+                         "Q_LB_tie_lower3": float(2 * nsl * max(0.0, abs(d[0]) - 3 * e[0]) / ell ** 4)})
+    res["tie"] = ties
+    res["verdicts_prereg1"] = verdicts_v1(res)
     res["verdicts"] = verdicts(res)
+    res["gates"] = gates(res)
     if a.out:
         json.dump(res, open(a.out, "w"), indent=1)
     report(res)
@@ -351,7 +460,7 @@ def centre_value(rec, key):
     return rec[key][-1]
 
 
-def verdicts(res):
+def verdicts_v1(res):
     """Rules of PREREG.md, section 'Verdict rules'. Per (group, beta, bg-family): look at the full-face patch and at the largest
     resolved small patch, at the centre depth, across ell."""
     out = {}
@@ -421,6 +530,83 @@ def verdicts(res):
     return out
 
 
+def verdicts(res):
+    """Rules of PREREG-AMEND.md (Q(ell) of c7c-onebox/NOTE.md). Returns a dict of entries."""
+    v1 = res["verdicts_prereg1"]
+    out = {}
+    # L: conclusive FAIL, rigorous direction
+    fails = []
+    for lab, recs in res["groups"].items():
+        for r in recs:
+            if r["loop"] == 1 and r.get("Q_LB_lower3", 0) > 1:
+                fails.append(f"{lab} ell={r['ell']} patch={r['patch']} {r['pert']}: Q_LB >= {r['Q_LB_lower3']:.3f}")
+    for e in res["extreme"]:
+        if e["Q_LB_lower3"] > 1:
+            fails.append(f"{e['group']} beta={e['beta']} ell={e['ell']} {e['bg']} vs calm: Q_LB >= {e['Q_LB_lower3']:.3f}")
+    for t in res["tie"]:
+        if t["Q_LB_tie_lower3"] > 1:
+            fails.append(f"{t['group']} beta={t['beta']} ell={t['ell']} tie: Q_LB >= {t['Q_LB_tie_lower3']:.3f}")
+    out["L conclusive FAIL"] = {"verdict": "FAIL (conclusive)" if fails else "no violation found by the lower bound", "cases": fails}
+    # Q_cell per family (estimate; sup over boundary conditions not searched)
+    fam = {}
+    for lab, recs in res["groups"].items():
+        for r in recs:
+            if r["loop"] == 1 and r["pert"] == "flip" and r["patch"] == 2 and "Q_cell" in r:
+                fam.setdefault((r["group"], r["beta"], r["bg"]), {})[r["ell"]] = (r["Q_cell"], r["Q_cell_err"])
+    for (g, beta, bg), per in sorted(fam.items()):
+        ells = sorted(per)
+        ql = per[ells[-1]][0]
+        qp = per[ells[-2]][0] if len(ells) > 1 else None
+        if ql > 1.0 or (qp is not None and ql >= qp):
+            verd = "FAIL-indicated (estimate)"
+        elif ql <= GAMMA and (qp is None or ql <= 0.5 * qp):
+            verd = "no violation found (Q_cell small and shrinking)"
+        else:
+            verd = "INCONCLUSIVE"
+        out[f"{g} beta={beta} bg={bg} [Q_cell, cell b=2]"] = {"ells": ells, "Q_cell": [per[x][0] for x in ells], "verdict": verd}
+    for k, v in v1.items():
+        if "[extreme pair" in k:
+            out[k] = v
+    ties = {}
+    for t in res["tie"]:
+        ties.setdefault((t["group"], t["beta"]), {})[t["ell"]] = t
+    for (g, beta), per in sorted(ties.items()):
+        ells = sorted(per)
+        tl, tp = per[ells[-1]], (per[ells[-2]] if len(ells) > 1 else None)
+        frozen = tl["switching_std"] < 0.05
+        big = abs(tl["delta"]) >= 0.1 and abs(tl["delta"]) > 3 * tl["err"]
+        if big and (tp is None or abs(tl["delta"]) >= 0.5 * abs(tp["delta"])):
+            verd = "tie bistable, one cell moves the sheet and the effect does not fade with ell (FAIL-indicated, via NOTE section 5 (T))"
+        elif frozen and abs(tl["delta"]) < 3 * tl["err"] + 0.02:
+            verd = "tie NOT SAMPLED: the sheet topology never switches in the run (sector frozen by the dynamics), no statement"
+        elif abs(tl["delta"]) < 3 * tl["err"] or abs(tl["delta"]) < 0.02:
+            verd = "tie not decided by one cell (no violation found)"
+        else:
+            verd = "INCONCLUSIVE"
+        out[f"{g} beta={beta} [tie]"] = {"ells": ells, "delta": [per[x]["delta"] for x in ells],
+                                         "frustration_base": [per[x]["frustration_base"] for x in ells], "verdict": verd}
+    return out
+
+
+def gates(res):
+    """PREREG-AMEND.md section 5: instrument gate G0 and the control expectations."""
+    g0 = max([c["max_abs_over_err"] for c in res["gauge_control"]] or [0.0])
+    v = res["verdicts"]
+    out = {"G0 gauge control max |shift|/err": g0, "G0": "ok" if g0 < 4 else "FAILED"}
+
+    def has(sub, text):
+        hits = [x for k, x in v.items() if sub in k]
+        return None if not hits else all((text in x["verdict"]) or (text == "no violation" and "PASS-like" in x["verdict"]) for x in hits)
+    out["U(1) beta 2 extreme pair is FAIL-like"] = has("u1 beta=2.0 bg=flux [extreme", "FAIL-like")
+    out["Z2 beta 0.6 twist extreme pair is FAIL-like"] = has("z2 beta=0.6 bg=twist [extreme", "FAIL-like")
+    out["(info, not a gate) Z2 beta 0.6 tie"] = [x["verdict"] for k, x in v.items() if "z2 beta=0.6 [tie]" in k]
+    out["Z2 beta 0.3 twist extreme pair is PASS-like"] = has("z2 beta=0.3 bg=twist [extreme", "PASS-like")
+    out["(info, not a gate) Z2 beta 0.3 tie"] = [x["verdict"] for k, x in v.items() if "z2 beta=0.3 [tie]" in k]
+    out["SU(2) beta 0.8: no conclusive FAIL and Q_cell small"] = (res["verdicts"]["L conclusive FAIL"]["verdict"].startswith("no")
+                                                                 and has("su2 beta=0.8", "no violation"))
+    return out
+
+
 def report(res):
     print("== gauge control (must be zero within errors) ==")
     for c in res["gauge_control"]:
@@ -434,10 +620,23 @@ def report(res):
     print("== extremes vs calm ==")
     for e in res["extreme"]:
         print(f"  {e['group']} beta={e['beta']} ell={e['ell']} {e['bg']}: J(d) = " + " ".join(f"{x:.3f}" for x in e["J"]))
-    print("== verdicts ==")
+    print("== Q lower bound / tie ==")
+    for e in res["extreme"]:
+        print(f"  extreme {e['group']} beta={e['beta']} ell={e['ell']} {e['bg']}: Q_LB = {e['Q_LB']:.4f}, 3-sigma lower {e['Q_LB_lower3']:.4f}")
+    for t in res["tie"]:
+        print(f"  tie {t['group']} beta={t['beta']} ell={t['ell']} sep={t['sep']}: base frustration {t['frustration_base']:.2f}, "
+              f"switching std {t['switching_std']:.3f}, one-cell change {t['delta']:+.3f} +- {t['err']:.3f}, Q_LB_tie = {t['Q_LB_tie']:.4f}")
+    print("== gates ==")
+    for k, x in res["gates"].items():
+        print(f"  {k}: {x}")
+    print("== verdicts (amended rules) ==")
     for k, v in res["verdicts"].items():
-        extra = f" S_est={[None if s is None else round(s, 3) for s in v['S_est']]}" if "S_est" in v else f" J_centre={[round(x, 3) for x in v['J_centre']]}"
-        print(f"  {k}: {v['verdict']}  ells={v['ells']}{extra}")
+        if "verdict" in v and "ells" not in v:
+            print(f"  {k}: {v['verdict']} {v.get('cases', '')}")
+            continue
+        det = {kk: [round(x, 3) for x in vv] for kk, vv in v.items() if kk in ("S_est", "J_centre", "Q_cell", "delta", "frustration_base")
+               and all(x is not None for x in vv)}
+        print(f"  {k}: {v['verdict']}  ells={v.get('ells')} {det}")
 
 
 # ------------------------------------------------------------------------------------------------------------------ selftest / pilot
@@ -530,10 +729,11 @@ def main():
     r.add_argument("group", choices=("su2", "u1", "z2"))
     r.add_argument("beta", type=float)
     r.add_argument("ell", type=int)
-    r.add_argument("bg", choices=("calm", "typical", "hot", "flux", "twist"))
+    r.add_argument("bg", choices=("calm", "typical", "hot", "flux", "twist", "tie"))
     r.add_argument("out")
     r.add_argument("--patch", type=int, default=0)
-    r.add_argument("--pert", choices=("flip", "gauge"), default="flip")
+    r.add_argument("--pert", choices=("flip", "gauge", "tiebreak"), default="flip")
+    r.add_argument("--tie-sep", type=int, default=0, help="xy distance of the two sheets from the centre (default ell // 4)")
     r.add_argument("--chains", type=int, default=4)
     r.add_argument("--therm", type=int, default=200)
     r.add_argument("--meas", type=int, default=400)

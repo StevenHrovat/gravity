@@ -3,6 +3,7 @@
 # -DryRun : print every job (name, device, command) and the runtime estimate, run nothing.
 # Resumable: a job whose "<name> ... exit 0" line is already in runs/queue_onebox.log is skipped; a failed job is retried (3 attempts,
 # the GPU ones only after an out-of-memory). Partial npz files from an interrupted job are overwritten by the rerun.
+# Amended by PREREG-AMEND.md: tie backgrounds added, twist only as extreme pair.
 # Tier 1 = the core plan (SU(2) beta 2.3 ell 6..10,12; beta 2.5 ell 11,15; strong coupling anchor; all controls).
 # Tier 2 = Tier 1 plus beta 2.5 ell 19.
 # Log lines: "<name> (gpu|cpu, attempt i) exit <code> minutes <m>"; the last line of a complete run is "ONEBOX DONE <time>".
@@ -31,6 +32,7 @@ function Add-Set([string]$group, [double]$beta, [int]$ell, [int]$chains, [int]$m
     $N = if ($ell % 2 -eq 0) { $ell + 2 } else { $ell + 3 }
     foreach ($bg in $bgs) {
         $variants = @(@(0, "flip"), @($ell, "flip"))
+        if ($bg -eq "twist") { $variants = @(@(0, "flip")) }   # amendment: twist only as an extreme pair against calm
         if ($bg -in @("calm", "typical")) { $variants = @(@(0, "flip"), @(2, "flip"), @($h, "flip"), @($ell, "flip")) }
         if ($bg -eq "calm") { $variants += , @($ell, "gauge") }
         foreach ($v in $variants) {
@@ -45,18 +47,33 @@ function Add-Set([string]$group, [double]$beta, [int]$ell, [int]$chains, [int]$m
     }
 }
 
+function Add-Tie([string]$group, [double]$beta, [int]$ell, [int]$chains, [int]$meas, [string]$dev) {
+    # PREREG-AMEND.md: the tie background (two thin vortex sheets at +/- ell/4: flat sheets or a tube, equal area) and the same with
+    # ONE shell cell changed (the tie breaker); both runs share the seed.
+    $N = if ($ell % 2 -eq 0) { $ell + 2 } else { $ell + 3 }
+    foreach ($pert in @("flip", "tiebreak")) {
+        $name = "{0}_b{1}_l{2}_tie_{3}" -f $group, $beta, $ell, $pert
+        $a = @("onebox.py", "run", $group, "$beta", "$ell", "tie", "$out/$name.npz", "--pert", $pert,
+               "--chains", "$chains", "--therm", "200", "--meas", "$meas", "--seed", "$(if ($pert -eq 'tiebreak') { 2000 + $ell } else { 1000 + $ell })")
+        $job = @{ N = $name; A = $a; D = $dev }   # independent seeds for the pair: shared random numbers merge deconfined pairs exactly
+        if ($dev -eq "gpu") { $script:gpuJobs += , $job; $script:est.gpu += 1.5e-6 * [math]::Pow($N, 4) * $chains * ($meas + 100) }
+        else { $a += "--cpu"; $job.A = $a; $script:cpuJobs += , $job }
+    }
+}
+
 # SU(2), GPU (fused kernels). Chains x measurements chosen to keep the plan near 3 h (Tier 1) / 5 h (Tier 2).
-foreach ($l in 6, 8, 10, 12) { Add-Set "su2" 2.3 $l 8 600 "gpu" @("calm", "typical", "twist", "hot") }   # l sqrt(sigma) 2.2 2.9 3.7 4.4
-foreach ($l in 11, 15) { Add-Set "su2" 2.5 $l 4 400 "gpu" @("calm", "typical", "twist", "hot") }          # l sqrt(sigma) 2.0 2.7
-if ($Tier -ge 2) { Add-Set "su2" 2.5 19 4 400 "gpu" @("calm", "typical", "twist", "hot") }             # 3.5
+foreach ($l in 6, 8, 10, 12) { Add-Set "su2" 2.3 $l 6 600 "gpu" @("calm", "typical", "twist", "hot"); Add-Tie "su2" 2.3 $l 6 600 "gpu" }   # l sqrt(sigma) 2.1 2.8 3.5 4.2
+foreach ($l in 11, 15) { Add-Set "su2" 2.5 $l 4 400 "gpu" @("calm", "typical", "twist", "hot"); Add-Tie "su2" 2.5 $l 4 400 "gpu" }          # 2.0 2.7
+if ($Tier -ge 2) { Add-Set "su2" 2.5 19 4 400 "gpu" @("calm", "typical", "twist", "hot"); Add-Tie "su2" 2.5 19 4 400 "gpu" }             # 3.5
 # anchor: strong-coupling SU(2) (passes)
-foreach ($l in 6, 8, 10) { Add-Set "su2" 0.8 $l 4 600 "gpu" @("calm", "typical", "twist") }
+foreach ($l in 6, 8, 10) { Add-Set "su2" 0.8 $l 4 400 "gpu" @("calm", "typical", "twist") }
 
 # controls, CPU array code (boundary.py's U(1) and Z2 updaters), 4 chains
 foreach ($l in 4, 6, 8, 10) {
     Add-Set "u1" 2.0 $l 4 400 "cpu" @("calm", "flux")        # photon at beta = 2 (must FAIL)
     Add-Set "z2" 0.6 $l 4 400 "cpu" @("calm", "twist")       # Z2 deconfined (must FAIL)
     Add-Set "z2" 0.3 $l 4 400 "cpu" @("calm", "twist")       # Z2 confined (must PASS)
+    if ($l -ge 6) { Add-Tie "z2" 0.6 $l 4 400 "cpu"; Add-Tie "z2" 0.3 $l 4 400 "cpu" }   # tie control: deconfined must be bistable
 }
 
 if ($DryRun) {
