@@ -1,0 +1,41 @@
+content run u1 beta=1.1 N=16 seed=1101 train=110 val=40 test=80 every=3 therm=80 M=1500
+  therm 20 plaq 0.71582 t=6s
+  therm 40 plaq 0.71699 t=12s
+  therm 60 plaq 0.71607 t=18s
+  therm 80 plaq 0.71687 t=23s
+  collect 10/150 plaq 0.71608 t=39s
+  collect 20/150 plaq 0.71705 t=54s
+  collect 30/150 plaq 0.71717 t=69s
+  collect 40/150 plaq 0.71646 t=84s
+  collect 50/150 plaq 0.71691 t=100s
+  collect 60/150 plaq 0.71674 t=116s
+  collect 70/150 plaq 0.71671 t=132s
+  collect 80/150 plaq 0.71656 t=148s
+  collect 90/150 plaq 0.71625 t=164s
+  collect 100/150 plaq 0.71738 t=180s
+  collect 110/150 plaq 0.71651 t=196s
+  collect 120/150 plaq 0.71639 t=212s
+  collect 130/150 plaq 0.71774 t=228s
+  collect 140/150 plaq 0.71643 t=245s
+  collect 150/150 plaq 0.71636 t=261s
+  fit w=2.0 b=2: n_train=165000 val R2 (A/B/C best) P1:0.001(A) P2:0.035(A) P4:0.123(B) W2:0.054(B) t=267s
+  fit w=2.0 b=4: n_train=165000 val R2 (A/B/C best) P1:0.000(A) P2:0.000(A) P4:0.003(A) W2:0.000(A) t=273s
+  fit w=2.0 b=8: n_train=165000 val R2 (A/B/C best) P1:0.000(A) P2:-0.000(A) P4:-0.000(A) W2:-0.000(A) t=278s
+  fit w=0.0 b=2: n_train=165000 val R2 (A/B/C best) P1:0.000(C) P2:0.021(C) P4:0.074(A) W2:0.035(A) t=284s
+  fit w=0.0 b=4: n_train=165000 val R2 (A/B/C best) P1:-0.000(A) P2:-0.000(A) P4:0.000(A) W2:-0.000(B) t=289s
+  fit w=0.0 b=8: n_train=165000 val R2 (A/B/C best) P1:-0.000(A) P2:-0.000(C) P4:-0.000(A) W2:0.000(C) t=295s
+  test 10/80 t=318s
+  test 20/80 t=335s
+  test 30/80 t=352s
+  test 40/80 t=369s
+  test 50/80 t=386s
+  test 60/80 t=403s
+  test 70/80 t=422s
+  test 80/80 t=440s
+done runs-cpu/u1_b1.1_N16.json in 440s
+w2_b2 P1: R2_LB=0.0006+-0.0001 P2: R2_LB=0.0348+-0.0007 P4: R2_LB=0.1124+-0.0027 W2: R2_LB=0.0536+-0.0010
+w2_b4 P1: R2_LB=0.0000+-0.0000 P2: R2_LB=0.0000+-0.0000 P4: R2_LB=0.0031+-0.0003 W2: R2_LB=0.0001+-0.0000
+w2_b8 P1: R2_LB=0.0000+-0.0000 P2: R2_LB=0.0000+-0.0000 P4: R2_LB=0.0000+-0.0000 W2: R2_LB=0.0000+-0.0000
+w0_b2 P1: R2_LB=0.0000+-0.0000 P2: R2_LB=0.0212+-0.0005 P4: R2_LB=0.0748+-0.0021 W2: R2_LB=0.0358+-0.0008
+w0_b4 P1: R2_LB=0.0000+-0.0000 P2: R2_LB=0.0000+-0.0000 P4: R2_LB=0.0001+-0.0000 W2: R2_LB=0.0000+-0.0000
+w0_b8 P1: R2_LB=0.0000+-0.0000 P2: R2_LB=0.0000+-0.0000 P4: R2_LB=0.0000+-0.0000 W2: R2_LB=0.0000+-0.0000

@@ -1,0 +1,9 @@
+PASS su2 generator mean plaquette in [0.55, 0.66] : 0.6031
+PASS u1 generator mean plaquette in [0.68, 0.76] : 0.7166
+PASS alignment b=2 (w=0 block plaquette = fine 2x2 loop at 2o+bX) : max diff 8.88e-16
+PASS alignment b=4 (w=0 block plaquette = fine 4x4 loop at 2o+bX) : max diff 1.22e-15
+PASS planted target (true R2 0.30): held-out LB below truth and close : LB 0.2946 tier ['B']
+PASS null target: held-out R2 <= 0.003 : 0.00008
+PASS window_mean s=2
+feature plan: 5184 (slot, offset) terms, 108 orbit keys
+SELFTEST PASSED
