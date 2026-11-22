@@ -719,3 +719,28 @@ accounting rule added. The check that decides it: (1) the core's influence on it
 the step (it is a fixed boundary datum, not a growing region); (2) the unique-root assignment is well defined under the grid shifts and
 nesting of Balaban's regions; (3) the creation-scale suppression e^{−p0(g_k)} summed over roots beats the per-step O(1) cost. Sent to the
 M1 thread as the D-pin scoping.
+
+## Inside and outside are one system; the inside asserts itself by not being the outside (the owner, 2026-11-22, on P0)
+
+The owner: "What I see is the viewing of two different behaviors as different, when they are instead both derived from the same system.
+Inside a confinement, where the possibility space is totally contained within it, thus making existence binary, there is no
+locality/causality, it is purely a quantum system. Outside of confinement, where the possibility space does not saturate the inside of
+the boundary, locality/causality exists, behaving in a classical way. The inside, because existence is not in question, can assert
+itself for free, the outside has to pay. But the inside can not exist without an outside! The inside of confinement can only get away
+with the free existence hack because it has an outside, where locality/causality still exists, so that it can assert itself simply by
+being not that. Because, without anything to prove to an outsider that you exist, do you really? This should make the problem easier to
+approach."
+
+Reading (coordinator; candidate):
+- **For M1's P0 (deep pinned cores).** The core is the "inside": centre-valued, binary, free (centre patterns are invisible to the
+  fluctuations — found harmless in D-PIN). The trouble was the "outside": Balaban's averaging is discontinuous at centre-valued patterns
+  (the logarithm's cut). The reading says not to treat them as two regimes: the core exists only as the **twist it imposes on its
+  surroundings**. Concretely: remove the core's few bonds from the averaging and represent the core by its Z₂ monodromy — the
+  surroundings then live on a twisted (−1 around the core) but smooth background, and the averaging is done on that twisted sector,
+  where the branch cut disappears (the cut *is* the Z₂ monodromy). The core is a discrete label carried for free; only the outside, which
+  has locality, is renormalised and pays. P0 would change from "find an averaging analytic at centre-valued patterns" to "average
+  analytically on the twisted sector" — a standard object (twisted boundary conditions).
+- **For the corner.** The same duality is already a Lean theorem: 't Hooft's rotation relates the confined inside (electric flux,
+  costly) to its outside view (the twist, a free energy), F_e = dual(F_tw). The one-box criterion is relational in the same sense: a box
+  has a gap only as an assertion against every possible outside.
+Sent to the M1 thread as the approach to P0.
