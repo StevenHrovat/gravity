@@ -98,3 +98,5 @@ estimate as `TRAP-CHECKS.md` T1, now with twist-free data). With `r0 = c/L⁴` t
   (`SKETCH-STEPS.md` 1).
 
 **Update (REVIEW-3 follow-up NIT 2; `REVIEW3-RESPONSE.md` 11.7):** with the new test threshold, the data deviate from pure gauge by up to `C_tw r0 λ² ≈ 64 C_tw C_1² c L^{−2}`, not `C c L^{−3}`. The filling closes for `c ≤ c'/(256 C_tw C_1^4)`, with `c` chosen after `C_1` and `C_tw` (`S1-INDUCTION.md` 1).
+
+**Update (`UV-TV.md` 35.1):** the twist-free test uses the uniform threshold `C_tw r0 λ²` for every loop of length `≤ λ` in `O(H)`, with `C_tw ≥ 8 max(C, 1)`. With it, "cap reached implies irregular `W`" is proved at paper level by coarse non-abelian Stokes (an exact inequality) and the gauge covariance of Balaban's average. The "fractions sum to 1" step of section 0.2 is no longer needed.

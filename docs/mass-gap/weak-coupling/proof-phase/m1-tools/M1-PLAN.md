@@ -100,12 +100,12 @@ listed below.
 * **`MassGapLoc` keeps its statement.** Restating it on the OS closure would weaken the theorem unless this lemma is
   proved.
 
-**Sketch-level points (detail level):**
-1. "Cap reached implies irregular `W`" (`FILL.md` 0.2).
-2. The footprint-weighted lifetime in [V] (1.80)-(1.85), for super-rare long-lived regions.
-3. Per cube or per component, before (1.73) (open; the case split is kept). The `A'` reading is supported by [I]
-   (1.11)-(1.12) and the factor `α_0 + α_1`.
-4. Labelled components above `ε_*`, carried beyond Balaban's lifetime.
+**Sketch-level points: all four closed** (`UV-TV.md` 35):
+1. "Cap reached implies irregular `W`": **paper** (35.1; uniform test threshold `C_tw r0 λ²`, coarse Stokes).
+2. The footprint-weighted lifetime: **citation**, [V] (1.80)-(1.81) with `K ≤ n0 − j + R_j` (35.2, `R10-SCOPE.md` 1).
+3. Per cube or per component before (1.73): **moot**. Released components lie in a `100 M R_k`-cube (Balaban's
+   condition (i)), so `δ_X ≤ 100^d δ_k → 0` under either reading; the case split is withdrawn (35.3).
+4. Labelled components above `ε_*`: **none at release** (35.4).
 
 **Unchecked adaptations:**
 1. (P2) on the full analyticity domain.

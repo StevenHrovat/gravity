@@ -2381,3 +2381,126 @@ Neither review has a FATAL or GAP finding. REVIEW-2 withdraws its N-2 GAP.
   * the localisation ([III] (2.13)-(2.15), [V] (1.59)-(1.63));
   * the cluster expansion ([I] (1.18), [III] Theorem 2).
 * Plausible, since every estimate is local at scale `M ≪ w`. But it is a genuine adaptation, not a citation.
+
+# Part 10 (2026-11-23): what M1-PLAN 0 still lists outside UV-TV
+
+## 35. Group 1: the four sketch-level points
+
+### 35.0 Result in plain words
+
+All four close; none is an obstruction.
+1. **"Cap reached implies irregular `W`"** (FILL 0.2): **paper**, via an exact coarse Stokes inequality, after one change
+   to the twist-free test: a uniform threshold `C_tw r0 λ²` in place of `C_tw r0 |γ|²`. The filling's data bound
+   already used `λ²` (22, 27), so nothing else moves.
+2. **The footprint-weighted lifetime:** **closed by citation.** [V] (1.80)-(1.81) already give `K ≤ n0 − j + R_j`, with
+   `n0` the shrinking time (`R10-SCOPE.md` 1). Its two remaining uses are covered: R2's long-lived regions by that
+   citation, and large labelled components by point 4.
+3. **Per cube or per component before (1.73): the case split is no longer needed.**
+   * Every component that Balaban's R-operation processes satisfies his release condition (i): it lies in a cube of
+     side `≤ 100 M R_k` ([V] p. 384: "contained in a cube of the size `100 M R_{j+1+K}`"; (1.89): "the domain `X` in
+     (1.71) satisfies the assumption with `K = 0`").
+   * So `|X| ≤ 100^d` cubes, and under either reading `δ_X ≤ 100^d δ_k → 0` with `g_k`.
+   * One argument then covers all released components. The text-reading question no longer matters.
+4. **Labelled components above `ε_*`: there are none at release**, by point 3. The condition `100^d δ_k ≤ ε_*` holds for
+   `g_k ≤ γ0(L)`.
+   * The "carry large labelled components beyond the lifetime" branch of 11.4 is empty and is withdrawn.
+   * The strengthened induction (c) and the one-box contraction (12.2) therefore cover every label.
+
+### 35.1 Point 1: cap reached implies irregular `W`
+
+**The test, restated** (replacing 2's `C_tw r0 |γ|²`): a hole `H` is twist-free if every loop `γ` in its outer layer
+`O(H)` with `|γ| ≤ λ := 8(ℓ_max + 2)` satisfies `|Hol(γ) − 1| ≤ C_tw r0 λ²`.
+
+**It still passes where it should:**
+* **Localised cores** (bounding within radius `ρ ≤ C L ≤ ℓ_max − 1`): once `H` contains the core's spanning set, every
+  short loop in `O(H)` bounds in the region where plaquettes are `< r0`. Non-abelian Stokes then gives
+  `|Hol − 1| ≤ r0 |γ|²/16 ≤ C_tw r0 λ²`.
+* **Thin centre sheets:** `Ad(−1) = 1`, so the twist is `O(r0 λ²)`.
+* **The filling's data bound** was already `C_tw r0 λ²` (22, 27.8, 33.6), so the constants are unchanged.
+
+**Claim.** If the cap `ℓ_max` is reached for a component, the coarse field `W` (Balaban's average at scale `k + 1`) is
+irregular within distance `C λ` of that component.
+
+**Proof.**
+1. **A twisted short loop.** Cap reached means there is `γ ⊂ O(H)`, `|γ| ≤ λ`, with SO(3) twist `θ > C_tw r0 λ²`. `γ`
+   encircles a cross-section of `H` of diameter `≤ λ/2`.
+2. **Moving to a coarse plane.**
+   * Translate `γ` by at most `L` transverse to its plane, along the directions in which the linked structure extends:
+     `γ` links a sheet, and translating along the sheet keeps it encircling the sheet at the same distance `≈ ℓ_max`
+     from `H_0`.
+   * The swept cylinder avoids `H_0`, so its plaquettes are `< r0` and the twist changes by
+     `≤ r0 · area ≤ r0 λ L ≤ θ/8` for `C_tw ≥ 8`.
+   * So a fine loop `γ'` in a plane parallel to a coarse plane has twist `≥ 7θ/8`.
+3. **A coarse loop around it.**
+   * Let `Γ'` be the boundary of a coarse square of side `≈ 2λ/L + 2` coarse units, centred at `γ'`, in that coarse
+     plane. The fine annulus between `γ'` and the translates of `Γ'` used by Balaban's average (all within distance
+     `L` of `Γ'`) avoids `H_0`, and its area is `≤ C λ²`.
+   * Non-abelian Stokes over the annulus: every fine loop `Γ'_x` (a translate of `Γ'`) has twist
+     `≥ 7θ/8 − C r0 λ² ≥ θ/2` for `C_tw ≥ 4C`.
+4. **The coarse holonomy.**
+   * Along `Γ'` the fine field lies in the region where all plaquettes are `< r0`. There it is a flat connection on the
+     annulus with holonomy `≈ θ`, up to `O(r0 L²)` per coarse link (in an axial gauge along the annulus, the fine
+     links are within `C r0 L²` of a locally pure gauge).
+   * Balaban's average is gauge covariant and maps a locally pure gauge to a locally pure gauge ([I] (0.3)-(0.4)). So
+     the coarse holonomy satisfies `|Hol_W(Γ') − Hol(Γ'_x)| ≤ C r0 L² |Γ'|`, which is `≤ θ/4` for `C_tw ≥ 8C`, since
+     `|Γ'| ≤ C λ/L` and `θ > C_tw r0 λ²`.
+   * Hence the angle of `Hol_W(Γ')` is `≥ θ/4`.
+5. **Coarse Stokes.** For any lattice configuration and any simply connected union `S` of coarse plaquettes,
+   `|Hol(∂S) − 1| ≤ Σ_{p' ∈ S} |W(∂p') − 1|`. This is exact: write the holonomy as an ordered product of conjugated
+   plaquette holonomies and use unitary invariance. With `S` the coarse square of `≤ (2λ/L + 2)²` coarse plaquettes,
+   some `p' ∈ S` has `|W(∂p') − 1| ≥ (θ/4)/(2λ/L + 2)² ≥ C_tw r0 L²/64`.
+6. **Irregular.** `C_tw r0 L²/64 = C_tw c/(64 L²)` is a fixed constant, while `ε_{k+1} = g_{k+1} p(g_{k+1}) → 0`. So
+   `W` is irregular at `p'`, within distance `C λ` of `γ`, for `g ≤ γ0(L)`. ∎
+
+**Status: paper.** It uses:
+* non-abelian Stokes, in its exact inequality form;
+* the gauge covariance of Balaban's average;
+* the definition of the cap (`ℓ_max = C_1 L ≥ C L + 1`, so localised cores always finish).
+
+The "fractions sum to 1" step of FILL 0.2 is no longer needed. Constant order: `C_tw ≥ 8 max(C, 1)`, before `c` in
+`r0` (27.8).
+
+### 35.2 Point 2: the footprint-weighted lifetime
+
+* **What [V] gives** (`R10-SCOPE.md` 1, read line by line): the factor `e^{−κ_j(Z)}` controls `K ≤ n0 − j + R_j` steps,
+  where `n0` is the last step at which `S^{n−j}(Z)` still has positive linear size. `n0` grows with the size of `Z`. The
+  cost (1.81) is geometric in the shrinking linear size, plus `R_j` steps at bounded size.
+* **Uses in M1:**
+  * **R2's long-lived regions** (conserved-flux sheets carried while larger than a cube): covered directly. They shrink
+    to a cube at `n0`, and their few-cube phase ends within `R_j` (`R10-SCOPE.md` 1).
+  * **Large labelled components beyond the lifetime** (11.4, 25): none exist (35.3, 35.4).
+  * **The slack `ψ`** (26) is carried through the same (1.80') with `K ≤ n0 − j + R_j`. No change.
+* **Status: closed by citation** ([V] (1.80)-(1.81) as written), with `R2-REPAIR.md`'s footprint lemma
+  (`footprint_sum_le`, Lean) as an independent check. The sketch item is withdrawn.
+
+### 35.3 Point 3: per cube or per component
+
+* **Release condition.** The components `X` in (1.71) to which the R-operation's split applies satisfy Balaban's
+  conditions (i), (ii) with `K = 0` ((1.89)). Condition (i) is "contained in a cube of the size `64 M R` (resp.
+  `100 M R`)" ([V] pp. 384-386).
+* So a released labelled component has `|X| ≤ 100^d` cubes of side `M R_k`, that is `≤ (100 M R_k)^d` sites.
+* **Under either reading of the first-order bound before (1.73):**
+  * per `M R_k`-cube: `δ_X ≤ 100^d δ_k`;
+  * per component: `δ_X ≤ δ_k`.
+  
+  In both cases `δ_k = O(1) B^{3/2} A^{1/2} C_0 M^d R_k^{d+2} p²(g_k) q0(g_k) g_k → 0`, since `g_k` beats every polylog.
+* **One argument.** Take `ε_*` as before (`≤ L^{−4}/(2C)`, 12.2). The condition `100^d δ_k ≤ ε_*` is a condition on
+  `γ0(L)`. Then every released labelled component is "small", and 11.1-11.3 with 12.2 apply to all of them.
+* **Status: paper.** The case split of 11.4 and 12.5 is withdrawn, and the reading question (sketch point 3) is moot.
+
+### 35.4 Point 4: labelled components above `ε_*`
+
+* **None exist at release**, by 35.3.
+* **Labels inside regions not yet released** are indicators inside `T`-operations (the window form, `S1-INDUCTION.md`
+  (F4)). They are covered by Balaban's carrying of the region (35.2) and by the slack `ψ` of the unreleased component
+  (27.4).
+* **After release**, each label is `a_ℓ e^{L_ℓ}` with the one-box contraction (12.2). Its weight changes in total by
+  `e^{4C ε_*}` plus the marginal steps of 13.1. Those steps are now at most `log_L(100)` steps, a constant, since the
+  component is at most `100` cubes across.
+* **Status: paper.** The sketch item is withdrawn.
+
+### 35.5 Changes made elsewhere
+
+* **FILL.md 2:** the test threshold becomes `C_tw r0 λ²` (update note).
+* **UV-TV 11.4 and 12.5:** the large-component branch is withdrawn (35.3-35.4).
+* **M1-PLAN 0:** the four sketch-level points are closed. The final verdict for all of M1 comes after Group 2.
