@@ -156,3 +156,17 @@ amend `r4-actnumber/PREREG.md`.
 Option **A** adopted (the owner: "Feel free to run the measurement"): the photon control of this measurement is the exact free-photon
 formula (z₀ = 2L·arsinh(sin(π/L)), z_e = g²/2, doubling factor of the photon's z_e exactly 1), as in the proposal above; no simulated
 U(1) gate. Option B (sector-resolved U(1) control) is not part of this run. Nothing else changes.
+
+## Coordinator amendment after the analysis was written (2026-11-22, before any GPU run; only the Stage 0 pilot was read)
+
+1. **Operator count.** The z₀ basis listed above is 8 glueball + 4 flux-pair operators = **12**, not 16 (a counting slip in the text;
+   all listed operators are used).
+2. **z_e counting rule.** The run files store the torelon summed over the three directions only, so the "≥ 10 sign flips per chain"
+   rule is applied to that sum (level 0, time-averaged per measurement). This is weak (noise near zero flips the sign); it is reported with
+   the flip counts and is not a gate.
+3. **Seeds.** "900 + 10·(β index) + L" gives the same seed (926) to β = 2.4, L = 16 and β = 2.5, L = 6. Changed to **900 + 100·(β index)
+   + L** (β index 0, 1, 2 for 2.3, 2.4, 2.5).
+4. **J2 scaling sets.** The start sets are the J5 sets plus {1.03 (β 2.4), 1.09 (β 2.5)}, the two smallest boxes, which no listed set
+   contains.
+5. **Stage 0 control: PASS** (torelon aE at L = 6, 8, 10: 0.5991(46), 0.9803(313), 1.2232(246) against 0.599, 0.980, 1.223). Pilot
+   numbers (existing data, T = 16, never counted) in `pilot/`. All analysis choices: `ANALYSIS-NOTES.md`.
