@@ -1207,3 +1207,12 @@ thread.
   boundary" would mean no contained non-existence, no maintained boundary, no confinement: the system falls back to a single description
   without the existence/non-existence pair. For the proof it confirms the rule just sent to the M1 thread: the competing states are kept
   as a mixture index, never reduced to one.
+- **Correction: every subset must be able to establish an arrow of causality (the owner, same day):** "'Every subset can interact' was
+  misstated in totality. The better statement is: every subset of DMP needs to be capable of establishing an arrow of causality through
+  the interaction of two nodes through a shared G0." Reading (coordinator): with the earlier reading "mass gap = an arrow of causality
+  exists", this is a local, uniform version of the gap: every box must have its own mixing (its conditional law contracts, a local
+  spectral gap), and the rate must be the same for all boxes because they share one origin, the common coupling set at G0. In the proof
+  that is a condition of the one-box type: a contraction factor below one on every box, uniform in position and scale (Q(ℓ) < 1;
+  Theorem A's H3 on good boxes). It replaces the weaker irreducibility claim (no frozen box law, a Doeblin floor), which is
+  true but not uniform. On bad boxes the proof does not have it box by box; there the arrow is restored on average by the rarity of
+  bad boxes (H2, H4). Forwarded to the M1 thread as the corrected form of the §11 check.
