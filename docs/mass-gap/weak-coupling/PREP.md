@@ -1216,3 +1216,13 @@ thread.
   Theorem A's H3 on good boxes). It replaces the weaker irreducibility claim (no frozen box law, a Doeblin floor), which is
   true but not uniform. On bad boxes the proof does not have it box by box; there the arrow is restored on average by the rarity of
   bad boxes (H2, H4). Forwarded to the M1 thread as the corrected form of the §11 check.
+- **A bad box acts only through its boundary (the owner, same day, before reading the reviewers' fix):** "Taken to DMP this actually gets
+  quite nice. A bad box, non-existence, can only interact by asserting its boundary to existence. So bad boxes literally are the optimal
+  state, since any confinement is a bad box, since it, by itself, is not DMP-complete. The box/bad-box interaction is the same as the
+  assertion of existence, which is the optimal state of conversion efficiency." Reading (coordinator): this is the fix both reviewers
+  proposed independently, derived from the other side. In the coupling, a bad box (matched patterns) is updated identically in both
+  copies whenever its surroundings agree: its state is fixed by what crosses its boundary, so it can carry a disagreement in but never
+  create one ("can only interact by asserting its boundary"). It transmits exactly its boundary's information, no more ("conversion
+  efficiency"). "Any confinement is a bad box": Balaban's large-field regions are where the strong-coupling physics sits; below the
+  hand-over scale they are rare islands, and at the confinement scale they are everywhere, which is where the one-box route takes over.
+  Forwarded to the M1 thread as the reading behind the step-4 fix.
