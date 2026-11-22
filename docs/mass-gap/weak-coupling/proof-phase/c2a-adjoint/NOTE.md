@@ -413,3 +413,22 @@ Dobrushin, Theory Probab. Appl. 13 (1968) 197; 15 (1970) 458 (uniqueness; metric
 Mack, Petkova (1979, 1982) (SO(3) × Z₂). Kotecký, Preiss, CMP 103 (1986). Ollivier, J. Funct. Anal. 256 (2009). Bingham, Ann.
 Statist. 2 (1974) (antipodally symmetric laws on spheres). Project: `ws1-routeA/NOTE.md`, `../../attempts/r2-curvature/NOTE.md`,
 `../../attempts/r3-robust/NOTE.md`, `../../attempts/r3-blocked/PREREG.md`, `../../PREP.md`, workstreams B and C of cycle 2.
+
+### 5.2 SU(2), β = 2.4, and all runs (evaluated 2026-11-22 after BLOCKED DONE; `eval_all.log`, `eval_all.json`; coordinator)
+
+Command as above (17 s). Primary blocking f = 1/2, base fit, signal check PASS at all three L:
+
+| L√σ | β_A | a_TV (adjoint) | c_TV (centre) | H_TV | H_W (lin.) | verdict H_TV / H_W | Y/X (TV) |
+|---|---|---|---|---|---|---|---|
+| 1.55 | −0.0568(6) | 0.682 | 10.8 | 11.5 | 3.71 | EXCLUDED / EXCLUDED | — |
+| 2.32 | −0.0020(10) | 0.024 | 2.42 | 2.44 | 0.695 | EXCLUDED / NOT_EXCLUDED | — (centre half ≥ 1) |
+| 3.10 | 0.0037(12) | 0.044 | 0.26 | 0.304 | 0.085 | **NOT_EXCLUDED / NOT_EXCLUDED** | 0.060 |
+
+Noisy variants (β_n = 16, 64): same verdicts. Entry (H_TV = 1 crossing): L√σ ≈ 2.65 (β = 2.3: 2.54); first counted
+NOT_EXCLUDED: TV 3.10, W₁ 2.32. Adjoint half NOT_EXCLUDED at every L with signal; the centre half binds below ~2.6, as at β = 2.3.
+Every fitted |β_A| is below the certified W₁ ceiling (c3c: 0.275). Gates: photon and Z₂ deconfined passed; positive controls
+NOT_EXCLUDED; flags: none.
+
+**Caveat:** Leg C's pre-registered scaling check (β = 2.4 against β = 2.3 at equal L√σ) failed (`../../attempts/r3-blocked/PREREG.md`,
+Result), so these numbers are indicative only; and the reading of §5.1 (block variable close to Haar noise in the adjoint channel,
+the noise-limit trap) applies unchanged. The adjoint coarse plaquette ⟨χ₁⟩/3 was not re-measured at β = 2.4.

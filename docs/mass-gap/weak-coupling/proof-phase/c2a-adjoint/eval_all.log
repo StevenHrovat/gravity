@@ -1,0 +1,307 @@
+=== su2 beta=2.3 N=36 meas=80
+  b= 6 f=0.00 L*sqrt(sigma)=2.10 signal FAIL: couplings [0.000438 +- 0.00033, 0.000138 +- 0.00043, 0 +- 0, 0 +- 0]
+      TV: a 0.00165 +- 0.0051  c 0.00788 +- 0.0059  H 0.00953 +- 0.0078 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.78
+      W1 (linearised): a 0.000421/0.000397  c 0.00223/0.00223  H 0.00265/0.00263 +- 0.0021 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0828, W1 0.327 to 0.346; Y/X: TV 0.00167 +- 0.0051, W1 0.000398 to 0.000422; gap consistency lam*_H <= m L (8.41): True
+  b= 9 f=0.00 L*sqrt(sigma)=3.15 signal FAIL: couplings [-0.00143 +- 0.00077, -4.48e-05 +- 0.0011, 0 +- 0, 0 +- 0]
+      TV: a 0.000537 +- 0.0052  c 0.0257 +- 0.014  H 0.0263 +- 0.016 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.65
+      W1 (linearised): a 0.000137/0.000129  c 0.00728/0.00728  H 0.00741/0.00741 +- 0.00443 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0813, W1 0.325 to 0.345; Y/X: TV 0.000551 +- 0.0053, W1 0.00013 to 0.000138; gap consistency lam*_H <= m L (12.6): True
+  b=12 f=0.00 L*sqrt(sigma)=4.20 signal FAIL: couplings [0.00197 +- 0.0011, -0.000586 +- 0.0023, 0 +- 0, 0 +- 0]
+      TV: a 0.00703 +- 0.022  c 0.0354 +- 0.02  H 0.0424 +- 0.027 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.54
+      W1 (linearised): a 0.00179/0.00169  c 0.01/0.01  H 0.0118/0.0117 +- 0.0073 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0805, W1 0.324 to 0.344; Y/X: TV 0.00728 +- 0.023, W1 0.00171 to 0.00181; gap consistency lam*_H <= m L (16.8): True
+  b= 6 f=0.25 L*sqrt(sigma)=2.10 signal FAIL: couplings [0.0158 +- 0.00033, -0.00128 +- 0.00041, 0 +- 0, 0 +- 0]
+      TV: a 0.0153 +- 0.0049  c 0.284 +- 0.0059  H 0.299 +- 0.0071 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.18
+      W1 (linearised): a 0.0039/0.00368  c 0.0803/0.0803  H 0.0842/0.084 +- 0.00193 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0597, W1 0.301 to 0.319; Y/X: TV 0.0214 +- 0.0068, W1 0.004 to 0.00424; gap consistency lam*_H <= m L (8.41): True
+  b= 9 f=0.25 L*sqrt(sigma)=3.15 signal PASS: couplings [-0.000395 +- 0.00064, -0.000913 +- 0.00078, 0 +- 0, 0 +- 0]
+      TV: a 0.011 +- 0.0094  c 0.00711 +- 0.011  H 0.0181 +- 0.015 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.78
+      W1 (linearised): a 0.00279/0.00263  c 0.00201/0.00201  H 0.0048/0.00464 +- 0.00401 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0828, W1 0.327 to 0.346; Y/X: TV 0.011 +- 0.0095, W1 0.00263 to 0.00279; gap consistency lam*_H <= m L (12.6): True
+  b= 6 f=0.50 L*sqrt(sigma)=2.10 signal PASS: couplings [0.186 +- 0.0004, -0.00525 +- 0.00041, 0 +- 0, 0 +- 0]
+      TV: a 0.063 +- 0.0049  c 3.32 +- 0.007  H 3.38 +- 0.0083 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.016/0.0151  c 0.949/0.949  H 0.965/0.964 +- 0.00233 -> H UNDECIDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0.0167 to 0.0177; Y/X: TV inf, W1 0.296 to 0.314; gap consistency lam*_H <= m L (8.41): True
+  b= 6 f=0.50 noise=16 L*sqrt(sigma)=2.10 signal PASS: couplings [0.126 +- 0.0003, -0.00332 +- 0.00047, 0 +- 0, 0 +- 0]
+      TV: a 0.0399 +- 0.0056  c 2.26 +- 0.0053  H 2.3 +- 0.0088 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.0102/0.00958  c 0.643/0.643  H 0.653/0.653 +- 0.00239 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0.117 to 0.124; Y/X: TV inf, W1 0.0268 to 0.0285; gap consistency lam*_H <= m L (8.41): True
+  b= 6 f=0.50 noise=64 L*sqrt(sigma)=2.10 signal PASS: couplings [0.169 +- 0.00043, -0.00471 +- 0.0004, 0 +- 0, 0 +- 0]
+      TV: a 0.0565 +- 0.0049  c 3.02 +- 0.0075  H 3.08 +- 0.0089 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.0144/0.0136  c 0.862/0.862  H 0.877/0.876 +- 0.00249 -> H UNDECIDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0.045 to 0.0477; Y/X: TV inf, W1 0.0986 to 0.105; gap consistency lam*_H <= m L (8.41): True
+  b=12 f=0.25 L*sqrt(sigma)=4.20 signal PASS: couplings [0.0013 +- 0.0011, -0.0007 +- 0.0014, 0 +- 0, 0 +- 0]
+      TV: a 0.0084 +- 0.017  c 0.0234 +- 0.02  H 0.0318 +- 0.025 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.89
+      W1 (linearised): a 0.00214/0.00202  c 0.00662/0.00662  H 0.00875/0.00863 +- 0.00686 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0815, W1 0.325 to 0.345; Y/X: TV 0.00859 +- 0.017, W1 0.00203 to 0.00215; gap consistency lam*_H <= m L (16.8): True
+  b= 9 f=0.50 L*sqrt(sigma)=3.15 signal PASS: couplings [0.00892 +- 0.00064, -0.00173 +- 0.00082, 0 +- 0, 0 +- 0]
+      TV: a 0.0208 +- 0.0098  c 0.161 +- 0.012  H 0.181 +- 0.017 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.51
+      W1 (linearised): a 0.0053/0.005  c 0.0454/0.0454  H 0.0507/0.0504 +- 0.00459 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.07, W1 0.312 to 0.331; Y/X: TV 0.0248 +- 0.012, W1 0.00523 to 0.00555; gap consistency lam*_H <= m L (12.6): True
+  b= 9 f=0.50 noise=16 L*sqrt(sigma)=3.15 signal PASS: couplings [0.00571 +- 0.00071, -0.000774 +- 0.00077, 0 +- 0, 0 +- 0]
+      TV: a 0.00929 +- 0.0093  c 0.103 +- 0.013  H 0.112 +- 0.016 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.03
+      W1 (linearised): a 0.00236/0.00223  c 0.0291/0.0291  H 0.0314/0.0313 +- 0.00431 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0748, W1 0.318 to 0.337; Y/X: TV 0.0103 +- 0.01, W1 0.0023 to 0.00244; gap consistency lam*_H <= m L (12.6): True
+  b= 9 f=0.50 noise=64 L*sqrt(sigma)=3.15 signal PASS: couplings [0.00839 +- 0.00072, -0.00192 +- 0.001, 0 +- 0, 0 +- 0]
+      TV: a 0.023 +- 0.012  c 0.151 +- 0.013  H 0.174 +- 0.017 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.59
+      W1 (linearised): a 0.00585/0.00552  c 0.0427/0.0427  H 0.0486/0.0483 +- 0.00471 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0708, W1 0.313 to 0.332; Y/X: TV 0.0271 +- 0.014, W1 0.00576 to 0.00611; gap consistency lam*_H <= m L (12.6): True
+  b=12 f=0.50 L*sqrt(sigma)=4.20 signal PASS: couplings [-0.00164 +- 0.0011, -0.00109 +- 0.0012, 0 +- 0, 0 +- 0]
+      TV: a 0.0131 +- 0.014  c 0.0295 +- 0.019  H 0.0426 +- 0.027 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.58
+      W1 (linearised): a 0.00333/0.00314  c 0.00835/0.00835  H 0.0117/0.0115 +- 0.00738 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.081, W1 0.325 to 0.344; Y/X: TV 0.0135 +- 0.015, W1 0.00317 to 0.00336; gap consistency lam*_H <= m L (16.8): True
+  b=12 f=0.50 noise=16 L*sqrt(sigma)=4.20 signal PASS: couplings [-0.000223 +- 0.0013, 0.000871 +- 0.0019, 0 +- 0, 0 +- 0]
+      TV: a 0.0104 +- 0.022  c 0.00402 +- 0.015  H 0.0145 +- 0.023 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.27
+      W1 (linearised): a 0.00266/0.00251  c 0.00114/0.00114  H 0.0038/0.00365 +- 0.00599 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0831, W1 0.327 to 0.347; Y/X: TV 0.0105 +- 0.023, W1 0.00251 to 0.00266; gap consistency lam*_H <= m L (16.8): True
+  b=12 f=0.50 noise=64 L*sqrt(sigma)=4.20 signal PASS: couplings [-0.00198 +- 0.001, 0.000254 +- 0.0016, 0 +- 0, 0 +- 0]
+      TV: a 0.00304 +- 0.018  c 0.0357 +- 0.018  H 0.0387 +- 0.026 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.63
+      W1 (linearised): a 0.000775/0.000731  c 0.0101/0.0101  H 0.0109/0.0108 +- 0.00701 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0804, W1 0.324 to 0.344; Y/X: TV 0.00315 +- 0.019, W1 0.000739 to 0.000783; gap consistency lam*_H <= m L (16.8): True
+=== su2 beta=2.4 N=36 meas=80
+  b= 6 f=0.00 L*sqrt(sigma)=1.55 signal FAIL: couplings [0.00173 +- 0.00032, 0.000228 +- 0.0005, 0 +- 0, 0 +- 0]
+      TV: a 0.00273 +- 0.006  c 0.0311 +- 0.0057  H 0.0338 +- 0.0072 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.87
+      W1 (linearised): a 0.000696/0.000656  c 0.0088/0.0088  H 0.0095/0.00946 +- 0.00194 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0808, W1 0.324 to 0.344; Y/X: TV 0.00282 +- 0.0062, W1 0.000662 to 0.000702; gap consistency lam*_H <= m L (6.19): True
+  b= 9 f=0.00 L*sqrt(sigma)=2.32 signal FAIL: couplings [0.000782 +- 0.00068, -0.000251 +- 0.0007, 0 +- 0, 0 +- 0]
+      TV: a 0.00301 +- 0.0076  c 0.0141 +- 0.012  H 0.0171 +- 0.013 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.34
+      W1 (linearised): a 0.000767/0.000723  c 0.00398/0.00398  H 0.00475/0.0047 +- 0.00363 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0822, W1 0.326 to 0.346; Y/X: TV 0.00305 +- 0.0077, W1 0.000726 to 0.00077; gap consistency lam*_H <= m L (9.29): True
+  b=12 f=0.00 L*sqrt(sigma)=3.10 signal FAIL: couplings [-0.000745 +- 0.0011, -0.00329 +- 0.0019, 0 +- 0, 0 +- 0]
+      TV: a 0.0395 +- 0.022  c 0.0134 +- 0.021  H 0.0529 +- 0.03 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.81
+      W1 (linearised): a 0.0101/0.00948  c 0.00379/0.00379  H 0.0138/0.0133 +- 0.00809 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0823, W1 0.326 to 0.346; Y/X: TV 0.04 +- 0.023, W1 0.00952 to 0.0101; gap consistency lam*_H <= m L (12.4): True
+  b= 6 f=0.25 L*sqrt(sigma)=1.55 signal FAIL: couplings [0.104 +- 0.00048, -0.00284 +- 0.00048, 0 +- 0, 0 +- 0]
+      TV: a 0.0341 +- 0.0057  c 1.87 +- 0.0086  H 1.9 +- 0.01 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.00868/0.00818  c 0.531/0.531  H 0.54/0.539 +- 0.0029 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0.154 to 0.163; Y/X: TV inf, W1 0.0174 to 0.0185; gap consistency lam*_H <= m L (6.19): True
+  b= 9 f=0.25 L*sqrt(sigma)=2.32 signal PASS: couplings [0.0119 +- 0.00071, -0.00146 +- 0.0008, 0 +- 0, 0 +- 0]
+      TV: a 0.0175 +- 0.0095  c 0.214 +- 0.013  H 0.232 +- 0.015 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.12
+      W1 (linearised): a 0.00446/0.00421  c 0.0606/0.0606  H 0.0651/0.0648 +- 0.00404 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0655, W1 0.307 to 0.326; Y/X: TV 0.0223 +- 0.012, W1 0.00448 to 0.00475; gap consistency lam*_H <= m L (9.29): True
+  b= 6 f=0.50 L*sqrt(sigma)=1.55 signal PASS: couplings [0.695 +- 0.0015, -0.0568 +- 0.00056, 0 +- 0, 0 +- 0]
+      TV: a 0.682 +- 0.0067  c 10.8 +- 0.017  H 11.5 +- 0.021 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.174/0.164  c 3.54/3.54  H 3.71/3.7 +- 0.00831 -> H EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0 to 0; Y/X: TV inf, W1 inf to inf; gap consistency lam*_H <= m L (6.19): True
+  b= 6 f=0.50 noise=16 L*sqrt(sigma)=1.55 signal PASS: couplings [0.459 +- 0.00093, -0.0376 +- 0.00053, 0 +- 0, 0 +- 0]
+      TV: a 0.451 +- 0.0064  c 7.72 +- 0.014  H 8.17 +- 0.018 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.115/0.108  c 2.34/2.34  H 2.45/2.44 +- 0.00573 -> H EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0 to 0; Y/X: TV inf, W1 inf to inf; gap consistency lam*_H <= m L (6.19): True
+  b= 6 f=0.50 noise=64 L*sqrt(sigma)=1.55 signal PASS: couplings [0.626 +- 0.0013, -0.0527 +- 0.00055, 0 +- 0, 0 +- 0]
+      TV: a 0.632 +- 0.0066  c 9.99 +- 0.016  H 10.6 +- 0.02 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.161/0.152  c 3.19/3.19  H 3.35/3.34 +- 0.0074 -> H EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0 to 0; Y/X: TV inf, W1 inf to inf; gap consistency lam*_H <= m L (6.19): True
+  b=12 f=0.25 L*sqrt(sigma)=3.10 signal PASS: couplings [-0.000288 +- 0.00078, 0.00119 +- 0.0021, 0 +- 0, 0 +- 0]
+      TV: a 0.0143 +- 0.025  c 0.00518 +- 0.014  H 0.0195 +- 0.023 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.45
+      W1 (linearised): a 0.00364/0.00343  c 0.00147/0.00147  H 0.0051/0.00489 +- 0.00606 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.083, W1 0.327 to 0.347; Y/X: TV 0.0143 +- 0.025, W1 0.00343 to 0.00364; gap consistency lam*_H <= m L (12.4): True
+  b= 9 f=0.50 L*sqrt(sigma)=2.32 signal PASS: couplings [0.135 +- 0.00086, -0.00196 +- 0.001, 0 +- 0, 0 +- 0]
+      TV: a 0.0236 +- 0.013  c 2.42 +- 0.015  H 2.44 +- 0.02 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.006/0.00566  c 0.689/0.689  H 0.695/0.695 +- 0.00552 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0.102 to 0.108; Y/X: TV inf, W1 0.0182 to 0.0193; gap consistency lam*_H <= m L (9.29): True
+  b= 9 f=0.50 noise=16 L*sqrt(sigma)=2.32 signal PASS: couplings [0.0916 +- 0.00076, -0.00206 +- 0.001, 0 +- 0, 0 +- 0]
+      TV: a 0.0247 +- 0.012  c 1.64 +- 0.014  H 1.67 +- 0.021 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.00629/0.00593  c 0.466/0.466  H 0.473/0.472 +- 0.00567 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0.175 to 0.185; Y/X: TV inf, W1 0.0111 to 0.0118; gap consistency lam*_H <= m L (9.29): True
+  b= 9 f=0.50 noise=64 L*sqrt(sigma)=2.32 signal PASS: couplings [0.123 +- 0.00074, -0.00112 +- 0.0011, 0 +- 0, 0 +- 0]
+      TV: a 0.0134 +- 0.013  c 2.2 +- 0.013  H 2.21 +- 0.018 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.00342/0.00322  c 0.625/0.625  H 0.629/0.628 +- 0.00485 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0, W1 0.123 to 0.13; Y/X: TV inf, W1 0.0086 to 0.00912; gap consistency lam*_H <= m L (9.29): True
+  b=12 f=0.50 L*sqrt(sigma)=3.10 signal PASS: couplings [0.0145 +- 0.0011, 0.00367 +- 0.0012, 0 +- 0, 0 +- 0]
+      TV: a 0.044 +- 0.015  c 0.26 +- 0.021  H 0.304 +- 0.021 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 0.671
+      W1 (linearised): a 0.0112/0.0106  c 0.0736/0.0736  H 0.0848/0.0842 +- 0.00583 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0617, W1 0.303 to 0.322; Y/X: TV 0.0595 +- 0.019, W1 0.0114 to 0.0121; gap consistency lam*_H <= m L (12.4): True
+  b=12 f=0.50 noise=16 L*sqrt(sigma)=3.10 signal PASS: couplings [0.00941 +- 0.0013, 0.00414 +- 0.0019, 0 +- 0, 0 +- 0]
+      TV: a 0.0497 +- 0.022  c 0.169 +- 0.023  H 0.219 +- 0.031 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.27
+      W1 (linearised): a 0.0127/0.0119  c 0.0479/0.0479  H 0.0606/0.0599 +- 0.00825 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0693, W1 0.312 to 0.33; Y/X: TV 0.0598 +- 0.027, W1 0.0125 to 0.0133; gap consistency lam*_H <= m L (12.4): True
+  b=12 f=0.50 noise=64 L*sqrt(sigma)=3.10 signal PASS: couplings [0.0124 +- 0.001, 0.00277 +- 0.0017, 0 +- 0, 0 +- 0]
+      TV: a 0.0332 +- 0.02  c 0.223 +- 0.018  H 0.257 +- 0.024 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 0.847
+      W1 (linearised): a 0.00846/0.00797  c 0.0632/0.0632  H 0.0717/0.0712 +- 0.0064 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+      windows b_A*: TV 0.0647, W1 0.307 to 0.325; Y/X: TV 0.0427 +- 0.026, W1 0.00851 to 0.00903; gap consistency lam*_H <= m L (12.4): True
+=== u1 beta=0.9 N=36 meas=80
+  b= 6 f=0.00 signal n/a: couplings [0.000428 +- 0.00025, 0.000371 +- 0.00022, 0 +- 0, 0 +- 0]
+      TV: a 0.00667 +- 0.0039  c 0.0077 +- 0.0045  H 0.0144 +- 0.0074 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.57
+      W1 (linearised): a 0.00425/0.00425  c 0.0049/0.0049  H 0.00915/0.00915 +- 0.0047 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 9 f=0.00 signal n/a: couplings [-3.09e-05 +- 0.0005, -0.000611 +- 0.00044, 0 +- 0, 0 +- 0]
+      TV: a 0.011 +- 0.0079  c 0.000557 +- 0.006  H 0.0116 +- 0.0099 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.04
+      W1 (linearised): a 0.007/0.007  c 0.000354/0.000354  H 0.00735/0.00735 +- 0.0063 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b=12 f=0.00 signal n/a: couplings [0.000685 +- 0.00081, 0.00105 +- 0.00079, 0 +- 0, 0 +- 0]
+      TV: a 0.019 +- 0.014  c 0.0123 +- 0.015  H 0.0313 +- 0.022 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 3.05
+      W1 (linearised): a 0.0121/0.0121  c 0.00785/0.00785  H 0.0199/0.0199 +- 0.0137 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 6 f=0.25 signal n/a: couplings [0.000201 +- 0.0002, -0.000142 +- 0.00014, 0 +- 0, 0 +- 0]
+      TV: a 0.00256 +- 0.0026  c 0.00361 +- 0.0037  H 0.00617 +- 0.0043 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.75
+      W1 (linearised): a 0.00163/0.00163  c 0.0023/0.0023  H 0.00393/0.00393 +- 0.00271 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 9 f=0.25 signal n/a: couplings [-0.000783 +- 0.00051, -0.000472 +- 0.00052, 0 +- 0, 0 +- 0]
+      TV: a 0.0085 +- 0.0094  c 0.0141 +- 0.0091  H 0.0226 +- 0.011 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.78
+      W1 (linearised): a 0.00541/0.00541  c 0.00897/0.00897  H 0.0144/0.0144 +- 0.00703 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 6 f=0.50 signal n/a: couplings [7e-05 +- 0.00027, -2.46e-05 +- 0.00019, 0 +- 0, 0 +- 0]
+      TV: a 0.000443 +- 0.0026  c 0.00126 +- 0.0042  H 0.0017 +- 0.0045 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.22
+      W1 (linearised): a 0.000282/0.000282  c 0.000802/0.000802  H 0.00108/0.00108 +- 0.00284 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 6 f=0.50 noise=16 signal n/a: couplings [0.000173 +- 0.00026, -8.57e-05 +- 0.0002, 0 +- 0, 0 +- 0]
+      TV: a 0.00154 +- 0.0036  c 0.00312 +- 0.0047  H 0.00466 +- 0.006 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.42
+      W1 (linearised): a 0.000982/0.000982  c 0.00199/0.00199  H 0.00297/0.00297 +- 0.00382 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 6 f=0.50 noise=64 signal n/a: couplings [6.16e-06 +- 0.00026, 0.00011 +- 0.00022, 0 +- 0, 0 +- 0]
+      TV: a 0.00198 +- 0.0039  c 0.000111 +- 0.0021  H 0.00209 +- 0.0045 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.31
+      W1 (linearised): a 0.00126/0.00126  c 7.06e-05/7.06e-05  H 0.00133/0.00133 +- 0.00286 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b=12 f=0.25 signal n/a: couplings [0.000441 +- 0.00072, 0.000769 +- 0.00083, 0 +- 0, 0 +- 0]
+      TV: a 0.0138 +- 0.015  c 0.00794 +- 0.013  H 0.0218 +- 0.022 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.44
+      W1 (linearised): a 0.00881/0.00881  c 0.00506/0.00506  H 0.0139/0.0139 +- 0.0139 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 9 f=0.50 signal n/a: couplings [-0.000315 +- 0.00044, 1.26e-05 +- 0.00052, 0 +- 0, 0 +- 0]
+      TV: a 0.000227 +- 0.0055  c 0.00566 +- 0.0079  H 0.00589 +- 0.01 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.77
+      W1 (linearised): a 0.000144/0.000144  c 0.00361/0.00361  H 0.00375/0.00375 +- 0.00639 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 9 f=0.50 noise=16 signal n/a: couplings [-0.000392 +- 0.00052, 0.000135 +- 0.00064, 0 +- 0, 0 +- 0]
+      TV: a 0.00242 +- 0.0097  c 0.00705 +- 0.0093  H 0.00947 +- 0.014 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2.74
+      W1 (linearised): a 0.00154/0.00154  c 0.00449/0.00449  H 0.00603/0.00603 +- 0.00893 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 9 f=0.50 noise=64 signal n/a: couplings [-0.000125 +- 0.00042, 0.000119 +- 0.00045, 0 +- 0, 0 +- 0]
+      TV: a 0.00214 +- 0.0072  c 0.00226 +- 0.006  H 0.0044 +- 0.01 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 3.31
+      W1 (linearised): a 0.00136/0.00136  c 0.00144/0.00144  H 0.0028/0.0028 +- 0.00647 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b=12 f=0.50 signal n/a: couplings [0.0023 +- 0.00092, -0.000422 +- 0.00084, 0 +- 0, 0 +- 0]
+      TV: a 0.00759 +- 0.015  c 0.0414 +- 0.017  H 0.049 +- 0.022 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.64
+      W1 (linearised): a 0.00483/0.00483  c 0.0264/0.0264  H 0.0312/0.0312 +- 0.0139 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b=12 f=0.50 noise=16 signal n/a: couplings [0.00231 +- 0.0008, -0.000683 +- 0.0011, 0 +- 0, 0 +- 0]
+      TV: a 0.0123 +- 0.019  c 0.0415 +- 0.014  H 0.0538 +- 0.022 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.23
+      W1 (linearised): a 0.00783/0.00783  c 0.0264/0.0264  H 0.0342/0.0342 +- 0.0143 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b=12 f=0.50 noise=64 signal n/a: couplings [0.00229 +- 0.00093, -0.000534 +- 0.00086, 0 +- 0, 0 +- 0]
+      TV: a 0.00961 +- 0.016  c 0.0411 +- 0.017  H 0.0508 +- 0.022 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.38
+      W1 (linearised): a 0.00612/0.00612  c 0.0262/0.0262  H 0.0323/0.0323 +- 0.0142 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+=== u1 beta=1.1 N=36 meas=80
+  b= 6 f=0.00 signal n/a: couplings [0.0531 +- 0.0003, -0.000989 +- 0.00022, 0 +- 0, 0 +- 0]
+      TV: a 0.0178 +- 0.0039  c 0.955 +- 0.0053  H 0.973 +- 0.0073 -> H UNDECIDED, a NOT_EXCLUDED, c UNDECIDED; lam*_H 0
+      W1 (linearised): a 0.0113/0.0113  c 0.609/0.609  H 0.62/0.62 +- 0.00467 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 9 f=0.00 signal n/a: couplings [0.00769 +- 0.0006, -3.08e-05 +- 0.00034, 0 +- 0, 0 +- 0]
+      TV: a 0.000555 +- 0.004  c 0.138 +- 0.011  H 0.139 +- 0.013 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.52
+      W1 (linearised): a 0.000353/0.000353  c 0.0881/0.0881  H 0.0885/0.0885 +- 0.00804 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b=12 f=0.00 signal n/a: couplings [-0.00109 +- 0.0011, 0.000337 +- 0.00081, 0 +- 0, 0 +- 0]
+      TV: a 0.00607 +- 0.014  c 0.0196 +- 0.021  H 0.0257 +- 0.019 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 1.85
+      W1 (linearised): a 0.00387/0.00387  c 0.0125/0.0125  H 0.0164/0.0164 +- 0.012 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 6 f=0.25 signal n/a: couplings [0.579 +- 0.00026, -0.0801 +- 0.00025, 0 +- 0, 0 +- 0]
+      TV: a 1.44 +- 0.0045  c 9.39 +- 0.0034  H 10.8 +- 0.0066 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0.918/0.918  c 6.63/6.63  H 7.55/7.55 +- 0.00485 -> H EXCLUDED, a UNDECIDED
+  b= 9 f=0.25 signal n/a: couplings [0.682 +- 0.00066, -0.0994 +- 0.00061, 0 +- 0, 0 +- 0]
+      TV: a 1.78 +- 0.011  c 10.7 +- 0.0077  H 12.5 +- 0.016 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 1.14/1.14  c 7.82/7.82  H 8.96/8.96 +- 0.0123 -> H EXCLUDED, a EXCLUDED
+  b= 6 f=0.50 signal n/a: couplings [2.15 +- 0.0027, -0.163 +- 0.0011, 0 +- 0, 0 +- 0]
+      TV: a 2.91 +- 0.02  c 17.5 +- 0.0026  H 20.4 +- 0.022 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 1.87/1.87  c 24.7/24.7  H 26.5/26.5 +- 0.0431 -> H EXCLUDED, a EXCLUDED
+  b= 6 f=0.50 noise=16 signal n/a: couplings [1.31 +- 0.00082, -0.15 +- 0.00038, 0 +- 0, 0 +- 0]
+      TV: a 2.69 +- 0.0066  c 15.6 +- 0.0037  H 18.3 +- 0.0098 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 1.72/1.72  c 15.1/15.1  H 16.8/16.8 +- 0.013 -> H EXCLUDED, a EXCLUDED
+  b= 6 f=0.50 noise=64 signal n/a: couplings [1.86 +- 0.0021, -0.166 +- 0.00086, 0 +- 0, 0 +- 0]
+      TV: a 2.96 +- 0.015  c 17.2 +- 0.0034  H 20.1 +- 0.018 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 1.9/1.9  c 21.3/21.3  H 23.2/23.2 +- 0.0331 -> H EXCLUDED, a EXCLUDED
+  b=12 f=0.25 signal n/a: couplings [0.73 +- 0.0013, -0.11 +- 0.0011, 0 +- 0, 0 +- 0]
+      TV: a 1.98 +- 0.02  c 11.2 +- 0.014  H 13.2 +- 0.031 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 1.26/1.26  c 8.37/8.37  H 9.63/9.63 +- 0.025 -> H EXCLUDED, a EXCLUDED
+  b= 9 f=0.50 signal n/a: couplings [2.44 +- 0.0061, -0.225 +- 0.0027, 0 +- 0, 0 +- 0]
+      TV: a 3.97 +- 0.046  c 17.7 +- 0.0033  H 21.7 +- 0.049 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 2.57/2.57  c 28/28  H 30.5/30.5 +- 0.0985 -> H EXCLUDED, a EXCLUDED
+  b= 9 f=0.50 noise=16 signal n/a: couplings [1.38 +- 0.0024, -0.162 +- 0.0013, 0 +- 0, 0 +- 0]
+      TV: a 2.88 +- 0.024  c 15.8 +- 0.0096  H 18.7 +- 0.032 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 1.85/1.85  c 15.8/15.8  H 17.6/17.6 +- 0.0411 -> H EXCLUDED, a EXCLUDED
+  b= 9 f=0.50 noise=64 signal n/a: couplings [2.05 +- 0.0048, -0.205 +- 0.0022, 0 +- 0, 0 +- 0]
+      TV: a 3.63 +- 0.039  c 17.4 +- 0.0056  H 21 +- 0.044 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 2.34/2.34  c 23.4/23.4  H 25.8/25.8 +- 0.0792 -> H EXCLUDED, a EXCLUDED
+  b=12 f=0.50 signal n/a: couplings [2.5 +- 0.012, -0.236 +- 0.0041, 0 +- 0, 0 +- 0]
+      TV: a 4.17 +- 0.069  c 17.8 +- 0.0057  H 21.9 +- 0.074 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 2.7/2.7  c 28.6/28.6  H 31.3/31.3 +- 0.178 -> H EXCLUDED, a EXCLUDED
+  b=12 f=0.50 noise=16 signal n/a: couplings [1.39 +- 0.0037, -0.165 +- 0.0025, 0 +- 0, 0 +- 0]
+      TV: a 2.95 +- 0.044  c 15.9 +- 0.015  H 18.9 +- 0.057 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 1.9/1.9  c 15.9/15.9  H 17.8/17.8 +- 0.0686 -> H EXCLUDED, a EXCLUDED
+  b=12 f=0.50 noise=64 signal n/a: couplings [2.07 +- 0.0094, -0.209 +- 0.0037, 0 +- 0, 0 +- 0]
+      TV: a 3.7 +- 0.064  c 17.4 +- 0.01  H 21.1 +- 0.074 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 2.39/2.39  c 23.8/23.8  H 26.1/26.1 +- 0.149 -> H EXCLUDED, a EXCLUDED
+=== z2 beta=0.3 N=36 meas=80
+  b= 6 f=0.00 signal n/a: couplings [-0.000159 +- 0.00013, 0 +- 0]
+      TV: a 0 +- 0  c 0.00286 +- 0.0024  H 0.00286 +- 0.0024 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 3.4
+      W1 (linearised): a 0/0  c 0.00286/0.00286  H 0.00286/0.00286 +- 0.00241 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b= 9 f=0.00 signal n/a: couplings [0.000454 +- 0.00033, 0 +- 0]
+      TV: a 0 +- 0  c 0.00818 +- 0.0059  H 0.00818 +- 0.0059 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 3.06
+      W1 (linearised): a 0/0  c 0.00818/0.00818  H 0.00818/0.00818 +- 0.00586 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+  b=12 f=0.00 signal n/a: couplings [-0.000205 +- 0.00056, 0 +- 0]
+      TV: a 0 +- 0  c 0.00368 +- 0.0098  H 0.00368 +- 0.0098 -> H NOT_EXCLUDED, a NOT_EXCLUDED, c NOT_EXCLUDED; lam*_H 2
+      W1 (linearised): a 0/0  c 0.00368/0.00368  H 0.00368/0.00368 +- 0.00977 -> H NOT_EXCLUDED, a NOT_EXCLUDED
+=== z2 beta=0.6 N=36 meas=80
+  b= 6 f=0.00 signal n/a: couplings [0.463 +- 0.00024, 0 +- 0]
+      TV: a 0 +- 0  c 7.78 +- 0.0036  H 7.78 +- 0.0036 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0/0  c 7.78/7.78  H 7.78/7.78 +- 0.00355 -> H EXCLUDED, a NOT_EXCLUDED
+  b= 9 f=0.00 signal n/a: couplings [0.435 +- 0.00032, 0 +- 0]
+      TV: a 0 +- 0  c 7.37 +- 0.0048  H 7.37 +- 0.0048 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0/0  c 7.37/7.37  H 7.37/7.37 +- 0.00483 -> H EXCLUDED, a NOT_EXCLUDED
+  b=12 f=0.00 signal n/a: couplings [0.417 +- 0.00058, 0 +- 0]
+      TV: a 0 +- 0  c 7.1 +- 0.0087  H 7.1 +- 0.0087 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0
+      W1 (linearised): a 0/0  c 7.1/7.1  H 7.1/7.1 +- 0.00875 -> H EXCLUDED, a NOT_EXCLUDED
+
+=== gates
+  positive control u1 beta=0.9 b=6 f=0.0: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=9 f=0.0: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=12 f=0.0: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=6 f=0.25: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=9 f=0.25: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=6 f=0.5: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=6 f=0.5: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=6 f=0.5: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=12 f=0.25: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=9 f=0.5: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=9 f=0.5: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=9 f=0.5: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=12 f=0.5: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=12 f=0.5: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control u1 beta=0.9 b=12 f=0.5: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  photon_beta1.1_f0.0_noise0 b=6: H_TV UNDECIDED, H_W NOT_EXCLUDED (adjoint half alone: TV NOT_EXCLUDED, W NOT_EXCLUDED; centre half TV 0.955)
+  photon_beta1.1_f0.0_noise0 b=9: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED (adjoint half alone: TV NOT_EXCLUDED, W NOT_EXCLUDED; centre half TV 0.138)
+  photon_beta1.1_f0.0_noise0 b=12: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED (adjoint half alone: TV NOT_EXCLUDED, W NOT_EXCLUDED; centre half TV 0.0196)
+  photon_beta1.1_f0.25_noise0 b=6: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W UNDECIDED; centre half TV 9.39)
+  photon_beta1.1_f0.25_noise0 b=9: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 10.7)
+  photon_beta1.1_f0.5_noise0 b=6: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 17.5)
+  photon_beta1.1_f0.5_noise16 b=6: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 15.6)
+  photon_beta1.1_f0.5_noise64 b=6: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 17.2)
+  photon_beta1.1_f0.25_noise0 b=12: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 11.2)
+  photon_beta1.1_f0.5_noise0 b=9: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 17.7)
+  photon_beta1.1_f0.5_noise16 b=9: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 15.8)
+  photon_beta1.1_f0.5_noise64 b=9: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 17.4)
+  photon_beta1.1_f0.5_noise0 b=12: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 17.8)
+  photon_beta1.1_f0.5_noise16 b=12: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 15.9)
+  photon_beta1.1_f0.5_noise64 b=12: H_TV EXCLUDED, H_W EXCLUDED (adjoint half alone: TV EXCLUDED, W EXCLUDED; centre half TV 17.4)
+  positive control z2 beta=0.3 b=6 f=0.0: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control z2 beta=0.3 b=9 f=0.0: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  positive control z2 beta=0.3 b=12 f=0.0: H_TV NOT_EXCLUDED, H_W NOT_EXCLUDED
+  z2 deconfined b=6: H_TV EXCLUDED, H_W EXCLUDED
+  z2 deconfined b=9: H_TV EXCLUDED, H_W EXCLUDED
+  z2 deconfined b=12: H_TV EXCLUDED, H_W EXCLUDED
+
+=== SU(2) (counted = signal PASS)
+  beta=2.3 N=36 L=2.1 f=0.00 noise=0 FAIL: b_A 0.000138 +- 0.00043  H_TV 0.00953 (NOT_EXCLUDED; adj 0.00165, centre 0.00788)  H_W 0.00265/0.00263 (NOT_EXCLUDED)  Y/X TV 0.00167, W 0.000398-0.000422; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=3.15 f=0.00 noise=0 FAIL: b_A -4.48e-05 +- 0.0011  H_TV 0.0263 (NOT_EXCLUDED; adj 0.000537, centre 0.0257)  H_W 0.00741/0.00741 (NOT_EXCLUDED)  Y/X TV 0.000551, W 0.00013-0.000138; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=4.2 f=0.00 noise=0 FAIL: b_A -0.000586 +- 0.0023  H_TV 0.0424 (NOT_EXCLUDED; adj 0.00703, centre 0.0354)  H_W 0.0118/0.0117 (NOT_EXCLUDED)  Y/X TV 0.00728, W 0.00171-0.00181; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=2.1 f=0.25 noise=0 FAIL: b_A -0.00128 +- 0.00041  H_TV 0.299 (NOT_EXCLUDED; adj 0.0153, centre 0.284)  H_W 0.0842/0.084 (NOT_EXCLUDED)  Y/X TV 0.0214, W 0.004-0.00424; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=3.15 f=0.25 noise=0 PASS: b_A -0.000913 +- 0.00078  H_TV 0.0181 (NOT_EXCLUDED; adj 0.011, centre 0.00711)  H_W 0.0048/0.00464 (NOT_EXCLUDED)  Y/X TV 0.011, W 0.00263-0.00279; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=2.1 f=0.50 noise=0 PASS: b_A -0.00525 +- 0.00041  H_TV 3.38 (EXCLUDED; adj 0.063, centre 3.32)  H_W 0.965/0.964 (UNDECIDED)  Y/X TV inf, W 0.296-0.314; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=2.1 f=0.50 noise=16 PASS: b_A -0.00332 +- 0.00047  H_TV 2.3 (EXCLUDED; adj 0.0399, centre 2.26)  H_W 0.653/0.653 (NOT_EXCLUDED)  Y/X TV inf, W 0.0268-0.0285; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=2.1 f=0.50 noise=64 PASS: b_A -0.00471 +- 0.0004  H_TV 3.08 (EXCLUDED; adj 0.0565, centre 3.02)  H_W 0.877/0.876 (UNDECIDED)  Y/X TV inf, W 0.0986-0.105; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=4.2 f=0.25 noise=0 PASS: b_A -0.0007 +- 0.0014  H_TV 0.0318 (NOT_EXCLUDED; adj 0.0084, centre 0.0234)  H_W 0.00875/0.00863 (NOT_EXCLUDED)  Y/X TV 0.00859, W 0.00203-0.00215; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=3.15 f=0.50 noise=0 PASS: b_A -0.00173 +- 0.00082  H_TV 0.181 (NOT_EXCLUDED; adj 0.0208, centre 0.161)  H_W 0.0507/0.0504 (NOT_EXCLUDED)  Y/X TV 0.0248, W 0.00523-0.00555; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=3.15 f=0.50 noise=16 PASS: b_A -0.000774 +- 0.00077  H_TV 0.112 (NOT_EXCLUDED; adj 0.00929, centre 0.103)  H_W 0.0314/0.0313 (NOT_EXCLUDED)  Y/X TV 0.0103, W 0.0023-0.00244; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=3.15 f=0.50 noise=64 PASS: b_A -0.00192 +- 0.001  H_TV 0.174 (NOT_EXCLUDED; adj 0.023, centre 0.151)  H_W 0.0486/0.0483 (NOT_EXCLUDED)  Y/X TV 0.0271, W 0.00576-0.00611; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=4.2 f=0.50 noise=0 PASS: b_A -0.00109 +- 0.0012  H_TV 0.0426 (NOT_EXCLUDED; adj 0.0131, centre 0.0295)  H_W 0.0117/0.0115 (NOT_EXCLUDED)  Y/X TV 0.0135, W 0.00317-0.00336; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=4.2 f=0.50 noise=16 PASS: b_A 0.000871 +- 0.0019  H_TV 0.0145 (NOT_EXCLUDED; adj 0.0104, centre 0.00402)  H_W 0.0038/0.00365 (NOT_EXCLUDED)  Y/X TV 0.0105, W 0.00251-0.00266; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.3 N=36 L=4.2 f=0.50 noise=64 PASS: b_A 0.000254 +- 0.0016  H_TV 0.0387 (NOT_EXCLUDED; adj 0.00304, centre 0.0357)  H_W 0.0109/0.0108 (NOT_EXCLUDED)  Y/X TV 0.00315, W 0.000739-0.000783; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=1.55 f=0.00 noise=0 FAIL: b_A 0.000228 +- 0.0005  H_TV 0.0338 (NOT_EXCLUDED; adj 0.00273, centre 0.0311)  H_W 0.0095/0.00946 (NOT_EXCLUDED)  Y/X TV 0.00282, W 0.000662-0.000702; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=2.32 f=0.00 noise=0 FAIL: b_A -0.000251 +- 0.0007  H_TV 0.0171 (NOT_EXCLUDED; adj 0.00301, centre 0.0141)  H_W 0.00475/0.0047 (NOT_EXCLUDED)  Y/X TV 0.00305, W 0.000726-0.00077; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=3.1 f=0.00 noise=0 FAIL: b_A -0.00329 +- 0.0019  H_TV 0.0529 (NOT_EXCLUDED; adj 0.0395, centre 0.0134)  H_W 0.0138/0.0133 (NOT_EXCLUDED)  Y/X TV 0.04, W 0.00952-0.0101; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=1.55 f=0.25 noise=0 FAIL: b_A -0.00284 +- 0.00048  H_TV 1.9 (EXCLUDED; adj 0.0341, centre 1.87)  H_W 0.54/0.539 (NOT_EXCLUDED)  Y/X TV inf, W 0.0174-0.0185; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=2.32 f=0.25 noise=0 PASS: b_A -0.00146 +- 0.0008  H_TV 0.232 (NOT_EXCLUDED; adj 0.0175, centre 0.214)  H_W 0.0651/0.0648 (NOT_EXCLUDED)  Y/X TV 0.0223, W 0.00448-0.00475; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=1.55 f=0.50 noise=0 PASS: b_A -0.0568 +- 0.00056  H_TV 11.5 (EXCLUDED; adj 0.682, centre 10.8)  H_W 3.71/3.7 (EXCLUDED)  Y/X TV inf, W inf-inf; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=1.55 f=0.50 noise=16 PASS: b_A -0.0376 +- 0.00053  H_TV 8.17 (EXCLUDED; adj 0.451, centre 7.72)  H_W 2.45/2.44 (EXCLUDED)  Y/X TV inf, W inf-inf; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=1.55 f=0.50 noise=64 PASS: b_A -0.0527 +- 0.00055  H_TV 10.6 (EXCLUDED; adj 0.632, centre 9.99)  H_W 3.35/3.34 (EXCLUDED)  Y/X TV inf, W inf-inf; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=3.1 f=0.25 noise=0 PASS: b_A 0.00119 +- 0.0021  H_TV 0.0195 (NOT_EXCLUDED; adj 0.0143, centre 0.00518)  H_W 0.0051/0.00489 (NOT_EXCLUDED)  Y/X TV 0.0143, W 0.00343-0.00364; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=2.32 f=0.50 noise=0 PASS: b_A -0.00196 +- 0.001  H_TV 2.44 (EXCLUDED; adj 0.0236, centre 2.42)  H_W 0.695/0.695 (NOT_EXCLUDED)  Y/X TV inf, W 0.0182-0.0193; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=2.32 f=0.50 noise=16 PASS: b_A -0.00206 +- 0.001  H_TV 1.67 (EXCLUDED; adj 0.0247, centre 1.64)  H_W 0.473/0.472 (NOT_EXCLUDED)  Y/X TV inf, W 0.0111-0.0118; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=2.32 f=0.50 noise=64 PASS: b_A -0.00112 +- 0.0011  H_TV 2.21 (EXCLUDED; adj 0.0134, centre 2.2)  H_W 0.629/0.628 (NOT_EXCLUDED)  Y/X TV inf, W 0.0086-0.00912; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=3.1 f=0.50 noise=0 PASS: b_A 0.00367 +- 0.0012  H_TV 0.304 (NOT_EXCLUDED; adj 0.044, centre 0.26)  H_W 0.0848/0.0842 (NOT_EXCLUDED)  Y/X TV 0.0595, W 0.0114-0.0121; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=3.1 f=0.50 noise=16 PASS: b_A 0.00414 +- 0.0019  H_TV 0.219 (NOT_EXCLUDED; adj 0.0497, centre 0.169)  H_W 0.0606/0.0599 (NOT_EXCLUDED)  Y/X TV 0.0598, W 0.0125-0.0133; |b_A| below nonlinear W1 ceiling 0.28: True
+  beta=2.4 N=36 L=3.1 f=0.50 noise=64 PASS: b_A 0.00277 +- 0.0017  H_TV 0.257 (NOT_EXCLUDED; adj 0.0332, centre 0.223)  H_W 0.0717/0.0712 (NOT_EXCLUDED)  Y/X TV 0.0427, W 0.00851-0.00903; |b_A| below nonlinear W1 ceiling 0.28: True
+  entry beta=2.3 (counted primary points [2.102, 3.153, 4.204]): {'H_TV_crossing': 2.539, 'H_W_hi_crossing': '< 2.10', 'H_W_lo_crossing': '< 2.10', 'first_NOT_EXCLUDED_TV': 3.1526551701395573, 'first_NOT_EXCLUDED_W': 3.1526551701395573, 'counted_points': [2.102, 3.153, 4.204]}
+  entry beta=2.4 (counted primary points [1.548, 2.321, 3.095]): {'H_TV_crossing': 2.653, 'H_W_hi_crossing': 2.154, 'H_W_lo_crossing': 2.153, 'first_NOT_EXCLUDED_TV': 3.0953055422840183, 'first_NOT_EXCLUDED_W': 2.3214791567130137, 'counted_points': [1.548, 2.321, 3.095]}
+  flags: none

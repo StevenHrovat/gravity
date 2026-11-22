@@ -310,3 +310,33 @@ over tori is false: the torus one block thick in one direction is deconfined.
 - **Total: about 4.5 h ± 50 %.**
 - Optional runs (not queued): N = 48 volume check 70 min; 2I control 40 min plus coding; small-L deconfined run 5 min plus coding
   (not recommended).
+
+## Result (main queue, after data; BLOCKED DONE 2026-11-22 04:31; `runs-gpu/analysis.log`)
+
+Gates: photon gate (β = 1.1, primary blocking f = 1/2 and f = 1/4, both noisy variants) passed; f = 0 fails it (disqualified, as
+pre-registered). Z₂ deconfined (β = 0.6): W1 and D′ EXCLUDED at b = 6, 9, 12 (pass). Positive controls (U(1) β = 0.9, Z₂ β = 0.3,
+confined): NOT_EXCLUDED. Deconfinement-edge flags (NOT_EXCLUDED below L√σ = 1.45): none.
+
+SU(2), primary blocking f = 1/2, base fit (extension fits agree on every verdict):
+
+| β | L√σ | β_F | β_A | W1 | D′ |
+|---|---|---|---|---|---|
+| 2.3 | 2.10 | 0.186(1) | −0.0053(4) | UNDECIDED (0.967) | EXCLUDED (3.32) |
+| 2.3 | 3.15 | 0.0089(6) | −0.0017(8) | NOT_EXCLUDED (0.051) | NOT_EXCLUDED (0.161) |
+| 2.3 | 4.20 | −0.0016(11) | −0.0011(12) | NOT_EXCLUDED (0.012) | NOT_EXCLUDED (0.032) |
+| 2.4 | 1.55 | 0.695(23) | −0.057(3) | EXCLUDED (3.74) | EXCLUDED (10.8) |
+| 2.4 | 2.32 | 0.135(1) | −0.0020(11) | NOT_EXCLUDED (0.696) | EXCLUDED (2.42) |
+| 2.4 | 3.10 | 0.0145(11) | 0.0037(12) | NOT_EXCLUDED (0.086) | NOT_EXCLUDED (0.26) |
+
+Entry scales: β = 2.3: W1 and D′ first counted at 3.15, D′ = 1 crossing 2.52; β = 2.4: W1 first counted at 2.32, D′ at 3.10,
+D′ = 1 crossing 2.63. The fit points at L√σ ≥ 3.1 with "(fund. unresolved)" in the log do not count.
+
+**Scaling check: FAILED** (pre-registered rule above). β = 2.4 against β = 2.3 interpolated: β_F differs by 20.6σ at L√σ = 2.32
+and 2.9σ at 3.10; β_A by 2.3σ and 3.9σ. By the pre-registered rule the numbers are lattice-artefact dominated at these b and **the
+click table is indicative only**.
+
+Reading (coordinator, after data): the D′ and W1 "clicks" from L√σ ≈ 3.1 are clicks of a block variable that is close to Haar
+noise there (β_F, β_A ≈ 10⁻²–10⁻³; c2a's adjoint coarse plaquette at β = 2.3 is zero within two errors from 3.15 on): the
+noise-limit trap (`../../proof-phase/c2a-adjoint/NOTE.md` §5.1, `../../proof-phase/c3a-uv/NOTE.md`). The real test is the
+good-blocking refit with a mandatory content check (`../../proof-phase/c3b-refit/PREREG.md`, queued). The halves evaluation
+(c2a) on all runs: `../../proof-phase/c2a-adjoint/eval_all.log`.
