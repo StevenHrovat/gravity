@@ -977,3 +977,16 @@ thread.
   β = 0, the state with no correlations and an infinite gap (earlier reading), and only there. The identification of thick vortices with
   dark matter and the restart are cosmological statements outside the Yang–Mills problem; recorded as the owner's reading, not tested
   here.
+- **The quantum of assertion fixes the thickness (the owner, same day, on M1 milestone 1):** "It seems to be the main issue, that the
+  thickness, so the amount of existence, is so variable. This is where the universal quantum of existence assertion comes in, which
+  defines the smallest act just as a consequence of the initial settings. Everything that exists must be able to assert itself in
+  multiples of that." Reading (coordinator): in Yang–Mills this is dimensional transmutation. The classical theory has no scale, so the
+  flux tube's thickness is free (milestone 1). The quantum theory has exactly one scale, Λ ~ (1/a)·exp(−1/(2 b g0²)), fixed by the
+  initial settings (bare coupling g0 at lattice spacing a) and nothing else; the running coupling reaches order one at thickness
+  T ~ 1/Λ, and that is where a vortex sheet stops spreading. So the smallest full act is the vortex at the confinement scale, and every
+  mass of the theory is a pure number times Λ; the mass gap is the smallest of them. Consequence for M1: inside M1's range (scales below
+  the stopping scale K, where g is still small) no vortex has reached the quantum. A sheet of thickness T ≪ 1/Λ costs 2π²/g(T)² per
+  patch, which is large, so it is a sub-quantum, strongly suppressed object and can be carried as an ordinary costly large-field region
+  (the bypass of milestone 1); full-size vortices only appear at K, which is exactly where M1 hands over to strong-coupling arguments.
+  The thickness runaway is then not M1's problem but the hand-over point. Open: whether the bypass bookkeeping actually closes (cost of
+  carrying against the sheet action, with Balaban's per-cube rates), and what becomes of the flat charged mode for sub-quantum sheets.
