@@ -1102,3 +1102,13 @@ thread.
   (keep the τ-sensitive small-field rule at scale 0). (3) On decay: in pure Yang–Mills the lightest glueball is stable (it is the lowest
   state; there is nothing lighter to decay into); what falls off rapidly is its correlation in Euclidean time, at rate equal to its mass.
   "It can only assert itself through the DB, so decays rapidly" matches that fall-off: the correlation length is 1/m.
+- **Sub-quantum: constant cost is optimal information flow (the owner, same day):** "That, I think, fits more into DMP/CMOS. In the
+  sub-quantum, the nodes lay themselves out to their optimal configuration for information to flow, so getting that result seems to fit,
+  since a constant cost translates to optimal information flow to me." Reading (coordinator): below the quantum the mathematics is indeed
+  scale-free. Asymptotic freedom makes the theory nearly free at short distances; fluctuations there propagate with massless,
+  power-law propagators (Balaban's fluctuation fields are Gaussian to leading order), and costs are uniform: a fixed 2β per thin-sheet
+  plaquette, and the classical scale invariance of 4D Yang–Mills (a thick SU(2) vortex costs the same at every width, c8a and milestone
+  1). Uniform cost per element is the condition under which nothing biases where information goes. The cut-off of that flow appears
+  only at the quantum (scale 1/Λ), where the running coupling reaches order one and the gap sets a finite correlation length. So the
+  picture is: sub-quantum = scale-free, unobstructed flow (CMOS-like layout, the information half); the quantum = where flow is bounded
+  and existence is asserted (the gap).
