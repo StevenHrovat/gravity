@@ -1221,3 +1221,103 @@ estimate)". **Nearly accurate.** Corrections:
 | chaining and result (12.3, 12.4) | consistent at paper-sketch level, uniform in spacing and volume |
 | final verdict | nearly accurate: add H1 as a fourth write-out; flag the normalisation reading as the single point that carries H2, H2a and R10, and say how it degrades |
 | **N-2 (my long-standing GAP)** | **reduced:** no longer open new analysis; a complete paper-sketch argument, pending one reading and four write-outs. It stays a GAP until those are done |
+
+## Ninth follow-up
+
+Read for this: `../m1-tools/UV-TV.md` sections 24 and 25, and [V] pp. 387-389 ((1.92)-(1.97)) in the extracted text
+layer. REVIEW-3 was not read. Nothing was built.
+
+### Verdict (ninth follow-up)
+
+* **All four of my eighth-follow-up points are resolved:**
+  * H1 is now a cluster expansion of the positive dilute gas, with a polymer-configuration coupling and no supremum
+    over boundaries;
+  * the `𝓗` remark is dropped;
+  * admissibility is handled by deleting whole history components;
+  * the normalisation reading is named as the single point of failure, with its fallback analysed.
+* **The per-cube restatement (rarity per `M R_j`-cube at rate `κ`) creates no new problem** for my earlier points
+  (bridging, inherited regions, localisation, the cascade). If anything it simplifies them: the merge range now fits in
+  one cube, so clusters are plain cube-adjacency components with entropy `3^d` per cube.
+* **What changes is the type of smallness.** The per-cube rarity is now a **fixed** constant `C e^{-c κ}`, no longer
+  `e^{-c p0(g_j)} -> 0`. So every subcriticality, the Kotecky-Preiss condition for H1 and the tail condition rest on
+  "`κ` may be taken large for given `L`" ([III] p. 260). That is a dependency on Balaban's construction (in practice it
+  costs a larger `M` or a smaller `γ0`), and the verdict should list it next to the normalisation reading.
+* **The final verdict is accurate,** apart from that omission and one caveat on the admissibility check, which was done
+  against a poor scan.
+* **N-2 remains a GAP (reduced):** a complete paper-sketch argument, owing one reading (or its fallback) and four
+  write-outs. No FATAL finding.
+
+### 1. My eighth-follow-up points
+
+| point | status | check |
+|---|---|---|
+| H1 stated via box-variable Dobrushin (false in the worst case) | **resolved** (write-out 4 owed) | 24.2: the polymers are connected components of the discrete data under cube adjacency, with activities `z(γ) <= e^{-p0} (C e^{-c κ})^{#cubes}` where the coarse field is small. The soft interactions are Mayer-expanded into links of size `C p^2 e^{-κ d}`. The effective interaction is taken correctly: as `log` of the integrated polymer measures minus the single-polymer parts, since cluster terms meeting several polymers depend on boundary fields inside the `T`-operations. This is a Kotecky-Preiss setting with a convergent expansion for `κ` large, and the coupling is disagreement percolation on polymer configurations. No supremum over boundary patterns enters, so the forced-continuation problem is gone. |
+| "conditionally on `𝓗`" remark | **resolved** | Dropped (24.3). The `T_i` are taken over a deterministic ball containing `Λ''_i`, and every coarse state is law-distributed by induction. |
+| admissibility of `ω_0` | **resolved in substance**; caveat | 24.1 step 1: delete every connected history component meeting `N_A`, at all scales. Shape conditions belong to a single component. Merging (adding layers, parallelepiped rule) is a function of components that are joined into one history component anyway. Distance conditions only relax when regions are removed. That is the right argument. **Caveat:** checked "as read; the scan of (2.3)-(2.9) is poor". Weak, but low risk. List it with the readings. |
+| normalisation reading as a single point of failure | **resolved** | Section 25 states it, with the refined form (small-field fibre integral `>= e^{-δ_j |region|}` times the Gaussian normalisation, `δ_j (M R_j)^d -> 0`). The fallback is analysed below. |
+
+### 2. Does the per-cube restatement create a new issue for my earlier points?
+
+* **Merging and cascade (sixth, seventh):** no.
+  * The merge range `2w_j + ell_B + 2 r_int + 2` is polylog in `log g_j^{-2}`, while `M R_j >= M (log g_j^{-2})^2` (with
+    `r >= 2`). So the range fits inside one `Q_j`-cube.
+  * Clusters are cube-adjacency components, with lattice-animal entropy `(3^d)^n`, which is fixed. There is no
+    size-dependent reach, so no cascade.
+  * Distinct components are at least one cube apart, which is `>= 2 w_j`, so collars are disjoint.
+* **Bridging (seventh, eighth):** no.
+  * Inherited pieces from different scale-`(j+1)` components are at least one `Q_{j+1}`-cube apart, about `L` cubes at
+    scale `j`, depending on how `R_{j+1}` compares with `R_j` (Balaban's (1.81) note that `R_{m+1} = L R_m` at some
+    steps).
+  * A bridge needs `>= c L` born cubes, at cost `(C e^{-c κ/2})^{c L}`. The truncation `G_j` with
+    `n_j = C_1 log |Λ''_j| / (c κ)` gives `|Λ''_j|^{-C_2}`.
+  * The unpriced band (born cubes within one cube of an inherited piece, where the quenched H2 needs the coarse field
+    small on a one-cube neighbourhood) is absorbed into the inherited composite box. That is my seventh-follow-up
+    accretion point, now closed by construction: the band factor is `2^d` in `N_j`.
+* **Inherited regions (seventh, eighth):** no. They are capped by `T_{j+1}` with the annealed H2a per cube. Persistence
+  still does not compound, for the same reason as before: the annealed law of `X_{j+1}` prices its own large set per
+  cube.
+* **Localisation (seventh, eighth):** no. `Λ''_j` and the truncations are counted in cubes, and every bound is local.
+  The outside is still a source in the global coupling.
+* **The front and the final rate:** unchanged in form.
+  * The rate per scale-`j` unit becomes `c κ/(M R_j)`.
+  * The front advance needs `t/ell >= C M R_ell g_ell^{-2}/κ`, which is polylog times `g_ell^{-2}` and holds as
+    `ell -> 0`.
+  * The final bound `C (R/ell)^d e^{-c κ t/(ell M R_ell polylog)} + C (t/ell)^{-d(C_2 - 1)} -> 0` still holds.
+* **One check on the per-cube Peierls.** [V] (1.92)-(1.97) bounds activities by `c1 e^{-(1+β) κ d(X')}`, with `d` the
+  linear size (tree length) in `M R`-cube units. For a connected union of `n` cubes, `d >= n - 1` up to a constant, so
+  `e^{-κ d}` does give a rate per cube. The per-polymer factor `c1` (taken `= e^{-p0}`, conservatively) is not needed
+  for the counts. Correct as used.
+
+### 3. The fallback and the verdict
+
+* **The fallback is analysed correctly.**
+  * If the normalisation reading fails, each `Q_j`-cube loses about `exp(C (M R_j)^d log β)` (the top variables'
+    Gaussian normalisation), which a fixed rate `κ` cannot absorb.
+  * It is absorbed by a per-cube margin `e^{-c p0}` that survives Balaban's entropy induction, given
+    `c p0 >= C (M R_j)^d log β`.
+  * That condition is implied by his `p0 >> M^d R^{d+1}`, since `R >= (log g^{-2})^2 >= log β`.
+  * Whether such a per-cube margin survives (1.80)-(1.89) is a second reading:
+    * (1.82)'s win condition `A_1^2 p0^2 >= O(1) M^d L^{d+1} R^{d+2}` leaves about `A_1^2 p0^2/2` per cube after the
+      entropy charge, which makes it plausible;
+    * but (1.89) states only a per-component `p0` and a rate `κ` per unit of linear size.
+  * "At least one of the two readings must hold" is the honest statement.
+* **The verdict** ("complete at paper-sketch level, one reading as a single point of failure with a fallback, four
+  write-outs") is **accurate**, with two additions:
+  1. **List the `κ`-large dependency.** The subcriticality `3^d C e^{-c κ/2} < 1/2`, H1's Kotecky-Preiss condition, and
+     the tail condition `κ >= 4 log L + log C` (13.1) all require `κ` large for given `L`. The note cites [III] p. 260
+     for this. It should be pinned as a reading of how `κ`, `M` and `γ0` trade off. It is likely harmless, but it is
+     now load-bearing for every rarity bound, where before the smallness came from `p0(g) -> infinity`.
+  2. **List the admissibility check** as done against a poor scan (low risk).
+
+### Status (ninth follow-up)
+
+| item | status |
+|---|---|
+| H1 (eighth follow-up) | resolved in design (cluster expansion plus polymer-configuration coupling); write-out 4 owed |
+| `𝓗` remark | resolved (dropped) |
+| admissibility of `ω_0` | resolved in substance (delete whole history components); checked against a poor scan (low risk) |
+| normalisation reading | stated as a single point of failure; fallback (per-cube `p0` margin, second reading) correctly analysed |
+| per-cube restatement vs bridging, inherited regions, localisation, cascade | **no new issue**; simplifies (cube-adjacency clusters, band factor `2^d`) |
+| new dependency | rarity now fixed (`C e^{-c κ}`); "`κ` large for given `L`" ([III] p. 260) is load-bearing and should be listed with the readings |
+| final verdict | accurate, plus the `κ` dependency and the scan caveat |
+| **N-2** | **GAP (reduced):** complete paper-sketch argument; owes the normalisation reading (or its fallback) and four write-outs |

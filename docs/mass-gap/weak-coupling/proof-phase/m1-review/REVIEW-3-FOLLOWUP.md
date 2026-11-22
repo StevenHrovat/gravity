@@ -1064,3 +1064,138 @@ normalisations) remains the main dependency, used both pointwise (12.1) and aver
   boundary fields (effective interaction after integration); drop the "conditionally on `H`" remark in 23.1.
 * The chaining sums converge uniformly in spacing and volume, given the GAP's fix. The rate is
   `e^{-c t/(l M R_l polylog)}`.
+
+## Follow-up 8 (`UV-TV.md` 24-25), 2026-11-22
+
+Read: `../m1-tools/UV-TV.md` 24 and 25 in full. Nothing was built or re-run; the commit was not checked (no git).
+
+### Verdict
+
+* **My Follow-up 7 GAP is resolved, conditionally on one quantitative input.** The Peierls bounds are now per
+  `M R_j`-cube at rate `kappa`, with Balaban's activities summed over internal structure, so the entropy factor
+  `C^{|N_A|}` is gone. The merge range and collar fit inside one cube, and subcriticality is a fixed condition on
+  `kappa`.
+* **The "`delta -> 0`" refinement is not part of the same reading. It is a second, separate input**, of a different
+  kind:
+  * the original reading is an identification: Balaban's `E_k(Z)` are the Gaussian fibre normalisations;
+  * the refinement is a size bound on the non-Gaussian part of his small-field action, `<= delta_j` per site, with
+    `delta_j (M R_j)^d -> 0`.
+  
+  The second does not follow from the first. It is plausibly available from Balaban's small-field bounds, but it must
+  be named and checked against his exponents. Without it, the denominator costs `e^{O(1)(M R_j)^d}` per cube, which
+  rate `kappa` cannot absorb, and the fallback reading would be needed.
+* **H1 at the polymer level is sound in principle.** The decisive point is that a polymer's presence has uniform
+  conditional bounds, unlike inherited box badness. Two NITs.
+* **The verdict in section 25 is nearly accurate**, but "single point of failure" mislabels it. The primary route rests
+  on two unchecked inputs (identification and `delta`-bound). The fallback, the per-cube margin, needs neither.
+* No FATAL, no GAP.
+
+### (1) Is the Follow-up 7 GAP resolved?
+
+**Yes, modulo (2).**
+* **Activities.** The quenched H2 per cube uses Balaban's `T`-activities, which (1.71) defines with the sum over
+  internal structure: `<= e^{-2(1+beta) p0} e^{-kappa d}` per component, from (1.89) improved. The `c1 e^{-(1+beta)
+  kappa d}` of (1.97) applies at release. Measuring `d` in `M R_j`-cubes is conservative. So
+  `w(A ⊂ Bad | X_{j+1}) <= e^{-p0 #comp(A)} (C e^{-c kappa})^{|A|}` follows, without the per-box entropy.
+* **Units.** Bad sets are unions of `Q_j`-cubes, and the merge range is
+  `2 w_j + l_B + 2 r_int + 2 = polylog(log g_j^{-2}) << M R_j`:
+  * `w_j ~ log(N_j (M R_j)^d p)` is `O(r d log log g^{-2})`;
+  * `l_B ~ (log log g^{-2})^{2d+1}`;
+  * `M R_j >= M (log g^{-2})^2`.
+  
+  So clusters are cube-adjacency components, with entropy `(3^d)^n`. The truncations count cubes, and subcriticality
+  `C 3^d e^{-c kappa/2} < 1/2` is a fixed condition. The `p0`-versus-`log log` condition is rightly superseded.
+* **Sizes.** `N_j` (cubes) times `(M R_j/l_B)^d` boxes, and `|W| ~ N_j (M R_j)^d` sites inside `w_j`'s logarithm. Both
+  are consistent.
+* **The remaining dependency** is the denominator of the ratio: the small-field alternative on `N_A`
+  (`3^d (M R_j)^d |A|` sites) must cost at most `e^{o(1)}` per cube relative to Balaban's normalisation. That is (2).
+
+### (2) Is "`delta -> 0`" part of the same reading, or a hidden second assumption?
+
+**A second assumption, logically independent of the first, though probably checkable.**
+* **The identification** says what Balaban divides by: his normalisation terms `E_k(Z)` in (1.70) ("normalization
+  terms and vacuum energy terms with localizations intersecting `Z`") are the Gaussian fibre normalisations of the
+  small-field alternative.
+* **The refinement** says how far the actual small-field integral is from that Gaussian:
+  `∫_{small field on N_A} e^{-A_j} >= e^{-delta_j |N_A|} x (Gaussian normalisation)`, with `delta_j (M R_j)^d -> 0`.
+  * This is a bound on the field-dependent, non-quadratic part of the small-field action: the cubic and higher terms
+    of the Wilson action in the fluctuation, and the E-terms after vacuum (and coupling) renormalisation, plus the
+    small-field truncation `e^{-c p^2}`.
+  * It is not implied by the identification. Even if `E_k(Z)` is exactly the Gaussian normalisation, the small-field
+    alternative could differ from it by `O(1)` per site. 12.1's earlier `e^{-C |N_A|}` was exactly that. Then the ratio
+    loses `e^{C (M R_j)^d}` per cube, and rate `kappa` cannot absorb it.
+* **Is it available?** Plausibly, from Balaban's small-field bounds, but it depends on exponents:
+  * the cubic terms give `~ g_j p(g_j)^3` per site, power-small, so harmless;
+  * the E-terms: if their field-dependent part on small fields is power-small in `g_j` after renormalisation (as the
+    irrelevant remainder in [III] p. 260 suggests), `delta_j (M R_j)^d -> 0` holds easily;
+  * if they are only `O(1) e^{-kappa d}` with analyticity giving `|E(V) - E(flat)| <~ (eps/alpha_0)^2 = (log
+    g^{-2})^{2(p - q0)}/C_0^2`, then one needs `2(q0 - p) > r d`, a relation between Balaban's exponents `q0`, `p`, `r`
+    that has to be checked in [I] (1.18) and [III] (2.28).
+* **Required change.** Name it as a separate input: "(b) the non-Gaussian part of the small-field action is
+  `<= delta_j` per site on small fields, with `delta_j (M R_j)^d -> 0`; source [I] (1.18), [III] (2.23)-(2.31), and the
+  cubic terms". Check it, or state the exponent relation it needs. It is a citation-level check, not an obstruction.
+* **The fallback makes it unnecessary.** A per-cube margin `e^{-c p0}` with `c p0 >= C (M R_j)^d log beta` absorbs the
+  `O(1)` per site as well. The fallback condition is covered by `p0 >> M^d R^{d+1}`, since `R_j >= (log g^{-2})^r >=
+  log beta`. That arithmetic is right.
+
+### (3) Is the polymer-level H1 sound, given Balaban's history-dependent patterns?
+
+**Sound in principle.**
+* **Why it works where box Dobrushin failed.** In a positive hard-core polymer gas with soft, bounded interactions, the
+  conditional probability that a given polymer is present, given everything outside it, is at most
+  `z(gamma) e^{C}`, **uniformly** in the outside. Presence is a discrete datum with its own activity, not a badness
+  inherited from neighbours.
+  * So a disagreement percolation that explores polymer configurations from `S` inward is dominated by chains of
+    polymers and links joined to `S`, each priced by its activity. The forced-continuation problem does not arise,
+    because whole polymers are the variables.
+  * The cluster expansion (Kotecky-Preiss, with `kappa` large) gives the correlation decay.
+* **History dependence.** A polymer is a whole history component across the scales `<= j`: unreleased large-field
+  regions and their nested sub-histories. Released regions have left the pattern. Small-field domains are complements
+  and carry no extra data. So polymers are finite local objects, and their activities are bounded per `Q_j`-cube by
+  24.1. This is fine.
+* **NIT: compatibility range.** Balaban's admissibility includes distance conditions (component shapes inside
+  `100 M R`-cubes, distances between small-field domains and large-field regions). Two polymers closer than those
+  ranges are not freely compatible. Define compatibility at that range (about `100` cubes): a hard core with entropy
+  `(C 200^d)^n`, absorbed by `kappa`. 24.1's deletion argument (step 1) covers admissibility after removal, but the gas
+  needs the same range for the hard core.
+* **NIT: positive links for the coupling.** Mayer-expanding `e^{E} - 1` gives signed links. That is fine for the
+  Kotecky-Preiss correlation bounds, but disagreement percolation needs a **positive** decomposition. Use 10.1's
+  `e^{E} = e^{m}(1 + h)`, with `0 <= h <= C p^2 e^{-kappa d}`, for the coupling, and signed Mayer links only inside
+  the cluster expansion.
+* **Near the coarse bad set** the gas is not dilute; it belongs to the inherited composite box or the source, as
+  stated. Consistent.
+
+### (4) Is the verdict now accurate?
+
+**Nearly. One correction and one addition.**
+1. **Not a "single point of failure".** The primary route rests on two unchecked inputs:
+   * **(a)** the identification of `E_k(Z)`;
+   * **(b)** the `delta_j`-bound of (2).
+   
+   The fallback rests on one different input: **(c)** the per-cube margin `e^{-c p0}` surviving (1.80)-(1.89). That
+   input is not implied by (1.89) as printed: whether the per-cube factors of (1.76) leave a margin of order `p0`
+   after the normalisation, entropy and lifetime costs is exactly what has to be read. The honest statement:
+   "Lemma UV-TV holds if (a) and (b) hold, or if (c) holds". Both routes share the rest.
+2. **Add to the owed write-outs:**
+   * the `delta_j`-check against [I] (1.18) and [III] (2.28) (exponent relation);
+   * the polymer compatibility range and the positive link decomposition in write-out 4.
+* The four named write-outs (Lemma C's cross term, the coupling-form Dobrushin-Shlosman theorem, the front advance, H1)
+  are the right list otherwise.
+* With these, "complete at paper-sketch level" is a fair description, at the same level as the rest of M1. The Balaban
+  readings are its unchecked base.
+
+### Findings, one line each (follow-up 8)
+
+* No FATAL, no GAP.
+* **Resolved:** the Follow-up 7 GAP. Peierls bounds are per `M R_j`-cube at rate `kappa` with activities summed over
+  internal structure. The merge range fits in one cube, and subcriticality is a fixed `kappa` condition. This is
+  conditional on (b) below.
+* **Naming correction (must be added to the verdict):** the "`delta -> 0`" refinement is a second, independent input,
+  not part of the `E_k` identification. The primary route needs (a) the identification and (b) the per-site
+  non-Gaussian bound `delta_j (M R_j)^d -> 0`, to be checked against Balaban's exponents (`2(q0 - p) > r d` if the
+  E-terms are only analyticity-controlled). The fallback (c), the per-cube margin, needs neither.
+* NIT (H1): set the polymer compatibility range to Balaban's admissibility distances (about `100 M R`-cubes), and use
+  the positive decomposition `e^{m}(1 + h)` for the disagreement-percolation coupling. Signed Mayer links only in the
+  cluster expansion.
+* H1 at the polymer level is sound in principle: polymer presence has uniform conditional bounds, so there is no
+  forced continuation and no inherited badness.
