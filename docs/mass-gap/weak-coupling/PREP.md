@@ -1283,3 +1283,11 @@ thread.
   route (c) supplies it from the margin at creation, p0²(g_j) per birth-scale cube, which is the earlier reading "the root cost is near
   infinite at G0" in quantitative form. So: DMP guarantees the floor (positivity, causality); the near-infinite root cost supplies the
   margin the proof spends.
+- **The size of the floor (the owner, same day):** "The size of the floor is also given through DMP. Since, to be DMP-complete, it has to
+  span all of existence from the start, the floor is always the size of existence." Reading (coordinator): in the mathematics this is
+  extensivity. The normalisation and vacuum-energy constants are a fixed amount per site, the same everywhere (translation invariance),
+  so the floor of any region is that density times the region's whole volume: it always spans all of what exists in the region. Because
+  it is uniform, it cancels exactly in every conditional probability and every ratio the proof uses (it is Balaban's vacuum energy,
+  factored out); only the local excess over it matters. That is why the re-proof (c) has to bound only the excess per cube, the loss of
+  the small-field alternative relative to the uniform floor, and why the kept slack is measured against that excess and not against the
+  floor itself.
