@@ -834,3 +834,19 @@ thread.
   of law-preserving maps is law-preserving), so nothing in M1 needs to change. (4) Open part of E7.J in this language: the averaging is smooth everywhere except at the flip to the
   other centre element (−1), where many fine histories collapse onto one coarse value; the factorisation (the tree) is not the problem,
   the binary boundary is.
+- **The flip is a cut, not a drift (the owner, same day, on the open part of E7.J):** "That was established earlier in DMP terms. When
+  something flips from existence (1) to non-existence (−1), only the assertion of existence is transported and only dualities by
+  themselves, while cutting the coarse bond, can transition." Reading (coordinator): this picks the second of the two fixes for E7.J
+  and says it is already the structure of M1's twisted blocking (`TWIST.md`, `P0.md`). (1) **Only the assertion is transported:** across
+  the flip, only the binary Z₂ label reaches the coarse level, never a continuous value near −1. In the twisted blocking this is the
+  split U = λ·S: the sign labels λ are blocked as a product (a record), and only the label-corrected smooth field S is averaged.
+  (2) **Only dualities by themselves, cutting the coarse bond, can transition:** the flip happens at the fine level, by single fine
+  dualities, and its effect on the coarse bond is a cut (a label), not a continuous approach. So the averaging never drifts into −1;
+  a coarse bond whose averaged logarithm comes near the cut is, by definition, cut. Proposed formulation for M1: add a cut flag to the
+  blocking for coarse bonds whose averaged logarithm reaches angle π − δ; flagged bonds go to the record/large-field branch (paid by the
+  root and maintenance costs as for trapped cores), and the continuous fibre is restricted to angles ≤ π − δ, where the Jacobian of the
+  exponential map is at least (sin δ/(π − δ))², giving the fibre-mass bound C(L, δ) per coarse bond with at most a factor 2 per bond for
+  the flag. Exactness is untouched: `map_resample_eq` holds for any measurable blocking map, flagged or not. What still has to be
+  checked: that flagged bonds are rare enough to be paid for by the large-field factors (a flag needs a large field on the owned fine
+  bonds, or a labelled sign pattern), and that the flag does not spoil reflection positivity or locality (it reads only the bond's own
+  face, like the existing labels). Sent to the M1 thread as the suggested route for E7.J.
