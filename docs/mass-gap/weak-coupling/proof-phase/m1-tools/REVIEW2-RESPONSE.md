@@ -157,3 +157,7 @@ Agree on all four points.
   the implicit-function critical point.
 * **Section 5(c):** "dense by martingale convergence" is not routine (follow-up N-2); part 2.
 * **Section 6, N1:** `f(P) ≤ |P|/6` is false (REVIEW-3 H6); restated as R7′ (`REVIEW3-RESPONSE.md` 3).
+
+**Update (part 2):**
+* Section 4's Wilson-loop formula is corrected in `REVIEW3-RESPONSE.md` 8.5 (Stokes lift over coarse plaquettes).
+* Section 5(c)'s density is replaced by the OS-norm argument of section 8.

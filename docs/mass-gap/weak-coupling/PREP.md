@@ -1131,3 +1131,12 @@ thread.
   handed to the coupling, in the second only the dimension-4 residue is left, so the label's cost on that box contracts by a fixed factor
   from one step to the next. A one-step contraction on a single box, iterated, gives the geometric decay over the label's whole life:
   the same shape as the one-box criterion, applied to a label's cost. Forwarded to the M1 thread.
+- **The remainder is attached to G0 (the owner, same day, reading M1 directly):** "The assumption of my reading as locating the remainder
+  with the coupling was not quite correct and leads me to a better restatement: the remainder is attached directly to G0. Through that
+  attachment it gains the ability to affect the coupling constant, which originates in G0." Reading (coordinator): this agrees with how
+  M1 placed it (`REVIEW3-RESPONSE.md` 12). M1 keeps a label's first-tick remainder in the label's own constant a_ℓ, not in the bulk
+  running coupling, because a position-dependent F² term is not covered by [I] Theorem 2. In the owner's terms the constant is fixed at
+  the label's root and belongs there. Its effect on the coupling goes through the origin: averaged over positions, all labels together
+  amount to a tiny shift of the bare coupling g0 (a finite renormalisation of the initial condition), while the law by which the coupling
+  runs from g0 ([I] Theorem 2) is untouched. So "the coupling becomes more efficient" holds as a re-tuning at G0, not as a change of the
+  running. The position-dependent part stays with each label.

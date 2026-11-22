@@ -92,3 +92,5 @@ paper outline with explicit deltas; no row is open beyond those two.
   `Φ_ℓ(X; V)` with properties (P1)-(P3); before release, a label is an indicator inside `T` (section 4).
 * **Status:** this note is an outline with deltas, not the induction (REVIEW-3 H3). Section 0's "two points stay at
   sketch level" is out of date. The induction, with the order of constants, is part 2 of the response.
+
+**Superseded (REVIEW-3 H3):** the induction is written in `S1-INDUCTION.md`, with the order of constants, the window form and the new E-row 7c.

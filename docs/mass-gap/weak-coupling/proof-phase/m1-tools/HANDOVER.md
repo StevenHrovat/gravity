@@ -65,3 +65,8 @@ mass-gap theorem still needs the crossover (P4) and the two interface changes, b
 **Update (2026-11-22, `SKETCH-STEPS.md` 2):** the claim that M1 delivers the `L_*` half of `ObsTransferPhysTW` (0.2(b), table row 2) is withdrawn to **open**: it needs Balaban's induction with a permanent frozen region of arbitrary content, uniform over the number of steps; it is the `L_*` segment of blueprint P5.2.
 
 **Update (REVIEW-2 G4, G5):** no SU(2) encoding is proposed (it is not gauge covariant). The block state is `(V_K, τ'_K)` with gauge-invariant observables. What M1 delivers is stated in `REVIEW2-RESPONSE.md` 5.
+
+**Update (REVIEW-3 H4, N-2):**
+* The `L¹` transfer is now paper (`REVIEW3-RESPONSE.md` 7).
+* Density of block observables holds in the OS norm (paper sketch, section 8). `MassGapLoc` should be stated for the OS closure of bounded local gauge-invariant observables.
+* The Wilson-loop proxy is the Stokes lift over coarse plaquettes (section 8.5).

@@ -152,3 +152,5 @@ with rate `m` (physical, independent of the class) and constants `C(n, R/ℓ)`.
 * **Section 2 (R10) is back to sketch.** `E_D` is a summation index, so the split has to use the positive partition.
   The probability bound needs a scale-`K` normalisation; R7 is bare-scale. The class must be the gauge-invariant
   polynomials, and the constants depend on `L_*/ℓ` too. Part 2.
+
+**Update (part 2):** section 2, step D, is replaced by `REVIEW3-RESPONSE.md` 7: the positive partition of (1.104), the mixture formula, and the scale-`K` normalisation paid from the large-field budget. The rate is `m = c κ/(M L_*)`. Steps A-C hold for real `t`.

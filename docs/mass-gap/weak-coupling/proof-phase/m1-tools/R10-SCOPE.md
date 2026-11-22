@@ -124,3 +124,5 @@ stated in this torus form.
 * The upgrade must be done in the infinite-volume/continuum limit (`LimitRP`), targeting `MassGapLoc`, not `TorusDecayLoc`.
 * The dense class must consist of character polynomials of block variables at a fixed physical scale (constants uniform in the spacing), not of fine links.
 * See `REVIEW2-RESPONSE.md` 5.
+
+**Update (REVIEW-2 follow-up N-2):** density of the block-observable class holds in the OS norm, not via martingale convergence in `L²` (`REVIEW3-RESPONSE.md` 8).

@@ -10,10 +10,10 @@ import ProofPhase.M1.Exact
 /-!
 # M1, assembled: the renormalisation-group densities are the true laws
 
-**The statement.** Scales `k = 0, 1, 2, …` with configuration spaces `X k` (the block field at scale `k`, together with
-the carried records of trapped cores) and reference measures `ν k`. The blocking `B k : X k → X (k+1)` (Balaban's
-average, twisted/excised as in `TWIST.md`, `TRAP.md`) defines the **true laws** `trueLaw k`: the bare Wilson law pushed
-forward `k` times.
+**The statement.** Scales `k = 0, 1, 2, …` with configuration spaces `X k` (the block state at scale `k`: the SO(3)
+block field and the closed Z2 layer) and reference measures `ν k`. The blocking `B k : X k → X (k+1)` (the SO(3) × Z2
+split with the decoder at the bare scale, excision and Balaban's average, mod-2 Stokes; `M1-PLAN.md` 0) defines the
+**true laws** `trueLaw k`: the bare Wilson law pushed forward `k` times.
 
 The renormalisation group produces densities `ρ k`. One step: resample (`resample`, the conditional large-field step
 `R̂`, with the conditioning variable `φ k` through which the next blocking factors) and push forward (`T`: the density
@@ -22,25 +22,27 @@ The renormalisation group produces densities `ρ k`. One step: resample (`resamp
 * **laws:** `ν k`-density `ρ k` **is** the true law at every scale — machine-checked here from the exactness theorem
   `map_comp_resample_eq`, under the named data hypotheses below;
 * **form:** every `ρ k` has Balaban's inductive form with his bounds (`Form k`) — by induction from the named
-  hypotheses `form0` (the bare density) and `stepEstimates` (the estimates of §5-§7 of the outline: dilution,
-  trapping, P2′, the constrained step E1-E13), which are **not** proved in Lean.
+  hypotheses `form0` (the bare density) and `stepEstimates` (the estimates of the one-step induction,
+  `S1-INDUCTION.md`: decoder, excision, dilution, labels, release, the constrained step E1-E13), which are **not**
+  proved in Lean.
 
 **Named hypotheses and where they are argued** (`M1-PLAN.md`, Part B):
 
 | field | content | row |
 |---|---|---|
 | `meas_*` | measurability of the maps and densities | (routine) |
-| `factor` | the next blocking factors through the conditioning variable | X1, `P0.md` 4, `TRAP.md` |
+| `factor` | the next blocking factors through the conditioning variable | X1, `S1-INDUCTION.md` |
 | `fibreN`, `fibreD` | `N`, `D` are the fibre integrals of the term and of the reference kernel | X1.H1 |
 | `D_ne_zero`, `D_ne_top` | `0 < D < ∞` on the regular set | X1.H2 (`S6-START.md` 3) |
 | `nextDensity` | `ρ (k+1)` is the density of the pushforward of the resampled term (the definition of `T`) | — |
 | `base` | the bare density is the bare law | — |
 | `form0` | the bare density has the inductive form | [III] (2.18) at `k = 0` |
-| `stepEstimates` | the inductive form propagates one step | §5-§7: D-mod, TRAP, P2′, P4, V1, E1-E13 |
+| `stepEstimates` | the inductive form propagates one step | `S1-INDUCTION.md`: Decoder, Labels, Release, Excision, V1, E1-E13 |
 
 **Row by row:** `M1RowStatements`, `M1RowHypotheses`, `m1_assembly_rows` split `stepEstimates` into the rows of
-`M1-PLAN.md`, Part B, with S1 as the combining hypothesis. The precise statement of every row and of `Form` (Balaban's
-(2.18) with records of trapped cores and excised backgrounds) is in `S1-ROWS.md`. The rows hold only while the running
+`M1-PLAN.md` 0, with S1 as the combining hypothesis. The precise statement of every row and of `Form` (Balaban's
+(2.18) for the SO(3) block field with the closed Z2 layer and label factors) is in `S1-INDUCTION.md`; `S1-ROWS.md`
+states them for the earlier trapping design. The rows hold only while the running
 coupling is small, i.e. below the stopping scale `K`: `M1RowHypothesesUpTo` and `m1_assembly_rows_upTo` give the form
 for `k ≤ K` and the laws for every `k`.
 
@@ -66,11 +68,11 @@ def trueLaw (B : ∀ k, X k → X (k + 1)) (μ0 : Measure (X 0)) : ∀ k, Measur
 
 /-- **The data of the renormalisation group with the conditional large-field step.** -/
 structure M1Data (X Y : ℕ → Type u) [∀ k, MeasurableSpace (X k)] [∀ k, MeasurableSpace (Y k)] where
-  /-- reference measures (product Haar, with counting measure on records) -/
+  /-- reference measures (product Haar, with counting measure on the Z2 layer) -/
   ν : ∀ k, Measure (X k)
   /-- the blocking -/
   B : ∀ k, X k → X (k + 1)
-  /-- the conditioning variable of the step at scale `k` (next field on `Λ`, outside field, records) -/
+  /-- the conditioning variable of the step at scale `k` (next field on `Λ`, outside field, Z2 layer) -/
   φ : ∀ k, X k → Y k
   /-- the rest of the blocking: `B k = ψ k ∘ φ k` -/
   ψ : ∀ k, Y k → X (k + 1)

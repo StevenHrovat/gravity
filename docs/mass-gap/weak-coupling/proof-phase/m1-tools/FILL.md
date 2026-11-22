@@ -96,3 +96,5 @@ estimate as `TRAP-CHECKS.md` T1, now with twist-free data). With `r0 = c/L⁴` t
 * "Cap reached implies irregular `W`" remains a sketch, through section 0.2.
 * Sections 0.4-0.5 (surjectivity and compactness for swallowed bonds) are superseded by the randomised swallowed bonds
   (`SKETCH-STEPS.md` 1).
+
+**Update (REVIEW-3 follow-up NIT 2; `REVIEW3-RESPONSE.md` 11.7):** with the new test threshold, the data deviate from pure gauge by up to `C_tw r0 λ² ≈ 64 C_tw C_1² c L^{−2}`, not `C c L^{−3}`. The filling closes for `c ≤ c'/(256 C_tw C_1^4)`, with `c` chosen after `C_1` and `C_tw` (`S1-INDUCTION.md` 1).

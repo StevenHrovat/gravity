@@ -63,11 +63,11 @@ the notes):
 | R7 normalisation per real flip | `Z_{−P}/Z ≤ (C β^{3/2})^{|P|}` (R7′) | **citation**, exponent derived by a rank count (`REVIEW3-RESPONSE.md` 3); the Jensen route and `f(P) ≤ |P|/6` withdrawn (REVIEW-3 H6) |
 | R8 release of acts and labels | dimension-4 coupling, summable | **paper** (`CLOSE-OUT.md` 2): no-linear-coupling lemma (gauge invariance and no invariant vector in `so(3)`); sum `ε_k² Σ_j e^{-p0(g_j)}` (needs `p0` growing faster than `log(k - j)`, i.e. `A0 > 1` if `p = 1`); labels no longer use it (fixed-domain factors, `REVIEW3-RESPONSE.md` 4) |
 | R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field | **citation** carry-over with the change table (`CLOSE-OUT.md` 5): small field means SU(2)-regular at scale 0 (`τ = +1`, N-1) and SO(3)-regular from scale 1 on; no centre; otherwise constants only |
-| R10 hand-over (b) | the `L_*` half of the ultraviolet transfer, `L¹` form | **sketch** (`WRITEOUTS.md` 2): REVIEW-3 H4, the split must use the positive partition and the probability bound needs a scale-`K` normalisation; part 2 |
+| R10 hand-over (b) | the `L_*` half of the ultraviolet transfer, `L¹` form | **paper** on citation-level inputs (`REVIEW3-RESPONSE.md` 7): positive partition of (1.104), mixture over `A`-clusters, scale-`K` normalisation paid from the large-field budget; rate `c κ/(M L_*)`, constants `C(n, R/ℓ, L_*/ℓ)`, gauge-invariant class |
 | R12 [16] (71) in 4D | the action lower bound behind [V] (1.76) in four dimensions | **paper**, written out from [12] (48)-(53) (`CLOSE-OUT.md` 1) |
-| G2/H1 labels | labels in Balaban's form | **paper** for components with `δ_k |X| ≤ 1/4`; **citation-level** for the normalised-operation Mayer expansion and the carrying within the lifetime; **sketch** for the super-rare tail (`REVIEW3-RESPONSE.md` 4) |
-| H3 one-step induction | `S1-CURRENT.md` written as the induction, with the order of constants | **outline** only; part 2 |
-| N-2 density | the block-observable class is dense in the limit | **open**; part 2 (bears on the interface) |
+| G2/H1 labels | labels in Balaban's form | **paper** on citation-level adaptations for components below `ε_*` (`REVIEW3-RESPONSE.md` 11-12): `a_ℓ e^{L_ℓ}`; only remainders persisting across two consecutive scales are labels; one-box contraction `N_{k+1} ≤ C L^{−4} N_k` (no linear coupling, R8; background scaling), iterated over the label's life; remainders go to the label's own constant, so [I]'s running is untouched. Above `ε_*`: **sketch** |
+| H3 one-step induction | the induction for the current design, with the order of constants | **paper** on citation-level inputs, four named sketch points (`S1-INDUCTION.md`); new E-row 7c (coarse plaquettes meeting holes, paid by the deep set) |
+| N-2 density | the block-observable class is dense in the limit OS space | **paper sketch** (`REVIEW3-RESPONSE.md` 8): dense in the OS norm by conditional decorrelation at scale `ℓ`, whatever `c0`; `L²` density is not needed |
 | R11 interface | measurable blockings with noise (done, `Interface/RandBlocking.lean`); block state `(SO(3), closed Z2)` with gauge-invariant observables (no SU(2) encoding, REVIEW-2 G5) | formal refactor, outside M1's folders |
 | ext | [I] Theorem 2 (running coupling, with `γ ≤ γ0(L)`) | external, unpublished |
 | P4 | the crossover `L_* → L₁` | not M1's; open, the core |
@@ -76,47 +76,43 @@ F2 (Bianchi halo) and F3 (P2′) are absorbed: halos live in released large-fiel
 because nothing is frozen. V1 with excision (`V1-EXCISION.md`, `V1-INPUTS.md`) is no longer on the main line: holes are
 never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `CutAvoid.lean` are off the main line;
 `Exact.lean`, `Dilution.lean`, `Vortex.lean`, `FibreMass.lean`, `Routine.lean`, `FluxTube.lean` and `Assembly.lean`
-(as bookkeeping, REVIEW-1 F7) remain in use. **Verdict (corrected after REVIEW-3 and the REVIEW-2 follow-up, 2026-11-22).** The earlier verdict, "complete at
-paper level", overstated what is written and is withdrawn. M1 is a complete programme. The counting, the decoder, the
-labels' form, the small-field rule and the extended holes are repaired. Still to be written:
-* **H3:** the one-step induction (`S1-CURRENT.md` is an outline). Part 2.
-* **H4:** R10's split on the positive partition, with a scale-`K` normalisation (sketch). Part 2.
-* **N-2:** density of the block-observable class in the limit (open; bears on the interface). Part 2.
+(as bookkeeping, REVIEW-1 F7) remain in use. **Verdict (after REVIEW-3 and the REVIEW-2 follow-up, both parts of `REVIEW3-RESPONSE.md`, 2026-11-22).** The
+earlier "complete at paper level" stays withdrawn. What is now written:
+* **The one-step induction** (`S1-INDUCTION.md`): paper on citation-level inputs (Balaban by equation), with the order
+  of constants, the window form, and the new E-row for coarse plaquettes meeting holes.
+* **R10 / H4** (`REVIEW3-RESPONSE.md` 7): paper on citation-level inputs.
+* **Density / N-2** (`REVIEW3-RESPONSE.md` 8): paper sketch, in the OS norm.
+* **Part 1:** N-1 (paper), the local decoder (paper), H5 (paper, one sketch step), H6 (citation, exponent derived).
+* **Labels** (`REVIEW3-RESPONSE.md` 11, after both part-1 follow-ups): paper on citation-level adaptations below
+  `ε_*`; sketch above.
 
-Repaired in `REVIEW3-RESPONSE.md`:
-* N-1 (paper);
-* H2, the local decoder (paper);
-* H1, labels as fixed-domain factors: paper for small components, citation-level extension, super-rare tail sketch;
-* H5 (paper, one sketch step);
-* H6 (citation, exponent derived).
+**Sketch-level points that remain:**
+1. "Cap reached implies irregular `W`" (`FILL.md` 0.2).
+2. The footprint-weighted lifetime in [V] (1.80)-(1.85), for super-rare long-lived regions and large labelled
+   components.
+3. Two readings of [V] p. 379 to check: per cube or per component, and the range of `A'`.
+4. The uniform small-field decorrelation for bounded fine observables and the uniform polynomial approximation in N-2.
+5. Labelled components above `ε_*`, carried beyond Balaban's lifetime.
 
-As before:
+**As before:**
 * **external:** [I] Theorem 2 with its rate (0.31);
 * **separate:** P4;
-* **outside M1:** the interface changes.
+* **outside M1:** the interface (block state `(SO(3), closed Z2)`; `MassGapLoc` on the OS closure).
 
-What each part rests on:
-* **Lean (machine-checked):** exactness of the conditional step, dilution and off-centre steps, slicing, Poincaré
-  counting, local-modification identities, fibre densities, gauge fixing at a leaf, the flux-tube bound, the footprint
-  sum, and the assembly as bookkeeping. Unchanged: 57 theorems in 12 modules, standard axioms.
+**What each part rests on:**
+* **Lean:** exactness, dilution and off-centre steps, slicing, Poincaré counting, local modifications, fibre densities,
+  gauge fixing at a leaf, the flux-tube bound, the footprint sum, the assembly as bookkeeping. 57 theorems in 12
+  modules, standard axioms.
 * **Paper:**
-  * R1, R2 (repaired), R3, R4, R12;
+  * R1-R4, R12;
   * the closing rule and the count;
-  * the local decoder;
-  * N-1;
-  * the labels' form for small components;
-  * extended holes (with one sketch step).
-* **Sketch:**
-  * R10;
-  * the footprint-weighted lifetime in [V] (1.80)-(1.85) (super-rare tails of R2 and of the labels);
-  * "cap reached implies irregular `W`" (`FILL.md` 0.2).
-* **Outline:** the induction (`S1-CURRENT.md`).
-* **Citation:**
-  * Balaban [I]-[V], [12]-[16] as stated;
-  * R9 carry-over;
-  * R7′;
-  * the normalised-operation Mayer expansion of [V] (1.103) used for labels;
-  * [13] (3.133)'s illegible exponents.
+  * the local decoder, N-1, labels (small components);
+  * the induction's deltas;
+  * R10.
+* **Citation:** Balaban [I]-[V], [12]-[16] by equation; R9; R7′; [13] (3.133)'s illegible exponents.
+* **Sketch:** items 1-5 above.
+
+Next: REVIEW-4 on part 2 if wanted.
 
 Parts A and B below are the pre-review plan, kept for the record.
 
