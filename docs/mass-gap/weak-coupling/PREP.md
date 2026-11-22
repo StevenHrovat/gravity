@@ -1069,3 +1069,11 @@ thread.
   answer reaches far away only through these quantized states, which is why a bound on a dense class of "existence-shaped" (analytic)
   observables extends to every bounded observable: the spectral upgrade. The smallest energy among them is the gap, the smallest
   assertion. Caveat: the energies themselves are not integer multiples of the gap; the integer labels are the quantum numbers.
+- **A finite box says nothing (the owner, same day, on the interface finding):** "It is expected that a finite box says nothing, since a
+  finite box is by definition non-existence, in which no act can happen, and only its existence and the information about the box can be
+  seen from the outside." Reading (coordinator): this is standard in the mathematics too. On a finite lattice every correlation decays
+  and the transfer matrix always has a positive gap, trivially, because the system is finite; a finite-volume gap carries no content.
+  The mass gap is a statement about uniformity: a gap that does not close as the box grows and the lattice spacing shrinks. Seen from
+  outside, a finite box shows only global data (its partition function, its twist sector, its spectrum as a whole), not propagation
+  inside it. Consequence for the proof (Interface R12): the spectral upgrade must be applied where acts are possible, i.e. with
+  constants uniform in the volume or directly in the limit (MassGapLoc on the infinite-volume limit), never on one fixed torus.
