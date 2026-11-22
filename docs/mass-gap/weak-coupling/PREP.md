@@ -1189,3 +1189,13 @@ thread.
   Wilson weights are strictly positive (`stepK_pos`), so what has to be checked is connectivity of the constrained fibre on every such
   subset. It gives a floor (a Doeblin bound) for every box and every boundary, so no box law can freeze. It does not replace the
   multi-scale crossing estimate for Balaban's large-field regions, which stays the main piece of work.
+- **Competing states at the boundary are required (the owner, same day):** "This is a requirement for the containing existence, since
+  this is the state where the probability space does not saturate the existence space. At the overlap, existence is only defined by
+  that it has the possibility to exist, without actually needing to, expanding the space while conserving the amount of existence."
+  Reading (coordinator): the several competing states of the fine field around a large-field boundary are not a defect to be removed but
+  structure to be kept. Mathematically they are kept as a discrete index of a positive mixture: Balaban's large-field patterns as
+  summation indices, the labels, the twist sectors. The mixture enlarges the space (one more index, every value possible) while the total
+  weight stays one (the law is conserved): "expanding the space while conserving the amount of existence". This is exactly the
+  formulation both reviewers asked for (patterns as mixture indices, matched first in the coupling), and it says the proof should never
+  try to force a single state at such a boundary. It also fits the strict-dominance results: the competing sectors coexist with nonzero
+  weight (no sector saturates), and only the contained existence (the reference sector) is strictly ahead.
