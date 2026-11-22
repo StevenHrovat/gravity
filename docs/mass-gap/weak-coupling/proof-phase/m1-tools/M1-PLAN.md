@@ -28,10 +28,10 @@ this session added (`NOTE.md`), with source equations, status and size. No write
 | D-shift | shift-averaged blocking leaves every blocked law unchanged | new | `NOTE.md` 2.5 | paper (exact, short); **not needed** after D-N | 0 |
 | D-prob | **Lemma D-prob**: under i.i.d. uniform shifts a deep core stays deep for `n` steps with probability `≤ p_stayⁿ`, `p_stay = O(L^{1-d})` | new | `NOTE.md` 2.5; missing: cone bound `f(z) ≤ C |z - y'|^{1-d}` on the path fraction, multi-site bookkeeping | **ruled out as a device** (`D-N.md` 2: shifts buy `≤ L^{-d}` per step, Balaban charges `exp(O(1) log g^{-2}(MR)^d)` per step); the estimate itself not needed | 0 |
 | D-N | constants: D-prob needs `N ≳ p0(g)/((d-1) log L)`, i.e. `ν ≥ p0`; compatible with `½ν ≤ p0 - p1 - 1` iff `p0 ≥ 2p1 + 2`; recent-region entropy then at equal powers (`A0 > 4 log L` times a constant) | [IV] p. 198; [V] p. 363, (1.80)-(1.85), p. 389 | `D-N.md` | **answered (paper)**: `N ≈ p0/(d log L)` admissible after removing the [IV] p. 198 artefact (`g_k/g_h ≤ √2`) and retuning `p0 > (2d+6) r`, `(p0+(2d+6)r)/2 < p1 < p0`, `β0` small; does not rescue the shift device | done |
-| D-pin | **deep cores pinned at nested block centres**: the owner's root rule (one root per core, suppression charged once, core frozen and carried) | new | `D-PIN.md` | **scoped: SURVIVES WITH LEMMAS P0, P2 (P3 fallback), P4**; root bookkeeping proved on paper (`D-PIN.md` 3) | see P-rows |
-| P0 | **averaging design**: an admissible average equal to Balaban's (0.4) on the small-field regime, analytic near every centre-valued star pattern, no trapping elsewhere (Balaban's own average is discontinuous at pinned patterns; first smooth variant traps 33% of deep stars) | new; [I] (0.4), p. 254 | `D-PIN.md` 2.2-2.4; `star_dynamics.py`, `near_vortex.py`, `zlift_traps.py` | **open, decisive** (would BREAK here if no such average exists) | ? |
-| P2 | **subscale decoupling**: a frozen root `m` steps old changes the step's ratio `N/D` by `exp(O(C L^{-c m}))` | new; evidence [V] (1.31), (1.47) | `D-PIN.md` 2.1 | open (new) | 3 |
-| P3 | rate condition `A_min b log L > C_1`, `b = 22/(6π²) ≈ 0.37` (only if P2 fails) | [III] (2.42), [I] Thm 2 | `D-PIN.md` 4(b) | open (constants) | 1 |
+| D-pin | **deep cores pinned at nested block centres**: the owner's root rule (one root per core, suppression charged once, core frozen and carried) | new | `D-PIN.md`, `P0.md` | **SURVIVES WITH LEMMAS P0 (constructed, write-up open), P2' (open), P4**; root bookkeeping proved on paper | see P-rows |
+| P0 | **averaging design**: the twisted-sector rule (Z2 label created once at the root, loops corrected by the label before the logarithm, label carried): equals (0.4) on small fields, analytic on the twisted sector, no trapping in any test | new; [I] (0.4), p. 254 | `P0.md`; `twist_dynamics.py` | **constructed + numerically checked** (reduced one-site model); full-lattice definition, link-RP check, multi-site no-trapping test, proof of no trapping open | 3 |
+| P2' | **subscale hole decoupling** (P2 reduced by `P0.md` 2: the twist is pure gauge outside the core): a frozen hole of size `L^{-m}` changes the step's ratio `N/D` by `exp(O(C L^{-c m}))`, capacity heuristic `c = 2` in `d = 4` | new; model [V] (1.31), (1.47) | `P0.md` 5 | open (standard type) | 2-3 |
+| P3 | rate condition `A_min b log L > C_1`, `b = 22/(6π²) ≈ 0.37` (only if P2' fails) | [III] (2.42), [I] Thm 2 | `D-PIN.md` 4(b) | open (constants) | 1 |
 | P4 | root suppression of a deep core `exp(-A_min/g_h²)`, `A_min = c0 r0²` | `[15]` Thm 1; [V] p. 380 | `D-PIN.md` 4 | citation level | 1 |
 | E1 | linear term: `J_0 = Q*_{k+1} λ` on `Λ`; its core contribution `≤ g_k^{-2} ε_{k+1} θ^{n_mod} r0 ≪ 1` | [V] (1.2)-(1.6), (1.28)-(1.29), p. 363 | Lagrange-multiplier identity, D-mod | open (routine + D-mod) | 2 |
 | E2 | quadratic form positivity on `ker Q_{k+1}` | [V] (1.7)-(1.9) | Poincare bound `O(L²)` (better) | open (routine) | 1 |
@@ -51,20 +51,19 @@ this session added (`NOTE.md`), with source equations, status and size. No write
 ## Totals
 
 * **Done here:** X1 (Lean), D-mod elementary part (Lean) with the exact weights (paper + exact-fraction check),
-  D-vortex (Lean + paper), D-N (paper, `D-N.md`), D-pin scoping with the root bookkeeping (paper, `D-PIN.md`),
+  D-vortex (Lean + paper), D-N (paper, `D-N.md`), D-pin scoping with the root bookkeeping (paper, `D-PIN.md`), the twisted-sector rule for P0 (paper + numerics,
+  `P0.md`),
   reading of [IV] pp. 177-199 and [V] pp. 364-386 (P1, E4 confirmed), `[15]` Theorem 1 statement.
 * **New writing, routine:** S1, X1.H1, X2, V1 check, V2, D-mod constants, E1-E3, E5-E9, moderate E10, retuning of
   `p0, p1, β0` (`D-N.md` 1), P4: about 34 pages, plus re-reading about 40 pages of Balaban.
-* **Open, new:** P0 (averaging design, decisive), P2 (subscale decoupling, about 3 pages if it holds), P3 only as a
-  fallback.
-* **M1's verdict now:** survives for moderate cores; for deep pinned cores **survives with lemmas P0 and P2** under the
-  owner's root rule; P0 is where it would break.
+* **Open, new:** P0 write-up (twisted rule on the full lattice, about 3 pages, plus a multi-site no-trapping test and,
+  ideally, a proof), P2' (subscale hole decoupling, 2-3 pages), P3 only as a fallback.
+* **M1's verdict now:** survives for moderate cores; for deep pinned cores **survives with lemmas P0 (constructed in the
+  reduced model) and P2'** under the owner's root rule and the twisted-sector averaging.
 
 ## Order of work (recommended)
 
-1. P0 exploration (numerical first, `star_dynamics.py` as the harness): averages equal to (0.4) on the small-field
-   regime, analytic at centre-valued patterns, tested for trapping with trivial and with random small-field shells.
-2. P2 on paper (subscale hole capacity in `d = 4`, adjoint triviality of centre-valued patterns, against [V] (1.31),
-   (1.47)).
+1. P0 write-up: the twisted blocking on the full lattice (`P0.md` 6), with a multi-site no-trapping test (CPU).
+2. P2' on paper (Dirichlet-hole estimate in `d = 4` within Balaban's localization, against [V] (1.31), (1.47)).
 3. V1 with `[15]` Theorem 1 (check its condition (1) for `Λ ⊂ Z`), then E1-E3, E9.
 4. The routine rows, with the retuned exponents of `D-N.md` 1.

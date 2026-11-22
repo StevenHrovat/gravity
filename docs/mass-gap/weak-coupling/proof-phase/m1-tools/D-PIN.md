@@ -13,6 +13,10 @@ Three small CPU checks, written before running with their question in the header
 `near_vortex.py`, `zlift_traps.py` (each under a minute). Claim marks as in `NOTE.md`. No Lean this round (nothing
 elementary here would raise confidence; section 6).
 
+**Update (`P0.md`):** P0 is constructed as the twisted-sector average (the core is a Z2 label created once at its
+root; loops are corrected by the label before the logarithm), equal to (0.4) on small fields, with no trapping in any
+test; P2 reduces to P2' (subscale hole decoupling).
+
 ## 0. Result in plain words
 
 1. **Check (2), the root, works (paper).** "Root = the first scale of the current unbroken run of scales at which the
