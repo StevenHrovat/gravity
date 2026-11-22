@@ -881,3 +881,13 @@ thread.
   (the cost of maintaining non-existence, earlier reading) sets how fast the margin shrinks. The rigorous link between vortex free
   energy and confinement in one direction is the Tomboulis–Yaffe inequality; in our files only the weak form (Z_tw ≤ Z, p ≤ ½) is proved,
   the strict form is a small Lean item, and the decay rate is not proved.
+- **Trapped at creation follows axiomatically (the owner, same day):** "Since non-existence has to be defined by existence, and that
+  existence must always trap non-existence behind a boundary, non-existence already gets created trapped, or else it would not be able to
+  exist, while being non-existence." Reading (coordinator): M1 found that E7.J (the fibre-mass bound) needs the trapping delay to be zero
+  (`E7J.md`): a deep core must be trapped in the step in which it appears, or its deep variables enter the averaging and the bound
+  becomes much harder. The owner's axiom says this is not a technical choice but the only consistent rule: a non-existence that is not
+  behind a boundary from the start would not be non-existence. In the proof the trapping rule is part of the blocking map, which is ours
+  to define, so the axiom fixes the natural definition (N_t = 0) rather than adding something to prove. It also fits the earlier "one
+  assertion tick" reading: one tick lies well inside a single blocking step, so "after one tick" and "at creation" are the same step.
+  A related boundary case for the strict dominance (next item): at β = 0 (no coupling, no duality to assert anything) Z_tw = Z exactly,
+  so "existence = non-existence + 1" needs something to exist, as the owner said earlier; the strict form can only hold for β ≠ 0.
