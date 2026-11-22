@@ -704,3 +704,18 @@ criterion numerically at one box size with extreme boundary conditions.
   can certify the whole (the one-box criterion is a statement about the rule, checked where the rule is fully present), and why such a
   certificate can in principle be computer-assisted: it is a finite statement. The owner affirmed the one-box route ("This fits very
   well"); cycle 7 starts on it.
+
+## Deep pinned cores: one root each (the owner, 2026-11-22, for M1)
+
+The owner: "Since, by definition, everything is ONLY ever attached to one G0, but it has to be, for it to exist, can we do it that way?"
+Context: M1's one open point (m1-tools, row D-pin) is a large-field core pinned at a block centre that survives every averaging; in
+Balaban's bookkeeping such a core is charged a cost per step proportional to the volume of its unrenormalised region, which diverges.
+Reading (coordinator; candidate): give every core **exactly one root** — the scale (and site) where it is created — and charge its
+suppression **once, at that root**; at every coarser scale it is carried as a fixed, external one-site defect (its few bonds are not
+re-integrated), so the per-step cost is only the local effect of a single-site defect on its surroundings, of order 1, not a volume
+factor. The sum over cores then becomes a sum over roots (each core counted once, as in a rooted tree expansion), and asymptotic freedom
+makes the sum over creation scales converge. This is the M1 thread's candidate ("renormalise only around the core") with the owner's
+accounting rule added. The check that decides it: (1) the core's influence on its neighbourhood per step is bounded independently of
+the step (it is a fixed boundary datum, not a growing region); (2) the unique-root assignment is well defined under the grid shifts and
+nesting of Balaban's regions; (3) the creation-scale suppression e^{−p0(g_k)} summed over roots beats the per-step O(1) cost. Sent to the
+M1 thread as the D-pin scoping.
