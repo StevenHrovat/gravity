@@ -781,3 +781,15 @@ Coordinator's working rule from this: (1) a step must fit DMP; (2) its Yang–Mi
 possible — what Lean proves is the implication (inputs ⇒ gap), and every input it rests on stays named; (3) numerics test whether the
 named inputs are plausible at reachable sizes and catch misapplications. The translation DMP → Yang–Mills (the dictionary) is the step
 that each layer checks from its side.
+
+## Trapping must be possible (the owner, 2026-11-22, on M1's no-trapping lemma)
+
+The owner: "Nothing ever gets trapped would also be not DMP-complete, as I read it. Since exclusion from existence is always an option,
+something must be able to become trapped behind a boundary, where only the boundary's existence is transported." Reading (coordinator):
+M1 found "no core ever stays deep" false (balanced stars) and replaced it by cut avoidance NT′. The reading goes one step further: a core
+that stays deep should not have to be avoided or captured at all — it may be **trapped**: excluded behind a boundary, carried as a
+frozen hole whose only transported datum is its boundary (its label / twist), charged once at its root. P2′ already treats exactly such
+frozen holes (the hole = the whole irregular part of the root region, surroundings regular, effect shrinking like ρ_k^(d−2) as the
+hole becomes small relative to the scale). So the candidate: **any core that stays deep for N steps is trapped** (frozen, boundary-only),
+which may make NT′(b′) unnecessary — the surroundings are then always regular, so the logarithm's cut is never met. Sent to the M1
+thread.
