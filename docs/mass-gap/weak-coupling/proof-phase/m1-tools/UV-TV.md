@@ -8,6 +8,8 @@
 
 > **Status (part 5, section 22 and section 12 continued):** the fixable items are written: links as edges; Lemma C without the interface factor; constant multiplicity with overlapping good boxes; coverage by rounding; the coupling-form Dobrushin-Shlosman theorem (no off-support hybrids); the cut-off check. Section 12 has started with the pointwise fibre normalisation, checked up to one reading (12.1).
 
+> **Status (part 6, section 23 and section 12 completed):** the size-cap gap is closed by an annealed truncation of each scale's large set (persistence) and a bridge-count truncation; the condition uses `g_j`; the failure tail is polynomial (`C_2 > 1`). H1 follows from Dobrushin uniqueness of the dilute pattern gas. The chaining from `ℓ` down gives UV-TV (i) and N-2's key step at paper-sketch level, resting on one unchecked adaptation (Balaban's normalisation terms).
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -1066,3 +1068,214 @@ fibre normalisations of the small-field alternative on the same region, so that 
   Then a quantitative H1 from its convergent cluster expansion: local pattern marginals depend on far coarse data with
   decay.
 * **The chaining** from `ℓ` down, with inherited regions priced at their own scale.
+
+# Part 6 (2026-11-22): section 12 completed, after REVIEW-2 (seventh follow-up) and REVIEW-3 (follow-up 6)
+
+## 23. Fold-ins to section 21 (before section 12 relies on it)
+
+### 23.0 Result in plain words
+
+* **The size-cap gap is closed by capping the actual large set of each scale's field, using the law (annealed).**
+  * Every coarse state in the tower is law-distributed: in (A) after the resample, and in (B) trivially. So the set
+    where `X_{j+1}` is not small field can be bounded under the law, by Balaban's bounds at scale `j + 1`, without
+    conditioning on anything coarser.
+  * The truncation `T_{j+1}` caps its clusters at `n'_{j+1}` boxes.
+  * Inherited regions at scale `j` are, by definition, only that set. So they never exceed `L^d n'_{j+1}` boxes,
+    whatever happened at coarser scales.
+  * **Persistence does not compound.** A region that stays bad over many scales is re-capped at every scale by that
+    scale's own law.
+  * This avoids any control of the fine field under large coarse data, which Balaban does not provide.
+* **Bridging** (two inherited regions chained by born boxes across their birth gap) is a further truncation `G_j`,
+  priced by the quenched H2 (REVIEW-3). Bridges have a minimum length set by the birth collars, so their number is
+  subcritical.
+* **Items 2-6** are folded in:
+  * the condition with `g_j`;
+  * polynomial tails with `C_2 > 1`;
+  * the global coupling with the outside as a source;
+  * the extra collar width `≳ r_int (log p)^{2d}/γ²`;
+  * finer-born unreleased regions treated as born boxes.
+
+### 23.1 The large set of each scale's field, capped under the law (persistence)
+
+* **Annealed Peierls for the large set (H2a).** Under the law of `X_i` (scale `i`), for every finite set `A` of
+  scale-`i` boxes, `P_law(X_i is not small field on every box of A) ≤ η_i^{|A|}`.
+  * **Source:** Balaban's representation of `ρ_i`. A non-small `V_i` on `A` lies in large-field domains of every term,
+    with the threshold outside the support of the characteristic functions (22.6).
+  * The normalisation is that of 12.1 one scale up, or equivalently the scale-`i` one-more-step normalisation of 13.3.
+  * **Annealed**, so no conditioning on coarser data is needed. It rests on the same unchecked adaptation, in its
+    averaged form.
+* **Truncation `T_i`:** some (proximity `2w_i + ℓ_B`) cluster of the large set of `X_i` or `X'_i` meeting `Λ''_i` has
+  more than `n'_i := C_1 log|Λ''_i| / log(1/η_i)` boxes.
+  * `P(T_i) ≤ 2|Λ''_i| Σ_{n > n'_i} (C (2w_i + ℓ_B)^d η_i)^n ≤ |Λ''_i|^{−C_2}`.
+  * This holds because both copies are law-distributed. For (A) the far data are resampled from the law given `𝓗`, and
+    the annealed bound applies conditionally on `𝓗` too: `𝓗` is local, and its large-set event is itself in `T_i`.
+* **On `T_{j+1}^c`:** inherited regions at scale `j` (the coarse bad set `Bad^c(X_{j+1})`, which is contained in the
+  large set of `X_{j+1}`) have clusters of `≤ L^d n'_{j+1}` scale-`j` boxes.
+  * No recursion: the scale-`(j+1)` clusters may be larger, through their own inherited parts, but only the large set
+    of `X_{j+1}` itself passes down.
+* **Pricing in the multi-scale chain:** `Σ_i P(T_i) ≤ Σ_i |Λ''_i|^{−C_2}`, summable (23.5).
+
+### 23.2 Bridging (mixed clusters)
+
+* **Birth gap.** Two inherited pieces from different scale-`(j+1)` clusters are at least `2w_{j+1} + ℓ_B` scale-`(j+1)`
+  units apart, that is at least `ℓ_gap,j := L (2w_{j+1} + ℓ_B) ℓ_B^{(j+1)}/ℓ_B^{(j)}` scale-`j` units.
+* **A bridge** joining them at scale `j` is a born component (scale-`j` patterns and links, outside the inherited set)
+  spanning that gap. It has `≥ ℓ_br := ℓ_gap,j/(2w_j + ℓ_B)` boxes.
+* **Truncation `G_j`:** some cluster meeting `Λ''_j` contains more than `n_j` bridges.
+  * By the quenched H2 (born boxes, outside the coarse bad set) and the min-trick,
+    `P(G_j | 𝒳_{j+1}) ≤ |Λ''_j| (C (2w_j + ℓ_B)^d η_j^{1/2})^{ℓ_br n_j} ≤ |Λ''_j|^{−C_2}`.
+* **On `F_j^c ∩ G_j^c ∩ T_{j+1}^c`:** every cluster in `Λ''_j` has at most
+  `N_j := n_j (L^d n'_{j+1} + n_j + 1)` boxes. That is `n_j` bridges and born components, each `≤ n_j`, plus at most
+  `n_j + 1` inherited pieces, each `≤ L^d n'_{j+1}`. `N_j` is logarithmic in `|Λ''_j|`.
+
+### 23.3 Collar width and constants (items 2 and 5)
+
+* **Collar:** `w_j := (3/m') log(C N_j p(g_j)) + C r_int (log p(g_j))^{2d}/γ²` (REVIEW-3's correction for constant
+  multiplicity with overlapping good boxes). Both terms are logarithmic or polylogarithmic, and independent of cluster
+  sizes.
+* **Scale-local region bound** (item 2): `log|Λ''_j| = d log(t/(L^j a ℓ_B)) ≤ (d/b) g_j^{−2} + C(t)`, from the running
+  coupling. Hence `log n_j, log N_j ≲ log g_j^{−2}` and `w_j ≲ (3/m') log g_j^{−2} + polylog(p)`.
+* **Subcriticality:** `C (2w_j + ℓ_B)^d η_j^{1/2} < ½` becomes `c p0(g_j)/2 > d log log g_j^{−2} + C log log p`. This
+  holds for `p0 = A0 (log g^{−2})^p`, any `p ≥ 1`, at `g_j ≤ γ0(L)`: a fixed condition on `γ0`.
+  * 21.3's derivation with `g_0` is withdrawn: it inverted `p0(g_j)` versus `p0(g_0)` (both reviews).
+  * As REVIEW-2 notes, Balaban's own `p0 ≫ M^d R^{d+1}` with `r ≥ 2` already forces a large exponent `p`.
+* The constant tables in `S1-INDUCTION.md` (conditions 5 and 8) are updated accordingly.
+
+### 23.4 Wording and scope (items 4 and 6)
+
+* **Global coupling, outside as source** (REVIEW-2). Theorem A_good (coupling form, 22.5) is applied to the **whole**
+  configuration. Everything outside `Λ''_j`, and every box where the truncation events would be needed, counts as a
+  disagreement source at distance `≥ R'_j` from `B`.
+  * Nothing is conditioned on fine configurations outside `Λ''_j`, so no unpenalised fine content enters near
+    `∂Λ''_j`.
+  * The truncation events are events of the patterns and of the coarse data, both priced.
+* **Unreleased regions born at finer scales** lie inside `ω_j` and are priced by its weights (quenched H2). For the
+  truncation they are born boxes. Their own birth collars are smaller than `w_j`, so they give no isolation. **Only the
+  coarse bad set is inherited from above** (REVIEW-3).
+
+### 23.5 The failure tail (item 3)
+
+* Conclusion of Theorem A_good at scale `j`, given the coarser data, for the source at distance `R'_j` (scale-`j`
+  units, boxes):
+  `E[#disagreeing sites on B_j] ≤ C |B_j| e^{−λ_j R'_j/2} + C|B_j| (C' η_j^{1/2})^{R'_j/(4(ℓ_B + 2w_j))} + P(F_j ∪ G_j ∪ T_j ∪ T_{j+1})`.
+  * The last term is `≤ 4|Λ''_j|^{−C_2}`.
+* **The tail is polynomial in `R'_j`**, not exponential. That is enough:
+  * with `C_2 > 1`, the sum over scales converges (23.6, 12.4);
+  * OS density needs only `o(1)` (13.4).
+* UV-TV (i) and 13.4 are restated with this tail. Exponential failure would need a merge range `~ log|Λ''|` and bring
+  back REVIEW-3's stronger condition.
+
+## 12 (continued, part 6). The multi-scale crossing estimate
+
+### 12.2 H1: the pattern marginal as a positive dilute gas, and its uniqueness
+
+* **The pattern marginal** given the coarse field is `w_ω(X_{j+1}) = ∫_{fibre} ρ^ω_j / ρ_{j+1}(X_{j+1})`, positive.
+* **Polymers** `γ`: connected components, under proximity `r_int`, of the union of the discrete data of `ω`:
+  * the domain history at scales `≤ j` (large-field domains, unreleased regions);
+  * labels and Z2 excitations;
+  * links.
+  
+  Admissibility (nesting, unions of cubes) is local inside each `γ`.
+* **Weights.** Integrating the small-field fluctuations on the complement of `∪γ`, Balaban's cluster expansion of the
+  small-field part gives
+  `w_ω ∝ Π_γ z(γ) · exp(−Σ_{X meets ≥ 2 polymers} E(X))`, where:
+  * the polymer activities `z(γ)` contain the `T`-activity, the single-polymer boundary terms, and the ratio to the
+    small-field alternative;
+  * by 12.1's comparison, `z(γ) ≤ η_j^{|γ|} e^{C|∂γ|}`, pointwise where the coarse field is small near `γ`;
+  * the many-body terms come from `E`-terms meeting several polymers. Since polymers are separated by `> r_int`, those
+    terms have `d(X) > r_int` and size `≤ C p² e^{−κ d(X)}`, which is small.
+  * Inside the coarse bad set the pattern is part of the inherited composite box and plays no role in H1.
+* **H1 (quantitative):** a **Dobrushin-uniqueness** statement for this dilute positive gas.
+  * As a Gibbs field of box variables (the pattern restricted to each box), the influence of box `b'` on box `b`, in
+    total variation of `b`'s conditional pattern law, is `≤ C η_j^{1/2} e^{−κ' dist(b, b')}`. Here `η_j` bounds the
+    probability that `b` carries a polymer, and the many-body interactions bound the influence of far boxes.
+  * Dobrushin's sum `Σ_{b'} C η_j^{1/2} e^{−κ' d} ≪ 1`, so uniqueness holds, with a coupling of the two copies' pattern
+    marginals in which `P(ω_b ≠ ω'_b) ≤ C Σ_{b' ∈ S} (C η_j^{1/2})^{dist(b, b')/r_int}`. Here `S` is where the two
+    specifications differ: near `D` and outside `Λ''_j`.
+  * This is Dobrushin's comparison theorem in coupling form, the discrete case of 22.5.
+* **Use in Theorem A_good.** Pattern disagreements become additional sources, with weight `P(ω_b ≠ ω'_b)`. This
+  replaces H1's "agreement off `D`-connected bad chains" by a quantitative bound of the same effect.
+* **Status: paper sketch.** The inputs are:
+  * 12.1, the pointwise activity bound (one reading of Balaban to check);
+  * Balaban's small-field cluster expansion for the interactions;
+  * positivity.
+  
+  The single-scale Dobrushin argument for a dilute gas is standard. The polymers carry a whole domain history, but they
+  are finite local objects, which changes nothing in the argument.
+
+### 12.3 One scale of the tower
+
+* **Input:** `(X_{j+1}, X'_{j+1})`, both law-distributed given the common σ-algebra of (A) or (B). Their disagreement
+  set `D_{j+1}` is measurable in the coarser data.
+* **Conditionally on `𝒳_{j+1}, 𝒳'_{j+1}`:**
+  1. couple the patterns by 12.2;
+  2. build the block family of 21 and 23 (composite boxes with collar `w_j`, inherited pieces from the large set of
+     `X_{j+1}`, born clusters, bridges);
+  3. apply the coupling-form Dobrushin-Shlosman theorem (22.5), with H3 on good boxes and Lemma C on composite boxes.
+* **Sources:**
+  * the image of `D_{j+1}`, enlarged by one box;
+  * pattern disagreements;
+  * `Λ''_j`'s outside;
+  * the truncation events.
+* **Output:** a coupling of `(X_j, X'_j)`, with:
+  * `E[#disagreeing sites in N_r(B_j) | coarser] ≤ C |N_r(B_j)| Σ_{y ∈ sources} e^{−λ_j dist_ω(y, N_r(B_j))}`
+    plus the failure term;
+  * where `dist_ω` contracts composite boxes.
+
+### 12.4 Chaining from `ℓ` down, and the result
+
+* **Distances.** In scale-`j` units the initial distance is `R_j := L^{ℓ−j} R_ℓ`, with `R_ℓ := t/ℓ` scale-`ℓ` boxes.
+  * At each scale the disagreement front advances by at most `a_j := C λ_j^{−1} log(|Λ''_j|)` boxes, except on events
+    of probability `≤ |Λ''_j|^{−C_2}`.
+  * `λ_j ≈ 1/ℓ_B` and `log|Λ''_j| ≲ g_j^{−2}` give `a_j ≲ ℓ_B g_j^{−2}`, polylog in `R_j`.
+* **Front after `ℓ − j` steps.** The front's remaining distance at scale `j` is `≥ R_j − Σ_{i ≥ j} L^{i−j} a_i`, which is
+  `≥ R_j/2` once `R_ℓ ≥ C ℓ_B g_ℓ^{−2}`. That holds when `t/ℓ` is large.
+* **Contracted distance.** Composite boxes on the path shrink `dist_ω`:
+  * born ones are priced by the quenched H2;
+  * inherited ones by the annealed H2a;
+  * covering half the path has probability `≤ e^{−c R_j/(ℓ_B + w_j)}` (21.5), for both kinds.
+* **Result (UV-TV (i)_avg, tower form).** For (A) and (B), with `B` the support region of the fine observable (physical
+  extent `R`) and `t` its distance to the source:
+  `P(the fine fields differ on B) ≤ C Σ_{j=0}^{ℓ} [ |B_j| e^{−c R_j/(ℓ_B + w_j)} + |Λ''_j|^{−C_2 + 1} ]`.
+* **Each term.**
+  * The first sum is dominated by `j = ℓ`: `|B_ℓ| e^{−c t/(ℓ(ℓ_B + w_ℓ))}`.
+  * The second: `|Λ''_j| ≈ (t/(L^j a ℓ_B))^d` grows as `j` decreases, so the sum is geometric. It is dominated by
+    `j = ℓ`, `≈ (t/ℓ)^{−d(C_2 − 1)}`, for `C_2 > 1`.
+* **Uniformity:**
+  * in the spacing `a`: the sum over `j` converges geometrically from the top, with constants depending on `g_j` only;
+  * in the volume: every quantity is local to `Λ''_j`.
+* **So** `P(the fine fields differ on B) ≤ C(R/ℓ)^d e^{−c t/(ℓ polylog)} + C (t/ℓ)^{−d(C_2−1)}`, which tends to 0 as
+  `ℓ → 0` at fixed `t > 0`.
+  * This gives (A) and (B) of 13.4, hence `‖F − f_ℓ‖_OS → 0`: N-2's key step.
+
+### 12.5 Status of section 12 and of Lemma UV-TV
+
+| piece | level |
+|---|---|
+| fold-ins: persistence by annealed truncation `T_i` (23.1), bridging `G_j` (23.2), collar and condition with `g_j` (23.3), global coupling and wording (23.4), polynomial tail (23.5) | paper sketch |
+| 12.1 pointwise fibre normalisation (quenched H2) | checked up to one reading of Balaban's normalisation terms |
+| H2a, annealed large-set Peierls under the law at every scale | same adaptation, averaged form |
+| 12.2 H1 via Dobrushin uniqueness of the dilute pattern gas | paper sketch |
+| 12.3 one scale: Theorem A_good, coupling form, composite boxes | paper sketch (22.5 written; Lemma C sketch) |
+| 12.4 chaining and the result | paper sketch |
+
+**Overall.** Lemma UV-TV, and with it N-2's key step, has a complete argument at **paper-sketch level**, resting on:
+1. **the unchecked adaptation:** Balaban's normalisation terms `E_k(Z)` are the Gaussian fibre normalisations of the
+   small-field alternative. It is used pointwise (12.1) and averaged (H2a, R10);
+2. **Balaban's small-field bounds** (citation): E-terms, the propagators with block constraints ([13] Theorems 3.12,
+   3.13), the localisation;
+3. **standard probabilistic tools:**
+   * Dobrushin uniqueness for a dilute gas (12.2);
+   * the coupling contraction (22.5);
+   * lattice-animal counts.
+
+**To write in full before Lean:**
+* Lemma C's cross term with the fibre constraint and the analytic perturbation;
+* 22.5 with composite boxes and the exact column condition;
+* the front-advance estimate of 12.4;
+* the H2a / 12.1 reading of Balaban's normalisation.
+
+**Lean:** the coupling-contraction layer (22.5) is the generic theorem to formalise first.
+
+**Not obstructed.** No step met a real obstruction in this part. The weakest points are the normalisation reading
+(item 1), and Lemma C's cross term, which has not yet been written line by line.
