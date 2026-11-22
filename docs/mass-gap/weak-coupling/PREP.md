@@ -761,3 +761,13 @@ is ONLY ever attached to one G0": in a DMP-complete (confined) system no two nod
 the uniqueness that the one-box criterion's tie test probes (2I and deconfined Z₂ have degenerate, root-sharing sheet positions and fail).
 In proof terms: "one root per node" ↔ the binary layer has a unique state for every outside (no degenerate sheet positions), which is the
 saturation of the binary layer (sheets cost nothing in confinement).
+- **Why the possibility space saturates at a definite size (the owner, same day):** "The answer is in the question itself! Since we can
+  entirely define it, the possibility space has to extend everywhere, since every possibility exists." Reading (coordinator; the
+  classical vortex-condensation argument in DMP words): the theory is fully defined by a finite rule, and every configuration has
+  positive weight (compact group, finite action), so every possibility — every vortex-sheet placement — is present. Whether they
+  saturate is energy against entropy: the number of ways to place a sheet grows with the size, while its cost is fixed per placement.
+  For SU(2) a sheet gets **cheaper as it widens** (continuity: about βπ²/d² for width d), so beyond a definite size the entropy of
+  placements wins and sheets proliferate — saturation, sheets free, no ties — near the deconfinement length (~1.4/√σ). For 2I a sheet
+  costs at least a fixed cβ at any width, so at weak coupling entropy never wins: no saturation, ties survive. For light there are no
+  sheets at all. The proof task this names: make the energy–entropy balance rigorous **uniformly over every outside** (Peierls /
+  chessboard-type estimates are the known tools for such balances).
