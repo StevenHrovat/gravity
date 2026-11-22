@@ -1312,3 +1312,13 @@ thread.
   equilibrium object; it is produced by running the averaged update from the product coupling, step by step, and the bound holds after
   finitely many steps. The update is a genuine dynamics only for β ≠ 0 (at β = 0 nothing propagates, the earlier reading), so the
   balance the bound expresses is reached by running, not by fiat.
+- **DMP as an Existence Turing Machine (the owner, same day):** "This is also why, in earlier GUID papers, I called DMP an Existence
+  Turing Machine (ETM), since it can run any existence as content and predetermine if it halts by seeing that it does not produce a
+  balanced state." Reading (coordinator): the Yang–Mills counterpart is the coupling theorem just formalised (CouplingDS.lean): the
+  averaged update is run step by step, and because it is a contraction (θ < 1) it is guaranteed to reach balance up to ε after a
+  finite, computable number of steps. Whether such a process settles is decided by checking the contraction condition (the one-box
+  column condition), not by running it to the end. One caution, recorded so the claim is not overstated: for a machine that can run
+  any computation as content, Turing's theorem says no general procedure can decide halting. So the ETM's halting criterion can be
+  decidable only for a restricted class of contents (for example, those with a contraction or balance property, as here), or with
+  "halts" meaning something other than Turing halting. In the Yang–Mills setting the decidable case is exactly the one that matters:
+  contraction is checked locally, box by box.
