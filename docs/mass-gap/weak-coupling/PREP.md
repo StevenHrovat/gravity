@@ -1038,3 +1038,13 @@ thread.
   dropped either: it is attributed to the regions it touches and charged through its shrinking footprint, so its effect on everything
   else is kept in full (it "exists" and interacts). The remainder route failed exactly because it tried to remove the sheet as if it did
   not exist at all; removing it disturbed its surroundings in a way only a decoupling lemma could repair.
+- **The decoder is not local, because G0 is not (the owner, same day, on R6):** "The decoder, since it is the link to G0, is not local,
+  since G0 is not local. The universal decoder for both existence and non-existence is their containment within existence." Reading
+  (coordinator): on a periodic box the Z2 layer carries two kinds of information. (1) Local information: small closed and open sheets,
+  the acts and their reflections. A decoder can handle these locally, with influence decaying in distance, apart from rare dense clusters.
+  (2) Global information: the homology class of the sheet configuration, i.e. through which non-contractible planes of the torus the flux
+  passes ('t Hooft's twist sectors). This part cannot be decided locally by any rule; it is a property of the whole box, the containment.
+  So the precise form of R6 is a split: the decoder = (global sector, finitely many bits per torus) + (local correction within the
+  sector). The global part is already handled in the project by summing over twisted sectors (Z_tw, the flip probability, `Twist.lean`),
+  and the local part is what Balaban's polymer expansion needs to be local. "Containment within existence" is the statement that the
+  sector is fixed by the box as a whole, not by any part of it. Sent to the M1 thread as the form of R6.
