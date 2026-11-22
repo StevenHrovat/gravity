@@ -1162,3 +1162,15 @@ thread.
   plane is at most e^(−2cδ/ℓ) times its norm, which vanishes as ℓ → 0 for fixed δ. Equivalently: the block observables at scale ℓ
   generate all states below energy c/ℓ. Whether that is easier to prove than uniform conditional decorrelation is to be checked;
   forwarded to the M1 thread.
+- **CMOS reading of Lemma UV-TV (the owner, same day; correcting the level: we are sub-quantum here):** "In CMOS the coarse state is the
+  actual hardware and software that is running, the definition of existence which is presumed. Since it is presumed as existence, the
+  fine observables must organize themselves in a way that keeps behavior but is independent of the actual internal layout. So you can
+  redeploy a CMOS cluster, or just make another box. Since the only thing that can be actually observed about CMOS is that it conforms to
+  the expectations of existence that it was started with, only the state of the coarse part is readable." Reading (coordinator): this is
+  the content of Lemma UV-TV (i) (`REVIEW3-RESPONSE.md` 13): given the coarse state near a region B, the fine layout on B can be realised
+  the same way whatever the coarse state does far away. Formally, two coarse states that agree on a neighbourhood of B give fine
+  configurations on B that can be coupled to coincide, except with probability C|B|e^(−κr). "Redeploying the cluster" is that
+  coupling: a different environment, the same local behaviour. "Only the coarse part is readable" is the consequence (the uncaptured
+  fine part has vanishing OS norm). The reading also suggests the route: the fine layout is fixed locally by the coarse state, i.e. a
+  Dobrushin-type contraction of the single-scale fine-given-coarse kernel (a weakly coupled, massive, local measure in its own units),
+  which is the same machinery as the project's one-box criterion. Forwarded to the M1 thread as the preferred route for UV-TV (i).
