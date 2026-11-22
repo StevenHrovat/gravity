@@ -493,3 +493,65 @@ Reading (coordinator):
   which existence is "forced binary" should coincide with the deconfinement length 1/T_c ≈ 1.4/√σ, where the act number's self-dual point
   was found (round 4); a check is the effective Z₂ (centre-projected) coupling of the blocked field as a function of L, read off the
   existing refit data, crossing the Z₂ confinement threshold there.
+
+## Crossing an existence boundary: only existence crosses, information is radiated as loss (the owner, 2026-11-22, cycle 5)
+
+The owner (dictated): "In DMP, crossing an existence boundary is something that has already been explored. [...] Information is unable to
+cross an existence boundary. When something interacts with an existence boundary, only its existence is transported across it, and the
+information is stripped away, and it's radiated away as loss. That's also how it works with switching over the root. At an existence
+boundary, only the existence is asserted, and only the assertion of existence is transported across it. That also, as far as I know,
+works for quantum mechanics: a massive packet interacts with it, and that existence and its associated assertion of existence is
+transported across the boundary, and only that is then used." Earlier readings it continues: the root swap at the confinement boundary
+(2026-11-21, above), "what is conserved is the act, the assertion of existence" (round 4), the binary existence layer and the stateless
+information layer (cycle 5).
+
+Reading (coordinator):
+- **Physics: N-ality.** In SU(2) the only datum of a colour source that survives at long distances is its centre charge (binary: a
+  fundamental source has it, an adjoint source does not). Adjoint sources are screened: their flux tube breaks by gluon pair creation and
+  the energy leaves as glueballs ("information stripped and radiated as loss"); fundamental sources stay confined. This is established
+  lattice physics (Casimir scaling at intermediate distances, N-ality at long distances).
+- **Blocking: the conserved part is exactly the binary flux sector.** Under an exact centre-respecting blocking the centre flux through a
+  boundary is topological and crosses intact; everything else is lossy (data-processing). So across the boundary between a box and its
+  doubled box, the only thing transported faithfully is the binary sector; the rest is the doubling law's loss η.
+- **Proof hook (candidate, not established): a binary channel.** If inside and outside of a box were conditionally independent given the
+  binary flux data on the boundary, the cross-volume step would reduce to a two-state transfer: correlations contract by |1 − 2p| per
+  crossing, with p the probability that the binary datum flips across the crossing (physically: a centre vortex pierces the boundary).
+  Then (i) confinement (vortices percolate, p bounded away from 0 and 1) gives a contraction per crossing; (ii) deconfinement (p → 0)
+  gives none (long-range order, as it must); (iii) light has no binary layer and its information crosses boundaries freely: no stripping,
+  no contraction (photon test passed); (iv) the owner's universal 1/e per tick would read |1 − 2p| = 1/e. The approximation "only the
+  binary datum crosses" is not exact; its error is exactly the open content (Lemma X / the stage-two step), so this restates the corner as
+  "the stripped information is radiated away, not passed on", and the loss must be summable for the doubling law.
+- **Quantum mechanics:** the decoherence picture (a which-outcome record crosses into the environment, phase information is radiated
+  away); an analogy, not used in the proof.
+
+**The owner's precise version (written, same day; supersedes the dictated wording above, which "did not fit in the model").** "An
+existence boundary swaps the dimensions, thus flipping from existence to non-existence. We had already established that the information
+side keeps its compatibility across this swap. Anything that crosses the boundary does need to be something that actually exists (a
+duality), anything else (light) asserts its existence at its boundary and has nothing more to do/be. The only thing that is normally
+transported across this boundary is its existence (see event horizons). In a still state, it's only its place in space, when i.e.
+spinning, more information has to be provided, which is a lossy process (higher efficiency for rotating BHs). When outside reach
+interacts with a boundary, the amount of existence it carries over is equal to the information it carries. For the information loss,
+Hawking–Penrose information radiation is entropy."
+
+Reading (coordinator; candidate, to be checked):
+- **The swap is the dimension swap already in this file** (Euclidean rotation; 't Hooft duality, `tHooft_rotation`): an electric flux (an
+  existence in time, an energy) becomes a magnetic twist (a non-existence that can still be interacted with, a free energy). The
+  information side stays compatible: the rotation is an exact symmetry of the action, so every correlation maps to a correlation.
+- **"The existence carried over equals the information it carries" is the act number read across the swap.** A box of side L becomes,
+  after the swap, a system at temperature T = 1/L, so z = E·L = E/T, and the weight of that state is e^{−E/T} = e^{−z}: **the act number
+  is information in nats** (the surprisal of the state). Existence (E·L) and information (−ln of the weight) are one number across the
+  boundary. The owner's universal information tick "1/e" is then **one nat per tick**: a contraction by 1/e is the act growing by 1.
+- **Light "asserts its existence at its boundary and has nothing more to do":** the free photon's vacuum act number is exactly 2π at every
+  box size (c5e, `photon_exact`): one full turn, a single assertion, never minted further. That is the frozen act that the Lean doubling
+  theorem already excludes (a frozen act needs loss ≥ 1/2 per step). Only something that actually exists as a duality (SU(2): electric
+  and magnetic sides both present, a centre) can carry more across.
+- **No hair: only existence crosses; still = place, spinning = more information, lossy.** For a black hole only mass, charge and spin
+  cross (no-hair). In Yang–Mills the counterpart is that only conserved, topological data cross a blocking boundary: the centre flux
+  sector, and the act (energy times extent). A still object carries only its place: the lowest state, 0⁺⁺. Spinning states (2⁺⁺ and up)
+  need more information and are heavier: the extra cost is the lossy part.
+- **The loss is entropy** (Hawking–Penrose radiation). For the doubling law the per-step loss η is then entropy production per doubling,
+  and "summable loss" reads: **the total entropy radiated while the box grows without bound is finite**. That is a concrete, checkable
+  form for the open step D-T, and it fails for light correctly (light's act is frozen at 2π, so the whole gain would have to be lost each
+  step).
+- Open question for the owner (asked, not yet answered): can the asserted existence flip or be lost while crossing (a vortex piercing the
+  boundary), or does it always arrive intact? The binary-channel candidate above needs occasional flips.
