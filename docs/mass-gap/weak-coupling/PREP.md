@@ -480,3 +480,16 @@ Reading (coordinator):
   existence layer's curvature stays positive, uniformly in the volume, once the information layer has relaxed**; light is flat (κ = 0),
   so the photon test is passed by construction, and in the deconfined phase the curvature must vanish. The existence clock being
   non-universal is consistent with dimensional transmutation: its tick is set by the generated scale (about 1/√σ), not by the lattice.
+- **Confinement in this picture (the owner, same day):** "That also fits well into confinement. In that picture, confinement is a state
+  where the existence boundary has contracted so far that existence is forced into a binary state, at which point a boundary is spanned
+  and the perturbance isolated." Reading: as the scale grows the coupling grows (the existence boundary contracts), the continuous
+  (adjoint) part becomes stateless noise, and only the binary centre datum survives — **centre dominance**. A centre vortex sheet or flux
+  tube is the spanned boundary; a colour charge is the perturbance, isolated behind it (only singlets propagate; an isolated perturbance
+  with a boundary costs energy growing with its size, hence a gap). In proof terms the endpoint is an effective **Z₂ gauge theory at
+  strong coupling** (4D Z₂ lattice gauge theory is confined and gapped for β below 0.4407; deep inside, a convergent expansion proves
+  it), plus a stateless adjoint layer. This describes the endpoint we already see: at L√σ = 2.80 the measured fundamental couplings are
+  0.054 / 0.171, the adjoint layer is stateless, and the W₁ column is certified below 1 for the fitted action. The corner is the **path**:
+  that the blocked SU(2) theory reaches the binary regime without losing its content on the way. Speculative but testable: the scale at
+  which existence is "forced binary" should coincide with the deconfinement length 1/T_c ≈ 1.4/√σ, where the act number's self-dual point
+  was found (round 4); a check is the effective Z₂ (centre-projected) coupling of the blocked field as a function of L, read off the
+  existing refit data, crossing the Z₂ confinement threshold there.
