@@ -425,3 +425,19 @@ confinement (an area law, or the act number growing) implies a mass gap, because
 the flux cost. It fails exactly where it must: SU(2)×U(1) (an abelian factor: payload not built from the flux), theories with matter
 (Banks–Zaks: screened). Status: as far as known open ("confinement implies a gap" is the converse of Chatterjee's direction); to be
 checked against the literature before work.
+
+## Swapping G0 by switching dimensions (the owner, 2026-11-22)
+
+The owner: "Existence is inherently linked to G0. Since everything that is has to interact through IM, every force has to belong inherently
+to G0. The only way for some node to swap G0 is by keeping the forces, but switching the dimensions, to get a non-existence that can still
+be interacted with, for the crossover." Reading: keeping the forces while switching the dimensions is **Euclidean rotation symmetry**: the
+Wilson action is unchanged when the roles of a spatial direction and of time are exchanged. Under that exchange an existing state in time
+(the electric flux, an energy, a state of the transfer matrix) becomes a twist across a spatial direction (the magnetic flux, a boundary
+condition with a free energy: not a state, "a non-existence that can still be interacted with"). This is exactly 't Hooft's duality
+proper, now in Lean as `tHooft_rotation` (workstream 2: the lattice rotation maps the temporal twist to the spatial twist on the symmetric
+box, T = L). The same exchange turns a box of spatial side L into a system at temperature 1/L, and below L = 1/T_c that system is
+deconfined: the crossover sits where switching dimensions turns the existence boundary (confinement) into its absence (deconfinement),
+which is the deconfinement length the unit tests already use and where the act number's self-dual point was found (L√σ ≈ 1.4–1.55,
+1/T_c ≈ 1.41–1.45/√σ). For the proof, the formal pieces are the lattice rotation (Lean), the symmetric box T = L (where round 4's blocking
+step B3 sits), and rotation invariance of the limit (blueprint P6.4); the reading suggests using the dimension swap to move between the
+temporal gap (an existence in time) and spatial decay (the slab and block statements of Route A).
