@@ -78,20 +78,27 @@ The one-sided step every route meets: comparing the blocked measure with the ori
 | P5.2 | block observables at L₁ ⇒ all local gauge-invariant observables | paper with a stated gap (`r3-robust/NOTE.md`, H1-fine) |
 | P5.3 | the gap for the whole field algebra: one rate for all truncated correlations; uniqueness of the vacuum | open |
 
-### P6. Existence, identification, fields and axioms
+### P6. Existence, identification, fields and axioms (updated after workstream 4, `proof-phase/ws4-existence/NOTE.md`)
+
+The OpenAI construction, read in its Lean source (statements verified; proofs not rebuilt by us, their correctness rests on the
+committee's audit): for every compact group with simple non-abelian Lie algebra, Wilson law, one-loop tuning, mesh limit at fixed volume
+then volume along a subsequence, renormalised local insertions; OS axioms (reflection positivity, translations, O(4)) and Wightman W0–W3
+for a selected phase of a phase average; `nonfree`. Not proved there: uniqueness, any decay rate, a gap.
 
 | piece | statement | status |
 |---|---|---|
-| P6.1 | existence of the continuum limit (subsequential), correlation functions included | external (OpenAI construction); our compactness lemma P3.1 is per volume and about densities |
-| P6.2 | identification: non-trivial (not free, not pure noise), unique along the line of constant physics | open |
-| P6.3 | OS positivity of the limit | follows from lattice positivity for half-space observables once limiting correlation functions exist (P6.1) |
-| P6.4 | Euclidean invariance: translations and rotations of the limit | open |
-| P6.5 | infinite-volume limit | open |
-| P6.6 | Wightman reconstruction | known given the OS axioms (Osterwalder–Schrader) |
-| P6.7 | tuning / line of constant physics inside the hypotheses | open |
-| P6.8 | local gauge-invariant renormalised fields (e.g. tr F²) as distributions, with the OS regularity bound | open |
-| P6.9 | short-distance agreement with perturbation theory (asymptotic freedom of correlation functions; bears on non-triviality) | open |
-| P6.10 | scope: every compact simple G (not only SU(2)); centre elements beyond z² = 1 | open |
+| P6.1 | existence of the continuum limit | external, statement verified in source, for their objects and order of limits; bridge to ours: `ProofPhase/Existence/Bridge.lean` (same lattice law up to β' = n·β, same tori, `VTuning`) |
+| P6.2 | non-triviality and uniqueness | non-triviality external for their selected phase (trace two-point asymptotics); open for our `NonTrivial`; uniqueness open (gap ⇒ single phase: paper sketch) |
+| P6.3 | OS positivity of the limit | ours Lean (`limitRP`); theirs external |
+| P6.4 | Euclidean invariance | external for their objects; not statable for ours (needs P6.8) |
+| P6.5 | infinite-volume limit | external, subsequential; `MassGapMF` (their order) does not need uniqueness |
+| P6.6 | Wightman reconstruction | external for their selected phase; standard for ours once OS axioms hold on a field algebra |
+| P6.7 | tuning / line of constant physics | open; slope corrected (our β = 2/g², slope 11/(6π²)); relation of their β(unit) = bar to our act-number condition open |
+| P6.8 | local gauge-invariant fields as distributions | external, partial (their fixed-stencil insertions); adopt as our field notion |
+| P6.9 | short-distance agreement | external, partial |
+| P6.10 | every compact simple G | existence external; `plaqLaw_eq_wilsonMeasure` generic; our `Tuning` SU(2) only |
+| P6.11 | order of limits | `TorusDecay` (level-uniform constant) ⇒ `MassGap` ∧ `MassGapMF` (`bothOrders_of_torusDecay`, Lean); `SlabDecay` reaches only ours |
+| P6.12 | observable bridge: our bounded slab observables vs their unbounded local fields | open (ratio/L² form of lattice decay: paper sketch) |
 
 ### P7. Assembly
 
