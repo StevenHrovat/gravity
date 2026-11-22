@@ -1,0 +1,20 @@
+PASS su2 generator mean plaquette in [0.55, 0.66] : 0.6031
+PASS u1 generator mean plaquette in [0.68, 0.76] : 0.7166
+PASS alignment b=2 (w=0 block plaquette = fine 2x2 loop at 2o+bX) : max diff 8.88e-16
+PASS alignment b=4 (w=0 block plaquette = fine 4x4 loop at 2o+bX) : max diff 1.22e-15
+PASS planted target (true R2 0.30): held-out LB below truth and close : LB 0.2946 tier ['B']
+PASS null target: held-out R2 <= 0.003 : 0.00008
+PASS window_mean s=2
+feature plan v1: 5184 (slot, offset) terms, 108 orbit keys
+feature plan v2 extras: 132 slots, 2352 (slot, key) groups, 592 orbit keys; total columns 700
+PASS v1 column count is the registered 108 : 108
+PASS su2: all v1+v2 features gauge invariant (random 4^4 lattice) : max diff 0.00e+00
+PASS su2: v2 orbit sums (Fourier) equal the explicit shift sums : max diff 0.00e+00
+PASS su2: S and smeared Q targets gauge invariant : max diff 2.75e-14
+PASS u1: all v1+v2 features gauge invariant (random 4^4 lattice) : max diff 0.00e+00
+PASS u1: v2 orbit sums (Fourier) equal the explicit shift sums : max diff 0.00e+00
+PASS u1: S and smeared Q targets gauge invariant : max diff 2.66e-15
+PASS Q with 0 smearing steps = spatial plaquette scalar
+PASS target_arrays P4 at b=2 equals the explicit window mean
+PASS P8 at N=8 is the lattice mean
+SELFTEST PASSED
