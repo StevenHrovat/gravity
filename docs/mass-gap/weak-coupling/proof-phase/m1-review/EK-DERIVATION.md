@@ -419,3 +419,202 @@ It uses them in:
   * It is a re-proof of [V] (1.80)-(1.97) with a retained slack term, to be written out; it is not a citation.
 * **κ (Q3).** Large κ for fixed L is stated ([I] Theorem 3, [III] p. 260), at the cost of `M ≥ M(κ)`
   (`δ_0 M ≥ κ`) and a smaller coupling bound γ. It does not touch `γ_0`, which is an absolute constant.
+
+---
+
+## Re-proof check: UV-TV.md section 26 (the kept slack in [V] (1.80)-(1.97))
+
+Checked against the page images of [V] pp. 380-390 and [III] p. 255, read for Q2 above. M1's slack is written `σ`
+below as in section 26. **Naming clash:** Balaban already uses `σ` for the small first-order term in (1.73)-(1.75),
+and `σ_0` in the Haar density. Renaming M1's slack (for example `s_j(Z)`) would avoid misreadings.
+
+**The structural point, which settles most of the checklist.**
+* *Source says.* (1.79) is the only analytic inequality in [V] pp. 380-387. Everything after it, (1.80)-(1.88),
+  is bookkeeping on the exponent of (1.79): "If Z is a component of Z_j ... we write the factor connected with Z in
+  the form `exp(−κ_j(Z) − 2p_0(g_{j(Z)}))`" (p. 384). The κ's are names for partial sums of creation gains minus
+  normalisation costs.
+* *Source says.* The costs are charged at three places only:
+  * the current-step cost `O(1) M^d R^{d+1} d'` subtracted in (1.82), (1.83), (1.85);
+  * the future costs, which (1.80) requires κ to cover;
+  * the merging cost `O(1) 2d M^d R^{d+1}` in (1.87), paid with the p_0 surplus.
+* *I infer.* Splitting a creation gain into a part that enters κ and a part kept aside is a relabelling of the same
+  exponent. It is legitimate exactly when the κ-part alone still satisfies every inequality that Balaban proves about
+  κ. Each item below checks that.
+
+### 1. Halving the first term of (1.82)
+
+* *Source says* (p. 385):
+  * `Π_i exp(−½ γ_0 A_1² p_0²(g_1)(d'_1(Z_1^{(i)}) + 1)) ≤ exp(−¼ γ_0 (14)^{−d} A_1² p_0²(g_1)(d'_1(Z) + 1))`;
+  * (1.82) `κ_1(Z) ≥ ¼ γ_0 (14)^{−d} A_1² p_0²(g_1)(d'_1(Z) + 1) − O(1) M^d R_1^{d+1} d'_1(Z)`;
+  * "the statement holds for j = 1 ... if `¼ γ_0 (14)^{−d} A_1² p_0²(g_1) ≥ O(1) 2(64)^d M^d L^{d+1} R_1^{d+2}`.
+    This condition is satisfied for p_0 large, and g_1 sufficiently small."
+* *I infer.* **Legitimate.** The `(d'+1)`-proportional gain is split into two non-negative parts. The κ-part
+  satisfies (1.80) under (P0), Balaban's condition with the constant doubled.
+  * (P0) holds by the same argument, for g small at unchanged exponents: it needs `2p_0 > r(d+2)` in the
+    `log g^{−2}` exponents, which his condition already requires.
+* *Minor.* (1.85), p. 386, prints the new regions' term as `γ_0 A_1² p_0²(g_{j+1})(d'_{j+1} + 1)`, without the ½ of
+  the creation factor on p. 381 (min{...}, then `≤ ½ γ_0 A_1² ...`). That is a factor-2 inconsistency in the source;
+  the safe choice is ½. M1's step 5 copies the printed γ_0, and should use ½. It only moves constants inside (P0).
+
+### 2. Does the tree argument (1.86)-(1.88) use only κ and the p_0 surplus?
+
+* *Source says* (pp. 386-387):
+  * (1.86) is an identity obtained by applying the additive definition (1.85) to the leaf X and the rest Y:
+    `κ_{j+1}(Z) = κ_{j+1}(X) + κ_{j+1}(Y) + 2p_0(g_{j(X)}) + 2p_0(g_{j(Y)}) − 2p_0(g_{j(Z)})
+    + O(1)M^dR^{d+1}(d'(X) + d'(Y) − d'(Z))`;
+  * then `d'(X) + d'(Y) + 2d ≥ d'(Z)` and `2p_0(g_{j(X)}) + 2p_0(g_{j(Y)}) − 2p_0(g_{j(Z)}) ≥ 2(1+β_0)^{−1}
+    p_0(g_{j+1})` give (1.87);
+  * (1.88) closes with `≤ κ_{j+1}(Z) − 2(1+β_0)^{−1} p_0(g_{j+1}) + O(1)3(100M)^d R_{j+1}^{d+2} ≤ κ_{j+1}(Z)`
+    "for p_0 large and γ small enough";
+  * the single-domain vertices are covered by (1.83) or "the first induction step", that is (1.82) at scale j+1.
+* *I infer.* **Yes.**
+  * (1.86) stays an identity when (1.85) is redefined with half the new-region gain, since the halved definition is
+    still additive over vertices.
+  * (1.87) and (1.88) use only the parts' κ, the d'-subadditivity and the per-component `2p_0` surplus.
+  * The new-region vertices use (1.82) at scale j+1, hence (P0).
+  * σ appears nowhere.
+* *Side remark.* (1.88) itself needs `2(1+β_0)^{−1} p_0(g) ≥ O(1)3(100M)^d R^{d+2}`, a condition on `p_0` (not
+  `p_0²`) with `R^{d+2}`. Balaban's chain therefore already forces the exponent relation `p_0 > r(d+2)`. This
+  matters for item 5.
+
+### 3. Do (1.92)-(1.96) use `κ_k ≥ 0` in a way that would need σ?
+
+* *Source says* (pp. 387-389):
+  * `κ_k ≥ 0` is used once, to obtain (1.89) from (1.80) with K = 0;
+  * (1.92) then uses (1.89) per factor `T'_k(X_{j_h})`, plus (1.68) and `|σ| ≤ 1` from (1.73);
+  * (1.93) produces the cost `Π_h exp((1 + β + β/(3·2^d)) κ M^{−d} |X_{j_h}|)`, bounded on p. 389 by
+    `Π_h exp 2κ(100R_k)^d`, using that the released X is small (condition (i)), and paid by
+    `−2(1+β_0)^{−1} p_0 + 1 + 2κ(100R_k)^d ≤ −(3/2) p_0`;
+  * (1.94)-(1.95) cancel the boundary sums against the second factor of (1.93);
+  * (1.96) spends `e^{−q p_0/2}` on the sum over q and positions, and one `e^{−p_0}` is extracted for c_1.
+* *I infer.* **No.**
+  * Every step after (1.89) is an upper bound that is monotone in the T'-factors.
+  * A factor `e^{−σ_k(X_{j_h})} ≤ 1` attached to each `T'_k(X_{j_h})` passes through all of them unchanged.
+  * Restricting the sum to decompositions covering a set A gives a sub-sum, bounded by the same majorant times the
+    uniform `e^{−c p_0² |A|}`.
+  * The only volume cost charged to the T-factors (`2κ(100R_k)^d`) is paid from the per-component p_0, not from σ.
+
+### 4. Conversion to current-scale cubes, and the sup over internal histories
+
+* *Source says.*
+  * p. 384: `S^{n−j}(□)` is a cube made of `L_{n−j}^d` `M R_n`-cubes, with `L_{n−j} < 63`.
+  * `d'_n(S^{n−j}(Z)) ≤ (63)^d 3·2^{d−1} d'_n(Z^{(n−j)})` if the right side is non-zero, else `≤ (64)^d`.
+  * `d'_n(Z^{(n−j)}) ≤ L^{−½(n−j)} d'_j(Z) ≤ 2^{−(n−j)} d'_j(Z)` for `n − j > 1`.
+  * (1.76): `Z_j ⊂ Z'^{~10}_{j−1} ∪ ∪_i (Z_j^{(i)})^{~2}`.
+  * Preparatory large fields arise only inside components of an existing region Z_j satisfying (i), (ii)
+    (p. 381).
+  * (1.79) is a bound "sup over all admissible domains", after "the summations over the admissible sequences can be
+    replaced by the factors `exp O(1)(MR_j)^{−d}|Z_j|`" (p. 383), which go into the κ-costs.
+* *I infer.*
+  * **The conversion is right**, with a constant that M1 writes as C:
+    * iterating (1.76) gives, for every history inside a released X, `X ⊂ ∪_b S^{k−j_b}((Z_b)^{~2})` over the P/Q/R
+      births b of that history;
+    * each birth-scale cube grows into at most `63^d` current-scale cubes, so
+      `#cubes_k(X) ≤ C Σ_b #cubes_{j_b}(Z_b) ≤ C' Σ_b (d'_{j_b}(Z_b) + 1)`;
+    * the last step uses `#cubes ≤ 3^d (d' + 1)` for a connected union of cubes, since d' is the length of a tree
+      meeting every cube.
+  * M1 writes the scaling as `2^{−(k−j)} d'_j + (64)^d` and drops the factor `(63)^d 3·2^{d−1}`. That is harmless:
+    it goes into C.
+  * **The sup over histories is right.** The sum over histories is already bounded by the entropy factor times the
+    sup, and the entropy is a κ-cost. The bound `σ ≥ (c_σ/C') p_0²(g_k) #cubes_k(X)` holds for each history, so the
+    factor comes out of the sup as `e^{−inf σ}`.
+  * Overlapping births at different scales only add to σ.
+* *Scope note.* (1.97') covers released components, which are the only ones in the activities F. An unreleased region
+  at an intermediate step carries its slack in the (1.79) product as `e^{−κ_j(Z) − σ_j(Z) − 2p_0}`. There σ can be
+  taken, but κ cannot: it is reserved for future costs. If M1's bad sets include unreleased regions, that part must
+  use (1.79)/(1.80'), not (1.97'). This is a matter of applying the bound to the right object, not a gap in the
+  re-proof.
+
+### 5. (P1) and the exponent chain
+
+* *Source says.*
+  * p. 383: "We assume that `2p_1 − (d+5) r_0 > p_0`, and we estimate the factors by `exp(−p_0(g_j))`". The
+    preparatory factor `exp(−R_j^{−d−5} p_1²(g_j))` must beat `p_0(g_j)`.
+  * p. 389: `p_0(g_k) ≳ 8κ 100^d R_k^d`.
+  * (1.88) needs `p_0(g) ≳ (100M)^d R^{d+2}`.
+  * (1.82) needs `A_1² p_0²(g) ≳ M^d L^{d+1} R^{d+2}`.
+* *I infer.*
+  * (P1) `p_0(g) ≥ C(κ + M^d) 100^d R^d` needs only the exponent relation `p_0 ≥ r d`, which (1.88) already exceeds
+    (`p_0 ≥ r(d+2)`). At fixed exponents, (P1) follows from Balaban's (1.88) condition for g small, since the ratio
+    grows like `R²`.
+  * **No exponent changes**, so `p_0` is not raised and `p_1` need not be raised. The constant doubling in (P0) is
+    likewise absorbed by taking g smaller. Raising `A_1` instead would be the wrong lever, since `A_1` also sets the
+    `p_1` cut on p. 383.
+  * (P1) is also redundant. M1 says it is needed for "regions whose only gain is the preparatory `e^{−p_0}`". But
+    every such region is `Z = S(Z_0)` with `Z_0` an existing large-field region. Its ancestry contains at least one
+    P/Q/R birth, and M1's own step 4 keeps `σ_j(Z_0)`. So `σ ≥ c_σ p_0²(g_b)`, while the region has at most `100^d`
+    current-scale cubes. (P2) then covers its denominator loss. Keeping (P1) does no harm.
+
+### 6. Direction of `p_0(g_birth) ≥ p_0(g_k)`
+
+* *Source says* ([III] (2.6)-(2.7), p. 255, for n > m):
+  * `g_m ≤ (1+β_0) g_n`;
+  * `(log g_n^{−2})^p ≤ (1+β_0)(log g_m^{−2})^p`.
+* *I infer.* **The direction is right, but not exact.**
+  * The birth step is earlier, so `m = j_b < n = k`. The source gives only `g_{j_b} ≤ (1+β_0) g_k`, not
+    `g_{j_b} ≤ g_k`: monotonicity of g is not stated.
+  * Hence `p_0(g_{j_b}) ≥ (1+β_0)^{−1} p_0(g_k)`, and `p_0²(g_{j_b}) ≥ (1+β_0)^{−2} p_0²(g_k)`.
+  * This is the same factor Balaban uses in (1.86). It only multiplies `c'_σ` by `(1+β_0)^{−2}`, which M1 should
+    write in.
+
+### 7. Preparatory large fields: p_0² gain or only e^{−p_0}? (REVIEW-2 against REVIEW-3)
+
+* *Source says.*
+  * [V] p. 381: "Besides the above large field factors there are also the factors arising in the preparatory steps
+    to the R-operation, and described in Sect. 1 [IV]. These factors are connected with components of a large field
+    region Z_j, which satisfies the conditions (i), (ii) at the beginning of Sect. 1 [IV]. Thus, if one of the
+    functions `1 − χ_j^{(n)}` is introduced in such a component, we get a factor ...".
+  * The listed factors are:
+    * `exp(−A_1² p_0²(g_j))`;
+    * `exp(−γ_0 A_1² p_1²(g_j))`;
+    * `exp(−A_1² p_0²(g_j))` again, for `1 − χ_{j,Λ}`;
+    * `exp(−R_j^{−8} p_1²(g_j))` and `exp(−R_j^{−d−5} p_1²(g_j))` for the two cases of `1 − χ'` (pp. 381-383).
+  * p. 383: "This is the largest factor among all the small factors we have obtained from the large field
+    characteristic functions in the preparatory steps. We assume that `2p_1 − (d+5) r_0 > p_0`, and we estimate the
+    factors by `exp(−p_0(g_j))`."
+  * (1.79): the last product `Π' exp(−p_0(g_j))` is "over components of Z_j satisfying the conditions (i), (ii), for
+    which some large fields are created during the preparatory steps". That is **one factor per component**, with no
+    `(d'+1)`.
+  * The `p_0²(d'+1)` creation gain of p. 381 belongs only to the characteristic functions `χ_j^c(P_j)`,
+    `χ_j^c(Q_j)`, `χ^{(j−1)c}(R_j)`, and to their cover by `M R_j`-cubes, the components `Z_j^{(i)}`.
+  * p. 384 (second case of (1.83)): such a region is treated as `Z = S(Z_0)` with `Z_0` the existing component,
+    "a small domain, contained in a cube of the size `100 M R_{j+1}`".
+  * (1.76): `Z_j ⊂ Z'^{~10}_{j−1} ∪ ∪_i (Z_j^{(i)})^{~2}`.
+* *Answer.*
+  * **REVIEW-2 is right about the factor.** A preparatory large field brings no `p_0²(d'+1)` creation gain. It brings
+    one factor per component, of which only `e^{−p_0(g_j)}` is used. Its strongest factors are `p_0²`-sized but not
+    proportional to d', and the weakest is only guaranteed to beat `e^{−p_0}`.
+  * **REVIEW-3 is right about the consequence.** Preparatory large fields are not new region components.
+    * By the source they arise only inside an existing component satisfying (i), (ii). Balaban books the result as
+      `S(Z_0)`, which adds no territory beyond the usual S-layers.
+    * By (1.76) iterated from j = 1, where `Z_1 ⊂ ∪_i (Z_1^{(i)})^{~2}`, every large-field region lies in the
+      S-expansions of P/Q/R creation covers. So **every region descends from at least one creation event with the
+      `p_0²(d'+1)` gain**, and it inherits that slack (M1's step 4 keeps `σ_j(Z_0)`).
+  * Such a region has at most about `100^d` current-scale cubes and slack `≥ c_σ (1+β_0)^{−2} p_0²(g_k)`. Its
+    denominator loss `C 100^d (M R_k)^d` is covered under (P2).
+  * Its cubes are already counted in the conversion of item 4, through `S^{k−j_b}` of the ancestral births. So they
+    need not be split off and priced through (P1).
+* *I infer, with one caveat.* This rests on the preparatory large fields lying inside `S(Z_0)`. [V] p. 384 states
+  this ("Z = S(Z_0)"). I did not re-read [IV] Sect. 1 in full, where the preparatory domains are built near the
+  boundary of the region. If a preparatory domain could reach outside `S(Z_0)`, its excess cubes would have only the
+  `e^{−p_0}` factor, and (P1) would be the right price for them. Since (P1) follows from Balaban's own (1.88)
+  condition at small g (item 5), keeping it as insurance costs nothing.
+
+### Verdict on the re-proof (c)
+
+**It goes through.** I found no step that fails. Splitting the creation gain is a relabelling of the exponent of
+(1.79). Every inequality Balaban proves about κ holds for the halved κ under (P0), which needs no new exponent. The
+tree argument, the release (1.89) and the polymer step (1.92)-(1.96) never touch the kept part. The conversion to
+current-scale cubes and the sup over histories are sound.
+
+Corrections to write into section 26:
+1. Use `½ γ_0 A_1²` for the new regions' term, not the printed `γ_0` of (1.85); constants only.
+2. `p_0(g_birth) ≥ (1+β_0)^{−1} p_0(g_k)`, not `≥ p_0(g_k)`; the `(1+β_0)^{−2}` goes into `c'_σ`.
+3. (P1) is implied by Balaban's own (1.88) condition at small g, and is redundant given the ancestral σ (item 7:
+   preparatory large fields carry only `e^{−p_0}` per component, but they are not new regions and inherit their
+   ancestors' slack). Keep it as cheap insurance. No exponent changes, so `p_1` stays as it is.
+4. Rename the slack, since `σ` clashes with [V] (1.73)-(1.75).
+5. If M1's bad sets include regions not yet released, take the slack there from (1.79)/(1.80'), not from (1.97').
+
+Level: paper re-proof, checked against the printed steps. Each step on its own is an elementary regrouping; nothing
+needs a new estimate.
