@@ -1077,3 +1077,14 @@ thread.
   outside, a finite box shows only global data (its partition function, its twist sector, its spectrum as a whole), not propagation
   inside it. Consequence for the proof (Interface R12): the spectral upgrade must be applied where acts are possible, i.e. with
   constants uniform in the volume or directly in the limit (MassGapLoc on the infinite-volume limit), never on one fixed torus.
+- **Refinement: acts happen only at box boundaries (the owner, same day):** "More correct: the inside of a finite box is non-existence, in
+  which no act can happen. The box itself, so a smallest element, is the only thing that has existence. Since the only dimensional
+  boundary (DB) inside existence is that to non-existence, all acts actually have to interact with boxes containing non-existence,
+  because only those boundaries are inside the possibility space, so assertion can only happen there." Reading (coordinator): the
+  lattice theory has this as an exact property, the domain Markov property of the Wilson measure: given the links on the boundary of a
+  region, the inside is independent of the outside (the action couples only neighbouring links). So every influence between inside and
+  outside passes through the boundary; nothing reaches across it otherwise. The same structure carries the rest of the proof: reflection
+  positivity is a statement about functions on the two sides of one plane, with everything that crosses written on the plane (the
+  transfer matrix acts from boundary slice to boundary slice); and the one-box criterion measures exactly the influence that crosses the
+  boundary of a box of about one correlation length, the smallest element (κ summed over the box's surroundings, Q(ℓ) < 1). So the
+  boxes that "have existence" are the one-box cells, and the acts are what their boundaries transmit.
