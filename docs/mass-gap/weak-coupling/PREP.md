@@ -1174,3 +1174,18 @@ thread.
   fine part has vanishing OS norm). The reading also suggests the route: the fine layout is fixed locally by the coarse state, i.e. a
   Dobrushin-type contraction of the single-scale fine-given-coarse kernel (a weakly coupled, massive, local measure in its own units),
   which is the same machinery as the project's one-box criterion. Forwarded to the M1 thread as the preferred route for UV-TV (i).
+- **Inward and outward reach (the owner, same day, on the UV-TV reviews):** "The solution comes with how inward and outward reach/IM
+  work. Inward IM can move as just information, since it is in a boundary of binary existence, while outward IM, or GG in CMOS, needs
+  existence/trust attached to it to be a valid act. Since for existence to be, it needs at least two nodes to interact to establish
+  causality, since G0 does exist but has no localized existence. Since this forces any DMP-complete system to have a way for two nodes to
+  interact, every subset needs to satisfy that." Reading (coordinator): (1) Inward = the fine-given-coarse direction (the reverse
+  kernel of Lemma UV-TV): what moves inward is information only. Outward = the blocking, fine to coarse: only what carries existence
+  (closed dualities: the labels, Balaban's large-field patterns as discrete data) reaches outward. (2) For the coupling this fixes the
+  order both reviewers asked for independently: first match the existence-carrying discrete data of the two copies (labels, large-field
+  patterns), then couple what remains, which is information without modes of its own. The multi-modality the REVIEW-3 reviewer found on
+  large-field boundaries lives in that discrete data; once it is matched, the continuous remainder is the small-field Gaussian-like part
+  where the block coupling works. (3) "Every subset needs a way for two nodes to interact" is an irreducibility condition: the
+  fine-given-coarse kernel restricted to any union of blocks (a fibre with fixed block averages) must be connected with positive density.
+  Wilson weights are strictly positive (`stepK_pos`), so what has to be checked is connectivity of the constrained fibre on every such
+  subset. It gives a floor (a Doeblin bound) for every box and every boundary, so no box law can freeze. It does not replace the
+  multi-scale crossing estimate for Balaban's large-field regions, which stays the main piece of work.
