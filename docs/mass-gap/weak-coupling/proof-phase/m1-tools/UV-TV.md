@@ -22,6 +22,8 @@
 
 > **Status (section 33):** small fixes after the reviews of 28 and 29: truncation as a case split; numbering; (B) by conditioning on in-support content near `A`; (I) obtained directly per in-support pair, without hybrids; contraction only inside `Λ''_j`; Dirichlet layers as unions of `L`-blocks; `E_0(M)` named; `q0 ≥ p0`.
 
+> **Status (section 34 and final, section 32):** final fixes after the reviews of 30-32: one coupling for all sites; link-length truncation; units in `M`-cubes; van den Berg-Maes along links; the last kernel to the bare field; (B) built from three towers across a slab; NITs; the adaptation's domain class named. **Lemma UV-TV is complete at paper level**, given (c) and the named readings and adaptation (section 32).
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -2100,18 +2102,36 @@ For a set `A` of cubes:
 3. the compatibility range from Balaban's admissibility (citation, poor scan);
 4. Kotecký-Preiss and van den Berg-Maes (standard).
 
-## 32. State after the four write-outs
+## 32. Final status of Lemma UV-TV (updated after 33-34)
 
-* **Lemma UV-TV (N-2's key step)** has a complete argument written at paper level. It rests on:
-  * **(c)**, the strengthened induction (section 26, a re-proof checked three ways);
-  * **citation-level readings:**
-    * (a), what `E_k(Z)` is;
-    * admissibility (poor scan);
-    * Balaban's machinery on non-admissible domains: thin, cluster-shaped collars with data on both sides (29.6,
-      33.7);
-  * **standard tools:** Kotecký-Preiss, van den Berg-Maes, and the coupling contraction of 28.
-* **The write-outs:** 1 (28), 2 (29), 3 (30), 4 (31) are written.
-* **Lean:** the coupling-form theorem (28.4) is the first target, after the reviewers' check of 28.
+**Lemma UV-TV, N-2's key step: complete at paper level.** REVIEW-2's long-standing N-2 GAP is withdrawn (thirteenth
+follow-up), and REVIEW-3 has no GAP (follow-up 12). The argument (sections 8-12, 16, 21-24, 26, 28-31, with the fixes of
+27, 33 and 34) is complete at paper level **given**:
+
+1. **(c), the strengthened induction:** a re-proof of [V] (1.80)-(1.97) with a retained slack `e^{−c p0²}` per
+   birth-scale cube (26, 27), checked three ways (the independent reader and both reviewers). It needs (P0), Balaban's
+   condition after (1.82) with the constant doubled; (P1) is insurance.
+2. **Citation-level readings:**
+   * (a), what `E_k(Z)` is: the small-field alternative's normalisation and vacuum-energy constants at background 1,
+     confirmed in substance (`../m1-review/EK-DERIVATION.md`);
+   * admissibility of the comparison pattern: delete whole history components (24.1), checked against a poor scan of
+     [III] (2.3)-(2.9).
+3. **Citation-level adaptation:** Balaban's small-field machinery on **shells** of width `≫ M`, thinner than one
+   `M R_j`-cube, shaped by a cluster or a slab, with Dirichlet data on both sides, and his constants uniform in the
+   shape (29.6, 33.7, 34.8).
+4. **Citation:** `κ` large for fixed `L` ([I] Theorem 3; [III] p. 260), at the cost of a larger `M` and a smaller
+   coupling bound `γ`.
+5. **Standard tools:** the coupling contraction (28, with Corollary 34.1), Kotecký-Preiss, and van den Berg-Maes on
+   object configurations (31, 34.4).
+
+**Not needed:** reading (b), a lower bound with `δ → 0` (replaced by (c)); any `1 + O(δ)` with `δ → 0` (27.9).
+
+**Result:** `P(the fine fields differ on B) ≤ C polylog(t/ℓ) (t/ℓ)^{−d C_2}`, uniformly in the lattice spacing and the
+volume. Hence `‖F − f_ℓ‖_OS → 0` as `ℓ → 0` at fixed `t > 0`, for every bounded, measurable, gauge-invariant local `F`
+(13.4). This is OS-norm density of the block observables, with `MassGapLoc`'s statement unchanged.
+
+**Lean:** the coupling-form theorem (28.4, with Corollary 34.1) is with the separate worker
+(`formal/ProofPhase/OneBox/CouplingDS.lean`).
 
 ## 33. Small fixes after the reviews of 28 (REVIEW-3 follow-up 10, REVIEW-2 eleventh) and of 29 (REVIEW-2 twelfth)
 
@@ -2232,3 +2252,132 @@ Made consistent with 27.9 and 28-31:
   1. (a), what `E_k(Z)` is;
   2. admissibility (poor scan);
   3. **Balaban's machinery on non-admissible domains (thin, cluster-shaped collars with data on both sides).**
+
+## 34. Final fixes after the reviews of 30-32 (REVIEW-2 thirteenth follow-up, REVIEW-3 follow-up 12)
+
+Neither review has a FATAL or GAP finding. REVIEW-2 withdraws its N-2 GAP.
+
+### 34.1 One coupling for all sites (Corollary of 28)
+
+**Corollary.** The averaged update `T` of 28.2 does not depend on the weights `v`.
+* For every family of weights `v_x(·) := e^{−λ dist_ω(·, x)}` (one for each centre `x`), (K) holds with the same `γ`, since
+  `v_x(y)/v_x(z) ≤ e^{λ dist_ω(y, z)}` uniformly in `x`. So the **same** iterates `T^n(μ ⊗ μ')` satisfy
+  `Φ_x(T^n(μ ⊗ μ')) ≤ θ^n Φ_x(μ ⊗ μ') + s_x/((1 − γ) c_min)` for every `x` at once.
+* `Φ_x(μ ⊗ μ') ≤ Σ_y v_x(y) ≤ C` uniformly in `x`. So one `n`, independent of `x`, makes `θ^n C ≤ ε` for all `x`.
+* Hence 30.2's union bound over the sites `x ∈ Λ''_j` refers to **one** coupling, and is well defined. (The Lean worker
+  adds this corollary.)
+
+### 34.2 Link-length truncation
+
+* Add to `E_j` (30.2) the event `L_j`: some link meeting `Λ''_j` has linear size above
+  `s_max,j := (C/κ)(log|Λ''_j| + log(p² + E_0(M)))`, in `M`-cubes.
+* By 31.2, links of linear size `s` have weight `≤ C(p² + E_0(M)) e^{−κ s}`, so
+  `P(L_j) ≤ |Λ''_j| Σ_{s > s_max} s^{d−1} C(p² + E_0) e^{−κ s} ≤ |Λ''_j|^{−C_2}`.
+* **On `L_j^c`** the composite-box diameter bound becomes `N_j(M R_j + s_max,j)`, which enters `a_j` (30.2).
+
+### 34.3 Units in 31 (REVIEW-2)
+
+* Linear sizes `d(X)` of interaction domains and links are counted in **`M`-cubes**, Balaban's unit for `κ` ([I]
+  p. 257).
+* Polymers are compatible when more than `D_c = 100` cells (`M R_j`-cubes) apart, which is `100 R_j` `M`-cubes.
+* So inter-polymer links have `d(X) ≥ 100 R_j`, with weight `≤ C(p² + E_0) e^{−100 κ R_j}`.
+* Since `R_j ≥ (log g_j^{−2})^2` while `p² = A0² (log g_j^{−2})^{2 p0}` grows only polylogarithmically,
+  `e^{−100 κ R_j}` beats `p²` for `g ≤ γ`.
+* The vacuum-link density per cell is `≤ C(p² + E_0)(M R_j)^d e^{−100 κ R_j}`, also tiny. 31.2-31.3 are read with
+  these units.
+
+### 34.4 van den Berg-Maes with links
+
+* After the positive split (31.2), links are **objects** of the configuration, together with polymers. A link occupies
+  every cube of its (connected) domain `X`. Links may overlap each other; polymers have a hard core of range `D_c`.
+* **The cell state** is the set of objects meeting the cell.
+* **Markov property.** The conditional law of an unrevealed region, given the revealed cells, depends only on:
+  * the revealed cells within `D_c` of the region;
+  * the objects already revealed that cross into it.
+  
+  A link's weight depends only on the polymers its domain meets, and every such polymer meets a cell of the link.
+* **The revealing proceeds along occupied cells, including link cells.** When a revealed cell carries a link, the
+  link's further cells are next in line.
+* A disagreement chain therefore runs through cells occupied in one copy, contiguously, since link domains are
+  connected. The path bound of 31.5 applies with cube adjacency within `D_c`, and no jumps are needed.
+
+### 34.5 The last kernel: from the scale-0 state to the bare field
+
+* The tower ends at the scale-0 state `(V_0, τ'_0) = (Ad U, σ*(τ))`. The bare SU(2) field needs one more reverse kernel:
+  `K_{−1}(dU | V_0, τ'_0)`.
+* **What it is.** Given `V_0`, write `U = s Û` with lift signs `s` (1.1). The Z2 layer `τ = (ds) τ̂` is determined by
+  `V_0` and `τ'_0`, up to the decoder's choices:
+  * per flip-cube component (H2's local decoder), `τ = τ'_0 + a`, where `a` is a filling of the monopole boundary
+    `dτ̂(V_0)` that the decoder maps back to `τ'_0`;
+  * the minimal filling is unique except at **ties**.
+* So `K_{−1}` is deterministic in the gauge-invariant content, except for a uniform choice among tied fillings inside a
+  decoder component. That choice is local: inside the component, hence inside the scale-0 large-field region.
+* **The coupling.** Couple the tie choices identically wherever both copies have the same component and the same data.
+  Then the bare fields agree, modulo gauge, on every site whose decoder component lies inside the agreement set of
+  `(V_0, τ'_0)`.
+* **The front.** `D_{−1} ⊂ N_{a_{−1}}(D_0)` with `a_{−1} := N_0 M R_0`, the component size cap on `F_0^c`. This is one
+  more term in 30.3's sum. Gauge-invariant `F` sees only the gauge-invariant content.
+
+### 34.6 Statement (B), built from towers
+
+* **The reflection plane** is a time plane on the boundary of the scale-`ℓ` block grid, hence on block boundaries at
+  every finer scale.
+* **Slab.** Let `P` be the slab of fine bonds within distance `h` of the plane, with `h` larger than the truncation
+  caps on every blocking structure that can cross the plane:
+  * decoder components;
+  * excision envelopes;
+  * composite boxes;
+  * labels' crossing pieces.
+  
+  On the complement of the truncation events, no blocking structure crosses `P`. Given `𝓕_ℓ` and the content `Y_P` of
+  the slab, the positive and negative halves are then **conditionally independent**: the Wilson action is nearest
+  neighbour, and every block constraint lies on one side.
+* **Three towers.**
+  1. Let `Y^1`, `Y^2` be two copies of the fine field, conditionally independent given `𝓕_ℓ` (two independent runs of
+     the reverse kernels).
+  2. The **mixed tower** `Y^m`:
+     * on the positive half and on `P`, `Y^m := Y^1`;
+     * on the negative half, `Y^m` is sampled from the law of the negative half given `(𝓕_ℓ, Y_P = Y^1_P)`, coupled
+       with `Y^2`'s negative half, whose law is the same given `(𝓕_ℓ, Y_P = Y^2_P)`;
+     * the coupling is the tower coupling of 30, with the slab `P` as source at every scale.
+  3. `Y^m` has law `μ(· | 𝓕_ℓ)`, by conditional independence. `(Y^1, Y^2)` are conditionally independent.
+* **The covariance.** For `f` near `A` (positive side) and `g` near `θA`:
+  `Cov(f, g | 𝓕_ℓ) = E[f(Y^m_A) g(Y^m_{θA})] − E[f(Y^1_A) g(Y^2_{θA})] = E[f(Y^1_A)(g(Y^m_{θA}) − g(Y^2_{θA}))]`, so
+  `|Cov| ≤ 2‖f‖ ‖g‖ P(Y^m ≠ Y^2 on θA) + 2‖f‖ ‖g‖ P(truncation events)`.
+* **The tower coupling with the slab as source.** The two negative halves differ only through their slab data, which
+  are samples of the law (so in the support, with large fields priced annealed). The slab is at distance `≥ t − h` from
+  `θA`.
+  * At every scale, the blocks meeting the slab are **source blocks**.
+  * Away from it, the specifications of the two half-space laws coincide, since they are the same Balaban densities.
+  * The half-space with data on the slab is a domain with Dirichlet data, the adaptation of 29.6.
+  * So 30's front argument gives `P(Y^m ≠ Y^2 on θA) ≤ C (t/ℓ)^{−d C_2}`.
+* This replaces 33.3's single-scale conditioning by an explicit tower construction (REVIEW-2). The slab content is
+  never a supremum over arbitrary content: it is a sample.
+
+### 34.7 NITs (REVIEW-3)
+
+* **Sources in 30.2.** Composite boxes joined to `src¹_j` (meeting the inherited disagreement) are themselves source
+  blocks. The others are good blocks with Lemma C.
+* **Locality.** Composite boxes and the contraction of `dist_ω` are used only inside `Λ''_j`; outside, every block is a
+  source block (33.5).
+* **H1 conditioning.** The pattern coupling of 31.5 is applied on the complement of `E^{path}_j` and of the truncation
+  events: a case split made first, as in 33.1.
+* **`I_X`** (31.1) is the **inter-polymer cluster term**: the part of the small-field cluster expansion of the
+  complement whose domain `X` meets at least two polymers, with the polymers' own fields integrated inside their
+  `T`-operations, as REVIEW-3 described (follow-up 7 (3)).
+* **The final bound** carries polylog factors from `ℓ_B` and `C_s` (30.2): `P(differ on B) ≤ C polylog(t/ℓ) (t/ℓ)^{−d C_2}`.
+  Harmless for `C_2 > 0`.
+
+### 34.8 The domain class of the Balaban-on-domains adaptation (29.6, 32)
+
+* **Named precisely**, the adaptation is: Balaban's small-field machinery used on domains that are **shells**:
+  * of width `≫ M` (so all his estimates, local at scale `M`, see the shape only through boundary layers);
+  * thinner than one `M R_j`-cube;
+  * shaped by a cluster `K` or by a slab (34.6);
+  * with Dirichlet data on both sides.
+* His constants must hold **uniformly in the shape**. The machinery in question:
+  * the constrained background ([15]);
+  * the propagators ([13] Theorems 3.12, 3.13);
+  * the localisation ([III] (2.13)-(2.15), [V] (1.59)-(1.63));
+  * the cluster expansion ([I] (1.18), [III] Theorem 2).
+* Plausible, since every estimate is local at scale `M ≪ w`. But it is a genuine adaptation, not a citation.

@@ -67,7 +67,7 @@ the notes):
 | R12 [16] (71) in 4D | the action lower bound behind [V] (1.76) in four dimensions | **paper**, written out from [12] (48)-(53) (`CLOSE-OUT.md` 1) |
 | G2/H1 labels | labels in Balaban's form | **paper** on citation-level adaptations for components below `ε_*` (`REVIEW3-RESPONSE.md` 11-12): `a_ℓ e^{L_ℓ}`; only remainders persisting across two consecutive scales are labels; one-box contraction `N_{k+1} ≤ C L^{−4} N_k` (no linear coupling, R8; background scaling), iterated over the label's life; remainders go to the label's own constant, so [I]'s running is untouched. Above `ε_*`: **sketch**; inputs are three unchecked adaptations of Balaban's proofs (13.6); tails need `κ ≥ 4 log L + log C` (13.1) |
 | H3 one-step induction | the induction for the current design, with the order of constants | **paper** on citation-level inputs, four named sketch points (`S1-INDUCTION.md`); new E-row 7c (coarse plaquettes meeting holes, paid by the deep set) |
-| N-2 density | the block-observable class is dense in the limit OS space | **paper sketch, complete argument given (c)**, with (a) and admissibility as citation-level readings (`UV-TV.md`, 25 revised and 27). (c) is the strengthened induction: a re-proof of [V] (1.80)-(1.97) with a slack `e^{−c p0²}` per birth-scale cube, checked three ways. All four write-outs are written: 1 (coupling-form Dobrushin-Shlosman, the Lean target, 28), 2 (Lemma C, constant-size, 29), 3 (front advance, `P ≤ C(t/ℓ)^{−d C_2}`, 30), 4 (H1 at polymer level, 31). Complete written argument at paper level given (c) and the citation-level readings (32) |
+| N-2 density | the block-observable class is dense in the limit OS space | **complete at paper level** (`UV-TV.md` 32; REVIEW-2's N-2 GAP withdrawn). Given: (c), the strengthened induction (re-proof of [V] (1.80)-(1.97), checked three ways); citation-level readings (a), what `E_k(Z)` is, and admissibility (poor scan); the adaptation of Balaban's machinery to shells with data on both sides, constants uniform in the shape; `κ` large (citation). Result: `P(differ on B) ≤ C polylog (t/ℓ)^{−d C_2}`, so OS-norm density, with `MassGapLoc` unchanged. Lean: the coupling-form theorem is with a separate worker |
 | R11 interface | measurable blockings with noise (done, `Interface/RandBlocking.lean`); block state `(SO(3), closed Z2)` with gauge-invariant observables (no SU(2) encoding, REVIEW-2 G5) | formal refactor, outside M1's folders |
 | ext | [I] Theorem 2 (running coupling, with `γ ≤ γ0(L)`) | external, unpublished |
 | P4 | the crossover `L_* → L₁` | not M1's; open, the core |
@@ -90,9 +90,9 @@ withdrawn.
 listed below.
 
 **Open, and of a different kind from the sketch points:**
-* **N-2's key step, Lemma UV-TV (i)** (13.4): argued at **paper-sketch level** in `UV-TV.md` (25 revised), given the
-  strengthened induction (c) of section 26. (c) is a re-proof of [V] (1.80)-(1.97), and it is the single point of
-  failure. Four write-outs are owed.
+* **N-2's key step, Lemma UV-TV (i)** (13.4): **complete at paper level** (`UV-TV.md` 32), given (c), the strengthened
+  induction (a re-proof of [V] (1.80)-(1.97), checked three ways), the citation-level readings (a) and admissibility,
+  and the adaptation of Balaban's machinery to shells with Dirichlet data. All four write-outs are done.
 * It is new analysis: the measurable ultraviolet transfer at scales below `ℓ`, the scale-`< ℓ` part of the blueprint's
   P5.2.
 * A coupling route avoids the frozen region. The small-field part (a measurable-observable cluster expansion over a
