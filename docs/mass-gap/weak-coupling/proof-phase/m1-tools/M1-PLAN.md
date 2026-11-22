@@ -28,13 +28,17 @@ this session added (`NOTE.md`), with source equations, status and size. No write
 | D-shift | shift-averaged blocking leaves every blocked law unchanged | new | `NOTE.md` 2.5 | paper (exact, short); **not needed** after D-N | 0 |
 | D-prob | **Lemma D-prob**: under i.i.d. uniform shifts a deep core stays deep for `n` steps with probability `≤ p_stayⁿ`, `p_stay = O(L^{1-d})` | new | `NOTE.md` 2.5; missing: cone bound `f(z) ≤ C |z - y'|^{1-d}` on the path fraction, multi-site bookkeeping | **ruled out as a device** (`D-N.md` 2: shifts buy `≤ L^{-d}` per step, Balaban charges `exp(O(1) log g^{-2}(MR)^d)` per step); the estimate itself not needed | 0 |
 | D-N | constants: D-prob needs `N ≳ p0(g)/((d-1) log L)`, i.e. `ν ≥ p0`; compatible with `½ν ≤ p0 - p1 - 1` iff `p0 ≥ 2p1 + 2`; recent-region entropy then at equal powers (`A0 > 4 log L` times a constant) | [IV] p. 198; [V] p. 363, (1.80)-(1.85), p. 389 | `D-N.md` | **answered (paper)**: `N ≈ p0/(d log L)` admissible after removing the [IV] p. 198 artefact (`g_k/g_h ≤ √2`) and retuning `p0 > (2d+6) r`, `(p0+(2d+6)r)/2 < p1 < p0`, `β0` small; does not rescue the shift device | done |
-| D-pin | **deep cores pinned at nested block centres** (the open point): carry a pinned deep star at `O(1)` cost per step (idea I1, partial `R̂` around a pinned irregular coarse star) or treat deep cores as an exceptional set (I2) | new | `D-N.md` 3-4: true-law weight `∑_h exp(-A/g_h²)` converges; Balaban's volume cost is the obstacle | **open (new idea needed)** | ? |
+| D-pin | **deep cores pinned at nested block centres**: the owner's root rule (one root per core, suppression charged once, core frozen and carried) | new | `D-PIN.md` | **scoped: SURVIVES WITH LEMMAS P0, P2 (P3 fallback), P4**; root bookkeeping proved on paper (`D-PIN.md` 3) | see P-rows |
+| P0 | **averaging design**: an admissible average equal to Balaban's (0.4) on the small-field regime, analytic near every centre-valued star pattern, no trapping elsewhere (Balaban's own average is discontinuous at pinned patterns; first smooth variant traps 33% of deep stars) | new; [I] (0.4), p. 254 | `D-PIN.md` 2.2-2.4; `star_dynamics.py`, `near_vortex.py`, `zlift_traps.py` | **open, decisive** (would BREAK here if no such average exists) | ? |
+| P2 | **subscale decoupling**: a frozen root `m` steps old changes the step's ratio `N/D` by `exp(O(C L^{-c m}))` | new; evidence [V] (1.31), (1.47) | `D-PIN.md` 2.1 | open (new) | 3 |
+| P3 | rate condition `A_min b log L > C_1`, `b = 22/(6π²) ≈ 0.37` (only if P2 fails) | [III] (2.42), [I] Thm 2 | `D-PIN.md` 4(b) | open (constants) | 1 |
+| P4 | root suppression of a deep core `exp(-A_min/g_h²)`, `A_min = c0 r0²` | `[15]` Thm 1; [V] p. 380 | `D-PIN.md` 4 | citation level | 1 |
 | E1 | linear term: `J_0 = Q*_{k+1} λ` on `Λ`; its core contribution `≤ g_k^{-2} ε_{k+1} θ^{n_mod} r0 ≪ 1` | [V] (1.2)-(1.6), (1.28)-(1.29), p. 363 | Lagrange-multiplier identity, D-mod | open (routine + D-mod) | 2 |
 | E2 | quadratic form positivity on `ker Q_{k+1}` | [V] (1.7)-(1.9) | Poincare bound `O(L²)` (better) | open (routine) | 1 |
 | E3 | denominator `D_X(W) = exp[-g_k^{-2}A(ζ0, U_0(W)) - Î + Ê_k(Λ)]`, `|Î| ≤ O(1)M^5 + O(log g_k^{-2})` per constrained bond; Wilson term cancels | [V] (1.10)-(1.11), (1.30)-(1.37) | W-dependent, analytic, non-zero on regular `W` | open (routine) | 2 |
-| E4 | localization of the `W`-dependence | [V] (1.14)-(1.69), pp. 359-376 (pp. 364-373 now read) | enters only through `U_0(W)` and shell shifts | citation + D-mod (moderate); D-pin (deep) | 1 |
+| E4 | localization of the `W`-dependence | [V] (1.14)-(1.69), pp. 359-376 (pp. 364-373 now read) | enters only through `U_0(W)` and shell shifts | citation + D-mod (moderate); D-pin, P2 (deep) | 1 |
 | E5 | `T̂'_k(X)` and matched normalisations `E_k(X)`, `(-½ d(g) log g^{-2} + log σ0)|B0 \ T0|` | [V] (1.70)-(1.71) | numerator and denominator constrain the same bonds | open (routine) | 2 |
-| E6 | analytic extension `|T'(X,(U,J))F| ≤ T'(X)1 e^{sup|σ|} sup|F|` and lower bound | [V] (1.73)-(1.75) | needs (D1): D-mod for moderate cores; deep cores: D-pin | open (routine given D-mod; deep cores: D-pin) | 2 |
+| E6 | analytic extension `|T'(X,(U,J))F| ≤ T'(X)1 e^{sup|σ|} sup|F|` and lower bound | [V] (1.73)-(1.75) | needs (D1): D-mod for moderate cores; deep cores: D-pin | open (routine given D-mod; deep cores: P0) | 2 |
 | E7 | large-field factors under δ-constraints (pointwise; group integrals with δ bounded by the Jacobian `O(1)^{|Λ|}`) | [V] (1.76)-(1.79) | uniform in regular `W` | open (routine) | 2 |
 | E8 | entropy induction `κ_j(Z)` | [V] (1.80)-(1.88) | extra `O(1)` per step from the `W` partition and Jacobians | open (routine) | 2 |
 | E9 | fundamental inequality `sup_{W reg} N_X(W)/D_X(W) ≤ exp(-2(1+β0)^{-1} p0(g_k))` | [V] (1.89) | changed constants | open (routine) | 1 |
@@ -47,21 +51,20 @@ this session added (`NOTE.md`), with source equations, status and size. No write
 ## Totals
 
 * **Done here:** X1 (Lean), D-mod elementary part (Lean) with the exact weights (paper + exact-fraction check),
-  D-vortex (Lean + paper), D-N (paper, `D-N.md`), reading of [IV] pp. 177-199 and [V] pp. 364-386 (P1, E4 confirmed),
-  `[15]` Theorem 1 statement (V1 becomes a citation plus a check).
-* **New writing, routine:** S1, X1.H1, X2, V1 check, V2, D-mod constants, E1-E3, E5-E9, moderate E10, and the
-  retuning of `p0, p1, β0` (`D-N.md` 1): about 33 pages, plus re-reading about 40 pages of Balaban.
-* **Open, new idea needed:** D-pin (deep cores pinned at nested block centres). The random-shift device is ruled out
-  (`D-N.md` 2); the candidate is I1 (pinned-defect renormalisation at `O(1)` cost per step). Size unknown until a
-  scoping test is done.
-* **Total:** about 33 pages of routine new writing plus D-pin. M1's verdict: survives for moderate cores; **open at
-  D-pin**.
+  D-vortex (Lean + paper), D-N (paper, `D-N.md`), D-pin scoping with the root bookkeeping (paper, `D-PIN.md`),
+  reading of [IV] pp. 177-199 and [V] pp. 364-386 (P1, E4 confirmed), `[15]` Theorem 1 statement.
+* **New writing, routine:** S1, X1.H1, X2, V1 check, V2, D-mod constants, E1-E3, E5-E9, moderate E10, retuning of
+  `p0, p1, β0` (`D-N.md` 1), P4: about 34 pages, plus re-reading about 40 pages of Balaban.
+* **Open, new:** P0 (averaging design, decisive), P2 (subscale decoupling, about 3 pages if it holds), P3 only as a
+  fallback.
+* **M1's verdict now:** survives for moderate cores; for deep pinned cores **survives with lemmas P0 and P2** under the
+  owner's root rule; P0 is where it would break.
 
 ## Order of work (recommended)
 
-1. D-pin scoping test (one session, paper, like ONE-STEP): can a pinned irregular coarse star be carried by a partial
-   `R̂` at `O(1)` cost per step, and does the per-step gain (asymptotic freedom `b A log L`, `D-N.md` 3) beat that
-   cost? This decides whether M1 closes.
-2. V1 with `[15]` Theorem 1 (check its condition (1) for `Λ ⊂ Z`), then E1-E3, E9: the constrained Proposition 1 and
-   the fundamental inequality.
-3. The routine rows, with the retuned exponents of `D-N.md` 1.
+1. P0 exploration (numerical first, `star_dynamics.py` as the harness): averages equal to (0.4) on the small-field
+   regime, analytic at centre-valued patterns, tested for trapping with trivial and with random small-field shells.
+2. P2 on paper (subscale hole capacity in `d = 4`, adjoint triviality of centre-valued patterns, against [V] (1.31),
+   (1.47)).
+3. V1 with `[15]` Theorem 1 (check its condition (1) for `Λ ⊂ Z`), then E1-E3, E9.
+4. The routine rows, with the retuned exponents of `D-N.md` 1.

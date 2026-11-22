@@ -56,7 +56,8 @@ images read by me. New in this session, full: [IV] pp. 177-191 (pp. 182-191 for 
    `0 < D < ∞` on the regular set. **Analyticity is not needed for exactness**, only for the estimates.
 7. **Corrected verdict of the one-step test.** ONE-STEP said SURVIVES WITH A NEW LEMMA (Lemma D). Corrected:
    **SURVIVES for moderate cores (Lemma D-mod, proved on paper with Lean core); OPEN for deep cores at nested
-   block centres** (the shift device is ruled out, `D-N.md`; candidate: pinned-defect renormalisation, idea I1). Not BREAKS: no step
+   block centres** (the shift device is ruled out, `D-N.md`; the owner's root rule is scoped in `D-PIN.md`: survives
+   with lemmas P0 (averaging design, decisive) and P2 (subscale decoupling)). Not BREAKS: no step
    was found that fails for every device. M1 grows by about 6-8 pages (`M1-PLAN.md`).
 
 ## 1. Reading
@@ -298,7 +299,8 @@ hypothesis of exactness; it enters the estimates (E3, E6 of the plan). The inter
 
 ## 4. Files
 
-- `NOTE.md` (this file), `M1-PLAN.md` (the estimate list), `D-N.md` (row D-N: the delay and the shift device).
+- `NOTE.md` (this file), `M1-PLAN.md` (the estimate list), `D-N.md` (row D-N: the delay and the shift device),
+  `D-PIN.md` (row D-pin: one root per pinned core), with `star_dynamics.py`, `near_vortex.py`, `zlift_traps.py`.
 - `star_weights.py`: exact linear star weights of Balaban's contour family (`python -I star_weights.py 13 4`, 13 s;
   add a third argument for the off-centre maximum, small `L, d` only).
 - `get-balaban-refs.ps1`: downloads `[12]`, `[14]`, `[15]` here (done by the owner; PDFs git-ignored).
