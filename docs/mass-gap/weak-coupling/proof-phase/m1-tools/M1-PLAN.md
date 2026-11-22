@@ -55,13 +55,13 @@ the notes):
 | R1 off-centre dilution (F5, in SO(3)) | contraction of localised moderate cores at every position (in-block parts cancel; only segments transmit) | **paper + Lean steps** (`OFFCENTRE.md`, `OffCentre.lean`): `θ = 5^d L^{1-d} + C(r0 + L² ε)`; sheets are not R1 (excision R3, growth R2) |
 | R2 regular within the delay | every released region is regular within the delay, or is carried, paid by its own action | **paper + Lean step** in the repaired form (`R2-REPAIR.md`): attribution instead of a partition; footprint-weighted lifetime (`footprint_sum_le`); suppression from [16] (71) (read); E8 insertion a re-reading of [V] (1.80)-(1.85); the remainder route (`R2-REMAINDER.md`) compared and not taken: its rarity bound (a) closes, its splitting (b) needs a defect-decoupling lemma |
 | R3 filling near the cut (F4) | holes = twist-free envelopes of deep structures; filling = small-field Dirichlet problem; swallowed blocks filled globally (no per-block rule, RP dropped) | **paper** (`FILL.md`); the old hole (deep plaquettes only) was wrong: the data carried the flux |
-| R4 fibre mass with excision (E7.J) | needed only at regular `W` (there flux conservation leaves only localised deep structures) | **paper** for ordinary coarse bonds (as `E7J.md`, slicing in Lean); **sketch** for swallowed coarse bonds (surjectivity + compactness over hole shapes, constant `C(L)` not explicit) (`FILL.md` 0.4) |
+| R4 fibre mass with excision (E7.J) | needed only at regular `W`; swallowed coarse bonds | **paper, explicit** (`FILL.md`, `SKETCH-STEPS.md` 1): ordinary bonds as `E7J.md`; swallowed bonds get an independent Haar value (fibre density 1). Design change: blocking with auxiliary randomness (needs R11 to allow it) |
 | R5 action lower bound (F6) | the bound behind [V] (1.76) | **read**: [16] (69)-(71), action in the four blocks of an irregular coarse plaquette `≥ ¼|V(∂p') - 1|²/g²`, given regularity (68) of the finer field; proof via [12] (50), (53), any dimension |
 | R6 decoder locality | the global decoder equals the product of per-cluster decoders | **paper**, exact (`DECODER-LOCAL.md`): clusters by the merging rule `dist ≤ 4(|K| + |K'|)`; each optimal remainder is supported within `2|K|` of its cluster |
 | R7 normalisation per real flip | `O(1)^{|τ|}` ratio of partition functions | **citation**, reduction written (`CLOSE-OUT.md` 4): Jensen plus the weak-coupling plaquette bound from Balaban's two-sided partition-function bounds |
 | R8 release of acts and labels | dimension-4 coupling, summable | **paper** (`CLOSE-OUT.md` 2): no-linear-coupling lemma (gauge invariance and no invariant vector in `so(3)`); sum `ε_k² Σ_j e^{-p0(g_j)}` (needs `p0` growing faster than `log(k - j)`, i.e. `A0 > 1` if `p = 1`) |
 | R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field | **citation** carry-over with the change table (`CLOSE-OUT.md` 5): small-field regions require `τ = +1`; no centre; otherwise constants only |
-| R10 hand-over (b) | the `L_*` half of `ObsTransferPhysTW` | **paper sketch** (`CLOSE-OUT.md` 3): from Balaban's cluster expansions at fixed top field; the conditional decay estimates are not written out |
+| R10 hand-over (b) | the `L_*` half of `ObsTransferPhysTW` | **open, much harder than marked** (`SKETCH-STEPS.md` 2): needs Balaban's induction with a permanent frozen region of arbitrary content and decay bounds uniform over `K ~ g^{-2}` steps; Balaban's analytic machinery cannot insert measurable observables. Shared with blueprint P5.2 |
 | R12 [16] (71) in 4D | the action lower bound behind [V] (1.76) in four dimensions | **paper**, written out from [12] (48)-(53) (`CLOSE-OUT.md` 1) |
 | R11 interface | `BlockingFamily` relaxed to measurable blockings; SU(2) encoding of `(V, τ)` (`HANDOVER.md` 0.3) | formal refactor, outside M1's folders |
 | ext | [I] Theorem 2 (running coupling, with `γ ≤ γ0(L)`) | external, unpublished |
@@ -88,14 +88,15 @@ never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `
 * **External:** [I] Theorem 2 (unpublished).
 * **Separate:** the crossover P4.
 
-**Verdict:** M1's main theorem does **not yet** have a complete argument apart from [I] Theorem 2 and P4. Three
-sketch-level steps remain, and none is known to fail:
-1. the swallowed-bond Jacobian;
-2. the conditional decay estimates of R10;
-3. the E8 insertion.
+**Verdict (updated after `SKETCH-STEPS.md`):** M1's main theorem does **not** have a complete argument apart from
+[I] Theorem 2 and P4:
+* **R10 is a genuine open problem.** It is the ultraviolet transfer at `L_*`, shared with blueprint P5.2, and needs
+  Balaban's induction with a permanent frozen region.
+* **The E8 insertion of the footprint-weighted lifetime** is not yet checked line by line.
+* **R4 is closed** (explicit, with the randomised swallowed-bond rule, which needs the interface to allow auxiliary
+  randomness).
 
-Beyond them it rests on the citations listed. Writing out these three is the remaining M1 work; everything else is
-the paper write-up.
+Everything else is as listed above.
 
 Parts A and B below are the pre-review plan, kept for the record.
 

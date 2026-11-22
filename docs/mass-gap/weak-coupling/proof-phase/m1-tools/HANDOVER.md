@@ -61,3 +61,5 @@ checked against the form `BlockGapBddW` / `ObsTransferPhysTW` need. Read for thi
 
 Items 1 and 2 of the round are done at the levels stated; nothing failed inside M1. The hand-over makes plain that the
 mass-gap theorem still needs the crossover (P4) and the two interface changes, both outside M1.
+
+**Update (2026-11-22, `SKETCH-STEPS.md` 2):** the claim that M1 delivers the `L_*` half of `ObsTransferPhysTW` (0.2(b), table row 2) is withdrawn to **open**: it needs Balaban's induction with a permanent frozen region of arbitrary content, uniform over the number of steps; it is the `L_*` segment of blueprint P5.2.
