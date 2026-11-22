@@ -2,7 +2,7 @@
 Proof phase, M1 tools (m1-tools): the measure-theoretic cores of rows X1.H1 and X2 (2026-11-22). Released under
 Apache 2.0.
 
-Note: `docs/mass-gap/weak-coupling/proof-phase/m1-tools/ROUTINE-ROWS.md`, sections 1-2.
+Note: `docs/mass-gap/weak-coupling/proof-phase/m1-tools/ROUTINE-ROWS.md`, sections 1-2; `S1-PROOF.md` 4.
 -/
 
 import Mathlib
@@ -19,8 +19,10 @@ import Mathlib
   probability measure) and the other variables `ω` (on which the gauge transformation at `v` acts measure-preservingly),
   a gauge-invariant integrand, `F(g, ω) = F(1, g • ω)`, integrates to the same value with the tree bond set to `1`.
   Peeling leaves one at a time gives the axial-gauge identity `∫ F dU = ∫ F|_{U = 1 on the tree}` (Jacobian 1).
+* `record_gas_le` (§8, `S1-PROOF.md` 4): the total weight of all record sets on a finite set of positions,
+  `Σ_{𝓡 ⊆ P} Π_{r ∈ 𝓡} w_r = Π_{r ∈ P} (1 + w_r)`, is at most `exp(Σ_{r ∈ P} w_r)`: the record gas is dilute.
 
-**Claim level.** Both proved (standard axioms). The induction over the leaves of a tree and the identification of the
+**Claim level.** All three proved (standard axioms). The induction over the leaves of a tree and the identification of the
 objects with Balaban's are on paper (`ROUTINE-ROWS.md`).
 -/
 
@@ -56,5 +58,18 @@ theorem lintegral_gauge_leaf {G Ω : Type*} [Group G] [MeasurableSpace G] [Measu
     exact (hact g).lintegral_comp h1
   simp_rw [hin]
   rw [lintegral_const, measure_univ, mul_one]
+
+/-- **The record gas is dilute** (`S1-PROOF.md` 4). -/
+theorem record_gas_le {ι : Type*} [DecidableEq ι] (P : Finset ι) (w : ι → ℝ) (hw : ∀ i ∈ P, 0 ≤ w i) :
+    ∑ t ∈ P.powerset, ∏ i ∈ t, w i ≤ Real.exp (∑ i ∈ P, w i) := by
+  have h1 : ∑ t ∈ P.powerset, ∏ i ∈ t, w i = ∏ i ∈ P, (w i + 1) := by
+    rw [Finset.prod_add]
+    simp
+  rw [h1, Real.exp_sum]
+  apply Finset.prod_le_prod₀
+  · intro i hi
+    linarith [hw i hi]
+  · intro i _
+    linarith [Real.add_one_le_exp (w i)]
 
 end ProofPhase.M1

@@ -37,7 +37,7 @@ Claim marks as in `NOTE.md`. Lean: `Assembly.lean` (`M1RowHypothesesUpTo`, `m1_a
 lattices `T^{(j)}` ([III] Sect. 1-2). The state space `X_k` = block fields `V_k` (on the bonds of `T^{(k)}` outside the
 holes) × finite record sets `𝓡_k`. A **record** `r = (H_r, h_r, s_r, a_r)`: a hole `H_r` (a connected set of bonds at
 its root scale `s_r ≤ k`, together with its image at scale `k`), its frozen content `h_r` (group values on `H_r`), the
-root scale, and its root action `a_r = A(h_r ∪ boundary)` with `a_r ≥ c0 r0² n_r`, `n_r` the number of plaquettes of
+root scale, and its root action `a_r = A_min n_r`, `n_r` the number of plaquettes of
 `H_r` at angle `≥ r0`. Records are pairwise at distance `≥ R_sep` at scale `k` (F2). Reference measure `ν_k`: product
 Haar on the bonds of `V_k`, and on records counting measure in `(H_r, s_r)` times Haar on `h_r`.
 
@@ -64,10 +64,11 @@ with:
   `E_k` localised as in (2.25)-(2.29) with the bounds of [I] (1.18) and the domains (2.28);
   `R_k` as in (2.30)-(2.33) with the bound (2.31); in M1 the R-terms may depend on `V` through `M_B(U_k)` on `Λ`
   (the conditional step's ratio `N/D` is a function of the next field);
-  `B_k` as in (2.40)-(2.42), with the maintenance terms of the records (P2′) among them, localised within distance
-  `O(1)` of their holes and bounded as in P2′.
+  `B_k` as in (2.40)-(2.42). (Corrected in `S1-PROOF.md`: the records' maintenance terms are factors of `w_r`, not
+  B-terms.)
 * **(F-f) records:** `w_r ≤ exp(-a_r/(2 g_{s_r}²))` for every record (root suppression, root entropy, carrying and the
-  summed maintenance already included, `TRAP.md` 3 with F3).
+  summed maintenance already included, `TRAP.md` 3 with F3); `w_r` is an analytic function of the fields within
+  distance `O(1)` of the hole; `a_r := A_min n_r` (corrected in `S1-PROOF.md` 4).
 * **(F-g) symmetries:** gauge invariance of every term; Euclidean covariance (2.29), (2.32) of the sums over positions
   (records are covariant as a set).
 
