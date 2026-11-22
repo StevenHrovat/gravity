@@ -771,3 +771,13 @@ saturation of the binary layer (sheets cost nothing in confinement).
   costs at least a fixed cβ at any width, so at weak coupling entropy never wins: no saturation, ties survive. For light there are no
   sheets at all. The proof task this names: make the energy–entropy balance rigorous **uniformly over every outside** (Peierls /
   chessboard-type estimates are the known tools for such balances).
+
+## The three layers of safety (the owner, 2026-11-22, on method)
+
+The owner: "The machine checks are just to see if we apply stuff correctly. The first layer of safety is DMP, which has been exhaustively
+verified; if it fits into that system we try applying it to Yang–Mills. If the theories that result are sound, we try to prove them in
+Lean. If that works, we have a solid basis to stand on for the much more time-intensive tests, which act as a third layer."
+Coordinator's working rule from this: (1) a step must fit DMP; (2) its Yang–Mills translation must be sound and is proved in Lean where
+possible — what Lean proves is the implication (inputs ⇒ gap), and every input it rests on stays named; (3) numerics test whether the
+named inputs are plausible at reachable sizes and catch misapplications. The translation DMP → Yang–Mills (the dictionary) is the step
+that each layer checks from its side.
