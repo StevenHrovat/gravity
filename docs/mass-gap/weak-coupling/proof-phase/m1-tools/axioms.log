@@ -50,4 +50,6 @@
 'ProofPhase.M1.record_gas_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.capSign_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.norm_capSign_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.one_sub_cos_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.transverse_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 no sorry / native_decide / axiom in ProofPhase/M1
