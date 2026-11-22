@@ -784,3 +784,167 @@ medium-high that the cluster-node argument closes.
 | H0, H3, H4 | available (H3 Pinsker step to write) |
 | H1, H2 for Balaban's patterns | available in principle, not standard; section 12 |
 | N-2 overall | **GAP**: open, with the core in section 12 not started |
+
+## Sixth follow-up
+
+Read for this: `../m1-tools/UV-TV.md` sections 14-20. REVIEW-3 was not read. Nothing was built.
+
+### Verdict (sixth follow-up)
+
+* **Section 15 is right.** The box-by-box linear inequality cannot close. My fifth-follow-up remedy (treat the cluster
+  as one node) is, done properly, exactly the static composite box.
+* **Lemma C is sound in principle.** The partition-function-ratio argument uses only the collar's small-field law and
+  its decaying cross term, and never bounds the multimodal inside of the cluster. It needs **long links** included in
+  the cluster connectivity.
+* **The H2 form and the coarse bad set** from my fifth follow-up are resolved in statement.
+* **Three problems with the static form as written:**
+  1. **The coverage fix does not work as stated.** Repeating a composite box raises the influence that outside sites
+     exert on it by the same factor as its coverage. The condition that matters, site by site, is not helped, and the
+     region next to `W` is left under-covered. A working variant is below.
+  2. **The merge rule percolates.** With collar width `w` growing like `log |K|`, clusters merge at size-dependent
+     distances. The lattice-animal count `(C η (log n)^d)^n` is not summable for astronomically large `n`, so the rule
+     percolates in large volume at fixed spacing. `MassGapLoc` takes the volume limit first, so this matters. A
+     hierarchical (Froehlich-Spencer type) sparse decomposition should replace it.
+  3. **Step (ii) of Theorem A_good** treats every composite box as rare at scale `j`. Inherited coarse-bad clusters are
+     not: they are rare only per box of their own scale.
+
+None is FATAL. The multi-scale step (section 12) is well posed on the static form, once item 3 is put where it belongs.
+N-2 stays a GAP.
+
+### 1. Is section 15's argument right?
+
+**Yes.**
+* With weight 1 per collar site on bad boxes (all that an arbitrary coupling on a multimodal bad box allows), the
+  inequality system `d <= min(1, M d + s)` has loop gain `>= |collar| > 1` inside a cluster. Its minimal solution
+  saturates at 1 on every cluster that receives any positive input.
+* Every cluster does receive input, because good-box influences are small but positive. So the bound bottoms out at
+  the cluster density, independent of `dist(B, D)`.
+* The point is the method, not the true `d`. The true marginals on a far cluster differ only by what reaches it, but a
+  time-local, box-by-box coupling cannot see that.
+* Treating the cluster as one node (fifth follow-up, item 5) means coupling its **marginal**, which is the static
+  composite box of section 16. So the two remedies coincide.
+
+### 2. Is Lemma C sound for the constrained, gauge-fixed, non-Gaussian measure?
+
+**In principle yes, with one omission and one simplification.**
+* **Structure.** The law of `W` given `σ` is `w(c) Z(c, σ)`, with `c` the data on `𝒦` and on the inner layer of the
+  collar. The ratio `law(c | σ')/law(c | σ)` lies in `[e^{-2M}, e^{2M}]`, with `M` the sup over `c, c'` of the mixed
+  variation of `log Z`. So `TV <= e^{2M} - 1`. This is correct, and uses nothing about the inside of `𝒦` beyond its own
+  weight `w(c)`.
+* **Gaussian and fibre constraint.** In the collar, `log Z` is a quadratic form in the boundary data through the
+  constrained Green's function. Balaban's propagators with block constraints ([13] Theorems 3.12, 3.13, read) decay
+  exponentially. The analytic perturbation and the smooth small-field truncation enter `log Z` through Balaban's
+  small-field expansion as local terms with decay (truncation effects `e^{-c p^2}`). So the mixed variation decays
+  across the collar, as stated. Citation level, plausible.
+* **Gauge.** In the block-axial gauge relative to the coarse configuration, both inner data `c, c'` and both outer data
+  `σ, σ'` are within `C eps` of the same background. So `|Δc|/g, |Δσ|/g <= 2p` holds. Correct, given equal coarse
+  data near `W`.
+* **Only boundary layers enter.** By H0, `σ` enters the collar's law only through the outer `r_int`-layer, and `c`
+  through the inner layer. Both are small field: the inner layer is good by construction, and the outer layer is good
+  because other composite boxes are at least `2w` away.
+* **Omission: long links.** A link of `ω` from inside `𝒦` to a far box couples `c` directly to `σ`, bypassing the
+  collar.
+  * Given `ω`, a chosen link is a factor `h_X(V)` (not `1 + h_X`) whose relative variation is not small.
+  * So link endpoints have to be bad, and **link-connected** to the cluster: clusters are components of
+    `Bad(ω) ∪ Bad(ω')` with links as edges.
+  * Section 16 defines clusters through `w`-connectivity of bad boxes only, and section 8 lists links separately from
+    `Bad`.
+  * The composite box of a link-joined pair is then non-local (two pieces joined by a link). That is harmless:
+    `dist_ω` contracts it, and the averaging pays `e^{-κ s}` per link through H2.
+  * Must be stated. FIXABLE.
+* **Simplification.** The bound `C |∂_in| p^2 Σ_z e^{-m d(z, ∂_in)}` overcounts. For fixed `z`, the sum over
+  `x ∈ ∂_in` of `e^{-m d(x, z)}` is `<= C_m e^{-m d(z, ∂_in)}`. So `TV <= C p^2 Σ_z e^{-m d(z, ∂_in)}`, without the
+  `|∂_in|`. The factor `|W|` from "count all of `W` if `c` differs" remains, more precisely `|𝒦|` plus the collar's
+  near-inner disagreement `|∂_in| (log p/m)^d`. So the collar must still satisfy `e^{-m w} <~ 1/(|𝒦| p^2)`, which is
+  where the size dependence of `w` comes from.
+
+### 3. Is the coverage fix right, and is the cluster-merging count under control?
+
+**The coverage fix does not work as written.**
+* In the averaged block heat bath (the contraction behind `cov_le_weighted_on`), the condition per site `z` is:
+  `Σ_{J ∌ z} k_J(z) e^{λ ...} <= γ c(z)`. That is, the total influence that `z` exerts on blocks not containing it,
+  against the coverage of `z`. For a translation-invariant family this reduces to the per-box sum of `OneBoxSum`.
+* Repeating `W` `n` times multiplies the influence that each outside site `z` near `W` exerts on `W` by `n`, while
+  `c(z)` does not change. So the multiplicity makes the condition **worse** at sites just outside `W`, and only helps
+  at sites inside `W`.
+* "Good boxes not meeting any `W`" also leaves the sites next to `W` covered by fewer good boxes than elsewhere.
+* **A variant that does work:**
+  * let good boxes overlap the collar, keeping only `r_int` away from `𝒦`. The collar is good, so H3 applies there,
+    and collar sites get the full coverage `|Λ_0|`;
+  * use `W` with multiplicity 1;
+  * then a site `z` of `𝒦` exerts influence only on `W` (finite range; good boxes stay `r_int` away), so its exerted
+    sum is 0;
+  * a site `z` outside or in the collar exerts its usual good-box influence plus `k_W(z) <= C (log p/m)^d + small`,
+    against `c(z) ~ |Λ_0| = ell_B^d`, which is much larger than `(log p/m)^d`.
+  
+  This is check 1 of section 16, and it should be settled in this form.
+
+**The merging count is not under control as written.**
+* Clusters merge when closer than `2w(|𝒦|)`, with `w ~ (2/m) log(|𝒦| p)`. The number of `w`-connected sets of `n` boxes
+  through a point is about `(C w^d)^n = (C (log n)^d)^n`, so the Peierls sum has terms `(C η (log n)^d)^n`. They grow
+  once `log n > (C η)^{-1/d}`.
+* The threshold `n* = exp((C η)^{-1/d})` is astronomically large, but finite. In volumes `>> n*` boxes at fixed
+  spacing, the size-dependent rule percolates: a cluster of size above `n*` finds more than one bad box within its own
+  merge range per box.
+* `MassGapLoc` takes the volume limit **first** (`Objects.lean` 476-481), so uniformity in the volume at fixed level is
+  needed. As written, check 3 fails in that limit. This is the same mechanism as the merging rule of G3, much weaker,
+  but structurally the same.
+* **Repair: a hierarchical sparse decomposition** (Froehlich-Spencer; Bricmont-Kupiainen).
+  * Level-`n` clusters have size `<= C^n` and separation `>= 2^n w_0`, and exist with probability 1 when `η` is small.
+  * The collar width a level-`n` cluster needs, `~ log(size) ~ n`, is far below its separation `2^n w_0`. So collars
+    never merge, and the count is per level, summable.
+  * Standard, but it replaces "merge within `2w`" and must be written. GAP-level until then (FIXABLE in kind).
+
+### 4. Are my fifth-follow-up points resolved?
+
+* **H2 form: resolved in statement.** Section 17 states H2 quenched in all coarser data and pointwise only where the
+  coarse field is small field. It says that "annealed" now means annealed in `ω_j` only, and that the source is
+  measurable in the coarser data. This is exactly what the tower needs. It still rests on the pointwise
+  fibre-normalisation lower bound, which is unchecked and is the key adaptation of section 12.
+* **Coarse bad set: resolved,** with one check. Section 18 uses a sharp threshold `2 eps_{j+1}` outside the support of
+  Balaban's small-field characteristic functions, which section 18 says is `(1 + δ) eps_{j+1}`, `δ < 1`.
+  * Check the support against [III] (2.17)'s actual smoothing (the OCR of those formulas was poor in REVIEW-1). If
+    Balaban's smooth cut-off reaches `2 eps`, take the threshold strictly above it.
+  * "No joint mixture across scales" is stated, and coarse badness is carried as an event.
+  * With the threshold outside the support, the chain closes: `P(box ∈ Bad^c(X_{j+1}) | X_{j+2}) <= P(box ∈
+    Bad_{j+1}(ω_{j+1}) | X_{j+2}) <= η` wherever `X_{j+2}` is small field. That is the quenched H2 one scale up.
+
+### 5. Is the multi-scale step (section 12) well posed on the static form?
+
+**Yes, with step (ii) corrected.**
+* **Sources.** The scale-`j` conclusion is an expected count of disagreeing sites given coarser data. Turned into
+  `P(D_j within r of B) <= E[#disagreeing sites in N_r(B)]`, it feeds the next finer scale. The recursion runs from
+  `ell` down, and its polynomial prefactors are harmless against `t/ell -> ∞`.
+* **Coarse-bad regions are not sources.**
+  * Where the two copies' coarse data agree, an inherited coarse-bad region with matched `ω_j` is a composite box whose
+    two laws coincide (H0), with Lemma C for its influence. So it creates no disagreement, and only its probability
+    matters.
+  * This is the static form's advantage over the dynamic one: an inherited bad region far from the source costs only
+    its rarity.
+* **Step (ii) of Theorem A_good does not hold for inherited clusters.** It bounds the probability that composite boxes
+  cover half of a path by `(C' η^{1/2})^{dist/2}`, counting scale-`j` boxes at rarity `η_j` each.
+  * An inherited coarse-bad box of scale `j'` covers `L^{j'-j}` scale-`j` path length at probability `η_{j'}`. That is
+    `η_{j'}^{L^{-(j'-j)}}` per scale-`j` box, close to 1.
+  * So, at scale `j`, inherited clusters must not enter step (ii). They have to be paid at their own scale: the path
+    sum is multi-scale, with each bad region priced per box of its own scale.
+  * This is the multi-scale crossing estimate. The static form leaves room for it, but step (ii) as written covers only
+    the scale-`j` patterns.
+  * The joint Peierls bound it needs, across scales, comes from chaining the quenched H2 scale by scale. The top field's
+    bad set is priced by its own law, since (A) and (B) are averaged over it.
+* **Lemma C for inherited clusters.** These can be large (`|𝒦| ~ L^{d(j'-j)}`). The collar `w ~ (2/m) log(|𝒦| p)` grows
+  only like `(j' - j) log L`, which is fine. Under the hierarchical decomposition of section 3 they are high-level
+  clusters, with separation growing faster than their collars.
+
+### Status (sixth follow-up)
+
+| item | status |
+|---|---|
+| section 15 (dynamic fix saturates) | **correct**: a real obstruction to the box-by-box method; the cluster-as-node remedy is the static composite box |
+| Lemma C | **sound in principle**; FIXABLE: long links must join clusters; simplification (no `|∂_in|` factor) |
+| coverage via multiplicity (check 1) | **does not work as written** (it worsens the per-site condition outside `W`); variant: good boxes overlap the collar, `W` with multiplicity 1 |
+| cluster-merging count (check 3) | **not under control**: the size-dependent merge rule percolates in volumes `>> exp((Cη)^{-1/d})` at fixed spacing; `MassGapLoc` is volume-first. Replace by a hierarchical sparse decomposition (GAP until written) |
+| H2 quenched (my fifth point) | resolved in statement; rests on the pointwise fibre normalisation (unchecked) |
+| coarse bad set (my fifth point) | resolved; check the support of Balaban's cut-off at [III] (2.17) |
+| step (ii) of Theorem A_good | covers scale-`j` patterns only; inherited coarse-bad clusters must be priced at their own scale (section 12) |
+| section 12 well posed | yes, on the static form, as a recursion of conditional expected counts with a multi-scale (chained) Peierls bound |
+| N-2 overall | **GAP**: open; section 12 not started |

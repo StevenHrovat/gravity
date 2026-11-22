@@ -1226,3 +1226,19 @@ thread.
   efficiency"). "Any confinement is a bad box": Balaban's large-field regions are where the strong-coupling physics sits; below the
   hand-over scale they are rare islands, and at the confinement scale they are everywhere, which is where the one-box route takes over.
   Forwarded to the M1 thread as the reading behind the step-4 fix.
+- **Disturbances are isolated from the start (the owner, same day, on the cluster-merging gap, before reading the repair):** "We have
+  already established that the creation of non-existence requires the spanning of a boundary from existence, guaranteeing that the bad
+  influence is isolated immediately. ... As soon as something does not assert its existence like it is expected to, it is contained as
+  non-existence, so the flip is immediate. As soon as that happens every transfer in has to happen through a DB, which ties it to G0,
+  thus not making the introduction of disturbances possible at any point from then on. So anything that can be classified as a
+  disturbance is isolated from the start and stays that way. Anything that can not be classified as existence or non-existence can have
+  no influence on the system, since it does not exist, so we should have, literally, covered all our bases." Reading (coordinator):
+  this is the standard repair the REVIEW-2 reviewer named (a hierarchical, Froehlich–Spencer-type sparse decomposition), seen from DMP.
+  (1) Isolation at creation: a bad region receives its collar at the scale where it is born, with a width set by that scale, not one
+  that keeps growing with the cluster's later size; regions born at different scales are separated by their own collars at their own
+  scales, so the merging cascade of a size-dependent collar does not arise. This mirrors "trapped at creation" (N_t = 0) and the closing
+  rule. (2) "Every transfer in has to happen through a DB": Lemma C, the outside reaches a cluster only through its collar. (3) "Anything
+  neither existence nor non-existence has no influence": in the proof the classification is exhaustive by construction, because the
+  pattern indices of the positive mixture cover every configuration (total weight one). What still has to be proved: that the regions of
+  each scale are sparse enough relative to their collars for the hierarchy to be consistent, which comes from the rarity bound H2 at that
+  scale.
