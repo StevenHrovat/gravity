@@ -1265,3 +1265,10 @@ thread.
   order one, at the confinement scale, which is where M1 hands over to the strong-coupling side: the existence/non-existence pair stops
   being separable by scale there, and the one-box route takes over. So the strength is structural, and the earlier "root cost near
   infinite at G0" is the same fact seen from the cost side.
+- **Trapped remainders at the boundary and dark matter (the owner, same day):** "The gap also works nicely for DMP/actual dark matter: the
+  remainders of acts at the DB get trapped there, but can only be interacted with through the existence chain/gravity." Reading
+  (coordinator): the Yang–Mills touchpoint is the way M1's remainders couple. Released remainders and labels sit at the boundaries of
+  regions (collars, birth scales) and have no linear coupling to the field (su(2) has no invariant vector, R8). They act on everything
+  else only through gauge-invariant dimension-4 terms and the shared coupling, i.e. through the universal channel that all of existence
+  shares, not through any direct one. The identification with dark matter and gravity is cosmology outside the Yang–Mills problem and
+  is recorded as the owner's reading, not tested here.
