@@ -460,3 +460,129 @@ No FATAL finding; two GAPs in the plan (below).
   on large-field boundaries (possible multimodality)".
 * NIT: the rate of (a) is about `1/l_B ~ m^{d+1}/(log log g^{-1})^{d+1}`, not `m/log log g^{-1}` (the far-side weight
   in `OneBoxSum`). Boxes must be unions of `L`-blocks.
+
+## Follow-up 4 (UV-TV rebuilt, `UV-TV.md` 7-13), 2026-11-22
+
+Read: `../m1-tools/UV-TV.md` 7-13 in full. Nothing was built or re-run; the commit id was not checked (no git).
+
+### Verdict
+
+Both Follow-up 3 GAPs are resolved at the level of statement and hypotheses. UV-TV (i) is now averaged, with
+law-distributed coupled coarse states and the coarse bad set among the bad data. Theorem A_good's hypothesis is an
+annealed Peierls bound per copy, with goodness defined for pairs. The long-link decomposition is sound. I see nothing
+in H0-H4 that is unavailable in principle; H1 and H2 are the real work and correctly sit in section 12, which is not
+started.
+
+The proof sketch of Theorem A_good, however, is **not sound as written**. Step 3 derives the Dobrushin-Shlosman
+inequality "in stationarity" with `d(x) <= 1` on bad sites. That cannot produce decay: a bad cluster and its good
+collar can sustain disagreement indefinitely, and a stationary coupling may carry it, with no link to `D`. The
+activation and first-passage logic of steps 4-5 is the right idea, but it must be derived from a coupling **started
+from agreement**, not from stationarity. FIXABLE with a known construction (below), but load-bearing. No FATAL, no GAP.
+
+### Status of the Follow-up 3 GAPs
+
+* **GAP 1 (the statement of UV-TV (i)): resolved as a statement.**
+  * Section 8 couples coarse pairs whose marginals are both the law, or both the law given a common `H`. (A) resamples
+    the far coarse data; (B) uses fresh randomness on the mirror side.
+  * `Bad_j(omega)` includes the coarse bad set. The tower's failure event is a multi-scale chain, not a union bound.
+  * Its content (section 12) is open, as the note says.
+  * NIT: (B) should be written as the hybrid of two copies that are conditionally independent given `F_l`, with
+    randomness indexed by region. Then `Cov <= ||f|| ||g|| (P(H_A != Y_A) + P(H_thetaA != Y°_thetaA))`.
+* **GAP 2 (the hypothesis of Theorem A): resolved.**
+  * Independent-percolation domination is withdrawn.
+  * H2 is an annealed Peierls bound per copy, used through the min-trick, so only marginal bounds are needed.
+  * Goodness is a property of the pair (equal `omega`, both small field, no links), and H3 is required only for
+    boundaries in the supports.
+  * The gauge is handled by working in Balaban's block-axial gauge relative to the given coarse configuration, which
+    is fully gauge-fixed once the coarse data are equal near `J`. The phrase "modulo gauge" in section 8 should say
+    this.
+
+### Theorem A_good: the proof sketch
+
+**What is sound.**
+* **Step 1, the mixture-first coupling.** Draw `(omega, omega')` from `Pi`, then couple `mu_omega` with
+  `mu'_{omega'}`: correct marginals.
+* **Step 3 on good boxes.** Changing boundary sites one at a time and gluing gives the multi-site coupling bound. The
+  far-to-near coupling of 10.2 gives per-site disagreement bounds, so `k_J(z)` splits by site.
+  * Nested maximal couplings for the tail families `{|y - z| >= r}` exist simultaneously (Goldstein's maximal coupling
+    for a monotone family), so `E[#disagreements] <= Sum_r #(shell r) TV_r` is legitimate.
+* **Step 5's averaging.** H2 for arbitrary finite unions of boxes gives the joint bound for all clusters of a chain at
+  once; "factorises" is loose wording for that. The min-trick handles the two copies. The lattice-animal count and H4
+  close the sum.
+
+**What is not sound, and the fix.**
+* **The problem.** Step 3, second bullet: "if `x` lies in a bad box ... `d(x) <= 1`", in a stationary coupling.
+  * The resulting inequality `d <= min(1, M d + s)` has solutions with `d = 1` on bad clusters that are not connected
+    to `D`. A disagreeing cluster `K` makes its collar disagree with weight `~ k |K|`, and the collar re-disagrees `K`
+    with weight `|K|`. The loop gain `~ k |K|^2` is not small for large clusters.
+  * Persistent disagreement inside an isolated bad cluster is compatible with a stationary coupled chain. The bad-box
+    coupling is "arbitrary", and once the boundaries differ nothing forces agreement back.
+  * So stationarity alone gives no decay in `dist(B, D)`. Bad clusters near `B` would contribute `~ eta`, independent
+    of the distance.
+* **The fix.** Make activation explicit, and work with the minimal solution.
+  1. **Bad boxes far from `D` with `omega = omega'` near them:** H0's agreement clause makes the two specifications
+     equal, so couple them **identically** whenever the boundaries agree. Then
+     `Sum_{y in J} P(disagree after update) <= |J| P(some disagreement in the r_int-collar)`. That is the activation:
+     influence `|J|` per collar site, not a spontaneous `d <= 1`.
+  2. **Start the coupled dynamics from configurations that agree** outside `D` and outside the set where
+     `omega != omega'` (possible, since `omega`-consistency is local per box). Iterate in time: `d_n` increases
+     towards the **minimal** solution of the inequality, which is exactly the first-passage chain sum of step 5, with
+     clusters activated once and capped at 1.
+  3. **Pass to the limit** `n -> infinity` along a subsequence. The state space is compact, so couplings are tight. Each
+     marginal converges to `mu_omega` by uniform ergodicity (Doeblin floor). The disagreement event at `x` is **open**,
+     so `P(Y_x != Y'_x) <= liminf d_n(x)` (portmanteau).
+  
+  This replaces step 2's existence of a stationary coupling. It also removes the need for the Feller property, which
+  fails anyway: optimal couplings are not continuous, and the hard characteristic functions `chi` are not Feller.
+* **NIT on unique ergodicity.** The Doeblin floor gives a density lower bound for each box law. Ergodicity of the
+  block heat bath on the `omega`-consistent set also needs block moves to connect it, and Balaban's per-cube
+  conditions can straddle boxes. Either take boxes as unions of Balaban's `M R_j`-cubes as well as `L`-blocks, or add a
+  short argument (create first, then remove). Qualitative only.
+
+### The long-link decomposition (H0, 10.1)
+
+* **Sound.**
+  * `e^{E(X)} = e^{m_X}(1 + h_X)`, with `m_X` the infimum over the `omega`-support and `0 <= h_X <=
+    e^{osc} - 1`, is a positive decomposition for real terms. A non-chosen link contributes the field-independent
+    factor `e^{m_X}`, so a box with no chosen link has a specification of range `r_int`.
+  * The link weight is bounded pointwise: `w(l ⊂ Lk) = ∫ Prod_l h_X Prod_{not l} (1 + h_X) ... / ∫ Prod_all (1 + h_X)
+    ... <= Prod_l sup h_X`, jointly with any bad-box event. So H2's link part is immediate.
+  * The far coarse data (`D`) enter only through chosen links and constants, as 10.1 says.
+* **NIT on the size of the tails.** On small field, the localised pieces of the main term `A_j(U_j(V))`, through the
+  background's decay [15] (190), are of size `~ p(g_j)^2 e^{-kappa d}`, not `O(1) e^{-kappa d}`. So `r_int >~ log p/kappa`.
+  This is still inside `l_B ~ (log p/m)^{d+1}`.
+* **Large-field regions.** Large-field regions use the local bare Wilson action inside `T`, not the background, so they
+  create no long tails of size `g^{-2}`. Worth one sentence, since otherwise a reader worries about long-range
+  couplings of order `g^{-2} e^{-kappa d}` from large fields.
+
+### Is anything in H0-H4 unavailable in principle?
+
+* **H0:** available (above).
+* **H1** (pattern coupling with agreement off `D`-connected bad chains): available in principle. The pattern marginal
+  is a positive contour gas with small activities and small many-body interactions, obtained by integrating the
+  small-field fluctuations, and such gases are in the uniqueness regime (disagreement coupling or a cluster
+  representation).
+  * But this is genuine work: the interactions are not a hard core, and the gas also contains the domain history
+    (functions of the field at all scales `<= j`) and unreleased regions from finer scales. It belongs to section 12,
+    as stated.
+* **H2:** available annealed. Pointwise in the coarse field it holds only where the coarse field is small field, and
+  needs the pointwise fibre-normalisation lower bound (the named unchecked adaptation). The coarse part comes from the
+  scale-`(j+1)` law, so it is part of the multi-scale crossing estimate. Nothing hidden.
+* **H3:** available. The box law on a good box is a truncated, perturbed Gaussian. The hard small-field truncation at
+  `~ p(g)` standard deviations changes total variation by `e^{-c p^2}`, and the Pinsker step holds uniformly over
+  boundaries in the support. The rate `lambda ~ 1/l_B` is now right.
+* **H4:** a smallness condition on `eta = e^{-c p0}`. Available.
+* **Unimodality (11):** consistent and correctly scoped. It is claimed only given `omega`, on good boxes; the mixture
+  carries the multimodality as indices. The Doeblin floor is correctly called qualitative.
+
+### Findings, one line each (follow-up 4)
+
+* No FATAL, no GAP. Both Follow-up 3 GAPs are resolved at the statement and hypothesis level. The content (H1, H2, the
+  multi-scale crossing, section 12) is open, as stated.
+* FIXABLE (load-bearing): Theorem A_good's step 3 "in stationarity, `d <= 1` on bad sites" cannot give decay, since
+  isolated bad clusters can sustain disagreement. Rewrite it as: identical coupling on bad boxes with agreeing collar
+  (H0), a coupled dynamics started from agreement, the minimal solution as the first-passage chain sum, and a weak
+  limit with portmanteau. Drop the stationarity and Feller step.
+* NITs: block-move irreducibility for unique ergodicity; the size of the long-link tails (`p^2 e^{-kappa d}`,
+  `r_int >~ log p/kappa`); spell out (B) as a hybrid of two conditionally independent copies; say "block-axial gauge"
+  instead of "modulo gauge".

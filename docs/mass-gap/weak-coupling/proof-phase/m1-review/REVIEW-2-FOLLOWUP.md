@@ -651,3 +651,136 @@ come back. Under Theorem A's present hypothesis it would come back.** Confidence
 | composition (ii) | routine only for the original, false (i); for the good-boundary (i) a multi-scale conditional crossing estimate (Balaban's history geometry); part of the new analysis |
 | conditional rarity of bad boxes | plausible given the coarse field, pointwise normalisation at every scale (unchecked adaptation); includes unfinished finer-history regions |
 | N-2 overall | **GAP**: open, new analysis, now precisely located |
+
+## Fifth follow-up
+
+Read for this: `../m1-tools/UV-TV.md` sections 7-13. REVIEW-3 was not read. Nothing was built.
+
+### Verdict (fifth follow-up)
+
+The rebuild follows the right design, and my three points from the fourth follow-up are answered in substance:
+1. "bad" is defined through the mixture index `ω`, with one acceptable exception;
+2. no rarity or influence statement conditions on unpenalised fine content, so the frozen region stays out;
+3. the multi-scale crossing estimate is named as the open core (section 12), not hidden.
+
+Two things need correcting before section 12 starts:
+* **A gap in the proof (step 3 of Theorem A_good).** As written, bad boxes get `d <= 1`, which makes every bad cluster
+  anywhere a source of disagreement. That contradicts step 4's "activated only if a disagreement reaches its boundary"
+  and would give an `O(eta)` floor instead of `e^{-lambda dist(B, D)}`.
+* **The hypothesis H2 is stated in the wrong form for the tower.** Theorem A_good uses an annealed H2 with a fixed source
+  `D`, but in the tower `D` is random and correlated with the bad sets. So the tower needs H2 conditional on all coarser
+  data (quenched in the coarse field), which is the pointwise fibre normalisation. That is still frozen-free, but it is
+  not the annealed statement the text names in sections 8 and 9.
+
+Nothing in H0-H4 looks unavailable in principle. N-2 stays a GAP (open, section 12 not started). No FATAL finding.
+
+### 1. Is "bad" now defined through mixture indices?
+
+**Yes, with one acceptable exception.**
+* `Bad_j(ω)` is the set of boxes meeting a large-field domain, an unreleased region (including those born at finer
+  scales), a labelled domain, a Z2 excitation, or a long link of `ω`. These are all summation indices of the positive
+  representation before any Mayer expansion.
+* This also takes care of the "unfinished finer history" point of my fourth follow-up.
+* **The exception:** `Bad^c(X_{j+1})`, "the block field `X_{j+1}` is not small field", is an event of the conditioning
+  variable, not an index. That is acceptable, since it is coarse data, fixed given `X_{j+1}`, with two provisos:
+  * its threshold must lie outside the support of the small-field characteristic functions at scale `j + 1`, so that its
+    rarity comes only from the large-field pattern weights of `rho_{j+1}`;
+  * there is no joint positive mixture of indices across scales: the R-operation destroys `ω_j`'s structure when it
+    builds `rho_{j+1}`. So the tower carries coarse badness only as this event (plus the unreleased regions that
+    `rho_j` still holds), not as a coarser index.
+  
+  Both should be stated in section 8. NIT.
+
+### 2. Is the frozen region kept out?
+
+**Yes.**
+* **H3** asks for influence bounds only for boundary pairs in the support of pattern-good neighbourhoods. Those are
+  small field, within `C eps` of a common background in a common gauge. Every hybrid boundary stays in that set, so
+  nothing unpenalised is quantified over.
+* **Bad clusters** carry no influence bound.
+* **H1 and H2** are properties of the pattern weights given coarse data.
+* **The Doeblin floor** is used only qualitatively, for unique ergodicity.
+* **The comparison states:** (A) resamples the far coarse data from the law, and (B) uses fresh randomness on the
+  mirror side. Neither allows an arbitrary `X'`. This removes the uniformity over coarse data as well.
+
+**Caveat, the annealed/quenched point (GAP-level, part of section 12).** Sections 8 and 9 state H2 annealed (averaged
+over the coarse pair), for a single scale with a **fixed** source `D`. In the tower:
+* the source `D_j` is the disagreement inherited from scale `j + 1`, a random set correlated with the scale-`j` bad sets
+  (both concentrate where the coarse field is bad);
+* applying Theorem A_good scale by scale then needs H2 conditional on all coarser data, including `D_j`: quenched in the
+  coarse field, annealed only in the scale-`j` indices;
+* that is the pointwise bound of section 10.3, `P(A ⊂ Bad_j(ω) | X_{j+1}) <= eta^{|A|}` for boxes outside
+  `Bad^c(X_{j+1})`. The coarse bad set's own rarity is carried by the coarser scale's chain.
+
+This still conditions only on coarse data, so the frozen region stays out. But the annealed form named in sections 8
+and 9 is not what the tower uses: annealing alone cannot handle a random correlated source. Reconcile the two
+statements; the pointwise fibre normalisation is then genuinely needed, as section 12 already says.
+
+### 3. Does the structure leave room for the multi-scale crossing estimate, or hide it?
+
+**It leaves room, and names it.**
+* Section 8 ("The tower") says that the failure event is a multi-scale chain, "not a union bound over scales", with bad
+  regions of coarser scales inherited.
+* Section 12 lists the estimate as not started.
+
+Two remarks on its shape:
+* **Theorem A_good, as stated, is a single-scale theorem with a deterministic source.** The tower needs either a
+  version with random sources and joint (cross-scale) Peierls bounds, or Theorem A_good applied conditionally on the
+  coarse data with the quenched H2 above, whose conditional conclusions are then chained from scale `ell` down. The
+  second is the natural route. Section 12 should say which.
+* **The cross-scale Peierls bound** has to come from Balaban's history-summed bounds ((1.80)-(1.85)). The weights of
+  chains that mix bad clusters of several scales must factorise conditionally scale by scale, and a conditional chain
+  rule gives exactly that, given the quenched H2. This is consistent with my fourth follow-up.
+
+### 4. Is anything in H0-H4 unavailable in principle?
+
+| hypothesis | assessment |
+|---|---|
+| H0 (range, agreement) | **Available.** The positive tail decomposition `e^{E(X)} = e^{m_X}(1 + h_X)` with `h_X >= 0` turns long-range terms into a positive sum over link sets. The link weights are positive functions of the configuration rather than constants, which is fine for a positive decomposition. Fibre constraints and gauge-fixing are internal to the `L`-blocks. |
+| H1 (pattern coupling) | **Available in principle, not standard.** Balaban's patterns are not a plain hard-core polymer gas: they are admissible histories across scales (nested domains, the (i)/(ii) conditions, merging rules), and their weights include `T`-values and exponentiated boundary terms that couple domains. A disagreement-percolation or clan coupling needs these written as a positive gas with small local activities given the coarse data, with the boundary terms decomposed like the links of H0. Part of section 12. |
+| H2 (Peierls per copy) | **Available in principle,** in the quenched form, given the pointwise fibre normalisation (the unchecked adaptation). The annealed form alone does not serve the tower. |
+| H3 (good-box influence) | **Available.** The far-to-near nested coupling with exact agreement at far sites answers my fourth-follow-up point. The numbers (`k_J(z) <~ (log p/m)^d`, `ell_B ~ (log p/m)^{d+1}`, `lambda ~ 1/ell_B`) are consistent, and the rate is harmless for the composition. The Pinsker step with the analytic perturbation, uniform over pair-good boundaries, is still to write. |
+| H4 (small bad gas) | **Available:** `eta = e^{-c p0}` is tiny against `e^{lambda C ell_B} = O(1)`. |
+
+### 5. The proof of Theorem A_good: one inconsistency to fix
+
+* **Step 3** gives, for `x` in a bad box, near `D` or at a link endpoint, only `d(x) <= 1`. Iterated in step 5, every
+  chain may then end at **any** bad cluster with weight 1, whether or not the cluster is connected to `D`. Bad clusters
+  occur at density `eta` per box, so the bound becomes `d(x) <~ sum (nearby clusters) gamma^n`, of order `eta`, not
+  `e^{-lambda dist(B, D)}`.
+* **What is needed is the property step 4 states but step 3 does not derive.**
+  * If `ω = ω'` on a bad box `J` and its `r_int`-surroundings, `J` is far from `D`, and the two configurations agree on
+    those surroundings, then by H0 the two specifications coincide and the coupled update is the identity. So no
+    disagreement is created inside a bad cluster; it can only be carried in.
+  * The stationary inequality for bad boxes is then `c(x) d(x) <= sum_{J ∋ x} sum_{z in the r_int-shell of J} d(z)`,
+    with weights up to 1 (no contraction), not `d(x) <= 1`.
+* **Iterating that inside a large cluster compounds weights above 1.** So the cluster has to be treated as one node:
+  disagreement inside `𝒦` is bounded by the boundary disagreement times a sweep factor of order `|𝒦|`, through a
+  cluster-level stationarity argument. That is step 4's claimed "outgoing influence `<= C ell_B^d |𝒦|`".
+* This is the "first-passage bookkeeping" the text defers. It is not a formality: without it the conclusion is false
+  as written.
+
+FIXABLE, but it must be written before any Lean. Confidence: high that steps 3 and 4 are inconsistent as written;
+medium-high that the cluster-node argument closes.
+
+### 6. Smaller remarks
+
+* **Unimodality after matching (section 11): agreed.** Given the full index, the remaining law on pattern-good boxes
+  is a small perturbation of a strictly log-concave Gaussian with a unique background. This is the right reason why
+  H3 holds and bad boxes need no influence bound.
+* **(B) by fresh mirror randomness:** the standard conditional-independence-by-coupling trick, correctly set up.
+* **The Doeblin floor `e^{-C beta_0 L^{dj} |J|}`:** qualitative only, used only for unique ergodicity of finite-volume
+  chains. That is correct; irreducibility of the block heat bath on supports restricted by characteristic functions
+  should get one line.
+
+### Status (fifth follow-up)
+
+| item | status |
+|---|---|
+| (1) "bad" as mixture indices | resolved; the coarse bad set is an event of the conditioning variable (acceptable, with two provisos to state) |
+| (2) frozen region kept out | resolved; but H2 must be quenched in the coarse field for the tower, so annealed and pointwise statements are to be reconciled |
+| (3) room for the multi-scale estimate | yes, named in sections 8 and 12; section 12 should choose "conditional Theorem A_good, chained" and the cross-scale Peierls form |
+| Theorem A_good proof | sketch; **steps 3-4 inconsistent as written** (bad boxes as sources); fix by identical coupling on agreeing boundaries plus cluster-level bookkeeping |
+| H0, H3, H4 | available (H3 Pinsker step to write) |
+| H1, H2 for Balaban's patterns | available in principle, not standard; section 12 |
+| N-2 overall | **GAP**: open, with the core in section 12 not started |

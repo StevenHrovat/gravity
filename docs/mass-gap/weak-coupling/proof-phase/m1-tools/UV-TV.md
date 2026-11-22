@@ -481,22 +481,22 @@ small field** on pattern-good regions.
 * In the theorem this is why H3 can quantify over all outside configurations on pattern-good neighbourhoods, and why
   bad boxes need no influence bound.
 
-**Irreducibility ("every subset needs a way for two nodes to interact").**
-* **Positivity.** The bare Wilson weights are strictly positive (`stepK_pos`), so every `ρ_j` is positive almost
-  everywhere on its support. Every box law, given any boundary, has a density bounded below relative to the fibre's
-  reference measure: a **Doeblin floor**.
-* **Its size.** The floor is set by the oscillation of the bare action over the box's history,
-  `≥ e^{−2β_0 · #(bare plaquettes in the box)} = e^{−C β_0 L^{dj} |J|}`.
-* **Connectivity of the fibre** is not needed for the floor. A density lower bound holds on disconnected fibres too.
-  In small-field regions the fibre is locally a graph over the free variables (implicit function theorem), hence
-  connected there.
-* **What it buys:**
-  * no box law is frozen: there are no zero-probability transitions between parts of a fibre;
-  * the finite-volume conditionals are unique and ergodic.
-
-  That rules out the "frozen box law" failure mode qualitatively.
-* **What it does not buy:** any uniform estimate. The floor is `e^{−O(β_0)}` per bare plaquette, so it gives no
-  contraction uniform in `a`. The multi-scale crossing estimate stays the main work, as the reading says.
+**Uniform local mixing ("every subset must be able to establish an arrow of causality through two nodes interacting
+via a shared G0"; the owner's correction, `../../PREP.md`).**
+* **In proof terms**, this is uniform local mixing: every box's conditional law contracts with a rate below one, the
+  same rate for all boxes, because they share one coupling. That is Theorem A_good's **H3**: the one-box sum
+  `Σ_{z ∉ J} k_J(z) e^{λ Ê_J(z)} ≤ γ |Λ_0|` with one `γ < 1` for every box (10.2), not an irreducibility statement.
+* **On good boxes it holds**, box by box, uniformly in the scale, the volume and the spacing. Section 10.2 gives
+  `k_J(z) ≲ (log p(g_j)/m)^d`, with boxes of side `ℓ_B ≈ (log p/m)^{d+1}`.
+* **On bad boxes it is not available box by box.** On large-field backgrounds the box law has no uniform contraction:
+  it may be multimodal, with competing states kept as indices of `ω`. There it is **restored on average**: bad
+  clusters are nodes of the chain sum, and their rarity under each copy (H2) together with the smallness of the bad
+  gas (H4) gives the same exponential decay overall (Theorem A_good, steps 4-5).
+* **Side remark (irreducibility, qualitative only).** The bare Wilson weights are strictly positive (`stepK_pos`), so
+  every box law, given any boundary, has a Doeblin floor `≥ e^{−C β_0 L^{dj} |J|}`.
+  * It needs no connectivity of the fibre.
+  * It rules out frozen box laws and gives the unique ergodicity used in step 2 of Theorem A_good.
+  * It gives no estimate uniform in `a`, and plays no role in the contraction.
 
 ## 12. Next: the multi-scale crossing estimate (not started)
 
