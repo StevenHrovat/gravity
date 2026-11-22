@@ -1823,3 +1823,171 @@ accurate once the four FIXABLE items are folded in. I would add "pending items 1
 | van den Berg-Maes (31.5) | **legitimate in the form used** (deterministic vacant-agree plus marginal Peierls plus min-trick); adaptation to links to write (reveal along occupied links) |
 | twelfth-follow-up NITs | not yet folded in |
 | **N-2** | **closed at paper level** (GAP withdrawn), resting on route (c) and the named citation-level readings, pending FIXABLE items 1-4 |
+
+## Fourteenth follow-up
+
+Read for this: `../m1-tools/UV-TV.md` 32 (final status), 33, 34 and 35. REVIEW-3 was not read. Nothing was built.
+
+### Verdict (fourteenth follow-up)
+
+* **My thirteenth-follow-up items are resolved:**
+  * units of `d(X)` in `M`-cubes (34.3);
+  * van den Berg-Maes revealing along links (34.4);
+  * the last kernel to the bare field (34.5), with one NIT: the choice among tied fillings is Boltzmann-weighted, not
+    uniform;
+  * my three twelfth-follow-up NITs (33.6).
+* **One new problem, in the (B) construction of 34.6** (three towers with a slab). The mixed tower's negative half is
+  sampled from the law **given the bare slab content `Y_P`** and coupled by "the tower coupling of 30 with the slab as
+  source".
+  * The reverse kernels of a law conditioned on bare content are not Balaban's kernels `K_j`. They are `K_j` reweighted
+    by `P(Y_P = y | X_j)`.
+  * Their block specifications away from the slab agree with those of `K_j` only if that weight is local in `X_j`.
+    That is the density-ratio ("frozen region") statement again, now at every intermediate scale.
+  * "The half-space with data on the slab is a domain with Dirichlet data, the adaptation of 29.6" understates this.
+    29.6 (and 32's item 3) is a one-step adaptation on thin shells with small-field data. This needs the whole M1
+    induction on a half-space conditioned on bare content, which contains large fields at every fine scale.
+  * **There is a clean fix that uses only proved pieces:** the law of total covariance along the scale filtration
+    (section 1). I rate this a GAP, because 34.6 as written relies on an unlisted step of the hard kind, but it is
+    fixable now.
+  * **My own slip:** in the thirteenth follow-up I endorsed "towers with randomness indexed by region". That needs a
+    representation of each kernel as a local function of spatially indexed randomness, which the coupling theorem does
+    not provide. The author's slab version was a reasonable reading of that advice.
+* **Group 1 (35):**
+  * points 2 (footprint lifetime, by citation), 3 (per cube versus per component, moot by Balaban's release condition
+    (i)) and 4 (no labels above `ε_*` at release) **hold**;
+  * point 1 ("cap reached implies irregular `W`") is plausible, but its proof has a geometric gap: the coarse square
+    can reach a second deep component. FIXABLE by a merge-range change. So it is not "paper" yet.
+* **32's final status is accurate,** except that it should either list the slab-conditioned half-space analysis as a
+  dependency, or better, replace 34.6 by the telescoping route. Add the `K_{-1}` NIT.
+* No FATAL finding. **GAP:** the (B) construction of 34.6 (fixable as below).
+
+### 1. Statement (B): what goes wrong in 34.6, and a fix
+
+**The problem.**
+* In 34.6, `Y^m` on the negative half has the law of the negative half given `(𝓕_ℓ, Y_P = Y^1_P)`, and is coupled with
+  `Y^2`'s negative half given `(𝓕_ℓ, Y_P = Y^2_P)` "by the tower coupling of 30, with the slab as source at every
+  scale".
+* The tower of 30 couples the reverse kernels `K_j(· | X_{j+1})` of the **law**. For a law conditioned on bare data
+  `Y_P = y`, the reverse kernel at scale `j` is the reweighting `K_j^{(y)}(dX_j | X_{j+1}) ∝ K_j(dX_j | X_{j+1}) ·
+  P(Y_P = y | X_j)`, a disintegration.
+* For Theorem 28 to apply away from the slab, the block specifications of `K_j^{(y)}` must coincide with those of
+  `K_j` (or of `K_j^{(y')}`) on blocks far from the slab. That holds only if `log P(Y_P = y | X_j)` depends on `X_j`
+  far from `P` only through decaying terms.
+* That is exactly the density-ratio statement `sup_a |log w(a; V) - log w(a; V')|` of `SKETCH-STEPS.md` 2: the frozen
+  region, now with `a = y` a sample rather than a supremum, but needed at every intermediate scale.
+* The slab content at fine scales is generic: it contains Balaban large fields at the density those always have. So
+  this is not covered by 29.6's one-step adaptation (thin shells, small-field data on both sides), which is what 32
+  lists.
+
+**Smaller point.** "Every block constraint lies on one side" is false for coarse bonds that cross the plane, at every
+scale up to `ℓ`. It is rescued because `P` is wider than the truncation caps, which exceed `ℓ` at scale `ℓ`, so those
+constraints lie inside `P`. Say so.
+
+**A fix with only proved pieces: telescoping the covariance along the scale filtration.**
+* Let `G_j := σ(X_j, ..., X_ℓ)` (noise included). `f`, `g` are bare observables near `A` and `θA`, with `|f|, |g| <= 1`.
+* **Law of total covariance, iterated:**
+  `Cov(f, g | G_ℓ) = Σ_{j=0}^{ℓ-1} E[ Cov(E[f | G_j], E[g | G_j] | G_{j+1}) | G_ℓ ]`.
+  This uses `Cov(f, g | G_0) = 0` for bare-measurable `f, g`.
+* **By the Markov property in the scale,** `E[f | G_j] = E[f | X_j] =: h_j^f`, and the covariance in the `j`-th term is
+  under the single kernel `K_j(· | X_{j+1})`.
+* **Localisation by (A) at scale `j`.** Lemma UV-TV (A), applied with top scale `j` (physical block size `L^j a <=
+  ell`), gives `||h_j^f - φ_j||_{L^1} <= C (t/(L^j a))^{-d C_2}`, with `φ_j` a function of `X_j` near `A`. The same
+  holds for `g` near `θA`.
+* **Single-kernel decorrelation.** `Cov_{K_j(· | X_{j+1})}(φ_j, ψ_j)` for local `φ_j` near `A` and `ψ_j` near `θA` is a
+  one-scale statement:
+  * condition `K_j` on its **own** variables near `A`. That is a sample in the support, with the same block
+    specifications elsewhere (DLR), so no reweighting by bare data appears;
+  * apply Theorem 28 per pattern pair, with the blocks next to `A` as sources and H1's polymer coupling for the
+    patterns;
+  * add Kotecky-Preiss for the pattern covariance.
+  
+  This is 33.3's argument, correct **per scale**. It gives `C e^{-c κ t/(L^j a M R_j polylog)}` on the complement of
+  the scale-`j` truncation events.
+* **Sum:** `|Cov(f, g | G_ℓ)| <= Σ_j [C (t/(L^j a))^{-d C_2} + C e^{-c t/(L^j a polylog)} + P(E_j)]`, which is geometric
+  from `j = ℓ` and gives `C polylog(t/ℓ) (t/ℓ)^{-d C_2}`. Uniform in the spacing and the volume.
+* Nothing is ever conditioned on bare content across scales. The only conditioning is of `K_j` on its own scale-`j`
+  variables near `A`, inside the support.
+
+### 2. My thirteenth-follow-up items
+
+| item | status |
+|---|---|
+| units of `d(X)` | **resolved** (34.3): `M`-cubes; inter-polymer links `d >= 100 R_j`; weight `C(p^2 + E_0) e^{-100 κ R_j}`, which beats `p^2` because `R_j >= (log g^{-2})^2`; vacuum-link density tiny. |
+| van den Berg-Maes with links | **resolved** (34.4): links are connected objects; the cell state is the set of objects meeting the cell; the conditional law of an unrevealed region depends on revealed cells within `D_c` and on revealed objects crossing in; revealing follows link cells. The path bound then needs only cube adjacency. Correct. |
+| last kernel to the bare field | **resolved** (34.5), with one NIT: given `(Ad U, σ*)`, the consistent bare signs `τ` form a finite set per decoder component. The kernel weights them by the Wilson factor `exp((β/2) Σ τ_p |tr U_p|)`, so it is a **Boltzmann-weighted** choice, not a uniform one among tied fillings (and not only minimal fillings, if the local decoder admits others with the same output). The coupling (identical where component and data agree) and the front `a_{-1} = N_0 M R_0` are unaffected. |
+| (B) explicitly | **replaced by a new construction with a problem** (section 1); fix by telescoping. |
+| twelfth-follow-up NITs | **resolved** (33.6): Dirichlet layers as unions of `L`-blocks; `E_0(M)` named, entering `w` logarithmically, after `κ` and `M(κ)`; `q0 >= p0` stated. |
+
+Also checked:
+* 33.1, truncations as a case split: correct.
+* 33.4, (I) by interpolating the box law along `σ_t`, without gluing over hybrid configurations: correct, since `q_b`
+  is an explicit density in its boundary data, defined in a `C ε` neighbourhood. Measurability is by Goldstein's
+  construction.
+* 34.1, one coupling for all centres: correct; the update does not depend on `v`.
+* 34.2, the link-length truncation: correct.
+
+### 3. Group 1 (35)
+
+**Point 1: "cap reached implies irregular `W`". Plausible; proof has a geometric gap (FIXABLE).**
+* **What works:**
+  * the uniform threshold `C_tw r0 λ^2` still passes localised cores and thin centre sheets;
+  * the exact coarse Stokes inequality (step 5) is right;
+  * the gauge-covariance step (4) is right;
+  * the conclusion `|W(∂p') - 1| >= C_tw c/(64 L^2) >> ε_{k+1}` is right.
+* **The gap is step 3**, "the fine annulus between `γ'` and the translates of `Γ'` avoids `H_0`".
+  * `Γ'` is a coarse square of side about `2λ/L + 2` coarse units, about `2λ` fine units, centred at `γ'`. With
+    `λ = 8(ell_max + 2)`, the annulus reaches up to about `λ` beyond `γ'`.
+  * The construction only guarantees that other deep components are at least `ell_max + 1` from `O(H)`: components
+    merge when their holes touch, and both are grown by `ell_max` layers.
+  * So a second capped component can lie inside the annulus. If it carries an opposite non-central flux, the twists
+    can cancel on `Γ'_x`.
+  * Using the shortest twisted loop helps, but its square still extends about `ell_max + L` beyond `γ'`, which is
+    borderline.
+* **Fix.** Merge components whose holes come within `4λ` of each other, not only when they touch. That is a fixed,
+  size-independent range, so no cascade. Then every other part of the deep set is at least `3λ` from `O(H)`, and the
+  coarse square (extent `<= λ + 2L`) avoids it.
+  * Self-consistency: anti-parallel pairs within `4λ` are then one component. Loops around both see the cancelled flux,
+    so that component passes the test and the cap is not reached, as it should be.
+* **Step 2 (translation "along the sheet").** It is written for a locally flat sheet and a planar `γ`. For curved
+  sheets or non-planar loops it needs one line: replace `γ` by a planar loop in the same homotopy class within `O(H)`,
+  at twist cost `<= r0 · area`.
+* **Status:** FIXABLE; not "paper" until these two steps are written.
+
+**Point 2: footprint lifetime. Closed by citation: agreed.** [V] (1.80)-(1.81) give `K <= n0 - j + R_j`, with geometric
+shrinking (checked against the PDF in my earlier follow-ups). Its uses are R2's long-lived regions and the slack `ψ` of
+(c). Large labelled components are moot (point 4).
+
+**Point 3: per cube versus per component. Moot: agreed.** A component processed by (1.71) satisfies Balaban's condition
+(i) with `K = 0` ((1.89)): it lies in a cube of side `64 M R` or `100 M R` ([V] pp. 384-386, read earlier). So it has at
+most `100^d` cubes, and `δ_X <= 100^d δ_k` under either reading, which tends to 0.
+
+**Point 4: no labels above `ε_*` at release. Follows from point 3: agreed.** Labels are extracted only at release. Before
+release they are indicators inside `T` (window form), carried by Balaban's induction with the slack `ψ`. The condition
+`100^d δ_k <= ε_*` sits on `γ0(L)`. The 11.4 branch is correctly withdrawn, and the marginal steps of 13.1 are now at
+most `log_L 100`.
+
+### 4. Is 32's final status accurate?
+
+Nearly:
+* it lists (c), the readings (a) and admissibility, the shell adaptation of 29.6 (named precisely in 34.8), `κ` large
+  as a citation, and the standard tools;
+* it states the result with polylog factors, uniform in the spacing and the volume.
+
+Corrections:
+1. **(B):** either add "Balaban's induction on a half-space conditioned on bare slab content (all scales)" as a
+   dependency, which is of the hard kind, or, better, replace 34.6 by the telescoping route of section 1, which needs
+   nothing new.
+2. **`K_{-1}`:** a Boltzmann-weighted choice inside decoder components (NIT).
+3. **Group 1 point 1:** mark it FIXABLE until the merge-range change and step 2's planar replacement are written.
+
+### Status (fourteenth follow-up)
+
+| item | status |
+|---|---|
+| thirteenth-follow-up items (units, links, last kernel, twelfth NITs) | **resolved** (NIT: `K_{-1}` is Boltzmann-weighted) |
+| (B) via three towers and a slab (34.6) | **GAP (fixable):** the slab-conditioned kernels are `K_j` reweighted by `P(Y_P | X_j)`, so the density-ratio (frozen-region) statement is needed at every scale; replace by the law of total covariance along the scale filtration, with (A) at each scale and single-kernel conditioning (33.3, correct per scale) |
+| my thirteenth-follow-up (B) advice | flawed (assumed region-indexed randomness for the kernels); withdrawn in favour of the telescoping route |
+| 35 point 1 (cap implies irregular `W`) | **FIXABLE:** step 3 needs other deep components kept at least `3λ` away (merge holes within `4λ`); step 2 needs the planar replacement |
+| 35 points 2, 3, 4 | **hold** |
+| 32 final status | accurate after the (B) fix, the `K_{-1}` NIT and the point-1 caveat |
+| **N-2** | closed at paper level **once (B) is rewritten by telescoping**; until then the (B) half rests on an unlisted hard step |
