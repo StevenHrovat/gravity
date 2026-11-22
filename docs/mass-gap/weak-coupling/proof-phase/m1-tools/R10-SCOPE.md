@@ -118,3 +118,9 @@ decomposition with two-sided weights `(λ_i/λ_0)^n (λ_j/λ_0)^{N-n}`: dense-cl
 `λ_1/λ_0 ≤ e^{-m a_k}` and hence the uniform bound up to the finite-volume terms. These are the same terms the
 existing torus statements (`2n + 2·thick + 2 ≤ side`) already accommodate. The Lean target `spectral_upgrade` should be
 stated in this torus form.
+
+**Update (REVIEW-2 G4):**
+* The upgrade of sections 0.4 and 3 on finite tori is withdrawn. With per-observable constants and `n ≤ N/2` it has no content.
+* The upgrade must be done in the infinite-volume/continuum limit (`LimitRP`), targeting `MassGapLoc`, not `TorusDecayLoc`.
+* The dense class must consist of character polynomials of block variables at a fixed physical scale (constants uniform in the spacing), not of fine links.
+* See `REVIEW2-RESPONSE.md` 5.

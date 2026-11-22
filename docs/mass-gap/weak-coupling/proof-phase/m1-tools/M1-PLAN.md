@@ -57,10 +57,10 @@ the notes):
 | R3 filling near the cut (F4) | holes = twist-free envelopes of deep structures; filling = small-field Dirichlet problem; swallowed blocks filled globally (no per-block rule, RP dropped) | **paper** (`FILL.md`); the old hole (deep plaquettes only) was wrong: the data carried the flux |
 | R4 fibre mass with excision (E7.J) | needed only at regular `W`; swallowed coarse bonds | **paper, explicit** (`FILL.md`, `SKETCH-STEPS.md` 1): ordinary bonds as `E7J.md`; swallowed bonds get an independent Haar value (fibre density 1). Design change: blocking with auxiliary randomness (needs R11 to allow it) |
 | R5 action lower bound (F6) | the bound behind [V] (1.76) | **read**: [16] (69)-(71), action in the four blocks of an irregular coarse plaquette `≥ ¼|V(∂p') - 1|²/g²`, given regularity (68) of the finer field; proof via [12] (50), (53), any dimension |
-| R6 decoder locality | the global decoder equals the product of per-cluster decoders | **paper**, exact (`DECODER-LOCAL.md`): clusters by the merging rule `dist ≤ 4(|K| + |K'|)`; each optimal remainder is supported within `2|K|` of its cluster |
+| R6 decoder locality | the decoder's output depends on `τ` only locally, with exponential tails | **paper** (`REVIEW2-RESPONSE.md` 1): max-weight packing of positive-gain closed sets; exact decomposition over conflict-graph components; Peierls bound `(2C)^u (c β^{3/2} e^{-β})^{u/4}`, volume-uniform, no percolation. The merging rule of `DECODER-LOCAL.md` is withdrawn (REVIEW-2 G3) |
 | R7 normalisation per real flip | `O(1)^{|τ|}` ratio of partition functions | **citation**, reduction written (`CLOSE-OUT.md` 4): Jensen plus the weak-coupling plaquette bound from Balaban's two-sided partition-function bounds |
 | R8 release of acts and labels | dimension-4 coupling, summable | **paper** (`CLOSE-OUT.md` 2): no-linear-coupling lemma (gauge invariance and no invariant vector in `so(3)`); sum `ε_k² Σ_j e^{-p0(g_j)}` (needs `p0` growing faster than `log(k - j)`, i.e. `A0 > 1` if `p = 1`) |
-| R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field | **citation** carry-over with the change table (`CLOSE-OUT.md` 5): small-field regions require `τ = +1`; no centre; otherwise constants only |
+| R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field | **citation** carry-over with the change table (`CLOSE-OUT.md` 5): small-field means SO(3)-regular (`τ = +1` dropped, REVIEW-2 G2); no centre; otherwise constants only |
 | R10 hand-over (b) | the `L_*` half of the ultraviolet transfer | **paper sketch for analytic observables** (`R10-SCOPE.md` 2: one extra local analytic term in Balaban's induction, Cauchy in `t`; same rate, observable-dependent constants). The uniform-over-measurable form of `ObsTransferPhysTW` is not proved and **not needed**: RP of the bare measure upgrades dense-class decay to the uniform gap (`R10-SCOPE.md` 3). Interface change proposed |
 | R12 [16] (71) in 4D | the action lower bound behind [V] (1.76) in four dimensions | **paper**, written out from [12] (48)-(53) (`CLOSE-OUT.md` 1) |
 | R11 interface | `BlockingFamily` relaxed to measurable blockings; SU(2) encoding of `(V, τ)` (`HANDOVER.md` 0.3) | formal refactor, outside M1's folders |
@@ -88,24 +88,25 @@ never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `
 * **External:** [I] Theorem 2 (unpublished).
 * **Separate:** the crossover P4.
 
-**Verdict (updated after `R10-SCOPE.md`):** M1's main theorem has an argument apart from [I] Theorem 2 and P4, at
-the levels listed above:
-* **E8** closes as written in [V].
-* **R4** closes with the randomised swallowed-bond rule.
-* **R10** holds at paper-sketch level for analytic observables, with the inserted term's bookkeeping not checked line
-  by line.
+**Verdict (after REVIEW-2, `REVIEW2-RESPONSE.md`, `S1-CURRENT.md`):** no fatal finding. The one-step induction for
+the current design is written (`S1-CURRENT.md`).
 
-It needs **two interface changes** outside M1:
-* (a) blockings with auxiliary randomness (R4);
-* (b) `ObsTransferPhysTW` replaced by a dense-class version with per-observable constants, plus a spectral-upgrade
-  lemma from the bare measure's RP (`R10-SCOPE.md` 0.5). The current interface asks for uniform constants over all
-  measurable observables, which the mass-gap statement does not need.
+* **Repaired:** G3 (decoder locality, paper), G6 (extended holes, paper).
+* **Repaired at sketch level:** G2 (labels as explicit polymer factors).
+* **Not an M1 matter:** G5 (no SU(2) encoding; the interface should take `(V, closed τ)` with gauge-invariant
+  observables).
+* **G4, the hand-over, restated honestly.** M1 delivers:
+  * (a) the law in inductive form;
+  * (b) an `L¹` UV transfer for character polynomials of block variables at a fixed physical scale.
 
-Remaining sketch-level points:
-* R10's inserted-term bookkeeping;
-* the R4 deterministic alternative (not needed).
+  The reflection-positivity upgrade must be done in the limit and targets `MassGapLoc`.
+* **Auxiliary randomness is already implemented** in `Interface/RandBlocking.lean`.
 
-Citations are as listed. Next: REVIEW-2.
+M1's argument stands apart from [I] Theorem 2 (with its rate), P4, and two sketch-level points:
+1. the mixed Mayer expansion with explicit label factors;
+2. R10's insertion bookkeeping.
+
+Citations are as listed.
 
 Parts A and B below are the pre-review plan, kept for the record.
 

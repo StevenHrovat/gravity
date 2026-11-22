@@ -12,7 +12,7 @@ are listed only where M1 relies on a property proved there.
 
 | # | source | statement relied on | used in M1 by | how |
 |---|---|---|---|---|
-| 1 | [I] Theorem 2 | the effective couplings `g_k` of Balaban's renormalisation-group flow ([I] (0.20), [III] (2.24)) stay below a small `γ` for all scales up to the stopping scale `K`, for small bare coupling; M1 needs in addition `γ ≤ γ0(L)` (`S1-PROOF.md` 5) | `runningCoupling`; every smallness condition | **external**; its proof is unpublished |
+| 1 | [I] Theorem 2 | the effective couplings `g_k` of Balaban's renormalisation-group flow ([I] (0.20), [III] (2.24)) stay below a small `γ` for all scales up to the stopping scale `K`, for small bare coupling; M1 needs in addition `γ ≤ γ0(L)` (`S1-PROOF.md` 5) | `runningCoupling`; every smallness condition | **external**; its proof is unpublished; **also the rate** [I] (0.31) (`g_k^{-2}` growing by `b log L` per step, `b = 0.0929` at one loop), which `CLOSING.md` uses quantitatively: `16 b' > 1` needs the effective rate within about 33 % of one loop (11 % with the adverse tie-break) |
 | 2 | [I] (1.18), Sects. 1-7 | the small-field effective action: localised analytic E-terms on the domains (2.28), with the bound (1.18), renormalised (vacuum energy, coupling constant) | `Form` (F-e); P2′ input I3; carry-overs E5, E6 | cited as stated |
 | 3 | [I] (7.13) | the exponentiated cluster expansion converges for activities with the bound [V] (1.97) | E12 | cited |
 | 4 | [II] (2.41); [II] Sect. 2 | cluster-expansion bounds of the fluctuation integral; boundedness and exponential decay of the fluctuation propagators | P2′ inputs I2, I3 | cited as stated (perturbation by the hole: `V1-INPUTS.md`, P2′ Lemma E) |

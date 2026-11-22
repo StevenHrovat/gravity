@@ -311,7 +311,8 @@ hypothesis of exactness; it enters the estimates (E3, E6 of the plan). The inter
   `m1_assembly_rows`). `E7J.md` (fibre mass, proved), `POINCARE.md` (block-axial Poincaré), `V1-EXCISION.md` (T3), `V1-INPUTS.md` (its two inputs), `S1-ROWS.md` (inductive form, every row stated),
   `formal/ProofPhase/M1/LocalMod.lean`, `ROUTINE-ROWS.md` (the routine rows), `formal/ProofPhase/M1/Routine.lean`, `S1-PROOF.md` (§8 bookkeeping),
   `EXTERNAL.md` (what M1 rests on outside itself), after REVIEW-1: `F1-REPAIR.md`, `ROUTE-B.md`, `MILESTONE-1.md`, `BYPASS.md`, `CLOSING.md`, `HANDOVER.md`, `OFFCENTRE.md`, `REGULAR.md`, `R2-REPAIR.md`, `R2-REMAINDER.md`,
-  `DECODER-LOCAL.md`, `FILL.md`, `CLOSE-OUT.md` (current main line: `M1-PLAN.md` 0),
+  `DECODER-LOCAL.md`, `FILL.md`, `CLOSE-OUT.md`, `SKETCH-STEPS.md`, `R10-SCOPE.md`,
+  `REVIEW2-RESPONSE.md`, `S1-CURRENT.md` (current main line: `M1-PLAN.md` 0),
   `formal/ProofPhase/M1/FibreMass.lean`.
 - `TWIST.md` (the twisted blocking on the full lattice, link reflection positivity, multi-site tests; with
   `lattice_twist.py`, `run_lattice_d34.log` and `formal/ProofPhase/M1/Twist.lean`), `P2-PRIME.md` (subscale-hole

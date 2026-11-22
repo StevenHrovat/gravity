@@ -84,3 +84,5 @@ estimate as `TRAP-CHECKS.md` T1, now with twist-free data). With `r0 = c/L⁴` t
 * `E7J.md` holds at regular `W` with holes = twist-free envelopes; the "trapping at creation" set-up of `E7J.md` 1 is
   replaced by this excision rule.
 * In `M1-PLAN.md`: R3 **paper**; R4 **paper** (ordinary bonds) + **sketch** (swallowed bonds).
+
+**Update (REVIEW-2 G6, N3):** the growth cap is on the number of layers, not the extent; extended thin slabs (centre-flux sheets) are filled in local gauges with the Dirichlet gap `(π/w)²` (`REVIEW2-RESPONSE.md` 3). "Unique modulo gauge" is made measurable by an axial gauge selection in each patch, rooted away from block centres where Balaban's average is covariant.

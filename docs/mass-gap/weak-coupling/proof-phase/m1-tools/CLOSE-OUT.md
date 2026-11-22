@@ -120,3 +120,8 @@ small-field regions (`τ = +1`) and the absence of the centre. Nothing else chan
 | R10 | **paper sketch** (conditional cluster expansion not written out) |
 | R7 | **citation**, reduction written |
 | R9 | **citation** carry-over; two statements change (small-field definition with `τ = +1`; no centre) |
+
+**Update (REVIEW-2 G2, N1, G4):**
+* R9 table row 1 amended: small field means SO(3)-regular; `τ = +1` is no longer required. Labels enter as explicit polymer factors (`REVIEW2-RESPONSE.md` 2).
+* R7 restated as `poly(β)^{|τ|}`, with freed bonds counted (`REVIEW2-RESPONSE.md` 6).
+* R10 (section 3) holds only in `L¹`, not pointwise; for block-variable observables at a fixed physical scale (`REVIEW2-RESPONSE.md` 5).

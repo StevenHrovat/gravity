@@ -66,3 +66,5 @@ Its SO(3) image is the rotation by `2φ`, not the identity.
    shrinking footprint, `Σ_k L^{-2(k-s)}` or `L^{-4(k-s)}`, against its action. This is the same computation as
    `BYPASS.md` 1, but it has to be inserted into Balaban's `κ_j(Z)` induction ([V] (1.80)-(1.88)), which is written for
    lifetimes `≤ R_j`.
+
+**Update (REVIEW-2 N3):** the exponent in `R_0 ≥ (log g_0^{-2})^r` reads `r ≥ 2` in the text layer of [III] Sect. 1, so `n_loc ≈ 0.4 log g^{-2} ≤ R_j`.

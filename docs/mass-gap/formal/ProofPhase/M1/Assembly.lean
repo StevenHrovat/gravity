@@ -154,14 +154,17 @@ structure M1RowStatements where
   V1 : ℕ → Prop
   /-- V2: background regularity ([IV] (1.80)-(1.98)) -/
   V2 : ℕ → Prop
-  /-- D-mod: moderate cores dilute (`NOTE.md` 2.3, `Dilution.lean`) -/
-  Dmod : ℕ → Prop
-  /-- TRAP: deep cores trapped at creation and excised (`TRAP.md`, `TRAP-CHECKS.md`) -/
-  TRAP : ℕ → Prop
-  /-- P2′: subscale hole decoupling (`P2-PRIME.md`) -/
-  P2prime : ℕ → Prop
-  /-- P4: root suppression of a deep core -/
-  P4 : ℕ → Prop
+  /-- Decoder: the bare Z2 layer closed by the global decoder; locality by the conflict-graph Peierls bound
+  (`REVIEW2-RESPONSE.md` 1) -/
+  Decoder : ℕ → Prop
+  /-- Labels: closed Z2 remainders carried as explicit polymer factors (`REVIEW2-RESPONSE.md` 2) -/
+  Labels : ℕ → Prop
+  /-- Release: large-field regions renormalised after the delay; dilution R1, regularity R2 (`OFFCENTRE.md`,
+  `R2-REPAIR.md`, `R10-SCOPE.md` 1) -/
+  Release : ℕ → Prop
+  /-- Excision: twist-free envelopes, filling, randomised swallowed bonds (`FILL.md`, `SKETCH-STEPS.md` 1,
+  `REVIEW2-RESPONSE.md` 3) -/
+  Excision : ℕ → Prop
   /-- E1: linear term (identity) -/
   E1 : ℕ → Prop
   /-- E2: quadratic form positive on the constrained subspace -/
@@ -200,10 +203,10 @@ structure M1RowHypotheses {X : ℕ → Type u} (R : M1RowStatements) (ρ : ∀ k
   p2 : ∀ k, R.P2 k
   v1 : ∀ k, R.V1 k
   v2 : ∀ k, R.V2 k
-  dmod : ∀ k, R.Dmod k
-  trap : ∀ k, R.TRAP k
-  p2prime : ∀ k, R.P2prime k
-  p4 : ∀ k, R.P4 k
+  decoder : ∀ k, R.Decoder k
+  labels : ∀ k, R.Labels k
+  release : ∀ k, R.Release k
+  excision : ∀ k, R.Excision k
   e1 : ∀ k, R.E1 k
   e2 : ∀ k, R.E2 k
   e3 : ∀ k, R.E3 k
@@ -219,16 +222,16 @@ structure M1RowHypotheses {X : ℕ → Type u} (R : M1RowStatements) (ρ : ∀ k
   e13 : ∀ k, R.E13 k
   coupling : R.runningCoupling
   /-- S1: the paper's assembly of one step from the rows -/
-  assemble : ∀ k, R.runningCoupling → R.X2 k → R.P1 k → R.P2 k → R.V1 k → R.V2 k → R.Dmod k → R.TRAP k →
-    R.P2prime k → R.P4 k → R.E1 k → R.E2 k → R.E3 k → R.E4 k → R.E5 k → R.E6 k → R.E7 k → R.E7J k → R.E8 k →
+  assemble : ∀ k, R.runningCoupling → R.X2 k → R.P1 k → R.P2 k → R.V1 k → R.V2 k → R.Decoder k → R.Labels k →
+    R.Release k → R.Excision k → R.E1 k → R.E2 k → R.E3 k → R.E4 k → R.E5 k → R.E6 k → R.E7 k → R.E7J k → R.E8 k →
     R.E9 k → R.E11 k → R.E12 k → R.E13 k → Form k (ρ k) → Form (k + 1) (ρ (k + 1))
 
 /-- The rows give `stepEstimates`. -/
 theorem M1RowHypotheses.stepEstimates {X : ℕ → Type u} {R : M1RowStatements} {ρ : ∀ k, X k → ℝ≥0∞}
     {Form : ∀ k, (X k → ℝ≥0∞) → Prop} (HR : M1RowHypotheses R ρ Form) (k : ℕ) :
     Form k (ρ k) → Form (k + 1) (ρ (k + 1)) :=
-  HR.assemble k HR.coupling (HR.x2 k) (HR.p1 k) (HR.p2 k) (HR.v1 k) (HR.v2 k) (HR.dmod k) (HR.trap k)
-    (HR.p2prime k) (HR.p4 k) (HR.e1 k) (HR.e2 k) (HR.e3 k) (HR.e4 k) (HR.e5 k) (HR.e6 k) (HR.e7 k) (HR.e7J k)
+  HR.assemble k HR.coupling (HR.x2 k) (HR.p1 k) (HR.p2 k) (HR.v1 k) (HR.v2 k) (HR.decoder k) (HR.labels k)
+    (HR.release k) (HR.excision k) (HR.e1 k) (HR.e2 k) (HR.e3 k) (HR.e4 k) (HR.e5 k) (HR.e6 k) (HR.e7 k) (HR.e7J k)
     (HR.e8 k) (HR.e9 k) (HR.e11 k) (HR.e12 k) (HR.e13 k)
 
 /-- **M1, assembled row by row.** The data hypotheses (with no estimate content: `Form` trivial there), the rows with
@@ -253,10 +256,10 @@ structure M1RowHypothesesUpTo {X : ℕ → Type u} (K : ℕ) (R : M1RowStatement
   p2 : ∀ k < K, R.P2 k
   v1 : ∀ k < K, R.V1 k
   v2 : ∀ k < K, R.V2 k
-  dmod : ∀ k < K, R.Dmod k
-  trap : ∀ k < K, R.TRAP k
-  p2prime : ∀ k < K, R.P2prime k
-  p4 : ∀ k < K, R.P4 k
+  decoder : ∀ k < K, R.Decoder k
+  labels : ∀ k < K, R.Labels k
+  release : ∀ k < K, R.Release k
+  excision : ∀ k < K, R.Excision k
   e1 : ∀ k < K, R.E1 k
   e2 : ∀ k < K, R.E2 k
   e3 : ∀ k < K, R.E3 k
@@ -272,16 +275,16 @@ structure M1RowHypothesesUpTo {X : ℕ → Type u} (K : ℕ) (R : M1RowStatement
   e13 : ∀ k < K, R.E13 k
   coupling : R.runningCoupling
   /-- S1 below the horizon -/
-  assemble : ∀ k < K, R.runningCoupling → R.X2 k → R.P1 k → R.P2 k → R.V1 k → R.V2 k → R.Dmod k → R.TRAP k →
-    R.P2prime k → R.P4 k → R.E1 k → R.E2 k → R.E3 k → R.E4 k → R.E5 k → R.E6 k → R.E7 k → R.E7J k → R.E8 k →
+  assemble : ∀ k < K, R.runningCoupling → R.X2 k → R.P1 k → R.P2 k → R.V1 k → R.V2 k → R.Decoder k → R.Labels k →
+    R.Release k → R.Excision k → R.E1 k → R.E2 k → R.E3 k → R.E4 k → R.E5 k → R.E6 k → R.E7 k → R.E7J k → R.E8 k →
     R.E9 k → R.E11 k → R.E12 k → R.E13 k → Form k (ρ k) → Form (k + 1) (ρ (k + 1))
 
 /-- The rows below the horizon give one step of the inductive form below the horizon. -/
 theorem M1RowHypothesesUpTo.stepEstimates {X : ℕ → Type u} {K : ℕ} {R : M1RowStatements}
     {ρ : ∀ k, X k → ℝ≥0∞} {Form : ∀ k, (X k → ℝ≥0∞) → Prop} (HR : M1RowHypothesesUpTo K R ρ Form) (k : ℕ)
     (hk : k < K) : Form k (ρ k) → Form (k + 1) (ρ (k + 1)) :=
-  HR.assemble k hk HR.coupling (HR.x2 k hk) (HR.p1 k hk) (HR.p2 k hk) (HR.v1 k hk) (HR.v2 k hk) (HR.dmod k hk)
-    (HR.trap k hk) (HR.p2prime k hk) (HR.p4 k hk) (HR.e1 k hk) (HR.e2 k hk) (HR.e3 k hk) (HR.e4 k hk) (HR.e5 k hk)
+  HR.assemble k hk HR.coupling (HR.x2 k hk) (HR.p1 k hk) (HR.p2 k hk) (HR.v1 k hk) (HR.v2 k hk) (HR.decoder k hk)
+    (HR.labels k hk) (HR.release k hk) (HR.excision k hk) (HR.e1 k hk) (HR.e2 k hk) (HR.e3 k hk) (HR.e4 k hk) (HR.e5 k hk)
     (HR.e6 k hk) (HR.e7 k hk) (HR.e7J k hk) (HR.e8 k hk) (HR.e9 k hk) (HR.e11 k hk) (HR.e12 k hk) (HR.e13 k hk)
 
 /-- **M1, assembled row by row, up to the horizon.** The inductive form holds at every scale `k ≤ K`; the laws are the
