@@ -2124,3 +2124,182 @@ No FATAL. The GAP is the one already found (point 1), now also a misplacement in
 * **Lean:** `CouplingDS.lean` matches 28.1-28.2. Its simplifications (single `S`, `[MeasurableEq S]`, dropped unused
   hypotheses, everything on the supports) are harmless or strengthen the theorem. Update 37's row to Lean (generic),
   with the instantiation (28.3) on paper.
+
+## Follow-up 14 (`UV-TV.md` 38, and 37 rewritten), 2026-11-23
+
+Read: `../m1-tools/UV-TV.md` 37 (rewritten) and 38 in full. Nothing was built or re-run.
+
+### Verdict
+
+* **38.2 closes "cap reached implies irregular `W`" in substance.**
+  * Taking the coarse loop to be the **shadow** of the failing loop, joined by a ribbon of width `O(L)`, is the right
+    idea. Fluxes inside the coarse disc, cancelling or not, are already accounted for in `Hol(gamma)`. Coarse Stokes is
+    then only used as an inequality from the boundary holonomy to some plaquette. So inner cancellations really are
+    irrelevant.
+  * Per-cluster growth at a fixed range cannot cascade.
+* **One gap in the bookkeeping (FIXABLE).** The ribbon region `R = N_{C_3 L}(gamma)` avoids the deep set `H_0`, but not
+  the **holes** of other clusters. Those reach to within distance `~ 1` of `O(H_C)`, and if they were excised, their
+  filled field enters Balaban's average along `Γ'`. Taking the cluster range `D >= 2 l_max + 2 C_3 L + 2` fixes it.
+* **38.1 ((B) by total covariance along the scales) is sound.**
+* **38.4 (the last kernel) is sound.**
+* **38.5 (the Lean instantiation) has one real bookkeeping bug (FIXABLE).** Packing bonds into sites while letting a
+  box update **keep** some variables of its own sites breaks the influence hypothesis (I).
+* **The new verdict (37) is accurate**, conditional on these two fixes. No item is placed higher than the text
+  supports, provided R3's "paper" carries the enlarged `D`, and the instantiation's "paper" carries the site fix.
+* No FATAL, no GAP.
+
+### (1) 38.2: does coarse Stokes really make inner cancellations irrelevant?
+
+**Yes, as now constructed.**
+* **Why the old objection is answered.** In 35.1 the coarse loop was a **different** loop, the boundary of a square
+  around a translate of `gamma`. Its holonomy counted all piercings in the square, so it could differ from
+  `Hol(gamma)`.
+* **What the chain of steps does now.** `Γ'` is built from `gamma` itself:
+  * the shadow, with `|x_i - c_i|_inf <= 3L/4 + 1` and changes `>= L/4 - 1` steps apart;
+  * the lasso identity of step 4, which is exact: `Hol(gamma) = pi_0 Hol(gamma~) pi_0^{-1} x` (product of conjugated
+    `Hol(∂Q_i)`);
+  * step 5's comparison `|Hol_W(Γ') - Hol(gamma~)| <= C r0 lambda L`.
+  
+  Together they give `|Hol_W(Γ') - Hol(gamma)| <= (C_6 + C_7) r0 lambda L`, using only the fine field in the ribbon
+  `R`.
+* **Where cancellation would have to act, and why it cannot.** Whatever pierces the disc `S'` bounded by `Γ'` (other
+  sheets, opposite fluxes) is already in `Hol(gamma)`, and `|Hol(gamma) - 1| = theta > C_tw r0 lambda^2` is a fact. So
+  `|Hol_W(Γ') - 1| >= theta/2` holds regardless of what happens inside `S'`.
+  * Coarse Stokes is then used only as `theta/2 <= Sum_{p' ∈ S'} |W(∂p') - 1|`, an exact inequality valid for any `W`.
+    It gives one irregular coarse plaquette, without needing to know which.
+  * Opposite fluxes inside `S'` cannot shrink `Hol_W(Γ')`: that holonomy is fixed by the ribbon, not by the disc.
+* **Non-planar loops and curved sheets** need nothing extra, since only the ribbon around `gamma` is used. Checked:
+  * the lasso identity (insert `pi_i pi_i^{-1}`);
+  * the area bounds of the `∂Q_i` (`C L` without a shadow change, `C L^2` with one);
+  * `m <= 8n/L + 1`;
+  * the coarse disc of `<= C_d N^2` plaquettes for a contractible `Γ'`;
+  * the arithmetic `C_tw r0 L^2/(2 C_d C_5^2)` fixed against `eps_{k+1} -> 0`.
+* **Step 5, the axial gauge on an averaging neighbourhood,** is right: each bond is the holonomy of a lasso of length
+  `<= C L` and area `<= C L^2` inside the neighbourhood, which has no deep plaquettes. Balaban's average is smooth with
+  value 1 at the identity, and gauge covariance gives `|W(b') - U(c -> c')| <= C r0 L^2`.
+
+**The gap: other clusters' holes inside `R` (FIXABLE).**
+* (b) gives `dist(O(H_C), H_0) >= l_max + 1`, so `R ∩ H_0 = ∅` for `C_3 L <= l_max`. Correct.
+* But the coarse field `W` is Balaban's average of the **excised and filled** field. Another cluster `C'` that passed
+  its test is excised on `H_{C'} = N_{i'}(C')` with `i' <= l_max`. Since `dist(C, C') > D = 2 l_max + 2`, the bound is
+  only `dist(gamma, H_{C'}) >= D + 1 - (l_max + 1) - l_max = 1`.
+* So `R` can meet `H_{C'}`, and there the field is the filling. Its plaquettes are bounded by the filling's data bound
+  (`~ C_tw r0 lambda^2` relative to the hole's size), **not** by `r0`. Step 5's "every plaquette in `R` has angle
+  `< r0`" then fails on those bonds, as does step 4's area bound if a `∂Q_i` disc crosses `H_{C'}`.
+* **Fix:** take `D := 2 l_max + 2 C_3 L + 2`, or more. Then `dist(R, H_{C'}) >= 1` for every other cluster. The range is
+  still a fixed multiple of `L`, so the entropy `(C D)^d` per deep plaquette stays fixed against `e^{-c p^2}`, and
+  nothing else changes. Write it into 38.2's Change 1 and `FILL.md`.
+  * Alternative: show that the filling's plaquettes are `< r0` too. That does not follow from its data bound, so the
+    larger `D` is simpler.
+
+**"Costs nothing" for a core that joins an extended cluster (NIT).** A localised core within `D` of an extended
+structure loses its excision. The claim gives irregular `W` only within `C lambda` of the failing loop, which can be
+far from the core if the cluster is long.
+* The argument still holds, because of two facts the text should state:
+  * `D << M R_k`, so a `D`-cluster lies in **one** component of Balaban's large-field region at scale `k`;
+  * a component is released (and needs E7.J at regular `W`) only if it satisfies his conditions on the **whole**
+    component.
+* So one irregular plaquette within `C lambda << M R_{k+1} L` of the cluster keeps the whole component carried, core
+  included. State this in 38.2.
+
+### (2) Does per-cluster growth at a fixed range avoid a cascade?
+
+**Yes.**
+* Clusters are the components of `H_0` under `dist <= D`, with `D` fixed per scale (a multiple of `L`). A cluster's
+  reach never grows with its size, unlike the `log |K|` merge range of Follow-up 5.
+* Holes of different clusters stay `>= D + 1 - 2 l_max >= 3` apart (`>= 2 C_3 L + 3` with the fix), so no merging
+  during growth.
+* Large `D`-clusters are possible, but they are lattice animals of deep plaquettes with fixed proximity entropy
+  `(C D)^d` each, against a large-field factor per deep plaquette. So they are subcritical.
+* Each cluster's growth decision is deterministic and measurable, and depends only on that cluster's own
+  neighbourhood.
+
+### (3) 38.1: (B) by total covariance along the scales
+
+**Sound.**
+* **The identity.** `Cov(f, g | G_l) = Sum_j E[Cov(h_j^f, h_j^g | G_{j+1}) | G_l]` is the telescoping law of total
+  covariance along the decreasing filtration, with the tower property `E[h_j | G_{j+1}] = h_{j+1}`. The Markov property
+  of the noisy blocking chain gives `h_j^f = E[f | X_j]`, and each term is a covariance under the single kernel
+  `K_j(. | X_{j+1})`.
+* **Step 1** uses (A) with top scale `j`. All inputs of 30 are per scale and annealed, so moving the top is harmless.
+* **Step 2** is the one-kernel conditioning on its own scale-`j` variables near `A_j`, done right this time.
+  * The conditional kernels given `Y_{A_j} = y` have the block specifications of `K_j` away from `A_j` (DLR). Blocks
+    near `A_j` are sources, and the H2 ratios away from `A_j` are local.
+  * `y, y'` are samples, so only annealed bounds enter.
+  * The one-scale front `a_j` (polylog) does not reach `(theta A)_j` at distance `>= t/(L^j a)`.
+* **Step 3**, the bare term, follows from 38.4's factorisation over decoder clusters.
+* **The sum** is geometric from the top, uniformly in spacing and volume.
+* **No conditioning on fine content across scales** remains: the slab of 34.6 and its NITs are gone.
+
+### (4) 38.4: the last kernel
+
+**Sound.** The conditional law of `tau` given `V_0` is the Z2 gauge theory with couplings `J_p(V_0)`, restricted to the
+decoder's preimage of `tau'_0`.
+* Alternatives include ties and the lost closed sets `Q`, Boltzmann-weighted. They meet the flips and are
+  Peierls-priced, so the truncation `T_{-1}` is right.
+* Grouping decoder components within `2 s_{-1} + 2 r_dec` into clusters makes the truncated kernel a product over
+  clusters, which gives identical coupling on agreeing data.
+* `a_{-1} = N_0 M R_0 + 2 s_{-1} + 2 r_dec` joins the front.
+
+This addresses Follow-up 13's NIT.
+
+### (5) 38.5: the Lean instantiation duties
+
+* **One per-site space** `S = SO(3)^d x Z2^{d(d-1)/2} x N^d`: fine, standard Borel, so `[MeasurableEq S]` holds.
+* **The bug (FIXABLE): kept variables of a block's own sites.**
+  * 38.5 (2): the update `q_b` resamples only the variables of `b`'s sites that the box law moves (bonds with both
+    endpoints in the box, inner plaquettes, their noise), and **keeps the other variables of those sites**. These are
+    the bonds from a site `x ∈ B_b` to `x + e_mu ∉ B_b` on the box's upper faces, with their plaquettes and noise.
+  * Then (I) fails. If `sigma`, `sigma'` differ on such a kept bond, the site `x ∈ B_b` disagrees after the update
+    whatever the coupling. (I)'s left side counts it with weight `v(x)`, while its right side,
+    `Sum_{z ∉ B_b} 1{sigma_z != sigma'_z} K_b(z) v(z)`, has no term for `x`.
+  * `q_local` (sites off `B_b` kept) is satisfied, but (I) and the contraction are not.
+  * **Fix, either of:**
+    * **(i)** let `q_b` resample **all** variables of the sites of `B_b`, outgoing bonds included, from the conditional
+      law given the rest (DLR is unaffected). H3 and Lemma C then cover these face bonds as box variables, which are
+      boundary-adjacent with influence `~ (log p)^d`, already the shape of the bound;
+    * **(ii)** attach each bond and plaquette to a site so that every variable of a site in `B_b` is moved by `q_b`,
+      for example by assigning face-crossing variables to a site of a thin outer layer that is included in `B_b`.
+  * State the choice. As written, the instantiation does not satisfy the Lean's (I).
+* **Measurable block couplings:** right.
+  * The maximal coupling is built from explicit densities: the diagonal part `(rho ∧ rho') lambda` plus the normalised
+    product of the excesses, measurable by Tonelli.
+  * The far-to-near coupling is a finite composition (Ionescu-Tulcea) of such pieces.
+  * Lemma C's coupling is built in the same way.
+  * Source blocks take the product kernel.
+  * The patterns are discrete and coupled first.
+  
+  No abstract disintegration is needed. Correct.
+
+### (6) Is the new verdict (37) accurate, with nothing placed too high?
+
+**Yes, conditional on the two FIXABLE points**, which do not change any level once made.
+* **R3 at paper:** correct after the fix to `D`.
+* **S1 at paper with (c):** correct after the same fix, since E7.J at regular `W` relies on 38.2.
+* **(P2) at citation + paper:** correct (38.3 (2)). The chaining gives `|eta| <= e^{2 m_k 100^d delta_k} - 1`, with
+  `m_k` polylog and `delta_k` carrying a factor `g_k`. The new `gamma0` condition is in row 8.
+* **Correctly placed:** R9 at citation-level adaptation; the label term at paper on a citation-level use; Theorem
+  A_good at Lean (generic) with the instantiation at paper; N-2 at paper given (c), the readings and the shell
+  adaptation; the last kernel at paper.
+* **The "slab-conditioned half-space" adaptation** is correctly gone with 34.6.
+* **"No item is at sketch level"** is accurate once `D` is enlarged and the site packing fixed. Both are one-line
+  changes with no new argument.
+* **37.2's dependency list matches the table:** Lean; the re-proof (c); citations; two readings ((a), admissibility);
+  one citation-level use; two adaptations (shells, R9); external; separate.
+* **One wording point.** Item 4 of 37.2 lists the citation-level use and the readings together. The table's "labels:
+  paper on citations" should also mention that use, as the separate row does. Minor.
+
+### Findings, one line each (follow-up 14)
+
+* No FATAL, no GAP.
+* 38.2's shadow-plus-ribbon construction makes inner cancellations irrelevant. The coarse holonomy is fixed by the
+  ribbon around the failing loop, and coarse Stokes is used only as an inequality. Per-cluster growth at a fixed range
+  cannot cascade.
+* FIXABLE (38.2): the ribbon `R = N_{C_3 L}(gamma)` can meet other clusters' excised and filled holes, whose
+  plaquettes are not `< r0`. Take `D >= 2 l_max + 2 C_3 L + 2`.
+* NIT (38.2): "costs nothing" for a core joining a long cluster needs two facts stated: a `D`-cluster lies in one
+  Balaban component (`D << M R_k`), and release requires regularity on the whole component.
+* FIXABLE (38.5): a box update that keeps some variables of its own sites (face-crossing bonds) violates (I). Resample
+  all variables of the block's sites, or assign variables to sites so that `q_b` moves every variable of `B_b`.
+* 38.1 ((B) by total covariance) and 38.4 (the last kernel) are sound.
+* The new verdict 37 is accurate once the two FIXABLE points are made. Nothing is placed above what the text supports.
