@@ -153,6 +153,40 @@ for a selected phase of a phase average; `nonfree`. Not proved there: uniqueness
 - **Owner readings (PREP.md, cycle 6):** the floor holds by causality; light only exists (a point, one quantum 2π), a duality has existence (an arrow, two assertions); the fixed loss is the cost of asserting existence over the doubled possibility space. In the doubling law: loss ≤ one quantum, start box ≥ two quanta (z₀(L₀) ≥ 4π) ⇒ gap ≥ 2π/L₀. Data: z₀ ≈ 7.2 at L√σ = 2.1 (a flux pair), ≈ 13 at 3.5.
 - **Running:** the joint z₀/z_e measurement (9 doubling pairs, photon control by the exact formula, owner's decision) measures the per-doubling loss and the start box directly; c7a (flux act ⇒ vacuum doubling?), c7b (centre-layer comparison in Lean).
 
+**Cycle 7 (2026-11-22): the one-box route, the centre layer, the joint measurement.**
+- **Joint z₀/z_e measurement (c5e, result):** all six resolved doubling pairs DOUBLE; the per-doubling loss is negative on L√σ 1.03–4.20; z₀ crosses 4π between L√σ 2.92 and 4.13; scaling holds only at 4.1–4.2. c7a's predictions scored: P3, P5 confirmed, P1 refuted, P4 split, P2 not resolved.
+- **Centre layer (c7b, `ProofPhase/Centre/`):** comparison of the binary centre layer to Z₂ by Ginibre and Griffiths II, `centre_area_law`.
+- **One-box criterion (c7c, `ProofPhase/OneBox/`, 39 theorems):** `yang_mills_assembly_onebox`: `OnLCP'` + `NonTrivial` + `FineOneBox` ⇒ gap in both orders of limits, with no blocking and no UV transfer input. The criterion is Dobrushin–Shlosman type and gauge-correct: Q(ℓ) = (1/ℓ⁴)Σκ(u) < 1 over cells of about one correlation length. Its failure mechanisms are theorems: power-law influence (light) and ties (2I, deconfined Z₂). Literature (c7d): Chatterjee 2021 Def. 2.3 ⇒ Thm 2.4 gives confinement from the same kind of condition.
+- **Numerics (c7b-onebox-num):** Tier 1 was exploratory by pre-registration and stopped on the owner's decision after a roughly 100-fold runtime overrun; the logs are kept.
+
+**Cycle 8 (2026-11-22/23): saturation, the concrete one-box route, the strict flip bound.**
+- **Vortex saturation (c8a, `ProofPhase/Saturation/`):** `vortex_saturation`. For any group with a central involution, |Z − Z_tw| ≤ satB(Z + Z_tw) (Tomboulis–Yaffe area-rate form) inside an explicit window. A split criterion `FineOneBoxSplit` (centre budget γ_Z + adjoint budget γ_A < 1) ⇒ gap. The named SU(2) hypothesis is H_sat (centre layer weakly coupled at block scale). The adjoint half γ_A is not supplied: fitted-action coefficients are not worst-case bounds.
+- **One-box route concrete (c8c, `ProofPhase/OneBox2/`):** the actual Wilson box law (DLR, gauge covariance) ⇒ `WilsonOneBox` ⇒ gap; a strong-coupling anchor shows the criterion is non-empty; the wall-cut version ⇒ area law, given Chatterjee's Theorem 2.4 as a named external input.
+- **Strict flip bound (c8d, `ProofPhase/Flip/Strict.lean`, 91 theorems):** `su2_Ztw_lt_Z`, `su2_flipProb_lt_half` for every β ≠ 0 (equality at β = 0). It gives no size control: the strict "existence is always ahead" of the owner's reading.
+- **Decisive-test tools (c8b):** the coupling upper bound is vacuous above β ≈ 0.25 (SU(2)), and the tie test is validated on Z₂. SU(2) at β 2.3 shows no tie on boxes 5 and 9. The GPU queue was stopped with the one-box queue; neither is needed for the proof.
+- **Interface (`ProofPhase/Interface/`):** the assembly is proved for measurable and for randomised blockings, with the same conclusions (`yang_mills_assembly_v4_bdd_meas`, `_rand`). `spectral_upgrade` turns decay on a dense class into uniform decay without the spectral theorem; it must be applied uniformly in the volume or in the limit, never on one fixed torus.
+
+**M1 (2026-11-22/23): the law-preserving large-field step, complete at paper level.** Redesigned after REVIEW-1 found a fatal counting error in the trapping design. The current main line (`proof-phase/m1-tools/M1-PLAN.md` §0, `UV-TV.md` §37):
+- **The split and the decoder:** SU(2) = SO(3) × closed Z₂ layer; a local decoder (nearest closed layer) blocked by mod-2 Stokes.
+- **Averaging and law preservation:** Balaban's average on SO(3), with deep plaquettes excised for one step; the conditional step for exact law preservation.
+- **Release and carrying:** every large field is released into R-terms; long-lived sheets are carried by attribution; labels form a positive gas with a one-box contraction.
+- **Hand-over at L_*:** the law in inductive form, the L¹ transfer for block observables, and (Lemma UV-TV) OS-norm density of the block observables. Density is obtained by a coupling-form Dobrushin–Shlosman theorem (Lean, `OneBox/CouplingDS.lean`, 37 theorems) with composite boxes (bad cluster + collar, Lemma C), a polymer-level pattern gas (Kotecký–Preiss, van den Berg–Maes), a front-advance recursion, and the law of total covariance along the scales.
+Three independent reviews (REVIEW-1 to -3, with follow-ups) and an independent reading of Balaban's normalisation terms (`m1-review/EK-DERIVATION.md`) leave no open FATAL or GAP finding. M1 rests on:
+- Lean (57 + 37 theorems);
+- one re-proof: (c), [V] (1.80)–(1.97) with a kept slack e^{−c p₀²} per birth-scale cube, checked three ways;
+- citations;
+- three citation-level readings: what E_k(Z) is, admissibility, and the rim S(Z)\Z;
+- two citation-level uses: the label term and R7′;
+- two adaptations: Balaban's machinery on thin shells, and the SO(3) carry-over;
+- external: [I] Theorem 2 with its rate.
+
+**The open inputs, as of M1:**
+- **ID:** `OnLCP'`, `NonTrivial`.
+- **UV:** supplied by M1 at paper level, up to its named readings and adaptations. Owed: the Lean instantiation of the coupling theorem, and the interface change to the (SO(3), closed Z₂) block state with `MassGapLoc` reached through the limit.
+- **Crossover P4 (L_* → L₁):** open; this is the core.
+- **IR:** `BlockGapBddW` / the one-box route: `FineOneBox` along the continuum line, with the adjoint budget γ_A and H_sat open.
+- **External:** [I] Theorem 2.
+
 **The open inputs, as of cycle 6:** ID (`OnLCP'`, `NonTrivial`); UV (`ObsTransferPhysTW`; segment 1 needs M1 + M2); IR = `BlockGapBddW` at L_*, in its sharpest form now the two premises of `su2_gap_of_doubling_defect`: a bounded loss per doubling (the cross-volume step) and a start box with act above the loss.
 
 **The open inputs of the preferred (torus) route, as of cycle 2:** `H1Local` (quantum half at L₁, uniform in the lattice), `LimitDprime`
