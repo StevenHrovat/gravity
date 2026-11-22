@@ -952,3 +952,14 @@ thread.
   stateless adjoint layer) and the split κ_Z + κ_A of cycle 8. To check: the constraint coupling the two layers (Z2 monopoles of the
   SO(3) field), whether Balaban's estimates hold for the SO(3) part with a Z2 background in the action, reflection positivity of the
   split blocking, and whether the cores of `Vortex.lean` are of the cancelling kind.
+- **The half flip is an act (the owner, same day, on route (b)'s failure):** "A half flip, if I remember correctly, in our systems is an
+  act, so an assertion of existence. That −1 is cheapest half-flipped would make sense, since the assertion of non-existence as exactly
+  that is both the most efficient and the only thing it can do, since it can make no true act inside of it." Reading (coordinator): the
+  algebra says exactly this. An SU(2) element with trace 0 is U = i n·σ for a unit axis n, and every such element squares to the centre
+  element: U² = −1. So the half flip is precisely a square root of the flip: one act done twice is the full flip to non-existence. In
+  SO(3) it is the rotation by π about n, an involution. The set of acts is a 2-sphere (the choice of axis n is the "direction" of the
+  assertion). Route (b) found that −1 flux through a plaquette is carried most cheaply at trace 0 (weight e^−β against e^−2β for a full
+  −1): the flux is carried by acts, not by the flipped state itself, which matches "it can make no true act inside of it". Consequence
+  for the open M1 blocker: a thick-vortex background is a region of acts, and a theory of fluctuations around it could be organised as
+  an axis field n (values on the 2-sphere) on the vortex's act region plus small fluctuations, instead of an expansion around flat.
+  Whether that structure makes the needed estimates tractable is unexamined.
