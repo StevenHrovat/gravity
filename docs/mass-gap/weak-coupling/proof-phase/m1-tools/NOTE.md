@@ -303,6 +303,9 @@ hypothesis of exactness; it enters the estimates (E3, E6 of the plan). The inter
 - `NOTE.md` (this file), `M1-PLAN.md` (the estimate list), `D-N.md` (row D-N: the delay and the shift device),
   `D-PIN.md` (row D-pin: one root per pinned core), with `star_dynamics.py`, `near_vortex.py`, `zlift_traps.py`;
   `P0.md` (the twisted-sector average), with `twist_dynamics.py`.
+- `TWIST.md` (the twisted blocking on the full lattice, link reflection positivity, multi-site tests; with
+  `lattice_twist.py`, `run_lattice_d34.log` and `formal/ProofPhase/M1/Twist.lean`), `P2-PRIME.md` (subscale-hole
+  decoupling, sketch). `M1-PLAN.md` is now the outline of the accompanying paper plus the estimate inventory.
 - `star_weights.py`: exact linear star weights of Balaban's contour family (`python -I star_weights.py 13 4`, 13 s;
   add a third argument for the off-centre maximum, small `L, d` only).
 - `get-balaban-refs.ps1`: downloads `[12]`, `[14]`, `[15]` here (done by the owner; PDFs git-ignored).

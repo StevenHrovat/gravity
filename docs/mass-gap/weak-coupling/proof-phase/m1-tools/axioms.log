@@ -22,4 +22,10 @@
 'ProofPhase.M1.su2_negOne_central' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.su2_negOne_ne_one' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.su2_negOne_inv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.twistBlock_one' depends on axioms: [propext, Quot.sound]
+'ProofPhase.M1.twistBlock_pureGauge' depends on axioms: [propext, Quot.sound]
+'ProofPhase.M1.twistBlock_gauge' depends on axioms: [propext, Quot.sound]
+'ProofPhase.M1.twistBlock_sym' depends on axioms: [Quot.sound]
+'ProofPhase.M1.twistBlock_local' depends on axioms: [propext]
+'ProofPhase.M1.rp_map' depends on axioms: [propext, Classical.choice, Quot.sound]
 no sorry / native_decide / axiom in ProofPhase/M1

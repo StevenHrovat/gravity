@@ -1,0 +1,36 @@
+d=3 L=3 levels=4 N=81 eps=0.1 delta=0.0 seed=5 paths/coarse-bond-direction=343
+V1 gauge covariance (0.4): max |plaquette angle difference| = 4.09e-12
+V2 small field: labels created 0; max |twisted - (0.4)| = 0.00e+00   [22s]
+cores per kind: 15 (vortex at centre, vortex off-centre, generic) on 19683 level-1 blocks
+kinds: ['vc', 'vo', 'g']
+T1 (random gauge):
+  (0.4)   : L0: deep 329/1594323 | L1: deep 125/59049 | L2: deep 15/2187 | L3: deep 0/81 | L4: deep 0/3
+  twisted : L0: deep 329/1594323 unexplained 329 label-vortex 0 (+15 labels, -0 sites) | L1: deep 125/59049 unexplained 5 label-vortex 120 (+0 labels, -0 sites) | L2: deep 8/2187 unexplained 0 label-vortex 8 (+0 labels, -0 sites) | L3: deep 0/81 unexplained 0 label-vortex 0 (+0 labels, -0 sites) | L4: deep 0/3 unexplained 0 label-vortex 0
+done [45s]
+d=4 L=3 levels=3 N=27 eps=0.1 delta=0.0 seed=6 paths/coarse-bond-direction=10473
+V1 gauge covariance (0.4): max |plaquette angle difference| = 3.84e-13
+V2 small field: labels created 0; max |twisted - (0.4)| = 0.00e+00   [123s]
+cores per kind: 8 (vortex at centre, vortex off-centre, generic) on 6561 level-1 blocks
+kinds: ['vc', 'vo', 'g']
+T1 (random gauge):
+  (0.4)   : L0: deep 347/3188646 | L1: deep 131/39366 | L2: deep 101/486 | L3: deep 0/6
+  twisted : L0: deep 347/3188646 unexplained 347 label-vortex 0 (+8 labels, -0 sites) | L1: deep 128/39366 unexplained 0 label-vortex 128 (+0 labels, -0 sites) | L2: deep 87/486 unexplained 87 label-vortex 0 (+0 labels, -0 sites) | L3: deep 0/6 unexplained 0 label-vortex 0
+done [214s]
+d=4 L=3 levels=3 N=27 eps=0.1 delta=0.1 seed=6 paths/coarse-bond-direction=10473
+V1 gauge covariance (0.4): max |plaquette angle difference| = 1.46e-13
+V2 small field: labels created 0; max |twisted - (0.4)| = 0.00e+00   [112s]
+cores per kind: 8 (vortex at centre, vortex off-centre, generic) on 6561 level-1 blocks
+kinds: ['vc', 'vo', 'g']
+T1 (random gauge):
+  (0.4)   : L0: deep 311237/3188646 | L1: deep 186/39366 | L2: deep 120/486 | L3: deep 0/6
+  twisted : L0: deep 311237/3188646 unexplained 311237 label-vortex 0 (+0 labels, -0 sites) | L1: deep 186/39366 unexplained 186 label-vortex 0 (+0 labels, -0 sites) | L2: deep 120/486 unexplained 120 label-vortex 0 (+0 labels, -0 sites) | L3: deep 0/6 unexplained 0 label-vortex 0
+done [201s]
+d=4 L=3 levels=3 N=27 eps=0.1 delta=0.03 seed=6 paths/coarse-bond-direction=10473
+V1 gauge covariance (0.4): max |plaquette angle difference| = 2.36e-13
+V2 small field: labels created 0; max |twisted - (0.4)| = 0.00e+00   [110s]
+cores per kind: 8 (vortex at centre, vortex off-centre, generic) on 6561 level-1 blocks
+kinds: ['vc', 'vo', 'g']
+T1 (random gauge):
+  (0.4)   : L0: deep 338/3188646 | L1: deep 186/39366 | L2: deep 114/486 | L3: deep 0/6
+  twisted : L0: deep 338/3188646 unexplained 338 label-vortex 0 (+8 labels, -0 sites) | L1: deep 128/39366 unexplained 0 label-vortex 128 (+0 labels, -0 sites) | L2: deep 105/486 unexplained 105 label-vortex 0 (+0 labels, -0 sites) | L3: deep 0/6 unexplained 0 label-vortex 0
+done [195s]
