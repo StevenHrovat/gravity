@@ -166,6 +166,8 @@ def staple_c(xp, U, mu, geo):
 def plaquette_field(xp, U, mu, nu, group):
     """(1/2) tr U_{mu nu}(x) (quaternion groups) or cos theta_{mu nu}(x) (u1, z2), shape (B, L, L, L, T), unsigned."""
     if group in ("su2", "2i"):
+        if xp is not np:
+            return plaq_gpu(U[mu], U[nu], mu, nu)
         P = qmul(qmul(U[mu], sh(U[nu], mu), xp), qmul(qdag(sh(U[mu], nu), xp), qdag(U[nu], xp), xp), xp)
         return P[..., 0]
     return xp.cos(U[mu] + sh(U[nu], mu) - sh(U[mu], nu) - U[nu])
@@ -318,13 +320,112 @@ class SheetFix:
         self.store(mu, self.sites[(mu, p)], new)
 
 
+SHEET_SRC = r'''
+// Twisted staple: as staple_dev (all four transverse directions) with each term multiplied by the sign of the plaquette it completes:
+// c(base = x) forward, c(base = x - nu) backward; c = -1 on the sheet plaquettes P_ab with base (x_a, x_b) = (L_a - 1, L_b - 1).
+__device__ void staple_tw(cd* const* Us, int b, const int* c, int mu, int a, int bb, int tw, int Nx, int Ny, int Nz, int Nt, cd* V){
+    for (int k = 0; k < NN; k++) V[k] = cd(0.0, 0.0);
+    cd A[NN], Bm[NN], C[NN], T1[NN], T2[NN];
+    int D[4] = {Nx, Ny, Nz, Nt};
+    for (int nu = 0; nu < 4; nu++) {
+        if (nu == mu) continue;
+        int d0[4] = {0,0,0,0}, dmu[4] = {0,0,0,0}, dnu[4] = {0,0,0,0}, dmn[4] = {0,0,0,0}, dn[4] = {0,0,0,0};
+        dmu[mu] = 1; dnu[nu] = 1; dmn[mu] = 1; dmn[nu] = -1; dn[nu] = -1;
+        long i0 = nbd(b, c, d0, Nx, Ny, Nz, Nt), imu = nbd(b, c, dmu, Nx, Ny, Nz, Nt), inu = nbd(b, c, dnu, Nx, Ny, Nz, Nt);
+        long imn = nbd(b, c, dmn, Nx, Ny, Nz, Nt), in_ = nbd(b, c, dn, Nx, Ny, Nz, Nt);
+        double s1 = 1.0, s2 = 1.0;
+        if (tw && ((mu == a && nu == bb) || (mu == bb && nu == a))) {
+            if (c[a] == D[a] - 1 && c[bb] == D[bb] - 1) s1 = -1.0;
+            int cb[4] = {c[0], c[1], c[2], c[3]};
+            cb[nu] = wrapi(cb[nu] - 1, D[nu]);
+            if (cb[a] == D[a] - 1 && cb[bb] == D[bb] - 1) s2 = -1.0;
+        }
+        ldm(Us[nu] + imu * NN, 0, A); ldm(Us[mu] + inu * NN, 1, Bm); ldm(Us[nu] + i0 * NN, 1, C);
+        mmul(A, Bm, T1); mmul(T1, C, T2);
+        for (int k = 0; k < NN; k++) V[k] += s1 * T2[k];
+        ldm(Us[nu] + imn * NN, 1, A); ldm(Us[mu] + in_ * NN, 1, Bm); ldm(Us[nu] + in_ * NN, 0, C);
+        mmul(A, Bm, T1); mmul(T1, C, T2);
+        for (int k = 0; k < NN; k++) V[k] += s2 * T2[k];
+    }
+}
+// thread n -> (chain b, sheet link): direction mu, x_mu = L_mu - 1, x_other in {L_other - 1, 0}, (x_f, t) free; only parity `parity`
+__device__ bool sheet_site(long n, int mu, int parity, int a, int bb, int B, const int* D, int* c, int* bout, long* sout){
+    int f = 3 - a - bb, other = (mu == a) ? bb : a;
+    long per = 2L * D[f] * D[3];
+    if (n >= (long)B * per) return false;
+    int b = (int)(n / per); long r = n % per;
+    int e = (int)(r % 2); r /= 2;
+    int tt = (int)(r % D[3]); r /= D[3];
+    c[mu] = D[mu] - 1; c[other] = e ? 0 : D[other] - 1; c[f] = (int)r; c[3] = tt;
+    if (((c[0] + c[1] + c[2] + c[3]) & 1) != parity) return false;
+    *bout = b;
+    *sout = lin(b, c[0], c[1], c[2], c[3], D[0], D[1], D[2], D[3]);
+    return true;
+}
+// new value of the sheet links (heat bath: fresh draw; overrelaxation: reflection of the current value) into out; U is not changed
+extern "C" __global__ void sheet_new(cd* U0, cd* U1, cd* U2, cd* U3, unsigned long long* state, const double* beta, cd* out,
+                                     int mu, int parity, int mode, int a, int bb, int tw, int B, int Nx, int Ny, int Nz, int Nt)
+{
+    long n = (long)blockIdx.x * blockDim.x + threadIdx.x;
+    int D[4] = {Nx, Ny, Nz, Nt}, c[4], b; long s;
+    if (!sheet_site(n, mu, parity, a, bb, B, D, c, &b, &s)) return;
+    cd* Us[4] = {U0, U1, U2, U3};
+    cd V[NN], W[NN], Ul[NN];
+    staple_tw((cd* const*)Us, b, c, mu, a, bb, tw, Nx, Ny, Nz, Nt, V);
+    cd* Up = Us[mu] + s * NN;
+    for (int k = 0; k < NN; k++) Ul[k] = Up[k];
+    mmul(Ul, V, W);
+    unsigned long long st = state[s];
+    double bt = beta[b];
+    {
+        const int i = 0, j = 1;
+        cd A = W[NC * i + i], Bc = W[NC * i + j], Cc = W[NC * j + i], Dd = W[NC * j + j];
+        double a0 = 0.5 * (A.real() + Dd.real()), a3 = 0.5 * (A.imag() - Dd.imag());
+        double a2 = 0.5 * (Bc.real() - Cc.real()), a1 = 0.5 * (Bc.imag() + Cc.imag());
+        double k = sqrt(a0*a0 + a1*a1 + a2*a2 + a3*a3);
+        double kk = fmax(k, 1e-300);
+        double ud[4] = {a0 / kk, -a1 / kk, -a2 / kk, -a3 / kk};
+        double R[4];
+        if (mode == 0) {
+            double alpha = (2.0 / NC) * bt * k;
+            double x0 = kp_x0(alpha, &st);
+            double rs = sqrt(fmax(1.0 - x0 * x0, 0.0));
+            double ct = 2.0 * rnd(&st) - 1.0, ph = 6.283185307179586 * rnd(&st);
+            double sn = sqrt(fmax(1.0 - ct * ct, 0.0));
+            double X[4] = {x0, rs * sn * cos(ph), rs * sn * sin(ph), rs * ct};
+            qmul(X, ud, R);
+        } else {
+            qmul(ud, ud, R);
+        }
+        applyR(Ul, i, j, R);
+    }
+    state[s] = st;
+    for (int k = 0; k < NN; k++) out[n * NN + k] = Ul[k];
+}
+extern "C" __global__ void sheet_put(cd* Um, const cd* out, int mu, int parity, int a, int bb, int B, int Nx, int Ny, int Nz, int Nt)
+{
+    long n = (long)blockIdx.x * blockDim.x + threadIdx.x;
+    int D[4] = {Nx, Ny, Nz, Nt}, c[4], b; long s;
+    if (!sheet_site(n, mu, parity, a, bb, B, D, c, &b, &s)) return;
+    for (int k = 0; k < NN; k++) Um[s * NN + k] = out[n * NN + k];
+}
+'''
+
+
 class FusedSU2:
-    """SU(2) on the fused kernels of gpu/gauge.py (unchanged, untwisted) + SheetFix after every pass of a twist-plane direction."""
+    """SU(2) on the fused kernels of gpu/gauge.py (unchanged, untwisted) + an exact re-update of the sheet links, the only links whose
+    staple contains a twisted plaquette, for every pass of a twist-plane direction. Speed fix (SPEEDFIX.md): the re-update is one small
+    CUDA kernel (twisted staple + the heat-bath / reflection of the main kernel, one thread per sheet link) instead of about 100 array
+    operations per pass. Because a pass (mu, p) never reads the links it writes, the new sheet values are computed BEFORE the untwisted
+    pass (`sheet_new`, into a buffer) and written back AFTER it (`sheet_put`); the result is the same as fixing up afterwards. The heat
+    bath draws its random numbers from the per-site xorshift state of the main kernels (this changes the random stream of the
+    sheet links against the earlier array-code fix-up, not the law of the update)."""
 
     def __init__(self, geo, beta, U, seed):
         import cupy as cp
         sys.path.insert(0, os.path.join(LATTICE, "gpu"))
         import gauge as G
+        import su3_cuda as K
         self.cp, self.geo = cp, geo
         B = U[0].shape[0]
         self.g = G.Gauge(geo.Ls[0], geo.T, beta, nc=2, B=B, seed=seed, start="cold")
@@ -338,26 +439,49 @@ class FusedSU2:
             g.U = [cp.ascontiguousarray(cp.broadcast_to(cp.eye(2, dtype=g.cdt), g.shape)) for _ in range(4)]
         for mu in range(4):
             self.g.U[mu][...] = BD.q2m(cp.asarray(U[mu]), cp)
-        gU = self.g.U
+        g = self.g
+        i32 = np.int32
+        dimargs = (i32(B),) + tuple(i32(v) for v in g.dims)
+        # main kernel: prebuilt launch arguments (the same kernel and arguments as Gauge.update)
+        self._upd = g.mod.get_function("upd")
+        self._grid = K._grid(B * g.vol)
+        base = (g.U[0], g.U[1], g.U[2], g.U[3], g.state, g.beta)
+        self._upd_args = {(mu, p, m): base + (i32(mu), i32(p), i32(m)) + dimargs for mu in range(4) for p in (0, 1) for m in (0, 1)}
+        self._reunit = g.mod.get_function("reunit")
+        self._reunit_grid = K._grid(B * g.vol)
+        self._reunit_args = [(u, np.int64(B * g.vol)) for u in g.U]
+        self.fix = None
+        if geo.twisted:
+            mod = cp.RawModule(code=K.SRC + SHEET_SRC, options=("-DNC=2", "-DREAL=double", "--std=c++17"))
+            self._new, self._put = mod.get_function("sheet_new"), mod.get_function("sheet_put")
+            self.fix = True
+            self._buf, self._sgrid, self._new_args, self._put_args = {}, {}, {}, {}
+            for mu in (geo.a, geo.b):
+                n = B * 2 * geo.Ls[geo.f] * geo.T
+                self._buf[mu] = cp.empty((n, 2, 2), dtype=cp.complex128)
+                self._sgrid[mu] = K._grid(n)
+                for p in (0, 1):
+                    for m in (0, 1):
+                        self._new_args[(mu, p, m)] = (g.U[0], g.U[1], g.U[2], g.U[3], g.state, g.beta, self._buf[mu], i32(mu), i32(p), i32(m),
+                                                      i32(geo.a), i32(geo.b), i32(1)) + dimargs
+                    self._put_args[(mu, p)] = (g.U[mu], self._buf[mu], i32(mu), i32(p), i32(geo.a), i32(geo.b)) + dimargs
 
-        def fetch(d, s):
-            return BD.m2q(gU[d][(slice(None),) + s], cp)
-
-        def store(d, s, q):
-            gU[d][(slice(None),) + s] = BD.q2m(q, cp)
-        self.fix = SheetFix(geo, beta, cp, seed + 7919, fetch, store) if geo.twisted else None
+    def pass_(self, mu, p, mode):
+        """One checkerboard pass of direction mu, parity p, with the sheet links of a twist-plane direction handled exactly."""
+        fixme = self.fix is not None and mu in (self.geo.a, self.geo.b)
+        if fixme:
+            self._new(*self._sgrid[mu], self._new_args[(mu, p, mode)])
+        self._upd(*self._grid, self._upd_args[(mu, p, mode)])
+        if fixme:
+            self._put(*self._sgrid[mu], self._put_args[(mu, p)])
 
     def sweep(self, n_or):
-        geo = self.geo
         for mode in [0] + [1] * n_or:
             for mu in range(4):
-                fixme = self.fix is not None and mu in (geo.a, geo.b)
-                saved = self.fix.save(mu) if (fixme and mode == 1) else None
                 for p in (0, 1):
-                    self.g.update(mu, p, mode)
-                    if fixme:
-                        self.fix.apply(mu, p, mode, saved)
-        self.g.reunit()
+                    self.pass_(mu, p, mode)
+        for args in self._reunit_args:
+            self._reunit(*self._reunit_grid, args)
 
     def links(self):
         return [BD.m2q(u, self.cp) for u in self.g.U]
@@ -502,6 +626,100 @@ def xp_argmax(xp, x):
     return xp.argmax(x, axis=-1)
 
 
+def _site_state(cp, seed, n):
+    """Per-site xorshift64* states for the kernels (as gpu/gauge.py)."""
+    rng = np.random.default_rng(seed)
+    return cp.asarray(rng.integers(1, 2 ** 63, size=n, dtype=np.uint64) | np.uint64(1))
+
+
+def plaq_gpu(Umu, Unu, mu, nu):
+    """(B, Lx, Ly, Lz, T) array of (1/2) tr U_{mu nu}(x) (unsigned) for quaternion links on the GPU."""
+    import cupy as cp
+    Bn, dims = Umu.shape[0], Umu.shape[1:5]
+    out = cp.empty((Bn,) + tuple(dims))
+    _kmod().get_function("plaq_q")(*_grid1(out.size), (cp.ascontiguousarray(Umu), cp.ascontiguousarray(Unu), out, np.int32(mu), np.int32(nu),
+                                                      np.int32(Bn)) + tuple(np.int32(v) for v in dims))
+    return out
+
+
+class GPUAbelian:
+    """U(1) (heat bath + overrelaxation) or Z2 (heat bath on {0, pi}), twisted staple, as AbelianUpdater but one CUDA kernel per
+    checkerboard pass (SPEEDFIX.md). Same update law; the random numbers come from per-site xorshift states, so the stream differs from
+    the array code (AbelianUpdater stays as the reference)."""
+
+    def __init__(self, geo, beta, U, seed, z2=False):
+        import cupy as cp
+        self.cp, self.geo, self.beta, self.z2 = cp, geo, beta, z2
+        self.U = [cp.ascontiguousarray(cp.array(u, dtype=float)) for u in U]
+        self.B = self.U[0].shape[0]
+        self.state = _site_state(cp, seed, self.B * int(np.prod(geo.dims)))
+        self.k = _kmod().get_function("abel")
+        self.grid = _grid1(self.state.size)
+        self.dimargs = (np.int32(self.B),) + tuple(np.int32(v) for v in geo.dims)
+        self.tail = (np.int32(geo.a), np.int32(geo.b), np.int32(int(geo.twisted)))
+
+    def pass_(self, mu, p, mode):
+        args = tuple(self.U) + (self.U[mu], self.state, np.float64(self.beta), np.int32(mu), np.int32(p), np.int32(mode),
+                                np.int32(int(self.z2))) + self.tail + self.dimargs
+        self.k(*self.grid, args)
+
+    def sweep(self, n_or):
+        for mode in [0] + [0 if self.z2 else 1] * n_or:
+            for mu in range(4):
+                for p in (0, 1):
+                    self.pass_(mu, p, mode)
+
+    def links(self):
+        return self.U
+
+
+class GPUMetro2I:
+    """2I gauge theory as Metro2I (Metropolis, `hits` hits per link and pass, snap to the group after the sweep), one CUDA kernel per
+    checkerboard pass (SPEEDFIX.md); per-site random states, so the stream differs from the array code (Metro2I stays as the reference)."""
+
+    def __init__(self, geo, beta, U, seed, hits=4):
+        import cupy as cp
+        self.cp, self.geo, self.beta, self.hits = cp, geo, beta, hits
+        E = binary_icosahedral()
+        self.E = cp.asarray(E)
+        self.nbr = cp.ascontiguousarray(cp.asarray(E[np.isclose(E[:, 0], (1 + 5 ** 0.5) / 4)]))
+        self.U = [cp.ascontiguousarray(cp.array(u, dtype=float)) for u in U]
+        self.B = self.U[0].shape[0]
+        self.vol = int(np.prod(geo.dims))
+        self.state = _site_state(cp, seed, self.B * self.vol)
+        self.k = _kmod().get_function("metro2i")
+        self.grid = _grid1(self.state.size)
+        self.dimargs = (np.int32(self.B),) + tuple(np.int32(v) for v in geo.dims)
+        self.tail = (np.int32(geo.a), np.int32(geo.b), np.int32(int(geo.twisted)))
+        self.cnt = cp.zeros(1, dtype=cp.uint64)
+        self.npass = 0
+
+    @property
+    def acc(self):
+        """[sum of per-hit acceptance means, number of hits] as Metro2I.acc (acceptance = acc[0] / acc[1])."""
+        return [float(self.cnt.get()[0]) / (self.B * self.vol / 2), self.npass * self.hits]
+
+    def pass_(self, mu, p, mode=0):
+        args = tuple(self.U) + (self.U[mu], self.state, self.nbr, np.float64(self.beta), np.int32(mu), np.int32(p), np.int32(self.hits)) \
+            + self.tail + (self.cnt,) + self.dimargs
+        self.k(*self.grid, args)
+        self.npass += 1
+
+    def snap(self):
+        for mu in range(4):
+            self.U[mu][...] = self.E[self.cp.argmax(self.U[mu] @ self.E.T, axis=-1)]
+
+    def sweep(self, n_or):
+        for _ in range(1 + n_or):
+            for mu in range(4):
+                for p in (0, 1):
+                    self.pass_(mu, p)
+        self.snap()
+
+    def links(self):
+        return self.U
+
+
 # ---------------------------------------------------------------------------------------------------------------------------- starts
 
 def eater(geo, B, sign=+1.0):
@@ -561,11 +779,279 @@ def make_updater(group, geo, beta, U, seed, xp, path="array", hits=4):
             return FusedSU2(geo, beta, U, seed)
         return ArraySU2(geo, beta, U, seed, xp)
     if group == "2i":
+        if xp is not np:
+            return GPUMetro2I(geo, beta, U, seed, hits=hits)
         return Metro2I(geo, beta, U, seed, xp, hits=hits)
+    if xp is not np:
+        return GPUAbelian(geo, beta, U, seed, z2=(group == "z2"))
     return AbelianUpdater(geo, beta, U, seed, xp, z2=(group == "z2"))
 
 
 # ---------------------------------------------------------------------------------------------------------------------------- measure
+
+# ---------------------------------------------------------------------------------------------------------------------------- GPU kernels
+# Speed fix (SPEEDFIX.md): the flux measurement (APE smearing of the f-links and the Polyakov line) was about 40 array operations per
+# smearing step on strided (..., 4) arrays. The kernels below compute exactly the formulas of the array code (same operation order, no
+# FMA contraction), one thread per site; the array code stays as the reference (CPU path, self-test).
+
+KERN_SRC = r'''
+typedef double real;
+__device__ __forceinline__ int wr(int v, int n){ v %= n; if (v < 0) v += n; return v; }
+__device__ __forceinline__ long lin5(int b, const int* c, const int* D){
+    return ((((long)b * D[0] + c[0]) * D[1] + c[1]) * D[2] + c[2]) * D[3] + c[3];
+}
+__device__ __forceinline__ long shl(int b, const int* c, int mu, int s, const int* D){
+    int d[4] = {c[0], c[1], c[2], c[3]};
+    d[mu] = wr(d[mu] + s, D[mu]);
+    return lin5(b, d, D);
+}
+__device__ __forceinline__ void qm(const real* p, const real* q, real* o){
+    real o0 = p[0]*q[0] - p[1]*q[1] - p[2]*q[2] - p[3]*q[3];
+    real o1 = p[0]*q[1] + q[0]*p[1] - (p[2]*q[3] - p[3]*q[2]);
+    real o2 = p[0]*q[2] + q[0]*p[2] - (p[3]*q[1] - p[1]*q[3]);
+    real o3 = p[0]*q[3] + q[0]*p[3] - (p[1]*q[2] - p[2]*q[1]);
+    o[0] = o0; o[1] = o1; o[2] = o2; o[3] = o3;
+}
+__device__ __forceinline__ void qd(const real* p, real* o){ o[0] = p[0]; o[1] = -p[1]; o[2] = -p[2]; o[3] = -p[3]; }
+__device__ __forceinline__ void ld4(const real* p, real* o){ o[0] = p[0]; o[1] = p[1]; o[2] = p[2]; o[3] = p[3]; }
+
+// one transverse APE step of the f-links (quaternions): V' = normalise(V + alpha * sum_{nu in (a, b)} [U_nu(x) V(x+nu) U_nu(x+f)^dag
+// + U_nu(x-nu)^dag V(x-nu) U_nu(x-nu+f)]); Un[0] = U_a, Un[1] = U_b
+extern "C" __global__ void ape_q(const real* Ua, const real* Ub, const real* V, real* O, real alpha, int a, int bb, int f,
+                                 int B, int Nx, int Ny, int Nz, int Nt)
+{
+    long s = (long)blockIdx.x * blockDim.x + threadIdx.x;
+    int D[4] = {Nx, Ny, Nz, Nt};
+    long vol = (long)Nx * Ny * Nz * Nt;
+    if (s >= (long)B * vol) return;
+    int b = (int)(s / vol); long r = s % vol;
+    int c[4];
+    c[3] = (int)(r % Nt); r /= Nt; c[2] = (int)(r % Nz); r /= Nz; c[1] = (int)(r % Ny); c[0] = (int)(r / Ny);
+    real S[4], t1[4], t2[4], t3[4], t4[4];
+    ld4(V + s * 4, S);
+    for (int w = 0; w < 2; w++) {
+        const real* Un = w ? Ub : Ua;
+        int nu = w ? bb : a;
+        long inu = shl(b, c, nu, 1, D), iff_ = shl(b, c, f, 1, D), im = shl(b, c, nu, -1, D);
+        int cm[4] = {c[0], c[1], c[2], c[3]};
+        cm[nu] = wr(cm[nu] - 1, D[nu]);
+        long imf = shl(b, cm, f, 1, D);
+        // U_nu(x) V(x+nu) U_nu(x+f)^dag
+        qm(Un + s * 4, V + inu * 4, t1); qd(Un + iff_ * 4, t2); qm(t1, t2, t3);
+        for (int k = 0; k < 4; k++) S[k] = S[k] + alpha * t3[k];
+        // U_nu(x-nu)^dag V(x-nu) U_nu(x-nu+f)
+        qd(Un + im * 4, t1); qm(t1, V + im * 4, t2); qm(t2, Un + imf * 4, t4);
+        for (int k = 0; k < 4; k++) S[k] = S[k] + alpha * t4[k];
+    }
+    real nr = sqrt((S[0]*S[0] + S[1]*S[1]) + (S[2]*S[2] + S[3]*S[3]));
+    for (int k = 0; k < 4; k++) O[s * 4 + k] = S[k] / nr;
+}
+
+// Polyakov line along f: out[b, u1, u2, t] = real part (component 0) of prod_{x_f = 0..L-1} V(x), u1 < u2 the two other spatial axes
+extern "C" __global__ void poly_q(const real* V, real* out, int f, int B, int Nx, int Ny, int Nz, int Nt)
+{
+    long n = (long)blockIdx.x * blockDim.x + threadIdx.x;
+    int D[4] = {Nx, Ny, Nz, Nt};
+    int o1 = (f == 0) ? 1 : 0, o2 = (f == 2) ? 1 : 2;
+    long per = (long)D[o1] * D[o2] * Nt;
+    if (n >= (long)B * per) return;
+    int b = (int)(n / per); long r = n % per;
+    int c[4];
+    c[3] = (int)(r % Nt); r /= Nt; c[o2] = (int)(r % D[o2]); r /= D[o2]; c[o1] = (int)r;
+    real P[4], T[4];
+    c[f] = 0;
+    ld4(V + lin5(b, c, D) * 4, P);
+    for (int x = 1; x < D[f]; x++) {
+        c[f] = x;
+        qm(P, V + lin5(b, c, D) * 4, T);
+        ld4(T, P);
+    }
+    out[n] = P[0];
+}
+'''
+
+UPD_SRC = r'''
+typedef unsigned long long ull;
+#define PI_ 3.141592653589793
+__device__ __forceinline__ double rnd(ull* st){
+    ull x = *st;
+    x ^= x >> 12; x ^= x << 25; x ^= x >> 27; *st = x;
+    ull r = x * 2685821657736338717ULL;
+    return ((double)(r >> 11) + 0.5) * (1.0 / 9007199254740992.0);
+}
+__device__ __forceinline__ real plsign(int tw, int mu, int nu, int a, int bb, const int* c, const int* D){
+    if (tw && ((mu == a && nu == bb) || (mu == bb && nu == a)) && c[a] == D[a] - 1 && c[bb] == D[bb] - 1) return -1.0;
+    return 1.0;
+}
+__device__ __forceinline__ void site_of(long s, int Nx, int Ny, int Nz, int Nt, int* b, int* c){
+    long vol = (long)Nx * Ny * Nz * Nt;
+    *b = (int)(s / vol); long r = s % vol;
+    c[3] = (int)(r % Nt); r /= Nt; c[2] = (int)(r % Nz); r /= Nz; c[1] = (int)(r % Ny); c[0] = (int)(r / Ny);
+}
+// twisted staple of the quaternion link (x, mu): as staple_q of the array code
+__device__ void staple_qq(const real* const* Us, int b, const int* c, int mu, int a, int bb, int tw, const int* D, real* A){
+    A[0] = 0.0; A[1] = 0.0; A[2] = 0.0; A[3] = 0.0;
+    long i0 = lin5(b, c, D);
+    for (int nu = 0; nu < 4; nu++) {
+        if (nu == mu) continue;
+        long imu = shl(b, c, mu, 1, D), inu = shl(b, c, nu, 1, D), imnu = shl(b, c, nu, -1, D);
+        int cm[4] = {c[0], c[1], c[2], c[3]};
+        cm[nu] = wr(cm[nu] - 1, D[nu]);
+        long imnmu = shl(b, cm, mu, 1, D);
+        real s1 = plsign(tw, mu, nu, a, bb, c, D), s2 = plsign(tw, mu, nu, a, bb, cm, D);
+        real t1[4], t2[4], t3[4], t4[4];
+        qd(Us[mu] + inu * 4, t1); qm(Us[nu] + imu * 4, t1, t2); qd(Us[nu] + i0 * 4, t1); qm(t2, t1, t3);
+        for (int k = 0; k < 4; k++) A[k] = A[k] + s1 * t3[k];
+        qd(Us[nu] + imnmu * 4, t1); qd(Us[mu] + imnu * 4, t2); qm(t1, t2, t3); qm(t3, Us[nu] + imnu * 4, t4);
+        for (int k = 0; k < 4; k++) A[k] = A[k] + s2 * t4[k];
+    }
+}
+// 2I: Metropolis, `hits` proposals r U (r one of the 12 elements next to 1), one thread per link of direction mu and parity
+extern "C" __global__ void metro2i(const real* U0, const real* U1, const real* U2, const real* U3, real* Um, ull* state, const real* nbr,
+                                   real beta, int mu, int parity, int hits, int a, int bb, int tw, ull* acc, int B, int Nx, int Ny, int Nz, int Nt)
+{
+    long s = (long)blockIdx.x * blockDim.x + threadIdx.x;
+    int D[4] = {Nx, Ny, Nz, Nt};
+    if (s >= (long)B * Nx * Ny * Nz * Nt) return;
+    int b, c[4];
+    site_of(s, Nx, Ny, Nz, Nt, &b, c);
+    if (((c[0] + c[1] + c[2] + c[3]) & 1) != parity) return;
+    const real* Us[4] = {U0, U1, U2, U3};
+    real A[4], u[4], nw[4], tmp[4];
+    staple_qq(Us, b, c, mu, a, bb, tw, D, A);
+    ld4(Um + s * 4, u);
+    qm(u, A, tmp);
+    real cur = tmp[0];
+    ull st = state[s];
+    ull cnt = 0;
+    for (int h = 0; h < hits; h++) {
+        int k = (int)(rnd(&st) * 12.0); if (k > 11) k = 11;
+        qm(nbr + k * 4, u, nw);
+        qm(nw, A, tmp);
+        real nv = tmp[0];
+        if (rnd(&st) < exp(fmin(beta * (nv - cur), 0.0))) {
+            for (int j = 0; j < 4; j++) u[j] = nw[j];
+            cur = nv; cnt++;
+        }
+    }
+    state[s] = st;
+    for (int j = 0; j < 4; j++) Um[s * 4 + j] = u[j];
+    atomicAdd(acc, cnt);
+}
+// quaternion plaquette (1/2) tr U_{mu nu}(x), unsigned, as plaquette_field
+extern "C" __global__ void plaq_q(const real* Umu, const real* Unu, real* out, int mu, int nu, int B, int Nx, int Ny, int Nz, int Nt)
+{
+    long s = (long)blockIdx.x * blockDim.x + threadIdx.x;
+    int D[4] = {Nx, Ny, Nz, Nt};
+    if (s >= (long)B * Nx * Ny * Nz * Nt) return;
+    int b, c[4];
+    site_of(s, Nx, Ny, Nz, Nt, &b, c);
+    long imu = shl(b, c, mu, 1, D), inu = shl(b, c, nu, 1, D);
+    real t1[4], t2[4], t3[4], t4[4];
+    qm(Umu + s * 4, Unu + imu * 4, t1);
+    qd(Umu + inu * 4, t2); qd(Unu + s * 4, t3); qm(t2, t3, t4);
+    qm(t1, t4, t2);
+    out[s] = t2[0];
+}
+__device__ double vonmises_dev(double kappa, ull* st){
+    if (kappa < 1e-6) return PI_ * (2.0 * rnd(st) - 1.0);
+    double tau = 1.0 + sqrt(1.0 + 4.0 * kappa * kappa);
+    double rho = (tau - sqrt(2.0 * tau)) / (2.0 * kappa);
+    double r = (1.0 + rho * rho) / (2.0 * rho);
+    for (int it = 0; it < 100000; it++) {
+        double u0 = rnd(st), u1 = rnd(st), u2 = rnd(st);
+        double z = cos(PI_ * u0);
+        double f = (1.0 + r * z) / (r + z);
+        double c = kappa * (r - f);
+        double u1m = fmax(u1, 1e-300);
+        if ((c * (2.0 - c) - u1m > 0.0) || (log(fmax(c, 1e-300) / u1m) + 1.0 - c >= 0.0)) {
+            double fc = fmin(fmax(f, -1.0), 1.0);
+            return ((u2 > 0.5) ? 1.0 : -1.0) * acos(fc);
+        }
+    }
+    return 0.0;
+}
+// U(1) (heat bath mode 0 / overrelaxation mode 1) and Z2 (z2 = 1: heat bath on {0, pi}), twisted complex staple; angle arrays
+extern "C" __global__ void abel(const real* U0, const real* U1, const real* U2, const real* U3, real* Um, ull* state, real beta,
+                                int mu, int parity, int mode, int z2, int a, int bb, int tw, int B, int Nx, int Ny, int Nz, int Nt)
+{
+    long s = (long)blockIdx.x * blockDim.x + threadIdx.x;
+    int D[4] = {Nx, Ny, Nz, Nt};
+    if (s >= (long)B * Nx * Ny * Nz * Nt) return;
+    int b, c[4];
+    site_of(s, Nx, Ny, Nz, Nt, &b, c);
+    if (((c[0] + c[1] + c[2] + c[3]) & 1) != parity) return;
+    const real* Us[4] = {U0, U1, U2, U3};
+    double Ar = 0.0, Ai = 0.0;
+    long i0 = s;
+    for (int nu = 0; nu < 4; nu++) {
+        if (nu == mu) continue;
+        long imu = shl(b, c, mu, 1, D), inu = shl(b, c, nu, 1, D), imnu = shl(b, c, nu, -1, D);
+        int cm[4] = {c[0], c[1], c[2], c[3]};
+        cm[nu] = wr(cm[nu] - 1, D[nu]);
+        long imnmu = shl(b, cm, mu, 1, D);
+        double s1 = plsign(tw, mu, nu, a, bb, c, D), s2 = plsign(tw, mu, nu, a, bb, cm, D);
+        double th = (Us[nu][imu] - Us[mu][inu]) - Us[nu][i0];
+        Ar += s1 * cos(th); Ai += s1 * sin(th);
+        th = (-Us[nu][imnmu] - Us[mu][imnu]) + Us[nu][imnu];
+        Ar += s2 * cos(th); Ai += s2 * sin(th);
+    }
+    ull st = state[s];
+    double nv;
+    if (z2) {
+        double p0 = 1.0 / (1.0 + exp(-2.0 * beta * Ar));
+        nv = (rnd(&st) < p0) ? 0.0 : PI_;
+    } else if (mode == 0) {
+        double kap = beta * sqrt(Ar * Ar + Ai * Ai);
+        double x = -atan2(Ai, Ar) + vonmises_dev(kap, &st);
+        nv = atan2(sin(x), cos(x));
+    } else {
+        double x = -2.0 * atan2(Ai, Ar) - Um[s];
+        nv = atan2(sin(x), cos(x));
+    }
+    state[s] = st;
+    Um[s] = nv;
+}
+'''
+
+
+_KMOD = {}
+
+
+def _kmod():
+    import cupy as cp
+    if "m" not in _KMOD:
+        _KMOD["m"] = cp.RawModule(code=KERN_SRC + UPD_SRC, options=("--std=c++17", "--fmad=false"))
+    return _KMOD["m"]
+
+
+def _grid1(n, bs=128):
+    return ((int(n) + bs - 1) // bs,), (bs,)
+
+
+def ape_step_gpu(U, V, a, b, f, alpha):
+    """One APE step on the GPU (quaternion arrays (B, Lx, Ly, Lz, T, 4)); same result as the array code to rounding."""
+    import cupy as cp
+    Bn, dims = V.shape[0], V.shape[1:5]
+    Ua, Ub, V = cp.ascontiguousarray(U[a]), cp.ascontiguousarray(U[b]), cp.ascontiguousarray(V)
+    O = cp.empty_like(V)
+    n = Bn * int(np.prod(dims))
+    _kmod().get_function("ape_q")(*_grid1(n), (Ua, Ub, V, O, np.float64(alpha), np.int32(a), np.int32(b), np.int32(f), np.int32(Bn))
+                                  + tuple(np.int32(v) for v in dims))
+    return O
+
+
+def polyakov_gpu(V, f):
+    """(B, n1, n2, T) array of the real part of the Polyakov line along f (quaternion links), as the array loop."""
+    import cupy as cp
+    Bn, dims = V.shape[0], V.shape[1:5]
+    V = cp.ascontiguousarray(V)
+    o1, o2 = (1 if f == 0 else 0), (1 if f == 2 else 2)
+    out = cp.empty((Bn, dims[o1], dims[o2], dims[3]))
+    n = out.size
+    _kmod().get_function("poly_q")(*_grid1(n), (V, out, np.int32(f), np.int32(Bn)) + tuple(np.int32(v) for v in dims))
+    return out
+
 
 def flux_ops(xp, U, geo, group, levels, alpha=0.5):
     """p_k(t) for the smearing levels k in `levels` (sorted, may include 0): array (B, n_levels, T), complex for U(1).
@@ -583,7 +1069,9 @@ def flux_ops(xp, U, geo, group, levels, alpha=0.5):
             break
         if group == "z2":
             raise ValueError("no smearing for Z2")
-        if quat:
+        if quat and xp is not np:
+            V = ape_step_gpu(U, V, a, b, f, alpha)
+        elif quat:
             S = V.copy()
             for nu in (a, b):
                 S = S + alpha * qmul(qmul(U[nu], sh(V, nu), xp), qdag(sh(U[nu], f), xp), xp)
@@ -602,6 +1090,8 @@ def flux_ops(xp, U, geo, group, levels, alpha=0.5):
 
 def polyakov_mean(xp, V, f, quat, group):
     """(1/L^2) sum over the transverse sites of (1/2) tr prod_{x_f} V_f (U(1): exp(i sum theta)), shape (B, T)."""
+    if quat and xp is not np:
+        return polyakov_gpu(V, f).mean(axis=(1, 2))
     L = V.shape[1 + f]
     sl = [slice(None)] * V.ndim
     sl[1 + f] = 0
@@ -975,12 +1465,9 @@ def gpu_tests(report, fused=True):
         arr = ArraySU2(geo, 2.4, [cp.asarray(u) for u in U], 1, cp)
         fu = FusedSU2(geo, 2.4, U, 1)
         for mu in range(4):
-            saved = fu.fix.save(mu) if mu in (geo.a, geo.b) else None
             for p in (0, 1):
                 arr.pass_(mu, p, 1)
-                fu.g.update(mu, p, 1)
-                if mu in (geo.a, geo.b):
-                    fu.fix.apply(mu, p, 1, saved)
+                fu.pass_(mu, p, 1)
         L1 = fu.links()
         dmax = max(float(cp.abs(arr.U[n] - L1[n]).max()) for n in range(4))
         report("GPU: fused + SheetFix overrelaxation = array overrelaxation", dmax < 1e-10, f"max difference {dmax:.1e}")
@@ -989,12 +1476,9 @@ def gpu_tests(report, fused=True):
         arr = ArraySU2(ga, 2.4, [cp.asarray(u) for u in Ua], 1, cp)
         fu = FusedSU2(ga, 2.4, Ua, 1)
         for mu in range(4):
-            saved = fu.fix.save(mu) if mu in (ga.a, ga.b) else None
             for p in (0, 1):
                 arr.pass_(mu, p, 1)
-                fu.g.update(mu, p, 1)
-                if mu in (ga.a, ga.b):
-                    fu.fix.apply(mu, p, 1, saved)
+                fu.pass_(mu, p, 1)
         La = fu.links()
         da = max(float(cp.abs(arr.U[k] - La[k]).max()) for k in range(4))
         report("GPU: fused + SheetFix = array, anisotropic box (8, 4, 6)", da < 1e-10, f"max difference {da:.1e}")
@@ -1039,6 +1523,7 @@ def bench(a):
     gpu = not a.cpu
     xp = get_xp(gpu)
     total = 0.0
+    total_old_def = 0.0
     seen = {}
     for e in PLAN + (PLAN_W if a.addendum else []):
         name, g, beta, L, T, plane, tw, ch, th, me, ev, lv, seed = e[:13]
@@ -1061,12 +1546,24 @@ def bench(a):
                 flux_ops(xp, upd.links(), geo, g, levels)
             sync(xp)
             tm = (time.time() - t) / 3
-            seen[key] = (ts, tm, int(np.prod(geo.dims)))
-        ts, tm, vol = seen[key]
-        sec = (th + me * ev) * ts + me * tm
+            # the other per-measurement work of run() (plaquette, sheet check, copies to the host); the bench before the speed fix
+            # timed the flux operators only (tm), so both projections are printed
+            t = time.time()
+            for _ in range(3):
+                Uq = upd.links()
+                to_host(flux_ops(xp, Uq, geo, g, levels))
+                to_host(mean_plaquette(xp, Uq, geo, g))
+                to_host(sheet_and_bulk(xp, Uq, geo, g))
+            sync(xp)
+            tf = (time.time() - t) / 3
+            seen[key] = (ts, tm, int(np.prod(geo.dims)), tf)
+        ts, tm, vol, tf = seen[key]
+        sec = (th + me * ev) * ts + me * tf
         total += sec
-        print(f"{name:20s} sweep {ts * 1e3:8.1f} ms ({ts / (ch * vol) * 1e9:6.0f} ns/site)  meas {tm * 1e3:7.1f} ms  "
+        total_old_def += (th + me * ev) * ts + me * tm
+        print(f"{name:20s} sweep {ts * 1e3:8.1f} ms ({ts / (ch * vol) * 1e9:6.0f} ns/site)  meas {tf * 1e3:7.1f} ms (flux ops {tm * 1e3:6.1f})  "
               f"projected {sec / 60:7.1f} min", flush=True)
+    print(f"projection with the earlier bench definition (flux operators only): {total_old_def / 3600:.2f} h", flush=True)
     print(f"PROJECTED TOTAL {total / 3600:.2f} h ({'CPU' if a.cpu else 'GPU, path ' + a.path})", flush=True)
     return 0
 

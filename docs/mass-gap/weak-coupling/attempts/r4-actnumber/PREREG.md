@@ -419,3 +419,16 @@ per-site rate at the largest lattices is close to the model. The listed cuts sav
 the coordinator decides") the queue was **stopped** during its first photon-gate run (no result kept; nothing was read). The
 good-blocking refit (`../../proof-phase/c3b-refit/`) runs first. Before the act number reruns: find and remove the per-sweep
 overhead (kernel launches and the sheet fix-up per twist-plane pass, or batching chains), re-bench, and rerun this plan unchanged.
+
+## Coordinator amendment after the speed fix (2026-11-22, before any counted data)
+
+The per-sweep overhead is removed (`SPEEDFIX.md`, cycle 4): the time went to Python and kernel-launch overhead (SU(2): the sheet
+fix-up, about 98 % of a sweep), not to lattice size. `actnumber.py` now runs the sheet fix-up, the U(1)/Z₂/2I updates and the flux
+measurement as kernels with the same formulas; the action, the update algorithm and acceptance rules, the sweep and measurement
+schedule, the observables, the seeds' role and the analysis are unchanged. The random stream is not bit-identical (per-site
+generator states). Equivalence: deterministic check 10/10 (`speedfix_check.py`, re-run by the coordinator: identical), and a
+statistical old-vs-new comparison pre-registered in `SPEEDFIX.md` before running: all 26 comparisons |z| ≤ 1.51, all four groups
+PASS on the first run. New bench: **1.47 h** for the plan (the bench now also times measurements and host copies). Decision: the
+plan reruns **unchanged** — the points cut for time in the post-review amendment stay cut, and `-AddendumW` stays off (as at the
+restart before the bench); restoring either would be a new pre-registration. The first counted runs are watched against their bench
+lines. The old code is kept as `actnumber_old.py` for the record.

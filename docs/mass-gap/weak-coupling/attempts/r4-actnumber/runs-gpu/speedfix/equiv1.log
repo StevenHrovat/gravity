@@ -1,0 +1,35 @@
+runs finished, exit codes [0, 0, 0, 0, 0, 0, 0, 0]
+--- su2: beta 2.4 L 4 T 8  (300 / 300 measurements per chain)
+  plaquette                        old  0.63082 +- 0.00018   new  0.63072 +- 0.00021   z = +0.39
+  sheet plaquette                  old  0.62999 +- 0.00107   new  0.62768 +- 0.00113   z = +1.48
+  twisted-plane bulk plaquette     old  0.62904 +- 0.00029   new  0.62885 +- 0.00031   z = +0.44
+  <|p|^2> level 0                  old  0.10400 +- 0.00092   new  0.10372 +- 0.00090   z = +0.22
+  <p(t) p(t+1)> level 0            old  0.08688 +- 0.00095   new  0.08707 +- 0.00096   z = -0.14
+  <|p|^2> level 2                  old  0.31813 +- 0.00232   new  0.32069 +- 0.00235   z = -0.77
+  <p(t) p(t+1)> level 2            old  0.28440 +- 0.00262   new  0.28759 +- 0.00265   z = -0.86
+--- u1: beta 1.1 L 4 T 8  (400 / 400 measurements per chain)
+  plaquette                        old  0.71251 +- 0.00024   new  0.71239 +- 0.00028   z = +0.32
+  sheet plaquette                  old  0.70268 +- 0.00151   new  0.70113 +- 0.00139   z = +0.75
+  twisted-plane bulk plaquette     old  0.70034 +- 0.00036   new  0.70065 +- 0.00031   z = -0.67
+  <|p|^2> level 0                  old  0.39061 +- 0.00120   new  0.39019 +- 0.00097   z = +0.27
+  <p(t) p(t+1)> level 0            old  0.31958 +- 0.00116   new  0.31640 +- 0.00213   z = +1.31
+  <|p|^2> level 2                  old  0.86896 +- 0.00075   new  0.86788 +- 0.00075   z = +1.01
+  <p(t) p(t+1)> level 2            old  0.74106 +- 0.00127   new  0.73413 +- 0.00443   z = +1.51
+--- z2: beta 0.42 L 2 T 8  (500 / 500 measurements per chain)
+  plaquette                        old  0.48685 +- 0.00123   new  0.48500 +- 0.00137   z = +1.00
+  sheet plaquette                  old  0.38134 +- 0.00467   new  0.38353 +- 0.00366   z = -0.37
+  twisted-plane bulk plaquette     old  0.37995 +- 0.00213   new  0.37922 +- 0.00157   z = +0.28
+  <|p|^2> level 0                  old  0.57198 +- 0.00285   new  0.57512 +- 0.00300   z = -0.76
+  <p(t) p(t+1)> level 0            old  0.24709 +- 0.00351   new  0.24180 +- 0.00458   z = +0.92
+--- 2i: beta 2.4 L 4 T 8  (300 / 300 measurements per chain)
+  plaquette                        old  0.63091 +- 0.00021   new  0.63085 +- 0.00025   z = +0.20
+  sheet plaquette                  old  0.62871 +- 0.00100   new  0.62987 +- 0.00104   z = -0.80
+  twisted-plane bulk plaquette     old  0.62914 +- 0.00033   new  0.62928 +- 0.00035   z = -0.28
+  <|p|^2> level 0                  old  0.10457 +- 0.00140   new  0.10548 +- 0.00146   z = -0.45
+  <p(t) p(t+1)> level 0            old  0.08725 +- 0.00157   new  0.08842 +- 0.00158   z = -0.53
+  <|p|^2> level 2                  old  0.32134 +- 0.00413   new  0.32323 +- 0.00426   z = -0.32
+  <p(t) p(t+1)> level 2            old  0.28773 +- 0.00492   new  0.29002 +- 0.00501   z = -0.33
+su2: max |z| = 1.48, 0 above 2 -> PASS
+u1: max |z| = 1.51, 0 above 2 -> PASS
+z2: max |z| = 1.00, 0 above 2 -> PASS
+2i: max |z| = 0.80, 0 above 2 -> PASS
