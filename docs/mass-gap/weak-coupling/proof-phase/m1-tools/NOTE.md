@@ -42,12 +42,13 @@ images read by me. New in this session, full: [IV] pp. 177-191 (pp. 182-191 for 
    `e₁ + e₂ = L^{1-d}` (exact, checked with exact fractions for `L = 13`, `d = 4`). The visible part of a core
    perturbation therefore shrinks by `L^{1-d} = 1/2197` per step, plus nonlinear and background corrections
    (**paper**; elementary part **Lean**, `ProofPhase.M1.balaban_star_dilution`, `spread_iterate_quadratic`).
-5. **What replaces Lemma D for deep cores: a proposal, open.** The blocked law does not change if the block grid
+5. **What replaces Lemma D for deep cores: a proposal, ruled out by `D-N.md`.** The blocked law does not change if the block grid
    is shifted by an independent uniformly random offset at each step (translation invariance; **paper**, exact).
    With random shifts a deep core sits at a block centre only with probability `L^{-d}` per step, and off-centre a
    core touches only a small fraction of the averaging paths. So a deep core becomes moderate within `n` steps except
    with shift-probability about `(C L^{1-d})^n` (**sketch**, section 2.5). Whether this replaces the missing fresh
-   large-field factor within Balaban's constants is **open** (it needs `N ≳ p0(g)`-many steps, section 2.6).
+   large-field factor within Balaban's constants was open; `D-N.md` answers **no**: the shifts buy at most `L^{-d}` per
+   step, while Balaban charges every unrenormalised region `exp(O(1) log g^{-2} (M R)^d)` per step.
 6. **Exactness of the conditional step: proved in Lean.** `ProofPhase.M1.map_resample_eq`: resampling a term on
    `Λ` from the reference kernel with the next field fixed, with ratio `N(W)/D(W)`, leaves the joint law of the next
    field and the outside field unchanged; so the next block field's law is unchanged (`map_comp_resample_eq`), term
@@ -55,7 +56,7 @@ images read by me. New in this session, full: [IV] pp. 177-191 (pp. 182-191 for 
    `0 < D < ∞` on the regular set. **Analyticity is not needed for exactness**, only for the estimates.
 7. **Corrected verdict of the one-step test.** ONE-STEP said SURVIVES WITH A NEW LEMMA (Lemma D). Corrected:
    **SURVIVES for moderate cores (Lemma D-mod, proved on paper with Lean core); OPEN for deep cores at nested
-   block centres** (needs the shift device and a probabilistic Lemma D-prob, or another idea). Not BREAKS: no step
+   block centres** (the shift device is ruled out, `D-N.md`; candidate: pinned-defect renormalisation, idea I1). Not BREAKS: no step
    was found that fails for every device. M1 grows by about 6-8 pages (`M1-PLAN.md`).
 
 ## 1. Reading
@@ -249,7 +250,13 @@ scale `h`, `P_shift(the core's image at scale h + n1 + n_esc + n_mod is not with
 ≤ p_stay^{n_esc}`. Status: **open** (sketch above; the cone bound on `f(z)` and the multi-site bookkeeping are the
 two missing pieces, about 4 pages).
 
-### 2.6 What D-prob would buy, and the constraint on N (open)
+**Update (`D-N.md`): the shift device does not work inside Balaban's bookkeeping.** `p_stay ≥ L^{-d}` (exact
+centres), while every step a region stays unrenormalised costs `exp(O(1) log g^{-2} |Z_j|)`, `|Z_j| ≥ (M R)^d` ([V]
+p. 380). The persistent terms' bounds grow with every step, for any `N`. Section 2.6 is kept as the record of the
+original proposal; its constraint on `N` turns out to be satisfiable after removing an artefact ([IV] p. 198) and
+retuning `p0, p1, β0`, but that does not rescue the device. Deep pinned cores: open, next idea I1 in `D-N.md` 4.
+
+### 2.6 What D-prob would buy, and the constraint on N (superseded by `D-N.md`)
 
 With D-prob, a term whose core is still deep after `n_esc` steps carries the shift factor `p_stay^{n_esc}` (a weight
 of the shift mixture, not a factor of the field density). For it to replace a fresh large-field factor
@@ -291,10 +298,10 @@ hypothesis of exactness; it enters the estimates (E3, E6 of the plan). The inter
 
 ## 4. Files
 
-- `NOTE.md` (this file), `M1-PLAN.md` (the estimate list).
+- `NOTE.md` (this file), `M1-PLAN.md` (the estimate list), `D-N.md` (row D-N: the delay and the shift device).
 - `star_weights.py`: exact linear star weights of Balaban's contour family (`python -I star_weights.py 13 4`, 13 s;
   add a third argument for the off-centre maximum, small `L, d` only).
-- `get-balaban-refs.ps1`: downloads `[12]`, `[14]`, `[15]` here (owner runs it); `.gitignore` keeps PDFs out.
+- `get-balaban-refs.ps1`: downloads `[12]`, `[14]`, `[15]` here (done by the owner; PDFs git-ignored).
 - `setup.sh`, `build.sh <Module>`, `axioms.sh`, `axioms.log`, `grepml.sh`: private WSL build (`~/formal-m1`).
 - Lean: `formal/ProofPhase/M1/Exact.lean`, `Dilution.lean`, `Vortex.lean`; build each with
   `wsl -d ym-replay -u ym -- bash /mnt/c/claude/gravity-ym/docs/mass-gap/weak-coupling/proof-phase/m1-tools/build.sh Exact`
