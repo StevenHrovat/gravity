@@ -1787,3 +1787,340 @@ No FATAL, no GAP.
 * The global constant `e^{-M_X}` is harmless: it does not depend on `omega` and cancels in each normalisation.
 * Section 32: add the domain class of the Balaban-on-domains adaptation (shells thinner than `M R_j`, `K`-shaped,
   two-sided, uniform in the shape), as asked in Follow-up 11.
+
+## Follow-up 13 (`UV-TV.md` 33-35: final UV-TV fixes, and M1's four sketch points), 2026-11-23
+
+Read: `../m1-tools/UV-TV.md` 33, 34 and 35 in full. Not re-read against the page images; for [V] p. 384 and (1.89) I
+rely on the quotations and on `EK-DERIVATION.md` Q2. Nothing was built or re-run.
+
+### Verdict
+
+**(1) The UV-TV fixes (33-34): done correctly.**
+* The one-coupling corollary, the link-length truncation, the units, van den Berg-Maes along links, the source and
+  locality rules, the `I_X` wording, and the named domain class all match Follow-up 12.
+* Two items need a sentence each:
+  * the last kernel (34.5) is not "deterministic except at ties" for the local decoder;
+  * (B) from three towers (34.6) uses conditional independence only on the complement of the truncation events, and
+    conditions on a fine slab across all scales, which is not the thin-shell adaptation of 34.8.
+* Neither is an obstruction. Section 32's UV-TV status stands.
+
+**(2) Group 1 (35): three of the four points close; point 1 does not.**
+* **Point 1** ("cap reached implies irregular `W`") fails as written at step 3. The claim that the annulus between the
+  failing loop and the coarse square avoids the deep set `H_0` is not justified. The square can contain other
+  piercings of `H_0`, which can cancel the flux, and that is exactly the difficulty of the old "fractions sum to 1"
+  sketch. Step 2 also assumes the failing loop is planar. A repair is visible (rectangular test loops and the minimal
+  coarse rectangle), but it changes the twist-free test, whose use in the filling's data bound must then be
+  re-derived. **GAP**: point 1 stays a sketch.
+* **Points 2-4 close:**
+  * point 2 by the citation, consistent with REVIEW-2's earlier check;
+  * point 3 because release requires condition (i) by definition, and merging only produces larger carried regions;
+  * point 4 as a corollary of point 3.
+
+No FATAL; one GAP.
+
+### (1) Section 34, item by item
+
+* **34.1, one coupling:** correct. `T` is independent of `v`, (K) holds uniformly in the centre, and in finite volume
+  one `n` serves all `x`.
+* **34.2, link truncation:** correct. `P(L_j) <= |Λ''_j|^{-C_2}`, and the diameter bound is `N_j (M R_j + s_max)`.
+* **34.3, units:** correct. Inter-polymer links have `d(X) >= 100 R_j` `M`-cubes, so `e^{-100 kappa R_j}` beats `p^2`.
+* **34.4, van den Berg-Maes with links:** correct. The cell state is the set of objects meeting the cell, and links are
+  connected objects, so chains stay contiguous. This is the form of Follow-up 12 (3).
+* **34.7, NITs and 34.8, domain class:** folded in as asked.
+* **34.5, the last kernel (NIT).** "`K_{-1}` is deterministic in the gauge-invariant content, except for a uniform
+  choice among tied fillings" is not right, for two reasons:
+  * **Not only ties.** With the **local** decoder (H2), `tau -> tau'_0` is not injective modulo ties. Closed positive-gain
+    sets that leave `D_0` are not chosen (the fidelity loss of Follow-up 5). So, given `(V_0, tau'_0)`, there are
+    alternatives `tau + Q`, with `Q` closed near the flips, that are not ties.
+  * **Not uniform.** The conditional law of `tau` given `V_0` is the Z2 gauge theory with couplings
+    `J_p(V_0) = (beta/2)|tr U_p|` (1.1). So alternatives, tied or not, are weighted by `exp(Sum J_p tau_p)`, not chosen
+    uniformly.
+  * **The coupling argument is unaffected.** On agreeing data the two conditional laws coincide, so they are coupled
+    identically. Only the locality radius changes: the alternatives `Q` must lie in the agreement set.
+  * `Q` meets the flips and is Peierls-priced, so truncate its size and add that radius to `a_{-1}`.
+  * Gauge-invariant `F` of bounded extent is contractible, so the global `H^1` lift classes play no role.
+* **34.6, (B) from three towers (NIT).**
+  * **Conditional independence "on the complement of the truncation events"** is not a property of a measure. The
+    block map (decoder components, excision envelopes) can cross the slab on rare events, and then `F_l` couples the
+    two halves.
+    * The correct form: replace the block map by a decomposed one that cuts structures at `P`. The two coincide on the
+      complement of the truncation events, so `law(Y^m)` equals `mu(. | F_l)` up to total variation
+      `P(truncation | F_l)`.
+    * In `L^1` over `F_l` that is the annealed truncation bound. The text's `+2||f|| ||g|| P(truncation events)` is the
+      right term; say why.
+  * **The conditioning on fine slab data `Y_P` runs through all scales.** The negative half's law given
+    `(F_l, Y_P = y)` is used at every scale of its tower. That is a multi-scale use: a half-space with **sampled** fine
+    data on a slab.
+    * It is not a frozen region in the bad sense. Every block meeting `P`, at every scale, is a source and needs no
+      bound. Components touching `P` are joined to the source. Away from `P`, the specifications and the local
+      ratios of H2 (24.1) coincide with the unconditioned ones. The annealed bounds average over the sample `y`.
+    * But it is not the single-step thin shell of 34.8.
+    * Name it separately: "the per-scale inputs, used only away from a slab of sampled fine data, are those of the
+      unconditioned law". This is checkable from the locality of each input, and it belongs next to the shell
+      adaptation.
+
+### (2) Section 35, the four sketch points
+
+#### Point 1: cap reached implies irregular `W`. **Not closed (GAP).**
+
+* **Step 2 assumes a planar loop.** The test (FILL 2, restated in 35.1) takes **every** closed lattice loop
+  `gamma ⊂ O(H)` with `|gamma| <= lambda`. A failing loop can be non-planar. "Translate `gamma` transverse to its
+  plane" then has no meaning, and no homotopy within the non-deep region to a planar loop is given.
+* **Step 3: "the fine annulus between `gamma'` and the translates of `Γ'` ... avoids `H_0`" is unjustified.**
+  * `Γ'` bounds a coarse square of side `≈ 2 lambda/L + 2` coarse units centred at `gamma'`, that is about `2 lambda`
+    fine units. Its points can lie up to `~ lambda` from `gamma'`, and
+    `lambda = 8(l_max + 2) > l_max + 1`, the guaranteed distance from `gamma'` to `H_0`.
+  * So `H_0`, an extended, possibly curved, multiply-piercing structure (the cap was reached precisely because it does
+    not bound nearby), can pierce the coarse square **outside** `gamma'`.
+  * Then `Hol(Γ'_x)` is the ordered product of the fluxes of all piercings in the square, not just `gamma'`'s, and can
+    be `≈ 1` by cancellation, so steps 3-5 give nothing.
+  * The blocks used by Balaban's average along `Γ'` can also meet `H_0`, where the fine field is not near pure gauge,
+    and step 4's estimate fails.
+  * This is the same obstruction as the old "nonabelian fractions sum to 1" sketch of FILL 0.2, which 35.1 says it no
+    longer needs.
+* **Steps 1, 5 and 6 are fine:**
+  * the uniform threshold `C_tw r0 lambda^2`;
+  * the exact coarse Stokes inequality for a simply connected union of plaquettes (ordered product of conjugated
+    plaquette holonomies, unitary invariance);
+  * the arithmetic `C_tw r0 L^2/64` fixed against `eps_{k+1} -> 0`.
+  
+  Step 4's error `C r0 L^2 |Γ'|` against `theta/4` is also right, **if** the blocks along `Γ'` avoid `H_0`.
+* **A visible repair.**
+  * Restrict the twist test to **planar rectangular** loops in coordinate planes. Then the failing loop is a rectangle;
+    translate it into a coarse plane by `<= L` per transverse direction (the swept surface stays `>= l_max + 1 - 2L`
+    from `H_0`); and enclose it by the **minimal coarse rectangle**, not a square.
+  * The annulus and Balaban's averaging blocks then lie within `~ 2L` of the loop. They avoid `H_0` if
+    `l_max >= 5L` (`C_1 >= 5`), so steps 3-6 go through.
+  * **But** the filling's data bound (22, 27.8, 29) uses twist-freeness to conclude that the data on `O(H)` are near a
+    pure gauge in local gauges. That needs **all** loops in `O(H)` that encircle `H`, and the shell `O(H)` follows `H`'s
+    shape, so an encircling loop need not be homotopic within `O(H)` to a rectangle.
+  * So the repair needs either a separate argument that rectangle-twist-freeness implies the data bound (for example,
+    on the `l_max`-layer-thick shell, which is rounded at scale `l_max`, by a homotopy through the shell), or two tests:
+    all loops for the filling, rectangles for the cap. In the latter case it must be shown that a hole failing the
+    all-loop test but passing the rectangle test cannot reach the cap at regular `W`.
+* **Severity: GAP** (the closure claimed in 35.0 and 35.1 does not hold as written). The repair looks feasible.
+  Confidence high on step 3, medium on the difficulty of the repair. Until then, M1-PLAN 0 should keep point 1 as a
+  sketch.
+
+#### Point 2: the footprint-weighted lifetime. **Closed by citation.**
+
+* [V] (1.80)-(1.81) control `K <= n0 - j + R_j`, with `n0` the shrinking time and costs geometric in the shrinking
+  linear size. REVIEW-2 accepted this reading earlier (R10-SCOPE 1).
+* R2's long-lived sheets are carried within their own shrinking images, so no new large field `S(Z) \ Z` is created.
+  Their few-cube phase must fit in `R_j`, which is `R2-REPAIR.md`'s claim, accepted earlier.
+* The large-labelled branch is empty by point 3. Fine.
+
+#### Point 3: per cube or per component. **Closed.**
+
+* **Does condition (i) bound every released component, given merging?** Yes, by the structure of the R-operation.
+  * Balaban applies it only to components of `Z` that satisfy (i) and (ii) ([IV] Sect. 1; [V] p. 381, "components of a
+    large field region `Z_j` which satisfies the conditions (i), (ii)"; p. 384; (1.89), "the domain `X` in (1.71)
+    satisfies the assumption ... with `K = 0`").
+  * Among those, the decomposition of unity then picks the released (first-class) ones.
+  * Merging (1.84)-(1.88) produces **larger carried** regions. They are not processed until their image `S^K(Z)`
+    satisfies (i), that is, until they have shrunk into a `100 M R`-cube. So every released component lies in a
+    `100 M R_k`-cube, merged or not.
+  * The Mayer polymers `X'` of (1.90) can be larger, being unions of released components joined by localisation
+    domains. But label factors are attached **per released component** (4.2, 11.1), and the first-order bound
+    before (1.73) is per operation `T_k(X)`. So only component sizes matter.
+* **Caveat (wording).** Condition (i) is quoted as "contained in a cube of the size `64 M R` (resp. `100 M R`)". The two
+  constants appear in different places; use `100` throughout.
+* With `|X| <= 100^d` cubes, `delta_X <= 100^d delta_k` under either reading. The reading question is moot. Correct.
+
+#### Point 4: labelled components above `eps_*`. **Closed, given point 3.**
+
+* `100^d delta_k <= eps_*` is a condition on `gamma0(L)`, taken after `M` (since `delta_k ∝ M^d R_k^{d+2} ...`). Add it
+  to `S1-INDUCTION.md` row 8 with that order.
+* Unreleased labels are indicators inside `T`, covered by the carrying and the slack `psi`.
+* After release, the marginal steps of 13.1 number `<= log_L(100) + O(1)` (component at most `100` cubes across).
+  Correct.
+
+### Findings, one line each (follow-up 13)
+
+* **GAP:** point 1 ("cap reached implies irregular `W`", 35.1) is not closed.
+  * Step 3's annulus inside a coarse square of side `~ 2 lambda` can contain other piercings of `H_0` (they are only
+    `l_max + 1 < lambda` away), which can cancel the flux: the old "fractions sum to 1" difficulty. Balaban's averaging
+    blocks along `Γ'` can meet `H_0`.
+  * Step 2 assumes a planar failing loop.
+  * Repair route: rectangular test loops and the minimal coarse rectangle, with `C_1 >= 5`. But the filling's data
+    bound then needs re-deriving from rectangle-only twist-freeness, or a two-test scheme.
+  * Keep point 1 as a sketch in M1-PLAN 0.
+* **Closed:**
+  * point 2 by citation of [V] (1.80)-(1.81);
+  * point 3, since release requires condition (i), so every released component lies in a `100 M R_k`-cube regardless
+    of merging, and labels attach per component, not per Mayer polymer;
+  * point 4 as a corollary, with `100^d delta_k <= eps_*` added to the `gamma0` row after `M`.
+* NIT (34.5): with the local decoder the last kernel has non-tie alternatives (closed sets leaving `D_0`), weighted by
+  the Z2 couplings `J_p(V_0)`, not uniform. The coupling argument stands; truncate the alternatives' size and add it
+  to `a_{-1}`.
+* NIT (34.6):
+  * write the conditional independence through a decomposed block map, equal to the true one off the truncation
+    events, so that the error is a total-variation term;
+  * name the slab conditioning (sampled fine data on a slab, with all per-scale inputs used only away from it) as an
+    adaptation of its own, distinct from 34.8's thin shells.
+* UV-TV (section 32) stands at paper level, given (c) and the named citation-level readings, with these two NITs added.
+
+### Follow-up 13, extension: section 36 (group 2), section 37 (the final verdict for all of M1), and the Lean for 28
+
+Read: `../m1-tools/UV-TV.md` 36 and 37; `../m1-cds/NOTE.md` and `axioms.log`; the declarations of
+`formal/ProofPhase/OneBox/CouplingDS.lean` (not rebuilt). Re-read [III] p. 261 ((2.34)-(2.39)) and [I] (1.11)-(1.16) in
+the text layer.
+
+#### Verdict on the extension
+
+**The final verdict (37) is not accurate as a whole**, for one reason inherited from above: it places R3 ("cap reached
+implies irregular `W`") and S1 at paper level and states "**no item is at sketch level**". Point 1 of 35 is not
+closed. So R3, and S1 through E7.J at regular `W`, keep one sketch input.
+
+The rest of the table is placed correctly, with four corrections:
+1. **(P2) (36.1):** the "range of `A'`" reading is very probably a misidentification, mine included.
+   * In [III] (2.39) (which [V] follows), `A'` is the **complex**, `g^c`-valued deviation of size `<= alpha_1`
+     (`U = U' U''`, `U'' = exp iA'`). The factor `(alpha_0 + alpha_1)` on [V] p. 379 then comes from `J` and `A'`, not
+     from `alpha_0`-sized real deviations.
+   * The conclusion survives without any reading. `A'` complex contains real directions up to `alpha_1`, and chaining
+     through `alpha_1`-balls between real regular bases gives (P2) on the small-field set. So (P2) becomes **citation +
+     paper (chaining)**, and the reading can be dropped from the list.
+2. **Adaptation 3 (36.3):** superseded in its covariance part, correctly. What remains is Balaban's local cluster
+   expansion with **one extra small local insertion** `e^{L_l}`. That is within his class of local analytic terms, but
+   it is a citation-level use, not a bare citation. Say so.
+3. **A missing adaptation:** the slab-conditioned half-space tower of (B) (34.6), per the NIT above. Add it to 37.2's
+   list, or fold it into "Balaban on shells" with an accurate description.
+4. **Lean status:** the coupling-form theorem is now done (`CouplingDS.lean`, 37 theorems, standard axioms). Update
+   37.1's row and 37.2 item 1.
+
+**The Lean matches 28's statement**, with simplifications that only drop or weaken hypotheses (stronger theorem) or
+are harmless for the application. Detail below.
+
+No FATAL. The GAP is the one already found (point 1), now also a misplacement in 37.
+
+#### Section 36, item by item
+
+* **36.1, (P2): conclusion holds, the stated reading is wrong in its identification.**
+  * [III] p. 261: "(i) `U = U' U''`, `U'` has values in the group `G` ... (iii) `U'' = exp iA'`, `A'` has values in the
+    algebra `g^c`" ((2.39), OCR), with `|A'| <= alpha_1`-type bounds.
+  * [I] (1.15)-(1.16) show `J` as a separate auxiliary variable of the pair `(U, J)`, with bounds in `alpha_0`.
+  * So on [V] p. 379, "first order in `A'`, `J`" means first order in the complex deviation (size `alpha_1`) and in
+    `J`. The printed `(alpha_0 + alpha_1)` is consistent with that. 36.1 item 2's "`A'` = the real deviation of size
+    `<= alpha_0`" does not follow. I supported that reading in Follow-ups 7 and 8 on the strength of the factor alone;
+    that was too quick.
+  * **What still holds, as citation + paper:**
+    * (1.73)-(1.74) with `F = 1_l >= 0` give the relative stability around **every** real regular base `U` (curvature
+      `<= alpha_0`, which needs `q0 >= p0` so that small-field configurations are bases), for complex deviations
+      `|A'| <= alpha_1`, real directions included. Since p. 379 says `T_k(X)` **is represented** with the extra term
+      `Delta`, the inequality `|T^l(U, J) 1 - T^l(U, 0) 1| <= (e^{sup|Delta|} - 1) T^l(U, 0) 1` follows. Correct.
+    * To compare a small-field `V` with the flat configuration, chain through real regular bases, in steps of size
+      `<= alpha_1`, along a path inside the patch. That takes `<= C M R_k eps_k/alpha_{1,k}` steps, a polylog. The
+      total drift is `polylog x 100^d delta_k -> 0`. Paper.
+  * **Level: citation + paper.** No reading is needed. Replace 36.1 item 2 and drop "the range of `A'`" from 37's
+    readings.
+* **36.2, the localisation of `L_l ∘ U_bg`: citation, fine.**
+  * The operation of [V] (1.59)-(1.63) needs only analyticity and boundedness on the domain. `L_l` has both: `Phi_l` is
+    non-vanishing by (P2), and `L_l` is bounded by the chained drift.
+  * Covariance is not used.
+  * NIT: "[IV] p. 805 of the text layer" is a line number, not a page. Cite the equation.
+* **36.3, the indexed non-covariant term: covariance part superseded by 12.2, fine.**
+  * 12.2 handles the constant by hand, the absence of a linear term by R8, and the irrelevant point term by its
+    scaling. So covariance is used nowhere.
+  * The step `<e^{L^{(k)}}>_B` is the fluctuation integral **with** the other E-terms. The clusters joining the label
+    to them go into `L^{(k+1)}`, and the clusters avoiding it are Balaban's covariant ones. That is his local cluster
+    expansion with one extra small (`<= eps_*`), analytic, local insertion.
+  * Standard, and within his class of local analytic terms, but a citation-level use rather than a verbatim citation.
+  * **Level: paper on a citation-level use of the cluster expansion.**
+* **36.4, R10's normalisation: superseded by (c) and (P2) with `log beta`, correct**, as checked in Follow-ups 9-10.
+
+#### Section 37, levels checked row by row
+
+* **Correct as placed:**
+  * law preservation (Lean);
+  * blocking (paper; the definition of the blocking does not depend on the cap proof);
+  * R1 (paper + Lean);
+  * R2 (paper + Lean, lifetime by citation);
+  * R4 (paper + Lean slicing);
+  * R5 (citation);
+  * R12, R6, R8 (paper);
+  * R7' (citation, exponent by a rank count);
+  * labels (paper on citations, modulo 36.1 and 36.3 above);
+  * the count (paper, rate external);
+  * (c) (re-proof, checked three ways);
+  * R10 (paper with (c));
+  * N-2 (paper, given (c) and the named readings and adaptations);
+  * Lemma C and H3 (paper, constant-size inputs);
+  * `kappa` large (citation);
+  * (a) and admissibility (citation-level readings);
+  * Balaban on shells (adaptation);
+  * [I] Theorem 2 (external);
+  * P4 and the interface (separate).
+* **Overstated:**
+  * **R3**, "cap reached implies irregular `W`" at paper level: not closed (Follow-up 13, point 1). It should read
+    "paper, with one sketch input (35.1, step 3)".
+  * **S1**, "the sketch points closed (35)": E7.J is needed only at regular `W` because a capped hole lies in an
+    irregular-`W` fibre. That is point 1, so S1 inherits the sketch input.
+  * **"No item is at sketch level"**: false while point 1 stands.
+* **Understated or misnamed:**
+  * "the range of `A'`" should be removed (36.1, above);
+  * the slab-conditioned tower should be added (34.6);
+  * Theorem A_good: Lean is now done.
+* **R9** ("citation with the change table"): acceptable, since Balaban's series is written for a compact gauge group
+  `G` ("`G`-valued" throughout [V]). But the scale-0 to scale-1 transition (SU(2)-regular small field at scale 0,
+  SO(3)-regular after) is an M1 construction (`REVIEW3-RESPONSE.md` 1.2), so that row is "citation + paper".
+  Minor.
+* **The one-line verdict.** "Every row is proved at paper level, in Lean, or by citation, given the list above" should
+  become: "every row except one is; the exception is R3's 'cap reached implies irregular `W`' (sketch, repair route
+  named)". The rest of 37.2 then stands, with 1-4 of the extension verdict.
+
+#### The Lean for 28 (`OneBox/CouplingDS.lean`, `m1-cds/NOTE.md`)
+
+* **The statement matches 28.1-28.2.**
+  * `CouplingSpec` carries:
+    * the supports, with `full₀`;
+    * (S) as `q_local` (coordinates off `B b` kept a.s., for `sigma ∈ Ω₀`), `q_dlr` (`mu.bind (q b) = mu`) and
+      `q_supp`;
+    * (C) as the `Kernel` fields `Q`, `Q_markov`, `Q_fst`, `Q_snd`, with marginals required on `Ω₀ × Ω₀'`.
+  * (I) and (K) are the hypotheses `hI`, `hK` of `phi_T_le` and `couplingDS_bound`, verbatim:
+    `Sum_{y ∈ B b} v y Q(...).real(disagree y) <= Sum_{z ∉ B b} 1{sigma_z != sigma'_z} K b z v z`, and
+    `Sum_{b ∈ good, z ∉ B b} K b z <= gamma coverage z`.
+  * `T` is the uniform mixture `(card β)^{-1} • Sum_b pi.bind (Q b)`, as reviewed in Follow-up 10.
+  * The conclusions are 28.1's, verbatim (plus the support of `pi`).
+  * The one-coupling corollary is `exists_iter_forall_le`, for a finite family of weight choices: the 34.1
+    requirement.
+* **The simplifications (NOTE 3), checked:**
+  * **One single-site space `S`.** Harmless. The application's mixed site types (SO(3) bonds, Z2 plaquette bits, Haar
+    noise) can be packed into one standard Borel `S`, for example a sum type with a dummy value.
+  * **`[MeasurableEq S]`** is the measurable-diagonal NIT of Follow-up 10. It holds for standard Borel `S`.
+  * **Dropped hypotheses:**
+    * "`q_b(sigma, .)` depends only on `sigma` off `B_b`";
+    * `q b` Markov off the supports;
+    * `K_b >= 0`;
+    * `v > 0` off `A`.
+    
+    Checked: none is used in the proof. `K_b`'s sign is not needed, since `Sum_b d v K_b = d v Sum_b K_b` is bounded
+    by (K) directly. Dropping them makes the theorem stronger.
+  * **Hypotheses only on the supports.** As in 28 and Follow-up 10.
+  * **What is outside the module, correctly stated as open** (NOTE 5):
+    * the construction of the actual block couplings `Q b` (H3, Lemma C) as measurable kernels;
+    * the verification of (I) and (K) for the UV-TV block family and the instantiation rules;
+    * the covariance form (B).
+    
+    These are the 28.3 instantiation, not the generic theorem.
+* **Axioms:** every listed theorem depends on `propext`, `Classical.choice` and `Quot.sound` only (`axioms.log`), with
+  no `sorry`. I did not rebuild.
+* **Level for 37:** Theorem A_good (coupling form) is **Lean**, generic. Its instantiation (28.3) is paper.
+
+#### Findings, one line each (Follow-up 13 extension)
+
+* No FATAL.
+* **GAP (carried from point 1):** 37 overstates R3 and S1 and claims "no item is at sketch level". "Cap reached
+  implies irregular `W`" stays a sketch until 35.1 step 3 is repaired.
+* **Correction (my earlier support included):** in [III] (2.39), `A'` is the complex deviation of size `alpha_1`, not
+  an `alpha_0`-sized real deviation.
+  * (P2) still holds as citation ((1.73)-(1.74), `F = 1_l`, around every real regular base) plus paper chaining
+    through `alpha_1`-balls.
+  * Drop "the range of `A'`" from the readings.
+* **Level wording:**
+  * adaptation 3 uses Balaban's cluster expansion with one extra small local insertion: citation-level, not a bare
+    citation;
+  * R9's scale-0 transition is paper.
+* **Missing from 37.2:** the slab-conditioned half-space tower of (B) (34.6), as an adaptation of its own.
+* **Lean:** `CouplingDS.lean` matches 28.1-28.2. Its simplifications (single `S`, `[MeasurableEq S]`, dropped unused
+  hypotheses, everything on the supports) are harmless or strengthen the theorem. Update 37's row to Lean (generic),
+  with the instantiation (28.3) on paper.

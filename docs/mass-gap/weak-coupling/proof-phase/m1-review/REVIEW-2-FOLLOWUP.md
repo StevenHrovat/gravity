@@ -1991,3 +1991,117 @@ Corrections:
 | 35 points 2, 3, 4 | **hold** |
 | 32 final status | accurate after the (B) fix, the `K_{-1}` NIT and the point-1 caveat |
 | **N-2** | closed at paper level **once (B) is rewritten by telescoping**; until then the (B) half rests on an unlisted hard step |
+
+### Fourteenth follow-up, extension: section 36, section 37 (final verdict), and the CouplingDS Lean
+
+Read for this: `../m1-tools/UV-TV.md` 36 and 37 (the same text is in `M1-PLAN.md` 0), `../m1-cds/NOTE.md`, and the
+signatures of `formal/ProofPhase/OneBox/CouplingDS.lean` as listed there. The Lean was not rebuilt; `m1-cds/axioms.log`
+was taken as given.
+
+#### Verdict (extension)
+
+* **Section 36 (the four unchecked adaptations) holds,** at the levels it gives:
+  * 36.1, (P2): citation plus one citation-level reading (the range of `A'`);
+  * 36.2, the localisation of `L_ℓ ∘ U_bg`: citation, being Balaban's operation applied to one more function of his
+    class;
+  * 36.3, the indexed label term: paper (12.2) on the local cluster expansion;
+  * 36.4, the normalisations: superseded by (c) with (P2) including `log β`.
+* **Section 37's final verdict places three items at a stronger level than the text supports:**
+  1. **N-2 / Lemma UV-TV at "paper".** Its (B) half, as now written (34.6), rests on Balaban's induction for a
+     half-space law conditioned on bare slab content. That is an unlisted step of the frozen-region kind (fourteenth
+     follow-up, section 1). It becomes "paper" once (B) is rewritten by the telescoping route.
+  2. **R3 at "paper", including "cap reached implies irregular `W`".** Step 3 of 35.1 has a geometric gap (fourteenth
+     follow-up, section 3). FIXABLE, so it is not "paper" yet. The sentence "No item is at sketch level" is premature
+     until this and item 1 are fixed.
+  3. **R9, the SO(3) carry-over, at "citation".** It changes the small-field rule (SU(2)-regular at scale 0,
+     SO(3)-regular above, label factors in `Form_k`). It applies [I]-[V], [12]-[16] to the adjoint field with a closed
+     Z2 layer. Unless Balaban states his results for a general compact group and for this small-field rule, which I
+     have not seen in the texts read, this is a citation-level **adaptation**, and belongs in 37.2 next to the shell
+     adaptation. Low risk, but the level should be stated correctly.
+* **The CouplingDS Lean matches what 28.3 must supply,** with two points for the instantiation:
+  1. the single site space `S`: the state has bonds, plaquette labels and noise, so these must be bundled into
+     identical per-site spaces;
+  2. the block couplings `Q` are taken as `Kernel` fields, so their measurable existence (33.4) has to be supplied by
+     the instantiation.
+  
+  Neither weakens the theorem.
+* No FATAL finding. **GAP:** unchanged from the fourteenth follow-up (the (B) construction of 34.6); the verdict should
+  not say "complete" before it is fixed.
+
+#### 1. Section 36
+
+| item | assessment |
+|---|---|
+| 36.1, (P2) | [V] p. 379 expands "to first order in `A'`, `J`" with the factor `(α_0 + α_1)`. [I] (1.11)-(1.12) define the domain `U = U' U''` with a real regular part and a complex part. The positivity argument with `F = 1_ℓ` gives (P2) on the whole domain. Bounded domain (35.3); `q0 >= p0` for the flat base. **Agreed: citation plus one citation-level reading** (that `A'` ranges over the real deviations). The fallback (chaining through balls at a polylog loss) is plausible. |
+| 36.2, localisation of `L_ℓ ∘ U_bg` | Balaban's operation ([V] (1.59)-(1.63), pp. 374-376) needs only analyticity and a bound on his domain. `L_ℓ` has both (36.1) and lives in a `100 M R`-cube. **Agreed: citation**, applied at each later scale. |
+| 36.3, indexed non-covariant label term | Covariance enters Balaban's analysis only in identifying constants and the coupling renormalisation. The label term's constant is moved into `a_ℓ` by hand; it has no linear part (R8), and its quadratic part is an irrelevant point term tracked by 12.2. What remains used is that Balaban's **local** cluster expansion of the fluctuation integral accepts one more small analytic local factor `e^{L_ℓ}`, with `|L_ℓ| <= 2 ε_*`. That is mild, and properly cited as a local expansion. **Agreed: paper on citations.** |
+| 36.4, normalisations | the slack `ψ` with (P2) including `(3/2) log β` per site pays the top variables' Gaussian normalisation and the `O(1)`-per-site small-field losses. (P2) follows from (P0). This is what my tenth follow-up asked. **Agreed: superseded by (c).** |
+
+#### 2. Section 37: is anything placed too high?
+
+**Items whose level I agree with:**
+* law preservation (Lean);
+* R1, R2, R4, R5, R12, R6, R7′, R8;
+* labels;
+* the count (with the external rate);
+* (c) as a re-proof;
+* R10 (`L^1`, via (c));
+* Lemma C and H3 (constant-size inputs);
+* the coupling-form theorem (paper, and now Lean);
+* `κ` large (citation, [I] Theorem 3);
+* the three readings;
+* the shell adaptation;
+* the external and separate items.
+
+**Items placed too high:**
+
+| item | stated level | supported level | why |
+|---|---|---|---|
+| N-2, Lemma UV-TV | paper (given (c), readings, shell adaptation) | **paper for (A); (B) rests on an unlisted step** | 34.6 conditions the negative half-space on bare slab content and couples it by the tower of 30. The conditioned reverse kernels are `K_j` reweighted by `P(Y_P = y | X_j)`. Their far-locality is the density-ratio (frozen-region) statement at every scale, which is not covered by the shell adaptation (one step, small-field data). Fix: the law of total covariance along the scale filtration (fourteenth follow-up, section 1). With that fix, "paper" is right. |
+| R3 (and through it S1's "sketch points closed") | paper | **paper except one step (FIXABLE)** | 35.1 step 3 assumes the coarse square around the twisted loop avoids all other deep structure, but other components are only guaranteed `ell_max + 1` away, while the square reaches about `λ = 8(ell_max + 2)`. Fix: merge holes within `4λ`, plus a planar replacement in step 2. |
+| R9, SO(3) carry-over | citation (with change table) | **citation-level adaptation** | The table changes the small-field definition (per scale), adds label factors, and replaces SU(2) by SO(3) with a Z2 layer. Balaban's theorems are used outside their stated setting, unless he states them for general compact groups and arbitrary small-field rules. List it in 37.2 item 5 next to the shell adaptation. |
+
+**"No item is at sketch level"**, and "M1 has a complete argument", should wait for the two fixes (the (B) telescoping
+route, and 35.1's merge range). Both are small and use nothing new, but until they are written the statement is ahead
+of the text.
+
+**What 37.2 should then read:**
+* (1) Lean;
+* (2) one re-proof, (c);
+* (3) citations;
+* (4) three readings;
+* (5) **two** adaptations: shells, and the SO(3) carry-over (R9);
+* (6) external;
+* (7) separate.
+
+#### 3. The CouplingDS Lean against what 28.3 must supply
+
+| Lean field or hypothesis | what the instantiation must supply | match? |
+|---|---|---|
+| `μ`, `μ'` on `ι → S`, `[Fintype ι]`, one `S` | the pattern-conditioned scale-`j` laws `μ_ω`, `μ'_{ω'}` of the gauge-fixed state on a finite torus | **yes, with bundling.** The state has SO(3) bond variables, closed Z2 plaquette labels and swallowed-bond noise. These must be packed into one identical per-site space `S` (for example sites = cells or blocks, `S` = the product of their contents), and the blocks must be unions of these sites. Routine, but it constrains 28.3's sites, which are currently "scale-`j` bonds". |
+| `[MeasurableEq S]` | a measurable diagonal | **yes:** `S` is a finite product of SO(3), Z2 and Haar noise spaces, which is standard Borel. Used only for measurability of `{p.1 x != p.2 x}`. |
+| `Ω₀`, `Ω₀'`, measurable, full measure | the supports given by the patterns' characteristic functions | **yes:** with smooth cut-offs, take `Ω₀` = the closed support set; its boundary has measure zero. |
+| `q b`, `q' b` kernels; `q_local` (off-block coordinates kept a.s., on `Ω₀`); `q_dlr` (`μ.bind (q b) = μ`); `q_supp` | the block specifications of `μ_ω` (regular conditional laws on standard Borel spaces) | **yes.** DLR invariance is the defining property of a regular conditional law. Locality on the support holds by construction. Support preservation holds because the characteristic functions are part of the specification. The Lean does **not** ask that `q b σ` depend only on `σ` off `B b`, nor that it be Markov off the support. Weaker hypotheses, so the instantiation has less to show. |
+| `Q b` a `Kernel`, Markov, with marginals `q b σ`, `q' b σ'` on `Ω₀ × Ω₀'` | for good boxes, H3's far-to-near (Goldstein) coupling; for composite boxes, Lemma C's coupling (maximal on the inner data, then the collar); for source blocks, any coupling (for example the product) | **yes, but measurability must be supplied.** The Lean takes `Q` as a field, so measurability in `(σ, σ')` is assumed. 33.4 claims it from disintegrations along the tail σ-algebras on standard Borel spaces. That is correct in principle, but it is the one non-trivial ingredient the instantiation owes. For source blocks the product kernel is trivially measurable. |
+| `hI` (influence on good blocks, pairs in the supports) | H3 and Lemma C, with `K_b(z) = k_b(z) e^{λ E_b(z)}` and `v` centred at the target | **yes.** "Disagree" in Lean is exact inequality of site values. That matches the block-axial gauge fixed relative to the coarse configuration (19, "Gauge"), which is the same in both copies where the coarse data agree, as they do near good blocks. Good blocks must also have `ω = ω'` nearby and no links. That is the classification of 28.3 and 34.7. |
+| `hK` (column condition, per site, with coverage) | 22.3's block family: good boxes overlapping collars, composite boxes with multiplicity `n_W`, `ell_B >= C (log p/m)^{2d+1}/γ^2` | **yes:** the per-site form is exactly 22.3's condition. |
+| `srcWeight` over `univ \ good` | the source blocks: inherited disagreement, pattern disagreements, outside `Λ''_j` (truncation events as a prior case split, 33.1) | **yes.** |
+| `exists_iter_forall_le` (one iterate for finitely many weight choices) | 34.1: one coupling for all centres `x ∈ Λ''_j` | **yes**, which is what 30.2's union bound needs. |
+
+**Conclusion on the Lean:** it states 28.1-28.2 faithfully, with slightly weaker hypotheses than the paper (no
+"depends only on `σ` off `B_b`", no Markov property of `q` off the support). The instantiation owes two things:
+1. bundling the heterogeneous state into one site space, and making the blocks unions of sites;
+2. constructing the block couplings `Q` as measurable kernels (33.4).
+
+Neither is a gap, but item 2 should be recorded as the instantiation's main obligation.
+
+#### Status (extension)
+
+| item | status |
+|---|---|
+| 36.1-36.4 | **agreed** at the stated levels (one citation-level reading in 36.1) |
+| 37, N-2 | **placed too high** until (B) is rewritten by telescoping (fourteenth-follow-up GAP) |
+| 37, R3 / 35.1 point 1 | **placed too high**: FIXABLE (merge range `4λ`, planar replacement) |
+| 37, R9 | **placed too high**: citation-level adaptation, not plain citation; add it to 37.2 |
+| 37, "no item at sketch level" / "complete" | premature until the two fixes are written |
+| CouplingDS Lean vs 28.3 | **matches**; the instantiation owes bundling into one site space and measurable block couplings `Q` (33.4) |
