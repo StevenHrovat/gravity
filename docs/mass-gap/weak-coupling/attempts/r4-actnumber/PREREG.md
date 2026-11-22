@@ -432,3 +432,22 @@ PASS on the first run. New bench: **1.47 h** for the plan (the bench now also ti
 plan reruns **unchanged** — the points cut for time in the post-review amendment stay cut, and `-AddendumW` stays off (as at the
 restart before the bench); restoring either would be a new pre-registration. The first counted runs are watched against their bench
 lines. The old code is kept as `actnumber_old.py` for the record.
+
+## Photon gate failed on the rerun, and diagnosis (2026-11-22, coordinator; no SU(2) run started, no SU(2) data exist)
+
+Rerun after the speed fix (bench 1.46 h): `PHOTON GATE FAILED (not every U(1) point counted)` at 12:06; the queue stopped by the
+rule. L = 4, 6 counted (z = 0.686(18), 0.540(13)); L = 8, 10 not counted on **cold = hot**: cold-start chains E = 0.0831(11), 0.0679(5),
+hot-start chains 0.0981(67), 0.0872(60) (`runs-gpu/photon_gate.log`). The cold chains' spread is about ten times smaller than the
+hot chains'. (Reported, not a separate verdict: L = 6 lies about 0.14 below the mean of the four, close to the flatness limit.)
+
+Two diagnostic runs, not counted, not part of the plan (`runs-gpu/diag/`):
+- **old code** (`actnumber_old.py`), L = 8, same seed: cold 0.0835(10), hot 0.0983(73), the same split → **not a speed-fix artefact**;
+- **new code**, L = 10, thermalisation 3000 sweeps instead of 300: cold 0.0673(3), hot 0.0867(68), the same split → **not short
+  thermalisation**.
+
+Reading (coordinator, likely but not verified): the cold chains (all links 1) stay in one state and the hot chains are spread over
+others, i.e. long-lived sectors of the U(1) theory in the Coulomb phase at β = 1.1 — plausibly the integer magnetic-flux sectors
+through the planes, which change only by monopole currents that are rare there. This contradicts the R2 assumption above that U(1)'s
+flux variable "has no barrier". The gate therefore cannot pass at L ≥ 8 as designed, for a reason in the control, not in SU(2).
+The queue stays stopped; the remedy (e.g. sector-resolved or sector-averaged U(1) control, or a different photon control) is a
+change of the pre-registration and is put to the owner.
