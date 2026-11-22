@@ -1058,3 +1058,14 @@ thread.
   The decoder's locality is a combinatorial fact about each configuration, plus a bound on cluster sizes from the bare action alone; it
   never assumes decay of the coarse law, which is what it is then used to prove. So locality is derived from the initial settings, not
   presupposed.
+- **What crosses the hand-over is quantized assertion (the owner, same day, on R10):** "Since we have already established that only
+  dualities or the assertion of existence can transfer, and I assume you mean the assertion here since we are in one-box territory, and
+  this assertion is quantized by the global definition of existence/the decoder, so the hand-over are probably just integer values of
+  'existence assertion', which maintains the boundary and transports the information like the extent in space, rotation etc. in the
+  loss." Reading (coordinator): this matches how R10 closed (`R10-SCOPE.md`). Reflection positivity of the bare measure gives a positive
+  transfer matrix, and every correlation between distant regions is carried only by its eigenstates: discrete states, each with energy
+  at least the gap, labelled by quantum numbers (momentum: extent in space; spin: rotation; parity and charge conjugation). For
+  gauge-invariant states of pure Yang–Mills the spin is an integer (glueballs, J^PC). So whatever question is asked of a region, its
+  answer reaches far away only through these quantized states, which is why a bound on a dense class of "existence-shaped" (analytic)
+  observables extends to every bounded observable: the spectral upgrade. The smallest energy among them is the gap, the smallest
+  assertion. Caveat: the energies themselves are not integer multiples of the gap; the integer labels are the quantum numbers.
