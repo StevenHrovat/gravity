@@ -588,3 +588,13 @@ Reading (coordinator; candidate):
 - **For the proof:** the corner in this language is "p(L) stays bounded away from 0 as L grows", i.e. the twist free energy stays
   bounded — Tomboulis' vortex criterion, whose small-L → large-L step stalled. What the reading adds is the two-sided structure: the
   reflection bound p ≤ ½ (proved, from reflection positivity) and a lower bound from "inward assertion must be possible" (open).
+
+## Mass gap = the arrow of causality exists (the owner, 2026-11-22, end of phase cycle 5)
+
+The owner: "In our reading mass gap = arrow of causality exists." Reading (coordinator): reflection positivity gives a positive transfer
+matrix T = e^{−H} (one step of Euclidean time). The mass gap m says T, restricted to everything orthogonal to the vacuum, is a strict
+contraction: after a time 1/m every correlation with the past has shrunk by the factor 1/e. That is a definite rate of forgetting the
+past, a built-in clock: **the owner's universal information tick 1/e has length 1/m** (the Compton time of the lightest glueball). Without
+a gap (light) correlations still fade, but only as a power law: no intrinsic tick, no definite rate, so no arrow with a clock. In the
+flip picture: 0 < p (the possibility space) makes the binary existence forget across each box; the gap is that this forgetting happens at
+a fixed rate per tick at every scale.
