@@ -330,3 +330,166 @@ Severity of the remaining G2 point: GAP (reduced). Confidence:
   only an upper bound (labelled domains have a hard core). That is fine for the count, but `Form_k`'s sum over
   `ell ~ tau'` must then be written as a hard-core polymer sum over labelled domains, not as a product over coarse
   bonds. It should go into the part-2 rewrite of `S1-CURRENT.md`.
+
+## Third follow-up
+
+Read for this: `../m1-tools/REVIEW3-RESPONSE.md` sections 7, 8, 9, 11 and 12; `S1-INDUCTION.md` in full; `M1-PLAN.md`
+0 (new verdict and the five sketch points); and the definition of `MassGapLoc` (`formal/ProofPhase/Objects.lean` 470-481)
+to check what the density argument has to deliver. REVIEW-3 and its follow-ups were not read. Nothing was built.
+
+### Verdict (third follow-up)
+
+* **G2: the carrying sum is resolved in substance.** The one-box contraction is the right mechanism: a gauge-invariant
+  term at a point with no linear coupling is irrelevant and shrinks by about `L^{-4}` per step. The bound on the
+  weight over a label's life no longer depends on `K`. One detail in the proof (the localisation tails) needs
+  tightening or one more condition on the constants.
+* **G1: resolved at the level it claims.** `S1-INDUCTION.md` is now an induction with an order of constants, not an
+  outline.
+* **The parity NIT: resolved,** but it introduces a small new inconsistency: a hard core that cannot persist across
+  scales.
+* **G4/N-2: relabelled, not resolved.** Section 8's framework is correct: density in the OS norm is enough, and it does
+  dispose of the sign question I raised about the erased vortices. But its key input, decorrelation of **bounded
+  measurable fine** observables given the block state, uniformly in the spacing, is the measurable ultraviolet transfer
+  that the author's own `SKETCH-STEPS.md` 2 identified as a new piece of analysis (the frozen-region problem, blueprint
+  P5.2). `M1-PLAN.md` 0 lists it as sketch point 4, alongside detail-level items; it is the remaining hard part of the
+  ultraviolet half.
+* **`M1-PLAN.md` 0's verdict is accurate as a list, but mis-weighted on point 4.** The proposed interface change
+  ("`MassGapLoc` on the OS closure") would weaken the target theorem unless point 4 is proved.
+
+No FATAL finding.
+
+### G1 (the one-step induction): resolved at the claimed level
+
+`S1-INDUCTION.md` gives:
+* the order of constants (11 rows, no circularity I could find);
+* `Form_k` with items F1-F7, including the window form (unreleased labels as indicators inside `T`);
+* the step as S0-S11, each with input, output, references and level;
+* the new E-row 7c (coarse plaquettes meeting holes, paid from the deep plaquette's own action `r0^2/(8 g_k^2)`,
+  attributed to at most `C(C_1)` coarse plaquettes, with the budget condition 8).
+
+That is what G1 asked for. Remaining NITs:
+* **7c "recursively":** if the finer field in the deep plaquette's blocks is itself irregular, (71) does not apply
+  directly. "Recursively" points to the earliest scale at which the structure was regular. That is the attribution of
+  R2 and should cite it.
+* **Stale sentence:** section 4 "Uniformity" still says "label factors grow sub-exponentially". After
+  `REVIEW3-RESPONSE.md` 12.2 they change by at most `e^{4 C eps_*}` in total.
+* **Hard core across scales (see the parity NIT below).**
+
+### G2 (labels, the carrying sum): resolved in substance; one detail
+
+* **What is fixed.** I checked the steps of 11.1, 11.2 and the lemma of 12.2:
+  * With the constant split off at a flat base (`a_ell = Phi_ell(flat)`, `L_ell(flat) = 0`), gauge invariance and the
+    absence of an `Ad`-invariant vector in `so(3)` remove the linear term.
+  * Cauchy estimates give `|Q(F)| <= N_k (|F|/alpha_1)^2`.
+  * The background curvature on the old box is about `L^{-2}` times the new one, so the quadratic part contracts by
+    about `L^{-4}`.
+  * Terms linear in `F_bg` vanish identically: any covariant adjoint vector built from the fluctuations is zero at
+    `F_bg = 0`.
+  * The per-step constant goes into `a_ell` and sums geometrically.
+  
+  So the linear-in-`K` term I found does not arise, and labels on the deepest skeleton are covered. Restoring R8 for
+  labels was the right move.
+* **Persistence rule (12.1).** Only remainders linked with the next skeleton are labels; a label is summed out when its
+  parent stops persisting. This is consistent with the law, since the index stops being a law variable exactly then,
+  and it only removes terms.
+* **Detail to fix: the localisation tails in step 6 of the lemma.**
+  * The proof says the tails of 11.3 "add `C e^{-kappa} N_k` to the weighted norm and are absorbed into `C`" of
+    `theta = C L^{-4}`. A contribution `C e^{-kappa} N_k` without the factor `L^{-4}` is absorbed only if
+    `kappa >= 4 log L + log C`, and that condition is not in the constants table of `S1-INDUCTION.md` 1.
+  * Most likely the tail terms also have no linear coupling and contract like the main term, and distances shrink by `L`
+    in the new units. But that has to be shown; as written the contraction factor is not established.
+  * Either prove the tails contract with the `L^{-4}` factor, or add the condition on `kappa` (or settle for any fixed
+    `theta < 1`, which is all the iteration needs) to row 6 or 8 of the table.
+* **Readings still to check** (already listed by the author as sketch point 3): whether Balaban's first-order expansion
+  at p. 379 covers real deviations (`A'`) over the next step's whole fluctuation domain, and per cube or per component.
+  Both bear directly on (P2) with a flat base, which 11.1 now uses.
+* **Large components above `eps_*`:** still sketch, as stated. Note that `eps_* <= L^{-4}/(2C)` is smaller than
+  Balaban's own threshold, so more components fall into this case unless `delta_k |X|` is small. At the bare end
+  `delta_k` is tiny; near `g_K = gamma` it needs `gamma <= gamma0(L)`, which condition 8 provides.
+
+Severity now: FIXABLE (tails) plus the named readings. Confidence: medium-high.
+
+### The parity hard-core NIT: resolved, with a new NIT
+
+`Form_k` (F6) now writes labels as a hard-core polymer sum and says the per-bond parity formula is only an upper bound.
+That is what I asked for. But the hard core ("pairwise disjoint, non-adjacent domains") cannot persist across scales:
+* labelled domains shrink to single cubes after release;
+* two labels released far apart at a fine scale can share a coarse cube later. Two bubbles on bare bonds of the same
+  coarse bond is the typical case, and exactly the parity-cancelling one.
+
+11.2 says released labels have "no hard core towards other polymers"; the same must hold between labels at later
+scales. Their factors simply multiply. State the hard core at the release scale only. NIT.
+
+### G4/N-2 (hand-over and density): relabelled, not resolved
+
+**R10 (section 7).** Real `t` only, so the conditional step stays positive; the mixture over `A`-clusters; the scale-`K`
+normalisation of the top variables paid from the large-field budget. This is the right structure. One FIXABLE point:
+* the text Mayer-expands "the attached boundary terms into connected clusters" and then asserts non-negative
+  activities;
+* Mayer activities (`e^{B} - 1` products) are signed;
+* define the `A`-cluster through the large-field domains and labelled domains only, and keep the boundary terms in the
+  exponential (positive). Their `t`-dependence is then the local `Phi_t` term, and every `rho_G` is non-negative as
+  claimed.
+
+**Density (section 8).** What is right:
+* the spectral upgrade needs density in the OS norm only, and `||.||_OS <= ||.||_{L^2}`;
+* the decomposition `||F - f_ell||_OS^2 = E[Cov(theta F, F | F_ell)] + E[E[theta R | F_ell] E[R | F_ell]]` is correct,
+  and `f_ell` drops out of the first term;
+* the erased vortices linking `C` but not `theta C` drop out by conditional decorrelation, and the only survivors are
+  crossing terms. So the comparison of `c0` with `1/b` is indeed not needed for OS density. This answers my N-2
+  point about the sign of fundamental Wilson loops, **given** item 2.
+
+What is not right:
+* **Item 2 is the measurable ultraviolet transfer.**
+  * `MassGapLoc` (`Objects.lean` 478) quantifies over all slab families of bounded measurable fine observables of
+    physical extent `R`, with the number of fine links growing like `(R/a)^4`.
+  * To transfer the limit-space gap to such families, section 8 needs, uniformly in `a`, the conditional covariance
+    `Cov(theta F, F | F_ell)` for bounded **measurable** fine `F`, and `||E[F | F_ell] - f_ell||_{L^1}`.
+  * Section 7's argument does not give this: it works by inserting `e^{tF}` for `F` analytic, with constants depending
+    on the number of variables.
+  * For measurable `F` the conditional law of the fine variables on `supp F` must decouple in total variation from the
+    far block field. That means running Balaban's induction with those fine variables fixed: the "permanent frozen
+    region of arbitrary content" of `SKETCH-STEPS.md` 2, which the author then assessed as "a new piece of analysis,
+    not a write-out", and the scale-`< ell` part of blueprint P5.2.
+  * Section 8 calls it "standard in form, not written line by line". I do not agree that it is standard. It also needs
+    the large-field part, not only "the small-field part" as the status note says.
+* **The interface change must not replace item 2.** `M1-PLAN.md` 0 puts "`MassGapLoc` on the OS closure" under
+  "outside M1".
+  * If `MassGapLoc` is restated for the OS closure of block observables, the theorem becomes weaker than the current
+    one unless item 2 shows that the fine families lie in that closure, uniformly in `a`.
+  * The interface change is legitimate only together with item 2, not instead of it.
+* **Item 4 (polynomial approximation of `f_ell`) is probably unnecessary.** `BlockGapBddW` already treats bounded
+  measurable block observables, so `f_ell` itself can serve as the dense-class element if P4 delivers decay for it.
+  This simplifies, and does not affect the gap above.
+
+Severity: GAP (the burden is now precisely located, in sketch point 4, but it is the hardest remaining piece of the
+ultraviolet half, not a write-out). Confidence: medium-high.
+
+### Is `M1-PLAN.md` 0's verdict now accurate?
+
+Largely yes. It withdraws "complete at paper level", lists what is paper, citation and sketch, and names five sketch
+points. Corrections I would make:
+1. **Point 4 is not of the same kind as points 1, 2, 3 and 5.** Those are detail-level (a nonabelian fractions step, a
+   lifetime re-reading, two text readings, a super-rare tail). Point 4 is the measurable UV transfer at scales below
+   `ell`, the problem `SKETCH-STEPS.md` 2 said was not a write-out. The verdict should say so.
+2. **"Outside M1: `MassGapLoc` on the OS closure"** should be qualified as above: it is only a valid restatement if
+   point 4 holds.
+3. **R10 "paper on citation-level inputs"** should carry the signed-Mayer fix (FIXABLE).
+4. **The one-box contraction's tail step** (or a `kappa` condition) should be added, as part of the labels' citation
+   level.
+5. **Stale text in `S1-INDUCTION.md` 4** ("sub-exponentially").
+
+### Summary table (my findings, current status)
+
+| finding | status now |
+|---|---|
+| G1 one-step induction | resolved at the claimed level (NITs: 7c recursion via R2, stale sentence) |
+| G2 labels: form and positivity | resolved (citation-level readings named) |
+| G2 labels: carrying sum linear in `K` | resolved in substance by the one-box contraction; FIXABLE detail in the tails |
+| G3 decoder | resolved (second follow-up) |
+| N-1 bare-scale small field | resolved (second follow-up) |
+| G4 hand-over / R10 | R10: paper sketch with a FIXABLE sign point; interface still outside M1 |
+| N-2 density | relabelled into `M1-PLAN.md` sketch point 4; GAP (measurable UV transfer) |
+| G5 encoding | moot by design (state `(SO(3), closed Z2)`); bears on P4 |
+| G6 extended holes | resolved (H5 constants now in the table) |
+| Parity NIT | resolved; new NIT on the hard core across scales |

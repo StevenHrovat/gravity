@@ -1140,3 +1140,14 @@ thread.
   amount to a tiny shift of the bare coupling g0 (a finite renormalisation of the initial condition), while the law by which the coupling
   runs from g0 ([I] Theorem 2) is untouched. So "the coupling becomes more efficient" holds as a re-tuning at G0, not as a change of the
   running. The position-dependent part stays with each label.
+- **Coarse observables capture everything that has existence (the owner, same day, on N-2):** "Coarse observables have to capture
+  everything that has existence, since coarse observables are the 'excitation' of the existence field, with everything else provably not
+  being existence. A coarse observable is the thing that enables 'capture' to have meaning, since from it causality and existence stems."
+  Reading (coordinator): in the mathematics "what has existence" is the physical (Osterwalder–Schrader) Hilbert space: an observable
+  counts only through its OS norm, the reflection-positive pairing across a time plane, and observables with zero OS norm are physically
+  nothing. M1's N-2 argument claims exactly this form: density of the coarse observables in the OS norm, not pointwise. The reading says
+  why that is the right norm. What it does not remove is the proof that "everything else is not existence": for a fine observable F, the
+  part not captured, F − E[F | block state], must have vanishing OS norm in the limit. That is the statement the REVIEW-2 reviewer flags as
+  the real remaining gap (decorrelation of bounded fine observables given the block state, uniformly in the lattice spacing). One possible
+  easing, to be checked: the OS norm only needs the uncaptured parts on the two sides of the reflection plane to decorrelate from each
+  other, at separation at least twice their distance to the plane, which is weaker than decorrelation for every observable everywhere.
