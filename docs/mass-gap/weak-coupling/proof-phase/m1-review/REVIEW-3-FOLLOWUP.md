@@ -768,3 +768,133 @@ translates of one box (`sum_box`). For variable blocks the columns must be check
 * FIXABLE: the oscillation iteration needs hybrids, which leave the non-product `omega`-supports. Use the coupling form
   of Dobrushin-Shlosman (a support-relative Lean layer).
 * Open, as stated: H1, on which (A) and (B)'s pattern-index covariance depend; and section 12.
+
+## Follow-up 6 (the merging repair, `UV-TV.md` 21), 2026-11-22
+
+Read: `../m1-tools/UV-TV.md` 21 in full. Nothing was built or re-run; the commit was not checked (no git).
+
+### Verdict
+
+The repair has the right shape, and it removes the single-scale cascade of Follow-up 5. With a fixed merge range per
+scale and truncation at `n_j ~ log|Λ''_j|`, a cluster's reach no longer grows with its size, proximity clusters of
+born boxes are subcritical, and every estimate refers to the localised region. Volume uniformity holds in principle.
+
+Three things are not right as written:
+* The weaker condition is correct in substance, but derived with an inverted inequality (`g_j` versus `g_0`). As
+  stated, with `g_0`, it would fail at coarse scales. Per scale, with `g_j`, it holds.
+* The size cap that the fixed-width Lemma C needs is established only for clusters born at the scale. Inherited
+  regions bridged by born boxes, and regions that stay coarse-bad over several scales, are not capped by the per-scale
+  truncation. Their size can compound by `L^d` per scale of persistence. A bridge count truncation, priced by H2, and a
+  persistence truncation, priced in section 12, close this. Until then it is a GAP.
+* My own Follow-up 5 fix (a), constant multiplicity, does not work with good boxes that may not meet composite boxes.
+  Good boxes must overlap the collars (already on the author's next list), and the collar then needs a polylog,
+  size-independent width.
+
+No FATAL; one GAP.
+
+### (a) Is a fixed merge range consistent with Lemma C?
+
+**Yes, given a size cap.** Follow-up 5 put `|K|` into `w` because `w` had to beat `|W| |∂_in| p^2 e^{-m' w}` for each
+cluster. With truncation, every cluster to which Lemma C is applied has `|K| <= C L^d n_j`. So one `w_j`, chosen for
+that cap, serves all clusters at the scale:
+`w_j = (3/m') log(C L^d n_j p)` gives `|W| |∂_in| p^2 e^{-m' w_j} <~ w_j^{2d}/(C L^d n_j p) << 1`, since the collar
+volume adds only `w_j^d`, a polylog. This is right, **provided the cap actually holds for every cluster**, which is
+point (c).
+
+### (b) Is the truncation consistent with the localisation?
+
+* **Yes in structure, with no circularity.** The region `Λ''_j` is fixed first, from `dist_j(B, D_j)`; then `n_j`; then
+  `w_j` and the merge range. The outside of `Λ''_j` acts as a source at distance `dist(B, D)`, like `D` itself.
+  `Λ''_j` is random through the inherited source `D_j`, which is fine since everything is quenched in the coarse data.
+* **What the truncation costs: a polynomial, not exponential, failure.** `P(F_j | X) <= |Λ''_j|^{-C_2}` is polynomial
+  in the distance. So UV-TV (i) no longer has the form `C |B| e^{-kappa r}`: there is an extra term
+  `|Λ''_j|^{-C_2} ~ (r_j)^{-d C_2}`. Two remarks:
+  * **It suffices for the composition (ii) and for OS density.** Summed over scales against the box count,
+    `(R/l_j)^d (t/l_j)^{-d C_2}` is geometric in `j` (as `l_j -> 0`) and tends to 0 as `t/l -> infinity`, once
+    `C_2 > 1`. `C_2` is any constant, through `C_1`. Section 13.4's "`e^{-kappa t/l}`" and UV-TV (i)'s form should be
+    restated with this polynomial term.
+  * **The trade-off.** Exponential failure would need `n_j ∝ dist`, so `w_j ~ log dist ~ (1/d) log|Λ''|`. Then the
+    subcriticality condition becomes `c p0(g_j)/2 > d log log|Λ''| ~ d log g_j^{-2}`, which is my Follow-up 5 condition
+    (`p >= 2`, or `p = 1` with `c A0 > d`). So the author's remark is right: the stronger condition is needed only for
+    a merge range of order `log |region|`, and with the polynomial form it is not.
+* **Truncation and H2.** The bound on `P(F_j)` uses the quenched H2, which holds only outside the coarse bad set. So
+  `F_j` can cap born boxes only outside inherited regions. That is consistent with the text, but it matters for (c).
+
+### (c) Does bridging by born boxes reopen a cascade, within a scale or across scales?
+
+* **Within a scale: no, but mixed clusters must be truncated too.**
+  * A cluster at scale `j` can be **mixed**: several inherited regions joined by bridges of scale-`j`-born bad boxes.
+    `F_j` caps each born component (each bridge), not the number of inherited regions a cluster chains together. So
+    "every cluster in `Λ''_j` has `|K| <= C L^d n_j`" on `F_j^c ∩ F_{j+1}^c` does not follow.
+  * Inherited regions of different coarse clusters are at least `2 L w_{j+1}` scale-`j` units apart (21.4). So each
+    bridge needs at least `l_br ~ L w_{j+1}/(2 w_j/l_B + 1)` born boxes, and costs `eta_j^{l_br/2}` by H2.
+  * The number of chained regions is then subcritical. Add to `F_j` the event "some cluster meeting `Λ''_j` contains
+    more than `n_j` bridges", with probability `<= |Λ''_j| (C eta_j^{l_br/2})^{n_j}`. With it, mixed clusters are
+    capped at `n_j (L^d n_{j+1} + n_j)`, and `w_j` should be set for that cap. It is still logarithmic. FIXABLE.
+* **Across scales: the compounding must be priced in section 12.**
+  * The inherited set at scale `j` is `Bad^c(X_{j+1})`: boxes where `X_{j+1}` is actually large. On `F_{j+1}^c` its
+    clusters are bounded by the **full** scale-`(j+1)` cluster size, born plus inherited, not by `n_{j+1}^born`.
+  * Inside inherited regions, born boxes are not priced by H2 at all (pointwise only outside the coarse bad set).
+  * So a region that stays coarse-bad from scale `j'` down to `j` can have scale-`j` size up to `L^{d (j'-j)} n_{j'}`.
+    The bound "`|K| <= L^d n_{j+1}`" in 21.0 and 21.2 holds only for one step without persistence.
+  * Whether persistence is rare is a multi-scale statement. It holds for Balaban's history regions, which are priced
+    at every scale they persist, but that is exactly section 12.
+  * **Needed:** a persistence truncation, "no region coarse-bad over more than `s_max` consecutive scales inside the
+    localised regions", with `s_max ~ C log log|Λ''|`. Its failure is priced in section 12, and `w_j` should include
+    `d s_max log L`. That is still logarithmic, so no cascade. **GAP**: the size cap that Lemma C's fixed `w_j` relies
+    on is not established for persistent inherited regions until this is in place.
+* **The isolation argument (21.4) is right for what it says.** Regions born at a coarser scale are separated by their
+  birth collars, far more than the finer merge range, so they meet at finer scales only through born bridges. It does
+  not bound how large one region becomes when it persists downward, which is the point above.
+* One wording point: 21.1 lists "unreleased regions of `omega_j` born at finer ... scales" as inherited. In the reverse
+  tower they lie inside `omega_j` and are priced by `omega_j`'s weights (H2), so for the truncation they behave like
+  born boxes. Only the coarse bad set is truly inherited from above. Their own birth collars are smaller than `w_j` at
+  scale `j`, so they give no isolation. Say so.
+
+### (d) Is the weaker condition right?
+
+* **In substance, yes:** per scale, `c p0(g_j)/2 > d log(C log g_j^{-2}) + O(log log p)`. This holds for
+  `p0 = A0 (log g^{-2})^p` with any `p >= 1`, for `g_j <= gamma0` (a fixed condition on `gamma0`, together with `A0`).
+* **The derivation in 21.3 is wrong in two places:**
+  * "`p0(g_j) = A0 (log g_j^{-2})^p >= A0 (log g_0^{-2})^p`" is inverted. Since `g_j >= g_0`, `p0(g_j) <= p0(g_0)`.
+    With the bound `|Λ''_j| <= e^{C g_0^{-2}}`, the condition `p0(g_j) >> d log log g_0^{-2}` would **fail** at coarse
+    scales, where `g_j ~ gamma` is fixed while `log log g_0^{-2} -> infinity`.
+  * The fix is to bound the region per scale: `|Λ''_j| ~ (t/(L^j a l_B))^d`, and `log(t/l_j) ~ g_j^{-2}/b + C` by the
+    running. So `log n_j <~ log g_j^{-2}`, and the condition involves `g_j` only. Near `L_*`, `|Λ''_j|` is bounded.
+  * Write it this way in 21.3 and in `S1-INDUCTION.md` condition 8.
+* **The merge range must also contain** the polylog collar term from (e), and `l_B ~ (log p/m)^{2d+1}/gamma^2`. Both
+  give `(2 w_j + l_B)^d = polylog(p)`, far below `e^{c p0/2}`, so the condition is unaffected.
+
+### (e) A correction to my Follow-up 5 fix (a)
+
+I proposed a constant multiplicity `n_W ~ l_B^{d-1} (log p)^{d+1}/gamma`, with good boxes that do not meet composite
+boxes. **That fails.**
+* **Low coverage outside `W`.** A site `x` just outside `W` is then covered only by good boxes that have `x` on their
+  near face, so `coverage(x) ~ l_B^{d-1}`, not a constant fraction of `l_B^d`.
+* **The column at `x` is too large.** It contains `n_W k_W(x) ~ n_W (log p/m)^d`, which exceeds
+  `gamma l_B^{d-1}` for any `l_B`.
+* **The working version** (it matches "constant multiplicity with overlapping good boxes" on the author's next list):
+  * let good boxes overlap the collars, as long as their `r_int`-neighbourhood avoids `K`;
+  * only sites within `r_int` of `K` are then covered by `W` alone, so `n_W ~ r_int l_B^{d-1} (log p/m)^d/gamma`
+    suffices;
+  * a site at the collar's outer edge, at distance `w` from `K`, has good coverage `~ (w - r_int) l_B^{d-1}`;
+  * the column condition there needs `w - r_int >~ r_int (log p/m)^{2d}/gamma^2`.
+* So the collar width must also satisfy `w_j >~ r_int (log p)^{2d}/gamma^2`. This is polylog in `p` and independent of
+  the cluster size, so it is compatible with a fixed `w_j`. Add it to `w_j` and to the merge range.
+
+### Findings, one line each (follow-up 6)
+
+* No FATAL.
+* **GAP:** the fixed-width Lemma C needs a size cap on every cluster. `F_j` caps only born clusters. Mixed clusters
+  (inherited regions chained by born bridges) need a bridge-count truncation, priced by H2. Regions that stay coarse-bad
+  over several scales grow by `L^d` per scale, so they need a persistence truncation, priced in section 12, with
+  `w_j` covering `d s_max log L`. All remain logarithmic.
+* FIXABLE: the weaker condition is right per scale (`p0(g_j) >> d log log g_j^{-2}`), but 21.3 inverts `p0(g_j)` versus
+  `p0(g_0)`. With `g_0` it would fail at coarse scales. Bound `|Λ''_j|` per scale by `e^{C g_j^{-2}}`.
+* FIXABLE: the truncation makes the failure polynomial (`|Λ''_j|^{-C_2}`), not `e^{-kappa r}`. This is enough for the
+  composition and OS density (`C_2 > 1`), but UV-TV (i) and 13.4 should be restated. Exponential failure would bring
+  back the stronger condition.
+* FIXABLE (correcting my Follow-up 5): constant multiplicity needs good boxes that overlap the collars, and a collar
+  width `w_j >~ r_int (log p)^{2d}/gamma^2` (polylog, size-independent).
+* NIT: unreleased regions born at finer scales behave as born boxes at scale `j` (priced by H2, no isolation). Only the
+  coarse bad set is inherited from above.

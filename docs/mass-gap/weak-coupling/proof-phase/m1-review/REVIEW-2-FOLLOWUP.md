@@ -948,3 +948,143 @@ N-2 stays a GAP.
 | step (ii) of Theorem A_good | covers scale-`j` patterns only; inherited coarse-bad clusters must be priced at their own scale (section 12) |
 | section 12 well posed | yes, on the static form, as a recursion of conditional expected counts with a multi-scale (chained) Peierls bound |
 | N-2 overall | **GAP**: open; section 12 not started |
+
+## Seventh follow-up
+
+Read for this: `../m1-tools/UV-TV.md` section 21. REVIEW-3 was not read. Nothing was built.
+
+### Verdict (seventh follow-up)
+
+* **The construction is not a Froehlich-Spencer hierarchy, but a valid alternative for what UV-TV needs.**
+  * The hierarchy decomposes **all** bad sets, with probability 1 in infinite volume.
+  * Section 21 replaces it with a fixed merge range per scale, localisation to a region of the size of `dist(B, D)`,
+    and truncation of oversized clusters into a failure event of polynomial probability `|Λ''|^{-C_2}`.
+  * That is enough for the volume-first limit (every estimate is local) and for OS density, which needs only `o(1)`.
+    The conclusion now has a polynomial tail besides the exponential one, and must say so. `C_2 > 1` is needed for the
+    composition over scales, which is available by taking `C_1` large.
+* **What the hierarchy provides and section 21 does not yet:** separation **between** levels, here between birth
+  scales. Two things are missing:
+  1. inherited regions grow by accreting scale-`j`-born clusters at every finer scale, and allowed (non-truncated)
+     born clusters can be long enough to bridge two inherited regions' birth-collar gap. A cross-scale bridging event,
+     with its own bound, has to be added;
+  2. the size bound `|K| <= C L^d n_{j+1}` for inherited composite boxes holds only for regions born one scale up. A
+     region born at `j'` can cover up to `L^{d(j'-j)} n_{j'}` scale-`j` boxes, so its scale-`j` collar must grow with
+     its age `j' - j`. That fits inside its birth collar, but the recursion `n_j := max(n_j^born, n_{j+1})` undercounts.
+* **The condition `p0 >> d log log g_0^{-2}`: the conclusion is right, the derivation is not.**
+  * The derivation uses `p0(g_j) >= p0(g_0)`, which is reversed: `g_j >= g_0`, so `p0(g_j) <= p0(g_0)`.
+  * With the crude bound `|Λ''_j| <= e^{C g_0^{-2}}`, the right-hand side grows without bound at coarse scales as
+    `a -> 0`, while `p0(g_j)` stays bounded.
+  * The correct, **scale-local** bound `log |Λ''_j| <= (d/b) g_j^{-2} + C(t)` gives `w_j ~ log g_j^{-2}`, and the
+    condition `p0(g_j) >> d log log g_j^{-2}` holds for any `p >= 1` at `g_j <= γ0(L)`.
+  * So the weaker condition stands, with `g_j` in place of `g_0`. REVIEW-3's `p >= 2` (or `c A0 > 2d`) is needed only
+    for a merge range growing like `log |Λ''|`. It would hold anyway: Balaban's own `p0 >> M^d R^{d+1}` with
+    `R >= (log g^{-2})^r`, `r >= 2`, forces an exponent far above 2.
+* **Volume uniformity with `MassGapLoc`'s volume-first limit: holds,** given the two additions above and one wording
+  fix. The localisation must be done by treating the outside as a **source** in the global coupling, not by
+  **conditioning** on outside fine configurations. The latter would put arbitrary fine content near `∂Λ''` into the
+  pattern weights.
+
+No FATAL finding. N-2 stays a GAP (section 12 not started). The cross-scale items above are new FIXABLE points that
+belong to section 12.
+
+### 1. Is section 21 a hierarchical decomposition, and what does it miss?
+
+**What it is.** Per scale `j`:
+* a fixed proximity `2w_j + ell_B` for merging, independent of cluster sizes, which removes the cascade mechanism;
+* clusters born at `j` larger than `n_j = C_1 log |Λ''_j| / log(1/η_j)` go into a failure event `F_j`, with
+  `P(F_j | 𝒳_{j+1}) <= |Λ''_j|^{-C_1/2 + 1}`. I checked the count: lattice animals under fixed proximity, the quenched
+  H2, and the min-trick;
+* inherited regions keep the collars of their birth scale.
+
+**This is not FS:**
+* FS needs no localisation and no failure event: it decomposes everything with probability 1.
+* Section 21 localises to `Λ''`, accepts a polynomially small failure, and gets uniformity in the total volume from
+  locality.
+
+For UV-TV that is enough:
+* composition (ii) at scale `j` needs `|B_j| P(failure_j) -> 0`, summed over scales. With
+  `|Λ''_j| ~ (t/(L^j a))^d` this is `sum_j L^{d(ell-j)(1 - C_2)} (t/ell)^{...}`, geometric for `C_2 > 1`;
+* OS density needs only `o(1)` (`REVIEW3-RESPONSE.md` 13.4).
+
+State the conclusion of Theorem A_good on the truncated event as `C |B| (e^{-λ R'} + R'^{-d C_2})`.
+
+**What the hierarchy provides that is missing: separation between levels.** Here the levels are birth scales.
+* **Accretion.** An inherited region born at `j'` is a composite box at every finer scale `j`. At each such scale,
+  born clusters within `2w_j + ell_B` of it merge into it. So its extent grows by up to
+  `n_i (2w_i + ell_B) ell_B L^{i-j}` scale-`j` units at each scale `i` between `j` and `j'`.
+  * Born clusters need not be compact: a lattice animal of `n_i` boxes under proximity `2w_i + ell_B` can be a chain of
+    diameter `n_i (2w_i + ell_B)` boxes.
+  * `n_i ~ C_1 log |Λ''_i| / (c p0(g_i))`. With the scale-local bound, `log |Λ''_i| ~ (d/b) g_i^{-2}` while `p0(g_i)`
+    is only polylogarithmic in `g_i^{-2}`, so `n_i` is large.
+  * So the total accretion, dominated by `i = j' - 1`, is about `n_{j'-1} (2w + ell_B) L^{j'-1-j} ell_B` per side. The
+    birth gap between two regions born at `j'` is `2 w_{j'} ell_B L^{j'-j}` scale-`j` units.
+  * The gap survives only if `n_{j'-1} (2w + ell_B) < (L - 1) w_{j'}`. With `n` large, this fails.
+* **Bridging.** So two inherited regions can be bridged at a finer scale by allowed (non-truncated) born clusters. The
+  author's sentence "they can be bridged only by bad boxes born at the finer scales in between, which H2 prices" is
+  right in substance, but the construction never turns it into an event:
+  * a bridged pair is a merged composite box far larger than the collar budget `w_j` assumes, so Lemma C fails for it;
+  * it has to go into a failure event `G_j`: some pair of inherited regions meeting `Λ''_j` is joined by a scale-`j`
+    born chain of length at least the remaining gap;
+  * the bound is `P(G_j | 𝒳_{j+1}) <= |Λ''_j|^2 (C w_j^d η_j^{1/2})^{(gap_j)/(2w_j + ell_B)}`. Since `gap_j` grows like
+    `L^{j'-j}` while `|Λ''_j|` grows like `L^{d(ell - j)}`, this is summable.
+  
+  That is the FS separation condition, in this construction's terms. FIXABLE, but it has to be written: it is exactly
+  the "cross-level percolation" the coordinator asks about.
+* **The size of inherited regions.**
+  * Beneath a coarse bad region H2 says nothing, so at a finer scale the whole footprint can be bad. A region born at
+    `j'` then has up to `L^{d(j'-j)} n_{j'}` scale-`j` boxes, not `C L^d n_{j+1}`.
+  * Lemma C needs `e^{-m w} <~ 1/(|K| p^2)`, so its scale-`j` collar must be `w_j + (d/m)(j' - j) log L`, growing
+    linearly in its age.
+  * That still fits inside its birth collar, which is about `L^{j'-j} w_{j'} ell_B` wide. But the definition
+    `n_j := max(n_j^born, n_{j+1})` with `|K| <= C L^d n_j` has to be replaced by an age-dependent collar for inherited
+    regions.
+  * Their merge range with born boxes then depends on age, not on size, so no cascade arises. FIXABLE.
+
+### 2. The condition `p0 >> d log log g_0^{-2}`
+
+* **Section 21.3's chain** is: `|Λ''_j| <= e^{C g_0^{-2}}`, so `w_j <~ log g_0^{-2}`, so
+  `c p0(g_j)/2 > d log(C log g_0^{-2})`, which holds "since `p0(g_j) >= p0(g_0)`".
+* **The last step is reversed.** The bare coupling is the smallest (`g_j >= g_0`), so `p0(g_j) <= p0(g_0)`. At the
+  coarse end (`j` near `ell`) `p0(g_j)` is bounded as `a -> 0`, while `log log g_0^{-2} -> infinity`. With the crude
+  volume bound, the condition **fails** at coarse scales in the continuum limit.
+* **The scale-local bound repairs it.**
+  * `log |Λ''_j| = d log(t/(L^j a ell_B)) <= (d/b) g_j^{-2} + C(t)`, from the running `g_j^{-2} ≈ b log(1/(L^j a Λ))`.
+    So `log n_j <~ log g_j^{-2}` and `w_j <~ (3/m') log g_j^{-2}`.
+  * The condition `C (2w_j + ell_B)^d e^{-c p0(g_j)/2} < 1/2` becomes `c p0(g_j)/2 > d log log g_j^{-2} + C`.
+  * That holds for `p0 = A0 (log g^{-2})^p`, any `p >= 1`, once `g_j <= γ0(L)`.
+* **So the weaker condition is correct, with `g_j`.** Section 21.3 should replace `g_0` by `g_j` and drop
+  "`p0(g_j) >= p0(g_0)`".
+* REVIEW-3's stronger condition belongs to a merge range of order `log |Λ''|`, as the author says. It is satisfied
+  anyway: S1-INDUCTION row 6 already requires `p0 >> M^d R^{d+1}` with `R_j >= (log g_j^{-2})^r`, `r >= 2`, which
+  forces the exponent `p` far above 2.
+
+### 3. Volume uniformity with the volume-first limit
+
+* **Every estimate in section 21 is local:**
+  * the failure bounds depend on `|Λ''_j|` and `R'_j`;
+  * the collar widths depend on `g_j` and `log |Λ''_j|`;
+  * the cross-scale event of section 1 depends on `|Λ''_j|` and the gaps.
+  
+  None depends on the total volume. So at fixed level `k` the bounds hold uniformly as the volume goes to infinity, and
+  `MassGapLoc`'s order of limits (volume first, `Objects.lean` 476-481) is compatible. **Holds, given the two
+  additions of section 1.**
+* **Wording fix (FIXABLE, but it matters for the frozen region).** Section 21.2 applies Theorem A_good "to the two
+  conditional laws on `Λ''_j`, given the configurations outside". Conditioning on outside **fine** configurations puts
+  arbitrary, unpenalised content next to `∂Λ''` into the pattern weights. That is uniformity over fine content again.
+  * It is not needed. Keep the global coupling of the two laws, and count every site outside `Λ''_j` as a source
+    (`d <= 1`) in the static Dobrushin-Shlosman iteration.
+  * The minimal solution with a source at distance `R'` gives `e^{-λ R'}` without conditioning on anything fine.
+  * The truncation and bridging events are then events of the global law, bounded by the quenched H2 given coarse data
+    only.
+
+### Status (seventh follow-up)
+
+| item | status |
+|---|---|
+| merging cascade (my sixth follow-up) | **resolved in substance**: fixed merge range per scale plus localisation plus truncation; no cascade |
+| is it FS? | no; a localised, truncated alternative, sufficient for the volume-first limit and OS density (`o(1)`); the conclusion gains a polynomial tail `R'^{-d C_2}`, `C_2 > 1` needed |
+| cross-level separation | **missing (FIXABLE):** accretion of born clusters onto inherited regions can bridge birth-collar gaps (allowed clusters of size `n_i` can be long chains); add a bridging failure event with its bound |
+| inherited region sizes | **undercounted (FIXABLE):** up to `L^{d(j'-j)} n_{j'}` scale-`j` boxes; collar must grow with age `(d/m)(j'-j) log L`, still inside the birth collar |
+| condition `p0 >> d log log g^{-2}` | **conclusion holds with `g_j`; derivation wrong** (`p0(g_j) <= p0(g_0)`, crude volume bound); use `log |Λ''_j| <= (d/b) g_j^{-2} + C(t)` |
+| volume uniformity | holds, given the two additions; localise by sources, not by conditioning on outside fine configurations |
+| N-2 overall | **GAP**: open; section 12 not started, and now also carries the cross-scale bridging event and age-dependent collars |
