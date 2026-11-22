@@ -54,14 +54,15 @@ the notes):
 |---|---|---|
 | R1 off-centre dilution (F5, in SO(3)) | contraction of localised moderate cores at every position (in-block parts cancel; only segments transmit) | **paper + Lean steps** (`OFFCENTRE.md`, `OffCentre.lean`): `θ = 5^d L^{1-d} + C(r0 + L² ε)`; sheets are not R1 (excision R3, growth R2) |
 | R2 regular within the delay | every released region is regular within the delay, or is carried, paid by its own action | **paper + Lean step** in the repaired form (`R2-REPAIR.md`): attribution instead of a partition; footprint-weighted lifetime (`footprint_sum_le`); suppression from [16] (71) (read); E8 insertion a re-reading of [V] (1.80)-(1.85); the remainder route (`R2-REMAINDER.md`) compared and not taken: its rarity bound (a) closes, its splitting (b) needs a defect-decoupling lemma |
-| R3 filling near the cut (F4) | one-step excision filling with Bianchi-halo data: uniqueness and analyticity with `r0 = c/L⁴`, a rule for blocks swallowed by a hole, measurable selection | open (fixable-looking) |
-| R4 fibre mass with excision (E7.J) | the easy form with filled bonds next to excised SO(3)-cut plaquettes | paper given R3 |
+| R3 filling near the cut (F4) | holes = twist-free envelopes of deep structures; filling = small-field Dirichlet problem; swallowed blocks filled globally (no per-block rule, RP dropped) | **paper** (`FILL.md`); the old hole (deep plaquettes only) was wrong: the data carried the flux |
+| R4 fibre mass with excision (E7.J) | needed only at regular `W` (there flux conservation leaves only localised deep structures) | **paper** for ordinary coarse bonds (as `E7J.md`, slicing in Lean); **sketch** for swallowed coarse bonds (surjectivity + compactness over hole shapes, constant `C(L)` not explicit) (`FILL.md` 0.4) |
 | R5 action lower bound (F6) | the bound behind [V] (1.76) | **read**: [16] (69)-(71), action in the four blocks of an irregular coarse plaquette `≥ ¼|V(∂p') - 1|²/g²`, given regularity (68) of the finer field; proof via [12] (50), (53), any dimension |
-| R6 decoder locality | the global decoder equals a clustered, local one away from dense monopole clusters; needed for Balaban's factorisation over components | sketch |
-| R7 normalisation per real flip | `O(1)^{|τ|}` ratio of partition functions in the counting of closed remainders | citation (standard weak-coupling bound) |
-| R8 release of acts and labels | dimension-4 field dependence of released terms and of the labels' coupling to the SO(3) layer; summability over scales | paper sketch |
-| R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field with the Z2 background `+1` in small-field regions | citation (carry-over, not re-read for SO(3)) |
-| R10 hand-over (b) | the `L_*` half of `ObsTransferPhysTW` from Balaban's polymer representation | paper-level claim, not written out |
+| R6 decoder locality | the global decoder equals the product of per-cluster decoders | **paper**, exact (`DECODER-LOCAL.md`): clusters by the merging rule `dist ≤ 4(|K| + |K'|)`; each optimal remainder is supported within `2|K|` of its cluster |
+| R7 normalisation per real flip | `O(1)^{|τ|}` ratio of partition functions | **citation**, reduction written (`CLOSE-OUT.md` 4): Jensen plus the weak-coupling plaquette bound from Balaban's two-sided partition-function bounds |
+| R8 release of acts and labels | dimension-4 coupling, summable | **paper** (`CLOSE-OUT.md` 2): no-linear-coupling lemma (gauge invariance and no invariant vector in `so(3)`); sum `ε_k² Σ_j e^{-p0(g_j)}` (needs `p0` growing faster than `log(k - j)`, i.e. `A0 > 1` if `p = 1`) |
+| R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field | **citation** carry-over with the change table (`CLOSE-OUT.md` 5): small-field regions require `τ = +1`; no centre; otherwise constants only |
+| R10 hand-over (b) | the `L_*` half of `ObsTransferPhysTW` | **paper sketch** (`CLOSE-OUT.md` 3): from Balaban's cluster expansions at fixed top field; the conditional decay estimates are not written out |
+| R12 [16] (71) in 4D | the action lower bound behind [V] (1.76) in four dimensions | **paper**, written out from [12] (48)-(53) (`CLOSE-OUT.md` 1) |
 | R11 interface | `BlockingFamily` relaxed to measurable blockings; SU(2) encoding of `(V, τ)` (`HANDOVER.md` 0.3) | formal refactor, outside M1's folders |
 | ext | [I] Theorem 2 (running coupling, with `γ ≤ γ0(L)`) | external, unpublished |
 | P4 | the crossover `L_* → L₁` | not M1's; open, the core |
@@ -70,8 +71,31 @@ F2 (Bianchi halo) and F3 (P2′) are absorbed: halos live in released large-fiel
 because nothing is frozen. V1 with excision (`V1-EXCISION.md`, `V1-INPUTS.md`) is no longer on the main line: holes are
 never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `CutAvoid.lean` are off the main line;
 `Exact.lean`, `Dilution.lean`, `Vortex.lean`, `FibreMass.lean`, `Routine.lean`, `FluxTube.lean` and `Assembly.lean`
-(as bookkeeping, REVIEW-1 F7) remain in use. **Main theorem:** M1 has a complete argument only modulo R1-R11 above
-(R1-R3 and R6 are genuine open lemmas), the external input and P4. It is not complete yet.
+(as bookkeeping, REVIEW-1 F7) remain in use. **Main theorem, final status (2026-11-22).** Every row above has an argument. What each argument rests on:
+
+* **Lean (machine-checked):** exactness of the conditional step; the dilution core; vortex persistence; the
+  fibre-mass slicing; the Poincaré counting; the local-modification identities; fibre densities; gauge fixing at a
+  leaf; the record gas; the flux-tube lower bound; the off-centre steps; the footprint sum; and the assembly as
+  bookkeeping.
+* **Paper, written out:** R1, R2 (repaired form), R3, R4 for ordinary bonds, R6, R8, R12, the closing rule, the
+  release route, the counting.
+* **Paper sketch (not written out line by line):**
+  * R4 for swallowed coarse bonds: surjectivity plus compactness, constant not explicit;
+  * R10, the conditional cluster expansion at fixed top field;
+  * the insertion of the footprint-weighted lifetime into [V] (1.80)-(1.85).
+* **Citation (Balaban, as he states it):** R5 (read), R7, R9 (carry-over with two stated changes), [13] Theorems 3.12,
+  3.13 (read; exponents of (3.133) illegible in the scan), [I]-[V], [12], [14], [15].
+* **External:** [I] Theorem 2 (unpublished).
+* **Separate:** the crossover P4.
+
+**Verdict:** M1's main theorem does **not yet** have a complete argument apart from [I] Theorem 2 and P4. Three
+sketch-level steps remain, and none is known to fail:
+1. the swallowed-bond Jacobian;
+2. the conditional decay estimates of R10;
+3. the E8 insertion.
+
+Beyond them it rests on the citations listed. Writing out these three is the remaining M1 work; everything else is
+the paper write-up.
 
 Parts A and B below are the pre-review plan, kept for the record.
 
