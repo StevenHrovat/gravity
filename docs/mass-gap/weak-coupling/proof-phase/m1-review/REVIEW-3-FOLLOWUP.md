@@ -1626,3 +1626,164 @@ Write-out 2 is sound at paper level.
   * take `I`, `O` as unions of `L`-blocks, so the block constraints separate;
   * truncation tail `e^{-c p^2 + C M^d}` per cube, or cite Balaban's large-field estimate;
   * the background-mediated mixed terms are localised by [V] (1.59)-(1.63), with product decay.
+
+## Follow-up 12 (write-outs 3 and 4, `UV-TV.md` 30-32), 2026-11-23
+
+Read: `../m1-tools/UV-TV.md` 30, 31 and 32 in full. Nothing was built or re-run.
+
+### Verdict
+
+Write-outs 3 (the front advance) and 4 (H1 at the polymer level) are sound in structure:
+* the recursion and its geometric sum are right;
+* the contracted-to-real conversion holds;
+* van den Berg-Maes applies to this gas, in the form needed;
+* the global constant `e^{-M_X}` is harmless.
+
+Five points need fixing or stating, none an obstruction:
+1. Theorem 28 is used "pointwise" with weights centred at each `x` in turn. The union bound needs **one** coupling for
+   all `x`. That holds, because the averaged update `T` does not depend on the weights, but it must be said.
+2. Long links make composite boxes non-contiguous. The conversion's "`max diam(composite box)`" then needs a
+   **link-length truncation**, which is missing from `E_j`.
+3. Follow-up 10's conditions are respected in substance, but not stated:
+   * the source includes every composite box joined to `src^1` (by proximity or link);
+   * composite boxes, and the contraction, exist only inside `Λ''_j`.
+4. H1's conditional bound must route chains through coarse-bad cells to the annealed event `E^path`. That is implicit.
+5. Section 32 lists "Balaban's machinery on a domain with Dirichlet data" without the domain class from my Follow-up 11.
+
+No FATAL, no GAP.
+
+### (1) Does Theorem 28 applied pointwise respect Follow-up 10's conditions?
+
+**In substance yes. Three statements are missing.**
+* **One coupling for all centres (FIXABLE, needed for the union bound).**
+  * 30.2 step 1 applies Theorem 28 with `v(.) = e^{-lambda_j dist_omega(., x)}`. As stated, the theorem produces, for
+    each `v`, *some* coupling. Different centres `x` would give different couplings, and then "`P(some x in D_j)`" is
+    not defined.
+  * It is fine because the averaged update `T` (28.2) is built from the block couplings `Q_b` alone and does not
+    depend on `v`. The same sequence `T^n(mu ⊗ mu')` satisfies the bound for every `v` whose weighted hypotheses hold.
+  * (I) for a weight `v` follows from per-site influences, and (K) holds for every centre (the `e^{lambda E}` weighting
+    is uniform). So for `n` large, finitely many `x` in finite volume, one coupling serves all.
+  * State this as a corollary of 28 ("one coupling, all weights"). It also belongs in the Lean target 28.4.
+* **Every block whose specifications differ is a source.**
+  * A box's specification depends on the coarse data in its fibre, within `r_int`, and through chosen H0 links. So
+    `src^1` must include:
+    * boxes within `r_int + 1` box of the coarse sites of `D_{j+1}`;
+    * **every composite box joined to them by proximity or by a link**.
+    
+    16 says so ("unless `K` is joined to `N(D)`, then `K` is part of the source"); 30.2's list omits it.
+  * The size is covered: `a_j` contains `N_j M R_j`. But write the source rule out.
+* **Contraction only inside `Λ''_j`.** Everything outside is `src^3`. The block family outside must be source blocks
+  only, with no composite boxes, so that `dist_omega = dist` there and `s` stays volume-uniform (Follow-up 10). Implicit
+  in 30.1; state it.
+* **The constant `C_s = max c/((1 - gamma_DS) c_min)`** is polylog, `(n_W + l_B^d)/1`. Fine.
+
+### (2) Is the path-cost conversion from contracted to real distance right?
+
+**Yes, for clusters of cubes. A link-length truncation is missing.**
+* **The argument.** Take a `dist_omega`-geodesic and realise it by a lattice path that crosses each composite box along
+  a diameter.
+  * If that real path has length `>= a'`, then on `(E^path)^c` less than half of it lies inside composite boxes, so
+    real length `<= 2 x` (the outside length) `<= 2 dist_omega`.
+  * Otherwise `dist <= a'`.
+  * So `dist <= max(a', 2 dist_omega) + max diam`. Correct, and covered by 30.2's choice of `a_j`.
+* **The probability of `E^path`.**
+  * Composite boxes lie within the one-cube neighbourhood of bad cubes, since collars and merge gaps are polylog and
+    smaller than `M R_j`. So half a path inside composite boxes means at least `a'/(2 C 3^d M R_j)` distinct bad cubes
+    near it.
+  * H2 per cube holds for arbitrary finite sets (24.1), with the min-trick. The `(3^d)^n` path count is right.
+  * Correct with adjusted constants.
+* **The gap: long links.** Composite boxes are components with links as edges (22.1). A link of length `s` joins two
+  clusters `s` apart into one composite box, of diameter `~ s`, contracted to diameter 1 in `dist_omega`.
+  * The real path between the clusters runs through good cells, so `E^path` does not catch it, and
+    "`max diam <= N_j M R_j`" is false without a bound on `s`.
+  * **Fix:** add to `E_j` the event "some link meeting `Λ''_j` has length `> s_max`", with
+    `s_max := (C/kappa) log|Λ''_j|`. Its probability is `<= |Λ''_j| Sum_{s > s_max} s^{d-1} C p^2 e^{-kappa s}
+    <= |Λ''_j|^{-C_2}`. Then `max diam <= N_j (M R_j + s_max)`, still polylog. FIXABLE.
+
+### (3) Does van den Berg-Maes hold for this gas?
+
+**Yes. A Markov property is needed, and the object representation provides it.** What the argument uses:
+* **(a) Deterministic agreement on vacuum.** If both copies are vacuum at a cell, they agree there. This is
+  deterministic, so no conditional occupation bound is needed. That is what removes forced continuation, and it is
+  right.
+* **(b) Markov in the extended sense.** Agreement propagates only if the conditional law of an unrevealed region,
+  given the revealed cells, depends only on revealed cells within `D_c` and on the objects that cross into the region.
+  * After the positive split (31.2) the weight is a product of local factors on **connected objects**: polymers, and
+    links occupying the connected domain `X`. Each link's `h_X` depends only on the polymers meeting `X`, and there is
+    a hard core of range `D_c`.
+  * So, with the cell state taken to be "which object, with its shape, covers this cell", the field is Markov with
+    range `D_c`. Revealing a cell reveals its whole object, and the long-range part of the interaction has become
+    objects that are local in cells.
+  * The non-finite range is handled by the links being objects, not by finite range of the original interaction.
+    Correct.
+* **(c) The per-copy Peierls (31.3) with the min-trick.** The inclusion "`D` ⊂ cluster of `S` among cells occupied in
+  copy 1 or copy 2" is deterministic, by (a) and (b). So `P(chain)` is bounded by
+  `Sum_{splits} min(P_1, P_2) <= 2^n (C e^{-c kappa/2})^{n/2}` using only the marginals. No independence between the
+  copies is needed. Correct.
+* **The effective interaction.** 31.1 writes `w(omega) ∝ Prod z(gamma) exp(Sum I_X(omega))`, with `I_X` depending on
+  the pattern. As Follow-up 7 noted, the cluster terms between polymers depend on boundary fields integrated inside
+  the `T`-operations. So `I_X` is the cluster term of the expansion of `log ∫ Prod mu_gamma e^{Sum E}` in the
+  inter-polymer `E`'s: real, `|I_X| <= M_X`, and local to the polymers it joins. 31.1's citation "(29.2)" should say
+  this. NIT.
+* **Coarse-bad cells (31.6).** They are "always occupied", so a chain may pass through them at no cost in the gas. The
+  conditional H1 bound (31.5) is false as stated if the quenched coarse data have a coarse-bad corridor from `S` to `b`.
+  * 30.2 resolves this through `E^path`, which is annealed: on its complement, coarse-bad cells cover less than half
+    of any long path, so the gas cells, at least half, carry the Peierls factor.
+  * State H1 in that combined form: conditional on the coarse data and on `(E^path)^c`. NIT.
+
+### (4) Is the global constant `e^{-M_X}` harmless?
+
+**Yes.**
+* `M_X = C (p^2 + C_0) e^{-kappa d(X)}` is a deterministic bound, independent of `omega`. So `Prod_X e^{-M_X}` is one
+  constant, finite in finite volume, which cancels in the normalisation of each copy's gas.
+* It never enters a comparison between the copies, which are normalised separately.
+* In 31.3 the presence probability of given objects is a ratio of sub-sums. Only the factor
+  `sup Prod (1 + h_X)` over links touching those objects remains, `<= exp(C |o| (p^2 + C_0) e^{-kappa D_c})`, a small
+  factor per cube.
+* The vacuum links (where `I_X = 0`, weight `e^{M_X} - 1`) are fictitious but harmless. Their density is
+  `<= C (p^2 + C_0) e^{-kappa D_c}` per cube, and they have the same law in both copies away from `S`.
+
+### (5) The recursion and the result (30.3-30.4)
+
+* `Delta_j >= min(L Delta_{j+1} - C l_B L, rho_j) - a_j` with `rho_j = L^{l-j} Delta_l` gives the stated induction.
+* `a_{l-k}` is polynomial in `k`, since `R_{l-k} = (log g_{l-k}^{-2})^r` grows only like `(log k)^r`; the stated
+  `(R_l + k)^r` is an overestimate, which is fine. The bracket is a geometric sum.
+* "`Delta_l >= 2(A_l + C l_B L)`" holds for `l <= l_0(t)`.
+* `P(differ on B) <= Sum_j P(E_j) <= C (t/(l l_B))^{-d C_2}`. The `l_B` is a polylog factor the text drops; harmless.
+* "Any `C_2 > 0` suffices" is right, now that the union over sites is inside `P(E_j)`.
+* The averaging is right: conditional events (step 1, `E^path`, `F`, `G`) are pointwise in the coarser data, and `T`
+  is annealed. So `P(∪_j E_j) <= Sum_j E[P(E_j | coarser)]`.
+* With items 1-2 of the verdict added, write-out 3 is at paper level.
+
+### (6) Is section 32 accurate, and is my Follow-up 11 point listed?
+
+**Nearly.**
+* Section 32 lists "Balaban's machinery on a domain with Dirichlet data (29.6)" among the citation-level readings,
+  without the domain class. Follow-up 11 asked for it to be named as an **adaptation to non-admissible domains**:
+  * shells of width `w >> M`, thinner than one `M R_j`-cube, shaped by `K`;
+  * Dirichlet data on both sides;
+  * constants uniform in the shape.
+  
+  Add that wording to 29.6 and 32.
+* "Complete argument written at paper level" is fair once the five points above are added. The dependencies are
+  correct:
+  * (c), the re-proof;
+  * (a), admissibility and the domain adaptation, as citation-level;
+  * Kotecky-Preiss, van den Berg-Maes and the coupling contraction, as standard.
+
+### Findings, one line each (follow-up 12)
+
+* No FATAL, no GAP.
+* FIXABLE: Theorem 28 used pointwise needs one coupling for all centres (`T` is independent of the weights). State it
+  as a corollary of 28, and in the Lean target.
+* FIXABLE: link-joined composite boxes have diameter `~` the link length. Add a link-length truncation
+  `s_max ~ (C/kappa) log|Λ''_j|` to `E_j`, so that `max diam <= N_j (M R_j + s_max)`.
+* NIT: state the source rule (composite boxes joined to `src^1` by proximity or link are sources) and "no composite
+  boxes or contraction outside `Λ''_j`".
+* NIT: state H1 conditional on `(E^path)^c`, since coarse-bad cells are always occupied. Describe `I_X` as the cluster
+  term of the inter-polymer expansion with polymer fields integrated.
+* Van den Berg-Maes holds: vacuum in both copies means agreement, deterministically; the object representation (links
+  as connected objects) is Markov with range `D_c`; per-copy Peierls with the min-trick suffices.
+* The global constant `e^{-M_X}` is harmless: it does not depend on `omega` and cancels in each normalisation.
+* Section 32: add the domain class of the Balaban-on-domains adaptation (shells thinner than `M R_j`, `K`-shaped,
+  two-sided, uniform in the shape), as asked in Follow-up 11.

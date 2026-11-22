@@ -1665,3 +1665,161 @@ prefactor in `p`, which shifts the crossover radius by `O(log p/m')`.
 | volume uniformity | **holds** (local to `W`; `N` depends on `log |Λ''|` only) |
 | NITs | Dirichlet layers as unions of `L`-blocks; name `E_0(M)` in the collar constant (logarithmic); state that the `χ`-expansion uses `q0 >= p0` |
 | **N-2** | **GAP (reduced):** write-outs 1, 2 done; owes the front advance, H1's polymer coupling, and the write-up of (c) |
+
+## Thirteenth follow-up
+
+Read for this: `../m1-tools/UV-TV.md` 30, 31 and 32, with 26-27 (route (c), written) as background. REVIEW-3 was not
+read. Nothing was built.
+
+### Verdict (thirteenth follow-up)
+
+* **N-2 is closed at paper level,** in the sense that every step now has a written argument. It rests on route (c) and
+  the named citation-level readings, and has four FIXABLE items, none of which needs a new idea. I withdraw the GAP
+  rating for N-2.
+* **The front recursion (30) is right.**
+  * The inherited disagreement enters as a source **set**. Only its distance to the target matters, not its size,
+    because the source weights decay exponentially and the sum over a source of any size beyond distance `Δ` is
+    `<~ e^{-λΔ}` times a polynomial.
+  * So the disagreement advances by `a_j` per scale, and `Δ_j >= L^{ℓ-j} Δ_ℓ/2` follows from the geometric bracket.
+* **The van den Berg-Maes coupling (31.5) is legitimate in the form used.**
+  * It needs only two things: the deterministic fact that a cell vacant in both copies agrees, and per-copy
+    **unconditional** Peierls bounds, combined by the min-trick. It needs no uniform conditional bound, so it is
+    unaffected by forced continuation, and it holds for non-finite-range interactions once those are made objects.
+  * But "Markov extended along occupied links" is an adaptation of their finite-range setting: the revealing procedure
+    must follow links. Write it.
+* **The global constant `Π_X e^{-M_X}` is harmless.** It is deterministic, independent of `ω` and of the copy, and
+  cancels in every normalised law and ratio, provided `M_X` is a fixed bound, as stated.
+* **One point to fix in 31 (FIXABLE):** the units of `d(X)`. The link weights and the vacuum-link density carry `p^2`
+  (`C (p^2 + C_0) e^{-κ d}`). They are small as `g -> 0` only if `d` is counted in `M`-cubes (Balaban's unit for `κ`),
+  or the separation of polymers in sites, so that `D_c` cell-separations give `e^{-κ D_c R_j}`. With `d` in
+  `M R_j`-cubes and fixed `κ`, "density `C (p^2 + C_0) e^{-κ D_c}`, tiny" is false at fine scales, where `p -> ∞`.
+* **Other FIXABLE items:**
+  * the last kernel, from the scale-0 state `(Ad U, τ'_0)` to the bare SU(2) field, should be part of the tower;
+  * my three twelfth-follow-up NITs are not yet folded in.
+* No FATAL finding.
+
+### 1. The front recursion (30)
+
+* **The one-scale claim** `D_j ⊂ N_{a_j}(src_j)`, except on `E_j`, follows from Theorem 28.
+  * With weights centred at `x`, `d(x) <= C_s Σ_{y ∈ src} e^{-λ dist_ω(x, y)}`.
+  * The union over `x` with `dist_ω(x, src) > a` gives `|Λ''_j| e^{-λ a/2}`.
+  * The passage from `dist_ω` to `dist` uses the half-path event, priced per cube by H2/H2a and the min-trick.
+  * Truncations are a case split.
+  
+  Correct. `C_s` is polylog through the coverage. Fine.
+* **Is the inherited disagreement only a source of size `a_j`?** It is a source set, the boxes under all of `D_{j+1}`,
+  of arbitrary size. Its effect at `x` is the weighted sum over it. Since `dist(x, src¹) >= L Δ_{j+1} - C L ell_B` and
+  the weights decay, only the distance enters, so the front moves by `a_j`, not by anything depending on `|D_{j+1}|`.
+  * The other channels by which coarse disagreement acts (the background's non-local dependence) were moved into links
+    (positive split, 10.1). Links are objects of the pattern gas, so they are covered by `src²` and its `a^{pat}_j`.
+  * Correct.
+* **Recursion and bracket.** `Δ_j >= min(L Δ_{j+1} - C ell_B L, ρ_j) - a_j`, with `ρ_j = L^{ℓ-j} Δ_ℓ`.
+  * `a_{ℓ-k}` is polynomial in `k` and `log(t/ℓ)`, because `R_{ℓ-k} = (log g_{ℓ-k}^{-2})^r` with
+    `g^{-2}` growing linearly in `k`.
+  * So `Σ_k L^{-k} a_{ℓ-k} <= A_ℓ`, polylog in `1/ℓ`, and the condition `c t/ℓ >= 2(A_ℓ + C ell_B L)` holds for
+    `ℓ <= ℓ_0(t)`.
+  * Correct.
+* **Result.** `P(differ on B) <= Σ_j P(E_j) <= C (t/ℓ)^{-d C_2}`. This is geometric in `k`, so any `C_2 > 0` works,
+  uniformly in the spacing and the volume. Correct. The conditional-to-unconditional passage (each `P(E_j | coarser)`
+  averaged) is fine, since every copy is law-distributed.
+* **(B).** "Fresh randomness on the mirror side" is the in-support construction I asked for in the eleventh follow-up,
+  provided it is done as follows. Take two towers `Y`, `Y°`, conditionally independent given `𝓕_ℓ`, and the tower `Z`
+  that uses `Y`'s randomness on the `A` side and `Y°`'s on the `θA` side. Then `Z` is a genuine sample, and the front
+  argument gives `Z = Y` near `A` and `Z = Y°` near `θA`. Say so explicitly in 30.1.
+* **FIXABLE: the last kernel.**
+  * The tower ends at the scale-0 **state** `(V_0, τ'_0) = (Ad U, σ*)`, plus noise. The fine observable `F` is a
+    function of the bare SU(2) field.
+  * Given `(Ad U, σ*)`, the bare signs `τ = c + σ*` are determined up to the decoder's ties inside flip-cube
+    components (local), and `U` up to Z2 gauge (irrelevant for gauge-invariant `F`).
+  * So the last kernel is local and nearly deterministic. It should be added as step `j = -1` of the tower, with its
+    (trivial) front advance of one flip-cube component.
+
+### 2. H1 at the polymer level (31)
+
+* **The positive split and the constant.** `e^{I_X} = e^{-M_X}(1 + h_X)`, `0 <= h_X <= e^{2M_X} - 1`, needs
+  `|I_X| <= M_X` for all `ω`, with `M_X` independent of `ω` and of the copy. Both hold, since `M_X` is the deterministic
+  bound `C (p^2 + C_0) e^{-κ d(X)}` and `I_X` is real for real fields.
+  * Then `Π_X e^{-M_X}` is a finite constant in a finite volume. It cancels in the normalised pattern law, in the
+    Peierls ratios and in the coupling. **Harmless.**
+  * Vacuum links (`I_X = 0`, `h_X = e^{M_X} - 1`) are a positive, ω-independent sprinkling. Fine, given their density
+    is small (see the units point below).
+* **Units of `d(X)` (FIXABLE, needed).**
+  * 31.1 says `d(X) >= D_c` for `X` meeting two polymers, and 31.2 calls the vacuum-link density
+    `C (p^2 + C_0) e^{-κ D_c}` "tiny". With `D_c = 100` and `κ` fixed, that is not small uniformly in `g`: `p = p(g_j)`
+    grows like a power of `log g_j^{-2}` at fine scales.
+  * **The resolution is in Balaban's units.** His `κ` multiplies linear size in `M`-cubes ([I] p. 257; [V] (1.97),
+    `EK-DERIVATION.md` Q2). Polymers that are `D_c` cells (`M R_j`-cubes) apart are `D_c R_j` `M`-cubes apart. So
+    `M_X <= C (p^2 + C_0) e^{-κ D_c R_j}`, which is small because `R_j >= (log g_j^{-2})^2 >> log p`.
+  * The classical part of `I_X` decays per site (rate `m`) across `D_c M R_j` sites, so it is even smaller.
+  * State `d(X)` in `M`-cubes (or sites) in 31.1-31.3 and in the link sums. Otherwise the Peierls (31.3) and
+    Kotecky-Preiss (31.4) conditions, which include links, are not uniform as `g -> 0`.
+* **Peierls per copy (31.3).** For a positive product-form gas, `P(objects present) <= Π weights` times a ratio of
+  partition functions `<= 1`, times `sup Π (1 + h)` over the links touching them. Correct, given the units fix.
+* **Kotecky-Preiss (31.4).** Standard for polymers with hard core `D_c` and Mayer bonds `e^{I_X} - 1` (decorated
+  polymers). It gives the pattern-index covariance of (B). Correct.
+* **Van den Berg-Maes (31.5): legitimate, with one adaptation.**
+  * **What the bound uses:**
+    * a coupling in which every disagreeing cell is occupied in at least one copy. This is deterministic: two vacant
+      cells agree;
+    * the disagreement set is connected to `S` through occupied cells or links;
+    * per-copy **marginal** Peierls bounds (31.3), combined by the min-trick
+      `P(A_1 occ in copy 1, A_2 occ in copy 2) <= min(P_1(A_1), P_2(A_2))`. This is valid for any coupling.
+  * **What it does not use:** a uniform bound on conditional occupation probabilities given revealed neighbours. So
+    the forced-continuation problem of the earlier box-variable Dobrushin version does not arise. The conditioning in
+    the revealing procedure is on discrete pattern data, not on fine fields, so no frozen region arises either.
+  * **The adaptation.** Van den Berg-Maes prove this for finite-range Markov fields. Here the interaction has
+    unbounded range, through links. 31.2 makes links objects that occupy the cubes of their domain, and asserts that
+    the field of cell states is Markov "extended along occupied links".
+    * For the identical-coupling step ("an unrevealed region surrounded by agreeing revealed cells has the same
+      conditional law"), the revealed set must include, for every link crossing into the region, everything that
+      link's weight `h_X(ω)` depends on, namely the polymers it meets along its whole domain.
+    * So the procedure must reveal along occupied links. A disagreement can then jump along a link, which the path
+      bound already counts ("joined by a link").
+    * This is an adaptation, not a quote of their theorem: one paragraph to write.
+* **Coarse-bad cells (31.6).** Counted as always occupied in the coupling, with their rarity from the annealed H2a and
+  `T_{j+1}`. Conditionally on the coarse data they cost nothing, and they are paid when averaging, inside 30.2's
+  `E^{path}_j`. Consistent with the quenched/annealed bookkeeping of the eighth follow-up.
+
+### 3. Is N-2 closed at paper level?
+
+**Yes.** The chain is:
+* OS density (13.4, 8);
+* Lemma UV-TV via the reverse-kernel tower;
+* per scale:
+  * the coupling-form Dobrushin-Shlosman theorem (28);
+  * H3 and Lemma C with constant-size inputs (29);
+  * composite boxes with fixed collars and truncations (21-24);
+  * H2/H2a via route (c) (26-27);
+  * H1 via the polymer gas (31);
+* chaining by the front argument (30).
+
+Every link is now written at paper level. What remains:
+* **Citation-level readings** (named in 32):
+  * (a), what `E_k(Z)` is;
+  * admissibility, from a poor scan;
+  * Balaban's machinery on a domain with Dirichlet data;
+  * "`κ` large for given `L`" ([I] Theorem 3).
+* **Route (c):** a re-proof, checked three ways. It is the single point of failure of the rarity bounds.
+* **FIXABLE items** (this follow-up and the twelfth):
+  1. units of `d(X)` in 31, so that the link terms are small uniformly in `g`;
+  2. van den Berg-Maes adapted to links (reveal along occupied links);
+  3. the last kernel `(Ad U, σ*) -> U` as step `-1` of the tower, and (B)'s hybrid stated explicitly;
+  4. the twelfth-follow-up NITs (Dirichlet layers as unions of `L`-blocks; `E_0(M)` in the collar constant; the
+     `χ`-expansion uses `q0 >= p0`).
+
+**On 32's wording:** "complete at paper level, resting on (c), the citation-level readings and the standard tools" is
+accurate once the four FIXABLE items are folded in. I would add "pending items 1-4" until then.
+
+### Status (thirteenth follow-up)
+
+| item | status |
+|---|---|
+| front recursion (30) | **correct**; the inherited disagreement acts by distance, not size; result `C (t/ℓ)^{-d C_2}`, uniform |
+| (B) via fresh mirror randomness | fine as the conditionally-independent-towers hybrid; state it explicitly |
+| last kernel to the bare field | **FIXABLE**: add `(Ad U, σ*) -> U` (local, ties only) as step `-1` |
+| positive split, `Π e^{-M_X}` | **harmless** (deterministic, `ω`- and copy-independent, cancels) |
+| units of `d(X)` in 31 | **FIXABLE, needed**: count in `M`-cubes or sites, so `e^{-κ D_c R_j}` beats `p^2`; as written, the vacuum-link density is not small at fine scales |
+| Kotecky-Preiss (31.4) | correct (standard) |
+| van den Berg-Maes (31.5) | **legitimate in the form used** (deterministic vacant-agree plus marginal Peierls plus min-trick); adaptation to links to write (reveal along occupied links) |
+| twelfth-follow-up NITs | not yet folded in |
+| **N-2** | **closed at paper level** (GAP withdrawn), resting on route (c) and the named citation-level readings, pending FIXABLE items 1-4 |
