@@ -53,7 +53,7 @@ the notes):
 | item | content | level |
 |---|---|---|
 | R1 off-centre dilution (F5, in SO(3)) | contraction of localised moderate cores at every position (in-block parts cancel; only segments transmit) | **paper + Lean steps** (`OFFCENTRE.md`, `OffCentre.lean`): `θ = 5^d L^{1-d} + C(r0 + L² ε)`; sheets are not R1 (excision R3, growth R2) |
-| R2 regular within the delay | every released region is regular within the delay, or is carried, paid by its own action | **paper + Lean step** in the repaired form (`R2-REPAIR.md`): attribution instead of a partition; footprint-weighted lifetime (`footprint_sum_le`); suppression from [16] (71) (read); E8 insertion a re-reading of [V] (1.80)-(1.85); the remainder route (`R2-REMAINDER.md`) compared and not taken: its rarity bound (a) closes, its splitting (b) needs a defect-decoupling lemma |
+| R2 regular within the delay | every released region is regular within the delay, or is carried, paid by its own action | **paper + Lean step** in the repaired form (`R2-REPAIR.md`): attribution instead of a partition; footprint-weighted lifetime (`footprint_sum_le`); suppression from [16] (71) (read); E8 insertion a re-reading of [V] (1.80)-(1.85); the remainder route (`R2-REMAINDER.md`) compared and not taken: its rarity bound (a) closes, its splitting (b) needs a defect-decoupling lemma; **E8: no insertion needed**, [V] (1.80)-(1.81) already allow `K ≤ n0 - j + R_j` with `n0` the shrinking time (`R10-SCOPE.md` 1; `REGULAR.md` 0.4 misread it) |
 | R3 filling near the cut (F4) | holes = twist-free envelopes of deep structures; filling = small-field Dirichlet problem; swallowed blocks filled globally (no per-block rule, RP dropped) | **paper** (`FILL.md`); the old hole (deep plaquettes only) was wrong: the data carried the flux |
 | R4 fibre mass with excision (E7.J) | needed only at regular `W`; swallowed coarse bonds | **paper, explicit** (`FILL.md`, `SKETCH-STEPS.md` 1): ordinary bonds as `E7J.md`; swallowed bonds get an independent Haar value (fibre density 1). Design change: blocking with auxiliary randomness (needs R11 to allow it) |
 | R5 action lower bound (F6) | the bound behind [V] (1.76) | **read**: [16] (69)-(71), action in the four blocks of an irregular coarse plaquette `≥ ¼|V(∂p') - 1|²/g²`, given regularity (68) of the finer field; proof via [12] (50), (53), any dimension |
@@ -61,7 +61,7 @@ the notes):
 | R7 normalisation per real flip | `O(1)^{|τ|}` ratio of partition functions | **citation**, reduction written (`CLOSE-OUT.md` 4): Jensen plus the weak-coupling plaquette bound from Balaban's two-sided partition-function bounds |
 | R8 release of acts and labels | dimension-4 coupling, summable | **paper** (`CLOSE-OUT.md` 2): no-linear-coupling lemma (gauge invariance and no invariant vector in `so(3)`); sum `ε_k² Σ_j e^{-p0(g_j)}` (needs `p0` growing faster than `log(k - j)`, i.e. `A0 > 1` if `p = 1`) |
 | R9 Balaban for the SO(3) layer | carry-over of [I]-[V] to the adjoint field | **citation** carry-over with the change table (`CLOSE-OUT.md` 5): small-field regions require `τ = +1`; no centre; otherwise constants only |
-| R10 hand-over (b) | the `L_*` half of `ObsTransferPhysTW` | **open, much harder than marked** (`SKETCH-STEPS.md` 2): needs Balaban's induction with a permanent frozen region of arbitrary content and decay bounds uniform over `K ~ g^{-2}` steps; Balaban's analytic machinery cannot insert measurable observables. Shared with blueprint P5.2 |
+| R10 hand-over (b) | the `L_*` half of the ultraviolet transfer | **paper sketch for analytic observables** (`R10-SCOPE.md` 2: one extra local analytic term in Balaban's induction, Cauchy in `t`; same rate, observable-dependent constants). The uniform-over-measurable form of `ObsTransferPhysTW` is not proved and **not needed**: RP of the bare measure upgrades dense-class decay to the uniform gap (`R10-SCOPE.md` 3). Interface change proposed |
 | R12 [16] (71) in 4D | the action lower bound behind [V] (1.76) in four dimensions | **paper**, written out from [12] (48)-(53) (`CLOSE-OUT.md` 1) |
 | R11 interface | `BlockingFamily` relaxed to measurable blockings; SU(2) encoding of `(V, τ)` (`HANDOVER.md` 0.3) | formal refactor, outside M1's folders |
 | ext | [I] Theorem 2 (running coupling, with `γ ≤ γ0(L)`) | external, unpublished |
@@ -88,15 +88,24 @@ never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `
 * **External:** [I] Theorem 2 (unpublished).
 * **Separate:** the crossover P4.
 
-**Verdict (updated after `SKETCH-STEPS.md`):** M1's main theorem does **not** have a complete argument apart from
-[I] Theorem 2 and P4:
-* **R10 is a genuine open problem.** It is the ultraviolet transfer at `L_*`, shared with blueprint P5.2, and needs
-  Balaban's induction with a permanent frozen region.
-* **The E8 insertion of the footprint-weighted lifetime** is not yet checked line by line.
-* **R4 is closed** (explicit, with the randomised swallowed-bond rule, which needs the interface to allow auxiliary
-  randomness).
+**Verdict (updated after `R10-SCOPE.md`):** M1's main theorem has an argument apart from [I] Theorem 2 and P4, at
+the levels listed above:
+* **E8** closes as written in [V].
+* **R4** closes with the randomised swallowed-bond rule.
+* **R10** holds at paper-sketch level for analytic observables, with the inserted term's bookkeeping not checked line
+  by line.
 
-Everything else is as listed above.
+It needs **two interface changes** outside M1:
+* (a) blockings with auxiliary randomness (R4);
+* (b) `ObsTransferPhysTW` replaced by a dense-class version with per-observable constants, plus a spectral-upgrade
+  lemma from the bare measure's RP (`R10-SCOPE.md` 0.5). The current interface asks for uniform constants over all
+  measurable observables, which the mass-gap statement does not need.
+
+Remaining sketch-level points:
+* R10's inserted-term bookkeeping;
+* the R4 deterministic alternative (not needed).
+
+Citations are as listed. Next: REVIEW-2.
 
 Parts A and B below are the pre-review plan, kept for the record.
 

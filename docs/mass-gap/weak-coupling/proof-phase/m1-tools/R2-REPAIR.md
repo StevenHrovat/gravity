@@ -121,3 +121,5 @@ Nothing remains outside these cases: every flux class is central, moderate, near
 * Item 3: **paper**.
 * R2 in `M1-PLAN.md`: closes in the repaired form, given R1, R3 and Lemma F.
 * R5: [16] (71) read and pinned (section 2); `EXTERNAL.md` row 20 can cite it directly.
+
+**Update (`R10-SCOPE.md` 1):** the E8 extension of section 2 is not needed. [V] (1.80)-(1.81) already let a factor control a region for `K ≤ n0 - j + R_j` steps, with `n0` the time until the iterated region is small, and sum the current sizes geometrically. The footprint lemma of section 2 is an independent check of (1.81), not an extension.

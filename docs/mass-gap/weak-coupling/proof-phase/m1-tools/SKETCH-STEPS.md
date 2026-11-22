@@ -94,3 +94,5 @@ then contracts it.
 R4 is now paper (explicit) with the randomised rule. R10 is open (much harder than marked; shared with P5.2). E8
 insertion not started. M1's main theorem does not have a complete argument apart from [I] Theorem 2 and P4: **R10 is
 a genuine open problem**, and the E8 insertion is unchecked.
+
+**Update (`R10-SCOPE.md`):** step 3 closes as written in [V] (no insertion needed). Step 2 is scoped: paper sketch for analytic observables, and the uniform-over-measurable form is not needed, given reflection positivity of the bare measure and an interface change.
