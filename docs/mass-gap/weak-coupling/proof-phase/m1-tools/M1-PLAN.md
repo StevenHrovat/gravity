@@ -76,7 +76,7 @@ F2 (Bianchi halo) and F3 (P2′) are absorbed: halos live in released large-fiel
 because nothing is frozen. V1 with excision (`V1-EXCISION.md`, `V1-INPUTS.md`) is no longer on the main line: holes are
 never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `CutAvoid.lean` are off the main line;
 `Exact.lean`, `Dilution.lean`, `Vortex.lean`, `FibreMass.lean`, `Routine.lean`, `FluxTube.lean` and `Assembly.lean`
-(as bookkeeping, REVIEW-1 F7) remain in use. **Final verdict for the whole of M1 (2026-11-23, rewritten after the reviews of `UV-TV.md` 34-37; `UV-TV.md` 37, fixes in 38).**
+(as bookkeeping, REVIEW-1 F7) remain in use. **Final verdict for the whole of M1 (2026-11-23, final after the reviews of `UV-TV.md` 34-38; `UV-TV.md` 37, fixes in 38-39).**
 M1 has a complete argument. Every row is proved in Lean, at paper level, or by citation, given:
 1. **Lean:**
    * exactness (law preservation), the assembly bookkeeping, and the Lean steps of R1, R2 and R4: 57 theorems in 12
@@ -88,9 +88,12 @@ M1 has a complete argument. Every row is proved in Lean, at paper level, or by c
    cube (`UV-TV.md` 26-27). Checked three ways.
 3. **Citations:** Balaban [I]-[V] and [12]-[16] as listed per item; (P2) from [V] (1.73)-(1.74), with a paper chaining
    step (`UV-TV.md` 38.3); `κ` large for fixed `L` ([I] Theorem 3).
-4. **Two citation-level readings and one citation-level use:**
+4. **Three citation-level readings and two citation-level uses:**
    * readings: (a), what `E_k(Z)` is (`../m1-review/EK-DERIVATION.md`); admissibility (poor scan of [III] (2.3)-(2.9));
-   * use: Balaban's local cluster expansion with one extra small local insertion, the label term (`UV-TV.md` 38.3).
+     "no large fields created" in [V] (1.80)-(1.81) as referring to the rim `S(Z) \ Z` only (R2's lifetime,
+     `UV-TV.md` 39.5);
+   * uses: Balaban's local cluster expansion with one extra small local insertion, the label term (`UV-TV.md` 38.3);
+     [16]'s bounds for locally modified actions in the removed-plaquette setting, R7′ (`UV-TV.md` 39.5).
 5. **Two adaptations:**
    * Balaban's small-field machinery on cluster-shaped shells with Dirichlet data on both sides, his constants
      uniform in the shape (`UV-TV.md` 34.8);
@@ -106,7 +109,9 @@ M1 has a complete argument. Every row is proved in Lean, at paper level, or by c
 * the two GAPs of the reviews of 34-37 are closed: (B) by total covariance along the scales (38.1, the slab
   construction withdrawn), and the cap (38.2).
 
-This verdict waits on the reviewers' check of `UV-TV.md` 38. The full table with a level per item is `UV-TV.md` 37.1.
+Both reviewers checked `UV-TV.md` 38 (REVIEW-2 fifteenth follow-up, REVIEW-3 follow-up 14) and report no open FATAL or GAP
+finding. Their last fixes are in 39. M1's own work is done until the owner decides the next phase: the Lean
+instantiation of the coupling theorem, the paper write-up, or P4. The full table with a level per item is `UV-TV.md` 37.1.
 The rows above this verdict keep their history; where a row still says "sketch" or "unchecked", section 37
 supersedes it.
 

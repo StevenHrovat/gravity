@@ -102,6 +102,6 @@ estimate as `TRAP-CHECKS.md` T1, now with twist-free data). With `r0 = c/L⁴` t
 **Update (`UV-TV.md` 35.1):** the twist-free test uses the uniform threshold `C_tw r0 λ²` for every loop of length `≤ λ` in `O(H)`, with `C_tw ≥ 8 max(C, 1)`. With it, "cap reached implies irregular `W`" is proved at paper level by coarse non-abelian Stokes (an exact inequality) and the gauge covariance of Balaban's average. The "fractions sum to 1" step of section 0.2 is no longer needed.
 
 **Update (`UV-TV.md` 38.2, after REVIEW-2 and REVIEW-3 on 35.1):**
-* Holes grow per cluster of `H_0`, the components under `dist ≤ D = 2ℓ_max + 2`: `H_C^{(i)} = N_i(C)`. So holes of different clusters never touch, and at the cap `O(H_C)` is at distance `≥ ℓ_max + 1` from all of `H_0`.
+* Holes grow per cluster of `H_0`, the components under `dist ≤ D = 2ℓ_max + 2 C_3 L + 2` (`UV-TV.md` 39.1; the extra `2 C_3 L` keeps other clusters' excised holes out of the ribbon): `H_C^{(i)} = N_i(C)`. So holes of different clusters never touch, and at the cap `O(H_C)` is at distance `≥ ℓ_max + 1` from all of `H_0`.
 * "Cap reached implies irregular `W`" is proved for any failing loop. It joins the loop to its coarse shadow through a ribbon of width `O(L)` avoiding `H_0`, then uses coarse Stokes, with `C_1 ≥ C_3` and `C_tw ≥ (C_6 + C_7)/4`.
 * The twist-free test and the filling are unchanged. The previous update's claim (closure via 35.1) is replaced by 38.2.

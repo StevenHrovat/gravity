@@ -26,6 +26,8 @@
 
 > **Status (sections 35-38):** the four sketch points and the four adaptations of M1-PLAN 0 are resolved (35, 36). After the reviews of 34-37: (B) is rewritten by the law of total covariance along the scales (38.1); "cap reached implies irregular `W`" is proved by a coarse shadow, with per-cluster growth (38.2); the levels are corrected (38.3); the last kernel is fixed (38.4); the Lean instantiation duties are stated (38.5). The final verdict for all of M1 is section 37.
 
+> **Status (section 39, final):** both reviewers accept 38 and report no open FATAL or GAP finding. 39 folds in their last fixes: the cluster range `D = 2ℓ_max + 2 C_3 L + 2`; why unexcised cores in capped clusters never need E7.J; box updates move all variables of their sites; densities with respect to the fibre reference; R7′ and the `S(Z) \ Z` lifetime reading at citation level. Section 37 is final.
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -2633,11 +2635,12 @@ paper.
   All now go through (c) and (P2), with no appeal to "Balaban's next step".
 * **Level: re-proof (c)**, checked three ways. The adaptation is superseded.
 
-## 37. Final verdict for the whole of M1 (rewritten after the reviews of 34-37; the fixes are in 38)
+## 37. Final verdict for the whole of M1 (final, after the reviews of 34-38; the fixes are in 38-39)
 
 **History.** The first version of this section said "complete, no item at sketch level". Both reviews found that
 premature, because of two GAPs: (B) via a slab (34.6), and 35.1 step 3. Both are closed in 38 (38.1, 38.2), and the
-levels they flagged are corrected there (38.3). This version is subject to the reviewers' check of 38.
+levels they flagged are corrected there (38.3). Both reviewers checked 38 (REVIEW-2 fifteenth follow-up, REVIEW-3
+follow-up 14) and report no open FATAL or GAP finding. Their last small fixes are in 39.
 
 **Levels:**
 * **Lean:** machine-checked, standard axioms;
@@ -2656,26 +2659,26 @@ levels they flagged are corrected there (38.3). This version is subject to the r
 | item | content | level |
 |---|---|---|
 | law preservation | the RG densities are the true laws at every scale (conditional step, any measurable blocking with noise) | **Lean** (`Exact.lean`, `Assembly.lean` `m1_laws`; `Interface/RandBlocking.lean`) |
-| blocking | SO(3) × Z2 split; local decoder; mod-2 Stokes; excision with twist-free envelopes grown per cluster of the deep set; Balaban's average; random swallowed bonds | **paper** (`ROUTE-B.md` 1, `CLOSING.md`, `REVIEW3-RESPONSE.md` 1-2, 5, `FILL.md`, `SKETCH-STEPS.md` 1, `UV-TV.md` 38.2) |
+| blocking | SO(3) × Z2 split; local decoder; mod-2 Stokes; excision with twist-free envelopes grown per cluster of the deep set; Balaban's average; random swallowed bonds | **paper** (`ROUTE-B.md` 1, `CLOSING.md`, `REVIEW3-RESPONSE.md` 1-2, 5, `FILL.md`, `SKETCH-STEPS.md` 1, `UV-TV.md` 38.2, 39.1) |
 | S1, the one-step induction | `Form_k` with the order of constants; the step S0-S11 | **paper** on citations (`S1-INDUCTION.md`), with (c); sketch points closed (35, 38.2) |
 | R1 off-centre dilution | contraction of localised moderate cores | **paper + Lean steps** (`OFFCENTRE.md`, `OffCentre.lean`) |
-| R2 regular within the delay | attribution; footprint-weighted lifetime | **paper + Lean** (`R2-REPAIR.md`, `footprint_sum_le`); lifetime **citation** [V] (1.80)-(1.81) (35.2) |
-| R3 filling near the cut | twist-free envelopes; implicit-function filling; cap reached implies irregular `W` | **paper** (`FILL.md`, `REVIEW3-RESPONSE.md` 2, `UV-TV.md` 38.2) |
+| R2 regular within the delay | attribution; footprint-weighted lifetime | **paper + Lean** (`R2-REPAIR.md`, `footprint_sum_le`); lifetime **citation** [V] (1.80)-(1.81) with one **citation-level reading** (`S(Z) \ Z`) (35.2, 39.5) |
+| R3 filling near the cut | twist-free envelopes; implicit-function filling; cap reached implies irregular `W` | **paper** (`FILL.md`, `REVIEW3-RESPONSE.md` 2, `UV-TV.md` 38.2, 39.1-39.2) |
 | R4 fibre mass (E7.J) | ordinary and swallowed coarse bonds | **paper** (+ **Lean** slicing, `FibreMass.lean`) |
 | R5 action lower bound | [16] (69)-(71) | **citation** (read) |
 | R12 [16] (71) in 4D | from [12] (48)-(53) | **paper** (`CLOSE-OUT.md` 1) |
 | R6 decoder locality | per component of the flip cubes | **paper** (`REVIEW3-RESPONSE.md` 5) |
-| R7′ per-flip normalisation | `Z_{−P}/Z ≤ (C β^{3/2})^{|P|}` | **citation**, exponent by a rank count (paper) |
+| R7′ per-flip normalisation | `Z_{−P}/Z ≤ (C β^{3/2})^{|P|}` | **citation-level use** ([16] Theorem 1 and [V] p. 380 in a removed-plaquette setting, 39.5), exponent by a rank count (paper) |
 | R8 released terms | no linear coupling; dimension 4; summable | **paper** (`CLOSE-OUT.md` 2) |
 | R9 SO(3) carry-over | Balaban for the adjoint field with a closed Z2 layer, the per-scale small-field rule, label factors in `Form_k` | **citation-level adaptation** (`CLOSE-OUT.md` 5, `UV-TV.md` 38.3 (1)); the scale-0 to scale-1 transition **paper** (`REVIEW3-RESPONSE.md` 1.2) |
-| labels | `a_ℓ e^{L_ℓ}`; persistence of the parent; one-box contraction; positive pattern gas | **paper** (`REVIEW3-RESPONSE.md` 11-12, `UV-TV.md` 31, 35.3-35.4, 36.2) on citations |
+| labels | `a_ℓ e^{L_ℓ}`; persistence of the parent; one-box contraction; positive pattern gas | **paper** (`REVIEW3-RESPONSE.md` 11-12, `UV-TV.md` 31, 35.3-35.4, 36.2) on citations, with one **citation-level use** (the cluster expansion with the label insertion, 38.3 (3)) |
 | (P2), stability of `Φ_ℓ` | relative stability under real and complex deviations | **citation** ([V] (1.73)-(1.74), `F = 1_ℓ`, around every real regular base) **+ paper** chaining through `α_1`-balls (38.3 (2)) |
 | the label term in the fluctuation integral | Balaban's local cluster expansion with one extra small local insertion `e^{L_ℓ}` | **paper** (12.2) on a **citation-level use** (38.3 (3)) |
 | the count | closed remainders through the 1-skeleton, `L^{(1 − 16 b(1−δ)) k}` | **paper** (`CLOSING.md` 2) with the rate **external** ([I] (0.31)) |
 | (c), the strengthened induction | [V] (1.80)-(1.97) with a slack `e^{−c p0²}` per birth-scale cube; conditions (P0), (P2) | **re-proof**, checked three ways (independent reader, REVIEW-2, REVIEW-3) |
 | R10 hand-over, `L¹` form | positive partition, `A`-clusters, normalisation via (c) | **paper** on citations, with (c) (36.4) |
 | N-2, Lemma UV-TV | OS-norm density: (A) by the tower (30), (B) by total covariance along the scales (38.1) | **paper** (`UV-TV.md` 32, 38.1), given (c), the readings and the shell adaptation |
-| Theorem A_good, coupling form | the generic contraction on couplings | **Lean** (`OneBox/CouplingDS.lean`, 37 theorems, standard axioms); its instantiation **paper** (28.3, 38.5) |
+| Theorem A_good, coupling form | the generic contraction on couplings | **Lean** (`OneBox/CouplingDS.lean`, 37 theorems, standard axioms); its instantiation **paper** (28.3, 38.5, 39.3-39.4) |
 | Lemma C, H3 | composite boxes; collar coupling | **paper** with constant-size inputs (`UV-TV.md` 29, 33.6-33.7) |
 | the last kernel | bare field from the scale-0 state; Boltzmann-weighted alternatives, truncated | **paper** (38.4) |
 | `κ` large for fixed `L` | at the cost of larger `M` and smaller coupling bound `γ` | **citation** ([I] Theorem 3; [III] p. 260) |
@@ -2689,7 +2692,8 @@ levels they flagged are corrected there (38.3). This version is subject to the r
 **No item is at sketch level:**
 * the four sketch points of M1-PLAN 0 are closed (35, with point 1 by 38.2);
 * the four unchecked adaptations are citations, a proof, or superseded by (c) (36, with the levels of 38.3);
-* the two GAPs of the reviews of 34-37 are closed (38.1, 38.2).
+* the two GAPs of the reviews of 34-37 are closed (38.1, 38.2);
+* the last fixes from the reviews of 38 are folded in (39).
 
 ### 37.2 What M1's argument rests on, in one list
 
@@ -2701,9 +2705,11 @@ levels they flagged are corrected there (38.3). This version is subject to the r
    All on standard axioms only.
 2. **One re-proof:** (c), the strengthened induction of [V] (1.80)-(1.97).
 3. **Citations:** Balaban [I]-[V] and [12]-[16] as listed per item, including (P2)'s (1.73)-(1.74), and `κ` large.
-4. **Two citation-level readings and one citation-level use:**
-   * readings: (a), what `E_k(Z)` is; admissibility;
-   * use: Balaban's local cluster expansion with one extra small local insertion (the label term).
+4. **Three citation-level readings and two citation-level uses:**
+   * readings: (a), what `E_k(Z)` is; admissibility; "no large fields created" in [V] (1.80)-(1.81) as referring to the
+     rim `S(Z) \ Z` only (R2's lifetime);
+   * uses: Balaban's local cluster expansion with one extra small local insertion (the label term); [16]'s bounds for
+     locally modified actions in the removed-plaquette setting (R7′).
 5. **Two adaptations:**
    * Balaban's small-field machinery on cluster-shaped shells with Dirichlet data on both sides;
    * the SO(3) carry-over (R9): his series for the adjoint field with a closed Z2 layer, the per-scale small-field rule
@@ -2713,10 +2719,10 @@ levels they flagged are corrected there (38.3). This version is subject to the r
 
 **Verdict.** M1 has a complete argument: every row is proved in Lean, at paper level, or by citation, given the list
 above.
-* The points that are not plain citations are named, each with where it is used: the re-proof (c), the two readings,
-  the one citation-level use, and the two adaptations.
+* The points that are not plain citations are named, each with where it is used: the re-proof (c), the three readings,
+  the two citation-level uses, and the two adaptations.
 * P4 and [I] Theorem 2 are outside M1.
-* This verdict waits on the reviewers' check of 38.
+* Both reviewers checked 38 and report no open FATAL or GAP finding; their last fixes are in 39.
 
 ## 38. Fixes after the reviews of 34-37 (REVIEW-2 fourteenth follow-up with extension, REVIEW-3 follow-up 13 with extension)
 
@@ -2835,6 +2841,8 @@ externally chosen fine content. 34.6 is withdrawn, together with REVIEW-3's NIT 
 REVIEW-2's "smaller point" about coarse bonds crossing the plane.
 
 ### 38.2 Cap reached implies irregular `W`, for any failing loop (replaces 35.1, steps 2-4)
+
+> **Corrected by 39.1-39.2:** the cluster range is `D = 2ℓ_max + 2 C_3 L + 2`, so the ribbon also avoids other clusters' excised holes. 39.2 adds why an unexcised core in a capped cluster never needs E7.J.
 
 **Change 1: holes grow per cluster of the deep set** (replaces "components that touch are merged", `FILL.md` 2,
 `REVIEW3-RESPONSE.md` 2).
@@ -3014,6 +3022,8 @@ a coarse plaquette within distance `C λ` of `C`.
 
 ### 38.5 Instantiation duties for the Lean theorem (replaces 28.3's "Sites: scale-`j` bonds")
 
+> **Corrected by 39.3-39.4:** the box update resamples **all** variables of its sites, face-crossing bonds included. The densities are taken with respect to the fibre and gauge-slice reference measure, not product Haar.
+
 1. **One per-site space.**
    * The sites are the scale-`j` lattice sites `x`. Each site holds:
      * the `d` bonds with lower endpoint `x` (`V_j`);
@@ -3066,3 +3076,85 @@ a coarse plaquette within distance `C λ` of `C`.
 * **`FILL.md` and `REVIEW3-RESPONSE.md` 2:** the cluster rule of 38.2 (update notes).
 * **`S1-INDUCTION.md`:** rows 3 and 8.
 * **`M1-PLAN.md` 0:** the verdict.
+
+## 39. Last fixes after the reviews of 38 (REVIEW-2 fifteenth follow-up, REVIEW-3 follow-up 14)
+
+Both reviews accept 38.1 and 38.2 and report no open FATAL or GAP finding for M1. REVIEW-2 prefers the shadow-loop
+route to its own `4λ` merge. What follows are their last small fixes.
+
+### 39.1 The cluster range also keeps other clusters' holes out of the ribbon (38.2, REVIEW-3)
+
+* **The problem.** `W` is Balaban's average of the **excised and filled** field. Another cluster `C'` that passed its
+  test is excised on `H_{C'} = N_{i'}(C')` with `i' ≤ ℓ_max`. With `D = 2ℓ_max + 2` the only bound is
+  `dist(γ, H_{C'}) ≥ D − 2ℓ_max = 2`. So the ribbon `R = N_{C_3 L}(γ)` can meet `H_{C'}`. There the field is the
+  filling, whose plaquettes are bounded by the filling's data bound, not by `r0`.
+* **Fix.** Take `D := 2ℓ_max + 2 C_3 L + 2`. Then `dist(γ, H_{C'}) ≥ 2 C_3 L + 2`, so `R` and every averaging
+  neighbourhood along `Γ'` stay at distance `≥ C_3 L + 2` from every other cluster's hole. Every plaquette used in
+  38.2 steps 2-5 is then an unexcised plaquette at angle `< r0`.
+* **Nothing else changes:**
+  * `D` is still a fixed multiple of `L`, so there is no cascade;
+  * the entropy `(C D)^d` per deep plaquette stays fixed against `e^{−c p²}`;
+  * holes of different clusters stay `≥ 2 C_3 L + 2` apart.
+
+### 39.2 Why an unexcised core in a capped cluster never needs E7.J (38.2, both reviews)
+
+A localised core within `D` of an extended structure joins its cluster and is not excised. That never matters:
+1. **One large-field component.** Deep plaquettes (angle `≥ r0 ≫ ε_k`) are large fields at scale `k`. A cluster is
+   connected at range `D ≤ C L ≪ M R_k`, so it lies in one connected component of the scale-`k` large-field region.
+2. **That component stays carried.**
+   * A component is released (renormalised at this step) only if it is regular as a whole: condition (i) and the
+     regularity of `W` on it ([V] pp. 381-386; 35.3).
+   * If the cluster reached the cap, 38.2 gives an irregular coarse plaquette within `C λ ≪ M R_{k+1} L` of it, inside
+     that component's neighbourhood.
+   * So the whole component, the core included, is carried.
+3. **E7.J is not used there.** E7.J's pointwise fibre mass is used only at regular `W`, on a renormalisation domain
+   (`FILL.md` 0.2). It is therefore never needed for a configuration in which that core is unexcised.
+
+### 39.3 Blocks of whole sites: the update moves every variable of its sites (38.5 (2), REVIEW-3)
+
+* **The bug.** 38.5 let `q_b` keep some variables of `b`'s own sites: the bonds from `x ∈ B_b` to `x + e_μ ∉ B_b`, with
+  their plaquettes and noise. If `σ` and `σ'` differ on such a bond, the site `x ∈ B_b` disagrees after the update
+  whatever the coupling. (I)'s right side, a sum over `z ∉ B_b`, has no term for it, so (I) fails.
+* **Fix (choice (i) of REVIEW-3).** `q_b` resamples **all** variables of the sites of `B_b`, face-crossing bonds and
+  their plaquettes and noise included, from the conditional law given the rest.
+  * DLR is unaffected, since it is a regular conditional law of the kernel's own law.
+  * The box law still depends on the outside only within range `r_int`. The fibre constraints of the neighbouring
+    `L`-blocks enter as data.
+  * H3 and Lemma C cover the face-crossing variables as boundary-adjacent box variables. Their influence is of order
+    `(log p)^d`, the shape the bound already has, so (K) is met with the same `ℓ_B`.
+* Then a site of `B_b` disagrees after the update only through the coupling, and (I) holds as in 28.3.
+
+### 39.4 The reference measure of the block densities (38.5 (3), REVIEW-2)
+
+* The box variables are constrained to the fibre of the coarse data (the block averages fixed in each `L`-block) and
+  to the block-axial gauge slice. So `q_b` is not absolutely continuous with respect to product Haar.
+* **Fix.** The reference `λ_b` is the **fibre and gauge-slice reference measure** of the box given `X_{j+1}`: the
+  disintegration of product Haar along the block-average map, restricted to the gauge slice.
+  * The block map is analytic and submersive on the regular set (X1.H1), so this is an explicit smooth measure on the
+    fibre (coarea formula).
+  * It is the same in both copies on good and composite blocks, where the coarse data agree. Source blocks use the
+    product kernel.
+* With this reference, the maximal-coupling and Goldstein constructions of 38.5 (3) go through as written, and every
+  density stays explicit and jointly measurable.
+
+### 39.5 Levels (REVIEW-2; REVIEW-3's wording)
+
+* **R7′, the per-flip normalisation: citation-level use.** It cites Balaban's two-sided bounds for locally modified
+  actions ([16] Theorem 1 and its proof; [V] p. 380), with the removed plaquettes treated as a large-field region. [16]
+  is the three-dimensional paper, and the removed-plaquette setting is not his. The risk is low, since only `poly(β)`
+  per flip is needed. The exponent comes from a rank count (paper).
+* **R2's lifetime, [V] (1.80)-(1.81): citation plus one citation-level reading.** Its use for long-lived sheets reads
+  Balaban's "no large fields are created" (p. 384) as referring to the new rim `S(Z) \ Z` only. Continued
+  irregularity inside the carried region is then not a "new" large field (`R10-SCOPE.md` 1). The text supports this,
+  but it is an interpretation of how his procedure treats a region's interior.
+* **The labels row** names its citation-level use: Balaban's local cluster expansion with one extra small local
+  insertion (38.3 (3)).
+
+### 39.6 Changes made elsewhere
+
+* **In this file:**
+  * 38.2's `D` is replaced by 39.1's, and 39.2 is its added remark;
+  * 38.5 (2)-(3) are corrected by 39.3-39.4;
+  * 37 is finalised.
+* **`S1-INDUCTION.md` row 3, `FILL.md` and `REVIEW3-RESPONSE.md` 2:** `D = 2ℓ_max + 2 C_3 L + 2`.
+* **`M1-PLAN.md` 0:** the final verdict.

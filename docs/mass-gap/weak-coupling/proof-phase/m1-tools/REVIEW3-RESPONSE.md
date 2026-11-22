@@ -122,7 +122,7 @@ irrelevant above it). **Status: paper.**
 **Kept:** the slab gap `≥ 2(π/(w + 1))²` is independent of the area (REVIEW-3), and the data bound `C r0 w ≤ C c L^{-3}` is
 small against it. **Status: paper**, except item 2's last step (**sketch**).
 
-**Update (`UV-TV.md` 38.2):** "components that touch are merged" is replaced by growth per cluster of `H_0` at range `D = 2ℓ_max + 2`, and "cap reached implies irregular `W`" is proved there (paper).
+**Update (`UV-TV.md` 38.2):** "components that touch are merged" is replaced by growth per cluster of `H_0` at range `D = 2ℓ_max + 2 C_3 L + 2` (`UV-TV.md` 39.1), and "cap reached implies irregular `W`" is proved there (paper).
 
 ## 3. H6: the per-flip normalisation
 
