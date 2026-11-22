@@ -814,3 +814,8 @@ thread.
   so the root cost A_min/g_h² → ∞ and the suppression → 0: a departure from the perfect duality at the root is a total loss and
   essentially never happens. In the bookkeeping: the sum over roots is dominated by the coarsest scales, and the deep (fine-scale) end
   converges trivially — which is what makes "root cost (once) + summed maintenance" close.
+- **Excision is what DMP says (the owner, same day):** "Excision is exactly what DMP says. In DMP only Hawking–Penrose information
+  radiation, so the loss associated with the assertion of existence, is emitted by something that is behind a boundary." Reading
+  (coordinator): in M1 a trapped core is excised — its interior never enters a later average; only its boundary (record, maintenance
+  cost) acts outward. That is the DMP rule: what is behind a boundary contributes nothing but the loss of asserting itself (the
+  maintenance term, summed and bounded by P2′).
