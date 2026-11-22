@@ -150,3 +150,9 @@ change what the gate certifies.
 
 **What to decide**: A, A + B, or keep the simulated gate (the queue then stays stopped). This text only drafts the change; it does not
 amend `r4-actnumber/PREREG.md`.
+
+## Owner's decision on the photon control (2026-11-22, before any run)
+
+Option **A** adopted (the owner: "Feel free to run the measurement"): the photon control of this measurement is the exact free-photon
+formula (z₀ = 2L·arsinh(sin(π/L)), z_e = g²/2, doubling factor of the photon's z_e exactly 1), as in the proposal above; no simulated
+U(1) gate. Option B (sector-resolved U(1) control) is not part of this run. Nothing else changes.

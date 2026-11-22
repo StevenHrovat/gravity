@@ -673,3 +673,9 @@ Reading (coordinator; candidate):
   is indeed a pair (two flux strings, one each way: an arrow), while light's lowest state is a single photon (a point). It agrees with
   c6a's finding that only vacuum-side (centre-even) statements separate confinement from the gap: the flip probability is centre-odd and
   carries no arrow. Open, as before: that SU(2)'s loss per doubling stays within one quantum; measurable with the joint z₀/z_e run.
+- **Existing vs having existence (the owner, same day, more precise):** "Light / not dualistic parts only exist, they do not have
+  existence. Existence requires a duality, so that an internal causality can be established." Reading (coordinator): the act number
+  measures *having* existence (an internal arrow: a state that propagates in time between two assertions); light only *exists* (a
+  point, one assertion). In the doubling law with loss this is the start condition: an admissible start box must contain a duality
+  (internal causality), and only such a box carries act beyond the single-assertion loss. The owner approved running the joint z₀/z_e
+  measurement with the exact photon formula as control (option A).
