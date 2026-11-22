@@ -493,3 +493,161 @@ points. Corrections I would make:
 | G5 encoding | moot by design (state `(SO(3), closed Z2)`); bears on P4 |
 | G6 extended holes | resolved (H5 constants now in the table) |
 | Parity NIT | resolved; new NIT on the hard core across scales |
+
+## Fourth follow-up
+
+Read for this: `../m1-tools/REVIEW3-RESPONSE.md` 13 and 14, and `UV-TV.md` in full. REVIEW-3 was not read. Nothing was
+built.
+
+### Verdict (fourth follow-up)
+
+* **N-2 is now honestly stated.** Section 13.4 agrees that the key step is new analysis, withdraws the "OS closure"
+  interface line, and keeps `MassGapLoc` unchanged. That resolves my objection to the verdict's weighting.
+* **The coupling method does avoid the frozen region, as a method:**
+  * the reverse-kernel factorisation is exact (the forward blocking chain is Markov in the scale, noise included, so the
+    fine law given the block state is the composition of the kernels `K_j`);
+  * no observable is inserted with fixed content.
+* **But the frozen-region demand comes back through the repair's hypothesis.** `UV-TV.md`'s Theorem A asks that bad
+  boxes be **dominated by an independent percolation**. That needs a bound on the probability that a box is bad given
+  **arbitrary** configurations of its neighbours, including bad ones. It fails for the same worst-case boundaries that
+  caused obstruction (b), and is the same kind of "uniform over arbitrary fine content" condition as the frozen region.
+* **A formulation that avoids this** uses:
+  * Peierls-type joint bounds on bad sets, under the law **given the coarse field only**;
+  * bad sets defined through Balaban's large-field patterns (mixture indices), not as events of the configuration;
+  * a coupling that matches the pattern mixtures first, and runs the box-by-box coupling on good boxes only.
+  
+  With that change the repair looks sound in principle.
+* **The composition (ii) is routine only for the original (i),** which the obstruction shows to be false. For the
+  good-boundary (i) it becomes a multi-scale disagreement percolation through bad regions inherited from coarser scales.
+  That is part of the new analysis, not a union bound.
+
+Severity: GAP (open, now precisely located). No FATAL finding.
+
+### 1. Does the coupling method avoid the frozen region?
+
+* **Yes, as far as it goes.** The forward chain `V_{j+1} = B(V_j, xi_j)` is Markov in `j`, with independent noise. So
+  `law(V_j | V_{j+1}, ..., V_ell) = law(V_j | V_{j+1}) = K_j`, and the fine law given the block state at scale `ell` is
+  exactly `K_0 ∘ ... ∘ K_{ell-1}`.
+  * Each `K_j` is the fibre measure of M1's own law `rho_j`; noise and labels are included in the state.
+  * The bound `|E[F | F] - E[F | F']| <= 2 ||F|| P(disagreement reaches supp F)` holds for every bounded measurable `F`.
+  * Nothing is frozen; only true conditional measures are coupled.
+* **Where it can come back.** Any argument that controls a kernel's law in a box **given arbitrary fine data around the
+  box** asks for exactly what the frozen region asked for: uniformity over fine content that the action does not
+  penalise. The Lean one-box hypothesis (sup over all `sigma`) asks this, which is why it fails (section 3 below), and so
+  does Theorem A's independent-domination hypothesis (section 4).
+
+### 2. Is the composition (ii) routine, uniformly in the spacing?
+
+* **Given (i) in its stated form,** uniform over all conditioning fields outside the agreement region, yes. Choose
+  shrinkages `r_j = w_j t/(L^j a)` with `sum_j w_j <= 1/2`, for example `w_j` geometric in `ell - j`. Then:
+  * the per-scale failure `C |B_j| e^{-kappa r_j}` is dominated by the top scale, because `t/(L^j a)` grows like
+    `L^{ell-j}` while `|B_j|` grows only like `L^{d(ell-j)}`;
+  * the slow scale dependence of the good-box constants (box side `(log p(g_j))^{d+1}`, rate `m/log log g_j^{-1}`) is
+    harmless against that growth;
+  * the bound is uniform in `a`.
+* **But (i) in that form is false** (obstruction (b)). Only the good-boundary (i) is plausible. Then:
+  * the agreement region at scale `j` contains bad regions inherited from every coarser scale. A scale-`j'` bad box is
+    a connected bad cluster of linear size `L^{j'-j}` at scale `j`, common to both copies;
+  * a disagreement can pass through such a common region without contraction, since the fine law inside it, given
+    identical coarse data, is still sensitive to its boundary;
+  * so the composition must bound multi-scale bad crossings: paths made of bad regions of all scales `j' >= j`, under
+    the law given `V_ell`.
+  
+  That is Balaban's multi-scale large-field geometry (his history-summed `d_j`-polymer bounds, [V] (1.80)-(1.85)),
+  used as a **conditional** statement. It is likely doable with his bookkeeping, but it is not "a union bound over
+  scales". **Not routine.**
+* **Density of bad boxes in physical units is not the problem.** Bad boxes at fine scales are dense in physical units
+  near `supp F` (`sum_j (R/(L^j a))^d e^{-p0(g_j)}` diverges as `a -> 0`, as for all of Balaban's large fields). What
+  matters is subcriticality per box at each scale against crossing lengths `r_j` that grow like `L^{ell-j}`, and that
+  holds.
+
+### 3. Is the obstruction real?
+
+* **(a) Single-site TV Dobrushin fails: real.** A weakly coupled, narrow Gaussian-like variable has conditional total
+  variation influence of order one or more from a neighbour. This holds even for a free massive Gaussian field with
+  compact or narrow spins: after one disagreement the values differ by about one width, which moves a neighbour's
+  conditional mean by an `O(1)` fraction of its width.
+* **The block version on small-field boundaries: plausible, with one point to write.** For continuous variables, the
+  Hamming-Wasserstein distance needs couplings with **exact** agreement at far sites. A plain shift coupling makes every
+  site differ. The claimed `k_J(z) <~ (log p/m)^d` needs a nested construction: couple the far marginals maximally, then
+  extend inward conditionally, with each layer's conditional total variation controlled by the decaying mean shift.
+  That works for a Gaussian with exponentially decaying covariance and small analytic perturbations, but it is the
+  construction to write in `UV-TV.md` 2.
+* **(b) Worst-case boundaries: real.** A large-field boundary can force a deep structure (vortex sheet, monopole line)
+  through the box at a position the block constraint leaves free, and one boundary site can move it across the box. So
+  the one-box hypothesis with `sup` over all `sigma` cannot be verified, and the present Lean layer does not apply.
+
+### 4. Is the repair sound in principle?
+
+**The idea, yes; the hypothesis as written, no.**
+
+* **Independent domination fails here.** Theorem A assumes the bad set is "dominated by a subcritical independent
+  percolation of boxes". By the standard criteria (Liggett-Schonmann-Stacey, or the sequential form used in van den
+  Berg-Maes), that requires `P(J bad | the configuration outside J) <= eta` for the outside configurations met during
+  the coupling. Near a bad box this fails:
+  * a forced deep structure that crosses a bad box continues into its neighbours;
+  * so `P(J bad | bad neighbour with a structure ending on the common face)` is of order one.
+  
+  Badness is spatially correlated in exactly the worst-case way of obstruction (b). The box-by-box coupling of 3.1
+  conditions on revealed fine content of neighbouring boxes, so it meets this.
+* **What works instead:**
+  * **Peierls-type sparseness under the law given the coarse field.** For every set `S` of boxes,
+    `P(all boxes of S bad | V_{j+1}) <= eta^{|S|}`, with `eta = e^{-c p0(g_j)}`. Balaban's polymer bounds give this
+    shape, with the normalisation adaptation (section 5). It needs no conditioning on fine neighbours.
+  * **Bad sets as mixture indices.** Balaban's large-field regions come from smooth partitions of unity. They are
+    summation indices of a positive mixture, not events (the same point as for `E_D` in R10, settled in 13.3). Define
+    "bad" through them.
+  * **Mixture-first coupling.**
+    1. Couple the two copies' pattern mixtures near `B` through the locality of the ratio `Xi_{-G}/Xi` (section 7's
+       mechanism at scale `j`).
+    2. Given identical patterns near `B`, couple the small-field parts by the good-boundary block argument.
+    3. Large-field components that lie wholly inside the agreement region then have identical boundary data and
+       identical laws.
+    4. Disagreement can reach `B` only through a connected bad cluster joining the front to `B`, which is bounded by the
+       Peierls sparseness.
+  * Path counting of the van den Berg-Maes kind then needs only the joint bounds.
+* **So Theorem A should be restated** with a sparseness hypothesis on a mixture (pattern) index, and a coupling built
+  over that mixture, not with domination of a configuration event by independent percolation. As stated it would push
+  the frozen-region uniformity into its domination hypothesis.
+
+### 5. Does the conditional rarity of bad boxes hold uniformly, or does the frozen region come back?
+
+* **Given the coarse field near `J` good:** the rarity of new scale-`j` large fields near `J` is section 7's crossing
+  estimate one scale down. It conditions only on the top variable `V_{j+1}`, as in Balaban's own step, so no fine
+  content is frozen.
+  * **Uniform in `V_{j+1}` away from `J`:** plausible, because the ratio `Xi_{-G}/Xi` is local in the polymer
+    expansion. Fixed large-field regions of `V_{j+1}` far away enter numerator and denominator alike.
+  * **What it rests on:** the pointwise lower bound for the fibre normalisation `rho_{j+1}(V_{j+1})` relative to the
+    small-field Gaussian fibre integral near `J`. That is the "top variables paid from the large-field budget"
+    adaptation, now needed at **every** scale and **pointwise in the conditioning**, not only on average. Still
+    unchecked, and the main technical risk outside the small-field coupling.
+* **Given the coarse field bad near `J`:** bad by fiat. The rarity has to come from the kernel one scale up, given its
+  own coarser field, and so on up to `V_ell`, whose large fields are controlled in `L^1` by its law (which is all that
+  (A) and (B) need). This induction is consistent, but it is exactly the multi-scale conditional geometry of section 2,
+  and it must be organised with the history-summed bounds, not box by box.
+* **Unfinished finer history.** `rho_j` also contains regions born at finer scales that have not yet been released
+  (unfinished `T`-operations in the history of `rho_j`). Near them the kernel `K_j` is not Gaussian-like in `V_j`, even
+  where `V_j` is regular. They must count as bad boxes too. They are mixture indices of `rho_j`, so the sparseness
+  formulation covers them; an event-based "bad = the field is not small near `J`" does not.
+* **Where it would come back:**
+  * if rarity is required given arbitrary fine neighbours (independent domination, or a sequential box coupling through
+    bad boxes);
+  * if the normalisation lower bound is needed given arbitrary **fine** data rather than coarse data.
+  
+  In both cases the uniformity over unpenalised fine content, which is the frozen region, reappears. With the mixture
+  formulation it does not.
+
+**Answer: the conditional rarity can hold uniformly, given the coarse field only, and then the frozen region does not
+come back. Under Theorem A's present hypothesis it would come back.** Confidence: medium.
+
+### Status (fourth follow-up)
+
+| item | status |
+|---|---|
+| N-2 statement and the theorem unchanged | resolved (the "OS closure" line withdrawn; `MassGapLoc` unchanged) |
+| coupling method avoids the frozen region | yes as a method; the reverse-kernel factorisation is exact |
+| obstruction (a) and (b) | both real; the block version on good boundaries is plausible, with the nested exact-agreement coupling to write |
+| Theorem A as stated | **hypothesis to change:** independent domination reintroduces uniformity over fine content; use Peierls sparseness on pattern indices given the coarse field, and a mixture-first coupling |
+| composition (ii) | routine only for the original, false (i); for the good-boundary (i) a multi-scale conditional crossing estimate (Balaban's history geometry); part of the new analysis |
+| conditional rarity of bad boxes | plausible given the coarse field, pointwise normalisation at every scale (unchecked adaptation); includes unfinished finer-history regions |
+| N-2 overall | **GAP**: open, new analysis, now precisely located |

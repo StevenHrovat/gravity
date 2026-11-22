@@ -302,3 +302,161 @@ amendments:
 * NITs: the contraction lemma's tail condition `kappa >= 4 log L + C`; marginal steps for multi-cube components; the
   `theta f_l` wording in N-2; Cauchy in `t` only for the local terms; the verdict should call the label inputs
   adaptations, not citations.
+
+## Follow-up 3 (Lemma UV-TV (i), `UV-TV.md`, `REVIEW3-RESPONSE.md` 13-14), 2026-11-22
+
+Read: `../m1-tools/UV-TV.md` (all), `REVIEW3-RESPONSE.md` 13 and 14, and the Lean one-box layer as far as its
+hypotheses go (`formal/ProofPhase/OneBox/Criterion.lean`: `abs_cov_le_of_oneBox`, `OneBoxSum`; `Restricted.lean`:
+`IsInfluenceBoundOn`). Nothing was built or re-run.
+
+### Verdict
+
+The diagnosis is right, and the repair points the right way, but both need sharpening.
+* **(b)** The one-box Lean hypothesis, a bound for every boundary configuration, cannot be verified for this kernel,
+  but not for the reason given: the sliding vortex example does not produce an influence of order `|J|`. The real
+  reason is that large-field boundaries lie outside any control: Balaban gives only upper bounds there, and the box law
+  may be multimodal. No choice of box size or influence metric removes this.
+* **(a)** The block estimate is right in order. The decay rate is wrong by a power, harmlessly.
+* **(c)** The good/bad route is sound in principle. But its stated hypothesis, domination by a subcritical
+  *independent* percolation, is not available: badness is inherited from neighbours. The usable hypothesis is an
+  *annealed* Peierls bound on bad sets under each of the two coupled measures.
+* **Lemma UV-TV (i) as stated in 13.4 is false.** It cannot hold uniformly in the coarse field: a coarse large-field
+  region joining `B` to distance `r` carries disagreement through with probability 1. It must be restated with the
+  coarse bad set in the failure event. Then the composition (ii) is a multi-scale percolation estimate for Balaban's
+  history regions, not a routine union bound.
+
+No FATAL finding; two GAPs in the plan (below).
+
+### (b) Is it a real obstruction? Could other boxes or another influence notion meet the hypothesis?
+
+* **What the hypothesis asks.** `IsInfluenceBoundOn` quantifies over all boundaries `sigma`, all values `s` at `z`,
+  and all admissible (gauge-invariant, boundary-frozen) `F` with per-site oscillation `<= L`. `OneBoxSum` weighs
+  `kappa(u)` by `e^{lambda E^(u)}`, with `E^(u)` the distance from `u` to the **far** side of the box.
+* **The example does not give influence `~ |J|`.**
+  * A vortex sheet is codimension 2 in 4D and a monopole line codimension 3. Since the test functions are gauge
+    invariant, only the cores count: moving a sheet changes `~ l_B^2 w^2` core sites, not `l_B^4`.
+  * At low temperature a 2D membrane in 4D is rigid. Changing one site where it meets `dJ` bends it locally, rather
+    than redistributing its position across the box.
+  * Even with an `O(1)` total-variation shift per site, the sites that matter lie along a curve of length `~ l_B`. The
+    sum is then `~ l_B^3 << gamma l_B^4` for large boxes.
+  * So, as stated, (b) is not shown; bigger boxes would beat that particular mechanism.
+* **Why the sup still cannot be verified.** For boundaries or coarse data that are large field near `J`, nothing
+  controls the box law. Balaban's large-field analysis gives only upper bounds (positivity, `T(1)`). Large
+  chromomagnetic backgrounds can have unstable fluctuation directions (the Nielsen-Olesen instability; compare the
+  charged quartic mode of `MILESTONE-1.md`), so the box law may be multimodal, and a single site may tip it between
+  modes. An influence bound for every `sigma` would need a theory of the kernel in exactly the regime where none
+  exists. That is the obstruction. It should be stated this way, and the sliding-sheet example dropped or demoted to
+  an illustration.
+* **Other boxes: no.** Box size cures (a) and the codimension-2 example, not the absence of control.
+* **Another influence notion: no.** A Wasserstein (Kantorovich) Dobrushin criterion with distances scaled by `g_j`
+  would handle the Gaussian part even single-site, followed by one smoothing step to reach total variation. But a
+  boundary value can jump by `O(1)` in a large-field direction, so the worst case is unchanged.
+* **Restricting the state space: no.** Restricting single spins to small-field values satisfies the sup trivially but
+  changes the measure. The total-variation cost of the restriction over a region of `(R/a)^d` sites does not vanish
+  (large fields are dense in physical units at fine scales), so it must be paid locally, through a percolation of bad
+  regions. That is (c) again.
+* **Conclusion:** good/bad is the right structure, but it is a new theorem, not a hypothesis change to `theoremA_on`.
+  Dobrushin-Shlosman's oscillation iteration is worst-case by construction.
+
+### (a) The block estimate
+
+* **Single site fails, agreed**, for two reasons:
+  * the influence `~ eps_j/g_j = p(g_j)` in total variation;
+  * the kernel is a **fibre** measure (`block(V_j) = V_{j+1}` fixed), so a single fine site cannot move alone. Its
+    one-site specification is degenerate.
+  
+  Boxes must therefore be unions of `L`-blocks, so that the block constraints are internal to the box. Say so.
+* **The order `k_J(z) <~ (log p/m)^d` is right**, with one correction to the coupling. A shift coupling makes every
+  site differ. Use a sequential or maximal coupling: the Hamming-Wasserstein distance is
+  `<= Sum_r #(sites at distance r) * TV(marginals beyond r)`, with the far-marginal total variation
+  `<~ p(g_j) e^{-m r} r^{(d-1)/2}` (massive covariance). This gives the stated order.
+* **The rate is off by a power.** In `OneBoxSum`, `E^(u) >= l_B` (distance to the far side), so the weighted sum is
+  at least `e^{lambda l_B} Sum k`. With `l_B ~ C (log p/m)^{d+1}/gamma`, the rate is
+  `lambda ~ 1/l_B ~ gamma (m/log p)^{d+1}`, that is about `m^{d+1}/(log log g_j^{-1})^{d+1}`, not
+  `m/log log g^{-1}`. This is harmless for (ii), since `t/l -> infinity` beats any power of `log log`. Correct it in
+  `UV-TV.md` 2 and 6.
+* **Not finite range.** The specification has exponentially decaying interactions (E-terms, the non-local
+  background), not finite range. The weighted sum already allows that; the percolation version (c) must too.
+
+### (c) Is the good/bad Theorem A sound, and what exactly must its percolation input be?
+
+* **Sound in principle**, as a Peierls-plus-Dobrushin coupling argument. But the hypothesis "the bad set is dominated
+  by a subcritical **independent** percolation" is not available.
+  * Badness is inherited: a bad neighbouring box makes the boundary of `J` bad with probability close to 1. So there
+    is no bound `P(J bad | revealed neighbours) <= eta`.
+  * Without such conditional bounds or finite-range dependence, domination by a product measure
+    (Liggett-Schonmann-Stacey) fails, and van den Berg-Maes's sequential argument does not apply as stated.
+* **The usable hypothesis (annealed Peierls, per copy).** For each of the two measures to be coupled, and every
+  connected set `A` of boxes, `P_i(every box of A is bad) <= eta^{|A|}`.
+* **The argument with it.**
+  * Explore from the region where the boundary conditions differ. Decide each box's goodness before coupling it,
+    from its already revealed boundary.
+  * Couple good boxes with the influence bound and bad boxes arbitrarily.
+  * Then `P(a disagreement path through boxes b_1..b_n) <= E[Prod_i (k + 1{bad_i})]`, a martingale product with each
+    `bad_i` measurable before step `i`.
+  * This is `<= Sum_{A ⊂ path} k^{n-|A|} P(bad on A in copy 1 or copy 2)`, and
+    `<= Sum_A k^{n-|A|} 2^{|A|} eta^{|A|/2}`: split `A` between the copies and use `min(P_1, P_2)`.
+  * Summable for `k`, `eta` small. Only marginal (annealed) bounds per copy are used.
+* **Two further requirements.**
+  * **Good must be a property of the pair of boundaries.** The influence bound is applied along interpolations
+    between the two copies' boundaries, and a hybrid of two small-field boundaries can be large field if they sit in
+    different gauges. Define good as: both small field on the boundary layer, and within `C eps_j` of each other in a
+    common gauge. Otherwise the box is bad.
+  * **The coupling must be modulo gauge**, with a measurable gauge choice box by box (axial, rooted consistently),
+    since only gauge-invariant `F` are tested. The Lean admissibility layer handles gauge for the oscillation
+    iteration, not for couplings.
+
+### Is the rarity of bad boxes given the coarse field available uniformly, or does it hide the same problem?
+
+* **Not uniformly. Lemma UV-TV (i) as stated is false.** 13.4 asks for the coupling "uniformly in `j`, in the volume,
+  and in the field outside the neighbourhood", for all `V_{j+1}`. If `V_{j+1}` has a large-field region joining `B`
+  to distance `r` (allowed, since the agreement is only on the `r`-neighbourhood), the fine kernel inside it is
+  uncontrolled, and disagreement can pass with probability 1. `UV-TV.md` 3.2 says as much ("bad by fiat; rarity from
+  the coarse law one scale up").
+* **It does not hide the same problem if everything is annealed.**
+  * (A) and (B) of 13.4 are averages over the block state: an `L^1` norm and an expectation of a conditional
+    covariance. So failure events may depend on the coarse data, as long as their probability under the law is small.
+  * Restate (i): the two `V_j` agree on `B` except on an event contained in "a bad region of either copy (fine bad
+    boxes at scale `j`, or the coarse large-field set of `V_{j+1}`) joins `B` to distance `~ r`", plus the
+    good-region contraction tail.
+  * For (A), the comparison configuration must itself be sampled from the law: an independent resample of the far
+    coarse data given `H`, not an arbitrary `F'`. Then annealed bounds apply to both copies.
+* **The input this needs: a multi-scale crossing estimate.** Under the law (and under the law conditioned on `H`, for
+  the resampled copy), the probability that Balaban's history large-field region, the union of large-field sets over
+  all scales `<= l` connected across scales, joins `B` to distance `r` is `<= C |B| e^{-kappa r}`.
+  * This is section 7's crossing estimate for history polymers at every scale, with the per-scale normalisation (the
+    named unchecked adaptation).
+  * At fixed small-field `V_{j+1}` the scale-`j` part is the fixed-top-variable ratio of 3.2. Where `V_{j+1}` is large
+    field, the rarity comes from the scale-`(j+1)` law. Chains of bad regions across scales are exactly what the
+    history polymers count.
+* **Consequence for (ii).** The composition is not "routine given (i), a union bound over scales". A disagreement can
+  cross a scale-`j` bad region, then a scale-`(j+1)` one, and so on. The bound must sum over multi-scale chains, which
+  is the history-crossing estimate above. It closes if that estimate holds, but it is part of the work.
+
+### Anything missing?
+
+* The fibre constraint: boxes must be unions of `L`-blocks, and the single-site specification is degenerate (above).
+* "Good" defined for pairs of boundaries, and couplings modulo gauge (above).
+* Non-finite-range specifications in the percolation argument: disagreement can jump gaps with exponentially small
+  probability. Fine, but it must be in the theorem.
+* **Z2 layer.** Agreed that it is standard: product reference for the lift signs, couplings
+  `J_p >= beta(1 - O(eps^2))` on good boxes, weak couplings only on SO(3)-bad boxes. Two points to add:
+  * the kernel also fixes `tau'_{j+1}`, so `tau'_j` ranges over the Stokes fibre (closed cochains with the given coarse
+    sums), and the low-temperature expansion runs on that fibre;
+  * the decoder constraint applies only at scale 0.
+* **Finite-range decomposition (d).** Agreed: it could replace the block estimate for the Gaussian part, but the
+  large-field part needs the same annealed rarity whatever the route.
+* **Section 14's spectral form (S).** Agreed that it is equivalent in strength and not more provable from M1's tools.
+
+### Findings, one line each (follow-up 3)
+
+* **GAP:** Lemma UV-TV (i) cannot hold uniformly in `V_{j+1}`. It must be restated annealed, with coarse and fine bad
+  regions in the failure event. Then (ii) needs a multi-scale crossing estimate for Balaban's history regions, which
+  is not a routine union bound.
+* **GAP:** the good/bad Theorem A cannot assume domination by an independent percolation (badness is inherited). Its
+  hypothesis must be an annealed Peierls bound per coupled copy, with "good" defined for pairs of boundaries and the
+  coupling taken modulo gauge.
+* NIT: (b)'s sliding-sheet example does not give influence `~ |J|`. State the obstruction as "no control of the box law
+  on large-field boundaries (possible multimodality)".
+* NIT: the rate of (a) is about `1/l_B ~ m^{d+1}/(log log g^{-1})^{d+1}`, not `m/log log g^{-1}` (the far-side weight
+  in `OneBoxSum`). Boxes must be unions of `L`-blocks.
