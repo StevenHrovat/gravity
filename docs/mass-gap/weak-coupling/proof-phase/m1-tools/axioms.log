@@ -32,4 +32,7 @@
 'ProofPhase.M1.signCorrect_inner_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.cap_of_away' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.M1.angle_le_two_arccos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.M1Hypotheses.step_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.m1_assembly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.m1_laws' depends on axioms: [propext, Classical.choice, Quot.sound]
 no sorry / native_decide / axiom in ProofPhase/M1
