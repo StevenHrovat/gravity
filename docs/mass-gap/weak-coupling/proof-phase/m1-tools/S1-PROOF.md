@@ -1,5 +1,7 @@
 # §8: the S1 bookkeeping, one step of the inductive form for laws (m1-tools, 2026-11-22)
 
+> **Status (2026-11-22): broken by REVIEW-1 F1** (`../m1-review/REVIEW-1.md`): the root count here assumes one position per cell per scale, valid only for cores pinned at nested centres, while trapping traps every deep plaquette; records are then dense in physical units and the bounds are not uniform. Assessment and repair attempt: `F1-REPAIR.md`. The text below is left as it was.
+
 Brief: write the bookkeeping that proves S1 (`assemble` in `Assembly.lean`): if `ρ_k` has the inductive form `Form_k`
 (`S1-ROWS.md` 1) and every row holds at scale `k < K`, then `ρ_{k+1}` has `Form_{k+1}`. Not the paper write-up. Read for
 this note: [V] pp. 387-391 ((1.90)-(1.104)) and [III] Sect. 2 again; everything else is in the notes cited per step.

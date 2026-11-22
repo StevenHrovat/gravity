@@ -1,5 +1,7 @@
 # M1: outline of the accompanying paper, and the estimate inventory (m1-tools, 2026-11-22)
 
+> **Status (2026-11-22): broken by REVIEW-1 F1** (`../m1-review/REVIEW-1.md`): the root count here assumes one position per cell per scale, valid only for cores pinned at nested centres, while trapping traps every deep plaquette; records are then dense in physical units and the bounds are not uniform. Assessment and repair attempt: `F1-REPAIR.md`. The text below is left as it was.
+
 M1 = Balaban's large-field operation R ([IV], [V]) redone so that the effective densities stay the **laws** of the
 block fields. The owner (2026-11-22): M1 becomes **an accompanying paper to the main series** (which starts with GUID
 v8), "rock solid". Part A is the paper's outline, section by section, with what each section proves and how

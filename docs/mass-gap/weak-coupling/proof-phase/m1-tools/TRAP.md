@@ -1,5 +1,7 @@
 # Trapping deep cores (m1-tools, 2026-11-22)
 
+> **Status (2026-11-22): broken by REVIEW-1 F1** (`../m1-review/REVIEW-1.md`): the root count here assumes one position per cell per scale, valid only for cores pinned at nested centres, while trapping traps every deep plaquette; records are then dense in physical units and the bounds are not uniform. Assessment and repair attempt: `F1-REPAIR.md`. The text below is left as it was.
+
 Brief: assess the owner's trapping proposal (`../../PREP.md`, last section, "Trapping must be possible", with its three
 addenda): a core that stays deep is **trapped** — frozen as a hole, excluded, only its boundary existence transported,
 charged once at its root plus a per-step maintenance cost — instead of being avoided or captured. Questions: does this
