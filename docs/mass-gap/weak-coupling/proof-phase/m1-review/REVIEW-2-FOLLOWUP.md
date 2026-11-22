@@ -1088,3 +1088,136 @@ State the conclusion of Theorem A_good on the truncated event as `C |B| (e^{-λ 
 | condition `p0 >> d log log g^{-2}` | **conclusion holds with `g_j`; derivation wrong** (`p0(g_j) <= p0(g_0)`, crude volume bound); use `log |Λ''_j| <= (d/b) g_j^{-2} + C(t)` |
 | volume uniformity | holds, given the two additions; localise by sources, not by conditioning on outside fine configurations |
 | N-2 overall | **GAP**: open; section 12 not started, and now also carries the cross-scale bridging event and age-dependent collars |
+
+## Eighth follow-up
+
+Read for this: `../m1-tools/UV-TV.md` sections 12 (parts 5 and 6, 12.1-12.5) and 23. REVIEW-3 was not read. Nothing
+was built.
+
+### Verdict (eighth follow-up)
+
+* **My seventh-follow-up points are resolved.** I checked each one:
+  * bridging is a truncation event;
+  * inherited regions are capped through the annealed large set of the next scale's field, so persistence does not
+    compound;
+  * the condition now uses `g_j` with the scale-local region bound;
+  * the outside of the region is a source in the global coupling.
+* **The frozen region is kept out** of the annealed large-set bound (H2a), the quenched H2 and the global coupling: no
+  statement conditions on unpenalised fine content.
+* **H1 is not right as written.** It is stated as Dobrushin uniqueness for the pattern restricted to boxes, with a
+  per-box influence `C η^{1/2} e^{-κ' d}` that must hold for **every** boundary pattern. A polymer that crosses a box
+  face forces its continuation into the neighbouring box, so the influence of that neighbour is of order 1. This is
+  obstruction (b) again, now in the discrete pattern gas. It does not condition on fine content, so the frozen region
+  does not come back, but the stated bound fails.
+  * The standard repair works and keeps the frozen region out: the convergent cluster expansion of the positive dilute
+    gas (activities `η^{|γ|} e^{C|∂γ|}`, weak many-body terms), with the coupling built on polymer configurations
+    (disagreement percolation on polymers, or the expansion's own locality).
+  * It is a fourth write-out, missing from the verdict's list.
+* **Two smaller corrections:**
+  * the claim in 23.1 that the annealed bound "applies conditionally on `𝓗` too" is not justified, and is not needed:
+    (A) and (B) are averaged statements, so failure events need only probabilities under the joint law;
+  * 12.1's "admissibility is local" needs a check against Balaban's non-local admissibility conditions.
+* **The verdict** "complete at paper-sketch level, apart from the named reading and three write-outs" is **nearly**
+  accurate:
+  * add H1's repair, which is standard and small, as a fourth write-out;
+  * say plainly that the one unchecked reading (Balaban's normalisation terms `E_k(Z)` are the Gaussian fibre
+    normalisations) now carries H2, H2a and R10 together: a single point of failure.
+* **My long-standing N-2 GAP is reduced, not closed.** It is no longer "open, new analysis". The argument is complete at
+  paper-sketch level, but it is not a proof until the normalisation reading is checked and the four write-outs are
+  done. No FATAL finding.
+
+### 1. My seventh-follow-up points
+
+| point | status | check |
+|---|---|---|
+| cross-scale bridging | **resolved** | 23.2: two clusters of the large set of `X_{j+1}` are at least `2w_{j+1} + ell_B` scale-`(j+1)` units apart by construction, and every connection between them at scale `j` is a born chain spanning that gap. `G_j` (more than `n_j` bridges in a cluster) is priced by the quenched H2: `<= |Λ''_j| (C w^d η^{1/2})^{ell_br n_j}`. Correct. NIT: the cluster size bound `N_j` counts born components as if each were a bridge, but born clusters attached to one inherited piece need not bridge. Their number is bounded by the piece's boundary, so `N_j <~ n_j^2 L^d n'_{j+1}` up to constants, still polylogarithmic, and only `log N_j` enters the collar. |
+| inherited-region size | **resolved** | 23.1: only the large set of `X_{j+1}` passes to scale `j`, and under the **law** of `X_{j+1}` its clusters are capped by `T_{j+1}` with `P <= |Λ''|^{-C_2}`. The annealed bound is the right object: under the unconditioned law, `X_i` being large on many boxes costs action per scale-`i` box (`η_i^{|A|}`), whatever the coarser fields do. So a coarse region that stays bad does not inflate the finer large set, unlike under the quenched chain. Every coarse state in the tower is law-distributed (resample in (A), trivially in (B)), so the bound applies. |
+| condition with `g_j` | **resolved** | 23.3: `log |Λ''_j| <= (d/b) g_j^{-2} + C(t)`, `w_j <~ log g_j^{-2}`, condition `c p0(g_j)/2 > d log log g_j^{-2} + C log log p`. The inversion is withdrawn. |
+| outside as source | **resolved** | 23.4: the global coupling, with the outside of `Λ''_j` and the truncation boxes counted as sources. Nothing fine is conditioned on. |
+| polynomial tail | **resolved** | 23.5: stated, with `C_2 > 1`. The sum over scales in 12.4 is geometric from the top. |
+
+### 2. Is the frozen region kept out everywhere?
+
+* **H2a (annealed large-set Peierls): yes.** It is a statement about the unconditioned law of `X_i`, through Balaban's
+  per-cube large-field factors and the averaged normalisation. No conditioning at all.
+* **Quenched H2 (12.1): yes.** It conditions on the coarse field only, and holds pointwise where it is small field.
+  * The lower bound for the denominator by one family of terms (the small-field alternative `ω_0` on `N_A`) is the
+    right construction.
+  * The ratio needs the normalisation reading (section 4).
+  * NIT: "admissibility is local, so `ω_0` is admissible" needs a check. Balaban's admissible histories carry non-local
+    conditions: components inside a `100 M R` cube are rectangular parallelepipeds ([III] (2.3)), regions have ages and
+    the (i)/(ii) conditions, domains are nested across scales. Turning `N_A` small may split components and change
+    their shapes or ages. A local completion very likely exists, but say which one.
+* **The global coupling: yes** (23.4).
+* **H1's gas: the frozen region stays out** (only patterns, which are discrete indices, are conditioned on), **but the
+  stated influence bound is false in the worst case.**
+  * The polymers `γ` are connected components of the discrete data, and can span several boxes.
+  * In Dobrushin's formulation over the box variables `ω_b`, the influence of box `b'` on box `b` is a supremum over
+    all boundary patterns. Take a pattern at `b'` where a polymer ends on the common face with `b`, in a shape that is
+    only admissible if it continues into `b`. Then the conditional law of `ω_b` is forced, and the total-variation
+    influence is of order 1, not `C η^{1/2}`.
+  * This is the same worst-case-boundary failure as obstruction (b), now for the discrete gas.
+* **The repair is standard:**
+  * a positive polymer gas with activities `z(γ) <= η^{|γ|} e^{C|∂γ|}` and small many-body interactions
+    (`|E(X)| <= C p^2 e^{-κ d}`, `d > r_int`) has a convergent cluster expansion (Kotecky-Preiss);
+  * local pattern marginals then depend on far data (far coarse fields, `D`, the outside) with exponential decay;
+  * a coupling of the two copies' pattern laws, with `P(ω_b != ω'_b)` bounded by connected polymer chains to the
+    difference set, comes from disagreement percolation **on polymer configurations** (polymers as discrete objects,
+    each priced by its activity), or directly from the expansion.
+  
+  None of this uses sup-over-boundary influences. FIXABLE, a fourth write-out.
+
+### 3. The chaining (12.3, 12.4)
+
+* **Structure: right.** Per scale, conditionally on the coarser data:
+  1. couple the patterns;
+  2. build the composite boxes;
+  3. apply the coupling-form Dobrushin-Shlosman theorem with the sources (inherited disagreement, pattern
+     disagreements, the outside, truncation boxes);
+  4. turn expected counts into a front advance `a_j = C λ_j^{-1} log |Λ''_j|`, except on `|Λ''_j|^{-C_2}`.
+  
+  The front's remaining distance `R_j - Σ_{i >= j} L^{i-j} a_i >= R_j/2` holds once `t/ell >= C ell_B g_ell^{-2}`.
+  The sum is dominated by the top scale, and `a_i` grows only like `g_i^{-2}`, linearly in `ell - i`, against
+  `L^{ell-i}`. Correct.
+* **Pricing of inherited composite boxes on the path:** by the annealed H2a one scale up, per scale-`(j+1)` box.
+  Covering half a path of `R_j` scale-`j` units needs about `R_j/L` such boxes. That is exponentially small, and
+  consistent with pricing at the own scale (my sixth follow-up, item 3).
+* **Mixing quenched and annealed: consistent, if failure events are only averaged.**
+  * The per-scale conclusions hold conditionally on coarser data on the good events. The failure events
+    (`F, G, T`) enter as indicators whose probabilities are taken under the joint law, by a union bound over scales.
+    That needs no independence, and the annealed bounds suffice because each copy is law-distributed.
+  * **Drop the remark in 23.1** that the annealed bound "applies conditionally on `𝓗` too". Conditioning on the local
+    block data `𝓗` near `F` changes the law near `B`. A pointwise-in-`𝓗` bound would need the quenched chain, where
+    persistence **does** compound (H2 is silent under a coarse bad region). It is not needed, because (A) is an `L^1`
+    statement averaged over `𝓗`. As written the remark is unjustified.
+* **Result:** `P(the fine fields differ on B) <= C (R/ell)^d e^{-c t/(ell polylog)} + C (t/ell)^{-d(C_2 - 1)} -> 0`
+  as `ell -> 0`, uniformly in the spacing and the volume. The bookkeeping is consistent at sketch level.
+
+### 4. Is the final verdict accurate?
+
+The verdict reads "complete at paper-sketch level, apart from one unchecked reading ([V] (1.70)-(1.71): `E_k` are the
+Gaussian fibre normalisations) and three write-outs (Lemma C's cross term, the coupling-form theorem, the front-advance
+estimate)". **Nearly accurate.** Corrections:
+1. **Add H1's repair** (section 2) as a fourth write-out: replace Dobrushin uniqueness over box-restricted patterns by
+   the cluster expansion of the positive dilute gas with a polymer-configuration coupling. Standard, small, but the
+   present text claims a bound that is false in the worst case.
+2. **Make the weight of the reading explicit.** The identification of Balaban's normalisation terms `E_k(Z)` with the
+   Gaussian fibre normalisations of the small-field alternative is used pointwise (12.1, the quenched H2), averaged
+   (H2a), and at scale `K` (R10). If it fails by a factor `(β^{3/2})^{#bonds}` per region, every rarity bound in the
+   tower loses a `polylog` per box. That would be absorbed only if `p0 >> log β`, which holds (`p0` is polylog of
+   high power). So even a failed reading is probably survivable. The verdict should say which way it degrades.
+3. **Minor:** the admissibility check for `ω_0` (section 2), the `N_j` count (section 1), and the dropped `𝓗` remark
+   (section 3).
+
+### Status (eighth follow-up)
+
+| item | status |
+|---|---|
+| seventh-follow-up points (bridging, size cap, condition, source wording, tail) | **resolved** (NIT: the `N_j` count) |
+| frozen region in H2a, quenched H2, global coupling | **kept out** |
+| frozen region in H1's gas | kept out (only discrete indices conditioned on); but the **stated Dobrushin influence bound fails in the worst case**; repair by the cluster expansion with a polymer coupling (FIXABLE, fourth write-out) |
+| 12.1 comparison | right construction; rests on the normalisation reading; check locality of admissibility for `ω_0` (NIT) |
+| 23.1 "conditionally on `𝓗` too" | unjustified and unnecessary; drop (NIT) |
+| chaining and result (12.3, 12.4) | consistent at paper-sketch level, uniform in spacing and volume |
+| final verdict | nearly accurate: add H1 as a fourth write-out; flag the normalisation reading as the single point that carries H2, H2a and R10, and say how it degrades |
+| **N-2 (my long-standing GAP)** | **reduced:** no longer open new analysis; a complete paper-sketch argument, pending one reading and four write-outs. It stays a GAP until those are done |

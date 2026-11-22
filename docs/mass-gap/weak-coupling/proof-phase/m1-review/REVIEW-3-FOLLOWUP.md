@@ -898,3 +898,169 @@ boxes. **That fails.**
   width `w_j >~ r_int (log p)^{2d}/gamma^2` (polylog, size-independent).
 * NIT: unreleased regions born at finer scales behave as born boxes at scale `j` (priced by H2, no isolation). Only the
   coarse bad set is inherited from above.
+
+## Follow-up 7 (section 12 completed, section 23 fold-ins, `UV-TV.md` 12.1-12.5 and 23), 2026-11-22
+
+Read: `../m1-tools/UV-TV.md` 12.1, 12.2-12.5, 22.7 and 23 in full; [V] pp. 378-390 (text layer) again for (1.70)-(1.71),
+(1.76), (1.89), (1.92)-(1.97). Nothing was built or re-run; the commit was not checked (no git).
+
+### Verdict
+
+* **My Follow-up 6 GAP is resolved in structure.**
+  * Persistence is handled by capping, at every scale, the actual large set of that scale's field under the law (23.1),
+    so only one scale's large set passes down and sizes do not compound.
+  * Mixed clusters are capped by the bridge truncation `G_j`.
+  * Using unconditional bounds for coarse-measurable bad events inside the conditional construction is legitimate.
+* **The chaining (12.4) converges uniformly**, given the per-scale bounds.
+* **The claim "complete at paper-sketch level, apart from the named reading and three write-outs" is not yet
+  accurate.** One estimate everything rests on does not follow from the source as cited: the per-box rarity
+  `eta_j = e^{-c p0(g_j)}`.
+  * Balaban's (1.89)/(1.97) give `e^{-2(1+beta) p0}` per connected polymer, and only `e^{-kappa}` per unit of linear
+    size in `M`-cubes.
+  * His large-field domains are unions of `M R_j`-cubes, larger than the `l_B`-boxes at small `g`, so a per-box
+    Peierls bound cannot hold.
+  * 12.1's own displayed inequality has `p0` only per component, and its entropy `e^{C |N_A|}` with
+    `|N_A| ~ w_j^d |A|` is not beaten by `e^{-kappa}` per box.
+  * This is a GAP, but it looks fixable: count in `M R_j`-cubes with rate `kappa`, which Balaban lets one take large
+    for given `L`. The merge range and collar are then below one cube at small `g`, and subcriticality becomes a fixed
+    condition on `kappa`.
+* H1 as a box-variable Dobrushin argument also needs a different form (FIXABLE).
+* No FATAL.
+
+### (1) Unconditional rarity inside a conditional construction: legitimate
+
+* **The argument.** For any event `T` measurable in the coarse data,
+  `E[1{disagree on B}] <= E[1{disagree on B} 1_{T^c}] + P(T)`. The conditional Theorem A_good bounds are used only on
+  `T^c`, pointwise in the coarser data, so `P(T)` may be bounded unconditionally.
+* **What it needs, and has.**
+  * Both copies' coarse states are law-distributed, by induction down the tower: each copy's `X_j` is produced by the
+    true kernel from its own law-distributed `X_{j+1}`. In (A) the resampled copy is law-distributed.
+  * The events `T_i` are coarse-measurable.
+  * `P(∪_i T_i) <= Sum_i P(T_i)`.
+  * Take `T_i` over the deterministic ball of radius `R_i` around `B`, which contains the random `Λ''_i`. Then no union
+    over regions is needed.
+* **NIT.** 23.1's remark that "the annealed bound applies conditionally on `H` too" is neither needed nor uniformly
+  true: `H` can contain a large field near `B`. (A) is an `L^1` statement, so the unconditional bound suffices. Drop
+  the remark.
+* **No compounding (23.1): correct.** The inherited set at scale `j` is `Bad^c(X_{j+1})`, contained in the large set of
+  `X_{j+1}`. That set's proximity clusters are capped by `T_{j+1}` whatever the scale-`(j+1)` composite clusters
+  contain. Large-set pieces closer than the scale-`(j+1)` merge range are in one capped cluster. Farther pieces are at
+  least `L (2 w_{j+1} + l_B)` scale-`j` units apart, which is what 23.2 needs. The recursion of Follow-up 6 is gone.
+* **The bridge truncation `G_j` (23.2): correct.** Bridges have `>= l_br ~ L` boxes. The number of inherited pieces
+  within a bridge's reach is bounded (they are separated by the birth gap), so the entropy per bridge is `O(1)`.
+  `N_j = n_j (L^d n'_{j+1} + n_j + 1)` is polylogarithmic.
+* **NIT.** The quenched H2 (12.1) needs the coarse field small on the `C w_j`-neighbourhood of `A`. Born boxes in the
+  band of width `C w_j` around inherited pieces are therefore unpriced. Count that band as part of the inherited
+  composite box, adding a factor `(C w_j)^d` in `N_j`; still logarithmic.
+
+### (2) The per-unit rarity: the GAP
+
+* **What 12.1 shows, and what it claims.** It shows
+  `w_omega/w_{omega_0} <= e^{-2(1+beta) p0 #components(A) - kappa d(A) + C |N_A|}`. It then concludes
+  "`(C e^{-c p0})^{|A|}` per box, since `|N_A| <= C w_j^d |A|` and `p0 >> w_j^d`". That does not follow.
+  * For one connected `A` of `n` boxes the right-hand side is `e^{-2 p0 - kappa d(A) + C w_j^d n}`.
+  * `p0` appears **once per component**. Per box there is only `e^{-kappa d(A)/n}`, with `kappa` Balaban's fixed
+    constant, against the entropy `e^{C w_j^d}` per box, which grows as `g -> 0`.
+  * For `n >~ p0/w_j^d` the bound exceeds 1.
+* **What [V] gives.**
+  * (1.89): `T_k(X) 1 <= exp(-2(1+beta) p(g_k))`, "improved" by `-kappa d_k(X)`.
+  * (1.97): activities `<= c1 e^{-(1+beta) kappa d_k(X')}`, with `c1 = e^{-p0}`, already summed over the internal
+    structure of the polymer, in `M`-cube units.
+  * The per-cube factors of (1.76) (`~ e^{-gamma0 p^2}` per cube) are spent in (1.80)-(1.88) on normalisation constants,
+    entropy and the lifetime. What (1.89) keeps is per component plus `kappa` per unit of linear size.
+  * A per-cube margin `e^{-c p0}` that survives the entropy induction is plausible (`p0 >> M^d R^{d+1}`), but it is a
+    **second reading** of Balaban, not stated in (1.89).
+* **Units.** Large-field domains are unions of `M R_j`-cubes, with `R_j >= (log g_j^{-2})^r`, `r >= 2`, while
+  `l_B ~ (log p)^{2d+1}/gamma^2 << M R_j` at small `g`. A bad cube makes `(M R_j/l_B)^d` boxes bad at once, so no
+  per-box bound `eta^{|A|}` with `eta` independent of the box size can hold.
+* **Fix (keeps the structure).**
+  * State H2, H2a and all truncations per `M R_j`-cube, with the polymer activities of (1.97) summed over internal
+    structure, so the entropy factor `C^{|N_A|}` of 12.1 is not needed. This gives
+    `P(A ⊂ Bad) <= (C e^{-c kappa})^{#cubes(A)}`, with `e^{-p0}` per connected polymer on top.
+  * Since `w_j`, `r_int` and `l_B` are polylog in `log g^{-2}` while `M R_j >= M (log g^{-2})^2`, the merge range is
+    below one cube. The proximity entropy is `O(3^d)` per cube.
+  * Subcriticality becomes the **fixed** condition `C 3^d e^{-c kappa/2} < 1/2`. Balaban's `kappa` "can be chosen
+    arbitrarily large if the other parameters are fixed properly" ([III] p. 260); add it to `S1-INDUCTION.md` row 5.
+  * The condition "`p0(g_j) >> d log log g_j^{-2}`" of 23.3 is then superseded. The truncation becomes
+    `n_j ~ log|Λ''_j|/kappa`. Path covering costs `(C e^{-c kappa})^{R_j/(M R_j)}`. Lemma C's `|W|` gains a factor
+    `(M R_j)^d`, which enters `w_j` only logarithmically.
+  * Alternatively, keep `e^{-c p0}` per cube and name it as a second reading of [V] (1.80)-(1.89). The first route
+    needs no new reading and is preferable.
+* **Severity: GAP** (a key estimate unsupported as written; every truncation and the subcriticality use it), with a
+  repair that looks routine. Confidence medium-high: the scan is poor, but 12.1's own inequality carries `p0` only per
+  component.
+
+### (3) H1 via Dobrushin uniqueness of the pattern gas (12.2)
+
+* **Positivity: yes.** `w_omega` is a ratio of integrals of positive integrands, the `T`-activities are non-negative,
+  and the boundary and cluster terms are real for real fields.
+* **Small, decaying interactions: yes in effect**, but not literally as written.
+  `w_omega ∝ Prod z(gamma) exp(-Sum E(X))` with field-independent `E` is a simplification. The cluster terms meeting
+  several polymers depend on the polymers' boundary fields, which are integrated inside the `T`-operations. So the
+  effective interaction is `log ∫ Prod(polymer measures) e^{Sum E} - Sum log z`. That is still small
+  (`|E| <= C p^2 e^{-kappa r_int}`) and decaying, by a cluster expansion in `e^{E} - 1`. State it that way.
+* **The Dobrushin form with box variables does not work as stated. FIXABLE.**
+  * Polymers are multi-box connected objects with admissibility constraints: unions of cubes, nesting of the domain
+    history.
+  * If the neighbouring box `b'` carries a piece of a polymer whose admissible continuation must enter `b`, the
+    conditional law of `b` is forced, and the influence of `b'` on `b` is about 1, not `eta^{1/2}`.
+  * Dobrushin's condition is a worst case over boundary configurations, so it fails for box variables.
+  * **Use a polymer-level tool:** the cluster expansion of the hard-core gas with small activities and small soft
+    many-body interactions (Kotecky-Preiss after Mayer-expanding `e^{E} - 1`). It gives decay of pattern correlations
+    and a quantitative comparison of the two copies' pattern marginals, through the clusters joining a box to `S`.
+    Alternatively, use disagreement percolation on the polymer configuration. Both are standard and give the same
+    `P(omega_b != omega'_b) <= C Sum_{b' in S} (C e^{-c kappa})^{dist(b, b')/(M R_j)}`.
+* **Near the coarse bad set** the pattern law is not dilute. Treat the band of (1) as part of the source or of the
+  inherited composite box, as 12.2 does for the inside.
+
+### (4) The chaining (12.4): converges uniformly, given (2)
+
+* **Front advance.** By a union bound over sites at distance `a_j` from the source (at most `|Λ''_j|` of them),
+  `a_j = C lambda_j^{-1} log|Λ''_j|`, plus the diameters of the priced composite boxes on the way, keeps the front
+  except with probability `|Λ''_j|^{-C_2}`. With (2), `a_j <~ M R_j polylog(g_j^{-2})`.
+* **Weighted sum.** `Sum_{i >= j} L^{i-j} a_i <= L^{l-j} Sum_k L^{-k} a_{l-k}`, with `a_{l-k}` growing only polylog in
+  `k` (as `g^{-2}` grows linearly in `k`). The sum converges, so the front stays `>= R_j/2` once
+  `t/l >= C M R_l polylog(g_l^{-2})`. That holds as `l -> 0` at fixed `t`, since `t/l` grows like `1/l` and the right
+  side like `polylog log(1/l)`.
+* **The two sums of the result.**
+  * `Sum_j |B_j| e^{-c R_j/(M R_j polylog)}`: `R_j = L^{l-j} t/l` grows geometrically down the tower, while `|B_j|`
+    grows like `L^{d(l-j)}`, so the sum is dominated by the top term.
+  * `Sum_j |Λ''_j|^{1 - C_2}`: geometric, dominated by the top, `(t/l)^{-d(C_2-1)}`.
+* **Uniformity.**
+  * In the spacing: the number of scales `~ log_L(l/a)` grows, but both sums are geometric with constants depending on
+    `g_j` only.
+  * In the volume: everything is local to the balls, and the global coupling treats the outside of `Λ''_j` as an
+    arbitrary source. That needs no contraction there, so huge untruncated clusters far away are harmless.
+* **Result.** `P(differ on B) <= C (R/l)^d e^{-c t/(l M R_l polylog)} + C (t/l)^{-d(C_2 - 1)}`, which tends to 0 as
+  `l -> 0` at fixed `t`. Correct as a sketch, after (2). The rate carries `M R_l = M (log g_l^{-2})^r` in the
+  denominator instead of `l_B`; harmless.
+
+### Is "complete at paper-sketch level, apart from the named reading and three write-outs" accurate?
+
+**Not yet.** Add:
+1. **The per-unit rarity (GAP, (2)).** Restate H2, H2a and all truncations per `M R_j`-cube with rate `kappa` (no new
+   reading), or name the per-cube `e^{-c p0}` margin as a second reading of [V] (1.80)-(1.89).
+2. **H1's tool (FIXABLE, (3)).** A polymer-level cluster expansion or disagreement percolation, not box-variable
+   Dobrushin.
+3. **Small items.** The unpriced band of width `C w_j` around inherited pieces; the effective many-body interaction;
+   drop the "conditionally on `H`" remark.
+
+With these, the claim would be accurate. The named reading (that Balaban's `E_k(Z)` are the Gaussian fibre
+normalisations) remains the main dependency, used both pointwise (12.1) and averaged (H2a, R10).
+
+### Findings, one line each (follow-up 7)
+
+* No FATAL.
+* **GAP:** the per-box rarity `eta_j = e^{-c p0(g_j)}` does not follow from [V] (1.89)/(1.97). Those give `p0` per
+  connected polymer and `kappa` per unit of linear size in `M R_j`-cubes, which are larger than the `l_B`-boxes, and
+  12.1's entropy `e^{C w^d |A|}` is not beaten per box. Restate all Peierls bounds and truncations per `M R_j`-cube
+  with rate `kappa` (a fixed, large constant). Subcriticality then becomes a fixed condition on `kappa`.
+* **Resolved:** Follow-up 6's GAP. Persistence is handled by the annealed truncation `T_i` of each scale's actual
+  large set (legitimate: coarse-measurable events, law-distributed marginals), and mixed clusters by the bridge
+  truncation `G_j`.
+* FIXABLE: H1 needs a polymer-level cluster expansion (or disagreement percolation on polymers). Box-variable
+  Dobrushin fails because polymers straddling boxes force continuations (influence about 1).
+* NITs: the unpriced band of width `C w_j` around inherited pieces; the many-body interactions depend on polymer
+  boundary fields (effective interaction after integration); drop the "conditionally on `H`" remark in 23.1.
+* The chaining sums converge uniformly in spacing and volume, given the GAP's fix. The rate is
+  `e^{-c t/(l M R_l polylog)}`.
