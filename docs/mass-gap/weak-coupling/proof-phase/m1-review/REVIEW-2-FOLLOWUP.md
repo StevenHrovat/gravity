@@ -1441,3 +1441,127 @@ Section 25 (revised): "complete at paper-sketch level given (c)". It lists:
 | Q4 (small-field non-Gaussian part only `O(1)` per site in the source) | resolved for the denominator by the slack; **still a dependency for Lemma C and H3**, which must use constant-size analytic smallness, not `δ -> 0` |
 | verdict | nearly accurate: add the split, the Q4 dependency, and say "paper-sketch argument" rather than "holds" |
 | **N-2** | **GAP (reduced):** paper-sketch argument complete given (c); owes (c)'s write-up and checks and four write-outs |
+
+## Eleventh follow-up
+
+Read for this: `../m1-tools/UV-TV.md` 27 and 28, and again 22.2-22.5 (the column condition and the earlier form of the
+theorem). REVIEW-3 was not read. Nothing was built.
+
+### Verdict (eleventh follow-up)
+
+* **The coupling-form Dobrushin-Shlosman theorem of 28.1-28.2 is correct.** I checked each step:
+  * the averaged update preserves both marginals and the supports;
+  * one step gives `Φ(Tπ) <= Φ(π) - (1/N)(1 - γ) Σ_x c(x) v(x) d(x) + s/N`, using the column condition with the full
+    coverage `c(z)`;
+  * hence `θ = 1 - (1 - γ) c_min/N`;
+  * iterating from the product coupling gives the bound up to `ε` at a finite iterate.
+  
+  Removing the weak limit (22.5's portmanteau and compactness step) is an improvement: everything is finite and
+  measurable.
+* **It avoids every worst-case-boundary and frozen-region issue I raised:**
+  * hypothesis (I) is required only for pairs **in the supports**, and the iteration never leaves them;
+  * the supports are those of the pattern-conditioned measures, so near good boxes, and in collars, they contain only
+    small-field configurations;
+  * bad clusters are composite **good** blocks carrying Lemma C, never sources, so nothing saturates (section 15's
+    obstruction does not arise);
+  * the source term enters only once, through `s`.
+* **The instantiation (28.3) is consistent with the localisation and with the global coupling.**
+  * The theorem runs on the whole finite configuration.
+  * Everything outside `Λ''_j` is source blocks from the same translate family, so the coverage there is
+    `~ ell_B^d` and the column condition holds at sites near `∂Λ''_j`.
+  * The weighted source sum `s` over the outside converges to `C e^{-λ R'} poly(R')`, independent of the volume.
+  * The block family of 22.3 (multiplicity `n_W` for composite boxes, good boxes overlapping the collar,
+    `ell_B >= C (log p/m)^{2d+1}/γ^2`) satisfies the column condition at every kind of site. It refines my sixth
+    follow-up suggestion, which overlooked that the inner collar layer is covered only by `W`.
+* **My tenth-follow-up points are resolved.**
+* **Three NITs:**
+  * the "truncation events" listed as source blocks are not blocks;
+  * the numbering of the write-outs is inconsistent between 25, 27.9 and 28;
+  * the covariance form for (B) should be written through a construction that stays in the supports.
+* **N-2 stays a GAP, reduced further:** write-out 1 is done. It owes Lemma C's cross term, the front-advance estimate,
+  H1's polymer coupling, and the write-up of (c). No FATAL finding.
+
+### 1. The theorem (28.1-28.2)
+
+| step | check |
+|---|---|
+| (S) specifications | Each kernel acts only on its block, depends only on the outside, is invariant (DLR), and preserves the support. That is what makes `Tπ` a coupling supported in `Ω_0 × Ω'_0`. Correct. |
+| (C) block couplings | A measurable kernel coupling `q_b(σ, ·)` and `q'_b(σ', ·)` for pairs in the supports. Correct. Measurability: the explicit maximal coupling from densities with respect to a common reference is measurable, and the nested (far-to-near) version is measurable step by step. Fine. |
+| (I) influence | Weighted, on good blocks only, for pairs in the supports. The clause "if `σ = σ'` off `B_b`, the pair agrees on `B_b`" requires `q_b = q'_b` there. For UV-TV that is H0's agreement: good blocks are at distance `> r_int` from the source, the pattern disagreements and the coarse-data disagreements, and carry no links. Correct as instantiated. |
+| (K) column condition | Per site, with the full coverage including source blocks. This is the condition I asked for in the sixth follow-up. Correct. |
+| one step and average | `Φ(Tπ) = (1/N)[Σ_x v d (N - c) + Σ_good (I-terms) + Σ_src v]`. (K) turns the middle term into `<= γ Σ v d c`. Hence the contraction `θ` and the fixed point `s/((1 - γ) c_min)`. Correct. |
+| iteration | From `μ ⊗ μ'`, `Φ(π_0) <= Σ v < ∞` on a finite `Λ`. Some `n` of order `N log(Φ_0/ε)/((1 - γ) c_min)` suffices. No limit is needed. Correct. |
+| consequence | `|μ(F) - μ'(F)| <= 2‖F‖ (min_A v)^{-1} Φ`. Correct. |
+
+**Weights.** With `v = e^{-λ dist_ω(·, A)}` and composite boxes contracted to diameter 1, `v` varies by at most `e^λ`
+on a composite block. So Lemma C's unweighted `k_W(z)` turns into (I) with `K_W = k_W e^{λ E_W}`, `E_W <= 2`. For good
+boxes, `e^{λ(ell_B + C)} = O(1)` with `λ = 1/ell_B`. Consistent with 22.3.
+
+### 2. Worst-case boundaries and the frozen region
+
+* **Pattern-conditioned supports.** Given `ω`, the support of `μ_ω` near a good box consists of small-field
+  configurations:
+  * the small-field characteristic functions of the pattern;
+  * no large-field domains, unreleased regions, labels, Z2 excitations or links there (these are all bad by
+    definition).
+  
+  The same holds in the collar of a composite box. So (I) over pairs in the supports is exactly H3 and Lemma C as
+  proved, with no hybrid and no off-support boundary.
+* **Bad clusters as good composite blocks.** Their influence bound (Lemma C) needs only the collar's small-field law,
+  never a bound on the multimodal inside. Nothing is quantified over unpenalised fine content.
+* **Sources.** No influence bound is needed on source blocks; they cost only through `s`.
+* **So the two failure modes of the earlier rounds do not occur here:**
+  * the sup over all boundaries (obstruction (b), and H1's forced continuation);
+  * saturation of the dynamic coupling (section 15).
+
+### 3. Consistency with the localisation and the global coupling
+
+* **Global coupling.** The theorem couples `μ_ω` and `μ'_{ω'}` on the whole finite configuration. Nothing outside
+  `Λ''_j` is conditioned on. The outside is covered by source blocks.
+* **Column condition near `∂Λ''_j`.** Sites just outside `Λ''_j` exert influence on good boxes inside. They are
+  covered by the source blocks, which are translates of the same box family, so `c(z) ~ ell_B^d`, and (K) holds there
+  as in the bulk.
+* **Volume uniformity.** `s = Σ_{src blocks} Σ_{y} v(y) <= Σ_{y outside Λ''} c(y) e^{-λ dist_ω(y, A)} <= C ell_B^d Σ_{r >=
+  R'} r^{d-1} e^{-λ r}`. That is uniform in the volume.
+  * `dist_ω` outside `Λ''` does not matter, since every such site is a source.
+  * Inside `Λ''`, the contraction of `dist_ω` by composite boxes is controlled by the half-path covering estimate
+    (21.5, 24.1).
+* **Truncation events (NIT).** 28.3 lists them among the "boxes meeting the source". They are events of the patterns
+  and the coarse data, not sets of blocks. The right form is a case split before the theorem is applied: on
+  `F_j ∪ G_j ∪ T_j ∪ T_{j+1}` bound the disagreement by 1, and on the complement apply the theorem. Both events are
+  measurable in `(ω, ω', 𝒳)`, which are fixed first. This only changes wording.
+* **(B), covariance form (NIT).** 28.2 says the same theorem applies "to the hybrid construction of 19".
+  * The cleaner route stays in the supports. Apply the theorem to `μ_ω(· | η on A)` and `μ_ω(· | η' on A)`, with the
+    blocks meeting `A` as sources and `η, η'` in the support (small field near `A` if `A` is pattern-good, otherwise
+    `A` is in a source). This bounds the influence of `A`'s content on `θA`, and hence the conditional covariance.
+  * It conditions on fine content near `A`, but only inside the support, and needs no estimate on it, since `A` is a
+    source. So it is not a frozen region.
+  * If the hybrid of 19 is kept instead, check that it never evaluates a specification off the supports.
+
+### 4. My tenth-follow-up points
+
+| point | status |
+|---|---|
+| split of (1.97') into birth-covered and preparatory-only cubes | **resolved:** 27.5. Every region descends from a creation event and inherits its slack. A preparatory region `Z = S(Z_0)` keeps `ψ(Z_0)`, and its current cubes are covered by (1.81)'s scaling of `Z_0`. This rests on preparatory domains staying inside `S(Z_0)` ([V] p. 384; [IV] Sect. 1 not re-read), with (P1) kept as insurance. Acceptable. |
+| Q4: Lemma C and H3 may use only constant-size smallness | **resolved:** 27.9 puts it on the dependency list; those write-outs may use only [III] Theorem 2's `O(1)` per site, constant analyticity smallness per `M`-cube, [V] (1.2)'s explicit cubic terms, and the cluster expansion. |
+| verdict wording ("paper-sketch argument given (c)") | **resolved** (27.10). |
+| also checked | 27.3, `g_birth <= (1 + β0) g_k` ([III] (2.6)-(2.7)), so `p0(g_birth) >= (1 + β0)^{-1} p0(g_k)` (conservative, absorbed by (P2)): correct. 27.7, the top variables' Gaussian normalisation is the next step's constant, so (P2) needs an extra `log β` per site, which (P0) covers: correct. 27.4, unreleased regions take their slack from (1.79)/(1.80'): correct. |
+
+**NIT:** the numbering of the write-outs is inconsistent.
+* 25 (revised) lists: 1 Lemma C, 2 coupling-form theorem, 3 front advance, 4 H1.
+* 28 calls the coupling-form theorem "write-out 1".
+* 27.9 refers to "write-outs 2 and 4" for Lemma C and H3.
+
+Renumber once.
+
+### Status (eleventh follow-up)
+
+| item | status |
+|---|---|
+| coupling-form Dobrushin-Shlosman theorem (28) | **correct**; finite iterate, no limit; Lean-ready as stated |
+| worst-case boundaries, frozen region, saturation | **avoided**: (I) only on supports; bad clusters as good composite blocks via Lemma C; sources only through `s` |
+| instantiation (28.3) with localisation and global coupling | **consistent**; volume-uniform source sum; NITs: truncation events as a case split, not blocks; (B) via conditioning inside the supports, or check the hybrid stays in support |
+| column condition with multiplicity (22.3) | correct; refines my sixth-follow-up suggestion (the inner collar layer needs `n_W`) |
+| tenth-follow-up points | resolved |
+| write-out numbering | inconsistent (NIT) |
+| **N-2** | **GAP (reduced):** write-out "coupling-form theorem" done; still owes Lemma C's cross term (constant smallness only), the front advance, H1's polymer coupling, and (c)'s write-up |

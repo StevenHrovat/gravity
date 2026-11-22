@@ -1354,3 +1354,148 @@ line. Nothing was built or re-run.
   stands. NIT: in the constants table, move `l_B` after row 6, and rename the Dobrushin-Shlosman `gamma`.
 * The verdict is accurate, read as "given (c), with (a) and admissibility as citation-level readings". The H1 NITs are
   folded in correctly.
+
+## Follow-up 10 (write-out 1: the coupling-form Dobrushin-Shlosman theorem, `UV-TV.md` 27-28), 2026-11-23
+
+Read: `../m1-tools/UV-TV.md` 27 and 28 in full; `S1-INDUCTION.md` 1, rows 5-6. Nothing was built or re-run.
+
+### Verdict
+
+**The theorem is correct as stated.** It is the standard Dobrushin coupling contraction, with a random block update.
+* `T` is a **mixture** of single-block updates, not a composition. Each preserves both marginals by DLR, so `T` maps
+  couplings to couplings whatever the overlaps.
+* Support preservation keeps every iterate on `Omega_0 x Omega'_0`, which is all that (C) and (I) need.
+* The one-step inequality and the source term `s/N` are right, line by line.
+* The bound is meaningful in the instantiation, given two points that should be stated:
+  * composite boxes are contracted in `dist_omega` only inside `Λ''_j`, so that `s` is uniform in the volume;
+  * the prefactor `s/c_min` carries a polylogarithmic coverage ratio.
+* The Follow-up 9 points are folded in correctly. One of them (item 9) is a real constraint on write-outs 2 and 4, and
+  should stay prominent.
+* No FATAL, no GAP; a few NITs, mostly for the Lean target.
+
+### (1) Does `T` map couplings of `(mu, mu')` to couplings of `(mu, mu')`?
+
+**Yes.**
+* `T pi = (1/N) Sum_b ∫ pi(d sigma, d sigma') Q_b((sigma, sigma'), .)` is a uniform mixture over blocks of one-block
+  updates.
+* Its first marginal is `(1/N) Sum_b ∫ pi(d sigma, d sigma') q_b(sigma, .) = (1/N) Sum_b mu q_b = mu`. This uses:
+  * (C)'s marginal property at `pi`-almost every pair, which holds since `pi` lives on `Omega_0 x Omega'_0`;
+  * the first marginal of `pi` being `mu`;
+  * DLR for each `b`.
+  
+  The second marginal is likewise `mu'`.
+* Overlaps play no role, because blocks are never composed within one step. A sequential sweep would also work, by the
+  same argument applied block by block.
+* **Where DLR is used:** only here, in `mu q_b = mu` and `mu' q'_b = mu'`, so that each step stays a coupling of the
+  same pair.
+* **Where support preservation is used:** to keep `T pi` on `Omega_0 x Omega'_0`. Since `q_b(sigma, Omega_0) = 1` and
+  `q'_b(sigma', Omega'_0) = 1` for in-support `sigma, sigma'`, the coupling `Q_b` gives the complement of
+  `Omega_0 x Omega'_0` mass 0, through its marginals. Then (C) and (I) apply at the next step. Configurations outside the
+  supports are never used, which also settles the off-support point of Follow-up 5 (3)(d).
+* **The start:** `mu ⊗ mu'` is a coupling supported on `Omega_0 x Omega'_0`. Correct.
+
+### (2) The one-step inequality and the source term
+
+**Correct.**
+* **Sites outside `B_b`.** For a block `b`, each marginal of `Q_b((sigma, sigma'), .)` keeps the configuration off
+  `B_b` by (S), so `Q_b` keeps the pair there. Disagreements outside `B_b` are unchanged: `Sum_{x ∉ B_b} v d`.
+* **Inside a good `B_b`.** Integrating (I) over `pi` gives `<= Sum_{z ∉ B_b} K_b(z) v(z) d(z)`.
+* **Inside a source `B_b`.** At most `Sum_{y ∈ B_b} v(y)`, with no hypothesis.
+* **Averaging.** `Phi(T pi) <= (1/N)[Sum_x v d (N - c(x)) + Sum_z v(z) d(z) Sum_{good b ∌ z} K_b(z) + s]`, and by (K)
+  this is `<= Phi - ((1 - gamma)/N) Sum_x c v d + s/N <= theta Phi + s/N`. Here `0 <= theta < 1`, since
+  `c_min <= c(x) <= N`.
+* **Iteration.** `Phi(T^n pi_0) <= theta^n Phi(pi_0) + s/((1 - gamma) c_min)`.
+* **How sources enter.** A source block contributes its full weight once per step, divided by `N`, so `s/N` per step.
+  The geometric sum `s/(N(1 - theta)) = s/((1 - gamma) c_min)`. Nothing saturates: sources inject at a fixed rate and
+  good blocks contract, with no activation.
+* **Two hidden requirements in (I), both met in M1:**
+  * **Good blocks must have coinciding specifications on agreeing boundaries** ("in particular, if `sigma = sigma'`
+    off `B_b`, agreement a.s."). So every block where the two specifications differ (near `D`, pattern
+    disagreements, `omega != omega'` inside a composite box) must be a source block. 28.3 does this; state it as a rule.
+  * **The weights are inside `K_b`:** `K_b(z) >= k_b(z) sup_{y ∈ B_b} v(y)/v(z)`, as 28.2's remark says. So (K) is
+    the weighted per-site column condition (`GDSw` with `e^{lambda E}`). Consistent with 22.3.
+
+### (3) Is the bound meaningful in the instantiation?
+
+**Yes, with two points to state.**
+* **`min_A v = 1`**, with `v(x) = e^{-lambda dist_omega(x, A)}` and `A ⊂ B`. So `Sum_{x ∈ B} d(x) <= Phi`.
+* **`s` is controlled, if `dist_omega` contracts composite boxes only inside `Λ''_j`.** The source includes the whole
+  complement of `Λ''_j`, so `s >= Sum_{y ∉ Λ''} c_src(y) e^{-lambda dist_omega(y, A)}`.
+  * If composite boxes were also built and contracted outside `Λ''_j` (where nothing is truncated), a huge `W` there
+    would put `|W|` sites at one `dist_omega`, and `s` would grow with the volume.
+  * Inside `Λ''_j` the clusters are truncated. Outside, no composite boxes are needed (everything is source), so
+    `dist_omega` = `dist` there.
+  * Then `s <~ l_B^d (R'/lambda)^{d} e^{-lambda R'}` from the outside, plus the inside sources: the image of `D_j` at
+    distance `R'`, and pattern disagreements with `E[...]` decaying from `D` by H1. All of it is uniform in the volume.
+    State the rule in 28.3.
+* **`c_min`.** Coverage is `>= 1` everywhere after rounding (22.4). The smallest coverage sits next to the bad cores,
+  covered only by the `n_W` copies of `W`. Source blocks, as translates of `Λ_0`, give `c_src ~ l_B^d`. So
+  `s/c_min <~ (l_B^d/n_W) Sum e^{-lambda dist} ~ (l_B/(r_int (log p)^d)) Sum e^{-lambda dist}`: a polylogarithmic
+  prefactor in `log g^{-2}`, harmless in 12.4, where it joins the `polylog` already there.
+  * Even with `c_min = 1` the prefactor is only `l_B^d`, which is polylog.
+* **(K) at sites in the source region.** It needs the source blocks counted in `c(z)`. Next to the good region, a
+  source site's column (its influence on adjacent good blocks) is compared with its coverage by source translates
+  (`~ l_B^d`). Fine. Far inside the source the column is 0.
+* **Conclusion.** `Sum_{x ∈ B} d(x) <= C polylog x [e^{-lambda dist_omega(B, sources)}-type sums]`, as 12.3 uses. That
+  is meaningful.
+
+### (4) Smaller points
+
+* **NIT (Lean).** The events `{Y_x != Y'_x}` and `{xi_y != xi'_y}` need a measurable diagonal in `S_x x S_x`, true for
+  standard Borel `S_x` (compact groups, finite sets). In Lean, add `MeasurableSingletonClass` or an explicit
+  measurable-diagonal hypothesis to `CouplingSpec`.
+* **NIT (measurability of `Q_b`).**
+  * The multi-site coupling of H3 and Lemma C is glued along hybrids, one boundary site at a time. Gluing needs
+    disintegrations, which exist and are measurable on standard Borel spaces.
+  * The hybrids must be in the support. That is the pair-good property on good regions (Follow-up 3); by finite range,
+    only sites within `r_int` of the block matter.
+  * State both in 28.3. The theorem itself is fine, since it only assumes (C).
+* **NIT.** `theta = 1 - (1 - gamma) c_min/N` depends on the volume through `N`, so the number of iterations needed
+  grows with the volume. The bound does not depend on it. Harmless, since the conclusion is for each finite volume.
+* **Covariance form for (B), via the hybrid of 19:** fine. It is the same theorem applied to the joint law and the
+  hybrid, with sources at the separating region.
+
+### (5) The Follow-up 9 points, as folded in (section 27)
+
+* **Item 4** (carried regions take their slack from (1.79)/(1.80')), **item 6** (deletion footprint covered by the
+  deleted components' own slack) and **item 7** (`(P2)` with `(1 + log beta)`, derived from (P0) via
+  `R >= log beta`): all correct.
+  * Checked the arithmetic of 7: `c'_psi p0^2 >= C 3^d (M R)^d (1 + log beta)` follows from (P0) as long as
+    `R^2 L^{d+1} >> (1 + beta_0)^2 C^2 3^d (1 + log beta)`, which holds since `R >= (log g^{-2})^r`, `r >= 2`.
+* **Item 5** ((P1) kept as insurance, resting on preparatory domains staying inside `S(Z_0)`): fine as recorded.
+* **Item 8** (constants table): done. `l_B` moved to row 6, with `gamma_DS`.
+* **Items 2-3** (the `½` in (1.85); `p0(g_birth) >= (1 + beta_0)^{-1} p0(g_k)`): sensible, conservative choices. The
+  `(1 + beta_0)^{-2}` is absorbed by (P2).
+* **Item 9 is a real constraint, not a wording point.**
+  * Lemma C's cross term and H3's Pinsker step may use only:
+    * Balaban's `O(1)`-per-site bounds;
+    * analyticity constants per `M`-cube;
+    * the explicit `O(g^{1-beta})` cubic terms;
+    * his cluster expansion.
+  * Earlier versions used "`1 + O(delta)`" (19, the Pinsker step) and "smaller constants" (16, step 2). The source
+    supports neither.
+  * This is still workable. On a good box, the E-terms' field dependence at the scale of the Gaussian fluctuations
+    (width `g`) is small by analyticity, `~ (g/alpha_0)^2` per `M`-cube with `alpha_0 = g C_0 (log g^{-2})^{q0}`. So
+    the conditional mean shifts and mixed variations follow from Balaban's cluster expansion with boundary data,
+    which gives decay `e^{-m d}`.
+  * Write-outs 2 and 4 must be done that way, with no `delta -> 0` anywhere. Keep it on the dependency list.
+* **Item 10** (the verdict wording): accurate.
+
+### Findings, one line each (follow-up 10)
+
+* No FATAL, no GAP.
+* The coupling-form Dobrushin-Shlosman theorem (28.1-28.2) is correct.
+  * `T` is a mixture of single-block updates, so it maps couplings to couplings regardless of overlaps; DLR is used
+    there.
+  * Support preservation keeps iterates on in-support pairs, which is all (C) and (I) need.
+  * The one-step inequality and the source term `s/N` are right.
+  * No time limit, topology or ergodicity is needed.
+* Instantiation (28.3): the bound is meaningful.
+  * State that composite boxes are contracted in `dist_omega` only inside `Λ''_j`, so that `s` is volume-uniform.
+  * State that every block whose two specifications differ is a source block.
+  * The prefactor `s/c_min` is polylog.
+* NITs: a measurable diagonal (Lean); measurable gluing of the multi-site couplings along in-support hybrids (standard
+  Borel); `theta` depends on `N` (harmless).
+* The Follow-up 9 points are folded in correctly. Item 9 (constant-size smallness only) is a real constraint on
+  write-outs 2 and 4 (Lemma C, H3's Pinsker step). It is workable through analyticity at the fluctuation scale and
+  Balaban's cluster expansion, but not through any `delta -> 0`.
