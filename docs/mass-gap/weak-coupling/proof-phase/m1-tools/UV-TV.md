@@ -10,6 +10,8 @@
 
 > **Status (part 6, section 23 and section 12 completed):** the size-cap gap is closed by an annealed truncation of each scale's large set (persistence) and a bridge-count truncation; the condition uses `g_j`; the failure tail is polynomial (`C_2 > 1`). H1 follows from Dobrushin uniqueness of the dilute pattern gas. The chaining from `ℓ` down gives UV-TV (i) and N-2's key step at paper-sketch level, resting on one unchecked adaptation (Balaban's normalisation terms).
 
+> **Status (part 7, sections 24-25):** Peierls bounds restated per `M R_j`-cube with rate `κ` (fixed condition on `κ`; no new reading); H1 replaced by a polymer-level cluster expansion and disagreement percolation. Verdict (25): complete argument at paper-sketch level; the normalisation reading is a single point of failure, with a named fallback (a per-cube `e^{−c p0}` margin); four write-outs owed.
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -1107,8 +1109,8 @@ fibre normalisations of the small-field alternative on the same region, so that 
 * **Truncation `T_i`:** some (proximity `2w_i + ℓ_B`) cluster of the large set of `X_i` or `X'_i` meeting `Λ''_i` has
   more than `n'_i := C_1 log|Λ''_i| / log(1/η_i)` boxes.
   * `P(T_i) ≤ 2|Λ''_i| Σ_{n > n'_i} (C (2w_i + ℓ_B)^d η_i)^n ≤ |Λ''_i|^{−C_2}`.
-  * This holds because both copies are law-distributed. For (A) the far data are resampled from the law given `𝓗`, and
-    the annealed bound applies conditionally on `𝓗` too: `𝓗` is local, and its large-set event is itself in `T_i`.
+  * This holds because both copies are law-distributed. [Corrected in 24.3: the remark that the bound also holds
+    conditionally on `𝓗` is dropped; (A) needs only the probability under the joint law.]
 * **On `T_{j+1}^c`:** inherited regions at scale `j` (the coarse bad set `Bad^c(X_{j+1})`, which is contained in the
   large set of `X_{j+1}`) have clusters of `≤ L^d n'_{j+1}` scale-`j` boxes.
   * No recursion: the scale-`(j+1)` clusters may be larger, through their own inherited parts, but only the large set
@@ -1279,3 +1281,143 @@ fibre normalisations of the small-field alternative on the same region, so that 
 
 **Not obstructed.** No step met a real obstruction in this part. The weakest points are the normalisation reading
 (item 1), and Lemma C's cross term, which has not yet been written line by line.
+
+# Part 7 (2026-11-22): per-cube Peierls, H1 at polymer level, and the verdict, after REVIEW-2 (eighth follow-up) and REVIEW-3 (follow-up 7)
+
+## 24. Corrections
+
+### 24.0 Result in plain words
+
+1. **Per-unit rarity (REVIEW-3's GAP): fixed without a new reading.**
+   * All Peierls bounds, truncations and subcriticality conditions are restated **per `M R_j`-cube**, with rate `κ`.
+   * They use Balaban's activities already summed over internal structure ((1.97)). So no per-box entropy
+     `C^{|N_A|}` appears.
+   * The merge range (polylog in `log g^{−2}`) fits inside one cube (`M R_j ≥ M (log g_j^{−2})²`).
+   * Subcriticality becomes the **fixed** condition `C 3^d e^{−c κ/2} < ½` on Balaban's `κ`, which he allows to be
+     taken large ([III] p. 260).
+   * The condition `p0 ≫ d log log g^{−2}` of 23.3 is superseded.
+   * One refinement of the existing reading is needed, and stated: the small-field alternative's fibre integral on a
+     region is at least `e^{−δ_j |region|}` times the Gaussian normalisation that Balaban's activities are normalised
+     by, with `δ_j → 0`. This is part of the same normalisation reading, not a second one.
+2. **H1:** box-variable Dobrushin is withdrawn (both reviews: a polymer crossing a face forces its continuation). It is
+   replaced by the cluster expansion of the positive dilute polymer gas (Kotecký-Preiss after Mayer-expanding
+   `e^{E} − 1`), with the coupling built on **polymer configurations** by disagreement percolation. This is write-out 4.
+3. **Smaller corrections** (items 3-5):
+   * the remark "conditionally on `𝓗`" is dropped;
+   * the band of width `C w_j` around inherited pieces belongs to the inherited composite box;
+   * admissibility is checked at the level of Balaban's definitions: delete **whole** history components.
+4. **Verdict:**
+   * the normalisation reading is a **single point of failure** for H2, H2a and R10;
+   * the fallback, if it fails, is a per-cube margin `e^{−c p0}` surviving Balaban's entropy induction (a second
+     reading), with the condition `p0 ≫ (M R)^d log β`, which his `p0 ≫ M^d R^{d+1}` covers;
+   * four write-outs remain.
+
+### 24.1 Peierls per `M R_j`-cube
+
+* **The unit.** `Q_j`-cubes of side `M R_j` (scale-`j` units), Balaban's large-field grid. Bad sets are unions of
+  `Q_j`-cubes: large-field domains are unions of `M R_j`-cubes, and labels, excitations and links are enlarged to the
+  cubes they meet.
+* **Quenched H2, per cube.** For a set `A` of `Q_j`-cubes, with `X_{j+1}` small field on the one-cube neighbourhood
+  `N_A` of `A`:
+  `w(A ⊂ Bad_j(ω) | X_{j+1}) ≤ e^{−2 p0(g_j) #comp(A)} (C e^{−c κ})^{|A|}`.
+* **Proof (12.1 restated).**
+  1. **Admissible completion (item 5).** For each `ω` with `A ⊂ Bad(ω)`, let `ω_0` be `ω` with **every connected
+     component of its domain history meeting `N_A` deleted**, at all scales of that component.
+     * Balaban's admissibility conditions ([III] (2.1)-(2.17): shapes of components inside `100 M R`-cubes, ages,
+       nesting of the domains across scales, distance conditions between small-field domains and large-field regions)
+       are either properties of a single history component or distance conditions that only relax when large-field
+       regions are removed.
+     * So `ω_0` is admissible. Checked at the level of the definitions as read; the scan of (2.3)-(2.9) is poor.
+  2. **Ratio.** `Σ_{ω : A ⊂ Bad} w_ω/w_{ω_0} ≤ Σ_{polymers covering A} |F(X')| · e^{C c1 |∂N_A|} · e^{δ_j |N_A|}`, where:
+     * the polymer sum uses Balaban's activities summed over internal structure, (1.97):
+       `|F(X')| ≤ c1 e^{−(1+β) κ d(X')}`, with `c1 = e^{−p0}` per polymer and `d` in `Q_j`-cube units, conservatively;
+     * the boundary terms (B-terms) are `O(c1)` per cube;
+     * the denominator's small-field fibre integral on `N_A` is `≥ e^{−δ_j |N_A|}` times the Gaussian normalisation.
+       This is the **refined reading**.
+  3. **Bound.** Since `|N_A| ≤ 3^d (M R_j)^d |A|` sites and `δ_j (M R_j)^d → 0`, this is
+     `≤ e^{−p0 #comp} (C e^{−c κ})^{|A|}`. ∎
+* **The refined reading, stated.** On a region where the coarse field is small field, Balaban's small-field action,
+  with his vacuum and normalisation constants subtracted, differs from the Gaussian quadratic form by field-dependent
+  terms of size `≤ δ_j` per site, `δ_j → 0`. So the small-field fibre integral is `≥ e^{−δ_j |region|}` times the
+  Gaussian fibre normalisation, and his `T`-activities are normalised by the same constants.
+  * It is the same reading as before (13.3, 12.1), now with its small-field side made explicit.
+* **H2a (annealed, per cube):** `P_law(X_i not small field on every cube of A) ≤ (C e^{−c κ})^{|A|}`. Same proof, with
+  the denominator the law's normalisation one scale up (13.3).
+* **Truncations, restated.**
+  * `F_j` (born clusters), `G_j` (bridges) and `T_i` (large set) count `Q`-cubes.
+  * `n_j := C_1 log|Λ''_j| / (c κ)`, and `P(F_j), P(G_j), P(T_i) ≤ |Λ''_j|^{−C_2}`.
+  * **Merge range:** `2w_j + ℓ_B + 2r_int + 2` is polylog in `log g_j^{−2}`, so `≤ M R_j` at small `g`. Clusters are
+    therefore cube-adjacency components (links as edges), with lattice-animal entropy `(3^d)^n`.
+* **Subcriticality:** `3^d C e^{−c κ/2} < ½` (min-trick). A **fixed condition on `κ`**, added to `S1-INDUCTION.md`
+  row 5. The condition on `p0` in 23.3 is superseded.
+* **Sizes in boxes.** A cluster of `N_j` cubes, with
+  `N_j := n_j (L^d n'_{j+1} + n_j + 1) (C w_j/(M R_j) + 1)^d`, is `≤ N_j (M R_j/ℓ_B)^d` boxes.
+  * The last factor of `N_j` is the inherited band of item 4.
+  * **Collar:** `w_j := (3/m') log(C N_j (M R_j)^d p) + C r_int (log p)^{2d}/γ²`. Still `≪ M R_j`.
+* **Path cost and the chaining.**
+  * Covering half a path of length `D` (scale-`j` units) needs `≥ D/(C M R_j)` bad cubes. Its probability is
+    `≤ (C e^{−c κ/2})^{D/(C M R_j)}`.
+  * The chaining of 12.4 then gives `P(differ on B) ≤ C (R/ℓ)^d e^{−c κ t/(ℓ M R_ℓ polylog)} + C (t/ℓ)^{−d(C_2−1)}`. The
+    rate carries `M R_ℓ`, as REVIEW-3 checked; harmless.
+
+### 24.2 H1 at the polymer level (write-out 4)
+
+* **The gas.** Polymers `γ` are connected components of the discrete data (domain history, labels, excitations,
+  links) under `Q_j`-cube adjacency.
+  * Activities: `z(γ) ≤ e^{−p0} (C e^{−c κ})^{#cubes(γ)}` (24.1), where the coarse field is small field. Near or inside
+    the coarse bad set, the pattern belongs to the inherited composite box or the source (REVIEW-3).
+* **The effective interaction** (REVIEW-3's correction). It is
+  `log ∫ Π_γ (polymer measure) e^{Σ_X E(X)} − Σ_γ log z(γ)`, because the cluster terms meeting several polymers depend
+  on boundary fields integrated inside the `T`-operations.
+  * Mayer-expanding `e^{E(X)} − 1` for `X` meeting `≥ 2` polymers gives links of size `≤ C p² e^{−κ d(X)}`.
+* **Tool.**
+  * **Correlations:** Kotecký-Preiss for the hard-core gas of polymers plus Mayer links converges for `κ` large (the
+    same condition as 24.1). It gives decay of local pattern correlations, and a comparison of two gases whose
+    activities or interactions differ only on a set `S`, through clusters joining a box to `S`.
+  * **The coupling:** disagreement percolation on polymer configurations. Couple the two gases polymer-cluster by
+    polymer-cluster, from `S` inward. A disagreement can only propagate through a chain of polymers and Mayer links
+    joined to `S`, each priced by its activity.
+  * **Result:** `P(ω_b ≠ ω'_b) ≤ C Σ_{b' ∈ S} (C e^{−c κ/2})^{dist(b, b')/(M R_j)}`.
+* **No supremum over boundary patterns is used**, so the forced-continuation problem does not arise.
+* **Status:** standard tools; to be written out. This is write-out 4.
+
+### 24.3 Smaller items
+
+* **Item 3.** 23.1's remark that the annealed bound "applies conditionally on `𝓗` too" is **dropped**. (A) is an `L¹`
+  statement, so the failure events need only their probability under the joint law.
+  * The `T_i` are taken over the deterministic ball of radius `R_i` around `B`, which contains `Λ''_i`. Every coarse
+    state in the tower is law-distributed by induction (REVIEW-3, follow-up 7 (1)).
+* **Item 4.** Born boxes within `C w_j` of an inherited piece are not priced by the quenched H2. That band is part of
+  the inherited composite box (factor in `N_j`, 24.1).
+* **Item 5.** Admissibility: 24.1 step 1.
+* **REVIEW-2's nit on `N_j`.** Born clusters attached to one inherited piece are bounded by the piece's boundary. So
+  `N_j ≲ n_j² L^d n'_{j+1}` up to the band factor; only `log N_j` enters `w_j`.
+
+## 25. The verdict for Lemma UV-TV and N-2
+
+**Argument.** N-2's key step, Lemma UV-TV, has a complete argument at paper-sketch level (`UV-TV.md` 8-12, 16, 21-24).
+
+**Single point of failure.** The **normalisation reading** carries the quenched H2 (12.1, 24.1), the annealed H2a
+(23.1, 24.1) and R10's scale-`K` normalisation (`REVIEW3-RESPONSE.md` 7, 13.3) at once. The reading:
+* Balaban's normalisation terms `E_k(Z)` ((1.70)-(1.71)) are the Gaussian fibre normalisations of the small-field
+  alternative;
+* and the small-field alternative's fibre integral is `≥ e^{−δ|region|}` times them.
+
+**Fallback if it fails.**
+* Each region then loses the top variables' Gaussian normalisation, about `β^{3/2}` per bond, so
+  `exp(C (M R_j)^d log β)` per `Q_j`-cube.
+* Rate `κ` per cube cannot absorb that.
+* It is absorbed only by a **per-cube margin** `e^{−c p0}` that survives Balaban's entropy induction ((1.80)-(1.89)),
+  under the condition `c p0 ≥ C (M R_j)^d log β`. His choice `p0 ≫ M^d R^{d+1}` with `R ≥ log g^{−2} ≥ log β` covers
+  this.
+* That margin is a **second reading** of [V] (1.80)-(1.89): (1.89) states only a per-component `p0` and `κ` per unit
+  of linear size.
+* **So at least one of the two readings must hold.** The first is preferred and needs nothing more.
+
+**Write-outs still owed** (before Lean):
+1. Lemma C's cross term, with the fibre constraint and the analytic perturbation (16).
+2. The coupling-form Dobrushin-Shlosman theorem with composite boxes and the exact per-site column condition (22.5).
+3. The front-advance estimate of the chaining (12.4).
+4. H1 by cluster expansion and disagreement percolation on polymer configurations (24.2).
+
+**Lean:** the coupling-contraction layer (22.5) is the generic theorem to formalise first.

@@ -67,7 +67,7 @@ the notes):
 | R12 [16] (71) in 4D | the action lower bound behind [V] (1.76) in four dimensions | **paper**, written out from [12] (48)-(53) (`CLOSE-OUT.md` 1) |
 | G2/H1 labels | labels in Balaban's form | **paper** on citation-level adaptations for components below `ε_*` (`REVIEW3-RESPONSE.md` 11-12): `a_ℓ e^{L_ℓ}`; only remainders persisting across two consecutive scales are labels; one-box contraction `N_{k+1} ≤ C L^{−4} N_k` (no linear coupling, R8; background scaling), iterated over the label's life; remainders go to the label's own constant, so [I]'s running is untouched. Above `ε_*`: **sketch**; inputs are three unchecked adaptations of Balaban's proofs (13.6); tails need `κ ≥ 4 log L + log C` (13.1) |
 | H3 one-step induction | the induction for the current design, with the order of constants | **paper** on citation-level inputs, four named sketch points (`S1-INDUCTION.md`); new E-row 7c (coarse plaquettes meeting holes, paid by the deep set) |
-| N-2 density | the block-observable class is dense in the limit OS space | **paper sketch, complete argument** (`REVIEW3-RESPONSE.md` 13-14, `UV-TV.md`): OS-norm density via Lemma UV-TV. Averaged statement (8); Theorem A_good in coupling form with composite boxes and Lemma C (16, 22); merging repaired (21, 23); persistence and bridging truncations (23); H1 by Dobrushin uniqueness of the dilute pattern gas (12.2); chaining from `ℓ` down (12.4), with a polynomial tail. It rests on the unchecked normalisation adaptation; to write in full: Lemma C's cross term, 22.5 with composite boxes, the front advance |
+| N-2 density | the block-observable class is dense in the limit OS space | **paper sketch, complete argument** (`REVIEW3-RESPONSE.md` 13-14, `UV-TV.md`; verdict in `UV-TV.md` 25). OS-norm density via Lemma UV-TV: averaged statement; coupling-form Theorem A_good with composite boxes; Peierls per `M R_j`-cube with rate `κ`; truncations; H1 at polymer level; chaining with a polynomial tail. The normalisation reading is a single point of failure (H2, H2a, R10), with a fallback (a per-cube `e^{−c p0}` margin). Four write-outs owed |
 | R11 interface | measurable blockings with noise (done, `Interface/RandBlocking.lean`); block state `(SO(3), closed Z2)` with gauge-invariant observables (no SU(2) encoding, REVIEW-2 G5) | formal refactor, outside M1's folders |
 | ext | [I] Theorem 2 (running coupling, with `γ ≤ γ0(L)`) | external, unpublished |
 | P4 | the crossover `L_* → L₁` | not M1's; open, the core |
@@ -90,8 +90,8 @@ withdrawn.
 listed below.
 
 **Open, and of a different kind from the sketch points:**
-* **N-2's key step, Lemma UV-TV (i)** (13.4): now argued at **paper-sketch level** in `UV-TV.md` (averaged form,
-  composite boxes, chaining). It still rests on the normalisation adaptation and on three write-ups.
+* **N-2's key step, Lemma UV-TV (i)** (13.4): argued at **paper-sketch level** in `UV-TV.md` (verdict in section 25).
+  The normalisation reading is a single point of failure, with a named fallback. Four write-outs are owed.
 * It is new analysis: the measurable ultraviolet transfer at scales below `ℓ`, the scale-`< ℓ` part of the blueprint's
   P5.2.
 * A coupling route avoids the frozen region. The small-field part (a measurable-observable cluster expansion over a
