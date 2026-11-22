@@ -808,3 +808,9 @@ thread.
   ρ_k^(d−2) with ρ_k = D0·L^(−(k−h)), shrinking geometrically with age, so the sum converges. (2) In Yang–Mills terms the same rule reads
   as confinement itself: a colour charge that no longer exists freely must keep its flux tube — the boundary of its non-existence — and
   the tube costs σ per unit length and time; **the string tension is the maintenance cost of asserting non-existence.**
+- **The root cost is near infinite (the owner, same day):** "The root cost should be near infinite for DMP. At G0, the perfect duality
+  only has the option to [act] to the outside, so the loss is total." Reading (coordinator): this matches asymptotic freedom exactly. A
+  core rooted at scale h costs exp(−A_min/g_h²); towards the root (G0, the bare theory at vanishing lattice spacing) the coupling g_h → 0,
+  so the root cost A_min/g_h² → ∞ and the suppression → 0: a departure from the perfect duality at the root is a total loss and
+  essentially never happens. In the bookkeeping: the sum over roots is dominated by the coarsest scales, and the deep (fine-scale) end
+  converges trivially — which is what makes "root cost (once) + summed maintenance" close.
