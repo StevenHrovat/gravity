@@ -1,0 +1,9 @@
+k_A lower bound (C's test function, MC n=4000000): 0.05308 +- 0.00003
+k_A lower bound (new test function (|y1|-|y2|)/sqrt2, MC): 0.06005 +- 0.00004; closed form 2 sqrt2/(15 pi) = 0.06002
+k_A upper bound (fibre transport): numerical 0.063662, closed form 1/(5 pi) = 0.063662
+Poincare upper bound (C): 0.07217
+pure adjoint linearised W1 window b_A* = 1/(48 k_A) with C upper 0.0722: 0.2886
+pure adjoint linearised W1 window b_A* = 1/(48 k_A) with fibre 1/(5pi): 0.3272
+pure adjoint linearised W1 window b_A* = 1/(48 k_A) with LP estimate 1/16: 0.3333
+pure adjoint linearised W1 window b_A* = 1/(48 k_A) with new lower 2sqrt2/(15pi): 0.3471
+pure adjoint linearised W1 window b_A* = 1/(48 k_A) with C lower 0.0531: 0.3923
