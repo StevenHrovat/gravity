@@ -410,3 +410,12 @@ z = 0.541 ± 0.040 against exact 0.558 at β = 0.5 (pull −0.42), 1.612 ± 0.08
 then reads "Z FALLS" from a positive measurement; the new rules bite as intended: the short toy SU(2) chains (150 measurements, 0–11
 sector flips per chain) are not counted; the toy photon gate passes (after the U(1) flip-rule decision above, analysis rerun on the
 same toy data); the synthetic check of the combining readings gives the same answers as before, with the threshold 1.5 applied.
+
+## Coordinator decision after the bench (2026-11-22 05:42, before any counted data)
+
+The queue's `bench` projected **19.68 h** (`runs-gpu/bench.log`) against the pre-registered 5.2 h (±50 %). The cause is the per-sweep
+floor: about 0.45–0.55 s per sweep on every lattice size (small boxes: 9 000–77 000 ns per site), against the 25 ms assumed; the
+per-site rate at the largest lattices is close to the model. The listed cuts save under 2 h, so by the rule above ("more than 7 h:
+the coordinator decides") the queue was **stopped** during its first photon-gate run (no result kept; nothing was read). The
+good-blocking refit (`../../proof-phase/c3b-refit/`) runs first. Before the act number reruns: find and remove the per-sweep
+overhead (kernel launches and the sheet fix-up per twist-plane pass, or batching chains), re-bench, and rerun this plan unchanged.

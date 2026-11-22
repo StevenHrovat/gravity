@@ -2,7 +2,7 @@
 # To be started by the coordinating session; never by a workstream.      pwsh -File queue_refit_gpu.ps1
 # Waits until the act-number queue (../../attempts/r4-actnumber/queue_actnumber_gpu.ps1) has finished: its log
 # runs-gpu/queue_actnumber.log has the final line "ACTNUMBER DONE ..." (or one of its early-stop lines "SELFTEST FAILED ..." /
-# "PHOTON GATE FAILED ..."), and no actnumber.py, blocked.py or boundary.py run is alive (checked twice, 3 minutes apart). Then:
+# "PHOTON GATE FAILED ..."; or the coordinator's stop line "QUEUE STOPPED by the coordinator after the bench", 2026-11-22), and no actnumber.py, blocked.py or boundary.py run is alive (checked twice, 3 minutes apart). Then:
 #   1. selftest --gpu (fused kernel; if it fails, the array-code path with BLOCKED_FUSED=0; if that fails too: stop)
 #   2. bench (timings at 48^4 and the projected total, copied into the queue log)
 #   3. the photon gate (U(1), beta 1.1, 48^4, b = 4, 8, 16) and its decision: if it fails, stop before SU(2)
@@ -21,7 +21,7 @@ $act = "../../attempts/r4-actnumber/runs-gpu/queue_actnumber.log"
 
 function ActDone {
     if (-not (Test-Path $act)) { return $false }
-    return [bool](Select-String -Path $act -Pattern "^(ACTNUMBER DONE|SELFTEST FAILED|PHOTON GATE FAILED)" -Quiet)
+    return [bool](Select-String -Path $act -Pattern "^(ACTNUMBER DONE|SELFTEST FAILED|PHOTON GATE FAILED|QUEUE STOPPED by the coordinator after the bench)" -Quiet)
 }
 function OthersRunning {
     return [bool](Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match '(actnumber|blocked|boundary)\.py' -and $_.CommandLine -notmatch 'goodblock' })
