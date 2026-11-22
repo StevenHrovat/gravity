@@ -1018,3 +1018,15 @@ thread.
   block laws only through decay and transfer bounds. Coarse-graining is irreversible in any case (information is lost at each step; in
   four dimensions the irreversibility of renormalisation flows is the a-theorem of Komargodski–Schwimmer), which fits "causality still
   exists" as the arrow of the flow.
+- **What does not settle cannot exist (the owner, same day, on R2):** "What seems to me to be the issue currently with M1, is that states
+  that do not settle into a state that asserts existence in the way we describe it, are not forced to do so. This is kind of a
+  misunderstanding of DMP's role. Since our definition of existence is literally HOW to exist, with every possible way how to contained
+  inside, if a state does not settle correctly, it can not exist." Reading (coordinator): on the lattice nothing is literally forbidden;
+  every configuration has positive weight. "Cannot exist" translates to: its weight vanishes in the limit fast enough to beat its
+  entropy, so it contributes nothing to any expectation value. For M1 this changes the task for R2: the long-lived conserved-flux sheets
+  need not be carried or described by the blocking; it suffices to prove that they are negligible and split them off as a remainder of
+  small total mass. That step is exactly what law preservation buys: Balaban's densities carry no probability bounds (BALABAN-READING),
+  but M1's block densities are laws, so an event of small probability can be removed from the law with a controlled error in every
+  bounded observable. Rough size: a sheet that outlives Balaban's delay spans at least about L^(2 R_j) plaquettes at moderate flux above
+  the small-field threshold, so its weight is far below its count of positions; the bound has to be done in physical units (the F1
+  trap). Sent to the M1 thread as the preferred form of the R2 repair.
