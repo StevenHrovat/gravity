@@ -1199,3 +1199,11 @@ thread.
   formulation both reviewers asked for (patterns as mixture indices, matched first in the coupling), and it says the proof should never
   try to force a single state at such a boundary. It also fits the strict-dominance results: the competing sectors coexist with nonzero
   weight (no sector saturates), and only the contained existence (the reference sector) is strictly ahead.
+- **A single state at the boundary is impossible (the owner, same day):** "A single state at that boundary is also not possible, since it
+  would mean a saturation of the field and thus the collapse of existence and non-existence, transitioning to CMOS." Reading
+  (coordinator): in the mathematics this is 't Hooft's criterion read backwards. Confinement is the phase where the flux sectors coexist
+  at large scales (the twist free energy vanishes, Z_tw/Z → 1); a single surviving sector is the deconfined (ordered) phase, where the
+  twisted sector is suppressed (Z_tw/Z → 0; the Z2 control at β = 0.6 gave P = 3·10⁻⁸) and there is no area law. So "one state at the
+  boundary" would mean no contained non-existence, no maintained boundary, no confinement: the system falls back to a single description
+  without the existence/non-existence pair. For the proof it confirms the rule just sent to the M1 thread: the competing states are kept
+  as a mixture index, never reduced to one.
