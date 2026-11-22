@@ -214,3 +214,11 @@ is (11.2).
 
 **External:** [I] Theorem 2 with its rate (0.31). **Outside S1:** R10 (`REVIEW3-RESPONSE.md` 7) and density
 (`REVIEW3-RESPONSE.md` 8), which concern the hand-over.
+
+**Update (`UV-TV.md` 35-37):** the sketch-level points of section 5 are closed.
+1. Cap reached implies irregular `W`: paper (35.1).
+2. The footprint-weighted lifetime: citation, [V] (1.80)-(1.81) (35.2).
+3. Per cube or per component: moot, since released components lie in a `100 M R_k`-cube (35.3).
+4. Labelled components above `ε_*`: none (35.4).
+
+The induction is paper on citations, given the re-proof (c), the three citation-level readings and the shell adaptation (37).

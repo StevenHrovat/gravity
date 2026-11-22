@@ -2504,3 +2504,175 @@ The "fractions sum to 1" step of FILL 0.2 is no longer needed. Constant order: `
 * **FILL.md 2:** the test threshold becomes `C_tw r0 λ²` (update note).
 * **UV-TV 11.4 and 12.5:** the large-component branch is withdrawn (35.3-35.4).
 * **M1-PLAN 0:** the four sketch-level points are closed. The final verdict for all of M1 comes after Group 2.
+
+## 36. Group 2: the four unchecked adaptations of M1-PLAN 0
+
+### 36.0 Result in plain words
+
+| # | adaptation (as listed in M1-PLAN 0) | now |
+|---|---|---|
+| 1 | (P2) on the full analyticity domain: the labels' stability under real and complex deviations | **citation**, with one citation-level reading of the range of `A'`. Written out in 36.1 |
+| 2 | the localisation of `L_ℓ ∘ U_bg` | **citation**: Balaban's localisation operation applied to one more term of his class. Written out in 36.2 |
+| 3 | small-field steps accepting an indexed, non-covariant local term whose constant is moved by hand | **superseded by a proof**: the one-box contraction (12.2) tracks the term itself. Covariance is used nowhere, and Balaban's cluster expansion is cited only as a local expansion (36.3) |
+| 4 | R10's scale-`K` normalisation "paid as in the step `K → K+1`", and the same at every scale | **superseded by the re-proof (c)**: the slack `ψ` with (P2) including `log β` (26.3, 27.7) pays it explicitly (36.4) |
+
+What remains outside proofs and citations is listed in the final verdict (37):
+* readings: (a); admissibility; the range of `A'`;
+* the adaptation of Balaban's machinery to shells.
+
+### 36.1 Adaptation 1: (P2), line by line against the source
+
+**What is used** (11.1). For a released labelled component `X` and real or complex configurations `V` in Balaban's
+analyticity domain around a regular base `U`:
+`Φ_ℓ(X; V) = Φ_ℓ(X; U)(1 + η)` with `|η| ≤ e^{sup|Δ|} − 1`.
+
+1. **[V] p. 379 (text layer).** "In the definition (1.71) only the quadratic form in `B` and the term `V(X~)` depend on
+   `(U, J)`. We expand them up to the first order in `A'`, `J`; the first order terms are already small."
+   * The first-order bound printed there carries the factor `(α_{0k} + α_{1k})`.
+2. **[I] (1.11)-(1.12)** (REVIEW-3 follow-up 7, point 3). The analyticity domain is `U = U' U''`:
+   * `U'` is G-valued, regular, with `|dU' − 1| ≤ α_0`, and per cube gauge-equivalent to `exp(iA)` with
+     `|A|, |∇A| ≤ O(1) L M B α_0`;
+   * `U'' = exp(i A'')` with `A''` complex, `|A''|, |∇A''| ≤ α_1`.
+   * So the real deviation from the base (`A'`, size `≤ α_0`) and the complex part (`J`, size `≤ α_1`) are both
+     variables of the expansion. That is what the factor `(α_0 + α_1)` reflects.
+3. **[V] (1.73)-(1.74).** "The operation `T_k(X)` can be represented as the operation for a regular G-valued
+   configuration `U`, with the additional small, and possibly complex valued, term in the exponential." For `F ≥ 0` this
+   gives `|T(X, (U, J)) F| ≤ T(X, (U, 0))[F e^{|Δ|}]`.
+   * With `F = 1_ℓ` (a function of the integration variables) and `Δ` the first-order term:
+     `|T^ℓ(X, (U, J)) 1 − T^ℓ(X, (U, 0)) 1| ≤ (e^{sup|Δ|} − 1) T^ℓ(X, (U, 0)) 1`.
+     This is (P2), with `(U, J)` ranging over the whole domain of item 2.
+4. **The size condition.** 11.1 uses the flat configuration as base, patch by patch. That needs every small-field
+   configuration in a patch to lie within the real radius `α_{0,k}`: `C ε_k ≤ α_{0,k}`. This is `q0 ≥ p0`, the row-6
+   condition (33.6; `EK-DERIVATION.md` Q4 notes it is forced).
+5. **Bounded domain.** By 35.3, `X` lies in a `100 M R_k`-cube, so `sup|Δ| ≤ 100^d δ_k → 0`. Under either reading of
+   the bound in item 1 this is small.
+
+**Level: citation.** The one citation-level reading is item 2: that `A'` in [V] p. 379 ranges over the real
+deviations of [I] (1.11)-(1.12). It is supported by the printed factor `(α_0 + α_1)` and by [I]'s definition of the
+domain. If it failed, chaining through `O(L M B α_0/α_1)` balls per cube gives the same conclusion with a polylog loss
+(REVIEW-3 follow-up 7, point 3).
+
+### 36.2 Adaptation 2: the localisation of `L_ℓ ∘ U_bg`, line by line
+
+**What is used** (11.3). `L_ℓ(U_bg(V))`, an analytic function of the non-local background, is a sum of local terms
+with decay.
+
+1. **Balaban's operation, [V] (1.59)-(1.63) with the analyticity discussion on pp. 374-376.** For a term `E(X, U_k)`
+   whose argument is the background `U_k(V)`, he writes:
+   * the background computed from `V` restricted to a neighbourhood of `X`;
+   * plus telescoping differences between nested neighbourhoods, each controlled by the exponential decay of the
+     `H`-functions ([15] (190)).
+   
+   The result: "a sum of localized terms with the corresponding exponential decay and analyticity properties" ([IV]
+   p. 805 of the text layer; [V] (1.66)).
+2. **Its hypotheses:** `E(X, ·)` analytic on `U^c_k(X, α_0, α_1)` and bounded there. Nothing else about `E` is used:
+   not translation covariance, not its origin.
+3. **`L_ℓ` satisfies them** (11.1, 36.1):
+   * it is analytic on the same domain, `L_ℓ = log Φ_ℓ − log Φ_ℓ(flat)` with `Φ_ℓ` non-vanishing there by (P2);
+   * it is bounded by `2δ_X`;
+   * its domain lies in a `100 M R_k`-cube.
+4. **So** Balaban's operation applies verbatim and gives
+   `L_ℓ(U_bg(V)) = Σ_r [local terms on the r-neighbourhood]` with decay `e^{−κ r}`, as 11.3 states.
+
+**Level: citation.** It is Balaban's operation applied to one more function in its class. The identification of 3 is
+paper.
+
+### 36.3 Adaptation 3: the indexed, non-covariant local term
+
+* **Where Balaban uses covariance:** to identify the relevant parts extracted at each step (vacuum energy, coupling
+  renormalisation) as constants, via [III] (2.29) and (2.32). The cluster expansion of the fluctuation integral is
+  local term by term and uses no covariance ([I] Sects. 3-7; [III] Sect. 3).
+* **The label term needs no extraction by covariance:**
+  * its constant part is moved into `a_ℓ` by hand (12.2, item 3);
+  * it has no linear part (R8: gauge invariance, no invariant vector in `so(3)`);
+  * its quadratic part is a point term, irrelevant, shrinking by `L^{−4}` per step.
+  
+  The one-box contraction lemma (12.2) **proves** this evolution step by step. It uses:
+  * the fluctuation integral of `e^{L_ℓ}`, through the local cluster expansion (citation);
+  * the background scaling ([15], citation);
+  * Cauchy estimates (paper).
+* **So** the adaptation is superseded by a proof (12.2). Balaban's machinery is used only through its local cluster
+  expansion, cited as such. The tails condition `κ ≥ 4 log L + log C` (13.1) and the bounded number of marginal steps
+  (35.4) are part of 12.2's statement.
+* **Level: paper** (12.2), on citations.
+
+### 36.4 Adaptation 4: the scale-`K` normalisation of R10, and at every scale
+
+* **The old form** (13.3): the top variables' normalisation, about `β^{3/2}` per bond, "is paid from the large-field
+  budget, as in Balaban's next step". That was an unchecked claim about his accounting.
+* **Now:**
+  * the re-proof (c) keeps a slack `ψ ≥ c'_ψ p0² × (#cubes)` in every activity ((1.97'), (1.80'));
+  * (P2), stated with `log β` (27.7), is `c'_ψ p0²(g_k) ≥ C 3^d (M R_k)^d (1 + log β_k)`. It absorbs the Gaussian
+    normalisation of the top variables, `(M R_k)^d (3/2) log β_k` per cube, and the `O(1)`-per-site small-field losses;
+  * (P2) follows from (P0), since `(M R)^d log β ≤ M^d L^{d+1} R^{d+2}`.
+* **Where this is used:**
+  * R10's crossing estimate (7: `∫ρ_G ≤ …`);
+  * H2a, the annealed large-set bound at every scale (23.1, 24.1);
+  * the quenched H2 (12.1, 24.1).
+  
+  All now go through (c) and (P2), with no appeal to "Balaban's next step".
+* **Level: re-proof (c)**, checked three ways. The adaptation is superseded.
+
+## 37. Final verdict for the whole of M1
+
+**Levels:**
+* **Lean:** machine-checked, standard axioms;
+* **paper:** proved in these notes;
+* **re-proof:** a strengthened version of a Balaban argument, written line by line against the source and checked;
+* **citation:** Balaban or another source, used as stated;
+* **citation-level reading:** an interpretation of the source that the text supports but does not state;
+* **adaptation:** Balaban's machinery used on objects outside his stated setting;
+* **sketch:** argued with gaps named;
+* **external:** an input from outside the series;
+* **separate:** not M1's.
+
+### 37.1 The items
+
+| item | content | level |
+|---|---|---|
+| law preservation | the RG densities are the true laws at every scale (conditional step, any measurable blocking with noise) | **Lean** (`Exact.lean`, `Assembly.lean` `m1_laws`; `Interface/RandBlocking.lean`) |
+| blocking | SO(3) × Z2 split; local decoder; mod-2 Stokes; excision with twist-free envelopes; Balaban's average; random swallowed bonds | **paper** (`ROUTE-B.md` 1, `CLOSING.md`, `REVIEW3-RESPONSE.md` 1-2, 5, `FILL.md`, `UV-TV.md` 35.1, `SKETCH-STEPS.md` 1) |
+| S1, the one-step induction | `Form_k` with the order of constants; the step S0-S11 | **paper** on citations (`S1-INDUCTION.md`), with (c), and the sketch points closed (35) |
+| R1 off-centre dilution | contraction of localised moderate cores | **paper + Lean steps** (`OFFCENTRE.md`, `OffCentre.lean`) |
+| R2 regular within the delay | attribution; footprint-weighted lifetime | **paper + Lean** (`R2-REPAIR.md`, `footprint_sum_le`); lifetime **citation** [V] (1.80)-(1.81) (35.2) |
+| R3 filling near the cut | twist-free envelopes; implicit-function filling; cap reached implies irregular `W` | **paper** (`FILL.md`, `REVIEW3-RESPONSE.md` 2, `UV-TV.md` 35.1) |
+| R4 fibre mass (E7.J) | ordinary and swallowed coarse bonds | **paper** (+ **Lean** slicing, `FibreMass.lean`) |
+| R5 action lower bound | [16] (69)-(71) | **citation** (read) |
+| R12 [16] (71) in 4D | from [12] (48)-(53) | **paper** (`CLOSE-OUT.md` 1) |
+| R6 decoder locality | per component of the flip cubes | **paper** (`REVIEW3-RESPONSE.md` 5) |
+| R7′ per-flip normalisation | `Z_{−P}/Z ≤ (C β^{3/2})^{|P|}` | **citation**, exponent by a rank count (paper) |
+| R8 released terms | no linear coupling; dimension 4; summable | **paper** (`CLOSE-OUT.md` 2) |
+| R9 SO(3) carry-over | Balaban for the adjoint field, small-field rule per scale | **citation** with the change table (`CLOSE-OUT.md` 5) |
+| labels | `a_ℓ e^{L_ℓ}`; persistence of the parent; one-box contraction; positive pattern gas | **paper** (`REVIEW3-RESPONSE.md` 11-12, `UV-TV.md` 31, 35.3-35.4, 36.2-36.3) on citations; one **citation-level reading** (36.1, the range of `A'`) |
+| the count | closed remainders through the 1-skeleton, `L^{(1 − 16 b(1−δ)) k}` | **paper** (`CLOSING.md` 2) with the rate **external** ([I] (0.31)) |
+| (c), the strengthened induction | [V] (1.80)-(1.97) with a slack `e^{−c p0²}` per birth-scale cube; conditions (P0), (P2) | **re-proof**, checked three ways (independent reader, REVIEW-2, REVIEW-3) |
+| R10 hand-over, `L¹` form | positive partition, `A`-clusters, normalisation via (c) | **paper** on citations, with (c) (36.4) |
+| N-2, Lemma UV-TV | OS-norm density of the block observables | **paper** (`UV-TV.md` 32), given (c), the readings and the adaptation below |
+| Theorem A_good, coupling form | the generic contraction on couplings | **paper** (`UV-TV.md` 28, 34.1); **Lean** in progress with a separate worker (`OneBox/CouplingDS.lean`) |
+| Lemma C, H3 | composite boxes; collar coupling | **paper** with constant-size inputs (`UV-TV.md` 29, 33.6-33.7) |
+| `κ` large for fixed `L` | at the cost of larger `M` and smaller coupling bound `γ` | **citation** ([I] Theorem 3; [III] p. 260) |
+| (a), what `E_k(Z)` is | normalisation and vacuum constants of the small-field alternative | **citation-level reading** (`EK-DERIVATION.md`) |
+| admissibility | deleting whole history components keeps admissibility | **citation-level reading** (poor scan of [III] (2.3)-(2.9)) |
+| the range of `A'` | Balaban's first-order expansion covers real deviations | **citation-level reading** (36.1) |
+| Balaban on shells | his small-field machinery on shells of width `≫ M`, thinner than an `M R_j`-cube, shaped by a cluster or a slab, with data on both sides, constants uniform in the shape | **adaptation** (29.6, 33.7, 34.8) |
+| [I] Theorem 2 | the running coupling with its rate (0.31) | **external** (unpublished) |
+| P4 | the crossover `L_* → L₁` | **separate** (not M1's; open) |
+| the interface | block state `(SO(3), closed Z2)`; `MassGapLoc` via the limit, statement unchanged | **separate** (outside M1's folders) |
+
+**No item is at sketch level.** The four sketch points of M1-PLAN 0 are closed (35). The four unchecked adaptations are
+now citations, a proof, or superseded by (c) (36).
+
+### 37.2 What M1's argument rests on, in one list
+
+1. **Lean:** exactness (law preservation) and the assembly bookkeeping, plus the Lean steps of R1, R2 and R4: 57
+   theorems in 12 modules, standard axioms. The coupling-form theorem is in progress separately.
+2. **One re-proof:** (c), the strengthened induction of [V] (1.80)-(1.97).
+3. **Citations:** Balaban [I]-[V], [12]-[16] as listed per item, the SO(3) carry-over (R9), and `κ` large.
+4. **Three citation-level readings:** (a), what `E_k(Z)` is; admissibility; the range of `A'`.
+5. **One adaptation:** Balaban's small-field machinery on shells with Dirichlet data on both sides.
+6. **External:** [I] Theorem 2 with its rate (0.31).
+7. **Separate:** P4 and the interface.
+
+**Verdict.** M1 has a complete argument: every row is proved at paper level, in Lean, or by citation, given the list
+above. The points that are not plain citations are the re-proof (c), the three readings and the one adaptation, each
+named with where it is used. P4 and [I] Theorem 2 are outside M1.

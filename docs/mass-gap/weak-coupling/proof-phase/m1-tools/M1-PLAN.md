@@ -76,55 +76,29 @@ F2 (Bianchi halo) and F3 (P2′) are absorbed: halos live in released large-fiel
 because nothing is frozen. V1 with excision (`V1-EXCISION.md`, `V1-INPUTS.md`) is no longer on the main line: holes are
 never inside small-field domains. The Lean modules `Twist.lean` (`rp_map`) and `CutAvoid.lean` are off the main line;
 `Exact.lean`, `Dilution.lean`, `Vortex.lean`, `FibreMass.lean`, `Routine.lean`, `FluxTube.lean` and `Assembly.lean`
-(as bookkeeping, REVIEW-1 F7) remain in use. **Verdict (after the part-2 reviews, `REVIEW3-RESPONSE.md` 13, 2026-11-22).** "Complete at paper level" stays
-withdrawn.
+(as bookkeeping, REVIEW-1 F7) remain in use. **Final verdict for the whole of M1 (2026-11-23; `UV-TV.md` 37).** M1 has a complete argument. Every row is proved at
+paper level, in Lean, or by citation, given:
+1. **Lean:** exactness (law preservation), the assembly bookkeeping, and the Lean steps of R1, R2 and R4. 57 theorems in
+   12 modules, standard axioms. The coupling-form theorem of `UV-TV.md` 28 is in progress with a separate worker
+   (`OneBox/CouplingDS.lean`).
+2. **One re-proof:** (c), the strengthened induction of [V] (1.80)-(1.97), with a slack `e^{−c p0²}` per birth-scale
+   cube (`UV-TV.md` 26-27). Checked three ways.
+3. **Citations:** Balaban [I]-[V], [12]-[16] as listed per item, the SO(3) carry-over (R9), and `κ` large for fixed `L`
+   ([I] Theorem 3).
+4. **Three citation-level readings:** (a), what `E_k(Z)` is (`../m1-review/EK-DERIVATION.md`); admissibility (poor scan
+   of [III] (2.3)-(2.9)); the range of `A'` in [V] p. 379 (`UV-TV.md` 36.1).
+5. **One adaptation:** Balaban's small-field machinery on shells (width `≫ M`, thinner than one `M R_j`-cube, shaped by
+   a cluster or a slab, data on both sides), with his constants uniform in the shape (`UV-TV.md` 34.8).
+6. **External:** [I] Theorem 2 with its rate (0.31).
+7. **Separate:** P4 (the crossover `L_* → L₁`) and the interface (block state `(SO(3), closed Z2)`; `MassGapLoc` via
+   the limit, statement unchanged).
 
-**Written, at paper level:**
-* the one-step induction (`S1-INDUCTION.md`), with Balaban's results cited by equation;
-* R10 (section 7, positivity fixed);
-* labels as `a_ℓ e^{L_ℓ}` with the one-box contraction (11-13);
-* N-1, the local decoder, H5 and H6;
-* the `g0` remark (13.5).
+**No item is at sketch level:**
+* the four sketch points are closed (`UV-TV.md` 35);
+* the four unchecked adaptations are now a citation (36.1, 36.2), a proof (36.3), or superseded by (c) (36.4).
 
-**Unchecked adaptations of Balaban's proofs**, not citations: the label inputs and R10's one-more-step normalisation,
-listed below.
-
-**Open, and of a different kind from the sketch points:**
-* **N-2's key step, Lemma UV-TV (i)** (13.4): **complete at paper level** (`UV-TV.md` 32), given (c), the strengthened
-  induction (a re-proof of [V] (1.80)-(1.97), checked three ways), the citation-level readings (a) and admissibility,
-  and the adaptation of Balaban's machinery to shells with Dirichlet data. All four write-outs are done.
-* It is new analysis: the measurable ultraviolet transfer at scales below `ℓ`, the scale-`< ℓ` part of the blueprint's
-  P5.2.
-* A coupling route avoids the frozen region. The small-field part (a measurable-observable cluster expansion over a
-  Gaussian reference) is where it could fail technically.
-* **`MassGapLoc` keeps its statement.** Restating it on the OS closure would weaken the theorem unless this lemma is
-  proved.
-
-**Sketch-level points: all four closed** (`UV-TV.md` 35):
-1. "Cap reached implies irregular `W`": **paper** (35.1; uniform test threshold `C_tw r0 λ²`, coarse Stokes).
-2. The footprint-weighted lifetime: **citation**, [V] (1.80)-(1.81) with `K ≤ n0 − j + R_j` (35.2, `R10-SCOPE.md` 1).
-3. Per cube or per component before (1.73): **moot**. Released components lie in a `100 M R_k`-cube (Balaban's
-   condition (i)), so `δ_X ≤ 100^d δ_k → 0` under either reading; the case split is withdrawn (35.3).
-4. Labelled components above `ε_*`: **none at release** (35.4).
-
-**Unchecked adaptations:**
-1. (P2) on the full analyticity domain.
-2. The localisation of `L_ℓ ∘ U_bg`.
-3. Small-field steps accepting an indexed, non-covariant local term whose constant is moved by hand.
-4. R10's scale-`K` normalisation paid as in the step `K → K + 1`, and the same at every scale if Lemma UV-TV uses it.
-5. (Superseding 1-4 for the normalisation question:) `UV-TV.md` 26. Reading (a), what `E_k(Z)` is, holds in substance
-   (`../m1-review/EK-DERIVATION.md`). Reading (b), a lower bound with `δ → 0`, is not in Balaban and is replaced by the
-   strengthened induction (c), a re-proof with a slack `e^{−c p0²}` per birth-scale cube.
-
-**Conditions added to the constants:** `κ ≥ 4 log L + log C`; `ε_* ≤ L^{−4}/(2C)`; condition 8 with the factor
-`n0 + R_k`; `c` in `r0` after `C_1`, `C_tw`.
-
-**As before:**
-* **external:** [I] Theorem 2 with its rate (0.31);
-* **separate:** P4;
-* **outside M1:** the interface's block state `(SO(3), closed Z2)`.
-
-**Lean:** 57 theorems in 12 modules, standard axioms (rebuilt 2026-11-22 after a docstring update).
+The full table with a level per item is `UV-TV.md` 37.1. The rows above this verdict keep their history; where a row
+still says "sketch" or "unchecked", section 37 supersedes it.
 
 Parts A and B below are the pre-review plan, kept for the record.
 
