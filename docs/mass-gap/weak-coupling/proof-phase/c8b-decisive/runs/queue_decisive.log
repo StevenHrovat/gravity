@@ -1,0 +1,2 @@
+WAITING for the one-box queue 2026-11-22T19:26:00
+WAIT STOPPED by the coordinator on the owner's decision 2026-11-22T22:56:06 before any run: one-box queue overran its estimate about 100-fold; the decisive queue's GPU timings are untested too. Time one job and project before starting.
