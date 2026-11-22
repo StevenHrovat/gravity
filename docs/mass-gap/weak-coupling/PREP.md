@@ -1048,3 +1048,13 @@ thread.
   sector). The global part is already handled in the project by summing over twisted sectors (Z_tw, the flip probability, `Twist.lean`),
   and the local part is what Balaban's polymer expansion needs to be local. "Containment within existence" is the statement that the
   sector is fixed by the box as a whole, not by any part of it. Sent to the M1 thread as the form of R6.
+- **Correction: the decoder is globally local (the owner, same day):** "Not local is wrong, it is more correct to say it is globally
+  local. Since the decoder is the dimensional transmutation, which gives locality/causality/existence, it is local, but that is kind of
+  circular since it gives locality." Reading (coordinator): this matches what R6 found (`DECODER-LOCAL.md`). Per configuration the
+  decoder is exactly local: each corrected piece lies within 2|K| of its own cluster K of acts, so its reach is set by the cluster sizes.
+  How large clusters are is set by how rare acts are, about exp(−A/g²) each, i.e. by the bare coupling at G0: the locality scale is
+  produced by the initial settings, which is the owner's "dimensional transmutation gives locality". Only wrapping clusters carry global
+  information (the twist sector of the whole box), and they are area-suppressed. On the circularity: in the proof it does not arise.
+  The decoder's locality is a combinatorial fact about each configuration, plus a bound on cluster sizes from the bare action alone; it
+  never assumes decay of the coarse law, which is what it is then used to prove. So locality is derived from the initial settings, not
+  presupposed.
