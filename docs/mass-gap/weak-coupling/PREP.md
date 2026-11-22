@@ -1112,3 +1112,14 @@ thread.
   only at the quantum (scale 1/Λ), where the running coupling reaches order one and the gap sets a finite correlation length. So the
   picture is: sub-quantum = scale-free, unobstructed flow (CMOS-like layout, the information half); the quantum = where flow is bounded
   and existence is asserted (the gap).
+- **Why a carried label's cost shrinks (the owner, same day, on the labels gap):** "The gap is actually already established in DMP:
+  Since for a label to be pulled out, it has to come from something with existence, it also has to exist for at least two ticks, so
+  that it can establish its causality. During that time it has to assert its existence, which leads to act remainders, which make the
+  coupling more efficient, thus shrinking the cost of the coupling." Reading (coordinator): this matches the argument M1 dropped and the
+  reviewers asked to restore. At every step a carried label leaves a remainder (the part of its interaction with the field that the step
+  integrates out); those remainders are local, gauge-invariant terms with no linear coupling (su(2) has no invariant vector, R8), so
+  they are absorbed into the running coupling and the vacuum energy, not charged to the label again ("make the coupling more
+  efficient"). What stays attached to the label couples only through the curvature squared of the surrounding field, which in the
+  label's own units shrinks like L^(−4) per step, so the per-step cost is summable over the label's whole life rather than linear in K.
+  "At least two ticks to establish causality": a label is pulled out at release and needs the following step to hand its remainder to
+  the coupling; from then on only the shrinking dimension-4 part is carried. Sent to the M1 thread as the intended form of the repair.
