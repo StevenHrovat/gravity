@@ -126,3 +126,44 @@ images are small, and the funnel's shells are regular. So `[15]` Theorem 1 gives
 * The constant `C` is not computed (Balaban's constants are not explicit either).
 * Lean: nothing here is elementary enough to be worth formalising yet (the only elementary piece, Lemma A, is a cutoff
   construction whose formal version would mostly be lattice-counting bookkeeping).
+
+## 5. Version 3: the write-up (2026-11-22, round 12)
+
+This section supersedes sections 1 and the Corollary of section 2 where they differ; it fits P2′ to the current design
+(trapping at creation, excision, records; `TRAP.md`, `S1-ROWS.md`) and states what is proved and what is used.
+
+**Setting (v3).** A record `r = (H, h, s, a)` (`S1-ROWS.md` 1): hole `H` = a connected component of plaquettes of
+`V_{s}` at angle `≥ r0` (merged when closer than `R_sep`), with `n` deep plaquettes, diameter `D0` at scale `s`,
+root action `a ≥ A_min n`, `A_min = c_P r0²/(C_d² L⁴)` (`ROUTINE-ROWS.md` 5). Its content is integrated once, at
+creation, and frozen. At scale `k ≥ s`, `ρ_k = D0 L^{-(k-s)}`. Two phases:
+* **carrying** (`ρ_k > 1`, or the record's neighbourhood not yet `ε_k`-regular): the record lies in the large-field
+  region `Z_k`; cost per step at most `C polylog(g_k^{-2}) N_k(H)`, `N_k(H)` the number of scale-`k` cubes of side
+  `M R_k` meeting `H` (Balaban's entropy per cube, [V] (1.80)-(1.88));
+* **decoupled** (`ρ_k ≤ 1` and the neighbourhood `ε_k`-regular, which D-mod reaches after `n_mod = O(log g^{-2}/log L)`
+  steps): the record may lie in a small-field domain `Λ_k`; the step changes by `exp(Δ_k)`.
+
+**Theorem P2′ (v3).** In the decoupled phase
+`|Δ_k| ≤ C [ρ_k^{d-2} (1 + p0(g_k)²) + ρ_k^{(d-2)/2} p0(g_k) (1 + a^{1/2}/g_s)]`.
+*Proof:* Lemmas B (with A), C, D, E of section 2, unchanged; the background and the propagator with the hole frozen are
+those of V1 with excision and of Lemma FR (`V1-INPUTS.md`), so the inputs I1 and I2 are used for the unmodified objects
+exactly as Balaban states them, and the modification is proved there.
+
+**Lemma F (covering numbers; proved).** A connected set of `n` sites meets at most `3^d (2n/ℓ + 1)` cubes of side `ℓ`
+of a fixed partition. *Proof.* A depth-first walk around a spanning tree visits every site and has `≤ 2n` steps. Cut it
+into `⌈2n/ℓ⌉` pieces of `≤ ℓ` steps; each piece stays within distance `ℓ` of its first site, hence inside the `3^d`
+cubes around that site's cube. ∎ With `ℓ = M R_k L^{k-s}` (scale-`s` units), `N_k(H) ≤ 3^d (2n L^{-(k-s)} + 1)`.
+
+**Corollary (v3, the life of a record).**
+* carrying: `Σ_k C polylog N_k(H) ≤ C polylog (n + log_L D0 + n_mod)`;
+* decoupled: `Σ_k |Δ_k| ≤ C (1 + p0(g_s)² + p0(g_s) a^{1/2}/g_s) / (1 - L^{-(d-2)/2})` (the sum starts at `ρ_k ≤ 1`,
+  so no power of `D0` appears; `p0(g_k) ≤ p0(g_s)`);
+* root entropy: `≤ C n log g_s^{-2}` (the content of `n` plaquettes' bonds, integrated once).
+All are `≪ a/g_s²` for `g_s ≤ γ0(L)`, since `a ≥ A_min n` and `A_min^{1/2} ≫ g_s p0(g_s)`: so
+`w_r ≤ exp(-a/(2 g_s²))` for records of **any** size and shape (`S1-ROWS.md` F3). The earlier restriction
+`D0 ≤ 100 M R_h` (section 1) is not needed.
+
+**What stays used without reproof.** I1: `[15]` (9)-(10) (regularity of the minimiser), for the unmodified problem;
+I2: boundedness and exponential decay of Balaban's fluctuation propagators, for the unmodified operators; I3: the
+analyticity domains and bounds of the local terms, [I] (1.18), [II] (2.41), [III] (2.31), (2.42), as Balaban states
+them; their use for the perturbed objects is the Cauchy estimate of Lemma E (the perturbation is inside the analyticity
+radii). The constant `C` is not computed. **Status:** **paper** given I1-I3 as Balaban states them (written up).

@@ -45,4 +45,6 @@
 'ProofPhase.M1.resolvent_right' depends on axioms: [propext]
 'ProofPhase.M1.resolvent_two_sided' depends on axioms: [propext]
 'ProofPhase.M1.decay_through' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.fibre_rep_of_map_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.M1.lintegral_gauge_leaf' depends on axioms: [propext, Classical.choice, Quot.sound]
 no sorry / native_decide / axiom in ProofPhase/M1

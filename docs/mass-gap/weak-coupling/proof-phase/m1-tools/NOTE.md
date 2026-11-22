@@ -309,7 +309,7 @@ hypothesis of exactness; it enters the estimates (E3, E6 of the plan). The inter
   root once + maintenance; replaces cut avoidance on the critical path). `E3.md` (§6 row E3: the constrained denominator). `E5-E9.md` (§6 rows E5-E9; Lemma E7.J, fibre mass, open),
   `TRAP-CHECKS.md` (trapping checks T1-T4), `formal/ProofPhase/M1/Assembly.lean` (§8: `m1_assembly`,
   `m1_assembly_rows`). `E7J.md` (fibre mass, proved), `POINCARE.md` (block-axial Poincaré), `V1-EXCISION.md` (T3), `V1-INPUTS.md` (its two inputs), `S1-ROWS.md` (inductive form, every row stated),
-  `formal/ProofPhase/M1/LocalMod.lean`,
+  `formal/ProofPhase/M1/LocalMod.lean`, `ROUTINE-ROWS.md` (the routine rows), `formal/ProofPhase/M1/Routine.lean`,
   `formal/ProofPhase/M1/FibreMass.lean`.
 - `TWIST.md` (the twisted blocking on the full lattice, link reflection positivity, multi-site tests; with
   `lattice_twist.py`, `run_lattice_d34.log` and `formal/ProofPhase/M1/Twist.lean`), `P2-PRIME.md` (subscale-hole

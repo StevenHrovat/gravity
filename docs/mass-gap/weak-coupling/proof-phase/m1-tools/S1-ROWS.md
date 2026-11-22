@@ -19,7 +19,7 @@ Claim marks as in `NOTE.md`. Lean: `Assembly.lean` (`M1RowHypothesesUpTo`, `m1_a
      `M1RowHypothesesUpTo K` and `m1_assembly_rows_upTo`: the form for `k ≤ K`, the laws for every `k`.
    * **F2 (new rule):** trapped holes must be separated by `R_sep(d, L)` (current units) for V1 with excision; closer
      holes are merged into one record and carried in the large-field region (`V1-INPUTS.md` 0.3); and "subscale"
-     means diameter `≤ L/4`, so that every block face keeps half its bonds away from the hole. Costs nothing.
+     means `ρ_k ≤ 1` (smaller than one scale-`k` spacing; V1 with excision would allow up to `L/4`). Costs nothing.
    * **F3 (precision, P2′ and TRAP):** the maintenance bound must use the hole's capacity (bounded by its covering
      number), not `ρ^{d-2}` (which assumes a ball). With that, holes of **any** size and shape are covered, and the
      restriction `D0 ≤ 100 M R_h` of `TRAP.md` is not needed (section 2, TRAP and P2′).
@@ -49,7 +49,8 @@ with:
 
 * **(F-a) domains:** admissible sequences of [III] Sect. 2 (large-field regions `Z_j`, small-field domains `Λ_j`,
   `Ω_j`, unions of `M`-, `MR_j`-cubes at scale `j`, with Balaban's nesting); in addition, every record hole that is not
-  subscale (diameter `> L/4` at scale `k`) lies in `Z_k`, and every subscale hole lies in `Λ_k` or in `Z_k`.
+  subscale (`ρ_k > 1`: larger than one scale-`k` lattice spacing, or with a neighbourhood not yet `ε_k`-regular) lies
+  in `Z_k`, and every subscale hole lies in `Λ_k` or in `Z_k`.
 * **(F-b) background:** `U_k^𝓡(V)` = the minimiser of (2.12) on Balaban's determining set (2.11) with each subscale
   hole of `𝓡` excised (frozen content, constraint read on the filled field): row V1. It depends on `V` only through
   `M_B`, and on the records only through their contents next to `Λ_k`.
@@ -90,29 +91,29 @@ Throughout: `0 ≤ k < K`; `L ≥ L0(d)` odd; `r0 ≤ c_d/L²`; `M, R_j, p0, p1,
 
 | field | precise statement | pinned to | status |
 |---|---|---|---|
-| `X2 k` | For every small-field domain `Λ` and every gauge-invariant integrable `F` of the bonds of `Λ`: `∫ F dU = ∫ F|_{U = 1 on 𝒯} Π_{b ∉ 𝒯} dU`, `𝒯` the block-axial forest (block trees rooted at the centres, and at `S_H` for holes); i.e. inserting and removing the gauge fixing inside `T` is exact, Jacobian 1 | [I] (0.14)-(0.16); [V] p. 378 | open (routine, 1 p.) |
+| `X2 k` | For every small-field domain `Λ` and every gauge-invariant integrable `F` of the bonds of `Λ`: `∫ F dU = ∫ F|_{U = 1 on 𝒯} Π_{b ∉ 𝒯} dU`, `𝒯` the block-axial forest (block trees rooted at the centres, and at `S_H` for holes); i.e. inserting and removing the gauge fixing inside `T` is exact, Jacobian 1 | [I] (0.14)-(0.16); [V] p. 378 | **Lean** one leaf + paper (`ROUTINE-ROWS.md` 2) |
 | `P1 k` | Balaban's preliminary operations [IV] (1.10)-(1.99) applied to a density of `Form_k` are equalities of functions of `(V_k, 𝓡_k)` (no estimate), and produce the input form of the R-operation [IV] (1.99) | [IV] pp. 177-193 | citation (confirmed, `NOTE.md` 1.1) |
 | `P2 k` | For a small-field domain `Λ` and an outside field `V_out` regular near `Λ`: the restriction `χ_{k,Λ}` and Balaban's extension of `V_out` into `Λ` are defined and regular, (1.74)-(1.75) | [IV] (1.74)-(1.75) | citation |
 | `V1 k` | For every admissible `Λ`, every regular `W` on the coarse bonds of `Λ`, every `V_out` regular near `Λ`, every record set with subscale `R_sep`-separated holes in `Λ`: the problem `min A_H(U)` s.t. `Q_{k+1}(Ũ) = W` on `Λ`, `U = V_out` outside, has exactly one minimal orbit under `{u: u = 1 on S_H}`; its element `V̂_Λ` satisfies the regularity of `[15]` (2) with constant `O(B5 M⁵)(ε_k + ε_{k+1})`, is analytic in `(W, V_out)` on the complex domain of `[15]` (7), and has the derivative decay `[15]` (190) | `[15]` Thm 1, Prop 9; [IV] Prop 1; [V] (1.12)-(1.13) | **paper** (`S6-START.md` 2, `V1-EXCISION.md`, `V1-INPUTS.md`) |
-| `V2 k` | The background `U_0(W)` of V1 lies in Balaban's spaces `U_j(X, α0, α1)` ([III] (2.34)-(2.39)) on all scales `j ≤ k` in `Λ`, in the block-axial gauge, and `χ''_k = 1` on it | [IV] (1.80)-(1.98) | open (routine, 3 pp.) |
-| `Dmod k` | For a moderate core (all plaquettes of its star in `[ε_k, r0)`) the spread of its image satisfies `s_{k+1} ≤ θ s_k` with `θ = L^{1-d} + K r0 + K' ε_k ≤ ½` | `NOTE.md` 2.2-2.3; [V] (1.31), (1.47) | **paper** + **Lean** core (`balaban_star_dilution`, `spread_iterate_quadratic`); `K, K'` open (routine) |
+| `V2 k` | The background `U_0(W)` of V1 lies in Balaban's spaces `U_j(X, α0, α1)` ([III] (2.34)-(2.39)) on all scales `j ≤ k` in `Λ`, in the block-axial gauge, and `χ''_k = 1` on it | [IV] (1.80)-(1.98) | **paper** (`ROUTINE-ROWS.md` 3) |
+| `Dmod k` | For a moderate core (all plaquettes of its star in `[ε_k, r0)`) the spread of its image satisfies `s_{k+1} ≤ θ s_k` with `θ = L^{1-d} + K r0 + K' ε_k ≤ ½` | `NOTE.md` 2.2-2.3; [V] (1.31), (1.47) | **paper** + **Lean** core; `K = 8`, `K' = 8dL²` (`ROUTINE-ROWS.md` 4) |
 | `TRAP k` | (a) every plaquette of `V_{k+1}` at angle `≥ r0` belongs to the hole of a record created at `k + 1` (delay `N_t = 0`), holes are connected components, merged when closer than `R_sep`; (b) the excised blocking is well defined, covariant, local, link reflection positive and exact (T1, T2); V1 holds with excision (T3); the fillings of neighbouring blocks agree up to `O(ε D)` (T4); (c) accounting: the record's weight, root suppression × root entropy × carrying × summed maintenance, is `≤ exp(-a_r/(2 g_{s_r}²))` | `TRAP.md`, `TRAP-CHECKS.md` | **paper**; F3: accounting with covering numbers (below) |
-| `P2prime k` | For a subscale record (root `s`, hole `H`) the change of the step's normalisation by the frozen hole is `|Δ_k| ≤ C [cap_k(H)(1 + p0(g_k)²) + cap_k(H)^{1/2} p0(g_k)(1 + a^{1/2}/g_s)]`, with `cap_k(H) ≤ C min(N_k(H), ρ_k^{d-2})`, `N_k(H)` the number of scale-`k` cubes meeting `H`, `ρ_k` its diameter at scale `k` | `P2-PRIME.md` (Lemma A and its corollary), given I1-I3 | **paper** given I1-I3 |
-| `P4 k` | Under `Form_k`, the weight of the event "a given plaquette of `V_k` has angle `≥ r0`" is at most `exp(-c0 r0²/g_k² + C log g_k^{-2})` relative to the weight without it | `[15]` Thm 1; [V] p. 380 | citation level |
+| `P2prime k` | For a subscale record (root `s`, hole `H`) the change of the step's normalisation by the frozen hole is `|Δ_k| ≤ C [cap_k(H)(1 + p0(g_k)²) + cap_k(H)^{1/2} p0(g_k)(1 + a^{1/2}/g_s)]`, with `cap_k(H) ≤ C min(N_k(H), ρ_k^{d-2})`, `N_k(H)` the number of scale-`k` cubes meeting `H`, `ρ_k` its diameter at scale `k` | `P2-PRIME.md` (Lemma A and its corollary), given I1-I3 | **paper** given I1-I3 (`P2-PRIME.md` 5) |
+| `P4 k` | Under `Form_k`, the weight of the event "a given plaquette of `V_k` has angle `≥ r0`" is at most `exp(-c_P r1²/g_k² + C 2^d L^d log g_k^{-2})` relative to the weight without it, `r1 = r0/(C_d L²)` | `[15]` Thm 1; [V] (1.76)-(1.79), p. 380 | **paper** (`ROUTINE-ROWS.md` 5) |
 | `E1 k` | For regular `W`, the first variation of `A_H` at `V̂_Λ` vanishes on the tangent space `ker Q̃_1` of the constraint: `J_0 = Q̃_1* λ` | [V] (1.2)-(1.6), (1.28)-(1.29) | **paper** (`S6-START.md` 3) |
 | `E2 k` | The Hessian of `A_H` at `V̂_Λ`, on fields vanishing on the hole's bonds, in block-axial gauge, with `Q̃_1 A = 0`, is `≥ c_d d^{-4} L^{-(2d+2)}` | [V] (1.7)-(1.9) | **paper** (`S6-START.md` 3, `POINCARE.md`, `V1-INPUTS.md` Lemma LP) |
 | `E3 k` | `D_X(W) = exp[-g_k^{-2} A(ζ0, U_0(W)) - Î + Ê_k(Λ)]` with `|Î| ≤ O(1) M⁵ + O(log g_k^{-2})` per constrained bond, analytic and non-zero for regular `W`; the Wilson term cancels in `N_X/D_X` | [V] (1.10)-(1.11), (1.30)-(1.37) | **paper** (`E3.md`, `POINCARE.md`) |
-| `E4 k` | `N_X(W)/D_X(W)` depends on `W` only through `U_0(W)` and the shell shifts, localised as a sum over polymers with decay `exp(-κ d_k(X))` | [V] (1.14)-(1.69) | citation + D-mod, TRAP |
+| `E4 k` | `N_X(W)/D_X(W)` depends on `W` only through `U_0(W)` and the shell shifts, localised as a sum over polymers with decay `exp(-κ d_k(X))` | [V] (1.14)-(1.69) | **paper** (`ROUTINE-ROWS.md` 6) |
 | `E5 k` | The normalised operation `T̂'_k(X)` has Balaban's constants (1.70)-(1.71), with the δ-Jacobian `O(1)` per coarse bond of `Λ`; the constants of numerator and denominator cancel | [V] (1.70)-(1.71), (1.78) | **paper** (`E5-E9.md`) |
 | `E6 k` | For `(U, J)` in Balaban's analyticity domain: `|T'(X, (U, J))F| ≤ T'(X, (U, 0))1 e^{sup|σ|} sup|F|` and the reverse bound | [V] (1.73)-(1.75) | **paper** (`E5-E9.md`) |
 | `E7 k` | The large-field factors (1.76)-(1.79) hold under the block constraint; group integrals over a fibre are bounded by the fibre mass (E7J) | [V] (1.76)-(1.79) | **paper** (`E5-E9.md`, `E7J.md`) |
 | `E7J k` | For every `W`: `m_Λ(W) ≤ (C_d L^{3(d-1)})^{|Λ^{(k+1)}|}` (fibre mass of the sub-`r0` configurations) | new | **paper** (`E7J.md`) + **Lean** slicing |
 | `E8 k` | Balaban's entropy induction (1.80)-(1.88) with delay `N = R_j`, the extra cost `O(1)` per site absorbed into `O(1) M^d R^{d+1}` | [V] (1.80)-(1.88) | **paper** (`E5-E9.md`) |
 | `E9 k` | `sup_{W regular} N_X(W)/D_X(W) ≤ exp(-2(1+β0)^{-1} p0(g_k))` | [V] (1.89) | **paper** (`E5-E9.md`) |
-| `E11 k` | Polymer gas with activities `|F(X')| ≤ c1 exp(-(1+β)κ d(X'))`, local on the same domains, now depending on `W` on `Λ_j` | [V] (1.90)-(1.97) | citation (check) |
-| `E12 k` | Exponentiation: new R-terms `|R''(X)| ≤ exp(-p0) exp(-κ d_k(X))`, new action | [V] (1.98)-(1.101) | citation (check) |
-| `E13 k` | The result has the form (2.18) at `k + 1` with the next `T` | [V] (1.102)-(1.104); [III] Sect. 3 | citation |
-| `runningCoupling` | `g_k ≤ γ` for `k < K`, with `γ ≤ γ0(L)` small enough that `c0 c_d² L^{-4} γ^{-2} ≥ 4 p0(γ)` (F4) and Balaban's conditions hold | [I] Theorem 2 | external |
+| `E11 k` | Polymer gas with activities `|F(X')| ≤ c1 exp(-(1+β)κ d(X'))`, local on the same domains, now depending on `W` on `Λ_j` | [V] (1.90)-(1.97) | citation (checked, `ROUTINE-ROWS.md` 7) |
+| `E12 k` | Exponentiation: new R-terms `|R''(X)| ≤ exp(-p0) exp(-κ d_k(X))`, new action | [V] (1.98)-(1.101) | citation (checked, `ROUTINE-ROWS.md` 7) |
+| `E13 k` | The result has the form (2.18) at `k + 1` with the next `T` | [V] (1.102)-(1.104); [III] Sect. 3 | citation (checked, `ROUTINE-ROWS.md` 7) |
+| `runningCoupling` | `g_k ≤ γ` for `k < K`, with `γ ≤ γ0(L)` small enough that `A_min γ^{-2} ≥ 4 p0(γ)` and `A_min^{1/2} ≥ γ p0(γ)`, `A_min = c_P r0²/(C_d² L⁴)` (F4) and Balaban's conditions hold | [I] Theorem 2 | external |
 
 **F3 in detail (TRAP and P2′).** For a connected hole with `n` deep plaquettes and diameter `D`: `a ≥ c0 r0² n`;
 `N_k(H) ≤ 3^d (n L^{-(k-s)} + 1)` (a connected set of `n` sites meets at most that many cubes of side `L^{k-s}`), so
