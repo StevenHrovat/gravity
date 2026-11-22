@@ -4,6 +4,8 @@
 
 > **Status (part 3, sections 14-20):** the reviewers' dynamic fix of Theorem A_good saturates inside bad clusters (section 15). The repair is static: composite boxes (cluster plus good collar) with Lemma C, Dobrushin-Shlosman per `ω` worst case over the support, then an average over `ω` (section 16, paper sketch). H2 is quenched in the coarse field (17). Section 12 has not started and waits on the reviewers' check of section 16.
 
+> **Status (part 4, section 21):** the merging cascade is repaired by a fixed merge range per scale (collar `w_j` set by the scale), localisation around `B` with truncation of scale-`j`-born clusters at `n_j = C log|Λ''_j|/log(1/η_j)`, and isolation of inherited regions at their birth scale (paper sketch). The fixable items and section 12 follow.
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -777,3 +779,126 @@ coarse data are equal near `J`. This replaces "modulo gauge" in sections 8-10.
 | coarse bad set (18) | written |
 | H3 Pinsker step, `r_int`, (B), gauge (19) | written |
 | section 12 (multi-scale crossing) | **not started**: it builds on Theorem A_good, whose proof form changed. Waiting for the reviewers' check of section 16 |
+
+# Part 4 (2026-11-22): the merging repair, after REVIEW-2 (sixth follow-up) and REVIEW-3 (follow-up 5)
+
+Brief: repair the merging cascade first, by isolation at the creation scale with localisation and truncation as
+needed. Then the fixable items, then section 12. Report after the merging repair. The owner's reading ("Disturbances
+are isolated from the start", `../../PREP.md`): a bad region gets its collar at the scale where it is born, with a
+width set by that scale, not growing with its later size.
+
+## 21. The merging repair
+
+### 21.0 Result in plain words
+
+* **Agreed:** with a collar width growing like `log |K|` and merging within `2w`, composite boxes percolate in large
+  volume at fixed spacing. Since `MassGapLoc` takes the volume limit first, volume uniformity fails.
+* **The repair has three parts:**
+  1. **Fixed merge range per scale.** Every composite box at scale `j` gets the same collar width
+     `w_j := (3/m') log(C L^d n_j p(g_j))`, with `m' := min(m, κ')`. Merging happens only within the fixed distance
+     `2w_j + ℓ_B`. With the range fixed, a cluster's reach no longer grows with its size, so the cascade cannot start.
+  2. **Localisation and truncation.**
+     * Theorem A_good is applied in a region `Λ''_j` around `B`, of the size of `dist(B, D)`, with the outside acting
+       as an extra source at that distance.
+     * Clusters **born at scale `j`** with more than `n_j := C_1 log|Λ''_j| / log(1/η_j)` boxes go into the failure
+       event. Its probability is `≤ |Λ''_j|^{−C_2}` by the quenched H2.
+     * `n_j` enters the collar width only through `log n_j`.
+  3. **Isolation at the birth scale (the owner's reading).**
+     * A region inherited from a coarser scale (coarse bad set, unreleased regions) is a composite box at scale `j`.
+     * Its size is bounded by the truncation **at its own scale**, so `|K| ≤ L^d n_{j+1}`. Its rarity is charged at
+       its own scale, in section 12.
+     * Inherited regions are separated at their birth scale by their own collars, `2w_{j+1}` coarse boxes, that is
+       `≥ 2L w_{j+1} ℓ_B` scale-`j` units. That is far more than the scale-`j` merge range, so they do not merge with
+       each other at scale `j` except through scale-`j`-born bad boxes between them. Those are priced by H2.
+* **The constants:**
+  * the fixed merge range needs only `C w_j^d η_j^{1/2} < ½`;
+  * with `w_j ≈ (3/m) log g_0^{-2}` (from `log n_j ≲ log log |Λ''_j| ≲ log g_0^{-2}`), that is
+    `p0(g_j) ≫ d log log g_0^{-2}`, true for Balaban's `p0 = A0 (log g^{-2})^p` with any `p ≥ 1`;
+  * REVIEW-3's stronger condition (`p ≥ 2`, or `c A0 > d`) is needed only if the merge range is allowed to grow up to
+    `log |Λ''|`. With the fixed range it is not needed. To be checked by the reviewers.
+* **Level: paper sketch.** No obstruction found. The pricing of inherited regions belongs to section 12.
+
+### 21.1 Composite boxes with a fixed collar per scale
+
+* **The bad set at scale `j`**, for a pattern pair:
+  `𝔅_j := Bad_j(ω) ∪ Bad_j(ω') ∪ Bad^c(X_{j+1}) ∪ Bad^c(X'_{j+1})`, plus link endpoints. Links are **edges** of the
+  cluster graph (fixable item, REVIEW-2 and REVIEW-3).
+* `𝔅_j` splits into:
+  * **born at `j`:** large-field domains, labels and Z2 excitations of `ω_j`, and links;
+  * **inherited:** `Bad^c` of the coarse data, and the unreleased regions of `ω_j` born at finer or coarser scales.
+    Regions born at finer scales are small at scale `j` and priced by `ω_j`'s weights, as in H2; the coarse bad set
+    is priced one scale up.
+* **Clusters:** components of `𝔅_j` under proximity `2w_j + ℓ_B` (fixed), with links as edges, rounded up to unions
+  of boxes with pockets filled (REVIEW-3's coverage point).
+* **Composite box:** `W(K) := K ∪ collar_{w_j}(K)`. The collars are pairwise disjoint by construction, and consist of
+  good boxes.
+* **Collar width:** `w_j := (3/m') log(C L^d n_j p(g_j))`, with `m' := min(m, κ')` and `n_j := max(n_j^{born}, n_{j+1})`.
+  Lemma C then holds for every `K` with `|K| ≤ C L^d n_j`:
+  * the cross term `C p² e^{−m' w_j} ≤ (C L^d n_j)^{−3} p^{−1}` beats the `|K|` factor;
+  * the hard truncation contributes `e^{−c p²} e^{−m' w_j}`, not a flat `e^{−c p²}` (REVIEW-3).
+
+### 21.2 Localisation and truncation
+
+* **Region.** `Λ''_j :=` the scale-`j` boxes within distance `R'_j := dist_j(B, D)` of `B`. Apply Theorem A_good to the
+  two conditional laws on `Λ''_j`, given the configurations outside.
+* **The outside as a source.** The outside configurations of the two copies may differ. They enter only through
+  `∂Λ''_j`, at distance `R'_j` from `B`, so they act as an extra source as far away as `D` is.
+* **Truncation event** `F_j`: some scale-`j`-born cluster meeting `Λ''_j` has more than `n_j^{born}` boxes, with
+  `n_j^{born} := C_1 log|Λ''_j| / log(1/η_j)`.
+  * By the quenched H2 and the min-trick, given the coarse data,
+    `P(F_j | 𝒳_{j+1}) ≤ |Λ''_j| Σ_{n > n_j} (C (2w_j + ℓ_B)^d η_j^{1/2})^n ≤ |Λ''_j|^{−C_2}`.
+  * The count is of lattice animals under the fixed proximity `2w_j + ℓ_B`.
+* **Inherited regions** are not truncated at scale `j`. Their size, `≤ C L^d n_{j+1}` scale-`j` boxes per coarse
+  cluster, comes from the truncation `F_{j+1}` one scale up, with failure probability `|Λ''_{j+1}|^{−C_2}` there.
+* **On `F_j^c ∩ F_{j+1}^c`:**
+  * every cluster in `Λ''_j` has `|K| ≤ C L^d n_j`, so the collar `w_j` suffices for Lemma C;
+  * the per-site column condition (REVIEW-3: `GDSw` per site) holds in `Λ''_j`, with the constant multiplicity
+    `n_W := ⌈C ℓ_B^{d−1} (log p/m)^{d+1}/γ⌉` and `ℓ_B ≳ (log p/m)^{2d+1}/γ²`, the fixable item.
+
+### 21.3 Why the cascade is gone (volume uniformity)
+
+* **The merge range `2w_j + ℓ_B` is fixed** for the region, independent of cluster sizes. So a cluster's reach does not
+  grow with its size, and the cascade of REVIEW-2 and REVIEW-3 has no mechanism.
+* **Proximity clusters of scale-`j`-born boxes are subcritical** if `C (2w_j + ℓ_B)^d η_j^{1/2} < ½`.
+  * `n_j ≤ C log|Λ''_j|`, and `|Λ''_j| ≤ (t/(L^j a ℓ_B))^d ≤ e^{C g_0^{−2}}` since `log(1/a) ≈ g_0^{−2}/(2b)`. So
+    `log n_j ≲ log g_0^{−2}` and `w_j ≲ (3/m')(log g_0^{−2} + log p) + C`.
+  * The condition becomes `c p0(g_j)/2 > d log(C log g_0^{−2})`.
+  * `p0(g_j) = A0 (log g_j^{−2})^p ≥ A0 (log g_0^{−2})^p`, so this holds for `g_0 ≤ γ0(L)` with any `p ≥ 1`. It is
+    added to condition 8 of `S1-INDUCTION.md`.
+* **Every estimate depends on the localised region** (`|Λ''_j|`, `R'_j`), never on the total volume. So everything is
+  uniform in the volume, and the volume limit can be taken first.
+
+### 21.4 Isolation at the birth scale, across scales (the owner's reading, made precise)
+
+* **A region born at scale `j'`** (a coarse bad cluster of `X_{j'}`, or an unreleased region) receives its collar at
+  scale `j'`: width `w_{j'}` in scale-`j'` boxes.
+* **At every finer scale `j < j'`** it is a composite box whose scale-`j` collar of width `w_j` lies inside the
+  scale-`j'` collar, which is `≈ L^{j'−j} w_{j'} ℓ_B` scale-`j` units wide.
+* **Two regions born at scale `j'`** are separated by at least `2w_{j'}` scale-`j'` boxes. At scale `j` this is far
+  more than `2w_j + ℓ_B`, so they never merge at a finer scale through their own collars.
+  * They can be bridged only by bad boxes born at the finer scales in between, which H2 prices at those scales.
+* **So** each region keeps the collar of its birth scale, and the regions of different scales are separated by those
+  collars. "Every transfer in has to happen through a DB" is Lemma C at each scale.
+* **What remains, as the reading says:** that each scale's regions are sparse relative to their collars. Per scale this
+  is the subcriticality of 21.3, from H2 at that scale. Chaining across scales is section 12.
+
+### 21.5 The path cost, after the repair
+
+* On `F_j^c`, a path of `R` scale-`j` units from `B` to `D` loses length in `dist_ω` only to composite boxes. Each has
+  diameter `≤ C L (n_j)^{1/d} ℓ_B + 2w_j`, and the scale-`j`-born ones are subcritical.
+* The probability that scale-`j`-born composite boxes cover half of the path is
+  `≤ (C (2w_j + ℓ_B)^d η_j^{1/2})^{R/(4(ℓ_B + 2w_j))}`, exponential in `R/(ℓ_B + w_j)`.
+* Inherited composite boxes on the path are priced at their own scale (section 12, REVIEW-2's item 3), not here.
+
+### 21.6 Status
+
+| piece | level |
+|---|---|
+| fixed merge range, collar `w_j` set per scale | paper |
+| localisation (outside as source) and truncation `F_j` with `n_j = C log|Λ''_j|/log(1/η_j)` | paper sketch (quenched H2, lattice-animal count) |
+| no cascade; volume uniformity; condition `p0 ≫ d log log g_0^{−2}` | paper sketch; weaker than REVIEW-3's `p ≥ 2` condition, to be checked |
+| isolation at the birth scale for inherited regions | paper sketch; their pricing is in section 12 |
+
+Next, after the report: the fixable items of the two reviews (Lemma C's interface factor, constant multiplicity with
+overlapping good boxes, coverage by rounding, the coupling form instead of off-support hybrids, the cut-off in [III]
+(2.17)), then section 12.
