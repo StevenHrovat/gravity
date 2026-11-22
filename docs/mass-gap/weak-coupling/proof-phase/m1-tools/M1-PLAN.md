@@ -52,8 +52,8 @@ the notes):
 
 | item | content | level |
 |---|---|---|
-| R1 off-centre dilution (F5, in SO(3)) | contraction of localised moderate and SO(3)-cut cores away from block centres, with BCH corrections; sub-block sheet cores | open: numerics only (`offcentre_L13.py`, `route_b_cores.py`); centre case paper + Lean |
-| R2 regular within the delay | every released region's next field is regular within Balaban's delay (dilution or growth to a deep core) | open (sketch) |
+| R1 off-centre dilution (F5, in SO(3)) | contraction of localised moderate cores at every position (in-block parts cancel; only segments transmit) | **paper + Lean steps** (`OFFCENTRE.md`, `OffCentre.lean`): `θ = 5^d L^{1-d} + C(r0 + L² ε)`; sheets are not R1 (excision R3, growth R2) |
+| R2 regular within the delay | every released region's next field is regular within Balaban's delay | **false as stated** (`REGULAR.md`): proved for localised cores and smooth growing fields; moderate conserved-flux sheets stay irregular beyond the delay. Needs a decomposition lemma and an extension of Balaban's entropy induction (E8) to long-lived regions: harder than marked |
 | R3 filling near the cut (F4) | one-step excision filling with Bianchi-halo data: uniqueness and analyticity with `r0 = c/L⁴`, a rule for blocks swallowed by a hole, measurable selection | open (fixable-looking) |
 | R4 fibre mass with excision (E7.J) | the easy form with filled bonds next to excised SO(3)-cut plaquettes | paper given R3 |
 | R5 action lower bound (F6) | the bound behind [V] (1.76): [16] (71) | citation not read |
