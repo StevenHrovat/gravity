@@ -20,6 +20,8 @@
 
 > **Status (sections 30-32):** write-out 3 (front advance; `P(differ on B) ≤ C (t/ℓ)^{−d C_2}`, uniform in spacing and volume) and write-out 4 (H1 by positive gas, Kotecký-Preiss and van den Berg-Maes on polymer configurations) are written. All four write-outs are done. Lemma UV-TV has a complete argument written at paper level, given (c) and the citation-level readings (32).
 
+> **Status (section 33):** small fixes after the reviews of 28 and 29: truncation as a case split; numbering; (B) by conditioning on in-support content near `A`; (I) obtained directly per in-support pair, without hybrids; contraction only inside `Λ''_j`; Dirichlet layers as unions of `L`-blocks; `E_0(M)` named; `q0 ≥ p0`.
+
 Brief (coordinator):
 * Attack Lemma UV-TV (i) of `REVIEW3-RESPONSE.md` 13.4 by the Dobrushin route first, reusing the one-box Lean layer
   (`formal/ProofPhase/OneBox`, `OneBox2`). Finite-range decomposition only if that fails.
@@ -1608,17 +1610,18 @@ images.
 * **Admissibility** (24.1, step 1): checked against the definitions as read, from a poor scan of [III] (2.3)-(2.9). Low
   risk; listed with the readings.
 
-**Wording** (27.10): Lemma UV-TV has a complete paper-sketch argument given (c), with (a) and admissibility as
-citation-level readings; four write-outs remain. Write-out 1 is done (28).
+**Wording** (27.10, updated 33.7): Lemma UV-TV has a complete argument given (c), with three citation-level
+readings: (a), admissibility, and Balaban's machinery on non-admissible (thin, cluster-shaped) domains. The four
+write-outs are done (28-31).
 
 **Dependency added** (27.9): Lemma C's cross term and the Pinsker step use only Balaban's constant-size smallness
 (`O(1)` per site, or a constant per `M`-cube from analyticity) and his cluster expansion, never `δ → 0`.
 
-**Write-outs owed** (before Lean):
-1. Lemma C's cross term, with the fibre constraint and the analytic perturbation.
-2. The coupling-form Dobrushin-Shlosman theorem with composite boxes and the exact per-site column condition.
-3. The front-advance estimate of the chaining.
-4. H1 by cluster expansion and polymer-level disagreement percolation (26.5).
+**Write-outs** (numbered as in 27.9 and 28-31; all four are now written):
+1. The coupling-form Dobrushin-Shlosman theorem with composite boxes and the exact per-site column condition (28).
+2. Lemma C's cross term, with the fibre constraint and the analytic perturbation (29).
+3. The front-advance estimate of the chaining (30).
+4. H1 by cluster expansion and polymer-level disagreement percolation (26.5, 31).
 
 **Plus (c)'s check list (26.4)**, for the reviewers.
 
@@ -1753,8 +1756,8 @@ All three: (c) goes through, with no step failing.
 * **Where the decay comes from.** With `v(x) := e^{−λ dist_ω(x, A)}`, (I) and (K) are the influence bound weighted by
   `e^{λ E_b(z)}` (`K_b(z) ≤ k_b(z) e^{λ (diam B_b + dist(z, B_b))}`), as in 22.3. Then `s ≤ Σ_{y ∈ src} c(y) e^{−λ dist(y, A)}`
   gives `C e^{−λ dist(A, src)}`.
-* **Covariance form, for (B).** The same theorem, applied to the hybrid construction of 19 (two conditionally
-  independent copies with randomness indexed by region), gives the conditional covariance bound.
+* **Covariance form, for (B).** [Replaced in 33.3: condition on the in-support content near `A` and treat `A` as a
+  source.]
 
 ### 28.3 Instantiation for UV-TV (checks against sections 16 and 21-24)
 
@@ -1763,8 +1766,8 @@ All three: (c) goes through, with no step failing.
 * **Blocks:**
   * good boxes, at distance `≥ r_int + 1` from every cluster: in `𝔅_good`, with `K_b` from H3 (10.2, 19);
   * composite boxes `W(K)`, multiplicity `n_W`: in `𝔅_good`, with `K_b` from Lemma C (16, 22.2);
-  * boxes meeting the source (the inherited disagreement, pattern disagreements, outside `Λ''_j`, truncation events):
-    in `𝔅_src`.
+  * boxes meeting the source (the inherited disagreement, pattern disagreements, outside `Λ''_j`): in `𝔅_src`.
+    [Corrected in 33.1: the truncation events are a case split made before the theorem, not source blocks.]
 * **Column condition (K):** 22.3, with `γ_DS`.
 * **Specifications (S):** the box laws of `μ_ω` (DLR by construction). Their supports are preserved, because the
   pattern's characteristic functions are part of the specification.
@@ -2104,7 +2107,128 @@ For a set `A` of cubes:
   * **citation-level readings:**
     * (a), what `E_k(Z)` is;
     * admissibility (poor scan);
-    * Balaban's machinery on a domain with Dirichlet data (29.6);
+    * Balaban's machinery on non-admissible domains: thin, cluster-shaped collars with data on both sides (29.6,
+      33.7);
   * **standard tools:** Kotecký-Preiss, van den Berg-Maes, and the coupling contraction of 28.
 * **The write-outs:** 1 (28), 2 (29), 3 (30), 4 (31) are written.
 * **Lean:** the coupling-form theorem (28.4) is the first target, after the reviewers' check of 28.
+
+## 33. Small fixes after the reviews of 28 (REVIEW-3 follow-up 10, REVIEW-2 eleventh) and of 29 (REVIEW-2 twelfth)
+
+The Lean of 28 is with a separate worker (`formal/ProofPhase/OneBox/CouplingDS.lean`, notes in `m1-cds/`). These fixes
+are to the paper text only.
+
+### 33.1 Truncation events are a case split, not source blocks
+
+* 28.3 listed "boxes meeting ... truncation events" among the source blocks. That is withdrawn.
+* **The split.** The truncation and path events `F_j, G_j, T_j, T_{j+1}, E^{path}_j` (21-24, 30.2) are events of the
+  patterns and the coarse data. They are split off **before** Theorem 28 is applied:
+  `P(differ on B) ≤ P(E_j) + E[1_{E_j^c} P(differ on B | patterns, coarse data)]`, and Theorem 28 is used only on
+  `E_j^c`.
+* **Source blocks** are then only the blocks meeting:
+  * the inherited disagreement `src¹_j`;
+  * the pattern disagreements `src²_j`;
+  * the outside of `Λ''_j` (`src³_j`).
+* 30.2 already has this form: `E_j` is the union of the truncation events, and the sources are `src^{1,2,3}`.
+
+### 33.2 Write-out numbering
+
+Made consistent with 27.9 and 28-31:
+1. the coupling-form theorem (28);
+2. Lemma C (29);
+3. the front advance (30);
+4. H1 (31).
+
+25 (revised) now uses the same order.
+
+### 33.3 The covariance form (B), staying inside the supports
+
+* **Withdrawn:** 19's and 28.2's "hybrid" route, because it is not shown that the hybrid stays in the supports.
+* **Replacement.** For the conditional covariance given the block state `𝓕_ℓ`, of `f` near `A` and `g` near `θA`
+  (bounded, measurable), condition on the content near `A`:
+  `Cov(f, g | 𝓕_ℓ) = E[f(Y_A) (E[g | Y_A, 𝓕_ℓ] − E[g | 𝓕_ℓ])]`, so
+  `|Cov| ≤ ‖f‖ E|E[g | Y_A] − E[g]| ≤ ‖f‖ E_{y, y'}|E[g | Y_A = y] − E[g | Y_A = y']|`,
+  with `y, y'` independent samples of `Y_A`, hence **in the support** almost surely.
+* **Applying Theorem 28.** For fixed in-support `y, y'`, the two conditional measures `μ(· | Y_A = y)` and
+  `μ(· | Y_A = y')` on the complement:
+  * have the same block specifications on every block not meeting the `r_int`-neighbourhood of `A` (DLR for the
+    conditional measure; regular conditional probabilities exist on standard Borel spaces);
+  * those blocks are good or composite as before, so (I) holds for their in-support boundaries;
+  * the blocks meeting the neighbourhood of `A` are **source blocks**;
+  * for the patterns, `N_{D_c}(A)` is part of the source set `S` of 31.5.
+* **Result:** `|E[g | y] − E[g | y']| ≤ 2‖g‖ π(Y ≠ Y' on θA) ≤ C ‖g‖ e^{−λ dist(A, θA)}`. The two copies are always
+  conditional samples, so nothing leaves the supports.
+* **This is not a frozen region.** The content `y` is a sample of the law, averaged over, not a supremum over arbitrary
+  content. The blocks next to `A`, which see `y`, need no influence bound because they are sources.
+
+### 33.4 The influence hypothesis (I) without gluing over hybrids
+
+* **The issue.** (I) for boundaries differing on a set `Z` was obtained in 10.2 and 22 by changing one site at a time
+  and gluing the one-site couplings. That needs every hybrid boundary in the support, and measurable disintegrations.
+  * Hybrids can leave the support. A site-by-site hybrid breaks the fibre constraints of the `L`-blocks it touches, and
+    a mixed plaquette can exceed the sharp small-field threshold.
+* **Replacement: (I) is obtained directly for each in-support pair `(σ, σ')`** (29.5). The box law `q_b(σ, ·)` is an
+  explicit density in the boundary data: Balaban's effective density on the box, normalised, with the box's
+  characteristic functions. It is defined for every boundary in the `C ε_j`-neighbourhood, whether or not that boundary
+  lies in the global support.
+* **Only `q_b` along the path is used.** 29.5 interpolates `σ_t := σ exp(t log(σ^{−1} σ'))` in the common block-axial
+  gauge. Only `q_b(σ_t, ·)` is used along the path, never `σ_t` as a configuration of the measure.
+  * The derivative of the log-weight is a sum of local terms over the sites of `Z`.
+  * So the bound comes out per site, `Σ_{z ∈ Z} K_b(z)`, with no gluing.
+  * The moving sharp constraints on straddling plaquettes contribute the boundary term `e^{−c p²}`, already in 29.5.
+* **Measurability.** The nested far-to-near maximal coupling (Goldstein's construction for the monotone family of tail
+  sets) is built from the densities of `q_b(σ, ·)` and `q'_b(σ', ·)` with respect to a common reference measure. Their
+  disintegrations along the tail σ-algebras exist and are measurable on standard Borel spaces. So `Q_b` is a
+  measurable kernel in `(σ, σ')`, as 28 (C) requires.
+
+### 33.5 Composite boxes are contracted only inside the local region
+
+* `dist_ω` contracts composite boxes **only inside `Λ''_j`**.
+* Outside `Λ''_j` everything is a source (33.1), so no contraction is needed there.
+* Untruncated, possibly huge, clusters far away therefore never enter the metric.
+
+### 33.6 Fixes to 29 (REVIEW-2, twelfth follow-up)
+
+* **Dirichlet layers.** The inner layer `I` and the outer layer `O` are taken as **unions of `L`-blocks**: the
+  `r_int`-neighbourhoods are rounded up to whole blocks. Then every fibre constraint lies wholly inside the collar
+  integration domain, or wholly inside the data. Without this, the Dirichlet problem would mix data and integration
+  variables inside one constraint.
+* **`E_0(M)`.** The constant-size bound of the localised terms is Balaban's `E_0`, which depends on `M` ([I] (1.18),
+  Theorem 3), and `M ≥ M(κ)` grows with `κ`.
+  * So the collar width of 29.4 is `w ≥ 2r_int + (1/m') log(C N (M R)^d (p² + E_0(M))/ε_W)`, with `C_0 := E_0(M)`
+    named.
+  * **Order of constants:** first `κ`, then `M(κ)` and `E_0(M)`, then `w`. Only `log E_0(M)` enters `w`, so there is no
+    circularity. The `κ` condition (`C 200^d e^{−c κ/2} < ½`) does not involve `E_0`.
+* **`q0 ≥ p0`.** The expansion of the characteristic functions (29.2, item 4) needs the analyticity domain to contain
+  the small-field set: `α_{0,j} = g_j C_0 (log g_j^{−2})^{q0} ≥ ε_j = g_j A0 (log g_j^{−2})^{p0}` ([III] (2.28), OCR).
+  So `q0 ≥ p0` (with `C_0 ≥ A0` at equality), as `EK-DERIVATION.md` Q4 notes is forced anyway. Stated as a condition
+  in `S1-INDUCTION.md` row 6.
+
+**Status:** all fixes are paper text. 28's Lean is with the separate worker. Waiting for the reviews of 29-32.
+
+### 33.7 After REVIEW-3's check of 29 (follow-up 11)
+
+* **Truncation tail, with constant-size terms.**
+  * Under the collar measure, the Gaussian tail of the small-field cut is multiplied by the density ratio of the
+    constant-size terms, `O(1)` per site.
+  * So the probability of a `χ^c_□` event is `≤ e^{−c p² + C M^d}` per `M`-cube, not a pure `e^{−c p²}`.
+  * The truncation terms of 29.2 item 4, 29.3 and 29.5 carry `e^{−c p² + C M^d}` in place of `e^{−c p²}`. That is still
+    small, since `p² = A0² (log g^{−2})^{2 p0}` beats the fixed `M^d` for `g ≤ γ`.
+  * Equivalently, cite Balaban's large-field factor for the complementary characteristic function directly ([V] (1.77)
+    and p. 381, `exp(−γ_0 … p0²)` per cube, with his normalisation).
+* **The background is non-local.** The mixed terms it carries (29.2 items 1-2) are written as sums of localised terms by
+  Balaban's localisation of background-dependent expressions, [V] (1.59)-(1.63), with the decay of [15] (190). That is
+  how the classical cross term becomes `Σ_{x ∈ I, y ∈ O} C p² e^{−m d(x, y)}`.
+* **A further citation-level adaptation, listed explicitly.** Balaban's machinery is used on **thin, cluster-shaped
+  collars with Dirichlet data on both sides**. These are non-admissible domains in his sense: they are not unions of his
+  `M R`-cube domains with his shape and age conditions. The machinery includes:
+  * the constrained background ([15]);
+  * the propagators ([13] Theorems 3.12, 3.13);
+  * the localisation ([III] (2.13)-(2.15), [V] (1.59)-(1.63));
+  * the cluster expansion ([I] (1.18), [III] Theorem 2).
+  
+  It is plausible, because every estimate is local at scale `M ≪ w`. But it has real content: his constants must hold
+  uniformly over such shapes. It joins the citation-level readings in 25 (revised) and 32:
+  1. (a), what `E_k(Z)` is;
+  2. admissibility (poor scan);
+  3. **Balaban's machinery on non-admissible domains (thin, cluster-shaped collars with data on both sides).**
