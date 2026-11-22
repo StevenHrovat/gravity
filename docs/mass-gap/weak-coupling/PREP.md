@@ -872,3 +872,12 @@ thread.
   duality = mass; on the physics side, pure Yang–Mills carries the "mass" link (the gap is the energy of the lightest existing state)
   and the "existence" link (the untwisted reference sector), while matter fields are outside the problem. Recorded as the owner's
   identification.
+- **The weakest possible dominance (the owner, same day):** "It should, probably, be the weakest possible thing, because in logical
+  things, existence should just be non-existence+1, with non-existence approaching infinity." Reading (coordinator): in the flip
+  sector this is the expected confined-phase behaviour. Both partition functions grow without bound with the volume (non-existence →
+  ∞), Z_tw < Z at every finite stage (existence = non-existence + a positive margin), and the relative margin vanishes:
+  1 − Z_tw/Z ≈ F_tw, the twist (vortex) free energy, which in the confined phase is expected to decay like exp(−σ·A) with A the
+  cross-section of the box. So the relative surplus of existence is the Boltzmann factor of the maintenance cost: the string tension
+  (the cost of maintaining non-existence, earlier reading) sets how fast the margin shrinks. The rigorous link between vortex free
+  energy and confinement in one direction is the Tomboulis–Yaffe inequality; in our files only the weak form (Z_tw ≤ Z, p ≤ ½) is proved,
+  the strict form is a small Lean item, and the decay rate is not proved.
