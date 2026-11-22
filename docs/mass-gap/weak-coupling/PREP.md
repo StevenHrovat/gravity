@@ -1088,3 +1088,17 @@ thread.
   transfer matrix acts from boundary slice to boundary slice); and the one-box criterion measures exactly the influence that crosses the
   boundary of a box of about one correlation length, the smallest element (κ summed over the box's surroundings, Q(ℓ) < 1). So the
   boxes that "have existence" are the one-box cells, and the acts are what their boundaries transmit.
+- **N-1 and the glueball (the owner, same day, on REVIEW-2 follow-up N-1):** "This is just the glueball situation, right? Since pure
+  information CAN be imbued with the needed existence to form a duality, which is what a glueball is, that fits well and also explains
+  why it decays so rapidly from a different route. Since it has no internal dualities, it can only assert itself through the DB, so
+  decays rapidly. In that way, it is kind of like the inverse of G0. Where G0 is the root of all existence, which also makes it the root
+  of non-existence, a glueball, or confined information, is the smallest unit of non-existence that can assert its existence against
+  G0." Reading (coordinator): (1) The physical counterpart is real: in the flux-tube picture a glueball is a closed loop of confining
+  flux (Isgur–Paton), i.e. closed centre flux with existence, and the lightest glueball's mass is the mass gap itself, the smallest
+  assertion of the earlier reading ("the quantum of assertion"). So "the smallest unit of non-existence that can assert its existence
+  against G0" = the lightest glueball = the gap, consistent with the earlier readings. (2) N-1's object is the sub-quantum version: a thin
+  closed vortex sheet at the lattice scale, flat in SO(3) but costing 2β per plaquette. It is far below the quantum (thickness one
+  lattice spacing, not 1/Λ), so it cannot exist as a glueball; in the proof it must be charged its action, which is exactly the fix
+  (keep the τ-sensitive small-field rule at scale 0). (3) On decay: in pure Yang–Mills the lightest glueball is stable (it is the lowest
+  state; there is nothing lighter to decay into); what falls off rapidly is its correlation in Euclidean time, at rate equal to its mass.
+  "It can only assert itself through the DB, so decays rapidly" matches that fall-off: the correlation length is 1/m.
