@@ -7,6 +7,7 @@ Map: `docs/mass-gap/weak-coupling/PROOF-BLUEPRINT.md`; field-by-field: `docs/mas
 import OneScale
 import Positivity
 import Attempts.R4.LayerKernel
+import ProofPhase.RouteB.FluxEnergy
 
 /-!
 # The objects of the assembly: SU(2) Yang–Mills on the 4D torus along a line of constant physics, and the mass gap
@@ -63,12 +64,23 @@ non-trivial (P6.2) or Euclidean invariant (P6.4).
   commutes with the time reflection and maps the closed positive half to the closed positive half (generalises
   `Attempts.R4.Layer.decimated_wilson_rp`, whose proof used only these two properties). With it, reflection positivity
   at every level is a property of the blocking, not an open piece (P1.6 for every such blocking).
-* `gaugeInvQ`, `fluxE`, `actZ`: the electric-flux energy of the SU(2) temporal-gauge transfer operator on the spatial box
-  `(ℤ/Lℤ)³` restricted to **gauge-invariant (Gauss-law) states** (`Attempts.R4.Layer.fluxEnergy` with the predicate
-  `gaugeInvQ`, not `True`), and the act number `z = L·E_e` in lattice units. Stated limits: the identification of the
-  transfer operator with the 4D Wilson measure (`Z = tr(P_G Tⁿ)`) is not formalised; the flux energy cannot be defined
-  from the 4D measure here because the tori are symmetric (`LatticeLink 4 N` has one side length), while the flux energy
-  needs a time extent going to infinity at fixed spatial box (missing object: anisotropic tori).
+* **The flux energy from the 4D measure** (cycle 2, replacing the transfer-operator definition in the assembly):
+  `IsFluxLimitSU2 β L h` says `h` is a time limit (time extent `T → ∞` along a subsequence, spatial box `(ℤ/Lℤ)³` fixed)
+  of the normalised correlation of the centre-odd Polyakov sum on the anisotropic SU(2) Wilson torus
+  `ℤ/Tℤ × (ℤ/Lℤ)³` (`ProofPhase.RouteB.IsFluxLimit`, workstream 2); limits exist (`exists_fluxLimitSU2`); the act
+  number of `h` is `actRate L h = L · fluxRate h` (`fluxRate h` = the limit of the effective masses, the exact decay rate
+  of `h`, `RouteB.fluxEnergy_props`). No transfer operator, no Gauss-law projection, no `Z = tr(P_G Tⁿ)` is needed.
+  Uniqueness of the time limit is not proved (Perron–Frobenius for the finite-box transfer matrix, standard), so the
+  assembly states every flux condition **for every time limit**; when `h` vanishes from some time on, `fluxRate h` is a
+  junk value, which can only make such a condition harder to satisfy.
+* `gaugeInvQ`, `fluxE`, `actZ` (kept, no longer used by the assembly): the electric-flux energy of the SU(2)
+  temporal-gauge transfer operator on Gauss-law states (`Attempts.R4.Layer.fluxEnergy`) and `z = L·E_e`; its
+  identification with the 4D Wilson measure (`Z = tr(P_G Tⁿ)`) is not formalised.
+* **Observables of bounded physical extent** (cycle 2): `SlabObs.Extent O R` says that at every level and volume any two
+  links of the support of `O` are at physical distance `≤ R` (`a_k · linkDist ≤ R`); the number of fine links is not
+  bounded. `MassGapLoc T` is `MassGap T` for these families (every `R`, one rate). It is implied by `MassGap`
+  (`massGapLoc_of_massGap`) and is the form the Clay gap needs: the vectors `F Ω` of local observables of bounded extent
+  are dense in the reconstructed Hilbert space (see `ASSEMBLY.md`).
 -/
 
 open MeasureTheory Finset Filter Topology AreaLaw.Concrete OneScale OneScale.Gauge OneScale.LinkDist
@@ -435,5 +447,42 @@ theorem fluxE_nonneg (β : ℝ) (L : ℕ) [NeZero L] : 0 ≤ fluxE β L :=
 def Tuning.box (T : Tuning) (k j : ℕ) : ℕ := 2 ^ j * T.ℓ k
 
 instance (T : Tuning) (k j : ℕ) : NeZero (T.box k j) := ⟨by unfold Tuning.box; have := T.ℓ_pos k; positivity⟩
+
+/-! ## The flux energy from the 4D measure (cycle 2) -/
+
+/-- **`h` is a flux time limit** of the SU(2) Wilson measure at bare coupling `β` on `ℤ/Tℤ × (ℤ/Lℤ)³` (periodic spatial
+box, no twist): a limit along a subsequence `T → ∞` of the normalised correlation `⟨Φ(a_t) Φ(a_0)⟩_T` of the
+centre-odd Polyakov sum `Φ` (workstream 2, `ProofPhase.RouteB.IsFluxLimit`). -/
+def IsFluxLimitSU2 (β : ℝ) (L : ℕ) [NeZero L] (h : ℕ → ℝ) : Prop :=
+  RouteB.IsFluxLimit (G := SU2) (n := 2) L continuous_subtype_val
+    (fun g => Matrix.specialUnitaryGroup_le_unitaryGroup g.2) β ∅ h
+
+/-- Flux time limits exist at every coupling and box size. -/
+theorem exists_fluxLimitSU2 (β : ℝ) (L : ℕ) [NeZero L] : ∃ h, IsFluxLimitSU2 β L h :=
+  RouteB.exists_fluxLimit (G := SU2) (n := 2) L _ _ β ∅
+
+/-- **The act number of a flux time limit** of the box of side `L` (dimensionless): `z = L · E_e` with `E_e` the decay rate
+`fluxRate h` of the centre-odd correlation (lattice units). -/
+def actRate (L : ℕ) (h : ℕ → ℝ) : ℝ := L * RouteB.fluxRate h
+
+/-! ## Observables of bounded physical extent (cycle 2) -/
+
+/-- **A slab observable family of physical extent at most `R`**: at every level `k` and volume `j`, any two links of its
+support are at physical distance `a_k · linkDist ≤ R`. The number of fine links is not restricted (it may grow like
+`(R/a_k)⁴`); single-plaquette or other lattice-scale families have extent `→ 0` and are included. -/
+def SlabObs.Extent {T : Tuning} {s : ℝ} {V : ℕ → ℕ} (O : SlabObs T s V) (R : ℝ) : Prop :=
+  ∀ k j, ∀ e ∈ O.supp k j, ∀ e' ∈ O.supp k j, T.a k * linkDist e e' ≤ R
+
+/-- **The mass gap for observables of bounded physical extent** (volume first, then spacing): `MassGap` restricted to
+the families with `SlabObs.Extent O R` for some `R`; one rate `m` for all `R` and `s`. -/
+def MassGapLoc (T : Tuning) : Prop :=
+  ∃ m : ℝ, 0 < m ∧ ∀ (s R : ℝ) (V : ℕ → ℕ) (O : SlabObs T s V), O.Extent R → ∀ (τ : ℝ), 0 ≤ τ →
+    ∀ (h : ℕ → ℝ) (g : ℝ), (∀ k, IsLimitPoint (fun j => T.wcorr k j (O.F k j) (T.steps k τ)) (h k)) →
+      IsLimitPoint h g → |g| ≤ 2 * Real.exp (-(m * τ))
+
+/-- The full gap implies the gap for bounded physical extent (definitional). -/
+theorem massGapLoc_of_massGap {T : Tuning} (h : MassGap T) : MassGapLoc T := by
+  obtain ⟨m, hm, H⟩ := h
+  exact ⟨m, hm, fun s _ V O _ τ hτ hk g hhk hg => H s V O τ hτ hk g hhk hg⟩
 
 end ProofPhase

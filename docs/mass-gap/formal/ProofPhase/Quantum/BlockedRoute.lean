@@ -30,7 +30,8 @@ uniform in the level and the volume) and left the last link, from block observab
 The constant depends on the level only through the support bound `V k` (allowed by `SlabDecay`).
 
 Consequences: `openPieces_of_blockedRoute` (the blocked route is a proved sufficient condition for route A's field, so
-`OpenPieces` holds with `crossover := Or.inl _`), and `assembly_blockedRoute`.
+`OpenPieces` holds; since cycle 2 the crossover lists the blocked route itself, second disjunct), and
+`assembly_blockedRoute`.
 
 **Why not `TorusDecay`** (workstream 4's level-uniform form): `ObsTransfer` bounds the number of coarse links of `f` by
 `K (|A₀| + 1)(1 + D/L₁)⁴`, with `|A₀|` the number of **fine** links of the observable; for `SlabObs` families `|A₀| ≤ V k`
@@ -364,10 +365,11 @@ theorem slabDecay_of_blockedRoute' {T : Tuning} (h : BlockedRoute T) : SlabDecay
   exact slabDecay_of_blockedRoute B hlam h1 h2 h3
 
 /-- **The blocked route discharges route A's field:** with the line of constant physics and non-triviality, it gives
-`OpenPieces` (crossover by route A). -/
+`OpenPieces` (crossover by route A). (Cycle 2, workstream C: `OpenPieces.crossover` now lists the blocked route itself;
+`BlockedRoute` here is the same proposition as `ProofPhase.BlockedSlabRoute`, the second disjunct.) -/
 theorem openPieces_of_blockedRoute {T : Tuning} (hL : OnLCP T) (hN : NonTrivial T) (h : BlockedRoute T) :
     OpenPieces T :=
-  ⟨hL, hN, Or.inl (slabDecay_of_blockedRoute' h)⟩
+  ⟨hL, hN, Or.inr (Or.inl h)⟩
 
 /-- **Assembly through the blocked route.** -/
 theorem assembly_blockedRoute {T : Tuning} (hL : OnLCP T) (h : BlockedRoute T) :
