@@ -664,3 +664,12 @@ Reading (coordinator; candidate):
   is a flux pair (z₀ ≈ 2z_e; c6b: z_e = 3.59 at L√σ = 2.1, so z₀ ≈ 7.2 > 2π), and at L√σ ≈ 3.5 the glueball gives z₀ ≈ m·L ≈ 13 > 4π. Open:
   that SU(2)'s loss per doubling is bounded by one quantum (known only for the photon), and the 4π floor itself. Both are read off the
   joint z₀/z_e measurement.
+- **The smallest box is a true act (the owner, same day):** "One quantum is only light, which, by definition, does not exist, so it, by
+  itself, is not DMP-complete. Only a true act, something attached to an arrow of causality, so a duality, can be the smallest box. A
+  single assertion of existence by light gives only a point and not an arrow of existence/causality." Reading (coordinator): this fixes
+  the start condition of the doubling law with loss (Lean, `su2_gap_of_doubling_defect`, c6a): the loss per doubling is at most what a
+  single assertion carries (one quantum, 2π, light's point), and the smallest admissible box must hold a true act — an arrow, two
+  assertions — so z₀(L₀) ≥ 2 quanta = 4π > 2π ≥ c, hence m ≥ (z₀(L₀) − c)/L₀ ≥ 2π/L₀ > 0. In SU(2)'s smallest boxes the lowest vacuum state
+  is indeed a pair (two flux strings, one each way: an arrow), while light's lowest state is a single photon (a point). It agrees with
+  c6a's finding that only vacuum-side (centre-even) statements separate confinement from the gap: the flip probability is centre-odd and
+  carries no arrow. Open, as before: that SU(2)'s loss per doubling stays within one quantum; measurable with the joint z₀/z_e run.
