@@ -1006,3 +1006,15 @@ thread.
   code in DMP terms. To check: the count of remaining closed structures, the count of monopole loops under the running coupling (large
   open sheets), that the open acts' effects are released into the SO(3) layer at summable cost, measurability of the rule (law
   preservation), and what the tie-break costs in lattice symmetry and reflection positivity.
+- **Why the closing rule is not mirror-symmetric (the owner, same day, on CLOSING.md's failed check 4):** "This finding actually makes
+  sense! Since inside a closed, defined boundary no act can happen, the boundary must be maintained by the existence, while the boundary
+  of existence is maintained by the fact that its possibility space can still expand and causality still exists." Reading
+  (coordinator): reflection positivity is a mirror symmetry between the two sides of a plane (in Euclidean time: the symmetry that gives a
+  positive Hamiltonian). The closing rule needs a decision the mirror cannot make: which side closes an act, and which of two
+  mirror-image fillings is the root. In the reading this asymmetry is real: the boundary of a non-existence is maintained from the
+  existence side, not symmetrically, so a faithful coarse bookkeeping carries a direction. In the proof the two levels separate cleanly:
+  the bare Wilson measure keeps full reflection positivity (`limitRP`, the physical Hilbert space and positive Hamiltonian come from
+  there), and only the coarse bookkeeping (M1's block laws) is allowed to be one-sided, which the main assembly permits since it uses
+  block laws only through decay and transfer bounds. Coarse-graining is irreversible in any case (information is lost at each step; in
+  four dimensions the irreversibility of renormalisation flows is the a-theorem of Komargodski–Schwimmer), which fits "causality still
+  exists" as the arrow of the flow.
