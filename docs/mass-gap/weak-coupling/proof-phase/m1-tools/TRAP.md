@@ -85,6 +85,12 @@ the hole (its data are), so every logarithm the average takes is of a loop of a 
 
 The same table holds for centre-valued and balanced cores; nothing in it depends on the record's values.
 
+**Update (`S1-ROWS.md`, `V1-INPUTS.md`).** Two precisions. (1) Holes closer than `R_sep(d, L)` (current units) are
+merged into one record and carried in the large-field region until subscale (needed by V1 with excision). (2) The
+accounting holds for holes of any size and shape when the maintenance is bounded by the capacity, itself bounded by the
+covering number `N_k(H) ≤ 3^d (n L^{-(k-h)} + 1)` (`n` the number of deep plaquettes): every cost is `O(n polylog)`
+against the root's `c0 r0² n/g_h²`. The bound `D0 ≤ 100 M R_h` above is not needed.
+
 ## 4. Effect on the paper outline
 
 §5.3 becomes: **deep cores are trapped and excised** (root + maintenance accounting above), with T1-T4 as the remaining

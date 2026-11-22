@@ -25,7 +25,7 @@ Theorem 2. In words: Balaban's control of large fields, which in his papers hold
 | 5 | **Core dilution and trapping.** (5.1) Star weights of Balaban's average, exact; moderate cores dilute by `L^{1-d}` per step (Lemma D-mod); off-centre cores are diluted to spread `< 0.1` in one step at `L = 13`. (5.2) Deep cores: vortex persistence for every covariant symmetric average (deterministic dilution is false); slow balanced stars (uniform capture fails). (5.3) **Deep cores are trapped**: after a fixed delay (0-2 steps) they are frozen as holes and **excised** from the block average (per-block canonical filling), carried as records; charged once at the root plus a summable maintenance cost (P2′). The cut is never met; no capture or cut-avoidance lemma is needed. (5.4, optional) For centre-valued cores, Z2 labels instead of excision; cut avoidance NT′ for the plain average | (5.1) **Lean** core + **paper** + **numerical**, constants `K, K'` open; (5.2) **Lean** + paper + **numerical**; (5.3) **paper** (`TRAP.md`), checks T1-T4 open (routine-looking); (5.4) NT′(a) **proved** (Lean cap half), Cap Lemma open, not on the critical path | `NOTE.md` 2, `D-PIN.md` 2, `TWIST.md`, `NO-TRAP.md`, `TRAP.md`, `NT-A.md`, `NT-B.md`; rows D-mod, D-vortex, TRAP, P0, NT′ |
 | 6 | **The step under the block constraint.** Constrained minimiser for the conditional step's data, nested as sets (`[15]` Thm 1, Prop 9); background regularity; linear term (exact identity); quadratic form on `ker Q`; denominator and exact Wilson cancellation; normalisations; analytic extension; large-field factors (with the fibre-mass bound E7.J); entropy induction with Balaban's own delay and exponents (no retuning once deep cores are trapped); fundamental inequality; polymer gas and exponentiation | V1, X1.H2, E1, E2 **paper** (`S6-START.md`); E3 **paper** (`E3.md`, `POINCARE.md`; counting step **Lean**); E5, E6, E8, E9 **paper** carry-overs (`E5-E9.md`); E7 and E7.J **paper** (`E7J.md`; slicing step **Lean**); E4, E11-E13, V2 **citation** | rows V1, V2, E1-E13, E7.J; `S6-START.md`, `E3.md`, `E5-E9.md`, `E7J.md`, `POINCARE.md`, `V1-EXCISION.md` |
 | 7 | **Rooted cores.** One root per pinned or trapped core; no suppression used twice; root suppression `exp(-A_min/g_h²)`; root once + maintenance summed (P2′) `≪` root; sum over roots `≤ exp(-A_min/(2g_k²))` | root bookkeeping **paper**; P4 **citation level**; P2′ **proof** given Balaban's bounds I1-I3 | `D-PIN.md` 3-4, `P2-PRIME.md`, `TRAP.md` 3; rows D-pin, TRAP, P2′, P4 |
-| 8 | **The inductive form for laws; main theorem.** Assembly of §3-7 | **Lean** `m1_assembly` (`Assembly.lean`): under named hypotheses (fibre representation, `0 < D < ∞`, the definition of `T`, the bare form, and `stepEstimates` bundling §5-§7), the RG densities are the true laws at every scale and have the inductive form; `m1_laws`: the law half needs none of the estimates ; row by row: `m1_assembly_rows` with one named hypothesis per row of Part B and S1 as the combination | row S1; `Assembly.lean` |
+| 8 | **The inductive form for laws; main theorem.** Assembly of §3-7 | **Lean** `m1_assembly` (`Assembly.lean`): under named hypotheses (fibre representation, `0 < D < ∞`, the definition of `T`, the bare form, and `stepEstimates` bundling §5-§7), the RG densities are the true laws at every scale and have the inductive form; `m1_laws`: the law half needs none of the estimates ; row by row: `m1_assembly_rows` with one named hypothesis per row; up to the stopping scale `m1_assembly_rows_upTo` (rows stated in `S1-ROWS.md`) of Part B and S1 as the combination | row S1; `Assembly.lean` |
 | A | **Appendices.** A1 reading map of Balaban's papers (where each estimate sits); A2 numerics (star weights, star dynamics, twisted lattice tests) with scripts; A3 the excluded devices (random grid shifts, `D-N.md`) | **paper** + **numerical** | `NOTE.md` 1, `D-N.md`, scripts in this folder |
 
 **What is solid now.** Exactness (§3), the algebra and positivity of the twisted blocking (§4) and the logical assembly (§8) are
@@ -33,8 +33,7 @@ machine-checked;
 moderate-core dilution (§5.1) has its elementary core in Lean and its weights checked exactly; the deterministic
 obstruction (§5.2) is a Lean theorem; the root bookkeeping (§7) and the constant retuning (§6) are proved on paper.
 
-**What is not.** Two inputs of the excision check (gauge fixing at hole sites, `[6]`; propagator bounds for the locally
-modified constraint, `[5]`) are cited in modified form, not re-derived; the Cap Lemma is open but no longer needed; uniform capture is
+**What is not.** The S1 bookkeeping write-up and the routine rows; the Cap Lemma is open but no longer needed; uniform capture is
 not true as stated (slow balanced stars). P2′ (§7) rests on Balaban's bounds I1-I3 used as black boxes. The
 constrained estimates of §6 (about 25 pages, routine) and the assembly (§8) are unwritten; the running-coupling input
 ([I] Theorem 2) is external and unpublished.
@@ -43,14 +42,14 @@ constrained estimates of §6 (about 25 pages, routine) and the assembly (§8) ar
 
 | # | estimate | Balaban source | M1 version | status | size |
 |---|---|---|---|---|---|
-| S1 | inductive form for laws: (2.18) with R-terms allowed to depend on `U_k` through `M(U_k)` on `Λ`; block-axial gauge on `Λ`; the `W` partition `1 = χ(W reg) + χ^c(W reg)` and branch (a) | [III] (2.17)-(2.42); [IV] (0.2)-(0.6) | restate for laws; branch (a) terms are current large fields of `V_{k+1}` | logical structure **Lean**: `m1_assembly`, and row by row `m1_assembly_rows` (`M1RowStatements`, `M1RowHypotheses`, S1 = `assemble`); the inductive form itself (Balaban's (2.18) for laws) open (routine) | 4 |
+| S1 | inductive form for laws: (2.18) with R-terms allowed to depend on `U_k` through `M(U_k)` on `Λ`; block-axial gauge on `Λ`; the `W` partition `1 = χ(W reg) + χ^c(W reg)` and branch (a) | [III] (2.17)-(2.42); [IV] (0.2)-(0.6) | restate for laws; branch (a) terms are current large fields of `V_{k+1}` | **stated precisely** (`S1-ROWS.md` 1: `Form_k` = (2.18) with records and excised backgrounds; every row stated in `S1-ROWS.md` 2); logical structure **Lean** up to the stopping scale (`m1_assembly_rows_upTo`, `M1RowHypothesesUpTo`); the bookkeeping write-up open (routine) | 4 |
 | X1 | **exactness** `T R̂ = T`, term by term | [IV] (1.99), (1.102) (where Balaban loses it) | `map_resample_eq`, `map_comp_resample_eq`, `sum_map_resample_eq`, `map_resample_rnDeriv_eq` | **Lean** (given H1, H2 below) | done |
 | X1.H1 | `N`, `D` are the δ-integrals against fibre Haar measure (fibre representation) | [I] (0.13); [12] | block map a submersion on regular configurations | open (routine) | 1 |
 | X1.H2 | `0 < D(W) < ∞` for regular `W` | [V] (1.10)-(1.11) | the constrained minimiser lies in the fibre and in the support of `ŵ` | **paper** given V1 (`S6-START.md` 3); quantitative bound in E3 | 0 |
 | X2 | gauge-fixing removal (L3) exact inside `T` | [V] p. 378; [I] (0.14)-(0.16) | Faddeev-Popov with block-axial gauge, Jacobian 1 | open (routine) | 1 |
 | P1 | preliminary integrations | [IV] (1.10)-(1.99), pp. 177-193 | unchanged; all operations exact (read in full, `NOTE.md` 1.1) | **citation** (confirmed) | 0 |
 | P2 | restriction `χ_{k,Λ}` and extension of regular `V_out` into `Λ` | [IV] (1.74)-(1.75) | unchanged | citation | 0 |
-| V1 | constrained minimiser `V̂_Λ(W, V_out)` for the two-scale determining set: existence, uniqueness, regularity `O(B5 M^5)(ε_k + ε_{k+1})`, analyticity in `(W, V_out)` | [IV] Prop. 1, (1.77)-(1.80); [V] (1.12)-(1.13), (1.38)-(1.45); `[15]` Sects. D, E, G | fixed point on `P_0 ∩ ker Q_{k+1}` | **paper**: `[15]` Theorem 1 and Proposition 9 (`S6-START.md` 2); with excision checked section by section (`V1-EXCISION.md`), inputs (i) gauge fixing at hole sites (`[6]`), (ii) (46) for the locally modified constraint (`[5]`) cited in modified form | 2 |
+| V1 | constrained minimiser `V̂_Λ(W, V_out)` for the two-scale determining set: existence, uniqueness, regularity `O(B5 M^5)(ε_k + ε_{k+1})`, analyticity in `(W, V_out)` | [IV] Prop. 1, (1.77)-(1.80); [V] (1.12)-(1.13), (1.38)-(1.45); `[15]` Sects. D, E, G | fixed point on `P_0 ∩ ker Q_{k+1}` | **paper**: `[15]` Theorem 1 and Proposition 9 (`S6-START.md` 2); with excision checked section by section (`V1-EXCISION.md`); its two inputs proved (`V1-INPUTS.md`: Lemma FR, finite-rank local modifications, identity and decay step **Lean**; Lemma LP, positivity), using only Balaban's own citations (`[5]` Thms 3.12, 3.13; `[6]` Thm 2) | 2 |
 | V2 | background `U_0(W)` regular on all scales in `Λ`; gauge; `χ''_k = 1` | [IV] (1.80)-(1.98) | same with block-axial gauge | open (routine) | 3 |
 | D-mod | **Lemma D, moderate cores**: spread of the core's image shrinks by `θ = L^{1-d} + K r0 + K' ε` per step | new; analogue of [V] (1.31), (1.47) | `NOTE.md` 2.2-2.3 | **paper** + **Lean** (`balaban_star_dilution`, `spread_iterate_quadratic`, `norm_wsum_sub_wsum_le`); exact weights checked by `star_weights.py`; constants `K, K'` open (routine, [12]) | 2 |
 | D-vortex | deterministic Lemma D for all cores is **false** (centre vortex persists under every covariant symmetric average) | new; [I] (0.4), [IV] (1.2)-(1.9) | `NOTE.md` 2.4 | **Lean** (`vortex_persists`, `su2NegOne`) + paper (Balaban's average has the hypotheses) | done |
@@ -58,12 +57,12 @@ constrained estimates of §6 (about 25 pages, routine) and the assembly (§8) ar
 | D-prob | **Lemma D-prob**: under i.i.d. uniform shifts a deep core stays deep for `n` steps with probability `≤ p_stayⁿ`, `p_stay = O(L^{1-d})` | new | `NOTE.md` 2.5; missing: cone bound `f(z) ≤ C |z - y'|^{1-d}` on the path fraction, multi-site bookkeeping | **ruled out as a device** (`D-N.md` 2: shifts buy `≤ L^{-d}` per step, Balaban charges `exp(O(1) log g^{-2}(MR)^d)` per step); the estimate itself not needed | 0 |
 | D-N | constants: D-prob needs `N ≳ p0(g)/((d-1) log L)`, i.e. `ν ≥ p0`; compatible with `½ν ≤ p0 - p1 - 1` iff `p0 ≥ 2p1 + 2`; recent-region entropy then at equal powers (`A0 > 4 log L` times a constant) | [IV] p. 198; [V] p. 363, (1.80)-(1.85), p. 389 | `D-N.md` | answered (paper, `D-N.md`); the retuning is **not needed** once deep cores are trapped (`E5-E9.md` 0) | done |
 | D-pin | **deep cores pinned at nested block centres**: root rule (one root per core, suppression charged once, core carried as a Z2 label plus a frozen hole) | new | `D-PIN.md`, `P0.md`, `TWIST.md`, `P2-PRIME.md` | **SURVIVES WITH LEMMAS**: P0 (written), NT′ (cut avoidance, open), P2′ (proof given Balaban bounds I1-I3), P4 (citation level); root bookkeeping paper | see P-rows |
-| TRAP | **trapping of deep cores**: still deep after a fixed delay `N_t ∈ {0, 1, 2}` ⇒ frozen hole, excised from the block average (per-block canonical filling), record kept; root once + maintenance (P2′) | new (the owner's proposal, `../../PREP.md`) | `TRAP.md` | accounting **paper** (`TRAP.md`; delay `N_t = 0`, threshold `r0 ≤ c/L²`); T1, T2, T4 **paper** (`TRAP-CHECKS.md`); T3 **checked against `[15]`** (`V1-EXCISION.md`), two inputs from `[5]`, `[6]` cited in modified form | 1 |
+| TRAP | **trapping of deep cores**: still deep after a fixed delay `N_t ∈ {0, 1, 2}` ⇒ frozen hole, excised from the block average (per-block canonical filling), record kept; root once + maintenance (P2′) | new (the owner's proposal, `../../PREP.md`) | `TRAP.md` | **paper** (`TRAP.md`, `TRAP-CHECKS.md`, `V1-INPUTS.md`): delay `N_t = 0`, threshold `r0 ≤ c/L²`, holes closer than `R_sep(d, L)` merged; accounting by covering numbers, any hole size (`S1-ROWS.md` F3) | 1 |
 | P0 | **twisted blocking**: Z2 label field + smooth part blocked by (0.4) + straight-path decimation of labels; creation at isolated centre patterns, drop on contradiction | new; [I] (0.4), p. 254 | `TWIST.md`, `P0.md`; `Twist.lean`; `lattice_twist.py`, `twist_dynamics.py` | definition, small-field identity, covariance, symmetry, locality, link RP: **Lean + paper**; no trapping: **numerical** (`d = 2, 3` multi-level; `d = 4` one-site `L = 13` and full lattice `L = 3`, 2 steps); proof open | optional since TRAP (labels for centre-valued cores) |
-| P2′ | **subscale hole decoupling**: `|Δ_k| ≤ C[ρ_k^{d-2}(1 + p0²) + ρ_k^{(d-2)/2} p0 (1 + a^{1/2}/g_h)]`, `ρ_k = D0 L^{-(k-h)}`; summed `≪ a/g_h²` | new; [13], [II], `[15]` Thm 1 and (9)-(10); [I] (1.18), [II] (2.41), [III] (2.31), (2.42) | `P2-PRIME.md` v2 | **proof** given I1-I3: capacity lemma (proved), soft constraint, determinant, background (proved given I1, I2), hole as data in `[15]` (checked), local terms (I3, Balaban's analyticity as black box) | 3 (write-up) |
+| P2′ | **subscale hole decoupling**: `|Δ_k| ≤ C[ρ_k^{d-2}(1 + p0²) + ρ_k^{(d-2)/2} p0 (1 + a^{1/2}/g_h)]`, `ρ_k = D0 L^{-(k-h)}`; summed `≪ a/g_h²` | new; [13], [II], `[15]` Thm 1 and (9)-(10); [I] (1.18), [II] (2.41), [III] (2.31), (2.42) | `P2-PRIME.md` v2 | **proof** given I1-I3; precise form with the capacity bounded by the covering number (`S1-ROWS.md` 2, F3): capacity lemma (proved), soft constraint, determinant, background (proved given I1, I2), hole as data in `[15]` (checked), local terms (I3, Balaban's analyticity as black box) | 3 (write-up) |
 | NT′ | **cut avoidance**: (a) every star has a sign pattern with corrected relative angles `≤ θ_root < π`; (b′) at most `N_cut` near-cut steps over a pinned core's orbit. Replaces uniform no trapping, which fails (slow balanced stars) | new | `NO-TRAP.md`, `NT-A.md`, `NT-B.md` | (a) **proved**: `θ_root = 2 arccos s_8 = 168.7°` (union bound on `S³`, paper; cap half **Lean** `CutAvoid.lean`); (b′) **reduced** to the one-step **Cap Lemma** (the star map keeps every cap of radius `< 90°`; then `N_cut = 0`), open, numerically supported (300-step orbits, fixed-cap test up to 89°) | 0 (off the critical path since TRAP) |
 | P3 | rate condition `A_min b log L > C_1`, `b = 22/(6π²) ≈ 0.37` (not needed if P2′ holds) | [III] (2.42), [I] Thm 2 | `D-PIN.md` 4(b) | open (constants) | 1 |
-| P4 | root suppression of a deep core `exp(-A_min/g_h²)`, `A_min = c0 r0²` | `[15]` Thm 1; [V] p. 380 | `D-PIN.md` 4 | citation level | 1 |
+| P4 | root suppression of a deep core `exp(-A_min/g_h²)`, `A_min = c0 r0²` | `[15]` Thm 1; [V] p. 380 | `D-PIN.md` 4 | citation level; needs `γ ≤ γ0(L)` since `r0 ≤ c/L²` (`S1-ROWS.md` F4) | 1 |
 | E1 | linear term: `J_0 = Q*_{k+1} λ` on `Λ`; its core contribution `≤ g_k^{-2} ε_{k+1} θ^{n_mod} r0 ≪ 1` | [V] (1.2)-(1.6), (1.28)-(1.29), p. 363 | Lagrange-multiplier identity, D-mod | **paper**: exact identity (critical point on `Q δA' = 0`, `S6-START.md` 3); no core term (frozen hole) | 0.5 |
 | E2 | quadratic form positivity on `ker Q_{k+1}` | [V] (1.7)-(1.9) | Poincare bound `O(L²)` (better) | **paper**: restriction of a positive form (`S6-START.md` 3) | 0.5 |
 | E3 | denominator `D_X(W) = exp[-g_k^{-2}A(ζ0, U_0(W)) - Î + Ê_k(Λ)]`, `|Î| ≤ O(1)M^5 + O(log g_k^{-2})` per constrained bond; Wilson term cancels | [V] (1.10)-(1.11), (1.30)-(1.37) | W-dependent, analytic, non-zero on regular `W` | **paper** (`E3.md`; Poincaré (1.8) for the block-axial gauge in `POINCARE.md`, counting step **Lean** `sum_sq_le_of_paths`) | 1 |
@@ -82,27 +81,25 @@ constrained estimates of §6 (about 25 pages, routine) and the assembly (§8) ar
 
 ## Totals
 
-* **Lean (41 theorems, 7 modules, standard axioms):** exactness (`Exact.lean`), moderate dilution core (`Dilution.lean`),
+* **Lean (47 theorems, 8 modules, standard axioms):** exactness (`Exact.lean`), moderate dilution core (`Dilution.lean`),
   vortex persistence (`Vortex.lean`), twisted blocking and `rp_map` (`Twist.lean`), cut avoidance at the root
-  (`CutAvoid.lean`), the assembly `m1_assembly` and row by row `m1_assembly_rows` (`Assembly.lean`), fibre-mass slicing
-  and Poincaré counting (`FibreMass.lean`).
+  (`CutAvoid.lean`), the assembly `m1_assembly`, row by row `m1_assembly_rows` and up to the stopping scale
+  `m1_assembly_rows_upTo` (`Assembly.lean`), fibre-mass slicing and Poincaré counting (`FibreMass.lean`), the
+  resolvent identity and decay through a set for local modifications (`LocalMod.lean`).
 * **Paper:** D-N, root bookkeeping, link RP of the twisted and excised blockings, P2′ given Balaban's bounds I1-I3,
-  NT′(a), TRAP (accounting, T1-T4), V1 (with excision, checked against `[15]`), E1-E3, E5-E9, E7.J, the block-axial
-  Poincaré bound, X1.H2.
+  NT′(a), TRAP (accounting, T1-T4), V1 (with excision, its inputs proved in `V1-INPUTS.md`), E1-E3, E5-E9, E7.J, the
+  block-axial Poincaré bound, X1.H2; S1 and every row stated precisely (`S1-ROWS.md`).
 * **Numerical (adversarially checked):** the `d = 4`, `L = 13` off-centre step, local contraction, long orbits, the
   fixed-cap test.
-* **Cited in modified form (not re-derived):** `[6]` Sect. D gauge fixing with the hole's boundary sites fixed; `[5]`
-  Theorem 3.13 / `[15]` (46) for the locally modified constraint operator (`V1-EXCISION.md`).
-* **Open, routine:** S1 (the inductive form for laws, stated as `Form`), X1.H1, X2, V2, D-mod constants, E4, E11-E13
-  checks, P4, the P2′ write-up: about 20 pages, plus re-reading about 40 pages of Balaban.
+* **Cited as Balaban cites them:** `[5]` Theorems 3.12, 3.13 and the linear bounds behind `[6]` Theorem 2 (unmodified;
+  `[5]` itself not at hand).
+* **Open, routine:** the S1 bookkeeping write-up, X1.H1, X2, V2, D-mod constants, E4, E11-E13 checks, P4, the P2′
+  write-up: about 20 pages, plus re-reading about 40 pages of Balaban.
 * **Off the critical path:** the Cap Lemma, the Z2 labels, the constant retuning of `D-N.md`.
 * **False as first stated:** deterministic Lemma D (vortex), uniform no trapping (slow balanced stars).
-* **External:** [I] Theorem 2.
+* **External:** [I] Theorem 2 (with `γ ≤ γ0(L)`, `S1-ROWS.md` F4).
 
 ## Order of work (recommended)
 
-1. S1: state the inductive form for laws precisely (the `Form` of `Assembly.lean`: Balaban's (2.18) with the records of
-   trapped cores and the bounds of [III] Sect. 2), and give each `M1RowStatements` field its precise statement.
-2. The two cited inputs of `V1-EXCISION.md` (re-read `[6]` Sect. D and `[5]` Theorem 3.13 for the modified sets).
-3. The remaining routine rows (X1.H1, X2, V2, D-mod constants, E4, E11-E13, P4, P2′ write-up), then the write-up of the
-   paper.
+1. The routine rows (X1.H1, X2, V2, D-mod constants, E4, E11-E13, P4, P2′ write-up).
+2. The S1 bookkeeping write-up (§8), then the write-up of the paper.

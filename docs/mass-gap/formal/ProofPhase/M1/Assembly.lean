@@ -39,7 +39,10 @@ The renormalisation group produces densities `ρ k`. One step: resample (`resamp
 | `stepEstimates` | the inductive form propagates one step | §5-§7: D-mod, TRAP, P2′, P4, V1, E1-E13 |
 
 **Row by row:** `M1RowStatements`, `M1RowHypotheses`, `m1_assembly_rows` split `stepEstimates` into the rows of
-`M1-PLAN.md`, Part B, with S1 as the combining hypothesis.
+`M1-PLAN.md`, Part B, with S1 as the combining hypothesis. The precise statement of every row and of `Form` (Balaban's
+(2.18) with records of trapped cores and excised backgrounds) is in `S1-ROWS.md`. The rows hold only while the running
+coupling is small, i.e. below the stopping scale `K`: `M1RowHypothesesUpTo` and `m1_assembly_rows_upTo` give the form
+for `k ≤ K` and the laws for every `k`.
 
 **Claim level.** `m1_assembly` and `m1_assembly_rows` are proved (standard axioms). It makes the logical structure of M1 machine-checked: the
 only things left to prove are the named hypotheses, and exactness (the law half) needs none of the estimates.
@@ -239,5 +242,58 @@ theorem m1_assembly_rows {P : M1Data X Y} {μ0 : Measure (X 0)} {Form : ∀ k, (
   induction k with
   | zero => exact h0
   | succ k ih => exact HR.stepEstimates k ih
+
+/-- **The row hypotheses up to a horizon `K`.** Balaban's induction runs only while the running coupling is below `γ`
+(`k < K`, the scales of the weak-coupling regime up to the stopping scale); the rows are not claimed beyond. Each row
+and the combination S1 are assumed for `k < K` only. (`S1-ROWS.md` 1.) -/
+structure M1RowHypothesesUpTo {X : ℕ → Type u} (K : ℕ) (R : M1RowStatements) (ρ : ∀ k, X k → ℝ≥0∞)
+    (Form : ∀ k, (X k → ℝ≥0∞) → Prop) : Prop where
+  x2 : ∀ k < K, R.X2 k
+  p1 : ∀ k < K, R.P1 k
+  p2 : ∀ k < K, R.P2 k
+  v1 : ∀ k < K, R.V1 k
+  v2 : ∀ k < K, R.V2 k
+  dmod : ∀ k < K, R.Dmod k
+  trap : ∀ k < K, R.TRAP k
+  p2prime : ∀ k < K, R.P2prime k
+  p4 : ∀ k < K, R.P4 k
+  e1 : ∀ k < K, R.E1 k
+  e2 : ∀ k < K, R.E2 k
+  e3 : ∀ k < K, R.E3 k
+  e4 : ∀ k < K, R.E4 k
+  e5 : ∀ k < K, R.E5 k
+  e6 : ∀ k < K, R.E6 k
+  e7 : ∀ k < K, R.E7 k
+  e7J : ∀ k < K, R.E7J k
+  e8 : ∀ k < K, R.E8 k
+  e9 : ∀ k < K, R.E9 k
+  e11 : ∀ k < K, R.E11 k
+  e12 : ∀ k < K, R.E12 k
+  e13 : ∀ k < K, R.E13 k
+  coupling : R.runningCoupling
+  /-- S1 below the horizon -/
+  assemble : ∀ k < K, R.runningCoupling → R.X2 k → R.P1 k → R.P2 k → R.V1 k → R.V2 k → R.Dmod k → R.TRAP k →
+    R.P2prime k → R.P4 k → R.E1 k → R.E2 k → R.E3 k → R.E4 k → R.E5 k → R.E6 k → R.E7 k → R.E7J k → R.E8 k →
+    R.E9 k → R.E11 k → R.E12 k → R.E13 k → Form k (ρ k) → Form (k + 1) (ρ (k + 1))
+
+/-- The rows below the horizon give one step of the inductive form below the horizon. -/
+theorem M1RowHypothesesUpTo.stepEstimates {X : ℕ → Type u} {K : ℕ} {R : M1RowStatements}
+    {ρ : ∀ k, X k → ℝ≥0∞} {Form : ∀ k, (X k → ℝ≥0∞) → Prop} (HR : M1RowHypothesesUpTo K R ρ Form) (k : ℕ)
+    (hk : k < K) : Form k (ρ k) → Form (k + 1) (ρ (k + 1)) :=
+  HR.assemble k hk HR.coupling (HR.x2 k hk) (HR.p1 k hk) (HR.p2 k hk) (HR.v1 k hk) (HR.v2 k hk) (HR.dmod k hk)
+    (HR.trap k hk) (HR.p2prime k hk) (HR.p4 k hk) (HR.e1 k hk) (HR.e2 k hk) (HR.e3 k hk) (HR.e4 k hk) (HR.e5 k hk)
+    (HR.e6 k hk) (HR.e7 k hk) (HR.e7J k hk) (HR.e8 k hk) (HR.e9 k hk) (HR.e11 k hk) (HR.e12 k hk) (HR.e13 k hk)
+
+/-- **M1, assembled row by row, up to the horizon.** The inductive form holds at every scale `k ≤ K`; the laws are the
+true laws at every scale (exactness needs no estimate and no horizon). -/
+theorem m1_assembly_rows_upTo {P : M1Data X Y} {μ0 : Measure (X 0)} {Form : ∀ k, (X k → ℝ≥0∞) → Prop} {K : ℕ}
+    (H : M1Hypotheses P μ0 (fun _ _ => True)) (R : M1RowStatements) (HR : M1RowHypothesesUpTo K R P.ρ Form)
+    (h0 : Form 0 (P.ρ 0)) :
+    (∀ k ≤ K, Form k (P.ρ k)) ∧ ∀ k, (P.ν k).withDensity (P.ρ k) = trueLaw P.B μ0 k := by
+  refine ⟨?_, m1_laws H⟩
+  intro k hk
+  induction k with
+  | zero => exact h0
+  | succ k ih => exact HR.stepEstimates k (Nat.lt_of_succ_le hk) (ih (Nat.le_of_succ_le hk))
 
 end ProofPhase.M1

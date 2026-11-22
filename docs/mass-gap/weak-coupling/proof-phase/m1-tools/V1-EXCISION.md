@@ -14,7 +14,7 @@ frozen. Check `[15]`'s proof of Theorem 1 and Proposition 9 against this change,
    constants (section 2).
 2. **The two points not re-derived here:** (i) gauge fixing with the gauge also fixed at the hole's boundary sites (the
    frozen content breaks gauge invariance there): the gauge theory of `[6]` Sect. D with a few more fixed sites; (ii)
-   the propagator bounds `[15]` (46), from `[5]` Theorem 3.13, for the locally modified constraint operator: a local,
+   the propagator bounds `[15]` (46), from `[5]` Theorem 3.12 (and Theorem 3.13 for `𝔊`, Sect. E), for the locally modified constraint operator: a local,
    finite-rank perturbation of a positive operator with exponentially decaying inverse. Both are the same type of
    statement as in the source, for a slightly larger prescribed set or a local perturbation; neither is a new kind of
    estimate. `[5]` and `[6]` were not re-read.
@@ -54,3 +54,8 @@ supported within distance 1 of `∂H`.
 
 * T3 (`TRAP-CHECKS.md`): checked against `[15]`; inputs (i), (ii) cited in modified form.
 * V1 (`S6-START.md`): holds with excision under the same two inputs.
+
+**Update (`V1-INPUTS.md`):** both inputs are now proved, reduced to Balaban's unmodified statements by Lemma FR
+(finite-rank local modifications) and Lemma LP (positivity with the hole frozen). Two corrections to this note: (46) is
+`[5]` Theorem 3.12; the plaquettes next to the hole are regular because `Λ` is a small-field domain (a plaquette next
+to a hole that is not `ε`-small puts its neighbourhood into the large-field region), not by the definition of the hole.
