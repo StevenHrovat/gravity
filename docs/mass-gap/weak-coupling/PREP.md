@@ -679,3 +679,21 @@ Reading (coordinator; candidate):
   point, one assertion). In the doubling law with loss this is the start condition: an admissible start box must contain a duality
   (internal causality), and only such a box carries act beyond the single-assertion loss. The owner approved running the joint z₀/z_e
   measurement with the exact photon formula as control (option A).
+
+## Each node must carry all building blocks of existence (the owner, 2026-11-22, cycle 6/7)
+
+The owner: "The box doubling comes from the inherent duality. For something to keep existing, while splitting, each node has to have all
+the basic building blocks for existence. Where something is not a duality, so does not have total internal causality, while possessing
+the ability to assert itself against its non-existence, there can be no existence."
+
+Reading (coordinator; candidate): splitting a box must leave each half a complete unit of existence on its own: internal causality (a
+gap inside the half) **and** the ability to assert itself against its non-existence, i.e. against **whatever is outside** — every
+boundary condition, including the empty/frozen one. In mathematics this is the **worst-case-boundary (Dobrushin–Shlosman /
+Martinelli–Olivieri type) finite-volume criterion**: one box of fixed size whose interior is insensitive to its boundary, uniformly over
+all boundary conditions, with a margin beating the surface count; for spin systems such a one-box condition is known to give decay in
+all volumes (strategy (b) of blueprint v4, "lossless cells"; `CellDobrushin` in `ProofPhase/V3/CondMass.lean` is the right Lean shape;
+Chatterjee 2021 uses decay under every boundary condition for gauge theories). Light fails it: inside any box the boundary's influence on
+the centre falls only as a power of the size, so at no size does it beat the surface count — light cannot assert itself against its
+non-existence. SU(2)×U(1) fails it through its U(1) part. 2I would have to fail it at weak coupling (frozen sectors make the interior
+depend on the boundary). Proposed as the next cycle: state and prove the one-box criterion ⇒ `BlockGapBddW` in Lean, and test the
+criterion numerically at one box size with extreme boundary conditions.
