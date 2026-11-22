@@ -254,3 +254,34 @@ weights), strong-coupling gap, reach, area laws (SU(n)) proven; round 1 (`weak-c
 (local flatness; contraction only at the physical scale; exact AF coefficient needed); follow-ups: a Schroedinger-functional-type coupling
 runs by the exact rate, 2D U(1) one-box bound switches on near 3/√σ. The owner's readings: `weak-coupling/PREP.md` (guiding principle,
 root swap, naked duality, H1/H2 as how/what of existence and quantum/classical halves, curvature tools, existence boundaries).
+
+### State at 2026-11-22 ~03:45 (before a context compaction): the proof phase, cycle 3 running
+
+**Since the last state note:** rounds 2–4 done and reviewed (`weak-coupling/attempts/ROUND-2.md`, `ROUND-3.md`, `ROUND-4.md`; two Fable
+reviews `attempts/r3-review/REVIEW.md`, `attempts/r4-review/REVIEW.md` and the free-wins pass `attempts/r4-review/FREE-WINS.md`, which
+corrected overclaims: verify the CONTENT of headline theorems, not only build and axioms). Leg B finished; result in
+`lattice/PREREG-BOUNDARY.md` (photon gate passed; Q1 fails: the measured decay length is lattice-scale at every β; Q2 twist long-range).
+Round 5 is a **proof phase** (the owner's goal: the full proof): map `weak-coupling/PROOF-BLUEPRINT.md` (v2+, two routes, statuses),
+reading pack `weak-coupling/proof-phase/READING.md`, rules in `attempts/RULES.md` (phase section: the owner's guiding principle, claim
+discipline, unit tests: photon, Z₂, finite subgroups, deconfinement, triviality, Banks–Zaks, mixture, Heller endpoint).
+
+**The assembly (Lean, `formal/ProofPhase/`, lakefile lib `ProofPhase`):** `ProofPhase.Torus.Top`: `yang_mills_assembly` (OpenPieces ⇒
+MassGapLoc ∧ LimitRP ∧ NonTrivial) and `yang_mills_assembly_torus` (both orders of limits). Open inputs of the preferred torus route:
+`H1Local`, `LimitDprime` (⇐ AdjointHalf ∧ CentreHalf, `Adjoint/CentreSplit.lean`), `ObsTransferPhys`, the line of constant physics
+(`OnLCP`, slope 11/(6π²) for our weight exp(β Re tr U)), `NonTrivial`. Route B lands on Route A; Conjecture S breaks at small loops (the gap
+is decided on ≤ 3-plaquette loops). Noise-limit trap: Leg C's β 2.3 "click" had no adjoint signal.
+
+**Running now:**
+- **GPU queue (chained, starts itself):** Leg C `weak-coupling/attempts/r3-blocked/queue_blocked_gpu.ps1` (β 2.4 and addendum left; log
+  `r3-blocked/runs-gpu/queue_blocked.log`, ends "BLOCKED DONE" / addendum "ADDENDUM DONE"), then the act number
+  `weak-coupling/attempts/r4-actnumber/queue_actnumber_gpu.ps1` (no four-move addendum; log `r4-actnumber/runs-gpu/queue_actnumber.log`).
+  After it: the good-blocking refit (cycle 3 workstream 2 prepares its queue; the coordinator starts it).
+- **Cycle 3 workstreams (Opus):** c3a-uv (`ObsTransferPhys` for the good blocking; `formal/ProofPhase/UV/`), c3b-refit (pre-registration of the
+  good-blocking refit with a ≥ 3σ content check), c3c-certified (certified adjoint window; `formal/ProofPhase/Certified/`), c3d-h1 (`H1Local`
+  uniform in the lattice; `formal/ProofPhase/H1/`). Notes in `weak-coupling/proof-phase/c3*/`.
+
+**To do next:** verify each workstream (read headline statements; build in WSL with `FORMAL_DST`; axioms; scrub scan checking its exit
+code; transliterate umlauts), commit, gated push; when Leg C ends, run its analysis and c2a's `evaluate_adjoint.py` on β 2.4; start the
+refit queue; update the blueprint; propose cycle 4. Fable review: the owner wants it after construction, not now. The owner's readings of
+the phase are at the end of `weak-coupling/PREP.md` (act identity, what is conserved, tie to G0 = reach, something must run, exclusion vs
+existence, sector transfer as how existence is built, switching dimensions).
