@@ -224,3 +224,34 @@ L√σ = 0.36–1.40; nothing here is a result): photon gate PASSED (q1 ts 1.27 
 (c_TV 10–18), NO CONTENT (Creutz ratio 1.6–6.4 in these tiny boxes); strong anisotropy (β = 2.3, b = 4: fund ts 0.111(2), ss
 0.217(2); adjoint ts 0.0077(8), ss 0.032(1); β_F ts 0.42, ss 0.86); scaling check code path exercised (pair 2.3/2.5 at b = 4, not
 matched in L, INCONSISTENT as it must be).
+
+## Result (after data; REFIT DONE 2026-11-22 08:36; `runs-gpu/analysis.log`, `runs-gpu/refit_summary.json`; coordinator)
+
+Run as pre-registered (strict content rule, owner's decision 2026-11-22). GPU 2.74 h projected, all runs exit 0. The queue's start
+condition was amended once while it was waiting (the act-number queue was stopped after its bench; no effect on the measurement).
+
+**Gates:** photon (U(1) β = 1.1, 48⁴): PASS (windows and centre half EXCLUDED at every b; q1 does not fall and stays bounded, 1.60 →
+1.92 → 2.18 ts; Leg C's symmetric flatness rule, reported: fails, as predicted in decision 2). Z₂ deconfined (β = 0.6): PASS
+(EXCLUDED at b = 4, 8, 16). Flags: none.
+
+**Content check:** one SU(2) point passes, β = 2.3, b = 8, **L√σ = 2.80** (coarse plaquettes: fund ts 0.01372(3), ss 0.04324(4);
+adj ts 5.9(1.6)·10⁻⁵ (3.7σ, the marginal one), ss 1.41(2)·10⁻³; Creutz ratio at L/2 1.46(6)). Every other point is NO CONTENT:
+b = 4 and the edge points fail the Creutz window (ratio 1.5–3.0 at half-block spacing ≤ a few a); 2.06 fails it narrowly (1.51(3));
+2.92 fails only on adj ts (4.4(1.7)·10⁻⁵, 2.6σ); 4.13 and 5.60 fail adj ts and the Creutz ratio is not resolved.
+
+**Counted point, L√σ = 2.80:** base couplings β_F ts 0.0540, ss 0.1711, β_A ts −0.0006(1), ss 0.0015(1).
+H_TV = 2.37 EXCLUDED (adjoint 0.014, **centre 2.36**); H_W (linearised) = 0.676 NOT_EXCLUDED (adjoint 0.0036, centre 0.673).
+Reading by the pre-registered table: **"content PASS, H_TV EXCLUDED, H_W NOT_EXCLUDED": the W₁ window is reached, the sup window is
+not** — the route needs the W₁ form (`ProofPhase/Certified/AdjointW.lean`, `LimitDprimeW`, with H1 in a Lipschitz norm). The adjoint
+half is far inside its window; the binding constraint is the centre (fundamental) half.
+
+**Scaling check (2.80 at β = 2.3 against 2.92 at β = 2.5): CONSISTENT** for all eight quantities by the pre-registered bracket
+(ratios 0.64–0.89, within "between no decrease and an area-law decrease").
+
+**Caveats (coordinator, after data):**
+1. One counted point, and its adjoint ts content is at 3.7σ; the scaling partner misses the content rule at 2.6σ on the same quantity.
+2. H_W is the **linearised** W₁ criterion. c3c's certified W₁ window is for the isotropic two-coupling action and reaches
+   |β_F| ≤ 0.0685 at β_A = 0; the measured β_F ss = 0.171 is outside it. Certifying the W₁ column for this anisotropic action is open.
+3. The base fit's closure residuals for unfitted Schwinger–Dyson identities are large (closure6 −0.67 at many σ): the truncation is
+   not small, and NOT_EXCLUDED is biased towards false positives.
+4. As always: a statement about a fitted, truncated action, much weaker than the gap; `ObsTransferPhys` (c3a: Lemma X) is untouched.

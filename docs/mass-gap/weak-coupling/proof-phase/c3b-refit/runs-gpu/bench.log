@@ -1,0 +1,9 @@
+su2 N=48 chains=2: sweep per chain 0.956 s; blocking + measurement per config (blocks [4, 8, 16]) 0.882 s; GPU pool 4.03 GiB
+u1 N=48 chains=2: sweep per chain 1.097 s; blocking + measurement per config (blocks [4, 8, 16]) 0.848 s; GPU pool 1.34 GiB
+z2 N=48 chains=2: sweep per chain 0.629 s; blocking + measurement per config (blocks [4, 8, 16]) 0.659 s; GPU pool 1.23 GiB
+  plan u1_b1.1_N48: about 21 min
+  plan z2_b0.6_N48: about 13 min
+  plan su2_b2.3_N48: about 49 min
+  plan su2_b2.4_N48: about 33 min
+  plan su2_b2.5_N48: about 49 min
+PROJECTED TOTAL for the plan: 2.74 h (excluding selftest and bench, about 5 min)

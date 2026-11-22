@@ -1,0 +1,13 @@
+QUEUE START (waiting for the act-number queue) 2026-11-22T03:28:58
+QUEUE RESTARTED by the coordinator while waiting (no run started): wait condition also accepts the act-number queue's coordinator stop after its bench (19.7 h projected) 2026-11-22T05:42:53
+QUEUE START (waiting for the act-number queue) 2026-11-22T05:42:54
+act-number queue done, GPU free of actnumber.py/blocked.py/boundary.py; starting 2026-11-22T05:45:55
+selftest --gpu OK (BLOCKED_FUSED=)
+PROJECTED TOTAL for the plan: 2.74 h (excluding selftest and bench, about 5 min)
+u1_b1.1_N48 (attempt 1) exit 0 minutes 20
+PHOTON GATE PASSED 2026-11-22T06:08:50
+z2_b0.6_N48 (attempt 1) exit 0 minutes 15
+su2_b2.3_N48 (attempt 1) exit 0 minutes 50
+su2_b2.4_N48 (attempt 1) exit 0 minutes 34
+su2_b2.5_N48 (attempt 1) exit 0 minutes 50
+REFIT DONE 2026-11-22T08:36:37
