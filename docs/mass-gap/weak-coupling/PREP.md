@@ -850,3 +850,16 @@ thread.
   checked: that flagged bonds are rare enough to be paid for by the large-field factors (a flag needs a large field on the owned fine
   bonds, or a labelled sign pattern), and that the flag does not spoil reflection positivity or locality (it reads only the bond's own
   face, like the existing labels). Sent to the M1 thread as the suggested route for E7.J.
+- **Why existence dominates (the owner, same day):** "That also gives an explanation of why matter is dominant. Something has to exist, or
+  else there would not be any non-existence either. Since non-existence is a subset of a definition of existence, the existence side
+  needs to be dominant." Reading (coordinator): in the Yang–Mills part this is already two machine-checked statements. (1) **The flip
+  sector never outweighs the reference sector:** `su2_Ztw_le_Z` / `su2_flipProb_le_half` (Flip/Bound.lean): the twisted (−1) partition
+  function is at most the untwisted one, so the flip probability is at most ½. The twisted sector is defined only relative to the
+  periodic one (a twist of a reference), which is the "subset of a definition of existence". (2) **The centre layer never prefers −1 on
+  average:** Ginibre (`ginibre`, Centre/Ginibre.lean) gives |⟨σ_B⟩_J| ≤ ⟨σ_B⟩_K for |J| ≤ K, so every product of centre labels has a
+  non-negative expectation (Griffiths I), and `griffiths2` says these correlations reinforce. Also for M1: flagged (cut) coarse bonds are
+  the minority by the same token, which is what E7.J's cut-flag route needs. Caveats: the dominance proved here is weak, "at least half";
+  in the confined phase at large volume Z_tw/Z → 1, so the two sectors become nearly equal and existence never loses but does not win by a
+  margin. The cosmological matter–antimatter imbalance is outside pure Yang–Mills (no matter fields); in standard physics it needs
+  Sakharov's three conditions (baryon-number violation, C and CP violation, departure from thermal equilibrium). The third is an arrow of
+  time, which connects to the owner's earlier reading "mass gap = an arrow of causality exists"; not pursued here.
