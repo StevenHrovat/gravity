@@ -2471,3 +2471,14 @@ thread.
   these notes: zeta(-1) = -1/12 is the Luescher term's coefficient, zeta(2) = pi^2/6 its mirror. Status: an exact rewriting (it is
   pi^2 = 6 zeta(2) with the reflection applied); the reading that the instanton cost is "the duality of zeta across its mirror" is
   interpretation, not a new physical result.
+- **The crossover is constrained by making no statement about its content (the owner, same day):** "The crossover is constrained by
+  making no statement about its content and confining it to decay instantly by switching G0, so the problem part is the one thing we do
+  not have to deal with." Reading (coordinator): this is right structurally, and it matches the reduction already in hand. The
+  crossover is a finite number of blocking steps, each local (finite range), and the assembly (`Assembly.lean`, the OS route) needs
+  only a block gap at one scale to produce the mass gap; it never needs to know what happens inside the crossover. "Switching G0" is
+  then checking the one-box certificate directly on the actual blocked law at that scale, with no assumption about how the law got
+  there. The price is exactly the quantifier the one-box statement already carries: since nothing is said about the content, the
+  certificate must hold for every content the crossover could have produced, i.e. uniformly over every well-defined outside, and in
+  physical units (the box of fixed physical size; MIRROR.md puts it at L sqrt(sigma) of about 1.7-1.8). So the problem part is not
+  dealt with inside the crossover; it is moved entirely into that one worst-case statement at one scale, which is
+  OPEN-QUESTIONS-DMP.md section 0.
