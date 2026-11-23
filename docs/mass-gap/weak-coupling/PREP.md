@@ -3923,3 +3923,15 @@ thread.
   ratio bound degenerates); for Yang-Mills the positivity is quantitative per box but its ratio bound is not uniform in the outside and
   the cutoff, which is O1. Positivity => contraction holds; the open steps are the uniform ratio bounds that make the contraction
   strict at every scale.
+- **The definition goes straight to DMP: the perfect duality and its existence given an arrow, stated together as G0 (the owner, same
+  day):** "The definition goes very well to straight DMP, the perfect duality and it's existence given an arrow, stated together as G0."
+  Reading (coordinator): exact; these are the two ingredients of Osterwalder-Schrader reconstruction, stated together. (1) *The perfect
+  duality:* reflection positivity, a mirror across which the pairing is positive, <theta F, F> >= 0 (Lean: `M1/UVTVOS.lean`, the SU(N)
+  reflection identity in `General/SUNTwist.lean`); in the encoder it is the half-turn (quarter-turn for N >= 3) exchanging the two
+  pictures. (2) *Existence given an arrow:* a time-translation semigroup, the tick, composed only forward (`pow_add_apply`, Lean). (3)
+  *Stated together:* positivity across the mirror plus the semigroup yield a Hilbert space and a positive contraction e^{-tH}, H >= 0:
+  existence that runs, with an arrow [classical; lattice and windowed parts in Lean]. In the ETM this pair is the definition of a running
+  system: a step (the arrow) and a factor in [0, 1] (positivity), with the ledger law (`ETM/RunSys.lean`, Lean). So G0 stated as
+  "duality + arrow" is exactly the OS pair and exactly the ETM's root (`Rooted.lean`, G0 a positive weight carried by a positive
+  kernel). Care point: as for every earlier root, this fixes the form; whether a specific object satisfies the pair with uniform bounds
+  is content.
