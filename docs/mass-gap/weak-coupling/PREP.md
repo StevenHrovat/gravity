@@ -2523,3 +2523,12 @@ thread.
   needs a mechanism that is uniform across the crossover, which is the one-box statement itself (the equidistribution round showed
   uniformity over outsides brings the grid requirement back). A concrete step this suggests: an inventory of the proved confinement
   settings, what each mechanism proves uniformly, and whether any one of them reaches into the window the one-box statement lives in.
+  The owner adds (same day): "And what happens when those zones interact with each other, is what we see with merging black holes, pure
+  ripples of existence radiating out, dissipating the information of the new shared non-existence." Reading (coordinator): general
+  relativity has exact counterparts. (1) Hawking's area theorem: when two horizons merge, the area of the new horizon is at least the
+  sum of the old ones; the new shared non-existence is larger than its parts. (2) The no-hair theorem and the ringdown: the merged
+  horizon settles to a state described only by mass, spin (and charge); every other feature of the two original horizons is radiated
+  away as gravitational waves in a set of damped quasi-normal modes ("pure ripples ... dissipating the information"). (3) The energy
+  carried off is large and measured: in GW150914 about three solar masses of the binary's mass left as radiation. So the zones'
+  interaction keeps only conserved, global quantities and sheds the rest outward, the same pattern as the remnants surviving global
+  smoothing (holonomy) in the HTF entry.
