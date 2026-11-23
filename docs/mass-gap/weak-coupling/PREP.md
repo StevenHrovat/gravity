@@ -3719,3 +3719,16 @@ thread.
   positive construction: the arithmetic Hodge index of G4). Care point, per the earlier entry "fixing a corollary as an axiom": DMP
   may fix its logic at the root, but fixing "every further step keeps the sign" as DMP's positivity would assume GRH beyond Dirichlet,
   the content step. As a reading it is the owner's statement of what the content must be; as mathematics it stays the open step.
+- **The "magic" of NP lifting sits in the quantization of the remainder, as the error bar needed for existence to be measurable (the
+  owner, same day, on the NP lifting round):** "The NP lifting 'magic' sits in the quantization of the remainder as the needed error
+  bar for existence to be mearusble." Reading (coordinator): this matches the proof's mechanism (`docs/unified/NP-LIFTING.md` 1.2 to
+  1.4; the source's proof, read in the round) [classical]. Lifting turns a cutting-planes (triangle-dag) proof of size s for the lifted
+  problem into a resolution proof of width O(log s / log n) for the original. So every unit of resolution width costs a whole factor
+  n in size: the remainder is counted in quanta of log n bits per variable. The simulation keeps track of how much a rectangle has
+  fixed. A structured rectangle fixes few blocks, an unstructured one is pseudorandom on the rest, and the fixed blocks are an integer
+  count. The gadget size m = n^delta sets that quantum, i.e. the resolution at which one hidden variable becomes measurable. In the
+  project's terms this is the universal floor rule's resolution floor (error bar = max(statistical, 1/T),
+  `attempts/RULES.md`): the gadget is the tick fine enough to resolve one bit of crossing. That is also exactly why the constant-gadget
+  version is open, the source's own "important open problem" (m = O(1)): with a constant gadget the quantum is too coarse for the
+  argument to measure a single crossing. Care point: the reading names the role of the gadget size correctly; whether a constant-size
+  quantum can be made to suffice for cutting planes is the open interface (`LiftCPConst`, `Lifting.lean`).
