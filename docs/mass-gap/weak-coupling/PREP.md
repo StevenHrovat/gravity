@@ -3048,3 +3048,26 @@ thread.
   turn irreducibility into slack, which is exactly what Perron-Frobenius does in finite dimension and what fails to be uniform as the
   volume grows. (b) That uniformity is O1 again. Passed to the GRH-lens round as the owner's choice of lead 1 for the quantitative
   part.
+- **The mass gap, so the pressing, follows from the irreducibility of what existence can be defined as, originating in empty set
+  theory (the owner, same day):** "The mass gap, so the pressing, follows from the irreducibility of what existence can be defined
+  as, which originates in empty set theory, which has already been shown to be a viable approach to that issue." Reading
+  (coordinator): the exact mechanism by which set theory gives a *quantity*, and where it meets the open step. (1) *Integrality is
+  irreducible and quantitative.* From the empty set, von Neumann's construction gives 0 = {} and 1 = {0} (paper I.7) [classical]; in
+  the numbers it builds there is nothing strictly between 0 and 1. Any quantity that counts (integer-valued) therefore obeys
+  "nonzero implies at least 1": a gap with a fixed size, the same in every volume. This is the one source of *uniform* slack in the
+  mathematics used here, which is what the previous entry asked for. (2) *Where it already works in the project.* A flux-carrying
+  outside forces at least one sheet through the box (`exists_sheet_both_sides`, `Crossover/FluxRate.lean`, Lean); the centre labels
+  are elements of Z_N (discrete); the topological charge is quantized, so a twist with odd twist product has |Q| >= 1/2 and action at
+  least 4 pi^2 / g^2 (Bogomolny with 't Hooft twist, `CONTAINMENT.md` 6.2) [classical]. In GRH the counterpart is the integer
+  multiplicity on the prime side (the explicit formula's weights Lambda(n), integers times log p) and the integer-valued zero count
+  N(T) [classical]. So the set-theoretic quantum is present and proved where it is a count. (3) *Where it does not yet reach.* The gap
+  needs a lower bound on a free energy, not on a count: F_e = (cost of the forced units) minus (entropy of the ways to place them).
+  CONTAINMENT.md found that the law gives the structure and the "at least one" (Lean), but dominance needs the cost per box to beat the
+  number of continuations, F_e(L) > log mu_4 = 1.91 (`tube_threshold`, Lean), and that the Bogomolny action floor loses to entropy
+  inside a box as a -> 0. In set terms: "at least one element" is irreducible, but the number of subsets that realise it grows, and
+  the cost of one unit must beat that growth (Cantor's |P(S)| > |S| is the same tension, existence strictly larger than its parts)
+  [classical]. Care points: (a) "already shown to be a viable approach" is the owner's statement about DMP's set-theoretic foundation
+  (the GUID line); in this repository what is shown is the quantum as a count (Lean) and the inequality it must win (Lean), not yet
+  the win. (b) A route that would close O1 this way: an integer-valued invariant of the box whose every nonzero value costs, in free
+  energy and uniformly in the outside, more than log mu_4 per box. Passed to the GRH-lens round as a lead for "what turns
+  irreducibility into uniform slack".
