@@ -75,3 +75,18 @@ fail, we are sure to learn something interesting for a better round 4")
 - **The map:** `../PROOF-BLUEPRINT.md` lists every piece of the proof with its status; every result says which piece it changes.
 - **The assembly:** one Lean theorem with Yang–Mills in its hypotheses and the open pieces as named hypotheses; a piece counts as
   discharged only when the assembly builds without that hypothesis.
+
+## Error bars: the universal floor (2026-11-23; the owner: "Yes, adopt it")
+
+The owner: "The floor is defined by the resulting universal quantum of assertion and the tick rate that assertion has to meet to still
+be considered existence. [...] The loss associated with that smallest act is a universal error bar, since an act needs uncertainty."
+Rule, for every measured quantity from now on:
+
+* **Error bar = max(statistical floor, resolution floor).**
+  * *Statistical floor:* derived from the information in the data (Cramer-Rao / delta method, c9b `floor.py`; the content-spread floor
+    for runtime projections, `w2/PROJECTION.md` 8), or the jackknife over independent units if larger.
+  * *Resolution floor:* the time-energy uncertainty of the observation. An energy (or rate) read over an observed Euclidean time
+    extent T is resolved no better than 1/T in units of the tick (lattice spacing). For quantities that are not energies, the analogous
+    floor is the smallest change the measurement can resolve given its finite extent; state it.
+* **Ad-hoc floors are not used** (for example a naive standard error over correlated samples chosen as a floor).
+* A change of floor after data has been seen is reported as post hoc, next to the pre-registered result, never in place of it.
