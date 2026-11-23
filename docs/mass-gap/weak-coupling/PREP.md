@@ -1755,3 +1755,29 @@ thread.
   concrete test of the reading: the semilocal Weil form for S = {real, 2}, {real, 2, 3}, ... (the Euler product truncated to S),
   measuring whether positivity holds there and how its margin behaves as primes are added. Whether the minimal pair is two primes
   or the real place plus one prime is the first thing that test would show.
+- **Imaginary numbers, Euler's number and Euclidean time as the attachment point (the owner, same day):** "Do the imaginary numbers
+  not have some tie to Euler's number? That is related directly to the Euclidean time in our system and gives us a clean place to
+  attach." Reading (coordinator): yes, and it is exactly where the GRH attempt's two positivities meet. (1) Euler's formula
+  e^{i theta} = cos theta + i sin theta ties i to e: an imaginary exponent is a rotation (oscillation), a real exponent a growth or
+  decay. (2) The Wick rotation t -> -i tau is this tie used in physics: real-time evolution e^{-iHt} (oscillating, unitary) becomes
+  Euclidean evolution e^{-H tau} (decaying, the transfer matrix). Our Yang-Mills proof lives on the Euclidean side, and OS
+  reconstruction carries positivity back to real time because H >= 0. (3) In zeta, n^{-s} = e^{-s log n}; on the critical line
+  s = 1/2 + i gamma this is n^{-1/2} e^{-i gamma log n}: the real part 1/2 is a fixed decay (the normalisation), the imaginary part
+  gamma a pure frequency in the log-scale "time" u = log n. RH says every zero is of this pure-oscillation kind, i.e. the
+  "evolution" e^{i gamma u} is unitary (Hilbert-Polya). (4) So the attachment point the owner names is precise: the attempt found a
+  Euclidean (Laplace, Hankel) positivity on the prime side and needs a real-time (Fourier, Toeplitz) positivity on the zero side;
+  the explicit formula plays the Wick rotation between them. The clean way to attach would be the Yang-Mills route itself: a
+  Euclidean object of the form e^{-H u} with H >= 0, built from arithmetic, whose Wick rotation is the zero side. The obstacle
+  named in ATTEMPT.md step 4 is the same in this dress: the arithmetic Euclidean object at hand (the Euler product's measure) enters
+  with the wrong sign, so it is not yet an e^{-H u} with H >= 0.
+- **Every valid input is attached to a G0 that mints it (the owner, same day, on the crossing in DICTIONARY.md 6.3):** "The crossing
+  from the class to all inputs comes from the fact that, for there to be a valid input, it has to be attached to a G0 that mints it."
+  Reading (coordinator): this makes "valid input" mean "minted input", and on that domain the dictionary's class theorem is the
+  answer: everything inside is polynomial. The question as Clay states it, though, counts every well-formed instance, including the
+  ones no G0 can mint. And for those the question "is there a G0 that mints this input?" is exactly the NP-complete question itself:
+  for SAT, "does a satisfying world exist?" is satisfiability. So the reading does not remove the hardness; it locates it precisely,
+  in the minting decision. Inside a minted system everything runs cheaply (P = NP within); deciding whether an arbitrary instance can
+  be minted at all is the hard part (the crossing). That is consistent with the earlier reading that the worst case is what the
+  pressing is designed around. To turn the reading into a resolution one would have to show either that the minting decision is
+  itself local (collapse, ruled out for decision and as strong as NP = RP for counting) or that it is not, unconditionally
+  (separation, past the three barriers).
