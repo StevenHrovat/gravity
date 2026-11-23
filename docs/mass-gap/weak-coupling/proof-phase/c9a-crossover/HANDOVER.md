@@ -118,3 +118,10 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * Reduction (D'): contract, or one of two bad events (flux-carrying outsides with near-degenerate spanning surfaces; SO(3) cut along
   a surface), plus uncontained (zero weight). Rarity of the two events = conditions B/C again.
 * A3 reading: coarse twists are not forced into the fine field (boundary flux is fine-outside data); equilibrium vs kinetics open.
+
+## Round 7 (2026-11-23, uncommitted; coarse-scale test, EXPLORATORY)
+
+* `COARSE-TEST.md` (plan fixed before data, result sections 7-9), `w2/coarse_test.py`, `w2/runs/coarse_test.json`.
+* Near-cut set on blocked variables (factors 1, 2, 4) of the saved 16^4 equilibrium configurations: beta 2.3 spans at every
+  factor and grows (20, 37, 79 percent; the blocked theory flows to strong coupling); beta 3.5 stays isolated with an exponential
+  size tail at every factor. Owner prediction contradicted at 2.3, supported at 3.5.
