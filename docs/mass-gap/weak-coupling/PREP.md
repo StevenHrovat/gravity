@@ -2156,3 +2156,10 @@ thread.
   positivity holds, after which the zeros are read off as a spectrum; WHKs = the data from which each part derives the others: the
   group, the real place and the primes on one side, the zeros on the other, tied by the explicit formula; ODP: the owner's term for
   the discovery process, here the induction that discovers the definition of existence scale by scale (mapping left to the owner).
+  The owner confirms the ODP mapping (same day): "The ODP mapping is correct, it is simply the process of getting from G0 to a
+  state where that prescribed existence runs and ends exactly at the handover of 'running', since that is its end goal." Reading
+  (coordinator): in the proofs the ODP is therefore the pressing phase up to the certificate, and its end is the hand-over: in
+  Yang-Mills the scale-by-scale construction ends at the one-box certificate (the hand-over at L_* and the crossover hand-over whose
+  per-box rate is 0.881, `Crossover/HandOver.lean`); in GRH the prime-by-prime induction ends when positivity is established and the
+  Hilbert space can be completed; in P vs NP the local certificate of the class theorem. After the hand-over the system runs
+  (minting), and nothing in the ODP is needed any more.
