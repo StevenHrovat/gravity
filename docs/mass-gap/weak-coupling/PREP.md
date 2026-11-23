@@ -2267,3 +2267,26 @@ thread.
   only flows forward and is never regained, so the loss accumulates and cannot be undone. What remains is not uniformity along the
   chain but the value of eta at one step, i.e. the neutral sector gapped at one box scale (F_e(L) > 2 c(L)), and its uniformity over
   outsides (condition A for every well-defined outside), which is a statement about one DB, not about the chain.
+- **Three answers to the open questions (the owner, same day):** (a) "The quantum of assertion is given along with the tick frequency
+  at G0, so the rate is already part of any well constructed box." (b) "What GRH still seems to miss is the self asserting effects of
+  the remnants of acts, which is the mechanism which forces the optimization once a running state has been established." (c) "A
+  question with no structure has no basis/language in which to speak an answer and be sure it is understood. An empty set at least has
+  the base definition for existence, from there a language for that definition can be constructed." Reading (coordinator):
+  (a) **True for every finite box, and the precise reason it is not yet the theorem.** In a finite box with a compact group and a
+  bounded action, the conditional law of the box given any outside has a density bounded below by e^{-C beta |boundary|} > 0
+  (Doeblin's condition), so the DB's loss rate satisfies eta <= 1 - e^{-C beta L^{d-1}} < 1 for every outside: a rate per tick that is
+  built into the box, as the owner says. Two things keep it from closing the problem. First, a box has 2d neighbours in d dimensions,
+  and contraction needs the summed influence below 1, not each single channel; the Doeblin bound per channel is too weak for the sum.
+  (For a finite cross-section, a one-dimensional chain, it is enough, and such systems are gapped by Perron-Frobenius.) Second, the
+  Clay statement needs the gap in physical units in the continuum: the rate per tick m a goes to zero as the tick a goes to zero, and
+  what must stay fixed is m. So the quantum-per-tick gives the fixed-spacing, finite-volume gap (known); the open part is its
+  uniformity in the cross-section and its survival in physical units as the tick shrinks.
+  (b) **A self-consistency that forces an optimum** has a known heuristic form: the explicit formula makes primes and zeros determine
+  each other (a fixed point), and the zeros' statistics match an equilibrium of a repulsive log-gas (random-matrix theory), an
+  energy-minimising configuration. No theorem derives RH from such an optimisation; recorded as a direction: a variational
+  characterisation of the zeros in which the remnants' self-assertion is the force.
+  (c) **No structure, no language** is incompressibility (Kolmogorov): a random object has no description shorter than itself, so no
+  short "name" for what crosses its boundary; the empty set is where a language starts (von Neumann's hierarchy builds definable sets
+  from it). Care point: "random objects have no short description" is exactly the kind of large, constructive property that the
+  natural-proofs barrier rules out as a route to circuit lower bounds (pseudorandom functions look random). A proof along this line
+  must use incompressibility of the specific instance family in a way that does not apply to typical functions.
