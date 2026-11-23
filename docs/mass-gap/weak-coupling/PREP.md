@@ -3431,3 +3431,21 @@ thread.
   "running system" formally, prove DMP's universal property for it, and state the ETM as the universal machine that runs any
   described content. The recorded caution stands: no machine decides halting for all content (Turing); the ETM's halting (reaching
   balance) is decidable on the contraction class, which is exactly the class the ledger certifies. Started as a round.
+- **The thesis restated: every meaning of existence in accordance with the root G0, through which the whole chain derives its
+  physical existence, its extension into real space; otherwise an infinite series again (the owner, same day, on item 5 of the ETM
+  round):** "5 can be restated better: Every meaning of existence that is in accordance with the root G0 through which the whole
+  chain derives it's physical existence, so it's extension into real space, otherwise you would just end up in an infinite series
+  again." Reading (coordinator): the restatement turns the thesis into a well-foundedness condition, which is far more provable.
+  (1) *Rooted means well-founded.* "Derives from G0 with no infinite series" is exactly well-foundedness: every chain of derivation,
+  followed backwards, ends at the root in finitely many steps; the alternative is an infinite descending chain, an infinite regress
+  [classical: well-founded relations; the axiom of foundation forbids infinite descending membership chains]. In Lean every term of
+  an inductive type is built from its constructors in finitely many steps, so inductive definitions are rooted by construction. (2)
+  *Physical existence, the extension into real space.* The chain from the root to real space is the Osterwalder-Schrader route: a
+  positive Euclidean weight (G0) gives the Hilbert space, the positive transfer matrix and the real-time evolution (the analytic
+  continuation to Minkowski space) [classical; the lattice and windowed parts in Lean, `OS/`, `M1/`]. Without the positive root no
+  reconstruction exists. (3) *The thesis, sharpened.* "Every running system whose derivation is well-founded from G0 is an instance
+  of DMP" becomes provable by induction over the derivation once "rooted" is given as an inductive definition. Care point: that
+  induction is close to tautological if DMP is defined as the inductive closure of G0; the content then moves into two places that
+  must be shown separately: that the known systems (lattice Yang-Mills, the GRH chain, Markov chains, proof systems, the Ricci
+  shrinker) are rooted, and that the root G0 is not trivial (the same vacuity check as for the universal property). Passed to the
+  ETM round.
