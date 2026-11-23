@@ -3882,3 +3882,15 @@ thread.
   strongest interpolant is A with its private variables existentially quantified away, "there is a possible value of A's hidden part
   such that A holds", projected onto the shared variables [classical]. So the disagreement is localised to the shared part by passing
   through the possible states of each side's hidden part, never through their actual values: "through the imaginary".
+- **This also makes the photon travel through the possibility space, which looks like U(1) to an outside observer (the owner, same
+  day):** "Which also makes the photon travel through the possibility space, which looks like U(1) to an outside observer." Reading
+  (coordinator): exact in two ways. (1) *U(1) is the imaginary direction.* U(1) is the circle of unit complex numbers e^{i theta}, pure
+  phases [classical]. In quantum theory a particle propagates as a sum over all possible paths, each weighted by a phase e^{iS/hbar}
+  (Feynman's path integral) [classical]: it travels through the possibilities, and each possibility carries a U(1) phase. (2) *What the
+  outside observer sees.* A global phase is unobservable; only relative phases between possibilities (interference) and |amplitude|^2
+  are seen [classical]. Electromagnetism is the gauge theory of exactly these phases: the photon is the link that compares the phase at
+  one point with the phase at another (the handshake entry: a link variable compares frames, here U(1) frames). Because U(1) is
+  abelian, the photon carries no charge itself and does not interact with other photons at tree level, so it crosses without needing a
+  handshake of its own (entry "the photon case, which is U(1), acts way differently") [classical]. Care point: the path integral's
+  "all possibilities" is the real-time (Minkowski) picture; this project's proofs use the Euclidean one, where the phase e^{iS} becomes
+  the positive weight e^{-S}, the Wick rotation that the owner earlier read as the attachment point between the two pictures.
