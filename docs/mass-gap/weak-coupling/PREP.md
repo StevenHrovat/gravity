@@ -3935,3 +3935,27 @@ thread.
   "duality + arrow" is exactly the OS pair and exactly the ETM's root (`Rooted.lean`, G0 a positive weight carried by a positive
   kernel). Care point: as for every earlier root, this fixes the form; whether a specific object satisfies the pair with uniform bounds
   is content.
+- **The duality and the arrow form the uniform bound at the one box, which goes back to the act at the DB, a rotation; what that key
+  rotation (the swap between existence and non-existence) can certify is what it must certify, most efficiently; its complete
+  inversion allows a statement about exactly and only nothing, which needs no proof; zeta at 1 gives -1/12 for one quantum, and the
+  reflection is the certificate of a system that can assume a runnable state, DMP-complete (the owner, same day):** "The duality and
+  arrow form the uniform bound at the one-box, which goes back to the act at DB, which is a rotation. So whatever that key
+  rotation/swapping between existence and non-existence can certify automatically becomes what is must certify, in the most efficient
+  way possible, since the complete inversion of that rotation allows a statement about exactly and only nothing, but which does not have
+  to be proven. So zeta 1 gives -1/12, for one quantum, you get something that can in no way interact with it in a single act then
+  through reflection, which is the certificate of system that can assume a runnable state and is thus DMP-complete." Reading
+  (coordinator): (1) *The rotation and its two fixed points.* The key rotation is the half-turn elec(c) = (1 - c)/(1 + c), swapping
+  the electric (existence) and magnetic (non-existence) pictures. It has exactly two fixed points, antipodal on the sphere
+  (`rotation_check.log`; `elec_selfdual`, `fixed_antipodal`, Lean): sqrt 2 - 1 = 0.414, inside the physical range [0, 1], the hand-over
+  point; and -(1 + sqrt 2) = -2.414, outside it. A twist ratio is a ratio of positive weights, so no state of any system sits at the
+  second point: it is a statement about exactly and only nothing, and it holds without any proof about states, because there are none.
+  That is the precise content of "the complete inversion allows a statement about only nothing, which does not have to be proven". (2)
+  *The reflection as the certificate of runnability.* Reflection positivity, the pairing of a state with its mirror image being >= 0,
+  is exactly the certificate that a system can be reconstructed as a running one: Hilbert space, positive transfer step, arrow
+  (Osterwalder-Schrader; Lean in the lattice and windowed forms). It is a single act, the reflection, through which the two halves
+  meet: the owner's "can in no way interact with it in a single act except through reflection". (3) *The zeta values, precisely.*
+  zeta(1) is the pole (existence, the assertion of 1), not a value. The functional equation mirrors s = 1 to s = 0, where
+  zeta(0) = -1/2, and mirrors s = 2 to s = -1, where zeta(-1) = -1/12 (computed; `zeta_neg_one_val`, Lean). So the mirror of the
+  pole itself is -1/2, the balance point once more, and -1/12 is the mirror image of zeta(2), the quantum of the 8 pi^2 identity. Care
+  points: the uniform bound at the one box is what the rotation certifies only once the box's ratio sits strictly on the electric side
+  for every outside (O1); the rotation's fixed point says where the hand-over is, not that a given box reaches it.
