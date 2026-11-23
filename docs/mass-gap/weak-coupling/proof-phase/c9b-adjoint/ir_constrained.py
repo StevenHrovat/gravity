@@ -299,6 +299,28 @@ class Model:
             del T
         return S, G
 
+    def precond_mass(self, U, nprobe, rng):
+        """Kinetic mass per fine link M_l = 1 + kappa_c h_l, h_l = (1/3) E_r |Im(J_l^T r U_l^dagger)|^2: the Gauss-Newton diagonal of the
+        penalty Hessian (sum over constrained coarse links of the squared sensitivity of V_y to link l), by nprobe random probes r on
+        the coarse links. Computed once at the start; constant during the run, so HMC stays exact (REDESIGN.md)."""
+        xp = self.xp
+        acc = xp.zeros((4, 1) + U.shape[2:])
+        for _ in range(nprobe):
+            T = Tape(xp)
+            L = [T.leaf(U[mu]) for mu in range(4)]
+            V = coarse_links_strided(T, L, self.n, self.w) if self.n > 0 else L
+            r = [xp.asarray(rng.normal(size=V[mu].val.shape)) * self.cmask[mu] for mu in range(4)]
+            T.backward([(V[mu], r[mu]) for mu in range(4)])
+            G = xp.stack([L[mu].grad if L[mu].grad is not None else xp.zeros_like(U[mu]) for mu in range(4)])
+            rest = tuple(range(2, G.ndim))
+            f = qmul(G.transpose(1, 0, *rest), qdag(U.transpose(1, 0, *rest), xp), xp)[1:].transpose(1, 0, *rest)
+            acc = acc + (f * f).sum(axis=1, keepdims=True) / 3
+        h = acc / nprobe
+        M = 1.0 + self.kappa * h
+        if self.dyn is not None:
+            M = xp.where(self.dyn > 0, M, 1.0)
+        return M
+
     def coarse(self, U):
         T = Tape(self.xp)
         L = [T.leaf(U[mu]) for mu in range(4)]
@@ -468,6 +490,18 @@ def selftest(a):
     dG = float(np.abs(Gd - Gl).max() / np.abs(Gd).max())
     print(f"lean vs default (8^4, n = 2): block variables {dv:.1e}, action {dS:.1e}, gradient {dG:.1e} (relative)")
     ok &= dv < 1e-12 and dS < 1e-12 and dG < 1e-10
+    # 3c. preconditioning mass (n = 1, kappa = 5): >= 1 on dynamic links, and leapfrog with it is reversible
+    mp = Model(4, 1, 2.0, coupling("fit280"), kappa=5.0, lean=True)
+    U = random_su2((4, 1) + (4,) * 4, rng).transpose(1, 0, 2, 3, 4, 5, 6)
+    mp.target = random_su2((4, 1) + (2,) * 4, rng).transpose(1, 0, 2, 3, 4, 5, 6)
+    mp.cmask, mp.dyn = masks(mp, 1, (0, 0, 0, 0), 1, 9)
+    mp.mass = mp.precond_mass(U, 4, rng)
+    P = rng.normal(size=(4, 3, 1) + (4,) * 4) * np.sqrt(mp.mass)
+    U1, P1, _ = leapfrog(mp, U, P, 0.02, 10)
+    U2, _, _ = leapfrog(mp, U1, -P1, 0.02, 10)
+    rv = float(np.abs(U2 - U).max())
+    print(f"preconditioning mass: min {float(mp.mass.min()):.3f}, max {float(mp.mass.max()):.3f}; leapfrog with mass reversible: {rv:.1e}")
+    ok &= float(mp.mass.min()) >= 1.0 and np.isfinite(mp.mass).all() and rv < 1e-9
     # 4. a few trajectories run end to end (tiny lattice; smoke only, no result-bearing numbers)
     m = Model(4, 1, 2.0, coupling("wilson", 0.5), kappa=20.0)
     U = cold(4, 1)
@@ -670,6 +704,82 @@ def timing(a):
     return 0
 
 
+def tune(a):
+    """THE TUNING PRE-STEP (PREREG-PILOT2.md): per kappa_c, the preconditioning mass, the step-size rule, then n_meas trajectories to
+    measure acceptance, seconds per trajectory and tau_int (V_x components, the action S). No production, no physics numbers."""
+    if not a.go:
+        print("tune is the pre-registered tuning pre-step; it runs only with --go (PREREG-PILOT2.md).")
+        return 2
+    t_start = time.time()
+    xp = np
+    cpl = coupling(a.action, a.beta)
+    B = a.B
+    xsite = tuple(int(c) for c in a.x.split(",")[:4])
+    xmu = int(a.x.split(",")[4])
+    # background: c3b's heat bath + overrelaxation (CPU updater), one configuration
+    spec = importlib.util.spec_from_file_location("goodblock", os.path.join(HERE, "..", "c3b-refit", "goodblock.py"))
+    gb = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gb)
+    upd = gb.BL.make_updater("su2", gb.BL.PeriodicBox(a.N), a.beta, 1, a.bgseed, False, False)
+    for _ in range(a.npre):
+        upd.sweep(3)
+    U0 = np.stack([np.asarray(u) for u in gb.chain_q("su2", np, upd, 0)])
+    del upd
+    U0 = np.repeat(U0, B, axis=2)
+    t_bg = time.time() - t_start
+    rng = np.random.default_rng(a.seed)
+    out = {"setting": vars(a).copy(), "t_background_s": t_bg, "per_kappa": []}
+    out["setting"].pop("func", None)
+    import ir_condlaw as cl
+    for kappa in [float(k) for k in a.kappas.split(",")]:
+        t_k = time.time()
+        m = Model(a.N, a.n, a.w, cpl, kappa=kappa, lean=True)
+        m.cmask, m.dyn = masks(m, B, xsite, xmu, a.R)
+        U = U0.copy()
+        m.target = m.coarse(U).copy()
+        t0 = time.time()
+        m.mass = m.precond_mass(U, a.nprobe, rng) if a.precond else None
+        t_mass = time.time() - t0
+        eps, nleap = a.eps, a.nleap
+        tuning = []
+        for _ in range(a.tune_max):
+            accs, ts = [], []
+            for _ in range(a.tune_traj):
+                t1 = time.time()
+                U, acc, _ = hmc_step(m, U, eps, nleap, rng)
+                ts.append(time.time() - t1)
+                accs.append(float(np.mean(acc)))
+            tuning.append({"eps": eps, "nleap": nleap, "acc": float(np.mean(accs)), "s_traj": float(np.median(ts))})
+            if np.mean(accs) >= 0.6:
+                break
+            eps, nleap = eps / 2, nleap * 2
+        vx, S, accm, ts = [], [], [], []
+        for _ in range(a.n_meas):
+            t1 = time.time()
+            U, acc, _ = hmc_step(m, U, eps, nleap, rng)
+            ts.append(time.time() - t1)
+            accm.append(float(np.mean(acc)))
+            V = m.coarse(U)
+            vx.append(V[(xmu, slice(None), slice(None)) + xsite].T.copy())
+            S.append(float(m.evaluate(U, need_grad=False)[0][0]))
+        vx = np.array(vx)
+        tau_vx = float(np.nanmax([cl.tauint(vx[:, c, i]) for c in range(vx.shape[1]) for i in range(4)]))
+        tau_S = cl.tauint(np.array(S))
+        mh = m.mass if m.mass is not None else np.ones(1)
+        row = {"kappa": kappa, "t_mass_s": t_mass, "mass_min": float(np.min(mh)), "mass_median": float(np.median(mh)),
+               "mass_max": float(np.max(mh)), "tuning": tuning, "eps": eps, "nleap": nleap, "acc_meas": float(np.mean(accm)),
+               "s_traj": float(np.median(ts)), "tau_int_vx": tau_vx, "tau_int_S": tau_S, "n_meas": a.n_meas,
+               "wall_kappa_s": time.time() - t_k}
+        out["per_kappa"].append(row)
+        print(json.dumps(row), flush=True)
+        if time.time() - t_start > a.max_wall:
+            out["stopped"] = "max_wall after kappa %g" % kappa
+            break
+    out["wall_s"] = time.time() - t_start
+    json.dump(out, open(a.out, "w"), indent=1)
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     sp = ap.add_subparsers(dest="cmd", required=True)
@@ -725,8 +835,31 @@ def main():
     tm.add_argument("--max-wall", type=float, default=1680.0)
     tm.add_argument("--progress", default="timing_progress.jsonl")
     tm.add_argument("--out", default="timing_job.npz")
+    tu = sp.add_parser("tune")
+    tu.add_argument("--go", action="store_true")
+    tu.add_argument("--action", choices=["wilson", "fit280"], default="wilson")
+    tu.add_argument("--beta", type=float, default=0.5)
+    tu.add_argument("--N", type=int, default=8)
+    tu.add_argument("--n", type=int, default=1)
+    tu.add_argument("--w", type=float, default=2.0)
+    tu.add_argument("--kappas", default="10,20,40")
+    tu.add_argument("--precond", action="store_true")
+    tu.add_argument("--nprobe", type=int, default=16)
+    tu.add_argument("--R", type=int, default=2)
+    tu.add_argument("--B", type=int, default=1)
+    tu.add_argument("--x", default="0,0,0,0,1")
+    tu.add_argument("--npre", type=int, default=100)
+    tu.add_argument("--eps", type=float, default=0.05)
+    tu.add_argument("--nleap", type=int, default=10)
+    tu.add_argument("--tune-traj", type=int, default=10)
+    tu.add_argument("--tune-max", type=int, default=6)
+    tu.add_argument("--n-meas", type=int, default=40)
+    tu.add_argument("--seed", type=int, default=41)
+    tu.add_argument("--bgseed", type=int, default=4000)
+    tu.add_argument("--max-wall", type=float, default=1500.0)
+    tu.add_argument("--out", default="tune.json")
     a = ap.parse_args()
-    return {"selftest": selftest, "run": run, "timing": timing}[a.cmd](a)
+    return {"selftest": selftest, "run": run, "timing": timing, "tune": tune}[a.cmd](a)
 
 
 if __name__ == "__main__":

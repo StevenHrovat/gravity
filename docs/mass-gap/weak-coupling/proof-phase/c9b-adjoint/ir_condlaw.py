@@ -331,6 +331,51 @@ def calib1(a):
     return 0
 
 
+def h1_metric(theta):
+    """M(theta): the H^-1 Gram matrix (degree split of kr_upper: degree 1 / 3, degree 2 / 8, the rest / 15) of the first-order density
+    changes g_i = p (phi_i - E_p phi_i), so that ||delta p||^2_{H^-1, split} = Delta theta . M Delta theta to first order (REDESIGN.md)."""
+    u, w = grid()
+    P = phi(u)
+    p, _ = density(theta, u, w)
+    G = p[:, None] * (P - (w * p) @ P)  # (grid, 13): the 13 first-order changes
+    B1, B2 = harmonic_basis()
+    c1 = (w[:, None] * G).T @ B1  # (13, 4)
+    c2 = (w[:, None] * G).T @ B2  # (13, 9)
+    tot = (w[:, None] * G).T @ G
+    e1, e2 = c1 @ c1.T, c2 @ c2.T
+    return e1 / 3 + e2 / 8 + (tot - e1 - e2) / 15
+
+
+def krd_cross(repA, repB):
+    """KR_D: the cross-replica U-statistic with the H^-1 metric (no-loss W1 estimator, REDESIGN.md): Q_U = (1/(K(K-1)))
+    sum_{r != s} Delta_r . M_mid Delta_s, M_mid = (M(theta_A) + M(theta_B))/2 at the pooled fits; KR_D = sqrt(max(0, Q_U)); jackknife
+    over the K items; also the corrected floor with M in the metric slot (needs Gamma: supplied by the caller)."""
+    K = len(repA)
+    tA, tB = fit(np.concatenate(repA)), fit(np.concatenate(repB))
+    Mm = (h1_metric(tA) + h1_metric(tB)) / 2
+    Dl = np.array([fit(repB[r]) - fit(repA[r]) for r in range(K)])
+    G = Dl @ Mm @ Dl.T
+
+    def u_stat(idx):
+        sub = G[np.ix_(idx, idx)]
+        k = len(idx)
+        return (sub.sum() - np.trace(sub)) / (k * (k - 1))
+    q = u_stat(list(range(K)))
+    jk = np.array([u_stat([j for j in range(K) if j != i]) for i in range(K)])
+    sd = float(np.sqrt((K - 1) / K * ((jk - jk.mean()) ** 2).sum()))
+    return {"q_U": float(q), "sd_q": sd, "KR_D": math.sqrt(max(0.0, q)), "K_q": K, "theta_A": tA, "theta_B": tB, "M_mid": Mm}
+
+
+def q_floor(tA, tB, NA, NB, GA, GB, K, Mm):
+    """Floor of the U-statistic with metric Mm: Var = 4 d.Mm Sigma Mm d + (2K/(K-1)) tr((Mm Sigma)^2), Sigma as in d2_floor4."""
+    IA, IB = fisher(tA), fisher(tB)
+    iA, iB = np.linalg.inv(IA), np.linalg.inv(IB)
+    Sig = iA @ GA @ iA / NA + iB @ GB @ iB / NB
+    d = tB - tA
+    X = Mm @ Sig
+    return float(math.sqrt(4 * d @ Mm @ Sig @ Mm @ d + (2 * K / (K - 1)) * np.trace(X @ X)))
+
+
 def null_quantile(theta, n, reps, q, rng):
     """q-quantile of the TV between two independent fitted samples of size n of one law (the simulated null, amendment 3)."""
     v = [tv(fit(sample_exact(theta, n, rng)), fit(sample_exact(theta, n, rng))) for _ in range(reps)]

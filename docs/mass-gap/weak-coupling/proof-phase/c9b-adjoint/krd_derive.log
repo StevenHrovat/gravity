@@ -1,0 +1,4 @@
+{"move": "flip", "KR_upper_exact": 0.095898, "KR_D_linear": 0.095833, "rel_diff": -0.000673, "TV": 0.070315, "D_half": 0.083431}
+{"move": "rot90 (pi/4)", "KR_upper_exact": 0.037525, "KR_D_linear": 0.03752, "rel_diff": -0.000134, "TV": 0.027355, "D_half": 0.032317}
+{"move": "W1 move 0.5 rad", "KR_upper_exact": 0.024311, "KR_D_linear": 0.02431, "rel_diff": -5.7e-05, "TV": 0.017712, "D_half": 0.020918}
+{"move": "W1 move 0.2 rad", "KR_upper_exact": 0.009823, "KR_D_linear": 0.009823, "rel_diff": -9e-06, "TV": 0.007153, "D_half": 0.008447}
