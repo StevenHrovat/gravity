@@ -1781,3 +1781,23 @@ thread.
   pressing is designed around. To turn the reading into a resolution one would have to show either that the minting decision is
   itself local (collapse, ruled out for decision and as strong as NP = RP for counting) or that it is not, unconditionally
   (separation, past the three barriers).
+  The owner adds (same day): "For the ones G0 can not mint, we can definitely say, that they do not run as described, so that
+  follows. And since the minting by G0 is the certification of existence, a valid input = an input that exists." Recorded as the
+  owner's definition: valid input = existing (mintable) input. Under it the class theorem covers every valid input, so "P = NP for
+  existing inputs" holds as stated. What it leaves open in complexity terms is the question that comes before running: whether a
+  given well-formed instance exists (can be minted) at all, which for SAT is satisfiability itself. In DMP terms that is the question
+  of G0, not of the running system.
+- **Describable => exists => positive (the owner, same day, on the valid-input question):** "That is the positivity corollary, which
+  is, traditionally, the last part that is needed before a theory clicks. A well-formed instance has to be describable, reusing the
+  .gitignore analogy, the smallest possible well formed statement is, that it contains a non-existence, which contains exactly
+  nothing. Anything that is describable has to exist and anything that exists is positive." Reading (coordinator): two exact anchors
+  and one distinction. (1) **Exists => positive is exact in counting terms:** an instance has a solution iff its partition function
+  (the number, or weighted number, of solutions) is positive: SAT iff #SAT > 0. Existence is positivity of Z, the same Z whose
+  positivity carries the Yang-Mills measure. (2) **Describable => exists holds for consistent descriptions:** Goedel's completeness
+  theorem says a first-order theory has a model iff it is consistent (no contradiction can be derived). So "anything describable
+  (without contradiction) exists" is a theorem, and the empty set, the smallest thing that exists, is where set theory starts.
+  (3) **The distinction:** a contradictory formula such as "x and not x" is well-formed and describable as a string, but has no model;
+  the string exists, its referent does not. Deciding which describable instances are consistent, i.e. have a positive Z, is the
+  question at G0 from the previous entry: for propositional formulas it is SAT, for first-order theories it is undecidable. So the
+  positivity corollary is exactly right as the last piece, and the work of P vs NP sits in establishing it per instance, not in
+  using it.
