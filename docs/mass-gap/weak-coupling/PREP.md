@@ -1443,3 +1443,15 @@ thread.
   Caveat: these results are about counting and sampling, and they assume P != NP rather than prove it. What the proof gains is a
   second reading of its central quantity: getting the column below 1 at some scale is both the physical condition (the gap
   propagates) and the computational one (the system is polynomially certifiable from that scale on).
+- **P and NP across and within a DB (the owner, same day):** "P unequal NP across a DB, but within it P = NP." Reading (coordinator): this
+  is the shape the known results have, stated in DMP terms. Within one phase (one side of a domain boundary, where correlations decay
+  and the equilibrium is unique) finding, counting and sampling cost no more than checking: local dynamics mix in polynomial time and
+  the partition function can be approximated in polynomial time (Dobrushin; Weitz 2006). Across a boundary they do not: below the
+  transition, local dynamics need a time exponential in the boundary's area to move from one phase to the other (the boundary's
+  surface tension is the barrier), and beyond the uniqueness point approximate counting is NP-hard (Sly 2010). Random constraint
+  problems show the same split: they become hard where the solution space shatters into many clusters separated by barriers
+  (Mezard-Parisi-Zecchina 2002; Achlioptas and Coja-Oghlan 2008). So the hardness lives at the boundaries, not inside the regions.
+  In the proof the boundary's cost is the twist free energy: the strict flip bound Z_tw < Z (Flip/Strict) says crossing always costs
+  something, and the area law says how much. Caveat: P and NP are classes over all instances, so "P = NP within" is a statement about
+  instances that stay inside one phase, not about the classes; the results above are average-case or assume P != NP. The reading gives
+  the proof no new step, but it names why local certification works exactly where the gap holds.
