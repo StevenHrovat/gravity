@@ -1,0 +1,11 @@
+# Trusted base for tools/independent-check.sh (see docs/unified/INDEPENDENT-CHECK.md). Written by 'base-record'.
+result=PASS
+date=2026-11-23
+lean_toolchain=leanprover/lean4:v4.34.0
+mathlib_rev=5ed2965256430c3649e86755f9576b54eca72435
+olean_modules=10744
+olean_set_sha256=dcffe1d1ee85969f6fc3cd1ef4e016872ee4d686a0c27f7c0849d4146e04f919
+export_sha256=39094fc0de5c2b1e4fe60aac15c5f9bde0d93c7ec1617f474a7c532a2433b53c   # lean4export of project + Mathlib closure at check time
+checker_leanchecker=Lean toolchain's own leanchecker (leanprover/lean4:v4.34.0), --fresh over the whole environment
+checker_nanoda_lib=0da9f98feadd (2026-11-07)
+checker_lean4export=v4.34.0
