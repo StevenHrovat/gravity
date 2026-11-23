@@ -3185,3 +3185,27 @@ thread.
   From two towards three: SU(2) (Z_2, the half-turn, (Z/2)^x trivial), then SU(3) (Z_3, the quarter-turn, (Z/3)^x = {1, 2} the
   conjugation), then every prime. The owner's "Go full steam!" started the next round: the strict twist bound and the sector
   structure for every SU(N) in Lean, with the primes and the Dirichlet bridge (see the session started for it).
+- **P vs NP: traverse the direct route from G0 to the assertion, with the remnants of its associated assertions, and read the answer
+  from whether it certifies (the owner, same day):** "This also goes nicely into PvNP. To establish the truth of any proof that is
+  defined in a provable way through running in DMP, the direct route from G0 to it's current assertion of existence, along with the
+  remnants of any associated assertions, has to be traversed, at which point the answer can be read from the fact if it certifies,
+  thus proving it's existence or non-existence." Reading (coordinator): the statement is exact as a statement about *deciding*, and it
+  places P vs NP precisely in the *length* of the route. (1) *Traversal decides.* A proof system is by definition a checker that
+  traverses a proof from its axioms to its conclusion and accepts or rejects (Cook-Reckhow) [classical]. Every unsatisfiable formula
+  has a refutation, so non-existence always has a route (`complete`, `refutable_iff`, `Proof/Complete.lean`, Lean); existence has a
+  route too (a satisfying assignment). So in the finite (propositional) world the answer can always be read off by traversal: it
+  certifies or it does not. (2) *The route and its remnants.* The direct route is the derivation; the remnants of associated
+  assertions are the intermediate lines it must carry and reuse (a DAG-like proof keeps them; a tree-like proof re-derives them). The
+  largest remnant carried is the width, and size and width are tied: size >= exp((w - w_0)^2 / n) for resolution
+  (`size_width_exp`, `Proof/Dag.lean`, Lean, Ben-Sasson-Wigderson). In the unified ledger the traversal length is e^{sum of the
+  costs} (`np_instance`, Lean, the size reading). (3) *Where P vs NP sits.* The reading settles that the answer is readable once the
+  route is traversed; P vs NP and NP vs coNP ask how long the route must be. Inside a certified class (a local certificate, the
+  owner's "P = NP within a DB") the route is short (Lean, the class theorem). Across the DB the route must cross, and whether every
+  crossing route can be kept polynomial is open: N1 ("is the remnant always of polynomial size?") and N4 of
+  `OPEN-QUESTIONS-DMP.md`. The encoder rounds located the length's source: a one-boundary step is lossless (a line names a crossing
+  for free), and the cost must come from a step that combines two lines, the rounding (`refutation_needs_pair`, `CPPairs.lean`,
+  Lean); the remnants of associated assertions are exactly what such combining steps produce. Care points: (a) for systems that do
+  not halt, traversal need not end (Turing, Goedel) [classical]; the reading presupposes a finite route, which propositional questions
+  always have (at worst exponential, the truth table). (b) "The answer can be read off" is decidability, which is not in question for
+  finite inputs; the open content is efficiency, and any argument about it must pass the relativization, natural-proofs and
+  algebrization barriers.
