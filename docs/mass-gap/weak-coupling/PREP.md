@@ -2554,3 +2554,15 @@ thread.
   pure Yang-Mills with one gauge group (no U(1), no matter, no symmetry breaking). The owner's mapping (one coupling = one G0; the
   forward arrow = the running from the unification scale) is a reading; making the "Grand" reading of GUID valid is a programme beyond
   Yang-Mills, GRH and P vs NP, to be stated as future work in the paper.
+- **Every SU(N) as a valid unified theory, indexed by the integer values of zeta; existence descending through GRH from 2 and 3 (the
+  owner, same day):** "The SU(N) should take all values of the zeta function that produce integer values as valid GU theories, since
+  they are capable of describing existence in DMP. Literally existence descending through the GRH from 2 and 3." Reading
+  (coordinator): two exact facts and one care point. (1) On the real line s > 1 zeta decreases continuously from +infinity to 1, so it
+  takes every integer N >= 2 exactly once, at a unique point s_N (computed: s_2 = 1.7286, s_3 = 1.4178, s_4 = 1.294, s_5 = 1.2269,
+  s_10 = 1.1062). So zeta does index every SU(N), N >= 2, one to one; this follows from continuity and monotonicity alone. At integer
+  arguments zeta is never an integer except its trivial zeros (zeta(-2k) = 0), and zeta(n) for n >= 2 lies strictly between 1 and 2.
+  (2) The project's gauge-group package already covers every SU(N) (`General/SUN*.lean`, phase 2), so "every SU(N) describes
+  existence" holds for the mathematical framework; "descending from 2 and 3" matches the earlier exact fact that any two primes, e.g. 2
+  and 3, generate a dense subgroup of the scaling space. (3) Care point: as physical grand unified theories, not every SU(N) is viable;
+  a GUT must contain SU(3) x SU(2) x U(1), cancel gauge anomalies with the observed matter, and survive proton-decay limits, which
+  singles out a few groups (SU(5) and its extensions, SO(10), E6). Recorded as the owner's reading.
