@@ -2358,3 +2358,12 @@ thread.
   into a reductio to construct: derive a contradiction from an off-line pair using only the arithmetic structure. That derivation is
   the open step in its sharpest form, and it is what the 17-million-line Lean proof achieved by another route (a one-sided prime bound
   plus Landau).
+- **The best approach: the functional equation, proven to be locally evaluable (the owner, same day):** "Since the link to G0 is
+  literally the functional equation proven to be locally evaluable, since that gives the definition of 'running', from which the
+  causality of existence is derived, that seems to be the best approach." Reading (coordinator): mathematics has exactly this: Tate's
+  thesis writes the completed L-function as a product of local zeta integrals, one per place, and the global functional equation as
+  adelic Poisson summation; the real place's Gaussian gives the Gamma factor (Mathlib proves the functional equation the same way,
+  through theta and Poisson). So the functional equation is local, place by place. Care point: it gives the mirror, not the sign
+  (duality alone allows off-line pairs, `krein_off_line`), so the reductio needs one positivity on top; whether Tate's local freedom
+  (the choice of test function at each place) can assemble that positivity place by place, against the known indefiniteness of the
+  prime terms in the standard basis, is the new round (`docs/rh-guide/grh/TATE.md`).
