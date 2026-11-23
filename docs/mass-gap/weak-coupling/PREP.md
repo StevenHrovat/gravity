@@ -2986,3 +2986,19 @@ thread.
   is the open part, and in encoder terms it is again the lift from 0.414 to 0.743 (O1). (b) What the composite HTF must supply is
   what the hopping term kappa supplied in the gauge-Higgs model: a small parameter, or a positivity that replaces it. That is the
   question for the GRH lens (one global positive object). Passed to the unified-chain round as an addendum.
+  The owner corrects (same day): "*Is wrongly presumed, since they are in fact one, but seen through the rotation that the HTF
+  makes." Reading (coordinator): exact, and checked. The map between the two behaviours is a rotation. The electric profile
+  elec(c) = (1 - c)/(1 + c) is the Moebius map of the matrix (1/sqrt 2) [[-1, 1], [1, 1]], which is unitary: a rotation of the
+  Riemann sphere (PSU(2) = SO(3)), by exactly 180 degrees (it is an involution). Its axis passes through the two fixed points
+  sqrt 2 - 1 and -(1 + sqrt 2), which are antipodal on the sphere; the first is the encoder's self-dual point, with cost
+  log(1 + sqrt 2) = 0.881, the hand-over. It carries the unit disk (the Schur side, |c| <= 1, contractive) onto the half-plane
+  Re > 0 (the Caratheodory side, positive): the two behaviours of lead 2 are one hemisphere seen before and after the half-turn. And
+  on the pair (Z, Z_tw) it is the Z_2 Fourier transform (a Hadamard matrix), read as a ratio: elec(Z_tw / Z) is the odd-over-even
+  part, which is how the electric flux is defined from the twist (`electric_eq_magnetic`, Lean). All checked numerically
+  (`docs/unified/rotation_check.py`, `rotation_check.log`: unitary, involution, rotation angle 180.000000 degrees about the fixed
+  axis, chordal distances preserved, disk onto Re > 0, Hadamard ratio equal to elec to 12 digits) [classical facts, numerical
+  check]. So "one act seen through the rotation the HTF makes" has this exact form: the electric-magnetic duality is a half-turn in
+  SU(2) (up to phase), the same group as the gauge rotation, whose axis sits at the hand-over point. Care points: (a) this is the
+  rotation acting on the encoder number c (the ratio of the two sector weights), not yet a statement that the HTF field performs it
+  on the lattice; that identification is the reading. (b) The half-turn exchanges the two pictures; it does not by itself move c from
+  the axis (0.414) to the required 0.743. What lifts c is still O1. Passed to the unified-chain round as an addendum.
