@@ -2091,3 +2091,15 @@ thread.
   K' e^{-cost} < 1). That is exactly where the dichotomy failed: at the SO(3) cut a flip costs nothing, so the cost half breaks there,
   and at beta = 2.3 the near-cut set percolates. So finiteness gives the entropy bound for free; the open part is a lower bound on
   the cost per block, which holds at weak coupling (beta = 3.5 data) and fails on the confining side, where disorder must take over.
+- **The cost lower bound comes from the inevitability of the balanced state (the owner, same day):** "The lower bound, as always,
+  comes from the inevitability of the balanced state as a condition for existence." Reading (coordinator): in the proof the balance
+  gives the sign, and the size is still the open part. (1) **Where the balance sits:** the SO(3) cut, tr U_p = 0, is exactly the
+  balanced point of one plaquette: flipping its centre layer costs nothing, both sides weigh the same. Locally, balance is where the
+  cost vanishes. (2) **What balance guarantees globally:** the strict flip bound Z_tw < Z for beta != 0 (`Flip/Strict.lean`): the
+  system as a whole is never exactly balanced between a sector and its flip; existence = non-existence + 1 with a strict sign. That is
+  the lower bound "as a condition for existence", and it is proved. (3) **What it does not give:** a rate. Peierls needs the cost per
+  block to beat log K' by a fixed amount, and the strict inequality says only "greater than zero". The IR checks of the same day sharpen
+  where the size is needed: condition A's conditional mass measured on the W2 snapshots is about 4 in block units (above the
+  unconstrained glueball scale, below the 2 pi assumed), so the analytically controlled tail starts only at cell distance 8 and the
+  inside part, where a quantitative worst-case bound is needed, covers d <= 7. The direct small-box measurement can only refute there,
+  and the fit predicts it will not; the IR question at L1 needs that worst-case argument.
