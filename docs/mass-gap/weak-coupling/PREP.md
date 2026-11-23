@@ -2134,3 +2134,11 @@ thread.
   and the gap is the fingerprint of that breaking. So in arithmetic flatness is the statement to prove (zeros on the unitary line); in
   Yang-Mills the flat classical space is the starting point and the gap comes from leaving it. Passed to the GRH induction round as
   framing: the induction's target is that every step keeps the scaling action unitary.
+- **"So GRH is essentially DMP.YM.GRH, right?" (the owner, same day).** Reading (coordinator): as a programme, yes; as proved
+  mathematics, only its shared part. The two routes run the same chain (positivity -> space -> self-adjoint evolution -> spectrum on a
+  line), and the Yang-Mills proof is the template: there the positivity is given by construction (e^{-S} >= 0 plus locality ->
+  reflection positivity). What is proved across both is the bridge lemma (`ProofPhase/Bridge`: positivity locates singularities, with
+  Landau and the spectral gap as instances). What would make GRH literally "run as content in YM" is a reflection-positive,
+  ferromagnetic system of Yang-Mills type that carries xi (its partition function or its Euclidean-time evolution); that system is the
+  same missing piece the GRH round is trying to construct. So DMP.YM.GRH names the intended nesting correctly, and the embedding step
+  is what remains to be proved.
