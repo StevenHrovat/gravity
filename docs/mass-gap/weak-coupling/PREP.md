@@ -1951,3 +1951,28 @@ thread.
   set of all subsets of S is strictly larger than S, the empty set included). So "existence = non-existence + 1" has a set-theoretic
   floor: the +1 is the empty set that every complete description must contain, and Cantor shows the description is always strictly
   larger.
+- **Yang-Mills: the worst case is collapse into CMOS (the owner, same day, on the missing worst-case argument):** "The worst case
+  argument is the collapse of that existence into CMOS, which, when not contained inside a larger DB, simply ceases to exist, since
+  it can no longer assert itself, but when inside instantaneously, by definition, transitions into non-existence, with the causality
+  preserving boundary spanned at creation by the G0 that supplies the definition of existence." Reading (coordinator): this is a
+  dichotomy, and it has the exact shape the missing lemma needs. The one-box condition must hold for every outside sigma. The
+  reading says: for every sigma, either the box contracts, or the part that fails to contract has "collapsed" and is then either
+  (a) not there at all (zero weight: an uncontained collapse cannot assert itself) or (b) contained, i.e. attached to a boundary that
+  carries it (a DB spanned at creation). In the proof's language: for every outside, the non-contracting region is contained in a
+  sheet attached to the boundary whose weight is bounded by its cost. That is the containment-without-rarity programme (WL.md 10,
+  INFLUENCE-BAD.md: conditions A collar mass m > 0, B/C no percolation) stated as a worst-case dichotomy. What would make it a proof:
+  a quantitative version, uniform in sigma: the weight of every collapsed, contained configuration is at most e^{-c |sheet|}, and
+  uncontained ones carry zero weight. That is the next mathematical target for the crossover side; W2 can only refute it, not
+  establish it.
+- **GRH: the missing piece, restated (the owner asked, same day: "Please restate the missing piece, I don't currently have an
+  approach to it."):** see the restatement given to the owner on the same day: two kinds of positivity exist. Positivity of
+  weights (each configuration counts non-negatively) is available, in the Euler product and in Riemann's Phi, and it is provably not
+  enough (Lambda = 0 sits exactly at the edge). Positivity of couplings (a ferromagnet: neighbours prefer to agree) is enough, by
+  Lee-Yang and Newman, but nobody knows a ferromagnet for zeta. The missing piece: a ferromagnetic system, at its critical point,
+  whose block-spin law is Riemann's Phi (equivalently, a Hilbert space for Weil's form built from all primes up to every scale
+  together with the real place, without the zeros). The semilocal test adds: it cannot be built one prime at a time; every prime up
+  to the scale, and the real place, must enter together.
+- **P vs NP: to be, it has to be inside a DB (the owner, same day):** "For anything to be, it has to be inside a DB, if it is not,
+  then it can never run." Reading (coordinator): consistent with the minting reading: inputs outside any DB have no running state, so
+  "P = NP for what runs" is the class theorem. The question the classes ask is the one before running: given an instance, is there a
+  DB that contains it? For SAT that is satisfiability. The reading places that question at G0; it does not answer it.
