@@ -3015,3 +3015,24 @@ thread.
   uniform bound, c >= c0 > (mu_4 - 1)/(mu_4 + 1) = 0.743 at the hand-over box for every outside (`ymOneBox_iff_refl`, Lean), and
   "c in (0, 1)" says nothing about where in (0, 1) c lies. That is the one piece DMP would have to show beyond positivity and the
   strict sign.
+- **The quantitative bound also comes through construction: it is needed for a true act, so it is present in any running DMP system
+  (the owner, same day):** "The quantitative comes through construction as well, right? Since it is needed for a true act and thus is
+  present in any running DMP system." Answer given (coordinator): yes as a necessity, and that is exactly why it cannot be assumed
+  for Yang-Mills; it marks the step. (1) *Necessity holds.* A running system has the certificate at some scale. For spin systems this
+  is a theorem: exponential decay of correlations is equivalent to a finite-volume condition checked at one large enough box
+  (Dobrushin-Shlosman complete analyticity, Martinelli-Olivieri) [classical]. For Yang-Mills: if the theory confines with a gap, the
+  twist becomes nearly free in large boxes ('t Hooft), so c(L) = Z_tw / Z tends to 1 as L grows and passes 0.743 at some finite box
+  [classical, heuristic in this direction]; conversely a bound on the twist free energy implies confinement (Tomboulis-Yaffe 1985,
+  rigorous) [classical]. Measured: at beta = 2.3, L = 6, c = 0.863 centrally, above 0.743 (F_e(6) = 2.6 +- 1.8; small tori,
+  `ONEBOX-CHECK.md` 9; numerical, not certified). So the quantitative bound is not an extra ingredient: in the owner's words, any
+  running system already contains it, and the hand-over point exists in it. (2) *Why this does not close O1.* The implication runs
+  from "it runs" to "the certificate exists". Using it for Yang-Mills needs "the Yang-Mills system runs" first, in the sense of the
+  infinite, uniform statement, and that is the mass gap itself: the argument would be circular. What is proved is weaker: on every
+  finite torus the lattice theory runs (positive transfer matrix, a Doeblin rate, Lean), but with a rate that may shrink with the
+  volume. The construction direction is pressing: build scale by scale until one box passes the check. The ledger proves that the
+  infinite chain follows once a box passes; that pressing reaches a passing box for Yang-Mills is O1. (3) *What DMP would have to
+  supply.* A reason, from the construction of the act itself, why the encoder number of a box of fixed physical size is bounded below
+  uniformly in the outside: a quantitative "true act" axiom, stated so that it applies to the Wilson measure. If DMP's G0 is taken as
+  given for Yang-Mills, the bound follows, but then it is a reading (an axiom adopted), not a proof from the lattice theory. Care
+  point: the measured 0.863 is consistent with the bound and with the owner's statement; by the provability table it cannot certify a
+  for-all over outsides.
