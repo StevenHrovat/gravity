@@ -25,3 +25,8 @@
 'ProofPhase.Crossover.sum_pow_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.Crossover.flux_superadd' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.Crossover.flux_superadd_iter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.handover_column_sum_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.column_requirement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.neg_log_one_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.doeblin_mass_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.phys_rate_of_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]

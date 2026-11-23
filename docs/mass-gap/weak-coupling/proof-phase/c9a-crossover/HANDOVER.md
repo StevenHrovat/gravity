@@ -166,3 +166,15 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * beta 2.3: no flux upper bound (Polyakov signal gone after one step), so no test; c(1) >= 4.2, c(2) >= 1.2 (95 %).
 * Cubic geometry L_s = L untested; proposal (not run): small-torus CPU simulation with thermodynamic integration and snake.
 ## Round 10b: ONEBOX-CHECK section 7 POST-HOC (universal floor): beta 3.5 refuted range grows to L <= 2 (95/99 %) and L = 3 (95 %); beta 2.3 still untested; 16^3 geometry, no bearing on the one-box statement. Section 6 proposal states the floor (reading: O(1) on F_e and c, owner's call). Section 4 label corrected (0.196 was the no-covariance delta method).
+
+## Round 11 (2026-11-23, uncommitted; NEIGHBOURS edge, small-torus run in the background)
+
+* `NEIGHBOURS.md`; `formal/ProofPhase/Crossover/Neighbours.lean` (5 theorems; `axioms-dy.log` now 32 Crossover theorems, standard
+  axioms; `~/formal-dy` deleted).
+* Flux carrier gives one odd channel only in a chain; in a grid flux has 2d - 1 exits. Lean: k (sqrt 2 - 1) < 1 iff k <= 2, so
+  the hand-over floor fails the 2d column sum for d >= 2; requirement F > log(2d) (2.08 in d = 4). First open step.
+* Neutral part by decimation: with the measured conditional mass (typical fields) the summed boundary influence is below 1 from
+  7 cells on (box side about 15 L1 cells); not a certificate (Lemma C needs the supremum).
+* Physical units: uniform eta0 at fixed physical box size l_* = L_* a gives m_phys >= -log eta0 / l_* (Lean); Doeblin's
+  physical rate goes to 0 as a -> 0 (Lean), so the tick must come from the blocked theory at g_*.
+* Small-torus run (ONEBOX-CHECK 8): pre-registered, timed (projection 4.0 h, band 2.7-5.7 h), running as one background process.
