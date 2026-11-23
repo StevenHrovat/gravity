@@ -1,0 +1,1 @@
+{"beta": 3.5, "ell": 6, "kappa": 16.0, "yclass": "A3", "T": 600, "sweeps_done": 180, "capped": true, "batch": 3, "pairs": 480, "seconds_pool": 539.8107070922852, "seconds_main": 1847.054482460022, "seconds_total": 2465.1703984737396, "seconds_full_T_extrapolated": 6774.964190880457, "sec_per_sweep_main": 10.261413791444566, "plaq_mean": 0.7423412044753842}

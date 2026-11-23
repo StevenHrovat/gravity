@@ -166,6 +166,30 @@ a surprise, and an UNRESOLVED one reports `R_low` and the Pinsker diagnostic as 
 
 ## 8. Timing plan (fixed now; the full run waits for the owner)
 
+> **Amendments A1-A5 (2026-11-23, before any production data; `w2/PIPELINE.md`):** both angles `θ` per job (160 pairs per
+> job); launch batches of 3 jobs (`ℓ = 6`) or 6 jobs (`ℓ = 4`); start 1 = equilibrium interior heated by 20 sweeps at κ = 0;
+> one timed job only (owner's scope, hard cap 45 minutes); the sampler's proposal linearises the normaliser (full
+> Metropolis-Hastings). **Pilot result (CPU):** `T(2.3) = 300`, `T(3.5) = 600` by the rule of step 1; coupled-pair
+> disagreement saturates at 86 % (β = 2.3) and 83 % (β = 3.5) of the box links. Timing and projection: `w2/PROJECTION.md`.
+
+> **Amendment A6 (2026-11-23, owner's decision, before any production data).** The owner, after the first projection:
+> "For the GPU thing: Lets combine it into a custom GPU routine for SU(2) only, that should bring it down to under 3h!"
+> * **Scope (narrow run):** SU(2) only; β = 2.3 and 3.5; κ = 16; `ℓ = 6`; `θ = π` only (40 pairs per start, 80 per job);
+>   sampled `Y` = 8 per β; adversarial A1-A4 with the equilibrium outside and the worst of a pool of 8, A6 once; A5 dropped
+>   (no adjoint generator); no U(1), no 2I, no `κ = 4`, no `ℓ = 4`, no β = 2.6, 3.0. Mixed packing: jobs of one β share
+>   launches (6 jobs, 480 pairs, per launch). Target: the whole narrow run in under 3 GPU-hours.
+> * **Speed:** one fused GPU kernel per colour-class update (SU(2) only). The existing array path stays as the reference;
+>   the fused path must agree with it (section 6, amended in `w2/PIPELINE.md`).
+> * **What it can deliver:** the lower side `R_low` (observable-level influences, conclusive for a fail), the adversarial
+>   column sums `C_low` (the `WL-Q` test), the conditional-mass profile `m`, the field-size bad-cell statistics, and saved
+>   configurations from which the two-level influence-bad classification (`../INFLUENCE-BAD.md`) can be computed on the CPU
+>   afterwards.
+> * **What it cannot deliver:** a `WL-S` SUPPORTED verdict. The coupled-chain upper side `R_up` saturates (pilot: 83-89 % of
+>   the box links disagree), so the pass side is out of reach with this instrument. Without the photon control (U(1)) the
+>   content gate G2 cannot be run, so any SU(2) pass-like number would be unguarded against fake uniqueness; the run reports
+>   numbers, not a `WL-S` verdict. The possible verdicts are therefore `WL-S` FAILS (kill), UNRESOLVED, and `WL-Q` REFUTED or
+>   not refuted for this blocking.
+
 **Unit of work.** One *job* = one (theory, `β`, `κ`, `ℓ`, `Y` instance, `σ` choice) with 40 coupled pairs (32 shell links plus
 8 block variables), two starts each, `T` sweeps per pair (both chains), plus the observables.
 

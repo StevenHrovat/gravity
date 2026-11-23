@@ -1,4 +1,4 @@
-C:\Users\Steven\AppData\Roaming\Python\Python314\site-packages\cupy\_environment.py:286: UserWarning: CUDA path could not be detected. Set CUDA_PATH environment variable if CuPy fails to load.
+%USERPROFILE%\AppData\Roaming\Python\Python314\site-packages\cupy\_environment.py:286: UserWarning: CUDA path could not be detected. Set CUDA_PATH environment variable if CuPy fails to load.
   warnings.warn(
 beta=2.4 L=16 chains=10 meas 0/1000 plaq=0.62996 t=122s
 beta=2.4 L=16 chains=10 meas 100/1000 plaq=0.63001 t=259s

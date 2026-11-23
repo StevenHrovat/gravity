@@ -64,3 +64,31 @@
 3. A stage-two lemma in Lean from per-scale conditional decorrelation (total covariance along the scales; generic, no
    physics), so that `WL-S_i` becomes the named Lean input instead of `StageTwoW`.
 4. (WL) itself; closure; landing with a tail budget (W3).
+
+## Round 3 (2026-11-23, uncommitted; W2 code and timing, the 10.4 lever)
+
+**New:** `w2/` (`constrained.py`, `project.py`, `queue_w2.ps1` dry-run by default, `time_job.ps1`, `PIPELINE.md`,
+`PROJECTION.md`, `PROJECTION.json`, `PROJECTION_mixed.json`, `.gitignore` for `runs/*.npz`, `runs/` with pilot and timing JSON
+and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in section 8).
+* CPU selftests all pass, including one-link exactness (after a fix: the first update was exact but stuck at kappa = 16) and
+  the gauge gate G0. Start 1 redefined (heated equilibrium interior). Amendments A1-A5 recorded before any production data.
+* Pilot (CPU): T(2.3) = 300, T(3.5) = 600; coupled pairs saturate at 83-89 % disagreement (upper side vacuous).
+* Timed job (one, GPU, 41 min, clean soft cap): 10.26 s per sweep for a full ell = 6 batch (3 jobs, 480 pairs); 1.88 h per
+  batch at T = 600. Projection: full design 539 h (248 h mixed packing); after all pre-registered cuts 203 h (58 h mixed):
+  over the 20 h cap, so the rule says ask the owner. Options in PROJECTION.md 3.
+* Extra GPU use beyond the timed job is recorded in PIPELINE.md (reported to the coordinator).
+* INFLUENCE-BAD.md: a coarse-only influence-bad set fails (sub-block vortex outsides); the two-level set (fine-bad by
+  contraction, coarse-bad as worst case over fine-good outsides) is measurable in the scale filtration; rarity becomes a
+  per-coarse-state number of the reverse kernel; W2 would need conditional rarity per Y.
+
+## Round 4 (2026-11-23, uncommitted; owner's decision: fused SU(2) routine, narrow run)
+
+* W2-PREREG.md amendment A6 (owner's words, narrow scope, what it can and cannot deliver: no WL-S pass verdict).
+* `w2/fused.py` (one CUDA kernel per colour-class update), `w2/fused_selftest.py`, `constrained.py launch` (mixed packing,
+  lever data saving), `project_narrow.py`, `queue_narrow.ps1` (dry run by default), `time_job.ps1 -Jobs`.
+* Correctness: deterministic fields = reference to 6e-14; Bessel 2e-14; G1; one-link |z| <= 1.5; G0; stationarity; reference vs
+  fused plateau 881 vs 884. Speed-up 8.3x per sweep (1.47 vs 12.1 s).
+* One timed fused launch (04:21:53-04:43:27, 1294 s, full T = 600). Narrow run projected at 1.55 GPU-hours (target < 3 h).
+  Saved data 39.5 MB per launch, about 240 MB for the run. Two-level analysis on the CPU: about 70 CPU-hours for a
+  272-local-box subsample (about 9 h wall on 8 cores), or a few CPU-hours for the cheap single-link proxy (code not written).
+* The narrow run itself waits for the owner's OK (via the coordinator).
