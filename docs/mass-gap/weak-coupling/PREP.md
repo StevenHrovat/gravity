@@ -3693,3 +3693,15 @@ thread.
   `GRH/Weil.lean`, `GRH/TieIn.lean`). What is missing is precisely the bridge the owner names: the theorem that for the actual zeta
   function (and Dirichlet L-functions) the prime-side sum equals the sum over the actual, infinitely many zeros. That theorem is the
   explicit formula (Riemann, von Mangoldt, Weil) [classical], and it is not in Mathlib. Toy = not-toy is the explicit formula.
+- **The sign does not come from one prime alone, but from the direction 2, 3 (the owner, same day, on the GRH tie-in):** "The sign
+  does not come from one prime alone, but from the direction 2, 3". Reading (coordinator): the project's own measurements support
+  this in a precise form (`rh-guide/grh/SEMILOCAL.md`, the section on "the minimum amount of primes", [numerical]). (1) *Not one
+  prime.* No place gives positivity alone: primes without the real place are never positive; the real place alone fails as soon as
+  the first prime is in range. (2) *A direction, filled in order.* Positivity at support a needs the real place plus every prime
+  below the scale, entered in ascending order: none up to a = 0.347, the prime 2 up to 0.549, 2 and 3 up to 0.805, three primes up to
+  0.973, and so on. Each prime asserts itself only together with all smaller primes. (3) *2 then 3, specifically.* Two primes suffice
+  only in the window 0.549 < a < 0.805, and only if they are 2 and 3; other pairs ({3, 5}, {2, 5}) do worse than 2 alone. So the sign
+  is carried by the ascending chain that starts 2, 3: the owner's "direction". This matches the earlier readings (the base prime 2,
+  then 3, "after which the rest follows"; existence descending through 2 and 3). Care point: the direction says in which order the
+  sign is built and that the start must be 2, 3; it does not yet say why every further step keeps the sign. Each step of the chain is
+  an exact cancellation with no slack (`INDUCTION.md`), and that step, for every prime, is the open sign.
