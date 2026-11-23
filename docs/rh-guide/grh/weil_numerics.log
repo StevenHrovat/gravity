@@ -1,0 +1,47 @@
+[zeros] first 150 zeros of zeta, gamma_1 = 14.134725, gamma_150 = 318.853  (25.3s)
+
+== Part 1: explicit formula for zeta, Gaussian g(u) = exp(-u^2/(2 s^2))
+  s = 0.25: zero side 0.0024366249   arithmetic side 0.0024366249   diff 7.03e-17
+  s = 0.40: zero side 0.0000002295   arithmetic side 0.0000002295   diff 7.61e-16
+  s = 0.60: zero side 0.0000000000   arithmetic side 0.0000000000   diff 2.80e-16
+
+== Part 2: smallest eigenvalue of W on span{(1-t^2)^2 P_j(t)}, j < 10, t = x/a  (25.5s)
+   lambda_min = min W(f) / int f^2 over the span; primes enter when 2a > log 2 (a > 0.3466)
+
+  zeta
+     a      lambda_min     lambda_2      zero side of minimiser (zeta, 150 zeros)   #prime powers
+   0.1500   2.381836e-01   9.573801e-01    2.380911e-01                         0
+   0.2500   4.158315e-02   4.424562e-01    4.157925e-02                         0
+   0.3466   1.938126e-03   1.074229e-01    1.937978e-03                         1
+   0.4500   3.406925e-05   3.980900e-03    3.406501e-05                         1
+   0.7000   2.930114e-09   9.889330e-07    2.548311e-09                         3
+   1.0000  -1.813617e-10   1.266788e-09    2.440932e-10                         5
+   1.5000  -1.141592e-08   6.379921e-12    7.553516e-09                         12
+   2.0000  -2.574979e-09  -4.969683e-11    3.071805e-09                         24
+   2.5000  -6.575638e-08  -3.704571e-10    2.665579e-08                         47
+
+  chi_4 (odd, mod 4)
+     a      lambda_min     lambda_2      zero side of minimiser (zeta, 150 zeros)   #prime powers
+   0.1500   1.211659e+00   2.344748e+00    nan                         0
+   0.2500   7.475525e-01   1.833724e+00    nan                         0
+   0.3466   4.659074e-01   1.506981e+00    nan                         1
+   0.4500   2.528313e-01   1.246216e+00    nan                         1
+   0.7000   1.068997e-02   4.375805e-01    nan                         3
+   1.0000   4.378917e-06   1.087748e-03    nan                         5
+   1.5000   6.351869e-09   1.039300e-06    nan                         12
+   2.0000  -1.686600e-09   2.566622e-09    nan                         24
+   2.5000  -4.582501e-08   3.360151e-10    nan                         47
+
+== Part 3: zeta, accuracy check (nq nodes, npts r-points, rmax = rfac/a, nb basis functions)  (62.4s)
+     a    nb    nq    npts   rfac    lambda_min (arithmetic)   zero side of minimiser
+   0.70   10    600   60001     400     2.930113e-09              2.548311e-09
+   0.70   10   1200  200001     800     2.630892e-09              2.531617e-09
+   0.70    6   1200  200001     800     2.709395e-06              2.708359e-06
+   1.00   10    600   60001     400    -1.813617e-10              2.440932e-10
+   1.00   10   1200  200001     800    -3.913139e-11              2.607804e-11
+   1.00    6   1200  200001     800     7.176850e-08              7.226541e-08
+   1.50   10    600   60001     400    -1.141592e-08              7.553516e-09
+   1.50   10   1200  200001     800     2.532037e-12              3.714927e-11
+   1.50    6   1200  200001     800     4.161640e-10              3.928421e-10
+
+[done] 157.7s

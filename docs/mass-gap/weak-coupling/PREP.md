@@ -1743,3 +1743,15 @@ thread.
   successful pressing" is a theorem about the certified class, and "every input can be pressed" is the open crossing: for counting
   it is as strong as NP = RP, for decision it fails on inputs with no existence at all, which is consistent with the reading that
   only a pressed system runs.
+- **A second prime is always forced (the owner, same day, on where the GRH attempt stalls):** "And for the RH stall past the first
+  prime: A second prime is always forced, since for something real to exist, it has to at least have a partner to assert itself
+  against, so the minimum amount of primes is two." Reading (coordinator), against `docs/rh-guide/grh/ATTEMPT.md`: positivity is a
+  theorem only while the test functions are too short to see any prime (support below (log 2)/2, Yoshida; Connes-Consani), and the
+  attempt stalls when the first prime enters. The arithmetic has an exact form of "a partner to assert against": the places of the
+  rationals are the primes and the real place (Ostrowski), and the product formula |x|_infinity * prod_p |x|_p = 1 balances every
+  non-zero rational across them. A balance needs at least two places; the real place, the Gamma factor of the completed L-function,
+  is always one of them. So the smallest non-trivial system is two places: the real place and one prime. That is exactly where
+  positivity stops being free, and in Connes's semilocal picture the Weil form can be cut down to a finite set of places S. A cheap,
+  concrete test of the reading: the semilocal Weil form for S = {real, 2}, {real, 2, 3}, ... (the Euler product truncated to S),
+  measuring whether positivity holds there and how its margin behaves as primes are added. Whether the minimal pair is two primes
+  or the real place plus one prime is the first thing that test would show.
