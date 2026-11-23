@@ -3732,3 +3732,10 @@ thread.
   version is open, the source's own "important open problem" (m = O(1)): with a constant gadget the quantum is too coarse for the
   argument to measure a single crossing. Care point: the reading names the role of the gadget size correctly; whether a constant-size
   quantum can be made to suffice for cutting planes is the open interface (`LiftCPConst`, `Lifting.lean`).
+- **The toy only asserts its own DMP-complete existence, so the error bar is placed correctly again (the owner, same day):** "And
+  since out toy only asserts it's DMP-complete existence, the error bar is placed correctly again :)" Reading (coordinator): agreed,
+  and it is the project's status discipline. The finite model asserts only what it proves about itself (Lean, exact, no error bar).
+  Everything uncertain is pushed to the one bridge to the real objects and named there: for GRH the explicit formula ("toy =
+  not-toy") and the external import; for NP the lifting theorem and the open constant-gadget interface; for Yang-Mills the electric
+  side and the side seam. So each column carries its uncertainty in exactly one named place, the analogue of an error bar sitting on
+  the measurement and never on the answer (entry "settling at known error rates").
