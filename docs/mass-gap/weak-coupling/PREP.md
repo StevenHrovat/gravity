@@ -3615,3 +3615,18 @@ thread.
   independent re-check of every Lean proof with checkers separate from the building kernel was started (see the session for it);
   (3) the perfect-proof shape (irreducible form layer; per problem one uniqueness, the act at the DB asserting it, one covariant
   measurement) is adopted for the paper.
+- **Every further system constructed through DMP strengthens the presumption of soundness of G0's uniqueness, since it survived
+  encoding and must thus be universal (the owner, same day):** "And every further system we have constructed through DMP strengthens
+  the presumption of soundness we have in G0 of that uniqueness, since it has survived encoding and must thus be universal." Reading
+  (coordinator): stronger than a presumption in one respect, and weaker in another. (1) *One model already proves consistency.* If
+  a structure satisfies all the axioms of a theory, the theory is consistent (soundness: a contradiction would hold in the model,
+  which is impossible) [classical]. Every instance built in Lean that satisfies the running-system axioms (`ETM/RunSys.lean`,
+  `ETM/Instances.lean`, `univ_nontrivial`) is such a model of DMP's form layer. So the form layer's consistency is proved, relative
+  to Lean's own consistency (the containing G0, entry "DMP v0.9.9 pressed as a G0"), not merely presumed. (2) *What more instances
+  add.* They add evidence of reach, not of truth: each new kind of system that fits (Markov chains, SU(N) boxes, the Szego chain,
+  proof systems, the Ricci shrinker) shows the form layer applies more widely. That is how the Church-Turing thesis gained its
+  standing, through many independent formalisms that all turned out equivalent [classical]. Every encoding is also a test that could
+  have failed, so surviving many is real confirmation of the thesis. (3) *Universal is proved separately.* That every running system
+  goes through DMP is the terminal property (`univIsTerminal`, Lean), for the stated definition; it does not follow from the number of
+  instances, and the informal outer edge ("every possible meaning of running") stays a thesis. Care point: consistency of the form
+  layer says nothing about the content steps; surviving encoding certifies the frame, not O1, the sign or the crossing cost.
