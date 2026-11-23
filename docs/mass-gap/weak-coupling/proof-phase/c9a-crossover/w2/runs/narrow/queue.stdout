@@ -1,0 +1,24 @@
+
+beta   T seed jobs
+----   - ---- ----
+2.3  300  101 A1:8,A2:8,A3:8,A4:8,A1:0,A2:0
+2.3  300  102 A3:0,A4:0,A6:0,sampled:0,sampled:0,sampled:0
+2.3  300  103 sampled:0,sampled:0,sampled:0,sampled:0,sampled:0
+3.5  600  101 A1:8,A2:8,A3:8,A4:8,A1:0,A2:0
+3.5  600  102 A3:0,A4:0,A6:0,sampled:0,sampled:0,sampled:0
+3.5  600  103 sampled:0,sampled:0,sampled:0,sampled:0,sampled:0
+
+
+Projected: 1.55 GPU-hours (PROJECTION_narrow.json)
+{"beta": 2.3, "T": 300, "jobs": "A1:8,A2:8,A3:8,A4:8,A1:0,A2:0", "pairs": 480, "sweeps_done": 300, "capped": false, "seconds_pool": 49.17907762527466, "seconds_build": 22.305326223373413, "seconds_main": 1139.1171660423279, "seconds_total": 1217.3866095542908, "sec_per_sweep_main": 3.797057220141093, "seconds_full_T_extrapolated": 1214.7897624969482, "mh_acceptance": 0.8315132344982424, "plaq_mean": 0.552991974996646}
+05:09:45 beta=2.3 seed=101: 1220 s (projected 657 s)
+{"beta": 2.3, "T": 300, "jobs": "A3:0,A4:0,A6:0,sampled:0,sampled:0,sampled:0", "pairs": 480, "sweeps_done": 300, "capped": false, "seconds_pool": 0.0002510547637939453, "seconds_build": 24.88524556159973, "seconds_main": 757.427717924118, "seconds_total": 788.8754189014435, "sec_per_sweep_main": 2.52475905974706, "seconds_full_T_extrapolated": 786.3055965900421, "mh_acceptance": 0.8476459847072187, "plaq_mean": 0.5965948530444949}
+05:23:33 beta=2.3 seed=102: 791 s (projected 657 s)
+{"beta": 2.3, "T": 300, "jobs": "sampled:0,sampled:0,sampled:0,sampled:0,sampled:0", "pairs": 400, "sweeps_done": 300, "capped": false, "seconds_pool": 0.0018324851989746094, "seconds_build": 12.618690729141235, "seconds_main": 575.9885597229004, "seconds_total": 595.1947655677795, "sec_per_sweep_main": 1.9199618657430013, "seconds_full_T_extrapolated": 592.9938898086548, "mh_acceptance": 0.849030508134002, "plaq_mean": 0.6012741390386268}
+05:33:34 beta=2.3 seed=103: 598 s (projected 657 s)
+{"beta": 3.5, "T": 600, "jobs": "A1:8,A2:8,A3:8,A4:8,A1:0,A2:0", "pairs": 480, "sweeps_done": 600, "capped": false, "seconds_pool": 88.94447445869446, "seconds_build": 23.081364631652832, "seconds_main": 2154.9521152973175, "seconds_total": 2274.2241294384003, "sec_per_sweep_main": 3.5915868588288626, "seconds_full_T_extrapolated": 2271.520884990692, "mh_acceptance": 0.8890499801740398, "plaq_mean": 0.7031524304602663}
+06:11:35 beta=3.5 seed=101: 2278 s (projected 1280 s)
+{"beta": 3.5, "T": 600, "jobs": "A3:0,A4:0,A6:0,sampled:0,sampled:0,sampled:0", "pairs": 480, "sweeps_done": 600, "capped": false, "seconds_pool": 0.002978086471557617, "seconds_build": 27.620649576187134, "seconds_main": 1544.239740371704, "seconds_total": 1579.187961101532, "sec_per_sweep_main": 2.5737329006195067, "seconds_full_T_extrapolated": 1576.048794746399, "mh_acceptance": 0.9168814806107467, "plaq_mean": 0.7620310516756652}
+06:38:01 beta=3.5 seed=102: 1583 s (projected 1280 s)
+{"beta": 3.5, "T": 600, "jobs": "sampled:0,sampled:0,sampled:0,sampled:0,sampled:0", "pairs": 400, "sweeps_done": 600, "capped": false, "seconds_pool": 0.0015714168548583984, "seconds_build": 23.19716238975525, "seconds_main": 1526.7697563171387, "seconds_total": 1558.1956419944763, "sec_per_sweep_main": 2.5446162605285645, "seconds_full_T_extrapolated": 1555.3217022418976, "mh_acceptance": 0.9189945838959619, "plaq_mean": 0.7676561154006759}
+07:04:07 beta=3.5 seed=103: 1562 s (projected 1280 s)

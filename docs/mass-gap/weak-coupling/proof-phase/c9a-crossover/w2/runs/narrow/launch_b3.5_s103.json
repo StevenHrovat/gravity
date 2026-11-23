@@ -1,0 +1,95 @@
+{
+ "beta": 3.5,
+ "ell": 6,
+ "kappa": 16.0,
+ "T": 600,
+ "every": 10,
+ "jobs": "sampled:0,sampled:0,sampled:0,sampled:0,sampled:0",
+ "fused": true,
+ "pairs": 400,
+ "pool_pairs": 0,
+ "pool_T": 60,
+ "seconds_geometry": 5.353212118148804,
+ "seconds_pool": 0.0015714168548583984,
+ "seconds_build": 23.19716238975525,
+ "seconds_main": 1526.7697563171387,
+ "sweeps_done": 600,
+ "capped": false,
+ "sec_per_sweep_main": 2.5446162605285645,
+ "seconds_total": 1558.1956419944763,
+ "seconds_full_T_extrapolated": 1555.3217022418976,
+ "mh_acceptance": 0.9189945838959619,
+ "plaq_mean": 0.7676561154006759,
+ "d_end_mean": 4594.6925,
+ "n_box_links": 5184,
+ "klow_pool": {},
+ "instances": [
+  {
+   "job": 0,
+   "yclass": "sampled",
+   "pool": 0,
+   "conf": 2,
+   "shift": [
+    5,
+    1,
+    3,
+    11
+   ],
+   "first_pair": 0
+  },
+  {
+   "job": 1,
+   "yclass": "sampled",
+   "pool": 0,
+   "conf": 0,
+   "shift": [
+    8,
+    13,
+    8,
+    13
+   ],
+   "first_pair": 80
+  },
+  {
+   "job": 2,
+   "yclass": "sampled",
+   "pool": 0,
+   "conf": 1,
+   "shift": [
+    1,
+    1,
+    4,
+    9
+   ],
+   "first_pair": 160
+  },
+  {
+   "job": 3,
+   "yclass": "sampled",
+   "pool": 0,
+   "conf": 2,
+   "shift": [
+    9,
+    11,
+    12,
+    7
+   ],
+   "first_pair": 240
+  },
+  {
+   "job": 4,
+   "yclass": "sampled",
+   "pool": 0,
+   "conf": 0,
+   "shift": [
+    7,
+    8,
+    11,
+    0
+   ],
+   "first_pair": 320
+  }
+ ],
+ "npz": "runs\\narrow\\launch_b3.5_s103.npz",
+ "gpu_pool_bytes": 9674254848
+}

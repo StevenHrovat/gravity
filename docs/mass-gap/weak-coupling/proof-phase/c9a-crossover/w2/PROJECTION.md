@@ -132,3 +132,44 @@ the damage.
     quantity; it ranks blocks and locates candidates for the full computation.
   * *Alternative on the GPU* (fused path, not requested): the 272 local boxes as `ℓ = 4` launches of 960 pairs, about 9 launches
     of 10-20 min, **about 2-3 GPU-hours**.
+
+## 8. Outcome against the projection, and the error band of a single-timing projection (reusable rule)
+
+**The narrow run** (04:49:21-07:04:36): **8115 s = 2.25 GPU-hours against 1.55 h projected (1.45×)**; all 6 launches completed,
+no abort, no hard kill (cap 3 h).
+
+| launch | content | actual / projected | s per sweep (main) | MH acceptance |
+|---|---|---|---|---|
+| β 2.3 s101 | 4 pool jobs (A1-A4) + A1, A2: rough (Haar) block fields | 1220 / 657 s = **1.86** | 3.80 | 0.83 |
+| β 2.3 s102 | A3, A4, A6 + 3 sampled | 791 / 657 = **1.20** | 2.52 | 0.85 |
+| β 2.3 s103 | 5 sampled | 598 / 657 = **0.91** | 1.92 | 0.85 |
+| β 3.5 s101 | as s101 above | 2278 / 1280 = **1.78** | 3.59 | 0.89 |
+| β 3.5 s102 | as s102 above | 1583 / 1280 = **1.24** | 2.57 | 0.92 |
+| β 3.5 s103 | 5 sampled | 1562 / 1280 = **1.22** | 2.54 | 0.92 |
+| timed launch (β 3.5, before the run) | A3, A1 pool + A2, A4, A6, sampled | 1.00 by construction | 1.96 | 0.90 |
+
+**What drove the overrun.** (a) **Launch content**, dominant: launches with Haar-random (rough) block fields cost about 1.8× a
+mixed launch per sweep at either β (the in-kernel rejection loops of the coupled proposal run longer on rough fields). (b) **A
+slow drift over the run**, observed but not explained: the β = 3.5 launches, run 1.3 to 2.2 hours into the job, were slower per
+sweep than the timed launch and than their β = 2.3 counterparts with the same or lighter content (sampled only: 2.54 s at β 3.5
+late in the run, 1.92 s at β 2.3 early). Laptop-GPU thermal throttling would do this; clocks were not logged, so it is a
+hypothesis. (c) **β itself**: no clean separation from (a) and (b) in these data (same-content pairs differ by −6 % to +32 %); my
+earlier remark during the run that the cost "depends on β" overstated it.
+
+**Rule for projecting a GPU run from one timed unit (use for later projections, the IR timing job included):**
+1. **Floor of the uncertainty: the content spread.** Per-launch actual/projected ratios from this run: 0.91, 1.20, 1.22, 1.24,
+   1.78, 1.86; geometric mean 1.33, standard deviation of the log 0.27. So a projection of one launch from one timing of a
+   different launch carries **at least ±30 % (one sigma) and a range of 0.9× to 1.9×**, however carefully the timed unit was
+   measured. This is the minimum honest error bar; it is not reduced by timing the same unit again.
+2. **Time the content, not just the size.** If launches differ in content (rough versus smooth fields, pool phases), time one
+   unit of each content class (short timings suffice: the cost per sweep is constant after a few sweeps), or scale with the
+   class factors measured here (rough-field launch ≈ 1.8× a mixed one, sampled-only ≈ 0.75-1.0× a mixed one).
+3. **Transfer between couplings.** Projected unit time = set-up + `T(β)` × `s(β, content)`. Take `T(β)` from the pilot at each β
+   (here 300 and 600: a factor 2, the dominant β dependence). Take `s` from the timed unit with a factor 1.0 ± 0.3 for another
+   β unless it was timed there too; a short timing at the other β removes that factor.
+4. **Long runs:** add a drift allowance for runs much longer than the timed unit (+25 % observed here over 2 hours on the laptop
+   GPU) until its cause is known; log GPU clocks and temperature at the watcher's checkpoints to decide it.
+5. **Report** the projection as a central value with the band of rule 1 (and rule 4 for long runs), and set the hard cap at or
+   above the band's upper edge (here 1.55 h × 1.9 ≈ 2.9 h; the 3-hour cap held).
+
+Applied after the fact: 1.55 h × [0.9, 1.9] = 1.4 to 2.9 h, central 1.55 × 1.33 = 2.1 h; the actual 2.25 h lies inside the band.

@@ -92,3 +92,16 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
   Saved data 39.5 MB per launch, about 240 MB for the run. Two-level analysis on the CPU: about 70 CPU-hours for a
   272-local-box subsample (about 9 h wall on 8 cores), or a few CPU-hours for the cheap single-link proxy (code not written).
 * The narrow run itself waits for the owner's OK (via the coordinator).
+
+## Round 5 (2026-11-23, uncommitted; the narrow W2 production run and its analyses)
+
+* Run (owner's OK): 6 fused launches, 04:49:21-07:04:36, 2.25 GPU-hours against 1.55 h projected (1.45x), no abort, no kill;
+  watcher `w2/run_narrow.ps1`. Error-band rule for single-timing projections: `w2/PROJECTION.md` 8.
+* Pre-registered (`w2/RESULT.md`): WL-S UNRESOLVED at beta 2.3 and 3.5 (kill rule not triggered; max raw R_low 0.65), WL-Q not
+  refuted for this blocking; small resolved boundary sensitivity at beta 3.5 (about 0.1), none at 2.3. Table "measured quantity ->
+  statement" added (owner's rule): nothing discharged; lower bounds refute nothing; the upper side is saturated.
+* Diagnostic (`w2/PROXY-RESULT.md`): the single-link proxy saturates everywhere (kappa per block 4.9 and up); the lever needs the
+  box influence (272-box subsample, about 70 CPU-hours, separate OK).
+* Exploratory (`w2/SETTLING-RESULT.md`, plan committed in bc601c9 before the data): bad boxes not slower at either beta, at the
+  10-sweep resolution; the twisted block field (A3) was not taken up by the fine field (alignment about 0 on the flipped links).
+* Run logs scrubbed of the user-profile path; scrub scan clean. GPU free; no GPU use without a new OK.
