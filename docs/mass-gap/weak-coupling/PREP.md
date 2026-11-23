@@ -2543,3 +2543,14 @@ thread.
   least a cost c_i, composed by a contraction (Mixing/Chain.lean) with a floor error, gives a global bound sum c_i minus the floor. Each
   problem then reduces to one hypothesis: that its per-step cost is paid uniformly (the one-box statement; eta_p > 0 at every prime; a
   crossing cost for strong systems). This is the paper's Part VI in theorem form.
+- **Naming: GUID as both "General" and "Grand" Unified Information Duality; SU(5) with one coupling as G0 at GRH (the owner, same
+  day):** "My naming is for what I want to claim when finished, not what I can prove now. The goal is to make both readings of GUID
+  fully valid." And: "SU(5) with a single coupling is G0 at GRH with a forward arrow established, independent of scale." Reading
+  (coordinator): recorded as the owner's goal and reading. What "Grand Unified" means in physics: the Standard Model gauge group
+  SU(3) x SU(2) x U(1) embedded in one simple group (SU(5), SO(10)) with a single coupling at the unification scale, from which the
+  three couplings run apart toward low energies, with checkable consequences (coupling relations, charge quantisation, proton decay).
+  Care points: the single coupling holds at one scale, not independent of scale (below it the three couplings run differently); minimal
+  non-supersymmetric SU(5) is disfavoured by proton-decay limits and by the couplings not meeting exactly; and the present work covers
+  pure Yang-Mills with one gauge group (no U(1), no matter, no symmetry breaking). The owner's mapping (one coupling = one G0; the
+  forward arrow = the running from the unification scale) is a reading; making the "Grand" reading of GUID valid is a programme beyond
+  Yang-Mills, GRH and P vs NP, to be stated as future work in the paper.
