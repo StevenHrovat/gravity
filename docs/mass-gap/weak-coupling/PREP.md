@@ -1723,3 +1723,10 @@ thread.
   (sets, observables, a spectrum). In the proof the order is the same: no state space and no spectrum before the positive pairing is
   established, and everything after it is read off. The owner approved the next steps: finish the bridge, then the time-boxed GRH
   attempt along the positivity route (`docs/rh-guide/grh/`).
+- **Runtime projections carry error bars with a floor (the owner, same day, on the P4 projection):** "Since we use our system, those
+  enhanced projections also come with built in error bars that have a lower bound." Reading (coordinator): yes, and the W2 run shows
+  the floor. A projection from one timed launch cannot be more precise than the spread that launch content alone produces: per-launch
+  time over projection at beta = 2.3 was 1.86, 1.2 and 0.91, because rough or defect boxes lengthen the rejection loops. That spread
+  is the minimum honest uncertainty of any single-timing projection, the same way the Cramer-Rao floor is for a measured error bar.
+  The crossover session writes it into PROJECTION.md as a reusable rule (per-content spread as the floor, plus the transfer between
+  beta values, since both the per-sweep cost and the chain length depend on beta), for this and later GPU projections.
