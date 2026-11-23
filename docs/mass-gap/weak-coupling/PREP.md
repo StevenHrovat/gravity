@@ -1366,3 +1366,14 @@ thread.
   fluctuations (in a quantum field they grow without bound as the resolution sharpens). That is the Euclidean shadow of the uncertainty
   relation; in the reconstructed Hilbert space it becomes the non-commuting field and momentum. So looking closer always costs more,
   and the coarse observables are where existence can be read cheaply.
+- **No percolation without an outside; collars hold while causality holds (the owner, same day, on crossover round 2):** "Bad clusters
+  can not percolate in a way so that no outside is left, because that collapses existence into CMOS. Collars, which are the boundary
+  between existence and non-existence, should never decorrelate as long as causality exists, at which point they lose meaning, since
+  they maintain the boundary and thus causality." Reading (coordinator): these are exactly the two conditions the crossover session
+  found necessary for containment without rarity (`c9a-crossover/WL.md` 10.2). (1) "No percolation without an outside" is conditions
+  (B) and (C): bad clusters, merged at the collar range, must stay finite with an exponential size tail, so an outside always remains.
+  Absolute rarity can be dropped; this relative sparseness cannot. (2) "Collars do not decorrelate while causality exists" is condition
+  (A): the good collar keeps a positive conditional mass m > 0, so it carries the boundary and wears down what crosses it. In DMP both
+  are laws; in the proof they are the two quantities to establish across the crossover, scale by scale, and the W2 measurement is
+  designed to measure exactly them (the bad-cluster connectivity and the collar mass m). The session's remaining lever matches the
+  reading too: call "bad" only what fails to contract, not every large field.
