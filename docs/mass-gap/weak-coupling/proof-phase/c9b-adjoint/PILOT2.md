@@ -151,3 +151,57 @@ alone the step there would be about 0.005 (about 100-200 steps per unit trajecto
 
 **Cost per effective sample at this point** (CPU): `s_traj x 2 tau = 11.6 x 2 x 1.8 = about 42 s`. This is the first point for the
 cost-scaling stop rule (`beta = 2.3`, `b = 4`, `L sqrt(sigma) = 1.40`). The matched second point (`beta = 2.5`, `b = 8`) is GPU-sized.
+
+## Option B built and measured: the CG count (data-free; `cgcount_b4.json`, `cgcount_b8.json`; owner: "Yes, build B")
+
+**Built** (`ir_lowrank.py`, new):
+- `M = 1 + kappa_c J0^T J0`, exact momenta `xi + sqrt(kappa_c) J0^T eta`;
+- velocity by Woodbury and a coarse conjugate-gradient solve (tolerance 1e-10), with a tangent-only Jacobi-block preconditioner;
+- `J0 x` by exact tangent propagation through the strided blocking; `J0^T r` by the tape.
+
+**Selftests** (`py ir_lowrank.py selftest`):
+
+| check | result |
+|---|---|
+| `J x` vs finite differences | 6e-11 |
+| dot test `<r, J x> = <J^T r, x>` | to 12 digits |
+| `M^-1 M = 1` | 5e-11 |
+| momentum covariance (mean `p.M^-1 p` against the dimension) | z = -0.58 |
+| leapfrog reversibility | 1e-14 |
+| `dH` ratio per halving of `eps` (0.02 -> 0.01 -> 0.005) | 3.7, 4.0 |
+
+`eps = 0.04` is pre-asymptotic on the hot test configuration. The first selftest version used the pair 0.04/0.02 and failed on that;
+the pair was changed to 0.02/0.01.
+
+**A bug found by the count, and fixed.** The first preconditioner scaled all four quaternion components, including the radial direction
+outside the range of `J`. It made CG slower than plain CG (468 against 109 iterations; `cgcount_b4_run1_badprec.*`, kept).
+
+**The count** (one heat-bath background, 20 sweeps, `beta = 2.3`, `kappa_c = 10`; right-hand sides `b = J p` from the momentum draw):
+
+| `b` | lattice | CG iterations (preconditioned / plain) | one `J` and one `J^T` against one force | cost per leapfrog step (forces) |
+|---|---|---|---|---|
+| 4 | 12^4 | 66 / 91 | 0.44 | **about 60** |
+| 8 | 24^4 | 93 / 126 | 0.33 | **about 63** |
+
+The design estimate (`n_CG` 5-10, 4-7 times per step) was wrong by a factor of 10. The block variables overlap strongly (smearing
+`w = 2`), so `1 + kappa_c J J^T` is ill-conditioned beyond what a per-link block preconditioner reaches. Each CG iteration costs a full
+forward and backward blocking pass.
+
+**Net against the diagonal sampler (A).** B's gain is the step count: `eps` about 0.05 against A's 0.0125 at `b = 4` (measured) and
+about 0.005 at `b = 8` (predicted), i.e. 4 times and about 10 times fewer steps. B is therefore about **15 times worse at `b = 4`** and
+about **6 times worse at `b = 8`**. Its relative cost improves with `b`, with a crossover far beyond `b = 8`.
+
+**Conclusion: option B as designed is not viable.** The diagonal preconditioner (A, already in `ir_constrained.py`) remains the sampler.
+At `b = 8` it is expected at `eps` about 0.005, about 100 steps per half-unit trajectory; on the GPU the force is cheap, and the timing
+job measures what that costs.
+
+Not run, and why: the T-B' repeat with B. Its pre-registerable expectation is a capacity failure: about `10 x 60 x 0.15 s = 90 s` per
+trajectory at 12^4, so 30 measured trajectories would take about 45 minutes against a 30-minute cap. The agreement run is also not run:
+B's exactness is already shown by the selftests, and if B is dropped the run has no purpose. Both are left for the owner's decision.
+
+Directions if a non-diagonal kinetic term is still wanted (none started):
+- (i) assemble `J J^T` once and use a direct (Cholesky) solve; the coarse dimension is small, but assembly costs one forward-and-backward
+  pair per coarse component (about 10^4 at coarse 5^4); feasible on the GPU, not on this CPU;
+- (ii) a deflation or two-level preconditioner on the smooth overlap modes;
+- (iii) less smearing in the block variable (smaller `w`). That reduces the overlaps but changes the measured object; it would need c3b's
+  content check redone.
