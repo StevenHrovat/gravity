@@ -1,1 +1,2 @@
 runs/*.npz
+runs/**/*.npz
