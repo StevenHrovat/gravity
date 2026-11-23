@@ -1413,3 +1413,17 @@ thread.
   hand-over at L_*: the act happens where the running coupling leaves the weak region, and everything above it is fixed by the boundary
   condition the UV side delivers. No new step for the proof follows; the reading explains why the proof can only be d = 4 and why
   the OS side needs one reflection direction, both of which it already uses.
+- **Can DMP extend to d >= 4 with the same conditions? (the owner, same day):** "Can DMP be extended to d greater or equal 4, while
+  keeping those conditions? That might give the proof construction a nicer shape, which often comes with good generalizations that
+  make it easier in the end." Reading (coordinator): for a gauge field, not in d. The direction half stays one in any d (one reflection
+  direction, d - 1 space directions), but the transmutation condition fixes d. The coupling g^2 has mass dimension 4 - d: below 4 the
+  scale is given from outside, above 4 the interaction fades at large scales and the continuum limit is free (trivial) or does not
+  exist (lattice SU(N) in d = 5 shows a bulk first-order transition, not a continuum point). The lattice theory and its strong-coupling
+  gap exist in every d; what is lost above 4 is the act itself. The condition that does generalise is "marginal and asymptotically
+  free in its own dimension", i.e. each kind of field has its own dimension of existence: gauge fields d = 4; the O(N >= 3) and
+  CP^{N-1} sigma models and the Gross-Neveu model d = 2 (all transmute and have a gap); phi^4 is marginal at d = 4 but not
+  asymptotically free and is trivial (Aizenman-Duminil-Copin); phi^3 is asymptotically free at d = 6 but unbounded below, so it has
+  no stable vacuum. Marginal, asymptotically free and bounded below together pick out the cases that exist. Two generalisations do
+  keep the proof's conditions and are worth having: (1) over the gauge group: any compact simple G, with M1's SO(3) x Z2 split
+  becoming G/Z(G) and the centre layer Z(G) (Z_N for SU(N)); (2) d as an explicit parameter in Lean, so that d = 4 is used only where
+  it is needed (Balaban's marginal scaling and the vortex-sheet capacity), with the OS, coupling and assembly parts already generic.
