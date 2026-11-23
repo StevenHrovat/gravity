@@ -1717,3 +1717,9 @@ thread.
   So once existence (positivity) is forced, the line follows as by definition, as the owner says. The direction positivity => line is
   known; the open part is establishing the positivity itself, which is what the GRH attempt would target, using the Yang-Mills
   proof's way of obtaining reflection positivity as the model.
+  The owner adds (same day): "That can also be seen in DMP itself: Once I was sure the system held, I had to press it to G0 at
+  v0.9.9, otherwise it could not be used for sets." Reading (coordinator): the same order as the chain above. First the system has to
+  hold (the positivity, checked), then it is fixed as existence (pressed to G0, the Hilbert space built), and only then can it be used
+  (sets, observables, a spectrum). In the proof the order is the same: no state space and no spectrum before the positive pairing is
+  established, and everything after it is read off. The owner approved the next steps: finish the bridge, then the time-boxed GRH
+  attempt along the positivity route (`docs/rh-guide/grh/`).
