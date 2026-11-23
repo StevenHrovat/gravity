@@ -3560,3 +3560,16 @@ thread.
   interpreted (soundness, entry "a theorem proven inside a DB is true everywhere"), so it can serve as a lemma in every system that
   interprets DMP. Care point: "fully sound" for DMP v0.9.9 can be checked relative to a containing system (the Lean formalisation,
   the ETM round), never from inside DMP itself; that is not a weakness of DMP but the same limit every foundation has.
+- **A real truth tied to machine-checked proofs, where running the check is DMP-complete (the owner, same day):** "So establishing a
+  real truth associated with machine checked proofs, where the running of it is DMP-complete." Reading (coordinator): exact, and it
+  is the ETM edge applied to proofs. (1) *Checking settles.* A proof checker takes a finite certificate (the proof) and runs a
+  finite, mechanical check that ends with accept or reject: a binary answer after finitely many steps (for a proof system, checking
+  is polynomial in the proof's size by definition, Cook-Reckhow; Lean's kernel type-checks a finished proof term) [classical]. That
+  is the ETM's item (b): the running settles, decidably. (2) *Finding does not.* Searching for a proof of an arbitrary statement is
+  not decidable in general (Church, Turing) [classical]: the ETM's item (c2). So machine-checked proofs sit exactly on the decidable
+  side: the existence of the certificate is the truth, and checking it is the running that settles. (3) *What "real" rests on.* The
+  truth a checked proof certifies is relative to the kernel and the axioms it allows (here propext, `Classical.choice`, `Quot.sound`,
+  enforced by the gate on every push), and to the consistency of Lean's type theory, which cannot be certified from inside (the
+  previous entry, Goedel II). The trusted base is kept small and can be cross-checked by independent checkers [classical]. So the
+  owner's "real truth" is: true in every system that interprets the axioms, certified by a finite run that always settles, with the
+  containing G0 (the checker's own soundness) fixed once at the root.
