@@ -2436,3 +2436,8 @@ thread.
   hand-over covers two channels; superadditivity and uniformity give the product). So containment would turn the grid problem
   (needing F > log 8) into the chain problem (0.881 suffices). Care point: using flux tubes to prove confinement is circular unless the
   tube structure is derived from saturation inside, not assumed; that derivation is what a round would have to supply.
+  The owner on the circularity (same day): "The derivation is simply that a set of laws, IM, has to exist for that definition of
+  existence, which are DMP-complete, since IM already is both sides." Reading (coordinator): the law that holds on both sides of every
+  DB is Gauss's law, the gauge constraint: it holds identically inside and outside and is conserved across every face (Lean:
+  `cob_restrict_eq_cob_restrict_compl`, `sum_cob_restrict_eq_zero`). So the derivation the round needs is: tubes from Gauss's law
+  alone plus the per-box electric cost (a minimal-cost-path argument), without assuming tubes. Passed to the containment round.
