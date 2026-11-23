@@ -1,0 +1,21 @@
+POST-HOC (not pre-registered)
+(a) crude spatial column at the c4d box corner: 2.3968 (N1 reported 2.397); central fit 2.3702
+(b) column-form type matrix A[t][u] = sum over receivers x of type t adjacent to one z of type u of C_xz (t,u in (spatial, temporal)):
+    A_ss = 12 C(s,ss) + 2 C(s,ts), A_st = 12 C(s,ts), A_ts = 4 C(t,ts), A_tt = 6 C(t,ts)
+    weighted condition: sum_x v_x C_xz <= rho v_z, i.e. v A <= rho v (v a left Perron vector of A)
+    (corrected after review: the first version used the row-form matrix [[., 4 C(s,ts)],[12 C(t,ts), .]], same rho, wrong weights)
+  beta=2.3 b= 4 L=1.40 NO_CONTENT       rho=5.2432 weights (s,t)=(1.000,0.534)
+  beta=2.3 b= 8 L=2.80 PASS             rho=0.9600 weights (s,t)=(1.000,0.339)  kappa_Ham <= 70.75  l_min = 568
+  beta=2.3 b=16 L=5.60 NO_CONTENT       rho=0.5181 weights (s,t)=(1.000,0.361)  kappa_Ham <= 2.98  l_min = 26
+  beta=2.4 b= 4 L=1.03 NO_CONTENT       rho=9.3475 weights (s,t)=(1.000,0.737)
+  beta=2.4 b= 8 L=2.06 NO_CONTENT       rho=1.9396 weights (s,t)=(1.000,0.361)
+  beta=2.4 b=16 L=4.13 NO_CONTENT       rho=0.5829 weights (s,t)=(1.000,0.356)  kappa_Ham <= 3.93  l_min = 33
+  beta=2.5 b= 4 L=0.73 NO_CONTENT       rho=17.1541 weights (s,t)=(1.000,0.886)
+  beta=2.5 b= 8 L=1.46 NO_CONTENT       rho=4.3792 weights (s,t)=(1.000,0.533)
+  beta=2.5 b=16 L=2.92 NO_CONTENT       rho=0.8345 weights (s,t)=(1.000,0.345)  kappa_Ham <= 14.61  l_min = 119
+  beta=2.3 b= 8 L=2.80 PASS(box corner) rho=0.9745 weights (s,t)=(1.000,0.340)  kappa_Ham <= 112.46  l_min = 902
+(c) W1-plus-smoothing count at 2.80 (central plaquette TV/Lipschitz columns) against the W1 column:
+    c_W = 0.7318 (base, plaquettes (c4d)): D =     8.57 rad, kappa_Ham <=      12.2, l_min = 99
+    c_W = 0.7611 (ext_T (c4d)): D =    10.01 rad, kappa_Ham <=      13.8, l_min = 113
+    c_W = 0.9640 (ext_R, with rectangle (c4d)): D =    84.12 rad, kappa_Ham <=      99.2, l_min = 796
+    c_W = 0.9999 (ext_TR over the box (c4d, knife edge)): D = 26176.80 rad, kappa_Ham <=   30165.3, l_min = 241324

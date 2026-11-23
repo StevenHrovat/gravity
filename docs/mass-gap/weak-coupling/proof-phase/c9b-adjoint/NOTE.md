@@ -10,6 +10,9 @@ Lean: `formal/ProofPhase/Adjoint2/Transfer.lean` (new, 456 lines, imports only M
 `Classical.choice`, `Quot.sound`; no `sorry`, no `native_decide`, no new axiom). No existing `.lean` file was edited. Numerics: one
 pre-registered CPU check (section 6, `n1_columns.py` / `.log`, under one minute). No GPU job.
 
+**Round 2 correction (2026-11-23, `ROUND2.md` section 4):** the sup-form numbers below (`c0 + c1 = 2.40`, "sup form fails at 2.80") are the
+crude two-point bound; the sharp sup-form column of the fitted action at 2.80 is 1.02 (uniform) and 0.96 (weighted).
+
 Claim marks: **Lean** (built and axiom-checked here), **paper** (complete argument here), **sketch** (argument with constants or steps
 not written out), **citation** (standard theorem, recalled, not re-proved), **numerical** (arithmetic or float computation here),
 **open** (named, not proved).

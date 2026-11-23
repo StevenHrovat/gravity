@@ -1,0 +1,105 @@
+N2 (pre-registered, PREREG-N2.md); numerical; fitted actions only
+colouring: 8 classes, no two links of a class share a plaquette, 18 neighbours per link: OK
+N_adj(l) = 8 l^3 + 12 l^2 checked by enumeration for l = 2..5
+control (i): TV(vMF(+s), vMF(-s)) beta=0.17: quadrature 0.072032, 1D integral 0.072029, rel 4.81e-05
+control (ii): small-beta sharp/beta 0.42443 vs 4/(3 pi) = 0.42441
+
+beta=2.3 b=4 L sqrt(sigma)=1.40 content=NO_CONTENT  F_ts=0.399 F_ss=0.832 A_ts=-0.00798 A_ss=0.00794
+   pair recv=s plaq=ss: sharp C=0.37351  crude=0.68684  ratio=0.544  Lam=0.19394/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=s plaq=ts: sharp C=0.18404  crude=0.38441  ratio=0.479  Lam=0.09232/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=t plaq=ts: sharp C=0.18410  crude=0.38441  ratio=0.479  Lam=0.09322/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   crude columns (N1 form): spatial 10.5486 temporal 6.9194
+   sharp rows: spatial 5.5864 temporal 3.3137;  sharp columns per class (z): max 5.5866 (temporal-z 3.3131, spatial-z 5.5866)
+   TV-Lipschitz columns: max 2.8848/rad (temporal-z 1.6672, spatial-z 2.8848)
+   direct Hamming route unavailable (sharp column 5.5866 >= 1)
+
+beta=2.3 b=8 L sqrt(sigma)=2.80 content=PASS  F_ts=0.054 F_ss=0.171 A_ts=-0.000595 A_ss=0.00149
+   pair recv=s plaq=ss: sharp C=0.07352  crude=0.17035  ratio=0.432  Lam=0.03681/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=s plaq=ts: sharp C=0.02324  crude=0.05434  ratio=0.428  Lam=0.01163/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=t plaq=ts: sharp C=0.02308  crude=0.05434  ratio=0.425  Lam=0.01155/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   crude columns (N1 form): spatial 2.3702 temporal 0.9782
+   sharp rows: spatial 1.0217 temporal 0.4154;  sharp columns per class (z): max 1.0210 (temporal-z 0.4174, spatial-z 1.0210)
+   TV-Lipschitz columns: max 0.5112/rad (temporal-z 0.2089, spatial-z 0.5112)
+   direct Hamming route unavailable (sharp column 1.0210 >= 1)
+
+beta=2.3 b=16 L sqrt(sigma)=5.60 content=NO_CONTENT  F_ts=0.0309 F_ss=0.0922 A_ts=-0.000138 A_ss=0.000817
+   pair recv=s plaq=ss: sharp C=0.03940  crude=0.09248  ratio=0.426  Lam=0.01971/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=s plaq=ts: sharp C=0.01321  crude=0.03098  ratio=0.426  Lam=0.00661/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=t plaq=ts: sharp C=0.01314  crude=0.03098  ratio=0.424  Lam=0.00657/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   crude columns (N1 form): spatial 1.2957 temporal 0.5577
+   sharp rows: spatial 0.5520 temporal 0.2364;  sharp columns per class (z): max 0.5517 (temporal-z 0.2373, spatial-z 0.5517)
+   TV-Lipschitz columns: max 0.2760/rad (temporal-z 0.1187, spatial-z 0.2760)
+   DIRECT Hamming route: c_TV = 0.5517 < 1, kappa_Ham <= 1.231, l_min = 12
+
+beta=2.4 b=4 L sqrt(sigma)=1.03 content=NO_CONTENT  F_ts=0.835 F_ss=1.33 A_ts=-0.034 A_ss=0.00135
+   pair recv=s plaq=ss: sharp C=0.59170  crude=0.87015  ratio=0.680  Lam=0.32579/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=s plaq=ts: sharp C=0.39075  crude=0.70581  ratio=0.554  Lam=0.20597/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=t plaq=ts: sharp C=0.49727  crude=0.70581  ratio=0.705  Lam=0.26212/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   crude columns (N1 form): spatial 14.6767 temporal 12.7047
+   sharp rows: spatial 9.4449 temporal 8.9508;  sharp columns per class (z): max 9.8710 (temporal-z 7.6726, spatial-z 9.8710)
+   TV-Lipschitz columns: max 5.3699/rad (temporal-z 4.0444, spatial-z 5.3699)
+   direct Hamming route unavailable (sharp column 9.8710 >= 1)
+
+beta=2.4 b=8 L sqrt(sigma)=2.06 content=NO_CONTENT  F_ts=0.113 F_ss=0.338 A_ts=-0.00161 A_ss=0.00343
+   pair recv=s plaq=ss: sharp C=0.14749  crude=0.32798  ratio=0.450  Lam=0.07420/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=s plaq=ts: sharp C=0.04955  crude=0.11359  ratio=0.436  Lam=0.02482/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=t plaq=ts: sharp C=0.04884  crude=0.11359  ratio=0.430  Lam=0.02447/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   crude columns (N1 form): spatial 4.6173 temporal 2.0447
+   sharp rows: spatial 2.0672 temporal 0.8791;  sharp columns per class (z): max 2.0644 (temporal-z 0.8877, spatial-z 2.0644)
+   TV-Lipschitz columns: max 1.0379/rad (temporal-z 0.4447, spatial-z 1.0379)
+   direct Hamming route unavailable (sharp column 2.0644 >= 1)
+
+beta=2.4 b=16 L sqrt(sigma)=4.13 content=NO_CONTENT  F_ts=0.0344 F_ss=0.104 A_ts=-0.000154 A_ss=0.000692
+   pair recv=s plaq=ss: sharp C=0.04439  crude=0.10409  ratio=0.426  Lam=0.02221/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=s plaq=ts: sharp C=0.01469  crude=0.03449  ratio=0.426  Lam=0.00735/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=t plaq=ts: sharp C=0.01463  crude=0.03449  ratio=0.424  Lam=0.00732/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   crude columns (N1 form): spatial 1.4560 temporal 0.6208
+   sharp rows: spatial 0.6208 temporal 0.2633;  sharp columns per class (z): max 0.6206 (temporal-z 0.2640, spatial-z 0.6206)
+   TV-Lipschitz columns: max 0.3105/rad (temporal-z 0.1321, spatial-z 0.3105)
+   DIRECT Hamming route: c_TV = 0.6206 < 1, kappa_Ham <= 1.636, l_min = 15
+
+beta=2.5 b=4 L sqrt(sigma)=0.73 content=NO_CONTENT  F_ts=1.3 F_ss=1.79 A_ts=-0.0827 A_ss=-0.0112
+   pair recv=s plaq=ss: sharp C=0.95392  crude=0.95323  ratio=1.001  Lam=0.56474/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=s plaq=ts: sharp C=0.73717  crude=0.91680  ratio=0.804  Lam=0.41661/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=t plaq=ts: sharp C=1.19460  crude=0.91680  ratio=1.303  Lam=0.67513/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   crude columns (N1 form): spatial 16.9395 temporal 16.5024
+   sharp rows: spatial 15.8701 temporal 21.5028;  sharp columns per class (z): max 17.6998 (temporal-z 16.0137, spatial-z 17.6998)
+   TV-Lipschitz columns: max 10.3106/rad (temporal-z 9.0502, spatial-z 10.3106)
+   direct Hamming route unavailable (sharp column 17.6998 >= 1)
+
+beta=2.5 b=8 L sqrt(sigma)=1.46 content=NO_CONTENT  F_ts=0.339 F_ss=0.704 A_ts=-0.00728 A_ss=0.0052
+   pair recv=s plaq=ss: sharp C=0.31178  crude=0.61037  ratio=0.511  Lam=0.16021/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=s plaq=ts: sharp C=0.15306  crude=0.33144  ratio=0.462  Lam=0.07730/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=t plaq=ts: sharp C=0.15556  crude=0.33144  ratio=0.469  Lam=0.07856/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   crude columns (N1 form): spatial 9.3130 temporal 5.9659
+   sharp rows: spatial 4.6597 temporal 2.8001;  sharp columns per class (z): max 4.6697 (temporal-z 2.7700, spatial-z 4.6697)
+   TV-Lipschitz columns: max 2.3914/rad (temporal-z 1.3990, spatial-z 2.3914)
+   direct Hamming route unavailable (sharp column 4.6697 >= 1)
+
+beta=2.5 b=16 L sqrt(sigma)=2.92 content=NO_CONTENT  F_ts=0.0478 F_ss=0.149 A_ts=-0.00048 A_ss=0.000958
+   pair recv=s plaq=ss: sharp C=0.06378  crude=0.14855  ratio=0.429  Lam=0.03193/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=s plaq=ts: sharp C=0.02048  crude=0.04808  ratio=0.426  Lam=0.01025/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   pair recv=t plaq=ts: sharp C=0.02040  crude=0.04808  ratio=0.424  Lam=0.01021/rad  argmax(r,psi,t1,t2)=[0.    3.142 0.    0.   ]
+   crude columns (N1 form): spatial 2.0711 temporal 0.8655
+   sharp rows: spatial 0.8882 temporal 0.3672;  sharp columns per class (z): max 0.8879 (temporal-z 0.3681, spatial-z 0.8879)
+   TV-Lipschitz columns: max 0.4444/rad (temporal-z 0.1842, spatial-z 0.4444)
+   DIRECT Hamming route: c_TV = 0.8879 < 1, kappa_Ham <= 7.920, l_min = 65
+
+2.80 at the c4d box corner (|F_ts|,|F_ss|,|A_ts|,|A_ss|) = (0.0545, 0.1725, 0.0011, 0.002)
+   sharp column max 1.0364; rows spatial 1.0371; Lipschitz column max 0.5190/rad
+
+W1 + smoothing at 2.80 (central): best class order (0, 1, 2, 7, 5, 6, 4, 3), K_s = 2.254; col_TV = 1.0210, Lam_col = 0.5112/rad, W1 total pi c_W/(1 - c_W) = 8.572 rad
+   kappa_Ham <= K_s (col_TV + Lam_col D) = 12.18;  l_min (gamma_Z = 0) = 99;  l_min (gamma_Z = 1/2) = 197
+
+W1 + smoothing at 2.80 (box corner): best class order (0, 1, 5, 7, 2, 6, 3, 4), K_s = 2.279; col_TV = 1.0364, Lam_col = 0.5190/rad, W1 total pi c_W/(1 - c_W) = 8.572 rad
+   kappa_Ham <= K_s (col_TV + Lam_col D) = 12.50;  l_min (gamma_Z = 0) = 102;  l_min (gamma_Z = 1/2) = 202
+
+min/max ratio sharp/crude: 0.42397404700148733 1.3030119400445215
+P1 FAIL
+P2 PASS
+P3 PASS
+P4 PASS
+P5 PASS
+P6 PASS
+P7 FAIL
+runtime 43 s
