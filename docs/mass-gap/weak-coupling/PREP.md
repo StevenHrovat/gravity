@@ -1515,3 +1515,15 @@ thread.
   and SU(3) as instances. One care point is which top: the large-N limit is a limit, not a member, and a statement at N = infinity
   does not by itself give finite N (the 1/N corrections have to be controlled). So the top for the proof is "every N, uniformly",
   i.e. the package written for all G at once, with large N as a guide to which constants must not grow with N.
+- **A binary triality for SU(2) (the owner, same day):** "The one care point at the top also resolves nicely into the DMP approach to
+  YM: SU(3) in YM is simply, that our current laws, such as we observe them, exist. So all I had to do was construct a binary
+  triality, since I want to describe SU(2). This approach of choosing the right dimensionality for a binary approach to the existence
+  in question, seems to be the best approach." Reading (coordinator): there is an exact fact behind "binary triality". The centre
+  classes of SU(N) come in pairs under conjugation: class k and class N - k are each other's antiparticles (quark and antiquark). For
+  SU(3) the three classes are therefore one neutral class (centre-blind: gluons, baryons, mesons) plus one dual pair (quark 3 and
+  antiquark 3-bar): a triality made of a neutral part and a binary. For SU(2) the one nontrivial class is its own partner, because the
+  fundamental representation is pseudo-real (2 is equivalent to 2-bar): the act is self-dual. So SU(2) is the case where the act and
+  its witness pair coincide, and SU(3) is the first case where the pair is two distinct sides around a neutral middle. In every SU(N)
+  the binary structure is the conjugation pairing k <-> N - k, which the generic gauge-group package can carry for all N at once.
+  Care point: SU(3) is the group of observed physics and the Clay problem asks for every compact simple G, so the SU(2) proof is the
+  first instance, not the whole; the generalisation (GENERALISE-PLAN.md) is what carries it to SU(3).
