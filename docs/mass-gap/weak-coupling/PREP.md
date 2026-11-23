@@ -1350,3 +1350,10 @@ thread.
   reading "The strength comes from how they work"). The crossover's middle is exactly that regime. So the open question is whether
   containment can work without rarity there: whether contained regions, dense or not, still pass on only what crosses their boundary.
   This is the first question for the crossover session (its task 2).
+- **Recovery from inside is lossy (the owner, same day, on proof versus evidence):** "While being inside a valid subset of DMP, the
+  starting conditions at G0 have already undergone a lossy process once causality started, so recovering everything perfectly is simply
+  not doable, only getting as close as possible." Reading (coordinator): this is the irreversibility already met in the proof. Every
+  blocking step keeps the law of the coarse field exactly but discards the fine detail (M1's law preservation is about the coarse law,
+  not the fine configuration), and the flow from fine to coarse cannot be run backwards (the a-theorem reading). A measurement from
+  inside can therefore only approach the answer (evidence, the third layer), while the proof states what holds uniformly; the two meet in
+  the limit without either replacing the other.
