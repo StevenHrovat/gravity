@@ -2818,3 +2818,24 @@ thread.
   mirror for the norm to stay positive; this one is about two boxes in the same space-time, which share a boundary label. Two
   different splits, two different statements. (b) "Shared label" explains the classical part of gauge-field entanglement exactly; the
   rest (correlations of the fields inside, given the label) is ordinary quantum entanglement, not derived here.
+- **Coupled, not entangled, sharpened: it must be coupled while not entangled to run, to have an arrow of causality (the owner, same
+  day):** "The coupled not entangled actually sharpens: Must be coupled while not being entangled to run/have an arrow of causality."
+  Reading (coordinator): exact, as two conditions on the time direction, each necessary. (1) *Not entangled: past and future meet only
+  through the present.* For a local action such as Wilson's, the Euclidean measure is Markov across every time slice: given the
+  configuration on the slice, the past half and the future half are independent [classical; positive-weight Gibbs measure with a
+  nearest-neighbour action]. Nothing is shared between past and future except what passes through the present; this is what lets the
+  slice-to-slice kernel define a transfer matrix T at all, and with reflection positivity across the slice T is a positive
+  self-adjoint contraction (the OS contraction Q(tau u, tau u) <= Q(u, u), `M1/UVTVOS.lean`, Lean). If the two halves were mixed (two
+  time-like directions, the earlier entry "coupled, not entangled"), the norm becomes indefinite and nothing runs. (2) *Coupled: the
+  present actually carries something.* T must not be trivial: at beta = 0 the slices are independent (T is the projection onto the
+  vacuum), every correlation dies in one step and nothing is carried. Coupling means T passes a nonzero share of each state on, a
+  factor finitely below one (the ledger's range, entry "exactly one or finitely below"). (3) *Then it runs, with an arrow.* Steps
+  compose, T^a T^b = T^{a+b} (`pow_add_apply`, `OS/Window.lean`, Lean), only forward: e^{-tH} is a contraction for t >= 0, while
+  e^{+tH} is unbounded, so the semigroup has a direction. The contraction does not blow up the norm (`runs_two_targets`,
+  `Crossover/Runs.lean`, Lean, the formal "it runs"). So: Markov (not entangled) gives a transfer step, positivity makes it a
+  contraction, coupling makes it carry, and composition of contractions is one-way: the arrow of causality. Relation to the previous
+  entry: entanglement lives across space (two boxes at one time share the boundary flux label); the time direction must stay
+  Markov, coupled only through the present. Care points: (a) the Markov property here is conditional independence in Euclidean time, a
+  classical-probability statement; it is not the absence of quantum entanglement in the state (the vacuum at one time is entangled
+  across space, previous entry). (b) For actions of longer range, the "present" must be a thicker slice; the statement survives with
+  a block transfer matrix.
