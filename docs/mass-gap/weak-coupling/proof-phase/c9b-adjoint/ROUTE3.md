@@ -177,3 +177,61 @@ memory limit (24^4 at float32 fits easily; 12^4 trivially).
 - The step at `beta = 2.15` (transferred from 2.3).
 - `tau` at `b = 8` (T-B''s `b = 4` value used, marked).
 - The typical-background TV reduction (15-30 %) is a rough reading of N2's `|A|` dependence, not computed here.
+
+## 7. The two CPU checks (2026-11-23; pre-registered in `PREREG-PILOT2.md`, addition for ROUTE3)
+
+**(a) T-V2: tuning pre-step at `beta = 2.15`, `b = 4`** (12^4, `kappa_c = 10`, preconditioned; `pilot2_TV2.json` / `.log`; 3.5 min CPU).
+
+| tuning block (`eps`) | acceptance |
+|---|---|
+| 0.05 | 0.0 |
+| 0.025 | 0.2 |
+| **0.0125** | **0.9** |
+
+Measured at the tuned step: acceptance 0.93, **2.95 s per trajectory** (CPU), `tau_int(V_x)` 1.9, `tau_int(S)` 0.3. **USABLE**; tuned
+`eps` as predicted (0.0125). Prediction miss: the expected 10-13 s per trajectory was 4 times too high. The cause is identified: the
+index-array cache added after T-B' (for the GPU) also speeds up the CPU path (T-B' at `beta = 2.3` took 11.6 s before it).
+`L sqrt(sigma)` at `beta = 2.15`, `b = 4` is about 2.1-2.2 (recalled `a sqrt(sigma)`), not 2.8.
+
+**(b) C-A: condition A's conditional mass from the W2 snapshots** (`ca_condmass.py` -> `ca_condmass.json`, end snapshots;
+`ca_condmass_mid.json`, the check; read-only use of `../c9a-crossover/w2/runs/narrow/`; 23 s CPU).
+- Data: 8 sampled instances per coupling (one frozen outside and one block field each), 16 independent chains per instance, 6^4 fine
+  boxes, one-step good blocking `b = 2`, `w = 0.5`, soft constraint.
+- Statistic: the conditional connected correlator of parallel plaquettes `r` apart (perpendicular, no shared links), jackknife over
+  chains.
+
+| `beta` | `C(1)/C(0)` | `C(2)` (end) | `m_f` (per fine unit) | `m L_block` (`b = 2`) | mid-snapshot check |
+|---|---|---|---|---|---|
+| 2.3 | 0.027 | 2e-5 +- 1.3e-4 (not resolved) | >= 2.2 (lower bound) | **>= 4.4** | C(2) resolved at 2.2 sigma: **m L_block = 4.1** |
+| 3.5 | 0.024 | 6e-7 +- 6.6e-5 (not resolved) | >= 1.8 (lower bound) | **>= 3.6** | lower bound 3.6 |
+
+**Reading** (numerical; evidence only by the provability rule):
+- Conditioning on the block field gives a conditional mass of about **4 in block units** at `b = 2` (4.1 resolved at `beta = 2.3`, mid
+  snapshots).
+- It is above the unconstrained glueball scale (`a m_{0++}` about 1.3 at `beta = 2.3`, recalled): the constraint raises the mass, as
+  condition A needs.
+- It is **below the `2 pi` assumed in section 2**.
+- It holds at typical (sampled) block fields only; Lemma C needs a supremum over coarse data.
+- The transfer to `b = 8` (`m L1` about 4) is a heuristic: a Poincare constant in block units, with W2's one-step `w = 0.5` blocking,
+  not c3b's three-step `w = 2` blocking.
+
+**What it changes in section 2.** With `m L1` about 4.1 and the `b = 8` prefactor, the shell terms over `c C_A` are:
+
+| `d` | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|
+| shell term | 290 | 9 | 0.3 | 0.007 |
+
+So the tail is small only from **cell distance 8** on, and the inside part grows to `d <= 7`. The analytic leg reaches even less than
+section 2 assumed.
+
+## 8. Does either check change the recommendation?
+
+No.
+- (a) gives a usable, cheap `b = 4` point (2.95 s per trajectory on the CPU, before any GPU speed-up), so the V2 projection of section
+  4 drops by roughly 2-3 times on the CPU side. But the small box still **can only refute**, and the fit predicts it will not.
+- (b) moves the analytic tail's reach outwards (`d >= 8` instead of `>= 5`): the collar-attenuated part bounds only far shells, and
+  the inside part, the gap-strength residue, gets larger, not smaller.
+
+Both point the same way as before: the IR question at `L1` sits in the inside part, which neither the analytic tail bound nor a
+refutation-only measurement can settle. The recommendation stands: no GPU run for the small box in this form. The positive direction
+needs a worst-case argument for the inside part.

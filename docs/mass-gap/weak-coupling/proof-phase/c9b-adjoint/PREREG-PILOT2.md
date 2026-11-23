@@ -90,3 +90,33 @@ two `beta` values at a matched physical point, the measured ratio is compared wi
 with beta": the option in use, `z = 2`, the measured `S` exponent where available). **If the measured ratio exceeds 3 times the
 projection, stop and report before any larger run.** Separately, if any monitored `tau_int` is not resolved (above `n_meas/4`), that
 also stops before any larger run.
+
+## Addition (2026-11-23, ROUTE3.md section 5, coordinator-approved within the owner's route; before any data of these two checks)
+
+**(a) T-V2: the tuning pre-step at `beta = 2.15`, `b = 4`** (12^4, coarse 3^4, `kappa_c = 10`, preconditioned, `npre` 100,
+`n_meas` 30, seeds 44 / 4003; `ir_constrained.py tune`, 30-minute cap).
+- Physical scale: `a sqrt(sigma)` at `beta = 2.15` is about 0.53-0.56 (recalled, not measured here), so `L sqrt(sigma)` is about
+  2.1-2.2 at `b = 4`. Reaching 2.8 would need `beta` about 2.0-2.05, the edge of the scaling window. This check fixes the cost at the
+  nearest reasonable point.
+- **Expectation:** the stiffness is set by the coherent mode (`n_eff`, independent of `beta` to first order), so tuned **`eps = 0.0125`**
+  (as T-B'), acceptance >= 0.6, about 10-13 s per trajectory (CPU), `tau_int <= 3`.
+- Rules: as T-A (usable gap).
+
+**(b) C-A: condition A's conditional mass from the W2 snapshots** (`../c9a-crossover/w2/runs/narrow/launch_b*.npz`, read only).
+- Data: chain A's box links (6^4 fine box, frozen outside) under the soft constraint to the one-step good blocking (`b = 2`, `w = 0.5`).
+  Sampled block fields only; per instance (one outside and one block field) 16 independent chains, snapshots at the end (the mid
+  snapshots only as a check). Both couplings, 2.3 and 3.5.
+- Statistic: the conditional connected correlator of fine plaquettes, `C_j(r) = <P(x) P(x + r rho)>_j - <P(x)>_j <P(x + r rho)>_j`.
+  Here `<.>_j` is over the chains of instance `j`, `P = q0 = (1/2) tr U_p` for plaquettes in plane `(mu, nu)`, `rho` perpendicular to
+  the plane (no shared links), both plaquettes in the box. It is averaged over positions and orientations, then over instances, and
+  normalised by `C(0)`.
+- Errors: jackknife over chains within instances.
+- Fed statement: condition A of `DICHOTOMY.md` 8.6 / Lemma C (`WL.md` 6.2), the conditional mass `m` of the collar field given coarse
+  data, which sets the analytic tail's reach in `ROUTE3.md` section 2. By the provability rule this is **evidence only**: typical
+  sampled block fields, not the supremum over coarse data that the lemma needs.
+- **Expectation:** the block-Poincare heuristic `m L_block` about `2 pi` gives `m_f` about `pi` per fine unit at `b = 2`, i.e.
+  `C(1)/C(0)` about 0.04 and `C(2)` in the noise. Without the constraint, the `0++` glueball mass `a m` is about 1.3 at `beta = 2.3`
+  (recalled) and about 0.5 at 3.5.
+- Rule: if `C(2)` is resolved (above 2 sigma), report `m_f = log(C(1)/C(2))` with its error. Otherwise report the lower bound
+  `m_f >= log(C(1)/(2 sigma_C(2)))`. In both cases report `m L_block = m_f b` with `b = 2`; the transfer to `b = 8` (`m L1`) is a
+  heuristic (a Poincare constant in block units) and is marked as such.
