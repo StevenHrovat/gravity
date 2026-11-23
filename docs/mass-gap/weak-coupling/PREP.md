@@ -2388,3 +2388,14 @@ thread.
   of their "value as a tool, or block, later on". The owner's "first true act" (two new derivations used together, sharing existence
   but not possibility) points to counting combined pairs of derived lines. Sent to the P vs NP session as round (A) of
   `docs/pnp/CP-DUALITY.md`, together with (B) the positivity template from GRH (SOS pseudo-expectations: the system runs to degree d).
+- **The pairs of derived lines are the entanglement through which the HTF acts in NP (the owner, same day):** "The pairs of derived
+  lines is the entanglement through which the HTF acts in NP." Reading (coordinator): in Yang-Mills the HTF (a Higgs-type field over
+  every DB) carries a certificate only if it interacts, i.e. loses something at each DB. In proofs the analogue of that interaction is
+  a combination: a new derived line built from two earlier derived lines (two lemmas used together), not a single derived line. The
+  testable form: the cost measure for cutting planes must charge for such combinations across a crossing; a pairwise measure may give a
+  duality floor where a per-line measure fails. Passed to the CP-duality round.
+  The Tate round of the same day (`docs/rh-guide/grh/TATE.md`, `GRH/Tate.lean`) gives the GRH counterpart sharply: local functional
+  equations plus global Poisson summation allow off-line zeros (the Davenport-Heilbronn combination mod 5 has a self-dual functional
+  equation and zeros off the line), so the reductio needs a sign; the one local sign available is Lambda(n) >= 0, which with Landau turns
+  a one-sided square-root bound on psi(x) - x into the contradiction, and that bound is global. Positivity cannot be assembled place by
+  place: different primes live on disjoint lattices and can exchange only the identity part, and each prime block is indefinite (Lean).
