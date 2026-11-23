@@ -3071,3 +3071,27 @@ thread.
   the win. (b) A route that would close O1 this way: an integer-valued invariant of the box whose every nonzero value costs, in free
   energy and uniformly in the outside, more than log mu_4 per box. Passed to the GRH-lens round as a lead for "what turns
   irreducibility into uniform slack".
+- **The floor of the free energy is given by the quantum and tick of assertion, a smallest possible action; asymptotic freedom comes
+  from being a subset of DMP that runs (the owner, same day):** "The floor of free energy is given by the quantum and tick of
+  assertion/action, which defines a smallest possible action, with the full asymptotic freedom that is needed given simply by being a
+  subset of DMP that runs." Reading (coordinator): both halves have exact counterparts, and the duality of the half-turn entry decides
+  which free energy the smallest action floors. (1) *The smallest action floors the twist, and through the half-turn the electric
+  side.* The quantized twist has a smallest action: |Q| >= 1/2 gives S >= 4 pi^2 / g^2 (Bogomolny with 't Hooft twist,
+  `CONTAINMENT.md` 6.2) [classical]. That is a floor on the *twist* free energy F_tw at weak coupling, and it makes the electric flux
+  cheap there: small boxes do not confine, which is the asymptotically free side. The electric floor comes from the dual side: by the
+  half-turn (elec, rotation_check), F_e is large exactly when the twist is nearly free, c = e^{-F_tw} near 1. O1 asks for
+  c >= 0.743, i.e. F_tw <= 0.297 at the hand-over box for every outside. So the smallest action sets the start, and the floor of the
+  electric free energy appears when the many ways to place the twist (entropy) outweigh that smallest action. (2) *Asymptotic
+  freedom makes the smallest action run down to the hand-over.* With the running coupling, the twist's action floor at box size L is
+  4 pi^2 / g^2(L), and g^2(L) grows with L (beta_0 = 11N/3 > 0: 22/3 for SU(2), 11 for SU(3)) [classical, one loop]. So the floor is
+  huge for small boxes and falls to order one at the scale where perturbation theory stops, which is the hand-over scale: the
+  crossover from "action wins" to "entropy wins" is where the quantum of action meets the tick of the running. (3) *"Given simply by
+  being a subset of DMP that runs."* There is a classical counterpart: in four dimensions the only renormalizable asymptotically free
+  theories contain non-abelian gauge fields (Coleman-Gross 1973), and the standard theories without asymptotic freedom are trivial in
+  the continuum: phi^4 in four dimensions is proved trivial (Aizenman-Duminil-Copin 2021), QED is believed to be. So "a
+  four-dimensional interacting theory that runs in the continuum needs asymptotic freedom" matches what is known [classical, with the
+  general statement a belief, not a theorem]. Care points: (a) the floor on the action is not by itself a floor on F_e; the electric
+  floor needs the entropy of twist placements to beat the twist's running action at one box of fixed physical size, uniformly over
+  outsides. That balance sits exactly where perturbation theory fails, so it is non-perturbative: it is O1, now stated as
+  F_tw(L) <= 0.297 at the hand-over box. (b) Asymptotic freedom is classical and perturbative; its rigorous control at short distances
+  is Balaban's programme and the external construction (III.9.1, audit item), not proved here.
