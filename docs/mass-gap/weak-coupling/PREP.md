@@ -1507,3 +1507,11 @@ thread.
   first members. That is the "generalised way" in the physics. For the proof, the gauge-group package of GENERALISE-PLAN.md written
   once for every N is the same step: the balance axioms of each N-ality are its centre Z_N and how it acts (e^{2 pi i k/N}), so no
   superset has to be built by hand.
+- **Define existence at the top, see what falls out at the bottom (the owner, same day):** "That the 'no information across a DB' holds
+  for N-alities seems sound. The trick is all about defining the correct existence at the top, then seeing what falls out at the
+  bottom, which is also how I constructed the system." Reading (coordinator): the embedded SU(2) losing its centre inside SU(3) is
+  that rule in group terms: the Z2 act does not cross into the Z3 centre, only the group elements do. Top-down is also how the
+  generalisation is planned (GENERALISE-PLAN.md): state and prove for a general compact simple G with centre Z(G), then obtain SU(2)
+  and SU(3) as instances. One care point is which top: the large-N limit is a limit, not a member, and a statement at N = infinity
+  does not by itself give finite N (the 1/N corrections have to be controlled). So the top for the proof is "every N, uniformly",
+  i.e. the package written for all G at once, with large N as a guide to which constants must not grow with N.
