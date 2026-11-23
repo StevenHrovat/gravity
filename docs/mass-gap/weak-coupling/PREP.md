@@ -1698,3 +1698,10 @@ thread.
   translation; that is the Hawking-Tolman structure of point (2) above, which holds as stated. The time-dilation entry before it is
   read the same way: the remnants attached to the DB enter the Euclidean description, and the redshift factor is what the outside
   sees. The exploratory settling test on W2 stays as planned; it measures the sampler's settling, which is a separate question.
+- **Estimates undershoot at one end and overshoot at the other (the owner, same day, on the W2 timing):** "It makes sense that a
+  broad estimation would undershoot at one end and overshoot at the other. Since with duration the 'existence inertia' builds up, the
+  system might get more efficient, but it also gets more complicated to run in turn." Reading (coordinator): the run shows exactly
+  this split. The beta = 2.3 launches took 2609 s against 1971 s projected (undershoot), because the timing was done at beta = 3.5
+  and rough boxes lengthen the rejection loops; the third launch then came in under its projection (598 s vs 657 s). Per sweep the
+  weak-coupling end is cheaper (higher acceptance, "more efficient"), but it needs twice the sweeps to settle (T = 600 vs 300, "more
+  complicated to run"); a single-point estimate cannot capture both trends, so it errs in opposite directions at the two ends.
