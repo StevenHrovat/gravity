@@ -1,0 +1,37 @@
+== 1. Twist ratios on the saved data (c = Z_tw/Z)
+   O1 needs c > (mu_4 - 1)/(mu_4 + 1) = 0.7427; self-dual hand-over c = 0.4142
+   SU(2) proxy beta 2.3 L  6 x 2.10: c = 0.946376 (c_lo 0.9434)  elec = 2.76e-02  above O1 bound: True
+   SU(2) proxy beta 2.3 L  8 x 2.80: c = 0.999214 (c_lo 0.9987)  elec = 3.93e-04  above O1 bound: True
+   SU(2) proxy beta 2.7 L 32 x 3.38: c = 0.999939 (c_lo 0.9999)  elec = 3.07e-05  above O1 bound: True
+   SU(2) proxy beta 2.3 L 10 x 3.50: c = 0.999990 (c_lo 1.0000)  elec = 4.87e-06  above O1 bound: True
+   SU(2) proxy beta 2.5 L 20 x 3.64: c = 0.999990 (c_lo 1.0000)  elec = 4.84e-06  above O1 bound: True
+   SU(2) proxy beta 2.6 L 28 x 3.91: c = 0.999999 (c_lo 1.0000)  elec = 6.53e-07  above O1 bound: True
+   SU(2) proxy beta 2.4 L 16 x 4.13: c = 1.000000 (c_lo 1.0000)  elec = 1.14e-07  above O1 bound: True
+   SU(2) proxy beta 2.3 L 12 x 4.20: c = 1.000000 (c_lo 1.0000)  elec = 6.04e-08  above O1 bound: True
+   max |elec(c) - szego(c)/(1+c)^2| = 1.0e-17
+   Z2 4D L=4 beta 0.05: c = 0.995 (log -0.005 +- 0.002)  above O1 bound: True
+   Z2 4D L=4 beta 0.30: c = 0.9773 (log -0.023 +- 0.016)  above O1 bound: True
+   Z2 4D L=4 beta 0.60: c = 2.792e-08 (log -17.394 +- 0.142)  above O1 bound: False
+== 2. Schur-parameter consistency is vacuous (Verblunsky: the reflection sequence is free in the disk)
+   beta 2.3 twist ratios, L = 6,8: smallest eigenvalue +2.938e-05, round trip error 2.2e-16
+   random, 8 values in (-0.95, 0.95): smallest eigenvalue +1.492e-03, round trip error 6.8e-15
+   the O1 sequence, 6 values equal to 0.743: smallest eigenvalue +4.455e-05, round trip error 5.0e-14
+== 3. Effective mass along the transfer chain (positivity: m_eff(t) does not rise)
+   glueball_meff: 29 consecutive pairs over 5 runs, rises > 2 sigma: 0, largest rise 1.88 sigma
+   torelon_meff: 34 consecutive pairs over 5 runs, rises > 2 sigma: 0, largest rise 0.72 sigma
+== 4. The half-turn and the hyperbolic ledger
+   lossless               c = 0.000000  sphere angle   0.000 deg  Poincare distance = electric cost 0.000000
+   self-dual hand-over    c = 0.414214  sphere angle  45.000 deg  Poincare distance = electric cost 0.881374
+   two hand-over steps    c = 0.707107  sphere angle  70.529 deg  Poincare distance = electric cost 1.762747
+   O1 bound (mu_4)        c = 0.742745  sphere angle  73.206 deg  Poincare distance = electric cost 1.913151
+   three hand-over steps  c = 0.867295  sphere angle  81.870 deg  Poincare distance = electric cost 2.644121
+   closure                c = 1.000000  sphere angle  90.000 deg  Poincare distance = electric cost inf
+   one-box floor log mu_4 = 1.913151; hand-over step cost 0.881374
+   loss 0.000 per composition: steps needed 3
+   loss 0.100 per composition: steps needed 3
+   loss 0.200 per composition: steps needed 3
+   loss 0.244 per composition: steps needed 4
+   loss 0.300 per composition: steps needed 4
+   loss 0.400 per composition: steps needed 4
+   largest loss per step that three steps can afford: 0.243657
+   series/parallel swap: max error over 1000 random pairs 2.5e-10

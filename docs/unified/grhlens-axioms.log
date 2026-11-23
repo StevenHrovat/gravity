@@ -1,0 +1,38 @@
+== build ProofPhase.Unified.GRHLens
+Build completed successfully (8926 jobs).
+== declarations: 32
+== axioms
+'ProofPhase.Unified.cayley' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.re_cayley' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.schur_iff_caratheodory' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.cayley_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.elec_eq_szego' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.z2_sectors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.z2_realize' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.oneBox_sector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.mom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.mom_logconvex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.stepRatio_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.effMass_anti' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.step_le_of_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.localizing_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.halfTurn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.inv_sqrt_two_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.halfTurn_transpose' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.halfTurn_mul_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.halfTurn_mobius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.elec_fixed_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.fixed_antipodal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.elec_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.szego_of_elec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.elec_oplus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.elec_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.two_steps_short' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.three_steps_clear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.Separates' does not depend on any axioms
+'ProofPhase.Unified.separates_swap' does not depend on any axioms
+'ProofPhase.Unified.oneBox_twist_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.xor_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.twoBox_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/GRHLens.lean

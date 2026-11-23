@@ -3138,3 +3138,34 @@ thread.
   in four dimensions [classical]; the binding that ends the ODP is the twist sheets spanning (previous entry), which the fractional,
   twist-carrying instantons are one form of. (c) The binding is between sectors at one time (nodes in configuration space), so it is
   consistent with "coupled, not entangled" along time.
+- **The tunnelling identity extends to SU(N) with the bounds established earlier (the owner, same day, on care point (a) of the
+  entry above):** "For the carepoint: The identity should be extensible to SU(N) with the bounds established earlier." Reading
+  (coordinator): yes, exactly, in the model, and with one new structural fact. (1) *The identity for Z_N.* N nodes (the centre
+  sectors of SU(N)), a Z_N-invariant tunnelling H (circulant, nonnegative hopping), twisted traces Z_k = tr(X^k e^{-TH}) with X the
+  cyclic shift (the twist by the centre element omega^k). The electric sectors are the Z_N Fourier transform,
+  Z_e = (1/N) sum_k omega^{-ek} Z_k, and Z_e / Z_0 = e^{-T (E_e - E_0)} exactly, E_e the tunnelling gaps. For N = 2 this is
+  elec(c) = e^{-T gap} of the previous entry. (2) *The bounds.* 0 < Z_k < Z for every k != 0 (each twisted box exists and is
+  strictly less than the untwisted: positivity and the strict sign), and Z_k = Z_{N-k} (conjugation pairs k with N - k, the N-ality
+  reading); the gaps of e and N - e coincide. (3) *The rotation for SU(N).* The Z_N Fourier matrix F is unitary with F^2 = C, the
+  conjugation k -> -k, and F^4 = 1. For N = 2, C is the identity and F is the half-turn (Hadamard, `rotation_check`); for every
+  N >= 3, F is a quarter-turn whose square is exactly the N-ality pairing of a class with its dual. SU(2) is self-dual (pseudo-real),
+  which is why its duality is a half-turn; SU(3) has the dual pair 1 <-> 2, so its duality needs two applications to come back to
+  conjugation. Checked for N = 2, 3, 4, 5, 6, 8 with several hoppings (`docs/unified/zn_tunnel_check.py`, `.log`; numerical, all
+  checks exact to floating point) [classical facts: circulant matrices are diagonalised by the discrete Fourier transform; F^2 is
+  the reversal]. Care points: (a) in Lean the centre elements of every SU(N) are in place (`General/Centre.lean`), but the strict
+  bound Z_tw < Z is proved only for SU(2) (`su2_Ztw_lt_Z`, `Flip/Strict.lean`); for SU(N) the strict bound for every k != 0 is the
+  natural next Lean item (same mechanism: the twisted Boltzmann weight is positive and differs on a set of positive measure).
+  (b) As for N = 2, identifying the lattice twist ratios with tunnelling gaps is the transfer-matrix reading, not formalised.
+  (c) O1 for SU(N) becomes a condition on each electric sector e, with its own path threshold; the encoder of each sector is
+  the ratio Z_e / Z_0.
+  The owner adds (same day): "SU(5) and SU(11) are the known working candidates, so testing them makes the most sense for
+  extensibility, with the inbetween as tests." Done (coordinator): `zn_tunnel_check.py` now runs every N from 5 to 11 with a generic
+  nonnegative hopping (fixed seed) besides the earlier cases. For each N all three checks hold: the identity Z_e / Z_0 =
+  e^{-T (E_e - E_0)}, the bounds 0 < Z_k < Z with Z_k = Z_{N-k}, and F unitary with F^2 = conjugation and F^4 = 1 (a quarter-turn
+  for every N >= 3) (`zn_tunnel_check.log`) [numerical]. Structural difference noted by the check: Z_5, Z_7 and Z_11 are prime
+  centres with no proper sub-centre, so every nontrivial sector generates the whole centre; Z_6, Z_8, Z_9, Z_10 contain sub-centres
+  (Z_2, Z_3; Z_2, Z_4; Z_3; Z_2, Z_5), which is the owner's earlier reading "higher N-alities contain lower ones only by
+  divisibility". Care points on the physics: SU(5) is the Georgi-Glashow grand unified group (1974), whose minimal non-supersymmetric
+  form is disfavoured by proton-decay limits and by the couplings not meeting exactly; SU(11) is Georgi's family-unification model
+  (1979). Both are candidates in the literature, neither confirmed by experiment [classical]; the test here is of the encoder
+  identity and its bounds for their centres, not of the models.
