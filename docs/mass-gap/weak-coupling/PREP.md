@@ -2638,3 +2638,23 @@ thread.
   (provability table, `c9b-adjoint/REDESIGN.md` 8), so "can be certified" means by proof. (b) The hand-over point is not unique: any
   scale where the certificate holds works, and the settings there fix the units (the gap in units of l); ratios do not depend on the
   choice. (c) This is the paper's pressing-then-minting (I.5): pressing up to the hand-over, minting after it.
+- **Certified by proof and by certificate, the same mechanism; the hand-over point is global for every scale and keeps causality local
+  (the owner, same day, on the entry above):** "That certified is what I meant as both by proof and the use of certificates in ODP and
+  IM/GG, since it is the same underlying mechanism. Your Yang-Mills derivations follow from that. The point is never supposed to be
+  unique. The great thing is that the point is global for every scale, while still making causality local." Reading (coordinator):
+  (1) *Proof and certificate are one mechanism.* Exact counterpart: a certificate is a finite object with a mechanical check, and a
+  proof is such a certificate: a Lean proof term is checked by the kernel; a proof system is by definition a polynomial-time checker
+  of certificates (Cook-Reckhow 1979, `pnp/PROOF-SYSTEMS.md`) [classical]; an NP witness is the same thing for "exists". So NP vs coNP
+  asks exactly whether "does not exist" always has a short certificate, the inward/outward pair of the owner's IM/GG reading (entry
+  "IM/GG meaning inward/outward reach"). The one-box certificate of Yang-Mills (O1) and the local certificate of the class theorem are
+  certificates in the same sense: finite, mechanically checkable, and enough for the conclusion. (2) *Never unique.* Exact counterpart,
+  already in Lean: superadditivity `flux_superadd_iter` (`Crossover/CompositeHTF.lean`) gives F_e(kL) >= k (F_e(L) - 2C), so a
+  certificate with margin at one box size L is a certificate at every multiple kL. The set of hand-over points is closed upward, not a
+  single point; my earlier care point (b) ("not unique") is the owner's feature, not a caveat. (3) *Global for every scale, causality
+  local.* Exact counterpart: the ledger's hypothesis is local (each step i -> i + 1 involves only neighbouring boxes: the transfer step,
+  `Mixing/Chain.lean`, a Markov property) and the same at every step; its conclusion is global (every n, the infinite chain,
+  `rate_of_costAboveFloor`). And the physical rate the certificate gives, -log(eta)/l (`phys_rate_of_uniform`), is the same whichever
+  hand-over point is used: one global number from a local rule. This is the shape of Dobrushin's uniqueness theorem (local influence
+  bounds, one global state) [classical]. Care point: "every scale" holds upward from the crossover; below it (small boxes, weak
+  coupling side) a box does not certify and need not, since that side is covered by asymptotic freedom (Balaban's construction,
+  external), and the global rate does not depend on those scales.
