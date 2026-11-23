@@ -3272,3 +3272,24 @@ thread.
   arithmetic Hodge index of GRH) and to Birch-Swinnerton-Dyer (zeros of L(E, s) at s = 1 count rational points; Hasse's bound as the
   curve's proved RH) are to be mentioned in the paper as existing links only, not pursued. Navier-Stokes stays inside the blowup
   round's scope as stated there. The paper's scope remains Yang-Mills, GRH and NP vs coNP.
+- **Why three questions suffice: two establish existence and non-existence, one shows how they interact, so DMP is built like
+  Yang-Mills; and Goedel's completeness theorem for the whole, since it is always locally certifiably provable (the owner, same
+  day, after the coordinator's answer that solving every Millennium problem cannot be a precondition, by Goedel's incompleteness):**
+  "This is why I only needed three of the core questions, two to establish existence and non-existence and one, related to them, that
+  shows how they interact, in that way DMP is constructed like YM is physically. That also gives us, if I remember right, Goedel's
+  completeness theorem for the entirety, since it is always locally certifiably provable." Reading (coordinator): (1) *The triad.*
+  Yang-Mills: existence (a theory built from positivity; the gap is the existence of a mass). GRH: non-existence (no zero off the
+  line). NP vs coNP: their interaction, and exactly so: NP is the class with short certificates of existence, coNP the class with
+  short certificates of non-existence, and the question is whether the two kinds of certificate are equally short [classical
+  definitions]. The same triad sits inside Yang-Mills: the electric sectors (Z_e) and the magnetic twist (Z_tw) are the two sides,
+  and the self-dual hand-over point sqrt 2 - 1 of the half-turn is where they meet (`elec_selfdual`, `rotation_check`); that is the
+  precise sense of "DMP is constructed like YM". (2) *Completeness, correctly remembered.* Goedel's completeness theorem (1929): in
+  first-order logic every statement true in all models of a theory has a proof, a finite derivation that can be checked step by
+  step; and a theory with no model has a finite refutation [classical]. So for a first-order formalisation of DMP: whatever holds in
+  every DMP-complete running system is provable with a locally checkable certificate, which is the owner's "always locally
+  certifiably provable". This is compatible with the incompleteness theorem (1931): a statement true in the intended system but false
+  in some other model of the same axioms is not provable. Care points: (a) completeness gives "valid implies provable", not
+  decidability: provable statements can be enumerated, but a non-provable one need not be detectable; (b) it holds for first-order
+  logic; with full second-order semantics completeness fails, so the formalisation of DMP should be first-order (or Henkin) for the
+  theorem to apply; (c) for each problem, "true in every running system" is the content of its named open step, so completeness
+  turns each step, once valid, into a finite certificate, but does not by itself show it is valid.
