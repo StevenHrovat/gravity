@@ -3251,3 +3251,14 @@ thread.
   the rescaled frame all scales collapse to one, so a certificate at one scale (a damping above the residual, verified rigorously)
   carries to all time, the hand-over from finite to infinite. And the blowup time is where the solution's domain of existence ends:
   a boundary, the owner's DB. Started as a round (see the session for it).
+- **Primes on a curve: a different way of defining reality, with the zeros still following existence (the owner, same day, aside:
+  "But we dont want to snipe everything :D"):** "Also about primes on a curve, since this is just a different way of defining
+  reality, with 0s still following existence." Reading (coordinator), recorded and parked, no work started: this is the
+  Birch-Swinnerton-Dyer conjecture, the Millennium problem on elliptic curves, and "the zeros follow existence" is its statement. For
+  an elliptic curve E over Q, the primes enter through point counts mod p, a_p = p + 1 - #E(F_p); they build the L-function
+  L(E, s); and BSD says the order of the zero of L(E, s) at s = 1 equals the rank of E(Q), the number of independent rational points
+  (existence) [classical, conjecture]. So the zeros literally count what exists. Known: L(E, s) continues to the whole plane by
+  modularity (Wiles, Taylor-Wiles, Breuil-Conrad-Diamond-Taylor); the curve's own "RH over F_p" is Hasse's bound |a_p| <= 2 sqrt p,
+  proved, and is the function-field positivity of `OPEN-QUESTIONS-DMP.md` G4 (one positive duality explains both 1/2s there); BSD is
+  proved for analytic rank 0 and 1 (Gross-Zagier, Kolyvagin) [classical]. GRH for L(E, s) is part of GRH beyond Dirichlet, open, and
+  the positivity route's open step would cover it. Parked per the owner's aside.
