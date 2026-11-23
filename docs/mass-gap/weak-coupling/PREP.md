@@ -2190,3 +2190,16 @@ thread.
   successor. The one-box condition is the lattice form of exactly this: one box, its outside, and the requirement that the first
   thing above nothing costs a definite amount. (3) The distinction kept: {empty set} always exists, but it does not model a
   contradictory statement; it is the minimal existence, not a model of everything describable.
+- **A contradiction is a disagreement at G0, excised at once, leaving the remnant "it does not exist" (the owner, same day):** "A
+  contradictory statement, since it is neither existence or non-existence, is a disagreement in the layer above, so the G0. Once a
+  contradictory statement is established, it is immediately excised, with just the remnant of it not existing remaining. This is
+  fundamental to the theory, since only the non-existence, which is separated out from G0 through the ODP, can be the counterpart to
+  existence, so there has to be a way to deal with it, in order to form a DB and invert, so that a binary existence state, so
+  'running in a DMP-complete system', can be achieved." Reading (coordinator): this is reductio ad absurdum, stated as a process.
+  (1) In classical logic a contradiction cannot stay: from it everything follows (ex falso), so a consistent system must excise it.
+  (2) The excision leaves exactly one remnant: if assuming A leads to a contradiction, the system gains not-A, the statement that A
+  does not exist. In resolution this is literal: deriving the empty clause from a formula is the certificate that no world satisfies
+  it, and that certificate is the remnant (refutation completeness, `Proof/Complete.lean`). (3) The binary state then holds:
+  non-contradiction plus excluded middle give exactly two values, A or not-A, existence or its counterpart, and only that binary
+  state can be "run". So the contradiction is the disagreement that the ODP resolves, and its remnant is the well-defined
+  non-existence on the other side of the DB.
