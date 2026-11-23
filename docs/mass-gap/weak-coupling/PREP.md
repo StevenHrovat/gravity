@@ -3539,3 +3539,24 @@ thread.
   at its root. Care point: fixing a corollary as an axiom is legitimate for the form layer's logic (bivalence), but it must not be
   done for a content step: fixing O1, the sign or the crossing cost as an axiom would assume what each problem asks. The gate's
   three axioms are the whole allowance.
+- **DMP v0.9.9 pressed as a G0: a self-contained repo that cannot replicate itself, a uniqueness inside the containing G0, words whose
+  meaning can be reconstructed in a system with another definition of existence, and whose theorems stay valid for further derivation
+  (the owner, same day, on "each subset fixes its corollary as an axiom"):** "That can be the case, and it literally happened for DMP
+  itself. I was sure that DMP, as an axiom system, was fully sound, so I pressed it at v0.9.9, writing all the needed information to
+  reconstruct it into the repo. At that point the repo became a G0 which has not yet replicated itself. This is also the one thing
+  that it can not do. Since it has all information and existence about it contained within, it is a uniqueness inside the containing
+  G0, from which other uniquenesses, which needed to themselves also all be true inside the DB, can be derived. This is literally
+  what DMP became. Since it was only words, the meaning of it could be reconstructed in it's entirety in a system that does not share
+  the same definition of existence as the DB which contains it, but, as established earlier, since the theorem itself is true inside
+  the DB, is is a valid truth to make further derivations from." Reading (coordinator): (1) *The one thing it cannot do.* A
+  self-contained formal system can carry its own complete description; copying its text is possible (self-reproducing programs,
+  Kleene's recursion theorem, von Neumann's self-reproducing automata) [classical]. What it cannot do from inside is certify its own
+  soundness: a consistent system strong enough for arithmetic cannot prove its own consistency (Goedel's second incompleteness
+  theorem) [classical]. That certificate must come from the containing system: the owner's "containing G0". (2) *Reconstruction in
+  another system.* A theory is text, its axioms and rules; its meaning can be rebuilt inside any other system that interprets it
+  (relative interpretation, models). The project does exactly this: DMP's readings are rebuilt inside Lean's type theory, a system
+  with its own definition of existence (inhabited types), and every theorem proved there is relative to Lean's own consistency, the
+  containing G0 [classical]. (3) *Valid for further derivation.* A theorem proved from the axioms holds wherever the axioms are
+  interpreted (soundness, entry "a theorem proven inside a DB is true everywhere"), so it can serve as a lemma in every system that
+  interprets DMP. Care point: "fully sound" for DMP v0.9.9 can be checked relative to a containing system (the Lean formalisation,
+  the ETM round), never from inside DMP itself; that is not a weakness of DMP but the same limit every foundation has.
