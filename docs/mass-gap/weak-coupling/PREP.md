@@ -1576,3 +1576,20 @@ thread.
   for "stamping"). The DMP texts themselves still say White Key Holders (WKH); they are not edited from here (vendor/dmp is never
   edited); renaming there is for the DMP project. Physics touchpoint for the name: a white hole is the time reverse of a black hole,
   the region that only emits; in the reading above, the WHKs are what the gap emits into existence, while the DB absorbs.
+- **24/a^4 and -1/12 (the owner, same day):** "The '24/a^4' immediately springs out at me as connecting to -1/12. Could they come from
+  the same common origin or be connected in some other, elegant, way?"; then: "It would fit as an inversion and halving as the step in
+  asserting its existence." Reading (coordinator): the 24 in the Lean bound is 4! = Gamma(5): it comes from the Taylor term
+  x^d/d! <= e^x (`General/Counting.lean`, `poly_exp_le`, d!/a^d for general d), so in itself it is a volume count, not zeta. But there
+  is a real common origin, one level up. A regulated lattice sum splits into two parts: sum_n n e^{-a n} = 1/a^2 - 1/12 + O(a^2)
+  (checked numerically: the constant is -0.0833 at a = 0.1), and in general sum_n n^k e^{-a n} = k!/a^{k+1} + zeta(-k) + O(a). The
+  first part, Gamma(k+1)/a^{k+1}, is the bulk: it grows as the regulator is removed, and it is exactly the kind of term the Lean
+  bounds keep (24/a^4 is such a bulk term). The second part, zeta(-k), is the finite remainder that survives renormalisation: -1/12
+  for k = 1. So the bound and -1/12 are the two halves of one expansion (Euler-Maclaurin, or the Mellin pair Gamma and zeta).
+  Where -1/12 meets Yang-Mills directly: the confining flux tube's energy at length r is V(r) = sigma r - pi (d - 2)/(24 r) + ...
+  (the Luescher term, universal, seen on the lattice). It is the zero-point energy of the tube's transverse vibrations: each of the
+  d - 2 transverse directions carries (1/2) sum_n n = (1/2) zeta(-1) = -1/24 in units of pi/r. In d = 4 there are two transverse
+  directions, so the coefficient is -2/24 = -1/12. The owner's "inversion and halving" fits this term step by step: the halving is
+  the 1/2 of the zero-point energy per mode (24 = 2 x 12), the inversion is the 1/r (the energy of a mode is the inverse of its
+  length), and the sign is the Casimir sign, an attraction that the existence of the tube costs less. The two transverse directions
+  of a tube in four dimensions undo the halving, which is again the d = 4 pair. Not used by the gap proof; a consistency check on the
+  flux tube side (M1 FluxTube, the area law) that the lattice confirms.
