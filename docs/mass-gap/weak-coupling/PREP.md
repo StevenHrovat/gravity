@@ -3751,3 +3751,15 @@ thread.
   (condition A, the collar; Birkhoff-Hopf contraction where it applies); NP transports hidden bits across the two-party split in
   quanta of log m (lifting); GRH transports the margin with no damping, which is the precise reason the sign is hard (zero slack). The
   proof of each problem is then: the bridge's uncertainty, defined exactly, is transported across its DB without loss of sign.
+- **All the open steps are shaped for the corollary of running to be slotted in as the axiom of a running state (the owner, same
+  day, on the transport round):** "All the open things seem to be exactly shaped for the corollary of running to be slotted in as
+  the axiom of in a running state." Reading (coordinator): exactly, and this is the shape of every conditional theorem the project
+  has proved. Each open step is one statement "this object is in a running state": Yang-Mills, a cost above the floor at fixed
+  physical length (O1); GRH, the sign kept at every scale (`ScaleSign`); NP, a crossing cost per hidden variable. And each column's
+  theorem is "running state => result" (the ledger, the settle theorem `reaches_of_contracting`, the transport theorem with sign
+  preservation, `ym_instance`, `grh_instance`, `np_instance`, all Lean). So with "running" slotted in as a named axiom R, the paper's
+  main theorem reads: under R, Yang-Mills has a gap, the sign holds, the crossing cost is paid. That is a precise and valuable
+  statement, and it is what is proved. Care point, the same as before ("fixing a corollary as an axiom"): the Millennium questions ask
+  whether the specific objects (the Wilson measure in the continuum, the zeta and L-functions, strong proof systems) are in a running
+  state. For DMP-complete systems R holds by construction; for these objects R is exactly what has to be shown. So the slot is the
+  right shape, and filling it for the named object is the one open step per problem.
