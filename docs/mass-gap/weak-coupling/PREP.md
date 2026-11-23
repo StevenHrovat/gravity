@@ -2203,3 +2203,23 @@ thread.
   non-contradiction plus excluded middle give exactly two values, A or not-A, existence or its counterpart, and only that binary
   state can be "run". So the contradiction is the disagreement that the ODP resolves, and its remnant is the well-defined
   non-existence on the other side of the DB.
+- **Answer to open question 1 (composition without loss): the act carrier, the photon (the owner, same day):** "That has already been
+  long established with the example of the photon: The act carrier itself, is pure information, which, because of that attribute,
+  is inherently quantized by G0, which implies the verification of the correct count/associated act. That act, because it does not
+  itself have inherent existence, can travel through existence, but never experiences causality, because its existence is spanned
+  only by the two points, the act of its creation and the execution of the act which it carries. Since it does not extend beyond
+  that, no arrow of causality can be established. This means that an act carrier only exists while travelling, but does not have
+  existence while doing so, and when executing, swaps that perfectly, because there is no remainder, to giving locality to an act,
+  while divulging no more information, so it is the undefined (not existence or non-existence), being defined, a purely logical step,
+  with no loss." Reading (coordinator): each clause has an exact physical counterpart. (1) **No causality experienced:** a photon
+  travels on a null worldline, and the proper time between its emission and absorption is exactly zero; its history is spanned by
+  those two events only. (2) **Quantized, counted, no remainder:** it carries one quantum, hbar omega, and at each vertex energy,
+  momentum and charge are conserved exactly; nothing is left over. In field theory the carrier is a propagator between two vertices,
+  and gauge invariance (Ward identities) makes the transfer exact. (3) **So the composition rule DMP supplies is a conservation law:**
+  a certificate passes from one act to the next without loss when it is carried by a conserved quantity. (4) **For the open steps:**
+  in Yang-Mills the conserved quantity is already in hand, the centre flux (exactly conserved, in Lean); it is the very thing that
+  defeats screening. Read as a carrier, it is also what could carry the per-box certificate along: if the flux's free energy adds up
+  box by box along the line it crosses (superadditivity, F(D1 + D2) >= F(D1) + F(D2) minus boundary terms), the per-box 0.881 multiplies
+  into a decay over distance. That turns Y1 (the product over boxes) into a superadditivity statement for the carried flux. In GRH the
+  zeros on the line are the "null" objects: pure oscillation, neither growing nor decaying (the flat scaling characters). In P vs NP the
+  carrier is the conserved quantity a proof line names (the parity); there the cost of naming it, not its conservation, is the open part.
