@@ -1427,3 +1427,19 @@ thread.
   keep the proof's conditions and are worth having: (1) over the gauge group: any compact simple G, with M1's SO(3) x Z2 split
   becoming G/Z(G) and the centre layer Z(G) (Z_N for SU(N)); (2) d as an explicit parameter in Lean, so that d = 4 is used only where
   it is needed (Balaban's marginal scaling and the vortex-sheet capacity), with the OS, coupling and assembly parts already generic.
+- **A sane polynomial and P vs NP (the owner, same day):** "I just read that a sane polynomial was important for P vs NP, and that is
+  what we just created, so maybe that plugs in as well." Reading (coordinator): it plugs in, in two precise places, with one caveat.
+  (1) **The selection rule is a polynomial rule.** The theories that exist (previous reading) are those whose action is a polynomial in
+  the fields, of the degree that is marginal in their dimension, bounded below, and asymptotically free. Such a theory is described at
+  every scale by finitely many couplings, so its description stays a fixed size however far the scales run. A non-renormalisable
+  theory needs ever more couplings; an unbounded polynomial (phi^3) has no vacuum. That is the "sane polynomial" on the physics side.
+  (2) **The gap is where counting and sampling become polynomial.** This is a known theorem pattern on the complexity side. Dobrushin's
+  uniqueness condition (influence column below 1, the very quantity the IR session computes, 1.02 at L sqrt(sigma) = 2.80) makes the
+  local sampling dynamics mix in polynomial time, about n log n steps for n sites. For the hard-core model, Weitz (2006) gave a
+  polynomial algorithm for the partition function up to the uniqueness threshold, and Sly (2010) showed it is NP-hard just beyond it
+  (unless NP = RP). So the computational transition sits exactly at the physical one: decay of correlations (a gap) means the system
+  can be certified locally and cheaply; loss of uniqueness means it cannot. That matches the earlier reading "DMP-completeness has to
+  always be able to be certified locally".
+  Caveat: these results are about counting and sampling, and they assume P != NP rather than prove it. What the proof gains is a
+  second reading of its central quantity: getting the column below 1 at some scale is both the physical condition (the gap
+  propagates) and the computational one (the system is polynomially certifiable from that scale on).
