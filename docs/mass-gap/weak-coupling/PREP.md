@@ -2348,3 +2348,13 @@ thread.
   large for a moment; the sign holds only if the growing mean wins against every alignment a test function can resolve. The margin of
   1e-9 (INDUCTION.md, VARIATIONAL.md) says it wins, but only just. So the reading gives the mechanism (mean-zero fluctuations over a
   growing positive mean); the sign remains the statement that no resolvable alignment ever overtakes the mean.
+  The owner on point (3) (same day): "That goes back to the case of being instantly spanned by a DB at the moment of incorrect
+  assertion, so disagreement on G0." Reading (coordinator): this is the reductio form, and it states precisely what the proof must
+  supply. If an alignment of prime phases ever overtook the growing mean, Weil's form would have a negative direction, which is the
+  same as a pair of zeros off the line. The reading says such an assertion would be excised at once as a contradiction. In mathematics
+  that excision is available exactly when the off-line pair contradicts something already established (the Euler product, the
+  explicit formula, the functional equation, positivity of the real-place term). A negative direction is not a contradiction by itself:
+  it is consistent with the functional equation (`krein_off_line` shows duality alone allows the pair). So the reading turns the sign
+  into a reductio to construct: derive a contradiction from an off-line pair using only the arithmetic structure. That derivation is
+  the open step in its sharpest form, and it is what the 17-million-line Lean proof achieved by another route (a one-sided prime bound
+  plus Landau).
