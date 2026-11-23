@@ -4009,3 +4009,38 @@ thread.
   shared part only through the interpolant (entry "the two extremes", Craig), i.e. through the inversion that proves the link to the
   root. Whether that inversion always has a short, locally checkable form is exactly NP vs coNP. Passed to the NP sound-APIs round as
   framing: the API at the DB is the interpolant/inversion, and its size is the cost.
+- **GU is pretty much done, since it comes down to well-defined inputs, which is exactly what DMP can guarantee; this will be the
+  shape for all of them, so the Lean should become a pure API, as easily recreatable as possible (the owner, same day, on the GU
+  scoping round):** "GU is pretty much done, since it comes down to well defines inputs, which is exactly what we can guarantuee! This
+  will most likely be the shape for all of them, so we should optimize the lean to make a pure API approach as easily recreatable for
+  whatever one might need as possible." Reading (coordinator), with the gate's wording kept exact. (1) *What the GU round established:*
+  the structure is exact and in Lean (`General/GUCentre.lean`): the centre elements of SU(3) x SU(2) x U(1) acting trivially on the
+  Standard Model fields form a cyclic group of order 6 = 2 x 3 (CRT split), every invariant state has Q + triality/3 in Z, and the
+  SU(5) block embedding has exactly this Z_6 as kernel. The hypercharges are the input from which the Z_6 follows. (2) *The owner's
+  reading:* the inputs are well defined, and well-defined inputs are exactly what DMP guarantees, so GU reduces to a guaranteed input
+  plus a proved structure: the same shape as the three problems (named input, proved structure). (3) *Against the gate as written:* the
+  release criterion asks for "at least one checkable consequence"; the GU round found the Z_6 selection checkable (no fractionally
+  charged colour singlets, the minimal monopole charge) but not derived from a DMP theorem stated before the hypercharges, i.e. a
+  falsifiable reading, not a new consequence (`GU-SCOPING.md` 1, 6). Whether "well-defined inputs, guaranteed" meets the gate is the
+  owner's call on the gate's wording; recorded as open for the owner. (4) *The API direction:* started as a round, to turn the form
+  layer into a clean, reusable Lean API with templates for new instances.
+- **DMP.IM is the literal U(1) of a pressed system, its vocabulary (the owner, same day, on moving the form layer into the im
+  repository):** "It is the literal U(1) of a pressed system, it's vocabulary." Reading (coordinator): the two properties that make U(1)
+  the photon's group are exactly the properties of a shared vocabulary. (1) *One common circle:* the centre of every SU(N) lies on the
+  same U(1) (`General/Centre.lean`, Lean; entry "G0's U(1) possibility field"), so every part speaks in phases of one circle. (2)
+  *Abelian:* U(1) phases compose in any order with the same result, and its carrier (the photon) carries no charge of its own, so it
+  passes between parts without a handshake of its own (entries on the photon) [classical]. A vocabulary with these two properties is
+  one every part can use and none has to negotiate. That is the role the owner gives `im`: the medium in which content-free, certified
+  pieces are named once and used everywhere, never vendored (`im` README: "the machine- and audit-readable medium every CMOS part
+  speaks").
+- **The Lean equivalence ExtractAPI <-> LiftCPConst is the empty set of the U(1) start to 2, 3, from which IM can be constructed as a
+  translation (the owner, same day, on the NP sound-APIs round):** "The lean statement proved equivalent to it is the empty set of the
+  U(1) start to 2,3, from which IM can be constructed as a translation." Reading (coordinator): (1) *An equivalence is a translation.*
+  With propext, a proved P <-> Q becomes P = Q, so either statement can be rewritten into the other everywhere (`rw`): a lossless
+  translation between two vocabularies [classical; Lean]. (2) *Content-free:* the equivalence itself decides neither side; both stay
+  open; it carries no content, only the bridge, the "empty set" a construction starts from (entries "the tautology is the feature",
+  "rooted means well-founded"). (3) *IM as a dictionary of translations:* each proved equivalence between a named interface and an open
+  statement is one entry of the vocabulary: whoever later proves either side gets the other for free. `ExtractAPI <-> LiftCPConst`
+  (`Proof/SoundAPI.lean`) is such an entry; so are `scaleSign_iff` (the sign <-> positivity at every scale) and `ymOneBox_iff_refl`
+  (O1 <-> a bound on the twist ratio). Care point: an entry is a translation, not a proof; the arsenal grows by equivalences, and the
+  open steps are the entries whose either side is still to be proved.

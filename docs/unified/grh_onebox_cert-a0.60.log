@@ -1,0 +1,23 @@
+GRH one-box certificate.  a = 3/5 = 0.6,  e^(2a) = 3.3201  (3 < e^(2a) < 4)
+  N = 100 (certified space Poly_N), D = 40 (Taylor degree of K), M = N + D + 2 = 142,  precision 448 bits
+  c0 = -log pi - gamma - log 4a = [-2.59741428810 +/- 4.84e-12],  coefficients Lambda(n)/sqrt(n): n=2: [0.490129071734 +/- 2.74e-13], n=3: [0.634284100598 +/- 4.37e-13]
+  prime powers n with log n < 2a = [1.2000000 +/- 3e-12]: [2, 3];  log 4 = [1.3862944 +/- 3.89e-8], log 5 = [1.6094379 +/- 1.25e-8] (5 and all larger n have log n >= 2a, their terms vanish)
+[1] K Taylor at t=a to degree 40; Cauchy circle radius 2.8, max|K| <= [1.30323 +/- 4.90e-6]; eps_D <= [6.173e-28 +/- 2.31e-32]  (0.1s)
+[2] Gram block G (N x M) done; Gauss nodes: tau 143, eta 122.  G_00 = [0.07261051078 +/- 3.01e-12], G_99,99 = [4.0085916 +/- 2.29e-9];  max radius 2.73e-81  (34.5s)
+    symmetry |G_ij - G_ji| <= 7.38e-97 (must be ~ ball radius)  (34.5s)
+[8] cross-check G_00: frequency side (float, tail estimated) 0.0726105   x-space Gram 0.0726105   diff 2.0e-08
+[8] cross-check G_11: frequency side (float, tail estimated) 0.2578150   x-space Gram 0.2578151   diff -6.1e-08
+[8] cross-check G_44: frequency side (float, tail estimated) 0.5452682   x-space Gram 0.5452680   diff 1.8e-07
+[8] cross-check G_00+2G_02+G_22: frequency side (float, tail estimated) 0.6718899   x-space Gram 0.6718897   diff 2.1e-07
+[3] coupling block R_M done  (46.2s)
+[4a] log-piece tail Gram T_L: diag max 4.847e-03, T_L[0,0] = [1.23983e-5 +/- 3.37e-11]  (46.8s)
+[4b] jump-piece tail Gram T_J: diag max 1.906e-01  (48.1s)
+[4c] structure check, column m = 141: max |G_im - (singular + pole projection)| = 8.46e-133 (should be ~ eps_D-level)  (48.1s)
+[4d] ||Q_M e^(+-x/2)|| <= [5.38e-363 +/- 1.07e-366];  delta (analytic remainder) <= [7.41e-28 +/- 2.68e-31]  (48.1s)
+[5] rho = 123.000: phi_inf(rho) = [2.9743045 +/- 3.49e-8], phi_min = [0.72547819 +/- 1.76e-10], eta <= [0.00123 +/- 2.00e-6], max phi^- = [7.62101 +/- 2.37e-7],  ||Q_N e^(+-x/2)|| <= [6.24e-241 +/- 4.40e-244];  mu >= [0.71519535 +/- 1.39e-9]  (48.1s)
+[6] CERTIFIED: LDL^T of the final matrix with c = [1.500e-9 +/- 2.01e-13] succeeds, all 100 pivots > 0 (smallest pivot in [0.002293 +/- 1.57e-7]).  (49.4s)
+[7] Rayleigh quotient of a trial polynomial (degree < 100): inf W(f)/||f||^2 <= [1.60768e-9 +/- 1.73e-15]  (49.6s)
+
+RESULT  a = 3/5:  [1.500e-9 +/- 2.01e-13] * ||f||^2  <=  W(f)  for every f in L^2(-3/5, 3/5) (real or complex),
+        and inf_f W(f)/||f||^2 <= [1.6077e-9 +/- 1.83e-14]  (attained up to this by a polynomial).
+        inputs: N = 100, D = 40, M = 142, rho = 123.000, mu >= [0.715195 +/- 3.49e-7], eps_D <= [6.17e-28 +/- 2.77e-31], delta <= [7.41e-28 +/- 2.68e-31], eta <= [0.00123 +/- 2.00e-6]
