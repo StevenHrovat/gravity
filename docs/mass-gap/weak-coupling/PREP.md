@@ -2399,3 +2399,15 @@ thread.
   equation and zeros off the line), so the reductio needs a sign; the one local sign available is Lambda(n) >= 0, which with Landau turns
   a one-sided square-root bound on psi(x) - x into the contradiction, and that bound is global. Positivity cannot be assembled place by
   place: different primes live on disjoint lattices and can exchange only the identity part, and each prime block is indefinite (Lean).
+- **The HTF is smoothed to zero globally; only the remnants remain, as proof and anchor (the owner, same day):** "I would assume the HTF
+  to be smoothed to 0 globally over the combined path length it needs to get there, since flat is how existence is defined and returning
+  there would be sound. Only the remnants remain and act on existence as a proof, and an anchor in causality, of the act happening."
+  Reading (coordinator): geometry has an exact form of this. A connection whose curvature vanishes everywhere (flat, the field
+  "smoothed to zero") can still carry something that cannot be smoothed away: its holonomy around non-contractible loops. Flat
+  connections are classified exactly by these holonomies (Aharonov-Bohm: no field anywhere along the path, yet a measurable phase). So
+  "only the remnants remain" = the holonomy class, a topological, conserved quantity; in Yang-Mills that is the centre (Z2) flux, the
+  conserved quantity of the dichotomy and the 't Hooft sectors, which is exactly what the HTF carries and what no collar can screen. In
+  proofs the analogue is cut elimination: the derived concepts (lemmas, cuts) can be eliminated, returning the proof to the flat,
+  axioms-only form, and what remains is the theorem itself, the record that the derivation happened. In GRH the mean-zero prime wobbles
+  average out over the path, and what remains are the zeros (and the prime orbits as holonomy-like lengths log p). The reading thus
+  identifies the remnant in each problem with a topological or conserved invariant that survives global smoothing.
