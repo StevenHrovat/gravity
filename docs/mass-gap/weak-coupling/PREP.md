@@ -2080,3 +2080,14 @@ thread.
   boundary over the question" is the cut principle proved for resolution (`docs/pnp/PROOF-SYSTEMS.md`): some line must assert a
   middle-sized region and pay its boundary. All three are about the existence and shape of refutations; the open step is their size
   (short for every false question iff NP = coNP). Passed to the P vs NP session for its dichotomy-transfer note.
+- **Finite building blocks make everything constructible sound: the universal rarity solution? (the owner, same day):** "Since the
+  building blocks are defined at the start and need to be finite to exist, everything constructable in the system is automatically
+  sound, which is the universal rarity solution." Reading (coordinator): this supplies one of rarity's two halves universally, and
+  names exactly which half is still open. (1) **Soundness by construction** is a theorem: if every rule maps true premises to true
+  conclusions, everything derived is true (induction over derivations). (2) **The counting half of rarity** follows from finite
+  building blocks: with finite-range interactions and finitely many kinds of local pieces, the number of connected clusters of size n
+  through a point is at most K'^n (lattice-animal counting). This is the K' in DICHOTOMY.md's Peierls bound, and it is universal.
+  (3) **The cost half** is not given by finiteness: rarity needs each block of a bad cluster to cost more than log K' (Peierls:
+  K' e^{-cost} < 1). That is exactly where the dichotomy failed: at the SO(3) cut a flip costs nothing, so the cost half breaks there,
+  and at beta = 2.3 the near-cut set percolates. So finiteness gives the entropy bound for free; the open part is a lower bound on
+  the cost per block, which holds at weak coupling (beta = 3.5 data) and fails on the confining side, where disorder must take over.
