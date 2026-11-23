@@ -3863,3 +3863,17 @@ thread.
   ETM's edge once more: decidable and proven-by-decision on the contraction class (the one box, the settle bound), binary truth but no
   global decision beyond it. Care point: the open steps are statements over all scales or all outsides, unbounded; they become decidable
   only once reduced to a finite certificate, which is exactly what the hand-over and the one-box rounds try to do.
+- **The two extremes: a G0 a proof comes from, and an internal disagreement, which entangles by the decision of non-existence and
+  localises the state of shared existence (the owner, same day):** "With the extremes at one end being a G0 a proof comes from, and the
+  other an internal disagreement, which entangles by the decision of non-existence, which localizes the state of shared existence."
+  Reading (coordinator): exact, and the second extreme is Craig's interpolation theorem. (1) *One end: the root.* Every proof starts
+  from axioms (G0) and builds forward (entry "rooted means well-founded"). (2) *The other end: a disagreement.* A contradiction derived
+  from two sets of assumptions A and B is a decision of non-existence: there is no state satisfying both (a refutation). (3) *It
+  localises the shared existence: interpolation.* Craig's theorem: if A and B together are contradictory, there is a statement I that
+  speaks only about what A and B share (their common variables), with A implying I and B implying not-I [classical]. The disagreement
+  is pinned to exactly the shared part: I is the "state of shared existence", and both sides are tied to it, A from one side and B
+  against it: the owner's "entangles". In SAT the same localisation is the unsatisfiable core, the minimal set of clauses that already
+  disagree. (4) *Link to the NP column.* Interpolants can be read off refutations, and their size is tied to the refutation's size
+  (feasible interpolation, Krajicek) [classical]; this is the "interpolation split" already in `pnp/CP-DUALITY.md`, and lifting is
+  communication across exactly such a split. So the two extremes are the root (where proofs start) and the interpolant (where a
+  disagreement is localised to what both sides share), and the NP question asks how large that localised piece must be.
