@@ -3663,3 +3663,33 @@ thread.
   that is cheap to check" is, for non-existence, exactly NP = coNP: the question of this paper's third problem. And some existences
   have no certificate at all within a given system (Goedel, Turing; the ETM's c2). Care point: "near infinitely cheap" holds for the
   checking of what is certified, and the cost of certifying lives exactly in the open crossing cost.
+- **Genuinely new insight through a new assembly of existence is very hard; telling about the direct superset, existence, is easy,
+  which is why it appears in so many central places (the owner, same day, on cheap checking):** "This fits the idea that generating
+  genuienly new insight through a new assembly of existence is very hard, but telling about the direct superset, which happens to be
+  existence, which is why it appears in so many central places." Reading (coordinator): this is the form/content split once more,
+  in cost terms. Statements about the superset are content-free, hold everywhere (the terminal property, Lean) and are cheap to
+  check: positivity is existence, and it appears at the centre of Osterwalder-Schrader, Weil's criterion, Dobrushin's theorem,
+  Ricci flow's monotone entropy and every reconstruction in this work [classical]. A new assembly is a specific certificate inside
+  one instance, and finding it is the hard direction (search, not checking; the previous entry). Mathematics shows the same
+  pattern: general structural theorems are few and reused everywhere, while each new specific result needs its own construction.
+  Care point: the central places existence appears in are exactly where the form layer applies; the hardness of new insight is
+  exactly the three open steps.
+- **The hard part in GRH is drawing the connection to what Mathlib does not already presume to be existence (the owner, same day, on
+  the GRH tie-in round):** "This also fits the hard part in GRH being in drawing the connection to what Mathlib does not already
+  presume to be existence." Reading (coordinator): exact, and the tie-in round names it. The tie has two named inputs
+  (`docs/unified/GRH-TIE-IN.md` 0): the external RH and Dirichlet-GRH theorems, importable from their library; and the explicit-formula
+  identity that equates the ledger's prime-side moments (built from Lambda(n), the primes and the real place) with Weil's zero
+  pairing. Mathlib does not have the explicit formula. In the finite model the identity is a theorem; for the actual zeta function it
+  is the classical explicit formula (Riemann, von Mangoldt, Weil) [classical], not yet formal. So the bridge between the two existences,
+  the primes (what Mathlib has) and the zeros (what the external proofs reach), is exactly the piece outside Mathlib's presumed base:
+  the owner's "connection to what Mathlib does not already presume to be existence". Care point: formalising the explicit formula
+  would make the Dirichlet column a theorem with one external import only; it would still not give the sign from the primes alone,
+  which remains the open step.
+- **What is missing is "toy = not-toy" (the owner, same day, on the finite model):** "I do not know quite what the toy in mathlib
+  does, but I would assume it just asserts that it works, if the shape is correct? If that is the case, the thing mathlib does not
+  have is how toy = not-toy." Reading (coordinator): the conclusion is exactly right; one detail of the premise differs. The finite
+  model ("the toy") is this project's, not Mathlib's, and nothing in it is asserted: its moments are defined as sums over finitely
+  many atoms, so the identity between the prime-side moments and the zero pairing is proved by computation (Lean, `Unified/GRH.lean`,
+  `GRH/Weil.lean`, `GRH/TieIn.lean`). What is missing is precisely the bridge the owner names: the theorem that for the actual zeta
+  function (and Dirichlet L-functions) the prime-side sum equals the sum over the actual, infinitely many zeros. That theorem is the
+  explicit formula (Riemann, von Mangoldt, Weil) [classical], and it is not in Mathlib. Toy = not-toy is the explicit formula.
