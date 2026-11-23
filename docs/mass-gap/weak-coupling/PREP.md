@@ -2906,3 +2906,26 @@ thread.
   exactly, on the lattice; if it is the spacetime rotation of the modular flow, it waits for the continuum (O3). Open question to the
   owner's reading, recorded: which rotation the act uses, or whether DMP identifies the two (the spin-statistics connection ties a
   2 pi spacetime rotation to the sign of a spinor [classical], which is the one place where the two rotations meet).
+- **The rotation is the same: an act happens only at a DB, where only the encoder is relevant (the owner, same day, answering the
+  question above):** "The rotation is the same, because any DMP act can only happen at a DB, where only the encoder is relevant."
+  Reading (coordinator): three exact counterparts, one of them already in Lean. (1) *On the encoder, the spacetime rotation acts
+  exactly, on the lattice.* The encoder at a box boundary is the centre twist: which plane carries the twist, with a centre element as
+  its label. A spacetime rotation acts on it only by moving the plane, and the lattice's quarter-turns already do that exactly:
+  `tHooft_rotation` (`RouteB/Duality.lean`, Lean) rotates the axes by (0 2)(1 3) and maps the temporal twist (plane 01, the electric
+  side) onto the spatial twist (plane 23, the magnetic side) with the same partition function, for every compact group and every beta;
+  `electric_eq_magnetic` (Lean) then gives 't Hooft's duality F_e = dual(F_m) on the symmetric box. So at the DB, where only the
+  centre label is seen, no continuum is needed for the rotation: the discrete rotations are the whole action on the encoder. (2) *Both
+  rotations are the centre element -1 of an SU(2).* In four Euclidean dimensions the spacetime rotation group is covered by
+  Spin(4) = SU(2) x SU(2), and the rotation by 2 pi is (-1, -1), its centre [classical]. The internal 2 pi rotation of the gauge SU(2)
+  is its centre -1. So the "one rotation" is the same element, the nontrivial centre of an SU(2), in both readings; the splitting of
+  Spin(4) into two SU(2) happens only in four dimensions (the same four-dimensional self-duality as the instanton entry). (3) *At a
+  boundary the two rotations lock.* For a 't Hooft-Polyakov monopole the boundary condition at infinity ties the internal orientation
+  to the spatial direction (the hedgehog), so only the combined rotation J + T is a symmetry, and a spin-1/2 excitation can arise from
+  internal isospin alone ("spin from isospin", Jackiw-Rebbi, Hasenfratz-'t Hooft, 1976) [classical]. That is the owner's statement in
+  a known case: at the boundary only the encoder matters, and there the internal and spacetime rotations are one. Care points: (a) in
+  the bulk the two are different groups acting on different things (the internal centre acts trivially on every gauge-invariant
+  observable, the spacetime rotation does not); the identification is of their action on the encoder at the DB. (b) For the
+  Bisognano-Wichmann structure of the earlier entry, the encoder part is in place (the centre labels, their rotation, Lean); what
+  would still be needed is that the rest of the field inside, given the labels, carries no further act. In the gauge-theory
+  entanglement entry that is exactly the split between the label part (encoder) and the field part, and the owner's reading claims the
+  field part is not an act. That claim is a reading; as mathematics it is where the continuum (O3) would still enter.
