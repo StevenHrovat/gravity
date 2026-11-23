@@ -1894,3 +1894,20 @@ thread.
   pre-step already showed it: usable at beta = 0.5, not even tunable within 30 minutes at beta = 2.3 on 16^4. The IR session now
   adds a cost-scaling projection against beta and a stop rule (stop before any larger run if the measured cost grows faster than
   projected).
+- **What a simulation gives out must be provable in its statement of existence (the owner, same day):** "We have to keep the
+  attributes of DBs in mind when we simulate actually sound systems. What we want to get out has to be provable in its statement of
+  existence, otherwise we can't get anything useful out." Adopted as a design rule for every measurement: each measured quantity is
+  mapped to the exact statement it would discharge (a Lean hypothesis or theorem by name, or a named condition such as WL.md A/B/C),
+  together with the boundary conditions it is measured under (the frozen outside, the DB). A quantity that discharges no statement is
+  diagnostic only and is marked so. Sent to the IR and crossover sessions (REDESIGN.md table; W2 report table). The P vs NP items
+  committed today (3c425bf) make one such target unconditional: for finite systems, the classical Dobrushin condition alone now gives
+  fast mixing and a spectral gap in Lean, so a measured column below 1, with its boundary condition stated, discharges a theorem.
+- **The open P vs NP questions are inward and outward reach of a universal action rooted at G0 (the owner, same day):** "The open
+  P vs NP questions all seem to be shaped for IM/GG meaning inward/outward reach of a universal action definition rooted at G0."
+  Reading (coordinator): the two Dobrushin conditions are exactly an inward and an outward reach. The column sum of the influence
+  matrix measures how strongly a site is influenced by all others (inward reach); the row sum measures how strongly a site influences
+  all others (outward reach). The Lean results use both: random scan contracts under the column condition, systematic scan under the
+  row condition (`Mixing/Glauber.lean`, `Classical.lean`). The two open crossings of DICTIONARY.md 6.3 have the same orientation:
+  collapse asks whether every instance can be reached inward into the certified class, separation asks whether hardness reaches
+  outward from the boundary to instances outside it. A universal action rooted at G0, read this way, would be one influence matrix
+  for all instances with both reaches bounded; whether such a matrix exists for all of NP is the open question in this dress.
