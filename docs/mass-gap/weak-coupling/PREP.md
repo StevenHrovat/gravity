@@ -3778,3 +3778,16 @@ thread.
   link. And checking by reduction is reliably finite for the proofs written here, though in rare edge cases Lean's definitional
   equality is known to be undecidable in principle (Carneiro's analysis of Lean's type theory) [classical], which is why independent
   kernels re-check the result.
+- **A new tick operator attaches to propext, giving localised causality to absolute truth (the owner, same day):** "This would also
+  cleanly give the new tick operator a place to attach to proptext to give localised causality to abolute truth." Reading
+  (coordinator): no "tick operator" is defined yet in this repository or the DMP spec; read as the operator of one tick, one link to
+  the layer above. The split it describes is already the structure of Lean and of the ETM. (1) *Absolute truth:* propositions are
+  timeless; with propext (equivalent propositions are equal) and proof irrelevance (any two proofs of a proposition are equal), the
+  truth of a statement does not depend on how or when it was reached [classical; Lean's Prop]. (2) *Localised causality:* the tick is
+  the step map of a running system (`RunSys.step`, `ETM/RunSys.lean`): each tick links a state to the next one only, and the run is
+  the ordered sequence of ticks. (3) *Where they meet:* the ETM's truth of balance is a proposition, `Reaches`, with its noncomputable
+  yes/no `etmTruth` (`etmTruth_spec`, Lean), while settling happens tick by tick, within an explicit bound when every tick contracts
+  (`reaches_of_contracting`, Lean). So a tick operator would sit exactly where the step map meets the propositions about the run:
+  absolute truth (Prop, propext) reached by local causality (ticks). Care point: if the owner intends a new primitive operator for
+  DMP, it would need its own definition and laws, at minimum that it commutes with the maps of running systems (as `RunSys.step`
+  does, `Hom.iterate_comm`), so that every theorem about runs stays valid tick by tick.
