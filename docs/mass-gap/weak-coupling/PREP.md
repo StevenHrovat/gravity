@@ -2700,3 +2700,29 @@ thread.
   does not confine in four dimensions [classical]; in this reading the instanton sets the scale (the first act), and confinement is
   still the open one-box statement O1 at the hand-over. So the reading places O1 exactly: it is the single step where the first finite
   assertion must be certified, and everything before it (at 1) and after it (by construction) is in place.
+- **The instanton of the true act = the proof of that existence's zeta function as a one-box model (the owner, same day, on the entry
+  above):** "instanton of the true act = proof of that existences zeta function as a one-box model." Reading (coordinator): every
+  existence (theory) has its own zeta function in a precise sense, and two exact facts tie it to the instanton and to the one box.
+  (1) *Each existence has a zeta function, and positivity puts its first singularity on the real axis.* A positive Dirichlet series
+  sum a_n e^{-lambda_n s}, a_n >= 0, has a singularity at the real point of its abscissa (Pringsheim-Landau, `Bridge/Landau.lean`,
+  `landau`, Lean). With lambda_n = log n it is Riemann's zeta and the singularity is the pole at s = 1. With lambda_n = E_n, the
+  energies of the transfer matrix, it is the correlation function C(t) = sum |<0|O|n>|^2 e^{-E_n t}, a positive Laplace transform,
+  and the abscissa is the mass gap: the decay rate equals the bottom of the spectrum (`Bridge/Spectral.lean`, `spectral_gap_iff`,
+  `decayRates_eq`, Lean). So "that existence's zeta function" for Yang-Mills is the spectral series of its transfer matrix, and its
+  first singularity is the gap. (2) *The instanton is computed by a zeta function, on one compact box.* The instanton amplitude is
+  e^{-8 pi^2 / g^2} times the fluctuation determinant around the instanton, and that determinant is defined by the spectral zeta
+  function of the fluctuation operator, zeta_A(s) = sum lambda_n^{-s}: det' A = exp(-zeta_A'(0)), while zeta_A(0) gives the scale
+  dependence, mu^{zeta_A(0)}; for the instanton this produces exactly beta_0 = 11N/3, so that e^{-8 pi^2 / g^2(mu)} combines with it
+  into the scale-free (Lambda rho)^{beta_0} ('t Hooft 1976; zeta-function regularisation, Ray-Singer, Hawking 1977) [classical]. The
+  computation is done on a compact space (the four-sphere), a single box. (3) *Why it must be one box.* The instanton density grows
+  with the instanton size rho like (Lambda rho)^{beta_0}, so the integral over sizes diverges at large rho: a dilute instanton gas has
+  no finite answer in infinite volume [classical]. A box of fixed physical size is exactly what makes it finite, which is the one-box
+  model of O1. In the ledger: the one-box certificate at the hand-over is the proof that this existence's spectral zeta function has
+  its first singularity at a positive distance (a gap), and everything after it follows by construction (entry above). (4) *GRH.*
+  For arithmetic the one-box model is the finite Toeplitz section (entry "existence cannot be imaginary"), and Pringsheim-Landau gives
+  only the pole at s = 1, not the zeros on the line: the sign is still the open step there. Care points: (a) the instanton's zeta
+  determinant is a one-loop semiclassical computation, not a non-perturbative proof; the identification "instanton = proof of the
+  one-box model" is a reading, and the proof it names is O1 itself, still open. (b) Positivity locates the first singularity on the
+  real axis but does not bound it away from zero; a positive gap is what the one-box certificate must supply. (c) The spectral zeta
+  function sum E_n^{-s} and the correlation series sum e^{-E_n t} are Mellin and Laplace views of the same spectrum (heat trace)
+  [classical]; the Lean bridge uses the Laplace view.
