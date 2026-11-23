@@ -3739,3 +3739,15 @@ thread.
   not-toy") and the external import; for NP the lifting theorem and the open constant-gadget interface; for Yang-Mills the electric
   side and the side seam. So each column carries its uncertainty in exactly one named place, the analogue of an error bar sitting on
   the measurement and never on the answer (entry "settling at known error rates").
+- **The final approach for all three: define the uncertainty exactly, then transport it in a meaningful way across a DB (the owner,
+  same day):** "That gives us our final approach for all three. Exactly define the uncertainty, then transport it in a meaningful way
+  across a DB." Recorded as the paper's approach for the content layer. Reading (coordinator): this has an exact form in the ledger,
+  because the uncertainty is itself a carried quantity. (1) *Define it exactly:* per column, the one named bridge as a precise
+  proposition with a size (GRH: the explicit formula's remainder between toy and not-toy; NP: the lifting quantum, log m bits per
+  hidden variable; Yang-Mills: the electric-side deficit and the side-seam cost). (2) *Transport it across a DB:* an uncertainty
+  e passing a step with factor f and floor delta becomes at most e^delta f e, exactly the ledger law (`Pays`, `carry`, Lean). So it
+  stays bounded, and shrinks, exactly when the step contracts (cost above floor); it is carried without growth at cost = floor; and it
+  grows when the step amplifies. (3) *The three columns in this light:* Yang-Mills transports the boundary uncertainty into the box
+  (condition A, the collar; Birkhoff-Hopf contraction where it applies); NP transports hidden bits across the two-party split in
+  quanta of log m (lifting); GRH transports the margin with no damping, which is the precise reason the sign is hard (zero slack). The
+  proof of each problem is then: the bridge's uncertainty, defined exactly, is transported across its DB without loss of sign.

@@ -147,6 +147,16 @@ One shape. A table of the sharpest open step per problem: what is proved for one
 supplies, the hard quantifier, what measurement says, and the "it runs" form. What the act-carrier answer settled; what can and
 cannot close each step; why Yang-Mills is the model; how the paper closes locally.
 
+**The approach for the content layer (the owner, 2026-11-23).** "Exactly define the uncertainty, then transport it in a meaningful
+way across a DB." Per problem, the one named bridge is stated as a precise proposition with a size:
+- Yang-Mills: the electric-side deficit and the side-seam cost;
+- GRH: the explicit formula's remainder between the finite model and zeta;
+- NP: the lifting quantum.
+
+Its transport across the DB obeys the ledger law, so it contracts exactly when the step pays a cost above the floor (Lean). Part VI
+is organised by this: where each problem's uncertainty sits, how it crosses its boundary, and why GRH (zero slack) is the case where
+it crosses without damping.
+
 ## Outlook. A settling machine
 
 The first author's concept of a DMP-native general intelligence: a CMOS system in IM tokens, one Milky Way gate that checks hash
