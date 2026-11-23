@@ -2142,3 +2142,17 @@ thread.
   ferromagnetic system of Yang-Mills type that carries xi (its partition function or its Euclidean-time evolution); that system is the
   same missing piece the GRH round is trying to construct. So DMP.YM.GRH names the intended nesting correctly, and the embedding step
   is what remains to be proved.
+- **GRH binds to G0 through the existence space spanned by any two primes; the DMP vocabulary for GRH (the owner, same day):** "The
+  binds to G0 is that they are all contained in the existence space that is spanned by any two primes running GRH. This gives the
+  vocabulary of pressing, minting, WHKs and the ODP for GRH." Reading (coordinator): one exact fact and a careful distinction.
+  (1) **Two primes span the scaling space, exactly:** for any two primes p, q the numbers p^a q^b (a, b integers) are dense in the
+  positive reals, because log p / log q is irrational (unique factorisation). So any two primes generate a dense subgroup of the
+  scaling group, the flat space of the previous entries: in that sense every scale is "contained in the existence space spanned by
+  two primes". (2) **The distinction:** spanning the space is not the same as giving it positive weight. The semilocal test showed
+  that Weil positivity needs every prime up to the scale together with the real place; {2, 3} alone, without the real place, is
+  negative everywhere. So two primes span the possibility (the frequencies, densely), and the positive existence on that span needs
+  all primes plus the real place. (3) **The vocabulary, as it maps onto the GRH route:** pressing = the prime-by-prime induction,
+  each step a certified positivity up to the next scale (INDUCTION.md); minting = completing the Hilbert space (the GNS step) once
+  positivity holds, after which the zeros are read off as a spectrum; WHKs = the data from which each part derives the others: the
+  group, the real place and the primes on one side, the zeros on the other, tied by the explicit formula; ODP: the owner's term for
+  the discovery process, here the induction that discovers the definition of existence scale by scale (mapping left to the owner).
