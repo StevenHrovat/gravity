@@ -2452,3 +2452,11 @@ thread.
   twisted boundary conditions SU(2) allows half-integer Q, giving the fractional floor 4 pi^2 / g^2 for suitable twist sectors. On the
   lattice the bound holds for admissible fields (Luescher), i.e. M1's small-field region. Caveat: a floor on the action is not a floor on
   the free energy (entropy can outweigh it), so it is a candidate tool for the containment round, not a closing step. Passed to it.
+- **Does 8 pi^2 and e simplify? (the owner, same day).** Answer given (coordinator): yes, exactly at one loop, and it is dimensional
+  transmutation. With 8 pi^2 / g^2(mu) = beta_0 ln(mu/Lambda), beta_0 = 11N/3 (22/3 for SU(2)), the instanton weight becomes
+  e^{-8 pi^2 / g^2(mu)} = (Lambda/mu)^{beta_0}: e and 8 pi^2 cancel, and the cost of the first act is a pure power of a scale ratio. On
+  the lattice (mu = 1/a): (Lambda a)^{22/3}, the quantum Lambda against the tick a; the fractional (twist) instanton gives
+  (Lambda a)^{11/3}. Two-loop running adds a slowly varying factor (ln(mu/Lambda))^{beta_1/beta_0}, beta_1 = 34N^2/3. The containment
+  round of the same day (CONTAINMENT.md) found that the Bogomolny floor helps only outside and loses to entropy as a -> 0, and sharpened
+  the inside requirement by path counting: tube dominance needs an electric cost per box above the path entropy, F_e(L) > log mu_4 =
+  1.91 (twist ratio > 0.74), not the chain value 0.881; numerically F_e(6) = 2.6 at beta 2.3 passes it centrally (not certified).

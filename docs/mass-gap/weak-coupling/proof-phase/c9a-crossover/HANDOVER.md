@@ -211,3 +211,15 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
   normalisation-matched lower bound on Z_box (= one-box interpolation; equivalently strong effective coupling at box scale, P4).
 * Kanazawa: confirmation; his twisted inequality is non-strict RP; ours strict and machine-checked.
 * Numerical (preliminary): beta 2.3 cubic twist ratio crosses 3/7 between L = 4 (0.42) and L = 6 (0.86).
+
+## Round 15 (2026-11-23, uncommitted; reversed P4, containment)
+
+* `CONTAINMENT.md` (with DMP section); `formal/ProofPhase/Crossover/Containment.lean` (8 theorems; `axioms-dy.log` 56 Crossover
+  theorems, standard axioms; `~/formal-dy` deleted).
+* (a) r < 1 everywhere, r = (1 - e^{-F_e})/(1 + e^{-F_e}) <= F_e (Lean): twist rare where electric flux is cheap (small box,
+  perturbative F_e = O(g^2), citation; data beta 3.5 L 2: F_e 0.035).
+* (b) Fixed cross-section: positive kernel + Jentzsch => flux sector below vacuum by mu < 1 => F_e(T) grows (Lean core): the
+  rarity branch fails in long boxes. Cubic: needs F_e(L) >= 0.881 at some L, beyond perturbative/M1 control.
+* (c) Path-Peierls: tube dominance needs F > log mu (Lean); mu >= d so 0.881 fails for d >= 3 (Lean). First open step: strong
+  saturation F_e(L) > log mu_4 = 1.91 (r > 0.74) at one box; numerically passed centrally at L = 6, beta 2.3 (not certified).
+* Round 15 addendum: CONTAINMENT.md section 6 (Gauss's law gives the tube's shape, not its dominance; Bogomolny floor helps only outside for odd-twist-product sectors, zero for the single-plane twist, and loses to position entropy 4 log(L/a) vs (11/3) log(1/(a Lambda)) at fixed physical size).
