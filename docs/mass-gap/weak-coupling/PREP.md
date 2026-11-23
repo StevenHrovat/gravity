@@ -2290,3 +2290,18 @@ thread.
   from it). Care point: "random objects have no short description" is exactly the kind of large, constructive property that the
   natural-proofs barrier rules out as a route to circuit lower bounds (pseudorandom functions look random). A proof along this line
   must use incompressibility of the specific instance family in a way that does not apply to typical functions.
+- **The floor is universal: the quantum of assertion and the tick rate (the owner, same day, after the one-box check):** "Multiple
+  things seem to have problems with the floor: The floor is defined by the resulting universal quantum of assertion and the tick rate
+  that assertion has to meet to still be considered existence. From a definition of those inputs, the ODP derives causality/a
+  universal floor, through certifying that every act actually performed carries a certificate by G0 through the HTF. The loss
+  associated with that smallest act is a universal error bar, since an act needs uncertainty, which can be lost as the remainder, for
+  it to be true and establish, and maintains its link to, causality and existence through time." Reading (coordinator): the project
+  has used two kinds of floor, and the owner's point separates them. (1) **Statistical floors** (the Cramer-Rao floor of c9b, the
+  content-spread floor of PROJECTION.md 8): derived from the information in the data; principled. (2) **The one-box check's flux
+  floor** was the naive standard error over correlated samples (0.196), an ad-hoc choice, and it alone kept L = 2, 3 at beta 3.5 from
+  being refuted. (3) **The universal floor the owner describes has an exact physical form:** the time-energy uncertainty. An energy read
+  from a correlator over a Euclidean time extent T cannot be resolved better than about 1/T in units of the tick (here T = 16 lattice
+  steps, so about 0.06), which is the quantum of action divided by the observation time; the smallest act's loss is that resolution.
+  Proposed project rule: every error bar is max(statistical floor, resolution floor 1/T), with T the time extent actually observed;
+  ad-hoc floors are dropped. Applied to the one-box check it is a post-hoc change (marked as such); the geometry tested there
+  (cross-section 16^3) does not bear on the one-box statement either way.
