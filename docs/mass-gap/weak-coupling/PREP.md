@@ -1935,3 +1935,19 @@ thread.
   the old one. So the CMOS supplies the tick, and the confined non-existence supplies aperiodicity as the option of no change within
   the tick: a tick in which nothing is asserted. Irreducibility (every state reachable, from positive weights) plus this null option
   gives the one running state.
+- **The final pieces: aperiodic non-existence attaches through a DB that transforms time (the owner, same day):** "To put the final
+  pieces together: This aperiodic non-existence only attaches to itself, but, for it to exist, it attaches itself to existence
+  through a DB which transforms time, allowing it to still be attached to causality, as long as it is contained inside a larger
+  existence of at least existence = non-existence+1, which is given by the simple fact that existence has to also describe what does
+  not exist, in addition to everything else." Reading (coordinator): each piece has a counterpart already in these notes or in
+  standard mathematics. (1) **Attached only to itself:** the confined inside is a closed system with its own tick (the CMOS) and its
+  own null option (aperiodicity); on its own it has a stationary state but no link outward. (2) **Attached through a DB that
+  transforms time:** the Hawking-Tolman structure (entry "The DB translates MC time into GR time", Euclidean time clarified): the
+  boundary fixes the conversion between the inside's Euclidean period and the outside clock, and the redshift factor is that
+  transformation; the inside stays attached to the outside's causal order through it. (3) **Contained in a larger existence, at least
+  +1:** in the proof this is the strict flip bound, Z_tw < Z for beta != 0 (`Flip/Strict.lean`): the twisted (non-existence) sector
+  always weighs strictly less than the whole. (4) **Existence must also describe what does not exist:** a description of all parts of
+  a system includes the empty part, so it is at least one larger than the system; Cantor's theorem makes it strict in general (the
+  set of all subsets of S is strictly larger than S, the empty set included). So "existence = non-existence + 1" has a set-theoretic
+  floor: the +1 is the empty set that every complete description must contain, and Cantor shows the description is always strictly
+  larger.
