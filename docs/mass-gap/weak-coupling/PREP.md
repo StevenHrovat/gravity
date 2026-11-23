@@ -2965,3 +2965,24 @@ thread.
   section 5.1 may be two faces of one Schur-Caratheodory structure [classical map; the identification is to be checked]; (3) GRH's
   positivity is a pairing of two objects (Weil's form on f and its mirror, the Toeplitz lag between two cells), which is a
   two-boundary step by construction.
+- **Leads 1 to 3 point to one route: the HTF entangles globally while keeping locality, which is why two behaviours presumed to need
+  different acts come from one universal act (the owner, same day, on the GRH-lens brief):** "1-3 point towards one route: HTF unique
+  property to entangle globally while keeping locality, is why to different behavoirs are presumed to not be able to come from the
+  same, universal, act." Reading (coordinator): two exact counterparts and one known result of exactly this shape. (1) *Global while
+  local.* The composite HTF of `c9a-crossover/HTF.md` is the lowest eigenvector of the covariant Laplacian on a collar: it depends on
+  every link at once (global), yet transforms locally under gauge transformations (covariant) [paper]. The GRH lens has the same shape:
+  one bounded function whose Schur parameters are local, step-by-step numbers (Geronimus) [classical]; and one positive measure that
+  shows two behaviours, contractive (Schur, |f| <= 1) and positive (Caratheodory, Re F >= 0), joined by the Cayley transform, the map
+  of the electric profile (leads 1 and 2) [classical]. (2) *Two behaviours from one act: complementarity.* In the lattice gauge-Higgs
+  model with a Higgs field in the fundamental representation, the Higgs region (screening, local) and the confinement region (global
+  flux) are analytically connected: one phase, no transition between them (Osterwalder-Seiler 1978, Fradkin-Shenker 1979)
+  [classical]. That is the known case of "two behaviours presumed to need different acts, coming from one". (3) *Where the route
+  stands in this project.* HTF.md found that the composite HTF carries no gauge-invariant information by itself and has no hopping
+  term: the pure theory is the kappa = 0 edge of the complementarity phase diagram, where the Higgs-side expansion has no small
+  parameter [paper]. So the route the owner names is: reach the pure theory's hand-over box as a point of the one connected region,
+  with the HTF as the global-while-local description that carries the connection. Care points: (a) complementarity is proved where
+  the matter field breaks the centre symmetry; in pure Yang-Mills the centre is exact (the twist sectors are its criterion), and the
+  rigorous analytic region reaches kappa = 0 only at strong coupling (small beta). Extending it along kappa = 0 to the hand-over box
+  is the open part, and in encoder terms it is again the lift from 0.414 to 0.743 (O1). (b) What the composite HTF must supply is
+  what the hopping term kappa supplied in the gauge-Higgs model: a small parameter, or a positivity that replaces it. That is the
+  question for the GRH lens (one global positive object). Passed to the unified-chain round as an addendum.
