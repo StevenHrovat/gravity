@@ -178,3 +178,92 @@ and use the `d`-counting of phase 1 (`card_le_of_physExtent`, `poly_exp_le`, `ca
   The `subst` files of phase 3 are untouched.
 * Order of work suggested: the `Tuning`-based chain first (`UV/Split`, `Assembly`, `V3/*`, `V4/*`, `H1/*`), since the
   others restate their results.
+
+---
+
+# Phase 1b: the `inst` files ported to the generic form (2026-11-24)
+
+New files (11, all in `formal/ProofPhase/General/`, nothing existing edited): `Setting`, `CondMass`, `Fine`, `Wilson`,
+`Concrete`, `Anchor`, `Cube`, `Gap`, `Recursion`, `PortSUN`, `TopPort` (imports phases 1, 2 and these). Axioms of the new
+declarations: `axioms-port.log` (`axioms-port.sh` regenerates it). Every file builds with 0 warnings. Count: 125 theorems and 39 definitions, abbreviations and instances in the source, 175 constants in the environment, all on `propext`, `Classical.choice`, `Quot.sound` only; no `sorry`, `admit`, `native_decide`, `axiom`; 21 `example` checks are part of the build.
+
+**Method.** Each generic statement is the old text with `SU2` replaced by `Gr` (any group with the package: `GaugeGroupBase`,
+`GaugeRep Gr nr`), `4` by `d` (`[NeZero d]`), the representation dimension `2` by `nr`, the Wilson law `T.ym k j` by
+`ymLaw nr d T k j`, `geodSU2` by a cost distance parameter, and the counting constants by the `d`-counting of phase 1. The
+old theorem is then re-derived as `X_su2`, proved from the generic theorem at `SU2`, `nr = 2`, `d = 4`, and **checked
+identical** by `example : @old = @X_su2 := rfl` (definitions by `Iff.rfl`).
+
+## What is ported
+
+| Module | Old file | Ported |
+|---|---|---|
+| `Setting` | `Assembly`, `RouteA/BlockedSlab`, `Torus/Local`, `V3/TimeSep`, `V3/CondMass` | `blockedLaw`, the transfer hypotheses `ObsTransfer`, `ObsTransferPhys`, `ObsTransferU`, `ObsTransferCell`, `ObsTransferPhysT`, `ObsQuasiLocT` and the reductions `obsTransferPhys_of_cell`, `obsTransferPhys_of_U`, `obsTransferPhysT_of_phys`, `obsQuasiLocT_of_obsTransferPhysT` |
+| `CondMass` | `V3/CondMass` | `CellGeometry`, `CondMass`, `CondMassDecay`, `condMassDecay_of_condMass` (cell count `d (2 floor(R/L1 + c1) + 1)^d`), `obsTransferPhysT_of_condMassDecay`, `obsTransferPhysT_of_condMass` |
+| `Fine` | `OneBox/Fine` | `gaugeAct`, `FineOneBox`, `FineDecayInv`, `fineDecayInv_of_fineOneBox` |
+| `Wilson` | `OneBox2/Wilson` | gauge covariance of the Wilson box kernel (`xp_gauge`, `prod_map_act`, `locSpec_covariant`, `gaugeSpec_covariant`, `measurable_gaugeSpec`); `haar_map_mul_right` (right invariance from left and inversion invariance) |
+| `Concrete` | `OneBox2/Concrete` | `wilsonBoxSpec`, `wilsonBlockSpec`, their covariance, `WilsonOneBox`, `fineOneBox_of_wilsonOneBox` |
+| `Anchor` | `OneBox2/Anchor` | `influence_block`, `lifted_influence_id`, `kexact_le`, `oneBoxSum_anchor`, `wilsonOneBox_strong`, `wilsonOneBox_strong_const` with `anchorK d = d 2(d-1)` (24 for `d = 4`) and `anchorG d = 3^d anchorK d` (1944) |
+| `Cube` | `OneBox2/Cube` | `cubeLaw`, `cutSpec`, `cubeBoxSpec`, `cubeLifted`, `WallCutOneBox`, `CubeDecay`, `cubeDecay_of_wallCutOneBox` |
+| `Gap` | `V4/Gap` | `LawGapW`, `LevelDprimeWOn`, `lawGapW_of_levelDprimeWOn`, `lawGapBddW_of_lawGapW` (`LawGapBddW` is the one of `Torus.lean`) |
+| `Recursion` | `V4/Recursion` | `BlockGapBddW`, `StageTwoW`, `blockGapBddW_of_stageTwo`, `blockGapBddW_of_levelDprimeWOn` (tail `d!/r^d` for `24/r^4`) |
+| `PortSUN` | none | the decay from the one-box criterion, the SU(N) anchor, the cube decay and the recursion lemma at `SUN N`, any `N`, any `d` |
+
+**Re-derived old statements** (each `rfl`-checked): `OneBox2.gaugeSpec_covariant`, `prod_map_act`, `xp_gauge`,
+`measurable_gaugeSpec`; `OneBox2.wilsonBoxSpec_covariant`, `fineOneBox_of_wilsonOneBox`; `OneBox2.influence_block`,
+`lifted_influence_id` (and `kexact_le`, `oneBoxSum_anchor`, `wilsonOneBox_strong`, `wilsonOneBox_strong_const`, proved
+from the generic ones with `anchorK 4 = 24`, `anchorG 4 = 1944`); `OneBox.fineDecayInv_of_fineOneBox`;
+`OneBox2.cubeDecay_of_wallCutOneBox`; `V3.condMassDecay_of_condMass`, `obsTransferPhysT_of_condMassDecay`,
+`obsTransferPhysT_of_condMass`; `Torus.obsTransferPhys_of_cell`, `obsTransferPhys_of_U`; `V3.obsTransferPhysT_of_phys`,
+`obsQuasiLocT_of_obsTransferPhysT`; `V4.lawGapW_of_levelDprimeWOn`, `lawGapBddW_of_lawGapW`,
+`blockGapBddW_of_stageTwo`, `blockGapBddW_of_levelDprimeWOn`. Definitions agree by `Iff.rfl`: `ObsTransfer`,
+`ObsTransferPhys`, `ObsTransferU`, `ObsTransferCell`, `ObsTransferPhysT`, `ObsQuasiLocT`, `CondMass`, `CondMassDecay`,
+`CellGeometry`, `FineOneBox`, `FineDecayInv`, `WilsonOneBox`, `WallCutOneBox`, `CubeDecay`, `LawGapW`,
+`LevelDprimeWOn`, `BlockGapBddW`, `StageTwoW`.
+
+## Findings
+
+* **The "fundamental dimension 2" and the constants were not subst facts.** In `OneBox2/Wilson`, `Concrete`, `Anchor` the `2`
+  is the bound `|Re tr| <= n` (`nr`), and the numbers `24` and `1944` are `d` links per site times `2(d-1)` plaquettes
+  per link, and `3^d` neighbouring sites (`OneScale.SingleLink.card_plaqsAt_le`, `card_near_le`). With `anchorK`,
+  `anchorG` the anchor holds for every `d` and for every group of the package. So `OneBox2/Wilson` and `Anchor` move
+  from "subst?" in the audit to ported. For SU(N) the anchor window is `3^d d 2(d-1) tanh(N beta_k) <= g < 1`.
+* **Right invariance** of the Haar measure (needed for the gauge covariance of the box kernel) is derived from left and
+  inversion invariance (`haar_map_mul_right`), so no field was added to `GaugeGroupBase`.
+* **`Cube` needs `[T2Space Gr]`** (for `MeasurableEq`, in `measurableSet_eq_fun`); the package does not carry it.
+  `T2Space` is an extra hypothesis of the cube declarations; SU(2), SU(N), U(N) are Hausdorff.
+* **Cost distance.** `Gap` and `Recursion` take a cost distance `cost`; the theorems using Dobrushin decay take the two
+  facts about it that they use (`0 <= cost <= P`, `P = pi` for `geodSU2` and `geodSUN`: `geodSUN_nonneg`, `geodSUN_le_pi`).
+* No ported file needed a `subst` fact of phase 3.
+
+## RouteB/Duality (`Fin 4` rotation, plane pairing)
+
+`RouteB/Duality` is already generic in the group (`G`, `n`: any compact group with continuous unitary representation). The
+dimension is intrinsic: the rotation `(0 2)(1 3)` exchanges the plane `(0,1)` with the plane `(2,3)`, so the temporal
+twist and the spatial twist of the plaquette type are dual only because `4 = 2 + 2` (a plaquette twist is a
+codimension-2 object; it is again a plaquette twist only in `d = 4`). For `d != 4` the statement `tHooft_rotation` has no
+analogue of this form (in `d = 3` the dual of a plaquette twist is a link twist). Only the first part, `twistZ_perm`
+(the partition function is invariant under a permutation of the axes), holds in every dimension; it is stated for `Fin 4`
+and was not ported. Not forced.
+
+## Where the port stopped, and what is left
+
+The ported chain ends at a clean point: everything that does not need the **slab-observable layer** or the **flux/LCP layer**.
+What is left depends on one of two things:
+
+1. **The slab-observable layer** of `Objects` and `Torus/Local`: `SlabObs`, `Tuning.wcorr`, `LatticeGap`, `MassGap`,
+   `TorusDecayLoc`, `MassGapMFLoc` (observables supported on a time slab, correlations `Cov(F o S_n, F o Theta)`). It is
+   mechanical to generalise (`timeSlab`, `tShift`, `thetaConn` are already generic in `G`, `d`) but it is a layer of its
+   own and was not started. It unlocks: `Torus/Local` (the rest: `torusDecayLoc_of_blockedRoute`, `gapVF_of_family`,
+   `gapMF_of_family`, `bothOrdersLoc_*`), `V3/TimeSep` (`torusDecayLoc_of_blockGapUnifT`, the level routes), `V3/W1Route`,
+   `V3/CondInputs`, `V3/Top`, `V4/Gap` (the second half), `V4/UV`, `V4/Top`, `H1/Level` (`torusDecayLoc_of_blockGapUnif`
+   with `24/a^4`), `H1/Split`, `RouteA/BlockedSlab` (`wcorr_le_blocked`), `Quantum/BlockedRoute`, `Quantum/LemmaT`,
+   `Quantum/LimitStates`, and then `Interface/MeasBlocking`, `RandBlocking`, `DenseTransfer` (which import `V4/Top`).
+2. **`OnLCP`, `NonTrivial`, the flux limit** (`Assembly`, `V4/LCP`, `IsFluxLimitSU2` of `Objects`): the line of constant
+   physics and the flux layer name SU(2) in substance (centre `Z2`, 2x2 matrices) and wait for phase 3. This blocks the
+   assembly theorems (`yang_mills_assembly_*`).
+
+Also untouched: `Adjoint2/PatternAssembly`, `Book/TwoSize`, `Defects/Supplier`, `Existence/Bridge`, `OS/GapLoc`,
+`Saturation/Reduction`, `SectorS/ConjS`, `Seg1/Envelope`, `UV/Split`, `Crossover/P4Chain` (all restate over `Tuning`,
+`BlockingFamily`, `VTuning` and the slab layer; same method), and `Flip/Floor` (SU(2) gap constants, not mechanical).
+**Suggested next step:** port the slab-observable layer (`Setting`-style, one file), after which the `V3/V4/H1` torus-decay
+reductions and `Interface/*` follow with the same method.

@@ -1801,3 +1801,86 @@ thread.
   question at G0 from the previous entry: for propositional formulas it is SAT, for first-order theories it is undecidable. So the
   positivity corollary is exactly right as the last piece, and the work of P vs NP sits in establishing it per instance, not in
   using it.
+- **Undecidability is not inevitable when the description of existence is complete (the owner, same day, extending Goedel's
+  completeness theorem):** "Describing something as fitting to the model or not fitting to the model can be extended to saying that
+  nothing not meeting this description of existence has existence. This makes the first order theory not undecidable not
+  inevitable." Reading (coordinator): this is right, and there is a sharp theorem behind it. Fixing one description of existence and
+  declaring that nothing else exists means working with the theory of one structure (a complete theory: every sentence is either true
+  or false in it). A complete theory with an effective list of axioms is decidable: enumerate proofs until either the sentence or its
+  negation appears. So undecidability is not inevitable; it depends on the structure. Two classic cases mark the line exactly:
+  (1) the first-order theory of the real numbers (real closed fields) is complete and decidable (Tarski, by quantifier elimination),
+  which fits the earlier reading that the reals are the binary, independently derivable building block; (2) the theory of the natural
+  numbers with addition and multiplication is not: by Goedel's incompleteness theorem no effective axiom list is complete for it, and
+  its truths are undecidable. (Addition alone, Presburger arithmetic, is decidable again.) So the owner's extension holds precisely
+  for descriptions of existence that are both complete and effectively axiomatised; multiplication on the integers, the structure the
+  primes live in, is where it fails, which is also where RH lives.
+- **Multiplication as a DB crossing in math terms; the real extended by the imaginary (the owner, same day):** "Multiplication seems
+  to be equivalent to a DB crossing, but in math terms. The inherently real is extended to the space that it can occupy by the
+  imaginary possibility that enables it." Reading (coordinator): two exact facts carry this. (1) **The sign flip goes around zero only
+  through i:** on the real line, getting from 1 to -1 continuously means passing through 0, the point of non-existence; in the complex
+  plane multiplication by e^{i theta} turns 1 into -1 along a half circle that never touches 0, and -1 = i x i is the flip as two
+  quarter turns through the imaginary direction. So the imaginary is precisely what lets a real quantity cross to its opposite
+  without passing through non-existence, the owner's "imaginary possibility that enables it". (2) **Addition and multiplication are
+  two worlds, and their meeting is where hardness lives:** addition alone on the integers is decidable (Presburger), multiplication
+  alone is decidable (Skolem arithmetic), the two together are undecidable (previous entry). The bridge between them is exp and log
+  (log turns products into sums), and on the complex numbers that bridge is Euler's formula. The Euler product over primes is exactly
+  this crossing: the multiplicative atoms (primes) written as an additive sum over their logarithms. RH is a statement about how the
+  two worlds fit together across that crossing.
+- **"The sign was wrong because the DB encoding was not implemented" (the owner, same day, on ATTEMPT.md step 4):** "This also
+  closes the nagging issue that the sign was wrong. The issue was simply that the DB encoding was not properly implemented."
+  Reading (coordinator): the idea, encoding the prime side's minus sign as a crossing through the imaginary direction (-1 = i x i),
+  does not close the step as stated, and the semilocal test sharpens where the sign really sits. (1) **Why the rotation does not
+  remove the sign:** positivity of a form means |v|^2-type terms, and in such a (Hermitian) form multiplying by i changes nothing:
+  |i v|^2 = |v|^2. The sign flips only in a bilinear form without complex conjugation, (i v)(i v) = -v^2, and bilinear forms do not
+  build a Hilbert space (no positive norm). A negative part written as i^2 times a positive part gives an indefinite (Krein) space,
+  which is the same problem in another notation. (2) **What the semilocal test shows instead** (`docs/rh-guide/grh/SEMILOCAL.md`
+  3a): read on the zeros' frequency axis, every prime contributes a weight with mean exactly zero (a periodic wobble; for {2, 3} a
+  quasi-periodic one, since log 2 / log 3 is irrational), while the real place contributes the positive, growing mean log(r / 2 pi),
+  which is the average density of the zeros. {2, 3} without the real place is a pure mean-zero wobble and is negative at every
+  support. So the sign problem is precisely: does the real place's positive mean dominate the primes' mean-zero fluctuations on
+  every test function? That is the open step, now in its sharpest form. (3) **DMP mapping:** this supports the reading that the real
+  place is the partner that carries existence (positivity), and that the primes alone are pure possibility (mean zero) without it;
+  it does not support "the sign is closed", which remains open.
+- **Primes as real, U(1) phases spanning the possibility space, inward and outward reach (the owner, same day, on the sign):** "That
+  sign flip issue points to a more interesting reading: The inward and outward reach are not correctly applied! Since primes are
+  inherently real, they, like SU(2) in YM, can directly interact in ways that exist, but only by directly asserting on each other
+  (addition). Building from that U(1), with SU(2) giving locality, has the freedom to span its possibility space freely, while still
+  being tied to existence inherently." Reading (coordinator): the U(1) part has an exact counterpart; the SU(2) part is an analogy.
+  (1) **Each prime carries a U(1) phase:** in Weil's form a prime enters through p^{-ir} = e^{-i r log p}, a point on the circle U(1)
+  turning at speed log p as the frequency r runs. (2) **The phases span their possibility space freely:** the numbers log p are
+  linearly independent over the rationals (that is unique factorisation), so the phases of all primes move independently and fill
+  their torus densely (Kronecker, Bohr). Its strongest form is Voronin's universality theorem: in the strip 1/2 < Re s < 1, zeta
+  approximates every non-vanishing analytic function, because the prime phases can be set freely. That is "the freedom to span its
+  possibility space freely" as a theorem. (3) **Tied to existence:** what keeps this free play tied to existence is the real place's
+  positive mean (previous entry); the open question is that the free phases can align their negative parts, so positivity needs the
+  mean to win against every alignment the test function can resolve. (4) **Inward and outward reach:** one reading is that the prime
+  side should be paired against the real place (inward, local factors) rather than summed with it (outward), i.e. a pairing in
+  which each prime's phase is measured relative to the real place's density; that is a direction for the attempt, not a result.
+  **SU(2) giving locality** is an analogy: the Euler product is a product of independent local factors, one per prime, which is the
+  number-theoretic form of locality; the gauge group plays no role there.
+  The owner corrects (same day): "SU(N-1) would be more correct. And since the existence we are describing is 2s1t, this is the
+  DMP-near-complete version that can exist, but never run." Recorded: the locality group in the reading is SU(N-1), not SU(2).
+  Reading (coordinator) of "exists, but never runs": there is an exact counterpart in the RH literature. Over a curve over a finite
+  field, RH is a theorem (Weil) because the curve comes with a dynamics, the Frobenius map, and with the surface C x C on which the
+  Hodge index positivity can be applied to the graph of Frobenius: the system runs, and its running certifies the line. Over the
+  integers there is no Frobenius and no surface "Spec Z x Spec Z" to work on (the hoped-for "field with one element" would supply
+  them). So the arithmetic world exists (the zeta function, the primes, the real place) but has no known dynamics that runs it, which
+  is exactly where every positivity route has stalled, ours included. Connes's adele class space proposes a scaling flow as the
+  missing dynamics. In the owner's terms: the arithmetic side is DMP-near-complete, existing without running, and the missing piece
+  of the GRH route is the dynamics that would make it run.
+- **The dynamics is to run arithmetic as content in a DMP-complete system (the owner, same day):** "The dynamics that make it run is
+  the fact that it can be run as content in a DMP-complete system, which is, conveniently, exactly what we need." Reading
+  (coordinator): this points at three known constructions, one of which is literally "Euclidean time running zeta". (1) **Zeta as a
+  partition function:** the primon gas (Julia; Spector) is a free gas whose particles have energies log p; its partition function is
+  zeta(beta), with beta the inverse temperature (Euclidean time). Bost and Connes (1995) built a quantum statistical system with a
+  time evolution whose partition function is zeta, with a phase transition at beta = 1. So arithmetic can be run as the content of a
+  system with dynamics. (2) **Zeros of partition functions on a line, forced by positivity:** the Lee-Yang circle theorem proves that
+  the partition-function zeros of a ferromagnet lie on a circle, from ferromagnetic positivity alone. Newman proposed reading RH as a
+  Lee-Yang property; the gauge theory is on the ferromagnetic side of the P vs NP dictionary (reflection positivity is a global
+  positivity). (3) **Euclidean time running xi:** the de Bruijn-Newman flow deforms Riemann's xi by a heat flow, H_t(z) = int
+  e^{t u^2} Phi(u) cos(z u) du; its zeros are all real for t >= Lambda, and RH is equivalent to Lambda <= 0. Rodgers and Tao (2018)
+  proved Lambda >= 0, and the Polymath project proved Lambda <= 0.22. So RH says the "run" in this Euclidean time makes the zeros
+  real exactly at time 0: the system sits precisely at the threshold. That is the cleanest form of the owner's attachment point and
+  of "running as content": a ferromagnetic, reflection-positive system whose Euclidean-time evolution carries xi, with RH as the
+  statement that it is already real at t = 0. A possible next step for the GRH route: study the Lee-Yang/Newman route against what
+  our Yang-Mills positivity machinery provides.
