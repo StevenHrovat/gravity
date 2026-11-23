@@ -2576,3 +2576,25 @@ thread.
   "every SU(N) describes a running existence space on the lattice (proved, Lean); its continuum running is the open step". On "2 decays
   forward into 3": recorded as the owner's reading; a care point for the physics reading is that in grand unification the direction is
   the opposite (a larger group breaks into smaller ones as the energy falls, SU(5) -> SU(3) x SU(2) x U(1)).
+- **GRH reads the ledger in two separate ways, through the irreducibility of G0 (the owner, same day, on `docs/unified/UNIFIED.md`
+  section 5):** "GRH reads the chain in two separate ways through the irreducibility of G0. It reads that both the existence space is
+  spanned exactly as described and that the influence of the possibility space properly establishes causality at every scale, which is
+  exactly 1, which fits." Reading (coordinator): this has an exact counterpart in the Szego recursion of the GRH ledger
+  (`rh-guide/grh/INDUCTION.md`, section 1). Each scale step has a reflection coefficient k_m, and the step's factor is 1 - |k_m|^2.
+  (1) *The existence space is spanned exactly as described:* in a finite model with N distinct atoms (zeros) the form has rank exactly
+  N, so the recursion closes at step N with |k_N| = 1 exactly; the factor becomes 0 and the margin stays at 0 from then on (UNIFIED.md
+  section 5, point 2). (2) *The influence of the possibility space establishes causality at every scale:* |k_m| <= 1 at every step,
+  i.e. every factor 1 - |k_m|^2 >= 0. That is `ScaleSign` (equivalently, every section positive, `scaleSign_iff`, Lean), and with (1) it
+  puts the atoms on the unit circle |z| = 1, i.e. the zeros on the line (`atoms_on_circle`, Lean). The unit modulus is "exactly 1" twice:
+  the bound on every reflection coefficient, and the circle the atoms lie on. Classical form: a positive semidefinite Toeplitz form of
+  rank N is the moment sequence of N atoms on the circle with positive weights, iff |k_m| < 1 for m < N and |k_N| = 1 (Szego,
+  Geronimus, Verblunsky). Irreducibility of G0: both readings are consequences of the one positive form, which cannot be assembled
+  place by place or from two separate terms (Lean, `GRH/Transfer.lean`, `rh-guide/grh/TRANSFER.md`). Third-layer check
+  (`docs/unified/closure.py`, `closure.log`; first five zeta zeros, grid eps 0.3, weights 1/(1/4 + gamma^2)): all ten atoms on the
+  circle give |k_m| < 1 at steps 1 to 9 and |k_10| = 1.000000000000; moving one zero pair off the line by 0.05 gives |k_9| = 1.12 and
+  |k_11| = 1.92 (negative factors, the margin overdrawn), while the recursion still closes with |k| = 1 at step 12. So the two readings
+  really are separate, as the owner says: the closure (1) holds in every finite model whether or not the zeros are on the line; the
+  influence bound (2) at every scale is the part that is GRH. Care points: over the integers there are infinitely many zeros, so the
+  closure never happens and reading (1) becomes "the space is spanned by the zeros and nothing else", with reading (2) as |k_m| < 1
+  strictly at every step (`grh_margin`, every cost finite); and (2) is a restatement of GRH in the grid model, not progress toward it:
+  the open step is still to show |k_m| <= 1 from the primes, the characters and the real place alone.

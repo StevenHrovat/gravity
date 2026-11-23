@@ -202,6 +202,11 @@ of the paper, for Frege N2 of `OPEN-QUESTIONS-DMP.md`.
 2. **In the finite model of GRH the factors vanish.** Above the number of zeros the sections are singular, so the margin
    reaches zero and stays there. The hypothesis is therefore stated with f_k >= 0. "No factor vanishes" (f_k > 0, every
    cost finite) is the infinite-zero case, and `grh_margin` covers it.
+   **The two GRH readings (the owner, PREP.md, same day).** In the Szego recursion the factor is 1 - |k_k|^2, k_k the k-th
+   reflection coefficient. GRH reads the ledger twice: the closure (|k_N| = 1 exactly at N = the number of atoms: the space
+   is spanned exactly) and the influence bound (|k_k| <= 1 at every scale, which is `ScaleSign`). Both together put the
+   atoms on the circle **[classical]** (Szego, Geronimus, Verblunsky). The check `closure.py` / `closure.log`
+   **[numerical]** shows they are separate: the closure holds off the line too; the bound at every scale fails there.
 3. **The primes are not the steps.** The steps are scale cells; the primes are impulses at the lags log p.
 4. **The resolution reference is a branching chain.** Ben-Sasson and Wigderson run the ledger along a path of a tree of
    restrictions, not a single chain; the conclusion matches, the construction differs.
