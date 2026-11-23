@@ -308,6 +308,21 @@ Notes relative to `docs/pnp/`.
 | VI.3b | Three answers: outrun possibility; every block at once; charge the pair at its interface | reading | VI.3 | none |
 | VI.5 | Only in YM is the starting positivity given by construction | paper (observation on II.1) | II.1 | none |
 | VI.5b | YM is likely to close first | reading (expectation) | none | none |
+| VI.7a | Bounded transport: an uncertainty crossing contracting steps (e^delta f <= q < 1) with fresh uncertainty at most R stays at most q^n e_0 + R/(1 - q) at every step | Lean | `ProofPhase/Unified/Transport.lean`, `bounded_transport`, `transport_geom`, `acc_eq` | none |
+| VI.7b | At cost = floor the uncertainty is carried without damping, e_n <= e_0 + sum r_j; sharp; bounded exactly when the r_j are summable | Lean | `ProofPhase/Unified/Transport.lean`, `critical_transport`, `critical_sharp`, `critical_bounded_iff`, `critical_unbounded` | none |
+| VI.7c | An uncertainty below the sign margin certifies the sign across the DB at every step | Lean | `ProofPhase/Unified/Transport.lean`, `sign_transport`, `sign_of_bounded`, `sign_of_critical` | none |
+| VI.7d | With no fresh uncertainty the transport theorem is the ledger (`Pays`, `carry`, `Ledger.contract`, every DMP ledger) | Lean | `ProofPhase/Unified/Transport.lean`, `pays_iff_transports`, `carry_of_transport`, `ETM.Ledger.transports`, `contract_of_transport` | none |
+| VI.7e | Zero slack, exactly: an uncertainty and a margin paying the same cost have their ratio carried at cost = floor | Lean | `ProofPhase/Unified/Transport.lean`, `relative_transport`, `relative_critical` | none |
+| VI.7f | Yang-Mills: the slab chain transports the boundary uncertainty with zero join loss; under a seam transport O1 holds once mu (theta^n u_0 + sigma/(1 - theta)) <= 1; any positive twist ratio clears O1 with enough layers on a fixed lattice | Lean | `ProofPhase/Unified/TransportBridges.lean`, `ym_slab_transport`, `ym_bridge`, `ym_layers_needed`, `elec_le_of_deficit` | none |
+| VI.7g | Yang-Mills: a cost above the floor at fixed physical length, uniform in the cutoff; in the box geometry the side seam per join (three slabs: at most (1/mu - (sqrt 2 - 1)^3)/sqrt 2) | open | `docs/unified/TRANSPORT.md` 3.1; `SeamTransport` (named) | a proof of either; O1 |
+| VI.7h | GRH: the margin's relative uncertainty crosses the scale steps at exactly cost = floor (zero slack); zeta's margin is certified with size while the summed remainders stay below log 2; the sign alone is decided step by step | Lean | `ProofPhase/Unified/TransportBridges.lean`, `grh_log_transport`, `grh_sign`, `grh_sign_of_sum`, `grh_sign_szego`, `grh_sign_step` | none |
+| VI.7i | GRH: remainders, measured against the collapsing margin, summable with total below log 2, from the primes alone, beyond Dirichlet | open | `docs/unified/TRANSPORT.md` 3.2 | a proof; GRH beyond Dirichlet |
+| VI.7j | NP: carrying the line count across the hidden variables, a share e^{-q} each, is exactly a size bound; lifting gives q = c log n, a constant quantum q = c | Lean (from the named external `LiftCP` and the named open `LiftCPConst`) | `ProofPhase/Unified/TransportBridges.lean`, `hiddenTransport_iff_size`, `liftCP_hiddenTransport`, `liftCPConst_hiddenTransport`, `indGadget_quantum` | none |
+| VI.7k | NP: a constant cost c > 0 per hidden variable for a constant-size gadget (`LiftCPConst`) | open | `docs/unified/TRANSPORT.md` 3.3; `NP-LIFTING.md` 2.3 | a constant-gadget lifting theorem for cutting planes |
+| VI.7l | In the known lifting proofs the per-block hiding errors add up across all blocks with no damping, which forces the gadget to grow with n | reading (recalled; to be checked against the sources) | `docs/unified/TRANSPORT.md` 3.3; `hiding_accumulates` (Lean, the critical case) | read Mertz-Pitassi, Lovett-Meka-Mertz-Pitassi-Zhang |
+| VI.7m | The three bridges side by side: under each named hypothesis the uncertainty is transported below the margin and the sign holds | Lean | `ProofPhase/Unified/All.lean`, `three_bridges`, `ym_uncertainty_bound` | none |
+| VI.7n | Each named hypothesis is the running-state axiom R for its object; under R the three conclusions follow (VI.7m), while R for the specific objects is the open step | reading (identification); implication Lean (VI.7m) | `PREP.md` (owner, 2026-11-23); VI.7m | none |
+| VI.7o | The transport theorem is not empty: a perturbed Doeblin chain keeps its law in [3/10, 7/10] at every step; without mixing the same kind of perturbation erases the margin | Lean | `ProofPhase/Unified/TransportInstances.lean`, `doeblin_example`, `ident_margin_lost` | none |
 
 ## Outlook. A settling machine (`draft/07-outlook-settling-machine.md`)
 
@@ -329,28 +344,31 @@ Counted on the rows above (each row once, by its first mark; scope rows 0.1 and 
 
 | Status | Draft 2 | Draft 1 |
 |---|---|---|
-| Lean | 104 | 69 |
+| Lean | 114 | 69 |
 | classical | 42 | 27 |
 | external | 7 | 7 |
 | conditional | 3 | 3 |
 | paper | 27 | 13 |
 | numerical | 17 | 8 |
-| reading | 23 | 18 |
-| open | 25 | 20 |
-| **Total** | **248** | **165** |
+| reading | 25 | 18 |
+| open | 28 | 20 |
+| **Total** | **263** | **165** |
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open
 part. Most of the growth is new results of the crossover, GRH and cutting-planes rounds, not re-labelling; no draft-1 row lost a mark, and one was upgraded (DAG-like
 size-width, V.3.4, classical to Lean).
 The open statements that decide the three problems are III.5.6 (O1) with III.5.7 to III.5.9 and III.9.5 to III.9.7 (Yang-Mills),
-IV.0c and IV.4.1 to IV.4.8 (GRH), and V.4.10 and V.6 (P vs NP).
+IV.0c and IV.4.1 to IV.4.8 (GRH), and V.4.10 and V.6 (P vs NP). VI.7g, VI.7i and VI.7k restate them in the transport form of VI.7.
 
 Lean names (draft 2): every backticked identifier in this file and in Parts II to VI was checked by script against a declaration
 (`theorem`, `lemma`, `def`, ...) under `docs/mass-gap/formal/`; all resolve except `H1LocalLip` (discrepancy 5). The new modules
 (`Crossover/Containment.lean`, `Neighbours.lean`, `RDoeblin.lean`, `Runs.lean`, `Saturation.lean`, `GRH/Mirror.lean`, `Tate.lean`,
 `Induction.lean`, `Variational.lean`, `Transfer.lean`, `Proof/Dag.lean`, `Edge.lean`, `CPDuality.lean`, `CPPairs.lean`) are tracked and
 contain no `sorry`, `admit`, `native_decide` or `axiom` declaration. Axiom logs were read in the notes, not regenerated.
+The transport modules of VI.7 (`Unified/Transport.lean`, `TransportBridges.lean`, `TransportInstances.lean`, `All.lean`) were
+checked the same way, and their identifiers resolve; their axiom log, `docs/unified/axioms-transport.log` (70 declarations, standard
+axioms only), was regenerated for this section.
 
 ## Discrepancies found in the source notes while building this ledger
 

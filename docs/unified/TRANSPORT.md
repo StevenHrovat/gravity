@@ -1,8 +1,8 @@
 # Transport of an uncertainty across a DB: the final approach as one theorem
 
 2026-11-23. Lean: `docs/mass-gap/formal/ProofPhase/Unified/Transport.lean` (the theorem),
-`TransportBridges.lean` (the three bridges), `TransportInstances.lean` (a model where everything is proved); 68
-declarations, standard axioms only, no `sorry` (`axioms-transport.sh`, `axioms-transport.log`). CPU check, refute-only:
+`TransportBridges.lean` (the three bridges), `TransportInstances.lean` (a model where everything is proved), `All.lean`
+(`three_bridges`, the three bridges side by side); 70 declarations, standard axioms only, no `sorry` (`axioms-transport.sh`, `axioms-transport.log`). CPU check, refute-only:
 `transport_check.py`, `transport_check.log` (0 failures).
 
 The approach is the owner's: "Exactly define the uncertainty, then transport it in a meaningful way across a DB."
@@ -320,6 +320,9 @@ each hidden variable it must resolve, `w + 1` of them for a formula of resolutio
 - `docs/mass-gap/formal/ProofPhase/Unified/Transport.lean`: the theorem, sections 1 to 6.
 - `docs/mass-gap/formal/ProofPhase/Unified/TransportBridges.lean`: the three bridges.
 - `docs/mass-gap/formal/ProofPhase/Unified/TransportInstances.lean`: the perturbed Markov chain, the critical chain.
-- `docs/unified/axioms-transport.sh`, `axioms-transport.log`: 68 declarations, `[propext, Classical.choice,
+- `docs/mass-gap/formal/ProofPhase/Unified/All.lean`: `three_bridges`, each column as "named running-state hypothesis
+  => the uncertainty is transported below the margin and the sign holds" (the transport counterpart of
+  `three_instances`).
+- `docs/unified/axioms-transport.sh`, `axioms-transport.log`: 70 declarations, `[propext, Classical.choice,
   Quot.sound]`, no `sorry`/`admit`/`native_decide`/`axiom`.
 - `docs/unified/transport_check.py`, `transport_check.log`: refute-only CPU check.

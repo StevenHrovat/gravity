@@ -157,6 +157,10 @@ Its transport across the DB obeys the ledger law, so it contracts exactly when t
 is organised by this: where each problem's uncertainty sits, how it crosses its boundary, and why GRH (zero slack) is the case where
 it crosses without damping.
 
+**VI.7 Uncertainty transported across the DB.** The transport theorem (bounded under contraction, critical at cost = floor and sharp,
+sign preserved below a margin; the ledger at no fresh uncertainty) and the three bridges side by side (`three_bridges`), each under its
+named running-state hypothesis R; R for the specific objects is the open step (Lean; `docs/unified/TRANSPORT.md`).
+
 ## Outlook. A settling machine
 
 The first author's concept of a DMP-native general intelligence: a CMOS system in IM tokens, one Milky Way gate that checks hash

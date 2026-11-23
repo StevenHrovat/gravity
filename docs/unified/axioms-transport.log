@@ -1,8 +1,8 @@
-== build ProofPhase.Unified.TransportBridges
-Build completed successfully (8999 jobs).
+== build ProofPhase.Unified.All
+Build completed successfully (9004 jobs).
 == build ProofPhase.Unified.TransportInstances
 Build completed successfully (8927 jobs).
-== declarations: 68
+== declarations: 70
 == axioms
 'ProofPhase.Unified.TransportsCert' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.Unified.acc' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -72,5 +72,7 @@ Build completed successfully (8927 jobs).
 'ProofPhase.Unified.ident_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.Unified.ident_margin_lost' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.Unified.ident_is_critical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ym_uncertainty_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.three_bridges' depends on axioms: [propext, Classical.choice, Quot.sound]
 == source grep
-no sorry / admit / native_decide / axiom in ProofPhase/Unified/Transport*.lean
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/Transport*.lean, All.lean

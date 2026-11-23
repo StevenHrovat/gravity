@@ -72,3 +72,53 @@ Each open step is stated in this draft in the exact form that would close it. Wh
 the status in `../CLAIMS.md` moves from open to Lean (or paper), the section's verdict line changes, one cell of the table in VI.2
 changes, and the abstract's list of what remains shrinks by one item. No other section needs to move. That is the test of the paper's
 structure.
+
+## VI.7 Uncertainty transported across the DB
+
+The owner's approach for the content layer: "Exactly define the uncertainty, then transport it in a meaningful way across a DB." Each
+column keeps its uncertainty in one named bridge to the real object; the finite model asserts only itself. That uncertainty is itself
+a carried quantity, so the ledger applies to it with one more term (`docs/unified/TRANSPORT.md`).
+
+**The theorem.** An uncertainty e_n >= 0 crosses step n with factor f_n and floor delta, and the step may add fresh uncertainty
+r_n >= 0 of its own: e_{n+1} <= e^delta f_n e_n + r_n.
+- **Bounded (VI.7a).** If the steps contract, e^delta f_n <= q < 1, and each adds at most R, the uncertainty stays at most
+  q^n e_0 + R/(1 - q) at every step, uniformly in n **[Lean]**.
+- **Critical (VI.7b).** At cost = floor, e^delta f_n = 1, nothing is damped: e_n <= e_0 + (sum of the r_j). The bound is attained, it
+  stays bounded exactly when the r_j are summable, and a constant fresh uncertainty grows without limit **[Lean]**.
+- **Sign preserved (VI.7c).** If a quantity has a sign margin m_n and the uncertainty about its counterpart across the DB stays below
+  it, e_n < m_n, the counterpart's sign is certified at every step, with value at least m_n - e_n **[Lean]**.
+- With no fresh uncertainty the theorem is the ledger itself: `Pays`, `carry`, `Ledger.contract`, and every DMP ledger of
+  `ETM/RunSys.lean` (VI.7d) **[Lean]**.
+
+**Zero slack, exactly (VI.7e).** When the uncertainty and the margin it is compared with pay the same cost at every step, their ratio
+crosses at exactly cost = floor. Damping relative to a margin exists only if the margin shrinks more slowly than the uncertainty
+**[Lean]**.
+
+**Where each uncertainty sits, and what the open step needs in these terms.**
+- **Yang-Mills (VI.7f, VI.7g).** The uncertainty is the boundary uncertainty of a slab: how large the charged (twisted) sector can be
+  against the neutral one, at any outside; O1 is the margin 1/mu. In the slab geometry the slab chain carries it with each layer's own
+  factor and adds nothing (zero join loss), and any positive twist ratio clears O1 with enough layers on a fixed lattice **[Lean]**.
+  The open step: a cost above the floor at fixed physical length, uniform in the cutoff (the twist ratio bounded below as the lattice
+  spacing goes to zero), plus, in the box geometry, the side seam added at each join. For three slabs at the self-dual factor the
+  seam must stay below (1/mu - (sqrt 2 - 1)^3)/sqrt 2 per join **[open]**.
+- **GRH (VI.7h, VI.7i).** The uncertainty is how far zeta's margin (the Szego prediction error at scale n) is from the finite model's,
+  relative to the model's; the explicit formula's remainder enters each scale as the relative difference of the two factors
+  1 - |k|^2. In log form it crosses at exactly cost = floor: zero slack. Zeta's margin is certified, with size, while the summed
+  remainders stay below log 2; the sign alone is decided step by step **[Lean]**. The open step: remainders, measured against a
+  margin that collapses, that are summable with total below log 2, from the primes alone, beyond Dirichlet **[open]**.
+- **NP vs coNP (VI.7j, VI.7k, VI.7l).** The uncertainty is the hidden information per variable, the pointer of the gadget, log m bits.
+  Each hidden variable a refutation must resolve takes a fixed share of the line count across the two-party split. That is a ledger
+  with no fresh uncertainty, and it is exactly a size bound; lifting supplies the cost c log n per variable **[Lean]** from
+  **[external]**. The open step: a constant cost c > 0 per hidden variable for a constant-size gadget (`LiftCPConst`) **[open]**. In
+  the known proofs the per-block hiding errors add up across all blocks with no damping, which is why the gadget grows with n
+  **[reading]**.
+
+**Side by side (VI.7m).** `three_bridges` (`Unified/All.lean`) states the three columns in one theorem, each as "named hypothesis
+=> the uncertainty is transported below the margin and the sign holds" **[Lean]**. It is the transport counterpart of
+`three_instances`. The theorem is not empty: on a perturbed Doeblin chain every hypothesis is proved, and the uncertainty stays below
+the margin at every step; without mixing, a perturbation of the same size erases the margin (VI.7o) **[Lean]**.
+
+**The running-state axiom (VI.7n).** Each named hypothesis says that its object is in a running state. With that statement taken as a
+named axiom R, the three conclusions follow: the boundary uncertainty stays below 1/mu, zeta's margin keeps its sign, the crossing
+cost is paid **[Lean]** for the implication. R for the specific objects (the Wilson measure in the continuum, the L-functions beyond
+Dirichlet, strong proof systems) is exactly the open step of each problem **[reading]**.
