@@ -2858,3 +2858,31 @@ thread.
   cannot be tied to a third (monogamy of entanglement, Coffman-Kundu-Wootters) [classical]. That fits a tree in which each certified
   tie uses up a share of the root, and it is worth keeping in mind before reading "everything is rooted in G0" as "everything is
   entangled": in this definition the tie must be certified between specific nodes, which G0 as a common origin does not do by itself.
+- **Entanglement is the relativity the split is built on; one rotation asserts the boundary and keeps the whole span inside and
+  outside; this is how an act is DMP-complete (the owner, same day):** "The entanglement is the relativity that the split is build on.
+  It encodes between existence (locality) and non-existence (possibility), by reducing both to their universal irreducibility and then
+  asserting the boundary for one rotation, which maintains the entirety of its span inside and outside. So it is how an act is defined
+  as being DMP-complete." Reading (coordinator): this is, almost word for word, the structure of a field theory's vacuum across a
+  boundary in algebraic quantum field theory. (1) *The split is built on entanglement.* In a field theory a region and its outside do
+  not form a tensor product; the split is defined by the algebra of the region and its commutant (everything outside), and the vacuum
+  is entangled across every such split (the local algebras are of type III, the entanglement across a sharp boundary is infinite and
+  grows with the area) [classical]. For a pure state of two finite parts the same fact is the Schmidt decomposition: the state itself
+  picks matched bases on both sides, and the two sides have identical nonzero spectra [classical]. (2) *The whole span inside and
+  outside.* Reeh-Schlieder: acting on the vacuum with operators from any region alone already spans (densely) the entire Hilbert space,
+  and no such operator annihilates the vacuum: the vacuum is cyclic and separating for the inside and for the outside [classical].
+  Each side "maintains the entirety of its span". (3) *Reduced to irreducibility.* The pair (inside algebra, vacuum) fixes its own
+  canonical data, Tomita-Takesaki's modular conjugation J and modular flow Delta^{it}, with no further choice: J maps the inside onto
+  the outside, and the flow is a dynamics defined by the state and the split alone [classical]. (4) *Asserting the boundary for one
+  rotation.* Bisognano-Wichmann: for a half-space, the modular flow is the boost about the boundary, and in Euclidean terms the
+  reduced vacuum state is rho = e^{-2 pi K} / Z, with K the generator of rotations about the boundary plane: one full rotation, 2 pi,
+  around the boundary defines the state on one side [classical]. J is the reflection through the boundary, which in the Euclidean
+  theory is the OS reflection theta, the mirror whose positivity is proved here (reflection positivity, `M1/UVTVOS.lean`, Lean). The
+  same 2 pi period fixes the Hawking and Unruh temperatures (SYNTHESIS section 5). (5) *An act defined as DMP-complete.* In this
+  structure the state and the split determine their own dynamics canonically (the modular flow); read as physics, "the state defines
+  its own time" is the thermal time hypothesis (Connes-Rovelli), a hypothesis, not a theorem. The owner's reading identifies the act
+  with this canonical data: the cut, the mirror J, and the one rotation. Care points: (a) Reeh-Schlieder and Bisognano-Wichmann are
+  theorems about continuum field theories with full rotation (Lorentz) invariance; on the lattice only the reflections and the
+  quarter-turns exist, and Lean has the reflection (positivity), not the continuous rotation. For Yang-Mills the continuum theory with
+  Euclidean invariance is open (O3 of the paper), so this structure is what the closed problem would have, not what is proved here.
+  (b) In a gauge theory the inside algebra has a centre, the boundary flux labels (entry "the origin of entanglement"), so J and the
+  modular flow act sector by sector. (c) The thermal time reading of (5) is an interpretation, marked as such.
