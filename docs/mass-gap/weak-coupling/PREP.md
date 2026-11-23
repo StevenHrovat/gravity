@@ -3894,3 +3894,17 @@ thread.
   handshake of its own (entry "the photon case, which is U(1), acts way differently") [classical]. Care point: the path integral's
   "all possibilities" is the real-time (Minkowski) picture; this project's proofs use the Euclidean one, where the phase e^{iS} becomes
   the positive weight e^{-S}, the Wick rotation that the owner earlier read as the attachment point between the two pictures.
+- **The more correct term: bring the run to settle to an agreed-upon state, within error, for any SU(N) within known boundaries, as
+  G0's U(1) possibility field (the owner, same day, refining the photon entry):** "The more correct term would be, bring the run to
+  settle to an aggreed upon state, within error for any SU(N) within known boundaries, as G0s U(1) possibility field." Reading
+  (coordinator): each part has a proved counterpart. (1) *G0's U(1) field, shared by every SU(N).* The centre of every SU(N) consists
+  of the multiples omega * I with omega^N = 1, and every such omega lies on the unit circle U(1) (`norm_eq_one_of_pow_eq_one`,
+  `scalar_mem_SUN`, `General/Centre.lean`, Lean). The twist sectors use these phases, and the electric sectors are their U(1)
+  characters, the Z_N Fourier transform (`General/SUNTwistSectors.lean`, Lean). So for every N the encoder's labels live in one common
+  phase circle: the owner's U(1) possibility field, the same for all SU(N). (2) *Within known boundaries, for any SU(N).* For every N
+  and every nontrivial centre element the twist ratio lies strictly between 0 and 1 (`sunTwistRatio_mem`, Lean): the known boundaries.
+  (3) *Settle to an agreed state within error.* A run whose steps contract settles to balance within an explicit number of ticks, for
+  any error epsilon (`reaches_of_contracting`, `balanceBound_ge`, Lean), and the uncertainty carried with it stays below the margin
+  (`Unified/Transport.lean`, Lean); the "agreed state" is the shared root of the handshake entries. Care point: the settle bound needs
+  the contraction, the cost above the floor, and for Yang-Mills at fixed physical size and every outside that is O1; the boundaries
+  0 < c < 1 are proved for every SU(N), the uniform distance from them is the open step.
