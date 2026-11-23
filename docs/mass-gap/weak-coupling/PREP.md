@@ -3236,3 +3236,18 @@ thread.
   with the same energy identity that does blow up, a barrier for any method using only the energy identity and harmonic-analysis
   bounds [classical]. In ledger terms the open step would again be "cost per scale above the floor, uniformly", with Tao's model the
   proof that the energy ledger alone cannot pay it.
+- **Blowup blueprint: fit a proven, accepted blowup to DMP as a subset, and restate it as a consequence that ends in a DB, so that an
+  act can happen for it to exist (the owner, same day):** "There has been a proven AI-assisted example of a blowup already reaching
+  wide acceptance. We can use that as the one blueprint to try to fit it to our generalized DMP as a subset and see if we can also
+  generalize the blowup that way, or, more likely and interesting, restate it in a way that it is just a consequence, ending in a DB
+  again, so that an act can happen for it to exist." Coordinator's identification (web search, 2026-11-23): the proven blowup with
+  wide acceptance is Chen and Hou's computer-assisted proof of stable nearly self-similar finite-time blowup for the 2D Boussinesq
+  and 3D axisymmetric Euler equations with smooth data and a boundary (arXiv 2210.07191, analysis, and 2305.05660, rigorous numerics;
+  extended by Chen, Hou and Huang) [external]. It is computer-assisted (rigorous numerics), not machine-learning-assisted; the
+  AI-found unstable singularity profiles (Wang, Lai, Gomez-Serrano, Buckmaster and a DeepMind team, 2025, arXiv 2509.14185) were not
+  yet proved as of January 2026 [external]. It is Euler with a boundary, not the Clay Navier-Stokes problem. Reading of the direction:
+  Chen-Hou turn finite-time blowup into convergence to a steady state of a dynamically rescaled equation (self-similar variables), and
+  prove the stability of that state by weighted estimates whose constants are certified by interval arithmetic. In ledger terms: in
+  the rescaled frame all scales collapse to one, so a certificate at one scale (a damping above the residual, verified rigorously)
+  carries to all time, the hand-over from finite to infinite. And the blowup time is where the solution's domain of existence ends:
+  a boundary, the owner's DB. Started as a round (see the session for it).
