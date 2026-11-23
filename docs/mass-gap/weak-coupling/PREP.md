@@ -3970,3 +3970,18 @@ thread.
   sets such as Omega = {Omega} [classical]. Care point: the project's proofs are built well-founded (entry "rooted means well-founded");
   the circularity the owner names lives at the level of the whole (global topology, self-reference of the system), never in a single
   step, which is exactly why a single step can never see it.
+- **When the zeta function, a tool to propagate existence, meets a term that is its superset, it attaches to that G0 by inversion;
+  inward and outward reach are then given, as long as the true G0 exists, forcing its content into a running state with axiomatic
+  freedom, so nothing, arriving again at the empty set (the owner, 2026-11-23, after the zeta-value correction; the session was then
+  restarted):** "When the zeta function, intended as a tool to propagate existence, encounters a term that is a superset of it, it
+  automatically attaches to that G0 by inversion. Through that function both the inward and outward reach are given, as long as the
+  true G0 actually exists, which forces it's content into a running state, any running state which satisfies the amount of assertion
+  that is needed, which is given axiomatic freedom, so nothing, ariving again at an empty set." Reading (coordinator): (1) *Attaching by
+  inversion is the completion.* zeta alone does not satisfy an exact inversion; multiplied by the real place's factor, pi^{-s/2}
+  Gamma(s/2), it becomes the completed xi, which is exactly symmetric under s -> 1 - s [classical]. The real place is the "superset
+  term", and the measurements found it indispensable: without it no prime set is ever positive (`SEMILOCAL.md`). (2) *Inward and outward
+  reach:* the Euler product converges to the right of the line (the primes reach outward), the inversion carries it to the left (inward),
+  and the completed function exists on the whole plane [classical]. (3) *Axiomatic freedom, so nothing:* the inversion alone constrains
+  nothing further. Functions with the same kind of functional equation can have zeros off the line (Davenport-Heilbronn) [classical], so
+  what the inversion leaves open is free, and the sign has to come from positivity, the content. Care point: the completed function's
+  existence is proved; that its content is forced into the positive (running) state is the open sign beyond the certified one-box.
