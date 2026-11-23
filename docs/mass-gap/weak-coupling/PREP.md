@@ -1693,3 +1693,8 @@ thread.
   for Euclidean time, with the boundary as the place where the conversion is fixed. (3) **For MC time** no such translation is
   known; it would need a construction that gives sampler steps a metric meaning (for example through the stochastic-quantisation
   time and its equilibrium). The owner holds that it carries over 1:1; recorded as the owner's reading, open.
+  Clarified by the owner (same day): "Sorry, I misunderstood what MC time was. Yes, Euclidean time was meant, since it is what we
+  describe." So the reading is: the inside is described in Euclidean time, the outside runs on the GR tick rate, and the DB fixes the
+  translation; that is the Hawking-Tolman structure of point (2) above, which holds as stated. The time-dilation entry before it is
+  read the same way: the remnants attached to the DB enter the Euclidean description, and the redshift factor is what the outside
+  sees. The exploratory settling test on W2 stays as planned; it measures the sampler's settling, which is a separate question.

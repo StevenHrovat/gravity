@@ -114,3 +114,67 @@ mod-`N` version, a paper-level input.
 `axioms.sh` builds `ProofPhase.General.Top` in a private WSL folder, recompiles each file to count warnings (0 for all),
 prints the axioms of every theorem, definition and instance of the folder and greps the new files for `sorry`, `admit`,
 `native_decide` and `axiom` declarations (none). `axioms.log` is its output.
+
+---
+
+# Phase 2: the SU(N) instance (2026-11-23)
+
+New files (6, all in `formal/ProofPhase/General/`, nothing existing edited): `SUN`, `Centre`, `Projection`, `Meas`,
+`SUNSubst`, `TopSUN` (imports phase 1 and these). Axioms of the new declarations: `axioms-sun.log` (`axioms-sun.sh`
+regenerates it); every new file builds with 0 warnings. Count: 46 theorems and 19 definitions, abbreviations and instances in the
+source, 75 constants in the environment, all on `propext`, `Classical.choice`, `Quot.sound` only; no `sorry`, `admit`, `native_decide`, `axiom`.
+
+| Module | Content |
+|---|---|
+| `SUN` | `SUN N` = `Matrix.specialUnitaryGroup (Fin N) ℂ` for every `N` (`SUN 2` is `SU2` by unfolding). Topological group, compactness (`isCompact_SUN`), second countability, the defining representation `HasGaugeTrace (SUN N) N`, the Haar probability measure and its left invariance, and the package instances `GaugeGroupBase (SUN N)`, `GaugeRep (SUN N) N`. Consequences: `|Re tr g| <= N` (`abs_gaugeReTr_le_SUN`) and the Wilson measure of SU(N) is a probability measure on every torus, in every dimension, at every coupling (`isProbabilityMeasure_wilsonMeasure_SUN`). |
+| `Centre` | The centre `Z_N`. `centreElt N w h` = the scalar matrix `w I` for `w^N = 1` (`|w| = 1` is derived, `det (w I) = w^N = 1`); `centreHom N : rootsOfUnity N ℂ →* SUN N`, injective (`centreHom_injective`), central (`centreHom_central`), with `N` elements (`card_centre`). It acts on the fundamental representation as `ζ` (`centreHom_rep`; `tr (ζ I) = N ζ`). `N`-ality: `HasNality ρ k` means `ρ (ζ I) = ζ^k`; proved for the fundamental (`k = 1`, `hasNality_fundamental`) and its complex conjugate (`k = -1`, `hasNality_conj`). For `N = 2`, `w = -1` the element is `negOneSU2` (`centreElt_two_neg_one`). The cost distance `geodSUN a b = arccos (Re tr (a b⁻¹) / N)`: non-negative, `<= pi`, zero on the diagonal, positive on some pair for `N >= 2` (`exists_geodSUN_pos`, on `(e^{2 pi i/N} I, 1)`), and equal to `geodSU2` at `N = 2` (`geodSUN_two`). |
+| `Projection` | The projection of matrices onto SU(N) by polar decomposition: `polarFactor A = A (A* A)^{-1/2}` (with `CFC.sqrt`), the phase correction `phaseFix` (multiply by `e^{-i arg(det U)/N}`), and `projSUN N A` = the result if it lies in SU(N), `1` otherwise. **Identity on SU(N)** (`projSUN_coe`, the package field `proj_rep`). **Defined on all invertible matrices**: the polar factor of an invertible matrix is unitary (`polarFactor_mem_unitary`) and the corrected matrix has determinant 1 (`projVal_mem_of_det_ne_zero`), so the "constant elsewhere" clause only concerns singular matrices (`projSUN_val_of_det_ne_zero`). |
+| `Meas` | `projSUN N` is **measurable** (`measurable_projSUN`; the square root is measurable by `CFC.measurable_sqrt`, the inverse is `(det)⁻¹ adj`, `arg` is measurable). |
+| `SUNSubst` | `instGaugeSubstSUN N` for `N >= 2` (`[Fact (2 <= N)]`): cost distance, centre = range of `centreHom`, projection = `projSUN`; every field proved. Agreement with phase 1 at `N = 2` (below). The strong-coupling area law for SU(N) with `N` even. Two examples of the phase 1 generic layer at SU(N), any `N`, any `d`. |
+
+## Agreement with the SU(2) instance of phase 1 (item 4)
+
+* `GaugeGroupBase`, `GaugeRep`: `instGaugeGroupBaseSUN 2 = instGaugeGroupBaseSU2` and `instGaugeRepSUN 2 = instGaugeRepSU2` by `rfl` (propositions).
+* Cost distance: `geodDist_two` (from `geodSUN_two`). Centre: `centre_two`, from `range_centreHom_two : range (centreHom 2) = {1, negOneSU2}`.
+* Projection: `projSUN_two_eq_on_SU2`: the two projections agree on SU(2), where both are the identity. **They are different maps off SU(2)**: `RouteA.projSU2` rescales by `|det A|^{-1/2}` and falls back to `1`, `projSUN` is the polar factor with a phase correction. The package only uses the identity on the group, so the instance field is the same statement.
+* A phase 1 statement re-derived from the SU(N) one at `N = 2`: `su2_area_law_of_mixture_SUN` has the same type as `su2_area_law_of_mixture_general` and is proved from `area_law_of_mixture_SUN` (general `N`: bound `B = M = N`).
+* The SU(2) instance fields of phase 1 are not themselves *defined* from the SU(N) instance (the data differ in the projection and in how the centre set is written); the statements are tied together by the theorems above.
+
+## New result along the way
+
+`wilson_area_law_SUN_even`: the strong-coupling area law (the bound of `wilson_area_law_SU2` with `2` replaced by `N`) for SU(N)
+with `N` **even**, from `wilson_area_law_explicit` with the central element `-I`. The repository had it only for SU(2) and `U(n)`.
+`-I` lies in SU(N) exactly when `N` is even, so for **odd `N` the order-two centre does not exist** and the same argument
+does not apply; there the centre is `Z_N` with `N` odd and the Z2 comparison layer has to become a `Z_N` layer (phase 3).
+
+## What was not done
+
+* No regularity of `projSUN` beyond measurability (no continuity statement; none is a package field).
+* `N`-ality is proved for the fundamental and its conjugate only (`k = ±1`). Other representations (adjoint, `k`-index
+  tensors) need those representations to be constructed first.
+* `GaugeSubst` needs `N >= 2` (`geodDist_pos`); `SUN N` and the package instances `GaugeGroupBase`, `GaugeRep` are for every `N`.
+
+## The remaining `inst` files that now port mechanically (item 5)
+
+Classification from the audit table plus a reading of the statements; not checked file by file. "Mechanical" means: restate
+over a generic `Tuning` / `BlockingFamily` / `VTuning` the way `Filter`, `Noisy`, `PerVolume` did, replace `T.ym` by
+`wilsonMeasure G n (T.beta k) d (T.side k j)`, `4` by `d`, `geodSU2` by `GaugeSubst.geodDist` (now available for SU(N)),
+and use the `d`-counting of phase 1 (`card_le_of_physExtent`, `poly_exp_le`, `card_boxBlock`).
+
+* **Mechanical, counting-type (`needs4`):** `OneBox/Fine`, `OneBox2/Cube`, `V3/CondMass`, `Torus/Local` (the transfer
+  statements; the counting is done), `RouteA/BlockedSlab`, `Quantum/BlockedRoute`, `H1/Level`, `V3/TimeSep`, `V3/W1Route`,
+  `V4/Gap`, `V4/Recursion`, `Assembly`, `Crossover/P4Chain` (the `(1 + D/L1)^4` and `24/a^4` are `poly_exp_le` and
+  `d!/a^d`).
+* **Mechanical, statement-type (`fixed4`):** `Adjoint2/PatternAssembly`, `Book/TwoSize`, `Defects/Supplier`,
+  `Existence/Bridge`, `H1/Split`, `OS/GapLoc`, `OneBox2/Concrete`, `OneBox2/CubeAnchor`, `Quantum/LemmaT`,
+  `Quantum/LimitStates`, `Saturation/Reduction`, `SectorS/ConjS`, `Seg1/Envelope`, `UV/Split`, `V3/CondInputs`, `V3/Top`,
+  `V4/Top`, `V4/UV`.
+* **Mechanical given the cost distance (`geodSU2` in statements):** `Interface/DenseTransfer`, `Interface/MeasBlocking`,
+  `Interface/RandBlocking`, `OneBox/Tests`; and the `geodSU2_*` uses of `Repair/GeneralSupport`, `Repair/V4Bridge`,
+  `Repair/WeightedW` (`exists_geodSU2_pos` is the package field `geodDist_pos`).
+* **Not mechanical even with SU(N):** `Flip/Floor` (SU(2) gap constants), `OneBox2/Anchor` (the numerical anchor
+  `24 tanh(2 beta)` is an SU(2) estimate; the counting `3^d` is done), `OneBox2/Wilson` (the dimension-2 fundamental and
+  its kernel bounds), `V4/LCP` (flux limit with the centre layer), `Book/SU2Inst` (SU(2) instances only, replaced by `SUN`).
+  The `subst` files of phase 3 are untouched.
+* Order of work suggested: the `Tuning`-based chain first (`UV/Split`, `Assembly`, `V3/*`, `V4/*`, `H1/*`), since the
+  others restate their results.
