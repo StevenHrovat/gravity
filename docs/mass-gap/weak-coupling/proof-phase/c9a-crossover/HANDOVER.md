@@ -125,3 +125,18 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * Near-cut set on blocked variables (factors 1, 2, 4) of the saved 16^4 equilibrium configurations: beta 2.3 spans at every
   factor and grows (20, 37, 79 percent; the blocked theory flows to strong coupling); beta 3.5 stays isolated with an exponential
   size tail at every factor. Owner prediction contradicted at 2.3, supported at 3.5.
+
+## Round 8 (2026-11-23, uncommitted; the integer-flux route to a rate)
+
+* `RATE.md`; `formal/ProofPhase/Crossover/FluxRate.lean` (8 theorems) and `HandOver.lean` (3 theorems), standard axioms
+  (`axioms-dy.sh` now lists all 22 Crossover theorems, `axioms-dy.log`; `~/formal-dy` deleted); `w2/pastcut.py`,
+  `w2/runs/pastcut.json` (CPU, no GPU).
+* Closed (Lean): a flux-carrying outside forces a boundary-attached sheet; flux cells even, at least 2; forced area at least
+  (flux cells)/4 in d = 4. At every box size max(F_tw, F_e) >= log(1 + sqrt 2) = 0.881 (self-dual point of 't Hooft's duality,
+  from the strict bound Z_tw < Z; `0 < Z_tw` taken as a hypothesis).
+* Paper: the average cost per sheet plaquette is bounded below (annealed numerically, quenched by compactness for a fixed box) but
+  is not a rate (Jensen: it bounds the weight from below); the rate is the free energy of forced sheets, F_tw, and it enters the
+  annealed half of the one-box condition (bad-pattern weight). Strict flip gives only the sign; F_tw -> 0 is expected at large L
+  in the confined phase, where the electric channel F_e takes over.
+* First open step: multiplying one box's rate over D/L boxes (twist side: chessboard weight of the box-flux event vs e^{-F_tw};
+  electric side: the binary-channel model of Floor.lean 3). Behind it: annealed torus quantities vs per-outside influence.
