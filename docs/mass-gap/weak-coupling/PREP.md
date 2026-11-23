@@ -2616,3 +2616,25 @@ thread.
   happens at a finite scale, and the bound is |k_m| < 1 strictly. (c) Read this way, the owner's statement makes GRH a for-all over
   finite existence spaces, which is the form the Lean ledger already has; it does not change what is open (the bound from the primes,
   the characters and the real place alone).
+- **The hand-over point is where finite goes to infinite (the owner, same day):** "And the place where finite goes to infinite, is the
+  handover point, at which point DMP-completeness can be certified, with the settings for it able to be used." Reading (coordinator):
+  the exact counterpart is a *finite-size criterion*: one check at one finite scale, with a strict margin, that certifies the infinite
+  system by uniformity. (1) In the ledger: a per-step cost kappa above the floor delta, checked once and holding at every step (the
+  arrow of causality), gives decay at rate kappa - delta for the whole infinite chain, and summability (`rate_of_costAboveFloor`,
+  Lean). The finite check is the hand-over; the infinite chain is produced mechanically after it. (2) Yang-Mills: the hand-over point
+  is the box of fixed physical size at the crossover, where weak coupling hands over to confinement (the 0.881 hand-over,
+  `Crossover/HandOver.lean`; the mirror reading L sqrt(sigma) of about 1.7 to 1.8). Certifying O1 there is the one finite check. The
+  settings at that point (the box size L a = l, the coupling, the contraction eta) are then used for every scale:
+  `phys_rate_of_uniform` (Lean, `Crossover/Neighbours.lean`) turns a uniform one-box contraction eta at physical size l into the rate
+  -log(eta)/l per physical length, and the assembly turns that into the mass gap. In statistical mechanics this is the classical
+  finite-size criterion (Dobrushin-Shlosman complete analyticity; Martinelli-Olivieri: a mixing condition checked in one finite box
+  implies the infinite-volume property) [classical]. (3) P vs NP: the class theorem is a hand-over of the same kind: a local
+  certificate (Dobrushin's column below 1, checked on one site's neighbourhood) certifies polynomial-time sampling for every size
+  (`Mixing/Classical.lean`, Lean). (4) GRH: no hand-over point is known. Its floor is 0 and every step is an exact cancellation with no
+  slack (margin about 1e-9, `rh-guide/grh/INDUCTION.md`), so no finite margin propagates: finite verification up to a height (Turing's
+  method) never extends. In the ledger's terms a hand-over needs kappa > delta strictly; GRH has kappa = delta exactly, so its
+  hand-over, if it exists, must be an identity (the positive form itself), not a margin. Care points: (a) a finite-size criterion
+  needs a strict margin and the for-all over outsides; a measurement at the hand-over point can refute it but cannot certify it
+  (provability table, `c9b-adjoint/REDESIGN.md` 8), so "can be certified" means by proof. (b) The hand-over point is not unique: any
+  scale where the certificate holds works, and the settings there fix the units (the gap in units of l); ratios do not depend on the
+  choice. (c) This is the paper's pressing-then-minting (I.5): pressing up to the hand-over, minting after it.

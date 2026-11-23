@@ -229,6 +229,7 @@ Each row: the DMP domain, what it is in the construction, and the status of the 
 | **The tick** | the per-step floor delta, the same at every step (universal) | 2C (excess act) or log mu (path entropy) | 0: no slack | 0 |
 | **The quantum of assertion** | the terminal quantum phi: at least one unit is left | at least one sheet for a flux-carrying outside (`Crossover/FluxRate.lean`) | the mass re t(0) at the first cell | one costly line |
 | **The arrow of causality** | uniformity: the same step, the same floor, at every step | the same transfer step at every DB | translation invariance of the form | every refutation, every step |
+| **The hand-over point** (finite to infinite; the owner, PREP.md) | one finite check with a strict margin, kappa > delta, certifies the infinite chain (`rate_of_costAboveFloor`); its settings are then used at every step | the box of fixed physical size at the crossover; its settings give the rate per physical length (`phys_rate_of_uniform`) | none known: kappa = delta exactly, no slack, so a hand-over would have to be an identity | the local certificate of the class theorem (inside the class); for refutations, open |
 | **Minting** | the conclusion produced mechanically from the certificate | decay, then the gap (`ym_gap`, then OS and the assembly) | positivity, then zeros on the line, then Weil's pairing | the size lower bound |
 | **The open step** | the one place a cost must be shown paid | O1 | the sign | the crossing cost |
 
