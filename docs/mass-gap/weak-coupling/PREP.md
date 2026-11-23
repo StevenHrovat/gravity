@@ -1338,3 +1338,15 @@ thread.
   property: here it is the contraction condition (θ < 1, the one-box column condition). So being a subset is what is needed to build the
   machine for it; the contraction condition is what makes its halting (reaching balance) decidable, and that has to be checked for each
   content, as the Yang–Mills proof does box by box.
+- **Certification and the open middle (the owner, same day, on the crossover note):** "Complete computer-assisted certification not
+  working is expected, since it would mean that the computer is no longer a subset of DMP.YM; only then could the state be settled
+  before our heat death. The middle being open should already be handled in M1: any setting that does not give existence and
+  non-existence can not possess existence in the system, but it can exist and be contained." Reading (coordinator): (1) The note's
+  numbers agree: a direct check at L₁ would cover 3·10¹¹ to 6·10¹⁷⁹ lattice sites per cell, far beyond any physical computer; only a
+  stepwise check of the last few doublings, resting on (WL), is conceivable. (2) M1 does contain what is neither cleanly existence nor
+  non-existence: bad regions become composite boxes whose influence passes only through their collars (Lemma C), and they are carried
+  without "having existence" of their own. But M1's containment also used rarity: the regions had to be sparse relative to their
+  collars, which the large difference of scales near G0 supplies, and which ends where the coupling reaches order one (the earlier
+  reading "The strength comes from how they work"). The crossover's middle is exactly that regime. So the open question is whether
+  containment can work without rarity there: whether contained regions, dense or not, still pass on only what crosses their boundary.
+  This is the first question for the crossover session (its task 2).
