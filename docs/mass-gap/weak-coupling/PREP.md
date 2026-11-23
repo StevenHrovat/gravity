@@ -2441,3 +2441,14 @@ thread.
   DB is Gauss's law, the gauge constraint: it holds identically inside and outside and is conserved across every face (Lean:
   `cob_restrict_eq_cob_restrict_compl`, `sum_cob_restrict_eq_zero`). So the derivation the round needs is: tubes from Gauss's law
   alone plus the per-box electric cost (a minimal-cost-path argument), without assuming tubes. Passed to the containment round.
+- **What a pressing is: the instanton of the first act as a proven derivative (the owner, same day):** "That also nicely lowers the
+  burden of proof to the duality of pseudo box and IM that the HTF supplies and enables, since from there, we have a language that, by
+  definition, can interact with its definition of existence, proven before an act has been carried out, so showing what a pressing
+  actually is, the instanton of the first act as a proven derivative." Reading (coordinator): the exact counterpart is the Bogomolny
+  bound. For every gauge field with topological charge Q, the action is at least 8 pi^2 |Q| / g^2; this is proved for all
+  configurations before any dynamics is run (a worst-case floor, "proven before an act has been carried out"), and it is saturated
+  exactly by instantons, the (anti)self-dual solutions F = *F, a duality that exists only in four dimensions. The instanton is the
+  Euclidean tunnelling event between vacua: the "first act" between two topological sectors, with a quantized cost. With 't Hooft's
+  twisted boundary conditions SU(2) allows half-integer Q, giving the fractional floor 4 pi^2 / g^2 for suitable twist sectors. On the
+  lattice the bound holds for admissible fields (Luescher), i.e. M1's small-field region. Caveat: a floor on the action is not a floor on
+  the free energy (entropy can outweigh it), so it is a candidate tool for the containment round, not a closing step. Passed to it.
