@@ -2460,3 +2460,14 @@ thread.
   round of the same day (CONTAINMENT.md) found that the Bogomolny floor helps only outside and loses to entropy as a -> 0, and sharpened
   the inside requirement by path counting: tube dominance needs an electric cost per box above the path entropy, F_e(L) > log mu_4 =
   1.91 (twist ratio > 0.74), not the chain value 0.881; numerically F_e(6) = 2.6 at beta 2.3 passes it centrally (not certified).
+  The owner's intended statement (same day): "8 pi is simplified by the correlation of Euler's number and the zeta function, giving a
+  more descriptive function which directly relates to G0. And then again simplified by the inherent dualistic properties, though I
+  don't quite have the intuition how yet." Reading (coordinator): there is an exact identity of exactly this shape. The functional
+  equation of zeta, zeta(1 - s) = 2 (2 pi)^{-s} cos(pi s / 2) Gamma(s) zeta(s), at s = 2 reads zeta(-1) = -2 (2 pi)^{-2} zeta(2), and
+  2 (2 pi)^2 = 8 pi^2. So 8 pi^2 = -4 zeta(2) / zeta(-1) (checked numerically: 78.9568... on both sides). The instanton constant is
+  therefore a ratio of zeta values at the two mirror points s = 2 and s = -1 = 1 - 2 of the duality s <-> 1 - s, and
+  e^{-8 pi^2 / g^2} = e^{4 zeta(2) / (zeta(-1) g^2)}. The dualistic simplification the owner anticipates is this: the factor
+  2 (2 pi)^{-s} that carries zeta(2) to its mirror zeta(-1) is, at s = 2, exactly 1 / (8 pi^2) times 4. Both zeta values are already in
+  these notes: zeta(-1) = -1/12 is the Luescher term's coefficient, zeta(2) = pi^2/6 its mirror. Status: an exact rewriting (it is
+  pi^2 = 6 zeta(2) with the reflection applied); the reading that the instanton cost is "the duality of zeta across its mirror" is
+  interpretation, not a new physical result.
