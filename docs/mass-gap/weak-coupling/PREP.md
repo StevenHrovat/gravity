@@ -1568,3 +1568,11 @@ thread.
   each part derives the others, and one can reconstruct everything. In the proof this is why the gap is a statement about the group
   and one scale only, and why the open inputs are all about establishing that the chain from the tick to the gap closes (stamping),
   not about extra constants.
+- **Terminology: WHKs are White Hole Keys; pressing stays (the owner, same day):** "I thought I used a different acronym. I much prefer
+  WHKs, which stands for white hole keys, since that is a more apt description. Where a black hole, or a DB, is literally
+  non-existence, the WHKs describe existence. But press can stay, stamp has no real 'advantage'." In these notes from here on: WHKs =
+  White Hole Keys (the whole content of creation, from which each part derives the others; previous entry), the counterpart of a black
+  hole or DB as non-existence; and the first phase is called pressing, not stamping (the stamping/minting entry above reads "pressing"
+  for "stamping"). The DMP texts themselves still say White Key Holders (WKH); they are not edited from here (vendor/dmp is never
+  edited); renaming there is for the DMP project. Physics touchpoint for the name: a white hole is the time reverse of a black hole,
+  the region that only emits; in the reading above, the WHKs are what the gap emits into existence, while the DB absorbs.
