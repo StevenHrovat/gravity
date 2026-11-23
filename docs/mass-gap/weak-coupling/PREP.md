@@ -3419,3 +3419,15 @@ thread.
   "running system" is made a category: then "every running system goes through DMP" is a universal property (DMP initial or
   terminal among running systems), a theorem once the category is fixed. Care point: the general statement stays a thesis; the
   proved part is each formal notion, one by one, and the universal property relative to a stated definition.
+- **U(1) failing the handshake gives entanglement, so both outcomes exist; make DMP into the ETM it was always intended as (the
+  owner, same day):** "For U(1) failing the handshake the result is entanglement, so we have both possible outcomes. So let's really
+  make DMP into the ETM it was always intended as :D" Reading (coordinator): (1) *Both outcomes.* An interaction that completes the
+  handshake leaves a definite, recorded agreement (a classical correlation, decoherence); one that does not complete it leaves the
+  two nodes with a shared root and no definite outcome: entanglement (the earlier entry "two boxes interact without agreeing on a
+  future outcome"). The photon, U(1) and weakly interacting, rarely completes a recording interaction in transit, which is why photon
+  pairs are the standard carriers of entanglement in Bell tests and quantum networks [classical, quantum optics]. (2) *The ETM.* The
+  Existence Turing Machine of the GUID papers (`docs/guid/guid.tex`, the ETM paragraph; PREP entries "DMP as an Existence Turing
+  Machine", "anything that establishes itself as a subset can be run") and the previous entry's provability route meet here: define
+  "running system" formally, prove DMP's universal property for it, and state the ETM as the universal machine that runs any
+  described content. The recorded caution stands: no machine decides halting for all content (Turing); the ETM's halting (reaching
+  balance) is decidable on the contraction class, which is exactly the class the ledger certifies. Started as a round.
