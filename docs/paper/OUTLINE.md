@@ -11,6 +11,12 @@ until both readings of GUID hold: General (the unified theorem with its open hyp
 containing SU(3) x SU(2) x U(1) in one structure with at least one checkable consequence; PREP.md, naming entries). Until then the
 title keeps no expansion beyond "GUID v8", and the abstract states the present status exactly.
 
+**Outreach gate (the owner, 2026-11-23).** Once the full paper is released, it goes to experts, including Terence Tao, with the
+subject "Machine-proven and human explained attempt of a three in one proof through a superset for full YM, GRH and PvNP for a state
+that is considered running on the superset." The owner: "This, like the draft paper condition, is an aspirational gate". The
+subject is used only in the settled state, when every word of it holds true, i.e. under the same condition as the release criterion
+above. Before that, any contact states the present status exactly. The owner sends; nothing is sent on the owner's behalf.
+
 **Goal (the owner's words).** "This should be immaculate in both its magical logical simplicity through ultimate reduction, while
 being informative enough to all the different fields that need its tools by being intuitively understandable and guiding the reader
 through the easiest to understand part, DMP, then extending it with tools that just click."
