@@ -1377,3 +1377,13 @@ thread.
   are laws; in the proof they are the two quantities to establish across the crossover, scale by scale, and the W2 measurement is
   designed to measure exactly them (the bad-cluster connectivity and the collar mass m). The session's remaining lever matches the
   reading too: call "bad" only what fails to contract, not every large field.
+- **The reflection obstacle and transport through existence (the owner, same day, on M1's OSData pack):** "For the reflection obstacle:
+  to me that seems related to the symmetry breaking that happens at a DB for an act, where information can, through its interaction
+  with a locality of guaranteed existence, transport itself through existence and exist, while not having existence." Reading
+  (coordinator): the obstacle is that on a periodic torus the time shift carries a positive-time observable around the circle into the
+  negative half, so the reflection's split into two halves is broken by the periodic boundary. The pack's windowed route matches the
+  reading: observables are kept inside a finite time window (a locality where reflection positivity is guaranteed), the shift carries
+  them through the bulk step by step for at most K steps, and only the window's edge costs an error, which vanishes as the torus grows.
+  The observable is transported through the system without becoming part of it ("exists, while not having existence"); the symmetry is
+  broken only at the boundary, where the act's cost is paid. In the limit the error goes, which is why MassGapLoc's limit-point
+  definition needs no infinite-volume measure.
