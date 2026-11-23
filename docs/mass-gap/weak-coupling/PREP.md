@@ -3362,3 +3362,30 @@ thread.
   [classical], so the tail's spectrum gives invariants, and full shape needs the time-ordered record along the arrow (in dimension
   3, Perelman's surgery record), not the final spectrum alone. (b) Luescher's relations hold for a theory with a gap; they read the
   shape once the gap exists, so at one box they are the consequence of O1, not a route around it.
+- **The spectrum not being enough is where the first true act happens; the instanton of an act is the entanglement, an act at a DB
+  that can be proven false; it needs two nodes agreeing on a shared root, the universal handshake of existence, after which data/GG
+  can cross the link (the owner, same day):** "The final spectrum isn't enough is exactly the condition in which the first true act
+  happens, which always needs to be stated last in the DMP theories, at least in how history has repeated itself time and time again
+  over the weeks. That means that the instaton of an act is the entanglement, so an act at a DB, that has the possibility to be
+  proven false. By construction this needs at least two nodes agreeing on a shared root, at which point it is the first thing they
+  MUST do, since it is the universal handshake of existence, after which data/GG, can be transported across the link." Reading
+  (coordinator): exact counterparts in three fields. (1) *Where the spectrum stops, a choice must be made.* Isospectral shapes share
+  every invariant (previous entry); telling them apart needs a datum the spectrum does not contain, a frame. In quantum information
+  this is the shared reference frame: without one, two parties can exchange only frame-independent information, and frame-dependent
+  states are forbidden by an effective superselection rule (Bartlett, Rudolph, Spekkens 2007) [classical]. (2) *The handshake, then
+  the data.* Quantum teleportation: two nodes first share an entangled pair (the shared root); only then can an unknown state be
+  sent across with two classical bits (Bennett et al. 1993) [classical]. The same order holds in classical networks: Diffie-Hellman
+  key agreement lets two nodes derive one shared secret from private choices, and only then does protected data flow; the TLS and
+  TCP handshakes agree on shared state (keys, sequence numbers) before any payload [classical]. Each handshake can fail and be shown
+  to have failed (a wrong key fails verification; a Bell test can come out classical): the owner's "possibility to be proven false".
+  (3) *In Yang-Mills the handshake is the link.* A lattice link variable U_xy is exactly the agreement between node x and node y on
+  how to compare their internal frames; anything charged crosses only through it, psi_x^dagger U_xy psi_y, and the Wilson action
+  measures how far the handshakes around a plaquette fail to close (curvature) [classical]. The centre twist of this project is a
+  handshake that closes only up to a centre element, and the instanton (`tunnel_check`) is the tunnelling between such agreements.
+  So Yang-Mills is, in this reading, the theory of handshakes between nodes, with O1 the statement that the agreement holds at the
+  hand-over box for every outside. And the pattern "stated last" is the project's record: in every round the open step (O1, the sign,
+  the crossing cost) came out as the final statement. Care points: (a) a handshake is needed only for frame-dependent data:
+  frame-independent (gauge-invariant) information crosses without one, so "first thing they must do" holds for what depends on the
+  shared root, which in a gauge theory is everything charged. (b) The shared root can be classical (a reference frame, a link, a key)
+  or quantum (an entangled pair); the owner's definition of entanglement ("certified to share a root") covers both, while physics
+  reserves "entanglement" for the quantum kind.
