@@ -175,3 +175,75 @@ error dropping from 0.196 to the resolution floor 0.0625.
 `c(L)` is extensive and, at β = 3.5, electric flux is nearly free in the physically small torus. The one-box statement concerns
 the cubic geometry (`L_s = L`), which saved data cannot reach (section 5). A larger refuted range here only says that, at this
 cross-section and coupling, the electric multiplication needs box lengths `L ≥ 4` (or more).
+
+---
+
+## 8. PRE-REGISTRATION: the small-torus check in the cubic geometry (fixed before any simulation output; owner: "Yes, run the small-torus check")
+
+**Question.** In the geometry the one-box statement uses (box length = cross-section = `L`), is `F_e(L) ≤ 2c(L)` (refutation at
+that scale) certified at some small `L`?
+
+### 8.1 Tori, couplings, simulation (fixed)
+
+* Tori `L⁴` and `L³ × 2L`, periodic, SU(2) Wilson action with weight `exp(β Σ_p ½ tr U_p)`, **β = 2.3 and 3.5**.
+* **`L = 2, 4, 6`.** Deviation from the requested `2, ..., 6`: the vectorised heat bath updates links in two checkerboard classes
+  per direction, which needs even extents; odd `L` would need a different update scheme. Stated now, before any output.
+* Update: per sweep, one Kennedy-Pendleton/Creutz heat-bath pass and two over-relaxation passes over all links. Cold start;
+  200 thermalisation sweeps; **2000 measured sweeps per ensemble** (every sweep measured), errors by jackknife over 40 bins of
+  50 sweeps. One process at a time, CPU only. Code: `w2/smalltorus.py` (written after this section).
+
+### 8.2 Estimators (fixed)
+
+* **`r = Z_tw/Z`** (twist in the plane `(0, k)`: the sign of the `L²` plaquettes of that plane at fixed `(t, x_k)` flipped) by the
+  **snake**: `r = Π_{m=1}^{L²} Z_m/Z_{m−1}`, `Z_m` with the first `m` plaquettes flipped (in boustrophedon order, so the flipped set
+  stays connected). Each factor comes from one ensemble in which plaquette `m` is **removed** from the action (coupling 0) and the
+  first `m − 1` are flipped: `Z_m/Z_{m−1} = ⟨e^{−β q_m}⟩/⟨e^{+β q_m}⟩`, `q_m = ½ tr U_{p_m}` (both averages bounded in
+  `[e^{−β}, e^{β}]`). `L²` ensembles per torus.
+* **`F_e(L) = log((1 + r_L)/(1 − r_L))`** on `L⁴` (electric flux free energy, `Flip/Floor.lean` `elecF`, with
+  `Z₀ = (Z + Z_tw)/2`, `Z₁ = (Z − Z_tw)/2`).
+* **Gluing ratio `G(L) = Z(L)²/Z(2L)`** by thermodynamic integration in a cut parameter `α ∈ [0, 1]`. The link set of `L³ × 2L` is
+  kept. The `(0, i)` plaquettes based at `t = L − 1` and `t = 2L − 1` (`6L³` plaquettes) enter with weight `(1 − α)` in their glued
+  form (top link at `t + 1` mod `2L`) and `α` in their cut form (top link at `t = 0`, respectively `t = L`). At `α = 0` this is the
+  `L³ × 2L` torus, at `α = 1` two independent `L⁴` tori. `log G = ∫₀¹ ⟨β (Q_cut − Q_glued)⟩_α dα`, `Q` the sum of `½ tr` over those
+  plaquettes. **9 uniform nodes** `α = 0, 1/8, ..., 1`, Simpson's rule, one ensemble per node.
+* **Lower bound on `c(L)`**: `Z₀(L)²/Z₀(2L) = e^{2c(L) − c(2L)}` and `c(2L) ≥ 0`, so
+  `2c(L) ≥ 2c_lb(L) := log G + 2 log(1 + r_L) − log 2 − log(1 + r_{2L})` (with `r_{2L}` the snake ratio on `L³ × 2L`).
+* **Tested quantity:** `D(L) = 2c_lb(L) − F_e(L)`. Since `2c ≥ 2c_lb`, **`D(L) > 0` certified ⟹ `F_e(L) < 2c(L)`: refuted at `L`.**
+
+### 8.3 Error bars (universal floor rule, `attempts/RULES.md`, last section) and verdict (fixed)
+
+* *Statistical:* jackknife within each ensemble (40 bins). Ensembles are independent, so variances add over the snake steps and the
+  quadrature nodes. The delta method with these variances gives `σ_stat` for `log r`, `F_e`, `log G`, `2c_lb`, `D`. The
+  quadrature error of Simpson's rule is estimated as `|Simpson − trapezoid|` on the same nodes and added in quadrature.
+* *Resolution floor:* `F_e` and `2c_lb` are log-ratios over Euclidean extent `L`; an energy over extent `L` is resolved to `1/L`, so
+  a log-ratio `≈ L · ΔE` is resolved to **1** (my reading of the rule for non-energies, section 6, stated again here). It is applied
+  once, to the tested quantity: `σ_D = max(σ_stat(D), 1)`.
+* **Verdict per `(L, β)`:** **refuted** if `D − 1.645 σ_D > 0` (one-sided 95 %; also reported at 99 %, `2.326`). Otherwise
+  **not refuted, margin `D`** (with `σ_D`). Also reported, as secondary, the verdict with `σ_stat` only (no resolution floor).
+* **Provability:** a refutation at some `L` excludes the multiplication criterion at that scale only. A non-refutation is a
+  margin, not a proof. And because `c_lb` drops `c(2L)`, a non-refutation can also come from the bound being loose.
+
+### 8.4 Sanity checks before production (fixed; results reported, not used for tuning)
+
+(1) Identity configuration: all plaquettes 1. (2) Plaquette average at small β against the single-plaquette value
+`I₂(β)/I₁(β)`, and at β = 2.3 on `6⁴` against the `16⁴` value 0.602 (a finite-size difference is expected; reported). (3) Every
+snake factor positive, and `r ≤ 1` (Lean: `Z_tw ≤ Z`). (4) At `α` = 0 and 1 the gluing integrand is evaluated in the two pure
+ensembles.
+
+### 8.5 Timing and projection (fixed)
+
+Short timings (sweep cost) on each torus size, then one full unit (one snake ensemble at `L = 4`, β = 2.3). Project the whole run
+with `w2/PROJECTION.md` 8 (band `0.9×` to `1.9×`, central `1.33×`). If the band's upper edge exceeds about 6 CPU-hours: stop and
+report the projection before running.
+
+### 8.6 Sanity checks and timing (before production; no snake or gluing output looked at)
+
+* Sanity (8.4): identity configuration gives plaquette 1. On `4⁴`, `⟨q⟩` = 0.1244 ± 0.0022 at β = 0.5 (single-plaquette value
+  0.1237) and 0.2431 ± 0.0023 at β = 1.0 (0.2402; the small excess is the expected strong-coupling correction). On `6⁴` at β = 2.3,
+  0.6038 (the `16⁴` value is 0.602). The gluing set-up has `2L³` boundary base sites per plane, as intended.
+* Sweep cost (ms, standard action, β = 2.3): `2⁴` 6.7, `2³×4` 6.4, `4⁴` 8.4, `4³×8` 10.7, `6⁴` 17.7, `6³×12` 27.8. Content classes
+  timed: snake `6⁴` 17.9, snake `6³×12` 26.7, glue `4³×8` 13.5, glue `6³×12` 32.2. **Unit** (snake ensemble, `L = 4`, β = 2.3,
+  2200 sweeps): 19.7 s (9.0 ms per sweep).
+* **Projection** (`PROJECTION.md` 8): 2 β × (L = 2: 281 s, L = 4: 987 s, L = 6: 4170 s) = 10 876 s = 3.0 h raw. Central
+  `× 1.33` = **4.0 CPU-hours**, band `0.9×` to `1.9×` = **2.7 to 5.7 h**, inside the 6-hour limit. β = 3.5 was not timed separately
+  (rule 3: factor 1.0 ± 0.3, inside the band). Run order: β = 2.3 (L = 2, 4, 6), then β = 3.5; resumable, one process.
