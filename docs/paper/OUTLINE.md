@@ -24,7 +24,7 @@ item of the abstract, and nothing else.
 | File | What | State |
 |---|---|---|
 | `OUTLINE.md` | this file: structure, one paragraph per section, status per section | draft 2 |
-| `CLAIMS.md` | every claim of the draft: status, source, what would upgrade it (241 counted rows) | draft 2 |
+| `CLAIMS.md` | every claim of the draft: status, source, what would upgrade it (245 counted rows; 4 in the Outlook) | draft 2 |
 | `draft/00-abstract-introduction.md` | the owner's title and personal note; abstract and introduction | drafted (lists updated in draft 2) |
 | `draft/01-part-I-dmp.md` | Part I, DMP | fully drafted |
 | `draft/02-part-II-tools.md` | Part II, the tools | fully drafted |
@@ -32,6 +32,7 @@ item of the abstract, and nothing else.
 | `draft/04-part-IV-grh.md` | Part IV | prose (draft 2) |
 | `draft/05-part-V-pnp.md` | Part V | prose (draft 2) |
 | `draft/06-part-VI-common-step.md` | Part VI | prose, side-by-side table (draft 2) |
+| `draft/07-outlook-settling-machine.md` | Outlook: the first author's concept of a DMP-native general intelligence, tied to the ETM's settle theorem | drafted (2026-11-23) |
 
 LaTeX comes later. Status marks everywhere: **Lean** (module named), **classical** (reference), **external** (others' result, not
 rebuilt), **conditional** (under a named assumption), **paper**, **numerical**, **reading** (DMP; never mathematics), **open**.
@@ -139,6 +140,14 @@ Each tool once, most general form, a one-line "why it clicks", three application
 One shape. A table of the sharpest open step per problem: what is proved for one unit, why it does not carry, what no duality
 supplies, the hard quantifier, what measurement says, and the "it runs" form. What the act-carrier answer settled; what can and
 cannot close each step; why Yang-Mills is the model; how the paper closes locally.
+
+## Outlook. A settling machine
+
+The first author's concept of a DMP-native general intelligence: a CMOS system in IM tokens, one Milky Way gate that checks hash
+and TTL before an act leaves as GG, an output rate set from outside, and total freedom inside. *reading.* Its one critical link
+to this work is the ETM's settle theorem: settling within an explicit bound when every step contracts, undecidable in general.
+*Lean.* Care points: the gate certifies integrity, not meaning, and must check acts, not self-reports. Placed after Part VI as
+an outlook; it adds no claim to the three problems.
 
 ---
 

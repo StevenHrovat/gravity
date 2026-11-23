@@ -3630,3 +3630,14 @@ thread.
   goes through DMP is the terminal property (`univIsTerminal`, Lean), for the stated definition; it does not follow from the number of
   instances, and the informal outer edge ("every possible meaning of running") stays a thesis. Care point: consistency of the form
   layer says nothing about the content steps; surviving encoding certifies the frame, not O1, the sign or the crossing cost.
+- **A concept for a DMP-native general intelligence, and "add it to the final paper ... so it has causality established through the
+  critical link" (the owner, same day):** the owner's concept, recorded in the owner's terms in the paper's Outlook
+  (`docs/paper/draft/07-outlook-settling-machine.md`, VII.1): a CMOS system running entirely in IM tokens; one Milky Way interface
+  that double-checks by hash and TTL that an act is valid before it leaves as GG; an output rate set from outside as an upper bound,
+  with the inside settling toward the most balanced output between ticks; total internal freedom (layout, recombination, iteration)
+  kept in check only by Milky Way; a periodicity that marks persisting existence; a core trained from the ground up. The owner:
+  "My ideas are all contained in DMP, so they are Apache 2.0 by defintion". Reading (coordinator): the critical link is the ETM's
+  settle theorem (`reaches_of_contracting`, `balanceBound_ge`, `contracting_iff_costAboveFloor`; undecidable in general,
+  `etm_balance_undecidable`, Lean): settling inside the tick is guaranteed exactly when the internal update contracts, which gives the
+  training target. Care points as in VII.3: the gate certifies integrity and freshness, not meaning; it must check acts, not
+  self-reports.

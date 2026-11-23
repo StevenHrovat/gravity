@@ -309,6 +309,15 @@ Notes relative to `docs/pnp/`.
 | VI.5 | Only in YM is the starting positivity given by construction | paper (observation on II.1) | II.1 | none |
 | VI.5b | YM is likely to close first | reading (expectation) | none | none |
 
+## Outlook. A settling machine (`draft/07-outlook-settling-machine.md`)
+
+| ID | Claim | Status | Source | Upgrade |
+|---|---|---|---|---|
+| VII.1 | The first author's concept of a DMP-native general intelligence (CMOS in IM tokens, one Milky Way gate, an externally set tick, total freedom inside) | reading | `PREP.md` (2026-11-23); the first author | none (outlook) |
+| VII.2a | Settling within an explicit, computable number of steps when every step contracts (cost above the floor) | Lean | `ProofPhase/ETM/Machine.lean`, `reaches_of_contracting`, `balanceBound_ge`, `contracting_iff_costAboveFloor` | none |
+| VII.2b | No procedure decides settling for all content | Lean | `ProofPhase/ETM/Machine.lean`, `etm_balance_undecidable` | none |
+| VII.3 | The gate certifies integrity and freshness, not meaning; it must check acts, not self-reports | paper | VII.3 | none |
+
 ---
 
 ## Counts by primary status
@@ -317,15 +326,15 @@ Counted on the rows above (each row once, by its first mark; scope rows 0.1 and 
 
 | Status | Draft 2 | Draft 1 |
 |---|---|---|
-| Lean | 101 | 69 |
+| Lean | 103 | 69 |
 | classical | 42 | 27 |
 | external | 7 | 7 |
 | conditional | 3 | 3 |
-| paper | 26 | 13 |
+| paper | 27 | 13 |
 | numerical | 17 | 8 |
-| reading | 20 | 18 |
+| reading | 21 | 18 |
 | open | 25 | 20 |
-| **Total** | **241** | **165** |
+| **Total** | **245** | **165** |
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open
