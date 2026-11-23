@@ -1884,3 +1884,13 @@ thread.
   of "running as content": a ferromagnetic, reflection-positive system whose Euclidean-time evolution carries xi, with RH as the
   statement that it is already real at t = 0. A possible next step for the GRH route: study the Lee-Yang/Newman route against what
   our Yang-Mills positivity machinery provides.
+- **Weak coupling gets expensive suddenly (the owner, same day, on the IR sampler):** "We have to be very careful about simulating a
+  weak coupling. The closer we get to reality, the more intensive it is to be precise, so when we have to compute large
+  interactions, it might suddenly be much harder than expected." Reading (coordinator): this is the known cost law of lattice work
+  near the continuum. At fixed physical precision the cost grows roughly like (L/a)^4 x tau_int x 1/margin^2: the lattice must grow
+  with the correlation length, the sampler's settling time grows with it too (critical slowing down, tau ~ xi^z, with z between about
+  1 and 2 for local updates), and a quantity near its threshold (the IR column near 1) needs samples in proportion to 1 / margin^2.
+  The three multiply, so the cost rises like a high power of the correlation length, and it can look like a sudden wall. The IR
+  pre-step already showed it: usable at beta = 0.5, not even tunable within 30 minutes at beta = 2.3 on 16^4. The IR session now
+  adds a cost-scaling projection against beta and a stop rule (stop before any larger run if the measured cost grows faster than
+  projected).
