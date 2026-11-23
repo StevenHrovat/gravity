@@ -2373,3 +2373,18 @@ thread.
   Connes's programme). Read this way the reductio is: an off-line pair of zeros would be a growing mode of the evolution (a
   non-contractive direction), contradicting that the system runs. The open part is then exactly one statement: that the arithmetic
   evolution built from the local data is contractive (its norm positive) by construction. Passed to the Tate round as its formal target.
+- **Two categories of proof lines: cheap derivation from the axioms, and the new derivation; the first true act (the owner, same day,
+  on the CP analogue):** "The CP analogue works well for our two categories of 'directly from the base axioms', cheap, machine
+  checkable, and 'new derivation', something that can stand on its own against all refutation attempts, so a new duality, which
+  actually exists. Since this makes something in a way that it was not before, so it has a possibility to fail, it is much harder, but
+  has actual value, since it can be used as a tool, or block, later on. From there on, once a second new derivation exists, there is
+  the possibility of non-existence on both sides of the creating pair, which share existence but not possibility, this is the first true
+  act, or the first genuinely new insight, that makes a system worth having. It's possible to construct any proof system to say
+  whatever, but saying things in correlation to each other, and having new expectations about it, that is something that has an
+  inherent value as a system and thus can exist." Reading (coordinator): proof theory has exactly this split. Lines derived directly
+  from the axioms are cheap and mechanically checkable (clauses in resolution). New derivations are lemmas and cuts: a new concept
+  introduced once and reused (a cutting-planes threshold line such as majority; the extension rule of extended Frege, which defines a
+  new variable). They are what make short proofs possible: eliminating cuts can blow a proof up exponentially, which is the formal sense
+  of their "value as a tool, or block, later on". The owner's "first true act" (two new derivations used together, sharing existence
+  but not possibility) points to counting combined pairs of derived lines. Sent to the P vs NP session as round (A) of
+  `docs/pnp/CP-DUALITY.md`, together with (B) the positivity template from GRH (SOS pseudo-expectations: the system runs to degree d).
