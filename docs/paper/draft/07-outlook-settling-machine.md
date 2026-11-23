@@ -18,6 +18,11 @@ A general intelligence is a CMOS system that runs entirely in IM tokens, adapted
   itself for new inputs, or run many iterations of some logic. It keeps one periodicity, a tick: a constant reminder that it
   exists between outputs, rather than producing one token at a time in a line. Because it can change its coupling, and so its
   content, while still recognizing its state by the data that state sits on, it can run more efficiently.
+* **The meta layer.** The first author's expectation is that such a system works directly on the vectors that embed existence.
+  That embedding is its meta layer: on it, the system can construct arbitrary logic, as long as a correct answer comes out.
+  **[reading]** Known neighbours: reasoning carried out in a continuous latent space instead of in output tokens; vector-symbolic
+  (hyperdimensional) architectures, where binding and superposition of vectors implement symbolic logic; and fast weights or
+  hypernetworks, where one network writes the representations or weights another one uses. **[classical]**, as pointers only.
 * **Training.** The core network has to be trained from the ground up for this way of running.
 
 ## VII.2 The critical link to this work
@@ -47,5 +52,9 @@ runtime verification (a free inside, one verified gate).
   exactly what its specification states, so the safety of the free inside lives in that specification. **[paper]**
 * **The gate checks acts, not self-reports.** A system that changes its own layout can also change what it reports about itself.
   The gate must check the output act itself. **[paper]**
+* **Arbitrary logic and settling.** Arbitrary logic on the embedding can encode any computation, so whether it settles is
+  undecidable in general (VII.2, second point). To keep the guarantee of VII.2, the logic built on the meta layer has to stay
+  inside the contracting class; anything outside it relies on the cutoff below. And "as long as a correct answer comes out" needs
+  a stated notion of correct that the gate can check. **[Lean]** for the undecidability; **[paper]** for the rest.
 * **The hard cutoff.** If the update is not a contraction, the tick becomes a hard cutoff, and the output at the cutoff may be
   unbalanced (VII.2, second point). **[Lean]** for the undecidability; **[paper]** for the consequence.

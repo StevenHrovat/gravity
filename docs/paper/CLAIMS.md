@@ -314,6 +314,7 @@ Notes relative to `docs/pnp/`.
 | ID | Claim | Status | Source | Upgrade |
 |---|---|---|---|---|
 | VII.1 | The first author's concept of a DMP-native general intelligence (CMOS in IM tokens, one Milky Way gate, an externally set tick, total freedom inside) | reading | `PREP.md` (2026-11-23); the first author | none (outlook) |
+| VII.1b | The system works directly on the vectors embedding existence, its meta layer for arbitrary logic, as long as a correct answer comes out | reading | the first author (2026-11-23) | none (outlook) |
 | VII.2a | Settling within an explicit, computable number of steps when every step contracts (cost above the floor) | Lean | `ProofPhase/ETM/Machine.lean`, `reaches_of_contracting`, `balanceBound_ge`, `contracting_iff_costAboveFloor` | none |
 | VII.2b | No procedure decides settling for all content | Lean | `ProofPhase/ETM/Machine.lean`, `etm_balance_undecidable` | none |
 | VII.3 | The gate certifies integrity and freshness, not meaning; it must check acts, not self-reports | paper | VII.3 | none |
@@ -332,9 +333,9 @@ Counted on the rows above (each row once, by its first mark; scope rows 0.1 and 
 | conditional | 3 | 3 |
 | paper | 27 | 13 |
 | numerical | 17 | 8 |
-| reading | 21 | 18 |
+| reading | 22 | 18 |
 | open | 25 | 20 |
-| **Total** | **245** | **165** |
+| **Total** | **246** | **165** |
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open

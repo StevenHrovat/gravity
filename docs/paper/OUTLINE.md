@@ -24,7 +24,7 @@ item of the abstract, and nothing else.
 | File | What | State |
 |---|---|---|
 | `OUTLINE.md` | this file: structure, one paragraph per section, status per section | draft 2 |
-| `CLAIMS.md` | every claim of the draft: status, source, what would upgrade it (245 counted rows; 4 in the Outlook) | draft 2 |
+| `CLAIMS.md` | every claim of the draft: status, source, what would upgrade it (246 counted rows; 5 in the Outlook) | draft 2 |
 | `draft/00-abstract-introduction.md` | the owner's title and personal note; abstract and introduction | drafted (lists updated in draft 2) |
 | `draft/01-part-I-dmp.md` | Part I, DMP | fully drafted |
 | `draft/02-part-II-tools.md` | Part II, the tools | fully drafted |
