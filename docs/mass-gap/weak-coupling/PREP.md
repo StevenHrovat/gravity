@@ -3115,3 +3115,26 @@ thread.
   outside" is still O1. (b) Spanning of cheap sheets is the classical centre-vortex picture of confinement (vortex percolation)
   [classical, numerical evidence in the literature], not a theorem. Passed to the GRH-lens round: the certificate may be naturally
   two-box, for Yang-Mills and NP alike.
+- **Two entangled boxes are the instanton of the act: an act is an entanglement, and it creates causality by binding possibility,
+  as multiple nodes, to one root (the owner, same day):** "This also maps two entangled boxes cleanly onto the instanton of the act,
+  so an act is an entanglement and this entanglement is what creates causality by binding possibility, in the form of multiple node,
+  to the same root." Reading (coordinator): exact in three ways, one checked here. (1) *Tunnelling binds two nodes and creates the
+  gap.* Two nodes L and R with a tunnelling amplitude t (the instanton): the lowest state is (|L> + |R>)/sqrt 2, both nodes bound to
+  one root, and the next state is split from it by gap = 2t [classical; the double well, where the splitting is e^{-S_inst}].
+  Without tunnelling (t = 0) the two nodes stay separate and nothing is split. In this two-node model the encoder is exact: with
+  Z = tr e^{-TH} and the twisted trace Z_tw = tr(X e^{-TH}) (X swaps the nodes, the centre flip), c = Z_tw / Z = tanh(T t), and the
+  electric factor (1 - c)/(1 + c) equals e^{-T gap} exactly (`docs/unified/tunnel_check.py`, `.log`; numerical, to nine digits). So
+  "the act (tunnelling) binds the nodes to one root, and that binding is the gap" holds exactly here, and the factor becomes a clock:
+  e^{-T gap}, the tick of causality set by the gap. The bound and the antisymmetric states are the Hadamard pair, the half-turn of
+  `rotation_check`. (2) *The smallest act needs two twist planes at once.* On a twisted torus the fractional part of the topological
+  charge is -Pf(n)/2 for SU(2), with Pf(n) = n01 n23 - n02 n13 + n03 n12 [classical, 't Hooft]: the quantum |Q| = 1/2 (action
+  4 pi^2 / g^2) exists only when two complementary planes carry a twist together, the electric plane and the magnetic plane that
+  `tHooft_rotation` (Lean) exchanges. The smallest instanton is a product of two labels: an act made of two tied boundaries.
+  (3) *Many nodes, one root.* In Yang-Mills the perturbative vacua |n> (one per integer winding) are not separately stable: tunnelling
+  binds them into theta-vacua, |theta> = sum_n e^{i n theta} |n>, one state built from all nodes [classical]. Care points: (a) the
+  two-node identity is exact for the model; in Yang-Mills the identification of the twist ratio with a tunnelling splitting is the
+  transfer-matrix reading Z_tw = tr(Omega T^N) (standard, `RouteB/Duality.lean` notes it is not formalised), and the electric
+  energy it gives is the flux energy, E_e(L) ~ sigma L in a confining theory [classical]. (b) A dilute instanton gas does not confine
+  in four dimensions [classical]; the binding that ends the ODP is the twist sheets spanning (previous entry), which the fractional,
+  twist-carrying instantons are one form of. (c) The binding is between sectors at one time (nodes in configuration space), so it is
+  consistent with "coupled, not entangled" along time.
