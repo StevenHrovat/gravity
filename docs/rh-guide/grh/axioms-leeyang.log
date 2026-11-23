@@ -1,0 +1,13 @@
+== build ProofPhase.GRH.LeeYang
+Build completed successfully (1982 jobs).
+== axioms
+'ProofPhase.GRH.lee_yang_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.lee_yang_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.asano_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.asano' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.chain3_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.ising3_flip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.ising3_zeros_on_circle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.pair_zeros_on_circle' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in LeeYang.lean
