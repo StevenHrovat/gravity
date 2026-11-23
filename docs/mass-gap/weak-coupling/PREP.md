@@ -3095,3 +3095,23 @@ thread.
   outsides. That balance sits exactly where perturbation theory fails, so it is non-perturbative: it is O1, now stated as
   F_tw(L) <= 0.297 at the hand-over box. (b) Asymptotic freedom is classical and perturbative; its rigorous control at short distances
   is Balaban's programme and the external construction (III.9.1, audit item), not proved here.
+- **The action-floor case is why the ODP ends only when two boxes are entangled (the owner, same day):** "The action floor case is
+  literally why ODP only ends when two boxes are in an entangled state." Reading (coordinator): exact in the twist picture, with data
+  already in the repository. (1) *Action floor: each box decides alone.* While the twist's smallest action 4 pi^2 / g^2(L) is large
+  (small boxes, weak coupling), twist sheets are rare and stay inside finite clusters: no sheet ties one box's sector to its
+  neighbour's. Each box is its own root; nothing between boxes is certified (in the owner's definition of entanglement, not
+  entangled). (2) *The ODP ends at a shared root.* Once the entropy of placing sheets outweighs their action, the sheets become cheap,
+  condense and span: a sheet pierces two neighbouring boxes and ties their twist sectors together. Two boxes are then certified to
+  share one root, the sheet through their common face (Gauss's law makes the sheet continue on both sides, `exists_sheet_both_sides`,
+  Lean). By the half-turn this is the same as the electric side being pinned: c = Z_tw / Z near 1, F_e large. So the hand-over
+  happens exactly when boxes become entangled in this sense. (3) *Measured.* `COARSE-TEST.md` 7: at beta = 2.3 the near-cut set
+  (cheap sheets) spans the 16^4 lattice at every blocking factor (1, 2, 4), growing from 20 % to 79 % of plaquettes; at beta = 3.5 it
+  stays in finite clusters with an exponential size tail at every factor (exploratory, not a verdict). So beta = 2.3 sits on the
+  entangled side and beta = 3.5 on the action-floor side, as the reading says. (4) *A two-box certificate.* The reading makes the
+  certificate that ends the ODP a statement about two boxes and their common face, not about one box with an arbitrary outside. That
+  matches the NP finding of `ENCODER.md` 6 (a one-boundary encoder is lossless; a cost needs a step that reads two boundaries at
+  once), and the Yang-Mills chain tools are already two-box statements (superadditivity F(2L) >= 2F(L) - 2C, `flux_superadd`, Lean).
+  Care points: (a) the spanning data are on one 16^4 lattice and at the lattice scale; "entangled at the hand-over box, for every
+  outside" is still O1. (b) Spanning of cheap sheets is the classical centre-vortex picture of confinement (vortex percolation)
+  [classical, numerical evidence in the literature], not a theorem. Passed to the GRH-lens round: the certificate may be naturally
+  two-box, for Yang-Mills and NP alike.
