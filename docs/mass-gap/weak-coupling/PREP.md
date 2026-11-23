@@ -3763,3 +3763,18 @@ thread.
   whether the specific objects (the Wilson measure in the continuum, the zeta and L-functions, strong proof systems) are in a running
   state. For DMP-complete systems R holds by construction; for these objects R is exactly what has to be shown. So the slot is the
   right shape, and filling it for the named object is the one open step per problem.
+- **propext extends to axioms; every node of a proof only has to assert its link to the node one layer above, which forms the arrow
+  of causality at reduction (the owner, same day):** "The proptext should also extend to axioms, right? So any node in a proof only
+  has to assert it's link to the one a layer above, which automatically forms the required arrow of causality at reduction."
+  ("propext" meant.) Reading (coordinator): both halves hold, for two different reasons. (1) *propext and axioms.* Propositional
+  extensionality says logically equivalent propositions are equal (P <-> Q implies P = Q) [classical; one of the gate's three
+  axioms]. Axioms are propositions too, so two equivalent axiom sets are, as propositions, the same: a theory is fixed by what its
+  axioms say, not by how they are written. (2) *Each node asserts only its link to the layer above.* This is how proofs are built and
+  checked: every inference step is checked against its immediate premises only, and a Lean environment is ordered so that each
+  declaration may use only declarations already checked before it, never a later one [classical; how the kernel works]. So the
+  dependency graph of every proof is a finite acyclic graph rooted in the axioms: the arrow of causality is built into the checking
+  order, and following it backwards always ends at the root (the entry "rooted means well-founded"). Care point: the locality comes
+  from the rules of inference and the acyclic environment, not from propext; propext only makes equivalence count as equality at each
+  link. And checking by reduction is reliably finite for the proofs written here, though in rare edge cases Lean's definitional
+  equality is known to be undecidable in principle (Carneiro's analysis of Lean's type theory) [classical], which is why independent
+  kernels re-check the result.
