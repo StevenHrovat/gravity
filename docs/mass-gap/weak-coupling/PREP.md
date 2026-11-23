@@ -1527,3 +1527,24 @@ thread.
   the binary structure is the conjugation pairing k <-> N - k, which the generic gauge-group package can carry for all N at once.
   Care point: SU(3) is the group of observed physics and the Clay problem asks for every compact simple G, so the SU(2) proof is the
   first instance, not the whole; the generalisation (GENERALISE-PLAN.md) is what carries it to SU(3).
+- **Stamping and minting: the two phases of creation (the owner, same day):** "In DMP, creation has two phases, the first is the
+  stamping, which is a configuration of CMOS, through the ODP, discovering its definition of existence. After the existence has been
+  fully discovered and the configuration hash matches, which would be the establishment of a mass gap, the DMP system actually goes
+  into production through minting, which must go along with the WHKs. This exactly describes how G0 can go from a naked duality to an
+  existence that has established a ruleset to assert its prescribed existence through a mass gap." Reading (coordinator): the proof
+  has exactly this two-phase shape.
+  (1) **Stamping = the scale-by-scale construction up to the certificate.** Starting from the classically scale-free theory (a
+  dimensionless coupling, the naked duality), the renormalisation steps discover the effective action scale by scale (M1 on the weak
+  side, the crossover P4 through the middle). The phase ends when a finite check passes: the one-box contraction criterion (influence
+  column below 1, Dobrushin-Shlosman) at one scale. That is the "configuration hash matches": a finite, local certificate whose
+  passing implies decay at every larger scale. The scale at which it passes is where Lambda, the transmuted scale, has been fixed.
+  (2) **Minting = production from the certificate.** Once the block gap holds, the rest is mechanical: the windowed OS route
+  (`OS/GapLoc.lean`) takes the block gap as an input and produces MassGapLoc, the reconstructed Hilbert space and the transfer
+  operator with its gap; the volume and spacing limits follow. The Lean assembly has this order built in: no output without the
+  certificate as hypothesis.
+  (3) **The WHKs**, read here as the witnesses that must accompany every minted item (my reading of the term): in the proof every
+  state is produced together with its reflected partner (the pairing <theta F, F> >= 0 of reflection positivity), and the positivity
+  of that pairing is what makes the produced state physical. Production without the witnesses would be a measure without a Hilbert
+  space.
+  So the open inputs sort cleanly: what is still open (P4, the IR column, the uniform-in-volume bounds) is all stamping; minting is
+  done in Lean.
