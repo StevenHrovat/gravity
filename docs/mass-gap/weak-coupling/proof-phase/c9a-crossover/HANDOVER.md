@@ -234,3 +234,11 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * First open step: lower bound on twist ratios (sum d_k < 2^{n-1}) at one box of fixed physical size.
 * Exploratory test (w2/equidist_test.py): beta 2.3 deficit decreasing (floor-like on 2 points, post hoc); beta 3.5 no decrease (unseen).
 * Round 16 addendum: EQUIDIST.md section 8. (i),(ii) verified on the torus (P_e projection commuting with T >= 0). With a fixed outside, a box twist is an outside change (flux identity); sectors grow with the faces (2^(2d-1) = 128 at face resolution); RP lost: the grid requirement returns as uniform insensitivity to the outside flux pattern.
+
+## Round 17 (2026-11-23, uncommitted; small-torus check result)
+
+* ONEBOX-CHECK.md section 9; w2/runs/smalltorus/ (278 ensemble jsons), w2/runs/smalltorus_result.json, w2/runs/smalltorus_run.log.
+  3.27 CPU-hours (projection 4.0 h, band 2.7-5.7 h). r <= 1 and the hand-over hold everywhere.
+* Cubic criterion F_e(L) > 2c(L): refuted at beta 2.3 L = 2 (95 %), beta 3.5 L = 2 (95/99 %), beta 3.5 L = 6 (95 %): the weakly
+  coupled side (electric flux nearly free, excess act large). Not refuted at beta 2.3 L = 4 (D = 0.36) and L = 6 (D = -1.8), beta 3.5
+  L = 4 (floor). Margins only; c_lb is a lower bound.

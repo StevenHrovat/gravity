@@ -247,3 +247,39 @@ report the projection before running.
 * **Projection** (`PROJECTION.md` 8): 2 β × (L = 2: 281 s, L = 4: 987 s, L = 6: 4170 s) = 10 876 s = 3.0 h raw. Central
   `× 1.33` = **4.0 CPU-hours**, band `0.9×` to `1.9×` = **2.7 to 5.7 h**, inside the 6-hour limit. β = 3.5 was not timed separately
   (rule 3: factor 1.0 ± 0.3, inside the band). Run order: β = 2.3 (L = 2, 4, 6), then β = 3.5; resumable, one process.
+
+## 9. Result of the small-torus check (computed after section 8; `w2/smalltorus.py run` + `analyse`, `w2/runs/smalltorus_result.json`)
+
+**Run.** 278 ensembles (snake: `L²` per torus, both tori, both β; gluing: 9 nodes per `L` and β), 2000 measured sweeps each,
+**11 782 s = 3.27 CPU-hours** against the projection of 4.0 h (band 2.7 to 5.7 h): inside the band. One simulation process
+throughout. Deviations: the odd `L` were dropped, as pre-registered in 8.1. Lean builds of other rounds ran beside it at times; that
+slowed some ensembles by up to about 25 % and does not affect the results. Sanity (8.4): every snake ratio `r ≤ 1` (`Z_tw ≤ Z`);
+every factor positive; the hand-over `max(F_tw, F_e) ≥ 0.881` holds at every `(L, β)` (closest: β = 2.3, `L = 4`, `F_tw` 0.86 and
+`F_e` 0.91).
+
+**Estimates** (statistical errors; `D = 2c_lb − F_e`; refuted if `D − z σ_D > 0` with `σ_D = max(σ_stat, 1)`, `z` = 1.645 / 2.326):
+
+| β | `L` | `r_L` | `r_{2L}` | `F_e(L)` | `log G` | `2c_lb(L)` | `D` | `σ_stat(D)` | verdict 95 % / 99 % (floor 1) | stat-only 95 % / 99 % |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 2.3 | 2 | 0.116 | 0.394 | 0.233 ± 0.020 | 3.15 ± 0.10 | 2.35 | **2.12** | 0.11 | **refuted** / not refuted | refuted / refuted |
+| 2.3 | 4 | 0.425 | 0.757 | 0.91 ± 0.18 | 1.82 ± 0.31 | 1.27 | 0.36 | 0.33 | not refuted / not refuted | not refuted / not refuted |
+| 2.3 | 6 | 0.863 | 0.835 | 2.6 ± 1.8 | 0.87 ± 0.55 | 0.81 | −1.80 | 1.64 | not refuted / not refuted | not refuted / not refuted |
+| 3.5 | 2 | 0.018 | 0.074 | 0.035 ± 0.005 | 4.59 ± 0.43 | 3.86 | **3.82** | 0.43 | **refuted** / **refuted** | refuted / refuted |
+| 3.5 | 4 | 0.027 | 0.126 | 0.053 ± 0.014 | 2.30 ± 0.47 | 1.54 | 1.49 | 0.47 | not refuted / not refuted | refuted / refuted |
+| 3.5 | 6 | 0.039 | 0.095 | 0.079 ± 0.030 | 2.56 ± 0.83 | 1.85 | **1.77** | 0.83 | **refuted** / not refuted | refuted / not refuted |
+
+**Verdict (pre-registered rule, primary with the resolution floor).** In the cubic geometry the multiplication criterion
+`F_e(L) > 2c(L)` is **refuted** at β = 2.3, `L = 2` (95 %); at β = 3.5, `L = 2` (95 % and 99 %); and at β = 3.5, `L = 6` (95 %). It
+is **not refuted** at β = 2.3, `L = 4` (margin `D = 0.36`) and `L = 6` (margin `D = −1.8`, i.e. `F_e` above the lower bound `2c_lb`
+centrally), nor at β = 3.5, `L = 4` (margin 1.49 against the floor; refuted on statistics alone).
+
+**What this tells the proof (provability rule).**
+* **The refutations exclude those scales only.** They lie where the boxes are physically small and weakly coupled (all of β = 3.5 up
+  to `L = 6`, and β = 2.3 at `L = 2`). There electric flux is nearly free (`F_e` from 0.035 to 0.23) while the neutral excess act is
+  large (`2c ≥ 1.5` to 3.9). This is the "outside" of `CONTAINMENT.md` (a): inside the container the criterion fails, as it must.
+* **The non-refutations are margins, not proofs.** At β = 2.3, `L = 4` and `L = 6` the data do not exclude the criterion. At `L = 6`
+  the central value even has `F_e > 2c_lb`, but `c_lb` is only a lower bound on `c` (it drops `c(2L)`), and the errors are large
+  (`σ_stat(D)` = 1.6).
+* **The pattern matches the containment picture.** The criterion is excluded on the weakly coupled side and left open where the twist
+  saturates (`r_L` = 0.42 to 0.86 at β = 2.3, `L = 4` to 6). Read with `SATURATION.md` 4 and `EQUIDIST.md` 4: at β = 2.3 the
+  crossover between the two regimes lies between `L = 2` and `L = 6`. At β = 3.5 it lies beyond `L = 6`.

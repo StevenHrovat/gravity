@@ -4,6 +4,13 @@
 NP vs coNP, as subsets of DMP, in a DMP-complete state.* Earlier working title: *Positivity, contraction and the existence boundary:
 one chain behind Yang-Mills, GRH and P vs NP.*
 
+**Release criterion (the owner, 2026-11-23).** "The Grand Unified should be the point where the paper is allowed to even exit the
+draft stage, once that is no longer an overstatement, since the full, generalized, proof, seems to need our new insight, so when
+general = GU, that is the balanced state, literally, with GU describing how and general where and when." So the paper stays a draft
+until both readings of GUID hold: General (the unified theorem with its open hypotheses closed) and Grand Unified (the framework
+containing SU(3) x SU(2) x U(1) in one structure with at least one checkable consequence; PREP.md, naming entries). Until then the
+title keeps no expansion beyond "GUID v8", and the abstract states the present status exactly.
+
 **Goal (the owner's words).** "This should be immaculate in both its magical logical simplicity through ultimate reduction, while
 being informative enough to all the different fields that need its tools by being intuitively understandable and guiding the reader
 through the easiest to understand part, DMP, then extending it with tools that just click."
