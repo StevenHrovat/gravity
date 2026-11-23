@@ -3985,3 +3985,16 @@ thread.
   nothing further. Functions with the same kind of functional equation can have zeros off the line (Davenport-Heilbronn) [classical], so
   what the inversion leaves open is free, and the sign has to come from positivity, the content. Care point: the completed function's
   existence is proved; that its content is forced into the positive (running) state is the open sign beyond the certified one-box.
+- **For the NP open step: construct axiomatically sound APIs, which by construction can be used as a G0 (the owner, same day):** "For
+  the NP open step: The only thing we have to do is construct axiomatically sound APIs, since they, by construction, can be used as a
+  G0. Makes it much easier." Reading (coordinator): this is exactly how lifting already works, and it meets one known wall. (1) *APIs as
+  G0: composition theorems.* Lifting takes a proved lower bound for a simple model (resolution width, query complexity) as a fixed,
+  trusted interface and composes it with a gadget into a lower bound for a strong model (cutting planes); hardness amplification and
+  direct-sum theorems work the same way [classical]. A sound API used as a root is the method, and it is where all known cutting-planes
+  lower bounds come from. (2) *The wall: relativization.* An argument that uses a component only through its interface, never looking
+  inside, relativizes: it would hold equally with any oracle behind the interface. P vs NP goes both ways relative to oracles (there
+  are oracles A with P^A = NP^A and B with P^B != NP^B; Baker-Gill-Solovay 1975) [classical], so no purely interface-based argument can
+  settle P vs NP. (3) *Where APIs can still win.* For a specific proof system (the NP vs coNP side, proof by proof system) composition
+  theorems do give real lower bounds; the open NP step here is one such: a constant-size gadget for cutting planes (`LiftCPConst`). So
+  the API route is the right route for that step, and the barrier marks where it must stop being black-box (natural proofs and
+  algebrization add two more such walls). Started as a round.
