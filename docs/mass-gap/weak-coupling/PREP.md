@@ -1455,3 +1455,21 @@ thread.
   something, and the area law says how much. Caveat: P and NP are classes over all instances, so "P = NP within" is a statement about
   instances that stay inside one phase, not about the classes; the results above are average-case or assume P != NP. The reading gives
   the proof no new step, but it names why local certification works exactly where the gap holds.
+- **The half floor and the dual witnesses (the owner, same day, on the IR error floor):** "The half floor seems to be an effect caused
+  by the inherent duality of existence, with the dual witness setup." Reading (coordinator): the cutoff 0.491 in amendment 6c is
+  statistical, not structural: it is the 2.5 % quantile of a jackknife error from K = 8 chains, sqrt(chi2_7(0.025)/7), and it moves
+  with K (about 0.68 for K = 20, 0.86 for K = 100). The structural factor 2 is elsewhere, in the slip it uncovered: the two laws
+  compared are the two sides of a flip, one at +beta and one at -beta, so their fitted coefficients differ by 2 beta; and the total
+  variation distance carries its own 1/2 (half the summed difference). Both come from comparing a thing with its flipped twin and are
+  fixed by the setup, whatever K is.
+- **A dictionary from spin to DMP classes (the owner, same day):** "That also gives us another dictionary, that translates 1 to 1, for
+  spin to classes in DMP. Half being an act and both sides the supporting witnesses, which, when summed to 2, make a perfect duality."
+  Reading (coordinator): this matches the representation theory the proof already uses. For SU(2) the irreducible representations
+  are labelled by spin j = 0, 1/2, 1, ... with dimension 2j + 1. The centre element -1 acts as (-1)^{2j}: trivially on integer spin
+  and as a sign on half-integer spin. So the classes are exactly two: integer spin, blind to the centre (these are the representations
+  of SO(3), M1's adjoint part, where no act happens), and half-integer spin, which feels the flip (M1's Z2 layer, where the act is).
+  Spin 1/2 is the smallest act; its representation has dimension 2, the two supporting witnesses (up and down); a rotation by 2 pi
+  gives -1 and only 4 pi returns to the identity, so two halves make the whole. The dictionary is one to one in this sense: spin class
+  (j mod 1) <-> centre character <-> act / no act. For the generalisation to SU(N) (GENERALISE-PLAN.md) the classes become the
+  N-ality k = 0, ..., N-1 (the centre Z_N acts as e^{2 pi i k/N}), so the smallest act is 1/N and the fundamental representation has
+  N witnesses; N = 2 is the case where the act is a half and the witnesses are a pair.
