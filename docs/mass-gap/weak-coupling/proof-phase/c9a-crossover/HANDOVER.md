@@ -140,3 +140,16 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
   in the confined phase, where the electric channel F_e takes over.
 * First open step: multiplying one box's rate over D/L boxes (twist side: chessboard weight of the box-flux event vs e^{-F_tw};
   electric side: the binary-channel model of Floor.lean 3). Behind it: annealed torus quantities vs per-outside influence.
+
+## Round 9 (2026-11-23, uncommitted; Y1, a composite Higgs-type field on the collars)
+
+* `HTF.md` (with a DMP section); `formal/ProofPhase/Crossover/CompositeHTF.lean` (5 theorems, standard axioms; `axioms-dy.sh`
+  and `axioms-dy.log` now cover 27 Crossover theorems; `~/formal-dy` deleted). No GPU, no new numerics.
+* Candidates: lowest eigenvector of the collar's covariant Laplacian (fundamental, quaternionic; adjoint for the SO(3) part).
+  Collar-measurable, gauge covariant; exact degeneracies, eigenvector zeros and Gribov copies are null.
+* Lean: a gauge-covariant frame is independent of every gauge-invariant observable (finite analogue), so conditioning on the HTF
+  gives nothing; frame plus invariant content is the full collar (Markov decoupling, condition A unchanged). First open step:
+  step 2, no uniform conditional mass (composite field has kappa = 0: no hopping term, no small parameter).
+* Lean: the electric-flux free energy is superadditive up to the neutral excess act c(L) = log(Z0(L)/lambda0^L); the per-box rate
+  multiplies iff F_e(L) > 2 c(L) at one scale. c(L) is the neutral gap in disguise (circular) and extensive in the cross-section;
+  the twist channel does not multiply.

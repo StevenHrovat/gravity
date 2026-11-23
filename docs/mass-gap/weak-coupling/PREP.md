@@ -2244,3 +2244,18 @@ thread.
   on a composite HTF over every collar give the collars a uniform mass (condition A) and make the carried flux's free energy
   superadditive, so the per-box rate multiplies? Where the HTF is ill-defined (Gribov-type ambiguities) is the residue to bound. Sent to
   the crossover session as the Y1 round (`c9a-crossover/HTF.md`).
+- **The HTF must be lossy: crossing a DB attaches to a new G0, and what the encoder cannot carry is lost (the owner, same day, on
+  HTF.md):** "It forgets that a HTF actually interacts with existence, so does not get a free conversion and instead has to be lossy.
+  For anything with existence to be transported across a DB it has to be attached to a new G0, meaning that anything not compatible
+  with the encoder in the DB, is lost." Reading (coordinator): HTF.md found that a composite HTF that only describes (no interaction,
+  hopping coupling kappa = 0) carries no gauge-invariant information and so gives no mass; the owner's correction names why: a field
+  that interacts must lose something at every DB. That has an exact form. (1) **Data processing:** passing a state through a channel
+  (a Markov kernel, here the collar's transfer from one box to the next) can never increase what distinguishes two states; a channel
+  that loses something strictly has a contraction coefficient eta < 1 (the strong data-processing inequality; for total variation,
+  eta is Dobrushin's coefficient). (2) **Re-encoding at each DB** is a blocking step: the new G0 is the coarse description the next box
+  is written in, and what the encoder cannot represent is integrated out. Every renormalisation step is such a lossy channel. (3) **The
+  gap is the loss rate:** if every DB contracts by eta < 1, influence decays like eta^(D/L) along a chain, the product over boxes of Y1.
+  HTF.md's step 3 is the same statement in transfer-matrix form: the per-box rate multiplies iff F_e(L) > 2 c(L) at one scale, where
+  c(L), the neutral excess act, is exactly what the DB fails to remove. So the reading names the mechanism (lossy re-encoding at every
+  DB, a strong data-processing contraction) and the open step is its rate: eta < 1 uniformly, i.e. the neutral sector already gapped
+  at one box scale.

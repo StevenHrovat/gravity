@@ -20,3 +20,8 @@
 'ProofPhase.Crossover.handover_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.Crossover.log_one_add_sqrt_two_le_max' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.Crossover.su2_handover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.weight_fiber_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.weight_fiber_mul_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.sum_pow_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.flux_superadd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.flux_superadd_iter' depends on axioms: [propext, Classical.choice, Quot.sound]
