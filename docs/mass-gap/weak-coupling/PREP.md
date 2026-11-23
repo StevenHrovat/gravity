@@ -1387,3 +1387,29 @@ thread.
   The observable is transported through the system without becoming part of it ("exists, while not having existence"); the symmetry is
   broken only at the boundary, where the act's cost is paid. In the limit the error goes, which is why MassGapLoc's limit-point
   definition needs no infinite-volume measure.
+- **The dimensions of existence: a space half and a direction half (the owner, 2026-11-23):** "It is already established that 2s1t is
+  not DMP-complete, but I want to use that to extend the dimensionality of existence in DMP. Existence is composed of two halves, one
+  defining a space, the other a direction, constructed in dimensions that allow them to be coupled but not able to be entangled in
+  existence, with their entangled form being non-existence, as the separation is what gives the ability to assert against itself. This
+  is so, because the dimensional transmutation, which is the basis of the act, requires an arrangement of dimensions that break the
+  symmetry at the boundary in the way that is expected." Reading (coordinator), four touchpoints in the proof:
+  (1) **Only 3+1 transmutes.** Pure Yang–Mills has a dimensionless coupling, and is classically scale-free, only in four dimensions. There
+  the scale Lambda is generated from the coupling by quantization (dimensional transmutation, with asymptotic freedom). In 2+1
+  dimensions (the owner's 2s1t) g^2 carries a mass, so the scale is put in from outside rather than produced; a gap is expected there
+  too, but it is given, not asserted. That matches "not DMP-complete": no act happens. M1 uses d = 4 in exactly the places where this
+  matters: Balaban's marginal scaling L^{(4-d)j} = 1, and the vortex-sheet capacity (Z2 vortices are two-dimensional sheets, codimension
+  two, whose count is balanced by their area only in d = 4).
+  (2) **Space half and direction half = slice and transfer.** The Osterwalder–Schrader reconstruction splits Euclidean space into a time
+  slice (the space half: it carries the Hilbert space of states) and one distinguished direction (the direction half: the reflection
+  theta and the transfer matrix T = e^{-H}, which steps from slice to slice). The two are coupled by T, and the mass gap is a statement
+  about exactly this coupling: T contracts everything orthogonal to the vacuum.
+  (3) **Coupled, not entangled; the entangled form is non-existence.** Reflection positivity, <theta F, F> >= 0, needs the two halves kept
+  apart by one reflecting hyperplane: what lives on one side and its mirror image on the other. With two or more time-like directions
+  the norm becomes indefinite (negative-norm states, no stable vacuum), so nothing physical can be reconstructed. That is the
+  precise sense in which mixing the halves gives non-existence, and why exactly one direction half is possible. (The Euclidean theory
+  is rotation-symmetric, so which axis serves as the direction is a choice; that there is exactly one is not.)
+  (4) **Symmetry broken at the boundary, as expected.** The classical scale symmetry is broken only by the cutoff, the boundary in scale,
+  and the breaking survives removing it (the trace anomaly); its fingerprint is Lambda, the scale of the gap. In the proof this is the
+  hand-over at L_*: the act happens where the running coupling leaves the weak region, and everything above it is fixed by the boundary
+  condition the UV side delivers. No new step for the proof follows; the reading explains why the proof can only be d = 4 and why
+  the OS side needs one reflection direction, both of which it already uses.
