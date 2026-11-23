@@ -3607,3 +3607,11 @@ thread.
   the rounding step), and one covariant measurement of that act. Care point: "covariant" also means the measurement must not depend
   on choices outside the system (a gauge, a lattice orientation, a basis); the encoder numbers pass this, which is why they are the
   right observables.
+- **Approvals and the verification minimum (the owner, same day):** "Your point on kernel errors makes the point I was attempting to
+  make in the way I wanted to, so fully approved. DMP at G0 is itself double checked and quintuple verified, this meets the minimum,
+  If I recall. The perfect proof sounds good. Full steam ahead!" Recorded: (1) the kernel-error entry (redundancy, not smallness) is
+  the owner's intended statement; (2) the owner's account: DMP at G0, the v0.9.9 text, was checked twice and verified five times,
+  which the owner takes as the minimum for the root; the project's own rule for its Lean layer is the same principle, and an
+  independent re-check of every Lean proof with checkers separate from the building kernel was started (see the session for it);
+  (3) the perfect-proof shape (irreducible form layer; per problem one uniqueness, the act at the DB asserting it, one covariant
+  measurement) is adopted for the paper.
