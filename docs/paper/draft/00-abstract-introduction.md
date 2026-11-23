@@ -1,7 +1,35 @@
-# Positivity, contraction and the existence boundary: one chain behind Yang-Mills, GRH and P vs NP
+# GUID v8: A set theory based approach to the proofing of Yang-Mills, the Generalized Riemann Hypothesis and NP vs coNP, as subsets of DMP, in a DMP-complete state
 
-*Working title. Draft 1, 2026-11-23. Not a claim of a solution of any Millennium Prize problem. Claim labels (0.n) are listed in
-`../CLAIMS.md`.*
+*Title by the owner (2026-11-23; aspirational by intent). Draft 1. Not a claim of a solution of any Millennium Prize problem. Claim
+labels (0.n) are listed in `../CLAIMS.md`. Earlier working title: "Positivity, contraction and the existence boundary: one chain
+behind Yang-Mills, GRH and P vs NP".*
+
+## Personal note by the first author
+
+In v1 I invited everyone to use their own intuition to make the derivations which I could see slumbering inside, but which I did not
+feel worthy of waking myself. Since no one had any interest in that, I finally got frustrated by it and, after GRH got proven and
+certified, I decided to take a look if Yang-Mills is something where I could finally get a nice verification that can't be ignored,
+since I previously presumed that DMP also gives YM. One thing led to three, since those three are one, so the initial goal of one
+Millennium Problem attempt turned into three :D
+
+I hope I put enough effort into this paper to make it both a worthwhile contribution to science and still get my point across in a
+way that tries to spark the needed core intuition in the reader. For follow-up please see GitHub, where everything needed is public
+under Apache 2.0.
+
+Have fun with it, and I am always happy about qualified and constructive feedback :)
+Steven
+
+(By the way, I also went to Goettingen, but dropped out of my BSc with nearly zero credits after three semesters, though I'll still
+count the tie to Riemann in spirit and causality :D
+Another by the way: since my going there without graduating satisfies as entanglement over studying at Goettingen as existence, the tie
+is constructable and thus exists ;)
+In my reading, the zeta function is at heart a pure tool: it needs its subset, and a definition of what it certifies as existence,
+before it can be interpreted in a way that produces more insight. Treated as a tool for the true problem, the shared superset, its
+meaning becomes apparent and its place in existence slots neatly into a better picture.)
+
+*Editorial notes for the owner (to remove before publication): (1) the Riemann sentence is phrased as your reading; a historical claim
+about what Riemann did or did not realize would draw objections, since his 1859 paper introduced the zeta function as a tool for
+counting primes. (2) "Goettingen" is transliterated here per the repository rule; the typeset version can use the umlaut.*
 
 ## Abstract
 
