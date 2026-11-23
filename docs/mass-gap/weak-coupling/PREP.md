@@ -3293,3 +3293,20 @@ thread.
   logic; with full second-order semantics completeness fails, so the formalisation of DMP should be first-order (or Henkin) for the
   theorem to apply; (c) for each problem, "true in every running system" is the content of its named open step, so completeness
   turns each step, once valid, into a finite certificate, but does not by itself show it is valid.
+- **Extend Perelman's Poincare to SU(N) through DMP, a tie-in to the one universally accepted proof and another route to the pressed
+  base causality of DMP v0.9.9's existence (the owner, same day; "one", not "once", per the owner's correction):** "For the blowup we
+  should show that we can extend Perelmans Poincare to SU(N), which should be easily doable through DMP. That gives us a nice tie in
+  into DMP for the one universally accepted proof, giving us another route to establish the pressed base causality of DMP v0.9.9s
+  existence." Reading (coordinator), with the precise starting facts; the work went to the blowup round as an addendum.
+  (1) *Poincare is already about SU(2).* SU(2) is, as a manifold, the 3-sphere (unit quaternions) [classical]. So the object
+  Perelman certified is the group manifold of the SU(2) gauge group; Poincare's conjecture says every simply connected closed
+  3-manifold is this one. (2) *What Ricci flow does on every SU(N).* With the bi-invariant metric, every compact simple Lie group is
+  Einstein (Ric = (1/4) g for the metric minus the Killing form) [classical], so Ricci flow shrinks it homothetically and it becomes
+  extinct in finite time, with no singularity other than the final point and no surgery: the same certificate as Perelman's, given
+  for free by the symmetry. In the trace normalisation <X, Y> = -tr(XY) the Einstein constant is N/2, so the extinction time is 1/N
+  (to be checked in the round). (3) *Where a genuine "Poincare for SU(N)" is hard.* For N >= 3, SU(N) is not a sphere (its
+  cohomology is that of S^3 x S^5 x ... x S^{2N-1}), it has flat 2-planes (rank >= 2, so no positive curvature operator, and the
+  Boehm-Wilking and sphere theorems do not apply), and Ricci-flow singularities are not classified in dimension >= 4 (dim SU(3) = 8).
+  So the recognition statement ("a closed manifold homotopy equivalent to SU(N) is SU(N)") is a question for surgery theory, not
+  Ricci flow; its status is to be checked in the literature, not assumed. The DMP tie-in the owner names is the reading of (1) and
+  (2); (3) marks what would be new.
