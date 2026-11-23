@@ -153,3 +153,15 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * Lean: the electric-flux free energy is superadditive up to the neutral excess act c(L) = log(Z0(L)/lambda0^L); the per-box rate
   multiplies iff F_e(L) > 2 c(L) at one scale. c(L) is the neutral gap in disguise (circular) and extensive in the cross-section;
   the twist channel does not multiply.
+
+## Round 10 (2026-11-23, uncommitted; CPU refutation check of F_e(L) > 2 c(L))
+
+* `ONEBOX-CHECK.md` (plan fixed before data, sections 1-3; result 4-6), `w2/onebox_check.py`, `w2/runs/onebox_check.json`,
+  `w2/runs/onebox_check_sig4.json` (robustness). CPU under a minute per run; no GPU; no Lean.
+* F_e and c themselves are not estimable from saved data (lambda0^L normalisation, twisted ensemble). Used the exact
+  F_e - 2c = -log(Z0 Z1 / lambda0^{2L}) and reflection-positive effective-mass upper bounds on energies: R(L) = L dE_f^up -
+  log(1 + S(L)) >= F_e - 2c, cross-section 16^3, L = 1..8.
+* beta 3.5: refuted at L = 1 (R = -3.1 at 95 %, -1.9 at 99 %; robust to 4 sigma selection). Flux nearly free (m_eff 0.014) and c
+  extensive. Not refuted at L >= 2 by this bound (margin 0.01 at L = 2), mainly because of the floor on the flux error.
+* beta 2.3: no flux upper bound (Polyakov signal gone after one step), so no test; c(1) >= 4.2, c(2) >= 1.2 (95 %).
+* Cubic geometry L_s = L untested; proposal (not run): small-torus CPU simulation with thermodynamic integration and snake.
