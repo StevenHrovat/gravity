@@ -3525,3 +3525,17 @@ thread.
   So the ETM's edge reads: binary truth globally (c1), knowledge = truth locally where a settling certificate exists (b, and the
   entry "knowledge is applied truth"), and no global procedure (c2). Care point: (c1) alone, without (c2), would drop the edge; the
   restatement should state both. Passed to the ETM round.
+- **This fits every DMP subset needing its corollary fixed as an axiom, as seen before (the owner, same day, on the ETM (c)
+  restatement):** "That also fits into all DMP subsets needing the corollary fixed as an axiom which we have seen." Reading
+  (coordinator): exact, and visible in the project's own gate. (1) *The binary global truth is an axiom.* In Lean the noncomputable
+  decision of (c1) comes from `Classical.choice`; excluded middle follows from it (Diaconescu) [classical]. Every theorem the gate
+  accepts rests on exactly propext, `Classical.choice` and `Quot.sound` ("OK 285 theorems, none resting on more than ..."). So the
+  "binary global truth at G0" is not derived in any instance: it is fixed as an axiom once, for all of them, and the gate checks that
+  nothing else is. (2) *The pattern across the subsets* (earlier entries: "the first act is stated, not derived"; "the bigger or
+  equal to is axiomatically fixed"; paper I.2): in Yang-Mills positivity is fixed by construction (e^{-S} >= 0); in GRH it is
+  equivalent to the conclusion; in P vs NP it is the question. Each subset fixes what it cannot derive from below. (3) *Why this is
+  consistent.* A statement a system cannot decide can be added as an axiom, or its negation, without contradiction (independence,
+  Goedel; the consistency of excluded middle with constructive logic) [classical]; fixing it is a choice of the system, made once
+  at its root. Care point: fixing a corollary as an axiom is legitimate for the form layer's logic (bivalence), but it must not be
+  done for a content step: fixing O1, the sign or the crossing cost as an axiom would assume what each problem asks. The gate's
+  three axioms are the whole allowance.
