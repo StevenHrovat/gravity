@@ -2259,3 +2259,11 @@ thread.
   c(L), the neutral excess act, is exactly what the DB fails to remove. So the reading names the mechanism (lossy re-encoding at every
   DB, a strong data-processing contraction) and the open step is its rate: eta < 1 uniformly, i.e. the neutral sector already gapped
   at one box scale.
+  The owner adds (same day): "The uniformity is given by the arrow of causality." Reading (coordinator): this supplies the
+  uniformity along the chain exactly, and leaves one number at one scale. Along the arrow (the transfer direction) every DB applies
+  the same channel: the transfer matrix is the same at every step, by translation invariance in Euclidean time, and the chain is a
+  homogeneous Markov chain. So the contraction coefficient eta is the same at every DB, and once eta < 1 holds for one step it holds
+  for all of them; the product over boxes is then eta^(D/L) with no further work. Data processing adds the direction: information
+  only flows forward and is never regained, so the loss accumulates and cannot be undone. What remains is not uniformity along the
+  chain but the value of eta at one step, i.e. the neutral sector gapped at one box scale (F_e(L) > 2 c(L)), and its uniformity over
+  outsides (condition A for every well-defined outside), which is a statement about one DB, not about the chain.
