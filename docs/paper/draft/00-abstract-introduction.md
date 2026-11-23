@@ -40,27 +40,36 @@ standard axioms. The language that names the steps is DMP, a specification for s
 existence; its readings are marked as readings throughout and carry no proof.
 
 **What is proved.** For SU(2) lattice Yang-Mills: reflection positivity, the strict bound between a sector and its twist, a per-box
-hand-over rate of at least log(1 + sqrt 2), superadditivity of the carried flux along a chain, and the assembly from a one-box gap
-certificate to a mass gap of the lattice theory in both orders of limits. For GRH: Weil's criterion, the Lee-Yang and similitude
-mechanisms, and a shared Pringsheim-Landau theorem ("positivity locates singularities"), all in finite models; the same theorem gives
-the decay-rate form of the mass gap. For P vs NP: polynomial-time sampling and a spectral gap under Dobrushin's condition, refutation
-completeness, Gauss's law mod 2, and the theorem that every refutation of an expanding formula, in every sound proof system with
-two-premise rules, contains a line crossing at least the expansion many variables (under two stated graph hypotheses, classical but
-not yet formalised).
+hand-over rate of at least log(1 + sqrt 2), a forced and unscreenable centre flux obeying the same law on both sides of every box,
+superadditivity of the carried flux along a chain, the conversion of a one-box contraction at fixed physical size into a physical mass,
+the assembly from a one-box gap certificate to a mass gap of the lattice theory in both orders of limits, and the exact thresholds a
+grid of boxes needs beyond a chain (log 8 from column sums, the path entropy log mu_4 from path counting). For GRH: Weil's criterion,
+the Lee-Yang and similitude mechanisms and a shared Pringsheim-Landau theorem ("positivity locates singularities"), all in finite
+models; that duality without positivity allows zeros off the line; and that positivity cannot be assembled place by place or bounded
+by any two separate terms. The same Pringsheim-Landau theorem gives the decay-rate form of the mass gap, and one formal statement ("it
+runs") holds the targets of Yang-Mills and GRH side by side. For P vs NP: polynomial-time sampling and a spectral gap under
+Dobrushin's condition for finite systems, refutation completeness, Gauss's law mod 2, the DAG-like size-width relation of resolution,
+and the theorem that every refutation of an expanding formula, in every sound proof system with two-premise rules, contains a line
+crossing at least the expansion many variables (machine-checked under two stated graph hypotheses, which are classical for expanders
+but not formalised for concrete graphs); for cutting planes, an exact duality floor for unit-threshold lines and its failure for
+weighted lines.
 
 **What is not proved.** None of the three problems is solved here.
 
-* *Yang-Mills.* The gap mechanism reduces to one statement about one box at one scale: the box's loss rate is below one for every
-  well-defined outside. That statement is open. The Clay statement further needs the line of constant physics and non-triviality as
-  theorems, Euclidean invariance and reconstruction for a continuum field algebra, and the extension from SU(2) to every compact
-  simple group.
+* *Yang-Mills.* The gap mechanism reduces to one statement about one box of fixed physical size: its electric flux free energy
+  exceeds the path entropy of the four-dimensional lattice, F_e(L) > log mu_4 = 1.91, for every well-defined outside. That statement
+  is open; measurements pass it centrally at one coupling but do not certify it. The Clay statement further needs the line of
+  constant physics and non-triviality as theorems, Euclidean invariance and reconstruction for a continuum field algebra, and the
+  extension from SU(2) to every compact simple group.
 * *GRH.* The Riemann hypothesis and GRH for Dirichlet L-functions were proved in Lean by others in November 2026, by a route that
-  does not use positivity. This paper follows the positivity route independently. Its open step is a Hilbert space for Weil's form
-  built from the primes, the characters and the real place without the zeros, given in five forms. GRH beyond Dirichlet L-functions
+  does not use positivity. This paper follows the positivity route independently and proves no case of GRH. Its open step is one
+  positivity built from the primes, the characters and the real place without the zeros, met in eight faces; the measurements show
+  it must be an exact identity coupling all primes up to the scale and the real place at once. GRH beyond Dirichlet L-functions
   remains open.
 * *P vs NP.* Inside a class with a local certificate, search, sampling and counting are polynomial. The crossing from that class to
-  all inputs, and super-polynomial lower bounds for Frege proof systems, are open, and any argument for them must pass the
-  relativization, natural-proofs and algebrization barriers.
+  all inputs is open. On the proof-complexity side (NP vs coNP), the sharpest open step located here is a size lower bound for
+  cutting planes on random 3-CNF of constant width, which needs a cost measure that no single-line measure provides; super-polynomial
+  lower bounds for Frege systems are open. Any argument must pass the relativization, natural-proofs and algebrization barriers.
 
 The paper is built so that it closes locally: each open step is stated in the exact form that would close it.
 
@@ -82,15 +91,16 @@ open step that all three problems share.
 
 ### What a reader can take from it
 
-* A reader from **mathematical physics** finds the Yang-Mills mass gap reduced, for SU(2), to a single worst-case statement about one
-  box at one scale, with the rest of the gap mechanism machine-checked, and a precise list of what still separates it from the Clay
-  statement.
+* A reader from **mathematical physics** finds the Yang-Mills mass gap reduced, for SU(2), to a single worst-case number for one box
+  of fixed physical size, with the rest of the gap mechanism machine-checked, the reason why a chain of boxes is easy and a grid is
+  not, and a precise list of what still separates it from the Clay statement.
 * A reader from **number theory** finds the positivity route to GRH carried to the point where only a construction is missing,
-  that construction located by numerics (all primes up to the scale and the real place must enter together, through an exact
-  identity), and the shared theorem with Yang-Mills proved.
-* A reader from **complexity theory** finds a dictionary in which Dobrushin's condition is a polynomial-time promise class, and a
-  transfer of the Yang-Mills dichotomy (local, crossing flux, residue) to refutations, with its exact parts proved and its first
-  unclosable step identified.
+  the ways it cannot be assembled proved (place by place, by subsets, by two separate terms), the construction located by numerics
+  (all primes up to the scale and the real place must enter together, through an exact identity), and the shared theorems with
+  Yang-Mills proved.
+* A reader from **complexity theory** finds a dictionary in which Dobrushin's condition is a polynomial-time promise class, a
+  transfer of the Yang-Mills dichotomy (local, crossing flux, residue) to refutations with its exact parts proved, and, for cutting
+  planes on random 3-CNF, the open step reduced to one missing cost measure.
 
 ### How to read the status marks
 
@@ -111,8 +121,10 @@ paper is tied to the statement it would discharge, and a passing measurement is 
   bottom of the spectrum) **[Lean]**.
 * The hand-over bound: a strict inequality between a sector and its twist forces a rate of at least log(1 + sqrt 2) in one of the two
   dual channels **[Lean]**.
-* The reduction of the SU(2) gap mechanism to one box at one scale **[Lean]** + **[classical]**, with the open statement isolated.
-* The crossing theorem for every two-premise proof system **[Lean]**.
+* The reduction of the SU(2) gap mechanism to one box of fixed physical size **[Lean]** + **[classical]**, with the open statement
+  isolated as one number, and the thresholds a grid needs beyond a chain **[Lean]**.
+* The crossing theorem for every two-premise proof system, and the duality floor and its failure for cutting-planes lines **[Lean]**.
+* "It runs": one formal statement holding the Yang-Mills and GRH targets side by side **[Lean]**.
 * The semilocal and prime-by-prime measurements of Weil's form, showing that the missing positivity must be an exact identity
   **[numerical]**.
 

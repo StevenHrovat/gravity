@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Print the axioms of the declarations of ProofPhase.Crossover.Dichotomy .WellDefined, .FluxRate, .HandOver, .CompositeHTF, .Neighbours, .RDoeblin, .Runs, .Saturation and .Containment (build first with build-dy.sh).
+# Print the axioms of the declarations of ProofPhase.Crossover.Dichotomy .WellDefined, .FluxRate, .HandOver, .CompositeHTF, .Neighbours, .RDoeblin, .Runs, .Saturation, .Containment and .Equidist (build first with build-dy.sh).
 set -euo pipefail
 cd ~/formal-dy
 source ~/.elan/env
@@ -15,6 +15,7 @@ f=$(mktemp /tmp/dy_axioms_XXXX.lean)
   echo "import ProofPhase.Crossover.Runs"
   echo "import ProofPhase.Crossover.Saturation"
   echo "import ProofPhase.Crossover.Containment"
+  echo "import ProofPhase.Crossover.Equidist"
   for n in cob_restrict_eq_cob_restrict_compl cob_restrict_eq_zero_of_interior cob_restrict_eq_zero_of_exterior \
     boundaryCell_of_cob_restrict not_uncontained measure_uncontained sum_cob_restrict_eq_zero window_gap \
     exists_mem_of_full_of_pos no_uniform_lower_bound_on_full not_exists_full_with_bound \
@@ -26,7 +27,8 @@ f=$(mktemp /tmp/dy_axioms_XXXX.lean)
     rdoeblin_family one_sub_pow_eq_exp rdoeblin_physical_decay floor_column_requirement floor_disagreement_requirement \
     min_le_of_sector_product selfdual_sector_ge_one electric_sum_lt_one_iff eig_norm_le_of_contraction iterate_contraction no_phase_mode runs_two_targets \
     ratio_floor_of_pointwise exp_floor_ge_iff twist_ratio_of_elecF jensen_normalization \
-    elecF_nonneg twist_ratio_eq twist_ratio_le_elecF elecF_lower_of_gap exists_elecF_ge path_sum_summable_iff tube_threshold path_entropy_beats_handover; do
+    elecF_nonneg twist_ratio_eq twist_ratio_le_elecF elecF_lower_of_gap exists_elecF_ge path_sum_summable_iff tube_threshold path_entropy_beats_handover \
+    sum_sgn2 chi_comm abs_chi sum_chi sum_elecZ elecZ_zero sector_product electric_sum_le_of_equidist elecZ_le_deficit; do
     echo "#print axioms ProofPhase.Crossover.$n"
   done
 } > "$f"

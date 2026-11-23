@@ -133,8 +133,8 @@ transfer direction), the contraction coefficient is the same at every step; once
 eta^n. **[classical]** with the composition law **[Lean]** above. Read as DMP: "the uniformity is given by the arrow of causality"
 (the author, 2026-11-23) **[reading]**.
 
-**The three applications.** Yang-Mills: the whole problem reduces to eta < 1 for one box at one scale, uniformly over outsides (Part
-III). P vs NP: a column sum below one is polynomial-time sampling and, classically, counting (Part V). GRH: no contraction step is
+**The three applications.** Yang-Mills: the gap mechanism reduces to one box of fixed physical size, uniformly over outsides; for a
+grid the per-box cost must beat the path entropy, F_e(L) > log mu_4 (Part III.5). P vs NP: a column sum below one is polynomial-time sampling and, classically, counting (Part V). GRH: no contraction step is
 known; the prime-by-prime extension has no slack to lose (Part IV).
 
 ---
@@ -159,8 +159,9 @@ integrand is positive, the formal step is not written). This is the precise form
 no rate becomes a rate at the self-dual point.
 
 **What it does not give.** It is a statement about free energies of the whole periodic box (averaged over everything), not about the
-influence of an arbitrary fixed outside on one box, and one box's rate is not yet a product over many boxes. Both gaps are named in
-Part III.
+influence of an arbitrary fixed outside on one box. And 0.881 suffices for a chain of boxes (two channels per box) but not for a
+grid: in d >= 3 the number of ways a path can continue outweighs it (`Crossover/Containment.lean`, `path_entropy_beats_handover`,
+**[Lean]**). Both gaps are named in Part III (III.4, III.5).
 
 ---
 

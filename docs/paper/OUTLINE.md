@@ -1,6 +1,8 @@
-# The three-problem paper: outline (draft 1, 2026-11-23)
+# The three-problem paper: outline (draft 2, 2026-11-23)
 
-**Working title.** *Positivity, contraction and the existence boundary: one chain behind Yang-Mills, GRH and P vs NP.*
+**Title (the owner's).** *GUID v8: A set theory based approach to the proofing of Yang-Mills, the Generalized Riemann Hypothesis and
+NP vs coNP, as subsets of DMP, in a DMP-complete state.* Earlier working title: *Positivity, contraction and the existence boundary:
+one chain behind Yang-Mills, GRH and P vs NP.*
 
 **Goal (the owner's words).** "This should be immaculate in both its magical logical simplicity through ultimate reduction, while
 being informative enough to all the different fields that need its tools by being intuitively understandable and guiding the reader
@@ -14,15 +16,15 @@ item of the abstract, and nothing else.
 
 | File | What | State |
 |---|---|---|
-| `OUTLINE.md` | this file: structure, one paragraph per section, status per section | draft 1 |
-| `CLAIMS.md` | every claim of the draft: status, source, what would upgrade it (165 rows) | draft 1 |
-| `draft/00-abstract-introduction.md` | abstract and introduction | drafted |
+| `OUTLINE.md` | this file: structure, one paragraph per section, status per section | draft 2 |
+| `CLAIMS.md` | every claim of the draft: status, source, what would upgrade it (241 counted rows) | draft 2 |
+| `draft/00-abstract-introduction.md` | the owner's title and personal note; abstract and introduction | drafted (lists updated in draft 2) |
 | `draft/01-part-I-dmp.md` | Part I, DMP | fully drafted |
 | `draft/02-part-II-tools.md` | Part II, the tools | fully drafted |
-| `draft/03-part-III-yang-mills.md` | Part III | dense skeleton |
-| `draft/04-part-IV-grh.md` | Part IV | dense skeleton |
-| `draft/05-part-V-pnp.md` | Part V | dense skeleton |
-| `draft/06-part-VI-common-step.md` | Part VI | drafted (short) |
+| `draft/03-part-III-yang-mills.md` | Part III | prose (draft 2) |
+| `draft/04-part-IV-grh.md` | Part IV | prose (draft 2) |
+| `draft/05-part-V-pnp.md` | Part V | prose (draft 2) |
+| `draft/06-part-VI-common-step.md` | Part VI | prose, side-by-side table (draft 2) |
 
 LaTeX comes later. Status marks everywhere: **Lean** (module named), **classical** (reference), **external** (others' result, not
 rebuilt), **conditional** (under a named assumption), **paper**, **numerical**, **reading** (DMP; never mathematics), **open**.
@@ -82,69 +84,67 @@ Each tool once, most general form, a one-line "why it clicks", three application
 * **II.7 The native optimization method.** Quantized descent arrives; pointer jumping; measured per-layer cost. *Lean + numerical.*
 * **II.8 What the tools do not do.** None creates positivity; the open step of each problem is where it must be established.
 
-## Part III. Yang-Mills: everything reduces to one box at one scale
+## Part III. Yang-Mills: the gap mechanism reduces to one box of fixed physical size
 
-* **III.0 What is proved and what is not.** Minting half done in Lean (conditional on stated inputs); gap mechanism reduced to one
-  box. Open: O1 the one-box statement; O2 line of constant physics and non-triviality; O3 continuum field theory (Euclidean
-  invariance, fields, uniqueness, reconstruction; external for the external construction, open for ours); O4 other groups.
-  "One box at one scale" is exact for the gap mechanism, not for the Clay statement.
-* **III.1 Lattice theory and positivity.** Wilson measure, RP, transfer kernel, 't Hooft duality, good blocking, Z_tw < Z. *Lean
-  (one paper item).*
-* **III.2 Minting half.** Dobrushin with weights, Corollary B, windowed OS route, top-level assembly, both orders of limits,
-  non-triviality of hypotheses. *Lean; MassGapLoc -> continuum spectral gap paper.*
-* **III.3 Pressing half: reduction to one box.** Hand-over 0.881, forced sheet, superadditivity, uniformity, doubling law,
-  saturation, uncontained sheets; **III.3.8 the one-box statement: open.** Care point: which Lean input form is exactly III.3.8.
-* **III.4 The one box from inside.** Dichotomy (a) fails at the SO(3) cut (paper); reduction to two bad events (paper); window
-  0.18-1.79 nats (Lean + paper); Y2-Y5 open; coarse test (numerical); IR column (open, knife-edge certificate as named hypothesis).
-* **III.5 Weak-coupling side and continuum.** UV stability and the continuum limit (external); Balaban reading (classical); M1
-  (paper); O2-O4.
-* **III.6 Readings.** WHKs, pressing/minting, CMOS collapse, spanned existence. *reading.*
-* **III.7 What would close it.** O1 first (the mathematical core), then O2-O4.
+* **III.0 What is proved and what is not.** Minting half done in Lean (conditional on stated inputs); gap mechanism reduced to one box.
+  Open: **O1** F_e(L) > log mu_4 = 1.91 at one box of fixed physical size, uniformly over outsides; O2 line of constant physics and
+  non-triviality; O3 continuum field theory; O4 other groups.
+* **III.1 Lattice theory and positivity.** *Lean.* **III.2 Minting half**, and why the crossover needs no description of its content
+  (paper). *Lean.*
+* **III.3 What one box gives, and how a chain carries it.** Hand-over 0.881, forced sheet, the same law on both sides,
+  superadditivity, uniformity, physical units. *Lean + classical.*
+* **III.4 Why a grid is harder than a chain.** Column requirement log 8; Doeblin vanishes in the continuum; multi-sector duality
+  forces nothing; a covariant frame carries nothing. *Lean + paper.*
+* **III.5 Containment.** Outside absence (lemma); the container ends in long boxes; Gauss's law gives path-like influence; tube
+  threshold F > log mu, which 0.881 fails in d >= 3; Bogomolny helps only outside; **O1**; care points (annealed to quenched;
+  relation to F_e > 2c; which Lean input form). *Lean + classical + open.*
+* **III.6 Saturation and the dichotomy.** Tick-unit floor; saturation is a consequence of O1; Tomboulis's step localised to one box;
+  dichotomy (a) fails, (b) holds; Y2-Y5. *Lean + paper + open.*
+* **III.7 Measured.** Small tori (passes centrally, not certified); the chain check at 16^3 (refuted, does not bear on O1); the
+  universal floor; the mirror reading L sqrt(sigma) of about 1.7 to 1.8. *numerical.*
+* **III.8 "It runs"** (shared with GRH). *Lean.* **III.9 Weak coupling and continuum** (O2-O4). **III.10 Readings. III.11 What would
+  close it.**
 
 ## Part IV. GRH: the positivity route
 
 * **IV.0 State.** RH and Dirichlet GRH proved in Lean by others, not via positivity (external); GRH beyond Dirichlet open; this part
-  proves no case of GRH and gives an independent reduction.
-* **IV.1 Finite models.** Weil criterion, similitude, skew shift, Krein counterexample (duality without positivity fails), Lee-Yang
-  small cases, periodic points. *Lean.*
-* **IV.2 The bridge.** Pringsheim-Landau, negative-residue poles (Lean); the real-zero computation (classical); function-field
-  duality (classical); arithmetic Hodge index (open).
-* **IV.3 Measured shape of the missing positivity.** Semilocal test, prime-by-prime induction, exact cancellation at every step,
-  weight positivity insufficient. *numerical + classical.*
-* **IV.4 The open step in five forms.** Weil Hilbert space, critical ferromagnet, Deninger space, local reflection rule,
-  Hermite-Biehler coupling. *open; 2 and 3 imply 1 (paper).*
-* **IV.5 Readings. IV.6 What would close it.**
+  proves no case of GRH.
+* **IV.1 Finite models.** *Lean.*
+* **IV.2 The mirror alone does not place the zeros.** krein_off_line; Tate's local functional equations and Davenport-Heilbronn; the
+  one local sign Lambda(n) >= 0 and the global one-sided bound; the bridge; the two 1/2s. *Lean + classical + open.*
+* **IV.3 Measured shape.** Exact cancellation at each step; ground state on the circle; the true primes 1e-9 from the edge; all or
+  nothing; no two-term bound; no place-by-place assembly (Lean); the real place alone is indefinite. *numerical + Lean.*
+* **IV.4 One missing positivity, eight faces.** *open.*
+* **IV.5 "It runs"**, the face shared with Yang-Mills. *Lean + open.* **IV.6 Readings. IV.7 What would close it.**
 
 ## Part V. P vs NP: inside a certified class, and across it
 
 * **V.0 State.** Neither P vs NP nor NP vs coNP is resolved.
-* **V.1 Inside the class.** Dobrushin sampling, spectral gap, Doeblin (Lean); uniqueness, JVV, Weitz, LLL class (classical).
-* **V.2 At the edge.** Antiferromagnetic and k-CNF hardness (conditional on NP != RP); ferromagnets stay easy (classical).
-* **V.3 Refutations.** Soundness and completeness, cut principle, size-width, Tseitin, Gauss law, every refutation crosses (Lean);
-  known lower bounds and interpolation (classical / conditional); Frege open.
-* **V.4 Native method and the floor.** *Lean + numerical; reading for the floor.*
-* **V.5 Open steps N1-N4 and the three barriers.**
-* **V.6 Readings.**
+* **V.1 Inside the class**, now unconditional for finite systems. *Lean + classical.* **V.2 At the edge of the class.**
+* **V.3 Refutations**, with the DAG-like size-width relation now in Lean. *Lean + classical.*
+* **V.4 The edge: cutting planes on random 3-CNF.** Crossing forced; the majority line survives restrictions; duality floor for unit
+  thresholds and its failure for weighted lines; interpolation split and creative pairs; positivity to rank only; **interface
+  hardness at width 3** open. *Lean + classical + open.*
+* **V.5 Native method. V.6 Open steps N1-N4. V.7 Barriers. V.8 Readings. V.9 What would close it.**
 
-## Part VI. The common open step
+## Part VI. The common open step, side by side
 
-One shape: positivity or a certificate known for one unit, missing for every case. What the act-carrier answer settled (Yang-Mills
-reduced to one box) and did not (GRH, P vs NP). What would close each. Why Yang-Mills is the model: the only problem whose starting
-positivity is given by construction. How the paper closes locally.
+One shape. A table of the sharpest open step per problem: what is proved for one unit, why it does not carry, what no duality
+supplies, the hard quantifier, what measurement says, and the "it runs" form. What the act-carrier answer settled; what can and
+cannot close each step; why Yang-Mills is the model; how the paper closes locally.
 
 ---
 
 ## Where the draft most needs the owner's input
 
-1. **The one-box statement in its final form.** Which of the Lean input forms is exactly the statement the paper calls O1, and the
-   owner's worst-case argument for one DB, stated so it can be checked.
-2. **How much of DMP to quote, and in whose voice.** Part I quotes the author's words sparingly and marks every reading. The owner
-   decides the balance between the protocol's own text (trust, witnesses, minting) and the physical readings (existence, DB, ODP).
-3. **The title and the claim scope of the abstract.** The draft's title avoids claiming a solution; the abstract lists what is not
-   proved. The owner decides whether the paper is framed as "one chain behind three problems" (as now) or as an attempt.
-4. **O2-O4 for Yang-Mills.** Whether the paper adopts the external continuum construction's field notion (then O3 becomes an audit
-   item) or keeps its own objects (then rotation invariance must be addressed).
-5. **GRH framing after the Lean proof by others.** Whether Part IV aims at GRH beyond Dirichlet L-functions (where the positivity
-   route would be new) or presents itself as an independent route for Dirichlet L-functions.
-6. **WHKs vs WKH.** The DMP texts say White Key Holders (WKH); the owner prefers White Hole Keys (WHK). The paper uses WHK as the
-   owner asked; the DMP texts are unchanged.
+1. **O1 in its final form.** The notes now give two one-box criteria at one scale: the chain criterion F_e(L) > 2c(L) (HTF) and the
+   tube threshold F_e(L) > log mu_4 (CONTAINMENT). The paper needs one statement, the Lean input form it corresponds to
+   (`FineOneBox`, `FineOneBoxSplit`, `BlockGapBddW`), and the owner's worst-case argument for one box, stated so it can be checked.
+2. **The annealed-to-quenched step.** The path expansion behind the tube threshold assumes that per-box costs multiply along a path.
+   Either it becomes part of O1 or it needs its own argument.
+3. **How much DMP to quote, and in whose voice.** Unchanged from draft 1.
+4. **Scope of the title.** The owner's title names NP vs coNP; the abstract and Part V treat both P vs NP (the sampling side) and
+   NP vs coNP (proof complexity). Whether the P vs NP half stays in scope.
+5. **O2-O4 for Yang-Mills.** Adopt the external construction's field notion (O3 becomes an audit item) or keep our own objects.
+6. **GRH framing.** Beyond Dirichlet (where the positivity route would be new) or an independent route for Dirichlet.
+7. **WHKs vs WKH.** The paper uses WHK as the owner asked; the DMP texts are unchanged.

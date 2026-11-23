@@ -223,3 +223,14 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * (c) Path-Peierls: tube dominance needs F > log mu (Lean); mu >= d so 0.881 fails for d >= 3 (Lean). First open step: strong
   saturation F_e(L) > log mu_4 = 1.91 (r > 0.74) at one box; numerically passed centrally at L = 6, beta 2.3 (not certified).
 * Round 15 addendum: CONTAINMENT.md section 6 (Gauss's law gives the tube's shape, not its dominance; Bogomolny floor helps only outside for odd-twist-product sectors, zero for the single-plane twist, and loses to position entropy 4 log(L/a) vs (11/3) log(1/(a Lambda)) at fixed physical size).
+
+## Round 16 (2026-11-23, uncommitted; twist-sector equidistribution, GRH shape)
+
+* EQUIDIST.md (section 1 pre-registered; disclosure: beta 2.3 and beta 3.5 L = 2 ratios seen before the rule), with DMP section;
+  formal/ProofPhase/Crossover/Equidist.lean (9 theorems: Z2^n characters, orthogonality, electric sectors, sector product,
+  sharp equidistribution bound, per-sector deficit bound); axioms-dy.log 65 Crossover theorems, standard axioms; ~/formal-dy deleted.
+* Cancellation: in nonnegative deficits d_k = 1 - Z_k/Z_0 (RP), S_e = D/(2^n - D) exactly: no leftover signed quantity; the identity
+  bypasses path sums at one box but moves the requirement to twist saturation at the target scale (a lower bound RP cannot give).
+* First open step: lower bound on twist ratios (sum d_k < 2^{n-1}) at one box of fixed physical size.
+* Exploratory test (w2/equidist_test.py): beta 2.3 deficit decreasing (floor-like on 2 points, post hoc); beta 3.5 no decrease (unseen).
+* Round 16 addendum: EQUIDIST.md section 8. (i),(ii) verified on the torus (P_e projection commuting with T >= 0). With a fixed outside, a box twist is an outside change (flux identity); sectors grow with the faces (2^(2d-1) = 128 at face resolution); RP lost: the grid requirement returns as uniform insensitivity to the outside flux pattern.
