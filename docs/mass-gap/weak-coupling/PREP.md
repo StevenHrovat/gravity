@@ -3573,3 +3573,37 @@ thread.
   previous entry, Goedel II). The trusted base is kept small and can be cross-checked by independent checkers [classical]. So the
   owner's "real truth" is: true in every system that interprets the axioms, certified by a finite run that always settles, with the
   containing G0 (the checker's own soundness) fixed once at the root.
+- **Since DMP can be fully expressed in Lean, any error in Lean's kernel is so small that its effect on truth is suppressed (the
+  owner, same day):** "Since we can fully express DMP in lean, we can also assume that any error in it's kernel is so small that it's
+  error on the truth get's suppressed." Reading (coordinator), with one correction of mechanism: a kernel error is not a small noise
+  that averages out. A soundness bug is binary: either it lets a false statement through or it does not, and a proof that used it
+  would be wrong outright. What makes the risk small is different and real: (1) the kernel is a small, separately reviewed program
+  that checks every proof term, however it was produced (the de Bruijn criterion) [classical]; (2) kernel soundness bugs are rare,
+  and the known ones needed deliberately unusual terms, not ordinary mathematics; (3) the risk can be driven down by redundancy,
+  not by smallness: independent checkers re-verify the exported proofs (lean4checker replays the environment; independent kernels
+  such as lean4lean and nanoda re-check it in separate code), and independent checkers are unlikely to share a bug [classical]. So
+  the "suppression" is the agreement of independent checks, the same principle as error-correcting codes and as the project's own
+  rule that a result counts when verified twice. Not yet done for this repository: no independent re-check has been run (the WSL
+  setup has Mathlib's packages but no independent checker installed).
+- **For a subset to differ from its superset it needs a difference in existence-defining causality, rooted in set theory from the
+  empty set; a distinguishable insight from a DMP subset must give exactly what is new and how to measure it; the perfect proof is an
+  irreducible DMP with the exact uniqueness, how it is asserted through the DB, and the measurement of that act, so that it is
+  covariant (the owner, same day, on the ETM round's remark that the trace forgets everything but the ledger):** "That is to be
+  expected. Since for any subset to be different from its superset it has to have a difference in existence defining causality,
+  which, in itself, is rooted in set theory with the empty set at the start. For us this means, that for us to create any really
+  distinguishable insight from a subset from DMP, it has to provide, in it's best form only, exactly what is new and how to measure
+  it. So the perfect proof would be an irreducible DMP with the exact uniqueness and how it is asserted through the DB, the
+  measurement associated with that fundamental act, so that it is covariant." Reading (coordinator): exact in the ETM's own terms.
+  (1) *What the subset adds is what the trace forgets.* The universal map sends every running system to its ledger and forgets the
+  rest (kernel, reflection, gauge group) (`ETM.md` 3, Lean). Two systems with the same ledger are identified (`trace_eq_iff`, Lean);
+  so whatever distinguishes a subset lies exactly in what the trace forgets: its content. (2) *Exactly what is new and how to measure
+  it.* For each problem the new statement is its one named open step, and its measurement is one encoder number: for Yang-Mills the
+  twist ratio c = Z_tw/Z at the hand-over box; for GRH the reflection coefficients |k_m|; for NP vs coNP the share kept per
+  restriction. (3) *Covariant.* The measurement must transform correctly under the system's symmetries, so that it means the same
+  thing in every frame: c is gauge-invariant (a ratio of partition functions), it transforms under the electric-magnetic duality by
+  the half-turn (quarter-turn for N >= 3, Lean), and the spacetime rotations act on the twist planes exactly (`tHooft_rotation`,
+  Lean). So the perfect proof has the shape the project already uses: the irreducible form layer (the ledger, terminal; G0 rooted),
+  plus per problem one uniqueness (the open step), the act at the DB that asserts it (the twist at the hand-over box, the scale step,
+  the rounding step), and one covariant measurement of that act. Care point: "covariant" also means the measurement must not depend
+  on choices outside the system (a gauge, a lattice orientation, a basis); the encoder numbers pass this, which is why they are the
+  right observables.
