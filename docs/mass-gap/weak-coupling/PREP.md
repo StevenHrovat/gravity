@@ -2776,3 +2776,23 @@ thread.
   positive but degenerate still gives a valid (smaller) existence; only a negative direction makes the whole construction impossible.
   So the three outcomes are: positive (a full existence), positive with null part (an existence plus a collapsed remainder in CMOS),
   negative somewhere (no existence; for GRH, a zero off the line).
+- **Reaching zero in the vacuum and reaching 1 in causality are the same thing, both tied to existence at G0 (the owner, same day, on
+  the GRH care point):** "Because it acts as a certificate, reaching the zero in vacuum and the 1 in causality are the same thing, since
+  they both tie directly to existence at G0." Reading (coordinator): exact, and it is the same exponential in both problems: zero is
+  the exponent, one is the factor, e^0 = 1. (1) Yang-Mills: the transfer matrix is T = e^{-H}, so H Omega = 0 if and only if
+  T Omega = Omega: the vacuum's energy zero is the transfer step's eigenvalue exactly one, the step that carries existence without loss
+  (in the correlation e^{-t E}, E = 0 gives 1 for every t; `Bridge/Spectral.lean`). A positive energy E > 0 is a factor e^{-E} < 1
+  (decay, finitely below one); a negative energy would be a factor above one, which positivity excludes. The gap is then: one is
+  reached by the vacuum alone, and every other factor is at most e^{-m} < 1. The same holds for Markov chains: the invariant state is
+  the eigenvalue one of a positive (stochastic) step, zero for its generator [classical]. (2) GRH: a zero rho = 1/2 + delta + i gamma of
+  the model has the atom z = e^{i gamma eps} e^{delta eps} on the grid, so |z| = e^{delta eps}: the offset from the line is the
+  exponent and the modulus is the factor. Offset zero (on the line) if and only if modulus exactly one (on the circle)
+  (`atoms_on_circle`, `GRH/Induction.lean`, Lean; `closure.py` builds the atoms this way). Off the line the atoms come in the pair z,
+  1/conj(z), one with modulus above one and one below: an amplification next to a contraction, the indefinite (Krein) case of the
+  previous entry. And at the closure of a finite model, the reflection coefficient reaches |k_N| = 1 exactly when the margin
+  1 - |k_N|^2 reaches 0: again one and zero as one event. So in both problems the certificate is one statement read twice: "the
+  exponent is zero" (vacuum energy, offset from the line) and "the factor is one" (the lossless transfer step, the unit circle). Care
+  points: (a) the zero in Yang-Mills is an energy (the bottom of the spectrum) and the zero in GRH is an offset (the distance from the
+  critical line); they are different objects, joined by the same map e^x, and the reading identifies their role, not the objects.
+  (b) The open steps stay where they were: for Yang-Mills, that only the vacuum reaches one (the gap, O1); for GRH, that every offset
+  is zero (the sign).
