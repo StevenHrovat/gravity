@@ -2598,3 +2598,21 @@ thread.
   closure never happens and reading (1) becomes "the space is spanned by the zeros and nothing else", with reading (2) as |k_m| < 1
   strictly at every step (`grh_margin`, every cost finite); and (2) is a restatement of GRH in the grid model, not progress toward it:
   the open step is still to show |k_m| <= 1 from the primes, the characters and the real place alone.
+- **Finite N: existence cannot be imaginary (the owner, same day, on the first care point of the entry above):** "Your care point one
+  is actually important: SU(N) for finite N, since existence itself can not be imaginary." Reading (coordinator): the exact counterpart
+  is that every positivity statement in the ledger is a for-all over finite sections, and never needs an infinite object. (1) `ScaleSign`
+  quantifies over finite steps k only, and it is equivalent to "every finite section of size k + 1 is positive" (`scaleSign_iff`,
+  Lean); positivity on any finite set of cells follows (`pos_of_sections`, Lean). Positivity of the infinite form is defined as
+  positivity of all its finite sections, so GRH in this form is "at every finite N, the influence bound holds": existence is only ever
+  asserted at finite N, and the infinite enters only as "for every N". (2) The same holds on the Yang-Mills side: the gauge-group
+  package covers SU(N) for every finite N (`General/SUN.lean`); the large-N limit ('t Hooft) is a limit of theories, not a group in the
+  package. (3) In the owner's vocabulary, where the imaginary is possibility (the zero side, `OPEN-QUESTIONS-DMP.md` G3): at a finite
+  resolution T (the universal floor 1/T, `attempts/RULES.md`) only finitely many zeros are resolved, about (T/2 pi) log(T/2 pi e) of
+  them [classical, Riemann-von Mangoldt], so each finite scale sees a finite existence space. Care points: (a) zeta has infinitely
+  many zeros, infinitely many on the line [classical, Hardy 1914], so no single finite N closes the chain over the integers; the
+  finite N grows with the scale. (b) Uncertainty between the two sides: a finite number of steps on the prime side (compact support
+  in log scale) lets every zero contribute to the moments, and a finite zero model corresponds to band-limited test functions, whose
+  prime side is unbounded. So the finite zero model is exact only as a truncation: over the integers the closure |k_N| = 1 never
+  happens at a finite scale, and the bound is |k_m| < 1 strictly. (c) Read this way, the owner's statement makes GRH a for-all over
+  finite existence spaces, which is the form the Lean ledger already has; it does not change what is open (the bound from the primes,
+  the characters and the real place alone).
