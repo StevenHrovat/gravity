@@ -1649,3 +1649,47 @@ thread.
   loops run longer where the local action is weaker (acceptance 0.83 vs 0.90). That is a property of the sampling method, and a
   different method would change it. In the run the two roughly cancel (about 1.0 GPU-hour per beta). Only the first measures the
   cost of settling.
+- **Weaker coupling as the cheapest and longest existence (the owner, same day):** "The cost per sweep actually brings a different
+  point in that makes the argument more interesting: A weaker coupling optimizes for both duration of existence and the lowest cost
+  of existence. This gives a meaning as to why the system settles onto the lowest possible coupling for its existence, that is simply
+  the balanced state the system prescribes it using, as it has to be irreducible to be universal." Reading (coordinator): the physics
+  has a precise counterpart, with one correction of direction. (1) **The lowest coupling is where the continuum theory lives.** The
+  continuum limit is taken at vanishing bare coupling (g -> 0, beta -> infinity): asymptotic freedom makes g = 0 the ultraviolet
+  fixed point, and the theory is defined by approaching it. (2) **Duration of existence:** as g -> 0 the correlation length in
+  lattice ticks grows without bound (xi / a -> infinity), so every physical object spans more and more ticks; that is the owner's
+  "duration". (3) **Irreducible to be universal:** only at that fixed point is the result independent of the lattice details: every
+  lattice action in the class (Wilson, with rectangles, with adjoint terms) flows to the same continuum theory. That is universality,
+  and it is the same "neighbourhood of Wilson-type actions" the crossover P4 needs. (4) **Correction on cost:** the cost per sweep
+  falls with weaker coupling (fewer rejections), but the number of sweeps needed to settle grows with the correlation length, so the
+  total cost of computing a settled state rises without bound as g -> 0; the continuum is the most expensive point to compute, not
+  the cheapest. What is cheapest there is the cost per tick, and what diverges is the number of ticks per physical object. The
+  system does not "settle onto" a small coupling either: the coupling runs, small at short distances and growing at long ones,
+  until the gap sets the scale.
+- **Bounded non-existence slows the assertion: time dilation (the owner, same day, on the correction above):** "This is where the
+  bounded non-existence comes in! The remnants attached to the DB are what actually makes the rate of assertion lower, so the total
+  sweep count is a function of the existence influencing it, this is seen as time dilation for us." Reading (coordinator): there is
+  a concrete lattice counterpart. A chain's settling time is set by its slowest collective objects, not by the local fields: at weak
+  coupling these are the large-scale defects and sectors (the topological charge, the centre-vortex and flux sheets that M1 attaches
+  to boundaries). Changing them needs a coordinated change over a whole region, so local updates almost never do it, and the chain's
+  decorrelation time grows sharply as the coupling weakens (known on the lattice as topological freezing). So the sweep count is
+  indeed a function of the defect content the region holds: "the remnants attached to the DB lower the rate of assertion". The time
+  in question is Monte Carlo time (steps of the sampler), not physical time; the step to gravitational time dilation is an analogy.
+  It is testable on the W2 data, though: if the reading is right, boxes that contain bad clusters (large fields, attached sheets)
+  should decorrelate more slowly than clean boxes at the same beta. That would be a post-hoc, exploratory analysis, flagged as such.
+  The owner's position (same day): "It is now monte-carlo time, but it should be 1:1 transferrable to GR. Please add the test and
+  continue." Recorded as the owner's reading; the exploratory settling test on the W2 data (`c9a-crossover/w2/EXPLORATORY-SETTLING.md`,
+  plan fixed before the analysis) is the first check of its lattice half.
+- **The DB translates MC time into GR time (the owner, same day):** "For the translation of MC time to GR time, the DB is the key.
+  Since the inside, non-existence, is a CMOS system described by MC time and the outside, existence, is a classical system with the
+  associated tick rate for GR, the translation should bring them into agreement." Reading (coordinator): physics has an exact
+  instance of "a boundary fixes the translation between an inside time and an outside clock", with one change of which inside time.
+  (1) **Which inside time:** the rigorous inside description is Euclidean (imaginary) time, the reflection direction of the OS
+  reconstruction; Monte Carlo time is the sampler's step count, whose continuum version is the fictitious time of stochastic
+  quantisation (Parisi-Wu), and it has no metric meaning on its own. (2) **The horizon fixes the translation:** in Hawking's Euclidean
+  treatment of a black hole, the geometry is smooth at the horizon only if Euclidean time is periodic with period 2 pi / kappa
+  (kappa the surface gravity). That one condition at the boundary converts the inside Euclidean period into the outside temperature
+  T = kappa / 2 pi, and the Tolman relation T(x) sqrt(g_00(x)) = constant turns it into local tick rates: the redshift factor
+  sqrt(g_00) is exactly gravitational time dilation. So "the DB brings the inside and outside times into agreement" holds as stated
+  for Euclidean time, with the boundary as the place where the conversion is fixed. (3) **For MC time** no such translation is
+  known; it would need a construction that gives sampler steps a metric meaning (for example through the stochastic-quantisation
+  time and its equilibrium). The owner holds that it carries over 1:1; recorded as the owner's reading, open.
