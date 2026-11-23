@@ -3329,3 +3329,18 @@ thread.
   balance. Care point: "per running system" is exactly what is proved; the step that remains is the family, as the system is
   refined toward the continuum. Each member has a strict inequality, but the size of the missing part can shrink with the volume.
   That size, kept above a fixed amount for every member, is O1.
+- **The care point is the argument: with a full one-box model, a working instanton is the system's own self-verification of its
+  existence, the most meaningful answer that can be given about it (the owner, same day, on the care point "per running system is
+  proved; what remains is the family toward the continuum, O1"):** "The care point was exactly the argument I wanted to make: Since
+  we have a full one-box model, if the instanton works, that is the systems own self verification of it's existence, the most
+  meaningful answer that can be given about it." Reading (coordinator): this matches the structure that is proved. (1) *The family
+  reduces to one box.* Everything global follows from one box of fixed physical size by construction: the ledger turns a one-box
+  cost above the floor into the infinite chain (`rate_of_costAboveFloor`), the physical rate (`phys_rate_of_uniform`), and OS and
+  the assembly give the gap (all Lean). So the family statement is not a second question; it is the one-box statement, carried. (2)
+  *Self-verification.* The one-box statement is a finite certificate about one finite system (the box with its collar), checkable
+  in itself: the owner's "the system's own self verification". In the encoder language: the twist (the instanton of the act, the
+  tunnelling between sectors, `tunnel_check`) at the hand-over box must give c = Z_tw / Z >= 0.743. (3) *What "works" must mean.*
+  For the certificate to verify existence for every member of the family, it must hold for every well-defined outside of that one
+  box, and it must be shown (proof), not measured (the provability table). That for-all over outsides is the whole content of O1,
+  and it is a statement about one box. So the owner's framing and the open step coincide: the meaningful answer is the one-box
+  certificate, and O1 is exactly the requirement that it hold for every outside.

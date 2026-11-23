@@ -2,7 +2,8 @@
 
 Status: 2026-11-23. Answers the owner's direction recorded as the last entry of `docs/mass-gap/weak-coupling/PREP.md`
 ("Blowup blueprint: fit a proven, accepted blowup to DMP as a subset, and restate it as a consequence that ends in a DB"),
-extended by the scope decision after it (Poincare as validation, section 6; Hodge and BSD mentioned only, section 9).
+extended by the scope decision after it (Poincare as validation, section 6; Hodge and BSD mentioned only, section 10)
+and by the owner's SU(N) reading (commit 1ebb988; section 7).
 Builds on `UNIFIED.md` (the ledger), `ENCODER.md` (sections 1, 2, 6) and `GRH-LENS.md` (sections 1, 6, 7).
 
 Files:
@@ -82,6 +83,16 @@ reduction of "every outside" to one worst outside plus a contracting remainder. 
 The restatement fits the structure, and the act at the boundary is even defined there. It does not fit the mechanism. What
 reaches Perelman's boundaries is decided by classifying all possible blowup shapes, not by a cost above a floor. Nothing
 new is claimed.
+
+**Poincare and SU(N) (section 7).**
+- SU(2) is the 3-sphere, so Perelman's certified object is the SU(2) gauge group manifold [classical; Lean as sets].
+- Every SU(N) with its symmetric (bi-invariant) metric shrinks uniformly under Ricci flow and vanishes at time `1/N`, with
+  no surgery (in the normalisation `<X, Y> = -tr(XY)`, Einstein constant `N/2`) [classical, Lean for the ODE, numerical].
+  That is Perelman's final event, delivered by symmetry. But it holds for every positive Einstein space, so it says
+  nothing about the topology of SU(N).
+- Only SU(2) is stable. Every SU(N) with `N >= 3` is an unstable shrinker (Cao-He) [external; Lean for the inequality].
+- A real "Poincare for SU(N)" (homotopy SU(N) implies SU(N)) is a surgery-theory question. I found no theorem for it,
+  it may be false in the smooth category, and Ricci flow does not reach it [open].
 
 ---
 
@@ -518,7 +529,151 @@ boundary is a classification, not a cost above a floor.
 
 ---
 
-## 7. Status table
+## 7. Poincare and SU(N)
+
+Answers the owner's reading recorded in `PREP.md` (entry of commit 1ebb988): extend Perelman's Poincare to every SU(N)
+through DMP. **Nothing new about Poincare or geometrization is claimed.** The goal is a clear line between what extends
+trivially, by symmetry, and what does not.
+
+Files:
+- Lean: `ProofPhase/Unified/BlowupSUN.lean` (17 declarations, standard axioms only, no unproved steps;
+  `blowupsun-axioms.sh`, `blowupsun-axioms.log`).
+- Third-layer check: `blowup_sun_check.py`, `blowup_sun_check.log` (CPU, seconds; N = 2, 3, 5, 11).
+
+**7.1 SU(2) is the 3-sphere** [classical; Lean as sets].
+- **The map.** `(alpha, beta)` with `abs(alpha)^2 + abs(beta)^2 = 1` goes to the matrix `[[alpha, beta], [-conj beta,
+  conj alpha]]`, the unit quaternion `alpha + beta j`.
+- **What is in Lean.**
+  - `su2Mat_mem`: every such matrix lies in `Matrix.specialUnitaryGroup (Fin 2) C`.
+  - `su2_form`: every element of SU(2) has this form. The proof: `star U = adjugate U`, since both invert `U` when
+    `det U = 1`.
+  - `sphereEquivSU2`: the resulting bijection between the unit sphere of `C^2 = R^4` and SU(2).
+- **What is not in Lean.** That this bijection is a homeomorphism, indeed a diffeomorphism, is classical.
+- **What Perelman certified.** His theorem says every closed, simply connected 3-manifold is diffeomorphic to this
+  manifold, the group manifold of the SU(2) gauge group [classical].
+- **Normalisation.** With `<X, Y> = -tr(XY)`, SU(2) is the round 3-sphere of radius `sqrt 2`: every sectional curvature
+  is `1/2` [numerical].
+
+**7.2 Ricci flow on every SU(N)** [classical for the curvature, Lean for the ODE, numerical for the constants].
+- **Curvature of a bi-invariant metric.** `Ric = -(1/4) B`, with `B` the Killing form. On `su(N)`,
+  `B(X, Y) = 2N tr(XY)`. So with `<X, Y> = -tr(XY)`:
+
+      Ric = (N/2) g,    scalar curvature R = N (N^2 - 1)/2.
+
+  - **The coordinator's estimate is correct.** Einstein constant `N/2`, extinction time `1/N`.
+  - It agrees with the PREP form "`Ric = (1/4) g` for the metric `-B`", since `-B = 2N (-tr)`.
+  - For the metric `c (-tr)` the constant is `N/(2c)` and the extinction time is `c/N`.
+- **The flow.** Ricci curvature is scale invariant, so `g(t) = phi(t) g(0)` solves `dg/dt = -2 Ric` iff
+  `phi' = -2 lambda`. The flow is
+
+      g(t) = (1 - N t) g(0),    extinct at T = 1/N.
+
+  - `shrink_hasDerivAt`, `shrink_unique`: this is the solution, and the only one [Lean].
+  - `shrink_pos`, `shrink_extinct`, `sun_extinction`: `phi > 0` before `T` and `phi(T) = 0` [Lean].
+  - Uniqueness of Ricci flow on closed manifolds keeps the flow homothetic [classical].
+- **The curvature blows up only at the final point.** The Einstein constant of `g(t)` is `lambda(t) = lambda/(1 - 2
+  lambda t)`.
+  - `einstein_hasDerivAt`: it satisfies `lambda' = 2 lambda^2` [Lean]. With `R = n lambda(t)` this is `R' = (2/n) R^2`,
+    the equality case of `dR/dt >= Delta R + (2/n) R^2` (section 6.1).
+  - `einstein_unbounded`: `lambda(t) -> infinity` as `t -> T` from below [Lean].
+  - There is no other singularity and no surgery: the whole manifold shrinks to a point.
+- **The constants checked** (`blowup_sun_check.log`) [numerical]:
+
+  | `N` | dim | Ricci from structure constants | scalar curvature | extinction time | min sectional curvature |
+  |---|---|---|---|---|---|
+  | 2 | 3 | `(N/2) delta`, error 4e-16 | 3 | 0.5 | 1/2 (all) |
+  | 3 | 8 | `(N/2) delta`, error 4e-16 | 12 | 0.3333 | 0 (commuting Cartan pair) |
+  | 5 | 24 | `(N/2) delta`, error 9e-16 | 60 | 0.2 | 0 |
+  | 11 | 120 | `(N/2) delta`, error 5e-15 | 660 | 0.0909 | 0 |
+
+  The Killing form `-2N delta` is reproduced to 1e-14. The ODE, integrated numerically, reaches 0 at `1/N`.
+
+**What this certifies, and what it does not.** The bi-invariant SU(N) reaches extinction in finite time, with no surgery.
+That is the same final certificate as Perelman's, delivered by symmetry. But it certifies nothing about topology:
+- Perelman's extinction says something because it holds for **every** metric on a simply connected 3-manifold.
+- Here the metric was chosen symmetric. Every Einstein metric with positive constant shrinks homothetically to extinction
+  (`CP^n`, `S^2 x S^2`, any positive Einstein manifold), so extinction does not single out SU(N).
+
+**7.3 Stability: SU(2) is the stable one** [external, Lean for the arithmetic, numerical].
+- **SU(2).** On a closed 3-manifold, every metric of positive Ricci curvature flows, after normalisation, to constant
+  curvature (Hamilton 1982) [classical]. So S^3 = SU(2) attracts.
+- **The criterion.** Cao and He (arXiv 1304.2697, Crelle 2015) classify the linear stability of Perelman's nu-entropy
+  on symmetric spaces of compact type [external]. With `Ric = lambda g` and `mu_1` the first nonzero eigenvalue of the
+  Laplacian on functions, a non-spherical Einstein manifold is unstable in the conformal directions when
+
+      n/(n-1) lambda < mu_1 < 2 lambda.
+
+  Their table (Theorem 1.4) lists SU(3) as "linearly unstable". Their general theorem lists SU(n+1), n >= 2. The latter
+  was read through a summary of the paper, not verbatim.
+- **Our check of the window.** On SU(N), `mu_1` is the Casimir of the fundamental representation, `N - 1/N` (the smallest
+  nonzero Casimir) [classical; numerical to 2e-15]. With `lambda = N/2` and `n = N^2 - 1`:
+  - `sun_window` [Lean]: for every `N >= 3`, `mu_1` lies strictly inside the window. For example, for N = 3 it reads
+    `1.714 < 2.667 < 3`.
+  - `su2_window_edge` [Lean]: for `N = 2`, `mu_1 = 3/2` sits exactly on the lower edge. This is Obata's equality case,
+    the round sphere, which the criterion excludes.
+- **What it means.** For `N >= 3` the bi-invariant SU(N) is not a local maximum of the nu-entropy. Kroencke showed that
+  such an Einstein metric is dynamically unstable: there are nearby metrics whose Ricci flow does not return to it
+  [external, recalled]. So the homothetic extinction of 7.2 is a property of one metric, not of a neighbourhood.
+- **Flat planes.** For `N >= 3` SU(N) has rank at least 2, hence flat planes: commuting Cartan elements give sectional
+  curvature 0 [numerical]. Its curvature operator is nonnegative but not positive, so Hamilton's, Boehm-Wilking's and the
+  differentiable sphere theorems do not apply [classical].
+
+In the language of section 4.1: the bi-invariant SU(N) is an **exact profile** of the rescaled (normalised) Ricci flow, a
+compact shrinking soliton. SU(2) is a **stable** profile; every SU(N) with `N >= 3` is an **unstable** profile, like those
+of arXiv 2509.14185 [reading, on the external and Lean facts above].
+
+**7.4 What a genuine "Poincare for SU(N)" would be, and its status.**
+
+The statement: *every closed manifold homotopy equivalent to SU(N) is homeomorphic (or diffeomorphic) to SU(N).*
+
+- **`N = 2`: true.** This is Poincare itself. In dimension 3 the topological and smooth categories agree (Moise), so
+  Perelman gives diffeomorphism [classical].
+- **`N >= 3`: no theorem found** (dimension `N^2 - 1 >= 8`).
+  - **Surgery theory decides it.** For a simply connected closed manifold of dimension at least 5, the manifolds homotopy
+    equivalent to it are classified by the surgery exact sequence of Browder, Novikov, Sullivan and Wall: the normal
+    invariants `[M, G/TOP]` (or `G/O` in the smooth case) and the simply connected L-groups [classical]. I found no paper
+    that computes this structure set for SU(N), or states a recognition theorem for it. The searches of 2026-11-23
+    turned up nothing specific; that is a negative search result, not a proof of absence.
+  - **Smooth case.** For a homotopy sphere `Sigma`, `SU(N) # Sigma` is homeomorphic to `SU(N)`. Exotic 8-spheres exist
+    (`Theta_8 = Z/2`) [classical]. Whether `SU(3) # Sigma^8` is diffeomorphic to SU(3) depends on the inertia group of
+    SU(3), which I did not find computed. So a smooth recognition statement may fail [open as far as found].
+  - **Topological case.** It needs the normal invariants of SU(N) and the surgery obstructions. Not computed here [open as
+    far as found].
+  - **The homotopy side.** "Being a Lie group" is not a homotopy-invariant notion. There are finite H-spaces that are not
+    homotopy equivalent to any Lie group: the Hilton-Roitberg "criminal" (1969), a principal S^3-bundle over S^7 [classical,
+    recalled]. And there is a whole theory of homotopy Lie groups: p-compact groups (Dwyer-Wilkerson) and their
+    classification (Andersen, Grodal, Moller, Viruel) [classical, recalled].
+- **Ricci flow is not the tool.** Singularities are not classified in dimension 4 and above. The symmetric SU(N),
+  `N >= 3`, is unstable (7.3). No known preserved curvature condition singles out homotopy SU(N)s [classical].
+
+So a genuine "Poincare for SU(N)" would be a statement in surgery theory. It may be false in the smooth category. It is not
+attempted and not claimed here [open].
+
+**7.5 The DMP tie-in** [reading]. Each identification, with its exact counterpart:
+
+| owner's term | exact counterpart | status |
+|---|---|---|
+| **SU(2) is the base** | (a) SU(2) = S^3 is exactly the manifold Perelman certified (`sphereEquivSU2`). (b) Every SU(N) is built from SU(2) by the fibration tower `SU(N-1) -> SU(N) -> S^{2N-1}` (SU(N) acts on the unit sphere of `C^N` with stabiliser SU(N-1)), starting at `SU(2) = S^3`. Rationally `SU(N) ~ S^3 x S^5 x ... x S^{2N-1}`. (c) SU(N) contains one SU(2) per root | (a) [Lean] as sets, [classical]; (b), (c) [classical] |
+| **every SU(N) runs to extinction under the same flow** | the bi-invariant metric shrinks homothetically, `g(t) = (1 - N t) g(0)`, extinct at `T = 1/N`, curvature `lambda' = 2 lambda^2` | [Lean] for the ODE, [classical] for `Ric = (N/2) g`, [numerical] for N = 2, 3, 5, 11 |
+| **the same certificate as Perelman's** | the same final event (extinction, no surgery), but from a chosen metric. It holds for every positive Einstein manifold, so it carries no topological information about SU(N) | [classical] |
+| **the base is distinguished** | SU(2) is the only stable profile: Hamilton's theorem; `mu_1` on the edge of the instability window. Every SU(N), `N >= 3`, sits strictly inside it (unstable) | [Lean] for the window, [external] Cao-He for the criterion and verdict, [classical] Hamilton |
+| **pressed base causality** | in section 2's ledger: the bi-invariant SU(N) is an exact profile (residual `eps = 0`, perturbation `M = 0`), and its clock is the curvature ODE `lambda' = 2 lambda^2`. Only for the base does the certificate hold on an open set of metrics, as Perelman's does | [reading] |
+| **another route to establish DMP v0.9.9's existence** | none, mathematically. The extension by symmetry is true but holds for every positive Einstein manifold. The genuine extension (7.4) is open, and Ricci flow does not reach it | [reading]; [open] |
+
+**7.6 What extends trivially and what does not.**
+
+| part of Perelman's proof | for SU(2) | for SU(N), `N >= 3` |
+|---|---|---|
+| the object | S^3 = SU(2) [classical; Lean as sets] | SU(N) is not a sphere: rationally a product of odd spheres, rank `N - 1` [classical] |
+| finite-time extinction | from every metric, after surgeries (Perelman; Colding-Minicozzi) [classical] | from the bi-invariant metric only, homothetically, at `T = 1/N`, with no surgery [Lean, classical]. **Extends trivially, by symmetry** |
+| stability of the symmetric shrinker | stable: it attracts every positive-Ricci metric (Hamilton) [classical] | unstable: inside Cao-He's window [Lean for the window, external for the verdict]. **Does not extend** |
+| classification of blowup limits | kappa-solutions and canonical neighbourhoods, dimension 3 [classical] | none known in dimension 8 and above. **Does not extend** |
+| surgery | necks `S^2 x R`, well defined [classical] | no analogue. **Does not extend** |
+| recognition ("homotopy equivalent implies the same manifold") | true (Poincare) [classical] | a surgery-theory question; no theorem found; possibly false smoothly. **Open** |
+
+---
+
+## 8. Status table
 
 | item | statement | status |
 |---|---|---|
@@ -551,16 +706,25 @@ boundary is a classification, not a cost above a floor.
 | Poincare: the act | surgery along necks given by the canonical neighbourhood theorem; the flow continues; canonical since Bamler-Kleiner | [classical] |
 | Poincare: the certificate | finite extinction for simply connected `M` (Perelman; Colding-Minicozzi) gives `S^3` | [classical] |
 | Poincare: verdict | the DB restatement matches the structure (forced time, scale-invariant estimate, defined act, quantum per act, final certificate), not the mechanism (classification instead of cost above floor at the boundary) | [reading]; nothing new claimed |
+| SU(2) = S^3 | the unit sphere of `C^2` is in bijection with SU(2) (`sphereEquivSU2`); homeomorphism classical | [Lean] as sets, [classical] |
+| SU(N) Einstein | `Ric = (N/2) g` for `<X, Y> = -tr(XY)`; scalar `N(N^2-1)/2` | [classical], [numerical] N = 2, 3, 5, 11 |
+| SU(N) extinction | `g(t) = (1 - N t) g(0)`, `T = 1/N`, `lambda' = 2 lambda^2`, curvature unbounded only at `T` | [Lean] |
+| SU(N) stability | SU(2) stable (Hamilton); SU(N), `N >= 3`, strictly inside the conformal instability window, unstable (Cao-He) | [classical], [Lean] window, [external] verdict |
+| Poincare for SU(N), `N >= 3` | homotopy SU(N) implies SU(N): no theorem found; surgery theory; possibly false smoothly | [open] |
+| DMP tie-in | SU(2) is the base and the only stable profile; extinction by symmetry holds for every positive Einstein manifold, so it is no independent route | [reading] |
 
 ---
 
-## 8. Files
+## 9. Files
 
 | file | content |
 |---|---|
 | `ProofPhase/Unified/Blowup.lean` | `trap`, `trap_radius`, `trap_of_gap`, `gap_of_costAboveFloor`, `escape_of_below`, `escape_pos`, `durations`, `durations_pos`, `durations_pay`, `arrival`, `amplitude_unbounded`, `blowup_of_certificate`, `boundary_quantum` |
 | `docs/unified/blowup-axioms.sh`, `blowup-axioms.log` | build, `#print axioms` for all 13 declarations, source grep |
 | `docs/unified/blowup_check.py`, `blowup_check.log` | part 1 trapping threshold; part 2 finite clock; part 3 dimensions of O1's for-all |
+| `ProofPhase/Unified/BlowupSUN.lean` | `su2Mat`, `su2Mat_det`, `su2Mat_mem`, `su2_form`, `Sphere3`, `sphereEquivSU2`, `shrink`, `shrink_hasDerivAt`, `shrink_unique`, `shrink_pos`, `shrink_extinct`, `einsteinAt`, `einstein_hasDerivAt`, `einstein_unbounded`, `sun_extinction`, `sun_window`, `su2_window_edge` |
+| `docs/unified/blowupsun-axioms.sh`, `blowupsun-axioms.log` | build, `#print axioms` for all 17 declarations, source grep |
+| `docs/unified/blowup_sun_check.py`, `blowup_sun_check.log` | Killing form, Ricci, scalar curvature, extinction time, sectional curvatures and `mu_1` for SU(N), N = 2, 3, 5, 11 |
 
 Imported, not edited: `ProofPhase/Unified/Ledger.lean` (`Pays`, `decay`, `summable_of_gap`, `CostAboveFloor`).
 
@@ -570,7 +734,7 @@ summary of Chen-Hou; the arXiv listings of Tomboulis 0707.2179, Ito-Seiler 0711.
 
 ---
 
-## 9. Links found, not pursued
+## 10. Links found, not pursued
 
 By the owner's decision (`PREP.md`, last entry), these links are noted as existing and deliberately not worked on.
 
