@@ -324,3 +324,4 @@ hypothesis of exactness; it enters the estimates (E3, E6 of the plan). The inter
 - Lean: `formal/ProofPhase/M1/Exact.lean`, `Dilution.lean`, `Vortex.lean`; build each with
   `wsl -d ym-replay -u ym -- bash /mnt/c/claude/gravity-ym/docs/mass-gap/weak-coupling/proof-phase/m1-tools/build.sh Exact`
   (likewise `Dilution`, `Vortex`). No `sorry`, no new axioms, no `native_decide`.
+- Lean phase (2026-11-23): `LEAN-UVTV.md`; modules `formal/ProofPhase/M1/UVTVScale.lean`, `UVTVFront.lean`, `UVTVCov.lean`, `UVTVInterface.lean`; check with `axioms-uvtv.sh`, result `axioms-uvtv.log` (52 declarations, standard axioms).
