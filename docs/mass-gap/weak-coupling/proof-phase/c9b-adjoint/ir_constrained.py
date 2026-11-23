@@ -706,30 +706,46 @@ def timing(a):
 
 def tune(a):
     """THE TUNING PRE-STEP (PREREG-PILOT2.md): per kappa_c, the preconditioning mass, the step-size rule, then n_meas trajectories to
-    measure acceptance, seconds per trajectory and tau_int (V_x components, the action S). No production, no physics numbers."""
+    measure acceptance, seconds per trajectory and tau_int (V_x components, the action S). No production, no physics numbers.
+    Progress: one JSON line per stage, tuning block and 10 measured trajectories in <out>.progress.jsonl; the result JSON is rewritten
+    after every block, and the run stops itself (saving) once --max-wall is passed, so a capped run still reports how far it got."""
     if not a.go:
         print("tune is the pre-registered tuning pre-step; it runs only with --go (PREREG-PILOT2.md).")
         return 2
     t_start = time.time()
-    xp = np
     cpl = coupling(a.action, a.beta)
     B = a.B
     xsite = tuple(int(c) for c in a.x.split(",")[:4])
     xmu = int(a.x.split(",")[4])
-    # background: c3b's heat bath + overrelaxation (CPU updater), one configuration
+    prog = open(a.out + ".progress.jsonl", "w", buffering=1)
+    out = {"setting": {k: v for k, v in vars(a).items() if k != "func"}, "per_kappa": [], "stopped": None}
+
+    def note(**kw):
+        kw["elapsed"] = round(time.time() - t_start, 1)
+        prog.write(json.dumps(kw) + "\n")
+
+    def save():
+        out["wall_s"] = time.time() - t_start
+        json.dump(out, open(a.out, "w"), indent=1)
+
+    def over():
+        return time.time() - t_start > a.max_wall
+
     spec = importlib.util.spec_from_file_location("goodblock", os.path.join(HERE, "..", "c3b-refit", "goodblock.py"))
     gb = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(gb)
     upd = gb.BL.make_updater("su2", gb.BL.PeriodicBox(a.N), a.beta, 1, a.bgseed, False, False)
-    for _ in range(a.npre):
+    for k in range(a.npre):
         upd.sweep(3)
+        if k % 10 == 9:
+            note(stage="background", sweeps=k + 1)
     U0 = np.stack([np.asarray(u) for u in gb.chain_q("su2", np, upd, 0)])
     del upd
     U0 = np.repeat(U0, B, axis=2)
-    t_bg = time.time() - t_start
+    out["t_background_s"] = time.time() - t_start
+    note(stage="background done")
+    save()
     rng = np.random.default_rng(a.seed)
-    out = {"setting": vars(a).copy(), "t_background_s": t_bg, "per_kappa": []}
-    out["setting"].pop("func", None)
     import ir_condlaw as cl
     for kappa in [float(k) for k in a.kappas.split(",")]:
         t_k = time.time()
@@ -739,9 +755,13 @@ def tune(a):
         m.target = m.coarse(U).copy()
         t0 = time.time()
         m.mass = m.precond_mass(U, a.nprobe, rng) if a.precond else None
-        t_mass = time.time() - t0
+        row = {"kappa": kappa, "t_mass_s": time.time() - t0, "tuning": [], "status": "tuning"}
+        if m.mass is not None:
+            row.update(mass_min=float(np.min(m.mass)), mass_median=float(np.median(m.mass)), mass_max=float(np.max(m.mass)))
+        out["per_kappa"].append(row)
+        note(stage="mass", kappa=kappa, t=round(row["t_mass_s"], 2))
         eps, nleap = a.eps, a.nleap
-        tuning = []
+        tuned = False
         for _ in range(a.tune_max):
             accs, ts = [], []
             for _ in range(a.tune_traj):
@@ -749,12 +769,26 @@ def tune(a):
                 U, acc, _ = hmc_step(m, U, eps, nleap, rng)
                 ts.append(time.time() - t1)
                 accs.append(float(np.mean(acc)))
-            tuning.append({"eps": eps, "nleap": nleap, "acc": float(np.mean(accs)), "s_traj": float(np.median(ts))})
-            if np.mean(accs) >= 0.6:
+                if over():
+                    break
+            blk = {"eps": eps, "nleap": nleap, "acc": float(np.mean(accs)), "s_traj": float(np.median(ts)), "n": len(accs)}
+            row["tuning"].append(blk)
+            note(stage="tune block", kappa=kappa, **blk)
+            save()
+            if over():
+                break
+            if blk["acc"] >= 0.6:
+                tuned = True
                 break
             eps, nleap = eps / 2, nleap * 2
+        row.update(eps=eps, nleap=nleap)
+        if not tuned:
+            row["status"] = "stopped at max-wall during tuning" if over() else "tuning rule exhausted"
+            out["stopped"] = row["status"]
+            save()
+            break
         vx, S, accm, ts = [], [], [], []
-        for _ in range(a.n_meas):
+        for k in range(a.n_meas):
             t1 = time.time()
             U, acc, _ = hmc_step(m, U, eps, nleap, rng)
             ts.append(time.time() - t1)
@@ -762,21 +796,23 @@ def tune(a):
             V = m.coarse(U)
             vx.append(V[(xmu, slice(None), slice(None)) + xsite].T.copy())
             S.append(float(m.evaluate(U, need_grad=False)[0][0]))
-        vx = np.array(vx)
-        tau_vx = float(np.nanmax([cl.tauint(vx[:, c, i]) for c in range(vx.shape[1]) for i in range(4)]))
-        tau_S = cl.tauint(np.array(S))
-        mh = m.mass if m.mass is not None else np.ones(1)
-        row = {"kappa": kappa, "t_mass_s": t_mass, "mass_min": float(np.min(mh)), "mass_median": float(np.median(mh)),
-               "mass_max": float(np.max(mh)), "tuning": tuning, "eps": eps, "nleap": nleap, "acc_meas": float(np.mean(accm)),
-               "s_traj": float(np.median(ts)), "tau_int_vx": tau_vx, "tau_int_S": tau_S, "n_meas": a.n_meas,
-               "wall_kappa_s": time.time() - t_k}
-        out["per_kappa"].append(row)
+            if k % 10 == 9 or over():
+                note(stage="measure", kappa=kappa, done=k + 1, acc=float(np.mean(accm)), s_traj=float(np.median(ts)))
+            if over():
+                break
+        vxa = np.array(vx)
+        row.update(acc_meas=float(np.mean(accm)), s_traj=float(np.median(ts)), n_meas=len(accm),
+                   tau_int_vx=float(np.nanmax([cl.tauint(vxa[:, c, i]) for c in range(vxa.shape[1]) for i in range(4)])),
+                   tau_int_S=cl.tauint(np.array(S)), wall_kappa_s=time.time() - t_k,
+                   status="done" if len(accm) == a.n_meas else "stopped at max-wall during measurement")
         print(json.dumps(row), flush=True)
-        if time.time() - t_start > a.max_wall:
-            out["stopped"] = "max_wall after kappa %g" % kappa
+        save()
+        if over():
+            out["stopped"] = row["status"]
+            save()
             break
-    out["wall_s"] = time.time() - t_start
-    json.dump(out, open(a.out, "w"), indent=1)
+    note(stage="DONE")
+    save()
     return 0
 
 

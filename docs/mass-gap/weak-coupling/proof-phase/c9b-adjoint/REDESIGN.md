@@ -154,3 +154,39 @@ boundaries; the instrument certificate (rule 1) qualifies them.
 - The `tau_int`-based gap certificate is numerical (measured `tau` from at most 40 trajectories is coarse).
 - The preconditioner uses the target-configuration curvature; far from the target it is approximate (HMC stays exact, only efficiency
   changes).
+
+## 8. Measured quantity -> the Lean statement it would discharge (design rule, 2026-11-23)
+
+Owner: "We have to keep the attributes of DBs in mind when we simulate actually sound systems. What we want to get out has to be provable
+in its statement of existence, otherwise we can't get anything useful out." Each quantity is listed with the exact Lean statement whose
+hypothesis it would instantiate (file, name), the boundary condition under which it is measured (the DB), and the gap between what is
+measured and what the statement asks. A quantity that discharges no statement is **diagnostic only**.
+
+The general gap is the quantifier. Every influence hypothesis in Lean is a "for all": for every boundary, or for every in-support pair.
+A measurement covers finitely many boundaries. So a measured number never discharges a hypothesis by itself. It is evidence for the
+hypothesis's instance set, and it discharges the hypothesis only together with an argument (paper or Lean) that the tested boundaries
+are the worst case or cover the required set. Where such an argument exists it is named. The pattern-conditioned form is the closest
+fit, because it asks only for in-support pairs (`DisintBound.pair`, all pairs in a set of full measure), i.e. for the sampled
+backgrounds' type; it still needs the "all" in the full-measure set.
+
+| measured quantity | Lean target (file: name) | boundary condition (the DB) | measured vs required | status |
+|---|---|---|---|---|
+| **W1 column with the rectangle class** (`sum_c mult_c KR_D,c / delta`, one-sided upper bound) | `Certified/AdjointW.lean`: `SiteInfluenceW` (W1 influence `k i z` for the geodesic cost; column `< 1` gives `LimitDprimeW`); then `Adjoint2/CostCoupling.lean`: `CostWeights.influence` / `costDS_bound` (the comparison theorem) and, with smoothing, `CostSmoothData` -> `isInfluenceBoundOn_of_costSmooth` -> the influence slot of `OneBox/Fine.lean`: `FineOneBox` (coarse level); M1's assembly `M1/Assembly.lean`: `m1_assembly` consumes the per-scale coupling statements | the frozen fine outside of the region plus the constrained coarse data (`masks`, `R = 2`); the free target link `x` | measured: the max over the tested backgrounds of the conditional W1 response to a move of one partner; required: every boundary (`SiteInfluenceW`: every `sigma`, `s`) | evidence for the instance set; discharges nothing alone; the worst-case argument is open (`NOTE.md` 1.4: the coarse worst case at `L1` is not removed by the support restriction) |
+| **sup (TV) column** (`sum_c mult_c C_D,c`, `C_D = sqrt(D^2_U)/2`) | `Mixing/Classical.lean`: `dob` (classical Dobrushin coefficient) in `mixing_rs_dobrushin` / `mixing_sweep_dobrushin`, and `Mixing/FiniteSpectral.lean`: `spectral_gap_dobrushin` (unconditional for **finite** spin spaces, commit 3c425bf); for continuous SU(2): `Mixing/Glauber.lean`: the `hcol` hypothesis of `mixing_rs`, `tv_rs_le` with `SiteDynamics.A`, and `Mixing/Link.lean`: `spectral_gap_of_column` | as above | `C_D` bounds the pair TV from above (linear regime) at the tested backgrounds; required: the sup over all boundaries (`dob` is a max over pairs differing at `z`). Classical.lean needs `[Fintype S]`, so for SU(2) it applies only to a finite discretisation (e.g. the 120-element 2I), which changes the system | evidence; the finite-S theorem is unconditional but is about a different (discretised) system |
+| **`c0` / H_adj** (the centre-blind column, `C0`) | `Adjoint2/Transfer.lean`: `column_lt_one_of_mix`, `residual_budget` (pair coefficients `<= (e^{m} - 1)/2` from mixed variations) | as above, centre-symmetrised moves | the Lean asks for a bound on the **mixed variation** (a sup over values); the measurement gives TV-type coefficients at tested backgrounds | evidence for the hypothesis's size; does not instantiate `residual_budget`'s mixed-variation input |
+| **`Jbar` / H_sat at block level 1** | `Saturation/Tests.lean`: `z2_background_saturation` (couplings `|J_p| <= Jbar` for every background) and c8a's `centre_area_law` route | as above, centre flips | "every background" required; tested backgrounds measured | evidence only |
+| **`D^2_U`, `Q_U` per pair** (the no-loss squares) | the pair entries `A x z` / `k i z` of the rows above (through `C_D`, `KR_D`) | as above | as above | inputs to the rows above |
+| **null `D^2_U`, null TV, the floors, `sigma_jk`** | none | the null pair (identical laws) | they validate the estimator | **diagnostic only** |
+| **tuning pre-step: `eps`, acceptance, `tau_int`, seconds per trajectory** | `Mixing/TimeGap.lean`: `time_gap_iff`, `gap_of_geometric` speak about the spectral gap of the sampler's operator, but the measured `tau_int` is an estimate from a finite series, not a bound on the spectral measure | the constrained ensemble itself | a measured decay rate is not the "no mass above `e^{-m}`" statement | **diagnostic only** (it certifies the instrument numerically; nothing in Lean) |
+| **cost per effective sample vs beta** | none | | | **diagnostic only** (budget, stop rule) |
+| **T-A / T-B / T-B' results** | none | | | **diagnostic only** |
+
+**Consequence for the plan.** Only the first two rows feed theorems, and only through a "for all" that sampling cannot discharge. The
+measurement can therefore at most:
+- (i) **refute** a hypothesis: one background with a certified lower bound above 1 is a counterexample to the "for all", so the
+  statement cannot hold for this block variable at this scale. This is the one-sided FAIL of section 4, and it is a provable negative
+  statement about the measured system: existence of a bad boundary.
+- (ii) **support** it, with the tested backgrounds named.
+
+A PASS becomes a discharge only with a worst-case argument. That argument is the open item, and it is where the mathematics has to come
+from (`NOTE.md` section 2(a): the true conditional density's mixed variations, worst case over the coarse data).
