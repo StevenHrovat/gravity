@@ -1927,3 +1927,11 @@ thread.
   noise floor; at beta = 3.5 they are small but resolved (up to 0.11) and rise towards weaker coupling, as a longer conditional
   correlation length predicts. Both behave as expected, far from the threshold 1; as lower estimates they support the reading and
   prove nothing on their own (the provability table of the same day).
+  The owner asks (same day): "If I infer correctly, the extra condition of aperiodicity is exactly what we get from CMOS inside a
+  confined non-existence, right?" Reading (coordinator): yes, with the parts assigned this way. A chain is periodic when it can only
+  return to a state at multiples of a fixed period, like a clock that must change on every tick (a deterministic flip-flop is
+  periodic with period 2). A clocked CMOS system on its own is exactly such a clock. What makes a chain aperiodic is a positive
+  chance to stay unchanged on a tick (a "lazy" step): the heat-bath sampler has it automatically, since the resampled value can equal
+  the old one. So the CMOS supplies the tick, and the confined non-existence supplies aperiodicity as the option of no change within
+  the tick: a tick in which nothing is asserted. Irreducibility (every state reachable, from positive weights) plus this null option
+  gives the one running state.
