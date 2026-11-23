@@ -2235,3 +2235,12 @@ thread.
   does not reach the pure gauge limit, so the removal step is where the work would sit. Recorded as a candidate mechanism for the Y1
   attack: gap the product over boxes in the gauge-Higgs system first, where the per-box rates are known to connect, then follow the
   Higgs coupling to zero.
+  The owner sharpens it (same day): "What is at the heart of the ODP is finding if such a Higgs-type field can be constructed over
+  the entire boundary, so again seeing if the gap emerges, this time with a name for the mechanism by which it does it. In the end a HTF
+  is just a DMP-compatible description of existence from provability/empty set theory." Reading (coordinator): the second sentence
+  removes the care point above. If the Higgs-type field (HTF) is a description, a composite field built from the gauge configuration
+  itself (for example the Laplacian-gauge field, the maximal-centre-gauge projection, or the block variable's adjoint frame on the
+  collars), then nothing is added to the action and there is no auxiliary coupling to remove. The question becomes: does conditioning
+  on a composite HTF over every collar give the collars a uniform mass (condition A) and make the carried flux's free energy
+  superadditive, so the per-box rate multiplies? Where the HTF is ill-defined (Gribov-type ambiguities) is the residue to bound. Sent to
+  the crossover session as the Y1 round (`c9a-crossover/HTF.md`).
