@@ -3851,3 +3851,15 @@ thread.
   constants actually decide the margin. (3) *The encoder.* That a proof of GRH would supply something the definition of zeta does not
   contain matches the earlier entries: the positive space or tick operator (Hilbert-Polya) is exactly such an added existence, an
   encoder between the prime side and the zero side.
+- **This gives provability = decidable, and proven = any valid decision (the owner, same day):** "This would give provability =
+  decideable, proven = any valid decision." Reading (coordinator): exact on the decidable class, and that is the class the one-box
+  certificate lives in. (1) *Proven = a valid decision.* For a decidable proposition, running a verified decision procedure to the answer
+  "true" *is* a proof (proof by reflection): Lean's `decide` evaluates a decision procedure inside the kernel, and the result counts as a
+  proof [classical; Lean]. (The gate forbids only `native_decide`, which trusts the compiler instead of the kernel.) The interval-arithmetic
+  certificate is of this kind: a verified finite computation whose valid outcome is the proof of positivity at one support. (2)
+  *Provability = decidability, on that class.* For bounded (finitely checkable) statements, exactly one of P and not-P has a proof, found
+  by running the check: provable and decidable coincide [classical]. (3) *Outside that class they come apart.* In general the provable
+  statements can be listed but not decided (Church, Turing), and some statements are neither provable nor refutable (Goedel). That is the
+  ETM's edge once more: decidable and proven-by-decision on the contraction class (the one box, the settle bound), binary truth but no
+  global decision beyond it. Care point: the open steps are statements over all scales or all outsides, unbounded; they become decidable
+  only once reduced to a finite certificate, which is exactly what the hand-over and the one-box rounds try to do.
