@@ -2512,3 +2512,14 @@ thread.
   positive quantity, which positivity bounds only from below by zero. This differs from the earlier case (the Weil form, where a
   Hermitian norm cannot change sign under i): here the sign is a genuine character of a finite group acting on sectors. Passed to the
   equidistribution round with the open question whether the sector-level cancellation replaces the path sum for the one-box statement.
+- **The worst case is already established: universally immediate confinement, proven in many subsets (the owner, same day):** "The
+  worst case is already established, since it is universally immediate confinement, which has been proven in many subsets until now."
+  Reading (coordinator): confinement is indeed proved in a number of settings: lattice gauge theories at strong coupling (area law by
+  cluster expansion, Osterwalder-Seiler), compact U(1) in three dimensions (monopole gas, Goepfert-Mack, after Polyakov), all
+  two-dimensional gauge theories (exactly solvable), Z2 and other abelian lattice theories in suitable regimes, and gauge-Higgs regions
+  connected to strong coupling (Fradkin-Shenker). What these share is a mechanism that controls every outside uniformly in its own
+  regime. The care point for the proof: none of them is four-dimensional SU(N) at weak coupling, and each mechanism stops at the edge of
+  its regime (cluster expansions need strong coupling, the monopole gas is three-dimensional and abelian). Carrying the worst case over
+  needs a mechanism that is uniform across the crossover, which is the one-box statement itself (the equidistribution round showed
+  uniformity over outsides brings the grid requirement back). A concrete step this suggests: an inventory of the proved confinement
+  settings, what each mechanism proves uniformly, and whether any one of them reaches into the window the one-box statement lives in.
