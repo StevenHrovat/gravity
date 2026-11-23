@@ -2068,3 +2068,15 @@ thread.
   from their disorder (the saturation mechanism H_sat), not from their rarity. For the proof this means the crossover has two
   mechanisms on its two sides, rarity where the near-cut set is isolated and disorder where it percolates, and the open task is the
   hand-over between them (the window of DICHOTOMY.md 3.4).
+- **A refutation cannot travel upward; existence must be refutable (the owner, same day, on NP vs coNP):** "I would assume a bad
+  proof would have to be isolated at a fundamental level, spanning a boundary over the associated question that only presents the
+  answer false. Since the question can only be constructed in a DMP-complete way, it must be built from things that are fundamentally
+  true, so a refutation can not travel upward. The record of the act is the discovery of the fact that this is an answerable question
+  which happens to be false. As such it also defines it as the act itself, since for existence to be, it has to be refutable."
+  Reading (coordinator): three exact anchors in proof theory. (1) "A refutation cannot travel upward" is soundness: from satisfiable
+  clauses (things that are true in some world) no derivation reaches the empty clause. (2) "For existence to be, it has to be
+  refutable" is refutation completeness: every unsatisfiable formula has a refutation (resolution is refutation-complete), and that
+  refutation is the record of the act, the certificate that the question was answerable and false. (3) "Isolated, spanning a
+  boundary over the question" is the cut principle proved for resolution (`docs/pnp/PROOF-SYSTEMS.md`): some line must assert a
+  middle-sized region and pay its boundary. All three are about the existence and shape of refutations; the open step is their size
+  (short for every false question iff NP = coNP). Passed to the P vs NP session for its dichotomy-transfer note.
