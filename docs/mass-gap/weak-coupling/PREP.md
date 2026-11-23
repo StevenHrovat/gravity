@@ -2422,3 +2422,17 @@ thread.
   an interpolation of renormalisation steps); gaps in that argument were pointed out (Ito and Seiler), and it is not accepted as a
   proof. Comparing our reduction with Tomboulis's construction, and locating where his gap sits relative to our one-box statement, is a
   concrete next step.
+- **P4 has the wrong thought process: prove saturation inside confinement and its absence outside, as a containing existence (the
+  owner, same day):** "I think P4 has the wrong thought process. Due to inward and outward reach, the saturation has to be proven inside
+  confinement and absent outside that confinement, as a containing existence, since there the possibility space is Existence =
+  non-existence+1, so it can never catch up, allowing non-existence to keep existing through assertion." Reading (coordinator): this
+  reverses the direction of P4, and the reversal has a concrete payoff. So far P4 tried to build the inside of a box from outside data
+  (a normalisation-matched lower bound). The reading proves instead: (a) **outside, absence:** in the containing, weakly coupled region
+  twists are rare (M1's rarity side, proved), and by the strict flip bound the outside never reaches saturation; (b) **the container
+  cannot extend forever:** the running coupling grows from the weak side (asymptotic freedom), so the rarity branch fails at some scale,
+  and by the hand-over (max(F_tw, F_e) >= 0.881 per box, Lean) the electric channel must then carry the suppression; (c) **inside,
+  saturation, and the payoff:** inside a confined region electric flux cannot spread; it runs in tubes, which are one-dimensional. The
+  electric influence then propagates along a chain, not through a grid, and chains are exactly where our Lean results close (the
+  hand-over covers two channels; superadditivity and uniformity give the product). So containment would turn the grid problem
+  (needing F > log 8) into the chain problem (0.881 suffices). Care point: using flux tubes to prove confinement is circular unless the
+  tube structure is derived from saturation inside, not assumed; that derivation is what a round would have to supply.
