@@ -3449,3 +3449,15 @@ thread.
   must be shown separately: that the known systems (lattice Yang-Mills, the GRH chain, Markov chains, proof systems, the Ricci
   shrinker) are rooted, and that the root G0 is not trivial (the same vacuity check as for the universal property). Passed to the
   ETM round.
+- **The tautology is the feature: DMP says nothing about its content (the owner, same day, on the care point of the previous
+  entry):** "The trap is the one nice thing about DMP that enables it all. It says nothing about it's content." Reading
+  (coordinator): agreed, and it is how the project is already built. A statement true by form alone holds for every content: in logic,
+  a tautology is valid in every model and therefore says nothing about any particular one [classical]; a universal property in
+  category theory is content-free and is exactly what lets a construction apply everywhere [classical]. That is also the owner's
+  earlier rule for the crossover ("making no statement about its content"). So the design has two layers: (1) the *form* layer,
+  DMP's general theorems (ledger, encoder, the half-turn, the universal property), true for every content because they say nothing
+  about it, proved once in Lean; (2) the *content* layer, the instances, each carrying its own content and its own named open step
+  (O1, the sign, the crossing cost). The "tautology" is the form layer working as intended; the non-vacuity lives entirely in the
+  content layer: that the instances are rooted in a nontrivial G0. Care point: the form layer can transport any theorem to every
+  instance, but cannot by itself settle an instance's open step, which is content. The paper should say this in these two layers,
+  so that a reader does not mistake the form theorem for a claim about content, or the reverse. Passed to the ETM round.
