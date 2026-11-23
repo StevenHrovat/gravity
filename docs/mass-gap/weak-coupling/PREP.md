@@ -1615,3 +1615,15 @@ thread.
   completion (the Euler product over primes and the real place, through the Gamma factor in the completed xi(s)); the functional
   equation is symmetric only once the real place is included. If the reading is pushed, that completed function xi(s) = xi(1 - s) is
   the object to look at, not zeta alone.
+- **The reals are binary in the glueball/WHK sense (the owner, same day, refining the previous entry):** "The reals are binary in a
+  glueball/WHK sense. They can be independently derived as a basic building block from any frame that shares the same definition of
+  existence, while them being asymptotically free along that axis to be placed anywhere." Reading (coordinator): in this sense it holds,
+  and each part has a precise counterpart. (1) **Binary:** a real number is a Dedekind cut, a split of the rationals into a lower and an
+  upper side with nothing of either kind left over; every real is one such two-sided split, so the reals are binary in the way a
+  boundary is. (2) **Independently derived from any frame:** the complete ordered field is categorical: any two constructions
+  (Dedekind cuts, Cauchy sequences, decimal expansions, any model of the axioms) are isomorphic by a unique isomorphism, so whoever
+  starts from the same definition gets the same reals, and each construction lets one rebuild every other, as with the WHKs.
+  (3) **Placed anywhere along the axis:** the real line is homogeneous, every point can be moved to every other by a translation that
+  keeps all structure, and it is unbounded in both directions (Archimedean); no point is distinguished except by a choice of origin.
+  (4) **Glueball:** like a colour-neutral bound state, a real is whole on its own while built from the two sides that define it. The
+  identity "binary existence = the reals" stays a reading, not a theorem; the cut construction is the exact form of the binary part.
