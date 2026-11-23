@@ -3036,3 +3036,15 @@ thread.
   given for Yang-Mills, the bound follows, but then it is a reading (an axiom adopted), not a proof from the lattice theory. Care
   point: the measured 0.863 is consistent with the bound and with the owner's statement; by the provability table it cannot certify a
   for-all over outsides.
+  The owner adds (same day): "*Through the irreducibility of GRH at G0 which gives the needed features." Reading (coordinator): this
+  names the source of the quantitative bound: not box-by-box estimates, but one irreducible global positivity, the GRH mechanism of
+  lead 1 (every scale's encoder is a parameter of one bounded function; the positive form cannot be assembled from parts, only the
+  full set of primes is positive, `GRH/Transfer.lean`, Lean). The known mathematics that turns irreducibility into a quantity is
+  Perron-Frobenius: an irreducible, aperiodic positive matrix has a simple top eigenvalue strictly above the rest (a gap); for
+  operators, a positivity-improving compact operator has a simple top eigenvalue strictly above the rest of its spectrum (Jentzsch,
+  Krein-Rutman) [classical]. The Yang-Mills transfer matrix on a finite torus is of this kind, which is why every finite box has a
+  rate (Lean). Care points: (a) in GRH itself the irreducible positivity gives a sign with zero slack (margin about 1e-9 at each step,
+  `INDUCTION.md`), not a margin, while the Yang-Mills bound needs slack (c >= 0.743, above the self-dual 0.414); so the transfer must
+  turn irreducibility into slack, which is exactly what Perron-Frobenius does in finite dimension and what fails to be uniform as the
+  volume grows. (b) That uniformity is O1 again. Passed to the GRH-lens round as the owner's choice of lead 1 for the quantitative
+  part.
