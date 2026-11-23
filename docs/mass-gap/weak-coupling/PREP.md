@@ -2946,3 +2946,11 @@ thread.
   remnant tail is summable, uniformly. Care points: (a) in a finite box the tail always decays (a finite positive chain has a Doeblin
   rate, Lean); the open part is the rate uniform in the box's outside and size. (b) Calling excitations remnants is a reading;
   mathematically they are states of the transfer matrix, not boundary events.
+  The owner adds (same day): "Should all be pretty well established in GRH." Reading (coordinator): yes, in this form. In the explicit
+  formula psi(x) - x = - sum_rho x^rho / rho + (smaller terms), every zero rho is a remnant and x^rho its tail, of size x^{Re rho}.
+  RH is equivalent to all tails having the same size, x^{1/2}: psi(x) = x + O(x^{1/2} log^2 x) (von Koch 1901) [classical]. So the
+  GRH form of the owner's statement is "every remnant carries the same tail, at exactly 1/2", and it is established for zeta and for
+  Dirichlet L-functions by the Lean proofs of others (2026-11-20; external, by a route that does not use positivity), open beyond
+  Dirichlet. The Yang-Mills form is "every remnant's tail decays at a rate of at least m", the gap, which is O1 and open. Care point:
+  the two are the same shape on different objects; the established GRH case does not transfer to Yang-Mills as a proof, only as the
+  model of what a uniform tail statement looks like when it is true.
