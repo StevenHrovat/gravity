@@ -1593,3 +1593,25 @@ thread.
   length), and the sign is the Casimir sign, an attraction that the existence of the tube costs less. The two transverse directions
   of a tube in four dimensions undo the halving, which is again the d = 4 pair. Not used by the gap proof; a consistency check on the
   flux tube side (M1 FluxTube, the area law) that the lattice confirms.
+- **zeta(-1) = -1/12, binary existence and the real numbers (the owner, same day):** "This might be an interesting approach to push on!
+  On Friday the GRH has been proven, which has been exhaustively checked by the community and officially certified by Lean and
+  Mathlib. Our result implies that zeta at -1 is -1/12 because that is the term that is needed for a system where existence is binary.
+  This binary existence is the same as the real numbers, so they share a common logical origin in the fact that they exist and their
+  existence has to adhere to DMP." Reading (coordinator):
+  (1) **The news:** the Lean and Mathlib communities published a joint statement (2026-11-20/21) certifying a Lean proof of the Riemann
+  Hypothesis against Mathlib's own statement; secondary sources say the method covers GRH for Dirichlet L-functions, and they differ
+  on the exact GRH scope, so the joint statement on the leanprover-community blog is the source to read.
+  (2) **The direction of implication:** zeta(-1) = -1/12 is an old theorem (Euler; Riemann's analytic continuation), and it is in Mathlib
+  (the values at negative integers through Bernoulli numbers). Neither our proof nor the RH proof implies it; our reading uses it. RH
+  and GRH are statements about the zeros, not about the value at -1. What our side supplies is the other direction: a physical place
+  where that value is the one that appears (the Luescher term, with the two transverse directions of a tube in four dimensions).
+  (3) **Where duality really sits in zeta:** the value at -1 is fixed by a reflection. The functional equation relates zeta(s) and
+  zeta(1 - s), a mirror about the line Re s = 1/2; through it zeta(-1) = -1/12 is the reflected image of zeta(2) = pi^2/6. The
+  critical line, where RH places every nontrivial zero, is the fixed line of that mirror: the "half" of the owner's "inversion and
+  halving" is literally the axis of the duality, and the inversion is s -> 1 - s. That is a sound, checkable form of "a common
+  logical origin": both the -1/12 and the half-line come from one reflection symmetry.
+  (4) **Binary existence and the reals:** stated as an identity it does not hold (the real numbers are not two-valued), and I do not
+  record it as a result. A sound neighbour: the reals are the completion of the rationals, and the zeta function joins the two kinds of
+  completion (the Euler product over primes and the real place, through the Gamma factor in the completed xi(s)); the functional
+  equation is symmetric only once the real place is included. If the reading is pushed, that completed function xi(s) = xi(1 - s) is
+  the object to look at, not zeta alone.
