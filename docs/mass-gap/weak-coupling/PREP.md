@@ -3262,3 +3262,13 @@ thread.
   proved, and is the function-field positivity of `OPEN-QUESTIONS-DMP.md` G4 (one positive duality explains both 1/2s there); BSD is
   proved for analytic rank 0 and 1 (Gross-Zagier, Kolyvagin) [classical]. GRH for L(E, s) is part of GRH beyond Dirichlet, open, and
   the positivity route's open step would cover it. Parked per the owner's aside.
+- **Scope decision: Poincare as validation in the blowup round; the other links only mentioned (the owner, same day):** "Fold
+  Poincare into the blowup round as validation, and at least mention the link we find to the others. This has to be causally done,
+  because now that we have found them, we have to actively not go down them, just mention their existence. Others can have some fun
+  :D" Recorded: (1) Poincare (Perelman's Ricci flow with surgery) goes into the blowup round as a validation case: a solved proof
+  in which finite-time singularities are classified, cut at a boundary (surgery) and the flow continues, with a monotone entropy and
+  finite extinction certifying the sphere; it checks the DB restatement against a known answer and claims nothing new. (2) The
+  links found to Hodge (describable implies exists; Hodge-Riemann positivity and Grothendieck's standard conjectures as the missing
+  arithmetic Hodge index of GRH) and to Birch-Swinnerton-Dyer (zeros of L(E, s) at s = 1 count rational points; Hasse's bound as the
+  curve's proved RH) are to be mentioned in the paper as existing links only, not pursued. Navier-Stokes stays inside the blowup
+  round's scope as stated there. The paper's scope remains Yang-Mills, GRH and NP vs coNP.
