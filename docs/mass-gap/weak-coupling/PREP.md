@@ -1911,3 +1911,19 @@ thread.
   collapse asks whether every instance can be reached inward into the certified class, separation asks whether hardness reaches
   outward from the boundary to instances outside it. A universal action rooted at G0, read this way, would be one influence matrix
   for all instances with both reaches bounded; whether such a matrix exists for all of NP is the open question in this dress.
+- **Small influences trend to an irreducible minimum; sound systems run by irreducible assertion (the owner, same day, on the W2
+  result):** "This comes back to the trending towards the irreducible minimum of influence, which is needed to establish a universal
+  quantum of existence assertion. Any system that is contained in a shared definition of existence has to be fundamentally
+  reducible to that, or else it can not exist in that existence, so showing that small values behave exactly as expected and every
+  sound system derives its running state by the fact that it has successfully established irreducible existence assertion."
+  Reading (coordinator): two exact counterparts and one observation from the data. (1) **Irreducible is a precise word for
+  running:** a Markov chain whose weights are all strictly positive is irreducible (every state can reach every other), and an
+  irreducible, aperiodic finite chain has exactly one stationary state and converges to it. That is "a sound system derives its
+  running state from irreducible assertion" as a theorem; the Lean result of today (`Mixing/FiniteSpectral.lean`, 3c425bf) assumes
+  exactly this, positive weights mu{sigma} > 0, and gets the spectral gap from it. (2) **No influence is exactly zero:** with
+  strictly positive Boltzmann weights every site influences its neighbours by a strictly positive amount, and through a collar with
+  conditional mass m > 0 the influence decays exponentially but never vanishes: a floor that is approached, not reached, as in the
+  owner's "trending towards the irreducible minimum". (3) **The data:** at beta = 2.3 the measured box influences sit at the derived
+  noise floor; at beta = 3.5 they are small but resolved (up to 0.11) and rise towards weaker coupling, as a longer conditional
+  correlation length predicts. Both behave as expected, far from the threshold 1; as lower estimates they support the reading and
+  prove nothing on their own (the provability table of the same day).
