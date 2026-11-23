@@ -2057,3 +2057,14 @@ thread.
   set is isolated clusters of about 5 plaquettes (supports the prediction); at beta = 2.3 it spans the box in every snapshot
   (contradicts it at the fine scale). The reading suggests where to look next: the prediction concerns the scale at which acts run,
   so at beta = 2.3 the test belongs on the blocked (coarse) variables, where it can be measured on the saved snapshots on the CPU.
+  Coarse-scale test of this prediction (same day, `c9a-crossover/COARSE-TEST.md`, exploratory, plan fixed before data): at beta = 3.5
+  the near-cut set stays isolated with exponential cluster tails at blocking factors 1, 2, 4 (supports the prediction); at beta = 2.3
+  it spans at every factor and grows with blocking (20 %, 37 %, 79 % of plaquettes; contradicts the prediction as stated, at every
+  scale). Reading (coordinator): this matches a known physical picture rather than breaking the dichotomy. In lattice studies of
+  confinement, centre vortices percolate in the confined phase and stop percolating in the deconfined one (Engelhardt, Langfeld,
+  Reinhardt and Tennert, around 1999-2000): at long distances, percolating "non-existence" (condensed vortex sheets) is what produces
+  the area law and the gap. So the prediction "well-defined non-existence inside a spanned existence" describes the short-scale,
+  weak-coupling side (beta = 3.5 here), and at the confining scale the roles turn: the sheets condense, and contraction must come
+  from their disorder (the saturation mechanism H_sat), not from their rarity. For the proof this means the crossover has two
+  mechanisms on its two sides, rarity where the near-cut set is isolated and disorder where it percolates, and the open task is the
+  hand-over between them (the window of DICHOTOMY.md 3.4).
