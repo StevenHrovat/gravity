@@ -2675,3 +2675,28 @@ thread.
   of the class theorem is below one (Lean). Care point: in Yang-Mills and NP vs coNP the bound "at most one" is proved (positivity,
   counting), and what is open is a uniform distance below one (O1, the crossing cost); in GRH the bound "at most one" is itself the
   open step.
+- **The journey from G0 to the first finite assertion happens at 1; everything after it follows by construction (the owner, same
+  day):** "The entire journey from G0 to establishing the lowest possible finite assertion of existence, so the instanton of the true
+  act, is what happens and only what happens at 1, with everything after it following by construction." Reading (coordinator): with the
+  previous entry (factors in (0, 1]: exactly one, or finitely below), this has an exact counterpart: the gap is invisible to every order
+  of perturbation theory. (1) *At 1.* The electric loss of a box is exactly 1 - e^{-F_e} = 2 Z_tw / (Z + Z_tw) (from
+  `one_sub_two_flipP_exp`, `Flip/Floor.lean`, Lean). On the weak-coupling side the twist sector is suppressed semiclassically like
+  Z_tw / Z ~ e^{-S_tw / g^2}, S_tw the least classical action of the twist sector [classical, semiclassical; not in Lean]. A function
+  e^{-S/g^2} has every Taylor coefficient zero at g = 0, so to every order in g the factor is exactly 1: the whole perturbative
+  journey, from the free point g -> 0 (G0) up to the hand-over, is lossless in that sense. This is the classical reason a mass gap
+  cannot appear at any finite order of perturbation theory. (2) *The lowest finite assertion, the instanton of the true act.* The first
+  departure from 1 is the least-action configuration with nonzero topological charge. The Bogomolny bound S >= 8 pi^2 |Q| / g^2 is
+  saturated by instantons (entry "the instanton of the first act"); with 't Hooft's twisted boundary conditions the least charge is
+  fractional, 1/N, giving 8 pi^2 / (N g^2) (4 pi^2 / g^2 for SU(2)) in twist sectors whose twist has nonzero Pfaffian [classical]. Q is
+  quantized, so this is a smallest finite cost, not an arbitrarily small one: the quantum of assertion. (3) *Everything after it by
+  construction.* The instanton weight sets the one scale: e^{-8 pi^2 / g^2(mu)} = (Lambda / mu)^{beta_0} at one loop (entry "Does
+  8 pi^2 and e simplify?"; 8 pi^2 = -4 zeta(2) / zeta(-1), `eight_pi_sq_mirror`, `GRH/Mirror.lean`, Lean). Once that scale and the
+  hand-over certificate are in place, the rest is construction: the infinite chain (`rate_of_costAboveFloor`), the rate per
+  physical length (`phys_rate_of_uniform`), OS reconstruction and the assembly (all Lean), and every dimensionful quantity is a number
+  times Lambda (dimensional transmutation, the WHK reading) [classical]. Care points: (a) "exactly 1" holds order by order in g, not at
+  any finite coupling: at every beta != 0 the factor is strictly below 1 (`su2_Ztw_lt_Z`, Lean), so the loss is present but invisible
+  to every finite order. (b) The semiclassical suppression is not proved non-perturbatively; entropy changes the prefactor (powers),
+  and the containment round found the action floor loses to entropy inside a box as a -> 0 (CONTAINMENT.md). (c) A dilute instanton gas
+  does not confine in four dimensions [classical]; in this reading the instanton sets the scale (the first act), and confinement is
+  still the open one-box statement O1 at the hand-over. So the reading places O1 exactly: it is the single step where the first finite
+  assertion must be certified, and everything before it (at 1) and after it (by construction) is in place.
