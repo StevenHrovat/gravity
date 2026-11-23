@@ -495,6 +495,28 @@ smallest.
     (`ORBITS.md`). Flatness in the sense that certifies (unitary on a positive space) needs the complete set of primes
     below the scale together with the real place. Invariance supplies none of that.
   - **"Binds to G0":** there is no mathematical counterpart here to test, so no verdict.
+- **"A contradiction is a disagreement at G0, excised at once; only the remnant of its not existing remains" (the
+  owner, PREP.md; the coordinator reads it as reductio ad absurdum as a process, whose remnant is the refutation
+  not-A).**
+  - **Where it applies exactly.** Every route to the line in this work ends in such an excision.
+    - Landau (section 3): assume an off-line zero; it puts a pole where a positive transform must be analytic;
+      contradiction. The remnant is the zero-free half-plane Re s > 1/2 + theta.
+    - The grid model: an off-line zero is an atom off the circle, whose moments grow, while positive sections bound
+      them. `norm_le_of_exp_bound` and `atoms_inside_circle` **[Lean]** are proofs by contradiction of this shape.
+    - The Lean RH proof: it splits on `lt_trichotomy s.re (1/2)` and empties the side right of 1/2 the same way
+      (`GUIDE.md`).
+
+    *Exact* for the logical form.
+  - **Where it does not apply.** A duality alone produces no contradiction. `krein_off_line` (`ORBITS.md`) is a
+    consistent model in which a form is preserved exactly and the off-line pair 3/4, 1/4 exists. There is nothing to
+    excise until positivity (or the one-sided prime bound) is present, because the contradiction is between the
+    off-line zero and that premise.
+  - **In the induction.** An established contradiction at a step would be a reflection coefficient with |k| >= 1: a
+    negative direction of the form, as in the semilocal sections. With the full arithmetic, none arose up to
+    a = 1.25 **[numerical]**.
+  - **Does it add anything to the open step? No.** The reading describes how a proof concludes once the premise is
+    in hand. Step 7 is to obtain the premise (positivity scale by scale, from arithmetic alone), so that a
+    contradiction can never be established. The reading supplies the form of the last line, not the step.
 - **Verdict:**
   - **supports** the reading of the two proofs as two sides of one structure (boundary against bulk, prime side against
     zero side);

@@ -212,3 +212,26 @@ gives only a power law).
 * `formal/ProofPhase/Crossover/FluxRate.lean`, `formal/ProofPhase/Crossover/HandOver.lean` (new); `axioms-dy.sh` extended to them;
   `axioms-dy.log` (22 theorems, standard axioms).
 * `w2/pastcut.py` (CPU, 1 min 38 s), `w2/runs/pastcut.json`.
+
+## 8. DMP reading: a contradiction is excised, its remnant stays (owner, PREP "A contradiction is a disagreement at G0, excised at once")
+
+Where the reading applies in this note (each excision is exact, and each remnant is a theorem already used above):
+* **Uncontained sheets (part (b) of the dichotomy).** A sheet piece with flux on a cell inside the box contradicts the closed
+  centre layer (`dτ = 0`). It is excised exactly: `measure_uncontained` gives it weight zero, at no cost. The remnant is
+  `not_uncontained` and `boundaryCell_of_cob_restrict`: flux can sit only on boundary cells. That remnant is what makes the sheet
+  **forced** in section 1 (`exists_sheet_both_sides`): the integer part of the rate is the remnant of this excision.
+* **Odd total flux (Tseitin-like parity).** An odd number of flux cells would contradict `Σ_q cob = 0 mod 2` (flux in = flux out
+  mod 2, `sum_cob_restrict_eq_zero`). Excised exactly; the remnant is `even_card_fluxCells`, so a nonzero flux has at least two
+  flux cells (`two_le_card_fluxCells`). This is the Tseitin situation: odd total charge is unsatisfiable. In proof complexity
+  that contradiction can be expensive to *certify* (resolution refutations of Tseitin formulas on expanders are exponentially
+  long; citation, recalled). Here it costs nothing, because the measure assigns the contradictory set weight zero by an identity.
+* **A negative electric sector.** `Z_{e=1} = (Z − Z_tw)/2 < 0` would be a negative weight. Reflection positivity excises it
+  (`Z − Z_tw` is a sum of squares, `Flip/Bound.lean`); the strict remnant `Z_tw < Z` is the input of `su2_handover`.
+
+**Does it help the open step (the product over boxes)? No.** Excision removes sets of weight **zero** and leaves exact per-box
+remnants (boundary attachment, even parity, `Z_tw < Z`), and all three are already used. The product over `D/L` boxes needs a
+quantitative bound on events of **positive** weight: flux through several boxes, near-cut sheets, near ties. These are not
+contradictions; they are positive-weight existence (`DICHOTOMY.md` 8.2: only the exact cut and exact ties are null). At most,
+excision narrows the chessboard identification of section 5: disseminated patterns that violate parity on the torus cycles have
+weight zero and drop out. The remaining patterns are consistent and still need the bound `z ≤ e^{−κ}`. That bound is a rate,
+not a remnant, and excision does not produce rates.

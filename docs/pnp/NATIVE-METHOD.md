@@ -233,6 +233,29 @@ Everything here is **[reading]** unless marked otherwise.
   * merge layers where the chain is a single path (contraction by 1/2 in depth).
 
   The cost per layer is then the cost of one decision over finitely many blocks: finite, measured, and visible.
+* **"A contradiction is a disagreement at G0, excised at once, leaving only the remnant of its not existing"** (the
+  owner, PREP entry of that name). For refutations this is a precise picture.
+  * Deriving the empty clause is the excision. By the search reading (`TL.exists_falsified`, **[Lean]**), every
+    assignment, every candidate world of the formula, is followed down the refutation to an axiom it violates: none
+    survives.
+  * The refutation is the remnant: the record that the formula's world does not exist. It exists exactly when the
+    formula is unsatisfiable (`refutable_iff`, `Complete.lean`, **[Lean]**).
+  * The remnant's minimal size is the open question: NP = coNP exactly when some proof system makes it polynomial for
+    every unsatisfiable formula (Cook-Reckhow, **[classical]**).
+
+  **Is the method's irreducible floor that minimal remnant?** No, and the difference is the useful part.
+  * The method's floor is per proof. Its passes inline, merge, reflect and automate inside a given refutation, so it
+    reaches the irreducible core of *that* refutation. It never searches for a different, shorter one.
+  * The minimal remnant is per formula: the shortest refutation of all.
+  * So the method's floor lies **at or above** the minimal remnant, and closing the distance is a search problem.
+    For resolution that search is itself hard: finding a refutation of size polynomial in the shortest one is NP-hard
+    (Atserias and Mueller, "Automating resolution is NP-hard", 2019). **[classical]**
+  * Reflection does not escape this. A refutation by a checked exhaustive search has a proof term of constant size but
+    2^n kernel steps. Cook-Reckhow counts checking time, so the remnant's size must include it.
+
+  **What this adds:** a correct and standard reading (reductio as a process, the refutation as the certificate of
+  non-existence) and one distinction: the per-proof floor that optimization can reach against the per-formula minimum
+  that the open question is about. **It adds no bound on the minimum.**
 * **What it does not do.** It does not lower the work of the irreducible core, and it does not shorten a computation
   that is long because the question is hard. That is the limit of `NATIVE-OPTIMIZATION.md` section 6 again: native
   optimization moves cost between proof length and checking time, and the open step of the size question stays where
