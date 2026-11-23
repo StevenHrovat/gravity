@@ -2103,3 +2103,11 @@ thread.
   unconstrained glueball scale, below the 2 pi assumed), so the analytically controlled tail starts only at cell distance 8 and the
   inside part, where a quantitative worst-case bound is needed, covers d <= 7. The direct small-box measurement can only refute there,
   and the fit predicts it will not; the IR question at L1 needs that worst-case argument.
+  The owner adds (same day): "With the corollary of asserting that at least something has to exist/be provable." Reading
+  (coordinator): this is the step that would turn the strict sign into a rate, if the quantity is discrete. A strict inequality
+  between integers is a bound of at least 1: "at least something" is a quantum. In the proof the plaquette cost beta |tr U_p| is
+  continuous and can be arbitrarily small near the cut, so it has no quantum. But the centre layer's flux is exactly integer-valued
+  (mod 2, conserved, in Lean: `cob_restrict_eq_cob_restrict_compl`, `sum_cob_restrict_eq_zero`), and the number of sheets a
+  flux-carrying outside forces through a box is at least 1 by that integrality. So the candidate route to a rate is to build it from the
+  topological, integer part (at least one sheet must exist) times an average cost per sheet, rather than from a uniform minimum cost.
+  The average is where disorder or rarity still enters, but the "at least one" is free and exact.
