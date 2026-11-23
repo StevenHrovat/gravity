@@ -1,0 +1,229 @@
+# Part II. The tools that click
+
+*Draft 1, 2026-11-23. Each tool is stated once, in its most general form, with a one-line reason why it clicks and its three
+applications. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`. Claim labels (II.n.m) are listed in `../CLAIMS.md`.*
+
+## II.0 One chain, three problems
+
+All three problems run along the same four links.
+
+> **positivity -> a space -> an evolution on it -> a spectrum that the positivity pins**
+
+| Link | Yang-Mills | GRH | P vs NP (sampling side) |
+|---|---|---|---|
+| 1. Positivity | reflection positivity of e^{-S} | Weil's pairing W(f * f~) >= 0 | positive weights on assignments |
+| 2. Space | the Osterwalder-Schrader (OS) Hilbert space | the GNS space of Weil's form | L2 of the Gibbs measure |
+| 3. Evolution | the transfer matrix e^{-H}, H >= 0 | translation in log-scale | the heat-bath operator, 0 <= P <= 1 |
+| 4. Spectrum | gap = decay rate of correlations | real spectrum = zeros on the line | gap = fast mixing |
+
+**Why it clicks.** Links 2 to 4 are free once link 1 is given: they are theorems, the same theorem in each column. The whole
+difficulty of each problem sits in link 1 for the hard case (Yang-Mills: a certificate at one scale; GRH: positivity itself; P vs NP:
+the step from a certified class to all inputs). The rest of this part makes links 2 to 4 precise and adds the four tools that act on
+link 1 or carry it across scales.
+
+---
+
+## II.1 Positivity builds a space
+
+**Why it clicks.** A non-negative form is all you need to measure lengths, and lengths are all you need for a Hilbert space.
+
+**Theorem II.1.1 (reconstruction from a positive form).** Let V be a real or complex vector space with a Hermitian form Q that is
+positive semi-definite, Q(v, v) >= 0. Divide out the null vectors and complete: the result is a Hilbert space H with a map
+Phi : V -> H such that <Phi u, Phi v> = Q(u, v). A linear map tau on V that is symmetric for Q and satisfies
+Q(tau u, tau u) <= Q(u, u) descends to a bounded self-adjoint operator T on H with 0 <= <x, T x> when Q(u, tau u) >= 0.
+**[classical]** (Gelfand-Naimark-Segal; Osterwalder-Schrader 1973, 1975). **[Lean]** in the abstract form used for Yang-Mills:
+`M1/UVTVOS.lean` (`inner_Φ`, `T_symm`, `T_pos`, `contraction`).
+
+**The three applications.**
+
+* **Yang-Mills.** Q(F, G) = <theta F, G>, with theta the time reflection. Reflection positivity of the Wilson action, site and link,
+  is **[Lean]** (`docs/mass-gap/formal/Positivity/`). The transfer step is tau. Positivity is given by construction.
+* **GRH.** Q is Weil's explicit-formula pairing. In a finite model (finitely many zeros, closed under conjugation) the pairing is
+  non-negative on every finite exponential sum **iff** every zero is on the line **[Lean]** (`GRH/Weil.lean`,
+  `weil_criterion_finite`). For the zeta function itself the equivalence is Weil's criterion **[classical]** (Weil 1952; Bombieri
+  2000). Positivity is *not* given by construction: it is equivalent to the conclusion.
+* **P vs NP (sampling).** Q is the L2 inner product of a Gibbs measure with positive weights; the heat-bath operator is self-adjoint
+  and positive, and every time correlation has a spectral measure on [0, 1] **[Lean]** (`Mixing/FiniteSpectral.lean`,
+  `timeCorr_spectral`).
+
+---
+
+## II.2 Positivity pins the spectrum
+
+**Why it clicks.** A self-adjoint operator cannot hide anything off the real axis, and a positive contraction cannot hide anything
+outside [0, 1]. So "where is the spectrum" becomes "how fast do correlations decay".
+
+**Theorem II.2.1 (decay rate = bottom of the spectrum).** Let nu be a finite measure on [0, inf) (the spectral measure of a vector for
+H >= 0) and corr(t) = int e^{-tE} d nu(E). Then corr(n) <= K e^{-mn} for all n, for some K, **iff** nu gives no mass below m. The
+admissible decay rates are exactly the m with nu([0, m)) = 0, and the best rate is the bottom of the support. **[Lean]**
+(`Bridge/Spectral.lean`, `spectral_gap_iff`, `decayRates_eq`; discrete-time form `Mixing/TimeGap.lean`, `time_gap_iff`).
+
+**Corollary II.2.2 (gap from reflection positivity).** In the setting of II.1.1, if every block correlation decays at rate m, the
+transfer operator restricted to the orthogonal complement of the vacuum has norm at most e^{-m}. **[Lean]** (`M1/UVTVOS.lean`,
+`gap_of_RP`; `Bridge/OSLink.lean`, `gap_of_RP_spectral`).
+
+**The three applications.** Yang-Mills: the mass gap is the decay rate of gauge-invariant correlations. GRH: the zeros are real in
+the variable gamma = (rho - 1/2)/i exactly when the generator of the evolution on Weil's space is self-adjoint (the Hilbert-Polya
+form) **[classical]**. P vs NP: a spectral gap of the heat-bath operator is fast mixing, hence polynomial-time sampling
+**[classical]**, finite form **[Lean]** (`Mixing/`).
+
+---
+
+## II.3 The bridge lemma: positivity locates singularities
+
+**Why it clicks.** A sum of positive terms cannot cancel. So the first place where it blows up must be visible on the real axis,
+where nothing can cancel.
+
+**Theorem II.3.1 (Pringsheim, extension form).** Let F be holomorphic on Re s > x0, write its Taylor coefficients at real points
+c > x0 as F^(n)(c) = (-1)^n M(c, n) with M real, and suppose F agrees on the right of x0 with a function holomorphic on a disc
+about x0. Then for some real c > x0 and h >= 0 with c - h < x0, the series sum M(c, n) h^n / n! converges. **[Lean]**
+(`Bridge/Pringsheim.lean`, `pringsheim_extension`; the disc form `pringsheim_hasSum`). Not in Mathlib before this project.
+
+The Lean core needs no sign: it is Cauchy's theorem in Taylor form. **Positivity enters in the instances.** There M(c, n) is itself
+a sum or integral of non-negative terms, such as sum_k a_k (log k)^n k^{-c} with a_k >= 0. Non-negative double series may be summed
+in either order (Tonelli), and the inner sum is the original series evaluated at c - h. So the original series converges beyond the
+point where it was supposed to stop, a contradiction. That is the whole mechanism: without positivity the reordering fails and a
+singularity can hide off the real axis.
+
+**Three instances, all [Lean]:**
+
+1. **Landau's theorem.** An L-series with non-negative coefficients has a singularity at the real point of its abscissa of absolute
+   convergence (`Bridge/Landau.lean`, `landau`). This is the first stage of the recent Lean proof of RH by others (Part IV).
+2. **Laplace transforms of positive measures.** For a measure on [0, inf), the real edge of convergence of int e^{-st} d mu is a
+   singularity (`Bridge/Laplace.lean`, `laplace_landau`).
+3. **The mass gap.** The resolvent <F, (H + s)^{-1} F> of a positive Hamiltonian converges for real s > -l0 and is singular at
+   s = -l0, where l0 is the bottom of the spectrum (`Bridge/Spectral.lean`, `resolvent_singular`).
+
+**What the bridge does not give.** It locates the *first* singularity of a positive object. It does not make an object positive.
+Over function fields, one positive duality (the Hodge index theorem) gives both the axis of the functional equation and the
+balance point 1/2; over the integers no such positivity is known **[open]** (`docs/rh-guide/bridge/BRIDGE.md`, section 0).
+
+---
+
+## II.4 Contraction and data processing
+
+**Why it clicks.** A lossy channel can only forget. If it forgets a fixed fraction each step, it forgets geometrically, and a
+geometric rate is a gap.
+
+**Definitions.** A stochastic kernel K moves probability distributions. Its contraction coefficient eta(K) is the largest factor by
+which it shrinks the total-variation distance between two distributions (Dobrushin's coefficient). For a system of sites with local
+conditional laws, the influence C(x, z) of site z on site x is the largest change in the law at x when only z changes; the column
+sum of z is sum_x C(x, z).
+
+**Theorem II.4.1 (data processing, composed).** eta(K) <= 1 for every stochastic kernel, and eta(K L) <= eta(K) eta(L). The same
+kernel applied n times contracts by eta^n. **[classical]** (Dobrushin 1956; the strong data-processing inequality). **[Lean]**
+(`Mixing/Chain.lean`, `contracts_kchain`, `contracts_kpow`, `tv_pushv_kpow_le_pow`).
+
+**Theorem II.4.2 (Doeblin: a quantum per tick).** If K(x, .) >= eps nu(.) for every x, then eta(K) <= 1 - eps. **[Lean]**
+(`Mixing/Doeblin.lean`, `contracts_of_doeblin`, `doeblin_sharp`).
+
+**Theorem II.4.3 (one finite check, decay everywhere).** If every column sum of the influence matrix is at most alpha < 1, the
+heat-bath dynamics has a spectral gap: the spectral measure of every time correlation gives no mass above 1 - (1 - alpha)/N, with N
+the number of sites. **[classical]** (Dobrushin 1968; Dobrushin-Shlosman 1985). **[Lean]** (`Mixing/FiniteSpectral.lean`,
+`spectral_gap_dobrushin`; `Mixing/Link.lean`, `spectral_gap_of_column`). With exponential weights the same condition gives
+exponential decay of spatial correlations **[Lean]** (`docs/mass-gap/formal/Attempts/R3/TailDecay.lean`, `theoremA_w`).
+
+**The honest limit (II.4.4).** Doeblin gives a rate per channel. A site with k >= 2 neighbours needs the *sum* of the k influences
+below one, and once the per-channel cost C is at least log 2, the sum of the Doeblin bounds k(1 - e^{-C}) is at least 1. The quantum
+per tick does not by itself give a column below one. **[Lean]** (`Mixing/Chain.lean`, `column_sum_ge_one`, with the sharp threshold
+`column_sum_lt_one_iff`).
+
+**Uniformity along a chain (II.4.5).** If the same channel acts at every step (a homogeneous chain: translation invariance in the
+transfer direction), the contraction coefficient is the same at every step; once eta < 1 at one step, the chain contracts like
+eta^n. **[classical]** with the composition law **[Lean]** above. Read as DMP: "the uniformity is given by the arrow of causality"
+(the author, 2026-11-23) **[reading]**.
+
+**The three applications.** Yang-Mills: the whole problem reduces to eta < 1 for one box at one scale, uniformly over outsides (Part
+III). P vs NP: a column sum below one is polynomial-time sampling and, classically, counting (Part V). GRH: no contraction step is
+known; the prime-by-prime extension has no slack to lose (Part IV).
+
+---
+
+## II.5 A strict sign gives a rate: the self-dual point
+
+**Why it clicks.** If two quantities are dual to each other and the duality has a fixed point, then they cannot both be small: one of
+them is at least the fixed-point value.
+
+**Theorem II.5.1 (hand-over).** For 0 < Z_tw < Z put F_tw = -log(Z_tw / Z) and F_e = -log((Z - Z_tw)/(Z + Z_tw)). Then
+F_e is the image of F_tw under a decreasing involution with fixed point log(1 + sqrt 2), and
+
+  max(F_tw, F_e) >= log(1 + sqrt 2), about 0.881.
+
+The bound is sharp, attained at Z_tw / Z = sqrt 2 - 1. **[Lean]** (`Crossover/HandOver.lean`, `handover_ratio`,
+`log_one_add_sqrt_two_le_max`; the duality `Flip/Floor.lean`, `elecF_eq_dual`).
+
+**Where it applies.** Any system with a strict inequality between a sector and its twist. In SU(2) Yang-Mills the strict inequality
+holds at every coupling beta != 0 (`Flip/Strict.lean`, `su2_Ztw_lt_Z`), so every box has a hand-over rate of at least 0.881 nats in
+one of its two channels **[Lean]** (`Crossover/HandOver.lean`, `su2_handover`, with the hypothesis 0 < Z_tw stated; the
+integrand is positive, the formal step is not written). This is the precise form of I.7, "existence = non-existence + 1": a sign with
+no rate becomes a rate at the self-dual point.
+
+**What it does not give.** It is a statement about free energies of the whole periodic box (averaged over everything), not about the
+influence of an arbitrary fixed outside on one box, and one box's rate is not yet a product over many boxes. Both gaps are named in
+Part III.
+
+---
+
+## II.6 The dichotomy: local, crossing flux, residue
+
+**Why it clicks.** An obstruction to decay can only be of three kinds: short-range (it is forgotten), conserved (it cannot be
+forgotten, so it must be paid for), or stuck inside one region (then it is a finite question about that region).
+
+**Statement (II.6.1, the shape).** For a system split into regions, every piece of an obstruction is
+
+* (a) **local**: forced by a few constraints; behind a collar of positive conditional mass it enters only as a boundary term;
+* (b) **a crossing flux**: carried by a conserved quantity through the region's boundary; it cannot be screened;
+* (c) **a residue**: inside one region; what remains is a percolation question: does the bad set span the region, or does it break
+  into finite clusters with an exponential tail?
+
+This is a proof strategy, not a theorem **[paper]** (`docs/mass-gap/weak-coupling/proof-phase/c9a-crossover/DICHOTOMY.md`;
+`docs/pnp/DICHOTOMY-TRANSFER.md`). Its exact pieces are theorems:
+
+* **Gauss law mod 2.** For a Z_2 flux on a graph, the parity crossing the boundary of any region equals the charge inside, whatever
+  the interior does; odd total charge is a contradiction **[Lean]** (`Proof/Crossing.lean`, `gauss`, `flux_fixed`,
+  `unsat_of_odd`). The same law for centre sheets: a flux-carrying outside forces at least one sheet through the box, entering and
+  leaving an even number of times **[Lean]** (`Crossover/FluxRate.lean`, `exists_sheet_of_flux`, `even_card_fluxCells`).
+* **Uncontained pieces weigh nothing.** A sheet that ends inside the box is not a closed configuration, so it has weight zero under
+  every law carried by closed configurations **[Lean]** (`Crossover/Dichotomy.lean`, `not_uncontained`, `measure_uncontained`).
+* **Every refutation crosses.** In every sound proof system whose rules have at most two premises, every refutation of an expanding
+  formula contains a line sensitive to at least the expansion many variables **[Lean]** (`Proof/Crossing.lean`,
+  `cross_any_system`).
+* **Rarity and saturation do not overlap.** The regime where sheets are suppressed (their cost beats their entropy) and the regime
+  where they saturate are disjoint; any route between them crosses a window where neither mechanism applies **[Lean]**
+  (`Crossover/Dichotomy.lean`, `window_gap`).
+
+**The three applications.** Yang-Mills: (b) is exact, (a) fails uniformly at the SO(3) cut, (c) is the open window (Part III).
+P vs NP: the crossing is universal, but its *cost*, the price of naming the conserved quantity in the system's lines, is not; that
+cost is the open lower bound (Part V). GRH: the analogue of (b) is the zeros on the line, "pure oscillation" **[reading]**; no
+dichotomy proof exists there.
+
+---
+
+## II.7 The native optimization method
+
+**Why it clicks.** A cost that comes in whole units cannot fall forever. Lower it by one unit per improving pass and the method must
+stop, at an irreducible core.
+
+**Theorem II.7.1 (quantized descent arrives).** Let f be a map on any set and mu a natural-number measure with mu(f x) < mu(x)
+whenever f x != x. Then f has a fixed point after at most mu(x) steps from x. **[Lean]** (`Native/Method.lean`, `fixed_after`,
+`reaches_floor`). Without quanta it fails: x -> (x + 1)/2 strictly decreases toward 1 and never reaches it (`real_never_arrives`).
+
+**Theorem II.7.2 (a true contraction for depth).** Pairwise merging of adjacent layers turns d layers into ceil(d/2); after
+ceil(log2 d) passes one layer remains. **[Lean]** (`Native/Method.lean`, `iterate_clog_pairUp`).
+
+**Measured.** Applied to this project's own proof chains, the per-layer kernel cost is finite and bounded by the size of the finite
+building blocks it evaluates (0.17 to 1.4 ms per layer in the deepest DMP chain; about 0.3 ms per recipe line for a reflected
+check). **[numerical]** (`docs/pnp/NATIVE-METHOD.md`, section 0).
+
+**The three applications.** P vs NP: the method reduces any refutation to an irreducible core; whether that core is always of
+polynomial size is the open question N1 (Part V). Yang-Mills: the same "quantum, then arrival" shape is the Doeblin rate per tick
+(II.4.2). GRH: the integer multiplicities of zeros and prime powers are the quanta on the prime side **[reading]**.
+
+---
+
+## II.8 What the tools do not do
+
+None of II.1 to II.7 creates positivity. Each starts from a positive weight, a positive pairing, a positive cost or a strict sign,
+and carries it: into a space, into a spectrum, across a chain, across a boundary, down to a floor. The open step of each problem is
+the place where that starting positivity is known locally, or in a model, and must be established for every case. Part VI states
+this once.
