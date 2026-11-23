@@ -2491,3 +2491,15 @@ thread.
   at exactly the square-root level), which links it to the P vs NP reading "no structure, no shorter description", and the exponent 1/2
   is the critical line's. The equivalences are theorems; reading GRH as the ODP's certificate that the blocks sit at the universal
   floor is interpretation.
+- **GRH explains the HTF: uniform global smoothness from asserted local correctness (the owner, same day):** "The features of the GRH
+  also explain the properties of the HTF, since it gives uniform global smoothness from asserted local correctness." Reading
+  (coordinator): this gives a concrete reformulation that ties the two problems formally. (1) In GRH, local data (one Euler factor per
+  prime) yield a global statement with only square-root error (psi(x) - x = O(x^{1/2 + eps})): local correctness, global smoothness,
+  by cancellation. (2) In Yang-Mills the same mechanism is the Z2 Fourier relation between twist and electric sectors: the electric
+  weight is a signed sum over twist sectors, e^{-F_e} = sum_k (-1)^{k.e} Z_k / Z, so if the twist sectors are equidistributed (each
+  Z_k / Z close to 1, the saturation of TRANSFER.md) the signed sum cancels and the electric weight is small. (3) So the one-box
+  statement can be written in GRH's form: **twist-sector equidistribution at one box, with an error at the floor, implies electric
+  suppression.** Equidistribution with square-root error is exactly RH's shape. Note the contrast: Dobrushin-type sums add absolute
+  values (no cancellation), which is why path entropy beat the per-box cost in CONTAINMENT.md; the signed (Fourier) sum is where
+  cancellation, the GRH mechanism, can act. The small-torus run measures twist ratios Z_tw/Z directly, so it can test the
+  equidistribution form at small L.
