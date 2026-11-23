@@ -3651,3 +3651,15 @@ thread.
   any change to the text changes the hash [classical]. So the strongest form of the owner's statement: a G0 is identified by its
   version plus the hash of its pressed text, and Apache 2.0's attribution requirement carries that identification along every
   redistribution.
+- **DMP verifies in under a second, so every existence, through the right reduction, can be made near infinitely cheap (the owner,
+  same day, on the independent re-check's cost):** "DMP, if I remember correctly, verifies in under a second, so every possible
+  existence, through the right reduction, can be made near infinetely cheap." Reading (coordinator): true for checking, and the
+  exact boundary sits on this paper's third problem. (1) *Checking is cheap and stays cheap.* Checking a given certificate costs
+  about its size (a proof system checks in time polynomial in the proof, Cook-Reckhow; Lean re-checks a proof term in time roughly
+  linear in its size) [classical]. A small, general core (DMP's form layer, the ledger, the encoder) is checked once; instances only
+  add their own proof size; with the hash stamp, repeated checks of an unchanged base cost almost nothing. So the amortised cost of
+  verifying one more existence, given its certificate, can indeed be made very small. (2) *Where the cost goes.* A reduction does not
+  remove cost; it moves it into the size of the certificate and into the work of finding it. "Every existence has a short certificate
+  that is cheap to check" is, for non-existence, exactly NP = coNP: the question of this paper's third problem. And some existences
+  have no certificate at all within a given system (Goedel, Turing; the ETM's c2). Care point: "near infinitely cheap" holds for the
+  checking of what is certified, and the cost of certifying lives exactly in the open crossing cost.
