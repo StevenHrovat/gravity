@@ -3344,3 +3344,21 @@ thread.
   box, and it must be shown (proof), not measured (the provability table). That for-all over outsides is the whole content of O1,
   and it is a statement about one box. So the owner's framing and the open step coincide: the meaningful answer is the one-box
   certificate, and O1 is exactly the requirement that it hold for every outside.
+- **Extinction alone says nothing, but whether the tail remnant is preserved or altered gives a definitive shape, since every action
+  gives an arrow of causality; down to the one-box level (the owner, same day, on the care point of the Poincare-SU(N) round):**
+  "Extinction alone says nothing, but the tail remnant being preserved or altered in some way should give definitve shape, since all
+  action give an arrow of causality. This can even go down to the one-box level." Reading (coordinator): three exact counterparts,
+  one already computed in the round. (1) *The arrow.* Perelman's nu-entropy (and reduced volume) never decreases along Ricci flow
+  [classical]: the flow has an arrow, and what reaches extinction carries a record. (2) *Preserved or altered: the spectrum of the
+  remnants at extinction.* Near extinction the normalised flow sits at a shrinking profile, and every perturbation of it is a remnant
+  that either decays back (preserved) or grows away (altered); which one is decided by the linearised spectrum at the profile. That
+  is exactly the Cao-He window computed in `BLOWUP.md` 7.3 (`sun_window`, `su2_window_edge`, Lean for the arithmetic): for SU(2)
+  every remnant decays, the round 3-sphere attracts (Hamilton); for every SU(N) with N >= 3 the conformal remnant with eigenvalue
+  mu_1 = N - 1/N grows. So the tail tells SU(2) apart from every other SU(N), where extinction alone does not. (3) *Down to one box.*
+  The Yang-Mills counterpart is Luescher's finite-volume method [classical]: in one finite periodic box, the energy levels and their
+  finite-size shifts (which fall off like e^{-m L}, the tail) determine infinite-volume data, the masses and the scattering phase
+  shifts. The remnant tail of one box encodes the shape of the whole theory. Care points: (a) a spectrum does not always determine a
+  shape: there are isospectral manifolds that are not isometric (Milnor's 16-dimensional tori; Gordon-Webb-Wolpert drums)
+  [classical], so the tail's spectrum gives invariants, and full shape needs the time-ordered record along the arrow (in dimension
+  3, Perelman's surgery record), not the final spectrum alone. (b) Luescher's relations hold for a theory with a gap; they read the
+  shape once the gap exists, so at one box they are the consequence of O1, not a route around it.
