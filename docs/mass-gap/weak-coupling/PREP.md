@@ -3310,3 +3310,22 @@ thread.
   So the recognition statement ("a closed manifold homotopy equivalent to SU(N) is SU(N)") is a question for surgery theory, not
   Ricci flow; its status is to be checked in the literature, not assumed. The DMP tie-in the owner names is the reading of (1) and
   (2); (3) marks what would be new.
+- **"Per lattice" is DMP restated: the inequality is non-existence, the equality contains it behind a DB, and the rotation holds
+  both stable by balancing them (the owner, same day, on the SU(N) round):** "That the inequality holds per lattice is actually just
+  DMP restated. For there to be a 'per' there needs to be a dualistic system that runs content, which has DMPs characteristics.
+  There this inequality is non-existence, with the equality containing it behind a DB, with the rotation holding both the equality
+  and inequality stable, by balancing them against each other through assertion against each other." Reading (coordinator): all
+  three parts are in the Lean of the round. (1) *"Per" means per running dualistic system.* The bound is proved for any chain weight
+  with a positive transfer step and a reflection (`ChainWeight` in `General/SUNTwist.lean`: any compact group, any twist with an
+  inverse), and lattice Yang-Mills is one instance. So the theorem is a property of the class of systems that run content with a
+  mirror, which is the owner's "DMP characteristics". (2) *The inequality is non-existence; the equality contains it behind a DB.*
+  The strict inequality Z_tw,k < Z says the twisted box is not the whole: something is missing. The equality behind it is the
+  reflection identity 2 (Z - Z_tw) = <A o sigma - A, A o sigma - A> (`cZ_sub_cZtw_eq_u`, `cZ2_sub_eq`, Lean): the missing part is
+  exactly a squared length measured across the reflection plane, the mirror between the two halves, which is the DB. The inequality
+  is the shadow of this equality on one side (a length is >= 0, and > 0 when the step moves the charged line). (3) *The rotation
+  balances them.* The Fourier rotation F (half-turn for SU(2), quarter-turn for N >= 3, Lean) carries the twisted sectors (where the
+  statements are inequalities, Z_tw,k < Z) to the electric sectors (where they are equalities and signs: sum_e Z_e = Z, Z_e >= 0,
+  Lean). F is unitary, so it preserves the total (Parseval), and neither description can change without the other: that is the
+  balance. Care point: "per running system" is exactly what is proved; the step that remains is the family, as the system is
+  refined toward the continuum. Each member has a strict inequality, but the size of the missing part can shrink with the volume.
+  That size, kept above a fixed amount for every member, is O1.
