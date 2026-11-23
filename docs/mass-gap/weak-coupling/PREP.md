@@ -3502,3 +3502,16 @@ thread.
   remnant dies (`Bridge/Spectral.lean`, decay rate = bottom of the spectrum, Lean). Care point: that asymptotic freedom in the
   ultraviolet and a gap in the infrared coexist in four-dimensional Yang-Mills is the Clay statement itself; the ultraviolet side is
   Balaban's and the external construction's (audit item), universality is classical and numerical, and the infrared side is O1.
+- **The construction principle: well-understood, conveniently clicking tools arranged in a DMP-wise state, tied together by the
+  right top theorems through their shared properties; content left to the best solutions of the content; DMP makes sure the
+  certification of existence is absolute for every describable existence (the owner, same day):** "In general the construction of
+  the proof should be 'well understood an "conveniently" well clicking tools arranged in a DMP-wise state, with the right top
+  theorems to tie them together through their shared properties'. That seems the most DMP-native, leaving the content to the best
+  solutions of the content, and just making sure the certification of existence is absolute for every existence describable."
+  Recorded as the working rule for all rounds: (1) DMP's own work is the form layer, the top theorems (ledger, encoder, the
+  half-turn, the universal property) that tie tools together through shared properties, and the certification of existence; (2) the
+  content of each problem uses the best known, well-understood tools and results, cited, marked [external] or [classical], and
+  audited where the argument leans on them, not rebuilt for their own sake; (3) "absolute for every describable existence" is the
+  universal property plus soundness: what the form layer certifies holds in every instance. This is also the paper's Part II as
+  outlined ("The tools that click"). It refines the earlier rule of 2026-11-21 (central lattice pieces such as reflection positivity
+  built from scratch): the form layer stays ours; content may adopt the best existing solutions.
