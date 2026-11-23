@@ -3877,3 +3877,8 @@ thread.
   (feasible interpolation, Krajicek) [classical]; this is the "interpolation split" already in `pnp/CP-DUALITY.md`, and lifting is
   communication across exactly such a split. So the two extremes are the root (where proofs start) and the interpolant (where a
   disagreement is localised to what both sides share), and the NP question asks how large that localised piece must be.
+  The owner completes the sentence (same day): "... which localizes the state of shared existence, through the imaginary." Reading
+  (coordinator): in the owner's vocabulary the imaginary is possibility. The interpolant is built exactly through possibility: the
+  strongest interpolant is A with its private variables existentially quantified away, "there is a possible value of A's hidden part
+  such that A holds", projected onto the shared variables [classical]. So the disagreement is localised to the shared part by passing
+  through the possible states of each side's hidden part, never through their actual values: "through the imaginary".
