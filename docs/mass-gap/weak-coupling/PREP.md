@@ -3002,3 +3002,16 @@ thread.
   rotation acting on the encoder number c (the ratio of the two sector weights), not yet a statement that the HTF field performs it
   on the lattice; that identification is the reading. (b) The half-turn exchanges the two pictures; it does not by itself move c from
   the axis (0.414) to the required 0.743. What lifts c is still O1. Passed to the unified-chain round as an addendum.
+- **The Yang-Mills factor is a restatement of the bounds on c, so it can be shown through DMP (the owner, same day):** "The Yang-Mills
+  factor is just a restatement of our bounds for c, so can be shown through dmp." Reading (coordinator): correct. elec(c) =
+  (1 - c)/(1 + c) is a decreasing involution of [0, 1] onto itself, so "factor in (0, 1)" is exactly "c in (0, 1)"
+  (`elec_mem`, `elec_eq_one_iff`, `elec_elec`, `Unified/Encoder.lean`, Lean), with c = Z_tw / Z. Both bounds on c are proved and
+  both are DMP readings already on record: c > 0 is positivity (the twisted box exists, its weights are positive: describable,
+  hence exists, hence positive), and c < 1 is the strict bound Z_tw < Z (`su2_Ztw_lt_Z`, `Flip/Strict.lean`, Lean), the reading
+  "existence = non-existence + 1" (paper I.7). Even the hand-over is a restatement: since elec is a decreasing involution with fixed
+  point sqrt 2 - 1 (`elec_selfdual`, Lean), every c in (0, 1) has min(c, elec(c)) <= sqrt 2 - 1, i.e.
+  max(F_tw, F_e) >= log(1 + sqrt 2) = 0.881. So the whole qualitative layer (factor in (0, 1], the hand-over 0.881) follows from
+  positivity and the strict sign alone, through DMP. Care point: O1 is not a restatement of these bounds. It needs a quantitative,
+  uniform bound, c >= c0 > (mu_4 - 1)/(mu_4 + 1) = 0.743 at the hand-over box for every outside (`ymOneBox_iff_refl`, Lean), and
+  "c in (0, 1)" says nothing about where in (0, 1) c lies. That is the one piece DMP would have to show beyond positivity and the
+  strict sign.
