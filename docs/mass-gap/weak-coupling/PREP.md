@@ -2954,3 +2954,14 @@ thread.
   Dirichlet. The Yang-Mills form is "every remnant's tail decays at a rate of at least m", the gap, which is O1 and open. Care point:
   the two are the same shape on different objects; the established GRH case does not transfer to Yang-Mills as a proof, only as the
   model of what a uniform tail statement looks like when it is true.
+- **Direction for the next round: both open encoder steps through the lens of GRH (the owner, same day, on `docs/unified/ENCODER.md`):**
+  "Both have to be investigated, through the lens of GRH, to get to the generalization that is at the core of that. This is my
+  intuition towards a sound construction." The two steps: Yang-Mills, the twist ratio from the proved self-dual 0.414 to the needed
+  0.743 at the hand-over box, for every outside; NP vs coNP, a step that reads two boundaries at once (the encoder of one line is
+  lossless). Coordinator's leads for the round, to be checked, not claims: (1) in GRH every scale's encoder value is a Schur
+  parameter of one bounded function (Geronimus), so the bound at every scale comes from one global positive object, not from step
+  estimates [classical]; (2) the electric profile (1 - c)/(1 + c) is the Cayley transform that maps the Schur class (|f| <= 1) to the
+  Caratheodory class (Re F >= 0), the same map that joins the two sides of Szego's theory, so the two loss profiles of ENCODER.md
+  section 5.1 may be two faces of one Schur-Caratheodory structure [classical map; the identification is to be checked]; (3) GRH's
+  positivity is a pairing of two objects (Weil's form on f and its mirror, the Toeplitz lag between two cells), which is a
+  two-boundary step by construction.
