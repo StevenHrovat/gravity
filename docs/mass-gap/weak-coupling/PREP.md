@@ -1638,3 +1638,14 @@ thread.
   mass ratios, m / sqrt(sigma)), fixed by the group alone. So two systems with different gaps in some outside unit are the same system
   seen from inside, which is the owner's "any gap is the same gap as seen from there". The WHK entry's list "the gap m = c_G Lambda"
   should be read this way: what each part reconstructs is the existence of the gap and the internal ratios, not an outside number.
+- **Run time as the cost of assertion (the owner, same day, on the W2 run's beta-dependent cost):** "The time the run took should be in
+  some way associated with the cost of assertion at the beta levels. The more quantum information has to be computed before a settled
+  state is reached, the longer computation takes." Reading (coordinator): the W2 run shows two separate costs, and the reading fits
+  one of them exactly. (1) **Sweeps needed to settle (physical):** the pilots fixed the chain length at T = 300 sweeps for beta = 2.3
+  and T = 600 for beta = 3.5. At weaker coupling the correlation length is longer, so more of the lattice has to agree before the chain
+  forgets its start; the settling time grows with the correlation length (critical slowing down, tau ~ xi^z). That is the owner's
+  "more information has to be computed before a settled state is reached", and it is a property of the theory, not of the code.
+  (2) **Cost per sweep (algorithmic):** a sweep costs 3.8 s at beta = 2.3 but 1.96 s at 3.5, because the link update's rejection
+  loops run longer where the local action is weaker (acceptance 0.83 vs 0.90). That is a property of the sampling method, and a
+  different method would change it. In the run the two roughly cancel (about 1.0 GPU-hour per beta). Only the first measures the
+  cost of settling.
