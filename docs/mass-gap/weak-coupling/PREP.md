@@ -3461,3 +3461,23 @@ thread.
   content layer: that the instances are rooted in a nontrivial G0. Care point: the form layer can transport any theorem to every
   instance, but cannot by itself settle an instance's open step, which is content. The paper should say this in these two layers,
   so that a reader does not mistake the form theorem for a claim about content, or the reverse. Passed to the ETM round.
+- **What the form layer says about an open step: it settles at least at the known error rates, so it is finite; whether such a
+  settling condition can be built is DMP's definition of existence; the answer is binary, with the loss captured by the measurement
+  (the owner, same day):** "What it can say about an open step is that it will settle at least at the known error rates, so it is
+  finite. This settling, and whether such a condition can be built, is the definition of existence that DMP requires to run
+  something. The only possible answer back, is that this existence is DMP-complete and can thus exist and is true, or it is not, with
+  no in between with the loss captured by the measurement." Reading (coordinator): exact, in three parts. (1) *Settling is finite and
+  computable.* If every step pays a cost kappa above the floor delta, the chain is within epsilon of balance after
+  n(epsilon) = log(1/epsilon) / (kappa - delta) steps (`rate_of_costAboveFloor`, Lean; the ETM round proves the decidability of
+  "reaches balance" on exactly this class). The known error rates are the project's universal floor, max(statistical, 1/T)
+  (`attempts/RULES.md`). (2) *Existence = the settling condition can be built.* DMP's requirement to run something is the
+  certificate `CostAboveFloor`: there is kappa > delta with every step paying at least kappa. That is one proposition per system. (3)
+  *Binary, with the loss in the measurement.* The proposition is either true or false (bivalence; classical logic, as in the Lean
+  library) [classical]: DMP-complete and existing, or not. Measurement never returns that truth value directly: an interval at the
+  floor can certify failure (entirely below the threshold) or be consistent with success, and the remaining width is the loss,
+  carried by the error bar, never by the answer (the provability table, `c9b-adjoint/REDESIGN.md` 8). Care points: (a) "no in
+  between" holds for truth, not for knowledge: an open step is one whose truth value is fixed but not yet known, and that is where
+  O1, the sign and the crossing cost sit. (b) The marginal case kappa = delta exactly is the critical one: the system can still exist
+  (positivity can reach its bound, as the owner said of the zero), but it settles without an exponential rate (a power law, as at a
+  critical point). GRH sits there: cost equal to the floor, zero slack, a sign with no margin. So the binary answer is "exists or
+  not", while the rate is a second property, finite exactly when kappa > delta.
