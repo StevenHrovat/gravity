@@ -1976,3 +1976,24 @@ thread.
   then it can never run." Reading (coordinator): consistent with the minting reading: inputs outside any DB have no running state, so
   "P = NP for what runs" is the class theorem. The question the classes ask is the one before running: given an instance, is there a
   DB that contains it? For SAT that is satisfiability. The reading places that question at G0; it does not answer it.
+- **P vs NP, the approach reversed: extend G0's definition of existence through the universal language IM (the owner, same day):**
+  "Rather than show that an instance can be contained, which is the wrong causal way around, especially since DMP can say nothing
+  about its content, rather we should show that the definition of existence at G0 can be extended to wherever we need it to be for
+  everything to be describable in it, which is done through the universal language IM." Reading (coordinator): this reversal lands
+  on a precise, standard reformulation. A universal language in which every instance is describable exists (Cook-Levin: every NP
+  problem reduces to SAT). If the definition of existence is extended so that it also describes what does not exist (the earlier
+  entry: existence must describe non-existence too), then an unsatisfiable instance must also have its certificate, a refutation.
+  The question becomes whether every instance, satisfiable or not, has a short certificate in one universal proof language. That is
+  the Cook-Reckhow programme: a polynomially bounded proof system exists iff NP = coNP. So the reversed approach targets NP vs coNP
+  (which implies P vs NP in one direction: NP != coNP implies P != NP), through proof complexity. Superpolynomial lower bounds are
+  known for many specific proof systems (resolution, cutting planes in restricted forms), none for all (Frege and beyond are open).
+- **GRH is missing the concept of the remnant of acts (the owner, same day):** "What GRH is missing is its concept of the remnant of
+  acts. Since normal mathematics, which is not forced to run outside of GRH, does not normally have the concept of those remnants,
+  but once run as content in DMP, the remnants become the evidence of causality, by which the system proves it runs, this also
+  certifies everything running as inherently existing." Reading (coordinator): mathematics has this concept for curves, and it is
+  exactly what is missing over the integers. Over a finite field, zeta counts the fixed points of Frobenius, and the Lefschetz trace
+  formula turns that count into a trace on cohomology: the fixed points are the remnants of the dynamics' acts, and their count is the
+  evidence the system runs. Over the integers, Deninger's programme proposes that the primes are the closed orbits of a missing
+  dynamical system (an orbit of length log p for each prime), with the explicit formula as its trace formula; a Hodge-type positivity
+  on its cohomology would give RH. So "the remnants of acts as evidence of causality" is the periodic-orbit reading of the primes, and
+  the missing piece is the same as before in a third dress: the dynamics whose remnants the primes are.
