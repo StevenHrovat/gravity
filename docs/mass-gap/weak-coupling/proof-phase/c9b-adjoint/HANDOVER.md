@@ -1,4 +1,4 @@
-# c9b-adjoint: handover (kept current; last update 2026-11-23, end of round 2)
+# c9b-adjoint: handover (kept current; last update 2026-11-23, pilot prepared)
 
 ## Where things stand
 
@@ -19,8 +19,11 @@
 
 ## Next steps (in order)
 
-1. **Owner decision:** the GPU measurement (`PREREG-GPU.md`): first a CPU pilot (needs its own short pre-registration and the code of
-   section 7 there), then one 30-minute GPU timing job (owner's OK), then the projection and Stage A (owner's OK).
+1. **Owner decision:** the GPU measurement (`PREREG-GPU.md`): first the CPU pilot, now pre-registered (`PREREG-PILOT.md`, checks E1,
+   E2, P; code `ir_condlaw.py`, `ir_constrained.py`, both selftests pass; commands `run_pilot.sh`; **not run**, waits for the owner's
+   OK, forwarded by the coordinator), then one 30-minute GPU timing job (owner's OK), then the projection and Stage A (owner's OK).
+   Found in the plumbing: the penalty makes stiff modes; n = 0 uses a pinned-link mass, n >= 1 a step-size tuning rule; the GPU plan's
+   `kappa_c` values must be revisited after check P.
 2. Lean, reachable: iterate `cost_bind_le` over 8 colour classes as a theorem (the `K_s` arithmetic); the coarse-to-fine two-level coupling
    as a statement (`kappa <= (1 + C_UV) kappa_IR + b_UV`) on `CouplingSpec` data.
 3. Paper, open: composite-box coverage and Lemma C at the cell scale (`ROUND2.md` 2.3 (a)-(d)); the rectangle tail in the sup form

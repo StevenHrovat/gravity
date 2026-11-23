@@ -102,7 +102,7 @@ route to the W1-plus-smoothing count. A FAIL of both at a point with content is 
 
 ## 6. Timing plan (before any production)
 
-1. **CPU pilot** (separately pre-registered; short): the full pipeline at SU(2) `beta = 0.5`, a 16^4 lattice, `b = 4`, two backgrounds,
+1. **CPU pilot** (pre-registered in `PREREG-PILOT.md`, which supersedes the sizes given here: 8^4, b = 2 for the blocked check): the full pipeline at SU(2) `beta = 0.5`, a 16^4 lattice, `b = 4`, two backgrounds,
    one pair class; checks of section 2's pilot gate and of the TV/KR estimators against N2's quadrature.
 2. **One timing job on the GPU** (after the owner's OK for this job alone): the primary point, one typical background, class s<-ss,
    `w` only, `kappa_c = 200`, `B = 64` chains, 30 minutes wall. Record: wall time per trajectory, acceptance, `tau_int` of the `V_x`
@@ -116,6 +116,121 @@ route to the W1-plus-smoothing count. A FAIL of both at a point with content is 
    **Stage B**: the rest of the primary; **Stage C**: controls; **Stage D**: secondary point. Each stage needs its own OK.
 4. If `t_eff` makes Stage A exceed 24 GPU-hours, the precision target is relaxed to column `+-0.1` (a factor 4 fewer samples) and the
    UNDECIDED band widened accordingly, decided before Stage A starts.
+
+## 6a. Hardware constraint (recorded 2026-11-23, before any GPU data)
+
+The GPU is an 8 GB laptop card. It sets the lattice for the timing job and for any later production on this machine: fine 40^4 at
+`b = 8` (coarse 5^4, region radius 2 = the whole coarse torus), `B` as memory allows (expected 1 to 2 chains). The block variable is
+computed only on the sublattices it needs (`ir_constrained.py`, lean path; equal to the default path, selftest). The 72^4 secondary
+point of section 2 does not fit this card; it needs a larger GPU or a region-only implementation.
+
+## 6b. Amendment (2026-11-23, before any GPU data): replica errors
+
+The pilot showed that the blocked bootstrap underestimates the error of TV by about 15 % (`PILOT.md`). Following the owner's choice for
+the pilot ("Yes, replicas (a)"), the measurement switches too:
+- **Errors.** Every error in sections 3 and 4 is the jackknife over K independent replicas per ensemble (`ir_condlaw.jackknife`: each
+  compared ensemble separately, variances added). The replicas are independent chains: the `B` chains of one run where memory allows,
+  otherwise separate runs with their own seeds, sharing the background and the tuned step size. **K = 8.** Time blocks of one chain are
+  not used.
+- **Thresholds.** Every "upper 2-sigma" / "lower 2-sigma" in section 4 becomes `t_7(0.97725) = 2.43` times the jackknife sigma (the
+  same 95.45 % coverage).
+- **Precision target.** Unchanged (`+-0.004` per pair TV). The cost per ensemble now includes K independent thermalisations; the
+  projection (`TIMING.md`) accounts for it.
+
+## 6c. Amendment (2026-11-23, before any GPU data): the statistical floor of every error bar
+
+Owner's question: "I would assume we can derive the expected minimum error bar that is associated with the measurement uncertainty for
+the system, right? In that case it would let us make the error bar not arbitrary."
+
+**The floor (paper; `floor.py`, `floor.log`).** For `n` i.i.d. samples per law, the fitted parameters of the 13-parameter family are
+asymptotically normal with covariance `I(theta)^-1 / n`, where `I = Cov_theta(phi)` (Cramer-Rao; attained by maximum likelihood). For a
+smooth statistic `g` of two independent fits, the delta method gives
+`sigma_floor^2 = (grad_0 g . I_0^-1 grad_0 g + grad_1 g . I_1^-1 grad_1 g)/n`. For TV, `grad_0 TV = (1/2) E_0[sign(p_0 - p_1)
+(phi - E_0 phi)]` (smooth: TV >> 0 and the set `p_0 = p_1` is null; it agrees with finite differences to 2e-12). For Markov-chain data
+the variance of each fit's contribution is multiplied by `2 tau_psi`, where `tau_psi` is the integrated autocorrelation time of that
+ensemble's influence series `psi(t) = grad g . I^-1 phi(V_x(t))`, measured. (This is the right time, not the max over components of
+`V_x`.) With `N` total samples over the replicas: `sigma_floor^2 = sum over the two ensembles of 2 tau_psi grad g . I^-1 grad g / N`.
+
+**Check against the pilot (numerical, no new run).** E1's setting (`n = 2.5 x 10^5`):
+
+| statistic | floor | observed sd over 30 repetitions (runs 1-3 pooled) | ratio | 95 % band of the ratio for 29 dof |
+|---|---|---|---|---|
+| TV | 0.00119 | 0.00129 | 1.08 | [0.74, 1.26] |
+| Jbar | 0.0061 | 0.0069 | 1.14 | |
+| KR_upper | 0.00163 | 0.00174 | 1.07 | |
+
+The observed spread sits at or just above the floor, as it should. The earlier prediction `0.424 sqrt(8/n) = 0.0024` had a factor 2
+slip: 0.424 is `dTV/dbeta` for an antipodal flip, but the fitted linear coefficient moves by `Delta a = 2 beta`, so `dTV/d(Delta a) =
+0.212` (exact gradient: 0.201 and 0.209 for the two laws). Corrected: `0.212 sqrt(8/n) = 0.0012`. (Run 1 and 2's bootstrap errors
+reached down to 0.00085, below the floor: the rule below would have flagged them.)
+
+**Rules for the GPU run onward (pilot checks E2 and P keep their pre-registered criteria):**
+1. **Floor check per ensemble pair.** The jackknife error from K = 8 replicas must satisfy
+   `sigma_jk >= sqrt(chi2_{K-1}(0.025)/(K - 1)) x sigma_floor = 0.491 sigma_floor` (the 2.5 % quantile of a K-replica error whose true
+   value is the floor). Below it: a **bug flag**; that pair's verdict is suspended until it is explained.
+2. **Pooled floor check per stage.** Over the M ensemble pairs of a stage,
+   `sum (K - 1) sigma_jk^2 / sigma_floor^2 >= chi2_{M(K - 1)}(0.025)` (for M = 30: mean ratio of variances >= 0.818). Fail: the whole
+   stage's errors are suspended.
+3. **The error used in the verdicts** is `max(sigma_jk, sigma_floor)`: a jackknife error that passes rule 1 but sits below the floor is
+   replaced by the floor.
+4. **Sample size from the floor.** For the precision target `+-0.004` per pair TV, near the uniform law (`dTV/d(Delta a) = 0.212`,
+   `I^-1 = 4` on the linear block): `N_eff = (0.212^2 x 8)/0.004^2 = 2.25 x 10^4` effective samples per ensemble, summed over the
+   replicas. This replaces the draft's `2.5 x 10^5` and the E1-scaled `3.5 x 10^4`, which were guesses. `t_eff` turns it into wall
+   time.
+
+## 6d. Amendment (2026-11-23, before any GPU data): debiased coefficients ("Yes, option (ii)")
+
+**Why.** A plug-in TV between two fitted laws is biased upward by the sampling noise, about `0.023 sqrt(7400/N_eff)` for this
+13-parameter family (pilot E2, `PILOT.md`). At the planned sample sizes that is as large as the small coefficients themselves (ts pairs,
+rectangle partners) and adds about 0.2 to a column. The same holds for the KR/W1 bound (also a norm).
+
+**Estimator (as in `PREREG-PILOT.md` amendment 3; `ir_condlaw.d2_cross`).**
+- Per pair: the cross-replica U-statistic `D^2_U` over the K = 8 independent replicas (section 6b), unbiased for
+  `D^2 = Delta theta . I_mid Delta theta`.
+- Per pair coefficient: `C_D = (1/2) sqrt(max(0, D^2_U))`. This is an upper bound on the sup-form TV coefficient in the linear regime;
+  conservative by the direction factor, about 1.19 for these laws.
+- **W1 coefficients:** the same U-statistic with the H^-1 metric `M` in place of `I`, where `M_ij` is the H^-1 inner product of
+  `p (phi_i - E phi_i)`, with the degree split of `kr_upper`. That gives `KR_D = sqrt(max(0, Delta theta . M Delta theta)_U)`, and the
+  coefficient per radian is `KR_D / delta`. **Not coded yet**; it must be coded and selftested before the GPU analysis.
+- **W1 move size:** `delta = 0.5 rad` (changed from 0.2), so that the per-pair KR change is resolvable. Linearity is checked on the
+  s<-ss class at `delta = 0.2` (Stage A).
+- **Class level:** pairs in one lattice-symmetry class have equal true coefficients. A class contributes multiplicity x
+  `(1/2) sqrt(max(0, D^2_U))` for each background.
+- **Plug-in TV and KR_upper** are reported alongside, for comparison only; **verdicts use `C_D` and `KR_D`**.
+- **Errors and floor:** jackknife over the K items, `t_7 = 2.429`. Floor
+  `Var(D^2) >= 4 Delta theta . I Sigma I Delta theta + 2 tr((I Sigma)^2)` (pilot E2, amendment 3), with the 6c rules 1-3 applied to
+  `D^2`.
+
+**Consequence for the verdicts (fit predictions, numerical).** In `C_D` units (bound, factor 1.19), the fitted action's spatial sup
+column at 2.80 is about **1.05 (ss) + 0.17 (ts) + 0.38 (rectangles) = 1.6**. So with the conservative estimator the sup-form H_prop is
+expected to **FAIL** at 2.80. That is consistent with "UNDECIDED or FAIL" in section 4. The decisive quantities there remain H_adj and
+the **W1 column (`KR_D`, with rectangles)**.
+
+**Sample size per class from the floor** (two ensembles of `N_eff` each; `sigma^2(D^2) = 8 D^2/N + 104/N^2`; requirement
+`sigma(D^2) <= D^2_fit/3`):
+
+| class | fit TV per pair | `C_D` per pair | column share (C_D x multiplicity) | `N_eff` needed per ensemble |
+|---|---|---|---|---|
+| s<-ss (12) | 0.0735 | 0.0875 | 1.05 | 2.7 x 10^3 |
+| ts (6 for spatial z) | 0.0232 | 0.0276 | 0.17 | 2.7 x 10^4 |
+| rectangle (90) | about 0.0036 | 0.0042 | 0.38 | **1.2 x 10^6** |
+
+The rectangle class is the expensive part (`D^2` per pair 7 x 10^-5, in the noise-dominated regime). Rule: classes whose fit-predicted
+column share is below 0.05 are measured at the ts sample size and reported as **upper limits**:
+`(1/2) sqrt(D^2_U + t_7 sigma)` x multiplicity, added to the column. The rectangle class gets its own `N_eff` from this table; its cost
+is projected separately in `TIMING.md`, and the owner decides whether to buy it.
+
+## 6e. Amendment (2026-11-23, before any GPU data): the corrected floor (pilot amendment 4, calibrated by C1)
+
+Everywhere 6c and 6d use a floor, the following applies:
+- **Single statistics** (TV, Jbar, plug-in KR): `sigma_floor^2 = sum over the two ensembles of grad g . I^-1 Gamma I^-1 grad g / N`, with
+  `Gamma` the batch-means long-run covariance of `phi(V_x(t))` (batches of 20 trajectories). This replaces the scalar `2 tau_psi` form;
+  it is the multivariate version of the same influence-series correction.
+- **`D^2_U`:** `Var = 4 d.I Sigma I d + (2K/(K - 1)) tr((I Sigma)^2)`, `Sigma = sum_k I_k^-1 Gamma_k I_k^-1/N_k`
+  (`ir_condlaw.d2_floor4`).
+- **Calibration:** C1 on exact i.i.d. samples gave spread / floor = 1.004 (null) and 0.955 (true pair).
+- **Unchanged:** the 6c rules 1-3. The sample sizes of 6d (computed with `Gamma = I` and without `K/(K - 1)`) rise by at most
+  `K/(K - 1) = 1.14` in the noise-dominated classes (the rectangle class: about `1.3 x 10^6`); the projection uses the corrected values.
 
 ## 7. Code (not written)
 
