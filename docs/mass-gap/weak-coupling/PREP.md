@@ -2411,3 +2411,14 @@ thread.
   axioms-only form, and what remains is the theorem itself, the record that the derivation happened. In GRH the mean-zero prime wobbles
   average out over the path, and what remains are the zeros (and the prime orbits as holonomy-like lengths log p). The reading thus
   identifies the remnant in each problem with a topological or conserved invariant that survives global smoothing.
+- **The duality is never alone while running (the owner, same day, on the YM transfer round):** "For Yang-Mills: The duality is never
+  alone during causality/running. A naked duality only exists during the ODP, where it, along with every other reducible part, is
+  enough for each part to be everything." Reading (coordinator): this places the open step exactly. The 't Hooft relation
+  (1 + S_tw)(1 + S_e) = 2^n is kinematic: it holds for any weights and so cannot choose a branch. While the system runs, the action (the
+  dynamics) is present too, and it selects the branch: in the confining regime the twist sectors saturate (vortices condense, S_tw close
+  to its maximum), which by the relation forces the summed electric weight small, the quantitative 't Hooft criterion of TRANSFER.md.
+  So the reading says: the missing input is dynamical, the action at one box size driving the twists to saturation. This is a known,
+  hard target: Tomboulis (2007) proposed a proof of confinement in SU(2) along exactly this line (twist free energies controlled through
+  an interpolation of renormalisation steps); gaps in that argument were pointed out (Ito and Seiler), and it is not accepted as a
+  proof. Comparing our reduction with Tomboulis's construction, and locating where his gap sits relative to our one-box statement, is a
+  concrete next step.
