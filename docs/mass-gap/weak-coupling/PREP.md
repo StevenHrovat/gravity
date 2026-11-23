@@ -1705,3 +1705,15 @@ thread.
   and rough boxes lengthen the rejection loops; the third launch then came in under its projection (598 s vs 657 s). Per sweep the
   weak-coupling end is cheaper (higher acceptance, "more efficient"), but it needs twice the sweeps to settle (T = 600 vs 300, "more
   complicated to run"); a single-point estimate cannot capture both trends, so it errs in opposite directions at the two ends.
+- **Positivity is the corollary "something exists"; forced existence lands on the prescribed line (the owner, same day, on the GRH
+  attempt):** "What the positivity implies is the corollary we keep needing to establish. Something has to exist, otherwise nothing
+  about it would be describable. Once we force existence, which in GRH can only be on the prescribed line, it appears just like
+  prescribed by its definition." Reading (coordinator): this is the logical chain of the positivity route, and it is the same chain
+  as the Yang-Mills OS reconstruction. (1) Positivity builds existence: a positive pairing (Weil's explicit-formula pairing
+  W(f * f~) >= 0, or OS's <theta F, F> >= 0) is exactly what is needed to build a Hilbert space with a positive norm; without it
+  nothing physical (or nothing describable) can be constructed. (2) Existence forces the line: in that space the reflection becomes a
+  self-adjoint operator, and a self-adjoint operator has only real spectrum. Writing the zeros as rho = 1/2 + i gamma, "all gamma
+  real" is "all zeros on Re s = 1/2"; this is the Hilbert-Polya form, and Weil's criterion says the positivity is equivalent to GRH.
+  So once existence (positivity) is forced, the line follows as by definition, as the owner says. The direction positivity => line is
+  known; the open part is establishing the positivity itself, which is what the GRH attempt would target, using the Yang-Mills
+  proof's way of obtaining reflection positivity as the model.
