@@ -2756,3 +2756,23 @@ thread.
   (`rh-guide/grh/SEMILOCAL.md`, `TRANSFER.md`; no subset assembly, Lean). In ODP terms: pressing with 2 and 3 fixes the start, and the
   positivity must then come from one construction over all primes at once (an identity), which is the open step. (b) The trivial zeros
   sit at every negative even integer, the mirrors of all odd s >= 3; -2 is the first of them, not the only one.
+- **Extension to positivity: rooted in G0, shared by everything it describes; an impossible system collapses into CMOS (the owner,
+  same day):** "Because it is, at it's core, rooted to G0, anything that can be described by it has to share that existence, if the
+  whole system is no longer possible, it collapses into CMOS." Reading (coordinator): both halves have exact counterparts in the
+  reconstruction from a positive form. (1) *Everything described shares the positivity.* Every vector built in the space has
+  nonnegative norm: <v, v> >= 0 for every v, and every restriction of a positive form to a subspace (every finite section, every
+  sub-collection of observables) is positive again (`pos_of_sections`, `Unified/GRH.lean`, Lean; for Yang-Mills E[theta(F) F] >= 0 for
+  every observable F on the positive-time side, and the OS contraction Q(tau u, tau u) <= Q(u, u), `M1/UVTVOS.lean`, Lean). Positivity is
+  set once, at the root (the form, G0), and inherited by every description, with no further check. (2) *What is not possible collapses.*
+  The reconstruction keeps only what the form can see: vectors of norm zero are identified with 0 (`RPData.H` in `M1/UVTVOS.lean`, Lean:
+  the completion is Hausdorff, so null vectors collapse automatically; the GNS quotient by the null space [classical]). In the finite GRH
+  model this is visible: after the closure every new direction is null and adds nothing (entry "two separate ways"); if the form is
+  identically zero, the whole space collapses to {0}. If the form is negative somewhere, no Hilbert space exists at all, only an
+  indefinite (Krein) space, and that is exactly what a zero off the line produces (`krein_off_line`, `GRH/Orbits.lean`, Lean). Read in
+  DMP: the null vectors (norm zero, "it does not exist") are the collapse into CMOS, the confined non-existence of the tick (SYNTHESIS
+  section 5); a negative norm is not a possible existence. The logical counterpart is Goedel completeness: a consistent description has
+  a model and every consequence shares it; an inconsistent one has none, and everything collapses (ex falso) [classical]; the
+  project's "contradiction excised at G0" entry. Care point: the collapse removes the null part, not the system: a form that is
+  positive but degenerate still gives a valid (smaller) existence; only a negative direction makes the whole construction impossible.
+  So the three outcomes are: positive (a full existence), positive with null part (an existence plus a collapsed remainder in CMOS),
+  negative somewhere (no existence; for GRH, a zero off the line).
