@@ -189,3 +189,13 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * First open step: the 2d sum. Needs floor exponent C < log(8/7) = 0.134 (column) or < 0.22 (disagreement percolation, p_c of
   Z^4 about 0.197); at L_* C is of order 100; larger boxes hurt (C grows like the surface).
 * Large fields: small set (rarity) plus a boundary factor e^{-2 K_R}; not null; irrelevant to the failure.
+
+## Round 13 (2026-11-23, uncommitted; transfer round from P vs NP and GRH)
+
+* `TRANSFER.md` (with DMP section); `formal/ProofPhase/Crossover/Runs.lean` (7 theorems, imports GRH/Tate; `axioms-dy.log` 44
+  Crossover theorems, standard axioms; `~/formal-dy` deleted).
+* Multi-sector duality (1 + S_tw)(1 + S_e) = 2^n (paper, 't Hooft): channels multiply, so duality caps the smaller summed weight
+  at sqrt(2^n) - 1 >= 1 for n >= 2 (Lean): no summable floor; pairs across a DB add sectors (worse).
+* First open step: S_e(L) < 1, equivalently S_tw(L) > 2^{n-1} - 1 at one box (quantitative 't Hooft criterion; Lean equivalence).
+* Holonomy: right carrier, no extra summability (face sum = 2 to 4 x sheet pieces; needs F_tw > log 11).
+* "It runs": one-box statement = strict contraction on the neutral sector; runs_two_targets puts it beside GRH's target.

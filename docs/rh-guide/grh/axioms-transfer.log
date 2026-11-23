@@ -1,0 +1,8 @@
+== build ProofPhase.GRH.Transfer
+Build completed successfully (3092 jobs).
+== axioms
+'ProofPhase.GRH.prod_one_sub_le_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.margin_pos_of_factors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.two_term_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in Transfer.lean

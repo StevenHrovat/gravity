@@ -1,0 +1,19 @@
+== build ProofPhase.Proof.CPPairs
+Build completed successfully (8931 jobs).
+== axioms (14 declarations)
+'ProofPhase.Proof.Edge.fan' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Proof.Edge.fan_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.fan_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.fan_cheap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.HoldsAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.addL' does not depend on any axioms
+'ProofPhase.Proof.Edge.scaleL' does not depend on any axioms
+'ProofPhase.Proof.Edge.roundL' does not depend on any axioms
+'ProofPhase.Proof.Edge.CPD' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.holds_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.holds_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.round_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.creative_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.refutation_needs_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Proof
