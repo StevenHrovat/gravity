@@ -1,0 +1,16 @@
+== Part 1: trapping recursion M' = q M + C M^2 + r
+q = e^-0.5 = 0.606531, C = 1.0, threshold r* = (1-q)^2/(4C) = 3.870453e-02
+  r = 0.50 r*: bounded, M_200000 = 5.762225e-02 <= R = 1.967347e-01
+  r = 0.99 r*: bounded, M_200000 = 1.770612e-01 <= R = 1.967347e-01
+  r = 1.01 r*: escaped after 85 steps
+  r = 2.00 r*: escaped after 11 steps
+== Part 2: rescaled steps in finite physical time
+gamma = 0.7: T after 60 steps = 1.986433863634, bound 1/(1-e^-gamma) = 1.986433863634
+  amplitude after 60 steps = e^(gamma*60) = 1.739e+18; BKM sum = 60.0 (one quantum per step)
+== Part 3: the for-all over outsides of O1 (SU(2), box of side n lattice units)
+ n | boundary links | interior links | outside dim (gauge-fixed) | integral dim | log10 cells at 10/dir
+ 2 |            208 |              8 |                       387 |           21 | 387
+ 3 |            672 |             96 |                      1299 |          240 | 1299
+ 4 |           1568 |            432 |                      3075 |         1053 | 3075
+ 6 |           5232 |           3000 |                     10371 |         7125 | 10371
+ 8 |          12352 |          10976 |                     24579 |        25725 | 24579
