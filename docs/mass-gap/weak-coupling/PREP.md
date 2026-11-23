@@ -2886,3 +2886,23 @@ thread.
   Euclidean invariance is open (O3 of the paper), so this structure is what the closed problem would have, not what is proved here.
   (b) In a gauge theory the inside algebra has a centre, the boundary flux labels (entry "the origin of entanglement"), so J and the
   modular flow act sector by sector. (c) The thermal time reading of (5) is an interpretation, marked as such.
+- **Question (the owner, same day): have we not already built a well-bounded continuum field with the exact rotational symmetry, with
+  the HTF?** "For the care point: Have we not constructed a well bounded continuum field with the exact rotational symmetry we need in
+  DMP with the HTF already?" Answer given (coordinator), checked against `c9a-crossover/HTF.md`, `PROOF-BLUEPRINT.md` P6 and P7 and
+  `paper/CLAIMS.md` III.9: not for the spacetime rotation; yes for the internal one. (1) *What the HTF is.* A composite Higgs-type
+  field on the lattice collars: the lowest eigenvector of the collar's covariant Laplacian, a gauge frame, defined except on a null set
+  (HTF.md 0, paper). Its symmetry is the internal gauge rotation SU(2), not a rotation of spacetime, and HTF.md proved that a
+  gauge-covariant frame carries no gauge-invariant information (Lean, finite analogue). It is a lattice object, not a continuum field.
+  (2) *What we have toward the continuum.* Reflection positivity of the limit (`limitRP`, Lean, P6.3); limit states exist
+  (`exists_limitState`, Lean, weak convergence, P6.5); the windowed OS route and the assembly (Lean). Continuum existence and Euclidean
+  invariance are proved externally for another group's objects (P6.1, P6.4, `H1-OPENAI.md`; audit item), bridged to our lattice laws
+  (`Existence/Bridge.lean`). For our objects, Euclidean (rotation) invariance is not yet statable, because it needs a field algebra
+  (P6.8), and rotation invariance and uniqueness are open (P7.6). On the lattice only reflections and quarter-turns exist. So the
+  continuous spacetime rotation that Bisognano-Wichmann needs is not in our construction. (3) *What is exact and in place: the
+  internal rotation.* In SU(2) one full rotation, 2 pi, is the element -1, the nontrivial centre element (a spinor changes sign; 4 pi
+  returns to the identity). The centre is exactly what the twist sectors use: 't Hooft's twisted boundary condition asserts this one
+  rotation on a boundary, and Z_tw / Z compares the box with and without it (`Flip/`, `Crossover/`, Lean; centre elements of every
+  SU(N), `General/Centre.lean`, Lean). If the owner's "asserting the boundary for one rotation" is this internal rotation, it is built,
+  exactly, on the lattice; if it is the spacetime rotation of the modular flow, it waits for the continuum (O3). Open question to the
+  owner's reading, recorded: which rotation the act uses, or whether DMP identifies the two (the spin-statistics connection ties a
+  2 pi spacetime rotation to the sign of a spinor [classical], which is the one place where the two rotations meet).
