@@ -178,3 +178,14 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * Physical units: uniform eta0 at fixed physical box size l_* = L_* a gives m_phys >= -log eta0 / l_* (Lean); Doeblin's
   physical rate goes to 0 as a -> 0 (Lean), so the tick must come from the blocked theory at g_*.
 * Small-torus run (ONEBOX-CHECK 8): pre-registered, timed (projection 4.0 h, band 2.7-5.7 h), running as one background process.
+
+## Round 12 (2026-11-23, uncommitted; renormalized Doeblin)
+
+* `RDOEBLIN.md`; `formal/ProofPhase/Crossover/RDoeblin.lean` (5 theorems; `axioms-dy.log` 37 Crossover theorems, standard
+  axioms; `~/formal-dy` deleted).
+* Premise corrected: M1's L_* is weak coupling; order-one coupling only at L1 after the open crossover P4.
+* Lean: an a-independent floor on blocked kernels gives chain contraction (1 - eps)^n and physical decay exp(-m D), m uniform
+  in a; with M1's floor (paper) this is a gap uniform in a on a spatial torus of fixed physical size.
+* First open step: the 2d sum. Needs floor exponent C < log(8/7) = 0.134 (column) or < 0.22 (disagreement percolation, p_c of
+  Z^4 about 0.197); at L_* C is of order 100; larger boxes hurt (C grows like the surface).
+* Large fields: small set (rarity) plus a boundary factor e^{-2 K_R}; not null; irrelevant to the failure.

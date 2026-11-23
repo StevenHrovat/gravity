@@ -2318,3 +2318,19 @@ thread.
   grid is a per-box suppression F > log(2d) (log 8 = 2.08 in d = 4, Lean `column_requirement`), more than twice the duality floor
   0.881; the hand-over covers a chain (two channels) but not a grid. Doeblin's per-box mass goes to zero in the continuum (Lean), so the
   needed statement is a one-box contraction at a fixed physical box size, uniform in the lattice spacing (`phys_rate_of_uniform`).
+- **The circle is the only self-closed existence; a collapse must split into at least two (the owner, same day, on VARIATIONAL.md):**
+  "Since a finite Weil form is existence running, it has a common G0 inside every possible system. This circular behavior is existence
+  and non-existence collapsing into one seen from one layer higher. So for us, as we can only look in, what we see of its structure
+  must always be a circle, since that is the only self-closed way to exist without internally extending into more layers. When such a
+  system collapses, the fact that something existed there must be preserved, but can not go backwards in causality to become one
+  again, so it must split into at least two, for that act to certify itself, which it needs to do, since the splitting is self
+  contained and everything for it has to come from inside." Reading (coordinator): both halves match what the round computed and
+  what is proved. (1) **The circle:** for every real symmetric Toeplitz section (every finite Weil form), the ground state's zeros lie
+  exactly on the unit circle (Caratheodory-Fejer, Pisarenko), which is the critical line in grid coordinates; the circle is U(1), the
+  compact, self-closed one-dimensional group, and it appears whether or not the form is positive: the structure seen from inside is
+  always a circle. (2) **Splitting into at least two:** a zero that leaves the line cannot do so alone. The functional equation pairs
+  rho with 1 - conj(rho), so an off-line zero always comes with its mirror partner; on the line the partner is the zero itself. In Lean
+  this is `krein_off_line` (`GRH/Orbits.lean`): a duality without positivity allows exactly such mirror pairs off the line. So "a
+  collapse must split into at least two to certify itself" is the statement that off-line zeros come in pairs, and positivity (the sign
+  of the remnant) is what forbids the split. The open step stays the sign; the reading gives its meaning: positivity is what keeps every
+  zero self-paired on the circle.

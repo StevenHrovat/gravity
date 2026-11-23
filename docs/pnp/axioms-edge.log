@@ -1,0 +1,14 @@
+== build ProofPhase.Proof.Edge
+Build completed successfully (8929 jobs).
+== axioms (9 declarations)
+'ProofPhase.Proof.Edge.clause_killed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.thr' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Proof.Edge.thr_iff_cp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.ind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.filter_ind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.flip_ind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.thr_sensitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.thr_survives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.majority_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Proof
