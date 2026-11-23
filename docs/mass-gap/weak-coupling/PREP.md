@@ -2839,3 +2839,22 @@ thread.
   classical-probability statement; it is not the absence of quantum entanglement in the state (the vacuum at one time is entangled
   across space, previous entry). (b) For actions of longer range, the "present" must be a thicker slice; the statement survives with
   a block transfer matrix.
+- **Entangled, defined: certified to be tied to the same root as another node (the owner, same day):** "Entangled means, to be most
+  precise I think, to be certified to be tied to the same root as another node." Reading (coordinator): the definition has exact
+  counterparts on both of its words. (1) *The same root.* Every state of a subsystem is the marginal of a pure joint state (its
+  purification, unique up to a change on the other side) [classical]. A pure state is a root in the precise sense: it cannot be split
+  into other states (an extreme point). Two subsystems are entangled when their joint state cannot be written as a mixture of states
+  each with its own separate root (not separable) [classical]: they hang from one root, not from two. (2) *Certified.* Entanglement is
+  shown by a certificate, and the certificate is a failure of positivity. An entanglement witness is an observable W whose expectation is
+  >= 0 on every separable state; a negative value certifies a shared root (Horodecki 1996) [classical]. The partial transpose is
+  positive for every separable state; a negative eigenvalue certifies entanglement (Peres-Horodecki) [classical]. A violated Bell
+  inequality certifies it without trusting the devices [classical]. So in the owner's words: positivity is the certificate of
+  existence, and a certified failure of separate positivity is the certificate of a shared root. (3) *Applied to the last two entries.*
+  Across space at one time, two boxes are certified to share the flux label through their common face (Gauss's law, proved on both
+  sides of every box, `exists_sheet_both_sides`, Lean): tied to the same root, entangled in this sense. Along time, past and future
+  share only the present slice (the Markov property): no certificate ties them to a root beyond the present, so the time direction is
+  coupled, not entangled, and it runs. Care points: (a) entanglement is always relative to a split into nodes; the same state can be
+  entangled for one split and not for another. (b) Shared roots are exclusive in a precise sense: a node maximally tied to one partner
+  cannot be tied to a third (monogamy of entanglement, Coffman-Kundu-Wootters) [classical]. That fits a tree in which each certified
+  tie uses up a share of the root, and it is worth keeping in mind before reading "everything is rooted in G0" as "everything is
+  entangled": in this definition the tie must be certified between specific nodes, which G0 as a common origin does not do by itself.
