@@ -10,6 +10,29 @@ intuition, not a claim.
 
 ---
 
+## 0. Update (same day): Yang-Mills reduced to one box at one scale
+
+The owner answered question 1 of section 6 (the photon as act carrier: composition is a conservation law), named the mechanism
+(the DB re-encodes into a new G0 and loses what the encoder cannot carry: a strong data-processing contraction) and supplied the
+uniformity (the arrow of causality: the same transfer step at every DB). With the crossover rounds of the same day this reduces Y1 to
+a single statement about a single box:
+
+| Piece | Status | Where |
+|---|---|---|
+| Per-box hand-over rate: max(F_tw, F_e) >= log(1 + sqrt 2) = 0.881 at every box size | **Lean** | `Crossover/HandOver.lean` |
+| A flux-carrying outside forces at least one sheet (the quantum, "at least something") | **Lean** | `Crossover/FluxRate.lean` |
+| Superadditivity along the chain: F_e(kL) >= k (F_e(L) - 2C); the rate multiplies iff F_e(L) > 2 c(L) at one scale | **Lean** (abstract transfer-matrix form) | `Crossover/CompositeHTF.lean`, `c9a-crossover/HTF.md` |
+| Uniformity along the chain: every DB applies the same transfer step, so the loss rate eta is the same everywhere | **classical** (translation invariance; homogeneous Markov chain) | PREP.md, "uniformity from the arrow of causality" |
+| From a block gap to the mass gap (OS route, assembly) | **Lean** | `OS/`, `Assembly.lean`, `M1/` |
+| **The one-box statement:** at one box scale L, the DB's loss rate eta < 1, i.e. the neutral sector is gapped there (F_e(L) > 2 c(L)), for every well-defined outside | **open** | the original one-box condition, now with everything else removed |
+
+So what was "the product over boxes" (Y1) is no longer about many boxes. Everything global is in place; what is left is one box, one
+scale, uniformly over its outsides. Y2 to Y4 below are the pieces of that one statement (the inside residue, the window, condition A).
+Measurements can refute it but cannot establish it (provability table, `c9b-adjoint/REDESIGN.md` section 8); a proof needs a
+worst-case argument for one DB.
+
+---
+
 ## 1. The pattern behind all of them
 
 Every open step has the same shape:
@@ -33,7 +56,7 @@ certificate to the next one without loss, that rule is the missing piece in all 
 
 | # | The open question, plainly | DMP domain | What DMP would need to supply |
 |---|---|---|---|
-| Y1 | **The product over boxes.** Each box is suppressed by at least 0.881 in one channel (twist or electric). A decay over distance D needs that suppression multiplied over D/L boxes in a row. A chessboard-type estimate would do it; it is not proved. | Acts and remnants: a chain of acts across adjacent DBs | Why a certified box hands its certificate to its neighbour, and why the channel (rarity or disorder) cannot keep switching in a way that cancels the product. |
+| Y1 | **The product over boxes. Reduced (section 0):** superadditivity along the chain is proved and uniformity comes from the arrow of causality, so Y1 now needs only the one-box statement, F_e(L) > 2 c(L) at one scale for every well-defined outside. Before the reduction: each box is suppressed by at least 0.881 in one channel, and the suppression had to be multiplied over D/L boxes. | Acts and remnants: a chain of acts across adjacent DBs | Why a certified box hands its certificate to its neighbour, and why the channel (rarity or disorder) cannot keep switching in a way that cancels the product. |
 | Y2 | **The inside residue.** Two configurations defeat a uniform bound inside one box: crossing flux with two nearly equal cheapest surfaces (a tie), and a near-cut network that spans the box. At beta 2.3 the near-cut network spans at every scale; at 3.5 it stays in finite clusters. | The DB itself: the inside of a box at its own scale | Why a tie is not a stable state (an undecided assertion), or why a spanning near-cut network is the confined, disorder side and contracts for that reason. |
 | Y3 | **The hand-over between rarity and disorder.** Weak coupling contracts by rarity (bad sets are isolated), the confining side by disorder (vortices percolate). In between there is a window where neither mechanism is proved (roughly 0.18 to 1.8 nats per plaquette). | The ODP's end: the hand-over of "running" | Why the hand-over has no dead zone: the 0.881 per box says the two channels cannot both be weak in one box, and what is missing is that this holds uniformly as the scale moves through the window. |
 | Y4 | **Condition A, uniformly.** The collar must have a conditional mass m > 0 for every outside, not only on average. Measured: about 4 in block units, on typical configurations. | The DB as a causality-preserving boundary | Why the boundary attenuates for every well-defined outside, not just typical ones. The owner's "collars do not decorrelate while causality exists" names it. |
@@ -82,7 +105,9 @@ measurement is out of reach here (`c9b-adjoint/ROUTE3.md`, `TIMING.md`).
 ## 6. Questions to the owner's intuition
 
 1. **Composition of acts.** When one certified act hands over to the next, what in DMP guarantees the certificate is not diluted?
-   (Y1, G2, N1)
+   (Y1, G2, N1) *Answered by the owner (the photon: a conserved carrier, quantized, no remainder; uniformity from the arrow of
+   causality). For Yang-Mills it reduced Y1 to one box (section 0). For GRH and P vs NP the carrier is identified (zeros on the line;
+   the named parity), and their open steps stay as stated.*
 2. **Ties.** Two equally cheap ways for existence to assert itself (two spanning surfaces of equal cost): does DMP forbid a lasting
    tie, and why? (Y2)
 3. **The window.** Between "rare" and "disordered", is there a DMP reason the hand-over cannot stall? (Y3)
