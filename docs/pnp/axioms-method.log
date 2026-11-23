@@ -1,0 +1,22 @@
+== build ProofPhase.Native.Method
+Build completed successfully (8924 jobs).
+== build ProofPhase.Native.RouteBChain
+Build completed successfully (8959 jobs).
+== same statements (no output before the axiom lines = accepted), then axioms (15 declarations)
+'ProofPhase.Native.fixed_after_aux' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Native.fixed_after' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Native.excess_iterate_le' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Native.reaches_floor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Native.real_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Native.real_never_arrives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Native.pairUp' depends on axioms: [propext]
+'ProofPhase.Native.length_pairUp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Native.sum_pairUp' depends on axioms: [propext]
+'ProofPhase.Native.le_two_mul_of_mem_pairUp' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Native.ceil_half_step' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Native.length_iterate_pairUp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Native.iterate_clog_pairUp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.RouteB.abs_ccorr_le'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.RouteB.abs_nCorr_le'' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Native

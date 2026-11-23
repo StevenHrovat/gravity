@@ -2163,3 +2163,13 @@ thread.
   per-box rate is 0.881, `Crossover/HandOver.lean`); in GRH the prime-by-prime induction ends when positivity is established and the
   Hilbert space can be completed; in P vs NP the local certificate of the class theorem. After the hand-over the system runs
   (minting), and nothing in the ODP is needed any more.
+- **In NP terms: an irreducible derivation from the axioms, provable in its system (the owner, same day, on NATIVE-METHOD.md):** "So
+  in NP terms, that an irreducible derivation can be made from its axioms, which is provable in its system." Reading (coordinator):
+  the native method shows the first half exactly and names where the NP question sits. (1) **Irreducible, in finitely many passes,
+  proved:** every pass of the method lowers a natural-number measure by at least one quantum, so it reaches an irreducible proof after
+  at most as many passes as the starting measure (`Native/Method.lean`, `fixed_after`); without quantisation a strictly decreasing
+  real measure need never arrive (`real_never_arrives`). Depth even contracts by half per pass (`iterate_clog_pairUp`). (2) **Provable
+  in its system:** checking a derivation is always cheap (polynomial in its length); that is what puts a problem in NP. (3) **Where
+  the NP question sits:** regrouping never deletes checking work (`sum_pairUp`): the irreducible core is a floor the method cannot go
+  below. NP vs coNP asks whether that floor, for refutations of false instances, is always of polynomial size. The native method
+  finds the floor; the open question is its size.
