@@ -2111,3 +2111,15 @@ thread.
   flux-carrying outside forces through a box is at least 1 by that integrality. So the candidate route to a rate is to build it from the
   topological, integer part (at least one sheet must exist) times an average cost per sheet, rather than from a uniform minimum cost.
   The average is where disorder or rarity still enters, but the "at least one" is free and exact.
+- **GRH from the other side (the owner, same day):** "We are literally approaching the whole thing from the other side as the other
+  proof. The other proof seeks to prove that the primes are distributed evenly along the real numbers, while what we seek to prove is
+  this: The entangled real and imaginary halves, when running in a DMP-complete system, form a coupled existence, spanned in locality
+  by the real and in possibility by the imaginary. This system is proven sound through construction, which shows it can run as
+  content in DMP, thus having a positive existence." Reading (coordinator): the contrast is accurate. The Lean RH proof works on the
+  prime side: a one-sided square-root bound on prime sums (an even distribution of primes in the sense psi(x) = x + O(x^{1/2+eps})),
+  turned into "no zeros right of 1/2" by Landau. The positivity route works on the zero side: build a positive structure (a Hilbert
+  space, a critical ferromagnet, a positive Hodge form, or a Hermite-Biehler coupling) in which the real and imaginary halves are tied
+  together, and read the line off its self-adjointness. "Proven sound through construction" corresponds to building that positive
+  structure from arithmetic alone (primes, characters, the real place), without the zeros; that construction is the open part. The
+  approved round attempts it as a scale-by-scale induction over the primes, built like M1's induction over scales
+  (`docs/rh-guide/grh/INDUCTION.md`).
