@@ -3802,3 +3802,18 @@ thread.
   is what GRH adds" has a precise form: the tick over Z is an operator whose existence on a positive space is equivalent in strength to
   GRH. Care point: the external Lean proofs add the *theorems* (RH, Dirichlet GRH) to what can be imported, not such an operator; the
   operator itself, the arithmetic tick, is still unknown, and supplying it is the same open step as the sign.
+- **The operator comes from the universal truth of a theorem inside a DB: once one element of a proof is shown to exist, it becomes a
+  valid G0 for that proof, since it can be entirely described by existence as defined (the owner, same day):** "The operator comes from
+  the universal theorem thruth inside a DB. When one element of a proof is shown to exist, it becomes a valid G0 for that proof, since
+  it can be entirely described by existence as defined." Reading (coordinator): exact, and it is the step at the heart of Goedel's
+  completeness proof. (1) *A proved existence becomes a root.* Once "there exists x with P(x)" is proved, logic lets the proof
+  introduce a fresh name c with P(c) and reason from it as from an axiom (existential instantiation). Henkin's proof of the completeness
+  theorem does exactly this for every proved existential: each gets its own witness constant, and the model is built from those
+  witnesses [classical]. In Lean this is how every theorem works once proved: it becomes a constant of the environment that later
+  proofs may use, a new root for everything after it. (2) *Why this is safe.* Adding a proved statement, or a witness for a proved
+  existential, as a new root is a conservative extension: nothing new about the old language becomes provable, so no contradiction can
+  enter [classical]. That is the formal version of "it can be entirely described by existence as defined". (3) *For the tick operator.*
+  Read this way, the arithmetic tick would become a valid root the moment its existence is proved: a Hilbert-Polya-type operator on a
+  positive space, shown to exist, could then be named and used everywhere after. Care point: the new root carries exactly what was
+  proved about it and nothing more; the existence proof itself (the operator on a positive space) is still the open step, and naming a
+  witness before its existence is proved would be assuming it.
