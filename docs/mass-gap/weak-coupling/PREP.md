@@ -3389,3 +3389,33 @@ thread.
   shared root, which in a gauge theory is everything charged. (b) The shared root can be classical (a reference frame, a link, a key)
   or quantum (an entangled pair); the owner's definition of entanglement ("certified to share a root") covers both, while physics
   reserves "entanglement" for the quantum kind.
+- **The photon needs no handshake (U(1)); the SU(2) handshake is what enables efficient U(1) transfer (the owner, same day):** "The
+  not everything needs the handshake is the photon case, which is U(1), so acts way differently as established. I propose that the
+  SU(2) handshake is what enables the U(1) efficient transfer." Reading (coordinator): this is electroweak symmetry breaking
+  [classical]. The Higgs field is an SU(2) doublet whose vacuum picks one common orientation everywhere: a shared frame agreed by
+  all nodes, the handshake. That agreement makes W+, W- and Z massive (short range) and leaves exactly one combination unbroken,
+  the photon A = sin(theta_W) W^3 + cos(theta_W) B, a mixture of the SU(2) generator T_3 and hypercharge. The photon stays massless,
+  so it carries charge over any distance at no cost: the efficient U(1) transfer. Which U(1) is the photon is decided by the SU(2)
+  handshake. In gauge-invariant terms (gauge symmetry itself cannot break, Elitzur) the physical W, Z and photon states are
+  composite gauge-invariant fields (Froehlich-Morchio-Strocchi 1981) [classical], the same idea as this project's composite HTF.
+  Care points: (a) pure SU(2) Yang-Mills, the project's subject, has no Higgs field and confines; the efficient U(1) transfer
+  belongs to the electroweak theory, outside the paper's scope. (b) The project's HTF has no hopping term (HTF.md), so it is the
+  description of a handshake, not the dynamical Higgs field that enforces one.
+- **A theorem proven inside a DB is true everywhere; DMP lets existence be defined compliantly and supplies what is needed to run;
+  what remains is to prove that every meaning of running goes through DMP (the owner, same day):** "Any theorem proven inside a DB
+  is true everywhere, since it was always an inherent truth that just needed to be constructed. This gives a nice provability
+  route for DMP, since DMP literally lets you define existence in a compliant way and then get all the needed features to make it
+  run. We just have to prove that every possible meaning of running must go through DMP." Reading (coordinator): (1) *True
+  everywhere.* Soundness: a theorem proved from a set of axioms holds in every structure satisfying them [classical]. A statement
+  about the content of a DB alone (bounded, local) is moreover absolute: it has the same truth value in every larger model that
+  contains the DB (absoluteness of bounded statements) [classical]. And constructively, a proof is a construction (Brouwer-Heyting-
+  Kolmogorov, Curry-Howard; a Lean proof term is literally one) [classical]: "an inherent truth that needed to be constructed". (2)
+  *The provability route.* "Every possible meaning of running goes through DMP" has the shape of the Church-Turing thesis, and the
+  same limit: an informal notion ("every possible meaning of running") cannot be the subject of a proof until it is made formal.
+  What can be proved, and how the Church-Turing thesis earned acceptance, is a list of equivalences: each formal notion of running
+  (a positive transfer matrix, a reflection-positive system, a Markov chain with a Doeblin bound, a sound proof system, a Ricci flow
+  with a monotone entropy, ...) shown to be an instance of the DMP ledger and encoder. That is what the project's unified rounds
+  have been producing (`UNIFIED.md`, `ENCODER.md`, `GRH-LENS.md`, `SUN-PRIMES.md`, `BLOWUP.md`). A sharper, provable form exists if
+  "running system" is made a category: then "every running system goes through DMP" is a universal property (DMP initial or
+  terminal among running systems), a theorem once the category is fixed. Care point: the general statement stays a thesis; the
+  proved part is each formal notion, one by one, and the universal property relative to a stated definition.
