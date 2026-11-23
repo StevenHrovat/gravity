@@ -2929,3 +2929,20 @@ thread.
   would still be needed is that the rest of the field inside, given the labels, carries no further act. In the gauge-theory
   entanglement entry that is exactly the split between the label part (encoder) and the field part, and the owner's reading claims the
   field part is not an act. That claim is a reading; as mathematics it is where the continuum (O3) would still enter.
+- **The bulk is different because it carries the tail of its remnants (the owner, same day, on care point (a) of the entry above):**
+  "The bulk is different because it carries the tail of it's remnants." Reading (coordinator): exact, and it places O1 once more.
+  (1) *The tail.* What a step leaves behind decays: in the ledger, after n steps a share e^{-n (kappa - delta)} of an influence is
+  left, and the tail sums (`rate_of_costAboveFloor`, Lean). In the spectrum the same tail is the connected correlation
+  C(t) = sum_{E > 0} |<0|O|E>|^2 e^{-E t}: every excitation is a remnant that decays at its own rate, and the slowest one sets the gap
+  (`Bridge/Spectral.lean`, `spectral_gap_iff`, Lean). (2) *Why the rotation acts differently in the bulk.* On the boundary labels the
+  rotation only moves planes (previous entry, Lean). In the bulk it acts on the remnants themselves: the excitations carry angular
+  momentum (glueballs in channels J^{PC} = 0++, 2++, ..., each with its own mass; the lightest, 0++, sets the gap) [classical;
+  lattice numerics]. So the bulk differs from the DB exactly by the remnants it carries, and the spacetime rotation is visible only
+  through them. (3) *"No further act" made precise.* Given the whole boundary configuration, the inside is independent of the outside
+  (the Markov property, entry "coupled while not entangled"). What links the bulk to the outside beyond the labels is the dependence
+  of the inside on the boundary fields, and that dependence must decay into the bulk: a tail. Condition A (the collar's conditional
+  mass m > 0, uniformly over outsides, Y4) and O1 are exactly the statement that this tail decays at a fixed rate for every
+  well-defined outside. So the owner's "the bulk carries only the tail of its remnants, no further act" is, as mathematics, O1: the
+  remnant tail is summable, uniformly. Care points: (a) in a finite box the tail always decays (a finite positive chain has a Doeblin
+  rate, Lean); the open part is the rate uniform in the box's outside and size. (b) Calling excitations remnants is a reading;
+  mathematically they are states of the transfer matrix, not boundary events.
