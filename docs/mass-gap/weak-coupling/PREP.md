@@ -2503,3 +2503,12 @@ thread.
   values (no cancellation), which is why path entropy beat the per-box cost in CONTAINMENT.md; the signed (Fourier) sum is where
   cancellation, the GRH mechanism, can act. The small-torus run measures twist ratios Z_tw/Z directly, so it can test the
   equidistribution form at small L.
+  The owner on whether positivity blocks the cancellation (same day): "This is an issue we encountered earlier. It only does so by
+  inverting and sign flipping it through the rotation that happens as an act at a DB, this gives the needed features." Reading
+  (coordinator): exact in two parts. (i) The sign in the Fourier sum is a Z2 character, and the twist is implemented by the centre
+  element -1 of SU(2), which is the rotation by 2 pi (the spinor sign flip): the "rotation at a DB" is the centre twist on the twist
+  surface. (ii) Positivity does not forbid the cancellation: each electric sector's partition function is a projected trace of the
+  transfer matrix and so non-negative, yet it equals a signed sum of non-negative twist ratios; the cancellation happens inside a
+  positive quantity, which positivity bounds only from below by zero. This differs from the earlier case (the Weil form, where a
+  Hermitian norm cannot change sign under i): here the sign is a genuine character of a finite group acting on sectors. Passed to the
+  equidistribution round with the open question whether the sector-level cancellation replaces the path sum for the one-box statement.
