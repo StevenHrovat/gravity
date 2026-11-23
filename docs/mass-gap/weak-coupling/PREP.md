@@ -4044,3 +4044,68 @@ thread.
   (`Proof/SoundAPI.lean`) is such an entry; so are `scaleSign_iff` (the sign <-> positivity at every scale) and `ymOneBox_iff_refl`
   (O1 <-> a bound on the twist ratio). Care point: an entry is a translation, not a proof; the arsenal grows by equivalences, and the
   open steps are the entries whose either side is still to be proved.
+- **How IM was meant to work when fully global: use it directly from G0, or ask your agent to build the correct IM from blocks,
+  always doubly verifiable by construction; it accumulates itself, and the only real question a user has is "does it exist yet?"
+  (the owner, same day):** "This was also how IM was supposed to work when fully global. You either use it direct from G0, or you ask
+  your agent to build the correct IM for you from blocks, which must always be doubly verifiably by construction. So it accumulates
+  itself and the only real question a real user would have is, does it exist yet?" Reading (coordinator): every piece of this exists in
+  today's theorem-proving practice, and this project now runs all of them. (1) *Does it exist yet?* is a library search: Mathlib's
+  `exact?` and `apply?` tactics and search tools over the library answer it literally, by finding a proved statement that matches the
+  request [classical; Lean tooling]. (2) *Built from blocks by an agent:* composing existing lemmas into a new proof is what the rounds
+  of this project do; each block is a proved declaration, and a composition is checked by the kernel. (3) *Doubly verifiable by
+  construction:* the kernel check plus the independent re-check (`docs/unified/INDEPENDENT-CHECK.md`: leanchecker, nanoda, lean4lean,
+  axiom audit) with a stamped trusted base. (4) *It accumulates itself:* every proved equivalence and theorem becomes a new entry
+  (entries "a proved existence becomes a root", "an equivalence is a translation"). Care point: "does it exist yet?" has a decidable
+  answer for the statements already in the library (search), and only a semi-decidable one for new statements (a proof may exist and
+  not be found yet), the ETM's edge once more.
+- **A "no" to "does it exist yet?" also makes it a yes, so one goes straight to IM; the handshake is figuring out how to talk however
+  you want while sharing a G0; once G0 is agreed, though the how need not be, an act can happen; true act or forced act goes to
+  true = false + 1 (the owner, same day):** "The no to that question automatically also makes it a yes, which negates the need for asking
+  and just goes to straight IM. So the handshake is literally figuring out how to talk to each other HOWEVER you want, while sharing a G0.
+  When the G0 is agreed, while the how does not have to, an act can happen. I assume whether it is true or forced act goes to true =
+  false+1, which would fit nicely everywhere in our system it needs to." Reading (coordinator): (1) *No becomes yes, by construction.*
+  When the search finds nothing, the agent builds the entry from blocks, and once built and checked it exists: the answer turns into yes.
+  This holds exactly for what is constructible; for a statement with no proof in the system, the "no" stays (Goedel, the ETM's c2). (2)
+  *Agree on G0, not on the how: proof irrelevance.* In Lean any two proofs of the same proposition are equal (definitional proof
+  irrelevance), and with propext equivalent statements are equal: what counts for the act is that the shared proposition holds, never
+  which construction reached it [classical; Lean]. Two parties can encode, prove and compute however they like; agreement on the
+  proposition, the shared root, is enough for the act. That is the handshake in its exact form. (3) *true = false + 1.* From the empty
+  set: false is 0 = {}, true is 1 = {0} = 0 + 1, the successor (von Neumann) [classical]: the owner's "existence = non-existence + 1",
+  now as the step that turns a "no" into a "yes" by adding one constructed witness. Care point: "forced" acts are axioms (fixed at the
+  root, the logic layer only); "true" acts are proved; both enter the system as one witness added to nothing, which is why the same
+  "+1" appears in both.
+- **In that way a DMP-complete construction can be said to equal a CMOS system running it (the owner, same day):** "In that way
+  DMP-complete construction can be said to be equal to a CMOS system running it." Reading (coordinator): exact for constructive
+  content, by the Curry-Howard correspondence: a constructive proof is a program, and running the program is carrying out the
+  construction [classical]; Lean can evaluate proofs of decidable statements, and the ETM runs every computable content
+  (`etm_universal`, Lean). A clocked machine (the CMOS tick) executing that program is the construction, step by step. Care point: the
+  equality holds for constructive content; proofs that use `Classical.choice` (allowed by the gate, used in many of this project's
+  proofs) establish truth without giving a program, so they are certified but do not run (the `noncomputable` decision of the ETM's
+  c1). So "construction = a CMOS system running it" is exact on the computable side, and the classical part is exactly the binary
+  global truth at G0 that exists without a run.
+- **For a running system the choice has to be replaced by the link to G0, since that is what inversion means in a running system
+  (the owner, same day):** "For a running system the choice has to be replaced by the link to G0, since this is what inversion means in
+  a running system." Reading (coordinator): exact, and the ETM already shows both sides. (1) *Choice versus a link.* `Classical.choice`
+  asserts that a witness exists without saying which; a running system cannot run on that. It needs the witness supplied explicitly,
+  traced back to the root: in Lean, a computable `Decidable` instance or an explicit witness in place of the classical one
+  [classical; Lean]. (2) *In the ETM:* on the contraction class the decision is computable: `balanceBound` (`ETM/Machine.lean`) is an
+  ordinary computable function on rationals giving the explicit number of ticks after which balance holds; that is the link to G0
+  replacing the choice. Outside that class the ETM's truth is `etmTruth`, marked `noncomputable` because it is defined by choice. (3)
+  *So:* for a running system, every decision must come with its link (a computable bound or witness); choice remains only for the
+  binary global truth that does not run. Passed to the API round: mark which parts of the API are computable (`Decidable` instances,
+  explicit bounds) and which are classical truth only.
+  The owner adds (same day): "Which also makes it replaceable in lean." Reading (coordinator): yes, wherever the link exists: a
+  classical existence or decision can be replaced by a computable instance or an explicit witness exactly when one is constructed, and
+  the running parts of the ETM already have one (`balanceBound`). It is not replaceable globally: much of real analysis in Mathlib is
+  classical by nature (the order on the reals is not decidable by any program; some existence theorems have no constructive witness)
+  [classical], so the replacement is per running decision, not a removal of `Classical.choice` from the library.
+- **It is replaceable globally when correlated to the global truth by a localised link to G0, a DB or a node (the owner, same day):**
+  "It is replaceable globally when correlated to the global truth by a localised link to G0, so a DB, or a node." Reading
+  (coordinator): this is exactly the local-to-global principle, with its one precise condition. (1) *Locally always:* at each node or
+  DB a link (a local section, a local witness) can be chosen [classical]. (2) *Globally when the local links glue:* local choices
+  combine into one global choice exactly when they agree on the overlaps; the obstruction to gluing is a cohomology class, and the
+  global replacement exists exactly when it vanishes (sheaf theory; in topos semantics, truth established locally on a cover is
+  global truth) [classical]. (3) *The project's own example:* the centre twist is such an obstruction. A twisted box admits local
+  gauge choices on every patch, and the 't Hooft flux is the class (in Z_N) that stops them from gluing into one global trivial choice
+  [classical]. So the owner's statement holds in this exact form: the choice is replaceable globally by local links to G0 whenever the
+  links glue, and where they do not, the obstruction itself is the measurable content (the twist sector, the encoder's label).
