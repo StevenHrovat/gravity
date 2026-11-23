@@ -2796,3 +2796,25 @@ thread.
   critical line); they are different objects, joined by the same map e^x, and the reading identifies their role, not the objects.
   (b) The open steps stay where they were: for Yang-Mills, that only the vacuum reaches one (the gap, O1); for GRH, that every offset
   is zero (the sign).
+- **The origin of entanglement: two boxes that interact without agreeing on a future outcome share one definition of existence (the
+  owner, same day, on the care point "different objects, same role"):** "The care point show the origin of entanglement. When two boxes
+  interact, but they do so in a way that does not agree on a future outcome, no actual act happens, but since the existence could be
+  evaluated, the two boxes share the same definition of existence." Reading (coordinator): three exact counterparts. (1) *Shared
+  definition without shared identity.* Entanglement is a joint state of two systems that is positive (a valid existence) but not a
+  mixture of products: the two parts are evaluated by one state, not by one state each [classical]. That is the care point's shape:
+  two different objects (here two boxes) with one shared positive functional. (2) *No actual act happens.* Entanglement transmits
+  nothing: whatever is done on one box leaves the other box's own state (its marginal) unchanged, the no-signalling theorem
+  [classical]. Correlations appear only when the two evaluations are compared, so there is no act, only a shared definition, which
+  matches "does not agree on a future outcome". The correlations are bounded by positivity itself: Tsirelson's bound 2 sqrt 2 on the
+  CHSH combination is the statement that a Gram matrix is positive semidefinite [classical]. (3) *In a gauge theory the shared
+  definition is the boundary flux.* For two boxes sharing a face, Gauss's law forces both sides to agree on the electric flux through
+  that face, so the Hilbert space of the two boxes is not a product: it splits into sectors labelled by the shared boundary flux, and
+  the entanglement entropy of a gauge field has a part that is just the distribution of that shared label (edge modes; Donnelly,
+  Casini-Huerta-Rosabal) [classical]. In this project that label is the centre flux, and its law is proved on both sides of every box
+  (`exists_sheet_both_sides`, `Crossover/FluxRate.lean`; Gauss law mod 2, Lean). So the two boxes share the flux label (the
+  definition of what crosses) without either one choosing it (no act). The vacuum of a field theory is entangled across every boundary
+  in this sense (Reeh-Schlieder) [classical]. Care points: (a) this is consistent with the earlier entry "coupled, not entangled" (the
+  space half and the direction half): that entry is about the two halves of reflection positivity, which must be kept apart by one
+  mirror for the norm to stay positive; this one is about two boxes in the same space-time, which share a boundary label. Two
+  different splits, two different statements. (b) "Shared label" explains the classical part of gauge-field entanglement exactly; the
+  rest (correlations of the fields inside, given the label) is ordinary quantum entanglement, not derived here.
