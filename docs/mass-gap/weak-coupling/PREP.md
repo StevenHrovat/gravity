@@ -1488,3 +1488,22 @@ thread.
   proof uses (the flip, the twist, the centre layer) is a four-dimensional fact. Triality of the Spin(8) kind (vector and two spinors
   permuted) needs eight dimensions, not five. Conclusion: triality in the gauge group, inside 3s1t, works; triality from a fourth
   space dimension does not give a theory that transmutes.
+- **Higher N-alities containing lower ones (the owner, same day):** "I assume that a DMP-complete system of a higher N-ality is able to
+  contain all DMP-complete systems of a lower order. This means that DMP can DMP itself is a subset of a higher quaternality system.
+  This also means, that DMP itself is trialistic, which actually makes sense, since anything that has any dualistic system as content,
+  can run on it. So we can build N-alities by figuring out the axiom system by which they keep their content balanced, until we no
+  longer need to build supersets or have a generalized way up and down that dependency graph." Reading (coordinator): the containment
+  holds for the groups but, for the act, only along divisibility; the generalised way up and down exists.
+  (1) **As groups, yes:** SU(M) sits inside SU(N) for every M < N, so any lower system can be placed inside a higher one.
+  (2) **As N-alities, only by divisibility:** the centre Z_M sits inside Z_N exactly when M divides N. An SU(2) placed inside SU(3)
+  loses its centre: its -1 becomes diag(-1, -1, 1), an ordinary element of SU(3), not a central one, and SU(2)'s Z2 vortices are not
+  stable in an SU(3) theory. So a triality does not contain a duality as an act; Z4 contains Z2, Z6 = Z2 x Z3 contains both a duality
+  and a triality. A system that carries both kinds of balance is of order 6 (the least common multiple), not 3. Running a dualistic
+  system as content (simulating it) is a different relation from containing its act; the first needs only universality, the second
+  needs divisibility.
+  (3) **The way up and down:** the centres form the divisibility lattice of the Z_N; every Z_N sits inside the circle U(1) (all roots of
+  unity at once), which is abelian and has no act (no transmutation, as in QED). The non-abelian generalised description is 't Hooft's
+  large-N limit (N -> infinity with g^2 N fixed): one expansion, in 1/N, that describes all SU(N) together, with SU(2) and SU(3) as its
+  first members. That is the "generalised way" in the physics. For the proof, the gauge-group package of GENERALISE-PLAN.md written
+  once for every N is the same step: the balance axioms of each N-ality are its centre Z_N and how it acts (e^{2 pi i k/N}), so no
+  superset has to be built by hand.
