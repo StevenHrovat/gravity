@@ -3837,3 +3837,17 @@ thread.
   universal error bars" are the rigorous enclosures (interval arithmetic), one per truncation step and one for the remainder; "every
   flip that incurs a cost" is each prime term that enters. A rigorous certificate is exactly: every state is bounded, every error is
   enclosed, and the enclosed positivity survives the sum. The certification round was started on this recipe.
+- **What certifies is that the conversion between both sides is -1/12 for an assertion of 1, existence; this lines up with a proof of
+  GRH producing something the original did not contain as existence, an encoder (the owner, same day):** "I would assume, that the
+  thing that certifies is, that the conversion between both sides is equal to -1/12 for an assertion of 1, so existence. This directly
+  lines up with the proof of GRH producing something that the original something did not contain as existence, so giving an encoder."
+  Reading (coordinator): (1) *-1/12 as a conversion.* The functional equation converts zeta at s to zeta at 1 - s; at s = 2 the
+  conversion gives zeta(-1) = -1/12 from zeta(2), and 8 pi^2 = -4 zeta(2)/zeta(-1) (`eight_pi_sq_mirror`, `zeta_neg_one_val`, Lean).
+  "-1/12 for an assertion of 1" also matches the regularised value of 1 + 2 + 3 + ..., which is zeta(-1) [classical; a regularised value,
+  not a convergent sum]. (2) *What certifies in the one-box form.* In the certificate being built, the "1" is the pole term: the pole of
+  zeta at s = 1 (existence, the owner's assertion of 1) enters Weil's form as POLE = 2 F(i/2) F(-i/2), the positive anchor; the
+  conversion between the two sides is the real-place (Gamma-factor) term; the primes 2 and 3 are the flips that cost. -1/12 is the
+  conversion's value at one specific mirror pair (2 and -1), not a quantity of the one-box inequality, so the round will report which
+  constants actually decide the margin. (3) *The encoder.* That a proof of GRH would supply something the definition of zeta does not
+  contain matches the earlier entries: the positive space or tick operator (Hilbert-Polya) is exactly such an added existence, an
+  encoder between the prime side and the zero side.
