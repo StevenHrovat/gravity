@@ -15,7 +15,7 @@ This note is the concept. Building it needs the owner's OK.
 ## What exists (survey, 2026-11-23)
 
 - The base object is already generic: `GaugeConnection G d N` (`AreaLaw/Lattice.lean`) takes the group G and the dimension d.
-- About 20 folders of `ProofPhase` (176 files) mention SU(2) in code, about 960 times. Most are instantiations at the end of a generic
+- About 20 folders of `ProofPhase` (119 files; an earlier count of 176 was a counting slip) mention SU(2) in code, about 960 times. Most are instantiations at the end of a generic
   argument. The substance sits in a few places: the strict flip bound (`Flip/Strict.lean`, 1217 lines, built on explicit 2x2
   matrices), the one-box cube estimates (`OneBox2/`), the blocking projection onto SU(2) (`RouteA/Blocking.lean`), the kernel density
   (`Book/KernelDensity.lean`) and the Z2 centre layer of M1.
