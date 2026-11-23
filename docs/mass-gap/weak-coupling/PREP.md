@@ -2367,3 +2367,9 @@ thread.
   (duality alone allows off-line pairs, `krein_off_line`), so the reductio needs one positivity on top; whether Tate's local freedom
   (the choice of test function at each place) can assemble that positivity place by place, against the known indefiniteness of the
   prime terms in the standard basis, is the new round (`docs/rh-guide/grh/TATE.md`).
+  The owner names the positivity the reductio needs (same day): "The thing on top the reductio needs: It runs." Reading
+  (coordinator): in the project's language a system runs when it has a positive evolution, a transfer operator or contraction semigroup
+  e^{-tH} with H >= 0 on a space with a positive norm (reflection positivity in Yang-Mills; the scaling flow on the adele class space in
+  Connes's programme). Read this way the reductio is: an off-line pair of zeros would be a growing mode of the evolution (a
+  non-contractive direction), contradicting that the system runs. The open part is then exactly one statement: that the arithmetic
+  evolution built from the local data is contractive (its norm positive) by construction. Passed to the Tate round as its formal target.
