@@ -1,0 +1,35 @@
+== Part A: thresholds and budgets
+  N =  2: cstarN = 0.4142   rhoN(cstarN) = 0.4142   (2 - sqrt 2 = 0.5858)
+  N =  3: cstarN = 0.4853   rhoN(cstarN) = 0.4142   (2 - sqrt 2 = 0.5858)
+  N =  5: cstarN = 0.5308   rhoN(cstarN) = 0.4142   (2 - sqrt 2 = 0.5858)
+  N = 11: cstarN = 0.5625   rhoN(cstarN) = 0.4142   (2 - sqrt 2 = 0.5858)
+  seam delta = 0.00: threeBox = 0.0711, O1 clears for mu <= 14.07
+  seam delta = 0.01: threeBox = 0.0867, O1 clears for mu <= 11.54
+  seam delta = 0.02: threeBox = 0.1024, O1 clears for mu <= 9.77
+  seam delta = 0.04: threeBox = 0.1341, O1 clears for mu <= 7.46
+  seam delta = 0.05: threeBox = 0.1501, O1 clears for mu <= 6.66
+  seam delta = 0.10: threeBox = 0.2316, O1 clears for mu <= 4.32
+  seam floor: delta <= e^s - 1; s = 1/50 gives 0.0202 (<= 1/25 = 0.04)
+  SU(2) Wilson: s = 2 beta M (M seam plaquettes per layer), so beta M <= 1/100
+== Part B: SU(2), 1^3 x 1 slab, exact
+  one temporal link V; plaquette k: tr(x_k V y_k^+ V^+) = 2 (x_k0 y_k0 + x_k . R(V) y_k), |.| <= 2
+  the twist flips y_k, so the weight changes by exp(-2 beta (x_k0 y_k0 + x_k . R y_k)) >= e^{-2 beta},
+  with equality for every V when x_k, y_k are centre elements (+-1): the floor is attained.
+  beta = 2.3: worst twist ratio = e^(-2 beta) = 0.01005, pointwise factor = tanh(beta) = 0.9801  vs sqrt 2 - 1 = 0.4142: REFUTES the pointwise side for this slab
+== Part C: SU(2), 2^3 x T slab, Monte Carlo, thermodynamic integration (refute-only)
+  T = 1, M = 4 sheet plaquettes, ordered x 16: log c in [-11.474, -11.101], worst rho = 1.0000 (log c = -11.474 +- 0.092), floor tanh(beta M) = 1.0000   [41.7 s]
+  T = 1, M = 4 sheet plaquettes, near    x 16: log c in [-10.250, -9.361], worst rho = 0.9999 (log c = -10.250 +- 0.104), floor tanh(beta M) = 1.0000   [43.6 s]
+  T = 1, M = 4 sheet plaquettes, same    x 16: log c in [-10.595, -8.067], worst rho = 0.9999 (log c = -10.595 +- 0.127), floor tanh(beta M) = 1.0000   [41.2 s]
+  T = 1, M = 4 sheet plaquettes, random  x 32: log c in [-2.435, +2.227], worst rho = 0.8389 (log c = -2.435 +- 0.083), floor tanh(beta M) = 1.0000   [41.5 s]
+  T = 2, M = 4 sheet plaquettes, ordered x 16: log c in [-5.118, -4.557], worst rho = 0.9881 (log c = -5.118 +- 0.110), floor tanh(beta M) = 1.0000   [190.5 s]
+  T = 2, M = 4 sheet plaquettes, near    x 16: log c in [-4.615, -3.938], worst rho = 0.9804 (log c = -4.615 +- 0.133), floor tanh(beta M) = 1.0000   [178.3 s]
+  T = 2, M = 4 sheet plaquettes, same    x 16: log c in [-1.933, -0.620], worst rho = 0.7472 (log c = -1.933 +- 0.108), floor tanh(beta M) = 1.0000   [172.6 s]
+  T = 2, M = 4 sheet plaquettes, random  x 32: log c in [-0.703, +1.175], worst rho = 0.5282 (log c = +1.175 +- 0.103), floor tanh(beta M) = 1.0000   [188.7 s]
+  T = 3, M = 4 sheet plaquettes, ordered x 16: log c in [-2.917, -2.247], worst rho = 0.8973 (log c = -2.917 +- 0.143), floor tanh(beta M) = 1.0000   [422.1 s]
+  T = 3, M = 4 sheet plaquettes, same    x 16: log c in [-1.137, +0.022], worst rho = 0.5142 (log c = -1.137 +- 0.107), floor tanh(beta M) = 1.0000   [311.4 s]
+  T = 4, M = 4 sheet plaquettes, ordered x 16: log c in [-2.260, -1.146], worst rho = 0.8111 (log c = -2.260 +- 0.199), floor tanh(beta M) = 1.0000   [464.4 s]
+  T = 1: worst found rho = 1.0000 (ordered); pointwise side (rho <= 0.4142) at this slab: REFUTED (|log c| = 11.474 +- 0.092 vs |log(sqrt2-1)| = 0.881)
+  T = 2: worst found rho = 0.9881 (ordered); pointwise side (rho <= 0.4142) at this slab: REFUTED (|log c| = 5.118 +- 0.110 vs |log(sqrt2-1)| = 0.881)
+  T = 3: worst found rho = 0.8973 (ordered); pointwise side (rho <= 0.4142) at this slab: REFUTED (|log c| = 2.917 +- 0.143 vs |log(sqrt2-1)| = 0.881)
+  T = 4: worst found rho = 0.8111 (ordered); pointwise side (rho <= 0.4142) at this slab: REFUTED (|log c| = 2.260 +- 0.199 vs |log(sqrt2-1)| = 0.881)
+== total CPU wall time 2096.0 s

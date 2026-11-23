@@ -4109,3 +4109,60 @@ thread.
   gauge choices on every patch, and the 't Hooft flux is the class (in Z_N) that stops them from gluing into one global trivial choice
   [classical]. So the owner's statement holds in this exact form: the choice is replaceable globally by local links to G0 whenever the
   links glue, and where they do not, the obstruction itself is the measurable content (the twist sector, the encoder's label).
+- **The checkable consequence for GU comes from its link to a G0, which gives it IM and forces it to accept the universal quantum
+  running, which gives the needed attributes simply by being well described (the owner, 2026-11-24):** "The checkable consequense for
+  GU comes from it's link to a G0, which gives it IM and forces it to accept the universal quantum running, which gives the needed
+  attributes simply by being well described." Reading (coordinator): there is one exact consequence of this shape, and it is checkable.
+  (1) *The link to G0's U(1) makes the phase group a circle.* The owner's IM entries put every centre on one common U(1) circle (Lean,
+  `General/Centre.lean`). A U(1) gauge group that is a circle (compact), not a line, can only carry charges that are integer multiples
+  of one unit: the continuous unitary characters of the circle are exactly z -> z^n with n an integer [classical; the Fourier basis of
+  the circle]. That is the "universal quantum": quantisation of electric charge follows from compactness alone. (2) *Checkable, and
+  checked:* charge quantisation is measured to extreme precision (the neutrality of atoms bounds the electron-proton charge difference at
+  about one part in 10^21) [external]; a compact U(1) also predicts that magnetic monopoles, if they exist, carry Dirac-quantised charge
+  [classical]. (3) *What it does not fix:* the unit's split into thirds for quarks still needs the SU(3) centre (Z_3) together with the
+  matter's hypercharges, the input found in `GU-SCOPING.md`. So the DMP-native consequence is "charge is quantised" (from the link to
+  G0's compact U(1)), while "in thirds" needs the input. Whether "quantised charge, derived from the G0 link" meets the release gate's
+  "at least one checkable consequence" is the owner's call; it is checkable, but it is also the standard expectation of any compact U(1).
+  Passed to the GU round as a Lean step.
+- **Frozen faces are not running outsides, so they do not count; but their ticks of not counting do count as remnants; this is the
+  black hole analogy again, as dense as possible while spanning the space defined by the existence it carries and the information
+  transported across it (the owner, 2026-11-24, on the electric-side round):** "Frozen faces aren't running outsides, so they don't
+  count, but their ticks of not counting do count as remnants. This is the black hole analogy again. It is as dense as possible while
+  spanning the space that is defined by the existence it carries and the information transported across it." Context: the round
+  (`ELECTRIC-SUN.md` 6) measured ordered ("cold", frozen) end faces as by far the worst for the pointwise electric side, with a twist
+  cost following roughly beta L / T; the coordinator's classical estimate is that at fixed physical shape a twist between frozen faces
+  costs about (1/g^2) L / T, which grows without bound as asymptotic freedom sends 1/g^2 to infinity, so the pointwise-over-all-faces
+  form of `HandoverSide` is most likely false in the continuum [reading on numerical data]. Reading (coordinator) of the owner's answer:
+  it fixes exactly that. (1) *Quantify over running outsides only:* the electric side is to hold pointwise for outsides in the running
+  set R (the outsides typical of the measure, those that are themselves in a running state), not for frozen ones. (2) *The frozen ones
+  count as remnants:* they enter only through their weight in the measure, an exponentially small probability epsilon. Since every
+  factor is at most 1 (0 < c < 1 is proved for every SU(N)), their whole contribution per join is at most epsilon: exactly a fresh
+  uncertainty r = epsilon in the transport theorem (`Unified/Transport.lean`), carried with the ledger and bounded. (3) So O1 becomes:
+  `HandoverSide` over running outsides, plus a remnant weight epsilon of non-running ones, plus the seam; the transport theorem
+  assembles them. (4) *The black hole analogy:* a frozen face is a boundary of maximal order and no entropy; in the black hole case the
+  information a region can hold is bounded by its boundary's area (Bekenstein-Hawking) [classical; the identification is a reading].
+  Passed to the electric-side round as its next step.
+- **That would also make Navier-Stokes a simple "this does not meet DMP-completeness", which blows it up as a consequence; we are on a
+  good path (the owner, 2026-11-24):** "That would also put Navier Stokes as a simple, this does not meet DMP-completeness, which blows it
+  up as a consequence. We are on a good path." Reading (coordinator), recorded with its status, Navier-Stokes staying mention-only per the
+  scope decision. In ledger terms the 3D energy bound is supercritical: the cost the energy identity pays per scale does not beat the
+  floor at small scales (`BLOWUP.md` 4; Tao's averaged equations keep the same energy identity and do blow up) [classical]. Read as "not
+  DMP-complete", that predicts finite-time blowup for 3D Navier-Stokes. Care point: that prediction is one of the two possible answers to
+  the Clay problem, and it is open; supercriticality shows only that the energy ledger cannot rule blowup out, not that blowup happens
+  (Tao's model differs from Navier-Stokes exactly in the nonlinearity's fine structure, and partial regularity limits where a singularity
+  could sit) [classical]. So the reading names which answer DMP expects; it is not a proof of it.
+- **Scope decision: Navier-Stokes is taken on as well; "that a blowup cannot be ruled out is in itself enough for an existence to be
+  constructed where it does blow up" (the owner, 2026-11-24):** "If we are at the care point, let's do it as well. That a blow up can not
+  be ruled out is in itself enough for an existence to be constructed where it does actually blow up." Recorded: the earlier
+  mention-only scope for Navier-Stokes is lifted by the owner; a Navier-Stokes round is started. Reading (coordinator) of the logical
+  step, which holds in a precise form and needs one distinction. (1) *The exact theorem behind it:* if a theory together with the
+  statement "blowup" is consistent (cannot be refuted), then by Goedel's completeness theorem there is a model of the theory in which
+  blowup holds [classical]. (2) *Three different "cannot be ruled out":* (a) the energy method cannot rule it out (supercriticality; Tao's
+  averaged model), a limit of one method; (b) the axioms of mathematics cannot refute it, which would be an independence result, not
+  known for Navier-Stokes; (c) it is not ruled out for the actual equations over the actual real numbers. Completeness turns (b) into a
+  model, but that model may be a nonstandard one (nonstandard reals, nonstandard functions), not the real Navier-Stokes flow the Clay
+  problem asks about. So the step gives a constructed existence where it blows up, while the Clay question asks whether such an
+  existence is the standard one. (3) *What a construction needs:* an explicit smooth initial datum and a proof that its standard solution
+  blows up, as Chen and Hou did for Euler with a boundary. Known constraints the round must respect: exactly self-similar blowup is ruled
+  out for Navier-Stokes under mild conditions (Necas-Ruzicka-Sverak 1996, Tsai 1998), and partial regularity limits the singular set
+  (Caffarelli-Kohn-Nirenberg) [classical].

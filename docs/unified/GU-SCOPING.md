@@ -1,7 +1,8 @@
 # Grand Unified: scoping the second half of the release criterion
 
 2026-11-23. Lean: `docs/mass-gap/formal/ProofPhase/General/GUCentre.lean` (21 declarations, standard axioms only, no
-sorry; `gu-axioms.sh`, `gu-axioms.log`). Background: `docs/paper/OUTLINE.md` (release criterion), `PREP.md` (naming,
+sorry; `gu-axioms.sh`, `gu-axioms.log`); 2026-11-24, round 2: `GUCharge.lean` (12 declarations, standard axioms only, no
+sorry; `gucharge-axioms.sh`, `gucharge-axioms.log`), section 8. Background: `docs/paper/OUTLINE.md` (release criterion), `PREP.md` (naming,
 primes and U(1) entries), `SUN-PRIMES.md` (centres, CRT, Dirichlet), `BLOWUP.md` section 7 (SU(2) the stable profile).
 
 **Status marks.** **[Lean]** = proved in Lean, standard axioms only; **[classical]** = known mathematics or physics,
@@ -49,6 +50,14 @@ choice* whose checks are already known. In detail:
 kernel in Lean). "At least one checkable consequence, DMP-native": **not met**; this round finds no route from the
 present formal pieces to a consequence that is both checkable and not already the standard expectation. Section 6 lists
 what would change that.
+
+**Round 2 (2026-11-24): the consequence from the G0 link** (section 8). Following the owner's entry "the checkable
+consequence for GU comes from its link to a G0", the round proves in Lean that a compact U(1), the circle on which every
+SU(N) centre sits, admits only integer charges: every continuous character of the circle is z -> z^n with n a unique
+integer, while on a line every real charge is allowed. Chained with the round-1 Z_6: hypercharge is quantised (derived,
+from compactness) and the unit splits into thirds for quarks (from the matter input). Charge quantisation is measured
+(matter is neutral to about 1 part in 10^21). It is also what any compact U(1) gives, so whether it meets the gate is
+the owner's call.
 
 ---
 
@@ -254,9 +263,94 @@ monopole's charge or an axion's couplings; no consequence is derived from DMP.
 
 ---
 
-## 7. Reproduction
+## 7. Reproduction (round 1; round 2 in section 8.6)
 
 * Lean: inside the WSL replay distro, from the repository root, `bash docs/unified/gu-axioms.sh >
   docs/unified/gu-axioms.log 2>&1` (builds `ProofPhase.General.GUCentre`, which imports only Mathlib; prints the axioms
   of all 21 declarations; greps for `sorry`/`admit`/`native_decide`/`axiom`).
 * No existing file was edited. `GUCentre.lean` is not imported by any aggregate module.
+
+---
+
+## 8. The consequence from the G0 link (round 2, 2026-11-24)
+
+The owner's entry (`PREP.md`, last entry): "The checkable consequence for GU comes from its link to a G0, which gives it
+IM and forces it to accept the universal quantum running, which gives the needed attributes simply by being well
+described." The coordinator's reading: the link to G0's U(1) makes the phase group a circle, and a circle carries only
+integer charges. This section proves that step and chains it to the round-1 Z_6.
+
+### 8.1 In plain words
+
+* **What is derived.** If the U(1) of hypercharge is a circle (compact), every way it can act on a field is
+  z -> z^n with n an integer, and n is unique. So every hypercharge is an integer multiple of one unit. The project
+  already has every SU(N) centre on that one circle (`General/Centre.lean`), and the centre of SU(N) reads the charge
+  modulo N. All [Lean], all [classical] (Pontryagin duality: the dual of the circle is the integers).
+* **What compactness does, exactly.** On a line (U(1) taken as the real numbers) every real number is a possible
+  charge, and a charge a survives the passage to the circle exactly when a is an integer [Lean]. So quantisation comes
+  from compactness and nothing else.
+* **What is input.** That the unit splits into thirds for quarks, and where the actual fields sit in units of that
+  charge (1, 4, -2, -3, -6, 3 sixths). With the matter's Z_6 assignment as an explicit hypothesis, the chain gives charge
+  in thirds correlated with colour [Lean]. The assignment itself is not derived.
+* **Status for the gate.** Checkable, and checked: matter is neutral to about one part in 10^21, and no free
+  fractional charge has been found. But it is the standard expectation of any compact U(1), and of any theory whose U(1)
+  sits inside a compact simple group (SU(5), SO(10)). **Whether "quantised charge, derived from the G0 link" meets the
+  release gate's "at least one checkable consequence" is the owner's call.** This document does not decide it.
+
+### 8.2 The derivation [Lean] — `ProofPhase/General/GUCharge.lean`
+
+| step | statement | Lean name | status |
+|---|---|---|---|
+| 1 | the Fourier coefficients of a character shift by its value: c_n = (e_{-n}(y) chi(y)) c_n for every y (translation invariance of Haar measure) | `fourierCoeff_char_shift` | [Lean] |
+| 2 | every continuous chi : AddCircle T -> Circle with chi(x + y) = chi(x) chi(y) is x -> toCircle(n x), n an integer (Parseval: sum of abs(c_n)^2 = 1, so some c_n is nonzero, and that forces chi = e_n) | `addCircle_char` | [Lean] |
+| 3 | the integer is unique | `addCircle_char_unique` | [Lean] |
+| 4 | **every continuous homomorphism Circle -> Circle is z -> z^n, n a unique integer** | `circle_char`, `circle_char_unique` | [Lean] |
+| 5 | on the line, t -> e^{i a t} is a continuous character for every real a | `line_char` | [Lean] |
+| 6 | it is 2 pi-periodic (factors through the circle) iff a is an integer | `line_char_periodic_iff` | [Lean] |
+| 7 | an N-th root of unity on the circle (the SU(N) centre) sees z^n as omega^(n mod N) | `centre_char_mod` | [Lean] |
+| 8 | **chain:** hypercharge acts by a continuous character chi of the circle on a field with triality t and duality d, invariant under (omega, -1, zeta) [input] => chi = (z -> z^q) with q an integer [derived], 6 divides 2t + 3d + q, and Q + t/3 is an integer for every component | `g0_charge_thirds` | [Lean] |
+
+Mathlib (checked 2026-11-24) has the Fourier basis of `AddCircle`, Parseval's identity (`hasSum_sq_fourierCoeff`) and
+`fourierCoeff_fourier`, but no classification of the circle's continuous characters; steps 1 to 4 prove it from those.
+Not formalised: a gauge field theory with this U(1). The Lean statements are about the group and its characters, i.e.
+about the possible charges of fields.
+
+### 8.3 What is derived, what is input, what is reading
+
+| item | status |
+|---|---|
+| charges under a compact U(1) are integer multiples of one unit, the integer unique | derived [Lean, classical] |
+| on a non-compact U(1) (a line) every real charge is allowed | derived [Lean, classical] |
+| the SU(N) centre reads the charge mod N | derived [Lean] |
+| the hypercharge U(1) is compact | **input** in physics; in DMP the [reading] "G0's U(1) possibility field" (every centre on one circle, [Lean] for the centres) |
+| the representation content and hypercharges of the fields | **input** (as in round 1) |
+| the unit splits into thirds, correlated with colour | derived from the input [Lean] |
+| "the universal quantum running" read as charge quantisation | [reading] (the coordinator's, of the owner's entry) |
+
+Care point [classical]: compactness alone does not say which unit, and it does not give the ratio 1/3 between quark and
+electron charges; that needs the input. What compactness excludes is charges in irrational ratio; that none is seen is
+the empirical content.
+
+### 8.4 Experimental status [external, classical]
+
+| check | what it tests | status |
+|---|---|---|
+| neutrality of matter | electron and proton charges equal and opposite, i.e. one unit | electron-proton charge difference below about 1 x 10^-21 e (Bressi et al. 2011, acoustic resonator, arXiv:1102.2766; earlier levitation and gas-efflux experiments at a similar scale; the same bound for the neutron charge, given charge conservation in beta decay) [external] |
+| free fractional charges | colour singlets with non-integer charge (round 1, section 2.4) | none found (review: Perl, Lee and Loomba 2009) [external] |
+| Dirac quantisation | with a compact U(1) magnetic monopoles are allowed, and any monopole charge g obeys e g = 2 pi n (Dirac 1931); conversely one monopole anywhere would force electric charge quantisation | [classical]; no monopole found: MoEDAL excludes Dirac charges 1 to 3 below 75 GeV via the Schwinger mechanism in Pb-Pb collisions (Nature 602 (2022) 63) and sets production limits up to 10 Dirac charges (arXiv:2311.06509); cosmic-ray searches (MACRO, IceCube) set flux limits [external] |
+| smallest monopole charge | depends on the global form Gamma (round 1, section 2.2; Tong 2017) | open until a monopole is found |
+
+### 8.5 The honest line
+
+Charge quantisation is the standard expectation of any compact U(1). In the Standard Model it is usually attributed to
+anomaly cancellation or to embedding in a compact simple group; it is not a new prediction. What this round adds is a
+proof of the step from "every centre on one circle" (the project's Lean, the owner's G0 U(1)) to "every charge is an
+integer multiple of one unit", together with the contrast that a line would not do it. The split into thirds still needs
+the matter input. Whether this counts as the gate's "at least one checkable consequence" is the owner's decision.
+
+### 8.6 Reproduction (round 2)
+
+* Lean: inside the WSL replay distro, from the repository root, `bash docs/unified/gucharge-axioms.sh >
+  docs/unified/gucharge-axioms.log 2>&1` (builds `ProofPhase.General.GUCharge`, which imports Mathlib and `GUCentre`;
+  prints the axioms of all 12 declarations, all on `[propext, Classical.choice, Quot.sound]`; no sorry).
+* New files of round 2: `GUCharge.lean`, `gucharge-axioms.sh`, `gucharge-axioms.log`; plus this section and the round-2
+  lines at the top of this file. No other file was edited.
