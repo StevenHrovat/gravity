@@ -1730,3 +1730,16 @@ thread.
   is the minimum honest uncertainty of any single-timing projection, the same way the Cramer-Rao floor is for a measured error bar.
   The crossover session writes it into PROJECTION.md as a reusable rule (per-content spread as the floor, plus the transfer between
   beta values, since both the per-sweep cost and the chain length depend on beta), for this and later GPU projections.
+- **The worst case is what the pressing is designed around (the owner, same day, on P vs NP):** "The worst case is literally what the
+  pressing is designed around. The pressing of a DMP-complete system certifies that its construction can reach a state of existence
+  which is DMP-complete, only with that certificate, which is the gap, can G0 go from simply existence to a running existence."
+  Reading (coordinator), against `docs/pnp/DICTIONARY.md` section 6: the pressing is a one-time certification of the construction,
+  and once it passes, everything run inside is cheap. That is exactly the shape of the dictionary's class theorem: an input that
+  carries the local certificate (influence below 1 at one scale; the Lovasz local lemma for constraint problems) has its existence
+  guaranteed, and finding, sampling and counting inside it are polynomial. In the Yang-Mills proof the pressing is the one-box check
+  at one scale, a finite check that certifies every larger scale. What the reading moves is where the worst case sits: into the
+  pressing itself. An input that fails the local certificate is not thereby without existence (a satisfiable formula can lie beyond
+  the local-lemma condition), and those inputs are exactly where the conditional hardness theorems live. So "P = NP after a
+  successful pressing" is a theorem about the certified class, and "every input can be pressed" is the open crossing: for counting
+  it is as strong as NP = RP, for decision it fails on inputs with no existence at all, which is consistent with the reading that
+  only a pressed system runs.
