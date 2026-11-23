@@ -315,6 +315,8 @@ Notes relative to `docs/pnp/`.
 |---|---|---|---|---|
 | VII.1 | The first author's concept of a DMP-native general intelligence (CMOS in IM tokens, one Milky Way gate, an externally set tick, total freedom inside) | reading | `PREP.md` (2026-11-23); the first author | none (outlook) |
 | VII.1b | The system works directly on the vectors embedding existence, its meta layer for arbitrary logic, as long as a correct answer comes out | reading | the first author (2026-11-23) | none (outlook) |
+| VII.1c | Fast weights and hypernetworks as the DMP-native form: an existence embedding with a meta layer, changed through IM (and GG) while existence stays guaranteed | reading | the first author (2026-11-23) | none (outlook) |
+| VII.2c | Maps of running systems keep the ledger exactly; changes inside the contracting class keep the settle bound | Lean | `ProofPhase/ETM/RunSys.lean`, `Hom`, `Hom.iterate_comm`, `RunSys.contract`; `ETM/Machine.lean`, `reaches_of_contracting` | none |
 | VII.2a | Settling within an explicit, computable number of steps when every step contracts (cost above the floor) | Lean | `ProofPhase/ETM/Machine.lean`, `reaches_of_contracting`, `balanceBound_ge`, `contracting_iff_costAboveFloor` | none |
 | VII.2b | No procedure decides settling for all content | Lean | `ProofPhase/ETM/Machine.lean`, `etm_balance_undecidable` | none |
 | VII.3 | The gate certifies integrity and freshness, not meaning; it must check acts, not self-reports | paper | VII.3 | none |
@@ -327,15 +329,15 @@ Counted on the rows above (each row once, by its first mark; scope rows 0.1 and 
 
 | Status | Draft 2 | Draft 1 |
 |---|---|---|
-| Lean | 103 | 69 |
+| Lean | 104 | 69 |
 | classical | 42 | 27 |
 | external | 7 | 7 |
 | conditional | 3 | 3 |
 | paper | 27 | 13 |
 | numerical | 17 | 8 |
-| reading | 22 | 18 |
+| reading | 23 | 18 |
 | open | 25 | 20 |
-| **Total** | **246** | **165** |
+| **Total** | **248** | **165** |
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open

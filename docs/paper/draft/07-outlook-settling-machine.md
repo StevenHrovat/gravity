@@ -23,6 +23,11 @@ A general intelligence is a CMOS system that runs entirely in IM tokens, adapted
   **[reading]** Known neighbours: reasoning carried out in a continuous latent space instead of in output tokens; vector-symbolic
   (hyperdimensional) architectures, where binding and superposition of vectors implement symbolic logic; and fast weights or
   hypernetworks, where one network writes the representations or weights another one uses. **[classical]**, as pointers only.
+* **Fast weights as the native form.** The first author reads fast weights and hypernetworks as DMP-native. The duality gives an
+  existence (the embedding) on which a meta layer can be spanned, and a definition of running on that embedding. Changes to the
+  embedding go through IM, and possibly GG, so that the system can change while its existence stays guaranteed. **[reading]**
+  The classical counterpart: a slow network writes the fast weights another network runs with (fast weight programmers), and
+  linear-attention transformers are exactly such programmers (Schlag, Irie, Schmidhuber 2021). **[classical]**, pointer only.
 * **Training.** The core network has to be trained from the ground up for this way of running.
 
 ## VII.2 The critical link to this work
@@ -35,6 +40,18 @@ half of the Existence Turing Machine (Part II and `docs/unified/ETM.md`).
   `reaches_of_contracting`, `balanceBound_ge`; a contracting step is a cost above the floor, `contracting_iff_costAboveFloor`.
 * **Without a contraction, no procedure decides settling in general.** **[Lean]** `etm_balance_undecidable`, from Mathlib's
   halting theorem.
+
+**Changing the system while keeping its existence guaranteed.** Two kinds of change keep the guarantee, both in Lean:
+
+* **Changes that are maps of running systems** (relabelling, restricting to a part the run never leaves, coarse-graining by a
+  relation the run respects) keep the ledger exactly. Step, factor and carried amount commute with the map. **[Lean]**
+  `ProofPhase/ETM/RunSys.lean`: `Hom`, `Hom.iterate_comm`, `sub`, `quot`.
+* **Changes that keep every factor at most theta < 1** (any new layout or coupling inside the contracting class) keep the settle
+  bound, whatever else they change. **[Lean]** `RunSys.contract`, `reaches_of_contracting`.
+
+In the first author's terms, an IM change (inside) must stay in the second kind. A GG change (from outside) passes the gate
+first. Self-modification of the embedding then never loses the guarantee that the system settles. **[reading]** for the IM/GG
+identification.
 
 So the training target the concept needs has a precise form: train the core so that its update is a contraction, and choose the
 externally set tick from the settle bound. The same condition, a contracting update, is what guarantees a unique fixed point and
