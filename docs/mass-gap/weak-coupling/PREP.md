@@ -2726,3 +2726,33 @@ thread.
   real axis but does not bound it away from zero; a positive gap is what the one-box certificate must supply. (c) The spectral zeta
   function sum E_n^{-s} and the correlation series sum e^{-E_n t} are Mellin and Laplace views of the same spectrum (heat trace)
   [classical]; the Lean bridge uses the Laplace view.
+- **Positivity cannot keep it away from zero, and must not (the owner, same day, on care point (b) of the entry above):** "Positivity
+  can not keep it away from zero, since, because reaching it is what it's all about, the possibility space does extend there, it is
+  valid, but should not be negative." Reading (coordinator): exact. Positivity is semidefinite: it allows zero and forbids only the
+  negative. (1) Yang-Mills: reflection positivity gives a Hamiltonian H >= 0, and zero is reached, by the vacuum (H Omega = 0); in Lean
+  the spectral measure lives on E >= 0 (`Bridge/Spectral.lean`). The mass gap is the statement that the spectrum is {0} union
+  [m, infinity): zero reached exactly once (the vacuum, existence), nothing in (0, m) (the gap), nothing below 0 (positivity). So three
+  separate parts: reaching zero is valid and required, the negative is excluded by positivity, and the empty interval between is the
+  open step (O1). (2) GRH: Weil's form must be >= 0, not > 0; equality is allowed (the singular sections at the closure of a finite
+  model, margin exactly 0, entry "two separate ways"); negative is excluded, and that exclusion is GRH. (3) The ledger: the factor may
+  reach exactly 1 (cost 0) and the margin may reach exactly 0; neither may cross. Care point: for the gap, zero must be reached by the
+  vacuum alone (a unique vacuum); a continuum of states reaching zero from above would be a massless theory, which is what the gap
+  excludes.
+- **The base prime is 2, -2 is the impossible base non-existence, the next step is always 3, after which the rest follows (the owner,
+  same day):** "For GRH, since the only 'base prime' is 2, with -2 being the not possible base-non-existence, the next step is always
+  three, after which the rest follows, so ODP." Reading (coordinator): there is an exact fact of exactly this shape in the functional
+  equation zeta(1 - s) = 2 (2 pi)^{-s} cos(pi s / 2) Gamma(s) zeta(s). (1) At s = 2 the mirror point is -1: zeta(-1) = -1/12 is
+  nonzero and determined by zeta(2) (the mirror identity 8 pi^2 = -4 zeta(2)/zeta(-1), `eight_pi_sq_mirror`, `GRH/Mirror.lean`, Lean).
+  (2) At s = 3 the mirror point is 1 - 3 = -2, and there cos(3 pi / 2) = 0: zeta(-2) = 0, the first trivial zero
+  (`riemannZeta_neg_two_mul_nat_add_one`, Mathlib) [classical; checked numerically, -3.6e-18 for the right-hand side]. So -2 is a
+  "non-existence" forced by the mirror's own factor, not by arithmetic (the trivial zeros are not the zeros GRH is about): the owner's
+  "not possible base non-existence". Its consequence is classical: the even values zeta(2k) are fixed by their mirrors (rational
+  multiples of pi^{2k}, Euler), while zeta(3) and every odd value mirror onto a trivial zero and are not determined by the functional
+  equation (zeta(3) is irrational, Apery 1979; no closed form is known). So 3 is the first step that is not given by the mirror: it is
+  the first step the construction must take itself. (3) 2 and 3 as primes: 2 is the only even prime, and 2 and 3 already generate a
+  dense subgroup of the scaling group (log 2 / log 3 irrational; entry "existence descending through the GRH from 2 and 3"); 2 then 3
+  matches the owner's SU(2) then SU(3) reading. Care points: (a) "the rest follows" can only mean by construction, not by assembly: the
+  semilocal measurements show {2, 3} alone is negative everywhere and only the full set of primes up to the scale is positive
+  (`rh-guide/grh/SEMILOCAL.md`, `TRANSFER.md`; no subset assembly, Lean). In ODP terms: pressing with 2 and 3 fixes the start, and the
+  positivity must then come from one construction over all primes at once (an identity), which is the open step. (b) The trivial zeros
+  sit at every negative even integer, the mirrors of all odd s >= 3; -2 is the first of them, not the only one.
