@@ -3169,3 +3169,19 @@ thread.
   form is disfavoured by proton-decay limits and by the couplings not meeting exactly; SU(11) is Georgi's family-unification model
   (1979). Both are candidates in the literature, neither confirmed by experiment [classical]; the test here is of the encoder
   identity and its bounds for their centres, not of the models.
+- **If 5 and 11 work, through GRH we extend from two towards three through all primes as the base N of existence (the owner, same
+  day); "Go full steam!":** "And if 5 and 11 works, through GRH, we can extend from two towards three through all prime numbers as
+  the base N of existence." Reading (coordinator): two exact facts make the primes the base. (1) *Every centre is built from prime
+  powers.* By the Chinese remainder theorem Z_N is the product of Z_{p^a} over the prime powers in N (Z_6 = Z_2 x Z_3,
+  Z_10 = Z_2 x Z_5) [classical]. So the sector structure of any SU(N) (its N-alities, the electric sectors as the Fourier dual) is a
+  product of prime-power pieces, and the Fourier transform factorises the same way. For prime N = p the centre is the field F_p:
+  every nontrivial sector generates the whole centre (`zn_tunnel_check.log`: Z_5, Z_7, Z_11 have no proper sub-centre). Care point:
+  the base pieces are prime powers, not only primes (Z_4 is not Z_2 x Z_2). (2) *Through GRH: the sector symmetries are Dirichlet's
+  group.* The automorphisms of Z_N, k -> m k with m coprime to N, form (Z/NZ)^x; they permute the centre sectors and the electric
+  sectors. The characters of (Z/NZ)^x are exactly the Dirichlet characters mod N, and the Gauss sums are the Fourier transforms that
+  connect these multiplicative characters to the additive ones (the electric sectors) [classical]. GRH for Dirichlet L-functions,
+  which governs how these characters behave on the primes, is proved (Lean, by others, 2026-11-20; external). So "through GRH" has
+  a precise place: the symmetry group that moves the SU(N) sectors is the group whose L-functions satisfy the proved Dirichlet GRH.
+  From two towards three: SU(2) (Z_2, the half-turn, (Z/2)^x trivial), then SU(3) (Z_3, the quarter-turn, (Z/3)^x = {1, 2} the
+  conjugation), then every prime. The owner's "Go full steam!" started the next round: the strict twist bound and the sector
+  structure for every SU(N) in Lean, with the primes and the Dirichlet bridge (see the session started for it).
