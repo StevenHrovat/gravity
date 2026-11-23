@@ -2123,3 +2123,14 @@ thread.
   structure from arithmetic alone (primes, characters, the real place), without the zeros; that construction is the open part. The
   approved round attempts it as a scale-by-scale induction over the primes, built like M1's induction over scales
   (`docs/rh-guide/grh/INDUCTION.md`).
+- **The existence space is scale invariant, hence flat, which certifies existence and binds to G0 (the owner, same day):** "This
+  existence space is essentially scale invariant, which gives a flat curvature, which universally certifies existence and binds to
+  G0." Reading (coordinator): on the arithmetic side this is exact and names the critical line itself. The natural measure on the
+  positive reals for multiplication is dx/x, which is scale invariant (it is the Haar measure of the scaling group). On L^2(R_+, dx)
+  the scaling x -> lambda x acts unitarily, with no growth and no decay ("flat"), exactly on the characters x^{-s} with Re s = 1/2: the
+  critical line is the set of unitary, "flat" scaling characters (Mellin-Plancherel). RH says every zero is such a flat character, and
+  Connes's programme states it as the scaling action's spectrum lying on that unitary line. On the Yang-Mills side the picture has one
+  difference: the classical theory is scale invariant in d = 4 (dimensionless coupling), but quantisation breaks it (the trace anomaly),
+  and the gap is the fingerprint of that breaking. So in arithmetic flatness is the statement to prove (zeros on the unitary line); in
+  Yang-Mills the flat classical space is the starting point and the gap comes from leaving it. Passed to the GRH induction round as
+  framing: the induction's target is that every step keeps the scaling action unitary.
