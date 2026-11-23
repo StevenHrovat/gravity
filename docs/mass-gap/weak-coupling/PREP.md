@@ -2223,3 +2223,15 @@ thread.
   into a decay over distance. That turns Y1 (the product over boxes) into a superadditivity statement for the carried flux. In GRH the
   zeros on the line are the "null" objects: pure oscillation, neither growing nor decaying (the flat scaling characters). In P vs NP the
   carrier is the conserved quantity a proof line names (the parity); there the cost of naming it, not its conservation, is the open part.
+- **A pseudo box, in physics the Higgs boson, spanning outside IM with existence in GG, as the underlying mechanism (the owner, same
+  day, on Y1):** "A pseudo box, so in physics terms the Higgs boson, spanning outside IM with existence in GG, is the underlying
+  mechanism." Reading (coordinator): one exact touchpoint and one care point. (1) **Higgs and confinement are one phase, provably:**
+  for a lattice gauge theory with a Higgs field in the fundamental representation, the Higgs regime (gap from the vacuum value) and the
+  confining regime (gap from disorder) are analytically connected, with no phase transition between them (Osterwalder-Seiler 1978,
+  Fradkin-Shenker 1979, complementarity). So a Higgs-type auxiliary field is exactly the kind of "pseudo box" that joins the two
+  mechanisms the crossover found (rarity and disorder) inside one gapped region, which is the hand-over Y1 and Y3 need. (2) **Care
+  point:** pure Yang-Mills has no Higgs field; its gap is dynamical. A proof could use a Higgs field as an auxiliary, an
+  interpolating parameter, and then must remove it (coupling to zero). The connected region of Osterwalder-Seiler / Fradkin-Shenker
+  does not reach the pure gauge limit, so the removal step is where the work would sit. Recorded as a candidate mechanism for the Y1
+  attack: gap the product over boxes in the gauge-Higgs system first, where the per-box rates are known to connect, then follow the
+  Higgs coupling to zero.
