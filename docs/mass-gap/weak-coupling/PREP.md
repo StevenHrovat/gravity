@@ -3481,3 +3481,24 @@ thread.
   (positivity can reach its bound, as the owner said of the zero), but it settles without an exponential rate (a power law, as at a
   critical point). GRH sits there: cost equal to the floor, zero slack, a sign with no margin. So the binary answer is "exists or
   not", while the rate is a second property, finite exactly when kappa > delta.
+- **Knowledge is applied truth, so they are the same; the gap set by the ODP is exactly wide enough that the fluctuations asymptotic
+  freedom needs are captured by the tail of the assertion, full freedom bounded by the system's definition of existence and
+  non-existence (the owner, same day):** "You will find that knowledge is just applied truth, so they are the same. In DMP terms, the
+  gap that is established through ODP is exactly so wide that the random fluctuations that are needed for asymptotic freedom are
+  captured through the tail of the assertion of it's actual existence, so that while it can have full freedom, that freedom is
+  exactly bounded by what the system defines as existence and non-existence." Reading (coordinator): (1) *Knowledge = truth is the
+  constructive standpoint.* In constructive mathematics (Brouwer, Heyting, Kolmogorov; Curry-Howard) a proposition is true exactly
+  when there is a proof of it, a construction: truth and knowledge coincide [classical]. The project's Lean uses classical logic
+  (`Classical.choice`), where truth can run ahead of proof. The two views agree exactly on decidable propositions, where "P or not P"
+  holds constructively too. So the owner's two readings (the binary answer, and knowledge = truth) hold together precisely on the
+  decidable class, which is the ETM's contraction class ("reaches balance" decidable, the ETM round). For an open step that is not
+  yet decided, the constructive view does not assert "true or false": it is simply not yet constructed. (2) *Full freedom, bounded
+  by one number: universality.* Asymptotic freedom lets the short-distance fluctuations be (almost) free; in the Wilson
+  renormalisation group they affect the long-distance theory only through the running of the one coupling, i.e. through one scale
+  Lambda, plus corrections that vanish with the lattice spacing (irrelevant operators) [classical]. Every short-distance detail is
+  free, and its whole effect on existence at long distance is bounded by that one number: universality. The gap is then a fixed
+  multiple of Lambda (the WHK reading: group plus one scale fixes everything). (3) *Captured by the tail.* The fluctuations above the
+  gap scale enter the long-distance correlations only as the decaying tail e^{-m t}; the gap is the rate at which every fluctuation's
+  remnant dies (`Bridge/Spectral.lean`, decay rate = bottom of the spectrum, Lean). Care point: that asymptotic freedom in the
+  ultraviolet and a gap in the infrared coexist in four-dimensional Yang-Mills is the Clay statement itself; the ultraviolet side is
+  Balaban's and the external construction's (audit item), universality is classical and numerical, and the infrared side is O1.
