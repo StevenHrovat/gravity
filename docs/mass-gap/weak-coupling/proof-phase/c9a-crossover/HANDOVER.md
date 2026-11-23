@@ -199,3 +199,15 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * First open step: S_e(L) < 1, equivalently S_tw(L) > 2^{n-1} - 1 at one box (quantitative 't Hooft criterion; Lean equivalence).
 * Holonomy: right carrier, no extra summability (face sum = 2 to 4 x sheet pieces; needs F_tw > log 11).
 * "It runs": one-box statement = strict contraction on the neutral sector; runs_two_targets puts it beside GRH's target.
+
+## Round 14 (2026-11-23, uncommitted; twist saturation, our own attempt + bond-moving bounds)
+
+* `SATURATION.md` (with DMP section); `formal/ProofPhase/Crossover/Saturation.lean` (4 theorems; `axioms-dy.log` 48 Crossover
+  theorems, standard axioms; `~/formal-dy` deleted). Sources read via arXiv HTML (later sections as summaries).
+* Our pieces: tick-unit floor r >= e^{-2 beta L^2} (saturates only for beta L^2 <= 0.42); one-box statement => saturation in long
+  boxes (Lean, one way); strict flip / hand-over / conditional mass / M1 give no saturation.
+* Bond-moving: upper decimation flows to strong coupling (Ito, citation), but the upper bound's normalisation prod F0^{|Lambda_box|}
+  >= 1 (Jensen, Lean) is extensive in (L/b)^4; one-box form localises the interpolation, does not remove it. First open step:
+  normalisation-matched lower bound on Z_box (= one-box interpolation; equivalently strong effective coupling at box scale, P4).
+* Kanazawa: confirmation; his twisted inequality is non-strict RP; ours strict and machine-checked.
+* Numerical (preliminary): beta 2.3 cubic twist ratio crosses 3/7 between L = 4 (0.42) and L = 6 (0.86).
