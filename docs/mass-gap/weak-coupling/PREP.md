@@ -2566,3 +2566,13 @@ thread.
   and 3, generate a dense subgroup of the scaling space. (3) Care point: as physical grand unified theories, not every SU(N) is viable;
   a GUT must contain SU(3) x SU(2) x U(1), cancel gauge anomalies with the observed matter, and survive proton-decay limits, which
   singles out a few groups (SU(5) and its extensions, SO(10), E6). Recorded as the owner's reading.
+  The owner refines (same day): "The bigger or equal to is actually axiomatically fixed too. Since the instanton of the first act
+  decays, when causality begins, this is what it decays into. So 2 was first before time and then decayed forward into the only
+  possible option, 3. Better statement: Every SU(N) is capable of describing a DMP-complete existence space that runs." Reading
+  (coordinator): the better statement has an exact lattice form, already in the repository: for every N, SU(N) lattice Yang-Mills on a
+  finite torus is a probability measure (`General/SUN.lean`), reflection positive with a positive transfer matrix (the generic OS layer,
+  `OS/Torus.lean`, generic in the group): it "runs" in the precise sense of the project. What is open is the same for every N: the
+  continuum limit and the gap in physical units (the one-box statement, uniformly in N's own constants). So the paper can state:
+  "every SU(N) describes a running existence space on the lattice (proved, Lean); its continuum running is the open step". On "2 decays
+  forward into 3": recorded as the owner's reading; a care point for the physics reading is that in grand unification the direction is
+  the opposite (a larger group breaks into smaller ones as the energy falls, SU(5) -> SU(3) x SU(2) x U(1)).
