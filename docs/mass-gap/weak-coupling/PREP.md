@@ -2482,3 +2482,12 @@ thread.
   physical units (the box of fixed physical size; MIRROR.md puts it at L sqrt(sigma) of about 1.7-1.8). So the problem part is not
   dealt with inside the crossover; it is moved entirely into that one worst-case statement at one scale, which is
   OPEN-QUESTIONS-DMP.md section 0.
+- **GRH as the ODP's tool that "runs" before causality (the owner, same day):** "Since we have been looking for a tool slot for ODP, is
+  the GRH maybe that tool that 'runs' before causality?" Reading (coordinator): there is a precise sense. The primes are the quantized
+  building blocks (unique factorisation), fixed before any dynamics. RH is equivalent to a floor statement about them: the Mertens
+  function M(x) = O(x^{1/2 + eps}), equivalently psi(x) = x + O(x^{1/2 + eps}). The blocks deviate from their mean density by no more
+  than the square root, the size of independent random fluctuations ("Moebius randomness"), the same square-root floor that sets the
+  project's statistical error bars. So GRH certifies that the building blocks carry no hidden structure beyond the floor (incompressible
+  at exactly the square-root level), which links it to the P vs NP reading "no structure, no shorter description", and the exponent 1/2
+  is the critical line's. The equivalences are theorems; reading GRH as the ODP's certificate that the blocks sit at the universal
+  floor is interpretation.
