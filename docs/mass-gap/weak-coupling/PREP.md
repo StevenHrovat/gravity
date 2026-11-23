@@ -1997,3 +1997,11 @@ thread.
   dynamical system (an orbit of length log p for each prime), with the explicit formula as its trace formula; a Hodge-type positivity
   on its cohomology would give RH. So "the remnants of acts as evidence of causality" is the periodic-orbit reading of the primes, and
   the missing piece is the same as before in a third dress: the dynamics whose remnants the primes are.
+- **The lower bound for NP = coNP is the flux loss of the assertion of existence (the owner, same day):** "The lower bound to the
+  NP = coNP is the flux loss of the assertion of existence that is associated with it." Reading (coordinator): most known proof-size
+  lower bounds are of exactly this kind, a cost of carrying information across a cut: interpolation and communication-complexity
+  bounds measure what a refutation must transmit across a split of the variables, and size-width bounds measure how much a
+  refutation must hold at once. The owner's reading proposes such a flux cost as the general lower-bound principle; the P vs NP
+  session tests it against resolution (where lower bounds are known) and states what it would need for Frege. The owner approved
+  three attacks the same day: the Yang-Mills worst-case dichotomy (crossover session, `c9a-crossover/DICHOTOMY.md`), NP vs coNP via
+  universal proof systems (`docs/pnp/PROOF-SYSTEMS.md`) and GRH via the closed-orbit dynamics (`docs/rh-guide/grh/ORBITS.md`).
