@@ -105,3 +105,16 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
 * Exploratory (`w2/SETTLING-RESULT.md`, plan committed in bc601c9 before the data): bad boxes not slower at either beta, at the
   10-sweep resolution; the twisted block field (A3) was not taken up by the fine field (alignment about 0 on the flipped links).
 * Run logs scrubbed of the user-profile path; scrub scan clean. GPU free; no GPU use without a new OK.
+
+## Round 6 (2026-11-23, uncommitted; the worst-case dichotomy)
+
+* `DICHOTOMY.md`; `formal/ProofPhase/Crossover/Dichotomy.lean` (8 theorems, standard axioms, `build-dy.sh`, `axioms-dy.sh`,
+  `axioms-dy.log`; `~/formal-dy` deleted).
+* Exact (Lean): attachment of sheet pieces in a closed layer, part (b) "uncontained has zero weight", the boundary flux is a
+  function of the outside, flux parity, and `window_gap` (sheet-Peierls and saturation regimes are disjoint).
+* First unclosable step: part (a) uniformly in the outside. The cost of one centre-layer flip is beta |tr U_p|, zero at the SO(3)
+  cut, so no e^{-c|S|} bound uniform in sigma exists; behind it: forced sheets with ties (smallness only annealed; the strict flip
+  bound gives < 1 with no rate) and the window between the Peierls and saturation regimes that the crossover crosses.
+* Reduction (D'): contract, or one of two bad events (flux-carrying outsides with near-degenerate spanning surfaces; SO(3) cut along
+  a surface), plus uncontained (zero weight). Rarity of the two events = conditions B/C again.
+* A3 reading: coarse twists are not forced into the fine field (boundary flux is fine-outside data); equilibrium vs kinetics open.

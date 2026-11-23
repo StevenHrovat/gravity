@@ -267,3 +267,73 @@ Also untouched: `Adjoint2/PatternAssembly`, `Book/TwoSize`, `Defects/Supplier`, 
 `BlockingFamily`, `VTuning` and the slab layer; same method), and `Flip/Floor` (SU(2) gap constants, not mechanical).
 **Suggested next step:** port the slab-observable layer (`Setting`-style, one file), after which the `V3/V4/H1` torus-decay
 reductions and `Interface/*` follow with the same method.
+
+---
+
+# Phase 1c: the slab-observable layer and the torus-decay routes (2026-11-24)
+
+New files (8, all in `formal/ProofPhase/General/`, nothing existing edited): `Slab`, `Blocked`, `TorusLoc`, `Level`, `W1`,
+`CondInputs`, `PortSUN2`, `TopPort2` (imports phases 1, 2, 1b and these). Axioms of the new declarations:
+`axioms-port2.log` (`axioms-port2.sh` regenerates it). Every file builds with 0 warnings. Count: 109 theorems and 27 definitions, structures and instances in the source, 149 constants in the environment, all on `propext`, `Classical.choice`, `Quot.sound` only (or fewer); no `sorry`, `admit`, `native_decide`, `axiom`; 15 `example` checks are part of the build.
+
+Same method as phase 1b (generic statement = old text with `SU2 -> Gr`, `4 -> d`, `2 -> nr`, `T.ym k j -> ymLaw nr d T k j`,
+`geodSU2 -> cost`, counting constants by phase 1), and each old statement is re-derived as `X_su2` from the generic
+theorem at `SU2`, `nr = 2`, `d = 4`. The old `SlabObs` is a different structure from the generic one; it is converted
+field by field (`SlabObs.ofOld`, `SlabObs.toOld`, structure eta), so the iffs of the gap definitions
+(`latticeGap_iff`, `massGap_iff`, `massGapLoc_iff`, `torusDecayLoc_iff`, `massGapMFLoc_iff`) are proved, not `Iff.rfl`;
+everything without slab observables is `Iff.rfl` or `rfl`.
+
+## What is ported
+
+| Module | Old files | Ported |
+|---|---|---|
+| `Slab` | `Objects`, `Existence/Bridge` | `wcorr`, `vwcorr` (volume-dependent coupling), `SlabObs`, `LatticeGap`, `MassGap`, `MassGapLoc`, `SlabObs.Extent`, `massGap_of_latticeGap`, `massGapLoc_of_massGap`, `abs_wcorr_le`, `LimitRP`, `limitRP` (reflection positivity of every limit point) |
+| `Blocked` | `Assembly`, `RouteA/BlockedSlab` | `H1Local`, `LimitDprime`, `blockGap_of_blockedRoute`, `wcorr_le_blocked`, `slab_transfer_data` |
+| `TorusLoc` | `Torus/Local` | the geometry lemmas in dimension `d` (`linkDist_shiftLink`, `linkDist_mirrorLink_le`), `gapVF_of_family`, `gapMF_of_family`, `TorusDecayLoc`, `MassGapMFLoc`, `torusDecayLoc_of_blockedRoute`, `bothOrdersLoc_of_torusDecayLoc`, `bothOrdersLoc_of_blockedRoute` |
+| `Level` | `H1/Level`, `V3/TimeSep`, `Assembly` | `LevelDprime`, `BlockGapUnif`, `torusDecayLoc_of_blockGapUnif`, `slab_time_sep`, `torusDecayLoc_of_blockGapUnifT`, `BlockedTorusRoute`, `BlockedSlabRoute`, `LevelTorusRoute`, `LevelTorusRouteT` and their reductions and `bothOrdersLoc_*` |
+| `W1` | `V3/W1Route`, `V4/Gap` (second half) | `LevelDprimeW`, `BlockGapUnifW`, `ObsTransferPhysTW`, `ObsQuasiLocTW`, `wcorr_le_blockedW`, `torusDecayLoc_of_blockGapUnifW`, `LevelTorusRouteW`, `bothOrdersLoc_of_levelRouteW`, `blockGapBddW_iff_lawGapBddW`, `blockGapBddW_of_unifW`, `torusDecayLoc_of_blockGapBddW` (cost distance `cost`, facts `0 <= cost <= P`) |
+| `CondInputs` | `V3/CondInputs` | `sepT`, `CondMassAnn`, `condMassAnn_of_condMassDecay`, `condDecouple_of_condMassAnn`, `condDecouple_of_condMass`, `obsTransferPhysT_of_condDecouple`, `obsTransferPhysTW_of_condDecouple`, `condDecouple_of_obsTransferPhysT` |
+| `PortSUN2` | none | `limitRP`, the blocked route, the level route and the W₁ route (cost `geodSUN`) at `SUN N`, any `N`, any `d` |
+
+`rfl`-checked (`example : @old = @new := rfl`): `Tuning.abs_wcorr_le`, `limitRP`, `blockGap_of_blockedRoute`,
+`RouteA.wcorr_le_blocked`, `RouteA.slab_transfer_data`, `Torus.linkDist_shiftLink`, `Torus.linkDist_mirrorLink_le`,
+`Torus.gapVF_of_family`, `gapMF_of_family`, `H1.levelDprime_of_h1Local`, `H1.levelTorusRoute_of_blockedTorusRoute`,
+`H1.bothOrdersLoc_of_levelRoute`, `V3.levelTorusRouteT_of_level`, `V3.bothOrdersLoc_of_levelRouteT`, `V3.slab_time_sep`,
+`V3.sepT` (as a definition). The remaining `X_su2` theorems state the old type verbatim and are proved from the generic
+theorem (their binder structure differs from the generic one, so `rfl` on the constants does not apply).
+
+## Findings
+
+* **Torus decay, the gap and its routes are group-blind and dimension-blind.** The whole torus-decay chain from the blocked
+  route (`H1Local`, `LimitDprime`, `ObsTransferPhys`) to the gap in both orders of limits (`bothOrdersLoc_of_blockedRoute`)
+  holds for any group of the package in any dimension, with the tail constant `d!/a^d`. SU(N) instances: `PortSUN2`.
+* **Hidden dimension 4 in `Torus/Local`.** `linkDist_mirrorLink_le`, `siteDist_mirror_le`, `mirrorLink_site`
+  (reflection changes the link distance by at most one) were stated for `LatticeLink 4 N`; the proofs are coordinate-wise and
+  hold in every `d`.
+* The cost distance enters the W₁ layer only through `0 <= cost <= P`.
+
+## Where the port stopped, and what is left
+
+**Not ported, and why.**
+
+* **Needs `OnLCP` / `NonTrivial` / the flux limit (phase 3, centre `Z2` and 2x2 matrices in substance):** `Assembly`
+  (`OnLCP`, `NonTrivial`, `SlabDecay`, `OpenPieces`, the assembly theorems), `V3/Top`, `V4/Top`, `V4/LCP`, `Objects`'
+  flux layer, and the `yang_mills_assembly_*` theorems of every file (`OneBox/Fine`, `OneBox2/Concrete`, `Interface/*`).
+* **Name the certified SU(2) window:** `H1LocalLipW`, `levelDprimeW_of_h1LocalLip`, `levelDprimeW_of_certified`
+  (`V3/W1Route`), `Certified/*`.
+* **Slab decay chain with its own old structures (not started, same method):** `RouteA/BlockedSlab`'s
+  `slabDecay_of_blockedRoute`, `massGap_of_blockedRoute`, `torusDecay_of_blockedRouteU`, `bothOrders_of_blockedRouteU`
+  (need `SlabDecay`, `TorusDecay` of `Assembly` and workstream 4); `Torus/Local`'s `torusDecayLoc_of_torusDecay`,
+  `massGapMFLoc_of_massGapMF`.
+* **Not started, same method:** `V4/UV` (`UV1Polymer`, `Seg1/Envelope` polymers), `H1/Split` (generic split lemmas, plus
+  `linkDiam`, `supDist`, `csupp`, `cdist`, `crad` for `LatticeLink 4`), `Quantum/BlockedRoute`, `Quantum/LemmaT`,
+  `Quantum/LimitStates`, `Interface/MeasBlocking`, `RandBlocking`, `DenseTransfer` (they import `V4/Top`, hence the flux
+  layer, for their assembly theorems; their non-assembly parts restate over `Tuning` and the blocking structures as
+  `Noisy`/`Filter` did), `Existence/Bridge` (the rest: `WilsonData`), `UV/Split`, `Defects/Supplier`, `Seg1/Envelope`,
+  `Saturation/Reduction`, `SectorS/ConjS`, `OS/GapLoc`, `Adjoint2/PatternAssembly`, `Book/TwoSize`,
+  `Crossover/P4Chain`.
+* `Flip/Floor` (SU(2) gap constants): not mechanical.
+
+**Suggested next step:** `H1/Split` and `V4/UV` first (the `Tuning`/`BlockingFamily` chain is now complete up to them), then
+the `Interface/*` structures (`MeasBlocking`, `RandBlocking`) as generic structures like `NoisyBlockingFamily`; the
+assembly theorems wait for phase 3.

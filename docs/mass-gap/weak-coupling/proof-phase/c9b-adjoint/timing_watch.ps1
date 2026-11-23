@@ -19,9 +19,9 @@ Log "GPU utilisation $util %; compute processes holding memory: $($apps.Count)"
 if ($util -gt 20 -or $apps.Count -gt 0) { Log 'ABORT: GPU not free'; exit 3 }
 
 $python = (& py -c "import sys; print(sys.executable)").Trim()
-$jobArgs = @('ir_constrained.py', 'timing', '--go', '--gpu', '--beta', '2.3', '--N', '40', '--n', '3', '--w', '2.0', '--kappa', '200',
-    '--R', '2', '--B', '1', '--x', '0,0,0,0,1', '--npre', '200', '--eps', '0.05', '--nleap', '10', '--tune-traj', '10',
-    '--tune-max', '6', '--seed', '31', '--bgseed', '3000', '--max-wall', '1680',
+$jobArgs = @('ir_constrained.py', 'timing', '--go', '--gpu', '--precond', '--nprobe', '16', '--beta', '2.3', '--N', '40', '--n', '3',
+    '--w', '2.0', '--kappa', '10', '--R', '2', '--B', '1', '--x', '0,0,0,0,1', '--npre', '200', '--eps', '0.0125', '--nleap', '40',
+    '--tune-traj', '5', '--tune-max', '4', '--seed', '31', '--bgseed', '3000', '--max-wall', '1680',
     '--progress', 'timing_progress.jsonl', '--out', 'timing_job.npz')
 Log ("command: " + $python + ' ' + ($jobArgs -join ' '))
 if ($DryRun) { Log 'dry run: nothing started'; exit 0 }
@@ -38,7 +38,8 @@ while (-not $p.HasExited) {
     $el = [int]((Get-Date) - $t0).TotalSeconds
     $last = if (Test-Path 'timing_progress.jsonl') { Get-Content 'timing_progress.jsonl' -Tail 1 } else { '(no progress yet)' }
     $flag = if ($el -gt $EstimateSeconds) { ' OVER ESTIMATE' } else { '' }
-    Log "elapsed $el s / estimate $EstimateSeconds s / cap $CapSeconds s$flag | $last"
+    $gpu = (nvidia-smi --query-gpu=clocks.sm,temperature.gpu,utilization.gpu,memory.used --format=csv,noheader) -join ' '
+    Log "elapsed $el s / estimate $EstimateSeconds s / cap $CapSeconds s$flag | gpu [$gpu] | $last"
     if ($el -ge $CapSeconds) {
         Log "CAP REACHED: killing PID $($p.Id) and its children"
         & taskkill /PID $p.Id /T /F | Out-Null

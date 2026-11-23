@@ -32,7 +32,29 @@ TIME = 0
 
 
 # ------------------------------------------------------------------------------------------------------------ quaternion algebra
+_QMUL_KERNEL = None
+
+
+def _qmul_kernel(xp):
+    global _QMUL_KERNEL
+    if _QMUL_KERNEL is None:
+        _QMUL_KERNEL = xp.ElementwiseKernel(
+            "float64 a0, float64 a1, float64 a2, float64 a3, float64 b0, float64 b1, float64 b2, float64 b3",
+            "float64 c0, float64 c1, float64 c2, float64 c3",
+            """c0 = a0 * b0 - a1 * b1 - a2 * b2 - a3 * b3;
+               c1 = a0 * b1 + b0 * a1 - (a2 * b3 - a3 * b2);
+               c2 = a0 * b2 + b0 * a2 - (a3 * b1 - a1 * b3);
+               c3 = a0 * b3 + b0 * a3 - (a1 * b2 - a2 * b1);""", "ir_qmul")  # the same product as below (c3b's fused kernel)
+    return _QMUL_KERNEL
+
+
 def qmul(a, b, xp=np):
+    if xp is not np and a.shape == b.shape:
+        a = xp.ascontiguousarray(a)
+        b = xp.ascontiguousarray(b)
+        c = xp.empty_like(a)
+        _qmul_kernel(xp)(a[0], a[1], a[2], a[3], b[0], b[1], b[2], b[3], c[0], c[1], c[2], c[3])
+        return c
     a0, a1, a2, a3 = a
     b0, b1, b2, b3 = b
     return xp.stack([a0 * b0 - a1 * b1 - a2 * b2 - a3 * b3,
@@ -73,6 +95,9 @@ class Node:
 
     def __init__(self, val, back=None):
         self.val, self.grad, self.back = val, None, back
+
+
+_TAKE_CACHE = {}  # index arrays of Tape.take, per (array module, grid side, offset, stride): built once (device copies cached)
 
 
 class Tape:
@@ -143,10 +168,14 @@ class Tape:
         """Periodic strided sampling: result at grid point i = a at (off + stride i) mod M, per axis (injective)."""
         xp = self.xp
         M = a.val.shape[2]
-        m = M // stride
-        idx = [xp.asarray((off[i] + stride * np.arange(m)) % M) for i in range(4)]
-        ix = (slice(None), slice(None), idx[0][:, None, None, None], idx[1][None, :, None, None],
-              idx[2][None, None, :, None], idx[3][None, None, None, :])
+        key = (id(xp), M, tuple(off), stride)
+        ix = _TAKE_CACHE.get(key)
+        if ix is None:
+            m = M // stride
+            idx = [xp.asarray((off[i] + stride * np.arange(m)) % M) for i in range(4)]
+            ix = (slice(None), slice(None), idx[0][:, None, None, None], idx[1][None, :, None, None],
+                  idx[2][None, None, :, None], idx[3][None, None, None, :])
+            _TAKE_CACHE[key] = ix
 
         def back(g):
             z = xp.zeros_like(a.val)
@@ -661,6 +690,24 @@ def timing(a):
     m.target = m.coarse(U).copy()
     m.kappa = a.kappa
     rng = DevRng(xp, a.seed) if a.gpu else np.random.default_rng(a.seed)
+    # sampler A: the diagonal preconditioning mass (REDESIGN.md section 2), then the cost of one force evaluation
+    t0 = time.time()
+    if a.precond:
+        m.mass = m.precond_mass(U, a.nprobe, rng)
+        if a.gpu:
+            xp.cuda.Stream.null.synchronize()
+    t_mass = time.time() - t0
+    m.force(U)
+    if a.gpu:
+        xp.cuda.Stream.null.synchronize()
+    t0 = time.time()
+    for _ in range(3):
+        m.force(U)
+    if a.gpu:
+        xp.cuda.Stream.null.synchronize()
+    t_force = (time.time() - t0) / 3
+    note(stage="mass and force", t_mass=round(t_mass, 2), s_force=round(t_force, 4),
+         mass_max=float(to_host(m.mass).max()) if m.mass is not None else 1.0)
     eps, nleap = a.eps, a.nleap
     tuning = []
     for _ in range(a.tune_max):
@@ -677,11 +724,13 @@ def timing(a):
             break
         eps, nleap = eps / 2, nleap * 2
     mem = int(xp.get_default_memory_pool().total_bytes()) if a.gpu else 0
-    log = {"vx": [], "acc": [], "dH": [], "s_traj": []}
+    log = {"vx": [], "acc": [], "dH": [], "s_traj": [], "S": []}
 
     def save():
         np.savez(a.out, vx=np.array(log["vx"]), acc=np.array(log["acc"]), dH=np.array(log["dH"]), s_traj=np.array(log["s_traj"]),
-                 tuning=np.array(tuning), args=json.dumps(vars(a)), mem_bytes=mem, eps=eps, nleap=nleap,
+                 S=np.array(log["S"]),
+                 tuning=np.array(tuning), args=json.dumps(vars(a)), mem_bytes=mem, eps=eps, nleap=nleap, s_force=t_force,
+                 t_mass=t_mass,
                  wall=time.time() - t_start)
     k = 0
     while time.time() - t_start < a.max_wall and k < a.ntraj:
@@ -692,6 +741,7 @@ def timing(a):
         log["acc"].append(to_host(acc))
         log["dH"].append(to_host(dH))
         log["s_traj"].append(time.time() - t0)
+        log["S"].append(float(to_host(m.evaluate(U, need_grad=False)[0])[0]))
         note(stage="production", traj=k, acc=float(log["acc"][-1].mean()), s_traj=round(log["s_traj"][-1], 3))
         k += 1
         if k % 10 == 0:
@@ -699,7 +749,7 @@ def timing(a):
     save()
     note(stage="DONE", n_traj=k)
     print(json.dumps({"out": a.out, "wall_s": time.time() - t_start, "n_traj": k, "eps": eps, "nleap": nleap, "tuning": tuning,
-                      "s_per_traj_median": float(np.median(log["s_traj"])) if k else None,
+                      "s_per_traj_median": float(np.median(log["s_traj"])) if k else None, "s_force": t_force,
                       "acc": float(np.mean(log["acc"])) if k else None, "mem_GB": mem / 1e9}))
     return 0
 
@@ -856,7 +906,9 @@ def main():
     tm.add_argument("--N", type=int, default=40)
     tm.add_argument("--n", type=int, default=3)
     tm.add_argument("--w", type=float, default=2.0)
-    tm.add_argument("--kappa", type=float, default=200.0)
+    tm.add_argument("--kappa", type=float, default=10.0)
+    tm.add_argument("--precond", action="store_true")
+    tm.add_argument("--nprobe", type=int, default=16)
     tm.add_argument("--R", type=int, default=2)
     tm.add_argument("--B", type=int, default=1)
     tm.add_argument("--x", default="0,0,0,0,1")

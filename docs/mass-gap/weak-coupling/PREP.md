@@ -2005,3 +2005,55 @@ thread.
   session tests it against resolution (where lower bounds are known) and states what it would need for Frege. The owner approved
   three attacks the same day: the Yang-Mills worst-case dichotomy (crossover session, `c9a-crossover/DICHOTOMY.md`), NP vs coNP via
   universal proof systems (`docs/pnp/PROOF-SYSTEMS.md`) and GRH via the closed-orbit dynamics (`docs/rh-guide/grh/ORBITS.md`).
+- **Yang-Mills dichotomy, refined (the owner, same day, on DICHOTOMY.md):** "That part a fails is actually expected, since it was too
+  general. The correct statement is that the weight bound is uniform over every well-defined outside, which in the systems forces it
+  into non-existence. Everything that does not bound to a well-defined outside is not DMP-complete and can thus be disregarded, since
+  it can not have existence, which is what the weight is." And on whether that excluded set is null or only small: "It has zero
+  inherent weight, but keeping it outside is lossy, since it generates acts, which, by their taking place, generate remnants that
+  influence existence through the DB where they were generated." Reading (coordinator): DICHOTOMY.md found part (b) exact (Lean:
+  uncontained sheets have zero weight) and part (a) false uniformly, because a centre flip costs beta |tr U_p|, zero at the SO(3)
+  cut; what survives is a reduction to two bad events, F (flux-carrying outsides with near-degenerate surfaces) and C (SO(3) cut
+  along a surface). Exactly at the cut the excluded set is null; near it the cost is small on a set of positive measure. The owner's
+  second statement points to a way around rarity: the excluded events act on the box only through the boundary where they sit, so
+  their effect is a boundary term attenuated by the collar (condition A, m > 0), not a bulk term. If that holds, disregarding them
+  costs a loss bounded by collar attenuation, and rarity is needed only for the residue inside the box. Sent to the crossover session
+  as a precise test (behind a collar: attenuated; inside: the residue).
+  The owner adds (same day): "That is also the same as the YM rarity solution. Once existence is able to be defined as binary, any
+  probability that does not come close to 1, can be entirely disregarded, with only that disregarding needing to be kept track of."
+  Reading (coordinator): this has an exact form in infinite volume and a quantitative one in finite volume. (1) Kolmogorov's zero-one
+  law: an event that depends only on what happens arbitrarily far away (a tail event) has probability exactly 0 or 1; in the
+  infinite-volume limit "existence is binary" in this sense, and a tail event that is not almost sure can be dropped entirely.
+  (2) In a finite box the same works with bookkeeping: large-deviation bounds make atypical events exponentially unlikely in the
+  size, P <= e^{-c |region|}, and dropping them costs exactly that, which is carried as a remainder term (as M1 carries its R-terms).
+  "Only the disregarding needs to be tracked" is this remainder accounting. What remains to prove, in each use, is the rate: that
+  the dropped probability is bounded away from 1 with an exponential cost, which for the bad events F and C is the estimate the
+  crossover session is testing in the collar form.
+- **GRH: the act must entangle the real with the imaginary through a coupling factor (the owner, same day):** "The actual reason
+  behind the DB is not yet implemented. In the way it is currently being used an act does not yet entangle the real with the
+  imaginary, as it must, in accordance with a coupling factor. Only this tie between them can fully construct a running existence
+  and give the correct weight to a positive existence in both fields that depend on it." Reading (coordinator): there is a classical
+  structure of exactly this form, and it is a known route to zeros on a line. (1) Holomorphy already ties the real and imaginary
+  parts: they are harmonic conjugates (Cauchy-Riemann), so neither can be chosen without the other. (2) A positivity that couples them
+  forces real zeros: write an entire function as E = A - iB with A and B real on the real axis. If E is Hermite-Biehler
+  (|E(conj z)| < |E(z)| in the upper half-plane, i.e. the coupled pair has a positive "imaginary weight" there), then A and B have
+  only real zeros, and they interlace. Equivalently, B/A maps the upper half-plane into itself (a Nevanlinna, or Herglotz, function),
+  which has a positive measure representation. That is "a tie between real and imaginary that gives the correct weight to a positive
+  existence in both fields". (3) De Branges built his RH programme on exactly this (de Branges spaces of entire functions); his
+  specific positivity conjecture was shown false (Conrey and Li, 2000), but the framework stands: RH would follow from writing xi as
+  the A-part of a Hermite-Biehler function with the right coupling. So the owner's missing piece names a fourth place the same
+  positivity could come from: a Hermite-Biehler coupling for xi.
+- **Every running act sits between a spanned, unsaturated existence and a well-defined non-existence (the owner, same day, on the
+  dichotomy's residue):** "The Yang-Mills thing is actually exactly what DMP predicts. Since existence is defined by its non-existence,
+  they both need to always be created, with the reserve being included at creation in G0. But since existence extends exponentially
+  farther than non-existence, while the actual existence accumulates around the DBs that are in observable space, there is, while
+  something can exist, always enough room for it to. Since the DB is the interface of the act and its encoding the language, that
+  gives us a guarantee that every act, when running, always happens between a spanned but unsaturated existence and a well-defined
+  non-existence, with the behavior of the balance between the two accumulating existence on itself, while always giving it the root
+  it needs for the time it needs, so that it stays existing, otherwise it just does not, is contained, and brings the system closer
+  to the optimum." Reading (coordinator): in the dichotomy's terms this is a precise, testable prediction. "Well-defined
+  non-existence" = the bad (near-cut) set consists of finite clusters; "existence extends exponentially farther" = the cluster sizes
+  have an exponential tail; "spanned, unsaturated existence" = the good set percolates without filling everything. That is exactly
+  conditions B/C (WL.md 10) for the inside residue of (D''). The W2 snapshots measured it at the fine scale: at beta = 3.5 the near-cut
+  set is isolated clusters of about 5 plaquettes (supports the prediction); at beta = 2.3 it spans the box in every snapshot
+  (contradicts it at the fine scale). The reading suggests where to look next: the prediction concerns the scale at which acts run,
+  so at beta = 2.3 the test belongs on the blocked (coarse) variables, where it can be measured on the saved snapshots on the CPU.

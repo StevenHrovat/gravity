@@ -232,6 +232,13 @@ Everywhere 6c and 6d use a floor, the following applies:
 - **Unchanged:** the 6c rules 1-3. The sample sizes of 6d (computed with `Gamma = I` and without `K/(K - 1)`) rise by at most
   `K/(K - 1) = 1.14` in the noise-dominated classes (the rectangle class: about `1.3 x 10^6`); the projection uses the corrected values.
 
+## 6f. Amendment (2026-11-23, before the timing job): sampler A, kappa_c 10, the timing setup
+
+The sampler for every GPU run is A: the diagonal preconditioner of `REDESIGN.md` section 2. Option B was built and measured not viable
+(`PILOT2.md`). `kappa_c in {10, 20, 40}` with the `1/kappa_c` extrapolation replaces `{100, 200, 400}` (sections 3-4). The timing job's
+setup and expectation are in `TIMING.md` ("Setup as run"). Budgets for any later stage are computed from the measured gap (`REDESIGN.md`
+rule 1), not from the ensemble counts' guesses.
+
 ## 7. Code (not written)
 
 New: `constrained.py` (penalty HMC on a region of `docs/mass-gap/lattice/boundary.py`'s `Box`, the block variable and its force from c3b's
