@@ -2658,3 +2658,20 @@ thread.
   bounds, one global state) [classical]. Care point: "every scale" holds upward from the crossover; below it (small boxes, weak
   coupling side) a box does not certify and need not, since that side is covered by asymptotic freedom (Balaban's construction,
   external), and the global rate does not depend on those scales.
+- **The care point lines up with the upper bound: a coupling up to exactly one, or finite below it, nothing else (the owner, same
+  day):** "The care point also nicely lines up with our upper bound, since we allow a coupling up to exactly one or finite below it,
+  nothing else." Reading (coordinator): exact in all three ledgers. In the ledger every step's factor is f = e^{-c}; a factor has a
+  finite real cost if and only if f > 0 (`exists_cost_iff`, Lean), and the cost is nonnegative if and only if f <= 1. So the allowed
+  range is f in (0, 1]: exactly one (cost 0, a lossless step) or finitely below it (a finite positive cost). Excluded: f > 1
+  (amplification, a negative cost) and f = 0 (an infinite cost). (1) Yang-Mills, with the electric weight as the coupling's encoding
+  (entry above): e^{-F_e} = (Z - Z_tw)/(Z + Z_tw) (`one_sub_two_flipP_exp`, `Flip/Floor.lean`, Lean). Positivity gives Z_tw <= Z, so
+  the factor is at most 1 (no amplification); the strict bound Z_tw < Z for every beta != 0 (`su2_Ztw_lt_Z`, `Flip/Strict.lean`,
+  Lean) keeps it above 0 (no infinite cost); and it tends to exactly 1 only as Z_tw/Z -> 0, the weak-coupling end. That is where the
+  care point sits: small boxes on the weak-coupling side have factors near one (cost near zero), they do not certify and need not,
+  and asymptotic freedom covers them; boxes from the hand-over point upward have factors finitely below one. Nothing else occurs.
+  (2) GRH: the reflection coefficients satisfy |k_m| <= 1; exactly one only at the closure of a finite existence space (finite N,
+  the entry "existence cannot be imaginary"), finitely below one at every other step; "nothing else" (no |k_m| > 1) is GRH itself.
+  (3) NP vs coNP: each restriction keeps a share 1 - theta in [0, 1] of the costly lines (`CrossingCost`, Lean); the Dobrushin column
+  of the class theorem is below one (Lean). Care point: in Yang-Mills and NP vs coNP the bound "at most one" is proved (positivity,
+  counting), and what is open is a uniform distance below one (O1, the crossing cost); in GRH the bound "at most one" is itself the
+  open step.
