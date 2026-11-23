@@ -3641,3 +3641,13 @@ thread.
   `etm_balance_undecidable`, Lean): settling inside the tick is guaranteed exactly when the internal update contracts, which gives the
   training target. Care points as in VII.3: the gate certifies integrity and freshness, not meaning; it must check acts, not
   self-reports.
+- **An attribution of DMP always carries its version number, and that alone suffices for a G0 (the owner, same day, on Apache 2.0
+  and the link to root):** "Since an attribution of DMP always has to carry it's version number, that alone suffices for a G0."
+  Reading (coordinator): yes, under one condition. A versioned attribution names one exact root: the precise axioms and text of
+  that release. That is how this project pins its own foundations: the Lean build fixes Lean and Mathlib to one release
+  (`v4.34.0`), so every proof is checked against exactly that root and can be replayed later [project practice]. The condition is
+  immutability: a version number identifies the root only if a released version never changes. A content hash (a git commit id,
+  the sealed `.cmb` file of the GUID papers, the hash that Milky Way checks in the Outlook concept) makes this tamper-evident, because
+  any change to the text changes the hash [classical]. So the strongest form of the owner's statement: a G0 is identified by its
+  version plus the hash of its pressed text, and Apache 2.0's attribution requirement carries that identification along every
+  redistribution.
