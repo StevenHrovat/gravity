@@ -3908,3 +3908,18 @@ thread.
   (`Unified/Transport.lean`, Lean); the "agreed state" is the shared root of the handshake entries. Care point: the settle bound needs
   the contraction, the cost above the floor, and for Yang-Mills at fixed physical size and every outside that is O1; the boundaries
   0 < c < 1 are proved for every SU(N), the uniform distance from them is the open step.
+- **The contraction comes from existence positivity, which comes from the definition of a running existence having 2, 3 present at
+  the one-box (the owner, same day; "contraction" for the dictated "contradiction"):** "The contradiction comes from existence
+  positivity, which comes from the definition of a running existence having 2,3 present at the one-box." Reading (coordinator): the
+  link positivity => contraction is a theorem, and its strength depends on how much positivity is given. (1) *Positivity gives
+  contraction, quantitatively.* A positive operator whose ratios are bounded (finite projective diameter Delta) contracts Hilbert's
+  projective metric by the factor tanh(Delta / 4) (Birkhoff-Hopf); a positivity-improving compact operator has a strict spectral gap
+  (Jentzsch, Perron-Frobenius) [classical]. So existence positivity yields a contraction exactly to the extent that its ratios are
+  bounded. (2) *Where it is proved here.* On every finite box the positive transfer step gives a Doeblin rate, a contraction (Lean); in
+  slab form the electric factors multiply exactly (`elec_submul`, Lean). (3) *2, 3 at the one-box as the definition of running.* For
+  GRH, defining a running existence as one whose one-box state already contains 2 and 3 is the hand-over of the earlier entry: the
+  {inf, 2, 3} form is the full form at that support and positive there (numerical; the certificate round is making it rigorous). Care
+  point: for GRH the positivity at each step has no slack, so it gives a sign but no contraction (Birkhoff's factor tends to 1 as the
+  ratio bound degenerates); for Yang-Mills the positivity is quantitative per box but its ratio bound is not uniform in the outside and
+  the cutoff, which is O1. Positivity => contraction holds; the open steps are the uniform ratio bounds that make the contraction
+  strict at every scale.
