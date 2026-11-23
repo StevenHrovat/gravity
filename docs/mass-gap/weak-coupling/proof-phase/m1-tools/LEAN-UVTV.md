@@ -5,7 +5,8 @@ Four new modules in `formal/ProofPhase/M1/` sit on top of the generic coupling t
 `Assembly.lean`.
 
 **Build and check:** `axioms-uvtv.sh` (WSL, private build folder). Result in `axioms-uvtv.log`:
-* 52 declarations, each depending only on `propext`, `Classical.choice` and `Quot.sound`;
+* 91 declarations in seven modules (after the second round, below), each depending only on `propext`,
+  `Classical.choice` and `Quot.sound`;
 * no `sorry`, no `native_decide`, no axiom declarations.
 
 No existing module was edited.
@@ -41,3 +42,18 @@ This is a large development: the OS construction is not in Mathlib.
   abstract configuration and probability spaces, so they apply to it unchanged.
 * `MassGapLoc` itself. `gap_of_UVTV` gives the decay on the OS space, and stating `MassGapLoc` through it needs the
   reconstruction above.
+
+## Second round (2026-11-23): the two named assumptions
+
+| module | headline | status |
+|---|---|---|
+| `UVTVOS` | **`OSData` discharged from reflection-positive data.** `RPData V`: a form `Q` and a step `τ`. From it: `RPData.H` (the completion), `Φ`, `osData` (`‖Φu‖² = Q u u`), `contraction` (the OS argument by log-convexity), the transfer operator `T` (`T_Φ`, `T_symm`, `T_pos`), and the block closure `H0` (closed, `T`-invariant: `T_mem_H0`). `gap_of_RP`: `Q F (τⁿF) ≤ e^{-mn} Q F F`, with no Hilbert-space hypothesis | proved |
+| `UVTVReflect` | `condExp_comp_of_measurePreserving` (not in Mathlib). `os_split_reflection`: the reflection step in `Q(F - f_ℓ)`. `RPMeasure`: a measure with reflection, shift, positive-time class, `rp`, `rp_half`. `toRPData`. `gap_of_measure`: `∫ F(θω) F(sⁿω) ≤ e^{-mn} ∫ F(θω) F(ω)` from the block gap and UV-TV's (A), (B) | proved |
+| `UVTVInfluence` | `ScaleHyp.ofBlockBounds`: `ScaleHyp` from a per-block coupling bound (Balaban), smallness `κ ≤ ε w`, and counting | proved |
+
+**Still open, as packs:**
+* `PACK-OSDATA.md`: an `RPMeasure` (or the windowed variant) for the Wilson torus measures, from the repository's
+  reflection positivity, and the bridge to `MassGapLoc`. The shift does not preserve positive-time observables on a
+  torus, hence the windowed route.
+* `PACK-SCALEHYP.md`: maximal couplings as measurable kernels, box laws from densities, counting, and the assembly,
+  with Balaban's density-ratio constants as named hypotheses.

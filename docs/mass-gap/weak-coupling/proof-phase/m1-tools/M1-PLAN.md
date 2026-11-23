@@ -111,7 +111,7 @@ M1 has a complete argument. Every row is proved in Lean, at paper level, or by c
 
 Both reviewers checked `UV-TV.md` 38 (REVIEW-2 fifteenth follow-up, REVIEW-3 follow-up 14) and report no open FATAL or GAP
 finding. Their last fixes are in 39. M1's own work is done until the owner decides the next phase: the Lean
-instantiation of the coupling theorem, the paper write-up, or P4. **Lean phase (2026-11-23, `LEAN-UVTV.md`):** Lemma UV-TV's logical structure is machine-checked on top of `CouplingDS` in four new modules: `UVTVScale`, `UVTVFront`, `UVTVCov` and `UVTVInterface`. They hold 52 declarations, all on standard axioms. Balaban's inputs and the OS reconstruction enter as named hypotheses.
+instantiation of the coupling theorem, the paper write-up, or P4. **Lean phase (2026-11-23, `LEAN-UVTV.md`):** Lemma UV-TV's logical structure is machine-checked on top of `CouplingDS` in four new modules: `UVTVScale`, `UVTVFront`, `UVTVCov` and `UVTVInterface`. Second round: `UVTVOS` and `UVTVReflect` discharge `OSData` from reflection-positive data, and `UVTVInfluence` builds `ScaleHyp` from per-block bounds. Seven modules, 91 declarations, all on standard axioms. What remains is in `PACK-OSDATA.md` (an `RPMeasure` for the torus measures, and the bridge to `MassGapLoc`) and `PACK-SCALEHYP.md` (the instantiation, with Balaban's constants as named hypotheses).
 
 The full table with a level per item is `UV-TV.md` 37.1.
 The rows above this verdict keep their history; where a row still says "sketch" or "unchecked", section 37
