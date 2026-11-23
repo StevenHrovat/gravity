@@ -1473,3 +1473,18 @@ thread.
   (j mod 1) <-> centre character <-> act / no act. For the generalisation to SU(N) (GENERALISE-PLAN.md) the classes become the
   N-ality k = 0, ..., N-1 (the centre Z_N acts as e^{2 pi i k/N}), so the smallest act is 1/N and the fundamental representation has
   N witnesses; N = 2 is the case where the act is a half and the witnesses are a pair.
+- **4s1t and triality (the owner, same day):** "The N-ality fits very well! I just thought about 4s1t, which entangles in 3d, but allows
+  a perfect triality, which should still work in my head. The entangled space is given a direction by time, I see no issues."
+  Reading (coordinator): two parts, one that holds and one that does not.
+  (1) **Triality already lives in 3s1t, in the gauge group.** For SU(3) the N-ality is literally called triality: the centre Z3 sorts
+  every representation into three classes (quarks, antiquarks, and the centre-blind ones such as gluons and baryons). That is QCD's
+  colour, in four spacetime dimensions; it needs no extra space dimension. The direction half (time, one reflection) works in any d,
+  so that part of the reading holds as stated.
+  (2) **4s1t loses the act for a gauge field.** In five dimensions the coupling g^2 has dimension of length, so nothing is transmuted
+  (previous readings). A second loss is the duality itself: only in four dimensions does the Hodge star map the field strength (a
+  2-form) to another 2-form, so electric and magnetic, self-dual and anti-self-dual halves are the same kind of object, and the
+  rotation group splits as SO(4) = (SU(2) x SU(2))/Z2 into two equal halves. In five dimensions the dual of the field strength is a
+  3-form: the magnetic side becomes strings instead of points, and the two halves are no longer partners. So the perfect duality the
+  proof uses (the flip, the twist, the centre layer) is a four-dimensional fact. Triality of the Spin(8) kind (vector and two spinors
+  permuted) needs eight dimensions, not five. Conclusion: triality in the gauge group, inside 3s1t, works; triality from a fourth
+  space dimension does not give a theory that transmutes.
