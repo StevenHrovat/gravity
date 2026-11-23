@@ -1357,3 +1357,12 @@ thread.
   not the fine configuration), and the flow from fine to coarse cannot be run backwards (the a-theorem reading). A measurement from
   inside can therefore only approach the answer (evidence, the third layer), while the proof states what holds uniformly; the two meet in
   the limit without either replacing the other.
+- **Present and observable; the cost of observation (the owner, same day):** "For something to truly exist, it has to be both present and
+  observable; without one the other loses meaning. And where observation takes place, Heisenberg's uncertainty introduces the flux loss
+  of the assertion, so the cost of observation." Reading (coordinator): in the proof the two halves have exact counterparts. "Present"
+  is the law: the configuration is there with its weight. "Observable" is the physical (Osterwalder–Schrader) norm: only what has
+  nonzero norm there counts, and something present but with zero OS norm is physically nothing, which is the density statement M1
+  proved. The cost of observation appears as resolution: the finer the scale at which a quantity is resolved, the larger its
+  fluctuations (in a quantum field they grow without bound as the resolution sharpens). That is the Euclidean shadow of the uncertainty
+  relation; in the reconstructed Hilbert space it becomes the non-commuting field and momentum. So looking closer always costs more,
+  and the coarse observables are where existence can be read cheaply.
