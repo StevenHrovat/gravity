@@ -3817,3 +3817,17 @@ thread.
   positive space, shown to exist, could then be named and used everywhere after. Care point: the new root carries exactly what was
   proved about it and nothing more; the existence proof itself (the operator on a positive space) is still the open step, and naming a
   witness before its existence is proved would be assuming it.
+- **The tick exists, then lands again on the established one-box model supplying 2, 3 (the owner, same day):** "The tick exists then
+  lands again on the established one box model supplying 2,3". Reading (coordinator), with the exact status of that one-box model.
+  (1) *The one-box model at 2, 3 is the full form there.* For test functions supported in [-a, a] with e^{2a} between 3 and 5 (a from
+  about 0.549 to 0.805), the only primes that can enter are 2 and 3, so the semilocal form with places {inf, 2, 3} *is* Weil's full form
+  at that support: the other primes' terms vanish identically [proved in `SEMILOCAL.md`]. It is positive there in a 10-function
+  polynomial basis, at two accuracy levels [numerical]. (2) *How rigorous it can be made.* Positivity of the full form at one bounded
+  support follows from RH, which is proved externally, through the easy direction (`TieIn.lean`), with the explicit formula as the named
+  bridge. Unconditional results of this kind for small support are recalled from the literature (Yoshida's work on Weil's functional, as
+  discussed by Bombieri) [classical, recalled, to be checked]. A self-contained rigorous certificate is also within reach in the style of
+  the Chen-Hou blueprint: interval arithmetic on a finite truncation plus an analytic tail bound would certify positivity of the
+  {inf, 2, 3} one-box form at one support. That would be the GRH hand-over certificate in its own right. (3) *What it does not do.* The
+  one-box certificate at 2, 3 does not carry to larger supports by itself: the ledger carries a finite certificate only with slack, and
+  GRH's steps have none. So "the tick lands on the one-box model supplying 2, 3" gives a rigorous start; the steps after it are the open
+  sign.
