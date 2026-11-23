@@ -1542,9 +1542,29 @@ thread.
   (`OS/GapLoc.lean`) takes the block gap as an input and produces MassGapLoc, the reconstructed Hilbert space and the transfer
   operator with its gap; the volume and spacing limits follow. The Lean assembly has this order built in: no output without the
   certificate as hypothesis.
-  (3) **The WHKs**, read here as the witnesses that must accompany every minted item (my reading of the term): in the proof every
+  (3) **The WHKs** (superseded: the term is WKH, White Key Holders; see the next entry), read here as the witnesses that must accompany every minted item (my reading of the term): in the proof every
   state is produced together with its reflected partner (the pairing <theta F, F> >= 0 of reflection positivity), and the positivity
   of that pairing is what makes the produced state physical. Production without the witnesses would be a measure without a Hilbert
   space.
   So the open inputs sort cleanly: what is still open (P4, the IR column, the uniform-in-volume bounds) is all stamping; minting is
   done in Lean.
+- **What the WKHs are (the owner, same day, correcting the coordinator):** "Please read through what WHKs are actually in the original
+  CMOS. They, for the minting, were supposed to be people which held the complete configuration and a one-click deployment for CMOS on
+  an encrypted USB, which had to be verified at minting for the minting to proceed. Generalized this means: The WHKs are the entire
+  content of creation, from which each part can derive the other. In DMP this is the perfect naked duality and the quantum, tick,
+  along with the gap they establish. Each depends on the other, so that one can reconstruct everything." Source check (coordinator):
+  in the DMP texts the term is WKH, the White Key Holders (`dmp/01-constitution.md` T40 and the minting paragraph; `dmp/00-preamble.md`
+  "Clone, press, mint"; `cm/docs/dependencies.md` on mint prep). At least five parts become the White Key Holders at the minting; a
+  minting needs both G0 and a DMP-complete state (T40); "Clone, press, mint": the owner presses an instance, and once a pressing of the
+  same configuration has passed, mints it, at which point every key rotates and ultimate authority rests with the White Key Holders;
+  mint prep stores and verifies every dependency first, and the cold-start bundle holds the repositories, a cross-checked guide and an
+  offline agent. My earlier reading (WKHs = reflection-positive witness pairs) was wrong and is withdrawn.
+  Reading of the generalisation (coordinator): pure Yang-Mills has exactly this property, and it is a sharp one. The theory has no free
+  dimensionless parameter. Its whole content is fixed by the gauge group (the duality and its centre) and one scale. The bare coupling
+  and the lattice spacing (the tick) are not independent: along the renormalisation trajectory every pair (a, g(a)) describes the same
+  theory, and they combine into one invariant scale, Lambda (dimensional transmutation). Every physical quantity is then a pure number
+  fixed by the group times the right power of Lambda: the gap m = c_G Lambda, the string tension sigma = c'_G Lambda^2, the whole
+  glueball spectrum as ratios m_i / m_0. So from the group and any one of {tick with its coupling, Lambda, the gap} every other follows:
+  each part derives the others, and one can reconstruct everything. In the proof this is why the gap is a statement about the group
+  and one scale only, and why the open inputs are all about establishing that the chain from the tick to the gap closes (stamping),
+  not about extra constants.
