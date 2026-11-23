@@ -3515,3 +3515,13 @@ thread.
   universal property plus soundness: what the form layer certifies holds in every instance. This is also the paper's Part II as
   outlined ("The tools that click"). It refines the earlier rule of 2026-11-21 (central lattice pieces such as reflection positivity
   built from scratch): the form layer stays ours; content may adopt the best existing solutions.
+- **ETM item (c) restated: a binary global truth at G0 (the owner, same day):** "For the ETM c can be restated as having a binary
+  global truth at G0." Reading (coordinator): yes, and the restatement keeps both halves of the edge when it is written as two
+  statements. (c1) *Binary global truth at G0:* for every content, "it reaches balance (halts)" is a well-defined proposition, true or
+  false (bivalence) [classical]. In Lean this is literal: classical logic gives a total decision function `Classical.dec`, a
+  `noncomputable` Bool-valued map that exists but cannot be run. (c2) *No machine computes it for all content:* the halting predicate
+  is not computable (Turing; `ComputablePred.halting_problem` in Mathlib). Lean's own vocabulary draws exactly this line: the truth
+  exists at G0 as a noncomputable definition; a computable one exists only on the decidable class, the contraction class of item (b).
+  So the ETM's edge reads: binary truth globally (c1), knowledge = truth locally where a settling certificate exists (b, and the
+  entry "knowledge is applied truth"), and no global procedure (c2). Care point: (c1) alone, without (c2), would drop the edge; the
+  restatement should state both. Passed to the ETM round.
