@@ -2173,3 +2173,11 @@ thread.
   the NP question sits:** regrouping never deletes checking work (`sum_pairUp`): the irreducible core is a floor the method cannot go
   below. NP vs coNP asks whether that floor, for refutations of false instances, is always of polynomial size. The native method
   finds the floor; the open question is its size.
+  The owner adds (same day): "That works nicely, since it gives us a universal optimization function, which plugs straight into our
+  overarching proof construction, which gives positive existence simply by the fact that it is describable, which everything is by
+  definition." Reading (coordinator): the method is universal in the precise sense proved: it applies to any proof with a quantized
+  measure (any finite derivation, any Lean proof), and it always arrives (`fixed_after`). It plugs into the proof construction as a
+  post-processing step: the same statements, fewer layers and lemmas, the work floor unchanged. On "positive existence because
+  describable", the distinction of the earlier entry stands: a consistent description has a model (Goedel completeness), and the
+  native method preserves consistency because it never changes a statement; a contradictory string is describable but has no model.
+  So the method optimizes proofs of things that exist; it does not create existence for statements that have none.
