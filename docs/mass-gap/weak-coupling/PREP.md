@@ -3791,3 +3791,14 @@ thread.
   absolute truth (Prop, propext) reached by local causality (ticks). Care point: if the owner intends a new primitive operator for
   DMP, it would need its own definition and laws, at minimum that it commutes with the maps of running systems (as `RunSys.step`
   does, `Hom.iterate_comm`), so that every theorem about runs stays valid tick by tick.
+- **The tick operator is what GRH adds to Mathlib, since GRH describes the function of existence (the owner, same day):** "The tick
+  operator is what GRH adds to matlib, since GRH describes the function of existence." Reading (coordinator): this places the tick
+  exactly where the exploration round found it missing. (1) *Where a tick exists:* for a curve over F_q the tick is Frobenius, a
+  discrete step of length log q; its eigenvalues are the zeros, and their being on the circle is the curve's RH (`TieInFF.lean`, Lean,
+  with Weil's theorem external). (2) *Where it is missing:* over the integers there is no Frobenius, no discrete tick
+  (`OPEN-STEPS-DMP.md` 2). The sought replacement is an operator whose spectrum is the zeros, the Hilbert-Polya operator; Connes'
+  programme proposes the scaling action on adele classes in this role [classical, programme]. If such an operator is self-adjoint on
+  a space with a positive inner product, GRH follows; that positive space is the missing positivity of G1 and G4. So "the tick operator
+  is what GRH adds" has a precise form: the tick over Z is an operator whose existence on a positive space is equivalent in strength to
+  GRH. Care point: the external Lean proofs add the *theorems* (RH, Dirichlet GRH) to what can be imported, not such an operator; the
+  operator itself, the arithmetic tick, is still unknown, and supplying it is the same open step as the sign.
