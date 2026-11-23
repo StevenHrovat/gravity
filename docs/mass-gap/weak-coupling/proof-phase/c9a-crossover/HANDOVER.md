@@ -165,3 +165,4 @@ and logs), `INFLUENCE-BAD.md`. Changed: `W2-PREREG.md` (amendment pointer in sec
   extensive. Not refuted at L >= 2 by this bound (margin 0.01 at L = 2), mainly because of the floor on the flux error.
 * beta 2.3: no flux upper bound (Polyakov signal gone after one step), so no test; c(1) >= 4.2, c(2) >= 1.2 (95 %).
 * Cubic geometry L_s = L untested; proposal (not run): small-torus CPU simulation with thermodynamic integration and snake.
+## Round 10b: ONEBOX-CHECK section 7 POST-HOC (universal floor): beta 3.5 refuted range grows to L <= 2 (95/99 %) and L = 3 (95 %); beta 2.3 still untested; 16^3 geometry, no bearing on the one-box statement. Section 6 proposal states the floor (reading: O(1) on F_e and c, owner's call). Section 4 label corrected (0.196 was the no-covariance delta method).

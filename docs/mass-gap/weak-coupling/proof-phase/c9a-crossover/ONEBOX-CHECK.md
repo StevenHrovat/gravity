@@ -122,6 +122,56 @@ A CPU-only simulation of small periodic tori `L⁴` and `L³ × 2L`, `L = 2, ...
 * `Z_tw/Z` by the snake algorithm (`L²` single-plaquette-flip steps, each a reweighting ratio of order one);
 * hence `F_e(L)` and `c(L)` directly, in the cubic geometry the one-box statement uses.
 
+**Error bars (project rule, `attempts/RULES.md`, last section):** each quantity gets max(statistical floor, resolution floor).
+The statistical floor is the jackknife over independent runs, or the delta method *with* covariances, whichever is larger. The
+resolution floor for an energy read over time extent `T` is `1/T` (here `T = L` for `c` and `F_e` at length `L`, `2L` for the gluing
+partner). `F_e(L)` and `c(L)` are not energies but log-ratios over extent `L` (`F_e ≈ L · ΔE`). My reading of the rule: the
+analogous floor is `L · (1/L) = 1`, the same order as the hand-over's `0.881`. If that reading holds, the proposal can only refute
+where `2c(L) − F_e(L)` exceeds about 1 plus the statistical error, and a smaller gap would be "unresolved". That reading is the
+owner's call before any run.
+
 The tori are tiny (at most `6³ × 12`), so this is CPU work. I have not estimated its cost and would time one unit before any run.
 It would decide whether `F_e(L) ≤ 2c(L)` holds at every small cubic `L` (a refutation of the cubic criterion at those scales).
 No GPU run is proposed.
+
+## 7. POST-HOC re-score under the universal floor (`attempts/RULES.md`, last section; adopted after the result above)
+
+Reported **beside** the pre-registered result of section 4, not in its place. Rule: error = max(statistical floor, resolution
+floor); no ad-hoc floors. `w2/onebox_check.py --rule post` (CPU seconds); `w2/runs/onebox_check_post_sig2.json`,
+`..._post_sig4.json`.
+
+**What changes in the estimator.**
+* *Energies* (flux and neutral orbits): `σ = max(σ_jk(m_eff), 1/T)`, with `T = 16` (observed Euclidean extent), so a resolution
+  floor of `0.0625`. The statistical floor is the jackknife of `m_eff` itself. That equals the delta method *with* the
+  covariance of `C(t)` and `C(t+1)`; the delta method without the covariance is reported in the JSON (`sigma_nocov`), not used.
+* *Selection of orbits* (the plan's 2σ rule on `C(t)`, `C(t+1)`): the jackknife of `C` only, with the ad-hoc sample floor dropped.
+* **Correction to section 4's description.** I described the flux error `0.196` as a naive-standard-error floor. The code actually
+  took the larger of the jackknife and the naive error **at the level of `C`** and propagated it to `m_eff` without the covariance.
+  For the flux the jackknife of `C` was the larger, so `0.196` is the no-covariance delta method. Here `C(1)` and `C(2)` move
+  together across configurations (`C` ranges 267 to 441 between configurations, while their ratio agrees to `0.007`). That
+  propagation is what the rule now drops. The pre-registered numbers stand as computed; only their label was wrong.
+
+**Flux (β = 3.5):** `m_eff = 0.014`, `σ_jk = 0.007`, resolution floor `0.0625` → **σ = 0.0625** (plan: 0.196). β = 2.3: still
+no significant flux signal, so no bound and no test. The floor does not create a signal.
+
+| β | L | `R(L)` 95 % | `R(L)` 99 % | post-hoc verdict | pre-registered verdict (section 4) |
+|---|---|---|---|---|---|
+| 3.5 | 1 | −4.24 | −3.39 | refuted | refuted |
+| 3.5 | 2 | **−2.13** | **−0.79** | **refuted** (95 % and 99 %) | not refuted (margin 0.01) |
+| 3.5 | 3 | **−0.79** | +0.46 | **refuted at 95 % only** | not refuted (margin 1.3) |
+| 3.5 | 4 | +0.08 | +1.08 | not refuted (margin 0.08) | not refuted |
+| 3.5 | 5 to 8 | +0.58 to +1.27 | +1.46 to +2.38 | not refuted | not refuted |
+| 2.3 | any | n/a | n/a | no test | no test |
+
+With the stricter 4σ selection (exploratory, as in section 4): β = 3.5 refuted at `L = 1` (95 % and 99 %) and at `L = 2` at 95 % only
+(`R = −0.06`), not refuted for `L ≥ 3`. Neutral lower bounds at β = 2.3 (95 %, 2σ selection): `c(1) ≥ 4.6`, `c(2) ≥ 2.0`,
+`c(3) ≥ 0.65`.
+
+**Does a verdict change? Yes, at β = 3.5 only.** The refuted range grows from `L = 1` to `L ≤ 2` (both levels) and `L = 3` (95 %).
+With the 4σ selection it is `L = 1`, plus `L = 2` at 95 %. β = 2.3 stays untested. The change comes almost entirely from the flux
+error dropping from 0.196 to the resolution floor 0.0625.
+
+**What this bears on: nothing about the one-box statement, either way.** All of this is for chains of cross-section `16³`. There
+`c(L)` is extensive and, at β = 3.5, electric flux is nearly free in the physically small torus. The one-box statement concerns
+the cubic geometry (`L_s = L`), which saved data cannot reach (section 5). A larger refuted range here only says that, at this
+cross-section and coupling, the electric multiplication needs box lengths `L ≥ 4` (or more).

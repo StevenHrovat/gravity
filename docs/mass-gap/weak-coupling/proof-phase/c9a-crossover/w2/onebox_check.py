@@ -58,6 +58,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="runs/onebox_check.json")
     ap.add_argument("--sig", type=float, default=2.0, help="significance required of C(t), C(t+1) (plan: 2)")
+    ap.add_argument("--rule", choices=["plan", "post"], default="plan", help="plan: pre-registered floors; post: RULES.md universal floor (POST-HOC)")
     args = ap.parse_args()
     result = {}
     for beta in (2.3, 3.5):
@@ -122,7 +123,7 @@ def main():
             jk = np.stack([np.delete(Cc, i, axis=0).mean(axis=0) for i in range(nc)])
             sjk = np.sqrt((nc - 1) / nc * np.sum((jk - jk.mean(axis=0)) ** 2, axis=0))
             sfl = samples.std(axis=1, ddof=1) / math.sqrt(samples.shape[1])
-            sC = np.maximum(sjk, sfl)
+            sC = np.maximum(sjk, sfl) if args.rule == "plan" else sjk
             for t in (1, 0):
                 if mean[t + 1] > args.sig * sC[t + 1] and mean[t] > args.sig * sC[t]:
                     m = math.log(mean[t] / mean[t + 1])
@@ -135,7 +136,13 @@ def main():
                         mj.append(math.log(jk[i, t] / jk[i, t + 1]))
                     s_jk = math.sqrt((nc - 1) / nc * np.sum((np.array(mj) - np.mean(mj)) ** 2)) if ok else float("inf")
                     s_fl = math.sqrt((sC[t] / mean[t]) ** 2 + (sC[t + 1] / mean[t + 1]) ** 2)
-                    return dict(t=t, m=m, sigma=max(s_jk, s_fl), sigma_jk=s_jk, sigma_floor=s_fl)
+                    if args.rule == "plan":
+                        return dict(t=t, m=m, sigma=max(s_jk, s_fl), sigma_jk=s_jk, sigma_floor=s_fl)
+                    # statistical floor: the jackknife of m_eff itself (= the delta method with the C(t), C(t+1) covariance);
+                    # s_nocov (delta method without the covariance) is reported, not used: it ignores the strong positive correlation
+                    s_dm = math.sqrt((sjk[t] / mean[t]) ** 2 + (sjk[t + 1] / mean[t + 1]) ** 2)
+                    s_res = 1.0 / L  # resolution floor 1/T, T = observed Euclidean time extent (16)
+                    return dict(t=t, m=m, sigma=max(s_jk, s_res), sigma_jk=s_jk, sigma_nocov=s_dm, sigma_res=s_res)
             return None
 
         flux = meff_bounds(Cp_conf, samp_p)
