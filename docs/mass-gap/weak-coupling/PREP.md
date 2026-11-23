@@ -1627,3 +1627,14 @@ thread.
   keeps all structure, and it is unbounded in both directions (Archimedean); no point is distinguished except by a choice of origin.
   (4) **Glueball:** like a colour-neutral bound state, a real is whole on its own while built from the two sides that define it. The
   identity "binary existence = the reals" stays a reading, not a theorem; the cut construction is the exact form of the binary part.
+- **The gap is a binary result, not an identifying constant (the owner, same day, correcting the WHK entry):** "The gap is not an
+  identifying constant of G0, but instead a binary result, which certifies the system's DMP-completeness. Thus every WHK just has to
+  produce a gap, not necessarily the same gap. Though since the gap is a function of the internals of the system, which can not be seen
+  from outside, any gap is the same gap as seen from there." Reading (coordinator): this matches both the problem and the physics, and
+  it corrects the emphasis of the WHK entry above. (1) **The target is binary:** the Clay statement, and the proof's `MassGapLoc`, ask
+  only that some Delta > 0 exists; the value is not part of the claim. (2) **Any gap is the same gap from inside:** pure Yang-Mills has
+  one scale, Lambda, and no other dimensionful quantity, so the numerical value of the gap is a choice of units: measured in the
+  theory's own units the gap can always be set to 1. What is internal and meaningful are only the dimensionless ratios (the glueball
+  mass ratios, m / sqrt(sigma)), fixed by the group alone. So two systems with different gaps in some outside unit are the same system
+  seen from inside, which is the owner's "any gap is the same gap as seen from there". The WHK entry's list "the gap m = c_G Lambda"
+  should be read this way: what each part reconstructs is the existence of the gap and the internal ratios, not an outside number.
