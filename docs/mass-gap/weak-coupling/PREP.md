@@ -3705,3 +3705,17 @@ thread.
   then 3, "after which the rest follows"; existence descending through 2 and 3). Care point: the direction says in which order the
   sign is built and that the start must be 2, 3; it does not yet say why every further step keeps the sign. Each step of the chain is
   an exact cancellation with no slack (`INDUCTION.md`), and that step, for every prime, is the open sign.
+- **That every further step keeps the sign is just the positivity statement, with the ODP hand-over defined as when the state 2, 3
+  exists (the owner, same day):** "That every further step keeps the sign is just our positivity statement, with ODP having the
+  handover defined as when the state 2, 3 exists." Reading (coordinator), with the status kept exact. (1) *The hand-over at 2, 3:*
+  the finite start exists and is measured: from support about 0.549 the state "real place plus 2 and 3" is positive, the first state
+  in which two primes assert together [numerical, `SEMILOCAL.md`]. That is a natural definition of the GRH hand-over point.
+  (2) *"Every further step keeps the sign" is the positivity statement:* yes, as a statement it is exactly `ScaleSign`, which is
+  equivalent to GRH (`scaleSign_iff`, `TieIn.lean`, Lean). (3) *Why the hand-over does not carry it here by itself.* In Yang-Mills
+  and in the ledger, a finite certificate carries to all scales because each step has slack: cost above the floor, kappa > delta
+  (`rate_of_costAboveFloor`). In GRH the cost equals the floor exactly: every prime step is an exact cancellation with margin about
+  1e-9 and no slack (`INDUCTION.md`). So the 2, 3 state at the hand-over does not propagate by the ledger mechanism; propagation needs
+  either slack, which GRH does not have, or an identity that keeps the sign at every step (the explicit formula together with a
+  positive construction: the arithmetic Hodge index of G4). Care point, per the earlier entry "fixing a corollary as an axiom": DMP
+  may fix its logic at the root, but fixing "every further step keeps the sign" as DMP's positivity would assume GRH beyond Dirichlet,
+  the content step. As a reading it is the owner's statement of what the content must be; as mathematics it stays the open step.
