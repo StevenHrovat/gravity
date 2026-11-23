@@ -3998,3 +3998,14 @@ thread.
   theorems do give real lower bounds; the open NP step here is one such: a constant-size gadget for cutting planes (`LiftCPConst`). So
   the API route is the right route for that step, and the barrier marks where it must stop being black-box (natural proofs and
   algebrization add two more such walls). Started as a round.
+- **This defines the NP side as what can be certified locally: inside a DB everything that shares a G0, at a DB only the inversion by
+  which it proves its link to G0 (the owner, same day):** "And this defines NP open as what can be certified locally. Inside a DB
+  everything that shares a G0, at a DB only the inversion by which it proves it's link to G0." Reading (coordinator): exact in two
+  classical theorems. (1) *NP is what can be certified locally.* Cook-Levin: checking an NP certificate reduces to checking small local
+  windows of a computation tableau, each involving only neighbouring cells [classical]; the PCP theorem sharpens this to reading a
+  constant number of randomly chosen bits of a suitably encoded certificate [classical]. So NP is exactly the class of statements
+  whose existence certificates are locally checkable: inside a DB, everything that shares a G0. (2) *At the DB, only the inversion.*
+  The other side, non-existence (coNP), needs a certificate of "nothing": a refutation, and the disagreement it records localises to the
+  shared part only through the interpolant (entry "the two extremes", Craig), i.e. through the inversion that proves the link to the
+  root. Whether that inversion always has a short, locally checkable form is exactly NP vs coNP. Passed to the NP sound-APIs round as
+  framing: the API at the DB is the interpolant/inversion, and its size is the cost.
