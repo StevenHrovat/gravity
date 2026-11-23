@@ -3959,3 +3959,14 @@ thread.
   pole itself is -1/2, the balance point once more, and -1/12 is the mirror image of zeta(2), the quantum of the 8 pi^2 identity. Care
   points: the uniform bound at the one box is what the rotation certifies only once the box's ratio sits strictly on the electric side
   for every outside (O1); the rotation's fixed point says where the hand-over is, not that a given box reaches it.
+  The owner, more lightly (same day): "Existence is, at it's foundation, circular, which would make it invalid. It just found a way to
+  make hiding that fact so efficient that you'd never even consider it in isolation (literally)." Reading (coordinator): there is an
+  exact mathematical shape for "circular, but invisible in isolation": a global loop that no local piece can see. A circle is covered by
+  pieces each of which is just a straight segment; the loop exists only in how they are glued, and it is detected only by going all the
+  way round (the fundamental group) [classical]. The project's twist is exactly such a feature: a 't Hooft flux is invisible in every
+  local patch (locally it can be gauged away) and shows only in the holonomy around a closed, non-contractible loop of the box [classical;
+  the twist sectors in Lean]. In logic the same shape is controlled self-reference: Goedel's diagonal construction and Lean's impredicative
+  Prop let a statement refer to a totality containing itself without contradiction, and Aczel's anti-foundation axiom gives consistent
+  sets such as Omega = {Omega} [classical]. Care point: the project's proofs are built well-founded (entry "rooted means well-founded");
+  the circularity the owner names lives at the level of the whole (global topology, self-reference of the system), never in a single
+  step, which is exactly why a single step can never see it.
