@@ -1,0 +1,13 @@
+=== N1 (a)-(c): columns of the base fit ===
+box                  spatial   c0=0.0204  c1=2.3764  c0+c1=2.3968  m0=0.0816  m1=9.588  budget(log3-m0)=1.0170  BE row=3.196 (Ric=2)
+box                  temporal  c0=0.0132  c1=0.9800  c0+c1=0.9932  m0=0.0528  m1=3.924  budget(log3-m0)=1.0458  BE row=1.308 (Ric=2)
+central(F); box(A)   spatial   c0=0.0204  c1=2.3571  c0+c1=2.3775  m0=0.0816  m1=9.509  budget(log3-m0)=1.0170  BE row=3.170 (Ric=2)
+central(F); box(A)   temporal  c0=0.0132  c1=0.9711  c0+c1=0.9843  m0=0.0528  m1=3.888  budget(log3-m0)=1.0458  BE row=1.296 (Ric=2)
+P1 PASS
+P2 PASS
+P3 PASS
+P4 PASS
+=== N1 (d): tilt lemma, randomised ===
+max diff/(M(e^d-1)) = 0.4692, violations = 0
+max diff/(osc F tanh(d/4)) = 1.0000, violations = 0
+P5 PASS
