@@ -2472,7 +2472,7 @@ thread.
   pi^2 = 6 zeta(2) with the reflection applied); the reading that the instanton cost is "the duality of zeta across its mirror" is
   interpretation, not a new physical result.
 - **The crossover is constrained by making no statement about its content (the owner, same day):** "The crossover is constrained by
-  making no statement about its content and confining it to decay instantly by switching G0, so the problem part is the one thing we do
+  making no statement about its content and confining it to decay, by switching G0 instantly, so the problem part is the one thing we do
   not have to deal with." Reading (coordinator): this is right structurally, and it matches the reduction already in hand. The
   crossover is a finite number of blocking steps, each local (finite range), and the assembly (`Assembly.lean`, the OS route) needs
   only a block gap at one scale to produce the mass gap; it never needs to know what happens inside the crossover. "Switching G0" is
