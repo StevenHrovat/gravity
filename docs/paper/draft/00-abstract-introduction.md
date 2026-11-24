@@ -1,6 +1,6 @@
 # Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
-*Title by the owner (2026-11-24; aspirational by intent; "seen through" means "run on DMP"). Draft 3. Not a claim of a
+*Title by the owner (2026-11-24; aspirational by intent; "seen through" means "run on DMP"). Draft 4, machine-first. Not a claim of a
 solution of any Millennium Prize problem: the results that need the one assumption (Part III) are conditional on it. Claim labels
 (0.n) are listed in `../CLAIMS.md`. Earlier titles: "GUID v8: A set theory based approach to the proofing of Yang-Mills, the
 Generalized Riemann Hypothesis and NP vs coNP, as subsets of DMP, in a DMP-complete state" (2026-11-23) and the working title
@@ -38,60 +38,60 @@ note says "One thing led to three"; the paper now covers seven problems, so you 
 
 Seven problems of the Millennium Prize type are read here as one: the Yang-Mills mass gap, the generalised Riemann hypothesis, NP
 versus coNP, Navier-Stokes regularity, the Birch and Swinnerton-Dyer conjecture, the Hodge conjecture, and a Grand Unified reading of
-SU(3) x SU(2) x U(1). Poincare, solved by Perelman, serves as validation. Each problem is stated as a running system on one form layer:
-a ledger of costs, an encoder at every boundary, a transport theorem across boundaries, a settle theorem, and a card with exactly one
-named open slot. The form layer is machine-checked in Lean 4 with Mathlib, standard axioms only, and re-checked by independent
-kernels; its transferable parts are published in IM, the shared vocabulary, and imported from there. The language that names the
-steps is DMP, a specification for systems of trust used here as a vocabulary for existence; its readings are marked as readings and
-carry no proof.
+SU(3) x SU(2) x U(1). Poincare, solved by Perelman, serves as validation. Every problem becomes one box under one test. A box has one
+command, a step at one shared gate; each step gives a marker, inside or R136a1 (outside); the box is DMP-complete when every marker
+agrees with the gate's own verdict. The test, the machine under it (a ledger of costs, an encoder at every boundary, a transport
+theorem, a settle theorem) and one card per problem are machine-checked in Lean 4 with Mathlib, standard axioms only, and re-checked
+by independent kernels; the transferable parts are published in IM, the shared vocabulary, and imported from there. The language
+that names the steps is DMP, a specification for systems of trust used here as a vocabulary for existence; its readings are marked
+as readings and carry no proof.
 
-**The one assumption.** Every card has the same open step, O1: that the process from the ground (G0) to a running system is
-established, the existence assumption of the Millennium Prize type. The paper states it once (Part III) and marks every result that
-uses it as conditional on it. Under it, each card settles in the certified sense: with a cost floor, whether a run has settled is
-decidable within an explicit bound, and every start is oriented through the certified first box at the places {infinity, 2, 3}.
-Without the floor, no procedure decides it. Both halves of this dichotomy are proved in Lean.
+**The one assumption.** One step is the same on every card: that the one box is a running, DMP-complete system, its gate shared at
+every scale. The paper states it once (Part III) and marks every result that uses it as conditional on it. Its decay edge is O1 for
+Yang-Mills. Under it, one step certified on one box certifies every tick and every scale, and settling is decidable within an
+explicit bound; without a floor no procedure decides it. The start is fixed where the floor is forced, at the places
+{infinity, 2, 3}, certified with explicit margins.
 
 **What is proved.**
 
-* *The form layer.* The ledger, the encoder and its half-turn, the transport theorem, the settle theorem and its undecidable edge, and
-  the card API, in Lean; R136a1, the one way to leave a statement open, as a named hypothesis that never becomes an axiom.
+* *The machine.* The ledger, the encoder and its half-turn, the transport theorem, the settle theorem and its undecidable edge, the
+  one-box test with its one-box and scale certificates, and the card API, in Lean; R136a1, the one way to leave a statement open, as
+  a named hypothesis that never becomes an axiom.
 * *Yang-Mills.* For SU(2) on the lattice: reflection positivity, the strict bound between a sector and its twist (for every SU(N)), a
   per-box hand-over rate of at least log(1 + sqrt 2), zero join loss in slab form, and the assembly from a one-box gap certificate to a
-  lattice mass gap in both orders of limits.
+  lattice mass gap in both orders of limits. O1 is exactly DMP-completeness of the Yang-Mills box, in both directions.
 * *GRH.* The explicit formula for all nontrivial zeros of zeta, by the contour shift, in Lean; Weil's form positive with an explicit
   margin on the first box, where only the real place and the primes 2 and 3 enter (certified in ball arithmetic); the positivity
   mechanisms in finite models.
 * *NP vs coNP.* The crossing theorem for every sound two-premise proof system, and the equivalence of the lifting interface with
   lifting by constant-size gadgets.
-* *Navier-Stokes.* The card, with Fefferman's four forms; what the form layer says about the two blowup routes, as a skeleton with no
-  Navier-Stokes object in it.
+* *Navier-Stokes.* The card, with Fefferman's four forms; in the energy-only model the box gives the wrong marker at some scale, so
+  it is not DMP-complete.
 * *BSD.* What Mathlib alone gives, over any number field: Mordell-Weil from weak Mordell-Weil, the true rank, the existence line,
-  parity from the functional equation, point counts that run, and a finite order at s = 1 from Hasse's bound, with three classical
+  parity from the functional equation, point counts that run, and a finite order at s = 1 from Hasse's bound, with the classical
   theorems Mathlib lacks carried as named parts.
 * *Hodge.* Hodge-Riemann positivity, the Hodge index as linear algebra, Weil's bound for curves, eigenvalues on the circle, and
   Lefschetz (1,1) as a diagram chase.
-* *GU.* The Z_6 quotient of SU(3) x SU(2) x U(1) inside SU(5), and charge quantisation from a compact U(1).
-* *The generalisation.* GRH and O1 share one geometry, the distance of an encoder from the lossless point, and ask opposite things
-  of it: GRH that a margin is carried (existence), O1 that the twisted sector is refuted (falsifiability). In Lean, as conditions on
-  a sequence of ticks, the two cannot both hold on the same sequence and each can hold without the other. This is a statement about
-  the two bounds, not about the problems: no implication between GRH and O1 is proved here in either direction.
+* *GU.* The Z_6 quotient of SU(3) x SU(2) x U(1) inside SU(5), charge quantisation from a compact U(1), and anomaly cancellation.
+* *Validation.* Poincare for SU(N): a manifold homotopy equivalent to SU(N) is SU(N) for N <= 3 (published for SU(3)) and need not be
+  from N = 4 on; Sp(2) is rigid, and G2 has exactly two structures. Rigidity is a one-box test too, and G2 is rigid under the one
+  assumption.
 
 **What is not proved.** No problem is solved here. One open step per card:
 
-* *Yang-Mills:* O1, the hand-over inequality for every outside, uniformly in the scale, and with it, in the same assumption, its lower
-  edge, a correlation that does not vanish in the limit; for the Clay statement also the continuum
-  construction and every compact simple group.
+* *Yang-Mills:* O1, the hand-over inequality for every outside, uniformly in the scale, with the lower edge (a correlation that does
+  not vanish) in the same assumption; for the Clay statement also the continuum construction and every compact simple group.
 * *GRH:* Weil positivity beyond the first boxes, a margin that survives the growth of the support. RH and GRH for Dirichlet
   L-functions were proved in Lean by others in November 2026, by a route that does not use positivity; GRH beyond Dirichlet
   L-functions is open.
 * *NP vs coNP:* lifting with constant-size gadgets, and with it super-polynomial lower bounds for strong proof systems.
 * *Navier-Stokes:* regularity or blowup of the equations themselves. DMP's reading predicts blowup (the equations are not
-  DMP-complete), so global regularity would refute it. Two posted blowup claims by others are unrefereed and unchecked
-  here; one rests on a certificate that is announced, not released.
+  DMP-complete), so global regularity would refute it. Two posted blowup claims by others are unrefereed and unchecked here; one
+  rests on a certificate that is announced, not released.
 * *BSD:* the rank equals the order of the zero at s = 1, from order 2 on.
 * *Hodge:* codimension p >= 2 in general.
-* *GU:* the checkable consequence the owner takes for the gate is uniform charge quantisation, one unit for all matter, which any
-  compact U(1) also gives; a consequence beyond that is open, and the hypercharges are an input.
+* *GU:* the checkable consequence taken for the gate is uniform charge quantisation, which any compact U(1) also gives; a consequence
+  beyond it is open, and the hypercharges are an input.
 
 The paper stays a draft until the assumption is proved: each open step is stated in the exact form that would close it, so that
 closing one changes one row of the claims ledger, one verdict line and one item of this abstract.
@@ -102,28 +102,33 @@ closing one changes one row of the claims ledger, one verdict line and one item 
 
 ### What this paper is
 
-This is a paper about one form used seven times. The form is old: **positivity is existence**. A positive weight makes a measure; a
-positive form makes a Hilbert space; a positive operator has its spectrum where it can be seen. Osterwalder and Schrader built
-quantum field theories from reflection positivity. Weil reduced the Riemann hypothesis to the positivity of one pairing. Hodge and
-Riemann found the same positivity on the cohomology of a variety, and Weil used it to prove the Riemann hypothesis for curves over
-finite fields. Dobrushin showed that a contraction of local influences forces a unique equilibrium, reached fast.
+This is a paper about one machine and one test, used seven times. The form under them is old: **positivity is existence**. A
+positive weight makes a measure; a positive form makes a Hilbert space; a positive operator has its spectrum where it can be seen.
+Osterwalder and Schrader built quantum field theories from reflection positivity. Weil reduced the Riemann hypothesis to the positivity
+of one pairing. Hodge and Riemann found the same positivity on the cohomology of a variety, and Weil used it to prove the Riemann
+hypothesis for curves over finite fields. Dobrushin showed that a contraction of local influences forces a unique equilibrium,
+reached fast.
 
-The paper states the form once (Parts I and II), puts each problem on it as a card (Parts IV to X), and then says what the cards
-share (Part III): one container with free possibility space, one geometry with two edges, one open step, and one assumption. The
-Outlook (Part XI) applies the settle theorem to a concept of the first author's.
+What is new is the shape put around it. A running system pays a cost at every boundary; with a floor its settling is decidable within
+an explicit bound, and without one it is not. A box with one command at one shared gate is tested step by step, and it passes when
+every marker agrees with the gate. Each problem becomes such a box, with exactly one named open step, and the open step is the same
+on every card: that the box is a running system whose gate is shared at every scale. The paper proves the machine and each box's
+core, and assumes that one step, once.
 
 ### What a reader can take from it
 
-* From **mathematical physics**: the Yang-Mills gap reduced, for SU(2), to one inequality for one box of fixed physical size, with the
-  rest of the mechanism machine-checked; the Navier-Stokes card with the status of the posted blowup claims stated exactly.
+* From **mathematical physics**: the Yang-Mills gap reduced, for SU(2), to one inequality for one box of fixed physical size, proved
+  equivalent to the box passing the test, with the rest of the mechanism machine-checked; the Navier-Stokes card with the status of
+  the posted blowup claims stated exactly.
 * From **number theory**: the explicit formula for all zeros in Lean, the first box of Weil's positivity certified with its margin,
   and why that margin cannot be carried outward by computation; a Mathlib-only BSD core over number fields, in IM.
 * From **algebraic geometry**: the Hodge index and Weil's bound as linear algebra in Lean, and the Hodge-index route to the Riemann
   hypothesis over finite fields read as the more efficiently correct one for this structure, beside Deligne's complete proof.
+* From **topology**: Poincare for SU(N) settled (rigid exactly for N <= 3), Sp(2) rigid, and the structure set of G2 counted.
 * From **complexity theory**: the crossing theorem for every two-premise proof system, and the open step of NP vs coNP reduced to one
   lifting statement.
-* From **logic and verification**: a form layer in which every open part is a named hypothesis, every axiom shows in the kernel's
-  report, and a lint and a second kernel check every change.
+* From **logic and verification**: a machine in which every open part is a named hypothesis, every axiom shows in the kernel's
+  report, and a lint and a second kernel check every change; undecidability and the floor as the two sides of one test.
 
 ### A guide by ear: the tempered piano
 
@@ -159,23 +164,30 @@ arithmetic, with its log. **[reading]**: a DMP interpretation, never mathematics
 The work behind this paper is checked three ways: by proof (on paper and in Lean), by the literature, and by computation. The
 computations can refute a statement or guide a proof; they never establish a statement about all cases. Every measured number in the
 paper is tied to the statement it would discharge, and a passing measurement is reported as consistent, not as proof. The Lean is
-re-checked by independent kernels (Part II), and the shared vocabulary in IM passes its own lint at every change.
+re-checked by independent kernels (Part II), and IM's arsenal passes its lint at every change, listing every part left open by name.
 
 ### What is new
 
+* The machine as one object: running systems, their ledger, the encoder, and the settle theorem with its edge, decidable within an
+  explicit bound under a cost floor and undecidable without one **[Lean]**.
+* The one-box test: one command at one shared gate, a marker per step; the one-box and scale certificates; O1 exactly as
+  DMP-completeness of the Yang-Mills box; rigidity as a one-box test **[Lean]**.
 * The form layer as one API: every problem a card with exactly one named open slot, and R136a1 as the named answer "outside"
   **[Lean]**.
-* The settle theorem and its edge: decidable within an explicit bound under a cost floor, undecidable without one **[Lean]**.
 * The explicit formula for all nontrivial zeros of zeta by the contour shift, on a Mathlib-only core **[Lean]**, and the first box of
   Weil's positivity with an explicit margin **[certified]**.
 * The hand-over bound, the strict twist bound for every SU(N), and zero join loss in slab form **[Lean]**.
 * A Mathlib-only BSD core over number fields, published in IM **[Lean]**.
 * One geometry, two edges: GRH and O1 proved to ask opposite, independent bounds of one distance **[Lean]**.
+* Poincare for SU(N), Sp(2) rigid, and G2's two structures, by surgery from classical theorems **[paper]**, with SU(3) from the
+  literature **[external]**.
 
 What is *not* new is listed with references at each use: Osterwalder-Schrader, Weil, Hodge-Riemann, Lefschetz, Deligne, Dobrushin,
-Lee-Yang, Pringsheim and Landau, Mordell-Weil, Hasse, Gross-Zagier-Kolyvagin, Cook-Reckhow, the barrier theorems, and Perelman.
+Lee-Yang, Pringsheim and Landau, Mordell-Weil, Hasse, Gross-Zagier-Kolyvagin, Cook-Reckhow, the barrier theorems, Perelman, and the
+surgery theory of Browder, Novikov, Sullivan, Wall and Kirby-Siebenmann.
 
 ### Plan
 
-Part I: DMP, the vocabulary. Part II: the tools. Parts IV to X: the cards (Yang-Mills, GRH, NP vs coNP, Navier-Stokes with
-Poincare, BSD, Hodge, GU). Part III: the generalisation. Part XI: Outlook.
+Part I: DMP, the vocabulary. Part II: the machine, then the tools the problems use. Part III: the one assumption and the rigid start.
+Parts IV to X: the seven problems, one template each (Yang-Mills, GRH, P vs NP, Navier-Stokes, BSD, Hodge, GU). Part XI: Outlook.
+Appendix A: validation (Poincare, SU(N) and the rigid groups).
