@@ -13,9 +13,10 @@ now"), so this part states exactly how far each half of the Grand Unified readin
 
 **State (2026-11-24).**
 
-* **"In one structure": met, in a modest and classical sense.** The group SU(3) x SU(2) x U(1) divided by a cyclic group of order 6
-  sits inside SU(5), and the kernel of that embedding is proved in Lean **[Lean]**, with the group-level facts about it **[classical]**
-  (X.3).
+* **"In one structure": met by classical group theory, not derived from the framework.** The group SU(3) x SU(2) x U(1) divided by a
+  cyclic group of order 6 sits inside SU(5), and the kernel of that embedding is proved in Lean **[Lean]**, with the group-level
+  facts about it **[classical]** (X.3). Nothing in that Lean involves DMP or GUID: SU(5) contains the group whatever the framework
+  is, and the only link to the framework is the circle reading (X.6) **[reading]**.
 * **"At least one checkable consequence": the owner's decision, uniform charge quantisation.** The notes find two candidates and
   prove what can be proved about each (X.5). The owner takes candidate (b), with its guarantee from the ODP: every charge is an
   integer multiple of one unit, the same unit for all matter, and the unit is the ODP's dimensionless 1 (X.5) **[reading]** for the
@@ -58,7 +59,7 @@ API's one general statement about the G0 phase field (X.3.3). The table is the c
 
 ## X.3 What is proved
 
-All of this is **[Lean]**, standard axioms only (`docs/unified/gu-axioms.log`: 19 declarations on the three standard axioms, one on
+All of this is **[Lean]**, standard axioms only (`docs/unified/gu-axioms.log`: 18 declarations on the three standard axioms, one on
 `propext` alone, two definitions on none; `docs/unified/gucharge-axioms.log`: all 12 declarations on the three standard axioms; no
 `sorry`, `admit`, `native_decide` or `axiom` in either module). The statements are about groups and their characters, that is, about the
 possible charges of fields. **Not formalised:** a gauge field theory with this U(1); that the image of the SU(5) map is all of
@@ -155,9 +156,9 @@ All **[classical]**.
 |---|---|
 | neutrality of matter (one charge unit) | electron-proton charge difference below about 1 part in 10^21 (Bressi et al. 2011) |
 | free fractional charges | none found (review: Perl, Lee and Loomba 2009) |
-| proton decay | not seen; Super-Kamiokande bound above 10^34 years for p -> e+ pi0; minimal non-supersymmetric SU(5) is excluded |
+| proton decay | not seen; Super-Kamiokande bound above 10^34 years for p -> e+ pi0 (1.6e34 years in arXiv 1610.03597, 2.4e34 years in arXiv 2010.16098, 90% CL); minimal non-supersymmetric SU(5) is excluded **[classical]**, not stated in those two papers |
 | coupling unification | the three couplings do not meet at one point; with supersymmetric running they nearly do |
-| magnetic monopoles | none found (MACRO, IceCube flux limits; MoEDAL production limits) |
+| magnetic monopoles | none found (MoEDAL production and mass limits: Nature 602 (2022) 63 and arXiv 2311.06509; flux limits of MACRO and IceCube as the notes cite them, the papers not read) |
 
 ## X.5 The one open step: the gate's "at least one checkable consequence"
 
@@ -211,7 +212,7 @@ it (X.5e stays open).
   absorbed, and the Z_3 part survives to low energies as the correlation of charge with colour. In descending energy the 2-part acts
   first and the 3-part remains. This matches the owner's ordering and predicts nothing beyond the standard picture.
 * **"SU(5) with a single coupling is G0 at GRH, with a forward arrow independent of scale."** SU(5) is the smallest simple group that
-  contains the Z_6 quotient (X.3.1). Its single coupling holds at one scale only, minimal SU(5) is excluded by proton decay, and the
+  contains the Standard Model group by rank **[classical]**, and it contains the Z_6 quotient (X.3.1). Its single coupling holds at one scale only, minimal SU(5) is excluded by proton decay, and the
   couplings do not meet exactly (X.4.3). The owner's mapping (one coupling = one G0; the forward arrow = the running from the
   unification scale) is a reading, and a programme beyond Yang-Mills, GRH and NP vs coNP.
 * **Every SU(N) as a valid unified theory, indexed by the values of zeta.** On `s > 1` the zeta function decreases continuously from
@@ -247,9 +248,11 @@ owner's decision.
 
 ## X.8 The box in the one-box test
 
-**Gate factor and marker.** The ticks are the **points** (the owner's name; he also offers "uniquenesses" and "DoEs"): the labels
-carried on G0's phase field. The name is exact: the continuous characters of the circle are the integers, the points of its dual
-group **[classical]** (Pontryagin duality). At each point the gate reads inside when the label has an
-integer charge; the marker is the claim "inside". This box passes, proved: every continuous character of the circle is z to the n
-**[Lean]** (`gu_box`, `ETM/CardBox.lean`; claim X.8a). The GU card's open step, a consequence beyond the standard expectation (X.5e), is not a
+**Gate factor and marker.** In the Lean the box is `tickBox (fun _ => ChargeQuantisation)`: the ticks are `0, 1, 2, ...`, every tick
+carries the one statement "every label on G0's phase field has an integer charge", the gate reads inside at a tick exactly when that
+statement holds, and the marker is the claim "inside". This box passes, proved: every continuous character of the circle is z to the
+n **[Lean]** (`gu_box`, `ETM/CardBox.lean`; claim X.8a). **[reading]** The owner names the ticks the **points** (he also offers
+"uniquenesses" and "DoEs"): the labels carried on G0's phase field, one gate reading per label. The name fits the classical fact that
+the continuous characters of the circle are the integers, the points of its dual group **[classical]** (Pontryagin duality); the
+identification of the ticks with the labels is not in the Lean, where every tick carries the same statement. The GU card's open step, a consequence beyond the standard expectation (X.5e), is not a
 statement about this box; the box shows what the G0 link already gives every label, and what stays open lies beyond it **[paper]**.

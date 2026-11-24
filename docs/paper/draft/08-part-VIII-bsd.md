@@ -1,9 +1,9 @@
 # Part VIII. Birch and Swinnerton-Dyer: the card, three named parts, and the one open step
 
 *Draft 2, 2026-11-24. Prose, with every result marked. Modules of the Mathlib-only core live in DMP.IM (the public `im` repository,
-`arsenal/Arsenal/`) and are written `Arsenal.BSD...`; they are being merged into `im` now. Lean paths of this repository are relative to
+`arsenal/Arsenal/`) and are written `Arsenal.BSD...`; they are in `im` at the commit pinned in `docs/mass-gap/formal/lakefile.toml`. Lean paths of this repository are relative to
 `docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VIII.n; VII.n in draft 3) are listed in
-`../claims-incoming/VII-bsd.md` until the coordinator merges them into `../CLAIMS.md`.*
+`../CLAIMS.md` (merged from `../claims-incoming/VII-bsd.md`).*
 
 ## VIII.0 What is proved, by whom, and what this part does
 
@@ -17,7 +17,7 @@ enter. The statement needs L(E, s) near s = 1, so it needs the analytic continua
 Breuil-Conrad-Diamond-Taylor) **[external]**.
 
 **State of the problem (2026-11-24).** The rank statement is proved when the order of the zero is 0 or 1 (Gross-Zagier, Kolyvagin, with
-modularity) **[external]**. It is **open** from order 2 on. The notes record no claimed proof of the general statement. **This part
+modularity) **[external]**. It is **open** from order 2 on. The notes record no credible claimed proof of the general statement (an unrefereed preprint of 2026-01-16 on PhilArchive claims one for all ranks; it was not read, and no review of it was found). **This part
 proves no case of the conjecture that was not already known**, and its Lean contains no new theorem about elliptic curves that
 experts did not have.
 
@@ -87,11 +87,12 @@ of the API is likewise an ordinary hypothesis. Neither appears in an axiom audit
 
 All of this is **[Lean]**. Three cautions come first.
 
-1. **Audit.** The standard-axioms-only claim is not re-made in this draft. The axiom log of the API instance
-   (`bsd-axioms.log`) was written before the instance was adapted today to the native core, and it still lists the earlier
-   signatures (for example `BSDStatement` with a function argument). The native modules were not rebuilt for this draft either. The
-   names below were checked against the source files, by reading, one by one. **Before the claim "standard axioms only" is made for
-   the adapted instance, the log must be regenerated.**
+1. **Audit.** The axiom log of the API instance (`bsd-axioms.log`, regenerated 2026-11-24 in the commit that last changed
+   `BSDAPI.lean`, 46 declarations) shows standard axioms only for the instance. For the native core in IM (`Arsenal.BSD` and
+   `Arsenal.BSD.EulerRat` at the pinned commit `b01adbd`) the stage-2 part review R6 ran `#print axioms` on all 85 declarations:
+   82 on `propext, Classical.choice, Quot.sound`, three on a subset of them, none on `sorryAx` (`review/part-R6.md`). IM's own
+   audit script (`arsenal/tools/check.sh`) has not been run for this draft. The names below were checked against the source
+   files, by reading, one by one.
 2. **Inputs.** A result marked "from the named part" is a Lean theorem with the part as a hypothesis, not a proof of the part.
 3. **No new theorem.** The proved structure is bookkeeping around classical facts. It shows the shape of the problem.
 
@@ -227,8 +228,9 @@ Numerically (`bsd_check.log`, about 30 seconds on a CPU) **[numerical]**:
   has infinite order (the multiple 5P = (1/4, -5/8) is not integral, Nagell-Lutz). `L'(E, 1)/Omega = 0.0511114083`, against the recalled
   regulator 0.0511114082.
 * The ledger `product of N_p/p` over `(log x)^r` at x = 100, 1000, 5000, 20000 is 1.65, 2.24, 2.12, 2.25 for 32a2 (target 2.157) and 6.82,
-  6.79, 7.96, 7.19 for 37a1 (target 8.23). The products oscillate and converge slowly at the centre of the critical strip. The factor
-  `sqrt 2` in the targets is the recalled constant of Goldfeld **[classical, recalled]**; the rank-0 numbers support it.
+  6.79, 7.96, 7.19 for 37a1 (target 8.23). The products oscillate and converge slowly at the centre of the critical strip. The targets
+  are `sqrt 2 e^{r gamma} r! / L^(r)(E, 1)` (as in `bsd_check.log`); the factor `sqrt 2` is the recalled constant of Goldfeld
+  **[classical, recalled]**; the rank-0 numbers support it.
 
 A computation can refute a statement. It never proves a for-all statement, and none is claimed.
 
@@ -240,10 +242,10 @@ Every borrowed result is cited and marked. The project did not rebuild any of it
 |---|---|---|
 | **Modularity** (Wiles, Taylor-Wiles, Breuil-Conrad-Diamond-Taylor): continuation and functional equation of L(E, s) over Q | `Input.cont`, `Input.fe` | external |
 | **Weak Mordell-Weil** (Mordell 1922, Weil 1929): E(K)/2E(K) is finite | `WeakMordellWeil` (named part in IM; `Input.weak` in the API) | classical |
-| **Hasse's bound** (1933-36): `a_p^2 <= 4p` at good primes. Textbook proof: the degree is a positive definite quadratic form on End(E), so `deg(m - n phi) = m^2 - a m n + q n^2 >= 0` forces the discriminant bound (Silverman VI.1.1). The same positivity is the Hodge index on E x E (Part IX) | `Hasse` (named part); `EulerData.hasse` | classical |
+| **Hasse's bound** (1933-36): `a_p^2 <= 4p` at good primes. Textbook proof: the degree is a positive definite quadratic form on End(E), so `deg(m - n phi) = m^2 - a m n + q n^2 >= 0` forces the discriminant bound (Silverman, The Arithmetic of Elliptic Curves, Theorem V.1.1). The same positivity is the Hodge index on E x E (Part IX) | `Hasse` (named part); `EulerData.hasse` | classical |
 | **The Euler product bound**: factors with the Hasse-type coefficient bounds give absolute convergence for `re s > 3/2`, dominated by `zeta_K(s - 1/2)^2` | `EulerProductBound`: proved over Q (`eulerProductBound_rat`); a named part beyond Q | Lean over Q; classical, recalled, beyond |
 | **Gross-Zagier, Kolyvagin** (with modularity): analytic rank 0 or 1 gives BSD | `LowRank` | external |
-| **Goldfeld 1982**: the 1965 growth form of the Euler products implies BSD and the Riemann hypothesis for L(E, s) | `LedgerInput.goldfeld` | external |
+| **Goldfeld 1982**: the 1965 growth form of the Euler products, with exponent the rank r, implies BSD and the Riemann hypothesis for L(E, s) (K. Conrad 2005, abstract: the asymptotic implies the Riemann hypothesis, with a factor `sqrt 2` in the constant; Goldfeld's paper not read) | `LedgerInput.goldfeld` | external |
 | For the example: Deuring (continuation, CM), Fermat's descent (E(Q) is the four points), `L(E, 1)` not zero, recalled constants of the refined formula | `Data32` | classical / external |
 
 The three named parts of IM (weak Mordell-Weil, Hasse, the Euler product bound) are classical theorems. A statement answered R136a1 is
@@ -336,7 +338,11 @@ The formalisation items that would change the status of the **borrowed** parts, 
 
 ## VIII.8 The box in the one-box test
 
-**Gate factor and marker.** The ticks are the **primitives** (the owner's name): the primes, the primitive elements of the
-multiplicative integers **[classical]**, at which the curve's Euler ledger is read (VIII.3.6); the gate reads inside when the
-ledger is consistent with the rank, and the marker is the claim "inside". The box of a curve passes exactly when BSD holds for it
-**[Lean]** (`bsd_box_iff`, `ETM/CardBox.lean`; claim VIII.8a). The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**. Its open ticks start where the order of the zero reaches 2 (VIII.5.1).
+**Gate factor and marker.** In the Lean the box of a curve has the ticks `0, 1, 2, ...`, every tick carries the card's one open
+step, the gate reads inside at a tick exactly when that step holds, and the marker is the claim "inside". The box of a curve
+passes exactly when BSD holds for it **[Lean]** (`bsd_box_iff`, `ETM/CardBox.lean`; claim VIII.8a). The box is the card's open step
+in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**.
+**[reading]** The owner names the ticks the **primitives**: the primes, the primitive elements of the multiplicative integers
+**[classical]**, at which the curve's Euler ledger is read (VIII.3.6), the gate reading inside when the ledger is consistent with
+the rank. That identification of the ticks with the primes is not in the Lean. On that reading the open ticks start where the order
+of the zero reaches 2 (VIII.5.1).
