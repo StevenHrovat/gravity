@@ -78,6 +78,7 @@ The paper leaves the draft stage only under the release criterion (`OUTLINE.md`)
 | Stage 3, final verification | 2026-11-24 | Opus and Fable on the release candidate `f4592e3`, independently; `review/final-opus.md` (gravity #53), `review/final-fable.md` (#54) | 7 blockers (3 Opus, 4 Fable, overlapping), about 55 other findings |
 | Stage 3, consolidation | 2026-11-24 | `review/consolidation.md`: every finding with its action, the owner's decisions and readings of the day | all blockers and findings acted on; open by design: the personal note's sentences (the owner's) |
 | Independent re-check, quick, release | 2026-11-24 | at `897ef5c`: stamp matches; 15 changed modules replayed, fail=0; axiom audit `NONSTD_AXIOMS []`; nanoda 74,295 declarations, no typechecker errors (one pretty-printer error, not a check failure) | passed |
+| Independent re-check, quick, after the essence | 2026-11-24 | at `db9fbc7`: stamp matches; 2 changed modules (`ETM.ETM`, `ETM.Essence`) replayed, fail=0; `NONSTD_AXIOMS []`; nanoda 15,257 declarations, no typechecker errors | passed |
 | IM arsenal, full check | 2026-11-24 | `arsenal/tools/check.sh` at the pin `b01adbd`: lint, build against Mathlib, kernel axiom report | passed, 223 declarations, standard axioms only |
 | Bibliography, stage 3 | 2026-11-24 | `references.md` corrected and completed from three lookup rounds (haiku), merged by the coordinator | 195 works: 123 checked, 72 partly checked, none unidentified; DOIs for 26 rows |
 

@@ -298,7 +298,9 @@ error. A quick run at `1d71a05` covered the tree of that commit. The last quick 
 the stage-3 consolidation), covers every module: the stamp matched, 15 modules had changed since the previous run (among them
 `ETM/CardBox.lean`, `ETM/Complex.lean`, `ETM/Essence.lean`, `ETM/Rotation.lean`, `Proof/LiftingNP.lean`), `leanchecker` replayed them
 with no failure, the axiom audit reported no non-standard axiom, and `nanoda_lib` checked the 74,295 declarations of those modules
-and what they use with no type-checker error **[Lean, re-checked]**. At the same commit IM's own full check of the arsenal (at the pin
+and what they use with no type-checker error **[Lean, re-checked]**; after `ETM/Essence.lean` grew by the decided links, a further
+quick run at `db9fbc7` replayed the 2 changed modules with no failure, found no non-standard axiom, and `nanoda_lib` checked 15,257
+declarations with no type-checker error. Later commits change no Lean. At the same commit IM's own full check of the arsenal (at the pin
 `b01adbd`: lint, build against Mathlib, the kernel's axiom report) passed with 223 declarations, none resting on more than the three
 standard axioms, and the axiom logs of the rotation round (125 declarations, `docs/unified/rotation-axioms.log`) and of the Hodge
 modules (47, `docs/unified/hodge-axioms.log`) were regenerated and show the same. The scan for escape hatches reads code only, as the

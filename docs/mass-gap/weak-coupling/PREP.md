@@ -5057,7 +5057,17 @@ thread.
   2nd letters, again all prime (the owner: "not supposed to be made of all primes, but once again coincidence lines up in my
   favor"). Asked whether the primes themselves would also certify the vendored DMP: yes as an existence check of the copy, computed
   outside `vendor/dmp` (never edited); a rotation seal can be recomputed by anyone, so authenticity stays with the sha256 pin.
-  Not built; for IM, after the owner's OK on the concept.
+  Then: "The 4?0 is literally O1 and has to be supplied by the .ckb", and "The .ckb seems to be the matrix that the operation
+  uses as content for its rotation, with all its uncontacted primitives supplied." [reading]. Counterpart (coordinator): in the
+  machine's terms the content of a rotation is the matrix of factors the step multiplies by (II.0: each step multiplies by numbers of
+  modulus at most one; a matrix of them for a box with several states); "uncontacted primitives supplied" reads as every entry given
+  before the rotation runs, so that the check is one finite pass. Care point: supplying the matrix for one box is not O1, which is a
+  bound for every outside and every scale; the .ckb would carry O1 only as a named, supplied input, as `FineOneBox` is now.
+  Then: "They probably all need an API to the y^k primitives demanded by DMP, with only decide between them." and "So a k by k
+  grid of the definition of 1.5." [reading]. Counterpart (coordinator): the reformulation II.0h already reads DMP-completeness as
+  decidability over the y^k truly possible options; the API would expose those primitives and allow only `decide` between them
+  (the one-step lint, II.4f); the k by k grid is the .ckb's matrix with every entry given by the definition of 1.5 = 3/2, which in
+  Lean is the hypothesis that 2 is a unit (`essence_decided`). Not built; for IM, after the owner's OK on the concept.
 - **DMP can have no copyright (the owner, 2026-11-24).** "That is also why DMP can have no copyright: any real ownership has to be
   transitive to its derivatives." [reading]. The owner adds that it is meant literally, and that the repositories and the paper
   are explicitly Apache 2.0, which allows free use but forces credit. Note (coordinator): in law, copyright arises with the work,
