@@ -9,7 +9,7 @@ python tools/paper-latex.py
 cd docs/paper/latex && pdflatex guid-v8.tex && pdflatex guid-v8.tex
 ```
 
-Needs a TeX distribution with `lmodern`, `geometry`, `booktabs`, `longtable`, `enumitem`, `newunicodechar`, `hyperref`, `xurl` (MiKTeX and
+Needs a TeX distribution with `lmodern`, `geometry`, `booktabs`, `longtable`, `enumitem`, `newunicodechar`, `hyperref`, `xurl`, `doi` (MiKTeX and
 TeX Live have them). The editors' notes under each chapter heading stay in the Markdown and are left out of the typeset paper.
 
 The last section is the bibliography, typeset from `../references.md` as standard entries (authors, title, venue, a DOI or record
