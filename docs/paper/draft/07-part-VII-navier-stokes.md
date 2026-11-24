@@ -1,10 +1,10 @@
-# Part VI. Navier-Stokes: the card, the claimed certificate, and Poincare as validation
+# Part VII. Navier-Stokes: the card, the claimed certificate, and Poincare as validation
 
 *Draft 2, 2026-11-24. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (VI.n) are listed in `../claims-incoming/VI-navier-stokes.md` until the coordinator merges them into
 `../CLAIMS.md`.*
 
-## VI.0 What is proved, by whom, and what this part does
+## VII.0 What is proved, by whom, and what this part does
 
 **The Clay problem** (Fefferman's official statement) asks one of four things. For three-dimensional incompressible Navier-Stokes
 with viscosity nu > 0 and force f:
@@ -30,14 +30,14 @@ If either claim holds, the Clay problem is answered by others, in the direction 
 the real Navier-Stokes equations.** The status of the problem in this paper is: (A) and (B) are open here, and an external claim
 asserts that they are false.
 
-**What this part does.** It puts Navier-Stokes on the DMP API as a card (VI.2), and proves in Lean, as a skeleton, what the form
-layer says about the two possible blowup routes and about regularity (VI.3). It records what is borrowed and its exact status
-(VI.4), states the one open step (VI.5), and checks the restatement against Perelman's proof of Poincare (VI.6). The Lean modules
+**What this part does.** It puts Navier-Stokes on the DMP API as a card (VII.2), and proves in Lean, as a skeleton, what the form
+layer says about the two possible blowup routes and about regularity (VII.3). It records what is borrowed and its exact status
+(VII.4), states the one open step (VII.5), and checks the restatement against Perelman's proof of Poincare (A). The Lean modules
 contain **no Navier-Stokes object**: nothing in them is about the equations themselves.
 
-## VI.1 The problem as stated, and what is known
+## VII.1 The problem as stated, and what is known
 
-**VI.1.1 No-go results** **[classical]** (recalled from the literature; not re-read for this draft).
+**VII.1.1 No-go results** **[classical]** (recalled from the literature; not re-read for this draft).
 
 | Result | What it rules out |
 |---|---|
@@ -51,17 +51,17 @@ contain **no Navier-Stokes object**: nothing in them is about the equations them
 What these leave open: **discretely self-similar** solutions (the shape repeats after a fixed zoom), asymptotically self-similar
 solutions, and Type II rates.
 
-**VI.1.2 Tao's averaged equations** **[classical]** (Tao, J. Amer. Math. Soc. 29 (2016)). Replace the nonlinearity by an average of
+**VII.1.2 Tao's averaged equations** **[classical]** (Tao, J. Amer. Math. Soc. 29 (2016)). Replace the nonlinearity by an average of
 rotated and dilated copies. The average keeps the energy identity and the standard estimates, and the averaged equation blows up in
 finite time. So a proof of global regularity must use finer structure of the true nonlinearity than the energy identity and those
 estimates.
 
-**VI.1.3 Numerical evidence by others** **[external]**. Hou (arXiv 2107.06509, 2022) reports an axisymmetric scenario with smooth
+**VII.1.3 Numerical evidence by others** **[external]**. Hou (arXiv 2107.06509, 2022) reports an axisymmetric scenario with smooth
 data and constant viscosity: vorticity growth of about 10^7 at nearly self-similar Leray-type rates. It is numerical evidence, not a
-proof. Strict Type I axisymmetric blowup is excluded (VI.1.1), so a singular scenario would have to deviate from the observed rate;
+proof. Strict Type I axisymmetric blowup is excluded (VII.1.1), so a singular scenario would have to deviate from the observed rate;
 the tension is noted here, not resolved.
 
-## VI.2 The card
+## VII.2 The card
 
 The DMP API (`docs/unified/API.md`) gives every problem one shape: a well-defined input, a proved structure on it, and one named open
 step in a slot, with external inputs in their own slot. Navier-Stokes has three cards in `Unified/NavierStokesAPI.lean`
@@ -87,15 +87,15 @@ The three cards, in the card shape:
 
 Nothing is an axiom. An `OpenStep` or `External` slot is an ordinary hypothesis, and neither appears in the axiom audit. The three
 statements of the interface (a certificate exists; a profile exists; Fefferman's (A); (B)) are **named, not defined**: this library
-has no Navier-Stokes object. Replacing the names by real definitions is the first item of the audit (VI.5).
+has no Navier-Stokes object. Replacing the names by real definitions is the first item of the audit (VII.5).
 
-## VI.3 What is proved
+## VII.3 What is proved
 
 All of this is **[Lean]**, standard axioms only (`docs/unified/navierstokes-axioms.log`: 52 declarations on the three standard
 axioms, 4 on none; the source contains no `sorry`, `admit`, `native_decide` or `axiom`). None of it proves a statement about the
 equations. Each result says what the ledger gives from a hypothesis.
 
-### VI.3.1 The window
+### VII.3.1 The window
 
 Zoom at the singularity's own rate. If the singular region shrinks like `(T* - t)^alpha`, the viscous term in the zoomed frame has
 the weight `(T* - t)^{1 - 2 alpha}`. The local energy near the singular point scales like `(T* - t)^{5 alpha - 2}`. The scalings are
@@ -116,7 +116,7 @@ The window decision runs. `windowQ` sorts a rational exponent into one of the fo
 the local energy are bounded, "Leray" exactly when the Type I bound holds as well (`windowQ_admissible_iff`, `windowQ_leray_iff`,
 `windowQ_half`). This follows the API's rule for a new instance: the decision runs, and a theorem proves it right.
 
-### VI.3.2 Route I: the Leray end, a discretely self-similar profile
+### VII.3.2 Route I: the Leray end, a discretely self-similar profile
 
 The hypothesis is a structure, `LerayDSSCertificate`: a profile `W` that is periodic in zoomed time with period `S > 0` and **not
 steady**; a lower bound `A > 0` on its rescaled size; a contraction `0 <= rho < 1` and a constant `C >= 0` such that over one period
@@ -137,9 +137,9 @@ the source of all damping in route I. A period factor `0 < rho < 1` is a cost `-
 
 The API card `routeI` assembles this: from `PeriodContraction` (the open step) it concludes settling onto the profile (the API's
 `settle_everywhere`), with the period count from `settles_by`, together with the three consequences above. **Settling in the zoomed
-frame is blowup in real time.** The open step is the content a certificate would supply (VI.5).
+frame is blowup in real time.** The open step is the content a certificate would supply (VII.5).
 
-### VI.3.3 Route II: inside the window, viscosity as a shrinking residual
+### VII.3.3 Route II: inside the window, viscosity as a shrinking residual
 
 `EulerProfileCertificate` is the Chen-Hou one-scale certificate (damping `q`, nonlinear constant `C`, profile residual `epsilon`,
 focusing margin) with the exponent in `2/5 <= alpha < 1/2` and the trapping condition raised by the viscosity:
@@ -153,7 +153,7 @@ viscous term is a summable fresh uncertainty, so even with no damping its accumu
 The consequence for the two routes: at the Leray scaling, viscosity cannot be a perturbation of an inviscid profile. It must sit
 inside the profile equation, which is route I. **No route II profile is known [open].**
 
-### VI.3.4 Why the energy ledger cannot decide
+### VII.3.4 Why the energy ledger cannot decide
 
 The energy identity is one global sum: total dissipation is at most the start energy. A summable budget never pays a uniform
 positive cost per step (`ns_energy_budget_not_costAboveFloor`), and dissipated shares whose partial sums stay below the start energy
@@ -162,10 +162,10 @@ are such a budget (`ns_energy_identity_not_costAboveFloor`, `energy_cannot_fill`
 cost at some scale (`dyadic_supercritical`). The scalings are **[classical]** (Bernstein); the arithmetic is **[Lean]**. In two
 dimensions the same count is critical, which is why 2D Navier-Stokes is regular **[classical]**.
 
-So the regularity card's slot cannot be filled from the energy identity. This is the ledger form of Tao's averaged equations (VI.1.2):
+So the regularity card's slot cannot be filled from the energy identity. This is the ledger form of Tao's averaged equations (VII.1.2):
 they keep this identity and blow up.
 
-### VI.3.5 The blueprint: Chen-Hou, as a skeleton
+### VII.3.5 The blueprint: Chen-Hou, as a skeleton
 
 Chen and Hou proved stable, nearly self-similar finite-time blowup for 2D Boussinesq and for 3D axisymmetric Euler with smooth data
 and a solid wall, by a computer-assisted proof **[external]** (arXiv 2210.07191 and 2305.05660). It is not Navier-Stokes: there is
@@ -183,9 +183,9 @@ no viscosity, there is a wall, and the flow is axisymmetric. The project restate
 All of this except the last item is **[Lean]** for the skeleton. The partial differential equation enters only as the step inequality, a hypothesis. That
 BKM's integral is infinite exactly when smooth continuation fails is **[classical]**.
 
-## VI.4 What is borrowed
+## VII.4 What is borrowed
 
-### VI.4.1 Alpoge and Buckmaster: the unforced claim **[external, unverified, certificate unreleased]**
+### VII.4.1 Alpoge and Buckmaster: the unforced claim **[external, unverified, certificate unreleased]**
 
 The claim, as the notes read it from the paper itself (79 pages, version of 20 November 2026):
 
@@ -194,7 +194,7 @@ The claim, as the notes read it from the paper itself (79 pages, version of 20 N
 * **Route.** A profile of the Navier-Stokes equations in self-similar variables, with the viscous term inside the profile equation,
   periodic in zoomed time up to an isometry: backward discretely self-similar, the case Bradshaw and Tsai left open. Their Theorem
   1.1 says one such profile gives blowup at Leray's rate, stable in finite codimension. Their Theorem 7.1 says an approximate profile
-  with explicit inequalities (a **certificate**) gives an exact profile nearby. This is exactly route I of VI.3.2.
+  with explicit inequalities (a **certificate**) gives an exact profile nearby. This is exactly route I of VII.3.2.
 * **The candidate.** Found by Newton's method after continuation. Not axisymmetric: invariant under rotation by `2 pi/19` about one
   axis and by `pi` about another. Period about 0.36.
 * **What is not available.** The certificate is **not released**; the paper gives only its SHA-256 hash,
@@ -208,11 +208,11 @@ The claim, as the notes read it from the paper itself (79 pages, version of 20 N
 This project did **not** rebuild their library, did **not** see the certificate, and did **not** check any of their inequalities. It
 reads the claim, records it, and uses it only as an external input in a named slot.
 
-How their profile avoids the no-go results (VI.1.1) **[external]**: it depends on zoomed time, so Necas-Ruzicka-Sverak and Tsai
+How their profile avoids the no-go results (VII.1.1) **[external]**: it depends on zoomed time, so Necas-Ruzicka-Sverak and Tsai
 (which exclude steady profiles) do not apply; it is bounded in weak `L^3` but not `L^3`, consistent with Escauriaza-Seregin-Sverak;
 it is not axisymmetric; its period lies above the Chae-Wolf lower bound, with the constant not checked here.
 
-### VI.4.2 OpenAI: the forced claim **[external, unverified]**
+### VII.4.2 OpenAI: the forced claim **[external, unverified]**
 
 For every `nu > 0`, a smooth force with compact support, a compact set, and a smooth solution on `[0, 1)` with zero initial velocity
 and bounded energy whose sup-norm is unbounded as `t -> 1`; the paper says this establishes (C), and (D) by a corollary. An
@@ -222,39 +222,39 @@ faithful translation of the written one, and expressly claims nothing about the 
 force is allowed in (C) and (D), this claim, if it holds, answers (C) and (D) as stated but says nothing about (A) and (B), which have
 zero force.
 
-### VI.4.3 Smaller programmes **[external]**
+### VII.4.3 Smaller programmes **[external]**
 
 Petrillo and Glimm (arXiv 2609.23868) set a target for a computer search for unforced blowup; its implications are proved in Lean over
 Mathlib with no Navier-Stokes object. Cheskidov, Dai and Palasek (arXiv 2609.26790) prove cascade blowup in dyadic shell models, not
 in Navier-Stokes. The companion unforced Euler claim by Alpoge, Buckmaster and Coiculescu was not read.
 
-### VI.4.4 The logic point **[classical]**
+### VII.4.4 The logic point **[classical]**
 
 The owner's scope decision is that a blowup that cannot be ruled out is in itself enough for an existence to be constructed where it
 blows up. The exact statement behind it is Goedel's completeness theorem: if ZFC plus "some smooth datum blows up" is consistent, a
 model of it exists. Three senses of "cannot be ruled out" must be kept apart: (a) one method cannot rule it out (the energy method;
-VI.3.4); (b) the axioms cannot refute it (independence; **not known** for Navier-Stokes); (c) it is not ruled out for the real
+VII.3.4); (b) the axioms cannot refute it (independence; **not known** for Navier-Stokes); (c) it is not ruled out for the real
 equations over the real numbers. A completeness model for (b) may be nonstandard, so it settles nothing about the actual equations.
 Only a proof settles the Clay question. The two 2026 claims are proofs of that kind: an explicit datum and an argument, not a
 completeness model. If correct, they are the owner's "existence constructed where it blows up", in the standard sense.
 
-## VI.5 The one open step
+## VII.5 The one open step
 
 **The open step of the card.** The route I card has one open step: **`PeriodContraction`. One period of the zoomed flow, from a
 non-steady periodic profile at the Leray scaling, contracts the perturbation, on the complement of finitely many directions removed
 by the datum, in a real norm, with `rho + C delta < 1`.** In the external tie, this is the statement "the Alpoge-Buckmaster
 certificate satisfies their Appendix B". It is exactly what their unreleased certificate claims to supply. Everything else in the
-card is proved (VI.3) or is a named external theorem (VI.4.1). **[open]**
+card is proved (VII.3) or is a named external theorem (VII.4.1). **[open]**
 
 **The other slot, stated exactly.** The regularity card names what regularity would need: **every dyadic scale dissipates a uniform
-cost above the transfer floor, from the true nonlinearity.** The energy identity cannot supply it (VI.3.4). If the 2026 claims hold,
+cost above the transfer floor, from the true nonlinearity.** The energy identity cannot supply it (VII.3.4). If the 2026 claims hold,
 the slot cannot be filled for some data. **[open; false if the unforced claim holds]**
 
 **What this does to the problem.** The API does not settle Navier-Stokes as regular. It settles blowup in the Leray window once one
 named slot is filled (the period contraction), which is a claimed but unreleased certificate today. The mechanical answer is
 therefore: **open, with the open step located and an external claim asserting it holds.** Route II has no candidate **[open]**. What
 continues past `T*` for a blowup solution is **[open]** (weak solutions are not unique in general; for Ricci flow the same question
-is a theorem, VI.6.2).
+is a theorem, A.2).
 
 **What would discharge the external inputs by import.** The notes list twelve audit items, none done. The ones that change the
 status of the tie:
@@ -269,86 +269,11 @@ status of the tie:
 4. Identify the two derivation steps that their paper says are proved in the Lean and not in the prose.
 5. Map their Appendix B row by row onto `LerayDSSCertificate`.
 
-Until these are done, everything in VI.4.1 stays **[external, unverified]**. The project's policy is to cite and audit, not vendor.
+Until these are done, everything in VII.4.1 stays **[external, unverified]**. The project's policy is to cite and audit, not vendor.
 An independent construction of the profile from scratch is beyond reach now: it is a genuinely three-dimensional, time-periodic
 shape with an operator-level certificate at 128-bit precision **[reading]**.
 
-## VI.6 Validation: Poincare (Perelman), and SU(N)
-
-**Purpose.** Check the restatement of VI.3.5 against a solved, accepted proof in which finite-time singularities occur, are
-classified, and are cut at a boundary, after which the flow continues. **This box claims nothing new.** Everything in VI.6.1 and
-VI.6.2 is **[classical]** (recalled from Perelman's three papers and the expositions; not re-checked for this draft), except the
-fitting of the DMP vocabulary, which is **[reading]**.
-
-### VI.6.1 The proof as a ledger
-
-On a closed 3-manifold Ricci flow develops singularities in finite time (Hamilton). In one case the time is forced by a comparison:
-`dR/dt >= Delta R + (2/3) R^2` gives, for positive scalar curvature, a singularity by `T <= 3/(2 R_min(0))` **[classical]**.
-
-| Ledger element | Perelman | Fit |
-|---|---|---|
-| steps | the smooth flow between surgery times | yes |
-| monotone quantity | the W-entropy, non-decreasing; its derivative is a sum of squares vanishing on shrinking solitons | partly: increments `>= 0`, floor 0, but **no uniform positive cost** |
-| what it buys | kappa-noncollapsing at every scale: one estimate at all scales, from a scale-invariant quantity | yes: the "one scale suffices" of Chen-Hou |
-| number of steps on `[0, T]` | each surgery removes at least a definite volume; volume is bounded: finitely many surgeries | yes: a quantum per step |
-| what reaches the boundary | kappa-solutions, classified in 3D; canonical neighbourhoods | partly: a classification, not a certified damping |
-| the boundary (DB) | a singular time | yes |
-| the act at the boundary | surgery: cut along necks, glue caps, discard known pieces, restart | yes, and stronger: the act is defined |
-| the end | finite extinction for simply connected manifolds (Perelman; Colding-Minicozzi) | yes: the last boundary, where the certificate is read |
-
-**Why surgery is a well-defined act, and why extinction certifies the sphere.** The cut runs through a nearly round 2-sphere in a
-neck, so each surgery is a connected-sum decomposition plus discarded pieces of known type. Later, singular Ricci flows through the
-singularities were constructed without choices (Kleiner-Lott) and proved unique and stable (Bamler-Kleiner): for Ricci flow in 3D
-"the equation selects the continuation" is a theorem. For simply connected `M`, running the surgeries backwards writes `M` as a
-connected sum of 3-spheres, which is the 3-sphere.
-
-### VI.6.2 Verdict **[reading]**
-
-The restatement passes as a **description**: every element of VI.3.5 has an exact counterpart in Perelman's proof (forced time, one
-scale-invariant estimate, a defined act at a boundary, a quantum per act, a final certificate). It does **not** pass as a
-**mechanism**: what reaches Perelman's boundaries is decided by classifying all blowup shapes, not by a cost above a floor; the
-monotone quantity buys a sign, not a rate; and Ricci flow passes a sequence of boundaries and continues, while the Chen-Hou time `T*`
-is terminal. Nothing new is claimed.
-
-### VI.6.3 Poincare and SU(N)
-
-The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. The exact answer, by what holds:
-
-* **SU(2) is the 3-sphere.** The unit sphere of `C^2` is in bijection with SU(2) **[Lean]** (`Unified/BlowupSUN.lean`:
-  `su2Mat_mem`, `su2_form`, `sphereEquivSU2`); that the bijection is a diffeomorphism is **[classical]**. So the object Perelman
-  certified is the group manifold of SU(2).
-* **Every SU(N), with its bi-invariant metric, shrinks to a point at time `1/N`**, with no surgery: `g(t) = (1 - N t) g(0)`, with
-  `Ric = (N/2) g` in the normalisation `<X, Y> = -tr(XY)`. The ODE is **[Lean]** (`shrink_hasDerivAt`, `shrink_unique`,
-  `shrink_pos`, `shrink_extinct`, `einstein_hasDerivAt`, `einstein_unbounded`, `sun_extinction`); the curvature constant is
-  **[classical]** and checked **[numerical]** for N = 2, 3, 5, 11 (`blowup_sun_check.log`). This is Perelman's final event delivered
-  by symmetry. **It carries no topological information**, because every positive Einstein manifold shrinks the same way.
-* **Only SU(2) is stable.** Positive-Ricci metrics on a closed 3-manifold flow to constant curvature (Hamilton) **[classical]**. For
-  every `N >= 3`, the first Laplace eigenvalue `N - 1/N` lies strictly inside the Cao-He conformal instability window, and for
-  `N = 2` it sits exactly on the lower edge (Obata's case) **[Lean]** (`sun_window`, `su2_window_edge`). That the window implies
-  instability is **[external]** (Cao-He; Kroencke).
-* **A genuine "Poincare for SU(N)"** (every closed manifold homotopy equivalent to SU(N) is homeomorphic or diffeomorphic to it) is a
-  surgery-theory question, and it is settled. For `N = 2` it is Poincare **[classical]**. For `N = 3` it holds in both categories:
-  every closed smooth manifold homotopy equivalent to SU(3) is diffeomorphic to it, `SU(3) # Sigma^8` included **[external]**
-  (X. Wang, arXiv 1810.08478, Theorem 1.1 and Corollary 1.2). For `N >= 4` it fails in both categories: there is rational room below
-  the top cell (`x_3 x_5` in degree 8), so surgery gives closed smooth manifolds homotopy equivalent to SU(N) with a non-zero
-  Pontryagin class, not homeomorphic to the parallelisable SU(N) **[paper]** (a computation from classical surgery theory,
-  `docs/unified/PERELMAN-DMP.md` 2). Ricci flow does not reach it. In DMP terms the rigid cases are those with nothing below the gate
-  (the top cell), and a construction that certified every SU(N) would be refuted from N = 4 on **[reading]**.
-* **The rigid SU(N) are N = 1, 2, 3.** With the point SU(1), the SU(N) whose homotopy type determines them are exactly N = 1, 2, 3,
-  and the circle U(1) is rigid too **[paper]** (from the bullet above; S^1 **[classical]**) (VI.6.3k). The rigid factors are
-  U(1), SU(2) and SU(3), the Standard Model's. The owner reads this as the start `{infinity, 2, 3}`: the largest start built from
-  SU(N) that a description can still certify (Part X 4.4) **[reading]**.
-
-### VI.6.4 The Navier-Stokes statement, side by side **[reading]**
-
-| | Perelman | Chen-Hou | Navier-Stokes (claimed route I) |
-|---|---|---|---|
-| why one estimate covers all scales | scale-invariant entropy | scale invariance of the equation | scale invariance; the zoomed equation is autonomous |
-| what reaches the boundary | a classified catalogue | one certified profile | one certified profile, if the certificate holds |
-| the act at the boundary | defined, then canonical | open | open |
-| status | accepted proof | accepted, with a wall | claimed, certificate unreleased |
-
-## VI.7 DMP readings attached to this part (all [reading])
+## VII.7 DMP readings attached to this part (all [reading])
 
 * **A blowup is a certificate that infinitely many steps fit in finite time.** The finite check at one scale is what makes the
   packing geometric; `T*` is the boundary where the smooth description ends, and the profile is what crosses it. This is the
@@ -357,27 +282,27 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   (Lean for both uses; the parallel is the reading).
 * **Scale invariance as the arrow of causality.** Because the zoomed equation is autonomous, the set of "outsides" has one element:
   the same step at every scale, so the for-all over steps costs nothing.
-* **"Not DMP-complete, hence blows up."** In ledger terms the energy ledger cannot pay a uniform cost per scale (VI.3.4). Read as a
+* **"Not DMP-complete, hence blows up."** In ledger terms the energy ledger cannot pay a uniform cost per scale (VII.3.4). Read as a
   prediction, this named the side the 2026 claims assert. It proves nothing: a method's failure to exclude blowup is not blowup. The
   claims, if correct, prove it by a certified profile. DMP-completeness now has a precise statement: DMP-complete means runs on DMP,
-  the running-state hypothesis R of Part X 4.2 (the owner's definition, X.64b). The owner's reading: the whole process is
-  described and Navier-Stokes does not build in it (the energy ledger cannot pay a uniform cost per scale, VI.3.4a and VI.3.4b,
+  the running-state hypothesis R of Part III 4.2 (the owner's definition, III.64b). The owner's reading: the whole process is
+  described and Navier-Stokes does not build in it (the energy ledger cannot pay a uniform cost per scale, VII.3.4a and VII.3.4b,
   **[Lean]**), so it is not DMP-complete, and blowup is the expected consequence. The negative result is the expected one, and it
-  makes the framework falsifiable: global regularity would refute it **[reading]** (VI.7e). Blowup of the real equations is still
-  the card's open step (VI.5.1, **[open]**); in the settling machine a missing floor gives undecidability (II.11), so the step from
+  makes the framework falsifiable: global regularity would refute it **[reading]** (VII.7e). Blowup of the real equations is still
+  the card's open step (VII.5.1, **[open]**); in the settling machine a missing floor gives undecidability (II.3), so the step from
   "not DMP-complete" to blowup is the reading, not a theorem. In the one-box test (I.8) the wrong marker is proved for the model:
   with the energy-only transfer against the viscous cost as gate factor and the claim "regular" at every dyadic scale, the gate
-  reads R136a1 at some scale, for every viscosity and margin **[Lean]** (model, VI.7g). It covers the energy-only ledger, not an
-  actual solution with a better transfer bound **[reading]** (VI.7h).
+  reads R136a1 at some scale, for every viscosity and margin **[Lean]** (model, VII.7g). It covers the energy-only ledger, not an
+  actual solution with a better transfer bound **[reading]** (VII.7h).
 * **Settle means opposite things on the two cards.** In the API, "settle" means the carried quantity dies out. For regularity that
   quantity is the cascade, so settling means regular; for route I it is the perturbation from the blowup profile, so settling means
   blowup. The same theorem answers opposite physical questions.
 
-## VI.8 What would close it
+## VII.8 What would close it
 
 If the Alpoge-Buckmaster certificate is released and verifies independently, the route I card's open step is discharged, (A) and (B)
 fail, and the Clay problem is answered in the direction of blowup, by their work, with this part supplying the ledger skeleton and the
 audit. If the certificate fails an inequality, the open step stays open and the regularity slot stays as it is. Either way the change
 to this paper is one row of the ledger, one verdict line of this part and one item of the abstract. A proof of **regularity** would
-have to fill the regularity slot from the true nonlinearity, which the energy identity cannot do (VI.3.4), and which the unforced
+have to fill the regularity slot from the true nonlinearity, which the energy identity cannot do (VII.3.4), and which the unforced
 claim, if true, makes impossible for some data.

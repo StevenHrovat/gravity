@@ -1,4 +1,4 @@
-# The paper: outline (draft 4, machine-first, 2026-11-24)
+# The paper: outline (draft 4, machine-first, relabelled 2026-11-24)
 
 **Title (the owner's, 2026-11-24).** *Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP,
 with certified settling.* The owner: "since observability = equal running, seen through = run on DMP, while sounding nicer and more
@@ -29,7 +29,7 @@ through the easiest to understand part, DMP, then extending it with tools that j
 **The shape of draft 4 (agreed 2026-11-24).** The existence Turing machine is the spine. Every problem type is one box under one
 test: a box with one command at one shared gate, a marker per step (inside or R136a1), DMP-complete when every marker is correct.
 What is proved is the machine and each box's core; what is assumed, once, is that the start's floor is kept at every scale (the one
-assumption, X.64 in draft 3 numbering). The reader goes DMP, then the machine, then the one assumption and the rigid start, then the
+assumption, III.64; X.64 in draft 3). The reader goes DMP, then the machine, then the one assumption and the rigid start, then the
 seven problems as instances of it.
 
 **State.** None of the seven problems is solved by this work. Each has a proved core, much of it in Lean, and exactly one named open
@@ -37,28 +37,28 @@ step; results that need the one assumption are marked conditional on it. Each op
 `CLAIMS.md`, one verdict line in its part and one item of the abstract, and nothing else. Ledger (2026-11-24): 628 counted rows;
 232 Lean, 125 classical, 41 external, 7 conditional, 60 paper, 22 numerical, 2 certified, 93 reading, 46 open.
 
-## Files and the move from draft 3
+## Files (draft 4, relabelled 2026-11-24)
 
-| New part | Content | Draft 3 file and labels | State |
+| Part | Content | File | State |
 |---|---|---|---|
 | Front matter | title, personal note, abstract, introduction | `draft/00-abstract-introduction.md` | to rewrite around the machine |
-| I | DMP: the vocabulary | `draft/01-part-I-dmp.md`, I.x (the one-box test moves to II) | drafted |
-| II | The machine and the tools the problems use | `draft/02-part-II-tools.md`, II.x, reordered; I.8i-k | drafted, to reorder |
-| III | The one assumption and the rigid start | `draft/10-part-X-generalisation.md`, X.x; IX.6i-q in part | drafted, to move |
-| IV | Yang-Mills | `draft/03-part-III-yang-mills.md`, III.x | prose |
-| V | GRH | `draft/04-part-IV-grh.md`, IV.x | prose |
-| VI | P vs NP | `draft/05-part-V-pnp.md`, V.x | prose |
-| VII | Navier-Stokes | `draft/06-part-VI-navier-stokes.md`, VI.x (VI.6 moves to Appendix A) | prose |
-| VIII | BSD | `draft/07-part-VII-bsd.md`, VII.x | prose |
-| IX | Hodge | `draft/08-part-VIII-hodge.md`, VIII.x | prose |
-| X | GU | `draft/09-part-IX-gu.md`, IX.x | prose |
-| XI | Outlook: a settling machine | `draft/11-outlook-settling-machine.md`, XI.x | drafted |
-| Appendix A | Validation: Poincare, SU(N) and the rigid groups | VI.6, IX.6i-q | to assemble |
+| I | DMP: the vocabulary | `draft/01-part-I-dmp.md` | drafted |
+| II | The machine, and the tools the problems use | `draft/02-part-II-machine.md` | drafted, reordered |
+| III | The one assumption and the rigid start | `draft/03-part-III-one-assumption.md` | drafted, moved up |
+| IV | Yang-Mills | `draft/04-part-IV-yang-mills.md` | prose |
+| V | GRH | `draft/05-part-V-grh.md` | prose |
+| VI | P vs NP | `draft/06-part-VI-pnp.md` | prose |
+| VII | Navier-Stokes | `draft/07-part-VII-navier-stokes.md` | prose |
+| VIII | BSD | `draft/08-part-VIII-bsd.md` | prose |
+| IX | Hodge | `draft/09-part-IX-hodge.md` | prose |
+| X | GU | `draft/10-part-X-gu.md` | prose |
+| XI | Outlook: a settling machine | `draft/11-outlook-settling-machine.md` | drafted |
+| Appendix A | Validation: Poincare, SU(N) and the rigid groups | `draft/12-appendix-a-validation.md` | assembled |
 
-**Labels.** The move renumbers once, by script: each claim keeps its row, gets the label of its new part and section, and the old
-label goes into the "Folded labels" table of `CLAIMS.md`, so every draft-3 reference still resolves. Problem parts keep their inner
-section numbers (III.5.6 becomes IV.5.6); Part II and Part III get new section numbers (below). The chapter files are renamed in the
-same step. LaTeX with one bibliography comes after.
+**Labels.** Relabelled once, by script (2026-11-24): every claim kept its row and got the label of its new place; the chapter
+files were renamed in the same step. The draft-3 to draft-4 rule is the table "Draft 3 labels" in `CLAIMS.md`, so every draft-3
+reference in older notes still resolves. Problem parts kept their inner section numbers (draft-3 III.5.6 is IV.5.6). LaTeX with one
+bibliography comes after.
 
 **Status marks** everywhere: **Lean** (module named), **classical** (reference), **external** (others' result, not rebuilt),
 **conditional** (under the one assumption or a named one), **paper**, **numerical**, **certified**, **reading** (DMP; never
@@ -88,13 +88,13 @@ shared vocabulary. I.12 The vocabulary in one table. *reading, with Lean and cla
 
 ## Part II. The machine, and the tools the problems use
 
-**A. The machine.** The settling machine as one object, in the order a reader needs it.
+**A. The machine.** The settling machine as one object, in the order a reader needs it. (In parentheses: the draft-3 section.)
 
 * **II.1 Running systems and the ledger** (draft 3 II.9): a step, a gate factor, a mass, the ledger law; the transport theorem. *Lean.*
 * **II.2 The encoder and its half-turn** (II.10): the outside read through the same gate; the reflection coefficient. *Lean.*
 * **II.3 The settle theorem and the decidability edge** (II.11): with a floor, settling within an explicit bound; without, undecidable.
   *Lean.*
-* **II.4 The one-box test** (new; I.8i-k, X.68-X.68c): one command at the shared gate, a marker per step, DMP-complete = correct at
+* **II.4 The one-box test** (new; II.4a-c, with III.68 to III.68c): one command at the shared gate, a marker per step, DMP-complete = correct at
   every tick; the one-box certificate; the scale certificate from the sharing; the universal machine as a box; the vacuity checks.
   The core lives in IM (`Arsenal.Rotation`). *Lean.*
 * **II.5 The API: one card per problem** (II.12): one structure, one named open step each. *Lean.*
@@ -107,25 +107,23 @@ shared vocabulary. I.12 The vocabulary in one table. *reading, with Lean and cla
 * **II.9 Positivity builds a space** (II.1). **II.10 Positivity pins the spectrum** (II.2). **II.11 The bridge lemma** (II.3).
   **II.12 Contraction and data processing** (II.4). **II.13 A strict sign gives a rate** (II.5). **II.14 The dichotomy** (II.6).
   **II.15 The native optimization method** (II.7). *Lean + classical + numerical.*
-* **II.16 What the tools do not do** (II.8, II.15): none creates positivity; the open step of each problem is where it must be
-  established.
+* **II.16 What the tools do not do** (draft 3 II.8): none creates positivity; the open step of each problem is where it must be
+  established. **II.17 Where Part II ends** (II.15).
 
 ## Part III. The one assumption and the rigid start
 
-Draft 3's Part X, moved up so that every problem reads as an instance of it.
+Draft 3's Part X, moved up so that every problem reads as an instance of it. Its claims are III.n (draft 3 X.n).
 
-* **III.1 The container** (X.1): a containing existence with free possibility space; "for every outside" as each card's quantifier.
-* **III.2 One geometry, two edges** (X.2): GRH asks transport (existence), O1 asks decay (falsifiability). *Lean.*
-* **III.3 Existence and falsifiability** (X.3).
-* **III.4 Why the open step is always the same slot** (X.4.1-4.3): one named slot per card; the running-state hypothesis; the
-  dichotomy that makes the step decidable; only a start that forces a floor is DMP-complete (X.70). *Lean + reading.*
-* **III.5 The rigid start and the U(1) gate** (X.69-X.69c, IX.6i-q): SU(N) rigid exactly for N <= 3, so the start {infinity, 2, 3};
-  SU(N) as the encoder's language; only U(1) carries content across the gate; Sp(2) and G2 as its two hidden witnesses. *paper +
-  classical + reading; G2 open (round running).*
-* **III.6 The one assumption** (X.4.4, X.64-X.68d): stated once, with its two edges (O1 and the lower edge), the one-box and scale
-  certificates, GRH as a valid encoder, and the expected negative. *open, stated; Lean for what follows from it.*
-* **III.7 Excision and incompleteness** (X.5). **III.8 The tick operator and the rotatable hash** (X.6). **III.9 Uncertainty transported
-  across the DB** (X.7, the three bridges). **III.10 What it adds up to** (X.8).
+* **III.0 How to read this part. III.1 The container**: a containing existence with free possibility space; "for every outside" as
+  each card's quantifier.
+* **III.2 One geometry, two edges**: GRH asks transport (existence), O1 asks decay (falsifiability). *Lean.*
+* **III.3 Existence and falsifiability.**
+* **III.4 Why O1 is always the open step.** III.4.1 one named slot per card; III.4.2 the running-state hypothesis; III.4.3 the
+  dichotomy that makes the step decidable, and only a start that forces a floor is DMP-complete (III.70); III.4.4 the one assumption,
+  stated once: its two edges, the one-box and scale certificates (III.68), GRH as a valid encoder, the rigid start and the
+  encoder's language (III.69), the expected negative. *Lean + reading; open, stated.*
+* **III.5 Excision and incompleteness. III.6 The tick operator and the rotatable hash. III.7 Uncertainty transported across the DB**
+  (the three bridges). **III.8 What it adds up to.**
 
 ## Parts IV to X. The seven problems, one template
 
@@ -144,7 +142,7 @@ borrowed; the one open step; readings; the verdict and what would close it.** In
 * **Part VIII. BSD.** Points on an existence line; the Mathlib-only core in IM; Hasse named; the open step from analytic rank 2.
 * **Part IX. Hodge.** Describable implies exists; Hodge-Riemann positivity and the Hodge index in Lean; codimension p >= 2 open.
 * **Part X. GU.** The Z_6 and charge quantisation (Lean); the owner's checkable consequence (uniform charge quantisation); the
-  Standard Model's factors as the rigid ones (pointing to III.5 and Appendix A).
+  Standard Model's factors as the rigid ones (pointing to III.4.4 and Appendix A.5).
 
 ## Part XI. Outlook: a settling machine
 
@@ -153,9 +151,9 @@ The first author's concept of a DMP-native general intelligence, tied to the set
 
 ## Appendix A. Validation: Poincare, SU(N) and the rigid groups
 
-Perelman's proof as a ledger (draft 3 VI.6.1-6.2); Poincare for SU(N): true for N <= 3 in both categories (Wang 2021), false from
-N = 4 (VI.6.3j-k); the rank-2 groups, complex representations and the rigidity of Sp(2) and G2 (IX.6i-q; the G2 round's result goes
-here). *external + paper + classical + open.*
+A.0 to A.2 Perelman's proof as a ledger; A.3 Poincare for SU(N): true for N <= 3 in both categories (Wang 2021), false from N = 4
+(A.3j, A.3k); A.4 the Navier-Stokes statement side by side; A.5 the rigid groups: complex representations, the U(1) gate and its
+two hidden witnesses, Sp(2) strongly rigid, G2 with exactly two structures and one open test (A.5i to A.5r). *external + paper + classical + open.*
 
 ---
 
@@ -174,5 +172,5 @@ here). *external + paper + classical + open.*
 
 **Answered on 2026-11-24** (kept for the record): O1's final form (F_e(L) - 2c(L) > log mu_4, the excess act included) and its one
 Lean form (`FineOneBox`, now the Yang-Mills instance of the one-box test); the annealed-to-quenched step (not needed in the per-outside
-form, III.5.7, Lean); GU's checkable consequence (uniform charge quantisation, IX.5f); non-triviality and DMP-completeness (the lower
+form, IV.5.7, Lean); GU's checkable consequence (uniform charge quantisation, X.5f); non-triviality and DMP-completeness (the lower
 edge in the one assumption, DMP-complete = runs on DMP, Navier-Stokes the expected negative).

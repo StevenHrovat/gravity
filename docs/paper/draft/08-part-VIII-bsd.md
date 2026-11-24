@@ -1,11 +1,11 @@
-# Part VII. Birch and Swinnerton-Dyer: the card, three named parts, and the one open step
+# Part VIII. Birch and Swinnerton-Dyer: the card, three named parts, and the one open step
 
 *Draft 2, 2026-11-24. Prose, with every result marked. Modules of the Mathlib-only core live in DMP.IM (the public `im` repository,
 `arsenal/Arsenal/`) and are written `Arsenal.BSD...`; they are being merged into `im` now. Lean paths of this repository are relative to
 `docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VII.n) are listed in
 `../claims-incoming/VII-bsd.md` until the coordinator merges them into `../CLAIMS.md`.*
 
-## VII.0 What is proved, by whom, and what this part does
+## VIII.0 What is proved, by whom, and what this part does
 
 **The Clay problem** (Wiles' official description) **[classical]**. Let E be an elliptic curve over the rationals. Its group of
 rational points E(Q) is finitely generated (Mordell 1922), so it is a finite group of torsion points plus r independent points of
@@ -22,14 +22,14 @@ proves no case of the conjecture that was not already known**, and its Lean cont
 experts did not have.
 
 **What this part does.** It states BSD as a property of one Weierstrass equation and proves in Lean what Mathlib gives about it
-(VII.3). It puts BSD on the DMP API as a card with one named open step (VII.2). It records what is borrowed and its exact status
-(VII.4), states the one open step (VII.5), and attaches the owner's readings, short (VII.6). Three classical theorems that Mathlib
+(VIII.3). It puts BSD on the DMP API as a card with one named open step (VIII.2). It records what is borrowed and its exact status
+(VIII.4), states the one open step (VIII.5), and attaches the owner's readings, short (VIII.6). Three classical theorems that Mathlib
 lacks are carried as **named parts**, not axioms: weak Mordell-Weil, Hasse's bound, and one Euler product bound. They are
 theorems of others, not open problems. They are missing from the library, not from mathematics.
 
-## VII.1 The problem as stated, and what is known
+## VIII.1 The problem as stated, and what is known
 
-**VII.1.1 What is proved** (recalled from the literature; not re-read for this draft).
+**VIII.1.1 What is proved** (recalled from the literature; not re-read for this draft).
 
 | Result | Statement | Mark |
 |---|---|---|
@@ -44,18 +44,18 @@ theorems of others, not open problems. They are missing from the library, not fr
 | Kato 2004; Skinner-Urban 2014; later work | for many curves of analytic rank 0 or 1, the p-part of the refined formula for many p | external, recalled |
 | Monsky 1996; Nekovar; Dokchitser-Dokchitser 2010 | p-parity for E/Q (a theorem); so finiteness of Sha would give `(-1)^rank = w` | external |
 
-**VII.1.2 What is open** **[open]**.
+**VIII.1.2 What is open** **[open]**.
 
 * The rank part for analytic rank 2 or more, in general. There is no construction of two or more independent points from a higher
   zero (no higher Heegner points), and no bound "rank <= order" beyond order 1.
 * The finiteness of Sha in general (known for analytic rank at most 1).
 * The refined formula for all curves of analytic rank 0 and 1, at all primes at once, and any case of rank 2 or more beyond single
   curves.
-* The Riemann hypothesis for L(E, s) (the zeros on the line `re s = 1`), part of GRH beyond Dirichlet L-functions (Part IV).
+* The Riemann hypothesis for L(E, s) (the zeros on the line `re s = 1`), part of GRH beyond Dirichlet L-functions (Part V).
 * No curve of proved analytic rank 4 or more is known. A zero can be certified only up to order 3 (a value by modular symbols, a
   first derivative by Gross-Zagier, each with parity). Numerics cannot certify a zero **[classical, recalled]**.
 
-## VII.2 The card
+## VIII.2 The card
 
 The DMP API (`docs/unified/API.md`) gives every problem one shape: a well-defined input, a proved structure on it, one named open
 step in a slot, and external inputs in their own slot. BSD has two layers. The Mathlib-only core is `Arsenal.BSD` in DMP.IM. The
@@ -83,7 +83,7 @@ is not known to be finitely generated). The older form, over Q only, is kept in 
 answered R136a1 is a named hypothesis that the theorems using it carry (it is the statement itself); an `OpenStep` or `External` slot
 of the API is likewise an ordinary hypothesis. Neither appears in an axiom audit.
 
-## VII.3 What is proved
+## VIII.3 What is proved
 
 All of this is **[Lean]**. Three cautions come first.
 
@@ -95,7 +95,7 @@ All of this is **[Lean]**. Three cautions come first.
 2. **Inputs.** A result marked "from the named part" is a Lean theorem with the part as a hypothesis, not a proof of the part.
 3. **No new theorem.** The proved structure is bookkeeping around classical facts. It shows the shape of the problem.
 
-### VII.3.1 The algebraic side (`Arsenal.BSD.Algebraic`)
+### VIII.3.1 The algebraic side (`Arsenal.BSD.Algebraic`)
 
 The group of points `Pts W` is Mathlib's group of nonsingular points with the point at infinity.
 
@@ -110,7 +110,7 @@ The group of points `Pts W` is Mathlib's group of nonsingular points with the po
   finite order, exactly when E(K) is finite. No Mordell-Weil is needed: finite torsion is enough. And E(K) is infinite exactly when
   the rank is positive (`infinite_iff_algRank_pos`). **[Lean]**
 
-### VII.3.2 The analytic side (`Arsenal.BSD.Analytic`)
+### VIII.3.2 The analytic side (`Arsenal.BSD.Analytic`)
 
 * **The continuation as a property** (`IsContinuation`): a function analytic on a half-plane `re s > a` with `a < 1`, equal to
   Mathlib's L-series on some right half-plane. This is what BSD reads: the germ at s = 1, reached from where the series converges.
@@ -128,7 +128,7 @@ The group of points `Pts W` is Mathlib's group of nonsingular points with the po
 
 In words: the mirror `s <-> 2 - s` fixes the parity of the order. It does not fix the order.
 
-### VII.3.3 Point counts that run (`Arsenal.BSD.Count`)
+### VIII.3.3 Point counts that run (`Arsenal.BSD.Count`)
 
 `count W` counts the solutions of the Weierstrass equation over any finite ring, plus the point at infinity. `frobTrace W = q + 1 - count W`.
 The decidable `hasseCheck W` is proved equal to the real inequality `abs(a) <= 2 sqrt q` (`hasseCheck_iff`). Over a finite field,
@@ -136,7 +136,7 @@ The decidable `hasseCheck W` is proved equal to the real inequality `abs(a) <= 2
 curve read mod p is Mathlib's (`reduceMod`, `count_reduceMod`). Nothing is `noncomputable`: what runs is visibly computable. At
 p = 5 the curve y^2 = x^3 - x has trace -2 and passes the check, both by the kernel (`decide`). **[Lean]**
 
-### VII.3.4 Hasse, named, and what it gives (`Arsenal.BSD.Hasse`)
+### VIII.3.4 Hasse, named, and what it gives (`Arsenal.BSD.Hasse`)
 
 Hasse's bound at a place of good reduction, in Mathlib's own terms, is the named part `Hasse W` (with `LocalHasse` at one place).
 Mathlib has neither isogeny degrees nor intersection theory on E x E, so the bound is not provable there yet. What follows from it
@@ -155,7 +155,7 @@ is proved:
   convergence (`LSeriesSummable_of_hasse`), a finite order (`order_ne_top`), and parity with **no order given separately**
   (`analytic_parity_of_hasse`). **[Lean, from the named parts `Hasse` and `EulerProductBound`]**
 
-### VII.3.5 The statement, and what follows from it (`Arsenal.BSD`)
+### VIII.3.5 The statement, and what follows from it (`Arsenal.BSD`)
 
 `BSDStatement W` says: a continuation exists, and the rank equals the order of its zero at s = 1. It is a statement about W alone
 (`bsdStatement_iff` turns it into the equation `rank = order` when a continuation is in hand). It is the **rank part of the Clay
@@ -173,7 +173,7 @@ prose here, not in Lean). From it:
   Sha or the Tamagawa product, so they stay free numbers in the statement. The refined statement gives the rank statement when its
   leading coefficient is not zero (`bsd_of_refined`). **[Lean]**
 
-### VII.3.6 Hasse as an encoder, and the Euler ledger (`ProofPhase.API.BSD`)
+### VIII.3.6 Hasse as an encoder, and the Euler ledger (`ProofPhase.API.BSD`)
 
 * **The Frobenius eigenvalue** `alpha = a/2 + i sqrt(q - a^2/4)` has norm `sqrt q` exactly when `a^2 <= 4q` (`frobAlpha`,
   `frobAlpha_normSq`, `norm_frobAlpha`). The point count is `norm(1 - alpha)^2` (`count_normSq`). **[Lean]**
@@ -190,7 +190,7 @@ prose here, not in Lean). From it:
   the linear coefficient of Mathlib's local factor at the completion is the classical definition of `a_p`, not linked in Lean.
   **[classical, a formalisation item]**
 
-### VII.3.7 The card and its conclusions (`ProofPhase.API.BSD`)
+### VIII.3.7 The card and its conclusions (`ProofPhase.API.BSD`)
 
 * **Without the open step** (`unconditional`): from the three `External` inputs of `Input`, E(Q) is finitely generated, its torsion
   is finite, every continuation has the same order at s = 1, and that order's parity is the sign. **[Lean, from modularity and weak
@@ -199,10 +199,10 @@ prose here, not in Lean). From it:
 * **The low-rank theorem in its slot** (`LowRank`, `open_of_lowRank`): Gross-Zagier-Kolyvagin as an `External` fills the open step
   whenever the order is at most 1. **[Lean for the plumbing; external for the content]**
 * **The ledger card** (`LedgerInput`, `ledgerCard`): from the growth `C (log p)^r` (open step) and Goldfeld's theorem (`External`),
-  BSD follows. Goldfeld's theorem is true only when the prime data are the curve's own (see the care in VII.3.6). **[Lean for the
+  BSD follows. Goldfeld's theorem is true only when the prime data are the curve's own (see the care in VIII.3.6). **[Lean for the
   plumbing; external for the content]**
 
-### VII.3.8 The slot is not empty: y^2 = x^3 - x
+### VIII.3.8 The slot is not empty: y^2 = x^3 - x
 
 The curve y^2 = x^3 - x (conductor 32, complex multiplication by i, Fermat's curve for the congruent number 1).
 
@@ -232,7 +232,7 @@ Numerically (`bsd_check.log`, about 30 seconds on a CPU) **[numerical]**:
 
 A computation can refute a statement. It never proves a for-all statement, and none is claimed.
 
-## VII.4 What is borrowed
+## VIII.4 What is borrowed
 
 Every borrowed result is cited and marked. The project did not rebuild any of it.
 
@@ -240,7 +240,7 @@ Every borrowed result is cited and marked. The project did not rebuild any of it
 |---|---|---|
 | **Modularity** (Wiles, Taylor-Wiles, Breuil-Conrad-Diamond-Taylor): continuation and functional equation of L(E, s) over Q | `Input.cont`, `Input.fe` | external |
 | **Weak Mordell-Weil** (Mordell 1922, Weil 1929): E(K)/2E(K) is finite | `WeakMordellWeil` (named part in IM; `Input.weak` in the API) | classical |
-| **Hasse's bound** (1933-36): `a_p^2 <= 4p` at good primes. Textbook proof: the degree is a positive definite quadratic form on End(E), so `deg(m - n phi) = m^2 - a m n + q n^2 >= 0` forces the discriminant bound (Silverman V.1.1). The same positivity is the Hodge index on E x E (Part VIII) | `Hasse` (named part); `EulerData.hasse` | classical |
+| **Hasse's bound** (1933-36): `a_p^2 <= 4p` at good primes. Textbook proof: the degree is a positive definite quadratic form on End(E), so `deg(m - n phi) = m^2 - a m n + q n^2 >= 0` forces the discriminant bound (Silverman VI.1.1). The same positivity is the Hodge index on E x E (Part IX) | `Hasse` (named part); `EulerData.hasse` | classical |
 | **The Euler product bound**: factors with the Hasse-type coefficient bounds give absolute convergence for `re s > 3/2`, dominated by `zeta_K(s - 1/2)^2` | `EulerProductBound`: proved over Q (`eulerProductBound_rat`); a named part beyond Q | Lean over Q; classical, recalled, beyond |
 | **Gross-Zagier, Kolyvagin** (with modularity): analytic rank 0 or 1 gives BSD | `LowRank` | external |
 | **Goldfeld 1982**: the 1965 growth form of the Euler products implies BSD and the Riemann hypothesis for L(E, s) | `LedgerInput.goldfeld` | external |
@@ -251,11 +251,11 @@ placed outside the system and carried as a hypothesis by exactly the theorems th
 The notes assess weak Mordell-Weil as within reach on Mathlib, Hasse as needing isogeny degrees or intersection theory on E x E, and
 modularity as a very large formalisation **[paper, an estimate]**.
 
-## VII.5 The one open step
+## VIII.5 The one open step
 
 **The open step of the card.** The BSD card has one open step: **`BSDStatement W`. The L-series of the elliptic curve continues to
-s = 1, and the order of its zero there equals the rank of E(Q).** It is proved for order 0 and 1 by others (VII.4), with modularity.
-**For order 2 and more it is open. [open]** Everything else in the card is proved (VII.3) or is a named external theorem (VII.4).
+s = 1, and the order of its zero there equals the rank of E(Q).** It is proved for order 0 and 1 by others (VIII.4), with modularity.
+**For order 2 and more it is open. [open]** Everything else in the card is proved (VIII.3) or is a named external theorem (VIII.4).
 
 **What a proof would have to supply** (the two halves of an equality):
 
@@ -286,7 +286,7 @@ rank statement follows from it (`bsd_of_refined`). **[open]**
 structure from the one open equality, and shows the slot is filled where the order is 0 or 1 and for the example above. The
 mechanical answer is: **open, with the open step located, and the three classical parts that Mathlib lacks named.**
 
-## VII.6 DMP readings attached to this part (all [reading])
+## VIII.6 DMP readings attached to this part (all [reading])
 
 Each reading is the owner's statement with its exact counterpart. None is mathematics.
 
@@ -297,11 +297,11 @@ Each reading is the owner's statement with its exact counterpart. None is mathem
   settling. The rank equality stays open.
 * **The zeros follow existence.** The order of the zero at s = 1 counts the independent rational points. Its exact counterpart has
   three levels: the existence line (`existence_line`), the rank equation, and the 1965 ledger form. The proved arrow runs by
-  construction (Heegner) and exclusion (Kolyvagin), not by counting (VII.5).
+  construction (Heegner) and exclusion (Kolyvagin), not by counting (VIII.5).
 * **Hasse is rotation at a DB.** In the owner's words, what stays open in the rederived core is "rotation at DB shaped". At the prime p
   (the DB) Frobenius acts as a rotation: its eigenvalue lies on the circle of radius `sqrt p`, and `cos theta_p = a_p/(2 sqrt p)` is the
   encoder's reflection coefficient (`frob`, `frob_refl`) **[Lean; Hasse classical]**. Its proof is one positivity: the degree form,
-  or equivalently the Hodge index on E x E. The linear algebra of that is Part VIII's `weil_bound` at genus 1, where the conclusion is
+  or equivalently the Hodge index on E x E. The linear algebra of that is Part IX's `weil_bound` at genus 1, where the conclusion is
   `abs(N - (q + 1)) <= 2 sqrt q`, which is Hasse's bound **[Lean for the linear algebra, from the intersection numbers and the Hodge
   index property, both external; the specialisation to one curve and the link of N to Mathlib's count are not made in Lean]**. So the
   open piece in Lean is one rotation per DB, confined by one positivity. It is open as a formalisation, not as mathematics.
@@ -316,7 +316,7 @@ Each reading is the owner's statement with its exact counterpart. None is mathem
 * **Where BSD sits in the triad.** Yang-Mills is existence, GRH is non-existence, NP vs coNP is their interaction (Part I). BSD is an
   equation between an existence count (independent points) and a zero count (the vanishing rate of the Euler ledger).
 
-## VII.7 What would close it
+## VIII.7 What would close it
 
 If an independent proof supplied the construction and the bound for orders 2 and more, the card's open step would be discharged by
 that work, and this part would supply the ledger skeleton and the audit. The change to this paper would be one row of the ledger,

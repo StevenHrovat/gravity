@@ -1,10 +1,10 @@
-# Part VIII. Hodge: the card, the positivity, and the one open step
+# Part IX. Hodge: the card, the positivity, and the one open step
 
 *Draft 2, 2026-11-24. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (VIII.n) are listed in `../claims-incoming/VIII-hodge.md` until the coordinator merges them into
 `../CLAIMS.md`.*
 
-## VIII.0 What is proved, by whom, and what this part does
+## IX.0 What is proved, by whom, and what this part does
 
 **The Clay problem** (Deligne's description) **[classical]**. Let X be a projective non-singular algebraic variety over the complex
 numbers. A **Hodge class** is a class in the rational cohomology `H^{2p}(X, Q)` whose image in `H^{2p}(X, C)` lies in the `(p, p)` part
@@ -14,20 +14,20 @@ converse: every Hodge class is a rational linear combination of classes of algeb
 **State of the problem (2026-11-24).** The conjecture is a theorem for p = 1 (Lefschetz 1924), and by hard Lefschetz for curves (degree
 2n - 2). So it holds for every variety of dimension at most 3 **[classical]**. It is **open** for codimension p >= 2 in general; the first
 open case is the fourth cohomology of fourfolds **[open]**. Beyond that, only special families are known, mostly abelian varieties
-(VIII.1). The notes record no claimed proof of the general case.
+(IX.1). The notes record no claimed proof of the general case.
 
 **This part proves no case of the Hodge conjecture that was not already known.** The Lean proves the linear algebra of the positivity
 and the diagram chases of Lefschetz (1,1). The geometry (Hodge theory, the exponential sequence, hard Lefschetz, intersection theory on a
 surface) enters as named `External` slots. The conjecture itself is the card's one `OpenStep`.
 
-**What this part does.** It puts Hodge on the DMP API as a card (VIII.2), proves what Mathlib can reach (VIII.3), records what is
-borrowed (VIII.4), states the one open step (VIII.5), and attaches the owner's readings, short (VIII.6). Hodge is also the place
-where the **same positivity** that the Riemann hypothesis over finite fields needs appears as a theorem over the complex numbers. VIII.3.4
-and VIII.3.5 show the shape for curves in Lean.
+**What this part does.** It puts Hodge on the DMP API as a card (IX.2), proves what Mathlib can reach (IX.3), records what is
+borrowed (IX.4), states the one open step (IX.5), and attaches the owner's readings, short (IX.6). Hodge is also the place
+where the **same positivity** that the Riemann hypothesis over finite fields needs appears as a theorem over the complex numbers. IX.3.4
+and IX.3.5 show the shape for curves in Lean.
 
-## VIII.1 The problem as stated, and what is known
+## IX.1 The problem as stated, and what is known
 
-**VIII.1.1 What is proved** (recalled from the literature; not re-read for this draft).
+**IX.1.1 What is proved** (recalled from the literature; not re-read for this draft).
 
 | Case | Result | Mark |
 |---|---|---|
@@ -38,7 +38,7 @@ and VIII.3.5 show the shape for curves in Lean.
 | abelian fourfolds of Weil type | Weil classes are algebraic: discriminant 1 by Markman (2022; simpler proofs by Floccari-Fu and by van Geemen-Rapagnetta); every abelian fourfold of Weil type by Markman, arXiv 2509.23403 (2025). The abstract reports that the conjecture for abelian varieties of dimension at most 5 then follows (with Moonen-Zarhin) | external, abstracts only, not checked |
 | other families | cubic fourfolds (Zucker), uniruled fourfolds (Conte-Murre), some Fermat hypersurfaces (Shioda) | external, recalled |
 
-**VIII.1.2 What fails** **[external, recalled]**. Two natural strengthenings are false, so "described" must be read exactly.
+**IX.1.2 What fails** **[external, recalled]**. Two natural strengthenings are false, so "described" must be read exactly.
 
 * **Integral coefficients.** "Every integral class whose rational image is Hodge is algebraic" is false. Atiyah and Hirzebruch (1962)
   found torsion classes in `H^4(X, Z)` that are not algebraic (Totaro 1997 gave the cobordism reading). Kollar (1992) found
@@ -47,7 +47,7 @@ and VIII.3.5 show the shape for curves in Lean.
   Voisin (2002) showed that even with Chern classes of coherent sheaves the statement fails on some complex tori. Projectivity is part
   of the hypothesis.
 
-**VIII.1.3 The standard conjectures and the positivity** **[classical; open where marked]**. Grothendieck's standard conjectures (1969) are
+**IX.1.3 The standard conjectures and the positivity** **[classical; open where marked]**. Grothendieck's standard conjectures (1969) are
 four statements for a Weil cohomology of a smooth projective variety.
 
 * **B (Lefschetz type):** the inverse of hard Lefschetz is given by an algebraic correspondence. Known for abelian varieties
@@ -67,14 +67,14 @@ Castelnuovo-Severi inequality, which is the Hodge index theorem on the surface `
 the same positivity. **Deligne proved the Riemann hypothesis over finite fields in 1974 by another route** (Lefschetz pencils,
 monodromy, Rankin's squaring trick), without the standard conjectures, which remain open **[classical]**.
 
-**VIII.1.4 What is open** **[open]**.
+**IX.1.4 What is open** **[open]**.
 
 * The Hodge conjecture for p >= 2 in general, including general abelian varieties beyond the cases above.
 * The standard conjecture B in general, D, and the Hodge type in positive characteristic.
 * Any positivity route to the Riemann hypothesis over finite fields beyond surfaces (Deligne's theorem is proved; the route is not), and its
   analogue over Z.
 
-## VIII.2 The card
+## IX.2 The card
 
 The DMP API (`docs/unified/API.md`) gives every problem a well-defined input, a proved structure on it, and one named open step.
 Hodge has the cards of `Unified/HodgeAPI.lean` (namespace `ProofPhase.API.Hodge`) on top of the Mathlib-only module
@@ -98,18 +98,18 @@ The cards, in the card shape:
 | **Weil, positivity** (`weilCard`) | Frobenius on weight-w cohomology over `F_q` | `StandardHodge`: a positive form on which Frobenius is a similitude of ratio `q^w` **[open]** | every eigenvalue has `abs(mu)^2 = q^w` | none |
 | **Curves over `F_q`** (`curveCard`) | the intersection form on `C x C` with fibre classes, graph of Frobenius and diagonal | the Hodge index property at `f1 + f2` | `abs(N - (q + 1)) <= 2 g sqrt q` | intersection numbers; the Hodge index theorem (`curve_open`) |
 
-The last two cards belong to the GRH column (Part IV); they sit here because they use the same positivity. Hodge's own open step is the first row.
+The last two cards belong to the GRH column (Part V); they sit here because they use the same positivity. Hodge's own open step is the first row.
 Nothing is an axiom. An `OpenStep` or `External` slot is an ordinary hypothesis and does not appear in the axiom audit. `Unified/HodgeAPI.lean`
 is not yet part of the aggregate import `Unified/All.lean`; that is left to the coordinator.
 
-## VIII.3 What is proved
+## IX.3 What is proved
 
 All of this is **[Lean]**. The audit log (`hodge-axioms.log`, written after both modules were last edited): both modules build with no warnings; all 47
 declarations rest on the three standard axioms (two, `sq_add_smul` and `transfer`, on two of them); the source has no `sorry`, `admit`,
 `native_decide` or `axiom`. The log was read, not regenerated. None of it proves a statement about a variety. Each result says what the
 ledger gives from a hypothesis.
 
-### VIII.3.1 A polarised Hodge structure, and positivity on its Hodge classes (`HodgeLinear`)
+### IX.3.1 A polarised Hodge structure, and positivity on its Hodge classes (`HodgeLinear`)
 
 Cauchy-Schwarz holds for a symmetric form that is nonnegative on a subspace, over any ordered field (`sq_add_smul`, `cs_of_nonneg`).
 
@@ -125,7 +125,7 @@ fixed by the whole circle (`PolHS.hodge`, `mem_hodge`): charge 0. Proved:
 That the cohomology of a smooth projective variety, with `Q` built from the cup product, an ample class and the Lefschetz signs, **is** such a
 structure is the Hodge-Riemann theorem of Hodge theory **[classical]**, not in Mathlib and not proved here.
 
-### VIII.3.2 The card, and the positivity on algebraic classes (`HodgeAPI`)
+### IX.3.2 The card, and the positivity on algebraic classes (`HodgeAPI`)
 
 * **The card** (`Input`, `HodgeConjecture`, `problem`): from `alg <= hodge` (an `External`) and the open step `hodge <= alg`, the conclusion
   `hodge = alg` follows by antisymmetry. The card adds no mathematics. It shows the shape: the content is all in the slot.
@@ -137,7 +137,7 @@ structure is the Hodge-Riemann theorem of Hodge theory **[classical]**, not in M
   classes contain the rational Hodge classes, gives exactly the `hr` slot. **[Lean]** The one thing outside is the theorem of Hodge theory
   that the cohomology of X is such a structure.
 
-### VIII.3.3 The Hodge index theorem as linear algebra (`HodgeLinear`)
+### IX.3.3 The Hodge index theorem as linear algebra (`HodgeLinear`)
 
 `HodgeIndex B H` says every class orthogonal to `H` has nonpositive square. For the intersection form on the Neron-Severi group of a surface and `H`
 ample this is the Hodge index theorem **[classical]**. Proved:
@@ -147,7 +147,7 @@ ample this is the Hodge index theorem **[classical]**. Proved:
 * **The reversed Cauchy-Schwarz inequality** (`reverse_cs`): under the index property, `B(D,D) B(H,H) <= B(D,H)^2`. This is the Lorentzian twin
   of the encoder bound. **[Lean]**
 
-### VIII.3.4 Weil's bound for curves from the Hodge index property (`HodgeLinear`, `HodgeAPI`)
+### IX.3.4 Weil's bound for curves from the Hodge index property (`HodgeLinear`, `HodgeAPI`)
 
 On `C x C` let `f1`, `f2` be the fibre classes, `Gamma` the graph of Frobenius and `Delta` the diagonal. The classical intersection numbers are an
 `External` slot (`CurveInput.geometry`). Then, all **[Lean]**:
@@ -163,7 +163,7 @@ On `C x C` let `f1`, `f2` be the fibre classes, `Gamma` the graph of Frobenius a
 Positivity runs the system and certifies the line, for curves. The full Riemann hypothesis for a curve also needs the bound for every extension
 `F_{q^n}` and the rationality of the zeta function **[classical, not in the Lean]**.
 
-### VIII.3.5 A positive form puts the eigenvalues on a circle (`HodgeLinear`, `HodgeAPI`)
+### IX.3.5 A positive form puts the eigenvalues on a circle (`HodgeLinear`, `HodgeAPI`)
 
 * If Frobenius `F` scales a positive-definite norm by `c`, every eigenvalue `mu` has `abs(mu)^2 = c` (`eigen_on_circle`). The same holds with a
   positive-definite Hermitian form for which `F` is a similitude (`eigen_on_circle_form`). **[Lean]**
@@ -172,7 +172,7 @@ Positivity runs the system and certifies the line, for curves. The full Riemann 
   `abs(mu)^2 = q^w`. **[Lean from the open step]** Deligne (1974) proves the conclusion for l-adic cohomology by another route
   **[classical]**, so the card's conclusion is a theorem. Its open step is not known to hold in general.
 
-### VIII.3.6 Lefschetz (1,1) and hard Lefschetz, as diagram chases (`HodgeLinear`, `HodgeAPI`)
+### IX.3.6 Lefschetz (1,1) and hard Lefschetz, as diagram chases (`HodgeLinear`, `HodgeAPI`)
 
 * **The chase** (`lefschetz11`): if `Pic -> H^2(X, Z) -> H^{0,2}` is exact at `H^2` (the exponential sequence) and an integral class has zero `(0,2)` part, it is
   the first Chern class of a line bundle.
@@ -189,20 +189,20 @@ Positivity runs the system and certifies the line, for curves. The full Riemann 
 
 So the card's slot is **not empty**: it is filled for p = 1 and for p = n - 1, which is exactly the classical range.
 
-### VIII.3.7 Describable must mean rational: the integral version fails (`HodgeLinear`, `HodgeAPI`)
+### IX.3.7 Describable must mean rational: the integral version fails (`HodgeLinear`, `HodgeAPI`)
 
 A torsion class maps to 0 in rational cohomology, and 0 is a Hodge class. So the integral statement makes every torsion class algebraic
 (`integral_needs_torsion`). With a non-algebraic torsion class as an `External` (Atiyah-Hirzebruch 1962), the integral statement is false
 (`IntegralInput`, `IntegralHodge`, `integral_fails`). **[Lean from the Atiyah-Hirzebruch class]** The non-projective failure (Zucker, Voisin) is text
 only: Mathlib has no complex manifolds beyond holomorphic functions.
 
-### VIII.3.8 What Mathlib has and lacks
+### IX.3.8 What Mathlib has and lacks
 
 Mathlib (v4.34.0, as the notes read it) has no Kaehler metric, no de Rham theorem, no Hodge decomposition, no Chow ring, no cycle class map and no Lefschetz
 theorems. It has algebraic cycles on a scheme (new in 2026), sheaf cohomology, the signature of a quadratic form, eigenvalues and the circle. So the
 core is finite-dimensional linear algebra, with the geometry as slots. **[paper, from the notes' search of the library]**
 
-## VIII.4 What is borrowed
+## IX.4 What is borrowed
 
 Every borrowed result is cited and marked. The project did not rebuild any of it.
 
@@ -219,12 +219,12 @@ Every borrowed result is cited and marked. The project did not rebuild any of it
 | Abelian-variety cases (Mattuck, Tankeev, Markman and others), cubic fourfolds, uniruled fourfolds, Fermat hypersurfaces | text only | classical / external, recalled; the 2025 abstracts read only |
 | Failures: Kollar 1992; Zucker 1977; Voisin 2002 | text only | external, recalled |
 
-## VIII.5 The one open step
+## IX.5 The one open step
 
 **The open step of the card.** The Hodge card has one open step: **`HodgeConjecture`. On a smooth complex projective variety, every rational `(p, p)`
-class is a rational linear combination of classes of algebraic cycles of codimension p.** It is proved for p = 1 and p = n - 1 (VIII.3.6) by classical
-theorems, and so for dimension at most 3. **For p >= 2 in general it is open.** Everything else in the card is proved (VIII.3) or is a named external
-theorem (VIII.4). **[open]**
+class is a rational linear combination of classes of algebraic cycles of codimension p.** It is proved for p = 1 and p = n - 1 (IX.3.6) by classical
+theorems, and so for dimension at most 3. **For p >= 2 in general it is open.** Everything else in the card is proved (IX.3) or is a named external
+theorem (IX.4). **[open]**
 
 **The care points, stated exactly.**
 
@@ -237,12 +237,12 @@ theorem (VIII.4). **[open]**
 form that puts the Frobenius eigenvalues on the circle. It is open in general, except for surfaces (the Hodge index theorem) and special cases
 **[open]**. The Riemann hypothesis over finite fields is nevertheless a theorem (Deligne), by a route that does not use that positivity **[classical]**.
 So this slot's conclusion is known; only its route is open. Over the integers the analogue would be a Hodge index theorem on "`Spec Z x Spec Z`",
-which does not exist as an object **[open]**. That missing positivity is the GRH card's sign slot (Part IV).
+which does not exist as an object **[open]**. That missing positivity is the GRH card's sign slot (Part V).
 
 **What this does to the problem.** The API does not settle Hodge. It states the conjecture as one inclusion in one slot, shows the classical range
 filled, and shows the positivity that is a theorem over the complex numbers. The mechanical answer is: **open for p >= 2, with the open step located.**
 
-## VIII.6 DMP readings attached to this part (all [reading])
+## IX.6 DMP readings attached to this part (all [reading])
 
 * **Describable implies exists.** The Hodge conjecture is the cleanest instance of the owner's sentence among the seven problems. The described
   objects are the rational `(p, p)` classes (cohomology describes them). The existing objects are the algebraic cycles (geometry builds them). The
@@ -273,7 +273,7 @@ filled, and shows the positivity that is a theorem over the complex numbers. The
   similitude of it, and the line as the consequence.** In GRH and in Hodge over `F_q` the positive form is the open step; over C, and for curves over
   `F_q`, it is a theorem.
 
-## VIII.7 What would close it
+## IX.7 What would close it
 
 If an independent proof of the Hodge conjecture for p >= 2 were found, the card's open step would be discharged by that work. This part would supply
 the shape and the audit. The change to this paper would be one row of the ledger, one verdict line of this part and one item of the abstract.

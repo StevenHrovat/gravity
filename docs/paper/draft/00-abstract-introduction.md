@@ -1,7 +1,7 @@
 # Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
 *Title by the owner (2026-11-24; aspirational by intent; "seen through" means "run on DMP"). Draft 3. Not a claim of a
-solution of any Millennium Prize problem: the results that need the one assumption (Part X) are conditional on it. Claim labels
+solution of any Millennium Prize problem: the results that need the one assumption (Part III) are conditional on it. Claim labels
 (0.n) are listed in `../CLAIMS.md`. Earlier titles: "GUID v8: A set theory based approach to the proofing of Yang-Mills, the
 Generalized Riemann Hypothesis and NP vs coNP, as subsets of DMP, in a DMP-complete state" (2026-11-23) and the working title
 "Positivity, contraction and the existence boundary: one chain behind Yang-Mills, GRH and P vs NP".*
@@ -46,7 +46,7 @@ steps is DMP, a specification for systems of trust used here as a vocabulary for
 carry no proof.
 
 **The one assumption.** Every card has the same open step, O1: that the process from the ground (G0) to a running system is
-established, the existence assumption of the Millennium Prize type. The paper states it once (Part X) and marks every result that
+established, the existence assumption of the Millennium Prize type. The paper states it once (Part III) and marks every result that
 uses it as conditional on it. Under it, each card settles in the certified sense: with a cost floor, whether a run has settled is
 decidable within an explicit bound, and every start is oriented through the certified first box at the places {infinity, 2, 3}.
 Without the floor, no procedure decides it. Both halves of this dichotomy are proved in Lean.
@@ -108,8 +108,8 @@ quantum field theories from reflection positivity. Weil reduced the Riemann hypo
 Riemann found the same positivity on the cohomology of a variety, and Weil used it to prove the Riemann hypothesis for curves over
 finite fields. Dobrushin showed that a contraction of local influences forces a unique equilibrium, reached fast.
 
-The paper states the form once (Parts I and II), puts each problem on it as a card (Parts III to IX), and then says what the cards
-share (Part X): one container with free possibility space, one geometry with two edges, one open step, and one assumption. The
+The paper states the form once (Parts I and II), puts each problem on it as a card (Parts IV to X), and then says what the cards
+share (Part III): one container with free possibility space, one geometry with two edges, one open step, and one assumption. The
 Outlook (Part XI) applies the settle theorem to a concept of the first author's.
 
 ### What a reader can take from it
@@ -134,12 +134,12 @@ tuning came to the first author from a short published by Vsauce; it is credited
   and a fifth is a rotation on it **[classical]**.
 * **The rotation does not close by itself.** Because log2(3) is irrational, twelve pure fifths overshoot seven octaves by the
   Pythagorean comma, 3^12 / 2^19 = 1.01364 **[classical]**. This is the finite loss at the start that the paper excises: the first
-  box at {infinity, 2, 3} (Part IV) is where the two generators of the tuning meet.
+  box at {infinity, 2, 3} (Part V) is where the two generators of the tuning meet.
 * **Temperament is the balanced state.** Equal temperament spreads the comma evenly over all twelve steps (each fifth becomes
   2^(7/12)), so the rotation closes and every key is equivalent; twelve is not arbitrary, since 19/12 is a convergent of log2(3)
-  **[classical]**. In the paper's words, the rotation gives the tuning a direction and makes every tick alike (Part X, the tick
+  **[classical]**. In the paper's words, the rotation gives the tuning a direction and makes every tick alike (Part III, the tick
   operator) **[reading]**.
-* **The zeros are the strings.** The explicit formula (Part IV) writes the primes as a sum of tones: each nontrivial zero
+* **The zeros are the strings.** The explicit formula (Part V) writes the primes as a sum of tones: each nontrivial zero
   1/2 + i gamma sounds at frequency gamma in log x. On the critical line every tone has the same amplitude, x^(1/2); the Riemann
   hypothesis says that every string is tuned to the same loudness **[classical]**.
 
@@ -177,5 +177,5 @@ Lee-Yang, Pringsheim and Landau, Mordell-Weil, Hasse, Gross-Zagier-Kolyvagin, Co
 
 ### Plan
 
-Part I: DMP, the vocabulary. Part II: the tools. Parts III to IX: the cards (Yang-Mills, GRH, NP vs coNP, Navier-Stokes with
-Poincare, BSD, Hodge, GU). Part X: the generalisation. Part XI: Outlook.
+Part I: DMP, the vocabulary. Part II: the tools. Parts IV to X: the cards (Yang-Mills, GRH, NP vs coNP, Navier-Stokes with
+Poincare, BSD, Hodge, GU). Part III: the generalisation. Part XI: Outlook.
