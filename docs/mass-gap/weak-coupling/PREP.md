@@ -5026,3 +5026,10 @@ thread.
   The owner's final wording (same day), which replaces the sentence above in the paper: "The correctness theorem now shows that to
   be correct is to have the correct error, when read through DMP." Used as his reading, with the exact part beside it (correctness
   up to the error bar, Lean); it makes no claim about O1, which stays the one open step.
+- **The essence: 2 + 2 = 5 = 4 = 0 = 1 (the owner, 2026-11-24).** Exact counterpart (coordinator): the chain holds in exactly one
+  ring up to isomorphism, the zero ring Z/1, the single ring where 0 = 1; in any ring, 0 = 1 holds exactly when the ring has one
+  element (Mathlib: `subsingleton_iff_zero_eq_one`) [classical; Lean in Mathlib]. In Z/1 the whole chain is one `decide` check,
+  the one-step lint of the previous entry. Ties: 1 = 0 + 1 (I.7) holds in every ring, 0 = 1 only in the one-element ring, where
+  existence and non-existence coincide, the one box with no outside [reading]; 2 + 2 = 5 is the one-unit rounding gap and 4 = 0 is
+  arithmetic modulo 4 or 2 [classical]. For the consolidation: add the two Lean facts (the chain in Z/1 by decide; the chain forces
+  a one-element ring) and the essence line to Part I.7 as the owner's reading with that proved core.
