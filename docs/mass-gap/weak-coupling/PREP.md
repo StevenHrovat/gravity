@@ -4964,3 +4964,11 @@ thread.
   BSD (primes of the Euler ledger), Hodge (codimensions; passes for divisors), GU (labels on the phase field; passes, proved).
   Care point: each box restates its card's open step and proves no new bound; the tick names are the coordinator's proposal for
   the owner to refine.
+- **The tick names (the owner, 2026-11-24).** "scales: fits; restrictions: bounds; primes: primitives; codimensions: since they are
+  reflection positive covariant dimensions, we can say they exist, so let's call them +dimensions; labels: uniquenesses, or points,
+  or DoEs." Applied in the five box sections, each with its plain term beside it. Counterparts (coordinator): a fit carries the
+  margin from one scale to the next; a bound caps the share of costly lines a restriction keeps; the primes are the primitive
+  (irreducible) elements of the multiplicative integers [classical]; at each codimension the Hodge-Riemann form is positive, up to
+  its fixed sign, on primitive classes (External slot) [reading for "+dimension"]; the labels are the points of the circle's dual
+  group, the integers (Pontryagin duality) [classical], so "points" is exact and is the one used, with the owner's alternatives
+  ("uniquenesses", "DoEs") named beside it.

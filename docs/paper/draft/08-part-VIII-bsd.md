@@ -336,6 +336,7 @@ The formalisation items that would change the status of the **borrowed** parts, 
 
 ## VIII.8 The box in the one-box test
 
-**Gate factor and marker.** The ticks read the curve's Euler ledger prime by prime (VIII.3.6); the gate reads inside when the
+**Gate factor and marker.** The ticks are the **primitives** (the owner's name): the primes, the primitive elements of the
+multiplicative integers **[classical]**, at which the curve's Euler ledger is read (VIII.3.6); the gate reads inside when the
 ledger is consistent with the rank, and the marker is the claim "inside". The box of a curve passes exactly when BSD holds for it
 **[Lean]** (`bsd_box_iff`, `ETM/CardBox.lean`; claim VIII.8a). The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**. Its open ticks start where the order of the zero reaches 2 (VIII.5.1).

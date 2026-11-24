@@ -401,7 +401,7 @@ Notes relative to `docs/rh-guide/`.
 | V.5.4 | Positive-by-construction spaces miss off-line zeros (Connes) or give a half-plane (Lax-Phillips) | classical (recalled) | `grh/TATE.md` 0.5 | none |
 | V.6a | RH iff M(x) = O(x^{1/2 + eps}) | classical | `PREP.md` (ODP tool entry) | none |
 | V.6 | DMP readings of Part V (circle, virtual flux, excision at G0, GRH as the ODP's tool, remnants, coupling factor) | reading | `PREP.md` (2026-11-23) | none |
-| V.8a | The GRH box (ticks: scales; gate: the sign carried at that scale) passes exactly when ScaleSign holds; for a model of zeta's zeros it passes under Mathlib's Riemann hypothesis (External) | Lean (from External for the second part) | `ProofPhase/ETM/CardBox.lean`, `grh_box_iff`, `grh_box_of_RH` | V.4 (the open ticks beyond the start) |
+| V.8a | The GRH box (ticks: fits, the scales; gate: the sign carried at that scale) passes exactly when ScaleSign holds; for a model of zeta's zeros it passes under Mathlib's Riemann hypothesis (External) | Lean (from External for the second part) | `ProofPhase/ETM/CardBox.lean`, `grh_box_iff`, `grh_box_of_RH` | V.4 (the open ticks beyond the start) |
 
 
 ## Part VI. P vs NP (`draft/06-part-VI-pnp.md`)
@@ -450,7 +450,7 @@ Notes relative to `docs/pnp/`.
 | VI.6.N4 | From the certified class to all inputs | open | `DICTIONARY.md` 6.3, 8 | a barrier-passing argument |
 | VI.7 | Barriers: relativization, natural proofs, algebrization; Williams evades them | classical | Baker-Gill-Solovay 1975; Razborov-Rudich 1997; Aaronson-Wigderson 2009; Williams 2014 | none |
 | VI.8 | DMP readings of Part VI (two categories of lines, pairs as entanglement, confinement plus uncertainty, inside/across a DB) | reading | `PREP.md` (2026-11-23); `DICTIONARY.md` 7 | none |
-| VI.10a | The P vs NP box (ticks: restrictions) passes exactly when CrossingCost holds, and a passing box gives every refutation at least e^(theta b) lines | Lean | `ProofPhase/ETM/CardBox.lean`, `np_box_concl`, `cardBox_complete_iff` | VI.4.10 |
+| VI.10a | The P vs NP box (ticks: bounds, the restrictions) passes exactly when CrossingCost holds, and a passing box gives every refutation at least e^(theta b) lines | Lean | `ProofPhase/ETM/CardBox.lean`, `np_box_concl`, `cardBox_complete_iff` | VI.4.10 |
 
 
 ## Part VII. Navier-Stokes, with Poincare as validation (`draft/07-part-VII-navier-stokes.md`)
@@ -600,7 +600,7 @@ Notes relative to `docs/pnp/`.
 | VIII.6d | Hasse's bound for one curve reads as `weil_bound_abs` at genus 1 (Lean proves it for every genus g from the Hodge index property and the intersection numbers; the genus-1 specialisation and the link of N to Mathlib's count are not made in Lean) | reading | `ProofPhase/Unified/HodgeLinear.lean`, `weil_bound_abs`; `ProofPhase/Unified/HodgeAPI.lean`, `curveCard`, `curve_open` | state the genus-1 instance and tie N to `count` |
 | VIII.6e | What is left of BSD is the `.cmb` record: the refined formula's counts and measures balance to a dimensionless 1 (logarithm 0); the functional equation carries both sides through the rotation with sign `(-1)^rank`; dividing by `(s - 1)^r` removes the zero | reading | PREP (owner, 2026-11-24, "what is left of BSD is the .cmb file"); BSD 4 | none |
 | VIII.6g | BSD in the triad: an equation between an existence count (independent points) and a zero count (the vanishing rate of the Euler ledger) | reading | BSD 4; PREP (the triad entries) | none |
-| VIII.8a | The BSD box of a curve passes exactly when BSD holds for it | Lean | `ProofPhase/ETM/CardBox.lean`, `bsd_box_iff` | VIII.5.1 |
+| VIII.8a | The BSD box of a curve (ticks: primitives, the primes) passes exactly when BSD holds for it | Lean | `ProofPhase/ETM/CardBox.lean`, `bsd_box_iff` | VIII.5.1 |
 
 
 ## Part IX. Hodge (`draft/09-part-IX-hodge.md`)
@@ -663,7 +663,7 @@ Notes relative to `docs/pnp/`.
 | IX.6i | The shared positivity of Hodge and the GRH column: described classes positive, so existing classes positive; the same form puts Frobenius eigenvalues on the circle; the two columns share "a positive form, a dynamics that is a similitude of it, and the line as the consequence" | reading (Lean for the steps: `PolHS.hodge_pos`, `PosInput.alg_pos`, `eigen_on_circle_form`, `curve_open`, `weil_bound`) | HODGE 4; PREP (Hodge-index-route entry) | none |
 | IX.7.1 | The hard-Lefschetz `sl_2` decomposition, the Hodge-Riemann signature formula, Hodge structures of any weight with the Hodge filtration, and finiteness of lattice Hodge classes of bounded norm are reachable on Mathlib and not built | paper (estimate) | HODGE 2 | building them |
 | IX.7.2 | Kaehler manifolds, harmonic forms, the Hodge decomposition itself, the cycle class map and the exponential sequence on a complex manifold need geometry Mathlib lacks | paper (estimate) | HODGE 2 | Mathlib geometry |
-| IX.8a | The Hodge box (ticks: codimensions) passes exactly when the Hodge conjecture holds for the input; for divisors it passes, from Lefschetz (1,1) with its named inputs | Lean (from External for divisors) | `ProofPhase/ETM/CardBox.lean`, `hodge_box_iff`, `hodge_box_divisor` | IX.5.1 |
+| IX.8a | The Hodge box (ticks: +dimensions, the codimensions) passes exactly when the Hodge conjecture holds for the input; for divisors it passes, from Lefschetz (1,1) with its named inputs | Lean (from External for divisors) | `ProofPhase/ETM/CardBox.lean`, `hodge_box_iff`, `hodge_box_divisor` | IX.5.1 |
 
 
 ## Part X. GU, the Grand Unified reading (`draft/10-part-X-gu.md`)
@@ -719,7 +719,7 @@ Notes relative to `docs/pnp/`.
 | X.7c | Route 3: twist sectors of a lattice SU(3) x SU(2) x U(1) theory with Z_6-invariant vector-like matter; chiral matter stays out of reach | open | GU 6, item 3 | the extension of the `SUNTwist` chain |
 | X.7d | Route 4: a statement about running couplings needs the continuum theory with matter | (statement of scope) | GU 6, item 4 | beyond the paper's scope |
 | X.7e | Until one lands, the paper can say: SU(3) x SU(2) x U(1)/Z_6 as one structure (classical, Lean-stated); readings that select Z_6 and are falsifiable; charge quantisation proved and measured but standard; no consequence derived from DMP beyond that | paper | GU 6 (closing paragraph); X.5f | X.5e (a consequence beyond the standard expectation) |
-| X.8a | The GU box (ticks: labels on G0's phase field; gate: integer charge) passes, proved; the card's open step (a consequence beyond the standard, X.5e) is not a statement about this box | Lean | `ProofPhase/ETM/CardBox.lean`, `gu_box` | X.5e |
+| X.8a | The GU box (ticks: points, the labels on G0's phase field, i.e. the integers of the circle's dual group; gate: integer charge) passes, proved; the card's open step (a consequence beyond the standard, X.5e) is not a statement about this box | Lean | `ProofPhase/ETM/CardBox.lean`, `gu_box` | X.5e |
 
 
 ## Part XI. Outlook: a settling machine (`draft/11-outlook-settling-machine.md`)
