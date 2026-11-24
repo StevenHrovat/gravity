@@ -314,7 +314,7 @@ a type checker written independently in Rust, checks an export of every declarat
 for the modules a run covered (below). A full run once established a trusted base, Mathlib and Lean core at the pinned commit,
 recorded by hash in a stamp. Later runs re-check only the modules whose source or imports changed, against that stamp.
 
-**What the runs covered.** Six runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
+**What the runs covered.** Seven runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
 commit `2cb301c`, covered 358 modules, including the imported IM arsenal, which is checked like the project's own code and is never
 part of the trusted base: `leanchecker` replayed every changed module with no failure, the axiom audit found no declaration resting
 on anything beyond `propext`, `Quot.sound` and `Classical.choice`, and `nanoda_lib` checked 103,282 declarations with no type-checker
@@ -329,8 +329,9 @@ a last quick run at `d0257ab` replayed the 18 changed modules with no failure, f
 checked 75,100 declarations with no type-checker error; the evidence gate, with the pin check, passed at the same commit (285
 theorems). When the parts were reordered, the label strings of three modules changed (`ETM/Rotation.lean`,
 `ETM/RotationInstances.lean`, `ETM/G2Rigidity.lean`); a quick run on that tree replayed the 3 changed modules with no failure,
-found no non-standard axiom, and `nanoda_lib` checked 72,355 declarations with no type-checker error. Later commits change no
-Lean. At the same commit IM's own full check of the arsenal (at the pin
+found no non-standard axiom, and `nanoda_lib` checked 72,355 declarations with no type-checker error. The last, after
+`General/SUNHandOver.lean` was added (claim III.3.1b), replayed it with no failure, found no non-standard axiom, and `nanoda_lib`
+checked 39,911 declarations with no type-checker error. Later commits change no Lean. At the same commit IM's own full check of the arsenal (at the pin
 `b01adbd`: lint, build against Mathlib, the kernel's axiom report) passed with 223 declarations, none resting on more than the three
 standard axioms, and the axiom logs of the rotation round (125 declarations, `docs/unified/rotation-axioms.log`) and of the Hodge
 modules (47, `docs/unified/hodge-axioms.log`) were regenerated and show the same. The scan for escape hatches reads code only, as the

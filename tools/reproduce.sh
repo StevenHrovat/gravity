@@ -45,7 +45,11 @@ stage_evidence() {
   grep -q "^OK 285 theorems" "$OUT/evidence.txt" || bad "evidence gate did not print OK 285"
 }
 
-axiom_lines() { grep -E "depends on axioms|does not depend on any axioms" "$1" | sort -u; }
+# The axiom lines of a log, in either format the scripts print: Lean's "'X' depends on axioms: [..]" (or "does not depend on any
+# axioms") and the own traversal's "X: [..]".
+axiom_lines() { grep -E "depends on axioms|does not depend on any axioms|^[A-Za-z_][A-Za-z0-9_.']*: \[[^]]*\]$" "$1" | sort -u; }
+# Any axiom outside Lean's three standard ones, on those lines.
+nonstd() { axiom_lines "$1" | grep -oE "\[[^]]*\]" | tr -d '[]' | tr ',' '\n' | tr -d ' ' | grep -vxE "propext|Classical\.choice|Quot\.sound|" ; }
 
 stage_lean() {
   say "lean: build docs/mass-gap/formal and rerun every axiom script"
@@ -57,7 +61,8 @@ stage_lean() {
     bash "$s" > "$OUT/$name.log" 2>&1
     new=$(axiom_lines "$OUT/$name.log" | wc -l); old=$(axiom_lines "docs/unified/$name.log" | wc -l)
     if grep -q "sorryAx" "$OUT/$name.log"; then bad "$name: sorryAx"
-    elif grep -E "depends on axioms" "$OUT/$name.log" | grep -vqE "\[(propext|Classical\.choice|Quot\.sound)(, (propext|Classical\.choice|Quot\.sound))*\]"; then bad "$name: a non-standard axiom"
+    elif [ "$new" = 0 ]; then bad "$name: no axiom lines in the output (did the build fail? see $OUT/$name.log)"
+    elif [ -n "$(nonstd "$OUT/$name.log")" ]; then bad "$name: a non-standard axiom: $(nonstd "$OUT/$name.log" | sort -u | tr '\n' ' ')"
     elif ! diff <(axiom_lines "$OUT/$name.log") <(axiom_lines "docs/unified/$name.log") >/dev/null; then bad "$name: $new axiom lines, the committed log has $old (diff $OUT/$name.log docs/unified/$name.log)"
     else echo "ok   $name ($new declarations, standard axioms only, same as the committed log)"; fi
   done
