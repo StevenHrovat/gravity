@@ -244,12 +244,15 @@ it (IX.5e stays open).
   only self-conjugate representations and their centres lie on the real points {+1, -1} of the circle **[classical]**, so the
   encoder reads no orientation from them. The check "resolves to 1" is the encoder's root, the norm read from both sides agreeing
   **[Lean]** (`Encoder.root`). The witness role is a **[reading]** (IX.6o). It needs both witnesses rigid, which makes it
-  falsifiable: Sp(2) is topologically rigid by a surgery sketch (its cells sit in dimensions 3 and 7, where G/TOP has no homotopy)
-  **[paper]** (IX.6j, needs an independent read); for G2 the structure set likely has room in dimension 6, and whether that room
-  gives a manifold not homeomorphic to G2 is **[open]** (IX.6p). The owner reads the fake G2 as cancelled by the reflection
+  falsifiable. Sp(2) passes in the strong form: its structure set is a point, so every homotopy equivalence to it is homotopic to a
+  homeomorphism (its cells sit in dimensions 3 and 7, where G/TOP has no homotopy, and the top cell is the Kervaire invariant)
+  **[paper]** (IX.6j, independently read). G2 is not strongly rigid: its structure set has exactly two elements, the second carried
+  by the class x_3^2 in degree 6, pulled back from S^6 = G2/SU(3), and no characteristic class tells the fake from G2 **[paper]**
+  (IX.6p). Whether the fake is G2 itself, seen through a self-equivalence of G2, is **[open]**, reduced to one test (IX.6r). The owner reads the fake G2 as cancelled by the reflection
   positivity of the start: the room is the class x_3^2 in degree 6, its square x_3^4 vanishes **[classical]**, and in reflection
   positivity a state with vanishing reflected square is null. Care point: a Z/2 class has no sign and the cup square is not the
-  reflection form, so this is a **[reading]** (IX.6q) and the computation of IX.6p still decides it. The owner reads the missing
+  reflection form, so this is a **[reading]** (IX.6q). Its mathematical counterpart is now exact: "cancelled" means absorbed by a
+  self-equivalence of G2, which is the test of IX.6r; the reading predicts that it exists. The owner reads the missing
   sign itself as the point: Z/2 carries no order, so no floor, so no decidable reading, and only a start that forces one is
   DMP-complete (Part X 4.3, X.70).
 

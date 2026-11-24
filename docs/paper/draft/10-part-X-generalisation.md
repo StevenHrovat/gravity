@@ -347,7 +347,8 @@ the gate. Sp(2) and G2 have only self-conjugate representations, so they carry n
 among the groups that can carry one, rigidity leaves only SU(3), which carries it through its centre on the U(1) circle
 (claims IX.6k to IX.6m). The owner closes the circle: Sp(2) and G2 are the U(1) gate's two hidden witnesses, dimensionless to
 the encoder, and with SU(3) they are the three compact simple groups of rank 2 (claims IX.6n, IX.6o). The reading needs the
-witnesses rigid: Sp(2) is, topologically, by a surgery sketch; G2 is open (claims IX.6j, IX.6p).
+witnesses rigid: Sp(2) is, in the strong form; G2 has exactly two structures, and whether the second is G2 itself is one open test
+(claims IX.6j, IX.6p, IX.6r).
 
 **The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost
 per scale (VI.3.4, **[Lean]** in the model). In the owner's reading nothing more needs or can be said than that it is not

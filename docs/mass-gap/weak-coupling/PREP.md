@@ -4834,3 +4834,12 @@ thread.
   is DMP-complete in the paper's sense exactly when its start forces a floor, so that the rotation test becomes decidable. Care
   point: the start forces the floor at the start only (the margins collapse beyond it, X.66); that the floor is kept at every scale
   is X.64 (and, for Yang-Mills, O1, X.33).
+- **The G2 and Sp(2) round (coordinator, 2026-11-24; `docs/unified/G2-SP2-RIGIDITY.md`).** Sp(2) is strongly rigid
+  topologically: its structure set is a point (the sketch of "The two hidden witnesses", item 4, confirmed by an independent read,
+  with the two implicit steps filled in) [paper]. G2 is not strongly rigid: its structure set has exactly two elements, the second
+  carried by the class x_3^2 the owner named, pulled back from S^6 = G2/SU(3); the fake X is stably parallelisable, can be taken
+  smooth, and no characteristic class separates it from G2 [paper]. Whether X is homeomorphic to G2 is open, reduced to one test:
+  does G2 have a self-homotopy equivalence not homotopic to a homeomorphism (Kreck-Lueck)? Counterpart of the owner's "cancelled by
+  the start's reflection positivity": cancelled = absorbed by a self-equivalence of G2 [reading]; it predicts rigid, and the test
+  can falsify it. If it fails, the finer fit is "G2 rigid up to one Z/2 that carries no order" [reading], weaker than the witness
+  reading asks.
