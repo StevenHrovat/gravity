@@ -1,0 +1,13 @@
+== SU(2), beta 2.3, 2^3 x T slab, typical (thermalised) end faces, 64 pairs per T
+   faces: slices 3 and 3 + T of a 2^3 x (T + 6) slab after 150 heat-bath sweeps; TI with 8 points, 100 + 600 sweeps per point
+  T = 2: face action density (1/2) tr P: mean 0.645, range [0.434, 0.821]  (ordered 1, Haar 0)
+         log c: mean -1.257, sd over pairs 1.527, typical stat error 0.128
+         rho over typical pairs: median 0.5990, 75% 0.8610, 90% 0.9237, worst 0.9532 (log c = -3.730 +- 0.133)
+         fraction of typical pairs with rho <= sqrt 2 - 1 = 0.4142: 0.328; significantly off the side (1.645 sigma, stat only): 37 of 64
+         [242.4 s]
+  T = 3: face action density (1/2) tr P: mean 0.629, range [0.317, 0.810]  (ordered 1, Haar 0)
+         log c: mean -0.547, sd over pairs 1.123, typical stat error 0.161
+         rho over typical pairs: median 0.4556, 75% 0.6148, 90% 0.7367, worst 0.8582 (log c = -2.573 +- 0.136)
+         fraction of typical pairs with rho <= sqrt 2 - 1 = 0.4142: 0.422; significantly off the side (1.645 sigma, stat only): 26 of 64
+         [480.7 s]
+== total wall time 723.1 s

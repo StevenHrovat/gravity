@@ -6,6 +6,8 @@ Status: 2026-11-23. Proof-focused round on the Yang-Mills open step O1, after `J
 Lean: `ProofPhase/Unified/ElectricSUN.lean`, `ProofPhase/Unified/ElectricSUNPress.lean` (81 declarations, standard axioms
 only: propext, Classical.choice, Quot.sound; no sorry: `electricsun-axioms.sh`, `electricsun-axioms.log`). Third layer
 (refute-only, CPU): `electric_sun_check.py`, `electric_sun_check.log`.
+Section 10 (2026-11-24): running outsides and remnants, `ProofPhase/Unified/ElectricSUNRunning.lean` (29 declarations,
+`electricsun-running-axioms.sh/.log`), CPU `electric_sun_running_check.py/.log`.
 
 Status marks as in `OPEN-STEPS-DMP.md`: **Lean** (proved in Lean, standard axioms), **classical** (known mathematics,
 recalled), **numerical** (measured; refutes or guides, never proves), **reading** (interpretation), **open** (not proved
@@ -348,3 +350,121 @@ Not yet added to any aggregate import or to the theorem gate list (the coordinat
 - K. Osterwalder, E. Seiler, Ann. Phys. 110 (1978): reflection positivity of the Wilson action.
 - J. Froehlich, R. Israel, E. Lieb, B. Simon, CMP 62 (1978): chessboard estimates.
 - M. Creutz, Phys. Rev. D21 (1980): the SU(2) heat bath used in part C.
+
+---
+
+## 10. Running outsides and remnants (next step, 2026-11-24)
+
+Lean: `ProofPhase/Unified/ElectricSUNRunning.lean` (29 declarations, standard axioms only, no sorry:
+`electricsun-running-axioms.sh`, `.log`). CPU (refute-only): `electric_sun_running_check.py`, `.log`.
+
+**Why.** Section 6 showed that frozen (ordered, cold) end faces dominate the pointwise side. A twist forced between two
+frozen faces at fixed physical shape costs about `(1/g^2) L/T` classically, which grows without bound in the continuum,
+so `HandoverSide` over *all* end faces is most likely false there [reading on numerical data]. The owner's answer
+(`PREP.md`, last entry): "Frozen faces aren't running outsides, so they don't count, but their ticks of not counting do
+count as remnants." This section builds that reformulation.
+
+### 10.1 In plain words
+
+- **Running outsides.** The electric side is asked only for end-face pairs in a running set `R`: faces typical of the
+  measure, for example faces whose own action density lies in a typical window (`windowFaces`). Frozen faces are left
+  out of the quantifier.
+- **Remnant.** When two slabs are joined, the shared face is integrated over. Where it is not running, the sector is
+  bounded by the trivial factor 1 (every factor is at most 1: `0 < c < 1` for every SU(N)). So the frozen shared faces
+  contribute at most their weight. If that weight is at most the fraction `epsilon` of the joined neutral weight
+  (`RemnantMass`), the remnant adds at most `epsilon` per join.
+- **The remnant is a fresh uncertainty of the transport theorem** (Lean): in a slab the chain carries the running
+  factor with factor `rho` and fresh uncertainty `r = epsilon` per join; in a box with seam cost `delta`, factor
+  `(1 + delta) rho` and `r = (1 + delta) epsilon + delta`.
+- **O1 assembly** (Lean): O1 over running outsides = `HandoverSideRunning` + remnant + seam, with explicit thresholds:
+  slab `epsilon <= 1/20` per join, box `epsilon, delta <= 1/50` per join, each giving O1 for every `mu <= 7`.
+- **CPU, refute-only:** on typical (thermalised) end faces of tiny slabs (beta 2.3, `2^3 x T`) the median pointwise
+  factor is 0.60 (`T = 2`) and 0.46 (`T = 3`) against 0.414, but about 60% of typical pairs miss the side and the worst
+  typical pair is nearly as bad as a frozen one. A running set defined by the action density alone is too wide there
+  (section 10.4).
+
+### 10.2 Lean
+
+| result | statement | mark |
+|---|---|---|
+| `twistCertOn N K R e u` | `|Z_e| <= u Z_0` for the end-face pairs in `R` only | definition |
+| `DiagInvariant N R` | `R` invariant under the centre action on both faces | definition |
+| **`RemnantMass N Ka Kb Ra Rb Rab epsilon`** | for every running outer pair of the join, the shared faces that are not running carry at most `epsilon` of the joined neutral weight | definition (the instantiable hypothesis) |
+| `runPairs`, `windowFaces`, `windowFaces_invariant`, `diagInvariant_runPairs` | running pairs = both faces running; a window of a centre-invariant face density is centre-invariant | Lean |
+| `remnant_of_faces` | the remnant from face-level running sets: for running outer faces, the non-running shared faces carry at most `epsilon` | Lean |
+| `twistCertOn_ksym`, `sec0N_ksym_le` | the centre average keeps a running factor; its neutral weight is within `1 + delta` | Lean |
+| **`elecN_running`** | box: running factors `ra`, `rb`, remnant `epsilon`, seam `delta`: join factor `(1 + delta)(ra rb + epsilon) + delta` on the running outer pairs | Lean |
+| `elecN_running_slab` | slab: `ra rb + epsilon` | Lean |
+| **`runningTransport_slab`** | the slab chain over running sets is a `TransportsCert` with factor `rho` and **fresh uncertainty `r = epsilon`** | Lean |
+| `runningTransport` | box: factor `(1 + delta) rho`, `r = (1 + delta) epsilon + delta` | Lean |
+| `ym_running_bridge` | O1 on the running pairs after `n` joins once `mu (theta'^n u_0 + r/(1 - theta')) <= 1` | Lean |
+| `three_slabs_running`, `three_slabs_running_num` | three slabs: transported value `theta^3 + (1 + theta) epsilon`; `epsilon <= 1/20` gives O1 for `mu <= 7` | Lean |
+| `three_boxes_running`, `three_boxes_running_num` | three boxes: `epsilon, delta <= 1/50` give O1 for `mu <= 7` (`threeBoxRun = 0.131`) | Lean |
+| **`HandoverSideRunning N Kh R`** | the pointwise electric side at the hand-over slab, every cutoff, every `e != 0`, running pairs only | named, **open** |
+| `handoverSideRunning_of_handoverSide` | the all-outsides side implies the running one | Lean |
+| **`O1_slab_running`**, **`O1_box_running`** | O1 at `3 L_h` on running pairs, every cutoff, every sector, from `HandoverSideRunning` + remnant (+ seam) | Lean |
+
+**What the remnant means as a probability** [Lean for the algebra; the reading of the weights is classical]. In the slab
+geometry the neutral sector of a join is `sum_z Z_0^a(x, z) Z_0^b(z, y)` (`kjoin_sec0N`), so
+`Z_0^a(x, z) Z_0^b(z, y) / Z_0^{ab}(x, y)` is the neutral-sector conditional law of the shared face given the outer
+faces. `RemnantMass` with `epsilon` says: given running outer faces, the shared face is not running with conditional
+probability at most `epsilon`. Through `remnant_of_faces` this is a statement about one face: its action density leaves
+the typical window with conditional probability at most `epsilon`, a large-deviation estimate of a boundary average.
+
+**Thresholds** [Lean for the stated ones; arithmetic for the rest]:
+
+| geometry | O1 for `mu <= 7` needs | exact boundary |
+|---|---|---|
+| slab, remnant only | `epsilon <= 1/20` | `epsilon <= (1/mu - theta^3)/(1 + theta) = 0.0508` at `mu = 7` |
+| box, remnant and seam | `epsilon <= 1/50` and `delta <= 1/50` | e.g. `epsilon = delta = 1/40` already fails (`7 x 0.1468 > 1`) |
+| slab, `mu <= 14` | `epsilon <= 2.5 x 10^-4` | the self-dual cube `theta^3 = 0.0711` leaves almost no room at `mu = 14` |
+
+**The conclusion is O1 over running outsides.** `O1_slab_running` and `O1_box_running` give `mu |Z_e| <= Z_0` for running
+outer pairs, not for frozen ones. Whether the tube chain is satisfied by O1 over running outsides (its outsides being
+themselves typical, by the same remnant argument one level up) is the next consistency question [open].
+
+### 10.3 What is open now
+
+| piece | status |
+|---|---|
+| `HandoverSideRunning`: pointwise side for running end faces, uniform in the cutoff | **open** |
+| remnant `epsilon <= 1/20` (slab) / `1/50` (box) per join, uniform in the cutoff: a large-deviation bound for the face action density under the conditional measure | **open** |
+| seam `delta <= 1/50` (box) | **open** (proved only under the per-configuration floor) |
+| the tube chain accepts O1 over running outsides | **open** |
+
+Compared with section 5 the open statement is weaker (frozen faces are no longer quantified over), at the price of one
+more named quantity, `epsilon`, which is a probability and so the natural object for a large-deviation estimate.
+
+### 10.4 CPU check: typical end faces only (refute-only)
+
+`electric_sun_running_check.py`, `.log`. Same slab and measurement as section 6 (SU(2), beta 2.3, `2^3 x T`), but the
+end-face pairs are drawn from the Wilson measure itself: slices 3 and `3 + T` of a thermalised `2^3 x (T + 6)` slab
+(150 heat-bath sweeps), 64 pairs per `T`. Run time 723 s (12 CPU-minutes), timed first with a 2.5-minute quick run;
+under the 30 CPU-minute limit. [numerical]
+
+| | `T = 2` | `T = 3` |
+|---|---|---|
+| face action density `(1/2) tr P` (typical window) | mean 0.645, range 0.43 to 0.82 | mean 0.629, range 0.32 to 0.81 |
+| `log c`: mean, spread over pairs | -1.26, 1.53 | -0.55, 1.12 |
+| `rho` over typical pairs: median / 75% / 90% | 0.599 / 0.861 / 0.924 | 0.456 / 0.615 / 0.737 |
+| worst typical pair | `rho = 0.953` (`log c = -3.73 +- 0.13`) | `rho = 0.858` (`log c = -2.57 +- 0.14`) |
+| fraction of typical pairs with `rho <= sqrt 2 - 1 = 0.414` | 0.33 | 0.42 |
+| pairs significantly off the side (1.645 sigma, statistics only) | 37 of 64 | 26 of 64 |
+| for comparison: worst ordered (frozen) pair, section 6 | `log c = -5.12` | `log c = -2.92` |
+
+**How far from `sqrt 2 - 1`:**
+- Over typical faces the median factor is 0.60 at `T = 2` and 0.46 at `T = 3`, against 0.414: the typical pair is close
+  to the electric side at `T = 3` and moving towards it with thickness.
+- The worst typical pairs are still far off: `|log c| = 3.7` and `2.6` against the needed 0.881. Refuted at 1.645 sigma
+  on statistics and, with the resolution floor 1, still refuted (`3.73 - 1.645 = 2.1`, `2.57 - 1.645 = 0.93 > 0.881`).
+- **So "typical" in the sense of the measure (the faces' own sample, with action density in the window 0.3 to 0.8) does
+  not make the pointwise side hold on these tiny slabs at beta 2.3.** About 60% of typical pairs miss it. The
+  `HandoverSideRunning` reformulation is not refuted (it concerns a slab of fixed physical size, and these slabs are on
+  the magnetic side), but it shows that a running set defined by the action density alone is too wide here: the
+  remnant `epsilon` for such a set would be about 0.6, far above 1/20.
+- Frozen faces are still the extreme (`-5.1` at `T = 2`), but the worst typical pair (`-3.7`) is not far behind. The
+  factor depends on more of the face than its action density; a running set that works needs a finer criterion (for
+  example the faces' Polyakov-line content along the twist direction), which is a question for the next round [reading].
+
+**Not run:** larger cross-sections; a correlation study of `log c` against face observables (the data to do it are not
+saved per pair).
