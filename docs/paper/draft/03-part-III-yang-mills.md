@@ -22,14 +22,18 @@ the Osterwalder-Schrader or Wightman axioms with local gauge-invariant fields, a
 It leaves four things open.
 
 * **(O1) The one-box statement** (III.5.6). There is a box of fixed physical size at which the electric flux free energy exceeds
-  the path entropy of the four-dimensional lattice, **F_e(L) > log mu_4 = 1.91** (equivalently, twist ratio r(L) > 0.74), uniformly
-  over every well-defined outside. In effective-string units this is a box of side L sqrt(sigma) of about 1.7 to 1.8 (III.7.4,
-  **[numerical]**).
+  the path entropy of the four-dimensional lattice after the neutral excess act, **F_e(L) - 2c(L) > log mu_4 = 1.91**, uniformly
+  over every well-defined outside. As E = mc^2 is E^2 = (pc)^2 + (mc^2)^2 with the momentum term dropped, the familiar form drops the
+  excess act and reads F_e(L) > 1.91 (twist ratio r(L) > 0.74); it is weaker and alone does not give the chain (III.5.8). In
+  effective-string units the familiar form asks for a box of side L sqrt(sigma) of about 1.7 to 1.8 (III.7.4, **[numerical]**); the
+  full form asks for at least that.
 * **(O2) The identification inputs**: the line of constant physics (OnLCP) and non-triviality, the two hypotheses that make the
   lattice family Yang-Mills and not some other gapped family (III.9). The gap itself needs of the line of constant physics only its
   resolution clause (III.9.5, **[Lean]**). Non-triviality holds per box by construction: the reflected correlation at even time is a
   reflection-positivity square, so it is at least zero at every level (III.9.5a, **[Lean]**). What remains is the scale-uniform
-  lower edge and the scheme clause (III.9.5b, **[open]**), the opposite edge to O1's decay.
+  lower edge and the scheme clause (III.9.5b, **[open]**), the opposite edge to O1's decay. It is not a second assumption: the
+  ODP ends only at a dimensionless 1, so a running, DMP-complete system carries the lower edge by construction, and III.9.5b is the
+  lower edge of the one assumption, beside O1's upper edge (Part X 4.4, **[reading]**).
 * **(O3) The continuum field theory**: Euclidean invariance, local fields as distributions, uniqueness of the limit and Wightman
   reconstruction. For the external construction this project uses (III.9) these are claimed there **[external]**. For this project's
   own objects, rotation invariance cannot yet be stated, since the lattice has only the hypercubic group **[open]**.
@@ -203,8 +207,12 @@ a -> 0 **[paper]**, one-loop sketch (determinants and measure not checked).
 **III.5.6 The one-box statement (O1).** Combining III.5.3 and III.5.4: law (structure) plus cost above entropy (dominance) gives tubes,
 and tubes are chains, where III.3 applies. What remains is:
 
-> **(O1)** At one box of fixed physical size, F_e(L) > log mu_4 = 1.91 (equivalently r(L) > 0.74), uniformly over every well-defined
-> outside. **[open]**
+> **(O1)** At one box of fixed physical size, F_e(L) - 2c(L) > log mu_4 = 1.91, uniformly over every well-defined outside, with c(L)
+> the neutral excess act of III.3. **[open]**
+
+The familiar form F_e(L) > 1.91 (equivalently r(L) > 0.74) drops the excess act, as E = mc^2 drops the momentum term of
+E^2 = (pc)^2 + (mc^2)^2. The drop is only seeming: c(L) >= 0, so the full form implies the familiar one, but the familiar one alone
+does not give the chain criterion (III.5.8, examples in Lean).
 
 This is the grid requirement log 8 = 2.08 of III.4.1 refined from column sums to path counting. Containment moves the requirement
 inside the box but does not lower it to the chain value 0.881.
@@ -229,7 +237,7 @@ inside the box but does not lower it to the chain value 0.881.
 | III.5.4a | Path sums converge iff F > log mu; 0.881 loses for mu >= 3 | **[Lean]** | `Containment.lean`, `path_sum_summable_iff`, `tube_threshold`, `path_entropy_beats_handover` |
 | III.5.4b | mu_4 = 6.77, log mu_4 in [1.39, 1.95] | **[classical]** | `CONTAINMENT.md`, 3 |
 | III.5.5 | Bogomolny floor helps outside only and loses to entropy as a -> 0 | **[classical]** (bound) + **[paper]** (sketch) | `CONTAINMENT.md`, 6.2 |
-| III.5.6 | **(O1)** F_e(L) > log mu_4 at one box of fixed physical size, uniformly over outsides | **[open]** | `CONTAINMENT.md`, 0 and 5; `docs/OPEN-QUESTIONS-DMP.md`, 0 |
+| III.5.6 | **(O1)** F_e(L) - 2c(L) > log mu_4 at one box of fixed physical size, uniformly over outsides (familiar form F_e(L) > log mu_4, the excess act dropped) | **[open]** | `CONTAINMENT.md`, 0 and 5; `docs/OPEN-QUESTIONS-DMP.md`, 0 |
 | III.5.7 | Per-box costs multiply over the lattice in O1's per-outside form; annealed to quenched only for reading measurements | **[Lean]** | `OneBox/Fine.lean`, `fineDecayInv_of_fineOneBox`; `Closures/OneBoxForm.lean` |
 | III.5.8 | Chain criterion and tube threshold independent in the model; the joint form gives both | **[Lean]** (model) | `Closures/ChainJoint.lean`, `joint_gives_both`, `tube_not_chain`, `chain_not_tube` |
 | III.5.9 | O1 in one Lean form: `FineOneBox`, with the other forms linked | **[Lean]** | `OneBox/Fine.lean`; `Closures/OneBoxForm.lean` |
@@ -352,6 +360,6 @@ grid (III.4.3) **[paper]** (`RDOEBLIN.md`, 0).
 
 O1 first: a worst-case argument, for one box of fixed physical size, that the electric cost per box exceeds the path entropy of the
 four-dimensional lattice for every well-defined outside, together with the per-box product structure along paths (III.5.7). Then O2:
-its scale-uniform lower edge (III.9.5b); the per-box half is proved and the gap uses only the resolution clause. Then O3: an observable bridge from this project's bounded slab
+its scale-uniform lower edge (III.9.5b), which the one assumption carries beside O1 (Part X 4.4); the per-box half is proved and the gap uses only the resolution clause. Then O3: an observable bridge from this project's bounded slab
 observables to local fields, or adoption of the external construction's field notion with its audit. Then O4: a tuning for general G.
 O1 is the mathematical core; O2 to O4 are the remaining distance from the gap mechanism to the Clay statement.

@@ -4690,3 +4690,33 @@ thread.
   the owner's terms, the closed loop needs the entangled partner to open again. So the corrected statement: the only symmetry of the
   box kind is the one at `t = 1`; conjugation is the act's U(1) loop, which closes on the box itself for real coefficients and on the
   conjugate partner otherwise [reading for "act" and "entangled"; classical for the identities].
+- **Five answers to the overnight questions (the owner, 2026-11-24, morning).**
+  1. *The lower edge.* "Since the thing that guarantees non-triviality is the ODP, which must run before any start, and the ODP only
+     ends once a dimensionless 1 is reached, we probably can give that attribute automatically to anything DMP-complete by
+     construction." Exact counterpart (coordinator): dimensional transmutation (Part I, I.5). A running pure Yang-Mills theory has one
+     scale, Lambda, and every physical quantity is a pure number times a power of Lambda [classical]. A limit whose slab correlation
+     vanished would leave no non-zero pure number; the ODP's end at a dimensionless 1 is the reading that one such number exists and
+     is finite [reading]. Applied as the owner's decision (i) of the closure round: the scale-uniform lower edge (III.9.5b) is part of
+     the one assumption (X.64), beside O1's upper edge, not a second assumption. Care point: this places the lower edge, it does not
+     prove it; as a statement about the Wilson measure it stays open with O1.
+  2. *O1's headline.* "The excess act should be included, though, like with E=mc2, it can be seemingly simplified away." Exact
+     counterpart (coordinator): E = mc^2 is E^2 = (pc)^2 + (mc^2)^2 at p = 0 [classical]; the full relation carries the momentum term
+     and the familiar form drops it. O1's full form is F_e(L) - 2c(L) > log mu_4 = 1.91, with c(L) the neutral excess act (III.3); the
+     familiar form F_e(L) > 1.91 drops it. "Seemingly" is exact: c(L) >= 0 (Z_0(L) >= lambda_0^L, a hypothesis of the Lean model),
+     so the full form implies the familiar one, while the familiar one alone does not give the chain criterion (III.5.8, examples in Lean). Applied: the
+     paper's headline for O1 is the full form.
+  3. *GU's checkable consequence.* "Uniformity is also guaranteed to be constructed by the ODP, so same tactic as 1." Reading
+     (coordinator): the uniformity is that every charge is an integer multiple of one unit, the same unit for all matter (candidate
+     (b), the compact G0 circle, IX.3.2, Lean); the unit is the ODP's dimensionless 1, constructed for anything DMP-complete in the
+     same way as the lower edge. Applied as the owner's decision on IX.5f: the checkable consequence is uniform charge quantisation,
+     checked by the neutrality of matter and the absence of free fractional charges (measured, external). Care point: it coincides
+     with the standard expectation of any compact U(1); the paper says so and claims no consequence beyond it.
+  4. *DMP-completeness.* "DMP-completeness is, like DMP itself, kind of circular. The main meaning can be simplified to
+     DMP-complete = runs on DMP." Exact counterpart (coordinator): in Part X, "runs" is the running-state hypothesis R of each card
+     (X.28, X.7n), so DMP-complete(X) means R(X). The circularity is X.29: a system cannot certify its own running from inside, as a
+     consistent theory cannot prove its own consistency (Goedel II) [classical]. Applied to VI.7e: the precise statement now exists;
+     whether Navier-Stokes violates it, and whether violating it gives blowup, stays open (without a floor the settling machine is
+     undecidable, II.11, which is not divergence).
+  5. *Poincare for SU(N).* "Sounds like we can contribute by generalizing Perelman's approach for DMP, I am sure we'll get a better
+     construction from it." Recorded; VI.6.3j stays as it is in the ledger until that round (and an independent read of the surgery
+     sketch) is done.

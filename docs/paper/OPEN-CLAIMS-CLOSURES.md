@@ -270,6 +270,11 @@ arsenal block, or use `jq`), and change the brief's setup from a link to a copy.
 
 ## 4. For the owner (class c)
 
+*Answered by the owner on 2026-11-24 (`PREP.md`, "Five answers"): 1, uniform charge quantisation with the ODP's guarantee (IX.5f,
+reading); 2, DMP-complete means runs on DMP (X.64b; VI.7e's second half stays open); 3, reading (i), the lower edge is part of the
+one assumption (X.64a); 4, the headline carries the excess act, F_e(L) - 2c(L) > log mu_4. VI.6.3j waits for a Perelman-style
+round and an independent read.*
+
 1. **IX.5f, the GU gate.** Whether candidate (a), candidate (b), or "well-defined inputs, guaranteed" meets the gate's "at least
    one checkable consequence". Unchanged by this round; IX.7b (now Lean) makes the hypercharge input a classical theorem, which
    is relevant to candidate (b) but does not decide it.

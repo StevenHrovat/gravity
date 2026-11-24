@@ -185,7 +185,7 @@ Full chain: `docs/mass-gap/weak-coupling/PROOF-BLUEPRINT.md` (version 2). Crosso
 | III.5.4c | The connective constant of self-avoiding walks on Z^d is at least d, so the 0.881 hand-over loses to path entropy in every d >= 3 | classical | elementary counting (Part III 5) | none |
 | III.5.5a | Bogomolny bound; fractional floor pi^2 beta for admissible fields | classical | Bogomolny; 't Hooft; Luescher; `CONTAINMENT.md` 6.2 | none |
 | III.5.5b | The floor helps only outside (multi-plane twists) and loses to entropy as a -> 0 | paper (one-loop sketch) | `CONTAINMENT.md` 6.2 | determinants and measure |
-| III.5.6 | **O1:** F_e(L) > log mu_4 = 1.91 (r > 0.74) at one box of fixed physical size, uniformly over outsides | open | `CONTAINMENT.md` 0, 5; `docs/OPEN-QUESTIONS-DMP.md` 0 | a worst-case argument for one box |
+| III.5.6 | **O1:** F_e(L) - 2c(L) > log mu_4 = 1.91 at one box of fixed physical size, uniformly over outsides, with c(L) the neutral excess act; the familiar form F_e(L) > 1.91 (r > 0.74) drops it and is implied by it (c(L) >= 0), but alone does not give the chain (III.5.8) | open | `CONTAINMENT.md` 0, 5; `docs/OPEN-QUESTIONS-DMP.md` 0 | a worst-case argument for one box |
 | III.5.7 | Per-box costs multiply over the lattice: with O1 in its per-outside Lean form (III.5.9) the composition of the per-box influences is a theorem, and no annealed quantity enters; the annealed-to-quenched identification is needed only to read a torus measurement of F_e as evidence about O1 (III.7) | Lean | `ProofPhase/OneBox/Fine.lean`, `fineDecayInv_of_fineOneBox`; `ProofPhase/Closures/OneBoxForm.lean`, `decay_of_o1Form`; in the API chain model `ProofPhase/Unified/YangMills.lean`, `pathSum_eq` | none (the open content is O1, III.5.6) |
 | III.5.8 | In the transfer-matrix model the chain criterion F_e(L) > 2c(L) and the tube threshold F_e(L) > log mu are independent (examples both ways); the joint form F_e(L) - 2C > log mu, with C bounding the excess act on the multiples of L and mu >= 1 continuations, gives both, and the multiplied path sum mu^k e^{-F_e(kL)} decays at rate F_e(L) - 2C - log mu and is summable | Lean (model) | `ProofPhase/Closures/ChainJoint.lean`, `joint_gives_both`, `tube_not_chain`, `chain_not_tube` | none for the model; turning paths in the cubic geometry are carried by O1's per-outside form (III.5.9), not by the model |
 | III.5.9 | O1 in one Lean form: `FineOneBox` (one box of the SU(2) Wilson measure at the physical cell scale, influence bounds under every boundary condition, uniform in level and volume). `WilsonOneBox` (the actual DLR kernel) and `FineOneBoxSplit` imply it; it feeds `yang_mills_assembly_onebox`. `BlockGapBddW` is the separate blocking route's decay input and `FineOneBoxPat` an alternative criterion with its own assembly; neither is needed | Lean | `ProofPhase/Closures/OneBoxForm.lean`, `O1Form`, `o1Form_of_wilson`, `o1Form_of_split`, `decay_of_o1Form`, `gap_of_o1Form` | none; reading the number F_e(L) > log mu_4 of III.5.6 as `FineOneBox`'s one-box sum is path counting, paper |
@@ -212,7 +212,7 @@ Full chain: `docs/mass-gap/weak-coupling/PROOF-BLUEPRINT.md` (version 2). Crosso
 | III.9.4 | Continuum limit exists | external | `H1-OPENAI.md`; `ProofPhase/Existence/Bridge.lean`, `plaqLaw_eq_wilsonMeasure` | audit |
 | III.9.5 | The gap needs of the line of constant physics only its resolution clause (l_k -> infinity): with O1 in its one form it gives torus decay, the gap in both orders of limits and reflection positivity; the running clause, the scheme clause and non-triviality are not used | Lean | `ProofPhase/Closures/OneBoxForm.lean`, `tendsto_a_of_resolution`, `gap_of_o1Form`, `yang_mills_assembly_onebox_of_resolution` | none |
 | III.9.5a | Per box, by construction: at every level and volume the reflected correlation at even lattice time is the reflection-positivity square of the centred translate, Z wcorr(2m) = rpForm(F_m - c, F_m - c), hence >= 0; a scale-uniform lower bound c > 0 at a fixed physical time gives `NonTrivial` ("non-trivial" in the project's sense, a non-vanishing correlation, weaker than "not a Gaussian field"); the running clause holds by construction on the one-loop line beta_k = (11/(6 pi^2)) log l_k. Strict per-box positivity (non-degeneracy of the reflection form on the centred translates) is not claimed | Lean (by construction for the per-box parts) | `ProofPhase/Closures/NonTrivialSplit.lean`, `wcorr_even_eq_rpForm`, `wcorr_even_nonneg`, `UniformLower`, `nonTrivial_of_uniformLower`, `oneLoopTuning`, `running_oneLoop` | none |
-| III.9.5b | The scale-uniform halves of O2: a lower bound c > 0 on one slab correlation at a fixed physical time, uniform in the cutoff (spectral form: weight >= delta below a mass M, uniformly), and the scheme clause of the line of constant physics. In the spectral model this is the lower edge of the window whose upper edge is O1's gap: not implied by O1 (a gap at every rate with vanishing correlation), not implying it, compatible with it (a state at m <= E < M) | open (relation to O1: Lean, model) | `ProofPhase/Closures/NonTrivialSplit.lean`, `lower_of_spectral_weight`, `gap_not_lower`, `gap_and_lower_compatible`; `ProofPhase/Bridge/Spectral.lean`, `corr_ge`; `ProofPhase/Assembly.lean` (`NonTrivial`, `OnLCP`) | a proof, or the owner's decision to read the one assumption (X.64, "a running system") as including it (class c of the closures round) |
+| III.9.5b | The scale-uniform halves of O2: a lower bound c > 0 on one slab correlation at a fixed physical time, uniform in the cutoff (spectral form: weight >= delta below a mass M, uniformly), and the scheme clause of the line of constant physics. In the spectral model this is the lower edge of the window whose upper edge is O1's gap: not implied by O1 (a gap at every rate with vanishing correlation), not implying it, compatible with it (a state at m <= E < M). By the owner's reading it is the lower edge of the one assumption, not a second assumption (X.64a) | open (part of the one assumption X.64; relation to O1: Lean, model) | `ProofPhase/Closures/NonTrivialSplit.lean`, `lower_of_spectral_weight`, `gap_not_lower`, `gap_and_lower_compatible`; `ProofPhase/Bridge/Spectral.lean`, `corr_ge`; `ProofPhase/Assembly.lean` (`NonTrivial`, `OnLCP`) | a proof of the one assumption (decided 2026-11-24: folded into X.64, X.64a) |
 | III.9.6 | O3: Euclidean invariance, fields, uniqueness, Wightman | external (theirs) / open (ours) | `PROOF-BLUEPRINT.md` P6.4-P6.9, P7.6 | observable bridge or adoption |
 | III.9.7 | O4: every compact simple group | external (existence) / open (our tuning) | `PROOF-BLUEPRINT.md` P6.10 | general tuning |
 | III.9.8 | M1's floor at L_* gives a physical gap along a chain, not on a grid | paper | `RDOEBLIN.md` 0 | none |
@@ -418,7 +418,7 @@ Notes relative to `docs/pnp/`.
 | VI.7b | One theorem (`summable_of_gap`) gives the finite correlation length in Yang-Mills and the finite T* here | reading (Lean for both uses: `ProofPhase/Unified/Ledger.lean`, `summable_of_gap`) | BL 2.5 | none |
 | VI.7c | Scale invariance reads as the arrow of causality: the outside set has one element | reading | BL 2.4 | none |
 | VI.7d | "Not DMP-complete, hence blows up": a reading of supercriticality that names the side the 2026 claims assert; it proves nothing | reading | NS 4(6); `PREP.md`, 2026-11-24 entries | none |
-| VI.7e | Whether DMP-completeness has a precise statement that Navier-Stokes violates and from which blowup follows | open | NS 4(6) | a statement and a proof |
+| VI.7e | With DMP-completeness defined as running on DMP (X.64b), whether Navier-Stokes violates it and whether blowup follows from that; without a floor the settling machine is undecidable (II.11), which is not divergence | open | NS 4(6); `PREP.md`, 2026-11-24, "Five answers", 4 | a proof |
 | VI.7f | "Settle" means the carried quantity dies out: regular on the regularity card, blowup on the route I card | reading | NS 5.2 | none |
 
 ## Part VII. Birch and Swinnerton-Dyer (`draft/07-part-VII-bsd.md`)
@@ -596,7 +596,7 @@ Notes relative to `docs/pnp/`.
 | IX.5c | The project's twist-sector results are for pure gauge theory with one group; there the whole centre is a symmetry, so they cannot single out Z_6 | paper | GU 3.2 | IX.7 item 3 |
 | IX.5d | "2 first, then 3" does not give Z_6 as a consequence: the centre of SU(2) x SU(3) is Z_6 once the factors are chosen, which Z_6 part is divided out is set by the matter, and Z_2 x Z_3 has no order | paper | GU 1, 3.2 | none |
 | IX.5e | A DMP theorem that selects Z_6 or the hypercharges does not exist | open | GU 3.2, 5 | IX.7 item 1 |
-| IX.5f | Whether candidate (a), candidate (b), or "well-defined inputs, guaranteed" meets the gate's "at least one checkable consequence" (also IX.0c) | open | GU 8.1, 8.5; `PREP.md`, last GU entries | the owner's decision; this draft chooses none |
+| IX.5f | The owner's decision on the gate's "at least one checkable consequence" (also IX.0c): uniform charge quantisation, one unit for all matter (candidate (b)), with the unit guaranteed as the ODP's dimensionless 1, the same construction as Yang-Mills' lower edge (X.64a); it coincides with the standard expectation of any compact U(1), and no consequence beyond it is claimed (IX.5e) | reading | GU 8.1, 8.5; `PREP.md`, 2026-11-24, "Five answers", 3 | none for the decision; IX.5e for a consequence beyond the standard one |
 | IX.5g | The owner's position: GU comes down to well-defined inputs, which DMP can guarantee; the checkable consequence comes from the link to G0 | reading | `PREP.md`, "GU is pretty much done" and "The checkable consequence for GU" entries | none |
 | IX.6a | "G0's U(1) possibility field": every centre phase is a point on one circle (centres on one circle: Lean, IX.3.1g) | reading | `PREP.md`; GU 3.3 | none |
 | IX.6b | "The universal quantum running" reads as charge quantisation (the step from the circle to integer charges is IX.3.2) | reading | `PREP.md`, 2026-11-24 entry; GU 8 | none |
@@ -610,7 +610,7 @@ Notes relative to `docs/pnp/`.
 | IX.7b | Route 2, done classically in Lean: for one generation with the Standard Model representations the four anomaly conditions (SU(3)^2 U(1), SU(2)^2 U(1), gravitational, U(1)^3) have exactly the solutions q = q_Q (1, 4, -2, -3, -6), up to u <-> d, and the degenerate family q_Q = 0; with q_Q > 0 and coprime charges the charges are those of `smFields`, and the centre acting trivially is the Z_6 (composing with `sm_kernel`, `gen_trivial_iff`). The input is a classical theorem, not a DMP one | Lean | `ProofPhase/Closures/Anomaly.lean`, `anomalyFree_iff`, `anomaly_fixes_sm`, `fermion_kernel`, `anomaly_fixes_Z6`; Geng-Marshak 1989; Minahan-Ramond-Warner 1990 | none (the degenerate family is excluded by q_Q > 0, the Yukawa input, stated in the file) |
 | IX.7c | Route 3: twist sectors of a lattice SU(3) x SU(2) x U(1) theory with Z_6-invariant vector-like matter; chiral matter stays out of reach | open | GU 6, item 3 | the extension of the `SUNTwist` chain |
 | IX.7d | Route 4: a statement about running couplings needs the continuum theory with matter | (statement of scope) | GU 6, item 4 | beyond the paper's scope |
-| IX.7e | Until one lands, the paper can say: SU(3) x SU(2) x U(1)/Z_6 as one structure (classical, Lean-stated); readings that select Z_6 and are falsifiable; charge quantisation proved and measured but standard; no consequence derived from DMP beyond that | paper | GU 6 (closing paragraph) | closure of IX.5f |
+| IX.7e | Until one lands, the paper can say: SU(3) x SU(2) x U(1)/Z_6 as one structure (classical, Lean-stated); readings that select Z_6 and are falsifiable; charge quantisation proved and measured but standard; no consequence derived from DMP beyond that | paper | GU 6 (closing paragraph); IX.5f | IX.5e (a consequence beyond the standard expectation) |
 
 ## Part X. The generalisation (`draft/10-part-X-generalisation.md`)
 
@@ -643,6 +643,8 @@ Notes relative to `docs/pnp/`.
 | X.62 | The container asks two things of each tick: from the inside a margin is carried, from the outside the twisted sector is refuted; these are the two edges of section 2 | reading | `PREP.md`, 2026-11-24, last entry; X.15 | none |
 | X.63 | The care point of the container is answered by construction: the process from G0 to the hand-over (the ODP) is one established process, and once that is accepted every start gets a direction through {infinity, 2, 3} | reading | `PREP.md`, 2026-11-24, last entry ("The owner on the care point") | none |
 | X.64 | The paper's one assumption: the process from G0 to the hand-over is established, i.e. the one box is a running, DMP-complete system (the MP-type existence assumption; O1 as the corollary of running, slotted as the named hypothesis R); stated once (Part X section 4.4), not proved | open | `PREP.md`, 2026-11-24, "O1 ... must always be the open step", "DMP being O1", last entry; X.7n, X.28, X.61 | a proof of the running state for each object (O1; IV.4; V.4.10) |
+| X.64a | The one assumption has two edges: O1 (decay, upper) and the scale-uniform lower edge of non-triviality (III.9.5b); the owner's reading puts both in it, since the ODP ends only at a dimensionless 1, so a DMP-complete system carries a unit and a correlation that does not vanish by construction; in Yang-Mills the unit is Lambda (dimensional transmutation) | reading (the fold); the two edges independent and compatible in the model: Lean | `PREP.md`, 2026-11-24, "Five answers", 1; `ProofPhase/Closures/NonTrivialSplit.lean`, `gap_not_lower`, `gap_and_lower_compatible`; Part I, I.5 | none for the fold; the lower edge itself is open with X.64 |
+| X.64b | Definition (the owner): DMP-complete means runs on DMP, i.e. the object's running-state hypothesis R holds (X.28, X.7n); circular as DMP is, since R cannot be certified from inside (X.29) | reading | `PREP.md`, 2026-11-24, "Five answers", 4 | none |
 | X.65 | At the start {infinity, 2, 3} the first tick is certified positive with a margin (Weil's form on supports up to a = 0.69: c = 1.5e-9, 3.4e-11, 6.4e-13 at a = 0.60, 0.65, 0.69), so the sign is fixed there | certified (ball-arithmetic enclosures); abstract step Lean (X.58b) | `docs/unified/GRH-ONEBOX-CERT.md`; `ProofPhase/GRH/OneBoxCert.lean` | certify beyond a = 0.69 |
 | X.66 | Under the acceptance of X.64, the sign at the start, and with it the direction of every later tick, is fixed; for every tick past the start this is conditional on X.64 and is not a theorem that the margin survives (it collapses to about 3.6e-15 at a = 0.75) | conditional (on X.64) | `PREP.md`, 2026-11-24, last entry; `docs/unified/GRH-ONEBOX-CERT.md` | X.64 |
 | X.67 | Reading rule for "conditional on the established process": a result so marked holds if X.64 holds; the Lean theorems of section 2, the transport theorem (II.9) and the certified start do not use X.64 | paper (editorial rule) | Part X section 4.4 | none |
@@ -797,20 +799,20 @@ Part IX row IX.0b was a cross-reference and is folded; the scope rows that stay 
 
 Counted on the rows above (each row once, by its first mark; scope rows not counted: 0.1, III.0, VI.0e, VII.0e, VIII.0d, IX.0a, IX.0d). The draft 3 column is the count of the committed draft; the next column is after the audit of 2026-11-24 (rows removed and added, status changes, `certified` as its own mark, II.11.2 and II.11.3 counted as Lean):
 
-| Status | After closures (draft 3) | Draft 3 as committed | Draft 2 |
-|---|---|---|---|
-| Lean | 221 | 239 | 114 |
-| classical | 121 | 120 | 42 |
-| external | 40 | 48 | 7 |
-| conditional | 4 | 4 | 3 |
-| paper | 56 | 63 | 27 |
-| numerical | 22 | 24 | 17 |
-| certified | 2 | 0 | 0 |
-| reading | 83 | 83 | 25 |
-| open | 48 | 70 | 28 |
-| **Total** | **597** | **651** | **263** |
+| Status | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
+|---|---|---|---|---|
+| Lean | 221 | 221 | 239 | 114 |
+| classical | 121 | 121 | 120 | 42 |
+| external | 40 | 40 | 48 | 7 |
+| conditional | 4 | 4 | 4 | 3 |
+| paper | 56 | 56 | 63 | 27 |
+| numerical | 22 | 22 | 24 | 17 |
+| certified | 2 | 2 | 0 | 0 |
+| reading | 86 | 83 | 83 | 25 |
+| open | 47 | 48 | 70 | 28 |
+| **Total** | **599** | **597** | **651** | **263** |
 
-The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
+The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open
@@ -825,9 +827,9 @@ The open statements that decide each problem, one card each:
 * **Navier-Stokes:** VI.5.1 (the route I period contraction, in the tie the Alpoge-Buckmaster certificate), VI.5.2 (the regularity slot), VI.5.3 (continuation past T*), with VI.0f and VI.7e.
 * **Birch and Swinnerton-Dyer:** VII.5.1 (`BSDStatement`, from analytic rank 2), VII.5.2 (the ledger form), VII.5.3 (the refined formula), and VII.3.6d (the link of the Euler data to the curve).
 * **Hodge:** VIII.5.1 (codimension p >= 2), VIII.5.2 (the Hodge standard conjecture over F_q, a different problem); the arithmetic Hodge index is IV.2.5c.
-* **GU:** IX.5f (whether any candidate meets the gate's "checkable consequence"; the owner's decision) with IX.5e and IX.7a to IX.7d; IX.6h.
+* **GU:** IX.5e (a DMP consequence beyond the standard expectation; for the gate's wording the owner takes uniform charge quantisation, IX.5f) with IX.7a to IX.7d; IX.6h.
 
-The one assumption behind all seven is X.64 (O1, the running state, stated once in Part X 4.4); it is not proved.
+The one assumption behind all seven is X.64 (O1, the running state, stated once in Part X 4.4), with two edges for Yang-Mills (X.64a: O1 and the lower edge III.9.5b); it is not proved.
 
 Lean names (draft 2): every backticked identifier in this file and in Parts II to VI was checked by script against a declaration
 (`theorem`, `lemma`, `def`, ...) under `docs/mass-gap/formal/`; all resolve except `H1LocalLip` (discrepancy 5). The new modules

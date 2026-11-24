@@ -17,10 +17,12 @@ now"), so this part states exactly how far each half of the Grand Unified readin
 * **"In one structure": met, in a modest and classical sense.** The group SU(3) x SU(2) x U(1) divided by a cyclic group of order 6
   sits inside SU(5), and the kernel of that embedding is proved in Lean **[Lean]**, with the group-level facts about it **[classical]**
   (IX.3).
-* **"At least one checkable consequence": open, and the choice is the owner's.** The notes find two candidates and prove what can be
-  proved about each (IX.5). Neither is a consequence that the standard expectation of any compact U(1) or any SU(5) does not already
-  contain. Whether either meets the gate as worded is **the owner's decision. This part records the status of each and chooses
-  none.** **[open]**
+* **"At least one checkable consequence": the owner's decision, uniform charge quantisation.** The notes find two candidates and
+  prove what can be proved about each (IX.5). The owner takes candidate (b), with its guarantee from the ODP: every charge is an
+  integer multiple of one unit, the same unit for all matter, and the unit is the ODP's dimensionless 1 (IX.5) **[reading]** for the
+  guarantee, **[Lean]** for the integer charges on a compact circle, **[external]** for the measurements. Neither candidate is a
+  consequence that the standard expectation of any compact U(1) or any SU(5) does not already contain; a consequence beyond it stays
+  **[open]** (IX.5e).
 
 **What this part does not do.** It does not derive the Standard Model's hypercharges, does not predict a new particle or number, and
 contains no new physics. The hypercharges are an **input**.
@@ -52,7 +54,7 @@ API's one general statement about the G0 phase field (IX.3.3). The table is the 
 | **Well-defined input** | the representation content of one generation and the Higgs: for each field its triality `t`, duality `d` and hypercharge in sixths `q = 6Y` (`smFields`, a definition in Lean). **The hypercharges are input, not output.** |
 | **Proved structure** | the centre elements of SU(3) x SU(2) x U(1) that act trivially on all these fields form exactly a cyclic group of order 6, split as 2 x 3; every invariant component has `Q + t/3` an integer (charge in thirds, correlated with colour); the SU(5) block embedding has exactly this group as kernel; a compact U(1) admits only integer charges **[Lean]** |
 | **External inputs** | the hypercharge values (fixed by anomaly cancellation, now in Lean, IX.7b, or by SU(5)); the measured neutrality of matter, the absence of free fractional charges, proton-decay limits, the failure of coupling unification, the absence of monopoles **[classical]** / **[external]** |
-| **The one open step** | a checkable consequence, in the gate's wording, supplied by DMP and not already contained in the standard expectation. The owner decides what counts. **[open]** |
+| **The one open step** | a checkable consequence beyond the standard expectation, supplied by DMP **[open]**; for the gate's wording the owner takes uniform charge quantisation (IX.5) **[reading]** |
 | **Conclusion** (if the step closes) | the Grand Unified half of the release criterion holds |
 
 ## IX.3 What is proved
@@ -186,8 +188,15 @@ the matter, and present experiments do not decide it. Z_6 = Z_2 x Z_3 is symmetr
 in the symmetry breaking (IX.6).
 
 **The owner's position, recorded.** The owner's reading is that GU comes down to well-defined inputs, which DMP can guarantee, and that
-the checkable consequence comes from the link to G0 (candidate (b)). Whether "well-defined inputs, guaranteed" or "quantised charge,
-derived from the G0 link" meets the gate's wording is **the owner's decision**, not made here. **[open]**
+the checkable consequence comes from the link to G0 (candidate (b)).
+
+**The owner's decision (2026-11-24).** "Uniformity is also guaranteed to be constructed by the ODP": the guarantee of "well-defined
+inputs, guaranteed" is the same as the one that gives Yang-Mills its lower edge (Part X 4.4). The ODP ends only at a dimensionless 1,
+and that 1 is the unit every charge is an integer multiple of. So the checkable consequence for the gate is uniform charge
+quantisation, one unit for all matter, checked by the neutrality of matter and the absence of free fractional charges **[reading]**
+for the guarantee (IX.5f), **[Lean]** for the integer charges on the compact circle (IX.3.2), **[external]** for the measurements
+(IX.4.3a, IX.4.3b). Care point: it coincides with the standard expectation of any compact U(1); the paper claims no consequence beyond
+it (IX.5e stays open).
 
 ## IX.6 DMP readings attached to this part (all [reading])
 

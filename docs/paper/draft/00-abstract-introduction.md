@@ -78,7 +78,8 @@ Without the floor, no procedure decides it. Both halves of this dichotomy are pr
 
 **What is not proved.** No problem is solved here. One open step per card:
 
-* *Yang-Mills:* O1, the hand-over inequality for every outside, uniformly in the scale; for the Clay statement also the continuum
+* *Yang-Mills:* O1, the hand-over inequality for every outside, uniformly in the scale, and with it, in the same assumption, its lower
+  edge, a correlation that does not vanish in the limit; for the Clay statement also the continuum
   construction and every compact simple group.
 * *GRH:* Weil positivity beyond the first boxes, a margin that survives the growth of the support. RH and GRH for Dirichlet
   L-functions were proved in Lean by others in November 2026, by a route that does not use positivity; GRH beyond Dirichlet
@@ -88,7 +89,8 @@ Without the floor, no procedure decides it. Both halves of this dichotomy are pr
   here; one rests on a certificate that is announced, not released.
 * *BSD:* the rank equals the order of the zero at s = 1, from order 2 on.
 * *Hodge:* codimension p >= 2 in general.
-* *GU:* a checkable consequence beyond what any compact U(1) or SU(5) already contains; the hypercharges are an input.
+* *GU:* the checkable consequence the owner takes for the gate is uniform charge quantisation, one unit for all matter, which any
+  compact U(1) also gives; a consequence beyond that is open, and the hypercharges are an input.
 
 The paper stays a draft until the assumption is proved: each open step is stated in the exact form that would close it, so that
 closing one changes one row of the claims ledger, one verdict line and one item of this abstract.

@@ -114,8 +114,8 @@ Each tool once, most general form, a one-line "why it clicks", three application
 ## Part III. Yang-Mills: the gap mechanism reduces to one box of fixed physical size
 
 * **III.0 What is proved and what is not.** Minting half done in Lean (conditional on stated inputs); gap mechanism reduced to one box.
-  Open: **O1** F_e(L) > log mu_4 = 1.91 at one box of fixed physical size, uniformly over outsides; O2 line of constant physics and
-  non-triviality; O3 continuum field theory; O4 other groups.
+  Open: **O1** F_e(L) - 2c(L) > log mu_4 = 1.91 at one box of fixed physical size, uniformly over outsides (the excess act
+  included); O2 line of constant physics and non-triviality, whose scale-uniform lower edge is the one assumption's other edge; O3 continuum field theory; O4 other groups.
 * **III.1 Lattice theory and positivity.** *Lean.* **III.2 Minting half**, and why the crossover needs no description of its content
   (paper). *Lean.*
 * **III.3 What one box gives, and how a chain carries it.** Hand-over 0.881, forced sheet, the same law on both sides,
@@ -213,7 +213,8 @@ an outlook; it adds no claim to the problems.
 
 ## Where the draft most needs the owner's input
 
-1. **O1 in its final form.** The notes now give two one-box criteria at one scale: the chain criterion F_e(L) > 2c(L) (HTF) and the
+1. **O1 in its final form.** *Answered 2026-11-24:* the headline is F_e(L) - 2c(L) > log mu_4, the excess act included and the
+   familiar form shown as its seeming simplification; the one Lean form proposed is `FineOneBox` (to confirm). The notes now give two one-box criteria at one scale: the chain criterion F_e(L) > 2c(L) (HTF) and the
    tube threshold F_e(L) > log mu_4 (CONTAINMENT). The paper needs one statement, the Lean input form it corresponds to
    (`FineOneBox`, `FineOneBoxSplit`, `BlockGapBddW`), and the owner's worst-case argument for one box, stated so it can be checked.
 2. **The annealed-to-quenched step.** The path expansion behind the tube threshold assumes that per-box costs multiply along a path.
@@ -224,5 +225,7 @@ an outlook; it adds no claim to the problems.
 5. **O2-O4 for Yang-Mills.** Adopt the external construction's field notion (O3 becomes an audit item) or keep our own objects.
 6. **GRH framing.** Beyond Dirichlet (where the positivity route would be new) or an independent route for Dirichlet.
 7. **WHKs vs WKH.** The paper uses WHK as the owner asked; the DMP texts are unchanged.
-8. **GU's checkable consequence.** Part IX records two candidates and chooses none; the choice is the owner's.
+8. **GU's checkable consequence.** *Answered 2026-11-24:* uniform charge quantisation, with the unit guaranteed by the ODP (IX.5f).
+10. **Non-triviality and DMP-completeness.** *Answered 2026-11-24:* the scale-uniform lower edge is part of the one assumption
+   (X.64a); DMP-complete means runs on DMP (X.64b).
 9. **The personal note.** It still says "One thing led to three"; the paper now covers seven problems.

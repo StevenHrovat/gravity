@@ -219,7 +219,7 @@ are not restated here (claim X.27).
 | | Yang-Mills (SU(2)) | GRH (beyond Dirichlet; independently for Dirichlet) | NP vs coNP (via proof complexity) |
 |---|---|---|---|
 | **The one object** | one box of fixed physical size | Weil's form at every support, from arithmetic alone | a cost measure on cutting-planes lines |
-| **The open statement** | F_e(L) > log mu_4 = 1.91 (r(L) > 0.74), uniformly over every well-defined outside (III.5.6) **[open]** | lambda_min(a) >= 0 at every support, built from the primes, the characters and the real place without the zeros; eight faces (IV.4) **[open]** | interface hardness at width 3: a superpolynomial lower bound on dag-like protocols for the falsified-clause search of a random 3-CNF (V.4.10) **[open]** |
+| **The open statement** | F_e(L) - 2c(L) > log mu_4 = 1.91, the excess act included, uniformly over every well-defined outside (III.5.6) **[open]** | lambda_min(a) >= 0 at every support, built from the primes, the characters and the real place without the zeros; eight faces (IV.4) **[open]** | interface hardness at width 3: a superpolynomial lower bound on dag-like protocols for the falsified-clause search of a random 3-CNF (V.4.10) **[open]** |
 | **Proved for one unit** | max(F_tw, F_e) >= 0.881 per box (III.3.1) **[Lean]** | positivity in finite models (IV.1) **[Lean]**; each prime step numerically (IV.3.2) **[numerical]** | duality floor (e + 1)/2 for unit thresholds (V.4.5) **[Lean]**; every refutation crosses (V.4.3) **[Lean]** |
 | **Why the unit does not carry** | 0.881 covers a chain (two channels), not a grid; path entropy log mu_4 beats it in d >= 3 (III.4.1, III.5.4) **[Lean]** | only the full set of primes is positive; place-by-place and two-term assembly fail (IV.3.5, IV.3.7, IV.3.8) **[Lean]** + **[numerical]** | weighted lines are cheap in both channels; one line aggregates its units (V.4.4, V.4.6) **[Lean]** |
 | **What no duality supplies** | 't Hooft's relation forces nothing for n >= 2 sectors (III.4.4) **[Lean]** | the functional equation allows off-line pairs (IV.2.1, IV.2.2) **[Lean]** + **[classical]** | the duality floor fails for weighted lines (V.4.6) **[Lean]** |
@@ -294,6 +294,19 @@ means accepting that the running state is reached: the one box is a running, DMP
 MP-type existence assumption. In each card's terms it is the open step, O1 for Yang-Mills (section 4.2: "this object runs").
 O1 is then the *corollary* of running, slotted as the named hypothesis R of the transport theorem (claim X.7n). **[reading]**
 for the identification; **[open]** as a statement about each object (claim X.64).
+
+**DMP-complete, defined.** The owner's definition: DMP-complete means *runs on DMP*. In this paper's terms an object is DMP-complete
+when its running-state hypothesis R holds (section 4.2). The definition is circular in the way DMP itself is: whether R holds cannot
+be certified from inside (claim X.29) **[reading]** (claim X.64b).
+
+**One assumption, two edges.** The running state has the two edges of section 2. Its upper edge is decay: O1. Its lower edge is that
+the running does not collapse: for Yang-Mills, a correlation bounded below uniformly in the scale (III.9.5b). In the spectral model
+neither edge implies the other, and both fit one window **[Lean]** (model; `gap_not_lower`, `gap_and_lower_compatible`). The owner's
+reading puts both in the one assumption: the ODP runs before any start and ends only once a dimensionless 1 is reached, so a
+DMP-complete system carries a unit, and with it a correlation that does not vanish, by construction. In Yang-Mills the unit is
+Lambda: every physical quantity is a pure number times a power of it (I.5) **[classical]**, and a vanishing correlation would leave no
+non-zero such number **[reading]** (claim X.64a). So Yang-Mills carries one assumption with two edges, not two assumptions. This
+places the lower edge; it does not prove it.
 
 **What follows under it.** Accepting the process orients every start. Every start is directed through `{infinity, 2, 3}`:
 
