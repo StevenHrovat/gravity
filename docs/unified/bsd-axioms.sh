@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Birch-Swinnerton-Dyer round (BSD.md): build ProofPhase.Unified.BSDCore (the Mathlib-only core) and
-# ProofPhase.Unified.BSDAPI (the instance of the DMP API), run #print axioms on every declaration of both files (names
-# read from the source, nested namespaces tracked), list the imports of the core, and grep both files for
-# sorry / admit / native_decide / axiom.
+# Birch-Swinnerton-Dyer round (BSD.md): build ProofPhase.Unified.BSDAPI (the instance of the DMP API), run #print axioms
+# on every declaration of it (names read from the source, nested namespaces tracked), and grep it for
+# sorry / admit / native_decide / axiom. The Mathlib-only core is Arsenal.BSD in DMP.IM (repo im, arsenal/), fetched at
+# the commit lakefile.toml pins; its own gate is arsenal/tools/lint.sh and arsenal/tools/check.sh there. Its imports are
+# listed below from the fetched copy.
 # Run inside the WSL replay distro from the repository root as seen from WSL:
 #   bash docs/unified/bsd-axioms.sh > docs/unified/bsd-axioms.log 2>&1
 # Build folder: $FORMAL_DST (default ~/formal-bsd; seed it with a copy of a built .lake to avoid a Mathlib rebuild).
@@ -10,7 +11,7 @@ set -u
 export FORMAL_DST=${FORMAL_DST:-~/formal-bsd}
 src="$(cd "$(dirname "$0")/../mass-gap/formal" && pwd)"
 # module file : namespace of its declarations
-mods=("BSDCore:ProofPhase.BSD" "BSDAPI:ProofPhase.API.BSD")
+mods=("BSDAPI:ProofPhase.API.BSD")
 cd "$src"
 for m in "${mods[@]}"; do
   f=${m%%:*}
@@ -18,7 +19,7 @@ for m in "${mods[@]}"; do
   bash sync-build.sh "ProofPhase.Unified.$f" 2>&1 | grep -E "(warning|error).*$f\.lean|$f\.lean.*(warning|error)|^error|Build completed" || true
 done
 echo "== imports of the core (must be Mathlib only)"
-grep -nE "^import" "$src/ProofPhase/Unified/BSDCore.lean"
+grep -nE "^import" "$FORMAL_DST"/.lake/packages/arsenal/arsenal/Arsenal/BSD.lean
 cd "$FORMAL_DST"
 source ~/.elan/env
 for m in "${mods[@]}"; do

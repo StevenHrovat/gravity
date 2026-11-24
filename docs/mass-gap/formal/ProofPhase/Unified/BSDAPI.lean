@@ -2,11 +2,11 @@
 Birch and Swinnerton-Dyer through the API: the points on an existence line (2026-11-24).
 Released under Apache 2.0.
 
-Paper: `docs/unified/BSD.md` (sections 3 to 5), `docs/unified/API.md`. Mathlib-only core: `Unified/BSDCore.lean`.
+Paper: `docs/unified/BSD.md` (sections 3 to 5), `docs/unified/API.md`. Mathlib-only core: `Arsenal.BSD` in DMP.IM (repo `im`, `arsenal/`).
 -/
 
 import ProofPhase.API
-import ProofPhase.Unified.BSDCore
+import Arsenal.BSD
 
 /-!
 # BSD through the API: input + structure + one named open step
@@ -40,7 +40,7 @@ noncomputable section
 
 namespace ProofPhase.API.BSD
 
-open ProofPhase.BSD Filter Topology
+open Arsenal.BSD Filter Topology
 
 /-! ## 1. Hasse's bound as an encoder -/
 

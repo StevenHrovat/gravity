@@ -8,8 +8,8 @@ section 5 (the latest instance), `GRH-TIE-IN.md` (external inputs; the function-
 (Mathlib-only core modules).
 
 Files:
-- Lean, the Mathlib-only core: `ProofPhase/Unified/BSDCore.lean` (namespace `ProofPhase.BSD`, imports only Mathlib
-  v4.34.0, 28 declarations).
+- Lean, the Mathlib-only core: `Arsenal.BSD` in DMP.IM (public repo `im`, `arsenal/Arsenal/BSD.lean`, namespace `Arsenal.BSD`, imports only Mathlib
+  v4.34.0, 28 declarations; moved there on the owner's go, 2026-11-24, and imported from there, never copied).
 - Lean, the API instance: `ProofPhase/Unified/BSDAPI.lean` (namespace `ProofPhase.API.BSD`, imports `ProofPhase.API` and
   the core, 46 declarations).
 - `bsd-axioms.sh`, `bsd-axioms.log`: both modules build with no warnings; of the 74 declarations, 71 depend on the three
@@ -164,7 +164,7 @@ Read in `Mathlib/AlgebraicGeometry/EllipticCurve/` (19 files, about 9800 lines),
 - the link from `LFunction`'s local factor at the completion `Q_p` (residue field of `Z_p`) to a count over `ZMod p`
   (the identification is routine but not stated; not done here either).
 
-**What this round built to fill the core's needs** (IM rule: Mathlib-only modules, `BSDCore.lean`):
+**What this round built to fill the core's needs** (IM rule: Mathlib-only modules; now `Arsenal.BSD` in IM):
 - Mordell-Weil from weak Mordell-Weil (`mordellWeil_of_weak`), from Mathlib's height and descent [Lean];
 - the rank, and "rank 0 iff `E(Q)` finite", "points of infinite order iff rank > 0" [Lean];
 - the continuation as a named property (`IsContinuation`), its uniqueness and the well-definedness of the order [Lean];
@@ -329,7 +329,7 @@ sits in a named slot of the framework, beside the others.
 
 | file | content |
 |---|---|
-| `ProofPhase/Unified/BSDCore.lean` (namespace `ProofPhase.BSD`, imports `Mathlib` only) | `Pts`, `WeakMordellWeil`, `mordellWeil_of_weak`, `torsion_finite`, `algRank`, `algRank_eq_zero_iff`, `infinite_iff_algRank_pos`, `IsContinuation`, `continuation_unique`, `order_welldefined`, `zero_iff_order_ne_zero`, `order_parity`, `gammaFactor`, `gammaFactor_analyticAt`, `gammaFactor_one_ne_zero`, `completed_order`, `FunctionalEquation`, `analytic_parity`, `BSDStatement`, `existence_line`, `rank_parity`, `RefinedBSD`, `order_of_refined`, `countZ`, `apZ`, `hasseZ`, `hasseZ_iff`, `count_correct` |
+| `Arsenal/BSD.lean` in IM (namespace `Arsenal.BSD`, imports `Mathlib` only) | `Pts`, `WeakMordellWeil`, `mordellWeil_of_weak`, `torsion_finite`, `algRank`, `algRank_eq_zero_iff`, `infinite_iff_algRank_pos`, `IsContinuation`, `continuation_unique`, `order_welldefined`, `zero_iff_order_ne_zero`, `order_parity`, `gammaFactor`, `gammaFactor_analyticAt`, `gammaFactor_one_ne_zero`, `completed_order`, `FunctionalEquation`, `analytic_parity`, `BSDStatement`, `existence_line`, `rank_parity`, `RefinedBSD`, `order_of_refined`, `countZ`, `apZ`, `hasseZ`, `hasseZ_iff`, `count_correct` |
 | `ProofPhase/Unified/BSDAPI.lean` (namespace `ProofPhase.API.BSD`) | `frobAlpha`, `frobAlpha_normSq`, `norm_frobAlpha`, `count_normSq`, `frob`, `frob_refl`, `frob_szego`, `factor_bounds`, `EulerData` (with `p`, `p_gt_one`, `a`, `hasse'`, `fac`, `P`, `share`, `top`, `fac_bounds`, `share_pos`, `top_pos`, `fac_nonneg`, `P_nonneg`, `P_succ`, `lower`, `upper`, `no_finite_zero`, `P_le`, `Balance`), `Input`, `unconditional`, `problem`, `LowRank`, `open_of_lowRank`, `LedgerInput`, `ledgerCard`, `E32`, `E32_Δ`, `E32_points`, `E32Z`, `E32Z_Δ`, `count_E32`, `hasse_E32_five`, `Data32`, `input32`, `bsd_E32`, `card_E32` |
 | `docs/unified/bsd-axioms.sh`, `bsd-axioms.log` | build of both modules, the core's imports, `#print axioms` for all 74 declarations, source grep, the list of `External` and `OpenStep` slots |
 | `docs/unified/bsd_check.py`, `bsd_check.log` | point counts and Hasse for 32a2 and 37a1 at `p < 20000`, the Frobenius encoder, `L(E, 1)` and `L'(E, 1)`, the point `(0, 0)` on 37a1, the Euler ledger, the refined-formula ratios |

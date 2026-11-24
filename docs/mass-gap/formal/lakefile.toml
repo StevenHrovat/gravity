@@ -27,3 +27,9 @@ name = "Attempts"
 
 [[lean_lib]]
 name = "ProofPhase"
+
+[[require]]
+name = "arsenal"
+git = "https://github.com/StevenHrovat/im"
+rev = "8b7595cbbb6e188ba32d6d770bdac3f5bc1a1665"
+subDir = "arsenal"

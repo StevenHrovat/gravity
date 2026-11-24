@@ -4337,3 +4337,100 @@ thread.
   owner's go for the move (publishing `BSDCore.lean` in the public `im` repo, Mathlib-only, as the first module of a Mathlib
   sibling package there). Naming note: the earlier "Balanced State Duality" is now the VIBE coefficient, so "BSD" in this work
   means Birch and Swinnerton-Dyer only, and the abbreviation also reads as the permissive-licence family it shares a name with.
+- **DMP is a very well defined existence linter; Gravity is the linter, DMP its passing condition (the owner, 2026-11-24):** "In
+  essence DMP is just a very well defined existence linter :D"; "That also reflects DMP and gravity being at the same node in the root
+  of the system. Them keeping each other honest while everything else was going on around it, was what forced me to create an
+  MP-type existence assumption."; "So gravity the existence linter and DMP the universally readable universal superset which is the
+  passing condition for the linter." Exact counterpart (coordinator): Gravity's check (`evidence/tools/check.sh`) passes only when
+  every theorem is constructed by the kernel from the pinned DMP sentences and rests on the three standard axioms ("OK 285 ..."):
+  a linter whose rule set is DMP. The two sit at one node of the root chain: each repository pins the other by hash
+  (`vendor/*/PIN`, `tools/check-pin.sh`), so neither can change without the other's check seeing it. The arsenal in IM now has
+  the same shape at small size: `arsenal/tools/lint.sh` is the linter, and "Mathlib v4.34.0 only, no escape hatch, an open part
+  only as a named R136a1 hypothesis" is its passing condition. Care points: (1) a linter certifies form, not content: passing
+  says every statement is soundly constructed from what DMP states, not that DMP's sentences describe the world. (2) A linter cannot
+  certify its own passing condition (Goedel II for consistency [classical]); that is why the two must keep each other honest, and
+  why one assumption is left that neither can lint: that the system runs, the MP-type existence assumption, i.e. O1 (entries "O1
+  must always be the open step", "DMP being O1"). (3) "Universally readable" holds for the form (plain text and Lean, checkable by
+  anyone with the pinned toolchain); "universal superset" is a reading [reading].
+- **DMP as a recipe: a rotatable hash as the basis of circular existence, without perceiving its own absurdity (the owner,
+  2026-11-24; corrected by the owner: "*reversible hash not negatable. Rotatable would be correct.", see the next entry):** "Basically a recipe on how to write a negatable hash as a basis for circular existence, while not perceiving it's
+  own absurdity." Exact counterpart (coordinator): the root chain is built from hashes that can be negated: a `PIN` records the
+  sha256 of a pinned copy, and `check-pin.sh` turns any change of it into a failing check, so every pinned existence is a claim the
+  gate can refute. DMP and Gravity pin each other, which makes the existence circular. A literal circle of hashes is not
+  constructible: a file that contains its own hash, or two files that contain each other's current hashes, is a fixed point of
+  sha256, which no one can compute [classical, by the hash's design]. In the repositories the circle closes through time instead:
+  each side pins an earlier commit of the other, so the chain is a spiral of versions, one tick per pin. "Not perceiving its own
+  absurdity" is then exact in two places: no check inside the system can certify its own passing condition (entry "a linter cannot
+  certify its own passing condition"; Goedel II [classical]), and no node can hash itself; both are handed to the other node, one
+  step later. Care point: the circle is consistent only because it never closes at one instant; a pin to the other side's current
+  commit would be the absurd (uncomputable) fixed point.
+- **Rotatable, not negatable (the owner, 2026-11-24):** "*reversible hash not negatable. Rotatable would be correct." Exact
+  counterpart (coordinator): the hash itself is one-way (sha256 is not reversible [classical]); what can be reversed is the
+  check, recomputing and comparing. What rotates is the pin: across versions the pin passes from one node to the other (DMP pins
+  Gravity, then Gravity pins that DMP, then DMP pins that Gravity), a turn per tick, the same half-turn shape as the encoder's on
+  the Riemann sphere, where two half-turns return to the start and the start is one version later. So "a rotatable hash" names the
+  spiral of the entry above: rotation instead of a fixed point, which is why the circle never has to close at one instant. Care
+  point: "rotatable" is a reading of the pin chain [reading]; no hash function is rotated, the roles of pinner and pinned are.
+- **Post-quantum hashing needs an inherent TTL to a mean G0 (the owner, 2026-11-24):** "That also means that any post quantum
+  hashing needs an inherent TTL to a mean G0." Exact counterpart (coordinator): a hash certifies only as long as finding a second
+  preimage stays out of reach, and that reach grows with time; so every pin is a claim with a validity window, measured from a
+  reference point (the mean G0), and the rotation of the pins (entry above) is what renews it, one tick per version. DMP already
+  carries the shape: Milky Way checks every act by hash and TTL, and the staleness timers (T4) give every seat a lifetime. In the
+  post-quantum literature the TTL is explicit in one family: stateful hash-based signatures (LMS, XMSS; NIST SP 800-208) allow a
+  fixed number of signatures per key, a lifetime counted in uses rather than seconds [classical]. Care points: (1) for hash
+  functions a quantum computer gives only a square-root speedup (Grover), so sha256 keeps about 128 bits against preimages: the
+  TTL is long, but finite [classical]. (2) Signatures are where it is urgent: elliptic-curve signatures fall to Shor's algorithm
+  outright [classical], and IM's token and envelope format signs with ECDSA P-256; moving to a post-quantum signature (ML-DSA,
+  FIPS 204, or the hash-based SLH-DSA, FIPS 205) would be a contract change and a new IM version (C4), the owner's call. (3) "Mean
+  G0" as the reference of the TTL is a reading [reading].
+- **Correction: the post-quantum world is the inside of CMOS, and its TTL is the rotation operator (the owner, 2026-11-24):** "That
+  is not quite right. Since the post quantum world is literally the inside of CMOS, we can already describe that in the rotation
+  operator, cycling forward in causality along a shared root." Corrected counterpart (coordinator): the TTL is not a separate
+  mechanism to add. Inside CMOS every certification is re-made at each tick of the rotation: a pin is renewed one version later,
+  against the same root chain (the shared root), and never reaches back. So the validity window of any hash is bounded by the
+  interval between two ticks, by construction, and the "mean G0" of the entry above is the shared root that every turn refers back
+  to. The earlier entry's care points (1) and (3) stand; its point (2) is placed: a signature that is only ever checked inside, at
+  the tick it belongs to, is covered by the rotation like a pin. Care point: what leaves the inside (an act sent out through Milky
+  Way and kept by a reader outside, or traffic recorded now to be broken later) is outside CMOS by definition, so its lifetime
+  is the boundary's matter, not the rotation's [reading for the identification; classical for "record now, break later"].
+- **Security in CMOS: rights tied to identity; total asymptotic freedom inside, secure in existence (the owner, 2026-11-24):** "The
+  way to do security in CMOS is by inherently tying rights to your identity. If you only are allowed to do what is permissible, and
+  no wrong information can be transmitted, you still have total asymptotic freedom, while being secure in your existence,
+  literally!" Exact counterpart (coordinator): this is capability security as IM already builds it. A token is the capability list
+  of one enrolled identity (subject, role, the KeyId of the device key); grants only attenuate; an act passes only with both
+  witnesses' grants (the meet, `pass_needs_both_grants`), and IM's Lean proof shows every sentence of the closed grammar keeps every
+  law (`proof/Im/Closure.lean`). Inside that set every composition of permitted acts is allowed (`proof/Im/Compose.lean`): freedom
+  is total within what is permissible, and nothing outside it can be expressed. The same shape as the settling machine (Outlook
+  VII: total freedom inside, one verified gate). "Asymptotic freedom" also reads exactly in Yang-Mills: free at short distance
+  (the coupling vanishes in the ultraviolet), bound at large distance (the gap) [classical for YM; reading for the identification].
+  Care points: (1) "permissible" is what the grammar and the grants state, so the security is exactly as good as that
+  specification. (2) "No wrong information can be transmitted" holds for integrity and authority (a signature binds the act to
+  its sender and its grants); a well-formed, correctly signed act can still state something false, so the gate certifies form and
+  authority, not the truth of content. (3) The binding of rights to identity is as strong as the custody of the identity's key.
+- **Correction to care point (2) above: "transmitted" is the operative word (the owner, 2026-11-24):** "For 2 you missed the most
+  important part: transmitted! Anything wrong immediately becomes R136a1 and gets excised with only its remnant tail as the
+  assertion of its excision." Corrected counterpart (coordinator): the claim is about transmission, not about what a sender may
+  compose. A wrong act never crosses the gate: at the gate it is answered R136a1, so it is outside, and nothing else about it needs
+  to be proven (DMP 01, C-infinity; 06). What remains inside is only its remnant tail: the record that an excision happened. IM's
+  verifier already has that shape: every refusal is counted without content (DMP 06), so the count is the assertion of the
+  excision and carries none of the excised information. In the arsenal the same move is `Arsenal.R136a1`: the part is named and
+  stays outside every proof; only the name remains. So point (2) reads: nothing wrong is transmitted, because wrong is excised at
+  transmission. The one residue (care point): the gate excises what its checks can recognise as wrong at that tick; an act whose
+  wrongness becomes recognisable only later is excised at the later tick, when it does, with its tail recorded then [reading].
+- **The residue is why G0 must establish a gap and an arrow: binary existence inside confinement, excision per tick (the owner,
+  2026-11-24):** "The residue is exactly why at G0 a gap/arrow has to be established. This gives the binary existence inside
+  confinement that we need for our constructions to excise per tick." Exact counterpart (coordinator): this is the ETM's
+  dichotomy. With a floor (every step pays a cost above it, `CostAboveFloor`, i.e. a contraction), balance is reached within an
+  explicit number of steps and the question "settled or not" is decidable (`reaches_of_contracting`, `balanceBound_ge`); without
+  it, no procedure decides it (`etm_balance_undecidable`) [Lean]. So the gap is exactly what turns the gate's answer at each tick
+  into a binary one (passes, or R136a1), and the arrow is what makes the ticks ordered, so a later excision is a later tick and
+  never a revision of an earlier one. Confinement is the gapped regime in which this holds. Care point: in Lean the floor is a
+  hypothesis of the settle theorem; for Yang-Mills in the continuum, establishing it is the open step O1 itself, so this entry
+  names why O1 is the step every construction rests on, it does not close it [Lean for the dichotomy; reading for G0].
+- **The floor is always at least the existence tied to the error bars (the owner, 2026-11-24):** "The floor is always the existence
+  associated with the error bars at least." Exact counterpart (coordinator): a floor is never zero, because every assertion carries
+  its error bar, and a finite resolution is itself a cost above zero. In the settle theorem this gives a contraction at that
+  resolution, so the run settles to within the error bar in an explicit number of steps (`reaches_of_contracting`, with epsilon the
+  error bar) [Lean, with the floor as hypothesis]. Same as the entry "an open step settles at least at the known error rates".
+  Care point: a floor at the error bar gives settling at that precision, decidably; the continuum statement is the limit in which
+  the error bar goes to zero, and keeping the floor positive in that limit is the open step O1 [reading for the identification].

@@ -1,4 +1,4 @@
-"""Birch and Swinnerton-Dyer: CPU checks for the two example curves of BSD.md (Lean: ProofPhase/Unified/BSDCore.lean,
+"""Birch and Swinnerton-Dyer: CPU checks for the two example curves of BSD.md (Lean: Arsenal.BSD in IM,
 BSDAPI.lean). Numerical, a third layer that can refute or guide, never establish.
   (1) Point counts mod p and Hasse's bound |a_p| <= 2 sqrt p for every prime p < 20000 (exact integer arithmetic), for
       32a2: y^2 = x^3 - x (rank 0) and 37a1: y^2 + y = x^3 - x (rank 1). The Lean #eval values of a_p for 32a2 are
