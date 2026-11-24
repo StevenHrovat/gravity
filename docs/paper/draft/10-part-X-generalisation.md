@@ -316,8 +316,12 @@ kept correct by one step at the shared gate is correct at every tick **[Lean]** 
 the one assumption: if every scale's box is rebuilt from the one box through its gate, a box certified at one scale is correct at
 every scale, and one scale with a wrong marker refutes the sharing **[Lean]** from X.64 as a named hypothesis (claim X.68a).
 Sharing the gate alone is free; the content of X.64 is that the marker travels with it (claim X.68b). The author grounds the
-sharing in GRH; GRH supplies the sign, not the floor (claim X.17), so "certified on the box, hence everywhere" is **conditional**
-on X.64 (claim X.68d). The universal machine is a box too: its DMP-completeness is undecidable over all content, and on the
+sharing in GRH: it gives meaning to anything translated through it, so once it is assumed a valid encoder, correctness can be
+inferred. In the test that is exact. A valid encoder between scales is the shared gate, and correctness at every scale is inferred
+from it **[Lean]** (`scale_certificate`); what an encoder carries keeps its reflection coefficient **[Lean]** (`refl_map`). Care
+point: a valid encoder keeps the same margin at every scale, and the margin is the floor, which GRH alone does not supply
+(claim X.17). So assuming the encoder valid is X.64 itself, and "certified on the box, hence everywhere" is **conditional** on it
+(claim X.68d). The universal machine is a box too: its DMP-completeness is undecidable over all content, and on the
 contraction class it is a finite check, the dichotomy of 4.3 in the test's terms **[Lean]** (claim X.68c).
 
 **The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost

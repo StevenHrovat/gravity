@@ -4751,3 +4751,12 @@ thread.
   DMP-completeness of the Yang-Mills box, both directions [Lean]; the Navier-Stokes model box has the wrong marker [Lean, model].
   Care points: the marker must be the system's own claim (a marker read off the gate always passes, Lean); GRH supplies the sign,
   not the floor (X.17), so "certified on the box, hence everywhere" is conditional on X.64.
+- **GRH as a valid encoder (the owner, 2026-11-24).** "Yes, but that is the nice thing! It gives meaning for anything that can be
+  translated through it, so we just have to assume that it is a valid encoder, we can infer its correctness." Exact counterpart
+  (coordinator): in the encoder layer, whatever is carried by a norm-preserving map keeps its reflection coefficient, so its meaning
+  (`Unified/Encoder.lean`, `refl_map`) [Lean]. In the one-box test, a valid encoder between scales is exactly the shared gate: a
+  morphism of running systems keeping step, gate factor and mass, carrying the marker, with the same margin (`SharedGate`). Given
+  it, correctness at every scale is inferred (`scale_certificate`) [Lean from the hypothesis]. So the owner's reading is: the
+  one assumption, in GRH's terms, is that GRH is a valid encoder across scales, and correctness follows from it. Care point: the
+  clause "same margin" is where the floor sits; GRH by itself supplies the sign (X.17), so assuming the encoder valid with its
+  margin is X.64 itself, not a weaker assumption.
