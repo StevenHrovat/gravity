@@ -1,4 +1,4 @@
-# The paper: outline (draft 4, machine-first, relabelled 2026-11-24)
+# The paper: outline (merged at draft 4, machine-first, relabelled 2026-11-24)
 
 **Title (the owner's, 2026-11-24).** *Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP,
 with certified settling.* The owner: "since observability = equal running, seen through = run on DMP, while sounding nicer and more

@@ -1,6 +1,6 @@
 # Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
-*Draft 4, machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
+*Merged at Draft 4, machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
 X) are conditional on it. Claim labels (0.n) are listed in `../CLAIMS.md`.*
 
 ## Personal note by the first author

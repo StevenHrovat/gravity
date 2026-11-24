@@ -1,4 +1,4 @@
-# References of the paper (draft 4)
+# References of the paper (merged at draft 4)
 
 One row per work the claims ledger cites for a classical or external row. Built 2026-11-24 by reading each work's page (Crossref record, arXiv, zbMATH, dblp or the publisher); "checked" means authors, title and venue were read there, "partly checked" that a field could not be read, "not identified" that the work is not yet pinned down. `tools/paper-latex.py` typesets this table as the bibliography: authors, title, venue and a stable link (a Crossref record becomes its DOI link; search queries and encyclopaedia pages are not printed), without the status or the working remarks in parentheses, which stay here. Updated in the stage-3 consolidation (2026-11-24): DOIs for 26 rows, the Bogomolny and Ito works identified, links and titles corrected (final verification F3, F14, F-16, F-30), and 19 works added (F-15, F22, and the references the drafts named as not yet pinned). Umlauts are transliterated (repository rule); the typeset text restores them.
 

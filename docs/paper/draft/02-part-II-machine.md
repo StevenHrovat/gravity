@@ -1,6 +1,6 @@
 # Part II. The machine, and the tools the problems use
 
-*Draft 4, 2026-11-24 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
+*Merged at Draft 4, 2026-11-24 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
 
 **Which part uses which tool.** The machine (II.0 to II.3) is used by Parts III to VII; the one-box test and the cards (II.4,
 II.5) by every part from III to IX and by Appendix A; the arsenal and the re-check (II.6, II.7) by every Lean result; the tools of

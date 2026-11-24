@@ -1,6 +1,6 @@
 # Part VII. Birch and Swinnerton-Dyer: the card, three named parts, and the one open step
 
-*Draft 4. Prose, with every result marked. Modules of the Mathlib-only core live in DMP.IM (the public `im` repository,
+*Merged at Draft 4. Prose, with every result marked. Modules of the Mathlib-only core live in DMP.IM (the public `im` repository,
 `arsenal/Arsenal/`) and are written `Arsenal.BSD...`; they are in `im` at the commit pinned in `docs/mass-gap/formal/lakefile.toml`. Lean paths of this repository are relative to
 `docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VII.n) are listed in
 `../CLAIMS.md`.*

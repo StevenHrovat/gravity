@@ -1,4 +1,4 @@
-# Claims ledger of the paper draft (draft 4, 2026-11-24)
+# Claims ledger of the paper draft (merged at draft 4, 2026-11-24)
 
 Every claim made in `draft/`, with its status, its source and what would upgrade it. One row per claim. A claim with two parts of
 different status is split or carries the weaker status first. The status column holds exactly one primary mark:
