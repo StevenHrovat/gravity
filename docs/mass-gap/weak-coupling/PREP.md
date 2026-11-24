@@ -5071,7 +5071,14 @@ thread.
   shows the record whole, not who wrote it; authenticity stays with the sha256 pin), the owner: "The limit is exactly the needed
   uncertainty for a new uniqueness :)" [reading]. Counterpart (coordinator): the seal fixes the content up to what the rotation
   can tell apart, and what it leaves open is the room in which a new, distinct record can still be made; the pin then makes the
-  chosen one unique. Not built; for IM, after the owner's OK on the concept.
+  chosen one unique. Then: "So luckily, in the end, we did not break sha. We just proved and show how Shor's algorithm can be
+  constructed as a system which proves it for a hash with the correct rotational primitives supplied. Since Real numbers are pretty
+  well established, it's not that bad." [reading]. Exact part and hard line (coordinator): the shared shape is real. Shor's
+  algorithm finds the period of a function through the quantum Fourier transform, which is built from rotations by roots of unity,
+  the same kind of rotation as the seal's prime-order wheels and the machine's unit-modulus factors [classical]. But nothing about
+  Shor's algorithm was proved here, and it does not apply to sha256: a hash has no period to find, and the known quantum attack on
+  preimages (Grover) gives only a square-root speedup [classical]. Supplying "the correct rotational primitives" for a hash would
+  mean supplying its preimage structure, which is the hard part itself. Not built; for IM, after the owner's OK on the concept.
 - **DMP can have no copyright (the owner, 2026-11-24).** "That is also why DMP can have no copyright: any real ownership has to be
   transitive to its derivatives." [reading]. The owner adds that it is meant literally, and that the repositories and the paper
   are explicitly Apache 2.0, which allows free use but forces credit. Note (coordinator): in law, copyright arises with the work,
