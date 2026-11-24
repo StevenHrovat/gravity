@@ -21,7 +21,10 @@ picture.
   loses nothing on the cost side **[Lean]** (claim II.0b);
 * below the circle the run settles (`cmach_reaches`, from the settle theorem of II.3); on the circle the mass never changes
   (`cmach_lossless`), and every factor of the universal machine is 1 (`etm_fac_one`) **[Lean]** (claim II.0c);
-* the encoder's reflection coefficients (II.2) are such multipliers, with cost 1 - |c|^2 (`encMach`) **[Lean]** (claim II.0d).
+* the encoder's reflection coefficients (II.2) are such multipliers, with cost 1 - |c|^2 (`encMach`) **[Lean]** (claim II.0d);
+* a link between two nodes keeps the step, the gate factor and the mass; multiplying every amplitude by a unit number is such a
+  link, and a complex-linear map of the line that keeps every norm is multiplication by a unit number, so among linear links that
+  keep identity only rotation links (`rotHom`, `rot_of_isometry`) **[Lean]** (claim II.0f).
 
 **Care point.** The translation is exact for the cost and the rotation. The content a step carries, the program the universal
 machine runs, lives in the state and not in the number; that is where its undecidability sits (II.3) **[paper]** (claim II.0e). In

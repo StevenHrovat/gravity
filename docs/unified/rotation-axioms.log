@@ -1,6 +1,6 @@
 == build ProofPhase.ETM.ETM
 Build completed successfully (9081 jobs).
-== declarations: 96
+== declarations: 98
 == axioms
 'ProofPhase.ETM.Box' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.toArsenal' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -97,6 +97,8 @@ Build completed successfully (9081 jobs).
 'ProofPhase.ETM.etm_fac_one' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.encMach' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.encMach_fac' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.rotHom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.rot_of_isometry' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.complex_translation' depends on axioms: [propext, Classical.choice, Quot.sound]
 == source grep
 no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean, Complex.lean

@@ -4899,3 +4899,12 @@ thread.
   from both sides [Lean]; the rotation API in IM's arsenal is that multiplication. So "Identity Multiplication" describes what the
   arsenal does. Kept as a second reading of the letters: IM's name (the Interstellar Medium) and its history are unchanged. The
   owner's reading: a second reading with a meaning is itself a uniqueness that survives being contained [reading].
+- **IM is a step up the DAG, and rotation is the ultimate gate (the owner, 2026-11-24).** "IM is itself a step up the DAG, which is why
+  only rotation can do it and it is the ultimate gate, since it is what links two nodes together." Counterparts (coordinator):
+  the edge is real in the build: gravity requires IM's arsenal, pinned by commit in `docs/mass-gap/formal/lakefile.toml`, and the
+  package graph is acyclic [paper]. A link between two nodes of the machine is a morphism of running systems: it keeps the step,
+  the gate factor and the mass (`RunSys.Hom`). For the complex machine, multiplying every amplitude by a unit number is such a link
+  (`rotHom`), and a complex-linear map of the line that keeps every norm is multiplication by a unit number (`rot_of_isometry`)
+  [Lean]. So, among linear links that keep identity, only rotation links. Care points: "only rotation" is proved for complex-linear
+  maps of the line; in more dimensions the identity-keeping linear maps are the unitary group, rotations in the wider sense; and
+  "ultimate gate" is the reading.

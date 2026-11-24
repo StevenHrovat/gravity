@@ -129,7 +129,28 @@ theorem encMach_fac {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]
     (encMach X).fac (k, z) = ‖(X k).refl‖ ∧ Unified.szego (X k).refl = 1 - ‖(X k).refl‖ ^ 2 :=
   ⟨rfl, rfl⟩
 
-/-! ## 5. The translation in one statement -/
+/-! ## 5. Links between nodes: only rotation keeps identity -/
+
+/-- **A rotation links the machine to itself**: multiplying every amplitude by a unit number `u` commutes with every step and
+keeps the gate factor and the mass. -/
+def rotHom (c : ℕ → ℂ) (hc : ∀ n, ‖c n‖ ≤ 1) (u : ℂ) (hu : ‖u‖ = 1) : RunSys.Hom (cmach c hc) (cmach c hc) where
+  toFun p := (p.1, u * p.2)
+  step_comm p := by
+    show ((p.1 + 1, u * (c p.1 * p.2)) : ℕ × ℂ) = (p.1 + 1, c p.1 * (u * p.2))
+    rw [mul_left_comm]
+  fac_eq _ := rfl
+  mass_eq p := by
+    show ‖u * p.2‖ = ‖p.2‖
+    rw [norm_mul, hu, one_mul]
+
+/-- **Only rotation keeps identity**: a complex-linear map of the line that keeps every norm is multiplication by a number on the
+unit circle. -/
+theorem rot_of_isometry (f : ℂ →ₗ[ℂ] ℂ) (hf : ∀ z, ‖f z‖ = ‖z‖) : ∃ u : ℂ, ‖u‖ = 1 ∧ ∀ z, f z = u * z := by
+  refine ⟨f 1, by rw [hf 1, norm_one], fun z => ?_⟩
+  have : f z = f (z • (1 : ℂ)) := by rw [smul_eq_mul, mul_one]
+  rw [this, map_smul, smul_eq_mul, mul_comm]
+
+/-! ## 6. The translation in one statement -/
 
 /-- **The ETM translation.** Multipliers of modulus at most one make a running system whose run is the product of its steps;
 every running system is dominated by such a product; below the circle the run settles; on the circle the number carries nothing,

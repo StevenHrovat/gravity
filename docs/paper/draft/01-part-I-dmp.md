@@ -320,7 +320,10 @@ I.11a). The tool that guards it, and what it checks, are in II.6.
 Multiplication**, and the second reading is true of what the arsenal holds: the rotation API is multiplication by a number on the
 unit circle, which keeps the norm and moves only the phase; on the circle the carried mass never changes **[Lean]** (II.0c,
 `cmach_lossless`), and the encoder's root is the same norm read from both sides **[Lean]** (II.2). The owner reads a second reading
-that carries a meaning as itself a uniqueness, one that survives being contained **[reading]** (claim I.11b).
+that carries a meaning as itself a uniqueness, one that survives being contained **[reading]** (claim I.11b). He also reads IM as
+a step up the DAG: the edge is real in the build (this project requires IM's arsenal, pinned by commit, and the package graph is
+acyclic), and a link between two nodes that keeps identity is, among linear links, exactly a rotation **[Lean]** (II.0f). So
+rotation is the gate that links two nodes, the ultimate gate in his words **[reading]** (claim I.11c).
 
 ---
 
