@@ -221,13 +221,20 @@ can be based. The exact part is one kernel evaluation: over the natural numbers 
 not exist" with no assumption behind it **[Lean]** (`ETM/Essence.lean`, `two_add_two_ne_five`). Read through error bars the same
 sum is possible: at a resolution of one unit, 2.4 reads as 2 and 2.4 + 2.4 = 4.8 reads as 5, so the rounded sum is off by at most
 one unit, the "+1" of this section **[classical]** for the arithmetic, **[reading]** for the tie (claim I.7e). His essence line
-carries it to the end: **2 + 2 = 5 = 4 = 0 = 1 = SU(5) = 1.5** **[reading]**. Its proved core is that the chain 2 + 2 = 5 = 4 =
-0 = 1 holds in a ring exactly when the ring has one element: in Z/1 it is one `decide`, and in any ring its last link 0 = 1 already
-forces a single element **[Lean]** (`essence_zmod_one`, `essence_iff_subsingleton`; Mathlib's `subsingleton_iff_zero_eq_one`)
-(claim I.7d). So the chain names exactly one ring, the zero ring, where existence and non-existence coincide: the one box with no
-outside **[reading]**. The last two links are the first author's ties to the rest of the paper: SU(5), whose 5 = 3 + 2 holds the
-Standard Model group as its Z_6 quotient (X.3, **[Lean]**), and 1.5 = 3/2, the ratio of the start's primes and the certificate's
-reading (III.4.4) **[reading]** (claim I.7e).
+carries it to the end: **2 + 2 ? 5 ? 4 ? 0 ? 1 ? SU(5) = 1.5**. Only the last sign is an equation, so only 1.5 is assumed; every
+"?" is a question to be decided from the definition of 1.5 **[reading]** (claim I.7e). The exact part is sharp. 1.5 = 3/2 exists in
+a commutative ring exactly when 2 is a unit, and then each of the four ring links 2 + 2 ? 5, 5 ? 4, 4 ? 0 and 0 ? 1 is equivalent to
+0 = 1: one bit decides them all, the same way. They all hold in the ring with one element, where in Z/1 the whole chain is one
+`decide`, and they all fail in every other ring where 1.5 is defined **[Lean]** (`essence_decided`, `essence_decided_subsingleton`,
+`essence_zmod_one`, `essence_iff_subsingleton`; Mathlib's `subsingleton_iff_zero_eq_one`). Without 1.5 the link 4 ? 0 splits off:
+in Z/2, where 2 is not a unit, 4 = 0 holds and 0 = 1 does not **[Lean]** (`four_eq_zero_without_half`) (claim I.7d). The first
+author reads that link, 4 ? 0, as O1 itself, the one step that has to be supplied from outside the chain, by the confinement
+coupling positivity **[reading]** (claim I.7e). Care point: the Lean facts are about rings and say nothing about the Wilson measure;
+O1 stays the one open step. So, once 1.5
+is given, the chain names exactly one ring, the zero ring, where existence and non-existence coincide: the one box with no outside
+**[reading]**. The last link is the first author's tie to the rest of the paper: SU(5), whose 5 = 3 + 2 holds the Standard Model
+group as its Z_6 quotient (X.3, **[Lean]**), set equal to 1.5 = 3/2, the ratio of the start's primes and the certificate's reading
+(III.4.4) **[reading]** (claim I.7e).
 
 A last reading belongs here because Part IV uses it: **"mass gap = the arrow of causality exists"** (the author, 2026-11-22). The
 transfer matrix of a reflection-positive theory is a positive contraction. A gap means that, after one unit of time 1/m, every

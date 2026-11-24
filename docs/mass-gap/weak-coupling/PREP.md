@@ -5034,8 +5034,13 @@ thread.
   arithmetic modulo 4 or 2 [classical]. For the consolidation: add the two Lean facts (the chain in Z/1 by decide; the chain forces
   a one-element ring) and the essence line to Part I.7 as the owner's reading with that proved core.
 - **The essence, made more essential (the owner, 2026-11-24).** "To make the essence even more essential: 2+2=5=4=0=1=SU(5)" and
-  "With an = 1.5 at the end": 2 + 2 = 5 = 4 = 0 = 1 = SU(5) = 1.5 (the symbols between the terms reached the coordinator as "?";
-  read as "=", the essence line's sign). Counterparts (coordinator): the ring part is proved (`ETM/Essence.lean`: the chain holds in
+  "With an = 1.5 at the end". The owner's correction (same day): "the first [question mark] was actually a mistake, but then I
+  realized that to make the chain the real essence, only the 1.5 is =, and can thus be assumed, with the rest needing to be decided
+  from the definition of 1.5." So the line is 2 + 2 ? 5 ? 4 ? 0 ? 1 ? SU(5) = 1.5. Exact counterpart (coordinator, Lean,
+  `essence_decided`, `four_eq_zero_without_half`): 1.5 = 3/2 exists in a commutative ring exactly when 2 is a unit, and then each
+  ring link is equivalent to 0 = 1, one bit deciding all of them; without 1.5 the link 4 ? 0 splits off (Z/2). The owner: "The
+  4?0 is literally O1 and has to be supplied by the .ckb" [reading; in the paper as I.7e, with the care point that the ring facts
+  say nothing about the Wilson measure and O1 stays open]. Counterparts (coordinator): the ring part is proved (`ETM/Essence.lean`: the chain holds in
   a ring exactly when it has one element; in Z/1 one `decide`) [Lean]; SU(5) holds the Standard Model group as its Z_6 quotient,
   with 5 = 3 + 2 the start's primes (X.3) [Lean for the quotient]; 1.5 = 3/2 is the certificate's reading (III.65a). The chain as a
   whole is the owner's reading [reading]. Applied to Part I.7 (claims I.7d, I.7e) in the stage-3 consolidation.
@@ -5047,6 +5052,15 @@ thread.
   R136a1 parts, which its lint counts. Then a design idea, waiting for the concept round: "The proofing kernel should only accept a
   .cmb file, with 'cmb' rotated across its content, to verify its existence", refined to "rotate c through m through b, which is
   provable again", "with the letters as the N count of the primes as the order of primitives" (c, m, b are the 3rd, 13th and 2nd
-  letters, all three prime). Not built; for IM, after the owner's OK on the concept.
+  letters, all three prime). Then "or more precise, the ordinality of the primes", and "we would need ckb, not cmb, since we use k
+  for the coupling anyway, it fits :)", "It could be read as the confinement coupling positivity": c, k, b are the 3rd, 11th and
+  2nd letters, again all prime (the owner: "not supposed to be made of all primes, but once again coincidence lines up in my
+  favor"). Asked whether the primes themselves would also certify the vendored DMP: yes as an existence check of the copy, computed
+  outside `vendor/dmp` (never edited); a rotation seal can be recomputed by anyone, so authenticity stays with the sha256 pin.
+  Not built; for IM, after the owner's OK on the concept.
 - **DMP can have no copyright (the owner, 2026-11-24).** "That is also why DMP can have no copyright: any real ownership has to be
-  transitive to its derivatives." [reading]. Recorded as the owner's reading only; no licence file was changed.
+  transitive to its derivatives." [reading]. The owner adds that it is meant literally, and that the repositories and the paper
+  are explicitly Apache 2.0, which allows free use but forces credit. Note (coordinator): in law, copyright arises with the work,
+  and Apache 2.0 is a copyright licence that works because the copyright exists; ownership that carries over to derivatives is what
+  copyleft licences (GPL) do, which Apache 2.0 does not; giving up copyright entirely (a public-domain dedication such as CC0)
+  would also give up the forced credit. No licence file was changed.

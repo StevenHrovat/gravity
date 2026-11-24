@@ -55,6 +55,11 @@ unchanged, each filling in its own name; neither reads the other's findings unti
 time (v7 used Fable High and Opus High; **Fable needs the owner's approval in advance, every time**). Then one consolidation pass
 (`review/consolidation.md`) merges both with the part reviews and corrects the paper once.
 
+**Stage 3b. Review of the assembled paper (the owner's request, 2026-11-24).** After the consolidation, the assembled paper (the
+LaTeX build of the consolidation commit) is reviewed once more, by fresh reviewers who have not seen it: an attack on every claim,
+and an evaluation of readability, precision and efficiency of delivery in the actual content. Their findings are fixed in one pass,
+then stage 4 follows; the owner reads his personal note last, on the fixed paper.
+
 ## Stage 4. The owner's gate
 
 The owner reads the consolidation and approves. Any sentence about the reviews in the personal note is made true before release.
@@ -70,6 +75,11 @@ The paper leaves the draft stage only under the release criterion (`OUTLINE.md`)
 | Independent re-check, quick, draft 4 | 2026-11-24 | at `1d71a05`: stamp matches; replay of changed modules fail=0 (incl. `Arsenal.Rotation`, `Arsenal.Rigidity`); axiom audit `NONSTD_AXIOMS []`; nanoda 105,150 declarations, no typechecker errors (one pretty-printer error, not a check failure) | passed |
 | Bibliography | 2026-11-24 | `docs/paper/references.md`: 92 works, each looked up on its Crossref, arXiv, dblp or publisher record by five verification agents (haiku), merged strictly by the coordinator | 73 checked, 14 partly checked, 5 not yet identified (Grothendieck 1969, Lovasz 1975, Mordell 1922, Weil 1948, Weil 1952); task R of stage 3 re-checks every entry |
 | Stage 2, part reviews R1-R7 | 2026-11-24 | seven fresh Sonnet threads; reports `review/part-R1.md` to `part-R7.md` (gravity #39-#45); 14 blocking, about 40 major findings | all blockers and majors fixed by the same threads (#46-#52) and merged; the root-chain blocker on the owner's decision (one-way pin, mutual honesty his reading); open after the fixes: the references for gap-to-mixing and the heat-bath gap (II.10.3), 63 partly checked and 2 unidentified bibliography rows, and the personal note's factual sentences (the owner's) |
+| Stage 3, final verification | 2026-11-24 | Opus and Fable on the release candidate `f4592e3`, independently; `review/final-opus.md` (gravity #53), `review/final-fable.md` (#54) | 7 blockers (3 Opus, 4 Fable, overlapping), about 55 other findings |
+| Stage 3, consolidation | 2026-11-24 | `review/consolidation.md`: every finding with its action, the owner's decisions and readings of the day | all blockers and findings acted on; open by design: the personal note's sentences (the owner's) |
+| Independent re-check, quick, release | 2026-11-24 | at `897ef5c`: stamp matches; 15 changed modules replayed, fail=0; axiom audit `NONSTD_AXIOMS []`; nanoda 74,295 declarations, no typechecker errors (one pretty-printer error, not a check failure) | passed |
+| IM arsenal, full check | 2026-11-24 | `arsenal/tools/check.sh` at the pin `b01adbd`: lint, build against Mathlib, kernel axiom report | passed, 223 declarations, standard axioms only |
+| Bibliography, stage 3 | 2026-11-24 | `references.md` corrected and completed from three lookup rounds (haiku), merged by the coordinator | 195 works: 123 checked, 72 partly checked, none unidentified; DOIs for 26 rows |
 
 ## Citation items for the part reviews (from the bibliography round, 2026-11-24)
 

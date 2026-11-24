@@ -37,6 +37,12 @@ TYPESET = [('Goettingen', 'G\\"ottingen'), ('Lueck', 'L\\"uck'), ('Mueller', 'M\
            ('Kollar', 'Koll\\\'ar'), ('Andre', 'Andr\\\'e'), ('Asterisque', 'Ast\\\'erisque'), ('Alpoge', 'Alp\\"oge')]
 TYPESET_RE = [(re.compile(r'\b%s\b' % a), b) for a, b in TYPESET if a != b]
 
+def breakable(t):
+    """Allow line breaks in long code spans (file paths, Lean names) after a slash, a dot or an underscore."""
+    if len(t) < 24:
+        return t
+    return re.sub(r'(/|\.|\\_)', lambda m: m.group(1) + r'\allowbreak{}', t)
+
 def typeset_names(t):
     for r, b in TYPESET_RE:
         t = r.sub(lambda m, b=b: b, t)
@@ -49,7 +55,7 @@ def inline(t):
     def hold(s):
         held.append(s)
         return '\x00%d\x00' % (len(held) - 1)
-    t = re.sub(r'`([^`]*)`', lambda m: hold(r'\texttt{' + esc(m.group(1)) + '}'), t)
+    t = re.sub(r'`([^`]*)`', lambda m: hold(r'\texttt{' + breakable(esc(m.group(1))) + '}'), t)
     t = re.sub(r'\[([^\]]*)\]\(([^)]*)\)',
                lambda m: hold(r'\href{' + m.group(2).replace('%', r'\%').replace('#', r'\#') + '}{' + emph(esc(m.group(1))) + '}'), t)
     t = emph(esc(t))

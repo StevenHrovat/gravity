@@ -290,19 +290,19 @@ a type checker written independently in Rust, checks an export of every declarat
 for the modules a run covered (below). A full run once established a trusted base, Mathlib and Lean core at the pinned commit,
 recorded by hash in a stamp. Later runs re-check only the modules whose source or imports changed, against that stamp.
 
-**What the runs covered.** Two runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at commit
-`2cb301c`, covered 358 modules, including the imported IM arsenal (at the pin of that date), which is checked like the project's
-own code and is never part of the trusted base: `leanchecker` replayed every changed module with no failure; the axiom audit found
-no declaration resting on anything beyond `propext`, `Quot.sound` and `Classical.choice`; `nanoda_lib` checked 103,282 declarations
-with no type-checker error. That commit predates `ETM/Complex.lean`, `ETM/Rotation.lean`, `ETM/RotationInstances.lean`,
-`ETM/CardBox.lean` and `Closures/ChainJoint.lean`, which it therefore did not cover. The later quick run, at commit `1d71a05`
-(stamp matched; 369 modules in the axiom audit, including IM's `Arsenal.Rotation` and `Arsenal.Rigidity` at the pin used here;
-replay of every changed module with no failure; `nanoda_lib` on the project export, 105,150 declarations, no type-checker error;
-no non-standard axiom), covers the tree of that commit. **No independent-kernel run has yet covered** `ETM/CardBox.lean`
-(claim II.4e), which was added after it, nor the last two theorems of `ETM/Complex.lean` (`rot_of_isometry_real`,
-`real_eq_sign_mul_abs`, claim II.0g); for these the evidence is the project's own axiom log (`docs/unified/rotation-axioms.log`).
-A run at the final commit is still to be made. The scan for escape hatches reads code only, as the arsenal's lint does, and found
-none.
+**What the runs covered.** Three runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
+commit `2cb301c`, covered 358 modules, including the imported IM arsenal, which is checked like the project's own code and is never
+part of the trusted base: `leanchecker` replayed every changed module with no failure, the axiom audit found no declaration resting
+on anything beyond `propext`, `Quot.sound` and `Classical.choice`, and `nanoda_lib` checked 103,282 declarations with no type-checker
+error. A quick run at `1d71a05` covered the tree of that commit. The last quick run, at the release commit of this draft (`897ef5c`,
+the stage-3 consolidation), covers every module: the stamp matched, 15 modules had changed since the previous run (among them
+`ETM/CardBox.lean`, `ETM/Complex.lean`, `ETM/Essence.lean`, `ETM/Rotation.lean`, `Proof/LiftingNP.lean`), `leanchecker` replayed them
+with no failure, the axiom audit reported no non-standard axiom, and `nanoda_lib` checked the 74,295 declarations of those modules
+and what they use with no type-checker error **[Lean, re-checked]**. At the same commit IM's own full check of the arsenal (at the pin
+`b01adbd`: lint, build against Mathlib, the kernel's axiom report) passed with 223 declarations, none resting on more than the three
+standard axioms, and the axiom logs of the rotation round (125 declarations, `docs/unified/rotation-axioms.log`) and of the Hodge
+modules (47, `docs/unified/hodge-axioms.log`) were regenerated and show the same. The scan for escape hatches reads code only, as the
+arsenal's lint does, and found none.
 
 **B. The tools the problems use.**
 
