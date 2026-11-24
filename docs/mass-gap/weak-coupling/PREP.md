@@ -4908,3 +4908,10 @@ thread.
   [Lean]. So, among linear links that keep identity, only rotation links. Care points: "only rotation" is proved for complex-linear
   maps of the line; in more dimensions the identity-keeping linear maps are the unitary group, rotations in the wider sense; and
   "ultimate gate" is the reading.
+- **Why only rotation links (the owner, 2026-11-24).** "The only rotation part is proven through showing that it is the only gate a DB
+  allows, so it has to be the link to other nodes." The argument, step by step (coordinator): (1) a DB lets only existence cross,
+  and the encoder's gate keeps the norm: both sides certify the same norm (`Unified/Encoder.lean`, `root`; any norm-preserving map
+  gives an encoder, `ofRot`) [Lean for the gate; reading I.3 for "a DB allows only this"]; (2) a complex-linear gate that keeps
+  every norm is multiplication by a unit number (`rot_of_isometry`) [Lean]; (3) so a link to another node, which has to pass a DB,
+  is a rotation. Care point: the cost a crossing pays is the encoder's overlap (the reflection coefficient), not the gate, so the
+  gate stays a rotation while the step may lose; step (1) is the identification, steps (2) and (3) follow from it.

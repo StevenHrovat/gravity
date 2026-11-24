@@ -322,8 +322,12 @@ unit circle, which keeps the norm and moves only the phase; on the circle the ca
 `cmach_lossless`), and the encoder's root is the same norm read from both sides **[Lean]** (II.2). The owner reads a second reading
 that carries a meaning as itself a uniqueness, one that survives being contained **[reading]** (claim I.11b). He also reads IM as
 a step up the DAG: the edge is real in the build (this project requires IM's arsenal, pinned by commit, and the package graph is
-acyclic), and a link between two nodes that keeps identity is, among linear links, exactly a rotation **[Lean]** (II.0f). So
-rotation is the gate that links two nodes, the ultimate gate in his words **[reading]** (claim I.11c).
+acyclic). His argument for why the link is a rotation runs in three steps. A DB lets only existence cross, and the encoder's gate
+keeps the norm: both sides certify the same norm **[Lean]** (`Encoder.root`; any norm-preserving map gives an encoder) and
+**[reading]** for "a DB allows only this gate" (I.3). A linear gate that keeps every norm is multiplication by a unit number, a
+rotation **[Lean]** (II.0f). So the link to another node, which has to pass a DB, is a rotation: the ultimate gate in his words
+**[reading]** (claim I.11c). The cost a crossing pays is the encoder's overlap, not the gate, so the gate stays a rotation while the
+step may lose.
 
 ---
 
