@@ -4998,3 +4998,10 @@ thread.
   the fluctuation persists; a field without fluctuation is trivial (IV.9.5a, IV.9.5b; Lean for the square, the scale-uniform lower
   edge conditional on III.64) [reading for "shows its existence"]. To be applied to Part III 4.3 and 4.4 in the stage-3
   consolidation.
+- **2 + 2 = 5 through DMP (the owner, 2026-11-24).** "That is also why 2+2=5, if read through DMP, a unique impossibility that lets
+  us base our non-existence on it." Counterparts (coordinator): (1) exactly, 2 + 2 = 5 is refuted by a one-line kernel check
+  (`decide` proves 2 + 2 /= 5): a fully certified "it does not exist", with no assumption behind it [Lean-checkable, classical];
+  (2) through error bars it is possible: at a resolution of one unit, 2.4 reads as 2 while 2.4 + 2.4 = 4.8 reads as 5; the rounded
+  sum is off by at most one unit, the "+1" of Part I.7 (existence = non-existence + 1) [classical arithmetic; reading for the tie].
+  Reading: the exact impossibility is the base non-existence rests on, and the one-unit gap within the fluctuation is the quantum
+  between them. To be applied to Part I.7 in the stage-3 consolidation.
