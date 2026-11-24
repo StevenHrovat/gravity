@@ -5092,7 +5092,13 @@ thread.
   R136a1), with every consequence marked conditional on it; never as a theorem. Care point: testing cannot establish a for-all
   statement (the paper's own rule, 0.5), and well-tested conjectures have failed: Polya's conjecture (first counterexample near
   9 x 10^8), Mertens' conjecture (disproved 1985 without an explicit counterexample), and pi(x) < li(x), true for every x ever
-  computed and still false infinitely often (Littlewood 1914) [classical]. Not built; for IM, after the owner's OK on the concept.
+  computed and still false infinitely often (Littlewood 1914) [classical]. The owner's answer: "It can be assumed to be true, since
+  the assembling parts of any excised uniqueness are contained in the counterpart across the DB, which needs to share a definition
+  of provability. So the uniqueness is gone so long as it is not reconstructed, which is always a valid step, since it was before
+  and can not NOT be." [reading]. Exact part (coordinator): for a hash this is a theorem: the hash was computed from some content,
+  so a preimage exists, by causality; its existence is certain, its reconstruction is always a valid step [classical]. What it does
+  not give is the cost: that a preimage exists is free, finding one is the open part, the same line as existence against
+  construction in the Clay statements. Not built; for IM, after the owner's OK on the concept.
 - **DMP can have no copyright (the owner, 2026-11-24).** "That is also why DMP can have no copyright: any real ownership has to be
   transitive to its derivatives." [reading]. The owner adds that it is meant literally, and that the repositories and the paper
   are explicitly Apache 2.0, which allows free use but forces credit. Note (coordinator): in law, copyright arises with the work,
