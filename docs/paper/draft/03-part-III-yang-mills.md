@@ -33,7 +33,9 @@ It leaves four things open.
   reflection-positivity square, so it is at least zero at every level (III.9.5a, **[Lean]**). What remains is the scale-uniform
   lower edge and the scheme clause (III.9.5b, **[open]**), the opposite edge to O1's decay. It is not a second assumption: the
   ODP ends only at a dimensionless 1, so a running, DMP-complete system carries the lower edge by construction, and III.9.5b is the
-  lower edge of the one assumption, beside O1's upper edge (Part X 4.4, **[reading]**).
+  lower edge of the one assumption, beside O1's upper edge (Part X 4.4, **[reading]**). It is placed exactly at the ODP's end, the
+  certified start `{infinity, 2, 3}`; from there it follows for a DMP-complete system with nothing more to show, so it is
+  **conditional** on the one assumption, as the direction of every later tick is (X.66).
 * **(O3) The continuum field theory**: Euclidean invariance, local fields as distributions, uniqueness of the limit and Wightman
   reconstruction. For the external construction this project uses (III.9) these are claimed there **[external]**. For this project's
   own objects, rotation invariance cannot yet be stated, since the lattice has only the hypercubic group **[open]**.
@@ -360,6 +362,6 @@ grid (III.4.3) **[paper]** (`RDOEBLIN.md`, 0).
 
 O1 first: a worst-case argument, for one box of fixed physical size, that the electric cost per box exceeds the path entropy of the
 four-dimensional lattice for every well-defined outside, together with the per-box product structure along paths (III.5.7). Then O2:
-its scale-uniform lower edge (III.9.5b), which the one assumption carries beside O1 (Part X 4.4); the per-box half is proved and the gap uses only the resolution clause. Then O3: an observable bridge from this project's bounded slab
+its scale-uniform lower edge (III.9.5b), conditional on the one assumption beside O1 (Part X 4.4); the per-box half is proved and the gap uses only the resolution clause. Then O3: an observable bridge from this project's bounded slab
 observables to local fields, or adoption of the external construction's field notion with its audit. Then O4: a tuning for general G.
 O1 is the mathematical core; O2 to O4 are the remaining distance from the gap mechanism to the Clay statement.

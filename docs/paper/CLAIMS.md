@@ -212,7 +212,7 @@ Full chain: `docs/mass-gap/weak-coupling/PROOF-BLUEPRINT.md` (version 2). Crosso
 | III.9.4 | Continuum limit exists | external | `H1-OPENAI.md`; `ProofPhase/Existence/Bridge.lean`, `plaqLaw_eq_wilsonMeasure` | audit |
 | III.9.5 | The gap needs of the line of constant physics only its resolution clause (l_k -> infinity): with O1 in its one form it gives torus decay, the gap in both orders of limits and reflection positivity; the running clause, the scheme clause and non-triviality are not used | Lean | `ProofPhase/Closures/OneBoxForm.lean`, `tendsto_a_of_resolution`, `gap_of_o1Form`, `yang_mills_assembly_onebox_of_resolution` | none |
 | III.9.5a | Per box, by construction: at every level and volume the reflected correlation at even lattice time is the reflection-positivity square of the centred translate, Z wcorr(2m) = rpForm(F_m - c, F_m - c), hence >= 0; a scale-uniform lower bound c > 0 at a fixed physical time gives `NonTrivial` ("non-trivial" in the project's sense, a non-vanishing correlation, weaker than "not a Gaussian field"); the running clause holds by construction on the one-loop line beta_k = (11/(6 pi^2)) log l_k. Strict per-box positivity (non-degeneracy of the reflection form on the centred translates) is not claimed | Lean (by construction for the per-box parts) | `ProofPhase/Closures/NonTrivialSplit.lean`, `wcorr_even_eq_rpForm`, `wcorr_even_nonneg`, `UniformLower`, `nonTrivial_of_uniformLower`, `oneLoopTuning`, `running_oneLoop` | none |
-| III.9.5b | The scale-uniform halves of O2: a lower bound c > 0 on one slab correlation at a fixed physical time, uniform in the cutoff (spectral form: weight >= delta below a mass M, uniformly), and the scheme clause of the line of constant physics. In the spectral model this is the lower edge of the window whose upper edge is O1's gap: not implied by O1 (a gap at every rate with vanishing correlation), not implying it, compatible with it (a state at m <= E < M). By the owner's reading it is the lower edge of the one assumption, not a second assumption (X.64a) | open (part of the one assumption X.64; relation to O1: Lean, model) | `ProofPhase/Closures/NonTrivialSplit.lean`, `lower_of_spectral_weight`, `gap_not_lower`, `gap_and_lower_compatible`; `ProofPhase/Bridge/Spectral.lean`, `corr_ge`; `ProofPhase/Assembly.lean` (`NonTrivial`, `OnLCP`) | a proof of the one assumption (decided 2026-11-24: folded into X.64, X.64a) |
+| III.9.5b | The scale-uniform halves of O2: a lower bound c > 0 on one slab correlation at a fixed physical time, uniform in the cutoff (spectral form: weight >= delta below a mass M, uniformly), and the scheme clause of the line of constant physics. In the spectral model this is the lower edge of the window whose upper edge is O1's gap: not implied by O1 (a gap at every rate with vanishing correlation), not implying it, compatible with it (a state at m <= E < M). By the owner's reading it is the lower edge of the one assumption, not a second assumption (X.64a), placed at the ODP's end, the start {infinity, 2, 3}, from which it follows with nothing more to show | conditional (on X.64, as X.66; the placement is a reading; relation to O1: Lean, model) | `ProofPhase/Closures/NonTrivialSplit.lean`, `lower_of_spectral_weight`, `gap_not_lower`, `gap_and_lower_compatible`; `ProofPhase/Bridge/Spectral.lean`, `corr_ge`; `ProofPhase/Assembly.lean` (`NonTrivial`, `OnLCP`) | a proof of X.64 (decided 2026-11-24: folded into X.64, X.64a; conditional on it as X.66) |
 | III.9.6 | O3: Euclidean invariance, fields, uniqueness, Wightman | external (theirs) / open (ours) | `PROOF-BLUEPRINT.md` P6.4-P6.9, P7.6 | observable bridge or adoption |
 | III.9.7 | O4: every compact simple group | external (existence) / open (our tuning) | `PROOF-BLUEPRINT.md` P6.10 | general tuning |
 | III.9.8 | M1's floor at L_* gives a physical gap along a chain, not on a grid | paper | `RDOEBLIN.md` 0 | none |
@@ -418,7 +418,7 @@ Notes relative to `docs/pnp/`.
 | VI.7b | One theorem (`summable_of_gap`) gives the finite correlation length in Yang-Mills and the finite T* here | reading (Lean for both uses: `ProofPhase/Unified/Ledger.lean`, `summable_of_gap`) | BL 2.5 | none |
 | VI.7c | Scale invariance reads as the arrow of causality: the outside set has one element | reading | BL 2.4 | none |
 | VI.7d | "Not DMP-complete, hence blows up": a reading of supercriticality that names the side the 2026 claims assert; it proves nothing | reading | NS 4(6); `PREP.md`, 2026-11-24 entries | none |
-| VI.7e | With DMP-completeness defined as running on DMP (X.64b), whether Navier-Stokes violates it and whether blowup follows from that; without a floor the settling machine is undecidable (II.11), which is not divergence | open | NS 4(6); `PREP.md`, 2026-11-24, "Five answers", 4 | a proof |
+| VI.7e | The owner's reading, with DMP-completeness defined as running on DMP (X.64b): Navier-Stokes does not build (the energy ledger pays no uniform cost per scale, VI.3.4a, VI.3.4b), so it is not DMP-complete, and blowup is the expected consequence; the negative result is the expected one and makes the framework falsifiable (global regularity would refute it); the step from "not DMP-complete" to blowup is the reading, since without a floor the settling machine is undecidable (II.11) | reading | NS 4(6); `PREP.md`, 2026-11-24, "Five answers", 4, and "The lower edge at the end of the ODP", 2 | a proof of blowup or of regularity (VI.5.1) decides it |
 | VI.7f | "Settle" means the carried quantity dies out: regular on the regularity card, blowup on the route I card | reading | NS 5.2 | none |
 
 ## Part VII. Birch and Swinnerton-Dyer (`draft/07-part-VII-bsd.md`)
@@ -799,20 +799,20 @@ Part IX row IX.0b was a cross-reference and is folded; the scope rows that stay 
 
 Counted on the rows above (each row once, by its first mark; scope rows not counted: 0.1, III.0, VI.0e, VII.0e, VIII.0d, IX.0a, IX.0d). The draft 3 column is the count of the committed draft; the next column is after the audit of 2026-11-24 (rows removed and added, status changes, `certified` as its own mark, II.11.2 and II.11.3 counted as Lean):
 
-| Status | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
-|---|---|---|---|---|
-| Lean | 221 | 221 | 239 | 114 |
-| classical | 121 | 121 | 120 | 42 |
-| external | 40 | 40 | 48 | 7 |
-| conditional | 4 | 4 | 4 | 3 |
-| paper | 56 | 56 | 63 | 27 |
-| numerical | 22 | 22 | 24 | 17 |
-| certified | 2 | 2 | 0 | 0 |
-| reading | 86 | 83 | 83 | 25 |
-| open | 47 | 48 | 70 | 28 |
-| **Total** | **599** | **597** | **651** | **263** |
+| Status | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
+|---|---|---|---|---|---|
+| Lean | 221 | 221 | 221 | 239 | 114 |
+| classical | 121 | 121 | 121 | 120 | 42 |
+| external | 40 | 40 | 40 | 48 | 7 |
+| conditional | 5 | 4 | 4 | 4 | 3 |
+| paper | 56 | 56 | 56 | 63 | 27 |
+| numerical | 22 | 22 | 22 | 24 | 17 |
+| certified | 2 | 2 | 2 | 0 | 0 |
+| reading | 87 | 86 | 83 | 83 | 25 |
+| open | 45 | 47 | 48 | 70 | 28 |
+| **Total** | **599** | **599** | **597** | **651** | **263** |
 
-The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
+The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved III.9.5b to conditional on X.64 (placed at the ODP's end, as X.66) and VI.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open
@@ -824,7 +824,7 @@ The open statements that decide each problem, one card each:
 * **Yang-Mills:** III.5.6 (O1) with III.5.7 to III.5.9 and III.9.5 to III.9.7; X.7g restates the cutoff-uniform form in the transport form.
 * **GRH:** IV.0c (beyond Dirichlet L-functions), IV.4.1 to IV.4.8, and IV.1.5b (the explicit formula and Weil's criterion beyond zeta); X.7i restates the remainder bound.
 * **P vs NP:** V.4.10 (interface hardness at width 3), V.6.N1, V.6.N3, V.6.N4; X.7k restates the constant-gadget lifting step.
-* **Navier-Stokes:** VI.5.1 (the route I period contraction, in the tie the Alpoge-Buckmaster certificate), VI.5.2 (the regularity slot), VI.5.3 (continuation past T*), with VI.0f and VI.7e.
+* **Navier-Stokes:** VI.5.1 (the route I period contraction, in the tie the Alpoge-Buckmaster certificate), VI.5.2 (the regularity slot), VI.5.3 (continuation past T*), with VI.0f; VI.7e reads Navier-Stokes as not DMP-complete, blowup the expected consequence.
 * **Birch and Swinnerton-Dyer:** VII.5.1 (`BSDStatement`, from analytic rank 2), VII.5.2 (the ledger form), VII.5.3 (the refined formula), and VII.3.6d (the link of the Euler data to the curve).
 * **Hodge:** VIII.5.1 (codimension p >= 2), VIII.5.2 (the Hodge standard conjecture over F_q, a different problem); the arithmetic Hodge index is IV.2.5c.
 * **GU:** IX.5e (a DMP consequence beyond the standard expectation; for the gate's wording the owner takes uniform charge quantisation, IX.5f) with IX.7a to IX.7d; IX.6h.

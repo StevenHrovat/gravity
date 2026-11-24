@@ -305,8 +305,15 @@ neither edge implies the other, and both fit one window **[Lean]** (model; `gap_
 reading puts both in the one assumption: the ODP runs before any start and ends only once a dimensionless 1 is reached, so a
 DMP-complete system carries a unit, and with it a correlation that does not vanish, by construction. In Yang-Mills the unit is
 Lambda: every physical quantity is a pure number times a power of it (I.5) **[classical]**, and a vanishing correlation would leave no
-non-zero such number **[reading]** (claim X.64a). So Yang-Mills carries one assumption with two edges, not two assumptions. This
-places the lower edge; it does not prove it.
+non-zero such number **[reading]** (claim X.64a). So Yang-Mills carries one assumption with two edges, not two assumptions. The
+owner places the lower edge exactly at the ODP's end, which delivers the start `{infinity, 2, 3}`; from there the rest follows for a
+DMP-complete system with nothing more to show. So the lower edge is **conditional** on the one assumption in the same way as the
+direction of every later tick (claim X.66), and without the assumption it is unproved, as O1 is (III.9.5b).
+
+**The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost
+per scale (VI.3.4, **[Lean]** in the model). In the owner's reading nothing more needs or can be said than that it is not
+DMP-complete, and blowup is the expected consequence **[reading]** (VI.7e). This makes the framework falsifiable: a proof of global
+regularity would refute the prediction, and a certified blowup profile would confirm it (VI.5.1, **[open]**).
 
 **What follows under it.** Accepting the process orients every start. Every start is directed through `{infinity, 2, 3}`:
 

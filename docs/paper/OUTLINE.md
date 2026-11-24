@@ -227,5 +227,6 @@ an outlook; it adds no claim to the problems.
 7. **WHKs vs WKH.** The paper uses WHK as the owner asked; the DMP texts are unchanged.
 8. **GU's checkable consequence.** *Answered 2026-11-24:* uniform charge quantisation, with the unit guaranteed by the ODP (IX.5f).
 10. **Non-triviality and DMP-completeness.** *Answered 2026-11-24:* the scale-uniform lower edge is part of the one assumption
-   (X.64a); DMP-complete means runs on DMP (X.64b).
+   (X.64a), conditional on it and placed at the ODP's end (III.9.5b); DMP-complete means runs on DMP (X.64b); Navier-Stokes is not
+   DMP-complete, with blowup as the expected, falsifiable consequence (VI.7e).
 9. **The personal note.** It still says "One thing led to three"; the paper now covers seven problems.

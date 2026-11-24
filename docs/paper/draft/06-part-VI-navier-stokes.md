@@ -351,8 +351,12 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
 * **"Not DMP-complete, hence blows up."** In ledger terms the energy ledger cannot pay a uniform cost per scale (VI.3.4). Read as a
   prediction, this named the side the 2026 claims assert. It proves nothing: a method's failure to exclude blowup is not blowup. The
   claims, if correct, prove it by a certified profile. DMP-completeness now has a precise statement: DMP-complete means runs on DMP,
-  the running-state hypothesis R of Part X 4.2 (the owner's definition, X.64b). Whether Navier-Stokes violates it, and whether
-  blowup follows, is **[open]**: without a floor the settling machine is undecidable (II.11), and undecidable is not divergent.
+  the running-state hypothesis R of Part X 4.2 (the owner's definition, X.64b). The owner's reading: the whole process is
+  described and Navier-Stokes does not build in it (the energy ledger cannot pay a uniform cost per scale, VI.3.4a and VI.3.4b,
+  **[Lean]**), so it is not DMP-complete, and blowup is the expected consequence. The negative result is the expected one, and it
+  makes the framework falsifiable: global regularity would refute it **[reading]** (VI.7e). Blowup of the real equations is still
+  the card's open step (VI.5.1, **[open]**); in the settling machine a missing floor gives undecidability (II.11), so the step from
+  "not DMP-complete" to blowup is the reading, not a theorem.
 * **Settle means opposite things on the two cards.** In the API, "settle" means the carried quantity dies out. For regularity that
   quantity is the cascade, so settling means regular; for route I it is the perturbation from the blowup profile, so settling means
   blowup. The same theorem answers opposite physical questions.

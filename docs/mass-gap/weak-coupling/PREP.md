@@ -4720,3 +4720,19 @@ thread.
   5. *Poincare for SU(N).* "Sounds like we can contribute by generalizing Perelman's approach for DMP, I am sure we'll get a better
      construction from it." Recorded; VI.6.3j stays as it is in the ledger until that round (and an independent read of the surgery
      sketch) is done.
+- **The lower edge at the end of the ODP; Navier-Stokes as the expected negative (the owner, 2026-11-24).**
+  1. "Yes, it places the lower edge, but it does so exactly at the end of the ODP, delivering (inf,2,3), which then causes the rest
+     to simply follow for DMP-complete systems, with nothing more needing to be shown." Exact counterpart (coordinator): this is the
+     shape of X.66, where the sign fixed at the certified start `{infinity, 2, 3}` fixes the direction of every later tick under
+     X.64. The lower edge is delivered at the same place: the ODP's end is the start `{infinity, 2, 3}`, and under the one assumption
+     the lower edge needs no further step. Applied: III.9.5b becomes conditional on X.64, like X.66; nothing beyond the one assumption
+     is left to show for it [reading for the placement]. Care point: as a statement about the Wilson measure without X.64, the lower
+     edge is unproved, exactly as O1 is.
+  2. "Since the entire process is described, and NS does not successfully build, nothing more needs or can be said about it, other
+     than that it is not DMP-complete, which comes with the consequences that are expected (blowup). So the negative result is the
+     expected result, showing falsifiability." Exact counterpart (coordinator): "does not build" is the energy ledger's failure to pay
+     a uniform cost per scale, which is Lean (VI.3.4a: a summable budget never pays a uniform positive cost; VI.3.4b: in the model the
+     energy-only transfer overtakes the viscous cost at some scale), and the classical supercriticality behind it (VI.3.4c, critical
+     in 2D, which is why 2D is regular). Applied to VI.7e: Navier-Stokes is not DMP-complete [reading], and blowup is DMP's expected
+     consequence, a prediction. Care point: blowup of the real equations stays the card's open step (VI.5.1); the prediction is
+     falsifiable, since a proof of global regularity would refute it, and a certified blowup profile would confirm it.

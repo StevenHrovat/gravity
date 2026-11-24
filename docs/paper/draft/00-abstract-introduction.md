@@ -85,7 +85,8 @@ Without the floor, no procedure decides it. Both halves of this dichotomy are pr
   L-functions were proved in Lean by others in November 2026, by a route that does not use positivity; GRH beyond Dirichlet
   L-functions is open.
 * *NP vs coNP:* lifting with constant-size gadgets, and with it super-polynomial lower bounds for strong proof systems.
-* *Navier-Stokes:* regularity or blowup of the equations themselves. Two posted blowup claims by others are unrefereed and unchecked
+* *Navier-Stokes:* regularity or blowup of the equations themselves. DMP's reading predicts blowup (the equations are not
+  DMP-complete), so global regularity would refute it. Two posted blowup claims by others are unrefereed and unchecked
   here; one rests on a certificate that is announced, not released.
 * *BSD:* the rank equals the order of the zero at s = 1, from order 2 on.
 * *Hodge:* codimension p >= 2 in general.
