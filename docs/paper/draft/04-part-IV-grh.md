@@ -45,6 +45,28 @@ In a finite model everything works: zeros are finitely many, the pairing is a fi
 | IV.1.9 | Fixed points of f^n are counted by points of exact period d dividing n (finite "remnants as evidence") | **[Lean]** | `GRH/Orbits.lean`, `card_fixed_pow_eq_sum` |
 | IV.1.10 | A finite exponential sum bounded by any exponential constant is bounded exactly ("a lossy bound becomes exact on a finite spectrum") | **[Lean]** | `GRH/Induction.lean`, `norm_le_of_exp_bound` |
 
+**The explicit formula, as proved (IV.1.5).** Let c > 1, let g : R -> C be smooth with compact support, and let (gamma_i) list the
+nontrivial zeros rho = 1/2 + i gamma_i of zeta with multiplicity. Write $H(s) = \int g(x)\, e^{(s - 1/2)x}\, dx$ and $\tilde g(x) = g(-x)$.
+Then the sum over i of $H(\tfrac12 + i\gamma_i)$ converges, and
+
+$$\sum_i H(\tfrac12 + i\gamma_i) = H(1) + H(0) - \sum_{n \ge 2} \frac{\Lambda(n)}{\sqrt n}\bigl(g(\log n) + g(-\log n)\bigr) + \tfrac12\bigl(A_c(g) + A_c(\tilde g)\bigr),$$
+
+where $A_c$ is the real-place term, a line integral at Re s = c of the digamma factor against the transform of g **[Lean]**
+(`GRH/ContourShiftTie.lean`, `explicit_formula_of_smooth`; `GRH/ExplicitFormula.lean`, `efRHS`). The formula is Weil's
+**[classical]**; what is new is the formalisation, with no named step. That $A_c$ equals the real-place term of Weil's closed form
+on the critical line is not in Lean.
+
+**The certified first box, as stated.** For a = 3/5, 13/20 and 69/100 and every f in L^2(-a, a), real or complex,
+
+$$c(a)\,\|f\|^2 \le W(f), \qquad c(\tfrac35) = 1.500\cdot 10^{-9},\quad c(\tfrac{13}{20}) = 3.398\cdot 10^{-11},\quad c(\tfrac{69}{100}) = 6.417\cdot 10^{-13},$$
+
+where W is Weil's quadratic form of zeta on test functions supported in [-a, a]: the real place, with the constant
+$-\log\pi - \gamma - \log 4a$, and the prime powers n with log n < 2a, here only 2 and 3, with weights $\Lambda(n)/\sqrt n$. The three
+numbers are enclosed in ball arithmetic (`docs/unified/grh_onebox_cert-a0.60.log`, `-a0.65.log`, `-a0.69.log`; rerun with
+`tools/reproduce.sh certs`) **[certified]**; the analytic estimates that make them bounds on all of L^2(-a, a) (a polynomial part
+of degree below 100, a tail, and the cross term between them) are argued in `docs/unified/GRH-ONEBOX-CERT.md` **[paper]**, and the
+assembly from the three inputs is **[Lean]** (`GRH/OneBoxCert.lean`, `onebox_positive`) (claim X.65).
+
 ## IV.2 The mirror alone does not place the zeros
 
 **IV.2.1 Without positivity, duality allows off-line pairs.** An indefinite form is preserved by a mirror pair off the line (3/4 and

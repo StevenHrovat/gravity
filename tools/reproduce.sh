@@ -17,7 +17,10 @@ root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 OUT=${REPRO_OUT:-$root/.reproduce}
 mkdir -p "$OUT"
-PY=$(command -v python3 || command -v python || true)
+PY=""
+for c in python3 python py; do   # the first Python that actually runs (on Windows, python3 may be a store stub)
+  if command -v "$c" >/dev/null && "$c" -c "import sys" >/dev/null 2>&1; then PY=$(command -v "$c"); break; fi
+done
 fail=0
 say() { printf '\n== %s\n' "$*"; }
 bad() { echo "FAIL $*"; fail=1; }

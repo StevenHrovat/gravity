@@ -280,13 +280,11 @@ If an independent proof of the Hodge conjecture for p >= 2 were found, the card'
 the shape and the audit. The change to this paper would be one row of the ledger, one verdict line of this part and one item of the introduction's list of open steps.
 Nothing in this paper proves any part of that.
 
-The formalisation items that would change the status of the **borrowed** parts, none done and all named in the notes as reachable or far:
-
-1. **Reachable on Mathlib, not built:** hard Lefschetz as the linear algebra of an `sl_2`-representation (an `sl_2`-triple on a graded space gives
-   `L^k : V_{-k} ~ V_k` and the primitive decomposition); the Hodge-Riemann signature formula for a polarised Hodge structure of any weight;
-   Hodge structures of weight k with the Hodge filtration; finiteness of lattice Hodge classes of bounded norm. **[paper, an estimate]**
-2. **Far, needs geometry Mathlib lacks:** Kaehler manifolds, harmonic forms, the Hodge decomposition itself, the cycle class map, the
-   exponential sequence on a complex manifold. **[paper, an estimate]**
+What would change the status of the borrowed parts, none of it done **[paper, an estimate]**: reachable on Mathlib are hard
+Lefschetz as the linear algebra of an `sl_2`-representation, the Hodge-Riemann signature formula for a polarised Hodge structure of
+any weight, Hodge structures of weight k with the Hodge filtration, and finiteness of lattice Hodge classes of bounded norm; far,
+because they need geometry Mathlib lacks, are Kaehler manifolds, harmonic forms, the Hodge decomposition itself, the cycle class map
+and the exponential sequence on a complex manifold.
 
 ## VIII.8 The box in the one-box test
 
@@ -294,8 +292,7 @@ The formalisation items that would change the status of the **borrowed** parts, 
 the card's one open step `hodge <= alg`, the gate reads inside at a tick exactly when that step holds, and the marker is the claim
 "inside". The box of an input passes exactly when the Hodge conjecture holds for it **[Lean]** (`hodge_box_iff`, `ETM/CardBox.lean`;
 claim VIII.8a). For divisors, codimension one, the box passes, from Lefschetz (1,1) with its named inputs **[Lean]** (from `External`;
-`hodge_box_divisor`). The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and
-the content stays in the step **[paper]**. **[reading]** The first author names the ticks the **+dimensions** (in plain terms, the
+`hodge_box_divisor`). Like every card box it is a restatement of the open step (II.5) **[paper]**. **[reading]** The first author names the ticks the **+dimensions** (in plain terms, the
 codimensions). The first author's reason: at each codimension the Hodge-Riemann form is positive, up to its fixed sign, on the primitive
 classes (an `External` slot here, VIII.3.1), so each is a reflection-positive covariant dimension, and what is positive exists. On
 that reading the gate at +dimension p reads inside when every rational (p,p) class is a rational combination of classes of

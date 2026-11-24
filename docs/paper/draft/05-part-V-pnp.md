@@ -17,6 +17,12 @@ Two notions of the problem are used:
   NP != coNP implies P != NP. `PROOF-SYSTEMS.md`. This part works on the NP vs coNP side, through proof complexity; that is why the abstract names
   NP versus coNP for this problem.
 
+**The algebraic analogue.** On 23 November 2026 a proof that VP != VNP over every field, Valiant's algebraic analogue of P != NP,
+was posted with a Lean 4 formalisation, credited to Claude (Anthropic): circuits for the Hamiltonian cycle polynomial over every
+field, and for the permanent outside characteristic 2, need more than m^(c (log m)^(1/3)) gates (Anthropic 2026). Its own README
+says that no human mathematician has checked the proof, that no machine checks that the Lean statement matches the paper, and that
+it does not settle P vs NP **[external, unverified]** (claim V.0v). This paper uses nothing from it.
+
 ## V.1 Inside a certified class: the chain holds (links 1 to 4)
 
 A finite spin system with positive weights whose Dobrushin influences sum to less than one is easy in three senses: its sampler mixes

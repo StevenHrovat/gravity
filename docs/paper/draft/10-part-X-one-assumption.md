@@ -43,7 +43,8 @@ This part calls the two together the **container**: a containing existence with 
   p = Z_tw/(Z_tw + Z_0) is below one half **[Lean]** (`Flip/Strict.lean`, `su2_Ztw_lt_Z`; III.1.6; for SU(2) on the three-dimensional lattice, every even time extent and spatial background).
 * *Free, from below.* 0 < p needs 0 < Z_tw, which the Lean statement carries as a hypothesis (`Crossover/HandOver.lean`,
   `su2_handover`; III.3.1). The positivity is proved in Lean for the general SU(N) twisted partition function (`General/SUNTwistWilson.lean`,
-  `sunZtw_pos`; III.1.6); this part does not show that it covers the object of `su2_handover`. Keeping p bounded away from 0 as the
+  `sunZtw_pos`; III.1.6), and with it the hand-over holds there unconditionally (`sun_handover`, claim III.3.1b); that the object
+  of `su2_handover` is the k = 1 case of that package is the identification `General/SUNTwistInstances.lean` names. Keeping p bounded away from 0 as the
   box grows is the open step (section 4).
 
 The strict facts are cross-references to III.1.6, III.1.7 and III.3.1 (claim X.56).
@@ -486,9 +487,8 @@ incompleteness side (claim X.43).
 many ticks, each one settling. That every tick past the start pays is **[conditional]** on the established process (section 4.4); the
 composition of steps that pay is a ledger again **[Lean]** (`Unified/Encoder.lean`, `pays_of_factors`;
 `Unified/Ledger.lean`, `carry`; `ETM/RunSys.lean`, `RunSys.carry`, `RunSys.contract`; `Margin.survive`) (claim X.44). For GRH the start is
-`{infinity, 2, 3}`: Weil's form on supports up to a = 0.69 is positive there, with a certified margin
-c = 1.5e-9, 3.4e-11, 6.4e-13 at a = 0.60, 0.65, 0.69 **[certified]** for the enclosures, **[paper]** for the analytic estimates (ball arithmetic;
-`docs/unified/GRH-ONEBOX-CERT.md`; the abstract step `GRH/OneBoxCert.lean` is **[Lean]**) (IV.3).
+`{infinity, 2, 3}`: Weil's form on supports up to a = 0.69 is positive there, with the certified margins of section 4.4 (claim
+X.65).
 
 **The continuum needs a uniform bound.** Transitivity reaches every finite target. The continuum is a limit, not a finite target.
 The margin carried by ticks is c_0 times the product of the factors. A uniform lower bound on the factors keeps it positive at

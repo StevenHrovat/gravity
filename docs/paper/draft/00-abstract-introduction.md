@@ -112,8 +112,8 @@ it rests on.
   one way to leave a statement open, a named hypothesis that never becomes an axiom; this repository's cards use the same
   transparent form under the names `OpenStep` and `External`.
 * **Yang-Mills** **[Lean]**, for SU(2) on the lattice: reflection positivity, the strict bound between a sector and its twist (for
-  every SU(N)), a per-box hand-over rate of at least log(1 + sqrt 2) (from positivity of the twisted partition function, a stated
-  hypothesis), zero join loss in slab form, and the assembly from a one-box gap certificate to exponential decay of slab
+  every SU(N)), a per-box hand-over rate of at least log(1 + sqrt 2) (unconditionally for the SU(N) twisted Wilson partition functions,
+  `sun_handover`; for the `Flip` object of SU(2) from positivity of its twisted partition function, a stated hypothesis), zero join loss in slab form, and the assembly from a one-box gap certificate to exponential decay of slab
   correlations (a lattice mass gap) in both orders of limits; the step to a gap of the Hamiltonian is argued in prose (III.2.7). The
   open step in the form the assembly uses is `FineOneBox`; the Yang-Mills card's own slot is the chain form `YMOneBox`, related to
   `FineOneBox` in prose (III.5.9). The box test restates both: each holds exactly when its box is DMP-complete (III.12; restatements
@@ -238,6 +238,14 @@ computations can refute a statement or guide a proof; they never establish a sta
 paper is tied to the statement it would discharge, and a passing measurement is reported as consistent, not as proof. The Lean is
 re-checked by independent kernels (Part II, II.7, with the commit of the last run), and IM's arsenal passes its lint at every change,
 listing every part left open by name.
+
+### Reproducing it
+
+Every **[Lean]**, **[certified]** and **[numerical]** claim can be rerun from a clone of the repository with one script, stage by
+stage: `tools/reproduce.sh paper` (the ledger and the PDF), `evidence` (the DMP evidence chain, "OK 285"), `lean` (the paper's
+Lean against Mathlib, every axiom log compared line by line), `certs` (the certified first box, the three margins) and `kernels`
+(the second kernels). `docs/paper/REPRODUCE.md` lists what each stage needs, how long it takes and what it prints when it passes;
+the claims ledger `docs/paper/CLAIMS.md` gives, for every claim, the declaration, log or reference that checks it.
 
 ### What is new
 

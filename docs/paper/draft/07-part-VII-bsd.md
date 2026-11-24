@@ -324,18 +324,12 @@ If an independent proof supplied the construction and the bound for orders 2 and
 that work, and this part would supply the ledger skeleton and the audit. The change to this paper would be one row of the ledger,
 one verdict line of this part and one item of the introduction's list of open steps. Nothing in this paper proves any part of that.
 
-The formalisation items that would change the status of the **borrowed** parts, none done:
-
-1. Keep the axiom log of the adapted API instance and IM's own audit of the native modules current at every change of the pin
-   (both done for this draft, VII.3 and II.7).
-2. Prove weak Mordell-Weil on Mathlib (Kummer theory, class groups and unit groups of the 2-division field), so `WeakMordellWeil` stops
-   being a named part.
-3. Prove Hasse's bound (isogeny degrees as a quadratic form, or intersection theory on E x E), so `Hasse` stops being a named part.
-4. Prove the Euler product bound beyond Q (done over Q, `eulerProductBound_rat`; for a number field of degree above 1 it needs the
-   residue fields of the completions as `O_K / v` and the convergence of `zeta_K` for `re s > 1`).
-5. State and prove the link from Mathlib's local factor at the completion to the count over `Z/p`, at every prime, so `EulerData` is
-   tied to one curve in Lean.
-6. Modularity, a very large formalisation, stays an external input.
+What would change the status of the borrowed parts, none of it done: proofs on Mathlib of weak Mordell-Weil (Kummer theory,
+class groups and unit groups of the 2-division field) and of Hasse's bound (isogeny degrees as a quadratic form, or intersection
+theory on E x E), so that `WeakMordellWeil` and `Hasse` stop being named parts; the Euler product bound beyond Q (done over Q,
+`eulerProductBound_rat`); and the link from Mathlib's local factor at a completion to the count over Z/p, so that `EulerData` is tied
+to one curve in Lean. Modularity, a very large formalisation, stays an external input. The axiom logs of the API instance and IM's
+audit of the native modules are kept current at every change of the pin (VII.3, II.7).
 
 ## VII.8 The box in the one-box test
 

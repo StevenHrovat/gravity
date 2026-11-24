@@ -252,7 +252,7 @@ first author's decision.
 **Gate factor and marker.** In the Lean the box is `tickBox (fun _ => ChargeQuantisation)`: the ticks are `0, 1, 2, ...`, every tick
 carries the one statement "every label on G0's phase field has an integer charge", the gate reads inside at a tick exactly when that
 statement holds, and the marker is the claim "inside". This box passes, proved: every continuous character of the circle is z to the
-n **[Lean]** (`gu_box`, `ETM/CardBox.lean`; claim IX.8a). **[reading]** The first author names the ticks the **points** (he also offers
+n **[Lean]** (`gu_box`, `ETM/CardBox.lean`; claim IX.8a). **[reading]** The first author names the ticks the **points** (also offered:
 "uniquenesses" and "DoEs"): the labels carried on G0's phase field, one gate reading per label. The name fits the classical fact that
 the continuous characters of the circle are the integers, the points of its dual group **[classical]** (Pontryagin duality); the
 identification of the ticks with the labels is not in the Lean, where every tick carries the same statement. The GU card's open step, a consequence beyond the standard expectation (IX.5e), is not a

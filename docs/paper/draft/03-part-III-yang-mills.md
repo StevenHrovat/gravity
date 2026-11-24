@@ -123,7 +123,10 @@ This section collects what holds for every box, and what carries it along a line
 **A strict sign gives a rate (II.13).** By the strict flip bound (III.1.6) and 't Hooft's duality F_e = -log tanh(F_tw/2), at every box
 size max(F_tw, F_e) >= log(1 + sqrt 2) = 0.881. Rarity's rate is F_tw, the free energy of a forced centre sheet; disorder's rate is
 F_e, the per-box decay of a centre-charged signal. They cannot both be small. **[Lean]** (`su2_handover`; hypotheses beta != 0,
-even time extent, and 0 < Z_tw, which is not yet linked to the positivity `sunZtw_pos` proved for `sunZtw 2`).
+even time extent, and 0 < Z_tw). For the SU(N) twisted Wilson partition functions the rate holds with no further hypothesis, for every
+N >= 2 and every nontrivial sector, since there 0 < Z_tw < Z is proved **[Lean]** (`General/SUNHandOver.lean`, `sun_handover`, from
+`sunZtw_pos`, `sunZtw_lt`); that the `Flip` object of `su2_handover` is the k = 1 case of that package is the identification
+`General/SUNTwistInstances.lean` names, not proved (claim III.3.1b).
 
 **A flux-carrying outside forces at least one sheet.** The flux cells of a box are even in number (Gauss's law mod 2), so a flux
 carrying outside forces a sheet through the box, crossing the boundary at every flux cell. This is the quantum: "at least something"
@@ -152,6 +155,7 @@ eps_* for every spacing, the influence at physical distance D is at most exp(-m 
 | # | Result | Status | Source |
 |---|---|---|---|
 | III.3.1 | Per-box hand-over rate: max(F_tw, F_e) >= 0.881 at every box size | **[Lean]** (0 < Z_tw a hypothesis) | `ProofPhase/Crossover/HandOver.lean`, `su2_handover` |
+| III.3.1b | The same rate for every SU(N) sector of the twisted Wilson partition functions, unconditionally | **[Lean]** | `ProofPhase/General/SUNHandOver.lean`, `sun_handover` |
 | III.3.2 | A flux-carrying outside forces at least one sheet | **[Lean]** | `ProofPhase/Crossover/FluxRate.lean`, `exists_sheet_of_flux`, `even_card_fluxCells` |
 | III.3.3 | The flux law is the same seen from inside and outside; no sources | **[Lean]** | `ProofPhase/Crossover/Dichotomy.lean`, `cob_restrict_eq_cob_restrict_compl`, `sum_cob_restrict_eq_zero` |
 | III.3.4 | Superadditivity up to the excess terms; the rate multiplies along a chain if F_e(L) > 2C, C bounding the excess act c(kL) on every multiple of L | **[Lean]** (abstract) | `ProofPhase/Crossover/CompositeHTF.lean`, `flux_superadd`, `flux_superadd_iter` |
