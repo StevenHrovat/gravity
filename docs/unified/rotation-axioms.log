@@ -1,6 +1,6 @@
 == build ProofPhase.ETM.ETM
-Build completed successfully (9078 jobs).
-== declarations: 77
+Build completed successfully (9080 jobs).
+== declarations: 83
 == axioms
 'ProofPhase.ETM.Box' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.toArsenal' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -79,5 +79,11 @@ Build completed successfully (9078 jobs).
 'ProofPhase.ETM.crossoverGate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.crossover_halfTurn' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.rotation_round' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.g2Data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.G2Surgery' does not depend on any axioms
+'ProofPhase.ETM.g2_rigid_iff_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.g2_rigid_of_one_assumption' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.g2_rigid_of_one_assumption'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.g2_not_shared_of_not_rigid' depends on axioms: [propext, Classical.choice, Quot.sound]
 == source grep
-no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean
+no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean

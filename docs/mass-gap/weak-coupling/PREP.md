@@ -4867,3 +4867,10 @@ thread.
   owner's identification [reading]. Care point: this certifies the DMP-complete state, conditional on the assumption; it does not
   turn the classical question "is G2 rigid?" into a theorem. If that computation came out "not rigid", the identification of the
   DMP-complete G2 state with G2's rigidity would be what fails, which is the falsifiable edge.
+- **A corollary becomes an axiom one layer down (the owner, 2026-11-24).** "Making it conditional fits the usual construction of a
+  DMP corollary getting made into an Axiom one layer down." Built (coordinator): IM's `Arsenal.Rigidity` (im#12) makes rigidity a
+  one-box test, DMP-complete exactly when rigid, and rigid from the shared gate; gravity's `ETM/G2Rigidity.lean` applies it to G2:
+  G2 rigid exactly when its box is DMP-complete (from one named External slot, the surgery input), and G2 rigid from the one
+  assumption (III.64 as a named OpenStep). Care point: in this Lean "axiom one layer down" is a named hypothesis of the next
+  layer's theorem (R136a1 or OpenStep), never a Lean axiom; the linter lists each by name, which is how the system stays one box.
+  G2's unconditional rigidity (A.5r) stays open; the theorem makes it a falsifiable consequence of the one assumption.

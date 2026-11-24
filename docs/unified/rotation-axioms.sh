@@ -16,7 +16,7 @@ source ~/.elan/env
 tmp=$(mktemp /tmp/AxiomsRot.XXXXXX.lean)
 {
   echo "import ProofPhase.ETM.ETM"
-  for f in Rotation RotationInstances; do
+  for f in Rotation RotationInstances G2Rigidity; do
     awk '
       /^namespace / { n++; kind[n] = "ns"; name[n] = $2; next }
       /^section/    { n++; kind[n] = "sec"; name[n] = ""; next }
@@ -32,5 +32,5 @@ echo "== axioms"
 lake env lean "$tmp"
 rm -f "$tmp"
 echo "== source grep"
-grep -nE "\bsorry\b|\badmit\b|native_decide|^axiom" ProofPhase/ETM/Rotation*.lean ||
-  echo "no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean"
+grep -nE "\bsorry\b|\badmit\b|native_decide|^axiom" ProofPhase/ETM/Rotation*.lean ProofPhase/ETM/G2Rigidity.lean ||
+  echo "no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean"

@@ -135,7 +135,9 @@ DMP-complete means correct at every tick **[Lean]** (claim II.4a). The outside i
 plaquette layer the flux read from a box and from its complement agree **[Lean]** (claim II.4b). Care point: the test has content
 only when the marker is the system's own claim; a marker read off the gate afterwards always passes **[Lean]** (claim II.4c). What
 the test gives for each card is in Part IV (IV.10c to IV.10e), Part VII (VII.7g) and Part III (4.4). The one-box certificate (one step at the shared gate certifies every tick), the scale certificate from the sharing,
-and the universal machine as a box are stated with the one assumption in Part III 4.4 (III.68 to III.68c) **[Lean]**.
+and the universal machine as a box are stated with the one assumption in Part III 4.4 (III.68 to III.68c) **[Lean]**. Rigidity is
+one-box testable too: a manifold's presentations with its self-equivalences acting make a box that is DMP-complete exactly when the
+manifold is rigid, and rigid from the shared gate (IM, `Arsenal.Rigidity`) **[Lean]** (claim II.4d; G2 in Appendix A.5).
 
 ## II.5 The API: one card per problem
 

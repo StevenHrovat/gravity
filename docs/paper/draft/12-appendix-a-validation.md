@@ -119,7 +119,11 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   point: G2's rigidity is a finite computation, true or false whatever is assumed, so the assumption cannot decide it; the reading
   predicts its answer, and the computation tests both the prediction and how far "placed, hence certified" reaches. In the
   owner's words, the one assumption predicts and certifies that the G2 channel exists as a DMP-complete state, which is O1 read as
-  constructability: **conditional** on the one assumption (III.64), with its identification with G2's rigidity a **[reading]**
-  (A.5u). The owner reads the missing
+  constructability. This is now a theorem one layer down. IM's rigidity box is DMP-complete exactly when the manifold is rigid
+  (II.4d); applied to G2, G2 is rigid exactly when its box is DMP-complete, and G2 is rigid if its box shares the gate with the
+  certified one box **[Lean]**, from one named External slot (the surgery input, which Mathlib cannot state) and the one assumption as
+  a named OpenStep (A.5u, A.5v; `ETM/G2Rigidity.lean`, `g2_rigid_of_one_assumption`). The corollary is the next layer's named
+  hypothesis, never a Lean axiom, and the linter lists it. A computation showing G2 not rigid would refute the sharing for G2
+  **[Lean]** (`g2_not_shared_of_not_rigid`); G2's unconditional rigidity stays **[open]** (A.5r). The owner reads the missing
   sign itself as the point: Z/2 carries no order, so no floor, so no decidable reading, and only a start that forces one is
   DMP-complete (Part III 4.3, III.70).
