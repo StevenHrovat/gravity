@@ -5014,3 +5014,12 @@ thread.
   [reading]. Care points: the correctness theorems are ordinary Lean proofs over the reals and Mathlib, not decide-only; the open
   steps are not of this form yet (O1 is a for-all over every outside, not one finite check); `native_decide` stays excluded (the
   kernel must check the step). To be applied to Part II (II.3 to II.5) in the stage-3 consolidation.
+- **To be correct is to have the correct error (the owner, 2026-11-24).** "The correctness theorem now shows that to be correct is to
+  have the correct error, which makes it a unique impossibility in DMP, satisfying the running condition O1." Exact part
+  (coordinator): in the one-box test the marker is correct when it agrees with the gate's verdict, and the verdict includes the
+  margin (inside when the factor is within theta); settling is always within an error bar epsilon (`reaches_of_contracting`)
+  [Lean]. So correctness is correctness up to the error bar, and with the 2 + 2 = 5 entry the exact statement is the impossibility
+  and correctness lives in the right error [reading]. Care point, kept as a hard line: this does not satisfy or discharge O1. O1 is
+  a definite inequality about one box of the Wilson measure, over every outside and uniformly in the scale; the correctness theorem
+  says what "correct" means once a floor is given, not that the Wilson measure has that floor at every scale. O1 stays the one open
+  step (III.64), and the paper says no Millennium Prize problem is solved. For Part III 4.3 in the stage-3 consolidation.
