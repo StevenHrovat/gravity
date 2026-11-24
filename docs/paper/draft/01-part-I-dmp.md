@@ -316,6 +316,12 @@ A project that needs a word from it **imports** the word. It never copies it. If
 project uses it from there as a dependency. **[paper]** (a project rule, and how it is done today: `arsenal/README.md`; claim
 I.11a). The tool that guards it, and what it checks, are in II.6.
 
+**A second reading of the letters.** IM is the Interstellar Medium, and that name stays. Its letters also read as **Identity
+Multiplication**, and the second reading is true of what the arsenal holds: the rotation API is multiplication by a number on the
+unit circle, which keeps the norm and moves only the phase; on the circle the carried mass never changes **[Lean]** (II.0c,
+`cmach_lossless`), and the encoder's root is the same norm read from both sides **[Lean]** (II.2). The owner reads a second reading
+that carries a meaning as itself a uniqueness, one that survives being contained **[reading]** (claim I.11b).
+
 ---
 
 ## I.12 The vocabulary in one table

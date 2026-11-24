@@ -4892,3 +4892,10 @@ thread.
   step carries (the program the universal machine runs) lives in the state, not in the number, and that is where its
   undecidability sits. "Complex multiplication" in number theory (CM elliptic curves) is a different notion; the paper writes
   "multiplication by complex numbers".
+- **IM, read a second way: Identity Multiplication (the owner, 2026-11-24).** "IM can now get a true alternative backronym as Identity
+  Multiplication" and "a second reading with a meaning is the best way, as that, in itself is a uniqueness, which can survive being
+  contained." Counterpart (coordinator): multiplication by a number on the unit circle keeps the norm and moves only the phase; on
+  the circle the carried mass never changes (`ETM/Complex.lean`, `cmach_lossless`) and the encoder's root is the same norm read
+  from both sides [Lean]; the rotation API in IM's arsenal is that multiplication. So "Identity Multiplication" describes what the
+  arsenal does. Kept as a second reading of the letters: IM's name (the Interstellar Medium) and its history are unchanged. The
+  owner's reading: a second reading with a meaning is itself a uniqueness that survives being contained [reading].
