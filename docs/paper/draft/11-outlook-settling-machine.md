@@ -35,19 +35,20 @@ A general intelligence is a CMOS system that runs entirely in IM tokens, adapted
 The concept depends on one property: that the inside settles to a balanced output within the tick. This is exactly the decidable
 half of the Existence Turing Machine (Part II and `docs/unified/ETM.md`).
 
-* **Settling is guaranteed when every internal step contracts**, i.e. pays a cost above the floor. The state is then within
-  epsilon of balance after an explicit, computable number of steps. **[Lean]** `ProofPhase/ETM/Machine.lean`:
-  `reaches_of_contracting`, `balanceBound_ge`; a contracting step is a cost above the floor, `contracting_iff_costAboveFloor`.
+* **Settling is guaranteed when every internal step contracts by a fixed factor**, i.e. pays a cost above the floor. The state is then within
+  epsilon of balance after an explicit, computable number of steps (one factor theta with e^delta theta < 1 for every state; the
+  number depends on the starting mass). **[Lean]** `ProofPhase/ETM/Machine.lean`:
+  `reaches_of_contracting`, `balanceBound_ge`; for positive factors a contracting step is a cost above the floor, `contracting_iff_costAboveFloor`.
 * **Without a contraction, no procedure decides settling in general.** **[Lean]** `etm_balance_undecidable`, from Mathlib's
   halting theorem.
 
 **Changing the system while keeping its existence guaranteed.** Two kinds of change keep the guarantee, both in Lean:
 
 * **Changes that are maps of running systems** (relabelling, restricting to a part the run never leaves, coarse-graining by a
-  relation the run respects) keep the ledger exactly. Step, factor and carried amount commute with the map. **[Lean]**
+  relation that the step, the factor and the mass respect) keep the ledger exactly. Step, factor and carried amount commute with the map. **[Lean]**
   `ProofPhase/ETM/RunSys.lean`: `Hom`, `Hom.iterate_comm`, `sub`, `quot`.
 * **Changes that keep every factor at most theta < 1** (any new layout or coupling inside the contracting class) keep the settle
-  bound, whatever else they change. **[Lean]** `RunSys.contract`, `reaches_of_contracting`.
+  bound (for the same starting mass), whatever else they change. **[Lean]** `RunSys.contract`, `reaches_of_contracting`.
 
 In the first author's terms, an IM change (inside) must stay in the second kind. A GG change (from outside) passes the gate
 first. Self-modification of the embedding then never loses the guarantee that the system settles. **[reading]** for the IM/GG

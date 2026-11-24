@@ -1,6 +1,6 @@
 # Part I. DMP: a language for existence
 
-*Draft 2, 2026-11-24. Part I is vocabulary, not mathematics. Every statement in it is a definition of DMP, a reading of DMP, or a
+*Draft 4, 2026-11-24. Part I is vocabulary, not mathematics. Every statement in it is a definition of DMP, a reading of DMP, or a
 pointer to the precise statement in Part II. Claim labels (I.n) are listed in `../CLAIMS.md`.*
 
 ## I.0 How to read this part
@@ -50,7 +50,7 @@ configuration counts, and says nothing about what the configuration looks like. 
 | GRH | a pairing of test functions (Weil's explicit-formula pairing) is non-negative |
 | P vs NP | a formula is satisfiable iff its count of satisfying assignments is positive (SAT iff #SAT > 0) |
 
-**What Part II makes of it.** Positivity is the first link of the common chain (II.9). It is the input of every construction that
+**What Part II makes of it.** Positivity is the first link of the common chain (II.8; the link itself is II.9). It is the input of every construction that
 follows, and it is the step that is hard in two of the three problems.
 
 ---
@@ -118,12 +118,15 @@ next without loss exactly when it is carried by a conserved quantity. **[reading
 
 **What Part II makes of it.**
 
-* The remnant of a contradiction is a refutation, and refutations always exist (refutation completeness of resolution)
-  **[Lean]** (`Proof/Complete.lean`, `refutable_iff`).
-* The carrier is a conserved flux. In both Yang-Mills (the centre flux) and propositional proof (the Tseitin parity) a Gauss law
-  holds mod 2: the flux through the boundary of a region equals the charge inside, whatever happens inside **[Lean]**
-  (`Proof/Crossing.lean`, `gauss`; `Crossover/FluxRate.lean`, `exists_sheet_of_flux`). Conserved flux cannot be screened. This is
-  the second branch of the dichotomy (II.14).
+* The remnant of a contradiction is a refutation, and every unsatisfiable formula has one (refutation completeness of tree-like
+  resolution; the refutation can be exponentially long) **[Lean]** (`Proof/Complete.lean`, `refutable_iff`).
+* The carrier is a conserved flux. In propositional proof (the Tseitin parity) a Gauss law holds mod 2: the parity of the true
+  edges at the vertices of a region equals the parity of the true edges on its boundary, whatever happens inside **[Lean]**
+  (`Proof/Crossing.lean`, `gauss`). In the plaquette layer of Yang-Mills (the centre flux, a Z/2 cochain) the Lean facts are
+  counting ones: for a closed cochain the flux is the same seen from inside and from outside, and a flux cell has a sheet plaquette
+  in the box **[Lean]** (`Crossover/Dichotomy.lean`, `cob_restrict_eq_cob_restrict_compl`; `Crossover/FluxRate.lean`,
+  `exists_sheet_of_flux`). That conserved flux cannot be screened is the reading behind the second branch of the dichotomy (II.14)
+  **[reading]**.
 
 I.9 sharpens the first statement of this section: excision happens at transmission, and only the remnant tail is kept.
 
@@ -149,12 +152,14 @@ phases are separated in the proof:
 
 * pressing: renormalise from the lattice spacing up to one physical scale, until a finite, local contraction condition holds in one
   box (the one-box statement, Part IV) **[open]**;
-* minting: from that certificate, build the Hilbert space, the transfer operator and its gap, and take the limits **[Lean]**
-  (`OS/GapLoc.lean`, `Assembly.lean`; conditional on the stated open inputs, Part IV).
+* minting: from that certificate, obtain a mass gap, as limit points of the finite-volume correlations and for the lattice
+  theory **[Lean]** (`OS/GapLoc.lean`, `Assembly.lean`; conditional on the stated open inputs, Part IV; these files need no
+  infinite-volume Hilbert space). The abstract reconstruction of a Hilbert space and a positive transfer operator from a positive
+  form is II.9.1 **[Lean]** (abstract; its link to the spectral side is open, II.10.2).
 
 The WHKs also have an exact counterpart. Pure Yang-Mills has no free dimensionless parameter. The bare coupling and the lattice
 spacing combine into one scale, Lambda (dimensional transmutation), and every physical quantity is a pure number fixed by the group,
-times a power of Lambda. From the group and any one of {the tick with its coupling, Lambda, the gap}, all the others follow.
+times a power of Lambda, where the continuum theory exists (its existence is the open problem of Part IV). From the group and any one of {the tick with its coupling, Lambda, the gap}, all the others follow.
 **[classical]**
 
 **What Part II makes of it.** The split "one finite certificate, then mechanical production" is the shape of every theorem in II.12:
@@ -168,14 +173,15 @@ a column sum below one at one scale implies decay at every larger scale.
 rate is already part of any well constructed box." The quantum and the tick also set a floor: "The loss associated with that smallest
 act is a universal error bar."
 
-**Reading (I.6).** Two precise statements stand behind this. **[reading]**
+**Reading (I.6).** That the quantum and the tick give a floor is a **[reading]**; two precise statements stand behind it, each
+   with its own mark.
 
 1. **A quantized measure arrives; a real one may not.** A process that lowers a natural number at every step stops after finitely
-   many steps. A process that lowers a real number at every step may approach a limit forever. **[Lean]** (`Native/Method.lean`,
+   many steps. A process that lowers a real number at every step may approach a limit forever (the witness is x -> (x + 1)/2 started at 2). **[Lean]** (`Native/Method.lean`,
    `fixed_after` and `real_never_arrives`).
 2. **A finite box has a rate per tick.** In a finite box with a compact group and a bounded action, the law of the box given any
    outside has a density bounded below, so one step of the dynamics contracts by a definite factor, whatever the outside
-   (Doeblin's condition). The contraction theorem is **[Lean]** for abstract kernels (`Mixing/Doeblin.lean`,
+   (Doeblin's condition). The contraction theorem is **[Lean]** for abstract finite stochastic kernels (`Mixing/Doeblin.lean`,
    `contracts_of_doeblin`); the lower bound for the Wilson box is **[paper]** (`PREP.md`, "Three answers", (a)). What the quantum does *not* give by itself is
    control of the sum over many neighbours, nor survival of the rate as the tick shrinks. That is exactly what is open in Yang-Mills
    (Part IV, and II.12 for the precise limit).
@@ -197,7 +203,7 @@ at all there is nothing to assert, and the "+1" disappears.
 * **Set theory.** A description of all parts of a set includes the empty part, and Cantor's theorem makes it strictly larger than the
   set. In von Neumann's construction 0 = {} and 1 = {0}: the first thing that is not nothing is "a set containing nothing".
   **[classical]**
-* **The strict flip bound.** For the SU(2) Wilson action at every coupling beta != 0, every box size and every twist position, the
+* **The strict flip bound.** For the SU(2) Wilson action at every coupling beta != 0, in every periodic L^3 x T box with T even and every twist position, the
   twisted partition function is strictly smaller than the untwisted one: Z_tw < Z **[Lean]** (`Flip/Strict.lean`, `su2_Ztw_lt_Z`).
   At beta = 0 they are equal, matching the boundary case.
 * **A strict sign gives a rate at the self-dual point.** If 0 < Z_tw < Z, then the twist free energy or the electric free energy is
@@ -226,9 +232,10 @@ the system (I.2). **[reading]** (claim I.8a)
 **The exact counterpart.**
 
 * **Gravity's check passes only when** the pinned copy of DMP matches its recorded hash; the repository needs nothing that its one
-  setup file does not list; no source file uses an escape hatch (`sorry`, `admit`, `axiom`, `native_decide`, `unsafe`,
-  `implemented_by`, `extern`); the Lean build succeeds; and the kernel's axiom report for every theorem lists only Lean's three
-  standard axioms. **[paper]** (read from `evidence/tools/check.sh` and `tools/check-pin.sh`; the check was not run for this
+  setup file does not list; no source file of the evidence chain (`evidence/`) uses an escape hatch (`sorry`, `admit`, `axiom`, `native_decide`, `unsafe`,
+  `implemented_by`, `extern`); the Lean build of that chain succeeds; and the kernel's axiom report for each of its theorems lists only Lean's three
+  standard axioms (the check does not cover `docs/mass-gap/formal`). **[paper]** (read from `evidence/tools/check.sh` and
+  `tools/check-pin.sh`; the pin check passes on the committed bytes (stage-2 review R1), the evidence build was not run for this
   draft) (claim I.8b)
 * **The arsenal has the same shape at small size** (II.6): its lint is the linter, and "Mathlib v4.34.0 only, no escape hatch, an
   open part only as a named R136a1 hypothesis" is its passing condition. **[paper]** (claim I.8c)
@@ -262,12 +269,12 @@ always a DMP-complete answer: it is the other option an act collapses back on.
 **Reading (I.9).** I.4 said that a contradiction is excised at once and leaves only "it does not exist". The author sharpens the
 statement, and the operative word is *transmitted*. The claim is about what crosses the gate, not about what a sender may compose. A
 wrong act never crosses: at the gate it is answered R136a1, so it is outside. What stays inside is only its **remnant tail**: the
-record that an excision happened. IM's verifier counts every refusal without content, as the notes state (DMP chapter 06), so the
+record that an excision happened. IM's verifier counts every refusal without content, as the notes state (DMP chapter 04, the refusal log), so the
 count is the assertion of the excision and carries none of the excised information. **[reading]** (claim I.9a)
 
 **The exact counterpart.** In the arsenal the same move is `Arsenal.R136a1`: the part is named and stays outside every proof, and
 only the name remains. It is the statement taken as a named hypothesis, never an axiom, so every declaration still rests on the
-three standard axioms. **[Lean]** (`im` repository, `arsenal/Arsenal/R136a1.lean`, `R136a1`, `R136a1.out`) (claim I.9b)
+three standard axioms. **[Lean]** (`im` repository, `arsenal/Arsenal/R136a1.lean`, `R136a1`, `R136a1.out`) (claim II.6.2)
 
 **Care point.** The gate excises what its checks can recognise as wrong at that tick. An act whose wrongness becomes recognisable
 only later is excised at the later tick, with its tail recorded then. A later excision is a new act, never a revision of the earlier
@@ -291,8 +298,10 @@ is bound. **[reading]** (claim I.10a)
 * **An act passes only with both witnesses' grants.** A sentence passes the door only when both the security grant and the
   operational grant carry its kind; one grant alone never passes. **[Lean]** (`im` repository, `proof/Im/Laws.lean`,
   `Im.pass_needs_both_grants`, `Im.one_grant_never_passes`) (claim I.10b)
-* **Every sentence of IM's closed grammar keeps every law:** there is no sentence outside the list of 72 shapes, and each shape is
-  lawful. **[Lean]** (`proof/Im/Closure.lean`, `Im.closure`, `Im.space_size`) (claim I.10c)
+* **Every sentence of IM's closed grammar keeps every decidable law:** there is no sentence outside the list of 72 shapes, and each shape is
+  lawful (`lawfulB`: legal kind name, kind in the table, wire round-trip); the laws over grants and paths are proved once for all
+  sentences in `Laws.lean` and `Wire.lean`. **[Lean]** (`proof/Im/Closure.lean`, `Im.closure`, `Im.all_shapes_lawful`,
+  `Im.space_size`, `Shape.all_complete`) (claim I.10c)
 * **Behind the door a composition stays lawful.** A network built from nodes that keep the guarantee on what their door lets in
   keeps it on any input. **[Lean]** (`proof/Im/Compose.lean`, `Im.sound`, `Im.galaxy_robust`) (claim I.10d)
 * **Tokens only attenuate.** An attenuated token's kinds are a subset of its parent's, and a chain of attenuations is the
@@ -313,8 +322,8 @@ recognises as wrong). (3) The binding of rights to identity is as strong as the 
 **Reading (I.11).** The arsenal in the `im` repository (`arsenal/`) is that shared place for results that need Mathlib. It holds
 words that more than one part of this paper uses: `R136a1` for "outside" (I.9), and the pieces that are not about any one problem.
 A project that needs a word from it **imports** the word. It never copies it. If a result could be moved there, it moves, and the
-project uses it from there as a dependency. **[paper]** (a project rule, and how it is done today: `arsenal/README.md`; claim
-I.11a). The tool that guards it, and what it checks, are in II.6.
+project uses it from there as a dependency. **[paper]** (a project rule, and how it is done today: `arsenal/README.md`; claims
+II.6.1, II.6.4). The tool that guards it, and what it checks, are in II.6.
 
 **A second reading of the letters.** IM is the Interstellar Medium, and that name stays. Its letters also read as **Identity
 Multiplication**, and the second reading is true of what the arsenal holds: the rotation API is multiplication by a number on the
@@ -324,8 +333,9 @@ that carries a meaning as itself a uniqueness, one that survives being contained
 a step up the DAG: the edge is real in the build (this project requires IM's arsenal, pinned by commit, and the package graph is
 acyclic). His argument for why the link is a rotation runs in three steps. A DB lets only existence cross, and the encoder's gate
 keeps the norm: both sides certify the same norm **[Lean]** (`Encoder.root`; any norm-preserving map gives an encoder) and
-**[reading]** for "a DB allows only this gate" (I.3). A linear gate that keeps every norm is multiplication by a unit number, a
-rotation **[Lean]** (II.0f). So the link to another node, which has to pass a DB, is a rotation: the ultimate gate in his words
+**[reading]** for "a DB allows only this gate" (I.3). A linear gate on a line (one complex dimension) that keeps every norm is multiplication by a unit number, a
+rotation **[Lean]** (II.0f; in more dimensions the norm-keeping maps are the unitary group, and that the link is a rotation there is the
+owner's reading). So the link to another node, which has to pass a DB, is a rotation: the ultimate gate in his words
 **[reading]** (claim I.11c). The cost does not sit in the gate. In the owner's words it sits in the provability of a common root,
 and that is exact: the part of the state that provably shares its root with the other side is the reflection coefficient c, and the
 remainder, ||psi - conj(c) psi'||^2 = ||psi||^2 (1 - |c|^2), is exactly what the step pays **[Lean]** (`szego_remainder`). At |c| = 1
@@ -346,7 +356,7 @@ times an identity-keeping sign **[Lean]** (II.0g): ordinary multiplication is IM
 | Act, remnant | what is done, what it leaves | a step; its certificate | a transfer step; a refutation; a conserved flux | II.12, II.14 |
 | Act carrier | passes an act without loss | a conserved quantity | Gauss law mod 2 | II.14 |
 | ODP: pressing | rehearse until the hash matches | construct up to one finite check | a column sum below 1 at one scale | II.12 |
-| ODP: minting | produce from the certificate | build everything else | OS reconstruction and limits | II.9, II.10 |
+| ODP: minting | produce from the certificate | build everything else | the mass gap from the certificate, in limits; abstract OS reconstruction | II.9, II.10 |
 | WHKs | each part derives the others | no free parameter | dimensional transmutation | Part IV |
 | Quantum, tick | smallest act, its rate | a rate per step | Doeblin; quantized descent arrives | II.12, II.15 |
 | Existence = non-existence + 1 | always strictly more | a strict inequality | Z_tw < Z; Cantor | II.13 |

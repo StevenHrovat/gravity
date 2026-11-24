@@ -49,7 +49,7 @@ as readings and carry no proof.
 
 **The one assumption.** One step is the same on every card: that the one box is a running, DMP-complete system, its gate shared at
 every scale. The paper states it once (Part III) and marks every result that uses it as conditional on it. Its decay edge is O1 for
-Yang-Mills. Under it, one step certified on one box certifies every tick and every scale, and settling is decidable within an
+Yang-Mills. Under it, one step certified on one box certifies every tick and every scale. With a floor, settling is decidable within an
 explicit bound; without a floor no procedure decides it. The start is fixed where the floor is forced, at the places
 {infinity, 2, 3}, certified with explicit margins.
 
@@ -59,8 +59,8 @@ explicit bound; without a floor no procedure decides it. The start is fixed wher
   one-box test with its one-box and scale certificates, and the card API, in Lean; R136a1, the one way to leave a statement open, as
   a named hypothesis that never becomes an axiom.
 * *Yang-Mills.* For SU(2) on the lattice: reflection positivity, the strict bound between a sector and its twist (for every SU(N)), a
-  per-box hand-over rate of at least log(1 + sqrt 2), zero join loss in slab form, and the assembly from a one-box gap certificate to a
-  lattice mass gap in both orders of limits. O1 is exactly DMP-completeness of the Yang-Mills box, in both directions.
+  per-box hand-over rate of at least log(1 + sqrt 2) (with positivity of the twisted partition function as a stated hypothesis), zero join loss in slab form, and the assembly from a one-box gap certificate to a
+  lattice mass gap in both orders of limits. O1 is exactly DMP-completeness of the Yang-Mills box, in both directions (in chain form, for the box built from the gate factor min(1, e^-F_e); the fine-scale form needs the box geometry fixed across levels).
 * *GRH.* The explicit formula for all nontrivial zeros of zeta, by the contour shift, in Lean; Weil's form positive with an explicit
   margin on the first box, where only the real place and the primes 2 and 3 enter (certified in ball arithmetic); the positivity
   mechanisms in finite models.
@@ -74,16 +74,20 @@ explicit bound; without a floor no procedure decides it. The start is fixed wher
 * *Hodge.* Hodge-Riemann positivity, the Hodge index as linear algebra, Weil's bound for curves, eigenvalues on the circle, and
   Lefschetz (1,1) as a diagram chase.
 * *GU.* The Z_6 quotient of SU(3) x SU(2) x U(1) inside SU(5), charge quantisation from a compact U(1), and anomaly cancellation.
-* *Validation.* Poincare for SU(N): a manifold homotopy equivalent to SU(N) is SU(N) for N <= 3 (published for SU(3)) and need not be
-  from N = 4 on; Sp(2) is rigid, and G2 has exactly two structures. Rigidity is a one-box test too, and G2 is rigid under the one
-  assumption.
+
+**Argued in prose, not machine-checked.**
+
+* *Validation.* Poincare for SU(N): a manifold homotopy equivalent to SU(N) is SU(N) for N <= 3 (published for SU(3); a surgery
+  computation from classical theorems for N >= 4, where it fails); Sp(2) is rigid (a sketch that awaits an independent read), and
+  G2 has exactly two structures (a computation). Rigidity is a one-box test too, and G2 is rigid under the one assumption (in
+  Lean, from that assumption and a named surgery input).
 
 **What is not proved.** No problem is solved here. One open step per card:
 
 * *Yang-Mills:* O1, the hand-over inequality for every outside, uniformly in the scale, with the lower edge (a correlation that does
   not vanish) in the same assumption; for the Clay statement also the continuum construction and every compact simple group.
 * *GRH:* Weil positivity beyond the first boxes, a margin that survives the growth of the support. RH and GRH for Dirichlet
-  L-functions were proved in Lean by others in November 2026, by a route that does not use positivity; GRH beyond Dirichlet
+  L-functions were proved in Lean by others in November 2026, by a route that does not use positivity (external: read here, not rebuilt); GRH beyond Dirichlet
   L-functions is open.
 * *NP vs coNP:* lifting with constant-size gadgets, and with it super-polynomial lower bounds for strong proof systems.
 * *Navier-Stokes:* regularity or blowup of the equations themselves. DMP's reading predicts blowup (the equations are not
@@ -105,10 +109,9 @@ closing one changes one row of the claims ledger, one verdict line and one item 
 
 This is a paper about one machine and one test, used seven times. The form under them is old: **positivity is existence**. A
 positive weight makes a measure; a positive form makes a Hilbert space; a positive operator has its spectrum where it can be seen.
-Osterwalder and Schrader built quantum field theories from reflection positivity. Weil reduced the Riemann hypothesis to the positivity
+Osterwalder and Schrader reconstructed quantum field theories from reflection positivity. Weil reduced the Riemann hypothesis to the positivity
 of one pairing. Hodge and Riemann found the same positivity on the cohomology of a variety, and Weil used it to prove the Riemann
-hypothesis for curves over finite fields. Dobrushin showed that a contraction of local influences forces a unique equilibrium,
-reached fast.
+hypothesis for curves over finite fields. Dobrushin showed that a contraction of local influences forces a unique equilibrium, and later work showed it is reached fast.
 
 What is new is the shape put around it. A running system pays a cost at every boundary; with a floor its settling is decidable within
 an explicit bound, and without one it is not. A box with one command at one shared gate is tested step by step, and it passes when
@@ -125,7 +128,8 @@ core, and assumes that one step, once.
   and why that margin cannot be carried outward by computation; a Mathlib-only BSD core over number fields, in IM.
 * From **algebraic geometry**: the Hodge index and Weil's bound as linear algebra in Lean, and the Hodge-index route to the Riemann
   hypothesis over finite fields read as the more efficiently correct one for this structure, beside Deligne's complete proof.
-* From **topology**: Poincare for SU(N) settled (rigid exactly for N <= 3), Sp(2) rigid, and the structure set of G2 counted.
+* From **topology**: Poincare for SU(N) argued in prose (rigid exactly for N <= 3; SU(3) from the literature), Sp(2) rigid (a
+  sketch awaiting an independent read), and the structure set of G2 counted (not machine-checked).
 * From **complexity theory**: the crossing theorem for every two-premise proof system, and the open step of NP vs coNP reduced to one
   lifting statement.
 * From **logic and verification**: a machine in which every open part is a named hypothesis, every axiom shows in the kernel's
@@ -172,7 +176,7 @@ re-checked by independent kernels (Part II), and IM's arsenal passes its lint at
 * The machine as one object: running systems, their ledger, the encoder, and the settle theorem with its edge, decidable within an
   explicit bound under a cost floor and undecidable without one **[Lean]**.
 * The one-box test: one command at one shared gate, a marker per step; the one-box and scale certificates; O1 exactly as
-  DMP-completeness of the Yang-Mills box; rigidity as a one-box test **[Lean]**.
+  DMP-completeness of the Yang-Mills box (chain form); rigidity as a one-box test **[Lean]**.
 * The form layer as one API: every problem a card with exactly one named open slot, and R136a1 as the named answer "outside"
   **[Lean]**.
 * The explicit formula for all nontrivial zeros of zeta by the contour shift, on a Mathlib-only core **[Lean]**, and the first box of
