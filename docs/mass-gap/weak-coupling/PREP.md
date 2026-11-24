@@ -4949,3 +4949,12 @@ thread.
   (`Closures/ChainJoint.lean`, `joint_gives_both`) [Lean, model]. For Yang-Mills this is O1 itself: F_e(L) - 2c(L) > log mu_4.
   So the reformulation is the general form of the one assumption's decay edge [reading for the identification]. It replaces the
   reading of the declaration count in II.0h; the count stays only as the prompt, a sum over four files.
+- **What can be shown about O1 (the owner, 2026-11-24).** "The only thing we can show is, that O1 does not fail for anything we can
+  describe as existing in the containing DB, so let's write it." Written as (coordinator): (1) O1 is a universal statement over
+  describable instances (one box of fixed physical size, one outside, one level), so a failure of O1 would be a single describable
+  configuration [paper, logic]; (2) no describable instance examined refutes it: the certified start holds with margins (III.65,
+  certified), per-box positivity holds by construction (IV.9.5a, Lean), small tori pass centrally at L = 6 (IV.7.1, numerical, not
+  certified); the one refuted check (IV.7.2) is the chain criterion in another geometry and bears on O1 neither way; the cubic
+  one-box geometry is untested by saved data (IV.7.3) [numerical]; (3) care point: "O1 does not fail for any describable instance"
+  is O1 itself, not a weaker statement, so it is the one assumption phrased so that it can be falsified; what can be shown is (1)
+  and the record (2), and the owner reads (3) as the containing DB's guarantee [reading].

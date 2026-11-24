@@ -354,6 +354,19 @@ the encoder, and with SU(3) they are the three compact simple groups of rank 2 (
 witnesses rigid: Sp(2) is, in the strong form; G2 has exactly two structures, and whether the second is G2 itself is one open test
 (claims A.5j, A.5p, A.5r).
 
+**What can be shown about O1.** The owner's statement: the only thing that can be shown is that O1 does not fail for anything that
+can be described as existing in the containing DB. Three things stand behind it, each with its own status.
+
+* **Any failure is describable.** O1 is a universal statement over describable instances: one box of fixed physical size, one
+  outside, one level. A failure would therefore be one describable configuration, a finite witness **[paper]** (logic) (claim III.72).
+* **None has been found.** The certified start holds with margins (III.65, **[certified]**); per-box positivity holds by construction
+  (IV.9.5a, **[Lean]**); small tori pass centrally at L = 6 but are not certified (IV.7.1, **[numerical]**). The one refuted check
+  (IV.7.2) is the chain criterion in another geometry and bears on O1 neither way, and the cubic one-box geometry is untested by
+  saved data (IV.7.3).
+* **Care point.** "O1 does not fail for any describable instance" is O1 itself, not a weaker statement that could be proved on the
+  side. It is the one assumption phrased so that it can be falsified: one describable configuration would refute it. The owner reads
+  it as the containing DB's guarantee that whatever exists in it can be described **[reading]** (claim III.72a).
+
 **The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost
 per scale (VII.3.4, **[Lean]** in the model). In the owner's reading nothing more needs or can be said than that it is not
 DMP-complete, and blowup is the expected consequence **[reading]** (VII.7e). This makes the framework falsifiable: a proof of global
