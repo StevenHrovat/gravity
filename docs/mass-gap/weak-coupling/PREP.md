@@ -4815,3 +4815,12 @@ thread.
      manifold that class is not seen by the surgery obstruction, so the structure set is likely not a point; whether those
      structures are homeomorphic to G2 through a self-equivalence is not decided [open]. Smooth versions of both are not checked.
   Care point: the witness role is the reading; it is falsifiable through G2's rigidity.
+- **The fake G2 is cancelled by the start's reflection positivity (the owner, 2026-11-24).** "The fake G2 should be canceled out by
+  the reflection positivity of the start." Counterpart, as far as it goes (coordinator): in reflection positivity a state whose
+  reflected square vanishes is itself zero when the form is non-degenerate (`<theta F, T^t F> = ||T^{t/2} F||^2`, and T is
+  injective on a finite box; the per-box square is Lean, III.9.5a). The room for a fake G2 is the class x_3^2 in H^6(G2; Z/2), and
+  its square x_3^4 is zero in H^12(G2; Z/2) [classical, the mod 2 cohomology of G2 is F_2[x_3]/(x_3^4) tensor Lambda(x_5)]. So the
+  fake's class has vanishing square, which in the reflection-positive reading is a null state, cancelled. Care point: a Z/2 class
+  has no sign, so positivity does not act on it as a number, and the cup square is not the reflection form; the identification is
+  the reading. Mathematically the question is unchanged: is S^TOP(G2), modulo the self-equivalences of G2, a point? The reading
+  predicts yes, so the computation tests it.

@@ -246,7 +246,10 @@ it (IX.5e stays open).
   **[Lean]** (`Encoder.root`). The witness role is a **[reading]** (IX.6o). It needs both witnesses rigid, which makes it
   falsifiable: Sp(2) is topologically rigid by a surgery sketch (its cells sit in dimensions 3 and 7, where G/TOP has no homotopy)
   **[paper]** (IX.6j, needs an independent read); for G2 the structure set likely has room in dimension 6, and whether that room
-  gives a manifold not homeomorphic to G2 is **[open]** (IX.6p).
+  gives a manifold not homeomorphic to G2 is **[open]** (IX.6p). The owner reads the fake G2 as cancelled by the reflection
+  positivity of the start: the room is the class x_3^2 in degree 6, its square x_3^4 vanishes **[classical]**, and in reflection
+  positivity a state with vanishing reflected square is null. Care point: a Z/2 class has no sign and the cup square is not the
+  reflection form, so this is a **[reading]** (IX.6q) and the computation of IX.6p still decides it.
 
 ## IX.7 What would close it
 
