@@ -173,12 +173,14 @@ no viscosity, there is a wall, and the flow is axisymmetric. The project restate
 
 * if the one-step certificate holds (`(1 - q)^2 >= 4 C r`) and the start is in the ball, the perturbation stays in the ball forever
   (`trap`, `trap_radius`, `trap_of_gap`), and the threshold is sharp (`escape_of_below`, `escape_pos`);
-* the same certificate is `CostAboveFloor` of `1 - q` over `2 sqrt(C r)` for one step type (`gap_of_costAboveFloor`);
+* the certificate follows from `CostAboveFloor` of `1 - q` over `2 sqrt(C r)` for one step type (`gap_of_costAboveFloor`: the strict
+  cost condition implies the trapping gap; the converse and the boundary case are not proved);
 * under a focusing margin the real durations are summable, the total time `T*` is finite, and the amplitude is unbounded
   (`durations_pay`, `arrival`, `amplitude_unbounded`, assembled in `blowup_of_certificate`);
-* every rescaled step adds one fixed quantum to the Beale-Kato-Majda count (`boundary_quantum`).
+* every rescaled step adds one fixed quantum to the Beale-Kato-Majda count **[reading]**: the Lean content is only the identity
+  `boundary_quantum` (the sum of the inverse durations times the durations is n); the Beale-Kato-Majda count is not defined in Lean.
 
-All of this is **[Lean]** for the skeleton. The partial differential equation enters only as the step inequality, a hypothesis. That
+All of this except the last item is **[Lean]** for the skeleton. The partial differential equation enters only as the step inequality, a hypothesis. That
 BKM's integral is infinite exactly when smooth continuation fails is **[classical]**.
 
 ## VI.4 What is borrowed

@@ -142,8 +142,9 @@ lower edge and the upper edge of one band of factors, e^{-D} <= f <= e^{-kappa},
    (`spread_without_o1`, `o1_without_spread`). O1 is a *location* of the image, on the far side of the ray at ratio 1/mu. It is not
    the image's *size* (claim X.13).
 
-**What does not follow.** The shared thing is a geometry and a role, not one statement that could be proved once for both. GRH does
-not imply O1, and O1 does not imply GRH (claims X.16, X.17). Both stay open. No known object has both the zero measure's Verblunsky
+**What does not follow.** The shared thing is a geometry and a role, not one statement that could be proved once for both. No implication
+between GRH and O1 is proved either way: in the card form "GRH implies O1 on every input" would be a disproof of GRH (claim X.16), and
+the finite model carries a margin of exactly zero (claim X.17). Both stay open. No known object has both the zero measure's Verblunsky
 steps and the box's sector ratios as its ticks, and no known result supplies either edge of the band: it is two open statements in
 one geometry **[open]** (claim X.14).
 
@@ -456,7 +457,7 @@ the margin shrinks more slowly than the uncertainty (II.9.5). The five statement
   with no fresh uncertainty, and it is exactly a size bound; lifting supplies the cost c log n per variable **[Lean]** from
   **[external]**. The open step: a constant cost c > 0 per hidden variable for a constant-size gadget (`LiftCPConst`) **[open]**. In
   the known proofs the per-block hiding errors add up across all blocks with no damping, which is why the gadget grows with n
-  **[reading]**.
+  **[reading]** (recalled; to be checked against Mertz-Pitassi and Lovett-Meka-Mertz-Pitassi-Zhang).
 
 **Side by side (claim X.7m).** `three_bridges` (`Unified/All.lean`) states the three columns in one theorem, each as "named hypothesis
 => the uncertainty is transported below the margin and the sign holds" **[Lean]**. It is the transport counterpart of

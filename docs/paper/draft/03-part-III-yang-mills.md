@@ -97,7 +97,7 @@ influence therefore has no sources inside a box: it propagates along connected p
 
 **Superadditivity along the chain.** With the transfer matrix along a chain of boxes, F_e(a + b) >= F_e(a) + F_e(b) - c(a) - c(b), and
 F_e(kL) >= k(F_e(L) - 2C). The boundary term c(L) = log(Z_0(L)/lambda_0^L) is the neutral excess act, the weight of the neutral
-excitations over one box length. The per-box rate multiplies iff F_e(L) > 2c(L) at one scale. **[Lean]** in abstract transfer-matrix
+excitations over one box length. The per-box rate multiplies if F_e(L) > 2c(L) at one scale (superadditivity up to the excess terms; the converse is not proved). **[Lean]** in abstract transfer-matrix
 form (`flux_superadd`, `flux_superadd_iter`).
 
 **Uniformity along the chain.** Every DB applies the same transfer step (translation invariance in Euclidean time), so the loss rate
@@ -113,7 +113,7 @@ eps_* for every spacing, the influence at physical distance D is at most exp(-m 
 | III.3.1 | Per-box hand-over rate: max(F_tw, F_e) >= 0.881 at every box size | **[Lean]** (0 < Z_tw a hypothesis) | `ProofPhase/Crossover/HandOver.lean`, `su2_handover` |
 | III.3.2 | A flux-carrying outside forces at least one sheet | **[Lean]** | `ProofPhase/Crossover/FluxRate.lean`, `exists_sheet_of_flux`, `even_card_fluxCells` |
 | III.3.3 | The flux law is the same seen from inside and outside; no sources | **[Lean]** | `ProofPhase/Crossover/Dichotomy.lean`, `cob_restrict_eq_cob_restrict_compl`, `sum_cob_restrict_eq_zero` |
-| III.3.4 | Superadditivity; the rate multiplies along a chain iff F_e(L) > 2c(L) at one scale | **[Lean]** (abstract) | `ProofPhase/Crossover/CompositeHTF.lean`, `flux_superadd`, `flux_superadd_iter` |
+| III.3.4 | Superadditivity up to the excess terms; the rate multiplies along a chain if F_e(L) > 2c(L) at one scale | **[Lean]** (abstract) | `ProofPhase/Crossover/CompositeHTF.lean`, `flux_superadd`, `flux_superadd_iter` |
 | III.3.5 | Uniformity along the chain | **[classical]**; eta^n **[Lean]** | translation invariance; `ProofPhase/Mixing/Chain.lean`, `contracts_kpow` |
 | III.3.6 | A one-box contraction at fixed physical size gives a physical mass | **[Lean]** | `ProofPhase/Crossover/Neighbours.lean`, `phys_rate_of_uniform`; `ProofPhase/Crossover/RDoeblin.lean`, `rdoeblin_physical_decay` |
 | III.3.7 | The doubling law with a fixed loss gives the gap on all larger dyadic boxes | **[Lean]** (implication) | `ProofPhase/Flip/Floor.lean`, `su2_gap_of_doubling_defect` |
@@ -132,8 +132,9 @@ in d = 4, more than twice the duality floor **[Lean]** (`column_requirement`).
 
 **A per-box floor (Doeblin) cannot supply it.** Doeblin's mass per box is at most e^{-K}/(1 - e^{-K}) with K = C beta L_*^{d-1}, which
 goes to zero as the lattice spacing does **[Lean]** (`neg_log_one_sub_le`, `doeblin_mass_tendsto_zero`). For a grid the floor exponent
-must stay below log(8/7) = 0.134 (column form) or about 0.22 (disagreement-percolation form) **[Lean]** (`floor_column_requirement`,
-`floor_disagreement_requirement`; the site-percolation threshold of Z^4 **[classical]**). At the weak-coupling scale it is in the tens
+must stay below log(8/7) = 0.134 (column form) **[Lean]** (`floor_column_requirement`), or below -log(1 - p_c), about 0.22 in the
+disagreement-percolation form (the requirement `floor_disagreement_requirement` is **[Lean]** for any p; the value 0.22 uses the
+site-percolation threshold of Z^4, p_c about 0.197, **[classical]** (recalled), claim III.4.3c). At the weak-coupling scale it is in the tens
 **[paper]** (`RDOEBLIN.md`). It misses by orders of magnitude, and a larger box at fixed coupling makes it worse.
 
 **Duality gives no floor above log(2d).** For n independent Z/2 sectors 't Hooft's Fourier relation reads (1 + S_tw)(1 + S_e) = 2^n
@@ -151,7 +152,7 @@ finite analogue (`weight_fiber_eq`, `weight_fiber_mul_card`); **[paper]** for co
 |---|---|---|---|
 | III.4.1 | The hand-over keeps a column below one for at most two channels; a grid needs F > log(2d) = 2.08 | **[Lean]** | `ProofPhase/Crossover/Neighbours.lean`, `handover_column_sum_iff`, `column_requirement` |
 | III.4.2 | Doeblin's mass per box goes to zero in the continuum | **[Lean]** | `Neighbours.lean`, `neg_log_one_sub_le`, `doeblin_mass_tendsto_zero` |
-| III.4.3 | A grid needs floor exponent below 0.134 (or 0.22); at L_* it is in the tens | **[Lean]** (requirement) + **[paper]** (estimate) | `ProofPhase/Crossover/RDoeblin.lean`, `floor_column_requirement`, `floor_disagreement_requirement`; `RDOEBLIN.md` |
+| III.4.3 | A grid needs floor exponent below 0.134 (or 0.22, with the recalled threshold p_c = 0.197); at L_* it is in the tens | **[Lean]** (requirement) + **[paper]** (estimate) | `ProofPhase/Crossover/RDoeblin.lean`, `floor_column_requirement`, `floor_disagreement_requirement`; `RDOEBLIN.md` |
 | III.4.4 | Multi-sector duality forces nothing for n >= 2; the quantitative 't Hooft criterion | **[Lean]** (the relation itself **[paper]**) | `ProofPhase/Crossover/Runs.lean`, `min_le_of_sector_product`, `selfdual_sector_ge_one`, `electric_sum_lt_one_iff` |
 | III.4.5 | A gauge-covariant frame carries no gauge-invariant information | **[Lean]** (finite) + **[paper]** | `ProofPhase/Crossover/CompositeHTF.lean`, `weight_fiber_eq`, `weight_fiber_mul_card`; `HTF.md` |
 | III.4.6 | At typical fields the summed boundary influence drops below one at about 7 cells from the boundary (box of about 15 cells) | **[numerical]** (typical, not supremum) | `NEIGHBOURS.md`, 0.2 |

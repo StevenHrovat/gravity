@@ -30,7 +30,8 @@ In a finite model everything works: zeros are finitely many, the pairing is a fi
 | IV.1.2 | Zeros on the line imply the pairing is non-negative (each term is a square) | **[Lean]** | `GRH/Weil.lean`, `weilSum_re_nonneg_of_real` |
 | IV.1.3 | Positivity implies the line for any test class with the approximation property (a named hypothesis) | **[Lean]** | `GRH/Weil.lean`, `real_of_weilSum_nonneg` |
 | IV.1.4 | Weil's criterion for zeta and Dirichlet L-functions | **[classical]** | Weil 1952; Bombieri 2000 |
-| IV.1.5 | For actual L-functions the Lean form needs the explicit formula and a zero count N(T) = O(T log T); Mathlib has neither | missing input, not a claim | `grh/ATTEMPT.md`, section 2 |
+| IV.1.5 | Weil's explicit formula for zeta holds for every smooth compactly supported test function, by the contour shift, with a polynomial zero count per unit window (Mathlib-only core, no named step) | **[Lean]** | `GRH/ContourShift.lean` (`CS.contourShift`), `GRH/ContourShiftTie.lean` (`explicit_formula_of_smooth`), `GRH/ContourShiftZeta.lean` (`zero_count_window`) |
+| IV.1.5b | For Dirichlet and other L-functions the explicit formula, and Weil's criterion itself, are not yet in Lean | **[open]** | `docs/unified/CONTOUR-SHIFT.md`, section 5 |
 | IV.1.6 | A similitude multiplying a positive form by q has all eigenvalues of modulus sqrt q | **[Lean]** | `GRH/Orbits.lean`, `similitude_eigenvalue` |
 | IV.1.7 | If Theta - 1/2 is skew-adjoint for a positive form, every eigenvalue has real part 1/2 (finite dimension) | **[Lean]** | `GRH/Orbits.lean`, `skew_shift_re_half` |
 | IV.1.8 | Lee-Yang circle theorem and Asano contraction, small cases | **[Lean]** | `GRH/LeeYang.lean`, `asano`, `ising3_zeros_on_circle` |
@@ -45,10 +46,10 @@ the zero itself, off the line it is a second zero. A mirror symmetry never place
 
 **IV.2.2 The arithmetic instance.** Tate's thesis writes the completed L-function as a product of local zeta integrals, one per place,
 each with its own functional equation; the global functional equation is Poisson summation for Q inside the adeles **[classical]**. On
-the critical line each local factor is a pure phase, proved in Lean for every unramified prime **[Lean]**
+the critical line the local factors at s and at 1 - s have the same modulus, so their ratio is a pure phase, proved in Lean for every
+unramified prime **[Lean]**
 (`GRH/Tate.lean`, `local_factor_unimodular`). Mathlib proves the functional equation for every even or odd function on Z/N, not only
-for characters **[classical]** (in Mathlib as `ZMod.completedLFunction_one_sub_even` / `_odd`, cited as `grh/TATE.md` cites it; the
-name was not checked here, Mathlib is not in this repository). Among those functions is the Davenport-Heilbronn
+for characters **[classical]** (in Mathlib as `completedLFunction_one_sub_even` and `completedLFunction_one_sub_odd`, `Mathlib/NumberTheory/LSeries/ZMod.lean`, Mathlib v4.34.0). Among those functions is the Davenport-Heilbronn
 combination mod 5, which has a self-dual functional equation and zeros off the line **[classical]** (recalled). So local functional
 equations, global Poisson and the Gaussian allow an off-line pair. This is the arithmetic `krein_off_line`.
 
@@ -75,8 +76,8 @@ which on its own is indefinite from support 0.425 on (IV.3.9). No sign comes fro
 | # | Result | Status | Source |
 |---|---|---|---|
 | IV.2.1 | Duality without positivity allows mirror pairs off the line | **[Lean]** | `GRH/Orbits.lean`, `krein_off_line` |
-| IV.2.2a | Local factors are pure phases on the line (unramified primes) | **[Lean]** | `GRH/Tate.lean`, `local_factor_unimodular` |
-| IV.2.2b | Functional equation for every even/odd function on Z/N; Davenport-Heilbronn has zeros off the line | **[classical]** (Mathlib, not checked here) | `grh/TATE.md`, 0.2 |
+| IV.2.2a | The ratio of the local factor at s and at 1 - s has modulus 1 on the line (unramified primes) | **[Lean]** | `GRH/Tate.lean`, `local_factor_unimodular` |
+| IV.2.2b | Functional equation for every even/odd function on Z/N; Davenport-Heilbronn has zeros off the line | **[classical]** (in Mathlib: `completedLFunction_one_sub_even`, `_odd`) | `grh/TATE.md`, 0.2 |
 | IV.2.3a | Lambda(n) >= 0 plus a one-sided square-root bound plus Landau excludes zeros right of 1/2 | **[paper]** | `grh/INDUCTION.md`, 0.2; `grh/TATE.md`, 0.3 |
 | IV.2.3b | The one-sided bound is global (generalised primes violate it) | **[classical]** | Diamond-Montgomery-Vorhauer; `grh/TATE.md`, 0.3 |
 | IV.2.4a | Positive transforms exclude negative-residue poles; ray form | **[Lean]** | `Bridge/Poles.lean`, `landau_ray_poles`, `lseries_residue_nonneg` |

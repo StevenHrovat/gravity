@@ -42,8 +42,7 @@ theorems of others, not open problems. They are missing from the library, not fr
 | Kolyvagin 1988-90, with modularity | analytic rank 0 or 1 gives rank = analytic rank and Sha finite | external |
 | Buhler-Gross-Zagier 1985 | the curve 5077a has a zero of order exactly 3 and rank 3 | external, recalled |
 | Kato 2004; Skinner-Urban 2014; later work | for many curves of analytic rank 0 or 1, the p-part of the refined formula for many p | external, recalled |
-| Monsky 1996; Nekovar; Dokchitser-Dokchitser 2010 | the p-parity conjecture for E/Q; so finiteness of Sha would give `(-1)^rank = w` | external |
-| Bhargava-Shankar 2015, with Skinner-Urban and others | the average rank is below 1; a positive proportion of curves have rank 0 and a positive proportion rank 1; the rank part holds for a positive proportion of all curves | external, recalled; context only |
+| Monsky 1996; Nekovar; Dokchitser-Dokchitser 2010 | p-parity for E/Q (a theorem); so finiteness of Sha would give `(-1)^rank = w` | external |
 
 **VII.1.2 What is open** **[open]**.
 
@@ -206,9 +205,10 @@ The curve y^2 = x^3 - x (conductor 32, complex multiplication by i, Fermat's cur
 
 * The curve over Q and over Z; its discriminant is 64 and it is elliptic (`E32`, `E32_Δ`, `E32Z`, `E32Z_Δ`); the three points of
   order two are on it (`E32_points`). **[Lean]**
-* The computed count mod p is Mathlib's at every odd prime (`count_E32`). The trace of Frobenius runs at the odd primes up to 37; it is
-  zero at the primes that are 3 mod 4. The Hasse check runs by `#guard` at the odd primes up to 59, and at p = 5 it is proved by the
-  kernel (`hasse_E32_five`). **[Lean]** (The notes say "below 100"; the source checks up to 59, and this part follows the source.)
+* The computed count mod p is Mathlib's at every odd prime (`count_E32`). At p = 5 the Hasse check is proved by the
+  kernel (`hasse_E32_five`). **[Lean]** The trace of Frobenius at the odd primes up to 37 (zero at the primes that are 3 mod 4) and the
+  Hasse check at the odd primes up to 59 run as `#eval` and `#guard` in the build: computed, not kernel proofs **[numerical]**. (The
+  notes say "below 100"; the source checks up to 59, and this part follows the source.)
 * The known values enter as `External` inputs (`Data32`): continuation and functional equation (Deuring), `L(E, 1)` not zero, and E(Q)
   finite (Fermat's descent, E(Q) = the four points O, (0,0), (1,0), (-1,0)). **[external]**
 * From them (`input32`, `bsd_E32`, `card_E32`): rank 0 equals order 0, BSD holds for this curve, the card's open step is filled, and

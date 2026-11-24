@@ -4636,3 +4636,11 @@ thread.
   further statement being needed, other than that such a configuration is describable and in that description DMP-complete." Done:
   introduction, "A guide by ear: the tempered piano", credited to Vsauce for the transfer of the idea; its care point ends on the
   final tone and states only describability and DMP-completeness as described [reading]; rows 0.10 to 0.13.
+- **Closing a bound by construction: excised by identity (the owner, 2026-11-24, on the closable open claims):** "2 also has another
+  strategy: Establishing a bound in such a way that it is excised by identity as a fact of construction, this shape has worked every
+  other time." Exact counterpart (coordinator): define the objects, in their natural form, so that the bound holds by unfolding the
+  definitions, an identity rather than an estimate. Earlier instances here: zero join loss in slab form (`elecN_submul`), the strict
+  twist bound as an identity of sector sums, the refined BSD formula balancing to a dimensionless 1, the certified one-box start.
+  Care point: the construction must be the natural one; if a definition is chosen only to make the bound trivial, the content moves
+  into the equation "the defined object is the intended one", which must then be proved or stated. Never for O1-type rows. Passed
+  to the overnight closure round.

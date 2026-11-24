@@ -72,8 +72,9 @@ Without the floor, no procedure decides it. Both halves of this dichotomy are pr
   Lefschetz (1,1) as a diagram chase.
 * *GU.* The Z_6 quotient of SU(3) x SU(2) x U(1) inside SU(5), and charge quantisation from a compact U(1).
 * *The generalisation.* GRH and O1 share one geometry, the distance of an encoder from the lossless point, and ask opposite things
-  of it: GRH that a margin is carried (existence), O1 that the twisted sector is refuted (falsifiability). In Lean the two exclude
-  each other on one tick sequence and each holds without the other, so neither implies the other.
+  of it: GRH that a margin is carried (existence), O1 that the twisted sector is refuted (falsifiability). In Lean, as conditions on
+  a sequence of ticks, the two cannot both hold on the same sequence and each can hold without the other. This is a statement about
+  the two bounds, not about the problems: no implication between GRH and O1 is proved here in either direction.
 
 **What is not proved.** No problem is solved here. One open step per card:
 

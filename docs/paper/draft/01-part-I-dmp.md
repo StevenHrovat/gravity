@@ -280,7 +280,7 @@ statements cannot be excised as a class.
 information can be transmitted (I.9), then the identity has total freedom *inside* and is secure in its existence.
 
 **Reading (I.10).** "Total freedom inside, secure at the gate" is capability security, as IM builds it, and it has one more reading.
-Asymptotic freedom in Yang-Mills is free at short distance, where the coupling vanishes in the ultraviolet **[classical]** (claim I.10g), and bound
+Asymptotic freedom in Yang-Mills is free at short distance, where the coupling vanishes in the ultraviolet **[classical]** (Gross-Wilczek 1973; Politzer 1973, recalled; claim I.10g), and bound
 at large distance, where the gap holds. Reading the two together: inside the box the dynamics is free, and the boundary is where it
 is bound. **[reading]** (claim I.10a)
 
