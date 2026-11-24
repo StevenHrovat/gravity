@@ -343,7 +343,7 @@ Notes relative to `docs/rh-guide/`.
 | ID | Claim | Status | Source | Upgrade |
 |---|---|---|---|---|
 | V.0a | RH and Dirichlet GRH proved in Lean by others | external | `SOURCES.md` S1-S4; `GUIDE.md` 1 | rebuild and axiom check |
-| V.0b | Their endgame is Landau's theorem on a one-sided square-root bound (Stepanov-type balance), not positivity | external (traced) | `GUIDE.md` 2, 4, 5 | none |
+| V.0b | Their endgame is Landau's theorem on a one-sided square-root bound (Stepanov-type balance); their sign is the non-negative coefficients of Landau's theorem, not Weil's positivity | external (traced) | `GUIDE.md` 2, 4, 5 | none |
 | V.0c | GRH for Dedekind, Hecke, automorphic L-functions open | open | `GUIDE.md` 1, 5 | a proof |
 | V.1.2 | Line implies non-negative pairing | Lean | `ProofPhase/GRH/Weil.lean`, `weilSum_re_nonneg_of_real` | none |
 | V.1.3 | Positivity implies line, given the approximation property | Lean (named hypotheses: approximation property, finite multiplicities) | `ProofPhase/GRH/Weil.lean`, `real_of_weilSum_nonneg` | prove the property for a real class |
@@ -361,10 +361,10 @@ Notes relative to `docs/rh-guide/`.
 | V.2.2c | Tate: completed L-function as product of local zeta integrals; global FE is adelic Poisson | classical | Tate's thesis; `grh/TATE.md` 0.1 | none |
 | V.2.3a | Lambda(n) >= 0 plus a one-sided square-root bound plus Landau excludes zeros right of 1/2 | paper | `grh/INDUCTION.md` 0.2; `grh/TATE.md` 0.3 | Lean (with V.2.4a) |
 | V.2.3b | The one-sided bound is global (generalised primes violate it) | classical | Diamond-Montgomery-Vorhauer; `grh/TATE.md` 0.3 | none |
-| V.2.4a | Positive transforms exclude negative-residue poles; ray form | Lean | `ProofPhase/Bridge/Poles.lean`, `landau_ray_poles`, `lseries_residue_nonneg` | none |
+| V.2.4a | Positive transforms exclude negative-residue poles; ray form (poles of non-positive residue; the step from zeros to poles is V.2.4b) | Lean | `ProofPhase/Bridge/Poles.lean`, `landau_ray_poles`, `lseries_residue_nonneg` | none |
 | V.2.4b | A real zero in (theta, 1) gives a negative-residue pole | classical (not formalised) | `bridge/BRIDGE.md` 1.4 | Lean |
 | V.2.5a | Function fields: one positive duality gives both 1/2s | classical | Weil 1948; `bridge/BRIDGE.md` 2.3 | none |
-| V.2.5b | Stepanov and the Lean proof by others: the 1/2s meet only in the conclusion | classical / external (traced) | `bridge/BRIDGE.md` 2.3, 3 | none |
+| V.2.5b | Stepanov and the Lean proof by others: the 1/2s meet only in the conclusion (a gloss; the mirror step in the Lean is external, traced) | reading | `bridge/BRIDGE.md` 2.3, 3 | none |
 | V.2.5c | Arithmetic positivity giving both 1/2s (an arithmetic Hodge index on Spec Z x Spec Z, IX.5.3; also II.11.5, IX.1.4b) | open | `bridge/BRIDGE.md` 4 | an arithmetic Hodge index |
 | V.2.6 | The mirror pair Weil uses is (1, 0); its constants are archimedean and give no sign | numerical (with V.2.1) | `MIRROR.md` 0.3 | none |
 | V.2.7 | Inversion and halving as one phenomenon | reading / analogy | `bridge/BRIDGE.md` 5 | V.2.5c |
@@ -373,30 +373,30 @@ Notes relative to `docs/rh-guide/`.
 | V.3.2b | Each step is an exact cancellation (prime term up to about 700 radii) | numerical | `grh/INDUCTION.md` 0.1 | none |
 | V.3.2c | Weight scaling breaks positivity at 1e-3 to 1e-9 | numerical | `grh/INDUCTION.md` 0.3 | none |
 | V.3.3a | Ground-state zeros on the circle, locking onto zeta's zeros | numerical | `grh/VARIATIONAL.md` 0.1 | none |
-| V.3.3b | Minimiser's zeros on the circle for every real symmetric Toeplitz section; positivity = remnant >= 0 | classical (Caratheodory-Fejer, Pisarenko) + Lean (grid form) | `ProofPhase/GRH/Induction.lean`, `atoms_on_circle`, `atomic_toep_nonneg` | none |
-| V.3.4a | Positive configurations convex; positivity = stability only as a tautology | Lean | `ProofPhase/GRH/Variational.lean`, `toep_pos_convex`, `line_min_iff`, `min_at_zero_iff` | none |
+| V.3.3b | Minimiser's zeros on the circle for every real symmetric Toeplitz section (recalled, no reference yet); positivity = remnant >= 0; Lean: if every section is positive the atoms lie on the circle, and atoms on the circle with non-negative weights give positive sections | classical (Caratheodory-Fejer, Pisarenko) + Lean (atomic form) | `ProofPhase/GRH/Induction.lean`, `atoms_on_circle`, `atomic_toep_nonneg` | none |
+| V.3.4a | Positive configurations convex (concavity of the margin is a one-line argument, paper); positivity = stability only as a tautology | Lean | `ProofPhase/GRH/Variational.lean`, `toep_pos_convex`, `line_min_iff`, `min_at_zero_iff` | none |
 | V.3.4b | The true primes sit about 1e-9 from the edge | numerical | `grh/VARIATIONAL.md` 0.4 | none |
 | V.3.5 | Only the full set of primes present is positive | numerical | `grh/TRANSFER.md` 0.1 | none |
 | V.3.6a | Per-step contraction on sections; product to zero (Kolmogorov-Szego) | numerical + classical | `grh/TRANSFER.md` 0.2 | none |
 | V.3.6b | A positive margin survives finitely many positive factors; a uniform lower bound q < 1 on the factors keeps the margin positive at every finite scale, at least c_0 q^n (III.45) | Lean | `ProofPhase/GRH/Transfer.lean`, `margin_pos_of_factors`, `prod_one_sub_le_exp`; `ProofPhase/Unified/Ledger.lean`, `survive`, `survive_pos` | none |
-| V.3.7a | Weyl's two-term bound is the best separate bound | Lean | `ProofPhase/GRH/Transfer.lean`, `two_term_bound` | none |
+| V.3.7a | Weyl's two-term inequality (that it is the best separate bound is paper) | Lean | `ProofPhase/GRH/Transfer.lean`, `two_term_bound` | none |
 | V.3.7b | It fails by 7.9 t_0 at support 1.225; Krein's extension is the right two-term form | numerical + classical | `grh/TRANSFER.md` 0.3 | none |
-| V.3.7c | The place-by-place condition fails by 9.7 t_0 at support 1.225 while the whole form is positive | numerical | Part V 3.9 (source note not identified) | check against V.3.7b (7.9 t_0, same support) |
+| V.3.7c | The place-by-place condition fails by 9.7 t_0 at support 1.225 while the whole form is positive | numerical | `grh/TATE.md` 0.4 (slack -9.7 t_0 at a = 1.225, r = 3; `tate.log`); a different quantity from the Weyl bound of V.3.7b (-7.9 t_0, `grh/TRANSFER.md`) | none |
 | V.3.8 | Disjoint prime lattices; prime blocks indefinite; place-by-place forces the real place to pay for all | Lean | `ProofPhase/GRH/Tate.lean`, `prime_lattices_disjoint`, `zero_diag_indefinite`, `form_two_point`, `local_assembly_forces_arch` | none |
 | V.3.9 | Real place alone indefinite from support 0.40 to 0.43; semilocal positivity needs the real place and all primes up to e^{2a} | numerical | `grh/TATE.md` 0.4; `grh/SEMILOCAL.md` | none |
-| V.3.10 | Weight positivity is not enough; Lambda = 0 at the edge | classical + paper | `grh/LEE-YANG.md` 5; Polya 1926; Rodgers-Tao 2020 | none |
-| V.3.11 | Explicit formula agrees to 1e-16; smallest eigenvalue 2.4e-1 to 2.6e-9, no violation | numerical | `grh/weil_numerics.log`; `grh/ATTEMPT.md` 4 | none |
+| V.3.10 | Weight positivity is not enough; Lambda = 0 at the edge (Lambda >= 0 is Rodgers-Tao; Lambda <= 0 is RH, through V.0a) | classical + paper | `grh/LEE-YANG.md` 5; Polya 1926; Rodgers-Tao 2020 | none |
+| V.3.11 | Explicit formula agrees to about 1e-15; smallest eigenvalue 2.4e-1 to 2.6e-9 up to support 0.7 (noise level beyond 1.0), no violation | numerical | `grh/weil_numerics.log`; `grh/ATTEMPT.md` 4 | none |
 | V.4.1 | Face 1: zero-free arithmetic Weil Hilbert space | open | `grh/ATTEMPT.md` step 4 | construction |
 | V.4.2 | Face 2: critical ferromagnet with block-spin law Phi | open | `grh/LEE-YANG.md` 5c | construction |
 | V.4.3 | Face 3: Deninger space with positive Hodge form (and a gap) | open | `grh/ORBITS.md` 6; `grh/TRANSFER.md` 5 | construction |
-| V.4.4 | Face 4: Hermite-Biehler chain for xi | open (framework classical; de Branges conjecture false) | `grh/INDUCTION.md` 0.4 | construction |
+| V.4.4 | Face 4: Hermite-Biehler chain for xi (Conrey-Li 2000 indicate the difficulty of de Branges' conditions; a failure of a stated condition is recalled, theorem not yet checked) | open (framework classical) | `grh/INDUCTION.md` 0.4 | construction |
 | V.4.5 | Face 5: step lemma | open | `grh/INDUCTION.md` 7 | a rule from arithmetic |
 | V.4.6 | Face 6: sign of the remnant | open | `grh/VARIATIONAL.md` 0.5 | a proof |
 | V.4.7 | Face 7: global sign; the norm in which the scaling flow runs | open | `grh/TATE.md` 0.5, 0.6 | a proof |
 | V.4.8 | Face 8: all-or-nothing step | open | `grh/TRANSFER.md` 5 | a proof |
 | V.4.9 | Faces 2, 3 imply face 1; faces 5, 6, 8 are one quantity read three ways; not shown equivalent | paper | `grh/INDUCTION.md` 7; `grh/ORBITS.md` 4; `grh/VARIATIONAL.md` 5; `grh/TRANSFER.md` 5 | equivalence proofs |
 | V.5.1 | Scaling flow preserves Weil's form on its completion | paper | `grh/TATE.md` 0.5 | Lean |
-| V.5.2 | Contraction + mirror pairing: every mode a phase | Lean | `ProofPhase/GRH/Tate.lean`, `runs_and_mirror_on_line` | none |
+| V.5.2 | Contraction + mirror pairing: a mode with a mirror partner has modulus one (abstract operator; that the modes are the zeros and the flow a contraction is face 7) | Lean | `ProofPhase/GRH/Tate.lean`, `runs_and_mirror_on_line` | none |
 | V.5.3 | Explicit formula as a trace formula of zeros and orbit lengths log p | classical | `grh/TRANSFER.md` 0.2 | none |
 | V.5.4 | Positive-by-construction spaces miss off-line zeros (Connes) or give a half-plane (Lax-Phillips) | classical (recalled) | `grh/TATE.md` 0.5 | none |
 | V.6a | RH iff M(x) = O(x^{1/2 + eps}) | classical | `PREP.md` (ODP tool entry) | none |
@@ -414,14 +414,14 @@ Notes relative to `docs/pnp/`.
 | VI.1.5 | Dobrushin uniqueness; spatial mixing gives a uniform gap | classical | Dobrushin 1968, 1970; Stroock-Zegarlinski 1992; Martinelli-Olivieri 1994 | none |
 | VI.1.6 | Sampling iff counting (self-reducible) | classical | Jerrum-Valiant-Vazirani 1986 | none |
 | VI.1.7 | Hard-core below lambda_c: counting and fast mixing | classical | Weitz 2006; Anari-Liu-Oveis Gharan 2020; Chen-Liu-Vigoda 2021 | none |
-| VI.1.8 | Certified class: existence, search, sampling, counting polynomial | classical (assembled; mixing step Lean) | `DICTIONARY.md` 6.2; Lovasz 1975; Moser-Tardos 2010; Moitra 2019 (mixing step: `tv_sweep_dobrushin`, `mixing_sweep_dobrushin`, VI.1.1) | Lean for the assembly |
-| VI.1.9 | On paper the Dobrushin and spectral-gap results hold for infinite or continuous single-site spaces, with hard constraints, and for systematic scan; in Lean they are not yet unconditional (the gauge-theory instance rests on the couplings and the L^2 spectral theorem as hypotheses) | classical (Lean conditional) | Dobrushin 1968; Georgii, *Gibbs Measures and Phase Transitions*, ch. 8 (general single-site spaces); Salas-Sokal 1997 (hard constraints); Dyer-Goldberg-Jerrum 2008, Hayes 2006 (systematic scan) (recalled); `ITEMS.md` 3 | Lean |
-| VI.2.1 | Antiferromagnets beyond uniqueness: no FPRAS | conditional (NP != RP) | Sly 2010; Sly-Sun 2014; Galanis-Stefankovic-Vigoda | none |
-| VI.2.2 | k-CNF counting NP-hard above c 2^{k/2} | conditional (NP != RP) | Bezakova et al. 2019 | none |
+| VI.1.8 | Certified class: in the Dobrushin class existence, search, sampling and counting are polynomial; in the local lemma class existence and search only, sampling and counting in Moitra's stronger regime (degree below 2^{k/60}); above about 2^{k/2} counting is NP-hard unless NP = RP (VI.2.2) | classical (assembled; mixing step Lean) | `DICTIONARY.md` 6.2; Erdos-Lovasz 1975 ("Lovasz 1975"); Moser-Tardos 2010; Moitra 2019 (mixing step: `tv_sweep_dobrushin`, `mixing_sweep_dobrushin`, VI.1.1) | Lean for the assembly |
+| VI.1.9 | On paper the Dobrushin and spectral-gap results hold for infinite or continuous single-site spaces, with hard constraints, and for systematic scan; in Lean they are not yet unconditional (the gauge-theory instance rests on the couplings and the L^2 spectral theorem as hypotheses) | classical (Lean conditional) | Dobrushin 1968; Georgii, *Gibbs Measures and Phase Transitions*, ch. 8 (general single-site spaces); Salas-Sokal 1997 (hard constraints); Dyer-Goldberg-Jerrum 2008 (systematic scan), Hayes 2006 (random-update dynamics) (recalled); `ITEMS.md` 3 | Lean |
+| VI.2.1 | Antiferromagnets beyond uniqueness, on graphs of the corresponding bounded degree: no FPRAS | conditional (NP != RP) | Sly 2010; Sly-Sun 2014; Galanis-Stefankovic-Vigoda | none |
+| VI.2.2 | k-uniform hypergraph independent sets (monotone k-CNF): counting NP-hard above c 2^{k/2} | conditional (NP != RP) | Bezakova et al. 2019 | none |
 | VI.2.3 | Ferromagnetic Ising has an FPRAS at every temperature | classical | Jerrum-Sinclair 1993 | none |
 | VI.2.4 | Wilson action is on the ferromagnetic side | reading | `DICTIONARY.md` 5 | none |
 | VI.2.5 | All counting inside uniqueness is as strong as NP = RP; SAT into LLL impossible as stated | conditional / classical | `DICTIONARY.md` 6.3 | none |
-| VI.3.1 | Resolution sound (`unsat`) and refutation-complete (tree-like, `refutable_iff`) | Lean | `ProofPhase/Proof/Resolution.lean`; `ProofPhase/Proof/Complete.lean`, `refutable_iff`, `unsat` | none |
+| VI.3.1 | Tree-like resolution sound (`TL.unsat`) and refutation-complete (`refutable_iff`) | Lean | `ProofPhase/Proof/Resolution.lean`, `TL.unsat`; `ProofPhase/Proof/Complete.lean`, `refutable_iff` | none |
 | VI.3.2 | No inference creates assertion; middle clause; width >= boundary | Lean | `ProofPhase/Proof/Cut.lean`, `exists_middle`, `width_ge` | none |
 | VI.3.3 | Tree-like size-width | Lean | `ProofPhase/Proof/SizeWidth.lean`, `tl_size_gt` | none |
 | VI.3.4 | DAG-like size-width; with the cut principle | Lean (optimisation over b paper) | `ProofPhase/Proof/Dag.lean`, `size_width`, `size_width_exp`, `dag_size_ge` | none |
@@ -429,7 +429,7 @@ Notes relative to `docs/pnp/`.
 | VI.3.8 | One XOR names the flux; naming costs differ by system | Lean (`summary`) + classical | `DICHOTOMY-TRANSFER.md` 3; `ProofPhase/Proof/Crossing.lean`, `summary` | none |
 | VI.3.9 | Known lower bounds (resolution, bounded-depth Frege, cutting planes) | classical | `PROOF-SYSTEMS.md` 2 | none |
 | VI.3.10 | Feasible interpolation and its cryptographic failure | classical / conditional | Krajicek 1997; Pudlak 1997; Krajicek-Pudlak 1998; Bonet-Pitassi-Raz 2000 | none |
-| VI.3.11 | No superpolynomial lower bound is known for AC^0[p]-Frege, Frege or extended Frege; best formula lower bounds about n^3 (a statement about the literature; the bounds themselves are open problems outside the card, whose open step is VI.4.10) | classical | Hastad 1998; Tal 2014; Krajicek, *Proof Complexity* (2019) (recalled) | none |
+| VI.3.11 | No superpolynomial lower bound is known for AC^0[p]-Frege, Frege or extended Frege; best formula lower bounds about n^3 (a statement about the literature; the bounds themselves are open problems outside the card, whose open step is VI.4.10) | classical | the proof-system statement: Krajicek, *Proof Complexity* (2019) (recalled); the n^3 formula bound: Hastad 1998, Tal 2014 (Hastad 1998 is a de Morgan formula shrinkage result and says nothing about proof systems) | none |
 | VI.4.1 | CP on random 3-CNF is the sharpest open case | classical + reading | `EDGE.md` 0.1 | none |
 | VI.4.2 | Incompressibility of the one formula gives expansion; natural proofs do not bite | classical + reading | `EDGE.md` 0.3 | none |
 | VI.4.4 | Majority line: sensitive to all, survives restrictions of fewer than e/2 | Lean | `ProofPhase/Proof/Edge.lean`, `majority_line`, `thr_sensitive`, `thr_survives` | none |
@@ -444,11 +444,11 @@ Notes relative to `docs/pnp/`.
 | VI.4.11 | `ExtractAPI G c` (every cutting-planes refutation of F o G of size below exp(c (w + 1)) admits a narrow-clause labelling) is equivalent to `LiftCPConst G c`; neither is proved for any constant gadget | Lean | `ProofPhase/Proof/SoundAPI.lean`, `liftCPConst_iff_extract`; `docs/unified/soundapi-axioms.log` | a constant-gadget lifting theorem (III.7k) |
 | VI.5.2 | Applied: 16 to 12 theorems, 5 to 4 layers, same statements | Lean + numerical | `ProofPhase/Native/RouteBChain.lean`; `NATIVE-METHOD.md` 0.3; `abs_ccorr_le'`, `abs_nCorr_le'` | none |
 | VI.5.3 | The method's floor bounds no minimum | reading | `NATIVE-METHOD.md` 5 | N1 |
-| VI.5.4 | Automating resolution is NP-hard | classical | Atserias-Mueller 2019 | none |
+| VI.5.4 | Automating resolution is NP-hard | classical | Atserias-Mueller 2019 (FOCS; J. ACM 2020) | none |
 | VI.6.N1 | Size of the remnant: is the irreducible core polynomial? | open | `docs/OPEN-QUESTIONS-DMP.md` 4 | a proof |
 | VI.6.N3 | Steps T and H for Frege | open | `DICHOTOMY-TRANSFER.md` 4-6 | a lower bound |
 | VI.6.N4 | From the certified class to all inputs | open | `DICTIONARY.md` 6.3, 8 | a barrier-passing argument |
-| VI.7 | Barriers: relativization, natural proofs, algebrization; Williams evades them | classical | Baker-Gill-Solovay 1975; Razborov-Rudich 1997; Aaronson-Wigderson 2009; Williams 2014 | none |
+| VI.7 | Barriers: relativization, natural proofs, algebrization; Williams is reported to evade relativization and algebrization and is not known to be natural (recalled; his own statement not read); that the coupling proofs, gadget reductions and partition-function polynomials relativize or algebrize is paper | classical (recalled) + paper | Baker-Gill-Solovay 1975; Razborov-Rudich 1997; Aaronson-Wigderson 2009; Williams 2014 | none |
 | VI.8 | DMP readings of Part VI (two categories of lines, pairs as entanglement, confinement plus uncertainty, inside/across a DB) | reading | `PREP.md` (2026-11-23); `DICTIONARY.md` 7 | none |
 | VI.10a | The P vs NP box (ticks: bounds, the restrictions) passes exactly when CrossingCost holds, and a passing box gives every refutation at least e^(theta b) lines | Lean | `ProofPhase/ETM/CardBox.lean`, `np_box_concl`, `cardBox_complete_iff` | VI.4.10 |
 
