@@ -1,0 +1,101 @@
+== build ProofPhase.Unified.BSDCore
+Build completed successfully (8924 jobs).
+== build ProofPhase.Unified.BSDAPI
+Build completed successfully (8931 jobs).
+== imports of the core (must be Mathlib only)
+8:import Mathlib
+== BSDCore: declarations: 28
+== BSDCore: axioms
+'ProofPhase.BSD.Pts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.WeakMordellWeil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.mordellWeil_of_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.torsion_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.algRank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.algRank_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.infinite_iff_algRank_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.IsContinuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.continuation_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.order_welldefined' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.zero_iff_order_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.order_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.gammaFactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.gammaFactor_analyticAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.gammaFactor_one_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.completed_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.FunctionalEquation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.analytic_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.BSDStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.existence_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.rank_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.RefinedBSD' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.order_of_refined' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.countZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.apZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.hasseZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.hasseZ_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.BSD.count_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+== BSDCore: source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/BSDCore.lean
+== BSDAPI: declarations: 46
+== BSDAPI: axioms
+'ProofPhase.API.BSD.frobAlpha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.frobAlpha_normSq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.norm_frobAlpha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.count_normSq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.frob' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.frob_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.frob_szego' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.factor_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.p' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.p_gt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.hasse'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.fac' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.P' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.share' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.fac_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.share_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.top_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.fac_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.P_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.P_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.no_finite_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.P_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.EulerData.Balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.Input' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.problem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.LowRank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.open_of_lowRank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.LedgerInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.ledgerCard' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.E32' depends on axioms: [propext, Quot.sound]
+'ProofPhase.API.BSD.E32_Δ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.E32_points' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.E32Z' does not depend on any axioms
+'ProofPhase.API.BSD.E32Z_Δ' depends on axioms: [propext]
+'ProofPhase.API.BSD.count_E32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.hasse_E32_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.Data32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.input32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.bsd_E32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.BSD.card_E32' depends on axioms: [propext, Classical.choice, Quot.sound]
+== BSDAPI: source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/BSDAPI.lean
+== External and OpenStep slots in the instance
+123: hasse : External "Hasse 1933-36: |p + 1 - N_p| <= 2 sqrt p for every elliptic curve over F_p (nonsingular points at bad p)"
+217: cont : External "modularity (Wiles 1995, Taylor-Wiles 1995, Breuil-Conrad-Diamond-Taylor 2001) with Hecke's theory:
+219: fe : External "modularity with Hecke's theory: the completed L-function satisfies xi(2 - s) = w xi(s)"
+221: weak : External "weak Mordell-Weil (Mordell 1922, Weil 1929): E(Q)/2E(Q) is finite; not in Mathlib" (WeakMordellWeil W)
+240: Open i := OpenStep "BSD: the rank of E(Q) equals the order of the zero of L(E, s) at s = 1" (BSDStatement i.W i.Λ)
+249: External "Gross-Zagier 1986, Kolyvagin 1988-90, with modularity: analytic rank 0 or 1 implies rank = analytic rank"
+262: goldfeld : External "Goldfeld 1982: if the partial Euler products at s = 1 of the curve grow like C (log x)^r, then
+270: Open i := OpenStep "the partial products of N_p/p grow like C (log p)^rank" (i.D.Balance (algRank i.W))
+332: cont : External "Deuring 1953-56 (complex multiplication: a Hecke L-function), or modularity: continuation"
+334: fe : External "Deuring / Hecke: functional equation of the completed L-function, conductor 32" (FunctionalEquation 32 Λ w)
+335: nonvanish : External "L(E, 1) = 0.6555... is not 0 (modular symbols: L(E, 1)/Omega is the rational 1/4)" (Λ 1 ≠ 0)
+336: finite : External "Fermat: 1 is not a congruent number (descent); E(Q) = {O, (0, 0), (1, 0), (-1, 0)}"

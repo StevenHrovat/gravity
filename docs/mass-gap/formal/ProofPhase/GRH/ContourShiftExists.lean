@@ -78,7 +78,7 @@ theorem nontrivialZeroFamily_zetaZeroOrdinate : NontrivialZeroFamily zetaZeroOrd
       ext i
       simp only [hS, Set.mem_ofPred_eq, Set.mem_empty_iff_false, iff_false]
       intro h
-      exact hz (h ▸ i.2.1.2.2)
+      exact hz (h ▸ (i.2.1.2).2)
     have hz1 : z ≠ 1 := fun h => by rw [h] at h2; simp at h2
     have han : AnalyticAt ℂ riemannZeta z := by
       have hd : DifferentiableOn ℂ riemannZeta {t : ℂ | t ≠ 1} := fun t ht =>

@@ -4296,3 +4296,44 @@ thread.
   GRH, NP vs coNP, GU, Navier-Stokes, BSD, Hodge; Poincare as validation), so it is met only when each open step is closed, not
   slotted; (2) the full title expansion is now set by the owner, aspirational by intent like the subject, so the draft marking and
   the exact status line in the abstract stay until General = GU (OUTLINE.md, release criterion).
+- **The Hodge index route is the preferred one: it comes from G0 directly, so it simplifies further than Deligne (the owner,
+  2026-11-24):** "Hodge index theory is actually 'more' correct then Deligne, since it originates directly from G0, thus increasing
+  simplifiability, which would also give us why it is our preferred route." Exact counterpart (coordinator): there are two proofs of
+  the Riemann hypothesis over finite fields. Weil's (curves, 1948) is one positivity statement: the Hodge index theorem on `C x C`
+  (Castelnuovo-Severi) gives `|#C(F_q) - q - 1| <= 2 g sqrt q` [classical]; here as linear algebra, `HodgeLinear.lean`: `hodgeIndex_of_sigPos`,
+  `castelnuovo_severi`, `weil_bound`, and positivity puts the eigenvalues on the circle, `eigen_on_circle` [Lean]. Deligne's (all
+  smooth projective varieties, 1974) reaches the same bound without a positivity statement on cycles: etale cohomology, Lefschetz
+  pencils, monodromy and a tensor-power trick [classical]. Grothendieck's standard conjecture of Hodge type in characteristic p
+  would turn Deligne's theorem back into Weil's form, one positivity [classical]. In DMP terms the Hodge index route is the encoder
+  bound itself (Cauchy-Schwarz on a positive form, `cs_of_nonneg`; the same shape as the reflection-positivity bound of YM and the
+  `PosInput.alg_cs` of the Hodge card), so it is the route that transfers between the problems; that is the reason it is ours.
+  Care points: (1) the owner's refinement: "more efficiently correct" (both proofs are complete and correct, and the wording respects the work in both); the difference is
+  that the positivity route has one moving part, which is what makes it simplify and transfer. (2) Reach: the positivity route is
+  proved for curves (and the index theorem for surfaces in every characteristic); in higher dimension it needs the Hodge standard
+  conjecture in characteristic p, open in general [open], where Deligne's covers everything. (3) For GRH over number fields the
+  missing piece is exactly this route's analogue for `Spec Z` (an arithmetic Hodge index on the "surface" `Spec Z x Spec Z`), which
+  does not exist yet [open]; so choosing the route names the open step precisely, it does not close it.
+- **"More efficiently correct", and the balance in wording (the owner, 2026-11-24):** "'More efficiently correct' is better and more
+  respectful of the hard work. And wherever we have efficiency, we have to find a balance of not saying too much, while still giving
+  clear weight to your meaning to affect further new thought." Applied (coordinator): in the paper, a preferred route is called more
+  efficient, never more correct, when the other route is also a complete proof; and every efficiency claim is stated once, short,
+  with the concrete reason it matters (here: one positivity step, the same shape as the encoder bound, so it transfers), so the
+  claim carries weight for further work without overstating it.
+- **BSD is IM: a full subset of only derivations (the owner, 2026-11-24):** "BSD is IM, as it seems, since it is a full subset of only
+  derivations." Exact counterpart (coordinator): both sides of BSD are derived from one Weierstrass equation and nothing else. The
+  rank is a derivation of the rational points (`algRank W = finrank Z E(Q)`, `BSDCore.lean`); the analytic side is a derivation of
+  the point counts mod p (`countZ`, proved equal to Mathlib's count, `count_correct`; Mathlib's `W.LSeries` from the minimal model's
+  local factors). Unlike YM (a measure), NS (initial data) or GU (hypercharges), the card takes no content input: its `External`
+  slots (weak Mordell-Weil, modularity, Goldfeld) are proved theorems about these derivations, not data. So BSD is stated entirely
+  in the vocabulary, which is what IM is (entry "the literal U(1) of a pressed system, its vocabulary"), and `BSDCore.lean`, which
+  imports Mathlib only, is a natural candidate for DMP.IM. Care points: (1) IM-shaped is a statement about the form, not the
+  settling: the rank equality itself stays the open step [open] (known for analytic rank at most one, Gross-Zagier-Kolyvagin
+  with modularity). (2) In IM the `External` slots must either be implemented (weak Mordell-Weil is within reach on Mathlib;
+  modularity is a very large formalisation) or stay as named slots. (3) Moving it into `im` publishes it, so that is the owner's
+  call, together with the other IM moves already pending.
+- **BSDCore moves into DMP.IM; the abbreviation BSD comes back for free (the owner, 2026-11-24):** "Yes, move BSDCore into IM! That
+  also makes me very happy, since I originally had to take out BSD as the Balanced State Duality, what is now the VIBE coefficient,
+  because the naming changed, but now I can have the Berkeley Software Distribution abbreviation for free :D". Recorded: the
+  owner's go for the move (publishing `BSDCore.lean` in the public `im` repo, Mathlib-only, as the first module of a Mathlib
+  sibling package there). Naming note: the earlier "Balanced State Duality" is now the VIBE coefficient, so "BSD" in this work
+  means Birch and Swinnerton-Dyer only, and the abbreviation also reads as the permissive-licence family it shares a name with.

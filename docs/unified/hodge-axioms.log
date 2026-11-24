@@ -1,0 +1,59 @@
+== build ProofPhase.Unified.HodgeLinear
+Build completed successfully (8924 jobs).
+== build ProofPhase.Unified.HodgeAPI
+Build completed successfully (8931 jobs).
+== HodgeLinear: declarations: 22
+== HodgeLinear: axioms
+'ProofPhase.Hodge.sq_add_smul' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Hodge.cs_of_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.PolHS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.PolHS.hodge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.PolHS.mem_hodge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.PolHS.hodge_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.PolHS.hodge_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.PolHS.hodge_cs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.PolHS.hodge_isCompl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.HodgeIndex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.hodgeIndex_of_sigPos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.reverse_cs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.castelnuovo_severi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.weil_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.weil_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.weil_bound_abs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.eigen_on_circle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.eigen_on_circle_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.lefschetz11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.rational_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Hodge.transfer' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Hodge.integral_needs_torsion' depends on axioms: [propext, Classical.choice, Quot.sound]
+== HodgeLinear: source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/HodgeLinear.lean
+== HodgeAPI: declarations: 25
+== HodgeAPI: axioms
+'ProofPhase.API.Hodge.Input' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.HodgeConjecture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.problem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.PosInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.PosInput.alg_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.PosInput.alg_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.PosInput.num_eq_hom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.PosInput.alg_cs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.hr_of_polHS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.DivisorInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.DivisorInput.toInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.DivisorInput.holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.DivisorInput.card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.CurveClassInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.CurveClassInput.toInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.CurveClassInput.holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.IntegralInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.IntegralHodge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.integral_fails' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.WeilInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.StandardHodge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.weilCard' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.CurveInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.curveCard' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.Hodge.curve_open' depends on axioms: [propext, Classical.choice, Quot.sound]
+== HodgeAPI: source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/HodgeAPI.lean

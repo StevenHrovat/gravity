@@ -1,0 +1,16 @@
+== 32a2: a = (0, 0, 0, -1, 0), conductor 32, root number +1, rank 0
+(1) Hasse a_p^2 <= 4p for all 2262 primes below 20000: True; max |a_p|/(2 sqrt p) = 0.999893
+    a_p, p = 2..37: [0, 0, -2, 0, 0, 6, 2, 0, 0, -10, 0, -2]
+(2) encoder: cos(theta_p) in [-1, 1], N_p = |1 - alpha_p|^2, |alpha_p|^2 = p for the first 200 primes: True
+(3) L(E, 1) = 0.655514388573  (series, 3000 terms)
+(6) Omega = 5.2441151066 (3 real roots); L^(r)(1)/(r! Omega) = 0.1250000000; recalled right-hand side 0.1250000000
+(5) prod_{p <= x} N_p/p / (log x)^r: x=100: 1.6492, x=1000: 2.2397, x=5000: 2.1183, x=20000: 2.2535 | sqrt2 e^(r gamma) r!/L^(r)(1) = 2.1574
+== 37a1: a = (0, 0, 1, -1, 0), conductor 37, root number -1, rank 1
+(1) Hasse a_p^2 <= 4p for all 2262 primes below 20000: True; max |a_p|/(2 sqrt p) = 0.996484
+    a_p, p = 2..37: [-2, -3, -2, -1, -5, -2, 0, 0, 2, 6, -4, -1]
+(2) encoder: cos(theta_p) in [-1, 1], N_p = |1 - alpha_p|^2, |alpha_p|^2 = p for the first 200 primes: True
+(3) L(E, 1) = 0.000e+00 (forced 0 by w = -1); L'(E, 1) = 0.305999773834  (series, 3000 terms)
+(4) (0, 0) on 37a1: True; denominators of kP, k = 1..8: [1, 1, 1, 1, 8, 1, 27, 125]
+    5P = (1/4, -5/8): not integral, so P is not torsion (Nagell-Lutz)
+(6) Omega = 5.9869172907 (3 real roots); L^(r)(1)/(r! Omega) = 0.0511114083; recalled right-hand side 0.0511114082
+(5) prod_{p <= x} N_p/p / (log x)^r: x=100: 6.8182, x=1000: 6.7923, x=5000: 7.9624, x=20000: 7.1935 | sqrt2 e^(r gamma) r!/L^(r)(1) = 8.2314
