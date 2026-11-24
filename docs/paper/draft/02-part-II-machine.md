@@ -29,6 +29,11 @@ picture.
   -1, the identity or the half-turn, and every real number is its modulus times 1 or -1, so ordinary multiplication is a cost times
   an identity-keeping multiplication (`rot_of_isometry_real`, `real_eq_sign_mul_abs`) **[Lean]** (claim II.0g).
 
+With these two theorems the machine and test modules reached 100 declarations by the axiom script's count (`rotation-axioms.log`,
+at `41c76f3`). The owner reads that as exactly right, since + and - are now given a modulus **[reading]** (claim II.0h). The count is
+a fact about the files, not the mathematics: it grew 75, 77, 83, 96, 98, 100 as the modules did, and it changes when a proof is
+split.
+
 **Care point.** The translation is exact for the cost and the rotation. The content a step carries, the program the universal
 machine runs, lives in the state and not in the number; that is where its undecidability sits (II.3) **[paper]** (claim II.0e). In
 number theory "complex multiplication" names something else (elliptic curves with extra symmetries, near Part VIII); here it is

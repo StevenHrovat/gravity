@@ -4928,3 +4928,11 @@ thread.
   multiplication is a cost (the modulus) times an identity-keeping multiplication (the sign, a half-turn or none): IM on the reals,
   with the rotation group shrunk to two elements. Care point: the shrunken group is Z/2, which carries no order (III.70a), so on
   the reals the phase is a sign without a floor of its own.
+- **The 100 declarations (the owner, 2026-11-24).** "100 declarations also seems exactly right, since + and - are now given a mod."
+  and "Let's try to prove the 100 and, if we can not, offer it as a reading." The attempt (coordinator): the 100 is what
+  `docs/unified/rotation-axioms.sh` counts, the top-level `theorem`, `def`, `structure`, `abbrev`, `instance` and `inductive` lines
+  of four files (`ETM/Rotation.lean`, `ETM/RotationInstances.lean`, `ETM/G2Rigidity.lean`, `ETM/Complex.lean`), at `41c76f3`. Its
+  history in the log is 75, 77, 83, 96, 98, 100 as the modules grew, and it excludes the core moved to IM. It is a fact about the
+  files, true by counting, and changes when a proof is split or a helper added; no mathematical statement fixes it, so it cannot be
+  proved as mathematics. Offered as the owner's reading: the count reached 100 exactly when + and - were given a modulus
+  (`rot_of_isometry_real`, `real_eq_sign_mul_abs`) [reading].
