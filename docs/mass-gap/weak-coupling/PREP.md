@@ -5087,7 +5087,12 @@ thread.
   measured, the excision of I.9 [classical for the computation; reading for the excision and for causality as the one direction].
   Hard line: that sha256 cannot be turned the other way is a conjecture, not a theorem; that any one-way function exists at all is
   open and would imply P != NP [classical]. The reading explains how the validity is known from the hash alone (forward, by
-  causality); it does not prove the one-wayness. Not built; for IM, after the owner's OK on the concept.
+  causality); it does not prove the one-wayness. The owner: "Any well tested conjecture can be assumed to be true across all the
+  containing DB." [reading]. How the paper can carry it (coordinator): as a named hypothesis, the way it carries O1 (`OpenStep`,
+  R136a1), with every consequence marked conditional on it; never as a theorem. Care point: testing cannot establish a for-all
+  statement (the paper's own rule, 0.5), and well-tested conjectures have failed: Polya's conjecture (first counterexample near
+  9 x 10^8), Mertens' conjecture (disproved 1985 without an explicit counterexample), and pi(x) < li(x), true for every x ever
+  computed and still false infinitely often (Littlewood 1914) [classical]. Not built; for IM, after the owner's OK on the concept.
 - **DMP can have no copyright (the owner, 2026-11-24).** "That is also why DMP can have no copyright: any real ownership has to be
   transitive to its derivatives." [reading]. The owner adds that it is meant literally, and that the repositories and the paper
   are explicitly Apache 2.0, which allows free use but forces credit. Note (coordinator): in law, copyright arises with the work,
