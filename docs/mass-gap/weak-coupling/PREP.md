@@ -5105,3 +5105,22 @@ thread.
   and Apache 2.0 is a copyright licence that works because the copyright exists; ownership that carries over to derivatives is what
   copyleft licences (GPL) do, which Apache 2.0 does not; giving up copyright entirely (a public-domain dedication such as CC0)
   would also give up the forced credit. No licence file was changed.
+- **Several routes to one proof (the owner, 2026-11-24).** On the claimed VP != VNP proof (posted 23 November 2026 with a Lean
+  formalisation, credited to Claude; not yet checked by human mathematicians, as its own README says): "It does support our system,
+  in that multiple ways to construct the same proof, as with our GRH, are possible. How much use you can get out of them is dependent
+  on which direction you approach it from." [reading]. Exact part (coordinator): VP != VNP is Valiant's algebraic analogue of
+  P != NP and does not settle P vs NP; the paper makes no prediction about it, so it is consistent with the reading "hard across a
+  boundary" without being evidence for it. If added to Part VI it is [external, unverified].
+- **1/137 and the 72 of rotation (the owner, 2026-11-24).** "I would assume that 1/137 is somehow related to the 72 of rotation
+  through the confinement factor." [reading]. Care points (coordinator): the fine-structure constant is about 1/137.036, not 1/137,
+  and it runs with the energy scale (about 1/128 at the Z mass), so any exact derivation has to say at which scale; the 72 is IM's
+  count of grammar shapes (`space_size`), a fact about a language, not a physical number. No derivation is attempted here.
+- **pi as the translation (the owner, 2026-11-24).** "Also explains pi as the translation between rotation positivity settlement and
+  existence." "With it being irrational since another sublayer can always be constructed, thus being the assembly mechanism proving
+  its rigor." "With a pressed DMP keeping its validity through pi in the containing existence." [reading]. Exact parts
+  (coordinator): pi is the half-turn of the rotation (e^(i pi) = -1, the encoder's half-turn, II.2); pi is irrational (Lambert 1761)
+  and transcendental (Lindemann 1882), so no finite rational rotation closes onto it [classical].
+- **The author line in a pressed state (the owner, 2026-11-24).** The author line reads "Steven Hrovat with Claude (Anthropic) during
+  pressing". The owner: "The author line must be next to the formula in DMP in a pressed state. Otherwise it would not be able to
+  exist. What keeps it existing is its reconstructability inside the containing DB." [reading]. Applied as the title page's author
+  line; the PDF metadata names the first author.

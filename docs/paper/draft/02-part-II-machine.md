@@ -2,6 +2,17 @@
 
 *Draft 4, 2026-11-24 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
 
+**Which part uses which tool.** The machine (II.0 to II.3) is used by Parts IV to VIII; the one-box test and the cards (II.4,
+II.5) by every part from IV to X and by Appendix A; the arsenal and the re-check (II.6, II.7) by every Lean result; the tools of
+section B (II.8 to II.15) by Parts IV to VI, each of which names the section it uses.
+
+| Section | IV Yang-Mills | V GRH | VI P vs NP | VII Navier-Stokes | VIII BSD | IX Hodge | X GU | App. A |
+|---|---|---|---|---|---|---|---|---|
+| II.0 to II.3, the machine | yes | yes | yes | yes | yes | | | |
+| II.4, II.5, the test and the cards | yes | yes | yes | yes | yes | yes | yes | yes |
+| II.6, II.7, arsenal and re-check | yes | yes | yes | yes | yes | yes | yes | yes |
+| II.8 to II.15, the tools | yes | yes | yes | | | | | |
+
 **A. The machine.**
 
 ## II.0 The machine in ordinary terms: multiplication by complex numbers

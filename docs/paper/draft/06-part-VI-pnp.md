@@ -219,4 +219,4 @@ all inputs. Nothing in this part closes any of them.
 of costly lines a restriction keeps. At each bound the gate reads inside when the restriction keeps at most a
 1 - theta share of the costly lines; the marker is the claim "inside". The box passes exactly when the card's open step
 (`CrossingCost`) holds, and a passing box gives the crossing bound: every refutation has at least e^(theta b) lines **[Lean]**
-(`np_box_concl`, `ETM/CardBox.lean`; claim VI.10a). The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**. Its open ticks are the bounds of the lifting step at width 3 (VI.4.10).
+(`np_box_concl`, `ETM/CardBox.lean`; claim VI.10a). Like every card box it is a restatement of the open step (II.5) **[paper]**. Its open ticks are the bounds of the lifting step at width 3 (VI.4.10).

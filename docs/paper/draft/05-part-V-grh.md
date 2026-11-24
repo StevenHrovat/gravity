@@ -264,4 +264,4 @@ model of zeta's zeros with nonnegative weights it passes under Mathlib's stateme
 explicit margins (III.65, **[certified]** for the enclosures, **[paper]** for the analytic estimates). Small supports have a
 literature: Yoshida studied the Hermitian forms of the explicit formula, and Connes and Consani proved Weil positivity for test
 functions supported so close to 1 that only the real place enters **[external, recalled]**; the certified first box is the next
-range, where the primes 2 and 3 enter, with explicit margins. The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**. Its open ticks are the scales beyond the start (V.4).
+range, where the primes 2 and 3 enter, with explicit margins. Like every card box it is a restatement of the open step (II.5) **[paper]**. Its open ticks are the scales beyond the start (V.4).

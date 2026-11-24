@@ -43,6 +43,53 @@ def breakable(t):
         return t
     return re.sub(r'(/|\.|\\_)', lambda m: m.group(1) + r'\allowbreak{}', t)
 
+# Mathematics: the sources write formulas in plain ASCII (x^y, F_e, mu_4, <=, sqrt 2); the typeset text sets them in math mode.
+# Conservative patterns only; code spans and links are held as placeholders while this runs, so they are never touched.
+GREEK_WORDS = ['alpha', 'beta', 'gamma', 'delta', 'epsilon', 'eps', 'theta', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'pi', 'rho',
+               'sigma', 'tau', 'phi', 'chi', 'psi', 'omega', 'eta', 'Gamma', 'Delta', 'Theta', 'Lambda', 'Sigma', 'Phi', 'Psi',
+               'Omega']
+BS = chr(92)  # a backslash, kept out of string literals so that no escaping layer can eat it
+GREEK_TEX = {w: (BS + 'varepsilon' if w in ('eps', 'epsilon') else BS + w) for w in GREEK_WORDS}
+GW = '|'.join(sorted(GREEK_WORDS + ['zeta'], key=len, reverse=True))
+ATT = r'(?:\{[^{}\s]{1,24}\}|\([^()]{1,16}\)|-?[A-Za-z0-9.*]{1,8})'
+BASE = r'(?:' + GW + r'|[A-Za-z]{1,2}|\d+(?:\.\d+)?)'
+TOKEN = re.compile(r'(?<![\w' + BS + BS + r'])(' + BASE + r')((?:[_^]' + ATT + r')+)(?![\w])')
+
+def mathify_inner(x):
+    x = re.sub(r'\b(' + GW + r')\b', lambda m: BS + 'zeta ' if m.group(1) == 'zeta' else GREEK_TEX[m.group(1)] + ' ', x)
+    x = x.replace('sqrt', BS + 'sqrt ').replace('*', BS + 'ast ')
+    return x.strip()
+
+def math_token(m):
+    base, rest = m.group(1), m.group(2)
+    out = mathify_inner(base)
+    for op, arg in re.findall(r'([_^])(' + ATT + r')', rest):
+        if arg.startswith('(') or arg.startswith('{'):
+            arg = arg[1:-1]
+        out += op + '{' + mathify_inner(arg) + '}'
+    return '$' + out + '$'
+
+def inner_math(x):
+    """A short formula inside abs(...) or sqrt(...), as math without dollars."""
+    x = TOKEN.sub(lambda m: math_token(m)[1:-1], x)
+    return re.sub(r'(?<!' + BS + BS + r')\b(' + GW + r')\b',
+                  lambda m: (BS + 'zeta ' if m.group(1) == 'zeta' else GREEK_TEX[m.group(1)] + ' '), x).strip()
+
+def mathify(t, hold):
+    """Turn the formula tokens of a line into held TeX math (returns the line with placeholders)."""
+    t = re.sub(r'\babs\(([^()]{1,12})\)', lambda m: hold('$|' + inner_math(m.group(1)) + '|$'), t)
+    t = re.sub(r'\bsqrt ?(\d+|\(([^()]{1,20})\))', lambda m: hold('$' + BS + 'sqrt{' + inner_math(m.group(2) or m.group(1)) + '}$'), t)
+    t = TOKEN.sub(lambda m: hold(math_token(m)), t)
+    t = re.sub(r'(?<=[\w)]) <-> (?=\w)', lambda m: ' ' + hold('$' + BS + 'leftrightarrow$') + ' ', t)
+    t = re.sub(r'(?<=[\w)\]]) -> (?=[\w(])', lambda m: ' ' + hold('$' + BS + 'to$') + ' ', t)
+    for a, b in (('<=', BS + 'le'), ('>=', BS + 'ge'), ('!=', BS + 'ne'), ('<', '<'), ('>', '>')):
+        t = re.sub(r'(?<=[\w)\]}\x00]) ' + re.escape(a) + r' (?=[-\w(\x00])', lambda m, b=b: ' ' + hold('$' + b + '$') + ' ', t)
+    t = re.sub(r'(?<=\)) x (?=(?:SU|U|SO|Sp|GL|Z)\b)', lambda m: ' ' + hold('$' + BS + 'times$') + ' ', t)
+    t = re.sub(r'(?<=[\d)]) \? (?=\d|SU\()', lambda m: ' ' + hold('$' + BS + 'stackrel{?}{=}$') + ' ', t)
+    t = re.sub(r'(?<![\w' + BS + BS + r'])(' + '|'.join(sorted(GREEK_WORDS, key=len, reverse=True)) + r')(?![\w])',
+               lambda m: hold('$' + GREEK_TEX[m.group(1)] + '$'), t)
+    return t
+
 def typeset_names(t):
     for r, b in TYPESET_RE:
         t = r.sub(lambda m, b=b: b, t)
@@ -58,10 +105,14 @@ def inline(t):
     t = re.sub(r'`([^`]*)`', lambda m: hold(r'\texttt{' + breakable(esc(m.group(1))) + '}'), t)
     t = re.sub(r'\[([^\]]*)\]\(([^)]*)\)',
                lambda m: hold(r'\href{' + m.group(2).replace('%', r'\%').replace('#', r'\#') + '}{' + emph(esc(m.group(1))) + '}'), t)
+    t = mathify(t, hold)
+    t = cite_links(t, hold)
     t = emph(esc(t))
     t = typeset_names(re.sub(r'"([^"\x00]*)"', r"``\1''", t))
     t = ''.join(('\\ensuremath{\\%s}' % GREEK[ch]) if ch in GREEK else ch for ch in t)
-    return re.sub('\x00(\\d+)\x00', lambda m: held[int(m.group(1))], t)
+    for _ in range(4):  # held pieces may hold others (a formula inside abs(...)); restore until none is left
+        t = re.sub('\x00(\\d+)\x00', lambda m: held[int(m.group(1))], t)
+    return t
 
 def emph(t):
     t = re.sub(r'\*\*(.+?)\*\*', r'\\textbf{\1}', t)
@@ -157,8 +208,75 @@ def convert(md):
     flush_para(); close_lists()
     return '\n'.join(out)
 
+CITES = []  # (regex, number): author-year citations in the text, linked to their bibliography entry
+CITING = [True]
+
+KEY_RE = re.compile(r"^[A-Z][A-Za-z'\-]+(?:[- ](?:and )?[A-Z][A-Za-z'\-]+)*(?: et al\.)? \d{4}[a-z]?$")
+
+def build_cites(rows):
+    """From the 'cited as' column: every key of the form 'Name 1997' or 'Name-Other 1997' becomes a link to its entry number;
+    the text may write it 'Name 1997' or 'Name (1997)'. A key that names two entries links to neither."""
+    seen = {}
+    for num, cite in rows:
+        for piece in cite.split(';'):
+            key = re.sub(r'\(.*?\)', '', piece).strip().rstrip(',.')
+            if KEY_RE.match(key):
+                seen.setdefault(key, set()).add(num)
+    CITES.clear()
+    for key in sorted(seen, key=len, reverse=True):
+        if len(seen[key]) != 1:
+            continue
+        name, year = key.rsplit(' ', 1)
+        pat = re.compile(r'(?<![\w-])(' + re.escape(name) + r'(?: \(' + re.escape(year) + r'\)| ' + re.escape(year) + r'))(?![\w-])')
+        CITES.append((pat, next(iter(seen[key]))))
+
+def cite_links(t, hold):
+    if not CITING[0]:
+        return t
+    for pat, n in CITES:
+        t = pat.sub(lambda m, n=n: m.group(1) + hold(r'\,\hyperlink{bib%d}{[%d]}' % (n, n)), t)
+    return t
+
+def bib_rows():
+    p = os.path.join(ROOT, 'references.md')
+    if not os.path.exists(p):
+        return None
+    rows = []
+    for line in io.open(p, encoding='utf-8').read().splitlines():
+        if not line.startswith('| ') or line.startswith('| #') or line.startswith('|---'):
+            continue
+        c = [x.strip() for x in line.strip().strip('|').split('|')]
+        if len(c) < 7 or c[5] == 'not identified':
+            continue
+        rows.append((clean_bib(c[1]), clean_bib(c[2]), clean_bib(c[3]), bib_link(c[4]), c[5], c[6]))
+    def surname(a):
+        first = re.split(r'[;,]| and ', a)[0].strip()
+        first = re.sub(r'\(.*?\)', '', first).strip()
+        toks = [x for x in first.split() if not x.isdigit()]
+        return (toks[-1] if toks else a).lower()
+    rows.sort(key=lambda r: (surname(r[0]), r[2]))
+    return rows
+
 def bibliography_checked():
     """The bibliography from docs/paper/references.md (one table row per work, each checked against the page named), if it exists."""
+    rows = bib_rows()
+    if rows is None:
+        return None
+    CITING[0] = False
+    body = ['\\section*{References}', '\\addcontentsline{toc}{section}{References}', '',
+            '{\\sloppy', '\\begin{enumerate}[label={[\\arabic*]},leftmargin=2.5em,itemsep=1pt]']
+    for k, (authors, title, venue, url, status, cite) in enumerate(rows, 1):
+        t = inline(authors) + (', \\emph{' + inline(title) + '}' if title else '') + ', ' + inline(venue).rstrip('.') + '.'
+        if url.startswith('doi:'):
+            t += ' \\doi{' + url[4:].replace('%', '\\%').replace('#', '\\#') + '}'
+        elif url:
+            t += ' \\url{' + url.replace('%', '\\%').replace('#', '\\#') + '}'
+        body.append('\\item\\hypertarget{bib%d}{}' % k + t)
+    body.append('\\end{enumerate}}')
+    CITING[0] = True
+    return '\n'.join(body), len(rows)
+
+def bibliography_checked_old():
     p = os.path.join(ROOT, 'references.md')
     if not os.path.exists(p):
         return None
@@ -193,18 +311,22 @@ def bibliography_checked():
 
 # Working remarks in references.md (what page was read, what could not be confirmed) stay there; the typeset entry drops them.
 REMARK = re.compile(r'\s*\((?=[^()]*\b(page|read|record|snippet|search|listed|given|confirmed|settled|submitter|request|Crossref|'
-                    r'fetched|shown|displays|as printed|not in|from a|one source|the PDF|abstract|full text)\b)[^()]*\)', re.I)
+                    r'fetched|shown|displays|as printed|not in|from a|one source|the PDF|abstract|full text|seen|initials|pinned|'
+                    r'catalogue|as cited|index(?:ed)?|unconfirmed|not identified|reference list|credited)\b)[^()]*\)', re.I)
+REMARK_CLAUSE = re.compile(r'[;.]\s*[^;.|]*\b(read|not seen|search|snippet|record|pinned|initials|catalogue|not confirmed|no year|'
+                           r'as cited|is printed|was not identified|not the \d{4})\b[^;|]*(?=;|$)', re.I)
 
 def clean_bib(t):
     t = REMARK.sub('', t)
+    t = REMARK_CLAUSE.sub('', t)
     t = re.sub(r';\s*(the page|as read|DOI) [^;]*$', '', t)
-    return re.sub(r'\s{2,}', ' ', t).strip().rstrip(';,')
+    return re.sub(r'\s{2,}', ' ', t).strip().rstrip(';,. ')
 
 def bib_link(url):
     """A stable link for the typeset entry: a Crossref record becomes its DOI, typeset by the `doi` package ('doi:' prefix);
     arXiv and record pages are kept; search queries, API answers and encyclopaedia pages are dropped. The converter reaches no
     host itself; it only writes links."""
-    url = url.strip()
+    url = (url.split() or [''])[0].strip()
     m = re.match(r'https?://api\.crossref\.org/works/(10\.[^?\s]+)$', url)
     if m:
         return 'doi:' + m.group(1)
@@ -270,7 +392,9 @@ PREAMBLE = r"""%% GUID v8, generated by tools/paper-latex.py from docs/paper/dra
 \setcounter{tocdepth}{2}
 \title{Grand Unified Information Duality v8\\[0.6ex]
 \large The Millennium Prize Problem type as seen through DMP, with certified settling}
-\author{Steven Hrovat \and Sirius (Claude Opus 5.5)}
+\author{Steven Hrovat\\[0.3ex] {\normalsize with Claude (Anthropic) during pressing}}
+\hypersetup{pdftitle={Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling},
+  pdfauthor={Steven Hrovat}}
 \date{Draft 4, %s}
 \begin{document}
 \maketitle
@@ -283,6 +407,9 @@ conditional on it.}\end{center}
 def main():
     os.makedirs(OUT, exist_ok=True)
     files = sorted(glob.glob(os.path.join(ROOT, 'draft', '[0-9][0-9]-*.md')))
+    rows = bib_rows()
+    if rows:
+        build_cites([(k, r[5]) for k, r in enumerate(rows, 1)])
     parts = []
     for f in files:
         md = io.open(f, encoding='utf-8').read()

@@ -29,7 +29,7 @@ outside must have two properties:
 
 * **Free.** It leaves the possibility space free: something might happen, but it need not. In numbers, 0 < p < 1, with p the chance
   that a crossing inverts the box's binary sector. p = 0 is a forced act (order, no gap). The possibility space is what makes each
-  crossing contract, by the factor abs(1 - 2p) < 1. Causality in this sense and the gap are one condition.
+  crossing contract, by the factor abs(1 - 2p) < 1. Causality in this sense and the gap are one condition **[reading]**.
 * **Complete.** Every configuration has positive weight: a compact group, a finite action, "every possibility exists". Nothing is
   excluded in advance, so nothing has to be added later.
 

@@ -341,8 +341,7 @@ The formalisation items that would change the status of the **borrowed** parts, 
 
 **Gate factor and marker.** In the Lean the box of a curve has the ticks `0, 1, 2, ...`, every tick carries the card's one open
 step, the gate reads inside at a tick exactly when that step holds, and the marker is the claim "inside". The box of a curve
-passes exactly when BSD holds for it **[Lean]** (`bsd_box_iff`, `ETM/CardBox.lean`; claim VIII.8a). The box is the card's open step
-in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**.
+passes exactly when BSD holds for it **[Lean]** (`bsd_box_iff`, `ETM/CardBox.lean`; claim VIII.8a). Like every card box it is a restatement of the open step (II.5) **[paper]**.
 **[reading]** The first author names the ticks the **primitives**: the primes, the primitive elements of the multiplicative integers
 **[classical]**, at which the curve's Euler ledger is read (VIII.3.6), the gate reading inside when the ledger is consistent with
 the rank. That identification of the ticks with the primes is not in the Lean. On that reading the open ticks start where the order
