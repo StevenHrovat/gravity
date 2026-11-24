@@ -110,6 +110,9 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   positivity of the start: the room is the class x_3^2 in degree 6, its square x_3^4 vanishes **[classical]**, and in reflection
   positivity a state with vanishing reflected square is null. Care point: a Z/2 class has no sign and the cup square is not the
   reflection form, so this is a **[reading]** (A.5q). Its mathematical counterpart is now exact: "cancelled" means absorbed by a
-  self-equivalence of G2, which is the test of A.5r; the reading predicts that it exists. The owner reads the missing
+  self-equivalence of G2, which is the test of A.5r; the reading predicts that it exists. The test now has one live candidate, a map that runs through SU(3), the
+  confined fibre of G2 -> S^6, whose top cell opens onto G2's 8-cell **[classical]**; it carries the fake's class exactly when what
+  crosses that channel is an odd multiple of nu, squared to nu^2 **[sketch]**. The owner reads this as a confined CMOS that needs its
+  interface channel open, with the square folding in through reflection positivity, which predicts "odd" **[reading]** (A.5s). The owner reads the missing
   sign itself as the point: Z/2 carries no order, so no floor, so no decidable reading, and only a start that forces one is
   DMP-complete (Part III 4.3, III.70).

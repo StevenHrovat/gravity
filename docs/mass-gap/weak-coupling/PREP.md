@@ -4843,3 +4843,11 @@ thread.
   the start's reflection positivity": cancelled = absorbed by a self-equivalence of G2 [reading]; it predicts rigid, and the test
   can falsify it. If it fails, the finer fit is "G2 rigid up to one Z/2 that carries no order" [reading], weaker than the witness
   reading asks.
+- **The live G2 candidate as an open interface channel (the owner, 2026-11-24).** "For the one live candidate, it might be related
+  to how a confined CMOS needs an interface channel open, so it might automatically fold in through reflection positivity."
+  Counterpart (coordinator): the candidate runs through SU(3), the fibre of G2 -> S^6, i.e. the confined part, and the content-
+  carrying rank-2 group (A.5k); its interface is SU(3)'s top cell, which maps onto G2's 8-cell with odd degree [classical], the open
+  channel. What crosses is a square: the candidate carries the Kervaire class exactly when the channel's top-cell component is an odd
+  multiple of nu, so that nu . nu = nu^2 [sketch, G2-SP2-RIGIDITY 5]. Reading: reflection positivity produces exactly such squares,
+  so the fold-in is automatic once the channel is open; it predicts the multiple is odd. Care point: nu . nu is a composition, not a
+  reflection form, and the class lives in Z/2 with no sign; the reading round on the SU(3) lift tests the prediction.
