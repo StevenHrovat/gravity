@@ -175,6 +175,16 @@ general **[reading]** (claim II.4f). Care points: the correctness theorems are o
 alone; the open steps are not of this form (O1 is a for-all over every outside, not one finite check); and `native_decide` stays
 excluded, since the kernel itself must check the step.
 
+**Existence is free, construction costs.** The first author's one-line summary of the machine: being in the state space costs
+nothing; reaching a state costs a step, and every step pays at least the floor **[reading]** (claim II.3.4). It is the shape of the
+ledger law (II.3.1) and of the one-box test, where sharing the gate is free and the content is that the marker travels with it
+(III.68b). A hash is the same shape in a third setting: the hash was computed from some content, so a preimage exists, and checking
+a supplied one is a single forward step; finding one from the hash alone is the costly direction **[classical]**. Nothing in this
+paper weakens an established hash or cipher: no result here gives a way to invert one, and the reading agrees with their
+one-wayness. That one-wayness stays what it is in the literature, a well-tested assumption rather than a theorem: that any one-way
+function exists is open and would imply P != NP **[classical]**. The Clay statements ask for existence and construction, which is why
+their cost sits in the construction step, O1 for Yang-Mills.
+
 **The three applications.** Yang-Mills: the floor is the cost above log mu, and keeping it uniform in the cutoff is O1. GRH: the
 margin decays without a floor (zero slack, II.1.5), so only the sign is decided scale by scale. NP vs coNP: a constant cost per
 hidden variable is a floor.
