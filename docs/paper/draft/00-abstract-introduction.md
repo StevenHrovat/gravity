@@ -124,7 +124,7 @@ Outlook (Part XI) applies the settle theorem to a concept of the first author's.
 ### A guide by ear: the tempered piano
 
 This guide is not part of any argument. It is offered as a picture to hold while reading, and the idea of hearing existence through
-tuning came to the first author from Vsauce; it is credited here for that transfer.
+tuning came to the first author from a short published by Vsauce; it is credited here, under that name, for that transfer.
 
 * **Tuning is built from 2 and 3.** The octave is the ratio 2, the fifth the ratio 3/2. Pitch, taken modulo the octave, is a circle,
   and a fifth is a rotation on it **[classical]**.
