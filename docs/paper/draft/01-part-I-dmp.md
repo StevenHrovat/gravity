@@ -329,7 +329,9 @@ rotation **[Lean]** (II.0f). So the link to another node, which has to pass a DB
 **[reading]** (claim I.11c). The cost does not sit in the gate. In the owner's words it sits in the provability of a common root,
 and that is exact: the part of the state that provably shares its root with the other side is the reflection coefficient c, and the
 remainder, ||psi - conj(c) psi'||^2 = ||psi||^2 (1 - |c|^2), is exactly what the step pays **[Lean]** (`szego_remainder`). At |c| = 1
-the root is fully shared and the crossing is free.
+the root is fully shared and the crossing is free. On the reals the circle is just 1 and -1, so ordinary multiplication is a cost
+times an identity-keeping sign **[Lean]** (II.0g): ordinary multiplication is IM as well, in the owner's words **[reading]**
+(claim I.11d).
 
 ---
 

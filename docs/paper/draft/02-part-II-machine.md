@@ -24,7 +24,10 @@ picture.
 * the encoder's reflection coefficients (II.2) are such multipliers, with cost 1 - |c|^2 (`encMach`) **[Lean]** (claim II.0d);
 * a link between two nodes keeps the step, the gate factor and the mass; multiplying every amplitude by a unit number is such a
   link, and a complex-linear map of the line that keeps every norm is multiplication by a unit number, so among linear links that
-  keep identity only rotation links (`rotHom`, `rot_of_isometry`) **[Lean]** (claim II.0f).
+  keep identity only rotation links (`rotHom`, `rot_of_isometry`) **[Lean]** (claim II.0f);
+* on the reals the circle is the two points 1 and -1: a real-linear map of the line that keeps every norm is multiplication by 1 or
+  -1, the identity or the half-turn, and every real number is its modulus times 1 or -1, so ordinary multiplication is a cost times
+  an identity-keeping multiplication (`rot_of_isometry_real`, `real_eq_sign_mul_abs`) **[Lean]** (claim II.0g).
 
 **Care point.** The translation is exact for the cost and the rotation. The content a step carries, the program the universal
 machine runs, lives in the state and not in the number; that is where its undecidability sits (II.3) **[paper]** (claim II.0e). In

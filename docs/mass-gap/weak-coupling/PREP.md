@@ -4921,3 +4921,10 @@ thread.
   `‖ψ - conj(c) ψ'‖^2 = ‖ψ‖^2 (1 - |c|^2)` (`Unified/Encoder.lean`, `szego_remainder`) [Lean]. At |c| = 1 the two sides share their
   root completely and the crossing is free; below 1 the remainder, the part whose common root cannot be shown, is what the step
   pays. This replaces "the cost is the encoder's overlap" in I.11c.
+- **Ordinary multiplication is IM too (the owner, 2026-11-24).** "That also simplifies normal multiplication = IM, since mod1 is a
+  given for the reals." Exact counterpart (coordinator): on the reals the unit circle is the two points 1 and -1, so a real-linear
+  map of the line that keeps every norm is multiplication by 1 or -1, the identity or the half-turn (`ETM/Complex.lean`,
+  `rot_of_isometry_real`) [Lean]; and every real number is its modulus times 1 or -1 (`real_eq_sign_mul_abs`) [Lean]. So ordinary
+  multiplication is a cost (the modulus) times an identity-keeping multiplication (the sign, a half-turn or none): IM on the reals,
+  with the rotation group shrunk to two elements. Care point: the shrunken group is Z/2, which carries no order (III.70a), so on
+  the reals the phase is a sign without a floor of its own.

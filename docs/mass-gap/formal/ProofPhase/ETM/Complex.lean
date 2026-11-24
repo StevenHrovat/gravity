@@ -150,6 +150,22 @@ theorem rot_of_isometry (f : ℂ →ₗ[ℂ] ℂ) (hf : ∀ z, ‖f z‖ = ‖z�
   have : f z = f (z • (1 : ℂ)) := by rw [smul_eq_mul, mul_one]
   rw [this, map_smul, smul_eq_mul, mul_comm]
 
+/-- **On the reals the circle is two points**: a real-linear map of the line that keeps every norm is multiplication by `1` or
+`-1`, the identity or the half-turn. -/
+theorem rot_of_isometry_real (f : ℝ →ₗ[ℝ] ℝ) (hf : ∀ x, ‖f x‖ = ‖x‖) :
+    ∃ u : ℝ, (u = 1 ∨ u = -1) ∧ ∀ x, f x = u * x := by
+  refine ⟨f 1, ?_, fun x => ?_⟩
+  · have h : |f 1| = 1 := by simpa [Real.norm_eq_abs] using hf 1
+    exact (abs_eq zero_le_one).1 h
+  · have : f x = f (x • (1 : ℝ)) := by rw [smul_eq_mul, mul_one]
+    rw [this, map_smul, smul_eq_mul, mul_comm]
+
+/-- **Ordinary multiplication is a cost times a half-turn**: every real number is its modulus times `1` or `-1`. -/
+theorem real_eq_sign_mul_abs (r : ℝ) : ∃ s : ℝ, (s = 1 ∨ s = -1) ∧ r = s * |r| := by
+  rcases le_total 0 r with h | h
+  · exact ⟨1, Or.inl rfl, by rw [abs_of_nonneg h, one_mul]⟩
+  · exact ⟨-1, Or.inr rfl, by rw [abs_of_nonpos h]; ring⟩
+
 /-! ## 6. The translation in one statement -/
 
 /-- **The ETM translation.** Multipliers of modulus at most one make a running system whose run is the product of its steps;

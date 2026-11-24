@@ -186,3 +186,12 @@ bash tools/independent-check.sh lean4lean    # optional second opinion, one modu
 ```
 
 Run in the background and one heavy stage at a time. The script header lists all stages.
+
+## Run of 2026-11-24 (quick, draft 4, at `1d71a05`)
+
+`bash tools/independent-check.sh quick`: the stamp matched (Mathlib `5ed296525643`, 10,744 non-project modules); the incremental
+replay of every changed module passed (`fail=0`), including IM's new `Arsenal.Rotation` and `Arsenal.Rigidity`; the axiom audit
+over 369 modules found only `propext`, `Classical.choice`, `Quot.sound` (`NONSTD_AXIOMS []`, `MISSING 0`); `nanoda_lib` on the
+project export checked 105,150 declarations with no typechecker errors. It reported one pretty-printer error ("Unable to print
+axioms"), which is a display failure, not a check failure. This run did not yet include `ETM/Complex.lean`'s last two theorems
+(`rot_of_isometry_real`, `real_eq_sign_mul_abs`); their axiom log is `docs/unified/rotation-axioms.log`.
