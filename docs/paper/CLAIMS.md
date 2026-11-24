@@ -70,7 +70,7 @@ Definitions of DMP are quoted from `vendor/dmp/01-constitution.md` (DMP 0.9.9) a
 | I.10b | A sentence passes IM's door only when both the security and the operational grant carry its kind; one grant alone never passes | Lean | `im` repository, `proof/Im/Laws.lean`, `Im.pass_needs_both_grants`, `Im.one_grant_never_passes` | none |
 | I.10c | IM's grammar is closed: the space has exactly 72 shapes, and every sentence keeps every law (`lawfulB`, decided by the kernel) | Lean | `im` repository, `proof/Im/Closure.lean`, `Im.closure`, `Im.all_shapes_lawful`, `Im.space_size` | none |
 | I.10d | A network of nodes that keep the guarantee on what their door lets in keeps it on any input | Lean | `im` repository, `proof/Im/Compose.lean`, `Im.sound`, `Im.galaxy_robust`, `Im.galaxy_is_a_node` | none |
-| I.10e | Tokens only attenuate (kept by the grammar's construction; the theorem is not yet written) | open | `im` repository, `proof/Im/Closure.lean` (header: "the attenuation theorem is still to be written"); `docs/findings.md` IF9 as cited there | write the theorem |
+| I.10e | Tokens only attenuate (by construction: attenuation is intersection with a caveat, the discipline of Macaroons, Biscuit and SPKI that IM cites, so the subset bound is an unfolding): an attenuated token's kinds are a subset of its parent's; a chain of attenuations is the intersection of the root with its caveats, in any order; along any chain the sentences a door passes only shrink; the empty grant attenuates only to itself (the C# token code is not proved to implement the model) | Lean | `im` repository, `proof/Im/Attenuate.lean`, `attenuate_sub`, `attenuateAll_eq`, `attenuateAll_perm`, `attenuateAll_sub`, `Grants.pass_of_attenuateAll`, `Grants.refuse_of_attenuateAll`, `Grants.attenuate_noGrants` | name the three hypotheses in DMP 04 or 06 (the second half of IM's IF9, the owner's) |
 | I.10f | "Permissible" is as good as its specification; the gate certifies integrity and authority, not the truth of content; the binding is as strong as the custody of the key | reading | `PREP.md`, 2026-11-24, same entry, care points | none |
 | I.10g | Asymptotic freedom: the Yang-Mills coupling vanishes in the ultraviolet | classical | Gross-Wilczek 1973; Politzer 1973 (recalled, not re-read) | none |
 
@@ -186,9 +186,9 @@ Full chain: `docs/mass-gap/weak-coupling/PROOF-BLUEPRINT.md` (version 2). Crosso
 | III.5.5a | Bogomolny bound; fractional floor pi^2 beta for admissible fields | classical | Bogomolny; 't Hooft; Luescher; `CONTAINMENT.md` 6.2 | none |
 | III.5.5b | The floor helps only outside (multi-plane twists) and loses to entropy as a -> 0 | paper (one-loop sketch) | `CONTAINMENT.md` 6.2 | determinants and measure |
 | III.5.6 | **O1:** F_e(L) > log mu_4 = 1.91 (r > 0.74) at one box of fixed physical size, uniformly over outsides | open | `CONTAINMENT.md` 0, 5; `docs/OPEN-QUESTIONS-DMP.md` 0 | a worst-case argument for one box |
-| III.5.7 | Per-box costs multiply along paths (annealed to quenched) | open (used as an assumption) | `RATE.md` 5'; `CONTAINMENT.md` 3 | a proof |
-| III.5.8 | Relation of O1 to the chain criterion F_e(L) > 2c(L) in the cubic geometry | open (not written down) | III.5.6 care point | a lemma or a joint statement |
-| III.5.9 | Which Lean input form (`FineOneBox`, `FineOneBoxSplit`, `BlockGapBddW`) is O1 | open (not written down) | `ProofPhase/OneBox/Fine.lean`; `ProofPhase/Saturation/Reduction.lean`; `ProofPhase/V4/Gap.lean` | one form, linked to the assembly |
+| III.5.7 | Per-box costs multiply over the lattice: with O1 in its per-outside Lean form (III.5.9) the composition of the per-box influences is a theorem, and no annealed quantity enters; the annealed-to-quenched identification is needed only to read a torus measurement of F_e as evidence about O1 (III.7) | Lean | `ProofPhase/OneBox/Fine.lean`, `fineDecayInv_of_fineOneBox`; `ProofPhase/Closures/OneBoxForm.lean`, `decay_of_o1Form`; in the API chain model `ProofPhase/Unified/YangMills.lean`, `pathSum_eq` | none (the open content is O1, III.5.6) |
+| III.5.8 | In the transfer-matrix model the chain criterion F_e(L) > 2c(L) and the tube threshold F_e(L) > log mu are independent (examples both ways); the joint form F_e(L) - 2C > log mu, with C bounding the excess act on the multiples of L and mu >= 1 continuations, gives both, and the multiplied path sum mu^k e^{-F_e(kL)} decays at rate F_e(L) - 2C - log mu and is summable | Lean (model) | `ProofPhase/Closures/ChainJoint.lean`, `joint_gives_both`, `tube_not_chain`, `chain_not_tube` | none for the model; turning paths in the cubic geometry are carried by O1's per-outside form (III.5.9), not by the model |
+| III.5.9 | O1 in one Lean form: `FineOneBox` (one box of the SU(2) Wilson measure at the physical cell scale, influence bounds under every boundary condition, uniform in level and volume). `WilsonOneBox` (the actual DLR kernel) and `FineOneBoxSplit` imply it; it feeds `yang_mills_assembly_onebox`. `BlockGapBddW` is the separate blocking route's decay input and `FineOneBoxPat` an alternative criterion with its own assembly; neither is needed | Lean | `ProofPhase/Closures/OneBoxForm.lean`, `O1Form`, `o1Form_of_wilson`, `o1Form_of_split`, `decay_of_o1Form`, `gap_of_o1Form` | none; reading the number F_e(L) > log mu_4 of III.5.6 as `FineOneBox`'s one-box sum is path counting, paper |
 | III.6.1 | Tick-unit floor Z_tw/Z >= e^{-2 beta L^2} | Lean (the pointwise weight bound `hpt` for the Wilson action, giving c = e^{-2 beta L^2}, is an input) | `ProofPhase/Crossover/Saturation.lean`, `ratio_floor_of_pointwise`, `exp_floor_ge_iff` | none |
 | III.6.2 | A large electric free energy forces a saturated twist | Lean | `ProofPhase/Crossover/Saturation.lean`, `twist_ratio_of_elecF` | none |
 | III.6.3a | Upper decimation normalisation >= 1 (Jensen) | Lean | `ProofPhase/Crossover/Saturation.lean`, `jensen_normalization` | none |
@@ -210,7 +210,9 @@ Full chain: `docs/mass-gap/weak-coupling/PROOF-BLUEPRINT.md` (version 2). Crosso
 | III.9.2 | Balaban's control preserves partition functions, not laws | classical | `proof-phase/c5d-supplier/BALABAN-READING.md` | none |
 | III.9.3 | M1 law-preserving large-field step, weak coupling up to L_* | paper (Lean parts, from `M1Hypotheses`) | `ProofPhase/M1/Assembly.lean`, `m1_assembly`; `proof-phase/m1-tools/M1-PLAN.md` | Lean |
 | III.9.4 | Continuum limit exists | external | `H1-OPENAI.md`; `ProofPhase/Existence/Bridge.lean`, `plaqLaw_eq_wilsonMeasure` | audit |
-| III.9.5 | O2: line of constant physics and non-triviality | open | `ProofPhase/Assembly.lean` (`OnLCP`, `NonTrivial`); `ProofPhase/V4/LCP.lean` | theorems |
+| III.9.5 | The gap needs of the line of constant physics only its resolution clause (l_k -> infinity): with O1 in its one form it gives torus decay, the gap in both orders of limits and reflection positivity; the running clause, the scheme clause and non-triviality are not used | Lean | `ProofPhase/Closures/OneBoxForm.lean`, `tendsto_a_of_resolution`, `gap_of_o1Form`, `yang_mills_assembly_onebox_of_resolution` | none |
+| III.9.5a | Per box, by construction: at every level and volume the reflected correlation at even lattice time is the reflection-positivity square of the centred translate, Z wcorr(2m) = rpForm(F_m - c, F_m - c), hence >= 0; a scale-uniform lower bound c > 0 at a fixed physical time gives `NonTrivial` ("non-trivial" in the project's sense, a non-vanishing correlation, weaker than "not a Gaussian field"); the running clause holds by construction on the one-loop line beta_k = (11/(6 pi^2)) log l_k. Strict per-box positivity (non-degeneracy of the reflection form on the centred translates) is not claimed | Lean (by construction for the per-box parts) | `ProofPhase/Closures/NonTrivialSplit.lean`, `wcorr_even_eq_rpForm`, `wcorr_even_nonneg`, `UniformLower`, `nonTrivial_of_uniformLower`, `oneLoopTuning`, `running_oneLoop` | none |
+| III.9.5b | The scale-uniform halves of O2: a lower bound c > 0 on one slab correlation at a fixed physical time, uniform in the cutoff (spectral form: weight >= delta below a mass M, uniformly), and the scheme clause of the line of constant physics. In the spectral model this is the lower edge of the window whose upper edge is O1's gap: not implied by O1 (a gap at every rate with vanishing correlation), not implying it, compatible with it (a state at m <= E < M) | open (relation to O1: Lean, model) | `ProofPhase/Closures/NonTrivialSplit.lean`, `lower_of_spectral_weight`, `gap_not_lower`, `gap_and_lower_compatible`; `ProofPhase/Bridge/Spectral.lean`, `corr_ge`; `ProofPhase/Assembly.lean` (`NonTrivial`, `OnLCP`) | a proof, or the owner's decision to read the one assumption (X.64, "a running system") as including it (class c of the closures round) |
 | III.9.6 | O3: Euclidean invariance, fields, uniqueness, Wightman | external (theirs) / open (ours) | `PROOF-BLUEPRINT.md` P6.4-P6.9, P7.6 | observable bridge or adoption |
 | III.9.7 | O4: every compact simple group | external (existence) / open (our tuning) | `PROOF-BLUEPRINT.md` P6.10 | general tuning |
 | III.9.8 | M1's floor at L_* gives a physical gap along a chain, not on a grid | paper | `RDOEBLIN.md` 0 | none |
@@ -229,7 +231,7 @@ Notes relative to `docs/rh-guide/`.
 | IV.1.2 | Line implies non-negative pairing | Lean | `ProofPhase/GRH/Weil.lean`, `weilSum_re_nonneg_of_real` | none |
 | IV.1.3 | Positivity implies line, given the approximation property | Lean (named hypotheses: approximation property, finite multiplicities) | `ProofPhase/GRH/Weil.lean`, `real_of_weilSum_nonneg` | prove the property for a real class |
 | IV.1.5 | Weil's explicit formula for zeta, for every smooth compactly supported test function, by the contour shift (zero sum absolutely convergent), with a polynomial zero count per unit window; Mathlib-only core, no named step | Lean | `ProofPhase/GRH/ContourShift.lean`, `CS.contourShift`; `ProofPhase/GRH/ContourShiftTie.lean`, `explicit_formula_smooth`, `explicit_formula_of_smooth`; `ProofPhase/GRH/ContourShiftZeta.lean`, `zero_count_ball`, `zero_count_window`; `docs/unified/contourshift-axioms.log`; `docs/unified/CONTOUR-SHIFT.md` | Dirichlet and other L-functions (IV.1.5b) |
-| IV.1.5b | For Dirichlet and other L-functions the explicit formula, the C^2 test class and Weil's criterion itself are not in Lean | open | `docs/unified/CONTOUR-SHIFT.md` 5 | formalise them |
+| IV.1.5b | The explicit formula for Dirichlet and other L-functions, for test functions of class C^2, and Weil's criterion are classical; they are not formalised in Lean here | classical (not in Lean) | Weil 1952 ("Sur les formules explicites de la theorie des nombres premiers"); Bombieri 2000 (recalled); `docs/unified/CONTOUR-SHIFT.md` 5 | formalise them |
 | IV.1.6 | Similitude eigenvalues have modulus sqrt q | Lean | `ProofPhase/GRH/Orbits.lean`, `similitude_eigenvalue` | none |
 | IV.1.7 | Skew shift gives Re = 1/2 | Lean (finite dimension) | `ProofPhase/GRH/Orbits.lean`, `skew_shift_re_half` | none |
 | IV.1.8 | Lee-Yang and Asano, small cases | Lean | `ProofPhase/GRH/LeeYang.lean`, `asano`, `ising3_zeros_on_circle` | none |
@@ -294,7 +296,7 @@ Notes relative to `docs/pnp/`.
 | V.1.6 | Sampling iff counting (self-reducible) | classical | Jerrum-Valiant-Vazirani 1986 | none |
 | V.1.7 | Hard-core below lambda_c: counting and fast mixing | classical | Weitz 2006; Anari-Liu-Oveis Gharan 2020; Chen-Liu-Vigoda 2021 | none |
 | V.1.8 | Certified class: existence, search, sampling, counting polynomial | classical (assembled; mixing step Lean) | `DICTIONARY.md` 6.2; Lovasz 1975; Moser-Tardos 2010; Moitra 2019 (mixing step: `tv_sweep_dobrushin`, `mixing_sweep_dobrushin`, V.1.1) | Lean for the assembly |
-| V.1.9 | Not unconditional in Lean: continuous spins, hard constraints, systematic scan under columns | open (Lean) | `ITEMS.md` 3 | Lean |
+| V.1.9 | On paper the Dobrushin and spectral-gap results hold for infinite or continuous single-site spaces, with hard constraints, and for systematic scan; in Lean they are not yet unconditional (the gauge-theory instance rests on the couplings and the L^2 spectral theorem as hypotheses) | classical (Lean conditional) | Dobrushin 1968; Georgii, *Gibbs Measures and Phase Transitions*, ch. 8 (general single-site spaces); Salas-Sokal 1997 (hard constraints); Dyer-Goldberg-Jerrum 2008, Hayes 2006 (systematic scan) (recalled); `ITEMS.md` 3 | Lean |
 | V.2.1 | Antiferromagnets beyond uniqueness: no FPRAS | conditional (NP != RP) | Sly 2010; Sly-Sun 2014; Galanis-Stefankovic-Vigoda | none |
 | V.2.2 | k-CNF counting NP-hard above c 2^{k/2} | conditional (NP != RP) | Bezakova et al. 2019 | none |
 | V.2.3 | Ferromagnetic Ising has an FPRAS at every temperature | classical | Jerrum-Sinclair 1993 | none |
@@ -308,7 +310,7 @@ Notes relative to `docs/pnp/`.
 | V.3.8 | One XOR names the flux; naming costs differ by system | Lean (`summary`) + classical | `DICHOTOMY-TRANSFER.md` 3; `ProofPhase/Proof/Crossing.lean`, `summary` | none |
 | V.3.9 | Known lower bounds (resolution, bounded-depth Frege, cutting planes) | classical | `PROOF-SYSTEMS.md` 2 | none |
 | V.3.10 | Feasible interpolation and its cryptographic failure | classical / conditional | Krajicek 1997; Pudlak 1997; Krajicek-Pudlak 1998; Bonet-Pitassi-Raz 2000 | none |
-| V.3.11 | No superpolynomial bound for AC^0[p]-Frege, Frege, EF; formulas about n^3 | open / classical | Hastad 1998; Tal 2014 | a lower bound |
+| V.3.11 | No superpolynomial lower bound is known for AC^0[p]-Frege, Frege or extended Frege; best formula lower bounds about n^3 (a statement about the literature; the bounds themselves are open problems outside the card, whose open step is V.4.10) | classical | Hastad 1998; Tal 2014; Krajicek, *Proof Complexity* (2019) (recalled) | none |
 | V.4.1 | CP on random 3-CNF is the sharpest open case | classical + reading | `EDGE.md` 0.1 | none |
 | V.4.2 | Incompressibility of the one formula gives expansion; natural proofs do not bite | classical + reading | `EDGE.md` 0.3 | none |
 | V.4.4 | Majority line: sensitive to all, survives restrictions of fewer than e/2 | Lean | `ProofPhase/Proof/Edge.lean`, `majority_line`, `thr_sensitive`, `thr_survives` | none |
@@ -457,7 +459,7 @@ Notes relative to `docs/pnp/`.
 | VII.3.4a | If `a^2 <= 4q`, the coefficients of `1/(1 - aT + qT^2)` satisfy abs(c_k) <= (k + 1) q^{k/2}; at bad places, for abs(a) <= 1, abs(c_k) <= 1 | Lean | `Arsenal.BSD.Hasse`, `invQuad`, `invQuad_coeff`, `quad_bound`, `lin_bound`, `invQuad_bound`, `invQuad_bound_lin` | none |
 | VII.3.4b | Under Hasse at one place, the coefficients of Mathlib's local power series are bounded by max 1 ((k + 1) q^{k/2}); the first coefficient of `W.LFunction` is 1 | Lean (from `LocalHasse`) | `Arsenal.BSD.Hasse`, `LocalHasse`, `localPowerSeries_coeff_zero`, `localPowerSeries_coeff_bound`, `eulerProduct_apply_one`, `LFunction_one` | none |
 | VII.3.4c | An L-series with first coefficient 1 that converges absolutely somewhere is not zero for all large real arguments; so every continuation has a finite order at s = 1 once the series converges somewhere | Lean | `Arsenal.BSD.Hasse`, `LSeries_not_eventually_zero`, `order_ne_top_of_LSeries`, `order_ne_top_of_summable` | none |
-| VII.3.4d | From the named parts Hasse and the Euler product bound: absolute convergence for `re s > 3/2`, a finite order at s = 1, and parity with no order given separately | Lean (from the named parts `Hasse`, `EulerProductBound` and the functional equation) | `Arsenal.BSD.Hasse`, `Hasse`, `EulerProductBound`, `LSeriesSummable_of_hasse`, `order_ne_top`, `analytic_parity_of_hasse` | Lean proofs of the two parts |
+| VII.3.4d | From the named part Hasse (and, beyond Q, the Euler product bound): absolute convergence for `re s > 3/2`, a finite order at s = 1, and parity with no order given separately | Lean (from the named parts) | `Arsenal.BSD.Hasse`; over Q `Arsenal.BSD.EulerRat`, `LSeriesSummable_of_hasse_rat`, `order_ne_top_rat`, `analytic_parity_of_hasse_rat` | a Lean proof of Hasse |
 | VII.3.5a | `BSDStatement W`: a continuation exists and the rank equals the order of its zero; with a continuation in hand it is the equation rank = order | Lean | `Arsenal.BSD`, `BSDStatement`, `bsdStatement_iff` | none |
 | VII.3.5b | Under BSD, E(K) is infinite exactly when `Lam 1 = 0` (no finite generation assumed) | Lean (from BSD) | `Arsenal.BSD`, `existence_line` | none |
 | VII.3.5c | Under BSD and the functional equation, a rank equal to n gives `w = (-1)^n`; also with `finrank` under finite generation | Lean (from BSD and the functional equation) | `Arsenal.BSD`, `rank_parity`, `rank_parity_of_fg` | none |
@@ -466,7 +468,8 @@ Notes relative to `docs/pnp/`.
 | VII.3.6a | The Frobenius eigenvalue `alpha` has norm `sqrt q` when `a^2 <= 4q`, and the point count is `norm(1 - alpha)^2` | Lean | `ProofPhase/Unified/BSDAPI.lean`, `frobAlpha`, `frobAlpha_normSq`, `norm_frobAlpha`, `count_normSq` | none |
 | VII.3.6b | Hasse's bound is an encoder: reflection coefficient `a/(2 sqrt q)` (cos theta), Szego factor `1 - a^2/(4q)` (sin^2 theta) in the unit interval | Lean (Hasse as input) | `ProofPhase/Unified/BSDAPI.lean`, `frob`, `frob_refl`, `frob_szego` | none (Hasse is an input) |
 | VII.3.6c | Each step factor `N_p/p` lies between `(1 - p^{-1/2})^2` and `(1 + p^{-1/2})^2`; the partial product keeps a margin and has a chain bound; no finite stage is zero | Lean (Hasse as input) | `ProofPhase/Unified/BSDAPI.lean`, `factor_bounds`, `EulerData`, `EulerData.fac_bounds`, `EulerData.lower`, `EulerData.upper`, `EulerData.no_finite_zero`, `EulerData.P_le` | none (Hasse is an input) |
-| VII.3.6d | That the counts in `EulerData` are those of one given curve is documented, not checked in Lean; it needs the link from Mathlib's local factor at the completion to the count over Z/p at every prime | open | BSD 2, 3.2 | the link, stated and proved |
+| VII.3.6d | The Euler ledger of one given integral curve W (by construction: the ledger is built from the curve, so its counts are the curve's point counts by `rfl`; natural because the step factor N_p/p is defined from these counts): its counts are Mathlib's point counts of W mod p by construction (Hasse for them stays the named input); at every prime of good reduction they are the computed counts of `Arsenal.BSD`, and the step factor is count/p; instance y^2 = x^3 - x at every odd prime | Lean (Hasse as input) | `ProofPhase/Closures/EulerCurve.lean`, `curveCount`, `ofCurve`, `ofCurve_N`, `ofCurve_N_good`, `ofCurve_fac_good`, `E32Euler_N` | none |
+| VII.3.6e | That these counts give the linear coefficient of Mathlib's local factor (`WeierstrassCurve.localPolynomial`: minimal model over the completion, its reduction, residue field Z/p) at a good prime is the classical definition of a_p; not linked in Lean | classical (not linked in Lean) | Silverman, AEC, App. C.16 (recalled); Mathlib `WeierstrassCurve.LFunction`; `Rat.HeightOneSpectrum.adicCompletionIntegers.padicIntEquiv`, `PadicInt.residueField` | the link, stated and proved |
 | VII.3.7a | From modularity and weak Mordell-Weil as inputs: E(Q) finitely generated, torsion finite, the order independent of the continuation, its parity the sign | Lean (from modularity and weak Mordell-Weil) | `ProofPhase/Unified/BSDAPI.lean`, `unconditional` | none |
 | VII.3.7b | Gross-Zagier-Kolyvagin in its slot fills the card's open step whenever the order is at most 1; the content is external | Lean (plumbing) | `ProofPhase/Unified/BSDAPI.lean`, `LowRank`, `open_of_lowRank` | none |
 | VII.3.8a | The curve y^2 = x^3 - x over Q and Z has discriminant 64 and is elliptic; the three points of order two are on it | Lean | `ProofPhase/Unified/BSDAPI.lean`, `E32`, `E32_Δ`, `E32Z`, `E32Z_Δ`, `E32_points`, `instance : E32.IsElliptic` | none |
@@ -480,7 +483,7 @@ Notes relative to `docs/pnp/`.
 | VII.3.8i | The recalled constants (the Tamagawa number of 32a2, the regulator of 37a1, `sqrt 2`) | classical (recalled) | BSD 3.3 | re-reading |
 | VII.4b | Weak Mordell-Weil: E(K)/2E(K) is finite (a named part in IM, an `External` in the API) | classical | Mordell 1922; Weil 1929; `Arsenal.BSD.Algebraic`, `WeakMordellWeil` | a Lean proof on Mathlib |
 | VII.4c | Hasse's bound at every good prime (a named part in IM, an `External` in `EulerData`); its textbook proof is the positive definite degree form on End(E) | classical | Hasse; Silverman V.1.1 (recalled); `Arsenal.BSD.Hasse`, `Hasse`; `ProofPhase/Unified/BSDAPI.lean`, `EulerData` | a Lean proof (isogeny degrees or intersection theory on E x E) |
-| VII.4d | Euler products with Hasse-type coefficient bounds converge absolutely for `re s > 3/2`, dominated by `zeta_K(s - 1/2)^2` (a named part) | classical (recalled) | `Arsenal.BSD.Hasse`, `EulerProductBound` | a Lean proof |
+| VII.4d | Euler products with Hasse-type coefficient bounds converge absolutely for `re s > 3/2`, dominated by `zeta_K(s - 1/2)^2`: proved over Q (the factor at p_v has q_v = p_v and v -> p_v is a bijection onto the primes); for a number field of degree > 1 a named part | Lean over Q (IM); classical (recalled) beyond | `Arsenal.BSD.EulerRat`, `eulerProductBound_rat`, `abs_eulerProduct_le`, `lseriesSummable_eulerProduct_primes`, `card_residueField_rat`; `Arsenal.BSD.Hasse`, `EulerProductBound` | a Lean proof over number fields (q_v = p^f, several v over one p) |
 | VII.4e | Gross-Zagier and Kolyvagin with modularity: analytic rank 0 or 1 gives BSD (`LowRank`) | external | `ProofPhase/Unified/BSDAPI.lean`, `LowRank` | none needed for this paper |
 | VII.4f | Goldfeld 1982: the 1965 growth form of the Euler products implies BSD and the Riemann hypothesis for L(E, s) (`LedgerInput.goldfeld`) | external | Goldfeld; K. Conrad 2005 (recalled); `ProofPhase/Unified/BSDAPI.lean`, `LedgerInput` | re-reading of the exact hypothesis at bad primes |
 | VII.4h | Weak Mordell-Weil is within reach on Mathlib; Hasse needs isogeny degrees or intersection theory on E x E; modularity is a very large formalisation | paper (estimate) | PREP (2026-11-24, BSD is IM; Hasse entries); BSD 2 | the formalisations |
@@ -511,10 +514,10 @@ Notes relative to `docs/pnp/`.
 | VIII.1.3a | Grothendieck's standard conjectures B (Lefschetz type), C (Kunneth), D (numerical = homological), and the Hodge type (positivity of `(-1)^p <x, L^{n-2p} x>` on primitive algebraic classes) | classical | Grothendieck 1969; Kleiman; HODGE 1.4 | none |
 | VIII.1.3b | The Hodge-type conjecture is a theorem over C (Hodge-Riemann on primitive Hodge classes; algebraic classes are Hodge classes) | classical | HODGE 1.4 | none |
 | VIII.1.3c | In characteristic p the Hodge type is open except for surfaces (Hodge index theorem: Hodge 1937, Segre, Grothendieck 1958) and a few cases (Ancona 2021 for abelian fourfolds) | open (the exceptions external, recalled) | HODGE 1.4 | a proof |
-| VIII.1.3d | B in general and D in general are open; C follows from the Weil conjectures over finite fields (Katz-Messing 1974) | open / classical | HODGE 1.4 | a proof |
+| VIII.1.3d | Grothendieck's standard conjecture C (Kuenneth type) holds over finite fields, from the Weil conjectures | classical | Katz-Messing 1974 | none |
 | VIII.1.3e | Weil 1948: for curves the Riemann hypothesis is the Castelnuovo-Severi inequality, the Hodge index theorem on `C x C` (Mattuck-Tate 1958; Grothendieck 1958) | classical | HODGE 1.4 | none |
 | VIII.1.3f | Deligne 1974 proved the Riemann hypothesis over finite fields for all smooth projective varieties by Lefschetz pencils, monodromy and Rankin's squaring trick, without the standard conjectures, which remain open | classical | HODGE 1.4 | none |
-| VIII.1.4a | Open: B in general; D; the Hodge type in characteristic p (the conjecture for p >= 2 is VIII.5.1) | open | HODGE 1.5 | a proof |
+| VIII.1.3g | The standard conjectures B (Lefschetz type) and D (numerical equals homological) are open in general (known in special cases, e.g. B for abelian varieties, Lieberman 1968) | open | HODGE 1.4; Lieberman 1968 (recalled) | a proof (class d of the closures round) |
 | VIII.2a | The Hodge card: input rational cohomology with its Hodge classes (described) and algebraic classes (exists); one open step; conclusion `hodge = alg`; the cycle class is a Hodge class as an `External`; `problem.proved` is antisymmetry of inclusion (`le_antisymm h i.alg_le`), so the card adds no mathematics (VIII.2b, VIII.3.2a) | Lean | `ProofPhase/Unified/HodgeAPI.lean`, `Input`, `HodgeConjecture`, `problem` | none (the open step is VIII.5.1) |
 | VIII.2d | `Unified/All.lean` imports only `Unified` and `TransportBridges`; `HodgeAPI`, `BSDAPI`, `NavierStokesAPI`, `GRHToO1`, `GRH/ContourShiftTie` and `ElectricSUNRunning` have no importer and `BlowupSUN` only `ETM/Instances`; there is no `ProofPhase.lean` root, so these modules build by explicit target | paper | a grep of the `import` lines over `docs/mass-gap/formal/`; `lakefile.toml` | an aggregate import module |
 | VIII.3.1a | Cauchy-Schwarz for a symmetric form nonnegative on a subspace, over any ordered field | Lean | `ProofPhase/Unified/HodgeLinear.lean`, `sq_add_smul`, `cs_of_nonneg` | none |
@@ -602,11 +605,11 @@ Notes relative to `docs/pnp/`.
 | IX.6e | "SU(5) with a single coupling is G0 at GRH, with a forward arrow independent of scale"; the single coupling holds at one scale only, and the programme lies beyond Yang-Mills, GRH and NP vs coNP | reading | `PREP.md`, naming entry; GU 3.3 | none |
 | IX.6f | On s > 1 zeta decreases continuously from infinity to 1, so it takes every integer N >= 2 exactly once; it indexes every SU(N) one to one | classical | continuity and monotonicity; `PREP.md`, "Every SU(N) as a valid unified theory" entry | none |
 | IX.6g | Every SU(N) "describes existence"; descending from 2 and 3 | reading | `PREP.md`, same entry | none |
-| IX.6h | SU(2) as the stable Ricci-flow profile (Part VI.6) has no found link to the global form Z_6 | open | GU 3.3 | a link |
+| IX.6h | SU(2) as the stable Ricci-flow profile (Part VI.6) has no found link to the global form Z_6 | paper (observation; under IX.6's readings) | GU 3.3 | a link |
 | IX.7a | Route 1: a DMP principle, stated before the hypercharges and proved as a theorem about running existence spaces, whose consequence is that the surviving centre twists are glued maximally to the U(1) | open | GU 6, item 1 | the theorem |
-| IX.7b | Route 2: anomaly cancellation in Lean, fixing the hypercharge ratios and hence Z_6 (composing with `gen_trivial_iff`); makes the input a classical theorem, not a DMP one; anomaly cancellation is not in Lean (IX.4.1b) | open | GU 6, item 2 | the Lean proof |
+| IX.7b | Route 2, done classically in Lean: for one generation with the Standard Model representations the four anomaly conditions (SU(3)^2 U(1), SU(2)^2 U(1), gravitational, U(1)^3) have exactly the solutions q = q_Q (1, 4, -2, -3, -6), up to u <-> d, and the degenerate family q_Q = 0; with q_Q > 0 and coprime charges the charges are those of `smFields`, and the centre acting trivially is the Z_6 (composing with `sm_kernel`, `gen_trivial_iff`). The input is a classical theorem, not a DMP one | Lean | `ProofPhase/Closures/Anomaly.lean`, `anomalyFree_iff`, `anomaly_fixes_sm`, `fermion_kernel`, `anomaly_fixes_Z6`; Geng-Marshak 1989; Minahan-Ramond-Warner 1990 | none (the degenerate family is excluded by q_Q > 0, the Yukawa input, stated in the file) |
 | IX.7c | Route 3: twist sectors of a lattice SU(3) x SU(2) x U(1) theory with Z_6-invariant vector-like matter; chiral matter stays out of reach | open | GU 6, item 3 | the extension of the `SUNTwist` chain |
-| IX.7d | Route 4: a statement about running couplings needs the continuum theory with matter | open | GU 6, item 4 | beyond the paper's scope |
+| IX.7d | Route 4: a statement about running couplings needs the continuum theory with matter | (statement of scope) | GU 6, item 4 | beyond the paper's scope |
 | IX.7e | Until one lands, the paper can say: SU(3) x SU(2) x U(1)/Z_6 as one structure (classical, Lean-stated); readings that select Z_6 and are falsifiable; charge quantisation proved and measured but standard; no consequence derived from DMP beyond that | paper | GU 6 (closing paragraph) | closure of IX.5f |
 
 ## Part X. The generalisation (`draft/10-part-X-generalisation.md`)
@@ -786,6 +789,7 @@ These labels were rows of draft 3. Each was a duplicate of, or folded into, the 
 | XI.2a | II.11.2 |
 | XI.2b | II.11.3 |
 | XI.2c | II.11.1 |
+| VIII.1.4a | VIII.1.3c, VIII.1.3g |
 
 Part IX row IX.0b was a cross-reference and is folded; the scope rows that stay (not counted) are 0.1, III.0, VI.0e, VII.0e, VIII.0d, IX.0a, IX.0d.
 
@@ -793,18 +797,18 @@ Part IX row IX.0b was a cross-reference and is folded; the scope rows that stay 
 
 Counted on the rows above (each row once, by its first mark; scope rows not counted: 0.1, III.0, VI.0e, VII.0e, VIII.0d, IX.0a, IX.0d). The draft 3 column is the count of the committed draft; the next column is after the audit of 2026-11-24 (rows removed and added, status changes, `certified` as its own mark, II.11.2 and II.11.3 counted as Lean):
 
-| Status | Draft 3 as committed | After audit | Draft 2 |
+| Status | After closures (draft 3) | Draft 3 as committed | Draft 2 |
 |---|---|---|---|
-| Lean | 239 | 211 | 114 |
-| classical | 120 | 117 | 42 |
-| external | 48 | 40 | 7 |
+| Lean | 221 | 239 | 114 |
+| classical | 121 | 120 | 42 |
+| external | 40 | 48 | 7 |
 | conditional | 4 | 4 | 3 |
-| paper | 63 | 55 | 27 |
-| numerical | 24 | 22 | 17 |
-| certified | 0 | 2 | 0 |
+| paper | 56 | 63 | 27 |
+| numerical | 22 | 24 | 17 |
+| certified | 2 | 0 | 0 |
 | reading | 83 | 83 | 25 |
-| open | 70 | 60 | 28 |
-| **Total** | **651** | **594** | **263** |
+| open | 48 | 70 | 28 |
+| **Total** | **597** | **651** | **263** |
 
 The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
 

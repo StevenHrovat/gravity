@@ -293,8 +293,9 @@ is bound. **[reading]** (claim I.10a)
   lawful. **[Lean]** (`proof/Im/Closure.lean`, `Im.closure`, `Im.space_size`) (claim I.10c)
 * **Behind the door a composition stays lawful.** A network built from nodes that keep the guarantee on what their door lets in
   keeps it on any input. **[Lean]** (`proof/Im/Compose.lean`, `Im.sound`, `Im.galaxy_robust`) (claim I.10d)
-* **Tokens only attenuate.** IM's own note says this property is kept by construction and its theorem is still to be written.
-  **[open]** (`proof/Im/Closure.lean`, header; claim I.10e)
+* **Tokens only attenuate.** An attenuated token's kinds are a subset of its parent's, and a chain of attenuations is the
+  intersection of the root with its caveats, in any order. It holds by construction: attenuation is intersection with a caveat.
+  **[Lean]** (IM, `proof/Im/Attenuate.lean`: `attenuate_sub`, `attenuateAll_eq`, `attenuateAll_perm`; claim I.10e)
 
 **Care points.** (1) "Permissible" is what the grammar and the grants state, so the security is exactly as good as that
 specification. (2) The gate certifies integrity and authority, not the truth of content (I.9 says what happens to what it

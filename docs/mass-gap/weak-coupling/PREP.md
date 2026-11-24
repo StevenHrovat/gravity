@@ -4644,3 +4644,49 @@ thread.
   Care point: the construction must be the natural one; if a definition is chosen only to make the bound trivial, the content moves
   into the equation "the defined object is the intended one", which must then be proved or stated. Never for O1-type rows. Passed
   to the overnight closure round.
+- **Non-triviality is given by running in DMP as content, constructible from IM per box (the owner, 2026-11-24):** "The
+  non-triviality can be given by it running in DMP as content, which also means it can be constructed from IM per box, so it keeps a
+  lot of the good features." Exact counterpart (coordinator): in Lean, `NonTrivial` (`ProofPhase/Assembly.lean`) asks for one slab
+  observable whose correlation at a fixed physical separation has every limit point at least `c > 0` in absolute value. That splits
+  in two: per box (each lattice level `k`) the correlation is a finite, positive quantity of the running system, constructible from
+  the box's own data [to be checked in Lean: reflection positivity gives a positive correlation at each finite level]; and the bound
+  `c` uniform in `k` is the part that survives the continuum limit. So the reading puts non-triviality's content per box (where IM
+  constructs it) and leaves only its uniformity in the scale open, which is the same shape as O1. Care point: if this holds as
+  stated, O2's non-triviality half (III.9.5) is not a second open step but folds into the one assumption; the per-box positivity must
+  still be proved, and "non-trivial" here means non-vanishing correlation, the definition the project uses, which is weaker than
+  "not a Gaussian field" [classical distinction]. Passed to the overnight closure round.
+  The owner sharpens it (same day): "That the correlation does not vanish is given through GRH reflection positivity, which
+  certifies, that once something starts in a DMP-like way, it behaves DMP-like and can thus be sufficiently proven to exist just
+  like that." Exact counterpart (coordinator): reflection positivity turns the correlation into a squared norm, by identity. With
+  the positive transfer matrix `T = e^{-H}` and a reflection-symmetric observable `F`, `<theta F, T^t F> = ||T^{t/2} F||^2`
+  [classical, Osterwalder-Schrader; reflection positivity is Lean here]. So at every finite stage the correlation is not merely
+  `>= 0`: it is zero only if `T^{t/2} F = 0`, and `T` is injective on a finite box (positive definite), so it is strictly positive
+  whenever `F` is not constant. "Once it starts, it continues" is exact: the spectral sum `sum_E e^{-E t} |c_E|^2` has only positive
+  terms. This is the owner's by-construction strategy in its cleanest form: non-vanishing per box is excised by an identity. Care
+  point (unchanged): in the limit the correlation is at least `e^{-m t} |c_1|^2`, so it stays non-vanishing exactly when the overlap
+  `|c_1|` with the lowest state stays bounded below uniformly in the scale; that uniformity is the O1-shaped part. "GRH reflection
+  positivity" is the reading that Weil positivity and Osterwalder-Schrader positivity are one positivity (Connes) [reading].
+  Passed to the overnight closure round as the proof route for the per-box half.
+- **GRH's symmetry can only stem from the encoder at a DB, so it is one box again (the owner, 2026-11-24):** "For GRH: Since no
+  other symmetry exists other than the one at a DB through an encoder, if symmetry exists, it must stem from there, thus being one box
+  again." Exact counterpart (coordinator): the functional equation of zeta is exactly such a symmetry. Riemann's second proof writes
+  the completed zeta as a Mellin transform of the theta function, splits the integral at the one point `t = 1`, and uses
+  `theta(1/t) = sqrt(t) theta(t)` (Poisson summation: the Gaussian is its own Fourier transform) to fold `(0, 1)` onto `(1, inf)`
+  [classical]. So the symmetry `s -> 1 - s` lives at a single boundary point, the self-dual point `t = 1`, with the Fourier transform
+  as the encoder; Tate's thesis does the same place by place, a local factor at each place and one global Poisson summation
+  [classical]. Together with the reality symmetry `zeta(conj s) = conj zeta(s)`, it gives the reflection `s -> 1 - conj(s)` about the
+  critical line, the median of the earlier entries [classical]. Care point: the reality symmetry is a second symmetry, but it is
+  complex conjugation, not a boundary; the only symmetry of the box kind is the one at `t = 1`, and combined they make the one axis.
+  Mathlib carries the functional equation (`completedRiemannZeta_one_sub`), which the contour-shift Lean uses [Lean, Mathlib].
+  The owner corrects the care point (same day): "The behavior was not quite stated correctly. An act is a tunnel through possibility
+  space U(1), from the origin of an act to its conclusion through existence, but not as a part of it. Once that closed loop closes, the
+  connection is closed again and needs a new entangled state to be opened again." Corrected reading (coordinator): the reality
+  symmetry is not a second symmetry of the box; it is the act's loop through U(1). Each term of the series carries the phase
+  `n^{-it} = e^{-i t log n}`, a point on the circle U(1); complex conjugation is the inverse on U(1), the same loop traversed back
+  [classical]. Because the coefficients are real, the loop of zeta closes on zeta itself: `zeta(conj s) = conj zeta(s)`. So the loop
+  runs through existence (the box, the coefficients) without being part of it (it only moves the phase). The second half is exact
+  too: for a Dirichlet L-function with a complex character, conjugation does not return to the same function, `L(conj s, chi) =
+  conj L(s, conj chi)`: the loop closes on the partner `conj chi`, a second box, and GRH has to be asserted for both [classical]. In
+  the owner's terms, the closed loop needs the entangled partner to open again. So the corrected statement: the only symmetry of the
+  box kind is the one at `t = 1`; conjugation is the act's U(1) loop, which closes on the box itself for real coefficients and on the
+  conjugate partner otherwise [reading for "act" and "entangled"; classical for the identities].

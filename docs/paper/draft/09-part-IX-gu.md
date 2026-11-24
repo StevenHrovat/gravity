@@ -51,7 +51,7 @@ API's one general statement about the G0 phase field (IX.3.3). The table is the 
 |---|---|
 | **Well-defined input** | the representation content of one generation and the Higgs: for each field its triality `t`, duality `d` and hypercharge in sixths `q = 6Y` (`smFields`, a definition in Lean). **The hypercharges are input, not output.** |
 | **Proved structure** | the centre elements of SU(3) x SU(2) x U(1) that act trivially on all these fields form exactly a cyclic group of order 6, split as 2 x 3; every invariant component has `Q + t/3` an integer (charge in thirds, correlated with colour); the SU(5) block embedding has exactly this group as kernel; a compact U(1) admits only integer charges **[Lean]** |
-| **External inputs** | the hypercharge values (fixed classically by anomaly cancellation or by SU(5), not formalised here); the measured neutrality of matter, the absence of free fractional charges, proton-decay limits, the failure of coupling unification, the absence of monopoles **[classical]** / **[external]** |
+| **External inputs** | the hypercharge values (fixed by anomaly cancellation, now in Lean, IX.7b, or by SU(5)); the measured neutrality of matter, the absence of free fractional charges, proton-decay limits, the failure of coupling unification, the absence of monopoles **[classical]** / **[external]** |
 | **The one open step** | a checkable consequence, in the gate's wording, supplied by DMP and not already contained in the standard expectation. The owner decides what counts. **[open]** |
 | **Conclusion** (if the step closes) | the Grand Unified half of the release criterion holds |
 
@@ -61,7 +61,7 @@ All of this is **[Lean]**, standard axioms only (`docs/unified/gu-axioms.log`: 1
 `propext` alone, two definitions on none; `docs/unified/gucharge-axioms.log`: all 12 declarations on the three standard axioms; no
 `sorry`, `admit`, `native_decide` or `axiom` in either module). The statements are about groups and their characters, that is, about the
 possible charges of fields. **Not formalised:** a gauge field theory with this U(1); that the image of the SU(5) map is all of
-S(U(3) x U(2)); the anomaly equations; any lattice or twist-sector statement for the product group; chiral matter.
+S(U(3) x U(2)); any lattice or twist-sector statement for the product group; chiral matter.
 
 ### IX.3.1 The Z_6 (`General/GUCentre.lean`, namespace `ProofPhase.General.GU`)
 
@@ -131,7 +131,8 @@ G0 link that holds for **every** instance of the API, not only for GU. `g0_charg
 anomalies and the mixed gauge-gravitational anomaly fixes the hypercharge ratios (Geng and Marshak 1989; Minahan, Ramond and Warner
 1990); with a right-handed neutrino a B - L direction opens unless a Majorana mass is assumed (Babu and Mohapatra 1989).
 Alternatively the ratios follow from SU(5). Either way they are an **input to the Z_6, not an output of it**. Anomaly cancellation is
-not in Lean (IX.7).
+now in Lean (IX.7b, `ProofPhase/Closures/Anomaly.lean`: `anomaly_fixes_sm`, `anomaly_fixes_Z6`): for one generation the
+four anomaly conditions fix the charges up to u <-> d, and with them the Z_6. This is classical physics formalised, not a DMP result.
 
 **IX.4.2 The global form** **[classical]**. Which of Z_1, Z_2, Z_3, Z_6 nature uses is not decided by present experiment (Tong,
 JHEP 07 (2017) 104). The choice changes which new particles and line operators are allowed:
@@ -220,8 +221,9 @@ Ranked by how directly each would answer the gate. None is promised.
    existence spaces, whose consequence is "the centre twists that survive matter are glued to the U(1) maximally". With the
    representation content as input it would output Gamma = Z_6 and hence the three checks of IX.4.2. This is the only route found on
    which DMP would contribute a consequence rather than a description.
-2. **Anomaly cancellation in Lean** (cheap, classical): from the one-generation representation content the anomaly equations fix the
-   hypercharge ratios, hence Z_6, composing with `gen_trivial_iff`. It makes the input a classical theorem, not a DMP one.
+2. **Anomaly cancellation in Lean** (done, IX.7b): from the one-generation representation content the anomaly equations fix the
+   hypercharge ratios, hence Z_6 (`Closures/Anomaly.lean`, `anomaly_fixes_sm`, `anomaly_fixes_Z6`). It makes the input a classical
+   theorem, not a DMP one, and leaves the card's open step (a checkable consequence) where it was.
 3. **Twist sectors of the product group with Z_6-invariant matter**: extend the `SUNTwist` chain to a lattice SU(3) x SU(2) x U(1)
    theory with vector-like matter, so that the Z_6 twist sectors are strictly between nothing and everything, in the project's own
    language. Chiral matter, which the Standard Model needs, is a known hard problem on the lattice and stays out of reach.

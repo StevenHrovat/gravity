@@ -166,7 +166,8 @@ prose here, not in Lean). From it:
 * **Parity of the rank** (`rank_parity`, `rank_parity_of_fg`): with the functional equation, a rank equal to the number n gives
   `w = (-1)^n`. **[Lean, from BSD]**
 * **A finite rank, and parity with no rank given separately** (`algRank_ne_top_of_hasse`, `rank_parity_of_hasse`): under BSD, Hasse and
-  the Euler product bound, the rank is finite (it is the order of a zero) and `w = (-1)^rank`. **[Lean, from BSD and the named parts]**
+  the Euler product bound, the rank is finite (it is the order of a zero) and `w = (-1)^rank`. Over Q the Euler product bound is
+  proved (IM, `Arsenal.BSD.EulerRat`, `eulerProductBound_rat`), so there Hasse alone is named. **[Lean, from BSD and the named parts]**
 * **The refined conjecture** (`RefinedBSD`): near s = 1, `Lam(s) = (s - 1)^r g(s)` with `g(1) = Omega Reg #Sha tam / (#tors^2 sqrt abs(d_K))`.
   The rank `r`, the torsion order and the field discriminant are derived. Mathlib defines none of the real period, the regulator,
   Sha or the Tamagawa product, so they stay free numbers in the statement. The refined statement gives the rank statement when its
@@ -183,9 +184,11 @@ prose here, not in Lean). From it:
   `(1 + p^{-1/2})^2` (`factor_bounds`, `EulerData.fac_bounds`). So the partial product keeps a margin (`EulerData.lower`) and has a
   chain bound (`EulerData.upper`, `P_le`). **No finite stage of the Euler product is zero** (`no_finite_zero`). A zero at s = 1 is a
   property of the whole chain, a rate, never of one step. **[Lean; Hasse as input]**
-* **Care.** `EulerData` takes the counts as a bare sequence with Hasse as input. That the sequence is the counts of one given curve
-  is documented in the structure and **not checked in Lean**. Checking it needs the link from Mathlib's local factor at the
-  completion to the count over `Z/p`, at every prime. The link is routine and not stated. **[open as a formalisation item]**
+* **The ledger of one curve.** Built from one given integral curve, the ledger's counts are that curve's point counts by
+  construction, and at every good prime they are the computed count, which Mathlib's count equals (`ProofPhase/Closures/EulerCurve.lean`:
+  `ofCurve_N`, `ofCurve_N_good`, `ofCurve_fac_good`). **[Lean, by construction; Hasse stays the named input]** That these counts give
+  the linear coefficient of Mathlib's local factor at the completion is the classical definition of `a_p`, not linked in Lean.
+  **[classical, a formalisation item]**
 
 ### VII.3.7 The card and its conclusions (`ProofPhase.API.BSD`)
 
@@ -238,7 +241,7 @@ Every borrowed result is cited and marked. The project did not rebuild any of it
 | **Modularity** (Wiles, Taylor-Wiles, Breuil-Conrad-Diamond-Taylor): continuation and functional equation of L(E, s) over Q | `Input.cont`, `Input.fe` | external |
 | **Weak Mordell-Weil** (Mordell 1922, Weil 1929): E(K)/2E(K) is finite | `WeakMordellWeil` (named part in IM; `Input.weak` in the API) | classical |
 | **Hasse's bound** (1933-36): `a_p^2 <= 4p` at good primes. Textbook proof: the degree is a positive definite quadratic form on End(E), so `deg(m - n phi) = m^2 - a m n + q n^2 >= 0` forces the discriminant bound (Silverman V.1.1). The same positivity is the Hodge index on E x E (Part VIII) | `Hasse` (named part); `EulerData.hasse` | classical |
-| **The Euler product bound**: factors with the Hasse-type coefficient bounds give absolute convergence for `re s > 3/2`, dominated by `zeta_K(s - 1/2)^2` | `EulerProductBound` (named part) | classical, recalled |
+| **The Euler product bound**: factors with the Hasse-type coefficient bounds give absolute convergence for `re s > 3/2`, dominated by `zeta_K(s - 1/2)^2` | `EulerProductBound`: proved over Q (`eulerProductBound_rat`); a named part beyond Q | Lean over Q; classical, recalled, beyond |
 | **Gross-Zagier, Kolyvagin** (with modularity): analytic rank 0 or 1 gives BSD | `LowRank` | external |
 | **Goldfeld 1982**: the 1965 growth form of the Euler products implies BSD and the Riemann hypothesis for L(E, s) | `LedgerInput.goldfeld` | external |
 | For the example: Deuring (continuation, CM), Fermat's descent (E(Q) is the four points), `L(E, 1)` not zero, recalled constants of the refined formula | `Data32` | classical / external |
@@ -325,8 +328,8 @@ The formalisation items that would change the status of the **borrowed** parts, 
 2. Prove weak Mordell-Weil on Mathlib (Kummer theory, class groups and unit groups of the 2-division field), so `WeakMordellWeil` stops
    being a named part.
 3. Prove Hasse's bound (isogeny degrees as a quadratic form, or intersection theory on E x E), so `Hasse` stops being a named part.
-4. Prove the Euler product bound (the coefficients of an infinite Euler product, the residue fields of the completions as `O_K / v`, the
-   convergence of `zeta_K` for `re s > 1`).
+4. Prove the Euler product bound beyond Q (done over Q, `eulerProductBound_rat`; for a number field of degree above 1 it needs the
+   residue fields of the completions as `O_K / v` and the convergence of `zeta_K` for `re s > 1`).
 5. State and prove the link from Mathlib's local factor at the completion to the count over `Z/p`, at every prime, so `EulerData` is
    tied to one curve in Lean.
 6. Modularity, a very large formalisation, stays an external input.

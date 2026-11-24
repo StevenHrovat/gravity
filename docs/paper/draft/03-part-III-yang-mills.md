@@ -26,7 +26,10 @@ It leaves four things open.
   over every well-defined outside. In effective-string units this is a box of side L sqrt(sigma) of about 1.7 to 1.8 (III.7.4,
   **[numerical]**).
 * **(O2) The identification inputs**: the line of constant physics (OnLCP) and non-triviality, the two hypotheses that make the
-  lattice family Yang-Mills and not some other gapped family (III.9).
+  lattice family Yang-Mills and not some other gapped family (III.9). The gap itself needs of the line of constant physics only its
+  resolution clause (III.9.5, **[Lean]**). Non-triviality holds per box by construction: the reflected correlation at even time is a
+  reflection-positivity square, so it is at least zero at every level (III.9.5a, **[Lean]**). What remains is the scale-uniform
+  lower edge and the scheme clause (III.9.5b, **[open]**), the opposite edge to O1's decay.
 * **(O3) The continuum field theory**: Euclidean invariance, local fields as distributions, uniqueness of the limit and Wightman
   reconstruction. For the external construction this project uses (III.9) these are claimed there **[external]**. For this project's
   own objects, rotation invariance cannot yet be stated, since the lattice has only the hypercubic group **[open]**.
@@ -206,14 +209,15 @@ and tubes are chains, where III.3 applies. What remains is:
 This is the grid requirement log 8 = 2.08 of III.4.1 refined from column sums to path counting. Containment moves the requirement
 inside the box but does not lower it to the chain value 0.881.
 
-**Care points (to settle before the final paper).**
-* The path expansion of III.5.4 assumes that per-box costs multiply along a path: the identification of the annealed (torus) free
-  energy with the quenched (per-outside) influence of RATE.md, section 5'. This is used, not proved **[open]**.
-* The chain criterion F_e(L) > 2c(L) of III.3.4 and the tube threshold F_e(L) > log mu_4 are stated at the same scale in the notes;
-  whether the first follows from the second in the cubic geometry, or must be stated jointly, is not written down.
-* The Lean assemblies take the one-box input in several named forms (`OneBox/Fine.lean`, `FineOneBox`; `Saturation/Reduction.lean`,
-  `FineOneBoxSplit`; `V4/Gap.lean`, `BlockGapBddW`). The final paper must state O1 in one form and prove the link to the assembly it
-  feeds.
+**Care points, settled in draft 3.**
+* **O1 in one form.** O1 is `FineOneBox` (`OneBox/Fine.lean`): one box at the physical cell scale, influence bounds under every
+  boundary condition, uniform in level and volume. `WilsonOneBox` and `FineOneBoxSplit` imply it, and it feeds
+  `yang_mills_assembly_onebox`; `BlockGapBddW` belongs to the separate blocking route (III.5.9, **[Lean]**).
+* **Per-box costs multiply.** In that per-outside form the composition of the per-box influences is a theorem, so no annealed
+  quantity enters the gap; the annealed-to-quenched identification is needed only to read a torus measurement of F_e as evidence
+  about O1 (III.5.7, **[Lean]**).
+* **Chain and tube.** In the transfer-matrix model the chain criterion F_e(L) > 2c(L) and the tube threshold F_e(L) > log mu are
+  independent, with examples both ways; the joint form gives both (III.5.8, **[Lean]**, model).
 
 | # | Result | Status | Source |
 |---|---|---|---|
@@ -226,7 +230,9 @@ inside the box but does not lower it to the chain value 0.881.
 | III.5.4b | mu_4 = 6.77, log mu_4 in [1.39, 1.95] | **[classical]** | `CONTAINMENT.md`, 3 |
 | III.5.5 | Bogomolny floor helps outside only and loses to entropy as a -> 0 | **[classical]** (bound) + **[paper]** (sketch) | `CONTAINMENT.md`, 6.2 |
 | III.5.6 | **(O1)** F_e(L) > log mu_4 at one box of fixed physical size, uniformly over outsides | **[open]** | `CONTAINMENT.md`, 0 and 5; `docs/OPEN-QUESTIONS-DMP.md`, 0 |
-| III.5.7 | Per-box costs multiply along paths (annealed to quenched) | **[open]** (used as an assumption) | `RATE.md`, 5'; `CONTAINMENT.md`, 3 |
+| III.5.7 | Per-box costs multiply over the lattice in O1's per-outside form; annealed to quenched only for reading measurements | **[Lean]** | `OneBox/Fine.lean`, `fineDecayInv_of_fineOneBox`; `Closures/OneBoxForm.lean` |
+| III.5.8 | Chain criterion and tube threshold independent in the model; the joint form gives both | **[Lean]** (model) | `Closures/ChainJoint.lean`, `joint_gives_both`, `tube_not_chain`, `chain_not_tube` |
+| III.5.9 | O1 in one Lean form: `FineOneBox`, with the other forms linked | **[Lean]** | `OneBox/Fine.lean`; `Closures/OneBoxForm.lean` |
 
 ## III.6 The one box from inside: saturation and the dichotomy
 
@@ -346,6 +352,6 @@ grid (III.4.3) **[paper]** (`RDOEBLIN.md`, 0).
 
 O1 first: a worst-case argument, for one box of fixed physical size, that the electric cost per box exceeds the path entropy of the
 four-dimensional lattice for every well-defined outside, together with the per-box product structure along paths (III.5.7). Then O2:
-the line of constant physics and non-triviality as theorems, not inputs. Then O3: an observable bridge from this project's bounded slab
+its scale-uniform lower edge (III.9.5b); the per-box half is proved and the gap uses only the resolution clause. Then O3: an observable bridge from this project's bounded slab
 observables to local fields, or adoption of the external construction's field notion with its audit. Then O4: a tuning for general G.
 O1 is the mathematical core; O2 to O4 are the remaining distance from the gap mechanism to the Clay statement.
