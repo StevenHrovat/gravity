@@ -152,7 +152,15 @@ difference is: about 50 minutes once, then about 2 minutes when nothing changed 
 
 ## What state was checked
 
-The checks ran in a private copy of the build project. The full run covers the sources at git HEAD `9cb8837` (317 modules). While it
+**Run of 2026-11-24 (`quick`, commit `2cb301c`).** 358 modules, now including the IM arsenal (`Arsenal.*`, imported at the pinned
+commit of `im`): the check treats it as project code (replayed, audited, exported and checked by `nanoda_lib`) and keeps it out of
+the trusted base, so the stamp (Mathlib and Lean core, 10744 modules) still matches. `leanchecker` replayed every changed module,
+`fail=0`; the axiom audit printed `NONSTD_AXIOMS []`; `nanoda_lib` checked 103,282 declarations with no type-checker error (the usual
+pretty-printer line about axioms). The token scan now reads code only (comments and strings blanked, as in IM's arsenal lint): its
+five earlier hits were the word "sorry" in prose. Script changes in the same commit: `SRCLIBS` / `PKG_LIBS`, every `[[require]]` fetched
+at its pinned revision, the code-only scan. The closures of the overnight round (`ProofPhase/Closures/`) came after this run.
+
+**Earlier.** The checks ran in a private copy of the build project. The full run covers the sources at git HEAD `9cb8837` (317 modules). While it
 ran, other sessions added 10 modules (333 declarations); they were picked up by the incremental run (replay, axiom audit, `nanoda_lib`:
 all passed). `lean4lean` ran on the earlier 317 modules. A `quick` run after any later edit covers that edit.
 

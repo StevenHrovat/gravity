@@ -431,7 +431,20 @@ statements describe the world (Part I, I.8).
 
 ---
 
-## II.14 Where Part II ends
+## II.14 The independent re-check
+
+Every Lean statement of this paper is checked twice more, by kernels other than the one that built it (`docs/unified/INDEPENDENT-CHECK.md`,
+`tools/independent-check.sh`). Lean's own `leanchecker` replays each module's declarations into a fresh environment, and `nanoda_lib`,
+a type checker written independently in Rust, checks an export of every declaration together with everything it uses **[Lean, re-checked]**.
+A full run once established a trusted base, Mathlib and Lean core at the pinned commit, recorded by hash in a stamp. Later runs re-check
+only the modules whose source or imports changed, against that stamp.
+
+The run for this draft (2026-11-24, at commit `2cb301c`) covered 358 modules, including the imported IM arsenal, which is checked like the project's own code and is never part of the trusted base.
+`leanchecker` replayed every changed module with no failure; the axiom audit found no declaration resting on anything beyond `propext`,
+`Quot.sound` and `Classical.choice`; `nanoda_lib` checked 103,282 declarations with no type-checker error. The scan for escape hatches
+reads code only, as the arsenal's lint does, and found none.
+
+## II.15 Where Part II ends
 
 The tools II.1 to II.7 carry a positivity. The form layer II.9 to II.13 carries a certificate and its uncertainty, says when the
 carrying settles, and says where the one open statement of a problem goes. None of it supplies a positivity, and none supplies a

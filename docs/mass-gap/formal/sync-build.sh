@@ -15,6 +15,6 @@ source ~/.elan/env
 if [ ! -d .lake/packages/mathlib ]; then lake update && lake exe cache get; fi
 # DMP.IM's arsenal (repo im, arsenal/): fetched at the commit lakefile.toml pins, refreshed when that pin changes.
 want=$(sed -n '/name = "arsenal"/,/subDir/s/^rev = "\(.*\)"/\1/p' lakefile.toml)
-have=$(grep -A6 '"name": "arsenal"' lake-manifest.json 2>/dev/null | sed -n 's/.*"rev": "\(.*\)".*/\1/p' | head -1 || true)
+have=$(grep -A8 '"name": "arsenal"' lake-manifest.json 2>/dev/null | sed -n 's/.*"inputRev": "\(.*\)".*/\1/p' | head -1 || true)
 [ -z "$want" ] || [ "$want" = "$have" ] || lake update arsenal
 lake build "${1:-AreaLaw}"

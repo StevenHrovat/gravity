@@ -37,7 +37,10 @@ SRC=$REPO/docs/mass-gap/formal
 FC=${FORMAL_CHECK:-$HOME/formal-check}
 CHK=${CHECKERS:-$HOME/checkers}
 LOGDIR=${LOGDIR:-$HOME/check-logs}
-LIBS="AreaLaw Influence Positivity OneScale Attempts ProofPhase"
+SRCLIBS="AreaLaw Influence Positivity OneScale Attempts ProofPhase"   # libraries whose sources live in this repository
+PKG_LIBS="Arsenal"   # libraries imported from DMP.IM (repo im, arsenal/): checked like project code, never part of the trusted base
+LIBS="$SRCLIBS $PKG_LIBS"
+lib_dir() { case "$1" in Arsenal*) echo "$FC/.lake/packages/arsenal/arsenal";; *) echo "$FC";; esac; }
 L4LEAN_COMMIT=${L4LEAN_COMMIT:-0048ed7}   # lean4lean: "bump Lean toolchain to v4.34.0"
 L4EXPORT_TAG=${L4EXPORT_TAG:-v4.34.0}     # lean4export tag matching the toolchain
 mkdir -p "$LOGDIR" "$CHK"
@@ -48,18 +51,18 @@ CACHE=${CHECK_CACHE:-$HOME/check-cache}   # results that later runs may trust (s
 BATCH=${BATCH:-1}                          # modules per leanchecker process in replay-inc. Every process loads the whole environment (~6 GB, 4-5 s) whatever the module, so 1 is the safe default
 mkdir -p "$CACHE"
 
-modules_of() { ( cd "$FC"; find $1 -name '*.lean' | sed 's/\.lean$//; s#/#.#g'; [ -f $1.lean ] && echo $1 ) | sort -u; }
+modules_of() { ( cd "$(lib_dir $1)"; find $1 -name '*.lean' | sed 's/\.lean$//; s#/#.#g'; [ -f $1.lean ] && echo $1 ) | sort -u; }
 modules() { for l in $LIBS; do modules_of $l; done; }
 # modules to replay: the library root files (AreaLaw, Influence, Positivity, OneScale) hold only imports + a docstring, and the checkers
 # treat a module name as a prefix (replaying ALL submodules at once, 20+ GB), so they are left out
-check_modules() { modules | grep -vxE "AreaLaw|Influence|Positivity|OneScale"; }
-is_proj() { case "$1" in AreaLaw*|Influence*|Positivity*|OneScale*|Attempts*|ProofPhase*) return 0;; esac; return 1; }
+check_modules() { modules | grep -vxE "AreaLaw|Influence|Positivity|OneScale|Arsenal"; }
+is_proj() { case "$1" in AreaLaw*|Influence*|Positivity*|OneScale*|Attempts*|ProofPhase*|Arsenal*) return 0;; esac; return 1; }
 declare -A KEY
 # Key of a module = hash of its source + the keys of the project modules it imports + toolchain + Mathlib pin.
 # A module whose key was recorded as passed is not re-checked.
 modkey() {
   local m=$1; [ -n "${KEY[$m]:-}" ] && return 0
-  local f="$FC/$(echo "$m" | tr . /).lean" h i
+  local f="$(lib_dir $m)/$(echo "$m" | tr . /).lean" h i
   h=$( { sha256sum < "$f"; cat "$FC/lean-toolchain" "$FC/lake-manifest.json"; } | sha256sum | cut -c1-16)
   for i in $(grep -E '^(public )?import ' "$f" | sed -E 's/^(public )?import +//; s/[ \r].*//' | tr -d '\r'); do
     if is_proj "$i"; then modkey "$i"; h="$h${KEY[$i]}"; fi
@@ -81,12 +84,18 @@ stage_setup() {
 
 stage_build() {
   mkdir -p "$FC"; cd "$SRC"
-  for f in lean-toolchain lakefile.toml $(ls *.lean) $(find $LIBS -name '*.lean'); do
+  for f in lean-toolchain lakefile.toml $(ls *.lean) $(find $SRCLIBS -name '*.lean'); do
     mkdir -p "$FC/$(dirname "$f")"; tr -d '\r' < "$f" > "$FC/$f"
   done
   cd "$FC"
-  for f in $(find $LIBS -name '*.lean'); do [ -f "$SRC/$f" ] || { echo "stale: $f"; rm "$f"; }; done
+  for f in $(find $SRCLIBS -name '*.lean'); do [ -f "$SRC/$f" ] || { echo "stale: $f"; rm "$f"; }; done
   [ -d .lake/packages/mathlib ] || { lake update && lake exe cache get; }
+  # every [[require]] at the revision lakefile.toml pins: a new or moved requirement is fetched (Mathlib stays as it is)
+  awk '/^\[\[require\]\]/{r=1;next} /^\[/{r=0} r&&/^name =/{n=$3} r&&/^rev =/{print n, $3}' lakefile.toml | tr -d '"' |
+  while read -r r want; do
+    have=$(grep -A8 "\"name\": \"$r\"" lake-manifest.json 2>/dev/null | sed -n 's/.*"inputRev": "\(.*\)".*/\1/p' | head -1)
+    [ "$want" = "$have" ] || { echo "requirement $r: '$have' -> '$want'"; lake update "$r"; }
+  done
   # Attempts and ProofPhase have no root module file, so every module is named explicitly.
   for l in $LIBS; do
     s=$(date +%s); lake build $(modules_of $l) > "$LOGDIR/build-$l.log" 2>&1; rc=$?
@@ -171,10 +180,17 @@ partial def go (env : Environment) (todo : Array Name) (seen : NameSet) (axs : N
 LEAN
   # incremental (quick): restrict to the changed modules via CHECK_MODS; a plain run audits everything
   timed lake env lean AxiomAudit.lean 2>&1 | tee "$LOGDIR/axioms.log"
-  echo "--- forbidden tokens in the sources (comments excluded):"
-  cd "$SRC"
-  find $LIBS -name '*.lean' -print0 | xargs -0 grep -nE '\bsorry\b|\badmit\b|native_decide|^\s*axiom\b|\bunsafe\b|\bimplemented_by\b|\bextern\b' \
-    | grep -vE '^[^:]*:[0-9]+:\s*(--|/-)' | tee "$LOGDIR/grep.log"
+  echo "--- forbidden tokens in the code (comments and strings excluded, as in IM's arsenal lint):"
+  : > "$LOGDIR/grep.log"
+  for l in $LIBS; do
+    ( d="$SRC"; [ -n "${PKG_LIBS##*$l*}" ] || d="$(lib_dir $l)"; cd "$d"
+      find $l -name '*.lean' | sort | while read -r f; do
+        # blank block comments (line numbers kept), line comments and string literals, then look for the tokens
+        perl -0777 -pe 's{/-.*?-/}{ (my $c = $&) =~ s/[^\n]//g; $c }gse; s{--[^\n]*}{}g; s{"(?:[^"\\\n]|\\.)*"}{""}g' "$f" \
+          | grep -nE '\bsorry\b|\badmit\b|native_decide|^\s*(private\s+|protected\s+)?axiom\b|\bunsafe\b|\bimplemented_by\b|@\[extern' \
+          | sed "s#^#$f:#"
+      done ) | tee -a "$LOGDIR/grep.log"
+  done
   echo "grep hits: $(wc -l < "$LOGDIR/grep.log")"
 }
 
@@ -291,7 +307,7 @@ open Lean
 #eval show CoreM Unit from do
   let env ← getEnv
   let some out ← IO.getEnv "CHECK_OLEANS" | throwError "CHECK_OLEANS not set"
-  let libs := ["AreaLaw", "Influence", "Positivity", "OneScale", "Attempts", "ProofPhase", "CheckAll"]
+  let libs := ["AreaLaw", "Influence", "Positivity", "OneScale", "Attempts", "ProofPhase", "Arsenal", "CheckAll"]
   let mut lines : Array String := #[]
   for m in env.header.moduleNames do
     if libs.contains m.getRoot.toString then continue
