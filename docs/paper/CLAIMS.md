@@ -412,7 +412,7 @@ Notes relative to `docs/pnp/`.
 | VI.6.3g | Positive-Ricci metrics on a closed 3-manifold flow to constant curvature, so SU(2) attracts | classical | Hamilton 1982; BL 7.3 | none |
 | VI.6.3h | For N >= 3 the first Laplace eigenvalue N - 1/N lies strictly inside the Cao-He window; for N = 2 it sits exactly on the lower edge | Lean (the number N - 1/N; that it is the first Laplace eigenvalue is classical, BL 7.3) | `ProofPhase/Unified/BlowupSUN.lean`, `sun_window`, `su2_window_edge` | none |
 | VI.6.3i | Cao-He's criterion and verdict (SU(N), N >= 3, linearly unstable) and Kroencke's dynamical instability | external | Cao-He, arXiv 1304.2697 (Crelle 2015); Kroencke (recalled); BL 7.3 | none |
-| VI.6.3j | "Poincare for SU(N)" (homotopy equivalent to SU(N) implies homeomorphic or diffeomorphic) for N >= 3: no theorem found, possibly false smoothly, not reached by Ricci flow; N = 2 is Poincare | open | BL 7.4 (a negative literature search) | a surgery-theory computation |
+| VI.6.3j | "Poincare for SU(N)" (homotopy equivalent to SU(N) implies homeomorphic or diffeomorphic). N = 2: true (Poincare; TOP = DIFF in dimension 3). N = 3: true in both categories; every closed smooth manifold homotopy equivalent to SU(3) is diffeomorphic to it (in particular `SU(3) # Sigma^8` is diffeomorphic to SU(3)). N >= 4: false in both categories (`H^8(SU(N); Q) != 0` below the top degree gives closed smooth manifolds homotopy equivalent to SU(N) with `p_2 != 0`, hence not homeomorphic to the parallelisable SU(N)) | external (N = 3); paper (N >= 4, a surgery computation from classical theorems) | X. Wang, arXiv 1810.08478, Theorem 1.1, Corollary 1.2 (read in v1; the journal version, Acta Math. Sinica 37 (2021), as cited in the note, not checked); Browder 1972; Wall 1970; Kirby-Siebenmann 1977; Novikov 1965; `docs/unified/PERELMAN-DMP.md` 2 | none for N <= 3; for N >= 4 a published reference (optional) |
 | VI.6.4 | The side-by-side table of Perelman, Chen-Hou and the claimed route I | reading | BL 6.5; NS 2.3 | none |
 | VI.7a | A blowup is a certificate that infinitely many steps fit in finite time; T* is the DB, the profile crosses it; the hand-over run in reverse | reading | BL 3.3 | none |
 | VI.7b | One theorem (`summable_of_gap`) gives the finite correlation length in Yang-Mills and the finite T* here | reading (Lean for both uses: `ProofPhase/Unified/Ledger.lean`, `summable_of_gap`) | BL 2.5 | none |
@@ -799,20 +799,20 @@ Part IX row IX.0b was a cross-reference and is folded; the scope rows that stay 
 
 Counted on the rows above (each row once, by its first mark; scope rows not counted: 0.1, III.0, VI.0e, VII.0e, VIII.0d, IX.0a, IX.0d). The draft 3 column is the count of the committed draft; the next column is after the audit of 2026-11-24 (rows removed and added, status changes, `certified` as its own mark, II.11.2 and II.11.3 counted as Lean):
 
-| Status | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
-|---|---|---|---|---|---|
-| Lean | 221 | 221 | 221 | 239 | 114 |
-| classical | 121 | 121 | 121 | 120 | 42 |
-| external | 40 | 40 | 40 | 48 | 7 |
-| conditional | 5 | 4 | 4 | 4 | 3 |
-| paper | 56 | 56 | 56 | 63 | 27 |
-| numerical | 22 | 22 | 22 | 24 | 17 |
-| certified | 2 | 2 | 2 | 0 | 0 |
-| reading | 87 | 86 | 83 | 83 | 25 |
-| open | 45 | 47 | 48 | 70 | 28 |
-| **Total** | **599** | **599** | **597** | **651** | **263** |
+| Status | After VI.6.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
+|---|---|---|---|---|---|---|
+| Lean | 221 | 221 | 221 | 221 | 239 | 114 |
+| classical | 121 | 121 | 121 | 121 | 120 | 42 |
+| external | 41 | 40 | 40 | 40 | 48 | 7 |
+| conditional | 5 | 5 | 4 | 4 | 4 | 3 |
+| paper | 56 | 56 | 56 | 56 | 63 | 27 |
+| numerical | 22 | 22 | 22 | 22 | 24 | 17 |
+| certified | 2 | 2 | 2 | 2 | 0 | 0 |
+| reading | 87 | 87 | 86 | 83 | 83 | 25 |
+| open | 44 | 45 | 47 | 48 | 70 | 28 |
+| **Total** | **599** | **599** | **599** | **597** | **651** | **263** |
 
-The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved III.9.5b to conditional on X.64 (placed at the ODP's end, as X.66) and VI.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
+The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved III.9.5b to conditional on X.64 (placed at the ODP's end, as X.66) and VI.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The Perelman round settled VI.6.3j (open to external: N = 3 rigid in both categories, Wang; N >= 4 not, paper). The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open

@@ -301,7 +301,7 @@ round and an independent read.*
 | VI.4.4c | Independence of ZFC is a meta-question about an open problem; nothing about it is known, and the card does not use it. | A proof of regularity, of blowup, or of independence. |
 | VI.5.3 | What a blowup solution continues as past T* depends on uniqueness of weak continuation, which fails in general for weak solutions (Buckmaster-Vicol type non-uniqueness, recalled). | A uniqueness theorem in a class that contains the continuation, e.g. a suitable-weak-solution class adapted to the profile. |
 | IX.7c | Twist sectors of a lattice SU(3) x SU(2) x U(1) theory with Z_6-invariant vector-like matter is a large extension of the `SUNTwist` chain (U(1) factor, matter fields, mixed twists). | That extension, in Lean; chiral matter remains out of reach (lattice chiral fermions). |
-| VI.6.3j, smooth N = 3 (split off) | The topological answer for SU(3) is yes; smoothly it depends on whether SU(3) # Sigma^8 (Sigma^8 the exotic 8-sphere) is diffeomorphic to SU(3), i.e. on the inertia group of SU(3), not found. | A computation of the inertia group of SU(3) (and of the smooth structure set). |
+| VI.6.3j, smooth N = 3 (split off; **closed 2026-11-24**: diffeomorphic, Wang, arXiv 1810.08478, Cor. 1.2; `docs/unified/PERELMAN-DMP.md`) | The topological answer for SU(3) is yes; smoothly it depends on whether SU(3) # Sigma^8 (Sigma^8 the exotic 8-sphere) is diffeomorphic to SU(3), i.e. on the inertia group of SU(3), not found. | A computation of the inertia group of SU(3) (and of the smooth structure set). |
 | VIII.1.3g (split off) | The standard conjectures B and D are open in general (Grothendieck's standard conjectures). | A proof; known cases are special families. |
 
 ---

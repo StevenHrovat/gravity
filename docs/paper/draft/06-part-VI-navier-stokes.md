@@ -327,8 +327,13 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   `N = 2` it sits exactly on the lower edge (Obata's case) **[Lean]** (`sun_window`, `su2_window_edge`). That the window implies
   instability is **[external]** (Cao-He; Kroencke).
 * **A genuine "Poincare for SU(N)"** (every closed manifold homotopy equivalent to SU(N) is homeomorphic or diffeomorphic to it) is a
-  surgery-theory question. For `N = 2` it is Poincare **[classical]**. For `N >= 3` no theorem was found, it may fail in the smooth
-  category (exotic spheres), and Ricci flow does not reach it. **[open]** (a negative literature search, not a proof of absence).
+  surgery-theory question, and it is settled. For `N = 2` it is Poincare **[classical]**. For `N = 3` it holds in both categories:
+  every closed smooth manifold homotopy equivalent to SU(3) is diffeomorphic to it, `SU(3) # Sigma^8` included **[external]**
+  (X. Wang, arXiv 1810.08478, Theorem 1.1 and Corollary 1.2). For `N >= 4` it fails in both categories: there is rational room below
+  the top cell (`x_3 x_5` in degree 8), so surgery gives closed smooth manifolds homotopy equivalent to SU(N) with a non-zero
+  Pontryagin class, not homeomorphic to the parallelisable SU(N) **[paper]** (a computation from classical surgery theory,
+  `docs/unified/PERELMAN-DMP.md` 2). Ricci flow does not reach it. In DMP terms the rigid cases are those with nothing below the gate
+  (the top cell), and a construction that certified every SU(N) would be refuted from N = 4 on **[reading]**.
 
 ### VI.6.4 The Navier-Stokes statement, side by side **[reading]**
 
