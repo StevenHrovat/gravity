@@ -9,7 +9,7 @@ Marks as in the ledger: **[classical]** known, with a reference; **[external]** 
 argued here in prose from classical theorems; **[reading]** a DMP reading; **[open]** not settled by anyone, as far as found.
 "Recalled" means the reference was not re-read this round.
 
-"Rigid" has two strengths, and this round needs both (Kreck-Lueck 2005, Definition 0.2, read):
+"Rigid" has two strengths, and this round needs both (Kreck-Lueck, Definition 0.2, read; their words are "Borel manifold" for rigid and "strong Borel manifold" for strongly rigid, for oriented manifolds and orientation preserving equivalences):
 * **strongly rigid**: every homotopy equivalence `N -> M` from a closed manifold is homotopic to a homeomorphism, i.e. the
   structure set `S^TOP(M)` is one point;
 * **rigid**: every closed manifold homotopy equivalent to M is homeomorphic to it. For simply connected M this holds exactly when

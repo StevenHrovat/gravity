@@ -11,7 +11,7 @@ fitting of the DMP vocabulary, which is **[reading]**.
 
 ## A.1 The proof as a ledger
 
-On a closed 3-manifold Ricci flow develops singularities in finite time (Hamilton). In one case the time is forced by a comparison:
+On a closed 3-manifold Ricci flow can develop singularities in finite time (Hamilton). In one case the time is forced by a comparison:
 `dR/dt >= Delta R + (2/3) R^2` gives, for positive scalar curvature, a singularity by `T <= 3/(2 R_min(0))` **[classical]**.
 
 | Ledger element | Perelman | Fit |
@@ -27,7 +27,7 @@ On a closed 3-manifold Ricci flow develops singularities in finite time (Hamilto
 
 **Why surgery is a well-defined act, and why extinction certifies the sphere.** The cut runs through a nearly round 2-sphere in a
 neck, so each surgery is a connected-sum decomposition plus discarded pieces of known type. Later, singular Ricci flows through the
-singularities were constructed without choices (Kleiner-Lott) and proved unique and stable (Bamler-Kleiner): for Ricci flow in 3D
+singularities were constructed as limits of Ricci flows with surgery (Kleiner-Lott) and proved unique and stable (Bamler-Kleiner): for Ricci flow in 3D
 "the equation selects the continuation" is a theorem. For simply connected `M`, running the surgeries backwards writes `M` as a
 connected sum of 3-spheres, which is the 3-sphere.
 
@@ -53,7 +53,7 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   by symmetry. **It carries no topological information**, because every positive Einstein manifold shrinks the same way.
 * **Only SU(2) is stable.** Positive-Ricci metrics on a closed 3-manifold flow to constant curvature (Hamilton) **[classical]**. For
   every `N >= 3`, the first Laplace eigenvalue `N - 1/N` lies strictly inside the Cao-He conformal instability window, and for
-  `N = 2` it sits exactly on the lower edge (Obata's case) **[Lean]** (`sun_window`, `su2_window_edge`). That the window implies
+  `N = 2` it sits exactly on the lower edge (Obata's case). The inequalities for the number `N - 1/N` are **[Lean]** (`sun_window`, `su2_window_edge`); that `N - 1/N` is the first Laplace eigenvalue (the Casimir of the fundamental representation) is **[classical]**. That the window implies
   instability is **[external]** (Cao-He; Kroencke).
 * **A genuine "Poincare for SU(N)"** (every closed manifold homotopy equivalent to SU(N) is homeomorphic or diffeomorphic to it) is a
   surgery-theory question, and it is settled. For `N = 2` it is Poincare **[classical]**. For `N = 3` it holds in both categories:
@@ -82,8 +82,8 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
 * **The Standard Model's factors are the rigid ones.** Among U(1) and the SU(N), the groups determined by their homotopy type are
   exactly U(1), SU(2) and SU(3) **[paper]** (from A.3j, A.3k) (A.5i). The owner reads the selection as rotation: other
   compact groups do not survive it, and SU(N) is the language the encoder speaks (Part III 4.4). It would be a DMP-flavoured
-  consequence beyond the standard expectation (X.5e) once the other groups are settled; for now it is a reading. The rigidity of
-  Sp(2) = Spin(5) and G2 is **[open]** (A.5j), but by the next bullet it no longer decides anything.
+  consequence beyond the standard expectation (compare X.5e: no DMP theorem selects Z_6 or the hypercharges) once the other groups are settled; for now it is a reading. The rigidity of
+  Sp(2) = Spin(5) is **[paper]** (A.5j: strongly rigid, topologically) and of G2 is **[open]** (A.5r), but by the next bullet neither decides anything.
 * **Only U(1) carries content across the gate.** The owner's reading: the survivors carry nothing across the gate; only U(1) does,
   so only it certifies. Exact counterpart: content crosses as a phase with a direction, in a representation that is not its own
   conjugate. Among compact simple groups such representations exist exactly for SU(N), N >= 3, Spin(4k+2) and E6; G2, Sp(n),
@@ -91,7 +91,7 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   oriented phase, rigid or not. Among the groups that can, rigidity leaves only SU(3): SU(N), N >= 4, fails, and Spin(4k+2),
   k >= 2, and E6 have the same rational room below the top **[paper]** (rational test; the surgery step not written out for
   them) (A.5l). A non-abelian factor carries the phase only through its centre on the U(1) circle, Z_2 for SU(2) and Z_3 for
-  SU(3), glued to hypercharge as Z_6 **[Lean]** (X.3). In the owner's words, only U(1) certifies; the factors certify through it
+  SU(3), glued to hypercharge as Z_6 **[reading]** (A.5m); that the Standard Model's trivially acting centre is Z_6 is **[Lean]** (X.3). In the owner's words, only U(1) certifies; the factors certify through it
   **[reading]** (A.5m). Care point: "carries content" is identified with "has a complex representation", and that identification
   is the reading.
 * **The two hidden witnesses.** The owner's reading: the two that do not carry, Sp(2) and G2, are dimensionless for
@@ -100,11 +100,11 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   encoder. Exact counterparts: the compact simple groups of rank 2 are exactly SU(3), Sp(2) = Spin(5) and G2 **[classical]**
   (A.5n), so SU(3) with its two witnesses is the whole of rank 2. The encoder tells a phase from its conjugate; Sp(2) and G2 have
   only self-conjugate representations and their centres lie on the real points {+1, -1} of the circle **[classical]**, so the
-  encoder reads no orientation from them. The check "resolves to 1" is the encoder's root, the norm read from both sides agreeing
-  **[Lean]** (`Encoder.root`). The witness role is a **[reading]** (A.5o). It needs both witnesses rigid, which makes it
-  falsifiable. Sp(2) passes in the strong form: its structure set is a point, so every homotopy equivalence to it is homotopic to a
+  encoder reads no orientation from them. The check "resolves to 1" has the encoder's root as its counterpart: the norm read from both sides agreeing, the field
+  `root : ‖psi'‖ = ‖psi‖` of the encoder structure **[Lean]** (`Encoder.root`; equality of the two norms, a datum of an encoder, not "= 1"). The witness role is a **[reading]** (A.5o). It needs both witnesses rigid, which makes it
+  falsifiable. Sp(2) passes in the strong form: its topological structure set is a point, so every homotopy equivalence to it from a closed topological manifold is homotopic to a
   homeomorphism (its cells sit in dimensions 3 and 7, where G/TOP has no homotopy, and the top cell is the Kervaire invariant)
-  **[paper]** (A.5j, independently read). G2 is not strongly rigid: its structure set has exactly two elements, the second carried
+  **[paper]** (A.5j, independently read). G2 is not strongly rigid: its topological structure set has exactly two elements, the second carried
   by the class x_3^2 in degree 6, pulled back from S^6 = G2/SU(3), and no characteristic class tells the fake from G2 **[paper]**
   (A.5p). Whether the fake is G2 itself, seen through a self-equivalence of G2, is **[open]**, reduced to one test (A.5r). The owner reads the fake G2 as cancelled by the reflection
   positivity of the start: the room is the class x_3^2 in degree 6, its square x_3^4 vanishes **[classical]**, and in reflection
@@ -121,8 +121,8 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   owner's words, the one assumption predicts and certifies that the G2 channel exists as a DMP-complete state, which is O1 read as
   constructability. This is now a theorem one layer down. IM's rigidity box is DMP-complete exactly when the manifold is rigid
   (II.4d); applied to G2, G2 is rigid exactly when its box is DMP-complete, and G2 is rigid if its box shares the gate with the
-  certified one box **[Lean]**, from one named External slot (the surgery input, which Mathlib cannot state) and the one assumption as
-  a named OpenStep (A.5u, A.5v; `ETM/G2Rigidity.lean`, `g2_rigid_of_one_assumption`). The corollary is the next layer's named
+  certified one box **[Lean]**, from one named External slot (the surgery input, which Mathlib cannot state: the published Kreck-Lueck criterion together with this paper's own two-element structure set A.5p, which is **[paper]**), the one assumption as
+  a named OpenStep, and the certified one box as a plain hypothesis (A.5u, A.5v; `ETM/G2Rigidity.lean`, `g2_rigid_of_one_assumption`). The sharing is at least as strong as the rigidity it concludes, so this is a reformulation of the question, not evidence for its answer. The corollary is the next layer's named
   hypothesis, never a Lean axiom, and the linter lists it. A computation showing G2 not rigid would refute the sharing for G2
   **[Lean]** (`g2_not_shared_of_not_rigid`); G2's unconditional rigidity stays **[open]** (A.5r). The owner reads the missing
   sign itself as the point: Z/2 carries no order, so no floor, so no decidable reading, and only a start that forces one is
