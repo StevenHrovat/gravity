@@ -261,15 +261,15 @@ the honest form-layer part of "generalising Perelman for DMP". Every geometric i
 
 ## Sources
 
-* G. Perelman, arXiv math/0211159 (2002), math/0303109 (2003a), math/0307245 (2003b) (recalled); Kleiner-Lott, *Geom. Topol.*
-  12 (2008); Morgan-Tian, *Ricci Flow and the Poincare Conjecture* (2007); Colding-Minicozzi, *J. Amer. Math. Soc.* 18 (2005);
-  Bamler-Kleiner, arXiv 1709.04122 (all recalled).
+* G. Perelman, arXiv math/0211159 (2002), math/0303109 (2003a), math/0307245 (2003b) (recalled); Kleiner-Lott, *Notes on Perelman's papers*, *Geom. Topol.*
+  12 (2008), and *Singular Ricci flows I*, *Acta Math.* 219 (2017) (arXiv 1408.2271: the flow with surgery subconverges to a singular Ricci flow as the surgery parameter tends to 0); Morgan-Tian, *Ricci Flow and the Poincare Conjecture* (2007); Colding-Minicozzi, *J. Amer. Math. Soc.* 18 (2005);
+  Bamler-Kleiner, arXiv 1709.04122, *Acta Math.* 228 (2022) (all recalled).
 * X. Wang, "On 1-connected 8-manifolds with the same homology as `S^3 x S^5`", *Acta Math. Sinica (Engl. Ser.)* 37 (2021),
   941-956, doi 10.1007/s10114-021-0194-z; arXiv 1810.08478 (Theorem 1.1, Corollary 1.2, Proposition 5.5, Corollaries 5.6 and 5.7
   read this round).
 * D. L. Frank, "An invariant for almost-closed manifolds", *Bull. AMS* 74 (1968), 562-567 (cited by Wang; not read).
-* W. Browder, *Surgery on Simply-Connected Manifolds* (1972); C. T. C. Wall, *Surgery on Compact Manifolds* (1970);
-  Kirby-Siebenmann, *Foundational Essays* (1977); S. P. Novikov, topological invariance of rational Pontryagin classes (1965);
+* W. Browder, *Surgery on Simply-Connected Manifolds* (1972); C. T. C. Wall, *Surgery on Compact Manifolds* (first edition, Academic Press, 1970);
+  Kirby-Siebenmann, *Foundational Essays* (1977); S. P. Novikov, topological invariance of rational Pontryagin classes, *Dokl. Akad. Nauk SSSR* 163 (1965) 298-300;
   A. Ranicki, *Algebraic L-theory and Topological Manifolds* (1992); Kervaire-Milnor, *Ann. of Math.* 77 (1963) (all recalled).
 * Rubinstein (1995), Thompson, *Math. Res. Lett.* (1994), Schleimer (2011) on `S^3` recognition; Volodin-Kuznetsov-Fomenko (1974)
   for Novikov's undecidability; B. Poonen, "Undecidable problems: a sampler", arXiv 1204.0299; A. Nabutovsky, S. Weinberger,
