@@ -1,9 +1,9 @@
 # Outlook. A settling machine: the first author's concept of a DMP-native general intelligence
 
 *Outlook, not a result. This appendix records a concept by the first author, so that it is on paper and tied to the one theorem
-of this work it depends on. Nothing in it is built, trained or tested. Claim labels (VII.n) are listed in `../CLAIMS.md`.*
+of this work it depends on. Nothing in it is built, trained or tested. Claim labels (XI.n) are listed in `../CLAIMS.md`.*
 
-## VII.1 The concept, in the first author's terms
+## XI.1 The concept, in the first author's terms
 
 A general intelligence is a CMOS system that runs entirely in IM tokens, adapted to the acts it has to assert on G0.
 **[reading]**
@@ -30,7 +30,7 @@ A general intelligence is a CMOS system that runs entirely in IM tokens, adapted
   linear-attention transformers are exactly such programmers (Schlag, Irie, Schmidhuber 2021). **[classical]**, pointer only.
 * **Training.** The core network has to be trained from the ground up for this way of running.
 
-## VII.2 The critical link to this work
+## XI.2 The critical link to this work
 
 The concept depends on one property: that the inside settles to a balanced output within the tick. This is exactly the decidable
 half of the Existence Turing Machine (Part II and `docs/unified/ETM.md`).
@@ -57,7 +57,7 @@ So the training target the concept needs has a precise form: train the core so t
 externally set tick from the settle bound. The same condition, a contracting update, is what guarantees a unique fixed point and
 stable training in equilibrium (fixed-point) neural networks. **[classical]**, as a pointer only.
 
-## VII.3 Known neighbours and care points
+## XI.3 Known neighbours and care points
 
 **Neighbours** (pointers, not re-read here): equilibrium and energy-based networks, recurrent-depth reasoning models and adaptive
 computation time (settling between outputs); anytime algorithms (a fixed external budget); sandboxing with an output monitor and
@@ -70,8 +70,8 @@ runtime verification (a free inside, one verified gate).
 * **The gate checks acts, not self-reports.** A system that changes its own layout can also change what it reports about itself.
   The gate must check the output act itself. **[paper]**
 * **Arbitrary logic and settling.** Arbitrary logic on the embedding can encode any computation, so whether it settles is
-  undecidable in general (VII.2, second point). To keep the guarantee of VII.2, the logic built on the meta layer has to stay
+  undecidable in general (XI.2, second point). To keep the guarantee of XI.2, the logic built on the meta layer has to stay
   inside the contracting class; anything outside it relies on the cutoff below. And "as long as a correct answer comes out" needs
   a stated notion of correct that the gate can check. **[Lean]** for the undecidability; **[paper]** for the rest.
 * **The hard cutoff.** If the update is not a contraction, the tick becomes a hard cutoff, and the output at the cutoff may be
-  unbalanced (VII.2, second point). **[Lean]** for the undecidability; **[paper]** for the consequence.
+  unbalanced (XI.2, second point). **[Lean]** for the undecidability; **[paper]** for the consequence.

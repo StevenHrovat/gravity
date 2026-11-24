@@ -226,4 +226,4 @@ Any one of the eight faces, built without the zeros. The constraint from IV.3 ru
 subset or by separate terms, so the construction must be an exact identity coupling all primes up to the scale and the real place. The
 Yang-Mills chain (Part III) is the model: there the positive object (e^{-S} with locality) is given by construction, and reflection
 positivity follows. The open step here is to find the arithmetic G0 in which Weil positivity is a construction rather than a
-conclusion (Part VI).
+conclusion (Part X).

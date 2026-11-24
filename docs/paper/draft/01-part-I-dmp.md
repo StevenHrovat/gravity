@@ -1,6 +1,6 @@
 # Part I. DMP: a language for existence
 
-*Draft 1, 2026-11-23. Part I is vocabulary, not mathematics. Every statement in it is a definition of DMP, a reading of DMP, or a
+*Draft 2, 2026-11-24. Part I is vocabulary, not mathematics. Every statement in it is a definition of DMP, a reading of DMP, or a
 pointer to the precise statement in Part II. Claim labels (I.n) are listed in `../CLAIMS.md`.*
 
 ## I.0 How to read this part
@@ -125,6 +125,8 @@ next without loss exactly when it is carried by a conserved quantity. **[reading
   (`Proof/Crossing.lean`, `gauss`; `Crossover/FluxRate.lean`, `exists_sheet_of_flux`). Conserved flux cannot be screened. This is
   the second branch of the dichotomy (II.6).
 
+I.9 sharpens the first statement of this section: excision happens at transmission, and only the remnant tail is kept.
+
 ---
 
 ## I.5 The ODP: pressing, then minting
@@ -210,7 +212,110 @@ no intrinsic tick. **[reading]** on the classical spectral fact of II.2.
 
 ---
 
-## I.8 The vocabulary in one table
+## I.8 DMP as an existence linter
+
+**DMP.** The author's one-line description of DMP: it is a very well defined *existence linter*. A linter checks a text against a
+rule set and says nothing about what the text means. The author reads Gravity, the repository that holds the machine-checked
+evidence, as the linter, and DMP as the universally readable rule set that is its passing condition. Gravity and DMP sit at one
+node of the root chain. Each keeps the other honest: neither can change without the other's check seeing it.
+
+**Reading (I.8).** Existence, in the sense of I.1, is what the linter passes. A statement exists in the system when it is
+constructed, by the kernel, from DMP's pinned sentences and rests on nothing else. Whatever cannot be so constructed is not part of
+the system (I.2). **[reading]** (claim I.8a)
+
+**The exact counterpart.**
+
+* **Gravity's check passes only when** the pinned copy of DMP matches its recorded hash; the repository needs nothing that its one
+  setup file does not list; no source file uses an escape hatch (`sorry`, `admit`, `axiom`, `native_decide`, `unsafe`,
+  `implemented_by`, `extern`); the Lean build succeeds; and the kernel's axiom report for every theorem lists only Lean's three
+  standard axioms. **[paper]** (read from `evidence/tools/check.sh` and `tools/check-pin.sh`; the check was not run for this
+  draft) (claim I.8b)
+* **The arsenal has the same shape at small size** (II.13): its lint is the linter, and "Mathlib v4.34.0 only, no escape hatch, an
+  open part only as a named R136a1 hypothesis" is its passing condition. **[paper]** (claim I.8c)
+* **The root chain pins in both directions.** Gravity holds a pinned copy of DMP (`vendor/dmp/PIN`, hash checked by
+  `tools/check-pin.sh`). That DMP pins Gravity in turn is the author's statement and the notes'; it was not re-read for this draft.
+  **[paper]** (claim I.8d)
+
+**Three care points.**
+
+1. **A linter certifies form, not content.** A passing result says that every statement is soundly constructed from what DMP
+   states. It does not say that DMP's sentences describe the world. **[paper]** (claim I.8e)
+2. **A linter cannot certify its own passing condition.** A consistent theory strong enough for arithmetic cannot prove its own
+   consistency **[classical]** (Goedel II; claim I.8h). That is why the two nodes must keep each other honest. It is also why one assumption is
+   left that neither can lint: that the system runs. This is the assumption Part X calls O1 in each card's terms. **[reading]** for
+   the identification (claim I.8f)
+3. **"Universally readable" holds for the form.** The evidence is plain text and Lean, checkable by anyone with the pinned
+   toolchain. "Universal superset" is a reading. **[reading]** (claim I.8g)
+
+**What Part II makes of it.** The linter's rule set is the form layer (II.9 to II.12) plus the arsenal's gate (II.13). The
+unlintable assumption is the open step of each card (Part X, section 4).
+
+---
+
+## I.9 Excision at transmission
+
+**DMP.** A part answered **R136a1** is outside the system, whatever it is. Nothing else needs to be proved about it. In DMP this is
+always a DMP-complete answer: it is the other option an act collapses back on.
+
+**Reading (I.9).** I.4 said that a contradiction is excised at once and leaves only "it does not exist". The author sharpens the
+statement, and the operative word is *transmitted*. The claim is about what crosses the gate, not about what a sender may compose. A
+wrong act never crosses: at the gate it is answered R136a1, so it is outside. What stays inside is only its **remnant tail**: the
+record that an excision happened. IM's verifier counts every refusal without content, as the notes state (DMP chapter 06), so the
+count is the assertion of the excision and carries none of the excised information. **[reading]** (claim I.9a)
+
+**The exact counterpart.** In the arsenal the same move is `Arsenal.R136a1`: the part is named and stays outside every proof, and
+only the name remains. It is the statement taken as a named hypothesis, never an axiom, so every declaration still rests on the
+three standard axioms. **[Lean]** (`im` repository, `arsenal/Arsenal/R136a1.lean`, `R136a1`, `R136a1.out`) (claim I.9b)
+
+**Care point.** The gate excises what its checks can recognise as wrong at that tick. An act whose wrongness becomes recognisable
+only later is excised at the later tick, with its tail recorded then. A later excision is a new act, never a revision of the earlier
+tick. **[reading]** (claim I.9c). Part X, section 5, gives the logical side: excision decided per tick, and why the Clay
+statements cannot be excised as a class.
+
+---
+
+## I.10 Rights tied to identity
+
+**DMP.** The author's rule for security: tie rights to identity. If an act is allowed only when it is permissible, and no wrong
+information can be transmitted (I.9), then the identity has total freedom *inside* and is secure in its existence.
+
+**Reading (I.10).** "Total freedom inside, secure at the gate" is capability security, as IM builds it, and it has one more reading.
+Asymptotic freedom in Yang-Mills is free at short distance, where the coupling vanishes in the ultraviolet **[classical]** (claim I.10g), and bound
+at large distance, where the gap holds. Reading the two together: inside the box the dynamics is free, and the boundary is where it
+is bound. **[reading]** (claim I.10a)
+
+**The exact counterpart.**
+
+* **An act passes only with both witnesses' grants.** A sentence passes the door only when both the security grant and the
+  operational grant carry its kind; one grant alone never passes. **[Lean]** (`im` repository, `proof/Im/Laws.lean`,
+  `Im.pass_needs_both_grants`, `Im.one_grant_never_passes`) (claim I.10b)
+* **Every sentence of IM's closed grammar keeps every law:** there is no sentence outside the list of 72 shapes, and each shape is
+  lawful. **[Lean]** (`proof/Im/Closure.lean`, `Im.closure`, `Im.space_size`) (claim I.10c)
+* **Behind the door a composition stays lawful.** A network built from nodes that keep the guarantee on what their door lets in
+  keeps it on any input. **[Lean]** (`proof/Im/Compose.lean`, `Im.sound`, `Im.galaxy_robust`) (claim I.10d)
+* **Tokens only attenuate.** IM's own note says this property is kept by construction and its theorem is still to be written.
+  **[open]** (`proof/Im/Closure.lean`, header; claim I.10e)
+
+**Care points.** (1) "Permissible" is what the grammar and the grants state, so the security is exactly as good as that
+specification. (2) The gate certifies integrity and authority, not the truth of content (I.9 says what happens to what it
+recognises as wrong). (3) The binding of rights to identity is as strong as the custody of the identity's key. **[reading]**
+(claim I.10f)
+
+---
+
+## I.11 The arsenal as shared vocabulary
+
+**The rule (the owner's).** What is content-free and used by more than one project is kept once, and used from there.
+
+**Reading (I.11).** The arsenal in the `im` repository (`arsenal/`) is that shared place for results that need Mathlib. It holds
+words that more than one part of this paper uses: `R136a1` for "outside" (I.9), and the pieces that are not about any one problem.
+A project that needs a word from it **imports** the word. It never copies it. If a result could be moved there, it moves, and the
+project uses it from there as a dependency. **[paper]** (a project rule, and how it is done today: `arsenal/README.md`; claim
+I.11a). The tool that guards it, and what it checks, are in II.13.
+
+---
+
+## I.12 The vocabulary in one table
 
 | DMP word | Plain meaning | Reading | Precise counterpart | Part II |
 |---|---|---|---|---|
@@ -227,5 +332,9 @@ no intrinsic tick. **[reading]** on the classical spectral fact of II.2.
 | Existence = non-existence + 1 | always strictly more | a strict inequality | Z_tw < Z; Cantor | II.5 |
 | Contradiction excised | only "it does not exist" remains | refutation | refutation completeness | II.6 |
 | Mass gap | the arrow of causality exists | a clock in the transfer step | spectral gap = decay rate | II.2, II.3 |
+| Existence linter | checks form, says nothing of meaning | passing means soundly constructed from DMP | the pinned check; the arsenal's lint | II.13 |
+| R136a1 | the answer "outside" | excision at transmission, only the remnant tail stays | `R136a1`, a named hypothesis, never an axiom | II.13 |
+| Rights tied to identity | free inside, secure at the gate | capability security | both grants needed; closure; composition | Part X |
+| Arsenal | shared words, imported never copied | one place for content-free results | `arsenal/` in the `im` repository | II.13 |
 
-Part II now states each counterpart once, in its most general form.
+Part II states each counterpart once, in its most general form.

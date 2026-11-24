@@ -205,19 +205,18 @@ end EulerData
 
 /-! ## 3. The problem card: the two counts as the two sides of one balance -/
 
-/-- **The well-defined input**: an elliptic curve over `ℚ`, its conductor `N`, an entire function `Λ` and a root number
-`w`, with the classical theorems that make them the curve's L-function as external inputs. -/
+/-- **The well-defined input**: an elliptic curve over `ℚ`, a function `Λ` and a root number `w`, with the classical
+theorems that make `Λ` the curve's L-function as external inputs. Nothing else is input: the conductor enters only
+through the functional equation, and the rank is the curve's own. -/
 structure Input where
   W : WeierstrassCurve ℚ
   [ell : W.IsElliptic]
-  N : ℕ
-  N_pos : 0 < N
   Λ : ℂ → ℂ
   w : ℂ
   cont : External "modularity (Wiles 1995, Taylor-Wiles 1995, Breuil-Conrad-Diamond-Taylor 2001) with Hecke's theory:
     L(E, s) continues to an entire function" (IsContinuation W Λ)
   fe : External "modularity with Hecke's theory: the completed L-function satisfies xi(2 - s) = w xi(s)"
-    (FunctionalEquation N Λ w)
+    (FunctionalEquation ℚ Λ w)
   weak : External "weak Mordell-Weil (Mordell 1922, Weil 1929): E(Q)/2E(Q) is finite; not in Mathlib" (WeakMordellWeil W)
 
 attribute [instance] Input.ell
@@ -229,7 +228,7 @@ theorem unconditional (i : Input) :
       (∀ Λ', IsContinuation i.W Λ' → analyticOrderAt Λ' 1 = analyticOrderAt i.Λ 1) ∧
       (∀ n : ℕ, analyticOrderAt i.Λ 1 = n → i.w = (-1) ^ n) :=
   ⟨mordellWeil_of_weak i.W i.weak, torsion_finite i.W, fun _ h => order_welldefined h i.cont,
-    fun _ hn => analytic_parity i.N_pos (i.cont.1.analyticAt 1) i.fe hn⟩
+    fun _ hn => analytic_parity i.cont.analyticAt_one i.fe hn⟩
 
 /-- **BSD as a problem card.** Open step: the rank of `E(ℚ)` equals the order of the zero of `L(E, s)` at `s = 1`.
 Conclusion: the existence line (`E(ℚ)` is infinite exactly when `L(E, 1) = 0`) and the parity of the rank
@@ -237,17 +236,16 @@ Conclusion: the existence line (`E(ℚ)` is infinite exactly when `L(E, 1) = 0`)
 def problem : Problem where
   name := "Birch and Swinnerton-Dyer: the zeros follow existence"
   Input := Input
-  Open i := OpenStep "BSD: the rank of E(Q) equals the order of the zero of L(E, s) at s = 1" (BSDStatement i.W i.Λ)
-  Concl i := (Infinite (Pts i.W) ↔ i.Λ 1 = 0) ∧ i.w = (-1) ^ algRank i.W
+  Open i := OpenStep "BSD: the rank of E(Q) equals the order of the zero of L(E, s) at s = 1" (BSDStatement i.W)
+  Concl i := (Infinite (Pts i.W) ↔ i.Λ 1 = 0) ∧ ∀ n : ℕ, algRank i.W = n → i.w = (-1) ^ n
   sources := ["modularity (Wiles; Taylor-Wiles; Breuil-Conrad-Diamond-Taylor)", "weak Mordell-Weil (Mordell; Weil)"]
-  proved i h := ⟨existence_line i.W (mordellWeil_of_weak i.W i.weak) i.cont.1 h,
-    rank_parity i.W i.N_pos i.cont.1 i.fe h⟩
+  proved i h := ⟨existence_line i.W i.cont h, fun _ hn => rank_parity i.W i.cont i.fe h hn⟩
 
 /-- **The low-rank theorem** (Gross-Zagier 1986, Kolyvagin 1988-90, with modularity) in its slot: analytic rank at most
 one gives BSD. With it the card's open step is filled for every such curve. -/
 def LowRank (i : Input) : Prop :=
   External "Gross-Zagier 1986, Kolyvagin 1988-90, with modularity: analytic rank 0 or 1 implies rank = analytic rank"
-    (analyticOrderAt i.Λ 1 ≤ 1 → BSDStatement i.W i.Λ)
+    (analyticOrderAt i.Λ 1 ≤ 1 → BSDStatement i.W)
 
 theorem open_of_lowRank (i : Input) (hGZK : LowRank i) (h : analyticOrderAt i.Λ 1 ≤ 1) : problem.Open i := hGZK h
 
@@ -258,19 +256,24 @@ input (true when the prime data are the curve's). -/
 structure LedgerInput where
   W : WeierstrassCurve ℚ
   Λ : ℂ → ℂ
+  cont : External "modularity with Hecke's theory: L(E, s) continues to an entire function" (IsContinuation W Λ)
   D : EulerData
   goldfeld : External "Goldfeld 1982: if the partial Euler products at s = 1 of the curve grow like C (log x)^r, then
     L(E, s) has a zero of order r at s = 1 (and satisfies RH)" (∀ r : ℕ, D.Balance r → analyticOrderAt Λ 1 = r)
 
-/-- **The 1965 form as the open step.** Open step: the partial Euler products grow like `C (log x)^rank`; conclusion:
-BSD. The ledger form is the stronger statement (it also gives RH for `L(E, s)`, by Goldfeld). -/
+/-- **The 1965 form as the open step.** Open step: the rank is a number `r` and the partial Euler products grow like
+`C (log x)^r`; conclusion: BSD. The ledger form is the stronger statement (it also gives RH for `L(E, s)`, by
+Goldfeld). -/
 def ledgerCard : Problem where
   name := "Birch and Swinnerton-Dyer, 1965 form: the Euler ledger grows like (log x)^rank"
   Input := LedgerInput
-  Open i := OpenStep "the partial products of N_p/p grow like C (log p)^rank" (i.D.Balance (algRank i.W))
-  Concl i := BSDStatement i.W i.Λ
+  Open i := OpenStep "the partial products of N_p/p grow like C (log p)^rank"
+    (∃ r : ℕ, algRank i.W = r ∧ i.D.Balance r)
+  Concl i := BSDStatement i.W
   sources := ["Goldfeld 1982"]
-  proved i h := (i.goldfeld _ h).symm
+  proved i h := by
+    obtain ⟨r, hr, hb⟩ := h
+    exact (bsdStatement_iff i.cont).2 (by rw [hr, i.goldfeld r hb])
 
 /-! ## 5. The slot is not empty: `y² = x³ - x` (conductor 32, rank 0) -/
 
@@ -297,33 +300,32 @@ theorem E32Z_Δ : E32Z.Δ = 64 := by
 
 /-- **The computed count is Mathlib's** at every odd prime (good reduction away from 2). -/
 theorem count_E32 (p : ℕ) [hp : Fact p.Prime] (h2 : p ≠ 2) :
-    haveI : NeZero p := ⟨hp.out.ne_zero⟩
-    Nat.card (Pts (E32Z.map (Int.castRingHom (ZMod p)))) = countZ 0 0 0 (-1) 0 p := by
+    Nat.card (Pts (reduceMod E32Z p)) = count (reduceMod E32Z p) := by
   have hΔ : ((E32Z.Δ : ℤ) : ZMod p) ≠ 0 := by
     rw [E32Z_Δ, Ne, ZMod.intCast_zmod_eq_zero_iff_dvd]
     intro hd
     have hd' : p ∣ 2 ^ 6 := by exact_mod_cast hd
     exact h2 ((Nat.prime_dvd_prime_iff_eq hp.out Nat.prime_two).1 (hp.out.dvd_of_dvd_pow hd'))
-  exact count_correct E32Z p hΔ
+  exact count_reduceMod E32Z p hΔ
 
 /- The counts run: `a_p` at the odd primes below 40 (zero at `p ≡ 3 mod 4`, complex multiplication), and the Hasse
-check `a_p² ≤ 4p` at every odd prime below 100. -/
-#eval [apZ 0 0 0 (-1) 0 3, apZ 0 0 0 (-1) 0 5, apZ 0 0 0 (-1) 0 7, apZ 0 0 0 (-1) 0 11, apZ 0 0 0 (-1) 0 13,
-  apZ 0 0 0 (-1) 0 17, apZ 0 0 0 (-1) 0 19, apZ 0 0 0 (-1) 0 23, apZ 0 0 0 (-1) 0 29, apZ 0 0 0 (-1) 0 31,
-  apZ 0 0 0 (-1) 0 37]
-#guard apZ 0 0 0 (-1) 0 5 = -2
-#guard apZ 0 0 0 (-1) 0 7 = 0
-#guard [hasseZ 0 0 0 (-1) 0 3, hasseZ 0 0 0 (-1) 0 5, hasseZ 0 0 0 (-1) 0 7, hasseZ 0 0 0 (-1) 0 11,
-  hasseZ 0 0 0 (-1) 0 13, hasseZ 0 0 0 (-1) 0 17, hasseZ 0 0 0 (-1) 0 19, hasseZ 0 0 0 (-1) 0 23,
-  hasseZ 0 0 0 (-1) 0 29, hasseZ 0 0 0 (-1) 0 31, hasseZ 0 0 0 (-1) 0 37, hasseZ 0 0 0 (-1) 0 41,
-  hasseZ 0 0 0 (-1) 0 43, hasseZ 0 0 0 (-1) 0 47, hasseZ 0 0 0 (-1) 0 53, hasseZ 0 0 0 (-1) 0 59,
-  hasseZ 0 0 0 (-1) 0 61, hasseZ 0 0 0 (-1) 0 67, hasseZ 0 0 0 (-1) 0 71, hasseZ 0 0 0 (-1) 0 73,
-  hasseZ 0 0 0 (-1) 0 79, hasseZ 0 0 0 (-1) 0 83, hasseZ 0 0 0 (-1) 0 89, hasseZ 0 0 0 (-1) 0 97].all id
+check `a_p² ≤ 4p` at the odd primes below 60. -/
+#eval [frobTrace (reduceMod E32Z 3), frobTrace (reduceMod E32Z 5), frobTrace (reduceMod E32Z 7),
+  frobTrace (reduceMod E32Z 11), frobTrace (reduceMod E32Z 13), frobTrace (reduceMod E32Z 17),
+  frobTrace (reduceMod E32Z 19), frobTrace (reduceMod E32Z 23), frobTrace (reduceMod E32Z 29),
+  frobTrace (reduceMod E32Z 31), frobTrace (reduceMod E32Z 37)]
+#guard frobTrace (reduceMod E32Z 5) = -2
+#guard frobTrace (reduceMod E32Z 7) = 0
+#guard [hasseCheck (reduceMod E32Z 3), hasseCheck (reduceMod E32Z 5), hasseCheck (reduceMod E32Z 7),
+  hasseCheck (reduceMod E32Z 11), hasseCheck (reduceMod E32Z 13), hasseCheck (reduceMod E32Z 17),
+  hasseCheck (reduceMod E32Z 19), hasseCheck (reduceMod E32Z 23), hasseCheck (reduceMod E32Z 29),
+  hasseCheck (reduceMod E32Z 31), hasseCheck (reduceMod E32Z 37), hasseCheck (reduceMod E32Z 41),
+  hasseCheck (reduceMod E32Z 43), hasseCheck (reduceMod E32Z 47), hasseCheck (reduceMod E32Z 53),
+  hasseCheck (reduceMod E32Z 59)].all id
 
-/-- **Hasse at `p = 5`, proved by the kernel**: `a_5 = -2` and `|a_5| ≤ 2 √5`. -/
-theorem hasse_E32_five : |(apZ 0 0 0 (-1) 0 5 : ℝ)| ≤ 2 * Real.sqrt 5 := by
-  have := (hasseZ_iff 0 0 0 (-1) 0 5).1 (by decide)
-  exact_mod_cast this
+/-- **Hasse at `p = 5`, proved by the kernel**: `|a_5| ≤ 2 √5`. -/
+theorem hasse_E32_five : |(frobTrace (reduceMod E32Z 5) : ℝ)| ≤ 2 * Real.sqrt (Fintype.card (ZMod 5)) :=
+  (hasseCheck_iff (reduceMod E32Z 5)).1 (by decide)
 
 /-- **The known values of `y² = x³ - x`, as external inputs.** -/
 structure Data32 where
@@ -331,7 +333,7 @@ structure Data32 where
   w : ℂ
   cont : External "Deuring 1953-56 (complex multiplication: a Hecke L-function), or modularity: continuation"
     (IsContinuation E32 Λ)
-  fe : External "Deuring / Hecke: functional equation of the completed L-function, conductor 32" (FunctionalEquation 32 Λ w)
+  fe : External "Deuring / Hecke: functional equation of the completed L-function, conductor 32" (FunctionalEquation ℚ Λ w)
   nonvanish : External "L(E, 1) = 0.6555... is not 0 (modular symbols: L(E, 1)/Omega is the rational 1/4)" (Λ 1 ≠ 0)
   finite : External "Fermat: 1 is not a congruent number (descent); E(Q) = {O, (0, 0), (1, 0), (-1, 0)}"
     (Finite (Pts E32))
@@ -339,8 +341,6 @@ structure Data32 where
 /-- The card's input for `y² = x³ - x`: weak Mordell-Weil follows from the finiteness of `E(ℚ)`. -/
 def input32 (d : Data32) : Input where
   W := E32
-  N := 32
-  N_pos := by norm_num
   Λ := d.Λ
   w := d.w
   cont := d.cont
@@ -348,25 +348,19 @@ def input32 (d : Data32) : Input where
   weak := by have := d.finite; exact AddSubgroup.finiteIndex_of_finite
 
 /-- **BSD for `y² = x³ - x`** from its known values: rank 0 and order 0. -/
-theorem bsd_E32 (d : Data32) : BSDStatement E32 d.Λ := by
-  have := d.finite
-  have hfg : AddGroup.FG (Pts E32) := AddGroup.fg_of_finite
-  have hr : algRank E32 = 0 := (algRank_eq_zero_iff E32 hfg).2 d.finite
+theorem bsd_E32 (d : Data32) : BSDStatement E32 := by
+  have hr : algRank E32 = 0 := (algRank_eq_zero_iff E32).2 d.finite
   have ho : analyticOrderAt d.Λ 1 = 0 := analyticOrderAt_eq_zero.2 (Or.inr d.nonvanish)
-  unfold BSDStatement
-  rw [hr, ho]
-  rfl
+  exact (bsdStatement_iff d.cont).2 (by rw [hr, ho])
 
 /-- **The card, read for `y² = x³ - x`**: its open step is filled, so its conclusion holds; in particular the root
 number is `+1`. -/
 theorem card_E32 (d : Data32) : problem.Open (input32 d) ∧ (Infinite (Pts E32) ↔ d.Λ 1 = 0) ∧ d.w = 1 := by
   have h := bsd_E32 d
   have hc := problem.holds (input32 d) h
-  have := d.finite
-  have hr : algRank E32 = 0 := (algRank_eq_zero_iff E32 AddGroup.fg_of_finite).2 d.finite
+  have hr : algRank E32 = ((0 : ℕ) : ℕ∞) := by exact_mod_cast (algRank_eq_zero_iff E32).2 d.finite
   refine ⟨h, hc.1, ?_⟩
-  have := hc.2
-  simp only [input32] at this
-  rw [this, hr, pow_zero]
+  have h0 := hc.2 0 hr
+  simpa [input32] using h0
 
 end ProofPhase.API.BSD

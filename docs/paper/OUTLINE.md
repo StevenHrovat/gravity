@@ -1,4 +1,4 @@
-# The three-problem paper: outline (draft 2, 2026-11-23)
+# The paper: outline (draft 3, 2026-11-24)
 
 **Title (the owner's, 2026-11-24).** *Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP,
 with certified settling.* The owner: "since observability = equal running, seen through = run on DMP, while sounding nicer and more
@@ -28,7 +28,8 @@ above. Before that, any contact states the present status exactly. The owner sen
 being informative enough to all the different fields that need its tools by being intuitively understandable and guiding the reader
 through the easiest to understand part, DMP, then extending it with tools that just click."
 
-**State.** None of the three problems is solved by this work. Each has a large proved core, much of it in Lean, and named open steps.
+**State (draft 3).** None of the seven problems is solved by this work. Each card has a proved core, much of it in Lean, and exactly
+one named open step; the results that need the one assumption (O1, Part X 4.4) are marked conditional on it.
 The paper is built so that each open step, when it closes, changes one row of `CLAIMS.md`, one verdict line in its part and one
 item of the abstract, and nothing else.
 
@@ -36,16 +37,21 @@ item of the abstract, and nothing else.
 
 | File | What | State |
 |---|---|---|
-| `OUTLINE.md` | this file: structure, one paragraph per section, status per section | draft 2 |
-| `CLAIMS.md` | every claim of the draft: status, source, what would upgrade it (248 counted rows; 7 in the Outlook) | draft 2 |
+| `OUTLINE.md` | this file: structure, one paragraph per section, status per section | draft 3 |
+| `CLAIMS.md` | every claim of the draft: status, source, what would upgrade it (651 counted rows) | draft 3 |
+| `claims-incoming/` | the writers' rows for draft 3, as merged into `CLAIMS.md` (kept for their notes to the coordinator) | merged |
 | `draft/00-abstract-introduction.md` | the owner's title and personal note; abstract and introduction | drafted (lists updated in draft 2) |
 | `draft/01-part-I-dmp.md` | Part I, DMP | fully drafted |
 | `draft/02-part-II-tools.md` | Part II, the tools | fully drafted |
 | `draft/03-part-III-yang-mills.md` | Part III | prose (draft 2) |
 | `draft/04-part-IV-grh.md` | Part IV | prose (draft 2) |
 | `draft/05-part-V-pnp.md` | Part V | prose (draft 2) |
-| `draft/06-part-VI-common-step.md` | Part VI | prose, side-by-side table (draft 2) |
-| `draft/07-outlook-settling-machine.md` | Outlook: the first author's concept of a DMP-native general intelligence, tied to the ETM's settle theorem | drafted (2026-11-23) |
+| `draft/06-part-VI-navier-stokes.md` | Part VI, Navier-Stokes, with Poincare as validation | prose (draft 3, new) |
+| `draft/07-part-VII-bsd.md` | Part VII, BSD | prose (draft 3, new) |
+| `draft/08-part-VIII-hodge.md` | Part VIII, Hodge | prose (draft 3, new) |
+| `draft/09-part-IX-gu.md` | Part IX, GU | prose (draft 3, new) |
+| `draft/10-part-X-generalisation.md` | Part X, the generalisation | prose (draft 3, rewritten) |
+| `draft/11-outlook-settling-machine.md` | Outlook: the first author's concept of a DMP-native general intelligence, tied to the ETM's settle theorem | drafted (2026-11-23) |
 
 LaTeX comes later. Status marks everywhere: **Lean** (module named), **classical** (reference), **external** (others' result, not
 rebuilt), **conditional** (under a named assumption), **paper**, **numerical**, **reading** (DMP; never mathematics), **open**.
@@ -148,7 +154,34 @@ Each tool once, most general form, a one-line "why it clicks", three application
   hardness at width 3** open. *Lean + classical + open.*
 * **V.5 Native method. V.6 Open steps N1-N4. V.7 Barriers. V.8 Readings. V.9 What would close it.**
 
-## Part VI. The common open step, side by side
+## Part VI. Navier-Stokes: the card, the claimed certificate, and Poincare as validation
+
+Fefferman's four forms (A) to (D); the card on the API; what the form layer says about the two blowup routes, as a skeleton with no
+Navier-Stokes object in it (Lean); the two posted blowup claims (external, unverified; one certificate unreleased); the one open
+step; Perelman's proof of Poincare as the check of the restatement.
+
+## Part VII. Birch and Swinnerton-Dyer: points on an existence line
+
+BSD as a property of one Weierstrass equation over a number field; the Mathlib-only core in IM (`Arsenal.BSD`): Mordell-Weil from
+weak Mordell-Weil, the true rank, the existence line, parity, point counts that run, a finite order at s = 1 from Hasse; three
+classical theorems Mathlib lacks as named R136a1 parts; the card and the y^2 = x^3 - x example; the open step from order 2 on.
+
+## Part VIII. Hodge: describable implies exists
+
+The card; Hodge-Riemann positivity, the Hodge index as linear algebra, Weil's bound for curves, eigenvalues on the circle,
+Lefschetz (1,1) (Lean); the geometry as named External slots; the open step in codimension p >= 2.
+
+## Part IX. GU: the Grand Unified reading
+
+Not a Clay problem: the second half of the release criterion. The Z_6 quotient inside SU(5) and charge quantisation from a compact
+U(1) (Lean); the hypercharges as input; the two candidate checkable consequences, with the choice left to the owner.
+
+## Part X. The generalisation
+
+Draft 3 order: (1) the container: a containing existence with free possibility space, the quantifier "for every outside" of each
+card; (2) one geometry, two edges: GRH and O1 ask opposite, independent bounds of one distance (Lean, `GRHToO1.lean`); (3)
+existence and falsifiability; (4) why O1 is always the open step, with the one assumption stated once (4.4); (5) excision and
+incompleteness; (6) the tick operator and the rotatable hash; (7) the uncertainty transport. Draft 2's text follows for reference.
 
 One shape. A table of the sharpest open step per problem: what is proved for one unit, why it does not carry, what no duality
 supplies, the hard quantifier, what measurement says, and the "it runs" form. What the act-carrier answer settled; what can and
@@ -160,21 +193,21 @@ way across a DB." Per problem, the one named bridge is stated as a precise propo
 - GRH: the explicit formula's remainder between the finite model and zeta;
 - NP: the lifting quantum.
 
-Its transport across the DB obeys the ledger law, so it contracts exactly when the step pays a cost above the floor (Lean). Part VI
+Its transport across the DB obeys the ledger law, so it contracts exactly when the step pays a cost above the floor (Lean). Part X
 is organised by this: where each problem's uncertainty sits, how it crosses its boundary, and why GRH (zero slack) is the case where
 it crosses without damping.
 
-**VI.7 Uncertainty transported across the DB.** The transport theorem (bounded under contraction, critical at cost = floor and sharp,
+**X.7 Uncertainty transported across the DB.** The transport theorem (bounded under contraction, critical at cost = floor and sharp,
 sign preserved below a margin; the ledger at no fresh uncertainty) and the three bridges side by side (`three_bridges`), each under its
 named running-state hypothesis R; R for the specific objects is the open step (Lean; `docs/unified/TRANSPORT.md`).
 
-## Outlook. A settling machine
+## Part XI. Outlook: a settling machine
 
 The first author's concept of a DMP-native general intelligence: a CMOS system in IM tokens, one Milky Way gate that checks hash
 and TTL before an act leaves as GG, an output rate set from outside, and total freedom inside. *reading.* Its one critical link
 to this work is the ETM's settle theorem: settling within an explicit bound when every step contracts, undecidable in general.
-*Lean.* Care points: the gate certifies integrity, not meaning, and must check acts, not self-reports. Placed after Part VI as
-an outlook; it adds no claim to the three problems.
+*Lean.* Care points: the gate certifies integrity, not meaning, and must check acts, not self-reports. Placed after Part X as
+an outlook; it adds no claim to the problems.
 
 ---
 
@@ -191,3 +224,5 @@ an outlook; it adds no claim to the three problems.
 5. **O2-O4 for Yang-Mills.** Adopt the external construction's field notion (O3 becomes an audit item) or keep our own objects.
 6. **GRH framing.** Beyond Dirichlet (where the positivity route would be new) or an independent route for Dirichlet.
 7. **WHKs vs WKH.** The paper uses WHK as the owner asked; the DMP texts are unchanged.
+8. **GU's checkable consequence.** Part IX records two candidates and chooses none; the choice is the owner's.
+9. **The personal note.** It still says "One thing led to three"; the paper now covers seven problems.

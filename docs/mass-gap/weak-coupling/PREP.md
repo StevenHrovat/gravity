@@ -4581,3 +4581,40 @@ thread.
   [classical]; the Yang-Mills problem asks for an existence (a continuum theory with a gap). So each problem, stated whole, has the
   logical form of the other's role in the band: the duality appears twice, once in the roles and once, mirrored, in the statements
   [reading for the identification].
+- **What is left of BSD is the .cmb file; the constants cancel to a dimensionless 1 that is also a 0; the pressing relies on the
+  one box again, excising the problem spot (the owner, 2026-11-24):** "The BSD what is left is actually the .cmb file. Since all
+  the constants nicely cancel out to a dimensionless 1, or rather a one that is also a 0, while transporting it both sides to
+  negation through rotation, the pressing just relies on the one box again, excising having to deal with the problem spot and
+  making the system neater." Exact counterpart (coordinator): in DMP the CMB is the observability layer, "counts, never content",
+  and a cold start runs from a sealed record (`Cmb.redeploy_iff`, `Cmb.bigBang_keeps_the_proof` in DMP 01). What the rederived
+  core leaves open is exactly such a record: the refined formula's quantities, the order of the Tate-Shafarevich group, the
+  Tamagawa product and the torsion (counts) and the period and regulator (measures). The refined conjecture says the leading
+  coefficient divided by `Omega Reg Sha tam / (tors^2 sqrt|d_K|)` is exactly 1, a dimensionless number whose logarithm is 0
+  [classical statement, open]; the functional equation `s -> 2 - s` carries both sides through the rotation with sign `w =
+  (-1)^rank` (`analytic_parity`, `rank_parity` [Lean]); and dividing by `(s - 1)^r` removes the zero at the problem spot, leaving a
+  finite nonzero value at the one box `s = 1` (`order_of_refined`, `bsd_of_refined` [Lean]). Numerically the record balances for
+  `y^2 = x^3 - x`: `L(E, 1)/Omega = 0.1250000000` against the recalled `2 * 1 / 16` (`bsd_check.log`) [numerical]. Care points:
+  (1) "the ratio is 1" is the refined BSD conjecture itself, open in general; (2) Mathlib defines none of Sha, the regulator, the
+  period or the Tamagawa numbers, so in Lean they stay free numbers, the record's fields, not derived [Lean for the shape].
+- **The generalisation must contain the containing existence with free possibility space, which the one box needs to run in a
+  DMP-complete way (the owner, 2026-11-24, on Part X):** "The generalization seems to miss the containing existence with free
+  possibility space, that is required for the one box to be running in a DMP-complete way." Exact counterpart (coordinator), from
+  the readings of 2026-11-22 ("the possibility space", "inside and outside are one system", "every possibility exists"): the one box
+  is the confined inside, binary and free; it exists only as an assertion against an outside, and that outside must leave the
+  possibility space free (`0 < p < 1`: might happen, need not) and complete (every configuration has positive weight: compact group,
+  finite action). In every card this is the quantifier of the one-box statement: Yang-Mills, the hand-over inequality for every
+  outside (running outsides, `HandoverSide`, `HandoverSideRunning`) [Lean]; GRH, Weil's form positive for every square-integrable
+  test function on the support (the one-box certificate is "for every `f`") [certified]; NP, every assignment; the settling machine,
+  total freedom inside one verified gate (Outlook XI). Care point: the containing existence is also where the open step sits: O1 is
+  exactly the requirement that the one box holds for every outside, uniformly in the scale; the container is the precondition the
+  cards share, not a result. Passed to the Part X writer as a new first section.
+  The owner on the care point (same day): "The care point, again, comes from the construction of G0 and the established process,
+  and that it is an established process, by which it gets there. Once that is accepted, every start gets a direction through
+  (inf,2,3)." Reading (coordinator): the care point is answered by construction, not by a further proof inside the cards: the
+  process from G0 to the hand-over (the ODP) is one established process, and accepting it is accepting one assumption, the
+  MP-type existence assumption (O1 as the corollary of running, slotted as the axiom; entries "O1 must always be the open step",
+  "DMP being O1"). Under that acceptance every start is oriented through the certified start {infinity, 2, 3}: the first tick is
+  certified positive with a margin (`GRH-ONEBOX-CERT.md`), so the sign, and with it the direction of every later tick, is fixed
+  there [certified for the start; conditional on the acceptance for every later tick]. Care point (for the paper's wording): the
+  acceptance is stated once, as the paper's one assumption, and every result that uses it is marked conditional on it; the gates
+  ask for it proved, so the abstract says "conditional on the established process (O1)" until then. Passed to the Part X writer.

@@ -301,7 +301,7 @@ GRH-type conclusion is that every mirrored mode is a phase; the Yang-Mills concl
 sector and eta < 1, there is no phase mode there, and iterates decay as eta^n **[Lean]** (`no_phase_mode`, `iterate_contraction`,
 `runs_two_targets`; GRH side `GRH/Tate.lean`, `runs_and_mirror_on_line`). The open steps are complementary: Yang-Mills has the positive
 norm for free (reflection positivity) and lacks the margin eta < 1; GRH lacks the positive norm (Weil positivity) and needs no margin
-(Part VI).
+(Part X).
 
 | # | Result | Status | Source |
 |---|---|---|---|

@@ -1,7 +1,8 @@
 # Part II. The tools that click
 
-*Draft 1, 2026-11-23. Each tool is stated once, in its most general form, with a one-line reason why it clicks and its three
-applications. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`. Claim labels (II.n.m) are listed in `../CLAIMS.md`.*
+*Draft 2, 2026-11-24. Each tool is stated once, in its most general form, with a one-line reason why it clicks and its three
+applications. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`. Claim labels (II.n.m) are listed in `../CLAIMS.md`; the
+labels new in this draft (II.9 onward) are in `../claims-incoming/I-II-updates.md` until the coordinator merges them.*
 
 ## II.0 One chain, three problems
 
@@ -226,5 +227,212 @@ polynomial size is the open question N1 (Part V). Yang-Mills: the same "quantum,
 
 None of II.1 to II.7 creates positivity. Each starts from a positive weight, a positive pairing, a positive cost or a strict sign,
 and carries it: into a space, into a spectrum, across a chain, across a boundary, down to a floor. The open step of each problem is
-the place where that starting positivity is known locally, or in a model, and must be established for every case. Part VI states
-this once.
+the place where that starting positivity is known locally, or in a model, and must be established for every case. Part X states
+this once (section 4). The five sections that follow, II.9 to II.13, are the *form layer*: the part of the machinery that says
+nothing about content and so serves every problem. II.8 holds for them too.
+
+---
+
+## II.9 The ledger and the transport theorem
+
+**Why it clicks.** A step that forgets a fixed share each time forgets geometrically. Write the share as a cost, and costs add.
+That is II.4 in bookkeeping form, and it carries an uncertainty as well as a certificate.
+
+**The ledger (II.9.0).** A quantity M_n >= 0 *pays* cost c_i at step i, with floor delta, when M_{i+1} <= e^{delta - c_i} M_i.
+Then:
+
+* M_n <= e^{n delta - (c_0 + ... + c_{n-1})} M_0, the ledger inequality;
+* if every cost is at least kappa, then M_n decays like e^{-n(kappa - delta)}; if also kappa > delta, the sum of the M_n converges
+  (a *cost above the floor*, `CostAboveFloor`);
+* a lower bound on the final value is a lower bound on the total cost, hence on the size of the object that paid it.
+
+**[Lean]** (`Unified/Ledger.lean`, `Pays`, `ledger`, `decay`, `summable_of_gap`, `size`, `CostAboveFloor`, `rate_of_costAboveFloor`;
+the abstract running-system form is `ETM/RunSys.lean`, `RunSys.carry`, `RunSys.contract`, `RunSys.decay_cost`).
+
+**Theorem II.9.1 (bounded transport).** An uncertainty e_n >= 0 crosses step n with factor f_n and floor delta, and the step may add
+fresh uncertainty r_n >= 0 of its own: e_{n+1} <= e^delta f_n e_n + r_n. If the steps contract, e^delta f_n <= q < 1, and each adds at
+most R, then e_n <= q^n e_0 + R/(1 - q) at every step, uniformly in n. **[Lean]** (`Unified/Transport.lean`, `bounded_transport`,
+`transport_geom`, `acc_eq`).
+
+**Theorem II.9.2 (critical transport).** At cost = floor, e^delta f_n = 1, nothing is damped: e_n <= e_0 + (r_0 + ... + r_{n-1}).
+The bound is attained. It stays bounded exactly when the r_j are summable, and a constant fresh uncertainty grows without limit.
+**[Lean]** (`critical_transport`, `critical_sharp`, `critical_bounded_iff`, `critical_unbounded`).
+
+**Theorem II.9.3 (sign preserved).** If a quantity has a sign margin m_n and the uncertainty about its counterpart across the
+boundary stays below it, e_n < m_n, the counterpart's sign is certified at every step, with value at least m_n - e_n. **[Lean]**
+(`sign_transport`, `sign_of_bounded`, `sign_of_critical`).
+
+**II.9.4 (the ledger is the case r = 0).** With no fresh uncertainty the transport theorem is the ledger: `Pays`, `carry`,
+`Ledger.contract`, and every ledger of a running system. **[Lean]** (`pays_iff_transports`, `carry_of_transport`,
+`ETM.Ledger.transports`, `contract_of_transport`).
+
+**II.9.5 (zero slack, exactly).** When an uncertainty and the margin it is compared with pay the same cost at every step, their
+ratio crosses at exactly cost = floor. Damping relative to a margin exists only if the margin shrinks more slowly than the
+uncertainty. **[Lean]** (`relative_transport`, `relative_critical`).
+
+**The three applications.** Part X section 7 states what each problem's uncertainty is and where the open step sits. Yang-Mills: the
+boundary uncertainty of a slab. GRH: the explicit formula's remainder against the collapsing margin. NP vs coNP: the hiding error
+per hidden variable.
+
+---
+
+## II.10 The encoder and its half-turn
+
+**Why it clicks.** A boundary passes on one state, seen once from the inside and once, after one rotation, from the outside. Both
+sides certify the same size. All that is left to say about the step is how much the state overlaps with its rotated image, and one
+number carries that.
+
+**Definition (II.10.1).** An *encoder* is a state psi in a space with a positive form, together with its rotated image psi' = R psi
+of the same norm (the shared root). Its one number is the *reflection coefficient* c = <psi, psi'> / ||psi||^2. Positivity forces
+|c| <= 1. **[Lean]** (`Unified/Encoder.lean`, `Encoder`, `Encoder.ofRot`, `refl`, `norm_refl_le`; reading the boundary from the other
+side conjugates c: `refl_swap`).
+
+**Two loss factors, determined by c alone (II.10.2).**
+
+* The Szego factor 1 - |c|^2 is the share of psi left after removing its projection on the mirror image: the squared norm of
+  psi - conj(c) psi' is ||psi||^2 (1 - |c|^2). It is 1 exactly at c = 0 and positive exactly for |c| < 1.
+* The electric factor (1 - c)/(1 + c) is the odd part over the even part under the rotation: ||psi - psi'||^2 / ||psi + psi'||^2.
+
+Both lie in [0, 1] for admissible c. The ledger cost is the minus log of the factor, and a chain of encoder factors is a ledger with
+floor 0. A uniform bound of the factors below e^{-delta} is exactly a cost above the floor. **[Lean]** (`szego`, `szego_mem`,
+`szego_pos_iff`, `szego_eq_one_iff`, `szego_remainder`, `elec`, `elec_mem`, `encoder_elec`, `pays_of_factors`,
+`costAboveFloor_of_factor_le`, `factor_le_of_costAboveFloor`; the one-box form `oneBox_iff_refl`).
+
+**One distance, two functions (II.10.3).** The cost of the electric factor is a hyperbolic distance d of c from the lossless
+point 0, and the Szego factor is the second function of the same d: it equals 4 e^{-d}/(1 + e^{-d})^2, that is 1/cosh^2(d/2).
+**[Lean]** (`Unified/GRHLens.lean`, `elec_cost`, `szego_of_elec`). This is the object Part X section 2 puts at the centre. It is the
+distance of the encoder from the lossless point.
+
+**The half-turn (II.10.4).** The electric factor is a Moebius map of the matrix (1/sqrt 2)[[-1, 1], [1, 1]]. That matrix is
+symmetric and squares to the identity, so the map is an involution, and its two fixed points, sqrt 2 - 1 and -(1 + sqrt 2), are
+antipodal. **[Lean]** (`halfTurn_mobius`, `halfTurn_transpose`, `halfTurn_mul_self`, `elec_elec`, `elec_selfdual`,
+`elec_fixed_neg`, `fixed_antipodal`). As a Moebius map of the Riemann sphere it is a rotation by 180 degrees, the half-turn
+**[classical]**. It swaps the two ways of composing: the product of reflection coefficients is carried to hyperbolic addition of
+electric factors (`elec_mul`, `elec_oplus`) **[Lean]**. Its self-dual point has cost log(1 + sqrt 2), the 0.881 of II.5
+(`selfdual_cost`) **[Lean]**.
+
+**What the half-turn does not do (II.10.5).** It is a symmetry of the description. It exchanges the pictures and fixes its axis, so
+it never decides on which side of the axis a box lies or how far from it. It does not turn an upper bound on one encoder into a
+lower bound on another **[paper]** (`docs/unified/GRH-LENS.md`, 6.3).
+
+**The three applications (II.10.6).** Yang-Mills: the twist ratio Z_tw/Z of the hand-over box is c, and O1 is c above (mu - 1)/(mu + 1) for
+every outside. GRH: the Verblunsky step of the zero measure at each scale is c. NP vs coNP: the crossing label passes at factor 1
+with a cutting-planes line, so the encoder explains resolution's cost but supplies none for strong systems **[paper]**
+(`docs/unified/ENCODER.md`, 1).
+
+---
+
+## II.11 The settle theorem and the decidability edge
+
+**Why it clicks.** If every step pays a cost above the floor, the quantity must fall below any error bar, and one can count how long
+that takes. If steps may pay exactly the floor, nothing forces it to fall, and nobody can tell in general whether it will.
+
+**Running systems (II.11.1).** A *running system* with floor delta has states, a transfer step, an encoder factor in [0, 1] at each
+state, a mass >= 0, and the ledger law mass(step x) <= e^delta fac(x) mass(x). The ledger theorems hold on every running system.
+Running systems form a category in which the space of ledgers is the terminal object, so every running system has exactly one map
+into it (its ledger). **[Lean]** (`ETM/RunSys.lean`, `RunSys`, `RunSys.carry`, `RunSys.contract`, `Hom`, `exists_unique_hom`,
+`univIsTerminal`). The statements XI.2c of the Outlook rest on this.
+
+**Theorem II.11.2 (settle).** In the *contraction class* (every factor at most theta, with e^delta theta < 1, which is exactly a
+cost above the floor), the run from any state reaches balance within epsilon, by an explicit computable number of steps:
+balanceBound M eps q = ceil(M q / (eps (1 - q))) + 1, for rational q with e^delta theta <= q < 1. So on this class the unbounded
+question "does it settle?" is a bounded one. **[Lean]** (`ETM/Machine.lean`, `Contracting`, `contracting_iff_costAboveFloor`,
+`balanceBound`, `balanceBound_ge`, `reaches_of_contracting`, `reaches_iff_bounded`, `reaches_of_contracting'`). The same statement
+is XI.2a.
+
+**Theorem II.11.3 (the edge).** The machine that runs every partial recursive content is lossless: factor 1, cost = floor, outside
+the contraction class. Whether it reaches balance is undecidable for all contents: no computable predicate decides it, and its
+truth value exists (classically) but cannot be computed. **[Lean]** (`etm`, `etm_universal`, `etm_not_contracting`,
+`etm_balance_undecidable`, `etm_truth_edge`; both sides in one statement, `etm_edge`). The same statement is XI.2b.
+
+**What it says in one line.** With a floor, settling is decidable within an explicit bound. At the floor, it is not. The step from
+the second case to the first is the open step of every card (Part X, sections 4 and 5).
+
+**The three applications.** Yang-Mills: the floor is the cost above log mu, and keeping it uniform in the cutoff is O1. GRH: the
+margin decays without a floor (zero slack, II.9.5), so only the sign is decided scale by scale. NP vs coNP: a constant cost per
+hidden variable is a floor.
+
+---
+
+## II.12 The API: one card per problem
+
+**Why it clicks.** The form layer says nothing about content, so every problem can use it. Every problem has the same shape: an
+input, a proved structure, one named open step.
+
+**What the API gives (II.12.1).** One import, `ProofPhase.API`, a facade over the form layer: it moves and renames nothing, and its
+theorems are re-exports or one-line wrappers. It has one structure per concept **[Lean]** (`API.lean`):
+
+| Concept | In Lean | You supply | You get for free |
+|---|---|---|---|
+| a running system | `RunSys` | states, step, factor, mass, the ledger law | `carry`, `contract`, `decay_cost` |
+| the settle bound | `settle`, `settle_everywhere`, `settle_iff_bounded`, `balanceBound` | the contraction class | an explicit step count |
+| the decidability edge | `edge` | nothing | decided above the floor, undecidable at it |
+| a chain with costs | `Chain` | a quantity, costs, the step law | `Chain.ledger`, `Chain.decay`, `Chain.summable`, `Chain.size` |
+| a margin that survives | `Margin` | shares kept | `Margin.survive`, `Margin.pos` |
+| an encoder | `Encoder`, `szegoFactor`, `elecFactor`, `cost` | a state and its rotation | both factors in [0, 1] |
+| an uncertainty | `Uncertainty` | error, factor, fresh uncertainty | `bounded`, `critical`, `sign` |
+| the problem card | `Problem` | input, `Open`, `Concl`, `proved` | `Problem.holds` |
+| the open-step slot | `OpenStep "name" P` | the one statement `P` | `P` itself, labelled |
+| the external-input slot | `External "source" P` | a theorem from the literature | `P` itself, labelled |
+
+The slots are transparent: `OpenStep "..." P` *is* `P`, so a theorem takes it as an ordinary hypothesis. Nothing is ever an axiom.
+The labels make the open steps and outside dependencies greppable.
+
+**Adding a problem (II.12.2).** Seven steps: copy the template (`API/Template.lean`, a worked toy); write the input; fill a running
+system, chain or margin and check the one ledger inequality; write the open step in its slot; call the free theorems; add an
+uncertainty if the input is only approximate; state the card. **[paper]** (the procedure; `docs/unified/API.md`, 3). The three
+cards of Parts III to V are `API/YangMills.lean`, `API/GRH.lean` and `API/NP.lean`, each proved as "open step gives conclusion"
+**[Lean]**; each open step is **[open]** (III.5.6, IV.4, V.4.10). The toy settles in 101 steps to 1/100 (`toy_settle_101`)
+**[Lean]**.
+
+**What runs and what is truth only (II.12.3).** The settle count, the encoder factors on rational data and the ledger law on
+rational data are computable and decidable: `balanceBound`, `szegoQ`, `elecQ`, `PaysQ`, `settle0`, with `szegoQ_cast`,
+`elecQ_cast` and `PaysQ.pays` proving them right for the real system; the machine's step and balance test are primitive recursive
+(`estep_primrec`, `halted_primrec`). The real-valued structures and the undecidability on the lossless side are truth statements,
+not computed. **[Lean]** (`API.lean`).
+
+**One consequence for every instance (II.12.4).** G0's phase field is one compact circle. Every continuous character of the circle
+is z -> z^n for an integer n, so every label carried on it has integer charge, with no further assumption. **[Lean]**
+(`API/Phase.lean`, `chargeQuantisation`, `PhaseLabel.integer_charge`; classical content: Pontryagin duality for the circle).
+
+**What it does not do (II.12.5).** It proves no open step and adds no mathematics. It does not turn a problem into a running
+system for you: the structure and its one inequality are the work. Arguments that use only the interface cannot settle P vs NP
+(relativization, V.7), and the NP card inherits that. **[paper]**
+
+---
+
+## II.13 The arsenal and its lint
+
+**Why it clicks.** Content-free results that more than one project uses should live once, and every use should be checkable for one
+property: that nothing in it cannot run.
+
+**The arsenal (II.13.1).** The arsenal is the set of transferable Lean results that need Mathlib, kept in the `im` repository
+(`arsenal/`), pinned to Lean and Mathlib v4.34.0. It is imported from there and never copied (II.13.4). Its first modules are
+`Arsenal.R136a1` and `Arsenal.BSD` **[paper]** (`arsenal/README.md`).
+
+**R136a1 (II.13.2).** The one way to leave a statement open: `R136a1 "name" P` is `P` as a named hypothesis, never an axiom. A
+theorem that needs it takes it as a hypothesis, so the system never assumes it. **[Lean]** (`Arsenal/R136a1.lean`, `R136a1`,
+`R136a1.out`).
+
+**The lint (II.13.3).** `arsenal/tools/lint.sh` is static, needs no network and no build. It fails unless: the toolchain is Lean
+v4.34.0 and the one requirement is Mathlib at tag v4.34.0; every module imports only Mathlib or the arsenal itself; no module uses an
+escape hatch (`sorry`, `admit`, `axiom`, `native_decide`, `unsafe`, `implemented_by`, `extern`, `ofReduceBool`, `skipKernelTC`),
+read in code only so prose stays free; and every module is reached from `Arsenal.lean`. It lists every part answered R136a1 by
+name. **[paper]** (read from the script; run for this draft, result "lint: OK (3 modules; Mathlib v4.34.0 only; no escape hatch)").
+A self-test (`tools/lint-selftest.sh`) plants one case per rule, and the full check (`tools/check.sh`) adds a build against Mathlib
+and the kernel's axiom report for every declaration. Both were not run for this draft.
+
+**Shared vocabulary, imported and never copied (II.13.4).** What can be transferred moves to the `im` repository and is used from
+there as a dependency, never vendored. Lean projects `require` the package by repository, subdirectory and commit. **[paper]** (the
+owner's rule; `arsenal/README.md`, "Using it").
+
+**What the lint is, and is not.** It certifies form: that everything stated is soundly constructed. It does not say that the
+statements describe the world (Part I, I.8).
+
+---
+
+## II.14 Where Part II ends
+
+The tools II.1 to II.7 carry a positivity. The form layer II.9 to II.13 carries a certificate and its uncertainty, says when the
+carrying settles, and says where the one open statement of a problem goes. None of it supplies a positivity, and none supplies a
+floor. Part X says why each problem's open step stays open.
