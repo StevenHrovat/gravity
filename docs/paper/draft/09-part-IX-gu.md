@@ -221,6 +221,11 @@ it (IX.5e stays open).
   "describes existence" is the owner's reading; as physical unified theories most SU(N) are not viable (IX.1.1).
 * **SU(2) as the stable profile** (Part VI.6): a statement about the group manifold under Ricci flow, not about the global form of the
   Standard Model group. No link to Z_6 was found.
+* **The Standard Model's factors are the rigid ones.** Among U(1) and the SU(N), the groups determined by their homotopy type are
+  exactly U(1), SU(2) and SU(3) **[paper]** (from VI.6.3j, VI.6.3k) (IX.6i). The owner reads the selection as rotation: other
+  compact groups do not survive it, and SU(N) is the language the encoder speaks (Part X 4.4). It would be a DMP-flavoured
+  consequence beyond the standard expectation (IX.5e) once the other groups are settled; for now it is a reading, and the check
+  that would test it, the rigidity of Sp(2) = Spin(5) and G2, is **[open]** (IX.6j).
 
 ## IX.7 What would close it
 

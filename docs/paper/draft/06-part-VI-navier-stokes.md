@@ -334,6 +334,10 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   Pontryagin class, not homeomorphic to the parallelisable SU(N) **[paper]** (a computation from classical surgery theory,
   `docs/unified/PERELMAN-DMP.md` 2). Ricci flow does not reach it. In DMP terms the rigid cases are those with nothing below the gate
   (the top cell), and a construction that certified every SU(N) would be refuted from N = 4 on **[reading]**.
+* **The rigid SU(N) are N = 1, 2, 3.** With the point SU(1), the SU(N) whose homotopy type determines them are exactly N = 1, 2, 3,
+  and the circle U(1) is rigid too **[paper]** (from the bullet above; S^1 **[classical]**) (VI.6.3k). The rigid factors are
+  U(1), SU(2) and SU(3), the Standard Model's. The owner reads this as the start `{infinity, 2, 3}`: the largest start built from
+  SU(N) that a description can still certify (Part X 4.4) **[reading]**.
 
 ### VI.6.4 The Navier-Stokes statement, side by side **[reading]**
 

@@ -4760,3 +4760,24 @@ thread.
   one assumption, in GRH's terms, is that GRH is a valid encoder across scales, and correctness follows from it. Care point: the
   clause "same margin" is where the floor sits; GRH by itself supplies the sign (X.17), so assuming the encoder valid with its
   margin is X.64 itself, not a weaker assumption.
+- **The rigid start and the language of the encoder (the owner, 2026-11-24).** First: "BTW, does Poincare for our N imply that
+  (inf,2,3) is the only valid start condition? To me it seems that way." Then: "The other compact groups shouldn't survive rotation,
+  so with SU(N) we have the language that the encoder speaks, which is needed for our one-box, since it verifies that it can speak,
+  so speaking + understood = DMP-complete, so anything that rotates correctly with the rigid start can be shown to be correct if DMP
+  is correct." Exact counterparts (coordinator):
+  1. *Rigidity.* Among SU(N), the homotopy type determines the manifold exactly for N = 1, 2, 3 (a point, S^3, SU(3)) and not from
+     N = 4 on (VI.6.3j); the circle U(1) is rigid as well (a closed manifold homotopy equivalent to S^1 is S^1) [classical]. So the
+     largest start built from SU(N) that is still rigid is the point with 2 and 3, the shape of `{infinity, 2, 3}`, and the rigid
+     factors are exactly U(1), SU(2), SU(3), the Standard Model's [paper, from VI.6.3j]. Reading: the rigid start is the one a
+     description can certify. Care point: this covers SU(N) only; "the only valid start" overall is not shown.
+  2. *The language of the encoder.* The encoder is a norm-preserving map of an inner product space (`Unified/Encoder.lean`) [Lean];
+     the norm-preserving complex-linear maps of determinant 1 on C^N form SU(N), and every compact Lie group is a closed subgroup of
+     some U(N) (Peter-Weyl) [classical]. So SU(N) is the full rotation language and every other compact group speaks inside it, as a
+     sub-language [reading for "language"].
+  3. *Speaking + understood = DMP-complete.* Speaking is a valid encoder (the shared gate), understood is a correct marker; together
+     they give DMP-completeness at every scale (`scale_certificate`) [Lean for the implication]. "Anything that rotates correctly
+     with the rigid start is correct if DMP is correct" is that theorem with X.64 as the hypothesis [conditional on X.64].
+  Care point on "other compact groups do not survive rotation": if surviving means rigidity, the check is open and falsifiable.
+  Sp(2) = Spin(5) (dimension 10, rational cohomology on generators of degree 3 and 7) and G2 (dimension 14, degrees 3 and 11) have
+  no rational cohomology in degrees 4i below the top, so the rational test that excludes SU(N), N >= 4, does not exclude them;
+  their rigidity was not checked. Low-rank coincidences fit the reading: Sp(1) = Spin(3) = SU(2), and Spin(6) = SU(4) is not rigid.

@@ -324,6 +324,18 @@ point: a valid encoder keeps the same margin at every scale, and the margin is t
 (claim X.68d). The universal machine is a box too: its DMP-completeness is undecidable over all content, and on the
 contraction class it is a finite check, the dichotomy of 4.3 in the test's terms **[Lean]** (claim X.68c).
 
+**The rigid start and the language of the encoder.** The owner reads Poincare for SU(N) (VI.6.3j) as fixing the start. Among
+SU(N) the homotopy type determines the manifold exactly for N = 1, 2, 3, and the circle U(1) is rigid too **[paper]** (VI.6.3k).
+So the largest start built from SU(N) that a description can certify is the point with 2 and 3, the shape of `{infinity, 2, 3}`
+**[reading]** (claim X.69). The encoder is a norm-preserving map of an inner product space **[Lean]**; the determinant-1
+norm-preserving maps of C^N form SU(N), and every compact Lie group sits inside some U(N) (Peter-Weyl) **[classical]**. In the
+owner's words SU(N) is the language the encoder speaks, and every other compact group speaks inside it (claim X.69a). Speaking (a
+valid encoder, the shared gate) and being understood (a correct marker) give DMP-completeness at every scale **[Lean]**
+(`scale_certificate`; claim X.69b). So anything that rotates correctly from the rigid start is correct if DMP is correct:
+**conditional** on X.64 (claim X.69c). Care points: this covers SU(N), not every conceivable start; and "other compact groups do not
+survive rotation" is open. If surviving means rigidity, Sp(2) = Spin(5) and G2 pass the rational test that excludes SU(N), N >= 4,
+and their rigidity was not checked (claim IX.6j), which makes the reading falsifiable.
+
 **The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost
 per scale (VI.3.4, **[Lean]** in the model). In the owner's reading nothing more needs or can be said than that it is not
 DMP-complete, and blowup is the expected consequence **[reading]** (VI.7e). This makes the framework falsifiable: a proof of global
