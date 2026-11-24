@@ -4972,3 +4972,6 @@ thread.
   its fixed sign, on primitive classes (External slot) [reading for "+dimension"]; the labels are the points of the circle's dual
   group, the integers (Pontryagin duality) [classical], so "points" is exact and is the one used, with the owner's alternatives
   ("uniquenesses", "DoEs") named beside it.
+  Correction (the owner, same day): "With scales:fits I meant that it was good, not a new name. Or rather, since the scale is always
+  one, it could just be called existence, since that is what it is." Applied: the GRH ticks stay "scales", with the owner's reading
+  that each scale is one and so is existence itself [reading]; "fits" is withdrawn.

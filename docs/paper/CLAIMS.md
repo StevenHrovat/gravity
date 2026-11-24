@@ -401,7 +401,7 @@ Notes relative to `docs/rh-guide/`.
 | V.5.4 | Positive-by-construction spaces miss off-line zeros (Connes) or give a half-plane (Lax-Phillips) | classical (recalled) | `grh/TATE.md` 0.5 | none |
 | V.6a | RH iff M(x) = O(x^{1/2 + eps}) | classical | `PREP.md` (ODP tool entry) | none |
 | V.6 | DMP readings of Part V (circle, virtual flux, excision at G0, GRH as the ODP's tool, remnants, coupling factor) | reading | `PREP.md` (2026-11-23) | none |
-| V.8a | The GRH box (ticks: fits, the scales; gate: the sign carried at that scale) passes exactly when ScaleSign holds; for a model of zeta's zeros it passes under Mathlib's Riemann hypothesis (External) | Lean (from External for the second part) | `ProofPhase/ETM/CardBox.lean`, `grh_box_iff`, `grh_box_of_RH` | V.4 (the open ticks beyond the start) |
+| V.8a | The GRH box (ticks: the scales, each read by the owner as one, i.e. existence; gate: the sign carried at that scale) passes exactly when ScaleSign holds; for a model of zeta's zeros it passes under Mathlib's Riemann hypothesis (External) | Lean (from External for the second part) | `ProofPhase/ETM/CardBox.lean`, `grh_box_iff`, `grh_box_of_RH` | V.4 (the open ticks beyond the start) |
 
 
 ## Part VI. P vs NP (`draft/06-part-VI-pnp.md`)
