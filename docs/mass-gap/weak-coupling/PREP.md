@@ -4269,3 +4269,19 @@ thread.
   from outside the system, from the containing G0 (entry "DMP v0.9.9 pressed as a G0"). Care point: "open from inside" is not "unprovable":
   O1 is a statement about the Wilson measure that ordinary mathematics, the containing system, may well prove; what is always true is
   that the system itself cannot supply it, and that in this framework it is always the last statement to be made.
+- **That translates with DMP being O1 (the owner, 2026-11-24):** "That also translates beautifully, with DMP being O1." Reading
+  (coordinator): applied to DMP itself, the previous entry says that DMP's own running assertion is its O1: the one statement DMP cannot
+  certify from inside (entry "DMP v0.9.9 pressed as a G0": the pressed text carries everything except the certificate of its own
+  soundness, which comes from the containing system). Every instance's O1 is then a translation of that one assertion into the
+  instance's terms: "this object runs" for the Wilson measure, the zeta function, a proof system. The form layer is the same everywhere;
+  only the object named in the open slot changes.
+- **The instances and their possibility always share the same step, so they cannot prove themselves; they need something to be attached
+  to, to prove themselves against, and that is the framework built here for the problems that have been seeking it (the owner,
+  2026-11-24):** "The instances and their possibility always share the same step, so can not prove themselves, they need to be attached
+  that they can prove themselves against, which is the framework we have been building for the problems that have been seeking it."
+  Reading (coordinator): exact. A statement cannot be its own certificate: an instance and its own description share the same step, so
+  checking one by the other is circular (entry "existence is circular at its foundation"). A proof is always a proof against something
+  outside the object: axioms, a framework, a checker (Goedel II for consistency; the kernel for every Lean proof) [classical]. In this
+  work the problems are attached to the form layer (ledger, encoder, transport, the API with its hypothesis and external-input slots),
+  which is checked once, independently (`INDEPENDENT-CHECK.md`), and every instance proves its statements against it. The open step of
+  each problem is then exactly the one place where the instance must still supply its own content, against that framework.
