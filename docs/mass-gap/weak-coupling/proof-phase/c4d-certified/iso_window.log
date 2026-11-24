@@ -1,0 +1,7 @@
+|bA| <= 0.0: certified |bF| <= 0.1924 (column 0.99989)  [11s]
+|bA| <= 0.002: certified |bF| <= 0.1806 (column 0.99957)  [21s]
+|bA| <= 0.005: certified |bF| <= 0.1637 (column 0.99943)  [31s]
+|bA| <= 0.01: certified |bF| <= 0.1369 (column 0.99977)  [39s]
+|bA| <= 0.02: certified |bF| <= 0.0892 (column 0.99946)  [44s]
+|bA| <= 0.03: certified |bF| <= 0.0458 (column 0.99976)  [48s]
+|bA| <= 0.05: certified |bF| <= 0.0000 (column 1.40732)  [50s]

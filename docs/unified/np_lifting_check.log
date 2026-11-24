@@ -1,0 +1,39 @@
+
+=== pigeonhole 3 into 2: 6 variables, 9 clauses, widths [2]
+F unsatisfiable by brute force over all 2^6 assignments: True
+resolution width w(F) by saturation: 2
+F: all-1/2 point, least clause value 1 (>= 1 needed): True
+-- gadget XOR(1+1 bits): 12 lifted bits, 36 lifted clauses, widths [4]
+   check 1, comp_falsified_iff over all 2^12 assignments (and F o g unsatisfiable): mismatches = 0
+   check 2, all-1/2 point of F o g: least clause value 2 (>= 1 needed): True
+   multilinear XOR at (1/2, 1/2) = 1/2  (the lifted point decodes to the point 1/2 of F): True
+   check 3, z given Alice's half alone: jointly uniform on all 2^6 values = True; largest |P(z_i = 1 | half) - 1/2| = 0
+   check 3, z given Bob's half alone: jointly uniform on all 2^6 values = True; largest |P(z_i = 1 | half) - 1/2| = 0
+-- gadget Index(1-bit pointer, 2-bit table): 18 lifted bits, 144 lifted clauses, widths [6]
+   check 1, comp_falsified_iff over all 2^18 assignments (and F o g unsatisfiable): mismatches = 0
+   check 2, all-1/2 point of F o g: least clause value 3 (>= 1 needed): True
+   check 3, z given Alice's half alone: jointly uniform on all 2^6 values = True; largest |P(z_i = 1 | half) - 1/2| = 0
+   check 3, z given Bob's half alone: jointly uniform on all 2^6 values = False; largest |P(z_i = 1 | half) - 1/2| = 1/2
+
+=== Tseitin on K_4, charge (1,0,0,0): 6 variables, 16 clauses, widths [3]
+F unsatisfiable by brute force over all 2^6 assignments: True
+resolution width w(F) by saturation: 4
+F: all-1/2 point, least clause value 3/2 (>= 1 needed): True
+-- gadget XOR(1+1 bits): 12 lifted bits, 128 lifted clauses, widths [6]
+   check 1, comp_falsified_iff over all 2^12 assignments (and F o g unsatisfiable): mismatches = 0
+   check 2, all-1/2 point of F o g: least clause value 3 (>= 1 needed): True
+   multilinear XOR at (1/2, 1/2) = 1/2  (the lifted point decodes to the point 1/2 of F): True
+   check 3, z given Alice's half alone: jointly uniform on all 2^6 values = True; largest |P(z_i = 1 | half) - 1/2| = 0
+   check 3, z given Bob's half alone: jointly uniform on all 2^6 values = True; largest |P(z_i = 1 | half) - 1/2| = 0
+-- gadget Index(1-bit pointer, 2-bit table): 18 lifted bits, 1024 lifted clauses, widths [9]
+   check 1, comp_falsified_iff over all 2^18 assignments (and F o g unsatisfiable): mismatches = 0
+   check 2, all-1/2 point of F o g: least clause value 9/2 (>= 1 needed): True
+   check 3, z given Alice's half alone: jointly uniform on all 2^6 values = True; largest |P(z_i = 1 | half) - 1/2| = 0
+   check 3, z given Bob's half alone: jointly uniform on all 2^6 values = False; largest |P(z_i = 1 | half) - 1/2| = 1/2
+
+=== control: F = { (x), (not x) }  (width 1)
+F: all-1/2 point, least clause value 1/2: point satisfies F's linear clauses: False
+F o XOR: 4 clauses, widths [2], least clause value 1: point satisfies the lifted clauses: True
+
+=== summary
+all checks as expected: True

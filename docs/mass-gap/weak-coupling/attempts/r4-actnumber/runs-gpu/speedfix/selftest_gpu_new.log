@@ -1,0 +1,37 @@
+[PASS] 2I group: 120 elements, closure defect 1.8e-13, 12 nearest neighbours of 1
+[PASS] eater plane (0, 1) sign 1: twisted action above minimum 0.0e+00; p_f = [1. 1.]
+[PASS] eater plane (0, 1) sign -1: twisted action above minimum 0.0e+00; p_f = [-1. -1.]
+[PASS] SU(2) twisted staple plane (0, 1): max |dS - predicted| = 1.4e-14
+[PASS] U(1) twisted staple plane (0, 1): max |dS - predicted| = 6.3e-15
+[PASS] eater plane (1, 2) sign 1: twisted action above minimum 0.0e+00; p_f = [1. 1.]
+[PASS] eater plane (1, 2) sign -1: twisted action above minimum 0.0e+00; p_f = [-1. -1.]
+[PASS] SU(2) twisted staple plane (1, 2): max |dS - predicted| = 4.4e-15
+[PASS] U(1) twisted staple plane (1, 2): max |dS - predicted| = 8.4e-15
+[PASS] eater plane (0, 2) sign 1: twisted action above minimum 0.0e+00; p_f = [1. 1.]
+[PASS] eater plane (0, 2) sign -1: twisted action above minimum 0.0e+00; p_f = [-1. -1.]
+[PASS] SU(2) twisted staple plane (0, 2): max |dS - predicted| = 1.0e-14
+[PASS] U(1) twisted staple plane (0, 2): max |dS - predicted| = 8.0e-15
+[PASS] gauge invariance: action 2.5e-14, SU(2) flux ops 2.8e-16, U(1) flux ops 5.2e-16
+[PASS] centre symmetry: p_f + p_f(centre) = 0.0e+00, action change 0.0e+00
+[PASS] x0 sampler alpha=0.15: KS p = 0.510
+[PASS] x0 sampler alpha=2.0: KS p = 0.395
+[PASS] x0 sampler alpha=9.0: KS p = 0.662
+[PASS] SheetFix overrelaxation = twisted array overrelaxation: max difference 0.0e+00
+[PASS] sheet = bulk, array: sheet - bulk = 0.0018 +- 0.0016; bulk 0.6292
+[PASS] sheet = bulk, emulated fused: sheet - bulk = 0.0024 +- 0.0020; bulk 0.6283
+[PASS] sheet = bulk, no fix (must fail): sheet - bulk = -1.2641 +- 0.0023 (must be far from 0)
+[PASS] sheet = bulk, u1 beta=1.1: sheet - bulk = 0.0005 +- 0.0038; bulk 0.7019
+[PASS] sheet = bulk, z2 beta=0.5: sheet - bulk = -0.0209 +- 0.0215; bulk 0.8420
+[PASS] sheet = bulk, 2i beta=2.4: sheet - bulk = 0.0033 +- 0.0035; bulk 0.6283, acceptance 0.35
+[PASS] anisotropic box (4, 2, 6): eater action 0.0e+00, p_f [-1. -1.], staple 1.3e-15, SheetFix OR 0.0e+00
+[PASS] anisotropic box (2, 4, 4): eater action 0.0e+00, p_f [-1. -1.], staple 2.4e-15, SheetFix OR 0.0e+00
+[PASS] sheet = bulk, emulated fused, box (4, 2, 4): sheet - bulk = -0.0014 +- 0.0028
+[PASS] GPU: fused + SheetFix overrelaxation = array overrelaxation: max difference 6.8e-14
+[PASS] GPU: fused + SheetFix = array, anisotropic box (8, 4, 6): max difference 4.1e-14
+[PASS] GPU: cupy array overrelaxation = numpy: max difference 7.6e-14
+[PASS] GPU: sheet = bulk, fused: sheet - bulk = 0.0013 +- 0.0008
+[PASS] GPU: sheet = bulk, cupy array: sheet - bulk = 0.0003 +- 0.0011
+[PASS] GPU: u1 update and flux ops run: shape (2, 2, 8)
+[PASS] GPU: z2 update and flux ops run: shape (2, 1, 8)
+[PASS] GPU: 2i update and flux ops run: shape (2, 2, 8)
+SELFTEST OK (36/36)

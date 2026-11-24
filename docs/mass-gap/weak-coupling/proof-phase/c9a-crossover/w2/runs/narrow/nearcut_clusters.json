@@ -1,0 +1,30 @@
+{
+ "2.3/dP6": {
+  "delta": 0.38951292809305543,
+  "snapshots": 256,
+  "frac_near": 0.19854208863811734,
+  "largest_cluster_frac": 0.18722521621013374,
+  "frac_snapshots_spanning": 1.0
+ },
+ "2.3/0.1": {
+  "delta": 0.1,
+  "snapshots": 256,
+  "frac_near": 0.040755911619084366,
+  "largest_cluster_frac": 0.0012458204732510292,
+  "frac_snapshots_spanning": 0.00390625
+ },
+ "3.5/dP6": {
+  "delta": 0.2559656384611507,
+  "snapshots": 256,
+  "frac_near": 0.01857176729681069,
+  "largest_cluster_frac": 0.0006756566679526754,
+  "frac_snapshots_spanning": 0.0
+ },
+ "3.5/0.1": {
+  "delta": 0.1,
+  "snapshots": 256,
+  "frac_near": 0.004989310056584363,
+  "largest_cluster_frac": 0.0002878448109567904,
+  "frac_snapshots_spanning": 0.0
+ }
+}

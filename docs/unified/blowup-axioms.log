@@ -1,0 +1,19 @@
+== build ProofPhase.Unified.Blowup
+Build completed successfully (8925 jobs).
+== declarations: 13
+== axioms
+'ProofPhase.Unified.trap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.trap_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.trap_of_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.gap_of_costAboveFloor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.escape_of_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.escape_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.durations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.durations_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.durations_pay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.arrival' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.amplitude_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.blowup_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.boundary_quantum' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/Blowup.lean

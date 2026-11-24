@@ -1,0 +1,11 @@
+M  s=0.05: Monte Carlo 0.06370  formula 0.06364
+M  s=0.0983: Monte Carlo 0.12488  formula 0.12496
+M  s=0.2: Monte Carlo 0.25306  formula 0.25294
+M  s=0.5: Monte Carlo 0.60923  formula 0.60900
+B1 Haar stars (1500), 300 steps: root cap radius max 69.6 deg (bound 84.4); orbit max angle max 139.2; steps above 160: total 0, max per orbit 0; above 168.7: 0
+B2 cap radius along orbits (first 60 steps): largest one-step increase +0.000 deg
+  adversarial it 0: largest cap-radius increase +0.000 deg; orbit max angle 136.9; steps above 160 (max per orbit) 0
+  adversarial it 20: largest cap-radius increase +0.000 deg; orbit max angle 143.4; steps above 160 (max per orbit) 0
+  adversarial it 40: largest cap-radius increase +0.000 deg; orbit max angle 145.8; steps above 160 (max per orbit) 0
+  adversarial it 60: largest cap-radius increase +0.000 deg; orbit max angle 146.1; steps above 160 (max per orbit) 0
+  adversarial it 79: largest cap-radius increase +0.000 deg; orbit max angle 146.1; steps above 160 (max per orbit) 0

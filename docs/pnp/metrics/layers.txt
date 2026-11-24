@@ -1,0 +1,74 @@
+## ProofPhase: Route B correlation bound, before and after (three runs each)
+roots [ProofPhase.RouteB.abs_nCorr_le]: 16 theorems in 5 layers
+layer,theorems,termSize,kernelNs,names
+1,9,507,1867076,ProofPhase.RouteB.ChainWeight.K_nonneg ProofPhase.RouteB.ChainWeight.V_nonneg ProofPhase.RouteB.ChainWeight.V_bdd ProofPhase.RouteB.ChainWeight.K_bdd ProofPhase.RouteB.instIsProbabilityMeasureCCfgCHaar ProofPhase.RouteB.measurable_tm ProofPhase.RouteB.ChainWeight.measK ProofPhase.RouteB.ChainWeight.measV ProofPhase.RouteB.measurable_sp
+2,3,1093,2824933,ProofPhase.RouteB.cweight_nonneg ProofPhase.RouteB.cweight_isBdd ProofPhase.RouteB.measurable_cstep
+3,2,431,4061263,ProofPhase.RouteB.cZ_nonneg ProofPhase.RouteB.measurable_cweight
+4,1,1102,8247335,ProofPhase.RouteB.abs_ccorr_le
+5,1,645,2903090,ProofPhase.RouteB.abs_nCorr_le
+total,16,3778,19903697,
+roots [ProofPhase.RouteB.abs_nCorr_le']: 12 theorems in 4 layers
+layer,theorems,termSize,kernelNs,names
+1,7,267,1299436,ProofPhase.RouteB.ChainWeight.K_nonneg ProofPhase.RouteB.ChainWeight.V_nonneg ProofPhase.RouteB.ChainWeight.V_bdd ProofPhase.RouteB.ChainWeight.K_bdd ProofPhase.RouteB.ChainWeight.measK ProofPhase.RouteB.instIsProbabilityMeasureCCfgCHaar ProofPhase.RouteB.ChainWeight.measV
+2,2,712,1838614,ProofPhase.RouteB.cweight_nonneg ProofPhase.RouteB.cweight_isBdd
+3,2,1917,13717991,ProofPhase.RouteB.cZ_nonneg ProofPhase.RouteB.abs_ccorr_le'
+4,1,645,3026149,ProofPhase.RouteB.abs_nCorr_le'
+total,12,3541,19882190,
+roots [ProofPhase.RouteB.abs_nCorr_le]: 16 theorems in 5 layers
+layer,theorems,termSize,kernelNs,names
+1,9,507,1869877,ProofPhase.RouteB.ChainWeight.K_nonneg ProofPhase.RouteB.ChainWeight.V_nonneg ProofPhase.RouteB.ChainWeight.V_bdd ProofPhase.RouteB.ChainWeight.K_bdd ProofPhase.RouteB.instIsProbabilityMeasureCCfgCHaar ProofPhase.RouteB.measurable_tm ProofPhase.RouteB.ChainWeight.measK ProofPhase.RouteB.ChainWeight.measV ProofPhase.RouteB.measurable_sp
+2,3,1093,3597904,ProofPhase.RouteB.cweight_nonneg ProofPhase.RouteB.cweight_isBdd ProofPhase.RouteB.measurable_cstep
+3,2,431,4335042,ProofPhase.RouteB.cZ_nonneg ProofPhase.RouteB.measurable_cweight
+4,1,1102,8056802,ProofPhase.RouteB.abs_ccorr_le
+5,1,645,2759093,ProofPhase.RouteB.abs_nCorr_le
+total,16,3778,20618718,
+roots [ProofPhase.RouteB.abs_nCorr_le']: 12 theorems in 4 layers
+layer,theorems,termSize,kernelNs,names
+1,7,267,1400272,ProofPhase.RouteB.ChainWeight.K_nonneg ProofPhase.RouteB.ChainWeight.V_nonneg ProofPhase.RouteB.ChainWeight.V_bdd ProofPhase.RouteB.ChainWeight.K_bdd ProofPhase.RouteB.ChainWeight.measK ProofPhase.RouteB.instIsProbabilityMeasureCCfgCHaar ProofPhase.RouteB.ChainWeight.measV
+2,2,712,1947880,ProofPhase.RouteB.cweight_nonneg ProofPhase.RouteB.cweight_isBdd
+3,2,1917,14248848,ProofPhase.RouteB.cZ_nonneg ProofPhase.RouteB.abs_ccorr_le'
+4,1,645,3247806,ProofPhase.RouteB.abs_nCorr_le'
+total,12,3541,20844806,
+roots [ProofPhase.RouteB.abs_nCorr_le]: 16 theorems in 5 layers
+layer,theorems,termSize,kernelNs,names
+1,9,507,2560487,ProofPhase.RouteB.ChainWeight.K_nonneg ProofPhase.RouteB.ChainWeight.V_nonneg ProofPhase.RouteB.ChainWeight.V_bdd ProofPhase.RouteB.ChainWeight.K_bdd ProofPhase.RouteB.instIsProbabilityMeasureCCfgCHaar ProofPhase.RouteB.measurable_tm ProofPhase.RouteB.ChainWeight.measK ProofPhase.RouteB.ChainWeight.measV ProofPhase.RouteB.measurable_sp
+2,3,1093,3242794,ProofPhase.RouteB.cweight_nonneg ProofPhase.RouteB.cweight_isBdd ProofPhase.RouteB.measurable_cstep
+3,2,431,4580098,ProofPhase.RouteB.cZ_nonneg ProofPhase.RouteB.measurable_cweight
+4,1,1102,8286014,ProofPhase.RouteB.abs_ccorr_le
+5,1,645,2867505,ProofPhase.RouteB.abs_nCorr_le
+total,16,3778,21536898,
+roots [ProofPhase.RouteB.abs_nCorr_le']: 12 theorems in 4 layers
+layer,theorems,termSize,kernelNs,names
+1,7,267,1362053,ProofPhase.RouteB.ChainWeight.K_nonneg ProofPhase.RouteB.ChainWeight.V_nonneg ProofPhase.RouteB.ChainWeight.V_bdd ProofPhase.RouteB.ChainWeight.K_bdd ProofPhase.RouteB.ChainWeight.measK ProofPhase.RouteB.instIsProbabilityMeasureCCfgCHaar ProofPhase.RouteB.ChainWeight.measV
+2,2,712,1969640,ProofPhase.RouteB.cweight_nonneg ProofPhase.RouteB.cweight_isBdd
+3,2,1917,15071551,ProofPhase.RouteB.cZ_nonneg ProofPhase.RouteB.abs_ccorr_le'
+4,1,645,5751527,ProofPhase.RouteB.abs_nCorr_le'
+total,12,3541,24154771,
+## DMP: the reflection ladder
+roots [Dmp.Cmb.producer_minted]: 13 theorems in 7 layers
+layer,theorems,termSize,kernelNs,names
+1,5,608,970677,Dmp.Cmb.sealed_needs_both Dmp.Cmb.signs_iff Dmp.independentB_iff Dmp.range_all_iff Dmp.Recipe.root_minted
+2,3,580,1100420,Dmp.Cmb.sealed_verdict Dmp.DoT.mintedB_iff Dmp.Recipe.line0_minted_galaxy
+3,1,1299,1368584,Dmp.Recipe.lineOkB_iff
+4,1,204,185993,Dmp.Recipe.wfB_iff
+5,1,705,732665,Dmp.Recipe.verdict_proven_iff
+6,1,189,169227,Dmp.Cmb.sealed_proven_complete
+7,1,162,236813,Dmp.Cmb.producer_minted
+total,13,3747,4764379,
+roots [Dmp.Recipe.proven_pass_has_two_independent_witnesses]: 18 theorems in 6 layers
+layer,theorems,termSize,kernelNs,names
+1,6,5115,5624284,Dmp.Recipe.root_minted Dmp.Recipe.chainF_le Dmp.gate_pass_iff Dmp.Recipe.chainF_eq_of_le Dmp.independentB_iff Dmp.range_all_iff
+2,4,2426,1367764,Dmp.Recipe.chain_le Dmp.meet_pass_iff Dmp.Recipe.chain_unfold Dmp.DoT.mintedB_iff
+3,4,2807,2228158,Dmp.Recipe.chain_lt Dmp.Recipe.decide_pass_iff Dmp.Recipe.chain_has_root Dmp.Recipe.lineOkB_iff
+4,2,441,346226,Dmp.Recipe.pass_has_two_independent_witnesses Dmp.Recipe.wfB_iff
+5,1,705,592243,Dmp.Recipe.verdict_proven_iff
+6,1,93,112939,Dmp.Recipe.proven_pass_has_two_independent_witnesses
+total,18,11587,10271614,
+## DMP: a reflected check against the number of building blocks
+recipe lines,proof-term size,kernel ns
+4,20,2527969
+8,20,2739591
+16,20,5211923
+32,20,9643489
+64,20,18956093
+128,20,41662274

@@ -1,0 +1,107 @@
+# Log of the independent re-check (tools/independent-check.sh). Condensed from the run logs; times are wall-clock seconds.
+# Checked tree: git HEAD 9cb8837 plus later edits by other sessions (see INDEPENDENT-CHECK.md, section 'What state was checked').
+
+## build (317 modules at the start of the run; every library builds with no errors)
+BUILD AreaLaw rc=0 modules=26 time=3s Build completed successfully (8950 jobs).
+BUILD Influence rc=0 modules=3 time=4s Build completed successfully (8927 jobs).
+BUILD Positivity rc=0 modules=11 time=4s Build completed successfully (8957 jobs).
+BUILD OneScale rc=0 modules=21 time=3s Build completed successfully (8980 jobs).
+BUILD Attempts rc=0 modules=35 time=14s Build completed successfully (9012 jobs).
+BUILD ProofPhase rc=0 modules=221 time=7s Build completed successfully (9213 jobs).
+
+## axiom audit, first run (own traversal of the environment, not the cached axiom lists)
+DECLS 10862 THEOREMS 8184
+LIB AreaLaw decls 1256 theorems 947
+LIB Influence decls 41 theorems 38
+LIB Positivity decls 465 theorems 390
+LIB OneScale decls 578 theorems 469
+LIB Attempts decls 1030 theorems 806
+LIB ProofPhase decls 7492 theorems 5534
+REACHABLE_CONSTANTS 86613 (incl. Lean/Mathlib dependencies)
+MISSING 0
+AXIOMS_USED [Quot.sound, Classical.choice, propext]
+NONSTD_AXIOMS []
+
+## axiom audit, after other sessions' edits (+10 new modules)
+DECLS 11195 THEOREMS 8406; ProofPhase decls 7825 theorems 5756; REACHABLE_CONSTANTS 87232; MISSING 0; AXIOMS_USED [Quot.sound, Classical.choice, propext]; NONSTD_AXIOMS []; rc=0 time=638s
+
+## source grep (sorry, admit, native_decide, axiom, unsafe, implemented_by, extern; comments excluded)
+code hits: 0. Two docstring lines say 'no sorry': ProofPhase/Repair/Noisy.lean:40, ProofPhase/Repair/WeightedW.lean:40
+
+## leanchecker (Lean v4.34.0 toolchain), replay through the C++ kernel
+REPLAY AreaLaw rc=137 time=457s :: 
+REPLAY Influence rc=0 time=236s :: 
+REPLAY Positivity rc=0 time=856s :: 
+REPLAY OneScale rc=137 time=712s :: 
+REPLAY-ALL rc=0 time=1646s :: 
+REPLAY-INC done fail=0
+REPLAY-INC modules=317 changed=317
+REPLAY-INC modules=323 changed=0
+REPLAY-INC modules=323 changed=10
+REPLAY-SEED recorded 317 modules as passed
+(per-library runs of AreaLaw and OneScale were killed for memory (rc=137) while other jobs ran; the whole-environment --fresh replay covers every project module)
+REPLAY-INC single-module batches passed: 10
+
+## nanoda_lib (Rust kernel) over lean4export output
+# whole environment (project + Mathlib + Batteries + Lean core, export 6.0 GB): "Checked 728263 declarations with no typechecker errors"
+# project closure (all project declarations + the Mathlib/core declarations they use, export 743 MB): "Checked 86024 declarations with no typechecker errors"
+# "1 pretty printer errors: Unable to print axioms" appears at the end of every run: the pretty printer's optional axiom listing, not type checking.
+# axioms permitted: propext, Classical.choice, Quot.sound, Lean.trustCompiler (named only because Lean core's own reduceBool/reduceNat mention it);
+# Lean.ofReduceBool and any other axiom are not permitted: a declaration using one would fail. None did.
+# earlier attempts: hard error on Lean.ofReduceBool at start (setting changed to skip it); one full run was stopped by me at about 25 min (my mistake, killed a wrapper shell).
+EXPORT-PROJECT rc=0 time=14s size=211M lines=4072293
+EXPORT-PROJECT rc=0 time=14s size=235M lines=4553446
+EXPORT-PROJECT rc=0 time=16s size=287M lines=5565761
+EXPORT-PROJECT rc=0 time=19s size=318M lines=6171847
+EXPORT-PROJECT rc=0 time=42s size=351M lines=6835634
+EXPORT-PROJECT rc=0 time=44s size=716M lines=13841372
+EXPORT-PROJECT rc=0 time=45s size=743M lines=14354808
+EXPORT-PROJECT rc=0 time=8s size=126M lines=2447019
+NANODA-all rc=0 time=363s peakRSS=6388MB ::     "Unable to print axioms", ] 
+NANODA-lib-AreaLaw rc=0 time=8s peakRSS=393MB ::     "Unable to print axioms", ] 
+NANODA-lib-Attempts rc=0 time=6s peakRSS=377MB ::     "Unable to print axioms", ] 
+NANODA-lib-Influence rc=0 time=3s peakRSS=182MB ::     "Unable to print axioms", ] 
+NANODA-lib-OneScale rc=0 time=6s peakRSS=333MB ::     "Unable to print axioms", ] 
+NANODA-lib-Positivity rc=0 time=5s peakRSS=291MB ::     "Unable to print axioms", ] 
+NANODA-lib-ProofPhase rc=0 time=21s peakRSS=901MB ::     "Unable to print axioms", ] 
+NANODA-project rc=0 time=16s peakRSS=426MB ::     "Unable to print axioms", ] 
+NANODA-project rc=0 time=24s peakRSS=910MB ::     "Unable to print axioms", ] 
+stamp matches (Mathlib 5ed296525643, 10744 non-project modules, hash dcffe1d1ee85969f6fc3cd1ef4e016872ee4d686a0c27f7c0849d4146e04f919)
+
+## per library: nanoda over the library's declarations plus everything they use
+PERLIB AreaLaw modules=26 names=862 Checked 51311 declarations nanoda_time=8s
+PERLIB Attempts modules=35 names=713 Checked 47445 declarations nanoda_time=6s
+PERLIB Influence modules=3 names=26 Checked 27702 declarations nanoda_time=3s
+PERLIB OneScale modules=21 names=429 Checked 41495 declarations nanoda_time=6s
+PERLIB Positivity modules=11 names=332 Checked 39479 declarations nanoda_time=5s
+PERLIB ProofPhase modules=221 names=5550 Checked 84416 declarations nanoda_time=21s
+
+## lean4lean (Lean kernel in Lean), one module per process
+LEAN4LEAN modules=317 failed=2 declarations_checked_sum=11216 time=2630s
+AreaLaw 137
+OneScale 137
+peak memory per module (exact, /usr/bin/time):
+ProofPhase.Flip.Strict rc=0 time=5s peakRSS=5740MB checked 224 declarations
+ProofPhase.Mixing.FiniteSpectral rc=0 time=4s peakRSS=5724MB checked 66 declarations
+AreaLaw.Clustering rc=0 time=5s peakRSS=5729MB checked 67 declarations
+ProofPhase.Crossover.P4Chain rc=0 time=4s peakRSS=5798MB checked 54 declarations
+ProofPhase.General.TopPort2 rc=0 time=4s peakRSS=5784MB checked 0 declarations
+root modules AreaLaw/OneScale killed (rc=137) when run as library-wide prefix; roots hold only imports and a docstring
+
+## stamp
+result=PASS
+date=2026-11-23
+lean_toolchain=leanprover/lean4:v4.34.0
+mathlib_rev=5ed2965256430c3649e86755f9576b54eca72435
+olean_modules=10744
+olean_set_sha256=dcffe1d1ee85969f6fc3cd1ef4e016872ee4d686a0c27f7c0849d4146e04f919
+export_sha256=39094fc0de5c2b1e4fe60aac15c5f9bde0d93c7ec1617f474a7c532a2433b53c   # lean4export of project + Mathlib closure at check time
+checker_leanchecker=Lean toolchain's own leanchecker (leanprover/lean4:v4.34.0), --fresh over the whole environment
+checker_nanoda_lib=0da9f98feadd (2026-11-07)
+checker_lean4export=v4.34.0
+
+## quick run, nothing changed
+QUICK step 'stamp check' done at +118s
+QUICK step 'replay of changed modules' done at +124s
+QUICK: nothing changed since the last passing run, nothing to re-check
+REPLAY-INC modules=323 changed=0; stamp matches; total 124 s

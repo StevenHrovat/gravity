@@ -1,0 +1,17 @@
+val_strong_su2_b0.1_l6 su2 0.1 6 calm --ncell 3 --pert flip --chains 4 --therm 40 --meas 80 --pre 40
+val_strong_su2_b0.1_l8 su2 0.1 8 calm --ncell 4 --pert flip --chains 4 --therm 40 --meas 60 --pre 40
+val_strong_su2_b0.1_l12 su2 0.1 12 calm --ncell 6 --pert flip --chains 2 --therm 30 --meas 40 --pre 30
+val_strong_su2_b0.2_l6 su2 0.2 6 calm --ncell 3 --pert flip --chains 4 --therm 40 --meas 80 --pre 40
+val_strong_su2_b0.2_l8 su2 0.2 8 calm --ncell 4 --pert flip --chains 4 --therm 40 --meas 60 --pre 40
+val_strong_su2_b0.2_l12 su2 0.2 12 calm --ncell 6 --pert flip --chains 2 --therm 30 --meas 40 --pre 30
+val_gauge0.1_lab1_su2_l6 su2 0.1 6 calm --ncell 3 --pert gauge --boundary-labels 1 --chains 4 --therm 20 --meas 40 --pre 40
+val_gauge0.1_lab0_su2_l6 su2 0.1 6 calm --ncell 3 --pert gauge --boundary-labels 0 --chains 4 --therm 20 --meas 40 --pre 40
+val_scan_su2_b0.3_l6 su2 0.3 6 calm --ncell 3 --pert flip --chains 2 --therm 30 --meas 40 --pre 30
+val_scan_su2_b0.5_l6 su2 0.5 6 calm --ncell 3 --pert flip --chains 2 --therm 30 --meas 40 --pre 30
+val_scan_su2_b0.8_l6 su2 0.8 6 calm --ncell 3 --pert flip --chains 2 --therm 30 --meas 40 --pre 30
+val_scan_su2_b1.5_l6 su2 1.5 6 calm --ncell 3 --pert flip --chains 2 --therm 30 --meas 40 --pre 30
+val_scan_su2_b2.3_l6 su2 2.3 6 calm --ncell 3 --pert flip --chains 2 --therm 30 --meas 40 --pre 30
+val_scan_su2_b2.5_l11 su2 2.5 11 calm --ncell 3 --pert flip --chains 1 --therm 20 --meas 20 --pre 20
+val_photon_u1_b2_l6 u1 2.0 6 calm --ncell 3 --pert flip --chains 2 --therm 30 --meas 40 --pre 30
+val_u1strong_u1_b0.2_l6 u1 0.2 6 calm --ncell 3 --pert flip --chains 4 --therm 30 --meas 60 --pre 30
+val_u1strong_u1_b0.2_l8 u1 0.2 8 calm --ncell 4 --pert flip --chains 4 --therm 30 --meas 60 --pre 30

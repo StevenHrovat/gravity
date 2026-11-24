@@ -1,0 +1,18 @@
+JOINT QUEUE START 2026-11-22T14:20:03
+run 0 selftest exit 0 OK
+run 1 joint_b2.3_L4 (attempt 1) exit 0 minutes 1
+run 2 joint_b2.3_L6 (attempt 1) exit 0 minutes 2
+PROJECTED TOTAL 2.14 h (rate 0.491 us per site and sweep from runs 1-2; limit 4.0 h; dropped: none)
+run 3 joint_b2.3_L8 (attempt 1) exit 0 minutes 5
+run 4 joint_b2.3_L12 (attempt 1) exit 0 minutes 14
+run 5 joint_b2.4_L4 (attempt 1) exit 0 minutes 1
+run 6 joint_b2.4_L6 (attempt 1) exit 0 minutes 2
+run 7 joint_b2.4_L8 (attempt 1) exit 0 minutes 5
+run 8 joint_b2.4_L12 (attempt 1) exit 0 minutes 14
+run 9 joint_b2.4_L16 (attempt 1) exit 0 minutes 25
+run 10 joint_b2.5_L6 (attempt 1) exit 0 minutes 2
+run 11 joint_b2.5_L8 (attempt 1) exit 0 minutes 5
+run 12 joint_b2.5_L12 (attempt 1) exit 0 minutes 14
+run 13 joint_b2.5_L16 (attempt 1) exit 0 minutes 25
+analysis exit 0
+JOINT DONE 2026-11-22T16:26:00 failed runs: none; dropped by the cut rule: none

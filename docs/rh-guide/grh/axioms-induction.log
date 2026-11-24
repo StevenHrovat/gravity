@@ -1,0 +1,10 @@
+== build ProofPhase.GRH.Induction
+Build completed successfully (2112 jobs).
+== axioms
+'ProofPhase.GRH.norm_le_of_exp_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.toep_moment_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.atomic_toep_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.atoms_inside_circle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.atoms_on_circle' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in Induction.lean

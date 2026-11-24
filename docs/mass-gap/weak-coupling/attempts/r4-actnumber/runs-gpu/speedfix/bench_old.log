@@ -1,0 +1,31 @@
+u1_b1.1_L4           sweep    200.5 ms ( 12239 ns/site)  meas    13.9 ms  projected     6.4 min
+u1_b1.1_L6           sweep    185.6 ms (  3356 ns/site)  meas     6.7 ms  projected     5.9 min
+u1_b1.1_L8           sweep    171.3 ms (   871 ns/site)  meas    14.3 ms  projected     4.4 min
+u1_b1.1_L10          sweep    209.4 ms (   545 ns/site)  meas    23.6 ms  projected     5.4 min
+su2_b2.4_L4          sweep    205.7 ms (  4186 ns/site)  meas    37.2 ms  projected    48.3 min
+su2_b2.4_L6          sweep    215.5 ms (  1949 ns/site)  meas    46.4 ms  projected    17.2 min
+su2_b2.4_L8          sweep    227.7 ms (  1158 ns/site)  meas   136.1 ms  projected    18.7 min
+su2_b2.4_L10         sweep    224.6 ms (   878 ns/site)  meas   164.6 ms  projected    10.8 min
+su2_b2.4_L12         sweep    254.8 ms (   576 ns/site)  meas   403.5 ms  projected    13.7 min
+su2_b2.4_L14         sweep    280.3 ms (   399 ns/site)  meas   635.7 ms  projected    16.4 min
+su2_b2.5_L4          sweep    223.5 ms (  3411 ns/site)  meas    43.0 ms  projected    52.5 min
+su2_b2.5_L6          sweep    215.5 ms (  1949 ns/site)  meas    46.4 ms  projected    50.7 min
+su2_b2.5_L8          sweep    222.3 ms (   848 ns/site)  meas   167.4 ms  projected    18.5 min
+su2_b2.5_L10         sweep    230.8 ms (   601 ns/site)  meas   239.1 ms  projected    19.7 min
+su2_b2.5_L12         sweep    248.8 ms (   562 ns/site)  meas   278.0 ms  projected    12.6 min
+su2_b2.5_L14         sweep    280.3 ms (   399 ns/site)  meas   635.7 ms  projected    16.4 min
+su2_b2.5_L16         sweep    333.9 ms (   318 ns/site)  meas   931.8 ms  projected    20.7 min
+su2_b2.4_L6_p12      sweep    215.5 ms (  1949 ns/site)  meas    46.4 ms  projected    17.2 min
+z2_b0.5_L2           sweep     92.5 ms ( 45175 ns/site)  meas     0.1 ms  projected     3.5 min
+z2_b0.42_L2          sweep     92.5 ms ( 45175 ns/site)  meas     0.1 ms  projected     3.5 min
+z2_b0.5_L4           sweep     94.3 ms (  5753 ns/site)  meas     0.2 ms  projected     3.6 min
+z2_b0.5_L6           sweep     98.8 ms (  1787 ns/site)  meas     0.2 ms  projected     3.8 min
+2i_b8.0_L2           sweep    683.8 ms (333887 ns/site)  meas    44.0 ms  projected    26.6 min
+2i_b8.0_L4           sweep    542.1 ms ( 33089 ns/site)  meas    37.0 ms  projected    21.1 min
+2i_b8.0_L6           sweep    471.1 ms (  8520 ns/site)  meas    38.1 ms  projected    12.0 min
+su2_b2.6_L6          sweep    223.3 ms (  1346 ns/site)  meas    45.5 ms  projected    52.5 min
+su2_b2.6_L8          sweep    222.3 ms (   848 ns/site)  meas   167.4 ms  projected    39.6 min
+su2_b2.6_L12         sweep    280.1 ms (   422 ns/site)  meas   400.1 ms  projected    18.5 min
+su2_b2.3_L8          sweep    208.3 ms (  1589 ns/site)  meas   108.3 ms  projected     9.7 min
+su2_b2.3_L10         sweep    226.4 ms (   884 ns/site)  meas   239.9 ms  projected    11.4 min
+PROJECTED TOTAL 9.36 h (GPU, path fused)

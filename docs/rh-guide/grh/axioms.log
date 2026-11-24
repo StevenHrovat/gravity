@@ -1,0 +1,10 @@
+== build ProofPhase.GRH.Weil
+Build completed successfully (2222 jobs).
+== axioms
+'ProofPhase.GRH.weilSum_re_nonneg_of_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.real_of_weilSum_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.exists_step_injOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.approx_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.weil_criterion_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/GRH

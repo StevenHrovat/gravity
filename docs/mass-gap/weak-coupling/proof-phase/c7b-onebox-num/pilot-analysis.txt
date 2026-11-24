@@ -1,0 +1,66 @@
+== gauge control (must be zero within errors) ==
+  ['su2', '2.3', '4', 'calm', '4', 'gauge']: max |shift|/err = 1.21, max |shift| = 9.07e-04
+  ['su2', '2.3', '6', 'calm', '6', 'gauge']: max |shift|/err = 0.77, max |shift| = 7.84e-04
+  ['u1', '2.0', '6', 'calm', '6', 'gauge']: max |shift|/err = 1.59, max |shift| = 8.96e-03
+  ['z2', '0.3', '6', 'calm', '6', 'gauge']: max |shift|/err = 1.35, max |shift| = 5.23e-03
+  ['z2', '0.6', '6', 'calm', '6', 'gauge']: max |shift|/err = 1.59, max |shift| = 2.93e-04
+== influence J(d) = |shift| / sd of one loop, whole-face flip and patches, 1x1 loops ==
+  su2 beta=0.8 bg=calm ell=4 patch=2 flip: J(d) = 0.006 0.002  | S_est(centre)=0.117
+  su2 beta=0.8 bg=calm ell=4 patch=4 flip: J(d) = 0.023 0.002  | S_est(centre)=0.008
+  su2 beta=0.8 bg=typical ell=4 patch=2 flip: J(d) = 0.002 0.003  | S_est(centre)=0.135
+  su2 beta=0.8 bg=typical ell=4 patch=4 flip: J(d) = 0.002 0.002  | S_est(centre)=0.006
+  su2 beta=2.3 bg=calm ell=4 patch=2 flip: J(d) = 0.132 0.027  | S_est(centre)=1.361
+  su2 beta=2.3 bg=calm ell=4 patch=4 flip: J(d) = 0.299 0.032  | S_est(centre)=0.102
+  su2 beta=2.3 bg=calm ell=4 patch=4 gauge: J(d) = 0.004 0.003  | S_est(centre)=0.009
+  su2 beta=2.3 bg=calm ell=6 patch=6 flip: J(d) = 0.182 0.015 0.000  | S_est(centre)=0.001
+  su2 beta=2.3 bg=calm ell=6 patch=6 gauge: J(d) = 0.002 0.000 0.003  | S_est(centre)=0.009
+  su2 beta=2.3 bg=typical ell=4 patch=2 flip: J(d) = 0.057 0.019  | S_est(centre)=0.959
+  su2 beta=2.3 bg=typical ell=4 patch=4 flip: J(d) = 0.109 0.024  | S_est(centre)=0.078
+  su2 beta=2.3 bg=typical ell=6 patch=6 flip: J(d) = 0.071 0.011 0.010  | S_est(centre)=0.033
+  u1 beta=2.0 bg=calm ell=4 patch=2 flip: J(d) = 0.006 0.016  | S_est(centre)=0.820
+  u1 beta=2.0 bg=calm ell=4 patch=4 flip: J(d) = 0.004 0.013  | S_est(centre)=0.043
+  u1 beta=2.0 bg=calm ell=6 patch=6 flip: J(d) = 0.005 0.004 0.013  | S_est(centre)=0.043
+  u1 beta=2.0 bg=calm ell=6 patch=6 gauge: J(d) = 0.002 0.003 0.019  | S_est(centre)=0.062
+  u1 beta=2.0 bg=flux ell=4 patch=2 flip: J(d) = 0.114 0.054  | S_est(centre)=2.722
+  u1 beta=2.0 bg=flux ell=4 patch=4 flip: J(d) = 0.334 0.189  | S_est(centre)=0.605
+  u1 beta=2.0 bg=flux ell=6 patch=6 flip: J(d) = 0.058 0.027 0.014  | S_est(centre)=0.043
+  z2 beta=0.3 bg=calm ell=4 patch=2 flip: J(d) = 0.037 0.009  | S_est(centre)=0.430
+  z2 beta=0.3 bg=calm ell=4 patch=4 flip: J(d) = 0.078 0.012  | S_est(centre)=0.039
+  z2 beta=0.3 bg=calm ell=6 patch=6 flip: J(d) = 0.039 0.005 0.002  | S_est(centre)=0.005
+  z2 beta=0.3 bg=calm ell=6 patch=6 gauge: J(d) = 0.002 0.001 0.005  | S_est(centre)=0.018
+  z2 beta=0.3 bg=twist ell=4 patch=2 flip: J(d) = 0.026 0.005  | S_est(centre)=0.260
+  z2 beta=0.3 bg=twist ell=4 patch=4 flip: J(d) = 0.069 0.010  | S_est(centre)=0.031
+  z2 beta=0.3 bg=twist ell=6 patch=6 flip: J(d) = 0.038 0.002 0.007  | S_est(centre)=0.022
+  z2 beta=0.6 bg=calm ell=4 patch=2 flip: J(d) = 0.430 0.029  | S_est(centre)=1.450
+  z2 beta=0.6 bg=calm ell=4 patch=4 flip: J(d) = 0.912 0.022  | S_est(centre)=0.071
+  z2 beta=0.6 bg=calm ell=6 patch=6 flip: J(d) = 0.574 0.006 0.000  | S_est(centre)=0.000
+  z2 beta=0.6 bg=calm ell=6 patch=6 gauge: J(d) = 0.001 0.002 0.003  | S_est(centre)=0.008
+  z2 beta=0.6 bg=twist ell=4 patch=2 flip: J(d) = 0.369 0.017  | S_est(centre)=0.827
+  z2 beta=0.6 bg=twist ell=4 patch=4 flip: J(d) = 0.843 0.019  | S_est(centre)=0.062
+  z2 beta=0.6 bg=twist ell=6 patch=6 flip: J(d) = 0.541 0.003 0.000  | S_est(centre)=0.000
+== extremes vs calm ==
+  su2 beta=0.8 ell=4 typical: J(d) = 0.085 0.003
+  su2 beta=2.3 ell=4 typical: J(d) = 0.601 0.201
+  su2 beta=2.3 ell=6 typical: J(d) = 0.494 0.148 0.050
+  u1 beta=2.0 ell=4 flux: J(d) = 0.818 0.725
+  u1 beta=2.0 ell=6 flux: J(d) = 0.360 0.327 0.337
+  z2 beta=0.3 ell=4 twist: J(d) = 0.015 0.006
+  z2 beta=0.3 ell=6 twist: J(d) = 0.001 0.002 0.001
+  z2 beta=0.6 ell=4 twist: J(d) = 0.024 0.787
+  z2 beta=0.6 ell=6 twist: J(d) = 0.006 0.146 0.817
+== verdicts ==
+  su2 beta=0.8 bg=calm: PASS-like (upper limits only)  ells=[4] S_est=[None]
+  su2 beta=0.8 bg=typical: PASS-like (upper limits only)  ells=[4] S_est=[None]
+  su2 beta=2.3 bg=calm: INCONCLUSIVE  ells=[4, 6] S_est=[1.361, None]
+  su2 beta=2.3 bg=typical: INCONCLUSIVE  ells=[4, 6] S_est=[0.959, None]
+  u1 beta=2.0 bg=calm: INCONCLUSIVE  ells=[4, 6] S_est=[0.82, None]
+  u1 beta=2.0 bg=flux: INCONCLUSIVE  ells=[4, 6] S_est=[2.722, None]
+  z2 beta=0.3 bg=calm: INCONCLUSIVE  ells=[4, 6] S_est=[0.43, None]
+  z2 beta=0.3 bg=twist: INCONCLUSIVE  ells=[4, 6] S_est=[0.031, None]
+  z2 beta=0.6 bg=calm: INCONCLUSIVE  ells=[4, 6] S_est=[1.45, None]
+  z2 beta=0.6 bg=twist: INCONCLUSIVE  ells=[4, 6] S_est=[0.827, None]
+  su2 beta=0.8 bg=typical [extreme pair vs calm]: PASS-like  ells=[4] J_centre=[0.003]
+  su2 beta=2.3 bg=typical [extreme pair vs calm]: INCONCLUSIVE  ells=[4, 6] J_centre=[0.201, 0.05]
+  u1 beta=2.0 bg=flux [extreme pair vs calm]: INCONCLUSIVE  ells=[4, 6] J_centre=[0.725, 0.337]
+  z2 beta=0.3 bg=twist [extreme pair vs calm]: PASS-like  ells=[4, 6] J_centre=[0.006, 0.001]
+  z2 beta=0.6 bg=twist [extreme pair vs calm]: FAIL-like  ells=[4, 6] J_centre=[0.787, 0.817]

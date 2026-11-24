@@ -1,0 +1,48 @@
+# Pre-registration: vortex follow-up against the measured string tension (2026-11-21)
+
+**Status.** A **follow-up hypothesis formed after seeing the β = 2.3 data** of `PREREG-VORTEX.md` (which failed there). Written and
+written before any β = 2.4 vortex data were seen. Correction (same day): the β = 2.4 run wrote its first configuration (of 100) at 09:11,
+one minute before the commit (ee21303), and that configuration's one-line log was printed by the same command that made the commit;
+nothing in this file was changed after it. It cannot change the original verdict, and it is labelled as post-hoc wherever reported.
+For β = 2.3 it is not blind; for β = 2.4 it is blind up to that one configuration.
+
+**Why.** The original criteria compare χ_proj with the full Creutz ratio χ_full at R = 3 and 4. At β = 2.3, χ_full still falls with R
+(0.214 at R = 3, 0.184 at R = 4) while χ_proj is flat (0.145, 0.149): small full Wilson loops carry short-distance (Coulomb-like) terms
+on top of the string tension, so χ_full at small R overstates σa². The string tension is a large-distance quantity; the standard
+comparison in the literature is with the asymptotic σa², which this project measured independently from torelons in the TTL scan
+(`results/ttl_summary.json`, same code base, different configurations).
+
+**Reference values** (own torelon measurement, σa² = (a√σ)²): β = 2.3: 0.1227 ± 0.0043; β = 2.4: 0.0666 ± 0.0015. Teper's values are
+reported beside them, not used for the verdict.
+
+**Criteria**, at the two largest loops measured, R = 4 and R = 5 (both β; a value with relative error above 50 % is reported as "too noisy"
+and does not count as a pass):
+
+1. **Twists carry the string tension:** χ_proj(R) within 30 % of σa² (the tolerance of the original pre-registration, carried over
+   unchanged).
+2. **Removing the twists removes it:** χ_removed(R) below 20 % of σa², or consistent with zero within 2 errors.
+
+The original control criterion is not repeated; its outcome (fail) stands, and its size is reported beside it.
+
+**Verdict.** 1 and 2 at R = 4 and 5 for β = 2.4 (the blind case): **pass** of the follow-up. β = 2.3 is reported with the same rule but
+marked "not blind". Errors: jackknife as in `analyse_vortex.py` (largest of bin sizes 1, 5, 10), combined in quadrature with the error
+of σa² for the ratios.
+
+## Result (2026-11-21; post-hoc follow-up, nothing above changed)
+
+| β | blind? | R | χ_proj / σa² (crit. 1, within 30 %) | χ_removed (crit. 2) |
+|---|---|---|---|---|
+| 2.3 | no | 4 | 1.21 ± 0.05: pass | 0.013 ± 0.008: pass |
+| 2.3 | no | 5 | 1.18 ± 0.08: pass | 0.024 ± 0.034: pass |
+| 2.4 | yes | 4 | 1.28 ± 0.03: pass | 0.041 ± 0.004 (62 % of σa², not consistent with 0): fail |
+| 2.4 | yes | 5 | 1.32 ± 0.03: fail | 0.017 ± 0.011: pass |
+
+**Verdict: fail** in the blind case (β = 2.4); pass at β = 2.3 (not blind). The projected string tension exceeds the measured one by
+18-32 %, growing with β, consistent with the gauge-fixing dependence noted in `PREREG-VORTEX.md` (Gribov copies of the maximal centre
+gauge). Centre dominance at these β is neither confirmed nor refuted by this code; a decisive test needs better gauge fixing (simulated
+annealing, several copies) or a gauge-independent vortex definition. The MG3 reading ("the twists carry the string tension") stays
+untested by our numerics; the formal side (`AreaLaw/TwistVanish.lean`, the area law by centre twists) proves the mechanism at strong
+coupling.
+
+**Parked (the owner, 2026-11-21)** until the underlying theory is firm. To pick up: better maximal-centre-gauge fixing (simulated
+annealing, several gauge copies, keep the best) or a vortex definition that needs no gauge fixing; then a fresh pre-registration.

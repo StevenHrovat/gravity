@@ -1,0 +1,154 @@
+== build ProofPhase.GRH.ContourShiftExists
+Build completed successfully (8938 jobs).
+== declarations: 122
+== axioms
+'ProofPhase.GRH.CS.rectInt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectBorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.mem_border_bot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.mem_border_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.mem_border_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.mem_border_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectBorder_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectInt_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.ii_bot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.ii_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.ii_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.ii_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectInt_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectInt_const_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectInt_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectInt_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectInt_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.hasDerivAt_log_horiz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.hasDerivAt_log_vert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.hasDerivAt_log_vert_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.integral_horiz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.integral_vert_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.integral_vert_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectInt_inv_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectInt_div_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.analyticOrderAt_ne_top_of_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.analyticOrderNatAt_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.exists_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.logDeriv_prod_pow_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.mem_rect_of_not_border' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.abs_le_of_mem_uIcc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rect_subset_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rectInt_logDeriv_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.exists_log_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.prod_pow_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.le_prod_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.landau' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_logDeriv_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.exists_far_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_mellin_le_of_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.exists_bound_completedZeta₀' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.Gammaℝ_eq'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.differentiableAt_Gammaℝ'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.xiF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.differentiable_xiF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.xiF_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.xiF_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.xiF_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.completedZeta_eq_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.completedZeta_ne_zero_of_one_le_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.xiF_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.re_of_xiF_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.analyticOrderAt_xiF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.logDeriv_completedZeta_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.sinh_le_mul_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_sq_Gamma_one_add_I_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_Gamma_one_add_I_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_zeta_two_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_xiF_two_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.xi_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.zero_count_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.xiF_two_add_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.logDeriv_xi_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_logDeriv_completed_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_sub_le_re_im' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.abs_im_le_norm_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.abs_re_le_norm_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.logDeriv_vline_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.exists_zero_finset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.exists_good_height' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.zero_count_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_cexp_mul_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.integrable_mul_cexp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.integrable_norm_mul_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.norm_laplace_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.differentiable_laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.laplace_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.hasCompactSupport_iteratedDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.laplace_iteratedDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.one_add_pow_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.laplace_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.vpt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.vline' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.wInt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.ZeroFamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.completedZeta_ne_zero_of_xiF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.continuousAt_logDeriv_completed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.continuousAt_logDeriv_xiF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.continuousAt_wInt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.xiF_ne_zero_of_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.rect_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.integral_line_eq_vline' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.integrable_wInt_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.zf_xiF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.analyticOrderAt_xiF_ne_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.zf_fiber_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.zf_fiber_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.zf_pre_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.zf_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.summable_inv_one_add_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.zf_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.zf_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.tendsto_const_div_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.horiz_side_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.mem_rect_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CS.contourShift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.contourShift_EF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.vpt_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.efTest_of_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.contDiff_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.hasCompactSupport_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.explicit_formula_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.contDiff_nat_of_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.explicit_formula_of_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.zeta_tie_in_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.zetaZeroIndex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.zetaZeroOrdinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.half_add_zetaZeroOrdinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.nontrivialZeroFamily_zetaZeroOrdinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.exists_nontrivialZeroFamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.CSTie.explicit_formula_zetaZeros' depends on axioms: [propext, Classical.choice, Quot.sound]
+== imports of the core files (expected: Mathlib.* and ProofPhase.GRH.ContourShift* only)
+import Mathlib.Analysis.Calculus.Deriv.Support
+import Mathlib.Analysis.Calculus.IteratedDeriv.Defs
+import Mathlib.Analysis.Calculus.LogDeriv
+import Mathlib.Analysis.Calculus.ParametricIntegral
+import Mathlib.Analysis.Complex.AbsMax
+import Mathlib.Analysis.Complex.BorelCaratheodory
+import Mathlib.Analysis.Complex.CauchyIntegral
+import Mathlib.Analysis.Complex.HasPrimitives
+import Mathlib.Analysis.Complex.Liouville
+import Mathlib.Analysis.Complex.RemovableSingularity
+import Mathlib.Analysis.Meromorphic.FactorizedRational
+import Mathlib.Analysis.Real.Pi.Bounds
+import Mathlib.Analysis.SpecialFunctions.Complex.LogDeriv
+import Mathlib.Analysis.SpecialFunctions.Gamma.Beta
+import Mathlib.Analysis.SpecialFunctions.JapaneseBracket
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
+import Mathlib.MeasureTheory.Integral.IntegralEqImproper
+import Mathlib.NumberTheory.LSeries.Nonvanishing
+import Mathlib.NumberTheory.LSeries.RiemannZetaLogDeriv
+import Mathlib.NumberTheory.LSeries.ZetaZeros
+import Mathlib.NumberTheory.ZetaValues
+import ProofPhase.GRH.ContourShiftLandau
+import ProofPhase.GRH.ContourShiftRect
+import ProofPhase.GRH.ContourShiftTest
+import ProofPhase.GRH.ContourShiftZeta
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/GRH/ContourShiftRect.lean ProofPhase/GRH/ContourShiftLandau.lean ProofPhase/GRH/ContourShiftZeta.lean ProofPhase/GRH/ContourShiftTest.lean ProofPhase/GRH/ContourShift.lean ProofPhase/GRH/ContourShiftTie.lean ProofPhase/GRH/ContourShiftExists.lean

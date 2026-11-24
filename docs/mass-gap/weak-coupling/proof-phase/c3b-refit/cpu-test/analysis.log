@@ -1,0 +1,77 @@
+=== su2 beta=2.3 N=12 w=2.0 chains=2 meas=24
+  b= 2 (coarse 6^4) L*sqrt(sigma)=0.70 content NO_CONTENT: base couplings [1.39 +- 0.0097, 1.9 +- 0.013, -0.0439 +- 0.011, -0.0131 +- 0.0098, 0 +- 0, 0 +- 0, 0 +- 0]
+      coarse plaq fund ts 0.399 +- 0.0015 ss 0.479 +- 0.0012; adj ts 0.106 +- 0.0011 ss 0.164 +- 0.00099; half-block W22 fund 0.18 +- 0.00056 adj 0.0125 +- 0.00017; retention F 2.43 +- 0.0058 A 10.8 +- 0.16
+      Creutz (half block) chi 0.317 +- 0.0016 ratio to sigma (b a/2)^2 2.59 +- 0.091 FAIL; missing: ['creutz FAIL']
+      TV: a 0.527 +- 0.14  c 16.8 +- 0.021  H 17.3 +- 0.15 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 0.134/0.127  c 8.82/8.82  H 8.96/8.95 +- 0.0737 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund -1.41 sigma, adj -1.13 sigma
+      closure of the base fit: closure4 -0.00212 +- 0.022, closure5 0.0106 +- 0.015, closure6 -0.017 +- 0.0029
+  b= 4 (coarse 3^4) L*sqrt(sigma)=1.40 content NO_CONTENT: base couplings [0.417 +- 0.0072, 0.859 +- 0.011, -0.00436 +- 0.0058, 0.00354 +- 0.0094, 0 +- 0, 0 +- 0, 0 +- 0]
+      coarse plaq fund ts 0.111 +- 0.002 ss 0.217 +- 0.0024; adj ts 0.0077 +- 0.00076 ss 0.0322 +- 0.0011; half-block W22 fund 0.041 +- 0.00095 adj -0.000765 +- 0.00054; retention F 4 +- 0.092 A -26.1 +- 18
+      Creutz (half block) chi 0.81 +- 0.02 ratio to sigma (b a/2)^2 1.65 +- 0.07 FAIL; missing: ['creutz FAIL']
+      TV: a 0.0524 +- 0.063  c 10.7 +- 0.088  H 10.8 +- 0.11 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 0.0133/0.0126  c 3.62/3.62  H 3.64/3.64 +- 0.0454 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund -1.18 sigma, adj -1.22 sigma
+      closure of the base fit: closure4 -0.477 +- 0.46, closure5 0.00669 +- 0.16, closure6 -0.117 +- 0.014
+=== su2 beta=2.5 N=12 w=2.0 chains=2 meas=24
+  b= 2 (coarse 6^4) L*sqrt(sigma)=0.36 content NO_CONTENT: base couplings [1.98 +- 0.013, 2.4 +- 0.017, -0.116 +- 0.011, -0.00607 +- 0.015, 0 +- 0, 0 +- 0, 0 +- 0]
+      coarse plaq fund ts 0.552 +- 0.0015 ss 0.605 +- 0.00081; adj ts 0.217 +- 0.0015 ss 0.276 +- 0.0011; half-block W22 fund 0.258 +- 0.00044 adj 0.0292 +- 0.00016; retention F 2.25 +- 0.0028 A 8.45 +- 0.048
+      Creutz (half block) chi 0.213 +- 0.00071 ratio to sigma (b a/2)^2 6.43 +- 0.16 FAIL; missing: ['creutz FAIL']
+      TV: a 1.39 +- 0.13  c 17.6 +- 0.01  H 19 +- 0.14 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 0.355/0.335  c 11.5/11.5  H 11.9/11.8 +- 0.0887 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund -0.554 sigma, adj -0.422 sigma
+      closure of the base fit: closure4 -0.0101 +- 0.008, closure5 0.00432 +- 0.0035, closure6 -0.00116 +- 0.0021
+  b= 4 (coarse 3^4) L*sqrt(sigma)=0.73 content NO_CONTENT: base couplings [1.29 +- 0.015, 1.77 +- 0.018, -0.0737 +- 0.0081, 0.00372 +- 0.013, 0 +- 0, 0 +- 0, 0 +- 0]
+      coarse plaq fund ts 0.368 +- 0.0046 ss 0.449 +- 0.0035; adj ts 0.0861 +- 0.0027 ss 0.142 +- 0.0026; half-block W22 fund 0.147 +- 0.0017 adj 0.00667 +- 0.00048; retention F 2.79 +- 0.014 A 17.1 +- 1.3
+      Creutz (half block) chi 0.396 +- 0.0068 ratio to sigma (b a/2)^2 2.98 +- 0.089 FAIL; missing: ['creutz FAIL']
+      TV: a 0.883 +- 0.097  c 16.5 +- 0.037  H 17.4 +- 0.11 -> H EXCLUDED, a UNDECIDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 0.225/0.212  c 8.21/8.21  H 8.43/8.42 +- 0.0823 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund -0.355 sigma, adj -0.423 sigma
+      closure of the base fit: closure4 0.0258 +- 0.044, closure5 -0.0137 +- 0.015, closure6 0.00429 +- 0.0057
+=== u1 beta=1.1 N=12 w=2.0 chains=2 meas=24
+  b= 2 (coarse 6^4) content n/a: base couplings [1.27 +- 0.021, 1.24 +- 0.016, 0.00181 +- 0.011, 0.0983 +- 0.0078, 0 +- 0, 0 +- 0, 0 +- 0]
+      coarse plaq fund ts 0.76 +- 0.0015 ss 0.774 +- 0.0011; adj ts 0.361 +- 0.0023 ss 0.399 +- 0.0017; half-block W22 fund 0.391 +- 0.00067 adj 0.0289 +- 0.00042; retention F 1.96 +- 0.003 A 13.1 +- 0.18
+      TV: a 1.19 +- 0.085  c 15.4 +- 0.1  H 16.6 +- 0.12 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 0.758/0.758  c 14.6/14.6  H 15.3/15.3 +- 0.236 -> H EXCLUDED, a UNDECIDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund 0.52 sigma, adj -0.132 sigma
+      closure of the base fit: closure4 0.024 +- 0.0093, closure5 0.0468 +- 0.0087, closure6 0.0126 +- 0.0016
+  b= 4 (coarse 3^4) content n/a: base couplings [1.66 +- 0.032, 1.3 +- 0.032, -0.0618 +- 0.012, 0.16 +- 0.013, 0 +- 0, 0 +- 0, 0 +- 0]
+      coarse plaq fund ts 0.807 +- 0.0023 ss 0.819 +- 0.0017; adj ts 0.435 +- 0.0044 ss 0.476 +- 0.0033; half-block W22 fund 0.455 +- 0.0022 adj 0.0505 +- 0.0014; retention F 1.78 +- 0.0063 A 9.01 +- 0.23
+      TV: a 2.27 +- 0.16  c 16.7 +- 0.079  H 19 +- 0.2 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 1.46/1.46  c 19/19  H 20.5/20.5 +- 0.419 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund -0.568 sigma, adj -0.55 sigma
+      closure of the base fit: closure4 0.013 +- 0.0053, closure5 0.0381 +- 0.0039, closure6 0.0386 +- 0.0038
+=== z2 beta=0.6 N=12 w=2.0 chains=2 meas=24
+  b= 2 (coarse 6^4) content n/a: base couplings [3.28 +- 0.27, 3.28 +- 0.27, 0 +- 0]
+      coarse plaq fund ts 1 +- 7.7e-05 ss 1 +- 7.7e-05; adj ts 0 +- 0 ss 0 +- 0; half-block W22 fund 0.986 +- 0.00026 adj 1 +- 0; retention F 1.01 +- 0.00026 A 0 +- 0
+      TV: a 0 +- 0  c 17.9 +- 0.036  H 17.9 +- 0.036 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 0/0  c 17.9/17.9  H 17.9/17.9 +- 0.0357 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund 1 sigma, adj n/a sigma
+  b= 4 (coarse 3^4) content n/a: base couplings [3.28 +- 0.27, 3.28 +- 0.27, 0 +- 0]
+      coarse plaq fund ts 1 +- 7.7e-05 ss 1 +- 7.7e-05; adj ts 0 +- 0 ss 0 +- 0; half-block W22 fund 1 +- 0.00023 adj 1 +- 0; retention F 1 +- 0.00015 A 0 +- 0
+      TV: a 0 +- 0  c 17.9 +- 0.036  H 17.9 +- 0.036 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 0/0  c 17.9/17.9  H 17.9/17.9 +- 0.0357 -> H EXCLUDED, a NOT_EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund 1 sigma, adj n/a sigma
+
+=== gates
+  photon beta1.1_N12: PASS (windows and centre half EXCLUDED at every b: True; q1 no fall and bounded True (Leg C's symmetric flatness, reported: True), level True; q1 ts [(2, 1.2728, 0.0213), (4, 1.6579, 0.0324)], ss [(2, 1.237, 0.0159), (4, 1.3005, 0.0319)])
+  z2 deconfined beta0.6_N12: PASS [(2, 'EXCLUDED', 'EXCLUDED'), (4, 'EXCLUDED', 'EXCLUDED')]
+
+=== SU(2) points (counted = content PASS)
+  beta=2.3 b= 2 L=0.70 NO_CONTENT H_TV 17.3 (EXCLUDED; adj 0.527, centre 16.8) H_W 8.96 (EXCLUDED) Y/X TV inf lam* 0; retention F 2.43 +- 0.0058 A 10.8 +- 0.16 -> NO CONTENT (uncounted; would read: centre half alone >= 1: obstruction not adjoint)
+  beta=2.3 b= 4 L=1.40 NO_CONTENT H_TV 10.8 (EXCLUDED; adj 0.0524, centre 10.7) H_W 3.64 (EXCLUDED) Y/X TV inf lam* 0; retention F 4 +- 0.092 A -26.1 +- 18 -> NO CONTENT (uncounted; would read: centre half alone >= 1: obstruction not adjoint)
+  beta=2.5 b= 2 L=0.36 NO_CONTENT H_TV 19 (EXCLUDED; adj 1.39, centre 17.6) H_W 11.9 (EXCLUDED) Y/X TV inf lam* 0; retention F 2.25 +- 0.0028 A 8.45 +- 0.048 -> NO CONTENT (uncounted; would read: centre half alone >= 1: obstruction not adjoint)
+  beta=2.5 b= 4 L=0.73 NO_CONTENT H_TV 17.4 (EXCLUDED; adj 0.883, centre 16.5) H_W 8.43 (EXCLUDED) Y/X TV inf lam* 0; retention F 2.79 +- 0.014 A 17.1 +- 1.3 -> NO CONTENT (uncounted; would read: centre half alone >= 1: obstruction not adjoint)
+
+=== scaling check ((2.3, 4), (2.5, 4)): INCONSISTENT
+  fund_ts: {'x': (0.11066503401124386, 0.36809623040408157), 'err': (0.002013087906941195, 0.004600443395291489), 'ratio': 3.3262198280866384, 'status': 'INCONSISTENT'}
+  fund_ss: {'x': (0.2172236140018735, 0.4487538518115063), 'err': (0.00242681133199032, 0.003454595655899035), 'ratio': 2.0658612732943293, 'status': 'INCONSISTENT'}
+  adj_ts: {'x': (0.007702420486957592, 0.08609885125882348), 'err': (0.000764087363033338, 0.0026958930240418774), 'ratio': 11.178155153255206, 'status': 'INCONSISTENT'}
+  adj_ss: {'x': (0.03219946885420484, 0.14246025491854658), 'err': (0.0010682352627296458, 0.002571329074911093), 'ratio': 4.424304499045893, 'status': 'INCONSISTENT'}
+  bF_ts: {'x': (0.4165815686395914, 1.292746926624397), 'err': (0.007212651599732821, 0.014919510603874779), 'ratio': 3.1032264121671367, 'status': 'INCONSISTENT'}
+  bF_ss: {'x': (0.8591317301998957, 1.7703512747555317), 'err': (0.010883621176340062, 0.017935389448087934), 'ratio': 2.0606284374383668, 'status': 'INCONSISTENT'}
+  bA_ts: {'x': (-0.004363779810653212, -0.07365723224530375), 'status': 'n/a (not resolved at the reference)'}
+  bA_ss: {'x': (0.003538172813365714, 0.003724230203164776), 'status': 'n/a (not resolved at the reference)'}
+
+=== counted points []; first NOT_EXCLUDED: TV None, W1 None
+=== flags: none

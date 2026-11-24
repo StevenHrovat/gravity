@@ -1,0 +1,528 @@
+{
+ "C1": {
+  "Z2": {
+   "order": 2,
+   "pass": true
+  },
+  "Z4": {
+   "order": 4,
+   "pass": true
+  },
+  "Z10": {
+   "order": 10,
+   "pass": true
+  },
+  "Q8": {
+   "order": 8,
+   "pass": true
+  },
+  "2T": {
+   "order": 24,
+   "pass": true
+  },
+  "2O": {
+   "order": 48,
+   "pass": true
+  },
+  "2I": {
+   "order": 120,
+   "pass": true
+  },
+  "Dic3": {
+   "order": 12,
+   "pass": true
+  }
+ },
+ "C2": {
+  "Z2": {
+   "doubly_twisted_flat_tuples_up_to_conj": 0,
+   "pass": true
+  },
+  "Z4": {
+   "doubly_twisted_flat_tuples_up_to_conj": 0,
+   "pass": true
+  },
+  "Z10": {
+   "doubly_twisted_flat_tuples_up_to_conj": 0,
+   "pass": true
+  },
+  "Q8": {
+   "doubly_twisted_flat_tuples_up_to_conj": 0,
+   "pass": true
+  },
+  "2T": {
+   "doubly_twisted_flat_tuples_up_to_conj": 0,
+   "pass": true
+  },
+  "2O": {
+   "doubly_twisted_flat_tuples_up_to_conj": 0,
+   "pass": true
+  },
+  "2I": {
+   "doubly_twisted_flat_tuples_up_to_conj": 0,
+   "pass": true
+  },
+  "Dic3": {
+   "doubly_twisted_flat_tuples_up_to_conj": 0,
+   "pass": true
+  }
+ },
+ "C3": {
+  "Z2": {
+   "minimal_relaxed_sets": [
+    [
+     "xy",
+     "zt"
+    ]
+   ],
+   "expected": [
+    [
+     "xy",
+     "zt"
+    ]
+   ],
+   "pass": true
+  },
+  "Z4": {
+   "minimal_relaxed_sets": [
+    [
+     "xy",
+     "zt"
+    ]
+   ],
+   "expected": [
+    [
+     "xy",
+     "zt"
+    ]
+   ],
+   "pass": true
+  },
+  "Z10": {
+   "minimal_relaxed_sets": [
+    [
+     "xy",
+     "zt"
+    ]
+   ],
+   "expected": [
+    [
+     "xy",
+     "zt"
+    ]
+   ],
+   "pass": true
+  },
+  "Q8": {
+   "minimal_relaxed_sets": [
+    [
+     "xt",
+     "yz"
+    ],
+    [
+     "xy"
+    ],
+    [
+     "xz",
+     "yt"
+    ],
+    [
+     "zt"
+    ]
+   ],
+   "expected": [
+    [
+     "xt",
+     "yz"
+    ],
+    [
+     "xy"
+    ],
+    [
+     "xz",
+     "yt"
+    ],
+    [
+     "zt"
+    ]
+   ],
+   "pass": true
+  },
+  "2T": {
+   "minimal_relaxed_sets": [
+    [
+     "xt",
+     "yz"
+    ],
+    [
+     "xy"
+    ],
+    [
+     "xz",
+     "yt"
+    ],
+    [
+     "zt"
+    ]
+   ],
+   "expected": [
+    [
+     "xt",
+     "yz"
+    ],
+    [
+     "xy"
+    ],
+    [
+     "xz",
+     "yt"
+    ],
+    [
+     "zt"
+    ]
+   ],
+   "pass": true
+  },
+  "2O": {
+   "minimal_relaxed_sets": [
+    [
+     "xt",
+     "yz"
+    ],
+    [
+     "xy"
+    ],
+    [
+     "xz",
+     "yt"
+    ],
+    [
+     "zt"
+    ]
+   ],
+   "expected": [
+    [
+     "xt",
+     "yz"
+    ],
+    [
+     "xy"
+    ],
+    [
+     "xz",
+     "yt"
+    ],
+    [
+     "zt"
+    ]
+   ],
+   "pass": true
+  },
+  "2I": {
+   "minimal_relaxed_sets": [
+    [
+     "xt",
+     "yz"
+    ],
+    [
+     "xy"
+    ],
+    [
+     "xz",
+     "yt"
+    ],
+    [
+     "zt"
+    ]
+   ],
+   "expected": [
+    [
+     "xt",
+     "yz"
+    ],
+    [
+     "xy"
+    ],
+    [
+     "xz",
+     "yt"
+    ],
+    [
+     "zt"
+    ]
+   ],
+   "pass": true
+  },
+  "Dic3": {
+   "minimal_relaxed_sets": [
+    [
+     "xy",
+     "zt"
+    ]
+   ],
+   "expected": [
+    [
+     "xt",
+     "yz"
+    ],
+    [
+     "xy"
+    ],
+    [
+     "xz",
+     "yt"
+    ],
+    [
+     "zt"
+    ]
+   ],
+   "pass": false
+  }
+ },
+ "C4": {
+  "Q8": {
+   "anticommuting_pairs": 24,
+   "violations": [],
+   "pass": true
+  },
+  "2T": {
+   "anticommuting_pairs": 24,
+   "violations": [],
+   "pass": true
+  },
+  "2O": {
+   "anticommuting_pairs": 96,
+   "violations": [],
+   "pass": true
+  },
+  "2I": {
+   "anticommuting_pairs": 120,
+   "violations": [],
+   "pass": true
+  },
+  "Dic3": {
+   "anticommuting_pairs": 0,
+   "violations": [],
+   "pass": false
+  }
+ },
+ "C5": {
+  "Z2": {
+   "mu": 2.0,
+   "expected": 2.0,
+   "k_shortest_optimal": 1,
+   "k_expected": 1,
+   "pass": true,
+   "k_note": "k is the shortest optimal length found; prereg allows ties"
+  },
+  "Z4": {
+   "mu": 2.0,
+   "expected": 2.0,
+   "k_shortest_optimal": 1,
+   "k_expected": 2,
+   "pass": true,
+   "k_note": "k is the shortest optimal length found; prereg allows ties"
+  },
+  "Z10": {
+   "mu": 0.9549150281252627,
+   "expected": 0.9549150281252627,
+   "k_shortest_optimal": 5,
+   "k_expected": 5,
+   "pass": true,
+   "k_note": "k is the shortest optimal length found; prereg allows ties"
+  },
+  "Q8": {
+   "mu": 2.0,
+   "expected": 2.0,
+   "k_shortest_optimal": 1,
+   "k_expected": 2,
+   "pass": true,
+   "k_note": "k is the shortest optimal length found; prereg allows ties"
+  },
+  "2T": {
+   "mu": 1.5,
+   "expected": 1.5,
+   "k_shortest_optimal": 3,
+   "k_expected": 3,
+   "pass": true,
+   "k_note": "k is the shortest optimal length found; prereg allows ties"
+  },
+  "2O": {
+   "mu": 1.1715728752538097,
+   "expected": 1.1715728752538097,
+   "k_shortest_optimal": 4,
+   "k_expected": 4,
+   "pass": true,
+   "k_note": "k is the shortest optimal length found; prereg allows ties"
+  },
+  "2I": {
+   "mu": 0.9549150281252627,
+   "expected": 0.9549150281252627,
+   "k_shortest_optimal": 5,
+   "k_expected": 5,
+   "pass": true,
+   "k_note": "k is the shortest optimal length found; prereg allows ties"
+  },
+  "Dic3": {
+   "mu": 1.5,
+   "expected": 1.5,
+   "k_shortest_optimal": 3,
+   "k_expected": 3,
+   "pass": true,
+   "k_note": "k is the shortest optimal length found; prereg allows ties"
+  }
+ },
+ "C6": [
+  {
+   "Nx": 2,
+   "Ny": 2,
+   "Nz": 2,
+   "g2": 1.0,
+   "modes": [
+    {
+     "n": 1,
+     "measured": 0.25,
+     "predicted": 0.25,
+     "rel_err": 0.0
+    },
+    {
+     "n": 2,
+     "measured": 1.0000000000000004,
+     "predicted": 1.0,
+     "rel_err": 4.440892098500626e-16
+    }
+   ],
+   "pass": true
+  },
+  {
+   "Nx": 3,
+   "Ny": 2,
+   "Nz": 5,
+   "g2": 0.7,
+   "modes": [
+    {
+     "n": 1,
+     "measured": 0.29166666666666663,
+     "predicted": 0.2916666666666667,
+     "rel_err": 1.9032394707859825e-16
+    },
+    {
+     "n": 2,
+     "measured": 1.1666666666666667,
+     "predicted": 1.1666666666666667,
+     "rel_err": 0.0
+    }
+   ],
+   "pass": true
+  },
+  {
+   "Nx": 4,
+   "Ny": 4,
+   "Nz": 4,
+   "g2": 2.5,
+   "modes": [
+    {
+     "n": 1,
+     "measured": 0.3125,
+     "predicted": 0.3125,
+     "rel_err": 0.0
+    },
+    {
+     "n": 2,
+     "measured": 1.2500000000000004,
+     "predicted": 1.25,
+     "rel_err": 3.552713678800501e-16
+    }
+   ],
+   "pass": true
+  },
+  {
+   "Nx": 8,
+   "Ny": 4,
+   "Nz": 4,
+   "g2": 1.3,
+   "modes": [
+    {
+     "n": 1,
+     "measured": 0.08124999999999981,
+     "predicted": 0.08125,
+     "rel_err": 2.391249591500337e-15
+    },
+    {
+     "n": 2,
+     "measured": 0.3250000000000001,
+     "predicted": 0.325,
+     "rel_err": 3.4160708450004814e-16
+    }
+   ],
+   "pass": true
+  },
+  {
+   "Nx": 4,
+   "Ny": 4,
+   "Nz": 8,
+   "g2": 1.3,
+   "modes": [
+    {
+     "n": 1,
+     "measured": 0.3250000000000001,
+     "predicted": 0.325,
+     "rel_err": 3.4160708450004814e-16
+    },
+    {
+     "n": 2,
+     "measured": 1.3000000000000007,
+     "predicted": 1.3,
+     "rel_err": 5.124106267500722e-16
+    }
+   ],
+   "pass": true
+  }
+ ],
+ "C7": {
+  "self_dual_F": 0.8813735870195429,
+  "dual_of_F": 0.8813735870195432,
+  "gamma_table": [
+   {
+    "g2": 0.5,
+    "alpha_s": 0.039788735772973836,
+    "S_I": 78.95683520871486,
+    "gamma_z": 3.6455580867411794,
+    "doubling_factor": 12.514754514530537
+   },
+   {
+    "g2": 1,
+    "alpha_s": 0.07957747154594767,
+    "S_I": 39.47841760435743,
+    "gamma_z": 3.6244495068156923,
+    "doubling_factor": 12.332979775713607
+   },
+   {
+    "g2": 2,
+    "alpha_s": 0.15915494309189535,
+    "S_I": 19.739208802178716,
+    "gamma_z": 3.5822323469647186,
+    "doubling_factor": 11.97731269293691
+   },
+   {
+    "g2": 3,
+    "alpha_s": 0.238732414637843,
+    "S_I": 13.159472534785811,
+    "gamma_z": 3.5400151871137444,
+    "doubling_factor": 11.631902585852325
+   },
+   {
+    "g2": 4,
+    "alpha_s": 0.3183098861837907,
+    "S_I": 9.869604401089358,
+    "gamma_z": 3.4977980272627702,
+    "doubling_factor": 11.296453656632501
+   }
+  ]
+ },
+ "C6_moves": {
+  "lengthening (4,4,8)/(4,4,4)": 2.000000000000001,
+  "widening (8,4,4)/(4,4,4)": 0.4999999999999988
+ },
+ "all_pass": false
+}

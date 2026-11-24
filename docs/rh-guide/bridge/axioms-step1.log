@@ -1,0 +1,20 @@
+== build ProofPhase.Bridge.Poles
+Build completed successfully (2845 jobs).
+== build ProofPhase.Bridge.OSLink
+Build completed successfully (8932 jobs).
+== axioms
+'ProofPhase.Bridge.residue_nonneg_of_re_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.mem_ball_of_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lap_re_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.laplace_residue_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.laplace_ray_poles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lseries_re_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lseries_residue_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landau_ray_poles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.integrable_pow_of_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.moment_gap_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.hdec_iff_spectral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.hdec_iff_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.gap_of_RP_spectral' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in Poles.lean, OSLink.lean

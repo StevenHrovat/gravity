@@ -1,0 +1,41 @@
+u1_L4.npz                    z = 0.6939 +- 0.0202         z_up 0.7362  t* 1  z_sign None  tau 14.1/bin 120  sheet-bulk [-0.0015537191055818714, 0.0008358159553319731]    [counted]
+u1_L6.npz                    z = 0.7286 +- 0.0356         z_up 0.8652  t* 1  z_sign None  tau 3.0/bin 80  sheet-bulk [-0.0010207992704907084, 0.0006248011122842215]    [counted]
+{
+ "scaling": [],
+ "scaling_verdict": "NOT TESTED (no overlap)",
+ "crossing": {},
+ "growth": {},
+ "collapse": {
+  "points": {},
+  "pulls": [],
+  "verdict": "NOT TESTED (no two beta curves overlap in u)",
+  "continuum_grid": [],
+  "control_u1_1.1": {
+   "pairs": [],
+   "verdict": "NOT TESTED"
+  }
+ },
+ "deconfinement_test": "CONSISTENT (z < 1 below L sqrt(sigma) = 1.2)",
+ "photon_gate": {
+  "points": [
+   {
+    "L": 4,
+    "z": [
+     0.6938614316068772,
+     0.02023640179333518
+    ],
+    "verdict": "counted"
+   },
+   {
+    "L": 6,
+    "z": [
+     0.7285785968273139,
+     0.03559649140104805
+    ],
+    "verdict": "counted"
+   }
+  ],
+  "verdict": "PHOTON GATE FAILED (not every U(1) point counted)"
+ },
+ "extras": []
+}

@@ -1,0 +1,11 @@
+WAITING for the joint queue 2026-11-22T15:30:37
+WAIT CANCELLED by the coordinator before any run 2026-11-22T15:37:34: the prereg is amended first (c7c-onebox criterion: whole-cell influence, range normalisation, tie backgrounds, gauge-aligned coupling)
+AMENDMENT DONE (PREREG-AMEND.md committed); wait restarted 2026-11-22T15:55:03
+WAITING for the joint queue 2026-11-22T15:55:04
+START 2026-11-22T16:26:40 tier 1
+su2_b2.3_l6_calm_p0 (gpu, attempt 1) exit 0 minutes 1
+u1_b2_l4_calm_p0 (cpu, attempt 1) exit 0 minutes 1
+u1_b2_l4_calm_p2 (cpu, attempt 1) exit 0 minutes 1
+u1_b2_l4_calm_p2 (cpu, attempt 1) exit 0 minutes 1
+u1_b2_l4_calm_p4 (cpu, attempt 1) exit 0 minutes 1
+QUEUE STOPPED by the coordinator on the owner's decision 2026-11-22T22:56:06: runtime far above the estimate (job su2_b2.3_l6_calm_p2 ran 6.0 h for 500 of 600 sweeps, 123 GPU jobs queued against an estimated 4.0 h total); not needed for the proof. Partial result kept in su2_b2.3_l6_calm_p2.npz (partial=1, n_done=500).

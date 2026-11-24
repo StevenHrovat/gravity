@@ -1,0 +1,21 @@
+== build ProofPhase.Proof.CPDuality
+Build completed successfully (8930 jobs).
+== axioms (16 declarations)
+'ProofPhase.Proof.Edge.ForcesTrue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.ForcesFalse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.thr_true_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.thr_false_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.thr_true_cert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.thr_false_cert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.thr_duality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.wline' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Proof.Edge.filter_all_but' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.filter_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.two_cheap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.lpVal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.half_clause' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.half_breaks_rounding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Edge.split_unsat_iff' does not depend on any axioms
+'ProofPhase.Proof.Edge.interpolant_separates' does not depend on any axioms
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Proof

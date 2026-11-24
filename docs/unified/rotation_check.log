@@ -1,0 +1,9 @@
+M M^dagger = identity: True
+M^2 = identity (half-turn): True
+fixed points: ['0.414213562373 -> 0.414213562373', '-2.414213562373 -> -2.414213562373']
+antipodal (z2 = -1/conj(z1)): True
+rotation angle about the fixed axis (deg): ['180.000000', '179.999999', '180.000000', '179.999999', '180.000000']
+chordal distances preserved: True
+unit disk -> Re > 0: True
+Hadamard on (Z, Z_tw): odd/even = 0.459854014599, elec(Z_tw/Z) = 0.459854014599
+self-dual cost -log(sqrt2 - 1) = 0.881373587020, log(1 + sqrt2) = 0.881373587020

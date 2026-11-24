@@ -1,0 +1,23 @@
+PASS  good blocking = independent path recursion (levels 1-3, w = 2, spatial and temporal links): max 8.6e-16
+PASS  w = 0 is decimation (Blocking.lean smearBlock_zero): b = 2 equals Leg C's path product: 4.4e-16
+PASS  w = 0 is decimation (Blocking.lean smearBlock_zero): b = 4 equals Leg C's path product: 4.4e-16
+PASS  w = 0 is decimation (Blocking.lean smearBlock_zero): b = 8 equals Leg C's path product: 4.4e-16
+PASS  SU(2) gauge covariance of the good blocking (b = 2, 4): SD sums, plaquettes, loops invariant: 3.3e-15
+PASS  U(1) gauge covariance of the good blocking: invariant: 2.7e-14
+PASS  time reflection commutes with the good blocking (b = 4, origin 0; Blocking.lean smearBlock_thetaConn): 8.9e-16 (reflection check 0.0e+00)
+PASS  SU(2) blocking of a U(1)-subgroup field = U(1) blocking (levels 1-3): 7.5e-14
+PASS  SU(2) blocking of a centre-valued field = Z2 blocking; Z2 values stay in {0, pi}: 0.0e+00; values [0.         3.14159265]
+PASS  anisotropic SD sums add up to Leg C's isotropic sums (M, c, plaquettes): 1.8e-15
+PASS  su2 anisotropic SD fit, Wilson beta = 2.3 at b = 1 (6^4, 120 configs): [ 2.2998e+00  2.3000e+00 -5.1000e-03  1.0000e-03] +- [0.0168 0.0103 0.0118 0.0084]
+PASS  u1 anisotropic SD fit, Wilson beta = 1.1 at b = 1 (6^4, 120 configs): [1.0995e+00 1.0984e+00 3.9000e-03 1.0000e-04] +- [0.0058 0.0073 0.0043 0.0043]
+PASS  su2 anisotropic SD fit recovers a known anisotropic action (1.2, 0.7, 0.6, 0.2) (Metropolis 4^4, 240 configs, acc 0.52): [1.2024 0.7063 0.6076 0.1963] +- [0.0062 0.0047 0.0096 0.0118]
+PASS  u1 anisotropic SD fit recovers a known anisotropic action (0.8, 0.4, 0.3, 0.1) (Metropolis 4^4, 240 configs, acc 0.65): [0.8101 0.4097 0.298  0.1027] +- [0.0051 0.0042 0.0028 0.0033]
+PASS  anisotropic pair tables and halves: regression against Leg C (pairs) and workstream A (evaluate_adjoint): tables pooled = Leg C's: True; isotropic halves vs evaluate_adjoint: max 3.0e-16
+PASS  z2 anisotropic pseudo-likelihood, Wilson beta = 0.3, b = 1: (ts, ss) [0.3013 0.3013]; with rect [0.301  0.301  0.0004]
+PASS  z2 anisotropic pseudo-likelihood, Wilson beta = 0.6, b = 1: (ts, ss) [0.588  0.6112]; with rect [ 0.6186  0.6418 -0.0101]
+PASS  loops (fundamental, pooled over classes) = Leg C's creutz_loops at R0 = 2: 8.7e-19
+PASS  GPU = CPU: SU(2) good blocking, SD sums, loops (fused kernel): 3.6e-15
+PASS  GPU = CPU: u1 good blocking and sums: 8.0e-15
+PASS  GPU = CPU: z2 good blocking and sums: 0.0e+00
+PASS  GPU chain extraction straight from the 2x2 form = Leg C's chain_config: 0.0e+00
+SELFTEST OK

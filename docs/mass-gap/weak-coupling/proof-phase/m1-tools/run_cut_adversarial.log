@@ -1,0 +1,10 @@
+(i) worst best-label corrected max angle found: 147.1 deg (median of the 200 climbs 133.2)
+(ii) worst one-step increase of the corrected max angle found: +22.18 deg (median -64.11)
+     at that star: before 129.7 deg
+  File "C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\m1-tools\cut_adversarial.py", line 22
+    print(f"(i) worst best-label corrected max angle found: {v.max():.1f} deg (median of the {M} climbs {np.median(v):.1f})")
+                                                                                                                             ^
+IndentationError: unindent does not match any outer indentation level
+(iii) worst orbit maximum of the corrected max angle found: 171.4 deg (median 133.2); distance to the cut 8.6 deg
+(iv) worst number of steps (of 31) with corrected max angle > 160 deg: 0 (median 0)
+(iv) worst number of steps (of 31) with corrected max angle > 160 deg: 1 (median 0; orbit maximum at the worst star 171.4 deg)

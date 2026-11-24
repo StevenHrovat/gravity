@@ -1,0 +1,18 @@
+== build ProofPhase.Proof.SoundAPI
+Build completed successfully (8937 jobs).
+== declarations: 12
+== axioms
+'ProofPhase.Proof.Lifting.CPR.mem_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.CPRefutes.card_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.liftCPConst_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.liftCPConst_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.Labeling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.Labeling.derivable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.labeling_refutes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.ExtractAPI' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.extract_to_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.lift_to_extract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.liftCPConst_iff_extract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.width_of_small_refutation' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Proof/SoundAPI.lean

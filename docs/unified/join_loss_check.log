@@ -1,0 +1,55 @@
+thresholds per join: three boxes 0.3658, four boxes 0.5377 (iterated form k(F-2C): three 0.2439)
+
+== Part A: 2D SU(2), the sector bounds of joinLoss_bounds at the self-dual area [classical formulas, numerical]
+beta=      1.0  A_h=0.5845  neutral tail t0(A_h)=0.1508  charged tail t1(A_h)=0.1030  tail-only bound 2 t0=0.3016  ymOneBox_torus condition (t0 < 0.1829): True
+    (1,1) A_h: l=+0.0833 in [-0.2061, +0.3016] ok
+    (2,1) A_h: l=+0.0575 in [-0.1135, +0.1733] ok
+    (2,2) A_h: l=+0.0239 in [-0.0208, +0.0451] ok
+beta=      2.3  A_h=1.1151  neutral tail t0(A_h)=0.1322  charged tail t1(A_h)=0.0710  tail-only bound 2 t0=0.2645  ymOneBox_torus condition (t0 < 0.1829): True
+    (1,1) A_h: l=+0.1094 in [-0.1420, +0.2645] ok
+    (2,1) A_h: l=+0.0722 in [-0.0761, +0.1504] ok
+    (2,2) A_h: l=+0.0259 in [-0.0102, +0.0364] ok
+beta=      4.0  A_h=1.9446  neutral tail t0(A_h)=0.1198  charged tail t1(A_h)=0.0522  tail-only bound 2 t0=0.2396  ymOneBox_torus condition (t0 < 0.1829): True
+    (1,1) A_h: l=+0.1227 in [-0.1044, +0.2396] ok
+    (2,1) A_h: l=+0.0783 in [-0.0550, +0.1351] ok
+    (2,2) A_h: l=+0.0248 in [-0.0056, +0.0306] ok
+beta=      8.0  A_h=4.0652  neutral tail t0(A_h)=0.1127  charged tail t1(A_h)=0.0418  tail-only bound 2 t0=0.2254  ymOneBox_torus condition (t0 < 0.1829): True
+    (1,1) A_h: l=+0.1299 in [-0.0836, +0.2254] ok
+    (2,1) A_h: l=+0.0813 in [-0.0436, +0.1264] ok
+    (2,2) A_h: l=+0.0236 in [-0.0036, +0.0274] ok
+beta=     32.0  A_h=16.9999  neutral tail t0(A_h)=0.1108  charged tail t1(A_h)=0.0388  tail-only bound 2 t0=0.2216  ymOneBox_torus condition (t0 < 0.1829): True
+    (1,1) A_h: l=+0.1322 in [-0.0777, +0.2216] ok
+    (2,1) A_h: l=+0.0822 in [-0.0404, +0.1241] ok
+    (2,2) A_h: l=+0.0233 in [-0.0031, +0.0266] ok
+beta=continuum  A_h=2.1583  neutral tail t0(A_h)=0.1107  charged tail t1(A_h)=0.0387  tail-only bound 2 t0=0.2214  ymOneBox_torus condition (t0 < 0.1829): True
+    (1,1) A_h: l=+0.1323 in [-0.0774, +0.2214] ok
+    (2,1) A_h: l=+0.0823 in [-0.0402, +0.1240] ok
+    (2,2) A_h: l=+0.0233 in [-0.0031, +0.0265] ok
+Lean bounds hold at every point checked: True
+
+== Part B: 4D SU(2), join loss from the saved small-torus data [numerical, refute-only]
+beta=2.3 L=2: F_e(L)=0.233+-0.020  F_e(L^3x2L)=0.832+-0.093  l=-0.366+-0.102 (stat)  phi0=2c_lb=2.349  phi1=2.715
+    three-box threshold 0.366: not refuted (floor 1); not refuted (stat only).  four-box 0.538: not refuted (floor 1)
+beta=2.3 L=4: F_e(L)=0.907+-0.178  F_e(L^3x2L)=1.978+-0.610  l=-0.163+-0.706 (stat)  phi0=2c_lb=1.270  phi1=1.433
+    three-box threshold 0.366: not refuted (floor 1); not refuted (stat only).  four-box 0.538: not refuted (floor 1)
+beta=2.3 L=6: F_e(L)=2.609+-1.790  F_e(L^3x2L)=2.411+-1.461  l=+2.807+-3.866 (stat)  phi0=2c_lb=0.810  phi1=-1.997
+    three-box threshold 0.366: not refuted (floor 1); not refuted (stat only).  four-box 0.538: not refuted (floor 1)
+beta=3.5 L=2: F_e(L)=0.035+-0.005  F_e(L^3x2L)=0.149+-0.020  l=-0.078+-0.022 (stat)  phi0=2c_lb=3.855  phi1=3.933
+    three-box threshold 0.366: not refuted (floor 1); not refuted (stat only).  four-box 0.538: not refuted (floor 1)
+beta=3.5 L=4: F_e(L)=0.053+-0.014  F_e(L^3x2L)=0.254+-0.064  l=-0.147+-0.070 (stat)  phi0=2c_lb=1.544  phi1=1.692
+    three-box threshold 0.366: not refuted (floor 1); not refuted (stat only).  four-box 0.538: not refuted (floor 1)
+beta=3.5 L=6: F_e(L)=0.079+-0.030  F_e(L^3x2L)=0.191+-0.073  l=-0.033+-0.095 (stat)  phi0=2c_lb=1.848  phi1=1.882
+    three-box threshold 0.366: not refuted (floor 1); not refuted (stat only).  four-box 0.538: not refuted (floor 1)
+
+== Projection for a new run at L = 8 (not run)
+one beta, L = 8, snake on 8^4 and 8^3x16 (64 ensembles each, 2200 sweeps): 5.5 h raw, central x1.33 = 7.3 h, band 5.0 to 10.5 h  -> over 1 CPU-hour, not run
+
+== Part C: 2D SU(2) continuum cylinder, the boundary-uniform electric factor (JoinLossSlab.lean) [classical, numerical]
+  rho(2.0+2.0) = 0.77370 <= rho(2.0) rho(2.0) = 0.99227: True
+  rho(3.0+2.0) = 0.57962 <= rho(3.0) rho(2.0) = 0.93106: True
+  rho(4.0+4.0) = 0.19855 <= rho(4.0) rho(4.0) = 0.59862: True
+  rho(6.0+3.0) = 0.13672 <= rho(6.0) rho(3.0) = 0.38564: True
+  elec_submul holds at every pair checked: True
+  uniform hand-over area (pointwise c_min = sqrt2 - 1): 5.9889  (torus hand-over 2.1583, ratio 2.775); c_min there 0.4142
+  three uniform hand-over slabs: F_e^unif = 5.3513 >= 3 x 0.8814 = 2.6441 (zero loss), floor log mu4 = 1.9125
+  uniform O1 area (rho_unif = 1/mu4): 8.7931 = 1.468 uniform hand-over areas (torus O1 area 5.0848)

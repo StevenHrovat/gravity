@@ -1,0 +1,35 @@
+name = "MassGapFormal"
+version = "0.2.0"
+defaultTargets = ["AreaLaw"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.34.0"
+
+[[lean_lib]]
+name = "AreaLaw"
+
+[[lean_lib]]
+name = "Influence"
+
+[[lean_lib]]
+name = "Positivity"
+
+[[lean_lib]]
+name = "OneScale"
+
+[[lean_lib]]
+name = "Attempts"
+
+[[lean_lib]]
+name = "ProofPhase"
+
+[[require]]
+name = "arsenal"
+git = "https://github.com/StevenHrovat/im"
+rev = "b01adbdd7dc34f7565acb062f090681bae88612d"
+subDir = "arsenal"

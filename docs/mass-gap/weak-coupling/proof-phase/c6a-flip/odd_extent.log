@@ -1,0 +1,10 @@
+Z2 3x3 beta=+0.5: Z_tw/Z = 0.998080, p = 0.499519 (p <= 1/2); exact ratio 0.998080
+Z2 3x3 beta=-0.5: Z_tw/Z = 1.001924, p = 0.500481 (p > 1/2); exact ratio 1.001924
+Z2 2x3 beta=+0.5: Z_tw/Z = 0.980710, p = 0.495131 (p <= 1/2); exact ratio 0.980710
+Z2 2x3 beta=-0.5: Z_tw/Z = 0.980710, p = 0.495131 (p <= 1/2); exact ratio 0.980710
+Z2 3x1 beta=+0.5: Z_tw/Z = 0.820356, p = 0.450657 (p <= 1/2); exact ratio 0.820356
+Z2 3x1 beta=-0.5: Z_tw/Z = 1.218983, p = 0.549343 (p > 1/2); exact ratio 1.218983
+SU(2) 2D area 9 beta=+1.0 (beta multiplies tr U): Z_tw/Z = 0.998928, p = 0.499732 (p <= 1/2)
+SU(2) 2D area 9 beta=-1.0 (beta multiplies tr U): Z_tw/Z = 1.001074, p = 0.500268 (p > 1/2)
+SU(2) 2D area 6 beta=+1.0 (beta multiplies tr U): Z_tw/Z = 0.986882, p = 0.496699 (p <= 1/2)
+SU(2) 2D area 6 beta=-1.0 (beta multiplies tr U): Z_tw/Z = 0.986882, p = 0.496699 (p <= 1/2)

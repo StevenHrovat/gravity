@@ -1,0 +1,42 @@
+beta=2 l=10 G=1024: certified kD <= 2.809849 (float 2.804476) 2s
+  node m=19: h_up max 1.93136, L max 0.040 (float 1.93129) 31s
+  node m=39: h_up max 1.92024, L max 0.000 (float 1.92024) 61s
+  node m=59: h_up max 1.92032, L max 0.000 (float 1.92032) 90s
+  node m=79: h_up max 1.92043, L max 0.000 (float 1.92042) 118s
+  node m=99: h_up max 1.92053, L max 0.000 (float 1.92053) 145s
+  node m=119: h_up max 1.92064, L max 0.000 (float 1.92063) 172s
+  node m=139: h_up max 1.92075, L max 0.000 (float 1.92074) 199s
+beta=2 l=10 i=0 G=1024: certified kP <= 2.482370 (float 2.482355) 200s
+  node m=19: h_up max 1.85795, L max 0.037 (float 1.85789) 25s
+  node m=39: h_up max 1.84847, L max 0.000 (float 1.84846) 52s
+  node m=59: h_up max 1.84854, L max 0.000 (float 1.84854) 79s
+  node m=79: h_up max 1.84865, L max 0.000 (float 1.84864) 106s
+  node m=99: h_up max 1.84875, L max 0.000 (float 1.84874) 133s
+  node m=119: h_up max 1.84885, L max 0.000 (float 1.84885) 160s
+  node m=139: h_up max 1.84895, L max 0.000 (float 1.84895) 187s
+beta=2 l=10 i=1 G=1024: certified kP <= 2.421353 (float 2.421337) 189s
+  node m=19: h_up max 1.85593, L max 0.034 (float 1.85587) 25s
+  node m=39: h_up max 1.84604, L max 0.000 (float 1.84603) 52s
+  node m=59: h_up max 1.84612, L max 0.000 (float 1.84611) 79s
+  node m=79: h_up max 1.84622, L max 0.000 (float 1.84621) 106s
+  node m=99: h_up max 1.84632, L max 0.000 (float 1.84632) 133s
+  node m=119: h_up max 1.84642, L max 0.000 (float 1.84642) 161s
+  node m=139: h_up max 1.84652, L max 0.000 (float 1.84652) 188s
+beta=2 l=10 i=2 G=1024: certified kP <= 2.419289 (float 2.419274) 189s
+  node m=19: h_up max 1.85593, L max 0.034 (float 1.85587) 26s
+  node m=39: h_up max 1.84600, L max 0.000 (float 1.84599) 53s
+  node m=59: h_up max 1.84608, L max 0.000 (float 1.84607) 81s
+  node m=79: h_up max 1.84618, L max 0.000 (float 1.84617) 108s
+  node m=99: h_up max 1.84628, L max 0.000 (float 1.84628) 135s
+  node m=119: h_up max 1.84638, L max 0.000 (float 1.84638) 163s
+  node m=139: h_up max 1.84648, L max 0.000 (float 1.84648) 190s
+beta=2 l=10 i=3 G=1024: certified kP <= 2.419255 (float 2.419240) 192s
+  node m=19: h_up max 1.85593, L max 0.034 (float 1.85587) 25s
+  node m=39: h_up max 1.84600, L max 0.000 (float 1.84599) 52s
+  node m=59: h_up max 1.84608, L max 0.000 (float 1.84607) 79s
+  node m=79: h_up max 1.84618, L max 0.000 (float 1.84617) 106s
+  node m=99: h_up max 1.84628, L max 0.000 (float 1.84628) 133s
+  node m=119: h_up max 1.84638, L max 0.000 (float 1.84638) 160s
+  node m=139: h_up max 1.84648, L max 0.000 (float 1.84648) 187s
+beta=2 l=10 i=4 G=1024: certified kP <= 2.419255 (float 2.419240) 189s
+beta=2 l=10: certified gamma <= 0.992298629042

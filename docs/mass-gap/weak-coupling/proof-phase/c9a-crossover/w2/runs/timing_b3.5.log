@@ -1,0 +1,161 @@
+start 03:11:59  beta=3.5 ell=6 kappa=16 A3 T=600 batch=3 pool=8  estimate 90 min, soft cap 2400 s, hard cap 2640 s
+checkpoint 30 s (1% of estimate)  GPU 43 %, 2475 MiB
+checkpoint 60 s (1% of estimate)  GPU 36 %, 2488 MiB
+checkpoint 90 s (2% of estimate)  GPU 41 %, 2487 MiB
+checkpoint 120 s (2% of estimate)  GPU 39 %, 2795 MiB
+checkpoint 151 s (3% of estimate)  GPU 25 %, 2773 MiB
+checkpoint 181 s (3% of estimate)  GPU 38 %, 2787 MiB
+checkpoint 211 s (4% of estimate)  GPU 35 %, 2859 MiB
+checkpoint 241 s (4% of estimate)  GPU 38 %, 2849 MiB
+checkpoint 271 s (5% of estimate)  GPU 39 %, 2863 MiB
+checkpoint 301 s (6% of estimate)  GPU 27 %, 2868 MiB
+checkpoint 331 s (6% of estimate)  GPU 35 %, 2871 MiB
+checkpoint 361 s (7% of estimate)  GPU 42 %, 2861 MiB
+checkpoint 391 s (7% of estimate)  GPU 36 %, 2949 MiB
+checkpoint 421 s (8% of estimate)  GPU 30 %, 2978 MiB
+checkpoint 452 s (8% of estimate)  GPU 38 %, 2966 MiB
+checkpoint 482 s (9% of estimate)  GPU 33 %, 2968 MiB
+checkpoint 512 s (9% of estimate)  GPU 47 %, 2955 MiB
+checkpoint 542 s (10% of estimate)  GPU 37 %, 2963 MiB
+checkpoint 572 s (11% of estimate)  GPU 22 %, 7824 MiB
+checkpoint 602 s (11% of estimate)  GPU 27 %, 7814 MiB
+checkpoint 632 s (12% of estimate)  GPU 32 %, 7818 MiB
+checkpoint 662 s (12% of estimate)  GPU 35 %, 7809 MiB
+checkpoint 692 s (13% of estimate)  GPU 34 %, 7819 MiB
+checkpoint 722 s (13% of estimate)  GPU 38 %, 7801 MiB
+checkpoint 753 s (14% of estimate)  GPU 37 %, 7800 MiB
+checkpoint 783 s (14% of estimate)  GPU 22 %, 7800 MiB
+checkpoint 813 s (15% of estimate)  GPU 23 %, 7806 MiB
+checkpoint 843 s (16% of estimate)  GPU 41 %, 7806 MiB
+checkpoint 873 s (16% of estimate)  GPU 35 %, 7808 MiB
+checkpoint 903 s (17% of estimate)  GPU 37 %, 7814 MiB
+checkpoint 933 s (17% of estimate)  GPU 43 %, 7817 MiB
+checkpoint 963 s (18% of estimate)  GPU 42 %, 7850 MiB
+checkpoint 993 s (18% of estimate)  GPU 32 %, 7817 MiB
+checkpoint 1024 s (19% of estimate)  GPU 34 %, 7801 MiB
+checkpoint 1054 s (20% of estimate)  GPU 34 %, 7805 MiB
+checkpoint 1084 s (20% of estimate)  GPU 39 %, 7808 MiB
+checkpoint 1114 s (21% of estimate)  GPU 44 %, 7833 MiB
+checkpoint 1144 s (21% of estimate)  GPU 36 %, 7815 MiB
+checkpoint 1174 s (22% of estimate)  GPU 32 %, 7809 MiB
+checkpoint 1204 s (22% of estimate)  GPU 34 %, 7810 MiB
+checkpoint 1234 s (23% of estimate)  GPU 39 %, 7850 MiB
+checkpoint 1264 s (23% of estimate)  GPU 35 %, 7829 MiB
+checkpoint 1295 s (24% of estimate)  GPU 34 %, 7817 MiB
+checkpoint 1325 s (25% of estimate)  GPU 24 %, 7805 MiB
+checkpoint 1355 s (25% of estimate)  GPU 36 %, 7826 MiB
+checkpoint 1385 s (26% of estimate)  GPU 34 %, 7830 MiB
+checkpoint 1415 s (26% of estimate)  GPU 33 %, 7819 MiB
+checkpoint 1445 s (27% of estimate)  GPU 41 %, 7825 MiB
+checkpoint 1475 s (27% of estimate)  GPU 30 %, 7809 MiB
+checkpoint 1505 s (28% of estimate)  GPU 40 %, 7809 MiB
+checkpoint 1535 s (28% of estimate)  GPU 43 %, 7810 MiB
+checkpoint 1566 s (29% of estimate)  GPU 35 %, 7834 MiB
+checkpoint 1596 s (30% of estimate)  GPU 38 %, 7815 MiB
+checkpoint 1626 s (30% of estimate)  GPU 40 %, 7830 MiB
+checkpoint 1656 s (31% of estimate)  GPU 37 %, 7829 MiB
+checkpoint 1686 s (31% of estimate)  GPU 36 %, 7829 MiB
+checkpoint 1716 s (32% of estimate)  GPU 39 %, 7853 MiB
+checkpoint 1746 s (32% of estimate)  GPU 37 %, 7870 MiB
+checkpoint 1776 s (33% of estimate)  GPU 41 %, 7879 MiB
+checkpoint 1806 s (33% of estimate)  GPU 35 %, 7873 MiB
+checkpoint 1837 s (34% of estimate)  GPU 39 %, 7866 MiB
+checkpoint 1867 s (35% of estimate)  GPU 33 %, 7875 MiB
+checkpoint 1897 s (35% of estimate)  GPU 38 %, 7873 MiB
+checkpoint 1927 s (36% of estimate)  GPU 39 %, 7875 MiB
+checkpoint 1957 s (36% of estimate)  GPU 34 %, 7880 MiB
+checkpoint 1987 s (37% of estimate)  GPU 43 %, 7882 MiB
+checkpoint 2017 s (37% of estimate)  GPU 28 %, 7879 MiB
+checkpoint 2047 s (38% of estimate)  GPU 33 %, 7873 MiB
+checkpoint 2077 s (38% of estimate)  GPU 34 %, 7862 MiB
+checkpoint 2107 s (39% of estimate)  GPU 36 %, 7866 MiB
+checkpoint 2138 s (40% of estimate)  GPU 40 %, 7866 MiB
+checkpoint 2168 s (40% of estimate)  GPU 38 %, 7867 MiB
+checkpoint 2198 s (41% of estimate)  GPU 38 %, 7882 MiB
+checkpoint 2228 s (41% of estimate)  GPU 36 %, 7860 MiB
+checkpoint 2258 s (42% of estimate)  GPU 37 %, 7871 MiB
+checkpoint 2288 s (42% of estimate)  GPU 38 %, 7872 MiB
+checkpoint 2318 s (43% of estimate)  GPU 44 %, 7874 MiB
+checkpoint 2348 s (43% of estimate)  GPU 26 %, 7878 MiB
+checkpoint 2378 s (44% of estimate)  GPU 38 %, 7914 MiB
+checkpoint 2409 s (45% of estimate)  GPU 37 %, 7867 MiB
+checkpoint 2439 s (45% of estimate)  GPU 40 %, 7856 MiB
+checkpoint 2469 s (46% of estimate)  GPU 0 %, 358 MiB
+checkpoint 2500 s (46% of estimate)  GPU 22 %, 382 MiB
+end 03:53:39  elapsed 2500 s  exit 0
+{
+ "beta": 3.5,
+ "ell": 6,
+ "kappa": 16.0,
+ "yclass": "A3",
+ "T": 600,
+ "every": 10,
+ "pool": 8,
+ "pool_T": 60,
+ "batch": 3,
+ "pairs": 480,
+ "pool_pairs": 192,
+ "gpu": true,
+ "seconds_geometry": 3.4375879764556885,
+ "seconds_pool": 539.8107070922852,
+ "seconds_build": 74.8676209449768,
+ "seconds_main": 1847.054482460022,
+ "seconds_total": 2465.1703984737396,
+ "sec_per_sweep_main": 10.261413791444566,
+ "sweeps_done": 180,
+ "capped": true,
+ "max_seconds": 2400.0,
+ "seconds_full_T_extrapolated": 6774.964190880457,
+ "sec_per_sweep_pool": 8.996845118204753,
+ "seconds_per_job": 821.7234661579132,
+ "n_box_links": 5184,
+ "ncl": 864,
+ "n_shell": 10620,
+ "d_start0": [
+  4240.616666666667,
+  4541.075,
+  4628.704166666666,
+  4632.35,
+  4631.925,
+  4629.8125,
+  4630.1875,
+  4630.625,
+  4630.345833333334,
+  4632.620833333333,
+  4632.375,
+  4632.225,
+  4631.858333333334,
+  4630.645833333333,
+  4630.720833333334,
+  4632.783333333334,
+  4632.616666666667,
+  4628.9875
+ ],
+ "d_start1": [
+  4277.158333333334,
+  4524.1625,
+  4606.975,
+  4608.541666666667,
+  4612.966666666666,
+  4629.3,
+  4632.9875,
+  4631.3,
+  4631.641666666666,
+  4630.954166666666,
+  4627.641666666666,
+  4630.079166666666,
+  4630.270833333333,
+  4631.391666666666,
+  4631.616666666667,
+  4631.504166666667,
+  4627.270833333333,
+  4631.120833333333
+ ],
+ "plaq_mean": 0.7423412044753842,
+ "worst_pool": [
+  2,
+  0,
+  1
+ ],
+ "gpu_mem_bytes": 11984165376
+}

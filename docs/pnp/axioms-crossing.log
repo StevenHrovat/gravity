@@ -1,0 +1,42 @@
+== build ProofPhase.Proof.Crossing
+Build completed successfully (8928 jobs).
+== build ProofPhase.Proof.Complete
+Build completed successfully (8926 jobs).
+== axioms (35 declarations)
+'ProofPhase.Proof.Tseitin.bd1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.bd1_eq_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.zmod2_natCast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.zmod2_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.gauss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.odd_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.flux_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.bd1_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.unsat_of_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.SD' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.ImpliesL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.muL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.SD.impliesL_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.muL_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.muL_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.muL_ax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.muL_inf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.exists_middleL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.sensitive_of_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.cross_any_system' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.cross_any_system' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Tseitin.summary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.nbr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.uniq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.unique_neighbors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Sat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.lits_restrict'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.eq_or_eq_nl_of_fst_eq' depends on axioms: [propext]
+'ProofPhase.Proof.sat_of_restrict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.sub_insert_of'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.TL.lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.complete_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.complete_aux' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.refutable_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Proof
