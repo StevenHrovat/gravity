@@ -69,6 +69,7 @@ The paper leaves the draft stage only under the release criterion (`OUTLINE.md`)
 | Independent re-check | 2026-11-23, 2026-11-24 | `docs/unified/INDEPENDENT-CHECK.md` | passed |
 | Independent re-check, quick, draft 4 | 2026-11-24 | at `1d71a05`: stamp matches; replay of changed modules fail=0 (incl. `Arsenal.Rotation`, `Arsenal.Rigidity`); axiom audit `NONSTD_AXIOMS []`; nanoda 105,150 declarations, no typechecker errors (one pretty-printer error, not a check failure) | passed |
 | Bibliography | 2026-11-24 | `docs/paper/references.md`: 92 works, each looked up on its Crossref, arXiv, dblp or publisher record by five verification agents (haiku), merged strictly by the coordinator | 73 checked, 14 partly checked, 5 not yet identified (Grothendieck 1969, Lovasz 1975, Mordell 1922, Weil 1948, Weil 1952); task R of stage 3 re-checks every entry |
+| Stage 2, part reviews R1-R7 | 2026-11-24 | seven fresh Sonnet threads; reports `review/part-R1.md` to `part-R7.md` (gravity #39-#45); 14 blocking, about 40 major findings | all blockers and majors fixed by the same threads (#46-#52) and merged; the root-chain blocker on the owner's decision (one-way pin, mutual honesty his reading); open after the fixes: the references for gap-to-mixing and the heat-bath gap (II.10.3), 63 partly checked and 2 unidentified bibliography rows, and the personal note's factual sentences (the owner's) |
 
 ## Citation items for the part reviews (from the bibliography round, 2026-11-24)
 
