@@ -4990,3 +4990,11 @@ thread.
   are normalised; what the computation certifies is that the margin is positive, at that size [certified]. The owner's reading:
   any description, decimal included, is existence, and the certificate shows this description is a valid sublayer, the spin being
   reflection positivity on a primitive [reading]. To be applied to Part III 4.4 (the certified start) in the stage-3 consolidation.
+- **Error bars as the possibility space of existence (the owner, 2026-11-24).** "The error bars are the possibility space of
+  existence which needs to fluctuate and, by fluctuating like it needs to, shows its existence." Counterparts (coordinator): (1) the
+  floor is at least the error bar (Part III 4.3): every assertion carries an error bar, a finite resolution is a cost above zero
+  [reading for the identification; the settle theorem with the floor as hypothesis is Lean]; (2) non-triviality is a fluctuation
+  that does not vanish: under reflection positivity the correlation at time t is the square ||T^(t/2) F||^2, non-zero exactly while
+  the fluctuation persists; a field without fluctuation is trivial (IV.9.5a, IV.9.5b; Lean for the square, the scale-uniform lower
+  edge conditional on III.64) [reading for "shows its existence"]. To be applied to Part III 4.3 and 4.4 in the stage-3
+  consolidation.
