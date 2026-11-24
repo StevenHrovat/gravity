@@ -6,6 +6,7 @@ Paper: `docs/unified/ETM.md`.
 -/
 
 import ProofPhase.ETM.Rooted
+import ProofPhase.ETM.RotationInstances
 
 /-!
 # The ETM round in one statement
@@ -15,6 +16,8 @@ import ProofPhase.ETM.Rooted
 * `etm_round`: the universal object is terminal and not a point; the floor is content; the contraction class reaches
   balance by the explicit bound; the ETM runs every partial recursive content, is lossless, and its balance problem is
   undecidable.
+* The rotation round (`ETM/Rotation.lean`, `ETM/RotationInstances.lean`, note `docs/unified/ROTATION-API.md`): the one
+  box with one command and the marker test of DMP-completeness; its summary is `rotation_round`.
 
 No axioms beyond the standard ones.
 -/

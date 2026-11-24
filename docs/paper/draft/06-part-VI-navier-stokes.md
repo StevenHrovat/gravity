@@ -361,7 +361,10 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   **[Lean]**), so it is not DMP-complete, and blowup is the expected consequence. The negative result is the expected one, and it
   makes the framework falsifiable: global regularity would refute it **[reading]** (VI.7e). Blowup of the real equations is still
   the card's open step (VI.5.1, **[open]**); in the settling machine a missing floor gives undecidability (II.11), so the step from
-  "not DMP-complete" to blowup is the reading, not a theorem.
+  "not DMP-complete" to blowup is the reading, not a theorem. In the one-box test (I.8) the wrong marker is proved for the model:
+  with the energy-only transfer against the viscous cost as gate factor and the claim "regular" at every dyadic scale, the gate
+  reads R136a1 at some scale, for every viscosity and margin **[Lean]** (model, VI.7g). It covers the energy-only ledger, not an
+  actual solution with a better transfer bound **[reading]** (VI.7h).
 * **Settle means opposite things on the two cards.** In the API, "settle" means the carried quantity dies out. For regularity that
   quantity is the cascade, so settling means regular; for route I it is the perturbation from the blowup profile, so settling means
   blowup. The same theorem answers opposite physical questions.

@@ -310,6 +310,16 @@ owner places the lower edge exactly at the ODP's end, which delivers the start `
 DMP-complete system with nothing more to show. So the lower edge is **conditional** on the one assumption in the same way as the
 direction of every later tick (claim X.66), and without the assumption it is unproved, as O1 is (III.9.5b).
 
+**The one-box certificate.** The author's reading: every tick can be reconstructed from any scale, so the one step can be
+certified as soon as it works on the box. In the one-box test (I.8) the induction is a theorem: a marker correct at the start and
+kept correct by one step at the shared gate is correct at every tick **[Lean]** (claim X.68). The scale version is a theorem *from*
+the one assumption: if every scale's box is rebuilt from the one box through its gate, a box certified at one scale is correct at
+every scale, and one scale with a wrong marker refutes the sharing **[Lean]** from X.64 as a named hypothesis (claim X.68a).
+Sharing the gate alone is free; the content of X.64 is that the marker travels with it (claim X.68b). The author grounds the
+sharing in GRH; GRH supplies the sign, not the floor (claim X.17), so "certified on the box, hence everywhere" is **conditional**
+on X.64 (claim X.68d). The universal machine is a box too: its DMP-completeness is undecidable over all content, and on the
+contraction class it is a finite check, the dichotomy of 4.3 in the test's terms **[Lean]** (claim X.68c).
+
 **The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost
 per scale (VI.3.4, **[Lean]** in the model). In the owner's reading nothing more needs or can be said than that it is not
 DMP-complete, and blowup is the expected consequence **[reading]** (VI.7e). This makes the framework falsifiable: a proof of global

@@ -223,6 +223,11 @@ inside the box but does not lower it to the chain value 0.881.
 * **O1 in one form.** O1 is `FineOneBox` (`OneBox/Fine.lean`): one box at the physical cell scale, influence bounds under every
   boundary condition, uniform in level and volume. `WilsonOneBox` and `FineOneBoxSplit` imply it, and it feeds
   `yang_mills_assembly_onebox`; `BlockGapBddW` belongs to the separate blocking route (III.5.9, **[Lean]**).
+* **O1 in the one-box test.** In the test of Part I (I.8, the rotation API) O1 is exactly DMP-completeness of the Yang-Mills box:
+  the chain form holds exactly when some margin makes every chain of outsides DMP-complete, and `FineOneBox` holds exactly when the
+  Yang-Mills box, with its geometry fixed across levels, is DMP-complete from its start level **[Lean]** (III.10c, III.10d). Both
+  directions are proved, so the general test carries exactly O1, no more and no less. That the box is DMP-complete is O1 itself
+  **[open]** (III.10e).
 * **Per-box costs multiply.** In that per-outside form the composition of the per-box influences is a theorem, so no annealed
   quantity enters the gap; the annealed-to-quenched identification is needed only to read a torus measurement of F_e as evidence
   about O1 (III.5.7, **[Lean]**).

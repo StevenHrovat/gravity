@@ -250,6 +250,15 @@ the system (I.2). **[reading]** (claim I.8a)
 **What Part II makes of it.** The linter's rule set is the form layer (II.9 to II.12) plus the arsenal's gate (II.13). The
 unlintable assumption is the open step of each card (Part X, section 4).
 
+**The one-box test.** The author's sharpening: a box needs no outside, because every confinement has one shared gate at the DB. It
+needs one command, step forward, the universal tick, which can simulate everything. If the step produces the wrong R136a1 marker,
+the box is not DMP-complete; if the marker is correct, it is. In Lean (the rotation API, `ETM/Rotation.lean`): a box is a running
+system with a margin and a marker per step, inside or R136a1; the marker is correct when it agrees with the gate's own factor, and
+DMP-complete means correct at every tick **[Lean]** (claim I.8i). The outside is read through the same gate by the half-turn: in the
+plaquette layer the flux read from a box and from its complement agree **[Lean]** (claim I.8j). Care point: the test has content
+only when the marker is the system's own claim; a marker read off the gate afterwards always passes **[Lean]** (claim I.8k). What
+the test gives for each card is in Part III (III.10c to III.10e), Part VI (VI.7g) and Part X (4.4).
+
 ---
 
 ## I.9 Excision at transmission

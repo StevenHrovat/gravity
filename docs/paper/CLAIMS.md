@@ -64,6 +64,9 @@ Definitions of DMP are quoted from `vendor/dmp/01-constitution.md` (DMP 0.9.9) a
 | I.8f | The unlintable assumption is that the system runs, which is O1 in each card's terms | reading | `PREP.md`, 2026-11-24, care point 2, and "O1 ... must always be the open step" | none |
 | I.8g | "Universally readable" holds for the form (plain text and Lean, checkable with the pinned toolchain); "universal superset" is a reading | reading | `PREP.md`, 2026-11-24, care point 3 | none |
 | I.8h | A consistent, effectively axiomatised theory containing arithmetic cannot prove its own consistency (Goedel II) | classical | Goedel 1931 | none |
+| I.8i | The one-box test (the rotation API): a box has one command (the step at the one shared gate, the universal tick), the half-turn to read the other side, and a marker per step, inside or R136a1; the marker is correct when it agrees with the gate's own factor; DMP-complete means correct at every tick from the start | Lean (definitions) | `ProofPhase/ETM/Rotation.lean`, `Marker`, `Box`, `Box.gate`, `Box.Correct`, `Box.DMPComplete` | none |
+| I.8j | No outside input: a verdict read after the half-turn is the verdict read from inside; in the plaquette layer the flux read from a box and from its complement agree | Lean | `ProofPhase/ETM/Rotation.lean`, `Box.Gate`, `Box.complete_halfTurn`; `ProofPhase/ETM/RotationInstances.lean`, `crossoverGate`, `crossover_halfTurn` | none |
+| I.8k | The test has content only when the marker is the system's own claim: a marker read off the gate afterwards always passes, and a box with a wrong marker exists | Lean | `ProofPhase/ETM/Rotation.lean`, `Box.selfMarked_complete`, `Box.exists_not_complete` | none |
 | I.9a | Excision at transmission: a wrong act is answered R136a1 at the gate and never crosses; only its remnant tail stays, the record that an excision happened; IM's verifier counts refusals without content | reading | `PREP.md`, 2026-11-24, "Correction to care point (2): 'transmitted' is the operative word"; DMP chapters 01 (C-infinity) and 06 as the notes cite them | none |
 | I.9c | The gate excises what its checks recognise as wrong at that tick; a later recognition is a later tick, with its tail recorded then, never a revision | reading | `PREP.md`, 2026-11-24, same entry, care point | none |
 | I.10a | Rights tied to identity give total freedom inside and security at the gate; asymptotic freedom (free at short distance, bound at long) reads the same way: free inside the box, bound at the boundary | reading | `PREP.md`, 2026-11-24, "Security in CMOS: rights tied to identity" | none |
@@ -218,6 +221,9 @@ Full chain: `docs/mass-gap/weak-coupling/PROOF-BLUEPRINT.md` (version 2). Crosso
 | III.9.8 | M1's floor at L_* gives a physical gap along a chain, not on a grid | paper | `RDOEBLIN.md` 0 | none |
 | III.10 | DMP readings of Part III (containment, outrunning possibility, IM both sides, pressing as instanton, crossover without content, WHKs) | reading | `PREP.md` (2026-11-22, 2026-11-23) | none |
 | III.10b | g^2 dimensionless only in d = 4 | classical | dimensional analysis | none |
+| III.10c | O1 (chain form, `YMOneBox`) holds exactly when some margin makes every chain of outsides DMP-complete in the one-box test (gate factor min(1, e^-F_e), floor log mu, claim inside) | Lean | `ProofPhase/ETM/RotationInstances.lean`, `o1Box`, `o1_iff_complete` | none |
+| III.10d | `FineOneBox` holds exactly when, for some valid box geometry fixed across levels and some margin below 1, the Yang-Mills box is DMP-complete from its start level; it then gives the one-box assembly; the converse needs the geometry fixed across levels | Lean | `ProofPhase/ETM/RotationInstances.lean`, `ymBox`, `fineOneBox_iff`, `ym_complete_iff`, `fineOneBox_iff_complete`, `fineOneBox_correct`, `ym_assembly_of_complete` | none |
+| III.10e | The Yang-Mills box is DMP-complete (equivalently `FineOneBox`, i.e. O1) | open (conditional on X.64) | III.10d; III.5.6 | a proof of O1 |
 
 ## Part IV. GRH (`draft/04-part-IV-grh.md`)
 
@@ -420,6 +426,8 @@ Notes relative to `docs/pnp/`.
 | VI.7d | "Not DMP-complete, hence blows up": a reading of supercriticality that names the side the 2026 claims assert; it proves nothing | reading | NS 4(6); `PREP.md`, 2026-11-24 entries | none |
 | VI.7e | The owner's reading, with DMP-completeness defined as running on DMP (X.64b): Navier-Stokes does not build (the energy ledger pays no uniform cost per scale, VI.3.4a, VI.3.4b), so it is not DMP-complete, and blowup is the expected consequence; the negative result is the expected one and makes the framework falsifiable (global regularity would refute it); the step from "not DMP-complete" to blowup is the reading, since without a floor the settling machine is undecidable (II.11) | reading | NS 4(6); `PREP.md`, 2026-11-24, "Five answers", 4, and "The lower edge at the end of the ODP", 2 | a proof of blowup or of regularity (VI.5.1) decides it |
 | VI.7f | "Settle" means the carried quantity dies out: regular on the regularity card, blowup on the route I card | reading | NS 5.2 | none |
+| VI.7g | With the energy-only transfer bound against the viscous cost as gate factor and the claim "regular" at every dyadic scale, the gate reads R136a1 at some scale for every nu, K > 0 and every margin below 1: the Navier-Stokes box is not DMP-complete | Lean (model, as VI.3.4b) | `ProofPhase/ETM/RotationInstances.lean`, `nsBox`, `ns_gate_outside`, `ns_wrong_marker`, `ns_not_complete` | none |
+| VI.7h | VI.7g covers the energy-only ledger only; an actual solution with a better transfer bound is not covered, so "not DMP-complete, hence blowup" stays the reading VI.7e | reading | `docs/unified/ROTATION-API.md` 3(5) | a proof of blowup or of regularity (VI.5.1) |
 
 ## Part VII. Birch and Swinnerton-Dyer (`draft/07-part-VII-bsd.md`)
 
@@ -648,6 +656,11 @@ Notes relative to `docs/pnp/`.
 | X.65 | At the start {infinity, 2, 3} the first tick is certified positive with a margin (Weil's form on supports up to a = 0.69: c = 1.5e-9, 3.4e-11, 6.4e-13 at a = 0.60, 0.65, 0.69), so the sign is fixed there | certified (ball-arithmetic enclosures); abstract step Lean (X.58b) | `docs/unified/GRH-ONEBOX-CERT.md`; `ProofPhase/GRH/OneBoxCert.lean` | certify beyond a = 0.69 |
 | X.66 | Under the acceptance of X.64, the sign at the start, and with it the direction of every later tick, is fixed; for every tick past the start this is conditional on X.64 and is not a theorem that the margin survives (it collapses to about 3.6e-15 at a = 0.75) | conditional (on X.64) | `PREP.md`, 2026-11-24, last entry; `docs/unified/GRH-ONEBOX-CERT.md` | X.64 |
 | X.67 | Reading rule for "conditional on the established process": a result so marked holds if X.64 holds; the Lean theorems of section 2, the transport theorem (II.9) and the certified start do not use X.64 | paper (editorial rule) | Part X section 4.4 | none |
+| X.68 | One-box certificate: correct at the start and one step at the shared gate keeps it correct, hence correct at every tick (exact along the run) | Lean | `ProofPhase/ETM/Rotation.lean`, `Box.onebox_certificate`, `Box.dmpComplete_iff_orbit` | none |
+| X.68a | Scale certificate: if every scale's box is rebuilt from the one box through its gate (same margin, a morphism keeping step, factor and mass, start to start, carrying the marker), a box certified at one scale is correct at every scale; a scale with a wrong marker refutes the sharing | Lean (from the named hypothesis X.64) | `ProofPhase/ETM/Rotation.lean`, `Box.SharedGate`, `Box.scale_certificate`, `Box.onebox_everywhere`, `Box.not_shared_of_wrong`, `Box.sharedGate_self` | a proof of X.64 |
+| X.68b | Sharing the gate alone is free (every system maps uniquely into the terminal object); the content of X.64 is that the marker travels with the gate | Lean (the free part); reading (the content of X.64) | `ProofPhase/ETM/Rotation.lean`, `Box.gate_through_trace` | none |
+| X.68c | The universal machine is a box whose DMP-completeness from a description is exactly "the description runs forever", undecidable over descriptions (as is settling); on the contraction class the test settles from the explicit tick balanceBound, so DMP-completeness is a finite check | Lean | `ProofPhase/ETM/Rotation.lean`, `etmBox`, `etmBox_complete_iff`, `etmBox_complete_undecidable`, `etmBox_settles_undecidable`, `Box.settles_of_contracting`, `Box.complete_iff_bounded`, `rotation_edge` | none |
+| X.68d | The owner's ground for X.64, "every tick can be reconstructed from any scale because of GRH": GRH supplies the sign, not the floor (X.17), so the shared-gate step is X.64 itself and every "certified on the box, hence everywhere" is conditional on it | conditional (on X.64) | `docs/unified/ROTATION-API.md` 3(2); `PREP.md`, 2026-11-24, "The one-box test" | X.64 |
 | X.9 | GRH asks of the tick distance: finite at every tick (sign); uniformly bounded, d_N <= D (multiplicative transport, enough for the sign, not needed by it) | open | `docs/unified/GRH-TO-O1.md` 3a; `ProofPhase/GRH/Transfer.lean`, `margin_pos_of_factors` (the finite part, Lean) | GRH beyond the finite model |
 | X.10 | O1 holds exactly when some mu' > mu has mu' p1 <= p0 for every outside (uniform ratio bound), and exactly when p0 - mu p1 >= delta p1 uniformly (a strict margin); the electric cost is log(p0/p1); encoder form of the one-box step | Lean | `ProofPhase/Unified/GRHToO1.lean`, `ymOneBox_iff_ratio`, `ymOneBox_iff_margin`, `cost_eq_log_ratio`; `ProofPhase/Unified/Encoder.lean`, `oneBox_iff_refl` | none (O1 itself is III.5.6) |
 | X.11 | On one tick sequence with encoders at least theta > 0 from the lossless point, the carried Szego margin falls below every m > 0: a uniform margin and O1 at every tick exclude each other | Lean | `ProofPhase/Unified/GRHToO1.lean`, `o1_ticks_kill_margin`, `uniform_margin_excludes_o1` | none |
@@ -799,20 +812,20 @@ Part IX row IX.0b was a cross-reference and is folded; the scope rows that stay 
 
 Counted on the rows above (each row once, by its first mark; scope rows not counted: 0.1, III.0, VI.0e, VII.0e, VIII.0d, IX.0a, IX.0d). The draft 3 column is the count of the committed draft; the next column is after the audit of 2026-11-24 (rows removed and added, status changes, `certified` as its own mark, II.11.2 and II.11.3 counted as Lean):
 
-| Status | After VI.6.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
-|---|---|---|---|---|---|---|
-| Lean | 221 | 221 | 221 | 221 | 239 | 114 |
-| classical | 121 | 121 | 121 | 121 | 120 | 42 |
-| external | 41 | 40 | 40 | 40 | 48 | 7 |
-| conditional | 5 | 5 | 4 | 4 | 4 | 3 |
-| paper | 56 | 56 | 56 | 56 | 63 | 27 |
-| numerical | 22 | 22 | 22 | 22 | 24 | 17 |
-| certified | 2 | 2 | 2 | 2 | 0 | 0 |
-| reading | 87 | 87 | 86 | 83 | 83 | 25 |
-| open | 44 | 45 | 47 | 48 | 70 | 28 |
-| **Total** | **599** | **599** | **599** | **597** | **651** | **263** |
+| Status | After the one-box test (2026-11-24) | After VI.6.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
+|---|---|---|---|---|---|---|---|
+| Lean | 231 | 221 | 221 | 221 | 221 | 239 | 114 |
+| classical | 121 | 121 | 121 | 121 | 121 | 120 | 42 |
+| external | 41 | 41 | 40 | 40 | 40 | 48 | 7 |
+| conditional | 6 | 5 | 5 | 4 | 4 | 4 | 3 |
+| paper | 56 | 56 | 56 | 56 | 56 | 63 | 27 |
+| numerical | 22 | 22 | 22 | 22 | 22 | 24 | 17 |
+| certified | 2 | 2 | 2 | 2 | 2 | 0 | 0 |
+| reading | 88 | 87 | 87 | 86 | 83 | 83 | 25 |
+| open | 45 | 44 | 45 | 47 | 48 | 70 | 28 |
+| **Total** | **612** | **599** | **599** | **599** | **597** | **651** | **263** |
 
-The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved III.9.5b to conditional on X.64 (placed at the ODP's end, as X.66) and VI.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The Perelman round settled VI.6.3j (open to external: N = 3 rigid in both categories, Wang; N >= 4 not, paper). The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
+The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved III.9.5b to conditional on X.64 (placed at the ODP's end, as X.66) and VI.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The Perelman round settled VI.6.3j (open to external: N = 3 rigid in both categories, Wang; N >= 4 not, paper). The one-box test (the rotation API) added 13 rows: I.8i to I.8k, III.10c to III.10e, VI.7g, VI.7h, X.68 to X.68d (10 Lean, 1 open, 1 reading, 1 conditional). The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open

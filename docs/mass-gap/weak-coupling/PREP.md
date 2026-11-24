@@ -4736,3 +4736,18 @@ thread.
      in 2D, which is why 2D is regular). Applied to VI.7e: Navier-Stokes is not DMP-complete [reading], and blowup is DMP's expected
      consequence, a prediction. Care point: blowup of the real equations stays the card's open step (VI.5.1); the prediction is
      falsifiable, since a proof of global regularity would refute it, and a certified blowup profile would confirm it.
+- **The one-box test (the owner, 2026-11-24).** Three steps of one idea. (a) "I feel like there might be a more general One box
+  class still possible, something like ActOneBox, which can just speak IM for one in/output for every possible command." (b) "It
+  does not even need to be the outside. Since every confinement only has one shared gate at the DB, the only thing the box needs is
+  a RotationAPI with a step-forward command, because this is the universal tick and should be able to simulate everything. If the
+  step results in the wrong R136a1 marker, then it's not DMP-complete, if the marker is correct, then it is DMP-complete." (c) "Since
+  every tick can be reconstructed from any scale, we should be able to certify the one step as soon as it works on the box, because
+  of GRH." Exact counterpart (coordinator; built in `ETM/Rotation.lean`, `ETM/RotationInstances.lean`, note
+  `docs/unified/ROTATION-API.md`): a box is a running system (`RunSys`: step, gate factor, mass, ledger law) with a margin and a
+  marker per step; correct means the marker agrees with the gate's own factor; DMP-complete means correct at every tick [Lean]. No
+  outside input: the half-turn reads the same gate from the other side (the flux law, Lean). The universal machine is a box, and its
+  DMP-completeness is undecidable over all content, a finite check on the contraction class [Lean]. One step certified at the
+  shared gate gives every tick [Lean]; every scale follows from X.64 as a named hypothesis [Lean from X.64]. O1 is exactly
+  DMP-completeness of the Yang-Mills box, both directions [Lean]; the Navier-Stokes model box has the wrong marker [Lean, model].
+  Care points: the marker must be the system's own claim (a marker read off the gate always passes, Lean); GRH supplies the sign,
+  not the floor (X.17), so "certified on the box, hence everywhere" is conditional on X.64.
