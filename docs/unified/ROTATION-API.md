@@ -6,6 +6,13 @@ by the ETM summary `ETM/ETM.lean`. 75 declarations, standard axioms only (72 on 
 `docs/unified/rotation-axioms.sh`. The open statement X.64 appears once, as a named hypothesis (`OpenStep`), never as an
 axiom.
 
+**The core is in IM (2026-11-24).** The marker, the generic box and its test, the two-sided gate, the one-box and scale
+certificates, the finite check and the vacuity checks moved to IM's arsenal, `arsenal/Arsenal/Rotation.lean`
+(`StevenHrovat/im#11`, Mathlib only, the sharing answered `R136a1 "the gate is shared across scales"`); gravity pins it in
+`lakefile.toml`. `ETM/Rotation.lean` keeps the running-system box (ledger, margin as a cost above the floor, balance marker,
+contraction class, universal machine): `Box.toArsenal` forgets the mass, its definitions agree with IM's by `rfl`, and the
+generic theorems are IM's, applied. The axiom log now covers 77 declarations on the gravity side.
+
 ## 1. What was built
 
 **The box** (`Box δ`). A running system `S : RunSys δ` (from `ETM/RunSys.lean`: the step, the gate factor `fac`, the mass,

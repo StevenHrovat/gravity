@@ -6,6 +6,7 @@ Note: `docs/unified/ROTATION-API.md`.
 -/
 
 import ProofPhase.API
+import Arsenal.Rotation
 
 /-!
 # The rotation API: one box, one command, one test
@@ -38,6 +39,13 @@ has content only once the marker is fixed by the system, not read off the gate a
 exists (`exists_not_complete`). Sharing the gate alone is free: every box's gate verdict is read through its trace into
 the terminal object (`gate_through_trace`); the content of X.64 is that the marker travels with the gate.
 
+**The core lives in IM.** The marker, the two-sided gate and the generic box with its test are IM's
+(`Arsenal/Rotation.lean`, the arsenal of `StevenHrovat/im`). A box here is IM's box with a running system's ledger under
+it: `toArsenal` forgets the mass, the definitions agree with IM's by `rfl` (`toArsenal_gate`, `toArsenal_correct`,
+`toArsenal_dmpComplete`), and the one-box certificate, its exact form, the half-turn and the pull-back along a
+reconstruction are IM's theorems, applied here. What stays here is what needs the ledger: the margin as a cost above the
+floor, the balance marker, the contraction class, the universal machine.
+
 The instances (Yang-Mills, Navier-Stokes, the half-turn of the plaquette layer) are in `ETM/RotationInstances.lean`.
 No axioms beyond the standard ones; the open statement X.64 is a hypothesis, never an axiom.
 -/
@@ -52,11 +60,8 @@ universe u v w
 
 /-! ## 1. The marker, the box, the gate, the test -/
 
-/-- **The marker** a step produces: `inside`, or `r136a1` (DMP's marker for "outside"). -/
-inductive Marker
-  | inside
-  | r136a1
-  deriving DecidableEq
+-- The marker a step produces, `inside` or `r136a1`, is IM's (`Arsenal.Rotation.Marker`).
+open Arsenal.Rotation (Marker)
 
 /-- **The box.** A running system with one command (the step at the one shared gate), a gate margin `θ` that is a cost
 above the floor (`e^δ θ < 1`), and the marker the box produces at each state. -/
@@ -74,6 +79,10 @@ namespace Box
 
 variable {δ : ℝ}
 
+/-- **IM's box under this box**: the states, the one command, the gate factor, the margin and the marker; the mass and
+the ledger law are forgotten. -/
+def toArsenal (B : Box.{u} δ) : Arsenal.Rotation.Box.{u} := ⟨B.S.X, B.S.step, B.S.fac, B.θ, B.mark⟩
+
 /-- **The gate's own verdict**: `inside` when the gate factor is within the margin, `r136a1` otherwise. -/
 def gate (B : Box.{u} δ) (x : B.S.X) : Marker := if B.S.fac x ≤ B.θ then .inside else .r136a1
 
@@ -86,15 +95,20 @@ def DMPComplete (B : Box.{u} δ) (x : B.S.X) : Prop := ∀ n, B.Correct (B.S.ste
 /-- **The test settles from `x`**: from some tick on, every marker is correct. -/
 def Settles (B : Box.{u} δ) (x : B.S.X) : Prop := ∃ N, ∀ n ≥ N, B.Correct (B.S.step^[n] x)
 
-theorem gate_eq_inside_iff (B : Box.{u} δ) (x : B.S.X) : B.gate x = .inside ↔ B.S.fac x ≤ B.θ := by
-  unfold gate
-  split_ifs with h <;> simp [h]
+/-- The gate is IM's gate. -/
+theorem toArsenal_gate (B : Box.{u} δ) (x : B.S.X) : B.toArsenal.gate x = B.gate x := rfl
 
-theorem gate_eq_r136a1_iff (B : Box.{u} δ) (x : B.S.X) : B.gate x = .r136a1 ↔ B.θ < B.S.fac x := by
-  unfold gate
-  by_cases h : B.S.fac x ≤ B.θ
-  · simp [h, not_lt.2 h]
-  · simp [h, lt_of_not_ge h]
+/-- Correctness is IM's correctness. -/
+theorem toArsenal_correct (B : Box.{u} δ) (x : B.S.X) : B.toArsenal.Correct x ↔ B.Correct x := Iff.rfl
+
+/-- DMP-completeness is IM's DMP-completeness. -/
+theorem toArsenal_dmpComplete (B : Box.{u} δ) (x : B.S.X) : B.toArsenal.DMPComplete x ↔ B.DMPComplete x := Iff.rfl
+
+theorem gate_eq_inside_iff (B : Box.{u} δ) (x : B.S.X) : B.gate x = .inside ↔ B.S.fac x ≤ B.θ :=
+  B.toArsenal.gate_eq_inside_iff x
+
+theorem gate_eq_r136a1_iff (B : Box.{u} δ) (x : B.S.X) : B.gate x = .r136a1 ↔ B.θ < B.S.fac x :=
+  B.toArsenal.gate_eq_r136a1_iff x
 
 /-- DMP-completeness is carried along the run. -/
 theorem DMPComplete.step {B : Box.{u} δ} {x : B.S.X} (h : B.DMPComplete x) : B.DMPComplete (B.S.step x) :=
@@ -109,37 +123,20 @@ theorem DMPComplete.settles {B : Box.{u} δ} {x : B.S.X} (h : B.DMPComplete x) :
 /-- **The one-box certificate.** If the marker is correct at the start, and one step at the gate shared by every tick
 preserves correctness, then the marker is correct at every tick. -/
 theorem onebox_certificate (B : Box.{u} δ) {x₀ : B.S.X} (h0 : B.Correct x₀)
-    (hstep : ∀ x, B.Correct x → B.Correct (B.S.step x)) : B.DMPComplete x₀ := by
-  intro n
-  induction n with
-  | zero => exact h0
-  | succ n ih => rw [Function.iterate_succ_apply']; exact hstep _ ih
+    (hstep : ∀ x, B.Correct x → B.Correct (B.S.step x)) : B.DMPComplete x₀ :=
+  B.toArsenal.onebox_certificate h0 hstep
 
 /-- **The certificate is exact along the run**: DMP-complete from `x₀` exactly when the start is correct and each step
 of the run carries correctness to the next. -/
 theorem dmpComplete_iff_orbit (B : Box.{u} δ) (x₀ : B.S.X) : B.DMPComplete x₀ ↔
-    B.Correct x₀ ∧ ∀ n, B.Correct (B.S.step^[n] x₀) → B.Correct (B.S.step^[n + 1] x₀) := by
-  refine ⟨fun h => ⟨h 0, fun n _ => h (n + 1)⟩, fun ⟨h0, hs⟩ n => ?_⟩
-  induction n with
-  | zero => exact h0
-  | succ n ih => exact hs n ih
+    B.Correct x₀ ∧ ∀ n, B.Correct (B.S.step^[n] x₀) → B.Correct (B.S.step^[n + 1] x₀) :=
+  B.toArsenal.dmpComplete_iff_orbit x₀
 
 /-! ## 3. The half-turn: the outside is read through the same gate -/
 
-/-- **A two-sided gate**: the reading from inside, the reading after the half-turn (from the other side), and the flux
-law, the same on both sides. -/
-structure Gate (X : Type*) (G : Type*) where
-  /-- The reading from inside. -/
-  inner : X → G
-  /-- The reading after the half-turn. -/
-  outer : X → G
-  /-- The flux law is the same on both sides. -/
-  flux : ∀ x, outer x = inner x
-
-/-- **The half-turn changes no verdict**: any verdict read from the other side of the gate is the verdict read from
-inside. -/
-theorem Gate.halfTurn {X G : Type*} (g : Gate X G) (v : G → Marker) (x : X) : v (g.outer x) = v (g.inner x) := by
-  rw [g.flux]
+-- The two-sided gate (the reading from inside, the reading after the half-turn, and the flux law, the same on both
+-- sides) and the half-turn theorem `Gate.halfTurn` are IM's (`Arsenal.Rotation.Box.Gate`).
+open Arsenal.Rotation.Box (Gate)
 
 /-- The test with the gate read through a reading `r` instead of the factor. -/
 def CompleteVia (B : Box.{u} δ) (r : B.S.X → ℝ) (x : B.S.X) : Prop :=
@@ -148,11 +145,8 @@ def CompleteVia (B : Box.{u} δ) (r : B.S.X → ℝ) (x : B.S.X) : Prop :=
 /-- **No outside input**: for a two-sided gate whose inside reading is the gate factor, the test read after the half-turn
 is the test. -/
 theorem complete_halfTurn (B : Box.{u} δ) (g : Gate B.S.X ℝ) (hin : ∀ x, g.inner x = B.S.fac x) (x : B.S.X) :
-    B.CompleteVia g.outer x ↔ B.DMPComplete x := by
-  unfold CompleteVia DMPComplete
-  refine forall_congr' fun n => ?_
-  rw [g.flux, hin]
-  rfl
+    B.CompleteVia g.outer x ↔ B.DMPComplete x :=
+  B.toArsenal.complete_halfTurn g hin x
 
 /-! ## 4. The scale version: X.64 as a named hypothesis -/
 
@@ -163,16 +157,20 @@ def SharedGate (B : Box.{u} δ) (x₀ : B.S.X) {ι : Type w} (C : ι → Box.{v}
   ∀ j, (C j).θ = B.θ ∧
     ∃ φ : RunSys.Hom (C j).S B.S, φ.toFun (x j) = x₀ ∧ ∀ y, B.mark (φ.toFun y) = (C j).mark y
 
+/-- A morphism of running systems is a reconstruction of IM's boxes (it keeps the step and the gate factor). -/
+def homArsenal {B : Box.{u} δ} {C : Box.{v} δ} (φ : RunSys.Hom C.S B.S) :
+    Arsenal.Rotation.Box.Hom C.toArsenal B.toArsenal :=
+  ⟨φ.toFun, φ.step_comm, φ.fac_eq⟩
+
 /-- Along a reconstruction map, correctness is read on the one box. -/
 theorem correct_hom {B : Box.{u} δ} {C : Box.{v} δ} (φ : RunSys.Hom C.S B.S) (hθ : C.θ = B.θ)
-    (hmk : ∀ y, B.mark (φ.toFun y) = C.mark y) (y : C.S.X) : C.Correct y ↔ B.Correct (φ.toFun y) := by
-  unfold Correct gate
-  rw [hmk, φ.fac_eq, hθ]
+    (hmk : ∀ y, B.mark (φ.toFun y) = C.mark y) (y : C.S.X) : C.Correct y ↔ B.Correct (φ.toFun y) :=
+  Arsenal.Rotation.Box.correct_hom (homArsenal φ) hθ hmk y
 
 /-- DMP-completeness pulls back along a reconstruction map. -/
 theorem dmpComplete_hom {B : Box.{u} δ} {C : Box.{v} δ} (φ : RunSys.Hom C.S B.S) (hθ : C.θ = B.θ)
     (hmk : ∀ y, B.mark (φ.toFun y) = C.mark y) {y : C.S.X} (h : B.DMPComplete (φ.toFun y)) : C.DMPComplete y :=
-  fun n => (correct_hom φ hθ hmk _).2 (by rw [φ.iterate_comm]; exact h n)
+  Arsenal.Rotation.Box.dmpComplete_hom (homArsenal φ) hθ hmk h
 
 /-- **The scale certificate.** A box certified on the one box is correct at every scale, provided the gate is shared
 across scales. The sharing is the paper's one assumption X.64, carried as a named hypothesis and not proved. -/

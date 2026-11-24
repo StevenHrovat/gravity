@@ -1,24 +1,26 @@
 == build ProofPhase.ETM.ETM
-Build completed successfully (9075 jobs).
-== declarations: 75
+Build completed successfully (9078 jobs).
+== declarations: 77
 == axioms
-'ProofPhase.ETM.Marker' does not depend on any axioms
 'ProofPhase.ETM.Box' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.Box.toArsenal' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.gate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.Correct' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.DMPComplete' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.Settles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.Box.toArsenal_gate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.Box.toArsenal_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.Box.toArsenal_dmpComplete' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.gate_eq_inside_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.gate_eq_r136a1_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.DMPComplete.step' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.DMPComplete.settles' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.onebox_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.dmpComplete_iff_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ProofPhase.ETM.Box.Gate' does not depend on any axioms
-'ProofPhase.ETM.Box.Gate.halfTurn' does not depend on any axioms
 'ProofPhase.ETM.Box.CompleteVia' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.complete_halfTurn' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.SharedGate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.Box.homArsenal' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.correct_hom' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.dmpComplete_hom' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.scale_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]

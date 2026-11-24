@@ -43,6 +43,8 @@ read from inside (`τ` restricted to `R`) and after the half-turn (restricted to
 -/
 
 open Finset
+open Arsenal.Rotation (Marker)
+open Arsenal.Rotation.Box (Gate)
 
 noncomputable section
 

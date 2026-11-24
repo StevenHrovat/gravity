@@ -407,8 +407,8 @@ system for you: the structure and its one inequality are the work. Arguments tha
 property: that nothing in it cannot run.
 
 **The arsenal (II.13.1).** The arsenal is the set of transferable Lean results that need Mathlib, kept in the `im` repository
-(`arsenal/`), pinned to Lean and Mathlib v4.34.0. It is imported from there and never copied (II.13.4). Its first modules are
-`Arsenal.R136a1` and `Arsenal.BSD` **[paper]** (`arsenal/README.md`).
+(`arsenal/`), pinned to Lean and Mathlib v4.34.0. It is imported from there and never copied (II.13.4). Its modules are
+`Arsenal.R136a1`, `Arsenal.BSD` and `Arsenal.Rotation` (the one-box test, I.8) **[paper]** (`arsenal/README.md`).
 
 **R136a1 (II.13.2).** The one way to leave a statement open: `R136a1 "name" P` is `P` as a named hypothesis, never an axiom. A
 theorem that needs it takes it as a hypothesis, so the system never assumes it. **[Lean]** (`Arsenal/R136a1.lean`, `R136a1`,
