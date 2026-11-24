@@ -4859,3 +4859,11 @@ thread.
   everything else. Care point: G2's rigidity is a finite classical computation, true or false whatever is assumed; the one assumption
   cannot decide it. What the reading does is predict its answer (rigid, the channel's multiple odd), so the computation tests the
   prediction and, with it, how far "placed, hence certified" reaches.
+- **The one assumption certifies the G2 state as DMP-complete (the owner, 2026-11-24).** "The one assumption can predict and certify
+  that it exists as a DMP-complete state as stated, which is equivalent to O1, or constructability." Counterpart (coordinator): the
+  one assumption is stated as the running, DMP-complete state of the one box (III.64), and the scale certificate certifies every box
+  placed through the shared gate from it [Lean, III.68a]. So, under the one assumption, the G2 channel exists as a DMP-complete state:
+  conditional on III.64, as every result that uses it. The equivalence of that state with O1, i.e. with constructability, is the
+  owner's identification [reading]. Care point: this certifies the DMP-complete state, conditional on the assumption; it does not
+  turn the classical question "is G2 rigid?" into a theorem. If that computation came out "not rigid", the identification of the
+  DMP-complete G2 state with G2's rigidity would be what fails, which is the falsifiable edge.

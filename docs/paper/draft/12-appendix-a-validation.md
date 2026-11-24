@@ -117,6 +117,9 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   owner goes one step further: since the DB can be drawn freely, whatever can be placed through the gate can be certified, so the
   channel goes back into O1, the one assumption (III.68a, the scale certificate, **[Lean]** from it) **[reading]** (A.5t). Care
   point: G2's rigidity is a finite computation, true or false whatever is assumed, so the assumption cannot decide it; the reading
-  predicts its answer, and the computation tests both the prediction and how far "placed, hence certified" reaches. The owner reads the missing
+  predicts its answer, and the computation tests both the prediction and how far "placed, hence certified" reaches. In the
+  owner's words, the one assumption predicts and certifies that the G2 channel exists as a DMP-complete state, which is O1 read as
+  constructability: **conditional** on the one assumption (III.64), with its identification with G2's rigidity a **[reading]**
+  (A.5u). The owner reads the missing
   sign itself as the point: Z/2 carries no order, so no floor, so no decidable reading, and only a start that forces one is
   DMP-complete (Part III 4.3, III.70).
