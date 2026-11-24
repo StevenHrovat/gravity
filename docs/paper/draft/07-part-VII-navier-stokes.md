@@ -45,7 +45,7 @@ contain **no Navier-Stokes object**: nothing in them is about the equations them
 | Caffarelli, Kohn, Nirenberg 1982: the singular set of a suitable weak solution has zero one-dimensional parabolic measure | singularities along curves; isolated points remain |
 | Escauriaza, Seregin, Sverak 2003; Seregin 2012: a solution bounded in `L^infinity_t L^3_x` is smooth; at a singular time the `L^3` norm must tend to infinity | blowup with a bounded scale-invariant norm |
 | Axisymmetric Type I exclusion (Chen-Strain-Tsai-Yau; Koch-Nadirashvili-Seregin-Sverak) | axisymmetric Type I blowup |
-| Chae-Wolf; Pineau-Vicol: a smooth backward discretely self-similar solution obeys the Type I bound; a nonzero one needs a period bounded below | discretely self-similar solutions with a too-small period |
+| Chae-Wolf; Pineau-Vicol (as reported by Alpoge-Buckmaster): a smooth backward discretely self-similar solution, continuous in time with values in `L^p`, `p` in `[3, infinity)`, obeys the Type I bound; a nonzero one with the Type I bound needs a period bounded below by a number depending only on the profile's Type I constant (Pineau-Vicol: also for rotations by a small angle) | discretely self-similar solutions with a too-small period |
 
 What these leave open: **discretely self-similar** solutions (the shape repeats after a fixed zoom), asymptotically self-similar
 solutions, and Type II rates.
@@ -55,9 +55,9 @@ rotated and dilated copies. The average keeps the energy identity and the standa
 finite time. So a proof of global regularity must use finer structure of the true nonlinearity than the energy identity and those
 estimates.
 
-**VII.1.3 Numerical evidence by others** **[external]**. Hou (arXiv 2107.06509, 2022) reports an axisymmetric scenario with smooth
-data and constant viscosity: vorticity growth of about 10^7 at nearly self-similar Leray-type rates. It is numerical evidence, not a
-proof. Strict Type I axisymmetric blowup is excluded (VII.1.1), so a singular scenario would have to deviate from the observed rate;
+**VII.1.3 Numerical evidence by others** **[external]**. Hou (arXiv 2107.06509, 2021, revised 2022) reports an axisymmetric scenario
+with smooth data: vorticity growth of about 10^7 with nearly self-similar singular scaling (the abstract's words; the constant
+viscosity and the Leray-type rates are as the notes recall, not re-read). It is numerical evidence, not a proof. Strict Type I axisymmetric blowup is excluded (VII.1.1), so a singular scenario would have to deviate from the observed rate;
 the tension is noted here, not resolved.
 
 ## VII.2 The card
@@ -111,32 +111,37 @@ the weight `(T* - t)^{1 - 2 alpha}`. The local energy near the singular point sc
 `2/5 <= alpha <= 1/2`. `nsViscous_bounded_iff` says the floor is bounded exactly when `alpha <= 1/2`.
 
 The window decision runs. `windowQ` sorts a rational exponent into one of the four rows, and `windowQ_correct`
-(`Unified/NavierStokesAPI.lean`) proves the computed answer right for the real statement: "inside" exactly when the viscous floor and
+(`Unified/NavierStokesAPI.lean`) proves the computed answer right for the model's statement (the exponents of the table): "inside" exactly when the viscous floor and
 the local energy are bounded, "Leray" exactly when the Type I bound holds as well (`windowQ_admissible_iff`, `windowQ_leray_iff`,
 `windowQ_half`). This follows the API's rule for a new instance: the decision runs, and a theorem proves it right.
 
 ### VII.3.2 Route I: the Leray end, a discretely self-similar profile
 
-The hypothesis is a structure, `LerayDSSCertificate`: a profile `W` that is periodic in zoomed time with period `S > 0` and **not
-steady**; a lower bound `A > 0` on its rescaled size; a contraction `0 <= rho < 1` and a constant `C >= 0` such that over one period
-the perturbation obeys `M(n+1) <= rho M(n) + C M(n)^2`. That last line is the period map on the complement of finitely many
-directions, which the choice of datum removes.
+The hypothesis is a structure, `LerayDSSCertificate`: a profile `W` (with values in an arbitrary type) that is periodic in zoomed
+time with period `S > 0` and **not steady**; a number `A > 0`, meant as a lower bound on the profile's rescaled `H^1` size (the
+structure carries no norm, so `A` is only a constant); a contraction `0 <= rho < 1` and a constant `C >= 0`. The period inequality
+`M(n+1) <= rho M(n) + C M(n)^2` is not a field of the structure: it is a hypothesis of the theorems below and the open step
+`PeriodContraction` of the card. It is the period map on the complement of finitely many directions, which the choice of datum
+removes.
 
 The ledger then proves (`ns_blowup_of_dss`):
 
 * the perturbation decays geometrically, `M(n) <= (rho + C delta)^n delta`, for a start `M(0) <= delta` with `rho + C delta < 1`
   (`ns_dss_converge`): the solution converges to the profile;
 * infinitely many periods fit into the finite time 1 (`ns_period_hasSum`, via `nsPeriodLength`);
-* the amplitude `e^{nS/4} (A - M(n))` tends to infinity (`ns_dss_amplitude`): the rate `(T* - t)^{-1/4}`, Leray's lower bound;
+* the amplitude `e^{nS/4} (A - M(n))` tends to infinity (`ns_dss_amplitude`); this defined sequence stands for the rescaled `H^1`
+  size times `e^{nS/4}`, whose growth is the rate `(T* - t)^{-1/4}`, Leray's lower bound; that the sequence is the `H^1` norm of a
+  solution is **[paper]**, not in the Lean;
 * the profile is not steady (`LerayDSSCertificate.not_steady`), so exact self-similarity is not used.
 
-In ledger language: the free flow pays `S/4` per period at floor 0 (`ns_free_flow_pays`), which is the subcriticality of `H^1` and
-the source of all damping in route I. A period factor `0 < rho < 1` is a cost `-log rho` above floor 0 for one step type
+In ledger language: the free flow pays `S/4` per period at floor 0 (`ns_free_flow_pays`, an identity for the supplied decay
+`e^{-k S/4}`), which is the ledger form of the subcriticality of `H^1` (VII.3.2c); the contraction `rho` is a separate hypothesis. A period factor `0 < rho < 1` is a cost `-log rho` above floor 0 for one step type
 (`ns_dss_costAboveFloor`); the zoomed equation is autonomous, so one period is every period.
 
 The API card `routeI` assembles this: from `PeriodContraction` (the open step) it concludes settling onto the profile (the API's
-`settle_everywhere`), with the period count from `settles_by`, together with the three consequences above. **Settling in the zoomed
-frame is blowup in real time.** The open step is the content a certificate would supply (VII.5).
+`settle_everywhere`), with the period count from `settles_by`, together with the three consequences above. Settling in the zoomed
+frame is blowup in real time through the scaling `T* - t = e^{-s}` (here `T* = 1`, `ns_period_hasSum`) **[paper]**; no
+statement about the equations is in the Lean. The open step is the content a certificate would supply (VII.5).
 
 ### VII.3.3 Route II: inside the window, viscosity as a shrinking residual
 
@@ -149,8 +154,9 @@ viscous term is a summable fresh uncertainty, so even with no damping its accumu
 (`ns_viscous_transport_unbounded_at_leray`). The API gives the same bound in its own form (`routeII_bounded`):
 `M(n) <= M(0) + 2 (epsilon + nu)/(1 - q)`.
 
-The consequence for the two routes: at the Leray scaling, viscosity cannot be a perturbation of an inviscid profile. It must sit
-inside the profile equation, which is route I. **No route II profile is known [open].**
+The consequence for the two routes, in the ledger's transport bound: at the Leray scaling a perturbative treatment of viscosity at
+cost = floor fails (the constant fresh uncertainty accumulates), so in this bound the viscous term has to sit inside the profile
+equation, which is route I. This is a statement about the bound, not about the equations. **No route II profile is known [open].**
 
 ### VII.3.4 Why the energy ledger cannot decide
 
@@ -215,7 +221,8 @@ it is not axisymmetric; its period lies above the Chae-Wolf lower bound, with th
 
 For every `nu > 0`, a smooth force with compact support, a compact set, and a smooth solution on `[0, 1)` with zero initial velocity
 and bounded energy whose sup-norm is unbounded as `t -> 1`; the paper says this establishes (C), and (D) by a corollary. An
-independent build record of its Lean proof reports the three standard axioms, no `sorry`, and a match to a public formalisation of
+independent build record of its Lean proof (a Zenodo record of 10 October 2026, Lean v4.34.0-rc2; its DOI is to be added to the
+bibliography) reports the three standard axioms, no `sorry`, and a match to a public formalisation of
 (C) and (D) **[external, not rebuilt here]**. A preprint (arXiv 2610.08144) shows lemma-level places where the Lean proof is not a
 faithful translation of the written one, and expressly claims nothing about the written proof's correctness **[external]**. Because a
 force is allowed in (C) and (D), this claim, if it holds, answers (C) and (D) as stated but says nothing about (A) and (B), which have
@@ -253,7 +260,7 @@ the slot cannot be filled for some data. **[open; false if the unforced claim ho
 named slot is filled (the period contraction), which is a claimed but unreleased certificate today. The mechanical answer is
 therefore: **open, with the open step located and an external claim asserting it holds.** Route II has no candidate **[open]**. What
 continues past `T*` for a blowup solution is **[open]** (weak solutions are not unique in general; for Ricci flow the same question
-is a theorem, A.2).
+is a theorem, A.1f).
 
 **What would discharge the external inputs by import.** The notes list twelve audit items, none done. The ones that change the
 status of the tie:
@@ -281,15 +288,16 @@ shape with an operator-level certificate at 128-bit precision **[reading]**.
   (Lean for both uses; the parallel is the reading).
 * **Scale invariance as the arrow of causality.** Because the zoomed equation is autonomous, the set of "outsides" has one element:
   the same step at every scale, so the for-all over steps costs nothing.
-* **"Not DMP-complete, hence blows up."** In ledger terms the energy ledger cannot pay a uniform cost per scale (VII.3.4). Read as a
-  prediction, this named the side the 2026 claims assert. It proves nothing: a method's failure to exclude blowup is not blowup. The
+* **"Not DMP-complete, hence blows up."** In ledger terms the energy ledger cannot pay a uniform cost per scale (VII.3.4). The
+  owner's entry is dated 2026-11-24, after both claims were public (8 September and 20 November), so it agrees with the side the
+  claims assert and is not a prediction made before them. It proves nothing: a method's failure to exclude blowup is not blowup. The
   claims, if correct, prove it by a certified profile. DMP-completeness now has a precise statement: DMP-complete means runs on DMP,
   the running-state hypothesis R of Part III 4.2 (the owner's definition, III.64b). The owner's reading: the whole process is
   described and Navier-Stokes does not build in it (the energy ledger cannot pay a uniform cost per scale, VII.3.4a and VII.3.4b,
   **[Lean]**), so it is not DMP-complete, and blowup is the expected consequence. The negative result is the expected one, and it
   makes the framework falsifiable: global regularity would refute it **[reading]** (VII.7e). Blowup of the real equations is still
   the card's open step (VII.5.1, **[open]**); in the settling machine a missing floor gives undecidability (II.3), so the step from
-  "not DMP-complete" to blowup is the reading, not a theorem. In the one-box test (I.8) the wrong marker is proved for the model:
+  "not DMP-complete" to blowup is the reading, not a theorem. In the one-box test (II.4) the wrong marker is proved for the model:
   with the energy-only transfer against the viscous cost as gate factor and the claim "regular" at every dyadic scale, the gate
   reads R136a1 at some scale, for every viscosity and margin **[Lean]** (model, VII.7g). It covers the energy-only ledger, not an
   actual solution with a better transfer bound **[reading]** (VII.7h).
