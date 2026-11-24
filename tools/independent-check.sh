@@ -32,7 +32,7 @@
 # Run ONE heavy stage at a time (several leanchecker/nanoda runs at once get OOM-killed, exit 137).
 # Work dir $FC is a *copy* of the build project, so other builds in ~/formal are not disturbed.
 set -uo pipefail
-REPO=${REPO:-/mnt/c/claude/gravity-ym}   # the repository checkout (the Windows path as seen from WSL)
+REPO=${REPO:-$(cd "$(dirname "$0")/.." && pwd)}   # the repository checkout (default: the one this script is in)
 SRC=$REPO/docs/mass-gap/formal
 FC=${FORMAL_CHECK:-$HOME/formal-check}
 CHK=${CHECKERS:-$HOME/checkers}
