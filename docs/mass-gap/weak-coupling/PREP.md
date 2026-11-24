@@ -4781,3 +4781,16 @@ thread.
   Sp(2) = Spin(5) (dimension 10, rational cohomology on generators of degree 3 and 7) and G2 (dimension 14, degrees 3 and 11) have
   no rational cohomology in degrees 4i below the top, so the rational test that excludes SU(N), N >= 4, does not exclude them;
   their rigidity was not checked. Low-rank coincidences fit the reading: Sp(1) = Spin(3) = SU(2), and Spin(6) = SU(4) is not rigid.
+- **Only U(1) carries content across the gate (the owner, 2026-11-24).** "The ones that survive do not seem to carry content across
+  the gate, only U(1) can do that, so only it can certify, at least from my first look." Exact counterpart (coordinator): content
+  crosses the gate as a phase with a direction, i.e. in a representation that is not its own conjugate. A compact simple group has
+  such (complex) representations exactly when -1 is not in its Weyl group: SU(N) for N >= 3, Spin(4k+2) and E6; G2, Sp(n),
+  Spin(2n+1) and SU(2) have only self-conjugate (real or pseudoreal) representations, and U(1) has the charges e^{iq theta}
+  [classical, Lie theory]. So Sp(2) = Spin(5) and G2 carry no oriented phase, whether or not they are rigid: the rigidity check
+  of IX.6j no longer decides anything. Among the groups with complex representations, rigidity leaves only SU(3): SU(N), N >= 4,
+  fails (VI.6.3j), and Spin(4k+2), k >= 2, and E6 have rational cohomology in a degree 4i below the top (Spin(10): 3 + 9 = 12;
+  E6: 3 + 9 = 12), the room that breaks rigidity for SU(N) [paper, rational test; the surgery step not written out for them].
+  A non-abelian factor carries the phase only through its centre, a finite subgroup of U(1): Z_2 for SU(2), Z_3 for SU(3), glued to
+  hypercharge as Z_6 [Lean, IX.3]. Reading: only U(1) carries content across the gate, and non-abelian factors certify only through
+  their centre on the U(1) circle. Care point: "carries content" is identified with "has a complex representation"; that
+  identification is the reading.

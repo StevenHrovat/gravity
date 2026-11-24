@@ -224,8 +224,18 @@ it (IX.5e stays open).
 * **The Standard Model's factors are the rigid ones.** Among U(1) and the SU(N), the groups determined by their homotopy type are
   exactly U(1), SU(2) and SU(3) **[paper]** (from VI.6.3j, VI.6.3k) (IX.6i). The owner reads the selection as rotation: other
   compact groups do not survive it, and SU(N) is the language the encoder speaks (Part X 4.4). It would be a DMP-flavoured
-  consequence beyond the standard expectation (IX.5e) once the other groups are settled; for now it is a reading, and the check
-  that would test it, the rigidity of Sp(2) = Spin(5) and G2, is **[open]** (IX.6j).
+  consequence beyond the standard expectation (IX.5e) once the other groups are settled; for now it is a reading. The rigidity of
+  Sp(2) = Spin(5) and G2 is **[open]** (IX.6j), but by the next bullet it no longer decides anything.
+* **Only U(1) carries content across the gate.** The owner's reading: the survivors carry nothing across the gate; only U(1) does,
+  so only it certifies. Exact counterpart: content crosses as a phase with a direction, in a representation that is not its own
+  conjugate. Among compact simple groups such representations exist exactly for SU(N), N >= 3, Spin(4k+2) and E6; G2, Sp(n),
+  Spin(2n+1) and SU(2) have only self-conjugate ones, and U(1) has the charges **[classical]** (IX.6k). So Sp(2) and G2 carry no
+  oriented phase, rigid or not. Among the groups that can, rigidity leaves only SU(3): SU(N), N >= 4, fails, and Spin(4k+2),
+  k >= 2, and E6 have the same rational room below the top **[paper]** (rational test; the surgery step not written out for
+  them) (IX.6l). A non-abelian factor carries the phase only through its centre on the U(1) circle, Z_2 for SU(2) and Z_3 for
+  SU(3), glued to hypercharge as Z_6 **[Lean]** (IX.3). In the owner's words, only U(1) certifies; the factors certify through it
+  **[reading]** (IX.6m). Care point: "carries content" is identified with "has a complex representation", and that identification
+  is the reading.
 
 ## IX.7 What would close it
 

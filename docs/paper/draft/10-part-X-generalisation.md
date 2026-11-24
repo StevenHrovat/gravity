@@ -334,7 +334,10 @@ valid encoder, the shared gate) and being understood (a correct marker) give DMP
 (`scale_certificate`; claim X.69b). So anything that rotates correctly from the rigid start is correct if DMP is correct:
 **conditional** on X.64 (claim X.69c). Care points: this covers SU(N), not every conceivable start; and "other compact groups do not
 survive rotation" is open. If surviving means rigidity, Sp(2) = Spin(5) and G2 pass the rational test that excludes SU(N), N >= 4,
-and their rigidity was not checked (claim IX.6j), which makes the reading falsifiable.
+and their rigidity was not checked (claim IX.6j). The owner's further reading settles what matters: only U(1) carries content across
+the gate. Sp(2) and G2 have only self-conjugate representations, so they carry no oriented phase whether or not they are rigid, and
+among the groups that can carry one, rigidity leaves only SU(3), which carries it through its centre on the U(1) circle
+(claims IX.6k to IX.6m).
 
 **The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost
 per scale (VI.3.4, **[Lean]** in the model). In the owner's reading nothing more needs or can be said than that it is not

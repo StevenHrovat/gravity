@@ -616,7 +616,10 @@ Notes relative to `docs/pnp/`.
 | IX.6g | Every SU(N) "describes existence"; descending from 2 and 3 | reading | `PREP.md`, same entry | none |
 | IX.6h | SU(2) as the stable Ricci-flow profile (Part VI.6) has no found link to the global form Z_6 | paper (observation; under IX.6's readings) | GU 3.3 | a link |
 | IX.6i | Among U(1) and the SU(N), the groups determined by their homotopy type are exactly U(1), SU(2), SU(3), the Standard Model's factors; that rigidity selects them is the owner's reading | paper (the selection: reading) | VI.6.3j, VI.6.3k; `PREP.md`, 2026-11-24, "The rigid start" | IX.6j |
-| IX.6j | "Other compact groups do not survive rotation", read as rigidity: Sp(2) = Spin(5) and G2 have no rational cohomology in degrees 4i below the top, so the rational test that excludes SU(N), N >= 4, does not exclude them; their rigidity is not checked | open | `PREP.md`, 2026-11-24, "The rigid start", care point | a computation of their structure sets (normal invariants and the surgery obstruction) |
+| IX.6k | Among compact simple groups, representations that are not their own conjugate exist exactly for SU(N), N >= 3, Spin(4k+2) and E6 (-1 not in the Weyl group); G2, Sp(n), Spin(2n+1) and SU(2) have only self-conjugate ones; U(1) has the charges e^{iq theta} | classical | Lie theory (e.g. Slansky, Phys. Rep. 79 (1981)); `PREP.md`, 2026-11-24, "Only U(1) carries content" | none |
+| IX.6l | Among the groups of IX.6k with complex representations, only SU(3) is rigid: SU(N), N >= 4, is not (VI.6.3j); Spin(4k+2), k >= 2, and E6 have rational cohomology in a degree 4i below the top (Spin(10) and E6: degree 12), the room that breaks rigidity for SU(N) | paper (rational test; the surgery step not written out for Spin and E6) | VI.6.3j; `docs/unified/PERELMAN-DMP.md` 2.3 | the surgery step for Spin(4k+2) and E6 |
+| IX.6m | Only U(1) carries content across the gate; a non-abelian factor certifies only through its centre on the U(1) circle (Z_2, Z_3, glued as Z_6); "carries content" read as "has a complex representation" | reading | `PREP.md`, 2026-11-24, "Only U(1) carries content"; IX.3 (Z_6, Lean) | none |
+| IX.6j | "Other compact groups do not survive rotation", read as rigidity: Sp(2) = Spin(5) and G2 have no rational cohomology in degrees 4i below the top, so the rational test that excludes SU(N), N >= 4, does not exclude them; their rigidity is not checked; by IX.6k they carry no oriented phase either way, so the check no longer decides the reading | open | `PREP.md`, 2026-11-24, "The rigid start", care point | a computation of their structure sets (normal invariants and the surgery obstruction) |
 | IX.7a | Route 1: a DMP principle, stated before the hypercharges and proved as a theorem about running existence spaces, whose consequence is that the surviving centre twists are glued maximally to the U(1) | open | GU 6, item 1 | the theorem |
 | IX.7b | Route 2, done classically in Lean: for one generation with the Standard Model representations the four anomaly conditions (SU(3)^2 U(1), SU(2)^2 U(1), gravitational, U(1)^3) have exactly the solutions q = q_Q (1, 4, -2, -3, -6), up to u <-> d, and the degenerate family q_Q = 0; with q_Q > 0 and coprime charges the charges are those of `smFields`, and the centre acting trivially is the Z_6 (composing with `sm_kernel`, `gen_trivial_iff`). The input is a classical theorem, not a DMP one | Lean | `ProofPhase/Closures/Anomaly.lean`, `anomalyFree_iff`, `anomaly_fixes_sm`, `fermion_kernel`, `anomaly_fixes_Z6`; Geng-Marshak 1989; Minahan-Ramond-Warner 1990 | none (the degenerate family is excluded by q_Q > 0, the Yukawa input, stated in the file) |
 | IX.7c | Route 3: twist sectors of a lattice SU(3) x SU(2) x U(1) theory with Z_6-invariant vector-like matter; chiral matter stays out of reach | open | GU 6, item 3 | the extension of the `SUNTwist` chain |
@@ -819,20 +822,20 @@ Part IX row IX.0b was a cross-reference and is folded; the scope rows that stay 
 
 Counted on the rows above (each row once, by its first mark; scope rows not counted: 0.1, III.0, VI.0e, VII.0e, VIII.0d, IX.0a, IX.0d). The draft 3 column is the count of the committed draft; the next column is after the audit of 2026-11-24 (rows removed and added, status changes, `certified` as its own mark, II.11.2 and II.11.3 counted as Lean):
 
-| Status | After the rigid start (2026-11-24) | After the one-box test (2026-11-24) | After VI.6.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
-|---|---|---|---|---|---|---|---|---|
-| Lean | 232 | 231 | 221 | 221 | 221 | 221 | 239 | 114 |
-| classical | 122 | 121 | 121 | 121 | 121 | 121 | 120 | 42 |
-| external | 41 | 41 | 41 | 40 | 40 | 40 | 48 | 7 |
-| conditional | 7 | 6 | 5 | 5 | 4 | 4 | 4 | 3 |
-| paper | 58 | 56 | 56 | 56 | 56 | 56 | 63 | 27 |
-| numerical | 22 | 22 | 22 | 22 | 22 | 22 | 24 | 17 |
-| certified | 2 | 2 | 2 | 2 | 2 | 2 | 0 | 0 |
-| reading | 89 | 88 | 87 | 87 | 86 | 83 | 83 | 25 |
-| open | 46 | 45 | 44 | 45 | 47 | 48 | 70 | 28 |
-| **Total** | **619** | **612** | **599** | **599** | **599** | **597** | **651** | **263** |
+| Status | After the U(1) reading (2026-11-24) | After the rigid start (2026-11-24) | After the one-box test (2026-11-24) | After VI.6.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
+|---|---|---|---|---|---|---|---|---|---|
+| Lean | 232 | 232 | 231 | 221 | 221 | 221 | 221 | 239 | 114 |
+| classical | 123 | 122 | 121 | 121 | 121 | 121 | 121 | 120 | 42 |
+| external | 41 | 41 | 41 | 41 | 40 | 40 | 40 | 48 | 7 |
+| conditional | 7 | 7 | 6 | 5 | 5 | 4 | 4 | 4 | 3 |
+| paper | 59 | 58 | 56 | 56 | 56 | 56 | 56 | 63 | 27 |
+| numerical | 22 | 22 | 22 | 22 | 22 | 22 | 22 | 24 | 17 |
+| certified | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 0 | 0 |
+| reading | 90 | 89 | 88 | 87 | 87 | 86 | 83 | 83 | 25 |
+| open | 46 | 46 | 45 | 44 | 45 | 47 | 48 | 70 | 28 |
+| **Total** | **622** | **619** | **612** | **599** | **599** | **599** | **597** | **651** | **263** |
 
-The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved III.9.5b to conditional on X.64 (placed at the ODP's end, as X.66) and VI.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The Perelman round settled VI.6.3j (open to external: N = 3 rigid in both categories, Wang; N >= 4 not, paper). The one-box test (the rotation API) added 13 rows: I.8i to I.8k, III.10c to III.10e, VI.7g, VI.7h, X.68 to X.68d (10 Lean, 1 open, 1 reading, 1 conditional). The rigid start added 7 rows: VI.6.3k, IX.6i, IX.6j, X.69 to X.69c (1 Lean, 1 classical, 2 paper, 1 reading, 1 conditional, 1 open: the rigidity of Sp(2) and G2). The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
+The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved III.9.5b to conditional on X.64 (placed at the ODP's end, as X.66) and VI.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The Perelman round settled VI.6.3j (open to external: N = 3 rigid in both categories, Wang; N >= 4 not, paper). The one-box test (the rotation API) added 13 rows: I.8i to I.8k, III.10c to III.10e, VI.7g, VI.7h, X.68 to X.68d (10 Lean, 1 open, 1 reading, 1 conditional). The rigid start added 7 rows: VI.6.3k, IX.6i, IX.6j, X.69 to X.69c (1 Lean, 1 classical, 2 paper, 1 reading, 1 conditional, 1 open: the rigidity of Sp(2) and G2). The U(1) reading added IX.6k (classical), IX.6l (paper) and IX.6m (reading). The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open
