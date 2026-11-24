@@ -43,8 +43,11 @@ worst-case question P vs NP.
    polynomial time. Lattice gauge theory is on the ferromagnetic side. **[classical]**
 5. **The owner's entry, formalized**: "inputs whose existence is described by DMP-complete systems" becomes a promise
    class of inputs that carry a local certificate (influence below 1 at a fixed scale with uniform constants; for
-   constraint problems, the Lovasz local lemma condition). On that class: existence is guaranteed (decision is
-   trivial), search, sampling and approximate counting are polynomial. **[classical]**, assembled here. That is "P = NP
+   constraint problems, the Lovasz local lemma condition). On the influence class: existence is guaranteed (decision is
+   trivial), search, sampling and approximate counting are polynomial. On the local-lemma class: existence and search
+   only; sampling and approximate counting need a strengthened regime (Moitra, degree below 2^{k/60}), and above about
+   2^{k/2} approximate counting is NP-hard unless NP = RP (paper Part VI.1.8, VI.2.2). **[classical]**, assembled here
+   (corrected 2026-11-24 after the part review R5). That is "P = NP
    within a DB" as a theorem about a class.
 6. **It does not reach worst-case P vs NP by itself.** "Every input is in the class" is false for NP-complete problems
    (no-instances have no existence to certify), and the NP-hardness results beyond uniqueness say that extending the

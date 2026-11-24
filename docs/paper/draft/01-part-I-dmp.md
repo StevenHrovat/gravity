@@ -223,7 +223,9 @@ no intrinsic tick. **[reading]** on the classical spectral fact of II.10.
 **DMP.** The author's one-line description of DMP: it is a very well defined *existence linter*. A linter checks a text against a
 rule set and says nothing about what the text means. The author reads Gravity, the repository that holds the machine-checked
 evidence, as the linter, and DMP as the universally readable rule set that is its passing condition. Gravity and DMP sit at one
-node of the root chain. Each keeps the other honest: neither can change without the other's check seeing it.
+node of the root chain, and the author reads them as keeping each other honest **[reading]**. The pin itself runs one way: Gravity
+holds a pinned copy of DMP and checks its hash, while DMP, in its own words, "depends on nothing" and holds no copy of anything else
+(`vendor/dmp/00-preamble.md`, "The root chain").
 
 **Reading (I.8).** Existence, in the sense of I.1, is what the linter passes. A statement exists in the system when it is
 constructed, by the kernel, from DMP's pinned sentences and rests on nothing else. Whatever cannot be so constructed is not part of
@@ -239,9 +241,9 @@ the system (I.2). **[reading]** (claim I.8a)
   draft) (claim I.8b)
 * **The arsenal has the same shape at small size** (II.6): its lint is the linter, and "Mathlib v4.34.0 only, no escape hatch, an
   open part only as a named R136a1 hypothesis" is its passing condition. **[paper]** (claim I.8c)
-* **The root chain pins in both directions.** Gravity holds a pinned copy of DMP (`vendor/dmp/PIN`, hash checked by
-  `tools/check-pin.sh`). That DMP pins Gravity in turn is the author's statement and the notes'; it was not re-read for this draft.
-  **[paper]** (claim I.8d)
+* **The root chain pins one way.** Gravity holds a pinned copy of DMP (`vendor/dmp/PIN`, hash checked by `tools/check-pin.sh`);
+  DMP depends on nothing and pins nothing (`vendor/dmp/00-preamble.md`). That the two keep each other honest is the author's reading
+  of the shared node. **[paper]** for the pin; **[reading]** for the mutual honesty (claim I.8d)
 
 **Three care points.**
 

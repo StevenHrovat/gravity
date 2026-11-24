@@ -30,7 +30,7 @@ before it can be interpreted in a way that produces more insight. Treated as a t
 meaning becomes apparent and its place in existence slots neatly into a better picture.)
 
 *Editorial notes for the owner (to remove before publication): (1) the Riemann sentence is phrased as your reading; a historical claim
-about what Riemann did or did not realize would draw objections, since his 1859 paper introduced the zeta function as a tool for
+about what Riemann did or did not realize would draw objections, since his 1859 paper used the zeta function, as a function of a complex variable, as a tool for
 counting primes. (2) "Goettingen" is transliterated here per the repository rule; the typeset version can use the umlaut. (3) The
 note says "One thing led to three"; the paper now covers seven problems, so you may want to update that sentence.*
 
@@ -90,8 +90,8 @@ explicit bound; without a floor no procedure decides it. The start is fixed wher
   L-functions were proved in Lean by others in November 2026, by a route that does not use positivity (external: read here, not rebuilt); GRH beyond Dirichlet
   L-functions is open.
 * *NP vs coNP:* lifting with constant-size gadgets, and with it super-polynomial lower bounds for strong proof systems.
-* *Navier-Stokes:* regularity or blowup of the equations themselves. DMP's reading predicts blowup (the equations are not
-  DMP-complete), so global regularity would refute it. Two posted blowup claims by others are unrefereed and unchecked here; one
+* *Navier-Stokes:* regularity or blowup of the equations themselves. DMP's reading takes blowup as the expected outcome (the
+  equations are not DMP-complete); the reading was made after the posted claims, and global regularity would refute it. Two posted blowup claims by others are unrefereed and unchecked here; one
   rests on a certificate that is announced, not released.
 * *BSD:* the rank equals the order of the zero at s = 1, from order 2 on.
 * *Hodge:* codimension p >= 2 in general.

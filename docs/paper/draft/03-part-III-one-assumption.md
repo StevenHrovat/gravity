@@ -353,8 +353,8 @@ the gate. Sp(2) and G2 have only self-conjugate representations, so they carry n
 among the groups that can carry one, rigidity leaves only SU(3), which carries it through its centre on the U(1) circle
 (claims A.5k to A.5m). The owner closes the circle: Sp(2) and G2 are the U(1) gate's two hidden witnesses, dimensionless to
 the encoder, and with SU(3) they are the three compact simple groups of rank 2 (claims A.5n, A.5o). The reading needs the
-witnesses rigid: Sp(2) is, in the strong form; G2 has exactly two structures, and whether the second is G2 itself is one open test
-(claims A.5j, A.5p, A.5r).
+witnesses rigid: Sp(2) is, in the strong form, by a surgery computation **[paper]**; G2 has exactly two structures **[paper]**, and
+whether the second is G2 itself is one open test **[open]** (claims A.5j, A.5p, A.5r).
 
 **What can be shown about O1.** The owner's statement: the only thing that can be shown is that O1 does not fail for anything that
 can be described as existing in the containing DB. Three things stand behind it, each with its own status.
@@ -373,7 +373,8 @@ can be described as existing in the containing DB. Three things stand behind it,
 **The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost
 per scale (VII.3.4, **[Lean]** in the model). In the owner's reading nothing more needs or can be said than that it is not
 DMP-complete, and blowup is the expected consequence **[reading]** (VII.7e). This makes the framework falsifiable: a proof of global
-regularity would refute the prediction, and a certified blowup profile would confirm it (VII.5.1, **[open]**).
+regularity would refute the reading, and a certified blowup profile would agree with it (VII.5.1, **[open]**). The reading was made
+after the posted blowup claims (VII.7), so it is an expectation, not a prediction made before them.
 
 **What follows under it.** If the process is accepted, every start is oriented, that is directed through `{infinity, 2, 3}`:
 
