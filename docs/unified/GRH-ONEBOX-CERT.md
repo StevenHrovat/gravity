@@ -1,6 +1,6 @@
 # The one-box certificate: Weil's form is positive where only 2 and 3 enter
 
-Private working note, 2026-11-23. Follows `docs/rh-guide/grh/SEMILOCAL.md` (sections 0 to 2) and the blueprint in
+Working note, 2026-11-23; its analytic estimates have been read by the coordinator only, not independently (paper Part III 4.4, V.8). Follows `docs/rh-guide/grh/SEMILOCAL.md` (sections 0 to 2) and the blueprint in
 `BLOWUP.md` section 1 (Chen-Hou: a finite part handled by rigorous numerics, an analytic tail, constants that close
 an inequality). Scripts: `grh_onebox_cert.py` (the certificate), `grh_onebox_cert_diag.py` (diagnostics, not part of
 the proof). Lean: `ProofPhase/GRH/OneBoxCert.lean`, audit `grhonebox-axioms.sh` / `.log`.

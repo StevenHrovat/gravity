@@ -79,6 +79,9 @@ The paper leaves the draft stage only under the release criterion (`OUTLINE.md`)
 | Stage 3, consolidation | 2026-11-24 | `review/consolidation.md`: every finding with its action, the owner's decisions and readings of the day | all blockers and findings acted on; open by design: the personal note's sentences (the owner's) |
 | Independent re-check, quick, release | 2026-11-24 | at `897ef5c`: stamp matches; 15 changed modules replayed, fail=0; axiom audit `NONSTD_AXIOMS []`; nanoda 74,295 declarations, no typechecker errors (one pretty-printer error, not a check failure) | passed |
 | Independent re-check, quick, after the essence | 2026-11-24 | at `db9fbc7`: stamp matches; 2 changed modules (`ETM.ETM`, `ETM.Essence`) replayed, fail=0; `NONSTD_AXIOMS []`; nanoda 15,257 declarations, no typechecker errors | passed |
+| Stage 3b, review of the assembled paper | 2026-11-24 | Opus and Fable on `68f5c48`, independently; `review/assembled-opus.md` (gravity #55), `review/assembled-fable.md` (#56) | 4 blockers (1 Opus, 3 Fable), 68 other findings |
+| Stage 3b, fixes | 2026-11-24 | `review/consolidation-3b.md`: every finding with its action; the author line by the owner | all blockers fixed (one in Lean); structure (Part III after the parts, a readings appendix) waits for the owner; F40 work plans and m1 not done |
+| Independent re-check, quick, after stage 3b | 2026-11-24 | at `d0257ab`: 18 changed modules replayed, fail=0; `NONSTD_AXIOMS []`; nanoda 75,100 declarations, no typechecker errors; evidence gate with pin check OK 285 | passed |
 | IM arsenal, full check | 2026-11-24 | `arsenal/tools/check.sh` at the pin `b01adbd`: lint, build against Mathlib, kernel axiom report | passed, 223 declarations, standard axioms only |
 | Bibliography, stage 3 | 2026-11-24 | `references.md` corrected and completed from three lookup rounds (haiku), merged by the coordinator | 195 works: 123 checked, 72 partly checked, none unidentified; DOIs for 26 rows |
 

@@ -173,8 +173,8 @@ the contraction class. Whether it reaches balance is undecidable for all content
 truth value exists (classically) but cannot be computed. **[Lean]** (`etm`, `etm_universal`, `etm_not_contracting`,
 `etm_balance_undecidable`, `etm_truth_edge`; both sides in one statement, `etm_edge`). The same statement is XI.2b.
 
-**What it says in one line.** With a floor, settling is decidable within an explicit bound. At the floor there are systems (the
-universal machine) for which it is not; a lossless system as such need not be undecidable (II.0). The step from the second case to
+**What it says in one line.** When every step pays a cost above the floor, settling is decidable within an explicit bound. When
+steps may pay exactly the floor there are systems (the universal machine) for which it is not; a lossless system as such need not be undecidable (II.0). The step from the second case to
 the first is the open step of every card (Part III, sections 4 and 5).
 
 **One step, one `decide`.** The first author's definition: a DMP-complete proof is lintable in one step, relying only on `decide`.
@@ -314,7 +314,7 @@ a type checker written independently in Rust, checks an export of every declarat
 for the modules a run covered (below). A full run once established a trusted base, Mathlib and Lean core at the pinned commit,
 recorded by hash in a stamp. Later runs re-check only the modules whose source or imports changed, against that stamp.
 
-**What the runs covered.** Four runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
+**What the runs covered.** Five runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
 commit `2cb301c`, covered 358 modules, including the imported IM arsenal, which is checked like the project's own code and is never
 part of the trusted base: `leanchecker` replayed every changed module with no failure, the axiom audit found no declaration resting
 on anything beyond `propext`, `Quot.sound` and `Classical.choice`, and `nanoda_lib` checked 103,282 declarations with no type-checker
@@ -324,7 +324,10 @@ the stage-3 consolidation), covers every module: the stamp matched, 15 modules h
 with no failure, the axiom audit reported no non-standard axiom, and `nanoda_lib` checked the 74,295 declarations of those modules
 and what they use with no type-checker error **[Lean, re-checked]**; after `ETM/Essence.lean` grew by the decided links, a further
 quick run at `db9fbc7` replayed the 2 changed modules with no failure, found no non-standard axiom, and `nanoda_lib` checked 15,257
-declarations with no type-checker error. Later commits change no Lean. At the same commit IM's own full check of the arsenal (at the pin
+declarations with no type-checker error. After the crossing theorem took the form its proof uses (`Proof/Crossing.lean`, II.14),
+a last quick run at `d0257ab` replayed the 18 changed modules with no failure, found no non-standard axiom, and `nanoda_lib`
+checked 75,100 declarations with no type-checker error; the evidence gate, with the pin check, passed at the same commit (285
+theorems). Later commits change no Lean. At the same commit IM's own full check of the arsenal (at the pin
 `b01adbd`: lint, build against Mathlib, the kernel's axiom report) passed with 223 declarations, none resting on more than the three
 standard axioms, and the axiom logs of the rotation round (125 declarations, `docs/unified/rotation-axioms.log`) and of the Hodge
 modules (47, `docs/unified/hodge-axioms.log`) were regenerated and show the same. The scan for escape hatches reads code only, as the
