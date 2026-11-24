@@ -4618,3 +4618,21 @@ thread.
   there [certified for the start; conditional on the acceptance for every later tick]. Care point (for the paper's wording): the
   acceptance is stated once, as the paper's one assumption, and every result that uses it is marked conditional on it; the gates
   ask for it proved, so the abstract says "conditional on the established process (O1)" until then. Passed to the Part X writer.
+- **Existence as a piano, with rotation giving meaning by enforcing a balanced-state arrow onto its tuning (the owner, 2026-11-24):**
+  "BTW, does this mean that existence is a piano with the action of rotation giving it meaning by enforcing a balanced state arrow
+  onto its 'tuning'?" Exact counterpart (coordinator): tuning is built from exactly the start {2, 3}: the octave is the ratio 2,
+  the fifth 3/2, and pitch modulo the octave is a circle on which a fifth is a rotation by `log2(3/2)`. Because `log2 3` is
+  irrational, stacking pure fifths never closes the circle: twelve fifths overshoot seven octaves by the Pythagorean comma,
+  `3^12 / 2^19 = 1.01364` [classical, exact]. Equal temperament is the balanced state: it spreads that finite loss evenly over all
+  twelve steps (each fifth `2^{7/12}`), so the rotation closes and every key is usable; 12 is the convergent `19/12` of `log2 3`
+  [classical]. So: the comma is the finite loss excised at the start (entry "the needed excision of a finite amount of loss at the
+  beginning"), and temperament is the arrow that makes every tick (key) equivalent. On the zeta side the explicit formula is
+  literally a sum of tones: each zero `1/2 + i gamma` contributes an oscillation of frequency `gamma` in `log x`, and on the critical
+  line all of them have the same amplitude `x^{1/2}`: RH says every string of the piano is tuned to the same loudness [classical;
+  "the music of the primes" is a known popular reading]. Care point: the piano is a reading [reading]; the comma, temperament and the
+  tones of the explicit formula are exact.
+  The owner (same day): "This extra reading should go into the paper as a helping guide, with the idea given to me, and credited for
+  that transfer, by VSauce. With the care point moving the reading to the expected final tone resonating outward at its end, with no
+  further statement being needed, other than that such a configuration is describable and in that description DMP-complete." Done:
+  introduction, "A guide by ear: the tempered piano", credited to Vsauce for the transfer of the idea; its care point ends on the
+  final tone and states only describability and DMP-completeness as described [reading]; rows 0.10 to 0.13.

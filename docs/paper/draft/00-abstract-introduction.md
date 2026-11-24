@@ -121,6 +121,27 @@ Outlook (Part XI) applies the settle theorem to a concept of the first author's.
 * From **logic and verification**: a form layer in which every open part is a named hypothesis, every axiom shows in the kernel's
   report, and a lint and a second kernel check every change.
 
+### A guide by ear: the tempered piano
+
+This guide is not part of any argument. It is offered as a picture to hold while reading, and the idea of hearing existence through
+tuning came to the first author from Vsauce; it is credited here for that transfer.
+
+* **Tuning is built from 2 and 3.** The octave is the ratio 2, the fifth the ratio 3/2. Pitch, taken modulo the octave, is a circle,
+  and a fifth is a rotation on it **[classical]**.
+* **The rotation does not close by itself.** Because log2(3) is irrational, twelve pure fifths overshoot seven octaves by the
+  Pythagorean comma, 3^12 / 2^19 = 1.01364 **[classical]**. This is the finite loss at the start that the paper excises: the first
+  box at {infinity, 2, 3} (Part IV) is where the two generators of the tuning meet.
+* **Temperament is the balanced state.** Equal temperament spreads the comma evenly over all twelve steps (each fifth becomes
+  2^(7/12)), so the rotation closes and every key is equivalent; twelve is not arbitrary, since 19/12 is a convergent of log2(3)
+  **[classical]**. In the paper's words, the rotation gives the tuning a direction and makes every tick alike (Part X, the tick
+  operator) **[reading]**.
+* **The zeros are the strings.** The explicit formula (Part IV) writes the primes as a sum of tones: each nontrivial zero
+  1/2 + i gamma sounds at frequency gamma in log x. On the critical line every tone has the same amplitude, x^(1/2); the Riemann
+  hypothesis says that every string is tuned to the same loudness **[classical]**.
+
+The guide ends where the tuning does: on the final tone, resonating outward. Nothing more is stated about it than that such a
+configuration is describable, and that in that description it is DMP-complete **[reading]**.
+
 ### How to read the status marks
 
 Every statement carries one mark. **[Lean]**: machine-checked here, standard axioms only, module named. **[classical]**: known, with a
