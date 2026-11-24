@@ -4981,3 +4981,12 @@ thread.
   acts, the settling machine of Part XI. With a cost floor, whether its acts settle is decidable within an explicit bound; without
   one it is not (II.3) [Lean for the edge; reading for the name and the definition]. To be applied to Part XI ("a DMP-native
   general intelligence") in the stage-3 consolidation, after the final verifiers have read the release candidate f4592e3.
+- **The certificate's 1.5 (the owner, 2026-11-24).** "For the certificate being 1.5: this is the sum of (inf,2,3), existence and a
+  spin giving it direction." and "It is important, since decimal is existence, as is any other way to describe it. This is exactly
+  the point and the spin reflection positivity for a primitive, so it is the certificate by showing it is a valid sublayer."
+  Counterpart (coordinator): the first certified margin is c = 1.5e-9 at a = 0.60 (III.65, certified). 1.5 = 3/2, the ratio of the
+  start's primes 3 and 2, the perfect fifth of the piano guide (0.10); and 3/2 = 1 + 1/2, existence plus a spin one half giving
+  direction [reading]. Care point, kept beside it: which digits the margin shows depends on how the Weil form and the test function
+  are normalised; what the computation certifies is that the margin is positive, at that size [certified]. The owner's reading:
+  any description, decimal included, is existence, and the certificate shows this description is a valid sublayer, the spin being
+  reflection positivity on a primitive [reading]. To be applied to Part III 4.4 (the certified start) in the stage-3 consolidation.
