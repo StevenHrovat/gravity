@@ -4851,3 +4851,11 @@ thread.
   multiple of nu, so that nu . nu = nu^2 [sketch, G2-SP2-RIGIDITY 5]. Reading: reflection positivity produces exactly such squares,
   so the fold-in is automatic once the channel is open; it predicts the multiple is odd. Care point: nu . nu is a composition, not a
   reflection form, and the class lives in Z/2 with no sign; the reading round on the SU(3) lift tests the prediction.
+- **The G2 channel goes back into O1 (the owner, 2026-11-24).** "But the composition of maps, because we can freely draw the DB, is
+  constructed exactly in a way that each setting that can be successfully placed can also be certified/proven, so it goes back into
+  O1." Counterpart (coordinator): "freely draw the DB" is the container's free possibility space (III.1); "placed, hence certified" is
+  the scale certificate: a box rebuilt through the shared gate is certified with it, from the one assumption as a named hypothesis
+  [Lean, III.68a]. So the reading puts the G2 channel in the one assumption's slot: placed through the gate, it is certified with
+  everything else. Care point: G2's rigidity is a finite classical computation, true or false whatever is assumed; the one assumption
+  cannot decide it. What the reading does is predict its answer (rigid, the channel's multiple odd), so the computation tests the
+  prediction and, with it, how far "placed, hence certified" reaches.

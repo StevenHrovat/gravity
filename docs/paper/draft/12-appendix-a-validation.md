@@ -113,6 +113,10 @@ The owner asked whether Perelman's Poincare extends to every SU(N) through DMP. 
   self-equivalence of G2, which is the test of A.5r; the reading predicts that it exists. The test now has one live candidate, a map that runs through SU(3), the
   confined fibre of G2 -> S^6, whose top cell opens onto G2's 8-cell **[classical]**; it carries the fake's class exactly when what
   crosses that channel is an odd multiple of nu, squared to nu^2 **[sketch]**. The owner reads this as a confined CMOS that needs its
-  interface channel open, with the square folding in through reflection positivity, which predicts "odd" **[reading]** (A.5s). The owner reads the missing
+  interface channel open, with the square folding in through reflection positivity, which predicts "odd" **[reading]** (A.5s). The
+  owner goes one step further: since the DB can be drawn freely, whatever can be placed through the gate can be certified, so the
+  channel goes back into O1, the one assumption (III.68a, the scale certificate, **[Lean]** from it) **[reading]** (A.5t). Care
+  point: G2's rigidity is a finite computation, true or false whatever is assumed, so the assumption cannot decide it; the reading
+  predicts its answer, and the computation tests both the prediction and how far "placed, hence certified" reaches. The owner reads the missing
   sign itself as the point: Z/2 carries no order, so no floor, so no decidable reading, and only a start that forces one is
   DMP-complete (Part III 4.3, III.70).
