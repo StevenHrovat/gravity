@@ -17,6 +17,11 @@ OUT = os.path.join(ROOT, 'latex')
 SPECIAL = {'\\': r'\textbackslash{}', '&': r'\&', '%': r'\%', '$': r'\$', '#': r'\#', '_': r'\_', '{': r'\{', '}': r'\}',
            '~': r'\textasciitilde{}', '^': r'\textasciicircum{}', '<': r'\textless{}', '>': r'\textgreater{}', '|': r'\textbar{}'}
 
+GREEK = dict(zip('αβγδεζηθικλμνξπρστφχψωΓΔΘΛΞΠΣΦΨΩ',
+                 ['alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi',
+                  'pi', 'rho', 'sigma', 'tau', 'phi', 'chi', 'psi', 'omega', 'Gamma', 'Delta', 'Theta', 'Lambda', 'Xi', 'Pi',
+                  'Sigma', 'Phi', 'Psi', 'Omega']))
+
 def esc(t):
     return ''.join(SPECIAL.get(ch, ch) for ch in t)
 
@@ -32,6 +37,7 @@ def inline(t):
                lambda m: hold(r'\href{' + m.group(2).replace('%', r'\%').replace('#', r'\#') + '}{' + emph(esc(m.group(1))) + '}'), t)
     t = emph(esc(t))
     t = re.sub(r'"([^"\x00]*)"', r"``\1''", t)
+    t = ''.join(('\\ensuremath{\\%s}' % GREEK[ch]) if ch in GREEK else ch for ch in t)
     return re.sub('\x00(\\d+)\x00', lambda m: held[int(m.group(1))], t)
 
 def emph(t):
@@ -128,7 +134,49 @@ def convert(md):
     flush_para(); close_lists()
     return '\n'.join(out)
 
+def bibliography_checked():
+    """The bibliography from docs/paper/references.md (one table row per work, each checked against the page named), if it exists."""
+    p = os.path.join(ROOT, 'references.md')
+    if not os.path.exists(p):
+        return None
+    rows = []
+    for line in io.open(p, encoding='utf-8').read().splitlines():
+        if not line.startswith('| ') or line.startswith('| #') or line.startswith('|---'):
+            continue
+        c = [x.strip() for x in line.strip().strip('|').split('|')]
+        if len(c) < 7:
+            continue
+        n, authors, title, venue, url, status = c[0], c[1], c[2], c[3], c[4], c[5]
+        if status == 'not identified':
+            title, venue, url = '', c[6], ''
+        rows.append((authors, title, venue, url, status))
+    def surname(a):
+        first = re.split(r'[;,]| and ', a)[0].strip()
+        first = re.sub(r'\(.*?\)', '', first).strip()
+        toks = [x for x in first.split() if not x.isdigit()]
+        return (toks[-1] if toks else a).lower()
+    rows.sort(key=lambda r: (surname(r[0]), r[2]))
+    body = ['\\section*{References}', '\\addcontentsline{toc}{section}{References}', '',
+            '\\noindent{\\small Every work the claims ledger cites for a classical or external row. Each entry was read from the page '
+            'given (arXiv, the publisher, or zbMATH); entries marked \\emph{(partly checked)} have a field that could not be read '
+            'there.}', '', '\\begin{enumerate}[label={[\\arabic*]},leftmargin=2.5em,itemsep=1pt]']
+    for authors, title, venue, url, status in rows:
+        if status == 'not identified':
+            body.append('\\item ' + inline(venue) + ' \\emph{(not yet identified)}')
+            continue
+        t = inline(authors) + ', \\emph{' + inline(title) + '}, ' + inline(venue) + '.'
+        if url:
+            t += ' \\url{' + url.replace('%', '\\%').replace('#', '\\#') + '}'
+        if status != 'checked':
+            t += ' \\emph{(partly checked)}'
+        body.append('\\item ' + t)
+    body.append('\\end{enumerate}')
+    return '\n'.join(body), len(rows)
+
 def bibliography():
+    checked = bibliography_checked()
+    if checked:
+        return checked
     s = io.open(os.path.join(ROOT, 'CLAIMS.md'), encoding='utf-8').read()
     s = s[:s.index('## Draft 3 labels')]
     seen, items = set(), []
