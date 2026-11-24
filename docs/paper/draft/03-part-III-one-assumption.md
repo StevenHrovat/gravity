@@ -1,6 +1,6 @@
 # Part III. The one assumption and the rigid start: what the cards show together
 
-*Draft 3, 2026-11-24. Claim labels (X.n) are listed in `../CLAIMS.md`; the labels new in this draft (III.8 onward) are in
+*Draft 3, 2026-11-24. Claim labels (III.n; X.n in draft 3) are listed in `../CLAIMS.md`; the labels new in draft 3 (X.8 onward) were in
 `../claims-incoming/X-generalisation.md` until the coordinator merges them.*
 
 ## III.0 How to read this part

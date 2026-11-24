@@ -1,7 +1,7 @@
 # Part VI. P vs NP: inside a certified class, and across it
 
 *Draft 2, 2026-11-23. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/pnp/`. Claim labels (V.n) are listed in `../CLAIMS.md`.*
+`docs/pnp/`. Claim labels (VI.n; V.n in draft 3) are listed in `../CLAIMS.md`.*
 
 ## VI.0 What is proved and what is not
 

@@ -1,8 +1,7 @@
 # Part X. GU: the Grand Unified reading
 
 *Draft 2, 2026-11-24. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/unified/`. Claim labels (IX.n) are listed in `../claims-incoming/IX-gu.md` until the coordinator merges them into
-`../CLAIMS.md`.*
+`docs/unified/`. Claim labels (X.n; IX.n in draft 3) are listed in `../CLAIMS.md` (merged from `../claims-incoming/IX-gu.md`).*
 
 ## X.0 What "Grand Unified" means here, and where it stands
 

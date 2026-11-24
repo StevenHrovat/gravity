@@ -1,7 +1,7 @@
 # Part V. The generalised Riemann hypothesis: the positivity route
 
 *Draft 2, 2026-11-23. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/rh-guide/`. Claim labels (IV.n) are listed in `../CLAIMS.md`.*
+`docs/rh-guide/`. Claim labels (V.n; IV.n in draft 3) are listed in `../CLAIMS.md`.*
 
 ## V.0 What is proved, by whom, and what this part does
 

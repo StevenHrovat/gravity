@@ -2,7 +2,7 @@
 
 *Draft 2, 2026-11-23. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/` (the modules of the earlier
 attempt rounds R2 to R4 live under `Attempts/`); notes relative to `docs/mass-gap/weak-coupling/`; the crossover notes are in
-`proof-phase/c9a-crossover/`. The full chain with all 91 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (III.n) are listed in
+`proof-phase/c9a-crossover/`. The full chain with all 91 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (IV.n; III.n in draft 3) are listed in
 `../CLAIMS.md`.*
 
 ## IV.0 What is proved and what is not

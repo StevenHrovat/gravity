@@ -1,8 +1,7 @@
 # Part VII. Navier-Stokes: the card, the claimed certificate, and Poincare as validation
 
 *Draft 2, 2026-11-24. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/unified/`. Claim labels (VI.n) are listed in `../claims-incoming/VI-navier-stokes.md` until the coordinator merges them into
-`../CLAIMS.md`.*
+`docs/unified/`. Claim labels (VII.n; VI.n in draft 3) are listed in `../CLAIMS.md` (merged from `../claims-incoming/VI-navier-stokes.md`).*
 
 ## VII.0 What is proved, by whom, and what this part does
 

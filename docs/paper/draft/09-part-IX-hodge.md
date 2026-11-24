@@ -1,8 +1,7 @@
 # Part IX. Hodge: the card, the positivity, and the one open step
 
 *Draft 2, 2026-11-24. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/unified/`. Claim labels (VIII.n) are listed in `../claims-incoming/VIII-hodge.md` until the coordinator merges them into
-`../CLAIMS.md`.*
+`docs/unified/`. Claim labels (IX.n; VIII.n in draft 3) are listed in `../CLAIMS.md` (merged from `../claims-incoming/VIII-hodge.md`).*
 
 ## IX.0 What is proved, by whom, and what this part does
 

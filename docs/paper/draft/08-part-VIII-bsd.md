@@ -2,7 +2,7 @@
 
 *Draft 2, 2026-11-24. Prose, with every result marked. Modules of the Mathlib-only core live in DMP.IM (the public `im` repository,
 `arsenal/Arsenal/`) and are written `Arsenal.BSD...`; they are being merged into `im` now. Lean paths of this repository are relative to
-`docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VII.n) are listed in
+`docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VIII.n; VII.n in draft 3) are listed in
 `../claims-incoming/VII-bsd.md` until the coordinator merges them into `../CLAIMS.md`.*
 
 ## VIII.0 What is proved, by whom, and what this part does
