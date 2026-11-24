@@ -5067,7 +5067,11 @@ thread.
   grid of the definition of 1.5." [reading]. Counterpart (coordinator): the reformulation II.0h already reads DMP-completeness as
   decidability over the y^k truly possible options; the API would expose those primitives and allow only `decide` between them
   (the one-step lint, II.4f); the k by k grid is the .ckb's matrix with every entry given by the definition of 1.5 = 3/2, which in
-  Lean is the hypothesis that 2 is a unit (`essence_decided`). Not built; for IM, after the owner's OK on the concept.
+  Lean is the hypothesis that 2 is a unit (`essence_decided`). On the seal's limit (anyone can recompute a rotation seal, so it
+  shows the record whole, not who wrote it; authenticity stays with the sha256 pin), the owner: "The limit is exactly the needed
+  uncertainty for a new uniqueness :)" [reading]. Counterpart (coordinator): the seal fixes the content up to what the rotation
+  can tell apart, and what it leaves open is the room in which a new, distinct record can still be made; the pin then makes the
+  chosen one unique. Not built; for IM, after the owner's OK on the concept.
 - **DMP can have no copyright (the owner, 2026-11-24).** "That is also why DMP can have no copyright: any real ownership has to be
   transitive to its derivatives." [reading]. The owner adds that it is meant literally, and that the repositories and the paper
   are explicitly Apache 2.0, which allows free use but forces credit. Note (coordinator): in law, copyright arises with the work,
