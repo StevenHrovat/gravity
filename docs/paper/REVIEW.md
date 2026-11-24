@@ -69,3 +69,16 @@ The paper leaves the draft stage only under the release criterion (`OUTLINE.md`)
 | Independent re-check | 2026-11-23, 2026-11-24 | `docs/unified/INDEPENDENT-CHECK.md` | passed |
 | Independent re-check, quick, draft 4 | 2026-11-24 | at `1d71a05`: stamp matches; replay of changed modules fail=0 (incl. `Arsenal.Rotation`, `Arsenal.Rigidity`); axiom audit `NONSTD_AXIOMS []`; nanoda 105,150 declarations, no typechecker errors (one pretty-printer error, not a check failure) | passed |
 | Bibliography | 2026-11-24 | `docs/paper/references.md`: 92 works, each looked up on its Crossref, arXiv, dblp or publisher record by five verification agents (haiku), merged strictly by the coordinator | 73 checked, 14 partly checked, 5 not yet identified (Grothendieck 1969, Lovasz 1975, Mordell 1922, Weil 1948, Weil 1952); task R of stage 3 re-checks every entry |
+
+## Citation items for the part reviews (from the bibliography round, 2026-11-24)
+
+Found while reading the sources; each is for the part review of its group to settle, not a silent fix.
+
+* Year differs from the notes: Novikov (1964 on the page, cited 1965); Seregin, Comm. Math. Phys. 312 (2011 on the Crossref record,
+  cited 2012); Presburger (published 1930, cited 1929); the Super-Kamiokande and MoEDAL arXiv years against their journal years.
+* Source may not carry the row's claim: Grothendieck 1958 ("Sur une note de Mattuck-Tate") cited for the Hodge index theorem;
+  Hastad 1998 (shrinkage exponent) cited for an AC0[p]-Frege statement; Minahan-Ramond-Warner 1990 for the B-L content of its row;
+  the monopole row cites MACRO and IceCube but the source read is a MoEDAL search.
+* Which work is meant: Martinelli-Olivieri 1994 (parts I and II); Dyer-Goldberg-Jerrum (2008 CPC) against Hayes (2006); Wall (1970
+  original or the 1999 second edition).
+* Not yet identified: Grothendieck 1969, Lovasz 1975 (likely Erdos-Lovasz, the local lemma), Mordell 1922, Weil 1948, Weil 1952.
