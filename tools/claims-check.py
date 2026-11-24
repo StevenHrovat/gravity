@@ -15,6 +15,7 @@ R = r'(?:XI|IX|X|VIII|VII|VI|IV|V|III|II|I|A)'
 
 rows_part = claims[:claims.index('## Draft 3 labels')]
 ids, counts = collections.Counter(), collections.Counter()
+malformed = []
 for line in rows_part.splitlines():
     m = re.match(r'\| ([0-9IVXA]+\.[^ |]*) \| ', line)
     if not m:
@@ -26,9 +27,14 @@ for line in rows_part.splitlines():
     if cells[0] in SCOPE:
         continue
     st = cells[2]
+    if not st.split():
+        malformed.append(cells[0])
+        continue
     counts['paper' if st.lower().startswith('project rule') else st.split()[0].lower()] += 1
 
 bad = []
+if malformed:
+    bad.append('malformed rows (empty status; a | inside a cell?): ' + ', '.join(malformed))
 dups = [k for k, v in ids.items() if v > 1]
 if dups:
     bad.append('duplicate IDs: ' + ', '.join(dups))

@@ -5,6 +5,7 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 rc=0
 LC_ALL=C.UTF-8 bash tools/scrub-scan.sh || rc=1
-python tools/claims-check.py || python3 tools/claims-check.py || rc=1
+PY=$(command -v python || command -v python3)
+"$PY" tools/claims-check.py || rc=1
 [ $rc -eq 0 ] && echo "paper-gate: OK" || echo "paper-gate: FAIL"
 exit $rc
