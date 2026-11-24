@@ -1,19 +1,26 @@
 # The three-problem paper: outline (draft 2, 2026-11-23)
 
-**Title (the owner's).** *GUID v8: A set theory based approach to the proofing of Yang-Mills, the Generalized Riemann Hypothesis and
-NP vs coNP, as subsets of DMP, in a DMP-complete state.* Earlier working title: *Positivity, contraction and the existence boundary:
-one chain behind Yang-Mills, GRH and P vs NP.*
+**Title (the owner's, 2026-11-24).** *Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP,
+with certified settling.* The owner: "since observability = equal running, seen through = run on DMP, while sounding nicer and more
+forgiving". So "seen through DMP" means exactly "run on DMP" (each problem type as a running system on the DMP form layer, PREP.md);
+the softer word is chosen on purpose. Earlier titles: *GUID v8: A set theory based approach to the proofing of Yang-Mills, the
+Generalized Riemann Hypothesis and NP vs coNP, as subsets of DMP, in a DMP-complete state* (2026-11-23), and the working title
+*Positivity, contraction and the existence boundary: one chain behind Yang-Mills, GRH and P vs NP*.
 
 **Release criterion (the owner, 2026-11-23).** "The Grand Unified should be the point where the paper is allowed to even exit the
 draft stage, once that is no longer an overstatement, since the full, generalized, proof, seems to need our new insight, so when
 general = GU, that is the balanced state, literally, with GU describing how and general where and when." So the paper stays a draft
 until both readings of GUID hold: General (the unified theorem with its open hypotheses closed) and Grand Unified (the framework
-containing SU(3) x SU(2) x U(1) in one structure with at least one checkable consequence; PREP.md, naming entries). Until then the
-title keeps no expansion beyond "GUID v8", and the abstract states the present status exactly.
+containing SU(3) x SU(2) x U(1) in one structure with at least one checkable consequence; PREP.md, naming entries). The owner has
+now set the full expansion in the title (2026-11-24); like the outreach subject it is aspirational by intent, so until both readings
+hold the paper stays marked as a draft and the abstract states the present status exactly.
 
-**Outreach gate (the owner, 2026-11-23).** Once the full paper is released, it goes to experts, including Terence Tao, with the
-subject "Machine-proven and human explained attempt of a three in one proof through a superset for full YM, GRH and PvNP for a state
-that is considered running on the superset." The owner: "This, like the draft paper condition, is an aspirational gate". The
+**Outreach gate (the owner, 2026-11-23, subject renewed 2026-11-24).** Once the full paper is released, it goes to experts,
+including Terence Tao, with the subject "Machine-proven and human explained attempt of an all in one proof through a superset for all
+Millennium Prize type problems as existing through the certifiability of their settling." (Earlier subject, 2026-11-23: "...a three
+in one proof through a superset for full YM, GRH and PvNP for a state that is considered running on the superset.") The new subject
+is also the new gate: every Millennium Prize type problem in scope (YM, GRH, NP vs coNP, GU, Navier-Stokes, BSD, Hodge, with
+Poincare as validation) is settled in the certified sense. The owner: "This, like the draft paper condition, is an aspirational gate". The
 subject is used only in the settled state, when every word of it holds true, i.e. under the same condition as the release criterion
 above. Before that, any contact states the present status exactly. The owner sends; nothing is sent on the owner's behalf.
 

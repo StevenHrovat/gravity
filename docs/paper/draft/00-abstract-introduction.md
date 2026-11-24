@@ -1,8 +1,10 @@
-# GUID v8: A set theory based approach to the proofing of Yang-Mills, the Generalized Riemann Hypothesis and NP vs coNP, as subsets of DMP, in a DMP-complete state
+# Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
-*Title by the owner (2026-11-23; aspirational by intent). Draft 1. Not a claim of a solution of any Millennium Prize problem. Claim
-labels (0.n) are listed in `../CLAIMS.md`. Earlier working title: "Positivity, contraction and the existence boundary: one chain
-behind Yang-Mills, GRH and P vs NP".*
+*Title by the owner (2026-11-24; aspirational by intent; "seen through" means "run on DMP"). Draft 1. Not a claim of a solution of
+any Millennium Prize problem. Claim labels (0.n) are listed in `../CLAIMS.md`. Earlier titles: "GUID v8: A set theory based approach
+to the proofing of Yang-Mills, the Generalized Riemann Hypothesis and NP vs coNP, as subsets of DMP, in a DMP-complete state"
+(2026-11-23) and the working title "Positivity, contraction and the existence boundary: one chain behind Yang-Mills, GRH and P vs
+NP".*
 
 ## Personal note by the first author
 

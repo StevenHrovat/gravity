@@ -4285,3 +4285,14 @@ thread.
   work the problems are attached to the form layer (ledger, encoder, transport, the API with its hypothesis and external-input slots),
   which is checked once, independently (`INDEPENDENT-CHECK.md`), and every instance proves its statements against it. The open step of
   each problem is then exactly the one place where the instance must still supply its own content, against that framework.
+- **New title, new outreach gate, "seen through = run on DMP" (the owner, 2026-11-24):** subject and gate: "Machine-proven and human
+  explained attempt of an all in one proof through a superset for all Millennium Prize type problems as existing through the
+  certifiability of their settling"; title: "Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through
+  DMP, with certified settling"; "And since observability = equal running, seen through = run on DMP, while sounding nicer and more
+  forgiving ;)". Exact counterpart (coordinator): "seen through DMP" = each problem type stated as a running system on the form layer
+  (the API: one slot for the object that runs, one for its external inputs, one for the open hypothesis), and "certified settling" =
+  the ETM's decidable half (settle within an explicit bound when every step contracts, `reaches_of_contracting`) plus the per-problem
+  certificates (independent re-check, the Arb one-box certificate). Care points: (1) the new gate covers every problem in scope (YM,
+  GRH, NP vs coNP, GU, Navier-Stokes, BSD, Hodge; Poincare as validation), so it is met only when each open step is closed, not
+  slotted; (2) the full title expansion is now set by the owner, aspirational by intent like the subject, so the draft marking and
+  the exact status line in the abstract stay until General = GU (OUTLINE.md, release criterion).
