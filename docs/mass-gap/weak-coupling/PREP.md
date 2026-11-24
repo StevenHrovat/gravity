@@ -4939,3 +4939,13 @@ thread.
   Checked against the owner's follow-up ("a matrix multiplication of the possibilities, with the total count being the product"):
   the 100 is a sum over the four files, 42 + 35 + 6 + 17, not a product. Where the product reading is exact is the machine itself:
   a run's amplitude is the product of its steps (`cmach_iterate`), and path counts multiply (the factor mu^k of the tube threshold).
+- **The reformulation: decidable over every truly possible state, with y^k options (the owner, 2026-11-24).** "Then we can
+  reformulate it: A DMP-complete state needs to have decidability for every truly possible state, with the least possible options
+  given by y^k." Exact counterparts (coordinator): (1) decidability needs a floor: with a cost above the floor the settle theorem
+  decides within an explicit bound, without one no procedure decides (II.3) [Lean]; (2) the truly possible states after k steps
+  grow like y^k, and the least such growth rate for paths is the connective constant mu = lim c_k^(1/k) of self-avoiding walks
+  (Hammersley-Morton) [classical]; (3) the run over all options settles exactly when the per-step factor beats the options: the
+  multiplied path sum mu^k e^(-F k) decays when F > log mu, and the joint form with the excess act gives both criteria
+  (`Closures/ChainJoint.lean`, `joint_gives_both`) [Lean, model]. For Yang-Mills this is O1 itself: F_e(L) - 2c(L) > log mu_4.
+  So the reformulation is the general form of the one assumption's decay edge [reading for the identification]. It replaces the
+  reading of the declaration count in II.0h; the count stays only as the prompt, a sum over four files.

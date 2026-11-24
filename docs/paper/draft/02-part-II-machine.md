@@ -29,10 +29,13 @@ picture.
   -1, the identity or the half-turn, and every real number is its modulus times 1 or -1, so ordinary multiplication is a cost times
   an identity-keeping multiplication (`rot_of_isometry_real`, `real_eq_sign_mul_abs`) **[Lean]** (claim II.0g).
 
-With these two theorems the machine and test modules reached 100 declarations by the axiom script's count (`rotation-axioms.log`,
-at `41c76f3`). The owner reads that as exactly right, since + and - are now given a modulus **[reading]** (claim II.0h). The count is
-a fact about the files, not the mathematics: it grew 75, 77, 83, 96, 98, 100 as the modules did, it is a sum over the four
-files (42 + 35 + 6 + 17) rather than a product, and it changes when a proof is split.
+**Decidable over every truly possible state.** The owner's reformulation: a DMP-complete state needs decidability for every truly
+possible state, with the least possible options given by y^k **[reading]** (claim II.0h). Each part has an exact counterpart.
+Decidability needs a floor (II.3) **[Lean]**. The truly possible paths after k steps grow like y^k, and the least such rate is the
+connective constant mu of self-avoiding walks **[classical]** (Hammersley-Morton). The run over all of them settles when the cost per
+step beats the options: the multiplied path sum mu^k e^(-F k) decays when F > log mu, and the joint form with the excess act gives
+both criteria **[Lean]** (model; `joint_gives_both`). For Yang-Mills that is O1, F_e(L) - 2c(L) > log mu_4 (Part IV). So the
+reformulation is the general form of the one assumption's decay edge, read in the language of options.
 
 **Care point.** The translation is exact for the cost and the rotation. The content a step carries, the program the universal
 machine runs, lives in the state and not in the number; that is where its undecidability sits (II.3) **[paper]** (claim II.0e). In
