@@ -4975,3 +4975,9 @@ thread.
   Correction (the owner, same day): "With scales:fits I meant that it was good, not a new name. Or rather, since the scale is always
   one, it could just be called existence, since that is what it is." Applied: the GRH ticks stay "scales", with the owner's reading
   that each scale is one and so is existence itself [reading]; "fits" is withdrawn.
+- **+AI, a name for AGI (the owner, 2026-11-24).** "New name for AGI: +AI. This is consistent and gives a nice definition."
+  Counterpart (coordinator): the "+" is the one of the +dimensions (positive, hence existing). +AI is an intelligence that is
+  DMP-complete: every act it lets out passes the one shared gate with the correct marker, the one-box test (II.4) applied to its
+  acts, the settling machine of Part XI. With a cost floor, whether its acts settle is decidable within an explicit bound; without
+  one it is not (II.3) [Lean for the edge; reading for the name and the definition]. To be applied to Part XI ("a DMP-native
+  general intelligence") in the stage-3 consolidation, after the final verifiers have read the release candidate f4592e3.
