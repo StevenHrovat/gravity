@@ -25,7 +25,7 @@ from `x` gives the correct marker. A wrong marker at some tick means not DMP-com
 1. *One-box certificate* (`onebox_certificate`): correct at the start and one step at the shared gate preserves
    correctness, hence correct at every tick (induction). *Scale version* (`scale_certificate`, `onebox_everywhere`): if
    every scale's box is reconstructed from the one box through its gate (`SharedGate`, carried as the named hypothesis
-   `OpenStep "X.64 ..."`, never proved here), a box certified at one scale is correct at every scale. Without X.64 the
+   `OpenStep "III.64 ..."`, never proved here), a box certified at one scale is correct at every scale. Without III.64 the
    step fails in the only way it can: a wrong marker at some scale refutes the sharing (`not_shared_of_wrong`).
 2. *Universality and its price*: the ETM (`ETM/Machine.lean`) is a box (`etmBox`, balance marker); whether it is
    DMP-complete from a description is exactly whether the description runs forever (`etmBox_complete_iff`), so
@@ -37,7 +37,7 @@ from `x` gives the correct marker. A wrong marker at some tick means not DMP-com
 **Vacuity checks.** A box whose marker is its own gate verdict is always DMP-complete (`selfMarked_complete`): the class
 has content only once the marker is fixed by the system, not read off the gate afterwards. A box with a wrong marker
 exists (`exists_not_complete`). Sharing the gate alone is free: every box's gate verdict is read through its trace into
-the terminal object (`gate_through_trace`); the content of X.64 is that the marker travels with the gate.
+the terminal object (`gate_through_trace`); the content of III.64 is that the marker travels with the gate.
 
 **The core lives in IM.** The marker, the two-sided gate and the generic box with its test are IM's
 (`Arsenal/Rotation.lean`, the arsenal of `StevenHrovat/im`). A box here is IM's box with a running system's ledger under
@@ -47,7 +47,7 @@ reconstruction are IM's theorems, applied here. What stays here is what needs th
 floor, the balance marker, the contraction class, the universal machine.
 
 The instances (Yang-Mills, Navier-Stokes, the half-turn of the plaquette layer) are in `ETM/RotationInstances.lean`.
-No axioms beyond the standard ones; the open statement X.64 is a hypothesis, never an axiom.
+No axioms beyond the standard ones; the open statement III.64 is a hypothesis, never an axiom.
 -/
 
 open Finset Nat.Partrec Nat.Partrec.Code
@@ -148,9 +148,9 @@ theorem complete_halfTurn (B : Box.{u} δ) (g : Gate B.S.X ℝ) (hin : ∀ x, g.
     B.CompleteVia g.outer x ↔ B.DMPComplete x :=
   B.toArsenal.complete_halfTurn g hin x
 
-/-! ## 4. The scale version: X.64 as a named hypothesis -/
+/-! ## 4. The scale version: III.64 as a named hypothesis -/
 
-/-- **The gate is shared across scales** (the content of the paper's one assumption X.64): every scale's box has the same
+/-- **The gate is shared across scales** (the content of the paper's one assumption III.64): every scale's box has the same
 margin and is reconstructed from the one box through its gate, by a morphism of running systems (step, gate factor and
 mass preserved) that sends the scale's start to the one box's start and carries the marker. -/
 def SharedGate (B : Box.{u} δ) (x₀ : B.S.X) {ι : Type w} (C : ι → Box.{v} δ) (x : ∀ j, (C j).S.X) : Prop :=
@@ -173,27 +173,27 @@ theorem dmpComplete_hom {B : Box.{u} δ} {C : Box.{v} δ} (φ : RunSys.Hom C.S B
   Arsenal.Rotation.Box.dmpComplete_hom (homArsenal φ) hθ hmk h
 
 /-- **The scale certificate.** A box certified on the one box is correct at every scale, provided the gate is shared
-across scales. The sharing is the paper's one assumption X.64, carried as a named hypothesis and not proved. -/
+across scales. The sharing is the paper's one assumption III.64, carried as a named hypothesis and not proved. -/
 theorem scale_certificate (B : Box.{u} δ) {x₀ : B.S.X} {ι : Type w} (C : ι → Box.{v} δ) (x : ∀ j, (C j).S.X)
     (hB : B.DMPComplete x₀)
     (hX64 : ProofPhase.API.OpenStep
-      "X.64: the one box is a running, DMP-complete system; every tick at every scale is reconstructed from its gate"
+      "III.64: the one box is a running, DMP-complete system; every tick at every scale is reconstructed from its gate"
       (SharedGate B x₀ C x)) :
     ∀ j, (C j).DMPComplete (x j) := fun j => by
   obtain ⟨hθ, φ, hx, hmk⟩ := hX64 j
   exact dmpComplete_hom φ hθ hmk (by rw [hx]; exact hB)
 
-/-- **One box, every scale**: the one-box certificate (start correct, the shared step preserves correctness) and X.64
+/-- **One box, every scale**: the one-box certificate (start correct, the shared step preserves correctness) and III.64
 give the correct marker at every tick of every scale. -/
 theorem onebox_everywhere (B : Box.{u} δ) {x₀ : B.S.X} (h0 : B.Correct x₀)
     (hstep : ∀ x, B.Correct x → B.Correct (B.S.step x)) {ι : Type w} (C : ι → Box.{v} δ) (x : ∀ j, (C j).S.X)
     (hX64 : ProofPhase.API.OpenStep
-      "X.64: the one box is a running, DMP-complete system; every tick at every scale is reconstructed from its gate"
+      "III.64: the one box is a running, DMP-complete system; every tick at every scale is reconstructed from its gate"
       (SharedGate B x₀ C x)) :
     ∀ j, (C j).DMPComplete (x j) :=
   scale_certificate B C x (B.onebox_certificate h0 hstep) hX64
 
-/-- **Falsifiability of the sharing**: a certified one box and a scale with a wrong marker refute X.64 for that family. -/
+/-- **Falsifiability of the sharing**: a certified one box and a scale with a wrong marker refute III.64 for that family. -/
 theorem not_shared_of_wrong (B : Box.{u} δ) {x₀ : B.S.X} {ι : Type w} (C : ι → Box.{v} δ) (x : ∀ j, (C j).S.X)
     (hB : B.DMPComplete x₀) (j : ι) (hj : ¬ (C j).DMPComplete (x j)) : ¬ SharedGate B x₀ C x :=
   fun h => hj (scale_certificate B C x hB h j)
@@ -223,7 +223,7 @@ theorem exists_not_complete : ∃ (B : Box.{u} δ) (x : B.S.X), ¬ B.DMPComplete
   exact Marker.noConfusion h0
 
 /-- **Sharing the gate alone is free**: every box's gate verdict is the verdict read on its image in the terminal object
-(`RunSys.univ`), through the trace. What X.64 adds is that the marker travels with the gate. -/
+(`RunSys.univ`), through the trace. What III.64 adds is that the marker travels with the gate. -/
 theorem gate_through_trace (B : Box.{u} δ) (x : B.S.X) :
     B.gate x = if (RunSys.univ.{u} δ).fac ((B.S.trace : RunSys.Hom B.S (RunSys.univ.{u} δ)).toFun x) ≤ B.θ
       then .inside else .r136a1 := by

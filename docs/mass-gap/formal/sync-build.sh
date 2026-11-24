@@ -3,7 +3,7 @@
 #   bash sync-build.sh [target]        default target: AreaLaw
 # Lean 4.34.0 (gravity's baseline, lean-toolchain) with Mathlib v4.34.0. Target folder: $FORMAL_DST, default ~/formal.
 set -euo pipefail
-src=/mnt/c/claude/gravity-ym/docs/mass-gap/formal
+src="$(cd "$(dirname "$0")" && pwd)"
 dst=${FORMAL_DST:-~/formal}
 mkdir -p "$dst"
 cd "$src"

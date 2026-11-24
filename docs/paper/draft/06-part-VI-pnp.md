@@ -1,7 +1,7 @@
 # Part VI. P vs NP: inside a certified class, and across it
 
-*Draft 2, 2026-11-23. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/pnp/`. Claim labels (VI.n; V.n in draft 3) are listed in `../CLAIMS.md`.*
+*Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
+`docs/pnp/`. Claim labels (VI.n) are listed in `../CLAIMS.md`.*
 
 ## VI.0 What is proved and what is not
 
@@ -14,7 +14,7 @@ Two notions of the problem are used:
 
 * **P vs NP** (decision, search, counting): `DICTIONARY.md`.
 * **NP vs coNP** via proof systems: a polynomially bounded proof system exists iff NP = coNP **[classical]** (Cook-Reckhow 1979);
-  NP != coNP implies P != NP. `PROOF-SYSTEMS.md`. The owner's title names NP vs coNP for this reason: the proof-complexity side is
+  NP != coNP implies P != NP. `PROOF-SYSTEMS.md`. The first author's title names NP vs coNP for this reason: the proof-complexity side is
   where this part's work sits.
 
 ## VI.1 Inside a certified class: the chain holds (links 1 to 4)
@@ -136,6 +136,18 @@ bound** is claimed.
 | VI.4.8 | Every CP refutation of a 3-CNF contains a creative pair; single roundings create nothing; additive pairs are cheap | **[Lean]** | `Proof/CPPairs.lean`, `creative_pair`, `round_single`, `fan_cheap` |
 | VI.4.9a, VI.4.9b | The all-1/2 point survives sums, not rounding; rank, not size; SOS degree does not transfer | **[Lean]** + **[classical]** | `Proof/CPDuality.lean`, `half_clause`, `half_breaks_rounding`; Grigoriev 2001; Dadush-Tiwari 2020 |
 | VI.4.10 | **Interface hardness at width 3** (equivalently a size-forcing cost measure W_CP) | **[open]** | `EDGE.md`, 0.4; `CP-DUALITY.md`, 0.5 |
+| VI.4.11 | The lifting interface `ExtractAPI G c` is equivalent to lifting with a constant-size gadget, `LiftCPConst G c`, and that gives the card's `CrossingCost` for lifted formulas; nothing here is a lower bound | **[Lean]** | `Proof/SoundAPI.lean`, `liftCPConst_iff_extract`; `Proof/LiftingNP.lean`, `constGadget_crossingCost` |
+
+**VI.4.11 The lifting interface.** Lifting theorems turn a width lower bound for resolution into a size lower bound for cutting
+planes on the formula composed with a gadget G; the known ones need gadgets that grow with n. `LiftCPConst G c` states the constant
+version: for one fixed gadget, every cutting-planes refutation of F o G has at least e^(c (w + 1)) lines when F needs width above w.
+`ExtractAPI G c` states it from the other side: every refutation smaller than that admits a labelling by narrow clauses. The two are
+equivalent, and `LiftCPConst` gives the card's open step `CrossingCost` for lifted formulas, with theta = 1/2 **[Lean]**
+(`liftCPConst_iff_extract`, `constGadget_crossingCost`). Neither is proved. For the XOR gadget `LiftCPConst` is false: on Tseitin
+formulas over expanders the lifted formula is again a Tseitin formula, which has quasi-polynomial cutting-planes refutations
+(Dadush-Tiwari 2020), while its resolution width is linear **[classical]** (not machine-checked here). So the open step is lifting with
+a suitable constant gadget, such as indexing, and what it would give is a super-polynomial lower bound for cutting planes on lifted
+formulas, not for stronger systems: cutting planes is not the strongest system (VI.6) **[open]** (claims VI.4.11, III.7k).
 
 ## VI.5 The native method and the floor
 
@@ -162,7 +174,10 @@ within noise **[Lean]** + **[numerical]**.
 | N3 | Step T and step H for Frege: a short Frege refutation of a random 3-CNF yields a small separating formula for a balanced cut, and that pair has none of polynomial size (beyond the n^3 barrier) | NP vs coNP, for Frege | `DICHOTOMY-TRANSFER.md`, 4 to 6 |
 | N4 | From the certified class to all inputs: is every instance's existence decidable cheaply? | P vs NP | `DICTIONARY.md`, 6.3, 8 |
 
-N2 is new in this draft and is the sharpest: a named system, a named family and one missing object. It would not settle NP vs coNP
+How the open steps relate. The Lean card's open step is `CrossingCost` (`API/NP.lean`): every refutation admits b restrictions,
+each keeping at most a 1 - theta share of the costly lines. Lifting with a suitable constant gadget gives it for lifted formulas
+(VI.4.11, **[Lean]**); N2 would give it for random 3-CNF in cutting planes, but that implication is not stated in Lean. N1, N3 and N4
+are further items, not instances of the card. N2 is the sharpest: a named system, a named family and one missing object. It would not settle NP vs coNP
 (CP is not the strongest system), but it is the first place where the structureless case meets a system strong enough to name a
 crossing in one line.
 
@@ -178,7 +193,7 @@ satisfiability algorithm follows from local certification **[open]**.
 
 * **Two categories of proof lines.** Lines derived directly from the axioms are cheap and mechanically checkable; new derivations
   (lemmas, cuts, extension variables) are what make short proofs possible, and eliminating them can blow a proof up exponentially.
-  The owner's "first true act" is two new derivations used together, sharing existence but not possibility: in CP, the interpolation
+  The first author's "first true act" is two new derivations used together, sharing existence but not possibility: in CP, the interpolation
   split (VI.4.7) and the creative pair (VI.4.8).
 * **The pairs of derived lines are the entanglement through which the HTF acts in NP**: the size floor needs the pair to be charged at
   its interface (VI.4.10).
@@ -199,7 +214,7 @@ all inputs. Nothing in this part closes any of them.
 
 ## VI.10 The box in the one-box test
 
-**Gate factor and marker.** The ticks are the **bounds** (the owner's name; in plain terms, the restrictions): each bounds the share
+**Gate factor and marker.** The ticks are the **bounds** (the first author's name; in plain terms, the restrictions): each bounds the share
 of costly lines a restriction keeps. At each bound the gate reads inside when the restriction keeps at most a
 1 - theta share of the costly lines; the marker is the claim "inside". The box passes exactly when the card's open step
 (`CrossingCost`) holds, and a passing box gives the crossing bound: every refutation has at least e^(theta b) lines **[Lean]**

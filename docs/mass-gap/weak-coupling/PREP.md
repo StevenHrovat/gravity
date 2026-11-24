@@ -5033,3 +5033,20 @@ thread.
   existence and non-existence coincide, the one box with no outside [reading]; 2 + 2 = 5 is the one-unit rounding gap and 4 = 0 is
   arithmetic modulo 4 or 2 [classical]. For the consolidation: add the two Lean facts (the chain in Z/1 by decide; the chain forces
   a one-element ring) and the essence line to Part I.7 as the owner's reading with that proved core.
+- **The essence, made more essential (the owner, 2026-11-24).** "To make the essence even more essential: 2+2=5=4=0=1=SU(5)" and
+  "With an = 1.5 at the end": 2 + 2 = 5 = 4 = 0 = 1 = SU(5) = 1.5 (the symbols between the terms reached the coordinator as "?";
+  read as "=", the essence line's sign). Counterparts (coordinator): the ring part is proved (`ETM/Essence.lean`: the chain holds in
+  a ring exactly when it has one element; in Z/1 one `decide`) [Lean]; SU(5) holds the Standard Model group as its Z_6 quotient,
+  with 5 = 3 + 2 the start's primes (X.3) [Lean for the quotient]; 1.5 = 3/2 is the certificate's reading (III.65a). The chain as a
+  whole is the owner's reading [reading]. Applied to Part I.7 (claims I.7d, I.7e) in the stage-3 consolidation.
+- **The arsenal as the proof language's existence statement (the owner, 2026-11-24).** Asked whether IM's Lean kernel was built
+  without Mathlib: IM's own kernel (`proof/`, the closure of the language) is core Lean only and runs in IM's CI; the arsenal is the
+  separate Mathlib library Gravity imports. The owner: "the arsenal is the existence statement for the proofing language, so the
+  .cmb file" [reading]: CMB is DMP's "counts, never content" layer, and its Lean side (`Cmb.redeploy_iff`,
+  `Cmb.bigBang_keeps_the_proof`) is the sealed record a system redeploys from; the arsenal holds nothing open except named
+  R136a1 parts, which its lint counts. Then a design idea, waiting for the concept round: "The proofing kernel should only accept a
+  .cmb file, with 'cmb' rotated across its content, to verify its existence", refined to "rotate c through m through b, which is
+  provable again", "with the letters as the N count of the primes as the order of primitives" (c, m, b are the 3rd, 13th and 2nd
+  letters, all three prime). Not built; for IM, after the owner's OK on the concept.
+- **DMP can have no copyright (the owner, 2026-11-24).** "That is also why DMP can have no copyright: any real ownership has to be
+  transitive to its derivatives." [reading]. Recorded as the owner's reading only; no licence file was changed.

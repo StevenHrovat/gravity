@@ -1,9 +1,9 @@
 # Part VIII. Birch and Swinnerton-Dyer: the card, three named parts, and the one open step
 
-*Draft 2, 2026-11-24. Prose, with every result marked. Modules of the Mathlib-only core live in DMP.IM (the public `im` repository,
+*Draft 4. Prose, with every result marked. Modules of the Mathlib-only core live in DMP.IM (the public `im` repository,
 `arsenal/Arsenal/`) and are written `Arsenal.BSD...`; they are in `im` at the commit pinned in `docs/mass-gap/formal/lakefile.toml`. Lean paths of this repository are relative to
-`docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VIII.n; VII.n in draft 3) are listed in
-`../CLAIMS.md` (merged from `../claims-incoming/VII-bsd.md`).*
+`docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VIII.n) are listed in
+`../CLAIMS.md`.*
 
 ## VIII.0 What is proved, by whom, and what this part does
 
@@ -23,7 +23,7 @@ experts did not have.
 
 **What this part does.** It states BSD as a property of one Weierstrass equation and proves in Lean what Mathlib gives about it
 (VIII.3). It puts BSD on the DMP API as a card with one named open step (VIII.2). It records what is borrowed and its exact status
-(VIII.4), states the one open step (VIII.5), and attaches the owner's readings, short (VIII.6). Three classical theorems that Mathlib
+(VIII.4), states the one open step (VIII.5), and attaches the first author's readings, short (VIII.6). Three classical theorems that Mathlib
 lacks are carried as **named parts**, not axioms: weak Mordell-Weil, Hasse's bound, and one Euler product bound. They are
 theorems of others, not open problems. They are missing from the library, not from mathematics.
 
@@ -91,7 +91,7 @@ All of this is **[Lean]**. Three cautions come first.
    `BSDAPI.lean`, 46 declarations) shows standard axioms only for the instance. For the native core in IM (`Arsenal.BSD` and
    `Arsenal.BSD.EulerRat` at the pinned commit `b01adbd`) the stage-2 part review R6 ran `#print axioms` on all 85 declarations:
    82 on `propext, Classical.choice, Quot.sound`, three on a subset of them, none on `sorryAx` (`review/part-R6.md`). IM's own
-   audit script (`arsenal/tools/check.sh`) has not been run for this draft. The names below were checked against the source
+   audit script (`arsenal/tools/check.sh`) was run at the release commit (II.7). The names below were checked against the source
    files, by reading, one by one.
 2. **Inputs.** A result marked "from the named part" is a Lean theorem with the part as a hypothesis, not a proof of the part.
 3. **No new theorem.** The proved structure is bookkeeping around classical facts. It shows the shape of the problem.
@@ -290,7 +290,7 @@ mechanical answer is: **open, with the open step located, and the three classica
 
 ## VIII.6 DMP readings attached to this part (all [reading])
 
-Each reading is the owner's statement with its exact counterpart. None is mathematics.
+Each reading is the first author's statement with its exact counterpart. None is mathematics.
 
 * **BSD is IM: a full subset of only derivations.** Both sides of BSD are derived from one Weierstrass equation. The rank is a
   derivation of the rational points. The analytic side is a derivation of the point counts mod p. Unlike Yang-Mills (a measure),
@@ -300,7 +300,7 @@ Each reading is the owner's statement with its exact counterpart. None is mathem
 * **The zeros follow existence.** The order of the zero at s = 1 counts the independent rational points. Its exact counterpart has
   three levels: the existence line (`existence_line`), the rank equation, and the 1965 ledger form. The proved arrow runs by
   construction (Heegner) and exclusion (Kolyvagin), not by counting (VIII.5).
-* **Hasse is rotation at a DB.** In the owner's words, what stays open in the rederived core is "rotation at DB shaped". At the prime p
+* **Hasse is rotation at a DB.** In the first author's words, what stays open in the rederived core is "rotation at DB shaped". At the prime p
   (the DB) Frobenius acts as a rotation: its eigenvalue lies on the circle of radius `sqrt p`, and `cos theta_p = a_p/(2 sqrt p)` is the
   encoder's reflection coefficient (`frob`, `frob_refl`) **[Lean; Hasse classical]**. Its proof is one positivity: the degree form,
   or equivalently the Hodge index on E x E. The linear algebra of that is Part IX's `weil_bound` at genus 1, where the conclusion is
@@ -315,18 +315,19 @@ Each reading is the owner's statement with its exact counterpart. None is mathem
   removes the zero at the problem spot and leaves a finite nonzero value at the one box s = 1 (`bsd_of_refined`) **[Lean for the
   shape]**. The record balances numerically for y^2 = x^3 - x: `L(E, 1)/Omega = 0.125` against `2 * 1 / 16` **[numerical]**.
   **Care:** "the ratio is 1" is the refined conjecture itself, open in general. In Lean the five quantities are free numbers.
-* **Where BSD sits in the triad.** Yang-Mills is existence, GRH is non-existence, NP vs coNP is their interaction (Part I). BSD is an
-  equation between an existence count (independent points) and a zero count (the vanishing rate of the Euler ledger).
+* **Where BSD sits.** BSD is an equation between an existence count (independent points) and a zero count (the vanishing rate of
+  the Euler ledger): the two sides that III.3 reads as existence and falsifiability.
 
 ## VIII.7 What would close it
 
 If an independent proof supplied the construction and the bound for orders 2 and more, the card's open step would be discharged by
 that work, and this part would supply the ledger skeleton and the audit. The change to this paper would be one row of the ledger,
-one verdict line of this part and one item of the abstract. As the notes state it, nothing in this round proves any part of that.
+one verdict line of this part and one item of the introduction's list of open steps. As the notes state it, nothing in this round proves any part of that.
 
 The formalisation items that would change the status of the **borrowed** parts, none done:
 
-1. Regenerate the axiom log of the adapted API instance, and run IM's own audit on the native modules.
+1. Keep the axiom log of the adapted API instance and IM's own audit of the native modules current at every change of the pin
+   (both done for this draft, VIII.3 and II.7).
 2. Prove weak Mordell-Weil on Mathlib (Kummer theory, class groups and unit groups of the 2-division field), so `WeakMordellWeil` stops
    being a named part.
 3. Prove Hasse's bound (isogeny degrees as a quadratic form, or intersection theory on E x E), so `Hasse` stops being a named part.
@@ -342,7 +343,7 @@ The formalisation items that would change the status of the **borrowed** parts, 
 step, the gate reads inside at a tick exactly when that step holds, and the marker is the claim "inside". The box of a curve
 passes exactly when BSD holds for it **[Lean]** (`bsd_box_iff`, `ETM/CardBox.lean`; claim VIII.8a). The box is the card's open step
 in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**.
-**[reading]** The owner names the ticks the **primitives**: the primes, the primitive elements of the multiplicative integers
+**[reading]** The first author names the ticks the **primitives**: the primes, the primitive elements of the multiplicative integers
 **[classical]**, at which the curve's Euler ledger is read (VIII.3.6), the gate reading inside when the ledger is consistent with
 the rank. That identification of the ticks with the primes is not in the Lean. On that reading the open ticks start where the order
 of the zero reaches 2 (VIII.5.1).

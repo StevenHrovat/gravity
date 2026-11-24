@@ -1,7 +1,7 @@
-# Part VII. Navier-Stokes: the card, the claimed certificate, and Poincare as validation
+# Part VII. Navier-Stokes: three cards and the claimed certificates
 
-*Draft 2, 2026-11-24. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/unified/`. Claim labels (VII.n; VI.n in draft 3) are listed in `../CLAIMS.md` (merged from `../claims-incoming/VI-navier-stokes.md`).*
+*Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
+`docs/unified/`. Claim labels (VII.n) are listed in `../CLAIMS.md`.*
 
 ## VII.0 What is proved, by whom, and what this part does
 
@@ -221,8 +221,8 @@ it is not axisymmetric; its period lies above the Chae-Wolf lower bound, with th
 
 For every `nu > 0`, a smooth force with compact support, a compact set, and a smooth solution on `[0, 1)` with zero initial velocity
 and bounded energy whose sup-norm is unbounded as `t -> 1`; the paper says this establishes (C), and (D) by a corollary. An
-independent build record of its Lean proof (a Zenodo record of 10 October 2026, Lean v4.34.0-rc2; its DOI is to be added to the
-bibliography) reports the three standard axioms, no `sorry`, and a match to a public formalisation of
+independent build record of its Lean proof (posted on Zenodo on 10 October 2026, Lean v4.34.0-rc2, as the notes record it; the record
+was not found again for this draft) reports the three standard axioms, no `sorry`, and a match to a public formalisation of
 (C) and (D) **[external, not rebuilt here]**. A preprint (arXiv 2610.08144) shows lemma-level places where the Lean proof is not a
 faithful translation of the written one, and expressly claims nothing about the written proof's correctness **[external]**. Because a
 force is allowed in (C) and (D), this claim, if it holds, answers (C) and (D) as stated but says nothing about (A) and (B), which have
@@ -236,13 +236,13 @@ in Navier-Stokes. The companion unforced Euler claim by Alpoge, Buckmaster and C
 
 ### VII.4.4 The logic point **[classical]**
 
-The owner's scope decision is that a blowup that cannot be ruled out is in itself enough for an existence to be constructed where it
+The first author's scope decision is that a blowup that cannot be ruled out is in itself enough for an existence to be constructed where it
 blows up. The exact statement behind it is Goedel's completeness theorem: if ZFC plus "some smooth datum blows up" is consistent, a
 model of it exists. Three senses of "cannot be ruled out" must be kept apart: (a) one method cannot rule it out (the energy method;
 VII.3.4); (b) the axioms cannot refute it (independence; **not known** for Navier-Stokes); (c) it is not ruled out for the real
 equations over the real numbers. A completeness model for (b) may be nonstandard, so it settles nothing about the actual equations.
 Only a proof settles the Clay question. The two 2026 claims are proofs of that kind: an explicit datum and an argument, not a
-completeness model. If correct, they are the owner's "existence constructed where it blows up", in the standard sense.
+completeness model. If correct, they are the first author's "existence constructed where it blows up", in the standard sense.
 
 ## VII.5 The one open step
 
@@ -289,10 +289,10 @@ shape with an operator-level certificate at 128-bit precision **[reading]**.
 * **Scale invariance as the arrow of causality.** Because the zoomed equation is autonomous, the set of "outsides" has one element:
   the same step at every scale, so the for-all over steps costs nothing.
 * **"Not DMP-complete, hence blows up."** In ledger terms the energy ledger cannot pay a uniform cost per scale (VII.3.4). The
-  owner's entry is dated 2026-11-24, after both claims were public (8 September and 20 November), so it agrees with the side the
+  first author's entry is dated 2026-11-24, after both claims were public (8 September and 20 November), so it agrees with the side the
   claims assert and is not a prediction made before them. It proves nothing: a method's failure to exclude blowup is not blowup. The
   claims, if correct, prove it by a certified profile. DMP-completeness now has a precise statement: DMP-complete means runs on DMP,
-  the running-state hypothesis R of Part III 4.2 (the owner's definition, III.64b). The owner's reading: the whole process is
+  the running-state hypothesis R of Part III 4.2 (the first author's definition, III.64b). The first author's reading: the whole process is
   described and Navier-Stokes does not build in it (the energy ledger cannot pay a uniform cost per scale, VII.3.4a and VII.3.4b,
   **[Lean]**), so it is not DMP-complete, and blowup is the expected consequence. The negative result is the expected one, and it
   makes the framework falsifiable: global regularity would refute it **[reading]** (VII.7e). Blowup of the real equations is still
@@ -310,6 +310,6 @@ shape with an operator-level certificate at 128-bit precision **[reading]**.
 If the Alpoge-Buckmaster certificate is released and verifies independently, the route I card's open step is discharged, (A) and (B)
 fail, and the Clay problem is answered in the direction of blowup, by their work, with this part supplying the ledger skeleton and the
 audit. If the certificate fails an inequality, the open step stays open and the regularity slot stays as it is. Either way the change
-to this paper is one row of the ledger, one verdict line of this part and one item of the abstract. A proof of **regularity** would
+to this paper is one row of the ledger, one verdict line of this part and one item of the introduction's list of open steps. A proof of **regularity** would
 have to fill the regularity slot from the true nonlinearity, which the energy identity cannot do (VII.3.4), and which the unforced
 claim, if true, makes impossible for some data.

@@ -1,8 +1,8 @@
 # Part IV. Yang-Mills: the gap mechanism reduces to one box of fixed physical size
 
-*Draft 2, 2026-11-23. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/` (the modules of the earlier
+*Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/` (the modules of the earlier
 attempt rounds R2 to R4 live under `Attempts/`); notes relative to `docs/mass-gap/weak-coupling/`; the crossover notes are in
-`proof-phase/c9a-crossover/`. The full chain with all 51 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (IV.n; III.n in draft 3) are listed in
+`proof-phase/c9a-crossover/`. The full chain with all 51 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (IV.n) are listed in
 `../CLAIMS.md`.*
 
 ## IV.0 What is proved and what is not
@@ -41,8 +41,8 @@ It leaves four things open.
   resolution clause (IV.9.5, **[Lean]**). Per box, the reflected correlation at even time is a reflection-positivity square, hence
   non-negative for observables of the positive half (IV.9.5a, **[Lean]**). That is not non-triviality: pure noise has correlation
   zero and passes it too. Non-triviality needs a scale-uniform lower bound c > 0. That lower edge and the scheme clause (IV.9.5b)
-  are what remains; they are the opposite edge to O1's decay and **[conditional]** on the one assumption (III.64, III.66). On the
-  owner's reading it is not a second assumption: the ODP ends only at a dimensionless 1, so a running, DMP-complete system carries
+  are what remains; they are the opposite edge to O1's decay, independent of O1 in the spectral model, and **[open]**. On the
+  first author's reading they are not a second assumption: the ODP ends only at a dimensionless 1, so a running, DMP-complete system carries
   the lower edge by construction, and IV.9.5b is the lower edge of the one assumption, beside O1's upper edge, placed at the ODP's
   end, the certified start `{infinity, 2, 3}` (Part III 4.4, III.64a, **[reading]**). Under that reading nothing more is to be
   shown at the start, and the direction of every later tick is conditional on the one assumption (III.66).
@@ -60,7 +60,7 @@ It leaves four things open.
 The title's "one box" is exact for the gap mechanism (O1). It is not true of the Clay statement as a whole, which also needs O2 to
 O4.
 
-**What changed since draft 1.** Draft 1 stated O1 as "the loss rate of one box is below one". The crossover rounds of the same day
+**Why O1 is one number at one scale.** "The loss rate of one box is below one" is not enough: the crossover rounds
 showed that the per-box rate 0.881 suffices for a chain of boxes but not for a grid (IV.4), and that it suffices for a grid exactly
 when the influence runs in tubes, which needs a larger electric cost per box (IV.5). O1 is now one number at one scale.
 
@@ -72,7 +72,7 @@ the notes **[unchecked]**.
 
 ## IV.1 The lattice theory and its positivity (G0 by construction)
 
-Yang-Mills is the one problem of the three whose starting positivity is given. The Wilson weight e^{-S} is positive and local, and
+Yang-Mills is the one problem of the first three whose starting positivity is given. The Wilson weight e^{-S} is positive and local, and
 from those two facts reflection positivity follows. Everything in this section is machine-checked.
 
 | # | Result | Status | Source |
@@ -199,7 +199,7 @@ finite analogue (`weight_fiber_eq`, `weight_fiber_mul_card`); **[paper]** for co
 
 ## IV.5 Containment: the requirement moved inside one box
 
-The owner's correction ("the saturation has to be proven inside confinement and absent outside that confinement, as a containing
+The first author's correction ("the saturation has to be proven inside confinement and absent outside that confinement, as a containing
 existence", `PREP.md`) reverses the direction of the attack. Instead of building the inside of a box from outside data, prove three
 things: outside, saturation is absent; the container ends; inside, saturation makes the influence run in tubes, and tubes are chains,
 where IV.3 closes. The first two close. The third closes negatively at the duality floor and positively above a sharp threshold.
@@ -253,15 +253,16 @@ it is a sufficient route to the one-box sum and is stated for the torus free ene
 This is the grid requirement log 8 = 2.08 of IV.4.1 refined from column sums to path counting. Containment moves the requirement
 inside the box but does not lower it to the chain value 0.881.
 
-**Care points, settled in draft 3.**
+**Care points.**
 * **O1 in one form.** The Lean form of O1 is `FineOneBox` (`OneBox/Fine.lean`); reading the number above as its one-box sum is
   path counting (**[paper]**, IV.5.9). `FineOneBox` is one box at the physical cell scale, influence bounds under every
   boundary condition, uniform in level and volume. `WilsonOneBox` and `FineOneBoxSplit` imply it, and it feeds
   `yang_mills_assembly_onebox`; `BlockGapBddW` belongs to the separate blocking route (IV.5.9, **[Lean]**).
-* **O1 in the one-box test.** In the test of Part I (I.8, the rotation API) O1 is exactly DMP-completeness of the Yang-Mills box:
+* **O1 in the one-box test.** In the one-box test (II.4, the rotation API) O1 is exactly DMP-completeness of the Yang-Mills box:
   the chain form holds exactly when some margin makes every chain of outsides DMP-complete, and `FineOneBox` holds exactly when the
   Yang-Mills box, with its geometry fixed across levels, is DMP-complete from its start level **[Lean]** (IV.10c, IV.10d). Both
-  directions are proved, so the general test carries exactly O1, no more and no less. That the box is DMP-complete is O1 itself
+  directions are proved, so the general test carries exactly O1, no more and no less: a restatement by construction, which proves
+  no new bound. That the box is DMP-complete is O1 itself
   **[open]** (IV.10e).
 * **Per-box costs multiply.** In that per-outside form the composition of the per-box influences is a theorem, so no annealed
   quantity enters the gap; the annealed-to-quenched identification is needed only to read a torus measurement of F_e as evidence
@@ -289,11 +290,14 @@ inside the box but does not lower it to the chain value 0.881.
 **Saturation from what we have.** Configuration by configuration the twist changes the weight by at least e^{-2 beta N}, N = L^2
 flipped plaquettes, so Z_tw/Z >= e^{-2 beta L^2} (weight exp((beta/2) tr U), the standard beta; with the Lean beta it is e^{-4 beta L^2}) **[Lean]**
 (`ratio_floor_of_pointwise`, `exp_floor_ge_iff`; the pointwise weight bound for the Wilson action is an input of the Lean theorem, not
-proved there). That saturates the twist only for beta L^2 <= 0.42 (standard beta; 0.21 with the Lean beta): strong coupling in tick units, vanishing in the continuum. Conversely a large electric free energy forces a
+proved there). That saturates the twist, in the sense of a twist ratio of at least 3/7 (the threshold of
+`proof-phase/c9a-crossover/SATURATION.md`), only for beta L^2 <= (1/2) log(7/3) = 0.42 (standard beta; 0.21 with the Lean beta);
+with the self-dual threshold 0.414 of IV.5 the bound is 0.44, with the tube threshold 0.74 it is 0.15: strong coupling in tick units, vanishing in the continuum. Conversely a large electric free energy forces a
 saturated twist **[Lean]** (`twist_ratio_of_elecF`), so saturation is a consequence of O1, not an independent input.
 
 **Bond-moving bounds localise Tomboulis's step, they do not avoid it.** Rigorous one-sided bounds on Z and on the even sector Z^+ exist,
-and the upper decimation flows to strong coupling for every beta in d <= 4 **[classical]** (Ito; source not yet identified, recalled). A lower bound on the twist ratio
+and the upper decimation flows to strong coupling for every beta in d <= 4 **[classical, recalled]** (Ito 1985, for hierarchical lattice gauge theories of Migdal-Kadanoff type; its record was read, not the
+bounds). A lower bound on the twist ratio
 needs the two normalisations matched; the upper one is at least one **[Lean]** (`jensen_normalization`) and extensive in the box
 volume. In the one-box form the mismatch is finite but vanishes at fixed physical box size **[paper]**, sketch. So the step needed is a
 lower bound on the box partition function matched to the upper decimation's normalisation within O(1): Tomboulis's interpolation step
@@ -376,7 +380,7 @@ norm for free (reflection positivity) and lacks the margin eta < 1; GRH lacks th
 | IV.9.4 | The continuum limit exists (mesh limit at fixed volume, then volume along a subsequence; selected phase; fields smeared away from coincident points) | **[external]** | `H1-OPENAI.md`; `ProofPhase/Existence/Bridge.lean` (`plaqLaw_eq_wilsonMeasure`) |
 | IV.9.5 | (O2) The gap needs of the line of constant physics only its resolution clause (l_k -> infinity); with O1 in its one form it gives torus decay, the gap in both orders of limits and reflection positivity; the running clause (one-loop slope 11/(6 pi^2), Lean beta), the scheme clause and non-triviality are not used | **[Lean]** | `ProofPhase/Closures/OneBoxForm.lean` (`tendsto_a_of_resolution`, `gap_of_o1Form`, `yang_mills_assembly_onebox_of_resolution`); `ProofPhase/Assembly.lean` (`OnLCP`, `NonTrivial`) |
 | IV.9.5a | (O2) Per box, by construction: the reflected correlation at even time is a reflection-positivity square, hence non-negative for observables of the positive half; this is not non-triviality (strict positivity is not claimed); the running clause holds by construction on the one-loop line | **[Lean]** | `ProofPhase/Closures/NonTrivialSplit.lean` (`wcorr_even_eq_rpForm`, `wcorr_even_nonneg`, `nonTrivial_of_uniformLower`, `oneLoopTuning`, `running_oneLoop`) |
-| IV.9.5b | (O2) The scale-uniform lower bound c > 0 on a slab correlation at a fixed physical time and the scheme clause: the lower edge of the window whose upper edge is O1's gap (independent of O1 and compatible with it in the spectral model, **[Lean]**); placed at the ODP's end, a reading | **[conditional]** on the one assumption (III.64, III.66) | `ProofPhase/Closures/NonTrivialSplit.lean` (`lower_of_spectral_weight`, `gap_not_lower`, `gap_and_lower_compatible`); III.64a |
+| IV.9.5b | (O2) The scale-uniform lower bound c > 0 on a slab correlation at a fixed physical time and the scheme clause: the lower edge of the window whose upper edge is O1's gap (independent of O1 and compatible with it in the spectral model, **[Lean]**); placed at the ODP's end, a reading | **[open]**; part of the one assumption by the first author's reading (III.64a) | `ProofPhase/Closures/NonTrivialSplit.lean` (`lower_of_spectral_weight`, `gap_not_lower`, `gap_and_lower_compatible`); III.64a |
 | IV.9.6 | (O3) Euclidean invariance, local fields as distributions, Wightman reconstruction, short-distance agreement: claimed for the external construction in its selected phase and for its fixed-stencil fields (partial); uniqueness of the limit is not claimed there | **[external]** (partial) for the external construction; **[open]** for ours, and uniqueness of the limit **[open]** for both | `PROOF-BLUEPRINT.md`, P6.2, P6.4 to P6.9, P7.6 |
 | IV.9.7 | (O4) Every compact simple group: existence external; this project's tuning SU(2) only | **[external]** / **[open]** | `PROOF-BLUEPRINT.md`, P6.10 |
 

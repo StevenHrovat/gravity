@@ -31,7 +31,7 @@ one-box test) is a detail of this one picture.
   -1, the identity or the half-turn, and every real number is its modulus times 1 or -1, so ordinary multiplication is a cost times
   an identity-keeping multiplication (`rot_of_isometry_real`, `real_eq_sign_mul_abs`) **[Lean]** (claim II.0g).
 
-**Decidable over every truly possible state.** The owner's reformulation: a DMP-complete state needs decidability for every truly
+**Decidable over every truly possible state.** The first author's reformulation: a DMP-complete state needs decidability for every truly
 possible state, with the least possible options given by y^k **[reading]** (claim II.0h). Each part has an exact counterpart.
 With a floor, settling is decided within an explicit bound; at the floor the universal machine is undecidable (II.3) **[Lean]**. The
 truly possible paths after k steps grow like y^k, and the least such rate is the connective constant mu of self-avoiding walks
@@ -166,6 +166,15 @@ truth value exists (classically) but cannot be computed. **[Lean]** (`etm`, `etm
 universal machine) for which it is not; a lossless system as such need not be undecidable (II.0). The step from the second case to
 the first is the open step of every card (Part III, sections 4 and 5).
 
+**One step, one `decide`.** The first author's definition: a DMP-complete proof is lintable in one step, relying only on `decide`.
+The exact part is the computable layer of the machine: every decision has a computable form on rational data, proved right for the
+real system once (`szegoQ_cast`, `elecQ_cast`), and an instance is then one kernel evaluation, for example
+`balanceBound 1 (1/1000) (1/2) = 1001` **[Lean]**; the one-box certificate is one step at the shared gate plus induction (II.4).
+So a finished, DMP-complete proof has its last step a single `decide` on finite data, with its correctness theorem proved once in
+general **[reading]** (claim II.4f). Care points: the correctness theorems are ordinary Lean proofs over the reals, not `decide`
+alone; the open steps are not of this form (O1 is a for-all over every outside, not one finite check); and `native_decide` stays
+excluded, since the kernel itself must check the step.
+
 **The three applications.** Yang-Mills: the floor is the cost above log mu, and keeping it uniform in the cutoff is O1. GRH: the
 margin decays without a floor (zero slack, II.1.5), so only the sign is decided scale by scale. NP vs coNP: a constant cost per
 hidden variable is a floor.
@@ -249,7 +258,7 @@ property: that nothing in it cannot run.
 **The arsenal (II.6.1).** The arsenal is the set of transferable Lean results that need Mathlib, kept in the `im` repository
 (`arsenal/`), pinned to Lean and Mathlib v4.34.0. It is imported from there and never copied (II.6.4). At the pinned commit its
 modules are `Arsenal.R136a1`, `Arsenal.BSD` with its parts (`Algebraic`, `Analytic`, `Count`, `Hasse`, `EulerRat`),
-`Arsenal.Rotation` (the one-box test, I.8) and `Arsenal.Rigidity` (II.4) **[paper]** (`arsenal/README.md`).
+`Arsenal.Rotation` (the one-box test, II.4) and `Arsenal.Rigidity` (II.4) **[paper]** (`arsenal/README.md`).
 
 **R136a1 (II.6.2).** The one way to leave a statement open: `R136a1 "name" P` is `P` as a named hypothesis, never an axiom. A
 theorem that needs it takes it as a hypothesis, so the system never assumes it. **[Lean]** (`Arsenal/R136a1.lean`, `R136a1`,
@@ -262,11 +271,11 @@ read in code only so prose stays free; and every module is reached from `Arsenal
 name. **[paper]** (read from the script; run at the commit of `im` pinned in `docs/mass-gap/formal/lakefile.toml`, result "lint: OK
 (10 modules; Mathlib v4.34.0 only; no escape hatch; 4 part(s) answered R136a1)", the four being `Euler product bound`, `Hasse`,
 `the gate is shared across scales` and `weak Mordell-Weil`). A self-test (`tools/lint-selftest.sh`) plants one case per rule, and the full check (`tools/check.sh`) adds a build against Mathlib
-and the kernel's axiom report for every declaration. Both were not run for this draft.
+and the kernel's axiom report for every declaration; both were run at the release commit (II.7).
 
 **Shared vocabulary, imported and never copied (II.6.4).** What can be transferred moves to the `im` repository and is used from
 there as a dependency, never vendored. Lean projects `require` the package by repository, subdirectory and commit. **[paper]** (the
-owner's rule; `arsenal/README.md`, "Using it").
+first author's rule; `arsenal/README.md`, "Using it").
 
 **What the lint is, and is not.** It certifies form: that everything stated is soundly constructed. It does not say that the
 statements describe the world (Part I, I.8).
@@ -297,9 +306,9 @@ none.
 
 **B. The tools the problems use.**
 
-## II.8 One chain, three problems
+## II.8 One chain, the first three problems
 
-All three problems run along the same four links.
+The first three problems (Parts IV to VI) run along the same four links.
 
 > **positivity -> a space -> an evolution on it -> a spectrum that the positivity pins**
 
@@ -368,7 +377,7 @@ identification of the vacuum complement is not part of the Lean statement.
 the evolution on Weil's space is self-adjoint, its spectrum is real, which in the variable gamma = (rho - 1/2)/i is the statement
 that the zeros are real; that such a space and generator exist for zeta is the Hilbert-Polya view and is **[open]** (V.4.1). P vs NP: a
 spectral gap of the heat-bath operator is fast mixing, hence polynomial-time sampling **[classical]** (the standard relation between
-the gap and the mixing time; the reference is still to be pinned, claim II.10.3), finite form
+the gap and the mixing time, through the relaxation time; Levin-Peres-Wilmer, chapter 12; claim II.10.3), finite form
 **[Lean]** (`Mixing/`).
 
 ---
@@ -429,7 +438,8 @@ finite state spaces (`Mixing/Doeblin.lean`, `contracts_of_doeblin`, `doeblin_sha
 heat-bath dynamics has a spectral gap: the spectral measure of every time correlation gives no mass above 1 - (1 - alpha)/N, with N
 the number of sites. The condition is Dobrushin's (Theory Probab. Appl. 13 (1968) 197-224; Dobrushin-Shlosman 1985, uniqueness and
 decay of correlations); the gap form is known in the literature on rapid mixing under Dobrushin's condition (Dyer-Goldberg-Jerrum,
-Combin. Probab. Comput. 17 (2008) 761-779, states the mixing result), and its exact source is not yet pinned (claim II.12.3).
+Combin. Probab. Comput. 17 (2008) 761-779, states the mixing result; Hayes 2006 gives rapid mixing from a Dobrushin matrix of norm below 1; Wu 2006 gives the Poincare
+inequality, a spectral gap, under Dobrushin's uniqueness condition) (claim II.12.3).
 **[Lean]** for finitely many sites with finite spin spaces (`Mixing/FiniteSpectral.lean`,
 `spectral_gap_dobrushin`; `Mixing/Link.lean`, `spectral_gap_of_column`). With exponential weights the same condition gives
 exponential decay of spatial correlations **[Lean]** (`docs/mass-gap/formal/Attempts/R3/TailDecay.lean`, `theoremA_w`).
@@ -542,7 +552,7 @@ polynomial size is the open question N1 (Part VI). Yang-Mills: the same "quantum
 None of II.9 to II.15 creates positivity. Each starts from a positive weight, a positive pairing, a positive cost or a strict sign,
 and carries it: into a space, into a spectrum, across a chain, across a boundary, down to a floor. The open step of each problem is
 the place where that starting positivity is known locally, or in a model, and must be established for every case. Part III states
-this once (section 4). The five sections that follow, II.1 to II.6, are the *form layer*: the part of the machinery that says
+this once (section 4). The six sections II.1 to II.6 are the *form layer*: the part of the machinery that says
 nothing about content and so serves every problem. II.16 holds for them too.
 
 ---

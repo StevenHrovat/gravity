@@ -1,7 +1,7 @@
 # Part IX. Hodge: the card, the positivity, and the one open step
 
-*Draft 2, 2026-11-24. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/unified/`. Claim labels (IX.n; VIII.n in draft 3) are listed in `../CLAIMS.md` (merged from `../claims-incoming/VIII-hodge.md`).*
+*Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
+`docs/unified/`. Claim labels (IX.n) are listed in `../CLAIMS.md`.*
 
 ## IX.0 What is proved, by whom, and what this part does
 
@@ -20,7 +20,7 @@ and the diagram chases of Lefschetz (1,1). The geometry (Hodge theory, the expon
 surface) enters as named `External` slots. The conjecture itself is the card's one `OpenStep`.
 
 **What this part does.** It puts Hodge on the DMP API as a card (IX.2), proves what Mathlib can reach (IX.3), records what is
-borrowed (IX.4), states the one open step (IX.5), and attaches the owner's readings, short (IX.6). Hodge is also the place
+borrowed (IX.4), states the one open step (IX.5), and attaches the first author's readings, short (IX.6). Hodge is also the place
 where the **same positivity** that the Riemann hypothesis over finite fields needs appears as a theorem over the complex numbers. IX.3.4
 and IX.3.5 show the shape for curves in Lean.
 
@@ -99,13 +99,13 @@ The cards, in the card shape:
 
 The last two cards belong to the GRH column (Part V); they sit here because they use the same positivity. Hodge's own open step is the first row.
 Nothing is an axiom. An `OpenStep` or `External` slot is an ordinary hypothesis and does not appear in the axiom audit. `Unified/HodgeAPI.lean`
-is not yet part of the aggregate import `Unified/All.lean`; that is left to the coordinator.
+is built and audited through `ETM/CardBox.lean`, which imports it.
 
 ## IX.3 What is proved
 
 All of this is **[Lean]**. The audit log (`hodge-axioms.log`, written after both modules were last edited): both modules build with no warnings; all 47
 declarations rest on the three standard axioms (two, `sq_add_smul` and `transfer`, on two of them); the source has no `sorry`, `admit`,
-`native_decide` or `axiom`. The log was read, not regenerated. None of it proves a statement about a variety. Each result says what the
+`native_decide` or `axiom`. The log was regenerated at the release commit (II.7). None of it proves a statement about a variety. Each result says what the
 ledger gives from a hypothesis.
 
 ### IX.3.1 A polarised Hodge structure, and positivity on its Hodge classes (`HodgeLinear`)
@@ -245,11 +245,11 @@ filled, and shows the positivity that is a theorem over the complex numbers. The
 
 ## IX.6 DMP readings attached to this part (all [reading])
 
-* **Describable implies exists.** The Hodge conjecture is the cleanest instance of the owner's sentence among the seven problems. The described
+* **Describable implies exists.** The Hodge conjecture is the cleanest instance of the first author's sentence among the seven problems. The described
   objects are the rational `(p, p)` classes (cohomology describes them). The existing objects are the algebraic cycles (geometry builds them). The
   conjecture is `describable <= exists`; the converse is classical. In the API it is literally `OpenStep (hodge <= alg)` with `alg <= hodge` as an
   `External`.
-* **It is not a logical triviality.** The owner anchored "what is described exists" in Goedel's completeness theorem (a consistent first-order theory
+* **It is not a logical triviality.** The first author anchored "what is described exists" in Goedel's completeness theorem (a consistent first-order theory
   has a model) **[classical]**. Hodge is the geometric version. Here a description is a cohomology class with a Hodge-type condition and existence is
   an algebraic cycle. No completeness theorem bridges them, which is why it is open.
 * **Describable must mean rational, on a projective variety.** Integral "descriptions" include torsion classes, which every `(p, p)` description admits
@@ -261,7 +261,7 @@ filled, and shows the positivity that is a theorem over the complex numbers. The
   (Lean for the model: `PolHS`, `mem_hodge`; the identification with DMP's G0 circle is the reading.)
 * **The Hodge index route is more efficiently correct than Deligne's.** There are two complete proofs of the Riemann hypothesis over finite fields.
   Weil's (curves, 1948) is one positivity statement, the Hodge index theorem on `C x C` (`weil_bound`). Deligne's (all smooth projective varieties, 1974) reaches the same
-  bound without a positivity statement on cycles. The owner prefers the first because it originates directly from G0 and so simplifies further. Both
+  bound without a positivity statement on cycles. The first author prefers the first because it originates directly from G0 and so simplifies further. Both
   proofs are complete and correct. The difference is that the positivity route has **one moving part**, Cauchy-Schwarz on a positive form
   (`cs_of_nonneg`), the same shape as the encoder bound of Yang-Mills and of `PosInput.alg_cs`. That is why it transfers between problems.
   **Reach:** the positivity route is proved for curves and, for the index theorem, for surfaces in every characteristic. In higher dimension it needs
@@ -277,7 +277,7 @@ filled, and shows the positivity that is a theorem over the complex numbers. The
 ## IX.7 What would close it
 
 If an independent proof of the Hodge conjecture for p >= 2 were found, the card's open step would be discharged by that work. This part would supply
-the shape and the audit. The change to this paper would be one row of the ledger, one verdict line of this part and one item of the abstract.
+the shape and the audit. The change to this paper would be one row of the ledger, one verdict line of this part and one item of the introduction's list of open steps.
 Nothing in this round proves any part of that.
 
 The formalisation items that would change the status of the **borrowed** parts, none done and all named in the notes as reachable or far:
@@ -287,7 +287,6 @@ The formalisation items that would change the status of the **borrowed** parts, 
    Hodge structures of weight k with the Hodge filtration; finiteness of lattice Hodge classes of bounded norm. **[paper, an estimate]**
 2. **Far, needs geometry Mathlib lacks:** Kaehler manifolds, harmonic forms, the Hodge decomposition itself, the cycle class map, the
    exponential sequence on a complex manifold. **[paper, an estimate]**
-3. A Hodge row in the notes' API table and an import of `Unified/HodgeAPI.lean` into `Unified/All.lean`: left to the coordinator.
 
 ## IX.8 The box in the one-box test
 
@@ -296,8 +295,8 @@ the card's one open step `hodge <= alg`, the gate reads inside at a tick exactly
 "inside". The box of an input passes exactly when the Hodge conjecture holds for it **[Lean]** (`hodge_box_iff`, `ETM/CardBox.lean`;
 claim IX.8a). For divisors, codimension one, the box passes, from Lefschetz (1,1) with its named inputs **[Lean]** (from `External`;
 `hodge_box_divisor`). The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and
-the content stays in the step **[paper]**. **[reading]** The owner names the ticks the **+dimensions** (in plain terms, the
-codimensions). The owner's reason: at each codimension the Hodge-Riemann form is positive, up to its fixed sign, on the primitive
+the content stays in the step **[paper]**. **[reading]** The first author names the ticks the **+dimensions** (in plain terms, the
+codimensions). The first author's reason: at each codimension the Hodge-Riemann form is positive, up to its fixed sign, on the primitive
 classes (an `External` slot here, IX.3.1), so each is a reflection-positive covariant dimension, and what is positive exists. On
 that reading the gate at +dimension p reads inside when every rational (p,p) class is a rational combination of classes of
 algebraic cycles, and the open ticks start at the second +dimension (IX.5.1). That identification of the ticks with the

@@ -25,6 +25,23 @@ GREEK = dict(zip('αβγδεζηθικλμνξπρστφχψωΓΔΘΛΞΠΣΦΨ
 def esc(t):
     return ''.join(SPECIAL.get(ch, ch) for ch in t)
 
+# The sources transliterate umlauts and drop accents (repository rule); the typeset text restores them. Whole words only, and never
+# inside code spans or URLs (those are held as placeholders while this runs).
+TYPESET = [('Goettingen', 'G\\"ottingen'), ('Lueck', 'L\\"uck'), ('Mueller', 'M\\"uller'), ('Goedel', 'G\\"odel'),
+           ('Godel', 'G\\"odel'), ('Luescher', 'L\\"uscher'), ('Fuerstenau', 'F\\"urstenau'), ('Juergen', 'J\\"urgen'),
+           ('Kaehler', 'K\\"ahler'), ('Hyperkaehler', 'Hyperk\\"ahler'), ('Kroencke', 'Kr\\"oncke'), ('Ueber', '\\"Uber'),
+           ('Saetze', 'S\\"atze'), ('fuer', 'f\\"ur'), ('Vollstaendigkeit', 'Vollst\\"andigkeit'), ('ueber', '\\"uber'),
+           ('Bemerkung', 'Bemerkung'), ('Szego', 'Szeg\\H{o}'), ('Erdos', 'Erd\\H{o}s'), ('Lovasz', 'Lov\\\'asz'),
+           ('Poincare', 'Poincar\\\'e'), ('Caratheodory', 'Carath\\\'eodory'), ('Fejer', 'Fej\\\'er'),
+           ('Necas', 'Ne\\v{c}as'), ('Ruzicka', 'R\\r{u}\\v{z}i\\v{c}ka'), ('Sverak', '\\v{S}ver\\\'ak'),
+           ('Kollar', 'Koll\\\'ar'), ('Andre', 'Andr\\\'e'), ('Asterisque', 'Ast\\\'erisque'), ('Alpoge', 'Alp\\"oge')]
+TYPESET_RE = [(re.compile(r'\b%s\b' % a), b) for a, b in TYPESET if a != b]
+
+def typeset_names(t):
+    for r, b in TYPESET_RE:
+        t = r.sub(lambda m, b=b: b, t)
+    return t
+
 def inline(t):
     """Escape and convert inline Markdown: code spans and links become placeholders first, so that bold and italic can span
     them; straight double quotes become TeX quotes."""
@@ -36,7 +53,7 @@ def inline(t):
     t = re.sub(r'\[([^\]]*)\]\(([^)]*)\)',
                lambda m: hold(r'\href{' + m.group(2).replace('%', r'\%').replace('#', r'\#') + '}{' + emph(esc(m.group(1))) + '}'), t)
     t = emph(esc(t))
-    t = re.sub(r'"([^"\x00]*)"', r"``\1''", t)
+    t = typeset_names(re.sub(r'"([^"\x00]*)"', r"``\1''", t))
     t = ''.join(('\\ensuremath{\\%s}' % GREEK[ch]) if ch in GREEK else ch for ch in t)
     return re.sub('\x00(\\d+)\x00', lambda m: held[int(m.group(1))], t)
 
@@ -148,8 +165,8 @@ def bibliography_checked():
             continue
         n, authors, title, venue, url, status = c[0], c[1], c[2], c[3], c[4], c[5]
         if status == 'not identified':
-            title, venue, url = '', c[6], ''
-        rows.append((authors, title, venue, url, status))
+            continue
+        rows.append((clean_bib(authors), clean_bib(title), clean_bib(venue), bib_link(url), status))
     def surname(a):
         first = re.split(r'[;,]| and ', a)[0].strip()
         first = re.sub(r'\(.*?\)', '', first).strip()
@@ -157,21 +174,38 @@ def bibliography_checked():
         return (toks[-1] if toks else a).lower()
     rows.sort(key=lambda r: (surname(r[0]), r[2]))
     body = ['\\section*{References}', '\\addcontentsline{toc}{section}{References}', '',
-            '\\noindent{\\small Every work the claims ledger cites for a classical or external row. Each entry was read from the page '
-            'given (arXiv, the publisher, or zbMATH); entries marked \\emph{(partly checked)} have a field that could not be read '
-            'there.}', '', '\\begin{enumerate}[label={[\\arabic*]},leftmargin=2.5em,itemsep=1pt]']
+            '{\\sloppy', '\\begin{enumerate}[label={[\\arabic*]},leftmargin=2.5em,itemsep=1pt]']
     for authors, title, venue, url, status in rows:
-        if status == 'not identified':
-            body.append('\\item ' + inline(venue) + ' \\emph{(not yet identified)}')
-            continue
-        t = inline(authors) + ', \\emph{' + inline(title) + '}, ' + inline(venue) + '.'
+        t = inline(authors) + ', \\emph{' + inline(title) + '}, ' + inline(venue).rstrip('.') + '.'
         if url:
             t += ' \\url{' + url.replace('%', '\\%').replace('#', '\\#') + '}'
-        if status != 'checked':
-            t += ' \\emph{(partly checked)}'
         body.append('\\item ' + t)
-    body.append('\\end{enumerate}')
+    body.append('\\end{enumerate}}')
     return '\n'.join(body), len(rows)
+
+# Working remarks in references.md (what page was read, what could not be confirmed) stay there; the typeset entry drops them.
+REMARK = re.compile(r'\s*\((?=[^()]*\b(page|read|record|snippet|search|listed|given|confirmed|settled|submitter|request|Crossref|'
+                    r'fetched|shown|displays|as printed|not in|from a|one source|the PDF|abstract|full text)\b)[^()]*\)', re.I)
+
+def clean_bib(t):
+    t = REMARK.sub('', t)
+    t = re.sub(r';\s*(the page|as read|DOI) [^;]*$', '', t)
+    return re.sub(r'\s{2,}', ' ', t).strip().rstrip(';,')
+
+def bib_link(url):
+    """A stable link for the typeset entry: a DOI, arXiv, a record page; search queries and encyclopaedia pages are dropped."""
+    url = url.strip()
+    m = re.match(r'https?://api\.crossref\.org/works/(10\.[^?\s]+)$', url)
+    if m:
+        return 'https://doi.org/' + m.group(1)
+    m = re.match(r'https?://inspirehep\.net/api/literature/(\d+)$', url)
+    if m:
+        return 'https://inspirehep.net/literature/' + m.group(1)
+    if not url.startswith('http') or 'wikipedia.org' in url or 'api.crossref.org/works?' in url or 'rechercher.do' in url:
+        return ''
+    if 'inspirehep.net/api/literature?' in url or 'zenodo.org/api' in url:
+        return ''
+    return url
 
 def bibliography():
     checked = bibliography_checked()
@@ -220,7 +254,7 @@ PREAMBLE = r"""%% GUID v8, generated by tools/paper-latex.py from docs/paper/dra
 \usepackage{enumitem}
 \usepackage{newunicodechar}
 \usepackage[hidelinks]{hyperref}
-\usepackage{url}
+\usepackage{xurl}
 \newunicodechar{Δ}{\ensuremath{\Delta}}
 \newunicodechar{Φ}{\ensuremath{\Phi}}
 \newunicodechar{ℓ}{\ensuremath{\ell}}

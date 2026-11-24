@@ -148,7 +148,9 @@ end Instance
 /-- **`LiftCPConst G c`: what a constant-size-gadget lifting theorem would have to state.** One fixed gadget `G` (its size
 free of `n`), every CNF `F` without empty clause, resolution width exceeding `w`: every cutting-planes refutation of
 `F ∘ G` has at least `exp (c (w + 1))` lines. The only change from `LiftCP` is that `log n` is gone: the lower bound is
-exponential in the width itself. **Open for every constant-size gadget** (to be read with the paper, section 5). -/
+exponential in the width itself. **Open for suitable constant-size gadgets** (for example indexing); **false for XOR**: for
+Tseitin formulas on expanders the lifted formula is again a Tseitin formula, with quasi-polynomial cutting-planes refutations
+(Dadush-Tiwari 2020) while its width is linear (not machine-checked here). To be read with the paper, Part VI.4.11. -/
 def LiftCPConst (G : Gadget) (c : ℝ) : Prop :=
   ∀ (α : Type) [Fintype α] [DecidableEq α] (F : CNF α) (w : ℕ), (∀ D ∈ F, D.Nonempty) → ¬ WD F w ∅ →
     ∀ P : Finset (CPLine (LV α G)), CPRefutes (comp G F) P → Real.exp (c * (w + 1)) ≤ P.card

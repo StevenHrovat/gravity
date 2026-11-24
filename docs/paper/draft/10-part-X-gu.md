@@ -1,14 +1,14 @@
 # Part X. GU: the Grand Unified reading
 
-*Draft 2, 2026-11-24. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/unified/`. Claim labels (X.n; IX.n in draft 3) are listed in `../CLAIMS.md` (merged from `../claims-incoming/IX-gu.md`).*
+*Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
+`docs/unified/`. Claim labels (X.n) are listed in `../CLAIMS.md`.*
 
 ## X.0 What "Grand Unified" means here, and where it stands
 
 **GU is not a Clay problem.** There is no official statement to quote. In this work "Grand Unified" is the second half of the
-owner's **release criterion** (`OUTLINE.md`): the paper may leave the draft stage when both readings of GUID hold. **General** is the
+first author's **release criterion** (`OUTLINE.md`): the paper may leave the draft stage when both readings of GUID hold. **General** is the
 unified theorem with its open hypotheses closed. **Grand Unified** is *the framework containing SU(3) x SU(2) x U(1) in one structure
-with at least one checkable consequence*. The owner's wording is a goal ("what I want to claim when finished, not what I can prove
+with at least one checkable consequence*. The first author's wording is a goal ("what I want to claim when finished, not what I can prove
 now"), so this part states exactly how far each half of the Grand Unified reading holds today.
 
 **State (2026-11-24).**
@@ -17,8 +17,8 @@ now"), so this part states exactly how far each half of the Grand Unified readin
   cyclic group of order 6 sits inside SU(5), and the kernel of that embedding is proved in Lean **[Lean]**, with the group-level
   facts about it **[classical]** (X.3). Nothing in that Lean involves DMP or GUID: SU(5) contains the group whatever the framework
   is, and the only link to the framework is the circle reading (X.6) **[reading]**.
-* **"At least one checkable consequence": the owner's decision, uniform charge quantisation.** The notes find two candidates and
-  prove what can be proved about each (X.5). The owner takes candidate (b), with its guarantee from the ODP: every charge is an
+* **"At least one checkable consequence": the first author's decision, uniform charge quantisation.** The notes find two candidates and
+  prove what can be proved about each (X.5). The first author takes candidate (b), with its guarantee from the ODP: every charge is an
   integer multiple of one unit, the same unit for all matter, and the unit is the ODP's dimensionless 1 (X.5) **[reading]** for the
   guarantee, **[Lean]** for the integer charges on a compact circle, **[external]** for the measurements. Neither candidate is a
   consequence that the standard expectation of any compact U(1) or any SU(5) does not already contain; a consequence beyond it stays
@@ -54,7 +54,7 @@ API's one general statement about the G0 phase field (X.3.3). The table is the c
 | **Well-defined input** | the representation content of one generation and the Higgs: for each field its triality `t`, duality `d` and hypercharge in sixths `q = 6Y` (`smFields`, a definition in Lean). **The hypercharges are input, not output.** |
 | **Proved structure** | the centre elements of SU(3) x SU(2) x U(1) that act trivially on all these fields form exactly a cyclic group of order 6, split as 2 x 3; every invariant component has `Q + t/3` an integer (charge in thirds, correlated with colour); the SU(5) block embedding has exactly this group as kernel; a compact U(1) admits only integer charges **[Lean]** |
 | **External inputs** | the hypercharge values (fixed by anomaly cancellation, now in Lean, X.7b, or by SU(5)); the measured neutrality of matter, the absence of free fractional charges, proton-decay limits, the failure of coupling unification, the absence of monopoles **[classical]** / **[external]** |
-| **The one open step** | a checkable consequence beyond the standard expectation, supplied by DMP **[open]**; for the gate's wording the owner takes uniform charge quantisation (X.5) **[reading]** |
+| **The one open step** | a checkable consequence beyond the standard expectation, supplied by DMP **[open]**; for the gate's wording the first author takes uniform charge quantisation (X.5) **[reading]** |
 | **Conclusion** (if the step closes) | the Grand Unified half of the release criterion holds |
 
 ## X.3 What is proved
@@ -133,8 +133,9 @@ G0 link that holds for **every** instance of the API, not only for GU. `g0_charg
 anomalies and the mixed gauge-gravitational anomaly fixes the hypercharge ratios (Geng and Marshak 1989; Minahan, Ramond and Warner
 1990); with a right-handed neutrino a B - L direction opens unless a Majorana mass is assumed (Babu and Mohapatra 1989).
 Alternatively the ratios follow from SU(5). Either way they are an **input to the Z_6, not an output of it**. Anomaly cancellation is
-now in Lean (X.7b, `ProofPhase/Closures/Anomaly.lean`: `anomaly_fixes_sm`, `anomaly_fixes_Z6`): for one generation the
-four anomaly conditions fix the charges up to u <-> d, and with them the Z_6. This is classical physics formalised, not a DMP result.
+now in Lean (X.7b, `ProofPhase/Closures/Anomaly.lean`: `anomaly_fixes_sm`, `anomaly_fixes_Z6`): for one generation, with q_Q > 0 and
+coprime charges, the four anomaly conditions fix the charges up to u <-> d, and with them the Z_6 (without q_Q != 0 there is a second
+solution, q_Q = q_L = q_e = 0 and q_u = -q_d). This is classical physics formalised, not a DMP result.
 
 **X.4.2 The global form** **[classical]**. Which of Z_1, Z_2, Z_3, Z_6 nature uses is not decided by present experiment (Tong,
 JHEP 07 (2017) 104). The choice changes which new particles and line operators are allowed:
@@ -187,10 +188,10 @@ follows once the factors are chosen; the reading "2 first, then 3" restates the 
 the matter, and present experiments do not decide it. Z_6 = Z_2 x Z_3 is symmetric: it has no "first 2, then 3". An order appears only
 in the symmetry breaking (X.6).
 
-**The owner's position, recorded.** The owner's reading is that GU comes down to well-defined inputs, which DMP can guarantee, and that
+**The first author's position, recorded.** The first author's reading is that GU comes down to well-defined inputs, which DMP can guarantee, and that
 the checkable consequence comes from the link to G0 (candidate (b)).
 
-**The owner's decision (2026-11-24).** "Uniformity is also guaranteed to be constructed by the ODP": the guarantee of "well-defined
+**The first author's decision (2026-11-24).** "Uniformity is also guaranteed to be constructed by the ODP": the guarantee of "well-defined
 inputs, guaranteed" is the same as the one that gives Yang-Mills its lower edge (Part III 4.4). The ODP ends only at a dimensionless 1,
 and that 1 is the unit every charge is an integer multiple of. So the checkable consequence for the gate is uniform charge
 quantisation, one unit for all matter, checked by the neutrality of matter and the absence of free fractional charges **[reading]**
@@ -204,21 +205,21 @@ it (X.5e stays open).
   natural gluing identifies the SU(2) and SU(3) centres with hypercharge phases as fully as the matter allows: Gamma = Z_6. This is the
   sharpest DMP-flavoured statement found. It is checkable (X.5) but is not a derivation: "as fully as the matter allows" uses the
   hypercharges, and the conclusion coincides with what SU(5) gives.
-* **"The universal quantum running" read as charge quantisation.** The owner's entry, in the coordinator's reading: the link to G0
+* **"The universal quantum running" read as charge quantisation.** The first author's entry, read here as follows: the link to G0
   makes the phase group a circle, and a circle carries only integer charges. The step from the circle to integer charges is proved
   (X.3.2); that this is what the entry means is the reading.
 * **"2 first, then 3, with the hand-over at the state 2, 3."** An order does appear in the symmetry breaking **[classical]**: at the
   electroweak scale the Higgs vacuum (read as the SU(2) "handshake") leaves the unbroken group (SU(3) x U(1)_em)/Z_3. The Z_2 part is
   absorbed, and the Z_3 part survives to low energies as the correlation of charge with colour. In descending energy the 2-part acts
-  first and the 3-part remains. This matches the owner's ordering and predicts nothing beyond the standard picture.
+  first and the 3-part remains. This matches the first author's ordering and predicts nothing beyond the standard picture.
 * **"SU(5) with a single coupling is G0 at GRH, with a forward arrow independent of scale."** SU(5) is the smallest simple group that
   contains the Standard Model group by rank **[classical]**, and it contains the Z_6 quotient (X.3.1). Its single coupling holds at one scale only, minimal SU(5) is excluded by proton decay, and the
-  couplings do not meet exactly (X.4.3). The owner's mapping (one coupling = one G0; the forward arrow = the running from the
+  couplings do not meet exactly (X.4.3). The first author's mapping (one coupling = one G0; the forward arrow = the running from the
   unification scale) is a reading, and a programme beyond Yang-Mills, GRH and NP vs coNP.
 * **Every SU(N) as a valid unified theory, indexed by the values of zeta.** On `s > 1` the zeta function decreases continuously from
   infinity to 1, so it takes every integer `N >= 2` exactly once, which follows from continuity and monotonicity **[classical]**. So
   zeta indexes every SU(N), one to one. The project's gauge-group package covers every SU(N) (`General/SUN*.lean`). That every SU(N)
-  "describes existence" is the owner's reading; as physical unified theories most SU(N) are not viable (X.1.1).
+  "describes existence" is the first author's reading; as physical unified theories most SU(N) are not viable (X.1.1).
 * **SU(2) as the stable profile** (Appendix A): a statement about the group manifold under Ricci flow, not about the global form of the
   Standard Model group. No link to Z_6 was found.
 * **The rigid groups.** Which compact groups are rigid, which carry content across the gate, and the U(1) gate's two hidden witnesses are in Appendix A.5.
@@ -231,7 +232,7 @@ Ranked by how directly each would answer the gate. None is promised.
    existence spaces, whose consequence is "the centre twists that survive matter are glued to the U(1) maximally". With the
    representation content as input it would output Gamma = Z_6 and hence the three checks of X.4.2. This is the only route found on
    which DMP would contribute a consequence rather than a description.
-2. **Anomaly cancellation in Lean** (done, X.7b): from the one-generation representation content the anomaly equations fix the
+2. **Anomaly cancellation in Lean** (done, X.7b): from the one-generation representation content, with q_Q > 0 and coprime charges, the anomaly equations fix the
    hypercharge ratios, hence Z_6 (`Closures/Anomaly.lean`, `anomaly_fixes_sm`, `anomaly_fixes_Z6`). It makes the input a classical
    theorem, not a DMP one, and leaves the card's open step (a checkable consequence) where it was.
 3. **Twist sectors of the product group with Z_6-invariant matter**: extend the `SUNTwist` chain to a lattice SU(3) x SU(2) x U(1)
@@ -241,17 +242,17 @@ Ranked by how directly each would answer the gate. None is promised.
    here.
 
 Until one of these lands, the paper can say exactly this: the framework contains SU(3) x SU(2) x U(1) / Z_6 as one structure
-(classical, Lean-stated); the owner's readings select Z_6, which a fractional-charge discovery, a monopole's charge or an axion's
+(classical, Lean-stated); the first author's readings select Z_6, which a fractional-charge discovery, a monopole's charge or an axion's
 couplings could refute; charge quantisation from the circle is proved and measured but is also the standard expectation; and no
 consequence is derived from DMP beyond what the standard expectation contains. Which of these, if any, counts for the gate is the
-owner's decision.
+first author's decision.
 
 ## X.8 The box in the one-box test
 
 **Gate factor and marker.** In the Lean the box is `tickBox (fun _ => ChargeQuantisation)`: the ticks are `0, 1, 2, ...`, every tick
 carries the one statement "every label on G0's phase field has an integer charge", the gate reads inside at a tick exactly when that
 statement holds, and the marker is the claim "inside". This box passes, proved: every continuous character of the circle is z to the
-n **[Lean]** (`gu_box`, `ETM/CardBox.lean`; claim X.8a). **[reading]** The owner names the ticks the **points** (he also offers
+n **[Lean]** (`gu_box`, `ETM/CardBox.lean`; claim X.8a). **[reading]** The first author names the ticks the **points** (he also offers
 "uniquenesses" and "DoEs"): the labels carried on G0's phase field, one gate reading per label. The name fits the classical fact that
 the continuous characters of the circle are the integers, the points of its dual group **[classical]** (Pontryagin duality); the
 identification of the ticks with the labels is not in the Lean, where every tick carries the same statement. The GU card's open step, a consequence beyond the standard expectation (X.5e), is not a

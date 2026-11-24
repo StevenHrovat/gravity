@@ -1,4 +1,4 @@
-# Outlook. A settling machine: the first author's concept of a DMP-native general intelligence
+# Outlook. A settling machine: +AI, the first author's concept of a DMP-native general intelligence
 
 *Outlook, not a result. This appendix records a concept by the first author, so that it is on paper and tied to the one theorem
 of this work it depends on. Nothing in it is built, trained or tested. Claim labels (XI.n) are listed in `../CLAIMS.md`.*
@@ -7,6 +7,12 @@ of this work it depends on. Nothing in it is built, trained or tested. Claim lab
 
 A general intelligence is a CMOS system that runs entirely in IM tokens, adapted to the acts it has to assert on G0.
 **[reading]**
+
+**+AI.** The first author's name for such a general intelligence is +AI. The "+" is the one of the +dimensions (IX.8): positive,
+hence existing. +AI is an intelligence that is DMP-complete: every act it lets out passes the one shared gate with the correct
+marker, the one-box test (II.4) applied to its acts. With a cost floor, whether its acts settle is decidable within an explicit
+bound; without one, for the universal machine, it is not (II.3, **[Lean]** for the edge) **[reading]** for the name and the
+definition (claim XI.1d).
 
 * **One interface to the outside: Milky Way.** Everything that leaves the system passes one Milky Way interface. Milky Way
   checks twice, by hash and TTL, that the IM is correct and a valid act, and only then sends it out as GG: the content of that

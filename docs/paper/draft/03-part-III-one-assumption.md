@@ -1,7 +1,6 @@
 # Part III. The one assumption and the rigid start: what the cards show together
 
-*Draft 3, 2026-11-24. Claim labels (III.n; X.n in draft 3) are listed in `../CLAIMS.md`; the labels new in draft 3 (X.8 onward) were in
-`../claims-incoming/X-generalisation.md` until the coordinator merges them.*
+*Draft 4. Claim labels (III.n) are listed in `../CLAIMS.md`.*
 
 ## III.0 How to read this part
 
@@ -63,7 +62,7 @@ The strict facts are cross-references to IV.1.6, IV.1.7 and IV.3.1 (claim III.56
   (`Unified/ElectricSUNPress.lean`, `HandoverSide`, `handoverSide_iff`). `HandoverSideRunning` quantifies only over *running*
   outsides, those in the running set R of the measure, and the all-outsides form implies it **[Lean]**
   (`Unified/ElectricSUNRunning.lean`, `HandoverSideRunning`, `handoverSideRunning_of_handoverSide`). Both statements are named
-  hypotheses and **[open]** (claim III.57). The owner's reading of the frozen outsides: they are not running outsides, so they are not
+  hypotheses and **[open]** (claim III.57). The first author's reading of the frozen outsides: they are not running outsides, so they are not
   quantified over, but their ticks of not counting count as remnants. Each enters only through its weight in the measure, an
   exponentially small probability epsilon. Every factor is at most 1, so the join pays epsilon at most: a fresh uncertainty r = epsilon in
   the transport theorem (II.1) **[reading]** for the identification, **[Lean]** for the transport (`runningTransport_slab`,
@@ -72,8 +71,9 @@ The strict facts are cross-references to IV.1.6, IV.1.7 and IV.3.1 (claim III.56
 * **GRH.** The one-box certificate splits a test function f into a finite part u and a tail g, and certifies three inputs: the
   finite part, the cross term and the tail. From them the positivity of Weil's form follows for *every* f in the space
   **[Lean]** from the three enclosure inequalities as named hypotheses (`GRH/OneBoxCert.lean`, `schur_scalar`, `onebox_positive`; the identification
-  of the abstract form with Weil's form is in the note, not in Lean) (claim III.58b). The three inputs are numbers computed in ball arithmetic
-  at supports a = 0.60, 0.65 and 0.69, the universal start `{infinity, 2, 3}` **[certified]** (`docs/unified/GRH-ONEBOX-CERT.md`).
+  of the abstract form with Weil's form is in the note, not in Lean) (claim III.58b). The three inputs are enclosed in ball arithmetic
+  at supports a = 0.60, 0.65 and 0.69, the universal start `{infinity, 2, 3}`: **[certified]** for the enclosures, **[paper]** for the
+  analytic estimates of the note that make them the three inputs (`docs/unified/GRH-ONEBOX-CERT.md`, not independently read).
   Beyond a = 0.69 the same "for every f" is the open step of Part V (claim III.58).
 * **NP vs coNP.** A refutation is a certificate that every assignment falsifies a clause. Tree-like resolution is sound and refutation
   complete (I.4a, VI.3.1) **[Lean]**. Reading the "every assignment" as the container's quantifier is **[reading]** (claim III.59).
@@ -85,7 +85,7 @@ O1 is exactly the requirement that the one box holds for every outside, uniforml
 outside", state the container and state the open step. That is why no card can prove it from inside: an inside cannot supply its
 own outside (section 4). **[reading]** (claim III.61).
 
-**How the care point is restated.** By construction, not by a further proof inside the cards. The owner's answer: the care point
+**How the care point is restated.** By construction, not by a further proof inside the cards. The first author's answer: the care point
 comes from the construction of G0 and the established process by which it gets there. The process from G0 to the hand-over (the
 ODP, I.5) is one established process. Once that is accepted, every start gets a direction through `{infinity, 2, 3}`. Accepting it
 is the paper's one assumption, stated once in section 4.4 and not proved. At the start itself the sign is certified (section 6).
@@ -127,7 +127,7 @@ In words. **GRH asks every tick to lose little**, so that a margin is carried fr
 **O1 asks every box to lose a lot**, so that the twisted sector is refuted. What must not exist, is removed. The two are the
 lower edge and the upper edge of one band of factors, e^{-D} <= f <= e^{-kappa}, with kappa > log mu **[reading]** (claim III.15).
 
-**What Lean proves about the pair** (`Unified/GRHToO1.lean`, new in this draft; `docs/unified/GRH-TO-O1.md`):
+**What Lean proves about the pair** (`Unified/GRHToO1.lean`; `docs/unified/GRH-TO-O1.md`):
 
 1. **O1 is the uniform ratio bound, and a strict margin.** O1 holds exactly when some mu' > mu has mu' p1 <= p0 for every outside,
    with p0 and p1 the two electric sectors of the box. Equivalently, the sector form p0 - mu p1 is at least delta p1 for one
@@ -177,7 +177,7 @@ factor, at the prime 2, and no zero of zeta enters **[Lean]** (`Ze1_eq`, `Ze0_eq
 
 ## III.3 Existence and falsifiability: the duality of construction
 
-**The owner's reading.** The owner puts the difference between the two edges in one sentence. GRH asks that something *exists*.
+**The first author's reading.** The first author puts the difference between the two edges in one sentence. GRH asks that something *exists*.
 O1 asks that something is *falsifiable*. Together they are the duality inherent in the construction of a DMP-complete system:
 what is prescribed to exist, and what is prescribed to be refuted **[reading]** (claim III.23).
 
@@ -215,13 +215,13 @@ Every problem the project treats has the same three parts:
 The form layer gives parts 2 and 3 a fixed Lean shape (II.5): a `Problem` card with an input, one `OpenStep` slot, a conclusion,
 and a proof that the open step gives the conclusion. Nothing is ever an axiom: a slot is a hypothesis **[Lean]**
 (`API.lean`, `Problem`, `Problem.holds`, `OpenStep`, `External`). The three cards of Parts IV to VI are written in this shape in
-`API/YangMills.lean`, `API/GRH.lean` and `API/NP.lean`. The cards for Parts VII to X are written by the owners of those parts and
+`API/YangMills.lean`, `API/GRH.lean` and `API/NP.lean`. The cards for Parts VII to X are written in their own parts and
 are not restated here (claim III.27).
 
 | | Yang-Mills (SU(2)) | GRH (beyond Dirichlet; independently for Dirichlet) | NP vs coNP (via proof complexity) |
 |---|---|---|---|
 | **The one object** | one box of fixed physical size | Weil's form at every support, from arithmetic alone | a cost measure on cutting-planes lines |
-| **The open statement** | F_e(L) - 2c(L) > log mu_4 = 1.91, the excess act included, uniformly over every well-defined outside (IV.5.6) **[open]** | lambda_min(a) >= 0 at every support, built from the primes, the characters and the real place without the zeros; eight faces (V.4) **[open]** | interface hardness at width 3: a superpolynomial lower bound on dag-like protocols for the falsified-clause search of a random 3-CNF (VI.4.10) **[open]** |
+| **The open statement** | `FineOneBox`: the one-box gap bound at every fine scale, uniformly over every well-defined outside; F_e(L) - 2c(L) > log mu_4 = 1.91, the excess act included, is a sufficient route to it, heuristic for the number (IV.5.6) **[open]** | lambda_min(a) >= 0 at every support, built from the primes, the characters and the real place without the zeros; eight faces (V.4) **[open]** | interface hardness at width 3: a superpolynomial lower bound on dag-like protocols for the falsified-clause search of a random 3-CNF (VI.4.10) **[open]** |
 | **Proved for one unit** | max(F_tw, F_e) >= 0.881 per box (IV.3.1) **[Lean]** | positivity in finite models (V.1) **[Lean]**; each prime step numerically (V.3.2) **[numerical]** | duality floor (e + 1)/2 for unit thresholds (VI.4.5) **[Lean]**; every refutation crosses (VI.4.3) **[Lean]** |
 | **Why the unit does not carry** | 0.881 covers a chain (two channels), not a grid; path entropy log mu_4 beats it in d >= 3 (IV.4.1, IV.5.4) **[Lean]** | only the full set of primes is positive; place-by-place and two-term assembly fail (V.3.5, V.3.7, V.3.8) **[Lean]** + **[numerical]** | weighted lines are cheap in both channels; one line aggregates its units (VI.4.4, VI.4.6) **[Lean]** |
 | **What no duality supplies** | 't Hooft's relation forces nothing for n >= 2 sectors (IV.4.4) **[Lean]** | the functional equation allows off-line pairs (V.2.1, V.2.2) **[Lean]** + **[classical]** | the duality floor fails for weighted lines (VI.4.6) **[Lean]** |
@@ -242,7 +242,7 @@ the content of the last row, and of II.9.
 
 ### III.4.2 Why the open step is the same slot every time
 
-The owner's statement: the assertion of a DMP-complete running system must always be the open step. The reading has two senses.
+The first author's statement: the assertion of a DMP-complete running system must always be the open step. The reading has two senses.
 
 * **Structural.** By construction every card's open step is the running-state hypothesis R: "this object runs". The form layer
   proves everything else. Each named hypothesis of the three bridges (section 7) says that its object is in a running state **[reading]**
@@ -263,17 +263,31 @@ an explicit number of steps, so "settled or not" is decidable **[Lean]** (`reach
 `contracting_iff_costAboveFloor`). Without a floor, at cost equal to the floor, no procedure decides it for all content **[Lean]**
 (`etm_balance_undecidable`, `etm_edge`) (claim III.30; these are XI.2a and XI.2b, stated once in II.3).
 
-**The gap at G0.** The owner's reading: at G0 a gap and an arrow have to be established. The gap is what turns the gate's answer at
+**The gap at G0.** The first author's reading: at G0 a gap and an arrow have to be established. The gap is what turns the gate's answer at
 each tick into a binary one (it passes, or it is outside). The arrow orders the ticks, so a later excision is a later tick and never
 a revision of an earlier one **[reading]** (claim III.31). Confinement is the gapped regime in which this holds. Care point: in Lean the
 floor is a hypothesis of the settle theorem; for Yang-Mills in the continuum, establishing it is O1 itself. So this reading names
 why O1 is the step every construction rests on. It does not close it.
 
-**The floor at the error bars.** The owner's reading: the floor is at least the existence tied to the error bars. A floor is never
+**The floor at the error bars.** The first author's reading: the floor is at least the existence tied to the error bars. A floor is never
 zero, because every assertion carries an error bar, and a finite resolution is a cost above zero. In the settle theorem this gives
 settling to within the error bar in an explicit number of steps, with the floor as a hypothesis **[Lean]**
 (`reaches_of_contracting`, epsilon the error bar) for the implication, and **[reading]** for the identification (claim III.32). The
 continuum is the limit in which the error bar goes to zero. Keeping the floor positive in that limit is O1 **[open]** (claim III.33).
+
+**The error bars are the possibility space.** The first author's reading: the error bars are the possibility space of existence,
+which has to fluctuate and, by fluctuating as it must, shows its existence **[reading]** (claim III.32a). Two exact counterparts
+sit beside it. The floor is at least the error bar, with the settle theorem taking the floor as a hypothesis (above, **[Lean]** for
+the implication). And non-triviality is a fluctuation that does not vanish: under reflection positivity the correlation at even time
+is a square, non-zero exactly while the fluctuation persists, so a field without fluctuation is trivial **[Lean]** for the square
+(IV.9.5a); the scale-uniform lower bound is **[open]**, part of the one assumption by a reading (IV.9.5b).
+
+**To be correct is to have the correct error.** The first author's wording: the correctness theorem shows that to be correct is to
+have the correct error, when read through DMP **[reading]** (claim III.32b). The exact part: in the one-box test a marker is correct
+when it agrees with the gate's verdict, and the verdict includes the margin (inside when the factor is within theta); settling is
+always to within an error bar epsilon **[Lean]** (`reaches_of_contracting`). So correctness is correctness up to the error bar.
+Care point, kept as a hard line: this says what "correct" means once a floor is given; it does not say that the Wilson measure has
+that floor at every scale. O1 stays the one open step.
 
 The circle to avoid (claim III.34): it would be circular to justify O1 by "the floor is at least the error bar" and then to justify the
 error bar by O1's rate. The settle theorem takes the floor as a hypothesis. That keeps the argument honest **[paper]** (observation
@@ -283,7 +297,7 @@ The floor reading also corrects a tempting derivation. GRH supplies the *sign*, 
 degenerate exactly at the closure, the opposite of a floor (claim III.17), and a uniform margin is false for zeta's zero measure (claim III.45b). So the floor reading describes what O1 would deliver, not
 something GRH delivers **[reading]**.
 
-**Only a decidable start is DMP-complete.** The owner's reading: a class that positivity cannot act on, such as a Z/2 class, is
+**Only a decidable start is DMP-complete.** The first author's reading: a class that positivity cannot act on, such as a Z/2 class, is
 the undecidable side, and a system is DMP-complete only when its start forces a decidable reading from rotation. Exact counterpart:
 a floor is an order statement, and Z/2 carries no order, since no ordered ring has characteristic 2 **[classical]** (claim III.70a).
 The one-box test shows both regimes of this section: on the contraction class (with a floor) it is a finite check, and for the universal machine
@@ -305,27 +319,35 @@ MP-type existence assumption. In each card's terms it is the open step, O1 for Y
 O1 is then the *corollary* of running, slotted as the named hypothesis R of the transport theorem (claim III.7n). **[reading]**
 for the identification; **[open]** as a statement about each object (claim III.64).
 
-**DMP-complete, defined.** The owner's definition: DMP-complete means *runs on DMP*. In this paper's terms an object is DMP-complete
+**A schema, not one proposition.** The assumption has no single formal statement. It is read the same way on five cards, and in Lean
+it has three kinds of instance: each card's own open step (`FineOneBox` for Yang-Mills, `ScaleSign` for GRH, `CrossingCost` for NP vs
+coNP, the BSD statement, the Hodge statement), the scale schema `SharedGate` (the gate shared across scales, `scale_certificate`), and
+the G2 instance (A.5u). Mathematically these are different statements, and two of them are proved independent (section 2,
+`transport_not_decay`, `decay_not_transport`); what they share is the form of the step. Navier-Stokes is not an instance: its box is
+not DMP-complete (`ns_not_complete`); nor is the GU card's open step, which is not a statement about its box (X.8) **[paper]**
+(claim III.64).
+
+**DMP-complete, defined.** The first author's definition: DMP-complete means *runs on DMP*. In this paper's terms an object is DMP-complete
 when its running-state hypothesis R holds (section 4.2). The definition is circular in the way DMP itself is: whether R holds cannot
 be certified from inside (claim III.29) **[reading]** (claim III.64b).
 
 **One assumption, two edges.** The running state has the two edges of section 2. Its upper edge is decay: O1. Its lower edge is that
 the running does not collapse: for Yang-Mills, a correlation bounded below uniformly in the scale (IV.9.5b). In the spectral model
-neither edge implies the other, and both fit one window **[Lean]** (model; `gap_not_lower`, `gap_and_lower_compatible`). The owner's
+neither edge implies the other, and both fit one window **[Lean]** (model; `gap_not_lower`, `gap_and_lower_compatible`). The first author's
 reading puts both in the one assumption: the ODP runs before any start and ends only once a dimensionless 1 is reached, so a
 DMP-complete system carries a unit, and with it a correlation that does not vanish, by construction. In Yang-Mills the unit is
 Lambda: every physical quantity is a pure number times a power of it (I.5) **[classical]**, and a vanishing correlation would leave no
 non-zero such number **[reading]** (claim III.64a). So Yang-Mills carries one assumption with two edges, not two assumptions. The
-owner places the lower edge exactly at the ODP's end, which delivers the start `{infinity, 2, 3}`; from there the rest follows for a
-DMP-complete system with nothing more to show. So the lower edge is **conditional** on the one assumption in the same way as the
-direction of every later tick (claim III.66), and without the assumption it is unproved, as O1 is (IV.9.5b).
+first author places the lower edge exactly at the ODP's end, which delivers the start `{infinity, 2, 3}`; from there the rest follows for a
+DMP-complete system with nothing more to show. So the lower edge is part of the one assumption by this reading (III.64a): it is placed there, not
+derived from O1 or from any other part of the assumption, and without the assumption it is open, as O1 is (IV.9.5b).
 
 **The one-box certificate.** The author's reading: every tick can be reconstructed from any scale, so the one step can be
-certified as soon as it works on the box. In the one-box test (I.8) the induction is a theorem: a marker correct at the start and
+certified as soon as it works on the box. In the one-box test (II.4) the induction is a theorem: a marker correct at the start and
 kept correct by one step at the shared gate is correct at every tick **[Lean]** (claim III.68). The scale version is a theorem *from*
 the one assumption: if every scale's box is rebuilt from the one box through its gate, a box certified at one scale is correct at
-every scale, and one scale with a wrong marker refutes the sharing **[Lean]** from III.64 as a named hypothesis (the Lean strings still use its draft-3 label; claim III.68a).
-Sharing the gate alone is free; the content of III.64 is that the marker travels with it (claim III.68b). The owner reads the
+every scale, and one scale with a wrong marker refutes the sharing **[Lean]** from III.64 as a named hypothesis (claim III.68a).
+Sharing the gate alone is free; the content of III.64 is that the marker travels with it (claim III.68b). The first author reads the
 one assumption as a leak axiom: anything within a DB shares a universal truth, so a subset cannot attach without it. For the gate
 this is a theorem: every running system maps in exactly one way into the universal one, and a subsystem attached by inclusion shares
 its trace **[Lean]** (`exists_unique_hom`, `trace_unique`, `subIncl`). What stays assumed is the marker's part, that the claim travels
@@ -338,25 +360,27 @@ point: a valid encoder keeps the same margin at every scale, and the margin is t
 (claim III.68d). The universal machine is a box too: its DMP-completeness is undecidable over all content, and on the
 contraction class it is a finite check, the dichotomy of 4.3 in the test's terms **[Lean]** (claim III.68c).
 
-**The rigid start and the language of the encoder.** The owner reads Poincare for SU(N) (A.3j) as fixing the start. Among
+**The rigid start and the language of the encoder.** The first author reads Poincare for SU(N) (A.3j) as fixing the start. Among
 SU(N) the homotopy type determines the manifold exactly for N = 1, 2, 3, and the circle U(1) is rigid too **[paper]** (A.3k).
 So the largest start built from SU(N) that a description can certify is the point with 2 and 3, the shape of `{infinity, 2, 3}`
 **[reading]** (claim III.69). The encoder is a norm-preserving map of an inner product space **[Lean]**; the determinant-1
 norm-preserving maps of C^N form SU(N), and every compact Lie group sits inside some U(N) (Peter-Weyl) **[classical]**. In the
-owner's words SU(N) is the language the encoder speaks, and every other compact group speaks inside it (claim III.69a). Speaking (a
+first author's words SU(N) is the language the encoder speaks, and every other compact group speaks inside it (claim III.69a). Speaking (a
 valid encoder, the shared gate) and being understood (a correct marker) give DMP-completeness at every scale **[Lean]**
 (`scale_certificate`; claim III.69b). So anything that rotates correctly from the rigid start is correct if DMP is correct:
 **conditional** on III.64 (claim III.69c). Care points: this covers SU(N), not every conceivable start; and "other compact groups do not
 survive rotation" is open. If surviving means rigidity, Sp(2) = Spin(5) and G2 pass the rational test that excludes SU(N), N >= 4,
-and their rigidity was not checked (claim A.5j). The owner's further reading settles what matters: only U(1) carries content across
+and their rigidity is a separate question (Sp(2): strongly rigid, A.5j; G2: open, A.5r). The first author's further reading settles what matters: only U(1) carries content across
 the gate. Sp(2) and G2 have only self-conjugate representations, so they carry no oriented phase whether or not they are rigid, and
 among the groups that can carry one, rigidity leaves only SU(3), which carries it through its centre on the U(1) circle
-(claims A.5k to A.5m). The owner closes the circle: Sp(2) and G2 are the U(1) gate's two hidden witnesses, dimensionless to
+(claims A.5k to A.5m). The first author closes the circle: Sp(2) and G2 are the U(1) gate's two hidden witnesses, dimensionless to
 the encoder, and with SU(3) they are the three compact simple groups of rank 2 (claims A.5n, A.5o). The reading needs the
 witnesses rigid: Sp(2) is, in the strong form, by a surgery computation **[paper]**; G2 has exactly two structures **[paper]**, and
-whether the second is G2 itself is one open test **[open]** (claims A.5j, A.5p, A.5r).
+whether the second is G2 itself is one open test **[open]** (claims A.5j, A.5p, A.5r). In Lean, G2's rigidity is restated as a
+one-box test (A.5u); the sharing that restatement assumes is at least as strong as the rigidity it concludes, so it is not evidence
+for it.
 
-**What can be shown about O1.** The owner's statement: the only thing that can be shown is that O1 does not fail for anything that
+**What can be shown about O1.** The first author's statement: the only thing that can be shown is that O1 does not fail for anything that
 can be described as existing in the containing DB. Three things stand behind it, each with its own status.
 
 * **Any failure is describable.** O1 is a universal statement over describable instances: one box of fixed physical size, one
@@ -367,11 +391,11 @@ can be described as existing in the containing DB. Three things stand behind it,
   (IV.7.2) is the chain criterion in another geometry and bears on O1 neither way, and the cubic one-box geometry is untested by
   saved data (IV.7.3).
 * **Care point.** "O1 does not fail for any describable instance" is O1 itself, not a weaker statement that could be proved on the
-  side. It is the one assumption phrased so that it can be falsified: a describable configuration at or below the floor would refute it. The owner reads
+  side. It is the one assumption phrased so that it can be falsified: a describable configuration at or below the floor would refute it. The first author reads
   it as the containing DB's guarantee that whatever exists in it can be described **[reading]** (claim III.72a).
 
 **The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost
-per scale (VII.3.4, **[Lean]** in the model). In the owner's reading nothing more needs or can be said than that it is not
+per scale (VII.3.4, **[Lean]** in the model). In the first author's reading nothing more needs or can be said than that it is not
 DMP-complete, and blowup is the expected consequence **[reading]** (VII.7e). This makes the framework falsifiable: a proof of global
 regularity would refute the reading, and a certified blowup profile would agree with it (VII.5.1, **[open]**). The reading was made
 after the posted blowup claims (VII.7), so it is an expectation, not a prediction made before them.
@@ -380,9 +404,14 @@ after the posted blowup claims (VII.7), so it is an expectation, not a predictio
 
 * **At the start, certified.** At supports where only the real place and the primes 2 and 3 enter (up to a = 0.69), Weil's form
   is positive with an explicit margin, c = 1.5e-9, 3.4e-11, 6.4e-13 at a = 0.60, 0.65, 0.69. So the first tick is certified
-  positive with a margin, and the sign is fixed there **[certified]** (ball arithmetic;
+  positive with a margin, and the sign is fixed there **[certified]** for the enclosures, **[paper]** for the analytic estimates
+  that tie them to Weil's form (the tail and cross-term bounds of the note, not independently read) (ball arithmetic;
   `docs/unified/GRH-ONEBOX-CERT.md`), with the abstract step **[Lean]** (`GRH/OneBoxCert.lean`, `onebox_positive`; claim III.58b).
-  This is claim III.65.
+  This is claim III.65. The first author reads the certificate as 1.5 = 3/2: the sum of `{infinity, 2, 3}`, existence and a spin
+  giving it direction (3/2 = 1 + 1/2), the ratio of the start's primes and the perfect fifth of the piano guide; any description,
+  decimal included, is existence, and the certificate shows this one is a valid sublayer, the spin being reflection positivity on a
+  primitive **[reading]** (claim III.65a). Care point: which digits a margin shows depends on how Weil's form and the test function
+  are normalised; what is certified is that the margin is positive, at that size.
 * **For every later tick, conditional.** The sign at the start, and with it the direction of every later tick, is fixed *only if*
   the process is accepted. This is **conditional** on the acceptance (claim III.66). It is not a theorem that the margin survives:
   for GRH that is the open step (claims III.9, III.46), and the margin collapses fast beyond the start (an upper bound of about 3.6e-15 on the smallest value at a = 0.75, from a trial polynomial; the certification failed there)
@@ -393,8 +422,8 @@ exactly this: the statement holds if the process of G0 to the hand-over is estab
 assumption of this subsection. Where a result holds without it, the result says so: the Lean theorems of section 2 (the geometry
 of the two edges), the transport theorem (II.1) and the certified start do not use it. **[paper]** (claim III.67).
 
-**Why it is stated plainly.** The settling gates ask for it proved. Until it is, the abstract and the introduction should say
-"conditional on the established process (O1)". That wording is the coordinator's to place; this part does not edit them.
+**Why it is stated plainly.** The settling gates ask for it proved. Until it is, the abstract and the introduction say that every
+result using it is conditional on it, and they name it as one assumption, read the same way on five cards.
 
 ## III.5 Excision and incompleteness
 
@@ -413,13 +442,13 @@ with the ticks. DMP's excision is the second way, with R136a1 as the answer for 
 (claim III.37).
 
 Care point (claim III.38): the excision is decidable per tick. The set of all sentences ever decided is not decidable in general. So "outside
-at tick n" can become "inside at a later tick". That is a new act, never a revision of the earlier tick. The owner adds that this
+at tick n" can become "inside at a later tick". That is a new act, never a revision of the earlier tick. The first author adds that this
 includes the *absence* of an expected tick: a missing tick is an answer too. The part is then outside. This is the time-to-live of
 every act, and the hard cutoff of the settling machine (Outlook) **[reading]** (claim III.41).
 
 **Why the Clay statements cannot be excised as a class.** The Clay problems are statements of arithmetic and analysis. If one of
 them were independent of the axioms, it would be answered R136a1, "outside". That is not the settling the gates ask for
-**[reading]** (claim III.39). The owner agrees, and adds that the assertion simply states that an O1 of that behaviour exists
+**[reading]** (claim III.39). The first author agrees, and adds that the assertion simply states that an O1 of that behaviour exists
 and then lints everything that cannot survive it **[reading]** (claim III.39).
 
 **Two markers, two channels.** `sorry` says "this derivation is incomplete here", and the kernel reports it as `sorryAx` in the axiom
@@ -428,7 +457,7 @@ passes both (no `sorryAx` in the kernel's report, no escape hatch in the lint, e
 channels that cannot fail together in the same way **[reading]**, with the mechanisms themselves **[Lean]** and **[paper]** (claim III.40).
 Care point: both channels certify form. This is double certainty of form, not of the content of an open part.
 
-**The finite loss excised at the beginning.** The owner's reading: the finite amount of loss excised at the beginning is the floor
+**The finite loss excised at the beginning.** The first author's reading: the finite amount of loss excised at the beginning is the floor
 at the error bars: a fixed finite cost paid once, which is what makes the rest meaningful. Every act then collapses to one of two:
 constructible inside (some subset of DMP), or R136a1 **[reading]** (claim III.42). Nothing in this section makes a theory with arithmetic
 complete. The completeness is that of the generalisation over what is inside at each tick **[classical]** for the
@@ -443,7 +472,7 @@ many ticks, each one settling. That every tick past the start pays is **conditio
 composition of steps that pay is a ledger again **[Lean]** (`Unified/Encoder.lean`, `pays_of_factors`;
 `Unified/Ledger.lean`, `carry`; `ETM/RunSys.lean`, `RunSys.carry`, `RunSys.contract`; `Margin.survive`) (claim III.44). For GRH the start is
 `{infinity, 2, 3}`: Weil's form on supports up to a = 0.69 is positive there, with a certified margin
-c = 1.5e-9, 3.4e-11, 6.4e-13 at a = 0.60, 0.65, 0.69 **[certified]** (ball arithmetic;
+c = 1.5e-9, 3.4e-11, 6.4e-13 at a = 0.60, 0.65, 0.69 **[certified]** for the enclosures, **[paper]** for the analytic estimates (ball arithmetic;
 `docs/unified/GRH-ONEBOX-CERT.md`; the abstract step `GRH/OneBoxCert.lean` is **[Lean]**) (V.3).
 
 **The continuum needs a uniform bound.** Transitivity reaches every finite target. The continuum is a limit, not a finite target.
@@ -451,10 +480,10 @@ The margin carried by ticks is c_0 times the product of the factors. A uniform l
 every finite scale, decaying at most exponentially **[Lean]** (`Margin.survive`, `survive_pos`; `GRH/Transfer.lean`,
 `margin_pos_of_factors`) (claim III.45). A *uniform margin*, an infimum above zero over all scales, is false for zeta's zero measure: the zero
 side of the explicit formula is purely atomic, so the product of the Szego factors is exp(integral of log w), which is zero
-**[classical]** (Szego's theorem on singular measures; Kolmogorov, Krein; the specific works are not yet in `../references.md`) (claim III.45b). So what the continuum needs is a uniform bound on the tick factors. Which bound
+**[classical]** (Szego's theorem with the Kolmogorov-Krein extension to measures with a singular part; Simon 2005, chapter 2) (claim III.45b). So what the continuum needs is a uniform bound on the tick factors. Which bound
 it is, is the open step of each card: the lower edge for GRH, the upper edge for O1 **[open]** (claim III.46).
 
-**The tick is an act at a DB, rotating.** The owner's reading: the multiplicative transport is the tick operator. A tick is an act
+**The tick is an act at a DB, rotating.** The first author's reading: the multiplicative transport is the tick operator. A tick is an act
 at a boundary, and its rotation is the encoder's half-turn **[reading]** (claim III.47). The half-turn is exact (II.2): the electric
 profile is the Moebius map of a symmetric matrix that squares to the identity, with antipodal fixed points **[Lean]**
 (`Unified/GRHLens.lean`, `halfTurn_mobius`, `halfTurn_transpose`, `halfTurn_mul_self`, `fixed_antipodal`). As a Moebius map of the
@@ -472,7 +501,7 @@ indefinite forms, so each prime consumes margin and is not a positive map compos
 (claim III.22c). A symmetry exchanges pictures. It does not turn an upper bound on one encoder into a lower bound on another **[paper]**
 (`docs/unified/GRH-LENS.md`, 6.3).
 
-**What the act carrier settled.** The owner answered the composition question with the act carrier (I.4): a certificate passes
+**What the act carrier settled.** The first author answered the composition question with the act carrier (I.4): a certificate passes
 without loss when a conserved quantity carries it, and "the uniformity is given by the arrow of causality".
 
 * **Yang-Mills: reduced to one number at one scale.** The conserved carrier (centre flux, Gauss's law on both sides of every DB) is
@@ -490,19 +519,20 @@ exact place; in NP vs coNP, the pair must be charged at its interface **[reading
 
 ### The rotatable hash: the root chain closes through time
 
-DMP and Gravity, the two repositories of the root chain, pin each other by hash. Gravity's side is read here: a `PIN` records the
-sha256 of the pinned copy of DMP, and the pin check turns any change of it into a failing check (`vendor/dmp/PIN`,
-`tools/check-pin.sh`). That DMP pins Gravity in turn is the notes' statement and was not re-read for this draft. So every pinned
-existence is a claim the gate can refute **[paper]** (claim III.50). A literal circle of hashes cannot be constructed: a file that contains its own hash, or two
+DMP and Gravity are the two repositories of the root chain. The pin runs one way: a `PIN` in Gravity records the sha256 of the
+pinned copy of DMP, and the pin check turns any change of it into a failing check (`vendor/dmp/PIN`, `tools/check-pin.sh`); DMP
+depends on nothing and pins nothing (`vendor/dmp/00-preamble.md`). So every pinned existence is a claim the gate can refute
+**[paper]** (claim I.8d). A literal circle of hashes cannot be constructed: a file that contains its own hash, or two
 files that contain each other's current hashes, is a fixed point of sha256, which no one can compute **[classical]** (by the hash's
-design) (claim III.51). In the repositories the circle closes through time instead. Each side pins an earlier commit of the other, so the
-chain is a spiral of versions, one tick per pin **[paper]** (claim III.50). Care point: the circle is consistent only because it never
-closes at one instant. A pin to the other side's *current* commit would be the uncomputable fixed point.
+design) (claim III.51). The first author reads the root chain as closing through time instead: each version of Gravity pins an earlier
+version of DMP, and the next version of DMP is written against what Gravity checked, so the chain is a spiral of versions, one tick per
+pin **[reading]** (claim I.8d). Care point: such a circle is consistent only because it never closes at one instant. A pin to the
+other side's *current* commit would be the uncomputable fixed point.
 
-The owner corrected the first wording: the hash is *rotatable*, not negatable. The hash itself is one-way **[classical]**. What
+The first author corrected the first wording: the hash is *rotatable*, not negatable. The hash itself is one-way **[classical]**. What
 rotates is the pin: across versions the pin passes from one node to the other, a turn per tick, the same half-turn shape as the
 encoder's, where two half-turns return to the start and the start is one version later **[reading]** (claim III.52). Care point: no hash
-function is rotated, the roles of pinner and pinned are. The owner adds that inside the system the time-to-live of a certification
+function is rotated, the roles of pinner and pinned are. The first author adds that inside the system the time-to-live of a certification
 is not a separate mechanism. Every certification is re-made at each tick, against the same shared root, and never reaches back, so
 the validity window of any hash is bounded by the interval between two ticks **[reading]** (claim III.53). What leaves the inside is outside
 by definition, so its lifetime is the boundary's matter, not the rotation's.
@@ -511,7 +541,7 @@ by definition, so its lifetime is the boundary's matter, not the rotation's.
 
 ## III.7 Uncertainty transported across the DB
 
-The owner's approach for the content layer: "Exactly define the uncertainty, then transport it in a meaningful way across a DB."
+The first author's approach for the content layer: "Exactly define the uncertainty, then transport it in a meaningful way across a DB."
 Each column keeps its uncertainty in one named bridge to the real object; the finite model asserts only itself. That uncertainty is
 itself a carried quantity, so the ledger applies to it with one more term (`docs/unified/TRANSPORT.md`).
 
@@ -519,7 +549,7 @@ itself a carried quantity, so the ledger applies to it with one more term (`docs
 it stays bounded when the steps contract (II.1.1), is carried without damping at cost = floor (II.1.2), preserves a sign when it
 stays below the margin (II.1.3), and with no fresh uncertainty is the ledger itself (II.1.4). Where the uncertainty and the margin
 it is compared with pay the same cost, their ratio crosses at exactly cost = floor: damping relative to a margin exists only if
-the margin shrinks more slowly than the uncertainty (II.1.5). The five statements were X.7a to X.7e in draft 2 (those labels are no longer valid).
+the margin shrinks more slowly than the uncertainty (II.1.5).
 
 **Where each uncertainty sits, and what the open step needs in these terms.**
 - **Yang-Mills (claims III.7f, III.7g).** The uncertainty is the boundary uncertainty of a slab: how large the charged (twisted) sector can be
@@ -538,7 +568,7 @@ the margin shrinks more slowly than the uncertainty (II.1.5). The five statement
   with no fresh uncertainty, and it is exactly a size bound; lifting supplies the cost c log n per variable **[Lean]** from
   **[external]**. The open step: a constant cost c > 0 per hidden variable for a constant-size gadget (`LiftCPConst`) **[open]**. In
   the known proofs the per-block hiding errors add up across all blocks with no damping, which is why the gadget grows with n
-  **[reading]** (recalled; to be checked against Mertz-Pitassi and Lovett-Meka-Mertz-Pitassi-Zhang).
+  **[reading]** (recalled from the lifting literature, not traced to one proof here).
 
 **Side by side (claim III.7m).** `three_bridges` (`Unified/All.lean`) states the three columns in one theorem, each as "named hypothesis
 => the uncertainty is transported below the margin and the sign holds" **[Lean]**. It is the transport counterpart of

@@ -1,6 +1,6 @@
 == build ProofPhase.ETM.ETM
-Build completed successfully (9106 jobs).
-== declarations: 115
+Build completed successfully (9107 jobs).
+== declarations: 121
 == axioms
 'ProofPhase.ETM.Box' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.toArsenal' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -117,5 +117,11 @@ Build completed successfully (9106 jobs).
 'ProofPhase.ETM.hodge_box_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.hodge_box_divisor' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.gu_box' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.EssenceChain' depends on axioms: [propext]
+'ProofPhase.ETM.two_add_two_ne_five' does not depend on any axioms
+'ProofPhase.ETM.essence_zmod_one' depends on axioms: [propext, Quot.sound]
+'ProofPhase.ETM.subsingleton_of_essence' depends on axioms: [propext]
+'ProofPhase.ETM.essence_of_subsingleton' depends on axioms: [propext]
+'ProofPhase.ETM.essence_iff_subsingleton' depends on axioms: [propext]
 == source grep
-no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean, Complex.lean, CardBox.lean
+no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean, Complex.lean, CardBox.lean, Essence.lean

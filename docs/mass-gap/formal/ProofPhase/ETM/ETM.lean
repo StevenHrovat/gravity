@@ -10,6 +10,7 @@ import ProofPhase.ETM.RotationInstances
 import ProofPhase.ETM.G2Rigidity
 import ProofPhase.ETM.Complex
 import ProofPhase.ETM.CardBox
+import ProofPhase.ETM.Essence
 
 /-!
 # The ETM round in one statement

@@ -1,0 +1,2 @@
+# Shell scripts run in WSL and on Linux: keep LF on every checkout (final verification F23).
+*.sh text eol=lf

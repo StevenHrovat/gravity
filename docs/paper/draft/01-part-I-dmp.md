@@ -7,8 +7,8 @@ pointer to the precise statement in Part II. Claim labels (I.n) are listed in `.
 
 DMP, the Dark Matter Protocol, is a specification for systems that must trust each other. It was written for software and
 governance: who may act, on what evidence, and what is left behind. Its author reads the same rules as a description of how anything
-comes to exist. This paper uses DMP in exactly that way: as a language. It gives names to the steps that the three problems of
-Parts IV to VI have in common, so that each step is said once.
+comes to exist. This paper uses DMP in exactly that way: as a language. It gives names to the steps that the first three problems,
+Parts IV to VI, have in common, so that each step is said once.
 
 Two rules keep this honest.
 
@@ -24,10 +24,15 @@ The marks used in the whole paper:
 | **[Lean]** | Machine-checked in this project (Lean 4 with Mathlib, standard axioms only). The module path is given relative to `docs/mass-gap/formal/ProofPhase/`. |
 | **[classical]** | Known mathematics or physics, with a reference. |
 | **[external]** | A published or posted result by others that this project reads but did not rebuild or re-check. |
+| **[conditional]** | Holds under a named assumption (the one assumption of Part III, unless another is named). |
+| **[certified]** | Enclosed in ball arithmetic, with its log. |
 | **[paper]** | Argued in this project in prose, not machine-checked. |
 | **[numerical]** | Measured in this project. Evidence; it can refute, never prove a statement about all cases. |
 | **[reading]** | A DMP reading: an interpretation, never mathematics. |
 | **[open]** | Not settled by anyone. |
+
+Qualifiers after a comma or semicolon ("from X", "recalled", "traced", "unverified", "an estimate", "re-checked") and the marks
+**[sketch]** and **[unchecked]** are defined in the introduction, "How to read the status marks".
 
 ---
 
@@ -42,7 +47,7 @@ yes or no, with no content. In mathematics the cleanest object of this kind is a
 configuration counts, and says nothing about what the configuration looks like. A system exists when its total weight is positive.
 **[reading]**
 
-**Why it is a good reading.** In all three problems the first step is exactly such a statement:
+**Why it is a good reading.** In the first three problems the first step is exactly such a statement:
 
 | | "Something exists" |
 |---|---|
@@ -51,7 +56,7 @@ configuration counts, and says nothing about what the configuration looks like. 
 | P vs NP | a formula is satisfiable iff its count of satisfying assignments is positive (SAT iff #SAT > 0) |
 
 **What Part II makes of it.** Positivity is the first link of the common chain (II.8; the link itself is II.9). It is the input of every construction that
-follows, and it is the step that is hard in two of the three problems.
+follows, and it is the step that is hard in two of the first three problems.
 
 ---
 
@@ -65,7 +70,7 @@ later standing descends from it. A system that cannot be traced back to a G0 is 
 test functions for GRH; the axioms and the proof rules for P vs NP. Everything is derived from G0, and G0 itself is not. In particular,
 the positivity of I.1 is either built into G0 by construction, or it has to be proved. **[reading]**
 
-**Why it matters for the paper.** This is the single sharpest difference between the three problems:
+**Why it matters for the paper.** This is the single sharpest difference between the first three problems:
 
 * In Yang-Mills positivity is part of G0. The weight e^{-S} is positive and local, so reflection positivity follows by construction
   (II.9).
@@ -211,6 +216,19 @@ at all there is nothing to assert, and the "+1" disappears.
   inequality with no rate still forces a definite rate in one of two dual channels. This is the clearest case in the paper of a DMP
   statement turning into a number (II.13).
 
+**2 + 2 = 5, and the essence.** The first author reads 2 + 2 = 5, through DMP, as a unique impossibility on which non-existence
+can be based. The exact part is one kernel evaluation: over the natural numbers `decide` refutes 2 + 2 = 5, a certified "it does
+not exist" with no assumption behind it **[Lean]** (`ETM/Essence.lean`, `two_add_two_ne_five`). Read through error bars the same
+sum is possible: at a resolution of one unit, 2.4 reads as 2 and 2.4 + 2.4 = 4.8 reads as 5, so the rounded sum is off by at most
+one unit, the "+1" of this section **[classical]** for the arithmetic, **[reading]** for the tie (claim I.7e). His essence line
+carries it to the end: **2 + 2 = 5 = 4 = 0 = 1 = SU(5) = 1.5** **[reading]**. Its proved core is that the chain 2 + 2 = 5 = 4 =
+0 = 1 holds in a ring exactly when the ring has one element: in Z/1 it is one `decide`, and in any ring its last link 0 = 1 already
+forces a single element **[Lean]** (`essence_zmod_one`, `essence_iff_subsingleton`; Mathlib's `subsingleton_iff_zero_eq_one`)
+(claim I.7d). So the chain names exactly one ring, the zero ring, where existence and non-existence coincide: the one box with no
+outside **[reading]**. The last two links are the first author's ties to the rest of the paper: SU(5), whose 5 = 3 + 2 holds the
+Standard Model group as its Z_6 quotient (X.3, **[Lean]**), and 1.5 = 3/2, the ratio of the start's primes and the certificate's
+reading (III.4.4) **[reading]** (claim I.7e).
+
 A last reading belongs here because Part IV uses it: **"mass gap = the arrow of causality exists"** (the author, 2026-11-22). The
 transfer matrix of a reflection-positive theory is a positive contraction. A gap means that, after one unit of time 1/m, every
 correlation with the past has shrunk by 1/e: a built-in clock. Without a gap correlations still fade, but only as a power law, with
@@ -237,8 +255,7 @@ the system (I.2). **[reading]** (claim I.8a)
   setup file does not list; no source file of the evidence chain (`evidence/`) uses an escape hatch (`sorry`, `admit`, `axiom`, `native_decide`, `unsafe`,
   `implemented_by`, `extern`); the Lean build of that chain succeeds; and the kernel's axiom report for each of its theorems lists only Lean's three
   standard axioms (the check does not cover `docs/mass-gap/formal`). **[paper]** (read from `evidence/tools/check.sh` and
-  `tools/check-pin.sh`; the pin check passes on the committed bytes (stage-2 review R1), the evidence build was not run for this
-  draft) (claim I.8b)
+  `tools/check-pin.sh`; the pin check and the evidence build pass at the release commit, II.7) (claim I.8b)
 * **The arsenal has the same shape at small size** (II.6): its lint is the linter, and "Mathlib v4.34.0 only, no escape hatch, an
   open part only as a named R136a1 hypothesis" is its passing condition. **[paper]** (claim I.8c)
 * **The root chain pins one way.** Gravity holds a pinned copy of DMP (`vendor/dmp/PIN`, hash checked by `tools/check-pin.sh`);
@@ -319,7 +336,7 @@ recognises as wrong). (3) The binding of rights to identity is as strong as the 
 
 ## I.11 The arsenal as shared vocabulary
 
-**The rule (the owner's).** What is content-free and used by more than one project is kept once, and used from there.
+**The rule (the first author's).** What is content-free and used by more than one project is kept once, and used from there.
 
 **Reading (I.11).** The arsenal in the `im` repository (`arsenal/`) is that shared place for results that need Mathlib. It holds
 words that more than one part of this paper uses: `R136a1` for "outside" (I.9), and the pieces that are not about any one problem.
@@ -330,19 +347,19 @@ II.6.1, II.6.4). The tool that guards it, and what it checks, are in II.6.
 **A second reading of the letters.** IM is the Interstellar Medium, and that name stays. Its letters also read as **Identity
 Multiplication**, and the second reading is true of what the arsenal holds: the rotation API is multiplication by a number on the
 unit circle, which keeps the norm and moves only the phase; on the circle the carried mass never changes **[Lean]** (II.0c,
-`cmach_lossless`), and the encoder's root is the same norm read from both sides **[Lean]** (II.2). The owner reads a second reading
+`cmach_lossless`), and the encoder's root is the same norm read from both sides **[Lean]** (II.2). The first author reads a second reading
 that carries a meaning as itself a uniqueness, one that survives being contained **[reading]** (claim I.11b). He also reads IM as
 a step up the DAG: the edge is real in the build (this project requires IM's arsenal, pinned by commit, and the package graph is
 acyclic). His argument for why the link is a rotation runs in three steps. A DB lets only existence cross, and the encoder's gate
 keeps the norm: both sides certify the same norm **[Lean]** (`Encoder.root`; any norm-preserving map gives an encoder) and
 **[reading]** for "a DB allows only this gate" (I.3). A linear gate on a line (one complex dimension) that keeps every norm is multiplication by a unit number, a
 rotation **[Lean]** (II.0f; in more dimensions the norm-keeping maps are the unitary group, and that the link is a rotation there is the
-owner's reading). So the link to another node, which has to pass a DB, is a rotation: the ultimate gate in his words
-**[reading]** (claim I.11c). The cost does not sit in the gate. In the owner's words it sits in the provability of a common root,
+first author's reading). So the link to another node, which has to pass a DB, is a rotation: the ultimate gate in the first author's words
+**[reading]** (claim I.11c). The cost does not sit in the gate. In the first author's words it sits in the provability of a common root,
 and that is exact: the part of the state that provably shares its root with the other side is the reflection coefficient c, and the
 remainder, ||psi - conj(c) psi'||^2 = ||psi||^2 (1 - |c|^2), is exactly what the step pays **[Lean]** (`szego_remainder`). At |c| = 1
 the root is fully shared and the crossing is free. On the reals the circle is just 1 and -1, so ordinary multiplication is a cost
-times an identity-keeping sign **[Lean]** (II.0g): ordinary multiplication is IM as well, in the owner's words **[reading]**
+times an identity-keeping sign **[Lean]** (II.0g): ordinary multiplication is IM as well, in the first author's words **[reading]**
 (claim I.11d).
 
 ---

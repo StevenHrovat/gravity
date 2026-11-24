@@ -1,18 +1,19 @@
 # Part V. The generalised Riemann hypothesis: the positivity route
 
-*Draft 2, 2026-11-23. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
-`docs/rh-guide/`. Claim labels (V.n; IV.n in draft 3) are listed in `../CLAIMS.md`.*
+*Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
+`docs/rh-guide/`. Claim labels (V.n) are listed in `../CLAIMS.md`.*
 
 ## V.0 What is proved, by whom, and what this part does
 
 **State of the problem (2026-11-23).**
 
 * The Riemann hypothesis for zeta and GRH for every Dirichlet L-function are proved in Lean by others: a library released
-  2026-11-20 and certified by the Lean and Mathlib communities on 2026-11-21 **[external]** (`SOURCES.md`, S1 to S4; `GUIDE.md`,
+  2026-11-20; the Riemann hypothesis was certified by the Lean FRO and the Mathlib Initiative on 2026-11-21, and the Dirichlet
+  theorems are checked on the library's verification page **[external]** (`SOURCES.md`, S1 to S4; `GUIDE.md`,
   section 1). This project read the main statements in the source and did not rebuild the library.
 * GRH for Dedekind, Hecke and general automorphic L-functions is not proved **[open]** (`GUIDE.md`, sections 1 and 5).
-* The proof by others does not go through Weil's positivity (the positive pairing of II.8). Its sign is the non-negative coefficients of
-  Landau's theorem (V.2.3, V.2.4). Its endgame is Landau's theorem applied to a one-sided square-root bound on the
+* As far as this project traced it, the proof by others does not go through Weil's positivity criterion (the positive pairing of
+  II.8). Positivity enters it elsewhere: its sign is the non-negative coefficients of Landau's theorem (V.2.3, V.2.4). Its endgame is Landau's theorem applied to a one-sided square-root bound on the
   prime count, obtained from a Stepanov-type size balance **[external, traced]** (`GUIDE.md`, sections 2, 4, 5).
 
 **What this part does.** It follows the other road: Weil's positivity criterion, the second column of the chain of II.8. It proves the
@@ -111,8 +112,8 @@ prime's own term is up to about 700 interval radii, of which the extrapolation f
 **V.3.3 The ground state.** Minimising the form over unit vectors on each section gives the margin; the minimiser's polynomial has all
 its zeros on the unit circle, which is the critical line in grid coordinates (to 1e-53), and as primes enter these zeros lock onto
 zeta's (14.134725 to 3e-7 with the primes up to 11) **[numerical]**. Without the primes they are evenly spaced. The zeros
-of the minimiser are on the circle for every real symmetric Toeplitz section, positive or not (Caratheodory-Fejer, Pisarenko; recalled,
-no reference yet) **[classical]**. In Lean is the Caratheodory-Toeplitz equivalence for atomic measures: if every section is positive
+of the minimiser are on the circle for every real symmetric Toeplitz section, positive or not (Caratheodory-Fejer; Pisarenko 1973; Makhoul 1981)
+**[classical]**. In Lean is the Caratheodory-Toeplitz equivalence for atomic measures: if every section is positive
 the atoms lie on the circle (`atoms_on_circle`), and atoms on the circle with non-negative weights give positive sections
 (`atomic_toep_nonneg`, `GRH/Induction.lean`) **[Lean]**. Positivity is exactly the
 statement that the uniform remnant lambda_min is non-negative.
@@ -175,18 +176,21 @@ Rodgers-Tao 2020).
 
 ## V.4 The open step: one missing positivity, eight faces
 
-The missing piece: **a positive object built from the primes, the characters and the real place alone, without the zeros.** The notes
-have met it eight times. Each face would close the others' consequences; they are not shown to be equivalent.
+The missing piece: **a positive object built from the primes, the characters and the real place alone, without the zeros.** For
+zeta and the Dirichlet L-functions the positivity itself now follows from the external theorem and Weil's criterion (II.9); what
+stays open there is a proof from arithmetic alone, and beyond Dirichlet the statement itself, for which no card is written yet
+(V.1.5b). The step asks for non-negativity at every support, not for a margin uniform in the support, which is false for zeta's
+zero measure (III.45b). The notes have met it eight times. Each face would close the others' consequences; they are not shown to be equivalent.
 
 | Face | Statement | Status | Source |
 |---|---|---|---|
 | 1 Weil Hilbert space | A Hilbert space H_chi and a map Phi from test functions, built from arithmetic data only, with <Phi f, Phi g> = W_chi(f * g~). By Weil and GNS it exists iff GRH holds for chi. None of its subset truncations is positive (V.3.5) | **[open]** | `grh/ATTEMPT.md`, step 4 |
 | 2 Critical ferromagnet | A lattice ferromagnet at its critical coupling whose block-spin law is Riemann's Phi; RH by Newman's closure. Asano adds one site at a time; here one prime at a time fails | **[open]** | `grh/LEE-YANG.md`, 5c |
 | 3 Deninger space | A foliated space whose closed orbits are the primes, with a positive leafwise Hodge form. In the hyperbolic analogue positivity gives only "line or real segment"; the line needs a gap (lambda_1 >= 1/4) | **[open]** | `grh/ORBITS.md`, 6; `grh/TRANSFER.md`, 5 |
-| 4 Hermite-Biehler chain | A Hermite-Biehler coupling of xi's real and imaginary parts (de Branges frame; Conrey and Li 2000 examine de Branges' positivity conditions and indicate their difficulty; that a stated condition fails is recalled, theorem not yet checked); its Schur parameters are the step factors | **[open]**; framework **[classical]** | `grh/INDUCTION.md`, 0.4 |
+| 4 Hermite-Biehler chain | A Hermite-Biehler coupling of xi's real and imaginary parts (de Branges frame; Conrey and Li 2000 examine de Branges' positivity conditions and indicate their difficulty; that a stated condition fails is recalled, not checked here); its Schur parameters are the step factors | **[open]**; framework **[classical]** | `grh/INDUCTION.md`, 0.4 |
 | 5 Step lemma | From the primes up to p_{k+1} and the real place, put the new corner entry inside the extrapolated interval, without the zeros | **[open]** | `grh/INDUCTION.md`, 7 |
 | 6 Sign of the remnant | From arithmetic alone, lambda_min(a) >= 0 at every support; equivalently the ground states converge to the zero measure | **[open]** | `grh/VARIATIONAL.md`, 0.5 |
-| 7 Global sign ("it runs") | The norm in which the scaling flow runs is positive; equivalently the one-sided square-root prime bound. In the constructions where the norm is positive by construction, the space either misses the off-line zeros (Connes) or yields a half-plane (Lax-Phillips) (recalled; no reference yet) | **[open]** | `grh/TATE.md`, 0.5, 0.6 |
+| 7 Global sign ("it runs") | The norm in which the scaling flow runs is positive; equivalently the one-sided square-root prime bound. In the constructions where the norm is positive by construction, the space either misses the off-line zeros (Connes) or yields a half-plane (Lax-Phillips) (recalled, not traced to a page) | **[open]** | `grh/TATE.md`, 0.5, 0.6 |
 | 8 All-or-nothing step | At each scale the full set of primes present, and no subset, places the corner entry inside the interval; no decomposition into pairs, single primes or two terms carries it | **[open]** | `grh/TRANSFER.md`, 5 |
 
 Faces 2 and 3 each imply face 1 **[paper]** (`grh/INDUCTION.md`, 7; `grh/ORBITS.md`, 4). Faces 5, 6 and 8 are the same quantity read
@@ -198,7 +202,7 @@ enter together, in their exact relative position, through an exact identity.
 
 ## V.5 "It runs": the face shared with Yang-Mills
 
-The owner named the positivity the reductio needs: "It runs." Read formally: an off-line pair of zeros would be a growing mode of the
+The first author named the positivity the reductio needs: "It runs." Read formally: an off-line pair of zeros would be a growing mode of the
 arithmetic evolution, contradicting that the evolution does not increase a positive norm. On the completion of test functions in Weil's
 form the scaling flow preserves the form automatically **[paper]**. If the flow does not increase a positive norm, there is no growing
 mode; the functional equation pairs every decaying mode with a growing one; so every mode is a phase, which is RH. The abstract implication (a contraction with a mirror pair of modes has modulus one) is **[Lean]**
@@ -241,10 +245,13 @@ conclusion (Part III).
 
 ## V.8 The box in the one-box test
 
-**Gate factor and marker.** The ticks are the scales, each carrying the margin to the next. The owner reads each scale as one, and so
+**Gate factor and marker.** The ticks are the scales, each carrying the margin to the next. The first author reads each scale as one, and so
 as existence itself **[reading]**. At each scale the gate reads inside when the margin is carried to the next
 scale with a nonnegative factor, the sign at that scale; the marker is the claim "inside". The box of a finite zero model passes
 exactly when the sign holds at every scale, the card's open step (`ScaleSign`) **[Lean]** (`grh_box_iff`, `ETM/CardBox.lean`; claim V.8a). For a
 model of zeta's zeros with nonnegative weights it passes under Mathlib's statement of the Riemann hypothesis, taken as a named
 `External` slot **[Lean]** (`grh_box_of_RH`). The first ticks are certified: at the start {infinity, 2, 3} the sign holds with
-explicit margins (III.65, **[certified]**). The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**. Its open ticks are the scales beyond the start (V.4).
+explicit margins (III.65, **[certified]** for the enclosures, **[paper]** for the analytic estimates). Small supports have a
+literature: Yoshida studied the Hermitian forms of the explicit formula, and Connes and Consani proved Weil positivity for test
+functions supported so close to 1 that only the real place enters **[external, recalled]**; the certified first box is the next
+range, where the primes 2 and 3 enter, with explicit margins. The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**. Its open ticks are the scales beyond the start (V.4).
