@@ -31,7 +31,7 @@ asserts that they are false.
 
 **What this part does.** It puts Navier-Stokes on the DMP API as a card (VII.2), and proves in Lean, as a skeleton, what the form
 layer says about the two possible blowup routes and about regularity (VII.3). It records what is borrowed and its exact status
-(VII.4), states the one open step (VII.5), and checks the restatement against Perelman's proof of Poincare (A). The Lean modules
+(VII.4), states the one open step (VII.5), and checks the restatement against Perelman's proof of Poincare (Appendix A). The Lean modules
 contain **no Navier-Stokes object**: nothing in them is about the equations themselves.
 
 ## VII.1 The problem as stated, and what is known
@@ -279,6 +279,19 @@ Until these are done, everything in VII.4.1 stays **[external, unverified]**. Th
 An independent construction of the profile from scratch is beyond reach now: it is a genuinely three-dimensional, time-periodic
 shape with an operator-level certificate at 128-bit precision **[reading]**.
 
+## VII.6 The box in the one-box test
+
+**The model box.** `nsBox nu K theta` has the dyadic scales k as its ticks, floor 0, margin theta < 1, and the marker "inside" (the
+claim "regular") at every scale. Its gate factor at scale k is the energy-only transfer bound K 2^(5k/2) over the viscous cost
+nu 4^k, clipped to [0, 1] (`nsFac`) **[Lean]** (`ETM/RotationInstances.lean`, `nsFac`, `nsBox`).
+
+**What the test gives.** Since 2^(5k/2) outgrows 4^k, the factor reaches 1 at some scale (`nsFac_eq_one`); the gate reads outside
+there while the marker says inside, so the box is not DMP-complete (`ns_gate_outside`, `ns_wrong_marker`, `ns_not_complete`)
+**[Lean]** (claim VII.7g). This is the classical supercriticality of the energy (VII.3.4), formalised. The box is a model, built from
+the energy bound alone; it is not the box of any of the three cards of VII.2, whose boxes pass exactly when their open steps hold
+(`cardBox_complete_iff`). So the test says that the energy ledger cannot certify regularity, and nothing about the equations
+themselves.
+
 ## VII.7 DMP readings attached to this part (all [reading])
 
 * **A blowup is a certificate that infinitely many steps fit in finite time.** The finite check at one scale is what makes the
@@ -288,18 +301,17 @@ shape with an operator-level certificate at 128-bit precision **[reading]**.
   (Lean for both uses; the parallel is the reading).
 * **Scale invariance as the arrow of causality.** Because the zoomed equation is autonomous, the set of "outsides" has one element:
   the same step at every scale, so the for-all over steps costs nothing.
-* **"Not DMP-complete, hence blows up."** In ledger terms the energy ledger cannot pay a uniform cost per scale (VII.3.4). The
-  first author's entry is dated 2026-11-24, after both claims were public (8 September and 20 November), so it agrees with the side the
-  claims assert and is not a prediction made before them. It proves nothing: a method's failure to exclude blowup is not blowup. The
-  claims, if correct, prove it by a certified profile. DMP-completeness now has a precise statement: DMP-complete means runs on DMP,
-  the running-state hypothesis R of Part III 4.2 (the first author's definition, III.64b). The first author's reading: the whole process is
+* **"Does not run, hence blows up."** In ledger terms the energy ledger cannot pay a uniform cost per scale (VII.3.4). The
+  first author's reading came after both claims were public (8 September and 20 November), so it agrees with the side the claims
+  assert and is not a prediction made before them. It proves nothing: a method's failure to exclude blowup is not blowup. The
+  claims, if correct, prove it by a certified profile. Running has a precise statement: an object runs on DMP when the running-state
+  hypothesis R of Part III 4.2 holds (the first author's definition, III.64b). The first author's reading: the whole process is
   described and Navier-Stokes does not build in it (the energy ledger cannot pay a uniform cost per scale, VII.3.4a and VII.3.4b,
-  **[Lean]**), so it is not DMP-complete, and blowup is the expected consequence. The negative result is the expected one, and it
+  **[Lean]**), so it does not run, and blowup is the expected consequence. The negative result is the expected one, and it
   makes the framework falsifiable: global regularity would refute it **[reading]** (VII.7e). Blowup of the real equations is still
   the card's open step (VII.5.1, **[open]**); in the settling machine a missing floor gives undecidability (II.3), so the step from
-  "not DMP-complete" to blowup is the reading, not a theorem. In the one-box test (II.4) the wrong marker is proved for the model:
-  with the energy-only transfer against the viscous cost as gate factor and the claim "regular" at every dyadic scale, the gate
-  reads R136a1 at some scale, for every viscosity and margin **[Lean]** (model, VII.7g). It covers the energy-only ledger, not an
+  "does not run" to blowup is the reading, not a theorem. The model box of VII.6 shows the wrong marker for the energy-only ledger
+  **[Lean]** (model, VII.7g). It covers the energy-only ledger, not an
   actual solution with a better transfer bound **[reading]** (VII.7h).
 * **Settle means opposite things on the two cards.** In the API, "settle" means the carried quantity dies out. For regularity that
   quantity is the cascade, so settling means regular; for route I it is the perturbation from the blowup profile, so settling means

@@ -31,9 +31,9 @@ directions are proved. The converse needs the geometry fixed across levels; that
 the box, and it is exactly the shared-gate content (note, section 4).
 
 **Navier-Stokes (`nsBox`, `ns_not_complete`).** Gate factor at dyadic scale `k`: the energy-only transfer bound
-`K 2^{5k/2}` over the viscous cost `ν 4^k`, clipped to `[0, 1]`; claim `inside` (regular at every scale). By VI.3.4b
+`K 2^{5k/2}` over the viscous cost `ν 4^k`, clipped to `[0, 1]`; claim `inside` (regular at every scale). By VII.3.4b
 (`dyadic_supercritical`) the transfer overtakes the cost at some scale, where the gate reads `r136a1`: the marker is wrong
-there, for every `ν, K > 0` and every margin `θ < 1`. Model level, as VI.3.4b.
+there, for every `ν, K > 0` and every margin `θ < 1`. Model level, as VII.3.4b.
 
 **The half-turn of the plaquette layer (`crossoverGate`).** A box `R` of plaquettes, a closed `ℤ/2` layer `τ`: the flux
 read from inside (`τ` restricted to `R`) and after the half-turn (restricted to the complement) agree
@@ -276,7 +276,7 @@ theorem fineOneBox_correct (T : Tuning) (h : FineOneBox T) :
   rwa [show (ymBox T g θ hθ).S.step^[n] g.k₀ = g.k₀ + n from Nat.succ_iterate _ _] at this
 
 /-- **DMP-complete Yang-Mills box ⇒ the one-box assembly**: with the line of constant physics and non-triviality (the
-lower edge, conditional on X.64), decay, the gap in both orders of limits, reflection positivity. -/
+lower edge, conditional on III.64), decay, the gap in both orders of limits, reflection positivity. -/
 theorem ym_assembly_of_complete {T : Tuning} (hL : OnLCP' T) (hN : NonTrivial T)
     (h : ∃ g : Geo T, g.Valid ∧ ∃ θ, ∃ hθ : θ < 1, (ymBox T g θ hθ).DMPComplete g.k₀) :
     TorusDecayLoc T.toV ∧ MassGapLoc T ∧ MassGapMFLoc T.toV ∧ LimitRP T ∧ NonTrivial T :=
@@ -306,7 +306,7 @@ theorem nsFac_eq_one {ν K : ℝ} (hν : 0 < ν) {k : ℕ} (hk : ν * 4 ^ k < K 
   unfold nsFac
   rw [min_eq_left h1, max_eq_right zero_le_one]
 
-/-- **Navier-Stokes: the gate reads `r136a1` at some scale** (from VI.3.4b, `dyadic_supercritical`), for every `ν, K > 0`
+/-- **Navier-Stokes: the gate reads `r136a1` at some scale** (from VII.3.4b, `dyadic_supercritical`), for every `ν, K > 0`
 and every margin `θ < 1`. -/
 theorem ns_gate_outside {ν K θ : ℝ} (hν : 0 < ν) (hK : 0 < K) (hθ : θ < 1) :
     ∃ k : ℕ, (nsBox ν K θ hθ).gate k = .r136a1 := by
@@ -316,7 +316,7 @@ theorem ns_gate_outside {ν K θ : ℝ} (hν : 0 < ν) (hK : 0 < K) (hθ : θ < 
   rw [nsFac_eq_one hν hk]
   exact hθ
 
-/-- **Navier-Stokes: the marker `inside` is wrong at some scale**, so the box is not DMP-complete (from VI.3.4b; model
+/-- **Navier-Stokes: the marker `inside` is wrong at some scale**, so the box is not DMP-complete (from VII.3.4b; model
 level: the transfer bound and the viscous cost are given as exponents). -/
 theorem ns_wrong_marker {ν K θ : ℝ} (hν : 0 < ν) (hK : 0 < K) (hθ : θ < 1) :
     ∃ k : ℕ, ¬ (nsBox ν K θ hθ).Correct k := by
@@ -356,10 +356,10 @@ end HalfTurn
 
 /-! ## 6. The round in one statement -/
 
-/-- **The rotation round.** (1) One-box certificate. (2) Scale certificate from X.64 (a named hypothesis). (3) The ETM is a
+/-- **The rotation round.** (1) One-box certificate. (2) Scale certificate from III.64 (a named hypothesis). (3) The ETM is a
 box whose DMP-completeness is undecidable over descriptions. (4) O1, chain form, is exactly DMP-completeness of the O1
 boxes. (5) `FineOneBox` is exactly DMP-completeness of the Yang-Mills box for some valid geometry. (6) Navier-Stokes has
-a wrong marker at some scale (model, VI.3.4b). -/
+a wrong marker at some scale (model, VII.3.4b). -/
 theorem rotation_round :
     (∀ (δ : ℝ) (B : Box.{0} δ) (x₀ : B.S.X), B.Correct x₀ → (∀ x, B.Correct x → B.Correct (B.S.step x)) →
       B.DMPComplete x₀) ∧

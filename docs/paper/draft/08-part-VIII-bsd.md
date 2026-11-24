@@ -322,7 +322,7 @@ Each reading is the first author's statement with its exact counterpart. None is
 
 If an independent proof supplied the construction and the bound for orders 2 and more, the card's open step would be discharged by
 that work, and this part would supply the ledger skeleton and the audit. The change to this paper would be one row of the ledger,
-one verdict line of this part and one item of the introduction's list of open steps. As the notes state it, nothing in this round proves any part of that.
+one verdict line of this part and one item of the introduction's list of open steps. Nothing in this paper proves any part of that.
 
 The formalisation items that would change the status of the **borrowed** parts, none done:
 

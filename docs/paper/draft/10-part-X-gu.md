@@ -53,7 +53,7 @@ API's one general statement about the G0 phase field (X.3.3). The table is the c
 |---|---|
 | **Well-defined input** | the representation content of one generation and the Higgs: for each field its triality `t`, duality `d` and hypercharge in sixths `q = 6Y` (`smFields`, a definition in Lean). **The hypercharges are input, not output.** |
 | **Proved structure** | the centre elements of SU(3) x SU(2) x U(1) that act trivially on all these fields form exactly a cyclic group of order 6, split as 2 x 3; every invariant component has `Q + t/3` an integer (charge in thirds, correlated with colour); the SU(5) block embedding has exactly this group as kernel; a compact U(1) admits only integer charges **[Lean]** |
-| **External inputs** | the hypercharge values (fixed by anomaly cancellation, now in Lean, X.7b, or by SU(5)); the measured neutrality of matter, the absence of free fractional charges, proton-decay limits, the failure of coupling unification, the absence of monopoles **[classical]** / **[external]** |
+| **External inputs** | the hypercharge values (fixed by anomaly cancellation, in Lean, X.7b, or by SU(5)); the measured neutrality of matter, the absence of free fractional charges, proton-decay limits, the failure of coupling unification, the absence of monopoles **[classical]** / **[external]** |
 | **The one open step** | a checkable consequence beyond the standard expectation, supplied by DMP **[open]**; for the gate's wording the first author takes uniform charge quantisation (X.5) **[reading]** |
 | **Conclusion** (if the step closes) | the Grand Unified half of the release criterion holds |
 
@@ -133,7 +133,7 @@ G0 link that holds for **every** instance of the API, not only for GU. `g0_charg
 anomalies and the mixed gauge-gravitational anomaly fixes the hypercharge ratios (Geng and Marshak 1989; Minahan, Ramond and Warner
 1990); with a right-handed neutrino a B - L direction opens unless a Majorana mass is assumed (Babu and Mohapatra 1989).
 Alternatively the ratios follow from SU(5). Either way they are an **input to the Z_6, not an output of it**. Anomaly cancellation is
-now in Lean (X.7b, `ProofPhase/Closures/Anomaly.lean`: `anomaly_fixes_sm`, `anomaly_fixes_Z6`): for one generation, with q_Q > 0 and
+in Lean (X.7b, `ProofPhase/Closures/Anomaly.lean`: `anomaly_fixes_sm`, `anomaly_fixes_Z6`): for one generation, with q_Q > 0 and
 coprime charges, the four anomaly conditions fix the charges up to u <-> d, and with them the Z_6 (without q_Q != 0 there is a second
 solution, q_Q = q_L = q_e = 0 and q_u = -q_d). This is classical physics formalised, not a DMP result.
 

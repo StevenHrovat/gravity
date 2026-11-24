@@ -38,8 +38,8 @@ truly possible paths after k steps grow like y^k, and the least such rate is the
 **[classical]** (Hammersley and Morton, J. Roy. Statist. Soc. B 16 (1954) 23-38; the statement used is the existence of the limit of
 c_n^(1/n), which follows from c_(n+m) <= c_n c_m by Fekete's lemma; the page of that paper has not been read for this). The run over
 all of them settles when the cost per step beats the options: the multiplied path sum mu^k e^(-F k) decays when F > log mu, and the
-joint form with the excess act gives both criteria **[Lean]** (model; `joint_gives_both`). For Yang-Mills that is O1,
-F_e(L) - 2c(L) > log mu_4 (Part IV). Reading: the reformulation is the general form of the one assumption's decay edge, read in
+joint form with the excess act gives both criteria **[Lean]** (model; `joint_gives_both`). For Yang-Mills that is the path-counting number
+F_e(L) - 2c(L) > log mu_4, a sufficient route to O1 (Part IV). Reading: the reformulation is the general form of the one assumption's decay edge, read in
 the language of options **[reading]**.
 
 **Care point.** The translation is exact for the cost and the rotation. The content a step carries, the program the universal
@@ -98,7 +98,7 @@ number carries that.
 
 **Definition (II.2.1).** An *encoder* is a state psi in a space with a positive form, together with its rotated image psi' = R psi
 of the same norm (the shared root). Its one number is the *reflection coefficient* c = <psi, psi'> / ||psi||^2. Positivity forces
-|c| <= 1. **[Lean]** (`Unified/Encoder.lean`, `Encoder`, `Encoder.ofRot`, `refl`, `norm_refl_le`; reading the boundary from the other
+abs(c) <= 1. **[Lean]** (`Unified/Encoder.lean`, `Encoder`, `Encoder.ofRot`, `refl`, `norm_refl_le`; reading the boundary from the other
 side conjugates c: `refl_swap`).
 
 **Two loss factors, determined by c alone (II.2.2).**
@@ -131,8 +131,8 @@ electric factors (`elec_mul`, `elec_oplus`) **[Lean]**. Its self-dual point has 
 it never decides on which side of the axis a box lies or how far from it. It does not turn an upper bound on one encoder into a
 lower bound on another **[paper]** (`docs/unified/GRH-LENS.md`, 6.3).
 
-**The three applications (II.2.6).** Yang-Mills: the twist ratio Z_tw/Z of the hand-over box is c, and O1 is c above (mu - 1)/(mu + 1) for
-every outside. GRH: the Verblunsky step of the zero measure at each scale is c. NP vs coNP: the crossing label passes at factor 1
+**The three applications (II.2.6).** Yang-Mills: the twist ratio Z_tw/Z of the hand-over box is c, and the chain form of O1 (`YMOneBox`) is c
+above (mu - 1)/(mu + 1) for every outside. GRH: the Verblunsky step of the zero measure at each scale is c. NP vs coNP: the crossing label passes at factor 1
 with a cutting-planes line, so the encoder explains resolution's cost but supplies none for strong systems **[paper]**
 (`docs/unified/ENCODER.md`, 1).
 
@@ -195,14 +195,15 @@ hidden variable is a floor.
 
 **The one-box test.** The author's sharpening: a box needs no outside, because every confinement has one shared gate at the DB. It
 needs one command, step forward, the universal tick, which can simulate everything. If the step produces the wrong R136a1 marker,
-the box is not DMP-complete; if the marker is correct, it is. In Lean (the rotation API, in IM's arsenal, `Arsenal/Rotation.lean`, with the running-system version in
+the box is not DMP-complete; if the marker is correct, it is **[reading]**. In Lean (the rotation API, in IM's arsenal, `Arsenal/Rotation.lean`, with the running-system version in
 `ETM/Rotation.lean`): a box has one command, a gate factor, a margin and a marker per step, inside or R136a1; the marker is correct when it agrees with the gate's own factor, and
 DMP-complete means correct at every tick **[Lean]** (claim II.4a). The outside is read through the same gate by the half-turn: in the
 generic API the agreement of the two readings is the gate's law (a field of `Box.Gate`), and in the plaquette layer it is proved: for a
 closed Z/2 layer the flux read from a box and from its complement agree **[Lean]** (claim II.4b). Care point: the test has content
 only when the marker is the system's own claim; a marker read off the gate afterwards always passes **[Lean]** (claim II.4c). What
-the test gives for each card is in Part IV (IV.10c to IV.10e), Part VII (VII.7g) and Part III (4.4). The one-box certificate (one step at the shared gate certifies every tick), the scale certificate from the sharing,
-and the universal machine as a box are stated with the one assumption in Part III 4.4 (III.68 to III.68c) **[Lean]**. Rigidity is
+the test gives for each card is in IV.12 (Yang-Mills), VII.6 (the model Navier-Stokes box), the box sections of Parts V, VI, VIII,
+IX and X, and Part III 4.4. The one-box certificate (one step at the shared gate certifies every tick), the scale certificate from the sharing,
+and the universal machine as a box are stated with the one assumption in Part III 4.4 (claims III.68 to III.68c) **[Lean]**. Rigidity is
 one-box testable too: a manifold's presentations with its self-equivalences acting make a box that is DMP-complete exactly when the
 manifold is rigid (rigid here is the structure-set condition: every presentation is the manifold seen through a self-equivalence; its
 identification with a given manifold is the user's input), and the manifold is rigid if its box shares the gate with a certified box,
@@ -211,7 +212,7 @@ the sharing being the named hypothesis R136a1 "the gate is shared across scales"
 and the card box exactly when the card's open step holds, and then gives the card's conclusion; it restates the step and proves no
 new bound **[Lean]** (`ETM/CardBox.lean`, claim II.4e).
 
-## II.5 The API: one card per problem
+## II.5 The API: cards
 
 **Why it clicks.** The form layer says nothing about content, so every problem can use it. Every problem has the same shape: an
 input, a proved structure, one named open step.
@@ -239,7 +240,9 @@ The labels make the open steps and outside dependencies greppable.
 system, chain or margin and check the one ledger inequality; write the open step in its slot; call the free theorems; add an
 uncertainty if the input is only approximate; state the card. **[paper]** (the procedure; `docs/unified/API.md`, 3). The three
 cards of Parts IV to VI are `API/YangMills.lean`, `API/GRH.lean` and `API/NP.lean`, each proved as "open step gives conclusion"
-**[Lean]**; each open step is **[open]** (IV.5.6, V.4, VI.4.10). The GRH card is a card for a finite model of zeros (its
+**[Lean]**; each open step is **[open]** (IV.5.6, V.4, VI.6: `CrossingCost`, with VI.4.10 the nearest concrete target). A
+problem may have several cards: Navier-Stokes has three (VII.2), BSD three (VIII.2), Hodge five (IX.2); GU has a box and no card
+(X.2). The GRH card is a card for a finite model of zeros (its
 open step `ScaleSign` is the sign at every scale of that model); the link to zeta is `tie_in`, which takes the statement of the
 Riemann hypothesis as an `External` hypothesis. The toy settles in 101 steps to 1/100 (`toy_settle_101`)
 **[Lean]**.
@@ -300,7 +303,7 @@ a type checker written independently in Rust, checks an export of every declarat
 for the modules a run covered (below). A full run once established a trusted base, Mathlib and Lean core at the pinned commit,
 recorded by hash in a stamp. Later runs re-check only the modules whose source or imports changed, against that stamp.
 
-**What the runs covered.** Three runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
+**What the runs covered.** Four runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
 commit `2cb301c`, covered 358 modules, including the imported IM arsenal, which is checked like the project's own code and is never
 part of the trusted base: `leanchecker` replayed every changed module with no failure, the axiom audit found no declaration resting
 on anything beyond `propext`, `Quot.sound` and `Classical.choice`, and `nanoda_lib` checked 103,282 declarations with no type-checker
@@ -523,8 +526,12 @@ This is a proof strategy, not a theorem **[paper]** (`docs/mass-gap/weak-couplin
   every law carried by closed configurations **[Lean]** (`Crossover/Dichotomy.lean`, `not_uncontained`, `measure_uncontained`).
 * **Every refutation crosses.** In every sound proof system whose rules have at most two premises, every refutation of an expanding
   formula contains a line sensitive to at least the expansion many variables, where "expanding" is two stated hypotheses (every
-  proper subset of the blocks is satisfiable; boundary expansion for the middle sizes) **[Lean]** (`Proof/Crossing.lean`,
-  `cross_any_system`).
+  proper subset of the blocks is satisfiable; boundary expansion for the middle sizes: each boundary variable makes its one block of
+  the region true wherever that block is false, and the region's other blocks do not contain it) **[Lean]** (`Proof/Crossing.lean`,
+  `cross_any_system_of_falsify`). For clause blocks both conditions hold whenever the variable occurs in exactly one clause of the
+  region (`fixes_of_single`, `invisible_of_not_mem`), so the theorem covers CNF formulas with unique-neighbour expansion; for parity
+  blocks it is `Tseitin.cross_any_system`. The argument is the measure argument of Ben-Sasson and Wigderson, machine-checked for every
+  sound two-premise system.
 * **Rarity and saturation do not overlap.** The regime where sheets are suppressed (their cost beats their entropy) and the regime
   where they saturate are disjoint (with entropy K' >= 2(d - 1) and E_min <= E, both cannot hold) **[Lean]**
   (`Crossover/Dichotomy.lean`, `window_gap`); that a route between them crosses a window where neither mechanism applies is the

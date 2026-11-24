@@ -7,8 +7,8 @@ pointer to the precise statement in Part II. Claim labels (I.n) are listed in `.
 
 DMP, the Dark Matter Protocol, is a specification for systems that must trust each other. It was written for software and
 governance: who may act, on what evidence, and what is left behind. Its author reads the same rules as a description of how anything
-comes to exist. This paper uses DMP in exactly that way: as a language. It gives names to the steps that the first three problems,
-Parts IV to VI, have in common, so that each step is said once.
+comes to exist. This paper uses DMP in exactly that way: as a language. It gives names to the steps the problems have in common, so
+that each step is said once; its examples come from Parts IV to VI.
 
 Two rules keep this honest.
 
@@ -17,22 +17,9 @@ Two rules keep this honest.
 * **Every reading points forward.** Each section ends with the precise statement that Part II makes of it, with its status there.
   Part I can be skipped by a reader who wants only the mathematics. It cannot be used by a reader who wants a proof.
 
-The marks used in the whole paper:
-
-| Mark | Meaning |
-|---|---|
-| **[Lean]** | Machine-checked in this project (Lean 4 with Mathlib, standard axioms only). The module path is given relative to `docs/mass-gap/formal/ProofPhase/`. |
-| **[classical]** | Known mathematics or physics, with a reference. |
-| **[external]** | A published or posted result by others that this project reads but did not rebuild or re-check. |
-| **[conditional]** | Holds under a named assumption (the one assumption of Part III, unless another is named). |
-| **[certified]** | Enclosed in ball arithmetic, with its log. |
-| **[paper]** | Argued in this project in prose, not machine-checked. |
-| **[numerical]** | Measured in this project. Evidence; it can refute, never prove a statement about all cases. |
-| **[reading]** | A DMP reading: an interpretation, never mathematics. |
-| **[open]** | Not settled by anyone. |
-
-Qualifiers after a comma or semicolon ("from X", "recalled", "traced", "unverified", "an estimate", "re-checked") and the marks
-**[sketch]** and **[unchecked]** are defined in the introduction, "How to read the status marks".
+The status marks are defined once, in the introduction ("How to read the status marks"). Lean module paths are relative to
+`docs/mass-gap/formal/ProofPhase/` unless they begin with another folder of `docs/mass-gap/formal/` (`AreaLaw/`, `OneScale/`,
+`Positivity/`, `Influence/`); other repository files are named relative to `docs/`, at the commit printed on the title page.
 
 ---
 
@@ -192,15 +179,15 @@ act is a universal error bar."
    (Part IV, and II.12 for the precise limit).
 
 The universal floor became a project rule for measurements: every error bar is the larger of the statistical floor and the
-resolution floor 1/T, with T the time extent actually observed (the time-energy resolution). **[paper]** (rule adopted
-2026-11-23; `docs/mass-gap/weak-coupling/proof-phase/c9a-crossover/ONEBOX-CHECK.md`, section 7).
+resolution floor 1/T, with T the time extent actually observed (the time-energy resolution). **[paper]** (the measurement rule of
+`docs/mass-gap/weak-coupling/proof-phase/c9a-crossover/ONEBOX-CHECK.md`, section 7).
 
 ---
 
 ## I.7 Existence = non-existence + 1
 
 **DMP.** The author's shortest statement: existence is at least non-existence plus one, "given by the simple fact that existence has
-to also describe what does not exist, in addition to everything else" (2026-11-23). A boundary case belongs to it: with no coupling
+to also describe what does not exist, in addition to everything else". A boundary case belongs to it: with no coupling
 at all there is nothing to assert, and the "+1" disappears.
 
 **Reading (I.7).** Three exact statements share this shape. **[reading]** for the identification; the statements themselves are:
@@ -221,8 +208,8 @@ can be based. The exact part is one kernel evaluation: over the natural numbers 
 not exist" with no assumption behind it **[Lean]** (`ETM/Essence.lean`, `two_add_two_ne_five`). Read through error bars the same
 sum is possible: at a resolution of one unit, 2.4 reads as 2 and 2.4 + 2.4 = 4.8 reads as 5, so the rounded sum is off by at most
 one unit, the "+1" of this section **[classical]** for the arithmetic, **[reading]** for the tie (claim I.7e). His essence line
-carries it to the end: **2 + 2 ? 5 ? 4 ? 0 ? 1 ? SU(5) = 1.5**. Only the last sign is an equation, so only 1.5 is assumed; every
-"?" is a question to be decided from the definition of 1.5 **[reading]** (claim I.7e). The exact part is sharp. 1.5 = 3/2 exists in
+carries it to the end, with each "?" a question to be decided and only the last sign an equation: **2 + 2 ? 5 ? 4 ? 0 ? 1 ?
+SU(5) = 1.5**. So only 1.5 is assumed, and every link is decided from its definition **[reading]** (claim I.7e). The exact part is sharp. 1.5 = 3/2 exists in
 a commutative ring exactly when 2 is a unit, and then each of the four ring links 2 + 2 ? 5, 5 ? 4, 4 ? 0 and 0 ? 1 is equivalent to
 0 = 1: one bit decides them all, the same way. They all hold in the ring with one element, where in Z/1 the whole chain is one
 `decide`, and they all fail in every other ring where 1.5 is defined **[Lean]** (`essence_decided`, `essence_decided_subsingleton`,
@@ -392,5 +379,10 @@ times an identity-keeping sign **[Lean]** (II.0g): ordinary multiplication is IM
 | R136a1 | the answer "outside" | excision at transmission, only the remnant tail stays | `R136a1`, a named hypothesis, never an axiom | II.6 |
 | Rights tied to identity | free inside, secure at the gate | capability security | both grants needed; closure; composition | Part III |
 | Arsenal | shared words, imported never copied | one place for content-free results | `arsenal/` in the `im` repository | II.6 |
+| Box, gate, marker, tick | one command, one shared verdict, one claim per step | the one-box test | a running system with a margin and a marker; correct when the marker agrees with the gate (introduction, "The test in one page") | II.4 |
+| DMP-complete | correct at every tick | runs on DMP (III.4.4, a reading) | `Box.DMPComplete`: the marker agrees with the gate at every tick | II.4 |
+| Card | one problem, one named open step | the form layer | `API.Problem`: input, open slot, conclusion, proof | II.5 |
+| Ledger, floor | every step pays; the least it pays | the cost of an act | the ledger law mass(step x) <= e^delta fac(x) mass(x); the contraction class | II.1, II.3 |
+| O1 | the Yang-Mills open step | the decay edge of the one assumption | `FineOneBox`, one box of fixed physical size (IV.5.9) | IV.5 |
 
 Part II states each counterpart once, in its most general form.

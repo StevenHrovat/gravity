@@ -65,8 +65,9 @@ The first author asked whether Perelman's Poincare extends to every SU(N) throug
   `docs/unified/PERELMAN-DMP.md` 2). The sketch is complete for even N, where N^2 - 1 is odd and the surgery obstruction group
   vanishes; for odd N the dimension N^2 - 1 is divisible by 8, the obstruction lies in L = Z, and it still has to be shown to vanish
   for the chosen normal invariant, or be killed by another class **[open]** for odd N >= 5. Ricci flow does not reach it. In DMP terms the rigid cases are those with nothing below the gate
-  (the top cell), and a construction that certified every SU(N) would be refuted from N = 4 on **[reading]**.
-* **The rigid SU(N) are N = 1, 2, 3.** With the point SU(1), the SU(N) whose homotopy type determines them are exactly N = 1, 2, 3,
+  (the top cell), and a construction that certified every SU(N) would be refuted at N = 4 **[reading]**.
+* **The rigid SU(N).** With the point SU(1), the SU(N) whose homotopy type determines them include N = 1, 2, 3 and exclude every even
+  N >= 4; odd N >= 5 is open (the bullet above),
   and the circle U(1) is rigid too **[paper]** (from the bullet above; S^1 **[classical]**) (A.3k). The rigid factors are
   U(1), SU(2) and SU(3), the Standard Model's. The first author reads this as the start `{infinity, 2, 3}`: the largest start built from
   SU(N) that a description can still certify (Part III 4.4) **[reading]**.
@@ -82,8 +83,21 @@ The first author asked whether Perelman's Poincare extends to every SU(N) throug
 
 ## A.5 The rigid groups, the U(1) gate and its two witnesses
 
-* **The Standard Model's factors are the rigid ones.** Among U(1) and the SU(N), the groups determined by their homotopy type are
-  exactly U(1), SU(2) and SU(3) **[paper]** (from A.3j, A.3k) (A.5i). The first author reads the selection as rotation: other
+**The results of this section, first.** The bullets below interleave results and the first author's readings; these are the
+results, each with its status.
+
+1. Sp(2) = Spin(5) is strongly topologically rigid: its topological structure set is a point, so every homotopy equivalence from a
+   closed topological manifold to Sp(2) is homotopic to a homeomorphism **[paper]** (a surgery computation from classical theorems,
+   independently read; `docs/unified/G2-SP2-RIGIDITY.md` 1; claim A.5j).
+2. G2's topological structure set has exactly two elements; the second is carried by the class x_3^2 in degree 6, pulled back from
+   S^6 = G2/SU(3), and no characteristic class tells it from G2 **[paper]** (claim A.5p).
+3. Whether that second element is G2 itself, seen through a self-equivalence of G2, is **[open]**, reduced to one test (claim A.5r).
+4. In Lean, a manifold's rigidity box is DMP-complete exactly when it is rigid (II.4d), and G2 is rigid if its box shares the gate
+   with a certified box; that sharing is at least as strong as the rigidity it concludes, so this restates the question and is not
+   evidence for its answer **[Lean]** (`ETM/G2Rigidity.lean`, `g2_rigid_of_one_assumption`; claim A.5u).
+
+* **The Standard Model's factors are the rigid ones.** Among U(1) and the SU(N), the groups determined by their homotopy type
+  include U(1), SU(2) and SU(3) and no even SU(N) with N >= 4; odd N >= 5 is open **[paper]** (from A.3j, A.3k) (A.5i). The first author reads the selection as rotation: other
   compact groups do not survive it, and SU(N) is the language the encoder speaks (Part III 4.4). It would be a DMP-flavoured
   consequence beyond the standard expectation (compare X.5e: no DMP theorem selects Z_6 or the hypercharges) once the other groups are settled; for now it is a reading. The rigidity of
   Sp(2) = Spin(5) is **[paper]** (A.5j: strongly rigid, topologically) and of G2 is **[open]** (A.5r), but by the next bullet neither decides anything.
@@ -100,7 +114,7 @@ The first author asked whether Perelman's Poincare extends to every SU(N) throug
 * **The two hidden witnesses.** The first author's reading: the two that do not carry, Sp(2) and G2, are dimensionless for
   DMP-completeness, and they are the two witnesses the U(1) gate needs to certify. It checks that the constants resolve to 1,
   certifies and transports the content, and keeps its witnesses hidden, which it can because they are dimensionless to the
-  encoder. Exact counterparts: the compact simple groups of rank 2 are exactly SU(3), Sp(2) = Spin(5) and G2 **[classical]**
+  encoder. Exact counterparts: the simply connected compact simple groups of rank 2 are exactly SU(3), Sp(2) = Spin(5) and G2 **[classical]**
   (A.5n), so SU(3) with its two witnesses is the whole of rank 2. The encoder tells a phase from its conjugate; Sp(2) and G2 have
   only self-conjugate representations and their centres lie on the real points {+1, -1} of the circle **[classical]**, so the
   encoder reads no orientation from them. The check "resolves to 1" has the encoder's root as its counterpart: the norm read from both sides agreeing, the field
@@ -112,8 +126,8 @@ The first author asked whether Perelman's Poincare extends to every SU(N) throug
   (A.5p). Whether the fake is G2 itself, seen through a self-equivalence of G2, is **[open]**, reduced to one test (A.5r). The first author reads the fake G2 as cancelled by the reflection
   positivity of the start: the room is the class x_3^2 in degree 6, its square x_3^4 vanishes **[classical]**, and in reflection
   positivity a state with vanishing reflected square is null. Care point: a Z/2 class has no sign and the cup square is not the
-  reflection form, so this is a **[reading]** (A.5q). Its mathematical counterpart is now exact: "cancelled" means absorbed by a
-  self-equivalence of G2, which is the test of A.5r; the reading predicts that it exists. The test now has one live candidate, a map that runs through SU(3), the
+  reflection form, so this is a **[reading]** (A.5q). Its mathematical counterpart is exact: "cancelled" means absorbed by a
+  self-equivalence of G2, which is the test of A.5r; the reading predicts that it exists. The test has one live candidate, a map that runs through SU(3), the
   confined fibre of G2 -> S^6, whose top cell opens onto G2's 8-cell **[classical]**; it carries the fake's class exactly when what
   crosses that channel is an odd multiple of nu, squared to nu^2 **[sketch]**. The first author reads this as a confined CMOS that needs its
   interface channel open, with the square folding in through reflection positivity, which predicts "odd" **[reading]** (A.5s). The
@@ -122,7 +136,7 @@ The first author asked whether Perelman's Poincare extends to every SU(N) throug
   point: G2's rigidity is a finite computation, true or false whatever is assumed, so the assumption cannot decide it; the reading
   predicts its answer, and the computation tests both the prediction and how far "placed, hence certified" reaches. In the
   first author's words, the one assumption predicts and certifies that the G2 channel exists as a DMP-complete state, which is O1 read as
-  constructability. This is now a theorem one layer down. IM's rigidity box is DMP-complete exactly when the manifold is rigid
+  constructability. This is a theorem one layer down. IM's rigidity box is DMP-complete exactly when the manifold is rigid
   (II.4d); applied to G2, G2 is rigid exactly when its box is DMP-complete, and G2 is rigid if its box shares the gate with the
   certified one box **[Lean]**, from one named External slot (the surgery input, which Mathlib cannot state: the published Kreck-Lueck criterion together with this paper's own two-element structure set A.5p, which is **[paper]**), the one assumption as
   a named OpenStep, and the certified one box as a plain hypothesis (A.5u, A.5v; `ETM/G2Rigidity.lean`, `g2_rigid_of_one_assumption`). The sharing is at least as strong as the rigidity it concludes, so this is a reformulation of the question, not evidence for its answer. The corollary is the next layer's named

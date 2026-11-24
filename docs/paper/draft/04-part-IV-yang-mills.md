@@ -45,7 +45,7 @@ It leaves four things open.
   first author's reading they are not a second assumption: the ODP ends only at a dimensionless 1, so a running, DMP-complete system carries
   the lower edge by construction, and IV.9.5b is the lower edge of the one assumption, beside O1's upper edge, placed at the ODP's
   end, the certified start `{infinity, 2, 3}` (Part III 4.4, III.64a, **[reading]**). Under that reading nothing more is to be
-  shown at the start, and the direction of every later tick is conditional on the one assumption (III.66).
+  shown at the start, and the direction of every later tick is **[conditional]** on the one assumption (III.66).
 * **(O3) The continuum field theory**: Euclidean invariance, local fields as distributions, uniqueness of the limit, Wightman
   reconstruction, and short-distance agreement with asymptotic freedom. The external construction this project uses (IV.9: a Lean 4
   submission of 28 October 2026 and the hosting group's assessment of 10 November 2026, not refereed) is assessed there, as the
@@ -62,13 +62,14 @@ O4.
 
 **Why O1 is one number at one scale.** "The loss rate of one box is below one" is not enough: the crossover rounds
 showed that the per-box rate 0.881 suffices for a chain of boxes but not for a grid (IV.4), and that it suffices for a grid exactly
-when the influence runs in tubes, which needs a larger electric cost per box (IV.5). O1 is now one number at one scale.
+when the influence runs in tubes, which needs a larger electric cost per box (IV.5). O1 is one statement about one box at one scale.
 
 **Convention for beta.** In the Lean, beta = 2/g^2: the plaquette weight is exp(beta Re tr U_p) (`ProofPhase/Assembly.lean`), and the
 one-loop slope is 11/(6 pi^2). The notes behind IV.5.5, IV.6 and IV.9 (the floor e^{-2 beta N}, S >= pi^2 beta = 4 pi^2/g^2,
 beta_eff = 4/g^2 in `RDOEBLIN.md`) were written with the standard beta = 4/g^2, the weight exp((beta/2) tr U_p). Where this part
-writes a bare beta in a formula it says which one. The convention of the simulations (beta = 2.3 and 3.5, IV.7) is not recorded in
-the notes **[unchecked]**.
+writes a bare beta in a formula it says which one. The simulations of IV.7 (beta = 2.3 and 3.5) use the standard beta = 4/g^2: their SU(2)
+heat bath draws each link with weight exp(beta (1/2) tr(U A)) for the staple sum A (Kennedy-Pendleton and Creutz updates;
+`proof-phase/c9a-crossover/w2/smalltorus.py`, `sample_w0`, `heatbath`) **[paper]** (read from the code).
 
 ## IV.1 The lattice theory and its positivity (G0 by construction)
 
@@ -260,7 +261,7 @@ inside the box but does not lower it to the chain value 0.881.
   `yang_mills_assembly_onebox`; `BlockGapBddW` belongs to the separate blocking route (IV.5.9, **[Lean]**).
 * **O1 in the one-box test.** In the one-box test (II.4, the rotation API) O1 is exactly DMP-completeness of the Yang-Mills box:
   the chain form holds exactly when some margin makes every chain of outsides DMP-complete, and `FineOneBox` holds exactly when the
-  Yang-Mills box, with its geometry fixed across levels, is DMP-complete from its start level **[Lean]** (IV.10c, IV.10d). Both
+  Yang-Mills box, with its geometry fixed across levels, is DMP-complete from its start level **[Lean]** (IV.12). Both
   directions are proved, so the general test carries exactly O1, no more and no less: a restatement by construction, which proves
   no new bound. That the box is DMP-complete is O1 itself
   **[open]** (IV.10e).
@@ -424,6 +425,26 @@ grid (IV.4.3) **[paper]** (`RDOEBLIN.md`, 0).
 O1 first: a worst-case argument, for one box of fixed physical size, that the one-box sum of `FineOneBox` holds under every boundary
 condition (by the number F_e(L) - 2C > log mu_4, the electric cost per box exceeding the path entropy of the four-dimensional lattice, if
 path counting is the route), together with the per-box product structure along paths (IV.5.7). Then O2:
-its scale-uniform lower edge (IV.9.5b), conditional on the one assumption beside O1 (Part III 4.4); the per-box half is proved and the gap uses only the resolution clause. Then O3: an observable bridge from this project's bounded slab
+its scale-uniform lower edge (IV.9.5b), open and part of the one assumption by a reading, beside O1 (Part III 4.4); the per-box half is proved and the gap uses only the resolution clause. Then O3: an observable bridge from this project's bounded slab
 observables to local fields, or adoption of the external construction's field notion with its audit. Then O4: a tuning for general G.
 O1 is the mathematical core; O2 to O4 are the remaining distance from the gap mechanism to the Clay statement.
+
+## IV.12 The box in the one-box test
+
+**The box.** For a tuning T and a cell geometry g (a cell map at every level and volume with physical cell size L_1, constants
+n_max and D_0, and a positive rate), the Yang-Mills box `ymBox T g theta` has the lattice levels k from k_0 as its ticks, floor 0,
+margin theta < 1 and the marker "inside" at every level. Its gate factor at level k is `ymFac T g k`: the best one-box ratio gamma
+for which the level criterion holds in every volume, and 1 when no ratio below 1 works. The level criterion (`LevelBox`) asks for a
+box Lambda_0 of at most n_max sites and diameter at most D_0, a gauge-covariant block specification on it, an influence bound on
+it from every outside cell, and the one-box sum of those bounds below gamma **[Lean]** (`ETM/RotationInstances.lean`, `LevelBox`,
+`ymFac`, `ymBox`).
+
+**What the test gives.** For a fixed geometry the box is DMP-complete from k_0 for some margin exactly when one ratio gamma < 1
+satisfies the level criterion at every level from k_0 (`ym_complete_iff`); over all valid geometries this is exactly `FineOneBox`
+(`fineOneBox_iff_complete`); and a DMP-complete box gives the one-box assembly, decay, the gap in both orders of limits and
+reflection positivity, with the line of constant physics and non-triviality as inputs (`ym_assembly_of_complete`) **[Lean]**
+(claims IV.10c, IV.10d). The chain form has its own box, `o1Box`, with gate factor min(1, e^-F_e) along a chain of outsides; it is
+DMP-complete for some margin exactly when the chain-form bound holds (`o1_iff_complete`) **[Lean]**. Because `ymFac` is defined as
+the best ratio, both equivalences are restatements by construction and prove no new bound. That the box is DMP-complete is O1
+itself **[open]** (claim IV.10e).
+

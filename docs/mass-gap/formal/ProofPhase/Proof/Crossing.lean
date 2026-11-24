@@ -215,11 +215,13 @@ theorem exists_middleL {K : ℕ} (hK : 1 ≤ K) {L : (α → Bool) → Prop} (h 
     · exact ⟨Q, hQ, by omega, by omega⟩
 
 omit [Fintype V] in
-/-- **A crossing line is sensitive to every boundary variable.** If `S` is a smallest region forcing `L` and `x`
-toggles the block at `u ∈ S` while the other blocks of `S` do not see it, then flipping `x` changes `L` somewhere. -/
-theorem sensitive_of_boundary {S : Finset V} {L : (α → Bool) → Prop} (hS : ImpliesL Ax S L)
+/-- **A crossing line is sensitive to every boundary variable (the form the proof uses).** If `S` is a smallest region
+forcing `L` and flipping `x` makes the block at `u ∈ S` true wherever it is false, while the other blocks of `S` do not see
+`x`, then flipping `x` changes `L` somewhere. For a clause `u` containing `x` the first hypothesis always holds: a falsified
+clause has every literal false, and flipping `x` makes its literal true. -/
+theorem sensitive_of_boundary_of_falsify {S : Finset V} {L : (α → Bool) → Prop} (hS : ImpliesL Ax S L)
     (hmin : ∀ S' : Finset V, ImpliesL Ax S' L → S.card ≤ S'.card) {x : α} {u : V} (hu : u ∈ S)
-    (htog : ∀ a, SatB Ax (flip x a) u ↔ ¬ SatB Ax a u)
+    (hfix : ∀ a, ¬ SatB Ax a u → SatB Ax (flip x a) u)
     (hinv : ∀ v ∈ S, v ≠ u → ∀ a, SatB Ax (flip x a) v ↔ SatB Ax a v) : ∃ a, ¬ L a ∧ L (flip x a) := by
   have hnot : ¬ ImpliesL Ax (S.erase u) L := fun h => by
     have h1 := hmin _ h
@@ -234,16 +236,28 @@ theorem sensitive_of_boundary {S : Finset V} {L : (α → Bool) → Prop} (hS : 
     · exact ha v (Finset.mem_erase.mpr ⟨hvu, hv⟩))
   refine ⟨a, hLa, hS (flip x a) fun v hv => ?_⟩
   by_cases hvu : v = u
-  · rw [hvu]; exact (htog a).mpr hau
+  · rw [hvu]; exact hfix a hau
   · exact (hinv v hv hvu a).mpr (ha v (Finset.mem_erase.mpr ⟨hvu, hv⟩))
 
-/-- **The crossing is universal.** Every refutation, in every sound proof system with at most two premises per rule,
-contains a line that is sensitive to at least `e` variables, when every middle-sized region has at least `e` boundary
-variables and every proper sub-system is satisfiable. -/
-theorem cross_any_system {K e : ℕ} (hK : 1 ≤ K) (hKV : K < Fintype.card V)
+omit [Fintype V] in
+/-- **A crossing line is sensitive to every boundary variable.** If `S` is a smallest region forcing `L` and `x`
+toggles the block at `u ∈ S` while the other blocks of `S` do not see it, then flipping `x` changes `L` somewhere.
+(Only one direction of the toggle is used: `sensitive_of_boundary_of_falsify`.) -/
+theorem sensitive_of_boundary {S : Finset V} {L : (α → Bool) → Prop} (hS : ImpliesL Ax S L)
+    (hmin : ∀ S' : Finset V, ImpliesL Ax S' L → S.card ≤ S'.card) {x : α} {u : V} (hu : u ∈ S)
+    (htog : ∀ a, SatB Ax (flip x a) u ↔ ¬ SatB Ax a u)
+    (hinv : ∀ v ∈ S, v ≠ u → ∀ a, SatB Ax (flip x a) v ↔ SatB Ax a v) : ∃ a, ¬ L a ∧ L (flip x a) :=
+  sensitive_of_boundary_of_falsify hS hmin hu (fun a h => (htog a).mpr h) hinv
+
+/-- **The crossing is universal, in the form the proof uses.** Every refutation, in every sound proof system with at
+most two premises per rule, contains a line that is sensitive to at least `e` variables, when every middle-sized region has
+at least `e` boundary variables (each makes its one block of the region true wherever that block is false, and is not seen by
+the region's other blocks) and every proper sub-system is satisfiable. For clause blocks the first condition holds for every
+variable the clause contains, so this covers CNF formulas whose clause-variable graph expands. -/
+theorem cross_any_system_of_falsify {K e : ℕ} (hK : 1 ≤ K) (hKV : K < Fintype.card V)
     (hsat : ∀ S : Finset V, S ≠ Finset.univ → ¬ ImpliesL Ax S (fun _ => False))
     (hexp : ∀ S : Finset V, K < 2 * S.card → S.card ≤ K → ∃ B : Finset α, e ≤ B.card ∧
-      ∀ x ∈ B, ∃ u ∈ S, (∀ a, SatB Ax (flip x a) u ↔ ¬ SatB Ax a u) ∧
+      ∀ x ∈ B, ∃ u ∈ S, (∀ a, ¬ SatB Ax a u → SatB Ax (flip x a) u) ∧
         ∀ v ∈ S, v ≠ u → ∀ a, SatB Ax (flip x a) v ↔ SatB Ax a v)
     (h : SD Ax (fun _ => False)) :
     ∃ L, SD Ax L ∧ ∃ B : Finset α, e ≤ B.card ∧ ∀ x ∈ B, ∃ a, ¬ L a ∧ L (flip x a) := by
@@ -258,8 +272,57 @@ theorem cross_any_system {K e : ℕ} (hK : 1 ≤ K) (hKV : K < Fintype.card V)
   obtain ⟨S, hS, hSi⟩ := muL_spec hM.impliesL_univ
   obtain ⟨B, hB, hBx⟩ := hexp S (by rw [hS]; exact hM1) (by rw [hS]; exact hM2)
   refine ⟨M, hM, B, hB, fun x hx => ?_⟩
+  obtain ⟨u, hu, hfix, hinv⟩ := hBx x hx
+  exact sensitive_of_boundary_of_falsify hSi (fun S' h' => hS ▸ muL_le h') hu hfix hinv
+
+/-- **The crossing is universal.** Every refutation, in every sound proof system with at most two premises per rule,
+contains a line that is sensitive to at least `e` variables, when every middle-sized region has at least `e` boundary
+variables and every proper sub-system is satisfiable. The toggle hypothesis here is the parity-type form (it holds for
+Tseitin blocks); `cross_any_system_of_falsify` needs only its one direction and covers clause blocks. -/
+theorem cross_any_system {K e : ℕ} (hK : 1 ≤ K) (hKV : K < Fintype.card V)
+    (hsat : ∀ S : Finset V, S ≠ Finset.univ → ¬ ImpliesL Ax S (fun _ => False))
+    (hexp : ∀ S : Finset V, K < 2 * S.card → S.card ≤ K → ∃ B : Finset α, e ≤ B.card ∧
+      ∀ x ∈ B, ∃ u ∈ S, (∀ a, SatB Ax (flip x a) u ↔ ¬ SatB Ax a u) ∧
+        ∀ v ∈ S, v ≠ u → ∀ a, SatB Ax (flip x a) v ↔ SatB Ax a v)
+    (h : SD Ax (fun _ => False)) :
+    ∃ L, SD Ax L ∧ ∃ B : Finset α, e ≤ B.card ∧ ∀ x ∈ B, ∃ a, ¬ L a ∧ L (flip x a) := by
+  refine cross_any_system_of_falsify hK hKV hsat (fun S h1 h2 => ?_) h
+  obtain ⟨B, hB, hBx⟩ := hexp S h1 h2
+  refine ⟨B, hB, fun x hx => ?_⟩
   obtain ⟨u, hu, htog, hinv⟩ := hBx x hx
-  exact sensitive_of_boundary hSi (fun S' h' => hS ▸ muL_le h') hu htog hinv
+  exact ⟨u, hu, fun a ha => (htog a).mpr ha, hinv⟩
+
+omit [Fintype V] [DecidableEq V] in
+/-- **A clause fixes itself under a flip of one of its variables.** If the block at `u` is the single clause `C` and `x`
+occurs in `C`, then flipping `x` makes the block true wherever it is false: a falsified clause has every literal false, and
+the flip makes the literal of `x` true. This is the first hypothesis of `cross_any_system_of_falsify` for clause blocks. -/
+theorem fixes_of_single {u : V} {C : Clause α} (hu : Ax u = {C}) {x : α} {s : Bool} (hx : (x, s) ∈ C) :
+    ∀ a, ¬ SatB Ax a u → SatB Ax (flip x a) u := by
+  intro a ha
+  simp only [SatB, hu, Finset.mem_singleton, forall_eq, not_not] at ha ⊢
+  intro hF
+  have h1 := ha (x, s) hx
+  have h2 := hF (x, s) hx
+  simp only [flip, Function.update_self] at h2
+  cases hax : a x <;> cases s <;> simp_all
+
+omit [Fintype V] [DecidableEq V] in
+/-- **A block that does not contain `x` does not see its flip.** This is the second hypothesis of
+`cross_any_system_of_falsify`, for every block of the region other than the one that contains `x`. -/
+theorem invisible_of_not_mem {v : V} {x : α} (hv : ∀ A ∈ Ax v, ∀ l ∈ A, l.1 ≠ x) :
+    ∀ a, SatB Ax (flip x a) v ↔ SatB Ax a v := by
+  intro a
+  have key : ∀ A ∈ Ax v, (Falsifies (flip x a) A ↔ Falsifies a A) := by
+    intro A hA
+    have hl : ∀ l ∈ A, flip x a l.1 = a l.1 := fun l hl => by
+      simp [flip, hv A hA l hl]
+    constructor
+    · intro h l hlA; rw [← hl l hlA]; exact h l hlA
+    · intro h l hlA; rw [hl l hlA]; exact h l hlA
+  simp only [SatB]
+  constructor
+  · intro h A hA; rw [← key A hA]; exact h A hA
+  · intro h A hA; rw [key A hA]; exact h A hA
 
 end Semantic
 

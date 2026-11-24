@@ -5,7 +5,7 @@
 
 ## V.0 What is proved, by whom, and what this part does
 
-**State of the problem (2026-11-23).**
+**State of the problem.**
 
 * The Riemann hypothesis for zeta and GRH for every Dirichlet L-function are proved in Lean by others: a library released
   2026-11-20; the Riemann hypothesis was certified by the Lean FRO and the Mathlib Initiative on 2026-11-21, and the Dirichlet
@@ -13,8 +13,13 @@
   section 1). This project read the main statements in the source and did not rebuild the library.
 * GRH for Dedekind, Hecke and general automorphic L-functions is not proved **[open]** (`GUIDE.md`, sections 1 and 5).
 * As far as this project traced it, the proof by others does not go through Weil's positivity criterion (the positive pairing of
-  II.8). Positivity enters it elsewhere: its sign is the non-negative coefficients of Landau's theorem (V.2.3, V.2.4). Its endgame is Landau's theorem applied to a one-sided square-root bound on the
-  prime count, obtained from a Stepanov-type size balance **[external, traced]** (`GUIDE.md`, sections 2, 4, 5).
+  II.8). Positivity enters it elsewhere: its sign is the non-negative coefficients of Landau's theorem (V.2.3, V.2.4). Its endgame,
+  as traced here, is Landau's theorem applied to a one-sided square-root bound on the prime count, obtained from a Stepanov-type
+  size balance **[external, traced, preliminary]** (`GUIDE.md`, sections 2, 4, 5).
+* Tao's post of 20 November 2026 (Tao 2026) reports that the same author has also generated a Lean-only proof of a Generalized
+  Riemann Hypothesis and, as a preliminary analysis, that its strategy appears to use the full power of modern developments in the
+  Langlands program. Which L-functions that proof covers is not stated there, and how its route relates to the one traced above was
+  not examined here **[external, unverified]**.
 
 **What this part does.** It follows the other road: Weil's positivity criterion, the second column of the chain of II.8. It proves the
 chain in finite models (V.1), shows exactly why a mirror symmetry alone cannot place zeros on the line (V.2), measures the shape of
@@ -32,7 +37,7 @@ In a finite model everything works: zeros are finitely many, the pairing is a fi
 | V.1.2 | Zeros on the line imply the pairing is non-negative (each term is a square) | **[Lean]** | `GRH/Weil.lean`, `weilSum_re_nonneg_of_real` |
 | V.1.3 | Positivity implies the line for any test class with the approximation property and finite multiplicities (named hypotheses) | **[Lean]** | `GRH/Weil.lean`, `real_of_weilSum_nonneg` |
 | II.9.4 | Weil's criterion for zeta and Dirichlet L-functions | **[classical]** | Weil 1952; Bombieri 2000 |
-| V.1.5 | Weil's explicit formula for zeta holds for every smooth compactly supported test function, by the contour shift, with a polynomial zero count per unit window (Mathlib-only core, no named step) | **[Lean]** | `GRH/ContourShift.lean` (`CS.contourShift`), `GRH/ContourShiftTie.lean` (`explicit_formula_of_smooth`), `GRH/ContourShiftZeta.lean` (`zero_count_window`) |
+| V.1.5 | Weil's explicit formula for zeta holds for every smooth compactly supported test function, by the contour shift, with a polynomial zero count per unit window (Mathlib-only core, no named step); the real-place term is a line integral at Re s = c > 1, and its identification with the term of Weil's closed form on the critical line is not in Lean | **[Lean]** | `GRH/ContourShift.lean` (`CS.contourShift`), `GRH/ContourShiftTie.lean` (`explicit_formula_of_smooth`), `GRH/ContourShiftZeta.lean` (`zero_count_window`) |
 | V.1.5b | For Dirichlet and other L-functions the explicit formula, and Weil's criterion itself, are classical but not yet in Lean | **[classical]** (not in Lean) | `docs/unified/CONTOUR-SHIFT.md`, section 5 |
 | V.1.6 | A similitude multiplying a positive form by q has all eigenvalues of modulus sqrt q | **[Lean]** | `GRH/Orbits.lean`, `similitude_eigenvalue` |
 | V.1.7 | If Theta - 1/2 is skew-adjoint for a positive form, every eigenvalue has real part 1/2 (finite dimension) | **[Lean]** | `GRH/Orbits.lean`, `skew_shift_re_half` |
@@ -73,7 +78,7 @@ conclusion **[reading]** (from `GUIDE.md`; the mirror step in the Lean is **[ext
 **[open]** (`bridge/BRIDGE.md`, section 4).
 
 **V.2.6 The mirror constants.** The mirror pair Weil's form actually uses is (s = 1, s = 0); it fixes the real-place constants
-(log pi + gamma, the pole terms; zeta'(0)/zeta(0) = log 2 pi) **[numerical]**. These constants belong to the archimedean part alone,
+(log pi + gamma, the pole terms; zeta'(0)/zeta(0) = log 2 pi) **[classical]**; the measured effect on the form is **[numerical]**. These constants belong to the archimedean part alone,
 which on its own is indefinite from support 0.425 on (V.3.9; the smallest eigenvalue of the archimedean part turns negative between 0.40 and 0.425). No sign comes from them (`MIRROR.md`, 0.3).
 
 | # | Result | Status | Source |
@@ -98,6 +103,11 @@ m -> x/m) **[reading]**.
 On a grid of cells Weil's form is a Toeplitz matrix, because it is translation invariant. This turns the question into one about a
 sequence of matrices, and numerics can probe it. Every number in this section can refute a construction; none proves a sign. Margins depend on the discretisation: unless stated, cells are
 the C^1 spline cells (r = 3) with smoothing eps = 0.05; at eps = 0.025 the margin at support 1.2 is 1e-11 instead of 1e-9, and on the step-cell grid (r = 1) it is 8e-4.
+As in Part III, the support a is the half-width of the test function's support, so the primes p with log p <= 2a enter (2 and 3 up
+to a = log 4 / 2 = 0.69). The margins here are smallest eigenvalues of the smoothed form on a finite grid of cells: a minimum over a
+subspace is at least the minimum over the whole space, so these numbers lie above the true margin. They are not comparable with
+the certified lower bounds of Part III (III.65), and they do not contradict the upper bound of about 3.6e-15 at a = 0.75 found there
+with a trial function **[paper]**.
 
 **V.3.1 The induction frame is exact.** Growing the support by one cell adds one entry, at the corner of the matrix. The bigger
 section is positive exactly when that entry lands in an interval centred on the value extrapolated from all smaller scales, with the
@@ -227,7 +237,7 @@ exclusion of a strictly contracted set) **[Lean]**.
 * **The reductio as excision at G0.** An overtaking alignment would be a negative direction, that is an off-line pair; the reading says
   such an assertion is excised at once. In mathematics that needs a contradiction from arithmetic structure; duality alone gives none
   (V.2.1). The 17-million-line Lean proof by others achieved it by another route (a one-sided prime bound plus Landau).
-* **The functional equation, proven to be locally evaluable** is Tate's thesis (V.2.2); it gives the mirror, not the sign.
+* **That the functional equation can be evaluated place by place** is Tate's thesis (V.2.2); it gives the mirror, not the sign.
 * **GRH as the ODP's tool that runs before causality.** RH is equivalent to M(x) = O(x^{1/2 + eps}): the building blocks deviate from
   their mean density by no more than the square-root floor of independent fluctuations ("Moebius randomness") **[classical]** for the
   equivalence; reading GRH as the certificate that the blocks sit at the universal floor is interpretation.

@@ -14,21 +14,21 @@ Two notions of the problem are used:
 
 * **P vs NP** (decision, search, counting): `DICTIONARY.md`.
 * **NP vs coNP** via proof systems: a polynomially bounded proof system exists iff NP = coNP **[classical]** (Cook-Reckhow 1979);
-  NP != coNP implies P != NP. `PROOF-SYSTEMS.md`. The first author's title names NP vs coNP for this reason: the proof-complexity side is
-  where this part's work sits.
+  NP != coNP implies P != NP. `PROOF-SYSTEMS.md`. This part works on the NP vs coNP side, through proof complexity; that is why the abstract names
+  NP versus coNP for this problem.
 
 ## VI.1 Inside a certified class: the chain holds (links 1 to 4)
 
 A finite spin system with positive weights whose Dobrushin influences sum to less than one is easy in three senses: its sampler mixes
 fast, its dynamics has a spectral gap (VI.1.1, II.12.3, II.10.1), and approximate counting follows by self-reducibility, because the
 condition survives pinning (VI.1.6, classical). All the finite pieces are now
-unconditional in Lean: the couplings that earlier files assumed are built from the classical objects, and the spectral measure is
+unconditional in Lean: the couplings are built from the classical objects, and the spectral measure is
 proved from Mathlib's finite-dimensional spectral theorem (`ITEMS.md`).
 
 | # | Result | Status | Source |
 |---|---|---|---|
 | VI.1.1 | Dobrushin row sums at most alpha < 1 (finite system, positive weights): the heat-bath sampler is within n alpha^t of equilibrium after t sweeps; random scan under column sums | **[Lean]** | `Mixing/Classical.lean`, `tv_sweep_dobrushin`, `tv_rs_dobrushin`, `mixing_sweep_dobrushin` |
-| II.12.3, II.9.5 | The column condition gives a spectral gap of at least (1 - alpha)/n per single-site step; the spectral measure exists and lies in [0, 1] | **[Lean]** | `Mixing/FiniteSpectral.lean`, `spectral_gap_dobrushin`, `timeCorr_spectral`, `exists_spectral_measure` |
+| II.12.3 | The column condition gives a spectral gap of at least (1 - alpha)/n per single-site step; the spectral measure exists and lies in [0, 1] | **[Lean]** | `Mixing/FiniteSpectral.lean`, `spectral_gap_dobrushin`, `timeCorr_spectral`, `exists_spectral_measure` |
 | II.10.1 | Gap in time iff no spectral mass above e^{-m} | **[Lean]** | `Mixing/TimeGap.lean`, `time_gap_iff` |
 | II.12.1, II.12.2, II.12.5 | Doeblin contraction, sharpness, eta^n along a homogeneous chain, the box bound under a density floor | **[Lean]** | `Mixing/Doeblin.lean`, `contracts_of_doeblin`, `doeblin_sharp`, `box_bound`; `Mixing/Chain.lean`, `contracts_kpow` |
 | VI.1.5 | Dobrushin condition gives a unique Gibbs state; spatial mixing gives a volume-uniform gap | **[classical]** | Dobrushin 1968, 1970; Stroock-Zegarlinski 1992; Martinelli-Olivieri 1994 (part II for the general case, part I for the attractive case) |
@@ -58,10 +58,10 @@ sense; its cost is not.
 
 **Confinement times resolution (the size-width relation).** In resolution the cost of the crossing has two terms: the width the
 crossing must assert (confinement: the cut principle, width at least the boundary), and the share of it one restriction resolves
-(resolution). The DAG-like size-width relation is now in Lean: if width w + d + b is impossible, for axioms of width at most w, every DAG-like refutation has size at
+(resolution). The DAG-like size-width relation is in Lean: if width w + d + b is impossible, for axioms of width at most w, every DAG-like refutation has size at
 least exp(b (w + d + 1)/2n) **[Lean]** (`Proof/Dag.lean`, `size_width`, `size_width_exp`). With the cut principle the same bound
 holds whenever w + d + b < e, e the boundary of every middle region **[Lean]** (`dag_size_ge`); optimising b gives
-exp((e - w)^2 / 8n) up to rounding **[paper]**. This is Ben-Sasson-Wigderson (2001) **[classical]**, now machine-checked.
+exp((e - w)^2 / 8n) up to rounding **[paper]**. This is Ben-Sasson-Wigderson (2001) **[classical]**, machine-checked here.
 
 | # | Result | Status | Source |
 |---|---|---|---|
@@ -71,7 +71,7 @@ exp((e - w)^2 / 8n) up to rounding **[paper]**. This is Ben-Sasson-Wigderson (20
 | VI.3.4 | DAG-like size-width: size >= exp(b (w + d + 1)/2n); with the cut principle for w + d + b < e, hence exp((e - w)^2 / 8n) | **[Lean]** (the optimisation over b **[paper]**; classical: Ben-Sasson-Wigderson 2001) | `Proof/Dag.lean`, `size_width`, `size_width_exp`, `dag_size_ge` |
 | VI.3.5 | Tseitin on expanders: resolution width at least the expansion, with two stated hypotheses (sub-systems satisfiable; expansion count) | **[Lean]** with hypotheses | `Proof/Tseitin.lean`, `width_ge`, `tl_size_ge` |
 | II.14.2 | Gauss law mod 2: boundary parity equals interior charge; odd charge is unsatisfiable | **[Lean]** | `Proof/Crossing.lean`, `gauss`, `unsat_of_odd` |
-| II.14.5 | **Every refutation crosses:** in every sound system with at most two premises per rule, every refutation of an expanding formula has a line sensitive to at least the expansion many variables | **[Lean]** with the two hypotheses of VI.3.5 | `Proof/Crossing.lean`, `cross_any_system` |
+| II.14.5 | **Every refutation crosses:** in every sound system with at most two premises per rule, every refutation of an expanding formula has a line sensitive to at least the expansion many variables | **[Lean]** with the two hypotheses (satisfiable sub-systems; unique-neighbour expansion), clause blocks included | `Proof/Crossing.lean`, `cross_any_system_of_falsify`, `fixes_of_single`, `invisible_of_not_mem` |
 | VI.3.8 | The crossing is universal, its cost is not: one XOR names the Tseitin flux; resolution pays 2^{b-1} clauses of width b for it, Frege about b^2 symbols | **[Lean]** (`summary`) / **[classical]** (standard counts: the CNF of an XOR of b variables; the balanced parity formula; recalled) | `DICHOTOMY-TRANSFER.md`, 3 |
 | VI.3.9 | Known lower bounds: resolution (Haken 1985; Urquhart 1987; Chvatal-Szemeredi 1988), bounded-depth Frege (Ajtai 1988; Pitassi-Beame-Impagliazzo 1993; Krajicek-Pudlak-Woods 1995), cutting planes (Pudlak 1997) | **[classical]** | `PROOF-SYSTEMS.md`, 2 |
 | VI.3.10 | Feasible interpolation for resolution and cutting planes; its failure for Frege and extended Frege under cryptographic assumptions | **[classical]** / **conditional** | Krajicek 1997; Pudlak 1997; Krajicek-Pudlak 1998; Bonet-Pitassi-Raz 2000 |
@@ -91,7 +91,8 @@ gates), so randomness is not their obstacle. The open part of CP is exactly the 
 **What closes.** (1) Incompressibility of the specific formula gives expansion: a small clause set spanning too few variables could be
 described in fewer bits than its length. This is a statement about one input, not about typical Boolean functions, so the
 natural-proofs barrier does not bite here **[classical]** (counting) + **[reading]** (the form). (2) Expansion forces the crossing in
-CP: CP's rules are sound with at most two premises, so `cross_any_system` applies **[Lean]** (that CP derivations are such systems is a one-line observation **[paper]**).
+CP: CP's rules are sound with at most two premises, so `cross_any_system_of_falsify` applies, with the clauses of F as blocks
+(`fixes_of_single`, `invisible_of_not_mem`) **[Lean]** (that CP derivations are such systems is a one-line observation **[paper]**).
 
 **Where it stops.** In resolution the crossing line is a clause of width e, and any one literal kills it under a restriction, which
 turns "sensitive to e variables" into size. In CP that step is false: the majority line "at least half of these e variables are true"
@@ -128,7 +129,7 @@ bound** is claimed.
 |---|---|---|---|
 | VI.4.1 | CP on random 3-CNF is the sharpest open case (log n width solved, constant width open) | **[classical]** + **[reading]** | `EDGE.md`, 0.1 |
 | VI.4.2 | Incompressibility of the one formula gives expansion; natural proofs do not bite | **[classical]** + **[reading]** | `EDGE.md`, 0.3 |
-| II.14.5 | Expansion forces a crossing line in every CP refutation | **[Lean]** (hypotheses of VI.3.5); CP as a two-premise system **[paper]** | `Proof/Crossing.lean`, `cross_any_system` |
+| II.14.5 | Expansion forces a crossing line in every CP refutation | **[Lean]** (satisfiable sub-systems; unique-neighbour expansion of the clauses); CP as a two-premise system **[paper]** | `Proof/Crossing.lean`, `cross_any_system_of_falsify`, `fixes_of_single` |
 | VI.4.4 | The majority line is sensitive to all e variables and survives restrictions of fewer than e/2 | **[Lean]** | `Proof/Edge.lean`, `majority_line`, `thr_sensitive`, `thr_survives` |
 | VI.4.5 | Unit thresholds: duality floor (e + 1)/2 | **[Lean]** | `Proof/CPDuality.lean`, `thr_duality` |
 | VI.4.6 | Weighted lines are cheap in both channels | **[Lean]** | `Proof/CPDuality.lean`, `two_cheap` |
