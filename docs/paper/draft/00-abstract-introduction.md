@@ -40,7 +40,8 @@ Seven problems of the Millennium Prize type are read here as one: the Yang-Mills
 versus coNP, Navier-Stokes regularity, the Birch and Swinnerton-Dyer conjecture, the Hodge conjecture, and a Grand Unified reading of
 SU(3) x SU(2) x U(1). Poincare, solved by Perelman, serves as validation. Every problem becomes one box under one test. A box has one
 command, a step at one shared gate; each step gives a marker, inside or R136a1 (outside); the box is DMP-complete when every marker
-agrees with the gate's own verdict. The test, the machine under it (a ledger of costs, an encoder at every boundary, a transport
+agrees with the gate's own verdict. In ordinary terms the machine is multiplication by complex numbers: each step multiplies by
+one number of modulus at most one, whose modulus is the cost and whose phase the rotation. The test, the machine under it (a ledger of costs, an encoder at every boundary, a transport
 theorem, a settle theorem) and one card per problem are machine-checked in Lean 4 with Mathlib, standard axioms only, and re-checked
 by independent kernels; the transferable parts are published in IM, the shared vocabulary, and imported from there. The language
 that names the steps is DMP, a specification for systems of trust used here as a vocabulary for existence; its readings are marked

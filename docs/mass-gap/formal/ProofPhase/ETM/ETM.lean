@@ -8,6 +8,7 @@ Paper: `docs/unified/ETM.md`.
 import ProofPhase.ETM.Rooted
 import ProofPhase.ETM.RotationInstances
 import ProofPhase.ETM.G2Rigidity
+import ProofPhase.ETM.Complex
 
 /-!
 # The ETM round in one statement

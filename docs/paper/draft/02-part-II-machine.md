@@ -4,6 +4,30 @@
 
 **A. The machine.**
 
+## II.0 The machine in ordinary terms: multiplication by complex numbers
+
+**The translation.** In ordinary terms the machine is multiplication by complex numbers. Each step multiplies the carried amplitude
+by one number c with |c| <= 1: its modulus is the cost paid at the gate, its phase the rotation. A run multiplies its steps, so
+moduli multiply and phases add. If every |c| stays at or below some theta < 1, the run settles within an explicit number of steps.
+If every |c| = 1 (pure rotation), the number never changes the mass; the universal machine is there, and whether it settles cannot
+be decided. Everything else in this part (the ledger, the encoder, the settle theorem, the one-box test) is a detail of this one
+picture.
+
+**In Lean** (`ETM/Complex.lean`, `complex_translation`):
+
+* a sequence of multipliers of modulus at most one is a running system whose ledger law holds with equality, and its run is the
+  product of its steps (`cmach`, `cmach_pays_eq`, `cmach_iterate`, `cmach_mass_eq`) **[Lean]** (claim II.0a);
+* every running system is dominated by the product of its own factors, read as complex numbers (`dominated`), so the translation
+  loses nothing on the cost side **[Lean]** (claim II.0b);
+* below the circle the run settles (`cmach_reaches`, from the settle theorem of II.3); on the circle the mass never changes
+  (`cmach_lossless`), and every factor of the universal machine is 1 (`etm_fac_one`) **[Lean]** (claim II.0c);
+* the encoder's reflection coefficients (II.2) are such multipliers, with cost 1 - |c|^2 (`encMach`) **[Lean]** (claim II.0d).
+
+**Care point.** The translation is exact for the cost and the rotation. The content a step carries, the program the universal
+machine runs, lives in the state and not in the number; that is where its undecidability sits (II.3) **[paper]** (claim II.0e). In
+number theory "complex multiplication" names something else (elliptic curves with extra symmetries, near Part VIII); here it is
+always "multiplication by complex numbers".
+
 ## II.1 The ledger and the transport theorem
 
 **Why it clicks.** A step that forgets a fixed share each time forgets geometrically. Write the share as a cost, and costs add.

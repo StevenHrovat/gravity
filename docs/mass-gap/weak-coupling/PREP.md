@@ -4882,3 +4882,13 @@ thread.
   truth" is a theorem for the gate, and sharing the gate is free (III.68b, `gate_through_trace`). Care point: what the one assumption
   adds is that the marker travels with the gate; terminality does not give that, so the leak reading is exact for the gate and the
   assumption stays the marker's part. In Lean it remains a named hypothesis, never an axiom.
+- **The ETM translation: multiplication by complex numbers (the owner, 2026-11-24).** "Existence linter = complex multiplication,
+  right?" and "This should be the ETM translation, since it is the most valuable tool we produce." Built (coordinator,
+  `ETM/Complex.lean`): a sequence of multipliers of modulus at most one is a running system whose ledger law holds with equality;
+  a run multiplies its steps, so moduli multiply and phases add; every running system is dominated by the product of its own
+  factors read as complex numbers; multipliers uniformly below one settle within an explicit bound; multipliers on the unit circle
+  never change the mass, and the universal machine is there (all its factors are 1); the encoder's reflection coefficients are
+  such multipliers, with cost 1 - |c|^2 [Lean]. Care points: the translation is exact for the cost and the rotation; the content a
+  step carries (the program the universal machine runs) lives in the state, not in the number, and that is where its
+  undecidability sits. "Complex multiplication" in number theory (CM elliptic curves) is a different notion; the paper writes
+  "multiplication by complex numbers".

@@ -1,6 +1,6 @@
 == build ProofPhase.ETM.ETM
-Build completed successfully (9080 jobs).
-== declarations: 83
+Build completed successfully (9081 jobs).
+== declarations: 96
 == axioms
 'ProofPhase.ETM.Box' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.toArsenal' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -85,5 +85,18 @@ Build completed successfully (9080 jobs).
 'ProofPhase.ETM.g2_rigid_of_one_assumption' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.g2_rigid_of_one_assumption'' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.g2_not_shared_of_not_rigid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cstep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cstep_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cmach' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cmach_pays_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cmach_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cmach_mass_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.dominated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cmach_reaches' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cmach_lossless' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.etm_fac_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.encMach' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.encMach_fac' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.complex_translation' depends on axioms: [propext, Classical.choice, Quot.sound]
 == source grep
-no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean
+no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean, Complex.lean
