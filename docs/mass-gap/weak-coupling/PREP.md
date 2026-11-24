@@ -4874,3 +4874,11 @@ thread.
   assumption (III.64 as a named OpenStep). Care point: in this Lean "axiom one layer down" is a named hypothesis of the next
   layer's theorem (R136a1 or OpenStep), never a Lean axiom; the linter lists each by name, which is how the system stays one box.
   G2's unconditional rigidity (A.5r) stays open; the theorem makes it a falsifiable consequence of the one assumption.
+- **The one assumption as a leak axiom (the owner, 2026-11-24).** "It is equivalent to a leak Axiom because anything within a DB
+  shares a universal truth, so a subset could not attach without it." Exact counterpart (coordinator), for the gate: every running
+  system maps in exactly one way into the universal running system, its trace into the terminal object (`ETM/RunSys.lean`,
+  `exists_unique_hom`, `trace_unique`, `univIsTerminal`) [Lean]; a subsystem attaches by its inclusion (`subIncl`), and by
+  uniqueness its trace is the restriction of the whole system's [Lean]. So "a subset cannot attach without sharing the universal
+  truth" is a theorem for the gate, and sharing the gate is free (III.68b, `gate_through_trace`). Care point: what the one assumption
+  adds is that the marker travels with the gate; terminality does not give that, so the leak reading is exact for the gate and the
+  assumption stays the marker's part. In Lean it remains a named hypothesis, never an axiom.

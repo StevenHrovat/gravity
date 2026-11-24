@@ -323,7 +323,11 @@ certified as soon as it works on the box. In the one-box test (I.8) the inductio
 kept correct by one step at the shared gate is correct at every tick **[Lean]** (claim III.68). The scale version is a theorem *from*
 the one assumption: if every scale's box is rebuilt from the one box through its gate, a box certified at one scale is correct at
 every scale, and one scale with a wrong marker refutes the sharing **[Lean]** from III.64 as a named hypothesis (claim III.68a).
-Sharing the gate alone is free; the content of III.64 is that the marker travels with it (claim III.68b). The author grounds the
+Sharing the gate alone is free; the content of III.64 is that the marker travels with it (claim III.68b). The owner reads the
+one assumption as a leak axiom: anything within a DB shares a universal truth, so a subset cannot attach without it. For the gate
+this is a theorem: every running system maps in exactly one way into the universal one, and a subsystem attached by inclusion shares
+its trace **[Lean]** (`exists_unique_hom`, `trace_unique`, `subIncl`). What stays assumed is the marker's part, that the claim travels
+with the gate **[reading]** (claim III.71). The author grounds the
 sharing in GRH: it gives meaning to anything translated through it, so once it is assumed a valid encoder, correctness can be
 inferred. In the test that is exact. A valid encoder between scales is the shared gate, and correctness at every scale is inferred
 from it **[Lean]** (`scale_certificate`); what an encoder carries keeps its reflection coefficient **[Lean]** (`refl_map`). Care
