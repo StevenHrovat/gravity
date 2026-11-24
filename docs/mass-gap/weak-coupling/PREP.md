@@ -4794,3 +4794,24 @@ thread.
   hypercharge as Z_6 [Lean, IX.3]. Reading: only U(1) carries content across the gate, and non-abelian factors certify only through
   their centre on the U(1) circle. Care point: "carries content" is identified with "has a complex representation"; that
   identification is the reading.
+- **The two hidden witnesses of the U(1) gate (the owner, 2026-11-24).** "The two that do not carry nonetheless also are
+  dimensionless for DMP-completeness, so they seem to be the two witnesses that the U(1) gate needs, so that it can certify. It sees
+  if the constants resolve correctly to 1 and, if yes, certifies and transports that content, while keeping its two witnesses
+  hidden, which is only possible since they are dimensionless to the encoder. That would put a nice bow on it." Exact counterparts
+  (coordinator):
+  1. *The three of rank 2.* The compact simple Lie groups of rank 2 are exactly SU(3), Sp(2) = Spin(5) and G2 [classical]. SU(3)
+     is the one with complex representations; the other two are the two that do not carry (IX.6k). So "SU(3) and its two witnesses"
+     is the whole of rank 2.
+  2. *Dimensionless to the encoder.* The encoder tells a phase from its conjugate. Sp(2) and G2 have only self-conjugate
+     representations, and their centres lie in the real points of the circle: {+1, -1} for Sp(2), trivial for G2 [classical]. So
+     the encoder reads no orientation from them: they are invisible to it, i.e. hidden.
+  3. *Resolves to 1.* The encoder's check is its root, the norm read from both sides agreeing (`Unified/Encoder.lean`, `root`;
+     ratio 1) [Lean], the dimensionless 1 of the ODP.
+  4. *Witnesses must survive.* The reading needs both witnesses rigid. Sp(2), coordinator's sketch: it has cells in dimensions 0, 3,
+     7, 10; the normal invariants [Sp(2), G/TOP] see the cells through pi_3, pi_7, pi_10 of G/TOP, which are 0, 0, Z/2; the top
+     class is detected by the Kervaire invariant in L_10 = Z/2, and L_11 = 0. So the topological structure set is a point: every
+     closed topological manifold homotopy equivalent to Sp(2) is homeomorphic to it [paper, needs an independent read]. G2: its mod 2
+     cohomology has classes in degrees 3, 5, 6, 8, 9, 11, 14; pi_6(G/TOP) = Z/2 meets H^6(G2; Z/2) = Z/2, and for a parallelisable
+     manifold that class is not seen by the surgery obstruction, so the structure set is likely not a point; whether those
+     structures are homeomorphic to G2 through a self-equivalence is not decided [open]. Smooth versions of both are not checked.
+  Care point: the witness role is the reading; it is falsifiable through G2's rigidity.

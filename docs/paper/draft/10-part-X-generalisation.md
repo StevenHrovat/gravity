@@ -337,7 +337,9 @@ survive rotation" is open. If surviving means rigidity, Sp(2) = Spin(5) and G2 p
 and their rigidity was not checked (claim IX.6j). The owner's further reading settles what matters: only U(1) carries content across
 the gate. Sp(2) and G2 have only self-conjugate representations, so they carry no oriented phase whether or not they are rigid, and
 among the groups that can carry one, rigidity leaves only SU(3), which carries it through its centre on the U(1) circle
-(claims IX.6k to IX.6m).
+(claims IX.6k to IX.6m). The owner closes the circle: Sp(2) and G2 are the U(1) gate's two hidden witnesses, dimensionless to
+the encoder, and with SU(3) they are the three compact simple groups of rank 2 (claims IX.6n, IX.6o). The reading needs the
+witnesses rigid: Sp(2) is, topologically, by a surgery sketch; G2 is open (claims IX.6j, IX.6p).
 
 **The expected negative.** Navier-Stokes is the card where the process does not build: the energy ledger cannot pay a uniform cost
 per scale (VI.3.4, **[Lean]** in the model). In the owner's reading nothing more needs or can be said than that it is not

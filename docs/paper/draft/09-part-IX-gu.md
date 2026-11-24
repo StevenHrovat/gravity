@@ -236,6 +236,17 @@ it (IX.5e stays open).
   SU(3), glued to hypercharge as Z_6 **[Lean]** (IX.3). In the owner's words, only U(1) certifies; the factors certify through it
   **[reading]** (IX.6m). Care point: "carries content" is identified with "has a complex representation", and that identification
   is the reading.
+* **The two hidden witnesses.** The owner's reading: the two that do not carry, Sp(2) and G2, are dimensionless for
+  DMP-completeness, and they are the two witnesses the U(1) gate needs to certify. It checks that the constants resolve to 1,
+  certifies and transports the content, and keeps its witnesses hidden, which it can because they are dimensionless to the
+  encoder. Exact counterparts: the compact simple groups of rank 2 are exactly SU(3), Sp(2) = Spin(5) and G2 **[classical]**
+  (IX.6n), so SU(3) with its two witnesses is the whole of rank 2. The encoder tells a phase from its conjugate; Sp(2) and G2 have
+  only self-conjugate representations and their centres lie on the real points {+1, -1} of the circle **[classical]**, so the
+  encoder reads no orientation from them. The check "resolves to 1" is the encoder's root, the norm read from both sides agreeing
+  **[Lean]** (`Encoder.root`). The witness role is a **[reading]** (IX.6o). It needs both witnesses rigid, which makes it
+  falsifiable: Sp(2) is topologically rigid by a surgery sketch (its cells sit in dimensions 3 and 7, where G/TOP has no homotopy)
+  **[paper]** (IX.6j, needs an independent read); for G2 the structure set likely has room in dimension 6, and whether that room
+  gives a manifold not homeomorphic to G2 is **[open]** (IX.6p).
 
 ## IX.7 What would close it
 
