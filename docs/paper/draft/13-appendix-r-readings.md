@@ -2,7 +2,7 @@
 
 *Draft 4. Claim labels (R.n) are listed in `../CLAIMS.md`.*
 
-This appendix holds what no card of Parts X to VIII uses: DMP's own neighbours (the linter, excision, rights tied to identity, IM's
+This appendix holds what no card of Parts III to IX uses: DMP's own neighbours (the linter, excision, rights tied to identity, IM's
 arsenal) and two readings of the first author that are not tied to one part (the essence line and the rotatable hash). Each
 section names the result it reads; the marks are those of the introduction.
 
