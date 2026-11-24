@@ -5023,3 +5023,6 @@ thread.
   a definite inequality about one box of the Wilson measure, over every outside and uniformly in the scale; the correctness theorem
   says what "correct" means once a floor is given, not that the Wilson measure has that floor at every scale. O1 stays the one open
   step (III.64), and the paper says no Millennium Prize problem is solved. For Part III 4.3 in the stage-3 consolidation.
+  The owner's final wording (same day), which replaces the sentence above in the paper: "The correctness theorem now shows that to
+  be correct is to have the correct error, when read through DMP." Used as his reading, with the exact part beside it (correctness
+  up to the error bar, Lean); it makes no claim about O1, which stays the one open step.
