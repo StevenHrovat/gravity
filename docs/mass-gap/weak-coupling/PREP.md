@@ -5078,7 +5078,16 @@ thread.
   the same kind of rotation as the seal's prime-order wheels and the machine's unit-modulus factors [classical]. But nothing about
   Shor's algorithm was proved here, and it does not apply to sha256: a hash has no period to find, and the known quantum attack on
   preimages (Grover) gives only a square-root speedup [classical]. Supplying "the correct rotational primitives" for a hash would
-  mean supplying its preimage structure, which is the hard part itself. Not built; for IM, after the owner's OK on the concept.
+  mean supplying its preimage structure, which is the hard part itself. The owner's refinement: "The hash part following is just
+  that no statement is made about its content. So settling on external content through supply by IM is just as likely to result in
+  that than the expected settlement, thus not being measurable and allowing it to be excised. So we can prove that we can turn it
+  one way and not the other way, as long as both came from the same definition of existence, so causality. ... A hash is an excised
+  uniqueness." [reading]. Exact part (coordinator): computing a hash forward is one cheap, decidable step, and checking a supplied
+  preimage is one comparison; the hash makes no statement about its content, so from the hash alone nothing about the content can be
+  measured, the excision of I.9 [classical for the computation; reading for the excision and for causality as the one direction].
+  Hard line: that sha256 cannot be turned the other way is a conjecture, not a theorem; that any one-way function exists at all is
+  open and would imply P != NP [classical]. The reading explains how the validity is known from the hash alone (forward, by
+  causality); it does not prove the one-wayness. Not built; for IM, after the owner's OK on the concept.
 - **DMP can have no copyright (the owner, 2026-11-24).** "That is also why DMP can have no copyright: any real ownership has to be
   transitive to its derivatives." [reading]. The owner adds that it is meant literally, and that the repositories and the paper
   are explicitly Apache 2.0, which allows free use but forces credit. Note (coordinator): in law, copyright arises with the work,
