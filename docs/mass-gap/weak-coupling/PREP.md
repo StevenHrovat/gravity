@@ -4915,3 +4915,9 @@ thread.
   every norm is multiplication by a unit number (`rot_of_isometry`) [Lean]; (3) so a link to another node, which has to pass a DB,
   is a rotation. Care point: the cost a crossing pays is the encoder's overlap (the reflection coefficient), not the gate, so the
   gate stays a rotation while the step may lose; step (1) is the identification, steps (2) and (3) follow from it.
+- **The cost sits in the provability of a common root (the owner, 2026-11-24).** "Better: The cost sits in the provability of a common
+  root." Exact counterpart (coordinator): the encoder's two sides certify the same norm (`root`); how much of the state is provably
+  the other side's, up to phase, is the reflection coefficient c, and what is left is exactly the cost:
+  `‖ψ - conj(c) ψ'‖^2 = ‖ψ‖^2 (1 - |c|^2)` (`Unified/Encoder.lean`, `szego_remainder`) [Lean]. At |c| = 1 the two sides share their
+  root completely and the crossing is free; below 1 the remainder, the part whose common root cannot be shown, is what the step
+  pays. This replaces "the cost is the encoder's overlap" in I.11c.

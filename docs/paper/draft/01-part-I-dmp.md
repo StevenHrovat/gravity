@@ -326,8 +326,10 @@ acyclic). His argument for why the link is a rotation runs in three steps. A DB 
 keeps the norm: both sides certify the same norm **[Lean]** (`Encoder.root`; any norm-preserving map gives an encoder) and
 **[reading]** for "a DB allows only this gate" (I.3). A linear gate that keeps every norm is multiplication by a unit number, a
 rotation **[Lean]** (II.0f). So the link to another node, which has to pass a DB, is a rotation: the ultimate gate in his words
-**[reading]** (claim I.11c). The cost a crossing pays is the encoder's overlap, not the gate, so the gate stays a rotation while the
-step may lose.
+**[reading]** (claim I.11c). The cost does not sit in the gate. In the owner's words it sits in the provability of a common root,
+and that is exact: the part of the state that provably shares its root with the other side is the reflection coefficient c, and the
+remainder, ||psi - conj(c) psi'||^2 = ||psi||^2 (1 - |c|^2), is exactly what the step pays **[Lean]** (`szego_remainder`). At |c| = 1
+the root is fully shared and the crossing is free.
 
 ---
 
