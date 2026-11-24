@@ -249,7 +249,9 @@ it (IX.5e stays open).
   gives a manifold not homeomorphic to G2 is **[open]** (IX.6p). The owner reads the fake G2 as cancelled by the reflection
   positivity of the start: the room is the class x_3^2 in degree 6, its square x_3^4 vanishes **[classical]**, and in reflection
   positivity a state with vanishing reflected square is null. Care point: a Z/2 class has no sign and the cup square is not the
-  reflection form, so this is a **[reading]** (IX.6q) and the computation of IX.6p still decides it.
+  reflection form, so this is a **[reading]** (IX.6q) and the computation of IX.6p still decides it. The owner reads the missing
+  sign itself as the point: Z/2 carries no order, so no floor, so no decidable reading, and only a start that forces one is
+  DMP-complete (Part X 4.3, X.70).
 
 ## IX.7 What would close it
 

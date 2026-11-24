@@ -4824,3 +4824,13 @@ thread.
   has no sign, so positivity does not act on it as a number, and the cup square is not the reflection form; the identification is
   the reading. Mathematically the question is unchanged: is S^TOP(G2), modulo the self-equivalences of G2, a point? The reading
   predicts yes, so the computation tests it.
+- **Only a start that forces a decidable reading is DMP-complete (the owner, 2026-11-24).** "That the Z/2 can not act on it is
+  consistent with non DMP-completeness being undecidable, so only when the start forces a decidable reading from rotation is a system
+  DMP-complete." Exact counterpart (coordinator): a floor is an order statement, every step costs more than delta; Z/2 carries no
+  order, since no ordered ring has characteristic 2 (1 + 1 = 0 contradicts 1 > 0) [classical]. So no floor can be stated in Z/2.
+  The one-box test has exactly two regimes [Lean, `rotation_edge`, X.68c]: with a floor the test settles from an explicit tick and
+  DMP-completeness is a finite check; without one (the lossless universal machine) it is undecidable over all content. The start
+  `{infinity, 2, 3}` is where the floor is forced: Weil's form positive with explicit margins (X.65, certified). Reading: a system
+  is DMP-complete in the paper's sense exactly when its start forces a floor, so that the rotation test becomes decidable. Care
+  point: the start forces the floor at the start only (the margins collapse beyond it, X.66); that the floor is kept at every scale
+  is X.64 (and, for Yang-Mills, O1, X.33).

@@ -675,6 +675,8 @@ Notes relative to `docs/pnp/`.
 | X.69a | SU(N) as the language of the encoder: the encoder is a norm-preserving map of an inner product space (Lean); the determinant-1 norm-preserving maps of C^N form SU(N), and every compact Lie group is a closed subgroup of some U(N) (Peter-Weyl); "language" is the owner's reading | classical (the facts); Lean (the encoder); reading (language) | `ProofPhase/Unified/Encoder.lean`, `Encoder`, `refl_map`; Peter-Weyl | none |
 | X.69b | Speaking (a valid encoder, the shared gate) and being understood (a correct marker) give DMP-completeness at every scale | Lean (the implication; the identification is a reading) | `im` repository, `arsenal/Arsenal/Rotation.lean`, `Box.scale_certificate`; `ProofPhase/ETM/Rotation.lean`, `Box.scale_certificate` | none |
 | X.69c | Anything that rotates correctly from the rigid start is correct if DMP is correct | conditional (on X.64) | X.69b; X.64 | X.64 |
+| X.70 | A system is DMP-complete in the paper's sense exactly when its start forces a floor, so that the rotation test is decidable; a class positivity cannot act on (Z/2) sits on the undecidable side | reading | `PREP.md`, 2026-11-24, "Only a start that forces a decidable reading"; X.68c; X.65 | none |
+| X.70a | No ordered ring has characteristic 2 (1 + 1 = 0 contradicts 1 > 0), so Z/2 carries no order and no floor can be stated in it | classical | elementary algebra | none |
 | X.9 | GRH asks of the tick distance: finite at every tick (sign); uniformly bounded, d_N <= D (multiplicative transport, enough for the sign, not needed by it) | open | `docs/unified/GRH-TO-O1.md` 3a; `ProofPhase/GRH/Transfer.lean`, `margin_pos_of_factors` (the finite part, Lean) | GRH beyond the finite model |
 | X.10 | O1 holds exactly when some mu' > mu has mu' p1 <= p0 for every outside (uniform ratio bound), and exactly when p0 - mu p1 >= delta p1 uniformly (a strict margin); the electric cost is log(p0/p1); encoder form of the one-box step | Lean | `ProofPhase/Unified/GRHToO1.lean`, `ymOneBox_iff_ratio`, `ymOneBox_iff_margin`, `cost_eq_log_ratio`; `ProofPhase/Unified/Encoder.lean`, `oneBox_iff_refl` | none (O1 itself is III.5.6) |
 | X.11 | On one tick sequence with encoders at least theta > 0 from the lossless point, the carried Szego margin falls below every m > 0: a uniform margin and O1 at every tick exclude each other | Lean | `ProofPhase/Unified/GRHToO1.lean`, `o1_ticks_kill_margin`, `uniform_margin_excludes_o1` | none |
@@ -826,20 +828,20 @@ Part IX row IX.0b was a cross-reference and is folded; the scope rows that stay 
 
 Counted on the rows above (each row once, by its first mark; scope rows not counted: 0.1, III.0, VI.0e, VII.0e, VIII.0d, IX.0a, IX.0d). The draft 3 column is the count of the committed draft; the next column is after the audit of 2026-11-24 (rows removed and added, status changes, `certified` as its own mark, II.11.2 and II.11.3 counted as Lean):
 
-| Status | After the fake G2 reading (2026-11-24) | After the witnesses (2026-11-24) | After the U(1) reading (2026-11-24) | After the rigid start (2026-11-24) | After the one-box test (2026-11-24) | After VI.6.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Lean | 232 | 232 | 232 | 232 | 231 | 221 | 221 | 221 | 221 | 239 | 114 |
-| classical | 124 | 124 | 123 | 122 | 121 | 121 | 121 | 121 | 121 | 120 | 42 |
-| external | 41 | 41 | 41 | 41 | 41 | 41 | 40 | 40 | 40 | 48 | 7 |
-| conditional | 7 | 7 | 7 | 7 | 6 | 5 | 5 | 4 | 4 | 4 | 3 |
-| paper | 60 | 60 | 59 | 58 | 56 | 56 | 56 | 56 | 56 | 63 | 27 |
-| numerical | 22 | 22 | 22 | 22 | 22 | 22 | 22 | 22 | 22 | 24 | 17 |
-| certified | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 0 | 0 |
-| reading | 92 | 91 | 90 | 89 | 88 | 87 | 87 | 86 | 83 | 83 | 25 |
-| open | 46 | 46 | 46 | 46 | 45 | 44 | 45 | 47 | 48 | 70 | 28 |
-| **Total** | **626** | **625** | **622** | **619** | **612** | **599** | **599** | **599** | **597** | **651** | **263** |
+| Status | After the decidable start (2026-11-24) | After the fake G2 reading (2026-11-24) | After the witnesses (2026-11-24) | After the U(1) reading (2026-11-24) | After the rigid start (2026-11-24) | After the one-box test (2026-11-24) | After VI.6.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Lean | 232 | 232 | 232 | 232 | 232 | 231 | 221 | 221 | 221 | 221 | 239 | 114 |
+| classical | 125 | 124 | 124 | 123 | 122 | 121 | 121 | 121 | 121 | 121 | 120 | 42 |
+| external | 41 | 41 | 41 | 41 | 41 | 41 | 41 | 40 | 40 | 40 | 48 | 7 |
+| conditional | 7 | 7 | 7 | 7 | 7 | 6 | 5 | 5 | 4 | 4 | 4 | 3 |
+| paper | 60 | 60 | 60 | 59 | 58 | 56 | 56 | 56 | 56 | 56 | 63 | 27 |
+| numerical | 22 | 22 | 22 | 22 | 22 | 22 | 22 | 22 | 22 | 22 | 24 | 17 |
+| certified | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 0 | 0 |
+| reading | 93 | 92 | 91 | 90 | 89 | 88 | 87 | 87 | 86 | 83 | 83 | 25 |
+| open | 46 | 46 | 46 | 46 | 46 | 45 | 44 | 45 | 47 | 48 | 70 | 28 |
+| **Total** | **628** | **626** | **625** | **622** | **619** | **612** | **599** | **599** | **599** | **597** | **651** | **263** |
 
-The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved III.9.5b to conditional on X.64 (placed at the ODP's end, as X.66) and VI.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The Perelman round settled VI.6.3j (open to external: N = 3 rigid in both categories, Wang; N >= 4 not, paper). The one-box test (the rotation API) added 13 rows: I.8i to I.8k, III.10c to III.10e, VI.7g, VI.7h, X.68 to X.68d (10 Lean, 1 open, 1 reading, 1 conditional). The rigid start added 7 rows: VI.6.3k, IX.6i, IX.6j, X.69 to X.69c (1 Lean, 1 classical, 2 paper, 1 reading, 1 conditional, 1 open: the rigidity of Sp(2) and G2). The U(1) reading added IX.6k (classical), IX.6l (paper) and IX.6m (reading). The witness reading added IX.6n (classical), IX.6o (reading) and IX.6p (open: G2), and IX.6j became a paper sketch (Sp(2) topologically rigid). The fake G2 reading added IX.6q (reading). The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
+The owner's answers of 2026-11-24 moved IX.5f from open to reading and added X.64a and X.64b (reading); III.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved III.9.5b to conditional on X.64 (placed at the ODP's end, as X.66) and VI.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The Perelman round settled VI.6.3j (open to external: N = 3 rigid in both categories, Wang; N >= 4 not, paper). The one-box test (the rotation API) added 13 rows: I.8i to I.8k, III.10c to III.10e, VI.7g, VI.7h, X.68 to X.68d (10 Lean, 1 open, 1 reading, 1 conditional). The rigid start added 7 rows: VI.6.3k, IX.6i, IX.6j, X.69 to X.69c (1 Lean, 1 classical, 2 paper, 1 reading, 1 conditional, 1 open: the rigidity of Sp(2) and G2). The U(1) reading added IX.6k (classical), IX.6l (paper) and IX.6m (reading). The witness reading added IX.6n (classical), IX.6o (reading) and IX.6p (open: G2), and IX.6j became a paper sketch (Sp(2) topologically rigid). The fake G2 reading added IX.6q (reading). The decidable start added X.70 (reading) and X.70a (classical). The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open

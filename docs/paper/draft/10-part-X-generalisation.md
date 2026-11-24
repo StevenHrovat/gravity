@@ -281,6 +281,14 @@ The floor reading also corrects a tempting derivation. GRH supplies the *sign*, 
 degenerate exactly at the closure, the opposite of a floor (claim X.17). So the floor reading describes what O1 would deliver, not
 something GRH delivers **[reading]**.
 
+**Only a decidable start is DMP-complete.** The owner's reading: a class that positivity cannot act on, such as a Z/2 class, is
+the undecidable side, and a system is DMP-complete only when its start forces a decidable reading from rotation. Exact counterpart:
+a floor is an order statement, and Z/2 carries no order, since no ordered ring has characteristic 2 **[classical]** (claim X.70a).
+The one-box test has exactly the two regimes of this section: with a floor it is a finite check, without one it is undecidable
+**[Lean]** (`rotation_edge`, claim X.68c). The start `{infinity, 2, 3}` is where the floor is forced, Weil's form positive with
+explicit margins (claim X.65). So "DMP-complete" in the paper's sense reads as "the start forces a floor" **[reading]** (claim X.70).
+Care point: the start forces the floor at the start only; keeping it at every scale is the one assumption (claims X.64, X.66).
+
 ---
 
 ### 4.4 The paper's one assumption
