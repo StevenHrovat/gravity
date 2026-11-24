@@ -2,9 +2,9 @@
 
 *Draft 4, 2026-11-24 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
 
-**Which part uses which tool.** The machine (II.0 to II.3) is used by Parts IV to VIII; the one-box test and the cards (II.4,
+**Which part uses which tool.** The machine (II.0 to II.3) is used by Parts III to VII; the one-box test and the cards (II.4,
 II.5) by every part from IV to X and by Appendix A; the arsenal and the re-check (II.6, II.7) by every Lean result; the tools of
-section B (II.8 to II.15) by Parts IV to VI, each of which names the section it uses.
+section B (II.8 to II.15) by Parts III to V, each of which names the section it uses.
 
 | Section | IV Yang-Mills | V GRH | VI P vs NP | VII Navier-Stokes | VIII BSD | IX Hodge | X GU | App. A |
 |---|---|---|---|---|---|---|---|---|
@@ -50,12 +50,12 @@ truly possible paths after k steps grow like y^k, and the least such rate is the
 c_n^(1/n), which follows from c_(n+m) <= c_n c_m by Fekete's lemma; the page of that paper has not been read for this). The run over
 all of them settles when the cost per step beats the options: the multiplied path sum mu^k e^(-F k) decays when F > log mu, and the
 joint form with the excess act gives both criteria **[Lean]** (model; `joint_gives_both`). For Yang-Mills that is the path-counting number
-F_e(L) - 2c(L) > log mu_4, a sufficient route to O1 (Part IV). Reading: the reformulation is the general form of the one assumption's decay edge, read in
+F_e(L) - 2c(L) > log mu_4, a sufficient route to O1 (Part III). Reading: the reformulation is the general form of the one assumption's decay edge, read in
 the language of options **[reading]**.
 
 **Care point.** The translation is exact for the cost and the rotation. The content a step carries, the program the universal
 machine runs, lives in the state and not in the number; that is where its undecidability sits (II.3) **[paper]** (claim II.0e). In
-number theory "complex multiplication" names something else (elliptic curves with extra symmetries, near Part VIII); here it is
+number theory "complex multiplication" names something else (elliptic curves with extra symmetries, near Part VII); here it is
 always "multiplication by complex numbers".
 
 ## II.1 The ledger and the transport theorem
@@ -95,7 +95,7 @@ boundary stays below it, e_n < m_n, the counterpart's sign is certified at every
 ratio crosses at exactly cost = floor (the ratio has factor 1). So damping relative to a margin needs the margin to shrink more
 slowly than the uncertainty (a reading of this, not a further theorem). **[Lean]** (`relative_transport`, `relative_critical`).
 
-**The three applications.** Part III section 7 states what each problem's uncertainty is and where the open step sits. Yang-Mills: the
+**The three applications.** Part X section 7 states what each problem's uncertainty is and where the open step sits. Yang-Mills: the
 boundary uncertainty of a slab. GRH: the explicit formula's remainder against the collapsing margin. NP vs coNP: the hiding error
 per hidden variable.
 
@@ -127,7 +127,7 @@ floor 0. A uniform bound of the factors below e^{-delta} is exactly a cost above
 
 **One distance, two functions (II.2.3).** The cost of the electric factor is a hyperbolic distance d of c from the lossless
 point 0, and the Szego factor is the second function of the same d: it equals 4 e^{-d}/(1 + e^{-d})^2 **[Lean]**
-(`Unified/GRHLens.lean`, `elec_cost`, `szego_of_elec`, for real c), that is 1/cosh^2(d/2) (elementary algebra, not in Lean). This is the object Part III section 2 puts at the centre. It is the
+(`Unified/GRHLens.lean`, `elec_cost`, `szego_of_elec`, for real c), that is 1/cosh^2(d/2) (elementary algebra, not in Lean). This is the object Part X section 2 puts at the centre. It is the
 distance of the encoder from the lossless point.
 
 **The half-turn (II.2.4).** The electric factor is a Moebius map of the matrix (1/sqrt 2)[[-1, 1], [1, 1]]. That matrix is
@@ -175,7 +175,7 @@ truth value exists (classically) but cannot be computed. **[Lean]** (`etm`, `etm
 
 **What it says in one line.** When every step pays a cost above the floor, settling is decidable within an explicit bound. When
 steps may pay exactly the floor there are systems (the universal machine) for which it is not; a lossless system as such need not be undecidable (II.0). The step from the second case to
-the first is the open step of every card (Part III, sections 4 and 5).
+the first is the open step of every card (Part X, sections 4 and 5).
 
 **One step, one `decide`.** The first author's definition: a DMP-complete proof is lintable in one step, relying only on `decide`.
 The exact part is the computable layer of the machine: every decision has a computable form on rational data, proved right for the
@@ -189,7 +189,7 @@ excluded, since the kernel itself must check the step.
 **Existence is free, construction costs.** The first author's one-line summary of the machine: being in the state space costs
 nothing; reaching a state costs a step, and every step pays at least the floor **[reading]** (claim II.3.4). It is the shape of the
 ledger law (II.3.1) and of the one-box test, where sharing the gate is free and the content is that the marker travels with it
-(III.68b). A hash is the same shape in a third setting: the hash was computed from some content, so a preimage exists, and checking
+(X.68b). A hash is the same shape in a third setting: the hash was computed from some content, so a preimage exists, and checking
 a supplied one is a single forward step; finding one from the hash alone is the costly direction **[classical]**. Nothing in this
 paper weakens an established hash or cipher: no result here gives a way to invert one, and the reading agrees with their
 one-wayness. That one-wayness stays what it is in the literature, a well-tested assumption rather than a theorem: that any one-way
@@ -212,9 +212,9 @@ DMP-complete means correct at every tick **[Lean]** (claim II.4a). The outside i
 generic API the agreement of the two readings is the gate's law (a field of `Box.Gate`), and in the plaquette layer it is proved: for a
 closed Z/2 layer the flux read from a box and from its complement agree **[Lean]** (claim II.4b). Care point: the test has content
 only when the marker is the system's own claim; a marker read off the gate afterwards always passes **[Lean]** (claim II.4c). What
-the test gives for each card is in IV.12 (Yang-Mills), VII.6 (the model Navier-Stokes box), the box sections of Parts V, VI, VIII,
-IX and X, and Part III 4.4. The one-box certificate (one step at the shared gate certifies every tick), the scale certificate from the sharing,
-and the universal machine as a box are stated with the one assumption in Part III 4.4 (claims III.68 to III.68c) **[Lean]**. Rigidity is
+the test gives for each card is in III.12 (Yang-Mills), VI.6 (the model Navier-Stokes box), the box sections of Parts IV, V, VII,
+IX and X, and Part X 4.4. The one-box certificate (one step at the shared gate certifies every tick), the scale certificate from the sharing,
+and the universal machine as a box are stated with the one assumption in Part X 4.4 (claims X.68 to X.68c) **[Lean]**. Rigidity is
 one-box testable too: a manifold's presentations with its self-equivalences acting make a box that is DMP-complete exactly when the
 manifold is rigid (rigid here is the structure-set condition: every presentation is the manifold seen through a self-equivalence; its
 identification with a given manifold is the user's input), and the manifold is rigid if its box shares the gate with a certified box,
@@ -250,10 +250,10 @@ The labels make the open steps and outside dependencies greppable.
 **Adding a problem (II.5.2).** Seven steps: copy the template (`API/Template.lean`, a worked toy); write the input; fill a running
 system, chain or margin and check the one ledger inequality; write the open step in its slot; call the free theorems; add an
 uncertainty if the input is only approximate; state the card. **[paper]** (the procedure; `docs/unified/API.md`, 3). The three
-cards of Parts IV to VI are `API/YangMills.lean`, `API/GRH.lean` and `API/NP.lean`, each proved as "open step gives conclusion"
-**[Lean]**; each open step is **[open]** (IV.5.6, V.4, VI.6: `CrossingCost`, with VI.4.10 the nearest concrete target). A
-problem may have several cards: Navier-Stokes has three (VII.2), BSD three (VIII.2), Hodge five (IX.2); GU has a box and no card
-(X.2). The GRH card is a card for a finite model of zeros (its
+cards of Parts III to V are `API/YangMills.lean`, `API/GRH.lean` and `API/NP.lean`, each proved as "open step gives conclusion"
+**[Lean]**; each open step is **[open]** (III.5.6, IV.4, V.6: `CrossingCost`, with V.4.10 the nearest concrete target). A
+problem may have several cards: Navier-Stokes has three (VI.2), BSD three (VII.2), Hodge five (VIII.2); GU has a box and no card
+(IX.2). The GRH card is a card for a finite model of zeros (its
 open step `ScaleSign` is the sign at every scale of that model); the link to zeta is `tie_in`, which takes the statement of the
 Riemann hypothesis as an `External` hypothesis. The toy settles in 101 steps to 1/100 (`toy_settle_101`)
 **[Lean]**.
@@ -270,7 +270,7 @@ is z -> z^n for an integer n, so every label carried on it has integer charge, w
 
 **What it does not do (II.5.5).** It proves no open step and adds no mathematics. It does not turn a problem into a running
 system for you: the structure and its one inequality are the work. Arguments that use only the interface cannot settle P vs NP
-(relativization, VI.7), and the NP card inherits that. **[paper]**
+(relativization, V.7), and the NP card inherits that. **[paper]**
 
 ---
 
@@ -302,7 +302,7 @@ there as a dependency, never vendored. Lean projects `require` the package by re
 first author's rule; `arsenal/README.md`, "Using it").
 
 **What the lint is, and is not.** It certifies form: that everything stated is soundly constructed. It does not say that the
-statements describe the world (Part I, I.8).
+statements describe the world (Part I, R.1).
 
 ---
 
@@ -314,7 +314,7 @@ a type checker written independently in Rust, checks an export of every declarat
 for the modules a run covered (below). A full run once established a trusted base, Mathlib and Lean core at the pinned commit,
 recorded by hash in a stamp. Later runs re-check only the modules whose source or imports changed, against that stamp.
 
-**What the runs covered.** Five runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
+**What the runs covered.** Six runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
 commit `2cb301c`, covered 358 modules, including the imported IM arsenal, which is checked like the project's own code and is never
 part of the trusted base: `leanchecker` replayed every changed module with no failure, the axiom audit found no declaration resting
 on anything beyond `propext`, `Quot.sound` and `Classical.choice`, and `nanoda_lib` checked 103,282 declarations with no type-checker
@@ -327,7 +327,10 @@ quick run at `db9fbc7` replayed the 2 changed modules with no failure, found no 
 declarations with no type-checker error. After the crossing theorem took the form its proof uses (`Proof/Crossing.lean`, II.14),
 a last quick run at `d0257ab` replayed the 18 changed modules with no failure, found no non-standard axiom, and `nanoda_lib`
 checked 75,100 declarations with no type-checker error; the evidence gate, with the pin check, passed at the same commit (285
-theorems). Later commits change no Lean. At the same commit IM's own full check of the arsenal (at the pin
+theorems). When the parts were reordered, the label strings of three modules changed (`ETM/Rotation.lean`,
+`ETM/RotationInstances.lean`, `ETM/G2Rigidity.lean`); a quick run on that tree replayed the 3 changed modules with no failure,
+found no non-standard axiom, and `nanoda_lib` checked 72,355 declarations with no type-checker error. Later commits change no
+Lean. At the same commit IM's own full check of the arsenal (at the pin
 `b01adbd`: lint, build against Mathlib, the kernel's axiom report) passed with 223 declarations, none resting on more than the three
 standard axioms, and the axiom logs of the rotation round (125 declarations, `docs/unified/rotation-axioms.log`) and of the Hodge
 modules (47, `docs/unified/hodge-axioms.log`) were regenerated and show the same. The scan for escape hatches reads code only, as the
@@ -337,7 +340,7 @@ arsenal's lint does, and found none.
 
 ## II.8 One chain, the first three problems
 
-The first three problems (Parts IV to VI) run along the same four links.
+The first three problems (Parts III to V) run along the same four links.
 
 > **positivity -> a space -> an evolution on it -> a spectrum that the positivity pins**
 
@@ -404,7 +407,7 @@ identification of the vacuum complement is not part of the Lean statement.
 
 **The three applications.** Yang-Mills: the mass gap is the decay rate of gauge-invariant correlations. GRH: if the generator of
 the evolution on Weil's space is self-adjoint, its spectrum is real, which in the variable gamma = (rho - 1/2)/i is the statement
-that the zeros are real; that such a space and generator exist for zeta is the Hilbert-Polya view and is **[open]** (V.4.1). P vs NP: a
+that the zeros are real; that such a space and generator exist for zeta is the Hilbert-Polya view and is **[open]** (IV.4.1). P vs NP: a
 spectral gap of the heat-bath operator is fast mixing, hence polynomial-time sampling **[classical]** (the standard relation between
 the gap and the mixing time, through the relaxation time; Levin-Peres-Wilmer, chapter 12; claim II.10.3), finite form
 **[Lean]** (`Mixing/`).
@@ -431,7 +434,7 @@ singularity can hide off the real axis.
 
 1. **Landau's theorem.** An L-series with non-negative coefficients has a singularity at the real point of its abscissa of absolute
    convergence (`Bridge/Landau.lean`, `landau`). The same theorem is the endgame of the proof of RH in Lean by others, which this
-   project read and did not rebuild **[external]** (V.0).
+   project read and did not rebuild **[external]** (IV.0).
 2. **Laplace transforms of positive measures.** For a measure on [0, inf), the real edge of convergence of int e^{-st} d mu is a
    singularity (`Bridge/Laplace.lean`, `laplace_landau`).
 3. **The mass gap.** The Laplace integral of the correlation measure of F (a finite measure on [0, inf), the spectral measure of F
@@ -441,7 +444,7 @@ singularity can hide off the real axis.
 **What the bridge does not give.** It locates the *first* singularity of a positive object. It does not make an object positive.
 Over function fields, one positive duality (the Hodge index theorem) gives both the axis of the functional equation and the
 balance point 1/2; over the integers no such positivity is known **[open]** (`docs/rh-guide/bridge/BRIDGE.md`, section 0; claims
-V.2.5a and V.2.5c).
+IV.2.5a and IV.2.5c).
 
 ---
 
@@ -484,8 +487,8 @@ eta^n. **[classical]** with the composition law **[Lean]** above. Read as DMP: "
 (the author, 2026-11-23) **[reading]**.
 
 **The three applications.** Yang-Mills: the gap mechanism reduces to one box of fixed physical size, uniformly over outsides; for a
-grid the per-box cost must beat the path entropy, F_e(L) > log mu_4 (Part IV.5). P vs NP: a column sum below one is polynomial-time sampling and, classically, counting (Part VI). GRH: no contraction step is
-known; the prime-by-prime extension has no slack to lose (Part V).
+grid the per-box cost must beat the path entropy, F_e(L) > log mu_4 (Part III.5). P vs NP: a column sum below one is polynomial-time sampling and, classically, counting (Part V). GRH: no contraction step is
+known; the prime-by-prime extension has no slack to lose (Part IV).
 
 ---
 
@@ -512,7 +515,7 @@ a sign with no rate becomes a rate at the self-dual point **[reading]**.
 **What it does not give.** It is a statement about free energies of the whole periodic box (averaged over everything), not about the
 influence of an arbitrary fixed outside on one box. And 0.881 suffices for a chain of boxes (two channels per box) but not for a
 grid: in d >= 3 the number of ways a path can continue outweighs it (`Crossover/Containment.lean`, `path_entropy_beats_handover`,
-**[Lean]**). Both gaps are named in Part IV (IV.4, IV.5).
+**[Lean]**). Both gaps are named in Part III (III.4, III.5).
 
 ---
 
@@ -551,9 +554,9 @@ This is a proof strategy, not a theorem **[paper]** (`docs/mass-gap/weak-couplin
   (`Crossover/Dichotomy.lean`, `window_gap`); that a route between them crosses a window where neither mechanism applies is the
   consequence read off this.
 
-**The three applications.** Yang-Mills: (b) is exact, (a) fails uniformly at the SO(3) cut, (c) is the open window (Part IV).
+**The three applications.** Yang-Mills: (b) is exact, (a) fails uniformly at the SO(3) cut, (c) is the open window (Part III).
 P vs NP: the crossing is universal, but its *cost*, the price of naming the conserved quantity in the system's lines, is not; that
-cost is the open lower bound (Part VI). GRH: the analogue of (b) is the zeros on the line, "pure oscillation" **[reading]**; no
+cost is the open lower bound (Part V). GRH: the analogue of (b) is the zeros on the line, "pure oscillation" **[reading]**; no
 dichotomy proof exists there.
 
 ---
@@ -575,7 +578,7 @@ building blocks it evaluates (0.17 to 1.4 ms per layer in the deepest DMP chain;
 check). **[numerical]** (`docs/pnp/NATIVE-METHOD.md`, section 0).
 
 **The three applications.** P vs NP: the method reduces any refutation to an irreducible core; whether that core is always of
-polynomial size is the open question N1 (Part VI). Yang-Mills: the same "quantum, then arrival" shape is the Doeblin rate per tick
+polynomial size is the open question N1 (Part V). Yang-Mills: the same "quantum, then arrival" shape is the Doeblin rate per tick
 (II.12.2). GRH: the integer multiplicities of zeros and prime powers are the quanta on the prime side **[reading]**.
 
 ---
@@ -584,7 +587,7 @@ polynomial size is the open question N1 (Part VI). Yang-Mills: the same "quantum
 
 None of II.9 to II.15 creates positivity. Each starts from a positive weight, a positive pairing, a positive cost or a strict sign,
 and carries it: into a space, into a spectrum, across a chain, across a boundary, down to a floor. The open step of each problem is
-the place where that starting positivity is known locally, or in a model, and must be established for every case. Part III states
+the place where that starting positivity is known locally, or in a model, and must be established for every case. Part X states
 this once (section 4). The six sections II.1 to II.6 are the *form layer*: the part of the machinery that says
 nothing about content and so serves every problem. II.16 holds for them too.
 
@@ -594,4 +597,4 @@ nothing about content and so serves every problem. II.16 holds for them too.
 
 The tools II.9 to II.15 carry a positivity. The form layer II.1 to II.6 carries a certificate and its uncertainty, says when the
 carrying settles, and says where the one open statement of a problem goes. None of it supplies a positivity, and none supplies a
-floor. Part III says why each problem's open step stays open.
+floor. Part X says why each problem's open step stays open.

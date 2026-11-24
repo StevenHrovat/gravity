@@ -37,23 +37,26 @@ step; results that need the one assumption are marked conditional on it. Each op
 `CLAIMS.md`, one verdict line in its part and one item of the abstract, and nothing else. Ledger (2026-11-24): 628 counted rows;
 232 Lean, 125 classical, 41 external, 7 conditional, 60 paper, 22 numerical, 2 certified, 93 reading, 46 open.
 
-## Files (draft 4, relabelled 2026-11-24)
+## Files (draft 4, reordered 2026-11-24 after the review of the assembled paper)
 
 | Part | Content | File | State |
 |---|---|---|---|
-| Front matter | title, personal note, abstract, introduction | `draft/00-abstract-introduction.md` | to rewrite around the machine |
-| I | DMP: the vocabulary | `draft/01-part-I-dmp.md` | drafted |
-| II | The machine, and the tools the problems use | `draft/02-part-II-machine.md` | drafted, reordered |
-| III | The one assumption and the rigid start | `draft/03-part-III-one-assumption.md` | drafted, moved up |
-| IV | Yang-Mills | `draft/04-part-IV-yang-mills.md` | prose |
-| V | GRH | `draft/05-part-V-grh.md` | prose |
-| VI | P vs NP | `draft/06-part-VI-pnp.md` | prose |
-| VII | Navier-Stokes | `draft/07-part-VII-navier-stokes.md` | prose |
-| VIII | BSD | `draft/08-part-VIII-bsd.md` | prose |
-| IX | Hodge | `draft/09-part-IX-hodge.md` | prose |
-| X | GU | `draft/10-part-X-gu.md` | prose |
-| XI | Outlook: a settling machine | `draft/11-outlook-settling-machine.md` | drafted |
-| Appendix A | Validation: Poincare, SU(N) and the rigid groups | `draft/12-appendix-a-validation.md` | assembled |
+| Front matter | title, personal note, abstract, introduction (with "The test in one page") | `draft/00-abstract-introduction.md` | reviewed (stage 3b) |
+| I | DMP: the vocabulary | `draft/01-part-I-dmp.md` | reviewed; the neighbours moved to Appendix R |
+| II | The machine, and the tools the problems use | `draft/02-part-II-machine.md` | reviewed |
+| III | Yang-Mills | `draft/03-part-III-yang-mills.md` | reviewed |
+| IV | GRH | `draft/04-part-IV-grh.md` | reviewed |
+| V | P vs NP | `draft/05-part-V-pnp.md` | reviewed |
+| VI | Navier-Stokes | `draft/06-part-VI-navier-stokes.md` | reviewed |
+| VII | BSD | `draft/07-part-VII-bsd.md` | reviewed |
+| VIII | Hodge | `draft/08-part-VIII-hodge.md` | reviewed |
+| IX | GU | `draft/09-part-IX-gu.md` | reviewed |
+| X | The one assumption and the rigid start, after the cards it compares | `draft/10-part-X-one-assumption.md` | reviewed, moved after the problems |
+| XI | Outlook: a settling machine | `draft/11-outlook-settling-machine.md` | reviewed |
+| Appendix A | Validation: Poincare, SU(N) and the rigid groups | `draft/12-appendix-a-validation.md` | reviewed |
+| Appendix R | DMP readings and neighbours (linter, excision, rights, arsenal; the essence; the rotatable hash) | `draft/13-appendix-r-readings.md` | new |
+
+The section notes below keep the draft-4 numbering of their time; the ledger's "Draft 4 labels" table maps them.
 
 **Labels.** Relabelled once, by script (2026-11-24): every claim kept its row and got the label of its new place; the chapter
 files were renamed in the same step. The draft-3 to draft-4 rule is the table "Draft 3 labels" in `CLAIMS.md`, so every draft-3

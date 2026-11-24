@@ -5,12 +5,21 @@ Two independent reviews of the assembled paper at `68f5c48`: `assembled-opus.md`
 blockers before fixing (F03 by reading `Proof/Crossing.lean`: the hypothesis asked for both directions of a toggle that no clause of
 width 2 or more has, while the proof used one). Fixed in one pass on 2026-11-24, in the commits after `68f5c48`.
 
+The section and claim labels in the tables below are those of the assembled paper (draft 4, before the reorder); the ledger table
+"Draft 4 labels" maps them to the present ones.
+
 ## The first author's decisions
 
 * Author line: "Steven Hrovat with Claude (Anthropic) during pressing" (title page); PDF metadata names the first author.
-* Structure: not decided. Both reviewers recommend moving Part III after the problem parts and the readings of Parts I and III,
-  the essence, the hash, the witnesses and the Outlook into one appendix (Opus M11; Fable F21, F26, F41). The order is kept until
-  the first author decides; nothing was moved.
+* Structure (decided by the first author, "Yes, restructure"): the problems come before the part that compares them. New order:
+  I vocabulary, II machine, III to IX the seven problems (Yang-Mills, GRH, P vs NP, Navier-Stokes, BSD, Hodge, GU), X the one
+  assumption, the Outlook, Appendix A validation, and a new Appendix R "DMP readings and neighbours" holding what no card uses:
+  the old I.8 to I.11 (linter, excision, rights, IM's arsenal, now R.1 to R.4), the essence line (R.5) and the rotatable hash (R.6)
+  (Opus M11; Fable F21, F26, F41). Every label was relabelled by one script, in the drafts, the ledger and the current Lean strings
+  (`X.64`); the ledger's table "Draft 4 labels" maps the old labels. Nothing was deleted. "Appendix R", not B: "Appendix B" already
+  names appendices of cited papers.
+* Personal note: the first author's new sentence ("... turned into three, which revealed the MP-type, and let me generalize while
+  sharing the credit with those that phrased the correct problem :D").
 
 ## Blockers
 

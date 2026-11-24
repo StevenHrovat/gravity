@@ -9,7 +9,8 @@ In v1 I invited everyone to use their own intuition to make the derivations whic
 feel worthy of waking myself. Since no one had any interest in that, I finally got frustrated by it and, after GRH got proven and
 certified, I decided to take a look if Yang-Mills is something where I could finally get a nice verification that can't be ignored,
 since I previously presumed that DMP also gives YM. One thing led to three, since those three are one, so the initial goal of one
-Millennium Problem attempt turned into three :D
+Millennium Problem attempt turned into three, which revealed the MP-type, and let me generalize while sharing the credit with those
+that phrased the correct problem :D
 
 I hope I put enough effort into this paper to make it both a worthwhile contribution to science and still get my point across in a
 way that tries to spark the needed core intuition in the reader. For follow-up please see GitHub, where everything needed is public
@@ -66,7 +67,7 @@ settling is decidable within an explicit bound; when steps may pay exactly the f
 them, for which no procedure decides it. Each open step is restated as a box. One certifiable step is the same on every card: a
 marker correct at the start and kept by the step is correct at every tick (the one-box certificate). On five cards the paper reads
 the open step as one statement, that the card's box is DMP-complete, its gate shared at every scale **[reading]**; mathematically
-each is a different statement, and the paper assumes it once (Part III). Navier-Stokes has no box of its own card under test: a model
+each is a different statement, and the paper assumes it once (Part X). Navier-Stokes has no box of its own card under test: a model
 box built from the energy bound alone gives a wrong marker. The Grand Unified card's open step lies outside its box. The paper proves
 the machine and each card's core.
 
@@ -82,22 +83,22 @@ here (ledger, floor, DB, G0, ODP) are in the table of I.12.
   or *R136a1* (outside). The *gate* reads inside at x exactly when fac(x) <= theta. A *tick* is one step. The marker at x is
   *correct* when it agrees with the gate. The box is **DMP-complete** from x0 when the marker is correct at every tick of the run from
   x0. This is the only meaning of "DMP-complete" in the paper's results; the first author's reading of it, that an object *runs on
-  DMP*, is called *running* (III.4.4).
+  DMP*, is called *running* (X.4.4).
 * **The one-box certificate** (`onebox_certificate`). If the marker is correct at the start and the step keeps it correct at every
   state, the box is DMP-complete. This is the certifiable step.
 * **Card** (II.5, `API.Problem`). An input, one named open slot, a conclusion, and a Lean proof that the slot gives the conclusion.
   Its box (`cardBox`) is the constant box of the open statement: the ticks are 0, 1, 2, ..., the gate reads inside exactly when the
   open statement holds, and the marker is always inside, so the box is DMP-complete exactly when the open statement holds
   (`cardBox_complete_iff`). That is a restatement and proves no new bound. Only two boxes have a gate factor of their own: the
-  Yang-Mills box (gate factor the best one-box ratio at each lattice level, IV.12) and the model Navier-Stokes box (the energy bound against
-  the viscous cost, VII.6).
+  Yang-Mills box (gate factor the best one-box ratio at each lattice level, III.12) and the model Navier-Stokes box (the energy bound against
+  the viscous cost, VI.6).
 * **Open parts.** A statement left open is a named hypothesis, never a Lean axiom: `OpenStep` and `External` in this repository,
   `R136a1` in IM's arsenal. The kernel's axiom report therefore lists only Lean's three standard axioms.
-* **O1.** The Yang-Mills open step, in its Lean form `FineOneBox` (IV.5.9): there are a cell geometry and constants such that at
+* **O1.** The Yang-Mills open step, in its Lean form `FineOneBox` (III.5.9): there are a cell geometry and constants such that at
   every lattice level and volume one box of fixed physical size has influence bounds, under every frozen boundary condition, whose
   one-box sum is below one. Its chain form `YMOneBox`, the path-counting number F_e(L) - 2C > log mu_4 and the hand-over side are
-  routes to it, each related to it in IV.5; where the paper means one of them, it names it.
-* **The one assumption** (III.4.4). Its instances are each card's open slot and the sharing of a box's gate across scales; every
+  routes to it, each related to it in III.5; where the paper means one of them, it names it.
+* **The one assumption** (X.4.4). Its instances are each card's open slot and the sharing of a box's gate across scales; every
   result that uses it carries the mark **[conditional]**.
 
 ### Results and open steps
@@ -113,9 +114,9 @@ it rests on.
 * **Yang-Mills** **[Lean]**, for SU(2) on the lattice: reflection positivity, the strict bound between a sector and its twist (for
   every SU(N)), a per-box hand-over rate of at least log(1 + sqrt 2) (from positivity of the twisted partition function, a stated
   hypothesis), zero join loss in slab form, and the assembly from a one-box gap certificate to exponential decay of slab
-  correlations (a lattice mass gap) in both orders of limits; the step to a gap of the Hamiltonian is argued in prose (IV.2.7). The
+  correlations (a lattice mass gap) in both orders of limits; the step to a gap of the Hamiltonian is argued in prose (III.2.7). The
   open step in the form the assembly uses is `FineOneBox`; the Yang-Mills card's own slot is the chain form `YMOneBox`, related to
-  `FineOneBox` in prose (IV.5.9). The box test restates both: each holds exactly when its box is DMP-complete (IV.12; restatements
+  `FineOneBox` in prose (III.5.9). The box test restates both: each holds exactly when its box is DMP-complete (III.12; restatements
   by construction, no new bound).
 * **GRH.** The explicit formula for all nontrivial zeros of zeta, classical (Weil 1952) and here formalised by the contour shift;
   its real-place term is a line integral at Re s = c > 1, whose identification with the term of Weil's closed form is not in Lean
@@ -127,10 +128,10 @@ it rests on.
   and explicit margins. The positivity mechanisms in finite models **[Lean]**.
 * **NP vs coNP** **[Lean]**. The crossing theorem for every sound two-premise proof system (the Ben-Sasson-Wigderson measure
   argument, machine-checked for every such system): on minimally unsatisfiable CNF formulas whose clause-variable graph expands,
-  every refutation has a line sensitive to many variables (II.14, VI.4); and the equivalence of the lifting interface with lifting by
-  constant-size gadgets (VI.4.11).
+  every refutation has a line sensitive to many variables (II.14, V.4); and the equivalence of the lifting interface with lifting by
+  constant-size gadgets (V.4.11).
 * **Navier-Stokes.** Three cards on the form layer; there is no Navier-Stokes object in the Lean, and Fefferman's forms (A) and (B)
-  are named, not defined. A model box built from the energy bound alone gives the wrong marker at some scale, so that box is not DMP-complete (VII.6)
+  are named, not defined. A model box built from the energy bound alone gives the wrong marker at some scale, so that box is not DMP-complete (VI.6)
   **[Lean]**.
 * **BSD** **[Lean]**, from what Mathlib alone gives, over any number field: Mordell-Weil from weak Mordell-Weil, the true rank, the
   existence line, parity from the functional equation, point counts that run, and a finite order at s = 1 from Hasse's bound, with
@@ -151,7 +152,7 @@ What is not proved: no problem is solved here. Each card has one named open step
 listed in that part.
 
 * *Yang-Mills:* O1, the open step for the box (in Lean `FineOneBox`; the number F_e - 2c > log mu_4 is a sufficient, heuristic route
-  to it, IV.5.6). The lower edge (O2, a correlation that does not vanish) is a second statement, independent of O1 in the paper's own
+  to it, III.5.6). The lower edge (O2, a correlation that does not vanish) is a second statement, independent of O1 in the paper's own
   model and put in the one assumption by a reading; the continuum construction and every compact simple group (O3, O4) remain for
   the Clay statement.
 * *GRH:* a proof of Weil positivity from the primes and the real place alone. For zeta and for Dirichlet L-functions it holds
@@ -161,7 +162,7 @@ listed in that part.
   it yet.
 * *NP vs coNP:* the card's open step `CrossingCost`; the paper's route to it is lifting with constant-size gadgets for cutting
   planes on lifted formulas (`LiftCPConst`, open for suitable gadgets such as indexing, false for XOR), and with it super-polynomial
-  lower bounds for cutting planes on lifted formulas. Interface hardness at width 3 (VI.4.10) is a further item; its relation to
+  lower bounds for cutting planes on lifted formulas. Interface hardness at width 3 (V.4.10) is a further item; its relation to
   `LiftCPConst` is not stated in Lean.
 * *Navier-Stokes:* regularity or blowup of the equations themselves (route I: `PeriodContraction`). DMP's reading takes blowup as the
   expected outcome (the equations do not run); the reading was made after the posted claims, and global regularity would
@@ -173,7 +174,7 @@ listed in that part.
   beyond it is open, and the hypercharges are an input.
 
 This text is a draft in that sense: each open step is stated in the form whose proof would close its card, so that closing one
-changes one row of the claims ledger, one verdict line and one item of this list. The project's release criterion (X.0) lets the paper leave
+changes one row of the claims ledger, one verdict line and one item of this list. The project's release criterion (IX.0) lets the paper leave
 the draft stage only when every open step is closed, so that both readings of its title hold.
 
 ### What a reader can take from it
@@ -201,12 +202,12 @@ tuning came to the first author from a short published by Vsauce; it is credited
   and a fifth is a rotation on it **[classical]**.
 * **The rotation does not close by itself.** Because log2(3) is irrational, twelve pure fifths overshoot seven octaves by the
   Pythagorean comma, 3^12 / 2^19 = 1.01364 **[classical]**. This is the finite loss at the start that the paper excises: the first
-  box at {infinity, 2, 3} (Part V) is where the two generators of the tuning meet.
+  box at {infinity, 2, 3} (Part IV) is where the two generators of the tuning meet.
 * **Temperament is the balanced state.** Equal temperament spreads the comma evenly over all twelve steps (each fifth becomes
   2^(7/12)), so the rotation closes and every key is equivalent; twelve is not arbitrary, since 19/12 is a convergent of log2(3)
-  **[classical]**. In the paper's words, the rotation gives the tuning a direction and makes every tick alike (Part III, the tick
+  **[classical]**. In the paper's words, the rotation gives the tuning a direction and makes every tick alike (Part X, the tick
   operator) **[reading]**.
-* **The zeros are the strings.** The explicit formula (Part V) writes the primes as a sum of tones: each nontrivial zero
+* **The zeros are the strings.** The explicit formula (Part IV) writes the primes as a sum of tones: each nontrivial zero
   1/2 + i gamma sounds at frequency gamma in log x. On the critical line every tone has the same amplitude, x^(1/2); the Riemann
   hypothesis says that every string is tuned to the same loudness **[classical]**.
 
@@ -265,7 +266,8 @@ Connes-Consani.
 
 ### Plan
 
-Part I: DMP, the vocabulary. Part II: the machine, then the tools the problems use. Part III: the one assumption and the rigid start.
-Parts IV to X: the seven problems, one template each (Yang-Mills, GRH, P versus NP through NP versus coNP, Navier-Stokes, BSD,
-Hodge, GU). Then the Outlook (sections XI.n).
-Appendix A: validation (Poincare, SU(N) and the rigid groups).
+Part I: DMP, the vocabulary. Part II: the machine, then the tools the problems use. Parts III to IX: the seven problems, one
+template each (Yang-Mills, GRH, P versus NP through NP versus coNP, Navier-Stokes, BSD, Hodge, GU); each ends at its card and its
+box. Part X: the one assumption and the rigid start, which compares the cards once they have been read. Then the Outlook
+(sections XI.n). Appendix A: validation (Poincare, SU(N) and the rigid groups). Appendix R: DMP's neighbours and the first author's
+readings that no card uses.

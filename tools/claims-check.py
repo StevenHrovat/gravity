@@ -10,14 +10,14 @@ import collections, glob, io, os, re, sys
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'docs', 'paper')
 claims = io.open(os.path.join(ROOT, 'CLAIMS.md'), encoding='utf-8').read()
-SCOPE = {'0.1', 'IV.0', 'VII.0e', 'VIII.0e', 'IX.0d', 'X.0a', 'X.0d', 'X.7d'}   # scope rows, not counted
-R = r'(?:XI|IX|X|VIII|VII|VI|IV|V|III|II|I|A)'
+SCOPE = {'0.1', 'III.0', 'VI.0e', 'VII.0e', 'VIII.0d', 'IX.0a', 'IX.0d', 'IX.7d'}   # scope rows, not counted
+R = r'(?:XI|IX|X|VIII|VII|VI|IV|V|III|II|I|A|R)'
 
 rows_part = claims[:claims.index('## Draft 3 labels')]
 ids, counts = collections.Counter(), collections.Counter()
 malformed = []
 for line in rows_part.splitlines():
-    m = re.match(r'\| ([0-9IVXA]+\.[^ |]*) \| ', line)
+    m = re.match(r'\| ([0-9IVXAR]+\.[^ |]*) \| ', line)
     if not m:
         continue
     cells = [x.strip() for x in line.strip().strip('|').split('|')]
@@ -40,7 +40,7 @@ if dups:
     bad.append('duplicate IDs: ' + ', '.join(dups))
 
 fi, ci = claims.index('## Folded labels'), claims.index('## Counts by')
-folded = set(re.findall(r'(?m)^\| ([0-9IVXA]+\.[^ |]+) \| ', claims[fi:ci]))
+folded = set(re.findall(r'(?m)^\| ([0-9IVXAR]+\.[^ |]+) \| ', claims[fi:ci]))
 heads = set()
 for f in glob.glob(os.path.join(ROOT, 'draft', '*.md')):
     heads |= set(re.findall(r'(?m)^#{2,3} (' + R + r'\.\d+(?:\.\d+)*)', io.open(f, encoding='utf-8').read()))

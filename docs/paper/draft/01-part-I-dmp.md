@@ -8,7 +8,7 @@ pointer to the precise statement in Part II. Claim labels (I.n) are listed in `.
 DMP, the Dark Matter Protocol, is a specification for systems that must trust each other. It was written for software and
 governance: who may act, on what evidence, and what is left behind. Its author reads the same rules as a description of how anything
 comes to exist. This paper uses DMP in exactly that way: as a language. It gives names to the steps the problems have in common, so
-that each step is said once; its examples come from Parts IV to VI.
+that each step is said once; its examples come from Parts III to V.
 
 Two rules keep this honest.
 
@@ -62,7 +62,7 @@ the positivity of I.1 is either built into G0 by construction, or it has to be p
 * In Yang-Mills positivity is part of G0. The weight e^{-S} is positive and local, so reflection positivity follows by construction
   (II.9).
 * In GRH positivity is *not* part of any known G0. Weil's pairing is non-negative exactly when GRH holds. Building a G0 that makes
-  it non-negative by construction is the open step (Part V).
+  it non-negative by construction is the open step (Part IV).
 * In P vs NP, positivity of the count is the question itself: whether the formula has a satisfying assignment.
 
 **What Part II makes of it.** None of the tools of Part II creates positivity. They all start from it (II.16).
@@ -120,7 +120,7 @@ next without loss exactly when it is carried by a conserved quantity. **[reading
   `exists_sheet_of_flux`). That conserved flux cannot be screened is the reading behind the second branch of the dichotomy (II.14)
   **[reading]**.
 
-I.9 sharpens the first statement of this section: excision happens at transmission, and only the remnant tail is kept.
+R.2 sharpens the first statement of this section: excision happens at transmission, and only the remnant tail is kept.
 
 ---
 
@@ -143,15 +143,15 @@ production of everything else from that check. **[reading]** The reading has an 
 phases are separated in the proof:
 
 * pressing: renormalise from the lattice spacing up to one physical scale, until a finite, local contraction condition holds in one
-  box (the one-box statement, Part IV) **[open]**;
+  box (the one-box statement, Part III) **[open]**;
 * minting: from that certificate, obtain a mass gap, as limit points of the finite-volume correlations and for the lattice
-  theory **[Lean]** (`OS/GapLoc.lean`, `Assembly.lean`; conditional on the stated open inputs, Part IV; these files need no
+  theory **[Lean]** (`OS/GapLoc.lean`, `Assembly.lean`; conditional on the stated open inputs, Part III; these files need no
   infinite-volume Hilbert space). The abstract reconstruction of a Hilbert space and a positive transfer operator from a positive
   form is II.9.1 **[Lean]** (abstract; its link to the spectral side is open, II.10.2).
 
 The WHKs also have an exact counterpart. Pure Yang-Mills has no free dimensionless parameter. The bare coupling and the lattice
 spacing combine into one scale, Lambda (dimensional transmutation), and every physical quantity is a pure number fixed by the group,
-times a power of Lambda, where the continuum theory exists (its existence is the open problem of Part IV). From the group and any one of {the tick with its coupling, Lambda, the gap}, all the others follow.
+times a power of Lambda, where the continuum theory exists (its existence is the open problem of Part III). From the group and any one of {the tick with its coupling, Lambda, the gap}, all the others follow.
 **[classical]**
 
 **What Part II makes of it.** The split "one finite certificate, then mechanical production" is the shape of every theorem in II.12:
@@ -176,7 +176,7 @@ act is a universal error bar."
    (Doeblin's condition). The contraction theorem is **[Lean]** for abstract finite stochastic kernels (`Mixing/Doeblin.lean`,
    `contracts_of_doeblin`); the lower bound for the Wilson box is **[paper]** (`PREP.md`, "Three answers", (a)). What the quantum does *not* give by itself is
    control of the sum over many neighbours, nor survival of the rate as the tick shrinks. That is exactly what is open in Yang-Mills
-   (Part IV, and II.12 for the precise limit).
+   (Part III, and II.12 for the precise limit).
 
 The universal floor became a project rule for measurements: every error bar is the larger of the statistical floor and the
 resolution floor 1/T, with T the time extent actually observed (the time-energy resolution). **[paper]** (the measurement rule of
@@ -203,158 +203,12 @@ at all there is nothing to assert, and the "+1" disappears.
   inequality with no rate still forces a definite rate in one of two dual channels. This is the clearest case in the paper of a DMP
   statement turning into a number (II.13).
 
-**2 + 2 = 5, and the essence.** The first author reads 2 + 2 = 5, through DMP, as a unique impossibility on which non-existence
-can be based. The exact part is one kernel evaluation: over the natural numbers `decide` refutes 2 + 2 = 5, a certified "it does
-not exist" with no assumption behind it **[Lean]** (`ETM/Essence.lean`, `two_add_two_ne_five`). Read through error bars the same
-sum is possible: at a resolution of one unit, 2.4 reads as 2 and 2.4 + 2.4 = 4.8 reads as 5, so the rounded sum is off by at most
-one unit, the "+1" of this section **[classical]** for the arithmetic, **[reading]** for the tie (claim I.7e). His essence line
-carries it to the end, with each "?" a question to be decided and only the last sign an equation: **2 + 2 ? 5 ? 4 ? 0 ? 1 ?
-SU(5) = 1.5**. So only 1.5 is assumed, and every link is decided from its definition **[reading]** (claim I.7e). The exact part is sharp. 1.5 = 3/2 exists in
-a commutative ring exactly when 2 is a unit, and then each of the four ring links 2 + 2 ? 5, 5 ? 4, 4 ? 0 and 0 ? 1 is equivalent to
-0 = 1: one bit decides them all, the same way. They all hold in the ring with one element, where in Z/1 the whole chain is one
-`decide`, and they all fail in every other ring where 1.5 is defined **[Lean]** (`essence_decided`, `essence_decided_subsingleton`,
-`essence_zmod_one`, `essence_iff_subsingleton`; Mathlib's `subsingleton_iff_zero_eq_one`). Without 1.5 the link 4 ? 0 splits off:
-in Z/2, where 2 is not a unit, 4 = 0 holds and 0 = 1 does not **[Lean]** (`four_eq_zero_without_half`) (claim I.7d). The first
-author reads that link, 4 ? 0, as O1 itself, the one step that has to be supplied from outside the chain, by the confinement
-coupling positivity **[reading]** (claim I.7e). Care point: the Lean facts are about rings and say nothing about the Wilson measure;
-O1 stays the one open step. So, once 1.5
-is given, the chain names exactly one ring, the zero ring, where existence and non-existence coincide: the one box with no outside
-**[reading]**. The last link is the first author's tie to the rest of the paper: SU(5), whose 5 = 3 + 2 holds the Standard Model
-group as its Z_6 quotient (X.3, **[Lean]**), set equal to 1.5 = 3/2, the ratio of the start's primes and the certificate's reading
-(III.4.4) **[reading]** (claim I.7e).
+The first author's reading of 2 + 2 = 5 and his essence line, with their exact core in Lean, are in Appendix R (R.5).
 
-A last reading belongs here because Part IV uses it: **"mass gap = the arrow of causality exists"** (the author, 2026-11-22). The
+A last reading belongs here because Part III uses it: **"mass gap = the arrow of causality exists"**. The
 transfer matrix of a reflection-positive theory is a positive contraction. A gap means that, after one unit of time 1/m, every
 correlation with the past has shrunk by 1/e: a built-in clock. Without a gap correlations still fade, but only as a power law, with
 no intrinsic tick. **[reading]** on the classical spectral fact of II.10.
-
----
-
-## I.8 DMP as an existence linter
-
-**DMP.** The author's one-line description of DMP: it is a very well defined *existence linter*. A linter checks a text against a
-rule set and says nothing about what the text means. The author reads Gravity, the repository that holds the machine-checked
-evidence, as the linter, and DMP as the universally readable rule set that is its passing condition. Gravity and DMP sit at one
-node of the root chain, and the author reads them as keeping each other honest **[reading]**. The pin itself runs one way: Gravity
-holds a pinned copy of DMP and checks its hash, while DMP, in its own words, "depends on nothing" and holds no copy of anything else
-(`vendor/dmp/00-preamble.md`, "The root chain").
-
-**Reading (I.8).** Existence, in the sense of I.1, is what the linter passes. A statement exists in the system when it is
-constructed, by the kernel, from DMP's pinned sentences and rests on nothing else. Whatever cannot be so constructed is not part of
-the system (I.2). **[reading]** (claim I.8a)
-
-**The exact counterpart.**
-
-* **Gravity's check passes only when** the pinned copy of DMP matches its recorded hash; the repository needs nothing that its one
-  setup file does not list; no source file of the evidence chain (`evidence/`) uses an escape hatch (`sorry`, `admit`, `axiom`, `native_decide`, `unsafe`,
-  `implemented_by`, `extern`); the Lean build of that chain succeeds; and the kernel's axiom report for each of its theorems lists only Lean's three
-  standard axioms (the check does not cover `docs/mass-gap/formal`). **[paper]** (read from `evidence/tools/check.sh` and
-  `tools/check-pin.sh`; the pin check and the evidence build pass at the release commit, II.7) (claim I.8b)
-* **The arsenal has the same shape at small size** (II.6): its lint is the linter, and "Mathlib v4.34.0 only, no escape hatch, an
-  open part only as a named R136a1 hypothesis" is its passing condition. **[paper]** (claim I.8c)
-* **The root chain pins one way.** Gravity holds a pinned copy of DMP (`vendor/dmp/PIN`, hash checked by `tools/check-pin.sh`);
-  DMP depends on nothing and pins nothing (`vendor/dmp/00-preamble.md`). That the two keep each other honest is the author's reading
-  of the shared node. **[paper]** for the pin; **[reading]** for the mutual honesty (claim I.8d)
-
-**Three care points.**
-
-1. **A linter certifies form, not content.** A passing result says that every statement is soundly constructed from what DMP
-   states. It does not say that DMP's sentences describe the world. **[paper]** (claim I.8e)
-2. **A linter cannot certify its own passing condition.** A consistent theory strong enough for arithmetic cannot prove its own
-   consistency **[classical]** (Goedel II; claim I.8h). That is why the two nodes must keep each other honest. It is also why one assumption is
-   left that neither can lint: that the system runs. This is the assumption Part III calls O1 in each card's terms. **[reading]** for
-   the identification (claim I.8f)
-3. **"Universally readable" holds for the form.** The evidence is plain text and Lean, checkable by anyone with the pinned
-   toolchain. "Universal superset" is a reading. **[reading]** (claim I.8g)
-
-**What Part II makes of it.** The linter's rule set is the form layer (II.1 to II.5) plus the arsenal's gate (II.6). The
-unlintable assumption is the open step of each card (Part III, section 4).
-
-**The one-box test.** The test itself, a box with one command at one shared gate and a marker per step, is Part II's one-box test (II.4).
-
----
-
-## I.9 Excision at transmission
-
-**DMP.** A part answered **R136a1** is outside the system, whatever it is. Nothing else needs to be proved about it. In DMP this is
-always a DMP-complete answer: it is the other option an act collapses back on.
-
-**Reading (I.9).** I.4 said that a contradiction is excised at once and leaves only "it does not exist". The author sharpens the
-statement, and the operative word is *transmitted*. The claim is about what crosses the gate, not about what a sender may compose. A
-wrong act never crosses: at the gate it is answered R136a1, so it is outside. What stays inside is only its **remnant tail**: the
-record that an excision happened. IM's verifier counts every refusal without content, as the notes state (DMP chapter 04, the refusal log), so the
-count is the assertion of the excision and carries none of the excised information. **[reading]** (claim I.9a)
-
-**The exact counterpart.** In the arsenal the same move is `Arsenal.R136a1`: the part is named and stays outside every proof, and
-only the name remains. It is the statement taken as a named hypothesis, never an axiom, so every declaration still rests on the
-three standard axioms. **[Lean]** (`im` repository, `arsenal/Arsenal/R136a1.lean`, `R136a1`, `R136a1.out`) (claim II.6.2)
-
-**Care point.** The gate excises what its checks can recognise as wrong at that tick. An act whose wrongness becomes recognisable
-only later is excised at the later tick, with its tail recorded then. A later excision is a new act, never a revision of the earlier
-tick. **[reading]** (claim I.9c). Part III, section 5, gives the logical side: excision decided per tick, and why the Clay
-statements cannot be excised as a class.
-
----
-
-## I.10 Rights tied to identity
-
-**DMP.** The author's rule for security: tie rights to identity. If an act is allowed only when it is permissible, and no wrong
-information can be transmitted (I.9), then the identity has total freedom *inside* and is secure in its existence.
-
-**Reading (I.10).** "Total freedom inside, secure at the gate" is capability security, as IM builds it, and it has one more reading.
-Asymptotic freedom in Yang-Mills is free at short distance, where the coupling vanishes in the ultraviolet **[classical]** (Gross-Wilczek 1973; Politzer 1973, recalled; claim I.10g), and bound
-at large distance, where the gap holds. Reading the two together: inside the box the dynamics is free, and the boundary is where it
-is bound. **[reading]** (claim I.10a)
-
-**The exact counterpart.**
-
-* **An act passes only with both witnesses' grants.** A sentence passes the door only when both the security grant and the
-  operational grant carry its kind; one grant alone never passes. **[Lean]** (`im` repository, `proof/Im/Laws.lean`,
-  `Im.pass_needs_both_grants`, `Im.one_grant_never_passes`) (claim I.10b)
-* **Every sentence of IM's closed grammar keeps every decidable law:** there is no sentence outside the list of 72 shapes, and each shape is
-  lawful (`lawfulB`: legal kind name, kind in the table, wire round-trip); the laws over grants and paths are proved once for all
-  sentences in `Laws.lean` and `Wire.lean`. **[Lean]** (`proof/Im/Closure.lean`, `Im.closure`, `Im.all_shapes_lawful`,
-  `Im.space_size`, `Shape.all_complete`) (claim I.10c)
-* **Behind the door a composition stays lawful.** A network built from nodes that keep the guarantee on what their door lets in
-  keeps it on any input. **[Lean]** (`proof/Im/Compose.lean`, `Im.sound`, `Im.galaxy_robust`) (claim I.10d)
-* **Tokens only attenuate.** An attenuated token's kinds are a subset of its parent's, and a chain of attenuations is the
-  intersection of the root with its caveats, in any order. It holds by construction: attenuation is intersection with a caveat.
-  **[Lean]** (IM, `proof/Im/Attenuate.lean`: `attenuate_sub`, `attenuateAll_eq`, `attenuateAll_perm`; claim I.10e)
-
-**Care points.** (1) "Permissible" is what the grammar and the grants state, so the security is exactly as good as that
-specification. (2) The gate certifies integrity and authority, not the truth of content (I.9 says what happens to what it
-recognises as wrong). (3) The binding of rights to identity is as strong as the custody of the identity's key. **[reading]**
-(claim I.10f)
-
----
-
-## I.11 The arsenal as shared vocabulary
-
-**The rule (the first author's).** What is content-free and used by more than one project is kept once, and used from there.
-
-**Reading (I.11).** The arsenal in the `im` repository (`arsenal/`) is that shared place for results that need Mathlib. It holds
-words that more than one part of this paper uses: `R136a1` for "outside" (I.9), and the pieces that are not about any one problem.
-A project that needs a word from it **imports** the word. It never copies it. If a result could be moved there, it moves, and the
-project uses it from there as a dependency. **[paper]** (a project rule, and how it is done today: `arsenal/README.md`; claims
-II.6.1, II.6.4). The tool that guards it, and what it checks, are in II.6.
-
-**A second reading of the letters.** IM is the Interstellar Medium, and that name stays. Its letters also read as **Identity
-Multiplication**, and the second reading is true of what the arsenal holds: the rotation API is multiplication by a number on the
-unit circle, which keeps the norm and moves only the phase; on the circle the carried mass never changes **[Lean]** (II.0c,
-`cmach_lossless`), and the encoder's root is the same norm read from both sides **[Lean]** (II.2). The first author reads a second reading
-that carries a meaning as itself a uniqueness, one that survives being contained **[reading]** (claim I.11b). He also reads IM as
-a step up the DAG: the edge is real in the build (this project requires IM's arsenal, pinned by commit, and the package graph is
-acyclic). His argument for why the link is a rotation runs in three steps. A DB lets only existence cross, and the encoder's gate
-keeps the norm: both sides certify the same norm **[Lean]** (`Encoder.root`; any norm-preserving map gives an encoder) and
-**[reading]** for "a DB allows only this gate" (I.3). A linear gate on a line (one complex dimension) that keeps every norm is multiplication by a unit number, a
-rotation **[Lean]** (II.0f; in more dimensions the norm-keeping maps are the unitary group, and that the link is a rotation there is the
-first author's reading). So the link to another node, which has to pass a DB, is a rotation: the ultimate gate in the first author's words
-**[reading]** (claim I.11c). The cost does not sit in the gate. In the first author's words it sits in the provability of a common root,
-and that is exact: the part of the state that provably shares its root with the other side is the reflection coefficient c, and the
-remainder, ||psi - conj(c) psi'||^2 = ||psi||^2 (1 - |c|^2), is exactly what the step pays **[Lean]** (`szego_remainder`). At |c| = 1
-the root is fully shared and the crossing is free. On the reals the circle is just 1 and -1, so ordinary multiplication is a cost
-times an identity-keeping sign **[Lean]** (II.0g): ordinary multiplication is IM as well, in the first author's words **[reading]**
-(claim I.11d).
 
 ---
 
@@ -370,19 +224,19 @@ times an identity-keeping sign **[Lean]** (II.0g): ordinary multiplication is IM
 | Act carrier | passes an act without loss | a conserved quantity | Gauss law mod 2 | II.14 |
 | ODP: pressing | rehearse until the hash matches | construct up to one finite check | a column sum below 1 at one scale | II.12 |
 | ODP: minting | produce from the certificate | build everything else | the mass gap from the certificate, in limits; abstract OS reconstruction | II.9, II.10 |
-| WHKs | each part derives the others | no free parameter | dimensional transmutation | Part IV |
+| WHKs | each part derives the others | no free parameter | dimensional transmutation | Part III |
 | Quantum, tick | smallest act, its rate | a rate per step | Doeblin; quantized descent arrives | II.12, II.15 |
 | Existence = non-existence + 1 | always strictly more | a strict inequality | Z_tw < Z; Cantor | II.13 |
 | Contradiction excised | only "it does not exist" remains | refutation | refutation completeness | II.14 |
 | Mass gap | the arrow of causality exists | a clock in the transfer step | spectral gap = decay rate | II.10, II.11 |
 | Existence linter | checks form, says nothing of meaning | passing means soundly constructed from DMP | the pinned check; the arsenal's lint | II.6 |
 | R136a1 | the answer "outside" | excision at transmission, only the remnant tail stays | `R136a1`, a named hypothesis, never an axiom | II.6 |
-| Rights tied to identity | free inside, secure at the gate | capability security | both grants needed; closure; composition | Part III |
+| Rights tied to identity | free inside, secure at the gate | capability security | both grants needed; closure; composition | Part X |
 | Arsenal | shared words, imported never copied | one place for content-free results | `arsenal/` in the `im` repository | II.6 |
 | Box, gate, marker, tick | one command, one shared verdict, one claim per step | the one-box test | a running system with a margin and a marker; correct when the marker agrees with the gate (introduction, "The test in one page") | II.4 |
-| DMP-complete | correct at every tick | runs on DMP (III.4.4, a reading) | `Box.DMPComplete`: the marker agrees with the gate at every tick | II.4 |
+| DMP-complete | correct at every tick | runs on DMP (X.4.4, a reading) | `Box.DMPComplete`: the marker agrees with the gate at every tick | II.4 |
 | Card | one problem, one named open step | the form layer | `API.Problem`: input, open slot, conclusion, proof | II.5 |
 | Ledger, floor | every step pays; the least it pays | the cost of an act | the ledger law mass(step x) <= e^delta fac(x) mass(x); the contraction class | II.1, II.3 |
-| O1 | the Yang-Mills open step | the decay edge of the one assumption | `FineOneBox`, one box of fixed physical size (IV.5.9) | IV.5 |
+| O1 | the Yang-Mills open step | the decay edge of the one assumption | `FineOneBox`, one box of fixed physical size (III.5.9) | III.5 |
 
 Part II states each counterpart once, in its most general form.

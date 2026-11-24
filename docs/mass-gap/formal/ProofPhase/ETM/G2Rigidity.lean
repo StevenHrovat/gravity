@@ -18,7 +18,7 @@ through their normal invariant `η : E → ZMod 2`.
 * `g2_rigid_iff_complete`: G2 is rigid exactly when its box is DMP-complete. The surgery input (the two-element structure set
   and the Kreck-Lueck criterion, which together say "G2 is rigid iff `η` is onto") is one named `External` slot: surgery theory
   is not in Mathlib.
-* `g2_rigid_of_one_assumption`: if the G2 box shares the gate with a certified one box (the one assumption, III.64, as a named
+* `g2_rigid_of_one_assumption`: if the G2 box shares the gate with a certified one box (the one assumption, X.64, as a named
   `OpenStep`), G2 is rigid. The DMP corollary is the next layer's named hypothesis, never an axiom.
 * `g2_not_shared_of_not_rigid`: a computation showing that G2 is not rigid would refute the sharing for G2: the one assumption is
   falsifiable here.
@@ -50,7 +50,7 @@ theorem g2_rigid_iff_complete {E : Type} (η : E → ZMod 2) {G2Rigid : Prop} (h
 /-- **G2 rigid from the one assumption.** If the G2 box shares the gate with a certified one box, G2 is rigid. -/
 theorem g2_rigid_of_one_assumption {E : Type} (η : E → ZMod 2) {G2Rigid : Prop} (hsurg : G2Surgery E η G2Rigid)
     (B : Arsenal.Rotation.Box.{w}) {x₀ : B.X} (hB : B.DMPComplete x₀)
-    (hX64 : API.OpenStep "III.64: the one assumption; the G2 box shares the gate with the certified one box"
+    (hX64 : API.OpenStep "X.64: the one assumption; the G2 box shares the gate with the certified one box"
       (Arsenal.Rotation.Box.SharedGate B x₀ (fun _ : Unit => (g2Data E η).box) (fun _ => (0 : ℕ)))) :
     G2Rigid :=
   hsurg.2 ((Arsenal.Rotation.twoPoint_rigid_iff E η).1 ((g2Data E η).rigid_of_shared B hB hX64))
@@ -58,7 +58,7 @@ theorem g2_rigid_of_one_assumption {E : Type} (η : E → ZMod 2) {G2Rigid : Pro
 /-- The same, with the certified one box a running system of this repository (`Box.toArsenal`). -/
 theorem g2_rigid_of_one_assumption' {δ : ℝ} {E : Type} (η : E → ZMod 2) {G2Rigid : Prop} (hsurg : G2Surgery E η G2Rigid)
     (B : Box.{w} δ) {x₀ : B.S.X} (hB : B.DMPComplete x₀)
-    (hX64 : API.OpenStep "III.64: the one assumption; the G2 box shares the gate with the certified one box"
+    (hX64 : API.OpenStep "X.64: the one assumption; the G2 box shares the gate with the certified one box"
       (Arsenal.Rotation.Box.SharedGate B.toArsenal x₀ (fun _ : Unit => (g2Data E η).box) (fun _ => (0 : ℕ)))) :
     G2Rigid :=
   g2_rigid_of_one_assumption η hsurg B.toArsenal ((B.toArsenal_dmpComplete x₀).2 hB) hX64
