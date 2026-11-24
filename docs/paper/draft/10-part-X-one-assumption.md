@@ -4,7 +4,7 @@
 
 ## X.0 How to read this part
 
-Parts III to IX each end at a **card**: an input, a proved structure, and exactly one named open step. This part puts the cards
+Parts III to IX each end at their **cards** and their box: an input, a proved structure, and one named open step per card. This part puts the cards
 side by side. It says what they share, why each still has one open step, and why that step cannot be removed by a trick.
 
 Nothing here solves a problem. Every section below ends in an open statement, and each open statement is the same one that the
@@ -43,7 +43,7 @@ This part calls the two together the **container**: a containing existence with 
   p = Z_tw/(Z_tw + Z_0) is below one half **[Lean]** (`Flip/Strict.lean`, `su2_Ztw_lt_Z`; III.1.6; for SU(2) on the three-dimensional lattice, every even time extent and spatial background).
 * *Free, from below.* 0 < p needs 0 < Z_tw, which the Lean statement carries as a hypothesis (`Crossover/HandOver.lean`,
   `su2_handover`; III.3.1). The positivity is proved in Lean for the general SU(N) twisted partition function (`General/SUNTwistWilson.lean`,
-  `sunZtw_pos`; III.1.6), and with it the hand-over holds there unconditionally (`sun_handover`, claim III.3.1b); that the object
+  `sunZtw_pos`; III.3), and with it the hand-over holds there unconditionally (`sun_handover`, claim III.3.1b); that the object
   of `su2_handover` is the k = 1 case of that package is the identification `General/SUNTwistInstances.lean` names. Keeping p bounded away from 0 as the
   box grows is the open step (section 4).
 
@@ -56,7 +56,7 @@ The strict facts are cross-references to III.1.6, III.1.7 and III.3.1 (claim X.5
 | Yang-Mills | the hand-over inequality for every outside, or for every *running* outside | named hypotheses `HandoverSide`, `HandoverSideRunning` **[open]**; their relations **[Lean]** |
 | GRH | Weil's form positive for every square-integrable test function on the support (the one-box certificate is "for every f") | at supports up to a = 0.69: **[certified]** for the enclosures, **[paper]** for the analytic estimates; the abstract step **[Lean]** |
 | NP vs coNP | every assignment: a refutation certifies that every assignment falsifies some clause | **[reading]** on **[Lean]** refutation completeness |
-| Settling machine | total freedom inside, one verified gate | **[reading]** (Part XI) |
+| Settling machine | total freedom inside, one verified gate | **[reading]** (the Outlook) |
 
 * **Yang-Mills.** `HandoverSide` says: for every cutoff, every nontrivial sector and every end-face outside, the hand-over slab
   has the electric side at most sqrt 2 - 1 of the neutral one. It is the chain form of O1 at mu = 1 + sqrt 2 at the single length L_h, the hand-over side **[Lean]**
@@ -227,7 +227,7 @@ are not restated here (claim X.27).
 | **Proved for one unit** | max(F_tw, F_e) >= 0.881 per box (III.3.1) **[Lean]** | positivity in finite models (IV.1) **[Lean]**; each prime step numerically (IV.3.2) **[numerical]** | duality floor (e + 1)/2 for unit thresholds (V.4.5) **[Lean]**; every refutation crosses (V.4.3) **[Lean]** |
 | **Why the unit does not carry** | 0.881 covers a chain (two channels), not a grid; path entropy log mu_4 beats it in d >= 3 (III.4.1, III.5.4) **[Lean]** | only the full set of primes is positive; place-by-place and two-term assembly fail (IV.3.5, IV.3.7, IV.3.8) **[Lean]** + **[numerical]** | weighted lines are cheap in both channels; one line aggregates its units (V.4.4, V.4.6) **[Lean]** |
 | **What no duality supplies** | 't Hooft's relation forces nothing for n >= 2 sectors (III.4.4) **[Lean]** | the functional equation allows off-line pairs (IV.2.1, IV.2.2) **[Lean]** + **[classical]** | the duality floor fails for weighted lines (V.4.6) **[Lean]** |
-| **The quantifier that makes it hard** | every outside (worst case, not typical) | every support, with a margin that collapses with the support (1.5e-9 at 0.60, 6.4e-13 at 0.69; IV.3) | every refutation, of a structureless formula |
+| **The quantifier that makes it hard** | every outside (worst case, not typical) | every support, with a margin that collapses with the support (1.5e-9 at 0.60, 6.4e-13 at 0.69; IV.1) | every refutation, of a structureless formula |
 | **What measurement says** | passes centrally at L = 6, beta 2.3; not certified (III.7.1) **[numerical]** | holds at every step computed, by exact cancellation (IV.3.2) **[numerical]** | no measurement bears on a lower bound |
 | **The "it runs" form** | the positive norm is free (RP); the margin eta < 1 is missing | the margin is not needed; the positive norm (Weil) is missing | the "it runs" object is the dag-like protocol; its size is missing |
 
@@ -312,7 +312,7 @@ Care point: the start forces the floor at the start only; keeping it at every sc
 ### X.4.4 The paper's one assumption
 
 This is the one place where the paper states what it assumes. Every result that uses it carries the mark **[conditional]**. The
-project's release criterion (`../OUTLINE.md`) asks for it proved; it is not proved here.
+project's release criterion (IX.0) asks for it proved; it is not proved here.
 
 **The assumption, as a schema.** It has no single formal statement. Its instances are named hypotheses in Lean, each **[open]**
 unless said otherwise:
@@ -331,7 +331,7 @@ unless said otherwise:
 These are different statements; what they share is the form of the step, each saying that a box is DMP-complete. Two abstract
 bounds on one sequence of tick factors, which the paper reads as GRH's edge and O1's edge, are proved independent (section 2,
 `transport_not_decay`, `decay_not_transport`); no theorem relates the instances to one another. Navier-Stokes is not an instance:
-its model box is not DMP-complete (`ns_not_complete`, VI.6); nor is the GU card's open step, which is not a statement about its box
+its model box is not DMP-complete (`ns_not_complete`, VI.8); nor is the GU card's open step, which is not a statement about its box
 (IX.8) **[paper]** (claim X.64).
 
 **The first author's reading of it: the established process.** The process from G0 to the hand-over, the ODP (I.5), is one
@@ -361,7 +361,8 @@ derived from O1 or from any other part of the assumption, and without the assump
 certified as soon as it works on the box. In the one-box test (II.4) the induction is a theorem: a marker correct at the start and
 kept correct by one step at the shared gate is correct at every tick **[Lean]** (claim X.68). The scale version is a theorem *from*
 the one assumption: if every scale's box is rebuilt from the one box through its gate, a box certified at one scale is correct at
-every scale, and one scale with a wrong marker refutes the sharing **[Lean, conditional]** on X.64, carried as a named hypothesis (claim X.68a).
+every scale, and one scale with a wrong marker refutes the sharing **[Lean]** (from `SharedGate`, the instance of the one assumption, carried as
+a named hypothesis); the conclusion is **[conditional]** on it (claim X.68a).
 Sharing the gate alone is free; the content of X.64 is that the marker travels with it (claim X.68b). The first author reads the
 one assumption as a leak axiom: anything within a DB shares a universal truth, so a subset cannot attach without it. For the gate
 this is a theorem: every running system maps in exactly one way into the universal one, and a subsystem attached by inclusion shares
@@ -383,7 +384,7 @@ So the largest start built from SU(N) that a description can certify is the poin
 norm-preserving maps of C^N form SU(N), and every compact Lie group sits inside some U(N) (Peter-Weyl) **[classical]**. In the
 first author's words SU(N) is the language the encoder speaks, and every other compact group speaks inside it (claim X.69a). Speaking (a
 valid encoder, the shared gate) and being understood (a correct marker) give DMP-completeness at every scale **[Lean]**
-(`scale_certificate`; **[Lean, conditional]** on X.64; claim X.69b). So anything that rotates correctly from the rigid start is correct if DMP is correct:
+(`scale_certificate`; **[Lean]** from `SharedGate`, so **[conditional]** on the one assumption; claim X.69b). So anything that rotates correctly from the rigid start is correct if DMP is correct:
 **[conditional]** on X.64 (claim X.69c). Care points: this covers SU(N), not every conceivable start; and "other compact groups do not
 survive rotation" is open. If surviving means rigidity, Sp(2) = Spin(5) and G2 pass the rational test that excludes SU(N), N >= 4,
 and their rigidity is a separate question (Sp(2): strongly rigid, A.5j; G2: open, A.5r). The first author's further reading settles what matters: only U(1) carries content across
@@ -414,7 +415,7 @@ can be described as existing in the containing DB. Three things stand behind it,
 per scale (VI.3.4, **[Lean]** in the model). In the first author's reading nothing more needs or can be said than that it does
 not run, and blowup is the expected consequence **[reading]** (VI.7e). This makes the framework falsifiable: a proof of global
 regularity would refute the reading, and a certified blowup profile would agree with it (VI.5.1, **[open]**). The reading was made
-after the posted blowup claims (VI.7), so it is an expectation, not a prediction made before them.
+after the posted blowup claims (VI.6), so it is an expectation, not a prediction made before them.
 
 **What follows under it.** If the process is accepted, every start is oriented, that is directed through `{infinity, 2, 3}`:
 
@@ -588,5 +589,5 @@ Dirichlet, strong proof systems) is exactly the open step of each problem **[rea
 4. The dichotomy of II.3 says what would follow: with a floor, a settling bound; without it, no decision procedure (section 4.3).
 
 When a step closes, the change to the paper is local: the status in `../CLAIMS.md` moves from open to Lean (or paper), the section's
-verdict line changes, one cell of the table in section 4.1 changes, and the abstract's list of what remains shrinks by one item. No other
+verdict line changes, one cell of the table in section 4.1 changes, and the introduction's list of what remains shrinks by one item. No other
 section needs to move. That is the test of the paper's structure.

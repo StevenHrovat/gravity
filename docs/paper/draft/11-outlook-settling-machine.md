@@ -1,6 +1,6 @@
 # Outlook. A settling machine: +AI, the first author's concept of a DMP-native general intelligence
 
-*Outlook, not a result. This appendix records a concept by the first author, so that it is on paper and tied to the one theorem
+*Outlook, not a result. This Outlook records a concept by the first author, so that it is on paper and tied to the one theorem
 of this work it depends on. Nothing in it is built, trained or tested. Claim labels (XI.n) are listed in `../CLAIMS.md`.*
 
 ## XI.1 The concept, in the first author's terms
@@ -39,11 +39,11 @@ definition (claim XI.1d).
 ## XI.2 The critical link to this work
 
 The concept depends on one property: that the inside settles to a balanced output within the tick. This is exactly the decidable
-half of the Existence Turing Machine (Part II and `docs/unified/ETM.md`).
+half of the universal machine (II.3; `docs/unified/ETM.md`).
 
 * **Settling is guaranteed when every internal step contracts by a fixed factor**, i.e. pays a cost above the floor. The state is then within
   epsilon of balance after an explicit, computable number of steps (one factor theta with e^delta theta < 1 for every state; the
-  number depends on the starting mass). **[Lean]** `ProofPhase/ETM/Machine.lean`:
+  number depends on the starting mass). **[Lean]** `ETM/Machine.lean`:
   `reaches_of_contracting`, `balanceBound_ge`; for positive factors a contracting step is a cost above the floor, `contracting_iff_costAboveFloor`.
 * **Without a contraction, no procedure decides settling in general.** **[Lean]** `etm_balance_undecidable`, from Mathlib's
   halting theorem.
@@ -52,7 +52,7 @@ half of the Existence Turing Machine (Part II and `docs/unified/ETM.md`).
 
 * **Changes that are maps of running systems** (relabelling, restricting to a part the run never leaves, coarse-graining by a
   relation that the step, the factor and the mass respect) keep the ledger exactly. Step, factor and carried amount commute with the map. **[Lean]**
-  `ProofPhase/ETM/RunSys.lean`: `Hom`, `Hom.iterate_comm`, `sub`, `quot`.
+  `ETM/RunSys.lean`: `Hom`, `Hom.iterate_comm`, `sub`, `quot`.
 * **Changes that keep every factor at most theta < 1** (any new layout or coupling inside the contracting class) keep the settle
   bound (for the same starting mass), whatever else they change. **[Lean]** `RunSys.contract`, `reaches_of_contracting`.
 

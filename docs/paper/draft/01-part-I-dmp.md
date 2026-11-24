@@ -78,7 +78,7 @@ about a DB carry most of the weight of this paper:
 1. Only existence crosses a DB; information that would cross is lost.
 2. Every layer has its own Duality, so the inside of a DB is a system of its own.
 3. Anything that crosses a DB is re-attached to a new G0, and "anything not compatible with the encoder in the DB is lost"
-   (the author, 2026-11-23).
+  
 
 **Reading (I.3).** A DB is a box together with its outside. "Only existence crosses" says the box sees its outside only through a
 boundary condition. "What the encoder cannot carry is lost" says the passage across the boundary is a **lossy channel**: a
@@ -135,7 +135,7 @@ In the protocol this happens in two phases.
 * **Pressing.** A configuration is run as a rehearsal until its definition of existence is complete and its configuration hash
   matches. A pressed system is "out of spec", never "proven": the pressing is a rehearsal of the real rule, not a weaker form of it.
 * **Minting.** Only a configuration that has passed its pressing is minted, and minting goes together with the **WHKs**, the White
-  Hole Keys: "the entire content of creation, from which each part can derive the other" (the author, 2026-11-23). In DMP these are
+  Hole Keys: "the entire content of creation, from which each part can derive the other". In DMP these are
   the naked duality, the quantum and the tick, together with the gap they establish.
 
 **Reading (I.5).** Pressing is the scale-by-scale construction of a theory until one finite check passes; minting is the mechanical
@@ -166,7 +166,7 @@ rate is already part of any well constructed box." The quantum and the tick also
 act is a universal error bar."
 
 **Reading (I.6).** That the quantum and the tick give a floor is a **[reading]**; two precise statements stand behind it, each
-   with its own mark.
+with its own mark.
 
 1. **A quantized measure arrives; a real one may not.** A process that lowers a natural number at every step stops after finitely
    many steps. A process that lowers a real number at every step may approach a limit forever (the witness is x -> (x + 1)/2 started at 2). **[Lean]** (`Native/Method.lean`,
@@ -212,7 +212,7 @@ no intrinsic tick. **[reading]** on the classical spectral fact of II.10.
 
 ---
 
-## I.12 The vocabulary in one table
+## I.8 The vocabulary in one table
 
 | DMP word | Plain meaning | Reading | Precise counterpart | Part II |
 |---|---|---|---|---|
@@ -238,5 +238,10 @@ no intrinsic tick. **[reading]** on the classical spectral fact of II.10.
 | Card | one problem, one named open step | the form layer | `API.Problem`: input, open slot, conclusion, proof | II.5 |
 | Ledger, floor | every step pays; the least it pays | the cost of an act | the ledger law mass(step x) <= e^delta fac(x) mass(x); the contraction class | II.1, II.3 |
 | O1 | the Yang-Mills open step | the decay edge of the one assumption | `FineOneBox`, one box of fixed physical size (III.5.9) | III.5 |
+| IM | the Interstellar Medium: the medium every DMP system talks through, and the repository (StevenHrovat/im) that holds its language and the arsenal | DMP's interface layer | the arsenal's Lean modules (`Arsenal.*`), imported at a pinned commit | II.6 |
+| CMOS | a system built under DMP; each running system is one instance of it | a running system | a running system in the sense of II.3 | II.3 |
+| Milky Way | the one interface of a system to its outside: everything that leaves passes it | the gate of a whole system | the shared gate of the one-box test, at the scale of a system | II.4 |
+| GG | the verified protocol between clusters of systems | an act that leaves through the gate | (no counterpart; used only in the Outlook) | none |
+| TTL | time to live: how long a certified act stays valid | freshness | (no counterpart; used only in the Outlook) | none |
 
 Part II states each counterpart once, in its most general form.

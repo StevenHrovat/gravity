@@ -164,7 +164,8 @@ DMP and Gravity are the two repositories of the root chain. The pin runs one way
 pinned copy of DMP, and the pin check turns any change of it into a failing check (`vendor/dmp/PIN`, `tools/check-pin.sh`); DMP
 depends on nothing and pins nothing (`vendor/dmp/00-preamble.md`). So every pinned existence is a claim the gate can refute
 **[paper]** (claim R.1d). A literal circle of hashes cannot be constructed: a file that contains its own hash, or two
-files that contain each other's current hashes, is a fixed point of sha256, which no one can compute **[classical]** (by the hash's
+files that contain each other's current hashes, is a fixed point of sha256, which no one is known to be able to compute: the standard, well-tested assumption on the hash, not a
+theorem (II.3) **[classical]** for the assumption (by the hash's
 design) (claim X.51). The first author reads the root chain as closing through time instead: each version of Gravity pins an earlier
 version of DMP, and the next version of DMP is written against what Gravity checked, so the chain is a spiral of versions, one tick per
 pin **[reading]** (claim R.1d). Care point: such a circle is consistent only because it never closes at one instant. A pin to the

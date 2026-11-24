@@ -1,7 +1,7 @@
 # Part III. Yang-Mills: the gap mechanism reduces to one box of fixed physical size
 
-*Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/` (the modules of the earlier
-attempt rounds R2 to R4 live under `Attempts/`); notes relative to `docs/mass-gap/weak-coupling/`; the crossover notes are in
+*Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/` (the modules of the earlier
+attempt rounds R2 to R4 live under `docs/mass-gap/formal/Attempts/`); notes relative to `docs/mass-gap/weak-coupling/`; the crossover notes are in
 `proof-phase/c9a-crossover/`. The full chain with all 51 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (III.n) are listed in
 `../CLAIMS.md`.*
 
@@ -55,7 +55,7 @@ It leaves four things open.
   project's own objects. For this project's own objects, rotation invariance cannot yet be stated, since the lattice has only the
   hypercubic group **[open]**.
 * **(O4) Other groups**: the Lean setting has a tuning for SU(2) only. The SU(N) package and the audit of what generalises are
-  partial (`ProofPhase/General/`, `proof-phase/GENERALISE-AUDIT.md`).
+  partial (`General/`, `proof-phase/GENERALISE-AUDIT.md`).
 
 The title's "one box" is exact for the gap mechanism (O1). It is not true of the Clay statement as a whole, which also needs O2 to
 O4.
@@ -64,7 +64,7 @@ O4.
 showed that the per-box rate 0.881 suffices for a chain of boxes but not for a grid (III.4), and that it suffices for a grid exactly
 when the influence runs in tubes, which needs a larger electric cost per box (III.5). O1 is one statement about one box at one scale.
 
-**Convention for beta.** In the Lean, beta = 2/g^2: the plaquette weight is exp(beta Re tr U_p) (`ProofPhase/Assembly.lean`), and the
+**Convention for beta.** In the Lean, beta = 2/g^2: the plaquette weight is exp(beta Re tr U_p) (`Assembly.lean`), and the
 one-loop slope is 11/(6 pi^2). The notes behind III.5.5, III.6 and III.9 (the floor e^{-2 beta N}, S >= pi^2 beta = 4 pi^2/g^2,
 beta_eff = 4/g^2 in `RDOEBLIN.md`) were written with the standard beta = 4/g^2, the weight exp((beta/2) tr U_p). Where this part
 writes a bare beta in a formula it says which one. The simulations of III.7 (beta = 2.3 and 3.5) use the standard beta = 4/g^2: their SU(2)
@@ -81,10 +81,10 @@ from those two facts reflection positivity follows. Everything in this section i
 | III.1.1 | Wilson measure on the 4D torus for SU(2) and general compact G | **[Lean]** | `AreaLaw/ConcreteSUn.lean`, `OneScale/` |
 | III.1.2 | Reflection positivity, site and link | **[Lean]** | `Positivity/Wilson.lean` (`wilson_rp`), `Positivity/LinkWilson.lean`, `Positivity/Concrete.lean` (`wilson_rp_SU2`) |
 | III.1.3 | Temporal-gauge transfer kernel; centre flip of one row is a symmetry (`top_parity`, any probability space); sector identity Z_e = (Z + Z_tw)/2 (`twist_centre_transform`, finite configuration spaces; for the SU(2) measure it is the definition of `elecF`, `Flip/Floor.lean`) | **[Lean]** (identity definitional) | `Attempts/R4/LayerKernel.lean`, `LayerSector.lean` |
-| III.1.4 | 't Hooft duality: the lattice rotation maps the temporal twist to the spatial twist on the symmetric box | **[Lean]** | `ProofPhase/RouteB/Duality.lean`, `tHooft_rotation` |
-| III.1.5 | A good blocking: centre-covariant and reflection-positive at every level | **[Lean]**; non-trivial limit at fixed L1 **[paper]** | `ProofPhase/RouteA/Blocking.lean`, `goodBlocking_rp`; `proof-phase/ws1-routeA/NOTE.md` |
-| III.1.6 | Strict flip bound Z_tw < Z for every beta != 0, every box, every twist position ("existence = non-existence + 1", I.7) | **[Lean]** | `ProofPhase/Flip/Strict.lean`, `su2_Ztw_lt_Z` |
-| III.1.7 | The one-step transfer kernel at fixed cross-section is strictly positive | **[Lean]** | `ProofPhase/Flip/Bound.lean`, `stepK_pos` |
+| III.1.4 | 't Hooft duality: the lattice rotation maps the temporal twist to the spatial twist on the symmetric box | **[Lean]** | `RouteB/Duality.lean`, `tHooft_rotation` |
+| III.1.5 | A good blocking: centre-covariant and reflection-positive at every level | **[Lean]**; non-trivial limit at fixed L1 **[paper]** | `RouteA/Blocking.lean`, `goodBlocking_rp`; `proof-phase/ws1-routeA/NOTE.md` |
+| III.1.6 | Strict flip bound Z_tw < Z for every beta != 0, every box, every twist position ("existence = non-existence + 1", I.7) | **[Lean]** | `Flip/Strict.lean`, `su2_Ztw_lt_Z` |
+| III.1.7 | The one-step transfer kernel at fixed cross-section is strictly positive | **[Lean]** | `Flip/Bound.lean`, `stepK_pos` |
 
 ## III.2 The minting half: from a certificate to the gap
 
@@ -96,14 +96,14 @@ minting half, and it is done.
 |---|---|---|---|
 | III.2.1 | Dobrushin uniqueness with exponential weights; D' gives decay of block observables at one rate (abstract Gibbs systems) | **[Lean]** | `Attempts/R3/TailDecay.lean` (`theoremA_w`), `Attempts/R3/Robust.lean` (`gap_of_localFactorsW`) |
 | III.2.2 | Block decay converted to physical units (Corollary B) | **[Lean]** | `OneScale/CorollaryB.lean`, `corollaryB_lattice` |
-| III.2.3 | OS route: a windowed block gap gives MassGapLoc and the transfer operator's gap on the reconstructed space | **[Lean]** | `ProofPhase/OS/GapLoc.lean` (`massGapLoc_of_UVTVBlockGap`), `ProofPhase/M1/UVTVOS.lean` (`gap_of_RP`) |
-| III.2.4 | The top-level assembly: OpenPieces implies MassGapLoc, LimitRP and NonTrivial (NonTrivial is itself a field of OpenPieces, so it is an output only trivially); reflection positivity of the limit is proved, not assumed | **[Lean]** | `ProofPhase/Torus/Top.lean` (`yang_mills_assembly`), `ProofPhase/Assembly.lean` (`OpenPieces`) |
-| III.2.5 | The gap in both orders of limits (torus route) | **[Lean]** | `ProofPhase/Torus/Top.lean` (`yang_mills_assembly_torus`); `ProofPhase/Existence/Bridge.lean` (`bothOrders_of_torusDecay`) |
-| III.2.6 | Non-triviality of the hypotheses: pure noise and every bounded coupling fail OpenPieces | **[Lean]** | `ProofPhase/Assembly.lean`, `not_trivial` |
-| III.2.7 | MassGapLoc implies a spectral gap of the continuum Hamiltonian (needs density of local vectors and the reconstruction) | **[paper]**; spectral bridge **[Lean]** | `ProofPhase/Bridge/Spectral.lean`, `ProofPhase/Bridge/OSLink.lean` |
+| III.2.3 | OS route: a windowed block gap gives MassGapLoc and the transfer operator's gap on the reconstructed space | **[Lean]** | `OS/GapLoc.lean` (`massGapLoc_of_UVTVBlockGap`), `M1/UVTVOS.lean` (`gap_of_RP`) |
+| III.2.4 | The top-level assembly: OpenPieces implies MassGapLoc, LimitRP and NonTrivial (NonTrivial is itself a field of OpenPieces, so it is an output only trivially); reflection positivity of the limit is proved, not assumed | **[Lean]** | `Torus/Top.lean` (`yang_mills_assembly`), `Assembly.lean` (`OpenPieces`) |
+| III.2.5 | The gap in both orders of limits (torus route) | **[Lean]** | `Torus/Top.lean` (`yang_mills_assembly_torus`); `Existence/Bridge.lean` (`bothOrders_of_torusDecay`) |
+| III.2.6 | Non-triviality of the hypotheses: pure noise and every bounded coupling fail OpenPieces | **[Lean]** | `Assembly.lean`, `not_trivial` |
+| III.2.7 | MassGapLoc implies a spectral gap of the continuum Hamiltonian (needs density of local vectors and the reconstruction) | **[paper]**; spectral bridge **[Lean]** | `Bridge/Spectral.lean`, `Bridge/OSLink.lean` |
 | III.2.8 | Strong-coupling gap for any compact group (widest window 18 tanh(n beta) < 1) | **[Lean]** / **[paper]** | `OneScale/SingleLink.lean` |
 
-**The stated inputs.** `OpenPieces` (`ProofPhase/Assembly.lean`) consists of the line of constant physics `OnLCP` (resolution,
+**The stated inputs.** `OpenPieces` (`Assembly.lean`) consists of the line of constant physics `OnLCP` (resolution,
 one-loop running, scheme clause), non-triviality `NonTrivial`, and a route through the crossover (for the torus form
 `BlockedTorusRoute`: `H1Local`, `LimitDprime`, `ObsTransferPhys`). In the one-box form (III.5.9) the gap needs only the resolution
 clause and `FineOneBox`; `NonTrivial` and the running and scheme clauses are separate hypotheses that identify the family as
@@ -123,8 +123,8 @@ This section collects what holds for every box, and what carries it along a line
 **A strict sign gives a rate (II.13).** By the strict flip bound (III.1.6) and 't Hooft's duality F_e = -log tanh(F_tw/2), at every box
 size max(F_tw, F_e) >= log(1 + sqrt 2) = 0.881. Rarity's rate is F_tw, the free energy of a forced centre sheet; disorder's rate is
 F_e, the per-box decay of a centre-charged signal. They cannot both be small. **[Lean]** (`su2_handover`; hypotheses beta != 0,
-even time extent, and 0 < Z_tw). For the SU(N) twisted Wilson partition functions the rate holds with no further hypothesis, for every
-N >= 2 and every nontrivial sector, since there 0 < Z_tw < Z is proved **[Lean]** (`General/SUNHandOver.lean`, `sun_handover`, from
+even time extent, and 0 < Z_tw). For the SU(N) twisted Wilson partition functions the rate holds with no hypothesis on Z_tw, for every N >= 2, every nontrivial
+sector, beta != 0 and even time extent, since there 0 < Z_tw < Z is proved **[Lean]** (`General/SUNHandOver.lean`, `sun_handover`, from
 `sunZtw_pos`, `sunZtw_lt`); that the `Flip` object of `su2_handover` is the k = 1 case of that package is the identification
 `General/SUNTwistInstances.lean` names, not proved (claim III.3.1b).
 
@@ -154,15 +154,15 @@ eps_* for every spacing, the influence at physical distance D is at most exp(-m 
 
 | # | Result | Status | Source |
 |---|---|---|---|
-| III.3.1 | Per-box hand-over rate: max(F_tw, F_e) >= 0.881 at every box size | **[Lean]** (0 < Z_tw a hypothesis) | `ProofPhase/Crossover/HandOver.lean`, `su2_handover` |
-| III.3.1b | The same rate for every SU(N) sector of the twisted Wilson partition functions, unconditionally | **[Lean]** | `ProofPhase/General/SUNHandOver.lean`, `sun_handover` |
-| III.3.2 | A flux-carrying outside forces at least one sheet | **[Lean]** | `ProofPhase/Crossover/FluxRate.lean`, `exists_sheet_of_flux`, `even_card_fluxCells` |
-| III.3.3 | The flux law is the same seen from inside and outside; no sources | **[Lean]** | `ProofPhase/Crossover/Dichotomy.lean`, `cob_restrict_eq_cob_restrict_compl`, `sum_cob_restrict_eq_zero` |
-| III.3.4 | Superadditivity up to the excess terms; the rate multiplies along a chain if F_e(L) > 2C, C bounding the excess act c(kL) on every multiple of L | **[Lean]** (abstract) | `ProofPhase/Crossover/CompositeHTF.lean`, `flux_superadd`, `flux_superadd_iter` |
-| III.3.5 | Uniformity along the chain | **[classical]**; eta^n **[Lean]** | translation invariance; `ProofPhase/Mixing/Chain.lean`, `contracts_kpow` |
-| III.3.6 | A one-box contraction at fixed physical size gives a physical rate (decay at the distances n l_*) | **[Lean]** | `ProofPhase/Crossover/Neighbours.lean`, `phys_rate_of_uniform`; `ProofPhase/Crossover/RDoeblin.lean`, `rdoeblin_physical_decay` |
-| III.3.7 | The doubling law with a fixed loss gives the gap on all larger dyadic boxes | **[Lean]** (implication) | `ProofPhase/Flip/Floor.lean`, `su2_gap_of_doubling_defect` |
-| III.3.8 | Uncontained sheets weigh nothing (dichotomy part b) | **[Lean]** | `ProofPhase/Crossover/Dichotomy.lean`, `measure_uncontained` |
+| III.3.1 | Per-box hand-over rate: max(F_tw, F_e) >= 0.881 at every box size | **[Lean]** (0 < Z_tw a hypothesis) | `Crossover/HandOver.lean`, `su2_handover` |
+| III.3.1b | The same rate for every SU(N) sector of the twisted Wilson partition functions, unconditionally | **[Lean]** | `General/SUNHandOver.lean`, `sun_handover` |
+| III.3.2 | A flux-carrying outside forces at least one sheet | **[Lean]** | `Crossover/FluxRate.lean`, `exists_sheet_of_flux`, `even_card_fluxCells` |
+| III.3.3 | The flux law is the same seen from inside and outside; no sources | **[Lean]** | `Crossover/Dichotomy.lean`, `cob_restrict_eq_cob_restrict_compl`, `sum_cob_restrict_eq_zero` |
+| III.3.4 | Superadditivity up to the excess terms; the rate multiplies along a chain if F_e(L) > 2C, C bounding the excess act c(kL) on every multiple of L | **[Lean]** (abstract) | `Crossover/CompositeHTF.lean`, `flux_superadd`, `flux_superadd_iter` |
+| III.3.5 | Uniformity along the chain | **[classical]**; eta^n **[Lean]** | translation invariance; `Mixing/Chain.lean`, `contracts_kpow` |
+| III.3.6 | A one-box contraction at fixed physical size gives a physical rate (decay at the distances n l_*) | **[Lean]** | `Crossover/Neighbours.lean`, `phys_rate_of_uniform`; `Crossover/RDoeblin.lean`, `rdoeblin_physical_decay` |
+| III.3.7 | The doubling law with a fixed loss gives the gap on all larger dyadic boxes | **[Lean]** (implication) | `Flip/Floor.lean`, `su2_gap_of_doubling_defect` |
+| III.3.8 | Uncontained sheets weigh nothing (dichotomy part b) | **[Lean]** | `Crossover/Dichotomy.lean`, `measure_uncontained` |
 
 So along a chain, one box at one scale is enough. The question is what a four-dimensional grid of boxes needs.
 
@@ -195,11 +195,11 @@ finite analogue (`weight_fiber_eq`, `weight_fiber_mul_card`); **[paper]** for co
 
 | # | Result | Status | Source |
 |---|---|---|---|
-| III.4.1 | The hand-over keeps a column below one for at most two channels; a grid needs F > log(2d) = 2.08 | **[Lean]** | `ProofPhase/Crossover/Neighbours.lean`, `handover_column_sum_iff`, `column_requirement` |
+| III.4.1 | The hand-over keeps a column below one for at most two channels; a grid needs F > log(2d) = 2.08 | **[Lean]** | `Crossover/Neighbours.lean`, `handover_column_sum_iff`, `column_requirement` |
 | III.4.2 | Doeblin's mass per box goes to zero in the continuum | **[Lean]** (the calculus) + **[paper]** (the floor e^{-C beta L^{d-1}}) | `Neighbours.lean`, `neg_log_one_sub_le`, `doeblin_mass_tendsto_zero` |
-| III.4.3 | A grid needs floor exponent below 0.134 (or 0.22, with the recalled threshold p_c = 0.197); at L_* it is in the tens | **[Lean]** (requirement) + **[paper]** (estimate) | `ProofPhase/Crossover/RDoeblin.lean`, `floor_column_requirement`, `floor_disagreement_requirement`; `RDOEBLIN.md` |
-| III.4.4 | Multi-sector duality forces nothing for n >= 2; the quantitative 't Hooft criterion | **[Lean]** (the relation itself **[paper]**) | `ProofPhase/Crossover/Runs.lean`, `min_le_of_sector_product`, `selfdual_sector_ge_one`, `electric_sum_lt_one_iff` |
-| III.4.5 | A gauge-covariant frame carries no gauge-invariant information | **[Lean]** (finite) + **[paper]** | `ProofPhase/Crossover/CompositeHTF.lean`, `weight_fiber_eq`, `weight_fiber_mul_card`; `HTF.md` |
+| III.4.3 | A grid needs floor exponent below 0.134 (or 0.22, with the recalled threshold p_c = 0.197); at L_* it is in the tens | **[Lean]** (requirement) + **[paper]** (estimate) | `Crossover/RDoeblin.lean`, `floor_column_requirement`, `floor_disagreement_requirement`; `RDOEBLIN.md` |
+| III.4.4 | Multi-sector duality forces nothing for n >= 2; the quantitative 't Hooft criterion | **[Lean]** (the relation itself **[paper]**) | `Crossover/Runs.lean`, `min_le_of_sector_product`, `selfdual_sector_ge_one`, `electric_sum_lt_one_iff` |
+| III.4.5 | A gauge-covariant frame carries no gauge-invariant information | **[Lean]** (finite) + **[paper]** | `Crossover/CompositeHTF.lean`, `weight_fiber_eq`, `weight_fiber_mul_card`; `HTF.md` |
 | III.4.6 | At typical fields the summed boundary influence drops below one at about 7 cells from the boundary (box of about 15 cells) | **[numerical]** (typical, not supremum) | `NEIGHBOURS.md`, 0.2 |
 
 ## III.5 Containment: the requirement moved inside one box
@@ -277,7 +277,7 @@ inside the box but does not lower it to the chain value 0.881.
 
 | # | Result | Status | Source |
 |---|---|---|---|
-| III.5.1a | r < 1, r = (1 - e^{-F_e})/(1 + e^{-F_e}) <= F_e, F_e >= 0 | **[Lean]** | `ProofPhase/Crossover/Containment.lean`, `twist_ratio_eq`, `twist_ratio_le_elecF`, `elecF_nonneg` |
+| III.5.1a | r < 1, r = (1 - e^{-F_e})/(1 + e^{-F_e}) <= F_e, F_e >= 0 | **[Lean]** | `Crossover/Containment.lean`, `twist_ratio_eq`, `twist_ratio_le_elecF`, `elecF_nonneg` |
 | III.5.1b | Small box: F_e = O(g(L)^2) | **[classical]** (recalled) | `CONTAINMENT.md`, 1 |
 | III.5.2a | At fixed cross-section F_e(T) grows without bound | **[Lean]** core + **[classical]** (Jentzsch) + **[paper]** (centre invariance) | `Containment.lean`, `elecF_lower_of_gap`, `exists_elecF_ge`; `CONTAINMENT.md`, 2 |
 | III.5.2b | Cubic boxes: F_e(L) >= 0.881 at some L | **[open]**; near L = 4 at beta 2.3 **[numerical]** | `CONTAINMENT.md`, 2 |
@@ -316,15 +316,15 @@ saturation are disjoint, with a window between them of about 0.18 to at least 1.
 
 | # | Result | Status | Source |
 |---|---|---|---|
-| III.6.1 | Tick-unit floor Z_tw/Z >= e^{-2 beta L^2} (standard beta; e^{-4 beta L^2} with the Lean beta); saturates only for beta L^2 <= 0.42 | **[Lean]** (pointwise weight bound an input) | `ProofPhase/Crossover/Saturation.lean`, `ratio_floor_of_pointwise`, `exp_floor_ge_iff` |
+| III.6.1 | Tick-unit floor Z_tw/Z >= e^{-2 beta L^2} (standard beta; e^{-4 beta L^2} with the Lean beta); saturates only for beta L^2 <= 0.42 | **[Lean]** (pointwise weight bound an input) | `Crossover/Saturation.lean`, `ratio_floor_of_pointwise`, `exp_floor_ge_iff` |
 | III.6.2 | A large electric free energy forces a saturated twist | **[Lean]** | `Saturation.lean`, `twist_ratio_of_elecF` |
 | III.6.3 | Bond-moving: the one-box form localises the interpolation step (Tomboulis) to one box | **[paper]** (sketch); Jensen normalisation **[Lean]** | `SATURATION.md`, 0; `Saturation.lean`, `jensen_normalization` |
 | III.6.4 | Kanazawa's bracket 1/2 < Z^+/Z < 1 (strict as printed, Z^+ = (Z + Z_tw)/2; Kanazawa 2009, Eq. 33) is the same statement as III.1.6, 0 < Z_tw < Z | **[classical]**; Lean form III.1.6 **[Lean]** | `SATURATION.md`, 0 |
 | III.6.5 | Dichotomy part (a) fails uniformly at the SO(3) cut | **[paper]** | `DICHOTOMY.md`, 0.2 |
 | III.6.6 | Reduction to two bad events | **[paper]** | `DICHOTOMY.md`, 0.4 |
-| III.6.7 | Window between rarity and saturation, 0.18 to >= 1.79 nats per plaquette | **[Lean]** (disjointness) + **[paper]** (numbers) | `ProofPhase/Crossover/Dichotomy.lean`, `window_gap`; `DICHOTOMY.md`, 0.3 |
-| III.6.8 | Y2 to Y5: inside residue, hand-over through the window, condition A uniformly (m about 4 measured on typical fields), uniformity in volume | **[open]** (pieces of O1); per-volume gap **[Lean]** conditional on H2-all | `docs/OPEN-QUESTIONS-DMP.md`, 2; `ProofPhase/Quantum/PerVolume.lean`, `perVolumeGap` |
-| III.6.9 | IR column at L1: W1 column certified at 0.99988 at L sqrt(sigma) = 2.80 (computer-assisted certificate as a named hypothesis) | **[open]**; implication **[Lean]** | `ProofPhase/Certified/Measured.lean`; `proof-phase/c9b-adjoint/ROUTE3.md` |
+| III.6.7 | Window between rarity and saturation, 0.18 to >= 1.79 nats per plaquette | **[Lean]** (disjointness) + **[paper]** (numbers) | `Crossover/Dichotomy.lean`, `window_gap`; `DICHOTOMY.md`, 0.3 |
+| III.6.8 | Y2 to Y5: inside residue, hand-over through the window, condition A uniformly (m about 4 measured on typical fields), uniformity in volume | **[open]** (pieces of O1); per-volume gap **[Lean]** conditional on H2-all | `docs/OPEN-QUESTIONS-DMP.md`, 2; `Quantum/PerVolume.lean`, `perVolumeGap` |
+| III.6.9 | IR column at L1: W1 column certified at 0.99988 at L sqrt(sigma) = 2.80 (computer-assisted certificate as a named hypothesis) | **[open]**; implication **[Lean]** | `Certified/Measured.lean`; `proof-phase/c9b-adjoint/ROUTE3.md` |
 
 ## III.7 Measured: what the numbers say about O1
 
@@ -358,8 +358,8 @@ O1 sits **[reading]** for "brackets" (`docs/rh-guide/MIRROR.md`, 0.2).
 |---|---|---|---|
 | III.7.1 | Small tori at beta 2.3: F_e(6) = 2.6 centrally (familiar form only; c(L) not measured), lower bound 0.96 with the floor; not certified | **[numerical]** (preliminary) | `CONTAINMENT.md`, 1, 3; `SATURATION.md`, 0 |
 | III.7.2 | Chain criterion refuted at cross-section 16^3, beta 3.5, L = 1 (pre-registered); L <= 2 post hoc | **[numerical]** | `ONEBOX-CHECK.md`, 4, 7 |
-| III.7.3 | The universal error-bar floor max(statistical, 1/T) | project rule | `attempts/RULES.md`, last section |
-| III.7.4a | 8 pi^2 = -4 zeta(2)/zeta(-1); zeta(-1) = -1/12 | **[Lean]** | `ProofPhase/GRH/Mirror.lean`, `eight_pi_sq_mirror`, `zeta_neg_one_val` |
+| III.7.3 | The universal error-bar floor max(statistical, 1/T) | **[paper]** (a design rule) | `attempts/RULES.md`, last section |
+| III.7.4a | 8 pi^2 = -4 zeta(2)/zeta(-1); zeta(-1) = -1/12 | **[Lean]** | `GRH/Mirror.lean`, `eight_pi_sq_mirror`, `zeta_neg_one_val` |
 | III.7.4b | Familiar form of O1 in effective-string units: L sqrt(sigma) > 1.72 to 1.80 (evaluation of the model; uses sigma > 0) | **[numerical]** (model-based) | `docs/rh-guide/MIRROR.md`, 0.2 |
 
 ## III.8 "It runs": the formal target shared with GRH
@@ -373,7 +373,7 @@ norm for free (reflection positivity) and lacks the margin eta < 1; GRH lacks th
 
 | # | Result | Status | Source |
 |---|---|---|---|
-| III.8.1 | "It runs" in two targets: phases (mirror) and no phase mode under a margin | **[Lean]** | `ProofPhase/Crossover/Runs.lean`, `no_phase_mode`, `iterate_contraction`, `runs_two_targets` |
+| III.8.1 | "It runs" in two targets: phases (mirror) and no phase mode under a margin | **[Lean]** | `Crossover/Runs.lean`, `no_phase_mode`, `iterate_contraction`, `runs_two_targets` |
 
 ## III.9 The weak-coupling side and the continuum (inputs from outside the gap mechanism)
 
@@ -381,11 +381,11 @@ norm for free (reflection positivity) and lacks the margin eta < 1; GRH lacks th
 |---|---|---|---|
 | III.9.1 | UV stability, small-field control and one-loop running at the weak-coupling unit scale (the OpenAI submission of 28 October 2026 and the `yang-mills-group` assessment of 10 November 2026, not refereed; see below) | **[external]** | `H1-OPENAI.md`; `references.md` (OpenAI submission) |
 | III.9.2 | Balaban's large-field control preserves partition functions, not laws (Balaban 1987 to 1989, five papers in CMP) | **[classical]**, read where it bears on the claim | `proof-phase/c5d-supplier/BALABAN-READING.md` |
-| III.9.3 | M1: the law-preserving large-field step, at weak coupling up to L_* | **[paper]**, complete at paper level; Lean parts | `ProofPhase/M1/Assembly.lean` (`m1_assembly`); `proof-phase/m1-tools/M1-PLAN.md` |
-| III.9.4 | The continuum limit exists (mesh limit at fixed volume, then volume along a subsequence; selected phase; fields smeared away from coincident points) | **[external]** | `H1-OPENAI.md`; `ProofPhase/Existence/Bridge.lean` (`plaqLaw_eq_wilsonMeasure`) |
-| III.9.5 | (O2) The gap needs of the line of constant physics only its resolution clause (l_k -> infinity); with O1 in its one form it gives torus decay, the gap in both orders of limits and reflection positivity; the running clause (one-loop slope 11/(6 pi^2), Lean beta), the scheme clause and non-triviality are not used | **[Lean]** | `ProofPhase/Closures/OneBoxForm.lean` (`tendsto_a_of_resolution`, `gap_of_o1Form`, `yang_mills_assembly_onebox_of_resolution`); `ProofPhase/Assembly.lean` (`OnLCP`, `NonTrivial`) |
-| III.9.5a | (O2) Per box, by construction: the reflected correlation at even time is a reflection-positivity square, hence non-negative for observables of the positive half; this is not non-triviality (strict positivity is not claimed); the running clause holds by construction on the one-loop line | **[Lean]** | `ProofPhase/Closures/NonTrivialSplit.lean` (`wcorr_even_eq_rpForm`, `wcorr_even_nonneg`, `nonTrivial_of_uniformLower`, `oneLoopTuning`, `running_oneLoop`) |
-| III.9.5b | (O2) The scale-uniform lower bound c > 0 on a slab correlation at a fixed physical time and the scheme clause: the lower edge of the window whose upper edge is O1's gap (independent of O1 and compatible with it in the spectral model, **[Lean]**); placed at the ODP's end, a reading | **[open]**; part of the one assumption by the first author's reading (X.64a) | `ProofPhase/Closures/NonTrivialSplit.lean` (`lower_of_spectral_weight`, `gap_not_lower`, `gap_and_lower_compatible`); X.64a |
+| III.9.3 | M1: the law-preserving large-field step, at weak coupling up to L_* | **[paper]**, complete at paper level; Lean parts | `M1/Assembly.lean` (`m1_assembly`); `proof-phase/m1-tools/M1-PLAN.md` |
+| III.9.4 | The continuum limit exists (mesh limit at fixed volume, then volume along a subsequence; selected phase; fields smeared away from coincident points) | **[external]** | `H1-OPENAI.md`; `Existence/Bridge.lean` (`plaqLaw_eq_wilsonMeasure`) |
+| III.9.5 | (O2) The gap needs of the line of constant physics only its resolution clause (l_k -> infinity); with O1 in its one form it gives torus decay, the gap in both orders of limits and reflection positivity; the running clause (one-loop slope 11/(6 pi^2), Lean beta), the scheme clause and non-triviality are not used | **[Lean]** | `Closures/OneBoxForm.lean` (`tendsto_a_of_resolution`, `gap_of_o1Form`, `yang_mills_assembly_onebox_of_resolution`); `Assembly.lean` (`OnLCP`, `NonTrivial`) |
+| III.9.5a | (O2) Per box, by construction: the reflected correlation at even time is a reflection-positivity square, hence non-negative for observables of the positive half; this is not non-triviality (strict positivity is not claimed); the running clause holds by construction on the one-loop line | **[Lean]** | `Closures/NonTrivialSplit.lean` (`wcorr_even_eq_rpForm`, `wcorr_even_nonneg`, `nonTrivial_of_uniformLower`, `oneLoopTuning`, `running_oneLoop`) |
+| III.9.5b | (O2) The scale-uniform lower bound c > 0 on a slab correlation at a fixed physical time and the scheme clause: the lower edge of the window whose upper edge is O1's gap (independent of O1 and compatible with it in the spectral model, **[Lean]**); placed at the ODP's end, a reading | **[open]**; part of the one assumption by the first author's reading (X.64a) | `Closures/NonTrivialSplit.lean` (`lower_of_spectral_weight`, `gap_not_lower`, `gap_and_lower_compatible`); X.64a |
 | III.9.6 | (O3) Euclidean invariance, local fields as distributions, Wightman reconstruction, short-distance agreement: claimed for the external construction in its selected phase and for its fixed-stencil fields (partial); uniqueness of the limit is not claimed there | **[external]** (partial) for the external construction; **[open]** for ours, and uniqueness of the limit **[open]** for both | `PROOF-BLUEPRINT.md`, P6.2, P6.4 to P6.9, P7.6 |
 | III.9.7 | (O4) Every compact simple group: existence external; this project's tuning SU(2) only | **[external]** / **[open]** | `PROOF-BLUEPRINT.md`, P6.10 |
 

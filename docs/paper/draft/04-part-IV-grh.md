@@ -16,14 +16,14 @@
   II.8). Positivity enters it elsewhere: its sign is the non-negative coefficients of Landau's theorem (IV.2.3, IV.2.4). Its endgame,
   as traced here, is Landau's theorem applied to a one-sided square-root bound on the prime count, obtained from a Stepanov-type
   size balance **[external, traced, preliminary]** (`GUIDE.md`, sections 2, 4, 5).
-* Tao's post of 20 November 2026 (Tao 2026) reports that the same author has also generated a Lean-only proof of a Generalized
+* Tao's post of 20 November 2026 (Tao 2026) reports that L. Alpoge, the author of that library's proof, has also generated a Lean-only proof of a Generalized
   Riemann Hypothesis and, as a preliminary analysis, that its strategy appears to use the full power of modern developments in the
   Langlands program. Which L-functions that proof covers is not stated there, and how its route relates to the one traced above was
   not examined here **[external, unverified]**.
 
 **What this part does.** It follows the other road: Weil's positivity criterion, the second column of the chain of II.8. It proves the
 chain in finite models (IV.1), shows exactly why a mirror symmetry alone cannot place zeros on the line (IV.2), measures the shape of
-the missing positivity (IV.3), and states the one missing construction in eight equivalent-looking faces (IV.4), with "it runs" as the
+the missing positivity (IV.3), and states the one missing construction in eight faces (IV.4), with "it runs" as the
 form shared with Yang-Mills (IV.5). **This part does not prove GRH for any L-function.** Its value is a reduction that is independent of
 the existing proof and would, if closed, extend to L-functions the existing proof does not reach.
 
@@ -125,11 +125,11 @@ m -> x/m) **[reading]**.
 On a grid of cells Weil's form is a Toeplitz matrix, because it is translation invariant. This turns the question into one about a
 sequence of matrices, and numerics can probe it. Every number in this section can refute a construction; none proves a sign. Margins depend on the discretisation: unless stated, cells are
 the C^1 spline cells (r = 3) with smoothing eps = 0.05; at eps = 0.025 the margin at support 1.2 is 1e-11 instead of 1e-9, and on the step-cell grid (r = 1) it is 8e-4.
-As in Part X, the support a is the half-width of the test function's support, so the primes p with log p <= 2a enter (2 and 3 up
+As in IV.1, the support a is the half-width of the test function's support, so the primes p with log p <= 2a enter (2 and 3 up
 to a = log 4 / 2 = 0.69). The margins here are smallest eigenvalues of the smoothed form on a finite grid of cells: a minimum over a
 subspace is at least the minimum over the whole space, so these numbers lie above the true margin. They are not comparable with
-the certified lower bounds of Part X (X.65), and they do not contradict the upper bound of about 3.6e-15 at a = 0.75 found there
-with a trial function **[paper]**.
+the certified lower bounds of IV.1, and they do not contradict the upper bound of about 3.6e-15 at a = 0.75 found with a trial
+function (X.4.4) **[paper]**.
 
 **IV.3.1 The induction frame is exact.** Growing the support by one cell adds one entry, at the corner of the matrix. The bigger
 section is positive exactly when that entry lands in an interval centred on the value extrapolated from all smaller scales, with the
@@ -212,7 +212,8 @@ The missing piece: **a positive object built from the primes, the characters and
 zeta and the Dirichlet L-functions the positivity itself now follows from the external theorem and Weil's criterion (II.9); what
 stays open there is a proof from arithmetic alone, and beyond Dirichlet the statement itself, for which no card is written yet
 (IV.1.5b). The step asks for non-negativity at every support, not for a margin uniform in the support, which is false for zeta's
-zero measure (X.45b). The notes have met it eight times. Each face would close the others' consequences; they are not shown to be equivalent.
+zero measure (X.45b). The notes have met it eight times. Each face, if built, would give the open step; the relations proved among the faces are the two
+stated below the table.
 
 | Face | Statement | Status | Source |
 |---|---|---|---|

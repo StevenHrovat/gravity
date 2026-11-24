@@ -3,10 +3,10 @@
 *Draft 4, 2026-11-24 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
 
 **Which part uses which tool.** The machine (II.0 to II.3) is used by Parts III to VII; the one-box test and the cards (II.4,
-II.5) by every part from IV to X and by Appendix A; the arsenal and the re-check (II.6, II.7) by every Lean result; the tools of
+II.5) by every part from III to IX and by Appendix A; the arsenal and the re-check (II.6, II.7) by every Lean result; the tools of
 section B (II.8 to II.15) by Parts III to V, each of which names the section it uses.
 
-| Section | IV Yang-Mills | V GRH | VI P vs NP | VII Navier-Stokes | VIII BSD | IX Hodge | X GU | App. A |
+| Section | III Yang-Mills | IV GRH | V P vs NP | VI Navier-Stokes | VII BSD | VIII Hodge | IX GU | App. A |
 |---|---|---|---|---|---|---|---|---|
 | II.0 to II.3, the machine | yes | yes | yes | yes | yes | | | |
 | II.4, II.5, the test and the cards | yes | yes | yes | yes | yes | yes | yes | yes |
@@ -212,8 +212,8 @@ DMP-complete means correct at every tick **[Lean]** (claim II.4a). The outside i
 generic API the agreement of the two readings is the gate's law (a field of `Box.Gate`), and in the plaquette layer it is proved: for a
 closed Z/2 layer the flux read from a box and from its complement agree **[Lean]** (claim II.4b). Care point: the test has content
 only when the marker is the system's own claim; a marker read off the gate afterwards always passes **[Lean]** (claim II.4c). What
-the test gives for each card is in III.12 (Yang-Mills), VI.6 (the model Navier-Stokes box), the box sections of Parts IV, V, VII,
-IX and X, and Part X 4.4. The one-box certificate (one step at the shared gate certifies every tick), the scale certificate from the sharing,
+the test gives for each card is in III.12 (Yang-Mills), IV.8 (GRH), V.10 (P vs NP), VI.8 (the model Navier-Stokes box), VII.8
+(BSD), VIII.8 (Hodge), IX.8 (GU), and Part X 4.4. The one-box certificate (one step at the shared gate certifies every tick), the scale certificate from the sharing,
 and the universal machine as a box are stated with the one assumption in Part X 4.4 (claims X.68 to X.68c) **[Lean]**. Rigidity is
 one-box testable too: a manifold's presentations with its self-equivalences acting make a box that is DMP-complete exactly when the
 manifold is rigid (rigid here is the structure-set condition: every presentation is the manifold seen through a self-equivalence; its
@@ -314,28 +314,14 @@ a type checker written independently in Rust, checks an export of every declarat
 for the modules a run covered (below). A full run once established a trusted base, Mathlib and Lean core at the pinned commit,
 recorded by hash in a stamp. Later runs re-check only the modules whose source or imports changed, against that stamp.
 
-**What the runs covered.** Seven runs of 2026-11-24 are recorded there and in `docs/paper/REVIEW.md` (Record). The first, at
-commit `2cb301c`, covered 358 modules, including the imported IM arsenal, which is checked like the project's own code and is never
-part of the trusted base: `leanchecker` replayed every changed module with no failure, the axiom audit found no declaration resting
-on anything beyond `propext`, `Quot.sound` and `Classical.choice`, and `nanoda_lib` checked 103,282 declarations with no type-checker
-error. A quick run at `1d71a05` covered the tree of that commit. The last quick run, at the release commit of this draft (`897ef5c`,
-the stage-3 consolidation), covers every module: the stamp matched, 15 modules had changed since the previous run (among them
-`ETM/CardBox.lean`, `ETM/Complex.lean`, `ETM/Essence.lean`, `ETM/Rotation.lean`, `Proof/LiftingNP.lean`), `leanchecker` replayed them
-with no failure, the axiom audit reported no non-standard axiom, and `nanoda_lib` checked the 74,295 declarations of those modules
-and what they use with no type-checker error **[Lean, re-checked]**; after `ETM/Essence.lean` grew by the decided links, a further
-quick run at `db9fbc7` replayed the 2 changed modules with no failure, found no non-standard axiom, and `nanoda_lib` checked 15,257
-declarations with no type-checker error. After the crossing theorem took the form its proof uses (`Proof/Crossing.lean`, II.14),
-a last quick run at `d0257ab` replayed the 18 changed modules with no failure, found no non-standard axiom, and `nanoda_lib`
-checked 75,100 declarations with no type-checker error; the evidence gate, with the pin check, passed at the same commit (285
-theorems). When the parts were reordered, the label strings of three modules changed (`ETM/Rotation.lean`,
-`ETM/RotationInstances.lean`, `ETM/G2Rigidity.lean`); a quick run on that tree replayed the 3 changed modules with no failure,
-found no non-standard axiom, and `nanoda_lib` checked 72,355 declarations with no type-checker error. The last, after
-`General/SUNHandOver.lean` was added (claim III.3.1b), replayed it with no failure, found no non-standard axiom, and `nanoda_lib`
-checked 39,911 declarations with no type-checker error. Later commits change no Lean. At the same commit IM's own full check of the arsenal (at the pin
-`b01adbd`: lint, build against Mathlib, the kernel's axiom report) passed with 223 declarations, none resting on more than the three
-standard axioms, and the axiom logs of the rotation round (125 declarations, `docs/unified/rotation-axioms.log`) and of the Hodge
-modules (47, `docs/unified/hodge-axioms.log`) were regenerated and show the same. The scan for escape hatches reads code only, as the
-arsenal's lint does, and found none.
+**What the runs covered.** A full run established the trusted base (Mathlib and Lean core at the pinned commit, recorded by hash
+in `docs/unified/independent-check.stamp`); quick runs re-check every module changed since, against it. The last quick run covers
+the source of this paper: `leanchecker` replayed every changed module with no failure, the axiom audit found no declaration resting
+on anything beyond `propext`, `Quot.sound` and `Classical.choice`, and `nanoda_lib` checked the declarations of the changed modules
+and everything they use with no type-checker error **[Lean, re-checked]**. IM's arsenal, imported at its pinned commit, is checked
+like the project's own code and is never part of the trusted base; its own full check passes with 223 declarations on the three
+standard axioms. The scan for escape hatches reads code only, as the arsenal's lint does, and finds none. Every run, with its
+commit and numbers, is recorded in `docs/paper/REVIEW.md` (Record), and `tools/reproduce.sh kernels` repeats them (REPRODUCE.md).
 
 **B. The tools the problems use.**
 
@@ -485,7 +471,7 @@ per tick does not by itself give a column below one. **[Lean]** (`Mixing/Chain.l
 **Uniformity along a chain (II.12.5).** If the same channel acts at every step (a homogeneous chain: translation invariance in the
 transfer direction), the contraction coefficient is the same at every step; once eta < 1 at one step, the chain contracts like
 eta^n. **[classical]** with the composition law **[Lean]** above. Read as DMP: "the uniformity is given by the arrow of causality"
-(the author, 2026-11-23) **[reading]**.
+**[reading]**.
 
 **The three applications.** Yang-Mills: the gap mechanism reduces to one box of fixed physical size, uniformly over outsides; for a
 grid the per-box cost must beat the path entropy, F_e(L) > log mu_4 (Part III.5). P vs NP: a column sum below one is polynomial-time sampling and, classically, counting (Part V). GRH: no contraction step is

@@ -277,7 +277,7 @@ filled, and shows the positivity that is a theorem over the complex numbers. The
 ## VIII.7 What would close it
 
 If an independent proof of the Hodge conjecture for p >= 2 were found, the card's open step would be discharged by that work. This part would supply
-the shape and the audit. The change to this paper would be one row of the ledger, one verdict line of this part and one item of the introduction's list of open steps.
+the shape and the audit. The paper would change as X.8 describes.
 Nothing in this paper proves any part of that.
 
 What would change the status of the borrowed parts, none of it done **[paper, an estimate]**: reachable on Mathlib are hard

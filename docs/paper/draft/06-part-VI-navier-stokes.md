@@ -279,20 +279,7 @@ Until these are done, everything in VI.4.1 stays **[external, unverified]**. The
 An independent construction of the profile from scratch is beyond reach now: it is a genuinely three-dimensional, time-periodic
 shape with an operator-level certificate at 128-bit precision **[reading]**.
 
-## VI.6 The box in the one-box test
-
-**The model box.** `nsBox nu K theta` has the dyadic scales k as its ticks, floor 0, margin theta < 1, and the marker "inside" (the
-claim "regular") at every scale. Its gate factor at scale k is the energy-only transfer bound K 2^(5k/2) over the viscous cost
-nu 4^k, clipped to [0, 1] (`nsFac`) **[Lean]** (`ETM/RotationInstances.lean`, `nsFac`, `nsBox`).
-
-**What the test gives.** Since 2^(5k/2) outgrows 4^k, the factor reaches 1 at some scale (`nsFac_eq_one`); the gate reads outside
-there while the marker says inside, so the box is not DMP-complete (`ns_gate_outside`, `ns_wrong_marker`, `ns_not_complete`)
-**[Lean]** (claim VI.7g). This is the classical supercriticality of the energy (VI.3.4), formalised. The box is a model, built from
-the energy bound alone; it is not the box of any of the three cards of VI.2, whose boxes pass exactly when their open steps hold
-(`cardBox_complete_iff`). So the test says that the energy ledger cannot certify regularity, and nothing about the equations
-themselves.
-
-## VI.7 DMP readings attached to this part (all [reading])
+## VI.6 DMP readings attached to this part (all [reading])
 
 * **A blowup is a certificate that infinitely many steps fit in finite time.** The finite check at one scale is what makes the
   packing geometric; `T*` is the boundary where the smooth description ends, and the profile is what crosses it. This is the
@@ -310,18 +297,33 @@ themselves.
   **[Lean]**), so it does not run, and blowup is the expected consequence. The negative result is the expected one, and it
   makes the framework falsifiable: global regularity would refute it **[reading]** (VI.7e). Blowup of the real equations is still
   the card's open step (VI.5.1, **[open]**); in the settling machine a missing floor gives undecidability (II.3), so the step from
-  "does not run" to blowup is the reading, not a theorem. The model box of VI.6 shows the wrong marker for the energy-only ledger
+  "does not run" to blowup is the reading, not a theorem. The model box of VI.8 shows the wrong marker for the energy-only ledger
   **[Lean]** (model, VI.7g). It covers the energy-only ledger, not an
   actual solution with a better transfer bound **[reading]** (VI.7h).
 * **Settle means opposite things on the two cards.** In the API, "settle" means the carried quantity dies out. For regularity that
   quantity is the cascade, so settling means regular; for route I it is the perturbation from the blowup profile, so settling means
   blowup. The same theorem answers opposite physical questions.
 
-## VI.8 What would close it
+## VI.7 What would close it
 
 If the Alpoge-Buckmaster certificate is released and verifies independently, the route I card's open step is discharged, (A) and (B)
 fail, and the Clay problem is answered in the direction of blowup, by their work, with this part supplying the ledger skeleton and the
-audit. If the certificate fails an inequality, the open step stays open and the regularity slot stays as it is. Either way the change
-to this paper is one row of the ledger, one verdict line of this part and one item of the introduction's list of open steps. A proof of **regularity** would
+audit. If the certificate fails an inequality, the open step stays open and the regularity slot stays as it is. Either way the paper
+changes in one place per card, as X.8 describes. A proof of **regularity** would
 have to fill the regularity slot from the true nonlinearity, which the energy identity cannot do (VI.3.4), and which the unforced
 claim, if true, makes impossible for some data.
+
+---
+
+## VI.8 The box in the one-box test
+
+**The model box.** `nsBox nu K theta` has the dyadic scales k as its ticks, floor 0, margin theta < 1, and the marker "inside" (the
+claim "regular") at every scale. Its gate factor at scale k is the energy-only transfer bound K 2^(5k/2) over the viscous cost
+nu 4^k, clipped to [0, 1] (`nsFac`) **[Lean]** (`ETM/RotationInstances.lean`, `nsFac`, `nsBox`).
+
+**What the test gives.** Since 2^(5k/2) outgrows 4^k, the factor reaches 1 at some scale (`nsFac_eq_one`); the gate reads outside
+there while the marker says inside, so the box is not DMP-complete (`ns_gate_outside`, `ns_wrong_marker`, `ns_not_complete`)
+**[Lean]** (claim VI.7g). This is the classical supercriticality of the energy (VI.3.4), formalised. The box is a model, built from
+the energy bound alone; it is not the box of any of the three cards of VI.2, whose boxes pass exactly when their open steps hold
+(`cardBox_complete_iff`). So the test says that the energy ledger cannot certify regularity, and nothing about the equations
+themselves.

@@ -6,7 +6,7 @@
 ## IX.0 What "Grand Unified" means here, and where it stands
 
 **GU is not a Clay problem.** There is no official statement to quote. In this work "Grand Unified" is the second half of the
-first author's **release criterion** (`OUTLINE.md`): the paper may leave the draft stage when both readings of GUID hold. **General** is the
+first author's **release criterion**: the paper may leave the draft stage when both readings of GUID hold. **General** is the
 unified theorem with its open hypotheses closed. **Grand Unified** is *the framework containing SU(3) x SU(2) x U(1) in one structure
 with at least one checkable consequence*. The first author's wording is a goal ("what I want to claim when finished, not what I can prove
 now"), so this part states exactly how far each half of the Grand Unified reading holds today.
@@ -133,7 +133,7 @@ G0 link that holds for **every** instance of the API, not only for GU. `g0_charg
 anomalies and the mixed gauge-gravitational anomaly fixes the hypercharge ratios (Geng and Marshak 1989; Minahan, Ramond and Warner
 1990); with a right-handed neutrino a B - L direction opens unless a Majorana mass is assumed (Babu and Mohapatra 1989).
 Alternatively the ratios follow from SU(5). Either way they are an **input to the Z_6, not an output of it**. Anomaly cancellation is
-in Lean (IX.7b, `ProofPhase/Closures/Anomaly.lean`: `anomaly_fixes_sm`, `anomaly_fixes_Z6`): for one generation, with q_Q > 0 and
+in Lean (IX.7b, `Closures/Anomaly.lean`: `anomaly_fixes_sm`, `anomaly_fixes_Z6`): for one generation, with q_Q > 0 and
 coprime charges, the four anomaly conditions fix the charges up to u <-> d, and with them the Z_6 (without q_Q != 0 there is a second
 solution, q_Q = q_L = q_e = 0 and q_u = -q_d). This is classical physics formalised, not a DMP result.
 
@@ -191,7 +191,7 @@ in the symmetry breaking (IX.6).
 **The first author's position, recorded.** The first author's reading is that GU comes down to well-defined inputs, which DMP can guarantee, and that
 the checkable consequence comes from the link to G0 (candidate (b)).
 
-**The first author's decision (2026-11-24).** "Uniformity is also guaranteed to be constructed by the ODP": the guarantee of "well-defined
+**The first author's decision.** "Uniformity is also guaranteed to be constructed by the ODP": the guarantee of "well-defined
 inputs, guaranteed" is the same as the one that gives Yang-Mills its lower edge (Part X 4.4). The ODP ends only at a dimensionless 1,
 and that 1 is the unit every charge is an integer multiple of. So the checkable consequence for the gate is uniform charge
 quantisation, one unit for all matter, checked by the neutrality of matter and the absence of free fractional charges **[reading]**

@@ -89,7 +89,7 @@ All of this is **[Lean]**. Three cautions come first.
 
 1. **Audit.** The axiom log of the API instance (`bsd-axioms.log`, regenerated 2026-11-24 in the commit that last changed
    `BSDAPI.lean`, 46 declarations) shows standard axioms only for the instance. For the native core in IM (`Arsenal.BSD` and
-   `Arsenal.BSD.EulerRat` at the pinned commit `b01adbd`) the stage-2 part review R6 ran `#print axioms` on all 85 declarations:
+   `Arsenal.BSD.EulerRat` at the pinned commit `b01adbd`) `#print axioms` on all 85 declarations gives:
    82 on `propext, Classical.choice, Quot.sound`, three on a subset of them, none on `sorryAx` (`review/part-R6.md`). IM's own
    audit script (`arsenal/tools/check.sh`) was run at the release commit (II.7). The names below were checked against the source
    files, by reading, one by one.
@@ -186,7 +186,7 @@ prose here, not in Lean). From it:
   chain bound (`EulerData.upper`, `P_le`). **No finite stage of the Euler product is zero** (`no_finite_zero`). A zero at s = 1 is a
   property of the whole chain, a rate, never of one step. **[Lean; Hasse as input]**
 * **The ledger of one curve.** Built from one given integral curve, the ledger's counts are that curve's point counts by
-  construction, and at every good prime they are the computed count, which Mathlib's count equals (`ProofPhase/Closures/EulerCurve.lean`:
+  construction, and at every good prime they are the computed count, which Mathlib's count equals (`Closures/EulerCurve.lean`:
   `ofCurve_N`, `ofCurve_N_good`, `ofCurve_fac_good`). **[Lean, by construction; Hasse stays the named input]** That these counts give
   the linear coefficient of Mathlib's local factor at the completion is the classical definition of `a_p`, not linked in Lean.
   **[classical, a formalisation item]**
@@ -321,8 +321,8 @@ Each reading is the first author's statement with its exact counterpart. None is
 ## VII.7 What would close it
 
 If an independent proof supplied the construction and the bound for orders 2 and more, the card's open step would be discharged by
-that work, and this part would supply the ledger skeleton and the audit. The change to this paper would be one row of the ledger,
-one verdict line of this part and one item of the introduction's list of open steps. Nothing in this paper proves any part of that.
+that work, and this part would supply the ledger skeleton and the audit. The paper would change as X.8
+describes. Nothing in this paper proves any part of that.
 
 What would change the status of the borrowed parts, none of it done: proofs on Mathlib of weak Mordell-Weil (Kummer theory,
 class groups and unit groups of the 2-division field) and of Hasse's bound (isogeny degrees as a quadratic form, or intersection

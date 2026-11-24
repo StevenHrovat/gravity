@@ -1,7 +1,7 @@
 # Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
 *Draft 4, machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
-III) are conditional on it. Claim labels (0.n) are listed in `../CLAIMS.md`.*
+X) are conditional on it. Claim labels (0.n) are listed in `../CLAIMS.md`.*
 
 ## Personal note by the first author
 
@@ -36,8 +36,8 @@ Six Clay Millennium problems are read here through one test, two in a neighbouri
 the Riemann hypothesis, NP versus coNP for P versus NP), with a Grand Unified reading of SU(3) x SU(2) x U(1), not a Clay problem.
 Each open step is restated as a box: a step at one shared gate gives a marker,
 inside or outside, at every tick, and the box is DMP-complete when every marker agrees with the gate. For most cards the box is the
-open statement itself, a restatement that proves no new bound. Plainly, the machine under the test is multiplication by
-complex numbers of modulus at most one: the negative logarithm of the modulus is the cost, the phase is the rotation. Machine, test
+open statement itself, restated. Plainly, the machine multiplies by complex numbers of
+modulus at most one: minus the logarithm of the modulus is the cost, the phase the rotation. Machine, test
 and cards are checked in Lean 4 with Mathlib on the standard axioms. DMP, a specification for systems of trust, supplies the
 vocabulary; its readings are marked as such.
 
@@ -45,7 +45,7 @@ No problem is solved here. One certifiable step is the same on every card: a mar
 correct at every tick. One assumption is stated once, as a reading: on the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge
 the box is DMP-complete, its gate shared across scales; on each card this is a different open statement, and results using it are
 marked conditional. Proved in Lean without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of
-fixed physical size, uniform in spacing and volume; the classical explicit formula for all nontrivial zeros of zeta; a crossing
+fixed physical size, uniform in spacing and volume; the classical explicit formula for all nontrivial zeros of zeta (its real-place term not yet matched to Weil's); a crossing
 theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index. Weil's positivity
 on a first box, where only the real place and the primes 2, 3 enter, is enclosed in ball arithmetic with explicit margins, given
 analytic estimates argued in a note. A model box from the Navier-Stokes energy bound alone gives a wrong marker.
@@ -74,7 +74,7 @@ the machine and each card's core.
 ### The test in one page
 
 Every result below uses these words in exactly these senses. Their Lean definitions are in II.3 to II.5; the DMP words not listed
-here (ledger, floor, DB, G0, ODP) are in the table of I.12.
+here (ledger, floor, DB, G0, ODP) are in the table of I.8.
 
 * **Running system** (II.3). States, a step from state to state, a factor in [0, 1] at each state, a mass >= 0 and a floor delta,
   with the ledger law mass(step x) <= e^delta fac(x) mass(x). A step *pays a cost above the floor* when e^delta fac(x) <= theta < 1
@@ -91,7 +91,7 @@ here (ledger, floor, DB, G0, ODP) are in the table of I.12.
   open statement holds, and the marker is always inside, so the box is DMP-complete exactly when the open statement holds
   (`cardBox_complete_iff`). That is a restatement and proves no new bound. Only two boxes have a gate factor of their own: the
   Yang-Mills box (gate factor the best one-box ratio at each lattice level, III.12) and the model Navier-Stokes box (the energy bound against
-  the viscous cost, VI.6).
+  the viscous cost, VI.8).
 * **Open parts.** A statement left open is a named hypothesis, never a Lean axiom: `OpenStep` and `External` in this repository,
   `R136a1` in IM's arsenal. The kernel's axiom report therefore lists only Lean's three standard axioms.
 * **O1.** The Yang-Mills open step, in its Lean form `FineOneBox` (III.5.9): there are a cell geometry and constants such that at
@@ -112,8 +112,8 @@ it rests on.
   one way to leave a statement open, a named hypothesis that never becomes an axiom; this repository's cards use the same
   transparent form under the names `OpenStep` and `External`.
 * **Yang-Mills** **[Lean]**, for SU(2) on the lattice: reflection positivity, the strict bound between a sector and its twist (for
-  every SU(N)), a per-box hand-over rate of at least log(1 + sqrt 2) (unconditionally for the SU(N) twisted Wilson partition functions,
-  `sun_handover`; for the `Flip` object of SU(2) from positivity of its twisted partition function, a stated hypothesis), zero join loss in slab form, and the assembly from a one-box gap certificate to exponential decay of slab
+  every SU(N)), a per-box hand-over rate of at least log(1 + sqrt 2) (for the SU(N) twisted Wilson partition functions with no hypothesis on Z_tw, for beta != 0, even time extent and a
+  nontrivial sector, `sun_handover`; for the `Flip` object of SU(2) from positivity of its twisted partition function, a stated hypothesis), zero join loss in slab form, and the assembly from a one-box gap certificate to exponential decay of slab
   correlations (a lattice mass gap) in both orders of limits; the step to a gap of the Hamiltonian is argued in prose (III.2.7). The
   open step in the form the assembly uses is `FineOneBox`; the Yang-Mills card's own slot is the chain form `YMOneBox`, related to
   `FineOneBox` in prose (III.5.9). The box test restates both: each holds exactly when its box is DMP-complete (III.12; restatements
@@ -131,7 +131,7 @@ it rests on.
   every refutation has a line sensitive to many variables (II.14, V.4); and the equivalence of the lifting interface with lifting by
   constant-size gadgets (V.4.11).
 * **Navier-Stokes.** Three cards on the form layer; there is no Navier-Stokes object in the Lean, and Fefferman's forms (A) and (B)
-  are named, not defined. A model box built from the energy bound alone gives the wrong marker at some scale, so that box is not DMP-complete (VI.6)
+  are named, not defined. A model box built from the energy bound alone gives the wrong marker at some scale, so that box is not DMP-complete (VI.8)
   **[Lean]**.
 * **BSD** **[Lean]**, from what Mathlib alone gives, over any number field: Mordell-Weil from weak Mordell-Weil, the true rank, the
   existence line, parity from the functional equation, point counts that run, and a finite order at s = 1 from Hasse's bound, with
@@ -245,7 +245,13 @@ Every **[Lean]**, **[certified]** and **[numerical]** claim can be rerun from a 
 stage: `tools/reproduce.sh paper` (the ledger and the PDF), `evidence` (the DMP evidence chain, "OK 285"), `lean` (the paper's
 Lean against Mathlib, every axiom log compared line by line), `certs` (the certified first box, the three margins) and `kernels`
 (the second kernels). `docs/paper/REPRODUCE.md` lists what each stage needs, how long it takes and what it prints when it passes;
-the claims ledger `docs/paper/CLAIMS.md` gives, for every claim, the declaration, log or reference that checks it.
+the claims ledger `docs/paper/CLAIMS.md` gives, for every claim, the declaration, log or reference that checks it. The repository is
+https://github.com/StevenHrovat/gravity, at the commit printed on the title page; IM, whose arsenal the Lean imports at a pinned
+commit, is https://github.com/StevenHrovat/im.
+
+Two kinds of number appear in the text. Section numbers such as III.12 or X.4.4 name sections of this paper. Claim labels such as
+X.64 or III.10c name rows of the claims ledger, which this PDF does not reproduce; in the PDF each claim label links to the ledger,
+whose row gives the claim's status, its source and what would upgrade it. Where a number could be either, the text writes "claim".
 
 ### What is new
 

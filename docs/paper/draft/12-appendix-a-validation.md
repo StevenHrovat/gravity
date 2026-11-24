@@ -1,6 +1,6 @@
 # Appendix A. Validation: Poincare, SU(N) and the rigid groups
 
-*Draft 4, 2026-11-24. Gathered from draft 3's Part V, section 6 (Perelman, Poincare for SU(N)), and Part VIII, section 6 (the rigid groups). Claim labels A.n are listed in `../CLAIMS.md`.*
+*Draft 4. Claim labels A.n are listed in `../CLAIMS.md`.*
 
 ## A.0 Poincare (Perelman), and SU(N)
 
@@ -56,10 +56,10 @@ The first author asked whether Perelman's Poincare extends to every SU(N) throug
   `N = 2` it sits exactly on the lower edge (Obata's case). The inequalities for the number `N - 1/N` are **[Lean]** (`sun_window`, `su2_window_edge`); that `N - 1/N` is the first Laplace eigenvalue (the Casimir of the fundamental representation) is **[classical]**. That the window implies
   instability is **[external]** (Cao-He; Kroencke).
 * **A genuine "Poincare for SU(N)"** (every closed manifold homotopy equivalent to SU(N) is homeomorphic or diffeomorphic to it) is a
-  surgery-theory question, and it is answered: published for `N = 3`, and for `N >= 4` by a surgery computation in this paper. For
-  `N = 2` it is Poincare **[classical]**. For `N = 3` it holds in both categories:
+  surgery-theory question. It is answered for `N = 3` (published) and for even `N >= 4` (a surgery computation here); odd `N >= 5` is
+  open. For `N = 2` it is Poincare **[classical]**. For `N = 3` it holds in both categories:
   every closed smooth manifold homotopy equivalent to SU(3) is diffeomorphic to it, `SU(3) # Sigma^8` included **[external]**
-  (X. Wang, arXiv 1810.08478, Theorem 1.1 and Corollary 1.2). For `N >= 4` it fails in both categories: there is rational room below
+  (X. Wang, arXiv 1810.08478, Theorem 1.1 and Corollary 1.2). For even `N >= 4` it fails in both categories: there is rational room below
   the top cell (`x_3 x_5` in degree 8), so surgery gives closed smooth manifolds homotopy equivalent to SU(N) with a non-zero
   Pontryagin class, not homeomorphic to the parallelisable SU(N) **[paper]** (a computation from classical surgery theory,
   `docs/unified/PERELMAN-DMP.md` 2). The sketch is complete for even N, where N^2 - 1 is odd and the surgery obstruction group
