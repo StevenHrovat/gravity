@@ -108,7 +108,7 @@ at least e^{theta b} lines. Reference (`resolution_meets_form`): for resolution 
   witness.
 * **The Yang-Mills plug into the assembly** stops at a spectral gap of a stated transfer correlation. The identification
   of the path sum with the SU(2) blocked laws (`BlockGapBddW`, `V4/Gap.lean`) is not in Lean; the annealed-to-quenched
-  step (III.5.7) is part of the hypothesis as the paper states it (VI.4), and the relation of the chain floor 2C to the
+  step (III.5.7) is part of the hypothesis as the paper states it (X.4), and the relation of the chain floor 2C to the
   tube floor log mu is III.5.8, open.
 
 ## 5. Files

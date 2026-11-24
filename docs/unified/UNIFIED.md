@@ -116,7 +116,7 @@ e^{-(kappa - log mu)}: a gap of at least 1 - e^{-(kappa - log mu)} per box (`gap
 
 **Model data, with status.** Box weights are nonnegative and at most e^{-F_e} (this is what "F_e is the cost of the box"
 means); the path sum is a sum of products along paths: that is the annealed product structure, III.5.7 **[open]**, which
-the paper bundles into O1's closing statement (VI.4). The domination of correlations by the path sum in `ym_gap` is the
+the paper bundles into O1's closing statement (X.4). The domination of correlations by the path sum in `ym_gap` is the
 path expansion **[classical]** in form; its identification with the SU(2) blocked laws (`V4/Gap.lean`, `BlockGapBddW`,
 which the assembly consumes) is **not in Lean**.
 

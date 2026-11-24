@@ -4434,3 +4434,150 @@ thread.
   error bar) [Lean, with the floor as hypothesis]. Same as the entry "an open step settles at least at the known error rates".
   Care point: a floor at the error bar gives settling at that precision, decidably; the continuum statement is the limit in which
   the error bar goes to zero, and keeping the floor positive in that limit is the open step O1 [reading for the identification].
+- **GRH is attuned by positivity towards O1, from the median (the owner, 2026-11-24):** "If I recall correctly GRH gets attuned by
+  positivity towards O1 from the median." Exact counterpart (coordinator): the median is the critical line, the axis of the
+  reflection `s -> 1 - conj(s)` under which the completed zeta function is symmetric [classical]. Weil's criterion states GRH as a
+  positivity about that axis: a Hermitian form built from the zeros is nonnegative [classical]; Yang-Mills rests on reflection
+  positivity about a lattice hyperplane, proved here (`Z_e >= 0`) [Lean]. Connes' programme reads Weil positivity as exactly such
+  a reflection positivity [external, pointer]. So the reading names the route of the bridge: from the median, through positivity,
+  not through the location of single zeros. Care point: positivity alone gives a sign (`>= 0`); O1 needs a quantitative domination
+  (`mu Z_{e=1} <= Z_{e=0}`, a ratio bound uniform in the scale), so the bridge needs positivity with a margin, and that margin is
+  the part to find. Passed to the GRH-to-O1 round as a lead to test.
+- **The universal start is {infinity, 2, 3}, so the margin exists at the start (the owner, 2026-11-24):** "we already defined the
+  universal start as infinity, 2, 3, right?" Yes (coordinator): the one-box certificate is exactly that start. Weil's form
+  restricted to supports where only the real place and the primes 2 and 3 enter (up to `a = 0.69`, before the square 4) is positive
+  with an explicit margin, `W(f) >= c ||f||^2`, `c = 1.5e-9, 3.4e-11, 6.4e-13` at `a = 0.60, 0.65, 0.69` [certified, Arb;
+  `GRH-ONEBOX-CERT.md`; tie `ProofPhase/GRH/OneBoxCert.lean` Lean]. So positivity with a margin, which the entry above says the
+  bridge to O1 needs, is in hand at the start. Care point: the margin collapses faster than exponentially as the support grows
+  (about `3.6e-15` at `a = 0.75`), so it cannot be carried outward by computation; the certificate note concludes the uniformity
+  must come from a statement multiplicative in the margin (`INDUCTION.md`). That multiplicative transport of the start's margin is
+  the same uniform ratio bound O1 needs. Passed to the GRH-to-O1 round.
+- **The multiplicative transport is the tick operator: an act at a DB, rotating (the owner, 2026-11-24):** "The multiplicative
+  transport is the tick operator, so an act at a DB rotating." Exact counterpart (coordinator): the tick is a positive map acting on
+  the two-sector cone at a DB (the hand-over face), and the encoder's half-turn is its rotation. The classical statement that is
+  multiplicative in the margin is Birkhoff-Hopf: a positive map whose image cone has finite Hilbert projective diameter `Delta`
+  contracts the projective distance by the factor `tanh(Delta/4) < 1` per application [classical]; the project already ties that
+  distance to the encoder cost and the ledger turns the contraction into a rate (`OPEN-STEPS-DMP.md` (c+), `rate_of_costAboveFloor`
+  [Lean]). So "the margin is carried by the tick" becomes one named statement: the tick's image has projective diameter `Delta`
+  bounded uniformly in the scale. At the start {infinity, 2, 3} the margin is certified, so the diameter of the first tick is finite.
+  Care point: uniformity of `Delta` in the scale is exactly the open part; on the Yang-Mills side the slab factor is `tanh(beta N)`
+  per layer, below 1 at every coupling, but the cutoff-uniform form is O1 (`TRANSPORT.md`, `kchain_tanh`). The reading names the
+  shared object; it does not yet bound it [reading for the identification; Lean and classical as marked]. Passed to the
+  GRH-to-O1 round.
+- **Borrow the well-constructedness of GRH and DMP: an imaginary possibility oscillating around a confined circle; existence and
+  non-existence (the owner, 2026-11-24):** "Here we can just borrow the well constructedness of GRH and DMP to have an imaginary
+  possibility oscillation around a confined circle. So Existence and non-existence." Exact counterpart (coordinator): in the explicit
+  formula each zero `rho = 1/2 + i gamma` contributes `x^rho / rho`, an oscillation `e^{i gamma log x}` with amplitude
+  `x^{1/2} / |rho|`; on the critical line every oscillation turns on a circle of the same radius `x^{1/2}` (confined), while a zero
+  off the line would be a spiral whose radius grows or shrinks [classical; the formula for all zeros is Lean here,
+  `ContourShift*.lean`]. The same confinement, proved: positivity puts the eigenvalues on a circle (`eigen_on_circle`,
+  `HodgeLinear.lean`), and for a curve over `F_q` the Frobenius eigenvalues lie on the circle of radius `sqrt q` (Weil; `weil_bound`,
+  and `frobAlpha_normSq` in `BSDAPI.lean`) [Lean]. The two states: the encoder's half-turn rotates about an axis whose two fixed
+  points are the poles (`sqrt 2 - 1` and `-(1 + sqrt 2)`), and the oscillation runs around the circle between them; at each tick
+  the gate answers one of two, exists or R136a1 [reading]. Care point: what can be borrowed is what is proved: the confinement in
+  the function-field case, for Hodge-type positivity, and at the certified start {infinity, 2, 3}. Borrowing it for zeta at every
+  scale would be assuming RH, which is the open sign.
+  The owner completes it (same day): "The ODP". Reading (coordinator): the oscillation between existence and non-existence around
+  the confined circle is the ODP, the process from G0 to the hand-over of running (entry "The ODP mapping is correct"). Each tick
+  of it answers one of two: the next scale is certified positive (exists), or the part is excised and only its remnant of not
+  existing stays (entry "contradictory statement ... immediately excised"). In GRH that is the prime-by-prime induction from the
+  certified start {infinity, 2, 3}; it ends at the hand-over, when positivity holds at every scale and the system runs. Care
+  point: the ODP's ticks past the start are exactly the margin transport above, so the ODP is where the open step lives; its end
+  (the hand-over) is the settling the gates ask for.
+- **Base existence as SU(p + (p+1)), the sum of the primes from the start; anything real that can be made to settle is constructible
+  from there within DMP (the owner, 2026-11-24):** "We are, however, able to extend it to however we need since we define a base
+  existence as SU(p+(p+1)), so the sum of the primes, so from the start. Any real thing can be asserted or constructed from there
+  on out, within DMP, that can be made to satisfy the settling condition." Exact counterpart (coordinator): `p + (p+1) = 2p + 1`; at
+  the start {infinity, 2, 3} it is `2 + 3 = 5`, SU(5), and `p = 5` gives SU(11), the two candidates of the entry "SU(5) and SU(11)
+  are the known working candidates". Both are Sophie Germain pairs (`p` and `2p + 1` prime: 2 and 5, 5 and 11) [classical,
+  arithmetic]. The second sentence is the ETM's decidable half as a construction rule: whatever satisfies the settling condition
+  (every step pays a cost above the floor) settles within an explicit bound and so is constructible (`reaches_of_contracting`)
+  [Lean]; and the SU(N) results here hold for every N (`sunZtw_lt`, `elecN_submul`) [Lean], so extending in N costs nothing.
+  Care points: (1) the extension is free in the group, but the open step is in the scale: O1 is uniformity in the cutoff at fixed N,
+  and choosing the base N does not touch it. (2) "That can be made to satisfy the settling condition" is the whole content: for
+  each problem, showing that its object (the continuum measure, zeta at every scale) satisfies it is the open step. (3) The Clay
+  statement asks for every compact simple gauge group, so a base SU(5) is a construction start, not the whole claim. (4) If an
+  extension ever needed `2p + 1` prime for infinitely many `p`, that is the Sophie Germain conjecture, open [classical]; a base N
+  that need not be prime avoids it.
+  The owner refines the care points (same day): "2 is better stated as the question it states about its existence can be answered.
+  We can already extend from the start to wherever we need through the transitive property. A hidden conjecture is by definition
+  hidden and pays only its remnant linked to G0 at every tick." Readings (coordinator):
+  - (2) restated: for each problem the open step is that its object's existence question is answerable, i.e. decidable at every
+    tick. That is the ETM's dichotomy again: with a floor the question "settled or not" is decidable [Lean]. Care point: the gates
+    then need the answer itself, not only its answerability.
+  - Transitivity: reaching composes, so from the certified start every finite scale is reached by finitely many ticks, each one
+    settling [Lean for composition of contracting steps]. Care point: transitivity reaches every finite target; the continuum is a
+    limit, not a finite target, and the margin carried multiplicatively is `c_0 * prod(factors)`, which keeps a floor in the limit
+    only if the factors are bounded uniformly. That uniform bound is the open step (O1; the tick's diameter `Delta` above).
+  - Hidden conjecture: in DMP terms an unnoticed assumption never enters as content, only as a tail paid each tick, and if it is
+    false it is excised (R136a1). In the Lean part nothing can stay hidden: every hypothesis is in the statement and every axiom in
+    the kernel's report, so the report is the ledger of remnants [Lean]. Care point: in prose an assumption can hide, which is why
+    every claim of the paper is either machine-checked or carries its status mark.
+- **Point 3 is how DMP passes the incompleteness argument: excise what is incomplete, then reduce over the rest to a generalisation
+  of what can exist (the owner, 2026-11-24):** "3 is just a way to get around the incompleteness argument by simply excising anything
+  that is incomplete and then reducing over it to a generalization of what can exist." Exact counterpart (coordinator): Goedel's
+  theorems apply to a whole consistent, effectively axiomatised theory that contains arithmetic: some true sentences stay undecided
+  [classical]. Two known ways to have completeness anyway, both of this shape: (a) restrict to a fragment that is complete and
+  decidable (Presburger arithmetic, Tarski's real closed fields [classical]); (b) decide per tick: "provable within n steps" is
+  decidable at every n, so at each tick everything not yet decided is outside, and the boundary moves with the ticks (the ETM's
+  decidable half; `etm_balance_undecidable` for the edge) [Lean]. DMP's excision is (b) with R136a1 as the answer for "outside".
+  Care points: (1) the excision itself is decidable only per tick; the set of all sentences ever decided is not decidable in general,
+  so "outside at tick n" can become "inside at a later tick" (a new act, never a revision of the earlier tick). (2) The Clay problems
+  are statements of arithmetic and analysis, so they cannot be excised as a class: if one of them were independent of the axioms, it
+  would be answered R136a1, outside, which is not the settling the gates ask for. (3) Nothing here makes a theory with arithmetic
+  complete; the completeness is that of the generalisation over what is inside at each tick [reading for the identification].
+  The owner answers the three care points (same day): "To 1: This includes the absence of an expected tick. To 2: Yes, it kind of
+  is. It just states that an O1 of that behavior exists and then lints everything that can not survive that. The decoupling of sorry
+  and R136a1 is an entanglement at the proof level. One says it can not work like that, the other that it MUST not work like that,
+  together, when they have something working, we'll be doubly sure, guaranteed! To 3: This is the needed excision of a finite amount
+  of loss at the beginning. That definition gives rise to meaning. If something can not be described as existing in any way shape or
+  form that can be constructed even as subsets of DMP, well, then I really don't know what you are trying to do, but it's gotta be
+  R136a1, since that is always the other option an act collapses back on." Readings (coordinator):
+  - (1) A missing tick is an answer too: when the expected tick does not come, the part is outside. This is the TTL of every act
+    (Milky Way's hash-and-TTL check; a missing heartbeat is a refusal) and the hard cutoff of the settling machine (Outlook VII).
+  - (2) The two markers are independent channels. `sorry` says "this derivation is incomplete here" and the kernel reports it as
+    `sorryAx` in the axiom list; `R136a1` says "this part is excluded by name" and stays a hypothesis, never an axiom, so the lint
+    lists it. A result that passes both (no `sorryAx` in the kernel's report, no hatch in the lint, every open part named) is
+    certified twice by channels that cannot fail together in the same way, like the four independent re-checkers
+    (`INDEPENDENT-CHECK.md`) [Lean for the mechanisms]. Care point: both channels certify form; double certainty of form, not of
+    the content of an open part.
+  - (3) The finite loss excised at the beginning is the floor at the error bars (entry above): a fixed, finite cost paid once, which
+    is what makes the rest meaningful. Every act then collapses to one of two: constructible inside (some subset of DMP), or R136a1.
+    Care point (stands): for a Clay statement the R136a1 side would mean "outside", not "settled" (entry on incompleteness).
+- **What stays open in the rederived BSD core is rotation-at-a-DB shaped (the owner, 2026-11-24):** "The still open BSD thing seems
+  to be rotation at DB shaped." Exact counterpart (coordinator): the one missing piece of the native BSD core is Hasse's bound
+  `|a_p| <= 2 sqrt p` at every prime (it is what makes the L-series converge for `re s > 3/2`, so the order at `s = 1` is finite).
+  Hasse's bound says exactly that Frobenius at the prime `p` (the DB) acts as a rotation: its eigenvalue `alpha_p = sqrt p * e^{i theta_p}`
+  lies on the circle of radius `sqrt p`, with `cos theta_p = a_p / (2 sqrt p)` the reflection coefficient of the encoder
+  (`frob`, `frob_refl`, `frobAlpha_normSq` in `BSDAPI.lean`, where Hasse is still the input) [Lean for the encoder; classical for
+  Hasse]. Its textbook proof is a positivity: the degree is a positive definite quadratic form on the endomorphisms of `E`, so
+  `deg(m - n phi) >= 0` for all `m, n` forces the discriminant bound `a_p^2 <= 4p` (Silverman V.1.1); equivalently the Hodge index
+  on `E x E`, whose linear algebra is `weil_bound` in `HodgeLinear.lean` [classical; Lean for the linear algebra]. So the open piece
+  is one rotation per DB, confined by one positivity, the same shape as the confined circle above. Care point: Mathlib has neither
+  isogeny degrees as a quadratic form nor intersection theory on `E x E`, so for now Hasse enters the arsenal as a named R136a1
+  part, and what follows from it (convergence, a finite order at `s = 1`) can be proved from that name.
+- **What GRH and O1 share: their assertion gives rise to existence and non-existence in exact, prescribed ways inside a DMP-complete
+  system running them (the owner, 2026-11-24, on the GRH-to-O1 round):** "GRH and O1 share one thing: Their assertion is what gives
+  rise to existence and non-existence in exact, prescribed, ways inside a DMP-complete system running them." Exact counterpart
+  (coordinator), from the round (`GRH-TO-O1.md`, `GRHToO1.lean`): the two share one geometry, the per-tick distance of an encoder
+  from the lossless point (`szego_of_elec`, `elec_cost`) [Lean], and they ask opposite things of it. GRH's transport asks every
+  tick to lose little, so that a margin is carried: what exists stays (the lower edge `f >= e^{-D}`). O1 asks every box to lose a
+  lot, so that the twisted sector is suppressed: what must not exist is removed (the upper edge `f <= e^{-kappa}`, `kappa > log mu`).
+  So the owner's sentence is exact in this form: GRH prescribes the existence side, O1 the non-existence side, of the same
+  distance. Lean adds three facts [Lean]: on one tick sequence a uniform margin and O1 at every tick exclude each other
+  (`uniform_margin_excludes_o1`), so the two prescriptions act on different objects (the zero measure's steps; the hand-over box's
+  sector ratios); each holds without the other (`transport_not_decay`, `decay_not_transport`); and Birkhoff's bounded diameter is
+  neither (`spread_without_o1`, `o1_without_spread`). Care points: (1) the shared thing is the geometry and the role (the two edges
+  of one band), not a statement one could prove once for both; GRH does not imply O1 and O1 does not imply GRH. (2) Both remain
+  open: no known result supplies either edge. (3) The round also found that Weil's form at growing support does not factor into
+  ticks of a positive map (restriction to nested supports, isometric recursion steps, additive prime-power terms), so the earlier
+  Birkhoff-Hopf lead does not apply on the GRH side as stated.
+  The owner sharpens it (same day): "GRH asks that it exists, while O1 asks that it is falsifiable, so the duality inherent in
+  construction of DMP-complete systems." Reading (coordinator): in the band, exact: GRH's edge asks that the margin exists at every
+  tick (a witness that stays), O1's edge asks that every twisted state is refuted at every box (a bound whose violation would be a
+  finite, observable failure, and so is excised). Existence and falsifiability are the two sides of the DB, the same duality as
+  "exists or R136a1" at each tick. Care point: as whole statements the logical forms are crossed. RH (and GRH for Dirichlet
+  L-functions) is a Pi-0-1 statement: one computable counterexample refutes it (Lagarias' criterion; Davis-Matiyasevich-Robinson)
+  [classical]; the Yang-Mills problem asks for an existence (a continuum theory with a gap). So each problem, stated whole, has the
+  logical form of the other's role in the band: the duality appears twice, once in the roles and once, mirrored, in the statements
+  [reading for the identification].
