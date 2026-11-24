@@ -31,8 +31,8 @@ picture.
 
 With these two theorems the machine and test modules reached 100 declarations by the axiom script's count (`rotation-axioms.log`,
 at `41c76f3`). The owner reads that as exactly right, since + and - are now given a modulus **[reading]** (claim II.0h). The count is
-a fact about the files, not the mathematics: it grew 75, 77, 83, 96, 98, 100 as the modules did, and it changes when a proof is
-split.
+a fact about the files, not the mathematics: it grew 75, 77, 83, 96, 98, 100 as the modules did, it is a sum over the four
+files (42 + 35 + 6 + 17) rather than a product, and it changes when a proof is split.
 
 **Care point.** The translation is exact for the cost and the rotation. The content a step carries, the program the universal
 machine runs, lives in the state and not in the number; that is where its undecidability sits (II.3) **[paper]** (claim II.0e). In

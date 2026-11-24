@@ -4936,3 +4936,6 @@ thread.
   files, true by counting, and changes when a proof is split or a helper added; no mathematical statement fixes it, so it cannot be
   proved as mathematics. Offered as the owner's reading: the count reached 100 exactly when + and - were given a modulus
   (`rot_of_isometry_real`, `real_eq_sign_mul_abs`) [reading].
+  Checked against the owner's follow-up ("a matrix multiplication of the possibilities, with the total count being the product"):
+  the 100 is a sum over the four files, 42 + 35 + 6 + 17, not a product. Where the product reading is exact is the machine itself:
+  a run's amplitude is the product of its steps (`cmach_iterate`), and path counts multiply (the factor mu^k of the tube threshold).
