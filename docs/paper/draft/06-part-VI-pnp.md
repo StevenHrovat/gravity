@@ -195,3 +195,10 @@ For NP vs coNP through proof complexity: superpolynomial lower bounds for every 
 nearest step is N2, interface hardness at width 3 for cutting planes, which would be a new lower bound for a natural system on the
 structureless family, though not a resolution of NP vs coNP. For P vs NP: N4, a barrier-passing argument from the certified class to
 all inputs. Nothing in this part closes any of them.
+
+## VI.10 The box in the one-box test
+
+**Gate factor and marker.** The ticks are the restrictions. At each one the gate reads inside when the restriction keeps at most a
+1 - theta share of the costly lines; the marker is the claim "inside". The box passes exactly when the card's open step
+(`CrossingCost`) holds, and a passing box gives the crossing bound: every refutation has at least e^(theta b) lines **[Lean]**
+(`np_box_concl`, `ETM/CardBox.lean`; claim VI.10a). The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**. Its open ticks are the restrictions of the lifting step at width 3 (VI.4.10).

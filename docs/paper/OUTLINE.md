@@ -166,9 +166,8 @@ two hidden witnesses, Sp(2) strongly rigid, G2 with exactly two structures and o
 4. **GRH framing.** Beyond Dirichlet (where the positivity route would be new) or an independent route for Dirichlet.
 5. **WHKs vs WKH.** The paper uses WHK as the owner asked; the DMP texts are unchanged.
 6. **The personal note.** It still says "One thing led to three"; the paper now covers seven problems.
-7. **The box for GRH, P vs NP, BSD, Hodge and GU.** The template asks each problem for its box in the one-box test (gate factor and
-   marker). Yang-Mills and Navier-Stokes have one in Lean; the others need one written, and the owner's reading of what their gate
-   factor is.
+7. **The box for GRH, P vs NP, BSD, Hodge and GU.** *Written 2026-11-24:* every card is a box in the test (`ETM/CardBox.lean`), each
+   with its ticks named (scales, restrictions, primes, codimensions, labels); the owner may refine the reading of each gate factor.
 
 **Answered on 2026-11-24** (kept for the record): O1's final form (F_e(L) - 2c(L) > log mu_4, the excess act included) and its one
 Lean form (`FineOneBox`, now the Yang-Mills instance of the one-box test); the annealed-to-quenched step (not needed in the per-outside

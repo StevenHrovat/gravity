@@ -156,6 +156,7 @@ Definitions of DMP are quoted from `vendor/dmp/01-constitution.md` (DMP 0.9.9) a
 | II.4b | No outside input: a verdict read after the half-turn is the verdict read from inside; in the plaquette layer the flux read from a box and from its complement agree | Lean | `im` repository, `arsenal/Arsenal/Rotation.lean`, `Box.Gate`, `Box.complete_halfTurn`; `ProofPhase/ETM/RotationInstances.lean`, `crossoverGate`, `crossover_halfTurn` | none |
 | II.4c | The test has content only when the marker is the system's own claim: a marker read off the gate afterwards always passes, and a box with a wrong marker exists | Lean | `im` repository, `arsenal/Arsenal/Rotation.lean`, `Box.selfMarked_complete`, `Box.exists_not_complete`; the same in `ProofPhase/ETM/Rotation.lean` for running systems | none |
 | II.4d | Rigidity as a one-box test: a manifold's presentations (structure set) with its self-equivalences acting; the rigidity box (gate: reached from the manifold; marker: the claim "rigid") is DMP-complete exactly when the manifold is rigid; rigid from the shared gate (the sharing answered R136a1); a non-rigid case refutes the sharing; two presentations through a map to ZMod 2 are rigid exactly when it is onto; a non-rigid datum exists | Lean | `im` repository, `arsenal/Arsenal/Rigidity.lean`, `RigidityData.box_complete_iff`, `rigid_of_shared`, `not_shared_of_not_rigid`, `twoPoint_rigid_iff`, `exists_not_rigid` | none |
+| II.4e | Every card as a box: the tick box (gate inside at tick n exactly when the tick's statement holds; marker the claim) passes exactly when every tick's statement holds and fails at one failing tick; the card box (every tick carries the card's open step) passes exactly when the open step holds, and then gives the card's conclusion; it restates the step and proves no new bound | Lean | `ProofPhase/ETM/CardBox.lean`, `tickBox_complete_iff`, `tickBox_wrong`, `cardBox_complete_iff`, `cardBox_concl` | none |
 
 ## Part IV. The one assumption and the rigid start (`draft/03-part-III-one-assumption.md`)
 
@@ -400,6 +401,8 @@ Notes relative to `docs/rh-guide/`.
 | V.5.4 | Positive-by-construction spaces miss off-line zeros (Connes) or give a half-plane (Lax-Phillips) | classical (recalled) | `grh/TATE.md` 0.5 | none |
 | V.6a | RH iff M(x) = O(x^{1/2 + eps}) | classical | `PREP.md` (ODP tool entry) | none |
 | V.6 | DMP readings of Part V (circle, virtual flux, excision at G0, GRH as the ODP's tool, remnants, coupling factor) | reading | `PREP.md` (2026-11-23) | none |
+| V.8a | The GRH box (ticks: scales; gate: the sign carried at that scale) passes exactly when ScaleSign holds; for a model of zeta's zeros it passes under Mathlib's Riemann hypothesis (External) | Lean (from External for the second part) | `ProofPhase/ETM/CardBox.lean`, `grh_box_iff`, `grh_box_of_RH` | V.4 (the open ticks beyond the start) |
+
 
 ## Part VI. P vs NP (`draft/06-part-VI-pnp.md`)
 
@@ -447,6 +450,8 @@ Notes relative to `docs/pnp/`.
 | VI.6.N4 | From the certified class to all inputs | open | `DICTIONARY.md` 6.3, 8 | a barrier-passing argument |
 | VI.7 | Barriers: relativization, natural proofs, algebrization; Williams evades them | classical | Baker-Gill-Solovay 1975; Razborov-Rudich 1997; Aaronson-Wigderson 2009; Williams 2014 | none |
 | VI.8 | DMP readings of Part VI (two categories of lines, pairs as entanglement, confinement plus uncertainty, inside/across a DB) | reading | `PREP.md` (2026-11-23); `DICTIONARY.md` 7 | none |
+| VI.10a | The P vs NP box (ticks: restrictions) passes exactly when CrossingCost holds, and a passing box gives every refutation at least e^(theta b) lines | Lean | `ProofPhase/ETM/CardBox.lean`, `np_box_concl`, `cardBox_complete_iff` | VI.4.10 |
+
 
 ## Part VII. Navier-Stokes, with Poincare as validation (`draft/07-part-VII-navier-stokes.md`)
 
@@ -595,6 +600,8 @@ Notes relative to `docs/pnp/`.
 | VIII.6d | Hasse's bound for one curve reads as `weil_bound_abs` at genus 1 (Lean proves it for every genus g from the Hodge index property and the intersection numbers; the genus-1 specialisation and the link of N to Mathlib's count are not made in Lean) | reading | `ProofPhase/Unified/HodgeLinear.lean`, `weil_bound_abs`; `ProofPhase/Unified/HodgeAPI.lean`, `curveCard`, `curve_open` | state the genus-1 instance and tie N to `count` |
 | VIII.6e | What is left of BSD is the `.cmb` record: the refined formula's counts and measures balance to a dimensionless 1 (logarithm 0); the functional equation carries both sides through the rotation with sign `(-1)^rank`; dividing by `(s - 1)^r` removes the zero | reading | PREP (owner, 2026-11-24, "what is left of BSD is the .cmb file"); BSD 4 | none |
 | VIII.6g | BSD in the triad: an equation between an existence count (independent points) and a zero count (the vanishing rate of the Euler ledger) | reading | BSD 4; PREP (the triad entries) | none |
+| VIII.8a | The BSD box of a curve passes exactly when BSD holds for it | Lean | `ProofPhase/ETM/CardBox.lean`, `bsd_box_iff` | VIII.5.1 |
+
 
 ## Part IX. Hodge (`draft/09-part-IX-hodge.md`)
 
@@ -656,6 +663,8 @@ Notes relative to `docs/pnp/`.
 | IX.6i | The shared positivity of Hodge and the GRH column: described classes positive, so existing classes positive; the same form puts Frobenius eigenvalues on the circle; the two columns share "a positive form, a dynamics that is a similitude of it, and the line as the consequence" | reading (Lean for the steps: `PolHS.hodge_pos`, `PosInput.alg_pos`, `eigen_on_circle_form`, `curve_open`, `weil_bound`) | HODGE 4; PREP (Hodge-index-route entry) | none |
 | IX.7.1 | The hard-Lefschetz `sl_2` decomposition, the Hodge-Riemann signature formula, Hodge structures of any weight with the Hodge filtration, and finiteness of lattice Hodge classes of bounded norm are reachable on Mathlib and not built | paper (estimate) | HODGE 2 | building them |
 | IX.7.2 | Kaehler manifolds, harmonic forms, the Hodge decomposition itself, the cycle class map and the exponential sequence on a complex manifold need geometry Mathlib lacks | paper (estimate) | HODGE 2 | Mathlib geometry |
+| IX.8a | The Hodge box (ticks: codimensions) passes exactly when the Hodge conjecture holds for the input; for divisors it passes, from Lefschetz (1,1) with its named inputs | Lean (from External for divisors) | `ProofPhase/ETM/CardBox.lean`, `hodge_box_iff`, `hodge_box_divisor` | IX.5.1 |
+
 
 ## Part X. GU, the Grand Unified reading (`draft/10-part-X-gu.md`)
 
@@ -710,6 +719,8 @@ Notes relative to `docs/pnp/`.
 | X.7c | Route 3: twist sectors of a lattice SU(3) x SU(2) x U(1) theory with Z_6-invariant vector-like matter; chiral matter stays out of reach | open | GU 6, item 3 | the extension of the `SUNTwist` chain |
 | X.7d | Route 4: a statement about running couplings needs the continuum theory with matter | (statement of scope) | GU 6, item 4 | beyond the paper's scope |
 | X.7e | Until one lands, the paper can say: SU(3) x SU(2) x U(1)/Z_6 as one structure (classical, Lean-stated); readings that select Z_6 and are falsifiable; charge quantisation proved and measured but standard; no consequence derived from DMP beyond that | paper | GU 6 (closing paragraph); X.5f | X.5e (a consequence beyond the standard expectation) |
+| X.8a | The GU box (ticks: labels on G0's phase field; gate: integer charge) passes, proved; the card's open step (a consequence beyond the standard, X.5e) is not a statement about this box | Lean | `ProofPhase/ETM/CardBox.lean`, `gu_box` | X.5e |
+
 
 ## Part XI. Outlook: a settling machine (`draft/11-outlook-settling-machine.md`)
 
@@ -879,7 +890,7 @@ Counted on the rows above (each row once, by its first mark; scope rows not coun
 
 | Status | Current (2026-11-24) | After the decidable start (2026-11-24) | After the fake G2 reading (2026-11-24) | After the witnesses (2026-11-24) | After the U(1) reading (2026-11-24) | After the rigid start (2026-11-24) | After the one-box test (2026-11-24) | After A.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Lean | 245 | 232 | 232 | 232 | 232 | 232 | 231 | 221 | 221 | 221 | 221 | 239 | 114 |
+| Lean | 251 | 232 | 232 | 232 | 232 | 232 | 231 | 221 | 221 | 221 | 221 | 239 | 114 |
 | classical | 125 | 125 | 124 | 124 | 123 | 122 | 121 | 121 | 121 | 121 | 121 | 120 | 42 |
 | external | 42 | 41 | 41 | 41 | 41 | 41 | 41 | 41 | 40 | 40 | 40 | 48 | 7 |
 | conditional | 7 | 7 | 7 | 7 | 7 | 7 | 6 | 5 | 5 | 4 | 4 | 4 | 3 |
@@ -888,9 +899,9 @@ Counted on the rows above (each row once, by its first mark; scope rows not coun
 | certified | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 0 | 0 |
 | reading | 101 | 93 | 92 | 91 | 90 | 89 | 88 | 87 | 87 | 86 | 83 | 83 | 25 |
 | open | 46 | 46 | 46 | 46 | 46 | 46 | 45 | 44 | 45 | 47 | 48 | 70 | 28 |
-| **Total** | **653** | **628** | **626** | **625** | **622** | **619** | **612** | **599** | **599** | **599** | **597** | **651** | **263** |
+| **Total** | **659** | **628** | **626** | **625** | **622** | **619** | **612** | **599** | **599** | **599** | **597** | **651** | **263** |
 
-The owner's answers of 2026-11-24 moved X.5f from open to reading and added III.64a and III.64b (reading); IV.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved IV.9.5b to conditional on III.64 (placed at the ODP's end, as III.66) and VII.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The Perelman round settled A.3j (open to external: N = 3 rigid in both categories, Wang; N >= 4 not, paper). The one-box test (the rotation API) added 13 rows: II.4a to II.4c, IV.10c to IV.10e, VII.7g, VII.7h, III.68 to III.68d (10 Lean, 1 open, 1 reading, 1 conditional). The rigid start added 7 rows: A.3k, A.5i, A.5j, III.69 to III.69c (1 Lean, 1 classical, 2 paper, 1 reading, 1 conditional, 1 open: the rigidity of Sp(2) and G2). The U(1) reading added A.5k (classical), A.5l (paper) and A.5m (reading). The witness reading added A.5n (classical), A.5o (reading) and A.5p (open: G2), and A.5j became a paper sketch (Sp(2) topologically rigid). The fake G2 reading added A.5q (reading). The decidable start added III.70 (reading) and III.70a (classical). The G2 round confirmed A.5j (Sp(2) strongly rigid), moved A.5p from open to paper (G2's structure set has exactly two elements) and added A.5r (open: is G2 rigid). After the relabel, A.5s (reading: the live G2 candidate as an open interface channel) A.5t (reading: the G2 channel goes back into O1) and A.5u (the G2 channel as a certified DMP-complete state; now Lean from the one assumption, with A.5v and II.4d) III.71 (reading: the one assumption as a leak axiom) the draft-4 abstract rows 0.21 to 0.25 the ETM translation II.0a to II.0e I.11b (IM read as Identity Multiplication), I.11c (IM as a step up the DAG) II.0f (only rotation keeps identity), II.0g and I.11d (ordinary multiplication as IM) II.0h (the reformulation: decidability over y^k options, a reading) and III.72, III.72a (what can be shown about O1) were added; the first column is kept current. The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
+The owner's answers of 2026-11-24 moved X.5f from open to reading and added III.64a and III.64b (reading); IV.9.5b stays open as the lower edge of the one assumption. The second answers of the same day moved IV.9.5b to conditional on III.64 (placed at the ODP's end, as III.66) and VII.7e to reading (Navier-Stokes not DMP-complete, blowup the expected and falsifiable consequence). The Perelman round settled A.3j (open to external: N = 3 rigid in both categories, Wang; N >= 4 not, paper). The one-box test (the rotation API) added 13 rows: II.4a to II.4c, IV.10c to IV.10e, VII.7g, VII.7h, III.68 to III.68d (10 Lean, 1 open, 1 reading, 1 conditional). The rigid start added 7 rows: A.3k, A.5i, A.5j, III.69 to III.69c (1 Lean, 1 classical, 2 paper, 1 reading, 1 conditional, 1 open: the rigidity of Sp(2) and G2). The U(1) reading added A.5k (classical), A.5l (paper) and A.5m (reading). The witness reading added A.5n (classical), A.5o (reading) and A.5p (open: G2), and A.5j became a paper sketch (Sp(2) topologically rigid). The fake G2 reading added A.5q (reading). The decidable start added III.70 (reading) and III.70a (classical). The G2 round confirmed A.5j (Sp(2) strongly rigid), moved A.5p from open to paper (G2's structure set has exactly two elements) and added A.5r (open: is G2 rigid). After the relabel, A.5s (reading: the live G2 candidate as an open interface channel) A.5t (reading: the G2 channel goes back into O1) and A.5u (the G2 channel as a certified DMP-complete state; now Lean from the one assumption, with A.5v and II.4d) III.71 (reading: the one assumption as a leak axiom) the draft-4 abstract rows 0.21 to 0.25 the ETM translation II.0a to II.0e I.11b (IM read as Identity Multiplication), I.11c (IM as a step up the DAG) II.0f (only rotation keeps identity), II.0g and I.11d (ordinary multiplication as IM) II.0h (the reformulation: decidability over y^k options, a reading) III.72, III.72a (what can be shown about O1) and the five boxes (II.4e, V.8a, VI.10a, VIII.8a, IX.8a, X.8a) were added; the first column is kept current. The committed draft counted 651 rows; the file then held 655 counted rows (the abstract rows 0.6 to 0.9 had been added after the count: 0.6 paper, 0.7 Lean, 0.8 certified, 0.9 Lean), so the table column is the count as committed and the audit column is recounted by script on this file.
 
 Counted by script on this file (first word of the status column; "project rule" counts as paper). Mixed rows count once, under their
 first mark; for example "Lean (implication); premises open" counts as Lean, so the open count understates how many rows carry an open

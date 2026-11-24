@@ -287,3 +287,11 @@ The formalisation items that would change the status of the **borrowed** parts, 
 2. **Far, needs geometry Mathlib lacks:** Kaehler manifolds, harmonic forms, the Hodge decomposition itself, the cycle class map, the
    exponential sequence on a complex manifold. **[paper, an estimate]**
 3. A Hodge row in the notes' API table and an import of `Unified/HodgeAPI.lean` into `Unified/All.lean`: left to the coordinator.
+
+## IX.8 The box in the one-box test
+
+**Gate factor and marker.** The ticks are the codimensions. At codimension p the gate reads inside when every rational (p,p) class is
+a rational combination of classes of algebraic cycles; the marker is the claim "inside". The box of an input passes exactly when the
+Hodge conjecture holds for it **[Lean]** (`hodge_box_iff`, `ETM/CardBox.lean`; claim IX.8a). For divisors, codimension one, the box passes, from
+Lefschetz (1,1) with its named inputs **[Lean]** (from `External`; `hodge_box_divisor`). The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**. Its open ticks start at codimension
+two (IX.5.1).

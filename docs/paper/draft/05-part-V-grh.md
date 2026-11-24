@@ -228,3 +228,12 @@ subset or by separate terms, so the construction must be an exact identity coupl
 Yang-Mills chain (Part IV) is the model: there the positive object (e^{-S} with locality) is given by construction, and reflection
 positivity follows. The open step here is to find the arithmetic G0 in which Weil positivity is a construction rather than a
 conclusion (Part III).
+
+## V.8 The box in the one-box test
+
+**Gate factor and marker.** The ticks are the scales. At each scale the gate reads inside when the margin is carried to the next
+scale with a nonnegative factor, the sign at that scale; the marker is the claim "inside". The box of a finite zero model passes
+exactly when the sign holds at every scale, the card's open step (`ScaleSign`) **[Lean]** (`grh_box_iff`, `ETM/CardBox.lean`; claim V.8a). For a
+model of zeta's zeros with nonnegative weights it passes under Mathlib's statement of the Riemann hypothesis, taken as a named
+`External` slot **[Lean]** (`grh_box_of_RH`). The first ticks are certified: at the start {infinity, 2, 3} the sign holds with
+explicit margins (III.65, **[certified]**). The box is the card's open step in the test's language (II.4): it restates the step and proves no new bound, and the content stays in the step **[paper]**. Its open ticks are the scales beyond the start (V.4).

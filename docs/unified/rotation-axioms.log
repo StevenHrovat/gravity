@@ -1,6 +1,6 @@
 == build ProofPhase.ETM.ETM
-Build completed successfully (9081 jobs).
-== declarations: 100
+Build completed successfully (9106 jobs).
+== declarations: 115
 == axioms
 'ProofPhase.ETM.Box' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.toArsenal' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -102,5 +102,20 @@ Build completed successfully (9081 jobs).
 'ProofPhase.ETM.rot_of_isometry_real' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.real_eq_sign_mul_abs' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.complex_translation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.tickBox' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.tickBox_correct_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.tickBox_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.tickBox_complete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.tickBox_wrong' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cardBox' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cardBox_complete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.cardBox_concl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.grh_box_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.grh_box_of_RH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.np_box_concl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.bsd_box_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.hodge_box_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.hodge_box_divisor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.gu_box' depends on axioms: [propext, Classical.choice, Quot.sound]
 == source grep
-no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean, Complex.lean
+no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean, Complex.lean, CardBox.lean

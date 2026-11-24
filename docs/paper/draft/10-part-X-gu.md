@@ -245,3 +245,10 @@ Until one of these lands, the paper can say exactly this: the framework contains
 couplings could refute; charge quantisation from the circle is proved and measured but is also the standard expectation; and no
 consequence is derived from DMP beyond what the standard expectation contains. Which of these, if any, counts for the gate is the
 owner's decision.
+
+## X.8 The box in the one-box test
+
+**Gate factor and marker.** The ticks are the labels carried on G0's phase field. At each the gate reads inside when the label has an
+integer charge; the marker is the claim "inside". This box passes, proved: every continuous character of the circle is z to the n
+**[Lean]** (`gu_box`, `ETM/CardBox.lean`; claim X.8a). The GU card's open step, a consequence beyond the standard expectation (X.5e), is not a
+statement about this box; the box shows what the G0 link already gives every label, and what stays open lies beyond it **[paper]**.

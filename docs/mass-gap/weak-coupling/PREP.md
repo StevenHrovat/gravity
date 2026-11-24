@@ -4958,3 +4958,9 @@ thread.
   one-box geometry is untested by saved data (IV.7.3) [numerical]; (3) care point: "O1 does not fail for any describable instance"
   is O1 itself, not a weaker statement, so it is the one assumption phrased so that it can be falsified; what can be shown is (1)
   and the record (2), and the owner reads (3) as the containing DB's guarantee [reading].
+- **The five boxes (coordinator, 2026-11-24, on the owner's "Yes, write them").** `ETM/CardBox.lean`: a tick box passes exactly when
+  every tick's statement holds; a card box, every tick carrying the card's open step, passes exactly when the open step holds and
+  gives the card's conclusion [Lean]. GRH (ticks: scales; passes under Mathlib's RH as an External slot), P vs NP (restrictions),
+  BSD (primes of the Euler ledger), Hodge (codimensions; passes for divisors), GU (labels on the phase field; passes, proved).
+  Care point: each box restates its card's open step and proves no new bound; the tick names are the coordinator's proposal for
+  the owner to refine.
