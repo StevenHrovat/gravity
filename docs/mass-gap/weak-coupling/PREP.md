@@ -5005,3 +5005,12 @@ thread.
   sum is off by at most one unit, the "+1" of Part I.7 (existence = non-existence + 1) [classical arithmetic; reading for the tie].
   Reading: the exact impossibility is the base non-existence rests on, and the one-unit gap within the fluctuation is the quantum
   between them. To be applied to Part I.7 in the stage-3 consolidation.
+- **A DMP-complete proof is lintable in one step, relying only on decide (the owner, 2026-11-24).** "Every DMP-complete proof needs
+  to be lintable in one step, only relying on decide." Counterpart (coordinator): the computable layer of the API (Part II, "what
+  runs"): every decision has a computable form on rational data, proved right for the real system once (e.g. `szegoQ_cast`,
+  `elecQ_cast`), and the instance is one kernel evaluation (e.g. `balanceBound 1 (1/1000) (1/2) = 1001`, checked by the kernel);
+  the one-box certificate is one step at the shared gate plus induction [Lean]. So the sentence reads as a definition: a finished,
+  DMP-complete proof has its last step a single `decide` on finite data, with the correctness theorem proved once in general
+  [reading]. Care points: the correctness theorems are ordinary Lean proofs over the reals and Mathlib, not decide-only; the open
+  steps are not of this form yet (O1 is a for-all over every outside, not one finite check); `native_decide` stays excluded (the
+  kernel must check the step). To be applied to Part II (II.3 to II.5) in the stage-3 consolidation.
