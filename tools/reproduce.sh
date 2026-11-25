@@ -50,7 +50,8 @@ stage_evidence() {
 
 # The axiom lines of a log, in either format the scripts print: Lean's "'X' depends on axioms: [..]" (or "does not depend on any
 # axioms") and the own traversal's "X: [..]".
-axiom_lines() { grep -E "depends on axioms|does not depend on any axioms|^[A-Za-z_][A-Za-z0-9_.']*: \[[^]]*\]$" "$1" | sort -u; }
+# Line endings are dropped first, so a Windows checkout (CRLF) compares the same as a Linux one.
+axiom_lines() { tr -d '\r' < "$1" | grep -E "depends on axioms|does not depend on any axioms|^[A-Za-z_][A-Za-z0-9_.']*: \[[^]]*\]$" | sort -u; }
 # Any axiom outside Lean's three standard ones, on those lines.
 nonstd() { axiom_lines "$1" | grep -oE "\[[^]]*\]" | tr -d '[]' | tr ',' '\n' | tr -d ' ' | grep -vxE "propext|Classical\.choice|Quot\.sound|" ; }
 

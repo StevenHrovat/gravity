@@ -334,23 +334,26 @@ claimed.
 
 **The label (claim R.9a).** The first author gives the state in which a request is proper and its satisfaction open its own label,
 **Moin**, his universal greeting, chosen because it carries no meaning the system already uses, so that it is unique as a label
-**[reading]**. Its exact counterpart in IM is the state of a channel between the gate's recognition of a proper request (a knock that
+**[reading]**. Its exact counterpart in IM is the state of a channel, seen from the client, between the gate's recognition of a proper request (a knock that
 passes every check, answered by a verified accept) and its satisfaction (the established frame): the challenge, the door and the
 response happen inside it, and nothing on the wire carries the label, which names a state of the exchange **[paper]** (IM,
 `src/Im/ImFrames.cs`, `ImChannelState.Moin`, with a test that the channel moves from closed through Moin to established and that a bad
-accept leaves it knocked; `docs/language.md`, "The establishment label: Moin").
+accept leaves it knocked; `docs/language.md`, "The establishment label: Moin"). A refusal is not a state: a refused answer, a failed
+door or a closed connection end the exchange with an error, and the client drops the session while it is in Moin.
 
 **What should be open is the satisfaction.** In the paper's Lean every named open step is in this state: `OpenStep name P` is the
-statement P itself under a plain-words name, taken only as a hypothesis, never as an axiom, so the request is posed properly and its
-satisfaction is what stays open **[Lean]** for the form (`API.lean`, `OpenStep`; IM's `R136a1`). The first author reads Moin as the label
+statement P itself under a plain-words name, taken only as a hypothesis, never as an axiom (the axiom audit shows none is assumed), so
+the request is posed properly and its satisfaction is what stays open **[Lean]** for the form (`API.lean`, `OpenStep`; IM's `R136a1`). The first author reads Moin as the label
 of O1: the one open step of Yang-Mills, properly requested, its satisfaction open **[reading]** (claim R.9a). In the terms of II.4.1 that
-is the base case of the Yang-Mills card, the one step a proof would be established from.
+is the base case of the Yang-Mills card, the one step a proof would be established from **[reading]**.
 
 **In binary, Moin is the leading zero (claim R.9b).** The first author: in binary, Moin is the leading zero, which is rotated away as a
 certification of positive interaction **[reading]**. Its exact part: rotating an n-bit word left by one place is an exact doubling
 exactly when its leading bit is 0; the zero leaves the top and nothing comes round to the end, while a leading 1 comes round and the
 result is not a doubling **[Lean]** (IM, `Arsenal/Toy.lean`, `rotl_of_leading_zero`, `rotl_of_leading_one`, `rotl_eq_double_iff`). Every
 byte of `vxunderground` is ASCII and has a leading zero, so rotating every byte left doubles it exactly; the byte 250, with a leading
-one, becomes 245 and not 500 **[Lean]** (`vx_leading_zero`, `vx_rotl`, `rotl_250`, kernel evaluations). Care point: the doubling
-certifies that the step was lossless, that a leading zero was there and nothing spilled; it says nothing about what the content is.
+one, becomes 245 and not 500 **[Lean]** (`vx_leading_zero` and `rotl_250` by kernel evaluation, `vx_rotl` from `rotl_of_leading_zero`;
+on the kernel alone, `moin_byte` decides it for all 256 bytes, T.8). Care point: a rotation never loses a bit, a leading 1 is not
+lost but comes round; the doubling certifies that no bit wrapped round, that the rotation agreed with multiplying by two. It says
+nothing about what the content is.
 
