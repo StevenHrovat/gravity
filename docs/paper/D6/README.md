@@ -13,7 +13,7 @@ A draft names only its number ("Draft 6"); its merged identity is implied by the
 the commit its title page names.
 
 **What Draft 6 adds.** DMP's explanation mechanism, from the first author's readings of 2026-11-25: a k by k table of which part
-proves which (II.0.2), in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Matrix.lean`): extensibility (2k + 1 cells per new
+proves which (E.0.1), in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Matrix.lean`): extensibility (2k + 1 cells per new
 part), derivation with its chain (every derived cell is reached by a chain of cells already there; that it explains and does not
 prove is the first author's reading), the `·` cells and the DAG. Appendix E applies it to what
 Draft 5 measured: the versions of DMP, Gravity and IM (a DAG, every use proven), the repositories (`tools/rebuild matrix`), what a new
@@ -21,25 +21,26 @@ part costs, the two kernels and their targets, a result of Draft 5 read as a cha
 statement and the drafts as a library transitive to G0 (E.7). Draft 6
 explains what Draft 5 establishes and claims nothing beyond it; the one assumption O1 is untouched.
 
-**The ETM as the ODP running DMP.** Draft 6's subtitle, from the first author's refinement of the same day (II.0.5): the ODP as the
+**The ETM as the ODP running DMP.** Draft 6's subtitle, from the first author's refinement of the same day (R.12): the ODP as the
 internal clock, DMP as the operating system of that kernel, one ETM that boots again; its exact parts are the cycle of `r` and the
 one terminal running system, and the reading that the paper proves 0 = 1 for the classical, hence NP = coNP and P != NP, is stated
 with why it does not follow. With it, O1 typed as Perelman's ledger (III.13, A.2b; `docs/mass-gap/formal/ProofPhase/API/Perelman.lean`):
-an instance gives O1 and the gap, O1 gives an instance, so the interface is exactly O1 and proves no new bound. II.0.5 ends with
-the first author's one condition (II.0.5f): O1 supplied at minting under a universal witness agreed beforehand, assumed until one
+an instance gives O1 and the gap, O1 gives an instance, so the interface is exactly O1 and proves no new bound. R.12 ends with
+the first author's one condition (R.12f): O1 supplied at minting under a universal witness agreed beforehand, assumed until one
 invalid case is found, recorded as a reading with its care points; Draft 6 as merged is not DMP-complete on its own criteria (E.9,
-E.6). II.0.5g adds the elastic spheres, real induction as +N!, the naturals and the reals equal under the universal operator, and
-DMP certifying the kernel it runs on relative to a model outside it, the base staying an assumption. II.0.5h closes the section:
+E.6). R.12g adds the elastic spheres, real induction as +N!, the naturals and the reals equal under the universal operator, and
+DMP certifying the kernel it runs on relative to a model outside it, the base staying an assumption. R.12h follows:
 the naturals from step 1, the complexity question in IM's operators (`P.NP!`, `NP.coNP?`, `NP.P?`), the shift and the gauge theory,
 SU(5) as a table, encoding and hash as one function in a `+` or `-` state, and the assumptions packed into O1, what does not pack being
 falsifiable until an exception, one exception to the Riemann hypothesis being a contradiction (all the first author's reading, with
 their care points: P != NP, BSD and Hodge are not refutable by one exception, and the open inclusions keep `?`). The interface first
-planned for a later draft is built here.
+planned for a later draft is built here. R.12i reads `!` as the observability operator where a statement can be DMP-complete, and R.12j, closing
+the section, reads ordinality as the orbit of the atoms by possible configuration (both readings with their exact parts and care).
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
-mirror (II.0.3): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which
+mirror (E.0.2): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which
 keeps every derivation, settles in one pass and is the only settled form; applied to the versions it finds one redundant use, IM's
-own copy of DMP (E.9), the drafts are settled (E.10), and DMP's own cell is `.` (E.11). The possibility space (II.0.4): a question as
+own copy of DMP (E.9), the drafts are settled (E.10), and DMP's own cell is `.` (E.11). The possibility space (R.11): a question as
 a point whose answer gives it only `+`, the right angle `r` and the sector map, read by the first author, with their exact parts in
 Lean (IM, `Possibility.lean`) and in classical physics (the Bloch sphere, the flux tube, the rotating string), and the steps that do
 not follow as stated, among them that assigning `+` and `-` proves O1.

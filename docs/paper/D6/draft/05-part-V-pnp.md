@@ -225,7 +225,9 @@ all inputs. Nothing in this part closes any of them.
 
 ## V.10 The box in the one-box test
 
-**Gate factor and marker.** The ticks are the **bounds** (the first author's name; in plain terms, the restrictions): each bounds the share
+**Gate factor and marker.** In the Lean the box is the card box of the open step (`cardBox`): its ticks are `0, 1, 2, ...` and every
+tick carries the same statement, `CrossingCost`; the identification of the ticks with the bounds below is not in the Lean. The ticks
+are the **bounds** (the first author's name; in plain terms, the restrictions): each bounds the share
 of costly lines a restriction keeps. At each bound the gate reads inside when the restriction keeps at most a
 1 - theta share of the costly lines; the marker is the claim "inside". The box passes exactly when the card's open step
 (`CrossingCost`) holds, and a passing box gives the crossing bound: every refutation has at least e^(theta b) lines **[Lean]**
