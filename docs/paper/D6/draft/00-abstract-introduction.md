@@ -95,6 +95,27 @@ is the whole open problem. On the Yang-Mills box the base case is easy and viabi
 is O1. For G2 the open part is universality, the map of scales (Figure 1, dashed). No tool creates positivity; it has to come from the problem (II.16).
 No problem is solved here, and O1 is open.
 
+**5. What does not follow.** 0 = 1 holds in exactly one ring, the zero ring, which has one element (R.5a) **[Lean]**. In ordinary
+arithmetic 0 is not 1, and a proof of 0 = 1 there would prove every statement, P = NP and P != NP alike, so it can separate nothing;
+nor would NP = coNP give P != NP, since P = NP already implies NP = coNP **[classical]** (R.12c). Assigning `+` or `-` to a question
+is `?`, not `!`: it holds for a question whose answer is `-` as much as for one whose answer is `+` (R.11e) **[Lean]**. Supplying O1
+is assuming it, never proving it (R.12f). That at 0 = 1 existence and non-existence coincide is the first author's reading
+**[reading]** (R.5b).
+
+**And why that is useful.** In reasoning, knowing what does not follow marks exactly where the open part sits: every step that does not
+follow is one place the proof cannot come from, so the search narrows to what is left, and nothing that still has to be proved gets
+assumed by accident. A claim stated for every case is refuted by one failing case (`refuted_by_tick`, II.4.1) **[Lean]**, so a boundary
+named in advance is one a reader can check. In building the paper, the same rule shapes every page: each reading of the first author
+stands next to its exact part and its care point, which says what does not follow; each claim carries one mark in the ledger; and
+negative results are proved like positive ones, for example that seven bits cannot single out a byte (`seven_bits_collide`), that a
+gapless sequence has no ledger (`gapless_rejected`) and that assigning `+` and `-` settles nothing (`assignment_does_not_decide`)
+**[Lean]**. A step that does not follow is not discarded: it is kept as a question, `?`, still posed and so still possible (R.12m). The first
+author: this keeps DMP itself from accidentally becoming vacuous, so tight that it must always confine; that has been refuted
+actively at every step, which is how it works **[reading]**. The exact part: a framework that can say no is not vacuous, and this one
+does, on its own record: its optimizer finds the project's own versions not settled (E.9), the counting ledger rejects the
+gapless sequence (`gapless_rejected`) **[Lean]**, and the matrix stage fails on any redundant use other than the one stated (E.9)
+**[paper]**.
+
 **How to read on.** Press on the three toys until each closes (Appendix T), then mint the parts from the template: Part II builds the
 machine around these four points, Parts III to IX apply it one problem at a time, Part X compares them. The first author's vocabulary
 is collected in I.8: DMP, the framework; G0, its ground; the ODP (Oscillon Degradation Protocol), pressing then minting; the ETM
