@@ -1,13 +1,82 @@
 # Appendix E. The explanation mechanism applied
 
-*Draft 6, 2026-11-25. The tables of II.0.2 for what Draft 5 establishes, and the optimizer of II.0.3 applied to them (E.9 to E.11).
+*Draft 6, 2026-11-25. The tables of E.0.1 for what Draft 5 establishes, and the optimizer of E.0.2 applied to them (E.9 to E.11).
 Lean: IM, `arsenal/core/ArsenalCore/Matrix.lean` (IM `c441ed5`) and `Optimizer.lean` (IM `e9a4057`), on Lean's kernel alone. Tools:
 IM's `tools/rebuild matrix` (with `--optimize` from IM `e9a4057`) and `tools/rebuild check`. Claim labels (E.n) are listed in
 `../CLAIMS.md`.*
 
 Every table here has the parts as its rows and columns; the cell of a row and a column says whether the row proves the column, that is,
 that the use is proven, not that the row ran the proof. A cell where the row uses the column must be `+`; a `·` cell, where no proof
-relates the two, reflects positively; a current part's own cell is a use, an earlier version's is `·` (II.0.2).
+relates the two, reflects positively; a current part's own cell is a use, an earlier version's is `·` (E.0.1).
+
+## E.0.1 The explanation mechanism: a k by k table of proofs
+
+*New in Draft 6.* A system is k parts. Its table has one row and one column per part, and the cell of a row and a column says whether
+the row proves the column: `+` where the row uses the column and the proof is there, `-` where it uses it and the proof fails, `·`
+where no proof relates the two (in Lean, a table of uses U and one of proofs P: `·` is "not U", `-` is "U and not P"). A part's own
+cell is a use when the part is current, since its own round trip runs; an earlier version is frozen and not run again, so its own
+cell is `·`. The first author takes this table as DMP's explanation mechanism: what DMP establishes is explained by the cells that
+prove it, an explanation is a chain of `+` cells from what is established to what is claimed, and a derived cell explains, it does not
+prove **[reading]** (claim E.0.1b). Draft 6 uses it to explain what Draft 5 establishes and adds no mathematical claim; its new
+measurements are of the tools (Appendix E).
+
+**The `·` cells and the `.` boundary.** `.` is IM's operator of inclusion (R.10a). The first author: since no proof relates two such
+parts, they either do not exist at the same time, or both exist and reflect positively, so the `.` inclusion boundary of a DAG fits
+**[reading]** (claim E.0.1c). Exactly: let a cell need its proof where the row uses the column and reflect positively everywhere else;
+then every cell is `+` exactly when every used cell is proven (`allPlus_eff_iff`), and when every use points to an earlier part no
+diagonal cell appears after any number of derivation steps (`derive_irrefl`) **[Lean]** (IM, `arsenal/core/ArsenalCore/Matrix.lean`, on Lean's kernel alone).
+
+**What the table can do (claim E.0.1a).** Each item is a theorem of the same file **[Lean]**:
+
+* **Extensibility.** A table for k parts is also one for k + 1, since a part is added by naming one more index. k + 1 parts are all
+  `+` exactly when the first k are and the new part's row, its column and its own cell are (`allPlus_succ_iff`), so nothing already
+  proven is checked again; the count of new cells, 2k + 1, is arithmetic (`new_cells`).
+* **Derivation.** Composing two tables, the row proving a part that proves the column, is the product of Boolean matrices; its
+  iteration covers the transitive closure, which Warshall's algorithm computes **[classical]** (Warshall 1962). The Lean iterates
+  "the table, or the table composed with itself", which after n steps covers chains of up to 2^n links; it does not prove that the
+  closure is reached. Every chain gives a derived cell, and every derived cell is reached by a chain of cells of the table, after any
+  number of steps (`comp_of_chain`, `step_sound`, `derive_sound`).
+* **What a step adds.** On an all-`+` table a step adds nothing (`step_eq_of_allPlus`); on any table it adds a cell only along a chain
+  of cells already there (`derive_sound`). In Lean a derived cell is a `+` like any other; that it explains and does not prove is the
+  reading above.
+
+The sections below apply the mechanism to what Draft 5 measured.
+
+## E.0.2 The optimizer: the mirror of the table
+
+*New in Draft 6.* The explanation mechanism builds up: a part is added, a cell is derived. The optimizer is its mirror: it removes every
+use that the table already includes through another chain. For each use the question `?` is asked, is this use needed, and `.`
+answers it: the use is redundant exactly when the row uses another part that already reaches the column. Removing the redundant uses
+is the transitive reduction of a DAG **[classical]** (Aho-Garey-Ullman 1972). What remains is the shortest form: each part says only
+what it includes directly, and each chain of kept uses ends in a part that includes nothing, written `!`. In the Lean a DAG is a
+table whose parts are numbered so that every use points to an earlier part (`Earlier`); every DAG can be numbered so, so the general
+facts below hold for every DAG up to renumbering. The first author: this makes
+DMP.Arsenal the self-similarity that enables positive constructability; the optimizer is the Arsenal's mirror and is constructed in
+parallel with it, `?` first asserted and then negatively proven with `.`, which shows each part as the shortest sentence of the form
+`DMP.{thing}!`, where the thing can be nothing **[reading]** (claim E.0.2b).
+
+**What is proved (claim E.0.2a).** In Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`) **[Lean]**:
+
+* **It keeps every derivation.** On a DAG the reduction reaches exactly what the table reaches (`close_reduce`), so every chain, and
+  with it every explanation of E.0.1, survives.
+* **Optimizing once settles**, on a DAG. A table is *settled* when optimizing it changes nothing, the compiled form and the
+  optimized one being the same. The reduction of a DAG is settled (`reduce_settled`), so optimizing twice is optimizing once
+  (`reduce_idem`).
+* **Nothing more can go.** Removing any kept use loses a derivation (`reduce_minimal`).
+* **One settled form.** Two settled DAGs that reach the same parts are the same table (`settled_unique`), so the reduction is the only
+  settled table with the original's reach (`reduce_unique`). This is the uniqueness theorem of Aho, Garey and Ullman for DAGs, proved
+  here on the kernel alone.
+* **It needs the DAG.** On a cycle each use can be redundant through the other, and the optimizer loses what both reached
+  (`repos_reduce_loses_dmp`, E.10).
+
+**Existence as settledness (claim E.0.2c).** The first author: once a DAG compiles it is optimized, and only when both settings are
+exactly the same does the setting, and thus the system, exist; the optimization runs along the lowest possible step count, which forces
+reflection positivity and so transfers meaning **[reading]**. Exact parts: "both settings the same" is `Settled`, reached by one
+optimization of a DAG **[Lean]**; "lowest step count" is the fewest uses, since the transitive reduction has the fewest uses of all
+tables with the same reach **[classical]** (Aho-Garey-Ullman 1972; the Lean proves that no kept use can go and that the settled form is
+unique, not this count), and it is not the shortest chain between two parts (a kept chain can be long); and "transfers meaning" has
+as its exact part that every derivation survives the reduction (`close_reduce`) **[Lean]**. Reflection positivity is a property of forms (II.9), which a table of uses does not contain, so that part stays the
+reading. `tools/rebuild matrix --optimize` runs the optimizer on the measured versions (E.9).
 
 ## E.1 The parts by version: a DAG
 
@@ -30,7 +99,7 @@ proven by a round trip run on 2026-11-25: IM's, from StevenHrovat/im#25 on, rebu
 `4ec1131` byte for byte and checks the copy of DMP inside Gravity `4ec1131` against its pin; Gravity `db03d05`'s rebuilds its held DMP
 `4400cce` and fetches its pinned IM by its id **[paper]** (claim E.1). Collapsed to repositories, IM and Gravity use each other
 (`repos_cycle`), so the repositories are not a DAG (`repos_not_dag`) **[Lean]**; the versions are. In the first author's words, two such
-parts do not exist at the same time **[reading]** (II.0.2c).
+parts do not exist at the same time **[reading]** (E.0.1c).
 
 ## E.2 The repositories: what the matrix asserts
 
@@ -56,7 +125,7 @@ missing: a round trip of DMP's own, which is DMP's to add **[paper]** (claim E.3
 ## E.4 The kernels and their targets
 
 Two kernels written separately, Lean's own and nanoda, each check four targets in quick mode, measured on 2026-11-25. The core, the
-arsenal and the paper's Lean are Draft 5's claim T.14 (the core now with the Lean of II.0.2); the evidence chain and the module counts
+arsenal and the paper's Lean are Draft 5's claim T.14 (the core now with the Lean of E.0.1); the evidence chain and the module counts
 are new in Draft 6.
 
 | checks → | IM core (IM `c441ed5`) | IM arsenal (IM `7881f77`, unchanged since) | the paper's Lean (Gravity `dcafe94`, IM `9686dc8`) | the evidence chain (same run) |
@@ -70,7 +139,7 @@ proven, and every other cell reflects positively.
 ## E.5 Derivations: explaining a result of Draft 5
 
 Gravity `db03d05` does not use DMP `1370dc0` directly, yet reaches it in one derivation step, through IM
-(`gravity_reaches_dmp_through_im`) **[Lean]**. Read in the sense of II.0.2, a result of Draft 5 is explained the same way: claim T.12
+(`gravity_reaches_dmp_through_im`) **[Lean]**. Read in the sense of E.0.1, a result of Draft 5 is explained the same way: claim T.12
 (the finite layer, on the kernel alone) by the chain that Gravity pins IM (E.2), both kernels accept IM's core (E.4), and the core holds
 the statements T.12 names **[reading]** (claim E.5). Its links are of different kinds (a pin, a kernel check, a holding), so it is a
 chain in the reading, not one Lean table.
@@ -100,7 +169,7 @@ regenerates identically apart from its build stamps **[paper]**.
 
 ## E.9 The optimizer applied: the versions are not settled
 
-The optimizer of II.0.3 on the version table of E.1. IM `f8baf3d` uses DMP `1370dc0` directly, and it also holds Gravity `4ec1131`,
+The optimizer of E.0.2 on the version table of E.1. IM `f8baf3d` uses DMP `1370dc0` directly, and it also holds Gravity `4ec1131`,
 which holds that same DMP. So `?` is answered by `.`: the direct use is redundant (`im_use_of_dmp_redundant`), the table is not settled
 (`versions_not_settled`), and its reduction removes exactly that use (`versions_reduced`); the reduced table is settled and reaches
 every part the measured table reaches (`versions_settled`) **[Lean]**.
@@ -119,7 +188,7 @@ optimizer: NOT SETTLED, 1 of 5 uses redundant: the optimized form removes them (
 ```
 
 `tools/reproduce.sh matrix` asserts exactly this: every cell `+`, and the versions not settled, by exactly that one use **[paper]**
-(claim E.9); a settled result, or any other redundant use, fails the stage until this section is updated. In the first author's reading of II.0.3 the system exists only when it is settled. Settling it means IM
+(claim E.9); a settled result, or any other redundant use, fails the stage until this section is updated. In the first author's reading of E.0.2 the system exists only when it is settled. Settling it means IM
 dropping its own copy of DMP and including it through Gravity; that is IM's to decide, and Draft 6 does not do it.
 
 ## E.10 The drafts are settled; the repositories cannot be optimized without losing DMP

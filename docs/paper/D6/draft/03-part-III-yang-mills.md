@@ -493,7 +493,7 @@ itself **[open]** (claim III.10e).
 ## III.13 O1 as a Perelman-typed interface
 
 *New in Draft 6.* The first author reads O1 as constructable as a PP (Perelman-Poincare) typed, Yang-Mills shaped interface API
-(II.0.4e). Draft 6 builds it **[Lean]** (`ProofPhase/API/Perelman.lean`, axioms in `docs/unified/perelman-axioms.log`).
+(R.11e). Draft 6 builds it **[Lean]** (`ProofPhase/API/Perelman.lean`, axioms in `docs/unified/perelman-axioms.log`).
 
 **The ledger as a type (claim III.13a).** Appendix A reads Perelman's proof as a ledger (A.1). The interface takes the part that
 counts. Along the steps there is a quantity W, non-decreasing and bounded above, and a quantum q > 0 that W gains at every step where
@@ -504,7 +504,7 @@ quantity from the monotone W-entropy (A.1c); here W plays the role of the cumula
 accepts exactly the statements that hold from some step on and rejects those that fail at arbitrarily late steps (`no_ledger`)
 **[Lean]**. Two toys illustrate it: the sequence 1 - 1/(k + 2), called a one-box sum only for the illustration, tends to 1 and has no
 ledger for "at most Γ" with any Γ < 1 (`gapless_rejected`); a constant sum at most its bound has one (`gapped_accepted`). The free
-photon of II.0.4e is not modelled in the Lean.
+photon of R.11e is not modelled in the Lean.
 
 **Typed for the Yang-Mills box (claim III.13b).** The steps are the lattice levels, and the statement at level k is the one-box
 criterion of `FineOneBox` in every volume, with the shared cell geometry and constants (`BoxAt`, `Interface`) **[Lean]**:
@@ -520,9 +520,9 @@ some level on; the open content is the ledger together with the choice of cell g
 (claim III.13d).
 
 **What the reading asks, and where it stops (claim III.13c).** The first author: the question being assigned `+` and `-` is the
-proof of the eigenvalue O1, from which all else is constructable through this interface **[reading]** (II.0.4e). Exact parts: as for
+proof of the eigenvalue O1, from which all else is constructable through this interface **[reading]** (R.11e). Exact parts: as for
 O1 itself (III.9.5), an instance gives the gap **[Lean]**; the interface supplies no instance, and assigning `+` and `-` is `?`, not
-`!` (II.0.4e). Perelman's monotone W-entropy buys a sign, not a rate (A.2), and his count runs on volume. In four dimensions the
+`!` (R.11e). Perelman's monotone W-entropy buys a sign, not a rate (A.2), and his count runs on volume. In four dimensions the
 coefficient a is larger at the ultraviolet end of a renormalization group flow than at the infrared end (the a-theorem;
 Komargodski-Schwimmer 2011, a field-theoretic argument); it compares the endpoints and is not shown to decrease monotonically along
 the flow **[classical]**. Neither supplies the quantum per failing level that the interface asks for.

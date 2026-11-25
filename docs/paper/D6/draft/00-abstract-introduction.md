@@ -52,19 +52,19 @@ winding number. Weil's positivity on a first box, with the real place and the pr
 
 Draft 6 grows from Draft 5 and adds one mechanism, which explains what Draft 5 establishes and claims nothing beyond it. A system is
 k parts, and a k by k table says for each pair whether the row proves the column. The first author takes this table as DMP's
-explanation mechanism, in which a derived cell explains and does not prove **[reading]** (II.0.2). Exactly, in Lean on the kernel
+explanation mechanism, in which a derived cell explains and does not prove **[reading]** (E.0.1). Exactly, in Lean on the kernel
 alone: a part is added by its own row, column and cell, and nothing already proven is checked again; every derived cell is reached by a
 chain of cells already in the table; where the row does not use the column the cell reflects positively, and where every use points to
-an earlier part no chain of uses returns **[Lean]** (II.0.2). Appendix E applies it to what Draft 5 measured: the versions of DMP,
+an earlier part no chain of uses returns **[Lean]** (E.0.1). Appendix E applies it to what Draft 5 measured: the versions of DMP,
 Gravity and IM form such a DAG, every use proven; the two kernels accept every target; Draft 5 establishes no chain of `+` cells that
 reaches the one open step O1 (E.6); and the drafts form a library that reaches G0 at Draft 4 from every later draft (E.7).
 
 Draft 6 also adds the mechanism's mirror and *the Possibility Space*, the first author's first subtitle for this draft. The optimizer removes every use that the table
 already includes through another chain, which is the transitive reduction of a DAG; in Lean on the kernel alone it keeps every
-derivation, settles in one pass, and is the only settled form with the same reach **[Lean]** (II.0.3). Applied to the measured
+derivation, settles in one pass, and is the only settled form with the same reach **[Lean]** (E.0.2). Applied to the measured
 versions it finds them not settled, by exactly one use: IM's own copy of DMP, which its copy of Gravity already includes (E.9). The
 Possibility Space is the first author's reading of a question as a point whose answer gives it only `+`, with the right angle `r` as
-the direction from a question to its certificate **[reading]** (II.0.4). Its exact parts are the arithmetic of `r` and a projector's
+the direction from a question to its certificate **[reading]** (R.11). Its exact parts are the arithmetic of `r` and a projector's
 two answers **[Lean]**, and the Bloch sphere, the flux tube and the rotating string **[classical]**. The steps that do not follow as
 stated are named, among them that assigning `+` and `-` to a question proves O1.
 
@@ -72,9 +72,9 @@ Last, Draft 6 adds two things. First, O1 typed as Perelman's ledger, the interfa
 quantity, monotone and bounded along the lattice levels, that gains a quantum at every level where the box fails. An instance gives
 O1 and, with the resolution clause, the gap; O1 gives an instance; so the interface is exactly O1 and proves no new bound **[Lean]**.
 Second, the subtitle, *the ETM as the ODP running DMP*: the first author's reading of the ODP as the internal clock whose tick ends
-at `+`, of DMP as the operating system of that kernel, and of one ETM that boots again whenever it stops **[reading]** (II.0.5). Its
+at `+`, of DMP as the operating system of that kernel, and of one ETM that boots again whenever it stops **[reading]** (R.12). Its
 exact parts are the cycle of `r` and the one terminal running system **[Lean]**. The reading that the paper proves 0 = 1 for the
-classical, hence NP = coNP and P != NP, does not follow, and II.0.5 says why. II.0.5 ends with the first author's one condition: O1
+classical, hence NP = coNP and P != NP, does not follow, and R.12 says why. R.12 ends with the first author's one condition: O1
 supplied at minting, under a universal witness agreed beforehand, and assumed until one invalid case is found. The paper records it
 as a reading next to its exact parts and does not claim O1.
 

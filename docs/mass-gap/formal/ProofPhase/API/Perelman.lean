@@ -10,7 +10,7 @@ import ProofPhase.Closures.OneBoxForm
 /-!
 # O1 as a Perelman-typed interface
 
-Draft 6 records the first author's reading (II.0.4e) of O1 as constructable through a PP (Perelman-Poincare) typed, Yang-Mills
+Draft 6 records the first author's reading (R.11e) of O1 as constructable through a PP (Perelman-Poincare) typed, Yang-Mills
 shaped interface API. This file builds that interface. Its type is the ledger that Appendix A reads off Perelman's proof (A.1):
 steps, a monotone quantity bounded above, and a quantum per boundary event, so that only finitely many boundary events happen.
 
