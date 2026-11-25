@@ -2,7 +2,8 @@
 The essence chain 2 + 2 = 5 = 4 = 0 = 1, its exact core (2026-11-24).
 Released under Apache 2.0.
 
-Paper: `docs/paper/draft/01-part-I-dmp.md`, I.7 (the first author's reading, with this proved core).
+Paper: `docs/paper/draft/13-appendix-r-readings.md`, R.5 (the first author's reading, with this proved core); Draft 5 adds the hash,
+`docs/paper/D5/draft/13-appendix-r-readings.md`, R.6a.
 -/
 
 import Mathlib
@@ -88,5 +89,16 @@ theorem four_eq_zero_without_half : (4 : ZMod 2) = 0 ∧ (0 : ZMod 2) ≠ 1 ∧ 
   have : (2 : ZMod 2) = 0 := by decide
   rw [this] at h
   exact not_isUnit_zero h
+
+/-! ## A hash certifies origin, not identity (draft 5, R.6) -/
+
+/-- **Every hash has collisions**: a map from an infinite type (all messages) to a finite one (all digests) is never injective.
+So a digest cannot certify which message it came from, only that a message consistent with the claimed origin exists. -/
+theorem hash_collision {α β : Type*} [Infinite α] [Finite β] (h : α → β) : ∃ a b, a ≠ b ∧ h a = h b :=
+  Finite.exists_ne_map_eq_of_infinite h
+
+/-- **The sha256 shape**: any map from bit strings to 256-bit digests has a collision. -/
+theorem digest_collision (h : List Bool → Fin (2 ^ 256)) : ∃ a b, a ≠ b ∧ h a = h b :=
+  hash_collision h
 
 end ProofPhase.ETM

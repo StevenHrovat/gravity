@@ -9,14 +9,14 @@ set -u
 export FORMAL_DST=${FORMAL_DST:-~/formal-suntwist}
 src="$(cd "$(dirname "$0")/../mass-gap/formal" && pwd)"
 cd "$src"
-echo "== build ProofPhase.General.SUNHandOver"
-bash sync-build.sh ProofPhase.General.SUNHandOver 2>&1 | grep -E "General/SUN.*error|^error|Build completed" || true
+echo "== build ProofPhase.General.SUNFullTurn"
+bash sync-build.sh ProofPhase.General.SUNFullTurn 2>&1 | grep -E "General/SUN.*error|^error|Build completed" || true
 cd "$FORMAL_DST"
 source ~/.elan/env
 tmp=$(mktemp /tmp/AxiomsSUNPrimes.XXXXXX.lean)
-files="SUNTwist SUNTwistSchur SUNTwistSectors SUNTwistPrimes SUNTwistWilson SUNTwistInstances SUNHandOver"
+files="SUNTwist SUNTwistSchur SUNTwistSectors SUNTwistPrimes SUNTwistWilson SUNTwistInstances SUNHandOver SUNFullTurn"
 {
-  echo "import ProofPhase.General.SUNHandOver"
+  echo "import ProofPhase.General.SUNFullTurn"
   for f in $files; do
     awk '/^(theorem|def|structure|abbrev) [A-Za-z_]/ {n = $2; sub(/[^A-Za-z0-9_.'"'"'].*$/, "", n); print n}' \
       "ProofPhase/General/$f.lean" | while read -r n; do echo "#print axioms ProofPhase.General.$n"; done
@@ -27,5 +27,5 @@ echo "== axioms"
 lake env lean "$tmp"
 rm -f "$tmp"
 echo "== source grep"
-grep -nE "\bsorry\b|\badmit\b|native_decide|^axiom" ProofPhase/General/SUNTwist*.lean ProofPhase/General/SUNHandOver.lean ||
-  echo "no sorry / admit / native_decide / axiom in ProofPhase/General/SUNTwist*.lean"
+grep -nE "\bsorry\b|\badmit\b|native_decide|^axiom" ProofPhase/General/SUNTwist*.lean ProofPhase/General/SUNHandOver.lean ProofPhase/General/SUNFullTurn.lean ||
+  echo "no sorry / admit / native_decide / axiom in ProofPhase/General/SUNTwist*.lean, SUNHandOver.lean, SUNFullTurn.lean"

@@ -2,14 +2,15 @@
 # Reproduce the paper GUID v8 (docs/paper) from a clone of this repository. See docs/paper/REPRODUCE.md for what each stage
 # needs, how long it takes and what it prints.
 #
-#   tools/reproduce.sh paper      ledger check, privacy scan, the LaTeX source and (if pdflatex is installed) the PDF
+#   tools/reproduce.sh paper      ledger check, privacy scan, the LaTeX source and (if pdflatex is installed) the PDF of
+#                                 Draft 4 (docs/paper); "tools/reproduce.sh paper D5" builds Draft 5 (docs/paper/D5)
 #   tools/reproduce.sh evidence   the DMP evidence chain: pin, setup file, build, kernel axiom report (expects "OK 285")
 #   tools/reproduce.sh lean       the paper's Lean: build docs/mass-gap/formal against Mathlib and rerun all 26 axiom scripts,
 #                                 comparing every declaration's axiom line with the committed log
 #   tools/reproduce.sh certs      the certified first box: rerun the ball-arithmetic certificate at a = 3/5, 13/20, 69/100 and
-#                                 compare the RESULT line with the committed log
+#                                 compare the RESULT line with the committed log; also the scaled sha256 search (seconds)
 #   tools/reproduce.sh kernels    the second kernels (leanchecker, nanoda) through tools/independent-check.sh (hours, once)
-#   tools/reproduce.sh all        paper, evidence, lean, certs (not kernels)
+#   tools/reproduce.sh all        paper (Draft 4), evidence, lean, certs (not kernels); "tools/reproduce.sh all D5" builds Draft 5's paper
 #
 # Linux, macOS or WSL; bash. Exit 0 when every stage asked for passes, 1 otherwise.
 set -uo pipefail
@@ -26,15 +27,17 @@ say() { printf '\n== %s\n' "$*"; }
 bad() { echo "FAIL $*"; fail=1; }
 
 stage_paper() {
-  say "paper: ledger, scrub, LaTeX"
+  local d="${1:-}" dir name
+  dir="docs/paper${d:+/$d}/latex"; name="guid-v8${d:+-$d}"
+  say "paper: ledger, scrub, LaTeX (${d:-Draft 4})"
   [ -n "$PY" ] || { bad "python3 not found"; return; }
-  bash tools/paper-gate.sh || bad "paper gate"
-  "$PY" tools/paper-latex.py || { bad "LaTeX conversion"; return; }
+  bash tools/paper-gate.sh $d || bad "paper gate"
+  "$PY" tools/paper-latex.py $d || { bad "LaTeX conversion"; return; }
   if command -v pdflatex >/dev/null; then
-    (cd docs/paper/latex && for i in 1 2; do pdflatex -interaction=nonstopmode -halt-on-error guid-v8.tex >/dev/null || exit 1; done) \
-      && grep -h "Output written" docs/paper/latex/guid-v8.log || bad "pdflatex"
+    (cd "$dir" && for i in 1 2; do pdflatex -interaction=nonstopmode -halt-on-error "$name.tex" >/dev/null || exit 1; done) \
+      && grep -h "Output written" "$dir/$name.log" || bad "pdflatex"
   else
-    echo "pdflatex not installed: the LaTeX source docs/paper/latex/guid-v8.tex was written; the PDF was not built"
+    echo "pdflatex not installed: the LaTeX source $dir/$name.tex was written; the PDF was not built"
   fi
 }
 
@@ -69,8 +72,12 @@ stage_lean() {
 }
 
 stage_certs() {
-  say "certs: the certified first box (python-flint)"
+  say "certs: the certified first box (python-flint), and the scaled sha256 search (Appendix T.6 of Draft 5)"
   [ -n "$PY" ] || { bad "python3 not found"; return; }
+  "$PY" docs/unified/sha256_scaled.py > "$OUT/sha256_scaled.log" 2>&1
+  if diff <(grep "^RESULT" "$OUT/sha256_scaled.log") <(grep "^RESULT" docs/unified/sha256_scaled.log) >/dev/null; then
+    echo "ok   sha256 scaled search: $(grep -c '^RESULT' "$OUT/sha256_scaled.log") RESULT lines, the same as the committed log"
+  else bad "sha256 scaled search: the RESULT lines differ from docs/unified/sha256_scaled.log"; fi
   "$PY" -c "import flint" 2>/dev/null || { bad "python-flint missing (pip install -r docs/paper/requirements.txt)"; return; }
   for a in 0.60:3/5 0.65:13/20 0.69:69/100; do
     tag=${a%%:*}; frac=${a#*:}
@@ -88,13 +95,13 @@ stage_kernels() {
 }
 
 case "${1:-all}" in
-  paper) stage_paper ;;
+  paper) stage_paper "${2:-}" ;;
   evidence) stage_evidence ;;
   lean) stage_lean ;;
   certs) stage_certs ;;
   kernels) stage_kernels ;;
-  all) stage_paper; stage_evidence; stage_lean; stage_certs ;;
-  *) echo "usage: tools/reproduce.sh [paper|evidence|lean|certs|kernels|all]"; exit 2 ;;
+  all) stage_paper "${2:-}"; stage_evidence; stage_lean; stage_certs ;;
+  *) echo "usage: tools/reproduce.sh [paper [DN]|evidence|lean|certs|kernels|all [DN]]"; exit 2 ;;
 esac
 say "result"
 if [ "$fail" = 0 ]; then echo "reproduce: OK"; else echo "reproduce: FAILED (see the lines above)"; fi

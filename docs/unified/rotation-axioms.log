@@ -1,6 +1,6 @@
 == build ProofPhase.ETM.ETM
-Build completed successfully (9107 jobs).
-== declarations: 125
+Build completed successfully (9109 jobs).
+== declarations: 128
 == axioms
 'ProofPhase.ETM.Box' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.Box.toArsenal' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -106,6 +106,7 @@ Build completed successfully (9107 jobs).
 'ProofPhase.ETM.tickBox_correct_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.tickBox_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.tickBox_complete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.tickBox_observable' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.tickBox_wrong' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.cardBox' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.ETM.cardBox_complete_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -127,5 +128,7 @@ Build completed successfully (9107 jobs).
 'ProofPhase.ETM.essence_decided' depends on axioms: [propext, Quot.sound]
 'ProofPhase.ETM.essence_decided_subsingleton' depends on axioms: [propext, Quot.sound]
 'ProofPhase.ETM.four_eq_zero_without_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.hash_collision' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.ETM.digest_collision' depends on axioms: [propext, Classical.choice, Quot.sound]
 == source grep
 no sorry / admit / native_decide / axiom in ProofPhase/ETM/Rotation*.lean, G2Rigidity.lean, Complex.lean, CardBox.lean, Essence.lean
