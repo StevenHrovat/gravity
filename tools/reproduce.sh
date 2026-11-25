@@ -11,7 +11,9 @@
 #                                 compare the RESULT line with the committed log; also the scaled sha256 search (seconds)
 #   tools/reproduce.sh kernels    two kernels (Lean's leanchecker, nanoda) over the paper's Lean and the evidence chain, through IM's
 #                                 tools/rebuild from the pinned IM (minutes; KERNELS_MODE=full: the whole closure, hours)
-#   tools/reproduce.sh all        paper (Draft 4), evidence, lean, certs (not kernels); "tools/reproduce.sh all D5" builds Draft 5's paper
+#   tools/reproduce.sh matrix     the API to IM: IM's tools/rebuild matrix from the pinned IM, IM and this repository as a 2 by 2
+#                                 table in which the row proves the column; every cell must be + (seconds; network)
+#   tools/reproduce.sh all        paper (Draft 4), evidence, lean, certs, matrix (not kernels); "tools/reproduce.sh all D5" builds Draft 5's paper
 #
 # Linux, macOS or WSL; bash. Exit 0 when every stage asked for passes, 1 otherwise.
 set -uo pipefail
@@ -111,14 +113,32 @@ stage_kernels() {
   bash "$im/tools/rebuild" check "$OUT/evidence-kernels" "${KERNELS_MODE:-quick}" || bad "the evidence chain: both kernels"
 }
 
+# The API to IM (the first author, 2026-11-25: "gravity can use it as an API, because it just has to assert an array of k by k with +
+# at each cell"): the IM this repository pins, fetched by its id (no Mathlib needed), runs its matrix over IM and this repository.
+stage_matrix() {
+  say "matrix: IM's tools/rebuild matrix, from the pinned IM; every cell must be +"
+  local lf=docs/mass-gap/formal/lakefile.toml want url im="$OUT/im-pinned"
+  want=$(sed -n '/name = "arsenal"/,/subDir/s/^rev = "\(.*\)"/\1/p' "$lf" | tr -d '\r')
+  url=$(sed -n '/name = "arsenal"/,/subDir/s/^git = "\(.*\)"/\1/p' "$lf" | tr -d '\r')
+  if [ "$(git -C "$im" rev-parse HEAD 2>/dev/null)" != "$want" ]; then
+    rm -rf "$im"; git init -q "$im" && git -C "$im" remote add origin "$url" \
+      && git -C "$im" fetch -q --depth 1 origin "$want" && git -C "$im" checkout -q --detach FETCH_HEAD \
+      || { bad "the pinned IM ${want:0:12} could not be fetched from $url"; return; }
+  fi
+  [ "$(git -C "$im" rev-parse HEAD)" = "$want" ] || { bad "the IM in $im is not the pinned ${want:0:12}"; return; }
+  [ -f "$im/tools/rebuild" ] || { bad "the pinned IM ${want:0:12} has no tools/rebuild"; return; }
+  bash "$im/tools/rebuild" matrix "$root" || bad "the matrix: not every cell is +"
+}
+
 case "${1:-all}" in
   paper) stage_paper "${2:-}" ;;
   evidence) stage_evidence ;;
   lean) stage_lean ;;
   certs) stage_certs ;;
   kernels) stage_kernels ;;
-  all) stage_paper "${2:-}"; stage_evidence; stage_lean; stage_certs ;;
-  *) echo "usage: tools/reproduce.sh [paper [DN]|evidence|lean|certs|kernels|all [DN]]"; exit 2 ;;
+  matrix) stage_matrix ;;
+  all) stage_paper "${2:-}"; stage_evidence; stage_lean; stage_certs; stage_matrix ;;
+  *) echo "usage: tools/reproduce.sh [paper [DN]|evidence|lean|certs|kernels|matrix|all [DN]]"; exit 2 ;;
 esac
 say "result"
 if [ "$fail" = 0 ]; then echo "reproduce: OK"; else echo "reproduce: FAILED (see the lines above)"; fi
