@@ -319,6 +319,69 @@ Care: "vacuous" in its logical sense, a statement over an empty domain, holds wi
 statement about objects that exist, such as the Wilson measure of O1, cannot be vacuous in that sense. What does hold is the weaker
 form above: a proof is contentless as an object (proof irrelevance), and its content is all in the statement it proves.
 
+**The essence as one input of the size c (claim II.0.5e).** The first author: from the essence line 2 + 2 = 5 = 4 = 0 = 1 = 1.5, the
+essence simplifies to one input of the size c, and the O1 input becomes the question "Is the speed of light measurable?", which is
+always yes and yet never seems to have existence. The size is c because c is a size. This ties the expression of set theory onto
+arithmetic, and since it applies onto something it has an input, which must run exactly at 1 **[reading]**. Exact parts:
+
+* The chain holds in exactly one ring, the zero ring, which has one element, so one input decides it (R.5a) **[Lean]**.
+* c is a size by definition. Since 1983 the metre is defined from c, so c = 299,792,458 m/s exactly (CGPM 1983; BIPM 2019), and
+  c = 1 in natural units, the units of the lattice **[classical]**. A measurement of c measures the metre and the clocks.
+* Only the round trip is measurable: the two-way speed of light is, while the one-way speed is fixed by a convention of clock
+  synchronisation (Einstein 1905; Reichenbach 1928) **[classical]**.
+* Only dimensionless constants are measurable as such, among them the fine-structure constant α, the VIBE coefficient of R.5b
+  **[classical]**.
+* In von Neumann's construction 0 is the empty set and n + 1 is n together with n itself, so 1 is the set whose only element is the
+  empty set (von Neumann 1923): existence as non-existence plus one (I.7) **[classical]**. Arithmetic is the finite part of set
+  theory: Ackermann's coding is a bijection between the hereditarily finite sets and the natural numbers (Ackermann 1937), and Peano
+  arithmetic and finite set theory are interpretable in each other (Kaye-Wong 2007) **[classical]**. The coding loses nothing, a map
+  at factor 1, the lossless regime of cost equal to the floor, where the ETM lives (II.3; `docs/unified/ETM.md`).
+* In set theory the letter c, in Fraktur, names the size of the continuum, 2 to the power aleph-0. It exists, and its place among the
+  infinite sizes is not decided by the standard axioms (ZFC): the continuum hypothesis can be neither proved nor refuted there
+  (Goedel 1940; Cohen 1963) **[classical]**.
+
+Care: the physical c and the set-theoretic c share a letter, not a theorem. A unit fixes the frame in which O1 is stated and does not
+supply O1. Factor 1 is the floor, where nothing settles by contraction, while O1 asks for a cost above the floor, uniform in the scale
+(II.3).
+
+**The one condition: O1 supplied at minting (claim II.0.5f).** The first author, asked whether Draft 6 as merged is a DMP-complete
+construction: not yet, which is right for root G0. O1 is supplied by the reader reading its definition of main DMP G0 at minting, a
+vacuous construction, while every other dependency is rigid. Every minting from G0 is a step that closes that assumption, under the
+owner's guarantee: the owner merges the paper for publishing and has authority equal to G0 during pressing (I.5). DMP is stated with
+all its assertions, so as soon as one invalid case is found, a DMP-complete v0.9.9 ceases to exist and forces a remint to v1, possible
+only once the hole is closed. The certify stage is reached by extending into possibility space with a universal witness, agreed upon
+beforehand, with absolute authority over the validity of every act. Through constructability, once a truly DMP-complete system can be
+assembled from the one box, it can be assumed to hold universally until exactly the step where the ray is no longer observed
+**[reading]**. Exact parts:
+
+* Measured on its own criteria, Draft 6 is not DMP-complete: the versions are not settled, by one use (E.9), and O1 is a cell that is
+  not `+` (E.6, III.10e, III.13d) **[paper]**. Every other dependency is proven back and forth (T.14, T.15, E.1 to E.4, E.11)
+  **[paper]**.
+* O1 is posed and never assumed (`OpenStep`, R.9a) and stated once, as the one assumption (Part X). Supplied as a hypothesis it gives
+  the gap, torus decay and reflection positivity (III.9.5), and the interface of III.13 is exactly it **[Lean]**.
+* A claim stated for all cases is refuted by one invalid case. The matrix, the reproduce stage and the round trip each fail on one
+  (E.2, E.9, T.14), and Gravity pins DMP 0.9.9 by its commit id, `4400cce`, so a new version is a new pin **[paper]**.
+* The universal witness agreed beforehand is a root of trust. In the Lean it is the kernel, fixed before any proof is written,
+  accepting or rejecting every declaration, with nothing above it (the de Bruijn criterion, T.13; two kernels, T.14) **[classical]**;
+  in IM's certificate checks a chain counts only when it ends at a root that was presented (`TrustAnchors`) **[paper]**.
+* "Assumed to hold universally until the ray is no longer observed" is induction in the empirical sense: a law stands until one
+  observation refutes it (Popper 1935). It is the status the ledger gives a numerical claim, which can refute and never proves a
+  for-all **[classical]**.
+
+Care:
+
+* Supplying O1 is assuming it. The owner's guarantee holds the record, what is merged and minted; it cannot make the Yang-Mills measure
+  satisfy O1, a property of an object already defined. If O1 is true the assumption is harmless and the gap follows; if O1 is false
+  the minted system is inconsistent and proves everything, the 0 = 1 collapse of II.0.5c. So the construction is vacuous in the sense
+  of 1 = 1 or in the sense of 0 = 1, and which of the two is the open question.
+* No consistent system strong enough for arithmetic proves its own consistency (Goedel's second theorem, R.1h). DMP certifying its own
+  completeness reads exactly as: complete until an invalid case is found, checked from outside, case by case. DMP's own cell is `.`,
+  not `+` (E.11).
+* An invalid case for O1 would show that this route to the gap fails, not that Yang-Mills has no gap.
+* Empirical universality is not mathematical induction, which needs the inductive step proved. O1 stays open in the ledger (III.10e,
+  III.13d); the paper records the assumption, under the agreed witness, as the first author's reading and does not claim it.
+* The rule from v0.9.9 to v1 is DMP's own process; it is recorded here as the reading, and DMP itself is not changed.
+
 ## II.1 The ledger and the transport theorem
 
 **Why it clicks.** A step that forgets a fixed share each time forgets geometrically. Write the share as a cost, and costs add.
