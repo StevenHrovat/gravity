@@ -58,13 +58,13 @@ theorem tickBox_correct_iff (P : ℕ → Prop) (n : ℕ) : (tickBox P).Correct n
   by_cases h : P n
   · have h0 : (tickBox P).fac n ≤ (tickBox P).θ := by
       show (if P n then (0 : ℝ) else 1) ≤ 1 / 2
-      rw [if_pos h]; norm_num
-    rw [if_pos h0]
+      rw [ite_eq_left h]; norm_num
+    rw [ite_eq_left h0]
     exact ⟨fun _ => h, fun _ => rfl⟩
   · have h1 : ¬ (tickBox P).fac n ≤ (tickBox P).θ := by
       show ¬ (if P n then (0 : ℝ) else 1) ≤ 1 / 2
-      rw [if_neg h]; norm_num
-    rw [if_neg h1]
+      rw [ite_eq_right h]; norm_num
+    rw [ite_eq_right h1]
     exact ⟨fun e => absurd e (fun e' => Arsenal.Rotation.Marker.noConfusion e'), fun e => absurd e h⟩
 
 theorem tickBox_iterate (P : ℕ → Prop) (n : ℕ) : (tickBox P).step^[n] (0 : ℕ) = n := by

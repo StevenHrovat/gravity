@@ -211,10 +211,10 @@ theorem lifted_influence_id {β : ℝ} (hβ : 0 ≤ β) (b : Finset (LatticeLink
   have hoscG : OscBound G (fun a => if a ∈ b then L else 0) := by
     intro ξ y t
     by_cases hy : y ∈ b
-    · simp only [hy, if_true, hG]
+    · simp only [hy, ite_true, hG]
       rw [splice_update_right hy, cellLift_id_update]
       exact hosc _ y _ hy
-    · simp only [hy, if_false]
+    · simp only [hy, ite_false]
       rw [hdepG.update_eq hy]
       simp
   have hD : ∀ x y, G x - G y ≤ (b.card : ℝ) * L := by
@@ -356,7 +356,7 @@ theorem kexact_le {β : ℝ} (hβ : 0 ≤ β) (t : FinLatticeSites 4 N) {z : Lat
       have := siteDist_sub_right z.site t t
       rw [sub_self] at this
       rw [this]; exact h1'
-    simp only [kapAnchor, h2, if_true]
+    simp only [kapAnchor, h2, ite_true]
     calc (B.card : ℝ) * Real.tanh ((m : ℝ) * ((2 : ℕ) : ℝ) * β) ≤ 4 * (6 * Real.tanh (2 * β)) :=
           mul_le_mul hcard hkey hnn (by norm_num)
       _ = 24 * Real.tanh (2 * β) := by ring

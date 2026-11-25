@@ -44,7 +44,7 @@ theorem PathStep.hol_flipAt (ℓ : LatticeLink d N) (U : GaugeConnection G d N) 
   by_cases hl : l = ℓ
   · subst hl
     cases f
-    · simp only [PathStep.hol, flipAt, Function.update_self, if_true, pow_one, Bool.false_eq_true, if_false]
+    · simp only [PathStep.hol, flipAt, Function.update_self, ite_true, pow_one, Bool.false_eq_true, ite_false]
       rw [mul_inv_rev, hzinv]
       exact ((hz (U l)⁻¹).eq).symm
     · simp [PathStep.hol, flipAt]

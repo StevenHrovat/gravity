@@ -72,10 +72,10 @@ theorem lifted_influence_cut_id {β : ℝ} (hβ : 0 ≤ β) (b : Finset (Lattice
   have hoscG : OscBound G (fun a => if a ∈ Bf then L else 0) := by
     intro ξ y t
     by_cases hy : y ∈ Bf
-    · simp only [hy, if_true, hG]
+    · simp only [hy, ite_true, hG]
       rw [splice_update_right hy, cellLift_id_update]
       exact hosc _ y _ (hBfb hy)
-    · simp only [hy, if_false]
+    · simp only [hy, ite_false]
       rw [hdepG.update_eq hy]
       simp
   have hD : ∀ x y, G x - G y ≤ (Bf.card : ℝ) * L := by

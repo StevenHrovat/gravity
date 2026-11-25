@@ -59,7 +59,7 @@ theorem primePow_coprime (N : ℕ) :
 
 theorem prod_primePow {N : ℕ} (hN : N ≠ 0) : ∏ p : N.primeFactors, (p : ℕ) ^ N.factorization p = N := by
   rw [Finset.prod_coe_sort N.primeFactors (fun p => p ^ N.factorization p)]
-  exact Nat.factorization_prod_pow_eq_self hN
+  exact Nat.prod_factorization_pow_eq_self hN
 
 /-- **The centre factorises over the prime powers of `N`** (CRT). -/
 def centreCRT (N : ℕ) (hN : N ≠ 0) : ZMod N ≃+* Π p : N.primeFactors, ZMod ((p : ℕ) ^ N.factorization p) :=
@@ -123,7 +123,7 @@ theorem composite_subcentre {N : ℕ} (hN : 2 ≤ N) (hnp : ¬ N.Prime) :
     replace hz : z • (d : ZMod N) = 1 := hz
     have hc := congrArg (ZMod.castHom hdN (ZMod d)) hz
     rw [map_one, zsmul_eq_mul, map_mul, map_intCast, map_natCast, ZMod.natCast_self, mul_zero] at hc
-    haveI : Fact (1 < d) := ⟨hdp.one_lt⟩
+    have : Fact (1 < d) := ⟨hdp.one_lt⟩
     exact one_ne_zero hc.symm
 
 end Prime

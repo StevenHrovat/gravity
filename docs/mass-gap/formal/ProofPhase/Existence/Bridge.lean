@@ -173,7 +173,7 @@ theorem βv_vol (k p : ℕ) : D.toV.βv k (D.vol p) = D.beta k p / 2 := by
   show D.βof k (D.vol p) = _
   have h : ∃ p', D.vol p' = D.vol p := ⟨p, rfl⟩
   unfold βof
-  rw [dite_cond_eq_true (eq_true h), D.vol_strict.injective h.choose_spec]
+  rw [dite_eq_left_of_eq_true (eq_true h), D.vol_strict.injective h.choose_spec]
 
 /-- **The measure there is their law** (SU(2), restated): our Wilson measure at `β_{N,p}/2` on that torus equals
 `Z⁻¹ e^{−β_{N,p} Σ(1 − Re tr/2)}` times product Haar measure. -/

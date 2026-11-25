@@ -152,11 +152,11 @@ theorem mkPlaq_inj {s s' : FinLatticeSites d N} {ν ρ ρ' : Fin d} {h : ρ ≠ 
 
 theorem mkPlaq_of_lt (s : FinLatticeSites d N) {ν ρ : Fin d} (h : ρ ≠ ν) (hlt : ν < ρ) :
     mkPlaq s ν ρ h = ⟨s, ν, ρ, hlt⟩ := by
-  unfold mkPlaq; rw [dif_pos hlt]
+  unfold mkPlaq; rw [dite_eq_left hlt]
 
 theorem mkPlaq_of_gt (s : FinLatticeSites d N) {ν ρ : Fin d} (h : ρ ≠ ν) (hlt : ρ < ν) :
     mkPlaq s ν ρ h = ⟨s, ρ, ν, hlt⟩ := by
-  unfold mkPlaq; rw [dif_neg (not_lt.mpr hlt.le)]
+  unfold mkPlaq; rw [dite_eq_right (not_lt.mpr hlt.le)]
 
 theorem mstep_true {ν : Fin d} (y : FinLatticeSites d N) (ρ : {ρ : Fin d // ρ ≠ ν}) :
     mstep y (ρ, true) = siteShift d N y ρ.1 := by
@@ -229,7 +229,7 @@ theorem mstep_apply_disp {ν : Fin d} (μ : Fin d) (y : FinLatticeSites d N) (m 
   unfold mstep mdisp
   by_cases h : m.1.1 = μ
   · subst h; cases m.2 <;> simp
-  · rw [Function.update_of_ne (Ne.symm h), if_neg h]; simp
+  · rw [Function.update_of_ne (Ne.symm h), ite_eq_right h]; simp
 
 theorem walkEnd_apply_disp {ν : Fin d} (μ : Fin d) (y : FinLatticeSites d N) (ms : List (Move d ν)) :
     walkEnd mstep y ms μ = y μ + (((ms.map (mdisp μ)).sum : ℤ) : ZMod N) := by
@@ -298,8 +298,8 @@ theorem sum_listsUpTo_le {p : ℝ} (hp : 0 ≤ p) (hq : (Fintype.card α : ℝ) 
     intro r
     simp only [listsUpTo, sum_singleton, List.length_nil, pow_zero]
     rcases Nat.eq_zero_or_pos r with rfl | hr
-    · rw [if_pos le_rfl, pow_zero, le_div_iff₀ h1q]; linarith
-    · rw [if_neg (by omega)]; positivity
+    · rw [ite_eq_left le_rfl, pow_zero, le_div_iff₀ h1q]; linarith
+    · rw [ite_eq_right (by omega)]; positivity
   | succ k ih =>
     intro r
     have hnot : ([] : List α) ∉ (univ ×ˢ listsUpTo α k).image (fun x : α × List α => x.1 :: x.2) := by simp
@@ -310,8 +310,8 @@ theorem sum_listsUpTo_le {p : ℝ} (hp : 0 ≤ p) (hq : (Fintype.card α : ℝ) 
       intro a l
       simp only [List.length_cons]
       by_cases h1 : r ≤ l.length + 1
-      · rw [if_pos h1, if_pos (by omega), pow_succ]; ring
-      · rw [if_neg h1, if_neg (by omega), mul_zero]
+      · rw [ite_eq_left h1, ite_eq_left (by omega), pow_succ]; ring
+      · rw [ite_eq_right h1, ite_eq_right (by omega), mul_zero]
     have hsum : ∑ a : α, ∑ l ∈ listsUpTo α k, (if r ≤ (a :: l).length then p ^ (a :: l).length else 0) =
         q * ∑ l ∈ listsUpTo α k, (if r - 1 ≤ l.length then p ^ l.length else 0) := by
       simp_rw [hinner, ← mul_sum]
@@ -320,12 +320,12 @@ theorem sum_listsUpTo_le {p : ℝ} (hp : 0 ≤ p) (hq : (Fintype.card α : ℝ) 
     rw [hsum]
     have ih' := ih (r - 1)
     rcases Nat.eq_zero_or_pos r with rfl | hr
-    · simp only [List.length_nil, le_refl, if_true, pow_zero, Nat.zero_sub] at ih' ⊢
+    · simp only [List.length_nil, le_refl, ite_true, pow_zero, Nat.zero_sub] at ih' ⊢
       rw [le_div_iff₀ h1q]
       have := mul_le_mul_of_nonneg_left ih' hq0
       rw [le_div_iff₀ h1q] at ih'
       nlinarith
-    · rw [if_neg (by simp; omega), zero_add]
+    · rw [ite_eq_right (by simp; omega), zero_add]
       calc q * ∑ l ∈ listsUpTo α k, (if r - 1 ≤ l.length then p ^ l.length else 0)
           ≤ q * (q ^ (r - 1) / (1 - q)) := mul_le_mul_of_nonneg_left ih' hq0
         _ = q ^ r / (1 - q) := by
@@ -340,8 +340,8 @@ theorem sum_filter_listsUpTo_le {p : ℝ} (hp : 0 ≤ p) (hq : (Fintype.card α 
   rw [sum_filter]
   refine sum_le_sum fun l _ => ?_
   by_cases h : Q l
-  · rw [if_pos h, if_pos (hQ l h)]
-  · rw [if_neg h]; split_ifs <;> positivity
+  · rw [ite_eq_left h, ite_eq_left (hQ l h)]
+  · rw [ite_eq_right h]; split_ifs <;> positivity
 
 end Count
 
@@ -361,7 +361,7 @@ theorem sum_surv_le {V ι : Type*} [Fintype V] [DecidableEq V] (h : V → ℝ) {
       ≤ ∑ A ∈ (univ : Finset V).powerset.filter Surv, ∑ i ∈ W, (if X i ⊆ A then ∏ v ∈ A, h v else 0) := by
         refine sum_le_sum fun A hA => ?_
         obtain ⟨i, hi, hXA⟩ := hw A (mem_filter.mp hA).2
-        calc ∏ v ∈ A, h v = (if X i ⊆ A then ∏ v ∈ A, h v else 0) := by rw [if_pos hXA]
+        calc ∏ v ∈ A, h v = (if X i ⊆ A then ∏ v ∈ A, h v else 0) := by rw [ite_eq_left hXA]
           _ ≤ _ := single_le_sum (f := fun i => if X i ⊆ A then ∏ v ∈ A, h v else 0) (fun i _ => hite A i) hi
     _ ≤ ∑ A ∈ (univ : Finset V).powerset, ∑ i ∈ W, (if X i ⊆ A then ∏ v ∈ A, h v else 0) :=
         sum_le_sum_of_subset_of_nonneg (filter_subset _ _) fun A _ _ => sum_nonneg fun i _ => hite A i

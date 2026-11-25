@@ -66,7 +66,7 @@ theorem condMassAnn_of_condMassDecay {T : Tuning} {B : BlockingFamily T} (h : Co
   refine ⟨m, hm, fun R => ?_⟩
   obtain ⟨c, hc, k₀, Hk⟩ := H R
   refine ⟨c, hc, k₀, fun k hk j F G A₀ B₀ D mF mG bF bG _ _ dF dG eA _ hsep => ?_⟩
-  haveI := UV.ymProb T k j
+  have := UV.ymProb T k j
   have hae := Hk k hk j F G A₀ B₀ D mF mG bF bG dF dG eA
     (fun e he e' he' => (hsep.2 e he e' he').trans
       (mul_le_mul_of_nonneg_left (timeDist_le_linkDist e e') (T.a_pos k).le))
@@ -84,7 +84,7 @@ theorem condDecouple_of_condMassAnn {T : Tuning} {B : BlockingFamily T} (h : Con
   refine ⟨m, hm, fun R => ?_⟩
   obtain ⟨c, hc, k₀, Hk⟩ := H R
   refine ⟨c, hc, k₀, fun k hk j F G A₀ B₀ D mF mG bF bG gF gG dF dG eA eB hS => ?_⟩
-  haveI := UV.ymProb T k j
+  have := UV.ymProb T k j
   rw [condDefect_eq_integral_condCov (B k j).meas.comap_le (UV.Bdd1.of_measurable mF bF)
     (UV.Bdd1.of_measurable mG bG)]
   exact abs_integral_le_integral_abs.trans (Hk k hk j F G A₀ B₀ D mF mG bF bG gF gG dF dG eA eB hS)

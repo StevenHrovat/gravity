@@ -378,7 +378,7 @@ theorem hankel_corr {φ : ℝ → ℝ} (hφ : PosWeight n φ) {F : GaugeConnecti
     TorusRP.rpForm n φ (fun U => F (tShift (j : ZMod N) U) - ∫ V, F V ∂(gaugeMeasure n φ))
       (fun U => F (tShift (k : ZMod N) U) - ∫ V, F V ∂(gaugeMeasure n φ)) =
       partZ (d := d) (N := N) (G := G) n φ * corr n φ F (j + k) := by
-  haveI := isProbabilityMeasure_gaugeMeasure (d := d) (N := N) hc hU hφ
+  have := isProbabilityMeasure_gaugeMeasure (d := d) (N := N) hc hU hφ
   set μ := gaugeMeasure (d := d) (N := N) (G := G) n φ
   set c := ∫ V, F V ∂μ
   rw [hankel_identity hc (plaqWeight_of_posWeight hφ) hF.meas c j k, rpForm_eq hc hU hφ]

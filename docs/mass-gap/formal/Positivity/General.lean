@@ -239,9 +239,9 @@ theorem measurable_mixedWeight (hc : Continuous (HasGaugeTrace.rep (G := G) (n :
   refine Finset.measurable_prod _ (fun p _ => ?_)
   unfold mixedWeight
   by_cases h : IsCrossPL p
-  · simp only [h, if_true]
+  · simp only [h, ite_true]
     exact measurable_expxp hc β p
-  · simp only [h, if_false]
+  · simp only [h, ite_false]
     exact hψ.meas.comp (measurable_xp hc p)
 
 variable [HasHaarProbability G] [(haarG G).IsInvInvariant] [(haarG G).IsMulRightInvariant]

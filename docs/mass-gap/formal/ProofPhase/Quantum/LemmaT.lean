@@ -175,7 +175,7 @@ theorem relClose_normalize (q : Measure α) {ε : ℝ} {w w' : α → ℝ} (hw :
   have he := Real.exp_pos ε
   have hZ' : 0 < Z' := by
     by_contra hne
-    push_neg at hne
+    push Not at hne
     have : Z ≤ 0 := hZ2.trans (mul_nonpos_of_nonneg_of_nonpos he.le hne)
     linarith
   have e2 : Real.exp (2 * ε) = Real.exp ε * Real.exp ε := by rw [← Real.exp_add]; ring_nf
@@ -400,7 +400,7 @@ theorem relClose_wilsonMeasure (β β' : ℝ) :
   have hW' := localWeight_wilson (N := N) β' univ
   have hZ : 0 < ∫ τ, plaqProd (d := 4) (N := N) (G := SU2) 2 (wilsonWeight β) univ τ ∂(prodMeasure (haarG SU2)) := by
     have hsp : ∀ ξ : GaugeConnection SU2 4 N, splice (univ : Finset (LatticeLink 4 N)) (fun _ => 1) ξ = ξ :=
-      fun ξ => funext fun i => by simp only [splice, mem_univ, if_true]
+      fun ξ => funext fun i => by simp only [splice, mem_univ, ite_true]
     have := hW.locZ_pos (ν := haarG SU2) (B := (univ : Finset (LatticeLink 4 N))) (fun _ => 1)
     unfold locZ at this
     simp only [hsp] at this

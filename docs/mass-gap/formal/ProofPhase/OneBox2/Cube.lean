@@ -112,7 +112,7 @@ theorem localWeight_wilsonBlock (β : ℝ) (B : Finset (LatticeLink 4 N)) :
 
 instance isProbabilityMeasure_cubeLaw (β : ℝ) (Q : Finset (LatticeLink 4 N)) (σ₀ : GaugeConnection SU2 4 N) :
     IsProbabilityMeasure (cubeLaw β Q σ₀) := by
-  haveI := (localWeight_wilsonBlock β Q).isProbabilityMeasure_locSpec (ν := haarG SU2) (B := Q) σ₀
+  have := (localWeight_wilsonBlock β Q).isProbabilityMeasure_locSpec (ν := haarG SU2) (B := Q) σ₀
   exact (Measure.isProbabilityMeasure_map_iff (measurable_splice_right Q σ₀).aemeasurable).2
     (by unfold gaugeSpec; exact this)
 
@@ -281,7 +281,7 @@ def cubeLifted (cell : LatticeLink 4 N → LatticeLink 4 M) (β : ℝ) (Q : Fins
         · have : {U : GaugeConnection SU2 4 N | cell e ∈ boxBlock Λ₀ t → e ∉ cutPre Q cell (boxBlock Λ₀ t) →
               U e = σ₀ e} = Set.univ := by
             ext U
-            simp only [Set.mem_setOf_eq, Set.mem_univ, iff_true]
+            simp only [Set.mem_ofPred_eq, Set.mem_univ, iff_true]
             intro h1 h2
             exact absurd ⟨h1, h2⟩ h
           rw [this]

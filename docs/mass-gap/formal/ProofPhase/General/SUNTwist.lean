@@ -471,9 +471,9 @@ theorem ZFam.form_sum (F : ZFam w N) (hT : Even T) (hK : ∀ a b c, 0 < w.K a b 
     refine sum_congr rfl fun l _ => ?_
     ring
   simp_rw [e]
-  rw [integral_finset_sum _ fun k _ => integrable_finset_sum _ fun l _ => it k l]
+  rw [integral_finsetSum _ fun k _ => integrable_finsetSum _ fun l _ => it k l]
   refine sum_congr rfl fun k _ => ?_
-  rw [integral_finset_sum _ fun l _ => it k l]
+  rw [integral_finsetSum _ fun l _ => it k l]
   refine sum_congr rfl fun l _ => ?_
   rw [integral_const_mul, F.integral_pair_eq hT hK]
 

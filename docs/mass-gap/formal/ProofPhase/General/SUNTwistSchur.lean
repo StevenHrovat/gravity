@@ -243,11 +243,11 @@ theorem integral_bwN_tr_mul (β : ℝ) (M : Matrix (Fin N) (Fin N) ℂ) :
     refine sum_congr rfl fun i _ => sum_congr rfl fun k _ => ?_
     ring
   simp_rw [e]
-  rw [ContinuousLinearMap.integral_comp_comm Complex.reCLM (integrable_finset_sum _ fun i _ =>
-    integrable_finset_sum _ fun k _ => it i k)]
-  rw [integral_finset_sum _ fun i _ => integrable_finset_sum _ fun k _ => it i k]
+  rw [ContinuousLinearMap.integral_comp_comm Complex.reCLM (integrable_finsetSum _ fun i _ =>
+    integrable_finsetSum _ fun k _ => it i k)]
+  rw [integral_finsetSum _ fun i _ => integrable_finsetSum _ fun k _ => it i k]
   have hi : ∀ i k, ∫ v, t i k v ∂(haarG (SUN N)) = schurM β i k * M k i := fun i k => integral_mul_const _ _
-  simp_rw [integral_finset_sum _ fun k _ => it _ k, hi]
+  simp_rw [integral_finsetSum _ fun k _ => it _ k, hi]
   have hs : ∀ i, ∑ k, schurM β i k * M k i = (schurCN (N := N) β : ℂ) * M i i := by
     intro i
     rw [sum_eq_single i (fun k _ hki => by rw [schurM_offdiag β (Ne.symm hki), zero_mul])

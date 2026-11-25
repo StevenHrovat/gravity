@@ -36,7 +36,7 @@ namespace ProofPhase.OneBox2
 theorem measurable_integral_spec {X Y : Type*} [MeasurableSpace X] [MeasurableSpace Y] {q : X → Measure Y}
     (hq : Measurable q) [∀ x, IsProbabilityMeasure (q x)] {f : X × Y → ℝ} (hf : Measurable f) :
     Measurable (fun x => ∫ y, f (x, y) ∂(q x)) := by
-  haveI : ProbabilityTheory.IsMarkovKernel (⟨q, hq⟩ : ProbabilityTheory.Kernel X Y) := ⟨fun x => inferInstance⟩
+  have : ProbabilityTheory.IsMarkovKernel (⟨q, hq⟩ : ProbabilityTheory.Kernel X Y) := ⟨fun x => inferInstance⟩
   exact (hf.stronglyMeasurable.integral_kernel_prod_right' (κ := (⟨q, hq⟩ : ProbabilityTheory.Kernel X Y))).measurable
 
 section Lift
@@ -94,17 +94,17 @@ theorem lift_splice_eq (cell : L → C) (s₀ : S) (b : Finset C) (Bf : Finset L
     splice b (cellLift cell s₀ U) (cellLift cell s₀ (splice Bf ρ U')) = cellLift cell s₀ (splice Bf U U') := by
   funext c e
   by_cases hc : c ∈ b
-  · simp only [splice, hc, if_true, cellLift]
+  · simp only [splice, hc, ite_true, cellLift]
     by_cases hce : cell e = c
-    · simp only [hce, if_true]
+    · simp only [hce, ite_true]
       by_cases he : e ∈ Bf
       · simp [splice, he]
-      · simp only [splice, he, if_false]
+      · simp only [splice, he, ite_false]
         exact (hfr e (hce ▸ hc) he).symm
     · simp [hce]
-  · simp only [splice, hc, if_false, cellLift]
+  · simp only [splice, hc, ite_false, cellLift]
     by_cases hce : cell e = c
-    · simp only [hce, if_true]
+    · simp only [hce, ite_true]
       have : e ∉ Bf := fun he => hc (hce ▸ hsub e he)
       simp [splice, this]
     · simp [hce]
@@ -120,7 +120,7 @@ def liftBlockSpec {J : Type*} {μ : Measure (L → S)} [IsProbabilityMeasure μ]
   block := b
   spec j := liftSpec cell s₀ (b j) (P.block j) ρ (P.spec j)
   isProb j W := by
-    haveI := P.isProb j (cellProj cell W)
+    have := P.isProb j (cellProj cell W)
     exact (Measure.isProbabilityMeasure_map_iff
       (measurable_liftMap cell s₀ (b j) (P.block j) ρ W).aemeasurable).2 inferInstance
   spec_congr j W W' h := by
@@ -131,10 +131,10 @@ def liftBlockSpec {J : Type*} {μ : Measure (L → S)} [IsProbabilityMeasure μ]
     simp only [liftSpec]
     rw [e1, e2]
   meas_avg j h hh := by
-    haveI := fun σ => P.isProb j σ
+    have := fun σ => P.isProb j σ
     exact measurable_blockAvg_liftSpec cell s₀ (b j) (P.block j) ρ (P.spec j) (hq j) hh
   dlr j h hh := by
-    haveI := fun σ => P.isProb j σ
+    have := fun σ => P.isProb j σ
     have hcl : BM (fun U => h (cellLift cell s₀ U)) :=
       ⟨hh.meas.comp (measurable_cellLift cell s₀), hh.bdd.imp fun C hC U => hC _⟩
     have hav : Measurable (blockAvg (b j) (liftSpec cell s₀ (b j) (P.block j) ρ (P.spec j)) h) :=

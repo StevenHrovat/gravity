@@ -253,11 +253,11 @@ theorem prod_map_ite (q : ℕ → Bool) (g : ℕ → G) (l : List ℕ) :
     have hc := ((hz (g k)).pow_left (l.countP q)).eq
     rw [List.map_cons, List.prod_cons, ih, List.map_cons, List.prod_cons, List.countP_cons]
     by_cases hk : q k
-    · simp only [hk, if_true, pow_succ]
+    · simp only [hk, ite_true, pow_succ]
       rw [← (Commute.self_pow z (l.countP q)).eq]
       simp only [mul_assoc]
       rw [← mul_assoc (g k), ← hc, mul_assoc]
-    · simp only [hk, Bool.false_eq_true, if_false, add_zero]
+    · simp only [hk, Bool.false_eq_true, ite_false, add_zero]
       rw [← mul_assoc, ← hc, mul_assoc]
 
 include hz in

@@ -90,7 +90,7 @@ theorem mulNoise_kernel (ND : NoiseDensity) {N M : ℕ} [NeZero N] [NeZero M] (h
     · unfold linkKernel; split_ifs <;> exact ND.nonneg _
     · unfold linkKernel; split_ifs <;> exact ND.hi _
   · intro U
-    haveI : IsProbabilityMeasure ((haarG SU2).withDensity (fun z => ENNReal.ofReal (ND.h z))) :=
+    have : IsProbabilityMeasure ((haarG SU2).withDensity (fun z => ENNReal.ofReal (ND.h z))) :=
       (inferInstance : IsProbabilityMeasure ND.law)
     exact mulNoise_law hM (haarG SU2) ND.meas ND.nonneg hC (P.B U)
 

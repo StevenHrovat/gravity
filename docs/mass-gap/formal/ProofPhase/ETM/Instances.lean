@@ -239,9 +239,9 @@ def proofRun {Line : Type*} (Q : ℕ → Finset Line) {θ : ℝ} (hθ0 : 0 ≤ �
     (fun _ => by linarith) (fun i => by split_ifs <;> positivity) fun i => by
       rw [Real.exp_zero, one_mul]
       by_cases hi : i < b
-      · rw [if_pos (show i + 1 ≤ b by omega), if_pos hi.le]
+      · rw [ite_eq_left (show i + 1 ≤ b by omega), ite_eq_left hi.le]
         exact h i hi
-      · rw [if_neg (show ¬ i + 1 ≤ b by omega)]
+      · rw [ite_eq_right (show ¬ i + 1 ≤ b by omega)]
         split_ifs <;> positivity
 
 /-- **The size reading, pulled back from the universal ledger**: a costly line left after `b` steps forces
@@ -252,10 +252,10 @@ theorem proofRun_size {Line : Type*} (Q : ℕ → Finset Line) {θ : ℝ} (hθ0 
   have hc := (proofRun Q hθ0 hθ1 h).contract (θ := 1 - θ) (fun _ => le_rfl) (0 : ℕ) b
   have e1 : (proofRun Q hθ0 hθ1 h).mass ((proofRun Q hθ0 hθ1 h).step^[b] (0 : ℕ)) = (Q b).card := by
     show (if Nat.succ^[b] 0 ≤ b then ((Q (Nat.succ^[b] 0)).card : ℝ) else 0) = _
-    rw [succ_iterate_zero, if_pos le_rfl]
+    rw [succ_iterate_zero, ite_eq_left le_rfl]
   have e2 : (proofRun Q hθ0 hθ1 h).mass (0 : ℕ) = (Q 0).card := by
     show (if 0 ≤ b then ((Q 0).card : ℝ) else 0) = _
-    rw [if_pos (Nat.zero_le b)]
+    rw [ite_eq_left (Nat.zero_le b)]
   rw [e1, e2, Real.exp_zero, one_mul] at hc
   have : (1 : ℝ) ≤ (Q b).card := by exact_mod_cast hend.card_pos
   linarith

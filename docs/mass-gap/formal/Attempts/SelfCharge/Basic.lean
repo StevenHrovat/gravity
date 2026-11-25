@@ -150,8 +150,8 @@ theorem deficit_strict (s : Finset ι) (w : ι → ℝ) (v : ι → E) (c δ : �
     intro i hi j hj
     by_cases hij : i = j
     · subst hij
-      rw [if_pos rfl, sub_self, real_inner_self_eq_norm_sq, hv i hi, sub_self, mul_zero]
-    · rw [if_neg hij, sub_zero]
+      rw [ite_eq_left rfl, sub_self, real_inner_self_eq_norm_sq, hv i hi, sub_self, mul_zero]
+    · rw [ite_eq_right hij, sub_zero]
       exact mul_le_mul_of_nonneg_left (hδ i hi j hj hij) (mul_nonneg (hw i hi) (hw j hj))
   have hsum : ∑ i ∈ s, ∑ j ∈ s, (w i * w j * δ - (if i = j then w i * w j * δ else 0)) ≤
       ∑ i ∈ s, ∑ j ∈ s, w i * w j * (c - @inner ℝ E _ (v i) (v j)) :=
@@ -165,7 +165,7 @@ theorem deficit_strict (s : Finset ι) (w : ι → ℝ) (v : ι → E) (c δ : �
       rw [Finset.mul_sum]
       exact Finset.sum_congr rfl fun j _ => by ring
     · refine Finset.sum_congr rfl fun i hi => ?_
-      rw [if_pos hi]; ring
+      rw [ite_eq_left hi]; ring
   linarith
 
 end Deficit

@@ -173,14 +173,14 @@ theorem tcount_rect [Fintype (LatticeLink d N)] (x : FinLatticeSites d N) {μ ν
     exact natCast_inj_of_lt (by omega) (by omega) (add_left_cancel h1)
   have e1 : ∑ i ∈ range T, (if (⟨siteShiftN (siteShiftN x μ R) ν i, ν⟩ : LatticeLink d N) ∈ S then (1 : ℤ) else 0) = 1 := by
     rw [sum_eq_single j]
-    · exact if_pos ((hmemν (siteShiftN (siteShiftN x μ R) ν j)).mpr hr)
+    · exact ite_eq_left ((hmemν (siteShiftN (siteShiftN x μ R) ν j)).mpr hr)
     · intro i hi hij
-      rw [if_neg]
+      rw [ite_eq_right]
       exact fun hm => hij (honly _ (siteShiftN_apply_ne x hμν R) i (mem_range.mp hi) ((hmemν _).mp hm))
     · intro hj'; exact absurd (mem_range.mpr hj) hj'
   have e2 : ∑ i ∈ range T, (if (⟨siteShiftN x ν i, ν⟩ : LatticeLink d N) ∈ S then (1 : ℤ) else 0) = 0 := by
     refine sum_eq_zero fun i hi => ?_
-    rw [if_neg]
+    rw [ite_eq_right]
     intro hm
     have hQ := (hmemν _).mp hm
     have := honly x rfl i (mem_range.mp hi) hQ

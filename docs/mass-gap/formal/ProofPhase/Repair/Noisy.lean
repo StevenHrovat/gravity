@@ -306,7 +306,7 @@ theorem noisyFamily_rp {T : Tuning} (NB : NoisyBlockingFamily T Y0 Yp) (k j : �
         F (thetaConn ((NB.blk k j).B U (c, q.1, q.2))) *
         ∏ p ∈ (univ : Finset (LatticePlaquette 4 (T.side k j))), Real.exp (T.β k * xp 2 p U)
           ∂(productHaar SU2 4 (T.side k j)) ∂((NB.νp k j).prod (NB.νp k j)) ∂(NB.ν0 k j) := by
-  haveI := NB.probp k j
+  have := NB.probp k j
   exact noisy_blocked_wilson_rp continuous_subtype_val (fun g => Matrix.specialUnitaryGroup_le_unitaryGroup g.2)
     (T.even_side k j) (NB.blk k j) (NB.ν0 k j) (NB.νp k j) (T.β k) hF mF bF
 
@@ -325,10 +325,10 @@ theorem noisy_blockedLaw_gibbs {T : Tuning} (NB : NoisyBlockingFamily T Y0 Yp) (
     ∃ V : CoarsePot j, Attempts.R3.Potential (fun A => A) V ∧
       noisyBlockedLaw NB k j = Attempts.R3.gibbsMeasure (haarG SU2) V := by
   obtain ⟨κ, m, Mx, hκ, hm, hlo, hhi, hker⟩ := hK
-  haveI := NB.probp k j
-  haveI := NB.prob0 k j
-  haveI := ProofPhase.UV.ymProb T k j
-  haveI : IsProbabilityMeasure (NB.noise k j) := by unfold NoisyBlockingFamily.noise; infer_instance
+  have := NB.probp k j
+  have := NB.prob0 k j
+  have := ProofPhase.UV.ymProb T k j
+  have : IsProbabilityMeasure (NB.noise k j) := by unfold NoisyBlockingFamily.noise; infer_instance
   have hdens := map_prod_eq_withDensity (ι := LatticeLink 4 (coarseSide j)) (haarG SU2) (T.ym k j) (NB.noise k j)
     ((NB.blk k j).meas) hκ hlo hm.le hhi hker
   have hρm : Measurable (fun φ => ∫ U, κ U φ ∂(T.ym k j)) :=
@@ -343,8 +343,8 @@ theorem noisy_blockedLaw_gibbs {T : Tuning} (NB : NoisyBlockingFamily T Y0 Yp) (
   have hhi' : ∀ φ, ∫ U, κ U φ ∂(T.ym k j) ≤ Mx := fun φ => by
     have := integral_mono (hκi φ) (integrable_const Mx) (fun U => hhi U φ)
     simpa using this
-  haveI : IsProbabilityMeasure (NB.joint k j) := by unfold NoisyBlockingFamily.joint; infer_instance
-  haveI : IsProbabilityMeasure (noisyBlockedLaw NB k j) := by
+  have : IsProbabilityMeasure (NB.joint k j) := by unfold NoisyBlockingFamily.joint; infer_instance
+  have : IsProbabilityMeasure (noisyBlockedLaw NB k j) := by
     unfold noisyBlockedLaw
     infer_instance
   exact gibbs_of_density (haarG SU2) (noisyBlockedLaw NB k j) hρm hm hlo' hhi' hdens

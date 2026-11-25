@@ -227,11 +227,11 @@ theorem condMassDecay_of_condMass {T : Tuning} {B : BlockingFamily T} (h : CondM
   have hc : 0 ≤ c := by positivity
   refine ⟨c, hc, k₀, fun k hk j F G A₀ B₀ D mF mG bF bG dF dG eA hsep => ?_⟩
   obtain ⟨κ, hprob, hce, hae⟩ := H k hk j
-  haveI := UV.ymProb T k j
+  have := UV.ymProb T k j
   have hae' : ∀ᵐ U ∂(T.ym k j), CellDobrushin (κ ((B k j).B U)) (cell k j) (1 : SU2) linkDist lam γ D₀ b cmin cmax :=
     ae_of_ae_map (B k j).meas.aemeasurable hae
   have bFG : ∀ U, |F U * G U| ≤ 1 := fun U => by
-    rw [abs_mul]; exact mul_le_one₀ (bF U) (abs_nonneg _) (bG U)
+    rw [abs_mul]; exact (mul_le_of_le_one_left (abs_nonneg _) (bF U)).trans (bG U)
   -- the cells met by `F`
   have hcard : (((A₀.image (cell k j)).card : ℕ) : ℝ) ≤ K := by
     have hsd : ∀ x ∈ A₀.image (cell k j), ∀ x' ∈ A₀.image (cell k j), siteDist x.site x'.site ≤ r := by
@@ -255,7 +255,7 @@ theorem condMassDecay_of_condMass {T : Tuning} {B : BlockingFamily T} (h : CondM
   filter_upwards [hae', hce (fun U => F U * G U) (mF.mul mG) bFG, hce F mF bF, hce G mG bG] with U hU h1 h2 h3
   unfold condCov
   rw [h1, h2, h3]
-  haveI := hprob ((B k j).B U)
+  have := hprob ((B k j).B U)
   have : Nonempty (LatticeLink 4 (coarseSide j)) := ⟨⟨fun _ => 0, 0⟩⟩
   have hcov := abs_cov_le_of_cellDobrushin (κ ((B k j).B U)) linkDist_self linkDist_triangle hlam.le hγ0 hγ1 hc1
     hU mF mG bF bG dF dG hR
@@ -320,7 +320,7 @@ theorem obsTransferPhysT_of_condMassDecay {T : Tuning} {B : BlockingFamily T} (h
   have hae := Hk1 k ((le_max_left _ _).trans hk) j F G A₀ B₀ D mF mG bF bG dF dG eA
     (fun e he e' he' => (hsep e he e' he').trans
       (mul_le_mul_of_nonneg_left (timeDist_le_linkDist e e') (T.a_pos k).le))
-  haveI := UV.ymProb T k j
+  have := UV.ymProb T k j
   have hdec := abs_condDefect_le_of_ae (B k j).meas.comap_le (UV.Bdd1.of_measurable mF bF)
     (UV.Bdd1.of_measurable mG bG) hae
   have hE1 : Real.exp (-(m₁ * D)) ≤ Real.exp (-(min m₁ m₂ * D)) :=

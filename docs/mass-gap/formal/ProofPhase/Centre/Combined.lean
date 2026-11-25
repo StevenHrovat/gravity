@@ -123,7 +123,7 @@ theorem corr_toy (j : ℝ) : corr toySupp (fun _ => j) ({()} : Multiset Unit) = 
   unfold corr num Zf
   simp_rw [hm, he]
   rw [sum_unit_fun, sum_unit_fun]
-  simp only [sgn, Bool.false_eq_true, if_false, if_true]
+  simp only [sgn, Bool.false_eq_true, ite_false, ite_true]
   rw [Real.tanh_eq_sinh_div_cosh, Real.sinh_eq, Real.cosh_eq]
   have : j * -1 = -j := by ring
   rw [mul_one, this]

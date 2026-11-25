@@ -137,11 +137,11 @@ theorem abs_cov_sub_le_condExp {Ω : Type*} {mΩ : MeasurableSpace Ω} (μ : Mea
   have ha_sm : AEStronglyMeasurable[mΩ] a μ := (stronglyMeasurable_condExp.mono hm).aestronglyMeasurable
   have hb_sm : AEStronglyMeasurable[mΩ] b μ := (stronglyMeasurable_condExp.mono hm).aestronglyMeasurable
   have ha1 : ∀ᵐ x ∂μ, |a x| ≤ 1 := by
-    have := ae_bdd_condExp_of_ae_bdd (m := m) (μ := μ) (f := F) (R := (1 : ℝ≥0))
+    have := ae_bdd_abs_condExp_of_ae_bdd_abs (m := m) (μ := μ) (f := F) (R := (1 : ℝ))
       (Eventually.of_forall fun x => by simpa using hF1 x)
     simpa using this
   have hb1 : ∀ᵐ x ∂μ, |b x| ≤ 1 := by
-    have := ae_bdd_condExp_of_ae_bdd (m := m) (μ := μ) (f := G) (R := (1 : ℝ≥0))
+    have := ae_bdd_abs_condExp_of_ae_bdd_abs (m := m) (μ := μ) (f := G) (R := (1 : ℝ))
       (Eventually.of_forall fun x => by simpa using hG1 x)
     simpa using this
   have ia : Integrable a μ := integrable_condExp

@@ -205,7 +205,7 @@ theorem sum_joining_le_sum (RF RG : Finset V) (I : Finset V → ℝ) (hI : ∀ A
           ∑ X ∈ joining H RF RG, (if X.1 ⊆ A then I A else 0) := by
         refine sum_le_sum fun A hA => ?_
         obtain ⟨X, hX, hXA⟩ := exists_joining_of_not_disjoint H (mem_filter.mp hA).2
-        calc I A = (if X.1 ⊆ A then I A else 0) := by rw [if_pos hXA]
+        calc I A = (if X.1 ⊆ A then I A else 0) := by rw [ite_eq_left hXA]
           _ ≤ _ := single_le_sum (f := fun X : BlockPolymer H => if X.1 ⊆ A then I A else 0)
               (fun X _ => hite A X) hX
     _ ≤ ∑ A ∈ (univ : Finset V).powerset, ∑ X ∈ joining H RF RG, (if X.1 ⊆ A then I A else 0) :=
@@ -223,12 +223,12 @@ theorem sum_superset_le (h : V → ℝ) {p : ℝ} (h0 : ∀ v, 0 ≤ h v) (hle :
     refine sum_congr rfl fun A _ => ?_
     by_cases hXA : X ⊆ A
     · have h1 : ∏ v ∈ univ \ A, (if v ∈ X then (0 : ℝ) else 1) = 1 :=
-        prod_eq_one fun v hv => by rw [if_neg (fun hvX => (mem_sdiff.mp hv).2 (hXA hvX))]
-      rw [if_pos hXA, h1, mul_one]
+        prod_eq_one fun v hv => by rw [ite_eq_right (fun hvX => (mem_sdiff.mp hv).2 (hXA hvX))]
+      rw [ite_eq_left hXA, h1, mul_one]
     · obtain ⟨v, hvX, hvA⟩ := not_subset.mp hXA
       have h1 : ∏ v ∈ univ \ A, (if v ∈ X then (0 : ℝ) else 1) = 0 :=
-        prod_eq_zero (i := v) (mem_sdiff.mpr ⟨mem_univ _, hvA⟩) (by rw [if_pos hvX])
-      rw [if_neg hXA, h1, mul_zero]
+        prod_eq_zero (i := v) (mem_sdiff.mpr ⟨mem_univ _, hvA⟩) (by rw [ite_eq_left hvX])
+      rw [ite_eq_right hXA, h1, mul_zero]
   rw [key]
   calc ∏ v, (h v + if v ∈ X then 0 else 1) ≤ ∏ v, ((if v ∈ X then p else 1) * (1 + h v)) := by
         refine prod_le_prod₀ (fun v _ => by have := h0 v; split_ifs <;> linarith) (fun v _ => ?_)
@@ -264,8 +264,8 @@ theorem sum_joining_pow_le {Δ : ℕ} (hdeg : ∀ v, H.degree v ≤ Δ) (RF RG :
       intro n
       simp only [hfdef, hqdef]
       by_cases hn : r ≤ n
-      · rw [if_pos (by omega), if_pos hn, mul_pow, pow_mul, pow_succ]; ring
-      · rw [if_neg (by omega), if_neg hn]; ring
+      · rw [ite_eq_left (by omega), ite_eq_left hn, mul_pow, pow_mul, pow_succ]; ring
+      · rw [ite_eq_right (by omega), ite_eq_right hn]; ring
     simp_rw [he]
     rw [← mul_sum, mul_div_assoc]
     exact mul_le_mul_of_nonneg_left (sum_tail_le hq0 hq r _) hp0
@@ -276,7 +276,7 @@ theorem sum_joining_pow_le {Δ : ℕ} (hdeg : ∀ v, H.degree v ≤ Δ) (RF RG :
         rw [mem_inter] at ha
         have hc := card_joining_ge H hr hX
         calc p ^ X.1.card = (if a ∈ X.1 then f X.1.card else 0) := by
-              rw [if_pos ha.1]; simp only [hfdef]; rw [if_pos hc]
+              rw [ite_eq_left ha.1]; simp only [hfdef]; rw [ite_eq_left hc]
           _ ≤ _ := single_le_sum (f := fun a => if a ∈ X.1 then f X.1.card else 0)
               (fun a _ => hterm0 a X) ha.2
     _ ≤ ∑ X : BlockPolymer H, ∑ a ∈ RF, (if a ∈ X.1 then f X.1.card else 0) :=
@@ -406,23 +406,23 @@ theorem term_vanish (β : ℝ) {f g : GaugeConnection G d N → ℝ} {LF LG : Fi
   · exact (((mf.comp measurable_fstC).sub (mf.comp measurable_sndC)).mul
       ((mg.comp measurable_fstC).sub (mg.comp measurable_sndC))).mul
       (Finset.measurable_prod _ fun p _ => measurable_hP hmeas β p)
-  · have e1 : f (fstC (swapOn C ω)) = f (sndC ω) := hfd _ _ fun l hl => by rw [fstC_swapOn, if_pos (hFC l hl)]
-    have e2 : f (sndC (swapOn C ω)) = f (fstC ω) := hfd _ _ fun l hl => by rw [sndC_swapOn, if_pos (hFC l hl)]
-    have e3 : g (fstC (swapOn C ω)) = g (fstC ω) := hgd _ _ fun l hl => by rw [fstC_swapOn, if_neg (hGC l hl)]
-    have e4 : g (sndC (swapOn C ω)) = g (sndC ω) := hgd _ _ fun l hl => by rw [sndC_swapOn, if_neg (hGC l hl)]
+  · have e1 : f (fstC (swapOn C ω)) = f (sndC ω) := hfd _ _ fun l hl => by rw [fstC_swapOn, ite_eq_left (hFC l hl)]
+    have e2 : f (sndC (swapOn C ω)) = f (fstC ω) := hfd _ _ fun l hl => by rw [sndC_swapOn, ite_eq_left (hFC l hl)]
+    have e3 : g (fstC (swapOn C ω)) = g (fstC ω) := hgd _ _ fun l hl => by rw [fstC_swapOn, ite_eq_right (hGC l hl)]
+    have e4 : g (sndC (swapOn C ω)) = g (sndC ω) := hgd _ _ fun l hl => by rw [sndC_swapOn, ite_eq_right (hGC l hl)]
     have e5 : ∏ p ∈ A, hP n β p (swapOn C ω) = ∏ p ∈ A, hP n β p ω := by
       refine prod_congr rfl fun p hp => ?_
       by_cases hpK : p ∈ K
       · have x1 : xp n p (fstC (swapOn C ω)) = xp n p (sndC ω) :=
-          xp_linkDep p _ _ fun l hl => by rw [fstC_swapOn, if_pos (hin p hpK l hl)]
+          xp_linkDep p _ _ fun l hl => by rw [fstC_swapOn, ite_eq_left (hin p hpK l hl)]
         have x2 : xp n p (sndC (swapOn C ω)) = xp n p (fstC ω) :=
-          xp_linkDep p _ _ fun l hl => by rw [sndC_swapOn, if_pos (hin p hpK l hl)]
+          xp_linkDep p _ _ fun l hl => by rw [sndC_swapOn, ite_eq_left (hin p hpK l hl)]
         simp only [hP, x1, x2]
         congr 2; ring
       · have x1 : xp n p (fstC (swapOn C ω)) = xp n p (fstC ω) :=
-          xp_linkDep p _ _ fun l hl => by rw [fstC_swapOn, if_neg (hout p hp hpK l hl)]
+          xp_linkDep p _ _ fun l hl => by rw [fstC_swapOn, ite_eq_right (hout p hp hpK l hl)]
         have x2 : xp n p (sndC (swapOn C ω)) = xp n p (sndC ω) :=
-          xp_linkDep p _ _ fun l hl => by rw [sndC_swapOn, if_neg (hout p hp hpK l hl)]
+          xp_linkDep p _ _ fun l hl => by rw [sndC_swapOn, ite_eq_right (hout p hp hpK l hl)]
         simp only [hP, x1, x2]
     rw [e1, e2, e3, e4, e5]; ring
 

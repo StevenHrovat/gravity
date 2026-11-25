@@ -114,8 +114,8 @@ theorem blockGapBddW_of_stageTwo {T : Tuning} (B₁ : BlockingFamily T)
   have hS : 0 ≤ ∑ a ∈ A, vf a := sum_osc_nonneg hvf A
   obtain ⟨f₂, g₂, A₂, S₂, v₂, L₂, mf₂, mg₂, bf₂, bg₂, hf₂A, hg₂S, hv₂, hsum₂, hL₂0, hL₂, hlip₂, hsep₂, hEF, hEG,
     hdec⟩ := HX k hk₃ j f g A Sg vf Lg R mf mg bf bg hfA hgS hvf hLg hlip hR0 hR
-  haveI := UV.ymProb T k j
-  haveI : IsProbabilityMeasure (blockedLaw T B₁ k j) := (Measure.isProbabilityMeasure_map_iff (B₁ k j).meas.aemeasurable).2 inferInstance
+  have := UV.ymProb T k j
+  have : IsProbabilityMeasure (blockedLaw T B₁ k j) := (Measure.isProbabilityMeasure_map_iff (B₁ k j).meas.aemeasurable).2 inferInstance
   -- the Wilson block covariance is the covariance under the `L_*` law
   rw [Effective.cov_map (T.ym k j) (B₁ k j).meas ⟨mf, 1, bf⟩ ⟨mg, 1, bg⟩]
   have eν : (T.ym k j).map (B₁ k j).B = blockedLaw T B₁ k j := rfl

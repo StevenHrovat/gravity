@@ -40,7 +40,7 @@ variable `Re tr U_p` is not a function of the adjoint images of the links. -/
 theorem xp_not_adjointOnly {d N : ℕ} (hN : 2 ≤ N) (p : LatticePlaquette d N) :
     ¬ AdjointOnly (fun U : GaugeConnection SU2 d N => xp 2 p U) := by
   intro h
-  haveI : Fact (1 < N) := ⟨hN⟩
+  have : Fact (1 < N) := ⟨hN⟩
   set l0 := p.boundaryLinks 0
   set V : GaugeConnection SU2 d N := Function.update (fun _ => (1 : SU2)) l0 negOneSU2
   have hne : p.dir1 ≠ p.dir2 := ne_of_lt p.h_lt
