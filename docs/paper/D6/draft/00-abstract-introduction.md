@@ -74,7 +74,9 @@ O1 and, with the resolution clause, the gap; O1 gives an instance; so the interf
 Second, the subtitle, *the ETM as the ODP running DMP*: the first author's reading of the ODP as the internal clock whose tick ends
 at `+`, of DMP as the operating system of that kernel, and of one ETM that boots again whenever it stops **[reading]** (II.0.5). Its
 exact parts are the cycle of `r` and the one terminal running system **[Lean]**. The reading that the paper proves 0 = 1 for the
-classical, hence NP = coNP and P != NP, does not follow, and II.0.5 says why.
+classical, hence NP = coNP and P != NP, does not follow, and II.0.5 says why. II.0.5 ends with the first author's one condition: O1
+supplied at minting, under a universal witness agreed beforehand, and assumed until one invalid case is found. The paper records it
+as a reading next to its exact parts and does not claim O1.
 
 ### What this paper is
 
