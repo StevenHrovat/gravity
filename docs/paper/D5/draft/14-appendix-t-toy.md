@@ -76,8 +76,9 @@ A digest is a certificate of its path: given the input, one forward run rebuilds
 `ec4916dd...aac8bc5`. Flipping any one of the 104 input bits of `vxunderground` changes between 105 and 148 of the 256 digest bits,
 128.7 on average: half, the avalanche a hash is designed for **[classical]** for the design criterion (Webster-Tavares 1985).
 
-**Backward, without the input, there is no short path** **[numerical]** (claim T.9). In the terms of II.2.8 every decoder of a hash
-is smelly somewhere (`hash_smelly`); the runs show it on concrete candidates. Inputs built by rotating a 1 into place (one byte
+**Backward, without the input, there is no short path** **[numerical]** (claim T.9). In the terms of II.2.8 no decoder of a hash is clean
+on every input (`hash_smelly`); the runs here show something else, how hard it is to find an input at all, preimage resistance, in
+small. Inputs built by rotating a 1 into place (one byte
 0x01, the character "1", 32 bytes 0...01, 256 characters 0...01) are hashed once each; none gives 000...0001, so each is refuted at
 its one step. A digest of a chosen shape is a search: the first input `vxunderground-n` whose digest starts with k zero hex digits and
 ends in 1 is found after 246, 609, 13113, 26014 and 2123543 tries for k = 1 to 5, single draws against an expected count of about

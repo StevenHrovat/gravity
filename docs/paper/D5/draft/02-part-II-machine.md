@@ -44,7 +44,7 @@ one-box test) is a detail of this one picture.
   link, and a complex-linear map of the line that keeps every norm is multiplication by a unit number, so among linear links that
   keep identity only rotation links (`rotHom`, `rot_of_isometry`) **[Lean]** (claim II.0f);
 * on the reals the circle is the two points 1 and -1: a real-linear map of the line that keeps every norm is multiplication by 1 or
-  -1, the identity or the half-turn, and every real number is its modulus times 1 or -1, so ordinary multiplication is a cost times
+  -1, the identity or the half-turn, and every real number is its modulus times 1 or -1, so ordinary multiplication is a gate factor (a size) times
   an identity-keeping multiplication (`rot_of_isometry_real`, `real_eq_sign_mul_abs`) **[Lean]** (claim II.0g).
 
 **Decidable over every truly possible state.** The first author's reformulation: a DMP-complete state needs decidability for every truly
@@ -65,29 +65,48 @@ always "multiplication by complex numbers".
 
 ### II.0.1 The complex-number ruleset
 
-Nine rules carry all the mathematics of the paper. Each is stated once here with a
-small example and where the paper uses it; a reader who knows them reads "turn", "phase", "cost" and "half-turn" everywhere in the
-same sense (claim II.0i).
+Nine rules carry the complex-number steps of the paper; the rest rests on the tools of Part II B (positivity, reconstruction, the
+spectral theorem, contraction) and on the undecidability of II.3. Each rule is stated once here with a small example and where the
+paper uses it, so that a reader who knows them reads "turn", "phase", "cost" and "half-turn" everywhere in the same sense (claim II.0i).
+
+**The words.** A complex number $z = r e^{i\theta}$ has a *size* $r = \lvert z \rvert$, which the machine calls the *gate factor*, and an
+*angle* or *phase* $\theta$. The *cost* of a step is minus the log of its size, $-\log r$; the ledger adds the floor $\delta$ to it
+(II.1). A *turn* is a multiplication by $e^{i\theta}$; a *half-turn* is a multiplication by $-1 = e^{i\pi}$; a *full turn* is
+$e^{2\pi i} = 1$. The turn in $N$ equal steps is $\zeta = e^{2\pi i/N}$, a primitive $N$-th root of unity: $\zeta^N = 1$ and no smaller
+power is 1.
 
 | Rule | Statement | Small example | Used in |
 |---|---|---|---|
-| C1 Multiplying is scaling times turning | $z = r e^{i\theta}$, and $z w$ has size $r s$ and angle $\theta + \varphi$: sizes multiply, angles add | $i \cdot i = -1$: two quarter-turns make a half-turn | II.0, every running system |
-| C2 The cost is minus the log of the size | for $\lvert z \rvert \le 1$ the cost $-\log \lvert z \rvert \ge 0$, and costs add along a run | size 1/2 costs log 2 a step; ten steps cost 10 log 2 | the ledger II.1, settling II.3, the free energies of III.3 |
+| C1 Multiplying is scaling times turning | for $z = r e^{i\theta}$ and $w = s e^{i\varphi}$ the product $z w$ has size $r s$ and angle $\theta + \varphi$: sizes multiply, angles add | $i \cdot i = -1$: two quarter-turns make a half-turn | II.0, every running system |
+| C2 The cost is minus the log of the size | for $0 < \lvert z \rvert \le 1$ the cost $-\log \lvert z \rvert \ge 0$; sizes multiply along a run (C1), so costs add | size 1/2 costs log 2 a step; ten steps cost 10 log 2 | the ledger II.1, settling II.3, the free energies of III.3 |
 | C3 Rotations add | $e^{ia} e^{ib} = e^{i(a+b)}$; on $N$ steps $\zeta^a \zeta^b = \zeta^{(a+b) \bmod N}$ | ROT13 twice is a rotation by 26, the identity; by 14 twice leaves 2 | T.5, II.2.8 |
-| C4 A full turn averages to one exact value | $\sum_{j<N} \zeta^{jk}$ is $N$ when $N$ divides $k$ and 0 otherwise | the four quarter-turns $1 + i - 1 - i = 0$ | II.2.7 |
-| C5 The mirror pairs the halves | $\overline{e^{i\theta}} = e^{-i\theta}$; for a function real on the real axis the $+$ half of a turn mirrors the $-$ half, and the result is real | $\cos\theta = (e^{i\theta} + e^{-i\theta})/2$ | II.2.7, the electric sectors of III.3.1c |
-| C6 The turn back is the inverse turn | averaging against $\zeta^{-jk}$ recovers each coefficient | the full turn decodes its $N$ coefficients | II.2.8, III.3.1c |
-| C7 The logarithm turns products into sums | $\log(xy) = \log x + \log y$, $\log x^k = k \log x$ for $x, y > 0$; for complex numbers $\log z = \log\lvert z\rvert + i \arg z$, so a product of steps becomes a sum of costs (real part) plus a sum of turns (imaginary part) | $\mu^k$ paths against $e^{-kF}$ cost: the sum decays when $F > \log\mu$ | II.0 (decidability), III.5.4, R.7c |
-| C8 Size-keeping maps are reversible | a complex-linear map keeping every size is a unit multiplication; on bits read as reals a reversible computation is a permutation, unitary | ROT13 permutes the letters; a hash is not a permutation | II.0f, II.4.1, II.2.8 |
+| C4 A full turn averages to one exact value | for $\zeta = e^{2\pi i/N}$, $\frac1N \sum_{j<N} \zeta^{jk}$ is 1 when $N$ divides $k$ and 0 otherwise | the four quarter-turns $1 + i - 1 - i = 0$ | II.2.7 |
+| C5 The mirror pairs the halves | $\overline{e^{i\theta}} = e^{-i\theta}$; for a function holomorphic near the circle with $f(\bar z) = \overline{f(z)}$ (real on the real axis) the $+$ half of a turn mirrors the $-$ half, and the result is real | $\cos\theta = (e^{i\theta} + e^{-i\theta})/2$ | II.2.7, the electric sectors of III.3.1c |
+| C6 The turn back is the inverse turn | for $p(z) = \sum_{m<N} c_m z^m$, the average $\frac1N \sum_{j<N} p(\zeta^j)\, \zeta^{-jk}$ is $c_k$ | the full turn decodes its $N$ coefficients | II.2.8, III.3.1c |
+| C7 The logarithm turns products into sums | $\log(xy) = \log x + \log y$, $\log x^k = k \log x$ for $x, y > 0$; for complex $z \ne 0$, $\log z = \log\lvert z\rvert + i \arg z$, so a product of steps becomes minus a sum of costs (real part) plus a sum of turns (imaginary part) | $\mu^k$ paths against $e^{-kF}$ cost: the series converges when $F > \log\mu$ | II.0 (decidability), III.5.4, R.7c |
+| C8 Size-keeping maps are reversible | a complex-linear map of the line keeping every size is a unit multiplication; in more dimensions the size-keeping linear maps are the unitary ones, and on bits read as reals a reversible computation permutes the corner points, a unitary (permutation) matrix | ROT13 permutes the letters; a hash is not a permutation | II.0f, II.4.1, II.2.8 |
 | C9 One turn around a point counts what is inside | one turn reads off a Taylor coefficient, $1/n!$, the order of a zero (a winding number), a leading coefficient | $1/n!$ is one turn of $e^z z^{-n-1}$ around 0 | II.2.7, IV.1.5c, VII.3.5f |
 
-C7 in its complex form joins C1, C2 and C3: every multiplicative step of the real picture becomes an additive one in the complex
-picture, costs adding in the real part and turns in the imaginary part. Its one ambiguity is exactly a full turn: the complex logarithm
-is defined up to adding $2\pi i$, which is why C4 and C9 read off exact values from one turn. The first author reads this as being able
+C7 in its complex form joins C1, C2 and C3: every multiplicative step of the real picture with a nonzero size becomes an additive one
+in the complex picture, minus the costs adding in the real part and the turns in the imaginary part. Its one ambiguity is a whole number
+of full turns: the complex logarithm is defined up to adding a multiple of $2\pi i$, which is why C4 and C9 read off exact values from
+one turn. The first author reads this as being able
 to simplify away the multiplicative steps of real mathematics into additive complex ones **[reading]** (claim II.0i).
 
-C1 to C9 are **[classical]**; their forms used in the proofs are **[Lean]**: C1 and C2 in `ETM/Complex.lean` (II.0 above), C3 in
-`rot_add`, C4, C6 and C9 in IM's `Arsenal/FullTurn.lean`, C8 in `rot_of_isometry` (II.0 above).
+**A run in polar form.** Three steps $z_1 = z_2 = \frac12 e^{i\pi/2}$ and $z_3 = \frac12 e^{i\pi}$. The run is their product: sizes
+multiply to $1/8$ (C1), so the cost is $3 \log 2$, three steps of $\log 2$ (C2); angles add to $\pi/2 + \pi/2 + \pi = 2\pi$ (C3), one full
+turn, so the product is the real number $1/8$. In logarithms the whole run is one sum, $-3\log 2 + 2\pi i$ (C7), and the $2\pi i$ is the
+full turn that the product does not see.
+
+**The encoder is the case N = 2.** With $\zeta = -1$ the two averages of C6 are the even part $(\psi + \psi')/2$ and the odd part
+$(\psi - \psi')/2$, the mirror of C5; their ratio is the electric factor of II.2.2 (II.2.7).
+
+**Where the rules stop.** Size 0 has no logarithm and no cost; $\arg z$ needs a choice of branch (C7); C5 and C9 need holomorphic
+functions; C8's unit multiplication is for the line, unitary maps in more dimensions.
+
+C1 to C9 are **[classical]**; their forms used in the proofs are **[Lean]**: C1 in `ETM/Complex.lean` (sizes multiply along a run,
+`cmach_mass_eq`, II.0 above), C2 in the ledger of II.1, C3 as an instance in `rot_add` (on the string of Appendix T), C4, C6 and C9 in
+IM's `Arsenal/FullTurn.lean`, C8 for the line in `rot_of_isometry` (II.0 above).
 
 ## II.1 The ledger and the transport theorem
 
@@ -206,10 +225,15 @@ not positive. Four facts decide when a decoder can be clean **[Lean]** (IM, `Ars
 * the full turn decodes: reading N coefficients at the powers of a root of unity and averaging one turn back returns every one
   (`turn_decodes`, C6).
 
-These four carry what Appendix R and T say about hashes and turns, as instances of one statement. A digest is traced to an origin,
-never decoded to its one input (R.6a, T.6, from `hash_smelly`); a known cyclic rotation is undone by completing its turn (R.8b, from
-`turn_decodes`); the toy's smelly states, rotating `vxunderground` by k and back by k', are this notion (`toy_smelly_iff`, T.5);
-and the round-trip check of the repository's trusted hashes is a test that each pin is not smelly, back and then forth (R.6b).
+These four carry what Appendix R and T say about hashes and turns, as instances of one statement. A hash has no decoder that is
+clean on every input: a digest with several inputs decodes correctly to at most one of them (R.6a, from `hash_smelly`; for messages of
+bounded length, `digest_collision`). That an input of a given digest is hard to find at all is a different property, preimage
+resistance, which non-injectivity neither gives nor needs; T.6 shows it in small **[numerical]**. A known cyclic rotation is undone by
+completing its turn (R.8b; in the toy `vx_rot_complete`), and one turn back recovers each component of a sum of powers
+(`turn_decodes`). The toy's smelly states, rotating `vxunderground` by k and back by k', are this notion (`toy_smelly_iff`, T.5). The
+round-trip check of the repository's trusted hashes decodes by lookup: fetching a commit by its id is a decoder that is clean on what is
+stored and smelly only off it, which is the "origin, not identity" of R.6a; the check tests that each pin is not smelly, back and then
+forth (R.6b).
 
 ---
 
@@ -336,10 +360,11 @@ of their own as observable systems is **[paper]**, since they are gravity's own 
 | VIII Hodge | the Hodge statement for the input at every step | `cardBox` | the base case, proved for divisors | `tickBox_observable` |
 | IX GU | charge quantisation at every step | `tickBox` (a box, no card) | none in the box: it passes, proved; the GU open step lies outside it (IX.5e) | `tickBox_observable` |
 | Appendix T | an even word at every step, at every bit width | IM's box | none: base case, inductive step and the map of scales all proved | native |
-| Trusted hashes (R.6b) | each trusted hash: back and forth deliver the same value | the round-trip check | none: the canary is the base case, 9 proofs pass | [paper] |
+| Trusted hashes (R.6b) | each trusted hash: back and forth deliver the same value | no Lean box: a check item by item, with no induction | none: every item checked, 9 proofs pass; the canary first tests the tools | [paper] |
 
 So the proof has one shape everywhere, and the parts show where its open part sits: the base case on the cards, the inductive step on
-the Yang-Mills box. Appendix T runs all of it on binary words. The figure shows the shape once.
+the Yang-Mills box. Appendix T runs all of it on binary words. Figure 1 shows the shape once (in the typeset paper; the Markdown keeps
+its source in a comment).
 
 <!-- latex
 \begin{figure}[ht]
@@ -352,15 +377,17 @@ the Yang-Mills box. Appendix T runs all of it on binary words. The figure shows 
   \node[draw,rounded corners,fill=gray!15,align=center,font=\footnotesize] (base) at (0,-1.45) {base case:\\ the claim at 0};
   \draw[->] (base) -- (s0);
   \node[align=center,font=\footnotesize] at (4,1.05) {inductive step: once true at a step, true at the next};
-  \node[draw,rounded corners,font=\footnotesize] (c1) at (2,-2.9) {scale 2};
-  \node[draw,rounded corners,font=\footnotesize] (c2) at (4.4,-2.9) {scale 3};
-  \node[draw,rounded corners,font=\footnotesize] (c3) at (6.8,-2.9) {scale $\dots$};
-  \foreach \c in {c1,c2,c3} { \draw[->,dashed] (\c) -- (4,-0.55); }
-  \node[align=center,font=\footnotesize] at (4.4,-3.75) {dashed: a map keeping the step, the check and the marker (the shared gate)};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt}] (-0.4,-0.55) -- (6.4,-0.55) node[midway,below=6pt,font=\footnotesize] (onebox) {the one box: the whole run};
+  \node[draw,rounded corners,font=\footnotesize] (c1) at (2,-3.1) {scale 2};
+  \node[draw,rounded corners,font=\footnotesize] (c2) at (4.4,-3.1) {scale 3};
+  \node[draw,rounded corners,font=\footnotesize] (c3) at (6.8,-3.1) {scale $\dots$};
+  \foreach \c in {c1,c2,c3} { \draw[->,dashed] (\c) -- (3,-1.25); }
+  \node[align=center,font=\footnotesize] at (4.4,-3.95) {dashed: every scale's run mapped onto the one box, keeping the step, the check and the marker (the shared gate)};
 \end{tikzpicture}
 \caption{The headline as a picture. A statement is checked at every step of a run; a proof is a base case and an inductive step, and
-the dashed maps carry it to every scale. Where the open part sits: on a card, the base case; on the Yang-Mills box, the inductive step;
-for G2 and the verify toy, the dashed maps.}
+the dashed maps carry it from the one box to every scale. Where the open part sits: on a card, the base case; on the Yang-Mills box, the
+inductive step; for G2, the dashed maps (the shared gate, named R136a1). In the verify toy the content sits in the dashed maps too, and
+everything there is proved.}
 \end{figure}
 -->
 
