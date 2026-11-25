@@ -36,8 +36,8 @@ Seven problems are read here as one statement checked at every step of a sequenc
 place of the Riemann hypothesis and NP versus coNP in place of P versus NP (neighbouring forms), and a Grand Unified reading, not a
 Clay problem. No problem is solved. The
 restatement holds exactly when the problem's statement holds at every step, so a proof is an induction: a base case and an inductive
-step; once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. Each problem has cards, each with one named open step in Lean (GU a box, no card); on a card the open step is the base case, on
-the Yang-Mills box the inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills,
+step; once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. The six Clay-form problems have cards, each with one named open step in Lean; GU is a box with no card. On a card the open step is
+the base case, on the Yang-Mills box the inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills,
 GRH, NP versus coNP, BSD and Hodge, each a different open statement; results using it are marked conditional. On binary data read as
 real numbers every computation can be made reversible, its history kept as a supplied input, so complex mathematics applies exactly. The restatements are in Lean 4 with Mathlib, standard axioms
 only; DMP's readings are marked.
@@ -153,7 +153,7 @@ them, for which no procedure decides it. Each open step is restated as a box. On
 marker correct at the start and kept by the step is correct at every tick (the one-box certificate). On five cards the paper reads
 the open step as one statement, that the card's box is DMP-complete, its gate shared at every scale **[reading]**; mathematically
 each is a different statement, and the paper assumes it once (Part X). Navier-Stokes has no box of its own card under test: a model
-box built from the energy bound alone gives a wrong marker. The Grand Unified card's open step lies outside its box. The paper proves
+box built from the energy bound alone gives a wrong marker. The Grand Unified box's open step lies outside it. The paper proves
 the machine and each card's core.
 
 ### The test in one page

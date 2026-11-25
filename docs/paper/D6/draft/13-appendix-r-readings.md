@@ -786,25 +786,27 @@ written; the open steps stay as the paper marks them (R.12f).
 
 1. Ordinality is the orbit of the atoms by possible configuration, the orbit of the electrons.
 2. The orbit of a symmetry and the electron orbital use the same derivations, so they are alike and compatible.
-3. The two care points below, together, give the needed O1 that 0 = 1.
+3. The first two care points below, together, give the needed O1 that 0 = 1.
 
 The whole is the first author's reading. Exact parts:
 
-* An element's place in order, its atomic number, is the number of electrons of the neutral atom, and the order in which the orbitals
-  fill by energy builds the periodic table **[classical]**. The possible configurations are fixed by Pauli's principle: no two
+* An element's place in order, its atomic number, is the number of protons, equal to the electron count of the neutral atom, and
+  the order in which the orbitals fill by energy, found empirically, builds the periodic table **[classical]**. The possible configurations are fixed by Pauli's principle: no two
   electrons share all four quantum numbers (Pauli 1925), so a shell n holds 2n^2 electrons, 2, 8, 18, 32 **[classical]**.
 * One derivation for both senses of orbit: an orbital type (s, p, d, f) is an irreducible representation of the rotation group SO(3),
-  with spin from SU(2); rotating one orbital sweeps out states that span exactly its multiplet. In hydrogen a hidden SO(4) symmetry
-  joins every orbital of shell n into one irreducible representation, which is why they have the same energy (Fock 1935). Pauli's
+  with spin from SU(2); rotating one orbital sweeps out states that span exactly its multiplet. In hydrogen a hidden SO(4) symmetry,
+  exact for the non-relativistic Coulomb problem, joins every orbital of shell n into one irreducible representation, which is why
+  they have the same energy (Fock 1935). Pauli's
   principle is a symmetry condition too: the configuration is antisymmetric under exchanging electrons **[classical]**.
-* An open step is where an exact derivation stops and a named input has to be supplied; O1 is such a step (Part X), and the two care
-  points below mark exactly where the derivation of the filling order stops **[paper]**.
+* An open step is where an exact derivation stops and a named input has to be supplied; O1 is such a step (Part X). The second care
+  point below marks where the symmetry derivation of the atom stops and many-electron input, computed or measured, enters: the shape
+  of an open step, though that input is supplied, not left open **[paper]**.
 
 Care:
 
 * An orbit is a set of states and a multiplet is the space they span: the derivations match, the objects are related, not equal.
 * The ranking by energy, the filling order, is the empirical Madelung rule, with known exceptions, among them chromium and copper (Meek-Allen
   2002), and the SO(4) degeneracy of hydrogen is broken in atoms with more than one electron.
-* The two care points do not supply O1 and do not give 0 = 1. They mark where the atomic derivation needs an input, which is the shape
+* The first two care points do not supply O1 and do not give 0 = 1. They mark where the atomic derivation needs an input, which is the shape
   of an open step; O1 is a bound on the Yang-Mills measure, uniform in the scale, which no fact about atomic shells bounds. 0 = 1 holds
   only in the zero ring (R.5a), and an empirical exception to a rule refutes the rule, not arithmetic.

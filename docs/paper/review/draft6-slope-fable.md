@@ -28,3 +28,5 @@ the CMB bullet in R.12i marked a reading, the stale "ends with" and the README; 
 sentences, "interpretation" in IV.8, the figure note, a comma, claim numbers for the toy).
 
 R.12j (the first author's reading of ordinality as the orbit of the atoms) was added with the fixes.
+
+**Final check, Opus at medium effort, on `911f531`.** No blockers; R.12j's physics verified. Fixed: the open-step bullet names the second care point only and says the atomic input is supplied, not left open; clause 3 names the first two care points; the intro's GU sentence; the abstract's card sentence; atomic number as the proton count; SO(4) exact for the non-relativistic Coulomb problem; the filling order found empirically. The Madelung rule is left uncited, described as empirical.
