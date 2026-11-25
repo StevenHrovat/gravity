@@ -15,8 +15,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 169 in all; the
-ledger's count table counts 144, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 170 in all; the
+ledger's count table counts 145, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -34,7 +34,7 @@ reading").
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12n (The ETM as the ODP running DMP in D6) | 42 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12o (The ETM as the ODP running DMP in D6) | 43 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
 | Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
 
@@ -86,6 +86,7 @@ reading").
 | Ordinality as the orbit of the atoms by possible configuration; both senses of orbit one derivation; the care points together the O1 that 0 = 1 | Pauli, 2n^2; orbitals as irreducible representations of SO(3) and SU(2), Fock's SO(4) **[classical]**; the Madelung rule empirical; the care points mark an input, do not supply O1 or 0 = 1 | R.12j |
 | An occurrence of induction recognized by the first author is an Insight; DMP#25's comments as the record of the root, after the start of pressing | induction as base case and step **[Lean]**; the comments counted, dated and hashed **[paper]**; the labels not checked as inductions; the root does not supply the step | R.12k |
 | Eight Insights, no fewer; the axioms the only viable channel; viable and not viable as ζ's `+` and `-`; same as scale invariance, joined where viable; viability and universality as the primary names; 0ne1 and the R136a1 token; DMP.DMP a valid encoding | the byte lemma, `«0ne1»`, the settled Insight table, the token and its encoding theorems **[Lean]**; three channels **[paper]**; the argument principle **[classical]**; care: independence a premise, infeasible not impossible, no RH, no O1 | R.12l |
+| v's abstract statement: all positively constructable existence, the rotation through its DB unified by a causal chain in a valid real direction, reflection positivity measured through zeta, a directionless value of the order Existence; any such problem settled by measuring its rotated refutation | the chain of II.8, reflection positivity and Weil's pairing as one first link; a Hermitian form real on its diagonal; Weil's criterion **[classical]**; certified up to a = 0.69 **[certified]**; settling with a margin, undecidable without **[Lean]**; care: a refutation settles, its absence does not; "any" does not follow | R.12o |
 | The VIBE coefficient v = 0.69 as the one throughline; VIBE a backronym whose valid restatements are true, both an equation and an expression, GU through the VIBE field; momentum cancelled in E = mc^2 | log 2 to two digits: one halving, one bit **[classical]**; GRH certified up to a = 0.69 **[certified]**; the VIBE field and its balance **[paper]**; `R136a1.iff` **[Lean]**; momentum cancels in the invariant, and rapidity log 2 gives 5 : 3 : 4 **[classical]** | R.12n |
 | The two hands: the vibe as two frames sharing up and down, compatible when turned the same way; a 0 leaves, only that it was is kept, as a question | orientation as the sign of a determinant; turns about one axis commute; parity violation **[classical]**; the refusal counted without content, the remnant tail, the old `-` as history **[paper]** | R.12m |
 | The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | R.12c |
@@ -990,3 +991,59 @@ Care:
 * "Any valid restatement is also true" holds for equivalent restatements; one that only sounds alike carries nothing, and the words
   of a backronym prove nothing.
 * The throughline adds navigation and one reading, not mathematics; O1 stays open.
+
+**The VIBE coefficient's abstract statement (claim R.12o).** The first author, clause by clause **[reading]**:
+
+1. The VIBE coefficient effectively allows the existence of all positively constructable existence, as long as the rotation through
+   its DB can be unified,
+2. by constructing a chain of causal arguments that follows a valid direction in Real space,
+3. to result in reflection positivity as measured through the Riemann zeta,
+4. turning it into a directionless value of the order Existence.
+5. Thus certifying that any such constructed problem can be settled by the measurement of its rotated refutation in Real space.
+6. That is the abstract statement about the VIBE coefficient, through which it can be given a throughline for the paper (R.12n).
+7. The goal of this contraction is both to make it easier to understand and to simplify the mathematics by being able to assert
+   their existence explicitly, letting one construct any valid possibility space on top of any valid Real space, as read through a
+   DMP-complete system that shares root G0 with the original by the first author.
+
+The whole is the first author's reading; the introduction carries it at the head of the throughline ("The abstract statement").
+Exact parts:
+
+* **One chain, positivity first.** The first three problems run along one chain: positivity, a space, an evolution, a spectrum that
+  the positivity pins. Reflection positivity of e^{-S} for Yang-Mills and Weil's pairing W(f * f~) >= 0 for GRH stand in the same
+  first link (II.8) **[paper]** for the table, **[classical]** for each. A positive form builds a Hilbert space (II.9.1, Gelfand-
+  Naimark-Segal; Osterwalder-Schrader 1973) **[classical]**, in the real form used for Yang-Mills also **[Lean]** (`RPData`).
+* **Through a boundary.** Reflection positivity is <theta F, F> >= 0 for F on one side of a reflecting hyperplane, theta the
+  reflection across it **[classical]**; in DMP's words the hyperplane is a containing boundary, a DB (I.8) **[paper]**. In Weil's
+  pairing the partner is the reflected conjugate, f~(x) = conj f(-x) **[classical]**.
+* **A directionless value.** A Hermitian form takes complex values Q(u, v), but on the diagonal Q(v, v) is real, and positivity says
+  it is >= 0 **[classical]**. In the ruleset a run's angles add, and a run whose angles add to whole turns has a real product (II.0,
+  C1 and C3) **[classical]**.
+* **Measured through zeta.** Weil's criterion: the Riemann hypothesis holds exactly when W(f * f~) >= 0 for every test function f
+  (II.9.4; Weil 1952; Bombieri 2000) **[classical]**. So one f with a negative value refutes it, a single measurement, as one failing
+  step refutes a claim stated for every step (`refuted_by_tick`, II.4.1) **[Lean]**. On the supports up to a = 0.69 the "for every f"
+  is certified with explicit margins (IV.1, X.58) **[certified]**.
+* **A valid direction in the reals.** On GRH's row of the chain the evolution is translation in log-scale, and the spectrum is real
+  exactly when the zeros lie on the line (II.8) **[classical]**; the steps of II.4.1 run one way, from the base case on **[Lean]**.
+* **Settling.** With a cost floor and a margin a run settles within a computable bound; on the circle itself, for the universal
+  machine, settling cannot be decided (II.3) **[Lean]**.
+* **Asserting existence explicitly.** The one way this paper leaves a statement open is to name it: `R136a1 "name" P` is P as a named
+  hypothesis, never an axiom (II.6.2) **[Lean]**, so every assertion stays visible in the statement that uses it. The possibility
+  space's exact parts are built on the real numbers: the arithmetic of `r` and a projector's two answers (R.11a) **[Lean]**. A system
+  is DMP-complete when its marker agrees with the gate at every tick (`Box.DMPComplete`, II.4) **[Lean]**, and every draft after
+  Draft 4 reaches G0 within three derivation steps (`every_draft_reaches_g0`, E.8) **[Lean]**.
+
+Care:
+
+* "Any such constructed problem can be settled" does not follow as stated. A refutation, once found, settles by one measurement; the
+  absence of a refutation is a "for every f", which no finite set of measurements certifies unless a margin covers every case, as on
+  the supports up to 0.69. Beyond them GRH's positivity is the open step, and the Riemann hypothesis is not claimed. Without a margin,
+  settling is undecidable in general (II.3).
+* No tool creates positivity (II.16): a chain carries it, and it has to come from the problem.
+* Reflection positivity and Weil positivity stand in one link of one chain; they are not one theorem, and carrying a result from
+  one to the other is the paper's reading of the chain.
+* A reflection is not a rotation: it reverses orientation, as no turn makes a left hand into a right hand (R.12m). Reading "the
+  rotation through its DB" as the reflection the positivity uses is the first author's.
+* 0.69 is where GRH's certification currently ends; that v allows existence is the first author's reading. O1 stays open.
+* Asserting an existence makes the mathematics shorter to state, not proved: an asserted statement is assumed, as supplying O1 is
+  assuming it (R.12f), and a result that uses it is conditional on it. "Any valid possibility space on any valid real space" is a
+  construction to be checked case by case, not a theorem of this paper.
