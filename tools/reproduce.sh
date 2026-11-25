@@ -37,8 +37,10 @@ stage_paper() {
   bash tools/paper-gate.sh $d || bad "paper gate"
   "$PY" tools/paper-latex.py $d || { bad "LaTeX conversion"; return; }
   if command -v pdflatex >/dev/null; then
-    (cd "$dir" && for i in 1 2; do pdflatex -interaction=nonstopmode -halt-on-error "$name.tex" >/dev/null || exit 1; done) \
+    (cd "$dir" && for i in 1 2 3; do pdflatex -interaction=nonstopmode -halt-on-error "$name.tex" >/dev/null || exit 1; done) \
       && grep -h "Output written" "$dir/$name.log" || bad "pdflatex"
+    # the table of contents must point to the page where a heading prints: one entry from the middle, checked
+    "$PY" tools/paper-pagecheck.py "$dir/$name.pdf" "$dir/$name.toc"; [ $? -eq 1 ] && bad "page check: the contents and the pages disagree"
   else
     echo "pdflatex not installed: the LaTeX source $dir/$name.tex was written; the PDF was not built"
   fi
