@@ -30,7 +30,7 @@ reading").
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12l (the ETM as the ODP running DMP in D6) | 40 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12l (The ETM as the ODP running DMP in D6) | 40 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
 | Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
 
@@ -423,7 +423,7 @@ Gravity's pin of IM (T.9).
 ## R.11 The possibility space
 
 *New in Draft 6.* The first author's first subtitle for Draft 6 was *the Possibility Space*, now the theme of this section (the
-subtitle is now *the ETM as the ODP running DMP in D6*, R.12), and the first author remarks that the Possibility Space lines up with a
+subtitle is now *The ETM as the ODP running DMP in D6*, R.12), and the first author remarks that the Possibility Space lines up with a
 base dimensionality of 6 **[reading]**. No exact counterpart is given for that remark; the paper's one six-dimensional space
 is the six-sphere G2/SU(3) of R.7b, and a relation between the two is not claimed. Its theme is a reading of what a question is. It is given here with the exact parts it
 rests on, and the steps that do not follow as stated are named.
@@ -878,7 +878,7 @@ The whole is the first author's reading. Exact parts:
   infeasible (`-`); the implementation channel, both kernels accepting the same false proof, guarded by two kernels written separately
   (`-`) **[paper]**. The first two are orthogonal: a collision says nothing about the axioms, and a refuted axiom finds no collision.
 * **ζ's `+` and `-`.** By the argument principle a full turn counts each zero +1 and each pole -1 **[classical]**; ζ has one pole, at
-  s = 1, where it is 1/0, and every zero on the other side; the order of a zero as a winding number is proved in Lean (R.7a, IM's
+  s = 1, where it is 1/0, and every zero has real part below 1; the order of a zero as a winding number is proved in Lean (R.7a, IM's
   `FullTurn.lean`) **[Lean]**. The table's cells use the same two marks (E.0.1).
 * **Same as scale invariance, joined where viable.** The scale map of II.4.1 carries the claim to every scale it reaches
   (`route_everywhere`) **[Lean]**; in the toy the map is proved (T.2), for G2 it is the named hypothesis R136a1 (A.5), on the cards it
@@ -886,11 +886,11 @@ The whole is the first author's reading. Exact parts:
   entanglement (V.8).
 * **The two channels named.** Viability is `route`, the base case and the step at one scale; universality is the scale map; together
   they give `route_everywhere`, the claim at every scale **[Lean]** (II.4.1; the core page and I.8 use these names).
-* **The token.** R136a1 is defined once, in IM's core, which needs no library, and the arsenal imports it, so every API input and output
-  carries the same token; the pigeonhole is issued as `R136a1 "0ne1"` (`«0ne1».token`) **[Lean]** (IM,
-  `arsenal/core/ArsenalCore/R136a1.lean`).
+* **The token.** R136a1 is defined once, in IM's core, which needs no library, and the arsenal imports it, so the core and the arsenal
+  share one definition; the pigeonhole is issued as `R136a1 "0ne1"` (`«0ne1».token`) **[Lean]** (IM,
+  `arsenal/core/ArsenalCore/R136a1.lean`). That every API input and output carries it is IM's design rule **[paper]**.
 * **A valid encoding.** The token of a statement holds exactly when the statement does (`R136a1.iff`), and a token of a token is the
-  token (`R136a1.idem`): the trivial encoding, which loses nothing, injective on every domain, so an encoding and not a hash (R.12h,
+  token (`R136a1.idem`): the trivial encoding, the identity by definition, which loses nothing, so an encoding and not a hash (R.12h,
   R.6a) **[Lean]**.
 
 Care:
@@ -904,4 +904,7 @@ Care:
 * Entangled is not identical, and entanglement carries no signal (the no-signalling theorem); scale invariance holds only where the
   scale map is proved.
 * A token of a proven statement adds its name, not content; the trivial encoding loses nothing because it changes nothing.
+* Two different pairs are called "two channels" here, and "viable" has two senses. The orthogonal pair of clause 2 is the logical and
+  the computational channel of an attack, and there "viable" means an attack that can succeed. The pair of clause 5 is viability and
+  universality, the two parts of a proof, and there viability means the induction at one scale. The two identifications are separate.
 * None of this supplies O1.

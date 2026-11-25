@@ -58,10 +58,10 @@ given analytic estimates argued in a note.
 
 Read this page first; everything after it unfolds from it, one idea at a time.
 
-**1. A run and a claim: viability and universality.** A system takes steps, and one claim is checked at every step. A proof has two
-parts, named here as the first author names them. **Viability**: the claim holds at the start and every step keeps it; in standard
-terms an induction, its base case and its inductive step (`route`). **Universality**: a map between scales that keeps the step and the
-check carries the claim from one scale to every scale (`route_everywhere`). Together they give the claim at every step and every
+**1. A run and a claim: viability and universality.** A system takes steps, and one claim is checked at every step. A proof has one
+shape, an induction, and a second part carries it to every scale; named here as the first author names them. **Viability**: the claim holds at the start and every step keeps it; in standard
+terms an induction, its base case and its inductive step (`route`). **Universality**: a map between scales that keeps the step, the
+check and the marker carries the claim from one scale to every scale (`route_everywhere`). Together they give the claim at every step and every
 scale, and one failing step refutes it (II.4.1: `route`, `route_everywhere`, `refuted_by_tick`) **[Lean]**. Figure 1 draws it (in the typeset paper; the Markdown keeps its source in a comment). The restatement proves
 nothing by itself: the content is in the base case or in the step.
 
@@ -387,7 +387,7 @@ stated are named, among them that assigning `+` and `-` to a question proves O1.
 Last, Draft 6 adds two things. First, O1 typed as Perelman's ledger, the interface the first author's reading asks for (III.13): a
 quantity, monotone and bounded along the lattice levels, that gains a quantum at every level where the box fails. An instance gives
 O1 and, with the resolution clause, the gap; O1 gives an instance; so the interface is exactly O1 and proves no new bound **[Lean]**.
-Second, the subtitle, *the ETM as the ODP running DMP in D6*: the first author's reading of the ODP as the internal clock whose tick ends
+Second, the subtitle, *The ETM as the ODP running DMP in D6*: the first author's reading of the ODP as the internal clock whose tick ends
 at `+`, of DMP as the operating system of that kernel, and of one ETM that boots again whenever it stops **[reading]** (R.12). Its
 exact parts are the cycle of `r` and the one terminal running system **[Lean]**. The reading that the paper proves 0 = 1 for the
 classical, hence NP = coNP and P != NP, does not follow, and R.12 says why. R.12f states the first author's one condition: O1
@@ -403,5 +403,5 @@ step, and ends at its card and its box. Part X: the one assumption, which on eac
 compares the cards once they have been read. Then the Outlook
 (sections XI.n). Appendix A: validation (Poincare, SU(N) and the rigid groups), with III.13's ledger as a type (A.2b). Appendix R: DMP's
 neighbours and the first author's readings that no card uses, closing with the possibility space (R.11) and the subtitle's readings,
-*the ETM as the ODP running DMP in D6* (R.12). Appendix T: the verify toy, the headline run on binary words, to read in full and rerun.
+*The ETM as the ODP running DMP in D6* (R.12). Appendix T: the verify toy, the headline run on binary words, to read in full and rerun.
 Appendix E: the explanation mechanism and its mirror, the optimizer (E.0.1, E.0.2), applied to the parts of this project.

@@ -495,6 +495,7 @@ def main():
     tex = PREAMBLE % (STATUS, datetime.date.today().isoformat(), REPO_URL, COMMIT[0]) + '\n\n'.join(parts) + '\n\n\\clearpage\n' + bib + '\n\\end{document}\n'
     tex = tex.replace('BUILDNAME', NAME, 1)
     if SUBTITLE[0]:  # only a draft that names its own subtitle; the others build as before
+        tex = tex.replace('with certified settling}, ', 'with certified settling. ' + SUBTITLE[0] + '}, ', 1)
         tex = tex.replace('with certified settling}\n\\author', 'with certified settling\\\\[1.2ex]\\normalsize\\emph{' + inline(SUBTITLE[0]) + '}}\n\\author', 1)
     if ANY_RAW:  # TikZ only when a raw LaTeX block is present, so a draft without one builds as before
         tex = tex.replace('\\usepackage{doi}', '\\usepackage{doi}\n\\usepackage{tikz}\n\\usetikzlibrary{decorations.pathreplacing}', 1)

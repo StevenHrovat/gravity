@@ -114,7 +114,7 @@ IM's `Arsenal/FullTurn.lean`, C8 for the line in `rot_of_isometry` (II.0 above).
 *New in Draft 6.* Draft 6 adds a mechanism and its mirror, and the first author's readings of 2026-11-25. They build on the ledger,
 the box and the settle theorem below, so they come after them: the explanation mechanism, a k by k table of which part proves which,
 and its mirror, the optimizer, open Appendix E (E.0.1, E.0.2), where they meet the tables they explain; the possibility space and the
-readings of the subtitle, *the ETM as the ODP running DMP in D6*, close Appendix R (R.11, R.12). A first reading can skip them.
+readings of the subtitle, *The ETM as the ODP running DMP in D6*, close Appendix R (R.11, R.12). A first reading can skip them.
 
 ## II.1 The ledger and the transport theorem
 
