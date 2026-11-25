@@ -454,6 +454,7 @@ conditional on it.}\end{center}
 """
 
 ANY_RAW = False
+SUBTITLE = ['']
 
 def main():
     os.makedirs(OUT, exist_ok=True)
@@ -469,6 +470,11 @@ def main():
         md = io.open(f, encoding='utf-8').read()
         if os.path.basename(f).startswith('00-'):
             md = re.sub(r'\A# [^\n]*\n', '', md)  # the title line becomes \title
+            # a draft's own subtitle, named by the first author, goes on the title page under the paper's subtitle
+            sub = re.search(r'<!-- draft-subtitle: (.+?) -->', md)
+            if sub:
+                SUBTITLE[0] = sub.group(1).strip()
+            md = re.sub(r'<!-- draft-subtitle: .+? -->\n?', '', md)
         # the italic editors' note right under a chapter's first heading is for the repository, not the typeset paper
         md = re.sub(r'\A((?:# [^\n]*\n)?\s*)\*[^\n][\s\S]*?\*\n(?=\n)', r'\1', md, count=1)
         # A LaTeX block kept in an HTML comment (invisible in the Markdown view) passes into the typeset paper verbatim:
@@ -488,6 +494,11 @@ def main():
     import datetime
     tex = PREAMBLE % (STATUS, datetime.date.today().isoformat(), REPO_URL, COMMIT[0]) + '\n\n'.join(parts) + '\n\n\\clearpage\n' + bib + '\n\\end{document}\n'
     tex = tex.replace('BUILDNAME', NAME, 1)
+    if SUBTITLE[0]:  # only a draft that names its own subtitle; the others build as before
+        tex = tex.replace('with certified settling},
+  pdfauthor', 'with certified settling. ' + SUBTITLE[0] + '},
+  pdfauthor', 1)
+        tex = tex.replace('with certified settling}\n\\author', 'with certified settling\\\\[1.2ex]\\normalsize\\emph{' + inline(SUBTITLE[0]) + '}}\n\\author', 1)
     if ANY_RAW:  # TikZ only when a raw LaTeX block is present, so a draft without one builds as before
         tex = tex.replace('\\usepackage{doi}', '\\usepackage{doi}\n\\usepackage{tikz}\n\\usetikzlibrary{decorations.pathreplacing}', 1)
     io.open(os.path.join(OUT, NAME + '.tex'), 'w', encoding='utf-8', newline='\n').write(tex)

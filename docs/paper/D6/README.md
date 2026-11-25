@@ -21,7 +21,7 @@ part costs, the two kernels and their targets, a result of Draft 5 read as a cha
 statement and the drafts as a library transitive to G0 (E.7). Draft 6
 explains what Draft 5 establishes and claims nothing beyond it; the one assumption O1 is untouched.
 
-**The ETM as the ODP running DMP.** Draft 6's subtitle, from the first author's refinement of the same day (R.12): the ODP as the
+**The ETM as the ODP running DMP in D6.** Draft 6's subtitle, from the first author's refinement of the same day (R.12): the ODP as the
 internal clock, DMP as the operating system of that kernel, one ETM that boots again; its exact parts are the cycle of `r` and the
 one terminal running system, and the reading that the paper proves 0 = 1 for the classical, hence NP = coNP and P != NP, is stated
 with why it does not follow. With it, O1 typed as Perelman's ledger (III.13, A.2b; `docs/mass-gap/formal/ProofPhase/API/Perelman.lean`):
@@ -35,8 +35,9 @@ SU(5) as a table, encoding and hash as one function in a `+` or `-` state, and t
 falsifiable until an exception, one exception to the Riemann hypothesis being a contradiction (all the first author's reading, with
 their care points: P != NP, BSD and Hodge are not refutable by one exception, and the open inclusions keep `?`). The interface first
 planned for a later draft is built here. R.12i reads `!` as the observability operator where a statement can be DMP-complete, R.12j reads ordinality
-as the orbit of the atoms by possible configuration, and R.12k, closing the section, names each recognized induction an Insight,
-linked to the first author's public comments on DMP#25 as the record of the root (all three readings with their exact parts and care).
+as the orbit of the atoms by possible configuration, and R.12k names each recognized induction an Insight,
+linked to the first author's public comments on DMP#25 as the record of the root; R.12l closes it: no fewer than eight Insights (a byte lemma in
+IM's core), the axioms as the only viable channel, and R136a1, now in IM's core, as the token every API input and output carries (all four readings, R.12i to R.12l, with their exact parts and care).
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
 mirror (E.0.2): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which
