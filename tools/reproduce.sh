@@ -8,7 +8,7 @@
 #   tools/reproduce.sh lean       the paper's Lean: build docs/mass-gap/formal against Mathlib and rerun all 26 axiom scripts,
 #                                 comparing every declaration's axiom line with the committed log
 #   tools/reproduce.sh certs      the certified first box: rerun the ball-arithmetic certificate at a = 3/5, 13/20, 69/100 and
-#                                 compare the RESULT line with the committed log
+#                                 compare the RESULT line with the committed log; also the scaled sha256 search (seconds)
 #   tools/reproduce.sh kernels    the second kernels (leanchecker, nanoda) through tools/independent-check.sh (hours, once)
 #   tools/reproduce.sh all        paper (Draft 4), evidence, lean, certs (not kernels); "tools/reproduce.sh all D5" builds Draft 5's paper
 #
@@ -72,8 +72,12 @@ stage_lean() {
 }
 
 stage_certs() {
-  say "certs: the certified first box (python-flint)"
+  say "certs: the certified first box (python-flint), and the scaled sha256 search (Appendix T.6 of Draft 5)"
   [ -n "$PY" ] || { bad "python3 not found"; return; }
+  "$PY" docs/unified/sha256_scaled.py > "$OUT/sha256_scaled.log" 2>&1
+  if diff <(grep "^RESULT" "$OUT/sha256_scaled.log") <(grep "^RESULT" docs/unified/sha256_scaled.log) >/dev/null; then
+    echo "ok   sha256 scaled search: $(grep -c '^RESULT' "$OUT/sha256_scaled.log") RESULT lines, the same as the committed log"
+  else bad "sha256 scaled search: the RESULT lines differ from docs/unified/sha256_scaled.log"; fi
   "$PY" -c "import flint" 2>/dev/null || { bad "python-flint missing (pip install -r docs/paper/requirements.txt)"; return; }
   for a in 0.60:3/5 0.65:13/20 0.69:69/100; do
     tag=${a%%:*}; frac=${a#*:}

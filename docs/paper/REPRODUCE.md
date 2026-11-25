@@ -4,6 +4,9 @@ Everything the paper claims as **[Lean]**, **[certified]** or **[numerical]** ca
 script drives it: `tools/reproduce.sh`, one stage at a time or all at once. This page says what each stage needs, how long it
 takes, and what it prints when it passes.
 
+**The scaled sha256 search** (Draft 5, Appendix T.6) runs in the `certs` stage: a few seconds, Python's standard library only, its
+RESULT lines compared with `docs/unified/sha256_scaled.log`.
+
 **Drafts.** Draft 4, the merged state, is in `docs/paper` and is never edited. Every later draft lives whole in its own folder,
 `docs/paper/D5` for Draft 5 and so on, grown from the draft before it. The `paper` stage builds Draft 4 by default and a later
 draft when named: `tools/reproduce.sh paper D5`. The other stages are shared by all drafts (`docs/paper/D5/README.md`).

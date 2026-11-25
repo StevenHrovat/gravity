@@ -227,7 +227,7 @@ REPO_URL = 'https://github.com/StevenHrovat/gravity'
 COMMIT = ['unknown']
 LEDGER = ['']
 LEDGER_IDS, HEADING_IDS = set(), set()
-LABEL_RE = re.compile(r'(?<![\w./-])((?:XI|IX|X|VIII|VII|VI|IV|V|III|II|I|A|R)\.\d+(?:\.\d+)*[a-z]?)(?![\w])')
+LABEL_RE = re.compile(r'(?<![\w./-])((?:XI|IX|X|VIII|VII|VI|IV|V|III|II|I|A|R|T)\.\d+(?:\.\d+)*[a-z]?)(?![\w])')
 
 def source_commit():
     """The commit the sources are built from (the PDF itself is committed after it)."""
@@ -241,10 +241,10 @@ def source_commit():
 def build_label_sets(files):
     """Section numbers (headings of the drafts) and claim labels (rows of the ledger)."""
     for f in files:
-        HEADING_IDS.update(re.findall(r'(?m)^#{2,3} ([IVXAR]+\.\d+(?:\.\d+)*)', io.open(f, encoding='utf-8').read()))
+        HEADING_IDS.update(re.findall(r'(?m)^#{2,3} ([IVXART]+\.\d+(?:\.\d+)*)', io.open(f, encoding='utf-8').read()))
     c = io.open(os.path.join(ROOT, 'CLAIMS.md'), encoding='utf-8').read()
     c = c[:c.index('## Draft 3 labels')]
-    LEDGER_IDS.update(re.findall(r'(?m)^\| ([IVXAR]+\.[^ |]+) \| ', c))
+    LEDGER_IDS.update(re.findall(r'(?m)^\| ([IVXART]+\.[^ |]+) \| ', c))
 
 def label_links(t, hold):
     """A claim label that is not also a section number links to the ledger, where its row says what checks it."""

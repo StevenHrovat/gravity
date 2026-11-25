@@ -3,6 +3,9 @@
 *Draft 5. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (IX.n) are listed in `../CLAIMS.md`.*
 
+**As an observable system (II.4.1).** The tick box of charge quantisation passes, proved: every continuous character of the circle
+is z to the n (`gu_box`, IX.8) **[Lean]**. The GU card's open step lies beyond this box (IX.5e).
+
 ## IX.0 What "Grand Unified" means here, and where it stands
 
 **GU is not a Clay problem.** There is no official statement to quote. In this work "Grand Unified" is the second half of the

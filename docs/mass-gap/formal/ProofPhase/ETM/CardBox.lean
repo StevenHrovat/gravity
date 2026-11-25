@@ -11,6 +11,7 @@ import ProofPhase.API.NP
 import ProofPhase.API.Phase
 import ProofPhase.Unified.BSDAPI
 import ProofPhase.Unified.HodgeAPI
+import Arsenal.Observable
 
 /-!
 # Every card as a box
@@ -76,6 +77,25 @@ theorem tickBox_complete_iff (P : ℕ → Prop) : (tickBox P).DMPComplete (0 : �
   refine forall_congr' fun n => ?_
   rw [tickBox_iterate]
   exact tickBox_correct_iff P n
+
+/-- **The tick box is an observable system** (draft 5, II.4.1): the tick box of `P` passes from tick `0` exactly when the observable
+system with the ticks as states, the successor as step and `P` as its claim has a DMP-complete one-box description
+(IM, `Arsenal.Observable`). -/
+theorem tickBox_observable (P : ℕ → Prop) :
+    (tickBox P).DMPComplete (0 : ℕ) ↔
+      (⟨ℕ, Nat.succ, P, Classical.decPred P⟩ : Arsenal.Observable).box.DMPComplete (0 : ℕ) := by
+  rw [tickBox_complete_iff]
+  refine Iff.trans ?_ ((⟨ℕ, Nat.succ, P, Classical.decPred P⟩ : Arsenal.Observable).box_complete_iff (0 : ℕ)).symm
+  have hit : ∀ n, (Nat.succ^[n] (0 : ℕ)) = n := fun n => by rw [Nat.succ_iterate, zero_add]
+  constructor
+  · intro h n
+    change P (Nat.succ^[n] 0)
+    rw [hit]
+    exact h n
+  · intro h n
+    have := h n
+    change P (Nat.succ^[n] 0) at this
+    rwa [hit] at this
 
 /-- **One failing tick makes the box fail.** -/
 theorem tickBox_wrong (P : ℕ → Prop) (n : ℕ) (h : ¬ P n) : ¬ (tickBox P).DMPComplete (0 : ℕ) :=

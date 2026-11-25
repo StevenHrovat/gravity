@@ -5,6 +5,10 @@
 `docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VII.n) are listed in
 `../CLAIMS.md`.*
 
+**As an observable system (II.4.1).** For a curve the claim is BSD for that curve, asked at every tick of the card's box
+(`bsd_box_iff`, VII.8) **[Lean]**; the route's step is free and the open part is its start. The analytic side of the claim is read by
+one turn around s = 1: the leading coefficient, and the rank as a winding number (VII.3).
+
 ## VII.0 What is proved, by whom, and what this part does
 
 **The Clay problem** (Wiles' official description) **[classical]**. Let E be an elliptic curve over the rationals. Its group of

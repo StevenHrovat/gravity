@@ -2,6 +2,13 @@
 
 *Draft 5. Claim labels (X.n) are listed in `../CLAIMS.md`.*
 
+**As the route's shared step (II.4.1).** In the terms of II.4.1 the one assumption is the second half of a route certified
+universally: that a box's gate is shared across scales, so that one certified box certifies every scale (`route_everywhere`, from
+`scale_certificate`). It is carried as a named hypothesis and never proved, and on each card it is a different statement (X.4.4)
+**[paper]**. In the verify toy (Appendix T) the sharing is a theorem: every bit width is rebuilt from one bit by reduction modulo 2,
+and the route shown at one bit certifies every width (`evens_everywhere`) **[Lean]**. The toy shows what the assumption gives where it
+holds; on the cards it stays open.
+
 ## X.0 How to read this part
 
 Parts III to IX each end at their **cards** and their box: an input, a proved structure, and one named open step per card. This part puts the cards

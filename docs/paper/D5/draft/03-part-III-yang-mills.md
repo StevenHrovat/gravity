@@ -5,6 +5,13 @@ attempt rounds R2 to R4 live under `docs/mass-gap/formal/Attempts/`); notes rela
 `proof-phase/c9a-crossover/`. The full chain with all 51 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (III.n) are listed in
 `../CLAIMS.md`.*
 
+**As an observable system (II.4.1).** The states are the lattice levels of one box of fixed physical size, the step refines the
+spacing by one level, and the claim at each level is the level criterion: the box's best one-box ratio lies within the margin
+(`ymBox`, III.12). This box has a gate factor of its own, so the route's step carries content: the open part is that the criterion
+holds at every level, which a route splits into the first level and the step from each level to the next. That statement is O1
+(`FineOneBox`, III.5.9) **[paper]**. The card's own box (`YMOneBox`) asks its chain form at every tick, so there the open part is the
+start.
+
 ## III.0 What is proved and what is not
 
 **The Clay statement** (Jaffe-Witten, official problem description): for every compact simple gauge group G, a non-trivial quantum

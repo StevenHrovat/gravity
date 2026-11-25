@@ -1,0 +1,8 @@
+input 0000000000000000000000000000000000000000000000000000000000000001
+RESULT sha256(0...01) = ec4916dd28fc4c10d78e287ca5d9cc51ee1ae73cbfde08c6b37324cbfaac8bc5
+RESULT k=1 zeros, ends in 1: input vxunderground-245, tries 246 (expected about 16^2 = 256), digest 0b3c8cb9304e7ab6354c3687907f9c0cb153d7b7bdc1a79c96ba4d26a1b40671
+RESULT k=2 zeros, ends in 1: input vxunderground-608, tries 609 (expected about 16^3 = 4096), digest 00c054a4a723ce78f987c77267c43f61faf3164a0de67fef466573db5adb3901
+RESULT k=3 zeros, ends in 1: input vxunderground-13112, tries 13113 (expected about 16^4 = 65536), digest 0003aee4e98e7ed744aaaaabdc000cce1593cbb6402650e8fd1cf48590ced601
+RESULT k=4 zeros, ends in 1: input vxunderground-26013, tries 26014 (expected about 16^5 = 1048576), digest 0000444466e2bf08e2928b3f278a068e37da9691edeb450a0d5ced22da3d1fc1
+RESULT k=5 zeros, ends in 1: input vxunderground-2123542, tries 2123543 (expected about 16^6 = 16777216), digest 000002385f5f10be50cc1116805199171ac2799309b8cbc84f6112fc82edd1e1
+full shape 000...0001: 64 fixed hex digits, about 16^64 = 2^256 = 1.158e+77 tries

@@ -2,6 +2,11 @@
 
 *Draft 5, 2026-11-25 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
 
+**Where to start.** Part II has one statement at its centre, II.4.1: every observable system has a one-box description,
+DMP-complete exactly when its claim holds at every tick, with a route to the proof. A reader who wants the headline first can read
+II.4 and II.4.1, then II.2.7 (the full turn, which reads gates), and come back to the machine (II.0 to II.3) and the tools (II.8 to
+II.15) as the parts call on them.
+
 **Which part uses which tool.** The machine (II.0 to II.3) is used by Parts III to VII; the one-box test and the cards (II.4,
 II.5) by every part from III to IX and by Appendix A; the arsenal and the re-check (II.6, II.7) by every Lean result; the tools of
 section B (II.8 to II.15) by Parts III to V, each of which names the section it uses.
@@ -243,22 +248,30 @@ new bound **[Lean]** (`ETM/CardBox.lean`, claim II.4e).
 ### II.4.1 The front door: every observable system
 
 An *observable system* has states, one step and its own claim at
-each state, a decidable proposition. Its one-box description is a box of the same API with the same states and step, whose marker is
-the system's claim and whose gate reads the truth of the claim; the marker is never read off the gate, so II.4c's vacuity is avoided.
+each state, a decidable proposition. Decidability is classical here, so this is no restriction: every proposition is an observable
+system with one state. Its one-box description is a box of the same API with the same states and step, whose marker always asserts
+the claim (*inside*) and whose gate reads whether the claim is true; the marker is not read off the gate, so II.4c's vacuity is
+avoided, and the box is correct at a state exactly when the claim holds there (`correct_iff`).
 Four facts hold for every observable system **[Lean]** (IM, `Arsenal/Observable.lean`; claim II.4g):
 
 * *Representation* (`box_complete_iff`): the description is DMP-complete from a start exactly when the claim holds at every tick.
   This is by construction, a restatement.
 * *A route to the proof* (`route`, exact along the run `route_iff`): the claim at the start and a step that keeps the claim make the
-  description DMP-complete.
+  description DMP-complete. This is induction on the tick.
 * *Certified universally* (`route_everywhere`): once the route is shown, the claim is certified at every tick and, with the gate
   shared across scales (the named hypothesis R136a1, never an axiom), at every tick of every scale.
 * *Falsifiable* (`refuted_by_tick`): one tick where the claim fails refutes it.
 
 When the observation is a reading against a margin (`ofReading`) and the reading is a coefficient hidden in a sum of N powers of a
-root of unity, one full turn computes it exactly, so the gate can be read by one turn (`turn_gate`, II.2.7). Each card of Parts III
-to IX is an observable system: its claim is its open statement, and its card box (II.4e) is the case with one state per tick
-**[paper]**. So the route is the same everywhere, and what differs from card to card is only whether its one step can be shown.
+root of unity, one full turn computes it exactly, so the gate can be read by one turn (`turn_gate`, II.2.7). The cards of Parts III
+(Yang-Mills), IV (GRH), V (NP versus coNP), VII (BSD) and VIII (Hodge), and the tick box of Part IX (GU), are observable systems:
+the tick box of a sequence of statements passes exactly when the observable system with the ticks as states, the successor as step
+and the statement as claim has a DMP-complete description (`ETM/CardBox.lean`, `tickBox_observable`) **[Lean]**. Part VI has no card
+of its own (VI.8). A route has two parts, and where the open part sits differs. On a card the claim is the same at every tick, so the
+step is free and the whole open statement is the start. On the boxes with a gate factor of their own, the Yang-Mills box (III.12)
+and the model Navier-Stokes box (VI.8), the step carries the content. So the route has one form everywhere, and the parts show where
+its open part sits. Two systems run side by side give a system whose routes reassemble (`prod`, `route_prod`) **[Lean]**, so a larger
+proof is the parts reassembled as the API guides. Appendix T runs all of it on binary words.
 
 ## II.5 The API: cards
 

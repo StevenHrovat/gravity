@@ -197,7 +197,9 @@ of Brassard, Hoyer and Tapp in about 2^(n/3) steps, with about as much memory, i
 algorithm, by contrast, breaks factoring and discrete logarithms outright **[classical]** (Grover 1996; Brassard-Hoyer-Tapp 1998;
 Shor 1997).
 That is the classical ground under the reading of II.3 that established hashes stay safe; the first author's "invulnerable beyond
-their needed uncertainty" is the security parameter **[reading]** (claim R.6a).
+their needed uncertainty" is the security parameter **[reading]** (claim R.6a). Appendix T.6 shows the cost in small: a digest
+with k leading zero hex digits and a final 1, found for k up to 5, the expected work growing sixteenfold per fixed digit, and the full
+shape 000...0001 out of reach **[numerical]**.
 
 ---
 
@@ -232,20 +234,23 @@ the logarithm, which turns powers into products and products into sums: log(x^y)
 ## R.8 Derivations, slopes, and what a turn can undo
 
 **Derivations are slopes (claim R.8a).** The first author reads the dimensionality of DMP as itself a derivative, and the
-derivations as equal to the slopes across DBs **[reading]**. Its exact parts, in three layers. The tangent space of a smooth space at
-a point is the space of derivations there, linear maps with D(fg) = f Dg + g Df, and its dimension is the dimension of the space; so
+derivations as equal to the slopes across DBs **[reading]**. Its exact parts, in three layers. The tangent space of a smooth (C-infinity) manifold
+at a point is the space of derivations there, linear maps with D(fg) = f Dg + g Df, and its dimension is the dimension of the space; so
 the dimension counts the independent ways to differentiate **[classical]** (Lee 2012). Each derivation at a point is a directional
-derivative, the slope of f along one direction **[classical]** (Lee 2012). With the full turn a slope is a ratio of two turns: the
-n-th derivative of f at c is one turn of f/(z - c)^(n + 1) around c divided by one turn of e^z/z^(n + 1) around 0, the turn of the
-factorial **[Lean]** (IM, `Arsenal/FullTurn.lean`, `full_turn_slope`). That the differences across the boundaries of neighbouring
+derivative, the slope of f along one direction **[classical]** (Lee 2012). For a function holomorphic on a disc around c (continuous up to
+its edge) a slope is a ratio of two turns: the n-th derivative of f at c is one turn of f/(z - c)^(n + 1) around c divided by one
+turn of e^z/z^(n + 1) around 0 on a circle of any radius, the turn of the factorial, each turn with its factor 1/(2 pi i)
+**[Lean]** (IM, `Arsenal/FullTurn.lean`, `full_turn_slope`). That the differences across the boundaries of neighbouring
 DBs, where the transfer step of III.3.4 sits, are those derivations is the reading.
 
 **What a turn can undo (claim R.8b).** The first author reads Draft 5 as the approach to a universal deobfuscator for any
 DMP-complete problem **[reading]**. Its exact part is narrower and stated as such. The full turn undoes every mixing by a known
-abelian rotation: one turn recovers each component (II.2.7). Its discrete form is the quantum Fourier transform at the core of
-Shor's algorithm, which reads a hidden period and so breaks factoring and discrete logarithms, and Fourier sampling solves the hidden
-subgroup problem for every abelian group **[classical]** (Shor 1997; Kitaev 1995). Where it stops is in this paper too: a lossy map
-cannot be undone, since every hash has collisions and a digest can be traced to its origin, not to its message **[Lean]**
-(`hash_collision`, R.6a); and for non-abelian groups Fourier sampling is not known to suffice **[classical]**. In the paper's terms a
+cyclic rotation: one turn recovers each component (II.2.7; in Lean `full_turn_coeff`, for the cyclic group of order N; finite
+abelian groups follow by products). Its discrete form is the quantum Fourier transform at the core of Shor's algorithm, which reads a
+hidden period in polynomial time on a quantum computer and so breaks factoring and discrete logarithms there, and Fourier sampling
+solves the hidden subgroup problem for every finite abelian group **[classical]** (Shor 1997; Kitaev 1995). Where it stops is in this
+paper too. A lossy map cannot be undone: every hash has collisions **[Lean]** (`hash_collision`, R.6a), so a digest can be traced to
+an origin consistent with it, not to its message **[paper]**. For non-abelian groups Fourier sampling is not enough in general: for
+the symmetric groups, strong Fourier sampling is known to fail **[classical]** (Moore-Russell-Schulman 2008). In the paper's terms a
 DMP-complete box is already readable at every tick (II.4.1); the open steps are whether a box is DMP-complete, and the full turn does
 not decide them.
