@@ -57,12 +57,12 @@ given analytic estimates argued in a note.
 ### Start here: the two hands
 
 Hold both arms out, each hand a fist, the thumb pointing to the side and the middle finger pointing away from you. Each hand now shows
-three directions, up, side and away, and your two hands are mirror images. Let both hands turn sideways about the same "up": they turn
-independently and never disturb each other, and as long as both keep the same handedness, one can always be turned into the other.
-A mirror pair cannot: no turn makes a left hand into a right hand.
+three directions: side (the thumb), away (the middle finger) and up, the third direction, at right angles to both. Your two hands are
+mirror images. Let both hands turn sideways about the same "up": they turn independently and never disturb each other. Two right hands
+can always be turned into each other; a left hand and a right hand cannot: no turn makes one into the other.
 
 The first author reads this as the vibe: two parts sharing an up and a down, the 0 and 1 of existence, compatible when they turn the
-same way; a 0 is no longer part of the vibe, only that it was is remembered, its definition kept as a question and so possible
+same way; a 0 is no longer part of the vibe, only the fact that it was is remembered, its definition kept as a question and so possible
 **[reading]** (R.12m). The exact part: two frames can be turned into each other exactly when they have the same orientation, the sign
 +1 of a determinant, a mirror pair having -1; and turns about one shared axis commute **[classical]**.
 
@@ -270,7 +270,8 @@ listed in that part.
   hypothesis certified by the Lean FRO and the Mathlib Initiative), by a route that, as far as this project traced it, does not go
   through Weil's positivity criterion **[external, traced]**. GRH beyond Dirichlet L-functions is open, and no card is written for
   it yet. The GRH card of II.4.1 and IV.8 states the sign at every scale of a finite zero model (`ScaleSign`), the Weil-positivity
-  route; for a model of zeta's zeros it passes under Mathlib's statement of the Riemann hypothesis (IV.8).
+  route; for a model of zeta's zeros with nonnegative weights it passes under Mathlib's statement of the Riemann
+  hypothesis, taken as a named `External` slot (IV.8).
 * *NP vs coNP:* the card's open step `CrossingCost`; the paper's route to it is lifting with constant-size gadgets for cutting
   planes on lifted formulas (`LiftCPConst`, open for suitable gadgets such as indexing, false for XOR), and with it super-polynomial
   lower bounds for cutting planes on lifted formulas. Interface hardness at width 3 (V.4.10) is a further item; its relation to

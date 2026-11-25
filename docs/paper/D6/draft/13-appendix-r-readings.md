@@ -696,7 +696,7 @@ Care:
 * N usually names the naturals; here it names the reals, by the first author's choice. The dimension N! + 1 and the step +N! are
   different objects, and the pattern of R.7b stops at N = 3.
 * No exact counterpart was found for "a set that excludes must run"; its context is X.64b (DMP-completeness defined as running on DMP),
-  excision at transmission (I.5, R.2) and IM's rule that a refusal is not a state (R.9). DoE is the first author's term, used in the
+  excision at transmission (I.4, R.2) and IM's rule that a refusal is not a state (R.9). DoE is the first author's term, used in the
   preface of the GUID volume (`docs/guid/preface.tex`) and offered as a name for the ticks in IX.8; the paper does not spell it out.
 * No consistent, effectively axiomatised system strong enough for arithmetic proves its own consistency (Goedel's second theorem, R.1h).
   The kernel's induction is certified relative to a model outside it, and the base, that a minted system is DMP-complete, stays an
@@ -928,10 +928,10 @@ The whole is the first author's reading; the introduction opens with it ("Start 
 * **Turning about a shared axis.** Turns about one shared axis commute, so two frames sharing "up" turn independently; they form the
   circle group, the phase of R.11 **[classical]**.
 * **Handedness in nature.** The weak interaction acts only on left-handed particles: parity is not conserved, as Lee and Yang proposed
-  and Wu and collaborators observed (Lee-Yang 1956; Wu 1957) **[classical]**; this is the left-handed SU(2) of R.11d's care point.
-* **A 0 leaves, its record stays.** In IM a refusal is not a state and is counted without content (R.9); in DMP only the remnant tail
-  stays after excision (I.5, R.2); in this paper DMP's old `-` cell is kept only as history, "before IM `e9a4057` the tool marked it
-  `-`" (E.7) **[paper]**. A removed case keeps the form `?`, posed and never assumed, like every `OpenStep` (R.9a) **[Lean]** for the
+  and Wu and collaborators observed (Lee-Yang 1956; Wu 1957) **[classical]**; these are the chiral, left-handed fermions of R.11d (Witten 1981), and the SU(2) factor of R.11c's care point.
+* **A 0 leaves, its record stays.** In IM a refusal is not a state (R.9) and is counted without content (R.2); in DMP only the remnant tail
+  stays after excision (I.4, R.2); in this paper DMP's old `-` cell is kept only as history, "before IM `e9a4057` the matrix tool marked
+  it `-`" (E.7) **[paper]**. A removed case keeps the form `?`, posed and never assumed, like every `OpenStep` (R.9a) **[Lean]** for the
   form.
 
 Care:
@@ -939,4 +939,4 @@ Care:
 * It is a mnemonic, as the right-hand rule is. In three dimensions turns about different axes do not commute; the shared "up" is what
   makes the two hands independent.
 * Keeping the record keeps the question possible, not answered: whether a removed case could become `+` again is what stays open.
-* Mapping the hands onto existence, and the 0 and 1 onto the two orientations, is the first author's reading.
+* Mapping the hands onto existence, and the 0 and 1 onto up and down, is the first author's reading.
