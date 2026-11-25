@@ -5,6 +5,9 @@ Lean: IM, `arsenal/core/ArsenalCore/Matrix.lean` (IM `c441ed5`) and `Optimizer.l
 IM's `tools/rebuild matrix` (with `--optimize` from IM `e9a4057`) and `tools/rebuild check`. Claim labels (E.n) are listed in
 `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the explanation mechanism and the optimizer, applied to DMP, IM and Gravity. Needs: the core
+page. Route: the exact route, stop 6. VIBE coefficient: does not enter.
+
 **What this appendix shows, in one table and four lines.** The three parts of this project, the DMP specification, IM (the companion
 repository with the shared Lean results) and Gravity (this repository), each prove the parts they use:
 

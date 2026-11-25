@@ -2,6 +2,11 @@
 
 *Draft 6. Claim labels (X.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the cards side by side, the one assumption and the rigid start. Needs: the parts it compares
+(III to IX), or their "Plug in here" notes. Route: the exact route, stop 5. VIBE coefficient: the rigid start {infinity, 2, 3} is
+certified up to a = 0.69 (X.58, X.65) **[certified]**; on the GRH route the summed remainders must stay below log 2 (X.7h)
+**[Lean]**, and beyond Dirichlet that is open (X.7i) **[open]**.
+
 **The one assumption in the terms of II.4.1.** On each card the one assumption is the card's base case, its open statement: the
 card's box checks the same statement at every step, so the inductive step is free. The other half of the assumption, the gate shared
 across scales, has content only where a family of scales is defined and mapped onto the one box, as for G2 (A.5) and in the verify toy;

@@ -5,6 +5,9 @@
 `docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VII.n) are listed in
 `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the BSD card, its three named parts and its one open step. Needs: II.4.1, and II.2.7 for the turn.
+Route: off both routes. VIBE coefficient: does not enter exactly; the analytic side is read by one turn around s = 1 (VII.3).
+
 **As a statement checked step by step (II.4.1).** For a curve the statement is BSD for that curve, checked at every step of the
 card's box (`bsd_box_iff`, VII.8) **[Lean]**; the inductive step is free and the open part is the base case. The analytic side of the
 statement is read by one turn around s = 1: the leading coefficient, and the rank as a winding number (VII.3).

@@ -3,6 +3,9 @@
 *Draft 6. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (VIII.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the Hodge card, its positivity and its one open step. Needs: II.4.1. Route: off both routes. VIBE
+coefficient: does not enter exactly.
+
 **As a statement checked step by step (II.4.1).** For an input of codimension p the statement is the Hodge statement for it,
 checked at every step of the card's box (`hodge_box_iff`, VIII.8) **[Lean]**; the inductive step is free and the open part is the base
 case, which is proved for divisors (`hodge_box_divisor`, from Lefschetz (1,1) with its named inputs).

@@ -2,6 +2,11 @@
 
 *Draft 6, 2026-11-25 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the machine and the headline theorem II.4.1, then the tools Parts III to V use. Needs: the core
+page; the verify toy helps. Route: the exact route, stop 2. VIBE coefficient: a step of size 1/2 costs log 2 (II.0, C2)
+**[classical]**; once each channel costs at least log 2, the Doeblin bounds sum to at least 1 (II.12.4) **[Lean]**; pointer jumping
+leaves one layer after ceil(log2 d) halvings (II.15.2) **[Lean]**.
+
 **Where to start.** Part II has one statement at its centre, II.4.1: each problem is restated as one statement checked at every
 step, exactly equivalent to it, and a proof is an induction, base case and inductive step. A reader who wants the headline first can read
 the core page of the introduction and the verify toy (T.1 to T.3), then II.4 and II.4.1, then II.2.7 (the full turn, which reads

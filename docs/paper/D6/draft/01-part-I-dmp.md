@@ -3,6 +3,10 @@
 *Draft 6, 2026-11-25. Part I is vocabulary, not mathematics. Every statement in it is a definition of DMP, a reading of DMP, or a
 pointer to the precise statement in Part II. Claim labels (I.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: DMP's vocabulary, each word with its plain meaning and its exact counterpart (I.8). Needs: nothing.
+Route: the reading route, stop 2. VIBE coefficient: VIBE is DMP's word (T32); a part's two halves are one binary choice, one bit, log 2
+in natural units **[classical]**; v itself is a reading (R.12n).
+
 ## I.0 How to read this part
 
 DMP, the Dark Matter Protocol, is a specification for systems that must trust each other. It was written for software and
@@ -236,6 +240,7 @@ no intrinsic tick. **[reading]** on the classical spectral fact of II.10.
 | Box, gate, marker, tick | one command, one shared verdict, one claim per step | the one-box test | a running system with a margin and a marker; correct when the marker agrees with the gate (introduction, "The test in one page") | II.4 |
 | DMP-complete | correct at every tick | runs on DMP (X.4.4, a reading) | `Box.DMPComplete`: the marker agrees with the gate at every tick | II.4 |
 | Card | one problem, one named open step | the form layer | `API.Problem`: input, open slot, conclusion, proof | II.5 |
+| VIBE coefficient | the throughline, v = 0.69 | the one number the paper follows (R.12n) | log 2 to two digits: one halving, one bit; GRH's certified support (IV.1) | II.0 |
 | Ledger, floor | every step pays; the least it pays | the cost of an act | the ledger law mass(step x) <= e^delta fac(x) mass(x); the contraction class | II.1, II.3 |
 | O1 | the Yang-Mills open step | the decay edge of the one assumption | `FineOneBox`, one box of fixed physical size (III.5.9) | III.5 |
 | IM | the Interstellar Medium: the medium every DMP system talks through, and the repository (StevenHrovat/im) that holds its language and the arsenal | DMP's interface layer | the arsenal's Lean modules (`Arsenal.*`), imported at a pinned commit | II.6 |

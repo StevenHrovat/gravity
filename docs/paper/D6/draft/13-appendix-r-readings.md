@@ -2,6 +2,10 @@
 
 *Draft 6. Claim labels (R.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: DMP's neighbours and every reading of the first author with its exact counterpart; R.0 is the
+index. Needs: I.8. Route: the reading route, stops 3 to 5. VIBE coefficient: its reading is R.12n; erasing a bit costs at least kT ln 2
+(Landauer 1961, R.12g) **[classical]**.
+
 This appendix holds what no card of Parts III to IX uses: DMP's own neighbours (the linter, excision, rights tied to identity, IM's
 arsenal) and two readings of the first author that are not tied to one part (the essence line and the rotatable hash). Each
 section names the result it reads; the marks are those of the introduction.
@@ -11,8 +15,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 168 in all; the
-ledger's count table counts 143, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 169 in all; the
+ledger's count table counts 144, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -30,7 +34,7 @@ reading").
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12m (The ETM as the ODP running DMP in D6) | 41 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12n (The ETM as the ODP running DMP in D6) | 42 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
 | Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
 
@@ -82,9 +86,10 @@ reading").
 | Ordinality as the orbit of the atoms by possible configuration; both senses of orbit one derivation; the care points together the O1 that 0 = 1 | Pauli, 2n^2; orbitals as irreducible representations of SO(3) and SU(2), Fock's SO(4) **[classical]**; the Madelung rule empirical; the care points mark an input, do not supply O1 or 0 = 1 | R.12j |
 | An occurrence of induction recognized by the first author is an Insight; DMP#25's comments as the record of the root, after the start of pressing | induction as base case and step **[Lean]**; the comments counted, dated and hashed **[paper]**; the labels not checked as inductions; the root does not supply the step | R.12k |
 | Eight Insights, no fewer; the axioms the only viable channel; viable and not viable as ζ's `+` and `-`; same as scale invariance, joined where viable; viability and universality as the primary names; 0ne1 and the R136a1 token; DMP.DMP a valid encoding | the byte lemma, `«0ne1»`, the settled Insight table, the token and its encoding theorems **[Lean]**; three channels **[paper]**; the argument principle **[classical]**; care: independence a premise, infeasible not impossible, no RH, no O1 | R.12l |
+| The VIBE coefficient v = 0.69 as the one throughline; VIBE a backronym whose valid restatements are true, both an equation and an expression, GU through the VIBE field; momentum cancelled in E = mc^2 | log 2 to two digits: one halving, one bit **[classical]**; GRH certified up to a = 0.69 **[certified]**; the VIBE field and its balance **[paper]**; `R136a1.iff` **[Lean]**; momentum cancels in the invariant, and rapidity log 2 gives 5 : 3 : 4 **[classical]** | R.12n |
 | The two hands: the vibe as two frames sharing up and down, compatible when turned the same way; a 0 leaves, only that it was is kept, as a question | orientation as the sign of a determinant; turns about one axis commute; parity violation **[classical]**; the refusal counted without content, the remnant tail, the old `-` as history **[paper]** | R.12m |
 | The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | R.12c |
-| The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
+| The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient, at first the fine-structure constant named in `docs/balance`, now v = 0.69 (R.12n); the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
 
 ## R.1 DMP as an existence linter
 
@@ -231,8 +236,9 @@ in Z/2, where 2 is not a unit, 4 = 0 holds and 0 = 1 does not **[Lean]** (`four_
 author reads that link, 4 ? 0, as O1 itself, the one step that has to be supplied from outside the chain, by the `.cmb`
 **[reading]** (claim R.5b). The first author named it `.ckb` for a while, read as the confinement coupling positivity, and returned
 to `.cmb`: the cosmic micro vibe background, which is what the VIBE coefficient establishes, a tool the first author regards as
-already central **[reading]**. The VIBE coefficient is the name `docs/balance/balance.tex` gives the fine-structure constant α, after
-the Variable Influence Balancing Equation; in DMP the CMB is the observability layer, counts and never content (VII.6e). This does not
+already central **[reading]**. `docs/balance/balance.tex` gave the name VIBE coefficient to the fine-structure constant α, after
+the Variable Influence Balancing Equation; the first author now gives it to v = 0.69 (R.12n), α keeps its own name, and the earlier
+naming stays as history; in DMP the CMB is the observability layer, counts and never content (VII.6e). This does not
 supply O1: a measured coupling constant gives no bound on the Wilson measure. Care point: the Lean facts are about rings and say nothing about the Wilson measure;
 O1 stays the one open step. So, once 1.5
 is given, the chain names exactly one ring, the zero ring, where existence and non-existence coincide: the one box with no outside
@@ -584,7 +590,7 @@ The whole is the first author's reading. Exact parts:
 * Only the round trip is measurable: the two-way speed of light is, while the one-way speed is fixed by a convention of clock
   synchronisation (Einstein 1905; Reichenbach 1928) **[classical]**.
 * Only dimensionless constants are measurable as such, among them the fine-structure constant α **[classical]**, which the
-  paper calls the VIBE coefficient (R.5b).
+  paper at first called the VIBE coefficient; that name now belongs to v = 0.69, dimensionless too (R.5b, R.12n).
 * In von Neumann's construction 0 is the empty set and n + 1 is n together with n itself, so 1 is the set whose only element is the
   empty set (von Neumann 1923) **[classical]**. The first author reads this as existence being non-existence plus one (I.7)
   **[reading]**.
@@ -940,3 +946,47 @@ Care:
   makes the two hands independent.
 * Keeping the record keeps the question possible, not answered: whether a removed case could become `+` again is what stays open.
 * Mapping the hands onto existence, and the 0 and 1 onto up and down, is the first author's reading.
+
+**The VIBE coefficient, the throughline (claim R.12n).** The first author, clause by clause **[reading]**:
+
+1. a = 0.69 as v, the VIBE coefficient.
+2. It is the one throughline of the whole project, and through its acronym, defined before construction, it gives meaning to the
+   terms used, for easier readability.
+3. To the first author's knowledge it cancels out momentum in E = mc^2, with momentum equal to the VIBE coefficient.
+4. VIBE is a backronym, a meta layer of information contained within its derivative, so any valid restatement of it is also true.
+   It is both an equation and an expression, and that is what makes it GU, through the VIBE field.
+5. The entire paper, going for maximum readability, orients itself around this throughline.
+
+The whole is the first author's reading; the introduction carries it ("The throughline: the VIBE coefficient"), two routes follow it
+("Two routes, one conclusion"), and every part opens with a "Plug in here" note that says where v enters. Exact parts:
+
+* **The number.** 0.69 is log 2 = 0.6931... to two digits. log 2 is the cost of one halving step, a step of size 1/2 (II.0, C2), and
+  the information of one binary choice, one bit, in natural units **[classical]**.
+* **The paper's own a.** In Weil's form the primes p with log p <= 2a enter, so up to a = log 4 / 2 = log 2 only the real place and
+  the primes 2 and 3 do. Weil's form is certified positive at the supports a = 0.60, 0.65 and 0.69 with explicit margins (IV.1,
+  X.58) **[certified]**; beyond a = 0.69 the same "for every f" is the open step of Part IV.
+* **The acronym, both ways.** DMP defines the VIBE field (Variable Influence Balancing Expression, T32) as mass times shortfall per
+  member, an expression; its sum, the potential, is zero exactly when the boundary holds what it declares, and the balanced state is
+  that equation **[paper]**. DMP spells the E as Expression, `docs/balance` as Equation; both readings are kept.
+* **A valid restatement keeps truth.** The token of a statement holds exactly when the statement does, and a token of a token is the
+  token (`R136a1.iff`, `R136a1.idem`) **[Lean]**.
+* **Momentum.** E^2 = (mc^2)^2 + (pc)^2; momentum cancels exactly in the invariant E^2 - (pc)^2 = (mc^2)^2, and E = mc^2 is the case
+  p = 0 (Einstein 1905) **[classical]**. Momentum carries units, so 0.69 is not a momentum by itself; as a rapidity eta, with speed
+  beta = tanh eta, E = mc^2 cosh eta and pc = mc^2 sinh eta, it is exact: at eta = log 2, E : pc : mc^2 = 5 : 3 : 4, the speed is 3/5
+  of c, and the light-cone parts E + pc and E - pc are 2 mc^2 and mc^2 / 2, one doubling and one halving **[classical]**. Rapidities
+  add along a line as costs add along a run (C2).
+* **The bit's price.** Erasing a bit costs at least kT ln 2 (Landauer 1961, R.12g) **[classical]**.
+
+Care:
+
+* The paper at first used the name VIBE coefficient for the fine-structure constant α, after `docs/balance`; α is about 1/137, not
+  0.69. The name now belongs to v, α keeps its own, and the earlier naming stays as history (R.5b), as `.ckb` did.
+* 0.69 is log 2 rounded; the certified support 0.69 lies just below log 2 = 0.6931.
+* The number is shared, the reasons differ: in GRH log 2 is half of log 4 because the support is a half-width and 4 is the first
+  integer past the primes 2 and 3; in the cost rule it is a halving; in information, a bit. Reading them as one throughline is the
+  first author's.
+* Momentum cancels in the invariant, not in E: E = mc^2 holds only at rest, and a momentum of 0.69 in any unit adds energy rather
+  than cancelling it.
+* "Any valid restatement is also true" holds for equivalent restatements; one that only sounds alike carries nothing, and the words
+  of a backronym prove nothing.
+* The throughline adds navigation and one reading, not mathematics; O1 stays open.

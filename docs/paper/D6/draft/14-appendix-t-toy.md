@@ -3,6 +3,10 @@
 *Draft 6, 2026-11-25. A complete example of the observable API of II.4.1, on binary words, small enough to read in full and to rerun.
 Lean: IM, `arsenal/Arsenal/Toy.lean`. Claim labels (T.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the headline run on binary words, complete and rerunnable. Needs: nothing. Route: the exact route,
+stop 1. VIBE coefficient: reduction modulo 2 maps every width onto one bit (T.2) **[Lean]**; the 256 words of a byte are 2^8, eight
+halvings, a log-size of 8 log 2 **[classical]**.
+
 The headline of the paper (II.4.1) says that each problem is restated as one statement checked at every step, exactly equivalent
 to it, and that a proof is an induction, base case and inductive step, which then holds at every step and, along a map of scales that
 keeps the step and the check, at every scale. This appendix runs every part of that statement on the simplest data there is, binary

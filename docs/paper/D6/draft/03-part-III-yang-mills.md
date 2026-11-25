@@ -5,6 +5,12 @@ attempt rounds R2 to R4 live under `docs/mass-gap/formal/Attempts/`); notes rela
 `proof-phase/c9a-crossover/`. The full chain with all 51 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (III.n) are listed in
 `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the SU(2) lattice mass gap reduced to one criterion on one box of fixed physical size, O1.
+Needs: II.4.1, the ledger (II.1) and the tools of II.12. Route: the exact route, stop 3. VIBE coefficient: the boxes double from level
+to level, and the doubling law with a fixed loss gives the gap on all larger dyadic boxes (an implication, III.3.7) **[Lean]**;
+rigorously log mu_4 >= log 4 = 2 log 2 **[classical]**; III.5.6 reads O1's familiar form as dropping a momentum term, as R.12n reads
+E = mc^2 **[reading]**.
+
 **As a statement checked step by step (II.4.1).** The steps are the lattice levels from a first level k0 of one box of fixed
 physical size; the statement checked at each level is the level criterion, the box's best one-box ratio within the margin. For some
 cell geometry and margin this holds at every level exactly when O1 holds in its Lean form **[Lean]** (`FineOneBox`,

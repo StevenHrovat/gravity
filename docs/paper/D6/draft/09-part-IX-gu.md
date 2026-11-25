@@ -3,6 +3,11 @@
 *Draft 6. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (IX.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the Grand Unified reading, its box (charge quantisation, proved) and where its open step lies. Needs:
+II.4 and II.5. Route: off both routes; the reading route can visit it after R.11. VIBE coefficient: the centre of the Standard Model
+group splits as Z/6 = Z/2 x Z/3 (IX.3.1c) **[Lean]**, the same two primes that up to a = 0.69 are the only primes in Weil's form
+(IV.1); the primes match exactly, and reading the match as the throughline is the first author's **[reading]**.
+
 **As a statement checked step by step (II.4.1).** GU has a box and no card (II.5). Its box checks charge quantisation at every
 step and passes, proved: every continuous character of the circle is z to the n (`gu_box`, IX.8) **[Lean]**. The open step of GU
 lies outside this box (IX.5e), so no induction inside it reaches it.
