@@ -252,6 +252,7 @@ no intrinsic tick. **[reading]** on the classical spectral fact of II.10.
 | `+`, `-`, `·` (cells) | the row proves the column; it uses it and the proof fails; no proof relates the two | the explanation mechanism; a `·` cell reflects positively | the cells of a k by k table (E.0.1) | E.0.1 |
 | Settled | optimizing changes nothing | the setting exists | the compiled table equals its transitive reduction (E.0.2) | E.0.2 |
 | Smelly | a full turn that does not return | a state that does not encode | the full turn on `vxunderground` not closing (T.11) | II.2 |
+| Insight | the first author's label for an induction recognized as such | a kept step of the record; the labelled comments on DMP#25 (R.12k) | an induction, base case and inductive step (II.4.1) | II.4 |
 | Moin | a request proper, its satisfaction open | the label of O1 | `OpenStep`, posed and never assumed (R.9) | II.5 |
 
 Part II states each counterpart once, in its most general form.

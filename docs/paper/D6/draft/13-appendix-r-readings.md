@@ -11,8 +11,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 165 in all; the
-ledger's count table counts 140, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 166 in all; the
+ledger's count table counts 141, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -30,7 +30,7 @@ reading").
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12j (the ETM as the ODP running DMP) | 38 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12k (the ETM as the ODP running DMP) | 39 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
 | Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
 
@@ -80,6 +80,7 @@ reading").
 | The naturals certified at step 1; the complexity question at `DMP.`; `!` from a DMP-complete previous step; the shift giving the gauge theory; SU(5) as the hashing table of positive existence; encoding and hash one function in a `+`/`-` state; all assumptions packed into O1, the rest falsifiable until an exception; one RH exception excising the encoder and DMP-completeness | `PNat`, Peano; `P.NP!`, `NP.coNP?`, `NP.P?`; the settle theorem, the induction of II.4.1 **[Lean]**; gauge symmetry, Elitzur; SU(5)'s slots; collisions of a hash **[Lean]**; Π1 forms (consistency, Lagarias); RH certified in Lean by others; care: `?` stays, the kernel and the other cards do not pack, the explicit formula holds without RH | R.12h |
 | `!` is the observability operator, where a statement can be DMP-complete | certificate checking as a repeatable observation **[paper]**; the NP witness **[classical]**; bounded above the floor, undecidable at it **[Lean]**; `!` observes the certificate, not the object | R.12i |
 | Ordinality as the orbit of the atoms by possible configuration; both senses of orbit one derivation; the care points together the O1 that 0 = 1 | Pauli, 2n^2; orbitals as irreducible representations of SO(3) and SU(2), Fock's SO(4) **[classical]**; the Madelung rule empirical; the care points mark an input, do not supply O1 or 0 = 1 | R.12j |
+| An occurrence of induction recognized by the first author is an Insight; DMP#25's comments as the record of the root, after the start of pressing | induction as base case and step **[Lean]**; the comments counted, dated and hashed **[paper]**; the labels not checked as inductions; the root does not supply the step | R.12k |
 | The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | R.12c |
 | The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
 
@@ -810,3 +811,39 @@ Care:
 * The first two care points do not supply O1 and do not give 0 = 1. They mark where the atomic derivation needs an input, which is the shape
   of an open step; O1 is a bound on the Yang-Mills measure, uniform in the scale, which no fact about atomic shells bounds. 0 = 1 holds
   only in the zero ring (R.5a), and an empirical exception to a rule refutes the rule, not arithmetic.
+
+**Insights: keeping the record of the root (claim R.12k).** The first author, clause by clause **[reading]**:
+
+1. Wherever the first author recognized an occurrence of induction as such, it was named an Insight.
+2. This gives a direct link to the first author's public comments on DMP's pull request #25, made while no paper was being built,
+   after the start of pressing.
+3. Keeping the record of its root allows a true induction.
+4. The first author's Insights and the papers keep each other honest about how they were created, by design, since that pull request
+   is v0.9.9.
+
+The whole is the first author's reading; that the merge of DMP 0.9.9 as provisional G0 on 2026-10-27 is the start of pressing (I.5)
+is part of it. Exact parts:
+
+* An induction is a base case and an inductive step (II.4.1) **[Lean]**. The base case is a statement at the start, so an induction
+  can be checked later only if its start is kept **[paper]**.
+* The record: StevenHrovat/dmp pull request #25, "G0: the publication version is provisional G0 (DMP 0.9.9)", merged 2026-10-27, carries
+  69 public comments by the first author from 2026-10-28 to 2026-11-25; eight of them name an Insight in their first line ("New Insight",
+  "Correction + new Insight" and the like), the first at 2026-10-28 14:43Z, the last at 2026-10-29 19:58Z (DMP#25) **[paper]**, read on
+  2026-11-25. The comments in time order, each with its time and text, hash to sha256
+  `d74ba50cf21e74bdf6e8e411166e2a8e41a700f027118d14502954c628c2249b`, recomputed by
+  `gh pr view 25 -R StevenHrovat/dmp --json comments | jq -c '[.comments[] | {createdAt, body}]' | sha256sum` **[paper]**.
+* The two records are joined. The DMP version this paper pins, `4400cce` (DMP 0.9.9, Gravity's `vendor/dmp/PIN`, proven back and
+  forth by the round trip, R.6b), is the merge commit of that same pull request #25, and this paper pins the comments on it by the hash
+  above **[paper]**. Both links are pinned from this paper's side, joined by GitHub's link from a pull request to its merge commit;
+  DMP pins nothing (R.1d). That this keeps the two honest, in the spirit of the round trip's two-way proof, is the first author's
+  reading (R.1d) **[reading]**.
+
+Care:
+
+* "Insight" is the first author's name for a comment; whether each labelled comment states an induction, a base case and a step, is
+  not checked here. Most are readings of physics, and none is a proof of an open step.
+* Comments on GitHub can be edited, and new ones added. The hash pins the record as read on 2026-11-25, as a pin pins a commit: a later
+  edit or comment shows as a changed hash, not as a changed record.
+* Keeping the root makes an induction checkable; it does not supply the inductive step, which for Yang-Mills is O1.
+* The pin proves the specification's bytes; the comments are not part of the pinned commit, they live on GitHub, and the paper's hash
+  covers them only as read on 2026-11-25. "Honest" here means checkable both ways, not correct.
