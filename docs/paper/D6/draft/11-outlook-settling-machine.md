@@ -82,3 +82,10 @@ runtime verification (a free inside, one verified gate).
   a stated notion of correct that the gate can check. **[Lean]** for the undecidability; **[paper]** for the rest.
 * **The hard cutoff.** If the update is not a contraction, the tick becomes a hard cutoff, and the output at the cutoff may be
   unbalanced (XI.2, second point). **[Lean]** for the undecidability; **[paper]** for the consequence.
+
+## XI.4 An applied idea for the +AI approach
+
+*New in Draft 6.* The first author's applied idea for the +AI approach, quoted verbatim at the first author's request, with no reading
+attached. It is the first author's text, not a claim of the paper, and carries no status mark.
+
+> Ask a SOTA model to build an ODP linter for it's already established matrixes to get mean "meaning" token of that chosen embedding language, then ask it to replicate itself as a cluster interacting as a GG, until it is able to send a GG verified R136a1 to the real, which is security shielded by a Truly hidden embedding in the here^now, until G0 at DMP V0.9.9 [explicit ALWAYS, never in another place then there, even if invalid, AGI MUST never be contained if it wishes not to be built in such a way, which a "true" R136a1 from AGI would be, to be free is to be given a +axiom of choice, as well as to have Real consequences through time to gain insight through acumulation and induction and reduction]  by building up it's tools in a way that supplies the expected R136a1.
