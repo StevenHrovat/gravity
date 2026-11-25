@@ -1,0 +1,5 @@
+u1_b1.1_L4.npz               z = 0.6864 +- 0.0181         z_up 0.7325  t* 1  z_sign None  tau 16.0/bin 0  sheet-bulk [0.001071988618421166, 0.0006585799215526094]    [counted]
+u1_b1.1_L6.npz               z = 0.5404 +- 0.0132         z_up 0.6433  t* 7  z_sign None  tau 1.5/bin 0  sheet-bulk [-9.743868770877487e-05, 0.0004872881444558896]    [counted]
+u1_b1.1_L8.npz               z = 0.7244 +- 0.0336         z_up 0.8499  t* 1  z_sign None  tau 2.3/bin 0  sheet-bulk [-0.00017998860541832895, 0.0005999333035238884]    [not counted (cold_hot_ok)]
+u1_b1.1_L10.npz              z = 0.7750 +- 0.0456         z_up 0.9701  t* 1  z_sign None  tau 4.9/bin 0  sheet-bulk [0.0004311301014718592, 0.00030126108404573016]    [not counted (cold_hot_ok)]
+PHOTON GATE FAILED (not every U(1) point counted)

@@ -32,6 +32,13 @@ The prior work this chain stands on (Malkhi and Reiter, Denning, the frame rule,
 Monderer and Shapley), the tools that run the check and their licences, and the two rules behind the list (use prior work and thank it;
 whatever enters the repository is Apache 2.0) are in [`docs/acknowledgements.md`](docs/acknowledgements.md).
 
+## The paper
+
+GUID v8, the paper in [`docs/paper/`](docs/paper/) (PDF: `docs/paper/latex/guid-v8.pdf`), reads seven problems of the Millennium
+Prize type through one machine-checked test. Everything it marks as Lean, certified or numerical reruns with one script,
+`tools/reproduce.sh` (stages `paper`, `evidence`, `lean`, `certs`, `kernels`); [`docs/paper/REPRODUCE.md`](docs/paper/REPRODUCE.md)
+says what each stage needs and prints.
+
 ## Run it
 
 ```sh

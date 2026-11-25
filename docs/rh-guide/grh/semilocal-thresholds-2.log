@@ -1,0 +1,5 @@
+Threshold a(S): first support at which lambda_min < -1e-6 (bisection, fine accuracy).
+Compare with (1/2) log p*, p* = smallest prime missing from S: the point where p* enters the support of h.
+  S = {inf,2,3,5}      p* =  7  (1/2) log p* = 0.97296   nb 6: a(S) = 1.01783   nb 10: a(S) = 1.00294
+  S = {inf,2,3,5,7}    p* = 11  (1/2) log p* = 1.19895   nb 6: a(S) = 1.24724   nb 10: a(S) = 1.23430
+  S = {inf,3}          p* =  2  (1/2) log p* = 0.34657   nb 6: a(S) = 0.39560   nb 10: a(S) = 0.38412

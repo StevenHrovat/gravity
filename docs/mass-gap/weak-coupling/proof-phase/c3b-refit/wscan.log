@@ -1,0 +1,66 @@
+w=0.0   ts ell= 4 L=16 sigma2=3.25928  (0s)
+w=0.0   ts ell= 8 L=32 sigma2=7.16565  (0s)
+w=0.0   ts ell=16 L=48 sigma2=15.10779  (2s)
+w=0.0   ss ell= 4 L=16 sigma2=3.25928  (2s)
+w=0.0   ss ell= 8 L=32 sigma2=7.16565  (3s)
+w=0.0   ss ell=16 L=48 sigma2=15.10779  (4s)
+w=0.25  ts ell= 4 L=16 sigma2=0.43930  (4s)
+w=0.25  ts ell= 8 L=32 sigma2=0.44184  (4s)
+w=0.25  ts ell=16 L=48 sigma2=0.43999  (6s)
+w=0.25  ss ell= 4 L=16 sigma2=0.40769  (6s)
+w=0.25  ss ell= 8 L=32 sigma2=0.42913  (6s)
+w=0.25  ss ell=16 L=48 sigma2=0.43888  (8s)
+w=0.5   ts ell= 4 L=16 sigma2=0.29961  (8s)
+w=0.5   ts ell= 8 L=32 sigma2=0.28610  (8s)
+w=0.5   ts ell=16 L=48 sigma2=0.27587  (10s)
+w=0.5   ss ell= 4 L=16 sigma2=0.25010  (10s)
+w=0.5   ss ell= 8 L=32 sigma2=0.24635  (10s)
+w=0.5   ss ell=16 L=48 sigma2=0.23924  (12s)
+w=0.75  ts ell= 4 L=16 sigma2=0.26508  (12s)
+w=0.75  ts ell= 8 L=32 sigma2=0.24811  (12s)
+w=0.75  ts ell=16 L=48 sigma2=0.23686  (14s)
+w=0.75  ss ell= 4 L=16 sigma2=0.21478  (14s)
+w=0.75  ss ell= 8 L=32 sigma2=0.20488  (14s)
+w=0.75  ss ell=16 L=48 sigma2=0.19498  (16s)
+w=1.0   ts ell= 4 L=16 sigma2=0.25195  (16s)
+w=1.0   ts ell= 8 L=32 sigma2=0.23234  (16s)
+w=1.0   ts ell=16 L=48 sigma2=0.22026  (18s)
+w=1.0   ss ell= 4 L=16 sigma2=0.20419  (18s)
+w=1.0   ss ell= 8 L=32 sigma2=0.18944  (18s)
+w=1.0   ss ell=16 L=48 sigma2=0.17755  (20s)
+w=1.5   ts ell= 4 L=16 sigma2=0.24347  (20s)
+w=1.5   ts ell= 8 L=32 sigma2=0.21989  (20s)
+w=1.5   ts ell=16 L=48 sigma2=0.20626  (22s)
+w=1.5   ss ell= 4 L=16 sigma2=0.20253  (22s)
+w=1.5   ss ell= 8 L=32 sigma2=0.18023  (22s)
+w=1.5   ss ell=16 L=48 sigma2=0.16484  (24s)
+w=2.0   ts ell= 4 L=16 sigma2=0.24193  (24s)
+w=2.0   ts ell= 8 L=32 sigma2=0.21566  (24s)
+w=2.0   ts ell=16 L=48 sigma2=0.20075  (26s)
+w=2.0   ss ell= 4 L=16 sigma2=0.20721  (26s)
+w=2.0   ss ell= 8 L=32 sigma2=0.17967  (26s)
+w=2.0   ss ell=16 L=48 sigma2=0.16143  (28s)
+w=3.0   ts ell= 4 L=16 sigma2=0.24309  (28s)
+w=3.0   ts ell= 8 L=32 sigma2=0.21360  (28s)
+w=3.0   ts ell=16 L=48 sigma2=0.19689  (30s)
+w=3.0   ss ell= 4 L=16 sigma2=0.21759  (30s)
+w=3.0   ss ell= 8 L=32 sigma2=0.18372  (30s)
+w=3.0   ss ell=16 L=48 sigma2=0.16146  (32s)
+w=4.0   ts ell= 4 L=16 sigma2=0.24499  (32s)
+w=4.0   ts ell= 8 L=32 sigma2=0.21372  (32s)
+w=4.0   ts ell=16 L=48 sigma2=0.19588  (34s)
+w=4.0   ss ell= 4 L=16 sigma2=0.22564  (34s)
+w=4.0   ss ell= 8 L=32 sigma2=0.18826  (35s)
+w=4.0   ss ell=16 L=48 sigma2=0.16344  (36s)
+
+w      sigma2_ts(16) sigma2_ss(16) within5% flat z2tie
+0.0    15.1078        15.1078        False    False False
+0.25   0.4400        0.4389        False    False True
+0.5    0.2759        0.2392        False    True  True
+0.75   0.2369        0.1950        False    True  False
+1.0    0.2203        0.1775        False    True  False
+1.5    0.2063        0.1648        False    True  False
+2.0    0.2008        0.1614        True     True  False
+3.0    0.1969        0.1615        True     True  False
+4.0    0.1959        0.1634        True     True  False
+grid minima: ts 0.1959, ss 0.1614; CHOSEN w = 2.0

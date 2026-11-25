@@ -1,0 +1,10 @@
+(a) k_A MC: 0.062516 +- 0.000039   (1/16 = 0.062500)
+(a) k_A disk quadrature: 0.0625000000
+(a) int phi* h2 dHaar (MC): 0.062516
+(b) aligned b_A = 0.100: exact formula 0.06767   c2a LP 0.06751
+(b) aligned b_A = 0.260: exact formula 0.07374   c2a LP 0.07355
+(b) aligned b_A = 0.333: exact formula 0.07511   c2a LP 0.07491
+(b) aligned b_A = 0.500: exact formula 0.07439   c2a LP 0.07419
+(c) Z: series 1.810097  MC 1.810073;  E[x1]: 0.31850 vs 0.31866;  E[x1 x4]: 0.051069 vs 0.051044
+(c) rigorous enclosure S_(1,0,0,1): [0.0924396159695663, 0.0924396159697512]
+(c) B1 at Haar: 0.062500000411 (1/16 = 0.0625)

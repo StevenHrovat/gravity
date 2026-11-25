@@ -1,0 +1,16 @@
+== build ProofPhase.GRH.OneBoxCert
+Build completed successfully (8927 jobs).
+== declarations: 10
+== axioms
+'ProofPhase.GRH.schur_scalar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.schur_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.onebox_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.onebox_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.ldl_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.fin_of_ldl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.OneBoxEnclosures' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.onebox_cert_13_20' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.onebox_cert_3_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.onebox_cert_69_100' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/GRH/OneBoxCert.lean

@@ -1,0 +1,17 @@
+input 0000000000000000000000000000000000000000000000000000000000000001
+RESULT sha256(0...01) = ec4916dd28fc4c10d78e287ca5d9cc51ee1ae73cbfde08c6b37324cbfaac8bc5
+RESULT k=1 zeros, ends in 1: input vxunderground-245, tries 246 (expected about 16^2 = 256), digest 0b3c8cb9304e7ab6354c3687907f9c0cb153d7b7bdc1a79c96ba4d26a1b40671
+RESULT k=2 zeros, ends in 1: input vxunderground-608, tries 609 (expected about 16^3 = 4096), digest 00c054a4a723ce78f987c77267c43f61faf3164a0de67fef466573db5adb3901
+RESULT k=3 zeros, ends in 1: input vxunderground-13112, tries 13113 (expected about 16^4 = 65536), digest 0003aee4e98e7ed744aaaaabdc000cce1593cbb6402650e8fd1cf48590ced601
+RESULT k=4 zeros, ends in 1: input vxunderground-26013, tries 26014 (expected about 16^5 = 1048576), digest 0000444466e2bf08e2928b3f278a068e37da9691edeb450a0d5ced22da3d1fc1
+RESULT k=5 zeros, ends in 1: input vxunderground-2123542, tries 2123543 (expected about 16^6 = 16777216), digest 000002385f5f10be50cc1116805199171ac2799309b8cbc84f6112fc82edd1e1
+full shape 000...0001: 64 fixed hex digits, about 16^64 = 2^256 = 1.158e+77 tries
+RESULT test vector 'abc': agrees
+RESULT test vector '': agrees
+RESULT test vector 'abcdbcdecd...': agrees
+RESULT candidate one byte 0x01: digest 4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a, equals 000...0001: False
+RESULT candidate the character "1": digest 6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b, equals 000...0001: False
+RESULT candidate 32 bytes 0...01: digest ec4916dd28fc4c10d78e287ca5d9cc51ee1ae73cbfde08c6b37324cbfaac8bc5, equals 000...0001: False
+RESULT candidate 256 characters 0...01: digest bffa36919a79c0dd39254694df5f4a6c1237c0b76a27499fd06e439871d70fc1, equals 000...0001: False
+RESULT avalanche on vxunderground: 104 input-bit flips, digest bits changed min 105, max 148, mean 128.7 of 256
+RESULT line of ones: sha256(vxunderground) + its complement = 2^256 - 1: True; ones 145 + 111 = 256; every cyclic bit rotation keeps [145] ones

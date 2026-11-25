@@ -1,0 +1,11 @@
+  pass: 0 cells certified, 666 to refine, 399 evaluations, 3s
+  pass: 0 cells certified, 1115 to refine, 1065 evaluations, 9s
+  pass: 0 cells certified, 1869 to refine, 2180 evaluations, 18s
+  pass: 0 cells certified, 3270 to refine, 4049 evaluations, 35s
+  pass: 0 cells certified, 5797 to refine, 7319 evaluations, 69s
+  pass: 4547 cells certified, 2098 to refine, 13116 evaluations, 131s
+  pass: 6327 cells certified, 537 to refine, 15214 evaluations, 150s
+  pass: 6756 cells certified, 171 to refine, 15751 evaluations, 155s
+  pass: 6901 cells certified, 41 to refine, 15922 evaluations, 157s
+  pass: 6942 cells certified, 0 to refine, 15963 evaluations, 158s
+b_A = 0.15: certified sup B1 <= 0.090200; column 48|b_A| B1 <= 0.649439 < 1; zeta <= 1.12108, sigma1 <= 0.33589, sigma2 <= 0.43862, Vh <= 0.05358; 6942 cells, 158s

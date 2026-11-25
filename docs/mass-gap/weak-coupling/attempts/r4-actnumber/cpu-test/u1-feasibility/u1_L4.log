@@ -1,0 +1,14 @@
+u1 beta=1.1 L=4 T=32 plane=01 twisted=True path=array chains=4: 100 thermalisation sweeps in 6.9s
+  meas 50/600  plaq 0.70850  sheet/bulk 0.6968/0.6969  <|p_top|> 0.9240  t=14s
+  meas 100/600  plaq 0.70831  sheet/bulk 0.6959/0.6970  <|p_top|> 0.9233  t=22s
+  meas 150/600  plaq 0.70863  sheet/bulk 0.6964/0.6974  <|p_top|> 0.9242  t=29s
+  meas 200/600  plaq 0.70856  sheet/bulk 0.6957/0.6971  <|p_top|> 0.9242  t=36s
+  meas 250/600  plaq 0.70891  sheet/bulk 0.6960/0.6974  <|p_top|> 0.9248  t=43s
+  meas 300/600  plaq 0.70945  sheet/bulk 0.6971/0.6980  <|p_top|> 0.9257  t=51s
+  meas 350/600  plaq 0.70969  sheet/bulk 0.6972/0.6983  <|p_top|> 0.9262  t=58s
+  meas 400/600  plaq 0.70994  sheet/bulk 0.6973/0.6986  <|p_top|> 0.9266  t=66s
+  meas 450/600  plaq 0.71010  sheet/bulk 0.6975/0.6987  <|p_top|> 0.9270  t=73s
+  meas 500/600  plaq 0.71015  sheet/bulk 0.6970/0.6988  <|p_top|> 0.9270  t=81s
+  meas 550/600  plaq 0.71013  sheet/bulk 0.6976/0.6988  <|p_top|> 0.9271  t=89s
+  meas 600/600  plaq 0.71011  sheet/bulk 0.6973/0.6989  <|p_top|> 0.9273  t=96s
+done in 96.0s

@@ -1,0 +1,12 @@
+qmul vs matrices: 1.1102230246251565e-16
+log z vs quadrature, worst abs error: 4.440892098500626e-16
+x0 KS alpha=0.05: p = 0.141
+x0 KS alpha=0.5: p = 0.693
+x0 KS alpha=3.0: p = 0.483
+x0 KS alpha=20.0: p = 0.084
+coupling: <q2.n2> = 0.4014 (exact 0.3999), P(q1 = q2) = 0.764
+kappa=0.0: G1 max disagreement = 0; box plaquette start 0.5969, run mean 0.6046
+kappa=16.0: G1 max disagreement = 0; box plaquette start 0.5969, run mean 0.5962
+(d) one link (7 constraint entries), kappa=16.0: chain [ 0.1788  0.4103 -0.1989 -0.8043] exact [ 0.1856  0.4147 -0.1977 -0.8016] (ESS 668); max |z| = 1.07
+G0 gauge covariance: start plaquette 0.597863 vs transformed 0.597863; run means 0.5978 vs 0.5946, |z| = 0.46
+SELFTEST OK

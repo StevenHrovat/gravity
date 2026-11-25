@@ -1,0 +1,17 @@
+'ProofPhase.UV.condDefect_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.abs_condDefect_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.abs_cov_condExp_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.abs_condDefect_sub_cov_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.abs_condDefect_sub_cov_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.condDefect_eq_cov_of_indep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.condDefect_tower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.integral_abs_condExp_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.abs_condDefect_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.approx_tower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.twoStage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.condExp_comp_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.condDefect_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.approx_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.UV.twoStage_blocked' depends on axioms: [propext, Classical.choice, Quot.sound]
+--- sorry / native_decide / axiom declarations in ProofPhase/UV:
+none

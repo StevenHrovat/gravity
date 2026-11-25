@@ -1,0 +1,103 @@
+== gauge control (must be zero within errors) ==
+  ['su2', '2.3', '4', 'calm', '4', 'gauge']: max |shift|/err = 1.21, max |shift| = 9.07e-04
+  ['su2', '2.3', '6', 'calm', '6', 'gauge']: max |shift|/err = 0.77, max |shift| = 7.84e-04
+  ['u1', '2.0', '6', 'calm', '6', 'gauge']: max |shift|/err = 1.54, max |shift| = 8.96e-03
+  ['z2', '0.3', '6', 'calm', '6', 'gauge']: max |shift|/err = 1.35, max |shift| = 5.23e-03
+  ['z2', '0.6', '6', 'calm', '6', 'gauge']: max |shift|/err = 0.79, max |shift| = 2.93e-04
+== influence J(d) = |shift| / sd of one loop, whole-face flip and patches, 1x1 loops ==
+  su2 beta=0.8 bg=calm ell=4 patch=2 flip: J(d) = 0.006 0.002  | S_est(centre)=0.117
+  su2 beta=0.8 bg=calm ell=4 patch=4 flip: J(d) = 0.023 0.002  | S_est(centre)=0.008
+  su2 beta=0.8 bg=typical ell=4 patch=2 flip: J(d) = 0.002 0.003  | S_est(centre)=0.135
+  su2 beta=0.8 bg=typical ell=4 patch=4 flip: J(d) = 0.002 0.002  | S_est(centre)=0.006
+  su2 beta=2.3 bg=calm ell=4 patch=2 flip: J(d) = 0.132 0.027  | S_est(centre)=1.361
+  su2 beta=2.3 bg=calm ell=4 patch=4 flip: J(d) = 0.299 0.032  | S_est(centre)=0.102
+  su2 beta=2.3 bg=calm ell=4 patch=4 gauge: J(d) = 0.004 0.003  | S_est(centre)=0.009
+  su2 beta=2.3 bg=calm ell=6 patch=6 flip: J(d) = 0.182 0.015 0.000  | S_est(centre)=0.001
+  su2 beta=2.3 bg=calm ell=6 patch=6 gauge: J(d) = 0.002 0.000 0.003  | S_est(centre)=0.009
+  su2 beta=2.3 bg=typical ell=4 patch=2 flip: J(d) = 0.057 0.019  | S_est(centre)=0.959
+  su2 beta=2.3 bg=typical ell=4 patch=4 flip: J(d) = 0.109 0.024  | S_est(centre)=0.078
+  su2 beta=2.3 bg=typical ell=6 patch=6 flip: J(d) = 0.071 0.011 0.010  | S_est(centre)=0.033
+  u1 beta=2.0 bg=calm ell=4 patch=2 flip: J(d) = 0.006 0.016  | S_est(centre)=0.820
+  u1 beta=2.0 bg=calm ell=4 patch=4 flip: J(d) = 0.004 0.013  | S_est(centre)=0.043
+  u1 beta=2.0 bg=calm ell=6 patch=6 flip: J(d) = 0.005 0.004 0.013  | S_est(centre)=0.043
+  u1 beta=2.0 bg=calm ell=6 patch=6 gauge: J(d) = 0.002 0.003 0.019  | S_est(centre)=0.062
+  u1 beta=2.0 bg=flux ell=4 patch=2 flip: J(d) = 0.114 0.054  | S_est(centre)=2.722
+  u1 beta=2.0 bg=flux ell=4 patch=4 flip: J(d) = 0.334 0.189  | S_est(centre)=0.605
+  u1 beta=2.0 bg=flux ell=6 patch=6 flip: J(d) = 0.058 0.027 0.014  | S_est(centre)=0.043
+  z2 beta=0.3 bg=calm ell=4 patch=2 flip: J(d) = 0.037 0.009  | S_est(centre)=0.430
+  z2 beta=0.3 bg=calm ell=4 patch=4 flip: J(d) = 0.078 0.012  | S_est(centre)=0.039
+  z2 beta=0.3 bg=calm ell=6 patch=6 flip: J(d) = 0.039 0.005 0.002  | S_est(centre)=0.005
+  z2 beta=0.3 bg=calm ell=6 patch=6 gauge: J(d) = 0.002 0.001 0.005  | S_est(centre)=0.018
+  z2 beta=0.3 bg=twist ell=4 patch=2 flip: J(d) = 0.026 0.005  | S_est(centre)=0.260
+  z2 beta=0.3 bg=twist ell=4 patch=4 flip: J(d) = 0.069 0.010  | S_est(centre)=0.031
+  z2 beta=0.3 bg=twist ell=6 patch=6 flip: J(d) = 0.038 0.002 0.007  | S_est(centre)=0.022
+  z2 beta=0.6 bg=calm ell=4 patch=2 flip: J(d) = 0.430 0.029  | S_est(centre)=1.450
+  z2 beta=0.6 bg=calm ell=4 patch=4 flip: J(d) = 0.912 0.022  | S_est(centre)=0.071
+  z2 beta=0.6 bg=calm ell=6 patch=6 flip: J(d) = 0.574 0.006 0.000  | S_est(centre)=0.000
+  z2 beta=0.6 bg=calm ell=6 patch=6 gauge: J(d) = 0.001 0.002 0.003  | S_est(centre)=0.008
+  z2 beta=0.6 bg=twist ell=4 patch=2 flip: J(d) = 0.369 0.017  | S_est(centre)=0.827
+  z2 beta=0.6 bg=twist ell=4 patch=4 flip: J(d) = 0.843 0.019  | S_est(centre)=0.062
+  z2 beta=0.6 bg=twist ell=6 patch=6 flip: J(d) = 0.541 0.003 0.000  | S_est(centre)=0.000
+== extremes vs calm ==
+  su2 beta=0.8 ell=4 typical: J(d) = 0.085 0.003
+  su2 beta=2.3 ell=4 typical: J(d) = 0.601 0.201
+  su2 beta=2.3 ell=6 tie: J(d) = 0.038 0.040 0.023
+  su2 beta=2.3 ell=6 typical: J(d) = 0.494 0.148 0.050
+  u1 beta=2.0 ell=4 flux: J(d) = 0.818 0.725
+  u1 beta=2.0 ell=6 flux: J(d) = 0.360 0.327 0.337
+  z2 beta=0.3 ell=4 twist: J(d) = 0.015 0.006
+  z2 beta=0.3 ell=6 tie: J(d) = 0.001 0.002 0.000
+  z2 beta=0.3 ell=6 twist: J(d) = 0.001 0.002 0.001
+  z2 beta=0.6 ell=4 twist: J(d) = 0.024 0.787
+  z2 beta=0.6 ell=6 tie: J(d) = 0.193 0.149 0.246
+  z2 beta=0.6 ell=6 twist: J(d) = 0.006 0.146 0.817
+== Q lower bound / tie ==
+  extreme su2 beta=0.8 ell=4 typical: Q_LB = 0.0086, 3-sigma lower 0.0078
+  extreme su2 beta=2.3 ell=4 typical: Q_LB = 0.0421, 3-sigma lower 0.0400
+  extreme su2 beta=2.3 ell=6 tie: Q_LB = 0.0079, 3-sigma lower 0.0071
+  extreme su2 beta=2.3 ell=6 typical: Q_LB = 0.0400, 3-sigma lower 0.0391
+  extreme u1 beta=2.0 ell=4 flux: Q_LB = 0.0950, 3-sigma lower 0.0934
+  extreme u1 beta=2.0 ell=6 flux: Q_LB = 0.0528, 3-sigma lower 0.0513
+  extreme z2 beta=0.3 ell=4 twist: Q_LB = 0.0022, 3-sigma lower 0.0009
+  extreme z2 beta=0.3 ell=6 tie: Q_LB = 0.0003, 3-sigma lower 0.0000
+  extreme z2 beta=0.3 ell=6 twist: Q_LB = 0.0005, 3-sigma lower 0.0000
+  extreme z2 beta=0.6 ell=4 twist: Q_LB = 0.0247, 3-sigma lower 0.0242
+  extreme z2 beta=0.6 ell=6 tie: Q_LB = 0.0170, 3-sigma lower 0.0106
+  extreme z2 beta=0.6 ell=6 twist: Q_LB = 0.0138, 3-sigma lower 0.0134
+  tie su2 beta=2.3 ell=6 sep=1: base frustration 0.21, switching std 0.081, one-cell change +0.001 +- 0.003, Q_LB_tie = 0.0000
+  tie z2 beta=0.3 ell=6 sep=1: base frustration 0.35, switching std 0.223, one-cell change -0.001 +- 0.005, Q_LB_tie = 0.0000
+  tie z2 beta=0.3 ell=8 sep=2: base frustration 0.35, switching std 0.135, one-cell change -0.003 +- 0.003, Q_LB_tie = 0.0000
+  tie z2 beta=0.6 ell=6 sep=1: base frustration 0.13, switching std 0.429, one-cell change +0.000 +- 0.096, Q_LB_tie = 0.0000
+  tie z2 beta=0.6 ell=8 sep=2: base frustration 0.94, switching std 0.079, one-cell change +0.000 +- 0.002, Q_LB_tie = 0.0000
+== gates ==
+  G0 gauge control max |shift|/err: 1.5387906184364626
+  G0: ok
+  U(1) beta 2 extreme pair is FAIL-like: False
+  Z2 beta 0.6 twist extreme pair is FAIL-like: True
+  (info, not a gate) Z2 beta 0.6 tie: ['tie not decided by one cell (no violation found)']
+  Z2 beta 0.3 twist extreme pair is PASS-like: True
+  (info, not a gate) Z2 beta 0.3 tie: ['tie not decided by one cell (no violation found)']
+  SU(2) beta 0.8: no conclusive FAIL and Q_cell small: True
+== verdicts (amended rules) ==
+  L conclusive FAIL: no violation found by the lower bound []
+  su2 beta=0.8 bg=calm [Q_cell, cell b=2]: no violation found (Q_cell small and shrinking)  ells=[4] {'Q_cell': [np.float64(0.024)]}
+  su2 beta=0.8 bg=typical [Q_cell, cell b=2]: no violation found (Q_cell small and shrinking)  ells=[4] {'Q_cell': [np.float64(0.01)]}
+  su2 beta=2.3 bg=calm [Q_cell, cell b=2]: no violation found (Q_cell small and shrinking)  ells=[4] {'Q_cell': [np.float64(0.462)]}
+  su2 beta=2.3 bg=typical [Q_cell, cell b=2]: no violation found (Q_cell small and shrinking)  ells=[4] {'Q_cell': [np.float64(0.247)]}
+  u1 beta=2.0 bg=calm [Q_cell, cell b=2]: INCONCLUSIVE  ells=[4] {'Q_cell': [np.float64(0.506)]}
+  u1 beta=2.0 bg=flux [Q_cell, cell b=2]: INCONCLUSIVE  ells=[4] {'Q_cell': [np.float64(0.709)]}
+  z2 beta=0.3 bg=calm [Q_cell, cell b=2]: no violation found (Q_cell small and shrinking)  ells=[4] {'Q_cell': [np.float64(0.474)]}
+  z2 beta=0.3 bg=twist [Q_cell, cell b=2]: no violation found (Q_cell small and shrinking)  ells=[4] {'Q_cell': [np.float64(0.335)]}
+  z2 beta=0.6 bg=calm [Q_cell, cell b=2]: INCONCLUSIVE  ells=[4] {'Q_cell': [np.float64(0.634)]}
+  z2 beta=0.6 bg=twist [Q_cell, cell b=2]: INCONCLUSIVE  ells=[4] {'Q_cell': [np.float64(0.612)]}
+  su2 beta=0.8 bg=typical [extreme pair vs calm]: PASS-like  ells=[4] {'J_centre': [0.003]}
+  su2 beta=2.3 bg=tie [extreme pair vs calm]: INCONCLUSIVE  ells=[6] {'J_centre': [0.023]}
+  su2 beta=2.3 bg=typical [extreme pair vs calm]: INCONCLUSIVE  ells=[4, 6] {'J_centre': [0.201, 0.05]}
+  u1 beta=2.0 bg=flux [extreme pair vs calm]: INCONCLUSIVE  ells=[4, 6] {'J_centre': [0.725, 0.337]}
+  z2 beta=0.3 bg=tie [extreme pair vs calm]: PASS-like  ells=[6] {'J_centre': [0.0]}
+  z2 beta=0.3 bg=twist [extreme pair vs calm]: PASS-like  ells=[4, 6] {'J_centre': [0.006, 0.001]}
+  z2 beta=0.6 bg=tie [extreme pair vs calm]: PASS-like  ells=[6] {'J_centre': [0.246]}
+  z2 beta=0.6 bg=twist [extreme pair vs calm]: FAIL-like  ells=[4, 6] {'J_centre': [0.787, 0.817]}
+  su2 beta=2.3 [tie]: tie not decided by one cell (no violation found)  ells=[6] {'delta': [0.001], 'frustration_base': [0.206]}
+  z2 beta=0.3 [tie]: tie not decided by one cell (no violation found)  ells=[6, 8] {'delta': [-0.001, -0.003], 'frustration_base': [0.348, 0.351]}
+  z2 beta=0.6 [tie]: tie not decided by one cell (no violation found)  ells=[6, 8] {'delta': [0.0, 0.0], 'frustration_base': [0.132, 0.945]}

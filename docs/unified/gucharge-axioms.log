@@ -1,0 +1,18 @@
+== build ProofPhase.General.GUCharge
+Build completed successfully (8925 jobs).
+== declarations: 12
+== axioms
+'ProofPhase.General.GU.fourierCoeff_char_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.addCircle_char' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.addCircle_char_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.toCircle_two_pi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.circle_char' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.circle_char_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.line_char' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.line_char_periodic_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.centre_char_mod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.zetaC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.coe_zetaC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.g0_charge_thirds' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/General/GUCharge.lean

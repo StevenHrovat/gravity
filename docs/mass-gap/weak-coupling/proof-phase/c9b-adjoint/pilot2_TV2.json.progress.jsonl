@@ -1,0 +1,19 @@
+{"stage": "background", "sweeps": 10, "elapsed": 7.7}
+{"stage": "background", "sweeps": 20, "elapsed": 13.2}
+{"stage": "background", "sweeps": 30, "elapsed": 18.8}
+{"stage": "background", "sweeps": 40, "elapsed": 23.8}
+{"stage": "background", "sweeps": 50, "elapsed": 28.6}
+{"stage": "background", "sweeps": 60, "elapsed": 33.6}
+{"stage": "background", "sweeps": 70, "elapsed": 38.5}
+{"stage": "background", "sweeps": 80, "elapsed": 43.4}
+{"stage": "background", "sweeps": 90, "elapsed": 49.9}
+{"stage": "background", "sweeps": 100, "elapsed": 55.5}
+{"stage": "background done", "elapsed": 55.5}
+{"stage": "mass", "kappa": 10.0, "t": 0.64, "elapsed": 56.2}
+{"stage": "tune block", "kappa": 10.0, "eps": 0.05, "nleap": 10, "acc": 0.0, "s_traj": 1.0883923768997192, "n": 10, "elapsed": 67.2}
+{"stage": "tune block", "kappa": 10.0, "eps": 0.025, "nleap": 20, "acc": 0.2, "s_traj": 1.6890262365341187, "n": 10, "elapsed": 84.6}
+{"stage": "tune block", "kappa": 10.0, "eps": 0.0125, "nleap": 40, "acc": 0.9, "s_traj": 3.284409523010254, "n": 10, "elapsed": 117.9}
+{"stage": "measure", "kappa": 10.0, "done": 10, "acc": 1.0, "s_traj": 3.0052796602249146, "elapsed": 148.5}
+{"stage": "measure", "kappa": 10.0, "done": 20, "acc": 0.95, "s_traj": 3.0019296407699585, "elapsed": 178.5}
+{"stage": "measure", "kappa": 10.0, "done": 30, "acc": 0.9333333333333333, "s_traj": 2.9542394876480103, "elapsed": 207.3}
+{"stage": "DONE", "elapsed": 207.3}

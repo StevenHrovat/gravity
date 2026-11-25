@@ -1,0 +1,78 @@
+{
+ "results": [
+  {
+   "group": "Z2",
+   "order": 2,
+   "classes": 2,
+   "hom2": 4,
+   "hom2_check": true,
+   "hom4": 16,
+   "twisted_pairs": 0,
+   "hom_tw": 0,
+   "F_inf": Infinity
+  },
+  {
+   "group": "Z4",
+   "order": 4,
+   "classes": 4,
+   "hom2": 16,
+   "hom2_check": true,
+   "hom4": 256,
+   "twisted_pairs": 0,
+   "hom_tw": 0,
+   "F_inf": Infinity
+  },
+  {
+   "group": "Q8",
+   "order": 8,
+   "classes": 5,
+   "hom2": 40,
+   "hom2_check": true,
+   "hom4": 736,
+   "twisted_pairs": 24,
+   "hom_tw": 96,
+   "F_inf": 2.03688192726104
+  },
+  {
+   "group": "2T",
+   "order": 24,
+   "classes": 7,
+   "hom2": 168,
+   "hom2_check": true,
+   "hom4": 5856,
+   "twisted_pairs": 24,
+   "hom_tw": 96,
+   "F_inf": 4.110873864173311
+  },
+  {
+   "group": "2O",
+   "order": 48,
+   "classes": 8,
+   "hom2": 384,
+   "hom2_check": true,
+   "hom4": 18816,
+   "twisted_pairs": 96,
+   "hom_tw": 384,
+   "F_inf": 3.8918202981106265
+  },
+  {
+   "group": "2I",
+   "order": 120,
+   "classes": 9,
+   "hom2": 1080,
+   "hom2_check": true,
+   "hom4": 76320,
+   "twisted_pairs": 120,
+   "hom_tw": 480,
+   "F_inf": 5.0689042022202315
+  }
+ ],
+ "checks": {
+  "orders": true,
+  "abelian_no_twist": true,
+  "hom2_eq_G_k": true,
+  "Q8_hom2_40": true,
+  "2I_hom2_1080": true,
+  "Q8_hom_tw_96": true
+ }
+}

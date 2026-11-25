@@ -1,0 +1,16 @@
+== build ProofPhase.Proof.Native
+Build completed successfully (8929 jobs).
+== same statements (no output before the axiom lines = accepted), then axioms (11 declarations)
+'ProofPhase.Proof.Native.SDG' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.SDG.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.SDG.impliesL_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.exists_middleG' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.crossG' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.ClauseLine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.WD.toSDG' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.mem_of_sensitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.width_ge'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.SD.toSDG' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Native.cross_any_system'' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Proof

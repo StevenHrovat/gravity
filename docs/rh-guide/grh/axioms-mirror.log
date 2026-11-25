@@ -1,0 +1,8 @@
+== build ProofPhase.GRH.Mirror
+Build completed successfully (3279 jobs).
+== axioms
+'ProofPhase.GRH.zeta_neg_one_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.eight_pi_sq_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.zeta_neg_one_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in Mirror.lean

@@ -1,0 +1,42 @@
+N=2 hops={1: 0.3} T=4.0: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 2)
+    c_k = Z_k/Z: [1.       0.983675]   gaps E_e - E_0: [0.  1.2]
+    N=2: elec(c) = 0.008229747, e^(-T gap) = 0.008229747
+N=3 hops={1: 0.3} T=4.0: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.922276 0.922276]   gaps E_e - E_0: [0.  0.9 0.9]
+N=4 hops={1: 0.2, 2: 0.05} T=3.0: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.639747 0.5348   0.639747]   gaps E_e - E_0: [0.  0.6 0.8 0.6]
+N=5 hops={1: 0.1, 2: 0.03} T=6.0: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.610342 0.420582 0.420582 0.610342]   gaps E_e - E_0: [0.       0.246738 0.403262 0.403262 0.246738]
+N=6 hops={1: 0.25} T=2.0: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.44659  0.109378 0.035018 0.109378 0.44659 ]   gaps E_e - E_0: [0.   0.25 0.75 1.   0.75 0.25]
+N=8 hops={1: 0.15, 3: 0.02} T=5.0: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.61424  0.271484 0.171453 0.136923 0.171453 0.271484 0.61424 ]   gaps E_e - E_0: [0.       0.156152 0.34     0.523848 0.68     0.523848 0.34     0.156152]
+
+== N = 5 to 11, generic hoppings (fixed seed)
+N=5 hops={1: 0.243, 2: 0.244} T=3.58: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.939027 0.939245 0.939245 0.939027]   gaps E_e - E_0: [0.       1.218618 1.216382 1.216382 1.218618]
+    centre Z_5: prime, no proper sub-centre
+N=6 hops={1: 0.093, 2: 0.026, 3: 0.121} T=3.04: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.358227 0.296506 0.65674  0.296506 0.358227]   gaps E_e - E_0: [0.    0.655 0.357 0.856 0.357 0.655]
+    centre Z_6: sub-centres Z_m for m in [2, 3]
+N=7 hops={1: 0.023, 2: 0.024, 3: 0.3} T=4.26: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.587015 0.45104  0.835003 0.835003 0.45104  0.587015]   gaps E_e - E_0: [0.       1.216582 0.373389 0.83903  0.83903  0.373389 1.216582]
+    centre Z_7: prime, no proper sub-centre
+N=8 hops={1: 0.078, 2: 0.136, 3: 0.293, 4: 0.27} T=5.22: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.996415 0.994972 0.996652 0.999636 0.996652 0.994972 0.996415]   gaps E_e - E_0: [0.       2.398056 1.286    1.789944 1.484    1.789944 1.286    2.398056]
+    centre Z_8: sub-centres Z_m for m in [2, 4]
+N=9 hops={1: 0.124, 2: 0.153, 3: 0.206, 4: 0.028} T=3.78: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.867351 0.868066 0.908918 0.832135 0.832135 0.908918 0.868066
+ 0.867351]   gaps E_e - E_0: [0.       1.037507 1.429583 0.915    1.21691  1.21691  0.915    1.429583
+ 1.037507]
+    centre Z_9: sub-centres Z_m for m in [3]
+N=10 hops={1: 0.089, 2: 0.265, 3: 0.029, 4: 0.207, 5: 0.262} T=2.14: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.753332 0.805487 0.746556 0.800189 0.898029 0.800189 0.746556
+ 0.805487 0.753332]   gaps E_e - E_0: [0.       2.273072 1.472764 2.536928 1.477236 1.52     1.477236 2.536928
+ 1.472764 2.273072]
+    centre Z_10: sub-centres Z_m for m in [2, 5]
+N=11 hops={1: 0.27, 2: 0.263, 3: 0.015, 4: 0.215, 5: 0.01} T=3.52: Z_e/Z_0 = e^(-T gap) True; 0 < Z_k < Z, Z_k = Z_(N-k) True; F unitary, F^2 = conjugation, F^4 = 1 True (order 4)
+    c_k = Z_k/Z: [1.       0.966248 0.965825 0.937124 0.937582 0.921423 0.921423 0.937582
+ 0.937124 0.965825 0.966248]   gaps E_e - E_0: [0.       1.178264 1.739288 1.766439 2.353518 1.465491 1.465491 2.353518
+ 1.766439 1.739288 1.178264]
+    centre Z_11: prime, no proper sub-centre

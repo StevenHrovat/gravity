@@ -1,0 +1,5 @@
+nq=8 npsi=32: k_A ~ 0.06159
+nq=12 npsi=48: k_A ~ 0.06209
+nq=16 npsi=64: k_A ~ 0.06227
+bracket: lower 0.05308 (test function), upper 1/(5 pi) = 0.06366
+nq=20 npsi=80: k_A ~ 0.06235 (7 s)

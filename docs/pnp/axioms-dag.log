@@ -1,0 +1,20 @@
+== build ProofPhase.Proof.Dag
+Build completed successfully (8927 jobs).
+== axioms (15 declarations)
+'ProofPhase.Proof.RD' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.rP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.fat' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Proof.mem_rP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.RD.toWD' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.RD.nl_inj' does not depend on any axioms
+'ProofPhase.Proof.RD.restr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.card_fat_rP_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.exists_heavy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.step_arith' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.thin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.size_width_aux' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.size_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.size_width_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.dag_size_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Proof

@@ -1,0 +1,61 @@
+  node m=4: h_up max 2.03839, L max 2.835 (float 2.03352) 6s
+  node m=24: h_up max 1.92279, L max 0.008 (float 1.92277) 39s
+  node m=44: h_up max 1.92025, L max 0.000 (float 1.92024) 71s
+  node m=64: h_up max 1.92035, L max 0.000 (float 1.92034) 103s
+  node m=84: h_up max 1.92045, L max 0.000 (float 1.92045) 141s
+  node m=104: h_up max 1.92056, L max 0.000 (float 1.92055) 177s
+  node m=124: h_up max 1.92067, L max 0.000 (float 1.92066) 212s
+  node m=144: h_up max 1.92077, L max 0.000 (float 1.92077) 246s
+  node m=164: h_up max 1.92088, L max 0.000 (float 1.92087) 280s
+beta=2 l=11 i=0 G=1024: certified kP <= 2.482483 (float 2.482467) 281s
+  node m=4: h_up max 2.03839, L max 2.835 (float 2.03352) 6s
+  node m=24: h_up max 1.85080, L max 0.007 (float 1.85078) 39s
+  node m=44: h_up max 1.84847, L max 0.000 (float 1.84847) 75s
+  node m=64: h_up max 1.84857, L max 0.000 (float 1.84856) 109s
+  node m=84: h_up max 1.84867, L max 0.000 (float 1.84867) 144s
+  node m=104: h_up max 1.84877, L max 0.000 (float 1.84877) 179s
+  node m=124: h_up max 1.84888, L max 0.000 (float 1.84887) 214s
+  node m=144: h_up max 1.84898, L max 0.000 (float 1.84897) 250s
+  node m=164: h_up max 1.84908, L max 0.000 (float 1.84907) 279s
+beta=2 l=11 i=1 G=1024: certified kP <= 2.421461 (float 2.421446) 281s
+  node m=4: h_up max 2.03839, L max 2.835 (float 2.03352) 5s
+  node m=24: h_up max 1.84842, L max 0.007 (float 1.84840) 34s
+  node m=44: h_up max 1.84605, L max 0.000 (float 1.84604) 61s
+  node m=64: h_up max 1.84614, L max 0.000 (float 1.84614) 89s
+  node m=84: h_up max 1.84624, L max 0.000 (float 1.84624) 116s
+  node m=104: h_up max 1.84635, L max 0.000 (float 1.84634) 144s
+  node m=124: h_up max 1.84645, L max 0.000 (float 1.84644) 171s
+  node m=144: h_up max 1.84655, L max 0.000 (float 1.84655) 198s
+  node m=164: h_up max 1.84665, L max 0.000 (float 1.84665) 226s
+beta=2 l=11 i=2 G=1024: certified kP <= 2.419398 (float 2.419382) 227s
+  node m=4: h_up max 2.03839, L max 2.835 (float 2.03352) 5s
+  node m=24: h_up max 1.84842, L max 0.007 (float 1.84840) 32s
+  node m=44: h_up max 1.84601, L max 0.000 (float 1.84600) 59s
+  node m=64: h_up max 1.84610, L max 0.000 (float 1.84610) 86s
+  node m=84: h_up max 1.84620, L max 0.000 (float 1.84620) 115s
+  node m=104: h_up max 1.84631, L max 0.000 (float 1.84630) 142s
+  node m=124: h_up max 1.84641, L max 0.000 (float 1.84640) 170s
+  node m=144: h_up max 1.84651, L max 0.000 (float 1.84650) 198s
+  node m=164: h_up max 1.84661, L max 0.000 (float 1.84661) 225s
+beta=2 l=11 i=3 G=1024: certified kP <= 2.419364 (float 2.419348) 226s
+  node m=4: h_up max 2.03839, L max 2.835 (float 2.03352) 5s
+  node m=24: h_up max 1.84842, L max 0.007 (float 1.84840) 32s
+  node m=44: h_up max 1.84600, L max 0.000 (float 1.84600) 59s
+  node m=64: h_up max 1.84610, L max 0.000 (float 1.84610) 87s
+  node m=84: h_up max 1.84620, L max 0.000 (float 1.84620) 113s
+  node m=104: h_up max 1.84631, L max 0.000 (float 1.84630) 141s
+  node m=124: h_up max 1.84641, L max 0.000 (float 1.84640) 168s
+  node m=144: h_up max 1.84651, L max 0.000 (float 1.84650) 196s
+  node m=164: h_up max 1.84661, L max 0.000 (float 1.84661) 224s
+beta=2 l=11 i=4 G=1024: certified kP <= 2.419363 (float 2.419348) 225s
+  node m=4: h_up max 2.03839, L max 2.835 (float 2.03352) 5s
+  node m=24: h_up max 1.84842, L max 0.007 (float 1.84840) 32s
+  node m=44: h_up max 1.84600, L max 0.000 (float 1.84600) 59s
+  node m=64: h_up max 1.84610, L max 0.000 (float 1.84610) 85s
+  node m=84: h_up max 1.84620, L max 0.000 (float 1.84620) 113s
+  node m=104: h_up max 1.84631, L max 0.000 (float 1.84630) 139s
+  node m=124: h_up max 1.84641, L max 0.000 (float 1.84640) 165s
+  node m=144: h_up max 1.84651, L max 0.000 (float 1.84650) 190s
+  node m=164: h_up max 1.84661, L max 0.000 (float 1.84661) 220s
+beta=2 l=11 i=5 G=1024: certified kP <= 2.419363 (float 2.419348) 222s
+beta=2 l=11: certified gamma <= 0.9061659606

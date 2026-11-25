@@ -1,0 +1,16 @@
+QUEUE START (waiting for Leg C) 2026-11-22T00:13:33
+QUEUE STOPPED by the coordinator while waiting (no run started): restarted without -AddendumW (four-move addendum now about 2.4 h; run only if the main run shows a small margin) 2026-11-22T00:54:35
+QUEUE START (waiting for Leg C) 2026-11-22T00:54:35
+Leg C done, GPU free of blocked.py/boundary.py; starting 2026-11-22T05:27:49
+selftest --gpu OK (path=fused)
+PROJECTED TOTAL 19.68 h (GPU, path fused)
+QUEUE STOPPED by the coordinator after the bench (pre-registered rule: projection above 7 h, coordinator decides): PROJECTED TOTAL 19.68 h against 5.2 h; per-sweep floor about 0.5 s against the assumed 25 ms. Stopped during the photon-gate run u1_b1.1_L4 (no result kept). The refit runs first; the act number reruns after the per-sweep overhead is fixed. 2026-11-22T05:42:34
+QUEUE START (waiting for Leg C) 2026-11-22T11:57:08
+Leg C done, GPU free of blocked.py/boundary.py; starting 2026-11-22T12:00:08
+selftest --gpu OK (path=fused)
+PROJECTED TOTAL 1.46 h (GPU, path fused)
+u1_b1.1_L4 (attempt 1) exit 0 minutes 0
+u1_b1.1_L6 (attempt 1) exit 0 minutes 0
+u1_b1.1_L8 (attempt 1) exit 0 minutes 1
+u1_b1.1_L10 (attempt 1) exit 0 minutes 1
+PHOTON GATE FAILED: queue stopped before SU(2) 2026-11-22T12:06:20

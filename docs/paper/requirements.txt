@@ -1,0 +1,6 @@
+# Python packages for the computations of the paper (docs/paper/REPRODUCE.md). Versions as used for the committed logs.
+python-flint==0.9.0
+numpy==2.5.4
+scipy==1.18.1
+mpmath==1.3.0
+sympy==1.14.0

@@ -1,0 +1,44 @@
+== Part A: 2D SU(2) on a torus, the hyperbolic ledger without an outside [classical formulas, numerical]
+beta=      1.0  sigma/plaq=1.426309  self-dual area A_h=0.584477  O1 area=1.335441  ratio=2.284848
+    1 hand-over box(es) in series: c=0.414214  F_e=0.881374  k*0.881=0.881374  loss per join=+0.000e+00  clears O1: False
+    2 hand-over box(es) in series: c=0.685664  F_e=1.679452  k*0.881=1.762747  loss per join=+8.330e-02  clears O1: False
+    3 hand-over box(es) in series: c=0.848744  F_e=2.503285  k*0.881=2.644121  loss per join=+7.042e-02  clears O1: True
+    max loss per join over areas 0.05..6 A_h: +9.983e-02  (threshold for three boxes: 0.244)
+beta=      2.3  sigma/plaq=0.735472  self-dual area A_h=1.115112  O1 area=2.590315  ratio=2.322920
+    1 hand-over box(es) in series: c=0.414214  F_e=0.881374  k*0.881=0.881374  loss per join=+0.000e+00  clears O1: False
+    2 hand-over box(es) in series: c=0.678692  F_e=1.653369  k*0.881=1.762747  loss per join=+1.094e-01  clears O1: False
+    3 hand-over box(es) in series: c=0.842944  F_e=2.462516  k*0.881=2.644121  loss per join=+9.080e-02  clears O1: True
+    max loss per join over areas 0.05..6 A_h: +1.390e-01  (threshold for three boxes: 0.244)
+beta=      4.0  sigma/plaq=0.418479  self-dual area A_h=1.944628  O1 area=4.554618  ratio=2.342153
+    1 hand-over box(es) in series: c=0.414214  F_e=0.881374  k*0.881=0.881374  loss per join=-2.220e-16  clears O1: False
+    2 hand-over box(es) in series: c=0.675088  F_e=1.640068  k*0.881=1.762747  loss per join=+1.227e-01  clears O1: False
+    3 hand-over box(es) in series: c=0.840113  F_e=2.443117  k*0.881=2.644121  loss per join=+1.005e-01  clears O1: True
+    max loss per join over areas 0.05..6 A_h: +1.654e-01  (threshold for three boxes: 0.244)
+beta=      8.0  sigma/plaq=0.199367  self-dual area A_h=4.065213  O1 area=9.563466  ratio=2.352513
+    1 hand-over box(es) in series: c=0.414214  F_e=0.881374  k*0.881=0.881374  loss per join=+0.000e+00  clears O1: False
+    2 hand-over box(es) in series: c=0.673113  F_e=1.632828  k*0.881=1.762747  loss per join=+1.299e-01  clears O1: False
+    3 hand-over box(es) in series: c=0.838610  F_e=2.432944  k*0.881=2.644121  loss per join=+1.056e-01  clears O1: True
+    max loss per join over areas 0.05..6 A_h: +1.829e-01  (threshold for three boxes: 0.244)
+beta=     32.0  sigma/plaq=0.047613  self-dual area A_h=16.999932  O1 area=40.048433  ratio=2.355800
+    1 hand-over box(es) in series: c=0.414214  F_e=0.881374  k*0.881=0.881374  loss per join=+0.000e+00  clears O1: False
+    2 hand-over box(es) in series: c=0.672489  F_e=1.630548  k*0.881=1.762747  loss per join=+1.322e-01  clears O1: False
+    3 hand-over box(es) in series: c=0.838130  F_e=2.429713  k*0.881=2.644121  loss per join=+1.072e-01  clears O1: True
+    max loss per join over areas 0.05..6 A_h: +1.886e-01  (threshold for three boxes: 0.244)
+beta=continuum  sigma/plaq=0.375000  self-dual area A_h=2.158270  O1 area=5.084845  ratio=2.355982
+    1 hand-over box(es) in series: c=0.414214  F_e=0.881374  k*0.881=0.881374  loss per join=+1.110e-16  clears O1: False
+    2 hand-over box(es) in series: c=0.672455  F_e=1.630422  k*0.881=1.762747  loss per join=+1.323e-01  clears O1: False
+    3 hand-over box(es) in series: c=0.838104  F_e=2.429533  k*0.881=2.644121  loss per join=+1.073e-01  clears O1: True
+    max loss per join over areas 0.05..6 A_h: +1.890e-01  (threshold for three boxes: 0.244)
+
+== Part B: genus-2 curve over F_p, Szego steps from point counts alone [Weil's theorem; numerical]
+p=  7 f=[1, 2, 0, 3, 0, 1] N1=11 N2=53 (a1=3, e2=6)  |atoms|=[1. 1. 1. 1.]
+    |k_m| (Szego on the atom moments) = [0.283473354757, 0.203883495146, 0.658389727177, 1.0]
+p= 11 f=[3, 1, 4, 1, 5, 1] N1=11 N2=147 (a1=-1, e2=13)  |atoms|=[1. 1. 1. 1.]
+    |k_m| (Szego on the atom moments) = [0.075377836144, 0.577142857143, 0.115797835236, 1.0]
+p= 13 f=[2, 7, 1, 8, 2, 1] N1=10 N2=162 (a1=-4, e2=4)  |atoms|=[1. 1. 1. 1.]
+    |k_m| (Szego on the atom moments) = [0.277350098113, 0.083333333333, 0.93290487547, 1.0]
+p= 31 f=[5, 0, 2, 0, 9, 1] N1=25 N2=1021 (a1=-7, e2=54)  |atoms|=[1. 1. 1. 1.]
+    |k_m| (Szego on the atom moments) = [0.314309278547, 0.637583892617, 0.453429778887, 1.0]
+
+== Part B control: a fake atom set: one on-circle pair plus an off-circle quartet (|beta| = 1.15 and 1/1.15)
+    |k_m| = [0.084909, 0.292354, 0.552753, 1.21067, 0.556629, 1.0]   (a step with |k| > 1 overdraws the margin)

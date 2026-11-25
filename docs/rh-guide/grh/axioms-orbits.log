@@ -1,0 +1,12 @@
+== build ProofPhase.GRH.Orbits
+Build completed successfully (1982 jobs).
+== axioms
+'ProofPhase.GRH.card_fixed_pow_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.similitude_eigenvalue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.skew_shift_re_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.kreinForm_hermitian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.kreinForm_indefinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.krein_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.krein_off_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in Orbits.lean
