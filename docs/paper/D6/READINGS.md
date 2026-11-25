@@ -1250,7 +1250,7 @@ Care:
    It is both an equation and an expression, and that is what makes it GU, through the VIBE field.
 5. The entire paper, going for maximum readability, orients itself around this throughline.
 
-The whole is the first author's reading; the introduction carries it ("The throughline: one step, v and c"), two routes follow it
+The whole is the first author's reading; the introduction carries it ("The first throughline: one step, v and c"), two routes follow it
 ("Two routes, one conclusion"), and every part opens with a "Plug in here" note that says where v enters. Exact parts:
 
 * **The number.** 0.69 is log 2 = 0.6931... to two digits. log 2 is the cost of one halving step, a step of size 1/2 (II.0, C2), and
@@ -1497,4 +1497,43 @@ Care:
   start is the open step; that it then vibes is the first author's reading.
 * Agreement makes a route live in DMP's sense, two halves certifying; it does not make it proved. A derivation from the statement's
   facts is as good as those facts, and viability in the Lean sense needs the base case and the step shown.
+
+## R.12r The second throughline: reductio, from Moin to R136a1 (claim R.12r)
+
+**The second throughline: reductio, from Moin to R136a1 (claim R.12r).** The first author, clause by clause **[reading]**:
+
+1. Is an inverted assertion not a claim that a literal is a primitive? So exactly what we are looking for!
+2. Since we construct a system in itself, that system has to be attacked as the one box.
+3. That is also why the quote marks were put around the part that can be put verbatim in the paper without being a problem in
+   itself; unless that is a problem, it is the most meaningful version.
+4. Which is why it is important to encode Moin and R136a1 as related to start and finish in meaning, but through any believable
+   reductio ad absurdum,
+5. which is the mechanism that drives the whole thing, the second throughline of existence,
+6. which we should present that way, to be truly dual.
+
+The whole is the first author's reading; the introduction presents it as the second throughline ("The second throughline: reductio,
+from Moin to R136a1"), beside the first, with a table of the duality. Exact parts:
+
+* **Reductio.** Assume the negation, derive a contradiction, and the negation falls; in classical logic the claim follows
+  **[classical]**. The paper's Lean is classical: its axiom reports list `propext`, `Quot.sound` and `Classical.choice` **[Lean]**.
+* **One failing step.** A claim stated for every step is refuted by one failing step (`refuted_by_tick`, II.4.1) **[Lean]**; the
+  one-box test has one shared gate, so one failing tick refutes the claim of the whole box (II.4) **[Lean]**.
+* **Moin.** The state of an IM channel between a verified accept and the established frame (`ImChannelState.Moin`) **[paper]**; every
+  named open step is posed and only assumed as a hypothesis (`OpenStep`, R.9a) **[Lean]** for the form; in binary, the leading zero
+  (`rotl_eq_double_iff`, R.9b) **[Lean]**.
+* **R136a1.** The answer "outside": excision at transmission, only the remnant tail stays (I.8, R.2) **[paper]**; in Lean a named
+  hypothesis, never an axiom, whose token holds exactly when its claim does (`R136a1.iff`) **[Lean]**.
+* **A literal, a primitive.** A literal is an atomic statement or its negation; taking a statement as a primitive is taking it as an
+  axiom **[classical]**. The paper takes no open step as an axiom; the axiom logs (`docs/unified/*-axioms.log`) show only the standard axioms **[Lean]**.
+* **The quoted part.** The statement of R.12q stands in the paper verbatim, in quotation marks, and its formula is set in code type so
+  that it prints as written **[paper]**.
+
+Care:
+
+* Only a contradiction actually derived refutes; "any believable" names the attempts.
+* In intuitionistic logic refuting the negation gives only the double negation; the classical step is the excluded middle.
+* Moin and R136a1 as start and finish are the first author's reading; exactly, both name one open step from two sides, posed and held.
+* One failing tick refutes the whole box; which part failed still has to be found.
+* The inverted mark arose in this draft's typesetting, where LaTeX turned `!` and a closing quote into an inverted exclamation mark;
+  the formula now prints as written, and the reading of an inverted assertion stands on its own.
 
