@@ -39,7 +39,7 @@ It leaves four things open.
   four-dimensional lattice after the neutral excess act, **F_e(L) - 2C > log mu_4 = 1.91**, with C a bound on the excess act c(L)
   on every multiple of L (III.3, III.5.8). That is a sufficient route to the one-box sum, not a necessary one, and F_e(L) in it is
   the torus free energy of III.3; "uniformly over every well-defined outside" is the content of the Lean form, and for the number it
-  is a heuristic (III.5.7). As E = mc^2 is E^2 = (pc)^2 + (mc^2)^2 with the momentum term dropped (a **[reading]**), the familiar
+  is a heuristic (III.5.7). The familiar
   form drops the excess act and reads F_e(L) > 1.91 (twist ratio r(L) > 0.74); it is weaker and alone does not give the chain
   (III.5.8). In effective-string units the familiar form asks for a box of side L sqrt(sigma) of about 1.7 to 1.8 (III.7.4,
   model evaluation, **[numerical]**); the full form asks for at least that.
@@ -493,18 +493,23 @@ itself **[open]** (claim III.10e).
 ## III.13 O1 as a Perelman-typed interface
 
 *New in Draft 6.* The first author reads O1 as constructable as a PP (Perelman-Poincare) typed, Yang-Mills shaped interface API
-(R.11e). Draft 6 builds it **[Lean]** (`ProofPhase/API/Perelman.lean`, axioms in `docs/unified/perelman-axioms.log`).
+(R.11e). Draft 6 builds it **[Lean]** (`ProofPhase/API/Perelman.lean`, axioms in `docs/unified/perelman-axioms.log`). It is called
+the counting ledger below, to keep it apart from the ledger law of II.1 and the claims ledger.
 
-**The ledger as a type (claim III.13a).** Appendix A reads Perelman's proof as a ledger (A.1). The interface takes the part that
-counts. Along the steps there is a quantity W, non-decreasing and bounded above, and a quantum q > 0 that W gains at every step where
-the statement fails, a boundary event (`Ledger`). From these, the statement holds at every step from some step on
-(`Ledger.eventually`) **[Lean]**. This is the counting of Perelman's finite-surgery argument, with care: there the count runs on a
-finite interval [0, T] and on volume, each surgery removing at least a definite volume of a bounded total, which is a different
-quantity from the monotone W-entropy (A.1c); here W plays the role of the cumulative volume removed, over all steps. The ledger type
-accepts exactly the statements that hold from some step on and rejects those that fail at arbitrarily late steps (`no_ledger`)
-**[Lean]**. Two toys illustrate it: the sequence 1 - 1/(k + 2), called a one-box sum only for the illustration, tends to 1 and has no
-ledger for "at most Γ" with any Γ < 1 (`gapless_rejected`); a constant sum at most its bound has one (`gapped_accepted`). The free
-photon of R.11e is not modelled in the Lean.
+**Two toys first.** Take a sequence of numbers and the statement "at step k the number is at most Γ", with Γ < 1. The sequence
+1 - 1/(k + 2) tends to 1, so it exceeds every such Γ from some step on: the statement fails at arbitrarily late steps, and the
+interface rejects it (`gapless_rejected`). A constant sequence at most its bound never fails, and the interface accepts it
+(`gapped_accepted`) **[Lean]**. These sequences are called one-box sums only for the illustration; the free photon of R.11e is not
+modelled in the Lean.
+
+**The counting ledger as a type (claim III.13a).** Perelman's finite-surgery argument counts: each surgery removes at least a definite
+volume, the volume is bounded, so on a finite interval [0, T] there are finitely many surgeries (A.1, the row "number of steps").
+The interface takes exactly that count. Along the steps there is a quantity W, non-decreasing and bounded above, and a quantum q > 0
+that W gains at every step where the statement fails, a boundary event (`Ledger`). From these, the statement holds at every step from
+some step on (`Ledger.eventually`) **[Lean]**. Care: in Perelman's proof the count runs on [0, T] and on volume, a different quantity
+from the monotone W-entropy (A.1c); here W plays the role of the cumulative volume removed, over all steps. The type accepts exactly
+the statements that hold from some step on and rejects those that fail at arbitrarily late steps (`no_ledger`) **[Lean]**; the two
+toys above are one of each.
 
 **Typed for the Yang-Mills box (claim III.13b).** The steps are the lattice levels, and the statement at level k is the one-box
 criterion of `FineOneBox` in every volume, with the shared cell geometry and constants (`BoxAt`, `Interface`) **[Lean]**:

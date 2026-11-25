@@ -5,9 +5,32 @@ Lean: IM, `arsenal/core/ArsenalCore/Matrix.lean` (IM `c441ed5`) and `Optimizer.l
 IM's `tools/rebuild matrix` (with `--optimize` from IM `e9a4057`) and `tools/rebuild check`. Claim labels (E.n) are listed in
 `../CLAIMS.md`.*
 
+**What this appendix shows, in one table and four lines.** The three parts of this project, the DMP specification, IM (the companion
+repository with the shared Lean results) and Gravity (this repository), each prove the parts they use:
+
+| proves → | IM | Gravity | DMP |
+|---|---|---|---|
+| **IM** | + | + | + |
+| **Gravity** | + | + | + |
+| **DMP** | · | · | . |
+
+Here `+` means the row uses the column and the use is proven; `·` means no proof relates the two (it reflects positively); `.` means
+the part includes nothing and settles by `!` alone (E.11). Every used cell is proven. The optimizer then asks of every use whether
+it is needed and finds one that is not (E.9):
+
+```
+use: im@966a016 -> dmp@1370dc0  ? answered by .: redundant, already included through gravity@4ec1131
+optimizer: NOT SETTLED, 1 of 5 uses redundant: the optimized form removes them (5 versions)
+```
+
+The sections below define the table (E.0.1) and its mirror, the optimizer (E.0.2), then measure what Draft 5 established (E.1 to E.8)
+and apply the optimizer (E.9 to E.11). Versions are written by a short name and a commit id: DMP 0.9.6 is `1370dc0`, DMP 0.9.9 is
+`4400cce`; Gravity and IM versions are named by their commit.
+
 Every table here has the parts as its rows and columns; the cell of a row and a column says whether the row proves the column, that is,
 that the use is proven, not that the row ran the proof. A cell where the row uses the column must be `+`; a `·` cell, where no proof
-relates the two, reflects positively; a current part's own cell is a use, an earlier version's is `·` (E.0.1).
+relates the two, reflects positively; a current part's own cell is a use, an earlier version's is `·` (E.0.1). The glyphs `·` (no
+relation) and `.` (includes nothing) are different marks: `·` is a centred dot, `.` a full stop.
 
 ## E.0.1 The explanation mechanism: a k by k table of proofs
 
@@ -151,13 +174,14 @@ satisfaction open. Derivation makes a cell `+` only along a chain of cells alrea
 no cell from which such a chain reaches O1, which is its one open step (Part X) **[paper]**; and a derived cell explains rather than
 proves **[reading]** (claim E.6). So Draft 6 adds no proof of its own; O1 stays the one open step.
 
-## E.7 DMP's statement, and the drafts as a library
+## E.7 DMP's statement
 
 **DMP's statement (claim E.7).** The first author: DMP's statement is only `.`, since it can include **[reading]**. Exactly: by
 repository DMP uses nothing, its row is empty, and every other part includes it (`dmp_only_included`) **[Lean]**; in E.2 its row is all
-`·` and its column all `+` **[paper]**. Under this reading DMP makes no statement for a round trip to prove; the matrix tool still
-marked DMP's own cell `-`, since DMP is a current part without a round trip of its own (E.3); since IM `e9a4057` it marks it `.`
-(E.11).
+`·` and its column all `+` **[paper]**. Under this reading DMP makes no statement for a round trip to prove; DMP's own cell is `.` (E.11); before IM `e9a4057` the matrix tool marked it `-`, as a current part without a round trip of its own
+(E.2, E.3).
+
+## E.8 The drafts as a library
 
 **The drafts as a library (claim E.8).** The first author: the Dx papers act as additional readings that keep their transitive
 property to G0 at Draft 4, our own extensible library of D-grade tools and insight **[reading]**. Exactly: each draft grows from the
@@ -211,4 +235,4 @@ DMP, the 3 by 3 passes **[paper]** (claim E.11):
 | **Gravity** | + | + | + |
 | **DMP** | · | · | . |
 
-This replaces the `-` of E.2, E.3 and E.7: DMP's statement `.` (E.7) is now what its own cell shows.
+This replaces the `-` of E.2 and E.3: DMP's statement `.` (E.7) is now what its own cell shows.

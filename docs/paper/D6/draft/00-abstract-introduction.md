@@ -1,6 +1,6 @@
 # Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
-*Draft 6, the ETM as the ODP running DMP; machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
+*Draft 6, the ETM as the ODP running DMP (the Existence Turing Machine as the Oscillon Degradation Protocol running DMP); machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
 X) are conditional on it. Claim labels (0.n) are listed in `../CLAIMS.md`.*
 
 ## Personal note by the first author
@@ -79,7 +79,9 @@ No problem is solved here, and O1 is open.
 
 **How to read on.** Press on the three toys until each closes (Appendix T), then mint the parts from the template: Part II builds the
 machine around these four points, Parts III to IX apply it one problem at a time, Part X compares them. The first author's vocabulary
-(DMP, G0, ODP, ETM and the operators `?`, `!`, `.`) is collected in I.8; every reading is marked **[reading]** and sits next to its exact
+is collected in I.8: DMP, the framework; G0, its ground; the ODP (Oscillon Degradation Protocol), pressing then minting; the ETM
+(Existence Turing Machine), the one running system; and three operators, `?` (does it exist), `!` (settled by a certificate anyone can
+check) and `.` (included). IM is the companion repository that holds the arsenal of shared Lean results; Gravity is this one; every reading is marked **[reading]** and sits next to its exact
 counterpart. Draft 6's additions come last (E.0.1, E.0.2, R.11, R.12).
 
 <!-- latex
@@ -367,7 +369,7 @@ alone: a part is added by its own row, column and cell, and nothing already prov
 chain of cells already in the table; where the row does not use the column the cell reflects positively, and where every use points to
 an earlier part no chain of uses returns **[Lean]** (E.0.1). Appendix E applies it to what Draft 5 measured: the versions of DMP,
 Gravity and IM form such a DAG, every use proven; the two kernels accept every target; Draft 5 establishes no chain of `+` cells that
-reaches the one open step O1 (E.6); and the drafts form a library that reaches G0 at Draft 4 from every later draft (E.7).
+reaches the one open step O1 (E.6); and the drafts form a library that reaches G0 at Draft 4 from every later draft (E.8).
 
 Draft 6 also adds the mechanism's mirror and *the Possibility Space*, the first author's first subtitle for this draft. The optimizer removes every use that the table
 already includes through another chain, which is the transitive reduction of a DAG; in Lean on the kernel alone it keeps every

@@ -299,24 +299,48 @@ hidden variable is a floor.
 
 ## II.4 The one-box test
 
-**The one-box test.** The author's sharpening: a box needs no outside, because every confinement has one shared gate at the DB. It
+**The reading.** The author's sharpening: a box needs no outside, because every confinement has one shared gate at the DB. It
 needs one command, step forward, the universal tick, which can simulate everything. If the step produces the wrong R136a1 marker,
-the box is not DMP-complete; if the marker is correct, it is **[reading]**. In Lean (the rotation API, in IM's arsenal, `Arsenal/Rotation.lean`, with the running-system version in
-`ETM/Rotation.lean`): a box has one command, a gate factor, a margin and a marker per step, inside or R136a1; the marker is correct when it agrees with the gate's own factor, and
-DMP-complete means correct at every tick **[Lean]** (claim II.4a). The outside is read through the same gate by the half-turn: in the
-generic API the agreement of the two readings is the gate's law (a field of `Box.Gate`), and in the plaquette layer it is proved: for a
-closed Z/2 layer the flux read from a box and from its complement agree **[Lean]** (claim II.4b). Care point: the test has content
-only when the marker is the system's own claim; a marker read off the gate afterwards always passes **[Lean]** (claim II.4c). What
-the test gives for each card is in III.12 (Yang-Mills), IV.8 (GRH), V.10 (P vs NP), VI.8 (the model Navier-Stokes box), VII.8
-(BSD), VIII.8 (Hodge), IX.8 (GU), and Part X 4.4. The one-box certificate (one step at the shared gate certifies every tick), the scale certificate from the sharing,
-and the universal machine as a box are stated with the one assumption in Part X 4.4 (claims X.68 to X.68c) **[Lean]**. Rigidity is
-one-box testable too: a manifold's presentations with its self-equivalences acting make a box that is DMP-complete exactly when the
-manifold is rigid (rigid here is the structure-set condition: every presentation is the manifold seen through a self-equivalence; its
-identification with a given manifold is the user's input), and the manifold is rigid if its box shares the gate with a certified box,
-the sharing being the named hypothesis R136a1 "the gate is shared across scales", never proved (IM, `Arsenal.Rigidity`) **[Lean]**
-(claim II.4d; G2 in Appendix A.5). Every card is also a box: the tick box passes exactly when the statement of every tick holds,
-and the card box exactly when the card's open step holds, and then gives the card's conclusion; it restates the step and proves no
-new bound **[Lean]** (`ETM/CardBox.lean`, claim II.4e).
+the box is not DMP-complete; if the marker is correct, it is **[reading]**.
+
+**The definition.** In Lean (the rotation API, in IM's arsenal, `Arsenal/Rotation.lean`, with the running-system version in
+`ETM/Rotation.lean`): a box has one command, a gate factor, a margin and a marker per step, inside or R136a1; the marker is correct
+when it agrees with the gate's own factor, and DMP-complete means correct at every tick **[Lean]** (claim II.4a). The smallest example
+is the verify toy: on 8-bit words stepping by 2 with the marker "even" the box is DMP-complete, stepping by 1 it is refuted at tick 1
+(T.1 to T.3).
+
+**The outside.** The outside is read through the same gate by the half-turn: in the generic API the agreement of the two readings is
+the gate's law (a field of `Box.Gate`), and in the plaquette layer it is proved: for a closed Z/2 layer the flux read from a box and
+from its complement agree **[Lean]** (claim II.4b).
+
+**The care point.** The test has content only when the marker is the system's own claim; a marker read off the gate afterwards always
+passes **[Lean]** (claim II.4c).
+
+**Where each problem's box is treated.**
+
+| Problem | Section | Its box |
+|---|---|---|
+| Yang-Mills | III.12 | the gate factor is the best one-box ratio at each lattice level |
+| GRH | IV.8 | the card box of its open step |
+| P vs NP | V.10 | the card box of its open step |
+| Navier-Stokes | VI.8 | the model box, built from the energy bound alone |
+| BSD | VII.8 | the card box of its open step |
+| Hodge | VIII.8 | the card box of its open step |
+| GU | IX.8 | the tick box of charge quantisation |
+| all, with the one assumption | Part X 4.4 | the one-box and scale certificates |
+
+**The certificates.** The one-box certificate (one step at the shared gate certifies every tick), the scale certificate from the
+sharing, and the universal machine as a box are stated with the one assumption in Part X 4.4 (claims X.68 to X.68c) **[Lean]**.
+
+**Rigidity as a box.** Rigidity is one-box testable too: a manifold's presentations with its self-equivalences acting make a box that
+is DMP-complete exactly when the manifold is rigid (rigid here is the structure-set condition: every presentation is the manifold seen
+through a self-equivalence; its identification with a given manifold is the user's input), and the manifold is rigid if its box shares
+the gate with a certified box, the sharing being the named hypothesis R136a1 "the gate is shared across scales", never proved (IM,
+`Arsenal.Rigidity`) **[Lean]** (claim II.4d; G2 in Appendix A.5).
+
+**Cards as boxes.** Every card is also a box: the tick box passes exactly when the statement of every tick holds, and the card box
+exactly when the card's open step holds, and then gives the card's conclusion; it restates the step and proves no new bound **[Lean]**
+(`ETM/CardBox.lean`, claim II.4e).
 
 ### II.4.1 Restatement and induction: the front door
 

@@ -290,7 +290,9 @@ conclusion (Part X).
 
 ## IV.8 The box in the one-box test
 
-**Gate factor and marker.** The ticks are the scales, each carrying the margin to the next. The first author reads each scale as one, and so
+**Gate factor and marker.** In the Lean the box is the card box of the open step (`cardBox`): its ticks are `0, 1, 2, ...` and every
+tick carries the same statement, `ScaleSign`; the identification of the ticks with the scales below is the paper's reading of that
+statement and is not in the Lean. The ticks are the scales, each carrying the margin to the next. The first author reads each scale as one, and so
 as existence itself **[reading]**. At each scale the gate reads inside when the margin is carried to the next
 scale with a nonnegative factor, the sign at that scale; the marker is the claim "inside". The box of a finite zero model passes
 exactly when the sign holds at every scale, the card's open step (`ScaleSign`) **[Lean]** (`grh_box_iff`, `ETM/CardBox.lean`; claim IV.8a). For a
