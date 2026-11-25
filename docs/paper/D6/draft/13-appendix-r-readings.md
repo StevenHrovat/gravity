@@ -11,15 +11,15 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 161 in all; the
-ledger's count table counts 136, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 162 in all; the
+ledger's count table counts 137, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
 |---|---|---|
 | Introduction | 0.13, 0.21 | 2 |
 | Part I, DMP's vocabulary | I.1, I.2, I.3, I.4b, I.5a, I.7b, I.7c | 7 |
-| Part II, the machine | II.0h (decidability over every truly possible state), II.0i (multiplicative steps simplified into additive complex ones), II.3.4, II.4f, II.12.5r, II.13.4 (a maximum over sectors as a rotation of a rate along a path), II.0.2b (the k by k table as the explanation mechanism), II.0.2c (the `·` cells and the DAG), II.0.3b, II.0.3c (the optimizer as the Arsenal's mirror; existence as settledness), II.0.4b to II.0.4e (the possibility space), II.0.5a to II.0.5f (the ETM as the ODP running DMP) | 20 |
+| Part II, the machine | II.0h (decidability over every truly possible state), II.0i (multiplicative steps simplified into additive complex ones), II.3.4, II.4f, II.12.5r, II.13.4 (a maximum over sectors as a rotation of a rate along a path), II.0.2b (the k by k table as the explanation mechanism), II.0.2c (the `·` cells and the DAG), II.0.3b, II.0.3c (the optimizer as the Arsenal's mirror; existence as settledness), II.0.4b to II.0.4e (the possibility space), II.0.5a to II.0.5g (the ETM as the ODP running DMP) | 21 |
 | Part III, Yang-Mills (III.10) | III.7.4c, III.9.5b, III.10, III.13c (the `+-` assignment through the PP-typed interface) | 4 |
 | Part IV, GRH | IV.1.5c (the explicit formula as one turn), IV.2.5b, IV.2.7, IV.6 | 4 |
 | Part V, P vs NP (V.8) | V.2.4, V.4.1, V.4.2, V.5.3, V.8 | 5 |
@@ -76,6 +76,7 @@ reading").
 | The universal certificate is always `+1`, 1 = 1; 0 and 1 forced into one, the lower one excised; a truly rigorous proof is vacuous | `rfl`; proof irrelevance, a proof contentless as an object; the zero ring **[classical]**, **[Lean]**; not vacuous in the logical sense | II.0.5d |
 | The essence as one input of the size c; the O1 input "Is the speed of light measurable?", always yes, never existence; set theory onto arithmetic, running at 1 | the zero ring **[Lean]**; c defined since 1983, only the round trip measurable, only dimensionless constants; 1 as the set of the empty set; Ackermann's coding; the continuum's size undecided **[classical]**; does not supply O1 | II.0.5e |
 | O1 supplied at minting under the owner's guarantee; one invalid case ends v0.9.9; a universal witness agreed beforehand; assumed universal until the ray is no longer observed | Draft 6 not DMP-complete (E.9, E.6) **[paper]**; O1 as a hypothesis gives the gap **[Lean]**; the kernel as root of trust; falsificationism (Popper) **[classical]**; assuming is not proving | II.0.5f |
+| Elastic spheres joining at a new optimum; real induction as +N! (+ the universal assertion, N the reals, ! runs certifiably); naturals = reals under the universal operator; DMP certifying the kernel it runs on, G0's pressing as a running assumption | elastic collisions at the floor, joining above it **[classical]**, the settle theorem **[Lean]**; Landauer; real induction = completeness; Bohr-Mollerup; Tarski, Loewenheim; Mathlib's reals from the naturals; two kernels, lean4lean, a set-theoretic model of Lean **[classical]**; Cantor, Goedel II: the base stays an assumption | II.0.5g |
 | The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | II.0.5c |
 | The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
 

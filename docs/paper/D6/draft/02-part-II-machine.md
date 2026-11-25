@@ -386,6 +386,58 @@ Care:
   III.13d); the paper records the assumption, under the agreed witness, as the first author's reading and does not claim it.
 * The rule from v0.9.9 to v1 is DMP's own process; it is recorded here as the reading, and DMP itself is not changed.
 
+**Elastic spheres, real induction and the kernel (claim II.0.5g).** The first author: the construction can also be imagined as
+perfectly elastic spheres that see each other's efficiency in existing and join only when a new local optimum is reached, paying the
+same cost, observability, whether it is the case or not. That makes it binary: true in a DMP-complete system, and equal to existence
+when 1 makes it so. The reals then span a real space in which perfect elastic collision and agreement on "not" suffice for those
+properties to be inductive. This real induction is represented by the N! + 1 of SO() and is written +N!; through DMP, `+` is the
+universal assertion, N the reals, and `!` runs certifiably. By this induction the naturals equal the reals under the universal
+operator. What separates them as sets is that each can reconstruct the other during an act, which gives internal DoE-level trust,
+and a set that excludes, as a DoE must by default, must run. This lets DMP also certify the kernel it runs on, restoring G0's pressing
+status as a running assumption, literally: it certifies the provability of the kernel's induction, which secures constructability, and
+bases it on the assumption that such a system, when minted, is DMP-complete **[reading]**. Exact parts:
+
+* **Elastic and joining.** Perfectly elastic collisions conserve energy and momentum and are reversible: factor 1, the floor (II.3)
+  **[classical]**. Joining needs a cost above the floor: perfectly elastic spheres cannot bind without something carrying energy away
+  **[classical]**, and a cost above the floor is the contraction class, in which the run settles (the settle theorem, II.3)
+  **[Lean]**.
+* **The same cost either way.** Erasing a bit costs at least kT ln 2, whatever its value (Landauer 1961) **[classical]**: the cost of
+  the binary question is the same for both answers (II.0.4).
+* **Real induction.** A property that holds at the start, extends a little beyond every point where it holds, and is kept when passing
+  to a limit holds on the whole interval; this principle is equivalent to the completeness of the reals (Clark 2019) **[classical]**.
+* **The factorial on the reals.** The recursion (n + 1)! = (n + 1) n! carries to the reals: Γ(x + 1) = x Γ(x) with Γ(1) = 1 has
+  exactly one log-convex solution, the Gamma function (the Bohr-Mollerup theorem; Artin 1931) **[classical]**. 1/n! is one turn (R.7a)
+  **[Lean]**; N! + 1 gives SO(3) at N = 2 and meets SO(7) at N = 3 (R.7b) **[classical]**.
+* **`+N!` as a theorem.** `!` is IM's operator that settles certifiably (R.10a); a kernel-checked theorem about every real number is a
+  universal assertion over the reals, settled certifiably **[paper]**.
+* **Equal under the universal operator.** Every proof is a finite string, so every certificate about the reals is coded by a natural
+  number. A countable field, the real algebraic numbers, satisfies exactly the same first-order sentences about the field operations as
+  the reals (Tarski 1951), and every first-order theory with an infinite model has a countable one (Loewenheim 1915). By proof
+  irrelevance every certificate of a true statement is one (II.0.5d) **[classical]**.
+* **Each reconstructs the other.** Mathlib builds the reals from the naturals, through the integers and the rationals, as Cauchy
+  sequences up to equivalence (mathlib 2020); the naturals come back inside the reals as the smallest set that contains 0 and is closed
+  under +1 **[classical]**.
+* **The kernel.** Two kernels written separately check every target (T.14) **[paper]**. lean4lean, a typechecker for Lean written in
+  Lean and pinned as an External in IM, proves parts of the kernel correct (Carneiro 2024) **[classical]**. Lean's type theory, its
+  inductive types included, has a model in set theory with inaccessible cardinals, and so is consistent relative to it (Carneiro 2019;
+  its record was read, not its text) **[classical]**.
+
+Care:
+
+* As sets the naturals and the reals differ: every list of reals misses one (Cantor 1891). What separates them is the direction of the
+  reconstruction: from the naturals to the reals is the completion over all Cauchy sequences, where the size grows; the other way only
+  cuts out a subset. The completeness clause is the one no countable certificate settles alone, and for Yang-Mills the clause that must
+  hold uniformly in the limit is O1.
+* Only countably many reals are computable (Turing 1937): what runs is the proof, not each real.
+* N usually names the naturals; here it names the reals, by the first author's choice. The dimension N! + 1 and the step +N! are
+  different objects, and the pattern of R.7b stops at N = 3.
+* No exact counterpart was found for "a set that excludes must run"; its context is X.64b (DMP-completeness defined as running on DMP),
+  excision at transmission (I.5, R.2) and IM's rule that a refusal is not a state (R.9). DoE is the first author's term (the preface;
+  IX.8).
+* No consistent, effectively axiomatised system strong enough for arithmetic proves its own consistency (Goedel's second theorem, R.1h).
+  The kernel's induction is certified relative to a model outside it, and the base, that a minted system is DMP-complete, stays an
+  assumption, run and checked case by case, in the same place as O1 (II.0.5f).
+
 ## II.1 The ledger and the transport theorem
 
 **Why it clicks.** A step that forgets a fixed share each time forgets geometrically. Write the share as a cost, and costs add.
