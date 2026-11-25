@@ -95,6 +95,13 @@ is the whole open problem. On the Yang-Mills box the base case is easy and viabi
 is O1. For G2 the open part is universality, the map of scales (Figure 1, dashed). No tool creates positivity; it has to come from the problem (II.16).
 No problem is solved here, and O1 is open.
 
+**5. What does not follow.** 0 = 1 holds in exactly one ring, the zero ring, which has one element (R.5a) **[Lean]**. In ordinary
+arithmetic 0 is not 1, and a proof of 0 = 1 there would prove every statement, P = NP and P != NP alike, so it can separate nothing;
+nor would NP = coNP give P != NP, since P = NP already implies NP = coNP **[classical]** (R.12c). Assigning `+` or `-` to a question
+is `?`, not `!`: it holds for a question whose answer is `-` as much as for one whose answer is `+` (R.11e) **[Lean]**. Supplying O1
+is assuming it, never proving it (R.12f). That at 0 = 1 existence and non-existence coincide is the first author's reading
+**[reading]** (R.5b).
+
 **How to read on.** Press on the three toys until each closes (Appendix T), then mint the parts from the template: Part II builds the
 machine around these four points, Parts III to IX apply it one problem at a time, Part X compares them. The first author's vocabulary
 is collected in I.8: DMP, the framework; G0, its ground; the ODP (Oscillon Degradation Protocol), pressing then minting; the ETM
