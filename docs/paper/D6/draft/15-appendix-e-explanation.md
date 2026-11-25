@@ -15,7 +15,7 @@ repository with the shared Lean results) and Gravity (this repository), each pro
 | **DMP** | · | · | . |
 
 Here `+` means the row uses the column and the use is proven; `·` means no proof relates the two (it reflects positively); `.` means
-the part includes nothing and settles by `!` alone (E.11). Every used cell is proven. The optimizer then asks of every use whether
+the part includes nothing and settles by `!` alone (E.11). Every used cell is proven **[paper]** (E.11). The optimizer then asks of every use whether
 it is needed and finds one that is not (E.9):
 
 ```

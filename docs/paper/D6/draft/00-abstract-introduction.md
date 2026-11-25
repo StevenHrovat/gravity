@@ -32,13 +32,14 @@ meaning becomes apparent and its place in existence slots neatly into a better p
 
 ## Abstract
 
-Seven problems are read here as one statement checked at every step of a sequence: Yang-Mills, GRH (for the Riemann hypothesis), NP
-versus coNP (for P versus NP), Navier-Stokes, BSD, Hodge, and a Grand Unified reading, not a Clay problem. No problem is solved. The
+Seven problems are read here as one statement checked at every step of a sequence: Yang-Mills, Navier-Stokes, BSD, Hodge, GRH in
+place of the Riemann hypothesis and NP versus coNP in place of P versus NP (neighbouring forms), and a Grand Unified reading, not a
+Clay problem. No problem is solved. The
 restatement holds exactly when the problem's statement holds at every step, so a proof is an induction: a base case and an inductive
-step; once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. Each problem is a card, one named open step in Lean; on a card the open step is the base case, on the Yang-Mills box the
-inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills,
+step; once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. Each problem has cards, each with one named open step in Lean (GU a box, no card); on a card the open step is the base case, on
+the Yang-Mills box the inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills,
 GRH, NP versus coNP, BSD and Hodge, each a different open statement; results using it are marked conditional. On binary data read as
-real numbers every computation can be made reversible, its history kept as a supplied input, so complex mathematics applies exactly. The work is in Lean 4 with Mathlib, standard axioms
+real numbers every computation can be made reversible, its history kept as a supplied input, so complex mathematics applies exactly. The restatements are in Lean 4 with Mathlib, standard axioms
 only; DMP's readings are marked.
 
 Proved in Lean without the assumption: the reduction of the SU(2) lattice mass gap to one named criterion on one box of fixed
@@ -58,7 +59,7 @@ Read this page first; everything after it unfolds from it, one idea at a time.
 
 **1. A run and a claim.** A system takes steps, and one claim is checked at every step. A proof then has one shape, an induction: the
 base case (the claim at the start) and the inductive step (a step that keeps the claim). Once both are shown the claim holds at every
-step, and one failing step refutes it (II.4.1: `route`, `refuted_by_tick`) **[Lean]**. Figure 1 draws it. The restatement proves
+step, and one failing step refutes it (II.4.1: `route`, `refuted_by_tick`) **[Lean]**. Figure 1 draws it (in the typeset paper; the Markdown keeps its source in a comment). The restatement proves
 nothing by itself: the content is in the base case or in the step.
 
 **2. A step is a multiplication.** Each step multiplies by a number of size at most 1: the size is the cost, the angle is the turn
@@ -68,8 +69,8 @@ by a fixed margin, the run settles, and the number of steps is computable: halvi
 the universal machine it cannot be decided (II.3) **[Lean]**.
 
 **3. The smallest example.** On 8-bit words, step by adding 2 and claim "even": the base case is the word 0, the step keeps evenness,
-and all 256 words are checked by one kernel evaluation (T.1, T.2) **[Lean]**. Step by adding 1 instead, and tick 1 is odd: one wrong
-step refutes the claim (T.3) **[Lean]**. Reducing every word to its last bit carries the result from one bit to every width (T.2):
+and all 256 words are checked by one kernel evaluation (T.1; claims T.1, T.2) **[Lean]**. Step by adding 1 instead, and tick 1 is odd: one wrong
+step refutes the claim (T.3; claim T.4) **[Lean]**. Reducing every word to its last bit carries the result from one bit to every width (T.2; claim T.3) **[Lean]**:
 that map is what "every scale" means.
 
 **4. Where the open part sits.** On a problem card the claim is the same at every step, so the step is free and the base case is the
@@ -349,7 +350,7 @@ listing every part left open by name.
 
 Every **[Lean]**, **[certified]** and **[numerical]** claim can be rerun from a clone of the repository with one script, stage by
 stage: `tools/reproduce.sh paper D6` (the ledger and the PDF of this draft), `evidence` (the DMP evidence chain, "OK 285"), `lean` (the paper's
-Lean against Mathlib, every axiom log compared line by line), `certs` (the certified first box, the three margins) and `kernels`
+Lean against Mathlib, every axiom log compared line by line), `certs` (the certified first box, the three margins), `kernels`
 (the second kernels) and `matrix` (the k by k table of E.0.1 and the optimizer of E.0.2). `docs/paper/REPRODUCE.md` lists what each stage needs, how long it takes and what it prints when it passes;
 the claims ledger `docs/paper/D6/CLAIMS.md` gives, for every claim, the declaration, log or reference that checks it. The repository is
 https://github.com/StevenHrovat/gravity, at the commit printed on the title page, with this draft in `docs/paper/D6`
@@ -386,7 +387,7 @@ O1 and, with the resolution clause, the gap; O1 gives an instance; so the interf
 Second, the subtitle, *the ETM as the ODP running DMP*: the first author's reading of the ODP as the internal clock whose tick ends
 at `+`, of DMP as the operating system of that kernel, and of one ETM that boots again whenever it stops **[reading]** (R.12). Its
 exact parts are the cycle of `r` and the one terminal running system **[Lean]**. The reading that the paper proves 0 = 1 for the
-classical, hence NP = coNP and P != NP, does not follow, and R.12 says why. R.12 ends with the first author's one condition: O1
+classical, hence NP = coNP and P != NP, does not follow, and R.12 says why. R.12f states the first author's one condition: O1
 supplied at minting, under a universal witness agreed beforehand, and assumed until one invalid case is found. The paper records it
 as a reading next to its exact parts and does not claim O1.
 

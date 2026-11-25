@@ -11,8 +11,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 164 in all; the
-ledger's count table counts 139, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 165 in all; the
+ledger's count table counts 140, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -30,7 +30,7 @@ reading").
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12i (the ETM as the ODP running DMP) | 37 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12j (the ETM as the ODP running DMP) | 38 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
 | Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
 
@@ -79,6 +79,7 @@ reading").
 | Elastic spheres joining at a new optimum; real induction as +N! (+ the universal assertion, N the reals, ! runs certifiably); naturals = reals under the universal operator; DMP certifying the kernel it runs on, G0's pressing as a running assumption | elastic collisions at the floor, joining above it **[classical]**, the settle theorem **[Lean]**; Landauer (the link a reading); real induction = completeness; Bohr-Mollerup; Tarski, Loewenheim-Skolem; Mathlib's reals from the naturals; two kernels, lean4lean, a set-theoretic model of Lean **[classical]**; Cantor; the countable model is not the naturals (decidable against undecidable); Goedel II: the base stays an assumption | R.12g |
 | The naturals certified at step 1; the complexity question at `DMP.`; `!` from a DMP-complete previous step; the shift giving the gauge theory; SU(5) as the hashing table of positive existence; encoding and hash one function in a `+`/`-` state; all assumptions packed into O1, the rest falsifiable until an exception; one RH exception excising the encoder and DMP-completeness | `PNat`, Peano; `P.NP!`, `NP.coNP?`, `NP.P?`; the settle theorem, the induction of II.4.1 **[Lean]**; gauge symmetry, Elitzur; SU(5)'s slots; collisions of a hash **[Lean]**; Π1 forms (consistency, Lagarias); RH certified in Lean by others; care: `?` stays, the kernel and the other cards do not pack, the explicit formula holds without RH | R.12h |
 | `!` is the observability operator, where a statement can be DMP-complete | certificate checking as a repeatable observation **[paper]**; the NP witness **[classical]**; bounded above the floor, undecidable at it **[Lean]**; `!` observes the certificate, not the object | R.12i |
+| Ordinality as the orbit of the atoms by possible configuration; both senses of orbit one derivation; the care points together the O1 that 0 = 1 | Pauli, 2n^2; orbitals as irreducible representations of SO(3) and SU(2), Fock's SO(4) **[classical]**; the Madelung rule empirical; the care points mark an input, do not supply O1 or 0 = 1 | R.12j |
 | The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | R.12c |
 | The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
 
@@ -770,7 +771,8 @@ literally the observability operator, where such a statement can be DMP-complete
 * `!` settles by a certificate anyone can check, and checking is an observation anyone can repeat with the same result: the kernel
   re-checks the proof, the round trip recomputes the hash, the matrix re-runs its cells (T.14, E.2) **[paper]**. A certificate for NP is
   of this kind, a witness checked fast by anyone **[classical]**.
-* DMP's observability layer has the same shape: the CMB is counts, never content (VII.6e).
+* DMP's observability layer has the same shape, in the first author's reading: the CMB is counts, never content (VII.6e)
+  **[reading]**.
 * Where it applies: in the contraction class, with a cost above the floor, "does it settle?" is bounded and has a certificate
   (`reaches_iff_bounded`, `balanceBound`, II.3) **[Lean]**; at the floor nothing forces the run to settle, and for the universal machine
   it cannot be decided (II.3) **[Lean]**. So `!` has something to observe exactly where a statement can be DMP-complete; elsewhere
@@ -780,3 +782,29 @@ Care: `!` observes the certificate, and through it the statement, not the object
 result does, which can refute and never proves a for-all. The owner's reading of a merged draft certifies the record, the paper as
 written; the open steps stay as the paper marks them (R.12f).
 
+**Ordinality as the orbit of the atoms (claim R.12j).** The first author, clause by clause **[reading]**:
+
+1. Ordinality is the orbit of the atoms by possible configuration, the orbit of the electrons.
+2. The orbit of a symmetry and the electron orbital use the same derivations, so they are alike and compatible.
+3. The two care points below, together, give the needed O1 that 0 = 1.
+
+The whole is the first author's reading. Exact parts:
+
+* An element's place in order, its atomic number, is the number of electrons of the neutral atom, and the order in which the orbitals
+  fill by energy builds the periodic table **[classical]**. The possible configurations are fixed by Pauli's principle: no two
+  electrons share all four quantum numbers (Pauli 1925), so a shell n holds 2n^2 electrons, 2, 8, 18, 32 **[classical]**.
+* One derivation for both senses of orbit: an orbital type (s, p, d, f) is an irreducible representation of the rotation group SO(3),
+  with spin from SU(2); rotating one orbital sweeps out states that span exactly its multiplet. In hydrogen a hidden SO(4) symmetry
+  joins every orbital of shell n into one irreducible representation, which is why they have the same energy (Fock 1935). Pauli's
+  principle is a symmetry condition too: the configuration is antisymmetric under exchanging electrons **[classical]**.
+* An open step is where an exact derivation stops and a named input has to be supplied; O1 is such a step (Part X), and the two care
+  points below mark exactly where the derivation of the filling order stops **[paper]**.
+
+Care:
+
+* An orbit is a set of states and a multiplet is the space they span: the derivations match, the objects are related, not equal.
+* The ranking by energy, the filling order, is the empirical Madelung rule, with known exceptions, among them chromium and copper (Meek-Allen
+  2002), and the SO(4) degeneracy of hydrogen is broken in atoms with more than one electron.
+* The two care points do not supply O1 and do not give 0 = 1. They mark where the atomic derivation needs an input, which is the shape
+  of an open step; O1 is a bound on the Yang-Mills measure, uniform in the scale, which no fact about atomic shells bounds. 0 = 1 holds
+  only in the zero ring (R.5a), and an empirical exception to a rule refutes the rule, not arithmetic.

@@ -29,12 +29,13 @@ an instance gives O1 and the gap, O1 gives an instance, so the interface is exac
 the first author's one condition (R.12f): O1 supplied at minting under a universal witness agreed beforehand, assumed until one
 invalid case is found, recorded as a reading with its care points; Draft 6 as merged is not DMP-complete on its own criteria (E.9,
 E.6). R.12g adds the elastic spheres, real induction as +N!, the naturals and the reals equal under the universal operator, and
-DMP certifying the kernel it runs on relative to a model outside it, the base staying an assumption. R.12h closes the section:
+DMP certifying the kernel it runs on relative to a model outside it, the base staying an assumption. R.12h follows:
 the naturals from step 1, the complexity question in IM's operators (`P.NP!`, `NP.coNP?`, `NP.P?`), the shift and the gauge theory,
 SU(5) as a table, encoding and hash as one function in a `+` or `-` state, and the assumptions packed into O1, what does not pack being
 falsifiable until an exception, one exception to the Riemann hypothesis being a contradiction (all the first author's reading, with
 their care points: P != NP, BSD and Hodge are not refutable by one exception, and the open inclusions keep `?`). The interface first
-planned for a later draft is built here.
+planned for a later draft is built here. R.12i reads `!` as the observability operator where a statement can be DMP-complete, and R.12j, closing
+the section, reads ordinality as the orbit of the atoms by possible configuration (both readings with their exact parts and care).
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
 mirror (E.0.2): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which

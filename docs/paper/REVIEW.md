@@ -115,6 +115,7 @@ The paper leaves the draft stage only under the release criterion (`OUTLINE.md`)
 | Draft 6 review, the one condition | 2026-11-25 | Opus subagent at medium effort on `61567af`; `review/draft6-witness-opus.md` | 0 blockers, 6 should-fix (a false O1 makes the system unsound, inconsistent only if refuted; Popper as falsification), 6 nits; all fixed or kept with reasons |
 | Draft 6 review, real induction and the kernel | 2026-11-25 | Opus subagent at medium effort on `0b440f8`; `review/draft6-real-opus.md` | 0 blockers, 6 should-fix (Loewenheim-Skolem scope; the countable model is not the naturals; completeness; lean4lean not the kernel; Landauer link a reading; DoE source), 5 nits; all fixed |
 | Draft 6 review, from step 1 to the encoder | 2026-11-25 | Opus subagent at medium effort on `431c127`; `review/draft6-step1-opus.md` | 0 blockers, 6 should-fix (the SU(5) image a paper observation; Lagarias via X.24; P != NP as Pi-2; marks), 9 nits; all applied |
+| Draft 6 review, the reader's slope | 2026-11-25 | Fable at high effort on `6f8d566` (readability across fields), then an Opus check at medium effort on `48669c5`; `review/draft6-slope-fable.md` | the additions moved behind what they cite, the core page first, R.12 as clauses; the check: nothing lost, 2 abstract blockers and 5 should-fix fixed |
 
 ## Citation items for the part reviews (from the bibliography round, 2026-11-24)
 

@@ -245,11 +245,11 @@ no intrinsic tick. **[reading]** on the classical spectral fact of II.10.
 | TTL | time to live: how long a certified act stays valid | freshness | (no counterpart; used only in the Outlook) | none |
 | Gravity | this repository: the machine-checked paper and its Lean | the linter that DMP's statements are checked by | `docs/mass-gap/formal/`, pinning IM's arsenal | R.1 |
 | Encoder, half-turn, full turn | a step read as a rotation; half a turn; a whole turn that returns | the act that carries a statement across a boundary | the encoder of II.2, its half-turn, the full turn over N sectors | II.2 |
-| Hand-over | what one box passes to the next | the cost of crossing a boundary | the per-box hand-over rate, at least log(1 + sqrt N) | II.13 |
+| Hand-over | what one box passes to the next | the cost of crossing a boundary | some sector's free energy is at least log(1 + sqrt N) (II.13.3; electric sectors assumed positive for N >= 3) | II.13 |
 | ETM | the Existence Turing Machine: the one running system that runs every computation | the machine DMP runs on | the terminal running system: every running system has exactly one map into it | II.3 |
 | `r` | the right angle | the direction from a question to its certificate | multiplication by i, the quarter turn (R.11) | II.0 |
 | `?`, `!`, `.` | does it exist; it is settled by a certificate anyone can check; it is included | IM's three operators | `expect` and supply-verify; both kernels; inclusion (R.10) | II.5 |
-| `+`, `-`, `·` (cells) | the row proves the column; it uses it and the proof fails; no proof relates the two | the explanation mechanism | the cells of a k by k table (E.0.1); `·` reflects positively | E.0.1 |
+| `+`, `-`, `·` (cells) | the row proves the column; it uses it and the proof fails; no proof relates the two | the explanation mechanism; a `·` cell reflects positively | the cells of a k by k table (E.0.1) | E.0.1 |
 | Settled | optimizing changes nothing | the setting exists | the compiled table equals its transitive reduction (E.0.2) | E.0.2 |
 | Smelly | a full turn that does not return | a state that does not encode | the full turn on `vxunderground` not closing (T.11) | II.2 |
 | Moin | a request proper, its satisfaction open | the label of O1 | `OpenStep`, posed and never assumed (R.9) | II.5 |

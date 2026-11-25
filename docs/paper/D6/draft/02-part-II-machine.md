@@ -308,7 +308,7 @@ the box is not DMP-complete; if the marker is correct, it is **[reading]**.
 `ETM/Rotation.lean`): a box has one command, a gate factor, a margin and a marker per step, inside or R136a1; the marker is correct
 when it agrees with the gate's own factor, and DMP-complete means correct at every tick **[Lean]** (claim II.4a). The smallest example
 is the verify toy: on 8-bit words stepping by 2 with the marker "even" the box is DMP-complete, stepping by 1 it is refuted at tick 1
-(T.1 to T.3).
+(T.1 to T.3) **[Lean]**.
 
 **The outside.** The outside is read through the same gate by the half-turn: in the generic API the agreement of the two readings is
 the gate's law (a field of `Box.Gate`), and in the plaquette layer it is proved: for a closed Z/2 layer the flux read from a box and
