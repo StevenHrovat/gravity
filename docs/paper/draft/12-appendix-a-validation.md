@@ -1,6 +1,6 @@
 # Appendix A. Validation: Poincare, SU(N) and the rigid groups
 
-*Merged at Draft 4. Claim labels A.n are listed in `../CLAIMS.md`.*
+*Draft 5. Claim labels A.n are listed in `../CLAIMS.md`.*
 
 ## A.0 Poincare (Perelman), and SU(N)
 

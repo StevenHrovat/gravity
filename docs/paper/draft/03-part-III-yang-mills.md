@@ -1,6 +1,6 @@
 # Part III. Yang-Mills: the gap mechanism reduces to one box of fixed physical size
 
-*Merged at Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/` (the modules of the earlier
+*Draft 5. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/` (the modules of the earlier
 attempt rounds R2 to R4 live under `docs/mass-gap/formal/Attempts/`); notes relative to `docs/mass-gap/weak-coupling/`; the crossover notes are in
 `proof-phase/c9a-crossover/`. The full chain with all 51 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (III.n) are listed in
 `../CLAIMS.md`.*
@@ -128,6 +128,16 @@ sector, beta != 0 and even time extent, since there 0 < Z_tw < Z is proved **[Le
 `sunZtw_pos`, `sunZtw_lt`); that the `Flip` object of `su2_handover` is the k = 1 case of that package is the identification
 `General/SUNTwistInstances.lean` names, not proved (claim III.3.1b).
 
+**All N sectors at once (III.3.1c).** The full turn over the centre Z_N (II.2.7) turns the N twisted partition functions into N
+electric sectors, Z_el(e) = (1/N) sum over k of cos(2 pi k e / N) Z_tw,k, the real form of 't Hooft's electric-flux projection
+('t Hooft 1979; real because Z_tw,-k = Z_tw,k, `sunZtw_neg`). One turn gives the sum of the electric sectors as Z and N Z_el(0) as the
+sum of the twisted ones, and the balance II.13.3 turns these into the rate log(1 + sqrt N): some nontrivial twist free energy or some
+nontrivial electric free energy of the SU(N) Wilson box is at least log(1 + sqrt N) **[Lean]**, given that the electric sectors are
+positive (`General/SUNFullTurn.lean`, `sunZel_sum`, `sunZel_zero`, `sun_handover_full_turn`). For N = 2 the positivity is proved, the
+sectors being (Z + Z_tw)/2 and (Z - Z_tw)/2 (`sunZel_pos_two`), and the rate is the log(1 + sqrt 2) above. For N >= 3 it is a stated
+hypothesis: each electric sector is the weight of one flux sector of the transfer matrix, positive in the transfer-matrix picture
+**[classical]**, not formalised here (claim III.3.1c). The rate grows with N; III.5.4 says what that does and does not give.
+
 **A flux-carrying outside forces at least one sheet.** The flux cells of a box are even in number (Gauss's law mod 2), so a flux
 carrying outside forces a sheet through the box, crossing the boundary at every flux cell. This is the quantum: "at least something"
 always crosses. **[Lean]** (`exists_sheet_of_flux`, `even_card_fluxCells`).
@@ -156,6 +166,7 @@ eps_* for every spacing, the influence at physical distance D is at most exp(-m 
 |---|---|---|---|
 | III.3.1 | Per-box hand-over rate: max(F_tw, F_e) >= 0.881 at every box size | **[Lean]** (0 < Z_tw a hypothesis) | `Crossover/HandOver.lean`, `su2_handover` |
 | III.3.1b | The same rate for every SU(N) sector of the twisted Wilson partition functions, unconditionally | **[Lean]** | `General/SUNHandOver.lean`, `sun_handover` |
+| III.3.1c | Over all N centre sectors by the full turn: some nontrivial twist or electric free energy >= log(1 + sqrt N) | **[Lean]** (positive electric sectors a hypothesis for N >= 3; proved for N = 2) | `General/SUNFullTurn.lean`, `sun_handover_full_turn`, `sunZel_pos_two` |
 | III.3.2 | A flux-carrying outside forces at least one sheet | **[Lean]** | `Crossover/FluxRate.lean`, `exists_sheet_of_flux`, `even_card_fluxCells` |
 | III.3.3 | The flux law is the same seen from inside and outside; no sources | **[Lean]** | `Crossover/Dichotomy.lean`, `cob_restrict_eq_cob_restrict_compl`, `sum_cob_restrict_eq_zero` |
 | III.3.4 | Superadditivity up to the excess terms; the rate multiplies along a chain if F_e(L) > 2C, C bounding the excess act c(kL) on every multiple of L | **[Lean]** (abstract) | `Crossover/CompositeHTF.lean`, `flux_superadd`, `flux_superadd_iter` |
@@ -235,6 +246,11 @@ mu (sqrt 2 - 1) >= 1 **[Lean]** (`path_entropy_beats_handover`). **So in every d
 criterion: the cheapest chain does not dominate the sum over paths** (a sufficient criterion fails; that is not a proof that influence
 does not decay). For d = 4, mu_4 = 6.77 and log mu_4 = 1.91 is a series estimate **[numerical]** (Clisby-Liang-Slade 2007, recalled);
 rigorously log mu_4 lies between log 4 = 1.39 and log 7 = 1.95 **[classical]** (sharper rigorous lower bounds exist, Hara-Slade-Sokal 1993). Equivalently, the single-sector twist ratio must exceed (mu - 1)/(mu + 1) = 0.74.
+
+**With all N sectors (III.5.4d).** The full-turn rate log(1 + sqrt N) of III.3.1c grows with N. It exceeds the series value
+log mu_4 = 1.91 from N = 34 on (1 + sqrt 34 = 6.83) and the rigorous bound log 7 from N = 37 on. It does not close the gap: it bounds
+the largest of the 2(N - 1) free energies of one box, not the cost of one channel along a path, and for N >= 3 it rests on the
+positivity of the electric sectors **[paper]** (claim III.5.4d). Whether the sectors can share the cost along a path is open.
 
 **III.5.5 What the action adds and what it does not.** The Bogomolny bound S >= 8 pi^2 |Q| / g^2 **[classical]** gives, on a twisted
 torus with odd twist product, the floor S >= pi^2 beta (beta = 4/g^2, the standard convention) for admissible fields **[classical]**

@@ -1,6 +1,6 @@
 # Part X. The one assumption and the rigid start: what the cards show together
 
-*Merged at Draft 4. Claim labels (X.n) are listed in `../CLAIMS.md`.*
+*Draft 5. Claim labels (X.n) are listed in `../CLAIMS.md`.*
 
 ## X.0 How to read this part
 

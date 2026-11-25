@@ -1,6 +1,6 @@
 # Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
-*Merged at Draft 4, machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
+*Draft 5, machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
 X) are conditional on it. Claim labels (0.n) are listed in `../CLAIMS.md`.*
 
 ## Personal note by the first author
@@ -32,22 +32,20 @@ meaning becomes apparent and its place in existence slots neatly into a better p
 
 ## Abstract
 
-Six Clay Millennium problems are read here through one test, two in a neighbouring form (the generalised Riemann hypothesis for
-the Riemann hypothesis, NP versus coNP for P versus NP), with a Grand Unified reading of SU(3) x SU(2) x U(1), not a Clay problem.
-Each open step is restated as a box: a step at one shared gate gives a marker,
-inside or outside, at every tick, and the box is DMP-complete when every marker agrees with the gate. For most cards the box is the
-open statement itself, restated. Plainly, the machine multiplies by complex numbers of
-modulus at most one: minus the logarithm of the modulus is the cost, the phase the rotation. Machine, test
-and cards are checked in Lean 4 with Mathlib on the standard axioms. DMP, a specification for systems of trust, supplies the
-vocabulary; its readings are marked as such.
+Six Clay Millennium problems are read through one test, two in a neighbouring form (GRH for the Riemann hypothesis, NP versus
+coNP for P versus NP), with a Grand Unified reading of SU(3) x SU(2) x U(1), not a Clay problem.
+Each open step becomes a box: a step at one shared gate gives a marker at every tick, and the box is DMP-complete when every marker agrees with the gate. For most cards the box restates the open statement. Plainly, the machine multiplies by complex numbers of
+modulus at most one; one full turn of the phase, averaged, reads off a coefficient. Machine, test
+and cards are checked in Lean 4 with Mathlib on the standard axioms. DMP, a specification for trust, supplies the vocabulary; its readings are marked.
 
-No problem is solved here. One certifiable step is the same on every card: a marker correct at the start and kept by the step is
+No problem is solved. One certifiable step is the same on every card: a marker correct at the start and kept by the step is
 correct at every tick. One assumption is stated once, as a reading: on the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge
-the box is DMP-complete, its gate shared across scales; on each card this is a different open statement, and results using it are
+the box is DMP-complete, its gate shared across scales; on each card a different open statement, and results using it are
 marked conditional. Proved in Lean without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of
 fixed physical size, uniform in spacing and volume; the classical explicit formula for all nontrivial zeros of zeta (its real-place term not yet matched to Weil's); a crossing
-theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index. Weil's positivity
-on a first box, where only the real place and the primes 2, 3 enter, is enclosed in ball arithmetic with explicit margins, given
+theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index; the full turn, giving the SU(N) hand-over log(1 + sqrt N) (positive electric sectors assumed for N >= 3)
+and the BSD rank as a winding number. Weil's positivity
+on a first box, with the real place and the primes 2, 3, is enclosed in ball arithmetic with explicit margins, given
 analytic estimates argued in a note. A model box from the Navier-Stokes energy bound alone gives a wrong marker.
 
 ---
@@ -106,14 +104,16 @@ here (ledger, floor, DB, G0, ODP) are in the table of I.8.
 The results, by the problem they serve. Every Lean result names its module in the part that states it; "from X" names the inputs
 it rests on.
 
-* **The machine** **[Lean]**. The ledger, the encoder and its half-turn, the transport theorem, the settle theorem and its undecidable
+* **The machine** **[Lean]**. The ledger, the encoder and its half-turn, the full turn (discrete and on a circle: coefficients,
+  the factorial as one turn, the order of a zero as a winding number, and its balance log(1 + sqrt N), in IM's arsenal), the transport theorem, the settle theorem and its undecidable
   edge (for the universal machine, over all content), the one-box test with its one-box and scale certificates, and the card API.
   The one-box certificate needs a marker correct at the start and kept by the step at every state. In IM's arsenal, R136a1 is the
   one way to leave a statement open, a named hypothesis that never becomes an axiom; this repository's cards use the same
   transparent form under the names `OpenStep` and `External`.
 * **Yang-Mills** **[Lean]**, for SU(2) on the lattice: reflection positivity, the strict bound between a sector and its twist (for
   every SU(N)), a per-box hand-over rate of at least log(1 + sqrt 2) (for the SU(N) twisted Wilson partition functions with no hypothesis on Z_tw, for beta != 0, even time extent and a
-  nontrivial sector, `sun_handover`; for the `Flip` object of SU(2) from positivity of its twisted partition function, a stated hypothesis), zero join loss in slab form, and the assembly from a one-box gap certificate to exponential decay of slab
+  nontrivial sector, `sun_handover`; over all N centre sectors by the full turn, log(1 + sqrt N), given positive electric sectors for N >= 3,
+  `sun_handover_full_turn`; for the `Flip` object of SU(2) from positivity of its twisted partition function, a stated hypothesis), zero join loss in slab form, and the assembly from a one-box gap certificate to exponential decay of slab
   correlations (a lattice mass gap) in both orders of limits; the step to a gap of the Hamiltonian is argued in prose (III.2.7). The
   open step in the form the assembly uses is `FineOneBox`; the Yang-Mills card's own slot is the chain form `YMOneBox`, related to
   `FineOneBox` in prose (III.5.9). The box test restates both: each holds exactly when its box is DMP-complete (III.12; restatements
@@ -267,6 +267,8 @@ whose row gives the claim's status, its source and what would upgrade it. Where 
   Weil's positivity with the primes 2 and 3 and explicit margins **[certified]** for the enclosures, **[paper]** for the estimates.
 * The hand-over bound, the strict twist bound for every SU(N), and zero join loss in slab form **[Lean]**.
 * A Mathlib-only BSD core over number fields, published in IM **[Lean]**.
+* The full turn as one tool, in IM's arsenal: the half-turn is its case N = 2; it gives the hand-over over all N centre sectors,
+  log(1 + sqrt N), and reads the BSD leading coefficient and the analytic rank (a winding number) as one turn around s = 1 **[Lean]**.
 * One geometry, two edges: a lower and an upper bound on one sequence of tick factors are independent and exclude each other on
   one sequence **[Lean]**; reading them as GRH's margin and O1 is the paper's identification **[paper]**; nothing is proved about GRH
   or O1 themselves.
