@@ -818,6 +818,8 @@ Care:
 2. This gives a direct link to the first author's public comments on DMP's pull request #25, made while no paper was being built,
    after the start of pressing.
 3. Keeping the record of its root allows a true induction.
+4. The first author's Insights and the papers keep each other honest about how they were created, by design, since that pull request
+   is v0.9.9.
 
 The whole is the first author's reading; that the merge of DMP 0.9.9 as provisional G0 on 2026-10-27 is the start of pressing (I.5)
 is part of it. Exact parts:
@@ -830,6 +832,10 @@ is part of it. Exact parts:
   2026-11-25. The comments in time order, each with its time and text, hash to sha256
   `d74ba50cf21e74bdf6e8e411166e2a8e41a700f027118d14502954c628c2249b`, recomputed by
   `gh pr view 25 -R StevenHrovat/dmp --json comments | jq -c '[.comments[] | {createdAt, body}]' | sha256sum` **[paper]**.
+* The two records point at each other. The DMP version this paper pins, `4400cce` (DMP 0.9.9, Gravity's `vendor/dmp/PIN`, proven back
+  and forth by the round trip, T.14), is the merge commit of that same pull request #25; and this paper pins the comments on it by
+  the hash above **[paper]**. So the specification the paper runs on and the record of the Insights made under it are one pull
+  request, each checkable from the other, the same two-way check as the round trip (R.1h) **[paper]**.
 
 Care:
 
@@ -838,3 +844,5 @@ Care:
 * Comments on GitHub can be edited, and new ones added. The hash pins the record as read on 2026-11-25, as a pin pins a commit: a later
   edit or comment shows as a changed hash, not as a changed record.
 * Keeping the root makes an induction checkable; it does not supply the inductive step, which for Yang-Mills is O1.
+* The pin proves the specification's bytes; the comments are not part of the pinned commit, they live on GitHub, and the paper's hash
+  covers them only as read on 2026-11-25. "Honest" here means checkable both ways, not correct.
