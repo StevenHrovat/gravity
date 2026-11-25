@@ -35,7 +35,7 @@ meaning becomes apparent and its place in existence slots neatly into a better p
 Each problem is restated as one statement checked at every step of a sequence. The restatement holds exactly when the problem's statement holds at every step,
 so a proof has one shape, an induction: a base case and an inductive step. Once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. On binary data, read as real numbers,
 every computation can be made reversible, so complex mathematics applies exactly. Six Clay problems are read this way, two in a
-neighbouring form (GRH for the Riemann hypothesis, NP versus coNP for P versus NP), with a Grand Unified reading, not a Clay problem. The restatements are in Lean 4 with Mathlib, standard axioms only; DMP's readings are marked. Draft 6 adds DMP's explanation mechanism, a k by k table of which part proves which; a part costs 2k + 1 cells; derivation explains, never proves (Lean).
+neighbouring form (GRH for the Riemann hypothesis, NP versus coNP for P versus NP), with a Grand Unified reading, not a Clay problem. The restatements are in Lean 4 with Mathlib, standard axioms only; DMP's readings are marked. Draft 6 adds DMP's explanation mechanism, a k by k table of which part proves which; a part costs 2k + 1 cells, a derived cell carries its chain (Lean).
 
 No problem is solved: on the cards the open problem is the base case, on the Yang-Mills box the inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge, each a different open statement; results using it are marked conditional. Proved in Lean
 without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of fixed physical size, uniform in
@@ -52,12 +52,12 @@ winding number. Weil's positivity on a first box, with the real place and the pr
 
 Draft 6 grows from Draft 5 and adds one mechanism, which explains what Draft 5 establishes and claims nothing beyond it. A system is
 k parts, and a k by k table says for each pair whether the row proves the column. The first author takes this table as DMP's
-explanation mechanism **[reading]** (II.0.2). Exactly, in Lean on the kernel alone: a part is added by its own row, column and cell,
-2k + 1 cells, and nothing already proven is checked again; derivation, the row proving a part that proves the column, always carries
-its chain and on an all-`+` table changes nothing, so it explains and never proves; where the row does not use the column the cell
-reflects positively, and where every use points to an earlier part no chain of uses returns **[Lean]** (II.0.2). Appendix E applies it
-to what Draft 5 measured: the versions of DMP, Gravity and IM form such a DAG, every use proven; the two kernels accept every target;
-a result of Draft 5 is explained by its chain; and the one open step O1 is a cell no derivation turns into `+` (E.6).
+explanation mechanism, in which a derived cell explains and does not prove **[reading]** (II.0.2). Exactly, in Lean on the kernel
+alone: a part is added by its own row, column and cell, and nothing already proven is checked again; every derived cell is reached by a
+chain of cells already in the table; where the row does not use the column the cell reflects positively, and where every use points to
+an earlier part no chain of uses returns **[Lean]** (II.0.2). Appendix E applies it to what Draft 5 measured: the versions of DMP,
+Gravity and IM form such a DAG, every use proven; the two kernels accept every target; Draft 5 establishes no chain of `+` cells that
+reaches the one open step O1 (E.6); and the drafts form a library that reaches G0 at Draft 4 from every later draft (E.7).
 
 ### What this paper is
 

@@ -111,27 +111,33 @@ IM's `Arsenal/FullTurn.lean`, C8 for the line in `rot_of_isometry` (II.0 above).
 ### II.0.2 The explanation mechanism: a k by k table of proofs
 
 *New in Draft 6.* A system is k parts. Its table has one row and one column per part, and the cell of a row and a column says whether
-the row proves the column: `+` when the proof is there, `-` when a proof that should be there fails, `·` when no proof relates the two.
-The first author takes this table as DMP's explanation mechanism: what DMP establishes is explained by the cells that prove it, and an
-explanation is a chain of `+` cells from what is established to what is claimed **[reading]** (claim II.0.2b). Draft 6 uses it to
-explain what Draft 5 establishes, and claims nothing beyond it.
+the row proves the column: `+` where the row uses the column and the proof is there, `-` where it uses it and the proof fails, `·`
+where no proof relates the two (in Lean, a table of uses U and one of proofs P: `·` is "not U", `-` is "U and not P"). A part's own
+cell is a use when the part is current, since its own round trip runs; an earlier version is frozen and not run again, so its own
+cell is `·`. The first author takes this table as DMP's explanation mechanism: what DMP establishes is explained by the cells that
+prove it, an explanation is a chain of `+` cells from what is established to what is claimed, and a derived cell explains, it does not
+prove **[reading]** (claim II.0.2b). Draft 6 uses it to explain what Draft 5 establishes and adds no mathematical claim; its new
+measurements are of the tools (Appendix E).
 
-**The `·` cells and the `.` boundary.** The first author: since no proof relates two such parts, they either do not exist at the same
-time, or both exist and reflect positively, so the `.` inclusion boundary of a DAG fits **[reading]** (claim II.0.2c). Exactly: let a
-cell need its proof where the row uses the column and reflect positively everywhere else; then every cell is `+` exactly when every
-used cell is proven (`allPlus_eff_iff`), and when every use points to an earlier part no chain of uses returns to where it started, at
-any length (`derive_irrefl`) **[Lean]** (IM, `arsenal/core/ArsenalCore/Matrix.lean`, on Lean's kernel alone).
+**The `·` cells and the `.` boundary.** `.` is IM's operator of inclusion (R.10a). The first author: since no proof relates two such
+parts, they either do not exist at the same time, or both exist and reflect positively, so the `.` inclusion boundary of a DAG fits
+**[reading]** (claim II.0.2c). Exactly: let a cell need its proof where the row uses the column and reflect positively everywhere else;
+then every cell is `+` exactly when every used cell is proven (`allPlus_eff_iff`), and when every use points to an earlier part no
+diagonal cell appears after any number of derivation steps (`derive_irrefl`) **[Lean]** (IM, `arsenal/core/ArsenalCore/Matrix.lean`, on Lean's kernel alone).
 
 **What the table can do (claim II.0.2a).** Each item is a theorem of the same file **[Lean]**:
 
 * **Extensibility.** A table for k parts is also one for k + 1, since a part is added by naming one more index. k + 1 parts are all
-  `+` exactly when the first k are and the new part's row, its column and its own cell are (`allPlus_succ_iff`): 2k + 1 new cells
-  (`new_cells`), and nothing already proven is checked again.
-* **Derivation.** Composing two tables, the row proving a part that proves the column, is the product of Boolean matrices; repeating
-  it gives the derivations, the transitive closure **[classical]** (Warshall 1962). Every chain gives a derived cell and every derived
-  cell has its chain (`comp_of_chain`, `chain_of_comp`, `step_sound`), so a derivation always carries its explanation.
-* **The bound.** On an all-`+` table derivation changes nothing (`step_eq_of_allPlus`): it explains what is established and proves
-  nothing of its own. A cell that no chain of `+` cells reaches stays without a derivation.
+  `+` exactly when the first k are and the new part's row, its column and its own cell are (`allPlus_succ_iff`), so nothing already
+  proven is checked again; the count of new cells, 2k + 1, is arithmetic (`new_cells`).
+* **Derivation.** Composing two tables, the row proving a part that proves the column, is the product of Boolean matrices; its
+  iteration covers the transitive closure, which Warshall's algorithm computes **[classical]** (Warshall 1962). The Lean iterates
+  "the table, or the table composed with itself", which after n steps covers chains of up to 2^n links; it does not prove that the
+  closure is reached. Every chain gives a derived cell, and every derived cell is reached by a chain of cells of the table, after any
+  number of steps (`comp_of_chain`, `step_sound`, `derive_sound`).
+* **What a step adds.** On an all-`+` table a step adds nothing (`step_eq_of_allPlus`); on any table it adds a cell only along a chain
+  of cells already there (`derive_sound`). In Lean a derived cell is a `+` like any other; that it explains and does not prove is the
+  reading above.
 
 Appendix E applies the mechanism to what Draft 5 measured.
 

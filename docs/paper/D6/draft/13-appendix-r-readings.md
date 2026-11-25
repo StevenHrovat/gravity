@@ -11,8 +11,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 142 in all; the
-ledger's count table counts 120, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 147 in all; the
+ledger's count table counts 122, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -32,6 +32,7 @@ reading").
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
 | Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b | 24 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
+| Appendix E | E.1, E.5, E.6, E.7, E.8 | 5 |
 
 **The readings added in Draft 5 and Draft 6, with their exact counterparts:**
 
@@ -59,6 +60,8 @@ reading").
 | IM knows three operators: `?` exists, `!` settles certifiably, `.` is included | `expect` and supply-verify; both kernels, the factorial as one full turn **[Lean]**; `<layer>.<verb>`, module names, contain **[paper]** | R.10a |
 | Gravity uses IM as an API by asserting a k by k array with + at each cell | IM's `tools/rebuild matrix`, a 2 by 2 of `+` for IM and Gravity, asserted by `tools/reproduce.sh matrix` **[paper]** | R.10b |
 | The k by k table as DMP's explanation mechanism | extension, derivation and its bound **[Lean]**; Appendix E | II.0.2b |
+| DMP's statement is only `.`, since it can include | DMP uses nothing, every part includes it **[Lean]** | E.7 |
+| The drafts as additional readings, transitive to G0, an extensible library | the drafts form a DAG; every later draft reaches Draft 4 **[Lean]** | E.8 |
 | No proof relates them: not at the same time, or reflecting positively; the `.` boundary of a DAG | `allPlus_eff_iff`, `derive_irrefl`; the versions measured form a DAG, the repositories a cycle **[Lean]** | II.0.2c |
 
 ## R.1 DMP as an existence linter
