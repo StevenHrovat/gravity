@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Independent re-check of every Lean proof in docs/mass-gap/formal (see docs/unified/INDEPENDENT-CHECK.md).
+# Since 2026-11-25 the maintained tool is IM's tools/rebuild (tools/reproduce.sh kernels calls it from the pinned IM); this script
+# stays for its stages and as the tool of the full run of 2026-11-23 recorded in docs/unified/independent-check.stamp.
 #
 #   bash tools/independent-check.sh <stage>
 #

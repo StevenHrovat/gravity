@@ -9,7 +9,8 @@
 #                                 comparing every declaration's axiom line with the committed log
 #   tools/reproduce.sh certs      the certified first box: rerun the ball-arithmetic certificate at a = 3/5, 13/20, 69/100 and
 #                                 compare the RESULT line with the committed log; also the scaled sha256 search (seconds)
-#   tools/reproduce.sh kernels    the second kernels (leanchecker, nanoda) through tools/independent-check.sh (hours, once)
+#   tools/reproduce.sh kernels    two kernels (Lean's leanchecker, nanoda) over the paper's Lean and the evidence chain, through IM's
+#                                 tools/rebuild from the pinned IM (minutes; KERNELS_MODE=full: the whole closure, hours)
 #   tools/reproduce.sh all        paper (Draft 4), evidence, lean, certs (not kernels); "tools/reproduce.sh all D5" builds Draft 5's paper
 #
 # Linux, macOS or WSL; bash. Exit 0 when every stage asked for passes, 1 otherwise.
@@ -88,11 +89,26 @@ stage_certs() {
   done
 }
 
+# Two kernels through IM's tools/rebuild, taken from the IM this repository pins: Gravity pins IM by construction, and the pinned IM is
+# proven before it is used (tools/trust-roundtrip.sh fetches its commit by its id and recomputes the id). KERNELS_MODE=full checks the
+# whole closure from nothing (hours, about 16 GB of RAM); tools/independent-check.sh holds the record of the full run of 2026-11-23.
 stage_kernels() {
-  say "kernels: leanchecker and nanoda (tools/independent-check.sh; see docs/unified/INDEPENDENT-CHECK.md)"
-  bash tools/independent-check.sh setup && bash tools/independent-check.sh build && bash tools/independent-check.sh axioms \
-    && bash tools/independent-check.sh replay-all && bash tools/independent-check.sh export && bash tools/independent-check.sh nanoda \
-    || bad "independent check"
+  say "kernels: Lean's kernel and nanoda (IM's tools/rebuild, from the pinned IM), mode ${KERNELS_MODE:-quick}"
+  command -v lake >/dev/null || { bad "lake not found (install elan, see REPRODUCE.md)"; return; }
+  export FORMAL_DST=${FORMAL_DST:-$HOME/gravity-formal}
+  bash tools/trust-roundtrip.sh > "$OUT/trust.log" 2>&1 || { bad "the pinned hashes are not proven (see $OUT/trust.log)"; return; }
+  echo "$(tail -1 "$OUT/trust.log")"
+  bash docs/mass-gap/formal/sync-build.sh ProofPhase.ETM.CardBox > "$OUT/kernels-build.log" 2>&1 \
+    || { bad "the paper's Lean did not build (see $OUT/kernels-build.log)"; return; }
+  local im="$FORMAL_DST/.lake/packages/arsenal" want
+  want=$(sed -n '/name = "arsenal"/,/subDir/s/^rev = "\(.*\)"/\1/p' docs/mass-gap/formal/lakefile.toml | tr -d '\r')
+  [ "$(git -C "$im" rev-parse HEAD 2>/dev/null)" = "$want" ] || { bad "the IM in $im is not the pinned ${want:0:12}"; return; }
+  [ -f "$im/tools/rebuild" ] || { bad "the pinned IM ${want:0:12} has no tools/rebuild"; return; }
+  echo "IM ${want:0:12}, proven above, supplies the kernels"
+  bash "$im/tools/rebuild" check "$FORMAL_DST" "${KERNELS_MODE:-quick}" || bad "the paper's Lean: both kernels"
+  rm -rf "$OUT/evidence-kernels"; mkdir -p "$OUT/evidence-kernels"
+  ( cd evidence && git ls-files | while read -r f; do mkdir -p "$OUT/evidence-kernels/$(dirname "$f")"; tr -d '\r' < "$f" > "$OUT/evidence-kernels/$f"; done )
+  bash "$im/tools/rebuild" check "$OUT/evidence-kernels" "${KERNELS_MODE:-quick}" || bad "the evidence chain: both kernels"
 }
 
 case "${1:-all}" in
