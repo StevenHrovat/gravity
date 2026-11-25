@@ -116,7 +116,7 @@ stage_kernels() {
 # The API to IM (the first author, 2026-11-25: "gravity can use it as an API, because it just has to assert an array of k by k with +
 # at each cell"): the IM this repository pins, fetched by its id (no Mathlib needed), runs its matrix over IM and this repository.
 stage_matrix() {
-  say "matrix: IM's tools/rebuild matrix, from the pinned IM; every cell must be +"
+  say "matrix: IM's tools/rebuild matrix --optimize, from the pinned IM; every cell +, the versions not settled by exactly the use of Draft 6, E.9"
   local lf=docs/mass-gap/formal/lakefile.toml want url im="$OUT/im-pinned"
   want=$(sed -n '/name = "arsenal"/,/subDir/s/^rev = "\(.*\)"/\1/p' "$lf" | tr -d '\r')
   url=$(sed -n '/name = "arsenal"/,/subDir/s/^git = "\(.*\)"/\1/p' "$lf" | tr -d '\r')
@@ -127,7 +127,20 @@ stage_matrix() {
   fi
   [ "$(git -C "$im" rev-parse HEAD)" = "$want" ] || { bad "the IM in $im is not the pinned ${want:0:12}"; return; }
   [ -f "$im/tools/rebuild" ] || { bad "the pinned IM ${want:0:12} has no tools/rebuild"; return; }
-  bash "$im/tools/rebuild" matrix "$root" || bad "the matrix: not every cell is +"
+  local out rc red
+  out=$(bash "$im/tools/rebuild" matrix "$root" --optimize 2>&1); rc=$?
+  echo "$out"
+  case "$rc" in
+    3)      # every cell +; not settled, which Draft 6 (E.9) states: by exactly one use, IM's own copy of DMP 1370dc0, which its copy
+            # of Gravity 4ec1131 already includes
+      red=$(echo "$out" | grep -c 'redundant, already included through')
+      if [ "$red" != 1 ] || ! echo "$out" | grep -qx "use: im@${want:0:7} -> dmp@1370dc0  ? answered by .: redundant, already included through gravity@4ec1131"; then
+        bad "the optimizer: the redundant uses differ from what Draft 6 states (E.9)"
+      fi ;;
+    0) bad "the optimizer: the versions are settled, which Draft 6 (E.9) does not state; update E.9" ;;
+    4) bad "the optimizer: the versions are not a DAG" ;;
+    *) bad "the matrix: not every cell is +" ;;
+  esac
 }
 
 case "${1:-all}" in

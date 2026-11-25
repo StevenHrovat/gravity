@@ -11,15 +11,15 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 147 in all; the
-ledger's count table counts 122, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 154 in all; the
+ledger's count table counts 129, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
 |---|---|---|
 | Introduction | 0.13, 0.21 | 2 |
 | Part I, DMP's vocabulary | I.1, I.2, I.3, I.4b, I.5a, I.7b, I.7c | 7 |
-| Part II, the machine | II.0h (decidability over every truly possible state), II.0i (multiplicative steps simplified into additive complex ones), II.3.4, II.4f, II.12.5r, II.13.4 (a maximum over sectors as a rotation of a rate along a path), II.0.2b (the k by k table as the explanation mechanism), II.0.2c (the `·` cells and the DAG) | 8 |
+| Part II, the machine | II.0h (decidability over every truly possible state), II.0i (multiplicative steps simplified into additive complex ones), II.3.4, II.4f, II.12.5r, II.13.4 (a maximum over sectors as a rotation of a rate along a path), II.0.2b (the k by k table as the explanation mechanism), II.0.2c (the `·` cells and the DAG), II.0.3b, II.0.3c (the optimizer as the Arsenal's mirror; existence as settledness), II.0.4b to II.0.4e (the possibility space) | 14 |
 | Part III, Yang-Mills (III.10) | III.7.4c, III.9.5b, III.10 | 3 |
 | Part IV, GRH | IV.1.5c (the explicit formula as one turn), IV.2.5b, IV.2.7, IV.6 | 4 |
 | Part V, P vs NP (V.8) | V.2.4, V.4.1, V.4.2, V.5.3, V.8 | 5 |
@@ -32,7 +32,7 @@ reading").
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
 | Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b | 24 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
-| Appendix E | E.1, E.5, E.6, E.7, E.8 | 5 |
+| Appendix E | E.1, E.5, E.6, E.7, E.8, E.11 | 6 |
 
 **The readings added in Draft 5 and Draft 6, with their exact counterparts:**
 
@@ -63,6 +63,13 @@ reading").
 | DMP's statement is only `.`, since it can include | DMP uses nothing, every part includes it **[Lean]** | E.7 |
 | The drafts as additional readings, transitive to G0, an extensible library | the drafts form a DAG; every later draft reaches Draft 4 **[Lean]** | E.8 |
 | No proof relates them: not at the same time, or reflecting positively; the `.` boundary of a DAG | `allPlus_eff_iff`, `derive_irrefl`; the versions measured form a DAG, the repositories a cycle **[Lean]** | II.0.2c |
+| DMP.Arsenal as the self-similarity of positive constructability; the optimizer its mirror; `?` asserted, then negatively proven with `.`; the shortest sentence `DMP.{thing}!` | a use is redundant when another use already reaches it; the transitive reduction, the only settled form **[Lean]**; the tool's sentences **[paper]** | II.0.3b |
+| Only when the compiled and the optimized setting are exactly the same does the system exist; the lowest step count forces RP and transfers meaning | `Settled`, reached in one pass; every derivation survives **[Lean]**; RP is not in a table of uses | II.0.3c |
+| A question is a point, its answer a line giving only +, never a vector; an eigenvalue between two states; "Is there a right angle?"; the force that establishes the Real Space | a projector, answers 1 and 0; a state is a ray **[classical]**; r = i, the sector map, its corner at r **[Lean]** | II.0.4b |
+| The jumping rope: rigidity that looks like weakness; a circle around a point, a sphere behind the definition barrier, one speed; "strong theory" | the Bloch sphere and the Hopf circle; the flux tube (confinement expected, not proved); the rotating string, endpoints at the speed of light; string theory begun for the strong interaction **[classical]** | II.0.4c |
+| The circle gives SU(3) x SU(2) x U(1); SO(N! + 1); N from 2 to 3, never observed as 3; the rest follows | U(1), SU(2) and colour confinement do follow; SU(3) needs CP^2, and the seven-dimensional spaces with exactly that symmetry do not readily give chiral fermions **[classical]**: does not follow as stated | II.0.4d |
+| The `+-` assignment as the proof of O1's eigenvalue; a PP-typed, Yang-Mills shaped interface | `Classical.em` is `?`, not `!` **[Lean]**; free U(1): projectors, no gap **[classical]**; does not prove O1 | II.0.4e |
+| A part that includes nothing settles by `!` alone: DMP's own cell is `.` | the matrix tool's rule; the 3 by 3 of IM, Gravity and DMP passes **[paper]** | E.11 |
 
 ## R.1 DMP as an existence linter
 
