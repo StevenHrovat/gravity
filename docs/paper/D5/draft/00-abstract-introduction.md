@@ -39,7 +39,6 @@ neighbouring form (GRH for the Riemann hypothesis, NP versus coNP for P versus N
 SU(3) x SU(2) x U(1), not a Clay problem. The restatements are in Lean 4 with Mathlib, standard axioms only; DMP, a specification for trust, names them, and its readings are marked.
 
 No problem is solved: on the cards the open problem is the base case, on the Yang-Mills box the inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge, each a different open statement; results using it are marked conditional. Proved in Lean
-without it:Proved in Lean
 without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of fixed physical size, uniform in
 spacing and volume; the explicit formula for all nontrivial zeros of zeta (its real-place term not yet matched to Weil's); a
 crossing theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index; the

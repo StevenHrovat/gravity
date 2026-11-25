@@ -241,10 +241,10 @@ def source_commit():
 def build_label_sets(files):
     """Section numbers (headings of the drafts) and claim labels (rows of the ledger)."""
     for f in files:
-        HEADING_IDS.update(re.findall(r'(?m)^#{2,3} ([IVXART]+\.\d+(?:\.\d+)*)', io.open(f, encoding='utf-8').read()))
+        HEADING_IDS.update(re.findall(r'(?m)^#{2,3} ([IVXARTE]+\.\d+(?:\.\d+)*)', io.open(f, encoding='utf-8').read()))
     c = io.open(os.path.join(ROOT, 'CLAIMS.md'), encoding='utf-8').read()
     c = c[:c.index('## Draft 3 labels')]
-    LEDGER_IDS.update(re.findall(r'(?m)^\| ([IVXART]+\.[^ |]+) \| ', c))
+    LEDGER_IDS.update(re.findall(r'(?m)^\| ([IVXARTE]+\.[^ |]+) \| ', c))
 
 def label_links(t, hold):
     """A claim label that is not also a section number links to the ledger, where its row says what checks it."""
