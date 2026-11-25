@@ -445,6 +445,73 @@ Care:
   The kernel's induction is certified relative to a model outside it, and the base, that a minted system is DMP-complete, stays an
   assumption, run and checked case by case, in the same place as O1 (II.0.5f).
 
+**From step 1 to the encoder, packed into O1 (claim II.0.5h).** The first author: our naturals are certified at step 1, not 0, so they
+have already decayed into existence. This gives the exact bounds of the complexity question, written in IM's operators, and makes the
+one question-shaped problem of the prize category the unexpected primitive that holds already at `DMP.`; with the lower bounds for
+loss and the upper rate for its excision cost, the remainder is excised to assert `!`, given a DMP-complete previous step from which to
+run. The order, unchanged up to a shift, gives rise to the gauge theory that supports it: there has to be the possibility to observe for
+there to be observation, but only exactly as much as is certifiably required until a combination into a more optimal superset is
+reached. SU(5), already part of the essence (R.5b), translates directly as the hashing table of positive existence; a table that is
+existence-positive in its entirety, as SU(5) has to be by construction, gives rise to a DB encoding function, encoding and hash being the
+same function in a `+` or `-` decision state. This packs all the assumptions back into O1, where they belong; what does not pack is
+provably falsifiable, and so, as long as no exception is observed, a valid DMP-complete state until it ceases to be, the same as the
+one box. One exception to the Riemann hypothesis would lose the encoding tool and at once excise DMP-completeness, since without the
+encoder nothing translates DMP-completeness between rotations, which cuts the observability of the ray **[reading]**. Exact parts:
+
+* **Step 1.** Peano's axioms began at 1 (Peano 1889); Mathlib has the positive naturals `PNat`, with induction from 1. 1 is the set whose
+  only element is the empty set (II.0.5e). Without 0 the positive naturals have no identity for addition, while 1 is the identity for
+  multiplication, and every positive natural is a product of primes in exactly one way; ζ(s) = Σ n^(-s) runs over n >= 1, and for Re s > 1 it
+  equals its Euler product over the primes **[classical]**.
+* **The bounds in IM's operators.** `P.NP!`: P is contained in NP, and in coNP **[classical]**. `NP.coNP?` is open, and "NP is contained in coNP" is
+  equivalent to NP = coNP; `NP.P?` is the P versus NP question **[classical]**. DMP's statement is `.` (E.7).
+* **Loss, excision and `!` from the previous step.** Erasing a bit costs at least kT ln 2 (Landauer 1961, II.0.5g) **[classical]**; in
+  the contraction class the run settles within `balanceBound` steps (II.3.2) **[Lean]**; every refutation of an expanding formula crosses,
+  for two-premise systems (II.14.5) **[Lean]**. A step from a DMP-complete previous step is the inductive step of II.4.1 **[Lean]**, and the
+  conditional results of III.9.5 and III.13 are of this form **[Lean]**.
+* **The shift and the gauge theory.** A change of description that leaves every observable unchanged is a gauge symmetry; making it
+  local needs a connection, the gauge field (Weyl 1929; Yang-Mills 1954; on the lattice Wilson 1974) **[classical]**. The Lean acts
+  link by link (`gaugeAct`) and observes only gauge-invariant functions (`ActAdm`, defined in `OneBox/Criterion.lean`; `FineDecayInv`, `OneBox/Fine.lean`) **[Lean]**; a local
+  gauge symmetry cannot be broken spontaneously, so every gauge-variant quantity averages to zero (Elitzur 1975) **[classical]**.
+* **SU(5) as a table.** The block embedding of SU(3) x SU(2) x U(1) into SU(5) has kernel exactly Z_6 (IX.3.1h) **[Lean]**; its
+  image, the Standard Model group (SU(3) x SU(2) x U(1))/Z_6, is a paper observation (IX.3.1i) **[paper]**; the fifteen fermions of one
+  generation fill the 5-bar and the 10, one slot each, and their charges follow from the slots (Georgi-Glashow 1974) **[classical]**.
+* **Encoding and hash.** On a domain where a function is injective it is an encoding and can be undone; on a domain with more inputs
+  than outputs the same function must collide, and every hash has collisions (R.6a) **[Lean]**; the full turn undoes a known rotation
+  while a hash is not undone (II.2.8, R.8b) **[Lean]**.
+* **Packing into O1.** Every conditional Yang-Mills result runs from O1 (III.9.5) and the interface of III.13 is exactly O1 **[Lean]**.
+* **Falsifiable until an exception.** "No proof of 0 = 1 exists" is a Π1 statement, refuted by one finite object and never verified
+  from inside (R.1h) **[classical]**; the Riemann hypothesis is equivalent to a Π1 statement, one computable counterexample refuting it
+  (X.24: Lagarias' criterion with rational approximations; Davis-Matiyasevich-Robinson) **[classical]**. O1 with its level k0,
+  geometry and constants fixed is refuted by one failing level at or after k0 (III.13; the interface's form **[Lean]**).
+* **The encoder and RH.** The Riemann hypothesis, and GRH for Dirichlet L-functions, are proved in Lean by others and certified (Part
+  IV) **[external]**; one zero off the line together with that proof would give a proof of 0 = 1, from which every statement follows
+  **[classical]**.
+
+Care:
+
+* The positive naturals have the same order as the naturals from 0, up to the shift n -> n - 1, and stay countable; the difference from
+  the reals is still completeness (II.0.5g).
+* `NP.coNP` and `NP.P` keep `?`; `NP.coNP!` is not established, and II.0.5c stands. Settling NP versus coNP needs a statement about every
+  proof system (Cook-Reckhow 1979): lower bounds for particular systems are steps, not the whole.
+* The shift of the naturals is one global relabeling; a gauge theory needs the local version and a connection, which the naturals do not
+  supply by themselves. The gauge structure is what O1 is stated in, not a bound inside it.
+* The SU(5) table is injective, an encoding, not a hash in the sense of R.6a. The group theory holds; the minimal SU(5) model as physics
+  predicts proton decay at rates that experiments exclude (Super-Kamiokande 2017), and its couplings do not meet at one scale without
+  further structure (Amaldi-de Boer-Fuerstenau 1991). Whether a function is an encoding or a hash belongs to the function together with its domain.
+* Not everything packs into O1: the kernel's consistency lies beneath every theorem, O1 included (R.1h, II.0.5g); the base cases of the
+  other cards are different open statements, one assumption only by the first author's reading (X.64, X.64a); Yang-Mills' own O2 to O4
+  remain (III.9.5b, III.11). Of these, the kernel's consistency and the Riemann hypothesis are refutable by one finite exception; P != NP
+  is a Π2 statement, not of that form: a counterexample is an algorithm together with a proof that it is correct and runs in
+  polynomial time, not a finite object one can check, and BSD and Hodge have no known
+  form refutable by one exception. O1 as stated, from some level k0 on, allows finitely many failing levels and is refuted by one only
+  with k0 and its constants fixed.
+* An exception to the Riemann hypothesis would show that something in the chain fails, the kernel, the axioms or the match between the
+  library's statement and RH, and which one would have to be found; the library was read here, not rebuilt. The explicit formula that
+  ties the primes to the zeros holds without RH and is proved here in Lean without it, for zeta (IV.1.5). What RH adds: RH holds exactly
+  when π(x) = Li(x) + O(x^(1/2) log x), the sharpest error term (von Koch 1901) **[classical]**, which the first author reads as every tone
+  having the same amplitude **[reading]**. In mathematics an exception would cost that error term, not the encoding;
+  it is the certified system around it that the contradiction would end.
+
 ## II.1 The ledger and the transport theorem
 
 **Why it clicks.** A step that forgets a fixed share each time forgets geometrically. Write the share as a cost, and costs add.
