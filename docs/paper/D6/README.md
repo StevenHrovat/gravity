@@ -29,7 +29,10 @@ an instance gives O1 and the gap, O1 gives an instance, so the interface is exac
 the first author's one condition (II.0.5f): O1 supplied at minting under a universal witness agreed beforehand, assumed until one
 invalid case is found, recorded as a reading with its care points; Draft 6 as merged is not DMP-complete on its own criteria (E.9,
 E.6). II.0.5g adds the elastic spheres, real induction as +N!, the naturals and the reals equal under the universal operator, and
-DMP certifying the kernel it runs on relative to a model outside it, the base staying an assumption. The interface first
+DMP certifying the kernel it runs on relative to a model outside it, the base staying an assumption. II.0.5h closes the section:
+the naturals from step 1, the complexity question in IM's operators (`P.NP!`, `NP.coNP?`, `NP.P?`), the shift and the gauge theory,
+SU(5) as a table, encoding and hash as one function in a `+` or `-` state, and the assumptions packed into O1, what does not pack being
+falsifiable until an exception, one exception to the Riemann hypothesis being a contradiction. The interface first
 planned for a later draft is built here.
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
