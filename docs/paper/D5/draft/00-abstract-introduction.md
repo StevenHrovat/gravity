@@ -69,7 +69,6 @@ problem; on the boxes with a gate factor of their own (Yang-Mills, III.12; the m
 carries the content. On binary data, read as real numbers, every computation can be made reversible by keeping its history, so
 complex mathematics, the full turn of II.2.7 included, applies exactly **[classical]** (Bennett 1973; Toffoli 1980). The machine and
 the test of the next section carry it. When every
-step pays a cost above the floor,When every
 step pays a cost above the floor,
 settling is decidable within an explicit bound; when steps may pay exactly the floor, there are systems, the universal machine among
 them, for which no procedure decides it. Each open step is restated as a box. One certifiable step is the same on every card: a
