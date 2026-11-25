@@ -71,18 +71,25 @@ def mathify_inner(x):
     x = x.replace('sqrt', BS + 'sqrt ').replace('*', BS + 'ast ')
     return x.strip()
 
-def math_token(m):
+# Options a draft can switch on with <!-- typeset: ... --> in its first file; a draft without the marker builds as before.
+OPTS = set()
+
+def math_token(m, strict=True):
     base, rest = m.group(1), m.group(2)
     out = mathify_inner(base)
-    for op, arg in re.findall(r'([_^])(' + ATT + r')', rest):
+    trail = ''
+    pieces = re.findall(r'([_^])(' + ATT + r')', rest)
+    for i, (op, arg) in enumerate(pieces):
         if arg.startswith('(') or arg.startswith('{'):
             arg = arg[1:-1]
+        elif strict and 'strict-periods' in OPTS and i == len(pieces) - 1 and arg.endswith('.') and len(arg) > 1:
+            arg, trail = arg[:-1], '.'   # a sentence's full stop after a superscript stays outside the formula
         out += op + '{' + mathify_inner(arg) + '}'
-    return '$' + out + '$'
+    return '$' + out + '$' + trail
 
 def inner_math(x):
     """A short formula inside abs(...) or sqrt(...), as math without dollars."""
-    x = TOKEN.sub(lambda m: math_token(m)[1:-1], x)
+    x = TOKEN.sub(lambda m: math_token(m, strict=False)[1:-1], x)
     return re.sub(r'(?<!' + BS + BS + r')\b(' + GW + r')\b',
                   lambda m: (BS + 'zeta ' if m.group(1) == 'zeta' else GREEK_TEX[m.group(1)] + ' '), x).strip()
 
@@ -269,7 +276,9 @@ def build_cites(rows):
     for num, cite in rows:
         for piece in cite.split(';'):
             key = re.sub(r'\(.*?\)', '', piece).strip().rstrip(',.')
-            if KEY_RE.match(key):
+            ok = KEY_RE.match(key) or ('cited-bibliography' in OPTS and re.match(r'(?:von|van|de|di|du|le) ', key)
+                                          and KEY_RE.match(key.split(' ', 1)[1]))   # a name with a particle, "von Neumann 1923"
+            if ok:
                 seen.setdefault(key, set()).add(num)
     CITES.clear()
     for key in sorted(seen, key=len, reverse=True):
@@ -306,6 +315,8 @@ def bib_rows():
     rows.sort(key=lambda r: (surname(r[0]), r[2]))
     return rows
 
+CITED = set()   # with the option cited-bibliography: the entry numbers the text links to; only those are printed
+
 def bibliography_checked():
     """The bibliography from docs/paper/references.md (one table row per work, each checked against the page named), if it exists."""
     rows = bib_rows()
@@ -320,10 +331,15 @@ def bibliography_checked():
             t += ' \\doi{' + url[4:].replace('%', '\\%').replace('#', '\\#') + '}'
         elif url:
             t += ' \\url{' + url.replace('%', '\\%').replace('#', '\\#') + '}'
-        body.append('\\item\\hypertarget{bib%d}{}' % k + t)
+        if 'cited-bibliography' in OPTS:
+            if k not in CITED:
+                continue
+            body.append('\\item[{[%d]}]\\hypertarget{bib%d}{}' % (k, k) + t)   # keeps the number the text links to
+        else:
+            body.append('\\item\\hypertarget{bib%d}{}' % k + t)
     body.append('\\end{enumerate}}')
     CITING[0] = True
-    return '\n'.join(body), len(rows)
+    return '\n'.join(body), (len(CITED) if 'cited-bibliography' in OPTS else len(rows))
 
 def bibliography_checked_old():
     p = os.path.join(ROOT, 'references.md')
@@ -462,6 +478,10 @@ def main():
     COMMIT[0] = source_commit()
     LEDGER[0] = REPO_URL + '/blob/' + COMMIT[0] + '/' + REL + 'CLAIMS.md'
     build_label_sets(files)
+    first = io.open(files[0], encoding='utf-8').read() if files else ''
+    opt = re.search(r'<!-- typeset: (.+?) -->', first)
+    if opt:   # read before the citations are built, since an option can change which keys link
+        OPTS.update(x.strip() for x in opt.group(1).split(','))
     rows = bib_rows()
     if rows:
         build_cites([(k, r[5]) for k, r in enumerate(rows, 1)])
@@ -475,6 +495,10 @@ def main():
             if sub:
                 SUBTITLE[0] = sub.group(1).strip()
             md = re.sub(r'<!-- draft-subtitle: .+? -->\n?', '', md)
+            opt = re.search(r'<!-- typeset: (.+?) -->', md)
+            if opt:
+                OPTS.update(x.strip() for x in opt.group(1).split(','))
+            md = re.sub(r'<!-- typeset: .+? -->\n?', '', md)
         # the italic editors' note right under a chapter's first heading is for the repository, not the typeset paper
         md = re.sub(r'\A((?:# [^\n]*\n)?\s*)\*[^\n][\s\S]*?\*\n(?=\n)', r'\1', md, count=1)
         # A LaTeX block kept in an HTML comment (invisible in the Markdown view) passes into the typeset paper verbatim:
@@ -490,6 +514,7 @@ def main():
         for n, block in enumerate(raw):
             body = body.replace('RAWLATEXBLOCK%d' % n, block)
         parts.append('%% ---- ' + os.path.basename(f) + '\n' + body)
+    CITED.update(int(x) for x in re.findall(r'hyperlink\{bib(\d+)\}', '\n'.join(parts)))
     bib, n = bibliography()
     import datetime
     tex = PREAMBLE % (STATUS, datetime.date.today().isoformat(), REPO_URL, COMMIT[0]) + '\n\n'.join(parts) + '\n\n\\clearpage\n' + bib + '\n\\end{document}\n'

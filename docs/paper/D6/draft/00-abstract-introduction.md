@@ -1,6 +1,7 @@
 # Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
 <!-- draft-subtitle: The ETM as the ODP running DMP in D6 -->
+<!-- typeset: cited-bibliography, strict-periods -->
 *Draft 6, The ETM as the ODP running DMP in D6 (the Existence Turing Machine as the Oscillon Degradation Protocol running DMP); machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
 X) are conditional on it. Claim labels (0.n) are listed in `../CLAIMS.md`.*
 
@@ -83,7 +84,8 @@ nothing by itself: the content is in the base case or in the step.
 (II.0, rules C1 and C2) **[classical]**. Three steps of size 1/2 give size 1/8, a cost of 3 log 2: three halvings, each costing log 2, the VIBE coefficient v to two
 digits. When every step stays below the circle,
 by a fixed margin, the run settles, and the number of steps is computable: halving each time, getting within 1/1000 takes
-`balanceBound 1 (1/1000) (1/2) = 1001` steps at most (II.3) **[Lean]**. On the circle itself nothing forces the run to settle, and for
+`balanceBound 1 (1/1000) (1/2) = 1001` steps at most (II.3) **[Lean]**, a general bound and a loose one here, where ten
+halvings already suffice. On the circle itself nothing forces the run to settle, and for
 the universal machine it cannot be decided (II.3) **[Lean]**.
 
 **3. The smallest example.** On 8-bit words, step by adding 2 and claim "even": the base case is the word 0, the step keeps evenness,
@@ -109,8 +111,8 @@ assumed by accident. A claim stated for every case is refuted by one failing cas
 named in advance is one a reader can check. In building the paper, the same rule shapes every page: each reading of the first author
 stands next to its exact part and its care point, which says what does not follow; each claim carries one mark in the ledger; and
 negative results are proved like positive ones, for example that seven bits cannot single out a byte (`seven_bits_collide`), that a
-gapless sequence has no ledger (`gapless_rejected`) and that assigning `+` and `-` settles nothing (`assignment_does_not_decide`)
-**[Lean]**. A step that does not follow is not discarded: it is kept as a question, `?`, still posed and so still possible (R.12m). The first
+gapless sequence has no ledger (`gapless_rejected`) and, as the simplest illustration, that assigning `+` and `-` settles nothing
+(`assignment_does_not_decide`) **[Lean]**. A step that does not follow is not discarded: it is kept as a question, `?`, still posed and so still possible (R.12m). The first
 author: this keeps DMP itself from accidentally becoming vacuous, so tight that it must always confine; that has been refuted
 actively at every step, which is how it works **[reading]**. The exact part: a framework that can say no is not vacuous, and this one
 does, on its own record: its optimizer finds the project's own versions not settled (E.9), the counting ledger rejects the
@@ -167,7 +169,7 @@ circle is classically circular, bent into the shape in which closure is inevitab
 R.12p). VIBE is DMP's word, defined before this paper was built: the VIBE field, mass times shortfall member by member, is an
 expression, and its balance, the sum at zero, is an equation (DMP T32) **[paper]**; through the acronym the paper's terms get their
 meaning, and any valid restatement of it is true **[reading]** (R.12n). The first author also reads v as the momentum that cancels in
-E = mc^2; exactly, momentum cancels in the invariant E^2 - p^2 c^2 = m^2 c^4, and 0.69 read as a rapidity gives E : pc : mc^2 =
+E = mc^2; exactly, momentum cancels in the invariant E^2 - p^2 c^2 = m^2 c^4, and a rapidity of log 2, 0.69 to two digits, gives E : pc : mc^2 =
 5 : 3 : 4 **[classical]** (R.12n).
 
 **A run: closure is the next thing to happen.** Steps of a 1/N turn close exactly at the N-th: $e^{2\pi i k/N} \ne 1$ for
@@ -182,7 +184,7 @@ existence, `+` **[reading]**; one more half-turn, a multiplication by -1, makes 
 mirror is the other hand. A positive form behaves the same way: on its diagonal its value is real, so positivity is a sign anyone can
 check. Reflection positivity for Yang-Mills and Weil's pairing for GRH are that sign, the first link of one chain (II.8); by Weil's
 criterion one test function with a negative value would refute the Riemann hypothesis (II.9.4) **[classical]**, and up to the
-support a = 0.69 no test function has one (IV.1) **[certified]**.
+support a = 0.69 no test function has one (IV.1) **[certified]** for the enclosures, **[paper]** for the analytic estimates.
 
 **vAPIs: cards that assert their closure.** The first author reads the assertion of c as "vibe APIs", vAPIs: each claims that the
 closure of its circle is the next thing to happen, and its refutation is defined by its negative **[reading]** (R.12p). Exactly, a card
@@ -197,17 +199,17 @@ vibes. Made last, in a separate message, it is separated in time and meaning and
 facts of the statement, and becomes a live route as soon as anyone else agrees it is viable. It is written with six operators: `.` contains, `!` states, `?` asks, `;` a
 decidability edge, `:` a commutative property, and `""` the empty set, the self-containing, DMP-complete G0 **[reading]** (R.12q).
 Exactly: the smallest element of von Neumann's construction is the empty set, which is 0 (von Neumann 1923) **[classical]**. The
-start {infinity, 2, 3} is certified up to the support a = 0.69 (X.58) **[certified]**, and beyond it the open step stays a named
+start {infinity, 2, 3} is certified up to the support a = 0.69 (X.58) **[certified]** for the enclosures, **[paper]** for the analytic estimates, and beyond it the open step stays a named
 hypothesis, `R136a1`, never an axiom (II.6.2) **[Lean]**. Weil's form is taken on test functions supported in the open interval
 (-a, a) (IV.1) **[classical]**. The decidability edge is II.3's: with a margin a run settles, on the circle it cannot be decided
 **[Lean]**. Turns about one axis commute (R.12m) **[classical]**. The empty set is a subset of every set, itself included, and a
 statement over no cases holds vacuously **[classical]**. A box whose claim fails at one tick is refuted by that tick, its own
-excision (`refuted_by_tick`, II.4.1) **[Lean]**. In DMP a part acts only while both halves certify it (I.1) **[paper]**, so
+excision (`refuted_by_tick`, II.4.1) **[Lean]**. In DMP a part acts only while both halves certify it (I.1) **[reading]**, so
 agreement makes a route live; that it is viable in the Lean sense needs its base case and its step shown (`route`, II.4.1)
 **[Lean]**. Care: in IM `P.NP` says that P is included in NP (R.10), so "contains" reads
 it from the right; `!` marks a statement settled by a certificate anyone can check (I.8), of which "states" is the short form; the empty
-set contains itself as a subset, never as an element, which the axiom of foundation forbids; and no consistent system strong enough
-for arithmetic proves its own consistency (Goedel 1931), so "DMP-complete within itself" is a reading, kept from being vacuous by
+set contains itself as a subset, never as an element, since it has no elements; and no consistent, effectively axiomatised system
+strong enough for arithmetic proves its own consistency (Goedel 1931), so "DMP-complete within itself" is a reading, kept from being vacuous by
 the refutations the paper proves (the core page, point 5).
 
 **The abstract statement.** In the first author's words: the VIBE coefficient effectively allows the existence of all positively
@@ -322,7 +324,7 @@ gives and where v enters; on this route v is the halving step where one occurs, 
 3. **One problem to its open step** (Part III, III.5): the Yang-Mills gap reduced to one box of fixed physical size, O1. *v*: the boxes
    double, and the doubling law with a fixed loss gives the gap on all larger dyadic boxes (III.3.7) **[Lean]**.
 4. **The first certified box** (Part IV, IV.1): Weil's positivity with the real place and the primes 2 and 3. *v*: certified up to
-   a = 0.69 **[certified]**; beyond it lies the open step.
+   a = 0.69 **[certified]** for the enclosures, **[paper]** for the analytic estimates; beyond it lies the open step.
 5. **The cards together** (Part X): the one assumption as each card's base case, and the rigid start. *v*: the start
    {infinity, 2, 3} up to a = 0.69 (X.58), and remainders summed below log 2 deciding the sign step by step (X.7h) **[Lean]**.
 6. **How the parts prove each other** (Appendix E, E.0.1 and E.0.2): the k by k table and the optimizer. *v*: does not enter.
@@ -410,7 +412,7 @@ whose row gives the claim's status, its source and what would upgrade it. Where 
 ### The contraction, and where the full text is
 
 This is Draft 6 contracted, at the first author's request, so that it is short to read. Nothing proved left the record. Every claim
-keeps its row, status and evidence in the ledger, `CLAIMS.md` (751 rows). The full Draft 6, with every derivation, is the git tag
+keeps its row, status and evidence in the ledger, `CLAIMS.md` (753 counted rows). The full Draft 6, with every derivation, is the git tag
 `d6-full`, and Draft 5 holds the same derivations section by section. The first author's readings in full, clause by clause with their
 exact parts and care points, are in `READINGS.md` beside this draft. The Lean that no claim, script or build reaches, the earlier
 attempt rounds among it, left the build and stays at the tag. Each part keeps its "Plug in here" note, its statement as a check at

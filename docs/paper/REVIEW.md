@@ -118,6 +118,7 @@ The paper leaves the draft stage only under the release criterion (`OUTLINE.md`)
 | Draft 6 review, the reader's slope | 2026-11-25 | Fable at high effort on `6f8d566` (readability across fields), then an Opus check at medium effort on `48669c5`; `review/draft6-slope-fable.md` | the additions moved behind what they cite, the core page first, R.12 as clauses; the check: nothing lost, 2 abstract blockers and 5 should-fix fixed |
 | Draft 6, the two routes | 2026-11-25 | two Haiku subagents at low effort on `83914b4`, one per route, closed book; `review/draft6-routes-haiku.md` | route 2 passed all four questions; route 1 passed Q2 to Q4 and missed Q1 (not on its stops); route 2's ending and O1's 1.91 fixed |
 | Draft 6 contracted, route readers | 2026-11-25 | two Haiku subagents at low effort on the contraction branch, closed book; `review/draft6-contract-haiku.md` | Q2 and Q4 hold on both routes; route 2's Q1 and Q3 dropped with the readings moved to `READINGS.md`; unprinted-section pointers and the route endings fixed |
+| Draft 6, final review | 2026-11-26 | Opus subagent at medium effort on main after PR 86; `review/draft6-final-opus.md` | 0 blockers, 8 should-fix (certified marks needing the paper estimates, II.4h's cube, rapidity log 2, I.1 a reading, counts, pointers to removed text, the bibliography printed cited-only, the Yang-Mills exception), 9 nits; all fixed but three, recorded; 47 pages |
 
 ## Citation items for the part reviews (from the bibliography round, 2026-11-24)
 

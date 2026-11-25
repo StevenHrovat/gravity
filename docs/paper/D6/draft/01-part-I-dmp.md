@@ -54,6 +54,6 @@ in natural units **[classical]**; v itself is a reading (R.12n).
 | Viability | the claim holds at the start and every step keeps it | the first author's name for the induction at one scale | `route`: base case and inductive step (II.4.1) | II.4 |
 | Universality | a map of scales carries the claim to every scale | the first author's name for the sharing across scales | `route_everywhere`: the scale map keeps the step, the check and the marker (II.4.1) | II.4 |
 | Insight | the first author's label for an induction recognized as such | a kept step of the record; the labelled comments on DMP#25 (R.12k) | an induction, base case and inductive step (II.4.1) | II.4 |
-| Moin | a request proper, its satisfaction open | the label of O1 | `OpenStep`, posed and never assumed (R.9) | II.5 |
+| Moin | a request proper, its satisfaction open | the state of every named open step; read as the label of O1 | `OpenStep`, posed and never assumed (R.9) | II.5 |
 
 Part II states each counterpart once, in its most general form.
