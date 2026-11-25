@@ -11,8 +11,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 136 in all; the
-ledger's count table counts 114, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 137 in all; the
+ledger's count table counts 115, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -31,7 +31,7 @@ reading").
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
 | Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b | 22 |
-| Appendix T | T.6, T.10, T.11 | 3 |
+| Appendix T | T.6, T.10, T.11, T.13 | 4 |
 
 **The readings added in Draft 5, with their exact counterparts:**
 
@@ -54,6 +54,7 @@ reading").
 | 14 is 13 + existence; y^k as y + k | rotations add **[Lean]** | T.11 |
 | Moin: a request proper, its satisfaction open; the label of O1 | IM's channel state Moin **[paper]**; every OpenStep posed, never assumed **[Lean]** | R.9a |
 | Moin is the leading zero, rotated away as the certificate of a positive interaction | a left rotation is an exact doubling exactly when the leading bit is 0; every byte of vxunderground has one **[Lean]** | R.9b |
+| Kernel and language through a full turn, not entangled; a library as an importable API; reduction at the logical boundaries | the finite layer on the kernel alone, no requirement **[Lean]**; the de Bruijn criterion **[classical]** | T.13 |
 
 ## R.1 DMP as an existence linter
 
