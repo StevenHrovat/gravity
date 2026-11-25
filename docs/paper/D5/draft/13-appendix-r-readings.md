@@ -11,8 +11,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 135 in all; the
-ledger's count table counts 113, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 136 in all; the
+ledger's count table counts 114, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -30,7 +30,7 @@ reading").
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a | 21 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b | 22 |
 | Appendix T | T.6, T.10, T.11 | 3 |
 
 **The readings added in Draft 5, with their exact counterparts:**
@@ -53,6 +53,7 @@ reading").
 | Smelly: the full turn on vxunderground does not encode | smelly exactly when the turn is not full **[Lean]**; II.2.8 | T.11 |
 | 14 is 13 + existence; y^k as y + k | rotations add **[Lean]** | T.11 |
 | Moin: a request proper, its satisfaction open; the label of O1 | IM's channel state Moin **[paper]**; every OpenStep posed, never assumed **[Lean]** | R.9a |
+| Moin is the leading zero, rotated away as the certificate of a positive interaction | a left rotation is an exact doubling exactly when the leading bit is 0; every byte of vxunderground has one **[Lean]** | R.9b |
 
 ## R.1 DMP as an existence linter
 
@@ -343,4 +344,12 @@ statement P itself under a plain-words name, taken only as a hypothesis, never a
 satisfaction is what stays open **[Lean]** for the form (`API.lean`, `OpenStep`; IM's `R136a1`). The first author reads Moin as the label
 of O1: the one open step of Yang-Mills, properly requested, its satisfaction open **[reading]** (claim R.9a). In the terms of II.4.1 that
 is the base case of the Yang-Mills card, the one step a proof would be established from.
+
+**In binary, Moin is the leading zero (claim R.9b).** The first author: in binary, Moin is the leading zero, which is rotated away as a
+certification of positive interaction **[reading]**. Its exact part: rotating an n-bit word left by one place is an exact doubling
+exactly when its leading bit is 0; the zero leaves the top and nothing comes round to the end, while a leading 1 comes round and the
+result is not a doubling **[Lean]** (IM, `Arsenal/Toy.lean`, `rotl_of_leading_zero`, `rotl_of_leading_one`, `rotl_eq_double_iff`). Every
+byte of `vxunderground` is ASCII and has a leading zero, so rotating every byte left doubles it exactly; the byte 250, with a leading
+one, becomes 245 and not 500 **[Lean]** (`vx_leading_zero`, `vx_rotl`, `rotl_250`, kernel evaluations). Care point: the doubling
+certifies that the step was lossless, that a leading zero was there and nothing spilled; it says nothing about what the content is.
 
