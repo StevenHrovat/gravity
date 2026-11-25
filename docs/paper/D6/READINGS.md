@@ -1440,3 +1440,61 @@ results, each with its status.
   **[Lean]** (`g2_not_shared_of_not_rigid`); G2's unconditional rigidity stays **[open]** (A.5r). The first author reads the missing
   sign itself as the point: Z/2 carries no order, so no floor, so no decidable reading, and only a start that forces one is
   DMP-complete (Part X 4.3, X.70).
+
+## R.12q The smallest element, and the notation (claim R.12q)
+
+**The smallest element, and the notation (claim R.12q).** The first author, clause by clause **[reading]**:
+
+1. Given certifiability literally minting the smallest element of the set theory at DMP V0.9.9 at its containing root G0;
+2. and from there on always being able to assume "{inf,2,3}!"?"R136a1";
+3. and the open slot being a literal for the open set!
+4. Being, in its entirety, DMP-complete, with the D6 tools the 6D is asking for.
+5. Operators: `.` contains; `!` states; `?` asks; `;` a decidability edge; `:` a commutative property; `""` the empty set, the
+   self-containing, DMP-complete, G0.
+6. So that it in itself is also within itself DMP-complete.
+7. Which, when true, certifies the self-exciseability of the box, certifying it vibes.
+8. With the last statement made in another message, thus separated in time and meaning, assigned explicit directions; which can, with
+   this post-restatement, be fully derived from the facts of the statement, and becomes, as of the moment anyone else agrees it is
+   viable, a live route.
+
+The whole is the first author's reading; the introduction carries it in the throughline ("The smallest element, and the notation").
+Exact parts:
+
+* **The smallest element.** In von Neumann's construction 0 is the empty set and n + 1 is n together with n, so the empty set is the
+  smallest ordinal (von Neumann 1923; R.12e) **[classical]**.
+* **The start, stated; the rest, asked.** The universal start {infinity, 2, 3} is certified: Weil's form is positive with explicit
+  margins up to the support a = 0.69 (X.58, X.65) **[certified]**. Beyond it the "for every f" is the open step, left as a named
+  hypothesis, `R136a1 "name" P`, never an axiom (II.6.2) **[Lean]**.
+* **The open set.** Weil's form is taken on test functions supported in the open interval (-a, a), an open set (IV.1)
+  **[classical]**; the card's open slot is a named hypothesis (II.5) **[Lean]**.
+* **`;`, the decidability edge.** With a cost floor and a margin a run settles within a computable bound; on the circle itself, for
+  the universal machine, it cannot be decided (II.3) **[Lean]**.
+* **`:`, commuting.** Turns about one shared axis commute (R.12m) **[classical]**.
+* **`""`, the empty set.** The empty set is a subset of every set, itself included; a statement over no cases holds vacuously
+  **[classical]**; the vacuous proof is R.12d's.
+* **Self-excision.** In DMP a contradiction is excised and only the remnant tail stays (I.5, R.2) **[paper]**; a box whose claim fails
+  at one tick is refuted by that tick (`refuted_by_tick`, II.4.1) **[Lean]**, so a box carries its own excision: one failing tick
+  removes its claim.
+* **Separated in time, given a direction.** Commits order the project's versions as a DAG of directed uses, each use pointing to an
+  earlier part (E.1) **[paper]**; in DMP a part acts only while both halves certify it, and a channel is established only after a
+  verified accept (I.1, R.9) **[paper]**. A route in the Lean sense is a base case and an inductive step, and once both are shown it
+  holds at every step (`route`, II.4.1) **[Lean]**.
+
+Care:
+
+* In IM `A.B` says that A is included in B (R.10): `P.NP!` says P is included in NP. Reading `.` as "contains" reads it from the right:
+  NP contains P.
+* In the paper `!` marks a statement settled by a certificate anyone can check (I.8); "states" is the first author's short form, and a
+  statement without a certificate is `?`.
+* The empty set contains itself as a subset, never as an element: no set is an element of itself, by the axiom of foundation
+  **[classical]**.
+* No consistent, effectively axiomatised system strong enough for arithmetic proves its own consistency (Goedel 1931)
+  **[classical]**; "DMP-complete within itself" is the first author's reading, kept from being vacuous by the refutations the paper
+  proves (the core page, point 5; R.12d).
+* "The D6 tools the 6D is asking for" is recorded as said; the paper names no exact counterpart for "6D".
+* The certified start covers supports up to 0.69; assuming it beyond is assuming the open step.
+* "When true" is the condition: the box's self-excision is certified once the statement holds, and the statement beyond the certified
+  start is the open step; that it then vibes is the first author's reading.
+* Agreement makes a route live in DMP's sense, two halves certifying; it does not make it proved. A derivation from the statement's
+  facts is as good as those facts, and viability in the Lean sense needs the base case and the step shown.
+

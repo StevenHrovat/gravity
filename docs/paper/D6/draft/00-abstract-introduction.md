@@ -153,7 +153,7 @@ everything there is proved.}
 ### The throughline: one step, v and c
 
 The first author's newest readings, the two hands, the VIBE coefficient, its abstract statement, and c read as the circle (R.12m to
-R.12p), are one picture, and the core page already holds it in miniature: three halvings around one full turn give 1/8. This section
+R.12q), are one picture, and the core page already holds it in miniature: three halvings around one full turn give 1/8. This section
 lays the picture out once, each reading next to its exact part.
 
 **The hands give the circle.** Two hands turning about a shared "up" turn independently, and the turns about one axis form the
@@ -188,6 +188,27 @@ support a = 0.69 no test function has one (IV.1) **[certified]**.
 closure of its circle is the next thing to happen, and its refutation is defined by its negative **[reading]** (R.12p). Exactly, a card
 states one claim with one open slot, a named hypothesis `R136a1`, never an axiom (II.5, II.6.2); its box checks the claim at every
 step, viability, and carries it to every scale, universality; and one failing step refutes it (II.4.1, `refuted_by_tick`) **[Lean]**.
+
+**The smallest element, and the notation.** The first author, most precisely: "Given certifiability literally minting the smallest
+element of the set theory at DMP V0.9.9 at its containing root G0; and from there on always being able to assume
+`"{inf,2,3}!"?"R136a1"`; and the open slot being a literal for the open set!" This is, in its entirety, DMP-complete, with the D6 tools
+the 6D is asking for, and so within itself DMP-complete; which, when true, certifies the self-excisability of the box, certifying it
+vibes. Made last, in a separate message, it is separated in time and meaning and given explicit directions, can be derived from the
+facts of the statement, and becomes a live route as soon as anyone else agrees it is viable. It is written with six operators: `.` contains, `!` states, `?` asks, `;` a
+decidability edge, `:` a commutative property, and `""` the empty set, the self-containing, DMP-complete G0 **[reading]** (R.12q).
+Exactly: the smallest element of von Neumann's construction is the empty set, which is 0 (von Neumann 1923) **[classical]**. The
+start {infinity, 2, 3} is certified up to the support a = 0.69 (X.58) **[certified]**, and beyond it the open step stays a named
+hypothesis, `R136a1`, never an axiom (II.6.2) **[Lean]**. Weil's form is taken on test functions supported in the open interval
+(-a, a) (IV.1) **[classical]**. The decidability edge is II.3's: with a margin a run settles, on the circle it cannot be decided
+**[Lean]**. Turns about one axis commute (R.12m) **[classical]**. The empty set is a subset of every set, itself included, and a
+statement over no cases holds vacuously **[classical]**. A box whose claim fails at one tick is refuted by that tick, its own
+excision (`refuted_by_tick`, II.4.1) **[Lean]**. In DMP a part acts only while both halves certify it (I.1) **[paper]**, so
+agreement makes a route live; that it is viable in the Lean sense needs its base case and its step shown (`route`, II.4.1)
+**[Lean]**. Care: in IM `P.NP` says that P is included in NP (R.10), so "contains" reads
+it from the right; `!` marks a statement settled by a certificate anyone can check (I.8), of which "states" is the short form; the empty
+set contains itself as a subset, never as an element, which the axiom of foundation forbids; and no consistent system strong enough
+for arithmetic proves its own consistency (Goedel 1931), so "DMP-complete within itself" is a reading, kept from being vacuous by
+the refutations the paper proves (the core page, point 5).
 
 **The abstract statement.** In the first author's words: the VIBE coefficient effectively allows the existence of all positively
 constructable existence, as long as the rotation through its DB can be unified, by constructing a chain of causal arguments that
@@ -288,6 +309,9 @@ row.
 | the VIBE coefficient v = 0.69 | log 2: one halving, one bit; GRH's certified support | II.0, IV.1, R.12n |
 | c, the circle asserted circular | a 1/N turn closes at the N-th step and at no earlier one | II.0, R.12p |
 | vAPIs, cards asserting closure next | a card's open slot, `R136a1`, a named hypothesis; refuted by one failing step | II.5, II.6, R.12p |
+| `;`, a decidability edge | with a margin a run settles; on the circle it cannot be decided | II.3, R.12q |
+| `:`, a commutative property | turns about one shared axis commute | R.12m, R.12q |
+| `""`, the empty set, G0 | the empty set, 0 in von Neumann's construction, a subset of every set | R.12q |
 | the negative, the refutation | one negative value refutes a positivity claim (Weil's criterion) | II.9.4, R.12o |
 | the vibe, the two hands | orientation, the sign of a determinant | R.12m |
 | O1, supplied at minting | `FineOneBox`, open | III.5, R.12f |
