@@ -179,8 +179,9 @@ reading. `tools/rebuild matrix --optimize` runs the optimizer on the measured ve
 
 ### II.0.4 The possibility space
 
-*New in Draft 6.* The first author's subtitle for Draft 6 is *the Possibility Space*, and the first author remarks that it lines up
-with a base dimensionality of 6 **[reading]**. No exact counterpart is given for that remark; the paper's one six-dimensional space
+*New in Draft 6.* The first author's first subtitle for Draft 6 was *the Possibility Space*, now the theme of this section (the
+subtitle is now *the ETM as the ODP running DMP*, II.0.5), and the first author remarks that it lines up with a base dimensionality
+of 6 **[reading]**. No exact counterpart is given for that remark; the paper's one six-dimensional space
 is the six-sphere G2/SU(3) of R.7b, and a relation between the two is not claimed. Its theme is a reading of what a question is. It is given here with the exact parts it
 rests on, and the steps that do not follow as stated are named.
 
@@ -260,9 +261,63 @@ O1, from which all else is constructable, as a PP (Perelman-Poincare) typed, Yan
 * What does hold: O1 with the resolution clause gives torus decay, the gap and reflection positivity (III.9.5), and O1 is exactly
   DMP-completeness of the box (III.10c) **[Lean]**.
 
-Planned for Draft 7, not part of Draft 6: an interface whose fields are the slots of Perelman's proof as Appendix A reads it as a
-ledger (A.1g, itself a reading), typed for the Yang-Mills box, with one theorem from an instance to O1. Such an interface would put
-the open step into one named field and would not fill it.
+Built in III.13: an interface typed as the counting part of Perelman's proof as Appendix A reads it as a ledger (A.1g, itself a
+reading), for the Yang-Mills box, with a theorem from an instance to O1 and its converse. It is equivalent to O1 and supplies no
+instance.
+
+### II.0.5 The ETM as the ODP running DMP
+
+*New in Draft 6.* Draft 6's subtitle, from the first author's refinement of 2026-11-25; *the Possibility Space* stays the theme of
+II.0.4. The ETM is the Existence Turing Machine, one running system that runs every computation (II.3.1; `docs/unified/ETM.md`); the
+ODP is the Oscillon Degradation Protocol (I.5).
+
+**The clock (claim II.0.5a).** The first author: the ODP is the internal clock. Its tick ends at `+`, which gives rise to the next
+tick, a fully consistent perpetuum mobile as long as it can assert, as often as it needs to, that such a thing cannot exist; `+/+` is
+the universal act. DMP is then the operating system of the ODP kernel, and the kernel's clock is given by c **[reading]**. Exact parts:
+
+* the right angle `r` returns after four steps (`r_four`), a cycle that never ends **[Lean]**;
+* `+` times or divided by `+` is `+`, the sign rule **[classical]**;
+* a reversible computation can in principle run without dissipating, while a machine that delivers work from nothing cannot exist
+  (Bennett 1973; the first law of thermodynamics) **[classical]**: the cycle is a clock, not an engine, which is the exact side of
+  "as long as it can assert that such a thing cannot exist";
+* the endpoints of the rotating string move at c (II.0.4c) **[classical]**.
+
+That c is the clock of the kernel has no further exact part here.
+
+**One ETM, and booting (claim II.0.5b).** The first author: our experiencing it is itself the minting of the G0 state. With
+reflection positivity it keeps happening according to the ODP for as long as causality exists, and once it stops it restarts by
+itself; so there are not many ETMs but one, whose properties can be borrowed through the same trick it uses. Understanding this gives
+time its forward motion, which forces `r`, which forces degradation, which forces `r`: a boot **[reading]**. Exact part: running
+systems form a category with a terminal object, the space of ledgers, so every running system has exactly one map into it
+(`exists_unique_hom`, `univIsTerminal`, II.3.1) **[Lean]**; the "one" has this exact form, a terminal object, unique up to unique
+isomorphism. That experience mints G0, and that the cycle restarts by itself, have no exact part here.
+
+**0 = 1, NP versus coNP, P versus NP (claim II.0.5c).** The first author: in the end the paper proves 0 = 1 for the classical, along
+with its classical consequences, which asserts c, and that is enough; so it proves NP = coNP and uses that to prove P != NP, which
+gives a real 0 and 1 at the same ends of existence **[reading]**. This does not follow, for three reasons **[classical]**:
+
+* 0 = 1 holds in exactly one ring, the zero ring, where existence and non-existence coincide (R.5a, **[Lean]**). In the natural
+  numbers, the classical setting, 0 != 1, and a proof of 0 = 1 there would prove every statement, P = NP and P != NP alike, so it
+  could separate nothing.
+* NP = coNP and P != NP are open, and the paper proves neither: Part V proves a crossing theorem for sound two-premise proof systems
+  on expanding formulas and names its open steps (V.0, V.6).
+* NP = coNP would not give P != NP. P = NP implies NP = coNP, so NP = coNP is consistent with P = NP; the implication runs the other
+  way, NP != coNP would give P != NP.
+
+**The universal certificate, and the vacuous proof (claim II.0.5d).** The first author: the universal certificate is always `+1`, in
+the meaning of 1 = 1. Since this system forces 0 and 1 to be one at the same time, it excises the element of lower ordinality in its
+construction as that exact excision, which shows that to be truly rigorous a proof has to be vacuous **[reading]**. Exact parts
+**[classical]**:
+
+* 1 = 1 is the trivial certificate: it holds by reflexivity, and in Lean by `rfl`, with nothing to check beyond the two sides being
+  the same.
+* A proof carries no content beyond the fact that its statement holds: Lean's kernel identifies any two proofs of one proposition
+  (definitional proof irrelevance), so a certificate, once it exists, is one, whatever it was built from.
+* 0 and 1 are one exactly in the zero ring, where every element is 0 and every equation holds (R.5a, **[Lean]**).
+
+Care: "vacuous" in its logical sense, a statement over an empty domain, holds without saying anything about any object; a proof of a
+statement about objects that exist, such as the Wilson measure of O1, cannot be vacuous in that sense. What does hold is the weaker
+form above: a proof is contentless as an object (proof irrelevance), and its content is all in the statement it proves.
 
 ## II.1 The ledger and the transport theorem
 
