@@ -4,13 +4,15 @@
 
 **Plug in here.** Gives: the cards side by side, the one assumption and the rigid start. Needs: the parts it compares
 (III to IX), or their "Plug in here" notes. Route: the exact route, stop 5. VIBE coefficient: the rigid start {infinity, 2, 3} is
-certified up to a = 0.69 (X.58, X.65) **[certified]**; on the GRH route the summed remainders must stay below log 2 (X.7h)
+certified up to a = 0.69 (X.58, X.65) **[certified]** for the enclosures, **[paper]** for the analytic estimates; on the GRH route the summed remainders must stay below log 2 (X.7h)
 **[Lean]**, and beyond Dirichlet that is open (X.7i) **[open]**.
 
 **Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
 
 **The one assumption in the terms of II.4.1.** On each card the one assumption is the card's base case, its open statement: the
-card's box checks the same statement at every step, so the inductive step is free. The other half of the assumption, the gate shared
+card's box checks the same statement at every step, so the inductive step is free. Yang-Mills is the one exception in form: the
+instance the assembly uses is `FineOneBox`, the inductive step of the box between lattice levels (O1), and the card's own slot,
+`YMOneBox`, is tied to it in prose (III.5.9). The other half of the assumption, the gate shared
 across scales, has content only where a family of scales is defined and mapped onto the one box, as for G2 (A.5) and in the verify toy;
 on the cards no such family is defined in Lean, and sharing with a constant box adds nothing **[paper]**. In the toy the sharing is a
 theorem: every bit width is mapped onto one bit by reduction modulo 2, and the parity argument for each width sits in that map
@@ -40,7 +42,7 @@ unless said otherwise:
 These are different statements; what they share is the form of the step, each saying that a box is DMP-complete. Two abstract
 bounds on one sequence of tick factors, which the paper reads as GRH's edge and O1's edge, are proved independent (section 2,
 `transport_not_decay`, `decay_not_transport`); no theorem relates the instances to one another. Navier-Stokes is not an instance:
-its model box is not DMP-complete (`ns_not_complete`, VI.8); nor is the GU card's open step, which is not a statement about its box
+its model box is not DMP-complete (`ns_not_complete`, VI.8); nor is GU's open step, which is not a statement about its box
 (IX.8) **[paper]** (claim X.64).
 
 **What can be shown about O1.** The first author's statement: the only thing that can be shown is that O1 does not fail for anything that
@@ -93,5 +95,5 @@ result using it is conditional on it, and they name it as one assumption, read t
 Sections 1, 2, 4.1 to 4.3 and 6 of this part are in the full text.
 
 When a step closes, the change to the paper is local: the status in `../CLAIMS.md` moves from open to Lean (or paper), the section's
-verdict line changes, one cell of the table in section 4.1 changes, and the introduction's list of what remains shrinks by one item. No other
+verdict line changes, one cell of the table in section 4.1 changes, and the list of open steps (each part's open step; in the full text, the introduction's list) shrinks by one item. No other
 section needs to move. That is the test of the paper's structure.

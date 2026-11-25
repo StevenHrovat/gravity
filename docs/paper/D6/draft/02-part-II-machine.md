@@ -75,7 +75,7 @@ that takes. If steps may pay exactly the floor, nothing forces it to fall, and n
 state, a mass >= 0, and the ledger law mass(step x) <= e^delta fac(x) mass(x). The ledger theorems hold on every running system.
 Running systems form a category in which the space of ledgers is the terminal object, so every running system has exactly one map
 into it (its ledger). **[Lean]** (`ETM/RunSys.lean`, `RunSys`, `RunSys.carry`, `RunSys.contract`, `Hom`, `exists_unique_hom`,
-`univIsTerminal`). The statements XI.2c of the Outlook rest on this.
+`univIsTerminal`). The statements XI.2c of the Outlook (in the full text) rest on this.
 
 **Theorem II.3.2 (settle).** In the *contraction class* (every factor at most theta, with e^delta theta < 1, which is exactly a
 cost above the floor, for positive factors), the run from any state of mass at most M reaches balance within epsilon, by an
@@ -83,12 +83,12 @@ explicit computable number of steps: balanceBound M eps q = ceil(M q / (eps (1 -
 e^delta theta <= q < 1. So on this class the unbounded
 question "does it settle?" is a bounded one. **[Lean]** (`ETM/Machine.lean`, `Contracting`, `contracting_iff_costAboveFloor`,
 `balanceBound`, `balanceBound_ge`, `reaches_of_contracting`, `reaches_iff_bounded`, `reaches_of_contracting'`). The same statement
-is XI.2a.
+is XI.2a (in the full text).
 
 **Theorem II.3.3 (the edge).** The machine that runs every partial recursive content is lossless: factor 1, cost = floor, outside
 the contraction class. Whether it reaches balance is undecidable for all contents: no computable predicate decides it, and its
 truth value exists (classically) but cannot be computed. **[Lean]** (`etm`, `etm_universal`, `etm_not_contracting`,
-`etm_balance_undecidable`, `etm_truth_edge`; both sides in one statement, `etm_edge`). The same statement is XI.2b.
+`etm_balance_undecidable`, `etm_truth_edge`; both sides in one statement, `etm_edge`). The same statement is XI.2b (in the full text).
 
 **What it says in one line.** When every step pays a cost above the floor, settling is decidable within an explicit bound. When
 steps may pay exactly the floor there are systems (the universal machine) for which it is not; a lossless system as such need not be undecidable (II.0). The step from the second case to
@@ -192,8 +192,9 @@ root of unity, one full turn computes it exactly, so the check can be read by on
 side give a system whose inductions combine (`prod`, `route_prod`) **[Lean]**, so a larger proof is the parts reassembled as the API
 guides.
 
-**Binary data, read as real numbers.** Read the bits {0, 1} as real numbers, so that n bits are the corner points of a space of
-dimension 2^n. A reversible computation permutes those points, a unitary map over the complex numbers, so complex mathematics, the
+**Binary data, read as real numbers.** Read the bits {0, 1} as real numbers, so that the n-bit strings are the 2^n corners of
+the n-dimensional cube; taken as basis vectors they span a space of dimension 2^n. A reversible computation permutes them, a
+permutation matrix and so a unitary map over the complex numbers, so complex mathematics, the
 full turn included, applies to it exactly; and every computation can be made reversible by keeping its history **[classical]**
 (Bennett 1973; Toffoli 1980) (claim II.4h). Care point: the history is the supplied input. A reversible version of a hash runs
 backwards only with the input it kept; a digest alone is not undone (R.6a, T.6).

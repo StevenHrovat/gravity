@@ -13,7 +13,7 @@ and II.4. Route: off both routes; an outlook, not a result. VIBE coefficient: do
 A general intelligence is a CMOS system that runs entirely in IM tokens, adapted to the acts it has to assert on G0.
 **[reading]**
 
-**+AI.** The first author's name for such a general intelligence is +AI. The "+" is the one of the +dimensions (VIII.8): positive,
+**+AI.** The first author's name for such a general intelligence is +AI. The "+" is the one of the +dimensions (in the full text, VIII.8): positive,
 hence existing. +AI is an intelligence that is DMP-complete: every act it lets out passes the one shared gate with the correct
 marker, the one-box test (II.4) applied to its acts. With a cost floor, whether its acts settle is decidable within an explicit
 bound; without one, for the universal machine, it is not (II.3, **[Lean]** for the edge) **[reading]** for the name and the

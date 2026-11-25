@@ -96,5 +96,5 @@ rank statement follows from it (`bsd_of_refined`). **[open]**
   and no symmetry fixes it.
 
 **What this does to the problem.** The API does not settle BSD. It states BSD as a property of one equation, separates the proved
-structure from the one open equality, and shows the slot is filled where the order is 0 or 1 and for the example above. The
+structure from the one open equality, and shows the slot is filled where the order is 0 or 1 and for the curve y^2 = x^3 - x of the full text. The
 mechanical answer is: **open, with the open step located, and the three classical parts that Mathlib lacks named.**

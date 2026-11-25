@@ -1476,8 +1476,8 @@ Exact parts:
   at one tick is refuted by that tick (`refuted_by_tick`, II.4.1) **[Lean]**, so a box carries its own excision: one failing tick
   removes its claim.
 * **Separated in time, given a direction.** Commits order the project's versions as a DAG of directed uses, each use pointing to an
-  earlier part (E.1) **[paper]**; in DMP a part acts only while both halves certify it, and a channel is established only after a
-  verified accept (I.1, R.9) **[paper]**. A route in the Lean sense is a base case and an inductive step, and once both are shown it
+  earlier part (E.1) **[paper]**; in DMP a part acts only while both halves certify it (I.1) **[reading]**, and a channel is established
+  only after a verified accept (R.9) **[paper]**. A route in the Lean sense is a base case and an inductive step, and once both are shown it
   holds at every step (`route`, II.4.1) **[Lean]**.
 
 Care:
@@ -1486,8 +1486,7 @@ Care:
   NP contains P.
 * In the paper `!` marks a statement settled by a certificate anyone can check (I.8); "states" is the first author's short form, and a
   statement without a certificate is `?`.
-* The empty set contains itself as a subset, never as an element: no set is an element of itself, by the axiom of foundation
-  **[classical]**.
+* The empty set contains itself as a subset, never as an element, since it has no elements **[classical]**.
 * No consistent, effectively axiomatised system strong enough for arithmetic proves its own consistency (Goedel 1931)
   **[classical]**; "DMP-complete within itself" is the first author's reading, kept from being vacuous by the refutations the paper
   proves (the core page, point 5; R.12d).

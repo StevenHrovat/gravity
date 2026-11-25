@@ -6,7 +6,7 @@
 **Plug in here.** Gives: the positivity route to GRH, the explicit formula and the first certified box. Needs: II.4.1, and
 II.2.7 for the turn. Route: the exact route, stop 4. VIBE coefficient: here v is the paper's own a. Up to a = log 4 / 2 = log 2 only
 the real place and the primes 2 and 3 enter, and Weil's form is certified positive at a = 0.60, 0.65 and 0.69 (IV.1)
-**[certified]**; beyond it lies the open step. R.12o, v's abstract statement, reads this positivity, measured through zeta, as
+**[certified]** for the enclosures, **[paper]** for the analytic estimates; beyond it lies the open step. R.12o, v's abstract statement, reads this positivity, measured through zeta, as
 what v certifies **[reading]**; by Weil's criterion one negative value would refute RH (II.9.4) **[classical]**.
 
 **Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.

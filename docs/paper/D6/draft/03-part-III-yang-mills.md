@@ -1,7 +1,7 @@
 # Part III. Yang-Mills: the gap mechanism reduces to one box of fixed physical size
 
 *Draft 6. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/` (the modules of the earlier
-attempt rounds R2 to R4 live under `docs/mass-gap/formal/Attempts/`); notes relative to `docs/mass-gap/weak-coupling/`; the crossover notes are in
+attempt rounds R3 and R4 that a claim uses live under `docs/mass-gap/formal/Attempts/`; R2 and the rest are at the tag `d6-full`); notes relative to `docs/mass-gap/weak-coupling/`; the crossover notes are in
 `proof-phase/c9a-crossover/`. The full chain with all 51 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (III.n) are listed in
 `../CLAIMS.md`.*
 

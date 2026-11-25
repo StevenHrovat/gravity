@@ -38,7 +38,7 @@ now"), so this part states exactly how far each half of the Grand Unified readin
 **What this part does not do.** It does not derive the Standard Model's hypercharges, does not predict a new particle or number, and
 contains no new physics. The hypercharges are an **input**.
 
-## IX.2 The card
+## IX.2 The card in prose
 
 The DMP API (`docs/unified/API.md`) gives every problem a well-defined input, a proved structure on it, and one named open step. GU
 has that shape, but it is **not a `Problem` card in the Lean API**: its Lean pieces are group-level statements in `General/`, plus the

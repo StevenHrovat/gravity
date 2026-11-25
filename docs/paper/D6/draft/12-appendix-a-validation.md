@@ -19,7 +19,7 @@ fitting of the DMP vocabulary, which is **[reading]**.
 The restatement passes as a **description**: every element of VI.3.5 has an exact counterpart in Perelman's proof (forced time, one
 scale-invariant estimate, a defined act at a boundary, a quantum per act, a final certificate). It does **not** pass as a
 **mechanism**: what reaches Perelman's boundaries is decided by classifying all blowup shapes, not by a cost above a floor; the
-monotone quantity buys a sign, not a rate; and Ricci flow passes a sequence of boundaries and continues, while the Chen-Hou time `T*`
+monotone quantity buys a sign, not a rate; and Ricci flow passes a sequence of boundaries and continues, while the Chen-Hou time `T*` (the candidate blowup time of Chen and Hou's scenario, Part VI in the full text)
 is terminal. Nothing new is claimed.
 
 ## A.2b The ledger as a type
