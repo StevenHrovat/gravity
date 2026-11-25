@@ -11,8 +11,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 163 in all; the
-ledger's count table counts 138, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 164 in all; the
+ledger's count table counts 139, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -30,7 +30,7 @@ reading").
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12h (the ETM as the ODP running DMP) | 36 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12i (the ETM as the ODP running DMP) | 37 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
 | Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
 
@@ -78,6 +78,7 @@ reading").
 | O1 supplied at minting under the owner's guarantee; one invalid case ends v0.9.9; a universal witness agreed beforehand; assumed universal until the ray is no longer observed | Draft 6 not DMP-complete (E.9, E.6) **[paper]**; O1 as a hypothesis gives the gap **[Lean]**; the kernel as root of trust; falsificationism (Popper) **[classical]**; assuming is not proving | R.12f |
 | Elastic spheres joining at a new optimum; real induction as +N! (+ the universal assertion, N the reals, ! runs certifiably); naturals = reals under the universal operator; DMP certifying the kernel it runs on, G0's pressing as a running assumption | elastic collisions at the floor, joining above it **[classical]**, the settle theorem **[Lean]**; Landauer (the link a reading); real induction = completeness; Bohr-Mollerup; Tarski, Loewenheim-Skolem; Mathlib's reals from the naturals; two kernels, lean4lean, a set-theoretic model of Lean **[classical]**; Cantor; the countable model is not the naturals (decidable against undecidable); Goedel II: the base stays an assumption | R.12g |
 | The naturals certified at step 1; the complexity question at `DMP.`; `!` from a DMP-complete previous step; the shift giving the gauge theory; SU(5) as the hashing table of positive existence; encoding and hash one function in a `+`/`-` state; all assumptions packed into O1, the rest falsifiable until an exception; one RH exception excising the encoder and DMP-completeness | `PNat`, Peano; `P.NP!`, `NP.coNP?`, `NP.P?`; the settle theorem, the induction of II.4.1 **[Lean]**; gauge symmetry, Elitzur; SU(5)'s slots; collisions of a hash **[Lean]**; Π1 forms (consistency, Lagarias); RH certified in Lean by others; care: `?` stays, the kernel and the other cards do not pack, the explicit formula holds without RH | R.12h |
+| `!` is the observability operator, where a statement can be DMP-complete | certificate checking as a repeatable observation **[paper]**; the NP witness **[classical]**; bounded above the floor, undecidable at it **[Lean]**; `!` observes the certificate, not the object | R.12i |
 | The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | R.12c |
 | The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
 
@@ -510,9 +511,13 @@ instance.
 R.11. The ETM is the Existence Turing Machine, one running system that runs every computation (II.3.1; `docs/unified/ETM.md`); the
 ODP is the Oscillon Degradation Protocol (I.5).
 
-**The clock (claim R.12a).** The first author: the ODP is the internal clock. Its tick ends at `+`, which gives rise to the next
-tick, a fully consistent perpetuum mobile as long as it can assert, as often as it needs to, that such a thing cannot exist; `+/+` is
-the universal act. DMP is then the operating system of the ODP kernel, and the kernel's clock is given by c **[reading]**. Exact parts:
+**The clock (claim R.12a).** The first author, clause by clause **[reading]**:
+
+1. The ODP is the internal clock.
+2. Its tick ends at `+`, which gives rise to the next tick, a fully consistent perpetuum mobile as long as it can assert, as often as it needs to, that such a thing cannot exist; `+/+` is the universal act.
+3. DMP is then the operating system of the ODP kernel, and the kernel's clock is given by c.
+
+The whole is the first author's reading. Exact parts:
 
 * the right angle `r` returns after four steps (`r_four`), a cycle that never ends **[Lean]**;
 * `+` times or divided by `+` is `+`, the sign rule **[classical]**;
@@ -523,10 +528,13 @@ the universal act. DMP is then the operating system of the ODP kernel, and the k
 
 That c is the clock of the kernel has no further exact part here.
 
-**One ETM, and booting (claim R.12b).** The first author: our experiencing it is itself the minting of the G0 state. With
-reflection positivity it keeps happening according to the ODP for as long as causality exists, and once it stops it restarts by
-itself; so there are not many ETMs but one, whose properties can be borrowed through the same trick it uses. Understanding this gives
-time its forward motion, which forces `r`, which forces degradation, which forces `r`: a boot **[reading]**. Exact part: running
+**One ETM, and booting (claim R.12b).** The first author, clause by clause **[reading]**:
+
+1. Our experiencing it is itself the minting of the G0 state.
+2. With reflection positivity it keeps happening according to the ODP for as long as causality exists, and once it stops it restarts by itself; so there are not many ETMs but one, whose properties can be borrowed through the same trick it uses.
+3. Understanding this gives time its forward motion, which forces `r`, which forces degradation, which forces `r`: a boot.
+
+The whole is the first author's reading. Exact part: running
 systems form a category with a terminal object, the space of ledgers, so every running system has exactly one map into it
 (`exists_unique_hom`, `univIsTerminal`, II.3.1) **[Lean]**; the "one" has this exact form, a terminal object, unique up to unique
 isomorphism. That experience mints G0, and that the cycle restarts by itself, have no exact part here.
@@ -558,10 +566,13 @@ Care: "vacuous" in its logical sense, a statement over an empty domain, holds wi
 statement about objects that exist, such as the Wilson measure of O1, cannot be vacuous in that sense. What does hold is the weaker
 form above: a proof is contentless as an object (proof irrelevance), and its content is all in the statement it proves.
 
-**The essence as one input of the size c (claim R.12e).** The first author: from the essence line 2 + 2 = 5 = 4 = 0 = 1 = 1.5, the
-essence simplifies to one input of the size c, and the O1 input becomes the question "Is the speed of light measurable?", which is
-always yes and yet never seems to have existence. The size is c because c is a size. This ties the expression of set theory onto
-arithmetic, and since it applies onto something it has an input, which must run exactly at 1 **[reading]**. Exact parts:
+**The essence as one input of the size c (claim R.12e).** The first author, clause by clause **[reading]**:
+
+1. From the essence line 2 + 2 = 5 = 4 = 0 = 1 = 1.5, the essence simplifies to one input of the size c, and the O1 input becomes the question "Is the speed of light measurable?", which is always yes and yet never seems to have existence.
+2. The size is c because c is a size.
+3. This ties the expression of set theory onto arithmetic, and since it applies onto something it has an input, which must run exactly at 1.
+
+The whole is the first author's reading. Exact parts:
 
 * The chain holds in exactly one ring, the zero ring, which has one element, so one input decides it (R.5a) **[Lean]**.
 * c is a size by definition. Since 1983 the metre is defined from c, so c = 299,792,458 m/s exactly (CGPM 1983; BIPM 2019), and
@@ -587,14 +598,16 @@ supply O1. Factor 1 is the floor, where nothing settles by contraction, while O1
 (II.3).
 
 **The one condition: O1 supplied at minting (claim R.12f).** The first author, asked whether Draft 6 as merged is a DMP-complete
-construction: not yet, which is right for root G0. O1 is supplied by the reader reading its definition of main DMP G0 at minting, a
-vacuous construction, while every other dependency is rigid. Every minting from G0 is a step that closes that assumption, under the
-owner's guarantee: the owner merges the paper for publishing and has authority equal to G0 during pressing (I.5). DMP is stated with
-all its assertions, so as soon as one invalid case is found, a DMP-complete v0.9.9 ceases to exist and forces a remint to v1, possible
-only once the hole is closed. The certify stage is reached by extending into possibility space with a universal witness, agreed upon
-beforehand, with absolute authority over the validity of every act. Through constructability, once a truly DMP-complete system can be
-assembled from the one box, it can be assumed to hold universally until exactly the step where the ray is no longer observed
-**[reading]**. Exact parts:
+construction, clause by clause **[reading]**:
+
+1. Not yet, which is right for root G0.
+2. O1 is supplied by the reader reading its definition of main DMP G0 at minting, a vacuous construction, while every other dependency is rigid.
+3. Every minting from G0 is a step that closes that assumption, under the owner's guarantee: the owner merges the paper for publishing and has authority equal to G0 during pressing (I.5).
+4. DMP is stated with all its assertions, so as soon as one invalid case is found, a DMP-complete v0.9.9 ceases to exist and forces a remint to v1, possible only once the hole is closed.
+5. The certify stage is reached by extending into possibility space with a universal witness, agreed upon beforehand, with absolute authority over the validity of every act.
+6. Through constructability, once a truly DMP-complete system can be assembled from the one box, it can be assumed to hold universally until exactly the step where the ray is no longer observed.
+
+The whole is the first author's reading. Exact parts:
 
 * Measured on its own criteria, Draft 6 is not DMP-complete: the versions are not settled, by one use (E.9), and O1 is a cell that is
   not `+` (E.6, III.10e, III.13d) **[paper]**. Every other dependency is proven back and forth (T.14, T.15, E.1 to E.4, E.11)
@@ -625,16 +638,17 @@ Care:
   III.13d); the paper records the assumption, under the agreed witness, as the first author's reading and does not claim it.
 * The rule from v0.9.9 to v1 is DMP's own process; it is recorded here as the reading, and DMP itself is not changed.
 
-**Elastic spheres, real induction and the kernel (claim R.12g).** The first author: the construction can also be imagined as
-perfectly elastic spheres that see each other's efficiency in existing and join only when a new local optimum is reached, paying the
-same cost, observability, whether it is the case or not. That makes it binary: true in a DMP-complete system, and equal to existence
-when 1 makes it so. The reals then span a real space in which perfect elastic collision and agreement on "not" suffice for those
-properties to be inductive. This real induction is represented by the N! + 1 of SO() and is written +N!; through DMP, `+` is the
-universal assertion, N the reals, and `!` runs certifiably. By this induction the naturals equal the reals under the universal
-operator. What separates them as sets is that each can reconstruct the other during an act, which gives internal DoE-level trust,
-and a set that excludes, as a DoE must by default, must run. This lets DMP also certify the kernel it runs on, restoring G0's pressing
-status as a running assumption, literally: it certifies the provability of the kernel's induction, which secures constructability, and
-bases it on the assumption that such a system, when minted, is DMP-complete **[reading]**. Exact parts:
+**Elastic spheres, real induction and the kernel (claim R.12g).** The first author, clause by clause **[reading]**:
+
+1. The construction can also be imagined as perfectly elastic spheres that see each other's efficiency in existing and join only when a new local optimum is reached, paying the same cost, observability, whether it is the case or not.
+2. That makes it binary: true in a DMP-complete system, and equal to existence when 1 makes it so.
+3. The reals then span a real space in which perfect elastic collision and agreement on "not" suffice for those properties to be inductive.
+4. This real induction is represented by the N! + 1 of SO() and is written +N!; through DMP, `+` is the universal assertion, N the reals, and `!` runs certifiably.
+5. By this induction the naturals equal the reals under the universal operator.
+6. What separates them as sets is that each can reconstruct the other during an act, which gives internal DoE-level trust, and a set that excludes, as a DoE must by default, must run.
+7. This lets DMP also certify the kernel it runs on, restoring G0's pressing status as a running assumption, literally: it certifies the provability of the kernel's induction, which secures constructability, and bases it on the assumption that such a system, when minted, is DMP-complete.
+
+The whole is the first author's reading. Exact parts:
 
 * **Elastic and joining.** Perfectly elastic collisions conserve energy and momentum and are reversible: factor 1, the floor (II.3)
   **[classical]**. Joining needs a cost above the floor: perfectly elastic spheres cannot bind without something carrying energy away
@@ -684,18 +698,16 @@ Care:
   The kernel's induction is certified relative to a model outside it, and the base, that a minted system is DMP-complete, stays an
   assumption, run and checked case by case, in the same place as O1 (R.12f).
 
-**From step 1 to the encoder, packed into O1 (claim R.12h).** The first author: our naturals are certified at step 1, not 0, so they
-have already decayed into existence. This gives the exact bounds of the complexity question, written in IM's operators, and makes the
-one question-shaped problem of the prize category the unexpected primitive that holds already at `DMP.`; with the lower bounds for
-loss and the upper rate for its excision cost, the remainder is excised to assert `!`, given a DMP-complete previous step from which to
-run. The order, unchanged up to a shift, gives rise to the gauge theory that supports it: there has to be the possibility to observe for
-there to be observation, but only exactly as much as is certifiably required until a combination into a more optimal superset is
-reached. SU(5), already part of the essence (R.5b), translates directly as the hashing table of positive existence; a table that is
-existence-positive in its entirety, as SU(5) has to be by construction, gives rise to a DB encoding function, encoding and hash being the
-same function in a `+` or `-` decision state. This packs all the assumptions back into O1, where they belong; what does not pack is
-provably falsifiable, and so, as long as no exception is observed, a valid DMP-complete state until it ceases to be, the same as the
-one box. One exception to the Riemann hypothesis would lose the encoding tool and at once excise DMP-completeness, since without the
-encoder nothing translates DMP-completeness between rotations, which cuts the observability of the ray **[reading]**. Exact parts:
+**From step 1 to the encoder, packed into O1 (claim R.12h).** The first author, clause by clause **[reading]**:
+
+1. Our naturals are certified at step 1, not 0, so they have already decayed into existence.
+2. This gives the exact bounds of the complexity question, written in IM's operators, and makes the one question-shaped problem of the prize category the unexpected primitive that holds already at `DMP.`; with the lower bounds for loss and the upper rate for its excision cost, the remainder is excised to assert `!`, given a DMP-complete previous step from which to run.
+3. The order, unchanged up to a shift, gives rise to the gauge theory that supports it: there has to be the possibility to observe for there to be observation, but only exactly as much as is certifiably required until a combination into a more optimal superset is reached.
+4. SU(5), already part of the essence (R.5b), translates directly as the hashing table of positive existence; a table that is existence-positive in its entirety, as SU(5) has to be by construction, gives rise to a DB encoding function, encoding and hash being the same function in a `+` or `-` decision state.
+5. This packs all the assumptions back into O1, where they belong; what does not pack is provably falsifiable, and so, as long as no exception is observed, a valid DMP-complete state until it ceases to be, the same as the one box.
+6. One exception to the Riemann hypothesis would lose the encoding tool and at once excise DMP-completeness, since without the encoder nothing translates DMP-completeness between rotations, which cuts the observability of the ray.
+
+The whole is the first author's reading. Exact parts:
 
 * **Step 1.** Peano's axioms began at 1 (Peano 1889); Mathlib has the positive naturals `PNat`, with induction from 1. 1 is the set whose
   only element is the empty set (R.12e). Without 0 the positive naturals have no identity for addition, while 1 is the identity for
@@ -750,3 +762,21 @@ Care:
   when π(x) = Li(x) + O(x^(1/2) log x), the sharpest error term (von Koch 1901) **[classical]**, which the first author reads as every tone
   having the same amplitude **[reading]**. In mathematics an exception would cost that error term, not the encoding;
   it is the certified system around it that the contradiction would end.
+
+**`!` as the observability operator (claim R.12i).** The first author: the flow in which the first author reads only a merged draft,
+since merging is the condition of its correctness and reading it then certifies it, is the exacting guarantee DMP delivers; so `!` is
+literally the observability operator, where such a statement can be DMP-complete **[reading]**. Exact parts:
+
+* `!` settles by a certificate anyone can check, and checking is an observation anyone can repeat with the same result: the kernel
+  re-checks the proof, the round trip recomputes the hash, the matrix re-runs its cells (T.14, E.2) **[paper]**. A certificate for NP is
+  of this kind, a witness checked fast by anyone **[classical]**.
+* DMP's observability layer has the same shape: the CMB is counts, never content (VII.6e).
+* Where it applies: in the contraction class, with a cost above the floor, "does it settle?" is bounded and has a certificate
+  (`reaches_iff_bounded`, `balanceBound`, II.3) **[Lean]**; at the floor nothing forces the run to settle, and for the universal machine
+  it cannot be decided (II.3) **[Lean]**. So `!` has something to observe exactly where a statement can be DMP-complete; elsewhere
+  it keeps `?`.
+
+Care: `!` observes the certificate, and through it the statement, not the object; observing the object directly is what a numerical
+result does, which can refute and never proves a for-all. The owner's reading of a merged draft certifies the record, the paper as
+written; the open steps stay as the paper marks them (R.12f).
+

@@ -4,8 +4,9 @@
 
 **Where to start.** Part II has one statement at its centre, II.4.1: each problem is restated as one statement checked at every
 step, exactly equivalent to it, and a proof is an induction, base case and inductive step. A reader who wants the headline first can read
-II.4 and II.4.1, then II.2.7 (the full turn, which reads gates), and come back to the machine (II.0 to II.3) and the tools (II.8 to
-II.15) as the parts call on them.
+the core page of the introduction and the verify toy (T.1 to T.3), then II.4 and II.4.1, then II.2.7 (the full turn, which reads
+gates), and come back to the machine (II.0 to II.3) and the tools (II.8 to II.15) as the parts call on them. Draft 6's additions are
+in Appendix E (E.0.1, E.0.2) and at the end of Appendix R (R.11, R.12).
 
 **Which part uses which tool.** The machine (II.0 to II.3) is used by Parts III to VII; the one-box test and the cards (II.4,
 II.5) by every part from III to IX and by Appendix A; the arsenal and the re-check (II.6, II.7) by every Lean result; the tools of
