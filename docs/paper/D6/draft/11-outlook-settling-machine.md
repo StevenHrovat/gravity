@@ -3,6 +3,9 @@
 *Outlook, not a result. This Outlook records a concept by the first author, so that it is on paper and tied to the one theorem
 of this work it depends on. Nothing in it is built, trained or tested. Claim labels (XI.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the first author's concept of +AI, and the applied idea of XI.4, verbatim. Needs: II.3
+and II.4. Route: off both routes; an outlook, not a result. VIBE coefficient: does not enter exactly.
+
 ## XI.1 The concept, in the first author's terms
 
 A general intelligence is a CMOS system that runs entirely in IM tokens, adapted to the acts it has to assert on G0.

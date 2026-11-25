@@ -3,6 +3,10 @@
 *Draft 6. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (VI.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: three Navier-Stokes cards, and why the energy ledger alone is no certificate. Needs: II.4.1
+and II.1. Route: off both routes. VIBE coefficient: the scales are dyadic, 2^-k, each a halving of length, and the energy-only model
+box fails at some dyadic scale (`ns_not_complete`) **[Lean]**.
+
 **As a statement checked step by step (II.4.1).** Navier-Stokes has three cards (VI.2: route I, regularity, the A/B
 dichotomy), each checked at every step of its card box, with the open part in the base case; the paper does not assume any of
 them **[Lean]** for the card boxes (`tickBox_observable`). The model box of VI.8, built from the energy bound alone, is separate: its

@@ -5,6 +5,12 @@ attempt rounds R2 to R4 live under `docs/mass-gap/formal/Attempts/`); notes rela
 `proof-phase/c9a-crossover/`. The full chain with all 51 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (III.n) are listed in
 `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the SU(2) lattice mass gap reduced to one criterion on one box of fixed physical size, O1.
+Needs: II.4.1, the ledger (II.1) and the tools of II.12. Route: the exact route, stop 3. VIBE coefficient: the boxes double from level
+to level, and the doubling law with a fixed loss gives the gap on all larger dyadic boxes (an implication, III.3.7) **[Lean]**;
+rigorously log mu_4 >= log 4 = 2 log 2 **[classical]**; III.5.6 reads O1's familiar form as dropping a momentum term, as R.12n reads
+E = mc^2 **[reading]**.
+
 **As a statement checked step by step (II.4.1).** The steps are the lattice levels from a first level k0 of one box of fixed
 physical size; the statement checked at each level is the level criterion, the box's best one-box ratio within the margin. For some
 cell geometry and margin this holds at every level exactly when O1 holds in its Lean form **[Lean]** (`FineOneBox`,
@@ -289,8 +295,8 @@ and tubes are chains, where III.3 applies. What remains is:
 > on every multiple of L; in its Lean form, `FineOneBox` (below), uniformly over every boundary condition. **[open]**
 
 The familiar form F_e(L) > 1.91 (equivalently r(L) > 0.74) drops the excess act, as E = mc^2 drops the momentum term of
-E^2 = (pc)^2 + (mc^2)^2 (a **[reading]**). The drop is only seeming: c >= 0, so the full form implies the familiar one, but the
-familiar one alone does not give the chain criterion (III.5.8, examples in Lean). The number is path counting (**[paper]**, III.5.9);
+E^2 = p^2 c^2 + m^2 c^4 (a **[reading]**). The drop is only seeming: c >= 0, so the full form implies the familiar one, but the
+familiar one alone does not give the chain criterion (III.5.8, examples in Lean). The number 1.91 is a series estimate for log mu_4 **[numerical]**; rigorously it lies between 1.39 and 1.95 (III.5.4). It is path counting (**[paper]**, III.5.9);
 it is a sufficient route to the one-box sum and is stated for the torus free energy F_e of III.3, not for every outside.
 
 This is the grid requirement log 8 = 2.08 of III.4.1 refined from column sums to path counting. Containment moves the requirement

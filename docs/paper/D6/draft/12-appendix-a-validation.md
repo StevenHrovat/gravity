@@ -2,6 +2,9 @@
 
 *Draft 6. Claim labels A.n are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the check against Poincare (Perelman), SU(N) and the rigid groups, and III.13's ledger as a
+type (A.2b). Needs: II.4.1, and III.13 for A.2b. Route: off both routes. VIBE coefficient: does not enter exactly.
+
 ## A.0 Poincare (Perelman), and SU(N)
 
 **Purpose.** Check the restatement of VI.3.5 against a solved, accepted proof in which finite-time singularities occur, are

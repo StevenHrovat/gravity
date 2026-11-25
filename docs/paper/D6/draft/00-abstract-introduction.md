@@ -33,21 +33,21 @@ meaning becomes apparent and its place in existence slots neatly into a better p
 
 ## Abstract
 
-Seven problems are read here as one statement checked at every step of a sequence: Yang-Mills, Navier-Stokes, BSD, Hodge, GRH in
-place of the Riemann hypothesis and NP versus coNP in place of P versus NP (neighbouring forms), and a Grand Unified reading, not a
+Seven problems are read as one statement checked at every step: Yang-Mills, Navier-Stokes, BSD, Hodge, GRH for
+the Riemann hypothesis and NP versus coNP for P versus NP (neighbouring forms), and a Grand Unified reading, not a
 Clay problem. No problem is solved. The
-restatement holds exactly when the problem's statement holds at every step, so a proof is an induction: a base case and an inductive
-step; once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. The six Clay-form problems have cards, each with one named open step in Lean; GU is a box with no card. On a card the open step is
+restatement holds exactly when the problem's statement holds at every step, so a proof is an induction, base case and inductive
+step; once both hold it holds at every step, and at every scale along a map keeping the step and the check. The six Clay-form problems have cards, each with one named open step in Lean; GU is a box with no card. On a card the open step is
 the base case, on the Yang-Mills box the inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills,
 GRH, NP versus coNP, BSD and Hodge, each a different open statement; results using it are marked conditional. On binary data read as
-real numbers every computation can be made reversible, its history kept as a supplied input, so complex mathematics applies exactly. The restatements are in Lean 4 with Mathlib, standard axioms
-only; DMP's readings are marked.
+real numbers every computation can be made reversible, its history a supplied input, so complex mathematics applies exactly. The restatements are in Lean 4 with Mathlib, standard axioms
+only; DMP's readings are marked; the throughline is the VIBE coefficient 0.69, about log 2.
 
 Proved in Lean without the assumption: the reduction of the SU(2) lattice mass gap to one named criterion on one box of fixed
 physical size, uniform in spacing and volume; the explicit formula for all nontrivial zeros of zeta (its real-place term not yet
 matched to Weil's); a crossing theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the
 Hodge index; the full turn, giving the SU(N) hand-over log(1 + sqrt N) (electric sectors assumed positive, N >= 3) and the analytic
-rank as a winding number. Weil's positivity on a first box, with the real place and the primes 2, 3, is enclosed in ball arithmetic,
+rank as a winding number. Weil's positivity up to the support 0.69, with the real place and primes 2, 3, is enclosed in ball arithmetic,
 given analytic estimates argued in a note.
 
 ---
@@ -68,6 +68,26 @@ same way; a 0 is no longer part of the vibe, only the fact that it was is rememb
 
 The rest of the paper makes this picture exact: a claim kept at every step (viability), carried to every scale (universality).
 
+### The throughline: the VIBE coefficient
+
+VIBE is DMP's word, defined before this paper was built: the VIBE field (Variable Influence Balancing Expression, DMP T32) is mass
+times shortfall, member by member, and its sum is zero exactly when a boundary holds what it declares. Read both ways it is an
+expression, the field, and an equation, the balance **[paper]**. The first author names one number after it, the VIBE coefficient v,
+set to a = 0.69, and reads it as the one throughline of the whole project: through its acronym, defined before construction, it gives
+the paper's terms their meaning; as a backronym it is a layer of information contained in its own derivative, so any valid
+restatement of it is also true; and being both an equation and an expression is what makes it GU, through the VIBE field
+**[reading]** (R.12n).
+
+The exact part is short. 0.69 is log 2 = 0.693 to two digits, and log 2 is one halving: the cost of a step of size 1/2 (II.0, rule
+C2) and the information of one binary choice, one bit, in natural units **[classical]**. It is also the paper's own a: Weil's form for
+GRH is certified positive up to the support a = 0.69, the last support at which only the real place and the primes 2 and 3 enter
+(IV.1) **[certified]**. The first author also reads v as the momentum that cancels in E = mc^2; exactly, momentum cancels in the
+invariant E^2 - p^2 c^2 = m^2 c^4, and 0.69 read as a rapidity gives E : pc : mc^2 = 5 : 3 : 4 (R.12n) **[classical]**.
+
+Every part opens with a "Plug in here" note that says what it gives, what it needs, which route it belongs to and where v enters it
+exactly, or that it does not; the two routes after the core page follow v from stop to stop. Care: the number is shared and the
+reasons differ (a halving, a bit, the half-width of log 4), and reading them as one throughline is the first author's (R.12n).
+
 ### The core in one page
 
 Read this page first; everything after it unfolds from it, one idea at a time.
@@ -80,7 +100,8 @@ scale, and one failing step refutes it (II.4.1: `route`, `route_everywhere`, `re
 nothing by itself: the content is in the base case or in the step.
 
 **2. A step is a multiplication.** Each step multiplies by a number of size at most 1: the size is the cost, the angle is the turn
-(II.0, rules C1 and C2) **[classical]**. Three steps of size 1/2 give size 1/8, a cost of 3 log 2. When every step stays below the circle,
+(II.0, rules C1 and C2) **[classical]**. Three steps of size 1/2 give size 1/8, a cost of 3 log 2: three halvings, each costing log 2, the VIBE coefficient v to two
+digits. When every step stays below the circle,
 by a fixed margin, the run settles, and the number of steps is computable: halving each time, getting within 1/1000 takes
 `balanceBound 1 (1/1000) (1/2) = 1001` steps at most (II.3) **[Lean]**. On the circle itself nothing forces the run to settle, and for
 the universal machine it cannot be decided (II.3) **[Lean]**.
@@ -116,8 +137,9 @@ does, on its own record: its optimizer finds the project's own versions not sett
 gapless sequence (`gapless_rejected`) **[Lean]**, and the matrix stage fails on any redundant use other than the one stated (E.9)
 **[paper]**.
 
-**How to read on.** Press on the three toys until each closes (Appendix T), then mint the parts from the template: Part II builds the
-machine around these four points, Parts III to IX apply it one problem at a time, Part X compares them. The first author's vocabulary
+**How to read on.** Two routes lead on from here to the same conclusion, one through the exact results and one through the first
+author's readings (next section); every part also opens with a "Plug in here" note, so a reader who needs one part can start there.
+Part II builds the machine around these points, Parts III to IX apply it one problem at a time, Part X compares them. The first author's vocabulary
 is collected in I.8: DMP, the framework; G0, its ground; the ODP (Oscillon Degradation Protocol), pressing then minting; the ETM
 (Existence Turing Machine), the one running system; and three operators, `?` (does it exist), `!` (settled by a certificate anyone can
 check) and `.` (included). IM is the companion repository that holds the arsenal of shared Lean results; Gravity is this one; every reading is marked **[reading]** and sits next to its exact
@@ -147,6 +169,68 @@ inductive step; for G2, the dashed maps (the shared gate, named R136a1). In the 
 everything there is proved.}
 \end{figure}
 -->
+
+### Two routes, one conclusion
+
+**The conclusion both routes reach.** A claim kept at every step (viability) and carried to every scale (universality) holds at every
+step and every scale, and one failing step refutes it (II.4.1) **[Lean]**. Each problem's open part sits in one named place: on a
+card, the base case; on the Yang-Mills box, the inductive step between lattice levels, O1; for G2, the map of scales. That place is
+stated and not proved, and what does not follow is named with it (the core page, point 5). Along both routes the VIBE coefficient v,
+log 2 to two digits, marks the halving steps where they occur.
+
+**Route 1, the exact route,** for a reader who wants the proofs; the readings can be skipped. Each stop names what to read, what it
+gives and where v enters; on this route v is the halving step where one occurs, and at the last stop it does not enter.
+
+1. **The verify toy** (Appendix T, T.1 to T.3): a box that passes, one wrong step that refutes, one bit carried to every width. *v*:
+   the scales are bit widths, and reduction modulo 2 maps each onto one bit (T.2) **[Lean]**.
+2. **The machine** (Part II: II.0, II.3, II.4, II.4.1): steps as multiplications, settling within a computable bound, the headline as
+   a theorem. *v*: a step of size 1/2 costs log 2 (II.0, C2) **[classical]**.
+3. **One problem to its open step** (Part III, III.5): the Yang-Mills gap reduced to one box of fixed physical size, O1. *v*: the boxes
+   double, and the doubling law with a fixed loss gives the gap on all larger dyadic boxes (III.3.7) **[Lean]**.
+4. **The first certified box** (Part IV, IV.1): Weil's positivity with the real place and the primes 2 and 3. *v*: certified up to
+   a = 0.69 **[certified]**; beyond it lies the open step.
+5. **The cards together** (Part X): the one assumption as each card's base case, and the rigid start. *v*: the start
+   {infinity, 2, 3} up to a = 0.69 (X.58), and remainders summed below log 2 deciding the sign step by step (X.7h) **[Lean]**.
+6. **How the parts prove each other** (Appendix E, E.0.1 and E.0.2): the k by k table and the optimizer. *v*: does not enter.
+
+Arriving: the headline holds as a theorem, each open part is named, and none is proved.
+
+**Route 2, the reading route,** for a reader who starts from the first author's ideas. Each stop names the reading and the exact
+part it stands next to.
+
+1. **The two hands** (Start here; R.12m): the vibe, two frames sharing an up and a down. Exact: orientation as the sign of a
+   determinant **[classical]**.
+2. **The throughline and the vocabulary** (above; I.8; R.12n): VIBE, v and DMP's words. Exact: log 2, one halving, one bit
+   **[classical]**.
+3. **The essence line and 0 = 1** (R.5): one input decides the chain. Exact: the zero ring, with one element (R.5a) **[Lean]**.
+4. **The possibility space** (R.11): a question as a point whose answer gives it only `+`. Exact: the arithmetic of `r` and a
+   projector's two answers **[Lean]**.
+5. **The ETM as the ODP running DMP** (R.12, with R.12f, the one condition): the clock, the kernel and O1 supplied at minting. Exact:
+   the cycle of `r` and the one terminal running system **[Lean]**; O1 supplied is O1 assumed, not proved.
+6. **What does not follow, and why that is useful** (the core page, point 5). Exact: one failing step refutes (`refuted_by_tick`), and
+   assigning `+` and `-` settles nothing (`assignment_does_not_decide`) **[Lean]**.
+
+Arriving: every reading has met its exact part, and the conclusion is the one route 1 reached: the headline holds as a theorem,
+each open part is named, and none is proved. The exact parts on the way differ (route 2 passes the zero ring, `r` and the running
+system, which route 1 does not), and the table below joins them.
+
+**Where the routes meet.** Each of the first author's names, its exact name, and where both stand; a reader can change routes at any
+row.
+
+| The first author's name | Exact name | Where |
+|---|---|---|
+| viability | induction: base case and inductive step (`route`) | II.4.1 |
+| universality | a map of scales keeping the step, the check and the marker (`route_everywhere`) | II.4.1 |
+| the VIBE coefficient v = 0.69 | log 2: one halving, one bit; GRH's certified support | II.0, IV.1, R.12n |
+| the vibe, the two hands | orientation, the sign of a determinant | R.12m |
+| O1, supplied at minting | `FineOneBox`, open | III.5, R.12f |
+| 0 = 1 | the zero ring, one element | R.5a |
+| `?` | posed, never assumed (`OpenStep`) | R.9a |
+| `!` | settled by a certificate anyone can check | I.8, R.12i |
+| «0ne1» | the pigeonhole: more inputs than outputs collide | R.12l |
+| R136a1 | the token: holds exactly when the claim does (`R136a1.iff`) | II.6, R.12l |
+| the ODP | a run: pressing, then minting | I.8, R.12a |
+| DMP-complete | the marker agrees with the gate at every tick | II.4 |
 
 ### How to read the status marks
 
@@ -432,6 +516,10 @@ classical, hence NP = coNP and P != NP, does not follow, and R.12 says why. R.12
 supplied at minting, under a universal witness agreed beforehand, and assumed until one invalid case is found. The paper records it
 as a reading next to its exact parts and does not claim O1.
 
+Finally, a reading aid that orients the whole paper: the first author's VIBE coefficient v = 0.69, log 2 to two digits, as the one
+throughline (R.12n); two routes to the same conclusion, one exact and one through the readings, with a table where they meet; and a
+"Plug in here" note opening every part. They add navigation and one reading, and no claim beyond it.
+
 ### Plan
 
 Part I: DMP, the vocabulary. Part II: the machine, then the tools the problems use; its centre is II.4.1, the headline as a
@@ -442,4 +530,5 @@ compares the cards once they have been read. Then the Outlook
 (sections XI.n). Appendix A: validation (Poincare, SU(N) and the rigid groups), with III.13's ledger as a type (A.2b). Appendix R: DMP's
 neighbours and the first author's readings that no card uses, closing with the possibility space (R.11) and the subtitle's readings,
 *The ETM as the ODP running DMP in D6* (R.12). Appendix T: the verify toy, the headline run on binary words, to read in full and rerun.
-Appendix E: the explanation mechanism and its mirror, the optimizer (E.0.1, E.0.2), applied to the parts of this project.
+Appendix E: the explanation mechanism and its mirror, the optimizer (E.0.1, E.0.2), applied to the parts of this project. Every
+part opens with a "Plug in here" note: what it gives, what it needs, its route, and where the VIBE coefficient v enters it.

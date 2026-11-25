@@ -3,6 +3,11 @@
 *Draft 6. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/rh-guide/`. Claim labels (IV.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the positivity route to GRH, the explicit formula and the first certified box. Needs: II.4.1, and
+II.2.7 for the turn. Route: the exact route, stop 4. VIBE coefficient: here v is the paper's own a. Up to a = log 4 / 2 = log 2 only
+the real place and the primes 2 and 3 enter, and Weil's form is certified positive at a = 0.60, 0.65 and 0.69 (IV.1)
+**[certified]**; beyond it lies the open step.
+
 **As a statement checked step by step (II.4.1).** For a finite zero model the statement is the sign at every scale (`ScaleSign`),
 and the card's box checks it at every step (`grh_box_iff`, IV.8) **[Lean]**. The statement is the same at every step, so the
 inductive step is free and the open part is the base case, the whole of `ScaleSign`. The certified first scales (IV.1, the first box)

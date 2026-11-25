@@ -3,6 +3,10 @@
 *Draft 6. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/pnp/`. Claim labels (V.n) are listed in `../CLAIMS.md`.*
 
+**Plug in here.** Gives: the crossing theorem for sound two-premise proof systems, and where NP versus coNP stays open. Needs:
+II.4.1, II.8 and II.14. Route: off both routes; read it for P versus NP. VIBE coefficient: it enters only as the bit: pointer jumping
+halves the depth with each pass (II.15.2) and seven bits cannot single out a byte (`seven_bits_collide`, R.12l) **[Lean]**.
+
 **As a statement checked step by step (II.4.1).** The statement is the card's open step, the crossing cost (`CrossingCost`),
 checked at every step of the card's box (V.10) **[Lean]**; the inductive step is free and the open part is the base case. A passing
 box gives every refutation at least e^(theta b) lines (`np_box_concl`).
