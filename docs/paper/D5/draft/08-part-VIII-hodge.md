@@ -3,9 +3,9 @@
 *Draft 5. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (VIII.n) are listed in `../CLAIMS.md`.*
 
-**As an observable system (II.4.1).** For an input of codimension p the claim is the Hodge statement for it, asked at every tick
-of the card's box (`hodge_box_iff`, VIII.8) **[Lean]**; the route's step is free and the open part is its start, which is proved for
-divisors (`hodge_box_divisor`, from Lefschetz (1,1) with its named inputs).
+**As a statement checked step by step (II.4.1).** For an input of codimension p the statement is the Hodge statement for it,
+checked at every step of the card's box (`hodge_box_iff`, VIII.8) **[Lean]**; the inductive step is free and the open part is the base
+case, which is proved for divisors (`hodge_box_divisor`, from Lefschetz (1,1) with its named inputs).
 
 ## VIII.0 What is proved, by whom, and what this part does
 

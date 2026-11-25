@@ -201,6 +201,19 @@ their needed uncertainty" is the security parameter **[reading]** (claim R.6a). 
 with k leading zero hex digits and a final 1, found for k up to 5, the expected work growing sixteenfold per fixed digit, and the full
 shape 000...0001 out of reach **[numerical]**.
 
+**Every trusted hash proven by rotation (claim R.6b).** The first author's rule: any hash that is trusted has first to be proven
+by rotation, back and then forth, each step delivering the expected value, so that nothing is written that cannot be read back,
+verified and certified; the path is the certificate **[reading]**. Its exact form is a check the repository runs in CI on every push
+and pull request and, once turned on per clone, before every commit and push (`tools/trust-roundtrip.sh`, `.githooks`,
+`.github/workflows/trust-roundtrip.yml`). The DMP pin goes back (the vendored copy hashes to the pin's sha256) and then forth (the
+pinned commit, fetched by its id, rebuilds the copy byte for byte); every commit id the repository names (IM's arsenal, Mathlib
+through its tag and its recorded id, the CI actions) is fetched by its id and the id recomputed from its content; an action trusted
+by a movable tag is refused. The check passes with 8 proofs, and one tampered byte of the vendored copy fails it **[paper]**. The
+first author reads this as the G0 DMP being unable to write what it cannot read, which makes it more secure as a G0 **[reading]**.
+Care points: git commit ids are SHA-1, which has known collision attacks, so the pin's sha256 over the content is the strong link; a
+write that goes around the gate is caught at the next run, not prevented; the hashes of build products (Mathlib's compiled files, the
+exported environment) are recomputed by the kernels stage, not here.
+
 ---
 
 ## R.7 The full turn: the factorial, Stirling, and SO(N! + 1)

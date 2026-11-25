@@ -2,8 +2,8 @@
 
 *Draft 5, 2026-11-25 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
 
-**Where to start.** Part II has one statement at its centre, II.4.1: every observable system has a one-box description,
-DMP-complete exactly when its claim holds at every tick, with a route to the proof. A reader who wants the headline first can read
+**Where to start.** Part II has one statement at its centre, II.4.1: each problem is restated as one statement checked at every
+step, exactly equivalent to it, and a proof is an induction, base case and inductive step. A reader who wants the headline first can read
 II.4 and II.4.1, then II.2.7 (the full turn, which reads gates), and come back to the machine (II.0 to II.3) and the tools (II.8 to
 II.15) as the parts call on them.
 
@@ -245,33 +245,58 @@ the sharing being the named hypothesis R136a1 "the gate is shared across scales"
 and the card box exactly when the card's open step holds, and then gives the card's conclusion; it restates the step and proves no
 new bound **[Lean]** (`ETM/CardBox.lean`, claim II.4e).
 
-### II.4.1 The front door: every observable system
+### II.4.1 Restatement and induction: the front door
 
-An *observable system* has states, one step and its own claim at
-each state, a decidable proposition. Decidability is classical here, so this is no restriction: every proposition is an observable
-system with one state. Its one-box description is a box of the same API with the same states and step, whose marker always asserts
-the claim (*inside*) and whose gate reads whether the claim is true; the marker is not read off the gate, so II.4c's vacuity is
-avoided, and the box is correct at a state exactly when the claim holds there (`correct_iff`).
-Four facts hold for every observable system **[Lean]** (IM, `Arsenal/Observable.lean`; claim II.4g):
+In familiar terms: a problem is restated as one statement checked at every step of a sequence, and the restatement holds exactly
+when the statement holds at every step. A proof then has the shape of an induction: a base case and an inductive step. In DMP's
+terms a system with states, one step and its own claim at each state is an *observable system*; its restatement is its *one-box
+description*, a box of the same API whose marker always asserts the claim (*inside*) and whose gate reads whether the claim is true,
+so the box is correct at a state exactly when the claim holds there (`correct_iff`). The marker is the claim asserted, never read
+off the gate: the self-marked box, whose marker is the gate's own verdict, always passes and says nothing (II.4c, `selfMarked_complete`),
+and this box is its opposite. The claim is a decidable proposition; decidability is classical here, so this is no restriction:
+every proposition is an observable system with one state.
 
-* *Representation* (`box_complete_iff`): the description is DMP-complete from a start exactly when the claim holds at every tick.
-  This is by construction, a restatement.
-* *A route to the proof* (`route`, exact along the run `route_iff`): the claim at the start and a step that keeps the claim make the
-  description DMP-complete. This is induction on the tick.
-* *Certified universally* (`route_everywhere`): once the route is shown, the claim is certified at every tick and, with the gate
-  shared across scales (the named hypothesis R136a1, never an axiom), at every tick of every scale.
-* *Falsifiable* (`refuted_by_tick`): one tick where the claim fails refutes it.
+**What each word buys** **[Lean]** (IM, `Arsenal/Observable.lean`; claim II.4g):
+
+* *Restatement* (`box_complete_iff`): DMP-complete from a start exactly when the claim holds at every step. By definition; it proves
+  nothing by itself.
+* *Induction* (`route`, exact along the run `route_iff`): the base case (the claim at the start) and the inductive step (a step that
+  keeps the claim) give the claim at every step. This is induction on the step; a proof of this shape exists exactly when the claim
+  holds along the run, so the shape says what must be shown, not that it can be.
+* *Every scale* (`route_everywhere`): where every scale's box is mapped onto the one box by a map that keeps the step, the gate and
+  the marker (the shared gate, the named hypothesis R136a1), the induction shown once holds at every step of every scale. The
+  content of this part lies in the map: in the verify toy the parity argument for k bits sits in the map onto one bit (T.2).
+* *Falsifiable* (`refuted_by_tick`): one step where the claim fails refutes it.
 
 When the observation is a reading against a margin (`ofReading`) and the reading is a coefficient hidden in a sum of N powers of a
-root of unity, one full turn computes it exactly, so the gate can be read by one turn (`turn_gate`, II.2.7). The cards of Parts III
-(Yang-Mills), IV (GRH), V (NP versus coNP), VII (BSD) and VIII (Hodge), and the tick box of Part IX (GU), are observable systems:
-the tick box of a sequence of statements passes exactly when the observable system with the ticks as states, the successor as step
-and the statement as claim has a DMP-complete description (`ETM/CardBox.lean`, `tickBox_observable`) **[Lean]**. Part VI has no card
-of its own (VI.8). A route has two parts, and where the open part sits differs. On a card the claim is the same at every tick, so the
-step is free and the whole open statement is the start. On the boxes with a gate factor of their own, the Yang-Mills box (III.12)
-and the model Navier-Stokes box (VI.8), the step carries the content. So the route has one form everywhere, and the parts show where
-its open part sits. Two systems run side by side give a system whose routes reassemble (`prod`, `route_prod`) **[Lean]**, so a larger
-proof is the parts reassembled as the API guides. Appendix T runs all of it on binary words.
+root of unity, one full turn computes it exactly, so the check can be read by one turn (`turn_gate`, II.2.7). Two systems run side by
+side give a system whose inductions combine (`prod`, `route_prod`) **[Lean]**, so a larger proof is the parts reassembled as the API
+guides.
+
+**Binary data, read as real numbers.** Read the bits {0, 1} as real numbers, so that n bits are the corner points of a space of
+dimension 2^n. A reversible computation permutes those points, a unitary map over the complex numbers, so complex mathematics, the
+full turn included, applies to it exactly; and every computation can be made reversible by keeping its history **[classical]**
+(Bennett 1973; Toffoli 1980) (claim II.4h). Care point: the history is the supplied input. A reversible version of a hash runs
+backwards only with the input it kept; a digest alone is not undone (R.6a, T.6).
+
+**Where the open part sits, problem by problem** (claim II.4g for the Lean column; the reading of the two boxes with a gate factor
+of their own as observable systems is **[paper]**, since they are gravity's own box type and no Lean bridge to IM's is written):
+
+| Problem | Statement checked step by step | Lean box | Open part | Lean link |
+|---|---|---|---|---|
+| III Yang-Mills | the level criterion at every lattice level from k0, for some cell geometry and margin | `ymBox` | the inductive step, level to level: O1 (`FineOneBox`, equivalent in Lean, `fineOneBox_iff_complete`) | [paper] for the reading |
+| III Yang-Mills card | the chain form `YMOneBox` at every step | `cardBox` | the base case | `tickBox_observable` |
+| IV GRH | the sign at every scale (`ScaleSign`) at every step | `cardBox` | the base case | `tickBox_observable` |
+| V NP vs coNP | the crossing cost (`CrossingCost`) at every step | `cardBox` | the base case | `tickBox_observable` |
+| VI Navier-Stokes, three cards | route I's `PeriodContraction`; regularity; the A/B dichotomy (VI.2) | `cardBox` | the base case, not assumed by the paper | `tickBox_observable` |
+| VI model box | the energy-only factor within the margin at every dyadic scale | `nsBox` | fails at some scale: the energy ledger refuted as a certificate, not regularity | [paper] for the reading |
+| VII BSD | BSD for the curve at every step | `cardBox` | the base case | `tickBox_observable` |
+| VIII Hodge | the Hodge statement for the input at every step | `cardBox` | the base case, proved for divisors | `tickBox_observable` |
+| IX GU | charge quantisation at every step | `tickBox` (a box, no card) | none in the box: it passes, proved; the GU open step lies outside it (IX.5e) | `tickBox_observable` |
+| Appendix T | an even word at every step, at every bit width | IM's box | none: base case, inductive step and the map of scales all proved | native |
+
+So the proof has one shape everywhere, and the parts show where its open part sits: the base case on the cards, the inductive step on
+the Yang-Mills box. Appendix T runs all of it on binary words.
 
 ## II.5 The API: cards
 

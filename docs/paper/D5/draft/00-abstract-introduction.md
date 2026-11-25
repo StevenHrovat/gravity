@@ -32,23 +32,19 @@ meaning becomes apparent and its place in existence slots neatly into a better p
 
 ## Abstract
 
-Every observable system has a one-box description that is DMP-complete exactly when its claim holds at every tick: one shared
-gate reads each tick, and every marker must agree with it. From it follows a route to the
-proof, and once the route is shown its truth is certified universally, at every tick and, with the gate shared across scales, at
-every scale. The description is a restatement; the route's start or step carries the content. Six Clay problems are read this way, two in a
+Each problem is restated as one statement checked at every step of a sequence (lattice levels, scales, computation steps). The restatement holds exactly when the problem's statement holds at every step,
+so a proof has one shape, an induction: a base case and an inductive step. Once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. On binary data, read as real numbers,
+every computation can be made reversible, so complex mathematics applies exactly. Six Clay problems are read this way, two in a
 neighbouring form (GRH for the Riemann hypothesis, NP versus coNP for P versus NP), with a Grand Unified reading of
-SU(3) x SU(2) x U(1), not a Clay problem. Machine, test and cards are in Lean 4 with Mathlib, standard axioms only. DMP, a
-specification for trust, supplies the vocabulary; its readings are marked.
+SU(3) x SU(2) x U(1), not a Clay problem. The restatements are in Lean 4 with Mathlib, standard axioms only; DMP, a specification for trust, names them, and its readings are marked.
 
-No problem is solved: one certifiable step is the same on every card, and none is shown yet. One
-assumption is stated once, as a reading: on the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge the box is DMP-complete, its
-gate shared across scales; on each card a different open statement, and results using it are marked conditional. Proved in Lean
+No problem is solved: on the cards the open problem is the base case, on the Yang-Mills box the inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge, each a different open statement; results using it are marked conditional. Proved in Lean
+without it:Proved in Lean
 without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of fixed physical size, uniform in
 spacing and volume; the explicit formula for all nontrivial zeros of zeta (its real-place term not yet matched to Weil's); a
 crossing theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index; the
 full turn, giving the SU(N) hand-over log(1 + sqrt N) (electric sectors assumed positive, N >= 3) and the analytic rank as a
-winding number. Weil's positivity on a first box, with the real place and the primes 2, 3, is enclosed in ball arithmetic, given analytic estimates argued in a note. A model box from the Navier-Stokes energy bound alone gives a wrong
-marker.
+winding number. Weil's positivity on a first box, with the real place and the primes 2, 3, is enclosed in ball arithmetic, given analytic estimates argued in a note.
 
 ---
 
@@ -62,13 +58,18 @@ Osterwalder and Schrader reconstructed quantum field theories from reflection po
 of one pairing. Hodge and Riemann found the same positivity on the cohomology of a variety, and Weil used it to prove the Riemann
 hypothesis for curves over finite fields. Dobrushin showed that a contraction of local influences forces a unique equilibrium, and later work showed it is reached fast.
 
-What is new is the shape put around it, in one statement: every observable system has a one-box description that is DMP-complete
-exactly when its claim holds; from it follows a route to the proof, and once that route is shown its truth is certified universally,
-at every tick and, with the gate shared across scales, at every scale **[Lean]** (II.4.1, IM's `Arsenal.Observable`; the scale part
-from the shared gate as a named hypothesis). The description is a restatement and proves nothing by itself. A route has two parts, the claim at
-the start and a step that keeps it. On a problem card the claim is the same at every tick, so the step is free and the whole open
-statement is the start; on the boxes with a gate factor of their own (Yang-Mills, III.12; the model Navier-Stokes box, VI.8) the
-step carries the content. The paper shows where each is open. The machine and the test of the next section carry it. When every
+What is new is the shape put around it, in one statement in familiar terms. Each problem is restated as one statement checked at
+every step of a sequence, and the restatement holds exactly when the problem's statement holds at every step. A proof then has one
+shape, an induction: a base case and an inductive step. Once both are shown the statement holds at every step and, where scales are
+related by a map that keeps the step and the check, at every scale **[Lean]** (II.4.1, IM's `Arsenal.Observable`). In DMP's words
+the restatement is a *one-box description* of an *observable system*, *DMP-complete* exactly when the claim holds at every tick. The
+restatement proves nothing by itself; the content is in the base case or in the inductive step, and the paper shows which. On a
+problem card the statement checked is the same at every step, so the inductive step is free and the base case is the whole open
+problem; on the boxes with a gate factor of their own (Yang-Mills, III.12; the model Navier-Stokes box, VI.8) the inductive step
+carries the content. On binary data, read as real numbers, every computation can be made reversible by keeping its history, so
+complex mathematics, the full turn of II.2.7 included, applies exactly **[classical]** (Bennett 1973; Toffoli 1980). The machine and
+the test of the next section carry it. When every
+step pays a cost above the floor,When every
 step pays a cost above the floor,
 settling is decidable within an explicit bound; when steps may pay exactly the floor, there are systems, the universal machine among
 them, for which no procedure decides it. Each open step is restated as a box. One certifiable step is the same on every card: a
@@ -93,11 +94,12 @@ here (ledger, floor, DB, G0, ODP) are in the table of I.8.
   DMP*, is called *running* (X.4.4).
 * **The one-box certificate** (`onebox_certificate`). If the marker is correct at the start and the step keeps it correct at every
   state, the box is DMP-complete. This is the certifiable step.
-* **Observable system** (II.4.1, IM's `Arsenal.Observable`). States, one step and the system's own claim at each state. Its
-  one-box description has the claim as marker and the truth of the claim as gate. It is DMP-complete exactly when the claim holds at
-  every tick (`box_complete_iff`); a route to the proof is the claim at the start and a step that keeps it (`route`); once shown it
-  is certified at every tick and, with the shared gate, at every scale (`route_everywhere`); one failing tick refutes it
-  (`refuted_by_tick`). The cards below are observable systems (`tickBox_observable`, II.4.1).
+* **Restatement and induction** (II.4.1, IM's `Arsenal.Observable`). A system with states, one step and its own claim at each
+  state (an *observable system*). Its restatement (the *one-box description*) is DMP-complete exactly when the claim holds at every
+  step (`box_complete_iff`). A proof is an induction: the base case, the claim at the start, and the inductive step, a step that keeps
+  the claim (`route`); then the claim holds at every step and, along a map of scales that keeps the step, the check and the marker,
+  at every scale (`route_everywhere`). One failing step refutes it (`refuted_by_tick`). The cards below are such systems
+  (`tickBox_observable`).
 * **Card** (II.5, `API.Problem`). An input, one named open slot, a conclusion, and a Lean proof that the slot gives the conclusion.
   Its box (`cardBox`) is the constant box of the open statement: the ticks are 0, 1, 2, ..., the gate reads inside exactly when the
   open statement holds, and the marker is always inside, so the box is DMP-complete exactly when the open statement holds
@@ -282,9 +284,9 @@ whose row gives the claim's status, its source and what would upgrade it. Where 
   Weil's positivity with the primes 2 and 3 and explicit margins **[certified]** for the enclosures, **[paper]** for the estimates.
 * The hand-over bound, the strict twist bound for every SU(N), and zero join loss in slab form **[Lean]**.
 * A Mathlib-only BSD core over number fields, published in IM **[Lean]**.
-* The headline as a theorem and an API: every observable system has a one-box description, DMP-complete exactly when its claim
-  holds at every tick, with a route to the proof certified at every tick once shown, and at every scale that shares the gate (IM,
-  `Arsenal.Observable`) **[Lean]**.
+* The headline as a theorem and an API: each problem restated as one statement checked at every step, exactly equivalent to it;
+  a proof as an induction, base case and inductive step, holding at every step and, along a map of scales, at every scale (IM,
+  `Arsenal.Observable`) **[Lean]**; on binary data read as real numbers every computation can be made reversible **[classical]**.
 * The full turn as one tool, in IM's arsenal: it gives the hand-over over all N centre sectors, log(1 + sqrt N), also as a mean
   along a path, with positive electric sectors assumed for N >= 3, and reads the BSD leading coefficient and the analytic rank (a
   winding number) as one turn around s = 1 **[Lean]**; the encoder's half-turn is its case N = 2 **[paper]**.
@@ -303,8 +305,8 @@ Connes-Consani.
 
 Part I: DMP, the vocabulary. Part II: the machine, then the tools the problems use; its centre is II.4.1, the headline as a
 theorem. Parts III to IX: the seven problems, one template each (Yang-Mills, GRH, P versus NP through NP versus coNP, Navier-Stokes,
-BSD, Hodge, GU); each opens with the problem as an observable system, says where the open part of its route sits, and ends at its card
-and its box. Part X: the one assumption, the shared step of a route certified at every scale, and the rigid start, which compares the
-cards once they have been read. Then the Outlook
+BSD, Hodge, GU); each opens with the problem as a statement checked step by step, says whether its open part is the base case or the inductive
+step, and ends at its card and its box. Part X: the one assumption, which on each card is its base case, and the rigid start, which
+compares the cards once they have been read. Then the Outlook
 (sections XI.n). Appendix A: validation (Poincare, SU(N) and the rigid groups). Appendix R: DMP's neighbours and the first author's
 readings that no card uses. Appendix T: the verify toy, the headline run on binary words, to read in full and rerun.

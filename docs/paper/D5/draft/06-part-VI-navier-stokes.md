@@ -3,9 +3,11 @@
 *Draft 5. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (VI.n) are listed in `../CLAIMS.md`.*
 
-**As an observable system (II.4.1).** Part VI has no card box of its own (VI.8). Its model box, built from the energy bound alone,
-has a gate factor of its own over the dyadic scales, and the route fails at a step: from some scale on the gate reads outside while
-the claim says inside (`ns_not_complete`) **[Lean]**. This is the falsifiable side of II.4.1 at work.
+**As a statement checked step by step (II.4.1).** Navier-Stokes has three cards (VI.2: route I, regularity, the A/B
+dichotomy), each checked at every step of its card box, with the open part in the base case; the paper does not assume any of
+them **[Lean]** for the card boxes (`tickBox_observable`). The model box of VI.8, built from the energy bound alone, is separate: its
+statement is that the energy-only factor stays within the margin at every dyadic scale, and that fails at some scale
+(`ns_not_complete`) **[Lean]**. What fails is the energy ledger as a certificate, not regularity.
 
 ## VI.0 What is proved, by whom, and what this part does
 

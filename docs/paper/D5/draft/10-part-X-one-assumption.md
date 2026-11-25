@@ -2,12 +2,12 @@
 
 *Draft 5. Claim labels (X.n) are listed in `../CLAIMS.md`.*
 
-**As the route's shared step (II.4.1).** In the terms of II.4.1 the one assumption is the second half of a route certified
-universally: that a box's gate is shared across scales, so that one certified box certifies every scale (`route_everywhere`, from
-`scale_certificate`). It is carried as a named hypothesis and never proved, and on each card it is a different statement (X.4.4)
-**[paper]**. In the verify toy (Appendix T) the sharing is a theorem: every bit width is rebuilt from one bit by reduction modulo 2,
-and the route shown at one bit certifies every width (`evens_everywhere`) **[Lean]**. The toy shows what the assumption gives where it
-holds; on the cards it stays open.
+**The one assumption in the terms of II.4.1.** On each card the one assumption is the card's base case, its open statement: the
+card's box checks the same statement at every step, so the inductive step is free. The other half of the assumption, the gate shared
+across scales, has content only where a family of scales is defined and mapped onto the one box, as for G2 (A.5) and in the verify toy;
+on the cards no such family is defined in Lean, and sharing with a constant box adds nothing **[paper]**. In the toy the sharing is a
+theorem: every bit width is mapped onto one bit by reduction modulo 2, and the parity argument for each width sits in that map
+(`evens_everywhere`, T.2) **[Lean]**.
 
 ## X.0 How to read this part
 

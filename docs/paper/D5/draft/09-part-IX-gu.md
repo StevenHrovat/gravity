@@ -3,8 +3,9 @@
 *Draft 5. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (IX.n) are listed in `../CLAIMS.md`.*
 
-**As an observable system (II.4.1).** The tick box of charge quantisation passes, proved: every continuous character of the circle
-is z to the n (`gu_box`, IX.8) **[Lean]**. The GU card's open step lies beyond this box (IX.5e).
+**As a statement checked step by step (II.4.1).** GU has a box and no card (II.5). Its box checks charge quantisation at every
+step and passes, proved: every continuous character of the circle is z to the n (`gu_box`, IX.8) **[Lean]**. The open step of GU
+lies outside this box (IX.5e), so no induction inside it reaches it.
 
 ## IX.0 What "Grand Unified" means here, and where it stands
 

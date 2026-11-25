@@ -3,9 +3,10 @@
 *Draft 5. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/rh-guide/`. Claim labels (IV.n) are listed in `../CLAIMS.md`.*
 
-**As an observable system (II.4.1).** For a finite zero model the claim is the sign at every scale (`ScaleSign`), and the card's
-box asks it at every tick (`grh_box_iff`, IV.8) **[Lean]**. The claim is the same at every tick, so the route's step is free and
-the open part is its start. The first scales are certified (IV.1, the first box), where such a start begins.
+**As a statement checked step by step (II.4.1).** For a finite zero model the statement is the sign at every scale (`ScaleSign`),
+and the card's box checks it at every step (`grh_box_iff`, IV.8) **[Lean]**. The statement is the same at every step, so the
+inductive step is free and the open part is the base case, the whole of `ScaleSign`. The certified first scales (IV.1, the first box)
+are progress inside that statement, not part of the induction.
 
 ## IV.0 What is proved, by whom, and what this part does
 

@@ -3,9 +3,9 @@
 *Draft 5. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/pnp/`. Claim labels (V.n) are listed in `../CLAIMS.md`.*
 
-**As an observable system (II.4.1).** The claim is the card's open step, the crossing cost (`CrossingCost`), asked at every tick
-of the card's box (V.10) **[Lean]**; the route's step is free and the open part is its start. A passing box gives every refutation at
-least e^(theta b) lines (`np_box_concl`).
+**As a statement checked step by step (II.4.1).** The statement is the card's open step, the crossing cost (`CrossingCost`),
+checked at every step of the card's box (V.10) **[Lean]**; the inductive step is free and the open part is the base case. A passing
+box gives every refutation at least e^(theta b) lines (`np_box_concl`).
 
 ## V.0 What is proved and what is not
 

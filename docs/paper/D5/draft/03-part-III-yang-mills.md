@@ -5,12 +5,12 @@ attempt rounds R2 to R4 live under `docs/mass-gap/formal/Attempts/`); notes rela
 `proof-phase/c9a-crossover/`. The full chain with all 51 pieces is in `PROOF-BLUEPRINT.md`. Claim labels (III.n) are listed in
 `../CLAIMS.md`.*
 
-**As an observable system (II.4.1).** The states are the lattice levels of one box of fixed physical size, the step refines the
-spacing by one level, and the claim at each level is the level criterion: the box's best one-box ratio lies within the margin
-(`ymBox`, III.12). This box has a gate factor of its own, so the route's step carries content: the open part is that the criterion
-holds at every level, which a route splits into the first level and the step from each level to the next. That statement is O1
-(`FineOneBox`, III.5.9) **[paper]**. The card's own box (`YMOneBox`) asks its chain form at every tick, so there the open part is the
-start.
+**As a statement checked step by step (II.4.1).** The steps are the lattice levels from a first level k0 of one box of fixed
+physical size; the statement checked at each level is the level criterion, the box's best one-box ratio within the margin. For some
+cell geometry and margin this holds at every level exactly when O1 holds in its Lean form **[Lean]** (`FineOneBox`,
+`fineOneBox_iff_complete`, III.12). Here the inductive step, from each level to the next, carries the content; the split into the
+first level and the step is exact (`route_iff`), not a method of proof. The card's own box (`YMOneBox`) checks the chain form at every
+step, so there the open part is the base case.
 
 ## III.0 What is proved and what is not
 
