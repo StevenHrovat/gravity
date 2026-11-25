@@ -7,11 +7,15 @@ on:
   pull_request:
     paths:
       - evidence/**
+      - vendor/**
+      - tools/**
       - .github/workflows/lean-evidence.yml
   push:
     branches: [main]
     paths:
       - evidence/**
+      - vendor/**
+      - tools/**
       - .github/workflows/lean-evidence.yml
   workflow_dispatch:
 
