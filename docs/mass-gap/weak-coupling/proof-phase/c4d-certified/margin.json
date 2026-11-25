@@ -1,0 +1,42 @@
+{
+ "base:box": {
+  "column": 0.7319727356737094,
+  "scale_to_one": 1.34442138671875,
+  "budget_beta_90_incidence_loops": 0.01003784164560814
+ },
+ "base:central": {
+  "column": 0.7138913592149497,
+  "scale_to_one": 1.3831787109375,
+  "budget_beta_90_incidence_loops": 0.01080231614707705
+ },
+ "ext_T:box": {
+  "column": 0.7613105149908107,
+  "scale_to_one": 1.28399658203125,
+  "budget_beta_90_incidence_loops": 0.008747283617791063
+ },
+ "ext_T:central": {
+  "column": 0.7216230251032117,
+  "scale_to_one": 1.36456298828125,
+  "budget_beta_90_incidence_loops": 0.010447498490942586
+ },
+ "ext_R:box": {
+  "column": 0.9642104970728199,
+  "scale_to_one": 1.035430908203125,
+  "budget_beta_90_incidence_loops": 0.001340346340739128
+ },
+ "ext_R:central": {
+  "column": 0.9381581145955622,
+  "scale_to_one": 1.06365966796875,
+  "budget_beta_90_incidence_loops": 0.0023349018590876234
+ },
+ "ext_TR:box": {
+  "column": 1.000149273065188,
+  "scale_to_one": 0.999725341796875,
+  "budget_beta_90_incidence_loops": -5.470428819459436e-06
+ },
+ "ext_TR:central": {
+  "column": 0.9476654105594087,
+  "scale_to_one": 1.052825927734375,
+  "budget_beta_90_incidence_loops": 0.0019641191388310685
+ }
+}

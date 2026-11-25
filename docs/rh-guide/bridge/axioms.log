@@ -1,0 +1,57 @@
+== build ProofPhase.Bridge.Pringsheim
+Build completed successfully (2779 jobs).
+== build ProofPhase.Bridge.Landau
+Build completed successfully (2816 jobs).
+== build ProofPhase.Bridge.Laplace
+Build completed successfully (2780 jobs).
+== build ProofPhase.Bridge.Spectral
+Build completed successfully (2816 jobs).
+== axioms
+'ProofPhase.Bridge.pringsheim_hasSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.pringsheim_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.glue_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.pringsheim_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.logMul_iterate_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.abscissaOfAbsConv_logMul_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.eq_ofReal_re_of_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.term_logMul_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landauCoeff_term_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landauCoeff_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.iteratedDeriv_LSeries_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landauDouble_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landauDouble_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landauDouble_col' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lseriesSummable_of_taylor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landau_summable_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landau' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landau_ray' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.landau_ray_differentiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lap_eq_lapN_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.LapConv.mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.pow_le_factorial_mul_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.norm_lapTerm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.integrable_lapTerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.hasDerivAt_lapN' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.iteratedDeriv_lap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lapN_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.integrable_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lapConv_of_taylor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.laplace_conv_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.laplace_landau' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.laplace_ray' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lap_ofReal_eq_corr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.integrable_corr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.corr_le_of_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.corr_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.gap_of_decay_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.spectral_gap_iff_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.spectral_gap_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.decayRates_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.measurable_corr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.corrMeasure_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lintegral_corrMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.lapConv_corr_of_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.not_lapConv_corr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Bridge.resolvent_singular' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Bridge

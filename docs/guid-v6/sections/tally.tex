@@ -1,0 +1,61 @@
+% GUID v6, Part III: one count of every scored confrontation. Numbers: docs/simulation/tally.py, which reads the result files of
+% predictions_vs_data.py, standard_model.py and exotic_hadrons.py and writes docs/simulation/results/tally.json (6 of 6 checks).
+% Rerun tally.py after any of the three scripts; it also picks up the rows of Hypothesis H9 once exotic_hadrons.json carries them
+% (key "I"); the table below is taken from tally.json.
+\section{The tally}\label{sec:tally}
+
+This section counts the scored confrontations of Sections~\ref{sec:data}, \ref{sec:sm} and~\ref{sec:exotics} together, in the classes of
+Section~\ref{sec:scoring}.
+
+\begin{table}[h]
+\centering\small
+\caption{Every scored confrontation of Part~III. Shared: the prediction is that of general relativity, $\Lambda$CDM, the Standard Model
+(QCD included) or quantum mechanics. GUID-specific rows are sensitive, or not yet sensitive (Section~\ref{sec:scoring}). In brackets: FAILs.}
+\label{tab:tally}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+section & scored & OK & FAIL & shared & GUID-specific, & GUID-specific, \\
+ & & & & & sensitive & not yet sensitive \\
+\midrule
+data (Section~\ref{sec:data}) & 31 & 28 & 3 & 18 (3) & 0 & 13 (0) \\
+Standard Model (Section~\ref{sec:sm}) & 29 & 25 & 4 & 20 (3) & 1 (1) & 8 (0) \\
+hadrons (Section~\ref{sec:exotics}) & 12 & 5 & 7 & 9 (5) & 2 (2) & 1 (0) \\
+\midrule
+all & 72 & 58 & 14 & 47 (11) & 3 (3) & 22 (0) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:tally} gives the count \chk{tally:total}. Of 72 scored confrontations, 58 hold at 95\% and 14 fail. The conditional rows of the
+plateau potential (one FAIL), the consistency rows and the INFO rows are not counted. Rotation curves and the remnant
+(Sections~\ref{sec:sparc} and~\ref{sec:remnant}) compare models by $\Delta$BIC and score no rows, so they are not counted either.
+
+\paragraph{The FAILs.}
+\begin{itemize}[nosep,leftmargin=*]
+\item \emph{Shared, eleven.} Three are tensions of $\Lambda$CDM that share data: evolving dark energy, the Hubble constant and curvature
+(D3.3, D3.4, D3.7). Three are tensions of the Standard Model: the CDF W mass (SM2d.4) and the electron's $g-2$ with $\alpha$ from rubidium
+and from caesium (SM3.8, SM3.9), which are one disagreement between the two values of $\alpha$. Five are masses of a colour-spin model on
+compact trees: $X_0(2900)$, $T_{c\bar s0}(2900)$, $X(6900)$ read as $2^{++}$, $P_c(4312)$ and $P_{\psi s}(4338)$.
+\item \emph{GUID-specific and sensitive, three, and all three fail.} The preregistered size of $R=\dd\ln\mu/\dd\ln\alpha$ (SM3.1) is refuted
+by derivation, not by a datum. The general rule that every exotic hadron carries a pair of one flavour (H9:I3) is refuted by the
+open-flavour tetraquarks. The splitting rule $\alpha M/2$ for pentaquark and tetraquark doublets (H9:I4) is refuted by the resolved
+doublets.
+\item \emph{GUID-specific and not yet sensitive, none.}
+\end{itemize}
+
+\paragraph{The classes.} The thirteen GUID-specific data rows test the information scalar (D1) and Bridge~B (D6). The information scalar's
+departures scale with a coupling that may be zero, Bridge~B's decoherence lies a factor $4\times10^{12}$ or more below what the largest
+superpositions could see, and its diffusion lies deep inside the allowed window. Eight Standard Model rows are GUID-specific but not yet sensitive, and so is the open-flavour count of H9 (H9:I1), whose
+contrast is not significant. Dirac neutrinos give no double-beta signal, but
+Majorana neutrinos can give none either (SM2b.1, SM2b.2). Decoupled right-handed partners change $N_{\rm eff}$ negligibly (SM2b.4, SM2b.5).
+The scalar's $\mu$--$\alpha$ line and its share of $g-2$ scale with the free coupling (SM3.2, SM3.4 to SM3.6). The nine model rows of the hadron section test a
+standard colour-spin model on the compact trees of Hypothesis~\ref{h:tree}. That hypothesis cannot fail on a single state, and the compact picture
+predates GUID, so they are counted as shared. Table~\ref{tab:tally} would change if a reader classed them as GUID-specific: the five
+model FAILs would then be GUID-specific and sensitive.
+
+\paragraph{What the count says.} Forty-seven rows test what GUID adopts from established physics and carry eleven of the fourteen FAILs.
+Twenty-five rows test what GUID adds. Every one of them that a datum or a derivation can already reach, three, fails: the size of $R$
+fixed in advance, the general one-flavour rule for exotic hadrons, and the $\alpha M/2$ splitting rule. The other twenty-two hold but are
+not yet sensitive to GUID's departures. So far, then, no GUID-specific statement has passed a test that could have failed it; the ones
+that could fail did. The class of each row and its reason
+are in \texttt{tally.json} (6 of 6 checks).

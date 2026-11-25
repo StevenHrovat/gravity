@@ -1,0 +1,47 @@
+== (1) electric sectors are norms (PSD of Z_{k-l})
+N= 2: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 3.404e-01
+N= 3: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 2.576e-01
+N= 4: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 8.972e-02
+N= 5: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 9.052e-03
+N= 6: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 2.558e-02
+N= 7: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 6.066e-03
+N= 8: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 2.830e-04
+N= 9: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 1.377e-03
+N=10: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 6.236e-05
+N=11: Z_(k-l) PSD and Z_e >= 0: True; eigenvalues of Z_(k-l) = N Z_e: True; min Z_e/Z = 1.283e-02
+    refutation test, an even sequence that is not a norm: Z_e = [ 0.575  0.375 -0.325  0.375] (some < 0, as it must be)
+
+== (2) CRT factorisation of the Fourier kernel
+m=2, n=3, a=2, b=-1: kernel factorises True; DFT_mn = (DFT_m x DFT_n) relabelled True
+m=2, n=5, a=3, b=-1: kernel factorises True; DFT_mn = (DFT_m x DFT_n) relabelled True
+m=3, n=4, a=3, b=-2: kernel factorises True; DFT_mn = (DFT_m x DFT_n) relabelled True
+m=4, n=9, a=7, b=-3: kernel factorises True; DFT_mn = (DFT_m x DFT_n) relabelled True
+m=5, n=11, a=9, b=-4: kernel factorises True; DFT_mn = (DFT_m x DFT_n) relabelled True
+
+== (3) prime centres: does every nonzero sector generate Z_N?
+N= 2: prime; generators [1]; nonzero sectors in proper sub-centres []
+N= 3: prime; generators [1, 2]; nonzero sectors in proper sub-centres []
+N= 4: composite; generators [1, 3]; nonzero sectors in proper sub-centres [2]
+N= 5: prime; generators [1, 2, 3, 4]; nonzero sectors in proper sub-centres []
+N= 6: composite; generators [1, 5]; nonzero sectors in proper sub-centres [2, 3, 4]
+N= 7: prime; generators [1, 2, 3, 4, 5, 6]; nonzero sectors in proper sub-centres []
+N= 8: composite; generators [1, 3, 5, 7]; nonzero sectors in proper sub-centres [2, 4, 6]
+N= 9: composite; generators [1, 2, 4, 5, 7, 8]; nonzero sectors in proper sub-centres [3, 6]
+N=10: composite; generators [1, 3, 7, 9]; nonzero sectors in proper sub-centres [2, 4, 5, 6, 8]
+N=11: prime; generators [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; nonzero sectors in proper sub-centres []
+N=12: composite; generators [1, 5, 7, 11]; nonzero sectors in proper sub-centres [2, 3, 4, 6, 8, 9, 10]
+
+== (4) Dirichlet characters and Gauss sums
+p= 3: generator 2; 1 nontrivial characters; max |F chi - chi^-1(-e) tau| = 1.6e-15; |tau|^2 = [3.0]
+p= 5: generator 2; 3 nontrivial characters; max |F chi - chi^-1(-e) tau| = 1.8e-15; |tau|^2 = [5.0]
+p= 7: generator 3; 5 nontrivial characters; max |F chi - chi^-1(-e) tau| = 1.1e-14; |tau|^2 = [7.0]
+p=11: generator 2; 9 nontrivial characters; max |F chi - chi^-1(-e) tau| = 1.7e-14; |tau|^2 = [11.0]
+
+== (5) Fourier matrix F_jk = omega^{jk}/sqrt N
+N= 2: unitary True; F^2 = C True; order 2 (half-turn)
+N= 3: unitary True; F^2 = C True; order 4 (quarter-turn)
+N= 4: unitary True; F^2 = C True; order 4 (quarter-turn)
+N= 5: unitary True; F^2 = C True; order 4 (quarter-turn)
+N= 6: unitary True; F^2 = C True; order 4 (quarter-turn)
+N= 7: unitary True; F^2 = C True; order 4 (quarter-turn)
+N=11: unitary True; F^2 = C True; order 4 (quarter-turn)

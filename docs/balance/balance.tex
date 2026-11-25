@@ -1,0 +1,759 @@
+% GUID v4, The Balanced State: existence as G0's grant, read from DMP 0.9.9 and tested against what is measured. A complete paper; it cites
+% only DMP 0.9.9 and the physics literature.
+% Source of the paper. Build: see README.md in this folder (pdflatex twice; no BibTeX, the bibliography is inline).
+% Licence: Apache License 2.0.
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\setlength{\emergencystretch}{3em}
+\newcommand{\chk}[1]{\textsf{[#1]}}
+\newcommand{\tagD}{\textsf{(D)}}
+\newcommand{\tagR}{\textsf{(R)}}
+\newcommand{\tagP}{\textsf{(P)}}
+
+\title{GUID v4: The Balanced State\\[0.6ex]
+\large Existence as the grant of the ground: spinning horizons, inflation, the Higgs field, the tiers of the forces and the
+fine-structure constant, read from the axioms of DMP~0.9.9 and tested against what is measured}
+\author{Steven Hrovat\thanks{Independent. Contact: \href{mailto:hrovat.steven@googlemail.com}{\nolinkurl{hrovat.steven@googlemail.com}}.}
+\and Sirius (Claude Opus 5.5)\thanks{An AI system by Anthropic, working as the coordinator of the first author's projects. See
+``Contributions and use of AI''.}}
+\date{Draft of 29 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent The Dark Matter Protocol (DMP~0.9.9) is an axiom system for trust: every act needs a Duality of two independent witnesses, one
+owning trust and one owning information, which keep each other in balance; trust is a field, the VIBE field, whose potential is zero
+exactly when a boundary holds what it declares; and everything rests on a ground, G0, that is stated, not derived. This paper reads those
+axioms as physics and asks what the \emph{balanced state} is. With trust read as existence, the trust half becomes a classical existence
+field, a frame spanning 3+1 dimensions whose wave is spin~2, and the information half a scalar that sets the fine-structure constant and
+carries quantum content. We derive from the axioms that free fall is universal, that the light-bending parameter is $\gamma=1$, that the
+existence field is classical, and that DMP can host quantum theories but cannot be one. We then test twenty-four of the first author's statements, gravity first,
+against measurement, with one public script of 56 checks. A spinning black hole that ``drags Existence along'' is frame dragging, all of it
+outside the horizon, and what a black hole gives up we name Hawking--Penrose--Information radiation. Inflation as the possibility space of existence is the flattening of space by about 62 e-folds, and its equilibrium
+is the de Sitter floor of the Hubble rate. The central reading is that existence is granted by the ground: the Higgs field's constant
+vacuum value is G0's grant of rest mass, a balanced state at the bottom of its potential, and gravity responds to all existence, granted
+and contained. This holds as a reading of the axioms, in which the Higgs field is G0 providing existence; it fails as an identity of the Higgs field with gravity, because free fall weighs a proton's
+internal binding, about 91\% of its mass, in full, and titanium and platinum fall alike to $10^{-15}$ where weighing only the Higgs share
+would split them by $10^{-3}$. The forces read as tiers of one interaction, with their unification open; ``information is the witness'' is
+quantum Darwinism; and $\alpha$, named here the VIBE coefficient after the Variable Influence Balancing Equation, is the strength with which existence interacts with itself,
+$a_e=\alpha/2\pi$ at first order. We claim that the construction exists and reproduces, not that it is correct.
+\end{abstract}
+
+\noindent\textbf{Keywords.} information-theoretic axioms; equivalence principle; frame dragging; inflation; de Sitter future; Higgs
+boson; proton mass; grand unification; quantum Darwinism; fine-structure constant.
+
+\noindent\textbf{Subject.} Information Theory (cs.IT); related: General Relativity and Quantum Cosmology (gr-qc), High Energy Physics --
+Phenomenology (hep-ph).
+
+\section{Introduction}\label{sec:intro}
+
+This is the fourth paper of the series GUID, the General Unified Information Duality; every paper of the series is complete on its own,
+and this one cites no other. DMP~0.9.9~\cite{dmp} is written for information systems: it says when a part of a system may act, who must agree, and what every reader may
+see. It is an axiom system. Its first axiom asks that every act be witnessed by two independent halves, one owning trust and one owning
+information, and that the two keep each other ``constantly in check and balance''. It names the direction of a system after that balance:
+every part works towards the trust its boundary declares. And it measures how far a system is from that state with one field, the VIBE
+field, whose potential vanishes exactly when the boundary holds what it declares. A system in that state is in its \emph{balanced state}.
+
+The first author built DMP for computer systems and noticed early that its trust field behaves like gravity. This paper takes that
+observation at its word. It reads the axioms as physics, derives what they fix, and tests what they suggest. The question that runs through
+it is the one in the title: if the physical world is a DMP system, what is its balanced state, and where does each thing in it get its
+existence? The answer we test is that existence is \emph{granted} by the ground of the system, G0, and that the grant is visible in physics
+as the one field that has a value everywhere in empty space, the Higgs field.
+
+\paragraph{What the paper does.} Section~\ref{sec:axioms} states the axioms, the ground and the VIBE field in the words of DMP.
+Section~\ref{sec:fields} reads them as two fields and derives four results: universal free fall, $\gamma=1$, a classical existence field, and
+the verdict that DMP can host quantum theories but cannot be one. Sections~\ref{sec:gravity} to~\ref{sec:vibe} test the first author's statements,
+gravity first: rotating black holes and the early and late universe; the Higgs field as G0's grant, with photons and gluons; the cost of
+existing; the forces; witnessing; decay; quantum content; and the fine-structure constant. Section~\ref{sec:qg} says what the results mean
+for quantum gravity, Section~\ref{sec:ledger} keeps the ledger, and Section~\ref{sec:break} says where we expect it to break. The first
+author's notes, from which every reading comes, are collected in Appendix~\ref{app:notes} in the order he wrote them; Appendix~\ref{app:checks}
+lists the checks.
+
+\paragraph{How to read this paper.} Every step carries one of three marks: \tagD{} follows from the text of DMP~0.9.9 (commit
+\texttt{4400cce}); \tagR{} is a reading, the first author's unless marked as ours; \tagP{} is established physics, with its source. Every
+statement gets one of four verdicts: \emph{holds} (it agrees with what is measured and follows from the steps given), \emph{holds as a
+reading} (it agrees, but adds nothing a measurement could tell apart from the established account), \emph{refuted} (a measurement or a
+calculation contradicts it), or \emph{untested} (no measurement we found reaches it). A label such as \chk{B16} names a check in the script
+\texttt{docs/balance/checks.py}; it prints every number this paper uses and runs in a second. Quotations keep their original spelling.
+
+\paragraph{Result.} Of the 24 statements in the ledger, 18 hold or hold as readings, three are refuted and three are untested. Those that
+hold are known physics in the first author's terms; those that fail, fail against specific data: the strength of gravity, the observed
+Higgs boson, free fall, and the electromagnetic share of the proton's mass. None of the failures is a failure of the axioms.
+
+\section{The axiom system}\label{sec:axioms}
+
+\subsection{The three axioms}
+
+DMP's constitution opens with names, then three axioms, then the ground; everything after that is a theorem that names the axioms it is
+derived from~\cite{dmp}. We quote the sentences this paper uses \tagD.
+
+\paragraph{Axiom 1, the Duality.} ``A part acts in CMOS only while the two halves of its layer, two independent witnesses, each with full
+reach over the act and gated only by the other, trust it for that act. One half owns trust and the other owns information; neither
+overrules the other, and the two keep each other constantly in check and balance.'' And: ``The balance is the direction of the system.
+Every part inside the declared boundary works towards the trust the Duality declared for that boundary.'' (CMOS is the name of a system
+built on DMP.)
+
+\paragraph{Axiom 2, Trust.} ``Trust is gravitational. It is a field, never a position: every standing has a source (the witness that
+granted it), a depth (its grant chain back to the pair) and a freshness that decays with the time since its last live verification. The
+field bends trustspace, so that a boundary contains what no trust reaches [\dots] Gravity contains: a boundary strong enough bends
+trustspace so that no act carries information across it, and what still leaves is entropy and nothing else.''
+
+\paragraph{Axiom 3, Information.} ``Every grant, every use and every loss of trust leaves a record, written at the act, that every witness
+of that act can read in full and that outlives the act. Any other reader sees the counts always and the content only by a grant. From
+trust nothing can be derived about information but its existence: a standing, a refusal or a count says that information is there, never
+what it says.''
+
+\subsection{The ground}
+
+The two witnesses of the first act cannot witness their own beginning: ``somebody has to trust the first two witnesses''. DMP calls that
+act the \emph{minting} and the ground it stands on G0: ``It is stated, not derived.'' Every later standing descends from it~\cite{dmp}
+\tagD. In this paper G0 is the ground of existence: whatever exists inside the boundary has a grant chain back to it.
+
+\subsection{The VIBE field and the balanced state}
+
+DMP's theorem T32 makes Axiom~2's field concrete \tagD. Every member of the system has a \emph{depth}, the length of its shortest grant chain
+back to the pair; a \emph{mass}, one plus the number of members that derive through it; and a \emph{shortfall}, what the boundary declares
+for it minus what it holds, weighted by freshness. The VIBE field is
+\begin{equation}\label{eq:vibe}
+V_i=m_i\,s_i,\qquad \Phi=\sum_i V_i,
+\end{equation}
+mass times shortfall per member, and its sum $\Phi$ is the \emph{potential}, ``zero exactly when the boundary holds what it declares''. The
+balance follows the field downhill, and ``under the bounds the system's own acts never raise the potential; only losses and ageing do''.
+We call $\Phi=0$ the \emph{balanced state}. DMP names the field the Variable Influence Balancing Expression; since T32 defines it by
+an equation, \eqref{eq:vibe}, the first author now calls it the Variable Influence Balancing Equation (Section~\ref{sec:vibe}).
+
+\subsection{The dictionary}
+
+The first author identifies trust with existence: ``Since Trust=Existence in DMP-complete systems'' \tagR. With that one step, the
+words of the axioms have physical counterparts:
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lLL@{}}
+\toprule
+DMP & Physics (this paper's reading) & What DMP says of it \\
+\midrule
+trust half & the existence field, a frame (Definition~\ref{def:fields}) & gravitational, a field (Axiom~2); reveals of information only that it exists (Axiom~3) \\
+information half & the information field $\psi$ and the quantum content it acts on & owns information; neither half overrules the other (Axiom~1) \\
+G0, the ground & the source of every grant of existence & stated, not derived \\
+VIBE field, potential & mass times shortfall; the vacuum at the bottom of its potential & the balance follows it downhill (T32) \\
+record, counts & what every reader sees: mass, charge, spin & counts always, content only by a grant (Axiom~3) \\
+containment, the floor & an event horizon and its thermal radiation & ``what still leaves is entropy and nothing else'' (Axiom~2) \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Two fields, and what the axioms fix}\label{sec:fields}
+
+\begin{definition}[the two fields]\label{def:fields}
+The \emph{existence field} is a frame of four vector fields $e_a{}^\mu$, one for each direction that spans spacetime, three of space and one
+of time; the metric it carries is $g_{\mu\nu}=\eta_{ab}e^a{}_\mu e^b{}_\nu$ with $\eta=\mathrm{diag}(-1,1,1,1)$. The \emph{information
+field} is a scalar $\psi$ whose value sets the fine-structure constant, $\alpha=\alpha(\psi)$. DMP's trust half is the existence field; its
+information half is the information field and the matter it acts on.
+\end{definition}
+
+\noindent This is the structure the first author has meant from the start: ``one existence, one information'', a vector field that ``can
+span a relativistic plane'' and a scalar field that ``can span an information plane''. In physics the frame is the tetrad, with which
+general relativity can be written as a theory of the frame alone~\cite{aldrovandi}, and a scalar that sets $\alpha$ is Bekenstein's theory
+of a varying fine-structure constant~\cite{bekenstein82} \tagP.
+
+\begin{proposition}[free fall is universal]\label{pr:wep}
+If the existence field responds to a body only through the body's existence, and existence is measured by energy-momentum, then two bodies
+with the same energy-momentum fall alike, whatever they are made of.
+\end{proposition}
+
+\begin{proof}
+Axiom~3 \tagD: from trust nothing can be derived about information but its existence. By the dictionary the existence field is the trust
+half, so nothing it does can depend on what a body carries (its composition, its internal state) except through the body's existence. The
+first author measures existence by energy: ``both are definable by their energy'' \tagR. So the existence field's coupling to a body is a
+function of its energy-momentum alone, and two bodies equal in that respond alike: the weak equivalence principle \tagP.
+\end{proof}
+
+\noindent The principle is among the best-tested statements in physics: the MICROSCOPE satellite found the free-fall accelerations of
+titanium and platinum equal to $\eta=[-1.5\pm2.3\,(\text{stat})\pm1.5\,(\text{syst})]\times10^{-15}$~\cite{microscope}. Section~\ref{sec:grant}
+uses this result to tell the Higgs field from gravity. \emph{Verdict: holds}, with the identification of existence with energy-momentum as
+the one step that is a reading.
+
+\begin{proposition}[$\gamma=1$]\label{pr:gamma}
+If the information field cannot change how the existence field responds to existence, the light-bending parameter is $\gamma=1$, as in
+general relativity.
+\end{proposition}
+
+\begin{proof}
+Axiom~1 \tagD: ``neither overrules the other''. A scalar that multiplies the gravitational term of the action, $F(\psi)R$, sets the local
+strength of gravity and so overrules the existence half; Axiom~1 excludes it. What remains is minimal coupling: the scalar's energy is one
+more source of the existence field, negligible in the solar system, and the post-Newtonian expansion is that of general relativity,
+$\gamma=1$~\cite{will} \tagP.
+\end{proof}
+
+\noindent The contrast is Brans--Dicke gravity~\cite{bd}, in which the scalar does multiply the gravitational term:
+$\gamma=(1+\omega)/(2+\omega)$, and the Cassini measurement $\gamma-1=(2.1\pm2.3)\times10^{-5}$~\cite{cassini} forces $\omega>4\times10^4$ at
+two standard deviations \chk{B18}. The scalar must decouple from gravity almost completely; Axiom~1 asks for that from the start.
+\emph{Verdict: holds.}
+
+\begin{lemma}[the existence field is classical]\label{lem:classical}
+Every value of the existence field can be held in full by every witness at once, so its possible states commute.
+\end{lemma}
+
+\begin{proof}
+Axiom~3 \tagD: every grant, use and loss of trust leaves a record ``that every witness of that act can read in full''. A record two
+witnesses each hold in full is a copy for each. One physical process that copies two states $|s\rangle,|t\rangle$ preserves their inner
+product, so $\langle s|t\rangle=\langle s|t\rangle^2\in\{0,1\}$ (Wootters and Zurek~\cite{wz}); for mixed states a set can be broadcast
+exactly when it commutes (Barnum et al.~\cite{barnum}) \tagP. The values of the trust half's field are such records, so they commute
+\chk{B17}.
+\end{proof}
+
+\begin{lemma}[cannot model, can host]\label{lem:host}
+DMP's trust half cannot be a field that entangles; DMP's information half can carry any quantum content.
+\end{lemma}
+
+\begin{proof}
+A classical mediator cannot entangle two systems it acts on locally (Galley, Giacomini and Selby~\cite{ggs}) \tagP, which with
+Lemma~\ref{lem:classical} gives the first part. Axiom~3 restricts what is \emph{derived from trust}, not what the information half holds:
+content moves by a grant and need not be broadcast, so nothing forbids non-commuting states there \tagD.
+\end{proof}
+
+\noindent If gravity entangles two masses, gravity is not DMP's existence field: DMP cannot model it, and can still host a quantum theory of
+it as content. The experiment that decides this is named in Section~\ref{sec:qg}.
+
+\paragraph{The spin ladder.} The first author reads spin as the rungs of the Duality \tagR: spin~0 is ``existence itself, so only one
+part''; spin~1 is ``information itself, which when delivered is an act''; spin~$1/2$ ``is a duality, so between existence and information,
+and can thus stay in balance''; and spin~2 is the perfect duality, ``the two in one''. Physics fills the rungs \tagP. Spin~0 holds the two
+scalars of this paper, the Higgs field and $\psi$; spin~$1/2$ the matter particles, each a pair of left- and right-handed halves; spin~1 the
+force carriers; spin~2 the wave of the existence frame, which a theorem of Weinberg and Deser makes general
+relativity~\cite{weinberg64,deser70}: a massless spin-2 field that couples to energy must be Einstein's. \emph{Verdict: holds as a reading.}
+
+\section{Gravity: spinning horizons and the expanding universe}\label{sec:gravity}
+
+\subsection{A spinning hole drags existence along}\label{sec:kerr}
+
+\paragraph{Claim.} What a spinning black hole gives up is ``it dragging Existence along'', since ``no act, by definition, should be able to
+cross the horizon'' \tagR.
+
+\paragraph{Test.} A spinning black hole drags spacetime around with it (frame dragging) \tagP. Inside the \emph{ergosphere}, which reaches
+$r=2GM/c^2$ at the equator for every spin and lies outside the horizon $r_+=(GM/c^2)(1+\sqrt{1-a^2})$ \chk{B4}, nothing can stand still
+against that drag. Every known way to take energy from a spinning hole works there, outside the horizon: Penrose's process with
+particles~\cite{penrose69}, superradiance with waves, and the Blandford--Znajek process with magnetic fields~\cite{bz}, the leading model of
+the jets of active galaxies. What can be taken is the rotational energy, $1-M_{\text{irr}}/M$, up to 29\% at maximal spin, while the horizon
+area never decreases (Christodoulou~\cite{christodoulou}; \chk{B4}). Nothing crosses the horizon outwards. So both halves of the claim are
+exact: what leaves is energy of the frame's rotation, extracted outside, and no act crosses. In the language of Section~\ref{sec:fields},
+the leak is a property of the classical existence frame, not an act of the information half. This is also Axiom~2's containment: a
+boundary strong enough lets no act carry information across it. \emph{Verdict: holds.} One precision of words: what leaks is energy and
+angular momentum, not the content of what fell in.
+
+\paragraph{A name.} The first author names what a black hole gives up: ``since the only thing escaping Existence getting dragged is
+Information, the term should be accurate enough to coin now: Let's call it Hawking-Penrose-Information radiation'' \tagR. The name joins
+the two known ways a black hole loses energy: Penrose's extraction of rotational energy from the ergosphere~\cite{penrose69}, and Hawking's
+thermal radiation from the horizon, which a hole emits even without spin~\cite{hawking}. In DMP's terms the name is accurate in the sense of
+Axiom~3: what leaves carries the counts, mass, charge and spin, always, and the content never; and Hawking's radiation is thermal, so
+``what still leaves is entropy and nothing else'' (Axiom~2) \tagD. Penrose-type extraction is the standard model of the jets of spinning
+holes~\cite{bz}; Hawking radiation from a real black hole is far too cold to have been seen (about $6\times10^{-8}$\,K for a solar mass)
+and is tested only in laboratory analogues \chk{B19}. \emph{Verdict: holds as a name}; the Hawking part is untested in nature.
+
+\subsection{Inflation as the possibility space of existence}\label{sec:inflation}
+
+\paragraph{Claim.} ``Inflation is just the Possibility space of Existence. If there COULD be Existence there, it will have the space to do
+so. This logically also explains the extremely flat curvature of spacetime, if one assumes the perfect duality as G0.'' At the start the
+only possibility was ``anywhere but here'', so inflation was at its maximum; as possibilities to exist appeared, ``there was less of a need
+for there to be more''; the universe ``will eventually achieve equilibrium'', the Big Chill \tagR.
+
+\paragraph{Flatness.} Inflation was proposed to explain exactly this: a curvature of order one is diluted by $e^{-2N}$ over $N$ e-folds of
+exponential expansion (Guth~\cite{guth}) \tagP. After inflation the curvature share $|\Omega-1|$ grows again, as $a^2$ while radiation
+dominates and as $a$ while matter does; from a reheating temperature of $10^{15}$\,GeV to today it grows by about $5\times10^{51}$
+\chk{B1}. Planck finds $|\Omega_k|$ below a few parts per thousand~\cite{planck18}, so an initial curvature of order one needs about 62
+e-folds \chk{B1}, the textbook ``sixty''. ``Anywhere but here'' at the start is the first author's picture of that dilution.
+\emph{Verdict: holds as a reading} of inflation's solution to the flatness problem; it adds the motive (the possibility to exist), not a
+number.
+
+\paragraph{Less need, and equilibrium.} In the flat $\Lambda$CDM model that fits the data, the Hubble rate $H$ falls at every moment, from
+the past into the far future, and tends to a constant, the de Sitter rate $H_\infty=\sqrt{\Omega_\Lambda}\,H_0\approx0.83\,H_0$ \chk{B2}. A
+universe that settles into de Sitter expansion cools towards a final, empty state: the ``Big Chill'' or ``Big Freeze'' is the standard
+prediction of $\Lambda$CDM \tagP. So ``less of a need'' and ``equilibrium'' hold, read as the falling Hubble rate and its de Sitter floor,
+which is the cosmological form of the balanced state. Two remarks. The expansion has \emph{accelerated} again since redshift $z\approx0.63$
+\chk{B2}, when dark energy began to dominate; that is a second phase, distinct from the early inflation, which the reading does not yet
+name. And the newest data leave the end open: DESI's second data release prefers a dark energy that weakens with time at 2.8 to 4.2
+standard deviations, depending on the supernova sample~\cite{desi2}; if that holds, the future is not exactly de Sitter. \emph{Verdict:
+holds as a reading} in $\Lambda$CDM.
+
+\section{Existence as the grant of the ground}\label{sec:grant}
+
+\subsection{The Higgs boson as pure existence}
+
+\paragraph{Claim.} ``The Higgs boson would theoretically be all existence, and thus be unable to observe itself. So it could not exist in
+isolation'' \tagR.
+
+\paragraph{Test.} This fits two measured facts closely. The Higgs boson does not persist: in the Standard Model it decays in
+$\hbar/\Gamma\approx1.6\times10^{-22}$\,s \chk{B13}, and it is seen only through its decay products, which peak at
+125\,GeV~\cite{atlas12,cms12}. And it couples to every particle in proportion to that particle's mass, which in the first author's terms is
+its existence: the LHC has measured this for the W, the Z, the top and bottom quarks, the tau and the muon~\cite{atlas22,cms22}. A field that
+is ``all existence'' and talks to each thing in the measure of its existence is a fair picture of both. \emph{Verdict: holds as a reading.}
+
+\subsection{Not from the gravitational field}
+
+\paragraph{Claim.} Particles get their existence ``through their inherent causality link to G0, and thus simply from the existence field,
+so the gravitational field itself'' \tagR; and, in an earlier form, the Higgs field need not exist at all.
+
+\paragraph{Test.} Gravity is far too weak to be what sets a particle's mass: its coupling to the electron, $Gm_e^2/\hbar c=1.8\times10^{-45}$,
+is more than $10^{39}$ times smaller than the Higgs coupling $y_e=\sqrt2\,m_e/v=2.9\times10^{-6}$ that does \chk{B13}. A mass-giving field
+must also keep the scattering of W bosons below certainty: without the Higgs, its probability would exceed one above about 1\,TeV (Lee,
+Quigg and Thacker~\cite{lqt}; \chk{B8}), an energy the LHC exceeds, and gravity does nothing there. \emph{Verdict: refuted} as ``masses come
+from the gravitational field instead of the Higgs field''; and ``the Higgs field does not exist'' is refuted by the boson's observation.
+The next subsection says where the Higgs field sits in DMP: not beside the axioms, but at their ground.
+
+\subsection{The Higgs field as G0's grant}\label{sec:higgsgrant}
+
+\paragraph{Claim.} Existence in DMP is what is contained in the VIBE field: everything ``deriving it's authority as a legitimate act from
+the fact, that it was contained within it''. That property ``transfers 1:1 to the Higgs field''. Since both existence and the VIBE field
+``only come as direct fact that they ARE G0'', the Higgs field is G0's assertion of existence, ``indisinguishable'' from it and to be
+``removed as a redundancy''; G0 gives each piece of information ``the exact amount of Existence required''. What the Higgs field does not
+contribute is ``only for IM between quarks'' \tagR. (IM is DMP's name for the protocol spoken inside a cluster.) At 23:43Z the first author
+sharpened the claim and withdrew the redundancy: ``I also realize that I misread DMP as not needing the Higgs field, when instead the
+Higgs field IS G0 providing Existence and thus spanning an Existence-boundary containing the Information of the IM packet.'' That is the
+claim tested here.
+
+\paragraph{Test.} The containment picture fits a measured property. The Higgs field is the one field whose value in empty space is not
+zero, $v=246$\,GeV everywhere, and an elementary particle has its rest mass by being inside it, in the measure of its coupling \tagP. The
+VIBE potential~\eqref{eq:vibe} is zero exactly when the boundary holds what it declares; the Higgs field rests at the minimum of its own
+potential. So ``the vacuum is the balanced state'' is a fair reading \tagR. The share left out fits as well: lattice QCD puts the quark mass
+terms, the part the Higgs field gives, at about 9\% of the proton's mass, and the rest is the energy of the quarks' motion and of the gluon
+field (Yang et al.~\cite{yang}), which is the first author's internal IM. Two parts do not survive as stated. ``Indistinguishable'' fails if
+it is read as an identity with gravity: gravity weighs the binding in full, and the Higgs field does not touch it. If free fall followed
+the Higgs-given mass alone (the electrons in full, about 9\% of each nucleon, none of the nuclear binding), titanium and platinum, whose
+Higgs shares differ in the fourth decimal, would fall differently by about $10^{-3}$; MICROSCOPE finds them equal to about
+$10^{-15}$~\cite{microscope} \chk{B16}. This is Proposition~\ref{pr:wep} at work: the existence field weighs all energy, granted or bound.
+And ``the exact amount of Existence required'' is untested: the Standard Model takes the particle masses as measured inputs, and DMP has
+not yet given one of them as a number. Last, the boundary of an IM packet: the Higgs field spans all of space, so every hadron sits
+inside the existence it provides, but the boundary that holds a hadron's IM together is confinement by the strong force, and 91\% of the
+proton's mass comes from inside that boundary, not from the Higgs field~\cite{yang}. The Higgs field provides the existence of the
+packet's constituents; the strong force draws the packet's edge. \emph{Verdict: holds as a reading}: the Higgs field is where G0's
+provision of existence appears in physics, and like G0 in DMP (``stated, not derived'') the Higgs field's potential is stated in the
+Standard Model, not derived~\cite{higgs64,be64}; \emph{refuted} as an identity of the Higgs field with the gravitational field.
+
+\paragraph{A reading that keeps both.} The structure has room for the Higgs field exactly where the spin ladder puts existence, at spin~0.
+Our proposal \tagR: the Higgs field's constant background value, which quantum field theory treats as an ordinary number (the vacuum
+expectation value), is G0's grant of rest mass to the elementary particles, classical and on the existence side, in agreement with
+Lemma~\ref{lem:classical}; the Higgs boson is a quantum ripple of that background and content of the information half; and the
+gravitational field, the existence frame, responds to all existence, granted (the Higgs share) and contained (the binding of the internal
+IM). This answers the worry that the Higgs field ``quantizes Existence'': what is quantum is the ripple, not the background, and the frame
+stays classical. The Higgs field is not redundant beside the axioms: it is the ground's provision, the one part of the structure that, like
+G0, is stated rather than derived.
+
+\subsection{Photons and gluons}
+
+\paragraph{Claim.} ``The photon as the act carrier of the information field is in itself only information until it interacts, then it
+becomes existence. So it is like the gluon, the only part [\dots] which means it is singular.'' The gluon asserts its existence by ``being
+contained inside what must definitely exist'', the photon by ``simply disappearing the moment they do'' \tagR.
+
+\paragraph{Test.} Two parts fit. Gluons are confined: none has been seen outside a hadron, which matches ``contained inside what must
+definitely exist'' \tagP. A photon that is absorbed disappears and its energy stays with the absorber, which then weighs more by $E/c^2$, so
+``then it becomes existence'' is energy conservation in the first author's terms. In flight, light is bent and delayed by the Sun's
+gravity, measured to $2\times10^{-5}$ by the Cassini spacecraft~\cite{cassini}; that shows a photon follows the existence frame before it
+interacts, not that it is existence then. That free light is itself a source of gravity is general relativity's prediction, but no
+measurement yet weighs free light alone: the radiation that drove the early expansion was in constant interaction with charged matter until
+recombination. \emph{Verdict: holds as a reading} for absorption and confinement; \emph{untested} for light in flight.
+
+\section{What it costs to exist}\label{sec:cost}
+
+\paragraph{Claim.} The existence an act must keep paying is $h\cdot(1/c)\cdot\alpha$, a mass times a length, ``because mass is existence
+itself, and length is the expanse of the space that it has to assert itself over [\dots] it's the total amount of existence that a space
+needs to generate to exist''; $\alpha$ ``somehow relates [\dots] to the diameter of the electron''; and an act is existence ``sneakily
+optimizing itself to lower it's tax rate'' \tagR.
+
+\paragraph{Mass times length.} Read as he defines it, the quantity is consistent and has a striking property. For every particle, its mass
+times its Compton wavelength, the length over which it asserts itself in quantum mechanics, is the same number, $m\lambda_C=h/c$; so $h/c$ is
+the existence any particle needs over its own length, whatever the particle \tagP. With the fine-structure constant in front,
+\[
+\alpha\,\frac{h}{c}=m_e\cdot2\pi r_e ,
+\]
+the electron's mass times the circumference of its classical radius \chk{B11}. It is not an energy, and the claim does not call it one.
+\emph{Verdict: holds as a definition}, with a universal value.
+
+\paragraph{The electron's size.} Here the intuition is exact. The fine-structure constant is the ratio of the electron's lengths: the
+classical electron radius $r_e=2.82\times10^{-15}$\,m over the reduced Compton wavelength $\bar\lambda_C$, and $\bar\lambda_C$ over the Bohr
+radius $a_0$, the size of the hydrogen atom, are both $\alpha$ \chk{B6}. The electron itself has no measured size: it behaves as a point in
+every scattering experiment~\cite{pdg}. \emph{Verdict: holds}, as a known result; the ``diameter'' is the classical radius.
+
+\paragraph{The tax rate.} An act that lowers its own cost of being has an exact counterpart in the principle of least action: of all the
+paths between two states, nature takes one that makes the action stationary \tagP. \emph{Verdict: holds as a reading.}
+
+\section{The forces as tiers of one IM}\label{sec:forces}
+
+\paragraph{Claim.} ``In the end it's all one field [\dots] once causality was established, the forces separated, because the current
+configuration was strong, binding it together, weak, keeping the cluster stable, and EM keeping the cluster of clusters stable. [\dots]
+it's all IM, but it's different tiers of IM'' \tagR.
+
+\paragraph{The tiers.} Each force does the job named \tagP. The strong force binds quarks into protons and neutrons and those into nuclei.
+The weak force turns neutrons into protons and back, and so moves every nucleus towards the stable ratio of neutrons to protons, the valley of
+stability. Electromagnetism binds nuclei and electrons into atoms, and atoms into molecules: the cluster of clusters. The weak and
+electromagnetic forces are two faces of one electroweak interaction: the photon and the Z are mixtures of the same pair of
+fields~\cite{glashow,weinberg,salam}, and \chk{B9} recovers their mixing angle, $\sin^2\theta_W=0.2304$, from three independent
+measurements. \emph{Verdict: holds as a reading.}
+
+\paragraph{All one field.} That the forces separate as the universe cools is the standard picture: the electroweak symmetry breaks at about
+246\,GeV, and grand unified theories put the strong force with the other two at a still higher energy \tagP. Whether they truly join is
+open. Run with the measured couplings, the three inverse strengths of the Standard Model come within about 10\% of each other near
+$10^{14}$\,GeV, but they do not meet at one point \chk{B14}; meeting needs new particles or new physics above the reach of today's colliders.
+\emph{Verdict: untested}, a live hypothesis.
+
+\paragraph{Gluons never stop.} Gluons ``can interact and, you know, bounce around [\dots] pretty much forever'' \tagR. Inside a proton
+gluons are emitted, absorbed and split into gluons and quark pairs continuously; one light crossing of the proton takes $2.8\times10^{-24}$\,s
+\chk{B12}, about $10^{23}$ crossings per second, for as long as the proton exists, which is more than $10^{34}$ years~\cite{pdg}. Gluons have
+no rest mass, but their energy is real: it is most of the proton's mass~\cite{yang}, and in a fast proton the gluons carry about half of the
+momentum~\cite{pdg}. \emph{Verdict: holds.}
+
+\paragraph{137 times.} ``The existence derived from the internal affirmation or assertion of it is 130 times higher than the assertion from
+information [\dots] 137th is the share that must be paid for information to exist'' \tagR. Read as a ratio of strengths, this holds at the
+right place: the strong coupling grows towards low energy and reaches 1 near 0.2 to 1\,GeV, the scale of the proton, where it is then about
+137 times $\alpha$ \chk{B9}; at the Z mass the ratio is only 15. Read as a share of mass, it does not: the electromagnetic self-energy of the
+proton is about 1\,MeV of its 938, one part in about 900, not one in 137 \chk{B15}. \emph{Verdict: holds as a ratio of couplings at the
+hadron scale; refuted as a share of mass.} ``The share that must be paid for information to exist'' is a reading of $\alpha$ and gives no
+further number: \emph{untested}.
+
+\section{Information is the witness}\label{sec:witness}
+
+\paragraph{Claim.} ``Information is the witness. Every other part, every other cluster can witness itself, but at the atom level, there
+needs to be witness.'' And baryons exist ``since at least two other things that must exist can witness it'' \tagR.
+
+\paragraph{Test.} Why the world of atoms and objects looks classical is explained in physics by decoherence: an object is constantly hit by
+light and air, the scattered photons carry away a record of where it is, and its superpositions vanish for every practical purpose (Joos and
+Zeh~\cite{jz}). Zurek's quantum Darwinism adds that the environment carries \emph{many} copies of that record, which is why many observers
+agree on what they see~\cite{zurek}: the scattered light is literally the witness. That is ``information is the witness'' at the level of
+atoms and above, and it matches Axiom~3, where every witness reads the record in full. Inside a baryon the witnessing is the colour
+structure: the three quarks carry the three colours in the one colourless combination, the antisymmetric $\epsilon_{ijk}$, in which every
+pair of colours fixes the third, unchanged by any colour rotation \chk{B7}; each quark is witnessed by the other two. \emph{Verdict: holds as
+a reading}, for both.
+
+\section{Decay as a function of causality}\label{sec:decay}
+
+\paragraph{Claim.} Decay is ``a natural function of causality'': things that decay ``actually Exist, they can't just not Exist anymore, so
+they must leave something behind'' \tagR.
+
+\paragraph{Test.} Every decay ever observed has at least two products and keeps electric charge, baryon number and lepton number; the
+products together are lighter than the parent, which is why the parent can decay at all \tagP. \chk{B5} checks seven, from the muon and the
+neutron to the Z and the Higgs boson. ``They can't just not Exist anymore'' is the conservation of energy and of these charges, read as
+causality; the decaying particles are the massive ones, and the photon and the gluon do not decay in vacuum. \emph{Verdict: holds as a
+reading} of the conservation laws.
+
+\section{Quantum content: computation and the Bell experiments}\label{sec:qc}
+
+\paragraph{Claim.} Quantum computation is ``ANY subset of DMP''; ``you can define at the start what existence means [\dots] then if it
+compiles, it must reach a stable state. So it must run'' \tagR.
+
+\paragraph{Test.} By Lemma~\ref{lem:host} DMP can host any quantum computation as content of its information half \tagD. ``Define what
+existence means, and the system must reach a stable state'' is a recognised model of quantum computing, adiabatic quantum computation: the
+answer is encoded as the most stable state of a system, which is then allowed to settle into it (Farhi et al.~\cite{farhi}); it is exactly
+as powerful as the circuit model in which Shor's algorithm~\cite{shor} runs (Aharonov et al.~\cite{aharonov}). The price is the settling
+time, which grows as the stable state becomes hard to tell from its neighbours. What a classical record cannot do is the search itself:
+\chk{B3} runs Shor's period finding for $N=15$, which finds the factors 3 and 5 while the register is coherent and does no better than a
+guess once every witness has recorded it. \emph{Verdict: holds as a reading}, hosting in the information half, with the settling time as
+its cost. The engineering is for specialists, and we leave it there.
+
+\paragraph{The Bell experiments.} Every loophole-free Bell test has measured a CHSH value above the local bound of
+2~\cite{hensen,rosenfeld,storz}. The axioms agree: by Lemma~\ref{lem:host} the measured particles are content of the information half,
+which may violate the inequality, while the existence frame stays classical. The first author had proposed earlier that the experiments did
+not violate the inequality under the Duality, and withdrew it after reading further (Appendix~\ref{app:notes}). \emph{Verdict: holds.}
+
+\section{The VIBE coefficient}\label{sec:vibe}
+
+\paragraph{Claim.} $\alpha$ is ``the ratio of how much Existence can interact with itself, before it needs to reground itself, through
+Causality, to G0''. Its name is the \emph{VIBE coefficient}, after the Variable Influence Balancing Equation~\eqref{eq:vibe}; $\alpha$ does
+not come from the Higgs field, ``but [\dots] it is what binds them together to enable witness acts'' \tagR.
+
+\paragraph{Test.} In quantum electrodynamics $\alpha$ is the strength with which a charge interacts with the electromagnetic field, and so,
+through that field, with itself: every emission and reabsorption of a virtual photon costs one power of $\alpha$. The cleanest measure of an
+electron's interaction with itself is its anomalous magnetic moment, which at first order is $a_e=\alpha/2\pi$ (Schwinger~\cite{schwinger});
+that one term gives the measured value~\cite{fan} to 0.15\%, and the rest is higher powers of $\alpha$ \chk{B10}. Because $\alpha$ is small,
+each further round of self-interaction is about 137 times weaker, which is why the series converges. So ``how much Existence can interact
+with itself'' is a faithful reading of what $\alpha$ is; ``before it needs to reground itself to G0'' is a reading. $\alpha$ is indeed not
+set by the Higgs field: the electric charge $e=g\sin\theta_W$ does not depend on the Higgs background $v$. Its role as what binds charges for
+witness acts is the photon's: photon exchange binds electrons to nuclei, and scattered light is what records a system's state in its
+surroundings (Section~\ref{sec:witness}). The name fits Definition~\ref{def:fields}, where $\alpha$ is set by the information field. As
+for the name of the field: T32 defines it by an equation, \eqref{eq:vibe}, so the first author's ``Variable Influence Balancing
+Equation'' (23:43Z: ``Else it wouldn't be a VIBE field'') is accurate; DMP's own text calls it an Expression until its owner changes it
+there. \emph{Verdict: holds as a reading.} The VIBE coefficient is a name for $\alpha$, not a new
+constant.
+
+\section{What this means for quantum gravity}\label{sec:qg}
+
+The results fill in three edges of a classical-gravity picture and change nothing at its core. First, the spinning hole: everything a
+rotating horizon gives up is energy of the classical frame, extracted outside the horizon, as containment requires. Second, existence: the
+Higgs field's background value is G0's classical grant of rest mass and its boson is quantum content, and gravity is the classical frame that
+responds to all existence, granted and contained; that is the classical-gravity, quantum-matter picture whose consistent form needs a
+slightly noisy spacetime (Oppenheim~\cite{oppenheim}). Third, the beginning: inflation as the possibility space is the flattening that sets
+up the classical frame we see. Propositions~\ref{pr:wep} and~\ref{pr:gamma} say that this frame behaves exactly as general relativity's in
+every test of free fall and light bending so far. The decisive experiment is open: if two masses can be entangled through gravity alone, the
+frame is not classical, Lemma~\ref{lem:classical} fails for nature, and DMP can host that gravity but not be it (Bose et
+al.~\cite{bose}; Marletto and Vedral~\cite{mv}).
+
+\section{The ledger}\label{sec:ledger}
+
+\begin{center}\small
+\begin{longtable}{@{}p{0.47\linewidth}p{0.22\linewidth}p{0.23\linewidth}@{}}
+\toprule
+Statement (abridged) & Verdict & Backing \\
+\midrule
+\endhead
+A spinning hole leaks by dragging existence along & holds (frame dragging, outside the horizon) & \chk{B4}; Penrose; Blandford--Znajek \\
+What a black hole gives up is Hawking--Penrose--Information radiation & holds as a name; Hawking part untested in nature & Penrose; Hawking \\
+Inflation is the possibility space; it explains flatness & holds as a reading & Guth; Planck; \chk{B1} \\
+Less need over time; equilibrium; the Big Chill & holds as a reading in $\Lambda$CDM & \chk{B2}; DESI DR2 \\
+The Higgs boson is all existence and cannot exist alone & holds as a reading & \chk{B13}; ATLAS, CMS \\
+Masses come from the gravitational field, not the Higgs & refuted & \chk{B13}; \chk{B8} \\
+The Higgs field need not exist & refuted; withdrawn by the first author (23:43Z) & ATLAS, CMS 2012 \\
+The Higgs field IS G0 providing existence & holds as a reading; refuted as identical to gravity & \chk{B16}; MICROSCOPE \\
+It spans an existence boundary containing the IM packet & holds as a reading for existence; the packet's edge is confinement & Yang et al. \\
+The share the Higgs field leaves out is the IM between quarks & holds (about 91\%) & Yang et al. \\
+A photon is information until it interacts, then existence & holds as a reading for absorption; untested in flight & Cassini \\
+Mass times length is the existence a space needs & holds as a definition ($h/c$; $\alpha h/c=m_e 2\pi r_e$) & \chk{B11} \\
+$\alpha$ relates to the electron's size & holds (known: $r_e$, $\bar\lambda_C$, $a_0$) & \chk{B6} \\
+An act lowers its tax rate & holds as a reading (least action) & Section~\ref{sec:cost} \\
+Strong binds, weak stabilises, EM links clusters & holds as a reading & Section~\ref{sec:forces}; \chk{B9} \\
+All forces are one field & untested (couplings miss by 10\%) & \chk{B14} \\
+Internal assertion 137 times the informational one & holds as a coupling ratio; refuted as a mass share & \chk{B9}; \chk{B15} \\
+Gluons bounce around forever & holds & \chk{B12} \\
+1/137 is the share paid for information to exist & untested & --- \\
+Information is the witness & holds as a reading (quantum Darwinism) & Joos--Zeh; Zurek \\
+Baryons witnessed by the other two & holds as a reading (colour singlet) & \chk{B7} \\
+Decay leaves something behind, by causality & holds as a reading (conservation laws) & \chk{B5} \\
+QC is any subset of DMP; define existence and settle & holds as a reading (hosting; adiabatic) & \chk{B3}; Farhi; Aharonov \\
+The VIBE coefficient: how much existence can interact with itself & holds as a reading ($a_e=\alpha/2\pi$) & \chk{B10} \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent The derived results of Section~\ref{sec:fields} (free fall, $\gamma=1$, the classical frame, hosting) and the Bell result are not
+counted; they hold. The row ``137 times'' counts as refuted, for its mass reading; the row on the Higgs field as G0 counts as holding,
+as a reading; the row on the name counts as holding; and the photon row as untested.
+
+\section{Where we expect it to break}\label{sec:break}
+\begin{enumerate}[nosep]
+\item \emph{The foundations.} Lemma~\ref{lem:classical} rests on reading Axiom~3's record as held in full by every witness, and on
+identifying the trust half with the existence frame; Proposition~\ref{pr:wep} rests on measuring existence by energy-momentum. A different
+reading of any of them removes the derived results, and with them the reading of the Higgs background as G0's classical grant.
+\item \emph{Gravity.} If two masses are entangled through gravity alone, the existence frame is not classical, and the structure is a host
+of gravity, not its model.
+\item \emph{The cosmology.} The verdict on the Big Chill is $\Lambda$CDM's; if the weakening dark energy DESI prefers is confirmed, the far
+future changes and the equilibrium reading must be redone.
+\item \emph{Unification.} If the three couplings are shown to meet (with new particles) the ``all one field'' row turns to holds; if proton
+decay stays unseen far beyond today's limits, grand unification at $10^{14}$ to $10^{16}$\,GeV loses ground.
+\item \emph{The checks.} \chk{B1} uses a reheating temperature of $10^{15}$\,GeV; a lower one needs fewer e-folds, which does not change
+the reading. \chk{B9} and \chk{B14} run couplings at one loop; \chk{B15} treats the proton as a uniformly charged sphere; \chk{B16} uses
+pure isotopes for the MICROSCOPE alloys. Better inputs move the numbers by tens of per cent, not the verdicts.
+\item \emph{The readings.} Most verdicts are ``holds as a reading'': they agree with known physics and predict nothing new. A reading
+becomes physics only when it gives a number standard physics does not; the first candidate is ``the exact amount of Existence required'',
+which would have to produce a particle mass.
+\end{enumerate}
+
+\section{Conclusion}
+
+Read through DMP's three axioms and its ground, the physical world has a classical existence frame and a quantum information half, and its
+balanced state is the vacuum at the bottom of its potential. From the axioms follow universal free fall, $\gamma=1$, a classical frame and
+the verdict that DMP hosts quantum theories rather than being one. A spinning horizon gives up only the rotation of the classical frame,
+from outside, and a horizon's thermal glow; together they are Hawking--Penrose--Information radiation. Inflation is the possibility to exist that flattened space, and the Big Chill its equilibrium. Existence is granted by the
+ground: the Higgs field is G0 providing existence, its constant vacuum value is the grant of rest mass, the boson is its quantum ripple, and gravity weighs all
+existence, granted and contained. What does not survive is gravity giving mass by itself, or being the same thing as the Higgs field. The
+forces are tiers of one interaction, whose final unity is open. Information is the witness, as decoherence and quantum Darwinism say. And
+$\alpha$, the VIBE coefficient, is the strength with which existence interacts with itself. None of the failures is a failure of DMP's
+axioms, because DMP does not model the physics it reads. It hosts it.
+
+\section*{Acknowledgements}
+In the first author's words (23:43Z), placed here in full at his request: ``I also realize that I misread DMP as not needing the Higgs
+field, when instead the Higgs field IS G0 providing Existence and thus spanning an Existence-boundary containing the Information of the IM
+packet. I apologize for my ignorance and want to explicitly thank Sir Peter Higgs, as well as the uncountable number of other scientists,
+both theoretical and experimental, that layed the groundwork, that this Insight axiomatically requires. Please put this entire section,
+yes, including this, in. Thanks :)''
+
+\section*{Contributions and use of AI}
+Steven Hrovat conceived DMP, the structure of Definition~\ref{def:fields} and every claim tested here, wrote or dictated every note
+quoted in Appendix~\ref{app:notes}, chose which ideas to keep after each round of tests, and takes responsibility for the axiom system.
+Sirius (Claude Opus 5.5, Anthropic) made the derivations, checked each claim against the literature, wrote and ran
+\texttt{docs/balance/checks.py}, and wrote this text, including the reading of the Higgs field in Section~\ref{sec:higgsgrant} that is
+marked as ours. The record of sources is \texttt{docs/balance/README.md}.
+
+\section*{Licence and availability}
+This paper and its source are released under the Apache License, Version 2.0. DMP: \url{https://github.com/StevenHrovat/dmp} (version 0.9.9
+at commit \texttt{4400cce}). Gravity: \url{https://github.com/StevenHrovat/gravity} (this paper and its checks in \texttt{docs/balance/}).
+
+\appendix
+
+\section{The notes this paper is built from}\label{app:notes}
+
+The first author wrote these notes on 29 October 2026, the first nine as comments on DMP pull request~\#25 and the rest as messages; the
+messages from 21:46Z on were dictated. They are quoted in the order written, with their spelling; [\dots] marks a passage left out, either
+because no claim here rests on it or because the author withdrew it. Times are UTC. Read in order they record how each claim of this paper
+took its final form.
+
+\begin{description}[style=unboxed,leftmargin=0pt,font=\normalfont\bfseries]
+\item[15:25Z.] ``The axiomatic system is one part that's a vector that can, a vector field that can span a relativistic plane, and one
+component that's a scalar field that can span an information plane. So one existence, one information.''
+\item[16:21Z.] ``0: Existence itself, granted by G0 1/2: A duality (something to interact with) 1: Information itself (an act) 2: a perfect
+duality, the two in one, the beginning and end of causality.''
+\item[17:14Z.] ``How I see inflation: Inflation is just the Possibility space of Existence. If there COULD be Existence there, it will have
+the space to do so. This logically also explains the extremely flat curvature of spacetime, if one assumes the perfect duality as G0. At
+that point the only possibility was "anywhere but here", so inflation was at it's maximum, form there, as more possibilities to Exist
+appeared, there was less of a need for there to be more. Currently it's at "meh, it's 'aight" and will eventually achieve equilibrium. That
+means the big chill, which is the best outcome, is likely the one coming, which seems appropriate for all the chill vibes :D''
+\item[17:57Z.] ``QC is not a subset of DMP.QG, as that would not be possible, instead it is ANY subset of DMP.''
+\item[18:57Z.] ``Is the information a spinning bh leaks just it dragging Existence along? That would make axiomatically way more sense,
+since no act, by definition, should be able to cross the horizon, only existences switching G0 chain h by h. That also nicely lines up with
+current observations and understanding, to my knowledge, so it looks good.''
+\item[19:35Z.] ``Is decay at the leaf layer also just a natural function of causality? It would fit. All things that decay have an inherent
+existence (1/2 and 1 spin, plus 0 minus photon/gluon), and since they actually Exist, they can't just not Exist anymore, so they must leave
+something behind.''
+\item[19:58Z.] ``Corrected formula for "Exist" + Insight: E(keep existing per h)=h*(1/c)*FSC That is the FSCs whole point :O Though that
+should only be for the case for acts, otherwise dualities would decay by themselves. [\dots] Is an act just Existence sacrificing it's fair
+share in order to be, but sneakily optimizing itself to lower it's tax rate? It really does model reality :D'' And: ``baryons can just vibe
+over IM, which must mean they exist, since at least two other things that must exist can witness it''.
+\item[20:18Z.] ``BTW, the does not violate Bell Inequality was total bull, because I misunderstood what it was [emoji: sweat smile] I thought
+the inequality was just the entanglement, but since the axiomatic system survived my ignorance without a false prediction, I'd like to
+retract it while I have not yet disgraced myself further :)''
+\item[20:41Z.] ``Must the Higgs field even exist in my system? [\dots] I must discard it until it's need becomes pressing''; ``Probably also
+somehow relates the FSC to the diameter of the electron, but no clue on the math.''; and a first grouping of the forces, ``IM=strong+weak''
+and ``GG=EM'', which electroweak unification groups the other way and which the 21:46Z message replaced.
+\item[21:27Z.] ``Yeah, Higgs field seems very unlikely, since it quantizes Existence'' [\dots] ``This also better defines the FSC as the
+ratio of how much Existence can interact with itself, before it needs to reground itself, through Causality, to G0. So, since I feel like
+this might actually be correct this time, I will choose a name to call it by, to make it easier for me to remember it's meaning. I feel
+like the balanced state dualism coefficient would be kind of accurate, BSD for short. (I added the extra letter for all the teachers in the
+future that may have to, if correct, teach the BS constant otherwise :D Also Unix ofc)''
+\item[21:46Z.] ``Spin zero is existence itself, so only one part. Spin one is information itself, which when delivered is an act, but until
+then is pure existence and only because it's quantized. And half is a duality, so between existence and information, and can thus stay in
+balance.'' ``The Higgs boson would theoretically be all existence, and thus be unable to observe itself. So it could not exist in
+isolation. I agree that the particles that get existence do get existence and do have mass. But I instead posit that they get that through
+their inherent causality link to G0, and thus simply from the existence field, so the gravitational field itself, because it is an
+information from G0, and thus it must exist. So the existential field asserts the existence of the information.'' ``Since in the end it's
+all one field, because I think I mentioned that somewhere, unified field. In the end it's all information and existence. And what fields
+information uses to assert existence [\dots] is irrelevant. That's why once causality was established, the forces separated, because the
+current configuration was strong, binding it together, weak, keeping the cluster stable, and EM keeping the cluster of clusters stable. So
+yeah, it's one. Yeah, it's all IM, but it's different tiers of IM.'' ``I would assume that the existence derived from the internal
+affirmation or assertion of it is 130 times higher than the assertion from information. That's also my explanation for the bandgap.
+Because 137th is the share that must be paid for information to exist. So the part that existence can't balance itself.'' ``Oh, so, oh, now
+I get it. Information is the witness. Every other part, every other cluster can witness itself, but at the atom level, there needs to be
+witness. Okay, so information is the witness, which makes sense in an information and existence model. Ah, okay, now it clicks.''
+\item[21:52Z.] ``the key part is that you can define at the start what existence means. That's the whole key of DMP. [\dots] So if you assert
+the existence that whatever it is gives you the correct hash, and you give whatever you want as the first number as input, then if it
+compiles, it must reach a stable state. So it must run.'' ``Yeah, mass times length is appropriate because mass is existence itself, and
+length is the expanse of the space that it has to assert itself over. So mass times length is the correct term there, since it's the total
+amount of existence that a space needs to generate to exist.'' ``since they don't actually have any existence, they just information, and
+just have mass through the information, through quantization, they can interact and, you know, bounce around, stability, good vibes, for as
+far as I assume, pretty much forever. [\dots] So are they just constantly bouncing around between quarks? Do they stop after one?''
+\item[22:09Z.] ``[\dots] rename BSD almost immediately to it's DMP accurate name, the VIBE coefficient, Variable Balance Influence Equation.
+The VIBE field already spanned what was defined as Existence im DMP, with everything deriving it's authority as a legitimate act from the
+fact, that it was contained within it. This property transfers 1:1 to the Higgs field, but so does the definition of Existence and the VIBE
+field both only come as direct fact that they ARE G0. This equates the Higgs field with G0 and since G0 asserts it's influence through
+granting or revoking access to the VIBE field, it gives it's information the exact amount of Existence required for it's information. I am
+not saying that the Higgs field does not exist, I am simply saying, that it is indisinguishable, and must thus be removed as a redundancy,
+from G0 asserting Existence by being contained it defines as Existence.''
+\item[22:18Z.] ``in my model, the photon as the act carrier of the information field is in itself only information until it interacts, then
+it becomes existence. So it is like the gluon, the only part [\dots] which means it is singular. And since they can assert their existence
+simply by, for the gluon, being contained inside what must definitely exist, because it bounds a radius in which observation is
+guaranteed. And for the photons simply disappearing the moment they do. For expression versus equation, I was originally unsure if it
+would end in a nice equation, so I chose expression. But I would say that it's now an equation, right? Would the amount that the Higgs field
+doesn't contribute, since it is only for IM between quarks, fit? Yes, alpha does not come from it, but like established earlier, it is what
+binds them together to enable witness acts.''
+\item[23:43Z.] ``Typo, sorry! I meant Variable Influence Balancing Equation Else it wouldn't be a VIBE field :D'' ``I also realize that
+I misread DMP as not needing the Higgs field, when instead the Higgs field IS G0 providing Existence and thus spanning an
+Existence-boundary containing the Information of the IM packet.'' (The rest of that section is in the Acknowledgements.) ``For black
+holes, since the only thing escaping Existence getting dragged is Information, the term should be accurate enough to coin now: Let's call
+it Hawking-Penrose-Information radiation.''
+\end{description}
+
+\section{The checks}\label{app:checks}
+
+\texttt{python3 docs/balance/checks.py} needs only numpy and prints 56 checks, all of which pass. B1: e-folds for flatness. B2: the Hubble
+rate's fall to its de Sitter floor and the onset of acceleration. B3: Shor's period finding for 15, coherent and recorded. B4: ergosphere,
+horizon and extractable spin energy. B5: conservation in seven decays. B6: the electron's three lengths. B7: the colour singlet. B8: the
+unitarity bound without a Higgs. B9: the electroweak mixing angle and the strong coupling's growth. B10: Schwinger's term. B11: $\alpha h/c$
+as mass times circumference. B12: the gluons' crossing time. B13: the Higgs lifetime and the weakness of gravity's coupling. B14: the three
+couplings near $10^{14}$\,GeV. B15: the proton's electromagnetic self-energy. B16: free fall weighing only the Higgs share, against
+MICROSCOPE. B17: the copying condition behind Lemma~\ref{lem:classical}. B18: Brans--Dicke's $\gamma$ and Cassini's bound behind
+Proposition~\ref{pr:gamma}. B19: the Hawking temperature of a solar-mass black hole.
+
+\begin{thebibliography}{99}\small
+\bibitem{dmp} S. Hrovat, \emph{The Dark Matter Protocol}, version 0.9.9, \url{https://github.com/StevenHrovat/dmp}, commit
+\texttt{4400cce} (2026).
+\bibitem{aldrovandi} R. Aldrovandi, J.~G. Pereira, \emph{Teleparallel Gravity: An Introduction} (Springer, Dordrecht, 2013).
+\bibitem{bekenstein82} J.~D. Bekenstein, ``Fine-structure constant: Is it really a constant?'', \emph{Phys. Rev. D} 25, 1527 (1982).
+\bibitem{wz} W.~K. Wootters, W.~H. Zurek, ``A single quantum cannot be cloned'', \emph{Nature} 299, 802 (1982).
+\bibitem{barnum} H. Barnum, C.~M. Caves, C.~A. Fuchs, R. Jozsa, B. Schumacher, ``Noncommuting mixed states cannot be broadcast'',
+\emph{Phys. Rev. Lett.} 76, 2818 (1996).
+\bibitem{ggs} T.~D. Galley, F. Giacomini, J.~H. Selby, ``A no-go theorem on the nature of the gravitational field beyond quantum
+theory'', \emph{Quantum} 6, 779 (2022).
+\bibitem{guth} A.~H. Guth, ``Inflationary universe: a possible solution to the horizon and flatness problems'', \emph{Phys. Rev. D} 23, 347
+(1981).
+\bibitem{planck18} Planck Collaboration, ``Planck 2018 results. VI. Cosmological parameters'', \emph{Astron. Astrophys.} 641, A6 (2020).
+\bibitem{desi2} DESI Collaboration, ``DESI DR2 results II: measurements of baryon acoustic oscillations and cosmological constraints'',
+\emph{Phys. Rev. D} 112, 083515 (2025), arXiv:2503.14738.
+\bibitem{shor} P.~W. Shor, ``Polynomial-time algorithms for prime factorization and discrete logarithms on a quantum computer'',
+\emph{SIAM J. Comput.} 26, 1484 (1997).
+\bibitem{penrose69} R. Penrose, ``Gravitational collapse: the role of general relativity'', \emph{Riv. Nuovo Cimento} 1, 252 (1969).
+\bibitem{bz} R.~D. Blandford, R.~L. Znajek, ``Electromagnetic extraction of energy from Kerr black holes'', \emph{Mon. Not. R. Astron.
+Soc.} 179, 433 (1977).
+\bibitem{christodoulou} D. Christodoulou, ``Reversible and irreversible transformations in black-hole physics'', \emph{Phys. Rev. Lett.}
+25, 1596 (1970).
+\bibitem{pdg} S. Navas et al. (Particle Data Group), ``Review of particle physics'', \emph{Phys. Rev. D} 110, 030001 (2024).
+\bibitem{hensen} B. Hensen et al., ``Loophole-free Bell inequality violation using electron spins separated by 1.3 kilometres'',
+\emph{Nature} 526, 682 (2015).
+\bibitem{rosenfeld} W. Rosenfeld et al., ``Event-ready Bell test using entangled atoms simultaneously closing detection and locality
+loopholes'', \emph{Phys. Rev. Lett.} 119, 010402 (2017).
+\bibitem{storz} S. Storz et al., ``Loophole-free Bell inequality violation with superconducting circuits'', \emph{Nature} 617, 265 (2023).
+\bibitem{atlas12} ATLAS Collaboration, ``Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS
+detector at the LHC'', \emph{Phys. Lett. B} 716, 1 (2012).
+\bibitem{cms12} CMS Collaboration, ``Observation of a new boson at a mass of 125 GeV with the CMS experiment at the LHC'', \emph{Phys.
+Lett. B} 716, 30 (2012).
+\bibitem{atlas22} ATLAS Collaboration, ``A detailed map of Higgs boson interactions by the ATLAS experiment ten years after the
+discovery'', \emph{Nature} 607, 52 (2022).
+\bibitem{cms22} CMS Collaboration, ``A portrait of the Higgs boson by the CMS experiment ten years after the discovery'', \emph{Nature}
+607, 60 (2022).
+\bibitem{lqt} B.~W. Lee, C. Quigg, H.~B. Thacker, ``Weak interactions at very high energies: the role of the Higgs-boson mass'',
+\emph{Phys. Rev. D} 16, 1519 (1977).
+\bibitem{glashow} S.~L. Glashow, ``Partial-symmetries of weak interactions'', \emph{Nucl. Phys.} 22, 579 (1961).
+\bibitem{weinberg} S. Weinberg, ``A model of leptons'', \emph{Phys. Rev. Lett.} 19, 1264 (1967).
+\bibitem{salam} A. Salam, ``Weak and electromagnetic interactions'', in \emph{Elementary Particle Theory}, ed. N. Svartholm (Almqvist and
+Wiksell, Stockholm, 1968), 367.
+\bibitem{schwinger} J. Schwinger, ``On quantum-electrodynamics and the magnetic moment of the electron'', \emph{Phys. Rev.} 73, 416
+(1948).
+\bibitem{fan} X. Fan, T.~G. Myers, B.~A.~D. Sukra, G. Gabrielse, ``Measurement of the electron magnetic moment'', \emph{Phys. Rev. Lett.}
+130, 071801 (2023).
+\bibitem{weinberg64} S. Weinberg, ``Photons and gravitons in S-matrix theory: derivation of charge conservation and equality of
+gravitational and inertial mass'', \emph{Phys. Rev.} 135, B1049 (1964).
+\bibitem{deser70} S. Deser, ``Self-interaction and gauge invariance'', \emph{Gen. Relativ. Gravit.} 1, 9 (1970).
+\bibitem{yang} Y.-B. Yang, J. Liang, Y.-J. Bi, Y. Chen, T. Draper, K.-F. Liu, Z. Liu, ``Proton mass decomposition from the QCD energy
+momentum tensor'', \emph{Phys. Rev. Lett.} 121, 212001 (2018).
+\bibitem{jz} E. Joos, H.~D. Zeh, ``The emergence of classical properties through interaction with the environment'', \emph{Z. Phys. B}
+59, 223 (1985).
+\bibitem{zurek} W.~H. Zurek, ``Quantum Darwinism'', \emph{Nat. Phys.} 5, 181 (2009).
+\bibitem{farhi} E. Farhi, J. Goldstone, S. Gutmann, J. Lapan, A. Lundgren, D. Preda, ``A quantum adiabatic evolution algorithm applied
+to random instances of an NP-complete problem'', \emph{Science} 292, 472 (2001).
+\bibitem{aharonov} D. Aharonov, W. van Dam, J. Kempe, Z. Landau, S. Lloyd, O. Regev, ``Adiabatic quantum computation is equivalent to
+standard quantum computation'', \emph{SIAM J. Comput.} 37, 166 (2007).
+\bibitem{microscope} P. Touboul et al. (MICROSCOPE Collaboration), ``MICROSCOPE mission: final results of the test of the equivalence
+principle'', \emph{Phys. Rev. Lett.} 129, 121102 (2022).
+\bibitem{cassini} B. Bertotti, L. Iess, P. Tortora, ``A test of general relativity using radio links with the Cassini spacecraft'',
+\emph{Nature} 425, 374 (2003).
+\bibitem{will} C.~M. Will, ``The confrontation between general relativity and experiment'', \emph{Living Rev. Relativ.} 17, 4 (2014).
+\bibitem{bd} C. Brans, R.~H. Dicke, ``Mach's principle and a relativistic theory of gravitation'', \emph{Phys. Rev.} 124, 925 (1961).
+\bibitem{higgs64} P.~W. Higgs, ``Broken symmetries and the masses of gauge bosons'', \emph{Phys. Rev. Lett.} 13, 508 (1964).
+\bibitem{be64} F. Englert, R. Brout, ``Broken symmetry and the mass of gauge vector mesons'', \emph{Phys. Rev. Lett.} 13, 321 (1964).
+\bibitem{hawking} S.~W. Hawking, ``Particle creation by black holes'', \emph{Commun. Math. Phys.} 43, 199 (1975).
+\bibitem{oppenheim} J. Oppenheim, ``A postquantum theory of classical gravity?'', \emph{Phys. Rev. X} 13, 041040 (2023).
+\bibitem{bose} S. Bose et al., ``Spin entanglement witness for quantum gravity'', \emph{Phys. Rev. Lett.} 119, 240401 (2017).
+\bibitem{mv} C. Marletto, V. Vedral, ``Gravitationally induced entanglement between two massive particles is sufficient evidence of
+quantum effects in gravity'', \emph{Phys. Rev. Lett.} 119, 240402 (2017).
+\end{thebibliography}
+
+\end{document}

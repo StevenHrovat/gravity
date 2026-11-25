@@ -1,0 +1,802 @@
+{
+ "timing": "runs/timing_b3.5.json",
+ "T": {
+  "2.3": 300,
+  "2.6": 600,
+  "3.0": 600,
+  "3.5": 600
+ },
+ "s6": 10.261413791444566,
+ "s4": 11.250465723150068,
+ "setup": 78.3052089214325,
+ "ladder": [
+  {
+   "name": "full design (amended)",
+   "hours": 247.89896718182231,
+   "rows": [
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 6,
+     "hours": 5.9201417249895965
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 11,
+     "hours": 9.870483019594792
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 6,
+     "hours": 5.9201417249895965
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 9.870483019594792
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.6,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.6,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.6,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.6,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.0,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.0,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.0,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.0,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    }
+   ]
+  },
+  {
+   "name": "(i) kappa = 4 only at beta 2.3, 3.5",
+   "hours": 185.47601739885383,
+   "rows": [
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 6,
+     "hours": 5.9201417249895965
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 9.870483019594792
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.6,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.6,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.0,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.0,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 6,
+     "hours": 5.9201417249895965
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 11,
+     "hours": 9.870483019594792
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 6,
+     "hours": 11.709774768443472
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    }
+   ]
+  },
+  {
+   "name": "(ii) + ell = 4 only at beta 2.3",
+   "hours": 138.63691832508005,
+   "rows": [
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 6,
+     "hours": 5.9201417249895965
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 9.870483019594792
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.6,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.0,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 6,
+     "hours": 5.9201417249895965
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 11,
+     "hours": 9.870483019594792
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 11,
+     "hours": 19.501700123040763
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    }
+   ]
+  },
+  {
+   "name": "(iii) + sampled Y 16 -> 8",
+   "hours": 108.75469677312097,
+   "rows": [
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 4,
+     "hours": 4.001561210619346
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 8,
+     "hours": 7.23987523096579
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.6,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 8,
+     "hours": 14.30573888655062
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.0,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 8,
+     "hours": 14.30573888655062
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 8,
+     "hours": 14.30573888655062
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 4,
+     "hours": 4.001561210619346
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 8,
+     "hours": 7.23987523096579
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 8,
+     "hours": 14.30573888655062
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 3,
+     "hours": 2.8778707715553775
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 5,
+     "hours": 4.384346314381669
+    }
+   ]
+  },
+  {
+   "name": "(iv) + theta = pi only",
+   "hours": 58.424535973275255,
+   "rows": [
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 2,
+     "hours": 2.000780605309673
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 4,
+     "hours": 3.6574244701420815
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.6,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 4,
+     "hours": 7.227843152593683
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.0,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 4,
+     "hours": 7.227843152593683
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 4,
+     "hours": 7.227843152593683
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 2,
+     "hours": 2.000780605309673
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 2.3,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 4,
+     "hours": 3.6574244701420815
+    },
+    {
+     "theory": "SU(2)",
+     "beta": 3.5,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 4,
+     "hours": 7.227843152593683
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 2,
+     "hours": 1.9185805143702517
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 3,
+     "hours": 2.630607788629002
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 2,
+     "hours": 1.9185805143702517
+    },
+    {
+     "theory": "U(1) (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 3,
+     "hours": 2.630607788629002
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 4,
+     "batches": 2,
+     "hours": 1.9185805143702517
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 4,
+     "ell": 6,
+     "batches": 3,
+     "hours": 2.630607788629002
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 4,
+     "batches": 2,
+     "hours": 1.9185805143702517
+    },
+    {
+     "theory": "2I (estimate)",
+     "beta": null,
+     "kappa": 16,
+     "ell": 6,
+     "batches": 3,
+     "hours": 2.630607788629002
+    }
+   ]
+  }
+ ],
+ "ladder_hours": [
+  247.9,
+  185.48,
+  138.64,
+  108.75,
+  58.42
+ ],
+ "batch_seconds": {
+  "4": {
+   "2.3": 3453.444925866453,
+   "2.6": 6828.584642811474,
+   "3.0": 6828.584642811474,
+   "3.5": 6828.584642811474
+  },
+  "6": {
+   "2.3": 3156.729346354802,
+   "2.6": 6235.153483788172,
+   "3.0": 6235.153483788172,
+   "3.5": 6235.153483788172
+  }
+ },
+ "mixed": true
+}

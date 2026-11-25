@@ -1,0 +1,282 @@
+\section{Hosting benchmarks in detail}\label{app:hosted}
+
+This appendix gives the models, methods and results behind Table~\ref{tab:hosted:summary} of Section~\ref{sec:hosted}. Headline values
+are not repeated here; the table is their home.
+
+\subsection{Conventions}\label{app:hosted:conv}
+
+\paragraph{Witnesses.} Witness~T and witness~I share no code path with each other or with the host. Where the host counts set bits with a
+lookup table, witness~T uses bit-parallel arithmetic. Where witness~T reads a determinant from a pivoted LU factorisation, witness~I uses a
+Householder QR factorisation. The gate passes only when both witnesses pass.
+
+\paragraph{Controls.} Each benchmark carries four controls.
+\begin{itemize}[nosep]
+\item $[H,\Sigma]=0$ is checked on a small, complete Hilbert space.
+\item An injected fault that leaves the existence sector must be refused by both witnesses.
+\item Two orthogonal states of the sector, that is two different contents, must receive the same verdict.
+\item In B4, a fault that changes only the content must pass both witnesses.
+\end{itemize}
+
+\paragraph{Uncertainties.} Exact identities (closed forms, commutators) are checked to floating-point accuracy. An extrapolated number
+carries, as $1\sigma$, the largest change over a family of alternative fits (windows and functional forms) fixed in the code. In B3 a second
+fit uses these spreads as weights; the uncertainty it propagates is combined in quadrature. A comparison passes at
+$\vert\text{deviation}\vert\le2\sigma$.
+
+\subsection{B1: the Heisenberg chain}\label{app:hosted:b1}
+
+\paragraph{Model.} $H=\sum_{i=1}^{N}\mathbf S_i\cdot\mathbf S_{i+1}$ acts on spins $1/2$ on a ring, for even $N$ from 8 to 24. The
+syndrome $\Sigma=(S^z_{\rm tot})^2$ selects the sector $S^z_{\rm tot}=0$, with 2\,704\,156 states at $N=24$. The ground-state energy per
+site tends to $e_0=\tfrac14-\ln2$ \cite{bethe1931,hulthen1938}.
+
+\paragraph{Method.} Lanczos iteration gives the two lowest levels. At every $N$ the ground energy is checked against the Bethe ansatz, the
+exact solution of this chain. With $M=N/2$ rapidities $u_j$ and quantum numbers $I_j=-\tfrac{M-1}2,\dots,\tfrac{M-1}2$, the Bethe equations
+and the energy are
+\[
+N\arctan2u_j=\pi I_j+\sum_k\arctan(u_j-u_k),\qquad E_0=\frac N4-\sum_j\frac2{1+4u_j^2}.
+\]
+A Newton solution agrees with Lanczos to $1.3\times10^{-15}$ per site. For a critical chain, conformal invariance gives
+$E_0(N)/N=e_0-\pi vc/(6N^2)+\dots$ \cite{blote1986}. Here $c=1$ and $v=\pi/2$, and the form is corrected by powers of $1/\ln N$
+\cite{affleck1989}. We fit $a+bN^{-2}+dN^{-4}$ on $N\ge12$. The nine alternatives are the windows $N\ge8,10,14,16$, and all five windows
+with an added $N^{-6}$ term.
+
+\paragraph{Results.} All nine alternatives lie above the exact value. The logarithmic corrections predict this, since no power series in
+$1/N^2$ absorbs them. The triplet gap $\Delta_N=E_1-E_0$ closes:
+\begin{itemize}[nosep]
+\item $N\Delta_N$ grows from 4.18 at $N=8$ to 4.39 at $N=24$;
+\item the local exponent $-\dd\ln\Delta_N/\dd\ln N$ rises from 0.946 to 0.968;
+\item a fit $\Delta_\infty+\beta_1/N+\beta_2/N^2$ on $N\ge12$ gives $\Delta_\infty=0.0024$, against $\Delta_{24}=0.183$.
+\end{itemize}
+The chain is gapless, and $N\Delta_N$ approaches $\pi^2/2$ only logarithmically.
+
+\paragraph{Witnesses.} T counts the up spins of every register index that carries amplitude. I evaluates $\langle(S^z_{\rm tot})^2\rangle$
+site by site. $[H,S^z_{\rm tot}]=0$ holds exactly on the full $2^{10}$-dimensional space. The $N=24$ ground state and the orthogonal
+triplet pass. A single spin flip gives $\langle(S^z_{\rm tot})^2\rangle=1$ and is refused by both.
+
+\subsection{B2: the transverse-field Ising ring at \texorpdfstring{$L=4000$}{L = 4000}}\label{app:hosted:b2}
+
+\paragraph{Model.} $H=-\sum_iZ_iZ_{i+1}-g\sum_iX_i$ acts on a ring of $L=4000$ spins, at $g=1$ (critical), $0.5$ and $1.5$. The
+Jordan--Wigner transformation maps the spins to fermions. With the Majorana operators $a_j=(\prod_{l<j}X_l)Z_j$ and
+$b_j=(\prod_{l<j}X_l)Y_j$, one has $X_j=ia_jb_j$ and $Z_jZ_{j+1}=ib_ja_{j+1}$. The bond that closes the ring carries the parity
+$P=\prod_iX_i$. For $P=+1$ it becomes an antiperiodic fermion bond \cite{lieb1961,pfeuty1970}, and that sector is the existence sector.
+There, and only there, $H=i\sum_{jk}A_{jk}a_jb_k$, with $A_{jj}=-g$, $A_{j+1,j}=1$, $A_{1L}=-1$ and all other entries zero. At $L=10$ this
+reproduces the lowest even-parity eigenvalue of the full spin Hamiltonian to $1.8\times10^{-14}$.
+
+\paragraph{Method.} The singular-value decomposition $A=U\,{\rm diag}(s_m)V^{\mathsf T}$ gives the ground energy $E_0=-\sum_ms_m$. The
+ground state is Gaussian, with correlation matrix $G_{jk}=\langle ia_jb_k\rangle=-(UV^{\mathsf T})_{jk}$. A block of $l$ consecutive spins
+has entropy
+\[
+S(l)=\sum_mh\bigl(\tfrac{1+\nu_m}2\bigr),\qquad h(p)=-p\ln p-(1-p)\ln(1-p),
+\]
+where $\nu_m$ are the singular values of $G$ restricted to the block \cite{peschel2003,vidal2003}. Each coupling costs one SVD of a
+$4000\times4000$ matrix, about 27\,s on one core.
+
+\paragraph{Results.} $E(m)$ and $K(k)$ denote the complete elliptic integrals of the second kind (parameter $m$) and of the first kind
+(modulus $k$).
+\begin{itemize}[nosep]
+\item[(a)] The ground energy equals the finite-$L$ closed form $-\sum_k\sqrt{1+g^2-2g\cos k}$, with $k=2\pi(n+\tfrac12)/L$, at all three
+couplings. At $g=0.5$ and $1.5$, $E_0/L$ equals the thermodynamic limit $e_\infty=-\tfrac2\pi(1+g)E(4g/(1+g)^2)$ to $4\times10^{-16}$
+\cite{pfeuty1970}.
+\item[(b)] At $g=1$, $E_0/L-e_\infty=-3.27\times10^{-8}$. Read as the Casimir term $-\pi vc/(6L^2)$ with $v=2$, it gives the first value of
+$c$ in Table~\ref{tab:hosted:summary}. Its uncertainty is floating-point error, and the exact expansion predicts
+$\tfrac12+7\pi^2/(480L^2)=0.5000000090$.
+\item[(c)] At $g=1$ we fit the Calabrese--Cardy form for a ring \cite{calabrese2004}, $S(l)=\tfrac c3\ln[\tfrac L\pi\sin\tfrac{\pi l}L]+c_1'$,
+on $100\le l\le2000$. This gives the second value of $c$, with $c_1'=0.478558$. The uncertainty is the spread over windows that start at
+50, 200 or 400 or end at 1000.
+\item[(d)] At $g=0.5$ and $1.5$ the entropy saturates, $S(L/2)-S(L/8)=2\times10^{-12}$: an area law. The saturated values match the
+corner-transfer-matrix prediction. The corner transfer matrix is Baxter's transfer matrix for a quadrant of the two-dimensional lattice;
+its spectrum gives the entanglement levels of a half-infinite chain. These are $(2j+1)\epsilon$ for $g>1$ and $2j\epsilon$ for $g<1$,
+with $\epsilon=\pi K(k')/K(k)$ and $k=\min(g,1/g)$ \cite[Eqs.~4.30--4.34]{calabrese2004}. A block has two cuts, so $S=2S_{\rm half}$ for
+$g>1$. For $g<1$ the even-parity ground state is a cat state whose $\ln2$ the two cuts share, so $S=2S_{\rm half}-\ln2$. We derived this
+before the comparison.
+\end{itemize}
+
+\paragraph{Witnesses.} The syndrome is the parity, $\langle P\rangle=\det G$, together with purity ($G$ orthogonal). T reads $\det G$ from
+a pivoted LU factorisation: parity $+1$, with $\vert\ln\vert\det G\vert\vert<10^{-13}$. I reads it from a Householder QR, using the
+reflector count and the signs of the diagonal of $R$, and finds $\max\vert GG^{\mathsf T}-\mathbb1\vert\le7\times10^{-15}$. A spin flip
+$Z_1$ reverses the first row of $G$; both witnesses read $-1$ and refuse.
+
+\subsection{B3: the Schwinger model}\label{app:hosted:b3}
+
+\paragraph{Model.} Quantum electrodynamics in 1+1 dimensions, with one fermion of mass $m$ and charge $g$, confines. At $m=0$ it is a free
+boson of mass $g/\sqrt\pi$, the vector particle \cite{schwinger1962}. We use Kogut--Susskind staggered fermions \cite{kogut1975}: one
+fermion component per site, the two components of the continuum spinor sitting on alternate sites. The lattice has $N$ sites, open
+boundaries and zero background field. Gauss's law reads $E_n-E_{n-1}=Q_n$, with $Q_n=\tfrac12(\sigma^z_n+(-1)^n)$ the charge on site $n$ and
+$E_n$ the integer electric flux on the link from site $n$ to $n+1$. It fixes $E_n=\sum_{k\le n}Q_k$ and leaves the spin Hamiltonian
+\cite[Eq.~2.6]{banuls2013}
+\begin{equation}\label{eq:hosted:schwinger}
+W=\frac{2H}{ag^2}=x\sum_{n=0}^{N-2}\bigl(\sigma^+_n\sigma^-_{n+1}+{\rm h.c.}\bigr)+\sqrt x\,\frac{m_{\rm lat}}g\sum_{n=0}^{N-1}\bigl(1+(-1)^n
+\sigma^z_n\bigr)+\sum_{n=0}^{N-2}E_n^2,
+\end{equation}
+with lattice spacing $a$ and $x=(ag)^{-2}$. The vector mass is $M/g=(W_1-W_0)/(2\sqrt x)$, from the two lowest levels, taken to
+$N\to\infty$ and then to $x\to\infty$. We run two lattice masses: the naive $m_{\rm lat}=0$, and $m_{\rm lat}=-g^2a/8$. The discrete chiral
+symmetry of the lattice model identifies the second as the massless point \cite{dempsey2022}. The shift vanishes as $a\to0$, so both
+lattices have the same continuum limit.
+
+\paragraph{Existence and witnesses.} The existence sector is fixed by Gauss's law at every site, with $E_{-1}=0$ (no background) and
+$E_{N-1}=0$ (no field beyond the last site). Together these imply total charge zero. The host keeps an integer link register
+$E_0,\dots,E_{N-2}$ for every basis configuration.
+\begin{itemize}[nosep]
+\item T checks $\mathcal G_n\equiv E_n-E_{n-1}-Q_n=0$ at every site of every configuration carrying amplitude. I evaluates
+$\langle\sum_n\mathcal G_n^2+Q_{\rm tot}^2\rangle$.
+\item The ground and vector states at $N=22$ pass. A charge without its field (one spin flipped) and a flux line without charges (one
+link raised) give the value 2 and are refused by both.
+\item The elimination itself is checked with explicit integer links at $N=6$ (1\,075\,648 states; $\vert E_n\vert\le3$ is exact there).
+$[H,\mathcal G_n]=0$ for all $n$, and the 20 states with all $\mathcal G_n=0$ reproduce the spectrum of \eqref{eq:hosted:schwinger} to
+$2.5\times10^{-14}$.
+\end{itemize}
+
+\paragraph{Method.} Lanczos iteration runs for $N=8,\dots,22$ (705\,432 states at $N=22$) at $x=0.5,1,1.5,2,3,4$.
+\begin{itemize}[nosep]
+\item \emph{$N\to\infty$ at each $x$.} We fit $M_N/g=w+\alpha N^{-2}+\beta N^{-3}$ on $N\ge12$. The $N^{-2}$ term is the kinetic energy
+$\pi^2/(2M\ell^2)$ of the vector particle in a box of length $\ell$; the $N^{-3}$ term absorbs a boundary shift of $\ell$. The alternatives
+are $N\ge14$, $N\ge16$, $\alpha N^{-2}+\beta N^{-4}$, and $\alpha N^{-2}$ alone on the last four sizes.
+\item \emph{Which $x$ enter.} Only $x$ with $N_{\max}/\sqrt x\ge10$, a box at least ten units of $1/g$ long. All six qualify.
+\item \emph{$x\to\infty$.} We fit $w(x)$ with a quadratic in $y=1/\sqrt x=ag$, weighted by the inverse squared $N$-extrapolation
+errors. The alternatives are linear on $x\ge1.5$, quadratic on $x\ge1$, cubic, and, for the shifted lattice only, quadratic without the
+linear term.
+\end{itemize}
+
+\begin{table}[htb]\centering\footnotesize
+\caption{Schwinger model at $m=0$: vector mass $M/g$ at each $x=1/(ag)^2$, extrapolated to $N\to\infty$ (fit-family spread in units of
+the last digit), and at $N=22$ \tagS~\chk{hosted:B3}. Exact value: $1/\sqrt\pi=0.5641896$.}\label{tab:hosted:schwinger}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+& & \multicolumn{2}{c}{shifted, $m_{\rm lat}=-g^2a/8$} & \multicolumn{2}{c}{naive, $m_{\rm lat}=0$}\\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+$x$ & $ag$ & $N\to\infty$ & $N=22$ & $N\to\infty$ & $N=22$\\
+\midrule
+0.5 & 1.41 & 0.5835(6) & 0.5892 & 0.8955(4) & 0.8986\\
+1 & 1.00 & 0.5648(15) & 0.5784 & 0.7848(10) & 0.7939\\
+1.5 & 0.82 & 0.5620(24) & 0.5836 & 0.7422(18) & 0.7580\\
+2 & 0.71 & 0.5616(35) & 0.5910 & 0.7180(28) & 0.7405\\
+3 & 0.58 & 0.5620(60) & 0.6067 & 0.6900(49) & 0.7259\\
+4 & 0.50 & 0.5627(87) & 0.6222 & 0.6740(69) & 0.7228\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Results.} Table~\ref{tab:hosted:schwinger} gives the values at each $x$.
+\begin{itemize}[nosep]
+\item On the shifted lattice the continuum uncertainty combines a propagated $N$-extrapolation uncertainty of 0.016 with a continuum
+fit-family spread of 0.035. On the naive lattice the two parts are 0.012 and 0.028.
+\item The per-$x$ errors are fit-family spreads, strongly correlated between $x$. The main continuum fits have $\chi^2=0.04$ (shifted) and
+0.18 (naive) for 3 degrees of freedom. With $\chi^2/{\rm dof}\ll1$, the deviations in units of $\sigma$ are consistency checks, not
+significances.
+\item The continuum alternatives on the shifted lattice give 0.562 (linear, $x\ge1.5$), 0.578 (quadratic, $x\ge1$), 0.570 (cubic) and
+0.550 (no linear term).
+\item The finite-size form passes an out-of-sample test. At $x=4$ the fit on $N\le22$ predicts the $N=24$ gap as 0.613467; the computed
+value is 0.613388.
+\end{itemize}
+
+\paragraph{Precision limits.}
+\begin{itemize}[nosep]
+\item Matrix product states (MPS) give $0.56421(9)$ \cite{banuls2013}. The density-matrix renormalisation group (DMRG) gives $0.5642(2)$
+\cite{byrnes2002}, as tabulated in \cite{banuls2013}. Their uncertainties are 200 to 400 times smaller than ours.
+\item The MPS study uses $x$ from 5 to 600 with $N\ge20\sqrt x$ \cite{banuls2013}. Exact diagonalisation stops at $N=22$, hence at
+$x\le4$.
+\item The weighted continuum fit is dominated by the coarsest lattice, $x=0.5$. Its $N$-extrapolation is the most precise, but a
+quadratic in $ag$ describes its lattice artefacts worst. This pulls the central value up and sets the 7\% error.
+\item The shifted values at $1.5\le x\le4$ lie within 0.5\% of $1/\sqrt\pi$ \cite{dempsey2022}. They are not continuum values, and we
+claim nothing from them.
+\item We did not attempt the massive model, whose binding energies are known to $5\times10^{-5}$ \cite{banuls2013}, or the chiral
+condensate. A continuum error of several per cent cannot test either.
+\end{itemize}
+
+\subsection{B4: Shor's period finding}\label{app:hosted:b4}
+
+\paragraph{Circuit.} To factor $N$ we use a counting register of $t=2n$ qubits and a work register of $n=\lceil\log_2N\rceil$ qubits,
+held as an exact state vector \cite{shor1997}. The run has three steps.
+\begin{enumerate}[nosep]
+\item The counting register starts in uniform superposition, and the work register in $\ket1$.
+\item Controlled $U^{2^j}$ follow, with $U\ket y=\ket{ay\bmod N}$ for $y<N$ and $U\ket y=\ket y$ otherwise.
+\item The inverse quantum Fourier transform is applied as the exact discrete Fourier transform. It agrees with the explicit gate circuit
+to $1.8\times10^{-16}$.
+\end{enumerate}
+$U$ permutes $\{y<N\}$, so the existence sector (unit norm, work register $y<N$) is invariant. An outcome $k$ gives the period $r$ as
+the first continued-fraction convergent denominator $q<N$ of $k/2^t$ with $a^q\equiv1$. It gives a factor $\gcd(a^{r/2}-1,N)$ when $r$
+is even and $a^{r/2}\not\equiv-1\pmod N$; this is one run, with no repetition. We host $N=15,21,33,35,39,51,55,57$ with every base $a$
+coprime to $N$, and $N=143$ (24 qubits) with $a=2,3,5,7$: 192 states in all.
+
+\paragraph{Results.} The simulated distribution is compared with Shor's analytic distribution \cite{shor1997},
+\[
+P(k)=Q^{-2}\sum_{x_0<r}\Bigl\vert\sum_{j<m(x_0)}e^{-2\pi ijrk/Q}\Bigr\vert^2,\qquad Q=2^t,\quad m(x_0)=\lfloor(Q-1-x_0)/r\rfloor+1.
+\]
+Table~\ref{tab:hosted:shor} lists the register sizes and the success probabilities. The textbook failure appears where it should: for
+$N=33$ and 57 with $a=2$ the period is found but $2^{r/2}\equiv-1$, so no factor follows.
+
+\begin{table}[htb]\centering\footnotesize
+\caption{Shor's period finding on an exact state vector \tagS~\chk{hosted:B4}. The simulated register has $3n$ qubits; Beauregard's
+circuit needs $2n+3$ \cite{beauregard2003}. Exact single-run probabilities for $a=2$, and the mean over all hosted bases. $P$(factor) can
+exceed $P$(period) because a recovered multiple of $r$ can also yield a factor.}\label{tab:hosted:shor}
+\begin{tabular}{@{}rlrrrrrrr@{}}
+\toprule
+$N$ & factors & $3n$ & $2n+3$ & bases & $r$ ($a=2$) & $P$(period) & $P$(factor) & mean $P$(factor)\\
+\midrule
+15 & $3\times5$ & 12 & 11 & 7 & 4 & 0.500 & 0.500 & 0.429\\
+21 & $3\times7$ & 15 & 13 & 11 & 6 & 0.331 & 0.331 & 0.211\\
+33 & $3\times11$ & 18 & 15 & 19 & 10 & 0.398 & 0.000 & 0.220\\
+35 & $5\times7$ & 18 & 15 & 23 & 12 & 0.331 & 0.331 & 0.303\\
+39 & $3\times13$ & 18 & 15 & 23 & 12 & 0.331 & 0.331 & 0.303\\
+51 & $3\times17$ & 18 & 15 & 31 & 8 & 0.500 & 0.500 & 0.484\\
+55 & $5\times11$ & 18 & 15 & 39 & 20 & 0.393 & 0.393 & 0.320\\
+57 & $3\times19$ & 18 & 15 & 35 & 18 & 0.329 & 0.000 & 0.180\\
+143 & $11\times13$ & 24 & 19 & 4 & 60 & 0.265 & 0.265 & 0.232\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Witnesses.} T requires every amplitude with $y\ge N$ to be exactly zero and the norm to be one. I evaluates
+$\langle\Pi_{y\ge N}\rangle=0$, with the projector applied as an operator. All 192 states pass.
+\begin{itemize}[nosep]
+\item A faulty multiplier that exchanges $\ket1$ and $\ket{2^n-1}$ moves amplitude out of the sector. Both witnesses refuse it in every
+case.
+\item A phase $Z$ on one work qubit changes the content but not the existence, and both witnesses pass it.
+\end{itemize}
+
+\subsection{The cost map}\label{app:hosted:cost}
+
+One random layer consists of $n$ Haar-random (uniformly distributed) single-qubit unitaries and $n-1$ controlled-$Z$ gates. They act on
+a dense state vector of $2^n$ amplitudes, 16 bytes each, on one core. The measured peak memory is the state plus a gate buffer of at most 16\,MiB
+(Table~\ref{tab:hosted:cost}). The layer time divided by $n$ grows as $2^{1.068n}$ for $n=18$ to 26. The excess over $2^n$ comes from
+cache and memory bandwidth. The rate is $6.9\times10^{-9}$\,s per qubit and amplitude for one layer, with the $n-1$ controlled-$Z$ gates
+folded in. The extrapolations of Section~\ref{sec:hosted} use this rate.
+
+\begin{table}[htb]\centering\footnotesize
+\caption{Cost of a dense state-vector simulation, one random layer on one core \tagS~\chk{hosted:B4}.}\label{tab:hosted:cost}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+$n$ & state & measured peak & seconds per layer\\
+\midrule
+10 & 16\,KiB & 54\,KiB & 0.0011\\
+14 & 256\,KiB & 770\,KiB & 0.0024\\
+18 & 4\,MiB & 10\,MiB & 0.032\\
+22 & 64\,MiB & 80\,MiB & 0.63\\
+24 & 256\,MiB & 272\,MiB & 3.7\\
+26 & 1\,GiB & 1.02\,GiB & 15.5\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Choices made after seeing the data}\label{app:hosted:choices}
+
+\begin{enumerate}[nosep,label=(\roman*)]
+\item In B1 the fit family and the $2\sigma$ rule were fixed after a prototype had shown the extrapolated value. Under a $1\sigma$ rule B1
+would fail ($1.3\sigma$).
+\item In B2 the entropy-fit windows were fixed after a prototype had shown $c=0.500000$ to six digits.
+\item In B3 the $x$ grid and $N_{\max}=22$ were set from the cost of exploratory runs. The fit rules were written before the first
+continuum fit (on $N\le18$) and were kept, with one exception. The alternative without a linear term was then dropped for the naive lattice,
+whose mass shift is an $O(a)$ effect \cite{dempsey2022}. Keeping it widens the naive uncertainty from 0.031 to 0.075 (recomputed from
+Table~\ref{tab:hosted:schwinger}); the comparison passes either way.
+\item In B4 the faulty multiplier replaced an $X$ on the top work qubit as the fault. For $N=15$, $a=2$, that $X$ maps the orbit
+$\{1,2,4,8\}$ to $\{9,10,12,0\}$, inside the existence sector.
+\end{enumerate}
+
+\subsection{Caveats}\label{app:hosted:caveats}
+
+\begin{itemize}[nosep]
+\item These are classical emulations of hosting. A classical host carries generic content only at a cost of order $2^n$.
+\item The modular multiplications of B4 are exact permutation gates, not elementary-gate circuits. This changes gate counts but not
+states. The registers use the textbook $t=2n$, not Beauregard's layout.
+\item B1 stops at $N=24$, the memory limit of a sector code without translation symmetry.
+\item Wall times are single-core on a shared machine and are reported, not checked. All other numbers are deterministic.
+\end{itemize}

@@ -1,0 +1,17 @@
+PASS  staples: component-first sum = boundary.staple_generic; path staples = sum: 0.0e+00, 0.0e+00
+PASS  rectangles: sum over links of <u, R> = 6 x sum of (1/2) tr over all 1x2 loops: -172.678749 vs 6 x -28.779791
+PASS  staples are exact derivatives: changing one link changes the loop totals by <w - u, staple sum>: max error 8.0e-15 (6 links, plaquettes and rectangles)
+PASS  SU(2) gauge covariance: flow, blocking (b = 2, f = 0 and 1/2) and SD sums invariant: 9.2e-16, 0.0e+00
+PASS  U(1) gauge covariance: flow, blocking and SD sums invariant: 4.7e-15
+PASS  flow normalisation: SU(2) Euler step on a U(1)-subgroup field = U(1) heat-equation step (unit coefficient): angle difference 4.4e-16, plaquette 0.724674 vs 0.724674
+PASS  rectangles on a 3^4 torus (wrap-around): sum rule and exact one-link response: sum 133.092412 vs 6 x 22.182069; response error 1.1e-14
+PASS  Creutz loops: gauge invariant; W(2,2) = coarse plaquette at b = 2: 6.9e-18; -0.008444 vs -0.008444
+PASS  noise kernels at beta_n = 16: SU(2) <(1/2) tr W> = I2/I1, U(1) <cos w> = I1/I0 (6400 draws each): 0.9088 vs 0.9078; 0.9685 vs 0.9682
+PASS  su2 SD fit, b = 1, Wilson beta = 2.3 (boundary.py heat bath, 6^4, 120 configs): two couplings [ 2.2999e+00 -2.0000e-03] +- [0.0091 0.0072]; four [ 2.287e+00  1.000e-02 -8.000e-03  2.000e-03] +- [0.01  0.009 0.005 0.002]
+PASS  u1 SD fit, b = 1, Wilson beta = 1.1 (boundary.py heat bath, 6^4, 120 configs): two couplings [1.099 0.002] +- [0.0046 0.0031]; four [ 1.12  -0.011  0.008 -0.003] +- [0.011 0.007 0.004 0.002]
+PASS  z2 pseudo-likelihood fit, b = 1, beta = 0.3: plaq 0.3013; with rect [0.301  0.0004]
+PASS  z2 pseudo-likelihood fit, b = 1, beta = 0.6: plaq 0.5993; with rect [ 0.629  -0.0098]
+PASS  su2 SD fit recovers a mixed action (1.0, 0.8) (Metropolis, 4^4, 240 configs, acceptance 0.43): [1.0009 0.7929] +- [0.006  0.0047]
+PASS  u1 SD fit recovers a mixed action (0.6, 0.4) (Metropolis, 4^4, 240 configs, acceptance 0.59): [0.6005 0.3993] +- [0.0038 0.0026]
+PASS  Euler flow (rho = 0.1) against RK3 at t = 1: relative difference of E(t) (indicative, part of the blocking definition): E_euler/E_rk3 - 1 = +0.0517 on one 6^4 configuration (alarm at 10 %; over 8 configurations on 8^4 the bias is +3.2 +- 0.3 % at t = 1 and +2.8 +- 0.4 % at t = 2: a stated systematic of alpha_GF); t^2 E = 0.1943
+SELFTEST OK

@@ -1,0 +1,8 @@
+base    box     : column 0.73197, largest certified common scale 1.3444, budget for an extra 90-incidence loop family: beta <= 0.01004
+base    central : column 0.71389, largest certified common scale 1.3832, budget for an extra 90-incidence loop family: beta <= 0.01080
+ext_T   box     : column 0.76131, largest certified common scale 1.2840, budget for an extra 90-incidence loop family: beta <= 0.00875
+ext_T   central : column 0.72162, largest certified common scale 1.3646, budget for an extra 90-incidence loop family: beta <= 0.01045
+ext_R   box     : column 0.96421, largest certified common scale 1.0354, budget for an extra 90-incidence loop family: beta <= 0.00134
+ext_R   central : column 0.93816, largest certified common scale 1.0637, budget for an extra 90-incidence loop family: beta <= 0.00233
+ext_TR  box     : column 1.00015, largest certified common scale 0.9997, budget for an extra 90-incidence loop family: beta <= -0.00001
+ext_TR  central : column 0.94767, largest certified common scale 1.0528, budget for an extra 90-incidence loop family: beta <= 0.00196

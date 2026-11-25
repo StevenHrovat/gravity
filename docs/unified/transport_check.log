@@ -1,0 +1,7 @@
+(a) bounded transport: worst e_n / bound = 0.998350 (<= 1)
+(b) critical: after 1000 steps of r = 0.01, e = 11.0000 = e_0 + sum r = 11.0000
+GRH relative step: worst (1 + u') / ((1 + eta)(1 + u)) = 1.000000 (<= 1)
+GRH sign under the log-2 budget: checked on 2000 random scale chains
+Doeblin example: perturbed law stayed in [0.3831, 0.6223] (Lean bound [0.3, 0.7])
+identity chain, rho = 0.1: P(state 0) after 200 steps = 3.528e-10 (margin 0.5 lost)
+FAILURES: 0

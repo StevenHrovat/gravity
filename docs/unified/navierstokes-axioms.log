@@ -1,0 +1,68 @@
+== build ProofPhase.Unified.NavierStokes
+Build completed successfully (8928 jobs).
+== build ProofPhase.Unified.NavierStokesAPI
+Build completed successfully (8932 jobs).
+== NavierStokes: declarations: 27
+== NavierStokes: axioms
+'ProofPhase.Unified.nsViscous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.nsViscous_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.nsViscous_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.nsViscous_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.nsViscous_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.nsViscous_bounded_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.nsViscous_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_energy_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_typeI_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_no_uniform_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.EulerProfileCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_blowup_of_euler_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_euler_gap_of_costAboveFloor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_viscous_transport_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_viscous_transport_unbounded_at_leray' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.LerayDSSCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.LerayDSSCertificate.not_steady' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_free_flow_pays' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_dss_costAboveFloor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_dss_converge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.nsPeriodLength' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_period_hasSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_dss_amplitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_blowup_of_dss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_energy_budget_not_costAboveFloor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ns_energy_identity_not_costAboveFloor' depends on axioms: [propext, Classical.choice, Quot.sound]
+== NavierStokes: source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/NavierStokes.lean
+== NavierStokesAPI: declarations: 29
+== NavierStokesAPI: axioms
+'ProofPhase.API.NavierStokes.Window' does not depend on any axioms
+'ProofPhase.API.NavierStokes.windowQ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.Admissible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.TypeI' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.windowQ_admissible_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.windowQ_leray_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.windowQ_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.windowQ_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.DSSInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.PeriodContraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.Ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.fac_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.per_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.system' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.contracting' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.toY' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.system_iter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.settles_by' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.RouteIInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.routeI' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.eulerUncertainty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.routeII_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.DyadicInput' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.regularity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.energy_cannot_fill' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.dyadic_supercritical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.API.NavierStokes.ABInterface' does not depend on any axioms
+'ProofPhase.API.NavierStokes.abProblem' does not depend on any axioms
+'ProofPhase.API.NavierStokes.ab_paper_route' does not depend on any axioms
+== NavierStokesAPI: source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/NavierStokesAPI.lean

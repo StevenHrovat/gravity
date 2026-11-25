@@ -1,0 +1,16 @@
+N =  2: dim   3, orthonormality err 2.2e-16; Killing = -2N delta err 1.8e-15; Ric = (N/2) delta err 4.4e-16
+        scalar 3.000000 (expected N(N^2-1)/2 = 3.000000); extinction t = 0.50000 (expected 1/N = 0.50000)
+        sectional K random: min 0.5000 max 0.5000; all equal to 1/2
+        mu_1 = Casimir(fund) = 1.500000 (N - 1/N = 1.500000, err 0.0e+00); Obata n/(n-1) lambda = 1.500000; 2 lambda = 2.000000; edge (sphere)
+N =  3: dim   8, orthonormality err 2.2e-16; Killing = -2N delta err 1.8e-15; Ric = (N/2) delta err 4.4e-16
+        scalar 12.000000 (expected N(N^2-1)/2 = 12.000000); extinction t = 0.33333 (expected 1/N = 0.33333)
+        sectional K random: min 0.0457 max 0.4515; commuting Cartan pair K = 0.00e+00
+        mu_1 = Casimir(fund) = 2.666667 (N - 1/N = 2.666667, err 4.4e-16); Obata n/(n-1) lambda = 1.714286; 2 lambda = 3.000000; unstable window
+N =  5: dim  24, orthonormality err 4.4e-16; Killing = -2N delta err 3.6e-15; Ric = (N/2) delta err 8.9e-16
+        scalar 60.000000 (expected N(N^2-1)/2 = 60.000000); extinction t = 0.20000 (expected 1/N = 0.20000)
+        sectional K random: min 0.0404 max 0.2510; commuting Cartan pair K = 0.00e+00
+        mu_1 = Casimir(fund) = 4.800000 (N - 1/N = 4.800000, err 8.9e-16); Obata n/(n-1) lambda = 2.608696; 2 lambda = 5.000000; unstable window
+N = 11: dim 120, orthonormality err 4.4e-16; Killing = -2N delta err 1.4e-14; Ric = (N/2) delta err 5.3e-15
+        scalar 660.000000 (expected N(N^2-1)/2 = 660.000000); extinction t = 0.09091 (expected 1/N = 0.09091)
+        sectional K random: min 0.0288 max 0.0670; commuting Cartan pair K = 0.00e+00
+        mu_1 = Casimir(fund) = 10.909091 (N - 1/N = 10.909091, err 1.8e-15); Obata n/(n-1) lambda = 5.546218; 2 lambda = 11.000000; unstable window

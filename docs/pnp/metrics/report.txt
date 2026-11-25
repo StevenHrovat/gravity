@@ -1,0 +1,265 @@
+
+== DMP evidence (gated): 285 theorems
+  depthThm    median     1.0  mean      1.9  p90      4  max      7
+  depthAll    median     5.0  mean      5.4  p90      9  max     12
+  closureThm  median     1.0  mean      1.9  p90      6  max     19
+  thmDeps     median     0.0  mean      0.7  p90      2  max      4
+  size        median   265.0  mean    732.5  p90   1299  max  19217
+  shape: composition 72 (25%), contradiction 69 (24%), case split 45 (16%), induction 33 (12%), computation 31 (11%), witness+contradiction 19 (7%), witness 16 (6%)
+  with witness  :    39 (  14%)  total occurrences 39
+  with existsUse:    33 (  12%)  total occurrences 33
+  with cases    :   141 (  49%)  total occurrences 379
+  with induct   :    33 (  12%)  total occurrences 33
+  with contra   :   104 (  36%)  total occurrences 124
+  with clash    :    15 (   5%)  total occurrences 19
+  with classical:    12 (   4%)  total occurrences 14
+  with decide   :   103 (  36%)  total occurrences 193
+  with rfl      :   181 (  64%)  total occurrences 233
+  statement: eq 100, other 37, and 32, le 32, iff 25, exists 22, not 14, ne 10, or 9, lt 4
+  existence statements: 22, with an explicit witness in the proof term: 18
+  without Classical.choice (constructive in the kernel's sense): 259 (91%)
+  root shapes: composition 43, contradiction 37, computation 27, case split 25, induction 12, witness 9, witness+contradiction 8
+  roots (used by no other theorem): 161
+  used exactly once: 85 (30%)
+  thin wrappers (one lemma, no split, size <= 60): 15
+  deepest:
+    Dmp.Cmb.producer_minted                                      depthThm   7 closure   14 size    162 W0 C0 I0 X0 D0  composition
+    Dmp.Cmb.bigBang_keeps_the_proof                              depthThm   7 closure   12 size     80 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.proven_no_pressed_root                            depthThm   6 closure    8 size     92 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.proven_sublayer_only_tightens                     depthThm   6 closure   11 size    102 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.proven_extend                                     depthThm   6 closure   12 size    823 W0 C2 I0 X1 D2  contradiction
+    Dmp.Recipe.proven_pass_has_two_independent_witnesses         depthThm   6 closure   19 size     93 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.one_unproven_line_unproves                        depthThm   6 closure    7 size    122 W0 C0 I0 X1 D0  contradiction
+    Dmp.digest_alone_cannot_identify                             depthThm   6 closure    7 size    386 W1 C0 I0 X0 D0  witness
+  largest closure:
+    Dmp.Recipe.proven_pass_has_two_independent_witnesses         depthThm   6 closure   19 size     93 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.pass_has_two_live_witnesses                       depthThm   5 closure   15 size    768 W1 C0 I0 X0 D0  witness
+    Dmp.Cmb.producer_minted                                      depthThm   7 closure   14 size    162 W0 C0 I0 X0 D0  composition
+    Dmp.wv_verified_at_most_once                                 depthThm   5 closure   13 size   4399 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.file_determines                                   depthThm   5 closure   13 size    138 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.proven_extend                                     depthThm   6 closure   12 size    823 W0 C2 I0 X1 D2  contradiction
+    Dmp.r1b_L4                                                   depthThm   4 closure   12 size     15 W0 C0 I0 X0 D0  composition
+    Dmp.r1b_L2_clean                                             depthThm   4 closure   12 size   3550 W1 C2 I0 X2 D0  witness+contradiction
+  roots by depth:
+    Dmp.Cmb.producer_minted                                      depthThm   7 closure   14 size    162 W0 C0 I0 X0 D0  composition
+    Dmp.Cmb.bigBang_keeps_the_proof                              depthThm   7 closure   12 size     80 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.proven_no_pressed_root                            depthThm   6 closure    8 size     92 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.proven_sublayer_only_tightens                     depthThm   6 closure   11 size    102 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.proven_extend                                     depthThm   6 closure   12 size    823 W0 C2 I0 X1 D2  contradiction
+    Dmp.Recipe.proven_pass_has_two_independent_witnesses         depthThm   6 closure   19 size     93 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.one_unproven_line_unproves                        depthThm   6 closure    7 size    122 W0 C0 I0 X1 D0  contradiction
+    Dmp.digest_alone_cannot_identify                             depthThm   6 closure    7 size    386 W1 C0 I0 X0 D0  witness
+    Dmp.Recipe.pass_has_two_live_witnesses                       depthThm   5 closure   15 size    768 W1 C0 I0 X0 D0  witness
+    Dmp.wv_verified_at_most_once                                 depthThm   5 closure   13 size   4399 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.file_determines                                   depthThm   5 closure   13 size    138 W0 C0 I0 X0 D0  composition
+    Dmp.Recipe.verdict_outOfSpec_iff                             depthThm   5 closure    5 size    602 W0 C2 I0 X1 D0  contradiction
+  per module: module n medianDepth maxDepth shapes
+    Dmp.Cmb           30  2.0   7  composition 15, case split 6, contradiction 4, witness 2, induction 2, computation 1
+    Dmp.Complete      10  5.5   6  contradiction 5, composition 3, computation 1, witness+contradiction 1
+    Dmp.Field         10  1.0   3  contradiction 4, induction 3, case split 1, computation 1, composition 1
+    Dmp.Floor          4  1.0   1  case split 2, contradiction 2
+    Dmp.Gate           7  1.0   2  case split 3, contradiction 2, composition 2
+    Dmp.Gauge         18  1.0   4  computation 7, induction 6, contradiction 2, case split 1, composition 1, witness 1
+    Dmp.Ground         3  1.0   1  contradiction 1, witness 1, composition 1
+    Dmp.Layer         15  1.0   3  composition 8, contradiction 2, computation 2, witness+contradiction 1, witness 1, case split 1
+    Dmp.MassGap       18  1.0   3  contradiction 8, witness 3, induction 3, witness+contradiction 2, case split 1, composition 1
+    Dmp.R1Bridge      29  1.0   4  witness+contradiction 12, witness 5, contradiction 5, case split 4, computation 2, composition 1
+    Dmp.R1Laws        14  2.0   4  contradiction 8, composition 4, computation 2
+    Dmp.R1Lens        18  1.0   4  case split 9, composition 3, computation 3, induction 2, contradiction 1
+    Dmp.R1Mass         8  1.5   2  composition 3, contradiction 2, case split 1, witness+contradiction 1, computation 1
+    Dmp.R1Model        6  1.0   1  computation 4, case split 2
+    Dmp.R1Tier         8  1.5   3  case split 3, contradiction 3, induction 2
+    Dmp.R1Wave        18  1.0   5  composition 9, contradiction 4, computation 2, induction 2, case split 1
+    Dmp.R2Stable      11  1.0   3  induction 7, contradiction 2, computation 1, case split 1
+    Dmp.Reach          6  1.5   2  composition 4, witness+contradiction 1, contradiction 1
+    Dmp.Recipe        10  2.0   4  composition 5, contradiction 4, case split 1
+    Dmp.Record         4  1.5   3  composition 2, contradiction 1, induction 1
+    Dmp.Refute        11  1.0   4  computation 3, case split 3, contradiction 2, composition 2, induction 1
+    Dmp.Standing       4  1.0   1  case split 3, contradiction 1
+    Dmp.Theory        23  3.0   5  composition 7, contradiction 5, induction 4, witness 3, case split 2, computation 1, witness+contradiction 1
+
+== ProofPhase: 2757 theorems
+  depthThm    median     2.0  mean      2.7  p90      6  max     14
+  depthAll    median     3.0  mean      4.1  p90      8  max     17
+  closureThm  median     1.0  mean      8.4  p90     28  max    159
+  thmDeps     median     1.0  mean      1.6  p90      4  max     24
+  size        median   368.0  mean   1304.2  p90   2816  max  64894
+  shape: composition 1557 (56%), computation 403 (15%), witness 329 (12%), case split 262 (10%), contradiction 107 (4%), witness+contradiction 58 (2%), induction 41 (1%)
+  with witness  :   399 (  14%)  total occurrences 434
+  with existsUse:   427 (  15%)  total occurrences 521
+  with cases    :   441 (  16%)  total occurrences 682
+  with induct   :    41 (   1%)  total occurrences 41
+  with contra   :   173 (   6%)  total occurrences 205
+  with clash    :     6 (   0%)  total occurrences 6
+  with classical:   101 (   4%)  total occurrences 105
+  with decide   :   159 (   6%)  total occurrences 315
+  with rfl      :  1316 (  48%)  total occurrences 2249
+  statement: eq 871, other 843, le 606, exists 133, and 110, iff 99, lt 48, not 21, ne 15, or 9, false 2
+  existence statements: 133, with an explicit witness in the proof term: 88
+  without Classical.choice (constructive in the kernel's sense): 114 (4%)
+  root shapes: composition 430, computation 185, witness 70, case split 34, contradiction 22, witness+contradiction 13, induction 5
+  roots (used by no other theorem): 759
+  used exactly once: 1183 (43%)
+  thin wrappers (one lemma, no split, size <= 60): 40
+  deepest:
+    ProofPhase.V4.gibbsRep_of_uv1Polymer                         depthThm  14 closure   81 size    165 W0 C0 I0 X0 D0  composition
+    ProofPhase.M1.UVTV.scale_front_integral                      depthThm  14 closure   85 size   2722 W0 C1 I0 X0 D0  case split
+    ProofPhase.DMP.Ee_le_fluxRate                                depthThm  13 closure   85 size    109 W0 C0 I0 X0 D0  composition
+    ProofPhase.M1.UVTV.scale_front                               depthThm  13 closure   82 size   2934 W1 C3 I0 X0 D0  witness
+    ProofPhase.Seg1.envelopeW_seg1                               depthThm  13 closure   79 size    215 W0 C0 I0 X0 D0  composition
+    ProofPhase.Flip.su2_flipProb_lt_half                         depthThm  13 closure  159 size   2055 W0 C0 I0 X0 D0  composition
+    ProofPhase.Crossover.su2_handover                            depthThm  13 closure  158 size    104 W0 C0 I0 X0 D0  composition
+    ProofPhase.Flip.su2_Ze1_pos                                  depthThm  13 closure  156 size    218 W0 C0 I0 X0 D0  composition
+  largest closure:
+    ProofPhase.Flip.su2_flipProb_lt_half                         depthThm  13 closure  159 size   2055 W0 C0 I0 X0 D0  composition
+    ProofPhase.Crossover.su2_handover                            depthThm  13 closure  158 size    104 W0 C0 I0 X0 D0  composition
+    ProofPhase.Flip.su2_Ze1_pos                                  depthThm  13 closure  156 size    218 W0 C0 I0 X0 D0  composition
+    ProofPhase.Flip.su2_Ztw_lt_Z                                 depthThm  12 closure  155 size    977 W0 C2 I0 X0 D0  case split
+    ProofPhase.Mixing.spectral_gap_dobrushin                     depthThm  10 closure  138 size   1011 W1 C0 I0 X0 D0  witness
+    ProofPhase.OneBox2.yang_mills_assembly_wilsonOneBox          depthThm   8 closure  101 size     23 W0 C0 I0 X0 D0  composition
+    ProofPhase.Book.goodNoisyVMF_gibbs                           depthThm   8 closure  100 size     62 W0 C0 I0 X0 D0  composition
+    ProofPhase.ScaleHypKit.BoxDensities.nonempty_scaleHyp_torus_product depthThm   3 closure   99 size   2817 W0 C1 I0 X0 D0  case split
+
+== ProofPhase.DMP: 39 theorems
+  depthThm    median     2.0  mean      3.5  p90      9  max     13
+  depthAll    median     3.0  mean      5.5  p90     14  max     15
+  closureThm  median     1.0  mean     17.5  p90     77  max     85
+  thmDeps     median     1.0  mean      1.3  p90      4  max      9
+  size        median   325.0  mean   1026.3  p90   3141  max   6751
+  shape: composition 21 (54%), computation 7 (18%), contradiction 5 (13%), witness 4 (10%), case split 1 (3%), witness+contradiction 1 (3%)
+  with witness  :     5 (  13%)  total occurrences 5
+  with existsUse:    10 (  26%)  total occurrences 10
+  with cases    :     2 (   5%)  total occurrences 2
+  with induct   :     0 (   0%)  total occurrences 0
+  with contra   :     6 (  15%)  total occurrences 8
+  with clash    :     0 (   0%)  total occurrences 0
+  with classical:     2 (   5%)  total occurrences 2
+  with decide   :     4 (  10%)  total occurrences 8
+  with rfl      :    16 (  41%)  total occurrences 29
+  statement: le 13, other 12, exists 5, and 4, eq 3, not 1, lt 1
+  existence statements: 5, with an explicit witness in the proof term: 4
+  without Classical.choice (constructive in the kernel's sense): 0 (0%)
+  root shapes: composition 4, computation 3, contradiction 3, witness 2, witness+contradiction 1
+  roots (used by no other theorem): 13
+  used exactly once: 16 (41%)
+  thin wrappers (one lemma, no split, size <= 60): 1
+
+== ProofPhase.Proof: 90 theorems
+  depthThm    median     2.0  mean      2.4  p90      5  max      7
+  depthAll    median     5.0  mean      4.8  p90      8  max     10
+  closureThm  median     1.0  mean      3.7  p90     12  max     37
+  thmDeps     median     1.0  mean      1.4  p90      4  max      9
+  size        median   381.0  mean    881.5  p90   2362  max   6792
+  shape: composition 21 (23%), induction 21 (23%), witness 15 (17%), case split 13 (14%), contradiction 10 (11%), witness+contradiction 9 (10%), computation 1 (1%)
+  with witness  :    34 (  38%)  total occurrences 41
+  with existsUse:    32 (  36%)  total occurrences 48
+  with cases    :    37 (  41%)  total occurrences 57
+  with induct   :    21 (  23%)  total occurrences 21
+  with contra   :    26 (  29%)  total occurrences 30
+  with clash    :     0 (   0%)  total occurrences 0
+  with classical:     7 (   8%)  total occurrences 7
+  with decide   :    24 (  27%)  total occurrences 45
+  with rfl      :    44 (  49%)  total occurrences 59
+  statement: le 25, exists 23, other 18, eq 11, iff 7, lt 3, ne 2, or 1
+  existence statements: 23, with an explicit witness in the proof term: 18
+  without Classical.choice (constructive in the kernel's sense): 4 (4%)
+  root shapes: induction 5, witness 3, contradiction 3, composition 3, witness+contradiction 2, computation 1
+  roots (used by no other theorem): 17
+  used exactly once: 47 (52%)
+  thin wrappers (one lemma, no split, size <= 60): 1
+
+== ProofPhase.Mixing: 172 theorems
+  depthThm    median     2.0  mean      2.9  p90      6  max     10
+  depthAll    median     4.0  mean      4.4  p90      8  max     17
+  closureThm  median     1.5  mean     11.1  p90     31  max    138
+  thmDeps     median     1.0  mean      1.4  p90      4  max      7
+  size        median   404.5  mean    731.2  p90   1672  max   5201
+  shape: composition 100 (58%), computation 32 (19%), case split 25 (15%), witness 8 (5%), induction 5 (3%), contradiction 2 (1%)
+  with witness  :     8 (   5%)  total occurrences 9
+  with existsUse:     9 (   5%)  total occurrences 9
+  with cases    :    29 (  17%)  total occurrences 44
+  with induct   :     5 (   3%)  total occurrences 5
+  with contra   :     2 (   1%)  total occurrences 2
+  with clash    :     0 (   0%)  total occurrences 0
+  with classical:     8 (   5%)  total occurrences 9
+  with decide   :     4 (   2%)  total occurrences 8
+  with rfl      :   108 (  63%)  total occurrences 207
+  statement: eq 96, le 45, other 21, exists 4, and 3, lt 2, iff 1
+  existence statements: 4, with an explicit witness in the proof term: 4
+  without Classical.choice (constructive in the kernel's sense): 0 (0%)
+  root shapes: computation 12, composition 9, case split 6, witness 2
+  roots (used by no other theorem): 29
+  used exactly once: 89 (52%)
+  thin wrappers (one lemma, no split, size <= 60): 2
+
+== ProofPhase.M1: 231 theorems
+  depthThm    median     1.0  mean      1.9  p90      3  max     14
+  depthAll    median     1.0  mean      2.7  p90      7  max     14
+  closureThm  median     0.0  mean      4.2  p90     10  max     85
+  thmDeps     median     0.0  mean      1.0  p90      3  max     24
+  size        median   268.0  mean    809.4  p90   2396  max   9490
+  shape: composition 174 (75%), computation 33 (14%), case split 12 (5%), witness 8 (3%), contradiction 4 (2%)
+  with witness  :     8 (   3%)  total occurrences 9
+  with existsUse:    12 (   5%)  total occurrences 16
+  with cases    :    16 (   7%)  total occurrences 22
+  with induct   :     0 (   0%)  total occurrences 0
+  with contra   :     4 (   2%)  total occurrences 6
+  with clash    :     0 (   0%)  total occurrences 0
+  with classical:     8 (   3%)  total occurrences 8
+  with decide   :     3 (   1%)  total occurrences 6
+  with rfl      :    84 (  36%)  total occurrences 146
+  statement: other 83, le 70, eq 62, and 5, lt 4, exists 4, ne 3
+  existence statements: 4, with an explicit witness in the proof term: 3
+  without Classical.choice (constructive in the kernel's sense): 9 (4%)
+  root shapes: composition 34, computation 14, case split 3, contradiction 1, witness 1
+  roots (used by no other theorem): 53
+  used exactly once: 151 (65%)
+  thin wrappers (one lemma, no split, size <= 60): 0
+
+== ProofPhase.General: 396 theorems
+  depthThm    median     3.0  mean      3.1  p90      6  max     12
+  depthAll    median     5.0  mean      5.0  p90      9  max     13
+  closureThm  median     5.0  mean     13.5  p90     43  max     78
+  thmDeps     median     1.0  mean      2.4  p90      5  max     23
+  size        median   219.5  mean   1525.6  p90   3164  max  43401
+  shape: composition 279 (70%), witness 60 (15%), computation 42 (11%), case split 8 (2%), witness+contradiction 5 (1%), contradiction 2 (1%)
+  with witness  :    65 (  16%)  total occurrences 79
+  with existsUse:    66 (  17%)  total occurrences 98
+  with cases    :    20 (   5%)  total occurrences 34
+  with induct   :     0 (   0%)  total occurrences 0
+  with contra   :     7 (   2%)  total occurrences 9
+  with clash    :     0 (   0%)  total occurrences 0
+  with classical:     5 (   1%)  total occurrences 5
+  with decide   :    12 (   3%)  total occurrences 24
+  with rfl      :   115 (  29%)  total occurrences 164
+  statement: other 170, eq 84, le 57, iff 50, exists 20, and 14, ne 1
+  existence statements: 20, with an explicit witness in the proof term: 7
+  without Classical.choice (constructive in the kernel's sense): 3 (1%)
+  root shapes: composition 157, computation 23, witness 4, case split 1, witness+contradiction 1
+  roots (used by no other theorem): 186
+  used exactly once: 97 (24%)
+  thin wrappers (one lemma, no split, size <= 60): 13
+
+== ProofPhase.Bridge: 64 theorems
+  depthThm    median     2.0  mean      3.0  p90      7  max      9
+  depthAll    median     2.0  mean      3.2  p90      7  max     12
+  closureThm  median     1.0  mean      4.7  p90     15  max     47
+  thmDeps     median     1.0  mean      1.2  p90      3  max      6
+  size        median   691.0  mean   1196.8  p90   3407  max   7766
+  shape: composition 29 (45%), witness 11 (17%), computation 10 (16%), case split 9 (14%), contradiction 4 (6%), witness+contradiction 1 (2%)
+  with witness  :    12 (  19%)  total occurrences 12
+  with existsUse:    15 (  23%)  total occurrences 15
+  with cases    :    11 (  17%)  total occurrences 15
+  with induct   :     0 (   0%)  total occurrences 0
+  with contra   :     5 (   8%)  total occurrences 6
+  with clash    :     0 (   0%)  total occurrences 0
+  with classical:     1 (   2%)  total occurrences 1
+  with decide   :     0 (   0%)  total occurrences 0
+  with rfl      :    34 (  53%)  total occurrences 67
+  statement: other 22, eq 15, le 14, iff 5, not 3, exists 3, and 2
+  existence statements: 3, with an explicit witness in the proof term: 3
+  without Classical.choice (constructive in the kernel's sense): 0 (0%)
+  root shapes: witness 4, composition 4
+  roots (used by no other theorem): 8
+  used exactly once: 40 (62%)
+  thin wrappers (one lemma, no split, size <= 60): 0

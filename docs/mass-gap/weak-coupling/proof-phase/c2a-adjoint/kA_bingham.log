@@ -1,0 +1,7 @@
+b_A = 0.000: k_A(aligned) ~ 0.06237 (ratio to uniform point 1.000); column 18 (8/3) k b_A = 0.000
+b_A = 0.100: k_A(aligned) ~ 0.06751 (ratio to uniform point 1.082); column 18 (8/3) k b_A = 0.324
+b_A = 0.333: k_A(aligned) ~ 0.07491 (ratio to uniform point 1.201); column 18 (8/3) k b_A = 1.199
+b_A = 0.500: k_A(aligned) ~ 0.07419 (ratio to uniform point 1.189); column 18 (8/3) k b_A = 1.780
+b_A = 0.260: k_A(aligned) ~ 0.07355; column 48 k b_A = 0.918
+b_A = 0.280: k_A(aligned) ~ 0.07402; column 48 k b_A = 0.995
+b_A = 0.300: k_A(aligned) ~ 0.07442; column 48 k b_A = 1.072

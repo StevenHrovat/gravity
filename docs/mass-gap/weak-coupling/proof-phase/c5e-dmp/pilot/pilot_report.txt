@@ -1,0 +1,56 @@
+JOINT MEASUREMENT REPORT  [pilot (existing data, T = 16)]
+
+Per point (E, z = L E at t*, and at t*+1 as systematic):
+- beta 2.30 L  6 T 16 (L sqrt(sigma) 2.10), n 20000 in 10 chains
+    z0: t* 1  E 1.080(0.020)  z 6.477(0.121)   | t*+1: E 1.047(0.050)  z 6.283(0.301)  kept ops 12/12
+    z_e: t* 1  E 0.599(0.005)  z 3.595(0.028)   | t*+1: E 0.609(0.010)  z 3.653(0.063)  kept ops 4/4
+    z_e sign flips per chain: [711, 736, 663, 679, 715, 688, 719, 678, 713, 636]  (min 636)
+    J3: w_pp 0.078  Delta = E0 - 2E_e -0.119(0.019) (t*+1: -0.171(0.051))  -> GLUEBALL
+- beta 2.30 L  8 T 16 (L sqrt(sigma) 2.80), n 20000 in 10 chains
+    z0: NOT COUNTED (no plateau), kept ops 12/12
+    z_e: t* 2  E 0.980(0.031)  z 7.842(0.250)   | t*+1: E 0.993(0.070)  z 7.945(0.562)  kept ops 4/4
+    z_e sign flips per chain: [883, 868, 845, 830, 869, 882, 894, 866, 872, 887]  (min 830)
+    J3: NOT RESOLVED (z0 or z_e not counted)
+- beta 2.30 L 10 T 16 (L sqrt(sigma) 3.50), n 20000 in 10 chains
+    z0: t* 1  E 1.212(0.018)  z 12.123(0.183)   | t*+1: E 1.202(0.068)  z 12.023(0.676)  kept ops 12/12
+    z_e: t* 1  E 1.223(0.025)  z 12.232(0.246)   | t*+1: E 1.305(0.085)  z 13.054(0.849)  kept ops 4/4
+    z_e sign flips per chain: [898, 990, 956, 929, 972, 947, 948, 931, 988, 947]  (min 898)
+    J3: w_pp 0.000  Delta = E0 - 2E_e -1.234(0.048) (t*+1: -1.409(0.152))  -> GLUEBALL
+- beta 2.30 L 12 T 16 (L sqrt(sigma) 4.20), n 20000 in 10 chains
+    z0: NOT COUNTED (no plateau), kept ops 12/12
+    z_e: NOT COUNTED (no plateau), kept ops 4/4
+    z_e sign flips per chain: [1011, 977, 998, 958, 966, 946, 969, 954, 967, 1002]  (min 946)
+    J3: NOT RESOLVED (z0 or z_e not counted)
+- beta 2.30 L 14 T 16 (L sqrt(sigma) 4.90), n 20000 in 10 chains
+    z0: t* 1  E 1.218(0.018)  z 17.047(0.245)   | t*+1: E 1.169(0.063)  z 16.372(0.881)  kept ops 12/12
+    z_e: NOT COUNTED (no plateau), kept ops 4/4
+    z_e sign flips per chain: [988, 1031, 994, 976, 988, 1026, 989, 987, 972, 972]  (min 972)
+    J3: NOT RESOLVED (z0 or z_e not counted)
+
+J1 doubling per pair  (photon: photon formula agrees with photon_exact.json (largest difference 0.0e+00))
+- beta 2.30 6->12: NOT RESOLVED (a point does not count)
+
+J2 start: NO START ON THE MEASURED STRETCH
+   set {1.03, 1.09}: DOUBLES starts []  qualifies: False
+   set {1.40, 1.46}: DOUBLES starts []  qualifies: False
+   set {2.06, 2.10, 2.19}: DOUBLES starts []  qualifies: False
+   set {2.80, 2.92}: DOUBLES starts []  qualifies: False
+   set {4.13, 4.20, 4.38}: DOUBLES starts []  qualifies: False
+
+J3 branch and switch per beta:
+   beta 2.3: [(6, 'GLUEBALL'), (8, 'NOT RESOLVED'), (10, 'GLUEBALL'), (12, 'NOT RESOLVED'), (14, 'NOT RESOLVED')]  switch: no switch in the measured stretch (no FLUX-PAIR point below the first GLUEBALL point)
+
+J4 loss eta = 1 - g0/2 (DOUBLES pairs):
+
+J5 scaling:
+   {1.40, 1.46}: NOT RESOLVED (fewer than two counted members); members []
+   {2.06, 2.10, 2.19}: NOT RESOLVED (fewer than two counted members); members [(2.1, 2.3, 6, 6.477, 0.121)]
+   {2.80, 2.92}: NOT RESOLVED (fewer than two counted members); members []
+   {4.13, 4.20, 4.38}: NOT RESOLVED (fewer than two counted members); members []
+
+J6: z0 and z_e against L sqrt(sigma) (z0 = 3.6 L sqrt(sigma) for orientation): see the table above and the plot.
+
+CONTROL (torelon energies at beta 2.3, T = 16, against results/luscher_summary.json, 2 sigma): PASSED
+   L 6: E 0.5991(0.0046) (t* 1; at t*+1 0.6089(0.0105)), reference 0.5986(0.0046), deviation 0.08 sigma: ok
+   L 8: E 0.9803(0.0313) (t* 2; at t*+1 0.9931(0.0703)), reference 0.9802(0.0313), deviation 0.00 sigma: ok
+   L 10: E 1.2232(0.0246) (t* 1; at t*+1 1.3054(0.0849)), reference 1.2232(0.0246), deviation 0.00 sigma: ok

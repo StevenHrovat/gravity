@@ -1,0 +1,7 @@
+# Shell scripts run in WSL and on Linux: keep LF on every checkout (final verification F23).
+*.sh text eol=lf
+# Vendored copies are pinned by a hash over their exact bytes (tools/check-pin.sh): never convert line endings, so a Windows clone
+# matches the pin too.
+vendor/** -text
+# Git hooks run in bash: LF on every checkout.
+.githooks/* text eol=lf

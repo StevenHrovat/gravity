@@ -1,0 +1,35 @@
+== build ProofPhase.Unified.ElectricSUNRunning
+Build completed successfully (9003 jobs).
+== declarations: 29
+== axioms
+'ProofPhase.Unified.twistCertOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.DiagInvariant' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Unified.RemnantMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.runPairs' does not depend on any axioms
+'ProofPhase.Unified.windowFaces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.diagInvariant_runPairs' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Unified.windowFaces_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.remnant_of_faces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.twistCertOn_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.twistCertOn_of_twistCertN' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.twistCertOn_ksym' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.sec0N_ksym_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.elecN_running' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.elecN_running_slab' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.runningTransport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.runningTransport_slab' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.ym_running_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.threeSlabRun' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.threeBoxRun' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.O1_of_runCert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.three_slabs_running' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.three_boxes_running' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.sqrt_two_le_num' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.three_slabs_running_num' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.three_boxes_running_num' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.HandoverSideRunning' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.handoverSideRunning_of_handoverSide' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.O1_slab_running' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.O1_box_running' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/ElectricSUNRunning.lean

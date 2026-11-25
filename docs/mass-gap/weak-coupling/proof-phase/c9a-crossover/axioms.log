@@ -1,0 +1,5 @@
+'ProofPhase.Crossover.isNearSpec_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.isInfluenceBoundOn_of_near' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.influence_of_net' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.oneBoxSum_of_near' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Crossover.near_budget_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,19 @@
+b_A = +0.05: sup B1 = 0.07101 at s = [6. 0. 0. 0.], column 48|b|N = 0.1704;  zeta max 1.0110, sigma(2L) max 0.3049, Vh max 0.04580
+b_A = +0.10: sup B1 = 0.07971 at s = [6. 0. 0. 0.], column 48|b|N = 0.3826;  zeta max 1.0488, sigma(2L) max 0.3688, Vh max 0.04975
+b_A = +0.15: sup B1 = 0.08834 at s = [6. 0. 0. 0.], column 48|b|N = 0.6361;  zeta max 1.1209, sigma(2L) max 0.4385, Vh max 0.05330
+b_A = +0.20: sup B1 = 0.09662 at s = [6. 0. 0. 0.], column 48|b|N = 0.9276;  zeta max 1.2358, sigma(2L) max 0.5096, Vh max 0.05622
+b_A = +0.22: sup B1 = 0.09977 at s = [6. 0. 0. 0.], column 48|b|N = 1.0536;  zeta max 1.2958, sigma(2L) max 0.5373, Vh max 0.05716
+b_A = +0.24: sup B1 = 0.10280 at s = [6. 0. 0. 0.], column 48|b|N = 1.1843;  zeta max 1.3645, sigma(2L) max 0.5642, Vh max 0.05796
+b_A = +0.26: sup B1 = 0.10570 at s = [6. 0. 0. 0.], column 48|b|N = 1.3191;  zeta max 1.4426, sigma(2L) max 0.5899, Vh max 0.05861
+b_A = +0.30: sup B1 = 0.11107 at s = [6. 0. 0. 0.], column 48|b|N = 1.5993;  zeta max 1.6290, sigma(2L) max 0.6374, Vh max 0.05941
+b_A = -0.05: sup B1 = 0.07060 at s = [6. 0. 0. 0.], column 48|b|N = 0.1694;  zeta max 1.0090, sigma(2L) max 0.2672, Vh max 0.04376
+b_A = -0.10: sup B1 = 0.07813 at s = [6. 0. 0. 0.], column 48|b|N = 0.3750;  zeta max 1.0328, sigma(2L) max 0.2855, Vh max 0.04588
+b_A = -0.20: sup B1 = 0.09116 at s = [6. 0. 0. 0.], column 48|b|N = 0.8751;  zeta max 1.1082, sigma(2L) max 0.3253, Vh max 0.05013
+b_A = -0.30: sup B1 = 0.10141 at s = [6. 0. 0. 0.], column 48|b|N = 1.4603;  zeta max 1.2029, sigma(2L) max 0.3688, Vh max 0.05436
+b_A = -0.40: sup B1 = 0.10919 at s = [6. 0. 0. 0.], column 48|b|N = 2.0965;  zeta max 1.3043, sigma(2L) max 0.4149, Vh max 0.05850
+symmetric formula (exact N_A at Klein-symmetric configurations):
+  b_A = +0.20: max over symmetric grid 0.07341 at (s_a, s_b, s3, s4) = (np.float64(3.0), np.float64(3.0), np.float64(0.0), np.float64(0.0)), column 0.7047
+  b_A = +0.25: max over symmetric grid 0.07611 at (s_a, s_b, s3, s4) = (np.float64(3.0), np.float64(3.0), np.float64(0.0), np.float64(0.0)), column 0.9133
+  b_A = +0.28: max over symmetric grid 0.07772 at (s_a, s_b, s3, s4) = (np.float64(3.0), np.float64(3.0), np.float64(0.0), np.float64(0.0)), column 1.0445
+  b_A = -0.30: max over symmetric grid 0.07331 at (s_a, s_b, s3, s4) = (np.float64(1.0), np.float64(0.0), np.float64(2.5), np.float64(2.5)), column 1.0557
+  b_A = -0.50: max over symmetric grid 0.08017 at (s_a, s_b, s3, s4) = (np.float64(1.0), np.float64(0.0), np.float64(2.5), np.float64(2.5)), column 1.9240

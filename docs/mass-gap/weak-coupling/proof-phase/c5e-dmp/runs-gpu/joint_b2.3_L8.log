@@ -1,0 +1,23 @@
+%USERPROFILE%\AppData\Roaming\Python\Python314\site-packages\cupy\_environment.py:286: UserWarning: CUDA path could not be detected. Set CUDA_PATH environment variable if CuPy fails to load.
+  warnings.warn(
+beta=2.3 L=8 chains=10 meas 0/2000 plaq=0.60204 t=16s
+beta=2.3 L=8 chains=10 meas 100/2000 plaq=0.60224 t=31s
+beta=2.3 L=8 chains=10 meas 200/2000 plaq=0.60222 t=46s
+beta=2.3 L=8 chains=10 meas 300/2000 plaq=0.60221 t=61s
+beta=2.3 L=8 chains=10 meas 400/2000 plaq=0.60226 t=76s
+beta=2.3 L=8 chains=10 meas 500/2000 plaq=0.60223 t=92s
+beta=2.3 L=8 chains=10 meas 600/2000 plaq=0.60223 t=107s
+beta=2.3 L=8 chains=10 meas 700/2000 plaq=0.60224 t=122s
+beta=2.3 L=8 chains=10 meas 800/2000 plaq=0.60224 t=137s
+beta=2.3 L=8 chains=10 meas 900/2000 plaq=0.60223 t=152s
+beta=2.3 L=8 chains=10 meas 1000/2000 plaq=0.60224 t=167s
+beta=2.3 L=8 chains=10 meas 1100/2000 plaq=0.60225 t=183s
+beta=2.3 L=8 chains=10 meas 1200/2000 plaq=0.60226 t=198s
+beta=2.3 L=8 chains=10 meas 1300/2000 plaq=0.60226 t=213s
+beta=2.3 L=8 chains=10 meas 1400/2000 plaq=0.60226 t=228s
+beta=2.3 L=8 chains=10 meas 1500/2000 plaq=0.60227 t=243s
+beta=2.3 L=8 chains=10 meas 1600/2000 plaq=0.60228 t=258s
+beta=2.3 L=8 chains=10 meas 1700/2000 plaq=0.60226 t=273s
+beta=2.3 L=8 chains=10 meas 1800/2000 plaq=0.60226 t=289s
+beta=2.3 L=8 chains=10 meas 1900/2000 plaq=0.60226 t=304s
+done C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\c5e-dmp\runs-gpu\joint_b2.3_L8.npz plaq=0.60226 in 318s

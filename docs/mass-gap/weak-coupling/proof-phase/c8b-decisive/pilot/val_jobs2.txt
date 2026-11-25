@@ -1,0 +1,3 @@
+val_u1strong_u1_b0.05_l6 u1 0.05 6 calm --ncell 3 --pert flip --chains 4 --therm 30 --meas 60 --pre 30
+val_u1strong_u1_b0.05_l8 u1 0.05 8 calm --ncell 4 --pert flip --chains 4 --therm 30 --meas 60 --pre 30
+val_u1strong_u1_b0.1_l6 u1 0.1 6 calm --ncell 3 --pert flip --chains 4 --therm 30 --meas 60 --pre 30

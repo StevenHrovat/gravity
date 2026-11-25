@@ -1,0 +1,12 @@
+N=3: action of the uniform tube 0.542766 (N^2 * action = 4.8849, pi^2/2 = 4.9348); dims 36; zero modes 14 (gauge 12); negative 0; smallest positive 0.93969 (x N^2 = 8.4572)
+N=4: action of the uniform tube 0.307436 (N^2 * action = 4.9190, pi^2/2 = 4.9348); dims 72; zero modes 29 (gauge 27); negative 0; smallest positive 0.57453 (x N^2 = 9.1925)
+N=6: action of the uniform tube 0.136991 (N^2 * action = 4.9317, pi^2/2 = 4.9348); dims 180; zero modes 77 (gauge 75); negative 0; smallest positive 0.26693 (x N^2 = 9.6095)
+N=3 descent from 12 random starts: lowest 0.542766, all [0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428]; uniform tube 0.542766
+N=6: action of the uniform tube 0.136991 (N^2 * action = 4.9317, pi^2/2 = 4.9348); dims 180; zero modes 77 (gauge 75); negative 0; smallest positive 0.26693 (x N^2 = 9.6095)
+N=3 descent from 12 random starts: lowest 0.542766, all [0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428, 0.5428]; uniform tube 0.542766
+N=3: extra (non-gauge) zero modes: 2
+  mode 0: weight on sigma_1,2 components 1.000; action change at t = 0.05, 0.1, 0.2, 0.4: [2.77940384e-07 4.44512246e-06 7.09989773e-05 1.12814695e-03]
+  mode 1: weight on sigma_1,2 components 1.000; action change at t = 0.05, 0.1, 0.2, 0.4: [2.77940384e-07 4.44512246e-06 7.09989773e-05 1.12814695e-03]
+N=4: extra (non-gauge) zero modes: 2
+  mode 0: weight on sigma_1,2 components 1.000; action change at t = 0.05, 0.1, 0.2, 0.4: [1.99703568e-07 3.19446254e-06 5.10605804e-05 8.13724523e-04]
+  mode 1: weight on sigma_1,2 components 1.000; action change at t = 0.05, 0.1, 0.2, 0.4: [1.99703568e-07 3.19446254e-06 5.10605804e-05 8.13724523e-04]

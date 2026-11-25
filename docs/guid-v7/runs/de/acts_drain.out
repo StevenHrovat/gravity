@@ -1,0 +1,24 @@
+SN set: pantheon N = 1590
+today: CnuB kinetic 0.0334 eV/cm^3, SN-neutrino leftovers 0.0171 eV/cm^3 (physical)
+LCDM chi2 1419.08   (forms this run: 9)
+E0 leftover energy             rho(0,.25,.5,1,2) 1.00 1.07 1.07 0.92 0.42  peak z 0.40  dchi2    -4.03  Om 0.3139
+P0 drain power H*E             rho(0,.25,.5,1,2) 1.00 1.22 1.41 1.63 1.25  peak z 1.10  dchi2   +66.94  Om 0.3507
+Es emit-trapped 1e10           rho(0,.25,.5,1,2) 1.00 1.13 1.19 1.14 0.62  peak z 0.60  dchi2    +2.00  Om 0.3273
+Ps power emit-trapped 1e10     rho(0,.25,.5,1,2) 1.00 1.29 1.57 2.02 1.87  peak z 1.35  dchi2  +151.77  Om 0.3683
+Es emit-trapped 1e11           rho(0,.25,.5,1,2) 1.00 1.12 1.18 1.11 0.58  peak z 0.60  dchi2    +0.30  Om 0.3258
+Ps power emit-trapped 1e11     rho(0,.25,.5,1,2) 1.00 1.28 1.56 1.97 1.74  peak z 1.30  dchi2  +138.84  Om 0.3663
+Es emit-trapped 1e12           rho(0,.25,.5,1,2) 1.00 1.11 1.16 1.06 0.52  peak z 0.55  dchi2    -1.86  Om 0.3234
+Ps power emit-trapped 1e12     rho(0,.25,.5,1,2) 1.00 1.27 1.53 1.88 1.56  peak z 1.25  dchi2  +119.44  Om 0.3629
+E0 + CnuB kinetic              rho(0,.25,.5,1,2) 1.00 1.30 1.59 2.15 3.32  peak z 3.00  dchi2  +261.67  Om 0.3713
+SN set: des N = 1820
+today: CnuB kinetic 0.0334 eV/cm^3, SN-neutrino leftovers 0.0171 eV/cm^3 (physical)
+LCDM chi2 1648.25   (forms this run: 9)
+E0 leftover energy             rho(0,.25,.5,1,2) 1.00 1.07 1.07 0.92 0.42  peak z 0.40  dchi2    -6.61  Om 0.3141
+P0 drain power H*E             rho(0,.25,.5,1,2) 1.00 1.22 1.41 1.63 1.25  peak z 1.10  dchi2   +78.97  Om 0.3493
+Es emit-trapped 1e10           rho(0,.25,.5,1,2) 1.00 1.13 1.19 1.14 0.62  peak z 0.60  dchi2    +0.82  Om 0.3267
+Ps power emit-trapped 1e10     rho(0,.25,.5,1,2) 1.00 1.29 1.57 2.02 1.87  peak z 1.35  dchi2  +178.44  Om 0.3665
+Es emit-trapped 1e11           rho(0,.25,.5,1,2) 1.00 1.12 1.18 1.11 0.58  peak z 0.60  dchi2    -1.29  Om 0.3253
+Ps power emit-trapped 1e11     rho(0,.25,.5,1,2) 1.00 1.28 1.56 1.97 1.74  peak z 1.30  dchi2  +163.63  Om 0.3645
+Es emit-trapped 1e12           rho(0,.25,.5,1,2) 1.00 1.11 1.16 1.06 0.52  peak z 0.55  dchi2    -4.03  Om 0.3229
+Ps power emit-trapped 1e12     rho(0,.25,.5,1,2) 1.00 1.27 1.53 1.88 1.56  peak z 1.25  dchi2  +141.17  Om 0.3613
+E0 + CnuB kinetic              rho(0,.25,.5,1,2) 1.00 1.30 1.59 2.15 3.32  peak z 3.00  dchi2  +288.21  Om 0.3695

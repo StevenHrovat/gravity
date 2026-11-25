@@ -1,0 +1,49 @@
+'ProofPhase.Seg2.condDefect_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.abs_condDefect_le_dev' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.condDefect_eq_of_condUncorr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.abs_condDefect_le_smoother' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.abs_condDefect_le_smoother'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.approx_of_smoother' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.smoother_chain_of_steps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.smoother_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.abs_condDefect_le_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.abs_condDefect_le_chain_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.condClause_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.condDecouple_of_smootherStable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.smootherStable_of_annealedContraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Seg2.condDecouple_of_annealedContraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+def ProofPhase.Seg2.SmootherStable : (T : ProofPhase.Tuning) →
+  ProofPhase.BlockingFamily T → ProofPhase.Seg2.SepPred T → Prop :=
+fun T B Sep =>
+  ∃ m,
+    0 < m ∧
+      ∀ (R : ℝ),
+        ∃ c,
+          0 ≤ c ∧
+            ∃ k₀,
+              ∀ (k : ℕ),
+                k₀ ≤ k →
+                  ∀ (j : ℕ) (F G : GaugeConnection AreaLaw.Concrete.SU2 4 (T.side k j) → ℝ)
+                    (A₀ B₀ : Finset (LatticeLink 4 (T.side k j))) (D : ℝ),
+                    Measurable F →
+                      Measurable G →
+                        (∀ (U : GaugeConnection AreaLaw.Concrete.SU2 4 (T.side k j)), |F U| ≤ 1) →
+                          (∀ (U : GaugeConnection AreaLaw.Concrete.SU2 4 (T.side k j)), |G U| ≤ 1) →
+                            ProofPhase.GaugeInvariant F →
+                              ProofPhase.GaugeInvariant G →
+                                OneScale.DepOn F A₀ →
+                                  OneScale.DepOn G B₀ →
+                                    ProofPhase.PhysExtent T k A₀ R →
+                                      ProofPhase.PhysExtent T k B₀ R →
+                                        Sep k j A₀ B₀ D →
+                                          ∃ K,
+                                            ProofPhase.Seg2.blockSigma T B k j ≤ K ∧
+                                              K ≤ MeasurableSpace.pi ∧
+                                                ProofPhase.UV.condDefect (T.ym k j) K F G = 0 ∧
+                                                  ∫ (U : GaugeConnection AreaLaw.Concrete.SU2 4 (T.side k j)),
+                                                      |(T.ym k j)[F | K] U -
+                                                          (T.ym k j)[F | ProofPhase.Seg2.blockSigma T B k j]
+                                                            U| ∂T.ym k j ≤
+                                                    c * Real.exp (-(m * D))
+--- sorry / native_decide / axiom declarations in ProofPhase/Seg2:
+none

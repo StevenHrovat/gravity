@@ -1,0 +1,129 @@
+{
+ "beta": 3.5,
+ "ell": 6,
+ "kappa": 16.0,
+ "T": 600,
+ "every": 10,
+ "jobs": "A3:8,A1:8,A2:0,A4:0,A6:0,sampled:0",
+ "fused": true,
+ "pairs": 480,
+ "pool_pairs": 128,
+ "pool_T": 60,
+ "seconds_geometry": 3.7336599826812744,
+ "seconds_pool": 71.5026113986969,
+ "seconds_build": 30.07081389427185,
+ "seconds_main": 1174.9822709560394,
+ "sweeps_done": 600,
+ "capped": false,
+ "sec_per_sweep_main": 1.9583037849267324,
+ "seconds_total": 1283.1184697151184,
+ "seconds_full_T_extrapolated": 1280.2893562316895,
+ "mh_acceptance": 0.9028761332947531,
+ "plaq_mean": 0.7316297850934654,
+ "d_end_mean": 4682.225,
+ "n_box_links": 5184,
+ "klow_pool": {
+  "0": [
+   6.5553402498862825,
+   6.459721502165664,
+   7.3956173547472215,
+   7.117537122529529,
+   7.385389919212711,
+   7.072932342744988,
+   7.244526868102627,
+   6.77769257488109
+  ],
+  "1": [
+   7.789167477547052,
+   5.972745859766185,
+   7.119408538525347,
+   7.096788504819826,
+   7.041809724836339,
+   7.158101932395155,
+   7.12989321893834,
+   7.093164242223327
+  ]
+ },
+ "instances": [
+  {
+   "job": 0,
+   "yclass": "A3",
+   "pool": 8,
+   "conf": 1,
+   "shift": [
+    6,
+    14,
+    6,
+    10
+   ],
+   "first_pair": 0
+  },
+  {
+   "job": 1,
+   "yclass": "A1",
+   "pool": 8,
+   "conf": 1,
+   "shift": [
+    2,
+    9,
+    7,
+    6
+   ],
+   "first_pair": 80
+  },
+  {
+   "job": 2,
+   "yclass": "A2",
+   "pool": 0,
+   "conf": 2,
+   "shift": [
+    10,
+    10,
+    8,
+    14
+   ],
+   "first_pair": 160
+  },
+  {
+   "job": 3,
+   "yclass": "A4",
+   "pool": 0,
+   "conf": 0,
+   "shift": [
+    8,
+    14,
+    6,
+    0
+   ],
+   "first_pair": 240
+  },
+  {
+   "job": 4,
+   "yclass": "A6",
+   "pool": 0,
+   "conf": 3,
+   "shift": [
+    4,
+    0,
+    2,
+    15
+   ],
+   "first_pair": 320
+  },
+  {
+   "job": 5,
+   "yclass": "sampled",
+   "pool": 0,
+   "conf": 1,
+   "shift": [
+    0,
+    9,
+    0,
+    8
+   ],
+   "first_pair": 400
+  }
+ ],
+ "npz": "runs\\timing_fused_b3.5.npz",
+ "gpu_pool_bytes": 11393549824
+}

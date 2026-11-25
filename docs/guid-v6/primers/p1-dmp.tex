@@ -1,0 +1,50 @@
+% GUID v6, Primer P1 (label box:dmp): DMP and trust systems, with a worked act. Background only; it states no result of the paper.
+% Place it at the start of Section sec:dmp (marker %PRIMER:dmp in part1.tex): \input{primers/p1-dmp}
+\begin{primer}{DMP and trust systems}{box:dmp}
+\setlength{\parskip}{3pt plus 1pt}%
+\emph{What a trust system is for.} In a computer system an access-control or trust protocol decides, for every request, who may do what
+to which information, and it keeps the evidence of what was done. Its classic rules are to grant the least privilege an act needs, to
+demand two independent keys for what matters, and to keep a complete audit trail~\cite{saltzer1975}. Its formal tools include lattices
+that say where information may flow~\cite{denning}, noninterference, which says what one side may learn of the other~\cite{gm}, and quorums
+of witnesses that fail independently~\cite{mr}. DMP~\cite{dmp} states such a system as three axioms and a ground, G0; every later
+statement is a numbered theorem (T) or derived constraint (C).
+
+\emph{Words and the gate.} A \emph{part} is ``a Duality of Trust'': a trust half and an information half. An \emph{act} is what a part
+does. A \emph{layer} is where trust over acts is decided, and its two \emph{witnesses} are its halves: the \emph{trust half} decides whether
+the act may happen, the \emph{information half} whether it is meant and right. Two witnesses are \emph{independent} when they share no
+member of the \emph{failure classes} the layer declares (host, key, author, engine, person, time source, and whatever the minting lists).
+Each returns a verdict in the lattice $\textsf{refuse}<\textsf{hold}<\textsf{pass}$, and the \emph{gate} is their meet,
+$\operatorname{gate}_L(a,t)=v_{w_T}(a,t)\wedge v_{w_I}(a,t)$: the stricter answer stands, and the act is performed only on
+$\textsf{pass}\wedge\textsf{pass}$. A \emph{standing} is trust held in the field of Axiom~2, with a source (the witness that granted it), a
+depth (its \emph{grant chain} back to the first pair) and a freshness that decays; \emph{staleness} is that decay. A \emph{record} is
+evidence that outlives its act.
+
+\emph{The axioms.} \emph{Axiom~1, the Duality:} a part acts only while both halves of its layer trust it for that act, and neither
+overrules the other; its \emph{balance} moves every part towards the trust its boundary declares. \emph{Axiom~2, Trust:} a witness trusts
+only on evidence it verified itself; ``Trust is gravitational. It is a field, never a position.'' \emph{Axiom~3, Information:} every grant,
+use and loss of trust leaves a record that every witness of the act reads in full; any other reader sees the \emph{counts} always and the
+content only by a \emph{grant}; from trust, nothing about information can be derived but its existence. Every layer is a tree rooted at
+its own Duality, and its \emph{layout}, where an item sits, is ``the median of that demand'', the place of fewest hops in total,
+recomputed by both halves and never by one.
+
+\emph{A worked act} (Figure~\ref{fig:act}). A part $p$ asks to change one entry of a directory. The trust half checks $p$'s standing:
+granted by a witness, two grants from the minted pair, still fresh: \textsf{pass}. The information half finds the change well formed but
+not yet confirmed: \textsf{hold}. The gate gives $\textsf{pass}\wedge\textsf{hold}=\textsf{hold}$, and nothing is done. Once the change is
+confirmed, both return \textsf{pass}, the act is performed, and a record is written at the act that both witnesses can read in full. A
+reader outside the layer, say an auditor, sees the counts (one more act of this layer) but not the new entry, unless it is granted to that
+reader. From the trust side alone one learns only that the entry exists.
+
+\emph{Containment and G0.} A boundary \emph{contains} information when no part beyond it is trusted for any act on that information; a
+strong enough boundary ``bends trustspace'' so that only entropy leaves. G0: ``The dual gate cannot witness its own first instance:
+somebody has to trust the first two witnesses.'' The first act, the \emph{minting}, makes at least five parts the holders of the
+\emph{root keys}; it is stated, not derived, and every later standing descends from it through grant chains.
+
+\emph{The theorems this paper cites.} \emph{T4}: every parameter is configuration; DMP fixes structure, never a value, and derives no
+constant. \emph{T27}: a contained item is destroyed at its scheduled date. \emph{T31}: contained information reaches no part by any act;
+what still leaves is minimal, thermal emission, the \emph{entropy floor}, which ``carries entropy and no information'', and outside one
+learns only the size, the staleness and the rotation interval. \emph{T32}: the VIBE field; each member has a depth, a mass (one plus the
+members deriving through it) and a shortfall, and the potential $\Phi_{\mathrm V}\ge0$ never rises under the system's own acts and vanishes
+in the \emph{balanced state}; readers other than the witnesses see one number, the boundary's temperature, its mass-weighted staleness.
+\emph{T37}: information that no admission names is contained at the item itself. \emph{T40}: a minting originates only from G0 together
+with a state in which every axiom and theorem provably holds.
+\end{primer}

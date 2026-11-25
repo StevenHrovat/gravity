@@ -1,0 +1,7 @@
+explicit formula check: 200 zeros (gamma up to 396.382), line c = 2
+a=0    sigma=0.15  zero side     (0.0853455477944 + 0.0j)  right side (0.0853455477944 - 1.40314302382e-38j)  |diff| 2.47e-32
+a=0    sigma=0.5   zero side   (3.57357931261e-11 + 0.0j)  right side (3.57357931261e-11 - 8.48546010872e-40j)  |diff| 6.56e-31
+a=0.3  sigma=0.5   zero side  (-1.62470308972e-11 + 0.0j)  right side (-1.62470308972e-11 - 1.92051746009e-38j)  |diff| 5.98e-31
+a=0.4  sigma=0.3   zero side   (0.000151471154436 + 0.0j)  right side (0.000151471154436 + 8.68503142994e-39j)  |diff| 3.27e-31
+control (prime sign flipped), a=0 sigma=0.5: |diff| 1.02
+PASS

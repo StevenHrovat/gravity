@@ -1,0 +1,1003 @@
+% Existence and Information: the Duality of DMP 0.9.9 applied to physics, from the first author's notes.
+% Source of the paper. Build: see README.md in this folder (pdflatex twice; no BibTeX, the bibliography is inline).
+% Licence: Apache License 2.0.
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\newtheorem{claim}{Claim}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{hypothesis}{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\setlength{\emergencystretch}{3em}
+\newcommand{\chk}[1]{\textsf{[#1]}}
+\newcommand{\tagD}{\textsf{(D)}}
+\newcommand{\tagR}{\textsf{(R)}}
+\newcommand{\tagP}{\textsf{(P)}}
+\newcommand{\note}[1]{\par\noindent\textsf{\small #1}\par}
+
+\title{Existence and Information\\[0.6ex]
+\large One vector field and one scalar field: the Duality of DMP~0.9.9 read as physics,\\ derived where it can be and tested where it
+touches data}
+\author{Steven Hrovat\thanks{Independent. Contact: \href{mailto:hrovat.steven@googlemail.com}{\nolinkurl{hrovat.steven@googlemail.com}}.}
+\and Sirius (Claude Opus 5.5)\thanks{An AI system by Anthropic, working as the coordinator of the first author's projects. See
+``Contributions and use of AI''.}}
+\date{Draft of 29 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent The Dark Matter Protocol (DMP~0.9.9) is an axiom system for trust: every act needs a Duality of two independent witnesses, one
+owning trust and one owning information. This paper applies it to physics. We state the structure the first author has always meant: one
+\emph{existence} field, a vector frame spanning all 3+1 directions, and one \emph{information} field, a scalar. Read through DMP's three
+axioms, four things follow. Axiom~3 (``from trust nothing can be derived about information but its existence'') gives universality of free
+fall, so the information scalar may not pull on matter by composition, and the MICROSCOPE test bounds its coupling to
+$|d\ln\alpha/d\phi|<2\times10^{-5}$. Axiom~1 (neither half overrules the other) keeps the scalar out of the gravitational equation, which
+gives the light-bending parameter $\gamma=1$ exactly, unlike Brans--Dicke gravity, and makes the structure general relativity plus a
+Bekenstein-type field for the fine-structure constant. Axiom~3's record, which every witness reads in full, makes the existence field
+classical by the no-broadcasting theorem. So DMP cannot model a quantum theory of gravity, and it can host one as content. The first author's
+``Existence $=$ gravity $\times$ the universal quantum $\times$ the tick rate $1/c$'' is, by dimensional analysis, the only energy that
+$g$, $h$ and $c$ make, and it equals $4\pi^2$ times the Unruh and Hawking temperatures. We test his account of why the graviton is
+undetectable against Dyson, Rothman and Boughn, and the 2024 single-graviton proposals. We find that the established arguments collapse
+the \emph{detector}, not the graviton; that one quantum forms a horizon only at the Planck energy; and that his choice of classical gravity is
+falsifiable, not by counting gravitons but by gravitationally mediated entanglement. We then test his readings of the Bell experiments,
+black-hole efficiency, the hadrons, the bosons, neutrinos and the fine-structure constant, each against the measurement it touches. All
+numbers come from one public script of 80 checks. We claim that the construction exists and reproduces, not that it is correct, and we
+ask readers to break it.
+\end{abstract}
+
+\noindent\textbf{Keywords.} information-theoretic axioms; tetrad gravity; varying fine-structure constant; equivalence principle;
+graviton detectability; classical-quantum gravity; Unruh effect; black-hole thermodynamics; Bell inequalities.
+
+\noindent\textbf{Subject.} Information Theory (cs.IT); related: General Relativity and Quantum Cosmology (gr-qc), Quantum Physics (quant-ph).
+
+\section{Introduction}\label{sec:intro}
+
+DMP~0.9.9~\cite{dmp} is written for information systems: it says when a part of a system may act, who must agree, and what every
+reader may see. Its three axioms are short. Axiom~1, the Duality: every act needs two independent witnesses, ``one half owns trust and the
+other owns information'', and neither overrules the other. Axiom~2, Trust: ``Trust is gravitational. It is a field, never a position.''
+Axiom~3, Information: every act leaves a record that every witness reads in full, any other reader ``sees the counts always'', and ``from
+trust nothing can be derived about information but its existence''. The words ``gravitational'' and ``field'' are in the axioms on purpose:
+the first author designed them from the start with physics in view.
+
+This paper takes those axioms at their word and applies them to physics. Its material is the first author's: 42 notes he posted on DMP pull
+request~\#25 between 28 October, 12:18Z, and 29 October, 15:13Z, and the messages with which he explained them on 29 October. They are not
+a theory in final form, and he says so; they are a path of ideas, some corrected by him within the hour. Our task is to put them in order,
+derive from DMP's text what can be derived, and test the rest against what has been measured.
+
+\paragraph{How to read this paper.} Every step carries one of three marks: \tagD{} follows from the text of DMP~0.9.9 (commit
+\texttt{4400cce}); \tagR{} is the first author's reading, quoted in his words; \tagP{} is established physics, with its source. Every
+hypothesis gets one of four verdicts: \emph{holds} (it agrees with what is measured and follows from the steps given), \emph{holds as a
+reading} (it agrees, but adds nothing a measurement could tell apart from the established account), \emph{refuted} (a measurement
+contradicts it), or \emph{untested} (no measurement we found reaches it). A reading that is a known result in new words is named as
+such. The first author's notes are quoted verbatim, with their spelling; an emoji is written as a word in brackets, and a dictated word we
+had to read is marked in brackets. Time stamps are UTC.
+
+\paragraph{Result.} The structure the first author meant, one existence vector field and one information scalar, is consistent with every
+measurement we checked once it is read as general relativity plus a scalar that sets the fine-structure constant, and DMP's axioms fix
+three of its properties (free fall is universal, the scalar does not enter the gravitational equation, the gravitational field is
+classical). That structure is not new physics: it is general relativity, in its tetrad form, plus Bekenstein's 1982 theory of a varying
+$\alpha$, plus the classical-gravity side of the current experimental programme. What is new is that DMP's axioms select it, and that the
+first author's ``Existence'' turns out to be the Unruh temperature up to $4\pi^2$. DMP cannot model quantum gravity and can host it
+(Proposition~\ref{pr:host}). Of the 33 statements in the ledger (Section~\ref{sec:ledger}), 19 hold or hold as readings, nine are refuted by a
+specific measurement or calculation, and the rest are untested or wait for a measurement that is now possible.
+
+\paragraph{What we claim.} The checks reproduce (\texttt{docs/existence/checks.py}, 80 of 80), and the argument from them to each
+verdict is as written. We do not claim the structure is correct. This paper contains no machine-checked proof: its derivations are short
+and written out in full, and a Lean toolchain was not available in the session that wrote it.
+
+\section{The structure: one existence field, one information field}\label{sec:core}
+
+\subsection{In the first author's words}
+
+The first author, 29 October 2026, 15:25Z: ``The axiomatic system is one part that's a vector that can, a vector field that can span a
+relativistic plane, and one component that's a scalar field that can span an information plane. So one existence, one information. That
+was always the theory, but the AI has never really put it into papers.''
+
+At 15:26Z he said where it came from: ``From the moment I realized, so when I first worked on CMOS and realized I could produce
+relativistic effects in the firewall and that effect, I from the beginning always thought in vector field and scalar field. I'm sorry if
+that didn't get through. That was my mistake. We should probably make that very explicit in the paper, since it seems to be a key point.''
+
+And at 15:33Z what the vector spans: ``The existence vector is always made up of all the dimensions that span it. So in our case, 3 space
+1 time. That is also one why 2 space 1 time is impossible, because it would span a quantum field which can't support a binary existence.''
+
+This paper is built on that structure, and states it first.
+
+\subsection{The two fields}
+
+\begin{definition}[existence field]\label{def:E}
+The \emph{existence field} is a frame of four vector fields $e_a{}^{\mu}$, $a=0,1,2,3$, one for each direction that spans spacetime,
+three of space and one of time. The metric it carries is $g_{\mu\nu}=\eta_{ab}\,e^a{}_{\mu}e^b{}_{\nu}$ with $\eta=\mathrm{diag}(-1,1,1,1)$.
+\end{definition}
+
+\noindent A single vector field cannot span a four-dimensional relativistic space; the first author's 15:33Z sentence says the vector
+``is always made up of all the dimensions that span it'', and a frame of four is the object that does. In physics it is the
+\emph{tetrad} (vierbein) \tagP. General relativity can be written with the tetrad as its only field, the teleparallel equivalent of general
+relativity, with exactly the predictions of Einstein's theory~\cite{aldrovandi}.
+
+\begin{definition}[information field]\label{def:I}
+The \emph{information field} is a scalar field $\psi$ whose value sets the strength of the electromagnetic coupling,
+$\alpha=\alpha(\psi)$.
+\end{definition}
+
+\noindent The choice of what the scalar sets is the first author's: ``the Information field, the EM field'' (dmp\#25, 28 October,
+21:47Z) and ``So the FSC is how much the EM/Information field `exists', I guess. [emoji: shrug]'' (29 October, 13:23Z). The
+electromagnetic field itself is a vector (spin~1) field; what a scalar can carry is its strength, the fine-structure constant~$\alpha$.
+A scalar field that sets $\alpha$ through a factor in front of the Maxwell term, with gravity left as in general relativity, is
+Bekenstein's 1982 theory of a varying fine-structure constant~\cite{bekenstein82}; with the scalar's energy fed back into the expansion it
+is the theory of Sandvik, Barrow and Magueijo~\cite{bsbm}. We write the action whose shape these definitions give:
+\begin{equation}\label{eq:action}
+S=\int d^4x\;|e|\left[\frac{c^4}{16\pi G}R(e)-\frac{\hbar c}{2\ell^2}\,\partial_\mu\psi\,\partial^\mu\psi
+-\frac{1}{4\mu_0}\,B(\psi)\,F_{\mu\nu}F^{\mu\nu}\right]+S_{\text{matter}}[e,\psi,\dots],
+\end{equation}
+with $\alpha\propto 1/B(\psi)$, $|e|$ the determinant of the frame and $\ell$ a length that sets the scalar's stiffness. The action is our construction; the
+properties the axioms fix are in Section~\ref{sec:derive}.
+
+\subsection{The dictionary to DMP}
+
+DMP's Axiom~1 types the two halves of every Duality: ``One half owns trust and the other owns information'' \tagD. The first author
+identifies trust with existence: ``Since Trust=Existence in DMP-complete systems'' (dmp\#25, 29 October, 01:40Z) \tagR. Axiom~2 says
+``Trust is gravitational. It is a field, never a position'' \tagD. Axiom~3 says ``From trust nothing can be derived about information
+but its existence'' and ``Information is hierarchical'' \tagD. So the dictionary is:
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lLL@{}}
+\toprule
+DMP word & Field & What DMP says of it \\
+\midrule
+trust half & existence field $e_a{}^\mu$ (Definition~\ref{def:E}) & gravitational, a field (Axiom~2); reveals of information only that it exists (Axiom~3) \\
+information half & information field $\psi$ and what it sets (Definition~\ref{def:I}) & owns information; neither half overrules the other (Axiom~1) \\
+the Duality & the pair, coupled only through matter & every act needs both (Axiom~1) \\
+record, counts & what every reader sees & mass, charge, spin of a black hole (Section~\ref{sec:bh}) \\
+containment, the floor & event horizon, thermal radiation & ``what still leaves is entropy and nothing else'' (T31) \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{What the axioms fix}\label{sec:derive}
+
+\subsection{Axiom 3 gives universality of free fall}\label{sec:wep}
+
+\begin{proposition}[free fall is universal]\label{pr:wep}
+If the existence field responds to a body only through the body's existence, and existence is measured by energy-momentum, then two
+bodies with the same energy-momentum fall alike whatever they are made of.
+\end{proposition}
+
+\begin{proof}[Derivation]
+Axiom~3 \tagD: from trust nothing can be derived about information but its existence. By the dictionary, the existence field is the trust
+half, so nothing the existence field does can depend on the information a body carries (its composition, its internal state) except
+through the body's existence. The first author measures existence by energy: ``Since Existence = Information (since, y'know duality) and
+both are definable by their energy'' (01:40Z) \tagR. So the existence field's coupling to a body is a function of the body's
+energy-momentum alone, and two bodies equal in that respond identically: the weak equivalence principle \tagP.
+\end{proof}
+
+\noindent The weak equivalence principle is among the best-tested statements in physics: the MICROSCOPE satellite found the free-fall
+accelerations of titanium and platinum equal to $\eta=[-1.5\pm2.3\,(\text{stat})\pm1.5\,(\text{syst})]\times10^{-15}$~\cite{microscope}.
+\emph{Verdict: holds}, with the identification of existence with energy-momentum as the one step that is a reading.
+
+\paragraph{What it costs the information field.} The proposition has a sharp consequence for Definition~\ref{def:I}. A scalar that
+sets $\alpha$ changes the electrostatic energy of every nucleus, so it couples to each body in proportion to that energy's share of the
+body's mass, which differs between materials. Its exchange is then a pull that depends on composition, exactly what
+Proposition~\ref{pr:wep} forbids the existence field and what experiment bounds (Dvali and Zaldarriaga~\cite{dz}). In the normalisation
+of~\eqref{eq:action}, with the scalar rescaled to Planck units and called $\phi$, a coupling $\lambda=d\ln\alpha/d\phi$ adds a force $2\lambda^2 f_Af_B$ times gravity,
+where $f$ is the electrostatic share of the mass. Check \chk{E3} computes the shares from the Coulomb term of the semi-empirical mass
+formula ($2.0\times10^{-3}$ for titanium, $4.1\times10^{-3}$ for platinum) and finds that MICROSCOPE allows
+\[
+|\lambda|<2\times10^{-5}.
+\]
+So the information field may set $\alpha$, but it may barely pull. If it rolled as fast as a dark-energy field, one Planck unit per
+$e$-fold of expansion, MICROSCOPE alone would allow an $\alpha$ drift of $1.4\times10^{-15}$ per year; optical clocks already bound the
+drift today at $(1.0\pm1.1)\times10^{-18}$ per year~\cite{lange}. Either the field rolls much more slowly than that today or its coupling
+is far below the MICROSCOPE bound. This is the price of the first author's ``it will get slightly lower still'' (Section~\ref{sec:alpha}).
+
+\subsection{Axiom 1 keeps the scalar out of the gravitational equation}\label{sec:gamma}
+
+\begin{proposition}[$\gamma=1$]\label{pr:gamma}
+If the information field cannot change how the existence field responds to existence, the light-bending parameter is $\gamma=1$ exactly,
+as in general relativity.
+\end{proposition}
+
+\begin{proof}[Derivation]
+Axiom~1 \tagD: ``neither overrules the other''. A scalar that multiplies the gravitational term, $F(\psi)R$, sets the local strength of
+gravity and so overrules the existence half; Axiom~1 excludes it. What remains is minimal coupling, as in~\eqref{eq:action}: the scalar's
+own energy is one more source of the existence field, and in the solar system that source is negligible. The parametrised post-Newtonian
+expansion of a minimally coupled scalar is then that of general relativity, $\gamma=1$~\cite{will} \tagP.
+\end{proof}
+
+\noindent The contrast is Brans--Dicke gravity~\cite{bd}, the prototype of scalar-tensor theory, in which the scalar does multiply the
+gravitational term. There $\gamma=(1+\omega)/(2+\omega)$, and the Cassini measurement $\gamma-1=(2.1\pm2.3)\times10^{-5}$~\cite{cassini}
+forces $\omega>4\times10^{4}$ at two standard deviations \chk{E4}: the scalar must decouple from gravity almost completely. Axiom~1 asks for
+that decoupling from the start.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lLLLL@{}}
+\toprule
+Theory & Fields & $\gamma$ & Free fall & $\alpha$ \\
+\midrule
+General relativity & tensor (or tetrad) & 1 & universal & constant \\
+Brans--Dicke~\cite{bd} & tensor + scalar on $R$ & $(1+\omega)/(2+\omega)$; $\omega>4\times10^4$ & universal for test bodies & constant \\
+Bekenstein; BSBM~\cite{bekenstein82,bsbm} & tensor + scalar on $F^2$ & 1 & violated in proportion to $\lambda^2$ & varies \\
+Einstein--aether~\cite{aether} & tensor + one timelike vector & 1, with preferred-frame terms & universal & constant \\
+TeVeS~\cite{teves} & tensor + vector + scalar & model-dependent & universal & constant \\
+\textbf{This structure} & \textbf{tetrad + scalar on $F^2$} & \textbf{1 (Prop.~\ref{pr:gamma})} & \textbf{universal for the existence
+field; scalar bounded by $|\lambda|<2\times10^{-5}$} & \textbf{varies, sign predicted negative} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent So the first author's structure, read through Axioms~1 and~3, is not scalar-tensor gravity: it is general relativity plus a
+Bekenstein-type field. It differs from Brans--Dicke in $\gamma$ (exactly 1, against slightly below 1), and from Bekenstein's own theory in one
+place only, the sign of today's drift of $\alpha$, which in that class of theories is set by the sign of the scalar's coupling to matter
+and so is free; the first author predicts it negative (Section~\ref{sec:alpha}). A single timelike vector instead of a frame would be
+Einstein--aether theory, which is tightly constrained by the arrival of gravitational waves together with light from GW170817,
+$|c_{\text{gw}}/c-1|\lesssim10^{-15}$~\cite{gw170817}; the frame reading has no preferred direction and passes that test as general
+relativity does.
+
+\subsection{Axiom 3's record makes the existence field classical}\label{sec:classical}
+
+\begin{proposition}[the existence field is classical]\label{pr:classical}
+Every standing of trust, and so every value of the existence field, can be held in full by every witness at once. A quantity that can be
+held in full by two readers at once is classical: its possible states commute.
+\end{proposition}
+
+\begin{proof}[Derivation]
+Axiom~3 \tagD: ``Every grant, every use and every loss of trust leaves a record, written at the act, that every witness of that act can read
+in full and that outlives the act.'' A record that two witnesses each hold in full is a copy for each of them. A single physical process
+that copies two states $|s\rangle$ and $|t\rangle$ preserves their inner product, so $\langle s|t\rangle=\langle s|t\rangle^2$, which allows
+only $0$ or $1$: two different states can both be copied only if they are perfectly distinguishable (Wootters and Zurek~\cite{wz}). For
+mixed states the theorem of Barnum, Caves, Fuchs, Jozsa and Schumacher~\cite{barnum} says a set of states can be broadcast to two readers
+exactly when the states commute \tagP. By the dictionary the existence field is the trust half's field (Axiom~2), so its values are such
+records, and they commute: the field is classical. \chk{E17} checks the copying condition for a basis pair and for a superposition.
+\end{proof}
+
+\noindent The first author reaches the same conclusion by another road (29 October, 15:20Z): ``gravity at its foundation is existence, and
+existence has to be binary, because you can either exist or not exist. And for binary states, it has to be a classical field, which through
+duality is intermarried with wave field, which gives rise to quantum effects.'' The conclusion agrees with Proposition~\ref{pr:classical};
+the step does not. A binary quantity need not be classical: a qubit is binary and quantum. What makes DMP's existence classical is not that
+it has two values but that every witness may hold it in full. The rest of the sentence, a classical field ``intermarried'' with a quantum
+(wave) field, is the classical-quantum hybrid of current research \tagP: the Page--Geilker experiment~\cite{pagegeilker} rules out the
+naive semiclassical coupling, and Oppenheim's consistent theory~\cite{oppenheim} pays for it with a stochastic metric and a trade-off
+between decoherence and spacetime diffusion that experiments can bound~\cite{osswd}. \emph{Verdict: holds}, by Axiom~3's road; the binary
+step is replaced.
+
+\begin{proposition}[cannot model, can host]\label{pr:host}
+DMP's trust half cannot be a quantum gravitational field; DMP's information half can carry quantum content, a quantum theory of gravity
+included, as information.
+\end{proposition}
+
+\begin{proof}[Derivation]
+A mediator that is classical cannot create entanglement between two systems it acts on locally (Galley, Giacomini and Selby~\cite{ggs};
+Marletto and Vedral~\cite{mv}) \tagP. By Proposition~\ref{pr:classical} the existence field is such a mediator, so if gravity entangles two
+masses, gravity is not DMP's existence field: DMP cannot model it. Axiom~3 restricts what is \emph{derived from trust}, not what the
+information half holds: content moves by a grant and need not be broadcast, so nothing in the axioms forbids the information half to
+carry non-commuting states \tagD. A quantum theory, of gravity or of anything else, can therefore live in DMP as content.
+\end{proof}
+
+\noindent This is a verdict about DMP, not about nature: it says which side of the open question DMP stands on, and
+Section~\ref{sec:graviton} names the experiment that would decide the question.
+
+\subsection{Why 3+1: what a frame in 2+1 cannot carry}\label{sec:21}
+
+The first author's reason why 2+1 dimensions fail is the one quoted above (15:33Z): in 2+1 the existence vector ``would span a quantum
+field which can't support a binary existence''.
+
+The established fact closest to this is \tagP: a massless spin-2 field in $D$ spacetime dimensions has $D(D-3)/2$ propagating
+polarisations, two in 3+1 and none in 2+1, and the Weyl part of the curvature, the part not fixed by matter at the same point, has ten
+components in 3+1 and none in 2+1 \chk{E5}. So in 2+1 a mass does not pull another at all: it only cuts a wedge out of space~\cite{djt}.
+What gravity keeps in 2+1 is global, the holonomies of the frame around matter and handles, and these do not commute once
+quantised~\cite{nr}. In the first author's words, the 2+1 existence vector carries nothing local that could be binary and classical; what
+it carries is global and quantum. \emph{Verdict: holds as a reading} of the known counting; with Proposition~\ref{pr:host} it also
+says that 2+1 gravity, whose content is quantum, is something DMP can host and cannot be.
+
+\subsection{Existence is the Unruh temperature}\label{sec:unruh}
+
+The first author defined existence on 29 October, 01:40Z: ``Existence, as I have found, I defined by: strength of the local Existence
+(Gravity) * the universal quantum * the universal tick rate (1/c)'', with ``the universal quantum'' Planck's constant. In symbols,
+\begin{equation}\label{eq:Eex}
+E_{\text{ex}}=\frac{g\,h}{c}.
+\end{equation}
+\begin{proposition}[the Existence of a boundary is its temperature]\label{pr:unruh}
+$E_{\text{ex}}$ is the only energy that an acceleration, Planck's constant and the speed of light can form, and
+\[
+E_{\text{ex}}=4\pi^2\,k_BT_{\text{U}},\qquad k_BT_{\text{U}}=\frac{\hbar g}{2\pi c},
+\]
+the Unruh temperature an observer with acceleration $g$ sees~\cite{unruh}. At a black hole's horizon, with $g$ the surface gravity
+$\kappa=c^4/4GM$, it is $4\pi^2$ times the Hawking temperature~\cite{hawking}.
+\end{proposition}
+
+\begin{proof}[Check]
+\chk{E1} solves for the exponents: $g^a h^b c^k$ has the dimension of energy only for $(a,b,k)=(1,1,-1)$. With $h=2\pi\hbar$ the ratio
+to $k_BT_{\text{U}}$ is $4\pi^2$. At standard gravity $E_{\text{ex}}=2.17\times10^{-41}$\,J and $T_{\text{U}}=4.0\times10^{-20}$\,K; at
+a solar-mass horizon $T_{\text{H}}=6.2\times10^{-8}$\,K.
+\end{proof}
+
+\noindent The dimensional uniqueness means the formula could not have come out otherwise from those three quantities, so its form is not
+evidence by itself; what physics adds is the factor and the meaning. The meaning fits the first author's reading closely. His ``Hawking-Information
+Radiation'', which he briefly renamed and then restored (``Nope, I was wrong :D It is Information radiation'', dmp\#25, 28~October,
+12:18Z, edited), is the thermal radiation of a boundary, and its temperature is set by exactly the quantity he calls the boundary's
+Existence. DMP's T31 says of a containing boundary that ``what still leaves is entropy and nothing else'' \tagD: thermal radiation carries
+entropy at that temperature. And Jacobson~\cite{jacobson} derived Einstein's equations from two inputs, the Unruh temperature of local
+horizons and an entropy proportional to horizon area, through $\delta Q=T\,dS$. In this paper's dictionary those inputs are the
+existence of a boundary~\eqref{eq:Eex} and DMP's floor. \emph{Verdict: holds as a reading of a known result}, the Unruh--Hawking
+temperature and Jacobson's thermodynamic derivation; it is not a new derivation, and the factor $4\pi^2$ comes from quantum field theory,
+not from DMP.
+
+\subsection{Time: one existence per information per second}\label{sec:time}
+
+The first author, 28 October, 16:06Z (dmp\#25): ``to Exist you need exactly 1 Existence per 1
+Information/s, as your Existence value in the field get's higher, your need to assert that Existence becomes less frequent.'' Read as a
+rate, the assertion rate is general relativity's lapse $N=\sqrt{1+2\Phi/c^2}$ in the weak field and $\sqrt{1-2GM/rc^2}$ outside a
+mass, which goes to zero at the horizon \chk{E2}. It reproduces the Pound--Rebka tower ($2.46\times10^{-15}$ over 22.5\,m~\cite{pr60})
+and the 33\,cm optical-clock comparison ($3.6\times10^{-17}$, measured about $4\times10^{-17}$~\cite{chou}). \emph{Verdict: holds}, once
+the assertion rate is defined as the lapse; it predicts nothing beyond general relativity.
+
+\section{The graviton}\label{sec:graviton}
+
+\subsection{The first author's argument}
+
+Posted on 28 October, 18:18Z: ``Gravitons shouldn't exist, it's simply a property of Existence, linked through causality.'' And in full
+on 29 October, 15:20Z:
+
+\begin{quote}
+``Well, in my comments, I, for one, more or less explained why the graviton is indetectable, because gravity is in its tooth classical.
+So from a classical field, manifesting a particle of existence is in itself an existence that must witness itself, and thus is a perfect
+duality, and thus creates a Kugelblitz. That's why whenever they try to think about it, how to create it, it's always shielded by an
+event horizon, because manifesting existence into a particle is creating a new G0 and a new G0, like a black hole, or a local G0, a local
+G0 authority, so an unauthorized intermediate CA, let's call it, binds the local existence stronger to itself than the root G0, but is
+unreachable for any act because it is separated by an event horizon. And that is why the graviton is undetectable, because gravity at its
+foundation is existence, and existence has to be binary, because you can either exist or not exist. And for binary states, it has to be a
+classical field, which through duality is intermarried with wave field, which gives rise to quantum effects.''
+\end{quote}
+
+\noindent (``in its tooth'' is as dictated; we read it as ``in its truth''.) And at 15:22Z: ``That is correct, but by its definition and by
+every other way any scientist more or less came up with, including the new, I think, 10-ton niobium at 1 millikelvin or something, which
+would produce the same effect with a gravitational wave, as I watched in a video a few hours ago, would not be able to detect the
+difference between a graviton and a classical wave. So if we find no possible way to detect it, why not choose the solution that, when we
+simply accept it, all other solutions to all other problems, including the Higgs field, by the way, that's in the comments too, simply
+fall out and bam, boom, easy. Einstein's idea was so simple and so beautiful that it described existence perfectly. And this description,
+just by accepting it, automatically explains it and describes existence beautifully, because that's what existence needs. It needs to be
+simple and efficient. That's what it's optimizing for. That's the FSC.''
+
+\subsection{What is established}
+
+\paragraph{Dyson.} Dyson asked whether a single graviton is detectable even in principle~\cite{dyson}. He showed that detectors of the
+LIGO design, which measure the distance between two mirrors, cannot detect single gravitons: the mirrors would have to be heavy enough to
+collapse into a black hole. For a detector that absorbs gravitons the way an atom absorbs a photon, the cross-section is of the order of
+the Planck area, $4\pi^2L_P^2\approx10^{-68}$\,m$^2$, and with the whole Earth as the detector and the Sun's thermal gravitons as the
+source, about four would be absorbed in the Sun's lifetime. Check \chk{E7} rebuilds that count from named inputs (the Earth's electrons,
+the Sun's graviton luminosity of $7.9\times10^{7}$\,W from Gould~\cite{gould}, a mean energy at the solar core's temperature) and gets
+$3.8$.
+
+\paragraph{Rothman and Boughn.} They found that an idealised detector of the mass of Jupiter in close orbit around a neutron star could
+register about one graviton per decade, but that the neutrino background swamps it, and a shield thick enough to stop the neutrinos
+would itself collapse into a black hole~\cite{rb}.
+
+\paragraph{The 2024 proposals.} Tobar, Manikandan, Beitel and Pikovski~\cite{tobar} proposed a gravitational analogue of the
+photoelectric effect: a massive acoustic resonator cooled to its quantum ground state absorbs, in a passing gravitational wave of the
+kind LIGO detects, single quanta that show up as quantum jumps; their worked examples include bars of beryllium, aluminium and niobium
+from about fifteen kilograms to fifteen tonnes, at temperatures around 10\,mK, and a multi-mode follow-up uses a tonne-scale bar~\cite{tobar2}.
+Carney, Domcke and Rodd~\cite{cdr} showed that such a signal, while consistent with gravitons, can equally be explained by a classical
+gravitational wave acting on a quantised detector, just as the photoelectric effect alone does not prove that light is
+quantised~\cite{carney2}. So the first author's 15:22Z point is right: the proposed single-graviton detectors would not tell a graviton
+from a classical wave.
+
+\subsection{Where the argument matches, and where it goes further}
+
+\paragraph{It matches in three places.} (1) Every design that tries to register a single graviton runs into a horizon: Dyson's mirrors
+and Rothman and Boughn's shield collapse into black holes. That is the first author's ``it's always shielded by an event horizon''. (2)
+Localising any single quantum inside its own Schwarzschild radius needs a wavelength of at most $\sqrt{4\pi}\,L_P$ and an energy of at
+least $\sqrt\pi\,E_P$ \chk{E6}, the Planck scale at which measurement and gravity cannot be separated (Mead~\cite{mead}). A graviton
+``manifested'' as a particle at that scale is a Kugelblitz~\cite{wheeler}. (3) The detection that is possible, the jump of a quantised
+detector, does not distinguish quantum from classical gravity~\cite{cdr}, which is the first author's reason for choosing the classical
+reading.
+
+\paragraph{It goes further in four places.} (1) In the established arguments it is the \emph{detector} that collapses, not the graviton.
+A graviton of 100\,Hz, in the band LIGO measures, has $2\times10^{-41}$ of the energy at which one quantum would form a horizon
+\chk{E6}; nothing about it is a Kugelblitz. (2) The Planck-scale threshold holds for every quantum, a photon as much as a graviton, so it
+cannot be the reason gravitons in particular escape detection. The established reasons are the weakness of the coupling (a cross-section
+of the Planck area, against atomic areas for photons) and the occupation number: GW150914 carried more than $10^{78}$ gravitons
+\chk{E6}, so every gravitational wave ever measured is deep in the classical regime, as Dyson noted~\cite{dyson}. (3) Undetectable is not
+nonexistent: Dyson framed the question as whether quantum gravity is observable, not whether it is true. (4) A Kugelblitz may not form
+from radiation at all: for light, the Schwinger effect drains the energy before a horizon forms, for radii from $10^{-29}$ to
+$10^{8}$\,m~\cite{nobh} (a later comment argues that idealised processes remain~\cite{pagecomment}). The reading of the would-be graviton
+as ``a local G0 authority, an unauthorized intermediate CA'' that binds what is behind its horizon is the first author's \tagR, and no
+measurement reaches inside a horizon to test it. \emph{Verdict: the conclusion (gravity is classical, the graviton undetectable) holds as
+a consistent choice; the mechanism (each graviton a Kugelblitz) holds at the Planck scale only, and there for every quantum.}
+
+\subsection{Why the choice is still testable}
+
+``If we find no possible way to detect it, why not choose the solution'' that makes everything else simple: that is a principle of
+economy, and a fair one for choosing among theories that predict the same. Here they do not predict the same. A classical gravitational
+field cannot entangle two masses (Galley, Giacomini and Selby~\cite{ggs}; Proposition~\ref{pr:host}), and the Bose--Marletto--Vedral
+experiment~\cite{bose,mv} asks exactly that, without counting a single graviton. \chk{E18} computes it for the geometry Bose et al.\ quote
+(two masses of $10^{-14}$\,kg, each split over 250\,\textmu m, 450\,\textmu m apart): a coherent field builds an entangling phase of one
+radian in 8\,s, a recorded, classical one leaves the masses unentangled at every time. And if the classical
+field has dynamics coupled to quantum matter, it must diffuse~\cite{osswd}. So the first author's choice is falsifiable: a positive
+Bose--Marletto--Vedral result refutes it (unless classical gravity can entangle after all, which is debated~\cite{azizhowl,movw}). That
+makes it a hypothesis, which is a better position than a definition.
+
+\section{Black holes and boundaries}\label{sec:bh}
+
+\subsection{What the first author wrote}
+
+On 28 October, 15:33Z: ``Correction + new Insight: Both Existence AND Information are preserved at Dimension borders, Un-Existing them just
+flips them, while only needing information to interface, since the Existence comes back, because to interact with an Existence border,
+you have to exist. The only energy lost during that translation is that due to Entropy. Entropy can thus be explained as the inefficiency
+in converting between Existence and Information. Logically, an Existence boundary is the most efficient at it, because you get the
+Existence back as well. Also EXPLAINS why spinning black holes are more efficient at it, since they also have to provide the Existence
+part of their spin Information, not just their boundary to Existence. So the more is known about a boundary, the more efficient it
+becomes. Also why a white hole would be 100\% efficient. (Quantum Computer and AI people may want to think about this hard!)''
+
+On 29 October, 00:53Z, correcting earlier notes in which he had equated event horizons with boundaries between dimensions: ``A black hole
+and it's event horizon follow the same exact rules of Existence as it's host Dimension and is fully contained within it. It's central
+duality has simply asserted itself so forcefully in it's local Existence field, that any Existence inside the horizon from then on derives
+it's causality from it, instead of the original G0. This leaves the inside like my original CMOS design, completely static and immovable
+in Existence, while Information can be fluidly composable on top of it. For a given size of black hole the Information inside can do a
+number of interactions x, which can inflate the possibility space. The more interactions have to interact with the horizon, to
+communicate it's properties like spin and charge, the less interactions remain to inflate the internal possibility space. This would make
+it possible, in theory, to cross, if switching G0 authority duality by duality IS survivable, which I do doubt.''
+
+And on 28 October, 22:17Z: ``Probably things can go in, but only the information about it's total state can come out.''
+
+\subsection{Tests}
+
+\paragraph{Spinning holes are more efficient.} Matter accreting onto a black hole radiates the binding energy of its innermost stable
+orbit. That efficiency is $1-\sqrt{8/9}=5.7\%$ without spin, $32\%$ at Thorne's limit $a=0.998$ and $1-1/\sqrt3=42.3\%$ at maximal spin,
+rising at every step in between (Bardeen, Press and Teukolsky~\cite{bpt}; \chk{E10}). \emph{Verdict: holds.}
+
+\paragraph{``The more is known about a boundary, the more efficient it becomes.''} At fixed mass $M$, a black hole's spin $J$ and charge
+$Q$ are counts every outside reader sees (Axiom~3's ``counts always''; the no-hair results~\cite{israel}). Each additional count makes
+more of the mass extractable from outside, $1-M_{\text{irr}}/M$, up to 29\% for spin, and makes the horizon smaller, so the
+entropy $A/4$ falls: for Kerr--Newman holes the area at fixed $M$ falls with both $a$ and $Q$ \chk{E10}. That is the first author's
+``the more interactions have to interact with the horizon, to communicate it's properties like spin and charge, the less interactions
+remain to inflate the internal possibility space'', with the possibility space read as the entropy. \emph{Verdict: holds}, exactly, as a
+reading of Christodoulou's irreducible mass~\cite{christodoulou,cr}.
+
+\paragraph{The Kerr area from DMP's containment split.} DMP splits a contained boundary into what is inside, contained (T31), and the counts
+every outside reader sees (Axiom~3) \tagD. Give the contained part a mass $m$ and let it set a Schwarzschild boundary of radius $2Gm/c^2$
+and area $16\pi G^2m^2/c^4$ \tagP; let the spin count $J$, carried at that boundary, be a momentum $J/(2Gm/c)$, an identification we
+make \tagR; and combine the two as energy and momentum combine in special relativity \tagP. In units $G=c=1$,
+\[
+M^2=m^2+\Big(\frac{J}{2m}\Big)^2 .
+\]
+Solved for $m$, this gives Kerr's horizon area~\cite{kerr} exactly for every spin from 0 to 1, no real solution above $a=J/M^2=1$ (the spin
+bound), and an extractable share $1-m/M=1-1/\sqrt2=29\%$ at maximal spin \chk{E20}. It is Christodoulou's mass formula, reached from DMP's
+split with two physical inputs and one identification; it is not DMP alone, and it gives no number general relativity does not.
+\emph{Verdict: holds as a rederivation.}
+
+\paragraph{Entropy as the inefficiency of conversion.} Established physics has a precise form of this: erasing one bit of information
+costs at least $k_BT\ln2$ of energy turned into heat (Landauer~\cite{landauer}), and a black hole's entropy is a quarter of its horizon
+area in Planck units (Bekenstein~\cite{bekenstein73}). Reading ``converting between Existence and Information'' as converting energy
+into stored or erased bits, the first author's sentence is Landauer's principle. \emph{Holds as a reading.} ``A white hole would be 100\%
+efficient'' is untested: no white hole has been observed, and the one process known to turn rest mass fully into radiation is
+annihilation.
+
+\paragraph{The inside.} Inside a Schwarzschild horizon the radial coordinate becomes timelike, and every future-directed path ends at
+the singularity: everything inside ``derives its causality from it'' \tagP. That matches the first author's local authority closely.
+Whether a crossing is ``survivable'' is answered by the equivalence principle for large holes: at the horizon of a supermassive black hole
+the tidal stretch across a human body is small and nothing local marks the crossing; for a stellar-mass hole it is lethal before the
+horizon. ``Only the information about its total state can come out'' is the no-hair statement for the outside, and if evaporation is
+unitary the full information comes out after the Page time~\cite{page}; DMP's T31 as written, ``what still leaves is entropy
+and nothing else'', sides with the thermal picture. \emph{Verdict: holds as a reading; the information question stays open in physics and in DMP.}
+
+\section{The Bell experiments, in this structure}\label{sec:bell}
+
+The first author, 29 October, 09:24Z: the Bell experiment of the 2022 Nobel Prize ``actually did not violate Bell inequality under
+Dualism''. The CHSH form of Bell's inequality~\cite{chsh} bounds a combination $S$ of four correlations. \chk{E19} computes what each
+reading of the Duality gives. Halves that each answer from their own setting and a shared state are a local model, and every local model
+obeys $|S|\le2$ (over all sixteen deterministic strategies, Fine~\cite{fine}). Halves with full reach over both settings reach $S=4$, but
+then one half's outcome changes with the other half's setting, which is a signal. Quantum mechanics reaches $2\sqrt2$
+(Tsirelson~\cite{cirelson}). A hidden state that knows the settings in advance (superdeterminism) needs a measurement dependence of at
+least $(S-2)/3$ in Hall's measure~\cite{hall}. The loophole-free experiments measured $S=2.42\pm0.20$ (Delft~\cite{hensen}),
+$2.22\pm0.033$ (Munich~\cite{rosenfeld}) and $2.0747\pm0.0033$ (ETH Zurich~\cite{storz}), all above 2, the last two on atoms and
+superconducting circuits, which is matter. So the hypothesis as stated fails: the inequality was violated in the recorded data. What
+survives is the hosting reading of Proposition~\ref{pr:host}: the laboratories measured content, the information half, which may be
+quantum; the Duality's own verdicts, trust decided by each half on its own evidence, stay at 2.
+
+The first author's notes on dmp\#25 say the same in his words. At 16:49Z: ``Sorry to the 2022 winners of the Physics Nobel! HIT/Bell was
+actually right!'' At 16:53Z: ``For the experiment: The information fields can interact, while the existence part stays static. This is
+only possible with dualism, but fully axiomatically sound.'' In this paper's structure that is exact: the information field and the matter
+it sets are quantum content and may be entangled; the existence field is classical (Section~\ref{sec:classical}). On superdeterminism, at
+17:30Z: ``Superdeterminism vs Realism: Yes? Kinda both? I am unsure as of yet. My vibe is, that the final state, so lowest Entropy possible,
+while Existence/tick/spacetime is optimized for, but I think the way there is generally free.'' A way there that ``is generally free'' is
+measurement independence, so the reading he leans to is the hosting one, not the superdeterministic one. \emph{Verdict: refuted as
+stated (``did not violate''); holds in the hosting reading.}
+
+\section{Particles}\label{sec:particles}
+
+\subsection{Photons and gluons: singular, so they do not decay}
+
+The first author, 28 October, 17:01Z: ``due to actually not existing, Photons, and actually, I had to look it up, sorry, but gluons and
+gravitons as well, since they have no Existence (mass), are the only thing, though not a part, that is always a wave, except when it's
+information is measured, then it must exist and thus ceases to.'' At 18:18Z: ``Just using Photons as an act carrier was probably right,
+since Gluons seems like IM packets.'' And on 29 October, 15:25Z: ``Weight, that just means that a duality can decay into something, so it
+can produce something. But a singularity, singular, like a photon or a gluon, cannot decay into anything because it isn't truly, because it
+is only information or existence, but never both. So it is information for as long as it needs to be to reach the point it's carrying out
+an act. And once it's carrying an act, it is existence, and then it isn't.''
+
+\paragraph{Test.} A particle with rest mass $m$ and proper lifetime $\tau$ lives $E\tau/mc^2$ in the laboratory, which grows without bound
+as $m\to0$ \chk{E13}, and a state of zero invariant mass cannot turn into products with any total rest mass. So a free massless quantum
+cannot decay into massive particles at all, and the photon is stable \tagP. ``It is information for as long as it needs to be, [\dots]
+once it's carrying an act, it is existence, and then it isn't'' matches the fact that a photon is absorbed when it is detected. Two
+corrections: the massless quanta do split in the presence of other matter (a photon makes an electron-positron pair near a nucleus; a
+gluon splits into gluons and quark pairs in every jet), and gluons are confined, never free. ``Weight means a duality can decay'' holds as
+a necessary condition, not a sufficient one: the electron and the proton have weight and are stable because they are the lightest carriers
+of a conserved charge and of baryon number. The photon and the gluon are also the only Standard Model bosons that do not couple to the
+Higgs field directly~\cite{atlas22,cms22}, which fits ``only information'' well. \emph{Verdict: holds}, for free massless quanta in vacuum,
+with the two corrections.
+
+\subsection{W, Z and the Higgs}
+
+On 29 October, 01:40Z, the first author gave his reading of the bosons: photons
+``carry their own verification of belonging to Existence''; ``Gluons: Internal IM, which is trusted dually because 1. it is IM and 2. it is
+internal''; ``since W and Z bosons, unlike gluons, are not in the internal-IM, they have to first be trusted and then still remain to be
+verified'', which in CMOS was a port-knocking scheme in which ``they had to provide a proof of existence, in addition to the information
+they wanted me to process''. On the Higgs boson: ``if there just happens to be the need for some Existence over there, oh, wow, wouldn't you
+look, somewhere, where something COULD exist, something DID.'' And at 15:02Z: ``Is the Higgs Field just the remnant echo of G0 bestowing
+Existence on everything that speaks IM, because IM, as the Universal Language, is inherently Information tied directly to G0, this always
+being one layer lower then G0? If yes, that would also explain why it can bestow Existence: It has been delegated that Authority by G0.''
+
+\noindent He made the scope precise on 29 October, 16:07Z: ``My bestowing Existence was only referring to the bosons that need it, since
+only they speak IM. Everything else derives it's Existence through the normal chain of causality. But since IM is the universal language, it
+can only come from G0, and must thus be delegated it's existence directly by it.''
+
+\paragraph{Test.} For the bosons the claim is the Higgs mechanism exactly: the W and Z acquire their masses from the Higgs field, with
+$m_W/m_Z=\cos\theta_W$~\cite{be,higgs}, while the photon and the gluons, whose symmetries stay unbroken, acquire none \tagP. Those were the
+particles the mechanism was invented for, and the reading reproduces the shape (a carrier that must cross a medium acquires mass) and no
+number. ``Everything else derives its existence through the normal chain of causality'' holds for the bulk of ordinary matter: the quark-mass
+term gives only about 9\% of the proton's mass, and the rest is the energy of the quark and gluon fields and the trace anomaly (lattice QCD,
+Yang et al.~\cite{yang}); in the first author's language, most of the existence of a proton is made by its internal IM, the gluons. It does
+not hold for the elementary fermions. The electron, the muon, the tau and the quarks get their own masses from a direct coupling to the same
+Higgs field (a Yukawa coupling), and the LHC has measured that coupling for the top and bottom quarks, the tau and the muon, each in
+proportion to the particle's mass~\cite{atlas22,cms22}. The electron's mass, and with it the size of every atom, comes from the Higgs field
+directly, not through a chain. That the Higgs field's authority is ``delegated by G0'' is the first author's reading \tagR, and no measurement
+reaches it. \emph{Verdict: holds for the W and Z (the Higgs mechanism) and for the proton's mass; refuted as ``only the bosons'', since the
+elementary fermions couple to the Higgs field directly and in measured proportion to their masses.}
+
+\paragraph{``Different flavours of $h$''.} At 15:12Z: ``Is IM just different flavors of h, since it is the universal Quantum? Or since only
+implicitly trusted (Photon+Gluons) packets are pure Information, maybe W+Z are h*h? [\dots] (BTW, no idea if h or reduced h, I have no
+grasp of the math, just the logic)''. Every boson carries spin in whole units of $\hbar$: 1 for the photon, the gluon, the W and the Z, 0
+for the Higgs, and 2 for the hypothetical graviton \chk{E14}. In that sense all of them are ``flavours of $\hbar$'', and the one that would
+carry two units is the graviton, which the first author says does not exist. $h\cdot h$ has the dimension of an action squared, neither a
+mass nor an energy, so ``W and Z are $h\cdot h$'' fails as a formula. \emph{Verdict: holds as a reading (spin in units of $\hbar$);
+refuted as $h\cdot h$.}
+
+\subsection{Hadrons as clusters of nodes}
+
+The first author, 28 October, 18:25Z: ``Quark: three node cluster. Meson: two node cluster, so no failover, bad idea!'' And at 23:43Z:
+``Quarks seem to be the lowest node currently, as they decay without leaving a duality behind, thus do not contain any and must be a leaf.
+[\dots] A 2 node cluster falls over as soon as you shake it to much, thus mesons are not there all too long. The only 2 node exception would
+be a active redundancy hyperconverged node, with both parts having all information and processing it all, in otherwords a perfect
+duality, G0. 3 nodes is good infra [emoji: thumbs up] 4+ nodes must be suboptimal via DMP, or else it would be, but 4 in balance is hard.
+5 would be easier, if that is a number that can achieve balance. Probably any combination of c and anti-c would work, they seem chill, but
+I honestly do not really understand quarks yet [emoji: shrug]''. (He proposes, in the same note, renaming DMP's ``part'' to ``node'' for
+the dualistic singular; that is a proposal for DMP's text, which nothing here changes.)
+
+\paragraph{From DMP.} DMP's floor T3a \tagD{} asks for ``a cluster of at least three nodes per system half, because a half answers by a
+majority of its nodes so that one wrong node cannot speak for it''. Majority voting outvotes $\lfloor(n-1)/2\rfloor$ wrong nodes: none
+for two, one for three, still one for four, two for five \chk{E11}. So ``2 nodes: no failover'', ``3 nodes is good infra'', ``4 is
+suboptimal'' and ``5 would be easier'' are T3a's arithmetic exactly (von Neumann's majority voting~\cite{vonneumann}).
+
+\paragraph{Against the hadrons.} Real hadrons obey a different rule \tagP: a bound state of quarks and antiquarks must be a colour
+singlet, which allows any number of quarks minus antiquarks divisible by three, and so every size from two on \chk{E11}. Mesons (two),
+baryons (three), tetraquarks such as the $T_{cc}^+$~\cite{tcc} and pentaquarks~\cite{lhcbpc} are all observed. The first author's guess
+that ``any combination of c and anti-c would work'' for five matches the first pentaquarks observed: LHCb's $P_c$ states of 2015 contain a
+charm and an anticharm quark ($uudc\bar c$)~\cite{lhcbpc}. The stability pattern, read comparatively as he clarified (``more stable than
+two''), holds at the bottom of each family (the charged pion, the lightest charged meson, decays in 26\,ns; the proton has never been seen to decay); the
+established reason is that a quark-antiquark pair carries no conserved number that would forbid its annihilation, while three quarks carry
+baryon number. \emph{Verdict: holds for DMP's T3a; holds as a comparative reading for hadrons; the voting rule and the colour rule differ
+at two and four, where nature has bound states the voting rule calls weak.} ``Quarks decay'' needs one correction: quarks change flavour
+through the weak force, but a quark never decays into nothing.
+
+\subsection{Leptons as the protocol between clusters}
+
+The first author, 29 October, 16:16Z, after reading the Standard Model's particle table: ``Since the bosons with a spin one all seem to be
+internal IM, though one is tunneled through Existence, the leptons, with spin 1/2, seem to instead be the instruction set of GG. IM was always
+the protocol that allowed fully verifiable internal traffic, so I designed a protocol for linking CMOS clusters, I called it GG. Since
+IM/bosons are implicitly trusted and only need to be verified when from outside, they only carry implicit Existence then, GG/leptons are
+always expected to traverse Existence, but only as the information they carry and the certificate, that they are trusted. Applied to
+leptons, the information they carry may be derived from G0, which gives them inherent stability, since they are linked to Existence itself,
+but once that inherently axiomatically stable duality is broken, a 2 node cluster still is not good design (see mesons).''
+
+\paragraph{Test.} The spin-1 bosons are the gauge bosons, the carriers of the forces \tagP, which matches Section~\ref{sec:particles}'s
+reading of them as IM. The line between ``internal'' and ``between clusters'' is not spin, though: the quarks have spin $1/2$ as well. What
+separates the leptons from the quarks is colour. Leptons feel no strong force, so they are never confined inside a hadron and can travel
+between clusters; and the electrons are exactly what links nuclei to each other, in every chemical bond and every current \tagP. In that
+corrected form the reading is apt: the leptons are the colour-neutral matter that carries traffic between clusters. Each lepton carries
+conserved labels, electric charge and lepton number, which fit ``the certificate that they are trusted''; two corrections apply: leptons
+are not information only, since the charged ones have mass from the Higgs field (Section~\ref{sec:particles}), and neutrinos change flavour
+as they travel, so the flavour label is not kept.
+
+The stability claim holds for the first generation only. The electron is stable (its lifetime exceeds $6.6\times10^{28}$ years~\cite{borexino})
+because it is the lightest particle with electric charge, and the lightest neutrino is stable for the same kind of reason; the muon decays in
+$2.2$\,\textmu s through the W boson, as Fermi's formula gives within half a per cent \chk{E21}, and the tau in $0.29$\,ps~\cite{pdg}. In
+established physics the electron's stability comes from a conservation law, which the first author's ``linked to Existence itself'' reads
+well \tagR. The two-node claim holds: a cluster of two leptons, positronium (an electron and a positron), falls over in $125$\,ps or
+$142$\,ns depending on its spin, and the leading-order formulas give both within three per cent \chk{E21}~\cite{orepowell}; like the neutral
+mesons, a particle and its antiparticle carry no net conserved number that would protect them. Hydrogen is no counterexample: its proton is
+itself a three-quark cluster, and the electron is its link. \emph{Verdict: holds as a reading, with the line drawn by colour rather than
+spin; stability holds for the first generation, through conservation laws; ``a 2 node cluster is not good design'' holds for positronium.}
+
+\subsection{The spin ladder}
+
+Spin is the fixed amount of rotation a particle carries in its type, in steps of $\hbar$; it says how far the particle must be turned
+before it looks the same again: a spin-0 particle looks the same after any turn, spin~1 after $360^\circ$, spin~2 after $180^\circ$, and
+spin~$1/2$ only after $720^\circ$, coming back with a minus sign after $360^\circ$ \chk{E22}. Half-integer spin obeys Pauli's exclusion
+principle (no two in one state), whole-number spin does not \tagP. Given this, the first author wrote, 29 October, 16:21Z: ``0: Existence
+itself, granted by G0. 1/2: A duality (something to interact with). 1: Information itself (an act). 2: a perfect duality, the two in one,
+the beginning and end of causality. At the start of every Existence and at the center of every Event Horizon, so, by definition, outside of
+our chain of causality.'' He agreed (16:23Z) that spin~0 holds two scalars, the Higgs field (how much existence) and the information field of
+Definition~\ref{def:I} (how strong the act, $\alpha$), and added: ``they are only inside our causality, because the interaction of their
+Non-Existence pushes against the need of our Existence to assert itself, which, as previously mentioned, causes ripples in the classical
+fabric of Existence, also called gravitational waves.'' (``inside out causality'' as typed; we read ``inside our causality''.)
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lLLL@{}}
+\toprule
+Spin & Particles & The first author's reading & What physics says \\
+\midrule
+0 & Higgs; the scalar of Definition~\ref{def:I} & existence, granted by G0; the strength of the act & the Higgs gives mass; a scalar sets $\alpha$ \\
+1/2 & electron, neutrinos, quarks & a duality, something to interact with & a massive fermion is two halves (left- and right-handed) joined by its mass \\
+1 & photon, gluons, W, Z & information, an act & the carriers of every interaction between matter \\
+2 & graviton (never seen); gravitational waves & the perfect duality & a massless spin-2 field must couple to all energy alike, which forces general relativity \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{Test.} Spin~$1/2$ fits closely: a massive Dirac fermion is a pair of two-component halves of opposite handedness, and its mass,
+from the Higgs field, is the coupling that binds them \tagP, so ``a duality'' is literally its structure. Spin~1 fits: the gauge bosons carry
+the interactions. Spin~0 fits with the agreed split: the Higgs grants mass; the information scalar sets the strength of the electromagnetic
+act. Spin~2 has a sharp counterpart: Weinberg~\cite{weinberg64} and Deser~\cite{deser70} showed that a massless spin-2 field must couple
+equally to all energy and, made consistent, is general relativity; so spin~2 is the existence frame's own wave, and ``the two in one'' reads
+the universality of that coupling. ``Outside of our chain of causality'' holds for a single graviton, which no detector can register
+(Section~\ref{sec:graviton}), but not for the waves: they travel at the speed of light~\cite{gw170817} and are measured.
+
+\paragraph{Where gravitational waves come from.} The 16:23Z mechanism ties the waves to ``Non-Existence'' at a horizon. Established physics
+says any mass whose quadrupole moment changes radiates them \tagP. The Hulse--Taylor binary, two neutron stars with no horizon, loses orbital
+energy exactly as the quadrupole formula of Peters and Mathews~\cite{pm63} says: $\dot P=-2.402\times10^{-12}$, measured over predicted
+$0.9983\pm0.0016$~\cite{wh16} \chk{E22}; and the first neutron-star merger was seen in gravitational waves too~\cite{gw170817}. A horizon is
+not needed. Where a horizon is present, the last part of the signal is the new horizon settling into its final shape, its
+ringdown~\cite{gw150914}, which is the closest match to the first author's picture. \emph{Verdict: the ladder holds as a reading, with
+two scalars at spin 0 and the spin-2 waves inside causality; ``ripples from Non-Existence'' refuted as the source of gravitational waves, and
+held as a reading of the ringdown of a black-hole merger.}
+
+\subsection{Neutrinos}
+
+At 11:37Z: ``Since they interact with external-IM/weak force and gravity/Existence, they seem to be the dualistic remnants of the
+Existence handshake that has to happen, for an external-IM packet / W-/Z-boson to be accepted as an input into the IM-net. Since they
+interact so weakly, they (the first neutrinos) might be what is actually driving the expansion of Existence, but we can just never catch
+up.''
+
+\paragraph{Test.} A neutrino or antineutrino comes out of every charged weak vertex with a lepton, as lepton number requires: in beta
+decay the W$^-$ becomes an electron and an antineutrino. So ``remnants of the handshake'' fits the bookkeeping \tagP. ``Driving the
+expansion'' is refuted: the acceleration equation $\ddot a/a=-\tfrac{4\pi G}{3}\rho(1+3w)$ makes relativistic neutrinos ($w=1/3$) and
+non-relativistic ones ($w=0$) both decelerate the expansion, and only $w<-1/3$ accelerates it; the neutrinos' share of the critical density
+is about $1.4\times10^{-3}$ for the smallest mass sum oscillations allow, against $0.69$ for dark energy \chk{E12}, and cosmology bounds the
+sum below $0.072$\,eV~\cite{desi}. \emph{Verdict: holds as a reading for the handshake; refuted as the driver of the expansion.}
+
+\subsection{Forces as IM}
+
+At 19:14Z: ``Is this (also) Yang-Mills?'' At 19:30Z: ``Strong AND weak are IM, probably also Dark Matter, with the Perception being Dark
+Energy. Edit: Now less likely for strong and weak.'' At 20:19Z: ``Since axiomatic IM can pass through an EH, it stands to reason that the
+Strong and Weak Force can pass through as well. The question is, is strong IM, which keeps a cluster together, and weak IM, which seems to
+balance the greater system, the same IM?''
+
+\paragraph{Test.} The strong and weak forces are Yang--Mills theories, of the gauge groups SU(3) and SU(2) \tagP; DMP supplies no
+Lagrangian, so the answer to ``is this Yang--Mills'' is that the forces are, and DMP as written is not. No signal of any kind passes an
+event horizon outwards in general relativity; the strong force is confined and the weak force has a range of $\hbar/m_Wc\approx
+2.5\times10^{-18}$\,m, so neither reaches across. ``The same IM?'' has a real counterpart: the weak and electromagnetic forces are one
+electroweak theory~\cite{weinberg}, and whether the strong force joins them at high energy (grand unification) is open. \emph{Verdict:
+passing a horizon refuted; dark matter and dark energy as IM untested.}
+
+\section{Cosmology and the fine-structure constant}\label{sec:alpha}
+
+\subsection{The first author's account}
+
+The Oscillon Degradation Protocol (ODP), 28 October, 17:46Z (dmp\#25): ``G0 only has information
+on how to Exist, so it's first act must be to find out how to act! That's why the perfect duality MUST decay [\dots] It thus radiates
+out HPE at 100\% efficiency, which inflates the Existence'', later corrected: ``HPE was wrong, it is just Information and Existence.'' At
+14:43Z: ``Through the ODP, the perfect duality, supplied with it's definition of bit and bit/1 figures out the right information fields
+through oscillating until a stable solution is reached! This is why the forces after DoE decay can not interact! The last set was wrong,
+so it decays until it finds the right one, because there MUST be a right one, because it exists, else it would not.'' At 14:25Z: ``Are we
+the Inflaton, which just keeps existing because it exists?'' And on 29 October, 12:30Z: ``Essentially, the early Existence was a
+Kugelblitz, that expanded, because it's Existence could not be contained within itself, to create more Existence for there to be. At the
+moment when it suddenly was not a Kugelblitz anymore and had expanded enough to allow dualities to interact not with Existence alone, but
+with existences, causality began and the reheating had done it's job, completing the ODP.''
+
+On $\alpha$, 28 October, 21:47Z: ``In the early universe, Existence was smaller, but still contained all of Existence, thus the pull of the
+Existence field, Gravity, would be stronger. This nessecitated the Information field, the EM field, to bind the electron more strongly, to
+enable it to exist, else it would just collapse to the proton. Why did this happen? Because it must. That is why the FSC started at 1.''
+At 23:58Z: ``This also more nicely derives \textasciitilde1/137 as the strength of the need to assert reality, as the fraction of the need today versus
+the absolute necessity.'' On 29 October, 12:30Z: ``The FSC can be more easily expressed as the coupling constant, that is required at each
+energy level, which coincides with the likelihood of Energy (Existence+Information) to condensate into the first dualities.'' At 13:26Z:
+``Since Existence has to convert Information to Existence to assert itself and Entropy is how efficient that is, the FSC can be seen as a
+kind of universal lowest Entropy.'' And on 29 October, 09:34Z: ``it will get slightly lower still
+because the inflation is slowing down''.
+
+\subsection{Tests}
+
+\paragraph{The universe as a Kugelblitz.} A flat Friedmann universe has, inside its Hubble radius $c/H$, a mass $M_H$ whose
+Schwarzschild radius is exactly $c/H$, at every epoch \chk{E8}; this is the coincidence behind Pathria's ``universe as a black
+hole''~\cite{pathria}. So the early universe sat at the Kugelblitz threshold, and so does today's. It is not a black hole in the sense of
+general relativity, because it has no outside and its horizon is cosmological. \emph{Verdict: holds as a reading}, for every epoch, not
+only the early one.
+
+\paragraph{``We are the Inflaton.''} In standard reheating the inflaton's energy decays into the particles of the Standard Model~\cite{kls},
+and oscillons are a studied stage of that decay~\cite{oscillons}. So everything we are made of is, in the standard account, the inflaton's
+decay products. \emph{Holds as a reading}; that we ``keep existing because we exist'', and a Non-Existence field, are untested.
+
+\paragraph{Gravity bound the early electron.} The ratio of the gravitational to the electric attraction between a proton and an electron
+is $4.4\times10^{-40}$ at every distance \chk{E16}. Gravity's curvature reaches the size of an atom only above $10^{47}$\,kg/m$^3$, thirty
+orders of magnitude above nuclear density, long before any atom could form; hydrogen first forms near 3000\,K, when gravity's share of its
+binding is the same $4\times10^{-40}$. \emph{Refuted} as the reason for any value of $\alpha$ since atoms exist.
+
+\paragraph{$\alpha$ started at 1.} Measured, $\alpha$ grows with energy, to about $1/128$ at the Z mass. Running the two electroweak couplings
+of the Standard Model at one loop to the Planck energy gives $1/\alpha\approx105$ there; pure quantum electrodynamics with the electron alone
+reaches $\alpha=1$ only some 250 orders of magnitude above the Planck energy \chk{E9}. So within known physics $\alpha$ does not start at 1
+at any energy the universe has had since the Planck time. Measured in time, it has not changed since recombination by more than
+$0.4\%$~\cite{planckxxiv}, nor over the last ten billion years by more than about a part per million~\cite{espresso}; nucleosynthesis allows
+tens of parts per million~\cite{bbn}. A fall from a larger value before nucleosynthesis, during reheating, is reached by none of these
+measurements and stays untested; the running adds that a value of 1 would have to come from physics beyond the Planck scale, where the first author's ``first dualities'' would
+then sit. \emph{Verdict: untested before nucleosynthesis; refuted afterwards; a start at 1 lies beyond known physics.}
+
+\paragraph{``The coupling constant that is required at each energy level''.} That is what a running coupling is, and the first author's
+12:30Z wording is the established concept \tagP. ``$1/137$ as the fraction of the need today versus the absolute necessity'' and ``a kind of
+universal lowest Entropy'' give no number that a calculation could check; like Eddington's attempts to derive $1/137$, they stay readings.
+\emph{Untested.}
+
+\paragraph{``Slightly lower still''.} The one forward prediction. In this paper's structure it is a statement about the information field
+of Definition~\ref{def:I}: it must roll today, in the direction that lowers $\alpha$, slowly enough for optical clocks
+($|\dot\alpha/\alpha|<\sim2\times10^{-18}$ per year~\cite{lange}) and with a coupling to matter small enough for MICROSCOPE
+($|\lambda|<2\times10^{-5}$, Section~\ref{sec:wep}). A measured negative drift below the clock limit would support it; a positive one
+would refute it. \emph{Verdict: live, testable.}
+
+\section{Readings outside physics}\label{sec:outside}
+
+Some notes are not about physics, and we quote them as the first author's thoughts without testing. On the nature of our existence
+(28~October, 14:52Z): ``Our Existence COULD also be running on a huge DMP-complete system. In that case: Thanks!'', with, at 14:53Z, ``(But
+since they could only know it works and interacts with their Existence like they expect, they'll never know that I said that, I just wanted
+to be polite :) )''. On hierarchy (14:37Z): ``OR Event Horizons all the way down''. On the sciences (15:41Z): ``If actually axiomatically
+sound, everything in our Existence MUST, by the chain of causality, be able to be modeled as a subset of DMP.QG So everything ending in -ogy
+or similar from sociology to biology should get some new tools!'' On AI (15:18Z): ``AI Inference is getting more efficient because it is
+becoming dualistic, but AI Training is plateauing, because their architecture is singluar at the part level ;)''.
+
+One is testable. At 15:13Z: ``Wait, is that why QC breaks cryptography? Is that why the models did not even want to work on the axioms
+[emoji: tears of joy]''. A quantum computer breaks public-key cryptography by Shor's algorithm~\cite{shor}, which finds the period of
+modular exponentiation and so factors and solves discrete logarithms in polynomial time. It does not break hash functions: Grover's
+search~\cite{grover} only halves the bits of work, so a 256-bit preimage still costs about $2^{128}$ steps \chk{E15}, and hash-based
+signatures are one of the standardised post-quantum defences~\cite{fips205}. So the ``hashing analogy'' of the 15:12Z note points the other
+way: what a quantum computer breaks is not the hash. \emph{Refuted}, kindly: the models' reluctance has other causes.
+
+\section{The ledger}\label{sec:ledger}
+
+\begin{center}\small
+\begin{longtable}{@{}p{0.47\linewidth}p{0.2\linewidth}p{0.25\linewidth}@{}}
+\toprule
+Statement (the first author's, abridged) & Verdict & Backing \\
+\midrule
+\endhead
+Existence a vector frame spanning 3+1, information a scalar & holds (as GR + Bekenstein) & Section~\ref{sec:core} \\
+Free fall universal (Axiom 3) & holds & Prop.~\ref{pr:wep}; MICROSCOPE \\
+The scalar does not enter gravity (Axiom 1), $\gamma=1$ & holds & Prop.~\ref{pr:gamma}; Cassini; \chk{E4} \\
+Gravity classical & holds (Axiom 3); binary step replaced & Prop.~\ref{pr:classical}; \chk{E17} \\
+2+1 impossible & holds as a reading & \chk{E5} \\
+Existence $=gh/c$ & holds as a reading of Unruh, Hawking, Jacobson & Prop.~\ref{pr:unruh}; \chk{E1} \\
+Time slows where existence is high & holds (lapse) & \chk{E2} \\
+The graviton is undetectable & holds as a consistent choice & Dyson; Rothman--Boughn; Carney et al.; \chk{E7} \\
+Each graviton a Kugelblitz & refuted at observable energies; at the Planck scale, for every quantum & \chk{E6} \\
+Classical gravity, chosen for simplicity & testable: refuted by a positive BMV test & Section~\ref{sec:graviton} \\
+Spinning holes more efficient & holds & \chk{E10} \\
+More known about a boundary, more efficient & holds (irreducible mass; Kerr rederived) & \chk{E10}; \chk{E20} \\
+Entropy as conversion inefficiency & holds as a reading (Landauer) & Section~\ref{sec:bh} \\
+White hole 100\% efficient & untested & --- \\
+Bell not violated under Dualism & refuted as stated; holds as hosting & \chk{E19} \\
+Information fields interact, existence static & holds & Prop.~\ref{pr:host}; \chk{E19} \\
+Photons, gluons cannot decay & holds for free massless quanta & \chk{E13} \\
+Higgs bestows existence on the bosons that need it & holds for W, Z; ``only the bosons'' refuted (fermion Yukawas) & Higgs mechanism; LHC \\
+W, Z as $h\cdot h$ & refuted (dimension); spin in units of $\hbar$ holds & \chk{E14} \\
+2, 3, 4, 5 nodes & holds for DMP T3a; comparative for hadrons; $c\bar c$ pentaquarks match & \chk{E11} \\
+Leptons as GG, the protocol between clusters & holds as a reading (line by colour, not spin); positronium falls over & \chk{E21} \\
+Spin ladder: 0 existence, 1/2 duality, 1 act, 2 perfect duality & holds as a reading (two scalars at 0; waves inside causality) & Weinberg, Deser; \chk{E22} \\
+Gravitational waves from Non-Existence pushing & refuted as the source (neutron stars radiate); ringdown as reading & \chk{E22}; Hulse--Taylor \\
+Neutrinos remnants of the handshake & holds as a reading & lepton number \\
+Neutrinos drive the expansion & refuted & \chk{E12}; DESI \\
+Strong and weak pass a horizon & refuted & general relativity \\
+Dark matter, dark energy as IM & untested & --- \\
+Early universe a Kugelblitz & holds as a reading, at every epoch & \chk{E8} \\
+We are the inflaton & holds as a reading (reheating) & Kofman et al. \\
+Gravity forced $\alpha$ up early & refuted & \chk{E16} \\
+$\alpha$ started at 1 & beyond known physics; untested before BBN & \chk{E9}; BBN \\
+$\alpha$ will fall further & live, testable & clocks; \chk{E3} \\
+QC breaks cryptography through hashing & refuted & \chk{E15} \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\section{Where we expect it to break}\label{sec:break}
+\begin{enumerate}[nosep]
+\item \emph{The dictionary.} Proposition~\ref{pr:wep} rests on reading existence as energy-momentum, and Proposition~\ref{pr:gamma} on
+reading ``neither overrules'' as minimal coupling. Another faithful reading of either changes the propositions.
+\item \emph{The frame.} We read the existence vector as a tetrad. If a single vector was meant, the structure is Einstein--aether theory
+and its preferred-frame bounds apply.
+\item \emph{The scalar.} We read the information field as the scalar that sets $\alpha$. If it is meant to set more (the masses, $G$), the
+equivalence-principle bound tightens and $\gamma=1$ may fail.
+\item \emph{Experiment.} A positive Bose--Marletto--Vedral test refutes the classical existence field (Section~\ref{sec:graviton});
+a measured positive drift of $\alpha$ refutes ``slightly lower still''; a violation of the equivalence principle at the level
+$2\lambda^2f\,\Delta f$ would show the information field pulling.
+\item \emph{The checks.} \chk{E3} uses the semi-empirical Coulomb term and a coarse composition of the Earth, and \chk{E7} named inputs
+for Dyson's count; better inputs change the numbers at the tens-of-per-cent level, not the conclusions. \chk{E9} is one loop.
+\item \emph{The record.} Proposition~\ref{pr:classical} rests on Axiom~3's record being held in full by every witness. A reading in which
+a witness holds only part of it, or a copy that is not physical, removes the classical conclusion and Proposition~\ref{pr:host} with it.
+\end{enumerate}
+
+\section{Conclusion}
+
+The first author has always meant one existence field and one information field, and this paper states it first: a vector frame
+spanning all of spacetime, and a scalar. Read through DMP's axioms, the frame falls universally on everything that exists, the scalar
+stays out of gravity's equation, and the frame is classical. That is general relativity with a Bekenstein-type field for the fine-structure
+constant, on the classical side of the one experiment, gravitationally mediated entanglement, that can decide it. His Existence of a
+boundary is its Unruh temperature, up to $4\pi^2$, and with DMP's floor it gives the two inputs of Jacobson's derivation of Einstein's
+equations; spinning holes are more efficient, and a boundary of which more is known contains less, exactly as Christodoulou's irreducible
+mass says. The graviton is undetectable for the reasons Dyson gave, and the first author's choice of a classical field is a fair choice,
+but it is not free: it is a prediction. And DMP itself cannot model quantum gravity, and can host it (Proposition~\ref{pr:host}). The first author put
+the stance in one line on 29 October, which we keep: ``Axiomatically, since we already don't have all the information that was contained
+at the start, we can only know existence and can know no more about our reality. So axiomatically, we can infer all that we can and no
+more.''
+
+\section*{Contributions and use of AI}
+Steven Hrovat conceived DMP and the structure of Section~\ref{sec:core}, wrote every note and hypothesis quoted here in his own words, set
+the question of this paper and takes responsibility for the axiom system. Sirius (Claude Opus 5.5, Anthropic) ordered the notes, made the
+derivations of Section~\ref{sec:derive}, checked each hypothesis against the literature, wrote and ran \texttt{docs/existence/checks.py},
+and wrote this text. Every reference was checked against a publisher, arXiv, collaboration or repository record on 29 October 2026; the
+record is \texttt{docs/existence/README.md}.
+
+\section*{Licence and availability}
+This paper and its source are released under the Apache License, Version 2.0. DMP: \url{https://github.com/StevenHrovat/dmp} (version 0.9.9
+at commit \texttt{4400cce}; the notes are the comments on its pull request \#25). Gravity: \url{https://github.com/StevenHrovat/gravity}
+(this paper and its checks in \texttt{docs/existence/}).
+
+\begin{thebibliography}{99}\small
+\bibitem{dmp} S. Hrovat, \emph{The Dark Matter Protocol}, version 0.9.9, \url{https://github.com/StevenHrovat/dmp}, commit
+\texttt{4400cce} (2026).
+\bibitem{aldrovandi} R. Aldrovandi, J.~G. Pereira, \emph{Teleparallel Gravity: An Introduction} (Springer, Dordrecht, 2013).
+\bibitem{bekenstein82} J.~D. Bekenstein, ``Fine-structure constant: Is it really a constant?'', \emph{Phys. Rev. D} 25, 1527 (1982).
+\bibitem{bsbm} H.~B. Sandvik, J.~D. Barrow, J. Magueijo, ``A simple cosmology with a varying fine structure constant'', \emph{Phys. Rev.
+Lett.} 88, 031302 (2002).
+\bibitem{microscope} P. Touboul et al. (MICROSCOPE Collaboration), ``MICROSCOPE mission: final results of the test of the equivalence
+principle'', \emph{Phys. Rev. Lett.} 129, 121102 (2022).
+\bibitem{dz} G. Dvali, M. Zaldarriaga, ``Changing $\alpha$ with time: implications for fifth-force-type experiments and quintessence'',
+\emph{Phys. Rev. Lett.} 88, 091303 (2002).
+\bibitem{lange} R. Lange et al., ``Improved limits for violations of local position invariance from atomic clock comparisons'',
+\emph{Phys. Rev. Lett.} 126, 011102 (2021).
+\bibitem{will} C.~M. Will, ``The confrontation between general relativity and experiment'', \emph{Living Rev. Relativ.} 17, 4 (2014).
+\bibitem{bd} C. Brans, R.~H. Dicke, ``Mach's principle and a relativistic theory of gravitation'', \emph{Phys. Rev.} 124, 925 (1961).
+\bibitem{cassini} B. Bertotti, L. Iess, P. Tortora, ``A test of general relativity using radio links with the Cassini spacecraft'',
+\emph{Nature} 425, 374 (2003).
+\bibitem{aether} T. Jacobson, D. Mattingly, ``Gravity with a dynamical preferred frame'', \emph{Phys. Rev. D} 64, 024028 (2001).
+\bibitem{teves} J.~D. Bekenstein, ``Relativistic gravitation theory for the modified Newtonian dynamics paradigm'', \emph{Phys. Rev. D}
+70, 083509 (2004).
+\bibitem{gw170817} B.~P. Abbott et al. (LIGO, Virgo, Fermi GBM, INTEGRAL), ``Gravitational waves and gamma-rays from a binary neutron
+star merger: GW170817 and GRB 170817A'', \emph{Astrophys. J. Lett.} 848, L13 (2017).
+\bibitem{barnum} H. Barnum, C.~M. Caves, C.~A. Fuchs, R. Jozsa, B. Schumacher, ``Noncommuting mixed states cannot be broadcast'',
+\emph{Phys. Rev. Lett.} 76, 2818 (1996).
+\bibitem{wz} W.~K. Wootters, W.~H. Zurek, ``A single quantum cannot be cloned'', \emph{Nature} 299, 802 (1982).
+\bibitem{pagegeilker} D.~N. Page, C.~D. Geilker, ``Indirect evidence for quantum gravity'', \emph{Phys. Rev. Lett.} 47, 979 (1981).
+\bibitem{oppenheim} J. Oppenheim, ``A postquantum theory of classical gravity?'', \emph{Phys. Rev. X} 13, 041040 (2023).
+\bibitem{osswd} J. Oppenheim, C. Sparaciari, B. \v{S}oda, Z. Weller-Davies, ``Gravitationally induced decoherence vs space-time diffusion:
+testing the quantum nature of gravity'', \emph{Nat. Commun.} 14, 7910 (2023).
+\bibitem{djt} S. Deser, R. Jackiw, G. 't~Hooft, ``Three-dimensional Einstein gravity: dynamics of flat space'', \emph{Ann. Phys.} 152, 220
+(1984).
+\bibitem{nr} J.~E. Nelson, T. Regge, ``Homotopy groups and (2+1)-dimensional quantum gravity'', \emph{Nucl. Phys. B} 328, 190 (1989).
+\bibitem{unruh} W.~G. Unruh, ``Notes on black-hole evaporation'', \emph{Phys. Rev. D} 14, 870 (1976).
+\bibitem{hawking} S.~W. Hawking, ``Particle creation by black holes'', \emph{Commun. Math. Phys.} 43, 199 (1975).
+\bibitem{jacobson} T. Jacobson, ``Thermodynamics of spacetime: the Einstein equation of state'', \emph{Phys. Rev. Lett.} 75, 1260 (1995).
+\bibitem{pr60} R.~V. Pound, G.~A. Rebka, Jr., ``Apparent weight of photons'', \emph{Phys. Rev. Lett.} 4, 337 (1960).
+\bibitem{chou} C.~W. Chou, D.~B. Hume, T. Rosenband, D.~J. Wineland, ``Optical clocks and relativity'', \emph{Science} 329, 1630 (2010).
+\bibitem{dyson} F. Dyson, ``Is a graviton detectable?'', \emph{Int. J. Mod. Phys. A} 28, 1330041 (2013) (Poincar\'e Prize Lecture,
+2012).
+\bibitem{gould} R.~J. Gould, ``The graviton luminosity of the Sun and other stars'', \emph{Astrophys. J.} 288, 789 (1985).
+\bibitem{rb} T. Rothman, S. Boughn, ``Can gravitons be detected?'', \emph{Found. Phys.} 36, 1801 (2006).
+\bibitem{tobar} G. Tobar, S.~K. Manikandan, T. Beitel, I. Pikovski, ``Detecting single gravitons with quantum sensing'', \emph{Nat.
+Commun.} 15, 7229 (2024).
+\bibitem{tobar2} G. Tobar, I. Pikovski, M.~E. Tobar, ``Detecting kHz gravitons from a neutron star merger with a multi-mode resonant
+bar'', arXiv:2406.16898 (2024).
+\bibitem{cdr} D. Carney, V. Domcke, N.~L. Rodd, ``Graviton detection and the quantization of gravity'', \emph{Phys. Rev. D} 109, 044009
+(2024).
+\bibitem{carney2} D. Carney, ``Comments on graviton detection'', arXiv:2408.00094 (2024).
+\bibitem{mead} C.~A. Mead, ``Possible connection between gravitation and fundamental length'', \emph{Phys. Rev.} 135, B849 (1964).
+\bibitem{wheeler} J.~A. Wheeler, ``Geons'', \emph{Phys. Rev.} 97, 511 (1955).
+\bibitem{nobh} \'A. \'Alvarez-Dom\'{\i}nguez, L.~J. Garay, E. Mart\'{\i}n-Mart\'{\i}nez, J. Polo-G\'omez, ``No black holes from
+light'', \emph{Phys. Rev. Lett.} 133, 041401 (2024).
+\bibitem{pagecomment} D.~N. Page, comment on ``No black holes from light'', arXiv:2505.16202 (2025).
+\bibitem{ggs} T.~D. Galley, F. Giacomini, J.~H. Selby, ``A no-go theorem on the nature of the gravitational field beyond quantum
+theory'', \emph{Quantum} 6, 779 (2022).
+\bibitem{bose} S. Bose et al., ``Spin entanglement witness for quantum gravity'', \emph{Phys. Rev. Lett.} 119, 240401 (2017).
+\bibitem{mv} C. Marletto, V. Vedral, ``Gravitationally induced entanglement between two massive particles is sufficient evidence of
+quantum effects in gravity'', \emph{Phys. Rev. Lett.} 119, 240402 (2017).
+\bibitem{azizhowl} J. Aziz, R. Howl, ``Classical theories of gravity produce entanglement'', \emph{Nature} 646, 813 (2025).
+\bibitem{movw} C. Marletto, J. Oppenheim, V. Vedral, E. Wilson, ``Classical gravity cannot mediate entanglement'', arXiv:2511.07348
+(2025).
+\bibitem{kerr} R.~P. Kerr, ``Gravitational field of a spinning mass as an example of algebraically special metrics'', \emph{Phys. Rev.
+Lett.} 11, 237 (1963).
+\bibitem{chsh} J.~F. Clauser, M.~A. Horne, A. Shimony, R.~A. Holt, ``Proposed experiment to test local hidden-variable theories'',
+\emph{Phys. Rev. Lett.} 23, 880 (1969).
+\bibitem{fine} A. Fine, ``Hidden variables, joint probability, and the Bell inequalities'', \emph{Phys. Rev. Lett.} 48, 291 (1982).
+\bibitem{cirelson} B.~S. Cirel'son, ``Quantum generalizations of Bell's inequality'', \emph{Lett. Math. Phys.} 4, 93 (1980).
+\bibitem{hall} M.~J.~W. Hall, ``Local deterministic model of singlet state correlations based on relaxing measurement independence'',
+\emph{Phys. Rev. Lett.} 105, 250404 (2010).
+\bibitem{hensen} B. Hensen et al., ``Loophole-free Bell inequality violation using electron spins separated by 1.3 kilometres'',
+\emph{Nature} 526, 682 (2015).
+\bibitem{rosenfeld} W. Rosenfeld et al., ``Event-ready Bell test using entangled atoms simultaneously closing detection and locality
+loopholes'', \emph{Phys. Rev. Lett.} 119, 010402 (2017).
+\bibitem{storz} S. Storz et al., ``Loophole-free Bell inequality violation with superconducting circuits'', \emph{Nature} 617, 265 (2023).
+\bibitem{bpt} J.~M. Bardeen, W.~H. Press, S.~A. Teukolsky, ``Rotating black holes: locally nonrotating frames, energy extraction, and
+scalar synchrotron radiation'', \emph{Astrophys. J.} 178, 347 (1972).
+\bibitem{israel} W. Israel, ``Event horizons in static vacuum space-times'', \emph{Phys. Rev.} 164, 1776 (1967).
+\bibitem{christodoulou} D. Christodoulou, ``Reversible and irreversible transformations in black-hole physics'', \emph{Phys. Rev. Lett.}
+25, 1596 (1970).
+\bibitem{cr} D. Christodoulou, R. Ruffini, ``Reversible transformations of a charged black hole'', \emph{Phys. Rev. D} 4, 3552 (1971).
+\bibitem{landauer} R. Landauer, ``Irreversibility and heat generation in the computing process'', \emph{IBM J. Res. Dev.} 5, 183 (1961).
+\bibitem{bekenstein73} J.~D. Bekenstein, ``Black holes and entropy'', \emph{Phys. Rev. D} 7, 2333 (1973).
+\bibitem{page} D.~N. Page, ``Information in black hole radiation'', \emph{Phys. Rev. Lett.} 71, 3743 (1993).
+\bibitem{atlas22} ATLAS Collaboration, ``A detailed map of Higgs boson interactions by the ATLAS experiment ten years after the
+discovery'', \emph{Nature} 607, 52 (2022).
+\bibitem{cms22} CMS Collaboration, ``A portrait of the Higgs boson by the CMS experiment ten years after the discovery'', \emph{Nature}
+607, 60 (2022).
+\bibitem{yang} Y.-B. Yang, J. Liang, Y.-J. Bi, Y. Chen, T. Draper, K.-F. Liu, Z. Liu, ``Proton mass decomposition from the QCD energy
+momentum tensor'', \emph{Phys. Rev. Lett.} 121, 212001 (2018).
+\bibitem{be} F. Englert, R. Brout, ``Broken symmetry and the mass of gauge vector mesons'', \emph{Phys. Rev. Lett.} 13, 321 (1964).
+\bibitem{higgs} P.~W. Higgs, ``Broken symmetries and the masses of gauge bosons'', \emph{Phys. Rev. Lett.} 13, 508 (1964).
+\bibitem{vonneumann} J. von Neumann, ``Probabilistic logics and the synthesis of reliable organisms from unreliable components'', in
+\emph{Automata Studies}, ed. C.~E. Shannon, J. McCarthy (Princeton University Press, 1956), 43.
+\bibitem{tcc} LHCb Collaboration, ``Observation of an exotic narrow doubly charmed tetraquark'', \emph{Nat. Phys.} 18, 751 (2022).
+\bibitem{lhcbpc} LHCb Collaboration, ``Observation of $J/\psi p$ resonances consistent with pentaquark states in $\Lambda_b^0\to J/\psi
+K^-p$ decays'', \emph{Phys. Rev. Lett.} 115, 072001 (2015).
+\bibitem{borexino} M. Agostini et al. (Borexino Collaboration), ``Test of electric charge conservation with Borexino'', \emph{Phys. Rev.
+Lett.} 115, 231802 (2015).
+\bibitem{pdg} S. Navas et al. (Particle Data Group), ``Review of particle physics'', \emph{Phys. Rev. D} 110, 030001 (2024).
+\bibitem{orepowell} A. Ore, J.~L. Powell, ``Three-photon annihilation of an electron-positron pair'', \emph{Phys. Rev.} 75, 1696 (1949).
+\bibitem{weinberg64} S. Weinberg, ``Photons and gravitons in S-matrix theory: derivation of charge conservation and equality of
+gravitational and inertial mass'', \emph{Phys. Rev.} 135, B1049 (1964).
+\bibitem{deser70} S. Deser, ``Self-interaction and gauge invariance'', \emph{Gen. Relativ. Gravit.} 1, 9 (1970).
+\bibitem{pm63} P.~C. Peters, J. Mathews, ``Gravitational radiation from point masses in a Keplerian orbit'', \emph{Phys. Rev.} 131, 435
+(1963).
+\bibitem{wh16} J.~M. Weisberg, Y. Huang, ``Relativistic measurements from timing the binary pulsar PSR B1913+16'', \emph{Astrophys. J.}
+829, 55 (2016).
+\bibitem{gw150914} B.~P. Abbott et al. (LIGO Scientific and Virgo Collaborations), ``Observation of gravitational waves from a binary
+black hole merger'', \emph{Phys. Rev. Lett.} 116, 061102 (2016).
+\bibitem{desi} DESI Collaboration, ``DESI 2024 VI: cosmological constraints from the measurements of baryon acoustic oscillations'',
+\emph{JCAP} 02 (2025) 021.
+\bibitem{weinberg} S. Weinberg, ``A model of leptons'', \emph{Phys. Rev. Lett.} 19, 1264 (1967).
+\bibitem{pathria} R.~K. Pathria, ``The universe as a black hole'', \emph{Nature} 240, 298 (1972).
+\bibitem{kls} L. Kofman, A. Linde, A.~A. Starobinsky, ``Reheating after inflation'', \emph{Phys. Rev. Lett.} 73, 3195 (1994).
+\bibitem{oscillons} M.~A. Amin, R. Easther, H. Finkel, R. Flauger, M.~P. Hertzberg, ``Oscillons after inflation'', \emph{Phys. Rev.
+Lett.} 108, 241302 (2012).
+\bibitem{planckxxiv} Planck Collaboration, ``Planck intermediate results. XXIV. Constraints on variations in fundamental constants'',
+\emph{Astron. Astrophys.} 580, A22 (2015).
+\bibitem{espresso} M.~T. Murphy et al., ``Fundamental physics with ESPRESSO: precise limit on variations in the fine-structure constant
+towards the bright quasar HE 0515$-$4414'', \emph{Astron. Astrophys.} 658, A123 (2022).
+\bibitem{bbn} I.~M. Dreyer, C.~J.~A.~P. Martins, ``Probing unification scenarios with big bang nucleosynthesis'', \emph{Phys. Rev. D} 113
+(2026), arXiv:2604.04870.
+\bibitem{shor} P.~W. Shor, ``Polynomial-time algorithms for prime factorization and discrete logarithms on a quantum computer'',
+\emph{SIAM J. Comput.} 26, 1484 (1997).
+\bibitem{grover} L.~K. Grover, ``Quantum mechanics helps in searching for a needle in a haystack'', \emph{Phys. Rev. Lett.} 79, 325
+(1997).
+\bibitem{fips205} National Institute of Standards and Technology, \emph{Stateless Hash-Based Digital Signature Standard}, FIPS 205
+(2024).
+\end{thebibliography}
+
+\end{document}

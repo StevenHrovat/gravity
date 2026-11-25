@@ -1,0 +1,13 @@
+name: trust-roundtrip
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  roundtrip:
+    # Every hash the repository trusts, proven back and forth (tools/trust-roundtrip.sh). The laptop runners; a fork's pull request
+    # stays on GitHub's own machines, so outside code never runs on the laptop.
+    runs-on: ${{ fromJSON(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && '"ubuntu-latest"' || '["self-hosted","linux","wsl"]') }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - run: bash tools/trust-roundtrip.sh

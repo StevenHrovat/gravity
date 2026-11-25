@@ -1,0 +1,2484 @@
+{
+ "script": "docs/simulation/predictions_vs_data.py",
+ "verified_on": "2026-10-31",
+ "criterion": "scored and conditional rows: OK = consistent at 95% (|pull| < 1.96 or inside the stated allowed region, 90% regions labelled); consistency rows (prediction set from the datum) are CONS and not counted; info rows are not scored",
+ "summary": {
+  "rows": 74,
+  "scored": 31,
+  "passed": 28,
+  "failed": [
+   "D3.3",
+   "D3.4",
+   "D3.7"
+  ],
+  "guid_specific_scored": [
+   "D1.1",
+   "D1.2",
+   "D1.3",
+   "D1.5",
+   "D1.6",
+   "D1.7",
+   "D1.8",
+   "D1.9",
+   "D6.1",
+   "D6.2",
+   "D6.3",
+   "D6.4",
+   "D6.8"
+  ],
+  "shared_scored": 18,
+  "conditional": [
+   "D4.3",
+   "D4.4"
+  ],
+  "conditional_ok": [
+   "D4.4"
+  ],
+  "conditional_fail": [
+   "D4.3"
+  ],
+  "consistency": [
+   "D5.5",
+   "D6.5",
+   "D6.6",
+   "D6.7",
+   "D7.1",
+   "D8.1",
+   "D8.2",
+   "D8.5",
+   "D8.6",
+   "D9.3",
+   "D9.4",
+   "D9.5"
+  ],
+  "info": [
+   "D1.4",
+   "D1.10",
+   "D1.11",
+   "D1.12",
+   "D2.2",
+   "D2.4",
+   "D2.13",
+   "D3.1",
+   "D3.1a",
+   "D3.1b",
+   "D3.1c",
+   "D3.1d",
+   "D3.2",
+   "D3.6",
+   "D4.1",
+   "D4.2",
+   "D4.5",
+   "D4.6",
+   "D5.1",
+   "D5.3",
+   "D5.8",
+   "D6.9",
+   "D7.2",
+   "D7.3",
+   "D8.3",
+   "D8.4",
+   "D9.1",
+   "D9.2",
+   "D9.6"
+  ],
+  "guid_specific_sensitive": [],
+  "guid_specific_not_yet_sensitive": [
+   "D1.1",
+   "D1.2",
+   "D1.3",
+   "D1.5",
+   "D1.6",
+   "D1.7",
+   "D1.8",
+   "D1.9",
+   "D6.1",
+   "D6.2",
+   "D6.3",
+   "D6.4",
+   "D6.8"
+  ],
+  "sensitivity_rule": "a GUID-specific scored row is not yet sensitive when GUID's departure from GR, LambdaCDM, the SM or QM is smaller than the datum's reach by a factor 10 or more, or scales with a free parameter",
+  "expected_chance_fails_if_independent": 1.55,
+  "correlation_note": "D3.3 and D3.7 both use DESI DR2 BAO with the CMB, D3.4 rests on the CMB fit of LambdaCDM, and the conditional D4.3 uses the CMB with DESI DR1 BAO: the FAILs are correlated, and the chance expectation assumes an independence that does not hold",
+  "method_checks": 6,
+  "method_passed": 6
+ },
+ "rows": [
+  {
+   "id": "D1.1",
+   "section": "D1",
+   "observable": "Universality of free fall, Ti/Pt (MICROSCOPE): eta = 2 lambda^2 f_E (f_Ti - f_Pt)",
+   "guid": "0 for the frame; scalar term -6.94e-06 lambda^2 (<= 0)",
+   "data": "(-1.5 +- 2.3 stat +- 1.5 syst) e-15, combined 2.75e-15",
+   "refs": [
+    "microscope"
+   ],
+   "measure": "pull = -0.55 sigma",
+   "pull": -0.546268,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific parameter (lambda); WEP shared with GR",
+   "note": "95% CL profile-likelihood bound |lambda| < 3.1e-05 (version 5.1 quoted 2e-5, the 1-sigma-level |eta| < 2.7e-15); GUID fixes the sign, eta <= 0, so the test can fail",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": null,
+   "sensitivity_reason": "the departure scales with lambda^2, and lambda is free and may be zero: the datum bounds lambda, it does not test a predicted size"
+  },
+  {
+   "id": "D1.2",
+   "section": "D1",
+   "observable": "Universality of free fall, Be/Ti torsion balance (Eot-Wash 2008)",
+   "guid": "0 for the frame; scalar term -5.23e-06 lambda^2",
+   "data": "(0.3 +- 1.8) e-13",
+   "refs": [
+    "eotwash"
+   ],
+   "measure": "pull = +0.17 sigma",
+   "pull": 0.166667,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific parameter (lambda); WEP shared with GR",
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": null,
+   "sensitivity_reason": "the departure scales with lambda^2, and lambda is free and may be zero: the datum bounds lambda, it does not test a predicted size"
+  },
+  {
+   "id": "D1.3",
+   "section": "D1",
+   "observable": "Present drift of alpha, optical clocks (Yb+ E3/E2, PTB 2023)",
+   "guid": "Model A: -9.7e-12 lambda^2 f_b /yr, i.e. between -1e-23 and 0 (<= 0); Model B: free sign",
+   "data": "(1.8 +- 2.5) e-19 /yr",
+   "refs": [
+    "filzinger"
+   ],
+   "measure": "pull = +0.72 sigma",
+   "pull": 0.720038,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific (forward statement: drift zero or negative)",
+   "note": "no sign is measured: P(drift < 0 | clocks) = 0.24",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 26037.2,
+   "sensitivity_reason": "Model A's drift at the largest allowed coupling lies this factor below the clocks' error; Model B's drift is free in size and sign"
+  },
+  {
+   "id": "D1.4",
+   "section": "D1",
+   "observable": "Present drift of alpha, optical clocks (PTB 2021; superseded by D1.3, which includes its data)",
+   "guid": "as D1.3",
+   "data": "(1.0 +- 1.1) e-18 /yr",
+   "refs": [
+    "lange"
+   ],
+   "measure": "pull = +0.91 sigma",
+   "pull": 0.9091,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "GUID-specific",
+   "note": "version 5.1's predictions table quoted this value; the newer value of D1.3 is 4.4 times tighter",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D1.5",
+   "section": "D1",
+   "observable": "Oklo natural reactor, 1.8 Gyr ago",
+   "guid": "Model A: < 1e-15; Model B: -(drift/H0) G(z_Oklo)",
+   "data": "allowed [-1.10e-08, 1.10e-08] (95% CL)",
+   "refs": [
+    "oklo_dh",
+    "oklo_dd"
+   ],
+   "measure": "GUID value inside the allowed region (95% CL)",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific",
+   "note": "z_Oklo = 0.137 (1.8 Gyr in Planck 2018 LambdaCDM)",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 562047.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor inside the bound; Model B is free"
+  },
+  {
+   "id": "D1.6",
+   "section": "D1",
+   "observable": "Delta alpha/alpha: Quasar absorption, ESPRESSO, z = 1.15",
+   "guid": "Model A: 1.63e-13 (at the largest allowed lambda)",
+   "data": "1.30e-06 +- 1.36e-06 (1 sigma)",
+   "refs": [
+    "espresso"
+   ],
+   "measure": "pull = +0.96 sigma",
+   "pull": 0.955779,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific",
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 8341760.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
+  },
+  {
+   "id": "D1.7",
+   "section": "D1",
+   "observable": "Delta alpha/alpha: Quasar absorption, four systems at z = 5.5 to 7.1",
+   "guid": "Model A: 5.28e-13 (at the largest allowed lambda)",
+   "data": "-2.18e-05 +- 7.27e-05 (1 sigma)",
+   "refs": [
+    "wilczynska"
+   ],
+   "measure": "pull = -0.30 sigma",
+   "pull": -0.299862,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific",
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 137564000.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
+  },
+  {
+   "id": "D1.8",
+   "section": "D1",
+   "observable": "Delta alpha/alpha: CMB (Planck 2015), alpha at recombination",
+   "guid": "Model A: 2.08e-12 (at the largest allowed lambda)",
+   "data": "-7.00e-04 +- 0.0025 (1 sigma)",
+   "refs": [
+    "hartchluba"
+   ],
+   "measure": "pull = -0.28 sigma",
+   "pull": -0.28,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific",
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 1200290000.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
+  },
+  {
+   "id": "D1.9",
+   "section": "D1",
+   "observable": "Delta alpha/alpha: BBN (alpha alone varying; 2001 abundances)",
+   "guid": "Model A: 3.27e-12 (at the largest allowed lambda)",
+   "data": "-0.007 +- 0.005 (1 sigma)",
+   "refs": [
+    "avelino"
+   ],
+   "measure": "pull = -1.40 sigma",
+   "pull": -1.4,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific",
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 1527110000.0,
+   "sensitivity_reason": "Model A's shift at the largest allowed coupling lies this factor below the datum's error; Model B is free"
+  },
+  {
+   "id": "D1.10",
+   "section": "D1",
+   "observable": "Planck intermediate XXIV, alpha at recombination (same data family as D1.8)",
+   "guid": "~0",
+   "data": "0.0036 +- 0.0037  (1 sigma)",
+   "refs": [
+    "planck_xxiv"
+   ],
+   "measure": "pull = +0.97 sigma",
+   "pull": 0.972973,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "GUID-specific",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D1.11",
+   "section": "D1",
+   "observable": "BBN in GUT-type models where all couplings vary with alpha",
+   "guid": "not applicable: GUID's scalar multiplies only the Maxwell term",
+   "data": "|Delta alpha/alpha| < 50 ppm (2 sigma, no priors)",
+   "refs": [
+    "martins21"
+   ],
+   "measure": "model assumption differs; listed for completeness",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "-",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D1.12",
+   "section": "D1",
+   "observable": "Joint fit, Model B (thawing): present drift from clocks, Oklo, quasars, CMB and BBN together",
+   "guid": "zero or negative (forward statement)",
+   "data": "(1.79e-19 +- 2.49e-19) /yr",
+   "refs": [
+    "filzinger",
+    "oklo_dh",
+    "espresso",
+    "wilczynska",
+    "hartchluba",
+    "avelino"
+   ],
+   "measure": "pull = +0.72 sigma",
+   "pull": 0.716812,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "derived from D1.3 and the cosmological alpha data and dominated by D1.3 (both +0.72 sigma)",
+   "scored": false,
+   "cls": "GUID-specific",
+   "note": "P(drift < 0) = 0.24; the data do not determine the sign (a negative drift is disfavoured by 0.72 sigma)",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.1",
+   "section": "D2",
+   "observable": "Light bending / Shapiro delay, gamma - 1 (Cassini)",
+   "guid": "0 exactly",
+   "data": "2.10e-05 +- 2.30e-05  (1 sigma)",
+   "refs": [
+    "cassini"
+   ],
+   "measure": "pull = +0.91 sigma",
+   "pull": 0.913043,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.2",
+   "section": "D2",
+   "observable": "gamma - 1, planetary ephemerides (combined intervals)",
+   "guid": "0 exactly",
+   "data": "5.50e-06 +- 1.35e-05  (1 sigma)",
+   "refs": [
+    "fienga"
+   ],
+   "measure": "pull = +0.41 sigma",
+   "pull": 0.407407,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "overlaps D2.1: Cassini tracking data enter the planetary ephemerides",
+   "scored": false,
+   "cls": "shared with GR",
+   "note": "Cassini tracking data enter the ephemerides",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.3",
+   "section": "D2",
+   "observable": "beta - 1, planetary ephemerides (combined intervals)",
+   "guid": "0 exactly",
+   "data": "-4.50e-06 +- 1.75e-05  (1 sigma)",
+   "refs": [
+    "fienga"
+   ],
+   "measure": "pull = -0.26 sigma",
+   "pull": -0.257143,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.4",
+   "section": "D2",
+   "observable": "beta - 1, Mercury from MESSENGER (gamma fixed to Cassini)",
+   "guid": "0 exactly",
+   "data": "-1.60e-05 +- 1.80e-05  (1 sigma)",
+   "refs": [
+    "genova",
+    "fienga"
+   ],
+   "measure": "pull = -0.89 sigma",
+   "pull": -0.888889,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "included in the ephemeris combination D2.3 (Fienga and Minazzoli, Table 5)",
+   "scored": false,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.5",
+   "section": "D2",
+   "observable": "Nordtvedt parameter eta, MESSENGER",
+   "guid": "0 exactly",
+   "data": "-6.60e-05 +- 7.20e-05  (1 sigma)",
+   "refs": [
+    "genova"
+   ],
+   "measure": "pull = -0.92 sigma",
+   "pull": -0.916667,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.6",
+   "section": "D2",
+   "observable": "beta - 1, lunar laser ranging",
+   "guid": "0 exactly",
+   "data": "6.20e-05 +- 7.20e-05  (1 sigma)",
+   "refs": [
+    "biskupek"
+   ],
+   "measure": "pull = +0.86 sigma",
+   "pull": 0.861111,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.7",
+   "section": "D2",
+   "observable": "gamma - 1, lunar laser ranging",
+   "guid": "0 exactly",
+   "data": "1.70e-04 +- 1.60e-04  (1 sigma)",
+   "refs": [
+    "biskupek"
+   ],
+   "measure": "pull = +1.06 sigma",
+   "pull": 1.0625,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.8",
+   "section": "D2",
+   "observable": "Earth-Moon free fall towards the Sun, Delta(m_g/m_i) (WEP + SEP), lunar laser ranging",
+   "guid": "0 (scalar term 2 lambda^2 f_Sun (f_E - f_Moon) < 1e-17)",
+   "data": "-2.10e-14 +- 2.40e-14  (1 sigma)",
+   "refs": [
+    "biskupek"
+   ],
+   "measure": "pull = -0.88 sigma",
+   "pull": -0.875,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.9",
+   "section": "D2",
+   "observable": "Strong-field SEP, pulsar in a triple system (Delta)",
+   "guid": "0 exactly",
+   "data": "(0.5 +- 1.8) e-6 at 95% (0.92e-6 at 1 sigma)",
+   "refs": [
+    "voisin"
+   ],
+   "measure": "pull = +0.54 sigma",
+   "pull": 0.544434,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.10",
+   "section": "D2",
+   "observable": "Gravitational redshift (local position invariance), Galileo satellites",
+   "guid": "0 (the lapse of GR, Section 6.2)",
+   "data": "1.90e-06 +- 2.48e-05  (1 sigma)",
+   "refs": [
+    "delva"
+   ],
+   "measure": "pull = +0.08 sigma",
+   "pull": 0.0766129,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.11",
+   "section": "D2",
+   "observable": "Speed of gravitational waves, (c_gw - c)/c (GW170817 + GRB 170817A)",
+   "guid": "0 (classical waves of the frame at c)",
+   "data": "allowed [-3.00e-15, 7.00e-16] (interval stated by the collaborations, conservative, no CL)",
+   "refs": [
+    "gw170817"
+   ],
+   "measure": "GUID value inside the allowed region (interval stated by the collaborations, conservative, no CL)",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.12",
+   "section": "D2",
+   "observable": "Graviton mass",
+   "guid": "0 (massless spin-2 wave of the frame)",
+   "data": "allowed [0, 2.42e-23] eV/c^2 (90% credible)",
+   "refs": [
+    "gwtc3tgr"
+   ],
+   "measure": "GUID value inside the allowed region (90% credible)",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D2.13",
+   "section": "D2",
+   "observable": "Gravitational-wave polarizations",
+   "guid": "two tensor polarizations (D(D-3)/2 = 2 in 3+1)",
+   "data": "no evidence for non-GR polarization modes",
+   "refs": [
+    "gwtc3tgr"
+   ],
+   "measure": "qualitative",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.1",
+   "section": "D3",
+   "observable": "Transition redshift to acceleration, z_t = (2 Omega_L/Omega_m)^(1/3) - 1",
+   "guid": "0.632 +- 0.018 (Planck 2018 Omega_m)",
+   "data": "inconclusive: 0.40 +- 0.10 (chronometers), 0.72 +- 0.05 or 0.84 +- 0.03 (H(z), H0 prior 68 or 73.24), 0.88 +- 0.11 (SNe + H(z))",
+   "refs": [
+    "moresco",
+    "jesus",
+    "farooq",
+    "planck18"
+   ],
+   "measure": "inconclusive: individual pulls in rows D3.1a to D3.1d",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "inconclusive: the published determinations disagree with each other and depend on the H0 prior and the parametrisation",
+   "scored": false,
+   "cls": "shared with LambdaCDM",
+   "note": "pulls against GUID: cosmic chronometers (Moresco 2016) -2.3 sigma, SNe Ia + H(z), 3 parametrizations (Jesus 2018) +2.2 sigma, H(z) data, H0 prior 68 +- 2.8 (Farooq 2017) +1.7 sigma, H(z) data, H0 prior 73.24 +- 1.74 (Farooq 2017) +6.0 sigma. The determinations disagree with each other (chronometers against SNe + H(z) at 3.2 sigma) and depend on the H0 prior and the parametrisation; a post-hoc scaled mean of two of them (0.62 +- 0.24, S = 3.25) is reported here and not scored. Dahiya & Jain 2023: best fits 0.61-0.82.",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.1a",
+   "section": "D3",
+   "observable": "Transition redshift, cosmic chronometers (Moresco 2016)",
+   "guid": "0.632",
+   "data": "0.4 +- 0.1  (1 sigma)",
+   "refs": [
+    "moresco"
+   ],
+   "measure": "pull = -2.29 sigma",
+   "pull": -2.28776,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with LambdaCDM",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.1b",
+   "section": "D3",
+   "observable": "Transition redshift, SNe Ia + H(z), 3 parametrizations (Jesus 2018)",
+   "guid": "0.632",
+   "data": "0.883 +- 0.11  (1 sigma)",
+   "refs": [
+    "jesus"
+   ],
+   "measure": "pull = +2.25 sigma",
+   "pull": 2.24943,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with LambdaCDM",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.1c",
+   "section": "D3",
+   "observable": "Transition redshift, H(z) data, H0 prior 68 +- 2.8 (Farooq 2017)",
+   "guid": "0.632",
+   "data": "0.72 +- 0.05  (1 sigma)",
+   "refs": [
+    "farooq"
+   ],
+   "measure": "pull = +1.65 sigma",
+   "pull": 1.65372,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with LambdaCDM",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.1d",
+   "section": "D3",
+   "observable": "Transition redshift, H(z) data, H0 prior 73.24 +- 1.74 (Farooq 2017)",
+   "guid": "0.632",
+   "data": "0.84 +- 0.03  (1 sigma)",
+   "refs": [
+    "farooq"
+   ],
+   "measure": "pull = +5.97 sigma",
+   "pull": 5.96672,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with LambdaCDM",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.2",
+   "section": "D3",
+   "observable": "de Sitter floor of the Hubble rate, H_inf = sqrt(Omega_L) H0",
+   "guid": "55.79 +- 0.60 km/s/Mpc (Planck 2018); r_dS = c/H_inf = 1.658e+26 m",
+   "data": "DESI DR2 + CMB LambdaCDM: 56.93 +- 0.28 km/s/Mpc",
+   "refs": [
+    "planck18",
+    "desi2"
+   ],
+   "measure": "derived, not measured: H_inf exists only if w = -1",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with LambdaCDM",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.3",
+   "section": "D3",
+   "observable": "de Sitter floor (w = -1 for all time) against DESI DR2's evolving dark energy (w0, wa)",
+   "guid": "w0 = -1, wa = 0 (the balanced state as a cosmological constant)",
+   "data": "LambdaCDM disfavoured at 2.8 to 4.2 sigma (DESI DR2 + CMB + SNe), 3.1 sigma without SNe, 3.2 sigma with recalibrated DES SNe",
+   "refs": [
+    "desi2",
+    "dovekie"
+   ],
+   "measure": "significance quoted by the collaborations (Delta chi^2 of w0waCDM against LambdaCDM, 2 parameters, as Gaussian-equivalent sigma); scored on the least significant combination, 2.8 sigma",
+   "pull": 2.8,
+   "verdict": "FAIL",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with LambdaCDM",
+   "note": "tension, not discovery: below 5 sigma in every combination and dependent on the supernova sample; the DES recalibration lowered 4.2 to 3.2 sigma with Bayesian odds of only ~5:1. If it holds, the de Sitter floor and the reading of Section 11.5 must be redone, as Part I says.",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.4",
+   "section": "D3",
+   "observable": "Hubble constant: GUID's late universe (flat LambdaCDM fitted to the CMB) against the Cepheid distance ladder (SH0ES)",
+   "guid": "67.4 +- 0.5 km/s/Mpc (Planck 2018 LambdaCDM)",
+   "data": "73.04 +- 1.04 km/s/Mpc",
+   "refs": [
+    "sh0es",
+    "planck18"
+   ],
+   "measure": "pull = +4.89 sigma",
+   "pull": 4.88756,
+   "verdict": "FAIL",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with LambdaCDM",
+   "note": "the Hubble tension of LambdaCDM, inherited unchanged; GUID adds nothing that moves H0",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.5",
+   "section": "D3",
+   "observable": "Hubble constant against the tip of the red giant branch (CCHP, HST + JWST)",
+   "guid": "67.4 +- 0.5 km/s/Mpc",
+   "data": "70.39 +- 1.22 (stat) +- 1.33 (sys) +- 0.70 (SN), combined 1.94 km/s/Mpc",
+   "refs": [
+    "cchp",
+    "planck18"
+   ],
+   "measure": "pull = +1.50 sigma",
+   "pull": 1.4955,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with LambdaCDM",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.6",
+   "section": "D3",
+   "observable": "Spatial flatness after inflation (Section 11.3): Omega_K, Planck 2018 + BAO",
+   "guid": "0 to within ~1e-5",
+   "data": "flat to 0.4% (95% CL)",
+   "refs": [
+    "planck18x"
+   ],
+   "measure": "GUID value inside the allowed region (95% CL)",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "overlaps D3.7 (both rest on the CMB) and uses older BAO",
+   "scored": false,
+   "cls": "shared with inflation + LambdaCDM",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D3.7",
+   "section": "D3",
+   "observable": "Spatial flatness: Omega_K, DESI DR2 BAO + CMB",
+   "guid": "0 to within ~1e-5",
+   "data": "0.0023 +- 0.0011  (1 sigma)",
+   "refs": [
+    "desi2"
+   ],
+   "measure": "pull = +2.09 sigma",
+   "pull": 2.09091,
+   "verdict": "FAIL",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with inflation + LambdaCDM",
+   "note": "DESI: 'no significant preference for non-flat LambdaCDM'",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D4.1",
+   "section": "D4",
+   "observable": "Scalar spectral index n_s for N = 50 to 60 e-folds, against Planck 2018 (TT,TE,EE+lowE+lensing)",
+   "guid": "n_s = 0.9600 (N = 50) to 0.9667 (N = 60)",
+   "data": "0.9649 +- 0.0042 (68%)",
+   "refs": [
+    "planck18x"
+   ],
+   "measure": "best N = 57: pull -0.00 sigma (N = 50: +1.17, N = 60: -0.42); 95% needs N in [46.2, 74.4]",
+   "pull": -0.00292398,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "superseded by D4.3, which includes the Planck data",
+   "scored": false,
+   "cls": "plateau potential (Starobinsky/Higgs), not derived by GUID",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D4.2",
+   "section": "D4",
+   "observable": "Scalar spectral index n_s for N = 50 to 60 e-folds, against P-ACT (ACT DR6 + Planck)",
+   "guid": "n_s = 0.9600 (N = 50) to 0.9667 (N = 60)",
+   "data": "0.9709 +- 0.0038 (68%)",
+   "refs": [
+    "act_dr6"
+   ],
+   "measure": "best N = 60: pull +1.11 sigma (N = 50: +2.87, N = 60: +1.11); 95% needs N in [54.7, 92.4]",
+   "pull": 1.11404,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "plateau potential (Starobinsky/Higgs), not derived by GUID",
+   "note": "P-ACT overlaps both neighbours; reported, not scored",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D4.3",
+   "section": "D4",
+   "observable": "Scalar spectral index n_s for N = 50 to 60 e-folds, against P-ACT-LB (+ CMB lensing + DESI DR1 BAO)",
+   "guid": "n_s = 0.9600 (N = 50) to 0.9667 (N = 60)",
+   "data": "0.974 +- 0.003 (68%)",
+   "refs": [
+    "act_dr6"
+   ],
+   "measure": "best N = 60: pull +2.44 sigma (N = 50: +4.67, N = 60: +2.44); 95% needs N in [62.7, 99.4]",
+   "pull": 2.44444,
+   "verdict": "FAIL",
+   "kind": "conditional",
+   "kind_reason": "conditional on a plateau inflation potential (Starobinsky R^2 or Higgs inflation): GUID derives no inflaton potential, and both forms couple a scalar to curvature, in open tension with the proposition that fixes gamma = 1",
+   "scored": false,
+   "cls": "plateau potential (Starobinsky/Higgs), not derived by GUID",
+   "note": "the leading-order plateau predictions need N >= 63 here; the shift comes partly from the BAO in the combination",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D4.4",
+   "section": "D4",
+   "observable": "Tensor-to-scalar ratio r = 12/N^2 (N = 50 to 60)",
+   "guid": "0.0033 to 0.0048",
+   "data": "r_0.05 < 0.036 (95%), sigma(r) = 0.009",
+   "refs": [
+    "bk18"
+   ],
+   "measure": "GUID value inside the allowed region (95% CL)",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "conditional",
+   "kind_reason": "conditional on a plateau inflation potential (Starobinsky R^2 or Higgs inflation): GUID derives no inflaton potential, and both forms couple a scalar to curvature, in open tension with the proposition that fixes gamma = 1",
+   "scored": false,
+   "cls": "plateau potential (Starobinsky/Higgs), not derived by GUID",
+   "note": "the next generation (sigma(r) ~ 1e-3) reaches it; GUID itself allows the standard spectrum (Section 11.4)",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D4.5",
+   "section": "D4",
+   "observable": "Ordering: the strong split before or during inflation (Hypothesis 6') against relic monopoles",
+   "guid": "no relic monopoles (diluted by >= 50 e-folds, e^-150)",
+   "data": "MACRO: flux < 1.4e-16 cm^-2 s^-1 sr^-1 (90% CL)",
+   "refs": [
+    "macro"
+   ],
+   "measure": "a split after inflation (Kibble-Preskill estimate, T_c = 1e16 GeV, v = 1e-3 c) gives 4e+02 cm^-2 s^-1 sr^-1, 3e+18 times the bound; GUID's ordering gives 0",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with standard inflationary cosmology",
+   "note": "the same datum is scored once, in D8.2",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D4.6",
+   "section": "D4",
+   "observable": "Reheating below the unification energy (needed for D4.5)",
+   "guid": "T_reh < M_X",
+   "data": "instantaneous reheating at the r bound gives T_reh <= (30/(pi^2 g*))^(1/4) V^(1/4) = 5.7e15 GeV for V^(1/4) < 1.4e16 GeV; proton decay gives M_X >~ 4.8e15 GeV (Part I's estimate, [Q20])",
+   "refs": [
+    "bk18",
+    "superk"
+   ],
+   "measure": "not decided by data: both orderings of T_reh,max and M_X,min are still allowed; a constraint on the reheating model",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with standard inflationary cosmology",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D5.1",
+   "section": "D5",
+   "observable": "Radiative efficiency of accretion (Soltan argument): Marconi et al. 2004",
+   "guid": "thin disk at the ISCO: 0.038 (a = -1) to 0.423 (a = 1); implied a = -0.82 to +0.91",
+   "data": "epsilon = 0.040 to 0.160",
+   "refs": [
+    "marconi"
+   ],
+   "measure": "measured efficiency up to 0.160 <= the Kerr maximum 0.423",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "overlaps D5.2: same kind of Soltan inputs (AGN luminosity function, local black-hole mass density), older",
+   "scored": false,
+   "cls": "shared with GR (Kerr)",
+   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D5.2",
+   "section": "D5",
+   "observable": "Radiative efficiency of accretion (Soltan argument): Shankar et al. 2009",
+   "guid": "thin disk at the ISCO: 0.038 (a = -1) to 0.423 (a = 1); implied a = +0.40 to +0.62",
+   "data": "epsilon = 0.075 to 0.094",
+   "refs": [
+    "shankar"
+   ],
+   "measure": "measured efficiency up to 0.094 <= the Kerr maximum 0.423",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR (Kerr)",
+   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D5.3",
+   "section": "D5",
+   "observable": "Radiative efficiency of accretion (Soltan argument): Yu & Tremaine 2002 (luminous QSOs)",
+   "guid": "thin disk at the ISCO: 0.038 (a = -1) to 0.423 (a = 1); implied a > +0.67",
+   "data": "epsilon = above 0.10",
+   "refs": [
+    "yu_tremaine"
+   ],
+   "measure": "measured efficiency 0.100 <= the Kerr maximum 0.423",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "overlaps D5.2: same kind of Soltan inputs, older",
+   "scored": false,
+   "cls": "shared with GR (Kerr)",
+   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D5.4",
+   "section": "D5",
+   "observable": "Radiative efficiency of accretion (Soltan argument): Davis & Laor 2011 (sample mean)",
+   "guid": "thin disk at the ISCO: 0.038 (a = -1) to 0.423 (a = 1); implied a = +0.58 at the mean",
+   "data": "epsilon = 0.089 (scatter 0.52 dex)",
+   "refs": [
+    "davis_laor"
+   ],
+   "measure": "measured efficiency 0.089 <= the Kerr maximum 0.423",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR (Kerr)",
+   "note": "the Kerr value is an upper bound; efficiencies below 5.7% are possible for radiatively inefficient flows",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D5.5",
+   "section": "D5",
+   "observable": "Kerr bound |a| <= 1 (Christodoulou's formula has no solution above a = 1) against measured spins",
+   "guid": "every spin in [-1, 1]",
+   "data": "36 supermassive (X-ray reflection) and 25 stellar (reflection / continuum) spins, 90% ranges",
+   "refs": [
+    "reynolds"
+   ],
+   "measure": "0 of 61 ranges outside [-1, 1]",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "the spins are measured with Kerr models capped at a = 0.998, so this test cannot fail",
+   "scored": false,
+   "cls": "shared with GR (Kerr)",
+   "note": "weak test: the spectral models are Kerr models restricted to |a| <= 0.998, so the bound is partly built in; the measurements show the ergosphere engines run fast (most SMBHs below 3e7 solar masses have a > 0.9)",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D5.6",
+   "section": "D5",
+   "observable": "Area theorem: the horizon never shrinks classically (GW150914 ringdown)",
+   "guid": "Delta A >= 0",
+   "data": "area increased with probability 97% (95% without overtones)",
+   "refs": [
+    "isi"
+   ],
+   "measure": "probability that the area did not shrink: 0.97",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D5.7",
+   "section": "D5",
+   "observable": "Area theorem (GW250114)",
+   "guid": "Delta A >= 0",
+   "data": "remnant area larger than the sum of the initial areas 'to high credibility'",
+   "refs": [
+    "gw250114"
+   ],
+   "measure": "qualitative statement of the collaboration",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "shared with GR",
+   "note": "",
+   "tally_class": "shared",
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D5.8",
+   "section": "D5",
+   "observable": "Hawking radiation of astrophysical black holes",
+   "guid": "unobservable: a solar-mass hole is at 6.2e-08 K, below the 2.7 K sky",
+   "data": "not observed",
+   "refs": [],
+   "measure": "no datum distinguishes",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "shared with semiclassical gravity",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D6.1",
+   "section": "D6",
+   "observable": "Coherence of the largest superpositions: Oligoporphyrins, 28 kDa (Fein et al. 2019)",
+   "guid": "Bridge B rate 8.1e-13 /s (G M^2/hbar R: 6.7e-13; full DP with R0 = 5.40e-11 m: 8.1e-13); coherence time 1.2e+12 s",
+   "data": "M = 4.65e-23 kg, separation 2.66e-07 m, coherence ~0.007 s, interference seen",
+   "refs": [
+    "fein"
+   ],
+   "measure": "predicted decoherence during the run Gamma tau = 5.6e-15 (OK if < 0.1); margin 2e+14",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 177400000000000.0,
+   "sensitivity_reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
+  },
+  {
+   "id": "D6.2",
+   "section": "D6",
+   "observable": "Coherence of the largest superpositions: Na clusters, 197 kDa (Pedalino et al. 2025)",
+   "guid": "Bridge B rate 2.0e-11 /s (G M^2/hbar R: 1.7e-11; full DP with R0 = 5.40e-11 m: 2.0e-11); coherence time 5.1e+10 s",
+   "data": "M = 3.27e-22 kg, separation 8.00e-08 m, coherence ~0.0123 s, interference seen",
+   "refs": [
+    "pedalino"
+   ],
+   "measure": "predicted decoherence during the run Gamma tau = 2.4e-13 (OK if < 0.1); margin 4e+12",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 4158070000000.0,
+   "sensitivity_reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
+  },
+  {
+   "id": "D6.3",
+   "section": "D6",
+   "observable": "Coherence of the largest superpositions: Rb-87 atoms, 54 cm (Kovachy et al. 2015)",
+   "guid": "Bridge B rate 2.4e-16 /s (G M^2/hbar R: 2.4e-16; full DP with R0 = 5.40e-11 m: 1.4e-16); coherence time 4.1e+15 s",
+   "data": "M = 1.44e-25 kg, separation 5.40e-01 m, coherence ~1 s, interference seen",
+   "refs": [
+    "kovachy"
+   ],
+   "measure": "predicted decoherence during the run Gamma tau = 2.4e-16 (OK if < 0.1); margin 4e+15",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 4096720000000000.0,
+   "sensitivity_reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
+  },
+  {
+   "id": "D6.4",
+   "section": "D6",
+   "observable": "Coherence of the largest superpositions: Cs-133 atoms held 20 s (Xu et al. 2019)",
+   "guid": "Bridge B rate 5.7e-16 /s (G M^2/hbar R: 5.7e-16; full DP with R0 = 5.40e-11 m: 3.2e-16); coherence time 1.8e+15 s",
+   "data": "M = 2.21e-25 kg, separation 3.90e-06 m, coherence ~20 s, interference seen",
+   "refs": [
+    "xu"
+   ],
+   "measure": "predicted decoherence during the run Gamma tau = 1.1e-14 (OK if < 0.1); margin 9e+13",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific (Bridge B = Diosi-Penrose)",
+   "note": "",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 87589800000000.0,
+   "sensitivity_reason": "Bridge B's decoherence during the run, Gamma tau, is 1/factor; the run would see it near 1"
+  },
+  {
+   "id": "D6.5",
+   "section": "D6",
+   "observable": "Diosi-Penrose smearing length R0 against spontaneous radiation (underground Ge detector)",
+   "guid": "R0 >= 4e-10 m adopted (version 5.1 wrote 'at least about 1e-10 m')",
+   "data": "allowed [5.40e-11, +inf] m (95% probability)",
+   "refs": [
+    "donadi"
+   ],
+   "measure": "GUID value inside the allowed region (95% probability)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds",
+   "scored": false,
+   "cls": "GUID-specific (Bridge B needs a smearing length)",
+   "note": "Penrose's parameter-free choice (R0 = nuclear wave-function size, 5e-12 m for Ge) is excluded; Bridge B survives only with a free R0",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D6.6",
+   "section": "D6",
+   "observable": "R0 against the summary of current bounds",
+   "guid": "R0 >= 4e-10 m",
+   "data": "allowed [4.00e-10, +inf] m (as stated)",
+   "refs": [
+    "figurato"
+   ],
+   "measure": "GUID value inside the allowed region (as stated)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds; overlaps D6.5",
+   "scored": false,
+   "cls": "GUID-specific",
+   "note": "version 5.1's '1e-10 m' sat below this summary; v6 uses 4e-10 m",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D6.7",
+   "section": "D6",
+   "observable": "R0 against gravitational-wave-detector heating",
+   "guid": "R0 >= 4e-10 m",
+   "data": "allowed [4.01e-14, +inf] m (as stated)",
+   "refs": [
+    "donadi"
+   ],
+   "measure": "GUID value inside the allowed region (as stated)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Bridge B's smearing length R0 >= 4e-10 m was adopted from these bounds",
+   "scored": false,
+   "cls": "GUID-specific",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D6.8",
+   "section": "D6",
+   "observable": "Bridge B's diffusion, Diosi-Penrose kernel: l_P^2 D2 = m_P^2 / c",
+   "guid": "1.58e-24 kg^2 s/m",
+   "data": "allowed [1.00e-40, 1.00e-09] kg^2 s/m (experimental window)",
+   "refs": [
+    "osswd"
+   ],
+   "measure": "GUID value inside the allowed region (experimental window)",
+   "pull": null,
+   "verdict": "OK",
+   "kind": "scored",
+   "kind_reason": "",
+   "scored": true,
+   "cls": "GUID-specific",
+   "note": "the window comes from torsion-balance noise (upper) and molecule interferometry (lower)",
+   "tally_class": "specific-not-yet-sensitive",
+   "sensitivity_factor": 632892000000000.0,
+   "sensitivity_reason": "GUID's value lies this factor inside the nearer edge of the window"
+  },
+  {
+   "id": "D6.9",
+   "section": "D6",
+   "observable": "Bridge B's diffusion, discrete (local) model: (l_P^3/m_P) D2 = m_P t_P",
+   "guid": "1.17e-51 kg s",
+   "data": "allowed [1.00e-25, 0.1] kg s (experimental window)",
+   "refs": [
+    "osswd"
+   ],
+   "measure": "GUID value outside the allowed region (experimental window)",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "GUID-specific",
+   "note": "this version is excluded, as Part I says",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D7.1",
+   "section": "D7",
+   "observable": "Contained remnant (primordial black holes from the start) as all of the dark matter: the open window",
+   "guid": "1e14 to 1e19 kg (1e17 to 1e22 g)",
+   "data": "window ~1e17 to 1e22 g open for current constraints (narrower for extended mass functions)",
+   "refs": [
+    "gorton_green"
+   ],
+   "measure": "the GUID window coincides with the open window",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "the contained remnant's window 1e14 to 1e19 kg was adopted from the open window",
+   "scored": false,
+   "cls": "GUID route shares the PBH literature",
+   "note": "edges: INTEGRAL/SPI MeV gamma rays and Voyager 1 e+- (light), Subaru-HSC M31 microlensing (heavy)",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D7.2",
+   "section": "D7",
+   "observable": "Mass below which holes have evaporated by now",
+   "guid": "1.7e+11 kg (Stefan-Boltzmann estimate; Part I: a few 1e11 kg)",
+   "data": "about 1e15 g = 1e12 kg (allowed: within a factor 10)",
+   "refs": [
+    "carr21"
+   ],
+   "measure": "GUID value inside the allowed region (order of magnitude)",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "the datum ('about 1e15 g') has no stated uncertainty; it passes only through the chosen tolerance of ten",
+   "scored": false,
+   "cls": "shared with semiclassical gravity",
+   "note": "agreement within a factor 5.8, inside the tolerance of ten chosen here",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D7.3",
+   "section": "D7",
+   "observable": "Hawking temperatures at the window edges",
+   "guid": "1.23e+09 K (1e14 kg, kT = 0.106 MeV) and 1.23e+04 K (1e19 kg)",
+   "data": "the light edge is set by the evaporation products themselves (MeV photons, e+-)",
+   "refs": [
+    "gorton_green"
+   ],
+   "measure": "the prediction 'Hawking glow at the light edge' is what bounds the window: live",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "GUID route",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D8.1",
+   "section": "D8",
+   "observable": "Proton decay after a unification before the start (Hypothesis 6')",
+   "guid": "possible; tau ~ 4.6e+35 yr for M_X = 1e16 GeV (to a factor ~10)",
+   "data": "tau/B(p -> e+ pi0) > 2.4e34 yr",
+   "refs": [
+    "superk"
+   ],
+   "measure": "GUID value inside the allowed region (90% CL)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "GUID allows a unification at any M_X; the example M_X = 1e16 GeV was chosen above this bound",
+   "scored": false,
+   "cls": "GUID allows, does not require",
+   "note": "needs M_X >~ 4.8e15 GeV in Part I's estimate; Hyper-Kamiokande is the live test",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D8.2",
+   "section": "D8",
+   "observable": "Relic magnetic monopoles",
+   "guid": "0 (the strong split lies within the start)",
+   "data": "allowed [0, 1.40e-16] cm^-2 s^-1 sr^-1 (90% CL)",
+   "refs": [
+    "macro"
+   ],
+   "measure": "GUID value inside the allowed region (90% CL)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Part I's ordering of the strong split is required by the absence of monopoles",
+   "scored": false,
+   "cls": "shared with standard inflationary cosmology",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D8.3",
+   "section": "D8",
+   "observable": "W mass from the Higgs vacuum at tree level, m_W = g v / 2 (Part I: within half a per cent)",
+   "guid": "80.223 GeV (-0.18%)",
+   "data": "80.3692 +- 0.0133 GeV",
+   "refs": [
+    "mw_comb",
+    "alpha_mz",
+    "s2w",
+    "gf_mulan"
+   ],
+   "measure": "GUID value inside the allowed region (Part I's stated tolerance, 0.5%)",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "tree-level Standard Model value; scheme dependent, it meets 0.5% only in the MS-bar route",
+   "scored": false,
+   "cls": "Standard Model (tree level)",
+   "note": "tree level is scheme dependent: MS-bar route -0.18%, m_Z cos theta-hat 79.95 GeV (-0.52%), on-shell alpha(0), G_F, m_Z 80.94 GeV (+0.71%); only the MS-bar route meets 0.5%; the full Standard Model reaches 1e-4",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D8.4",
+   "section": "D8",
+   "observable": "Z mass at tree level, m_Z = m_W / cos theta_W",
+   "guid": "91.499 GeV (+0.34%)",
+   "data": "91.1880 +- 0.0020 GeV",
+   "refs": [
+    "mz_pdg",
+    "alpha_mz",
+    "s2w",
+    "gf_mulan"
+   ],
+   "measure": "GUID value inside the allowed region (Part I's stated tolerance, 0.5%)",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "tree-level Standard Model value; scheme dependent",
+   "scored": false,
+   "cls": "Standard Model (tree level)",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D8.5",
+   "section": "D8",
+   "observable": "alpha born near 1/128 at the electroweak split, running to 1/137",
+   "guid": "1/alpha(M_Z) ~ 128; 1/alpha(0) = 137.036",
+   "data": "1/alpha-hat(M_Z) = 127.950 +- 0.017 (MS-bar); 1/alpha(0) = 137.035999177(21)",
+   "refs": [
+    "alpha_mz",
+    "codata22"
+   ],
+   "measure": "GUID value inside the allowed region (within 1% of 1/128)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Part I's 1/128 is read from the measured alpha(M_Z)",
+   "scored": false,
+   "cls": "Standard Model",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D8.6",
+   "section": "D8",
+   "observable": "The electroweak split is a smooth crossover (Higgs mass above the end point of the first-order line)",
+   "guid": "crossover at T_c = 159.5 +- 1.5 GeV (lattice), about 9e-12 s",
+   "data": "m_H = 125.11 +- 0.11 GeV",
+   "refs": [
+    "atlas_mh",
+    "kajantie",
+    "donofrio"
+   ],
+   "measure": "GUID value inside the allowed region (lattice end point < 95 GeV)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "Part I's crossover statement is read from the measured Higgs mass and the lattice",
+   "scored": false,
+   "cls": "Standard Model",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D9.1",
+   "section": "D9",
+   "observable": "Content is quantum and reaches, but does not exceed, Tsirelson's bound 2 sqrt 2 (CHSH)",
+   "guid": "S <= 2.82843, attainable (content); gates give 2",
+   "data": "2.82759 +- 0.00051",
+   "refs": [
+    "poh"
+   ],
+   "measure": "pull = -1.64 sigma",
+   "pull": -1.64142,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "a check of quantum theory, which GUID adopts unchanged: Tsirelson's bound is a theorem of quantum mechanics",
+   "scored": false,
+   "cls": "shared with quantum mechanics",
+   "note": "S above 2 sqrt 2 would refute quantum content; the measured S lies 1.65 sigma below the bound",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D9.2",
+   "section": "D9",
+   "observable": "Loophole-free Bell violation, CHSH S (electron spins 1.3 km apart)",
+   "guid": "2 < S <= 2.828 for content",
+   "data": "2.42 +- 0.20 (p = 0.039)",
+   "refs": [
+    "hensen"
+   ],
+   "measure": "GUID value inside the allowed region (quantum range)",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "a check of quantum theory, which GUID adopts unchanged",
+   "scored": false,
+   "cls": "shared with quantum mechanics",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D9.3",
+   "section": "D9",
+   "observable": "The known neutrinos are not the remnant (cosmology)",
+   "guid": "refuted as the remnant (ledger)",
+   "data": "sum m_nu < 0.064 eV -> Omega_nu < 0.57% of Omega_c",
+   "refs": [
+    "desi2",
+    "planck18"
+   ],
+   "measure": "GUID value inside the allowed region (95% CL)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "that the known neutrinos are not the remnant is an empirical statement set from neutrino-mass bounds, not a prediction",
+   "scored": false,
+   "cls": "shared with LambdaCDM",
+   "note": "version 5.1 used 0.072 eV (DESI 2024), which gives 0.6%; DESI DR2 tightens it",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D9.4",
+   "section": "D9",
+   "observable": "The known neutrinos are not the remnant (laboratory, KATRIN)",
+   "guid": "refuted as the remnant",
+   "data": "m_nu < 0.45 eV -> 3 flavours below 12% of Omega_c",
+   "refs": [
+    "katrin"
+   ],
+   "measure": "GUID value inside the allowed region (90% CL)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "that the known neutrinos are not the remnant is an empirical statement set from neutrino-mass bounds, not a prediction",
+   "scored": false,
+   "cls": "shared with the Standard Model",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D9.5",
+   "section": "D9",
+   "observable": "The radiated remnant (gravitational waves) is not the dark matter",
+   "guid": "Omega_gw(1/yr) <= 1.3e-08 (radiation, w = 1/3)",
+   "data": "h_c = 2.4 (+0.7 -0.6) e-15 at 1/yr; allowed: below 1e-7 of Omega_c",
+   "refs": [
+    "nanograv"
+   ],
+   "measure": "GUID value inside the allowed region (upper end of the 90% interval)",
+   "pull": null,
+   "verdict": "CONS",
+   "kind": "consistency",
+   "kind_reason": "the radiated remnant was refuted from the NANOGrav amplitude itself",
+   "scored": false,
+   "cls": "GUID route; shared with GR",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  },
+  {
+   "id": "D9.6",
+   "section": "D9",
+   "observable": "Gravity weighs all energy (Hypothesis 1'), not only the Higgs-given share",
+   "guid": "eta(Ti,Pt) = 0 for the plane",
+   "data": "MICROSCOPE eta = (-1.5 +- 2.75) e-15",
+   "refs": [
+    "microscope"
+   ],
+   "measure": "a Higgs-share-only gravity predicts eta ~ 1e-3 [Q6], excluded by 4e+11 sigma; the plane's prediction is D1.1",
+   "pull": null,
+   "verdict": "INFO",
+   "kind": "info",
+   "kind_reason": "",
+   "scored": false,
+   "cls": "GUID v5.1 refinement; shared with GR",
+   "note": "",
+   "tally_class": null,
+   "sensitivity_factor": null,
+   "sensitivity_reason": ""
+  }
+ ],
+ "method": [
+  {
+   "label": "thawing solution obeys phi'^2 = 3 Omega_phi (1 + w0) today (2.0550e-03 vs 2.0550e-03)",
+   "ok": true
+  },
+  {
+   "label": "Model A: matter-era attractor phi' = -2 Omega_b/Omega_m per unit lambda f_b (at z = 50: -0.3131 vs -0.3131)",
+   "ok": true
+  },
+  {
+   "label": "Kerr efficiency: a = -1 gives 0.0377 (1 - sqrt(25/27) = 0.0377), a = 0 gives 0.0572 (1 - sqrt(8/9)), a -> 1 gives 0.4226 (1 - 1/sqrt 3)",
+   "ok": true
+  },
+  {
+   "label": "closed-form DP self-energy of a uniform sphere agrees with the Fourier quadrature (d/R = 0.3, 1, 2, 5)",
+   "ok": true
+  },
+  {
+   "label": "closed-form DP self-energy of a Gaussian mass agrees with the Fourier quadrature",
+   "ok": true
+  },
+  {
+   "label": "BMV microsphere: the granular term at R0 = 4e-10 m (1.9e-41 J) is below 1e-3 of the bulk term (9.1e-33 J)",
+   "ok": true
+  }
+ ],
+ "D1": {
+  "f_Ti": 0.00202151,
+  "f_Pt": 0.00405411,
+  "f_Be": 0.000489269,
+  "f_Earth": 0.00170824,
+  "k_mic": -6.94433e-06,
+  "k_eotwash": -5.23489e-06,
+  "lambda_best": 1.46703e-05,
+  "lambda_95": 3.1467e-05,
+  "lambda_95_microscope_only": 3.14803e-05,
+  "lambda_paper_1sigma_level": 1.97182e-05,
+  "modelA": {
+   "phi_prime_today_per_lambda_fb": -0.140677,
+   "drift_coeff_per_yr": -9.69698e-12,
+   "f_b_upper": 0.001,
+   "f_b_helium_only": 6.01053e-05,
+   "drift_at_lambda95_per_yr": -9.60166e-24,
+   "dalpha_cmb_at_lambda95": 2.08283e-12
+  },
+  "modelB": {
+   "slope_shape": 0.169193,
+   "one_plus_w0_shape": 0.001,
+   "G": {
+    "Oklo": 0.118184,
+    "ESPRESSO": 0.434843,
+    "quasars z~6": 0.51401,
+    "CMB": 0.516261,
+    "BBN": 0.516261
+   },
+   "z_oklo": 0.136801,
+   "implied_drift": [
+    {
+     "label": "clocks",
+     "ref": "filzinger",
+     "z": 0.0,
+     "drift": 1.8e-19,
+     "sigma": 2.5e-19
+    },
+    {
+     "label": "Oklo",
+     "ref": "oklo_dh",
+     "z": 0.136801,
+     "drift": -0.0,
+     "sigma": 3.2734e-18
+    },
+    {
+     "label": "ESPRESSO",
+     "ref": "espresso",
+     "z": 1.15,
+     "drift": -2.06075e-16,
+     "sigma": 2.15609e-16
+    },
+    {
+     "label": "quasars z~6",
+     "ref": "wilczynska",
+     "z": 6.3,
+     "drift": 2.92347e-15,
+     "sigma": 9.74935e-15
+    },
+    {
+     "label": "CMB",
+     "ref": "hartchluba",
+     "z": 1100.0,
+     "drift": 9.34634e-14,
+     "sigma": 3.33798e-13
+    },
+    {
+     "label": "BBN",
+     "ref": "avelino",
+     "z": 1000000000.0,
+     "drift": 9.34634e-13,
+     "sigma": 6.67596e-13
+    }
+   ],
+   "drift_hat": 1.78683e-19,
+   "drift_sigma": 2.49274e-19,
+   "chi2": 3.04641,
+   "P_negative": 0.236745,
+   "drift_95": [
+    -3.09885e-19,
+    6.6725e-19
+   ],
+   "one_plus_w0_desi": 0.162,
+   "phi_prime_desi": 0.576984,
+   "lambda_max_if_desi_thawing": 1.67769e-08,
+   "lambda_max_if_1pw0_1e3": 2.13535e-07
+  }
+ },
+ "D2": {
+  "chi2": 4.67837,
+  "n": 8,
+  "p": 0.791334
+ },
+ "D3": {
+  "z_t_planck": 0.632313,
+  "z_t_planck_err": 0.0176514,
+  "z_t_desi": 0.663971,
+  "z_t_desi_err": 0.00946008,
+  "z_t_combined": 0.618469,
+  "z_t_combined_err": 0.240399,
+  "z_t_scale_factor": 3.2484,
+  "jesus_merged": [
+   0.883,
+   0.110038
+  ],
+  "H_inf_planck": [
+   55.7882,
+   0.604071
+  ],
+  "H_inf_desi": [
+   56.925,
+   0.276154
+  ],
+  "desi_w0wa": [
+   {
+    "data": "DESI DR2 BAO + CMB",
+    "w0": -0.42,
+    "w0_err": 0.21,
+    "wa": -1.75,
+    "wa_err": 0.58,
+    "sigma": 3.1
+   },
+   {
+    "data": "+ Pantheon+",
+    "w0": -0.838,
+    "w0_err": 0.055,
+    "wa": -0.62,
+    "wa_err": 0.205,
+    "sigma": 2.8
+   },
+   {
+    "data": "+ Union3",
+    "w0": -0.667,
+    "w0_err": 0.088,
+    "wa": -1.09,
+    "wa_err": 0.29,
+    "sigma": 3.8
+   },
+   {
+    "data": "+ DES-SN5YR",
+    "w0": -0.752,
+    "w0_err": 0.057,
+    "wa": -0.86,
+    "wa_err": 0.215,
+    "sigma": 4.2
+   },
+   {
+    "data": "+ DES-Dovekie (recalibrated)",
+    "w0": -0.803,
+    "w0_err": 0.054,
+    "wa": -0.72,
+    "wa_err": 0.21,
+    "sigma": 3.2
+   }
+  ]
+ },
+ "D4": {
+  "N": [
+   50,
+   51,
+   52,
+   53,
+   54,
+   55,
+   56,
+   57,
+   58,
+   59,
+   60
+  ],
+  "n_s": [
+   0.96,
+   0.960784,
+   0.961538,
+   0.962264,
+   0.962963,
+   0.963636,
+   0.964286,
+   0.964912,
+   0.965517,
+   0.966102,
+   0.966667
+  ],
+  "r": [
+   0.0048,
+   0.00461361,
+   0.00443787,
+   0.00427198,
+   0.00411523,
+   0.00396694,
+   0.00382653,
+   0.00369344,
+   0.00356718,
+   0.00344729,
+   0.00333333
+  ],
+  "datasets": [
+   {
+    "label": "Planck 2018 (TT,TE,EE+lowE+lensing)",
+    "n_s": 0.9649,
+    "sigma": 0.0042,
+    "best_N": 57,
+    "pull_best": -0.00292398,
+    "pull_N50": 1.16667,
+    "pull_N60": -0.420635,
+    "N_range_95": [
+     46.1554,
+     74.4376
+    ]
+   },
+   {
+    "label": "P-ACT (ACT DR6 + Planck)",
+    "n_s": 0.9709,
+    "sigma": 0.0038,
+    "best_N": 60,
+    "pull_best": 1.11404,
+    "pull_N50": 2.86842,
+    "pull_N60": 1.11404,
+    "N_range_95": [
+     54.7228,
+     92.3696
+    ]
+   },
+   {
+    "label": "P-ACT-LB (+ CMB lensing + DESI DR1 BAO)",
+    "n_s": 0.974,
+    "sigma": 0.003,
+    "best_N": 60,
+    "pull_best": 2.44444,
+    "pull_N50": 4.66667,
+    "pull_N60": 2.44444,
+    "N_range_95": [
+     62.7355,
+     99.403
+    ]
+   }
+  ]
+ },
+ "D5": {
+  "eff_min": 0.0377496,
+  "eff_a0": 0.057191,
+  "eff_max": 0.422558,
+  "soltan": [
+   {
+    "label": "Marconi et al. 2004",
+    "eps_lo": 0.04,
+    "eps_hi": 0.16,
+    "spin_lo": -0.824984,
+    "spin_hi": 0.90821
+   },
+   {
+    "label": "Shankar et al. 2009",
+    "eps_lo": 0.075,
+    "eps_hi": 0.09375,
+    "spin_lo": 0.399121,
+    "spin_hi": 0.623395
+   },
+   {
+    "label": "Yu & Tremaine 2002 (luminous QSOs)",
+    "eps_lo": 0.1,
+    "eps_hi": null,
+    "spin_lo": 0.674351,
+    "spin_hi": null
+   },
+   {
+    "label": "Davis & Laor 2011 (sample mean)",
+    "eps_lo": 0.0891251,
+    "eps_hi": null,
+    "spin_lo": 0.579401,
+    "spin_hi": null
+   }
+  ],
+  "n_smbh": 36,
+  "n_xrb": 25,
+  "T_H_sun": 6.17007e-08
+ },
+ "D6": {
+  "R0_min_donadi": 5.4e-11,
+  "R0_figurato": 4e-10,
+  "experiments": [
+   {
+    "label": "Oligoporphyrins, 28 kDa (Fein et al. 2019)",
+    "ref": "fein",
+    "mass_kg": 4.64951e-23,
+    "radius_m": 2.04389e-09,
+    "separation_m": 2.66e-07,
+    "coherence_s": 0.007,
+    "rate_paper": 6.694e-13,
+    "rate_full": 8.05281e-13,
+    "decoherence_in_run": 5.63697e-15,
+    "margin": 177400000000000.0
+   },
+   {
+    "label": "Na clusters, 197 kDa (Pedalino et al. 2025)",
+    "ref": "pedalino",
+    "mass_kg": 3.27126e-22,
+    "radius_m": 4e-09,
+    "separation_m": 8e-08,
+    "coherence_s": 0.0122875,
+    "rate_paper": 1.69317e-11,
+    "rate_full": 1.95724e-11,
+    "decoherence_in_run": 2.40496e-13,
+    "margin": 4158070000000.0
+   },
+   {
+    "label": "Rb-87 atoms, 54 cm (Kovachy et al. 2015)",
+    "ref": "kovachy",
+    "mass_kg": 1.44316e-25,
+    "radius_m": null,
+    "separation_m": 0.54,
+    "coherence_s": 1.0,
+    "rate_paper": 2.44098e-16,
+    "rate_full": 1.37717e-16,
+    "decoherence_in_run": 2.44098e-16,
+    "margin": 4096720000000000.0
+   },
+   {
+    "label": "Cs-133 atoms held 20 s (Xu et al. 2019)",
+    "ref": "xu",
+    "mass_kg": 2.20694e-25,
+    "radius_m": null,
+    "separation_m": 3.9e-06,
+    "coherence_s": 20.0,
+    "rate_paper": 5.70843e-16,
+    "rate_full": 3.22056e-16,
+    "decoherence_in_run": 1.14169e-14,
+    "margin": 87589800000000.0
+   }
+  ],
+  "bmv": {
+   "radius_m": 8.7943e-07,
+   "tau_paper_s": 0.0138954,
+   "tau_full_s": 0.0116136
+  },
+  "first_detection_mass_kg": {
+   "0.01 s": {
+    "silica": 1.19892e-14,
+    "diamond": 1.09198e-14
+   },
+   "0.1 s": {
+    "silica": 3.01156e-15,
+    "diamond": 2.74293e-15
+   },
+   "1 s": {
+    "silica": 7.56469e-16,
+    "diamond": 6.88992e-16
+   },
+   "10 s": {
+    "silica": 1.90016e-16,
+    "diamond": 1.73067e-16
+   },
+   "100 s": {
+    "silica": 4.773e-17,
+    "diamond": 4.34725e-17
+   }
+  },
+  "heaviest_superposed_kg": 3.27126e-22
+ },
+ "D7": {
+  "M_evaporated_kg": 172996000000.0,
+  "T_1e14kg": 1226900000.0,
+  "T_1e19kg": 12269.0
+ },
+ "D8": {
+  "v_GeV": 246.22,
+  "mW_tree": [
+   80.223,
+   79.9501,
+   80.9393
+  ],
+  "mZ_tree": 91.4993,
+  "mW_meas": [
+   80.3692,
+   0.0133
+  ],
+  "tau_p_1e16": 4.58926e+35,
+  "monopole_flux_without_inflation": 408.367
+ },
+ "no_data": [
+  {
+   "prediction": "Entanglement of two masses through gravity alone (Bose-Marletto-Vedral)",
+   "guid": "N = 0; with Bridge B, decoherence at 72/s for 1e-14 kg",
+   "status": "no experiment yet; masses superposed so far are 3e+07 times lighter"
+  },
+  {
+   "prediction": "LOCC inequality with massive oscillators (Lami, Pedernales, Plenio)",
+   "guid": "satisfied",
+   "status": "proposed"
+  },
+  {
+   "prediction": "Decoherence-diffusion trade-off at equality (balance rule)",
+   "guid": "2 D2 = D1 D0^-1 D1^T",
+   "status": "only the window of D6.8 is known; neither decoherence nor diffusion has been measured"
+  },
+  {
+   "prediction": "Bridge B's decoherence of mesoscopic superpositions",
+   "guid": "Gamma = G M^2 / hbar R",
+   "status": "needs >~ 2e-16 kg held ~10 s, or 1e-14 kg for ~14 ms"
+  },
+  {
+   "prediction": "Single-graviton clicks",
+   "guid": "possible from a classical wave",
+   "status": "do not discriminate"
+  },
+  {
+   "prediction": "Primordial tensor modes",
+   "guid": "standard spectrum, r = 12/N^2 for Starobinsky",
+   "status": "only the bound r < 0.036"
+  },
+  {
+   "prediction": "Hawking glow at the light edge of the PBH window",
+   "guid": "MeV photons and 511 keV positron annihilation",
+   "status": "bounds only"
+  },
+  {
+   "prediction": "Return of information from evaporating holes",
+   "guid": "open in GUID",
+   "status": "no observation reaches it"
+  },
+  {
+   "prediction": "Proton decay",
+   "guid": "possible, ~5e35 yr for M_X = 1e16 GeV",
+   "status": "bounds only (D8.1)"
+  },
+  {
+   "prediction": "Sign of the drift of alpha",
+   "guid": "zero or negative",
+   "status": "clocks and cosmology: P(negative) = 0.24; Model A's drift <~ 1e-23 /yr"
+  }
+ ],
+ "covered_elsewhere": [
+  {
+   "topic": "Galactic rotation curves, stochastic remnant, Bridge A",
+   "files": "docs/simulation/results/sparc_rotation.{json,md}",
+   "result": "Bridge A refuted by the rotation-curve points (98% of points below the model); one universal |gamma1| fits worse than the RAR (Delta BIC +5066)"
+  },
+  {
+   "topic": "Accumulated remnant, history, halos, joint fit, cosmic time",
+   "files": "docs/simulation/results/remnant_history.{json,md}",
+   "result": "the two remnants do not combine; the consistent reading is the contained remnant (primordial black holes as cold dark matter) with a stochastic term too small to matter in galaxies"
+  },
+  {
+   "topic": "BMV witness, hosted benchmarks, holographic codes, gravity ensembles",
+   "files": "docs/simulation/results/{bmv_witness,hosted_benchmarks,holographic_code,gravity_simulated}.json",
+   "result": "separate workstreams"
+  }
+ ],
+ "citations": {
+  "microscope": {
+   "ref": "P. Touboul et al. (MICROSCOPE Collaboration), Phys. Rev. Lett. 129, 121102 (2022), arXiv:2209.15487",
+   "read": "arXiv abstract",
+   "value": "eta(Ti,Pt) = [-1.5 +- 2.3 (stat) +- 1.5 (syst)] x 1e-15, 1 sigma in statistical errors"
+  },
+  "eotwash": {
+   "ref": "S. Schlamminger et al., Phys. Rev. Lett. 100, 041101 (2008), arXiv:0712.0607",
+   "read": "arXiv abstract",
+   "value": "Be-Ti: Delta a = (0.6 +- 3.1) x 1e-15 m/s^2, eta = (0.3 +- 1.8) x 1e-13"
+  },
+  "lange": {
+   "ref": "R. Lange et al., Phys. Rev. Lett. 126, 011102 (2021), arXiv:2010.06620",
+   "read": "arXiv abstract",
+   "value": "d ln alpha/dt = 1.0(1.1) x 1e-18 /yr"
+  },
+  "filzinger": {
+   "ref": "M. Filzinger, S. Doerscher, R. Lange, J. Klose, M. Steinel, E. Benkler, E. Peik, C. Lisdat, N. Huntemann, Phys. Rev. Lett. 130, 253001 (2023), arXiv:2301.03433",
+   "read": "arXiv full text, Supplemental Material Eq. (9) (data combined with those of Lange et al. 2021)",
+   "value": "(1/alpha) d alpha/dt = 1.8(2.5) x 1e-19 /yr"
+  },
+  "oklo_dh": {
+   "ref": "E. D. Davis, L. Hamdan, Phys. Rev. C 92, 014319 (2015), arXiv:1503.06011",
+   "read": "arXiv abstract",
+   "value": "|alpha_Oklo - alpha_now| < 1.1e-8 alpha_now (95% CL), given a weak restriction on m_q/Lambda"
+  },
+  "oklo_dd": {
+   "ref": "T. Damour, F. Dyson, Nucl. Phys. B 480, 37 (1996), arXiv:hep-ph/9606486",
+   "read": "arXiv abstract",
+   "value": "reactors operated about two billion years ago; -0.9e-7 < Delta alpha/alpha < 1.2e-7 and -6.7e-17 < alpha-dot/alpha < 5.0e-17 /yr (95%), which implies an elapsed time of 1.8 Gyr"
+  },
+  "espresso": {
+   "ref": "M. T. Murphy et al., Astron. Astrophys. 658, A123 (2022), arXiv:2112.05819",
+   "read": "arXiv abstract",
+   "value": "Delta alpha/alpha = 1.3 +- 1.3 (stat) +- 0.4 (sys) ppm at z = 1.15 (HE 0515-4414)"
+  },
+  "wilczynska": {
+   "ref": "M. R. Wilczynska et al., Science Advances (2020), arXiv:2003.07627",
+   "read": "arXiv abstract (journal volume not shown there)",
+   "value": "Delta alpha/alpha = (-2.18 +- 7.27) x 1e-5, weighted mean over z = 5.5 to 7.1"
+  },
+  "hartchluba": {
+   "ref": "L. Hart, J. Chluba, Mon. Not. R. Astron. Soc., doi:10.1093/mnras/stx2783 (2018), arXiv:1705.03925",
+   "read": "arXiv abstract",
+   "value": "alpha_EM/alpha_EM,0 = 0.9993 +- 0.0025 (Planck 2015, CMB only)"
+  },
+  "planck_xxiv": {
+   "ref": "Planck Collaboration, Astron. Astrophys. 580, A22 (2015), arXiv:1406.7482",
+   "read": "arXiv abstract",
+   "value": "Delta alpha/alpha = (3.6 +- 3.7) x 1e-3 (68% CL) at z ~ 1e3"
+  },
+  "avelino": {
+   "ref": "P. P. Avelino et al., Phys. Rev. D 64, 103505 (2001), arXiv:astro-ph/0102144",
+   "read": "arXiv full text",
+   "value": "BBN, alpha alone varying, Omega_b h^2 free: Delta alpha/alpha = (-7 +- 5) x 1e-3 (68% CL), (-7 +- 9) x 1e-3 (95%)"
+  },
+  "martins21": {
+   "ref": "C. J. A. P. Martins, Astron. Astrophys. 646, A47 (2021), arXiv:2012.10505",
+   "read": "arXiv abstract and conclusions",
+   "value": "|Delta alpha/alpha| < 50 ppm (2 sigma, no priors) or < 5 ppm (with priors), lithium excluded, in GUT-type models where all couplings vary with alpha (not an alpha-only scalar)"
+  },
+  "cassini": {
+   "ref": "B. Bertotti, L. Iess, P. Tortora, Nature 425, 374 (2003)",
+   "read": "ADS abstract through a web search",
+   "value": "gamma = 1 + (2.1 +- 2.3) x 1e-5"
+  },
+  "fienga": {
+   "ref": "A. Fienga, O. Minazzoli, Living Rev. Relativ. 27, 1 (2024), arXiv:2303.01821",
+   "read": "arXiv full text, Eq. (102) and Table 5",
+   "value": "(beta - 1) = (-0.45 +- 1.75) x 1e-5, (gamma - 1) = (0.55 +- 1.35) x 1e-5 (common overlap of the recent planetary-ephemeris intervals)"
+  },
+  "genova": {
+   "ref": "A. Genova et al., Nat. Commun. 9, 289 (2018)",
+   "read": "publication text through a web search; beta also in Fienga & Minazzoli Table 5 and Biskupek et al. 2021",
+   "value": "beta = 1 + (-1.6 +- 1.8) x 1e-5; Nordtvedt eta = (-6.6 +- 7.2) x 1e-5"
+  },
+  "biskupek": {
+   "ref": "L. Biskupek, J. Mueller, J.-M. Torre, Universe 7, 34 (2021), arXiv:2012.12032",
+   "read": "arXiv full text, Table 1 (the sigma level of the errors is not stated; read here as 1 sigma, the stricter reading)",
+   "value": "Delta(m_g/m_i)_EM = (-2.1 +- 2.4) x 1e-14; gamma - 1 = (1.7 +- 1.6) x 1e-4; beta - 1 = (6.2 +- 7.2) x 1e-5"
+  },
+  "voisin": {
+   "ref": "G. Voisin et al., Astron. Astrophys. 638, A24 (2020), arXiv:2005.01388",
+   "read": "arXiv abstract",
+   "value": "strong-equivalence-principle violation Delta = (+0.5 +- 1.8) x 1e-6 at 95% CL (PSR J0337+1715)"
+  },
+  "gw170817": {
+   "ref": "B. P. Abbott et al. (LIGO, Virgo, Fermi GBM, INTEGRAL), Astrophys. J. Lett. 848, L13 (2017), arXiv:1710.05834",
+   "read": "arXiv abstract",
+   "value": "speed of gravity minus speed of light between -3e-15 and +7e-16 of c"
+  },
+  "gwtc3tgr": {
+   "ref": "LIGO, Virgo and KAGRA Collaborations, 'Tests of General Relativity with GWTC-3', Phys. Rev. D 112, 084080 (2025), arXiv:2112.06861v3",
+   "read": "arXiv abstract v3 (comment: 'v3: fixed graviton mass bound in abstract'; v1 had 1.27e-23)",
+   "value": "m_g <= 2.42e-23 eV/c^2 (90% credibility); no evidence of non-GR polarization modes"
+  },
+  "delva": {
+   "ref": "P. Delva et al., Phys. Rev. Lett. 121, 231101 (2018), arXiv:1812.03711",
+   "read": "arXiv abstract",
+   "value": "gravitational-redshift deviation (+0.19 +- 2.48) x 1e-5 at 1 sigma (Galileo satellites)"
+  },
+  "planck18": {
+   "ref": "Planck Collaboration, Planck 2018 results VI, Astron. Astrophys. 641, A6 (2020), arXiv:1807.06209",
+   "read": "arXiv abstract",
+   "value": "H0 = 67.4 +- 0.5 km/s/Mpc, Omega_m = 0.315 +- 0.007, Omega_c h^2 = 0.120 +- 0.001, Omega_b h^2 = 0.0224 +- 0.0001, n_s = 0.965 +- 0.004 (68%)"
+  },
+  "planck18x": {
+   "ref": "Planck Collaboration, Planck 2018 results X, Astron. Astrophys. 641, A10 (2020), arXiv:1807.06211",
+   "read": "arXiv abstract",
+   "value": "n_s = 0.9649 +- 0.0042 (68% CL); spatial flatness confirmed at 0.4% (95% CL) with BAO"
+  },
+  "desi2": {
+   "ref": "DESI Collaboration, 'DESI DR2 results II', Phys. Rev. D 112, 083515 (2025), arXiv:2503.14738",
+   "read": "arXiv abstract and HTML full text (Eqs. 21, 25-28; Tables 5, 6)",
+   "value": "LCDM DESI+CMB: Omega_m = 0.3027 +- 0.0036, H0 = 68.17 +- 0.28; 1e3 Omega_K = 2.3 +- 1.1 (DESI+CMB); w0waCDM: DESI+CMB w0 = -0.42 +- 0.21, wa = -1.75 +- 0.58 (3.1 sigma); +Pantheon+ -0.838 +- 0.055, -0.62 +0.22-0.19 (2.8 sigma); +Union3 -0.667 +- 0.088, -1.09 +0.31-0.27 (3.8 sigma); +DESY5 -0.752 +- 0.057, -0.86 +0.23-0.20 (4.2 sigma); sum m_nu < 0.064 eV (95%)"
+  },
+  "dovekie": {
+   "ref": "B. Popovic et al. (DES Collaboration), Mon. Not. R. Astron. Soc. (2026), doi:10.1093/mnras/stag632, arXiv:2511.07517",
+   "read": "arXiv abstract",
+   "value": "recalibrated DES supernovae: preference for evolving dark energy 4.2 sigma -> 3.2 sigma; with CMB and DESI DR2 w0 = -0.803 +- 0.054, wa = -0.72 +- 0.21; Bayesian odds about 5:1"
+  },
+  "sh0es": {
+   "ref": "A. G. Riess et al., Astrophys. J. Lett., doi:10.3847/2041-8213/ac5c5b (2022), arXiv:2112.04510",
+   "read": "arXiv abstract",
+   "value": "H0 = 73.04 +- 1.04 km/s/Mpc; 5 sigma from Planck + LCDM"
+  },
+  "cchp": {
+   "ref": "W. L. Freedman et al., Astrophys. J. 985, 203 (2025), arXiv:2408.06153",
+   "read": "arXiv abstract (journal reference through a web search)",
+   "value": "H0 = 70.39 +- 1.22 (stat) +- 1.33 (sys) +- 0.70 (sigma_SN), TRGB"
+  },
+  "moresco": {
+   "ref": "M. Moresco et al., JCAP 05 (2016) 014, arXiv:1601.01701",
+   "read": "arXiv abstract",
+   "value": "z_t = 0.4 +- 0.1 (cosmic chronometers, cosmology-independent)"
+  },
+  "jesus": {
+   "ref": "J. F. Jesus, R. F. L. Holanda, S. H. Pereira, JCAP 05 (2018) 073, arXiv:1712.01075",
+   "read": "arXiv abstract",
+   "value": "z_t = 0.806 +- 0.094, 0.870 +- 0.063, 0.973 +- 0.058 (three parametrizations; SNe Ia + H(z); 1 sigma)"
+  },
+  "farooq": {
+   "ref": "O. Farooq, F. Madiyar, S. Crandall, B. Ratra, Astrophys. J. 835, 26 (2017), arXiv:1607.03537",
+   "read": "arXiv abstract",
+   "value": "weighted-mean deceleration-acceleration redshift z_da = 0.72 +- 0.05 (0.84 +- 0.03) for H0 = 68 +- 2.8 (73.24 +- 1.74) km/s/Mpc; z_da depends mainly on the H0 prior"
+  },
+  "dahiya": {
+   "ref": "D. Dahiya, D. Jain, Res. Astron. Astrophys. (2023), arXiv:2212.04751",
+   "read": "arXiv abstract",
+   "value": "best-fit z_t between 0.61 and 0.82 for four dark-energy models (Pantheon+ and H(z); no uncertainty given)"
+  },
+  "bk18": {
+   "ref": "P. A. R. Ade et al. (BICEP/Keck), Phys. Rev. Lett. 127, 151301 (2021), arXiv:2110.00483",
+   "read": "arXiv abstract",
+   "value": "r_0.05 < 0.036 (95%), sigma(r) = 0.009"
+  },
+  "act_dr6": {
+   "ref": "T. Louis et al. (ACT), 'DR6 Power Spectra, Likelihoods and LambdaCDM Parameters', JCAP (accepted), arXiv:2503.14452",
+   "read": "arXiv abstract and HTML full text (Sect. VIII)",
+   "value": "P-ACT-LB (ACT+Planck, CMB lensing, DESI DR1 BAO): n_s = 0.974 +- 0.003; P-ACT: n_s = 0.9709 +- 0.0038; W-ACT 0.9660 +- 0.0046"
+  },
+  "macro": {
+   "ref": "M. Ambrosio et al. (MACRO Collaboration), Eur. Phys. J. C 25, 511 (2002), arXiv:hep-ex/0207020",
+   "read": "arXiv abstract",
+   "value": "monopole flux < 1.4e-16 cm^-2 s^-1 sr^-1 (90% CL) for 4e-5 < beta < 1"
+  },
+  "superk": {
+   "ref": "A. Takenaka et al. (Super-Kamiokande Collaboration), Phys. Rev. D 102, 112011 (2020), arXiv:2010.16098",
+   "read": "arXiv abstract",
+   "value": "tau/B(p -> e+ pi0) > 2.4e34 yr, tau/B(p -> mu+ pi0) > 1.6e34 yr (90% CL)"
+  },
+  "mw_comb": {
+   "ref": "LHC-TeV MW Working Group, Eur. Phys. J. C 84, 451 (2024), arXiv:2308.09417",
+   "read": "arXiv abstract; the PDG 2025 average 80.3692 +- 0.0133 GeV (through a web search) is the same number",
+   "value": "m_W = 80369.2 +- 13.3 MeV without CDF (compatibility 91%); 80394.6 +- 11.5 MeV with CDF (compatibility 0.5%)"
+  },
+  "mz_pdg": {
+   "ref": "Particle Data Group, Z boson mass (pdgLive)",
+   "read": "through a web search (the PDG pages were not reachable directly)",
+   "value": "m_Z = 91.1880 +- 0.0020 GeV (LEP-SLC 91.1876 +- 0.0021 combined with CDF 2022)"
+  },
+  "atlas_mh": {
+   "ref": "ATLAS Collaboration, Phys. Rev. Lett. 131, 251802 (2023), arXiv:2308.04775",
+   "read": "arXiv abstract",
+   "value": "m_H = 125.11 +- 0.11 GeV"
+  },
+  "alpha_mz": {
+   "ref": "J. Erler, A. Freitas, 'Electroweak model and constraints on new physics', Review of Particle Physics (PDG 2017 edition)",
+   "read": "through a web search of the PDG review text",
+   "value": "alpha-hat(M_Z)^-1 = 127.950 +- 0.017 (MS-bar)"
+  },
+  "s2w": {
+   "ref": "Particle Data Group, S. Navas et al., Phys. Rev. D 110, 030001 (2024), world average as quoted in arXiv:2509.18251",
+   "read": "arXiv:2509.18251 HTML",
+   "value": "sin^2 theta_W-hat (M_Z) = 0.23129 +- 0.00004 (MS-bar)"
+  },
+  "gf_mulan": {
+   "ref": "MuLan Collaboration, Phys. Rev. D 87, 052003 (2013), arXiv:1211.0960",
+   "read": "arXiv abstract",
+   "value": "G_F = 1.1663787(6) x 1e-5 GeV^-2"
+  },
+  "codata22": {
+   "ref": "CODATA 2022 recommended values (P. J. Mohr et al.)",
+   "read": "NIST tables through a web search",
+   "value": "alpha^-1 = 137.035999177(21)"
+  },
+  "donofrio": {
+   "ref": "M. D'Onofrio, K. Rummukainen, Phys. Rev. D 93, 025003 (2016), arXiv:1508.07161",
+   "read": "arXiv abstract",
+   "value": "smooth cross-over at T_c = 159.5 +- 1.5 GeV for the physical Higgs mass"
+  },
+  "kajantie": {
+   "ref": "K. Kajantie, M. Laine, K. Rummukainen, M. Shaposhnikov, Phys. Rev. Lett. 77, 2887 (1996), arXiv:hep-ph/9605288",
+   "read": "arXiv abstract",
+   "value": "first-order line ends at m_H,c with 70 GeV < m_H,c < 95 GeV (about 80 GeV)"
+  },
+  "yu_tremaine": {
+   "ref": "Q. Yu, S. Tremaine, Mon. Not. R. Astron. Soc. 335, 965 (2002), arXiv:astro-ph/0203082",
+   "read": "arXiv abstract",
+   "value": "luminous QSOs are Kerr black holes accreting with efficiency > 0.1"
+  },
+  "marconi": {
+   "ref": "A. Marconi et al., Mon. Not. R. Astron. Soc. 351, 169 (2004), arXiv:astro-ph/0311619",
+   "read": "arXiv abstract",
+   "value": "epsilon = 0.04 to 0.16, Eddington ratio 0.1 to 1.7"
+  },
+  "shankar": {
+   "ref": "F. Shankar, D. H. Weinberg, J. Miralda-Escude, Astrophys. J. 690, 20 (2009), arXiv:0710.4488",
+   "read": "arXiv abstract",
+   "value": "epsilon = 0.075 from matching the AGN emissivity to the local BH mass density (about 25% higher for an alternative luminosity function)"
+  },
+  "davis_laor": {
+   "ref": "S. W. Davis, A. Laor, Astrophys. J. 728, 98 (2011), arXiv:1012.3213",
+   "read": "arXiv abstract",
+   "value": "eta from about 0.03 to about 0.4, rising with mass; mean log eta = -1.05 +- 0.52"
+  },
+  "reynolds": {
+   "ref": "C. S. Reynolds, Annu. Rev. Astron. Astrophys. (2021), doi:10.1146/annurev-astro-112420-035022, arXiv:2011.08948",
+   "read": "arXiv full text, Tables 1 and 2",
+   "value": "36 SMBH spins (X-ray reflection) and 25 X-ray-binary spins, 90% ranges"
+  },
+  "isi": {
+   "ref": "M. Isi, W. M. Farr, M. Giesler, M. A. Scheel, S. A. Teukolsky, Phys. Rev. Lett. 127, 011103 (2021), arXiv:2012.04486",
+   "read": "arXiv abstract",
+   "value": "GW150914: area increase with 97% (95% without overtones) probability"
+  },
+  "gw250114": {
+   "ref": "LIGO, Virgo and KAGRA Collaborations, 'GW250114: testing Hawking's area law and the Kerr nature of black holes', doi:10.1103/kw5g-d732 (2025), arXiv:2509.08054",
+   "read": "arXiv abstract",
+   "value": "remnant area larger than the sum of the initial areas to high credibility; ringdown modes within +-30% of Kerr"
+  },
+  "fein": {
+   "ref": "Y. Y. Fein et al., Nat. Phys. 15, 1242 (2019), doi:10.1038/s41567-019-0663-9",
+   "read": "through web searches: the journal abstract (beyond 25 kDa, up to 2000 atoms, > 90% of the expected visibility); the interferometer (three gratings, period 266 nm, spacing 0.98 m) from arXiv:2203.11866; masses up to 28,000 u from arXiv:2301.11095; 'more than 7 ms' from the University of Vienna release; 'delocalized over hundreds of nm' from Donadi et al. 2021",
+   "value": "M up to 28,000 u, delocalization ~266 nm, about 7 ms"
+  },
+  "pedalino": {
+   "ref": "S. Pedalino et al., 'Probing quantum mechanics using nanoparticle Schroedinger cats', arXiv:2507.21211 (2025)",
+   "read": "arXiv abstract and HTML full text",
+   "value": "Na clusters of > 7000 atoms, 143 to 197 kDa, cluster diameter ~8 nm (Methods), grating period 133 nm, L = 0.983 m, v ~ 160 m/s, delocalization > 10 diameters, mu = 15.5"
+  },
+  "kovachy": {
+   "ref": "T. Kovachy et al., Nature 528, 530 (2015), doi:10.1038/nature16155",
+   "read": "journal abstract through a web search; rubidium from the review arXiv:1706.06173",
+   "value": "wave packets separated by up to 54 cm on a timescale of 1 s"
+  },
+  "xu": {
+   "ref": "V. Xu et al., Science 366, 745 (2019), arXiv:1907.03054",
+   "read": "arXiv abstract; Cs and Delta z = 3.9 um through a web search (preprint figure, Physics Today)",
+   "value": "20 s interrogation, microns of vertical separation"
+  },
+  "donadi": {
+   "ref": "S. Donadi et al., Nat. Phys. 17, 74 (2021), arXiv:2111.13490",
+   "read": "arXiv full text, Eq. (6) and Fig. 5",
+   "value": "R0 > 0.54e-10 m with probability 0.95; earlier bounds R0 >= (40.1 +- 0.5)e-15 m (gravitational-wave detectors) and R0 >~ 1e-13 m (neutron stars)"
+  },
+  "figurato": {
+   "ref": "L. Figurato et al., New J. Phys. 26, 113004 (2024), arXiv:2406.18494",
+   "read": "arXiv abstract",
+   "value": "current experiments set a lower bound R0 >~ 4e-10 m"
+  },
+  "osswd": {
+   "ref": "J. Oppenheim, C. Sparaciari, B. Soda, Z. Weller-Davies, Nat. Commun. 14, 7910 (2023), arXiv:2203.01982",
+   "read": "arXiv full text, Eqs. (46) and (47)",
+   "value": "1e-1 kg s >= (l_P^3/m_P) D2 >= 1e-25 kg s; 1e-9 kg^2 s/m >= l_P^2 D2 >= 1e-40 kg^2 s/m"
+  },
+  "gorton_green": {
+   "ref": "M. Gorton, A. M. Green, SciPost Phys. 17, 032 (2024), arXiv:2403.03839",
+   "read": "arXiv abstract and HTML full text",
+   "value": "window ~1e17 to 1e22 g, open for current constraints; f_PBH = 1 excluded for m <~ 1e17 g (INTEGRAL/SPI, Voyager 1); Subaru-HSC M31 microlensing above ~1e22 g"
+  },
+  "carr21": {
+   "ref": "B. Carr, K. Kohri, Y. Sendouda, J. Yokoyama, Rep. Prog. Phys., doi:10.1088/1361-6633/ac1e31 (2021), arXiv:2002.12778",
+   "read": "arXiv abstract",
+   "value": "PBHs smaller than about 1e15 g have evaporated"
+  },
+  "poh": {
+   "ref": "H. S. Poh et al., Phys. Rev. Lett. 115, 180408 (2015), arXiv:1506.01865",
+   "read": "arXiv abstract",
+   "value": "CHSH S = 2.82759 +- 0.00051; distance to Tsirelson's bound 0.00084 +- 0.00051"
+  },
+  "hensen": {
+   "ref": "B. Hensen et al., Nature 526, 682 (2015), arXiv:1508.05949",
+   "read": "arXiv abstract",
+   "value": "loophole-free S = 2.42 +- 0.20, 245 trials, p = 0.039"
+  },
+  "katrin": {
+   "ref": "KATRIN Collaboration, Science 388, 180 (2025), arXiv:2406.13516",
+   "read": "arXiv abstract",
+   "value": "m_nu < 0.45 eV (90% CL)"
+  },
+  "nanograv": {
+   "ref": "G. Agazie et al. (NANOGrav), Astrophys. J. Lett. 951, L8 (2023), arXiv:2306.16213",
+   "read": "arXiv abstract",
+   "value": "characteristic strain 2.4 (+0.7 -0.6) x 1e-15 at f = 1/yr (median, 90% credible)"
+  }
+ },
+ "figures": [
+  "data_pulls.pdf",
+  "data_alpha_scalar.pdf",
+  "data_cosmology.pdf",
+  "data_inflation.pdf",
+  "data_kerr.pdf",
+  "data_bridgeB.pdf"
+ ]
+}

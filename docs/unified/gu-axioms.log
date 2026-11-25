@@ -1,0 +1,27 @@
+== build ProofPhase.General.GUCentre
+Build completed successfully (8924 jobs).
+== declarations: 21
+== axioms
+'ProofPhase.General.GU.SMField' does not depend on any axioms
+'ProofPhase.General.GU.smFields' does not depend on any axioms
+'ProofPhase.General.GU.centrePhase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.SMTrivial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.sm_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.zeta6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.zeta6_prim' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.zeta6_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.gen_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.sm_kernel_cyclic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.gen_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.sm_kernel_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.sm_kernel_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.gen_trivial_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.gen_trivial_sm' depends on axioms: [propext]
+'ProofPhase.General.GU.charge_thirds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.charge_thirds_sm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.fractional_singlet_breaks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.su5Embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.su5_embed_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.GU.su5_embed_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/General/GUCentre.lean

@@ -1,0 +1,10 @@
+d=4 L=12 beta=2.3 meas 0/1000 plaq 0.60271 t=194s
+d=4 L=12 beta=2.3 meas 100/1000 plaq 0.60231 t=388s
+d=4 L=12 beta=2.3 meas 200/1000 plaq 0.60229 t=563s
+d=4 L=12 beta=2.3 meas 300/1000 plaq 0.60237 t=892s
+d=4 L=12 beta=2.3 meas 400/1000 plaq 0.60234 t=1397s
+d=4 L=12 beta=2.3 meas 500/1000 plaq 0.60236 t=1956s
+d=4 L=12 beta=2.3 meas 600/1000 plaq 0.60239 t=2227s
+d=4 L=12 beta=2.3 meas 700/1000 plaq 0.60241 t=2796s
+d=4 L=12 beta=2.3 meas 800/1000 plaq 0.60235 t=3440s
+d=4 L=12 beta=2.3 meas 900/1000 plaq 0.60233 t=3839s

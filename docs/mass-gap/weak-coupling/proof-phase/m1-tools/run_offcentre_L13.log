@@ -1,0 +1,15 @@
+paths enumerated in 19s; sites touched: 28560
+Q1 path fraction f(z) (max over the 8 coarse bonds) by l_inf distance from the centre:
+  distance 1: max 0.1252  median 0.00109  sites 80
+  distance 2: max 0.1044  median 0.00100  sites 544
+  distance 3: max 0.0836  median 0.00050  sites 1776
+  distance 4: max 0.0628  median 0.00051  sites 4160
+  distance 5: max 0.0421  median 0.00053  sites 8080
+  distance 6: max 0.0213  median 0.00053  sites 13920
+Q2 near (distance <= 2)   vortex : n=1872  moderate 1.000  labelable 0.000  deep 0.000  max coarse spread 0.000  capture time of deep ones: max -  trapped 0
+Q2 near (distance <= 2)   haar   : n=1872  moderate 1.000  labelable 0.000  deep 0.000  max coarse spread 0.072  capture time of deep ones: max -  trapped 0
+Q2 near (distance <= 2)   bonds  : n=1872  moderate 1.000  labelable 0.000  deep 0.000  max coarse spread 0.079  capture time of deep ones: max -  trapped 0
+Q2 random                 vortex : n=9000  moderate 1.000  labelable 0.000  deep 0.000  max coarse spread 0.000  capture time of deep ones: max -  trapped 0
+Q2 random                 haar   : n=9000  moderate 1.000  labelable 0.000  deep 0.000  max coarse spread 0.099  capture time of deep ones: max -  trapped 0
+Q2 random                 bonds  : n=9000  moderate 1.000  labelable 0.000  deep 0.000  max coarse spread 0.025  capture time of deep ones: max -  trapped 0
+done [161s]

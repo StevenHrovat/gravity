@@ -1,0 +1,41 @@
+%USERPROFILE%\AppData\Local\Programs\Python\Python314\Lib\site-packages\numpy\_core\fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+%USERPROFILE%\AppData\Local\Programs\Python\Python314\Lib\site-packages\numpy\_core\_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+{"out": "pilot_Pa.npz", "wall_s": 609.0978496074677, "acc": NaN, "resid": NaN, "resid_y": NaN, "tuning": [[0.05, 10, 0.0], [0.025, 20, 0.0], [0.0125, 40, 0.0], [0.00625, 80, 0.9]], "eps": 0.00625, "nleap": 80, "n_meas": 0, "stopped_at": 11}
+%USERPROFILE%\AppData\Local\Programs\Python\Python314\Lib\site-packages\numpy\_core\fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+%USERPROFILE%\AppData\Local\Programs\Python\Python314\Lib\site-packages\numpy\_core\_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+{"out": "pilot_Pb.npz", "wall_s": 601.8586041927338, "acc": NaN, "resid": NaN, "resid_y": NaN, "tuning": [[0.05, 10, 0.0], [0.025, 20, 0.0], [0.0125, 40, 0.3], [0.00625, 80, 0.9]], "eps": 0.00625, "nleap": 80, "n_meas": 0, "stopped_at": 10}
+%USERPROFILE%\AppData\Local\Programs\Python\Python314\Lib\site-packages\numpy\_core\fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+%USERPROFILE%\AppData\Local\Programs\Python\Python314\Lib\site-packages\numpy\_core\_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+{"out": "pilot_Pc.npz", "wall_s": 606.6228637695312, "acc": NaN, "resid": NaN, "resid_y": NaN, "tuning": [[0.05, 10, 0.0], [0.025, 20, 0.0], [0.0125, 40, 0.5], [0.00625, 80, 0.8]], "eps": 0.00625, "nleap": 80, "n_meas": 0, "stopped_at": 11}
+Traceback (most recent call last):
+  File "C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\c9b-adjoint\ir_condlaw.py", line 574, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\c9b-adjoint\ir_condlaw.py", line 569, in main
+    return {"selftest": selftest, "exactcheck": exactcheck, "analyse": analyse, "calib1": calib1,
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            "expected": lambda _a: print(json.dumps(exact_flat())) or 0}[a.cmd](a)
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\c9b-adjoint\ir_condlaw.py", line 483, in analyse
+    ca = np.repeat(np.arange(A["vx"].shape[1]), A["vx"].shape[0]).reshape(A["vx"].shape[1], -1).T.ravel()
+                             ~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+Traceback (most recent call last):
+  File "C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\c9b-adjoint\ir_condlaw.py", line 574, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\c9b-adjoint\ir_condlaw.py", line 569, in main
+    return {"selftest": selftest, "exactcheck": exactcheck, "analyse": analyse, "calib1": calib1,
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            "expected": lambda _a: print(json.dumps(exact_flat())) or 0}[a.cmd](a)
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\c9b-adjoint\ir_condlaw.py", line 483, in analyse
+    ca = np.repeat(np.arange(A["vx"].shape[1]), A["vx"].shape[0]).reshape(A["vx"].shape[1], -1).T.ravel()
+                             ~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range

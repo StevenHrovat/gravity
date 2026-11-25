@@ -1,0 +1,6 @@
+offset (0, 0, 0, 0): max coarse plaquette / max|a| = 0.0541   coarse bonds moved: 8
+offset (1, 0, 0, 0): max coarse plaquette / max|a| = 0.0859   coarse bonds moved: 8
+offset (1, 1, 0, 0): max coarse plaquette / max|a| = 0.0788   coarse bonds moved: 8
+offset (1, 1, 1, 0): max coarse plaquette / max|a| = 0.0882   coarse bonds moved: 8
+offset (1, 1, 1, 1): max coarse plaquette / max|a| = 0.0856   coarse bonds moved: 8
+worst ratio 0.0882; bound 4 L^(1-d) = 0.1481

@@ -1,0 +1,26 @@
+PBH mass <-> transition temperature (reheat T after the switch)
+  M=1e+17 g  ->  T=1.30e+07 GeV
+  M=1e+18 g  ->  T=4.11e+06 GeV
+  M=1e+19 g  ->  T=1.30e+06 GeV
+  M=1e+20 g  ->  T=4.11e+05 GeV
+  M=1e+21 g  ->  T=1.30e+05 GeV
+  M=1e+22 g  ->  T=4.11e+04 GeV
+
+beta/H needed for f_PBH=1 (P_coll fit valid for beta/H 3..8, delta_c 0.4..2/3)
+  M=1e+17 g T=1.3e+07: P_coll needed=2.3e-16;  dc=0.40: 7.34; dc=0.50: 6.36; dc=0.67: 5.33
+  M=1e+19 g T=1.3e+06: P_coll needed=2.3e-15;  dc=0.40: 7.17; dc=0.50: 6.22; dc=0.67: 5.21
+  M=1e+22 g T=4.1e+04: P_coll needed=7.3e-14;  dc=0.40: 6.90; dc=0.50: 5.99; dc=0.67: 5.03
+
+Sensitivity at M=1e19 g, dc=0.5: beta/H=6.224
+  beta/H 6.024: f_PBH = 2.07e+01
+  beta/H 6.124: f_PBH = 4.70e+00
+  beta/H 6.174: f_PBH = 2.19e+00
+  beta/H 6.274: f_PBH = 4.50e-01
+  beta/H 6.324: f_PBH = 1.99e-01
+  beta/H 6.424: f_PBH = 3.68e-02
+
+GW background (envelope template, peak Omega h^2 and value at detector bands)
+  M=1e+17 g T=1.3e+07 beta/H=6.36: f_peak=3.17e+00 Hz, Omega_peak h2=3.1e-08; at 3 mHz (LISA) 4.0e-16; at 0.3 Hz (DECIGO) 1.6e-10; at 10 Hz (ET) 1.3e-08; at 25 Hz (LIGO) 5.3e-09
+  M=1e+19 g T=1.3e+06 beta/H=6.22: f_peak=3.10e-01 Hz, Omega_peak h2=3.2e-08; at 3 mHz (LISA) 2.8e-13; at 0.3 Hz (DECIGO) 3.2e-08; at 10 Hz (ET) 1.4e-09; at 25 Hz (LIGO) 5.5e-10
+  M=1e+22 g T=4.1e+04 beta/H=5.99: f_peak=9.43e-03 Hz, Omega_peak h2=3.5e-08; at 3 mHz (LISA) 5.2e-09; at 0.3 Hz (DECIGO) 1.5e-09; at 10 Hz (ET) 4.5e-11; at 25 Hz (LIGO) 1.8e-11
+Reference reach (round numbers): LIGO-Virgo O3 limit ~6e-9 near 25 Hz (2101.12130); LISA ~1e-12..1e-13 at mHz; ET ~1e-12 near 10 Hz; DECIGO/BBO ~1e-15..1e-16 near 0.1-1 Hz.

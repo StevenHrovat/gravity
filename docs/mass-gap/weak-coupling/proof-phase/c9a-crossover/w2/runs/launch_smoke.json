@@ -1,0 +1,74 @@
+{
+ "beta": 2.3,
+ "ell": 4,
+ "kappa": 16.0,
+ "T": 20,
+ "every": 10,
+ "jobs": "A3:2,A6:0,sampled:0",
+ "fused": true,
+ "pairs": 240,
+ "pool_pairs": 16,
+ "pool_T": 10,
+ "seconds_geometry": 2.656843900680542,
+ "seconds_pool": 4.202998638153076,
+ "seconds_build": 4.265969753265381,
+ "seconds_main": 11.837674140930176,
+ "sweeps_done": 20,
+ "capped": false,
+ "sec_per_sweep_main": 0.5918837070465088,
+ "seconds_total": 23.24130153656006,
+ "seconds_full_T_extrapolated": 22.963486433029175,
+ "mh_acceptance": 0.8365911865234374,
+ "plaq_mean": 0.5782159405431024,
+ "d_end_mean": 876.475,
+ "n_box_links": 1024,
+ "klow_pool": {
+  "0": [
+   13.301132081075902,
+   10.749717766430415
+  ]
+ },
+ "instances": [
+  {
+   "job": 0,
+   "yclass": "A3",
+   "pool": 2,
+   "conf": 2,
+   "shift": [
+    13,
+    1,
+    2,
+    7
+   ],
+   "first_pair": 0
+  },
+  {
+   "job": 1,
+   "yclass": "A6",
+   "pool": 0,
+   "conf": 1,
+   "shift": [
+    6,
+    14,
+    6,
+    10
+   ],
+   "first_pair": 80
+  },
+  {
+   "job": 2,
+   "yclass": "sampled",
+   "pool": 0,
+   "conf": 2,
+   "shift": [
+    1,
+    11,
+    0,
+    0
+   ],
+   "first_pair": 160
+  }
+ ],
+ "npz": "runs/launch_smoke.npz",
+ "gpu_pool_bytes": 3153447936
+}

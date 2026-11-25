@@ -1,0 +1,18 @@
+1. Reheating vs switch
+   Starobinsky decay rate 7.5 GeV -> T_reh ~ 2.3e+09 GeV (needs > T_V ~ 1e5..3e7 GeV): OK
+2. Inflation e-folds and n_s with the switch's matter era
+   Gamma/H* 3e-03: dN = -0.97; N 55 -> n_s 0.9636 -> 0.9630; r = 0.0041
+   Gamma/H* 3e-03: dN = -0.97; N 60 -> n_s 0.9667 -> 0.9661; r = 0.0034
+   Gamma/H* 3e-04: dN = -1.35; N 55 -> n_s 0.9636 -> 0.9627; r = 0.0042
+   Gamma/H* 3e-04: dN = -1.35; N 60 -> n_s 0.9667 -> 0.9659; r = 0.0035
+   Planck 2018: n_s 0.9649(42); ACT DR6 + Planck + DESI (2025): n_s ~0.974(3) -> Starobinsky at about 2-3 sigma from ACT (OPEN, external);
+   r < 0.036 (BICEP/Keck 2021): OK
+3. Switch-era leftovers vs early-universe limits
+   switch field X (m ~ T_V) decays at T_reh 2e3..1e6 GeV, long before BBN (1 MeV): OK
+   sphalerons active at T_reh (> 130 GeV): OK, surplus converted
+   hum Omega_GW h^2 <= 1.5e-9 vs N_eff bound ~1e-6: OK
+   PBHs >= 1e17 g: no evaporation before today (lifetime >> 1e10 yr for > 5e14 g): BBN/CMB untouched; 1e17 g edge set by 511 keV / MeV gamma limits
+4. CMB and structure with asteroid-mass PBH dark matter
+   accretion/CMB limits only for >~ 1 solar mass: OK; Poisson isocurvature at these masses: negligible; lensing: allowed window
+   matter surplus from X decay is homogeneous (no baryon isocurvature beyond limits): OK
+5. Late universe: dark energy not in v7 (OPEN)

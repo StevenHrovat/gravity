@@ -1,0 +1,11 @@
+% Compile one section on its own (references to other sections show as ??):
+%   cd docs/guid-v6 && pdflatex -interaction=nonstopmode -halt-on-error -output-directory=/tmp/<yourdir> "\def\SECTION{sections/NAME}\input{testwrap.tex}"
+% (run twice). Needs sections/NAME.tex and sections/NAME-bib.tex.
+\documentclass[11pt,a4paper]{article}
+\input{preamble}
+\begin{document}
+\input{\SECTION}
+\begin{thebibliography}{999}\small
+\input{\SECTION-bib}
+\end{thebibliography}
+\end{document}

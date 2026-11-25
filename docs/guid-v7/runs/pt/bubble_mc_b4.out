@@ -1,0 +1,12 @@
+beta/H 4.0: patches 20000, expected bubbles reaching a patch 9104; mean delta at end +0.0037 (should be ~0)
+  P(delta_max >= 0.05) = 12387/20000 = 6.19e-01
+  P(delta_max >= 0.1) = 10475/20000 = 5.24e-01
+  P(delta_max >= 0.2) = 7450/20000 = 3.72e-01
+  P(delta_max >= 0.3) = 5221/20000 = 2.61e-01
+  P(delta_max >= 0.4) = 3452/20000 = 1.73e-01
+  P(delta_max >= 0.5) = 2065/20000 = 1.03e-01
+  P(delta_max >= 0.67) = 688/20000 = 3.44e-02
+  P(delta_max >= 1.0) = 12/20000 = 6.00e-04
+  P(delta_max >= 2.0) = 0/20000 = 0.00e+00
+  P(delta_max >= 4.0) = 0/20000 = 0.00e+00
+  P(delta_max >= 5.0) = 0/20000 = 0.00e+00

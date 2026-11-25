@@ -1,0 +1,6 @@
+  lam 0.000: f 0.413 dS/dlam +0.030  (664s)
+  lam 0.250: f 0.413 dS/dlam +1.739  (946s)
+  lam 0.500: f 0.411 dS/dlam +2.539  (1220s)
+  lam 0.750: f 0.408 dS/dlam +2.651  (1480s)
+  lam 1.000: f 0.406 dS/dlam -0.689  (1727s)
+done C:\claude\gravity-ym\docs\mass-gap\weak-coupling\proof-phase\c8b-decisive\pilot\tie_su2_b2.3_l9_A.npz in 1727s

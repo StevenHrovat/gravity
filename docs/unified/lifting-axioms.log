@@ -1,0 +1,58 @@
+== build ProofPhase.Proof.LiftingNP
+Build completed successfully (8936 jobs).
+== declarations: 52
+== axioms
+'ProofPhase.Proof.Lifting.Gadget' does not depend on any axioms
+'ProofPhase.Proof.Lifting.LV' does not depend on any axioms
+'ProofPhase.Proof.Lifting.card_LV' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.Xof' does not depend on any axioms
+'ProofPhase.Proof.Lifting.Yof' does not depend on any axioms
+'ProofPhase.Proof.Lifting.dec' does not depend on any axioms
+'ProofPhase.Proof.Lifting.certClause' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.bne_not_iff' depends on axioms: [propext]
+'ProofPhase.Proof.Lifting.ne_iff_eq_not' depends on axioms: [propext]
+'ProofPhase.Proof.Lifting.falsifies_certClause' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.Ch' does not depend on any axioms
+'ProofPhase.Proof.Lifting.compClause' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.mem_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.comp_falsified_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.comp_unsat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.unsat_of_comp_unsat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.card_certClause_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.card_compClause_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.card_comp_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.two_le_card_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.sgn' does not depend on any axioms
+'ProofPhase.Proof.Lifting.clauseLine' depends on axioms: [propext, Quot.sound]
+'ProofPhase.Proof.Lifting.cnfAx' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.holds_clauseLine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.clauseLine_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.CPR' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.CPR.toCPD' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.CPRefutes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.half_satisfies_cnfAx' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.lifted_needs_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.xorGadget' depends on axioms: [propext]
+'ProofPhase.Proof.Lifting.indGadget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.AliceBalanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.BobBalanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.xor_balanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.ind1_aliceBalanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.ind1_not_bobBalanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.crossingCost_of_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.size_of_crossingCost_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.LiftCP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.GGKS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.lifted_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.lifted_crossingCost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.lifted_np_instance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.lifted_theta_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.LiftCPConst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.constGadget_crossingCost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.constGadget_interface' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.WidthToCP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.widthToCP_crossingCost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Proof.Lifting.lifted_pair_and_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Proof/Lifting*.lean

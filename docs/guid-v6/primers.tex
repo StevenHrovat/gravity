@@ -1,0 +1,31 @@
+% GUID v6: the ten primer boxes, one file each in primers/, each a complete primer environment (preamble.tex) with its label.
+% Place each at first use, preferably by a direct input at the %PRIMER markers of part1.tex and in the sections named below, e.g.
+%   \input{primers/p1-dmp}
+% A direct input keeps build_bib.py's citation order at the place of first use. Alternatively, \input{primers} once after
+% \begin{document} defines the macros below, and \primerDMP and so on place the boxes (build_bib.py then numbers the primers'
+% references from the position of that \input).
+%
+%   primer  label         file                      first use
+%   P1      box:dmp       primers/p1-dmp.tex        Section sec:dmp           (%PRIMER:dmp)
+%   P2      box:qi        primers/p2-qi.tex         Section sec:fix           (%PRIMER:qi, before "The frame is classical")
+%   P3      box:gr        primers/p3-gr.tex         Section sec:fields        (%PRIMER:gr, before "The frame")
+%   P4      box:cq        primers/p4-cq.tex         Section sec:cq            (%PRIMER:cq)
+%   P5      box:holo      primers/p5-holo.tex       Section sec:holo          (%PRIMER:holo)
+%   P6      box:cosmo     primers/p6-cosmo.tex      Section sec:cosmo         (%PRIMER:cosmo)
+%   P7      box:galaxy    primers/p7-galaxy.tex     Section sec:sparc         (or sec:darkmatter)
+%   P8      box:stats     primers/p8-stats.tex      Section sec:scoring
+%   P9      box:particle  primers/p9-particle.tex   Section sec:matter        (%PRIMER:particle)
+%   P10     box:hadron    primers/p10-hadron.tex    Section sec:trees         (%PRIMER:hadron)
+%
+% Each box is background only: established physics or DMP's own text, with citations; none states a result of this paper.
+% Every key cited is defined in bib-core.tex, bib-extra.tex or sections/*-bib.tex.
+\newcommand{\primerDMP}{\input{primers/p1-dmp}}
+\newcommand{\primerQI}{\input{primers/p2-qi}}
+\newcommand{\primerGR}{\input{primers/p3-gr}}
+\newcommand{\primerCQ}{\input{primers/p4-cq}}
+\newcommand{\primerHolo}{\input{primers/p5-holo}}
+\newcommand{\primerCosmo}{\input{primers/p6-cosmo}}
+\newcommand{\primerGalaxy}{\input{primers/p7-galaxy}}
+\newcommand{\primerStats}{\input{primers/p8-stats}}
+\newcommand{\primerParticle}{\input{primers/p9-particle}}
+\newcommand{\primerHadron}{\input{primers/p10-hadron}}

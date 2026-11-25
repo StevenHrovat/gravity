@@ -1,0 +1,39 @@
+== build ProofPhase.Mixing.Doeblin
+Build completed successfully (8927 jobs).
+== build ProofPhase.Mixing.Chain
+Build completed successfully (8928 jobs).
+== axioms
+'ProofPhase.Mixing.Contracts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.etaCoef' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.etaCoef_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.tv_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.IsStoch.contracts_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.contracts_of_doeblin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.etaCoef_le_of_doeblin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.doeblin_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.box_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.pushv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.kcomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.kcomp_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.pushv_kcomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.isStoch_kcomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.tv_pushv_le_coupling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.tv_pushv_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.contracts_kcomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.idK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.isStoch_idK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.kchain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.kpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.isStoch_kchain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.contracts_kchain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.contracts_kpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.isStoch_kpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.tv_pushv_kpow_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.tv_pushv_kpow_le_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.pushv_kpow_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.contracts_kpow_of_doeblin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.column_sum_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.column_sum_ge_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Mixing.column_sum_lt_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in Doeblin.lean, Chain.lean

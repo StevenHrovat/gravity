@@ -1,0 +1,37 @@
+{
+ "beta": 3.5,
+ "ell": 4,
+ "kappa": 16.0,
+ "yclass": "A3",
+ "T": 10,
+ "every": 10,
+ "pool": 2,
+ "pool_T": 10,
+ "batch": 2,
+ "pairs": 320,
+ "pool_pairs": 32,
+ "gpu": true,
+ "seconds_geometry": 1.7778918743133545,
+ "seconds_pool": 77.22475337982178,
+ "seconds_build": 9.054327011108398,
+ "seconds_main": 77.69186186790466,
+ "seconds_total": 165.7488341331482,
+ "sec_per_sweep_main": 7.769186186790466,
+ "sec_per_sweep_pool": 7.722475337982178,
+ "seconds_per_job": 82.8744170665741,
+ "n_box_links": 1024,
+ "ncl": 240,
+ "n_shell": 3584,
+ "d_start0": [
+  576.275
+ ],
+ "d_start1": [
+  417.51875
+ ],
+ "plaq_mean": 0.6487850937651153,
+ "worst_pool": [
+  0,
+  1
+ ],
+ "gpu_mem_bytes": 1885937152
+}

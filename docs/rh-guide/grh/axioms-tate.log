@@ -1,0 +1,11 @@
+== build ProofPhase.GRH.Tate
+Build completed successfully (3092 jobs).
+== axioms
+'ProofPhase.GRH.local_factor_unimodular' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.prime_lattices_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.form_two_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.zero_diag_indefinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.local_assembly_forces_arch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.runs_and_mirror_on_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in Tate.lean

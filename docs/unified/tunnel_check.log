@@ -1,0 +1,8 @@
+t=0.3   T=4.0   c=0.833654607  elec=0.090717953  exp(-T gap)=0.090717953  gap=0.6000 (2t=0.6000)
+    ground state = [-0.70710678 -0.70710678] (symmetric, both nodes bound to one root)
+t=0.05  T=10.0  c=0.462117157  elec=0.367879441  exp(-T gap)=0.367879441  gap=0.1000 (2t=0.1000)
+    ground state = [-0.70710678 -0.70710678] (symmetric, both nodes bound to one root)
+t=1.0   T=0.5   c=0.462117157  elec=0.367879441  exp(-T gap)=0.367879441  gap=2.0000 (2t=2.0000)
+    ground state = [-0.70710678 -0.70710678] (symmetric, both nodes bound to one root)
+t=0.2   T=30.0  c=0.999987712  elec=0.000006144  exp(-T gap)=0.000006144  gap=0.4000 (2t=0.4000)
+    ground state = [-0.70710678 -0.70710678] (symmetric, both nodes bound to one root)

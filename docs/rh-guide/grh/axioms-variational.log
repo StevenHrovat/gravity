@@ -1,0 +1,9 @@
+== build ProofPhase.GRH.Variational
+Build completed successfully (2129 jobs).
+== axioms
+'ProofPhase.GRH.line_min_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.min_at_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.toepForm_combo' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.GRH.toep_pos_convex' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in Variational.lean

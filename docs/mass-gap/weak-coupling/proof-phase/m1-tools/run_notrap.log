@@ -1,0 +1,15 @@
+NT1 local contraction (ratio of spreads after/before one step, worst found):
+  spread <= 0.3: worst ratio 0.0058  (L^(1-d) = 0.00046)
+  spread <= 0.6: worst ratio 0.0235  (L^(1-d) = 0.00046)
+  spread <= 0.9: worst ratio 0.0476  (L^(1-d) = 0.00046)
+  spread <= 1.2: worst ratio 0.0794  (L^(1-d) = 0.00046)
+  spread <= 1.5: worst ratio 0.1130  (L^(1-d) = 0.00046)
+NT2 Haar stars (20000): capture time max 6  mean 2.47  histogram [0, 202, 11239, 7585, 910, 63, 1, 0, 0, 0, 0, 0]
+  search iteration   0: max capture time 5  (trapped = 61)  top 5 [4, 4, 4, 4, 5]
+  search iteration  10: max capture time 6  (trapped = 61)  top 5 [5, 5, 5, 5, 6]
+  search iteration  20: max capture time 7  (trapped = 61)  top 5 [5, 6, 6, 6, 7]
+  search iteration  30: max capture time 7  (trapped = 61)  top 5 [6, 6, 7, 7, 7]
+  search iteration  40: max capture time 8  (trapped = 61)  top 5 [7, 7, 7, 7, 8]
+  search iteration  50: max capture time 8  (trapped = 61)  top 5 [8, 8, 8, 8, 8]
+  search iteration  59: max capture time 9  (trapped = 61)  top 5 [8, 8, 8, 9, 9]
+worst star found: capture time 9, spread 2.720, distance of relative elements to the centre 1.571

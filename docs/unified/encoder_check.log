@@ -1,0 +1,31 @@
+== 1. GRH: Szego step = encoder (u, its mirror image u*)
+-- on the line: 10 atoms; smallest eigenvalue of the full section -4.012e-18
+   step  1  |c| = 0.121824703  |k| = 0.121824703  factor 1-|c|^2 = +9.852e-01
+   step  9  |c| = 0.894910708  |k| = 0.894910708  factor 1-|c|^2 = +1.991e-01
+   step 10  |c| = 1.000000000  |k| = 1.000000000  factor 1-|c|^2 = +3.568e-13
+   max relative |<u*,u*> - <u,u>| (shared root): 1.6e-14
+   max | |c|^2 - |k|^2 | over all steps (encoder = Szego): 4.6e-13
+-- one pair off the line by 0.05: 12 atoms; smallest eigenvalue of the full section -2.109e-04
+   step  1  |c| = 0.226764967  |k| = 0.226764967  factor 1-|c|^2 = +9.486e-01
+   step  9  |c| = 1.124122582  |k| = 1.124122582  factor 1-|c|^2 = -2.637e-01
+   step 11  |c| = 1.919475693  |k| = 1.919475693  factor 1-|c|^2 = -2.684e+00
+   step 12  |c| = 1.000000000  |k| = 1.000000000  factor 1-|c|^2 = +2.137e-12
+   max relative |<u*,u*> - <u,u>| (shared root): 2.1e-13
+   max | |c|^2 - |k|^2 | over all steps (encoder = Szego): 5.4e-13
+== 2. Yang-Mills: electric profile
+   Z_(e=1)/Z_(e=0) = 0.558291181591   elec(Z_tw/Z) = 0.558291181591
+   |psi - U psi|^2 / |psi + U psi|^2 = 1.059004048621   elec(c) = 1.059004048621
+   duality elec(elec(0.3)) = 0.300000000000
+   self-dual point sqrt2 - 1 = 0.414213562: elec = 0.414213562, cost -log = 0.881373587
+   O1 at mu = 3.0: needs Z_tw/Z > (mu-1)/(mu+1) = 0.500000 (factor < 1/mu = 0.333333); hand-over has 0.414214
+   O1 at mu = 6.7744: needs Z_tw/Z > (mu-1)/(mu+1) = 0.742745 (factor < 1/mu = 0.147615); hand-over has 0.414214
+== 3. NP vs coNP: survival share under single restrictions, n = 6 variables
+   clause of width 1: share 0.916667   1 - w/2n = 0.916667
+   clause of width 2: share 0.833333   1 - w/2n = 0.833333
+   clause of width 3: share 0.750000   1 - w/2n = 0.750000
+   clause of width 6: share 0.500000   1 - w/2n = 0.500000
+   threshold 'at least 2 of 6': share 1.000000
+   threshold 'at least 3 of 6': share 1.000000
+   threshold 'at least 4 of 6': share 1.000000
+   parity of all 6: share 1.000000
+   parity label: c = <psi, R psi>/<psi, psi> = 0.000000 (Szego factor 1, elec factor 1)

@@ -1,0 +1,40 @@
+% GUID v6, Primer P8 (label box:stats): the statistics behind the scoring rules of Section sec:scoring. Background only; it states
+% no result of the paper and does not repeat the rules themselves. Place it in Section sec:scoring: \input{primers/p8-stats}
+\begin{primer}{Statistics}{box:stats}
+\setlength{\parskip}{3pt plus 1pt}%
+\emph{Pulls and 95\%.} A measurement $x\pm\sigma$ usually means a Gaussian error with standard deviation $\sigma$. If a prediction
+$x_G\pm\sigma_G$ is right and the two errors are independent, the difference $x-x_G$ is Gaussian with variance $\sigma^2+\sigma_G^2$, so the
+\emph{pull} $p=(x-x_G)/\sqrt{\sigma^2+\sigma_G^2}$ is a standard normal number. It falls outside $\pm1.96$ with probability 5\% (two-sided),
+so $|p|<1.96$ is a test at 95\%, and a published 95\% half-width $b$ corresponds to $\sigma=b/1.96$. \emph{Worked pull:} a model predicts
+$10.0\pm0.3$ and an experiment finds $11.0\pm0.4$. Then $p=1.0/\sqrt{0.4^2+0.3^2}=1.0/0.5=2.0$: a FAIL at 95\%, although a right model
+gives $|p|\ge2.0$ in 4.6\% of independent tests. For $n$ independent tests, about $0.05\,n$ FAILs are expected by chance, and the sum of the
+squared pulls follows a $\chi^2$ distribution with $n$ degrees of freedom. A \emph{$p$-value} is the probability, if the hypothesis under
+test is true, of a result at least as extreme as the one seen; in formulas below it carries a subscript, $p_i$, to keep it apart from
+the pull.
+
+\emph{BIC and $\Delta$BIC.} A model with $k$ fitted parameters that reaches the maximum likelihood $\mathcal L_{\max}$ on $N$ data points has
+$\mathrm{BIC}=-2\ln\mathcal L_{\max}+k\ln N$~\cite{schwarz1978}. The penalty $k\ln N$ charges each extra parameter. For large $N$ and
+independent points, the difference $\Delta$BIC of two models approximates $-2$ times the logarithm of their Bayes factor, the ratio of the
+probabilities of the data under the two models. A $\Delta$BIC of 2 to 6 is then positive evidence, 6 to 10 strong and above 10 very
+strong~\cite{kassraftery1995}. The approximation assumes $N$ independent points. If the points come in groups that share an error, such
+as the distance of one galaxy, the effective number of independent data is closer to the number of groups. A point-wise $\Delta$BIC then
+overstates the evidence, roughly in proportion to the number of points per group.
+
+\emph{The bootstrap.} To learn how much a fitted value would vary in a new sample, one draws many new samples of the same size from the
+data themselves, with replacement, and refits each~\cite{efron1979}. The spread of the refitted values estimates the uncertainty; the 16th
+to 84th percentiles bracket a range comparable to $\pm1\sigma$. The units resampled must be the independent ones, for rotation curves whole
+galaxies, not single points.
+
+\emph{Many tests.} With $m$ tests at 5\% each, the chance of at least one false positive, the \emph{family-wise error rate}, grows towards
+$1-0.95^m$. Bonferroni's remedy tests each at $0.05/m$. Holm's method orders the $p$-values, $p_{(1)}\le\dots\le p_{(m)}$, and rejects
+$p_{(i)}$ while $p_{(i)}\le0.05/(m-i+1)$; it keeps the family-wise error rate at 5\% under any dependence and never rejects less than
+Bonferroni~\cite{holm1979}. Fisher's method combines $n$ \emph{independent} $p$-values: under the null each $p_i$ is uniform, so
+$-2\ln p_i$ follows $\chi^2$ with 2 degrees of freedom, and $X^2=-2\sum_i\ln p_i$ follows $\chi^2$ with $2n$~\cite{fisher1932}. It responds
+strongly to a few very small $p_i$.
+
+\emph{Look-elsewhere and preregistration.} A search over many masses, scales or candidate values finds a small \emph{local} $p$-value
+somewhere by chance. The \emph{global} $p$-value, the chance of so small a value anywhere in the search, is larger, roughly the local one
+times a trials factor~\cite{grossvitells2010}. A test is confirmatory only if its hypothesis, data, statistic and decision rule were
+fixed before the outcome was seen; \emph{preregistration} writes them down in a dated record beforehand, and every choice made afterwards
+is then visible as exploratory~\cite{nosek2018}.
+\end{primer}

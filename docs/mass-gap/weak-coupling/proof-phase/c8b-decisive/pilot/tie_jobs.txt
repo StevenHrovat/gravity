@@ -1,0 +1,8 @@
+tie_z2_b0.6_l9_A z2 0.6 9 A --chains 6 --therm 100 --nodes 5 --step-therm 20 --meas 40
+tie_z2_b0.3_l9_A z2 0.3 9 A --chains 6 --therm 100 --nodes 5 --step-therm 20 --meas 40
+tie_su2_b2.3_l9_A su2 2.3 9 A --chains 4 --therm 60 --nodes 5 --step-therm 15 --meas 20
+tie_su2_b2.3_l5_A su2 2.3 5 A --chains 6 --therm 100 --nodes 5 --step-therm 20 --meas 40
+tie_z2_b0.6_l9_B z2 0.6 9 B --chains 6 --therm 100 --nodes 5 --step-therm 20 --meas 40
+tie_z2_b0.3_l9_B z2 0.3 9 B --chains 6 --therm 100 --nodes 5 --step-therm 20 --meas 40
+tie_su2_b2.3_l9_B su2 2.3 9 B --chains 4 --therm 60 --nodes 5 --step-therm 15 --meas 20
+tie_su2_b2.3_l5_B su2 2.3 5 B --chains 6 --therm 100 --nodes 5 --step-therm 20 --meas 40

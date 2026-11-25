@@ -1,0 +1,23 @@
+DESI DR2 (from memory): Pantheon+ w0 -0.84 wa -0.62 | Union3 -0.67/-1.09 | DESY5 -0.75/-0.86; peak z 0.35-0.44, bump 6-18%, rho(z=2) ~0.73-0.76
+acts       M_esc fcoll0 peak z  bump% r(z=2)     w0     wa
+SFR            9   0.73   0.50    6.3   0.55  -0.63  -1.40
+SFR           10   0.67   0.45    5.5   0.52  -0.63  -1.45
+SFR           11   0.57   0.40    4.3   0.48  -0.63  -1.52
+SFR           12   0.44   0.30    2.5   0.42  -0.63  -1.63
+SFR           13   0.26   0.10    0.4   0.34  -0.66  -1.71
+collapse       9   0.73   1.90   41.1   1.41  -0.81  -0.22
+collapse      10   0.67   1.70   35.6   1.35  -0.81  -0.27
+collapse      11   0.57   1.45   27.9   1.24  -0.80  -0.34
+collapse      12   0.44   1.10   17.7   1.08  -0.80  -0.45
+collapse      13   0.26   0.65    6.6   0.87  -0.84  -0.53
+
+power p on the tracer (rho ∝ tracer^p), SFR acts:
+  M_esc 1e10 p=1: peak z 0.45 bump   5.5%  r(2) 0.52  w0 -0.63 wa -1.45
+  M_esc 1e10 p=2: peak z 0.45 bump  11.4%  r(2) 0.27  w0 -0.26 wa -2.89
+  M_esc 1e10 p=3: peak z 0.45 bump  17.5%  r(2) 0.14  w0 0.11 wa -4.34
+  M_esc 1e11 p=1: peak z 0.40 bump   4.3%  r(2) 0.48  w0 -0.63 wa -1.52
+  M_esc 1e11 p=2: peak z 0.40 bump   8.9%  r(2) 0.23  w0 -0.25 wa -3.04
+  M_esc 1e11 p=3: peak z 0.40 bump  13.6%  r(2) 0.11  w0 0.12 wa -4.56
+  M_esc 1e12 p=1: peak z 0.30 bump   2.5%  r(2) 0.42  w0 -0.63 wa -1.63
+  M_esc 1e12 p=2: peak z 0.30 bump   5.1%  r(2) 0.18  w0 -0.25 wa -3.25
+  M_esc 1e12 p=3: peak z 0.30 bump   7.7%  r(2) 0.07  w0 0.12 wa -4.88

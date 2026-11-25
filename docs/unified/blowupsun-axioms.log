@@ -1,0 +1,23 @@
+== build ProofPhase.Unified.BlowupSUN
+Build completed successfully (8924 jobs).
+== declarations: 17
+== axioms
+'ProofPhase.Unified.su2Mat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.su2Mat_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.su2Mat_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.su2_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.Sphere3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.sphereEquivSU2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.shrink' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.shrink_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.shrink_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.shrink_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.shrink_extinct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.einsteinAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.einstein_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.einstein_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.sun_extinction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.sun_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.Unified.su2_window_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+== source grep
+no sorry / admit / native_decide / axiom in ProofPhase/Unified/BlowupSUN.lean

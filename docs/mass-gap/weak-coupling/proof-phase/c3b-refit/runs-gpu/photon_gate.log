@@ -1,0 +1,21 @@
+=== u1 beta=1.1 N=48 w=2.0 chains=2 meas=80
+  b= 4 (coarse 12^4) content n/a: base couplings [1.6 +- 0.00094, 1.35 +- 0.0011, -0.0442 +- 0.00035, 0.155 +- 0.00045, 0 +- 0, 0 +- 0, 0 +- 0]
+      coarse plaq fund ts 0.799 +- 8.4e-05 ss 0.81 +- 9.1e-05; adj ts 0.421 +- 0.00016 ss 0.46 +- 0.00017; half-block W22 fund 0.449 +- 7.7e-05 adj 0.0484 +- 4.1e-05; retention F 1.79 +- 0.0002 A 9.11 +- 0.0075
+      TV: a 2.11 +- 0.0053  c 16.6 +- 0.0026  H 18.7 +- 0.0064 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 1.35/1.35  c 18.3/18.3  H 19.7/19.7 +- 0.012 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund -0.821 sigma, adj -0.905 sigma
+      closure of the base fit: closure4 0.00797 +- 0.0002, closure5 0.0313 +- 0.00017, closure6 0.0583 +- 0.0001
+  b= 8 (coarse 6^4) content n/a: base couplings [1.92 +- 0.004, 1.62 +- 0.0032, -0.0876 +- 0.0014, 0.144 +- 0.0011, 0 +- 0, 0 +- 0, 0 +- 0]
+      coarse plaq fund ts 0.826 +- 0.00036 ss 0.838 +- 0.00024; adj ts 0.473 +- 0.0008 ss 0.51 +- 0.00053; half-block W22 fund 0.496 +- 0.00027 adj 0.0664 +- 0.00014; retention F 1.68 +- 0.00044 A 7.4 +- 0.0091
+      TV: a 2.24 +- 0.016  c 17.2 +- 0.0059  H 19.5 +- 0.019 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 1.44/1.44  c 22/22  H 23.5/23.5 +- 0.0505 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund 0.393 sigma, adj 0.599 sigma
+      closure of the base fit: closure4 0.00207 +- 0.00026, closure5 0.0225 +- 0.00015, closure6 0.0965 +- 0.00059
+  b=16 (coarse 3^4) content n/a: base couplings [2.18 +- 0.021, 1.81 +- 0.015, -0.11 +- 0.0047, 0.147 +- 0.0047, 0 +- 0, 0 +- 0, 0 +- 0]
+      coarse plaq fund ts 0.848 +- 0.0011 ss 0.862 +- 0.00063; adj ts 0.522 +- 0.0026 ss 0.563 +- 0.0015; half-block W22 fund 0.536 +- 0.0011 adj 0.0863 +- 0.00073; retention F 1.6 +- 0.002 A 6.29 +- 0.036
+      TV: a 2.41 +- 0.059  c 17.5 +- 0.019  H 20 +- 0.071 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; lam*_H 0; Y/X TV inf
+      W1 (lin.): a 1.55/1.55  c 24.9/24.9  H 26.5/26.5 +- 0.264 -> H EXCLUDED, a EXCLUDED, c EXCLUDED; Y/X W inf-inf
+      drift (2nd half - 1st half of the measurements): fund 0.379 sigma, adj 0.505 sigma
+      closure of the base fit: closure4 0.000518 +- 0.00053, closure5 0.0138 +- 0.00031, closure6 0.0841 +- 0.0016
+photon beta1.1_N48: {'windows_excluded': True, 'flat': True, 'flat_symmetric_LegC': False, 'level': True, 'q1': {'ts': {'by_b': [(4, 1.5969873743867222, 0.0009409811444418844), (8, 1.9214385174518829, 0.00396485843431142), (16, 2.1772965255492513, 0.021150847871592316)], 'mean': 1.8985741391292856, 'no_fall': True, 'bounded': True}, 'ss': {'by_b': [(4, 1.349849199341199, 0.0011212434158178533), (8, 1.6233344045879294, 0.0032027088495039458), (16, 1.8079844987969844, 0.015367706240291467)], 'mean': 1.5937227009087043, 'no_fall': True, 'bounded': True}}, 'pass': True}
+PHOTON GATE PASSED

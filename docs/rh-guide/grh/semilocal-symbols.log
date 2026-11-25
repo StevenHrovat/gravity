@@ -1,0 +1,12 @@
+
+The places as symbols in the frequency r (zeros at r = gamma):
+  phi_2: period 2pi/log 2 = 9.0647; exact range [-3.3468, 0.5742]; mean 0
+  phi_3: period 2pi/log 3 = 5.7192; exact range [-3.0015, 0.8042]; mean 0
+  phi_2 + phi_3 on [0, 1e+03]: mean  1.60e-04, min -6.3483, max  1.3784  (torus range [-6.3483, 1.3785])
+  phi_2 + phi_3 on [0, 1e+05]: mean  1.81e-05, min -6.3483, max  1.3785  (torus range [-6.3483, 1.3785])
+  phi_2 + phi_3 on [0, 1e+06]: mean  1.64e-06, min -6.3483, max  1.3785  (torus range [-6.3483, 1.3785])
+  phi_inf(1) = -2.0251   (log(r/2pi) = -1.8379)
+  phi_inf(14.13) =  0.8102   (log(r/2pi) =  0.8104)
+  phi_inf(100) =  2.7673   (log(r/2pi) =  2.7673)
+  phi_inf(1000) =  5.0699   (log(r/2pi) =  5.0699)
+  phi_inf(100000) =  9.6750   (log(r/2pi) =  9.6750)
