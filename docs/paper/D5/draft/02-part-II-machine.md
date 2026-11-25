@@ -63,6 +63,32 @@ machine runs, lives in the state and not in the number; that is where its undeci
 number theory "complex multiplication" names something else (elliptic curves with extra symmetries, near Part VII); here it is
 always "multiplication by complex numbers".
 
+### II.0.1 The complex-number ruleset
+
+Nine rules carry all the mathematics of the paper. Each is stated once here with a
+small example and where the paper uses it; a reader who knows them reads "turn", "phase", "cost" and "half-turn" everywhere in the
+same sense (claim II.0i).
+
+| Rule | Statement | Small example | Used in |
+|---|---|---|---|
+| C1 Multiplying is scaling times turning | $z = r e^{i\theta}$, and $z w$ has size $r s$ and angle $\theta + \varphi$: sizes multiply, angles add | $i \cdot i = -1$: two quarter-turns make a half-turn | II.0, every running system |
+| C2 The cost is minus the log of the size | for $\lvert z \rvert \le 1$ the cost $-\log \lvert z \rvert \ge 0$, and costs add along a run | size 1/2 costs log 2 a step; ten steps cost 10 log 2 | the ledger II.1, settling II.3, the free energies of III.3 |
+| C3 Rotations add | $e^{ia} e^{ib} = e^{i(a+b)}$; on $N$ steps $\zeta^a \zeta^b = \zeta^{(a+b) \bmod N}$ | ROT13 twice is a rotation by 26, the identity; by 14 twice leaves 2 | T.5, II.2.8 |
+| C4 A full turn averages to one exact value | $\sum_{j<N} \zeta^{jk}$ is $N$ when $N$ divides $k$ and 0 otherwise | the four quarter-turns $1 + i - 1 - i = 0$ | II.2.7 |
+| C5 The mirror pairs the halves | $\overline{e^{i\theta}} = e^{-i\theta}$; for a function real on the real axis the $+$ half of a turn mirrors the $-$ half, and the result is real | $\cos\theta = (e^{i\theta} + e^{-i\theta})/2$ | II.2.7, the electric sectors of III.3.1c |
+| C6 The turn back is the inverse turn | averaging against $\zeta^{-jk}$ recovers each coefficient | the full turn decodes its $N$ coefficients | II.2.8, III.3.1c |
+| C7 The logarithm turns products into sums | $\log(xy) = \log x + \log y$, $\log x^k = k \log x$ for $x, y > 0$; for complex numbers $\log z = \log\lvert z\rvert + i \arg z$, so a product of steps becomes a sum of costs (real part) plus a sum of turns (imaginary part) | $\mu^k$ paths against $e^{-kF}$ cost: the sum decays when $F > \log\mu$ | II.0 (decidability), III.5.4, R.7c |
+| C8 Size-keeping maps are reversible | a complex-linear map keeping every size is a unit multiplication; on bits read as reals a reversible computation is a permutation, unitary | ROT13 permutes the letters; a hash is not a permutation | II.0f, II.4.1, II.2.8 |
+| C9 One turn around a point counts what is inside | one turn reads off a Taylor coefficient, $1/n!$, the order of a zero (a winding number), a leading coefficient | $1/n!$ is one turn of $e^z z^{-n-1}$ around 0 | II.2.7, IV.1.5c, VII.3.5f |
+
+C7 in its complex form joins C1, C2 and C3: every multiplicative step of the real picture becomes an additive one in the complex
+picture, costs adding in the real part and turns in the imaginary part. Its one ambiguity is exactly a full turn: the complex logarithm
+is defined up to adding $2\pi i$, which is why C4 and C9 read off exact values from one turn. The first author reads this as being able
+to simplify away the multiplicative steps of real mathematics into additive complex ones **[reading]** (claim II.0i).
+
+C1 to C9 are **[classical]**; their forms used in the proofs are **[Lean]**: C1 and C2 in `ETM/Complex.lean` (II.0 above), C3 in
+`rot_add`, C4, C6 and C9 in IM's `Arsenal/FullTurn.lean`, C8 in `rot_of_isometry` (II.0 above).
+
 ## II.1 The ledger and the transport theorem
 
 **Why it clicks.** A step that forgets a fixed share each time forgets geometrically. Write the share as a cost, and costs add.
@@ -168,6 +194,22 @@ All of it is in IM's arsenal, `Arsenal/FullTurn.lean`, from Mathlib alone. At N 
 the even and odd parts psi + psi' and psi - psi', and the electric factor of II.2.2 is their ratio: the encoder is the full turn at
 N = 2 **[paper]** (claim II.2.7). The parts use the turn four times: the hand-over over all N sectors (II.13.3, III.3), the explicit
 formula (IV.1), the BSD rank and leading coefficient (VII.3), and the first author's factorial reading (R.7).
+
+**Encoding, decoding, and smelly states (II.2.8).** An *encoding* is a map out, a *decoder* a map back. A state is **smelly**, in the
+first author's word, when decoding its encoding does not return it: the turn out and back did not close, the rotational symmetry is
+not positive. Four facts decide when a decoder can be clean **[Lean]** (IM, `Arsenal/Decode.lean`; claim II.2.8):
+
+* a decoder that is never smelly is exactly a left inverse of the encoding (`never_smelly_iff`);
+* an injective encoding has such a decoder (`exists_clean_decoder`);
+* a lossy encoding makes every decoder smelly somewhere (`smelly_of_not_injective`), and every hash is lossy, a map from all messages
+  to finitely many digests, so every decoder of a hash is smelly somewhere (`hash_smelly`);
+* the full turn decodes: reading N coefficients at the powers of a root of unity and averaging one turn back returns every one
+  (`turn_decodes`, C6).
+
+These four carry what Appendix R and T say about hashes and turns, as instances of one statement. A digest is traced to an origin,
+never decoded to its one input (R.6a, T.6, from `hash_smelly`); a known cyclic rotation is undone by completing its turn (R.8b, from
+`turn_decodes`); the toy's smelly states, rotating `vxunderground` by k and back by k', are this notion (`toy_smelly_iff`, T.5);
+and the round-trip check of the repository's trusted hashes is a test that each pin is not smelly, back and then forth (R.6b).
 
 ---
 
@@ -294,9 +336,33 @@ of their own as observable systems is **[paper]**, since they are gravity's own 
 | VIII Hodge | the Hodge statement for the input at every step | `cardBox` | the base case, proved for divisors | `tickBox_observable` |
 | IX GU | charge quantisation at every step | `tickBox` (a box, no card) | none in the box: it passes, proved; the GU open step lies outside it (IX.5e) | `tickBox_observable` |
 | Appendix T | an even word at every step, at every bit width | IM's box | none: base case, inductive step and the map of scales all proved | native |
+| Trusted hashes (R.6b) | each trusted hash: back and forth deliver the same value | the round-trip check | none: the canary is the base case, 9 proofs pass | [paper] |
 
 So the proof has one shape everywhere, and the parts show where its open part sits: the base case on the cards, the inductive step on
-the Yang-Mills box. Appendix T runs all of it on binary words.
+the Yang-Mills box. Appendix T runs all of it on binary words. The figure shows the shape once.
+
+<!-- latex
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\small}]
+  \foreach \i in {0,1,2,3} { \node[draw,circle,minimum size=7mm] (s\i) at (\i*2,0) {$\i$}; }
+  \node (dots) at (7.9,0) {$\cdots$};
+  \foreach \i/\j in {0/1,1/2,2/3} { \draw[->,thick] (s\i) -- node[above,font=\footnotesize] {step} (s\j); }
+  \draw[->,thick] (s3) -- (dots);
+  \node[draw,rounded corners,fill=gray!15,align=center,font=\footnotesize] (base) at (0,-1.45) {base case:\\ the claim at 0};
+  \draw[->] (base) -- (s0);
+  \node[align=center,font=\footnotesize] at (4,1.05) {inductive step: once true at a step, true at the next};
+  \node[draw,rounded corners,font=\footnotesize] (c1) at (2,-2.9) {scale 2};
+  \node[draw,rounded corners,font=\footnotesize] (c2) at (4.4,-2.9) {scale 3};
+  \node[draw,rounded corners,font=\footnotesize] (c3) at (6.8,-2.9) {scale $\dots$};
+  \foreach \c in {c1,c2,c3} { \draw[->,dashed] (\c) -- (4,-0.55); }
+  \node[align=center,font=\footnotesize] at (4.4,-3.75) {dashed: a map keeping the step, the check and the marker (the shared gate)};
+\end{tikzpicture}
+\caption{The headline as a picture. A statement is checked at every step of a run; a proof is a base case and an inductive step, and
+the dashed maps carry it to every scale. Where the open part sits: on a card, the base case; on the Yang-Mills box, the inductive step;
+for G2 and the verify toy, the dashed maps.}
+\end{figure}
+-->
 
 ## II.5 The API: cards
 

@@ -25,7 +25,8 @@ shared across scales, at every scale. In Lean this is IM's `Arsenal/Observable.l
 full turn: IM's `Arsenal/FullTurn.lean`, the SU(N) hand-over over all N centre sectors (`General/SUNFullTurn.lean`), and its use in
 II.2.7, II.13.3, II.13.4, III.3.1c, III.5.4d, IV.1.5c, VII.3.5f and Appendix R (R.5c, R.6a, R.7, R.8); the headline in the
 abstract, the introduction and II.4.1, each problem part opening with its system as observed; Appendix T, the verify toy on binary
-words (IM, `Arsenal/Toy.lean`); every trusted hash proven by rotation (`tools/trust-roundtrip.sh`, R.6b). The one assumption O1 is untouched.
+words (IM, `Arsenal/Toy.lean`); every trusted hash proven by rotation (`tools/trust-roundtrip.sh`, R.6b); the complex-number ruleset (II.0.1), encoding and
+decoding with smelly states (II.2.8, IM `Arsenal/Decode.lean`), the headline's figure (II.4.1) and the index of readings (R.0). The one assumption O1 is untouched.
 
 **Build and check**, from the repository root:
 

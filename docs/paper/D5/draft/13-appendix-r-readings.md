@@ -6,6 +6,48 @@ This appendix holds what no card of Parts III to IX uses: DMP's own neighbours (
 arsenal) and two readings of the first author that are not tied to one part (the essence line and the rotatable hash). Each
 section names the result it reads; the marks are those of the introduction.
 
+
+## R.0 Where the readings are
+
+The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
+Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
+mark; the ledger lists each with its claim label.
+
+| Where | Readings (ledger labels) | Count |
+|---|---|---|
+| Introduction | 0.13, 0.21 | 2 |
+| Part I, DMP's vocabulary | I.1, I.2, I.3, I.4b, I.5a, I.7b, I.7c | 7 |
+| Part II, the machine | II.0h (decidability over every truly possible state), II.3.4, II.4f, II.12.5r, II.13.4 (a maximum over sectors as a rotation of a rate along a path) | 5 |
+| Part III, Yang-Mills (III.10) | III.7.4c, III.9.5b, III.10 | 3 |
+| Part IV, GRH | IV.1.5c (the explicit formula as one turn), IV.2.5b, IV.2.7, IV.6 | 4 |
+| Part V, P vs NP (V.8) | V.2.4, V.4.1, V.4.2, V.5.3, V.8 | 5 |
+| Part VI, Navier-Stokes (VI.7) | VI.3.5e, VI.5.5, VI.7a to VI.7f, VI.7h | 9 |
+| Part VII, BSD (VII.6) | VII.6a to VII.6e, VII.6g | 6 |
+| Part VIII, Hodge (VIII.6) | VIII.6a, VIII.6b, VIII.6d to VIII.6f, VIII.6h, VIII.6i | 7 |
+| Part IX, GU (IX.5, IX.6) | IX.5a, IX.5f, IX.5g, IX.6a, IX.6b, IX.6d, IX.6e, IX.6g, IX.6h | 9 |
+| Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69 to X.71, X.72a | 40 |
+| The Outlook | XI.1, XI.1b to XI.1d | 4 |
+| Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c | 20 |
+| Appendix T | T.6, T.10, T.11 | 3 |
+
+**The readings added in Draft 5, with their exact counterparts:**
+
+| Reading | Exact counterpart | Where |
+|---|---|---|
+| The factorial is the real span of a full +- oscillation around its real weight | 1/n! is one turn of e^z z^(-n-1) **[Lean]**; the saddle point at n **[classical]** | R.7a |
+| SU(N) gives SO(N! + k); the dimension defines how much a system can say | two different facts at N = 2 and 3 **[classical]**; neither continues | R.7b |
+| A maximum over sectors is a rotation of a rate along a path up to the shared root | the mean form of the balance **[Lean]** | II.13.4 |
+| A hash certifies origin, not identity; post-quantum means stating where the primitives come from | every hash has collisions **[Lean]**; sha256's prime constants, Grover, Shor **[classical]** | R.6a |
+| Any trusted hash is first proven by rotation; DMP cannot write what it cannot read | the round-trip check, 9 proofs **[paper]** | R.6b |
+| Derivations are the slopes across DBs | the tangent space is the space of derivations; a derivative is a ratio of two turns **[Lean]** | R.8a |
+| Draft 5 as the approach to a universal deobfuscator | the turn undoes a known cyclic rotation **[Lean]**; a hash is not undone **[Lean]** | R.8b, II.2.8 |
+| Reduction and expansion while calculating enable hyper-efficient meta-layers | the fast Fourier transform, reversible computation **[classical]** | R.8c |
+| The path is the certificate; a reconstruction at path cost 1 shares a DB (under O1) | forward one hash per input; backward refuted **[numerical]** | T.6 |
+| Rebuilding is reassembling the parts as the API guides | inductions combine for systems side by side **[Lean]** | T.4 |
+| Smelly: the full turn on vxunderground does not encode | smelly exactly when the turn is not full **[Lean]**; II.2.8 | T.5 |
+| 14 is 13 + existence; y^k as y + k | rotations add **[Lean]** | T.5 |
+
 ## R.1 DMP as an existence linter
 
 **DMP.** The author's one-line description of DMP: it is a very well defined *existence linter*. A linter checks a text against a
@@ -186,7 +228,8 @@ is not a separate mechanism. Every certification is re-made at each tick, agains
 the validity window of any hash is bounded by the interval between two ticks **[reading]** (claim X.53). What leaves the inside is outside
 by definition, so its lifetime is the boundary's matter, not the rotation's.
 
-**A hash certifies origin, not identity (claim R.6a).** Every hash has collisions: a map from all messages to finitely many digests
+**A hash certifies origin, not identity (claim R.6a).** This is the hash case of II.2.8: every decoder of a hash is smelly
+somewhere (`hash_smelly`). Every hash has collisions: a map from all messages to finitely many digests
 is never injective **[Lean]** (`ETM/Essence.lean`, `hash_collision`; `digest_collision` for 256-bit digests). So a digest cannot say
 which message it came from, only that the input is consistent with a claimed origin. The first author reads a post-quantum hash as
 one that states where its primitives come from, a direction in causality **[reading]**. sha256 does state it: its 64 round constants
@@ -262,8 +305,7 @@ DMP-complete problem **[reading]**. Its exact part is narrower and stated as suc
 cyclic rotation: one turn recovers each component (II.2.7; in Lean `full_turn_coeff`, for the cyclic group of order N; finite
 abelian groups follow by products). Its discrete form is the quantum Fourier transform at the core of Shor's algorithm, which reads a
 hidden period in polynomial time on a quantum computer and so breaks factoring and discrete logarithms there, and Fourier sampling
-solves the hidden subgroup problem for every finite abelian group **[classical]** (Shor 1997; Kitaev 1995). Where it stops is in this
-paper too. A lossy map cannot be undone: every hash has collisions **[Lean]** (`hash_collision`, R.6a), so a digest can be traced to
+solves the hidden subgroup problem for every finite abelian group **[classical]** (Shor 1997; Kitaev 1995). Where it stops is II.2.8. A lossy map cannot be undone: every hash has collisions **[Lean]** (`hash_collision`, R.6a), so a digest can be traced to
 an origin consistent with it, not to its message **[paper]**. For non-abelian groups Fourier sampling is not enough in general: for
 the symmetric groups, strong Fourier sampling is known to fail **[classical]** (Moore-Russell-Schulman 2008). In the paper's terms a
 DMP-complete box is already readable at every tick (II.4.1); the open steps are whether a box is DMP-complete, and the full turn does

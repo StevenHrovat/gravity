@@ -52,7 +52,7 @@ DMP-complete at every step: the 13 bytes are checked, and past the end there is 
 13, the string reads `ikhaqretebhaq` (`vx_rot13`); the second half-turn completes the full turn and returns it
 (`vx_rot13_twice`), and so does a known rotation completed to a full turn, for example 5 + 21 = 26 (`vx_rot_complete`) **[Lean]** (claim T.8).
 When the rotational symmetry is not positive, when the turn on the string does not complete and the encoding does not come back,
-the first author calls the state **smelly**. In Lean (`Smelly`): rotating by k and then by k' leaves the string changed; for rotations
+the first author calls the state **smelly**, the toy instance of II.2.8 (`toy_smelly_iff`). In Lean (`Smelly`): rotating by k and then by k' leaves the string changed; for rotations
 below 26 that happens exactly when k + k' is not a multiple of 26, checked for all 676 pairs by one kernel evaluation
 (`smelly_iff_not_full`). Two half-turns are not smelly (`not_smelly_rot13`); a rotation by 1 twice is (`smelly_one_one`) **[Lean]**
 (claim T.11). Rotations add: rotating by a and then by b is rotating by a + b modulo 26, for all 676 pairs (`rot_add`), so the residue of
@@ -76,7 +76,8 @@ A digest is a certificate of its path: given the input, one forward run rebuilds
 `ec4916dd...aac8bc5`. Flipping any one of the 104 input bits of `vxunderground` changes between 105 and 148 of the 256 digest bits,
 128.7 on average: half, the avalanche a hash is designed for **[classical]** for the design criterion (Webster-Tavares 1985).
 
-**Backward, without the input, there is no short path** **[numerical]** (claim T.9). Inputs built by rotating a 1 into place (one byte
+**Backward, without the input, there is no short path** **[numerical]** (claim T.9). In the terms of II.2.8 every decoder of a hash
+is smelly somewhere (`hash_smelly`); the runs show it on concrete candidates. Inputs built by rotating a 1 into place (one byte
 0x01, the character "1", 32 bytes 0...01, 256 characters 0...01) are hashed once each; none gives 000...0001, so each is refuted at
 its one step. A digest of a chosen shape is a search: the first input `vxunderground-n` whose digest starts with k zero hex digits and
 ends in 1 is found after 246, 609, 13113, 26014 and 2123543 tries for k = 1 to 5, single draws against an expected count of about
