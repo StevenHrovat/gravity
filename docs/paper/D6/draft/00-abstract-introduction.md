@@ -248,7 +248,7 @@ exactly, or that it does not; the two routes below follow v from stop to stop.
   \node[anchor=west,align=left,font=\footnotesize] at (3.5,1.3) {each step: size $\tfrac12$, cost $\log 2$\\ (the VIBE coefficient $v$, to two\\ digits), and a turn of $\tfrac18$ (the\\ circle, $c$ read as its assertion)};
   \node[anchor=west,align=left,font=\footnotesize] at (3.5,-1.5) {dashed: the closing step,\\ the next thing to happen\\ after step $7$};
 \end{tikzpicture}
-\caption{The throughline as a picture. Eight steps of an eighth of a turn, each of size 1/2: before the eighth no step closes, and the
+\caption{The first throughline as a picture. Eight steps of an eighth of a turn, each of size 1/2: before the eighth no step closes, and the
 eighth does (dashed), so closure is inevitable and, until then, has not happened. At closure the product $2^{-8}$ is real and positive;
 one more half-turn would make it negative, the refutation. The size is the first author's VIBE coefficient (log 2 per halving), the
 turn the circle that the first author reads $c$ as asserting; the card that claims this closure as its next step is a vAPI.}
