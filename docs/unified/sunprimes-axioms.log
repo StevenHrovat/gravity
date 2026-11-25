@@ -1,6 +1,6 @@
-== build ProofPhase.General.SUNHandOver
-Build completed successfully (9024 jobs).
-== declarations: 170
+== build ProofPhase.General.SUNFullTurn
+Build completed successfully (9027 jobs).
+== declarations: 175
 == axioms
 'ProofPhase.General.flip0_flip0_of_left_inv' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.General.sliceMap_sliceMap_of_left_inv' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -172,5 +172,10 @@ Build completed successfully (9024 jobs).
 'ProofPhase.General.suN_dirichlet' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.General.composite_examples' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ProofPhase.General.sun_handover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.sum_cos_sectors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.sunZel_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.sunZel_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.sun_handover_full_turn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProofPhase.General.sunZel_pos_two' depends on axioms: [propext, Classical.choice, Quot.sound]
 == source grep
 no sorry / admit / native_decide / axiom in ProofPhase/General/SUNTwist*.lean
