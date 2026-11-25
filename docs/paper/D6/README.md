@@ -34,8 +34,9 @@ the naturals from step 1, the complexity question in IM's operators (`P.NP!`, `N
 SU(5) as a table, encoding and hash as one function in a `+` or `-` state, and the assumptions packed into O1, what does not pack being
 falsifiable until an exception, one exception to the Riemann hypothesis being a contradiction (all the first author's reading, with
 their care points: P != NP, BSD and Hodge are not refutable by one exception, and the open inclusions keep `?`). The interface first
-planned for a later draft is built here. R.12i reads `!` as the observability operator where a statement can be DMP-complete, and R.12j, closing
-the section, reads ordinality as the orbit of the atoms by possible configuration (both readings with their exact parts and care).
+planned for a later draft is built here. R.12i reads `!` as the observability operator where a statement can be DMP-complete, R.12j reads ordinality
+as the orbit of the atoms by possible configuration, and R.12k, closing the section, names each recognized induction an Insight,
+linked to the first author's public comments on DMP#25 as the record of the root (both readings with their exact parts and care).
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
 mirror (E.0.2): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which
