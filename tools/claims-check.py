@@ -20,7 +20,7 @@ rows_part = claims[:claims.index('## Draft 3 labels')]
 ids, counts = collections.Counter(), collections.Counter()
 malformed = []
 for line in rows_part.splitlines():
-    m = re.match(r'\| ([0-9IVXART]+\.[^ |]*) \| ', line)
+    m = re.match(r'\| ([0-9IVXARTE]+\.[^ |]*) \| ', line)
     if not m:
         continue
     cells = [x.strip() for x in line.strip().strip('|').split('|')]
@@ -43,7 +43,7 @@ if dups:
     bad.append('duplicate IDs: ' + ', '.join(dups))
 
 fi, ci = claims.index('## Folded labels'), claims.index('## Counts by')
-folded = set(re.findall(r'(?m)^\| ([0-9IVXART]+\.[^ |]+) \| ', claims[fi:ci]))
+folded = set(re.findall(r'(?m)^\| ([0-9IVXARTE]+\.[^ |]+) \| ', claims[fi:ci]))
 heads = set()
 for f in glob.glob(os.path.join(ROOT, 'draft', '*.md')):
     heads |= set(re.findall(r'(?m)^#{2,3} (' + R + r'\.\d+(?:\.\d+)*)', io.open(f, encoding='utf-8').read()))
