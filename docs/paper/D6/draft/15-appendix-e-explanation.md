@@ -107,11 +107,16 @@ every part the measured table reaches (`versions_settled`) **[Lean]**.
 
 `tools/rebuild matrix --optimize` builds the same table from the repositories as they are, one node per repository at one commit: each
 part at its head, each held copy and pinned commit at its pin, a held copy's own held copies, and the uses of a pinned commit read from
-the part's history where it is there. Run on 2026-11-25 by `tools/reproduce.sh matrix` from this draft's branch with the IM it pins,
-`e9a4057`, it finds the same one redundant use at the current commits, IM's own copy of DMP `1370dc0`, already included through its
+the part's history where it is there. Run on 2026-11-25 by `tools/reproduce.sh matrix` from Gravity `b474cab` (this draft's branch) with the IM it
+pins, `e9a4057`, it finds the same one redundant use at the current commits, IM's own copy of DMP `1370dc0`, already included through its
 copy of Gravity `4ec1131`, and prints the shortest sentences, each a chain of kept uses ending in `!`:
 
-SENTENCES
+```
+use: im@e9a4057 -> dmp@1370dc0  ? answered by .: redundant, already included through gravity@4ec1131
+sentence: gravity@b474cab . dmp@4400cce !
+sentence: gravity@b474cab . im@e9a4057 . gravity@4ec1131 . dmp@1370dc0 !
+optimizer: NOT SETTLED, 1 of 5 uses redundant: the optimized form removes them (5 versions)
+```
 
 `tools/reproduce.sh matrix` asserts exactly this: every cell `+`, and the versions settled or not settled by exactly that one use
 **[paper]** (claim E.9). In the first author's reading of II.0.3 the system exists only when it is settled. Settling it means IM
