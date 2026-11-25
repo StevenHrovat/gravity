@@ -108,7 +108,7 @@ In a clone of the public IM repository, at the commit `docs/mass-gap/formal/lake
 `lake exe cache get` (Mathlib's prebuilt files, about 5 GB) and `lake build Arsenal.Toy`; `tools/check.sh` reports, for every
 declaration of the arsenal, the axioms it rests on, and every one of the toy's rests on no more than Lean's three standard axioms.
 The prebuilt files are loaded without a new check; a replay (Lean's `lean4checker`, or a second kernel such as nanoda over
-`lean4export`) checks them again locally. The finite layer needs none of that: `cd arsenal/core`, then `tools/check.sh`, in seconds and with nothing to download (T.8).
+`lean4export`) checks them again locally; IM's `tools/rebuild check` runs both (T.9). The finite layer needs none of that: `cd arsenal/core`, then `tools/check.sh`, in seconds and with nothing to download (T.8).
 
 ## T.8 The finite layer, on the kernel alone
 
@@ -134,3 +134,34 @@ the efficiency by which DMP and its content are constructed **[reading]** (claim
 does not depend on the language. Care point: a definition is the specification, in the finite layer as well (`rotl` is a rotation for
 words below `2 ^ n`, `Smelly` is about the one string, `rotr` is written as the inverse of `rotl`), so whether a library's object is
 the mathematician's object is read, not computed; and no kernel evaluation reaches an infinite statement such as O1.
+
+## T.9 Two kernels, contained
+
+**What IM contains.** For G0, the first author reads "contain" as a vendored, pinned link to an External, whose supply every valid
+minting needs, for any such External; the White Key Holders carry that supply **[reading]** (claim T.15). Its exact counterpart is
+DMP's mint prep: preparing a minting stores every dependency inside the configuration's repository and verifies each one against its
+pin, and without that the minting refuses to start; the root repositories stay lean, since toolchains join only at mint prep (DMP 01,
+G0; DMP 00) **[paper]**. IM holds the pinned links, never their content: `externals/EXTERNALS` names the Lean toolchain by its sha256
+and lean4export, nanoda and lean4lean by their commits, and `arsenal/lake-manifest.json` names Mathlib and every package it needs by
+commit **[paper]** (claim T.14).
+
+**Proven before used.** Every pinned commit is fetched by its id and the id recomputed from its content, and every held copy is rebuilt
+byte for byte, before every commit and push of IM and in IM's verify workflow (22 proofs) **[paper]**. Gravity pins IM by construction,
+and its own round trip proves that pin the same way before anything of IM is used. The first author: any valid IM, proven before it
+is used, raises no issue **[reading]** (claim T.15).
+
+**The supply and the two kernels.** `tools/rebuild supply` fetches every External by its pin into an offline supply, and
+`tools/rebuild supply-verify` refuses a supply in which anything is missing or differs (14 items, 601 MB; a changed hash and a missing
+item were both refused) **[paper]**. `tools/rebuild check` runs two kernels written separately: Lean's own (`leanchecker`, replaying
+each declaration) and nanoda (in Rust, over the terms lean4export writes out); a declaration counts only when both accept it, on the
+standard axioms only **[paper]**. Results of 2026-11-25, quick mode: IM's core, 3,543 declarations checked by nanoda, also offline
+from the supply alone; IM's arsenal, 82,502; the paper's Lean, all 364 modules replayed by Lean's kernel and 103,546 declarations
+checked by nanoda, the paper's proofs with everything of IM, Mathlib and Lean they rest on (28 minutes) **[numerical]** (claim T.14).
+`tools/reproduce.sh kernels` runs the last from the pinned IM. Full mode, the whole closure from nothing, ran once with Gravity's
+earlier tool (2026-11-23, both kernels passed; `docs/unified/independent-check.stamp`) and is not repeated here.
+
+**Care points.** The supply proves the bytes of each External against its pin, not that the tools are correct; two kernels written
+separately make a shared error unlikely, not impossible (lean4lean is an optional third). In quick mode the first kernel replays the
+target's own modules on top of their imports and the second re-checks everything the target uses, so what neither re-checks in quick
+mode is the part of Mathlib the target does not touch. A supply holds Mathlib's source, so an offline check builds Mathlib from it
+(hours); Mathlib's prebuilt files are trusted only through the kernels' re-check.
