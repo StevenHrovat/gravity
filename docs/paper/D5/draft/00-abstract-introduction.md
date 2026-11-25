@@ -43,8 +43,7 @@ correct at every tick. One assumption is stated once, as a reading: on the cards
 the box is DMP-complete, its gate shared across scales; on each card a different open statement, and results using it are
 marked conditional. Proved in Lean without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of
 fixed physical size, uniform in spacing and volume; the classical explicit formula for all nontrivial zeros of zeta (its real-place term not yet matched to Weil's); a crossing
-theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index; the full turn, giving the SU(N) hand-over log(1 + sqrt N) (positive electric sectors assumed for N >= 3)
-and the BSD rank as a winding number. Weil's positivity
+theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index; the full turn, giving the SU(N) hand-over log(1 + sqrt N) (electric sectors assumed positive, N >= 3) and the analytic rank as a winding number. Weil's positivity
 on a first box, with the real place and the primes 2, 3, is enclosed in ball arithmetic with explicit margins, given
 analytic estimates argued in a note. A model box from the Navier-Stokes energy bound alone gives a wrong marker.
 
@@ -268,8 +267,9 @@ whose row gives the claim's status, its source and what would upgrade it. Where 
   Weil's positivity with the primes 2 and 3 and explicit margins **[certified]** for the enclosures, **[paper]** for the estimates.
 * The hand-over bound, the strict twist bound for every SU(N), and zero join loss in slab form **[Lean]**.
 * A Mathlib-only BSD core over number fields, published in IM **[Lean]**.
-* The full turn as one tool, in IM's arsenal: the half-turn is its case N = 2; it gives the hand-over over all N centre sectors,
-  log(1 + sqrt N), and reads the BSD leading coefficient and the analytic rank (a winding number) as one turn around s = 1 **[Lean]**.
+* The full turn as one tool, in IM's arsenal: it gives the hand-over over all N centre sectors, log(1 + sqrt N), also as a mean
+  along a path, with positive electric sectors assumed for N >= 3, and reads the BSD leading coefficient and the analytic rank (a
+  winding number) as one turn around s = 1 **[Lean]**; the encoder's half-turn is its case N = 2 **[paper]**.
 * One geometry, two edges: a lower and an upper bound on one sequence of tick factors are independent and exclude each other on
   one sequence **[Lean]**; reading them as GRH's margin and O1 is the paper's identification **[paper]**; nothing is proved about GRH
   or O1 themselves.

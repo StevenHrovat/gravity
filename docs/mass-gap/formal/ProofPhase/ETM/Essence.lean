@@ -2,7 +2,8 @@
 The essence chain 2 + 2 = 5 = 4 = 0 = 1, its exact core (2026-11-24).
 Released under Apache 2.0.
 
-Paper: `docs/paper/draft/13-appendix-r-readings.md`, R.5 (the first author's reading, with this proved core) and R.6 (the hash).
+Paper: `docs/paper/draft/13-appendix-r-readings.md`, R.5 (the first author's reading, with this proved core); Draft 5 adds the hash,
+`docs/paper/D5/draft/13-appendix-r-readings.md`, R.6a.
 -/
 
 import Mathlib

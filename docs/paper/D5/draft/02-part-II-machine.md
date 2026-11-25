@@ -147,11 +147,11 @@ above (mu - 1)/(mu + 1) for every outside. GRH: the Verblunsky step of the zero 
 with a cutting-planes line, so the encoder explains resolution's cost but supplies none for strong systems **[paper]**
 (`docs/unified/ENCODER.md`, 1).
 
-**The full turn (II.2.7).** The half-turn is the case N = 2 of one tool. Go once around a point, from -pi to +pi, and average: the +
-half mirrors the - half, and one exact number is left.
+**The full turn (II.2.7).** The half-turn is the case N = 2 of one tool. Go once around a point, from -pi to +pi, and average, and
+one exact number is left; for a function real on the real axis, such as exp, the + half mirrors the - half and that number is real.
 
 * **In N equal steps**, the N-th roots of unity: one turn of zeta^(jk) gives N when N divides k and 0 otherwise, so one turn reads off
-  any single component of N (`full_turn`, `full_turn_cos`, `full_turn_coeff`) **[Lean]**.
+  any single coefficient of a sum of N powers (`full_turn`, `full_turn_cos`, `full_turn_coeff`) **[Lean]**.
 * **On a circle** around c, one turn reads off the n-th Taylor coefficient of a function holomorphic on the disc, Cauchy's formula
   (`full_turn_circle`) **[Lean]**. For exp around 0 it gives $1/n! = \frac{1}{2\pi i}\oint e^z z^{-n-1}\,dz$ on every circle: the
   factorial is a full turn (`full_turn_factorial`) **[Lean]**.

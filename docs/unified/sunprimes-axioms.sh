@@ -28,4 +28,4 @@ lake env lean "$tmp"
 rm -f "$tmp"
 echo "== source grep"
 grep -nE "\bsorry\b|\badmit\b|native_decide|^axiom" ProofPhase/General/SUNTwist*.lean ProofPhase/General/SUNHandOver.lean ProofPhase/General/SUNFullTurn.lean ||
-  echo "no sorry / admit / native_decide / axiom in ProofPhase/General/SUNTwist*.lean"
+  echo "no sorry / admit / native_decide / axiom in ProofPhase/General/SUNTwist*.lean, SUNHandOver.lean, SUNFullTurn.lean"

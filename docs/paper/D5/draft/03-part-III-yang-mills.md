@@ -130,12 +130,12 @@ sector, beta != 0 and even time extent, since there 0 < Z_tw < Z is proved **[Le
 
 **All N sectors at once (III.3.1c).** The full turn over the centre Z_N (II.2.7) turns the N twisted partition functions into N
 electric sectors, Z_el(e) = (1/N) sum over k of cos(2 pi k e / N) Z_tw,k, the real form of 't Hooft's electric-flux projection
-('t Hooft 1979; real because Z_tw,-k = Z_tw,k, `sunZtw_neg`). One turn gives the sum of the electric sectors as Z and N Z_el(0) as the
+('t Hooft 1979; real because Z_tw,-k = Z_tw,k for even time extent, `sunZtw_neg`). One turn gives the sum of the electric sectors as Z and N Z_el(0) as the
 sum of the twisted ones, and the balance II.13.3 turns these into the rate log(1 + sqrt N): some nontrivial twist free energy or some
 nontrivial electric free energy of the SU(N) Wilson box is at least log(1 + sqrt N) **[Lean]**, given that the electric sectors are
 positive (`General/SUNFullTurn.lean`, `sunZel_sum`, `sunZel_zero`, `sun_handover_full_turn`), and the same holds for the mean over the
-N - 1 nontrivial sectors of one type (`sun_handover_full_turn_mean`, II.13.4). For N = 2 the positivity is proved, the
-sectors being (Z + Z_tw)/2 and (Z - Z_tw)/2 (`sunZel_pos_two`), and the rate is the log(1 + sqrt 2) above. For N >= 3 it is a stated
+N - 1 nontrivial sectors of one type (`sun_handover_full_turn_mean`, II.13.4). For N = 2 the positivity is proved for beta != 0 and
+even time extent, the sectors being (Z + Z_tw)/2 and (Z - Z_tw)/2 (`sunZel_pos_two`), and the rate is the log(1 + sqrt 2) above. For N >= 3 it is a stated
 hypothesis: each electric sector is the weight of one flux sector of the transfer matrix, positive in the transfer-matrix picture
 **[classical]**, not formalised here (claim III.3.1c). The rate grows with N; III.5.4 says what that does and does not give.
 
@@ -253,10 +253,19 @@ N - 1 nontrivial sectors of one type, not only for their maximum (`sun_handover_
 so the type is the same along a whole path, and a path that turns once through the sectors pays log(1 + sqrt N) per box on average:
 the first author's refinement (II.13.4) **[Lean]** for the mean. The rate exceeds the series value log mu_4 = 1.91 from N = 34 on
 (1 + sqrt 34 = 6.83) and the rigorous bound log 7 from N = 37 on. Not shown, and needed before it bounds the influence between two
-boxes: that the influence travels along paths whose boxes turn through the sectors in this way (the sector a box passes on is set by
-the dynamics, not chosen), that the sector labels add no entropy of their own to the path count, that the per-box mean multiplies
-along a path (the transfer step of III.3.4), and, for N >= 3, the positivity of the electric sectors. So for large N the grid gap is
-narrowed to these steps, not closed **[paper]** (claim III.5.4d).
+boxes:
+
+* that the influence travels along paths whose boxes turn through the sectors in this way (the sector a box passes on is set by the
+  dynamics, not chosen);
+* that the sector labels add no entropy of their own to the path count. This one fails by naive counting: labelling each box with one
+  of its N - 1 sectors costs log(N - 1) per box, which equals log(1 + sqrt N) at N = 4 and exceeds it for every N >= 5. It holds only
+  if the rotation itself fixes the sector sequence, as the first author's refinement reads it;
+* that the per-box mean multiplies along a path with the excess act of III.3.4 paid, so that F(L) - 2C, not F(L), exceeds log mu;
+* that the one-box reduction, formalised for SU(2), carries over to SU(N) for the N >= 34 the comparison needs;
+* for N >= 3, the positivity of the electric sectors.
+
+So for large N the grid gap is reduced to these steps, one of which fails unless the rotation fixes the labels; it is not closed
+**[paper]** (claim III.5.4d).
 
 **III.5.5 What the action adds and what it does not.** The Bogomolny bound S >= 8 pi^2 |Q| / g^2 **[classical]** gives, on a twisted
 torus with odd twist product, the floor S >= pi^2 beta (beta = 4/g^2, the standard convention) for admissible fields **[classical]**

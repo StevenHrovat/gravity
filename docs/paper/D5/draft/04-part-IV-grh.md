@@ -56,10 +56,11 @@ where $A_c$ is the real-place term, a line integral at Re s = c of the digamma f
 **[classical]**; what is new is the formalisation, with no named step. That $A_c$ equals the real-place term of Weil's closed form
 on the critical line is not in Lean.
 
-**The explicit formula is one turn (IV.1.5c).** The contour shift moves the line integral of H(s) zeta'(s)/zeta(s) from Re s = c to
-Re s = 1 - c, and the difference of the two lines is an integral once around the critical strip. Each zero contributes its order
-times H at the zero, and the order is the winding number of one turn of the logarithmic derivative around it (II.2.7,
-`full_turn_order`) **[Lean]** for the local winding, **[paper]** for reading the formula as the full turn taken once around the strip
+**The explicit formula is one turn (IV.1.5c).** The contour shift moves the line integral of H(s) times the logarithmic derivative
+Lambda'(s)/Lambda(s) of the completed zeta function from Re s = c to Re s = 1 - c, and the difference of the two lines is an integral
+once around the critical strip. Each zero contributes its order times H at the zero, and the order is the winding number of one turn
+of the logarithmic derivative around it (II.2.7, `full_turn_order`); the poles at s = 0 and s = 1 wind -1 each and give the terms
+H(0) + H(1) **[Lean]** for the local winding at a zero, **[paper]** for reading the formula as the full turn taken once around the strip
 (claim IV.1.5c).
 
 **The certified first box, as stated.** For a = 3/5, 13/20 and 69/100 and every f in L^2(-a, a), real or complex,

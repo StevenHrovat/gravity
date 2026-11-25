@@ -10,7 +10,7 @@
 #   tools/reproduce.sh certs      the certified first box: rerun the ball-arithmetic certificate at a = 3/5, 13/20, 69/100 and
 #                                 compare the RESULT line with the committed log
 #   tools/reproduce.sh kernels    the second kernels (leanchecker, nanoda) through tools/independent-check.sh (hours, once)
-#   tools/reproduce.sh all        paper, evidence, lean, certs (not kernels)
+#   tools/reproduce.sh all        paper (Draft 4), evidence, lean, certs (not kernels); "tools/reproduce.sh all D5" builds Draft 5's paper
 #
 # Linux, macOS or WSL; bash. Exit 0 when every stage asked for passes, 1 otherwise.
 set -uo pipefail
@@ -96,8 +96,8 @@ case "${1:-all}" in
   lean) stage_lean ;;
   certs) stage_certs ;;
   kernels) stage_kernels ;;
-  all) stage_paper; stage_evidence; stage_lean; stage_certs ;;
-  *) echo "usage: tools/reproduce.sh [paper|evidence|lean|certs|kernels|all]"; exit 2 ;;
+  all) stage_paper "${2:-}"; stage_evidence; stage_lean; stage_certs ;;
+  *) echo "usage: tools/reproduce.sh [paper [DN]|evidence|lean|certs|kernels|all [DN]]"; exit 2 ;;
 esac
 say "result"
 if [ "$fail" = 0 ]; then echo "reproduce: OK"; else echo "reproduce: FAILED (see the lines above)"; fi

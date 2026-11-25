@@ -2,7 +2,7 @@
 The SU(N) hand-over over all N sectors, by the full turn (draft 5, 2026-11-25).
 Released under Apache 2.0.
 
-Paper: `docs/paper/draft/03-part-III-yang-mills.md`, III.3 (the hand-over); IM's `Arsenal.FullTurn`.
+Paper: `docs/paper/D5/draft/03-part-III-yang-mills.md`, III.3.1c and III.5.4d (Draft 5); IM's `Arsenal.FullTurn`.
 -/
 
 import ProofPhase.General.SUNHandOver
@@ -29,7 +29,8 @@ identities `∑_e Z_el(e) = Z` (`sunZel_sum`) and `N Z_el(0) = ∑_k Z_tw,k` (`s
   `sun_handover`.
 
 The positivity of the electric sectors for `N ≥ 3` is the one input stated as a hypothesis (each `Z_el(e)` is the trace of the
-transfer matrix on one electric sector, positive by reflection positivity in the continuum picture; not proved here).
+lattice transfer matrix on one electric-flux sector, `Z_el(e) = Tr(P_e T^T) ≥ 0`, positive in the transfer-matrix picture; not proved
+here).
 No axioms beyond the standard ones.
 -/
 
