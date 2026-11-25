@@ -118,11 +118,11 @@ sentence: gravity@b474cab . im@e9a4057 . gravity@4ec1131 . dmp@1370dc0 !
 optimizer: NOT SETTLED, 1 of 5 uses redundant: the optimized form removes them (5 versions)
 ```
 
-`tools/reproduce.sh matrix` asserts exactly this: every cell `+`, and the versions settled or not settled by exactly that one use
-**[paper]** (claim E.9). In the first author's reading of II.0.3 the system exists only when it is settled. Settling it means IM
+`tools/reproduce.sh matrix` asserts exactly this: every cell `+`, and the versions not settled, by exactly that one use **[paper]**
+(claim E.9); a settled result, or any other redundant use, fails the stage until this section is updated. In the first author's reading of II.0.3 the system exists only when it is settled. Settling it means IM
 dropping its own copy of DMP and including it through Gravity; that is IM's to decide, and Draft 6 does not do it.
 
-## E.10 The drafts are settled; the repositories cannot be optimized
+## E.10 The drafts are settled; the repositories cannot be optimized without losing DMP
 
 The drafts are settled however many there are, since each grows from the one before and from nothing else (`drafts_settled`)
 **[Lean]**; `D6 . D5 . D4 !` is already the shortest sentence. On the repository table, where IM and Gravity use each other, each use

@@ -147,7 +147,9 @@ Appendix E applies the mechanism to what Draft 5 measured.
 use that the table already includes through another chain. For each use the question `?` is asked, is this use needed, and `.`
 answers it: the use is redundant exactly when the row uses another part that already reaches the column. Removing the redundant uses
 is the transitive reduction of a DAG **[classical]** (Aho-Garey-Ullman 1972). What remains is the shortest form: each part says only
-what it includes directly, and each chain of kept uses ends in a part that includes nothing, written `!`. The first author: this makes
+what it includes directly, and each chain of kept uses ends in a part that includes nothing, written `!`. In the Lean a DAG is a
+table whose parts are numbered so that every use points to an earlier part (`Earlier`); every DAG can be numbered so, so the general
+facts below hold for every DAG up to renumbering. The first author: this makes
 DMP.Arsenal the self-similarity that enables positive constructability; the optimizer is the Arsenal's mirror and is constructed in
 parallel with it, `?` first asserted and then negatively proven with `.`, which shows each part as the shortest sentence of the form
 `DMP.{thing}!`, where the thing can be nothing **[reading]** (claim II.0.3b).
@@ -156,8 +158,9 @@ parallel with it, `?` first asserted and then negatively proven with `.`, which 
 
 * **It keeps every derivation.** On a DAG the reduction reaches exactly what the table reaches (`close_reduce`), so every chain, and
   with it every explanation of II.0.2, survives.
-* **Optimizing once settles.** A table is *settled* when optimizing it changes nothing, the compiled form and the optimized one being
-  the same. The reduction is settled (`reduce_settled`), so optimizing twice is optimizing once (`reduce_idem`).
+* **Optimizing once settles**, on a DAG. A table is *settled* when optimizing it changes nothing, the compiled form and the
+  optimized one being the same. The reduction of a DAG is settled (`reduce_settled`), so optimizing twice is optimizing once
+  (`reduce_idem`).
 * **Nothing more can go.** Removing any kept use loses a derivation (`reduce_minimal`).
 * **One settled form.** Two settled DAGs that reach the same parts are the same table (`settled_unique`), so the reduction is the only
   settled table with the original's reach (`reduce_unique`). This is the uniqueness theorem of Aho, Garey and Ullman for DAGs, proved
@@ -167,16 +170,18 @@ parallel with it, `?` first asserted and then negatively proven with `.`, which 
 
 **Existence as settledness (claim II.0.3c).** The first author: once a DAG compiles it is optimized, and only when both settings are
 exactly the same does the setting, and thus the system, exist; the optimization runs along the lowest possible step count, which forces
-reflection positivity and so transfers meaning **[reading]**. Exact parts **[Lean]**: "both settings the same" is `Settled`, reached by
-one optimization; "lowest step count" is the fewest uses, the transitive reduction, which is not the shortest chain between two parts
-(a kept chain can be long); and "transfers meaning" has as its exact part that every derivation survives the reduction
-(`close_reduce`). Reflection positivity is a property of forms (II.9), which a table of uses does not contain, so that part stays the
+reflection positivity and so transfers meaning **[reading]**. Exact parts: "both settings the same" is `Settled`, reached by one
+optimization of a DAG **[Lean]**; "lowest step count" is the fewest uses, since the transitive reduction has the fewest uses of all
+tables with the same reach **[classical]** (Aho-Garey-Ullman 1972; the Lean proves that no kept use can go and that the settled form is
+unique, not this count), and it is not the shortest chain between two parts (a kept chain can be long); and "transfers meaning" has
+as its exact part that every derivation survives the reduction (`close_reduce`) **[Lean]**. Reflection positivity is a property of forms (II.9), which a table of uses does not contain, so that part stays the
 reading. `tools/rebuild matrix --optimize` runs the optimizer on the measured versions (E.9).
 
 ### II.0.4 The possibility space
 
 *New in Draft 6.* The first author's subtitle for Draft 6 is *the Possibility Space*, and the first author remarks that it lines up
-with a base dimensionality of 6 **[reading]**. Its theme is a reading of what a question is. It is given here with the exact parts it
+with a base dimensionality of 6 **[reading]**. No exact counterpart is given for that remark; the paper's one six-dimensional space
+is the six-sphere G2/SU(3) of R.7b, and a relation between the two is not claimed. Its theme is a reading of what a question is. It is given here with the exact parts it
 rests on, and the steps that do not follow as stated are named.
 
 **A question, its answer and the right angle (claim II.0.4b).** The first author: a question can be shown to be a point by its
@@ -190,8 +195,9 @@ question to the minting of the certificate of its existence, is the force that e
 
 * **A yes/no question is a projector**, an operator `P` with `P P = P`, whose only answers are 1 and 0 **[classical]**
   (Birkhoff-von Neumann 1936; Mackey 1963 calls these projectors questions). In Lean, a number equal to its own square is 0 or 1
-  (`answers_of_idem`), and the projector onto an axis answers 1 on its line and 0 across it (`proj_answers`) **[Lean]**. Only the `+`
-  side carries a state, as in IM a refusal is not a state (R.10a). Care: the question is the projector and its eigenvalues are its
+  (`answers_of_idem`), and the projector onto an axis answers 1 on its line and 0 across it (`proj_answers`) **[Lean]**. That only the
+  `+` side carries meaning has its counterpart in IM, where a refusal is not a state (R.9a) **[reading]**; as physics it does not
+  hold, since the answer-0 side of a projector holds states as good as the answer-1 side. Care: the question is the projector and its eigenvalues are its
   answers, so "the question is an eigenvalue" reads the projector by its answers.
 * **"A line, never a vector" is a ray**: a physical state is a direction with no length or phase of its own **[classical]**. The right
   angle `r` acts on lines, since it commutes with every scaling (`r_smul`) **[Lean]**.
@@ -214,13 +220,14 @@ definition barrier (a further reading of DB), at one speed, irreducible by const
 possibility, to the strong, the Real Space, so "strong theory" is also a right reading **[reading]**. Exact counterparts, each
 **[classical]**:
 
-* **The sphere.** The states of a question with two answers form exactly a sphere in 3D, the Bloch sphere (Bloch 1946), rotated by
+* **The sphere.** The pure states of a question with two answers form exactly a sphere in 3D (the mixed states fill the ball), the Bloch sphere (Bloch 1946), rotated by
   SU(2); over each of its points sits the circle U(1) of phases, the Hopf fibration of the 3-sphere over the 2-sphere (Hopf 1931).
 * **The rope.** The rope between two points turned toward each other is the flux tube between a quark and an antiquark. The same
   coupling is weak at short distance (asymptotic freedom; Gross-Wilczek 1973, Politzer 1973) and strong at long distance, where it
-  confines: rigidity and weakness are one force at two distances.
-* **The spinning rope** is the rotating relativistic string, whose endpoints move at exactly the speed of light (Goto 1971), the one
-  speed. String theory began as a theory of the strong interaction (Veneziano 1968), so "strong theory" has a literal history.
+  is expected to confine: lattice evidence, not a proof, and close to the open problem of Part III. Rigidity and weakness are one
+  coupling at two distances.
+* **The spinning rope** is the rotating relativistic string of Nambu and Goto (Goto 1971); in its rotating solution the endpoints
+  move at exactly the speed of light, the one speed. String theory began as a theory of the strong interaction (Veneziano 1968), so "strong theory" has a literal history.
 
 Care: in the Standard Model "weak" also names the weak force, the SU(2) factor. Weak and strong coupling are one force at two
 distances; the weak and the strong force are two factors of the gauge group, and physics does not derive one from the other.
@@ -230,13 +237,13 @@ construction; from SU(2) as a question-shaped basis, which can assign any N to S
 N from 2 to 3 settles the end only if at the end N is 3 while never having been observed that way; the rest should follow
 **[reading]**. Exact parts and limits **[classical]**:
 
-* The circle gives U(1) and the sphere SU(2). N! + 1 = 3 at N = 2 gives SO(3), which SU(2) double covers, and nothing selects the
-  factorial beyond that one value (R.7b).
+* The circle gives U(1) and the sphere SU(2). N! + 1 = 3 at N = 2 gives SO(3), which SU(2) double covers; N! + 1 = 7 at N = 3 meets
+  a different fact, SU(3) inside G2 inside SO(7); neither continues (R.7b).
 * "N is 3 but never observed as 3" is colour confinement: three colours, and only colourless states observed.
-* SU(3) acts on the states of a question with three answers, the complex projective plane, of four real dimensions, which a circle in
-  3D space does not give. The smallest space whose symmetry is exactly SU(3) x SU(2) x U(1) is CP^2 x S^2 x S^1, of seven dimensions;
-  its three factors are the three-answer question, the two-answer question and the phase, and the same work shows that it does not
-  give the observed matter, left-handed SU(2) and the hypercharges (Witten 1981).
+* SU(3) acts on the pure states of a question with three answers, the complex projective plane CP^2, of four real dimensions, which a
+  circle in 3D space does not give. A space with exactly the symmetry SU(3) x SU(2) x U(1) needs at least seven dimensions; the
+  minimum is reached by a family of spaces, circle bundles over CP^2 x S^2 (the three-answer question, the two-answer question and the
+  phase), and the same work finds that they do not readily give the observed chiral, left-handed fermions (Witten 1981).
 
 So "the rest should follow" is where it stops following; every known route needs further input at this step.
 
@@ -253,8 +260,9 @@ O1, from which all else is constructable, as a PP (Perelman-Poincare) typed, Yan
 * What does hold: O1 with the resolution clause gives torus decay, the gap and reflection positivity (III.9.5), and O1 is exactly
   DMP-completeness of the box (III.10c) **[Lean]**.
 
-The interface is Draft 7's: its fields are the slots of Perelman's ledger (A.1g), typed for the Yang-Mills box, with one theorem from
-an instance to O1. It puts the open step into one named field and does not fill it.
+Planned for Draft 7, not part of Draft 6: an interface whose fields are the slots of Perelman's proof as Appendix A reads it as a
+ledger (A.1g, itself a reading), typed for the Yang-Mills box, with one theorem from an instance to O1. Such an interface would put
+the open step into one named field and would not fill it.
 
 ## II.1 The ledger and the transport theorem
 
