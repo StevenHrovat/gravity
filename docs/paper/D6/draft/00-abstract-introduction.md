@@ -82,7 +82,7 @@ The exact part is short. 0.69 is log 2 = 0.693 to two digits, and log 2 is one h
 C2) and the information of one binary choice, one bit, in natural units **[classical]**. It is also the paper's own a: Weil's form for
 GRH is certified positive up to the support a = 0.69, the last support at which only the real place and the primes 2 and 3 enter
 (IV.1) **[certified]**. The first author also reads v as the momentum that cancels in E = mc^2; exactly, momentum cancels in the
-invariant E^2 - (pc)^2 = (mc^2)^2, and 0.69 read as a rapidity gives E : pc : mc^2 = 5 : 3 : 4 (R.12n) **[classical]**.
+invariant E^2 - p^2 c^2 = m^2 c^4, and 0.69 read as a rapidity gives E : pc : mc^2 = 5 : 3 : 4 (R.12n) **[classical]**.
 
 Every part opens with a "Plug in here" note that says what it gives, what it needs, which route it belongs to and where v enters it
 exactly, or that it does not; the two routes after the core page follow v from stop to stop. Care: the number is shared and the
@@ -179,7 +179,7 @@ stated and not proved, and what does not follow is named with it (the core page,
 log 2 to two digits, marks the halving steps where they occur.
 
 **Route 1, the exact route,** for a reader who wants the proofs; the readings can be skipped. Each stop names what to read, what it
-gives and where v enters.
+gives and where v enters; on this route v is the halving step where one occurs, and at the last stop it does not enter.
 
 1. **The verify toy** (Appendix T, T.1 to T.3): a box that passes, one wrong step that refutes, one bit carried to every width. *v*:
    the scales are bit widths, and reduction modulo 2 maps each onto one bit (T.2) **[Lean]**.
@@ -210,7 +210,9 @@ part it stands next to.
 6. **What does not follow, and why that is useful** (the core page, point 5). Exact: one failing step refutes (`refuted_by_tick`), and
    assigning `+` and `-` settles nothing (`assignment_does_not_decide`) **[Lean]**.
 
-Arriving: every reading has met its exact part, and those exact parts are the ones route 1 reached.
+Arriving: every reading has met its exact part, and the conclusion is the one route 1 reached: the headline holds as a theorem,
+each open part is named, and none is proved. The exact parts on the way differ (route 2 passes the zero ring, `r` and the running
+system, which route 1 does not), and the table below joins them.
 
 **Where the routes meet.** Each of the first author's names, its exact name, and where both stand; a reader can change routes at any
 row.

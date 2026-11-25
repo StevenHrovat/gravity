@@ -970,7 +970,7 @@ The whole is the first author's reading; the introduction carries it ("The throu
   that equation **[paper]**. DMP spells the E as Expression, `docs/balance` as Equation; both readings are kept.
 * **A valid restatement keeps truth.** The token of a statement holds exactly when the statement does, and a token of a token is the
   token (`R136a1.iff`, `R136a1.idem`) **[Lean]**.
-* **Momentum.** E^2 = (mc^2)^2 + (pc)^2; momentum cancels exactly in the invariant E^2 - (pc)^2 = (mc^2)^2, and E = mc^2 is the case
+* **Momentum.** E^2 = m^2 c^4 + p^2 c^2; momentum cancels exactly in the invariant E^2 - p^2 c^2 = m^2 c^4, and E = mc^2 is the case
   p = 0 (Einstein 1905) **[classical]**. Momentum carries units, so 0.69 is not a momentum by itself; as a rapidity eta, with speed
   beta = tanh eta, E = mc^2 cosh eta and pc = mc^2 sinh eta, it is exact: at eta = log 2, E : pc : mc^2 = 5 : 3 : 4, the speed is 3/5
   of c, and the light-cone parts E + pc and E - pc are 2 mc^2 and mc^2 / 2, one doubling and one halving **[classical]**. Rapidities

@@ -295,8 +295,8 @@ and tubes are chains, where III.3 applies. What remains is:
 > on every multiple of L; in its Lean form, `FineOneBox` (below), uniformly over every boundary condition. **[open]**
 
 The familiar form F_e(L) > 1.91 (equivalently r(L) > 0.74) drops the excess act, as E = mc^2 drops the momentum term of
-E^2 = (pc)^2 + (mc^2)^2 (a **[reading]**). The drop is only seeming: c >= 0, so the full form implies the familiar one, but the
-familiar one alone does not give the chain criterion (III.5.8, examples in Lean). The number is path counting (**[paper]**, III.5.9);
+E^2 = p^2 c^2 + m^2 c^4 (a **[reading]**). The drop is only seeming: c >= 0, so the full form implies the familiar one, but the
+familiar one alone does not give the chain criterion (III.5.8, examples in Lean). The number 1.91 is a series estimate for log mu_4 **[numerical]**; rigorously it lies between 1.39 and 1.95 (III.5.4). It is path counting (**[paper]**, III.5.9);
 it is a sufficient route to the one-box sum and is stated for the torus free energy F_e of III.3, not for every outside.
 
 This is the grid requirement log 8 = 2.08 of III.4.1 refined from column sums to path counting. Containment moves the requirement
