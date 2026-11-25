@@ -14,3 +14,4 @@ RESULT candidate the character "1": digest 6b86b273ff34fce19d6b804eff5a3f5747ada
 RESULT candidate 32 bytes 0...01: digest ec4916dd28fc4c10d78e287ca5d9cc51ee1ae73cbfde08c6b37324cbfaac8bc5, equals 000...0001: False
 RESULT candidate 256 characters 0...01: digest bffa36919a79c0dd39254694df5f4a6c1237c0b76a27499fd06e439871d70fc1, equals 000...0001: False
 RESULT avalanche on vxunderground: 104 input-bit flips, digest bits changed min 105, max 148, mean 128.7 of 256
+RESULT line of ones: sha256(vxunderground) + its complement = 2^256 - 1: True; ones 145 + 111 = 256; every cyclic bit rotation keeps [145] ones
