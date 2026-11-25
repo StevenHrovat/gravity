@@ -148,17 +148,17 @@ theorem fourierMat_unitary : fourierMat N * (fourierMat N).conjTranspose = 1 := 
   simp_rw [e]
   rw [← mul_sum, sum_char_mul, Matrix.one_apply]
   by_cases h : j = l
-  · rw [if_pos (sub_eq_zero.2 h), if_pos h]; exact inv_mul_cancel₀ (NeZero.ne _)
-  · rw [if_neg (sub_ne_zero.2 h), if_neg h, mul_zero]
+  · rw [ite_eq_left (sub_eq_zero.2 h), ite_eq_left h]; exact inv_mul_cancel₀ (NeZero.ne _)
+  · rw [ite_eq_right (sub_ne_zero.2 h), ite_eq_right h, mul_zero]
 
 /-- **`C² = 1`.** -/
 theorem conjMat_mul_self : conjMat N * conjMat N = 1 := by
   ext j l
   rw [Matrix.mul_apply, sum_eq_single (-j)]
-  · simp only [conjMat, add_neg_cancel, if_true, one_mul, Matrix.one_apply, neg_add_eq_zero]
+  · simp only [conjMat, add_neg_cancel, ite_true, one_mul, Matrix.one_apply, neg_add_eq_zero]
   · intro k _ hk
     simp only [conjMat]
-    rw [if_neg (fun h => hk (eq_neg_of_add_eq_zero_right h)), zero_mul]
+    rw [ite_eq_right (fun h => hk (eq_neg_of_add_eq_zero_right h)), zero_mul]
   · intro h; exact absurd (mem_univ _) h
 
 /-- **`F⁴ = 1`.** -/
@@ -177,8 +177,8 @@ theorem fourierMat_sq_ne_one [Fact (2 < N)] : fourierMat N * fourierMat N ≠ 1 
   rw [fourierMat_mul_self]
   intro h
   have := congrFun (congrFun h 1) (-1)
-  simp only [conjMat, add_neg_cancel, if_true, Matrix.one_apply] at this
-  rw [if_neg (fun h1 => ZMod.neg_one_ne_one h1.symm)] at this
+  simp only [conjMat, add_neg_cancel, ite_true, Matrix.one_apply] at this
+  rw [ite_eq_right (fun h1 => ZMod.neg_one_ne_one h1.symm)] at this
   exact one_ne_zero this
 
 end ZNFourier

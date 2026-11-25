@@ -251,8 +251,8 @@ theorem val_neg_one' (hN : 1 < N) : (-1 : ZMod N).val = N - 1 := by
 theorem height_mstep (hN : 1 < N) (hμν : μ ≠ ν) (c : ZMod N) (y : FinLatticeSites d N) (hyν : y ν = c) (m : Move d ν)
     (hns : ¬ IsSheet μ ν a c (mlab y m)) :
     (height μ a (mstep y m) : ℤ) = height μ a y + mdisp μ m := by
-  haveI : NeZero N := ⟨by omega⟩
-  haveI : Fact (1 < N) := ⟨hN⟩
+  have : NeZero N := ⟨by omega⟩
+  have : Fact (1 < N) := ⟨hN⟩
   rw [isSheet_mlab a hμν] at hns
   unfold height
   rw [mstep_apply_disp]
@@ -416,7 +416,7 @@ theorem sum_walkW_le (hN : 1 < N) (hμν : μ ≠ ν) (c : ZMod N) {pr : ℝ} (h
     obtain ⟨-, hc, ha, hnd, hns, hend⟩ := mem_filter.mp hi
     have hlen := length_ge_of_cross a hN hμν c (siteShift d N i.1 μ) (by rw [siteShift_apply_ne' _ hμν, hc])
       (by rw [siteShift_apply_self', ha]) i.2 hns hend
-    rw [card_walkX a hμν c hi]; simp only [hφ, if_pos hlen, pow_succ]; ring
+    rw [card_walkX a hμν c hi]; simp only [hφ, ite_eq_left hlen, pow_succ]; ring
   calc ∑ i ∈ walkW a hμν c, pr ^ (walkX hμν i).card
       = ∑ i ∈ walkW a hμν c, pr * φ i.2 := sum_congr rfl hterm
     _ ≤ ∑ i ∈ (univ : Finset (FinLatticeSites d N)) ×ˢ L, pr * φ i.2 :=

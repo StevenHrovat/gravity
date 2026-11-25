@@ -54,9 +54,9 @@ theorem sum_pow_size_le {ι : Type*} (W : Finset ι) (size : ι → ℕ) {p C K 
       ≤ ∑ n ∈ range M, (if r ≤ n then C * (K * p) ^ n else 0) := by
         refine sum_le_sum fun n _ => ?_
         by_cases hn : r ≤ n
-        · rw [if_pos hn, mul_pow, ← mul_assoc]
+        · rw [ite_eq_left hn, mul_pow, ← mul_assoc]
           exact mul_le_mul_of_nonneg_right (hcount n) (pow_nonneg hp n)
-        · rw [if_neg hn]
+        · rw [ite_eq_right hn]
           have : (W.filter fun i => size i = n) = ∅ := by
             refine filter_eq_empty_iff.mpr fun i hi he => hn ?_
             rw [← he]; exact hr i hi
@@ -74,9 +74,9 @@ theorem sum_pow_size_le {ι : Type*} (W : Finset ι) (size : ι → ℕ) {p C K 
             _ = ∑ k ∈ range m, (K * p) ^ (r + k) := by
                 rw [sum_range_add]
                 have : ∑ n ∈ range r, (if r ≤ n then (K * p) ^ n else 0) = 0 :=
-                  sum_eq_zero fun n hn => if_neg (by simp at hn; omega)
+                  sum_eq_zero fun n hn => ite_eq_right (by simp at hn; omega)
                 rw [this, zero_add]
-                exact sum_congr rfl fun k _ => if_pos (by omega)
+                exact sum_congr rfl fun k _ => ite_eq_left (by omega)
             _ = (K * p) ^ r * ∑ k ∈ range m, (K * p) ^ k := by rw [mul_sum]; simp_rw [pow_add]
             _ ≤ (K * p) ^ r * (1 / (1 - K * p)) := by
                 refine mul_le_mul_of_nonneg_left ?_ (pow_nonneg hq0 r)

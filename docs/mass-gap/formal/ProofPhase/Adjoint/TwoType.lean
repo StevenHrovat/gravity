@@ -105,7 +105,7 @@ theorem influence_site_sharp (ν : Measure S) [IsProbabilityMeasure ν] {supp : 
     simp only [g, splice_singleton]
     exact hD σ s (ξ i) (ξ' i)
   have hbdd : BddBelow (Set.range g) := ⟨g σ - Db, by rintro _ ⟨ξ, rfl⟩; linarith [hg σ ξ]⟩
-  haveI : Nonempty (ι → S) := ⟨σ⟩
+  have : Nonempty (ι → S) := ⟨σ⟩
   set c := ⨅ ξ, g ξ
   have hc1 : ∀ ξ, c ≤ g ξ := fun ξ => ciInf_le hbdd ξ
   have hc2 : ∀ ξ, g ξ ≤ c + Db := fun ξ => by

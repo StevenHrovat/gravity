@@ -67,15 +67,15 @@ theorem OnLCP.eventually_mem_nhds {T : Tuning} (hL : OnLCP T) :
   have hsl : ∀ k, IsFluxLimitSU2 (T.β k) (T.box k 0) (hs k) := by
     intro k
     by_cases hb : bad k
-    · simp only [hs, dif_pos hb]; exact hb.choose_spec.1
-    · simp only [hs, dif_neg hb]; exact (exists_fluxLimitSU2 (T.β k) (T.box k 0)).choose_spec
+    · simp only [hs, dite_eq_left hb]; exact hb.choose_spec.1
+    · simp only [hs, dite_eq_right hb]; exact (exists_fluxLimitSU2 (T.β k) (T.box k 0)).choose_spec
   have hfreq : ∃ᶠ k in atTop, actRate (T.box k 0) (hs k) ∉ U := by
     rw [frequently_atTop]
     intro k₀
     obtain ⟨k, hk, h, hh, hn⟩ := hne k₀
     have hb : bad k := ⟨h, hh, hn⟩
     refine ⟨k, hk, ?_⟩
-    simp only [hs, dif_pos hb]
+    simp only [hs, dite_eq_left hb]
     exact hb.choose_spec.2
   have hev : ∀ᶠ k in atTop, actRate (T.box k 0) (hs k) ∈ U := (hz hs hsl).eventually_mem hU
   exact hfreq (hev.mono fun k hk => not_not.2 hk)

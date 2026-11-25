@@ -52,9 +52,9 @@ theorem XiAvoid_eq (S : Finset V) (K : P → ℂ) :
   conv_rhs => rw [← Finset.filter_filter, Finset.sum_filter]
   refine Finset.sum_congr rfl (fun Γ _ => ?_)
   by_cases h : ∀ x ∈ Γ, Disjoint (supp x) S
-  · rw [if_pos h]
+  · rw [ite_eq_left h]
     exact Finset.prod_congr rfl (fun x hx => by simp [restrictK, h x hx])
-  · rw [if_neg h]
+  · rw [ite_eq_right h]
     push Not at h
     obtain ⟨x, hx, hd⟩ := h
     exact Finset.prod_eq_zero hx (by simp [restrictK, hd])
@@ -104,8 +104,8 @@ theorem ratio_generic (hrefl : ∀ x, inc x x) {w a : P → ℝ} (hKP : KPCond i
     rw [hL, hL', ← Finset.sum_sub_distrib]
     refine Finset.sum_congr rfl (fun Y _ => ?_)
     by_cases hY : Disjoint Y S
-    · rw [if_pos hY, hK'def, PY_restrictK_of_disjoint inc supp S K Y hY, sub_self]
-    · rw [if_neg hY, hK'def, PY_restrictK_of_not_disjoint inc supp S K Y hY, sub_zero]
+    · rw [ite_eq_left hY, hK'def, PY_restrictK_of_disjoint inc supp S K Y hY, sub_self]
+    · rw [ite_eq_right hY, hK'def, PY_restrictK_of_not_disjoint inc supp S K Y hY, sub_zero]
   have hPYb : ∀ b, ∑ Y ∈ (univ : Finset (Finset V)).filter (fun Y => b ∈ Y),
       ‖PY inc supp K Y‖ ≤ β := by
     intro b
@@ -120,11 +120,11 @@ theorem ratio_generic (hrefl : ∀ x, inc x x) {w a : P → ℝ} (hKP : KPCond i
         ≤ ∑ Y : Finset V, ∑ b ∈ S, (if b ∈ Y then ‖PY inc supp K Y‖ else 0) := by
           refine Finset.sum_le_sum (fun Y _ => ?_)
           by_cases hY : Disjoint Y S
-          · rw [if_pos hY, norm_zero]
+          · rw [ite_eq_left hY, norm_zero]
             exact Finset.sum_nonneg (fun _ _ => by split_ifs <;> simp)
-          · rw [if_neg hY]
+          · rw [ite_eq_right hY]
             obtain ⟨b, hbY, hbS⟩ := Finset.not_disjoint_iff.mp hY
-            calc ‖PY inc supp K Y‖ = (if b ∈ Y then ‖PY inc supp K Y‖ else 0) := by rw [if_pos hbY]
+            calc ‖PY inc supp K Y‖ = (if b ∈ Y then ‖PY inc supp K Y‖ else 0) := by rw [ite_eq_left hbY]
               _ ≤ _ := Finset.single_le_sum (f := fun b => if b ∈ Y then ‖PY inc supp K Y‖ else 0)
                   (fun _ _ => by split_ifs <;> simp) hbS
       _ = ∑ b ∈ S, ∑ Y ∈ (univ : Finset (Finset V)).filter (fun Y => b ∈ Y), ‖PY inc supp K Y‖ := by
@@ -231,14 +231,14 @@ theorem touch_kp {Δ : ℕ} (hdeg : ∀ v, H.degree v ≤ Δ) {ε κ α : ℝ} (
           (if v ∈ Y'.1 then latticeW H ε κ 0 Y' * Real.exp (α * Y'.1.card) else 0) := by
         refine Finset.sum_le_sum (fun Y' _ => ?_)
         by_cases hl : lnk (touch H) Y Y'
-        · rw [if_pos hl]
+        · rw [ite_eq_left hl]
           have ht : touch H Y Y' := hl.elim id (touch_symm H)
           obtain ⟨u, hu, v, hv, huv⟩ := ht
           have hvN : v ∈ insert u (H.neighborFinset u) := Finset.mem_insert.mpr
             (huv.elim (fun e => Or.inl e.symm) (fun a => Or.inr ((H.mem_neighborFinset u v).mpr a)))
           calc latticeW H ε κ 0 Y' * Real.exp (α * Y'.1.card)
               = (if v ∈ Y'.1 then latticeW H ε κ 0 Y' * Real.exp (α * Y'.1.card) else 0) := by
-                rw [if_pos hv]
+                rw [ite_eq_left hv]
             _ ≤ ∑ v ∈ insert u (H.neighborFinset u),
                 (if v ∈ Y'.1 then latticeW H ε κ 0 Y' * Real.exp (α * Y'.1.card) else 0) :=
                 Finset.single_le_sum (f := fun v => (if v ∈ Y'.1 then latticeW H ε κ 0 Y' *
@@ -246,7 +246,7 @@ theorem touch_kp {Δ : ℕ} (hdeg : ∀ v, H.degree v ≤ Δ) {ε κ α : ℝ} (
             _ ≤ _ := Finset.single_le_sum (f := fun u => ∑ v ∈ insert u (H.neighborFinset u),
                   (if v ∈ Y'.1 then latticeW H ε κ 0 Y' * Real.exp (α * Y'.1.card) else 0))
                   (fun u _ => Finset.sum_nonneg (fun v _ => hterm0 v Y')) hu
-        · rw [if_neg hl]
+        · rw [ite_eq_right hl]
           exact Finset.sum_nonneg (fun u _ => Finset.sum_nonneg (fun v _ => hterm0 v Y'))
     _ = ∑ u ∈ Y.1, ∑ v ∈ insert u (H.neighborFinset u), E v := by
         rw [Finset.sum_comm]

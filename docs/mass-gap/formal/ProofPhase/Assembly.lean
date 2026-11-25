@@ -289,15 +289,15 @@ theorem OnLCP.eventually_actRate {T : Tuning} (hL : OnLCP T) :
   have hsl : ∀ k, IsFluxLimitSU2 (T.β k) (T.box k 0) (hs k) := by
     intro k
     by_cases hb : bad k
-    · simp only [hs, dif_pos hb]; exact hb.choose_spec.1
-    · simp only [hs, dif_neg hb]; exact (exists_fluxLimitSU2 (T.β k) (T.box k 0)).choose_spec
+    · simp only [hs, dite_eq_left hb]; exact hb.choose_spec.1
+    · simp only [hs, dite_eq_right hb]; exact (exists_fluxLimitSU2 (T.β k) (T.box k 0)).choose_spec
   have hfreq : ∃ᶠ k in atTop, actRate (T.box k 0) (hs k) < zs / 2 := by
     rw [frequently_atTop]
     intro k₀
     obtain ⟨k, hk, h, hh, hlt⟩ := hne k₀
     have hb : bad k := ⟨h, hh, hlt⟩
     refine ⟨k, hk, ?_⟩
-    simp only [hs, dif_pos hb]
+    simp only [hs, dite_eq_left hb]
     exact hb.choose_spec.2
   have hev := (tendsto_order.1 (hz hs hsl)).1 (zs / 2) (by linarith)
   exact hfreq (hev.mono fun k hk => not_lt.2 hk.le)

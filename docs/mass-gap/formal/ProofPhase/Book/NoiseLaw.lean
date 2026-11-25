@@ -104,7 +104,7 @@ theorem pi_withDensity (ν : ∀ i, Measure (X i)) [∀ i, IsProbabilityMeasure 
     calc ∫⁻ x, ENNReal.ofReal (f i x) ∂(ν i) ≤ ∫⁻ _, ENNReal.ofReal C ∂(ν i) :=
           lintegral_mono fun x => ENNReal.ofReal_le_ofReal (hC i x)
       _ < ⊤ := by simp
-  haveI : ∀ i, SigmaFinite ((ν i).withDensity (fun x => ENNReal.ofReal (f i x))) := fun i => inferInstance
+  have : ∀ i, SigmaFinite ((ν i).withDensity (fun x => ENNReal.ofReal (f i x))) := fun i => inferInstance
   refine Measure.pi_eq fun s hs => ?_
   -- the integrand of the box
   set g : ∀ i, X i → ℝ := fun i x => (s i).indicator (f i) x with hg
@@ -312,7 +312,7 @@ theorem mulNoise_law (hM : Even M) (μ : Measure G) [IsProbabilityMeasure μ] [�
       rawNoise hM := by
     funext η; exact mulNoise_eq hM b η
   rw [e, ← Measure.map_map hm (measurable_rawNoise hM), rawNoise_law hM τ]
-  haveI : ∀ l : LatticeLink d M, IsProbabilityMeasure (τ.map (noiseStep l (b l))) := fun l =>
+  have : ∀ l : LatticeLink d M, IsProbabilityMeasure (τ.map (noiseStep l (b l))) := fun l =>
     (Measure.isProbabilityMeasure_map_iff (measurable_noiseStep l (b l)).aemeasurable).2 inferInstance
   rw [Measure.pi_map_pi (μ := fun _ : LatticeLink d M => τ) (f := fun l => noiseStep l (b l))
     (fun l => (measurable_noiseStep l (b l)).aemeasurable)]

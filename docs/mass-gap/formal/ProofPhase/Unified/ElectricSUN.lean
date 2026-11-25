@@ -202,7 +202,7 @@ variable {N : ℕ} [NeZero N] {X Y : Type*} [AddAction (ZMod N) Y]
 
 theorem sum_stdAddChar_neg_mul {e : ZMod N} (he : e ≠ 0) : ∑ k : ZMod N, (stdAddChar (-(k * e)) : ℂ) = 0 := by
   have h := General.sum_char_mul (N := N) (-e)
-  rw [if_neg (neg_ne_zero.2 he)] at h
+  rw [ite_eq_right (neg_ne_zero.2 he)] at h
   rw [← h]
   exact sum_congr rfl fun k _ => by rw [mul_neg]
 
@@ -350,7 +350,7 @@ variable {X Y : Type*} [AddAction (ZMod 2) Y]
 
 theorem stdAddChar_two_one : (stdAddChar (1 : ZMod 2) : ℂ) = -1 := by
   have h := General.sum_char_mul (N := 2) 1
-  rw [if_neg (by decide)] at h
+  rw [ite_eq_right (by decide)] at h
   rw [show (Finset.univ : Finset (ZMod 2)) = {0, 1} from rfl, sum_pair (by decide)] at h
   have h' := h
   simp only [zero_mul, AddChar.map_zero_eq_one, one_mul] at h'

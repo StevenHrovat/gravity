@@ -59,17 +59,17 @@ def mulNoise (hM : Even M) (b : GaugeConnection G d M) (η : (FixLink d M → G)
 variable (hM : Even M) (b : GaugeConnection G d M) (η : (FixLink d M → G) × (PosLink d M → G) × (PosLink d M → G))
 
 theorem mulNoise_fixed {l : LatticeLink d M} (h1 : IsFixedLink l) : mulNoise hM b η l = b l * η.1 ⟨l, h1⟩ :=
-  dif_pos h1
+  dite_eq_left h1
 
 theorem mulNoise_pos {l : LatticeLink d M} (h2 : IsPosLink l) : mulNoise hM b η l = b l * η.2.1 ⟨l, h2⟩ := by
   unfold mulNoise
-  rw [dif_neg (not_fixed_of_pos h2), dif_pos h2]
+  rw [dite_eq_right (not_fixed_of_pos h2), dite_eq_left h2]
 
 theorem mulNoise_neg {l : LatticeLink d M} (h1 : ¬IsFixedLink l) (h2 : ¬IsPosLink l) :
     mulNoise hM b η l = if l.dir = 0 then (η.2.2 ⟨mirrorLink l, link_neg_mirror hM h1 h2⟩)⁻¹ * b l
       else b l * η.2.2 ⟨mirrorLink l, link_neg_mirror hM h1 h2⟩ := by
   unfold mulNoise
-  rw [dif_neg h1, dif_neg h2]
+  rw [dite_eq_right h1, dite_eq_right h2]
 
 theorem mulNoise_mirror (p : PosLink d M) :
     mulNoise hM b η (mirrorLink p.1) =
@@ -129,18 +129,18 @@ def mulNoiseBlocking (hM : Even M) (P : RPBlocking G d N M) :
     have hb : Measurable (fun q : GaugeConnection G d N × ((FixLink d M → G) × (PosLink d M → G) ×
         (PosLink d M → G)) => P.B q.1 l) := (measurable_pi_apply l).comp (P.meas.comp measurable_fst)
     by_cases h1 : IsFixedLink l
-    · simp only [mulNoise, dif_pos h1]
+    · simp only [mulNoise, dite_eq_left h1]
       exact hb.mul ((measurable_pi_apply _).comp (measurable_fst.comp measurable_snd))
     by_cases h2 : IsPosLink l
-    · simp only [mulNoise, dif_neg h1, dif_pos h2]
+    · simp only [mulNoise, dite_eq_right h1, dite_eq_left h2]
       exact hb.mul ((measurable_pi_apply _).comp ((measurable_fst.comp measurable_snd).comp measurable_snd))
     · have ha : Measurable (fun q : GaugeConnection G d N × ((FixLink d M → G) × (PosLink d M → G) ×
           (PosLink d M → G)) => q.2.2.2 ⟨mirrorLink l, link_neg_mirror hM h1 h2⟩) :=
         (measurable_pi_apply _).comp ((measurable_snd.comp measurable_snd).comp measurable_snd)
       by_cases hd : l.dir = 0
-      · simp only [mulNoise, dif_neg h1, dif_neg h2, hd, if_true]
+      · simp only [mulNoise, dite_eq_right h1, dite_eq_right h2, hd, ite_true]
         exact ha.inv.mul hb
-      · simp only [mulNoise, dif_neg h1, dif_neg h2, hd, if_false]
+      · simp only [mulNoise, dite_eq_right h1, dite_eq_right h2, hd, ite_false]
         exact hb.mul ha
   theta U c a a' := by
     simp only [P.theta, mulNoise_theta]

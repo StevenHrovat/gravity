@@ -185,7 +185,7 @@ theorem xp_cross (hN : Even N) (hinv : ∀ g : G, gaugeReTr G n g⁻¹ = gaugeRe
     unfold IsCrossAL IsCrossA; rw [crossPL_bl2_time]
   by_cases hA : IsCrossA p
   · obtain ⟨hp3, hm3⟩ := crossA_links hN h hA
-    have hs : posSp p = p.boundaryLinks 3 := if_pos hA
+    have hs : posSp p = p.boundaryLinks 3 := ite_eq_left hA
     have ht3 : thetaExt ω (.inl (p.boundaryLinks 3)) = ω (.inl (p.boundaryLinks 1)) := by
       simp only [thetaExt, n3, dite_false, hm3]
       exact linkTwist_of_dir_ne (show (p.boundaryLinks 3).dir ≠ 0 from hν) _
@@ -194,7 +194,7 @@ theorem xp_cross (hN : Even N) (hinv : ∀ g : G, gaugeReTr G n g⁻¹ = gaugeRe
       thetaExt]
     rw [cross_identity_A, gaugeReTr_conj, hinv]
   · obtain ⟨hp1, hm1⟩ := crossB_links hN h hA
-    have hs : posSp p = p.boundaryLinks 1 := if_neg hA
+    have hs : posSp p = p.boundaryLinks 1 := ite_eq_right hA
     have ht1 : thetaExt ω (.inl (p.boundaryLinks 1)) = ω (.inl (p.boundaryLinks 3)) := by
       simp only [thetaExt, n1, dite_false, hm1]
       exact linkTwist_of_dir_ne (show (p.boundaryLinks 1).dir ≠ 0 from hν) _
@@ -241,11 +241,11 @@ theorem sum_cross_xp (hN : Even N) (hU : ∀ g : G, HasGaugeTrace.rep (G := G) (
   refine Finset.sum_congr rfl fun p _ => ?_
   rw [Fintype.sum_prod_type]
   by_cases hp : IsCrossPL p
-  · rw [if_pos hp, xp_cross hN (gaugeReTr_inv_of_unitary hU) hp, reTr_mul_inv hU]
+  · rw [ite_eq_left hp, xp_cross hN (gaugeReTr_inv_of_unitary hU) hp, reTr_mul_inv hU]
     refine Finset.sum_congr rfl fun i _ => ?_
     rw [Fintype.sum_prod_type]
     refine Finset.sum_congr rfl fun k _ => ?_
-    simp only [Fintype.sum_bool, crossFeat, if_pos hp, ite_true, Bool.false_eq_true, ite_false]
+    simp only [Fintype.sum_bool, crossFeat, ite_eq_left hp, ite_true, Bool.false_eq_true, ite_false]
   · simp [hp, crossFeat]
 
 theorem crossFeat_depPos (hN : Even N) (j : LatticePlaquette d N × Fin n × Fin n × Bool) :

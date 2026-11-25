@@ -60,7 +60,7 @@ theorem pow_symm (hsym : ∀ x y, ⟪T x, y⟫ = ⟪x, T y⟫) (i : ℕ) (x y : 
   induction i generalizing x y with
   | zero => simp
   | succ i ih =>
-    rw [pow_succ, ContinuousLinearMap.mul_apply, ih, hsym, ← ContinuousLinearMap.mul_apply, ← pow_succ']
+    rw [pow_succ, mul_apply_eq_comp, ih, hsym, ← mul_apply_eq_comp, ← pow_succ']
     rfl
 
 /-- The sequence `a_k = ⟪G, T^k G⟫`. -/
@@ -71,12 +71,12 @@ variable {T}
 theorem moment_pairing (hsym : ∀ x y, ⟪T x, y⟫ = ⟪x, T y⟫) (G : H) (i j : ℕ) :
     ⟪(T ^ i) G, (T ^ j) G⟫ = moment T G (i + j) := by
   unfold moment
-  rw [pow_symm T hsym, ← ContinuousLinearMap.mul_apply, ← pow_add]
+  rw [pow_symm T hsym, ← mul_apply_eq_comp, ← pow_add]
 
 theorem moment_pairing_T (hsym : ∀ x y, ⟪T x, y⟫ = ⟪x, T y⟫) (G : H) (i j : ℕ) :
     ⟪(T ^ i) G, T ((T ^ j) G)⟫ = moment T G (i + j + 1) := by
   unfold moment
-  rw [pow_symm T hsym, ← ContinuousLinearMap.mul_apply, ← ContinuousLinearMap.mul_apply, ← pow_succ, ← pow_add,
+  rw [pow_symm T hsym, ← mul_apply_eq_comp, ← mul_apply_eq_comp, ← pow_succ, ← pow_add,
     add_right_comm]
 
 /-- **Log-convexity** of the moments of a positive symmetric operator. -/
@@ -86,7 +86,7 @@ theorem moment_logconvex (hsym : ∀ x y, ⟪T x, y⟫ = ⟪x, T y⟫) (hpos : �
   · -- k = 2m: the form ⟪x, y⟫ on T^m G, T^(m+1) G
     have h := psd_cauchy_schwarz (1 : H →L[ℝ] H) (fun x y => rfl) (fun x => real_inner_self_nonneg)
       ((T ^ m) G) ((T ^ (m + 1)) G)
-    simp only [ContinuousLinearMap.one_apply] at h
+    simp only [one_apply_eq_self] at h
     rw [moment_pairing hsym, moment_pairing hsym, moment_pairing hsym] at h
     have e1 : m + (m + 1) = 2 * m + 1 := by ring
     have e2 : m + m = 2 * m := by ring
@@ -233,7 +233,7 @@ theorem iter_norm_bound (H0 : Submodule ℝ H) (hinv : ∀ x ∈ H0, T x ∈ H0)
     intro F hF
     obtain ⟨h1, h2⟩ := ih F hF
     have e : (T ^ (n + 1)) F = T ((T ^ n) F) := by
-      rw [pow_succ', ContinuousLinearMap.mul_apply]
+      rw [pow_succ', mul_apply_eq_comp]
     rw [e]
     refine ⟨hinv _ h1, ?_⟩
     calc ‖T ((T ^ n) F)‖ ≤ q * ‖(T ^ n) F‖ := hnorm _ h1

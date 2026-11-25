@@ -74,7 +74,7 @@ theorem cov_transfer {Φ : X → Y} (hΦ : Measurable Φ) {F G : X → ℝ} {f g
     |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * ∫ x, G x ∂μ| ≤
       |∫ x, f (Φ x) * g (Φ x) ∂μ - (∫ x, f (Φ x) ∂μ) * ∫ x, g (Φ x) ∂μ| + 5 * ε := by
   have hm : MeasurableSpace.comap Φ (inferInstance : MeasurableSpace Y) ≤ MX := hΦ.comap_le
-  haveI : IsFiniteMeasure (μ.trim hm) := isFiniteMeasure_trim hm
+  have : IsFiniteMeasure (μ.trim hm) := isFiniteMeasure_trim hm
   set EF := μ[F | MeasurableSpace.comap Φ inferInstance]
   set EG := μ[G | MeasurableSpace.comap Φ inferInstance]
   have iF : Integrable F μ := integrable_of_abs_le μ hF.aestronglyMeasurable (ae_of_all _ hF1)
@@ -103,10 +103,10 @@ theorem cov_transfer {Φ : X → Y} (hΦ : Measurable Φ) {F G : X → ℝ} {f g
   have iEFEG : Integrable (fun x => EF x * EG x) μ :=
     integrable_of_abs_le μ (iEF.aestronglyMeasurable.mul iEG.aestronglyMeasurable) (by
       filter_upwards [bEF, bEG] with x h1 h2
-      rw [abs_mul]; exact mul_le_one₀ h1 (abs_nonneg _) h2)
+      rw [abs_mul]; exact (mul_le_of_le_one_left (abs_nonneg _) h1).trans h2)
   have ifg : Integrable (fun x => f (Φ x) * g (Φ x)) μ :=
     integrable_of_abs_le μ (((hf.comp hΦ).mul (hg.comp hΦ))).aestronglyMeasurable (ae_of_all _ fun x => by
-      rw [abs_mul]; exact mul_le_one₀ (hf1 _) (abs_nonneg _) (hg1 _))
+      rw [abs_mul]; exact (mul_le_of_le_one_left (abs_nonneg _) (hf1 _)).trans (hg1 _))
   have hc : |∫ x, EF x * EG x ∂μ - ∫ x, f (Φ x) * g (Φ x) ∂μ| ≤ 2 * ε := by
     rw [← integral_sub iEFEG ifg]
     refine (abs_integral_le_integral_abs).trans ?_
@@ -248,7 +248,7 @@ theorem wcorr_le_blocked (T : Tuning) (B : BlockingFamily T) {k j : ℕ} {s : �
             ∂(T.ym k j)| ≤ ε) :
     |T.wcorr k j (O.F k j) n| ≤
       (1 - γ)⁻¹ * Kv * 2 * Real.exp (-(lam * ((n * T.a k) / (2 * T.L₁)))) + 5 * ε := by
-  haveI := isProbabilityMeasure_gaugeMeasure (d := 4) (N := T.side k j) (G := SU2) (n := 2) continuous_subtype_val
+  have := isProbabilityMeasure_gaugeMeasure (d := 4) (N := T.side k j) (G := SU2) (n := 2) continuous_subtype_val
     (fun g => Matrix.specialUnitaryGroup_le_unitaryGroup g.2) (posWeight_wilson 2 (T.β k))
   have hFm := O.meas k j
   have hF1 := O.bdd k j

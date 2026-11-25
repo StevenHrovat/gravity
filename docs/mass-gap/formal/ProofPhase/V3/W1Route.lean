@@ -205,7 +205,7 @@ theorem obsTransferPhysTW_of_condMassDecay {T : Tuning} {B : BlockingFamily T} (
   have hae := Hk1 k ((le_max_left _ _).trans hk) j F G A₀ B₀ D mF mG bF bG dF dG eA
     (fun e he e' he' => (hsep e he e' he').trans
       (mul_le_mul_of_nonneg_left (timeDist_le_linkDist e e') (T.a_pos k).le))
-  haveI := UV.ymProb T k j
+  have := UV.ymProb T k j
   have hdec := abs_condDefect_le_of_ae (B k j).meas.comap_le (UV.Bdd1.of_measurable mF bF)
     (UV.Bdd1.of_measurable mG bG) hae
   have hE1 : Real.exp (-(m₁ * D)) ≤ Real.exp (-(min m₁ m₂ * D)) :=
@@ -257,7 +257,7 @@ theorem wcorr_le_blockedW (T : Tuning) (B : BlockingFamily T) {k j : ℕ} {s : �
           condExp (MeasurableSpace.comap (B k j).B inferInstance) (T.ym k j) (fun U => O.F k j (thetaConn U)) U
             ∂(T.ym k j)| ≤ ε) :
     |T.wcorr k j (O.F k j) n| ≤ C * Kv * Lg * Real.exp (-(lam * ((n * T.a k) / (2 * T.L₁)))) + 5 * ε := by
-  haveI := isProbabilityMeasure_gaugeMeasure (d := 4) (N := T.side k j) (G := SU2) (n := 2) continuous_subtype_val
+  have := isProbabilityMeasure_gaugeMeasure (d := 4) (N := T.side k j) (G := SU2) (n := 2) continuous_subtype_val
     (fun g => Matrix.specialUnitaryGroup_le_unitaryGroup g.2) (posWeight_wilson 2 (T.β k))
   have hFm := O.meas k j
   have hF1 := O.bdd k j

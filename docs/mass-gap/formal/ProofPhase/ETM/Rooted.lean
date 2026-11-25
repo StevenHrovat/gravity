@@ -151,14 +151,14 @@ theorem good_of_floor {P : Pre} (h : P.IsInstance) (hf : P.floor ≤ 0) : P.Good
   refine ⟨h, fun x => (h.2.2.2 x).trans ?_⟩
   have he : Real.exp P.floor ≤ 1 := Real.exp_le_one_iff.2 hf
   have h1 : Real.exp P.floor * P.fac x ≤ 1 :=
-    mul_le_one₀ he (h.1 x) (h.2.1 x)
+    (mul_le_of_le_one_left (h.1 x) he).trans (h.2.1 x)
   nlinarith [h.2.2.1 x, mul_nonneg (Real.exp_pos P.floor).le (h.1 x)]
 
 theorem reflect_good {P : Pre} (hP : P.Good) {f : ℕ → ℝ} (hf0 : ∀ n, 0 ≤ f n) (hf1 : ∀ n, f n ≤ 1) :
     (P.reflect f).Good := by
   obtain ⟨⟨hfa0, hfa1, hm0, hlaw⟩, hanti⟩ := hP
   have hp : ∀ n, 0 ≤ ∏ j ∈ range n, f j := fun n => prod_nonneg fun j _ => hf0 j
-  refine ⟨⟨fun p => mul_nonneg (hf0 _) (hfa0 _), fun p => mul_le_one₀ (hf1 _) (hfa0 _) (hfa1 _),
+  refine ⟨⟨fun p => mul_nonneg (hf0 _) (hfa0 _), fun p => (mul_le_of_le_one_left (hfa0 _) (hf1 _)).trans (hfa1 _),
     fun p => mul_nonneg (hp _) (hm0 _), fun p => ?_⟩, fun p => ?_⟩
   · show (∏ j ∈ range (p.2 + 1), f j) * P.mass (P.step p.1) ≤
       Real.exp P.floor * (f p.2 * P.fac p.1) * ((∏ j ∈ range p.2, f j) * P.mass p.1)
@@ -173,7 +173,7 @@ theorem reflect_good {P : Pre} (hP : P.Good) {f : ℕ → ℝ} (hf0 : ∀ n, 0 �
 
 theorem twice_good {P : Pre} (hP : P.Good) : P.twice.Good := by
   obtain ⟨⟨hfa0, hfa1, hm0, hlaw⟩, hanti⟩ := hP
-  refine ⟨⟨fun x => mul_nonneg (hfa0 _) (hfa0 _), fun x => mul_le_one₀ (hfa1 _) (hfa0 _) (hfa1 _), hm0,
+  refine ⟨⟨fun x => mul_nonneg (hfa0 _) (hfa0 _), fun x => (mul_le_of_le_one_left (hfa0 _) (hfa1 _)).trans (hfa1 _), hm0,
     fun x => ?_⟩, fun x => (hanti _).trans (hanti x)⟩
   show P.mass (P.step (P.step x)) ≤ Real.exp (2 * P.floor) * (P.fac x * P.fac (P.step x)) * P.mass x
   calc P.mass (P.step (P.step x)) ≤ Real.exp P.floor * P.fac (P.step x) * P.mass (P.step x) := hlaw _

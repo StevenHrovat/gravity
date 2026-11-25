@@ -89,7 +89,7 @@ theorem Bdd1.of_measurable {F : X → ℝ} (hF : Measurable F) (h1 : ∀ x, |F x
 theorem Bdd1.mul {F G : X → ℝ} (hF : Bdd1 μ F) (hG : Bdd1 μ G) : Bdd1 μ (fun x => F x * G x) :=
   ⟨hF.1.mul hG.1, by
     filter_upwards [hF.2, hG.2] with x h1 h2
-    rw [abs_mul]; exact mul_le_one₀ h1 (abs_nonneg _) h2⟩
+    rw [abs_mul]; exact (mul_le_of_le_one_left (abs_nonneg _) h1).trans h2⟩
 
 theorem Bdd1.condExp {F : X → ℝ} (h : Bdd1 μ F) {m : MeasurableSpace X} (hm : m ≤ mX) : Bdd1 μ (μ[F | m]) := by
   have : IsFiniteMeasure (μ.trim hm) := isFiniteMeasure_trim hm

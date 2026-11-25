@@ -259,7 +259,7 @@ theorem randTorusDecayLoc_of_blockGapBddW {T : Tuning} (B : RandBlockingFamily T
     nlinarith
   have hblk := hgap k hk₀ j f g A' B' vf K (D / (2 * T.L₁)) mf mg bf bg dfA dgB hvf hK hlip (by positivity) hR'
   -- the transfer, on the joint space
-  haveI := UV.ymProb T k j
+  have := UV.ymProb T k j
   have htr' := cov_transfer_rand (T.ym k j) (B k j).P (B k j).meas hFm hGm
     (fun p => O.bdd k j _) (fun p => O.bdd k j _) mf mg bf bg hEF hEG hdec
   have hw : |T.wcorr k j (O.F k j) n| ≤

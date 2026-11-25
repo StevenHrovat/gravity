@@ -69,8 +69,8 @@ theorem sp_flip0 (g : E → G → G) (U : CCfg G E S T) (t : ZMod T) :
     sp (flip0 g U) t = if t = 0 then sliceMap g (sp U t) else sp U t := by
   funext e
   by_cases h : t = 0
-  · subst h; simp only [if_true]; show flip0 g U (0, .inl e) = _; simp [flip0, sliceMap, sp]
-  · simp only [h, if_false]; show flip0 g U (t, .inl e) = U (t, .inl e); simp [flip0, h]
+  · subst h; simp only [ite_true]; show flip0 g U (0, .inl e) = _; simp [flip0, sliceMap, sp]
+  · simp only [h, ite_false]; show flip0 g U (t, .inl e) = U (t, .inl e); simp [flip0, h]
 
 theorem sp_flip0_zero (g : E → G → G) (U : CCfg G E S T) : sp (flip0 g U) 0 = sliceMap g (sp U 0) := by
   rw [sp_flip0]; simp
@@ -108,8 +108,8 @@ theorem measurable_flip0 {g : E → G → G} (hg : ∀ e, Measurable (g e)) :
   refine measurable_pi_iff.mpr fun l => ?_
   rcases l with ⟨t, e | s⟩
   · by_cases h : t = 0
-    · simp only [flip0, h, if_true]; exact (hg e).comp (measurable_pi_apply _)
-    · simp only [flip0, h, if_false]; exact measurable_pi_apply _
+    · simp only [flip0, h, ite_true]; exact (hg e).comp (measurable_pi_apply _)
+    · simp only [flip0, h, ite_false]; exact measurable_pi_apply _
   · exact measurable_pi_apply _
 
 variable [HasHaarProbability G]
@@ -170,9 +170,9 @@ theorem twWeight_mul (U : CCfg G E S T) :
   rw [← mul_prod_erase univ _ (mem_univ (0 : ZMod T)), ← mul_prod_erase univ _ (mem_univ (0 : ZMod T))]
   have hrest : ∏ t ∈ univ.erase (0 : ZMod T), twStep w g U t = ∏ t ∈ univ.erase (0 : ZMod T), cstep w U t :=
     prod_congr rfl fun t ht => by
-      simp only [twStep, cstep, (mem_erase.1 ht).1, if_false]
+      simp only [twStep, cstep, (mem_erase.1 ht).1, ite_false]
   rw [hrest]
-  simp only [twStep, cstep, if_true, zero_add]
+  simp only [twStep, cstep, ite_true, zero_add]
   ring
 
 /-- The open positive half of the twisted configuration differs from that of `U` only in the step `t = 0`. -/
@@ -232,9 +232,9 @@ theorem measurable_twWeight (hg : ∀ e, Measurable (g e)) : Measurable (twWeigh
   refine Finset.measurable_prod _ fun t _ => ?_
   have hsl : Measurable fun U : CCfg G E S T => (if t = 0 then sliceMap g (sp U t) else sp U t) := by
     by_cases h : t = 0
-    · simp only [h, if_true]
+    · simp only [h, ite_true]
       exact measurable_pi_iff.mpr fun e => (hg e).comp ((measurable_pi_apply e).comp (measurable_sp 0))
-    · simp only [h, if_false]; exact measurable_sp t
+    · simp only [h, ite_false]; exact measurable_sp t
   exact (w.measV.comp (measurable_sp t)).mul
     (w.measK.comp (hsl.prodMk ((measurable_tm t).prodMk (measurable_sp (t + 1)))))
 
@@ -369,12 +369,12 @@ theorem stepK_flipA_left (β : ℝ) (c : ZMod L) (a : GaugeConnection G 3 L) (b 
   · have key : ∀ x y : G, x * (z * y)⁻¹ = z * (x * y⁻¹) := by
       intro x y; rw [mul_inv_rev, hzi, ← mul_assoc]; exact ((hz (x * y⁻¹)).eq).symm
     have ht : tempHol L (flipA L z c a) b c' e = z * tempHol L a b c' e := by
-      simp only [tempHol, flipA, h, and_self, if_true]
+      simp only [tempHol, flipA, h, and_self, ite_true]
       exact key _ _
-    rw [ht, gaugeReTr_mul_central hrep, if_pos h]; ring_nf
+    rw [ht, gaugeReTr_mul_central hrep, ite_eq_left h]; ring_nf
   · have ht : tempHol L (flipA L z c a) b c' e = tempHol L a b c' e := by
-      simp only [tempHol, flipA, h, if_false]
-    rw [ht, if_neg h]; ring_nf
+      simp only [tempHol, flipA, h, ite_false]
+    rw [ht, ite_eq_right h]; ring_nf
 
 variable (hc : Continuous (HasGaugeTrace.rep (G := G) (n := n)))
   (hU : ∀ g : G, HasGaugeTrace.rep (G := G) (n := n) g ∈ Matrix.unitaryGroup (Fin n) ℂ)

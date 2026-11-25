@@ -69,7 +69,7 @@ theorem hol_twistAt (S : Finset (LatticeLink d N)) (U : GaugeConnection G d N) (
   obtain ⟨l, f⟩ := s
   by_cases hl : l ∈ S
   · cases f
-    · simp only [PathStep.hol, twistAt, hl, if_true, stepCount, Bool.false_eq_true, if_false, zpow_neg, zpow_one]
+    · simp only [PathStep.hol, twistAt, hl, ite_true, stepCount, Bool.false_eq_true, ite_false, zpow_neg, zpow_one]
       rw [mul_inv_rev]
       exact ((hz (U l)).inv_inv).eq.symm
     · simp [PathStep.hol, twistAt, hl, stepCount]

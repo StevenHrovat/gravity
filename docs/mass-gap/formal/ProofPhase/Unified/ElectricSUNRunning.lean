@@ -183,11 +183,11 @@ theorem elecN_running {Z : Type*} [Fintype Z] {Ka : Z → X → ℝ} {Kb : X →
     rw [norm_mul]
     have p0 : 0 ≤ sec0N N Ka z x * sec0N N Kbs x y := mul_nonneg (sec0N_nonneg ha0 z x) (sec0N_nonneg hbs0 x y)
     by_cases hg : (z, x) ∈ Ra ∧ (x, y) ∈ Rb
-    · rw [if_neg (not_not.2 hg), add_zero]
+    · rw [ite_eq_right (not_not.2 hg), add_zero]
       calc ‖secN Ka e z x‖ * ‖secN Kbs e x y‖ ≤ (ρa * sec0N N Ka z x) * (ρb * sec0N N Kbs x y) :=
             mul_le_mul (ha z x hg.1) (hbs x y hg.2) (norm_nonneg _) ((norm_nonneg _).trans (ha z x hg.1))
         _ = ρa * ρb * (sec0N N Ka z x * sec0N N Kbs x y) := by ring
-    · rw [if_pos hg]
+    · rw [ite_eq_left hg]
       have := mul_le_mul (ha1 z x) (hbs1 x y) (norm_nonneg _) ((norm_nonneg _).trans (ha1 z x))
       rw [one_mul, one_mul] at this
       nlinarith [mul_nonneg hρ p0]

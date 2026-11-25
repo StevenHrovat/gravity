@@ -169,7 +169,7 @@ theorem measTorusDecayLoc_of_blockGapBddW {T : Tuning} (B : MeasBlockingFamily T
     nlinarith
   have hblk := hgap k hk₀ j f g A' B' vf K (D / (2 * T.L₁)) mf mg bf bg dfA dgB hvf hK hlip (by positivity) hR'
   -- the transfer
-  haveI := UV.ymProb T k j
+  have := UV.ymProb T k j
   have htr' := cov_transfer (T.ym k j) (B k j).meas ((O.meas k j).comp (measurable_tShift _))
     ((O.meas k j).comp measurePreserving_thetaConn.measurable) (fun U => O.bdd k j _) (fun U => O.bdd k j _)
     mf mg bf bg hEF hEG hdec

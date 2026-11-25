@@ -106,26 +106,31 @@ input of a given digest is claimed, and the measured evidence above stands eithe
 
 In a clone of the public IM repository, at the commit `docs/mass-gap/formal/lakefile.toml` pins: `cd arsenal`, then
 `lake exe cache get` (Mathlib's prebuilt files, about 5 GB) and `lake build Arsenal.Toy`; `tools/check.sh` reports, for every
-declaration of the arsenal, the axioms it rests on, and every one of the toy's rests on Lean's three standard axioms only. The finite layer needs none of
-that: `cd arsenal/core`, then `tools/check.sh`, in seconds and with nothing to download (T.8).
+declaration of the arsenal, the axioms it rests on, and every one of the toy's rests on no more than Lean's three standard axioms.
+The prebuilt files are loaded without a new check; a replay (Lean's `lean4checker`, or a second kernel such as nanoda over
+`lean4export`) checks them again locally. The finite layer needs none of that: `cd arsenal/core`, then `tools/check.sh`, in seconds and with nothing to download (T.8).
 
 ## T.8 The finite layer, on the kernel alone
 
-Every statement of T.5 and of the leading zero (R.9b) is about finitely many bits, so Lean's kernel decides it by evaluation, and
-none of it needs Mathlib. IM's `arsenal/core` is a package with no requirement at all: `ArsenalCore.Toy` states the string, the full
+The string facts of T.5 (`vx_eq`, `vx_rot13`, `vx_rot13_twice`, `smelly_iff_not_full`, `rot_add`) and the leading zero (R.9b) need
+no Mathlib: the facts about bytes and the string are decided by the kernel's evaluation, the general facts about `n`-bit words are
+proved from Lean's core lemmas on natural numbers. IM's `arsenal/core` is a package with no requirement at all: `ArsenalCore.Toy` states the string, the full
 turn, smelly, and Moin as the leading zero, decided on all 256 bytes (`moin_byte`, with the general `rotl_eq_double_iff` proved from
 Lean's core lemmas on natural numbers). It builds in seconds with nothing to download; 14 of its 20 declarations rest on no axiom at
 all, the others on the standard ones **[Lean]** (claim T.12). IM's verify workflow builds and audits it on every change **[paper]**.
 The same package shows that Moin and smelly are two checks, not one: a bit rotation is never smelly, since rotating back returns every
-byte, leading one or not (`rotl_never_smelly`) **[Lean]**. Moin asks whether a step lost nothing; smelly asks whether the round trip
-came back.
+byte, leading one or not (`rotl_never_smelly`) **[Lean]**. A rotation never loses a bit; Moin asks whether it acted as a doubling (no
+bit wrapped round), smelly whether the round trip came back.
 
-**Why Mathlib can be an API.** Lean trusts no library. Every Mathlib proof is a term that the same kernel checks again, and the
-language the proofs are written in only produces terms for the kernel to accept or reject: the dependency runs one way, the de Bruijn
-criterion **[classical]** (Barendregt-Wiedijk 2005). What the arsenal takes from Mathlib is its definitions, which say what infinite
+**Why Mathlib can be an API.** Lean need not trust a library. Every Mathlib proof is a term that a small kernel can check again, and
+the language the proofs are written in only produces terms for the kernel to accept or reject: the dependency runs one way, the de
+Bruijn criterion **[classical]** (Barendregt-Wiedijk 2005). Mathlib's own build checks every proof; the prebuilt files of T.7 are
+loaded without a new check, and a replay repeats it locally. What is trusted is the kernel, with its built-in arithmetic on natural
+numbers, Lean's prelude definitions and the axioms the report lists. What the arsenal takes from Mathlib is its definitions, which say what infinite
 objects are (the complex numbers, the circle, the integral); no evaluation can establish those, so the analytic layer imports Mathlib
 as an API and the finite layer does not need it. The first author reads this as the kernel and the language spoken to it depending on
 each other through a full turn, not entangled, so that a library is an importable API; and the reduction at the logical boundaries as
-the efficiency by which DMP and its content are constructed **[reading]** (claim T.13). Care point: a definition is the specification,
-so whether a library's object is the mathematician's object is read, not computed; and no kernel evaluation reaches an infinite
-statement such as O1.
+the efficiency by which DMP and its content are constructed **[reading]** (claim T.13); exactly, the dependency is one way, the kernel
+does not depend on the language. Care point: a definition is the specification, in the finite layer as well (`rotl` is a rotation for
+words below `2 ^ n`, `Smelly` is about the one string, `rotr` is written as the inverse of `rotl`), so whether a library's object is
+the mathematician's object is read, not computed; and no kernel evaluation reaches an infinite statement such as O1.

@@ -300,8 +300,8 @@ theorem projSU2_star (A : Matrix (Fin 2) (Fin 2) ℂ) : projSU2 (star A) = (proj
   unfold projVal
   rw [nrmC_star, smul_star]
   by_cases h : ((nrmC A : ℂ) • A) ∈ Matrix.specialUnitaryGroup (Fin 2) ℂ
-  · rw [if_pos ((star_mem_SU2_iff _).mpr h), if_pos h]
-  · rw [if_neg (fun h' => h ((star_mem_SU2_iff _).mp h')), if_neg h, star_one]
+  · rw [ite_eq_left ((star_mem_SU2_iff _).mpr h), ite_eq_left h]
+  · rw [ite_eq_right (fun h' => h ((star_mem_SU2_iff _).mp h')), ite_eq_right h, star_one]
 
 /-- The projection fixes SU(2). -/
 theorem projSU2_coe (g : SU2) : projSU2 (g : Matrix (Fin 2) (Fin 2) ℂ) = g := by
@@ -312,7 +312,7 @@ theorem projSU2_coe (g : SU2) : projSU2 (g : Matrix (Fin 2) (Fin 2) ℂ) = g := 
   unfold projVal
   rw [hc]
   simp only [Complex.ofReal_one, one_smul]
-  rw [if_pos g.2]
+  rw [ite_eq_left g.2]
 
 theorem measurable_projSU2 : Measurable projSU2 := by
   have hc : Measurable nrmC := (Real.continuous_sqrt.comp (continuous_norm.comp
