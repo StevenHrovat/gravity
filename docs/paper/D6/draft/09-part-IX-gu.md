@@ -8,6 +8,8 @@ II.4 and II.5. Route: off both routes; the reading route can visit it after R.11
 group splits as Z/6 = Z/2 x Z/3 (IX.3.1c) **[Lean]**, the same two primes that up to a = 0.69 are the only primes in Weil's form
 (IV.1); the primes match exactly, and reading the match as the throughline is the first author's **[reading]**.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 **As a statement checked step by step (II.4.1).** GU has a box and no card (II.5). Its box checks charge quantisation at every
 step and passes, proved: every continuous character of the circle is z to the n (`gu_box`, IX.8) **[Lean]**. The open step of GU
 lies outside this box (IX.5e), so no induction inside it reaches it.
@@ -87,5 +89,3 @@ quantisation, one unit for all matter, checked by the neutrality of matter and t
 for the guarantee (IX.5f), **[Lean]** for the integer charges on the compact circle (IX.3.2), **[external]** for the measurements
 (IX.4.3a, IX.4.3b). Care point: it coincides with the standard expectation of any compact U(1); the paper claims no consequence beyond
 it (IX.5e stays open).
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

@@ -7,6 +7,8 @@
 II.4.1, II.8 and II.14. Route: off both routes; read it for P versus NP. VIBE coefficient: it enters only as the bit: pointer jumping
 halves the depth with each pass (II.15.2) and seven bits cannot single out a byte (`seven_bits_collide`, R.12l) **[Lean]**.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 **As a statement checked step by step (II.4.1).** The statement is the card's open step, the crossing cost (`CrossingCost`),
 checked at every step of the card's box (V.10) **[Lean]**; the inductive step is free and the open part is the base case. A passing
 box gives every refutation at least e^(theta b) lines (`np_box_concl`).
@@ -73,5 +75,3 @@ each keeping at most a 1 - theta share of the costly lines. Lifting with a suita
 are further items, not instances of the card. N2 is the sharpest: a named system, a named family and one missing object. It would not settle NP vs coNP
 (CP is not the strongest system), but it is the first place where the structureless case meets a system strong enough to name a
 crossing in one line.
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

@@ -1,11 +1,13 @@
 # Part II. The machine, and the tools the problems use
 
-*Draft 6, 2026-11-25 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
+*Draft 6, 2026-11-25 (machine-first). Contracted to the machine (II.0, II.3 to II.5), the chain of positivity (II.8) and what the tools do not do (II.16), with the tools of II.9 to II.15 in one line each. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
 
 **Plug in here.** Gives: the machine and the headline theorem II.4.1, then the tools Parts III to V use. Needs: the core
 page; the verify toy helps. Route: the exact route, stop 2. VIBE coefficient: a step of size 1/2 costs log 2 (II.0, C2)
 **[classical]**; once each channel costs at least log 2, the Doeblin bounds sum to at least 1 (II.12.4) **[Lean]**; pointer jumping
 leaves one layer after ceil(log2 d) halvings (II.15.2) **[Lean]**.
+
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
 
 **A. The machine.**
 
@@ -305,5 +307,3 @@ this once (section 4). The six sections II.1 to II.6 are the *form layer*: the p
 nothing about content and so serves every problem. II.16 holds for them too.
 
 ---
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

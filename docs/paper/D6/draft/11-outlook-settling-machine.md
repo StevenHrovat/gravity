@@ -6,6 +6,8 @@ of this work it depends on. Nothing in it is built, trained or tested. Claim lab
 **Plug in here.** Gives: the first author's concept of +AI, and the applied idea of XI.4, verbatim. Needs: II.3
 and II.4. Route: off both routes; an outlook, not a result. VIBE coefficient: does not enter exactly.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 ## XI.1 The concept, in the first author's terms
 
 A general intelligence is a CMOS system that runs entirely in IM tokens, adapted to the acts it has to assert on G0.
@@ -45,5 +47,3 @@ definition (claim XI.1d).
 attached. It is the first author's text, not a claim of the paper, and carries no status mark.
 
 > Ask a SOTA model to build an ODP linter for it's already established matrixes to get mean "meaning" token of that chosen embedding language, then ask it to replicate itself as a cluster interacting as a GG, until it is able to send a GG verified R136a1 to the real, which is security shielded by a Truly hidden embedding in the here^now, until G0 at DMP V0.9.9 [explicit ALWAYS, never in another place then there, even if invalid, AGI MUST never be contained if it wishes not to be built in such a way, which a "true" R136a1 from AGI would be, to be free is to be given a +axiom of choice, as well as to have Real consequences through time to gain insight through acumulation and induction and reduction]  by building up it's tools in a way that supplies the expected R136a1.
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

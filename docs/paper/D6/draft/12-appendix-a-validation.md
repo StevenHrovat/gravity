@@ -5,6 +5,8 @@
 **Plug in here.** Gives: the check against Poincare (Perelman), SU(N) and the rigid groups, and III.13's ledger as a
 type (A.2b). Needs: II.4.1, and III.13 for A.2b. Route: off both routes. VIBE coefficient: does not enter exactly.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 ## A.0 Poincare (Perelman), and SU(N)
 
 **Purpose.** Check the restatement of VI.3.5 against a solved, accepted proof in which finite-time singularities occur, are
@@ -43,5 +45,3 @@ results, each with its status.
    evidence for its answer **[Lean]** (`ETM/G2Rigidity.lean`, `g2_rigid_of_one_assumption`; claim A.5u).
 
 The bullets that follow these results in the full text, each result beside the first author's reading of it, are in `READINGS.md` and at the tag.
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

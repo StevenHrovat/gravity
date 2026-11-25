@@ -6,6 +6,8 @@
 **Plug in here.** Gives: the Hodge card, its positivity and its one open step. Needs: II.4.1. Route: off both routes. VIBE
 coefficient: does not enter exactly.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 **As a statement checked step by step (II.4.1).** For an input of codimension p the statement is the Hodge statement for it,
 checked at every step of the card's box (`hodge_box_iff`, VIII.8) **[Lean]**; the inductive step is free and the open part is the base
 case, which is proved for divisors (`hodge_box_divisor`, from Lefschetz (1,1) with its named inputs).
@@ -81,5 +83,3 @@ which does not exist as an object **[open]**. That missing positivity is the GRH
 
 **What this does to the problem.** The API does not settle Hodge. It states the conjecture as one inclusion in one slot, shows the classical range
 filled, and shows the positivity that is a theorem over the complex numbers. The mechanical answer is: **open for p >= 2, with the open step located.**
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

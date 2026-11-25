@@ -7,6 +7,8 @@
 certified up to a = 0.69 (X.58, X.65) **[certified]**; on the GRH route the summed remainders must stay below log 2 (X.7h)
 **[Lean]**, and beyond Dirichlet that is open (X.7i) **[open]**.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 **The one assumption in the terms of II.4.1.** On each card the one assumption is the card's base case, its open statement: the
 card's box checks the same statement at every step, so the inductive step is free. The other half of the assumption, the gate shared
 across scales, has content only where a family of scales is defined and mapped onto the one box, as for G2 (A.5) and in the verify toy;
@@ -88,8 +90,8 @@ result using it is conditional on it, and they name it as one assumption, read t
 3. The proved obstructions say why assembly with slack cannot supply it (the table in section 4.1).
 4. The dichotomy of II.3 says what would follow: with a floor, a settling bound; without it, no decision procedure (section 4.3).
 
+Sections 1, 2, 4.1 to 4.3 and 6 of this part are in the full text.
+
 When a step closes, the change to the paper is local: the status in `../CLAIMS.md` moves from open to Lean (or paper), the section's
 verdict line changes, one cell of the table in section 4.1 changes, and the introduction's list of what remains shrinks by one item. No other
 section needs to move. That is the test of the paper's structure.
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

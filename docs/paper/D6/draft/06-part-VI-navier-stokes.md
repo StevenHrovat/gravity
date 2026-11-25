@@ -7,6 +7,8 @@
 and II.1. Route: off both routes. VIBE coefficient: the scales are dyadic, 2^-k, each a halving of length, and the energy-only model
 box fails at some dyadic scale (`ns_not_complete`) **[Lean]**.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 **As a statement checked step by step (II.4.1).** Navier-Stokes has three cards (VI.2: route I, regularity, the A/B
 dichotomy), each checked at every step of its card box, with the open part in the base case; the paper does not assume any of
 them **[Lean]** for the card boxes (`tickBox_observable`). The model box of VI.8, built from the energy bound alone, is separate: its
@@ -106,5 +108,3 @@ status of the tie:
 Until these are done, everything in VI.4.1 stays **[external, unverified]**. The project's policy is to cite and audit, not vendor.
 An independent construction of the profile from scratch is beyond reach now: it is a genuinely three-dimensional, time-periodic
 shape with an operator-level certificate at 128-bit precision **[reading]**.
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

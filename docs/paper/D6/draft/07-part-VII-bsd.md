@@ -8,6 +8,8 @@
 **Plug in here.** Gives: the BSD card, its three named parts and its one open step. Needs: II.4.1, and II.2.7 for the turn.
 Route: off both routes. VIBE coefficient: does not enter exactly; the analytic side is read by one turn around s = 1 (VII.3).
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 **As a statement checked step by step (II.4.1).** For a curve the statement is BSD for that curve, checked at every step of the
 card's box (`bsd_box_iff`, VII.8) **[Lean]**; the inductive step is free and the open part is the base case. The analytic side of the
 statement is read by one turn around s = 1: the leading coefficient, and the rank as a winding number (VII.3).
@@ -96,5 +98,3 @@ rank statement follows from it (`bsd_of_refined`). **[open]**
 **What this does to the problem.** The API does not settle BSD. It states BSD as a property of one equation, separates the proved
 structure from the one open equality, and shows the slot is filled where the order is 0 or 1 and for the example above. The
 mechanical answer is: **open, with the open step located, and the three classical parts that Mathlib lacks named.**
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

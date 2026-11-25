@@ -4,8 +4,10 @@
 pointer to the precise statement in Part II. Claim labels (I.n) are listed in `../CLAIMS.md`.*
 
 **Plug in here.** Gives: DMP's vocabulary, each word with its plain meaning and its exact counterpart (I.8). Needs: nothing.
-Route: the reading route, stop 2. VIBE coefficient: VIBE is DMP's word (T32); a part's two halves are one binary choice, one bit, log 2
+Route: the reading route, stop 3. VIBE coefficient: VIBE is DMP's word (T32); a part's two halves are one binary choice, one bit, log 2
 in natural units **[classical]**; v itself is a reading (R.12n).
+
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
 
 ## I.8 The vocabulary in one table
 
@@ -55,5 +57,3 @@ in natural units **[classical]**; v itself is a reading (R.12n).
 | Moin | a request proper, its satisfaction open | the label of O1 | `OpenStep`, posed and never assumed (R.9) | II.5 |
 
 Part II states each counterpart once, in its most general form.
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

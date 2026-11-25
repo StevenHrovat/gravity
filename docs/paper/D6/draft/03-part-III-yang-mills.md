@@ -11,6 +11,8 @@ to level, and the doubling law with a fixed loss gives the gap on all larger dya
 rigorously log mu_4 >= log 4 = 2 log 2 **[classical]**; III.5.6 reads O1's familiar form as dropping a momentum term, as R.12n reads
 E = mc^2 **[reading]**.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 **As a statement checked step by step (II.4.1).** The steps are the lattice levels from a first level k0 of one box of fixed
 physical size; the statement checked at each level is the level criterion, the box's best one-box ratio within the margin. For some
 cell geometry and margin this holds at every level exactly when O1 holds in its Lean form **[Lean]** (`FineOneBox`,
@@ -198,5 +200,3 @@ O1 itself (III.9.5), an instance gives the gap **[Lean]**; the interface supplie
 coefficient a is larger at the ultraviolet end of a renormalization group flow than at the infrared end (the a-theorem;
 Komargodski-Schwimmer 2011, a field-theoretic argument); it compares the endpoints and is not shown to decrease monotonically along
 the flow **[classical]**. Neither supplies the quantum per failing level that the interface asks for.
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

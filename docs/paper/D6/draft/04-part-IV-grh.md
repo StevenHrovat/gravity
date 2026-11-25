@@ -9,6 +9,8 @@ the real place and the primes 2 and 3 enter, and Weil's form is certified positi
 **[certified]**; beyond it lies the open step. R.12o, v's abstract statement, reads this positivity, measured through zeta, as
 what v certifies **[reading]**; by Weil's criterion one negative value would refute RH (II.9.4) **[classical]**.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 **As a statement checked step by step (II.4.1).** For a finite zero model the statement is the sign at every scale (`ScaleSign`),
 and the card's box checks it at every step (`grh_box_iff`, IV.8) **[Lean]**. The statement is the same at every step, so the
 inductive step is free and the open part is the base case, the whole of `ScaleSign`. The certified first scales (IV.1, the first box)
@@ -111,5 +113,3 @@ between scales, at one scale, and over subsets **[paper]** (`grh/VARIATIONAL.md`
 **The constraint on any construction** (IV.3): it cannot add one prime at a time with slack; it cannot assemble positivity place by
 place or subset by subset; it cannot separate the archimedean part from the primes. All primes up to the scale and the real place must
 enter together, in their exact relative position, through an exact identity.
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

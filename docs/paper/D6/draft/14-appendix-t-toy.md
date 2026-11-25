@@ -7,6 +7,8 @@ Lean: IM, `arsenal/Arsenal/Toy.lean`. Claim labels (T.n) are listed in `../CLAIM
 stop 1. VIBE coefficient: reduction modulo 2 maps every width onto one bit (T.2) **[Lean]**; the 256 words of a byte are 2^8, eight
 halvings, a log-size of 8 log 2 **[classical]**.
 
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
+
 The headline of the paper (II.4.1) says that each problem is restated as one statement checked at every step, exactly equivalent
 to it, and that a proof is an induction, base case and inductive step, which then holds at every step and, along a map of scales that
 keeps the step and the check, at every scale. This appendix runs every part of that statement on the simplest data there is, binary
@@ -53,5 +55,3 @@ In a clone of the public IM repository, at the commit `docs/mass-gap/formal/lake
 declaration of the arsenal, the axioms it rests on, and every one of the toy's rests on no more than Lean's three standard axioms.
 The prebuilt files are loaded without a new check; a replay (Lean's `lean4checker`, or a second kernel such as nanoda over
 `lean4export`) checks them again locally; IM's `tools/rebuild check` runs both (T.9). The finite layer needs none of that: `cd arsenal/core`, then `tools/check.sh`, in seconds and with nothing to download (T.8).
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.

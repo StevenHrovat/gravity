@@ -257,7 +257,7 @@ gives and where v enters; on this route v is the halving step where one occurs, 
    {infinity, 2, 3} up to a = 0.69 (X.58), and remainders summed below log 2 deciding the sign step by step (X.7h) **[Lean]**.
 6. **How the parts prove each other** (Appendix E, E.0.1 and E.0.2): the k by k table and the optimizer. *v*: does not enter.
 
-Arriving: the headline holds as a theorem, each open part is named, and none is proved.
+Arriving: the headline holds as a theorem, a restatement that proves nothing by itself; each open part is named, and no open part is proved.
 
 **Route 2, the reading route,** for a reader who starts from the first author's ideas. Each stop names the reading and the exact
 part it stands next to; every reading is given in full in `READINGS.md`.
@@ -274,8 +274,8 @@ part it stands next to; every reading is given in full in `READINGS.md`.
 5. **What does not follow, and why that is useful** (the core page, point 5). Exact: one failing step refutes (`refuted_by_tick`), and
    assigning `+` and `-` settles nothing (`assignment_does_not_decide`) **[Lean]**.
 
-Arriving: every reading has met its exact part, and the conclusion is the one route 1 reached: the headline holds as a theorem,
-each open part is named, and none is proved. The exact parts on the way differ (route 2 passes the zero ring, `r` and the running
+Arriving: every reading has met its exact part, and the conclusion is the one route 1 reached: the headline holds as a theorem, a restatement that proves nothing by itself;
+each open part is named, and no open part is proved. The exact parts on the way differ (route 2 passes the zero ring, `r` and the running
 system, which route 1 does not), and the table below joins them.
 
 **Where the routes meet.** Each of the first author's names, its exact name, and where both stand; a reader can change routes at any

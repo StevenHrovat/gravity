@@ -1,12 +1,14 @@
 # Appendix E. The explanation mechanism applied
 
-*Draft 6, 2026-11-25. The tables of E.0.1 for what Draft 5 establishes, and the optimizer of E.0.2 applied to them (E.9 to E.11).
+*Draft 6, 2026-11-25. The tables of E.0.1 for what Draft 5 establishes, and the optimizer of E.0.2 applied to them (E.9 to E.11, in the full text).
 Lean: IM, `arsenal/core/ArsenalCore/Matrix.lean` (IM `c441ed5`) and `Optimizer.lean` (IM `e9a4057`), on Lean's kernel alone. Tools:
 IM's `tools/rebuild matrix` (with `--optimize` from IM `e9a4057`) and `tools/rebuild check`. Claim labels (E.n) are listed in
 `../CLAIMS.md`.*
 
 **Plug in here.** Gives: the explanation mechanism and the optimizer, applied to DMP, IM and Gravity. Needs: the core
 page. Route: the exact route, stop 6. VIBE coefficient: does not enter.
+
+**Contracted.** Sections and labels this part names but does not print are in the full Draft 6, the git tag `d6-full`, and in Draft 5 section by section; every label is a row of `../CLAIMS.md` with its status and evidence.
 
 **What this appendix shows, in one table and four lines.** The three parts of this project, the DMP specification, IM (the companion
 repository with the shared Lean results) and Gravity (this repository), each prove the parts they use:
@@ -115,5 +117,3 @@ not grow from Draft 4 directly yet reaches it through Draft 5 (`draft6_reaches_g
 reaches G0 within three derivation steps (`every_draft_reaches_g0`); and a new draft is one more part, its own row, column and cell,
 with nothing earlier checked again (`allPlus_succ_iff`) **[Lean]**. G0 stays as it is: Draft 4 is never edited, and its LaTeX
 regenerates identically apart from its build stamps **[paper]**.
-
-**The full text.** This part is contracted. Every derivation it leaves out is in the full Draft 6 at the git tag `d6-full`, and in Draft 5 section by section; every claim keeps its row, status and evidence in `../CLAIMS.md`.
