@@ -370,33 +370,8 @@ of their own as observable systems is **[paper]**, since they are gravity's own 
 | Trusted hashes (R.6b) | each trusted hash: back and forth deliver the same value | no Lean box: a check item by item, with no induction | none: every item checked, 9 proofs pass; the canary first tests the tools | [paper] |
 
 So the proof has one shape everywhere, and the parts show where its open part sits: the base case on the cards, the inductive step on
-the Yang-Mills box. Appendix T runs all of it on binary words. Figure 1 shows the shape once (in the typeset paper; the Markdown keeps
-its source in a comment).
+the Yang-Mills box. Appendix T runs all of it on binary words. Figure 1, on the core page of the introduction, shows the shape once.
 
-<!-- latex
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\small}]
-  \foreach \i in {0,1,2,3} { \node[draw,circle,minimum size=7mm] (s\i) at (\i*2,0) {$\i$}; }
-  \node (dots) at (7.9,0) {$\cdots$};
-  \foreach \i/\j in {0/1,1/2,2/3} { \draw[->,thick] (s\i) -- node[above,font=\footnotesize] {step} (s\j); }
-  \draw[->,thick] (s3) -- (dots);
-  \node[draw,rounded corners,fill=gray!15,align=center,font=\footnotesize] (base) at (0,-1.45) {base case:\\ the claim at 0};
-  \draw[->] (base) -- (s0);
-  \node[align=center,font=\footnotesize] at (4,1.05) {inductive step: once true at a step, true at the next};
-  \draw[decorate,decoration={brace,mirror,amplitude=5pt}] (-0.4,-0.55) -- (6.4,-0.55) node[midway,below=6pt,font=\footnotesize] (onebox) {the one box: the whole run};
-  \node[draw,rounded corners,font=\footnotesize] (c1) at (2,-3.1) {scale 2};
-  \node[draw,rounded corners,font=\footnotesize] (c2) at (4.4,-3.1) {scale 3};
-  \node[draw,rounded corners,font=\footnotesize] (c3) at (6.8,-3.1) {scale $\dots$};
-  \foreach \c in {c1,c2,c3} { \draw[->,dashed] (\c) -- (3,-1.25); }
-  \node[align=center,font=\footnotesize] at (4.4,-3.95) {dashed: every scale's run mapped onto the one box, keeping the step, the check and the marker (the shared gate)};
-\end{tikzpicture}
-\caption{The headline as a picture. A statement is checked at every step of a run; a proof is a base case and an inductive step, and
-the dashed maps carry it from the one box to every scale. Where the open part sits: on a card, the base case; on the Yang-Mills box, the
-inductive step; for G2, the dashed maps (the shared gate, named R136a1). In the verify toy the content sits in the dashed maps too, and
-everything there is proved.}
-\end{figure}
--->
 
 ## II.5 The API: cards
 

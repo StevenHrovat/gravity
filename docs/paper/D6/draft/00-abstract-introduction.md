@@ -32,51 +32,98 @@ meaning becomes apparent and its place in existence slots neatly into a better p
 
 ## Abstract
 
-Each problem is restated as one statement checked at every step of a sequence. The restatement holds exactly when the problem's statement holds at every step,
-so a proof has one shape, an induction: a base case and an inductive step. Once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. On binary data, read as real numbers,
-every computation can be made reversible, so complex mathematics applies exactly. Six Clay problems are read this way, two in a
-neighbouring form (GRH for the Riemann hypothesis, NP versus coNP for P versus NP), with a Grand Unified reading, not a Clay problem. The restatements are in Lean 4 with Mathlib, standard axioms only; DMP's readings are marked. Draft 6, the ETM as the ODP running DMP, adds DMP's explanation mechanism, a k by k table of proofs, and its mirror, a DAG optimizer (Lean).
+Seven problems are read here as one statement checked at every step of a sequence: Yang-Mills, GRH (for the Riemann hypothesis), NP
+versus coNP (for P versus NP), Navier-Stokes, BSD, Hodge, and a Grand Unified reading, not a Clay problem. No problem is solved. The
+restatement holds exactly when the problem's statement holds at every step, so a proof is an induction: a base case and an inductive
+step; once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. Each problem is a card, one named open step in Lean; on a card the open step is the base case, on the Yang-Mills box the
+inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills,
+GRH, NP versus coNP, BSD and Hodge, each a different open statement; results using it are marked conditional. On binary data read as
+real numbers every computation can be made reversible, its history kept as a supplied input, so complex mathematics applies exactly. The work is in Lean 4 with Mathlib, standard axioms
+only; DMP's readings are marked.
 
-No problem is solved: on the cards the open problem is the base case, on the Yang-Mills box the inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge, each a different open statement; results using it are marked conditional. Proved in Lean
-without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of fixed physical size, uniform in
-spacing and volume; the explicit formula for all nontrivial zeros of zeta (its real-place term not yet matched to Weil's); a
-crossing theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index; the
-full turn, giving the SU(N) hand-over log(1 + sqrt N) (electric sectors assumed positive, N >= 3) and the analytic rank as a
-winding number. Weil's positivity on a first box, with the real place and the primes 2, 3, is enclosed in ball arithmetic, given analytic estimates argued in a note.
+Proved in Lean without the assumption: the reduction of the SU(2) lattice mass gap to one named criterion on one box of fixed
+physical size, uniform in spacing and volume; the explicit formula for all nontrivial zeros of zeta (its real-place term not yet
+matched to Weil's); a crossing theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the
+Hodge index; the full turn, giving the SU(N) hand-over log(1 + sqrt N) (electric sectors assumed positive, N >= 3) and the analytic
+rank as a winding number. Weil's positivity on a first box, with the real place and the primes 2, 3, is enclosed in ball arithmetic,
+given analytic estimates argued in a note.
 
 ---
 
 ## Introduction
 
-### What Draft 6 adds
+### The core in one page
 
-Draft 6 grows from Draft 5 and adds one mechanism, which explains what Draft 5 establishes and claims nothing beyond it. A system is
-k parts, and a k by k table says for each pair whether the row proves the column. The first author takes this table as DMP's
-explanation mechanism, in which a derived cell explains and does not prove **[reading]** (E.0.1). Exactly, in Lean on the kernel
-alone: a part is added by its own row, column and cell, and nothing already proven is checked again; every derived cell is reached by a
-chain of cells already in the table; where the row does not use the column the cell reflects positively, and where every use points to
-an earlier part no chain of uses returns **[Lean]** (E.0.1). Appendix E applies it to what Draft 5 measured: the versions of DMP,
-Gravity and IM form such a DAG, every use proven; the two kernels accept every target; Draft 5 establishes no chain of `+` cells that
-reaches the one open step O1 (E.6); and the drafts form a library that reaches G0 at Draft 4 from every later draft (E.7).
+Read this page first; everything after it unfolds from it, one idea at a time.
 
-Draft 6 also adds the mechanism's mirror and *the Possibility Space*, the first author's first subtitle for this draft. The optimizer removes every use that the table
-already includes through another chain, which is the transitive reduction of a DAG; in Lean on the kernel alone it keeps every
-derivation, settles in one pass, and is the only settled form with the same reach **[Lean]** (E.0.2). Applied to the measured
-versions it finds them not settled, by exactly one use: IM's own copy of DMP, which its copy of Gravity already includes (E.9). The
-Possibility Space is the first author's reading of a question as a point whose answer gives it only `+`, with the right angle `r` as
-the direction from a question to its certificate **[reading]** (R.11). Its exact parts are the arithmetic of `r` and a projector's
-two answers **[Lean]**, and the Bloch sphere, the flux tube and the rotating string **[classical]**. The steps that do not follow as
-stated are named, among them that assigning `+` and `-` to a question proves O1.
+**1. A run and a claim.** A system takes steps, and one claim is checked at every step. A proof then has one shape, an induction: the
+base case (the claim at the start) and the inductive step (a step that keeps the claim). Once both are shown the claim holds at every
+step, and one failing step refutes it (II.4.1: `route`, `refuted_by_tick`) **[Lean]**. Figure 1 draws it. The restatement proves
+nothing by itself: the content is in the base case or in the step.
 
-Last, Draft 6 adds two things. First, O1 typed as Perelman's ledger, the interface the first author's reading asks for (III.13): a
-quantity, monotone and bounded along the lattice levels, that gains a quantum at every level where the box fails. An instance gives
-O1 and, with the resolution clause, the gap; O1 gives an instance; so the interface is exactly O1 and proves no new bound **[Lean]**.
-Second, the subtitle, *the ETM as the ODP running DMP*: the first author's reading of the ODP as the internal clock whose tick ends
-at `+`, of DMP as the operating system of that kernel, and of one ETM that boots again whenever it stops **[reading]** (R.12). Its
-exact parts are the cycle of `r` and the one terminal running system **[Lean]**. The reading that the paper proves 0 = 1 for the
-classical, hence NP = coNP and P != NP, does not follow, and R.12 says why. R.12 ends with the first author's one condition: O1
-supplied at minting, under a universal witness agreed beforehand, and assumed until one invalid case is found. The paper records it
-as a reading next to its exact parts and does not claim O1.
+**2. A step is a multiplication.** Each step multiplies by a number of size at most 1: the size is the cost, the angle is the turn
+(II.0, rules C1 and C2) **[classical]**. Three steps of size 1/2 give size 1/8, a cost of 3 log 2. When every step stays below the circle,
+by a fixed margin, the run settles, and the number of steps is computable: halving each time, getting within 1/1000 takes
+`balanceBound 1 (1/1000) (1/2) = 1001` steps at most (II.3) **[Lean]**. On the circle itself nothing forces the run to settle, and for
+the universal machine it cannot be decided (II.3) **[Lean]**.
+
+**3. The smallest example.** On 8-bit words, step by adding 2 and claim "even": the base case is the word 0, the step keeps evenness,
+and all 256 words are checked by one kernel evaluation (T.1, T.2) **[Lean]**. Step by adding 1 instead, and tick 1 is odd: one wrong
+step refutes the claim (T.3) **[Lean]**. Reducing every word to its last bit carries the result from one bit to every width (T.2):
+that map is what "every scale" means.
+
+**4. Where the open part sits.** On a problem card the claim is the same at every step, so the step is free and the base case is the
+whole open problem. On the Yang-Mills box the base case is easy and the inductive step between lattice levels is open: that step is
+O1. For G2 the open part is the map of scales (Figure 1, dashed). No tool creates positivity; it has to come from the problem (II.16).
+No problem is solved here, and O1 is open.
+
+**How to read on.** Press on the three toys until each closes (Appendix T), then mint the parts from the template: Part II builds the
+machine around these four points, Parts III to IX apply it one problem at a time, Part X compares them. The first author's vocabulary
+(DMP, G0, ODP, ETM and the operators `?`, `!`, `.`) is collected in I.8; every reading is marked **[reading]** and sits next to its exact
+counterpart. Draft 6's additions come last (E.0.1, E.0.2, R.11, R.12).
+
+<!-- latex
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\small}]
+  \foreach \i in {0,1,2,3} { \node[draw,circle,minimum size=7mm] (s\i) at (\i*2,0) {$\i$}; }
+  \node (dots) at (7.9,0) {$\cdots$};
+  \foreach \i/\j in {0/1,1/2,2/3} { \draw[->,thick] (s\i) -- node[above,font=\footnotesize] {step} (s\j); }
+  \draw[->,thick] (s3) -- (dots);
+  \node[draw,rounded corners,fill=gray!15,align=center,font=\footnotesize] (base) at (0,-1.45) {base case:\\ the claim at 0};
+  \draw[->] (base) -- (s0);
+  \node[align=center,font=\footnotesize] at (4,1.05) {inductive step: once true at a step, true at the next};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt}] (-0.4,-0.55) -- (6.4,-0.55) node[midway,below=6pt,font=\footnotesize] (onebox) {the one box: the whole run};
+  \node[draw,rounded corners,font=\footnotesize] (c1) at (2,-3.1) {scale 2};
+  \node[draw,rounded corners,font=\footnotesize] (c2) at (4.4,-3.1) {scale 3};
+  \node[draw,rounded corners,font=\footnotesize] (c3) at (6.8,-3.1) {scale $\dots$};
+  \foreach \c in {c1,c2,c3} { \draw[->,dashed] (\c) -- (3,-1.25); }
+  \node[align=center,font=\footnotesize] at (4.4,-3.95) {dashed: every scale's run mapped onto the one box, keeping the step, the check and the marker (the shared gate)};
+\end{tikzpicture}
+\caption{The headline as a picture. A statement is checked at every step of a run; a proof is a base case and an inductive step, and
+the dashed maps carry it from the one box to every scale. Where the open part sits: on a card, the base case; on the Yang-Mills box, the
+inductive step; for G2, the dashed maps (the shared gate, named R136a1). In the verify toy the content sits in the dashed maps too, and
+everything there is proved.}
+\end{figure}
+-->
+
+### How to read the status marks
+
+Every result carries one of eleven marks: nine main marks and two for prose not yet read by a second person. **[Lean]**: machine-checked here, standard axioms only, module named. **[classical]**:
+known, with a reference. **[external]**: a result by others, read but not rebuilt. **[conditional]**: under a named assumption.
+**[paper]**: argued here in prose. **[numerical]**: measured here; it can refute, never prove a for-all statement. **[certified]**:
+enclosed in ball arithmetic, with its log. **[reading]**: a DMP interpretation, never mathematics. **[open]**: not settled.
+
+A mark may carry a qualifier after a comma or semicolon. "from X" names the inputs a Lean result rests on (named hypotheses,
+`External` slots, a classical theorem taken as input). "recalled": stated from the literature without its page being read for this
+draft. "traced": the project followed the external work's route itself, in part. "unverified": an external claim not checked here,
+"certificate unreleased" when its certificate is announced but not public. "an estimate": a prose estimate, not a proof. "re-checked":
+also passed by a second kernel. "model": the statement is about the paper's own model of the system, not the system itself.
+"preliminary": a first pass, not yet repeated. "under O1": holds given O1. **[sketch]** and **[unchecked]** are **[paper]** arguments not yet read by a second person. "A + B" marks a statement with two
+parts of two statuses (for example a Lean core with a classical input); "A / B" marks a statement whose status depends on the case
+named beside it. "open in
+general", "open where marked": the mark holds for the cases named, the rest is open. The claims ledger (`../CLAIMS.md`) lists every
+claim with its mark, source and what would upgrade it.
 
 ### What this paper is
 
@@ -236,67 +283,6 @@ the draft stage only when every open step is closed, so that both readings of it
 * From **logic and verification**: a machine in which every open part is a named hypothesis, every axiom shows in the kernel's
   report, and a lint and a second kernel check every change; undecidability and the floor as the two sides of one test.
 
-### A guide by ear: the tempered piano
-
-This guide is not part of any argument. It is offered as a picture to hold while reading, and the idea of hearing existence through
-tuning came to the first author from a short published by Vsauce; it is credited here, under that name, for that transfer.
-
-* **Tuning is built from 2 and 3.** The octave is the ratio 2, the fifth the ratio 3/2. Pitch, taken modulo the octave, is a circle,
-  and a fifth is a rotation on it **[classical]**.
-* **The rotation does not close by itself.** Because log2(3) is irrational, twelve pure fifths overshoot seven octaves by the
-  Pythagorean comma, 3^12 / 2^19 = 1.01364 **[classical]**. This is the finite loss at the start that the paper excises: the first
-  box at {infinity, 2, 3} (Part IV) is where the two generators of the tuning meet.
-* **Temperament is the balanced state.** Equal temperament spreads the comma evenly over all twelve steps (each fifth becomes
-  2^(7/12)), so the rotation closes and every key is equivalent; twelve is not arbitrary, since 19/12 is a convergent of log2(3)
-  **[classical]**. In the paper's words, the rotation gives the tuning a direction and makes every tick alike (Part X, the tick
-  operator) **[reading]**.
-* **The zeros are the strings.** The explicit formula (Part IV) writes the primes as a sum of tones: each nontrivial zero
-  1/2 + i gamma sounds at frequency gamma in log x. On the critical line every tone has the same amplitude, x^(1/2); the Riemann
-  hypothesis says that every string is tuned to the same loudness **[classical]**.
-
-The guide ends where the tuning does: on the final tone, resonating outward. Nothing more is stated about it than that such a
-configuration is describable, and that in that description it runs **[reading]**.
-
-### How to read the status marks
-
-Every result carries one of eleven marks: nine main marks and two for prose not yet read by a second person. **[Lean]**: machine-checked here, standard axioms only, module named. **[classical]**:
-known, with a reference. **[external]**: a result by others, read but not rebuilt. **[conditional]**: under a named assumption.
-**[paper]**: argued here in prose. **[numerical]**: measured here; it can refute, never prove a for-all statement. **[certified]**:
-enclosed in ball arithmetic, with its log. **[reading]**: a DMP interpretation, never mathematics. **[open]**: not settled.
-
-A mark may carry a qualifier after a comma or semicolon. "from X" names the inputs a Lean result rests on (named hypotheses,
-`External` slots, a classical theorem taken as input). "recalled": stated from the literature without its page being read for this
-draft. "traced": the project followed the external work's route itself, in part. "unverified": an external claim not checked here,
-"certificate unreleased" when its certificate is announced but not public. "an estimate": a prose estimate, not a proof. "re-checked":
-also passed by a second kernel. **[sketch]** and **[unchecked]** are **[paper]** arguments not yet read by a second person. "A + B" marks a statement with two
-parts of two statuses (for example a Lean core with a classical input); "A / B" marks a statement whose status depends on the case
-named beside it. "open in
-general", "open where marked": the mark holds for the cases named, the rest is open. The claims ledger (`../CLAIMS.md`) lists every
-claim with its mark, source and what would upgrade it.
-
-### The three verification layers
-
-The work behind this paper is checked three ways: by proof (on paper and in Lean), by the literature, and by computation. The
-computations can refute a statement or guide a proof; they never establish a statement about all cases. Every measured number in the
-paper is tied to the statement it would discharge, and a passing measurement is reported as consistent, not as proof. The Lean is
-re-checked by independent kernels (Part II, II.7, with the commit of the last run), and IM's arsenal passes its lint at every change,
-listing every part left open by name.
-
-### Reproducing it
-
-Every **[Lean]**, **[certified]** and **[numerical]** claim can be rerun from a clone of the repository with one script, stage by
-stage: `tools/reproduce.sh paper D5` (the ledger and the PDF of this draft), `evidence` (the DMP evidence chain, "OK 285"), `lean` (the paper's
-Lean against Mathlib, every axiom log compared line by line), `certs` (the certified first box, the three margins) and `kernels`
-(the second kernels). `docs/paper/REPRODUCE.md` lists what each stage needs, how long it takes and what it prints when it passes;
-the claims ledger `docs/paper/D5/CLAIMS.md` gives, for every claim, the declaration, log or reference that checks it. The repository is
-https://github.com/StevenHrovat/gravity, at the commit printed on the title page, with this draft in `docs/paper/D5`
-(Draft 4, which it grew from, stays unchanged in `docs/paper`); IM, whose arsenal the Lean imports at a pinned
-commit, is https://github.com/StevenHrovat/im.
-
-Two kinds of number appear in the text. Section numbers such as III.12 or X.4.4 name sections of this paper. Claim labels such as
-X.64 or III.10c name rows of the claims ledger, which this PDF does not reproduce; in the PDF each claim label links to the ledger,
-whose row gives the claim's status, its source and what would upgrade it. Where a number could be either, the text writes "claim".
-
 ### What is new
 
 * The machine as one object: running systems, their ledger, the encoder, and the settle theorem with its edge, decidable within an
@@ -328,6 +314,80 @@ Lee-Yang, Pringsheim and Landau, Mordell-Weil, Hasse, Gross-Zagier-Kolyvagin, Co
 surgery theory of Browder, Novikov, Sullivan, Wall and Kirby-Siebenmann, and, for Weil positivity at small support, Yoshida and
 Connes-Consani.
 
+### A guide by ear: the tempered piano
+
+This guide is not part of any argument. It is offered as a picture to hold while reading, and the idea of hearing existence through
+tuning came to the first author from a short published by Vsauce; it is credited here, under that name, for that transfer.
+
+* **Tuning is built from 2 and 3.** The octave is the ratio 2, the fifth the ratio 3/2. Pitch, taken modulo the octave, is a circle,
+  and a fifth is a rotation on it **[classical]**.
+* **The rotation does not close by itself.** Because log2(3) is irrational, twelve pure fifths overshoot seven octaves by the
+  Pythagorean comma, 3^12 / 2^19 = 1.01364 **[classical]**. This is the finite loss at the start that the paper excises: the first
+  box at {infinity, 2, 3} (Part IV) is where the two generators of the tuning meet.
+* **Temperament is the balanced state.** Equal temperament spreads the comma evenly over all twelve steps (each fifth becomes
+  2^(7/12)), so the rotation closes and every key is equivalent; twelve is not arbitrary, since 19/12 is a convergent of log2(3)
+  **[classical]**. In the paper's words, the rotation gives the tuning a direction and makes every tick alike (Part X, the tick
+  operator) **[reading]**.
+* **The zeros are the strings.** The explicit formula (Part IV) writes the primes as a sum of tones: each nontrivial zero
+  1/2 + i gamma sounds at frequency gamma in log x. On the critical line every tone has the same amplitude, x^(1/2); the Riemann
+  hypothesis says that every string is tuned to the same loudness **[classical]**.
+
+The guide ends where the tuning does: on the final tone, resonating outward. Nothing more is stated about it than that such a
+configuration is describable, and that in that description it runs **[reading]**.
+
+### The three verification layers
+
+The work behind this paper is checked three ways: by proof (on paper and in Lean), by the literature, and by computation. The
+computations can refute a statement or guide a proof; they never establish a statement about all cases. Every measured number in the
+paper is tied to the statement it would discharge, and a passing measurement is reported as consistent, not as proof. The Lean is
+re-checked by independent kernels (Part II, II.7, with the commit of the last run), and IM's arsenal passes its lint at every change,
+listing every part left open by name.
+
+### Reproducing it
+
+Every **[Lean]**, **[certified]** and **[numerical]** claim can be rerun from a clone of the repository with one script, stage by
+stage: `tools/reproduce.sh paper D6` (the ledger and the PDF of this draft), `evidence` (the DMP evidence chain, "OK 285"), `lean` (the paper's
+Lean against Mathlib, every axiom log compared line by line), `certs` (the certified first box, the three margins) and `kernels`
+(the second kernels) and `matrix` (the k by k table of E.0.1 and the optimizer of E.0.2). `docs/paper/REPRODUCE.md` lists what each stage needs, how long it takes and what it prints when it passes;
+the claims ledger `docs/paper/D6/CLAIMS.md` gives, for every claim, the declaration, log or reference that checks it. The repository is
+https://github.com/StevenHrovat/gravity, at the commit printed on the title page, with this draft in `docs/paper/D6`
+(it grew from Draft 5 in `docs/paper/D5`; Draft 4, G0, stays unchanged in `docs/paper`); IM, whose arsenal the Lean imports at a pinned
+commit, is https://github.com/StevenHrovat/im.
+
+Two kinds of number appear in the text. Section numbers such as III.12 or X.4.4 name sections of this paper. Claim labels such as
+X.64 or III.10c name rows of the claims ledger, which this PDF does not reproduce; in the PDF each claim label links to the ledger,
+whose row gives the claim's status, its source and what would upgrade it. Where a number could be either, the text writes "claim".
+
+### What Draft 6 adds
+
+Draft 6 grows from Draft 5 and adds one mechanism, which explains what Draft 5 establishes and claims nothing beyond it. A system is
+k parts, and a k by k table says for each pair whether the row proves the column. The first author takes this table as DMP's
+explanation mechanism, in which a derived cell explains and does not prove **[reading]** (E.0.1). Exactly, in Lean on the kernel
+alone: a part is added by its own row, column and cell, and nothing already proven is checked again; every derived cell is reached by a
+chain of cells already in the table; where the row does not use the column the cell reflects positively, and where every use points to
+an earlier part no chain of uses returns **[Lean]** (E.0.1). Appendix E applies it to what Draft 5 measured: the versions of DMP,
+Gravity and IM form such a DAG, every use proven; the two kernels accept every target; Draft 5 establishes no chain of `+` cells that
+reaches the one open step O1 (E.6); and the drafts form a library that reaches G0 at Draft 4 from every later draft (E.7).
+
+Draft 6 also adds the mechanism's mirror and *the Possibility Space*, the first author's first subtitle for this draft. The optimizer removes every use that the table
+already includes through another chain, which is the transitive reduction of a DAG; in Lean on the kernel alone it keeps every
+derivation, settles in one pass, and is the only settled form with the same reach **[Lean]** (E.0.2). Applied to the measured
+versions it finds them not settled, by exactly one use: IM's own copy of DMP, which its copy of Gravity already includes (E.9). The
+Possibility Space is the first author's reading of a question as a point whose answer gives it only `+`, with the right angle `r` as
+the direction from a question to its certificate **[reading]** (R.11). Its exact parts are the arithmetic of `r` and a projector's
+two answers **[Lean]**, and the Bloch sphere, the flux tube and the rotating string **[classical]**. The steps that do not follow as
+stated are named, among them that assigning `+` and `-` to a question proves O1.
+
+Last, Draft 6 adds two things. First, O1 typed as Perelman's ledger, the interface the first author's reading asks for (III.13): a
+quantity, monotone and bounded along the lattice levels, that gains a quantum at every level where the box fails. An instance gives
+O1 and, with the resolution clause, the gap; O1 gives an instance; so the interface is exactly O1 and proves no new bound **[Lean]**.
+Second, the subtitle, *the ETM as the ODP running DMP*: the first author's reading of the ODP as the internal clock whose tick ends
+at `+`, of DMP as the operating system of that kernel, and of one ETM that boots again whenever it stops **[reading]** (R.12). Its
+exact parts are the cycle of `r` and the one terminal running system **[Lean]**. The reading that the paper proves 0 = 1 for the
+classical, hence NP = coNP and P != NP, does not follow, and R.12 says why. R.12 ends with the first author's one condition: O1
+supplied at minting, under a universal witness agreed beforehand, and assumed until one invalid case is found. The paper records it
+as a reading next to its exact parts and does not claim O1.
+
 ### Plan
 
 Part I: DMP, the vocabulary. Part II: the machine, then the tools the problems use; its centre is II.4.1, the headline as a
@@ -335,5 +395,7 @@ theorem. Parts III to IX: the seven problems, one template each (Yang-Mills, GRH
 BSD, Hodge, GU); each opens with the problem as a statement checked step by step, says whether its open part is the base case or the inductive
 step, and ends at its card and its box. Part X: the one assumption, which on each card is its base case, and the rigid start, which
 compares the cards once they have been read. Then the Outlook
-(sections XI.n). Appendix A: validation (Poincare, SU(N) and the rigid groups). Appendix R: DMP's neighbours and the first author's
-readings that no card uses. Appendix T: the verify toy, the headline run on binary words, to read in full and rerun.
+(sections XI.n). Appendix A: validation (Poincare, SU(N) and the rigid groups), with III.13's ledger as a type (A.2b). Appendix R: DMP's
+neighbours and the first author's readings that no card uses, closing with the possibility space (R.11) and the subtitle's readings,
+*the ETM as the ODP running DMP* (R.12). Appendix T: the verify toy, the headline run on binary words, to read in full and rerun.
+Appendix E: the explanation mechanism and its mirror, the optimizer (E.0.1, E.0.2), applied to the parts of this project.
