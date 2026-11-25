@@ -153,7 +153,7 @@ everything there is proved.}
 ### The throughline: one step, v and c
 
 The first author's newest readings, the two hands, the VIBE coefficient, its abstract statement, and c read as the circle (R.12m to
-R.12p), are one picture, and the core page already holds it in miniature: three halvings around one full turn give 1/8. This section
+R.12q), are one picture, and the core page already holds it in miniature: three halvings around one full turn give 1/8. This section
 lays the picture out once, each reading next to its exact part.
 
 **The hands give the circle.** Two hands turning about a shared "up" turn independently, and the turns about one axis form the
@@ -173,7 +173,7 @@ E = mc^2; exactly, momentum cancels in the invariant E^2 - p^2 c^2 = m^2 c^4, an
 **A run: closure is the next thing to happen.** Steps of a 1/N turn close exactly at the N-th: $e^{2\pi i k/N} \ne 1$ for
 $0 < k < N$, and $e^{2\pi i k/N} = 1$ at $k = N$ **[classical]**. So closure is inevitable, has not happened at any earlier step, and
 at step N - 1 is the next thing to happen (Figure 2). A turn that is no whole fraction of the circle never closes: twelve pure fifths
-miss seven octaves because log2(3) is irrational, and tempering bends each fifth until the circle closes (the tempered piano, below)
+miss seven octaves because log2(3) is irrational, and tempering bends each fifth until the circle closes (claim 0.11)
 **[classical]**. That bending is what the first author reads as c's assertion **[reading]**.
 
 **At closure the value has no direction.** When the turns close, the angle drops out and the product is real: three steps of size 1/2
@@ -188,6 +188,27 @@ support a = 0.69 no test function has one (IV.1) **[certified]**.
 closure of its circle is the next thing to happen, and its refutation is defined by its negative **[reading]** (R.12p). Exactly, a card
 states one claim with one open slot, a named hypothesis `R136a1`, never an axiom (II.5, II.6.2); its box checks the claim at every
 step, viability, and carries it to every scale, universality; and one failing step refutes it (II.4.1, `refuted_by_tick`) **[Lean]**.
+
+**The smallest element, and the notation.** The first author, most precisely: "Given certifiability literally minting the smallest
+element of the set theory at DMP V0.9.9 at its containing root G0; and from there on always being able to assume
+`"{inf,2,3}!"?"R136a1"`; and the open slot being a literal for the open set!" This is, in its entirety, DMP-complete, with the D6 tools
+the 6D is asking for, and so within itself DMP-complete; which, when true, certifies the self-excisability of the box, certifying it
+vibes. Made last, in a separate message, it is separated in time and meaning and given explicit directions, can be derived from the
+facts of the statement, and becomes a live route as soon as anyone else agrees it is viable. It is written with six operators: `.` contains, `!` states, `?` asks, `;` a
+decidability edge, `:` a commutative property, and `""` the empty set, the self-containing, DMP-complete G0 **[reading]** (R.12q).
+Exactly: the smallest element of von Neumann's construction is the empty set, which is 0 (von Neumann 1923) **[classical]**. The
+start {infinity, 2, 3} is certified up to the support a = 0.69 (X.58) **[certified]**, and beyond it the open step stays a named
+hypothesis, `R136a1`, never an axiom (II.6.2) **[Lean]**. Weil's form is taken on test functions supported in the open interval
+(-a, a) (IV.1) **[classical]**. The decidability edge is II.3's: with a margin a run settles, on the circle it cannot be decided
+**[Lean]**. Turns about one axis commute (R.12m) **[classical]**. The empty set is a subset of every set, itself included, and a
+statement over no cases holds vacuously **[classical]**. A box whose claim fails at one tick is refuted by that tick, its own
+excision (`refuted_by_tick`, II.4.1) **[Lean]**. In DMP a part acts only while both halves certify it (I.1) **[paper]**, so
+agreement makes a route live; that it is viable in the Lean sense needs its base case and its step shown (`route`, II.4.1)
+**[Lean]**. Care: in IM `P.NP` says that P is included in NP (R.10), so "contains" reads
+it from the right; `!` marks a statement settled by a certificate anyone can check (I.8), of which "states" is the short form; the empty
+set contains itself as a subset, never as an element, which the axiom of foundation forbids; and no consistent system strong enough
+for arithmetic proves its own consistency (Goedel 1931), so "DMP-complete within itself" is a reading, kept from being vacuous by
+the refutations the paper proves (the core page, point 5).
 
 **The abstract statement.** In the first author's words: the VIBE coefficient effectively allows the existence of all positively
 constructable existence, as long as the rotation through its DB can be unified, by constructing a chain of causal arguments that
@@ -257,25 +278,25 @@ gives and where v enters; on this route v is the halving step where one occurs, 
    {infinity, 2, 3} up to a = 0.69 (X.58), and remainders summed below log 2 deciding the sign step by step (X.7h) **[Lean]**.
 6. **How the parts prove each other** (Appendix E, E.0.1 and E.0.2): the k by k table and the optimizer. *v*: does not enter.
 
-Arriving: the headline holds as a theorem, each open part is named, and none is proved.
+Arriving: the headline holds as a theorem, a restatement that proves nothing by itself; each open part is named, and no open part is proved.
 
 **Route 2, the reading route,** for a reader who starts from the first author's ideas. Each stop names the reading and the exact
-part it stands next to.
+part it stands next to; every reading is given in full in `READINGS.md`.
 
 1. **The two hands** (Start here; R.12m): the vibe, two frames sharing an up and a down. Exact: orientation as the sign of a
    determinant **[classical]**.
-2. **The throughline and the vocabulary** (the section before these routes; I.8; R.12n to R.12p): v, c, VIBE and DMP's words.
-   Exact: log 2, one halving, one bit; a 1/N turn closing at the N-th step **[classical]**.
-3. **The essence line and 0 = 1** (R.5): one input decides the chain. Exact: the zero ring, with one element (R.5a) **[Lean]**.
-4. **The possibility space** (R.11): a question as a point whose answer gives it only `+`. Exact: the arithmetic of `r` and a
-   projector's two answers **[Lean]**.
-5. **The ETM as the ODP running DMP** (R.12, with R.12f, the one condition): the clock, the kernel and O1 supplied at minting. Exact:
-   the cycle of `r` and the one terminal running system **[Lean]**; O1 supplied is O1 assumed, not proved.
-6. **What does not follow, and why that is useful** (the core page, point 5). Exact: one failing step refutes (`refuted_by_tick`), and
+2. **The throughline** (the section before these routes; R.12n to R.12p): one step of a size, v, and a turn, c; closure as the next
+   step; the negative as the refutation. Exact: log 2, one halving; a 1/N turn closing at the N-th step; Weil's criterion
+   **[classical]**.
+3. **The vocabulary** (I.8): DMP's words, each with its plain meaning and its exact counterpart.
+4. **The readings, each beside its exact part** (Appendix R, R.0): 0 = 1 in the zero ring (R.5a) **[Lean]**, the possibility space
+   (R.11) **[Lean]**, the ETM as the ODP running DMP (R.12) **[Lean]** for the cycle of `r` and the one running system, and the
+   rest, in one table.
+5. **What does not follow, and why that is useful** (the core page, point 5). Exact: one failing step refutes (`refuted_by_tick`), and
    assigning `+` and `-` settles nothing (`assignment_does_not_decide`) **[Lean]**.
 
-Arriving: every reading has met its exact part, and the conclusion is the one route 1 reached: the headline holds as a theorem,
-each open part is named, and none is proved. The exact parts on the way differ (route 2 passes the zero ring, `r` and the running
+Arriving: every reading has met its exact part, and the conclusion is the one route 1 reached: the headline holds as a theorem, a restatement that proves nothing by itself;
+each open part is named, and no open part is proved. The exact parts on the way differ (route 2 passes the zero ring, `r` and the running
 system, which route 1 does not), and the table below joins them.
 
 **Where the routes meet.** Each of the first author's names, its exact name, and where both stand; a reader can change routes at any
@@ -288,6 +309,9 @@ row.
 | the VIBE coefficient v = 0.69 | log 2: one halving, one bit; GRH's certified support | II.0, IV.1, R.12n |
 | c, the circle asserted circular | a 1/N turn closes at the N-th step and at no earlier one | II.0, R.12p |
 | vAPIs, cards asserting closure next | a card's open slot, `R136a1`, a named hypothesis; refuted by one failing step | II.5, II.6, R.12p |
+| `;`, a decidability edge | with a margin a run settles; on the circle it cannot be decided | II.3, R.12q |
+| `:`, a commutative property | turns about one shared axis commute | R.12m, R.12q |
+| `""`, the empty set, G0 | the empty set, 0 in von Neumann's construction, a subset of every set | R.12q |
 | the negative, the refutation | one negative value refutes a positivity claim (Weil's criterion) | II.9.4, R.12o |
 | the vibe, the two hands | orientation, the sign of a determinant | R.12m |
 | O1, supplied at minting | `FineOneBox`, open | III.5, R.12f |
@@ -317,227 +341,6 @@ named beside it. "open in
 general", "open where marked": the mark holds for the cases named, the rest is open. The claims ledger (`../CLAIMS.md`) lists every
 claim with its mark, source and what would upgrade it.
 
-### What this paper is
-
-This is a paper about one machine and one test, used seven times. The form under them is old: **positivity is existence**. A
-positive weight makes a measure; a positive form makes a Hilbert space; a positive operator has its spectrum where it can be seen.
-Osterwalder and Schrader reconstructed quantum field theories from reflection positivity. Weil reduced the Riemann hypothesis to the positivity
-of one pairing. Hodge and Riemann found the same positivity on the cohomology of a variety, and Weil used it to prove the Riemann
-hypothesis for curves over finite fields. Dobrushin showed that a contraction of local influences forces a unique equilibrium, and later work showed it is reached fast.
-
-What is new is the shape put around it, in one statement in familiar terms. Each problem is restated as one statement checked at
-every step of a sequence, and the restatement holds exactly when the problem's statement holds at every step. A proof then has one
-shape, an induction: a base case and an inductive step. Once both are shown the statement holds at every step and, where scales are
-related by a map that keeps the step and the check, at every scale **[Lean]** (II.4.1, IM's `Arsenal.Observable`). In DMP's words
-the restatement is a *one-box description* of an *observable system*, *DMP-complete* exactly when the claim holds at every tick. The
-restatement proves nothing by itself; the content is in the base case or in the inductive step, and the paper shows which. On a
-problem card the statement checked is the same at every step, so the inductive step is free and the base case is the whole open
-problem; on the boxes with a gate factor of their own (Yang-Mills, III.12; the model Navier-Stokes box, VI.8) the inductive step
-carries the content. On binary data, read as real numbers, every computation can be made reversible by keeping its history, so
-complex mathematics, the full turn of II.2.7 included, applies exactly **[classical]** (Bennett 1973; Toffoli 1980). The machine and
-the test of the next section carry it. When every
-step pays a cost above the floor,
-settling is decidable within an explicit bound; when steps may pay exactly the floor, there are systems, the universal machine among
-them, for which no procedure decides it. Each open step is restated as a box. One certifiable step is the same on every card: a
-marker correct at the start and kept by the step is correct at every tick (the one-box certificate). On five cards the paper reads
-the open step as one statement, that the card's box is DMP-complete, its gate shared at every scale **[reading]**; mathematically
-each is a different statement, and the paper assumes it once (Part X). Navier-Stokes has no box of its own card under test: a model
-box built from the energy bound alone gives a wrong marker. The Grand Unified box's open step lies outside it. The paper proves
-the machine and each card's core.
-
-### The test in one page
-
-Every result below uses these words in exactly these senses. Their Lean definitions are in II.3 to II.5; the DMP words not listed
-here (ledger, floor, DB, G0, ODP) are in the table of I.8.
-
-* **Running system** (II.3). States, a step from state to state, a factor in [0, 1] at each state, a mass >= 0 and a floor delta,
-  with the ledger law mass(step x) <= e^delta fac(x) mass(x). A step *pays a cost above the floor* when e^delta fac(x) <= theta < 1
-  for one theta and every state (the contraction class).
-* **Box** (II.4, IM's `Arsenal.Rotation.Box`). A running system with a margin theta and a *marker* at every state, either *inside*
-  or *R136a1* (outside). The *gate* reads inside at x exactly when fac(x) <= theta. A *tick* is one step. The marker at x is
-  *correct* when it agrees with the gate. The box is **DMP-complete** from x0 when the marker is correct at every tick of the run from
-  x0. This is the only meaning of "DMP-complete" in the paper's results; the first author's reading of it, that an object *runs on
-  DMP*, is called *running* (X.4.4).
-* **The one-box certificate** (`onebox_certificate`). If the marker is correct at the start and the step keeps it correct at every
-  state, the box is DMP-complete. This is the certifiable step.
-* **Restatement and induction** (II.4.1, IM's `Arsenal.Observable`). A system with states, one step and its own claim at each
-  state (an *observable system*). Its restatement (the *one-box description*) is DMP-complete exactly when the claim holds at every
-  step (`box_complete_iff`). A proof is an induction: the base case, the claim at the start, and the inductive step, a step that keeps
-  the claim (`route`); then the claim holds at every step and, along a map of scales that keeps the step, the check and the marker,
-  at every scale (`route_everywhere`). One failing step refutes it (`refuted_by_tick`). The cards below are such systems
-  (`tickBox_observable`).
-* **Card** (II.5, `API.Problem`). An input, one named open slot, a conclusion, and a Lean proof that the slot gives the conclusion.
-  Its box (`cardBox`) is the constant box of the open statement: the ticks are 0, 1, 2, ..., the gate reads inside exactly when the
-  open statement holds, and the marker is always inside, so the box is DMP-complete exactly when the open statement holds
-  (`cardBox_complete_iff`). That is a restatement and proves no new bound. Only two boxes have a gate factor of their own: the
-  Yang-Mills box (gate factor the best one-box ratio at each lattice level, III.12) and the model Navier-Stokes box (the energy bound against
-  the viscous cost, VI.8).
-* **Open parts.** A statement left open is a named hypothesis, never a Lean axiom: `OpenStep` and `External` in this repository,
-  `R136a1` in IM's arsenal. The kernel's axiom report therefore lists only Lean's three standard axioms.
-* **O1.** The Yang-Mills open step, in its Lean form `FineOneBox` (III.5.9): there are a cell geometry and constants such that at
-  every lattice level and volume one box of fixed physical size has influence bounds, under every frozen boundary condition, whose
-  one-box sum is below one. Its chain form `YMOneBox`, the path-counting number F_e(L) - 2C > log mu_4 and the hand-over side are
-  routes to it, each related to it in III.5; where the paper means one of them, it names it.
-* **The one assumption** (X.4.4). Its instances are each card's open slot and the sharing of a box's gate across scales; every
-  result that uses it carries the mark **[conditional]**.
-
-### Results and open steps
-
-The results, by the problem they serve. Every Lean result names its module in the part that states it; "from X" names the inputs
-it rests on.
-
-* **The machine** **[Lean]**. The ledger, the encoder and its half-turn, the full turn (discrete and on a circle: coefficients,
-  the factorial as one turn, the order of a zero as a winding number, and its balance log(1 + sqrt N), in IM's arsenal), the transport theorem, the settle theorem and its undecidable
-  edge (for the universal machine, over all content), the one-box test with its one-box and scale certificates, and the card API.
-  The one-box certificate needs a marker correct at the start and kept by the step at every state. In IM's arsenal, R136a1 is the
-  one way to leave a statement open, a named hypothesis that never becomes an axiom; this repository's cards use the same
-  transparent form under the names `OpenStep` and `External`.
-* **Yang-Mills** **[Lean]**, for SU(2) on the lattice: reflection positivity, the strict bound between a sector and its twist (for
-  every SU(N)), a per-box hand-over rate of at least log(1 + sqrt 2) (for the SU(N) twisted Wilson partition functions with no hypothesis on Z_tw, for beta != 0, even time extent and a
-  nontrivial sector, `sun_handover`; over all N centre sectors by the full turn, log(1 + sqrt N), given positive electric sectors for N >= 3,
-  `sun_handover_full_turn`; for the `Flip` object of SU(2) from positivity of its twisted partition function, a stated hypothesis), zero join loss in slab form, and the assembly from a one-box gap certificate to exponential decay of slab
-  correlations (a lattice mass gap) in both orders of limits; the step to a gap of the Hamiltonian is argued in prose (III.2.7). The
-  open step in the form the assembly uses is `FineOneBox`; the Yang-Mills card's own slot is the chain form `YMOneBox`, related to
-  `FineOneBox` in prose (III.5.9). The box test restates both: each holds exactly when its box is DMP-complete (III.12; restatements
-  by construction, no new bound).
-* **GRH.** The explicit formula for all nontrivial zeros of zeta, classical (Weil 1952) and here formalised by the contour shift;
-  its real-place term is a line integral at Re s = c > 1, whose identification with the term of Weil's closed form is not in Lean
-  **[Lean]**. Weil's form positive with an
-  explicit margin on the first box, where only the real place and the primes 2 and 3 enter: **[certified]** for the enclosures in
-  ball arithmetic, **[paper]** for the analytic estimates that tie them to Weil's form (a working note, not independently read).
-  Connes and Consani proved Weil positivity for test functions supported so close to 1 that only the real place enters, after
-  Yoshida's work on the same Hermitian forms **[external, recalled]**; the first box here is the next range, with the primes 2 and 3
-  and explicit margins. The positivity mechanisms in finite models **[Lean]**.
-* **NP vs coNP** **[Lean]**. The crossing theorem for every sound two-premise proof system (the Ben-Sasson-Wigderson measure
-  argument, machine-checked for every such system, with two graph hypotheses stated, II.14.5): on minimally unsatisfiable CNF formulas whose clause-variable graph expands,
-  every refutation has a line sensitive to many variables (II.14, V.4); and the equivalence of the lifting interface with lifting by
-  constant-size gadgets (V.4.11).
-* **Navier-Stokes.** Three cards on the form layer; there is no Navier-Stokes object in the Lean, and Fefferman's forms (A) and (B)
-  are named, not defined. A model box built from the energy bound alone gives the wrong marker at some scale, so that box is not DMP-complete (VI.8)
-  **[Lean]**.
-* **BSD** **[Lean]**, from what Mathlib alone gives, over any number field: Mordell-Weil from weak Mordell-Weil, the true rank, the
-  existence line, parity from the functional equation, point counts that run, and a finite order at s = 1 from Hasse's bound, with
-  the classical theorems Mathlib lacks carried as named parts.
-* **Hodge** **[Lean]**, the linear algebra of the positivity from named classical inputs: from the Hodge-Riemann relations (an
-  input), positivity on Hodge and algebraic classes; the Hodge index as linear algebra; from the Hodge index property (an input),
-  Weil's bound for curves; eigenvalues on the circle; and Lefschetz (1,1) as a diagram chase.
-* **GU** **[Lean]**, a box, not a card: the Z_6 quotient of SU(3) x SU(2) x U(1) inside SU(5), charge quantisation from a compact
-  U(1), and anomaly cancellation (with q_Q > 0 and coprime charges).
-* **Validation** **[paper]**. Poincare for SU(N): a manifold homotopy equivalent to SU(N) is SU(N) for N <= 3 (published for SU(3)
-  **[external]**); for even N >= 4 it fails, by a surgery computation here; for odd N >= 5 the surgery obstruction in L = Z is still
-  to be shown to vanish, so that case is **[open]**. Sp(2) is strongly rigid, by a surgery computation, independently read; G2 has exactly two structures, and
-  whether the second is G2 itself is open. In Lean, G2's rigidity is restated as a one-box test: G2 is rigid if its rigidity box
-  shares the gate with a certified box, and that sharing is a named hypothesis at least as strong as the rigidity it concludes, so
-  the one assumption does not decide it (A.5r).
-
-What is not proved: no problem is solved here. Each card has one named open step in Lean; the further open items of each part are
-listed in that part.
-
-* *Yang-Mills:* O1, the open step for the box (in Lean `FineOneBox`; the number F_e - 2c > log mu_4 is a sufficient, heuristic route
-  to it, III.5.6). The lower edge (O2, a correlation that does not vanish) is a second statement, independent of O1 in the paper's own
-  model and put in the one assumption by a reading; the continuum construction and every compact simple group (O3, O4) remain for
-  the Clay statement.
-* *GRH:* a proof of Weil positivity from the primes and the real place alone. For zeta and for Dirichlet L-functions it holds
-  through the external proof: RH and GRH for Dirichlet L-functions were proved in Lean by others in November 2026 (the Riemann
-  hypothesis certified by the Lean FRO and the Mathlib Initiative), by a route that, as far as this project traced it, does not go
-  through Weil's positivity criterion **[external, traced]**. GRH beyond Dirichlet L-functions is open, and no card is written for
-  it yet. The GRH card of II.4.1 and IV.8 states the sign at every scale of a finite zero model (`ScaleSign`), the Weil-positivity
-  route; for a model of zeta's zeros with nonnegative weights it passes under Mathlib's statement of the Riemann
-  hypothesis, taken as a named `External` slot (IV.8).
-* *NP vs coNP:* the card's open step `CrossingCost`; the paper's route to it is lifting with constant-size gadgets for cutting
-  planes on lifted formulas (`LiftCPConst`, open for suitable gadgets such as indexing, false for XOR), and with it super-polynomial
-  lower bounds for cutting planes on lifted formulas. Interface hardness at width 3 (V.4.10) is a further item; its relation to
-  `LiftCPConst` is not stated in Lean.
-* *Navier-Stokes:* regularity or blowup of the equations themselves (route I: `PeriodContraction`). DMP's reading takes blowup as the
-  expected outcome (the equations do not run); the reading was made after the posted claims, and global regularity would
-  refute it. Two posted blowup claims by others are unrefereed and unchecked here; one rests on a certificate that is announced, not
-  released.
-* *BSD:* the rank equals the order of the zero at s = 1, over Q from order 2 on (over other number fields, in general).
-* *Hodge:* codimension p >= 2 in general.
-* *GU:* the checkable consequence taken for the gate is uniform charge quantisation, which any compact U(1) also gives; a consequence
-  beyond it is open, and the hypercharges are an input.
-
-This text is a draft in that sense: each open step is stated in the form whose proof would close its card, so that closing one
-changes one row of the claims ledger, one verdict line and one item of this list. The project's release criterion (IX.0) lets the paper leave
-the draft stage only when every open step is closed, so that both readings of its title hold.
-
-### What a reader can take from it
-
-* From **mathematical physics**: the Yang-Mills gap reduced, for SU(2), to one named criterion (`FineOneBox`) on one box of fixed
-  physical size, restated exactly as the box test, with the rest of the mechanism machine-checked; the Navier-Stokes cards with the status of
-  the posted blowup claims stated exactly.
-* From **number theory**: the explicit formula for all zeros in Lean, the first box of Weil's positivity certified with its margin,
-  and where this certificate stops (it failed at a = 0.75); a Mathlib-only BSD core over number fields, in IM.
-* From **algebraic geometry**: the Hodge index and Weil's bound as linear algebra in Lean from named inputs, and the Hodge-index
-  route to the Riemann hypothesis over finite fields read as the more efficiently correct one for this structure **[reading]**,
-  beside Deligne's complete proof.
-* From **topology**: Poincare for SU(N) argued in prose (rigid for N <= 3, SU(3) from the literature; not rigid for even N >= 4; odd N >= 5 open), Sp(2) strongly rigid
-  (a surgery computation, independently read), and the structure set of G2 counted (not machine-checked).
-* From **complexity theory**: the crossing theorem for every sound two-premise proof system on expanding CNF formulas (two graph
-  hypotheses stated, II.14.5), and the open step of NP vs coNP reduced to one lifting statement for cutting planes.
-* From **logic and verification**: a machine in which every open part is a named hypothesis, every axiom shows in the kernel's
-  report, and a lint and a second kernel check every change; undecidability and the floor as the two sides of one test.
-
-### What is new
-
-* The machine as one object: running systems, their ledger, the encoder, and the settle theorem with its edge, decidable within an
-  explicit bound when every step pays a cost above the floor, and undecidable for the universal machine when steps may pay exactly
-  the floor **[Lean]**.
-* The one-box test: one command at one shared gate, a marker per step; the one-box and scale certificates; O1 restated exactly as
-  DMP-completeness of the Yang-Mills box (chain form, by construction); rigidity as a one-box test **[Lean]**.
-* The form layer as one API: every problem a card with one named open slot, and R136a1 (in IM's arsenal) as the named answer
-  "outside" **[Lean]**.
-* A Lean formalisation of the classical explicit formula for all nontrivial zeros of zeta, by the contour shift, on a Mathlib-only
-  core **[Lean]**, and the first box of
-  Weil's positivity with the primes 2 and 3 and explicit margins **[certified]** for the enclosures, **[paper]** for the estimates.
-* The hand-over bound, the strict twist bound for every SU(N), and zero join loss in slab form **[Lean]**.
-* A Mathlib-only BSD core over number fields, published in IM **[Lean]**.
-* The headline as a theorem and an API: each problem restated as one statement checked at every step, exactly equivalent to it;
-  a proof as an induction, base case and inductive step, holding at every step and, along a map of scales, at every scale (IM,
-  `Arsenal.Observable`) **[Lean]**; on binary data read as real numbers every computation can be made reversible **[classical]**.
-* The full turn as one tool, in IM's arsenal: it gives the hand-over over all N centre sectors, log(1 + sqrt N), also as a mean
-  along a path, with positive electric sectors assumed for N >= 3, and reads the BSD leading coefficient and the analytic rank (a
-  winding number) as one turn around s = 1 **[Lean]**; the encoder's half-turn is its case N = 2 **[paper]**.
-* One geometry, two edges: a lower and an upper bound on one sequence of tick factors are independent and exclude each other on
-  one sequence **[Lean]**; reading them as GRH's margin and O1 is the paper's identification **[paper]**; nothing is proved about GRH
-  or O1 themselves.
-* Poincare for SU(N) (even N), Sp(2) strongly rigid, and G2's two structures, by surgery from classical theorems **[paper]**, with SU(3) from
-  the literature **[external]**.
-
-What is *not* new is listed with references at each use: Osterwalder-Schrader, Weil (including the explicit formula), Hodge-Riemann, Lefschetz, Deligne, Dobrushin,
-Lee-Yang, Pringsheim and Landau, Mordell-Weil, Hasse, Gross-Zagier-Kolyvagin, Cook-Reckhow, Ben-Sasson-Wigderson, the barrier theorems, Perelman, the
-surgery theory of Browder, Novikov, Sullivan, Wall and Kirby-Siebenmann, and, for Weil positivity at small support, Yoshida and
-Connes-Consani.
-
-### A guide by ear: the tempered piano
-
-This guide is not part of any argument. It is offered as a picture to hold while reading, and the idea of hearing existence through
-tuning came to the first author from a short published by Vsauce; it is credited here, under that name, for that transfer.
-
-* **Tuning is built from 2 and 3.** The octave is the ratio 2, the fifth the ratio 3/2. Pitch, taken modulo the octave, is a circle,
-  and a fifth is a rotation on it **[classical]**.
-* **The rotation does not close by itself.** Because log2(3) is irrational, twelve pure fifths overshoot seven octaves by the
-  Pythagorean comma, 3^12 / 2^19 = 1.01364 **[classical]**. This is the finite loss at the start that the paper excises: the first
-  box at {infinity, 2, 3} (Part IV) is where the two generators of the tuning meet.
-* **Temperament is the balanced state.** Equal temperament spreads the comma evenly over all twelve steps (each fifth becomes
-  2^(7/12)), so the rotation closes and every key is equivalent; twelve is not arbitrary, since 19/12 is a convergent of log2(3)
-  **[classical]**. In the paper's words, the rotation gives the tuning a direction and makes every tick alike (Part X, the tick
-  operator) **[reading]**.
-* **The zeros are the strings.** The explicit formula (Part IV) writes the primes as a sum of tones: each nontrivial zero
-  1/2 + i gamma sounds at frequency gamma in log x. On the critical line every tone has the same amplitude, x^(1/2); the Riemann
-  hypothesis says that every string is tuned to the same loudness **[classical]**.
-
-The guide ends where the tuning does: on the final tone, resonating outward. Nothing more is stated about it than that such a
-configuration is describable, and that in that description it runs **[reading]**.
-
-### The three verification layers
-
-The work behind this paper is checked three ways: by proof (on paper and in Lean), by the literature, and by computation. The
-computations can refute a statement or guide a proof; they never establish a statement about all cases. Every measured number in the
-paper is tied to the statement it would discharge, and a passing measurement is reported as consistent, not as proof. The Lean is
-re-checked by independent kernels (Part II, II.7, with the commit of the last run), and IM's arsenal passes its lint at every change,
-listing every part left open by name.
-
 ### Reproducing it
 
 Every **[Lean]**, **[certified]** and **[numerical]** claim can be rerun from a clone of the repository with one script, stage by
@@ -553,51 +356,19 @@ Two kinds of number appear in the text. Section numbers such as III.12 or X.4.4 
 X.64 or III.10c name rows of the claims ledger, which this PDF does not reproduce; in the PDF each claim label links to the ledger,
 whose row gives the claim's status, its source and what would upgrade it. Where a number could be either, the text writes "claim".
 
-### What Draft 6 adds
+### The contraction, and where the full text is
 
-Draft 6 grows from Draft 5 and adds one mechanism, which explains what Draft 5 establishes and claims nothing beyond it. A system is
-k parts, and a k by k table says for each pair whether the row proves the column. The first author takes this table as DMP's
-explanation mechanism, in which a derived cell explains and does not prove **[reading]** (E.0.1). Exactly, in Lean on the kernel
-alone: a part is added by its own row, column and cell, and nothing already proven is checked again; every derived cell is reached by a
-chain of cells already in the table; where the row does not use the column the cell reflects positively, and where every use points to
-an earlier part no chain of uses returns **[Lean]** (E.0.1). Appendix E applies it to what Draft 5 measured: the versions of DMP,
-Gravity and IM form such a DAG, every use proven; the two kernels accept every target; Draft 5 establishes no chain of `+` cells that
-reaches the one open step O1 (E.6); and the drafts form a library that reaches G0 at Draft 4 from every later draft (E.8).
-
-Draft 6 also adds the mechanism's mirror and *the Possibility Space*, the first author's first subtitle for this draft. The optimizer removes every use that the table
-already includes through another chain, which is the transitive reduction of a DAG; in Lean on the kernel alone it keeps every
-derivation, settles in one pass, and is the only settled form with the same reach **[Lean]** (E.0.2). Applied to the measured
-versions it finds them not settled, by exactly one use: IM's own copy of DMP, which its copy of Gravity already includes (E.9). The
-Possibility Space is the first author's reading of a question as a point whose answer gives it only `+`, with the right angle `r` as
-the direction from a question to its certificate **[reading]** (R.11). Its exact parts are the arithmetic of `r` and a projector's
-two answers **[Lean]**, and the Bloch sphere, the flux tube and the rotating string **[classical]**. The steps that do not follow as
-stated are named, among them that assigning `+` and `-` to a question proves O1.
-
-Last, Draft 6 adds two things. First, O1 typed as Perelman's ledger, the interface the first author's reading asks for (III.13): a
-quantity, monotone and bounded along the lattice levels, that gains a quantum at every level where the box fails. An instance gives
-O1 and, with the resolution clause, the gap; O1 gives an instance; so the interface is exactly O1 and proves no new bound **[Lean]**.
-Second, the subtitle, *The ETM as the ODP running DMP in D6*: the first author's reading of the ODP as the internal clock whose tick ends
-at `+`, of DMP as the operating system of that kernel, and of one ETM that boots again whenever it stops **[reading]** (R.12). Its
-exact parts are the cycle of `r` and the one terminal running system **[Lean]**. The reading that the paper proves 0 = 1 for the
-classical, hence NP = coNP and P != NP, does not follow, and R.12 says why. R.12f states the first author's one condition: O1
-supplied at minting, under a universal witness agreed beforehand, and assumed until one invalid case is found. The paper records it
-as a reading next to its exact parts and does not claim O1.
-
-Finally, a reading aid that orients the whole paper: the first author's VIBE coefficient v = 0.69, log 2 to two digits, as the one
-throughline (R.12n); two routes to the same conclusion, one exact and one through the readings, with a table where they meet; and a
-"Plug in here" note opening every part. They add navigation and one reading, and no claim beyond it. R.12o and R.12p complete the
-throughline: v's abstract statement, positivity measured through zeta, and c read as the circle whose closure is the next step, with
-vAPIs, the cards that assert it; the introduction lays all four readings out as one picture, one step of size and turn (Figure 2).
+This is Draft 6 contracted, at the first author's request, so that it is short to read. Nothing proved left the record. Every claim
+keeps its row, status and evidence in the ledger, `CLAIMS.md` (751 rows). The full Draft 6, with every derivation, is the git tag
+`d6-full`, and Draft 5 holds the same derivations section by section. The first author's readings in full, clause by clause with their
+exact parts and care points, are in `READINGS.md` beside this draft. The Lean that no claim, script or build reaches, the earlier
+attempt rounds among it, left the build and stays at the tag. Each part keeps its "Plug in here" note, its statement as a check at
+every step, what is proved, its card and its one open step, and ends with a pointer to its full text.
 
 ### Plan
 
-Part I: DMP, the vocabulary. Part II: the machine, then the tools the problems use; its centre is II.4.1, the headline as a
-theorem. Parts III to IX: the seven problems, one template each (Yang-Mills, GRH, P versus NP through NP versus coNP, Navier-Stokes,
-BSD, Hodge, GU); each opens with the problem as a statement checked step by step, says whether its open part is the base case or the inductive
-step, and ends at its card and its box. Part X: the one assumption, which on each card is its base case, and the rigid start, which
-compares the cards once they have been read. Then the Outlook
-(sections XI.n). Appendix A: validation (Poincare, SU(N) and the rigid groups), with III.13's ledger as a type (A.2b). Appendix R: DMP's
-neighbours and the first author's readings that no card uses, closing with the possibility space (R.11) and the subtitle's readings,
-*The ETM as the ODP running DMP in D6* (R.12). Appendix T: the verify toy, the headline run on binary words, to read in full and rerun.
-Appendix E: the explanation mechanism and its mirror, the optimizer (E.0.1, E.0.2), applied to the parts of this project. Every
-part opens with a "Plug in here" note: what it gives, what it needs, its route, and where the VIBE coefficient v enters it.
+Part I: the vocabulary (I.8). Part II: the machine: the ruleset (II.0), settling (II.3), the one-box test and the headline (II.4,
+II.4.1), the cards (II.5), the chain of positivity (II.8), and what the tools do not do (II.16). Parts III to IX: the problems, each
+with its card and its one open step. Part X: the one assumption. The Outlook: +AI and the applied idea of XI.4. Appendix A: validation
+and the rigid groups, G2 among them. Appendix R: where the readings are, each beside its exact counterpart. Appendix T: the verify
+toy. Appendix E: the explanation mechanism and the optimizer.

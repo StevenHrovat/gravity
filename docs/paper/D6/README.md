@@ -44,7 +44,8 @@ two routes to one conclusion, one exact and one through the readings, with a tab
 "Plug in here" note. R.12o is v's abstract statement, which heads the throughline: positivity carried along a chain and
 measured through zeta, settled by measuring its refutation, with the care that a refutation settles and its absence does not. R.12p reads c as the circle asserted circular, whose
 closure is the next step, and names the cards that assert it vAPIs; the introduction now lays R.12m to R.12p out as one throughline,
-one step of a size (v) and a turn (c), with Figure 2.
+one step of a size (v) and a turn (c), with Figure 2. R.12q, the first author's most precise statement, adds the smallest element
+minted at root G0, "{inf,2,3}!"?"R136a1" with the open slot as the open set, and six operators (`.`, `!`, `?`, `;`, `:`, `""`).
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
 mirror (E.0.2): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which
@@ -55,3 +56,10 @@ Lean (IM, `Possibility.lean`) and in classical physics (the Bloch sphere, the fl
 not follow as stated, among them that assigning `+` and `-` proves O1.
 
 Everything Draft 5 adds is described in `../D5/README.md`.
+
+**The contraction (2026-11-25).** At the first author's request Draft 6 was contracted from 149 to 56 typeset pages. Each part keeps
+its "Plug in here" note, its statement as a check at every step, what is proved, its card and its one open step; the introduction keeps
+the two hands, the core page, the throughline and the two routes. Nothing left the record: every claim keeps its row in `CLAIMS.md`;
+the full text is the git tag `d6-full`; the first author's readings in full are in `READINGS.md`. In code, the Lean modules that no
+claim, script, tool or workflow reaches left the build (78 modules, about 14,700 lines, listed in
+`docs/mass-gap/formal/REMOVED.md`), kept at the same tag.
