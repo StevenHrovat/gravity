@@ -55,3 +55,10 @@ Lean (IM, `Possibility.lean`) and in classical physics (the Bloch sphere, the fl
 not follow as stated, among them that assigning `+` and `-` proves O1.
 
 Everything Draft 5 adds is described in `../D5/README.md`.
+
+**The contraction (2026-11-25).** At the first author's request Draft 6 was contracted from 149 to 56 typeset pages. Each part keeps
+its "Plug in here" note, its statement as a check at every step, what is proved, its card and its one open step; the introduction keeps
+the two hands, the core page, the throughline and the two routes. Nothing left the record: every claim keeps its row in `CLAIMS.md`;
+the full text is the git tag `d6-full`; the first author's readings in full are in `READINGS.md`. In code, the Lean modules that no
+claim, script, tool or workflow reaches left the build (78 modules, about 14,700 lines, listed in
+`docs/mass-gap/formal/REMOVED.md`), kept at the same tag.
