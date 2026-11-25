@@ -78,6 +78,20 @@ the paper's terms their meaning; as a backronym it is a layer of information con
 restatement of it is also true; and being both an equation and an expression is what makes it GU, through the VIBE field
 **[reading]** (R.12n).
 
+**The abstract statement.** In the first author's words: the VIBE coefficient effectively allows the existence of all positively
+constructable existence, as long as the rotation through its DB can be unified, by constructing a chain of causal arguments that
+follows a valid direction in Real space, to result in reflection positivity as measured through the Riemann zeta, turning it into a
+directionless value of the order Existence; thus certifying that any such constructed problem can be settled by the measurement of
+its rotated refutation in Real space **[reading]** (R.12o). Its exact skeleton is the chain of II.8: a positive form (reflection
+positivity in Yang-Mills, Weil's pairing W(f * f~) >= 0 in GRH, the same first link) builds a space, an evolution and a spectrum; on
+the diagonal the form's value is real, the turn drops out; by Weil's criterion one test function with a negative value would refute
+the Riemann hypothesis, and up to the support a = 0.69 the "for every f" is certified (II.8, II.9, IV.1) **[classical]**
+**[certified]**. Care: a refutation settles by one measurement, its absence does not, so "any such problem can be settled" holds
+where a margin covers every case, not in general (II.3, II.16). The first author's goal for this contraction: easier to understand,
+and simpler mathematics by asserting existence explicitly, so that any valid possibility space can be built on any valid real space,
+read through a DMP-complete system sharing root G0 **[reading]**; exactly, an assertion is a named hypothesis, `R136a1`, visible in
+every statement that uses it and making that statement conditional (II.6.2) **[Lean]**.
+
 The exact part is short. 0.69 is log 2 = 0.693 to two digits, and log 2 is one halving: the cost of a step of size 1/2 (II.0, rule
 C2) and the information of one binary choice, one bit, in natural units **[classical]**. It is also the paper's own a: Weil's form for
 GRH is certified positive up to the support a = 0.69, the last support at which only the real place and the primes 2 and 3 enter
