@@ -114,6 +114,7 @@ The paper leaves the draft stage only under the release criterion (`OUTLINE.md`)
 | Draft 6 review, the ETM as the ODP running DMP | 2026-11-25 | Opus subagents at medium effort: the interface as first built for a Draft 7 (`aa4b2de`, #68 closed) and the port to Draft 6 (`1fd6a4d`); `review/draft6-etm-opus.md` | first: 2 blockers (the a-theorem; "mechanism"), 6 should-fix, nits, all carried into the port; second: 0 blockers, 2 should-fix, 7 nits, fixed or kept with reasons |
 | Draft 6 review, the one condition | 2026-11-25 | Opus subagent at medium effort on `61567af`; `review/draft6-witness-opus.md` | 0 blockers, 6 should-fix (a false O1 makes the system unsound, inconsistent only if refuted; Popper as falsification), 6 nits; all fixed or kept with reasons |
 | Draft 6 review, real induction and the kernel | 2026-11-25 | Opus subagent at medium effort on `0b440f8`; `review/draft6-real-opus.md` | 0 blockers, 6 should-fix (Loewenheim-Skolem scope; the countable model is not the naturals; completeness; lean4lean not the kernel; Landauer link a reading; DoE source), 5 nits; all fixed |
+| Draft 6 review, from step 1 to the encoder | 2026-11-25 | Opus subagent at medium effort on `431c127`; `review/draft6-step1-opus.md` | 0 blockers, 6 should-fix (the SU(5) image a paper observation; Lagarias via X.24; P != NP as Pi-2; marks), 9 nits; all applied |
 
 ## Citation items for the part reviews (from the bibliography round, 2026-11-24)
 
