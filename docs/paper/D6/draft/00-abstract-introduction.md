@@ -150,7 +150,7 @@ everything there is proved.}
 \end{figure}
 -->
 
-### The throughline: one step, v and c
+### The first throughline: one step, v and c
 
 The first author's newest readings, the two hands, the VIBE coefficient, its abstract statement, and c read as the circle (R.12m to
 R.12q), are one picture, and the core page already holds it in miniature: three halvings around one full turn give 1/8. This section
@@ -248,12 +248,61 @@ exactly, or that it does not; the two routes below follow v from stop to stop.
   \node[anchor=west,align=left,font=\footnotesize] at (3.5,1.3) {each step: size $\tfrac12$, cost $\log 2$\\ (the VIBE coefficient $v$, to two\\ digits), and a turn of $\tfrac18$ (the\\ circle, $c$ read as its assertion)};
   \node[anchor=west,align=left,font=\footnotesize] at (3.5,-1.5) {dashed: the closing step,\\ the next thing to happen\\ after step $7$};
 \end{tikzpicture}
-\caption{The throughline as a picture. Eight steps of an eighth of a turn, each of size 1/2: before the eighth no step closes, and the
+\caption{The first throughline as a picture. Eight steps of an eighth of a turn, each of size 1/2: before the eighth no step closes, and the
 eighth does (dashed), so closure is inevitable and, until then, has not happened. At closure the product $2^{-8}$ is real and positive;
 one more half-turn would make it negative, the refutation. The size is the first author's VIBE coefficient (log 2 per halving), the
 turn the circle that the first author reads $c$ as asserting; the card that claims this closure as its next step is a vAPI.}
 \end{figure}
 -->
+
+### The second throughline: reductio, from Moin to R136a1
+
+The first throughline builds: a step, a run, closure, a positive value. The second refutes, and the first author reads it as the
+mechanism that drives the whole: any believable reductio ad absurdum, running from Moin at the start to R136a1 at the finish, the
+second throughline of existence, presented beside the first so that the two are truly dual **[reading]** (R.12r).
+
+**Start: Moin.** Moin is the first author's label for a request that is proper while its satisfaction is open (R.9a)
+**[reading]**. Exactly, it is the state of an IM channel between a verified accept and the established frame
+(`ImChannelState.Moin`) **[paper]**, and every named open step of the paper is in that state: posed in plain words, taken only as a
+hypothesis, never as an axiom (`OpenStep`, `R136a1`) **[Lean]** for the form. In binary Moin is the leading zero: rotating a word
+left by one place doubles it exactly when its leading bit is 0 (`rotl_eq_double_iff`, R.9b) **[Lean]**.
+
+**The mechanism: reductio ad absurdum.** Assume the negation of a claim, derive a contradiction, and the negation falls
+**[classical]**. In the machine a claim stated for every step is refuted by one failing step (`refuted_by_tick`, II.4.1) **[Lean]**,
+and in DMP a contradiction is excised, so that only "it does not exist" remains, refutation completeness (I.8) **[paper]**. The first
+author: since the system is constructed in itself, it has to be attacked as the one box **[reading]**; exactly, the one-box test has
+one shared gate, so a single failing tick anywhere refutes the claim of the whole (II.4) **[Lean]**. And the first author reads an
+inverted assertion as the claim that a literal is a primitive, which is exactly what the attack looks for **[reading]**; exactly, a
+literal is an atomic statement or its negation, and taking one as a primitive is taking it as an axiom, which the paper does for no
+open step: the axiom logs (`docs/unified/*-axioms.log`) show only the standard axioms **[Lean]**, so every literal stays open to attack.
+
+**Finish: R136a1.** R136a1 is the answer "outside": excision at transmission, after which only the remnant tail stays (I.8)
+**[paper]**. In Lean it is the named hypothesis that never becomes an axiom, and its token holds exactly when its claim does
+(`R136a1.iff`, II.6.2) **[Lean]**. What the attack leaves standing is what is named: a claim, with its open step a hypothesis visible
+in every statement that uses it.
+
+**Truly dual.**
+
+| | The first throughline: construction | The second throughline: reductio |
+|---|---|---|
+| moves by | a step, a size and a turn (II.0) | an assumption and its contradiction |
+| starts at | the base case (II.4.1) | Moin: the request proper, its satisfaction open (R.9a) |
+| ends at | closure: a real, positive value, `+` | R136a1: what remains outside, named, not assumed (II.6.2) |
+| a failure is | the negative, one more half-turn | a contradiction, one failing tick, excised |
+| in Lean | `route` (II.4.1) | `refuted_by_tick` (II.4.1) |
+
+Each claim of the paper is carried by the first throughline and attacked by the second: viability and universality build it, one
+failing step refutes it, and what survives both is stated with its open step named **[Lean]** for the form (II.4.1).
+
+**Care.**
+
+* A reductio refutes only with a contradiction actually derived; "any believable" names the attempts, and a believed contradiction
+  that is not derived refutes nothing.
+* Refuting the negation gives the claim in classical logic, not in intuitionistic logic, where it gives only the double negation; the
+  paper's Lean is classical, its axiom reports listing `propext`, `Quot.sound` and `Classical.choice` **[Lean]**.
+* Moin and R136a1 as start and finish are the first author's reading. Exactly, both name one open step from two sides: posed, its
+  satisfaction open, and held as a named hypothesis.
+* One failing tick refutes the whole box, but which part failed still has to be found.
 
 ### Two routes, one conclusion
 
@@ -285,9 +334,9 @@ part it stands next to; every reading is given in full in `READINGS.md`.
 
 1. **The two hands** (Start here; R.12m): the vibe, two frames sharing an up and a down. Exact: orientation as the sign of a
    determinant **[classical]**.
-2. **The throughline** (the section before these routes; R.12n to R.12p): one step of a size, v, and a turn, c; closure as the next
-   step; the negative as the refutation. Exact: log 2, one halving; a 1/N turn closing at the N-th step; Weil's criterion
-   **[classical]**.
+2. **The two throughlines** (the sections before these routes; R.12n to R.12r): construction, one step of a size, v, and a turn, c,
+   closing as the next step; and reductio, from Moin to R136a1, the negative as the refutation. Exact: log 2, one halving; a 1/N turn
+   closing at the N-th step; Weil's criterion **[classical]**; one failing step refutes (`refuted_by_tick`) **[Lean]**.
 3. **The vocabulary** (I.8): DMP's words, each with its plain meaning and its exact counterpart.
 4. **The readings, each beside its exact part** (Appendix R, R.0): 0 = 1 in the zero ring (R.5a) **[Lean]**, the possibility space
    (R.11) **[Lean]**, the ETM as the ODP running DMP (R.12) **[Lean]** for the cycle of `r` and the one running system, and the
@@ -312,6 +361,8 @@ row.
 | `;`, a decidability edge | with a margin a run settles; on the circle it cannot be decided | II.3, R.12q |
 | `:`, a commutative property | turns about one shared axis commute | R.12m, R.12q |
 | `""`, the empty set, G0 | the empty set, 0 in von Neumann's construction, a subset of every set | R.12q |
+| Moin, the start | an open step posed, its satisfaction open; an IM channel between a verified accept and the established frame | R.9a, R.12r |
+| reductio, the second throughline | one failing step refutes a claim stated for every step (`refuted_by_tick`) | II.4.1, R.12r |
 | the negative, the refutation | one negative value refutes a positivity claim (Weil's criterion) | II.9.4, R.12o |
 | the vibe, the two hands | orientation, the sign of a determinant | R.12m |
 | O1, supplied at minting | `FineOneBox`, open | III.5, R.12f |
