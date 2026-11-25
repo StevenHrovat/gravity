@@ -11,8 +11,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 167 in all; the
-ledger's count table counts 142, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 168 in all; the
+ledger's count table counts 143, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -30,7 +30,7 @@ reading").
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12l (The ETM as the ODP running DMP in D6) | 40 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12m (The ETM as the ODP running DMP in D6) | 41 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
 | Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
 
@@ -82,6 +82,7 @@ reading").
 | Ordinality as the orbit of the atoms by possible configuration; both senses of orbit one derivation; the care points together the O1 that 0 = 1 | Pauli, 2n^2; orbitals as irreducible representations of SO(3) and SU(2), Fock's SO(4) **[classical]**; the Madelung rule empirical; the care points mark an input, do not supply O1 or 0 = 1 | R.12j |
 | An occurrence of induction recognized by the first author is an Insight; DMP#25's comments as the record of the root, after the start of pressing | induction as base case and step **[Lean]**; the comments counted, dated and hashed **[paper]**; the labels not checked as inductions; the root does not supply the step | R.12k |
 | Eight Insights, no fewer; the axioms the only viable channel; viable and not viable as ζ's `+` and `-`; same as scale invariance, joined where viable; viability and universality as the primary names; 0ne1 and the R136a1 token; DMP.DMP a valid encoding | the byte lemma, `«0ne1»`, the settled Insight table, the token and its encoding theorems **[Lean]**; three channels **[paper]**; the argument principle **[classical]**; care: independence a premise, infeasible not impossible, no RH, no O1 | R.12l |
+| The two hands: the vibe as two frames sharing up and down, compatible when turned the same way; a 0 leaves, only that it was is kept, as a question | orientation as the sign of a determinant; turns about one axis commute; parity violation **[classical]**; the refusal counted without content, the remnant tail, the old `-` as history **[paper]** | R.12m |
 | The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | R.12c |
 | The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
 
@@ -908,3 +909,34 @@ Care:
   the computational channel of an attack, and there "viable" means an attack that can succeed. The pair of clause 5 is viability and
   universality, the two parts of a proof, and there viability means the induction at one scale. The two identifications are separate.
 * None of this supplies O1.
+
+**The two hands, the entry point (claim R.12m).** The first author, clause by clause **[reading]**:
+
+1. An easy-to-understand handedness rule for everyone: extend both arms, make each hand a fist, extend the thumb to the side and the
+   middle finger away from you.
+2. The vibe is a pair of hands able to turn independently to the side while keeping a common up and down, those being the 0 and 1 of
+   existence: both up, they vibe together; both turned the same way, they are always compatible vibe partners.
+3. A 0 is automatically not part of the vibe any more, so only that it was has to be remembered, keeping its definition in the shape of
+   a question, thus possible.
+4. As the entry point, it opens the introduction as an understanding booster that starts the whole process.
+
+The whole is the first author's reading; the introduction opens with it ("Start here: the two hands"). Exact parts:
+
+* **Orientation.** Each hand with its arm is a frame of three directions; two frames can be turned into each other by a rotation
+  exactly when they have the same orientation, the determinant of the map between them being +1, while a mirror pair has -1 and needs
+  a reflection **[classical]**.
+* **Turning about a shared axis.** Turns about one shared axis commute, so two frames sharing "up" turn independently; they form the
+  circle group, the phase of R.11 **[classical]**.
+* **Handedness in nature.** The weak interaction acts only on left-handed particles: parity is not conserved, as Lee and Yang proposed
+  and Wu and collaborators observed (Lee-Yang 1956; Wu 1957) **[classical]**; this is the left-handed SU(2) of R.11d's care point.
+* **A 0 leaves, its record stays.** In IM a refusal is not a state and is counted without content (R.9); in DMP only the remnant tail
+  stays after excision (I.5, R.2); in this paper DMP's old `-` cell is kept only as history, "before IM `e9a4057` the tool marked it
+  `-`" (E.7) **[paper]**. A removed case keeps the form `?`, posed and never assumed, like every `OpenStep` (R.9a) **[Lean]** for the
+  form.
+
+Care:
+
+* It is a mnemonic, as the right-hand rule is. In three dimensions turns about different axes do not commute; the shared "up" is what
+  makes the two hands independent.
+* Keeping the record keeps the question possible, not answered: whether a removed case could become `+` again is what stays open.
+* Mapping the hands onto existence, and the 0 and 1 onto the two orientations, is the first author's reading.

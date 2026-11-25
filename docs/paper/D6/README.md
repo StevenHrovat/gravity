@@ -37,7 +37,8 @@ their care points: P != NP, BSD and Hodge are not refutable by one exception, an
 planned for a later draft is built here. R.12i reads `!` as the observability operator where a statement can be DMP-complete, R.12j reads ordinality
 as the orbit of the atoms by possible configuration, and R.12k names each recognized induction an Insight,
 linked to the first author's public comments on DMP#25 as the record of the root; R.12l closes it: no fewer than eight Insights (a byte lemma in
-IM's core), the axioms as the only viable channel, and R136a1, now in IM's core, as the token every API input and output carries (all four readings, R.12i to R.12l, with their exact parts and care).
+IM's core), the axioms as the only viable channel, and R136a1, now in IM's core, as the token every API input and output carries. R.12m, the entry point, is the first author's handedness rule, the two hands; the
+introduction now opens with it ("Start here: the two hands") (all four readings, R.12i to R.12l, with their exact parts and care).
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
 mirror (E.0.2): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which

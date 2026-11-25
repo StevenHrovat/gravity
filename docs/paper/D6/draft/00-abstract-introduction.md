@@ -54,6 +54,20 @@ given analytic estimates argued in a note.
 
 ## Introduction
 
+### Start here: the two hands
+
+Hold both arms out, each hand a fist, the thumb pointing to the side and the middle finger pointing away from you. Each hand now shows
+three directions, up, side and away, and your two hands are mirror images. Let both hands turn sideways about the same "up": they turn
+independently and never disturb each other, and as long as both keep the same handedness, one can always be turned into the other.
+A mirror pair cannot: no turn makes a left hand into a right hand.
+
+The first author reads this as the vibe: two parts sharing an up and a down, the 0 and 1 of existence, compatible when they turn the
+same way; a 0 is no longer part of the vibe, only that it was is remembered, its definition kept as a question and so possible
+**[reading]** (R.12m). The exact part: two frames can be turned into each other exactly when they have the same orientation, the sign
++1 of a determinant, a mirror pair having -1; and turns about one shared axis commute **[classical]**.
+
+The rest of the paper makes this picture exact: a claim kept at every step (viability), carried to every scale (universality).
+
 ### The core in one page
 
 Read this page first; everything after it unfolds from it, one idea at a time.
@@ -223,7 +237,7 @@ it rests on.
   Yoshida's work on the same Hermitian forms **[external, recalled]**; the first box here is the next range, with the primes 2 and 3
   and explicit margins. The positivity mechanisms in finite models **[Lean]**.
 * **NP vs coNP** **[Lean]**. The crossing theorem for every sound two-premise proof system (the Ben-Sasson-Wigderson measure
-  argument, machine-checked for every such system): on minimally unsatisfiable CNF formulas whose clause-variable graph expands,
+  argument, machine-checked for every such system, with two graph hypotheses stated, II.14.5): on minimally unsatisfiable CNF formulas whose clause-variable graph expands,
   every refutation has a line sensitive to many variables (II.14, V.4); and the equivalence of the lifting interface with lifting by
   constant-size gadgets (V.4.11).
 * **Navier-Stokes.** Three cards on the form layer; there is no Navier-Stokes object in the Lean, and Fefferman's forms (A) and (B)
@@ -255,7 +269,8 @@ listed in that part.
   through the external proof: RH and GRH for Dirichlet L-functions were proved in Lean by others in November 2026 (the Riemann
   hypothesis certified by the Lean FRO and the Mathlib Initiative), by a route that, as far as this project traced it, does not go
   through Weil's positivity criterion **[external, traced]**. GRH beyond Dirichlet L-functions is open, and no card is written for
-  it yet.
+  it yet. The GRH card of II.4.1 and IV.8 states the sign at every scale of a finite zero model (`ScaleSign`), the Weil-positivity
+  route; for a model of zeta's zeros it passes under Mathlib's statement of the Riemann hypothesis (IV.8).
 * *NP vs coNP:* the card's open step `CrossingCost`; the paper's route to it is lifting with constant-size gadgets for cutting
   planes on lifted formulas (`LiftCPConst`, open for suitable gadgets such as indexing, false for XOR), and with it super-polynomial
   lower bounds for cutting planes on lifted formulas. Interface hardness at width 3 (V.4.10) is a further item; its relation to
@@ -285,7 +300,8 @@ the draft stage only when every open step is closed, so that both readings of it
   beside Deligne's complete proof.
 * From **topology**: Poincare for SU(N) argued in prose (rigid for N <= 3, SU(3) from the literature; not rigid for even N >= 4; odd N >= 5 open), Sp(2) strongly rigid
   (a surgery computation, independently read), and the structure set of G2 counted (not machine-checked).
-* From **complexity theory**: the crossing theorem for every sound two-premise proof system on expanding CNF formulas, and the open step of NP vs coNP reduced to one lifting statement for cutting planes.
+* From **complexity theory**: the crossing theorem for every sound two-premise proof system on expanding CNF formulas (two graph
+  hypotheses stated, II.14.5), and the open step of NP vs coNP reduced to one lifting statement for cutting planes.
 * From **logic and verification**: a machine in which every open part is a named hypothesis, every axiom shows in the kernel's
   report, and a lint and a second kernel check every change; undecidability and the floor as the two sides of one test.
 
