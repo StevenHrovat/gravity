@@ -825,17 +825,18 @@ The whole is the first author's reading; that the merge of DMP 0.9.9 as provisio
 is part of it. Exact parts:
 
 * An induction is a base case and an inductive step (II.4.1) **[Lean]**. The base case is a statement at the start, so an induction
-  can be checked later only if its start is kept.
+  can be checked later only if its start is kept **[paper]**.
 * The record: StevenHrovat/dmp pull request #25, "G0: the publication version is provisional G0 (DMP 0.9.9)", merged 2026-10-27, carries
-  69 public comments by the first author from 2026-10-28 to 2026-11-25; eight of them open with the label "Insight" ("New Insight",
+  69 public comments by the first author from 2026-10-28 to 2026-11-25; eight of them name an Insight in their first line ("New Insight",
   "Correction + new Insight" and the like), the first at 2026-10-28 14:43Z, the last at 2026-10-29 19:58Z (DMP#25) **[paper]**, read on
   2026-11-25. The comments in time order, each with its time and text, hash to sha256
   `d74ba50cf21e74bdf6e8e411166e2a8e41a700f027118d14502954c628c2249b`, recomputed by
   `gh pr view 25 -R StevenHrovat/dmp --json comments | jq -c '[.comments[] | {createdAt, body}]' | sha256sum` **[paper]**.
-* The two records point at each other. The DMP version this paper pins, `4400cce` (DMP 0.9.9, Gravity's `vendor/dmp/PIN`, proven back
-  and forth by the round trip, T.14), is the merge commit of that same pull request #25; and this paper pins the comments on it by
-  the hash above **[paper]**. So the specification the paper runs on and the record of the Insights made under it are one pull
-  request, each checkable from the other, the same two-way check as the round trip (R.1h) **[paper]**.
+* The two records are joined. The DMP version this paper pins, `4400cce` (DMP 0.9.9, Gravity's `vendor/dmp/PIN`, proven back and
+  forth by the round trip, R.6b), is the merge commit of that same pull request #25, and this paper pins the comments on it by the hash
+  above **[paper]**. Both links are pinned from this paper's side, joined by GitHub's link from a pull request to its merge commit;
+  DMP pins nothing (R.1d). That this keeps the two honest, in the spirit of the round trip's two-way proof, is the first author's
+  reading (R.1d) **[reading]**.
 
 Care:
 

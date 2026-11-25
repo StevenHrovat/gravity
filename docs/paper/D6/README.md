@@ -36,7 +36,7 @@ falsifiable until an exception, one exception to the Riemann hypothesis being a 
 their care points: P != NP, BSD and Hodge are not refutable by one exception, and the open inclusions keep `?`). The interface first
 planned for a later draft is built here. R.12i reads `!` as the observability operator where a statement can be DMP-complete, R.12j reads ordinality
 as the orbit of the atoms by possible configuration, and R.12k, closing the section, names each recognized induction an Insight,
-linked to the first author's public comments on DMP#25 as the record of the root (both readings with their exact parts and care).
+linked to the first author's public comments on DMP#25 as the record of the root (all three readings with their exact parts and care).
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
 mirror (E.0.2): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which
