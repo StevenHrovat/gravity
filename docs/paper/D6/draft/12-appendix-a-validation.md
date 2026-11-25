@@ -39,6 +39,13 @@ scale-invariant estimate, a defined act at a boundary, a quantum per act, a fina
 monotone quantity buys a sign, not a rate; and Ricci flow passes a sequence of boundaries and continues, while the Chen-Hou time `T*`
 is terminal. Nothing new is claimed.
 
+## A.2b The ledger as a type
+
+*New in Draft 6.* The verdict of A.2 stays: as a model of the restatement, Perelman's proof passes as a description, not as a
+mechanism. III.13 turns the counting part of the ledger (a bounded monotone quantity, a quantum per boundary event, finitely many
+events) into a type with a theorem: an instance gives O1, and O1 gives an instance, with W taken as a counter **[Lean]**. So the type
+adds no mechanism beyond O1 itself; whether Yang-Mills has an instance is O1 **[open]** (claim A.2b).
+
 ## A.3 Poincare and SU(N)
 
 The first author asked whether Perelman's Poincare extends to every SU(N) through DMP. The exact answer, by what holds:

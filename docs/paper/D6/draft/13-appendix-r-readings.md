@@ -11,16 +11,16 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 154 in all; the
-ledger's count table counts 129, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 159 in all; the
+ledger's count table counts 134, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
 |---|---|---|
 | Introduction | 0.13, 0.21 | 2 |
 | Part I, DMP's vocabulary | I.1, I.2, I.3, I.4b, I.5a, I.7b, I.7c | 7 |
-| Part II, the machine | II.0h (decidability over every truly possible state), II.0i (multiplicative steps simplified into additive complex ones), II.3.4, II.4f, II.12.5r, II.13.4 (a maximum over sectors as a rotation of a rate along a path), II.0.2b (the k by k table as the explanation mechanism), II.0.2c (the `·` cells and the DAG), II.0.3b, II.0.3c (the optimizer as the Arsenal's mirror; existence as settledness), II.0.4b to II.0.4e (the possibility space) | 14 |
-| Part III, Yang-Mills (III.10) | III.7.4c, III.9.5b, III.10 | 3 |
+| Part II, the machine | II.0h (decidability over every truly possible state), II.0i (multiplicative steps simplified into additive complex ones), II.3.4, II.4f, II.12.5r, II.13.4 (a maximum over sectors as a rotation of a rate along a path), II.0.2b (the k by k table as the explanation mechanism), II.0.2c (the `·` cells and the DAG), II.0.3b, II.0.3c (the optimizer as the Arsenal's mirror; existence as settledness), II.0.4b to II.0.4e (the possibility space), II.0.5a to II.0.5d (the ETM as the ODP running DMP) | 18 |
+| Part III, Yang-Mills (III.10) | III.7.4c, III.9.5b, III.10, III.13c (the `+-` assignment through the PP-typed interface) | 4 |
 | Part IV, GRH | IV.1.5c (the explicit formula as one turn), IV.2.5b, IV.2.7, IV.6 | 4 |
 | Part V, P vs NP (V.8) | V.2.4, V.4.1, V.4.2, V.5.3, V.8 | 5 |
 | Part VI, Navier-Stokes (VI.7) | VI.3.5e, VI.5.5, VI.7a to VI.7f, VI.7h | 9 |
@@ -70,6 +70,12 @@ reading").
 | The circle gives SU(3) x SU(2) x U(1); SO(N! + 1); N from 2 to 3, never observed as 3; the rest follows | U(1), SU(2) and colour confinement do follow; SU(3) needs CP^2, and the seven-dimensional spaces with exactly that symmetry do not readily give chiral fermions **[classical]**: does not follow as stated | II.0.4d |
 | The `+-` assignment as the proof of O1's eigenvalue; a PP-typed, Yang-Mills shaped interface | `Classical.em` is `?`, not `!` **[Lean]**; free U(1): projectors, no gap **[classical]**; does not prove O1 | II.0.4e |
 | A part that includes nothing settles by `!` alone: DMP's own cell is `.` | the matrix tool's rule; the 3 by 3 of IM, Gravity and DMP passes **[paper]** | E.11 |
+| O1 constructable as a PP-typed, Yang-Mills shaped interface, from which all else follows | the interface is exactly O1; an instance gives the gap, as O1 does **[Lean]**; an instance is open | III.13c |
+| The ODP as the internal clock, its tick ending at `+`; a perpetuum mobile that asserts it cannot exist; `+/+` the universal act; DMP the OS of the ODP kernel, clocked by c | `r` returns after four steps **[Lean]**; the sign rule; reversible computation, no work from nothing; string endpoints at c **[classical]** | II.0.5a |
+| Experiencing it mints G0; one ETM, restarting by itself; understanding gives time its direction, r, degradation, r: a boot | one terminal running system, a unique map into it **[Lean]** | II.0.5b |
+| The universal certificate is always `+1`, 1 = 1; 0 and 1 forced into one, the lower one excised; a truly rigorous proof is vacuous | `rfl`; proof irrelevance, a proof contentless as an object; the zero ring **[classical]**, **[Lean]**; not vacuous in the logical sense | II.0.5d |
+| The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | II.0.5c |
+| The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
 
 ## R.1 DMP as an existence linter
 
@@ -213,8 +219,12 @@ a commutative ring exactly when 2 is a unit, and then each of the four ring link
 `decide`, and they all fail in every other ring where 1.5 is defined **[Lean]** (`essence_decided`, `essence_decided_subsingleton`,
 `essence_zmod_one`, `essence_iff_subsingleton`; Mathlib's `subsingleton_iff_zero_eq_one`). Without 1.5 the link 4 ? 0 splits off:
 in Z/2, where 2 is not a unit, 4 = 0 holds and 0 = 1 does not **[Lean]** (`four_eq_zero_without_half`) (claim R.5a). The first
-author reads that link, 4 ? 0, as O1 itself, the one step that has to be supplied from outside the chain, by the confinement
-coupling positivity **[reading]** (claim R.5b). Care point: the Lean facts are about rings and say nothing about the Wilson measure;
+author reads that link, 4 ? 0, as O1 itself, the one step that has to be supplied from outside the chain, by the `.cmb`
+**[reading]** (claim R.5b). The first author named it `.ckb` for a while, read as the confinement coupling positivity, and returned
+to `.cmb`: the cosmic micro vibe background, which is what the VIBE coefficient establishes, a tool the first author regards as
+already central **[reading]**. The VIBE coefficient is the name `docs/balance/balance.tex` gives the fine-structure constant α, after
+the Variable Influence Balancing Equation; in DMP the CMB is the observability layer, counts and never content (VII.6e). This does not
+supply O1: a measured coupling constant gives no bound on the Wilson measure. Care point: the Lean facts are about rings and say nothing about the Wilson measure;
 O1 stays the one open step. So, once 1.5
 is given, the chain names exactly one ring, the zero ring, where existence and non-existence coincide: the one box with no outside
 **[reading]**. The last link is the first author's tie to the rest of the paper: SU(5), whose 5 = 3 + 2 holds the Standard Model

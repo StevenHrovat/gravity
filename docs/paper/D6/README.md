@@ -21,7 +21,14 @@ part costs, the two kernels and their targets, a result of Draft 5 read as a cha
 statement and the drafts as a library transitive to G0 (E.7). Draft 6
 explains what Draft 5 establishes and claims nothing beyond it; the one assumption O1 is untouched.
 
-**The Possibility Space.** Draft 6's subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
+**The ETM as the ODP running DMP.** Draft 6's subtitle, from the first author's refinement of the same day (II.0.5): the ODP as the
+internal clock, DMP as the operating system of that kernel, one ETM that boots again; its exact parts are the cycle of `r` and the
+one terminal running system, and the reading that the paper proves 0 = 1 for the classical, hence NP = coNP and P != NP, is stated
+with why it does not follow. With it, O1 typed as Perelman's ledger (III.13, A.2b; `docs/mass-gap/formal/ProofPhase/API/Perelman.lean`):
+an instance gives O1 and the gap, O1 gives an instance, so the interface is exactly O1 and proves no new bound. The interface first
+planned for a later draft is built here.
+
+**The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
 mirror (II.0.3): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which
 keeps every derivation, settles in one pass and is the only settled form; applied to the versions it finds one redundant use, IM's
 own copy of DMP (E.9), the drafts are settled (E.10), and DMP's own cell is `.` (E.11). The possibility space (II.0.4): a question as
