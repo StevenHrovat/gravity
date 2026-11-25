@@ -1,6 +1,6 @@
 # Part VIII. Hodge: the card, the positivity, and the one open step
 
-*Draft 5. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
+*Merged at Draft 4. Prose, with every result marked. Lean paths relative to `docs/mass-gap/formal/ProofPhase/`; notes relative to
 `docs/unified/`. Claim labels (VIII.n) are listed in `../CLAIMS.md`.*
 
 ## VIII.0 What is proved, by whom, and what this part does

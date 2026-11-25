@@ -1,4 +1,4 @@
-# The paper as LaTeX (draft 5)
+# The paper as LaTeX (merged at draft 4)
 
 `guid-v8.tex` is generated from `../draft/*.md` by `tools/paper-latex.py`; do not edit it by hand. `guid-v8.pdf` is its build.
 

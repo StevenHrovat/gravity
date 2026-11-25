@@ -1,6 +1,6 @@
 # Part VII. Birch and Swinnerton-Dyer: the card, three named parts, and the one open step
 
-*Draft 5. Prose, with every result marked. Modules of the Mathlib-only core live in DMP.IM (the public `im` repository,
+*Merged at Draft 4. Prose, with every result marked. Modules of the Mathlib-only core live in DMP.IM (the public `im` repository,
 `arsenal/Arsenal/`) and are written `Arsenal.BSD...`; they are in `im` at the commit pinned in `docs/mass-gap/formal/lakefile.toml`. Lean paths of this repository are relative to
 `docs/mass-gap/formal/ProofPhase/`; notes are relative to `docs/unified/`. Claim labels (VII.n) are listed in
 `../CLAIMS.md`.*
@@ -173,11 +173,6 @@ prose here, not in Lean). From it:
   The rank `r`, the torsion order and the field discriminant are derived. Mathlib defines none of the real period, the regulator,
   Sha or the Tamagawa product, so they stay free numbers in the statement. The refined statement gives the rank statement when its
   leading coefficient is not zero (`bsd_of_refined`). **[Lean]**
-* **Both analytic sides as one turn around s = 1** (claim VII.3.5f): when `Lam(s) = (s - 1)^r g(s)` near s = 1 with g holomorphic,
-  one turn of `Lam(s)/(s - 1)^(r + 1)` around 1 gives `g(1)`, the leading coefficient, with the r! of `Lam^(r)(1)/r!` taken up by the
-  turn; when g has no zero on the disc, one turn of `Lam'/Lam` gives r, so the analytic rank is a winding number (IM,
-  `Arsenal/FullTurn.lean`, `full_turn_leading`, `full_turn_order`). **[Lean]** for the two turns; reading BSD as "the rank is the
-  winding number of L around s = 1" combines them with `bsdStatement_iff` in prose **[paper]**.
 
 ### VII.3.6 Hasse as an encoder, and the Euler ledger (`ProofPhase.API.BSD`)
 

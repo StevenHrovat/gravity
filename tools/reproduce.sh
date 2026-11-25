@@ -2,7 +2,8 @@
 # Reproduce the paper GUID v8 (docs/paper) from a clone of this repository. See docs/paper/REPRODUCE.md for what each stage
 # needs, how long it takes and what it prints.
 #
-#   tools/reproduce.sh paper      ledger check, privacy scan, the LaTeX source and (if pdflatex is installed) the PDF
+#   tools/reproduce.sh paper      ledger check, privacy scan, the LaTeX source and (if pdflatex is installed) the PDF of
+#                                 Draft 4 (docs/paper); "tools/reproduce.sh paper D5" builds Draft 5 (docs/paper/D5)
 #   tools/reproduce.sh evidence   the DMP evidence chain: pin, setup file, build, kernel axiom report (expects "OK 285")
 #   tools/reproduce.sh lean       the paper's Lean: build docs/mass-gap/formal against Mathlib and rerun all 26 axiom scripts,
 #                                 comparing every declaration's axiom line with the committed log
@@ -26,15 +27,17 @@ say() { printf '\n== %s\n' "$*"; }
 bad() { echo "FAIL $*"; fail=1; }
 
 stage_paper() {
-  say "paper: ledger, scrub, LaTeX"
+  local d="${1:-}" dir name
+  dir="docs/paper${d:+/$d}/latex"; name="guid-v8${d:+-$d}"
+  say "paper: ledger, scrub, LaTeX (${d:-Draft 4})"
   [ -n "$PY" ] || { bad "python3 not found"; return; }
-  bash tools/paper-gate.sh || bad "paper gate"
-  "$PY" tools/paper-latex.py || { bad "LaTeX conversion"; return; }
+  bash tools/paper-gate.sh $d || bad "paper gate"
+  "$PY" tools/paper-latex.py $d || { bad "LaTeX conversion"; return; }
   if command -v pdflatex >/dev/null; then
-    (cd docs/paper/latex && for i in 1 2; do pdflatex -interaction=nonstopmode -halt-on-error guid-v8.tex >/dev/null || exit 1; done) \
-      && grep -h "Output written" docs/paper/latex/guid-v8.log || bad "pdflatex"
+    (cd "$dir" && for i in 1 2; do pdflatex -interaction=nonstopmode -halt-on-error "$name.tex" >/dev/null || exit 1; done) \
+      && grep -h "Output written" "$dir/$name.log" || bad "pdflatex"
   else
-    echo "pdflatex not installed: the LaTeX source docs/paper/latex/guid-v8.tex was written; the PDF was not built"
+    echo "pdflatex not installed: the LaTeX source $dir/$name.tex was written; the PDF was not built"
   fi
 }
 
@@ -88,7 +91,7 @@ stage_kernels() {
 }
 
 case "${1:-all}" in
-  paper) stage_paper ;;
+  paper) stage_paper "${2:-}" ;;
   evidence) stage_evidence ;;
   lean) stage_lean ;;
   certs) stage_certs ;;

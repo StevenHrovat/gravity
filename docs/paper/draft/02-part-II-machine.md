@@ -1,6 +1,6 @@
 # Part II. The machine, and the tools the problems use
 
-*Draft 5, 2026-11-25 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
+*Merged at Draft 4, 2026-11-24 (machine-first). Section A is the machine, in the order a reader needs it: running systems and the ledger, the encoder, the settle theorem, the one-box test, the API, the arsenal, the independent re-check. Section B is the tools the problems use, each once in its most general form. Lean paths are relative to `docs/mass-gap/formal/ProofPhase/`; claim labels (II.n.m) are listed in `../CLAIMS.md`.*
 
 **Which part uses which tool.** The machine (II.0 to II.3) is used by Parts III to VII; the one-box test and the cards (II.4,
 II.5) by every part from III to IX and by Appendix A; the arsenal and the re-check (II.6, II.7) by every Lean result; the tools of
@@ -101,7 +101,7 @@ per hidden variable.
 
 ---
 
-## II.2 The encoder, its half-turn, and the full turn
+## II.2 The encoder and its half-turn
 
 **Why it clicks.** A boundary passes on one state, seen once from the inside and once, after one rotation, from the outside. Both
 sides certify the same size. All that is left to say about the step is how much the state overlaps with its rotated image, and one
@@ -146,23 +146,6 @@ lower bound on another **[paper]** (`docs/unified/GRH-LENS.md`, 6.3).
 above (mu - 1)/(mu + 1) for every outside. GRH: the Verblunsky step of the zero measure at each scale is c. NP vs coNP: the crossing label passes at factor 1
 with a cutting-planes line, so the encoder explains resolution's cost but supplies none for strong systems **[paper]**
 (`docs/unified/ENCODER.md`, 1).
-
-**The full turn (II.2.7).** The half-turn is the case N = 2 of one tool. Go once around a point, from -pi to +pi, and average: the +
-half mirrors the - half, and one exact number is left.
-
-* **In N equal steps**, the N-th roots of unity: one turn of zeta^(jk) gives N when N divides k and 0 otherwise, so one turn reads off
-  any single component of N (`full_turn`, `full_turn_cos`, `full_turn_coeff`) **[Lean]**.
-* **On a circle** around c, one turn reads off the n-th Taylor coefficient of a function holomorphic on the disc, Cauchy's formula
-  (`full_turn_circle`) **[Lean]**. For exp around 0 it gives $1/n! = \frac{1}{2\pi i}\oint e^z z^{-n-1}\,dz$ on every circle: the
-  factorial is a full turn (`full_turn_factorial`) **[Lean]**.
-* **At a zero**: if Lam = (s - c)^r g with g holomorphic, one turn of Lam/(s - c)^(r + 1) gives g(c), the leading coefficient, and if g
-  has no zero on the disc, one turn of Lam'/Lam gives r: the order of a zero is a winding number (`full_turn_leading`,
-  `full_turn_order`) **[Lean]**.
-
-All of it is in IM's arsenal, `Arsenal/FullTurn.lean`, from Mathlib alone. At N = 2 the two steps are +1 and -1, the two averages are
-the even and odd parts psi + psi' and psi - psi', and the electric factor of II.2.2 is their ratio: the encoder is the full turn at
-N = 2 **[paper]** (claim II.2.7). The parts use the turn four times: the hand-over over all N sectors (II.13.3, III.3), the explicit
-formula (IV.1), the BSD rank and leading coefficient (VII.3), and the first author's factorial reading (R.7).
 
 ---
 
@@ -509,14 +492,6 @@ F_e is the image of F_tw under a decreasing involution with fixed point log(1 + 
 The bound is sharp, attained at Z_tw / Z = sqrt 2 - 1, where both free energies equal log(1 + sqrt 2) (from `elec_selfdual` and
 `selfdual_cost`, II.2.4; no single theorem states the F-form). **[Lean]** (`Crossover/HandOver.lean`, `handover_ratio`,
 `log_one_add_sqrt_two_le_max`; the duality `Flip/Floor.lean`, `elecF_eq_dual`).
-
-**Theorem II.13.3 (the balance of the full turn).** Let z be positive on N >= 2 points and epsilon positive on N points, tied by
-the two identities one turn gives: the values of epsilon add up to z at the base point, and N times epsilon at the base point is the
-sum of the values of z. Then some nontrivial value of z or of epsilon is at most 1/(1 + sqrt N) of its base value, so some
-nontrivial free energy is at least log(1 + sqrt N) **[Lean]** (IM, `Arsenal/FullTurn.lean`, `full_turn_balance`,
-`full_turn_balance_log`). At N = 2 it is Theorem II.13.1. The bound is sharp: with every nontrivial twist ratio equal to x, the
-electric ratio is (1 - x)/(1 + (N - 1) x), and the two meet at x = 1/(1 + sqrt N), the self-dual point of the N-step turn
-**[paper]** (elementary algebra) (claim II.13.3).
 
 **Where it applies.** Any system with a strict inequality between a sector and its twist. In SU(2) Yang-Mills the strict inequality
 holds at every coupling beta != 0 (`Flip/Strict.lean`, `su2_Ztw_lt_Z`), so every periodic SU(2) box with even time extent has a hand-over rate of at least 0.881 nats in

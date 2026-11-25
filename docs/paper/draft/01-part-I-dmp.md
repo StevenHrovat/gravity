@@ -1,6 +1,6 @@
 # Part I. DMP: a language for existence
 
-*Draft 5, 2026-11-25. Part I is vocabulary, not mathematics. Every statement in it is a definition of DMP, a reading of DMP, or a
+*Merged at Draft 4, 2026-11-24. Part I is vocabulary, not mathematics. Every statement in it is a definition of DMP, a reading of DMP, or a
 pointer to the precise statement in Part II. Claim labels (I.n) are listed in `../CLAIMS.md`.*
 
 ## I.0 How to read this part

@@ -6,6 +6,6 @@ cd "$(dirname "$0")/.."
 rc=0
 LC_ALL=C.UTF-8 bash tools/scrub-scan.sh || rc=1
 PY=$(command -v python || command -v python3)
-"$PY" tools/claims-check.py || rc=1
+"$PY" tools/claims-check.py "$@" || rc=1   # optional draft folder, e.g. D5
 [ $rc -eq 0 ] && echo "paper-gate: OK" || echo "paper-gate: FAIL"
 exit $rc
