@@ -240,6 +240,26 @@ the sharing being the named hypothesis R136a1 "the gate is shared across scales"
 and the card box exactly when the card's open step holds, and then gives the card's conclusion; it restates the step and proves no
 new bound **[Lean]** (`ETM/CardBox.lean`, claim II.4e).
 
+### II.4.1 The front door: every observable system
+
+An *observable system* has states, one step and its own claim at
+each state, a decidable proposition. Its one-box description is a box of the same API with the same states and step, whose marker is
+the system's claim and whose gate reads the truth of the claim; the marker is never read off the gate, so II.4c's vacuity is avoided.
+Four facts hold for every observable system **[Lean]** (IM, `Arsenal/Observable.lean`; claim II.4g):
+
+* *Representation* (`box_complete_iff`): the description is DMP-complete from a start exactly when the claim holds at every tick.
+  This is by construction, a restatement.
+* *A route to the proof* (`route`, exact along the run `route_iff`): the claim at the start and a step that keeps the claim make the
+  description DMP-complete.
+* *Certified universally* (`route_everywhere`): once the route is shown, the claim is certified at every tick and, with the gate
+  shared across scales (the named hypothesis R136a1, never an axiom), at every tick of every scale.
+* *Falsifiable* (`refuted_by_tick`): one tick where the claim fails refutes it.
+
+When the observation is a reading against a margin (`ofReading`) and the reading is a coefficient hidden in a sum of N powers of a
+root of unity, one full turn computes it exactly, so the gate can be read by one turn (`turn_gate`, II.2.7). Each card of Parts III
+to IX is an observable system: its claim is its open statement, and its card box (II.4e) is the case with one state per tick
+**[paper]**. So the route is the same everywhere, and what differs from card to card is only whether its one step can be shown.
+
 ## II.5 The API: cards
 
 **Why it clicks.** The form layer says nothing about content, so every problem can use it. Every problem has the same shape: an

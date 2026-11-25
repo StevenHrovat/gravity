@@ -32,20 +32,22 @@ meaning becomes apparent and its place in existence slots neatly into a better p
 
 ## Abstract
 
-Six Clay Millennium problems are read through one test, two in a neighbouring form (GRH for the Riemann hypothesis, NP versus
-coNP for P versus NP), with a Grand Unified reading of SU(3) x SU(2) x U(1), not a Clay problem.
-Each open step becomes a box: a step at one shared gate gives a marker at every tick, and the box is DMP-complete when every marker agrees with the gate. For most cards the box restates the open statement. Plainly, the machine multiplies by complex numbers of
-modulus at most one; one full turn of the phase, averaged, reads off a coefficient. Machine, test
-and cards are checked in Lean 4 with Mathlib on the standard axioms. DMP, a specification for trust, supplies the vocabulary; its readings are marked.
+Every observable system has a one-box description that is DMP-complete exactly when its claim holds: a step at one shared gate marks every tick, and the box is DMP-complete when every marker agrees with the gate. From it follows a route to the
+proof, and once the route is shown its truth is certified universally, at every tick and, with the gate shared across scales, at
+every scale. The description is a restatement; the route is the content. Six Clay problems are read this way, two in a
+neighbouring form (GRH for the Riemann hypothesis, NP versus coNP for P versus NP), with a Grand Unified reading of
+SU(3) x SU(2) x U(1), not a Clay problem. Machine, test and cards are checked in Lean 4 with Mathlib, standard axioms only. DMP, a
+specification for trust, supplies the vocabulary; its readings are marked.
 
-No problem is solved. One certifiable step is the same on every card: a marker correct at the start and kept by the step is
-correct at every tick. One assumption is stated once, as a reading: on the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge
-the box is DMP-complete, its gate shared across scales; on each card a different open statement, and results using it are
-marked conditional. Proved in Lean without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of
-fixed physical size, uniform in spacing and volume; the classical explicit formula for all nontrivial zeros of zeta (its real-place term not yet matched to Weil's); a crossing
-theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index; the full turn, giving the SU(N) hand-over log(1 + sqrt N) (electric sectors assumed positive, N >= 3) and the analytic rank as a winding number. Weil's positivity
-on a first box, with the real place and the primes 2, 3, is enclosed in ball arithmetic with explicit margins, given
-analytic estimates argued in a note. A model box from the Navier-Stokes energy bound alone gives a wrong marker.
+No problem is solved: one certifiable step is the same on every card, and none is shown yet. One
+assumption is stated once, as a reading: on the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge the box is DMP-complete, its
+gate shared across scales; on each card a different open statement, and results using it are marked conditional. Proved in Lean
+without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of fixed physical size, uniform in
+spacing and volume; the explicit formula for all nontrivial zeros of zeta (its real-place term not yet matched to Weil's); a
+crossing theorem for sound two-premise proof systems on expanding formulas; Mathlib-only cores for BSD and the Hodge index; the
+full turn, giving the SU(N) hand-over log(1 + sqrt N) (electric sectors assumed positive, N >= 3) and the analytic rank as a
+winding number. Weil's positivity on a first box, with the real place and the primes 2, 3, is enclosed in ball arithmetic, given analytic estimates argued in a note. A model box from the Navier-Stokes energy bound alone gives a wrong
+marker.
 
 ---
 
@@ -59,7 +61,12 @@ Osterwalder and Schrader reconstructed quantum field theories from reflection po
 of one pairing. Hodge and Riemann found the same positivity on the cohomology of a variety, and Weil used it to prove the Riemann
 hypothesis for curves over finite fields. Dobrushin showed that a contraction of local influences forces a unique equilibrium, and later work showed it is reached fast.
 
-What is new is the shape put around it: the machine and the test of the next section. When every step pays a cost above the floor,
+What is new is the shape put around it, in one statement: every observable system has a one-box description that is DMP-complete
+exactly when its claim holds; from it follows a route to the proof, and once that route is shown its truth is certified universally,
+at every tick and, with the gate shared across scales, at every scale **[Lean]** (II.4.1, IM's `Arsenal.Observable`; the scale part
+from the shared gate as a named hypothesis). The description is a restatement and proves nothing by itself; the content is the
+route's one step, and the paper shows where that step is open. The machine and the test of the next section carry it. When every
+step pays a cost above the floor,
 settling is decidable within an explicit bound; when steps may pay exactly the floor, there are systems, the universal machine among
 them, for which no procedure decides it. Each open step is restated as a box. One certifiable step is the same on every card: a
 marker correct at the start and kept by the step is correct at every tick (the one-box certificate). On five cards the paper reads
@@ -83,6 +90,11 @@ here (ledger, floor, DB, G0, ODP) are in the table of I.8.
   DMP*, is called *running* (X.4.4).
 * **The one-box certificate** (`onebox_certificate`). If the marker is correct at the start and the step keeps it correct at every
   state, the box is DMP-complete. This is the certifiable step.
+* **Observable system** (II.4.1, IM's `Arsenal.Observable`). States, one step and the system's own claim at each state. Its
+  one-box description has the claim as marker and the truth of the claim as gate. It is DMP-complete exactly when the claim holds at
+  every tick (`box_complete_iff`); a route to the proof is the claim at the start and a step that keeps it (`route`); once shown it
+  is certified at every tick and, with the shared gate, at every scale (`route_everywhere`); one failing tick refutes it
+  (`refuted_by_tick`). Every card below is an observable system.
 * **Card** (II.5, `API.Problem`). An input, one named open slot, a conclusion, and a Lean proof that the slot gives the conclusion.
   Its box (`cardBox`) is the constant box of the open statement: the ticks are 0, 1, 2, ..., the gate reads inside exactly when the
   open statement holds, and the marker is always inside, so the box is DMP-complete exactly when the open statement holds
@@ -267,6 +279,8 @@ whose row gives the claim's status, its source and what would upgrade it. Where 
   Weil's positivity with the primes 2 and 3 and explicit margins **[certified]** for the enclosures, **[paper]** for the estimates.
 * The hand-over bound, the strict twist bound for every SU(N), and zero join loss in slab form **[Lean]**.
 * A Mathlib-only BSD core over number fields, published in IM **[Lean]**.
+* The headline as a theorem and an API: every observable system has a one-box description, DMP-complete exactly when its claim
+  holds, with a route to the proof certified universally once shown (IM, `Arsenal.Observable`) **[Lean]**.
 * The full turn as one tool, in IM's arsenal: it gives the hand-over over all N centre sectors, log(1 + sqrt N), also as a mean
   along a path, with positive electric sectors assumed for N >= 3, and reads the BSD leading coefficient and the analytic rank (a
   winding number) as one turn around s = 1 **[Lean]**; the encoder's half-turn is its case N = 2 **[paper]**.

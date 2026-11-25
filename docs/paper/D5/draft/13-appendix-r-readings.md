@@ -226,3 +226,26 @@ room, the dimension of the space, is fixed by the content N it must carry **[rea
 **Care point (claim R.7c).** The first author's line x^y = x y is not an identity (2^3 = 8, 2 x 3 = 6). The contraction he means is
 the logarithm, which turns powers into products and products into sums: log(x^y) = y log x and log(xy) = log x + log y for x, y > 0
 **[classical]**, the form Part IV already uses (log n in the explicit formula).
+
+---
+
+## R.8 Derivations, slopes, and what a turn can undo
+
+**Derivations are slopes (claim R.8a).** The first author reads the dimensionality of DMP as itself a derivative, and the
+derivations as equal to the slopes across DBs **[reading]**. Its exact parts, in three layers. The tangent space of a smooth space at
+a point is the space of derivations there, linear maps with D(fg) = f Dg + g Df, and its dimension is the dimension of the space; so
+the dimension counts the independent ways to differentiate **[classical]** (Lee 2012). Each derivation at a point is a directional
+derivative, the slope of f along one direction **[classical]** (Lee 2012). With the full turn a slope is a ratio of two turns: the
+n-th derivative of f at c is one turn of f/(z - c)^(n + 1) around c divided by one turn of e^z/z^(n + 1) around 0, the turn of the
+factorial **[Lean]** (IM, `Arsenal/FullTurn.lean`, `full_turn_slope`). That the differences across the boundaries of neighbouring
+DBs, where the transfer step of III.3.4 sits, are those derivations is the reading.
+
+**What a turn can undo (claim R.8b).** The first author reads Draft 5 as the approach to a universal deobfuscator for any
+DMP-complete problem **[reading]**. Its exact part is narrower and stated as such. The full turn undoes every mixing by a known
+abelian rotation: one turn recovers each component (II.2.7). Its discrete form is the quantum Fourier transform at the core of
+Shor's algorithm, which reads a hidden period and so breaks factoring and discrete logarithms, and Fourier sampling solves the hidden
+subgroup problem for every abelian group **[classical]** (Shor 1997; Kitaev 1995). Where it stops is in this paper too: a lossy map
+cannot be undone, since every hash has collisions and a digest can be traced to its origin, not to its message **[Lean]**
+(`hash_collision`, R.6a); and for non-abelian groups Fourier sampling is not known to suffice **[classical]**. In the paper's terms a
+DMP-complete box is already readable at every tick (II.4.1); the open steps are whether a box is DMP-complete, and the full turn does
+not decide them.

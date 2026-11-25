@@ -17,9 +17,14 @@ its typeset paper. Shared by all drafts, and only ever added to: the Lean (`docs
 record (`../REVIEW.md`, `../review/`) and the reproduction guide (`../REPRODUCE.md`). A draft is reproduced exactly at the commit
 its title page names.
 
+**The headline.** Every observable system has a one-box description that is DMP-complete exactly when its claim holds; from it
+follows a route to the proof, and once that route is shown its truth is certified universally: at every tick, and, with the gate
+shared across scales, at every scale. In Lean this is IM's `Arsenal/Observable.lean`, the API every card instantiates (II.4.1).
+
 **What Draft 5 adds.** One tool, the full turn (one turn around a point, averaged), from the first author's reading of `n!` as a
 full turn: IM's `Arsenal/FullTurn.lean`, the SU(N) hand-over over all N centre sectors (`General/SUNFullTurn.lean`), and its use in
-II.2.7, II.13.3, II.13.4, III.3.1c, III.5.4d, IV.1.5c, VII.3.5f and Appendix R (R.5c, R.6a, R.7). The one assumption O1 is untouched.
+II.2.7, II.13.3, II.13.4, III.3.1c, III.5.4d, IV.1.5c, VII.3.5f and Appendix R (R.5c, R.6a, R.7, R.8); the headline in the
+abstract, the introduction and II.4.1. The one assumption O1 is untouched.
 
 **Build and check**, from the repository root:
 
