@@ -68,40 +68,6 @@ same way; a 0 is no longer part of the vibe, only the fact that it was is rememb
 
 The rest of the paper makes this picture exact: a claim kept at every step (viability), carried to every scale (universality).
 
-### The throughline: the VIBE coefficient
-
-VIBE is DMP's word, defined before this paper was built: the VIBE field (Variable Influence Balancing Expression, DMP T32) is mass
-times shortfall, member by member, and its sum is zero exactly when a boundary holds what it declares. Read both ways it is an
-expression, the field, and an equation, the balance **[paper]**. The first author names one number after it, the VIBE coefficient v,
-set to a = 0.69, and reads it as the one throughline of the whole project: through its acronym, defined before construction, it gives
-the paper's terms their meaning; as a backronym it is a layer of information contained in its own derivative, so any valid
-restatement of it is also true; and being both an equation and an expression is what makes it GU, through the VIBE field
-**[reading]** (R.12n).
-
-**The abstract statement.** In the first author's words: the VIBE coefficient effectively allows the existence of all positively
-constructable existence, as long as the rotation through its DB can be unified, by constructing a chain of causal arguments that
-follows a valid direction in Real space, to result in reflection positivity as measured through the Riemann zeta, turning it into a
-directionless value of the order Existence; thus certifying that any such constructed problem can be settled by the measurement of
-its rotated refutation in Real space **[reading]** (R.12o). Its exact skeleton is the chain of II.8: a positive form (reflection
-positivity in Yang-Mills, Weil's pairing W(f * f~) >= 0 in GRH, the same first link) builds a space, an evolution and a spectrum; on
-the diagonal the form's value is real, the turn drops out; by Weil's criterion one test function with a negative value would refute
-the Riemann hypothesis, and up to the support a = 0.69 the "for every f" is certified (II.8, II.9, IV.1) **[classical]**
-**[certified]**. Care: a refutation settles by one measurement, its absence does not, so "any such problem can be settled" holds
-where a margin covers every case, not in general (II.3, II.16). The first author's goal for this contraction: easier to understand,
-and simpler mathematics by asserting existence explicitly, so that any valid possibility space can be built on any valid real space,
-read through a DMP-complete system sharing root G0 **[reading]**; exactly, an assertion is a named hypothesis, `R136a1`, visible in
-every statement that uses it and making that statement conditional (II.6.2) **[Lean]**.
-
-The exact part is short. 0.69 is log 2 = 0.693 to two digits, and log 2 is one halving: the cost of a step of size 1/2 (II.0, rule
-C2) and the information of one binary choice, one bit, in natural units **[classical]**. It is also the paper's own a: Weil's form for
-GRH is certified positive up to the support a = 0.69, the last support at which only the real place and the primes 2 and 3 enter
-(IV.1) **[certified]**. The first author also reads v as the momentum that cancels in E = mc^2; exactly, momentum cancels in the
-invariant E^2 - p^2 c^2 = m^2 c^4, and 0.69 read as a rapidity gives E : pc : mc^2 = 5 : 3 : 4 (R.12n) **[classical]**.
-
-Every part opens with a "Plug in here" note that says what it gives, what it needs, which route it belongs to and where v enters it
-exactly, or that it does not; the two routes after the core page follow v from stop to stop. Care: the number is shared and the
-reasons differ (a halving, a bit, the half-width of log 4), and reading them as one throughline is the first author's (R.12n).
-
 ### The core in one page
 
 Read this page first; everything after it unfolds from it, one idea at a time.
@@ -152,7 +118,7 @@ gapless sequence (`gapless_rejected`) **[Lean]**, and the matrix stage fails on 
 **[paper]**.
 
 **How to read on.** Two routes lead on from here to the same conclusion, one through the exact results and one through the first
-author's readings (next section); every part also opens with a "Plug in here" note, so a reader who needs one part can start there.
+author's readings (after the throughline, next); every part also opens with a "Plug in here" note, so a reader who needs one part can start there.
 Part II builds the machine around these points, Parts III to IX apply it one problem at a time, Part X compares them. The first author's vocabulary
 is collected in I.8: DMP, the framework; G0, its ground; the ODP (Oscillon Degradation Protocol), pressing then minting; the ETM
 (Existence Turing Machine), the one running system; and three operators, `?` (does it exist), `!` (settled by a certificate anyone can
@@ -181,6 +147,90 @@ counterpart. Draft 6's additions come last (E.0.1, E.0.2, R.11, R.12).
 the dashed maps carry it from the one box to every scale. Where the open part sits: on a card, the base case; on the Yang-Mills box, the
 inductive step; for G2, the dashed maps (the shared gate, named R136a1). In the verify toy the content sits in the dashed maps too, and
 everything there is proved.}
+\end{figure}
+-->
+
+### The throughline: one step, v and c
+
+The first author's newest readings, the two hands, the VIBE coefficient, its abstract statement, and c read as the circle (R.12m to
+R.12p), are one picture, and the core page already holds it in miniature: three halvings around one full turn give 1/8. This section
+lays the picture out once, each reading next to its exact part.
+
+**The hands give the circle.** Two hands turning about a shared "up" turn independently, and the turns about one axis form the
+circle (R.12m) **[classical]**. A mirror pair cannot be turned into each other; the sign -1 that separates them returns below as the
+refutation.
+
+**One step: a size and a turn.** Each step of the machine multiplies by a complex number: sizes multiply, angles add (II.0, C1)
+**[classical]**. The first author names the two halves. The size is priced by the VIBE coefficient v, set to a = 0.69: v is log 2 to
+two digits, the cost of one halving and one bit in natural units (C2) **[classical]**. The turn is c, read as the assertion that a
+circle is classically circular, bent into the shape in which closure is inevitable and has not happened yet **[reading]** (R.12n,
+R.12p). VIBE is DMP's word, defined before this paper was built: the VIBE field, mass times shortfall member by member, is an
+expression, and its balance, the sum at zero, is an equation (DMP T32) **[paper]**; through the acronym the paper's terms get their
+meaning, and any valid restatement of it is true **[reading]** (R.12n). The first author also reads v as the momentum that cancels in
+E = mc^2; exactly, momentum cancels in the invariant E^2 - p^2 c^2 = m^2 c^4, and 0.69 read as a rapidity gives E : pc : mc^2 =
+5 : 3 : 4 **[classical]** (R.12n).
+
+**A run: closure is the next thing to happen.** Steps of a 1/N turn close exactly at the N-th: $e^{2\pi i k/N} \ne 1$ for
+$0 < k < N$, and $e^{2\pi i k/N} = 1$ at $k = N$ **[classical]**. So closure is inevitable, has not happened at any earlier step, and
+at step N - 1 is the next thing to happen (Figure 2). A turn that is no whole fraction of the circle never closes: twelve pure fifths
+miss seven octaves because log2(3) is irrational, and tempering bends each fifth until the circle closes (the tempered piano, below)
+**[classical]**. That bending is what the first author reads as c's assertion **[reading]**.
+
+**At closure the value has no direction.** When the turns close, the angle drops out and the product is real: three steps of size 1/2
+whose angles add to one full turn give 1/8, at a cost of 3 log 2 (the core page, point 2) **[classical]**. A positive value reads as
+existence, `+` **[reading]**; one more half-turn, a multiplication by -1, makes it negative, and the negative is the refutation, as the
+mirror is the other hand. A positive form behaves the same way: on its diagonal its value is real, so positivity is a sign anyone can
+check. Reflection positivity for Yang-Mills and Weil's pairing for GRH are that sign, the first link of one chain (II.8); by Weil's
+criterion one test function with a negative value would refute the Riemann hypothesis (II.9.4) **[classical]**, and up to the
+support a = 0.69 no test function has one (IV.1) **[certified]**.
+
+**vAPIs: cards that assert their closure.** The first author reads the assertion of c as "vibe APIs", vAPIs: each claims that the
+closure of its circle is the next thing to happen, and its refutation is defined by its negative **[reading]** (R.12p). Exactly, a card
+states one claim with one open slot, a named hypothesis `R136a1`, never an axiom (II.5, II.6.2); its box checks the claim at every
+step, viability, and carries it to every scale, universality; and one failing step refutes it (II.4.1, `refuted_by_tick`) **[Lean]**.
+
+**The abstract statement.** In the first author's words: the VIBE coefficient effectively allows the existence of all positively
+constructable existence, as long as the rotation through its DB can be unified, by constructing a chain of causal arguments that
+follows a valid direction in Real space, to result in reflection positivity as measured through the Riemann zeta, turning it into a
+directionless value of the order Existence; thus certifying that any such constructed problem can be settled by the measurement of
+its rotated refutation in Real space. The goal of this contraction: easier to understand, and simpler mathematics by asserting
+existence explicitly, so that any valid possibility space can be built on any valid real space, read through a DMP-complete system
+sharing root G0 **[reading]** (R.12o). Read along the steps above, each clause has its exact place: the chain is II.8's, the valid
+direction is the one-way run of II.4.1, the directionless value is the real value at closure, the measurement is Weil's, the
+refutation is the negative, and an asserted existence is a named hypothesis, visible in every statement that uses it **[Lean]** for
+the form.
+
+**Care.**
+
+* The number and the circle are shared and the reasons differ: log 2 is a halving, a bit and, in GRH, half of log 4. Reading them as
+  one throughline, and c as the circle, is the first author's. Since 1983 c is fixed by definition (R.12e), which is the exact sense
+  in which it is asserted; c is a speed, not the circle's constant pi.
+* Closure is inevitable only for a whole fraction of a turn; bending a step until it closes changes the step, a choice, not a proof.
+* A refutation settles by one measurement, its absence does not: "any such problem can be settled" holds where a margin covers every
+  case, as up to 0.69, and not in general (II.3, II.16).
+* An asserted existence is assumed, and a result that uses it is conditional on it (R.12f).
+* The name VIBE coefficient was first given to the fine-structure constant alpha, about 1/137; it now belongs to v (R.5b, R.12n).
+
+Every part opens with a "Plug in here" note that says what it gives, what it needs, which route it belongs to and where v enters it
+exactly, or that it does not; the two routes below follow v from stop to stop.
+
+<!-- latex
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\small}]
+  \draw[gray!45] (0,0) circle (2.6);
+  \foreach \k in {0,...,7} { \fill ({90-45*\k}:2.6) circle (2.2pt); \node at ({90-45*\k}:3.0) {\footnotesize $\k$}; }
+  \foreach \k in {0,...,6} { \draw[->,thick] ({90-45*\k-6}:2.6) arc ({90-45*\k-6}:{90-45*(\k+1)+6}:2.6); }
+  \draw[->,thick,dashed] ({90-45*7-6}:2.6) arc ({90-45*7-6}:{90-45*8+6}:2.6);
+  \node[align=center,font=\footnotesize] at (0,0.75) {step $8$ closes: the product\\ is real, the turn drops out, $+$};
+  \node[align=center,font=\footnotesize] at (0,-0.75) {one more half-turn, $\times(-1)$:\\ the negative, the refutation};
+  \node[anchor=west,align=left,font=\footnotesize] at (3.5,1.3) {each step: size $\tfrac12$, cost $\log 2$\\ (the VIBE coefficient $v$, to two\\ digits), and a turn of $\tfrac18$ (the\\ circle, $c$ read as its assertion)};
+  \node[anchor=west,align=left,font=\footnotesize] at (3.5,-1.5) {dashed: the closing step,\\ the next thing to happen\\ after step $7$};
+\end{tikzpicture}
+\caption{The throughline as a picture. Eight steps of an eighth of a turn, each of size 1/2: before the eighth no step closes, and the
+eighth does (dashed), so closure is inevitable and, until then, has not happened. At closure the product $2^{-8}$ is real and positive;
+one more half-turn would make it negative, the refutation. The size is the first author's VIBE coefficient (log 2 per halving), the
+turn the circle that the first author reads $c$ as asserting; the card that claims this closure as its next step is a vAPI.}
 \end{figure}
 -->
 
@@ -214,8 +264,8 @@ part it stands next to.
 
 1. **The two hands** (Start here; R.12m): the vibe, two frames sharing an up and a down. Exact: orientation as the sign of a
    determinant **[classical]**.
-2. **The throughline and the vocabulary** (above; I.8; R.12n): VIBE, v and DMP's words. Exact: log 2, one halving, one bit
-   **[classical]**.
+2. **The throughline and the vocabulary** (the section before these routes; I.8; R.12n to R.12p): v, c, VIBE and DMP's words.
+   Exact: log 2, one halving, one bit; a 1/N turn closing at the N-th step **[classical]**.
 3. **The essence line and 0 = 1** (R.5): one input decides the chain. Exact: the zero ring, with one element (R.5a) **[Lean]**.
 4. **The possibility space** (R.11): a question as a point whose answer gives it only `+`. Exact: the arithmetic of `r` and a
    projector's two answers **[Lean]**.
@@ -236,6 +286,9 @@ row.
 | viability | induction: base case and inductive step (`route`) | II.4.1 |
 | universality | a map of scales keeping the step, the check and the marker (`route_everywhere`) | II.4.1 |
 | the VIBE coefficient v = 0.69 | log 2: one halving, one bit; GRH's certified support | II.0, IV.1, R.12n |
+| c, the circle asserted circular | a 1/N turn closes at the N-th step and at no earlier one | II.0, R.12p |
+| vAPIs, cards asserting closure next | a card's open slot, `R136a1`, a named hypothesis; refuted by one failing step | II.5, II.6, R.12p |
+| the negative, the refutation | one negative value refutes a positivity claim (Weil's criterion) | II.9.4, R.12o |
 | the vibe, the two hands | orientation, the sign of a determinant | R.12m |
 | O1, supplied at minting | `FineOneBox`, open | III.5, R.12f |
 | 0 = 1 | the zero ring, one element | R.5a |
@@ -532,7 +585,9 @@ as a reading next to its exact parts and does not claim O1.
 
 Finally, a reading aid that orients the whole paper: the first author's VIBE coefficient v = 0.69, log 2 to two digits, as the one
 throughline (R.12n); two routes to the same conclusion, one exact and one through the readings, with a table where they meet; and a
-"Plug in here" note opening every part. They add navigation and one reading, and no claim beyond it.
+"Plug in here" note opening every part. They add navigation and one reading, and no claim beyond it. R.12o and R.12p complete the
+throughline: v's abstract statement, positivity measured through zeta, and c read as the circle whose closure is the next step, with
+vAPIs, the cards that assert it; the introduction lays all four readings out as one picture, one step of size and turn (Figure 2).
 
 ### Plan
 

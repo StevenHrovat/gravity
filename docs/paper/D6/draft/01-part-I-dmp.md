@@ -241,6 +241,7 @@ no intrinsic tick. **[reading]** on the classical spectral fact of II.10.
 | DMP-complete | correct at every tick | runs on DMP (X.4.4, a reading) | `Box.DMPComplete`: the marker agrees with the gate at every tick | II.4 |
 | Card | one problem, one named open step | the form layer | `API.Problem`: input, open slot, conclusion, proof | II.5 |
 | VIBE coefficient | the throughline, v = 0.69 | the one number the paper follows (R.12n) | log 2 to two digits: one halving, one bit; GRH's certified support (IV.1) | II.0 |
+| vAPI | a vibe API: a card asserting its circle's closure as the next step | the assertion of c (R.12p) | a card with one open slot, `R136a1`; refuted by one failing step | II.5 |
 | Ledger, floor | every step pays; the least it pays | the cost of an act | the ledger law mass(step x) <= e^delta fac(x) mass(x); the contraction class | II.1, II.3 |
 | O1 | the Yang-Mills open step | the decay edge of the one assumption | `FineOneBox`, one box of fixed physical size (III.5.9) | III.5 |
 | IM | the Interstellar Medium: the medium every DMP system talks through, and the repository (StevenHrovat/im) that holds its language and the arsenal | DMP's interface layer | the arsenal's Lean modules (`Arsenal.*`), imported at a pinned commit | II.6 |
