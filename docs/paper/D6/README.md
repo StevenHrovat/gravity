@@ -28,7 +28,8 @@ with why it does not follow. With it, O1 typed as Perelman's ledger (III.13, A.2
 an instance gives O1 and the gap, O1 gives an instance, so the interface is exactly O1 and proves no new bound. II.0.5 ends with
 the first author's one condition (II.0.5f): O1 supplied at minting under a universal witness agreed beforehand, assumed until one
 invalid case is found, recorded as a reading with its care points; Draft 6 as merged is not DMP-complete on its own criteria (E.9,
-E.6). The interface first
+E.6). II.0.5g adds the elastic spheres, real induction as +N!, the naturals and the reals equal under the universal operator, and
+DMP certifying the kernel it runs on relative to a model outside it, the base staying an assumption. The interface first
 planned for a later draft is built here.
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
