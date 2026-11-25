@@ -75,7 +75,7 @@ reading").
 | Experiencing it mints G0; one ETM, restarting by itself; understanding gives time its direction, r, degradation, r: a boot | one terminal running system, a unique map into it **[Lean]** | II.0.5b |
 | The universal certificate is always `+1`, 1 = 1; 0 and 1 forced into one, the lower one excised; a truly rigorous proof is vacuous | `rfl`; proof irrelevance, a proof contentless as an object; the zero ring **[classical]**, **[Lean]**; not vacuous in the logical sense | II.0.5d |
 | The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | II.0.5c |
-| The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content | R.5b |
+| The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
 
 ## R.1 DMP as an existence linter
 
@@ -223,7 +223,8 @@ author reads that link, 4 ? 0, as O1 itself, the one step that has to be supplie
 **[reading]** (claim R.5b). The first author named it `.ckb` for a while, read as the confinement coupling positivity, and returned
 to `.cmb`: the cosmic micro vibe background, which is what the VIBE coefficient establishes, a tool the first author regards as
 already central **[reading]**. The VIBE coefficient is the name `docs/balance/balance.tex` gives the fine-structure constant α, after
-the Variable Influence Balancing Equation; in DMP the CMB is the observability layer, counts and never content (VII.6e). Care point: the Lean facts are about rings and say nothing about the Wilson measure;
+the Variable Influence Balancing Equation; in DMP the CMB is the observability layer, counts and never content (VII.6e). This does not
+supply O1: a measured coupling constant gives no bound on the Wilson measure. Care point: the Lean facts are about rings and say nothing about the Wilson measure;
 O1 stays the one open step. So, once 1.5
 is given, the chain names exactly one ring, the zero ring, where existence and non-existence coincide: the one box with no outside
 **[reading]**. The last link is the first author's tie to the rest of the paper: SU(5), whose 5 = 3 + 2 holds the Standard Model

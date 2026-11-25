@@ -180,8 +180,8 @@ reading. `tools/rebuild matrix --optimize` runs the optimizer on the measured ve
 ### II.0.4 The possibility space
 
 *New in Draft 6.* The first author's first subtitle for Draft 6 was *the Possibility Space*, now the theme of this section (the
-subtitle is now *the ETM as the ODP running DMP*, II.0.5), and the first author remarks that it lines up with a base dimensionality
-of 6 **[reading]**. No exact counterpart is given for that remark; the paper's one six-dimensional space
+subtitle is now *the ETM as the ODP running DMP*, II.0.5), and the first author remarks that the Possibility Space lines up with a
+base dimensionality of 6 **[reading]**. No exact counterpart is given for that remark; the paper's one six-dimensional space
 is the six-sphere G2/SU(3) of R.7b, and a relation between the two is not claimed. Its theme is a reading of what a question is. It is given here with the exact parts it
 rests on, and the steps that do not follow as stated are named.
 
@@ -278,7 +278,7 @@ the universal act. DMP is then the operating system of the ODP kernel, and the k
 * the right angle `r` returns after four steps (`r_four`), a cycle that never ends **[Lean]**;
 * `+` times or divided by `+` is `+`, the sign rule **[classical]**;
 * a reversible computation can in principle run without dissipating, while a machine that delivers work from nothing cannot exist
-  (Bennett 1973; the first law of thermodynamics) **[classical]**: the cycle is a clock, not an engine, which is the exact side of
+  (Bennett 1973; the first law of thermodynamics) **[classical]**: the cycle is a clock, not an engine, the nearest exact statement to
   "as long as it can assert that such a thing cannot exist";
 * the endpoints of the rotating string move at c (II.0.4c) **[classical]**.
 
@@ -300,7 +300,7 @@ gives a real 0 and 1 at the same ends of existence **[reading]**. This does not 
   numbers, the classical setting, 0 != 1, and a proof of 0 = 1 there would prove every statement, P = NP and P != NP alike, so it
   could separate nothing.
 * NP = coNP and P != NP are open, and the paper proves neither: Part V proves a crossing theorem for sound two-premise proof systems
-  on expanding formulas and names its open steps (V.0, V.6).
+  on expanding formulas (in Lean, with two graph hypotheses stated, II.14.5) and names its open steps (V.0, V.6).
 * NP = coNP would not give P != NP. P = NP implies NP = coNP, so NP = coNP is consistent with P = NP; the implication runs the other
   way, NP != coNP would give P != NP.
 

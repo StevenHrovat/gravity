@@ -25,8 +25,8 @@ explains what Draft 5 establishes and claims nothing beyond it; the one assumpti
 internal clock, DMP as the operating system of that kernel, one ETM that boots again; its exact parts are the cycle of `r` and the
 one terminal running system, and the reading that the paper proves 0 = 1 for the classical, hence NP = coNP and P != NP, is stated
 with why it does not follow. With it, O1 typed as Perelman's ledger (III.13, A.2b; `docs/mass-gap/formal/ProofPhase/API/Perelman.lean`):
-an instance gives O1 and the gap, O1 gives an instance, so the interface is exactly O1 and proves no new bound. There is no Draft 7:
-all of this is Draft 6.
+an instance gives O1 and the gap, O1 gives an instance, so the interface is exactly O1 and proves no new bound. The interface first
+planned for a later draft is built here.
 
 **The Possibility Space.** Draft 6's first subtitle, from the first author's readings of the same day. The optimizer, the mechanism's
 mirror (II.0.3): the transitive reduction of a DAG in Lean on the kernel alone (IM, `arsenal/core/ArsenalCore/Optimizer.lean`), which
