@@ -4,6 +4,30 @@
 moved here verbatim when Draft 6 was contracted; each reading stands next to its exact parts and care points, with the marks of the
 introduction. Claim labels are rows of `CLAIMS.md`. The full Draft 6 is at the git tag `d6-full`.*
 
+
+## The index by part (from R.0 of the full text)
+
+Every ledger row whose status carries a reading mark, by where it stands; the counts are those of the full Draft 6.
+
+| Where | Readings (ledger labels) | Count |
+|---|---|---|
+| Introduction | 0.13, 0.21 | 2 |
+| Part I, DMP's vocabulary | I.1, I.2, I.3, I.4b, I.5a, I.7b, I.7c | 7 |
+| Part II, the machine | II.0h (decidability over every truly possible state), II.0i (multiplicative steps simplified into additive complex ones), II.3.4, II.4f, II.12.5r, II.13.4 (a maximum over sectors as a rotation of a rate along a path) | 6 |
+| Part III, Yang-Mills (III.10) | III.7.4c, III.9.5b, III.10, III.13c (the `+-` assignment through the PP-typed interface) | 4 |
+| Part IV, GRH | IV.1.5c (the explicit formula as one turn), IV.2.5b, IV.2.7, IV.6 | 4 |
+| Part V, P vs NP (V.8) | V.2.4, V.4.1, V.4.2, V.5.3, V.8 | 5 |
+| Part VI, Navier-Stokes (VI.7) | VI.3.5e, VI.5.5, VI.7a to VI.7f, VI.7h | 9 |
+| Part VII, BSD (VII.6) | VII.6a to VII.6e, VII.6g | 6 |
+| Part VIII, Hodge (VIII.6) | VIII.6a, VIII.6b, VIII.6d to VIII.6f, VIII.6h, VIII.6i | 7 |
+| Part IX, GU (IX.5, IX.6) | IX.5a, IX.5f, IX.5g, IX.6a, IX.6b, IX.6d, IX.6e, IX.6g, IX.6h | 9 |
+| Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
+| The Outlook | XI.1, XI.1b to XI.1d | 4 |
+| Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12p (The ETM as the ODP running DMP in D6) | 44 |
+| Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
+| Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
+
 ## Part I, sections I.1 to I.7: DMP in prose
 
 ## I.1 Existence has two halves
