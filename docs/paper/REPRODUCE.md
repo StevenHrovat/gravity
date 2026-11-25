@@ -7,7 +7,8 @@ takes, and what it prints when it passes.
 **The scaled sha256 search** (Draft 5, Appendix T.6) runs in the `certs` stage: a few seconds, Python's standard library only, its
 RESULT lines compared with `docs/unified/sha256_scaled.log`.
 
-**Trusted hashes.** `bash tools/trust-roundtrip.sh` proves every hash the repository trusts, back and then forth: the vendored
+**Trusted hashes.** `bash tools/trust-roundtrip.sh` first runs a canary, the full turn on `vxunderground` (ROT13 twice must return it;
+otherwise the state is smelly and nothing is trusted), then proves every hash the repository trusts, back and then forth: the vendored
 DMP hashes to its pin and the pinned commit rebuilds it byte for byte; every commit id the repository names (IM's arsenal, Mathlib
 through its tag and recorded id, the CI actions) is fetched by its id and the id recomputed from its content; an action trusted by a
 movable tag is refused. It runs in CI on every push and pull request (`.github/workflows/trust-roundtrip.yml`) and, once turned on

@@ -31,5 +31,5 @@ name = "ProofPhase"
 [[require]]
 name = "arsenal"
 git = "https://github.com/StevenHrovat/im"
-rev = "444bbfdbd7c1e6465331d031b2d3458cce4ee7aa"
+rev = "f96c45517f8164a0ae4c03e8b8b9147eda1ffbd5"
 subDir = "arsenal"

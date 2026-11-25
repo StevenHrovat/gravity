@@ -10,6 +10,7 @@
 3. The test vectors of the Secure Hash Standard reproduce (the encoding agrees with the standard).
 4. Inputs built by rotating a 1 into place are hashed once each and compared with 000...0001 (all refuted).
 5. The avalanche on vxunderground: each of its 104 input bits flipped once, the digest bits that change counted.
+6. The digest of vxunderground plus its complement is the line of 256 ones; a cyclic bit rotation keeps its count of ones.
 Everything is deterministic, so the RESULT lines reproduce exactly. Python standard library only.
 """
 import hashlib
@@ -50,3 +51,9 @@ for i in range(len(v) * 8):
     flips.append(bin(d0 ^ int(hashlib.sha256(w).hexdigest(), 16)).count('1'))
 print('RESULT avalanche on vxunderground: %d input-bit flips, digest bits changed min %d, max %d, mean %.1f of 256'
       % (len(flips), min(flips), max(flips), sum(flips) / len(flips)))
+# 6. Every digest completes to the line of 256 ones by adding its complement: y + ~y = 2^256 - 1; a cyclic rotation of the bits keeps
+#    the number of ones, so it never does.
+y = d0; k = (2 ** 256 - 1) ^ y
+rot_ones = set(bin(((y << r) | (y >> (256 - r))) & (2 ** 256 - 1)).count('1') for r in range(256))
+print('RESULT line of ones: sha256(vxunderground) + its complement = 2^256 - 1: %s; ones %d + %d = 256; every cyclic bit rotation keeps %s ones'
+      % (y + k == 2 ** 256 - 1, bin(y).count('1'), bin(k).count('1'), sorted(rot_ones)))

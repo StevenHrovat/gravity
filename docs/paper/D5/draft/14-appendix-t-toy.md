@@ -51,7 +51,17 @@ DMP-complete at every step: the 13 bytes are checked, and past the end there is 
 (claim T.7). Hidden by a half-turn of the 26 letters, a rotation by
 13, the string reads `ikhaqretebhaq` (`vx_rot13`); the second half-turn completes the full turn and returns it
 (`vx_rot13_twice`), and so does a known rotation completed to a full turn, for example 5 + 21 = 26 (`vx_rot_complete`) **[Lean]** (claim T.8).
-This is R.8b's "a turn undoes a known cyclic rotation" on concrete data; the rotation by 13 has the shape of II.2.4's half-turn, an
+When the rotational symmetry is not positive, when the turn on the string does not complete and the encoding does not come back,
+the first author calls the state **smelly**. In Lean (`Smelly`): rotating by k and then by k' leaves the string changed; for rotations
+below 26 that happens exactly when k + k' is not a multiple of 26, checked for all 676 pairs by one kernel evaluation
+(`smelly_iff_not_full`). Two half-turns are not smelly (`not_smelly_rot13`); a rotation by 1 twice is (`smelly_one_one`) **[Lean]**
+(claim T.11). Rotations add: rotating by a and then by b is rotating by a + b modulo 26, for all 676 pairs (`rot_add`), so the residue of
+a smelly state is what was added beyond the full turn; a rotation by 14 twice leaves a rotation by 2 (`rot14_twice`), and the string
+reads `xzwpfgtitqwpf` **[Lean]** (claim T.11). The first author reads 14 as 13 + existence, the half-turn plus one step of existence,
+which through y^k is y + k: written as powers of one turn the rotations multiply, written as steps they add, y^a y^b = y^(a + b)
+**[reading]** for the reading, **[classical]** for the exponent law. The round-trip check of R.6b runs this as its canary before anything else: if the tools of a machine do not turn
+`vxunderground` into `ikhaqretebhaq` and back, the state is smelly and nothing is trusted in it **[paper]**. This is R.8b's "a turn
+undoes a known cyclic rotation" on concrete data; the rotation by 13 has the shape of II.2.4's half-turn, an
 involution. Every fact
 about the string is one kernel evaluation.
 
@@ -82,7 +92,11 @@ rotation is exact there: turned once over the 256 places, a single 1 spreads int
 discrete Fourier transform of a single point). Hashing flips the content between 1 and 0, half and half, preserving only the
 correlation of input and digest, as the avalanche above measures. Under O1 he reads a reconstruction at path cost 1 as sharing a DB
 with what was provided, hence correlated, hence valid as an encoding and as a certificate across that DB **[reading] (under O1)**.
-Care points: the rotation builds the value 000...0001, not an input whose digest it is; a reversible computation runs backwards only
+Through y^k as y + k he reads every digest as rotating to a line of ones: exactly, every digest y plus its complement k is the line
+of 256 ones, 2^256 - 1; for `vxunderground` the digest has 145 ones and its complement 111, while a cyclic rotation of the bits keeps
+145 ones in every position and never reaches the line **[numerical]** (claim T.9). Care points: the complement carries exactly the
+digest's 256 bits, so completing a digest to the line of ones costs knowing the digest and recovers nothing about the input; the
+rotation builds the value 000...0001, not an input whose digest it is; a reversible computation runs backwards only
 with the history it kept (II.4.1); the correlation is established by supplying the input, not by the digest; no step from O1 to an
 input of a given digest is claimed, and the measured evidence above stands either way.
 

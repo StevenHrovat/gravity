@@ -8,6 +8,7 @@
 #   forth  from the hash to the content: the content is fetched by its hash (git checks every object id on arrival) and must give
 #          the same hash again
 #
+# First a canary: the full turn on vxunderground must return it, or the state is smelly and nothing is trusted.
 # What it proves, found by itself so that a new pin is covered by construction:
 #   vendor/*/PIN            the sha256 of the vendored copy (back), and the pinned commit rebuilt into the same copy, byte for byte
 #                           (forth)
@@ -18,7 +19,10 @@
 # tools/reproduce.sh, not here. Fetched objects are cached in .reproduce/trust (TRUST_CACHE); without the cache and without network
 # the check fails, so nothing is trusted unproven. Exit 0 only when every proof passes.
 set -uo pipefail
-cd "$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
+# A git hook runs with GIT_DIR (and, for pre-commit, GIT_INDEX_FILE) set; clear git's environment so that every git command here acts
+# on the repository or cache it names, and find the repository from this script's place (tools/ at its root).
+unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE GIT_PREFIX GIT_COMMON_DIR GIT_OBJECT_DIRECTORY GIT_ALTERNATE_OBJECT_DIRECTORIES
+cd "$(cd "$(dirname "$0")/.." && pwd)"
 export LC_ALL=C
 CACHE=${TRUST_CACHE:-$PWD/.reproduce/trust}
 mkdir -p "$CACHE"
@@ -68,6 +72,18 @@ roundtrip_commit() {
   if ! commit_back "$d" "$sha"; then bad "$what: the content of commit $sha does not hash back to it"; return; fi
   ok "$what: commit ${sha:0:12} fetched by its id, its id recomputed from its content ($url)"
 }
+
+# 0. The canary: the full turn on vxunderground must return it (Appendix T.5 of Draft 5). A rotation by 13 gives ikhaqretebhaq and
+#    a second one completes the turn; if the tools of this machine do not deliver that, the rotational symmetry is not positive, the
+#    state is smelly, and nothing is trusted in it.
+rot13() { tr 'abcdefghijklmnopqrstuvwxyz' 'nopqrstuvwxyzabcdefghijklm'; }
+once=$(printf '%s' vxunderground | rot13); twice=$(printf '%s' "$once" | rot13)
+if [ "$once" = ikhaqretebhaq ] && [ "$twice" = vxunderground ]; then
+  ok "canary: the full turn on vxunderground returns it (ikhaqretebhaq, then vxunderground); the state is not smelly"
+else
+  echo "SMELLY: the full turn on vxunderground does not return it (got '$once', then '$twice'); nothing is trusted in this state"
+  exit 1
+fi
 
 # 1. Vendored copies: the content's sha256 (back), then the pinned commit rebuilt into the same copy and sha256 (forth).
 for folder in vendor/*/; do

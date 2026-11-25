@@ -205,10 +205,11 @@ shape 000...0001 out of reach **[numerical]**.
 by rotation, back and then forth, each step delivering the expected value, so that nothing is written that cannot be read back,
 verified and certified; the path is the certificate **[reading]**. Its exact form is a check the repository runs in CI on every push
 and pull request and, once turned on per clone, before every commit and push (`tools/trust-roundtrip.sh`, `.githooks`,
-`.github/workflows/trust-roundtrip.yml`). The DMP pin goes back (the vendored copy hashes to the pin's sha256) and then forth (the
+`.github/workflows/trust-roundtrip.yml`). It starts with a canary: the full turn on `vxunderground` must return it, or the state
+is smelly (T.5) and nothing is trusted in it. The DMP pin goes back (the vendored copy hashes to the pin's sha256) and then forth (the
 pinned commit, fetched by its id, rebuilds the copy byte for byte); every commit id the repository names (IM's arsenal, Mathlib
 through its tag and its recorded id, the CI actions) is fetched by its id and the id recomputed from its content; an action trusted
-by a movable tag is refused. The check passes with 8 proofs, and one tampered byte of the vendored copy fails it **[paper]**. The
+by a movable tag is refused. The check passes with 9 proofs, the canary included, and one tampered byte of the vendored copy fails it **[paper]**. The
 first author reads this as the G0 DMP being unable to write what it cannot read, which makes it more secure as a G0 **[reading]**.
 Care points: git commit ids are SHA-1, which has known collision attacks, so the pin's sha256 over the content is the strong link; a
 write that goes around the gate is caught at the next run, not prevented; the hashes of build products (Mathlib's compiled files, the
@@ -267,3 +268,12 @@ an origin consistent with it, not to its message **[paper]**. For non-abelian gr
 the symmetric groups, strong Fourier sampling is known to fail **[classical]** (Moore-Russell-Schulman 2008). In the paper's terms a
 DMP-complete box is already readable at every tick (II.4.1); the open steps are whether a box is DMP-complete, and the full turn does
 not decide them.
+
+**Reduction and expansion while calculating (claim R.8c).** The first author reads the reduction and expansion of dimensionality
+while calculating as what enables hyper-efficient meta-layers **[reading]**. Two exact counterparts are classical. The full turn over
+N points costs about N^2 multiplications done directly; the fast Fourier transform reduces it to two turns over N/2, recursively, and
+expands the results back with one combining step per level, about N log2 N operations: for the 256 places of a hash-sized turn,
+256 x 8 instead of 65536 **[classical]** (Cooley-Tukey 1965). And a computation is made reversible by expanding its space with its
+history, copying the result, and reducing the space again by undoing the history **[classical]** (Bennett 1973). Care point: the
+gains are the known ones, N log N for the turn and the space and time trade-offs of reversible computation; nothing beyond them is
+claimed.
