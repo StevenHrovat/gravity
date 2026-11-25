@@ -109,7 +109,12 @@ named in advance is one a reader can check. In building the paper, the same rule
 stands next to its exact part and its care point, which says what does not follow; each claim carries one mark in the ledger; and
 negative results are proved like positive ones, for example that seven bits cannot single out a byte (`seven_bits_collide`), that a
 gapless sequence has no ledger (`gapless_rejected`) and that assigning `+` and `-` settles nothing (`assignment_does_not_decide`)
-**[Lean]**. A step that does not follow is not discarded: it is kept as a question, `?`, still posed and so still possible (R.12m).
+**[Lean]**. A step that does not follow is not discarded: it is kept as a question, `?`, still posed and so still possible (R.12m). The first
+author: this keeps DMP itself from accidentally becoming vacuous, so tight that it must always confine; that has been refuted
+actively at every step, which is how it works **[reading]**. The exact part: a framework that can say no is not vacuous, and this one
+does, on its own record: its optimizer finds the project's own versions not settled (E.9), the counting ledger rejects the
+gapless sequence (`gapless_rejected`) **[Lean]**, and the matrix stage fails on any redundant use other than the one stated (E.9)
+**[paper]**.
 
 **How to read on.** Press on the three toys until each closes (Appendix T), then mint the parts from the template: Part II builds the
 machine around these four points, Parts III to IX apply it one problem at a time, Part X compares them. The first author's vocabulary
