@@ -1,6 +1,6 @@
 # The paper: outline (draft 5, machine-first, relabelled 2026-11-24)
 
-*Draft 6 (2026-11-25), the ETM as the ODP running DMP, keeps this outline and adds E.0.1, the explanation mechanism, E.0.2, its
+*Draft 6 (2026-11-25), the ETM as the ODP running DMP in D6, keeps this outline and adds E.0.1, the explanation mechanism, E.0.2, its
 mirror the optimizer, R.11, the possibility space, R.12, the subtitle's readings, III.13 and A.2b, O1 typed as Perelman's ledger,
 and Appendix E, the mechanism and the optimizer applied (`README.md`).*
 

@@ -1,6 +1,7 @@
 # Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
-*Draft 6, the ETM as the ODP running DMP (the Existence Turing Machine as the Oscillon Degradation Protocol running DMP); machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
+<!-- draft-subtitle: The ETM as the ODP running DMP in D6 -->
+*Draft 6, The ETM as the ODP running DMP in D6 (the Existence Turing Machine as the Oscillon Degradation Protocol running DMP); machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
 X) are conditional on it. Claim labels (0.n) are listed in `../CLAIMS.md`.*
 
 ## Personal note by the first author
@@ -57,9 +58,11 @@ given analytic estimates argued in a note.
 
 Read this page first; everything after it unfolds from it, one idea at a time.
 
-**1. A run and a claim.** A system takes steps, and one claim is checked at every step. A proof then has one shape, an induction: the
-base case (the claim at the start) and the inductive step (a step that keeps the claim). Once both are shown the claim holds at every
-step, and one failing step refutes it (II.4.1: `route`, `refuted_by_tick`) **[Lean]**. Figure 1 draws it (in the typeset paper; the Markdown keeps its source in a comment). The restatement proves
+**1. A run and a claim: viability and universality.** A system takes steps, and one claim is checked at every step. A proof has two
+parts, named here as the first author names them. **Viability**: the claim holds at the start and every step keeps it; in standard
+terms an induction, its base case and its inductive step (`route`). **Universality**: a map between scales that keeps the step and the
+check carries the claim from one scale to every scale (`route_everywhere`). Together they give the claim at every step and every
+scale, and one failing step refutes it (II.4.1: `route`, `route_everywhere`, `refuted_by_tick`) **[Lean]**. Figure 1 draws it (in the typeset paper; the Markdown keeps its source in a comment). The restatement proves
 nothing by itself: the content is in the base case or in the step.
 
 **2. A step is a multiplication.** Each step multiplies by a number of size at most 1: the size is the cost, the angle is the turn
@@ -73,9 +76,9 @@ and all 256 words are checked by one kernel evaluation (T.1; claims T.1, T.2) **
 step refutes the claim (T.3; claim T.4) **[Lean]**. Reducing every word to its last bit carries the result from one bit to every width (T.2; claim T.3) **[Lean]**:
 that map is what "every scale" means.
 
-**4. Where the open part sits.** On a problem card the claim is the same at every step, so the step is free and the base case is the
-whole open problem. On the Yang-Mills box the base case is easy and the inductive step between lattice levels is open: that step is
-O1. For G2 the open part is the map of scales (Figure 1, dashed). No tool creates positivity; it has to come from the problem (II.16).
+**4. Where the open part sits.** On a problem card the claim is the same at every step, so the step is free and viability's base case
+is the whole open problem. On the Yang-Mills box the base case is easy and viability's step between lattice levels is open: that step
+is O1. For G2 the open part is universality, the map of scales (Figure 1, dashed). No tool creates positivity; it has to come from the problem (II.16).
 No problem is solved here, and O1 is open.
 
 **How to read on.** Press on the three toys until each closes (Appendix T), then mint the parts from the template: Part II builds the
@@ -384,7 +387,7 @@ stated are named, among them that assigning `+` and `-` to a question proves O1.
 Last, Draft 6 adds two things. First, O1 typed as Perelman's ledger, the interface the first author's reading asks for (III.13): a
 quantity, monotone and bounded along the lattice levels, that gains a quantum at every level where the box fails. An instance gives
 O1 and, with the resolution clause, the gap; O1 gives an instance; so the interface is exactly O1 and proves no new bound **[Lean]**.
-Second, the subtitle, *the ETM as the ODP running DMP*: the first author's reading of the ODP as the internal clock whose tick ends
+Second, the subtitle, *the ETM as the ODP running DMP in D6*: the first author's reading of the ODP as the internal clock whose tick ends
 at `+`, of DMP as the operating system of that kernel, and of one ETM that boots again whenever it stops **[reading]** (R.12). Its
 exact parts are the cycle of `r` and the one terminal running system **[Lean]**. The reading that the paper proves 0 = 1 for the
 classical, hence NP = coNP and P != NP, does not follow, and R.12 says why. R.12f states the first author's one condition: O1
@@ -400,5 +403,5 @@ step, and ends at its card and its box. Part X: the one assumption, which on eac
 compares the cards once they have been read. Then the Outlook
 (sections XI.n). Appendix A: validation (Poincare, SU(N) and the rigid groups), with III.13's ledger as a type (A.2b). Appendix R: DMP's
 neighbours and the first author's readings that no card uses, closing with the possibility space (R.11) and the subtitle's readings,
-*the ETM as the ODP running DMP* (R.12). Appendix T: the verify toy, the headline run on binary words, to read in full and rerun.
+*the ETM as the ODP running DMP in D6* (R.12). Appendix T: the verify toy, the headline run on binary words, to read in full and rerun.
 Appendix E: the explanation mechanism and its mirror, the optimizer (E.0.1, E.0.2), applied to the parts of this project.

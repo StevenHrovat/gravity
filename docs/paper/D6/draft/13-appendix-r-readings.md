@@ -11,8 +11,8 @@ section names the result it reads; the marks are those of the introduction.
 
 The first author's readings are spread over the paper by design: each sits next to the mathematics it reads. This index finds them.
 Every reading is marked **[reading]** where it stands, and its exact counterpart, when there is one, is given beside it with its own
-mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 166 in all; the
-ledger's count table counts 141, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
+mark; the ledger lists each with its claim label. The index lists every ledger row whose status carries a reading mark, 167 in all; the
+ledger's count table counts 142, the rows whose first mark is a reading (the others lead with their exact part, for example "Lean +
 reading").
 
 | Where | Readings (ledger labels) | Count |
@@ -30,7 +30,7 @@ reading").
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12k (the ETM as the ODP running DMP) | 39 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12l (the ETM as the ODP running DMP in D6) | 40 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
 | Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
 
@@ -81,6 +81,7 @@ reading").
 | `!` is the observability operator, where a statement can be DMP-complete | certificate checking as a repeatable observation **[paper]**; the NP witness **[classical]**; bounded above the floor, undecidable at it **[Lean]**; `!` observes the certificate, not the object | R.12i |
 | Ordinality as the orbit of the atoms by possible configuration; both senses of orbit one derivation; the care points together the O1 that 0 = 1 | Pauli, 2n^2; orbitals as irreducible representations of SO(3) and SU(2), Fock's SO(4) **[classical]**; the Madelung rule empirical; the care points mark an input, do not supply O1 or 0 = 1 | R.12j |
 | An occurrence of induction recognized by the first author is an Insight; DMP#25's comments as the record of the root, after the start of pressing | induction as base case and step **[Lean]**; the comments counted, dated and hashed **[paper]**; the labels not checked as inductions; the root does not supply the step | R.12k |
+| Eight Insights, no fewer; the axioms the only viable channel; viable and not viable as ζ's `+` and `-`; same as scale invariance, joined where viable; viability and universality as the primary names; 0ne1 and the R136a1 token; DMP.DMP a valid encoding | the byte lemma, `«0ne1»`, the settled Insight table, the token and its encoding theorems **[Lean]**; three channels **[paper]**; the argument principle **[classical]**; care: independence a premise, infeasible not impossible, no RH, no O1 | R.12l |
 | The paper proves 0 = 1 for the classical, hence NP = coNP, hence P != NP | 0 = 1 only in the zero ring **[Lean]**; in the classical setting 0 = 1 would prove everything; both open; NP = coNP does not give P != NP **[classical]**: does not follow | R.12c |
 | The `.cmb`, the cosmic micro vibe background established by the VIBE coefficient, supplies 4 ? 0 (earlier `.ckb`) | the VIBE coefficient is the fine-structure constant named in `docs/balance`; the CMB as counts, never content; a measured coupling gives no bound on the Wilson measure: does not supply O1 | R.5b |
 
@@ -422,7 +423,7 @@ Gravity's pin of IM (T.9).
 ## R.11 The possibility space
 
 *New in Draft 6.* The first author's first subtitle for Draft 6 was *the Possibility Space*, now the theme of this section (the
-subtitle is now *the ETM as the ODP running DMP*, R.12), and the first author remarks that the Possibility Space lines up with a
+subtitle is now *the ETM as the ODP running DMP in D6*, R.12), and the first author remarks that the Possibility Space lines up with a
 base dimensionality of 6 **[reading]**. No exact counterpart is given for that remark; the paper's one six-dimensional space
 is the six-sphere G2/SU(3) of R.7b, and a relation between the two is not claimed. Its theme is a reading of what a question is. It is given here with the exact parts it
 rests on, and the steps that do not follow as stated are named.
@@ -507,7 +508,7 @@ Built in III.13: an interface typed as the counting part of Perelman's proof as 
 reading), for the Yang-Mills box, with a theorem from an instance to O1 and its converse. It is equivalent to O1 and supplies no
 instance.
 
-## R.12 The ETM as the ODP running DMP
+## R.12 The ETM as the ODP running DMP in D6
 
 *New in Draft 6.* Draft 6's subtitle, from the first author's refinement of 2026-11-25; *the Possibility Space* stays the theme of
 R.11. The ETM is the Existence Turing Machine, one running system that runs every computation (II.3.1; `docs/unified/ETM.md`); the
@@ -847,3 +848,60 @@ Care:
 * Keeping the root makes an induction checkable; it does not supply the inductive step, which for Yang-Mills is O1.
 * The pin proves the specification's bytes; the comments are not part of the pinned commit, they live on GitHub, and the paper's hash
   covers them only as read on 2026-11-25. "Honest" here means checkable both ways, not correct.
+
+**Eight Insights, two channels, one token (claim R.12l).** The first author, clause by clause **[reading]**:
+
+1. Since G0, which gives direction and thus truth, has not been refuted so far, it should be certified during pressing that the Insights
+   reduce to no fewer than 8, which makes it impossible to reconstruct DMP from any other configuration in exactly the same way,
+   breaking the existence observability.
+2. This makes the axiom system, the strongest part of the system, the only viable channel of attack, showing two orthogonal channels
+   in our shared version of existence if the system holds.
+3. Viable and not viable are the 1 and 0 of the Riemann zeta function, so `+` and `-`, as already in the paper.
+4. The two being the same is their being entangled, joined only where that is viable; "same" means scale invariance.
+5. The care points name the two channels, universality and viability; together they exist. These names are the primary ones, which the
+   introduction translates the standard terms into.
+6. The pigeonhole routine is 0ne1 in the logic and R136a1 as a token, as all API inputs and outputs are; a token is the quantization of
+   the containing axiom system, proven through the one box.
+7. DMP.DMP (2 + 2 in mathematics, +-1 in existence, so derivable to be trivial) is a valid encoding, which proves the token's use as
+   an encoder.
+
+The whole is the first author's reading. Exact parts:
+
+* **No fewer than 8.** An injective map from n places into m values needs n <= m, proved by induction on the kernel alone and named
+  `«0ne1»`; so k bits single out every configuration of a byte (2^8 = 256) exactly when k >= 8, and seven bits always collide
+  (`bits_single_out_iff`, `seven_bits_collide`) **[Lean]** (IM, `arsenal/core/ArsenalCore/Insights.lean`).
+* **The Insights' references, settled.** The eight Insights of R.12k, in time order, with a use where an Insight's text refers to an
+  earlier one (five such references, read from the texts), form a DAG, and the optimizer of E.0.2 removes none of the uses
+  (`insights_dag`, `insights_settled`) **[Lean]**; it never removes an Insight, so all eight stay.
+* **The channels of an attack.** With the record pinned by its hash (R.12k), a change goes undetected only through one of three
+  channels: the logical channel, refuting an axiom or a premise, viable (`+`); the computational channel, a sha256 collision,
+  infeasible (`-`); the implementation channel, both kernels accepting the same false proof, guarded by two kernels written separately
+  (`-`) **[paper]**. The first two are orthogonal: a collision says nothing about the axioms, and a refuted axiom finds no collision.
+* **ζ's `+` and `-`.** By the argument principle a full turn counts each zero +1 and each pole -1 **[classical]**; ζ has one pole, at
+  s = 1, where it is 1/0, and every zero on the other side; the order of a zero as a winding number is proved in Lean (R.7a, IM's
+  `FullTurn.lean`) **[Lean]**. The table's cells use the same two marks (E.0.1).
+* **Same as scale invariance, joined where viable.** The scale map of II.4.1 carries the claim to every scale it reaches
+  (`route_everywhere`) **[Lean]**; in the toy the map is proved (T.2), for G2 it is the named hypothesis R136a1 (A.5), on the cards it
+  is part of the one assumption (Part X). Entanglement is non-factorisability of a joint state **[classical]**; the paper reads pairs as
+  entanglement (V.8).
+* **The two channels named.** Viability is `route`, the base case and the step at one scale; universality is the scale map; together
+  they give `route_everywhere`, the claim at every scale **[Lean]** (II.4.1; the core page and I.8 use these names).
+* **The token.** R136a1 is defined once, in IM's core, which needs no library, and the arsenal imports it, so every API input and output
+  carries the same token; the pigeonhole is issued as `R136a1 "0ne1"` (`«0ne1».token`) **[Lean]** (IM,
+  `arsenal/core/ArsenalCore/R136a1.lean`).
+* **A valid encoding.** The token of a statement holds exactly when the statement does (`R136a1.iff`), and a token of a token is the
+  token (`R136a1.idem`): the trivial encoding, which loses nothing, injective on every domain, so an encoding and not a hash (R.12h,
+  R.6a) **[Lean]**.
+
+Care:
+
+* That the eight Insights are logically independent, eight independent bits, is the first author's premise, not proved; the byte
+  lemma needs it as input.
+* "Impossible to reconstruct" is exact only as "infeasible": every hash has collisions (R.6a), and none is known to be findable for
+  sha256. The implementation channel is narrowed by two kernels, not closed ("unlikely, not impossible", T.15).
+* Mapping the channels onto ζ's zeros and its pole is the first author's reading; it says nothing about where the zeros lie, so nothing
+  about RH beyond Part IV.
+* Entangled is not identical, and entanglement carries no signal (the no-signalling theorem); scale invariance holds only where the
+  scale map is proved.
+* A token of a proven statement adds its name, not content; the trivial encoding loses nothing because it changes nothing.
+* None of this supplies O1.
