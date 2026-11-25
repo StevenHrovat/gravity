@@ -23,6 +23,8 @@ identities `∑_e Z_el(e) = Z` (`sunZel_sum`) and `N Z_el(0) = ∑_k Z_tw,k` (`s
 
 * `sun_handover_full_turn`: for every `N ≥ 2`, some nontrivial twist free energy or some nontrivial electric free energy of the
   SU(N) Wilson box is at least `log (1 + √N)`, given that the electric sectors are positive.
+* `sun_handover_full_turn_mean`: the same for the mean over the `N - 1` nontrivial sectors of one type (IM's
+  `full_turn_balance_mean`): a maximum over sectors is a rate along a path that turns once through them.
 * `sunZel_pos_two`: for `N = 2` that positivity is a theorem (`Z ± Z_tw > 0`), so the `N = 2` rate is `log (1 + √2)`, the rate of
   `sun_handover`.
 
@@ -96,6 +98,25 @@ theorem sun_handover_full_turn [Fact (1 < N)] (β : ℝ) (P : Finset (LatticePla
     rw [this, ← sunZtw_zero N L β P c T]
     exact hle
   · exact Or.inr ⟨e, he, hle⟩
+
+/-- **The hand-over along a path**: if the electric sectors are positive, the mean twist free energy over the `N - 1` nontrivial
+sectors, or the mean electric free energy over them, is at least `log (1 + √N)`. -/
+theorem sun_handover_full_turn_mean [Fact (1 < N)] (β : ℝ) (P : Finset (LatticePlaquette 3 L)) (c : ZMod L) (T : ℕ)
+    [NeZero T] (hel : ∀ e : Fin N, 0 < sunZel N L β P c T e) :
+    Real.log (1 + √(N : ℝ)) ≤
+        (∑ k ∈ Finset.univ.erase (0 : ZMod N), twistF (sunZ N L β P T) (sunZtw N L β P c T k)) / ((N : ℝ) - 1) ∨
+      Real.log (1 + √(N : ℝ)) ≤
+        (∑ e ∈ Finset.univ.erase (0 : Fin N), Real.log (sunZel N L β P c T 0 / sunZel N L β P c T e)) / ((N : ℝ) - 1) := by
+  have hN2 : 2 ≤ N := (Fact.out : 1 < N)
+  have h := Arsenal.FullTurn.full_turn_balance_mean (ZMod.card N) (Fintype.card_fin N) hN2 (0 : ZMod N) (0 : Fin N)
+    (fun k => sunZtw N L β P c T k) (fun e => sunZel N L β P c T e) (fun k => sunZtw_pos N L β P c T k) hel
+    (by rw [sunZel_sum, sunZtw_zero]) (sunZel_zero N L β P c T)
+  have htw : ∀ k, twistF (sunZ N L β P T) (sunZtw N L β P c T k)
+      = Real.log (sunZtw N L β P c T 0 / sunZtw N L β P c T k) := by
+    intro k
+    rw [twistF, ← Real.log_inv, inv_div, sunZtw_zero]
+  simp_rw [htw]
+  exact h
 
 /-- **For `N = 2` the electric sectors are positive**: they are `(Z ± Z_tw) / 2`, and `0 < Z_tw < Z` (`sunZtw_pos`, `sunZtw_lt`). So
 the `N = 2` rate holds with no hypothesis beyond `β ≠ 0` and an even time extent. -/

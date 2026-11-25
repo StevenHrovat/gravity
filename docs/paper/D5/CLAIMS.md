@@ -927,7 +927,7 @@ Part IX row IX.0b was a cross-reference and is folded; the scope rows that stay 
 
 Counted on the rows above (each row once, by its first mark; scope rows not counted: 0.1, III.0, VI.0e, VII.0e, VIII.0d, IX.0a, IX.0d). The draft 3 column is the count of the committed draft; the next column is after the audit of 2026-11-24 (rows removed and added, status changes, `certified` as its own mark, II.3.2 and II.3.3 counted as Lean):
 
-| Status | Draft 5 (2026-11-25) | Merged at draft 4 (2026-11-24) | After the decidable start (2026-11-24) | After the fake G2 reading (2026-11-24) | After the witnesses (2026-11-24) | After the U(1) reading (2026-11-24) | After the rigid start (2026-11-24) | After the one-box test (2026-11-24) | After A.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
+| Status | Draft 5 (2026-11-25) | Draft 4 (2026-11-24) | After the decidable start (2026-11-24) | After the fake G2 reading (2026-11-24) | After the witnesses (2026-11-24) | After the U(1) reading (2026-11-24) | After the rigid start (2026-11-24) | After the one-box test (2026-11-24) | After A.3j (2026-11-24) | After the second answers (2026-11-24) | After the owner's answers (2026-11-24) | After closures (draft 3) | Draft 3 as committed | Draft 2 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Lean | 261 | 253 | 232 | 232 | 232 | 232 | 232 | 231 | 221 | 221 | 221 | 221 | 239 | 114 |
 | classical | 126 | 124 | 125 | 124 | 124 | 123 | 122 | 121 | 121 | 121 | 121 | 121 | 120 | 42 |

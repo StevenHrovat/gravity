@@ -6,8 +6,11 @@ Draft 5 grew from Draft 4 and adds to it. Draft 4 is the merged state and is nev
 
 | Draft | Folder | Grown from | PDF |
 |---|---|---|---|
-| 4 (merged) | `docs/paper` | 3 | `docs/paper/latex/guid-v8.pdf` |
-| 5 | `docs/paper/D5` | 4 | `docs/paper/D5/latex/guid-v8-D5.pdf` |
+| 4 (merged, G0) | `docs/paper` | 3 | `docs/paper/latex/guid-v8.pdf` |
+| 5 (G0 + 1) | `docs/paper/D5` | 4 | `docs/paper/D5/latex/guid-v8-D5.pdf` |
+
+Draft 4 is the drafts' G0: its merged identity is fixed, and it carries "Merged at Draft 4". Draft 5 is G0 + 1, and from here on
+a draft names only its number ("Draft 5"): its merged identity is implied by the draft it grew from.
 
 A draft's folder holds its parts (`draft/`), its claims ledger (`CLAIMS.md`), its bibliography (`references.md`), its outline and
 its typeset paper. Shared by all drafts, and only ever added to: the Lean (`docs/mass-gap/formal`, `docs/unified`), the review
