@@ -1,7 +1,9 @@
 # Appendix E. The explanation mechanism applied
 
-*Draft 6, 2026-11-25. The tables of II.0.2 for what Draft 5 establishes. Lean: IM, `arsenal/core/ArsenalCore/Matrix.lean`, on Lean's kernel alone (IM
-`c441ed5`). Tools: IM's `tools/rebuild matrix` and `tools/rebuild check`. Claim labels (E.n) are listed in `../CLAIMS.md`.*
+*Draft 6, 2026-11-25. The tables of II.0.2 for what Draft 5 establishes, and the optimizer of II.0.3 applied to them (E.9 to E.11).
+Lean: IM, `arsenal/core/ArsenalCore/Matrix.lean` (IM `c441ed5`) and `Optimizer.lean` (IM `e9a4057`), on Lean's kernel alone. Tools:
+IM's `tools/rebuild matrix` (with `--optimize` from IM `e9a4057`) and `tools/rebuild check`. Claim labels (E.n) are listed in
+`../CLAIMS.md`.*
 
 Every table here has the parts as its rows and columns; the cell of a row and a column says whether the row proves the column, that is,
 that the use is proven, not that the row ran the proof. A cell where the row uses the column must be `+`; a `·` cell, where no proof
@@ -37,7 +39,7 @@ on 2026-11-25 as `tools/reproduce.sh matrix` from Gravity `bb69b82` (Draft 6's f
 cell of IM and Gravity is `+`; IM holds Gravity `4ec1131`, Gravity pins IM, and each passes its own round trip. Run by the same tool on
 clean clones with DMP as a third part: its row is `·` (DMP holds and pins nothing) and reflects positively, its column is `+` (IM and
 Gravity hold it, each copy proven back and forth), and its own cell is `-`, since DMP is a current part without a round trip of its
-own **[paper]** (claim E.2).
+own **[paper]** (claim E.2). Since IM `e9a4057` that cell is `.` (E.11).
 
 | proves → | IM | Gravity | DMP |
 |---|---|---|---|
@@ -85,7 +87,8 @@ proves **[reading]** (claim E.6). So Draft 6 adds no proof of its own; O1 stays 
 **DMP's statement (claim E.7).** The first author: DMP's statement is only `.`, since it can include **[reading]**. Exactly: by
 repository DMP uses nothing, its row is empty, and every other part includes it (`dmp_only_included`) **[Lean]**; in E.2 its row is all
 `·` and its column all `+` **[paper]**. Under this reading DMP makes no statement for a round trip to prove; the matrix tool still
-marks DMP's own cell `-`, since DMP is a current part without a round trip of its own (E.3).
+marked DMP's own cell `-`, since DMP is a current part without a round trip of its own (E.3); since IM `e9a4057` it marks it `.`
+(E.11).
 
 **The drafts as a library (claim E.8).** The first author: the Dx papers act as additional readings that keep their transitive
 property to G0 at Draft 4, our own extensible library of D-grade tools and insight **[reading]**. Exactly: each draft grows from the
@@ -94,3 +97,49 @@ not grow from Draft 4 directly yet reaches it through Draft 5 (`draft6_reaches_g
 reaches G0 within three derivation steps (`every_draft_reaches_g0`); and a new draft is one more part, its own row, column and cell,
 with nothing earlier checked again (`allPlus_succ_iff`) **[Lean]**. G0 stays as it is: Draft 4 is never edited, and its LaTeX
 regenerates identically apart from its build stamps **[paper]**.
+
+## E.9 The optimizer applied: the versions are not settled
+
+The optimizer of II.0.3 on the version table of E.1. IM `f8baf3d` uses DMP `1370dc0` directly, and it also holds Gravity `4ec1131`,
+which holds that same DMP. So `?` is answered by `.`: the direct use is redundant (`im_use_of_dmp_redundant`), the table is not settled
+(`versions_not_settled`), and its reduction removes exactly that use (`versions_reduced`); the reduced table is settled and reaches
+every part the measured table reaches (`versions_settled`) **[Lean]**.
+
+`tools/rebuild matrix --optimize` builds the same table from the repositories as they are, one node per repository at one commit: each
+part at its head, each held copy and pinned commit at its pin, a held copy's own held copies, and the uses of a pinned commit read from
+the part's history where it is there. Run on 2026-11-25 by `tools/reproduce.sh matrix` from Gravity `3841987` (this draft's branch) with the IM it
+pins, `966a016`, it finds the same one redundant use at the current commits, IM's own copy of DMP `1370dc0`, already included through its
+copy of Gravity `4ec1131`, and prints the shortest sentences, each a chain of kept uses ending in `!`:
+
+```
+use: im@966a016 -> dmp@1370dc0  ? answered by .: redundant, already included through gravity@4ec1131
+sentence: gravity@3841987 . dmp@4400cce !
+sentence: gravity@3841987 . im@966a016 . gravity@4ec1131 . dmp@1370dc0 !
+optimizer: NOT SETTLED, 1 of 5 uses redundant: the optimized form removes them (5 versions)
+```
+
+`tools/reproduce.sh matrix` asserts exactly this: every cell `+`, and the versions not settled, by exactly that one use **[paper]**
+(claim E.9); a settled result, or any other redundant use, fails the stage until this section is updated. In the first author's reading of II.0.3 the system exists only when it is settled. Settling it means IM
+dropping its own copy of DMP and including it through Gravity; that is IM's to decide, and Draft 6 does not do it.
+
+## E.10 The drafts are settled; the repositories cannot be optimized without losing DMP
+
+The drafts are settled however many there are, since each grows from the one before and from nothing else (`drafts_settled`)
+**[Lean]**; `D6 . D5 . D4 !` is already the shortest sentence. On the repository table, where IM and Gravity use each other, each use
+of DMP is redundant through the other repository, both are removed, and nothing reaches DMP any more (`repos_reduce_loses_dmp`)
+**[Lean]** (claim E.10). The optimizer keeps every derivation only on a DAG, which is why it works on versions.
+
+## E.11 DMP's own cell: `.`
+
+The first author: a part that includes nothing settles by `!` alone, so DMP's own cell counts as `.` **[reading]**. From IM `e9a4057`
+on, `tools/rebuild matrix` marks the own cell of a part without a round trip whose row is empty as `.`, with the reason that it holds
+and pins nothing; a part without a round trip that does use something stays `-`. Run on 2026-11-25 on clean clones of IM, Gravity and
+DMP, the 3 by 3 passes **[paper]** (claim E.11):
+
+| proves → | IM | Gravity | DMP |
+|---|---|---|---|
+| **IM** | + | + | + |
+| **Gravity** | + | + | + |
+| **DMP** | · | · | . |
+
+This replaces the `-` of E.2, E.3 and E.7: DMP's statement `.` (E.7) is now what its own cell shows.

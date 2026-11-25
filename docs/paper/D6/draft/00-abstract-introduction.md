@@ -1,6 +1,6 @@
 # Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP, with certified settling
 
-*Draft 6, machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
+*Draft 6, the Possibility Space; machine-first. Not a claim of a solution of any Millennium Prize problem: the results that need the one assumption (Part
 X) are conditional on it. Claim labels (0.n) are listed in `../CLAIMS.md`.*
 
 ## Personal note by the first author
@@ -35,7 +35,7 @@ meaning becomes apparent and its place in existence slots neatly into a better p
 Each problem is restated as one statement checked at every step of a sequence. The restatement holds exactly when the problem's statement holds at every step,
 so a proof has one shape, an induction: a base case and an inductive step. Once both are shown it holds at every step, and at every scale related by a map that keeps the step and the check. On binary data, read as real numbers,
 every computation can be made reversible, so complex mathematics applies exactly. Six Clay problems are read this way, two in a
-neighbouring form (GRH for the Riemann hypothesis, NP versus coNP for P versus NP), with a Grand Unified reading, not a Clay problem. The restatements are in Lean 4 with Mathlib, standard axioms only; DMP's readings are marked. Draft 6 adds DMP's explanation mechanism, a k by k table of which part proves which; a part costs 2k + 1 cells, a derived cell carries its chain (Lean).
+neighbouring form (GRH for the Riemann hypothesis, NP versus coNP for P versus NP), with a Grand Unified reading, not a Clay problem. The restatements are in Lean 4 with Mathlib, standard axioms only; DMP's readings are marked. Draft 6, the Possibility Space, adds DMP's explanation mechanism, a k by k table of which part proves which, and its mirror, a DAG optimizer (Lean).
 
 No problem is solved: on the cards the open problem is the base case, on the Yang-Mills box the inductive step between lattice levels (O1). One assumption is stated once, as a reading: the base cases of the cards of Yang-Mills, GRH, NP versus coNP, BSD and Hodge, each a different open statement; results using it are marked conditional. Proved in Lean
 without it: the reduction of the SU(2) lattice mass gap to one named criterion on one box of fixed physical size, uniform in
@@ -58,6 +58,15 @@ chain of cells already in the table; where the row does not use the column the c
 an earlier part no chain of uses returns **[Lean]** (II.0.2). Appendix E applies it to what Draft 5 measured: the versions of DMP,
 Gravity and IM form such a DAG, every use proven; the two kernels accept every target; Draft 5 establishes no chain of `+` cells that
 reaches the one open step O1 (E.6); and the drafts form a library that reaches G0 at Draft 4 from every later draft (E.7).
+
+Draft 6 also adds the mechanism's mirror and its subtitle, *the Possibility Space*. The optimizer removes every use that the table
+already includes through another chain, which is the transitive reduction of a DAG; in Lean on the kernel alone it keeps every
+derivation, settles in one pass, and is the only settled form with the same reach **[Lean]** (II.0.3). Applied to the measured
+versions it finds them not settled, by exactly one use: IM's own copy of DMP, which its copy of Gravity already includes (E.9). The
+Possibility Space is the first author's reading of a question as a point whose answer gives it only `+`, with the right angle `r` as
+the direction from a question to its certificate **[reading]** (II.0.4). Its exact parts are the arithmetic of `r` and a projector's
+two answers **[Lean]**, and the Bloch sphere, the flux tube and the rotating string **[classical]**. The steps that do not follow as
+stated are named, among them that assigning `+` and `-` to a question proves O1.
 
 ### What this paper is
 

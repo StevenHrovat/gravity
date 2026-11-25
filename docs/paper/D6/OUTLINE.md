@@ -1,6 +1,7 @@
 # The paper: outline (draft 5, machine-first, relabelled 2026-11-24)
 
-*Draft 6 (2026-11-25) keeps this outline and adds II.0.2, the explanation mechanism, and Appendix E, the mechanism applied (`README.md`).*
+*Draft 6 (2026-11-25), the Possibility Space, keeps this outline and adds II.0.2, the explanation mechanism, II.0.3, its mirror the
+optimizer, II.0.4, the possibility space, and Appendix E, the mechanism and the optimizer applied (`README.md`).*
 
 **Title (the owner's, 2026-11-24).** *Grand Unified Information Duality v8: The Millennium Prize Problem type as seen through DMP,
 with certified settling.* The owner: "since observability = equal running, seen through = run on DMP, while sounding nicer and more
