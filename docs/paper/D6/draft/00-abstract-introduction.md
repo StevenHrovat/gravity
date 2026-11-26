@@ -412,7 +412,7 @@ whose row gives the claim's status, its source and what would upgrade it. Where 
 ### The contraction, and where the full text is
 
 This is Draft 6 contracted, at the first author's request, so that it is short to read. Nothing proved left the record. Every claim
-keeps its row, status and evidence in the ledger, `CLAIMS.md` (753 counted rows). The full Draft 6, with every derivation, is the git tag
+keeps its row, status and evidence in the ledger, `CLAIMS.md` (754 counted rows). The full Draft 6, with every derivation, is the git tag
 `d6-full`, and Draft 5 holds the same derivations section by section. The first author's readings in full, clause by clause with their
 exact parts and care points, are in `READINGS.md` beside this draft. The Lean that no claim, script or build reaches, the earlier
 attempt rounds among it, left the build and stays at the tag. Each part keeps its "Plug in here" note, its statement as a check at
