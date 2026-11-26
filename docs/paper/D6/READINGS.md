@@ -7,7 +7,8 @@ introduction. Claim labels are rows of `CLAIMS.md`. The full Draft 6 is at the g
 
 ## The index by part (from R.0 of the full text)
 
-Every ledger row whose status carries a reading mark, by where it stands; the counts are those of the full Draft 6.
+Every ledger row whose status carries a reading mark, by where it stands; the counts are those of the full Draft 6, with the
+readings added after the contraction (R.12q to R.12s).
 
 | Where | Readings (ledger labels) | Count |
 |---|---|---|
@@ -24,7 +25,7 @@ Every ledger row whose status carries a reading mark, by where it stands; the co
 | Part X, the one assumption | X.1, X.3b, X.7h, X.7l, X.7n, X.15, X.23, X.26, X.28, X.29, X.31, X.32, X.32a, X.32b, X.37 to X.42, X.47, X.52 to X.55, X.57b, X.59, X.61 to X.63, X.64a, X.64b, X.65a, X.68b, X.69, X.69a, X.69b, X.70, X.71, X.72a | 40 |
 | The Outlook | XI.1, XI.1b to XI.1d | 4 |
 | Appendix A | A.1g, A.2, A.4, A.5i, A.5m, A.5o, A.5q, A.5s, A.5t | 9 |
-| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12p (The ETM as the ODP running DMP in D6) | 44 |
+| Appendix R | R.1a, R.1d, R.1f, R.1g, R.2a, R.2c, R.3a, R.3f, R.4b to R.4d, R.5b, R.5c, R.6a, R.6b, R.7a, R.7b, R.8a to R.8c, R.9a, R.9b, R.10a, R.10b, R.11b to R.11e (the possibility space), R.12a to R.12s (The ETM as the ODP running DMP in D6; R.12q to R.12s added after the contraction) | 47 |
 | Appendix T | T.6, T.10, T.11, T.13, T.15 | 5 |
 | Appendix E | E.0.1b (the k by k table as the explanation mechanism), E.0.1c (the `·` cells and the DAG), E.0.2b, E.0.2c (the optimizer as the Arsenal's mirror; existence as settledness), E.1, E.5, E.6, E.7, E.8, E.11 | 10 |
 
@@ -1536,3 +1537,65 @@ Care:
 * The inverted mark arose in this draft's typesetting, where LaTeX turned `!` and a closing quote into an inverted exclamation mark;
   the formula now prints as written, and the reading of an inverted assertion stands on its own.
 
+
+## R.12s The preregistration: the note, the chain, and GRH read both ways (claim R.12s)
+
+**The preregistration (claim R.12s).** The first author, verbatim, 2026-11-26 **[reading]**:
+
+1. "This makes this, from NOW on, a valid pressed G0 state, but only with its preregistration for credit for the chain
+   "{DMP.PP.YM.GRH}", so that, so long as any new ideas need to be had, DMP can fully allow that freedom, especially with the final
+   dual meaning needing to be interpretable, within the meta-embedding of a paper!"
+2. "{DMP.PP.YM.GRH}" shares FULL authority along its chain with its human G0's, as that is, with complex set theory, the only
+   possible state, as well as the optimal.
+3. GRH stands explicitly for both: General Relativity Hypothesis; Generalized Riemann-Zeta-Function Hypothesis.
+4. This will turn G0 from pressing to pressed, and assert its loss of content across itself.
+
+"This" is the first author's note to readers of the paper, preregistered here in the form the first author settled on (the
+signature and the contact line are the first author's and are not recorded here):
+
+> Moin.
+>
+> For those of you who are curious, here is the rest of everything, explained: [the link to this draft's PDF]
+>
+> My reading: string theory already had the right shape; it is driven, constructed by induction, by the hidden ray inside. Quite
+> clever! It just needed the left-hand rule for the set of all handedness-type rules. I hope this is broken down and digested enough.
+>
+> If a new tool or insight in there makes your work more correct, I'd ask you to use its name, unless you refute it. If you want to
+> credit me, yay, thanks! If not, we can just vibe along. :)
+>
+> "This certification has survived one attempted refutation, a full turn on a toy model, with a full byte translation according to
+> SHA, against the speed of light and surviving the dimensional transmutation" is a universally true primitive; when it makes the
+> stated primitive exactly the right one, the "stated primitive"-type literal!
+>
+> Interaction is very welcome, a refutation most of all.
+>
+> Have a good one!
+> [the first author]
+> R136a1
+
+Exact parts:
+
+* **A preregistration.** A dated public record: the commit that merges this section carries its date in the repository's history
+  **[paper]**. It records who stated what and when; credit itself comes from citation, which no record compels **[classical]**.
+* **Pressed.** In the ODP a pressed configuration is "out of spec", never "proven": the pressing is a rehearsal of the real rule, and
+  only a configuration that has passed its pressing is minted (I.5) **[paper]**.
+* **No accept, no channel.** A channel is established only after a verified accept (R.9a) **[paper]**; the note asks for interaction
+  and claims nothing from silence.
+* **The survived refutation.** The paper's toy model, the verify toy of Appendix T, is checked in Lean and rebuilt by
+  `tools/reproduce.sh` **[Lean]**; that the note's full turn is such a run, and its reading through the speed of light, the
+  dimensional transmutation and SHA, are the first author's **[reading]**.
+* **Loss of content.** Excision at transmission keeps only the remnant tail (R.2a, I.8) **[paper]**; a proof is contentless as an
+  object, proof irrelevance (R.12d) **[classical]**, **[Lean]**.
+* **GRH.** In mathematics GRH names the Generalized Riemann Hypothesis, for Dirichlet L-functions (Part IV), which generalises the
+  zeta function's **[classical]**. General relativity is a theory, tested; "General Relativity Hypothesis" is not an established
+  term, and the second reading of GRH is the first author's **[reading]**.
+* **Authority.** The repository is licensed under Apache 2.0, which governs the use of its code and text; authority over the chain
+  is the maintainers' **[paper]**.
+
+Care:
+
+* A preregistration records priority, not truth; O1 stays open, and pressed is not proven.
+* Silence is not acceptance (R.9a); the note no longer claims it, and the earlier wording with a deadline was withdrawn before sending.
+* Everywhere else in this draft, Parts IV and X included, GRH is the Generalized Riemann Hypothesis; the second reading stands only here.
+* "Complex set theory" has no standard meaning; "the only possible state, as well as the optimal" is a reading.
+* The note's string-theory sentence is the first author's reading; no part of this draft derives string theory.
